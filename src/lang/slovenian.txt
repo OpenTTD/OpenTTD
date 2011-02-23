@@ -29,77 +29,108 @@ STR_JUST_NOTHING                                                :Nič
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Potniki
+STR_CARGO_PLURAL_PASSENGERS.r                                   :Potnikov
+STR_CARGO_PLURAL_PASSENGERS.d                                   :Potnikom
 STR_CARGO_PLURAL_PASSENGERS.t                                   :Potnike
 STR_CARGO_PLURAL_COAL                                           :Premog
 STR_CARGO_PLURAL_COAL.r                                         :Premoga
+STR_CARGO_PLURAL_COAL.d                                         :Premogu
 STR_CARGO_PLURAL_MAIL                                           :Pošta
 STR_CARGO_PLURAL_MAIL.r                                         :Pošte
+STR_CARGO_PLURAL_MAIL.d                                         :Pošti
 STR_CARGO_PLURAL_MAIL.t                                         :Pošto
 STR_CARGO_PLURAL_OIL                                            :Nafta
 STR_CARGO_PLURAL_OIL.r                                          :Nafte
+STR_CARGO_PLURAL_OIL.d                                          :Nafti
 STR_CARGO_PLURAL_OIL.t                                          :Nafto
 STR_CARGO_PLURAL_LIVESTOCK                                      :Živina
 STR_CARGO_PLURAL_LIVESTOCK.r                                    :Živine
+STR_CARGO_PLURAL_LIVESTOCK.d                                    :Živini
 STR_CARGO_PLURAL_LIVESTOCK.t                                    :Živino
 STR_CARGO_PLURAL_GOODS                                          :Izdelki
 STR_CARGO_PLURAL_GOODS.r                                        :Izdelkov
+STR_CARGO_PLURAL_GOODS.d                                        :Izdelkom
 STR_CARGO_PLURAL_GOODS.t                                        :Izdelke
 STR_CARGO_PLURAL_GRAIN                                          :Žito
 STR_CARGO_PLURAL_GRAIN.r                                        :Žita
+STR_CARGO_PLURAL_GRAIN.d                                        :Žitu
 STR_CARGO_PLURAL_WOOD                                           :Les
 STR_CARGO_PLURAL_WOOD.r                                         :Lesa
+STR_CARGO_PLURAL_WOOD.d                                         :Lesu
 STR_CARGO_PLURAL_IRON_ORE                                       :Železova ruda
 STR_CARGO_PLURAL_IRON_ORE.r                                     :Železove rude
+STR_CARGO_PLURAL_IRON_ORE.d                                     :Železovi rudi
 STR_CARGO_PLURAL_IRON_ORE.t                                     :Železovo rudo
 STR_CARGO_PLURAL_STEEL                                          :Jeklo
 STR_CARGO_PLURAL_STEEL.r                                        :Jekla
+STR_CARGO_PLURAL_STEEL.d                                        :Jeklu
 STR_CARGO_PLURAL_VALUABLES                                      :Vrednosti
 STR_CARGO_PLURAL_COPPER_ORE                                     :Bakrova ruda
 STR_CARGO_PLURAL_COPPER_ORE.r                                   :Bakrove rude
+STR_CARGO_PLURAL_COPPER_ORE.d                                   :Bakrovi rudi
 STR_CARGO_PLURAL_COPPER_ORE.t                                   :Bakrovo rudo
 STR_CARGO_PLURAL_MAIZE                                          :Koruza
 STR_CARGO_PLURAL_MAIZE.r                                        :Koruze
+STR_CARGO_PLURAL_MAIZE.d                                        :Koruzi
 STR_CARGO_PLURAL_MAIZE.t                                        :Koruzo
 STR_CARGO_PLURAL_FRUIT                                          :Sadje
 STR_CARGO_PLURAL_FRUIT.r                                        :Sadja
+STR_CARGO_PLURAL_FRUIT.d                                        :Sadju
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamanti
 STR_CARGO_PLURAL_DIAMONDS.r                                     :Diamantov
+STR_CARGO_PLURAL_DIAMONDS.d                                     :Diamantom
 STR_CARGO_PLURAL_DIAMONDS.t                                     :Diamante
 STR_CARGO_PLURAL_FOOD                                           :Hrana
 STR_CARGO_PLURAL_FOOD.r                                         :Hrane
+STR_CARGO_PLURAL_FOOD.d                                         :Hrani
 STR_CARGO_PLURAL_FOOD.t                                         :Hrano
 STR_CARGO_PLURAL_PAPER                                          :Papir
 STR_CARGO_PLURAL_PAPER.r                                        :Papirja
+STR_CARGO_PLURAL_PAPER.d                                        :Papirju
 STR_CARGO_PLURAL_GOLD                                           :Zlato
 STR_CARGO_PLURAL_GOLD.r                                         :Zlata
+STR_CARGO_PLURAL_GOLD.d                                         :Zlatu
 STR_CARGO_PLURAL_WATER                                          :Voda
 STR_CARGO_PLURAL_WATER.r                                        :Vode
+STR_CARGO_PLURAL_WATER.d                                        :Vodi
 STR_CARGO_PLURAL_WATER.t                                        :Vodo
 STR_CARGO_PLURAL_WHEAT                                          :Pšenica
 STR_CARGO_PLURAL_WHEAT.r                                        :Pšenice
+STR_CARGO_PLURAL_WHEAT.d                                        :Pšenici
 STR_CARGO_PLURAL_WHEAT.t                                        :Pšenico
 STR_CARGO_PLURAL_RUBBER                                         :Kavčuk
 STR_CARGO_PLURAL_RUBBER.r                                       :Kavčuka
+STR_CARGO_PLURAL_RUBBER.d                                       :Kavčuku
 STR_CARGO_PLURAL_SUGAR                                          :Sladkor
 STR_CARGO_PLURAL_SUGAR.r                                        :Sladkorja
+STR_CARGO_PLURAL_SUGAR.d                                        :Sladkorju
 STR_CARGO_PLURAL_TOYS                                           :Igrače
 STR_CARGO_PLURAL_TOYS.r                                         :Igrač
+STR_CARGO_PLURAL_TOYS.d                                         :Igračam
 STR_CARGO_PLURAL_CANDY                                          :Sladkarije
 STR_CARGO_PLURAL_CANDY.r                                        :Sladkarij
+STR_CARGO_PLURAL_CANDY.d                                        :Sladkarijam
 STR_CARGO_PLURAL_COLA                                           :Cockta
 STR_CARGO_PLURAL_COLA.r                                         :Cockte
+STR_CARGO_PLURAL_COLA.d                                         :Cockti
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Sladkorna pena
 STR_CARGO_PLURAL_COTTON_CANDY.r                                 :Sladkorne pene
+STR_CARGO_PLURAL_COTTON_CANDY.d                                 :Sladkorni peni
 STR_CARGO_PLURAL_BUBBLES                                        :Mehurčki
 STR_CARGO_PLURAL_BUBBLES.r                                      :Mehurčkov
+STR_CARGO_PLURAL_BUBBLES.d                                      :Mehurčkom
 STR_CARGO_PLURAL_TOFFEE                                         :Karamela
 STR_CARGO_PLURAL_TOFFEE.r                                       :Karamele
+STR_CARGO_PLURAL_TOFFEE.d                                       :Karameli
 STR_CARGO_PLURAL_BATTERIES                                      :Baterije
 STR_CARGO_PLURAL_BATTERIES.r                                    :Baterij
+STR_CARGO_PLURAL_BATTERIES.d                                    :Baterijam
 STR_CARGO_PLURAL_PLASTIC                                        :Plastika
 STR_CARGO_PLURAL_PLASTIC.r                                      :Plastike
+STR_CARGO_PLURAL_PLASTIC.d                                      :Plastiki
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazirane pijače
 STR_CARGO_PLURAL_FIZZY_DRINKS.r                                 :Gaziranih pijač
+STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :Gaziranim pijačam
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -160,7 +191,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT} pšeni
 STR_QUANTITY_RUBBER                                             :{VOLUME} kavčuka
 STR_QUANTITY_SUGAR                                              :{WEIGHT} sladkorja
 STR_QUANTITY_TOYS                                               :{COMMA} igrač{P a i e ""}
-STR_QUANTITY_SWEETS                                             :{COMMA} vreč{P a i e ""} slaščic
+STR_QUANTITY_SWEETS                                             :{COMMA} vreč{P a i e ""} sladkarij
 STR_QUANTITY_COLA                                               :{VOLUME} cockte
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} sladkorne pene
 STR_QUANTITY_BUBBLES                                            :{COMMA} balonč{P ek ka ki kov}
@@ -593,7 +624,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Nadzornik poti
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Izvršni direktor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Vrhovni direktor
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Direktor
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Predsednik
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Velekapitalist
 
 # Performance detail window
@@ -698,7 +729,7 @@ STR_SMALLMAP_TYPE_CONTOURS                                      :Oblika
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vozila
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrije
 STR_SMALLMAP_TYPE_ROUTES                                        :Poti
-STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetacija
+STR_SMALLMAP_TYPE_VEGETATION                                    :Rastlinje
 STR_SMALLMAP_TYPE_OWNERS                                        :Lastniki
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Prikaži načrt terena na zemljevidu
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Prikaži vozila na zemljevidu
@@ -802,7 +833,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Prometna nesreča!{}Voznik umrl v plamenih po trku z vlakom.
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Prometna nesreča!{}{COMMA} mrt{P ev va vi vih} v plamenih ob trku z vlakom.
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Letalska nesreča!{}{COMMA} mrt{P ev va vi vih} v plamenih na letališču {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Letalska nesreča!{}Letalu je zmanjkalo goriva, {COMMA} mrt{P ev va vi vi} v ognjenih zubljih
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Letalska nesreča!{}Letalu je zmanjkalo goriva, {COMMA} mrt{P ev va vi vih} v ognjenih zubljih
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Nesreča cepelina na letališču {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Cestno vozilo uničeno v trku z 'NLP'!
@@ -810,15 +841,15 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Tovarna uničena v sumljivih okoliščinah blizu mesta {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'NLP' pristal blizu mesta {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Rudnik premoga pušča opustošenje v okolici mesta {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Poplave!{}Vsaj {COMMA} pogrešanih, najverjetneje mrtvih ob močnih neurjih!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Poplave!{}Vsaj {COMMA} pogrešanih, najverjetneje mrtvih po močnih neurjih!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Podjetje v težavah!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} bo prodano ali prisiljeno v stečajni postopek, če se stanje kaj kmalu ne izboljša!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Združitev podjetij!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Prevozno podjetje v težavah!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} bo prodano ali rezglašeno za bankrotirano, če se stanje kaj kmalu ne izboljša!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Združitev prevoznih podjetij!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} je bilo prodano podjetju {STRING} za {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Tvoje podjetje je bankrotiralo!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} je bilo zaprto s strani investitorjev, ki so prodali vse imetje!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Ustanovljeno novo podjetje!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Ustanovljeno novo prevozno podjetje!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} začenja z gradnjo blizu mesta {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} je bilo prevzeto s strani {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Direktor)
@@ -873,7 +904,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Novo! {STRING} sedaj na razpolago!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ne sprejema več {STRING.r}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ne sprejema več {STRING.r} in {STRING.r}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ne sprejema več {STRING.r} ali {STRING.r}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} sedaj sprejema {STRING.t}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} sedaj sprejema {STRING.t} in {STRING.t}
 
