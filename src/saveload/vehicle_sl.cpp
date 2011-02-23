@@ -307,6 +307,8 @@ void AfterLoadVehicles(bool part_of_load)
 			FOR_ALL_VEHICLES(v) {
 				if (v->First() != v || v->orders.list != NULL || v->previous_shared != NULL || v->next_shared == NULL) continue;
 
+				/* As above, allocating OrderList here is safe. */
+				assert(OrderList::CanAllocateItem());
 				v->orders.list = new OrderList(NULL, v);
 				for (Vehicle *u = v; u != NULL; u = u->next_shared) {
 					u->orders.list = v->orders.list;
