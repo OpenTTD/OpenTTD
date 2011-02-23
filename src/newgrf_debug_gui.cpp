@@ -519,8 +519,7 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 	DeleteWindowById(WC_NEWGRF_INSPECT, wno);
 
 	/* Reinitialise the land information window to remove the "debug" sprite if needed. */
-	Window *w = FindWindowById(WC_LAND_INFO, 0);
-	if (w != NULL) w->ReInit();
+	InvalidateWindowData(WC_LAND_INFO, 0, 1);
 }
 
 /**

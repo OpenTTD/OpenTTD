@@ -330,6 +330,16 @@ public:
 	{
 		::ShowNewGRFInspectWindow(GetGrfSpecFeature(this->tile), this->tile);
 	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		switch (data) {
+			case 1:
+				/* ReInit, "debug" sprite might have changed */
+				this->ReInit();
+				break;
+		}
+	}
 };
 
 /**
