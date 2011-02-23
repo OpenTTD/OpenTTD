@@ -81,7 +81,7 @@ void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 		/* We don't have any of this engine type.
 		 * Either we just sold the last one, we build a new one or we stopped replacing it.
 		 * In all cases, we need to update the left list */
-		InvalidateWindowData(WC_REPLACE_VEHICLE, Engine::Get(e)->type, true);
+		InvalidateWindowData(WC_REPLACE_VEHICLE, Engine::Get(e)->type, 1);
 	}
 }
 
@@ -91,7 +91,7 @@ void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
  */
 void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
 {
-	InvalidateWindowData(WC_REPLACE_VEHICLE, type, false); // Update the autoreplace window
+	InvalidateWindowData(WC_REPLACE_VEHICLE, type, 0); // Update the autoreplace window
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 }
 

@@ -120,7 +120,8 @@ public:
 		}
 	}
 
-	LandInfoWindow(TileIndex tile) : Window(), tile(tile) {
+	LandInfoWindow(TileIndex tile) : Window(), tile(tile)
+	{
 		this->InitNested(&_land_info_desc);
 
 #if defined(_DEBUG)

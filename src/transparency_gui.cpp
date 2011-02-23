@@ -51,7 +51,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		OnInvalidateData(0); // Must be sure that the widgets show the transparency variable changes, also when we use shortcuts.
+		this->OnInvalidateData(0); // Must be sure that the widgets show the transparency variable changes, also when we use shortcuts.
 		this->DrawWidgets();
 	}
 
