@@ -585,6 +585,7 @@ struct RefitWindow : public Window {
 	 */
 	StringID GetCapacityString(RefitOption *option) const
 	{
+		assert(_current_company == _local_company);
 		Vehicle *v = Vehicle::Get(this->window_number);
 		CommandCost cost = DoCommand(v->tile, this->selected_vehicle, option->cargo | option->subtype << 8 |
 				this->num_vehicles << 16, DC_QUERY_COST, GetCmdRefitVeh(v->type));
@@ -1119,7 +1120,7 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 			_thd.window_number = to_index;
 		}
 
-		/* Notify the window */
+		/* Notify the window immediatelly, without scheduling. */
 		w->InvalidateData();
 	}
 }

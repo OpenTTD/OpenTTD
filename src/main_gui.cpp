@@ -435,7 +435,7 @@ struct MainWindow : Window
 	virtual void OnInvalidateData(int data)
 	{
 		/* Forward the message to the appropiate toolbar (ingame or scenario editor) */
-		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data);
+		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data, true);
 	}
 
 	static Hotkey<MainWindow> global_hotkeys[];

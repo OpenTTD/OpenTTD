@@ -264,7 +264,7 @@ void Train::ConsistChanged(bool same_length)
 	if (this->IsFrontEngine()) {
 		this->UpdateAcceleration();
 		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
-		InvalidateWindowData(WC_VEHICLE_REFIT, this->index);
+		InvalidateWindowData(WC_VEHICLE_REFIT, this->index); // Important, do not invalidate immediatelly. The refit window tests commands.
 	}
 }
 
@@ -1089,7 +1089,7 @@ static void NormaliseTrainHead(Train *head)
 	if (!head->IsFrontEngine()) return;
 
 	/* Update the refit button and window */
-	InvalidateWindowData(WC_VEHICLE_REFIT, head->index);
+	InvalidateWindowData(WC_VEHICLE_REFIT, head->index); // Important, do not invalidate immediatelly. The refit window tests commands.
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, head->index, VVW_WIDGET_REFIT_VEH);
 
 	/* If we don't have a unit number yet, set one. */

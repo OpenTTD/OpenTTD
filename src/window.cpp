@@ -2420,6 +2420,7 @@ void UpdateWindows()
 
 			if (!(w->flags4 & WF_WHITE_BORDER_MASK)) w->SetDirty();
 		}
+		w->ProcessScheduledInvalidations();
 	}
 
 	DrawDirtyBlocks();
@@ -2476,29 +2477,47 @@ void SetWindowClassesDirty(WindowClass cls)
 
 /**
  * Mark window data of the window of a given class and specific window number as invalid (in need of re-computing)
+ * Note that by default the invalidation is not executed immediatelly but is scheduled till the next redraw.
+ * The asynchronous execution is important to prevent GUI code being executed from command scope.
  * @param cls Window class
  * @param number Window number within the class
  * @param data The data to invalidate with
+ * @param immediatelly If true then do not schedule the event, but execute immediatelly.
  */
-void InvalidateWindowData(WindowClass cls, WindowNumber number, int data)
+void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool immediatelly)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->window_class == cls && w->window_number == number) w->InvalidateData(data);
+		if (w->window_class == cls && w->window_number == number) {
+			if (immediatelly) {
+				w->InvalidateData(data);
+			} else {
+				w->ScheduleInvalidateData(data);
+			}
+		}
 	}
 }
 
 /**
  * Mark window data of all windows of a given class as invalid (in need of re-computing)
+ * Note that by default the invalidation is not executed immediatelly but is scheduled till the next redraw.
+ * The asynchronous execution is important to prevent GUI code being executed from command scope.
  * @param cls Window class
  * @param data The data to invalidate with
+ * @param immediatelly If true then do not schedule the event, but execute immediatelly.
  */
-void InvalidateWindowClassesData(WindowClass cls, int data)
+void InvalidateWindowClassesData(WindowClass cls, int data, bool immediatelly)
 {
 	Window *w;
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->window_class == cls) w->InvalidateData(data);
+		if (w->window_class == cls) {
+			if (immediatelly) {
+				w->InvalidateData(data);
+			} else {
+				w->ScheduleInvalidateData(data);
+			}
+		}
 	}
 }
 

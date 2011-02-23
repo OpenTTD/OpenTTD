@@ -199,6 +199,7 @@ public:
 		if (c != NULL) {
 			Money old_money = c->money;
 			c->money = INT64_MAX;
+			assert(_current_company == _local_company);
 			CommandCost costclear = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
 			c->money = old_money;
 			if (costclear.Succeeded()) {
