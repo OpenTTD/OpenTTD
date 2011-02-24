@@ -53,7 +53,7 @@ struct PoolBase {
 		*PoolBase::GetPools()->Append() = this;
 	}
 
-	~PoolBase();
+	virtual ~PoolBase();
 
 	/**
 	 * Virtual method that deletes all items in the pool.

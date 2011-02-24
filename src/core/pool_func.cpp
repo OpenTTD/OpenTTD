@@ -16,7 +16,7 @@
  * Destructor removes this object from the pool vector and
  * deletes the vector itself if this was the last item removed.
  */
-PoolBase::~PoolBase()
+/* virtual */ PoolBase::~PoolBase()
 {
 	PoolVector *pools = PoolBase::GetPools();
 	pools->Erase(pools->Find(this));
