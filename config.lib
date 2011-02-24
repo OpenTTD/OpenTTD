@@ -1288,6 +1288,9 @@ make_compiler_cflags() {
 			# sure that they will not happen. It furthermore complains
 			# about its own optimized code in some places.
 			flags="$flags -fno-strict-overflow"
+			# GCC 4.2 no longer includes -Wnon-virtual-dtor in -Wall.
+			# Enable it in order to be consistent with older GCC versions.
+			flags="$flags -Wnon-virtual-dtor"
 		fi
 
 		if [ $cc_version -ge 43 ]; then
