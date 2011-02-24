@@ -6726,6 +6726,8 @@ static bool ChangeGRFParamValueNames(ByteReader *buf)
 		if (type != 'T' || id > _cur_parameter->max_value) {
 			grfmsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA'->param_num->'VALU' should have type 't' and the value/bit number as id");
 			if (!SkipUnknownInfo(buf, type)) return false;
+			type = buf->ReadByte();
+			continue;
 		}
 
 		byte langid = buf->ReadByte();
@@ -6769,7 +6771,9 @@ static bool HandleParameterInfo(ByteReader *buf)
 		uint32 id = buf->ReadDWord();
 		if (type != 'C' || id >= _cur_grfconfig->num_valid_params) {
 			grfmsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA' should have type 'C' and their parameter number as id");
-			return SkipUnknownInfo(buf, type);
+			if (!SkipUnknownInfo(buf, type)) return false;
+			type = buf->ReadByte();
+			continue;
 		}
 
 		if (id >= _cur_grfconfig->param_info.Length()) {
