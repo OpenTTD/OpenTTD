@@ -2477,19 +2477,19 @@ void SetWindowClassesDirty(WindowClass cls)
 
 /**
  * Mark window data of the window of a given class and specific window number as invalid (in need of re-computing)
- * Note that by default the invalidation is not executed immediatelly but is scheduled till the next redraw.
+ * Note that by default the invalidation is not executed immediately but is scheduled till the next redraw.
  * The asynchronous execution is important to prevent GUI code being executed from command scope.
  * @param cls Window class
  * @param number Window number within the class
  * @param data The data to invalidate with
- * @param immediatelly If true then do not schedule the event, but execute immediatelly.
+ * @param immediately If true then do not schedule the event, but execute immediately.
  */
-void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool immediatelly)
+void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool immediately)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		if (w->window_class == cls && w->window_number == number) {
-			if (immediatelly) {
+			if (immediately) {
 				w->InvalidateData(data);
 			} else {
 				w->ScheduleInvalidateData(data);
@@ -2500,19 +2500,19 @@ void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool i
 
 /**
  * Mark window data of all windows of a given class as invalid (in need of re-computing)
- * Note that by default the invalidation is not executed immediatelly but is scheduled till the next redraw.
+ * Note that by default the invalidation is not executed immediately but is scheduled till the next redraw.
  * The asynchronous execution is important to prevent GUI code being executed from command scope.
  * @param cls Window class
  * @param data The data to invalidate with
- * @param immediatelly If true then do not schedule the event, but execute immediatelly.
+ * @param immediately If true then do not schedule the event, but execute immediately.
  */
-void InvalidateWindowClassesData(WindowClass cls, int data, bool immediatelly)
+void InvalidateWindowClassesData(WindowClass cls, int data, bool immediately)
 {
 	Window *w;
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		if (w->window_class == cls) {
-			if (immediatelly) {
+			if (immediately) {
 				w->InvalidateData(data);
 			} else {
 				w->ScheduleInvalidateData(data);

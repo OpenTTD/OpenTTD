@@ -520,7 +520,7 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 
 	/* Reinitialise the land information window to remove the "debug" sprite if needed.
 	 * Note: Since we might be called from a command here, it is important to not execute
-	 * the invalidation immediatelly. The landinfo window tests commands itself. */
+	 * the invalidation immediately. The landinfo window tests commands itself. */
 	InvalidateWindowData(WC_LAND_INFO, 0, 1);
 }
 

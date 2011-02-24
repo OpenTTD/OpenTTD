@@ -1120,7 +1120,7 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 			_thd.window_number = to_index;
 		}
 
-		/* Notify the window immediatelly, without scheduling. */
+		/* Notify the window immediately, without scheduling. */
 		w->InvalidateData();
 	}
 }
