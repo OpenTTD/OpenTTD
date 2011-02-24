@@ -1087,11 +1087,12 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin br�
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Dizze aksje post de swierrichheidsgraad oan nei 'oanpost'
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}avansearre ynstellings
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansearre ynstellings
 
 STR_CONFIG_SETTING_OFF                                          :út
 STR_CONFIG_SETTING_ON                                           :oan
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Stea it bouen op in helling ta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLED                                     :utskeakele
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}It boue op in helling tastean: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebrûk meer realistyske hannelsgebieten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Stjin ferwiderje fan stedelike dyken, brêgen en tunnels ta: {ORANGE}{STRING}
@@ -1110,21 +1111,58 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Ôfskot
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Ôfskotsgraad foar dyk reau {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Ferbied treinen en boarten om 90° te swaaien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}stjin it gearfoegje fan stasjons ta diet net oaniensletten binne: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}gebrûk it ferbettere algoritme: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Laad reau stadichoan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Ynflaasje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Bringst allinich besoargje by in stasjon as der fraach nei is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimale brêge hichte: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimale tunnel lingte: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Mei de hân te betsjinjen boumetoade foar primêre yndustryen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neat
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :lyk as oare yndustrieën
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :lyk as oare yndustryen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :probearje
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Meitsje Lân om de yndustry hinne flak: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Meardere ferlykbere yndustryen de sted tastean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Lit seine oan de rydtkânt sjen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Finansjeel oersjoch oan it ein fan it jier sjen litte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nije oarder binne standert 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nije trein oarders stopje de trein standert {ORANGE}{STRING}{LTBLUE} fan it perron
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :begjin
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midden
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ein
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Opstopping by reau (mei bywurkingen): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ferskow it skerm ot de mûs op de râne is: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}It omkeapjen fan de gemeente tastean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Eksklusyfe transport rjochten keapje tastean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Finansierje fan dyk ûnderhâld tastean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Jild jaan oan oarde bedriuwen tastean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsfaktor foar vracht om swiere treinen te simulearje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fleanmasine gong factor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Oantal fleanmasine ûngelokken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :gjin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :minder
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gewoan
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Stean ta dat Ienrjochtingsbuordsjes pleatst wurde troch de stêd behearde dyken: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Stean ta dat Ienrjochtingsbuordsjes pleatst wurde troch de tsjinstander behearde dyken: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bouwe oanbuorjende stasjons tastean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Meitsje it mooglik meardere NewGRF reau sets te brûke: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}As der reau binne kin dizze ynstelling net feroare wurde
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Fleanfjilden ferrinne litte kin net: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Warskôgje as in fehikel it paad bjuster is: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Warskôgje as in reau it paad bjuster is: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Opennij besjen reau' oarders: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, mar slút stilsteande reau ût
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :fan alle reau
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Warskôgje as de fertsjinsten fan in reau negatyf binne: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Reau ferrinne litte kin net: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Âlde reau automatysk ferfange: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatysk in Reau ferfange as er {ORANGE}{STRING}{LTBLUE} moannen{P 0:1 "" s} foar/nei max. aldens
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum nedich bedrach by automatysk ferfange: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Oant hoelang mei in tekoartkomming duorje: {ORANGE}{STRING} sekonde{P 0:1 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Toan tooltips: {ORANGE}Mûs oer foar {STRING} sekonde{P 0:1 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Toan tooltips: {ORANGE}Rjochts klikke
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimale ôfstân fan râne oant Oaljefjild {ORANGE}{STRING}
 

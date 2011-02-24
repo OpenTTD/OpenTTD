@@ -1438,7 +1438,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Мэт�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не ствараць
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншыя
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геолагаразьведка
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Плоскi рэльеф вакол прадпрыемстваў: {ORANGE}{STRING} клет{P ка кi ак}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Плоскi рэльеф вакол прадпрыемстваў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказваць сыгналы на баку руху: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Паказваць фінансавую статыстыку напрыканцы года: {ORANGE}{STRING}
