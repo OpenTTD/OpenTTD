@@ -379,7 +379,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			SelectPalette(hDC, hOldPalette, TRUE);
 			ReleaseDC(hwnd, hDC);
-			if (nChanged) InvalidateRect(hwnd, NULL, FALSE);
+			if (nChanged != 0) InvalidateRect(hwnd, NULL, FALSE);
 			return 0;
 		}
 

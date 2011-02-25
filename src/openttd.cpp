@@ -547,11 +547,11 @@ int ttd_main(int argc, char *argv[])
 
 #if defined(ENABLE_NETWORK)
 	if (dedicated) DEBUG(net, 0, "Starting dedicated version %s", _openttd_revision);
-	if (dedicated_host) {
+	if (dedicated_host != NULL) {
 		_network_bind_list.Clear();
 		*_network_bind_list.Append() = strdup(dedicated_host);
 	}
-	if (dedicated_port) _settings_client.network.server_port = dedicated_port;
+	if (dedicated_port != 0) _settings_client.network.server_port = dedicated_port;
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 #endif /* ENABLE_NETWORK */
 

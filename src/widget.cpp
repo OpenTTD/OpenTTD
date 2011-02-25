@@ -2559,9 +2559,9 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase **par
 		}
 
 		/* Add sub_widget to parent container if available, otherwise return the widget to the caller. */
-		if (nwid_cont) nwid_cont->Add(sub_widget);
-		if (nwid_parent) nwid_parent->Add(sub_widget);
-		if (!nwid_cont && !nwid_parent) {
+		if (nwid_cont != NULL) nwid_cont->Add(sub_widget);
+		if (nwid_parent != NULL) nwid_parent->Add(sub_widget);
+		if (nwid_cont == NULL && nwid_parent == NULL) {
 			*parent = sub_widget;
 			return total_used;
 		}

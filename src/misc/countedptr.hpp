@@ -96,10 +96,10 @@ FORCEINLINE void CCountedPtr<Tcls_>::Assign(Tcls *pT)
 {
 	/* if they are the same, we do nothing */
 	if (pT != m_pT) {
-		if (pT) pT->AddRef();        // AddRef new pointer if any
-		Tcls *pTold = m_pT;          // save original ptr
-		m_pT = pT;                   // update m_pT to new value
-		if (pTold) pTold->Release(); // release old ptr if any
+		if (pT != NULL) pT->AddRef();        // AddRef new pointer if any
+		Tcls *pTold = m_pT;                  // save original ptr
+		m_pT = pT;                           // update m_pT to new value
+		if (pTold != NULL) pTold->Release(); // release old ptr if any
 	}
 }
 

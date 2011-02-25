@@ -2213,8 +2213,8 @@ static PBSTileInfo ExtendTrainReservation(const Train *v, TrackBits *new_tracks,
 			if (ft.m_tiles_skipped != 0) ft.m_new_tile -= TileOffsByDiagDir(ft.m_exitdir) * ft.m_tiles_skipped;
 
 			/* Choice found, path valid but not okay. Save info about the choice tile as well. */
-			if (new_tracks) *new_tracks = TrackdirBitsToTrackBits(ft.m_new_td_bits);
-			if (enterdir) *enterdir = ft.m_exitdir;
+			if (new_tracks != NULL) *new_tracks = TrackdirBitsToTrackBits(ft.m_new_td_bits);
+			if (enterdir != NULL) *enterdir = ft.m_exitdir;
 			return PBSTileInfo(ft.m_new_tile, ft.m_old_td, false);
 		}
 

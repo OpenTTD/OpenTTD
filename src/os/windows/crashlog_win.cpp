@@ -526,7 +526,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();
 
-	if (_safe_esp) {
+	if (_safe_esp != NULL) {
 #ifdef _M_AMD64
 		ep->ContextRecord->Rip = (DWORD64)ShowCrashlogWindow;
 		ep->ContextRecord->Rsp = (DWORD64)_safe_esp;
@@ -605,7 +605,7 @@ static void SetWndSize(HWND wnd, int mode)
 	if (mode >= 0) {
 		GetWindowRect(GetDlgItem(wnd, 11), &r2);
 		int offs = r2.bottom - r2.top + 10;
-		if (!mode) offs = -offs;
+		if (mode == 0) offs = -offs;
 		SetWindowPos(wnd, HWND_TOPMOST, 0, 0,
 			r.right - r.left, r.bottom - r.top + offs, SWP_NOMOVE | SWP_NOZORDER);
 	} else {

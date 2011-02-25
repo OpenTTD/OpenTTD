@@ -291,7 +291,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		} else {
 			p2 |= (TRACK_LEFT << 4);
 		}
-		if (diag_offset) {
+		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
 			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
@@ -302,7 +302,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		} else {
 			p2 |= (TRACK_LOWER << 4);
 		}
-		if (diag_offset) {
+		if (diag_offset != 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
 			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
@@ -313,7 +313,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		} else {
 			p2 |= (TRACK_RIGHT << 4);
 		}
-		if (!diag_offset) {
+		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
 			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);
@@ -324,7 +324,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 		} else {
 			p2 |= (TRACK_LOWER << 4);
 		}
-		if (!diag_offset) {
+		if (diag_offset == 0) {
 			*to -= Clamp((int)::TileX(*to) - (int)::TileX(tile), -1, 1);
 		} else {
 			*to -= ::MapSizeX() * Clamp((int)::TileY(*to) - (int)::TileY(tile), -1, 1);

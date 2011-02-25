@@ -1699,7 +1699,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	do {
 		int i = width;
 
-		do b[--i] = 0xFF; while (i);
+		do b[--i] = 0xFF; while (i != 0);
 
 		b += _dirty_bytes_per_line;
 	} while (--height != 0);

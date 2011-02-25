@@ -268,11 +268,11 @@ void IniFile::LoadFromDisk(const char *filename)
 			}
 			s++; // skip [
 			group = new IniGroup(this, s, e - s);
-			if (comment_size) {
+			if (comment_size != 0) {
 				group->comment = strndup(comment, comment_size);
 				comment_size = 0;
 			}
-		} else if (group) {
+		} else if (group != NULL) {
 			char *t;
 			/* find end of keyname */
 			if (*s == '\"') {
@@ -285,7 +285,7 @@ void IniFile::LoadFromDisk(const char *filename)
 
 			/* it's an item in an existing group */
 			IniItem *item = new IniItem(group, s, t - s);
-			if (comment_size) {
+			if (comment_size != 0) {
 				item->comment = strndup(comment, comment_size);
 				comment_size = 0;
 			}

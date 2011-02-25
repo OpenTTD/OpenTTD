@@ -724,7 +724,7 @@ static void HandleString(char *str, bool master)
 	/* Check if the string has a case..
 	 * The syntax for cases is IDENTNAME.case */
 	char *casep = strchr(str, '.');
-	if (casep) *casep++ = '\0';
+	if (casep != NULL) *casep++ = '\0';
 
 	/* Check if this string already exists.. */
 	LangString *ent = HashFind(str);
@@ -901,7 +901,7 @@ bool CompareFiles(const char *n1, const char *n2)
 			fclose(f1);
 			return false;
 		}
-	} while (l1);
+	} while (l1 != 0);
 
 	fclose(f2);
 	fclose(f1);
@@ -1320,7 +1320,7 @@ int CDECL main(int argc, char *argv[])
 		_masterlang = true;
 		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
-		if (_errors) return 1;
+		if (_errors != 0) return 1;
 
 		/* write strings.h */
 		ottd_mkdir(dest_dir);
@@ -1336,7 +1336,7 @@ int CDECL main(int argc, char *argv[])
 		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
 		ParseFile(replace_pathsep(mgo.argv[0]), false); // target file
-		if (_errors) return 1;
+		if (_errors != 0) return 1;
 
 		/* get the targetfile, strip any directories and append to destination path */
 		r = strrchr(mgo.argv[0], PATHSEPCHAR);

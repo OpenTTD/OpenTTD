@@ -781,7 +781,7 @@ static bool CheckInterval(int32 p1)
 		vds = &Company::Get(_current_company)->settings.vehicle;
 	}
 
-	if (p1) {
+	if (p1 != 0) {
 		vds->servint_trains   = 50;
 		vds->servint_roadveh  = 50;
 		vds->servint_aircraft = 50;

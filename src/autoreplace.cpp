@@ -26,7 +26,7 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, G
 {
 	EngineRenew *er = (EngineRenew *)erl;
 
-	while (er) {
+	while (er != NULL) {
 		if (er->from == engine && er->group_id == group) return er;
 		er = er->next;
 	}
@@ -114,7 +114,7 @@ CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, Group
 	EngineRenew *er = (EngineRenew *)(*erl);
 	EngineRenew *prev = NULL;
 
-	while (er) {
+	while (er != NULL) {
 		if (er->from == engine && er->group_id == group) {
 			if (flags & DC_EXEC) {
 				if (prev == NULL) { // First element

@@ -456,7 +456,7 @@ public:
 		}
 
 		/* if min speed was requested, return it */
-		if (pmin_speed) *pmin_speed = min_speed;
+		if (pmin_speed != NULL) *pmin_speed = min_speed;
 		return max_speed;
 	}
 };
