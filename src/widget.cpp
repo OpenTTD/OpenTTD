@@ -1061,7 +1061,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 	/* 1b. Make the container higher if needed to accomadate all childs nicely. */
 	uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
 	uint cur_height = this->smallest_y;
-	while (true) {
+	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetVerticalStepSize(ST_SMALLEST);
 			uint child_height = child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
@@ -1213,7 +1213,7 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 	/* 1b. Make the container wider if needed to accomadate all childs nicely. */
 	uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
 	uint cur_width = this->smallest_x;
-	while (true) {
+	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetHorizontalStepSize(ST_SMALLEST);
 			uint child_width = child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
@@ -2538,7 +2538,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase **par
 	assert(*parent == NULL || (nwid_cont != NULL && nwid_parent == NULL) || (nwid_cont == NULL && nwid_parent != NULL));
 
 	int total_used = 0;
-	while (true) {
+	for (;;) {
 		NWidgetBase *sub_widget = NULL;
 		bool fill_sub = false;
 		int num_used = MakeNWidget(parts, count - total_used, &sub_widget, &fill_sub, biggest_index);

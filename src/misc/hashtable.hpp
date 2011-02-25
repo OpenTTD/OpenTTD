@@ -67,7 +67,7 @@ struct CHashTableSlotT
 			return true;
 		}
 		Titem_ *pItem = m_pFirst;
-		while (true) {
+		for (;;) {
 			if (pItem == NULL) {
 				return false;
 			}

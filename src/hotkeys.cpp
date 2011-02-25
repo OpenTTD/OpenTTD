@@ -90,7 +90,7 @@ static uint16 ParseKeycode(const char *start, const char *end)
 {
 	assert(start <= end);
 	uint16 keycode = 0;
-	while (true) {
+	for (;;) {
 		const char *cur = start;
 		while (*cur != '+' && cur != end) cur++;
 		uint16 code = ParseCode(start, cur);

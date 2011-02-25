@@ -675,7 +675,7 @@ static char *FormatString(char *buff, const char *str_arg, int64 *argv, const in
 	std::stack<const char *> str_stack;
 	str_stack.push(str_arg);
 
-	while (true) {
+	for (;;) {
 		while (!str_stack.empty() && (b = Utf8Consume(&str_stack.top())) == '\0') {
 			str_stack.pop();
 		}

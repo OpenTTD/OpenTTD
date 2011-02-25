@@ -379,7 +379,7 @@ static bool GunzipFile(const ContentInfo *ci)
 		ret = false;
 	} else {
 		byte buff[8192];
-		while (1) {
+		for (;;) {
 			int read = gzread(fin, buff, sizeof(buff));
 			if (read == 0) {
 				/* If gzread() returns 0, either the end-of-file has been

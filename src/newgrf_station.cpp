@@ -151,7 +151,7 @@ static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool ch
 	if (check_type) orig_type = GetCustomStationSpecIndex(tile);
 	if (check_axis) orig_axis = GetRailStationAxis(tile);
 
-	while (true) {
+	for (;;) {
 		TileIndex new_tile = TILE_ADD(tile, delta);
 
 		if (!IsTileType(new_tile, MP_STATION) || GetStationIndex(new_tile) != sid) break;

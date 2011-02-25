@@ -761,7 +761,7 @@ int SlIterateArray()
 	 * we must have read in all the data, so we must be at end of current block. */
 	if (_next_offs != 0 && _sl.reader->GetSize() != _next_offs) SlErrorCorrupt("Invalid chunk size");
 
-	while (true) {
+	for (;;) {
 		uint length = SlReadArrayLength();
 		if (length == 0) {
 			_next_offs = 0;

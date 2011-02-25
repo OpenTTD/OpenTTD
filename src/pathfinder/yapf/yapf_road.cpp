@@ -107,7 +107,7 @@ public:
 		/* start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment */
 		TileIndex tile = n.m_key.m_tile;
 		Trackdir trackdir = n.m_key.m_td;
-		while (true) {
+		for (;;) {
 			/* base tile cost depending on distance between edges */
 			segment_cost += Yapf().OneTileCost(tile, trackdir);
 

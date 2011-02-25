@@ -565,7 +565,7 @@ bool ExpressionAnd(Lexer *lexer, StringSet *defines, bool verbose)
 {
 	bool value = ExpressionDefined(lexer, defines, verbose);
 
-	while (true) {
+	for (;;) {
 		if (lexer->GetToken() != TOKEN_AND) return value;
 		if (verbose) fprintf(stderr, " && ");
 		lexer->Lex();
@@ -584,7 +584,7 @@ bool ExpressionOr(Lexer *lexer, StringSet *defines, bool verbose)
 {
 	bool value = ExpressionAnd(lexer, defines, verbose);
 
-	while (true) {
+	for (;;) {
 		if (lexer->GetToken() != TOKEN_OR) return value;
 		if (verbose) fprintf(stderr, " || ");
 		lexer->Lex();

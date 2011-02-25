@@ -130,7 +130,7 @@ public:
 		Yapf().PfSetStartupNodes();
 		bool bDestFound = true;
 
-		while (true) {
+		for (;;) {
 			m_num_steps++;
 			Node *n = m_nodes.GetBestOpenNode();
 			if (n == NULL) {

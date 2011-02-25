@@ -97,7 +97,7 @@ static void WINAPI CheckForConsoleInput()
 #else
 	DWORD nb;
 	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
-	while (true) {
+	for (;;) {
 		ReadFile(hStdin, _win_console_thread_buffer, lengthof(_win_console_thread_buffer), &nb, NULL);
 		/* Signal input waiting that input is read and wait for it being handled
 		 * SignalObjectAndWait() should be used here, but it's unsupported in Win98< */
