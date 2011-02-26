@@ -450,6 +450,11 @@ static void SlNullPointers()
 {
 	_sl.action = SLA_NULL;
 
+	/* We don't want any savegame conversion code to run
+	 * during NULLing; especially those that try to get
+	 * pointers from other pools. */
+	_sl_version = SAVEGAME_VERSION;
+
 	DEBUG(sl, 1, "Nulling pointers");
 
 	FOR_ALL_CHUNK_HANDLERS(ch) {
