@@ -519,7 +519,7 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Käyttökatekuvaaja
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Liikevoittokuvaaja
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Tulokuvaaja
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Rahtia kuljetettu (yksikköä)
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Yhtiön suoritearvio (enimmäisarvio=1000)

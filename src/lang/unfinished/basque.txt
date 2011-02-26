@@ -1018,6 +1018,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Udaletx
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ezer ez
+STR_FUNDING_ONLY                                                :Finantzazioa bakarrik
 STR_NUM_VERY_LOW                                                :Oso baxua
 STR_NUM_LOW                                                     :Baxua
 STR_NUM_NORMAL                                                  :Normala
@@ -1926,6 +1927,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... zubi
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Zubia mapatik kanpo amaituko zuen
 
 # Tunnel related errors
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel luzeegia
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... objektu gehiegi daude
