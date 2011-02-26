@@ -22,6 +22,7 @@ private:
 	void *global_pointer;    ///< Can be set by who ever initializes Squirrel
 	SQPrintFunc *print_func; ///< Points to either NULL, or a custom print handler
 	bool crashed;            ///< True if the squirrel script made an error.
+	int overdrawn_ops;       ///< The amount of operations we have overdrawn.
 
 	/**
 	 * The internal RunError handler. It looks up the real error and calls RunError with it.

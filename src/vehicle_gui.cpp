@@ -795,7 +795,12 @@ struct RefitWindow : public Window {
 				this->click_x = GetClickPosition(pt.x - nwi->pos_x);
 				this->SetSelectedVehicles(pt.x - nwi->pos_x);
 				this->SetWidgetDirty(VRW_VEHICLE_PANEL_DISPLAY);
-				if (!_ctrl_pressed) SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+				if (!_ctrl_pressed) {
+					SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+				} else {
+					/* The vehicle selection has changed. */
+					this->InvalidateData(2);
+				}
 				break;
 			}
 

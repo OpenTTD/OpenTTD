@@ -326,7 +326,7 @@ void AfterLoadVehicles(bool part_of_load)
 					rv->subtype = 0;
 					rv->SetArticulatedPart();
 				} else {
-					NOT_REACHED();
+					SlErrorCorrupt("Invalid road vehicle subtype");
 				}
 			}
 		}
