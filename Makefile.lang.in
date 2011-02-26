@@ -89,7 +89,7 @@ depend:
 
 clean:
 	$(E) '$(STAGE) Cleaning up language files'
-	$(Q)rm -f strgen.o string.o table/strings.h $(STRGEN) $(LANGS) $(LANGS:%=$(BIN_DIR)/lang/%) lang/english.* $(ENDIAN_TARGETS)
+	$(Q)rm -f strgen.o string.o alloc_func.o getoptdata.o table/strings.h $(STRGEN) $(LANGS) $(LANGS:%=$(BIN_DIR)/lang/%) lang/english.* $(ENDIAN_TARGETS)
 
 mrproper: clean
 	$(Q)rm -rf $(BIN_DIR)/lang
