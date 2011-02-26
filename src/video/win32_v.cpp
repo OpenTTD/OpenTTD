@@ -224,7 +224,7 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 	}
 }
 
-static bool MakeWindow(bool full_screen)
+bool VideoDriver_Win32::MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;
 
@@ -259,11 +259,11 @@ static bool MakeWindow(bool full_screen)
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL) {
 			RECT r;
 			GetWindowRect(GetDesktopWindow(), &r);
-			return _video_driver->ChangeResolution(r.right - r.left, r.bottom - r.top);
+			return this->ChangeResolution(r.right - r.left, r.bottom - r.top);
 		}
 
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
-			MakeWindow(false);  // don't care about the result
+			this->MakeWindow(false);  // don't care about the result
 			return false;  // the request failed
 		}
 	} else if (_wnd.fullscreen) {
@@ -646,7 +646,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				if (active && minimized) {
 					/* Restore the game window */
 					ShowWindow(hwnd, SW_RESTORE);
-					MakeWindow(true);
+					static_cast<VideoDriver_Win32 *>(_video_driver)->MakeWindow(true);
 				} else if (!active && !minimized) {
 					/* Minimise the window and restore desktop */
 					ShowWindow(hwnd, SW_MINIMIZE);
@@ -800,7 +800,7 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 	_wnd.height_org = _cur_resolution.height;
 
 	AllocateDibSection(_cur_resolution.width, _cur_resolution.height);
-	MakeWindow(_fullscreen);
+	this->MakeWindow(_fullscreen);
 
 	MarkWholeScreenDirty();
 
@@ -915,10 +915,10 @@ bool VideoDriver_Win32::ChangeResolution(int w, int h)
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
 
-	return MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
+	return this->MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
 }
 
 bool VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 {
-	return MakeWindow(full_screen);
+	return this->MakeWindow(full_screen);
 }

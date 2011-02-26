@@ -28,6 +28,8 @@ public:
 
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
 	/* virtual */ const char *GetName() const { return "win32"; }
+
+	bool MakeWindow(bool full_screen);
 };
 
 class FVideoDriver_Win32: public VideoDriverFactory<FVideoDriver_Win32> {

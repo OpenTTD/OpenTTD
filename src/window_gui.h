@@ -17,6 +17,7 @@
 #include "company_type.h"
 #include "tile_type.h"
 #include "widget_type.h"
+#include "core/smallvec_type.hpp"
 
 /** State of handling an event. */
 enum EventState {
@@ -220,6 +221,8 @@ protected:
 	void InitializeData(const WindowDesc *desc, WindowNumber window_number);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
+
+	SmallVector<int, 4> scheduled_invalidation_data;  ///< Data of scheduled OnInvalidateData() calls.
 
 public:
 	Window();
@@ -436,6 +439,28 @@ public:
 	{
 		this->SetDirty();
 		this->OnInvalidateData(data);
+	}
+
+	/**
+	 * Schedule a invalidation call for next redraw.
+	 * Important for asynchronous invalidation from commands.
+	 * @param data The data to invalidate with
+	 */
+	void ScheduleInvalidateData(int data = 0)
+	{
+		this->SetDirty();
+		*this->scheduled_invalidation_data.Append() = data;
+	}
+
+	/**
+	 * Process all scheduled invalidations.
+	 */
+	void ProcessScheduledInvalidations()
+	{
+		for (int *data = this->scheduled_invalidation_data.Begin(); this->window_class != WC_INVALID && data != this->scheduled_invalidation_data.End(); data++) {
+			this->OnInvalidateData(*data);
+		}
+		this->scheduled_invalidation_data.Clear();
 	}
 
 	/*** Event handling ***/

@@ -74,7 +74,8 @@ static uint16 ParseCode(const char *start, const char *end)
 	}
 	if (end - start == 1) {
 		if (*start >= 'a' && *start <= 'z') return *start - ('a'-'A');
-		return *start;
+		/* Ignore invalid keycodes */
+		if (*(uint8*)start < 128) return *start;
 	}
 	return 0;
 }
@@ -99,10 +100,6 @@ static uint16 ParseKeycode(const char *start, const char *end)
 			if (code & ~WKC_SPECIAL_KEYS) return 0;
 			keycode |= code;
 		} else {
-			/* Ignore invalid keycodes */
-			if (code >= 128) {
-				return 0;
-			}
 			/* Ignore the code if it has more then 1 letter. */
 			if (keycode & ~WKC_SPECIAL_KEYS) return 0;
 			keycode |= code;
