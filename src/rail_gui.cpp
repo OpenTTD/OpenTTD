@@ -1004,7 +1004,7 @@ public:
 			NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BRSW_MATRIX);
 			matrix->SetScrollbar(this->vscroll2);
 			matrix->SetCount(_railstation.station_count);
-			matrix->SetClicked(0);
+			matrix->SetClicked(_railstation.station_type);
 		}
 	}
 
