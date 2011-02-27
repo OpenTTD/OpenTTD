@@ -30,6 +30,7 @@
 #include "network.h"
 #include "network_base.h"
 #include "network_client.h"
+#include "../core/backup_type.hpp"
 
 #include "table/strings.h"
 
@@ -1155,6 +1156,7 @@ void NetworkClientRequestMove(CompanyID company_id, const char *pass)
 
 void NetworkClientsToSpectators(CompanyID cid)
 {
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	/* If our company is changing owner, go to spectators */
 	if (cid == _local_company) SetLocalCompany(COMPANY_SPECTATOR);
 
@@ -1164,6 +1166,8 @@ void NetworkClientsToSpectators(CompanyID cid)
 		NetworkTextMessage(NETWORK_ACTION_COMPANY_SPECTATOR, CC_DEFAULT, false, ci->client_name);
 		ci->client_playas = COMPANY_SPECTATOR;
 	}
+
+	cur_company.Restore();
 }
 
 void NetworkUpdateClientName()
