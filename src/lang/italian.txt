@@ -267,8 +267,8 @@ STR_SORT_BY_PRODUCTION                                          :Produzione
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Trasportato
 STR_SORT_BY_NUMBER                                              :Numero
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Guadagno dell'anno scorso
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Guadagno di quest'anno
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profitto dell'anno scorso
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profitto di quest'anno
 STR_SORT_BY_AGE                                                 :Età
 STR_SORT_BY_RELIABILITY                                         :Affidabilità
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacità per tipo di carico
@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Costruis
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Costruisci strade
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Costruisci trasporti su acqua
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruisci aeroporti
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Apri la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra suoni/musica
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra l'ultimo messaggio/notizia, mostra le opzioni dei messaggi
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni area terreno, console, debug IA, screenshot, informazioni su OpenTTD
@@ -566,7 +566,7 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Visualiz
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veicoli:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stazioni:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Guadagno min:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profitto min:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Incasso min:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Incasso max:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Consegnato:
@@ -575,9 +575,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Denaro:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prestito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totale:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numero di veicoli che hanno realizzato un guadagnno lo scorso anno. Sono inclusi automezzi, treni, navi e aeromobili.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numero di veicoli che hanno realizzato un profitto lo scorso anno. Sono inclusi automezzi, treni, navi e aeromobili.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numero di blocchi stazione serviti di recente. Sono contate tutte le parti di una stazione (es. stazione ferroviaria, stazione autobus, aeroporto), anche se connesse insieme a formare un'unica stazione
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Guadagno del veicolo con l'incasso minore (sono considerati solo i veicoli più vecchi di due anni)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitto del veicolo con l'incasso minore (sono considerati solo i veicoli più vecchi di due anni)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il minimo profitto degli ultimi 12 trimestri
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il massimo profitto degli ultimi 12 trimestri
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unità di merce consegnate negli ultimi quattro trimestri
@@ -825,7 +825,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} si è perso
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profitto di {VEHICLE} per l'anno scorso è stato {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato a causa del malfunzionamento di un ordine di riadattamento
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato a causa del fallimento di un ordine di riadattamento
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} non riuscito
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o o a} {STRING} disponibile!
@@ -1069,8 +1069,8 @@ STR_SUBSIDY_X4                                                  :x4
 
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Molto pianeggiante
 STR_TERRAIN_TYPE_FLAT                                           :Pianeggiante
-STR_TERRAIN_TYPE_HILLY                                          :{G=m}Collinare
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :{G=m}Montuoso
+STR_TERRAIN_TYPE_HILLY                                          :Collinoso
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montuoso
 
 STR_ECONOMY_STEADY                                              :Stabile
 STR_ECONOMY_FLUCTUATING                                         :Fluttuante
@@ -1458,10 +1458,10 @@ STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selezion
 
 STR_LIVERY_DEFAULT                                              :Livrea standard
 STR_LIVERY_STEAM                                                :Locomotiva a vapore
-STR_LIVERY_DIESEL                                               :Locomotore diesel
-STR_LIVERY_ELECTRIC                                             :Locomotore elettrico
-STR_LIVERY_MONORAIL                                             :Locomotore monorotaia
-STR_LIVERY_MAGLEV                                               :Locomotore maglev
+STR_LIVERY_DIESEL                                               :Locomotiva diesel
+STR_LIVERY_ELECTRIC                                             :Locomotiva elettrica
+STR_LIVERY_MONORAIL                                             :Locomotiva monorotaia
+STR_LIVERY_MAGLEV                                               :Locomotiva maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carrozza passeggeri (V)
@@ -2507,7 +2507,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha modif
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe non funzionare
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe non riuscire
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causato un ciclo infinito nel callback di produzione
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -3155,9 +3155,9 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fine degli 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}No-stop
 STR_ORDER_GO_TO                                                 :Vai a
-STR_ORDER_GO_NON_STOP_TO                                        :Vai senza fermarti a
+STR_ORDER_GO_NON_STOP_TO                                        :Vai no-stop a
 STR_ORDER_GO_VIA                                                :Passa per
-STR_ORDER_GO_NON_STOP_VIA                                       :Passa senza fermarti per
+STR_ORDER_GO_NON_STOP_VIA                                       :Passa no-stop per
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambia la modalità di fermata alle stazioni intermedie relativa all'ordine selezionato
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi carico
@@ -3933,61 +3933,61 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elett
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elettrica)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Carrozza passeggeri
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vagone postale
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Carro per trasporto carbone
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Carro per carbone
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Vagone cisterna per petrolio
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagone per trasporto bestiame
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagone bestiame
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vagone beni
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Tramoggia per grano
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Carro per trasporto legname
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Tramoggia per ferro
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Carro per trasporto acciaio
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Carro per acciaio
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Vagone blindato
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagone alimentari
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Carro per trasporto carta
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Tramoggia per rame
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Vagone cisterna per acqua
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Carro per trasporto frutta
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Carrello gomma
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Carro per trasporto zucchero
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Carro per frutta
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Carro per gomma
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Tramoggia per toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagone bollicine
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Vagone cisterna Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Vagone cisterna per Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagone caramelle
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagone giocattoli
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Carrello batterie
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Carrello bibite frizzanti
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Carrello plastica
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Carro per batterie
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Carro per bibite frizzanti
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Carro per plastica
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elettrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elettrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Carrozza passeggeri
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Vagone postale
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Carrello carbone
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Vagone cisterna petrolio
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Carro per carbone
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Vagone cisterna per petrolio
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Vagone bestiame
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Vagone beni
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Tramoggia per grano
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Carrello legname
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Tramoggia per ferro
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Carrello acciaio
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Carro per acciaio
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Vagone blindato
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagone alimentari
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Carrello carta
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Tramoggia per rame
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Vagone cisterna acqua
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Carrello frutta
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Carrello gomma
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Carrello zucchero
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Vagone cisterna per acqua
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Carro per frutta
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Carro per gomma
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Tramoggia per toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagone bollicine
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Vagone cisterna Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Vagone cisterna per Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Vagone caramelle
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagone giocattoli
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Carrello batterie
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Carrello bibite frizzanti
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Carrello plastica
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Carro per batterie
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Carro per bibite frizzanti
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Carro per plastica
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elettrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elettrica)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elettrica)
@@ -3995,31 +3995,31 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Carrozza passeggeri
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Vagone postale
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Carrello carbone
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Vagone cisterna petrolio
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Carro per carbone
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Vagone cisterna per petrolio
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Vagone bestiame
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Vagone beni
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Tramoggia per grano
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Carrello legname
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Carro per legname
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Tramoggia per ferro
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Carrello acciaio
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Carro per acciaio
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Vagone blindato
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagone alimentari
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Carrello carta
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Carro per carta
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Tramoggia per rame
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vagone cisterna acqua
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Carrello frutta
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Carrello gomma
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Carrello zucchero
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vagone cisterna per acqua
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Carro per frutta
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Carro per gomma
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Carro per zucchero
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Tramoggia per zucchero filato
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Tramoggia per toffee
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagone bollicine
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Vagone cisterna Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Vagone cisterna per Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Vagone caramelle
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagone giocattoli
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Carrello batterie
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Carrello bibite frizzanti
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Carrello plastica
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Carro per batterie
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Carro per bibite frizzanti
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Carro per plastica
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Bus MPS Regal
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Bus Hereford Leopard
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Bus Foster

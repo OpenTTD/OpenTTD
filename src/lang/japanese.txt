@@ -763,8 +763,8 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}飛行機墜落事故発生！{}燃料切れにより飛行機が墜落し、搭乗していた{COMMA}人が死亡。
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}{STATION}で飛行船が墜落！
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}自動車がUFOとの衝突により破壊！
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}{TOWN}付近で石油精製所が爆発！
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}自動車がUFOとの衝突により壊れた！
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}{TOWN}付近で石油精製所が爆発した！
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}{TOWN}工場が破壊！状況が不審
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}{TOWN}付近にUFOが着陸！
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}炭鉱の地盤沈下によって{TOWN}が壊れた！
