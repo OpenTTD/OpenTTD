@@ -2455,6 +2455,7 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 			buf->ReadWord();
 			break;
 
+		case 0x11:
 		case 0x1A:
 		case 0x1C:
 		case 0x1D:
@@ -2485,7 +2486,6 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 			break;
 		}
 
-		case 0x11:
 		case 0x16:
 			for (byte j = 0; j < 3; j++) buf->ReadByte();
 			break;
