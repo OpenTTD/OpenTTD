@@ -765,60 +765,60 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}{STATION}で飛行船が墜落！
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}自動車がUFOとの衝突により壊れた！
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}{TOWN}付近で石油精製所が爆発した！
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}{TOWN}工場が破壊！状況が不審
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}{TOWN}付近の工場が、原因不明の崩壊！
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}{TOWN}付近にUFOが着陸！
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}炭鉱の地盤沈下によって{TOWN}が壊れた！
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}洪水！{}浸水後に{COMMA}人が死亡
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}{TOWN}付近の炭鉱が、地盤沈下の影響で崩壊！
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}洪水発生！{}この洪水により、少なくとも{COMMA}人が死亡、もしくは行方不明。
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}交通会社が経営困難！
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING}はすぐにパフォーマンス改善が無いと売却および破産の危機！
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}交通会社の合併！
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}が{STRING}に売却、価格：{CURRENCY}！
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}運送会社にトラブル発生！
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING}はすぐに業績改善をしないと、倒産または買収されてしまいます！
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}運送会社が合併！
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}が{STRING}に{CURRENCY}で会社を売却！
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}破産！
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING}が閉鎖、債権者が資産を販売！
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}新しい交通会社が開業！
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}が{TOWN}の付近に建設を開始します！
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING}が{STRING}に買収！
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}（社長）
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING}が倒産！債権者が資産を売却！
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}新しい運送会社が開業！
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}が{TOWN}付近で建設を開始！
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{1:STRING}が{0:STRING}を買収！
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}（経営者）
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING}が{TOWN}という町の建設をスポンサーした!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{1:TOWN}が{0:STRING}の出資により新しく設立！
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}町に工事中！
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}町に植林中！
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}付近に建設！
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}付近に植林！
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING}が間近く閉鎖！
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}供給不足によって{STRING}が間近く閉鎖！
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}周辺の森林不足によって{STRING}が間近く閉鎖！
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING}がまもなく閉鎖！
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING}が配給の問題により、まもなく閉鎖！
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING}が周辺の森林の不足により、まもなく閉鎖！
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}欧州通貨統合！{}{}この国は今からユーロを通貨として使用になります。
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}世界中不景気！{}{}経済がスランプに陥る、アナリストの不安説！
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}スランプの終わり！{}{}経済が上昇気流、産業が好転！
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}ヨーロッパの通貨と併合！{}{}この地域は、ユーロを通常業務の通貨として導入！
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}世界的な不況！{}{}金融の専門家が経済の落ち込みを危惧！
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}不況の終わり！{}{}経済が回復し、産業の取引量が増強！
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}の生産量が増えました。
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}で新しい石炭層の発見！{}予報：生産量2倍！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY}で新しい油層の発見！{}予報：生産量 2倍！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}で改良した農法。予報：生産量 2倍！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}の生産量が増加！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}で新しい石炭層の発見！{}生産量が二倍になる予想！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY}で新しい油層の発見！{}生産量が二倍になる予想！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}の農業経営が改善！生産量が二倍になる予想！
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}で{0:STRING}の生産量が{2:COMMA}％増加！
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}の生産量が50％縮小
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}で虫がついている！{} 生産量が50％縮小
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}で{0:STRING}の生産量が{2:COMMA}％縮小！
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}の生産量が50％減少。
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}で害虫が大量発生！{} 生産量が50％減少。
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}で{0:STRING}の生産量が{2:COMMA}％減少！
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} は電車庫内に停車しています
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} は車庫で待機しています
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} は造船所で待機しています。
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} は格納庫の中に待機しています。
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} は電車庫に停車しました。
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} は自動車庫に停車しました。
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} は造船所に停船しました。
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} は航空機格納庫に停船しました。
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}の指令が少なさ過ぎます
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} は無効な指令があります。
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} は重複している指令があります。
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} の指令の中で、無効な駅があります。
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}への命令が少なすぎます。
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} に無効な命令があります。
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} に重複した命令があります。
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} に無効な駅を含む命令があります。
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} は古くなっています
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} はとても古くなっています
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} はとても古くなっていて、すばやく取り替えなければなりません。
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} は古くなっています。
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} はとても古くなっています。
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} はとても古くなっているため、早急に取り替える必要があります。
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} は目的地への経路を見つけられません。
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} が迷っています。
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
