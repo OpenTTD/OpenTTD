@@ -254,7 +254,7 @@ STR_COLOUR_GREY                                                 :Szürke
 STR_COLOUR_WHITE                                                :Fehér
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mf/h
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mi/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 

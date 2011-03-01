@@ -702,7 +702,7 @@ STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}ไม�
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}เรียกใช้งานทั้งหมด
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}แสดงความสูง
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}ไม่แสดงอุตสาหกรรมใดๆบนแผนที่
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}แสดงทุกอุตสาหกรรมบนแผนที่
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}เปิดการแสดงอุตสาหกรรมทุกชนิดบนแผนที่
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}เปลี่ยนการแสดง heightmap
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}ไม่แสดงทรัพย์สินของบริษัทใดๆบนแผนที่
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}แสดงทรัพย์สินของทุกบริษัทบนแผนที่
