@@ -22,6 +22,7 @@
 
 #ifdef WIN32
 # include <shellapi.h>
+# include "core/mem_func.hpp"
 #endif
 
 IniFile::IniFile(const char * const *list_group_names) : IniLoadFile(list_group_names)
