@@ -14,6 +14,8 @@
 #include "viewport_func.h"
 #include "landscape.h"
 #include "spritecache.h"
+#include "core/alloc_func.hpp"
+#include "core/mem_func.hpp"
 
 
 /**
@@ -107,4 +109,18 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 			DrawSprite(image, pal, x + child_offset.x + offs_x, y + child_offset.y + offs_y);
 		}
 	}
+}
+
+/** Create a copy of an existing DrawTileSeqStruct array. */
+const DrawTileSeqStruct *CopyDrawTileSeqStruct(const DrawTileSeqStruct *dtss)
+{
+	const DrawTileSeqStruct *element;
+
+	size_t count = 1; // 1 for the terminator
+	foreach_draw_tile_seq(element, dtss) count++;
+
+	DrawTileSeqStruct *copy = MallocT<DrawTileSeqStruct>(count);
+	MemCpyT(copy, dtss, count);
+
+	return copy;
 }

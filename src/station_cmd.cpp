@@ -92,9 +92,10 @@ CommandCost GetStationAround(TileArea ta, StationID closest_station, T **st)
 	TILE_AREA_LOOP(tile_cur, ta) {
 		if (IsTileType(tile_cur, MP_STATION)) {
 			StationID t = GetStationIndex(tile_cur);
+			if (!T::IsValidID(t)) continue;
 
 			if (closest_station == INVALID_STATION) {
-				if (T::IsValidID(t)) closest_station = t;
+				closest_station = t;
 			} else if (closest_station != t) {
 				return_cmd_error(STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING);
 			}
