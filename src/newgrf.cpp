@@ -1217,7 +1217,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 					MapSpriteMappingRecolour(&dts->ground);
 
-					while (buf->HasData()) {
+					for (;;) {
 						/* no relative bounding box support */
 						dts->seq = ReallocT(const_cast<DrawTileSeqStruct *>(dts->seq), ++seq_count);
 						DrawTileSeqStruct *dtss = const_cast<DrawTileSeqStruct *>(&dts->seq[seq_count - 1]);
