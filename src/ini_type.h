@@ -40,27 +40,33 @@ struct IniGroup {
 	char *name;          ///< name of group
 	char *comment;       ///< comment for group
 
-	IniGroup(struct IniFile *parent, const char *name, size_t len = 0);
+	IniGroup(struct IniLoadFile *parent, const char *name, size_t len = 0);
 	~IniGroup();
 
 	IniItem *GetItem(const char *name, bool create);
 	void Clear();
 };
 
-/** The complete ini file. */
-struct IniFile {
+/** Ini file that only supports loading. */
+struct IniLoadFile {
 	IniGroup *group;                      ///< the first group in the ini
 	IniGroup **last_group;                ///< the last group in the ini
 	char *comment;                        ///< last comment in file
 	const char * const *list_group_names; ///< NULL terminated list with group names that are lists
 
-	IniFile(const char * const *list_group_names = NULL);
-	~IniFile();
+	IniLoadFile(const char * const *list_group_names = NULL);
+	virtual ~IniLoadFile();
 
 	IniGroup *GetGroup(const char *name, size_t len = 0);
 	void RemoveGroup(const char *name);
 
 	void LoadFromDisk(const char *filename);
+};
+
+/** Ini file that supports both loading and saving. */
+struct IniFile : IniLoadFile {
+	IniFile(const char * const *list_group_names = NULL);
+
 	bool SaveToDisk(const char *filename);
 };
 

@@ -568,6 +568,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ini_load.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\landscape.cpp"
 				>
 			</File>

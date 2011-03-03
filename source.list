@@ -33,6 +33,7 @@ heightmap.cpp
 highscore.cpp
 hotkeys.cpp
 ini.cpp
+ini_load.cpp
 landscape.cpp
 map.cpp
 misc.cpp
