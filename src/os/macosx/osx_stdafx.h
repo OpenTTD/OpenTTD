@@ -32,7 +32,7 @@
 #endif
 
 /* Check for mismatching 'architectures' */
-#if !defined(STRGEN) && ((__LP64__ && !defined(_SQ64)) || (!__LP64__ && defined(_SQ64)))
+#if !defined(STRGEN) && !defined(SETTINGSGEN) && ((__LP64__ && !defined(_SQ64)) || (!__LP64__ && defined(_SQ64)))
 #	error "Compiling 64 bits without _SQ64 set! (or vice versa)"
 #endif
 

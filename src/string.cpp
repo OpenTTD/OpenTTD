@@ -151,11 +151,11 @@ char *strecpy(char *dst, const char *src, const char *last)
 	*dst = '\0';
 
 	if (dst == last && *src != '\0') {
-#ifdef STRGEN
+#if defined(STRGEN) || defined(SETTINGSGEN)
 		error("String too long for destination buffer");
-#else /* STRGEN */
+#else /* STRGEN || SETTINGSGEN */
 		DEBUG(misc, 0, "String too long for destination buffer");
-#endif /* STRGEN */
+#endif /* STRGEN || SETTINGSGEN */
 	}
 	return dst;
 }

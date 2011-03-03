@@ -39,11 +39,15 @@ getoptdata.o: $(SRC_DIR)/misc/getoptdata.cpp $(SRC_DIR)/misc/getoptdata.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/misc/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
+string.o: $(SRC_DIR)/string.cpp endian_host.h
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
+
 ini_load.o: $(SRC_DIR)/ini_load.cpp $(SRC_DIR)/core/alloc_func.hpp $(SRC_DIR)/core/mem_func.hpp $(SRC_DIR)/ini_type.h $(SRC_DIR)/string_func.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/misc/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
-$(SETTINGSGEN): alloc_func.o ini_load.o settingsgen.o getoptdata.o
+$(SETTINGSGEN): alloc_func.o ini_load.o settingsgen.o getoptdata.o string.o
 	$(E) '$(STAGE) Compiling and Linking $@'
 	$(Q)$(CXX_BUILD) $(LDFLAGS_BUILD) $^ -o $@
 
