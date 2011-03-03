@@ -61,6 +61,22 @@ struct IniLoadFile {
 	void RemoveGroup(const char *name);
 
 	void LoadFromDisk(const char *filename);
+
+	/**
+	 * Open the INI file.
+	 * @param filename Name of the INI file.
+	 * @param size [out] Size of the opened file.
+	 * @return File handle of the opened file, or \c NULL.
+	 */
+	virtual FILE *OpenFile(const char *filename, size_t *size) = 0;
+
+	/**
+	 * Report an error about the file contents.
+	 * @param pre    Prefix text of the \a buffer part.
+	 * @param buffer Part of the file with the error.
+	 * @param post   Suffix text of the \a buffer part.
+	 */
+	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post) = 0;
 };
 
 /** Ini file that supports both loading and saving. */
@@ -68,6 +84,9 @@ struct IniFile : IniLoadFile {
 	IniFile(const char * const *list_group_names = NULL);
 
 	bool SaveToDisk(const char *filename);
+
+	virtual FILE *OpenFile(const char *filename, size_t *size);
+	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post);
 };
 
 #endif /* INI_TYPE_H */

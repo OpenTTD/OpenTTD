@@ -12,10 +12,8 @@
 #include "stdafx.h"
 #include "core/alloc_func.hpp"
 #include "core/mem_func.hpp"
-#include "debug.h"
 #include "ini_type.h"
 #include "string_func.h"
-#include "fileio_func.h"
 
 /**
  * Construct a new in-memory item of an Ini file.
@@ -205,19 +203,7 @@ void IniLoadFile::LoadFromDisk(const char *filename)
 	uint comment_alloc = 0;
 
 	size_t end;
-	/*
-	 * Now we are going to open a file that contains no more than simple
-	 * plain text. That would raise the question: "why open the file as
-	 * if it is a binary file?". That's simple... Microsoft, in all
-	 * their greatness and wisdom decided it would be useful if ftell
-	 * is aware of '\r\n' and "sees" that as a single character. The
-	 * easiest way to test for that situation is by searching for '\n'
-	 * and decrease the value every time you encounter a '\n'. This will
-	 * thus also make ftell "see" the '\r' when it is not there, so the
-	 * result of ftell will be highly unreliable. So to work around this
-	 * marvel of wisdom we have to open in as a binary file.
-	 */
-	FILE *in = FioFOpenFile(filename, "rb", DATA_DIR, &end);
+	FILE *in = this->OpenFile(filename, &end);
 	if (in == NULL) return;
 
 	end += ftell(in);
@@ -253,7 +239,7 @@ void IniLoadFile::LoadFromDisk(const char *filename)
 		/* it's a group? */
 		if (s[0] == '[') {
 			if (e[-1] != ']') {
-				ShowInfoF("ini: invalid group name '%s'", buffer);
+				this->ReportFileError("ini: invalid group name '", buffer, "'");
 			} else {
 				e--;
 			}
@@ -296,7 +282,7 @@ void IniLoadFile::LoadFromDisk(const char *filename)
 			item->value = (!quoted && e == t) ? NULL : strndup(t, e - t);
 		} else {
 			/* it's an orphan item */
-			ShowInfoF("ini: '%s' outside of group", buffer);
+			this->ReportFileError("ini: '", buffer, "' outside of group");
 		}
 	}
 
