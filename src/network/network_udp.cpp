@@ -369,7 +369,6 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
 
 	for (i = 0; i < num_grfs; i++) {
-		char *unknown_name;
 		char name[NETWORK_GRF_NAME_LENGTH];
 		GRFIdentifier c;
 
@@ -380,12 +379,12 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 		 * and causes problems when showing the NewGRF list. */
 		if (StrEmpty(name)) continue;
 
-		/* Finds the fake GRFConfig for the just read GRF ID and MD5sum tuple.
+		/* Try to find the GRFTextWrapper for the name of this GRF ID and MD5sum tuple.
 		 * If it exists and not resolved yet, then name of the fake GRF is
 		 * overwritten with the name from the reply. */
-		unknown_name = FindUnknownGRFName(c.grfid, c.md5sum, false);
-		if (unknown_name != NULL && strcmp(unknown_name, UNKNOWN_GRF_NAME_PLACEHOLDER) == 0) {
-			ttd_strlcpy(unknown_name, name, NETWORK_GRF_NAME_LENGTH);
+		GRFTextWrapper *unknown_name = FindUnknownGRFName(c.grfid, c.md5sum, false);
+		if (unknown_name != NULL && strcmp(GetGRFStringFromGRFText(unknown_name->text), UNKNOWN_GRF_NAME_PLACEHOLDER) == 0) {
+			AddGRFTextToList(&unknown_name->text, name);
 		}
 	}
 }
@@ -398,12 +397,18 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 		/* Don't know the GRF, so mark game incompatible and the (possibly)
 		 * already resolved name for this GRF (another server has sent the
 		 * name of the GRF already */
-		AddGRFTextToList(&config->name, FindUnknownGRFName(config->ident.grfid, config->ident.md5sum, true));
+		config->name->Release();
+		config->name = FindUnknownGRFName(config->ident.grfid, config->ident.md5sum, true);
+		config->name->AddRef();
 		config->status = GCS_NOT_FOUND;
 	} else {
-		config->filename  = f->filename;
-		config->name      = DuplicateGRFText(f->name);
-		config->info      = f->info;
+		config->filename = f->filename;
+		config->name->Release();
+		config->name = f->name;
+		config->name->AddRef();
+		config->info->Release();
+		config->info = f->info;
+		config->info->AddRef();
 	}
 	SetBit(config->flags, GCF_COPY);
 }

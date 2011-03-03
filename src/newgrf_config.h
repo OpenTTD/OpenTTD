@@ -15,6 +15,7 @@
 #include "strings_type.h"
 #include "core/alloc_type.hpp"
 #include "core/smallmap_type.hpp"
+#include "misc/countedptr.hpp"
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -129,6 +130,14 @@ struct GRFParameterInfo {
 	void SetValue(struct GRFConfig *config, uint32 value);
 };
 
+/** Reference counted wrapper around a GRFText pointer. */
+struct GRFTextWrapper : public SimpleCountedObject {
+	struct GRFText *text; ///< The actual text
+
+	GRFTextWrapper();
+	~GRFTextWrapper();
+};
+
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : ZeroedMemoryAllocator {
 	GRFConfig(const char *filename = NULL);
@@ -138,8 +147,8 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFIdentifier ident;                           ///< grfid and md5sum to uniquely identify newgrfs
 	uint8 original_md5sum[16];                     ///< MD5 checksum of original file if only a 'compatible' file was loaded
 	char *filename;                                ///< Filename - either with or without full path
-	struct GRFText *name;                          ///< NOSAVE: GRF name (Action 0x08)
-	struct GRFText *info;                          ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
+	GRFTextWrapper *name;                          ///< NOSAVE: GRF name (Action 0x08)
+	GRFTextWrapper *info;                          ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
 	GRFError *error;                               ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
 	uint32 version;                                ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
@@ -198,7 +207,7 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 #ifdef ENABLE_NETWORK
 /* For communication about GRFs over the network */
 #define UNKNOWN_GRF_NAME_PLACEHOLDER "<Unknown>"
-char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
+GRFTextWrapper *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
 #endif /* ENABLE_NETWORK */
 
 #endif /* NEWGRF_CONFIG_H */
