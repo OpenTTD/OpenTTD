@@ -14,8 +14,9 @@
 
 /** Types of groups */
 enum IniGroupType {
-	IGT_VARIABLES = 0, ///< values of the form "landscape = hilly"
-	IGT_LIST      = 1, ///< a list of values, seperated by \n and terminated by the next group block
+	IGT_VARIABLES = 0, ///< Values of the form "landscape = hilly".
+	IGT_LIST      = 1, ///< A list of values, separated by \n and terminated by the next group block.
+	IGT_SEQUENCE  = 2, ///< A list of uninterpreted lines, terminated by the next group block.
 };
 
 /** A single "line" in an ini file. */
@@ -53,8 +54,9 @@ struct IniLoadFile {
 	IniGroup **last_group;                ///< the last group in the ini
 	char *comment;                        ///< last comment in file
 	const char * const *list_group_names; ///< NULL terminated list with group names that are lists
+	const char * const *seq_group_names;  ///< NULL terminated list with group names that are sequences.
 
-	IniLoadFile(const char * const *list_group_names = NULL);
+	IniLoadFile(const char * const *list_group_names = NULL, const char * const *seq_group_names = NULL);
 	virtual ~IniLoadFile();
 
 	IniGroup *GetGroup(const char *name, size_t len = 0, bool create_new = true);

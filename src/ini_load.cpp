@@ -65,12 +65,20 @@ IniGroup::IniGroup(IniLoadFile *parent, const char *name, size_t len) : next(NUL
 	*parent->last_group = this;
 	parent->last_group = &this->next;
 
-	if (parent->list_group_names == NULL) return;
-
-	for (uint i = 0; parent->list_group_names[i] != NULL; i++) {
-		if (strcmp(this->name, parent->list_group_names[i]) == 0) {
-			this->type = IGT_LIST;
-			return;
+	if (parent->list_group_names != NULL) {
+		for (uint i = 0; parent->list_group_names[i] != NULL; i++) {
+			if (strcmp(this->name, parent->list_group_names[i]) == 0) {
+				this->type = IGT_LIST;
+				return;
+			}
+		}
+	}
+	if (parent->seq_group_names != NULL) {
+		for (uint i = 0; parent->seq_group_names[i] != NULL; i++) {
+			if (strcmp(this->name, parent->seq_group_names[i]) == 0) {
+				this->type = IGT_SEQUENCE;
+				return;
+			}
 		}
 	}
 }
@@ -116,10 +124,14 @@ void IniGroup::Clear()
 
 /**
  * Construct a new in-memory Ini file representation.
- * @param list_group_names A NULL terminated list with groups that should be
- *                         loaded as lists instead of variables.
+ * @param list_group_names A \c NULL terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+ * @param seq_group_names  A \c NULL terminated list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
  */
-IniLoadFile::IniLoadFile(const char * const *list_group_names) : group(NULL), comment(NULL), list_group_names(list_group_names)
+IniLoadFile::IniLoadFile(const char * const *list_group_names, const char * const *seq_group_names) :
+		group(NULL),
+		comment(NULL),
+		list_group_names(list_group_names),
+		seq_group_names(seq_group_names)
 {
 	this->last_group = &this->group;
 }
@@ -222,8 +234,8 @@ void IniLoadFile::LoadFromDisk(const char *filename)
 		while (e > s && ((c = e[-1]) == '\n' || c == '\r' || c == ' ' || c == '\t')) e--;
 		*e = '\0';
 
-		/* skip comments and empty lines */
-		if (*s == '#' || *s == ';' || *s == '\0') {
+		/* Skip comments and empty lines outside IGT_SEQUENCE groups. */
+		if ((group == NULL || group->type != IGT_SEQUENCE) && (*s == '#' || *s == ';' || *s == '\0')) {
 			uint ns = comment_size + (e - s + 1);
 			uint a = comment_alloc;
 			/* add to comment */
@@ -253,6 +265,15 @@ void IniLoadFile::LoadFromDisk(const char *filename)
 				comment_size = 0;
 			}
 		} else if (group != NULL) {
+			if (group->type == IGT_SEQUENCE) {
+				/* A sequence group, use the line as item name without further interpretation. */
+				IniItem *item = new IniItem(group, buffer, e - buffer);
+				if (comment_size) {
+					item->comment = strndup(comment, comment_size);
+					comment_size = 0;
+				}
+				continue;
+			}
 			char *t;
 			/* find end of keyname */
 			if (*s == '\"') {
