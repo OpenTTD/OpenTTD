@@ -21,15 +21,31 @@
 #include "fileio_func.h"
 #include "fios.h"
 
+/** Create a new GRFTextWrapper. */
+GRFTextWrapper::GRFTextWrapper() :
+	text(NULL)
+{
+}
+
+/** Cleanup a GRFTextWrapper object. */
+GRFTextWrapper::~GRFTextWrapper()
+{
+	CleanUpGRFText(this->text);
+}
+
 /**
  * Create a new GRFConfig.
  * @param filename Set the filename of this GRFConfig to filename. The argument
  *   is copied so the original string isn't needed after the constructor.
  */
 GRFConfig::GRFConfig(const char *filename) :
+	name(new GRFTextWrapper()),
+	info(new GRFTextWrapper()),
 	num_valid_params(lengthof(param))
 {
 	if (filename != NULL) this->filename = strdup(filename);
+	this->name->AddRef();
+	this->info->AddRef();
 }
 
 /**
@@ -39,6 +55,8 @@ GRFConfig::GRFConfig(const char *filename) :
 GRFConfig::GRFConfig(const GRFConfig &config) :
 	ZeroedMemoryAllocator(),
 	ident(config.ident),
+	name(config.name),
+	info(config.info),
 	version(config.version),
 	min_loadable_version(config.min_loadable_version),
 	flags(config.flags & ~(1 << GCF_COPY)),
@@ -52,8 +70,8 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
 	if (config.filename != NULL) this->filename = strdup(config.filename);
-	this->name = DuplicateGRFText(config.name);
-	this->info = DuplicateGRFText(config.info);
+	this->name->AddRef();
+	this->info->AddRef();
 	if (config.error    != NULL) this->error    = new GRFError(*config.error);
 	for (uint i = 0; i < config.param_info.Length(); i++) {
 		if (config.param_info[i] == NULL) {
@@ -67,13 +85,13 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 /** Cleanup a GRFConfig object. */
 GRFConfig::~GRFConfig()
 {
-	/* GCF_COPY as in NOT strdupped/alloced the filename and info */
+	/* GCF_COPY as in NOT strdupped/alloced the filename */
 	if (!HasBit(this->flags, GCF_COPY)) {
 		free(this->filename);
-		CleanUpGRFText(this->info);
 		delete this->error;
 	}
-	CleanUpGRFText(this->name);
+	this->name->Release();
+	this->info->Release();
 
 	for (uint i = 0; i < this->param_info.Length(); i++) delete this->param_info[i];
 }
@@ -85,7 +103,7 @@ GRFConfig::~GRFConfig()
  */
 const char *GRFConfig::GetName() const
 {
-	const char *name = GetGRFStringFromGRFText(this->name);
+	const char *name = GetGRFStringFromGRFText(this->name->text);
 	return StrEmpty(name) ? this->filename : name;
 }
 
@@ -95,7 +113,7 @@ const char *GRFConfig::GetName() const
  */
 const char *GRFConfig::GetDescription() const
 {
-	return GetGRFStringFromGRFText(this->info);
+	return GetGRFStringFromGRFText(this->info->text);
 }
 
 /** Set the default value for all parameters as specified by action14. */
@@ -482,8 +500,12 @@ compatible_grf:
 				free(c->filename);
 				c->filename = strdup(f->filename);
 				memcpy(c->ident.md5sum, f->ident.md5sum, sizeof(c->ident.md5sum));
-				if (c->name == NULL) c->name = DuplicateGRFText(f->name);
-				if (c->info == NULL) c->info = DuplicateGRFText(f->info);
+				c->name->Release();
+				c->name = f->name;
+				c->name->AddRef();
+				c->info->Release();
+				c->info = f->name;
+				c->info->AddRef();
 				c->error = NULL;
 				c->version = f->version;
 				c->min_loadable_version = f->min_loadable_version;
@@ -646,7 +668,7 @@ const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8
 /** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
 struct UnknownGRF : public GRFIdentifier {
 	UnknownGRF *next;
-	char   name[NETWORK_GRF_NAME_LENGTH];
+	GRFTextWrapper *name;
 };
 
 /**
@@ -662,11 +684,11 @@ struct UnknownGRF : public GRFIdentifier {
  * @param md5sum the MD5 checksum part of the 'unique' GRF identifier
  * @param create whether to create a new GRFConfig if the GRFConfig did not
  *               exist in the fake list of GRFConfigs.
- * @return the GRFConfig with the given GRF ID and MD5 checksum or NULL when
- *         it does not exist and create is false. This value must NEVER be
- *         freed by the caller.
+ * @return The GRFTextWrapper of the name of the GRFConfig with the given GRF ID
+ *         and MD5 checksum or NULL when it does not exist and create is false.
+ *         This value must NEVER be freed by the caller.
  */
-char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
+GRFTextWrapper *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 {
 	UnknownGRF *grf;
 	static UnknownGRF *unknown_grfs = NULL;
@@ -682,7 +704,10 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 	grf = CallocT<UnknownGRF>(1);
 	grf->grfid = grfid;
 	grf->next  = unknown_grfs;
-	strecpy(grf->name, UNKNOWN_GRF_NAME_PLACEHOLDER, lastof(grf->name));
+	grf->name = new GRFTextWrapper();
+	grf->name->AddRef();
+
+	AddGRFTextToList(&grf->name->text, UNKNOWN_GRF_NAME_PLACEHOLDER);
 	memcpy(grf->md5sum, md5sum, sizeof(grf->md5sum));
 
 	unknown_grfs = grf;

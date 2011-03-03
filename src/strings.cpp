@@ -1457,7 +1457,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
 	size_t len;
-	LanguagePack *lang_pack = (LanguagePack *)ReadFileToMem(lang->file, &len, 200000);
+	LanguagePack *lang_pack = (LanguagePack *)ReadFileToMem(lang->file, &len, 1U << 20);
 	if (lang_pack == NULL) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */

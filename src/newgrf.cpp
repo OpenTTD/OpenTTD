@@ -2455,6 +2455,7 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 			buf->ReadWord();
 			break;
 
+		case 0x11:
 		case 0x1A:
 		case 0x1C:
 		case 0x1D:
@@ -2485,7 +2486,6 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 			break;
 		}
 
-		case 0x11:
 		case 0x16:
 			for (byte j = 0; j < 3; j++) buf->ReadByte();
 			break;
@@ -5383,11 +5383,11 @@ static void ScanInfo(ByteReader *buf)
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur_grfconfig->flags, GCF_SYSTEM);
 
-	AddGRFTextToList(&_cur_grfconfig->name, 0x7F, grfid, name);
+	AddGRFTextToList(&_cur_grfconfig->name->text, 0x7F, grfid, name);
 
 	if (buf->HasData()) {
 		const char *info = buf->ReadString();
-		AddGRFTextToList(&_cur_grfconfig->info, 0x7F, grfid, info);
+		AddGRFTextToList(&_cur_grfconfig->info->text, 0x7F, grfid, info);
 	}
 
 	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
@@ -6467,14 +6467,14 @@ static void TranslateGRFStrings(ByteReader *buf)
 /** Callback function for 'INFO'->'NAME' to add a translation to the newgrf name. */
 static bool ChangeGRFName(byte langid, const char *str)
 {
-	AddGRFTextToList(&_cur_grfconfig->name, langid, _cur_grfconfig->ident.grfid, str);
+	AddGRFTextToList(&_cur_grfconfig->name->text, langid, _cur_grfconfig->ident.grfid, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'DESC' to add a translation to the newgrf description. */
 static bool ChangeGRFDescription(byte langid, const char *str)
 {
-	AddGRFTextToList(&_cur_grfconfig->info, langid, _cur_grfconfig->ident.grfid, str);
+	AddGRFTextToList(&_cur_grfconfig->info->text, langid, _cur_grfconfig->ident.grfid, str);
 	return true;
 }
 
