@@ -1,0 +1,10 @@
+/* Undefine for the shortcut macros above */
+#undef S
+#undef C
+#undef N
+
+#undef D0
+#undef NC
+#undef MS
+#undef NO
+#undef CR
