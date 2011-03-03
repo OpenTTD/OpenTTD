@@ -1199,7 +1199,6 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			case 0x09: // Define sprite layout
 				statspec->tiles = buf->ReadExtendedByte();
 				statspec->renderdata = CallocT<DrawTileSprites>(statspec->tiles);
-				statspec->copied_renderdata = false;
 
 				for (uint t = 0; t < statspec->tiles; t++) {
 					DrawTileSprites *dts = &statspec->renderdata[t];
@@ -1208,7 +1207,12 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					dts->seq = NULL;
 					dts->ground.sprite = buf->ReadWord();
 					dts->ground.pal = buf->ReadWord();
-					if (dts->ground.sprite == 0) continue;
+					if (dts->ground.sprite == 0 && dts->ground.pal == 0) {
+						extern const DrawTileSprites _station_display_datas_rail[8];
+						dts->ground = _station_display_datas_rail[t % 8].ground;
+						dts->seq = CopyDrawTileSeqStruct(_station_display_datas_rail[t % 8].seq);
+						continue;
+					}
 					if (HasBit(dts->ground.pal, 15)) {
 						/* Use sprite from Action 1 */
 						ClrBit(dts->ground.pal, 15);
@@ -1254,8 +1258,11 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				}
 
 				statspec->tiles = srcstatspec->tiles;
-				statspec->renderdata = srcstatspec->renderdata;
-				statspec->copied_renderdata = true;
+				statspec->renderdata = MallocT<DrawTileSprites>(statspec->tiles);
+				for (uint t = 0; t < statspec->tiles; t++) {
+					statspec->renderdata[t].ground = srcstatspec->renderdata[t].ground;
+					statspec->renderdata[t].seq = CopyDrawTileSeqStruct(srcstatspec->renderdata[t].seq);
+				}
 				break;
 			}
 
@@ -7050,13 +7057,10 @@ static void ResetCustomStations()
 			if (stations[i] == NULL) continue;
 			StationSpec *statspec = stations[i];
 
-			/* Release renderdata, if it wasn't copied from another custom station spec  */
-			if (!statspec->copied_renderdata) {
-				for (uint t = 0; t < statspec->tiles; t++) {
-					free((void*)statspec->renderdata[t].seq);
-				}
-				free(statspec->renderdata);
+			for (uint t = 0; t < statspec->tiles; t++) {
+				free((void*)statspec->renderdata[t].seq);
 			}
+			free(statspec->renderdata);
 
 			/* Release platforms and layouts */
 			if (!statspec->copied_layouts) {

@@ -791,7 +791,7 @@ static const DrawTileSeqStruct _station_display_datas_waypoint_Y[] = {
 #define TILE_SPRITE_LINE(img, dtss) { {img, PAL_NONE}, dtss },
 #define TILE_SPRITE_NULL() { {0, 0}, NULL },
 
-static const DrawTileSprites _station_display_datas_rail[] = {
+extern const DrawTileSprites _station_display_datas_rail[] = {
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_0)
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_1)
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_2)

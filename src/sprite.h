@@ -52,6 +52,8 @@ struct DrawTileSeqStruct {
 	}
 };
 
+const DrawTileSeqStruct *CopyDrawTileSeqStruct(const DrawTileSeqStruct *dtss);
+
 /** Ground palette sprite of a tile, together with its child sprites */
 struct DrawTileSprites {
 	PalSpriteID ground;           ///< Palette and sprite for the ground

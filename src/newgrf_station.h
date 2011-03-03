@@ -78,7 +78,6 @@ struct StationSpec {
 	 */
 	uint tiles;
 	DrawTileSprites *renderdata; ///< Array of tile layouts.
-	bool copied_renderdata;
 
 	/**
 	 * Cargo threshold for choosing between little and lots of cargo
