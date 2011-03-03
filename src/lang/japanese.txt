@@ -803,32 +803,32 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}で害虫が大量発生！{} 生産量が50％減少。
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}で{0:STRING}の生産量が{2:COMMA}％減少！
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} は電車庫に停車しました。
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} は自動車庫に停車しました。
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} は造船所に停船しました。
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} は航空機格納庫に停船しました。
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}は電車庫に停車しました。
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}は自動車庫に停車しました。
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}は造船所に停船しました。
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}は航空機格納庫に停船しました。
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}への命令が少なすぎます。
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} に無効な命令があります。
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} に重複した命令があります。
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} に無効な駅を含む命令があります。
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}に無効な命令があります。
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE}に重複した命令があります。
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}に無効な駅を含む命令があります。
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} は古くなっています。
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} はとても古くなっています。
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} はとても古くなっているため、早急に取り替える必要があります。
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} は目的地への経路を見つけられません。
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} が迷っています。
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE}は古くなっています。
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}はとても古くなっています。
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}はとても古くなっているため、早急に取り替える必要があります。
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}は目的地への経路を見つけられません。
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}が迷っています。
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年の{VEHICLE}の利益は{CURRENCY}でした。
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE}が命令された改装の失敗のため、止めました
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} の自動交換が失敗しました。{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE}の修復に失敗したため、命令を停止しました。
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}の自動交換が失敗しました。{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING}が新登場！
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}が新登場！ー{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}が新登場！　－　{ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}は今後{STRING}を受入れません
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}は今後{STRING}と{STRING}を受入れません
