@@ -3099,6 +3099,7 @@ make_sed() {
 		s@!!SRC_OBJS_DIR!!@$SRC_OBJS_DIR@g;
 		s@!!LANG_OBJS_DIR!!@$LANG_OBJS_DIR@g;
 		s@!!GRF_OBJS_DIR!!@$GRF_OBJS_DIR@g;
+		s@!!SETTING_OBJS_DIR!!@$SETTING_OBJS_DIR@g;
 		s@!!SRC_DIR!!@$SRC_DIR@g;
 		s@!!SCRIPT_SRC_DIR!!@$SCRIPT_SRC_DIR@g;
 		s@!!OSXAPP!!@$OSXAPP@g;
@@ -3117,6 +3118,7 @@ make_sed() {
 		s@!!STRGEN!!@$STRGEN@g;
 		s@!!ENDIAN_CHECK!!@$ENDIAN_CHECK@g;
 		s@!!DEPEND!!@$DEPEND@g;
+		s@!!SETTINGSGEN!!@$SETTINGSGEN@g;
 		s@!!ENDIAN_FORCE!!@$endian@g;
 		s@!!STAGE!!@$STAGE@g;
 		s@!!MAKEDEPEND!!@$makedepend@g;
@@ -3222,6 +3224,20 @@ generate_lang() {
 	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" >> $LANG_OBJS_DIR/Makefile
 	echo "DIRS += $LANG_OBJS_DIR" >> Makefile.am
 	echo "LANG_DIRS += $LANG_OBJS_DIR" >> Makefile.am
+}
+
+generate_settings() {
+	STAGE="[SETTING]"
+
+	make_sed
+
+	# Create the language file
+	mkdir -p $SETTING_OBJS_DIR
+
+	log 1 "Generating setting/Makefile..."
+	echo "# Auto-generated file from 'Makefile.settings.in' -- DO NOT EDIT" > $SETTING_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.setting.in sed "$SRC_REPLACE" >> $SETTING_OBJS_DIR/Makefile
+	echo "DIRS += $SETTING_OBJS_DIR" >> Makefile.am
 }
 
 generate_grf() {

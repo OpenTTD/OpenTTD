@@ -48,6 +48,7 @@ OBJS_DIR="$PWD/objs"
 BASE_SRC_OBJS_DIR="$OBJS_DIR"
 LANG_OBJS_DIR="$OBJS_DIR/lang"
 GRF_OBJS_DIR="$OBJS_DIR/extra_grf"
+SETTING_OBJS_DIR="$OBJS_DIR/setting"
 BIN_DIR="$PREFIX"
 SRC_DIR="$ROOT_DIR/src"
 LANG_DIR="$SRC_DIR/lang"
@@ -82,6 +83,7 @@ TTD="openttd$EXE"
 STRGEN="strgen$EXE"
 ENDIAN_CHECK="endian_check$EXE"
 DEPEND="depend$EXE"
+SETTINGSGEN="settings_gen$EXE"
 
 if [ -z "$sort" ]; then
 	PIPE_SORT="sed s@a@a@"
@@ -161,10 +163,11 @@ else
 	sort="$sort -u"
 fi
 
-CONFIGURE_FILES="$ROOT_DIR/configure $ROOT_DIR/config.lib $ROOT_DIR/Makefile.in $ROOT_DIR/Makefile.grf.in $ROOT_DIR/Makefile.lang.in $ROOT_DIR/Makefile.src.in $ROOT_DIR/Makefile.bundle.in"
+CONFIGURE_FILES="$ROOT_DIR/configure $ROOT_DIR/config.lib $ROOT_DIR/Makefile.in $ROOT_DIR/Makefile.grf.in $ROOT_DIR/Makefile.lang.in $ROOT_DIR/Makefile.src.in $ROOT_DIR/Makefile.bundle.in $ROOT_DIR/Makefile.setting.in"
 
 generate_main
 generate_lang
+generate_settings
 generate_grf
 generate_src
 
