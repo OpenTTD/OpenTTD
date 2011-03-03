@@ -132,13 +132,14 @@ IniLoadFile::~IniLoadFile()
 }
 
 /**
- * Get the group with the given name, and if it doesn't exist
- * create a new group.
+ * Get the group with the given name. If it doesn't exist
+ * and \a create_new is \c true create a new group.
  * @param name name of the group to find.
- * @param len  the maximum length of said name.
- * @return the requested group.
+ * @param len  the maximum length of said name (\c 0 means length of the string).
+ * @param create_new Allow creation of group if it does not exist.
+ * @return The requested group if it exists or was created, else \c NULL.
  */
-IniGroup *IniLoadFile::GetGroup(const char *name, size_t len)
+IniGroup *IniLoadFile::GetGroup(const char *name, size_t len, bool create_new)
 {
 	if (len == 0) len = strlen(name);
 
@@ -148,6 +149,8 @@ IniGroup *IniLoadFile::GetGroup(const char *name, size_t len)
 			return group;
 		}
 	}
+
+	if (!create_new) return NULL;
 
 	/* otherwise make a new one */
 	IniGroup *group = new IniGroup(this, name, len);

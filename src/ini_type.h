@@ -57,7 +57,7 @@ struct IniLoadFile {
 	IniLoadFile(const char * const *list_group_names = NULL);
 	virtual ~IniLoadFile();
 
-	IniGroup *GetGroup(const char *name, size_t len = 0);
+	IniGroup *GetGroup(const char *name, size_t len = 0, bool create_new = true);
 	void RemoveGroup(const char *name);
 
 	void LoadFromDisk(const char *filename);
