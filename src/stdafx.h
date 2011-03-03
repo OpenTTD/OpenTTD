@@ -240,7 +240,7 @@
 
 /* NOTE: the string returned by these functions is only valid until the next
  * call to the same function and is not thread- or reentrancy-safe */
-#if !defined(STRGEN)
+#if !defined(STRGEN) && !defined(SETTINGSGEN)
 	#if defined(WIN32) || defined(WIN64)
 		char *getcwd(char *buf, size_t size);
 		#include <tchar.h>
@@ -264,7 +264,7 @@
 		#define SQ2OTTD(name) (name)
 		#define OTTD2SQ(name) (name)
 	#endif /* WIN32 */
-#endif /* STRGEN */
+#endif /* STRGEN || SETTINGSGEN */
 
 #if defined(WIN32) || defined(WIN64) || defined(__OS2__) && !defined(__INNOTEK_LIBC__)
 	#define PATHSEP "\\"
