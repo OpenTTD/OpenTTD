@@ -2524,6 +2524,20 @@ static bool ValidateIndustryLayout(const IndustryTileTable *layout, int size)
 	return true;
 }
 
+/** Clean the tile table of the IndustrySpec if it's needed. */
+static void CleanIndustryTileTable(IndustrySpec *ind)
+{
+	if (HasBit(ind->cleanup_flag, CLEAN_TILELAYOUT) && ind->table != NULL) {
+		for (int j = 0; j < ind->num_table; j++) {
+			/* remove the individual layouts */
+			free((void*)ind->table[j]);
+		}
+		/* remove the layouts pointers */
+		free((void*)ind->table);
+		ind->table = NULL;
+	}
+}
+
 static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2598,20 +2612,20 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			}
 
 			case 0x0A: { // Set industry layout(s)
-				indsp->num_table = buf->ReadByte(); // Number of layaouts
+				byte new_num_layouts = buf->ReadByte(); // Number of layaouts
 				/* We read the total size in bytes, but we can't rely on the
 				 * newgrf to provide a sane value. First assume the value is
 				 * sane but later on we make sure we enlarge the array if the
 				 * newgrf contains more data. Each tile uses either 3 or 5
 				 * bytes, so to play it safe we assume 3. */
 				uint32 def_num_tiles = buf->ReadDWord() / 3 + 1;
-				IndustryTileTable **tile_table = CallocT<IndustryTileTable*>(indsp->num_table); // Table with tiles to compose an industry
+				IndustryTileTable **tile_table = CallocT<IndustryTileTable*>(new_num_layouts); // Table with tiles to compose an industry
 				IndustryTileTable *itt = CallocT<IndustryTileTable>(def_num_tiles); // Temporary array to read the tile layouts from the GRF
 				uint size;
 				const IndustryTileTable *copy_from;
 
 				try {
-					for (byte j = 0; j < indsp->num_table; j++) {
+					for (byte j = 0; j < new_num_layouts; j++) {
 						for (uint k = 0;; k++) {
 							if (k >= def_num_tiles) {
 								grfmsg(3, "IndustriesChangeInfo: Incorrect size for industry tile layout definition for industry %u.", indid);
@@ -2674,7 +2688,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 						if (!ValidateIndustryLayout(copy_from, size)) {
 							/* The industry layout was not valid, so skip this one. */
 							grfmsg(1, "IndustriesChangeInfo: Invalid industry layout for industry id %u. Ignoring", indid);
-							indsp->num_table--;
+							new_num_layouts--;
 							j--;
 						} else {
 							tile_table[j] = CallocT<IndustryTileTable>(size);
@@ -2682,7 +2696,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 						}
 					}
 				} catch (...) {
-					for (int i = 0; i < indsp->num_table; i++) {
+					for (int i = 0; i < new_num_layouts; i++) {
 						free(tile_table[i]);
 					}
 					free(tile_table);
@@ -2690,9 +2704,12 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					throw;
 				}
 
+				/* Clean the tile table if it was already set by a previous prop A. */
+				CleanIndustryTileTable(indsp);
 				/* Install final layout construction in the industry spec */
+				indsp->num_table = new_num_layouts;
 				indsp->table = tile_table;
-				SetBit(indsp->cleanup_flag, 1);
+				SetBit(indsp->cleanup_flag, CLEAN_TILELAYOUT);
 				free(itt);
 				break;
 			}
@@ -2755,8 +2772,11 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					throw;
 				}
 
+				if (HasBit(indsp->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
+					free((void*)indsp->random_sounds);
+				}
 				indsp->random_sounds = sounds;
-				SetBit(indsp->cleanup_flag, 0);
+				SetBit(indsp->cleanup_flag, CLEAN_RANDOMSOUNDS);
 				break;
 			}
 
@@ -7130,15 +7150,7 @@ static void ResetCustomIndustries()
 				}
 
 				/* We need to remove the tiles layouts */
-				if (HasBit(ind->cleanup_flag, CLEAN_TILELAYOUT) && ind->table != NULL) {
-					for (int j = 0; j < ind->num_table; j++) {
-						/* remove the individual layouts */
-						free((void*)ind->table[j]);
-					}
-					/* remove the layouts pointers */
-					free((void*)ind->table);
-					ind->table = NULL;
-				}
+				CleanIndustryTileTable(ind);
 
 				free(ind);
 			}
