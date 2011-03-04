@@ -1527,7 +1527,7 @@
     <ClInclude Include="..\src\table\roadveh_movement.h">
       <Filter>Tables</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\table\settings.h">
+    <ClInclude Include="..\src\..\objs\settings\table\settings.h">
       <Filter>Tables</Filter>
     </ClInclude>
     <ClInclude Include="..\src\table\sprites.h">

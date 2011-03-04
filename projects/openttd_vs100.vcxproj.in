@@ -101,7 +101,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\objs\langs;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_LZO;WITH_LZMA;LZMA_API_STATIC;WITH_PNG;WITH_FREETYPE;WITH_ICU;U_STATIC_IMPLEMENTATION;ENABLE_NETWORK;ENABLE_AI;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";WITH_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -155,7 +155,7 @@
     <ClCompile>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\objs\langs;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_LZO;WITH_LZMA;LZMA_API_STATIC;WITH_PNG;WITH_FREETYPE;WITH_ICU;U_STATIC_IMPLEMENTATION;ENABLE_NETWORK;ENABLE_AI;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -203,7 +203,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\objs\langs;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WITH_ZLIB;WITH_LZO;WITH_LZMA;LZMA_API_STATIC;WITH_PNG;WITH_FREETYPE;WITH_ICU;U_STATIC_IMPLEMENTATION;ENABLE_NETWORK;ENABLE_AI;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";_SQ64;WITH_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -255,7 +255,7 @@
     <ClCompile>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\objs\langs;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;WITH_ZLIB;WITH_LZO;WITH_LZMA;LZMA_API_STATIC;WITH_PNG;WITH_FREETYPE;WITH_ICU;U_STATIC_IMPLEMENTATION;ENABLE_NETWORK;ENABLE_AI;WITH_PERSONAL_DIR;PERSONAL_DIR="OpenTTD";_SQ64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>

@@ -77,7 +77,7 @@ safety_check() {
 	done
 }
 
-grep '\.h' "$ROOT_DIR/source.list" | grep -v '../objs/langs/table/strings.h' | sed 's/	//' | sort > tmp.headers.source.list
+grep '\.h' "$ROOT_DIR/source.list" | grep -v '../objs/langs/table/strings.h\|../objs/settings/table/settings.h' | sed 's/	//' | sort > tmp.headers.source.list
 find "$ROOT_DIR/src" \( -iname "*.h" -or -iname "*.hpp" \) -and -not -ipath "*/.svn/*" | sed "s~$ROOT_DIR/src/~~" | sort > tmp.headers.src
 if [ -n "`diff tmp.headers.source.list tmp.headers.src`" ]; then
 	echo "The following headers are missing in source.list and not in /src/ or vice versa."
@@ -204,6 +204,28 @@ load_lang_data() {
 	eval "$2=\"\$RES\""
 }
 
+load_settings_data() {
+	RES=""
+	RES2="
+#3\$(IntDir)\\settings_gen.exe -o \$(OutDir)\\table\\settings.h -b ..\\src\\table\\settings.h.preamble -a ..\\src\\table\\settings.h.postamble"
+	for i in `ls $1`
+	do
+		i=`basename $i`
+		RES="$RES
+#1			<File
+#1				RelativePath=\"..\\src\\table\\"$i"\"
+#1				>
+#1			</File>
+#2    <None Include=\"..\\src\\table\\"$i"\" />
+#4    <None Include=\"..\\src\\table\\"$i"\">
+#4      <Filter>INI</Filter>
+#4    </None>"
+		RES2="$RES2 ..\\src\\table\\"$i
+	done
+
+	eval "$2=\"\$RES\$RES2\""
+}
+
 generate() {
 	echo "Generating $2..."
 	if [ $# -eq 3 ]; then
@@ -266,6 +288,12 @@ load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
 langvcxproj=`echo "$lang" | grep "^#2" | sed "s~#2~~g"`
 lang=`echo "$lang" | grep "^#1" | sed "s~#1~~g"`
 
+load_settings_data "$ROOT_DIR/src/table/*.ini" settings
+settingsfiles=`echo "$settings" | grep "^#4" | sed "s~#4~~g"`
+settingscommand=`echo "$settings" | grep "^#3" | sed "s~#3~~g"`
+settingsvcxproj=`echo "$settings" | grep "^#2" | sed "s~#2~~g"`
+settings=`echo "$settings" | grep "^#1" | sed "s~#1~~g"`
+
 generate "$openttd" "openttd_vs80.vcproj"
 generate "$openttd" "openttd_vs90.vcproj"
 generate "$openttdvcxproj" "openttd_vs100.vcxproj"
@@ -273,3 +301,7 @@ generate "$openttdfiles" "openttd_vs100.vcxproj.filters" "$openttdfilters"
 generate "$lang" "langs_vs80.vcproj"
 generate "$lang" "langs_vs90.vcproj"
 generate "$langvcxproj" "langs_vs100.vcxproj"
+generate "$settings" "settings_vs80.vcproj" "$settingscommand"
+generate "$settings" "settings_vs90.vcproj" "$settingscommand"
+generate "$settingsvcxproj" "settings_vs100.vcxproj" "$settingscommand"
+generate "$settingsfiles" "settings_vs100.vcxproj.filters"

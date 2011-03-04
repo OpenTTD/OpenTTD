@@ -529,7 +529,7 @@ table/pricebase.h
 table/railtypes.h
 table/road_land.h
 table/roadveh_movement.h
-table/settings.h
+../objs/settings/table/settings.h
 table/sprites.h
 table/station_land.h
 table/strgen_tables.h

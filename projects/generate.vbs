@@ -113,7 +113,7 @@ Sub headers_check(filename, dir)
 	Set file = FSO.OpenTextFile(filename, 1, 0, 0)
 	While Not file.AtEndOfStream
 		line = Replace(file.ReadLine, Chr(9), "") ' Remove tabs
-		If Len(line) > 0 And regexp.Test(line) And line <> "../objs/langs/table/strings.h" Then
+		If Len(line) > 0 And regexp.Test(line) And line <> "../objs/langs/table/strings.h" And line <> "../objs/settings/table/settings.h" Then
 			source_list_headers.Add line, line
 		End If
 	Wend
@@ -274,6 +274,38 @@ Function load_lang_data(dir, ByRef vcxproj)
 	load_lang_data = res
 End Function
 
+Function load_settings_data(dir, ByRef vcxproj, ByRef command, ByRef files)
+	Dim res, folder, file, first_time
+	res = ""
+	command = "$(IntDir)\settings_gen.exe -o $(OutDir)\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble"
+	Set folder = FSO.GetFolder(dir)
+	For Each file In folder.Files
+		file = FSO.GetFileName(file)
+		If FSO.GetExtensionName(file) = "ini" Then
+			if first_time <> 0 Then
+				res = res & vbCrLf
+				vcxproj = vcxproj & vbCrLf
+				files = files & vbCrLf
+			Else
+				first_time = 1
+			End If
+			res = res & _
+			"		<File" & vbCrLf & _
+			"			RelativePath=" & Chr(34) & "..\src\table\" & file & Chr(34) & vbCrLf & _
+			"			>" & vbCrLf & _
+			"		</File>"
+			vcxproj = vcxproj & _
+			"    <None Include=" & Chr(34) & "..\src\table\" & file & Chr(34) & " />"
+			command = command & " ..\src\table\" & file
+			files = files & _
+			"    <None Include=" & Chr(34) & "..\src\table\" & file & Chr(34) & ">" & vbCrLf & _
+			"      <Filter>INI</Filter>" & vbCrLf & _
+			"    </None>"
+		End If
+	Next
+	load_settings_data = res
+End Function
+
 Sub generate(data, dest, data2)
 	Dim srcfile, destfile, line
 	WScript.Echo "Generating " & FSO.GetFileName(dest) & "..."
@@ -337,3 +369,10 @@ lang = load_lang_data(ROOT_DIR & "/src/lang", langvcxproj)
 generate lang, ROOT_DIR & "/projects/langs_vs80.vcproj", Null
 generate lang, ROOT_DIR & "/projects/langs_vs90.vcproj", Null
 generate langvcxproj, ROOT_DIR & "/projects/langs_vs100.vcxproj", Null
+
+Dim settings, settingsvcxproj, settingscommand, settingsfiles
+settings = load_settings_data(ROOT_DIR & "/src/table", settingsvcxproj, settingscommand, settingsfiles)
+generate settings, ROOT_DIR & "/projects/settings_vs80.vcproj", settingscommand
+generate settings, ROOT_DIR & "/projects/settings_vs90.vcproj", settingscommand
+generate settingsvcxproj, ROOT_DIR & "/projects/settings_vs100.vcxproj", settingscommand
+generate settingsfiles, ROOT_DIR & "/projects/settings_vs100.vcxproj.filters", Null

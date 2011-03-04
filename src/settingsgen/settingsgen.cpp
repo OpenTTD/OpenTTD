@@ -448,6 +448,10 @@ int CDECL main(int argc, char *argv[])
 		CopyFile(after_file, stdout);
 	} else {
 		FILE *fp = fopen(output_file, "w");
+		if (fp == NULL) {
+			fprintf(stderr, "settingsgen: Warning: Cannot open file %s\n", output_file);
+			return 1;
+		}
 		CopyFile(before_file, fp);
 		_stored_output.Write(fp);
 		CopyFile(after_file, fp);
