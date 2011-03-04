@@ -1387,10 +1387,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\smallmap_gui.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\sound\sdl_s.h"
 				>
 			</File>
@@ -1440,6 +1436,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\slope_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\smallmap_gui.h"
 				>
 			</File>
 			<File
@@ -1535,15 +1535,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\tilearea_type.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\tile_cmd.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\tile_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\tilearea_type.h"
 				>
 			</File>
 			<File
@@ -2283,15 +2283,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\airport_movement.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\table\airporttile_ids.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\table\airporttiles.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\table\airport_movement.h"
 				>
 			</File>
 			<File
@@ -3519,6 +3519,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\core\tcp_admin.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp_admin.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\core\tcp_connect.cpp"
 				>
 			</File>
@@ -3536,14 +3544,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\core\tcp_game.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\tcp_admin.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\network\core\tcp_admin.h"
 				>
 			</File>
 			<File

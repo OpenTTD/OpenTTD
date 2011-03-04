@@ -261,7 +261,6 @@ roadstop_base.h
 roadveh.h
 screenshot.h
 sdl.h
-smallmap_gui.h
 sound/sdl_s.h
 video/sdl_v.h
 settings_func.h
@@ -275,6 +274,7 @@ signs_func.h
 signs_type.h
 slope_func.h
 slope_type.h
+smallmap_gui.h
 sortlist_type.h
 sound_func.h
 sound_type.h
@@ -298,9 +298,9 @@ terraform_gui.h
 textbuf_gui.h
 texteff.hpp
 tgp.h
-tilearea_type.h
 tile_cmd.h
 tile_type.h
+tilearea_type.h
 tilehighlight_func.h
 tilehighlight_type.h
 timetable.h
@@ -506,9 +506,9 @@ saveload/waypoint_sl.cpp
 
 # Tables
 table/airport_defaults.h
+table/airport_movement.h
 table/airporttile_ids.h
 table/airporttiles.h
-table/airport_movement.h
 table/animcursors.h
 table/autorail.h
 table/bridge_land.h
@@ -836,13 +836,13 @@ network/core/packet.cpp
 network/core/packet.h
 network/core/tcp.cpp
 network/core/tcp.h
+network/core/tcp_admin.cpp
+network/core/tcp_admin.h
 network/core/tcp_connect.cpp
 network/core/tcp_content.cpp
 network/core/tcp_content.h
 network/core/tcp_game.cpp
 network/core/tcp_game.h
-network/core/tcp_admin.cpp
-network/core/tcp_admin.h
 network/core/tcp_http.cpp
 network/core/tcp_http.h
 network/core/tcp_listen.h

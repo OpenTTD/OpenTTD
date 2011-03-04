@@ -528,7 +528,6 @@
     <ClInclude Include="..\src\roadveh.h" />
     <ClInclude Include="..\src\screenshot.h" />
     <ClInclude Include="..\src\sdl.h" />
-    <ClInclude Include="..\src\smallmap_gui.h" />
     <ClInclude Include="..\src\sound\sdl_s.h" />
     <ClInclude Include="..\src\video\sdl_v.h" />
     <ClInclude Include="..\src\settings_func.h" />
@@ -542,6 +541,7 @@
     <ClInclude Include="..\src\signs_type.h" />
     <ClInclude Include="..\src\slope_func.h" />
     <ClInclude Include="..\src\slope_type.h" />
+    <ClInclude Include="..\src\smallmap_gui.h" />
     <ClInclude Include="..\src\sortlist_type.h" />
     <ClInclude Include="..\src\sound_func.h" />
     <ClInclude Include="..\src\sound_type.h" />
@@ -565,9 +565,9 @@
     <ClInclude Include="..\src\textbuf_gui.h" />
     <ClInclude Include="..\src\texteff.hpp" />
     <ClInclude Include="..\src\tgp.h" />
-    <ClInclude Include="..\src\tilearea_type.h" />
     <ClInclude Include="..\src\tile_cmd.h" />
     <ClInclude Include="..\src\tile_type.h" />
+    <ClInclude Include="..\src\tilearea_type.h" />
     <ClInclude Include="..\src\tilehighlight_func.h" />
     <ClInclude Include="..\src\tilehighlight_type.h" />
     <ClInclude Include="..\src\timetable.h" />
@@ -746,9 +746,9 @@
     <ClCompile Include="..\src\saveload\vehicle_sl.cpp" />
     <ClCompile Include="..\src\saveload\waypoint_sl.cpp" />
     <ClInclude Include="..\src\table\airport_defaults.h" />
+    <ClInclude Include="..\src\table\airport_movement.h" />
     <ClInclude Include="..\src\table\airporttile_ids.h" />
     <ClInclude Include="..\src\table\airporttiles.h" />
-    <ClInclude Include="..\src\table\airport_movement.h" />
     <ClInclude Include="..\src\table\animcursors.h" />
     <ClInclude Include="..\src\table\autorail.h" />
     <ClInclude Include="..\src\table\bridge_land.h" />
@@ -1041,13 +1041,13 @@
     <ClInclude Include="..\src\network\core\packet.h" />
     <ClCompile Include="..\src\network\core\tcp.cpp" />
     <ClInclude Include="..\src\network\core\tcp.h" />
+    <ClCompile Include="..\src\network\core\tcp_admin.cpp" />
+    <ClInclude Include="..\src\network\core\tcp_admin.h" />
     <ClCompile Include="..\src\network\core\tcp_connect.cpp" />
     <ClCompile Include="..\src\network\core\tcp_content.cpp" />
     <ClInclude Include="..\src\network\core\tcp_content.h" />
     <ClCompile Include="..\src\network\core\tcp_game.cpp" />
     <ClInclude Include="..\src\network\core\tcp_game.h" />
-    <ClCompile Include="..\src\network\core\tcp_admin.cpp" />
-    <ClInclude Include="..\src\network\core\tcp_admin.h" />
     <ClCompile Include="..\src\network\core\tcp_http.cpp" />
     <ClInclude Include="..\src\network\core\tcp_http.h" />
     <ClInclude Include="..\src\network\core\tcp_listen.h" />
