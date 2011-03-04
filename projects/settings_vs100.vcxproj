@@ -24,14 +24,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\settings\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\settings\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\settings\table\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\settings\table\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PreBuildEvent>
       <Message>Generating settings.h</Message>
       <Command>
-$(IntDir)\settings_gen.exe -o $(OutDir)\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\music_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini
+..\objs\settings\settings_gen.exe -o ..\objs\settings\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\music_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini
       </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>

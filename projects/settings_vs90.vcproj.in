@@ -17,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\objs\settings"
-			IntermediateDirectory="..\objs\settings"
+			OutputDirectory="..\objs\settings\table"
+			IntermediateDirectory="..\objs\settings\table"
 			ConfigurationType="10"
 			>
 			<Tool

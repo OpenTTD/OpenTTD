@@ -277,7 +277,7 @@ End Function
 Function load_settings_data(dir, ByRef vcxproj, ByRef command, ByRef files)
 	Dim res, folder, file, first_time
 	res = ""
-	command = "$(IntDir)\settings_gen.exe -o $(OutDir)\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble"
+	command = "..\objs\settings\settings_gen.exe -o ..\objs\settings\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble"
 	Set folder = FSO.GetFolder(dir)
 	For Each file In folder.Files
 		file = FSO.GetFileName(file)

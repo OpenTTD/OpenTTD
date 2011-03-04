@@ -207,7 +207,7 @@ load_lang_data() {
 load_settings_data() {
 	RES=""
 	RES2="
-#3\$(IntDir)\\settings_gen.exe -o \$(OutDir)\\table\\settings.h -b ..\\src\\table\\settings.h.preamble -a ..\\src\\table\\settings.h.postamble"
+#3..\\objs\\settings\\settings_gen.exe -o ..\\objs\\settings\\table\\settings.h -b ..\\src\\table\\settings.h.preamble -a ..\\src\\table\\settings.h.postamble"
 	for i in `ls $1`
 	do
 		i=`basename $i`

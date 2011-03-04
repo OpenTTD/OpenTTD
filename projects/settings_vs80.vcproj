@@ -16,15 +16,15 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\objs\settings"
-			IntermediateDirectory="..\objs\settings"
+			OutputDirectory="..\objs\settings\table"
+			IntermediateDirectory="..\objs\settings\table"
 			ConfigurationType="10"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Generating settings.h"
 				CommandLine="
-$(IntDir)\settings_gen.exe -o $(OutDir)\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\music_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini
+..\objs\settings\settings_gen.exe -o ..\objs\settings\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\music_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini
 				"
 			/>
 			<Tool
