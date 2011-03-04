@@ -1420,7 +1420,7 @@ make_cflags_and_ldflags() {
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
 
 			if [ $cc_version -ge 44 ]; then
-				LDFLAGS_BUILD="$LDFLAGS_BUILD -static-libgcc"
+				LDFLAGS_BUILD="$LDFLAGS_BUILD -static-libgcc -static-libstdc++"
 			fi
 		fi
 	fi
