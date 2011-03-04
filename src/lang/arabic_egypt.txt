@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}اضغط
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تبديل حجم الاطار كبير / صغير
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}شريط العرض- فوق /تحت
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}عمود التحريك - يمين/يسار
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}هدم المباني و غيرها
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}هدم المباني و غيرها في مربع من الأرض.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}افتراضي
@@ -297,22 +297,22 @@ STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK} حفظ 
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}عرض الخريطة, لقطات اضافية , العلامات
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}عرض دليل المدن
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}اظهار العروض
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}عرض محطات الشركة
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}عرض قائمة محطات الشركة.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}عرض السجل المالي للشركة
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}عرض معلومات الشركة
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}عرض المخططات
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}عرض جدول ترتيب الشركات
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}موّل انشاء مصنع / عرض كل المصانع
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}عرض قطارات الشركة
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}عرض عربات الشركة
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}عرض سفن الشركة
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}عرض طائرات الشركة
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}عرض قائمة قطارات الشركة.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}عرض قائمة عربات الشركة.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}عرض قائمة سفن الشركة.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}عرض قائمة طائرات الشركة.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}تكبير الصورة
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}تصغير الصورة
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ادوات بناء سكة حديد
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}ادوات بناء الطرق
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}ادوات السفن
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ادوات المطار
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}بناء مطارات
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}افتح مدير تحرير التضاريس لرفع / خفض الارض, زراعة الاشجار, الخ.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}عرض اطار الصوت/الموسيقى
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}اظهار الرسالة الأخيرة/التقرير الأخير, خيارات الرسائل
@@ -846,9 +846,9 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK} فوضى طرق عارمة في مدينة {TOWN}!{}{}اعادة ترميم الطرق مولت من قبل شركة {STRING}{} تجلي ستة أشهر من الشقاء لعربات الطريق.
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}شاشة عرض{COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}شاشة العرض {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}انسخ لشاشة العرض
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}انسخ الشاشة الرئيسية لشاشة العرض هذه
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}انسخ موقع الشاشة الرئيسية لشاشة العرض هذه
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}لصق من شاشة العرض
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}لصق شاشة العرض هذة للشاشة الرئيسية
 
@@ -1251,10 +1251,10 @@ STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}الح�
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}الحد الأعلى لعدد الطائرات لكل لاعب: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}الحد الأعلى لعدد السفن لكل لاعب: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}حظر القطارات على الكمبيوتر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}حظر القطارات على الحاسوب: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}حظر العربات على الكمبيوتر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}حظر الطائرات على الكمبيوتر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}حظر السفن على الكمبيوتر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}حظر الطائرات على الحاسوب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}حظر السفن على الحاسوب: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE} السماح بالذكاء الصناعي في اللعب الجماعي : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE} #opcodes قبل تعليق الذكاء الصناعي : {ORANGE}{STRING}
@@ -1282,7 +1282,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}اتا�
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}السماح باستخدام اشارات واجهة المستخدم الرسومية: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}نوع الاشارة الذي يبنى قياسيا: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :اشارات التوقف
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :اشارات الطريق
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :إشارات الطريق
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :إشارة طريق اتجاه واحد
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}الدوران خلال الاشارات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :اشارات التوقف فقط
@@ -1337,11 +1337,11 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}الم�
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}المحطات
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}الأقتصاد
 STR_CONFIG_SETTING_AI                                           :{ORANGE}المتنافسين
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE} عرض الخيارات
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}عرض الخيارات
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE} التفاعل
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE} الاشارات
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}الإشارات
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE} طريقة التحميل
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الكمبيوتر
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE} التجديد التلقائي
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE} الصيانة
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} المسارات
@@ -1727,7 +1727,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}لا ت�
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}اعط الشركة كلمة المرور الجديدة
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}كلمة مرور الشركة
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}كلمة مرور الشركة القياسية
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}استخدم هذه الكلمة كقياسية لكل الشركات الجديدة
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}استخدم كلمة مرور هذه الشركة كافتراضية للشركات الجديدة
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK} انضم
@@ -1838,23 +1838,23 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER} لم �
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER} لقد اخترت هذا المحتوى ليتم تحميله
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER} هذا الدعم قد اختير للتحميل
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER} هذا المحتوى موجود لديك مسبقا
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER} المحتوى غير معروف و لن يتم تحميلة على النسخة المفتوحة
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER} هذا استبدال للملف الموجود {STRING}
-STR_CONTENT_DETAIL_NAME                                         :{SILVER} الاسم: {WHITE}{STRING}
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}هذا المحتوى غير معروف و لا يمكت تحميله في OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}هذا استبدال للملف الموجود {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}الاسم: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER} النسخة: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER} الوصف : {WHITE}{STRING}
-STR_CONTENT_DETAIL_URL                                          :{SILVER} عنوان النت: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TYPE                                         :{SILVER} النوع: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER} حجم التحميل: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}الوصف: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}عنوان الموقع: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}النوع: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}حجم التحميل: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER} اختير بسبب: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER} الاعتمادية: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER} الاسم الرمزي: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}النسخة المفتوحة بنيت بدون دعم zlib ...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}بنيت OpenTTD بدون دعم "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}تحميل محتويات zlib غير ممكن
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :الرسوميات الاساسية
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF رسوميات
+STR_CONTENT_TYPE_NEWGRF                                         :GRF جديدة
 STR_CONTENT_TYPE_AI                                             :الذكاء الصناعي
 STR_CONTENT_TYPE_AI_LIBRARY                                     :مكتبة الذكاء الصناعي
 STR_CONTENT_TYPE_SCENARIO                                       :سناريو
@@ -1863,7 +1863,7 @@ STR_CONTENT_TYPE_BASE_SOUNDS                                    :الاصوات 
 STR_CONTENT_TYPE_BASE_MUSIC                                     :الموسيقى الاساسية
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}يتم التحميل الان ...
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}يتم تحميل المحتوى...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}يتم طلب الملفات ...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}يتم تحميل {STRING} - {NUM} من {NUM}
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}انتهى التحميل
@@ -1872,9 +1872,9 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}لم يتم الربط مع خادم المحتوى
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}فشل التحميل...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... فقد الربط بالخادم
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... فقد الاتصال
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... لا يمكن الكتابة على الملف
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}لم يتمكن من فك الضغط للملف المحمل
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}لم يتمكن من فك ضغط الملف المحمل
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}خيارات الشفافية
@@ -1989,22 +1989,22 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}وحدة
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}بناء سكة ترام
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}بناء الطرق باستخدام النظام الآلي
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}بناء سكة القطار باستخدام النظام الآلي
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}بناء ورشة صيانة للعربات - لشراء/ بيع/ صيانة العربات.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}بناء ورشة صيانة للترام - لشراء / بيع /صيانة عربات الترام
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}بناء ورشة صيانة لعربات الطرق (لشراء و صيانة العربات).
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}بناء ورشة لصيانة عربات الترام (لشراء و صيانة عربات الترام).
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}بناء محطة باصات
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}بناء محطة ركاب ترام
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}بناء محطة ركاب ترام.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}بناء محطة تحميل عربات. مفتاح كنترول يسمح بمجاورة المحطات.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}بناء محطة ترام. كنترول يسمح بمجاورة المحطات.
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}فعل / عطل الطرق موحدة الاتجاة
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}بناء جسر للعربات
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}بناء جسر ترام
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}بناء نفق للعربات
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}فعل / عطل الطرق موحدة الاتجاه
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}بناء جسر لعربات الطريق.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}بناء جسر ترام.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}بناء نفق لعربات الطريق.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}بناء نفق ترام
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}تناوب بناء/ ازالة الطرق
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}بدل بناء/إزالة الطرق
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}بدل بناء / ازالة طرق الترام
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}اتجاة ورشة الصيانة
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}اتجاه ورشة الصيانة
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}اختر اتجاة ورشة صيانة العربات
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}اتجاة مستودع الصيانة لترام
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}اختر اتجاة مستودع الترام
@@ -2032,8 +2032,8 @@ STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}عرف �
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}انشاء انهار
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}اتجاة حوض الصيانة
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK} اختر اتجاة حوض الصيانة
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}اتجاه حوض الصيانة
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}اختر اتجاه حوض صيانة السفن
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}مرفء

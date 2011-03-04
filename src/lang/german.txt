@@ -354,7 +354,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstell
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen anzeigen
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegpunktnamen anzeigen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegmarkierungsnamen anzeigen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Schilder anzeigen
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Vollständige Animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Vollständige Detailansicht
@@ -1883,7 +1883,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transpar
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparenz für Industrien einstellen. Strg+Klick, um Umschalten zu verhindern
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparenz für Bauten wie Bahnhöfe, Depots und Wegmarkierungen einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern
@@ -1903,8 +1903,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liefert:
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Verbinde mit Station
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Errichte eine getrennte Station
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbinde mit Wegpunkt
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Errichte einen getrennten Wegpunkt
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbinde mit Wegmarkierung
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Errichte eine getrennte Wegmarkierung
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Eisenbahnbau
@@ -1915,12 +1915,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetschwebeba
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Gleise legen. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gleise legen mit automatischer Wahl der Ausrichtung. Strg halten, um zwischen Bauen und Entfernen umzuschalten. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zugdepot bauen (zum Kauf und zur Wartung von Zügen). Shift schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Wegpunkt (auf vorhandenem Gleis) bauen. Strg+Klick, um Wegpunkte zu verbinden. Shift schaltet zwischen Bauen und Kostenvoranschlag um
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Wegmarkierung (auf vorhandenem Gleis) bauen. Strg+Klick, um Wegmarkierungen zu verbinden. Shift schaltet zwischen Bauen und Kostenanzeige um
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bahnhof bauen. Strg+Klick, um Stationen zu verbinden. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Signale errichten. Strg+Klick wechselt zwischen Formsignal-/Signaltypen{}Klicken und Ziehen, um mehrere Signale entlang einer geraden Strecke zu bauen. Strg halten, um bis zur nächsten Kreuzung zu bauen{}Strg+Klick auf die Schaltfläche zeigt das Signal-Menü. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbahnbrücke bauen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss mit aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss mit aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegmarkierungen und Bahnhöfen ebenfalls zu entfernen
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gleistyp in den ausgewählten umwandeln. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 
 # Rail depot construction window
@@ -1928,8 +1928,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ausricht
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Ausrichtung des Zugdepots auswählen
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Wegpunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wegpunkttyp auswählen
+STR_WAYPOINT_CAPTION                                            :{WHITE}Wegmarkierung
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wegmarkierungstyp auswählen
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Bahnhof bauen
@@ -1946,7 +1946,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eine Sta
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Die Stationsart auswählen, die gebaut werden soll
 
 STR_STATION_CLASS_DFLT                                          :Standardstation
-STR_STATION_CLASS_WAYP                                          :Wegpunkte
+STR_STATION_CLASS_WAYP                                          :Wegmarkierungen
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalauswahl
@@ -2238,7 +2238,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Lkw-Ladeplatz
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Busbahnhof
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Hafen
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boje
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Wegpunkt
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Wegmarkierung
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Wasser
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
@@ -2645,12 +2645,12 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Station/Ladepla
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht zum Wegpunkt scrollen. Strg+Klick öffnet neue Zusatzansicht beim Wegpunkt
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namen des Wegpunkts ändern
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht auf die Wegmarkierung zentrieren. Strg+Klick öffnet neue Zusatzansicht bei der Wegmarkierung
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namen der Wegmarkierung ändern
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Boje scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Boje
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Namen der Boje ändern
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen des Wegpunkts ändern
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen der Wegmarkierung ändern
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANYNUM}
@@ -3573,15 +3573,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Hafen mu
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Flughafen muss erst abgerissen werden
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenzt an mehr als einen vorhandenen Wegpunkt
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zu nahe an einem anderen Wegpunkt
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenzt an mehr als eine vorhandene Wegmarkierung
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zu nahe an einer anderen Wegmarkierung
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Wegpunkt kann hier nicht gebaut werden...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Wegmarkierung kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Boje kann hier nicht platziert werden...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Wegpunktname kann nicht geändert werden...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Wegmarkierungsname kann nicht geändert werden...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Wegpunkt kann hier nicht entfernt werden...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Wegpunkt muss erst abgerissen werden
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Wegmarkierung kann hier nicht entfernt werden...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Wegmarkierung muss erst abgerissen werden
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... Boje ist im Weg
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje wird von einer anderen Firma benutzt!
 
@@ -4172,8 +4172,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Boje #{C
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :Wegpunkt {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Wegpunkt {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Wegmarkierung {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Wegmarkierung {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Zugdepot
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Zugdepot #{COMMA}

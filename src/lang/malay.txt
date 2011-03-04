@@ -1456,7 +1456,7 @@ STR_FACE_FACECODE                                               :{BLACK}Wajah pe
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat dan/atau tetapkan nombor wajah presiden syarikat
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lihat dan/atau tetapkan nombor wajah presiden
 STR_FACE_FACECODE_SET                                           :{WHITE}Kod baru nombor wajah telah ditetapkan.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat menetapkan nombor wajah pemain - nombor mesti di antara 0 dan 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nombor wajah pemain tidak dapat ditetapkan - nombor mesti di antara 0 dan 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kegemaran anda
 STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai wajah kegemaran anda dalam fail config OpenTTD.
@@ -2025,7 +2025,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pilihan Objek
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih objek untuk dibina
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih objek untuk dibina. Tekan Shift untuk memilih antara bangunan/anggaran kos
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Saiz: {GOLD}{NUM} x {NUM} petak
 
 STR_OBJECT_CLASS_LTHS                                           :Rumah Api
@@ -2503,7 +2503,7 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Lakukan 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Kempen pengiklanan kecil
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Kempen pengiklanan sederhana
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Kempen pengiklanan besar
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Biaya pembinaan semula jalanraya bandar
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Biaya pembinaan semula jalanraya tempatan
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bina tugu pemilik syarikat
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Biaya pembinaan bangunan baru
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak pengangkutan eksklusif

@@ -1027,6 +1027,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Quan đ
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Không Có
+STR_FUNDING_ONLY                                                :Chỉ cấp vốn
+STR_MINIMAL                                                     :Tối thiểu
 STR_NUM_VERY_LOW                                                :Ít nhất
 STR_NUM_LOW                                                     :Ít
 STR_NUM_NORMAL                                                  :Trung bình
@@ -1094,6 +1096,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Cho ph�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mô phỏng thực tế diện tích khu vực đón hàng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Cho phép giải toả nhiều hơn đường, cầu ... của đô thị: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Độ dài lớn nhất của tàu hỏa: {ORANGE}{STRING} ô
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Lượng khói thải của phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Không
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Nguyên bản
@@ -1112,6 +1115,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Sử d�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Bốc/dỡ hàng lên phương tiện dần dần: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Lạm phát: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dỡ hàng hóa tại ga, bến, cảng chỉ khi nơi đó có nhu cầu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Độ dài lớn nhất của cầu: {ORANGE}{STRING} ô
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Độ dài lớn nhất của đường hầm: {ORANGE}{STRING} ô
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Tuỳ chỉnh phương thức xây dựng nhà máy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
@@ -1129,6 +1134,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Xe ôt�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Cuộn cửa sổ chính khi con trỏ gần mép: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Cho phép hối lộ chính quyền địa phương: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Cho phép mua quyền vận tải độc quyền: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Cho phép đầu tư hạ tầng giao thông địa phương : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Cho phép chuyển tiền cho các công ty khác: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Hệ số cân nặng để mô phỏng của tàu hỏa chở nặng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hệ số tốc độ máy bay: {ORANGE}1 / {STRING}
@@ -1150,8 +1156,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :không
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các ph.tiện đang dừng
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả ph.tiện
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của ph.tiện bị âm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ph.tiện không bao giờ thành đồ cổ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Tự thay mới ph.tiện nếu nó hết tuổi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Phương tiện không bao giờ thành đồ cổ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Tự thay mới phương tiện nếu nó hết tuổi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Tự thay mới phương tiện vào {ORANGE}{STRING}{LTBLUE} tháng trước/sau khi quá tuổi
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự thay mới ph.tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Khoảng thời gian hiện báo lỗi: {ORANGE}{STRING} giây
@@ -1170,7 +1176,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Rất Gồ Ghề
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Thuật toán đặt cây: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :không
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Không
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Gốc
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Tối Ưu Hóa
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Xoay bản đồ địa hình: {ORANGE}{STRING}
@@ -1353,6 +1359,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cơ ch�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Nguyên bản {BLUE}(Nên dùng)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Không nên dùng)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Tự động đổi chiều chạy tại đèn hiệu: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đổi giá trị
 
@@ -2301,7 +2308,7 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Khởi T
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kích thước bản đồ:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
-STR_MAPGEN_DATE                                                 :{BLACK}Ngày:
+STR_MAPGEN_DATE                                                 :{BLACK}Thời điểm:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lượng nhà máy:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Độ cao tuyết phủ:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuyển độ cao tuyết phủ lên cao
@@ -2319,7 +2326,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Phân b�
 STR_MAPGEN_GENERATE                                             :{WHITE}Khởi tạo
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Cạnh bản đồ:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Rìa bản đồ:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Tây Bắc
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Đông Bắc
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Đông Nam
@@ -2583,7 +2590,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút l
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ Cấp
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Trợ cấp sẽ có cho dịch vụ sau:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} (đến {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}- không -
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Không -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Chính quyền đã dành trợ cấp cho dịch vụ của:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} ({COMPANY}{YELLOW}, hết hạn {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy vào tên dịch vụ để xem nhà máy/đô thị liên quan. Ctrl+Click mở cửa sổ mới để xem
@@ -2594,7 +2601,7 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Giữ n�
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Ga, bến, cảng
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_LIST_NONE                                           :{YELLOW}- không -
+STR_STATION_LIST_NONE                                           :{YELLOW}- Không -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Chọn tất cả phương tiện
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Chọn tất cả loại toa xe (including no waiting cargo)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Không có bất kỳ loại toa xe nào đang chờ
@@ -3251,6 +3258,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Trung chuyển
 STR_ORDER_NO_UNLOAD                                             :(Không dỡ và lấy hàng)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Không dỡ và chờ lấy thêm đầy hàng)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Không dỡ và chờ lấy đủ hàng bất kỳ)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Không bốc hàng và không dỡ hàng)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[đỗ ở đầu gần]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[đỗ ở giữa]
@@ -3666,6 +3674,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Phải p
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Có hầm khác trên cùng đường
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Một đầu hầm kéo ra ngoài bản đồ
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Không thể đào đất để làm đầu kia của hầm
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... đường hầm quá dài
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... quá nhiều đối tượng

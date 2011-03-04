@@ -3600,7 +3600,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... treb
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenurile pot fi modificate doar când staţionează într-un depou
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren prea lung
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nu se poate inversa direcţia vehiculului...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... este alcătui din mai multe unități
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... este alcătuit din mai multe unități
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipuri de sine incompatibile
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nu se poate muta vehiculul...
@@ -3674,7 +3674,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Mai înt
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Intersectare cu alt tunel
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelul ar ieşi din hartă
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Terenul de la celălalt capăt al tunelului este imposibil de excavat
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... Tunel prea lung
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel prea lung
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... prea multe obiecte
