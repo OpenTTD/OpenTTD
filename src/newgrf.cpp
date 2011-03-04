@@ -6900,7 +6900,7 @@ static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags sub
 			}
 		}
 	}
-	grfmsg(2, "StaticGRFInfo: unkown type/id combination found, type=%c, id=%x", type, id);
+	grfmsg(2, "StaticGRFInfo: unknown type/id combination found, type=%c, id=%x", type, id);
 	return SkipUnknownInfo(buf, type);
 }
 
