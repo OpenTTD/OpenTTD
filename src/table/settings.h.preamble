@@ -164,19 +164,3 @@ static bool UpdateClientConfigValues(int32 p1);
 
 #define SDT_END() {{NULL, NULL, {0}, {0}, 0, 0, 0, NULL, STR_NULL, NULL, NULL}, SLE_END()}
 
-/* Shortcuts for macros below. Logically if we don't save the value
- * we also don't sync it in a network game */
-#define S SLF_NOT_IN_SAVE | SLF_NO_NETWORK_SYNC
-#define C SLF_NOT_IN_CONFIG
-#define N SLF_NO_NETWORK_SYNC
-
-#define D0 SGF_0ISDISABLED
-#define NC SGF_NOCOMMA
-#define MS SGF_MULTISTRING
-#define NO SGF_NETWORK_ONLY
-#define CR SGF_CURRENCY
-#define NN SGF_NO_NETWORK
-#define NG SGF_NEWGAME_ONLY
-#define NS SGF_NEWGAME_ONLY | SGF_SCENEDIT_TOO
-#define PC SGF_PER_COMPANY
-
