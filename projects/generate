@@ -212,10 +212,10 @@ load_settings_data() {
 	do
 		i=`basename $i`
 		RES="$RES
-#1			<File
-#1				RelativePath=\"..\\src\\table\\"$i"\"
-#1				>
-#1			</File>
+#1		<File
+#1			RelativePath=\"..\\src\\table\\"$i"\"
+#1			>
+#1		</File>
 #2    <None Include=\"..\\src\\table\\"$i"\" />
 #4    <None Include=\"..\\src\\table\\"$i"\">
 #4      <Filter>INI</Filter>
