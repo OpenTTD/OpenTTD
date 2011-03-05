@@ -12,16 +12,6 @@
 #ifndef SOUND_TYPE_H
 #define SOUND_TYPE_H
 
-struct MusicFileSettings {
-	byte playlist;
-	byte music_vol;
-	byte effect_vol;
-	byte custom_1[33];
-	byte custom_2[33];
-	bool playing;
-	bool shuffle;
-};
-
 struct SoundEntry {
 	uint8 file_slot;
 	size_t file_offset;

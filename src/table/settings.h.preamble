@@ -153,8 +153,8 @@ static bool UpdateClientConfigValues(int32 p1);
 #define SDTC_BOOL(var, flags, guiflags, def, str, proc, from, to)\
 	SDTG_GENERAL(#var, SDT_BOOLX, SL_VAR, SLE_BOOL, flags, guiflags, _settings_client.var, 1, def, 0, 1, 0, NULL, str, proc, from, to)
 
-#define SDTC_LIST(var, type, length, flags, guiflags, def, str, proc, from, to)\
-	SDTG_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, _settings_client.var, length, def, 0, 0, 0, NULL, str, proc, from, to)
+#define SDTC_LIST(var, type, flags, guiflags, def, str, proc, from, to)\
+	SDTG_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, _settings_client.var, lengthof(_settings_client.var), def, 0, 0, 0, NULL, str, proc, from, to)
 
 #define SDTC_STR(var, type, flags, guiflags, def, str, proc, from, to)\
 	SDTG_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, _settings_client.var, lengthof(_settings_client.var), def, 0, 0, 0, NULL, str, proc, from, to)

@@ -136,6 +136,17 @@ struct GUISettings {
 	}
 };
 
+/** Settings related to music. */
+struct MusicSettings {
+	byte playlist;     ///< The playlist (number) to play
+	byte music_vol;    ///< The requested music volume
+	byte effect_vol;   ///< The requested effects volume
+	byte custom_1[33]; ///< The order of the first custom playlist
+	byte custom_2[33]; ///< The order of the second custom playlist
+	bool playing;      ///< Whether music is playing
+	bool shuffle;      ///< Whether to shuffle the music
+};
+
 /** Settings related to currency/unit systems. */
 struct LocaleSettings {
 	byte   currency;                         ///< currency we currently use
@@ -441,6 +452,7 @@ struct ClientSettings {
 	GUISettings          gui;                ///< settings related to the GUI
 	NetworkSettings      network;            ///< settings related to the network
 	CompanySettings      company;            ///< default values for per-company settings
+	MusicSettings        music;              ///< settings related to music/sound
 };
 
 /** The current settings for this game. */

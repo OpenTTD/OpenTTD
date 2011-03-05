@@ -18,9 +18,6 @@
     <None Include="..\src\table\misc_settings.ini">
       <Filter>INI</Filter>
     </None>
-    <None Include="..\src\table\music_settings.ini">
-      <Filter>INI</Filter>
-    </None>
     <None Include="..\src\table\settings.ini">
       <Filter>INI</Filter>
     </None>
