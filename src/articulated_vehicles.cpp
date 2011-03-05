@@ -328,7 +328,7 @@ void AddArticulatedParts(Vehicle *first)
 				v = rv;
 
 				rv->subtype = 0;
-				gcache->cached_veh_length = 8; // Callback is called when the consist is finished
+				gcache->cached_veh_length = VEHICLE_LENGTH; // Callback is called when the consist is finished
 				rv->state = RVSB_IN_DEPOT;
 
 				rv->roadtype = front->roadtype;

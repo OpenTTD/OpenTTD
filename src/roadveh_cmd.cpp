@@ -100,7 +100,7 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 		offset->x = reference_width / 2;
 		offset->y = 0;
 	}
-	return this->gcache.cached_veh_length * reference_width / 8;
+	return this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH;
 }
 
 static SpriteID GetRoadVehIcon(EngineID engine)
@@ -161,11 +161,11 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
  */
 static uint GetRoadVehLength(const RoadVehicle *v)
 {
-	uint length = 8;
+	uint length = VEHICLE_LENGTH;
 
 	uint16 veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, v->engine_type, v);
 	if (veh_len != CALLBACK_FAILED) {
-		length -= Clamp(veh_len, 0, 7);
+		length -= Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
 	}
 
 	return length;
@@ -262,7 +262,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 
 		v->roadtype = HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		v->compatible_roadtypes = RoadTypeToRoadTypes(v->roadtype);
-		v->gcache.cached_veh_length = 8;
+		v->gcache.cached_veh_length = VEHICLE_LENGTH;
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 

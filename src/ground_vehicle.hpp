@@ -42,7 +42,7 @@ struct GroundVehicleCache {
 	/* Cached NewGRF values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	uint16 cached_total_length;     ///< Length of the whole vehicle (valid only for the first engine).
 	EngineID first_engine;          ///< Cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
-	uint8 cached_veh_length;        ///< Length of this vehicle in units of 1/8 of normal length. It is cached because this can be set by a callback.
+	uint8 cached_veh_length;        ///< Length of this vehicle in units of 1/VEHICLE_LENGTH of normal length. It is cached because this can be set by a callback.
 
 	/* Cached UI information. */
 	uint16 last_speed;              ///< The last speed we did display, so we only have to redraw when this changes.

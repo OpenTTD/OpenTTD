@@ -240,7 +240,7 @@ void Train::ConsistChanged(bool same_length)
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
-		veh_len = 8 - Clamp(veh_len, 0, 7);
+		veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
 
 		/* verify length hasn't changed */
 		if (same_length && veh_len != u->gcache.cached_veh_length) RailVehicleLengthChanged(u);
@@ -461,7 +461,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 		offset->x = reference_width / 2;
 		offset->y = vehicle_pitch;
 	}
-	return this->gcache.cached_veh_length * reference_width / 8;
+	return this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH;
 }
 
 static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
