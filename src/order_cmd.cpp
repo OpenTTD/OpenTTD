@@ -1638,6 +1638,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		int id = -1;
 		FOR_VEHICLE_ORDERS(v, order) {
 			id++;
+restart:
 
 			OrderType ot = order->GetType();
 			if (ot == OT_GOTO_DEPOT && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
@@ -1647,9 +1648,10 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 				 * dummy orders. They should just vanish. Also check the actual order
 				 * type as ot is currently OT_GOTO_STATION. */
 				if (order->IsType(OT_AUTOMATIC)) {
+					order = order->next; // DeleteOrder() invalidates current order
 					DeleteOrder(v, id);
-					id--;
-					continue;
+					if (order != NULL) goto restart;
+					break;
 				}
 
 				order->MakeDummy();
