@@ -8010,6 +8010,7 @@ static void ActivateOldShore()
 static void FinalisePriceBaseMultipliers()
 {
 	extern const PriceBaseSpec _price_base_specs[];
+	/** Features, to which '_grf_id_overrides' applies. Currently vehicle features only. */
 	static const uint32 override_features = (1 << GSF_TRAINS) | (1 << GSF_ROADVEHICLES) | (1 << GSF_SHIPS) | (1 << GSF_AIRCRAFT);
 
 	/* Evaluate grf overrides */
