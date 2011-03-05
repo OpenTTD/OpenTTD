@@ -1326,7 +1326,7 @@ static void SlList(void *list, SLRefType conv)
 static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
 {
 	if (_sl_version < sld->version_from || _sl_version > sld->version_to) return false;
-	if (sld->conv & SLF_SAVE_NO) return false;
+	if (sld->conv & SLF_NOT_IN_SAVE) return false;
 
 	return true;
 }
@@ -1338,7 +1338,7 @@ static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
  */
 static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
 {
-	if ((sld->conv & SLF_NETWORK_NO) && _sl.action != SLA_SAVE && _networking && !_network_server) {
+	if ((sld->conv & SLF_NO_NETWORK_SYNC) && _sl.action != SLA_SAVE && _networking && !_network_server) {
 		SlSkipBytes(SlCalcConvMemLen(sld->conv) * sld->length);
 		return true;
 	}

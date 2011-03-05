@@ -538,7 +538,7 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
-		if (sld->conv & SLF_CONFIG_NO) continue;
+		if (sld->conv & SLF_NOT_IN_CONFIG) continue;
 
 		/* XXX - wtf is this?? (group override?) */
 		s = strchr(sdb->name, '.');
@@ -1728,7 +1728,7 @@ bool SetSettingValue(uint index, int32 value, bool force_newgame)
 	 * (if any) to change. Also *hack*hack* we update the _newgame version
 	 * of settings because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
-	if (sd->save.conv & SLF_NETWORK_NO) {
+	if (sd->save.conv & SLF_NO_NETWORK_SYNC) {
 		void *var = GetVariableAddress(&GetGameSettings(), &sd->save);
 		Write_ValidateSetting(var, sd, value);
 
@@ -1826,7 +1826,7 @@ uint GetCompanySettingIndex(const char *name)
 bool SetSettingValue(uint index, const char *value, bool force_newgame)
 {
 	const SettingDesc *sd = &_settings[index];
-	assert(sd->save.conv & SLF_NETWORK_NO);
+	assert(sd->save.conv & SLF_NO_NETWORK_SYNC);
 
 	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) {
 		char **var = (char**)GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);

@@ -166,9 +166,9 @@ static bool UpdateClientConfigValues(int32 p1);
 
 /* Shortcuts for macros below. Logically if we don't save the value
  * we also don't sync it in a network game */
-#define S SLF_SAVE_NO | SLF_NETWORK_NO
-#define C SLF_CONFIG_NO
-#define N SLF_NETWORK_NO
+#define S SLF_NOT_IN_SAVE | SLF_NO_NETWORK_SYNC
+#define C SLF_NOT_IN_CONFIG
+#define N SLF_NO_NETWORK_SYNC
 
 #define D0 SGF_0ISDISABLED
 #define NC SGF_NOCOMMA

@@ -176,9 +176,9 @@ enum VarTypes {
 
 	/* 8 bits allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
-	SLF_SAVE_NO      = 1 <<  8, ///< do not save with savegame, basically client-based
-	SLF_CONFIG_NO    = 1 <<  9, ///< do not save to config file
-	SLF_NETWORK_NO   = 1 << 10, ///< do not synchronize over network (but it is saved if SSF_SAVE_NO is not set)
+	SLF_NOT_IN_SAVE     = 1 <<  8, ///< do not save with savegame, basically client-based
+	SLF_NOT_IN_CONFIG   = 1 <<  9, ///< do not save to config file
+	SLF_NO_NETWORK_SYNC = 1 << 10, ///< do not synchronize over network (but it is saved if SLF_NOT_IN_SAVE is not set)
 	/* 5 more possible flags */
 };
 
@@ -336,7 +336,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to)
+#define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to)
 
 /** Translate values ingame to different values in the savegame and vv. */
 #define SLE_WRITEBYTE(base, variable, value) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, value, value)
@@ -446,7 +446,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLEG_CONDNULL(length, from, to) {true, SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to, (void*)NULL}
+#define SLEG_CONDNULL(length, from, to) {true, SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, (void*)NULL}
 
 /** End marker of global variables save or load. */
 #define SLEG_END() {true, SL_END, 0, 0, 0, 0, NULL}

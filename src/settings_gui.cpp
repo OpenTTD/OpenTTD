@@ -1145,7 +1145,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 	uint button_y = y + (SETTING_HEIGHT - 11) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
-	if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server && !(sdb->flags & SGF_PER_COMPANY)) editable = false;
+	if (!(sd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(sdb->flags & SGF_PER_COMPANY)) editable = false;
 	if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
 	if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
 
@@ -1587,7 +1587,7 @@ struct GameSettingsWindow : Window {
 		const SettingDesc *sd = pe->d.entry.setting;
 
 		/* return if action is only active in network, or only settable by server */
-		if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server && !(sd->desc.flags & SGF_PER_COMPANY)) return;
+		if (!(sd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(sd->desc.flags & SGF_PER_COMPANY)) return;
 		if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
 		if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
 
