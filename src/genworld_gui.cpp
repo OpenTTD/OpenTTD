@@ -381,7 +381,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			case GLAND_TOWN_PULLDOWN:
 				if (_game_mode == GM_EDITOR) {
-					SetDParam(0, STR_DISASTERS_OFF);
+					SetDParam(0, STR_CONFIG_SETTING_OFF);
 				} else if (_settings_newgame.difficulty.number_towns == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
 					SetDParam(0, STR_NUM_CUSTOM_NUMBER);
 					SetDParam(1, _settings_newgame.game_creation.custom_town_number);
@@ -390,7 +390,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				}
 				break;
 
-			case GLAND_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_DISASTERS_OFF : _num_inds[_settings_newgame.difficulty.industry_density]); break;
+			case GLAND_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_CONFIG_SETTING_OFF : _num_inds[_settings_newgame.difficulty.industry_density]); break;
 			case GLAND_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
 			case GLAND_TREE_PULLDOWN:       SetDParam(0, _tree_placer[_settings_newgame.game_creation.tree_placer]); break;
 			case GLAND_TERRAIN_PULLDOWN:    SetDParam(0, _elevations[_settings_newgame.difficulty.terrain_type]); break;
