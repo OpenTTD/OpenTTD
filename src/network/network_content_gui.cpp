@@ -175,7 +175,7 @@ public:
 		}
 	}
 
-	virtual void OnDownloadProgress(const ContentInfo *ci, uint bytes)
+	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes)
 	{
 		if (ci->id != this->cur_id) {
 			strecpy(this->name, ci->filename, lastof(this->name));
