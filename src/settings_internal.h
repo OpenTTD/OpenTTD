@@ -69,6 +69,7 @@ struct SettingDescBase {
 	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
 	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
 	StringID str;           ///< (translated) string with descriptive text; gui and console
+	StringID val_str;       ///< (translated) first string describing the value.
 	OnChange *proc;         ///< callback procedure for when the value is changed
 	OnConvert *proc_cnvt;   ///< callback procedure when loading value mechanism fails
 };
