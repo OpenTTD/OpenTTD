@@ -1089,6 +1089,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :disabled
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Off
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Own company
+STR_CONFIG_SETTING_COMPANIES_ALL                                :All companies
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow landscaping under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
@@ -1224,13 +1229,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :all non-constru
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :all but landscape modifying actions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :all actions
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Off
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Own company
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :All companies
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Off
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Own company
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All companies
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Show arrival and departure in timetables: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING1}
