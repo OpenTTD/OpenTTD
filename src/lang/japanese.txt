@@ -1076,9 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :変動的
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :線路終点と駅
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :線路終点のみ
 
-STR_DISASTERS_OFF                                               :切
-STR_DISASTERS_ON                                                :入
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
 STR_CITY_APPROVAL_TOLERANT                                      :寛容
 STR_CITY_APPROVAL_HOSTILE                                       :対立

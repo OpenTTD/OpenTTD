@@ -1078,9 +1078,6 @@ STR_ECONOMY_FLUCTUATING                                         :הפכפכה
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :בסוף המסלול ובתחנות
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :בסוף המסלול בלבד
 
-STR_DISASTERS_OFF                                               :ללא
-STR_DISASTERS_ON                                                :עם
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
 STR_CITY_APPROVAL_TOLERANT                                      :סביר
 STR_CITY_APPROVAL_HOSTILE                                       :עויין

@@ -1076,9 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :Vaihteleva
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Radan päässä ja asemilla
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Vain radan päässä
 
-STR_DISASTERS_OFF                                               :Pois
-STR_DISASTERS_ON                                                :Päällä
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva
 STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
 STR_CITY_APPROVAL_HOSTILE                                       :Vihamielinen

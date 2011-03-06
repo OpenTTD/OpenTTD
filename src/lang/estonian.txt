@@ -1133,9 +1133,6 @@ STR_ECONOMY_FLUCTUATING                                         :Kõikuva nõudl
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Raudtee lõpus ja jaamades
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Ainult raudtee lõpus
 
-STR_DISASTERS_OFF                                               :Väljas
-STR_DISASTERS_ON                                                :Sees
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Soodustav
 STR_CITY_APPROVAL_TOLERANT                                      :Salliv
 STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik

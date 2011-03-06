@@ -1077,9 +1077,6 @@ STR_ECONOMY_FLUCTUATING                                         :Variable
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Al final de la línia, i a les estacions
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Només al final de la línia
 
-STR_DISASTERS_OFF                                               :Desactivat
-STR_DISASTERS_ON                                                :Activat
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiu
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil

@@ -1051,9 +1051,6 @@ STR_ECONOMY_FLUCTUATING                                         :Pulsējoša
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Līniju beigās un stacijās
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tikai līniju beigās
 
-STR_DISASTERS_OFF                                               :Izslēgtas
-STR_DISASTERS_ON                                                :Ieslēgtas
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujams
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerants
 STR_CITY_APPROVAL_HOSTILE                                       :Naidīgs

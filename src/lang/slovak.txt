@@ -1135,9 +1135,6 @@ STR_ECONOMY_FLUCTUATING                                         :Kolisava
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Na konci trate a v stanicach
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Len na konci trate
 
-STR_DISASTERS_OFF                                               :Vyp.
-STR_DISASTERS_ON                                                :Zap.
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Pozitivny
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantny
 STR_CITY_APPROVAL_HOSTILE                                       :Odmietavy

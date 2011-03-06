@@ -1076,9 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :Fluktuatif
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Pada ujung rel, dan pada stasiun
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Hanya pada ujung rel
 
-STR_DISASTERS_OFF                                               :Non-aktifkan
-STR_DISASTERS_ON                                                :Aktif
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan

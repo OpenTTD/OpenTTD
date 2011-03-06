@@ -1063,9 +1063,6 @@ STR_ECONOMY_FLUCTUATING                                         :Skommelende
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Op die einde van die lyn, en by stasies
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Slegs op die ende van die lyn
 
-STR_DISASTERS_OFF                                               :Af
-STR_DISASTERS_ON                                                :Aan
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissief
 STR_CITY_APPROVAL_TOLERANT                                      :Toelaatbaar
 STR_CITY_APPROVAL_HOSTILE                                       :Vyandelik

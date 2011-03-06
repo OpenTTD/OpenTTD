@@ -1076,9 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :Lên Xuống
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Cuối đường, tại ga
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Chỉ cuối đường
 
-STR_DISASTERS_OFF                                               :Tắt
-STR_DISASTERS_ON                                                :Bật
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
 STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
 STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn

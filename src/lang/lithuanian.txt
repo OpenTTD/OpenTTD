@@ -1143,9 +1143,6 @@ STR_ECONOMY_FLUCTUATING                                         :Kintanti
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Bėgių pabaigoje, stotelėse
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tik bėgių pabaigoje
 
-STR_DISASTERS_OFF                                               :Išjungta
-STR_DISASTERS_ON                                                :Įjungta
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
 STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas

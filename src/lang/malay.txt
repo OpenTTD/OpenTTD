@@ -1060,9 +1060,6 @@ STR_ECONOMY_FLUCTUATING                                         :Naik turun
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Di hujung landasan, dan di stesen
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Di hujung landasan sahaja
 
-STR_DISASTERS_OFF                                               :Tiada
-STR_DISASTERS_ON                                                :Ada
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Mengizinkan
 STR_CITY_APPROVAL_TOLERANT                                      :Bertoleransi
 STR_CITY_APPROVAL_HOSTILE                                       :Kurang mengizinkan

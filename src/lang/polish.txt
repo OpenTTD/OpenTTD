@@ -1456,9 +1456,6 @@ STR_ECONOMY_FLUCTUATING                                         :Zmienna
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Na końcu trasy i na stacjach
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tylko na końcu trasy
 
-STR_DISASTERS_OFF                                               :Wyłączone
-STR_DISASTERS_ON                                                :Włączone
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie

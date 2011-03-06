@@ -1076,9 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :متقلب
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :في نهاية الطريق, والمحطات
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :نهاية الطريق فقط
 
-STR_DISASTERS_OFF                                               :بدون
-STR_DISASTERS_ON                                                :السماح
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :متساهل
 STR_CITY_APPROVAL_TOLERANT                                      :متقبل
 STR_CITY_APPROVAL_HOSTILE                                       :معاد

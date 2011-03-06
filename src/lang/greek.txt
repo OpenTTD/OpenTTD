@@ -1167,9 +1167,6 @@ STR_ECONOMY_FLUCTUATING                                         :Κυμαινό�
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Στο τέλος της γραμμής και στους σταθμούς
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Στο τέλος της γραμμής μόνο
 
-STR_DISASTERS_OFF                                               :Ανενεργό
-STR_DISASTERS_ON                                                :Ενεργό
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτικό
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετικό
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρικό

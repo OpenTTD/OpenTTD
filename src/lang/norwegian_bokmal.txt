@@ -1074,9 +1074,6 @@ STR_ECONOMY_FLUCTUATING                                         :Flytende
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Ved linjeslutt og på stasjoner
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Bare ved linjeslutt
 
-STR_DISASTERS_OFF                                               :Av
-STR_DISASTERS_ON                                                :På
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig

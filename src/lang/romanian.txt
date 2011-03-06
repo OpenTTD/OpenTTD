@@ -1076,9 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :Fluctuantă
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :La capăt de linie şi în gară
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Doar la capăt de linie
 
-STR_DISASTERS_OFF                                               :Inactiv
-STR_DISASTERS_ON                                                :Activ
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :Ostilă

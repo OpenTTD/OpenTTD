@@ -1158,9 +1158,6 @@ STR_ECONOMY_FLUCTUATING                                         :proměnlivá
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :na konci tratě a ve stanicích
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :pouze na konci tratě
 
-STR_DISASTERS_OFF                                               :vypnuty
-STR_DISASTERS_ON                                                :zapnuty
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :nezaujatý
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantní
 STR_CITY_APPROVAL_HOSTILE                                       :zaujatý

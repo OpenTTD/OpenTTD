@@ -1076,9 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :Schommelend
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Aan het eind van het spoor, en in stations
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Aan het eind van het spoor
 
-STR_DISASTERS_OFF                                               :Uit
-STR_DISASTERS_ON                                                :Aan
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig

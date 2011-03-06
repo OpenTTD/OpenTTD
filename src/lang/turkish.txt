@@ -1075,9 +1075,6 @@ STR_ECONOMY_FLUCTUATING                                         :Değişken
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Ray Sonunda ve Duraklarda
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Sadece Ray Sonunda
 
-STR_DISASTERS_OFF                                               :Kapalı
-STR_DISASTERS_ON                                                :Açik
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :İzin verici
 STR_CITY_APPROVAL_TOLERANT                                      :Töleransli
 STR_CITY_APPROVAL_HOSTILE                                       :Katı

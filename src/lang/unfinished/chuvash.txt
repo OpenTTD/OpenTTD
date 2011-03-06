@@ -557,9 +557,6 @@ STR_SUBSIDY_X4                                                  :x4
 
 
 
-STR_DISASTERS_OFF                                               :Сӳнтер
-STR_DISASTERS_ON                                                :Ҫут
-
 
 
 # Advanced settings window

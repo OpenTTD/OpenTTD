@@ -1066,9 +1066,6 @@ STR_ECONOMY_FLUCTUATING                                         :Fluktuazioekin
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Bidearen bukaeran eta estazioan
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Bidearen bukaeran bakarrik
 
-STR_DISASTERS_OFF                                               :Itzalita
-STR_DISASTERS_ON                                                :Piztuta
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Jasankorra
 STR_CITY_APPROVAL_TOLERANT                                      :Jasanbera
 STR_CITY_APPROVAL_HOSTILE                                       :Kontrakoa

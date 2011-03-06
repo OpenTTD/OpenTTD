@@ -1230,9 +1230,6 @@ STR_ECONOMY_FLUCTUATING                                         :Неустой�
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :В конце линий и на станциях
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Только в конце линий
 
-STR_DISASTERS_OFF                                               :Выключены
-STR_DISASTERS_ON                                                :Включены
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Дозволяющее
 STR_CITY_APPROVAL_TOLERANT                                      :Терпимое
 STR_CITY_APPROVAL_HOSTILE                                       :Враждебное

@@ -1065,9 +1065,6 @@ STR_ECONOMY_FLUCTUATING                                         :Óstöðugur
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Á enda brautar, og á lestarstöðvum
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Aðeins á enda brautar
 
-STR_DISASTERS_OFF                                               :Ekki á
-STR_DISASTERS_ON                                                :Á
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 STR_CITY_APPROVAL_TOLERANT                                      :Umburðarlynd
 STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg

@@ -1172,9 +1172,6 @@ STR_ECONOMY_FLUCTUATING                                         :Promjenjivo
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Na kraju pruge, i na postaji
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Isključivo na kraju pruge
 
-STR_DISASTERS_OFF                                               :Isključeno
-STR_DISASTERS_ON                                                :Uključeno
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Agresivan
