@@ -1291,13 +1291,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :仅在雨林中
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :任意地点
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具栏位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :左侧
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :中央
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :右侧
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左侧
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}状态栏位置: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :左侧
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :中央
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :右侧
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}窗口依附半径：{ORANGE}{STRING} 像素
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}窗口依附半径：{ORANGE}禁用
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}窗口软性限制（非粘滞）： {ORANGE}{STRING}

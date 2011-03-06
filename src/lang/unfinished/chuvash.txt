@@ -603,12 +603,9 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ҫук {RED}(breaks lumber mill)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :таҫта та
 
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Сулахайра
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Варринче
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Сылтӑмра
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Сулахай
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Варӑ
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Сылтӑм
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Сулахайра
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Варринче
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмра
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ҫук
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Вӑрах
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Виҫеллӗ

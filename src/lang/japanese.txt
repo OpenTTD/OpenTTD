@@ -1299,13 +1299,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林の中だ
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :各地
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}メインツールバーの位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :左
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :中位
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :右
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中位
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}お知らせバ−の置き場: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :左
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :中央
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :右
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}{STRING} ピクセル
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}切
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}スティッキーではないウィンドウ数のソフトウェア制限 : {ORANGE}{STRING}個

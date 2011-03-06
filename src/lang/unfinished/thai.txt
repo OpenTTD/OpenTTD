@@ -1293,13 +1293,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :เฉพาะ
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ทุกหนทุกแห่ง
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}ตำแหน่งแถบเครื่องมือหลัก: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :ซ้าย
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :กลาง
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :ขวา
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ซ้าย
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :กลาง
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ขวา
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}ตำแหน่งของแถบแสดงสถานะ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :ซ้าย
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :กลาง
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :ขวา
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ระยะ snap หน้าต่าง: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ระยะ snap หน้าต่าง: {ORANGE}ไม่ใช้งาน
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}จำนวนมากสุดของหน้าต่างที่ไม่ปักหมุด: {ORANGE}{STRING}

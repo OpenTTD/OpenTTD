@@ -670,9 +670,6 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Гра�
 
 
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиција на статусната лента: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Лево
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Центар
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Право
 
 
 

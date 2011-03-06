@@ -1372,13 +1372,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo v deževne
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :povsod
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozicija glavne orodne vrstice: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Levo
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Sredina
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Desno
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Položaj statusne vrstice: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Levo
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Sredina
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Desno
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radij lepljenja oken: {ORANGE}{STRING} piks{P el la li ov}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radij lepljenja oken: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Največje število nelepljivih oken: {ORANGE}{STRING}

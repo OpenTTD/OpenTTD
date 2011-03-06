@@ -1350,13 +1350,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pagrindinės įrankių juostos pozicija: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kairėje
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centruoti
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Dešinėje
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kairėje
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centruoti
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Būsenos juostos vieta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Kairėje
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centre
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Dešinėje
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Langų persidengimo atstumas: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Langų kibumo atstumas: {ORANGE}disabled
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Langų negriežtas limitas (nelipnių): {ORANGE}{STRING}

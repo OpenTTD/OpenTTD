@@ -1283,9 +1283,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :רק ביערו
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :בכל מקום
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{ORANGE}{STRING}{LTBLUE} :מיקום הסרגל העיקרי
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :שמאל
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :מרכז
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :ימין
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :שמאל
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :מרכז
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING}

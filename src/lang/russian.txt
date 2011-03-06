@@ -1453,13 +1453,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :только в
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :везде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :слева
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :посередине
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :справа
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Расположение строки состояния: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :слева
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :посередине
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :справа
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон: {ORANGE}{STRING} пикс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радиус прилипания окон: {ORANGE}отключено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. число открытых окон (не «приклеенных»): {ORANGE}{STRING}

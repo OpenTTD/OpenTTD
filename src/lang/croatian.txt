@@ -1395,13 +1395,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo u kišnim 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :posvuda
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Položaj glavne alatne trake: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Lijevo
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Sredina
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Desno
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lijevo
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozicija status trake: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lijevo
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Sredina
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Desno
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus hvatanja prozora: {ORANGE}{STRING} piksela
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus hvatanja prozora: {ORANGE}isključen
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najveći broj neljepljivih prozora: {ORANGE}{STRING}

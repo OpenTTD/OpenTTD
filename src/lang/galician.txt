@@ -1241,9 +1241,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :só nos bosques
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :todas partes
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Dereita
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dereita
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radio de captura da fiestra: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de agarre da fiestra: {ORANGE}desactivado
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocidade de crecemento das cidades: {ORANGE}{STRING}

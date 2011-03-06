@@ -599,9 +599,6 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தக�
 
 
 
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :இடது
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :மத்திய
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :வலது
 
 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}சிக்னல்களில் தானியங்கி மீட்சி: {ORANGE}{STRING}

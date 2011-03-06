@@ -1198,13 +1198,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ezer ez {RED}(e
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bakarrik euri basoetan
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :leku guztietan
 
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Ezkerra
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Erdia
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Eskuina
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ezkerra
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Erdia
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Eskuina
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Egoera posizioa {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Ezkerra
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Erdia
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Eskuina
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Motel
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normala

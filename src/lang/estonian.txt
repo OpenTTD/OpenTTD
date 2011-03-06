@@ -1356,13 +1356,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :ainult vihmamet
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :igale poole
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vasakul
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Keskel
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Paremal
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasakul
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Seisundiriba asukoht: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vasakul
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Keskel
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Paremal
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Akna haaramisraadius: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Akna haaramisraadius: {ORANGE}välja lülitatud
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimaalne kinnistamata akende arv: {ORANGE}{STRING}

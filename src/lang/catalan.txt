@@ -1300,13 +1300,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :només a les se
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :a tot arreu
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerra
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centre
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Dreta
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerra
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posició de la barra d'estat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Esquerra
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centre
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Dreta
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radi de tall de la finestra: {ORANGE}{STRING} píxel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de tall de la finestra: {ORANGE}desactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nombre màxim de finestres no-enganxoses: {ORANGE}{STRING}

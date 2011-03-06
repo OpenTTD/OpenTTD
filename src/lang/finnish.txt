@@ -1299,13 +1299,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :vain sademetsii
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :kaikkialle
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vasemmalla
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :keskellä
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :oikealla
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vasemmalla
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :keskellä
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Tilarivin sijainti: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :vasemmalla
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :keskellä
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :oikealla
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunoiden kiinniottosäde: {ORANGE}{STRING} pikseli{P 0:1 "" ä}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Suurin sallittu ei-kiinnitettyjen ikkunoiden lukumäärä: {ORANGE}{STRING}

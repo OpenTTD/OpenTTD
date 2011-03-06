@@ -1208,9 +1208,9 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Caniat√
 
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Safle'r prif far offer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Chwith
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Canol
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :De
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Chwith
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Canol
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radiws snap ffenestr: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radiws snap ffenestr: {ORANGE}analluogwyd
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Terfyn meddal ffenestri (ddim yn ludiog): {ORANGE}{STRING}

@@ -1381,13 +1381,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :jen v deštnýc
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všude
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Umístění hlavní lišty: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlevo
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :uprostřed
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :vpravo
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlevo
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :uprostřed
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozice statusbaru: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vlevo
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Uprostřed
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Vpravo
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}vypnuto
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Omezit počet zavíratelných oken na: {ORANGE}{STRING}

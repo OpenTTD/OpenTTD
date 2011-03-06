@@ -1424,13 +1424,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :тільки у
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :скрізь
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положення головного меню: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Ліворуч
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :По центру
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Праворуч
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ліворуч
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :По центру
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Праворуч
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиція панелі статусу: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Ліворуч
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Посередині
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Праворуч
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Максимальна кількість вікон (що не прилипають): {ORANGE}{STRING}

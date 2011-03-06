@@ -1277,9 +1277,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :aðeins í regn
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :allstaðar
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Staðsetning tækjasláar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vinstri
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Miðja
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Hægri
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstri
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Gluggar smella saman við: {ORANGE}{STRING} punkta radíus
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Gluggar smella: {ORANGE}ekki saman
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Hámarksfjöldi glugga (ófestra): {ORANGE}{STRING}

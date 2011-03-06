@@ -1301,13 +1301,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :solo nelle fore
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ovunque
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sinistra
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Destra
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sinistra
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Destra
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posizione barra di stato: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Sinistra
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centro
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Destra
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raggio di aggancio delle finestre: {ORANGE}{STRING} pixel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raggio di aggancio delle finestre: {ORANGE}Disabilitato
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Numero massimo di finestre non persistenti: {ORANGE}{STRING}

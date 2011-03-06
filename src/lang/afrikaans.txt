@@ -1275,12 +1275,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Slegs in reënw
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisie van hoof werktuigbaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Links
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Senter
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Regs
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Links
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Middel
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Regs
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Senter
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Regs
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Venster slag straal: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Venster slag straal: {ORANGE}strem
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Venster sagte beperking (nie taai): {ORANGE}{STRING}

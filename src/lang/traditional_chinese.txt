@@ -1295,13 +1295,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :只在雨林區
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :到處產生
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具列位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :靠左
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :置中
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :靠右
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :靠左
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :置中
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :靠右
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}狀態列顯示位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :左側
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :中間
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :右側
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}視窗吸附距離：{ORANGE}{STRING} 像素
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}視窗吸附距離：{ORANGE}關閉
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}不貼齊視窗的最大數量：{ORANGE}{STRING}

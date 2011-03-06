@@ -1347,13 +1347,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :len v dažďov�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všade
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozícia hlavného menu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlavo
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :v strede
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :vpravo
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlavo
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozícia statusbaru: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vľavo
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Stred
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Doprava
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vzdialenosť pre prichytenie okna: {ORANGE}{STRING} bod{P "" y ov}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenosť pre prichytenie okna: {ORANGE}vypnuté
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Jemný limit okna (nie je dôležitý): {ORANGE}{STRING}

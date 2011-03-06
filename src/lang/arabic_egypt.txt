@@ -1299,13 +1299,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :الغابات 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :كل مكان
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :يسار
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :متوسط
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :يمين
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :يسار
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}موقع شريط المعلومات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :يسار
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :وسط
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :يمين
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}قطر اللقطة للاطار: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}قطر اللقطة للاطار: {ORANGE}غير مفعل
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - :{ORANGE}{STRING}

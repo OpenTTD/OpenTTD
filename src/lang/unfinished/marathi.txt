@@ -611,9 +611,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}स्टेटसबार वरचं स्थान: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :डावीकडे
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :मधोमध
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :उजवीकडे
 
 
 

@@ -1299,13 +1299,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bara i regnskog
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :överallt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vänster
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centrerad
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Höger
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusradens position: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vänster
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Mitten
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Höger
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fönstersnäppsradie: {ORANGE}{STRING} pix{P 0:1 el lar}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximalt antal icke-klistrade fönster: {ORANGE}{STRING}

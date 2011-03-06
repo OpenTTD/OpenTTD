@@ -1299,13 +1299,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :hanya pada huta
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :dimanapun
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisi toolbar utama: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kiri
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Tengah
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Kanan
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posisi status bar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Kiri
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Tengah
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Kanan
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Lekatkan jendela pada: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pelekatan jendela: {ORANGE}dimatikan
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Batas jumlah jendela (tak lekat): {ORANGE}{STRING}

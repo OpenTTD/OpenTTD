@@ -1300,13 +1300,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Seulement dans 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Partout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :À gauche
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centrée
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :À droite
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :À gauche
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrée
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Position de la barre d'état{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :À gauche
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centrée
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :À droite
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}inactif
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nombre maximum de fenêtres non-ineffaçables{NBSP}: {ORANGE}{STRING}

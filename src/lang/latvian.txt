@@ -1251,13 +1251,10 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Atļaut
 
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas izvietojums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Pa kreisi
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centrā
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Pa labi
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Pa kreisi
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrā
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Pa labi
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusa joslas novietojums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Kreisajā
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centrā
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Labajā
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}{STRING} pikseļi
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}atspējots
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Windows limits (non-sticky): {ORANGE}{STRING}

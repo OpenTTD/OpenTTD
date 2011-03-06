@@ -1234,9 +1234,6 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Stêden
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :gjin {RED}(brekt houtseachmûne)
 
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posysje fan statusbar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lofts
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Midden
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Rjochts
 
 
 

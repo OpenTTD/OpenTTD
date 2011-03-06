@@ -1297,13 +1297,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :само в д�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :навсякъде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Позиция на лентата за инструменти: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :ляво
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :център
-STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :дясно
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ляво
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Разположение на лентата за състоянието: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Ляво
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Централно
-STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Дясно
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Прилепване на прозорците: {ORANGE}{STRING} пиксел{P 0:1 "" а}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилепване на прозорците: {ORANGE}изключено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Максимално количество на прозореците без залепване: {ORANGE}{STRING}
