@@ -1191,15 +1191,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dopusti
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dopusti rušenje više cesta, mostova i tunela u vlasništvu grada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Najveća dužina vlakova: {ORANGE}{STRING} tile
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/iskri za lokomotive: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nema
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realističan
+STR_CONFIG_SETTING_NONE                                         :Nema
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realističan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model ubrzanja vlaka: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalni
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistični
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model ubrzavanja za cestovna vozila: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :{G=middle}Originalno
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :{G=middle}Stvarno
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost kosina za vlakove {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nagib padine za cestovna vozila {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabrani vlakovima i brodovima skretanja pod 90 stupnjeva: {ORANGE}{STRING}

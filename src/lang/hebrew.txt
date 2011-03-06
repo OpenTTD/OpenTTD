@@ -1096,11 +1096,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{ORANGE}{STRING
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}אפשר הסרה של יותר כבישים גשרים וכו' שבבעלות עיירות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{ORANGE}{STRING}{LTBLUE} :מודל האצת רכבות
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :מקורי
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :מציאותי
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}מודל האצת כלי רכב: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :מקורי
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :מציאותי
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}תלילות מדרון עבור רכבות {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}תלילות המדרון עבור כלי רכב {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}אסור על רכבות וספינות לבצע פניות של 90 מעלות: {ORANGE}{STRING}

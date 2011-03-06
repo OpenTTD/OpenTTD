@@ -1096,15 +1096,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Autoris
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permettre le retrait de plus d'éléments possédés par une ville{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Longueur maximum des trains{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantité de fumée/étincelles des véhicules{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Aucune
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Réaliste
+STR_CONFIG_SETTING_NONE                                         :Aucune
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Réaliste
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modèle d'accélération des trains{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Réaliste
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modèle d'accélération des véhicules routiers{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Réaliste
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinaison des pentes pour les trains{NBSP}: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinaison des pentes pour les véhicules routiers{NBSP}: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et navires les virages à 90°{NBSP}: {ORANGE}{STRING}

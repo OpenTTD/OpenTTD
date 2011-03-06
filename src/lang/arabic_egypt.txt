@@ -1095,15 +1095,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}الس�
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}اقصى طول لعربات القطار: {ORANGE}{STRING}مربع
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}كمية دخان/شرار القطارات:{ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :بدون
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :اصلي
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :واقعي
+STR_CONFIG_SETTING_NONE                                         :بدون
+STR_CONFIG_SETTING_ORIGINAL                                     :اصلي
+STR_CONFIG_SETTING_REALISTIC                                    :واقعي
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE} موديل تسارع القطارات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :الاصلي
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :واقعي
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}نمط تسارع عربات الطريق: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :اصلي
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :واقعي
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}تدرج ميلان سكة القطار {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}نسبة الميلان للعربات {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING}

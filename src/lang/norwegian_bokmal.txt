@@ -1092,15 +1092,11 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat fjerning av flere veier, broer osv. eid av byene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde med lokomotivrøyk/gnister: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistisk
+STR_CONFIG_SETTING_NONE                                         :Ingen
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonstype: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kjøretøyers akselerasjonstype: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsnivå for kjøretøy {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjøre 90° svinger: {ORANGE}{STRING}

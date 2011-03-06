@@ -1184,15 +1184,11 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επι�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Κανένα
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Γνήσιο
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Ρεαλιστικό
+STR_CONFIG_SETTING_NONE                                         :Κανένα
+STR_CONFIG_SETTING_ORIGINAL                                     :Γνήσιο
+STR_CONFIG_SETTING_REALISTIC                                    :Ρεαλιστικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Μοντέλο επιτάχυνσης οχημάτων δρόμου: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Αρχικό
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Ρεαλιστικό
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Υπερβολική κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Υπερβολική κλίση για τα οχήματα δρόμου {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στα τρένα και πλοια να κάνουν στροφες 90°: {ORANGE}{STRING}

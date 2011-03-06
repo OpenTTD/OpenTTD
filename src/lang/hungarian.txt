@@ -1159,15 +1159,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Életh�
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Vonatok maximális hossza: {ORANGE}{STRING} mező
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Járművek kipufogógáz/füst mennyisége: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nincs
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Eredeti
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Valósághű
+STR_CONFIG_SETTING_NONE                                         :Nincs
+STR_CONFIG_SETTING_ORIGINAL                                     :Eredeti
+STR_CONFIG_SETTING_REALISTIC                                    :Valósághű
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Valósághű
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Közúti járművek gyorsulási módja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Eredeti
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Valósághű
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Lejtő meredeksége vonatoknak: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lejtő meredeksége közúti járműveknek: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tehetnek 90 fokos kanyart: {ORANGE}{STRING}

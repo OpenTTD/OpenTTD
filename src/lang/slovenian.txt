@@ -1168,15 +1168,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest in mostov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Največja dolžina vlakov: {ORANGE}{STRING} plošč{P a i e ""}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker vozil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Brez
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalno
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistično
+STR_CONFIG_SETTING_NONE                                         :Brez
+STR_CONFIG_SETTING_ORIGINAL                                     :Originalno
+STR_CONFIG_SETTING_REALISTIC                                    :Realistično
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pospeškov vlakov: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističen
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model pospeškov cestnih vozil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistično
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Naklon vzpona za vlake {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Naklon vzpona za cestna vozila {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90° zavoje: {ORANGE}{STRING}

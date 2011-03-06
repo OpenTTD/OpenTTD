@@ -1096,15 +1096,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Verschi
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximale Länge von Zügen: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Menge an Rauch / Funken von Lokomotiven: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Keine
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistisch
+STR_CONFIG_SETTING_NONE                                         :Keine
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realistisch
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Beschleunigungsmodell für Züge: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisch
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Beschleunigungsmodell für Straßenfahrzeuge: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Stärke von Steigungen für Züge: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Stärke von Steigungen für Straßenfahrzeuge: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zügen und Schiffen 90°-Kurven verbieten: {ORANGE}{STRING}

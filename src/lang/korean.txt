@@ -1096,15 +1096,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}좀더 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}열차의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}기관차 매연/전기 스파크의 양: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :없음
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :오리지널
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :현실적
+STR_CONFIG_SETTING_NONE                                         :없음
+STR_CONFIG_SETTING_ORIGINAL                                     :오리지널
+STR_CONFIG_SETTING_REALISTIC                                    :현실적
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}열차 가속 모델: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :오리지널 (언덕을 오를 때 속도 감속)
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :현실적으로 (급커브에서 속도 감속)
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}자동차 가속 모델: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :기본값
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :현실적
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}열차를 위한 경사면의 경사도: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}자동차를 위한 경사면의 경사도 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING}

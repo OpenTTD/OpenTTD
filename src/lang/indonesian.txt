@@ -1095,15 +1095,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ijinkan
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak jalan, jembatan, terowongan milik kota, dsb: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Panjang maksimum kereta: {ORANGE}{STRING} kotak
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Banyaknya asap / percikan lokomotif: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tidak ada
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orisinil
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistis
+STR_CONFIG_SETTING_NONE                                         :Tidak ada
+STR_CONFIG_SETTING_ORIGINAL                                     :Orisinil
+STR_CONFIG_SETTING_REALISTIC                                    :Realistis
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akselerasi kereta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asli
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistis
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model kendaraan percepatan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Asli
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistis
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Tingkat dataran slope pada kereta {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lereng kecuraman untuk kendaraan {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING}

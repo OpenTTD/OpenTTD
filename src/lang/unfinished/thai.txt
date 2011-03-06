@@ -1092,15 +1092,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}อน�
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}อนุญาตให้ทำลายถนน, สะพาน, สิ่งก่อสร้างของเมืองได้มากขึ้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ความยาวของรถไฟที่มากที่สุด: {ORANGE}{STRING} ตาราง
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}จำนวนของหัวจักร ควัน/ประกาย: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :ไม่มี
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :ดั้งเดิม
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :สมจริง
+STR_CONFIG_SETTING_NONE                                         :ไม่มี
+STR_CONFIG_SETTING_ORIGINAL                                     :ดั้งเดิม
+STR_CONFIG_SETTING_REALISTIC                                    :สมจริง
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ต้นแบบการเร่งความเร็วของรถไฟ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :ดั้งเดิม
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :เหมือนจริง
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}รูปแบบการเร่งของรถยนต์: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :ดั้งเดิม
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :เหมือนจริง
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}เนินสูงเกินไปสำหรับรถไฟ {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}ความชันสำหรับรถยนต์ {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}ห้ามรถไฟและเรือเลี้ยวในมุม 90 องศา: {ORANGE}{STRING}

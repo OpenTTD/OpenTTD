@@ -588,9 +588,9 @@ STR_SUBSIDY_X4                                                  :x४
 # Advanced settings window
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}वाहनांचा धूर/ठिणग्या: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :नाही
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :मुळ
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :खरेखुरे
+STR_CONFIG_SETTING_NONE                                         :नाही
+STR_CONFIG_SETTING_ORIGINAL                                     :मुळ
+STR_CONFIG_SETTING_REALISTIC                                    :खरेखुरे
 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE} वाहन हरवल्यास सूचित करा: {ORANGE}{STRING}

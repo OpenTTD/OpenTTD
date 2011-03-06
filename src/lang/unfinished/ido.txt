@@ -514,8 +514,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 
 # Advanced settings window
 
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nulo
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
+STR_CONFIG_SETTING_NONE                                         :Nulo
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plata areo cirkum industrii: {ORANGE}{STRING} karel{P 0:1 o i}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulo
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala

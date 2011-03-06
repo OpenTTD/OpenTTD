@@ -1068,15 +1068,11 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Atļaut
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākus mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Atļaut pilsētai piederošo ceļu un tiltu nojaukšanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transportlīdzekļa izmešu efektu daudzums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nekāds
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Oriģinālais
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Reālistisks
+STR_CONFIG_SETTING_NONE                                         :Nekāds
+STR_CONFIG_SETTING_ORIGINAL                                     :Oriģinālais
+STR_CONFIG_SETTING_REALISTIC                                    :Reālistisks
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vilciena paātrinājuma modelis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Oriģinālais
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Reālistisks
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ceļu transportlīdzekļu paātrinājuma modelis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Oriģinālais
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Reālistisks
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Aizliedz vilcieniem un kuģiem veikt 90 grādu pagriezienus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Atļaut savienot stacijas, kas neatrodas tieši blakus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Lietot uzlabotu piekraušanas algoritmu: {ORANGE}{STRING}

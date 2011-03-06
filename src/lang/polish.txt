@@ -1475,15 +1475,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksymalna długość pociągów: {ORANGE}{STRING} p{P ole ola ól}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ilość dymu / iskier lokomotywy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :brak
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :oryginalnie
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :realistycznie
+STR_CONFIG_SETTING_NONE                                         :brak
+STR_CONFIG_SETTING_ORIGINAL                                     :oryginalnie
+STR_CONFIG_SETTING_REALISTIC                                    :realistycznie
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model przyspieszania pociągu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :oryginalny
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :realistyczny
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model przyspieszania samochodów: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :oryginalny
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :realistyczny
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nachylenie zboczy dla pociągów {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nachylenie zboczy dla samochodów {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabroń pociągom i statkom skręcać o 90 stopni: {ORANGE}{STRING}

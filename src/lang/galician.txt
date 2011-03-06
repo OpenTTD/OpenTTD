@@ -1068,15 +1068,11 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir terraformación baixo edificios, pistas, etc. (autopendente): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir áreas de captura máis realistas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ningún
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orixinal
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realista
+STR_CONFIG_SETTING_NONE                                         :Ningún
+STR_CONFIG_SETTING_ORIGINAL                                     :Orixinal
+STR_CONFIG_SETTING_REALISTIC                                    :Realista
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleración dos trens: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orixinal
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de aceleración para camións/buses: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orixinal
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90º: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitir a unión de estacións non adxacentes {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}

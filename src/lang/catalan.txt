@@ -1096,15 +1096,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Llargada màxima dels trens: {ORANGE}{STRING} cel·l{P 0:1 a es}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantitat de fum/xispes del vehicle: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Cap
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realístic
+STR_CONFIG_SETTING_NONE                                         :Cap
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realístic
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model d'acceleració del Tren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realístic
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model d'acceleració per als vehicles: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realístic
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinació de les pujades per als trens {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinació de les pujades per als vehicles {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibeix fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING}

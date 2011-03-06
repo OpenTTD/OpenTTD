@@ -1095,15 +1095,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebrûk
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Stjin ferwiderje fan stedelike dyken, brêgen en tunnels ta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimum lingte fan treinen: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Utjefte fan steam/fonken by treinen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Gjin
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orizjiniel
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistysk
+STR_CONFIG_SETTING_NONE                                         :Gjin
+STR_CONFIG_SETTING_ORIGINAL                                     :Orizjiniel
+STR_CONFIG_SETTING_REALISTIC                                    :Realistysk
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein akselerasje model: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orizjineel
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistysk
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Dyk reau akselerasje model: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orizjineel
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistysk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Ôfskotsgraad foar treinen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Ôfskotsgraad foar dyk reau {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Ferbied treinen en boarten om 90° te swaaien: {ORANGE}{STRING}

@@ -1091,23 +1091,19 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тер�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество на дим/искри от превозното средство: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Без
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Оригинално
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL.m                      :Оригинален
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL.f                      :Оригинална
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL.n                      :Оригинално
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL.p                      :Оригинални
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :{G=m}Реалистично
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC.m                     :Реалистичен
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC.f                     :Реалистична
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC.n                     :Реалистична
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC.p                     :Реалистични
+STR_CONFIG_SETTING_NONE                                         :Без
+STR_CONFIG_SETTING_ORIGINAL                                     :Оригинално
+STR_CONFIG_SETTING_ORIGINAL.m                                   :Оригинален
+STR_CONFIG_SETTING_ORIGINAL.f                                   :Оригинална
+STR_CONFIG_SETTING_ORIGINAL.n                                   :Оригинално
+STR_CONFIG_SETTING_ORIGINAL.p                                   :Оригинални
+STR_CONFIG_SETTING_REALISTIC                                    :{G=m}Реалистично
+STR_CONFIG_SETTING_REALISTIC.m                                  :Реалистичен
+STR_CONFIG_SETTING_REALISTIC.f                                  :Реалистична
+STR_CONFIG_SETTING_REALISTIC.n                                  :Реалистична
+STR_CONFIG_SETTING_REALISTIC.p                                  :Реалистични
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модел на ускорение на влаковете: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Оригинален
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реалистичен
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модел на ускорение на пътни превозни срества: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :{G=m}Оригинален
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :{G=m}Реалистичен
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Стръмнина на склона за влакове {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Стръмнина на склона за пътни превозни средства {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрани 90 градусовите завои: {ORANGE}{STRING}

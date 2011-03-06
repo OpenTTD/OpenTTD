@@ -564,13 +564,9 @@ STR_SUBSIDY_X4                                                  :x4
 STR_CONFIG_SETTING_OFF                                          :Сӳнтер
 STR_CONFIG_SETTING_ON                                           :Ҫут
 STR_CONFIG_SETTING_DISABLED                                     :хастар мар
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ҫук
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Чӑн
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Реалисмлӑ
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Чӑн
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реаллӑ
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Чӑн
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Реаллӑ
+STR_CONFIG_SETTING_NONE                                         :Ҫук
+STR_CONFIG_SETTING_ORIGINAL                                     :Чӑн
+STR_CONFIG_SETTING_REALISTIC                                    :Реалисмлӑ
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ҫук
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
 

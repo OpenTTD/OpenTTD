@@ -1077,12 +1077,10 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarka
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Benarkan kawasan tangkapan yang lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Benarkan lebih pemusnahan jalanraya, jambatan, dan sbgnya yang dimiliki bandar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tiada
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Asli
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistik
+STR_CONFIG_SETTING_NONE                                         :Tiada
+STR_CONFIG_SETTING_ORIGINAL                                     :Asli
+STR_CONFIG_SETTING_REALISTIC                                    :Realistik
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pecutan keretapi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asal
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistik
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kecerunan bukit untuk keretapi {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Halangkan keretapi dan kapal daripada membuat pusingan 90 darjah: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Benarkan penyambungan stesen yang tidak bersebelahan: {ORANGE}{STRING}

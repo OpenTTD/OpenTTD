@@ -1084,15 +1084,11 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Eraikin
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Bilketa guneen tamaina errealago egitea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Herriarenak diren errepide, zubi eta tunel gehiago kentzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Trenaren ke/txinparta kantitatea: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Bat ere ez
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originala
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Errealista
+STR_CONFIG_SETTING_NONE                                         :Bat ere ez
+STR_CONFIG_SETTING_ORIGINAL                                     :Originala
+STR_CONFIG_SETTING_REALISTIC                                    :Errealista
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trenaren azelerazio modeloa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originala
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Errealista
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ibilgailuen azelerazio modelua: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originala
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Errealista
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Aldapen zailtasuna trenentzako {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Aldapen zailtasuna errepide garraioetarako{ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Itsasontzi eta trenei 90 graduko biraketak debekatu: {ORANGE}{STRING}

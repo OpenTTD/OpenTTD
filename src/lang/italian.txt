@@ -1097,15 +1097,11 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Consent
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade, ponti, etc. delle città: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Lunghezza massima dei treni: {ORANGE}{STRING} riquadr{P 0:1 o i}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantità di fumo/scintille dai veicoli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nessuno
-STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originale
-STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistica
+STR_CONFIG_SETTING_NONE                                         :Nessuno
+STR_CONFIG_SETTING_ORIGINAL                                     :Originale
+STR_CONFIG_SETTING_REALISTIC                                    :Realistica
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modello accelerazione dei treni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistico
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modello accelerazione automezzi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originale
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistico
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Pendenza salite per i treni: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Pendenza salite per gli automezzi: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Impedisci a treni e navi di curvare a 90 gradi: {ORANGE}{STRING}
