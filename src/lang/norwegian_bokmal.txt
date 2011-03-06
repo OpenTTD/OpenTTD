@@ -1218,13 +1218,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle ikke-konst
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alt utenom landskapsendring
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert kjøretøyliste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Av
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eget firma
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firmaer
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firmaer
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Bruk lastingsindikatorer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Av
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget firma
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firmaer
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i antall tikk i stedet for antall dager: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Vis ankomst og avgang i rutetabeller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rask opprettelse av kjøretøyordre: {ORANGE}{STRING}

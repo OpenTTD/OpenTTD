@@ -1143,13 +1143,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Oedi'n awtomatig wrth gychwyn gêm newydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Defnyddio'r rhestr cerbydau uwch {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :I ffwrdd
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eich cwmni
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Cwmnïau eraill
+STR_CONFIG_SETTING_COMPANIES_OFF                                :I ffwrdd
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eich cwmni
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Cwmnïau eraill
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Dangos llwytho: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :I ffwrdd
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eich cwmni
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Pob cwmni
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos amserlen fesul ticiau yn hytrach na dyddiau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {ORANGE}{STRING}

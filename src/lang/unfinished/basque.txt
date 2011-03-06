@@ -1170,12 +1170,9 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :egintzarik ez
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :eraikitzeko ez diren egintza guztiak
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :guztiak paisaia eraldatzeko egintzak baino
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :egintza guztiak
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Itzalita
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Enpresa propioa
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Enpresa guztiak
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Itzalita
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Enpresa propioa
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Enpresa guztiak
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Itzalita
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Enpresa propioa
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Enpresa guztiak
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Lehena eskuragarri
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Azkena eskuragarri
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Gehien erabilia

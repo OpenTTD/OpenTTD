@@ -1225,13 +1225,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle Tätigkeit
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alle Tätigkeiten außer Landschaftsbau
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle Tätigkeiten
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Erweiterte Fahrzeugliste benutzen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Aus
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eigene Firma
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle Firmen
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Aus
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigene Firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle Firmen
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Ladestandanzeiger verwenden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Aus
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigene Firma
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle Firmen
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zeitpläne in Ticks anstatt in Tagen anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zeige Ankunft und Abfahrt im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnelle Erzeugung von Aufträgen für Fahrzeuge: {ORANGE}{STRING}

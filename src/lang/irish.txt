@@ -1222,13 +1222,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :gach gníomh ne
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :gach rud ach gníomhartha a mhionathraíonn an tírdhreach
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :gach gníomh
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bain úsáid as ardliosta na bhfeithiclí {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :As
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Do chuideachta féin
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Gach cuideachta
+STR_CONFIG_SETTING_COMPANIES_OFF                                :As
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Do chuideachta féin
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Gach cuideachta
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Úsáid táscairí lódála: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :As
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Do chuideachta féin
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Gach cuideachta
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Taispeáin an t-amchlár i dticeanna seachas i laethanta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Taispeáin am teacht isteach agus fágála in amchláir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Orduithe feithiclí a chruthú go scioptha: {ORANGE}{STRING}

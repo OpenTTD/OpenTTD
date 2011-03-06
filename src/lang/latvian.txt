@@ -1187,13 +1187,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visas, izņemot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visas, izņemot ainavas pārveidošanas darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visas darbības
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Lietot speciālo transporta līdzekļu sarakstu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Izslēgts
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Paša uzņēmums
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Visi uzņēmumi
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Izslēgts
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Paša uzņēmums
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Visi uzņēmumi
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lietot piekraušanas indikatorus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Izslēgts
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Paša uzņēmums
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Visas kompānijas
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu tikšķos nevis dienās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Ātrā transporta norīkojumu veidošana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Sliežu tips pēc noklusējuma: {ORANGE}{STRING}

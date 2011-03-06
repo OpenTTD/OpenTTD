@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :semua tindakan 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :semua kecuali mengubah dataran
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :semua tindakan
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gunakan daftar kendaraan tingkat lanjut: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Non-aktifkan
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Perusahaan sendiri
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Semua perusahaan
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Non-aktifkan
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Perusahaan sendiri
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Semua perusahaan
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Tampilkan indikator pengangkutan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Non-aktif
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Perusahaan sendiri
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Semua perusahaan
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Penjadwalan menggunakan satuan titik , bukan satuan hari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Tampilkan keberangkatan dan kedatangan pada jadwal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Buat pemberhentian kendaraan secara cepat: {ORANGE}{STRING}

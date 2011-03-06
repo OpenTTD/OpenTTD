@@ -1210,13 +1210,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}עצור משחק אוטומטית אחרי התחלת משחק חדש: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}השתמש ברשימת כלי הרכב המתקדמת: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :כבוי
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :עבור החברה שלי
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :עבור כל החברות
+STR_CONFIG_SETTING_COMPANIES_OFF                                :כבוי
+STR_CONFIG_SETTING_COMPANIES_OWN                                :עבור החברה שלי
+STR_CONFIG_SETTING_COMPANIES_ALL                                :עבור כל החברות
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{ORANGE}{STRING}{LTBLUE} :הצג מצביעי הטענה
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :כבוי
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :עבור כלים של החברה שלי
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :עבור כל הכלים
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{ORANGE}{STRING}{LTBLUE} :הצג לוח זמנים בפעימות במקום בימים
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}הצג לוחות זמנים של הגעות ועזיבות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{ORANGE}{STRING}{LTBLUE} :יצירה מהירה של מסלול הנסיעה

@@ -1188,13 +1188,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Berhenti automatik ketika memulakan permainan yang baru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gunakan senarai kenderaan yang diperbaiki: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Matikan
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Syarikat sendiri
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Semua syarikat
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Matikan
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Syarikat sendiri
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Semua syarikat
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gunakan penunjuk muatan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Matikan
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Syarikat Sendiri
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Semua syarikat
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Paparkan jadual menggunakan tanda rait dan bukan hari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Paparkan ketibaan dan pelepasan dalam jadual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Pewujudan pantas arahan kenderaan: {ORANGE}{STRING}

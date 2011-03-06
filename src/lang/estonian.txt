@@ -1281,13 +1281,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :kõik mitte-ehi
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kõik peale maastikku muutvate toimingute
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kõik tõimingud
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Laiendatud sõidukinimekiri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Väljas
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Oma ettevõte
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Kõik ettevõtted
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Väljas
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Oma ettevõte
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Kõik ettevõtted
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Laadimisnäidikud: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Väljas
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Oma ettevõtel
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Igal ettevõttel
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Sõiduplaanis kasutatakse päevade asemel tiksumist: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Saabumiste ja väljumiste näitamine sõiduplaanis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Sõidukikäskude kiirloomine: {ORANGE}{STRING}

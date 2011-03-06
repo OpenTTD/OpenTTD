@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :allt förutom a
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :allt förutom landskapsarkitektur
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alla åtgärder
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Använd den avancerade fordonslistan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Av
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eget företag
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alla företag
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget företag
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alla företag
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Använd lastningsindikatörer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Av
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget företag
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alla företag
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Visa tidtabeller räknat i ticks istället för dagar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Visa inkommande och avgående i tidtabeller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snabbskapande av fordonsorder: {ORANGE}{STRING}

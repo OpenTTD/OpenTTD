@@ -1273,13 +1273,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatická pauza pri štarte novej hry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit vylepšený zoznam vozidiel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Vypnutý
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :vlastná spoločnosť
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :všetky spoločnosti
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Vypnutý
+STR_CONFIG_SETTING_COMPANIES_OWN                                :vlastná spoločnosť
+STR_CONFIG_SETTING_COMPANIES_ALL                                :všetky spoločnosti
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Zobraziť ukazovatele nakladania/vykladania: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Vypnuté
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :vlastná spoločnosť
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :všetky spoločnosti
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobraziť cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zobraziť príchody a odchody v cestovných poriadkoch: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rýchla tvorba cestovného poriadku vozidla: {ORANGE}{STRING}

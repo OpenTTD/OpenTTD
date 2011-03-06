@@ -1604,13 +1604,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :wszystkie dzia�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :wszystkie oprócz działań modyfikujących krajobraz
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :wszystkie działania
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Używaj zaawansowanej listy pojazdów: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :wył.
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :dla własnej firmy
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :dla wszystkich firm
+STR_CONFIG_SETTING_COMPANIES_OFF                                :wył.
+STR_CONFIG_SETTING_COMPANIES_OWN                                :dla własnej firmy
+STR_CONFIG_SETTING_COMPANIES_ALL                                :dla wszystkich firm
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Pokazuj wskaźniki załadunku: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :wył.
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :własnej firmy
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :wszystkich firm
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokazuj rozkłady jazdy w tickach, a nie w dniach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Pokazuj przyjazdy i odjazdy w rozkładach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Szybkie tworzenie poleceń pojazdu: {ORANGE}{STRING}

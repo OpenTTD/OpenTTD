@@ -1219,13 +1219,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :inşa içermeye
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :yer şekillendirme hareketleri dışında tüm hareketler
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tüm hareketler
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gelişmiş araç listesini kullan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Kapalı
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Kendi şirketim
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Tüm şirketler
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Kapalı
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Kendi şirketim
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Tüm şirketler
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Araç yükleme bilgisini göster: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Kapalı
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Kendi şirketim
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tüm şirketler
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zaman tablosunda gün yerine işlemci zamanı kullan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Çıkış ve varışları çizelgelerde göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Araç emirlerinin hızlı oluşturulması: {ORANGE}{STRING}

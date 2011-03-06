@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :الكل ما �
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :الكل ما عدا خيارات تعديل الخريطة
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :كل تصرف
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}استخدام قائمة العربات المطورة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :بدون
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :لشركتك
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :كل الشركات
+STR_CONFIG_SETTING_COMPANIES_OFF                                :بدون
+STR_CONFIG_SETTING_COMPANIES_OWN                                :لشركتك
+STR_CONFIG_SETTING_COMPANIES_ALL                                :كل الشركات
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}تفعيل مؤشر التحميل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :بدون
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :لشركتك
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :كل الشركات
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}عرض جدولة الأعمال بالمهام بدلا من الأيام: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}عرض الوصول و المغادرة في جدولة الاعمال: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE} إنشاء سريع لأوامر المركبات: {ORANGE}{STRING}

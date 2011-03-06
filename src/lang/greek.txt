@@ -1310,13 +1310,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :όλες οι �
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ολές εκτός από τις ενέργειες διαμόρφωσης τοπίου
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :όλες οι ενέργειες
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Χρήση της προχωρημένης λίστας οχημάτων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :όχι
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Η εταιρία μου
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Όλες οι εταιρίες
+STR_CONFIG_SETTING_COMPANIES_OFF                                :όχι
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Η εταιρία μου
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Όλες οι εταιρίες
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Χρήση δεικτών φόρτωσης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :όχι
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Η εταιρία μου
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Όλες οι εταιρίες
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Γρήγορη δημιουργία εντολών για τα οχήματα: {ORANGE}{STRING}

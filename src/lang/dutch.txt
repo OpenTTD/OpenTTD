@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :allle niet-cons
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alles behalve landschapsaanpassingen
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle mogelijkheden
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik de geavanceerde voertuigenlijst: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Uit
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eigen bedrijf
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle bedrijven
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Uit
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigen bedrijf
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle bedrijven
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gebruik laadindicatoren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Uit
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigen bedrijf
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle bedrijven
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankomst- en vertrektijden in dienstregeling: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snel voertuigorders maken: {ORANGE}{STRING}

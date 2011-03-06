@@ -1203,13 +1203,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Setja leik á bið þegar nýr leikur er hafinn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Ítarlegur listi yfir farartæki: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Af
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eigin fyrirtækis
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Allra fyrirtækja
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Af
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigin fyrirtækis
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Allra fyrirtækja
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Sýna stöðu lestunar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Engra fyrirtækja
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigin fyrirtækis
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Allra fyrirtækja
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Birta áætlanir í slögum frekar en dögum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Sýna komu og brottfaratíma í áætlunum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Fljótleg gerð áætlunar: {ORANGE}{STRING}

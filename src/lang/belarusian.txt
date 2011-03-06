@@ -1541,13 +1541,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :усе дзея
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :усе дзеяньнi, акрамя зьмяненьня ляндшафту
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :усе дзеяньнi
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Выкарыстоўваць пашыраны сьпіс транспорту: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :не
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :для сваёй кампаніі
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :для ўсіх кампаніяў
+STR_CONFIG_SETTING_COMPANIES_OFF                                :не
+STR_CONFIG_SETTING_COMPANIES_OWN                                :для сваёй кампаніі
+STR_CONFIG_SETTING_COMPANIES_ALL                                :для ўсіх кампаніяў
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Паказваць індыкатар загрузкі: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :не
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :для сваёй кампаніі
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :для ўсіх кампаніяў
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Паказваць расклад ў «ціках» замест дзён: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Паказваць у раскладах час прыбыцьця й адпраўленьня: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Хуткае стварэньне заданьняў транспарту: {ORANGE}{STRING}

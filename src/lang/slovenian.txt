@@ -1297,13 +1297,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :vsa dejanja, ki
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :vsa dejanja razen urejanja ozemlja
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :vsa dejanja
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Izklop
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Lastno podjetje
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Vsa podjetja
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Izklop
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Lastno podjetje
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Vsa podjetja
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Uporabi pregledno polnenje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Izklop
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Lastno podjetje
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Vsa podjetja
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikaz urnikov v pikah namesto dneh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Prikaži prihod in odhod v urnikih: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hitro ustvarjanje ukazov vozila: {ORANGE}{STRING}

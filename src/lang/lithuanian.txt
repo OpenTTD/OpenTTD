@@ -1276,13 +1276,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatinė pauzė paleidžiant naują žaidimą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti pagerintą automobilių sąrašą: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Išjungta
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Nuosava įmonė
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Visos įmonės
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Išjungta
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Nuosava įmonė
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Visos įmonės
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Naudotį krovimo indikatorius: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Išjungta
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Savo įmonės
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Visų įmonių
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rodyti laiką tvarkaraštyje užuot dienas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Rodyti arvykimą ir išvykimą tvarkaraščiuose: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Greitas tr. priemonių paskyrimų kūrimas: {ORANGE}{STRING}

@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :all Net-Bauakti
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :all ausser Landëmformungen
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :all Aktiounen
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Benotzt d'erweidert Gefiererlëscht: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Aus
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eegen Firma
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :All Firmen
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Aus
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eegen Firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :All Firmen
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Weist den Luedstatus un: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Aus
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eegen Firma
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All Firmen
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Weis de Zäitplang an Intervallen amplaz vun Deeg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Weis Arrivée an Départ am Zaitplang un: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnellkreatiounvun Gefieropträg: {ORANGE}{STRING}

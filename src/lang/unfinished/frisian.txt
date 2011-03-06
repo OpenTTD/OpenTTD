@@ -1222,13 +1222,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle net konstr
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :álles útsein lânskipsoanpassings
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Eltse Aksje
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebrûk de avansearre reau list: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Ût
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eigen bedriuw
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle bedriuwen
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Ût
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigen bedriuw
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle bedriuwen
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gebrûk laad yndikator: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Ût
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigen bedriuw
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle bedriuwen
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Ynfrastruktuer bouwurk stilsette wannear't gjin geskikte fuortúgen beskikber binne: {ORANGE}{STRING}
 

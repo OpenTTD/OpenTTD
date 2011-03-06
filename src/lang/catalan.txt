@@ -1225,13 +1225,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :totes les accio
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tot menys les accions modificadores del paisatge
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :totes les accions
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Inactiu
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Pròpia companyia
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Totes les companyies
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Inactiu
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Pròpia companyia
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Totes les companyies
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Utilitza indicadors de carregament: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Inactiu
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Pròpia companyia
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Totes les companyies
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostra l'arribada i la sortida als horaris: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creació ràpida d'ordres per a vehicles: {ORANGE}{STRING}

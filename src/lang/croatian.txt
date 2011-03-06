@@ -1320,13 +1320,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :sve ne-konstruk
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :sve osim akcija za izmjenu krajolika
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :sve akcije
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Koristi napredni popis vozila: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Isključeno
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Vlastita tvrtka
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Sve tvrtke
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Isključeno
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Vlastita tvrtka
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Sve tvrtke
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Koristi pokazatelje utovara: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Isključeno
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Vlastita tvrtka
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Sve tvrtke
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokaži vozni red u otkucajima rađe nego u danima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Pokaži dolaske i odlaske u voznim redovima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Brzo kreiranje naredbi vozila: {ORANGE}{STRING}

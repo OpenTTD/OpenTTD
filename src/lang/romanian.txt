@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toate acţiunil
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toate exceptând modificarea terenului
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toate acțiunile
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Foloseşte lista avansată de vehicule: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Oprit
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Propria companie
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Toate companiile
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Oprit
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Propria companie
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Toate companiile
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Foloseşte indicatorii de încărcare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Oprit
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propria companie
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Toate companiile
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Arată orarul pe programări, nu pe zile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afişează plecările şi sosirile în orare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creare rapidă a ordinelor pentru vehicule: {ORANGE}{STRING}

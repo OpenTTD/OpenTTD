@@ -1219,13 +1219,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}อน�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ไม่กระทำ
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :ทุกการกระทำ
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}ใช้รายการยานพาหนะขั้นสุง: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :ปิด
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :บริษัทที่เป็นเจ้าของ
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :บริษัททั้งหมด
+STR_CONFIG_SETTING_COMPANIES_OFF                                :ปิด
+STR_CONFIG_SETTING_COMPANIES_OWN                                :บริษัทที่เป็นเจ้าของ
+STR_CONFIG_SETTING_COMPANIES_ALL                                :บริษัททั้งหมด
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}ใช้ตัวบ่งบอกการบรรจุ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :ปิด
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :บริษัทที่เป็นเจ้าของ
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :บริษัททั้งหมด
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}แสดงตารางเวลาในแบบติ๊กแทนแบบวัน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}แสดงเวลามาถึงและออกไปในตารางเวลา: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}การสร้างคำสั่งยานพาหนะอย่างรวดเร็ว: {ORANGE}{STRING}

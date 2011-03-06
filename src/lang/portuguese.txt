@@ -1225,13 +1225,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :todas as acçõ
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :todas expecto acções que modificam o terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :todas as acções
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Desligado
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Sua empresa
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Todas as empresas
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Sua empresa
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas as empresas
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Desligado
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Própria empresa
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Todas as empresas
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez de dias: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostrar chegada e partida nos horários: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Criação rápida de ordens de veículos: {ORANGE}{STRING}

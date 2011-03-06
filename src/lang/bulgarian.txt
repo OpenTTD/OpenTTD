@@ -1222,13 +1222,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :всички н
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :всичко без действия за промяна на терена
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :всички действия
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Разширен списък на ПС: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :изключен
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :само за собствената компания
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :за всички компании
+STR_CONFIG_SETTING_COMPANIES_OFF                                :изключен
+STR_CONFIG_SETTING_COMPANIES_OWN                                :само за собствената компания
+STR_CONFIG_SETTING_COMPANIES_ALL                                :за всички компании
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Товарни индикатори: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :изключени
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :само за собствената компания
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :за всички компании
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Разписанието в цикли вместо дни: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Покажи пристигането и заминаването в расписанията: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Бързо създаване на задачите на превозните средства: {ORANGE}{STRING}

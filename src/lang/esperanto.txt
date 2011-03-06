@@ -1207,13 +1207,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :ĉiuj senkonstr
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ĉiuj krom landaspekto ŝanĝanta agoj
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :ĉiuj agoj
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uzu la avancitan veturilaron: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Ne
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Propra kompanio
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Ĉiuj kompanioj
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Ne
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Propra kompanio
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Ĉiuj kompanioj
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Uzu ŝarg-indikilojn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Ne
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propra kompanio
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Ĉiuj kompanioj
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Montru horaron laŭ tikoj anstataŭ laŭ tagoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Montru alvenojn kaj forirojn sur horaroj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rapidkreo de veturilordonoj: {ORANGE}{STRING}

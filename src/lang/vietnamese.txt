@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :tất cả nh�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tất cả ngoại trừ chỉnh sửa địa hình
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tất cả thao tác
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Danh sách phương tiện nâng cao: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Tắt
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Công ty mình
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Tất cả công ty
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Tắt
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Công ty mình
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Tất cả công ty
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Hiển thị quá trình nạp hàng: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Tắt
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Công ty mình
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tất cả công ty
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Hiện lịch trình ở dạng số nhịp thay vì ngày: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Hiển thị nơi đến và nơi đi trên lịch trình: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Tạo nhanh lộ trình cho phương tiện: {ORANGE}{STRING}

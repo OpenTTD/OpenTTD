@@ -1306,13 +1306,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :všechny akce k
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :všechny akce kromě úprav terénu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :všechny akce
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Používat pokročilý seznam vozidel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :ne
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :u vlastní společnosti
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :u všech společností
+STR_CONFIG_SETTING_COMPANIES_OFF                                :ne
+STR_CONFIG_SETTING_COMPANIES_OWN                                :u vlastní společnosti
+STR_CONFIG_SETTING_COMPANIES_ALL                                :u všech společností
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Používat ukazatele naložení: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :ne
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :u vlastní společnosti
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :u všech společností
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazit jízdní řády v cyklech místo ve dnech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Ukazovat v jízdním řádu příjezdy a odjezdy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rychlejší zadávání příkazů pro vozidla: {ORANGE}{STRING}

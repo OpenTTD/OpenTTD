@@ -1419,13 +1419,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :sve negrađevin
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :sve aktivnosti sem izmene reljefa
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :sve aktivnosti
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Koristiti napredan spisak vozila: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Ne
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Za svoje preduzeće
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Za sva preduzeća
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Ne
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Za svoje preduzeće
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Za sva preduzeća
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Koristiti pokazatelj utovarivanja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Ne
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Za svoje preduzeće
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Za sva preduzeća
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikazati red vožnje u diskretnim otkucajima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Prikazivanje polaska i dolaska u rasporedima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Zadržati aktivno 'Idi do' dugme: {ORANGE}{STRING}

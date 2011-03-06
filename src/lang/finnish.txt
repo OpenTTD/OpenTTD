@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :kaikki ei-raken
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kaikki paitsi maastonmuokkaustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kaikki toiminnot
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Edistynyt ajoneuvolista: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Pois
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Oma yhtiö
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Kaikki yhtiöt
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Pois
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Oma yhtiö
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Kaikki yhtiöt
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lastausindikaattorit: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Pois
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Oma yhtiö
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Kaikki yhtiöt
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Näytä saapuminen ja lähtö aikatauluissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Nopea kulkuneuvon käskyjen luominen: {ORANGE}{STRING}

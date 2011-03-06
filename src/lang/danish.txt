@@ -1224,13 +1224,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle ikke-bygge
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alle på nær landskabs-ændrende handlinger
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug avanceret køretøjsliste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Fra
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eget firma
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firmaer
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Fra
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firmaer
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Benyt laste-indikatorer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Fra
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget firma
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firmaer
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Vis ankomst og afgang i tidsplaner: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hurtig oprettelse af køretøjsordrer: {ORANGE}{STRING}

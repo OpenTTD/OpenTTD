@@ -1225,13 +1225,10 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toutes hors con
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toutes sauf celles modifiant le terrain
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toutes
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utiliser la liste de véhicules avancée{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Désactivé
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Propre compagnie
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Toutes les compagnies
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Désactivé
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Propre compagnie
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Toutes les compagnies
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Utiliser les indicateurs de chargement{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Désactivé
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propre compagnie
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Toutes les compagnies
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Afficher l'horaire en ticks plutôt qu'en jours{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afficher l'arrivée et le départ dans les horaires{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Création rapide des ordres de véhicule{NBSP}: {ORANGE}{STRING}

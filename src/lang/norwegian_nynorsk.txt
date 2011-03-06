@@ -1199,13 +1199,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Av
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eige firma
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firma
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eige firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firma
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Av
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eige firma
-STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firma
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Syne rutetabell i tikk i staden for dagar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Syne ankomst og avferd i rutetabellane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hurtig-laging av køyretøy-ordrar: {ORANGE}{STRING}
