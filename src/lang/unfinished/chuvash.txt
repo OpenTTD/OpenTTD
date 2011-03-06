@@ -621,8 +621,7 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Авт�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Пуйӑссем
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Хуласем
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Чӑн {BLUE}(Recommended)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
