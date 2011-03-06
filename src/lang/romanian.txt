@@ -1089,15 +1089,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
 STR_CONFIG_SETTING_ON                                           :Activ
 STR_CONFIG_SETTING_DISABLED                                     :dezactivat
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Oprit
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Propria companie
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Toate companiile
+
+STR_CONFIG_SETTING_NONE                                         :Deloc
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realist
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permite construirea pe coastă şi în pantă: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realiste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Lungimea maximă a trenurilor: {ORANGE}{STRING} dale{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Cantitatea de fum/ scântei ale locomotivei: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Deloc
-STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realist
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelul de acceleraţie al trenurilor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelul de acceleraţie pentru vehiculele rutiere: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Înclinarea pantelor pentru trenuri {ORANGE}{STRING}%
@@ -1220,9 +1230,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toate acţiunil
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toate exceptând modificarea terenului
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toate acțiunile
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Foloseşte lista avansată de vehicule: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Oprit
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Propria companie
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Toate companiile
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Foloseşte indicatorii de încărcare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Arată orarul pe programări, nu pe zile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afişează plecările şi sosirile în orare: {ORANGE}{STRING}
@@ -1299,9 +1306,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :doar în pădur
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :peste tot
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Poziţia barei principale de instrumente: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Poziţia barei de stare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Distanţa de lipire pentru ferestre: {ORANGE}{STRING} pixel{P 0:1 "" i}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}dezactivată
@@ -1336,9 +1340,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenuri
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrii
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritm de rutare pentru trenuri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomandat)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritm de rutare pentru trenuri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritm de rutare pentru autovehicule: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritm de rutare pentru nave: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomandat)

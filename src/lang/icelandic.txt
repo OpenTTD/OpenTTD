@@ -1078,14 +1078,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Þróað
 STR_CONFIG_SETTING_OFF                                          :Nei
 STR_CONFIG_SETTING_ON                                           :Já
 STR_CONFIG_SETTING_DISABLED                                     :óvirkt
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Af
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigin fyrirtækis
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Allra fyrirtækja
+
+STR_CONFIG_SETTING_NONE                                         :Enginn
+STR_CONFIG_SETTING_ORIGINAL                                     :Upphaflegt
+STR_CONFIG_SETTING_REALISTIC                                    :Raunverulegt
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstri
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leyfilegt að byggja í halla og á strönd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leyfa landslagsbreytingar undir byggingum, teinum o.fl. (landfylling): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Raunverulegri stærð svæðis sem stöðvar ná yfir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Magn reyks/neista frá lestum: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Enginn
-STR_CONFIG_SETTING_ORIGINAL                                     :Upphaflegt
-STR_CONFIG_SETTING_REALISTIC                                    :Raunverulegt
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Hröðun lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Hröðun bifreiða: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Brattleiki brekkna fyrir lestar {ORANGE}{STRING}%
@@ -1199,9 +1209,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Setja leik á bið þegar nýr leikur er hafinn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Ítarlegur listi yfir farartæki: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Af
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigin fyrirtækis
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Allra fyrirtækja
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Sýna stöðu lestunar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Birta áætlanir í slögum frekar en dögum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Sýna komu og brottfaratíma í áætlunum: {ORANGE}{STRING}
@@ -1277,9 +1284,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :aðeins í regn
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :allstaðar
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Staðsetning tækjasláar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstri
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Gluggar smella saman við: {ORANGE}{STRING} punkta radíus
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Gluggar smella: {ORANGE}ekki saman
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Hámarksfjöldi glugga (ófestra): {ORANGE}{STRING}
@@ -1313,9 +1317,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Lestir
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bæir
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Iðnaðuð
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Leiðsagnarkerfi lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ráðlegt)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Leiðsagnarkerfi lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Leiðsögukerfi bifreiða: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Leiðsögukerfi skipa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Ráðlegt)

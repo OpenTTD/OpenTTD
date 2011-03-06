@@ -1090,15 +1090,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opções
 STR_CONFIG_SETTING_OFF                                          :Desligado
 STR_CONFIG_SETTING_ON                                           :Ligado
 STR_CONFIG_SETTING_DISABLED                                     :desactivado
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Sua empresa
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas as empresas
+
+STR_CONFIG_SETTING_NONE                                         :Nenhum
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realista
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir remover das cidades mais estradas, pontes e túneis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Comprimento máximo de comboios: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumo/faíscas de veículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Nenhum
-STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realista
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleração de comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração dos veículos de estrada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Declive das inclinações para comboios {ORANGE}{STRING}%
@@ -1221,9 +1231,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :todas as acçõ
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :todas expecto acções que modificam o terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :todas as acções
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Sua empresa
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Todas as empresas
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez de dias: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostrar chegada e partida nos horários: {ORANGE}{STRING}
@@ -1300,9 +1307,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :apenas em flore
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :em todo o lado
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posição da barra de estado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raio de atracção de janelas: {ORANGE}{STRING} p{P 0:1 íxel íxeis}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atracção de janelas: {ORANGE}desactivado
@@ -1337,9 +1341,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Comboio
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Sistema de encaminhar comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Sistema de encaminhar comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Sistema de encaminhar veículos de estrada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Sistema de encaminhar barcos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)

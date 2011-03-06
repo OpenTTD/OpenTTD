@@ -1087,15 +1087,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocru
 STR_CONFIG_SETTING_OFF                                          :As
 STR_CONFIG_SETTING_ON                                           :Air
 STR_CONFIG_SETTING_DISABLED                                     :díchumasaithe
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :As
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Do chuideachta féin
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Gach cuideachta
+
+STR_CONFIG_SETTING_NONE                                         :Deatach ar bith
+STR_CONFIG_SETTING_ORIGINAL                                     :Bunaidh
+STR_CONFIG_SETTING_REALISTIC                                    :Réalaíoch
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ar chlé
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa lár
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ar dheis
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ceadaigh tuilleadh bóithre, droichid srl. ar le baile iad a bhaint: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Uasfhad na dtraenacha: {ORANGE}{STRING} {P th th t dt t}íl
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Méid deataigh/splancacha na bhfeithiclí: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Deatach ar bith
-STR_CONFIG_SETTING_ORIGINAL                                     :Bunaidh
-STR_CONFIG_SETTING_REALISTIC                                    :Réalaíoch
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Samhail luasghéaraithe do thraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Samhail luasghéaraithe d'fheithiclí bóthair: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Géire na fána do thraenacha {ORANGE}{STRING}%
@@ -1218,9 +1228,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :gach gníomh ne
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :gach rud ach gníomhartha a mhionathraíonn an tírdhreach
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :gach gníomh
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bain úsáid as ardliosta na bhfeithiclí {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :As
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Do chuideachta féin
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Gach cuideachta
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Úsáid táscairí lódála: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Taispeáin an t-amchlár i dticeanna seachas i laethanta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Taispeáin am teacht isteach agus fágála in amchláir: {ORANGE}{STRING}
@@ -1297,9 +1304,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :i bhforaois bh�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :gach áit
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Suíomh an phríomhbharra uirlisí: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ar chlé
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa lár
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ar dheis
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Suíomh an bharra stádais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}{STRING} {P 0:1 ph ph ph bp p}ictilín
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}díchumasaithe
@@ -1334,9 +1338,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traenac
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bailte
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tionscail
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Aimsitheoir bealaigh do thraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Molta)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Aimsitheoir bealaigh do thraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Aimsitheoir bealaigh d'fheithiclí bóthair: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Aimsitheoir bealaigh do longa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Bunaidh {BLUE}(Molta)

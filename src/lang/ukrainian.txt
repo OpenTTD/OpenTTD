@@ -1214,15 +1214,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Розш
 STR_CONFIG_SETTING_OFF                                          :Ні
 STR_CONFIG_SETTING_ON                                           :Так
 STR_CONFIG_SETTING_DISABLED                                     :вимкнено
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :відкл.
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Власна компанія
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Усі компанії
+
+STR_CONFIG_SETTING_NONE                                         :Немає
+STR_CONFIG_SETTING_ORIGINAL                                     :Стандартно
+STR_CONFIG_SETTING_REALISTIC                                    :Реалістично
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ліворуч
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :По центру
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Праворуч
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Будувати на схилах та узбережжях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Дозволити міняти схили під будівлями, дорогами тощо (автосхил): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Великий район обслуговування: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Дозволити видаляти більше доріг, мостів та тунелів міста: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Максимальна довжина поїзда: {ORANGE}{STRING} клітин{P 0:1 ка ки ок}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Кількість диму/іскр від транспорту: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Немає
-STR_CONFIG_SETTING_ORIGINAL                                     :Стандартно
-STR_CONFIG_SETTING_REALISTIC                                    :Реалістично
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель прискорення поїзда: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модель прискорення автомобілів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутизна схилу для поїздів {ORANGE}{STRING}%
@@ -1345,9 +1355,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :всі дії, 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :всі дії, крім зміни ландшафту
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :всі дії
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :відкл.
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Власна компанія
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Усі компанії
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Використовувати індикатори завантаження: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показувати прибуття та відправлення у розкладах: {ORANGE}{STRING}
@@ -1424,9 +1431,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :тільки у
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :скрізь
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положення головного меню: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ліворуч
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :По центру
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Праворуч
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиція панелі статусу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
@@ -1461,9 +1465,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Пої�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Міста
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Промисловість
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Шукач шляху для поїздів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(рекомендовано)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Шукач шляху для поїздів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Шукач шляху для автомобілів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Шукач шляху для кораблів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Оригінальний {BLUE}(рекомендовано)

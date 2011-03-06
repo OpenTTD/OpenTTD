@@ -1086,15 +1086,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ปร�
 STR_CONFIG_SETTING_OFF                                          :ปิด
 STR_CONFIG_SETTING_ON                                           :เปิด
 STR_CONFIG_SETTING_DISABLED                                     :ไม่ให้เรียกใช้งาน
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :ปิด
+STR_CONFIG_SETTING_COMPANIES_OWN                                :บริษัทที่เป็นเจ้าของ
+STR_CONFIG_SETTING_COMPANIES_ALL                                :บริษัททั้งหมด
+
+STR_CONFIG_SETTING_NONE                                         :ไม่มี
+STR_CONFIG_SETTING_ORIGINAL                                     :ดั้งเดิม
+STR_CONFIG_SETTING_REALISTIC                                    :สมจริง
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ซ้าย
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :กลาง
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ขวา
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}อนุญาตให้สร้างบนที่ชันและริมตลิ่ง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}อนุญาตให้เปลี่ยนสภาพพื้นผิวใต้สิ่งก่อสร้าง, ราง, ฯลฯ (ปรับความชันอัตโนมัติ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}อนุญาตให้มีขนาดของพื้นที่เก็บน้ำที่สมเหตุสมผลมากขึ้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}อนุญาตให้ทำลายถนน, สะพาน, สิ่งก่อสร้างของเมืองได้มากขึ้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ความยาวของรถไฟที่มากที่สุด: {ORANGE}{STRING} ตาราง
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}จำนวนของหัวจักร ควัน/ประกาย: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :ไม่มี
-STR_CONFIG_SETTING_ORIGINAL                                     :ดั้งเดิม
-STR_CONFIG_SETTING_REALISTIC                                    :สมจริง
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ต้นแบบการเร่งความเร็วของรถไฟ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}รูปแบบการเร่งของรถยนต์: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}เนินสูงเกินไปสำหรับรถไฟ {ORANGE}{STRING}%
@@ -1215,9 +1225,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}อน�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ไม่กระทำ
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :ทุกการกระทำ
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}ใช้รายการยานพาหนะขั้นสุง: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :ปิด
-STR_CONFIG_SETTING_COMPANIES_OWN                                :บริษัทที่เป็นเจ้าของ
-STR_CONFIG_SETTING_COMPANIES_ALL                                :บริษัททั้งหมด
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}ใช้ตัวบ่งบอกการบรรจุ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}แสดงตารางเวลาในแบบติ๊กแทนแบบวัน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}แสดงเวลามาถึงและออกไปในตารางเวลา: {ORANGE}{STRING}
@@ -1293,9 +1300,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :เฉพาะ
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ทุกหนทุกแห่ง
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}ตำแหน่งแถบเครื่องมือหลัก: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ซ้าย
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :กลาง
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ขวา
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}ตำแหน่งของแถบแสดงสถานะ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ระยะ snap หน้าต่าง: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ระยะ snap หน้าต่าง: {ORANGE}ไม่ใช้งาน
@@ -1330,9 +1334,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}รถ�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}เมือง
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}อุตสาหกรรม
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}ตัวค้นหาเส้นทางสำหรับรถไฟ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(แนะนำ)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}ตัวค้นหาเส้นทางสำหรับรถไฟ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}ตัวค้นหาเส้นทางสำหรับรถยนต์: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}ตัวค้นหาเส้นทางสำหรับเรือ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :ดั้งเดิม {BLUE}(แนะนำ)

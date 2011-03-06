@@ -1077,14 +1077,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancita
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
 STR_CONFIG_SETTING_ON                                           :Aktiva
 STR_CONFIG_SETTING_DISABLED                                     :malaktiva
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Ne
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Propra kompanio
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Ĉiuj kompanioj
+
+STR_CONFIG_SETTING_NONE                                         :Neniu
+STR_CONFIG_SETTING_ORIGINAL                                     :Originale
+STR_CONFIG_SETTING_REALISTIC                                    :Reala
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Maldekstre
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dekstre
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permesu konstrui sur kliniĝoj kaj bordoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permesu terecigon sub konstruaĵoj, trakoj, ktp. (aŭtodeklivo): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permesu pli realgrandaj kaptoregionoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj stratoj, pontoj ktp: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Kvanto da lokomotivo fumo/fajreroj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Neniu
-STR_CONFIG_SETTING_ORIGINAL                                     :Originale
-STR_CONFIG_SETTING_REALISTIC                                    :Reala
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de trajnakcelado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de stratveturilakcelado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kruteco de deklivo por vagonaroj {ORANGE}{STRING}%
@@ -1203,9 +1213,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :ĉiuj senkonstr
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ĉiuj krom landaspekto ŝanĝanta agoj
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :ĉiuj agoj
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uzu la avancitan veturilaron: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Ne
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Propra kompanio
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Ĉiuj kompanioj
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Uzu ŝarg-indikilojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Montru horaron laŭ tikoj anstataŭ laŭ tagoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Montru alvenojn kaj forirojn sur horaroj: {ORANGE}{STRING}
@@ -1280,9 +1287,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en pluvarba
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ĉie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Maldekstre
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dekstre
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Loko de kondiĉbaro: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fenestroliga distanco: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenestroliga distanco: {ORANGE}malaktiva
@@ -1317,9 +1321,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trajnoj
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Urboj
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrioj
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Padtrovilo por trajnoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekomendite)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Padtrovilo por trajnoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Padtrovilo por stratveturiloj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Padtrovilo por ŝipoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originale {BLUE}(Rekomendite)

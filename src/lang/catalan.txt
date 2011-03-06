@@ -1090,15 +1090,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Paràmet
 STR_CONFIG_SETTING_OFF                                          :Inactiu
 STR_CONFIG_SETTING_ON                                           :Actiu
 STR_CONFIG_SETTING_DISABLED                                     :desactivat
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Inactiu
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Pròpia companyia
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Totes les companyies
+
+STR_CONFIG_SETTING_NONE                                         :Cap
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realístic
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerra
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permet construir en desnivells i costes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet modelar el terreny sota edificis, rails, etc. (autopendent): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet una mida més real de l'àrea d'influència: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Llargada màxima dels trens: {ORANGE}{STRING} cel·l{P 0:1 a es}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantitat de fum/xispes del vehicle: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Cap
-STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realístic
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model d'acceleració del Tren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model d'acceleració per als vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinació de les pujades per als trens {ORANGE}{STRING}%
@@ -1221,9 +1231,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :totes les accio
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tot menys les accions modificadores del paisatge
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :totes les accions
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Inactiu
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Pròpia companyia
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Totes les companyies
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Utilitza indicadors de carregament: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostra l'arribada i la sortida als horaris: {ORANGE}{STRING}
@@ -1300,9 +1307,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :només a les se
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :a tot arreu
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerra
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posició de la barra d'estat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radi de tall de la finestra: {ORANGE}{STRING} píxel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de tall de la finestra: {ORANGE}desactivat
@@ -1337,9 +1341,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pobles
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Indústries
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cerca de rutes per trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomanat)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cerca de rutes per trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Cerca de rutes per vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cerca de rutes per vaixells: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomanat)

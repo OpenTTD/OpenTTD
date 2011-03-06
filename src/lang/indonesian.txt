@@ -1089,15 +1089,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pengatur
 STR_CONFIG_SETTING_OFF                                          :Tidak
 STR_CONFIG_SETTING_ON                                           :Ya
 STR_CONFIG_SETTING_DISABLED                                     :Non-aktifkan
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Non-aktifkan
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Perusahaan sendiri
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Semua perusahaan
+
+STR_CONFIG_SETTING_NONE                                         :Tidak ada
+STR_CONFIG_SETTING_ORIGINAL                                     :Orisinil
+STR_CONFIG_SETTING_REALISTIC                                    :Realistis
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ijinkan pembangunan di lereng dan pantai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak jalan, jembatan, terowongan milik kota, dsb: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Panjang maksimum kereta: {ORANGE}{STRING} kotak
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Banyaknya asap / percikan lokomotif: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Tidak ada
-STR_CONFIG_SETTING_ORIGINAL                                     :Orisinil
-STR_CONFIG_SETTING_REALISTIC                                    :Realistis
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akselerasi kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model kendaraan percepatan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Tingkat dataran slope pada kereta {ORANGE}{STRING}%
@@ -1220,9 +1230,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :semua tindakan 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :semua kecuali mengubah dataran
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :semua tindakan
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gunakan daftar kendaraan tingkat lanjut: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Non-aktifkan
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Perusahaan sendiri
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Semua perusahaan
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Tampilkan indikator pengangkutan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Penjadwalan menggunakan satuan titik , bukan satuan hari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Tampilkan keberangkatan dan kedatangan pada jadwal: {ORANGE}{STRING}
@@ -1299,9 +1306,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :hanya pada huta
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :dimanapun
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisi toolbar utama: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posisi status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Lekatkan jendela pada: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pelekatan jendela: {ORANGE}dimatikan
@@ -1336,9 +1340,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Kereta
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kota
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industri
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari jejak untuk kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari jejak untuk kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pencari jejak untuk kendaraan jalan raya: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari jejak untuk kapal : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orisinil {BLUE}(Dianjurkan)

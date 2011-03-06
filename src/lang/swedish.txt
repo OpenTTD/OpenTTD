@@ -1089,15 +1089,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancera
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :Avaktiverat
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget företag
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alla företag
+
+STR_CONFIG_SETTING_NONE                                         :Ingen
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realistiskt
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillåt konstruktion på sluttningar och kuster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillåt mer realistiska uppsamlingsområden för stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximal längd för tåg: {ORANGE}{STRING} rut{P 0:1 a or}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mängden rök/gnistor från fordon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Ingen
-STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realistiskt
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Accelerationsmodell för tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Accelerationsmodell för vägfordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Slutnings lutning för tåg {ORANGE}{STRING}%
@@ -1220,9 +1230,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :allt förutom a
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :allt förutom landskapsarkitektur
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alla åtgärder
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Använd den avancerade fordonslistan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget företag
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Alla företag
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Använd lastningsindikatörer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Visa tidtabeller räknat i ticks istället för dagar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Visa inkommande och avgående i tidtabeller: {ORANGE}{STRING}
@@ -1299,9 +1306,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bara i regnskog
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :överallt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusradens position: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fönstersnäppsradie: {ORANGE}{STRING} pix{P 0:1 el lar}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
@@ -1336,9 +1340,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tåg
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Städer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vägfinnare för tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekommenderad)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vägfinnare för tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Vägfinnare för vägfordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vägfinnare för skepp: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Rekommenderad)

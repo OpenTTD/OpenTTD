@@ -1091,6 +1091,16 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדר
 STR_CONFIG_SETTING_OFF                                          :כבוי
 STR_CONFIG_SETTING_ON                                           :דלוק
 STR_CONFIG_SETTING_DISABLED                                     :מבוטל
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :כבוי
+STR_CONFIG_SETTING_COMPANIES_OWN                                :עבור החברה שלי
+STR_CONFIG_SETTING_COMPANIES_ALL                                :עבור כל החברות
+
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :שמאל
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :מרכז
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}אפשר לבנות על מידרונות וחופים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{ORANGE}{STRING}{LTBLUE} :'אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {ORANGE}{STRING}
@@ -1206,9 +1216,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}עצור משחק אוטומטית אחרי התחלת משחק חדש: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}השתמש ברשימת כלי הרכב המתקדמת: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :כבוי
-STR_CONFIG_SETTING_COMPANIES_OWN                                :עבור החברה שלי
-STR_CONFIG_SETTING_COMPANIES_ALL                                :עבור כל החברות
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{ORANGE}{STRING}{LTBLUE} :הצג מצביעי הטענה
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{ORANGE}{STRING}{LTBLUE} :הצג לוח זמנים בפעימות במקום בימים
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}הצג לוחות זמנים של הגעות ועזיבות: {ORANGE}{STRING}
@@ -1283,9 +1290,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :רק ביערו
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :בכל מקום
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{ORANGE}{STRING}{LTBLUE} :מיקום הסרגל העיקרי
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :שמאל
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :מרכז
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING}
@@ -1319,9 +1323,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}רכב�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}ערים
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}תעשיות
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבות
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(מומלץ)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבות
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבים
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לכלי שייט
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :{BLUE}(מקורי (מומלץ

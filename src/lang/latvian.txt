@@ -1063,14 +1063,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildus
 STR_CONFIG_SETTING_OFF                                          :Izslēgts
 STR_CONFIG_SETTING_ON                                           :Ieslēgts
 STR_CONFIG_SETTING_DISABLED                                     :atspējots
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Izslēgts
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Paša uzņēmums
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Visi uzņēmumi
+
+STR_CONFIG_SETTING_NONE                                         :Nekāds
+STR_CONFIG_SETTING_ORIGINAL                                     :Oriģinālais
+STR_CONFIG_SETTING_REALISTIC                                    :Reālistisks
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Pa kreisi
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrā
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Pa labi
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Atļaut celt uz nelīdzenas zemes un krastiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Atļaut zemes transformācijas zem dažādām būvēm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākus mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Atļaut pilsētai piederošo ceļu un tiltu nojaukšanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transportlīdzekļa izmešu efektu daudzums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Nekāds
-STR_CONFIG_SETTING_ORIGINAL                                     :Oriģinālais
-STR_CONFIG_SETTING_REALISTIC                                    :Reālistisks
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vilciena paātrinājuma modelis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ceļu transportlīdzekļu paātrinājuma modelis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Aizliedz vilcieniem un kuģiem veikt 90 grādu pagriezienus: {ORANGE}{STRING}
@@ -1183,9 +1193,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visas, izņemot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visas, izņemot ainavas pārveidošanas darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visas darbības
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Lietot speciālo transporta līdzekļu sarakstu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Izslēgts
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Paša uzņēmums
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Visi uzņēmumi
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lietot piekraušanas indikatorus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu tikšķos nevis dienās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Ātrā transporta norīkojumu veidošana: {ORANGE}{STRING}
@@ -1251,9 +1258,6 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Atļaut
 
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas izvietojums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Pa kreisi
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrā
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Pa labi
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusa joslas novietojums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}{STRING} pikseļi
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}atspējots
@@ -1288,9 +1292,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vilcien
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pilsētas
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Rūpniecības nozares
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vilcienu virziena meklētājs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ieteicamais)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vilcienu virziena meklētājs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Virziena meklētājs mašīnām: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Kuģu ceļu meklētājs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oriģinālais {BLUE}(Ieteicamais)

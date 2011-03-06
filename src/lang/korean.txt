@@ -1090,15 +1090,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 �
 STR_CONFIG_SETTING_OFF                                          :끔
 STR_CONFIG_SETTING_ON                                           :켬
 STR_CONFIG_SETTING_DISABLED                                     :사용불가
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :끄기
+STR_CONFIG_SETTING_COMPANIES_OWN                                :내 회사만
+STR_CONFIG_SETTING_COMPANIES_ALL                                :모든 회사에
+
+STR_CONFIG_SETTING_NONE                                         :없음
+STR_CONFIG_SETTING_ORIGINAL                                     :오리지널
+STR_CONFIG_SETTING_REALISTIC                                    :현실적
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :왼쪽
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}좀더 현실적인 역세권 지정 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}열차의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}기관차 매연/전기 스파크의 양: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :없음
-STR_CONFIG_SETTING_ORIGINAL                                     :오리지널
-STR_CONFIG_SETTING_REALISTIC                                    :현실적
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}열차 가속 모델: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}자동차 가속 모델: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}열차를 위한 경사면의 경사도: {ORANGE}{STRING}%
@@ -1221,9 +1231,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :모든 비건�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :지형 편집을 제외한 모든 행동
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :모든 행동
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :끄기
-STR_CONFIG_SETTING_COMPANIES_OWN                                :내 회사만
-STR_CONFIG_SETTING_COMPANIES_ALL                                :모든 회사에
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}적재 정도 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}시간표에서 출발일과 도착일 표시: {ORANGE}{STRING}
@@ -1300,9 +1307,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 �
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :모든 지역에서 가능
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :왼쪽
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}상태 바의 위치: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 맞춤 거리 : {ORANGE}{STRING} 픽셀 안에 들어오면 자동 맞춤
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 맞춤 거리 : {ORANGE}사용 안함
@@ -1337,9 +1341,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차용 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(추천)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차용 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}차량을 위한 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}선박을 위한 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :오리지널 {BLUE}(추천)

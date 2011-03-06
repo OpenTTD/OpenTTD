@@ -1162,15 +1162,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne
 STR_CONFIG_SETTING_OFF                                          :Izklopi
 STR_CONFIG_SETTING_ON                                           :Vklopi
 STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Izklop
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Lastno podjetje
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Vsa podjetja
+
+STR_CONFIG_SETTING_NONE                                         :Brez
+STR_CONFIG_SETTING_ORIGINAL                                     :Originalno
+STR_CONFIG_SETTING_REALISTIC                                    :Realistično
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dovoli gradnjo hiš na nagibih ali obali: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest in mostov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Največja dolžina vlakov: {ORANGE}{STRING} plošč{P a i e ""}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker vozil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Brez
-STR_CONFIG_SETTING_ORIGINAL                                     :Originalno
-STR_CONFIG_SETTING_REALISTIC                                    :Realistično
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pospeškov vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model pospeškov cestnih vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Naklon vzpona za vlake {ORANGE}{STRING}%
@@ -1293,9 +1303,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :vsa dejanja, ki
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :vsa dejanja razen urejanja ozemlja
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :vsa dejanja
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Izklop
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Lastno podjetje
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Vsa podjetja
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Uporabi pregledno polnenje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikaz urnikov v pikah namesto dneh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Prikaži prihod in odhod v urnikih: {ORANGE}{STRING}
@@ -1372,9 +1379,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo v deževne
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :povsod
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozicija glavne orodne vrstice: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Položaj statusne vrstice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radij lepljenja oken: {ORANGE}{STRING} piks{P el la li ov}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radij lepljenja oken: {ORANGE}onemogočeno
@@ -1409,9 +1413,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaki
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mesta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Iskalnik poti za vlake: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Priporočeno)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Iskalnik poti za vlake: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Iskalnik poti za vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Logaritem poti za ladje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Priporočen)

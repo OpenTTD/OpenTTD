@@ -1036,6 +1036,16 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ffurfwed
 STR_CONFIG_SETTING_OFF                                          :I  Ffwrdd
 STR_CONFIG_SETTING_ON                                           :Ymlaen
 STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :I ffwrdd
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eich cwmni
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Cwmnïau eraill
+
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Chwith
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Canol
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Caniatáu adeiladu a'r lethrau ac arfordiroedd {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Caniatáu daearffurfio o dan adeiladau, traciau, etc. (awtolethru): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING}
@@ -1141,9 +1151,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Oedi'n awtomatig wrth gychwyn gêm newydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Defnyddio'r rhestr cerbydau uwch {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :I ffwrdd
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eich cwmni
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Cwmnïau eraill
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Dangos llwytho: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos amserlen fesul ticiau yn hytrach na dyddiau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
@@ -1208,9 +1215,6 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Caniat�
 
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Safle'r prif far offer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Chwith
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Canol
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radiws snap ffenestr: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radiws snap ffenestr: {ORANGE}analluogwyd
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Terfyn meddal ffenestri (ddim yn ludiog): {ORANGE}{STRING}
@@ -1244,9 +1248,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenau
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Trefi
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Diwydiannau
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrwr ar gyfer trenau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Argymellir)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrwr ar gyfer trenau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Llwybrwr ar gyfer cerbydau ffordd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Llwybrwr ar gyfer llongau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Gwreiddiol{BLUE}(Argymhelliad)

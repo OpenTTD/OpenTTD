@@ -1089,15 +1089,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張�
 STR_CONFIG_SETTING_OFF                                          :切
 STR_CONFIG_SETTING_ON                                           :入
 STR_CONFIG_SETTING_DISABLED                                     :切
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :切
+STR_CONFIG_SETTING_COMPANIES_OWN                                :自分
+STR_CONFIG_SETTING_COMPANIES_ALL                                :すべて
+
+STR_CONFIG_SETTING_NONE                                         :なし
+STR_CONFIG_SETTING_ORIGINAL                                     :オリジナル
+STR_CONFIG_SETTING_REALISTIC                                    :リアルな
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中位
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}傾斜地／海岸上の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}建物、道路、鉄道などの下の地形変更を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}列車の長さの最大: {ORANGE}{STRING} タイル
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}車両の 煙/火の粉 の量{ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :なし
-STR_CONFIG_SETTING_ORIGINAL                                     :オリジナル
-STR_CONFIG_SETTING_REALISTIC                                    :リアルな
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}電車の加速モデル：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}道路車両の加速モデル: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車にとって{ORANGE}{STRING}%の急傾斜度
@@ -1220,9 +1230,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :建設以外の
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :土地を変更以外すべての行動
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :すべての行動
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :切
-STR_CONFIG_SETTING_COMPANIES_OWN                                :自分
-STR_CONFIG_SETTING_COMPANIES_ALL                                :すべて
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}積み降ろしを表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}時刻表に発着情報を表示する: {ORANGE}{STRING}
@@ -1299,9 +1306,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林の中だ
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :各地
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}メインツールバーの位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中位
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}お知らせバ−の置き場: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}{STRING} ピクセル
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}切
@@ -1336,9 +1340,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}電車
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市町村
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}産業
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}電車の経路処理アルゴリズム：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF{BLUE}（おすすめ）
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}電車の経路処理アルゴリズム：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}道路車両の経路処理アルゴリズム：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船舶の経路処理アルゴリズム：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :本来{BLUE}（おすすめ）

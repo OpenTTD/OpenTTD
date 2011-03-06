@@ -1082,15 +1082,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级�
 STR_CONFIG_SETTING_OFF                                          :关闭
 STR_CONFIG_SETTING_ON                                           :打开
 STR_CONFIG_SETTING_DISABLED                                     :禁用
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :关闭
+STR_CONFIG_SETTING_COMPANIES_OWN                                :玩家公司
+STR_CONFIG_SETTING_COMPANIES_ALL                                :全部公司
+
+STR_CONFIG_SETTING_NONE                                         :无
+STR_CONFIG_SETTING_ORIGINAL                                     :原版
+STR_CONFIG_SETTING_REALISTIC                                    :真实
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左侧
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}允许在斜坡和河岸上建设：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允许在建筑、轨道下方改变地形（自动斜坡）： {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}火车最大长度: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}火车头产生的蒸气/火花数量: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :无
-STR_CONFIG_SETTING_ORIGINAL                                     :原版
-STR_CONFIG_SETTING_REALISTIC                                    :真实
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列车加速度： {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}汽车加速模型: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}坡度对列车速度的影响 {ORANGE}{STRING}%
@@ -1212,9 +1222,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :除建设面板
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :除景观面板操作外全部操作
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有操作
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用高级车辆列表： {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :关闭
-STR_CONFIG_SETTING_COMPANIES_OWN                                :玩家公司
-STR_CONFIG_SETTING_COMPANIES_ALL                                :全部公司
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}使用装货进度指示： {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}使用时间标记而不是天为单位： {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}在时刻表中显示到达时间和出发时间： {ORANGE}{STRING}
@@ -1291,9 +1298,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :仅在雨林中
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :任意地点
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具栏位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左侧
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}状态栏位置: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}窗口依附半径：{ORANGE}{STRING} 像素
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}窗口依附半径：{ORANGE}禁用
@@ -1328,9 +1332,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列车
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}城镇
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工业设施
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}火车寻路： {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(推荐)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}火车寻路： {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}汽车寻路： {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船只寻路： {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原始 {BLUE}(推荐)

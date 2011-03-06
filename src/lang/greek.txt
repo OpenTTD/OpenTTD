@@ -1180,13 +1180,23 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προη
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργό
 STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :όχι
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Η εταιρία μου
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Όλες οι εταιρίες
+
+STR_CONFIG_SETTING_NONE                                         :Κανένα
+STR_CONFIG_SETTING_ORIGINAL                                     :Γνήσιο
+STR_CONFIG_SETTING_REALISTIC                                    :Ρεαλιστικό
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Αριστερά
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Κανένα
-STR_CONFIG_SETTING_ORIGINAL                                     :Γνήσιο
-STR_CONFIG_SETTING_REALISTIC                                    :Ρεαλιστικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Μοντέλο επιτάχυνσης οχημάτων δρόμου: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Υπερβολική κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
@@ -1306,9 +1316,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :όλες οι �
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ολές εκτός από τις ενέργειες διαμόρφωσης τοπίου
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :όλες οι ενέργειες
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Χρήση της προχωρημένης λίστας οχημάτων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :όχι
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Η εταιρία μου
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Όλες οι εταιρίες
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Χρήση δεικτών φόρτωσης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {ORANGE}{STRING}
@@ -1385,9 +1392,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε �
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Αριστερά
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}{STRING}
@@ -1421,9 +1425,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Τρέ�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Βιομηχανίες
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Μέθοδος δρομολόγησης για τρένα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Συνίσταται)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Μέθοδος δρομολόγησης για τρένα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Μέθοδος δρομολόγησης για οχήματα δρόμου: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Μέθοδος δρομολόγησης για πλοία: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Συνίσταται)

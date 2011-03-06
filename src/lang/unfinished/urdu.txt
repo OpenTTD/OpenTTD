@@ -650,8 +650,12 @@ STR_SUBSIDY_X4                                                  :x4
 
 
 
-
 # Advanced settings window
+
+
+
+
+
 
 
 

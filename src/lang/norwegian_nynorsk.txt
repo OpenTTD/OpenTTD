@@ -1078,12 +1078,22 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansert
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :deaktivert
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eige firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firma
+
+STR_CONFIG_SETTING_NONE                                         :Ingen
+STR_CONFIG_SETTING_ORIGINAL                                     :Opprinneleg
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgre
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillet bygging på skråningar og i vasskanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillet landskapsendringar under bygningar, spor o.s.b.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillet frjerning av fleire vegar, bruar osb. egd av byane.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Ingen
-STR_CONFIG_SETTING_ORIGINAL                                     :Opprinneleg
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Køyretøyers akselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
@@ -1195,9 +1205,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eige firma
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firma
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Syne rutetabell i tikk i staden for dagar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Syne ankomst og avferd i rutetabellane: {ORANGE}{STRING}
@@ -1272,9 +1279,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskoge
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :over alt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovudverktøylinje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgre
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Festeradius for vindauge: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Festeradius for vindauge: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Flytande vindauge (ikkje fest til andre): {ORANGE}{STRING}
@@ -1308,9 +1312,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vegfinnar for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalt)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vegfinnar for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Vegfinnar for køyretøy på vegar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vegfinnar for skip: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)

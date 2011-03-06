@@ -1089,15 +1089,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}الاع
 STR_CONFIG_SETTING_OFF                                          :قفل
 STR_CONFIG_SETTING_ON                                           :فتح
 STR_CONFIG_SETTING_DISABLED                                     :غير مفعل
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :بدون
+STR_CONFIG_SETTING_COMPANIES_OWN                                :لشركتك
+STR_CONFIG_SETTING_COMPANIES_ALL                                :كل الشركات
+
+STR_CONFIG_SETTING_NONE                                         :بدون
+STR_CONFIG_SETTING_ORIGINAL                                     :اصلي
+STR_CONFIG_SETTING_REALISTIC                                    :واقعي
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :يسار
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}السماح بالبناء على المنحدرات و السواحل: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}اقصى طول لعربات القطار: {ORANGE}{STRING}مربع
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}كمية دخان/شرار القطارات:{ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :بدون
-STR_CONFIG_SETTING_ORIGINAL                                     :اصلي
-STR_CONFIG_SETTING_REALISTIC                                    :واقعي
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE} موديل تسارع القطارات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}نمط تسارع عربات الطريق: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}تدرج ميلان سكة القطار {ORANGE}{STRING}%
@@ -1220,9 +1230,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :الكل ما �
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :الكل ما عدا خيارات تعديل الخريطة
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :كل تصرف
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}استخدام قائمة العربات المطورة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :بدون
-STR_CONFIG_SETTING_COMPANIES_OWN                                :لشركتك
-STR_CONFIG_SETTING_COMPANIES_ALL                                :كل الشركات
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}تفعيل مؤشر التحميل: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}عرض جدولة الأعمال بالمهام بدلا من الأيام: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}عرض الوصول و المغادرة في جدولة الاعمال: {ORANGE}{STRING}
@@ -1299,9 +1306,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :الغابات 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :كل مكان
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :يسار
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}موقع شريط المعلومات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}قطر اللقطة للاطار: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}قطر اللقطة للاطار: {ORANGE}غير مفعل
@@ -1336,9 +1340,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطا
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} مدن
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موجد الطريق- قصاص الطريق - للقطارات:{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(مفضل)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موجد الطريق- قصاص الطريق - للقطارات:{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}موجد الطريق (قصاص الأثر) للعربات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE} موجد طريق العبور للسفن: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :أصلي{BLUE}(مستحسن)

@@ -1087,14 +1087,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansert
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :deaktivert
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firmaer
+
+STR_CONFIG_SETTING_NONE                                         :Ingen
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høyre
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillat bygging på skråninger og i vannkanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillat landskapsendring under bygninger, spor, osv.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat fjerning av flere veier, broer osv. eid av byene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde med lokomotivrøyk/gnister: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Ingen
-STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kjøretøyers akselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
@@ -1214,9 +1224,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle ikke-konst
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alt utenom landskapsendring
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert kjøretøyliste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firmaer
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Bruk lastingsindikatorer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i antall tikk i stedet for antall dager: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Vis ankomst og avgang i rutetabeller: {ORANGE}{STRING}
@@ -1292,9 +1299,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskog
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overalt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovedverktøylinje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høyre
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusbarens posisjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Festeradius for vindu: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Festeradius for vindu: {ORANGE}deaktivert
@@ -1329,9 +1333,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Veifinner for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalt)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Veifinner for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Veifinner for kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Veifinner for skip: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)

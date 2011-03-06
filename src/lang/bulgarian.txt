@@ -1086,11 +1086,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Наст
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено
 STR_CONFIG_SETTING_DISABLED                                     :изключено
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Строене на склонове и брегове: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тераформиране под постройки (autoslope): {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество на дим/искри от превозното средство: {ORANGE}{STRING}
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :изключен
+STR_CONFIG_SETTING_COMPANIES_OWN                                :само за собствената компания
+STR_CONFIG_SETTING_COMPANIES_ALL                                :за всички компании
+
 STR_CONFIG_SETTING_NONE                                         :Без
 STR_CONFIG_SETTING_ORIGINAL                                     :Оригинално
 STR_CONFIG_SETTING_ORIGINAL.m                                   :Оригинален
@@ -1102,6 +1102,16 @@ STR_CONFIG_SETTING_REALISTIC.m                                  :Реалист�
 STR_CONFIG_SETTING_REALISTIC.f                                  :Реалистична
 STR_CONFIG_SETTING_REALISTIC.n                                  :Реалистична
 STR_CONFIG_SETTING_REALISTIC.p                                  :Реалистични
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ляво
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
+
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Строене на склонове и брегове: {ORANGE}{STRING.n}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тераформиране под постройки (autoslope): {ORANGE}{STRING.n}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество на дим/искри от превозното средство: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модел на ускорение на влаковете: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модел на ускорение на пътни превозни срества: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Стръмнина на склона за влакове {ORANGE}{STRING}%
@@ -1218,9 +1228,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :всички н
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :всичко без действия за промяна на терена
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :всички действия
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Разширен списък на ПС: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :изключен
-STR_CONFIG_SETTING_COMPANIES_OWN                                :само за собствената компания
-STR_CONFIG_SETTING_COMPANIES_ALL                                :за всички компании
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Товарни индикатори: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Разписанието в цикли вместо дни: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Покажи пристигането и заминаването в расписанията: {ORANGE}{STRING}
@@ -1297,9 +1304,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :само в д�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :навсякъде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Позиция на лентата за инструменти: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ляво
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Разположение на лентата за състоянието: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Прилепване на прозорците: {ORANGE}{STRING} пиксел{P 0:1 "" а}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилепване на прозорците: {ORANGE}изключено
@@ -1334,9 +1338,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Вла�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Градове
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Индустрии
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Пътенамирач за влакове: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(препоръчва се)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Пътенамирач за влакове: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Пътенамирач за автомобили: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Пътенамирач за кораби: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :оригинален {BLUE}(препоръчва се)

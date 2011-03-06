@@ -1073,13 +1073,23 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Tetapan 
 STR_CONFIG_SETTING_OFF                                          :Matikan
 STR_CONFIG_SETTING_ON                                           :Hidupkan
 STR_CONFIG_SETTING_DISABLED                                     :tiada
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Matikan
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Syarikat sendiri
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Semua syarikat
+
+STR_CONFIG_SETTING_NONE                                         :Tiada
+STR_CONFIG_SETTING_ORIGINAL                                     :Asli
+STR_CONFIG_SETTING_REALISTIC                                    :Realistik
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarkan pembinaan di tepi pantai dan cerun bukit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Benarkan kawasan tangkapan yang lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Benarkan lebih pemusnahan jalanraya, jambatan, dan sbgnya yang dimiliki bandar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Tiada
-STR_CONFIG_SETTING_ORIGINAL                                     :Asli
-STR_CONFIG_SETTING_REALISTIC                                    :Realistik
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pecutan keretapi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kecerunan bukit untuk keretapi {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Halangkan keretapi dan kapal daripada membuat pusingan 90 darjah: {ORANGE}{STRING}
@@ -1186,9 +1196,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Berhenti automatik ketika memulakan permainan yang baru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gunakan senarai kenderaan yang diperbaiki: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Matikan
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Syarikat sendiri
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Semua syarikat
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gunakan penunjuk muatan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Paparkan jadual menggunakan tanda rait dan bukan hari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Paparkan ketibaan dan pelepasan dalam jadual: {ORANGE}{STRING}
@@ -1263,9 +1270,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :hanya di hutan 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :merata tempat
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Kedudukan toolbar utama: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Lingkungan lekatan tetingkap: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Lingkungan lekatan tetingkap: {ORANGE}tiada
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Had maksimum tetingkap tidak melekat: {ORANGE}{STRING}
@@ -1299,9 +1303,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Keretap
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bandar-bandar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industri-industri
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari laluan untuk keretapi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Disyorkan)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari laluan untuk keretapi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pencari laluan untuk kenderaan jalanraya: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari laluan untuk kapal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Asal {BLUE}(Disyorkan)

@@ -1089,15 +1089,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäase
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
 STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Pois
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Oma yhtiö
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Kaikki yhtiöt
+
+STR_CONFIG_SETTING_NONE                                         :Ei yhtään
+STR_CONFIG_SETTING_ORIGINAL                                     :Alkuperäinen
+STR_CONFIG_SETTING_REALISTIC                                    :Realistinen
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vasemmalla
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :keskellä
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Rakentaminen rinteisiin ja rannikolle sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Kaupungin omistamien teiden, siltojen ja tunneleiden raivaaminen sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Junien maksimipituus: {ORANGE}{STRING} ruutu{P 0:1 "" a}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Kulkuneuvon savun/kipinöiden määrä: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Ei yhtään
-STR_CONFIG_SETTING_ORIGINAL                                     :Alkuperäinen
-STR_CONFIG_SETTING_REALISTIC                                    :Realistinen
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Junien kiihdytysmalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ajoneuvojen kiihdytysmalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Mäkien jyrkkyys junille {ORANGE}{STRING}%
@@ -1220,9 +1230,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :kaikki ei-raken
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kaikki paitsi maastonmuokkaustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kaikki toiminnot
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Edistynyt ajoneuvolista: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Pois
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Oma yhtiö
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Kaikki yhtiöt
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lastausindikaattorit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Näytä saapuminen ja lähtö aikatauluissa: {ORANGE}{STRING}
@@ -1299,9 +1306,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :vain sademetsii
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :kaikkialle
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vasemmalla
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :keskellä
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Tilarivin sijainti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunoiden kiinniottosäde: {ORANGE}{STRING} pikseli{P 0:1 "" ä}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
@@ -1336,9 +1340,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Junat
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kaupungit
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Laitokset
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Junien käyttämä reitinetsijä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Suositeltu)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Junien käyttämä reitinetsijä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Ajoneuvojen käyttämä reitinetsijä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivojen käyttämä reitinetsijä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Alkuperäinen {BLUE}(Suositeltu)

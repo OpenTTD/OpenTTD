@@ -1171,15 +1171,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pokroči
 STR_CONFIG_SETTING_OFF                                          :vypnuto
 STR_CONFIG_SETTING_ON                                           :zapnuto
 STR_CONFIG_SETTING_DISABLED                                     :vypnuto
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :ne
+STR_CONFIG_SETTING_COMPANIES_OWN                                :u vlastní společnosti
+STR_CONFIG_SETTING_COMPANIES_ALL                                :u všech společností
+
+STR_CONFIG_SETTING_NONE                                         :Žádný
+STR_CONFIG_SETTING_ORIGINAL                                     :Originální
+STR_CONFIG_SETTING_REALISTIC                                    :Realistický
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlevo
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :uprostřed
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Povolit výstavbu na svazích kopců a na pobřežích: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Srovnání terénu pod budovami, kolejemi atd. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů a tunelů: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximální délka vlaků: {ORANGE}{STRING} pol{P e e í}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}množství kouře/jisker u stroje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Žádný
-STR_CONFIG_SETTING_ORIGINAL                                     :Originální
-STR_CONFIG_SETTING_REALISTIC                                    :Realistický
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerace vlaků: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model zrychlování silničních vozidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost svahu pro vlaky: {ORANGE}{STRING}{NBSP}%
@@ -1302,9 +1312,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :všechny akce k
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :všechny akce kromě úprav terénu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :všechny akce
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Používat pokročilý seznam vozidel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :ne
-STR_CONFIG_SETTING_COMPANIES_OWN                                :u vlastní společnosti
-STR_CONFIG_SETTING_COMPANIES_ALL                                :u všech společností
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Používat ukazatele naložení: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazit jízdní řády v cyklech místo ve dnech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Ukazovat v jízdním řádu příjezdy a odjezdy: {ORANGE}{STRING}
@@ -1381,9 +1388,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :jen v deštnýc
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všude
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Umístění hlavní lišty: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlevo
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :uprostřed
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozice statusbaru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}vypnuto
@@ -1418,9 +1422,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Města
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Průmysl
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Hledač cesty pro vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(doporučený)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Hledač cesty pro vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Hledač cesty pro silniční vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Hledač cesty pro lodě: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :původní {BLUE}(doporučený)

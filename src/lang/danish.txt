@@ -1089,15 +1089,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancere
 STR_CONFIG_SETTING_OFF                                          :Fra
 STR_CONFIG_SETTING_ON                                           :Til
 STR_CONFIG_SETTING_DISABLED                                     :deaktiveret
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Fra
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firmaer
+
+STR_CONFIG_SETTING_NONE                                         :Ingen
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillad bygning på skråninger og kyster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillad landskabsformning under bygninger, spor, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af flere by-ejede veje, broer og tunneler: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Max længde af tog: {ORANGE}{STRING} felt{P 0:1 "" er}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mængde af røg fra køretøj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Ingen
-STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Accelerationsmodel for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Køretøjs accelerations model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Skråningers stejlhed for tog {ORANGE}{STRING}%
@@ -1220,9 +1230,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle ikke-bygge
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alle på nær landskabs-ændrende handlinger
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug avanceret køretøjsliste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Fra
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle firmaer
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Benyt laste-indikatorer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Vis ankomst og afgang i tidsplaner: {ORANGE}{STRING}
@@ -1299,9 +1306,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskove
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :alle steder
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Position af statusbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vinduernes sammenkoblingsafstand: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}slået fra
@@ -1336,9 +1340,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Stifinder til tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalet)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Stifinder til tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Stifinder til vejkøretøjer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Stifinder til skibe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Anbefalet)
@@ -2055,7 +2060,7 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskab
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sænk punkter i landskabet. Ved trækning sænkes det først valgte hjørne, og udligner det valgte område til samme niveau. Ctrl vælger området diagonalt. Shift skifter mellem at bygge og vise prisoverslag.
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hæv punkter i landskabet. Ved trækning hæves det først valgte hjørne, og resten af det valgte område udlignes til samme højde. Ctrl vælger området diagonalt. Shift skifter mellem at bygge og vise prisoverslag.
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Udjævn et område til en højde svarende til det først markerede hjørne. Ctrl vælger området diagonalt. Shift skifter mellem at bygge og vise prisoverslag.
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb land til senere brug
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb land til fremtidig brug. Shift skifter mellem at bygge og vise prisoverslag.
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt valg
@@ -2863,10 +2868,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køretøj{P "" er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klik på et tog for information, træk vogn/lokomotiv for at fjerne/tilføje det til toget
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Køretøjer - klik på et køretøj for mere information
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skibe - klik på et skib for information
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fly - klik på et fly for information
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - højreklik på vogn/lokomotiv for information, træk for at tilføje til/fjerne fra togsættet. Hold Ctrl nede for at bruge funktionerne på hele den efterfølgende togkæde.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Køretøjer - højreklik på et køretøj for information
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skibe - højreklik på et skib for information
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fly - højreklik på et fly for information
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Træk tog/togvogn her hen for at sælge
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Træk køretøjet herhen for at sælge
@@ -2900,10 +2905,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klon kø
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klon skib
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon fly
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Klik på denne knap og så på et tog indeni eller udenfor remisen. CTRL-klik vil dele ordrer
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil købe en kopi af køretøjet. Klik på denne knap og så på et køretøj indeni eller udenfor værkstedet. CTRL-klik vil dele ordrer
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil købe en kopi af skibet. Klik på denne knap og så på et skib indeni eller udenfor dokken. CTRL-klik vil dele ordrer
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil købe en kopi af et fly. Klik på denne knap og så på et fly indeni eller udenfor hangaren. CTRL-klik vil dele ordrer
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Klik på denne knap og så på et tog indeni eller udenfor remisen. Ctrl-klik vil kopiere ordrer. Shift-klik vil vise prisoverslag.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil købe en kopi af køretøjet. Klik på denne knap og så på et køretøj indeni eller udenfor værkstedet. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil købe en kopi af skibet. Klik på denne knap og så på et skib indeni eller udenfor dokken. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil købe en kopi af et fly. Klik på denne knap og så på et fly indeni eller udenfor hangaren. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer skærmen over remisens lokalitet. Ctrl+Klik åbner et nyt vindue ved remisens lokalitet.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over værkstedets lokalitet. Ctrl+Klik åbner et nyt vindue ved køretøjsværkstedets lokalitet.
@@ -2987,10 +2992,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send kø
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send skibet til dok. CTRL+klik vil kun servicere
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. CTRL-klik vil dele ordrer
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vil købe en kopi af vejkøretøjet. CTRL-klik vil dele ordrer
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil købe en kopi af skibet. CTRL-klik vil dele ordrer
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil købe en kopi af et fly. CTRL-klik vil dele ordrer
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vil købe en kopi af vejkøretøjet. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil købe en kopi af skibet. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil købe en kopi af et fly. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til at fortsætte uden at vente på at signalet skifter til grønt
 
@@ -3767,7 +3772,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikke slette skilt...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :En klon af Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Et simulationsspil baseret på Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

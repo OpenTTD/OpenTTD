@@ -1153,15 +1153,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó 
 STR_CONFIG_SETTING_OFF                                          :Ki
 STR_CONFIG_SETTING_ON                                           :Be
 STR_CONFIG_SETTING_DISABLED                                     :kikapcsolva
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Kikapcsolva
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Saját vállalat
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Minden vállalat
+
+STR_CONFIG_SETTING_NONE                                         :Nincs
+STR_CONFIG_SETTING_ORIGINAL                                     :Eredeti
+STR_CONFIG_SETTING_REALISTIC                                    :Valósághű
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Vonatok maximális hossza: {ORANGE}{STRING} mező
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Járművek kipufogógáz/füst mennyisége: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Nincs
-STR_CONFIG_SETTING_ORIGINAL                                     :Eredeti
-STR_CONFIG_SETTING_REALISTIC                                    :Valósághű
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Közúti járművek gyorsulási módja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Lejtő meredeksége vonatoknak: {ORANGE}{STRING}%
@@ -1284,9 +1294,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :minden ami nem 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :minden ami nem tájrendezés
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :minden cselekvés
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Kikapcsolva
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Saját vállalat
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Minden vállalat
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Rakodásjelző használata: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Indulás és érkezés megjelenítése a menetrendekben: {ORANGE}{STRING}
@@ -1363,9 +1370,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :csak esőerdők
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mindenhol
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}A fő eszközsor helye: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Állapotsor elhelyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}{STRING} képpont
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}letiltva
@@ -1400,9 +1404,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vonatok
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Települések
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gazdaság
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Útvonalkereső vonatokhoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ajánlott)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Útvonalkereső vonatokhoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Útvonalkereső közúti járművekhez: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Útvonalkereső hajókhoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Eredeti (OPF) {BLUE}(Ajánlott)

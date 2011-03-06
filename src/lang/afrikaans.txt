@@ -1076,13 +1076,23 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorder
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
 STR_CONFIG_SETTING_DISABLED                                     :gestrem
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Af
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eie maatskappy
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle maatskappye
+
+STR_CONFIG_SETTING_NONE                                         :Geen
+STR_CONFIG_SETTING_ORIGINAL                                     :Oorspronlik
+STR_CONFIG_SETTING_REALISTIC                                    :Realisties
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Senter
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Regs
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Laat bou op skuinstes en kusse toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Laat terraforming toe onder geboue, spoore, ens. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Laat meer realisties grootte opvangsgebied toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Laat verwydering van meer stad-besite paaie, bruge, ens toe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Geen
-STR_CONFIG_SETTING_ORIGINAL                                     :Oorspronlik
-STR_CONFIG_SETTING_REALISTIC                                    :Realisties
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein versnelling model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Pad voertuig versnelling model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hoë steil die helling is vir treine {ORANGE}{STRING}%
@@ -1197,9 +1207,6 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Outomat
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :geen aksies
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle aksies
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik die voorloopende voertuiglys: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Af
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eie maatskappy
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Alle maatskappye
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gebruik laai aanwysers: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vertoon rooster in tike liewer as dae: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankoms en vertrek in tydroosters: {ORANGE}{STRING}
@@ -1275,9 +1282,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Slegs in reënw
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisie van hoof werktuigbaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Senter
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Regs
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Venster slag straal: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Venster slag straal: {ORANGE}strem
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Venster sagte beperking (nie taai): {ORANGE}{STRING}
@@ -1311,9 +1315,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treine
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Dorpe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Nywerhede
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Padvinder vir treine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Aanbevole)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Padvinder vir treine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Padvinder vir pad voertuie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Padvinder vir skepe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oorspronklike {BLUE}(Aanbevole)

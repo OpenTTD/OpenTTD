@@ -372,8 +372,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
-
 # Advanced settings window
+
+
+
+
 
 
 
@@ -386,6 +389,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avza je
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :l-ebda azzjoni
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :l-azzjonijiet kollha
+
 
 
 

@@ -1064,13 +1064,23 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opcións
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :deshabilitado
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Off
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Propia Compañía
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Tódalas compañías
+
+STR_CONFIG_SETTING_NONE                                         :Ningún
+STR_CONFIG_SETTING_ORIGINAL                                     :Orixinal
+STR_CONFIG_SETTING_REALISTIC                                    :Realista
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dereita
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permiti-la construción en rampas e costas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir terraformación baixo edificios, pistas, etc. (autopendente): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir áreas de captura máis realistas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Ningún
-STR_CONFIG_SETTING_ORIGINAL                                     :Orixinal
-STR_CONFIG_SETTING_REALISTIC                                    :Realista
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleración dos trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de aceleración para camións/buses: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90º: {ORANGE}{STRING}
@@ -1173,9 +1183,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automáticamente ó comezo dunha nova partida: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usa-la lista avanzada de vehículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Off
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Propia Compañía
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Tódalas compañías
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra-lo horario en ticks en lugar de días: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creación rápida de ordes para vehículos: {ORANGE}{STRING}
@@ -1241,9 +1248,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :só nos bosques
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :todas partes
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dereita
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radio de captura da fiestra: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de agarre da fiestra: {ORANGE}desactivado
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocidade de crecemento das cidades: {ORANGE}{STRING}
@@ -1273,9 +1277,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Buscador de ruta para trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Buscador de ruta para trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Buscador de ruta para vehículos de estrada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Buscador de ruta para barcos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orixinal {BLUE}(Recomendado)

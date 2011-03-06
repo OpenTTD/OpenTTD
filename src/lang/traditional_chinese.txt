@@ -1089,14 +1089,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階�
 STR_CONFIG_SETTING_OFF                                          :關
 STR_CONFIG_SETTING_ON                                           :開
 STR_CONFIG_SETTING_DISABLED                                     :關閉
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :無
+STR_CONFIG_SETTING_COMPANIES_OWN                                :自家公司
+STR_CONFIG_SETTING_COMPANIES_ALL                                :所有公司
+
+STR_CONFIG_SETTING_NONE                                         :無
+STR_CONFIG_SETTING_ORIGINAL                                     :原版
+STR_CONFIG_SETTING_REALISTIC                                    :真實
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :靠左
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :置中
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :靠右
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}可在斜坡及岸邊興建：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許在建築物或軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑及隧道：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}列車產生的蒸氣／火花數量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :無
-STR_CONFIG_SETTING_ORIGINAL                                     :原版
-STR_CONFIG_SETTING_REALISTIC                                    :真實
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列車加速演算模型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}車輛加速演算模型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車最大坡度 {ORANGE}{STRING}%
@@ -1216,9 +1226,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :所有非建設
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :所有，除了場景變更動作外
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有動作
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用進階交通工具清單： {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :無
-STR_CONFIG_SETTING_COMPANIES_OWN                                :自家公司
-STR_CONFIG_SETTING_COMPANIES_ALL                                :所有公司
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}使用裝載進度指示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}顯示時刻表排定的到離時間：{ORANGE}{STRING}
@@ -1295,9 +1302,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :只在雨林區
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :到處產生
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具列位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :靠左
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :置中
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :靠右
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}狀態列顯示位置：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}視窗吸附距離：{ORANGE}{STRING} 像素
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}視窗吸附距離：{ORANGE}關閉
@@ -1332,9 +1336,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列車
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市鎮
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工業
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}列車的路徑搜尋方式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(建議)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}列車的路徑搜尋方式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}車輛的路徑搜尋方式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船隻的路徑搜尋方式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原版 {BLUE}(建議)

@@ -699,8 +699,12 @@ STR_NUM_CUSTOM                                                  :انتخابی
 
 
 
-
 # Advanced settings window
+
+
+
+
+
 
 
 

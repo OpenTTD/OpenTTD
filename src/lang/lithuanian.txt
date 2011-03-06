@@ -1156,6 +1156,16 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtin
 STR_CONFIG_SETTING_OFF                                          :Išjungta
 STR_CONFIG_SETTING_ON                                           :Įjungta
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Išjungta
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Nuosava įmonė
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Visos įmonės
+
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kairėje
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centruoti
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leisti statyti pastatus pakrantėse ir ant šlaitų: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
@@ -1272,9 +1282,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatinė pauzė paleidžiant naują žaidimą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti pagerintą automobilių sąrašą: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Išjungta
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Nuosava įmonė
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Visos įmonės
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Naudotį krovimo indikatorius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rodyti laiką tvarkaraštyje užuot dienas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Rodyti arvykimą ir išvykimą tvarkaraščiuose: {ORANGE}{STRING}
@@ -1350,9 +1357,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pagrindinės įrankių juostos pozicija: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kairėje
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centruoti
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Būsenos juostos vieta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Langų persidengimo atstumas: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Langų kibumo atstumas: {ORANGE}disabled
@@ -1387,9 +1391,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traukin
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miestai
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gamyklos
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Traukinių maršruto radėjas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekomenduojama)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Traukinių maršruto radėjas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Automobilių maršruto radėjas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivų maršruto radėjas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalus {BLUE}(Rekomenduojama)

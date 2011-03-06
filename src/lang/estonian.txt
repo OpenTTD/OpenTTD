@@ -1146,15 +1146,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsema
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
 STR_CONFIG_SETTING_DISABLED                                     :väljas
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Väljas
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Oma ettevõte
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Kõik ettevõtted
+
+STR_CONFIG_SETTING_NONE                                         :Pole
+STR_CONFIG_SETTING_ORIGINAL                                     :Originaal
+STR_CONFIG_SETTING_REALISTIC                                    :Reaalne
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasakul
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Nõlvadele ja kallastele ehitamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Maastikukujundus majade, rööbaste jms. all (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Reaalsemad veekogud: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Linnateede, -sildade, -tunnelite jne lammutamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Rongide maksimaalne pikkus: {ORANGE}{STRING} ruut{P 0:1 "" u}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Vedurisuitsu ja -sädemete hulk: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Pole
-STR_CONFIG_SETTING_ORIGINAL                                     :Originaal
-STR_CONFIG_SETTING_REALISTIC                                    :Reaalne
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Rongide kiirendusmudel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Maanteesõidukite kiirendusmudel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Järsakute kalde suurus rongide jaoks {ORANGE}{STRING}%
@@ -1277,9 +1287,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :kõik mitte-ehi
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kõik peale maastikku muutvate toimingute
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kõik tõimingud
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Laiendatud sõidukinimekiri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Väljas
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Oma ettevõte
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Kõik ettevõtted
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Laadimisnäidikud: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Sõiduplaanis kasutatakse päevade asemel tiksumist: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Saabumiste ja väljumiste näitamine sõiduplaanis: {ORANGE}{STRING}
@@ -1356,9 +1363,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :ainult vihmamet
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :igale poole
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasakul
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Seisundiriba asukoht: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Akna haaramisraadius: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Akna haaramisraadius: {ORANGE}välja lülitatud
@@ -1393,9 +1397,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Rongid
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Linnad
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tööstused
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(soovitatud)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Maanteesõidukite marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatud)

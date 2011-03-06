@@ -1243,15 +1243,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Расш
 STR_CONFIG_SETTING_OFF                                          :нет
 STR_CONFIG_SETTING_ON                                           :да
 STR_CONFIG_SETTING_DISABLED                                     :отключено
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :нет
+STR_CONFIG_SETTING_COMPANIES_OWN                                :для своей компании
+STR_CONFIG_SETTING_COMPANIES_ALL                                :для всех компаний
+
+STR_CONFIG_SETTING_NONE                                         :нет
+STR_CONFIG_SETTING_ORIGINAL                                     :оригинальное
+STR_CONFIG_SETTING_REALISTIC                                    :реалистичное
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и на берегу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрешить снос (почти) всех городских объектов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Максимальная длина состава: {ORANGE}{STRING} клет{P 0:1 ка ки ок}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество дыма/искр у локомотивов: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :нет
-STR_CONFIG_SETTING_ORIGINAL                                     :оригинальное
-STR_CONFIG_SETTING_REALISTIC                                    :реалистичное
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель ускорения поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модель ускорения автотранспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутизна склонов (для поездов): {ORANGE}{STRING}%
@@ -1374,9 +1384,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :все дейс
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :все действия, кроме изменения ландшафта
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :все действия
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Использовать расширенный список транспорта: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :нет
-STR_CONFIG_SETTING_COMPANIES_OWN                                :для своей компании
-STR_CONFIG_SETTING_COMPANIES_ALL                                :для всех компаний
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Показывать индикатор загрузки: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показывать расписание в «тиках», а не днях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показывать время прибытия и отправления в графиках: {ORANGE}{STRING}
@@ -1453,9 +1460,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :только в
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :везде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Расположение строки состояния: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон: {ORANGE}{STRING} пикс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радиус прилипания окон: {ORANGE}отключено
@@ -1490,9 +1494,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Пое�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Города
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Промышленность
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Алгоритм поиска пути для поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Рекомендуется)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Алгоритм поиска пути для поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Алгоритм поиска пути для автотранспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Алгоритм поиска пути для кораблей: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Оригинальный {BLUE}(Рекомендуется)

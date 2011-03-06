@@ -1090,15 +1090,25 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
 STR_CONFIG_SETTING_DISABLED                                     :Inactif
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Désactivé
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Propre compagnie
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Toutes les compagnies
+
+STR_CONFIG_SETTING_NONE                                         :Aucune
+STR_CONFIG_SETTING_ORIGINAL                                     :Original
+STR_CONFIG_SETTING_REALISTIC                                    :Réaliste
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :À gauche
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrée
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Construction côtière et sur pentes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Terrassement sous les bâtiments, voies, etc. (Autoslope){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Autoriser des zones de desserte plus réalistes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permettre le retrait de plus d'éléments possédés par une ville{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Longueur maximum des trains{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantité de fumée/étincelles des véhicules{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Aucune
-STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Réaliste
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modèle d'accélération des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modèle d'accélération des véhicules routiers{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinaison des pentes pour les trains{NBSP}: {ORANGE}{STRING}%
@@ -1221,9 +1231,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toutes hors con
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toutes sauf celles modifiant le terrain
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toutes
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utiliser la liste de véhicules avancée{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Désactivé
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Propre compagnie
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Toutes les compagnies
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Utiliser les indicateurs de chargement{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Afficher l'horaire en ticks plutôt qu'en jours{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afficher l'arrivée et le départ dans les horaires{NBSP}: {ORANGE}{STRING}
@@ -1300,9 +1307,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Seulement dans 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Partout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :À gauche
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrée
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Position de la barre d'état{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}inactif
@@ -1337,9 +1341,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Villes
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Recherche de chemin des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommandé)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Recherche de chemin des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Recherche de chemin des véhicules routiers{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Recherche de chemin des navires{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommandé)

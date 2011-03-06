@@ -1088,14 +1088,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gelişmi
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
 STR_CONFIG_SETTING_DISABLED                                     :kapalı
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Kapalı
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Kendi şirketim
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Tüm şirketler
+
+STR_CONFIG_SETTING_NONE                                         :Yok
+STR_CONFIG_SETTING_ORIGINAL                                     :Orijinal
+STR_CONFIG_SETTING_REALISTIC                                    :Gerçekçi
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sol
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Orta
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Sağ
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Sahile ve eğimli araziye inşaat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Araçlardan çıkan duman veya kıvılcım miktarı: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Yok
-STR_CONFIG_SETTING_ORIGINAL                                     :Orijinal
-STR_CONFIG_SETTING_REALISTIC                                    :Gerçekçi
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Tren ivme modeli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kara taşıtı ivme modeli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Trenler için eğim dikliği {ORANGE}{STRING}%
@@ -1215,9 +1225,6 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :inşa içermeye
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :yer şekillendirme hareketleri dışında tüm hareketler
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tüm hareketler
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gelişmiş araç listesini kullan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Kapalı
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Kendi şirketim
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Tüm şirketler
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Araç yükleme bilgisini göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zaman tablosunda gün yerine işlemci zamanı kullan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Çıkış ve varışları çizelgelerde göster: {ORANGE}{STRING}
@@ -1294,9 +1301,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :yalnız yağmur
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :her yerde
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubuğu pozisyonu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sol
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Orta
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Sağ
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Durum çubuğunun konumu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Pencerelerin yapışma uzaklığı: {ORANGE}{STRING} piksel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}kapalı
@@ -1331,9 +1335,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenler
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Şehirler
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Endüstri
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Trenler için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Önerilen)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Trenler için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Arabalar için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Gemiler için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Öntanımlı {BLUE}(Önerilen)

@@ -1148,14 +1148,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšír
 STR_CONFIG_SETTING_OFF                                          :nie
 STR_CONFIG_SETTING_ON                                           :áno
 STR_CONFIG_SETTING_DISABLED                                     :zakázané
+
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Vypnutý
+STR_CONFIG_SETTING_COMPANIES_OWN                                :vlastná spoločnosť
+STR_CONFIG_SETTING_COMPANIES_ALL                                :všetky spoločnosti
+
+STR_CONFIG_SETTING_NONE                                         :Žiadne
+STR_CONFIG_SETTING_ORIGINAL                                     :Pôvodné
+STR_CONFIG_SETTING_REALISTIC                                    :Realistické
+
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlavo
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Umožniť výstavbu na svahoch a na pobreží: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Povoliť úpravy terénu pod budovami, koľajami, a pod.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povoliť realistickejšiu veľkosť oblasti pokrytia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Umožniť odstránenie viacerých mestských ciest, mostov, ... : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Množstvo dymu/iskier z lokomotív: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONE                                         :Žiadne
-STR_CONFIG_SETTING_ORIGINAL                                     :Pôvodné
-STR_CONFIG_SETTING_REALISTIC                                    :Realistické
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerácie vlaku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model zrýchlenia pre cestné vozidlá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmosť svahu pre vlaky {ORANGE}{STRING}%
@@ -1269,9 +1279,6 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatická pauza pri štarte novej hry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit vylepšený zoznam vozidiel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Vypnutý
-STR_CONFIG_SETTING_COMPANIES_OWN                                :vlastná spoločnosť
-STR_CONFIG_SETTING_COMPANIES_ALL                                :všetky spoločnosti
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Zobraziť ukazovatele nakladania/vykladania: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobraziť cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zobraziť príchody a odchody v cestovných poriadkoch: {ORANGE}{STRING}
@@ -1347,9 +1354,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :len v dažďov�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všade
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozícia hlavného menu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlavo
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozícia statusbaru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vzdialenosť pre prichytenie okna: {ORANGE}{STRING} bod{P "" y ov}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenosť pre prichytenie okna: {ORANGE}vypnuté
@@ -1384,9 +1388,10 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mestá
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Priemysel
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hľadania cesty pre vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(odporučený)
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hľadania cesty pre vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritmus hľadania cesty pre automobily: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritmus hľadania cesty pre lode: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporučený)
