@@ -240,7 +240,7 @@ void Train::ConsistChanged(bool same_length)
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
-		veh_len = 8 - Clamp(veh_len, 0, 7);
+		veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
 
 		/* verify length hasn't changed */
 		if (same_length && veh_len != u->gcache.cached_veh_length) RailVehicleLengthChanged(u);
@@ -313,8 +313,11 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 	}
 
 	/* Subtract half the front vehicle length of the train so we get the real
-	 * stop location of the train. */
-	return stop - (v->gcache.cached_veh_length + 1) / 2;
+	 * stop location of the train.
+	 * Actually, the center of all vehicles is half a normal vehicle's length
+	 * from the front of the vehicle, so even in case the vehicle is 1/8th
+	 * long, the center is still at 1/2 of VEHICLE_LENGTH. Basically FS#3569. */
+	return stop - VEHICLE_LENGTH / 2;
 }
 
 
@@ -461,7 +464,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 		offset->x = reference_width / 2;
 		offset->y = vehicle_pitch;
 	}
-	return this->gcache.cached_veh_length * reference_width / 8;
+	return this->gcache.cached_veh_length * reference_width / VEHICLE_LENGTH;
 }
 
 static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
@@ -3403,8 +3406,13 @@ static bool TrainApproachingLineEnd(Train *v, bool signal)
 		default: break;
 	}
 
-	/* do not reverse when approaching red signal */
-	if (!signal && x + (v->gcache.cached_veh_length + 1) / 2 >= TILE_SIZE) {
+	/* Do not reverse when approaching red signal. Make sure the vehicle's front
+	 * does not cross the tile boundary when we do reverse, but as the vehicle's
+	 * location is based on their center, use half a vehicle's length as offset.
+	 * Actually, the center of all vehicles is half a normal vehicle's length
+	 * from the front of the vehicle, so even in case the vehicle is 1/8th
+	 * long, the center is still at 1/2 of VEHICLE_LENGTH. Basically FS#3569. */
+	if (!signal && x + VEHICLE_LENGTH / 2 >= TILE_SIZE) {
 		/* we are too near the tile end, reverse now */
 		v->cur_speed = 0;
 		ReverseTrainDirection(v);

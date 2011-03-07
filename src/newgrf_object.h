@@ -74,13 +74,13 @@ struct ObjectSpec {
 	 * Get the cost for building a structure of this type.
 	 * @return The cost for building.
 	 */
-	Money GetBuildCost() const { return (_price[PR_BUILD_OBJECT] * this->build_cost_multiplier); }
+	Money GetBuildCost() const { return GetPrice(PR_BUILD_OBJECT, this->build_cost_multiplier, this->grf_prop.grffile, 0); }
 
 	/**
 	 * Get the cost for clearing a structure of this type.
 	 * @return The cost for clearing.
 	 */
-	Money GetClearCost() const { return (_price[PR_CLEAR_OBJECT] * this->clear_cost_multiplier); }
+	Money GetClearCost() const { return GetPrice(PR_CLEAR_OBJECT, this->clear_cost_multiplier, this->grf_prop.grffile, 0); }
 
 	bool IsAvailable() const;
 	uint Index() const;

@@ -49,7 +49,7 @@ struct ContentCallback {
 	 * @param ci the content info of the file
 	 * @param bytes the number of bytes downloaded since the previous call
 	 */
-	virtual void OnDownloadProgress(const ContentInfo *ci, uint bytes) {}
+	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes) {}
 
 	/**
 	 * We have finished downloading a file
@@ -89,7 +89,7 @@ protected:
 	void OnConnect(bool success);
 	void OnDisconnect();
 	void OnReceiveContentInfo(const ContentInfo *ci);
-	void OnDownloadProgress(const ContentInfo *ci, uint bytes);
+	void OnDownloadProgress(const ContentInfo *ci, int bytes);
 	void OnDownloadComplete(ContentID cid);
 
 	void OnFailure();

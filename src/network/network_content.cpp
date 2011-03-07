@@ -453,7 +453,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 			return false;
 		}
 
-		this->OnDownloadProgress(this->curInfo, (uint)toRead);
+		this->OnDownloadProgress(this->curInfo, (int)toRead);
 
 		if (toRead == 0) this->AfterDownload();
 	}
@@ -526,6 +526,10 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	this->http_response_index = -2;
 
 	if (this->curFile != NULL) {
+		/* Revert the download progress when we are going for the old system. */
+		long size = ftell(this->curFile);
+		if (size > 0) this->OnDownloadProgress(this->curInfo, (int)-size);
+
 		fclose(this->curFile);
 		this->curFile = NULL;
 	}
@@ -559,7 +563,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 			this->OnFailure();
 		} else {
 			/* Just received the data. */
-			this->OnDownloadProgress(this->curInfo, (uint)length);
+			this->OnDownloadProgress(this->curInfo, (int)length);
 		}
 		/* Nothing more to do now. */
 		return;
@@ -1023,7 +1027,7 @@ void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *
 	}
 }
 
-void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo *ci, uint bytes)
+void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo *ci, int bytes)
 {
 	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
 		ContentCallback *cb = *iter;
