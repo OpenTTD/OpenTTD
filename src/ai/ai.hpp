@@ -168,7 +168,7 @@ public:
 	static void GameLoop() {}
 	static bool HasAI(const struct ContentInfo *ci, bool md5sum) { return false; }
 	static void Rescan() {}
-	static char *GetConsoleList(char *p, const char *last) { return p; }
+	static char *GetConsoleList(char *p, const char *last, bool newest_only = false) { return p; }
 	static void nop() { }
 };
 
