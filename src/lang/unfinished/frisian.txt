@@ -1226,9 +1226,24 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :álles útsein 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Eltse Aksje
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebrûk de avansearre reau list: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gebrûk laad yndikator: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toan tsjinstregeling yn tikken yn stee fan yn dagen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toan oankomst- en ofreistiid yn de tsjinstregeling: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Fluch reau oarders meitsje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standert spoarsoart (by nij of opslein spul): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Earst beskikber
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Lêst beskikber
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meast gebrûkt
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Lit reservearre spoar sjen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}lit bouark akttyf nei gebrûk: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Groepearje útjefte yn bedriuwsfinânsjesskerm: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Ynfrastruktuer bouwurk stilsette wannear't gjin geskikte fuortúgen beskikber binne: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Ynfrastruktuer bouwurk stilsette wannear't gjin geskikte reau beskikber binne: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maksimum oantal treinen per bedriuw: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maksimum oantal auto's per bedriuw: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maksimum oantal fleanmasines per bedriuw: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maksimum oantal skepen per bedriuw: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Treinen foar de kompjûter utskeakelje: {ORANGE}{STRING}
 
 
 

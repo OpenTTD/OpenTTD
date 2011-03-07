@@ -231,10 +231,10 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ΟΛ�
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} επιβάτ{P ης ες}
 STR_BAGS                                                        :{COMMA} σάκκ {P ος οι}
-STR_TONS                                                        :{COMMA} Τόνοι
-STR_LITERS                                                      :{COMMA} Λίτρ{P ο α}
+STR_TONS                                                        :{COMMA} τόνο{P ς οι}
+STR_LITERS                                                      :{COMMA} λίτρ{P ο α}
 STR_ITEMS                                                       :{COMMA} αντικείμεν{P ο α}
-STR_CRATES                                                      :{COMMA} Κουτ{P ί ιά}
+STR_CRATES                                                      :{COMMA} κουτ{P ί ιά}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Σκούρο Μπλε
@@ -292,10 +292,10 @@ STR_BUTTON_LOCATION                                             :{BLACK}Τοπο
 STR_BUTTON_RENAME                                               :{BLACK}Μετονομασία
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Κλείσιμο παραθύρου
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε για να το μετακινήσετε
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε το για να το μετακινήσετε
 STR_TOOLTIP_SHADE                                               :{BLACK}Σκίαση παραθύρου - Εμφάνιση μόνο της μπάρας τιτλου
-STR_TOOLTIP_DEBUG                                               :{BLACK}Εμφάνιση πληροφοριών αποσφαλμάτοσης για NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Σημείωση αυτού του παραθύρου να μην κλείνει από το πλήκτρο 'Κλείσιμο Παραθύρων'
+STR_TOOLTIP_DEBUG                                               :{BLACK}Εμφάνιση πληροφοριών αποσφαλμάτωσης για NewGRF
+STR_TOOLTIP_STICKY                                              :{BLACK}Σημείωση αυτού του παραθύρου να μην κλείνει από το πλήκτρο 'Κλείσιμο Όλων των Παραθύρων'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντε κλίκ και σύρετε για να αλλάξετε το μέγεθος του παραθύρου
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
@@ -1120,6 +1120,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Θέσ�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Κανένα
+STR_FUNDING_ONLY                                                :Χρηματοδότηση μονο
+STR_MINIMAL                                                     :Ελάχιστο
 STR_NUM_VERY_LOW                                                :Πολύ χαμηλό
 STR_NUM_LOW                                                     :Χαμηλό
 STR_NUM_NORMAL                                                  :Κανονικό
@@ -1197,6 +1199,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επι�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Μέγιστο μήκος τρένων: {ORANGE}{STRING} πλακιδι{P 0:1 ο α}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Μοντέλο επιτάχυνσης οχημάτων δρόμου: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Υπερβολική κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
@@ -1224,6 +1227,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ουρ�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Να επιτρέπεται η ανακατασκευή των τοπικών δρόμων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Συντελεστής ταχύτητας αεροπλάνων: {ORANGE}1 / {STRING}
@@ -1249,8 +1253,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Τα ο
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα είναι {ORANGE}{STRING}{LTBLUE} μήνες πρίν/μετά την μέγιστη ηληκία
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Διάρκεια μηνύματος σφάλματος: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Διάρκεια μηνύματος σφάλματος: {ORANGE}Αναδυση για {STRING} δευτερολεπτ {P ο α}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}Αναδυση για {STRING} δευτερολεπτ{P ο α}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Εμφάνιση αναδυόμενων γεγονότων: {ORANGE}Δεξί κλικ
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {ORANGE}{STRING}
 
@@ -1329,10 +1333,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Δια�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Απενεργοποιήση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστος αριθμός τρένων ανα παίκτη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροπλάνα ανα παίκτη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Μέγιστα πλοία ανά παίκτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστος αριθμός τρένων ανα εταιρία: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Μέγιστα οχήματα ανα εταιρία: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροπλάνα ανα εταιρία: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Μέγιστα πλοία ανά εταιρία: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Απενεργοποίηση τρένων υπολογιστή: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Απενεργοποίηση οχημάτων υπολογιστή: {ORANGE}{STRING}
@@ -1392,6 +1396,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε �
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Θέση της μπάρας κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}{STRING}
@@ -2414,7 +2419,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειρ
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περιστροφή χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Μέγεθος:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Δώστε ένα σπόρο τυχαίας παραγωγής
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
@@ -2546,11 +2551,11 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} απ
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {2:STRING} ως στατικό NewGRF με {4:STRING} μπόρει να προκαλέσει αποσυγχρονισμούς.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Αναπάντεχο sprite.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Αναπάντεχο sprite
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως ένα κόκκινο ερωματικό (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως ένα κόκκινο ερωματικό (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασμα τέλους του ψεύδο-sprite
 
 # NewGRF related 'general' warnings
@@ -3331,9 +3336,10 @@ STR_ORDER_TRANSFER                                              :(Μεταφορ
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Μεταφορά και αναμονή για πλήρη φόρτωση)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Μετάφορα και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Μεταφορά και φύγε άδειο)
-STR_ORDER_NO_UNLOAD                                             :(Χωρίς αποφόρτωση και πάρε φορτίο)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Χωρίς αποφόρτωση και αναμονή για πλήρης φόρτωση)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Χωρίς αποφόρτωση και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
+STR_ORDER_NO_UNLOAD                                             :(Χωρίς ξεφόρτωση και πάρε φορτίο)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Χωρίς ξεφόρτωση και αναμονή για πλήρης φόρτωση)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Χωρίς ξεφόρτωση και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Χώρις ξεφόρτωση και χώρις φόρτωση)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[κοντά στο τέλος]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[μέση]
@@ -3671,7 +3677,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... πρ
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Τα τρένα μπόρουν να τροποιηθούν μόνο όταν σταματήσουν μέσα σε αμαξοστάσιο
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Τρένο πολύ μεγάλο
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του οχήματος...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Δεν μπορεί να γίνει αναστροφή της κατεύθυνσης του οχήματος αποτελούμενο από πολλαπλές μονάδες...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... αποτελείται από πολλαπλές μονάδες
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Μη σύμβατος τύπος σιδηροτροχιάς
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Δεν μπορεί να μετακινηθεί το όχημα...
@@ -3745,6 +3751,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπ
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Άλλο τουνελ στη μέση
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Το τούνελ θα καταλήξει εκτός του χάρτη
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... τούνελ πολύ μακρύ
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... πάρα πολλά αντικείμενα

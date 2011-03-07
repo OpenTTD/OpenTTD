@@ -1106,6 +1106,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}可在�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許在建築物或軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑及隧道：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}最大的火車長度: {ORANGE}{STRING} 區塊
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}列車產生的蒸氣／火花數量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列車加速演算模型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}車輛加速演算模型：{ORANGE}{STRING}
@@ -1117,10 +1118,13 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}交通工具逐步裝載：{ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}通貨膨脹：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}有需求才向車站供貨：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}最大的橋長度: {ORANGE}{STRING} 區塊
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}最大的隧道長度: {ORANGE}{STRING} 區塊
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}修改基礎工業的建造方式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :無法建造
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :與其他工業相同
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需探勘
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}整平環繞工業的區域: {ORANGE}{STRING} 區塊
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}每個市鎮可擁有多個同類工業：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
@@ -1775,6 +1779,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :已傳送太多
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}可能發生連線中斷
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}最後 {NUM} 秒沒有資料從伺服器過來
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -3105,6 +3110,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}容量�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改裝)
 STR_REFIT_TITLE                                                 :{GOLD}選擇要運送的貨物種類：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新容量：{GOLD}{CARGO}{}{BLACK}改裝費用：{GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新容量: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}整修成本: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}選擇交通工具以進行整修。以滑鼠拖曳可以選擇多個交通工具。選空白的區域將選擇整個交通工具。按住Ctrl再點選將選擇交通工具以及與其後串接的車廂
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}選擇要運輸的貨物種類
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}選擇車輛要運送的貨物種類
