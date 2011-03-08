@@ -811,9 +811,10 @@ public:
 		VehicleOrderID to   = GB(data, 8, 8);
 
 		switch (data) {
-			case 0:
+			case -666:
 				/* Autoreplace replaced the vehicle */
 				this->vehicle = Vehicle::Get(this->window_number);
+				/* This case is _not_ called asynchronously. Get out directly, rest can be done later */
 				break;
 
 			case -1:
