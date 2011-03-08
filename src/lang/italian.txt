@@ -1093,11 +1093,11 @@ STR_CONFIG_SETTING_OFF.ms                                       :No
 STR_CONFIG_SETTING_OFF.mp                                       :No
 STR_CONFIG_SETTING_OFF.fs                                       :No
 STR_CONFIG_SETTING_OFF.fp                                       :No
-STR_CONFIG_SETTING_ON                                           :Si
-STR_CONFIG_SETTING_ON.ms                                        :Si
-STR_CONFIG_SETTING_ON.mp                                        :Si
-STR_CONFIG_SETTING_ON.fs                                        :Si
-STR_CONFIG_SETTING_ON.fp                                        :Si
+STR_CONFIG_SETTING_ON                                           :Sì
+STR_CONFIG_SETTING_ON.ms                                        :Sì
+STR_CONFIG_SETTING_ON.mp                                        :Sì
+STR_CONFIG_SETTING_ON.fs                                        :Sì
+STR_CONFIG_SETTING_ON.fp                                        :Sì
 STR_CONFIG_SETTING_DISABLED                                     :Disabilitato
 STR_CONFIG_SETTING_DISABLED.ms                                  :Disabilitato
 STR_CONFIG_SETTING_DISABLED.mp                                  :Disabilitati
@@ -1470,8 +1470,8 @@ STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selezion
 
 STR_LIVERY_DEFAULT                                              :Livrea standard
 STR_LIVERY_STEAM                                                :Locomotiva a vapore
-STR_LIVERY_DIESEL                                               :Locomotore diesel
-STR_LIVERY_ELECTRIC                                             :Locomotore elettrico
+STR_LIVERY_DIESEL                                               :Locomotiva diesel
+STR_LIVERY_ELECTRIC                                             :Locomotiva elettrica
 STR_LIVERY_MONORAIL                                             :Locomotiva monorotaia
 STR_LIVERY_MAGLEV                                               :Locomotiva maglev
 STR_LIVERY_DMU                                                  :DMU
