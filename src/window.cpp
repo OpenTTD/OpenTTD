@@ -2403,6 +2403,11 @@ void InputLoop()
 void UpdateWindows()
 {
 	Window *w;
+
+	FOR_ALL_WINDOWS_FROM_FRONT(w) {
+		w->ProcessScheduledInvalidations();
+	}
+
 	static int we4_timer = 0;
 	int t = we4_timer + 1;
 
@@ -2420,7 +2425,6 @@ void UpdateWindows()
 
 			if (!(w->flags4 & WF_WHITE_BORDER_MASK)) w->SetDirty();
 		}
-		w->ProcessScheduledInvalidations();
 	}
 
 	DrawDirtyBlocks();
