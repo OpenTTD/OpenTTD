@@ -164,9 +164,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		/* Create initial list. */
 		this->signs.ForceRebuild();
 		this->signs.ForceResort();
-		this->BuildSignsList();
-		this->SortSignsList();
-		this->vscroll->SetCount(this->signs.Length());
+		this->BuildSortSignList();
 	}
 
 	/**
@@ -214,6 +212,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 	virtual void OnPaint()
 	{
+		if (this->signs.NeedRebuild()) this->BuildSortSignList();
 		this->DrawWidgets();
 		if (!this->IsShaded()) this->DrawEditBox(SLW_FILTER_TEXT);
 	}
@@ -352,23 +351,36 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		this->HandleEditBox(SLW_FILTER_TEXT);
 	}
 
+	void BuildSortSignList()
+	{
+		if (this->signs.NeedRebuild()) {
+			this->BuildSignsList();
+			this->vscroll->SetCount(this->signs.Length());
+			this->SetWidgetDirty(SLW_CAPTION);
+		}
+		this->SortSignsList();
+	}
+
+	virtual void OnHundredthTick()
+	{
+		this->BuildSortSignList();
+		this->SetDirty();
+	}
 
 	virtual void OnInvalidateData(int data)
 	{
 		/* When there is a filter string, we always need to rebuild the list even if
 		 * the amount of signs in total is unchanged, as the subset of signs that is
 		 * accepted by the filter might has changed.
-		 */
+		 *
+		 * We can only set the trigger for resorting/rebuilding.
+		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
+		 * and a rebuild needs to be done first though it is scheduled later. */
 		if (data == 0 || !StrEmpty(this->filter_string)) { // New or deleted sign, or there is a filter string
 			this->signs.ForceRebuild();
-			this->BuildSignsList();
-			this->SetWidgetDirty(SLW_CAPTION);
-			this->vscroll->SetCount(this->signs.Length());
 		} else { // Change of sign contents while there is no filter string
 			this->signs.ForceResort();
 		}
-
-		this->SortSignsList();
 	}
 
 	static Hotkey<SignListWindow> signlist_hotkeys[];

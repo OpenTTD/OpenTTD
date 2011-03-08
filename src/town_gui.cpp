@@ -846,6 +846,12 @@ public:
 		}
 	}
 
+	virtual void OnPaint()
+	{
+		if (this->towns.NeedRebuild()) this->BuildSortTownList();
+		this->DrawWidgets();
+	}
+
 	virtual void OnHundredthTick()
 	{
 		this->BuildSortTownList();
@@ -859,12 +865,14 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
+		/* We can only set the trigger for resorting/rebuilding.
+		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
+		 * and a rebuild needs to be done first though it is scheduled later. */
 		if (data == 0) {
 			this->towns.ForceRebuild();
 		} else {
 			this->towns.ForceResort();
 		}
-		this->BuildSortTownList();
 	}
 };
 

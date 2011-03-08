@@ -1334,6 +1334,12 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, IDW_INDUSTRY_LIST);
 	}
 
+	virtual void OnPaint()
+	{
+		if (this->industries.NeedRebuild()) this->BuildSortIndustriesList();
+		this->DrawWidgets();
+	}
+
 	virtual void OnHundredthTick()
 	{
 		this->industries.ForceResort();
@@ -1342,12 +1348,14 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
+		/* We can only set the trigger for resorting/rebuilding.
+		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
+		 * and a rebuild needs to be done first though it is scheduled later. */
 		if (data == 0) {
 			this->industries.ForceRebuild();
 		} else {
 			this->industries.ForceResort();
 		}
-		this->BuildSortIndustriesList();
 	}
 };
 
