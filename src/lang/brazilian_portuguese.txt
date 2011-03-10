@@ -758,13 +758,13 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Acidente de trem!{} {COMMA} morrem em explosão após colisão
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Acidente de Veículo Rodoviário!{} Condutor morre em explosão após colisão com um trem
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Acidente de Veículo Rodoviário!{} {COMMA} morrem em explosão após colisão com um trem
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Acidente Rodoviário!{} Condutor morre em explosão após colisão com um trem
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Acidente Rodoviário!{} {COMMA} morrem em explosão após colisão com um trem
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Acidente Aéreo!{} {COMMA} morrem em explosão na {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} morrem em explosão
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Desastre de Zepelim na {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Veículo rodoviário destruído em colisão com 'OVNI'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Automóvel destruído em colisão com 'OVNI'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explosão em refinaria de petróleo perto de {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fábrica destruída em circunstâncias suspeitas perto de {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'OVNI' cai próximo a {TOWN}!
