@@ -1173,7 +1173,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Umožni
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Povoliť úpravy terénu pod budovami, koľajami, a pod.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povoliť realistickejšiu veľkosť oblasti pokrytia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Umožniť odstránenie viacerých mestských ciest, mostov, ... : {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximálna dĺžka vlakov: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximálna dĺžka vlakov: {ORANGE}{STRING} pol{P 0:1 e ia í}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Množstvo dymu/iskier z lokomotív: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerácie vlaku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model zrýchlenia pre cestné vozidlá: {ORANGE}{STRING}
@@ -1185,8 +1185,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Použi�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postupné nakladanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflácia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Vykladať náklad len v stanici kde je dopyt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximálná dĺžka mostu: {ORANGE}{STRING} tile{P 0:1 "" s}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximálná dĺžka tunela: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximálná dĺžka mostu: {ORANGE}{STRING} pol{P 0:1 e ia í}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximálná dĺžka tunela: {ORANGE}{STRING} pol{P 0:1 e ia í}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Spôsob výstavby priemyslu produkujúceho suroviny: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žiadny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :normálny
