@@ -3655,7 +3655,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mus�
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky sa dajú nahradiť len v depe
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je príliš dlhý
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nemôžem otočiť vozidlo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je možné otáčať vozidlá zložené z viacerých jednotiek
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... zložené z viacerých jednotiek
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nekompatibilné typy koľají
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nemožno posúvať vozidlo...

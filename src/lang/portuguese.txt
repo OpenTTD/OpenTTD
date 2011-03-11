@@ -3815,7 +3815,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Mealheiro
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Mina de Carvão
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Central Eléctrica
-STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Oficina de Carpintaria
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Marcenaria
 STR_INDUSTRY_NAME_FOREST                                        :{G=f}Floresta
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Refinaria de Petróleo
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma Petrolífera
