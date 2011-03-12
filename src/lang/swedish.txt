@@ -3243,11 +3243,11 @@ STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lasta av och v
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Ladda av och lämna tom)
 STR_ORDER_TRANSFER                                              :(Överför och lasta gods)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Överför och vänta på full last)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Överför och vänta på någon full godstyp)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Överför och vänta på full last av någon godstyp)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Överför och lämna tom)
 STR_ORDER_NO_UNLOAD                                             :(Lasta ej av men lasta på)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Lasta ej av men vänta på full last)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ladda ej av men vänta på full last av någon godstyp)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Lasta ej av men vänta på full last av någon godstyp)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Lasta ej av och lasta ej)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[början]
