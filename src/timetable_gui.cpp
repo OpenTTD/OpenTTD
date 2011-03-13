@@ -271,7 +271,8 @@ struct TimetableWindow : Window {
 				break;
 
 			default: {
-				if (!gui_scope) break;
+				if (gui_scope) break; // only do this once; from command scope
+
 				/* Moving an order. If one of these is INVALID_VEH_ORDER_ID, then
 				 * the order is being created / removed */
 				if (this->sel_index == -1) break;
