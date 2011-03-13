@@ -807,8 +807,8 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
-		VehicleOrderID from = GB(data, 0, 8);
-		VehicleOrderID to   = GB(data, 8, 8);
+		VehicleOrderID from = INVALID_VEH_ORDER_ID;
+		VehicleOrderID to   = INVALID_VEH_ORDER_ID;
 
 		switch (data) {
 			case -666:
@@ -831,6 +831,9 @@ public:
 				break;
 
 			default:
+				if (data < 0) break;
+				from = GB(data, 0, 8);
+				to   = GB(data, 8, 8);
 				/* Moving an order. If one of these is INVALID_VEH_ORDER_ID, then
 				 * the order is being created / removed */
 				if (this->selected_order == -1) break;
