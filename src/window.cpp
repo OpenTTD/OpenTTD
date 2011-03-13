@@ -2481,46 +2481,55 @@ void SetWindowClassesDirty(WindowClass cls)
 
 /**
  * Mark window data of the window of a given class and specific window number as invalid (in need of re-computing)
- * Note that by default the invalidation is not executed immediately but is scheduled till the next redraw.
+ *
+ * Note that by default the invalidation is not considered to be called from GUI scope.
+ * That means only a part of invalidation is executed immediately. The rest is scheduled for the next redraw.
  * The asynchronous execution is important to prevent GUI code being executed from command scope.
+ * When not in GUI-scope:
+ *  - OnInvalidateData() may not do test-runs on commands, as they might affect the execution of
+ *    the command which triggered the invalidation. (town rating and such)
+ *  - OnInvalidateData() may not rely on _current_company == _local_company.
+ *    This implies that no NewGRF callbacks may be run.
+ *
+ * However, when invalidations are scheduled, then multiple calls may be scheduled before execution starts. Earlier scheduled
+ * invalidations may be called with invalidation-data, which is already invalid at the point of execution.
+ * That means some stuff requires to be executed immediately in command scope, while not everything may be executed in command
+ * scope. While GUI-scope calls have no restrictions on what they may do, they cannot assume the game to still be in the state
+ * when the invalidation was scheduled; passed IDs may have got invalid in the mean time.
+ *
+ * Finally, note that invalidations triggered from commands or the game loop result in OnInvalidateData() being called twice.
+ * Once in command-scope, once in GUI-scope. So make sure to not process differential-changes twice.
+ *
  * @param cls Window class
  * @param number Window number within the class
  * @param data The data to invalidate with
- * @param immediately If true then do not schedule the event, but execute immediately.
+ * @param gui_scope Whether the call is done from GUI scope
  */
-void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool immediately)
+void InvalidateWindowData(WindowClass cls, WindowNumber number, int data, bool gui_scope)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		if (w->window_class == cls && w->window_number == number) {
-			if (immediately) {
-				w->InvalidateData(data);
-			} else {
-				w->ScheduleInvalidateData(data);
-			}
+			w->InvalidateData(data, gui_scope);
 		}
 	}
 }
 
 /**
  * Mark window data of all windows of a given class as invalid (in need of re-computing)
- * Note that by default the invalidation is not executed immediately but is scheduled till the next redraw.
- * The asynchronous execution is important to prevent GUI code being executed from command scope.
+ * Note that by default the invalidation is not considered to be called from GUI scope.
+ * See InvalidateWindowData() for details on GUI-scope vs. command-scope.
  * @param cls Window class
  * @param data The data to invalidate with
- * @param immediately If true then do not schedule the event, but execute immediately.
+ * @param gui_scope Whether the call is done from GUI scope
  */
-void InvalidateWindowClassesData(WindowClass cls, int data, bool immediately)
+void InvalidateWindowClassesData(WindowClass cls, int data, bool gui_scope)
 {
 	Window *w;
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		if (w->window_class == cls) {
-			if (immediately) {
-				w->InvalidateData(data);
-			} else {
-				w->ScheduleInvalidateData(data);
-			}
+			w->InvalidateData(data, gui_scope);
 		}
 	}
 }

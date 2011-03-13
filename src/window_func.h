@@ -34,8 +34,8 @@ void ResetWindowSystem();
 void SetupColoursAndInitialWindow();
 void InputLoop();
 
-void InvalidateWindowData(WindowClass cls, WindowNumber number, int data = 0, bool immediately = false);
-void InvalidateWindowClassesData(WindowClass cls, int data = 0, bool immediately = false);
+void InvalidateWindowData(WindowClass cls, WindowNumber number, int data = 0, bool gui_scope = false);
+void InvalidateWindowClassesData(WindowClass cls, int data = 0, bool gui_scope = false);
 
 void DeleteNonVitalWindows();
 void DeleteAllNonVitalWindows();
