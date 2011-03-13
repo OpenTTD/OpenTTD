@@ -642,7 +642,6 @@ struct DepotWindow : Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		this->generate_list = true;
 	}
 

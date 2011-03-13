@@ -374,15 +374,11 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		/* When there is a filter string, we always need to rebuild the list even if
 		 * the amount of signs in total is unchanged, as the subset of signs that is
-		 * accepted by the filter might has changed.
-		 *
-		 * We can only set the trigger for resorting/rebuilding.
-		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
-		 * and a rebuild needs to be done first though it is scheduled later. */
+		 * accepted by the filter might has changed. */
 		if (data == 0 || !StrEmpty(this->filter_string)) { // New or deleted sign, or there is a filter string
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->signs.ForceRebuild();
 		} else { // Change of sign contents while there is no filter string
 			this->signs.ForceResort();

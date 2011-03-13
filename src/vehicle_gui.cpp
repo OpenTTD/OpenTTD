@@ -1616,12 +1616,9 @@ public:
 			this->vehicles.ForceRebuild();
 			return;
 		}
-		if (!gui_scope) return;
 
-		/* We can only set the trigger for resorting/rebuilding.
-		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
-		 * and a rebuild needs to be done first though it is scheduled later. */
 		if (data == 0) {
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->vehicles.ForceRebuild();
 		} else {
 			this->vehicles.ForceResort();

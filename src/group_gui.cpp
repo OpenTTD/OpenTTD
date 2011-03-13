@@ -260,11 +260,8 @@ public:
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
-		/* We can only set the trigger for resorting/rebuilding.
-		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
-		 * and a rebuild needs to be done first though it is scheduled later. */
 		if (data == 0) {
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->vehicles.ForceRebuild();
 			this->groups.ForceRebuild();
 		} else {
@@ -272,6 +269,7 @@ public:
 			this->groups.ForceResort();
 		}
 
+		/* Process ID-invalidation in command-scope as well */
 		if (this->group_rename != INVALID_GROUP && !Group::IsValidID(this->group_rename)) {
 			DeleteWindowByClass(WC_QUERY_STRING);
 			this->group_rename = INVALID_GROUP;
