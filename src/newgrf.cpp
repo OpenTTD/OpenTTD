@@ -511,9 +511,6 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 
 		case 0x06: // Climates available
 			ei->climates = buf->ReadByte();
-			/* Sometimes a GRF wants hidden vehicles. Setting climates to
-			 * zero may cause the ID to be reallocated. */
-			if (ei->climates == 0) ei->climates = 0x80;
 			break;
 
 		case 0x07: // Loading speed
@@ -7479,7 +7476,7 @@ static void CalculateRefitMasks()
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
 		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
-		if (ei->cargo_type == CT_INVALID) ei->climates = 0x80;
+		if (ei->cargo_type == CT_INVALID) ei->climates = 0;
 
 		/* Clear refit_mask for not refittable ships */
 		if (e->type == VEH_SHIP && !e->u.ship.old_refittable) ei->refit_mask = 0;
@@ -8195,7 +8192,7 @@ static void AfterLoadGRFs()
 		RailType railtype = GetRailTypeByLabel(_gted[e->index].railtypelabel);
 		if (railtype == INVALID_RAILTYPE) {
 			/* Rail type is not available, so disable this engine */
-			e->info.climates = 0x80;
+			e->info.climates = 0;
 		} else {
 			e->u.rail.railtype = railtype;
 		}

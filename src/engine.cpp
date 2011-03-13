@@ -85,8 +85,6 @@ Engine::Engine(VehicleType type, EngineID base)
 
 	/* Check if this base engine is within the original engine data range */
 	if (base >= _engine_counts[type]) {
-		/* Mark engine as valid anyway */
-		this->info.climates = 0x80;
 		/* Set model life to maximum to make wagons available */
 		this->info.base_life = 0xFF;
 		/* Set road vehicle tractive effort to the default value */
