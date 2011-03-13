@@ -1,0 +1,960 @@
+##name Faroese
+##ownname Føroyskt
+##isocode fo_FO
+##plural 0
+##textdir ltr
+##digitsep .
+##digitsepcur .
+##decimalsep ,
+##winlangid 0x0438
+##grflangid 0x12
+##gender m f n
+
+
+# $Id$
+
+# This file is part of OpenTTD.
+# OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+# OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+
+
+##id 0x0000
+STR_NULL                                                        :
+STR_EMPTY                                                       :
+
+# Cargo related strings
+# Plural cargo name
+STR_CARGO_PLURAL_NOTHING                                        :
+
+# Singular cargo name
+STR_CARGO_SINGULAR_NOTHING                                      :
+
+# Quantity of cargo
+STR_QUANTITY_NOTHING                                            :
+
+# Two letter abbreviation of cargo name
+STR_ABBREV_NOTHING                                              :
+
+# 'Mode' of transport for cargoes
+
+# Colours, do not shuffle
+
+# Units used in OpenTTD
+
+
+
+
+
+
+
+
+# Common window strings
+
+
+
+# Query window
+
+# On screen keyboard window
+
+# Measurement tooltip
+
+
+# These are used in buttons
+# These are used in dropdowns
+
+# Tooltips for the main toolbar
+
+# Extra tooltips for the scenario editor toolbar
+
+############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+############ range for SE file menu starts
+
+############ range for settings menu starts
+############ range ends here
+
+############ range for file menu starts
+############ range ends here
+
+############ range for map menu starts
+############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
+
+############ range for subsidies menu starts
+############ range ends here
+
+############ range for graph menu starts
+############ range ends here
+
+############ range for company league menu starts
+############ range ends here
+
+############ range for industry menu starts
+############ range ends here
+
+############ range for railway construction menu starts
+############ range ends here
+
+############ range for road construction menu starts
+############ range ends here
+
+############ range for waterways construction menu starts
+############ range ends here
+
+############ range for airport construction menu starts
+############ range ends here
+
+############ range for landscaping menu starts
+############ range ends here
+
+############ range for music menu starts
+############ range ends here
+
+############ range for message menu starts
+############ range ends here
+
+############ range for about menu starts
+STR_ABOUT_MENU_SEPARATOR                                        :
+############ range ends here
+
+############ range for days starts (also used for the place in the highscore window)
+############ range for days ends
+
+############ range for months starts
+
+############ range for months ends
+
+# Graph window
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+
+
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+
+
+# Graph key window
+
+# Company league window
+
+# Performance detail window
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+############ Those following lines need to be in this order!!
+############ End of order list
+
+# Music window
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}:
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+
+
+# Playlist window
+STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+
+# Highscore window
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
+
+# Smallmap window
+
+
+
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+
+# Status bar messages
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+
+# News message history
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+
+# Message settings window
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+
+
+
+
+# Extra view window
+
+# Game options window
+
+############ start of currency region
+############ end of currency region
+
+
+############ start of measuring units region
+############ end of measuring units region
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+# Custom currency window
+
+
+
+
+
+
+# Difficulty level window
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+
+
+
+
+
+
+
+
+
+
+# Advanced settings window
+
+
+
+
+
+
+
+
+
+
+
+
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
+
+
+
+
+
+
+
+
+
+
+STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
+
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+
+
+# Intro window
+
+
+
+
+
+
+# Quit window
+
+# Supported OSes
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS{NBSP}X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
+
+# Abandon game
+
+# Cheat window
+
+# Livery window
+
+
+
+# Face selection window
+
+STR_FACE_YES                                                    :Já
+
+# Network server list
+
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+
+
+
+
+
+
+# Start new multiplayer server
+
+
+
+
+# Network game languages
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Network game lobby
+
+
+
+
+
+# Network connecting window
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+# Network company list added strings
+
+# Network client list
+
+
+
+# Network set password
+
+# Network company info join/password
+
+# Network chat
+
+
+# Network messages
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+# Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Content downloading window
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+
+# Order of these is important!
+
+# Content downloading progress window
+
+# Content downloading error messages
+
+# Transparency settings window
+
+# Base for station construction window(s)
+
+# Join station window
+
+
+# Rail construction toolbar
+
+
+# Rail depot construction window
+
+# Rail waypoint construction window
+
+# Rail station construction window
+
+
+
+# Signal window
+
+# Bridge selection window
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+
+
+# Road construction toolbar
+
+# Road depot construction window
+
+# Road vehicle station construction window
+
+# Waterways toolbar (last two for SE only)
+
+# Ship depot construction window
+
+# Dock construction window
+
+# Airport toolbar
+
+# Airport construction window
+
+
+
+
+# Landscaping toolbar
+
+# Object construction window
+
+
+# Tree planting window (last two for SE only)
+
+# Land generation window (SE)
+
+
+# Town generation window (SE)
+
+
+
+
+# Fund new industry window
+
+# Industry cargoes window
+
+# Land area window
+STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+
+# Description of land area of different tiles
+
+
+
+# Houses come directly from their building names
+
+
+
+
+# Industries come directly from their industry names
+
+
+
+
+
+
+# About OpenTTD window
+
+# Save/load game/scenario
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+
+
+# World generation
+STR_MAPGEN_BY                                                   :{BLACK}*
+
+# Strings for map borders at game generation
+
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+
+
+# SE Map generation
+
+
+# Map generation progress
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+
+# NewGRF settings
+
+
+
+
+
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
+# NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+
+# NewGRF related 'general' warnings
+
+
+
+# NewGRF status
+
+# NewGRF 'it's broken' warnings
+
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+
+# Sign list window
+
+# Sign window
+
+
+# Town directory window
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+
+# Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+
+
+
+# Town local authority window
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+
+
+
+# Subsidies window
+
+# Station list window
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
+
+# Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+
+
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+
+# Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+
+
+# Finances window
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
+
+# Company view
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+
+
+
+
+
+
+
+# Industry directory
+STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+
+# Industry view
+STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+############ range for produces ends
+
+
+# Vehicle lists
+
+
+
+
+
+
+
+
+# Group window
+
+
+
+
+
+# Build vehicle window
+
+
+
+
+
+
+
+
+
+# Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Engine preview window
+
+
+# Autoreplace window
+
+
+
+
+
+
+# Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
+
+
+
+
+
+
+
+
+
+
+# Messages in the start stop button in the vehicle view
+
+
+# Vehicle stopped/started animations
+
+# Vehicle details
+
+
+# The next two need to stay in this order
+
+
+
+
+
+
+
+# Extra buttons for train details windows
+
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
+
+
+
+
+# Vehicle refit
+
+
+
+
+# Order view
+
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
+
+
+# Order bottom buttons
+
+
+
+
+
+
+
+
+
+
+
+
+# String parts to build the order string
+
+
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+
+
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
+
+
+
+
+
+# Time table window
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Date window (for timetable)
+
+
+# AI debug window
+
+
+
+# AI configuration window
+
+
+
+# Available AIs window
+
+
+
+# AI Parameters
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+# Vehicle loading indicators
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+
+# Income 'floats'
+
+# Saveload messages
+
+# Map generation messages
+
+
+
+
+# Soundset messages
+
+# Screenshot related messages
+
+# Error message titles
+
+# Generic construction errors
+
+# Local authority errors
+
+# Levelling errors
+
+# Company related errors
+
+
+# Town related errors
+
+# Industry related errors
+
+# Station construction related errors
+
+
+# Station destruction related errors
+
+
+# Waypoint related errors
+
+
+
+# Depot related errors
+
+
+
+
+
+
+# Autoreplace related errors
+
+# Rail construction errors
+
+
+# Road construction errors
+
+# Waterway construction errors
+
+# Tree related errors
+
+# Bridge related errors
+
+# Tunnel related errors
+
+# Object related errors
+
+# Group related errors
+
+# Generic vehicle errors
+
+
+
+
+
+
+
+
+
+
+
+# Specific vehicle errors
+
+
+
+# Order related errors
+
+
+# Timetable related errors
+
+# Sign related errors
+
+# Translatable comment for OpenTTD's desktop shortcut
+
+##id 0x2000
+# Town building names
+
+##id 0x4800
+# industry names
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+STR_SV_EMPTY                                                    :
+
+##id 0x6020
+############ end of savegame specific region!
+
+##id 0x8000
+# Vehicle names
+
+##id 0x8800
+# Formatting of some strings
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+
+
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+
+# Viewport strings
+STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+
+STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+
+STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+
+# Simple strings to get specific types of data
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+# Slightly 'raw' stringcodes with colour or size
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
+STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
+STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
+STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
+
+STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
+STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
+STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
