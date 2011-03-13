@@ -690,14 +690,8 @@ struct RefitWindow : public Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		switch (data) {
-			case -666:
-				/* Autoreplace replaced the vehicle.
-				 * Nothing to do though for this window.
-				 * This case is _not_ called asynchronously. Get out directly, rest can be done later */
-				break;
-
+			case -666: // Autoreplace replaced the vehicle; selected_vehicle became invalid.
 			case 0: { // The consist has changed; rebuild the entire list.
 				/* Clear the selection. */
 				Vehicle *v = Vehicle::Get(this->window_number);
@@ -707,6 +701,7 @@ struct RefitWindow : public Window {
 			}
 
 			case 2: { // The vehicle selection has changed; rebuild the entire list.
+				if (!gui_scope) break;
 				this->BuildRefitList();
 
 				/* The vehicle width has changed too. */
@@ -732,6 +727,7 @@ struct RefitWindow : public Window {
 			}
 
 			case 1: // A new cargo has been selected.
+				if (!gui_scope) break;
 				this->cargo = GetRefitOption();
 				break;
 		}
@@ -1132,8 +1128,8 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 			_thd.window_number = to_index;
 		}
 
-		/* Notify the window immediately, without scheduling. */
-		w->InvalidateData(-666);
+		/* Notify the window. */
+		w->InvalidateData(-666, false);
 	}
 }
 
@@ -1806,13 +1802,12 @@ struct VehicleDetailsWindow : Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		if (data == -666) {
 			/* Autoreplace replaced the vehicle.
-			 * Nothing to do for this window though.
-			 * This case is _not_ called asynchronously. Get out directly, rest can be done later */
+			 * Nothing to do for this window. */
 			return;
 		}
+		if (!gui_scope) return;
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		if (v->type == VEH_ROAD) {
 			const NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(VLD_WIDGET_MIDDLE_DETAILS);
@@ -2621,11 +2616,9 @@ public:
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		if (data == -666) {
 			/* Autoreplace replaced the vehicle.
-			 * Nothing to do for this window though.
-			 * This case is _not_ called asynchronously. Get out directly, rest can be done later */
+			 * Nothing to do for this window. */
 			return;
 		}
 	}

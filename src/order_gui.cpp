@@ -812,7 +812,6 @@ public:
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		VehicleOrderID from = INVALID_VEH_ORDER_ID;
 		VehicleOrderID to   = INVALID_VEH_ORDER_ID;
 
@@ -820,7 +819,6 @@ public:
 			case -666:
 				/* Autoreplace replaced the vehicle */
 				this->vehicle = Vehicle::Get(this->window_number);
-				/* This case is _not_ called asynchronously. Get out directly, rest can be done later */
 				break;
 
 			case -1:
@@ -837,6 +835,7 @@ public:
 				break;
 
 			default:
+				if (!gui_scope) break;
 				if (data < 0) break;
 				from = GB(data, 0, 8);
 				to   = GB(data, 8, 8);
@@ -869,7 +868,7 @@ public:
 		}
 
 		this->vscroll->SetCount(this->vehicle->GetNumOrders() + 1);
-		this->UpdateButtonState();
+		if (gui_scope) this->UpdateButtonState();
 
 		/* Scroll to the new order. */
 		if (from == INVALID_VEH_ORDER_ID && to != INVALID_VEH_ORDER_ID && !this->vscroll->IsVisible(to)) {

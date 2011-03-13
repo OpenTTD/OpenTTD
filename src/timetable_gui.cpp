@@ -250,12 +250,10 @@ struct TimetableWindow : Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		switch (data) {
 			case -666:
 				/* Autoreplace replaced the vehicle */
 				this->vehicle = Vehicle::Get(this->window_number);
-				/* This case is _not_ called asynchronously. Get out directly, rest can be done later */
 				break;
 
 			case -1:
@@ -267,11 +265,13 @@ struct TimetableWindow : Window {
 				break;
 
 			case -2:
+				if (!gui_scope) break;
 				this->UpdateSelectionStates();
 				this->ReInit();
 				break;
 
 			default: {
+				if (!gui_scope) break;
 				/* Moving an order. If one of these is INVALID_VEH_ORDER_ID, then
 				 * the order is being created / removed */
 				if (this->sel_index == -1) break;
