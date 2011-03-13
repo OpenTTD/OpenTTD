@@ -379,8 +379,14 @@ struct NewGRFParametersWindow : public Window {
 		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		if (!this->action14present) {
 			this->SetWidgetDisabledState(GRFPAR_WIDGET_NUMPAR_DEC, this->grf_config->num_params == 0);
 			this->SetWidgetDisabledState(GRFPAR_WIDGET_NUMPAR_INC, this->grf_config->num_params >= this->grf_config->num_valid_params);
@@ -1025,15 +1031,18 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	}
 
 	/**
-	 * Calback to update internal data.
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
 	 *  - 0: (optionally) build availables, update button status.
 	 *  - 1: build availables, Add newly found grfs, update button status.
 	 *  - 2: (optionally) build availables, Reset preset, + 3
 	 *  - 3: (optionally) build availables, Update active scrollbar, update button status.
 	 *  - 4: Force a rebuild of the availables, + 2
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0)
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		switch (data) {
 			default: NOT_REACHED();
 			case 0:

@@ -498,8 +498,14 @@ struct NewsWindow : Window {
 		return ES_NOT_HANDLED;
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		/* The chatbar has notified us that is was either created or closed */
 		int newtop = this->top + this->chat_height - data;
 		this->chat_height = data;
@@ -1035,8 +1041,14 @@ struct MessageHistoryWindow : Window {
 		}
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		this->vscroll->SetCount(_total_news);
 	}
 
@@ -1201,8 +1213,14 @@ struct MessageOptionsWindow : Window {
 		}
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		/* Update the dropdown value for 'set all categories'. */
 		this->GetWidget<NWidgetCore>(WIDGET_NEWSOPT_DROP_SUMMARY)->widget_data = this->message_opt[this->state];
 

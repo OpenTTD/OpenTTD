@@ -313,8 +313,14 @@ struct MusicTrackSelectionWindow : public Window {
 		}
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		for (int i = 0; i < 6; i++) {
 			this->SetWidgetLoweredState(MTSW_ALL + i, i == _settings_client.music.playlist);
 		}
@@ -638,8 +644,14 @@ struct MusicWindow : public Window {
 		}
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		for (int i = 0; i < 6; i++) {
 			this->SetWidgetLoweredState(MW_ALL + i, i == _settings_client.music.playlist);
 		}

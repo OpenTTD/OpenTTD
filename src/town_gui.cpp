@@ -523,8 +523,14 @@ public:
 		}
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		/* Called when setting station noise or required cargos have changed, in order to resize the window */
 		this->SetDirty(); // refresh display for current size. This will allow to avoid glitches when downgrading
 		this->ResizeWindowAsNeeded();
@@ -863,8 +869,14 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, TDW_CENTERTOWN);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		/* We can only set the trigger for resorting/rebuilding.
 		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
 		 * and a rebuild needs to be done first though it is scheduled later. */
@@ -1165,8 +1177,14 @@ public:
 		this->UpdateButtons(false);
 	}
 
-	virtual void OnInvalidateData(int)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		this->UpdateButtons(true);
 	}
 };
