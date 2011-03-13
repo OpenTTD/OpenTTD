@@ -711,10 +711,11 @@ struct AIConfigWindow : public Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		if (!IsEditable(this->selected_slot)) {
 			this->selected_slot = INVALID_COMPANY;
 		}
+
+		if (!gui_scope) return;
 
 		this->SetWidgetDisabledState(AIC_WIDGET_DECREASE, GetGameSettings().difficulty.max_no_competitors == 0);
 		this->SetWidgetDisabledState(AIC_WIDGET_INCREASE, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES - 1);
