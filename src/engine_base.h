@@ -23,19 +23,23 @@ typedef Pool<Engine, EngineID, 64, 64000> EnginePool;
 extern EnginePool _engine_pool;
 
 struct Engine : EnginePool::PoolItem<&_engine_pool> {
-	char *name;         ///< Custom name of engine
-	Date intro_date;
+	char *name;                 ///< Custom name of engine.
+	Date intro_date;            ///< Date of introduction of the engine.
 	Date age;
-	uint16 reliability;
-	uint16 reliability_spd_dec;
-	uint16 reliability_start, reliability_max, reliability_final;
-	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
-	byte flags;
-	uint8 preview_company_rank;
-	byte preview_wait;
-	CompanyMask company_avail;
+	uint16 reliability;         ///< Current reliability of the engine.
+	uint16 reliability_spd_dec; ///< Speed of reliability decay between services (per day).
+	uint16 reliability_start;   ///< Initial reliability of the engine.
+	uint16 reliability_max;     ///< Maximal reliability of the engine.
+	uint16 reliability_final;   ///< Final reliability of the engine.
+	uint16 duration_phase_1;    ///< First reliability phase in months, increasing reliability from #reliability_start to #reliability_max.
+	uint16 duration_phase_2;    ///< Second reliability phase in months, keeping #reliability_max.
+	uint16 duration_phase_3;    ///< Third reliability phase on months, decaying to #reliability_final.
+	byte flags;                 ///< Flags of the engine. @see EngineFlags
+	uint8 preview_company_rank; ///< Rank of the company that is offered a preview. \c 0xFF means no company.
+	byte preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company_rank company.
+	CompanyMask company_avail;  ///< Bit for each company whether the engine is available for that company.
 	uint8 original_image_index; ///< Original vehicle image index, thus the image index of the overridden vehicle
-	VehicleType type; ///< type, ie VEH_ROAD, VEH_TRAIN, etc.
+	VehicleType type;           ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
 
 	EngineInfo info;
 

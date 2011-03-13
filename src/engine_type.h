@@ -90,12 +90,12 @@ struct AircraftVehicleInfo {
 	byte image_index;
 	byte cost_factor;
 	byte running_cost;
-	byte subtype;
+	byte subtype;               ///< Type of aircraft. @see AircraftSubTypeBits
 	SoundID sfx;
 	byte acceleration;
 	uint16 max_speed;           ///< Maximum speed (1 unit = 8 mph = 12.8 km-ish/h)
-	byte mail_capacity;
-	uint16 passenger_capacity;
+	byte mail_capacity;         ///< Mail capacity (bags).
+	uint16 passenger_capacity;  ///< Passenger capacity (persons).
 };
 
 /** Information about a road vehicle. */
@@ -119,16 +119,16 @@ struct RoadVehicleInfo {
  *  @see table/engines.h
  */
 struct EngineInfo {
-	Date base_intro;
+	Date base_intro;    ///< Basic date of engine introduction (without random parts).
 	Year lifelength;    ///< Lifetime of a single vehicle
-	Year base_life;     ///< Basic duration of engine availability (without random parts)
+	Year base_life;     ///< Basic duration of engine availability (without random parts). \c 0xFF means infinite life.
 	byte decay_speed;
 	byte load_amount;
-	byte climates;
+	byte climates;      ///< Climates supported by the engine.
 	CargoID cargo_type;
 	uint32 refit_mask;
 	byte refit_cost;
-	byte misc_flags;
+	byte misc_flags;    ///< Miscellaneous flags. @see EngineMiscFlags
 	byte callback_mask; ///< Bitmask of vehicle callbacks that have to be called
 	int8 retire_early;  ///< Number of years early to retire vehicle
 	StringID string_id; ///< Default name of engine
