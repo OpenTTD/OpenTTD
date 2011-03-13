@@ -75,7 +75,7 @@
 
 	/* Also still print to debug window */
 	DEBUG(ai, level, "[%d] [%c] %s", (uint)_current_company, logc, log->lines[log->pos]);
-	InvalidateWindowData(WC_AI_DEBUG, 0, _current_company, true); // breakpoint handling needs calling Invalidate immediately.
+	InvalidateWindowData(WC_AI_DEBUG, 0, _current_company);
 }
 
 /* static */ void AILog::FreeLogPointer()

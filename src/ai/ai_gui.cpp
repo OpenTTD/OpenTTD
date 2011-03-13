@@ -1057,10 +1057,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		if (data == -1 || ai_debug_company == data) this->SetDirty();
 
-		if (data == -2) {
+		if (gui_scope && data == -2) {
 			/* The continue button should be disabled when the game is unpaused and
 			 * it was previously paused by the break string ( = a line in the log
 			 * was highlighted )*/
@@ -1072,8 +1071,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 			}
 		}
 
-		/* If the log message is related to the active company tab, check the break string */
-		if (data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
+		/* If the log message is related to the active company tab, check the break string.
+		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
+		if (!gui_scope && data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
 			/* Get the log instance of the active company */
 			Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
 			AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
