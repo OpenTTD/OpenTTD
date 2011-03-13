@@ -652,7 +652,6 @@ public:
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		/* If company gets shut down, while displaying an error about it, remove the error message. */
 		if (this->face != INVALID_COMPANY && !Company::IsValidID(this->face)) delete this;
 	}

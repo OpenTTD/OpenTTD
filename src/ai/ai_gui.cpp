@@ -189,11 +189,12 @@ struct AIListWindow : public Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
 			delete this;
 			return;
 		}
+
+		if (!gui_scope) return;
 
 		this->vscroll->SetCount((int)this->ai_info_list->size() + 1);
 
@@ -450,7 +451,6 @@ struct AISettingsWindow : public Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
 		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) delete this;
 	}
 };
