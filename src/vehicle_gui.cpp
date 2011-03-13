@@ -1609,13 +1609,14 @@ public:
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (!gui_scope) return;
-		if (HasBit(data, 31) && this->vli.type == VL_SHARED_ORDERS) {
+		if (!gui_scope && HasBit(data, 31) && this->vli.type == VL_SHARED_ORDERS) {
+			/* Needs to be done in command-scope, so everything stays valid */
 			this->vli.index = GB(data, 0, 20);
 			this->window_number = this->vli.Pack();
 			this->vehicles.ForceRebuild();
 			return;
 		}
+		if (!gui_scope) return;
 
 		/* We can only set the trigger for resorting/rebuilding.
 		 * We cannot safely resort at this point, as there might be multiple scheduled invalidations,
