@@ -1210,6 +1210,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρη�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Φόρτωση οχημάτων σταδιακά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Πληθωρισμός: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Μέγιστο μήκος γέφυρας: {ORANGE}{STRING} πλακίδι{P 0:1 ο α}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Μέγιστο μήκος τούνελ: {ORANGE}{STRING} πλακίδι{P 0:1 ο α}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
@@ -1439,6 +1441,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Μέθ�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Δεν συνίσταται)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Αυτομάτη αναστροφή σε σηματοδότες: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
@@ -2672,7 +2675,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάντ
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα στο σταθμό. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σταθμού
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσοτέρα αντικείμενα
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσοτέρα από ένα αντικείμενα
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμ{P ός οί}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2900,7 +2903,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύ
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Κόστος λειτουργίας: {GOLD}{CURRENCY}/χρ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόνια
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόν{P ο ια}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Μεγ. Αξιοπιστία: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστος: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -2954,9 +2957,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - κλικ σε ένα τρένο για πληροφορίες, μεταφέρετε ενα όχημα για το προσθέσετε/αφαιρέσετε στο τρένο
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - κλικ σε ένα όχημα για πληροφορίες
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - κλικ σε ένα πλοίο για πληροφορίες
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροπλάνα - κλικ σε ένα αεροπλάνο για πληροφορίες
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - δέξι κλικ σε ένα όχημα για πληροφορίες
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - δέξι κλικ σε ένα πλοίο για πληροφορίες
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροπλάνα - δέξι κλικ σε ένα αεροπλάνο για πληροφορίες
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Μεταφέρετε το όχημα τρένου εδώ για το πουλήσετε
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Μεταφέρετε το όχημα δρόμου εδώ για το πουλήσετε
@@ -3356,7 +3359,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Εντολές
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Αλλαγή στην προβολή εντολών
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομολόγια - κλικ σε μια εντολή για την τονίσετε.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομολόγια - κλικ σε μια εντολή για την τονίσετε
 
 STR_TIMETABLE_NO_TRAVEL                                         :Μη ταξιδέψεις
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα; με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
@@ -3419,7 +3422,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερμ
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/Απενεργοποίηση break όταν μια καταχώρηση του ΑΙ ταιριάζει το break string
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Break στο:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Break στο
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος string με μια καταχώρηση από τα μηνύματα του ΑΙ, τότε γίνεται παύση του παιγνιδιού.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος string με μια καταχώρηση από τα μηνύματα του ΑΙ, τότε γίνεται παύση του παιγνιδιού
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτιση
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης όταν η γίνεται η σύγκριση με μια καταχώρηση του ΑΙ με ένα break string
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
@@ -3430,7 +3433,7 @@ STR_ERROR_NO_AI                                                 :{WHITE}Στο O
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... καμία ΤΝ δεν είναι διαθέσιμη!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου"
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με μια φωτογραφία οθόνης από το παράθυρο αποσφαλμάτωσης AI.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης AI είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
@@ -3507,9 +3510,9 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δη�
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... δεν υπάρχει καμία πόλη σε αυτό το σενάριο
 
 STR_ERROR_PNGMAP                                                :{WHITE}Δεν είναι δυνατή η φόρτωση από PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... το αρχείο δεν βρέθηκε.
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... το αρχείο δεν βρέθηκε
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... δεν είναι δυνατή η μετατροπή του τύπου εικόνας. 8 ή 24-bit PNG εικόνα χρείαζεται.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... άπλα κάτι πήγε στραβά. Συγνώμη. (πιθανώς κατεστραμμένο αρχείο)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... κάτι πήγε στραβά (πιθανώς κατεστραμμένο αρχείο)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Αδυναμία φόρτωσης τοπίου από το ΒΜΡ...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... αδύνατη η μετατροπή του τύπου εικόνας
@@ -3638,7 +3641,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Δεν �
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Δεν μπορεί να αφαιρεθεί η στάση επιβατών τραμ...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Δεν μπορεί να αφαιρεθεί ο στάθμος εμπορευμάτων τραμ...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Πρέπει να γίνει αφαίρεση της στάσης οχημάτων πρώτα
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...δεν υπάρχει σταθμός εδώ
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... δεν υπάρχει σταθμός εδώ
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Πρέπει να κατεδαφιστεί ο σιδηροδρομικός σταθμός πρώτα
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Πρέπει να κατεδαφιστεί η στάσης λεωφορείου πρώτα
@@ -3689,7 +3692,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Λάθος τύ
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Το {VEHICLE} είναι πολύ μεγάλο μετά την ανανέωση
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Χωρίς επιλογή Αυτόματης Ανανέωσης
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Χωρίς εφαρμογή κανόνων αυτόματης αντικατάστασης/ανανέωσης
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(χρηματικό όριο)
 
 # Rail construction errors
@@ -3704,8 +3707,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν �
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Δεν μπορεί να αφαιρεθεί σιδηρόδρομος από εδώ...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Αδύνατο να αφαιρεθούν σηματοδότες από εδώ...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Δεν μπορούν να μετατραπούν οι σηματοδότες εδώ...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...δεν υπάρχει σιδηροτροχιά
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...δεν υπάρχουν σηματοδότες
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... δεν υπάρχει σιδηροτροχιά
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... δεν υπάρχουν σηματοδότες
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Δεν γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
 
@@ -3716,8 +3719,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Αδύν
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να χτιστεί γραμμή τραμ εδώ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Δεν μπορω να αφαιρέσω τροχιόδρομο(τραμ) από εδώ
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...δεν υπάρχει δρόμος
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...δεν υπάρχει τροχιόδρομος(τραμ)
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... δεν υπάρχει δρόμος
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... δεν υπάρχει τροχιόδρομος(τραμ)
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ
@@ -3859,7 +3862,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Δεν �
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Δεν μπορεί να διαγραφεί η πινακίδα
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Ένας κλώνος του Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ένας παιχνίδι εξομοίωσης βασισμένο στο Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

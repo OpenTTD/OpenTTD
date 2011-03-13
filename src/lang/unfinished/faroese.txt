@@ -26,12 +26,83 @@ STR_EMPTY                                                       :
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :Ferðafólk
+STR_CARGO_PLURAL_COAL                                           :Kol
+STR_CARGO_PLURAL_MAIL                                           :Postur
+STR_CARGO_PLURAL_OIL                                            :Olja
+STR_CARGO_PLURAL_WOOD                                           :Viður
+STR_CARGO_PLURAL_IRON_ORE                                       :Jarn Málmur
+STR_CARGO_PLURAL_STEEL                                          :Stál
+STR_CARGO_PLURAL_VALUABLES                                      :Virðislutir
+STR_CARGO_PLURAL_COPPER_ORE                                     :Kopar Málmur
+STR_CARGO_PLURAL_MAIZE                                          :Meis
+STR_CARGO_PLURAL_FRUIT                                          :Fruktir
+STR_CARGO_PLURAL_DIAMONDS                                       :Diamantar
+STR_CARGO_PLURAL_FOOD                                           :Matur
+STR_CARGO_PLURAL_PAPER                                          :Pappír
+STR_CARGO_PLURAL_GOLD                                           :Gull
+STR_CARGO_PLURAL_WATER                                          :Vatn
+STR_CARGO_PLURAL_WHEAT                                          :Hveiti
+STR_CARGO_PLURAL_RUBBER                                         :Gummi
+STR_CARGO_PLURAL_SUGAR                                          :Sukur
+STR_CARGO_PLURAL_TOYS                                           :Leikur
+STR_CARGO_PLURAL_CANDY                                          :Góðgæti
+STR_CARGO_PLURAL_COLA                                           :Kola
+STR_CARGO_PLURAL_BUBBLES                                        :Bobblur
+STR_CARGO_PLURAL_PLASTIC                                        :Plastik
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Sodavatn
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :Ferðafólk
+STR_CARGO_SINGULAR_COAL                                         :Kol
+STR_CARGO_SINGULAR_MAIL                                         :Postur
+STR_CARGO_SINGULAR_OIL                                          :Olja
+STR_CARGO_SINGULAR_GOODS                                        :Góðs
+STR_CARGO_SINGULAR_WOOD                                         :Viður
+STR_CARGO_SINGULAR_IRON_ORE                                     :Jarn Málm
+STR_CARGO_SINGULAR_STEEL                                        :Stál
+STR_CARGO_SINGULAR_VALUABLES                                    :Viðrislutur
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Kopar Málm
+STR_CARGO_SINGULAR_MAIZE                                        :Meis
+STR_CARGO_SINGULAR_FRUIT                                        :Frukt
+STR_CARGO_SINGULAR_DIAMOND                                      :Diamantur
+STR_CARGO_SINGULAR_FOOD                                         :Matur
+STR_CARGO_SINGULAR_PAPER                                        :Pappír
+STR_CARGO_SINGULAR_GOLD                                         :Gull
+STR_CARGO_SINGULAR_WATER                                        :Vatn
+STR_CARGO_SINGULAR_WHEAT                                        :Hveiti
+STR_CARGO_SINGULAR_RUBBER                                       :Gummi
+STR_CARGO_SINGULAR_SUGAR                                        :Sukur
+STR_CARGO_SINGULAR_TOY                                          :Leika
+STR_CARGO_SINGULAR_CANDY                                        :Góðgæti
+STR_CARGO_SINGULAR_COLA                                         :Kola
+STR_CARGO_SINGULAR_BUBBLE                                       :Bobbla
+STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sodavatn
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} ferðafólk
+STR_QUANTITY_COAL                                               :{WEIGHT} av kol
+STR_QUANTITY_MAIL                                               :{COMMA} sekk{P "" ir} av posti
+STR_QUANTITY_OIL                                                :{VOLUME} av olju
+STR_QUANTITY_GOODS                                              :{COMMA} kassa{P "" r} av góðsi
+STR_QUANTITY_WOOD                                               :{WEIGHT} av viði
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} av jarn málmi
+STR_QUANTITY_STEEL                                              :{WEIGHT} av stáli
+STR_QUANTITY_VALUABLES                                          :{COMMA} sekk{P "" ir} av virðislutum
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} av kopar málmi
+STR_QUANTITY_MAIZE                                              :{WEIGHT} av meis
+STR_QUANTITY_FRUIT                                              :{WEIGHT} av frukt
+STR_QUANTITY_DIAMONDS                                           :{COMMA} sekk{P "" ir} av diamantum
+STR_QUANTITY_FOOD                                               :{WEIGHT} av mati
+STR_QUANTITY_PAPER                                              :{WEIGHT} av pappíri
+STR_QUANTITY_GOLD                                               :{COMMA} sekk{P "" ir} av gull
+STR_QUANTITY_WATER                                              :{VOLUME} av vatni
+STR_QUANTITY_WHEAT                                              :{WEIGHT} av hveiti
+STR_QUANTITY_RUBBER                                             :{VOLUME} av gummi
+STR_QUANTITY_SUGAR                                              :{WEIGHT} av sukri
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
