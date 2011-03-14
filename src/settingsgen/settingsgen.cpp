@@ -18,6 +18,11 @@
 
 #include <stdarg.h>
 
+#if (!defined(WIN32) && !defined(WIN64)) || defined(__CYGWIN__)
+#include <unistd.h>
+#include <sys/stat.h>
+#endif
+
 #ifdef __MORPHOS__
 #ifdef stderr
 #undef stderr
@@ -347,6 +352,39 @@ static void CopyFile(const char *fname, FILE *out_fp)
 	fclose(in_fp);
 }
 
+/**
+ * Compare two files for identity.
+ * @param n1 First file.
+ * @param n2 Second file.
+ * @return True if both files are identical.
+ */
+static bool CompareFiles(const char *n1, const char *n2)
+{
+	FILE *f2 = fopen(n2, "rb");
+	if (f2 == NULL) return false;
+
+	FILE *f1 = fopen(n1, "rb");
+	if (f1 == NULL) error("can't open %s", n1);
+
+	size_t l1, l2;
+	do {
+		char b1[4096];
+		char b2[4096];
+		l1 = fread(b1, 1, sizeof(b1), f1);
+		l2 = fread(b2, 1, sizeof(b2), f2);
+
+		if (l1 != l2 || memcmp(b1, b2, l1) != 0) {
+			fclose(f2);
+			fclose(f1);
+			return false;
+		}
+	} while (l1 != 0);
+
+	fclose(f2);
+	fclose(f1);
+	return true;
+}
+
 /** Options of settingsgen. */
 static const OptionData _opts[] = {
 	  GETOPT_NOVAL(     'v', "--version"),
@@ -447,15 +485,28 @@ int CDECL main(int argc, char *argv[])
 		_stored_output.Write(stdout);
 		CopyFile(after_file, stdout);
 	} else {
-		FILE *fp = fopen(output_file, "w");
+		static const char * const tmp_output = "tmp2.xxx";
+
+		FILE *fp = fopen(tmp_output, "w");
 		if (fp == NULL) {
-			fprintf(stderr, "settingsgen: Warning: Cannot open file %s\n", output_file);
+			fprintf(stderr, "settingsgen: Warning: Cannot open file %s\n", tmp_output);
 			return 1;
 		}
 		CopyFile(before_file, fp);
 		_stored_output.Write(fp);
 		CopyFile(after_file, fp);
 		fclose(fp);
+
+		if (CompareFiles(tmp_output, output_file)) {
+			/* Files are equal. tmp2.xxx is not needed. */
+			unlink(tmp_output);
+		} else {
+			/* Rename tmp2.xxx to output file. */
+#if defined(WIN32) || defined(WIN64)
+			unlink(output_file);
+#endif
+			if (rename(tmp_output, output_file) == -1) error("rename() failed");
+		}
 	}
 	return 0;
 }
