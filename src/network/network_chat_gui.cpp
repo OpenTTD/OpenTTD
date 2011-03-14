@@ -531,7 +531,12 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		ShowOnScreenKeyboard(this, wid, NWCW_CLOSE, NWCW_SENDBUTTON);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (data == this->dest) delete this;
 	}

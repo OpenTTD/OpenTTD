@@ -91,8 +91,14 @@ struct GraphLegendWindow : Window {
 		InvalidateWindowData(WC_COMPANY_VALUE, 0);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		if (Company::IsValidID(data)) return;
 
 		SetBit(_legend_excluded_companies, data);
@@ -543,8 +549,14 @@ public:
 		this->UpdateStatistics(false);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		this->UpdateStatistics(true);
 	}
 
@@ -1013,8 +1025,14 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		/* Override default OnTick */
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		this->OnHundredthTick();
 	}
 
@@ -1247,9 +1265,15 @@ public:
 		}
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (data == 0) {
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->companies.ForceRebuild();
 		} else {
 			this->companies.ForceResort();
@@ -1488,11 +1512,13 @@ struct PerformanceRatingDetailWindow : Window {
 	}
 
 	/**
-	 * Invalidate the data of this window.
+	 * Some data on this window has become invalid.
 	 * @param data the company ID of the company that is going to be removed
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data)
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		/* Disable the companies who are not active */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !Company::IsValidID(i));

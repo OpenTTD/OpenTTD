@@ -491,9 +491,15 @@ public:
 				this->GetWidget<NWidgetCore>(RVW_WIDGET_RIGHT_MATRIX)->widget_data = (this->vscroll[0]->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (data != 0) {
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->engines[0].ForceRebuild();
 		} else {
 			this->engines[1].ForceRebuild();

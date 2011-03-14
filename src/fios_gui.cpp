@@ -659,17 +659,24 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, SLWW_DRIVES_DIRECTORIES_LIST);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		switch (data) {
 			case 0:
 				/* Rescan files */
 				this->selected = NULL;
 				_load_check_data.Clear();
+				if (!gui_scope) break;
 				BuildFileList();
 				/* FALL THROUGH */
 			case 1:
 				/* Selection changes */
+				if (!gui_scope) break;
 				if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
 					this->SetWidgetDisabledState(SLWW_LOAD_BUTTON,
 							this->selected == NULL || _load_check_data.HasErrors() || !(_load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()));

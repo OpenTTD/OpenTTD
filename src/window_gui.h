@@ -434,22 +434,16 @@ public:
 	/**
 	 * Mark this window's data as invalid (in need of re-computing)
 	 * @param data The data to invalidate with
+	 * @param gui_scope Whether the funtion is called from GUI scope.
 	 */
-	void InvalidateData(int data = 0)
+	void InvalidateData(int data = 0, bool gui_scope = true)
 	{
 		this->SetDirty();
-		this->OnInvalidateData(data);
-	}
-
-	/**
-	 * Schedule a invalidation call for next redraw.
-	 * Important for asynchronous invalidation from commands.
-	 * @param data The data to invalidate with
-	 */
-	void ScheduleInvalidateData(int data = 0)
-	{
-		this->SetDirty();
-		*this->scheduled_invalidation_data.Append() = data;
+		if (!gui_scope) {
+			/* Schedule GUI-scope invalidation for next redraw. */
+			*this->scheduled_invalidation_data.Append() = data;
+		}
+		this->OnInvalidateData(data, gui_scope);
 	}
 
 	/**
@@ -458,7 +452,7 @@ public:
 	void ProcessScheduledInvalidations()
 	{
 		for (int *data = this->scheduled_invalidation_data.Begin(); this->window_class != WC_INVALID && data != this->scheduled_invalidation_data.End(); data++) {
-			this->OnInvalidateData(*data);
+			this->OnInvalidateData(*data, true);
 		}
 		this->scheduled_invalidation_data.Clear();
 	}
@@ -651,9 +645,9 @@ public:
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0) {}
-
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true) {}
 
 	/**
 	 * The user clicked some place on the map when a tile highlight mode

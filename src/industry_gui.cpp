@@ -597,8 +597,14 @@ public:
 		this->RaiseButtons();
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		this->SetupArrays();
 
 		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
@@ -947,8 +953,14 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		const Industry *i = Industry::Get(this->window_number);
 		if (IsProductionAlterable(i)) {
 			const IndustrySpec *ind = GetIndustrySpec(i->type);
@@ -1334,20 +1346,31 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, IDW_INDUSTRY_LIST);
 	}
 
+	virtual void OnPaint()
+	{
+		if (this->industries.NeedRebuild()) this->BuildSortIndustriesList();
+		this->DrawWidgets();
+	}
+
 	virtual void OnHundredthTick()
 	{
 		this->industries.ForceResort();
 		this->BuildSortIndustriesList();
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (data == 0) {
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->industries.ForceRebuild();
 		} else {
 			this->industries.ForceResort();
 		}
-		this->BuildSortIndustriesList();
 	}
 };
 
@@ -2386,13 +2409,15 @@ struct IndustryCargoesWindow : public Window {
 	}
 
 	/**
-	 * Notify the window about external events.
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
 	 * - data = 0 .. NUM_INDUSTRYTYPES - 1: Display the chain around the given industry.
 	 * - data = NUM_INDUSTRYTYPES: Stop sending updates to the smallmap window.
-	 * @param data The event.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data)
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		if (data == NUM_INDUSTRYTYPES) {
 			if (this->IsWidgetLowered(ICW_NOTIFY)) {
 				this->RaiseWidget(ICW_NOTIFY);

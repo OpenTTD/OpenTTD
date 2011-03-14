@@ -687,9 +687,15 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, SLW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (data == 0) {
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->stations.ForceRebuild();
 		} else {
 			this->stations.ForceResort();
@@ -1448,8 +1454,14 @@ struct SelectStationWindow : Window {
 		this->vscroll->SetCapacityFromWidget(this, JSW_PANEL, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		FindStationsNearby<T>(this->area, true);
 		this->vscroll->SetCount(_stations_nearby_list.Length() + 1);
 		this->SetDirty();

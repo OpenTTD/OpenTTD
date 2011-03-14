@@ -805,13 +805,18 @@ public:
 		}
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		VehicleOrderID from = GB(data, 0, 8);
-		VehicleOrderID to   = GB(data, 8, 8);
+		VehicleOrderID from = INVALID_VEH_ORDER_ID;
+		VehicleOrderID to   = INVALID_VEH_ORDER_ID;
 
 		switch (data) {
-			case 0:
+			case -666:
 				/* Autoreplace replaced the vehicle */
 				this->vehicle = Vehicle::Get(this->window_number);
 				break;
@@ -830,6 +835,11 @@ public:
 				break;
 
 			default:
+				if (data < 0) break;
+
+				if (gui_scope) break; // only do this once; from command scope
+				from = GB(data, 0, 8);
+				to   = GB(data, 8, 8);
 				/* Moving an order. If one of these is INVALID_VEH_ORDER_ID, then
 				 * the order is being created / removed */
 				if (this->selected_order == -1) break;
@@ -859,7 +869,7 @@ public:
 		}
 
 		this->vscroll->SetCount(this->vehicle->GetNumOrders() + 1);
-		this->UpdateButtonState();
+		if (gui_scope) this->UpdateButtonState();
 
 		/* Scroll to the new order. */
 		if (from == INVALID_VEH_ORDER_ID && to != INVALID_VEH_ORDER_ID && !this->vscroll->IsVisible(to)) {

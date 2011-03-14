@@ -164,9 +164,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		/* Create initial list. */
 		this->signs.ForceRebuild();
 		this->signs.ForceResort();
-		this->BuildSignsList();
-		this->SortSignsList();
-		this->vscroll->SetCount(this->signs.Length());
+		this->BuildSortSignList();
 	}
 
 	/**
@@ -214,6 +212,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 	virtual void OnPaint()
 	{
+		if (this->signs.NeedRebuild()) this->BuildSortSignList();
 		this->DrawWidgets();
 		if (!this->IsShaded()) this->DrawEditBox(SLW_FILTER_TEXT);
 	}
@@ -352,23 +351,38 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		this->HandleEditBox(SLW_FILTER_TEXT);
 	}
 
+	void BuildSortSignList()
+	{
+		if (this->signs.NeedRebuild()) {
+			this->BuildSignsList();
+			this->vscroll->SetCount(this->signs.Length());
+			this->SetWidgetDirty(SLW_CAPTION);
+		}
+		this->SortSignsList();
+	}
 
-	virtual void OnInvalidateData(int data)
+	virtual void OnHundredthTick()
+	{
+		this->BuildSortSignList();
+		this->SetDirty();
+	}
+
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		/* When there is a filter string, we always need to rebuild the list even if
 		 * the amount of signs in total is unchanged, as the subset of signs that is
-		 * accepted by the filter might has changed.
-		 */
+		 * accepted by the filter might has changed. */
 		if (data == 0 || !StrEmpty(this->filter_string)) { // New or deleted sign, or there is a filter string
+			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->signs.ForceRebuild();
-			this->BuildSignsList();
-			this->SetWidgetDirty(SLW_CAPTION);
-			this->vscroll->SetCount(this->signs.Length());
 		} else { // Change of sign contents while there is no filter string
 			this->signs.ForceResort();
 		}
-
-		this->SortSignsList();
 	}
 
 	static Hotkey<SignListWindow> signlist_hotkeys[];

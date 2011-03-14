@@ -144,8 +144,14 @@ public:
 		}
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (!gui_scope) return;
 		this->base  = _tree_base_by_landscape[_settings_game.game_creation.landscape];
 		this->count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
 	}

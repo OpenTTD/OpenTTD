@@ -182,12 +182,19 @@ struct AIListWindow : public Window {
 		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
 			delete this;
 			return;
 		}
+
+		if (!gui_scope) return;
 
 		this->vscroll->SetCount((int)this->ai_info_list->size() + 1);
 
@@ -437,7 +444,12 @@ struct AISettingsWindow : public Window {
 		}
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) delete this;
 	}
@@ -692,11 +704,18 @@ struct AIConfigWindow : public Window {
 		}
 	}
 
-	virtual void OnInvalidateData(int data)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!IsEditable(this->selected_slot)) {
 			this->selected_slot = INVALID_COMPANY;
 		}
+
+		if (!gui_scope) return;
 
 		this->SetWidgetDisabledState(AIC_WIDGET_DECREASE, GetGameSettings().difficulty.max_no_competitors == 0);
 		this->SetWidgetDisabledState(AIC_WIDGET_INCREASE, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES - 1);
@@ -1032,11 +1051,16 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		return state;
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (data == -1 || ai_debug_company == data) this->SetDirty();
 
-		if (data == -2) {
+		if (gui_scope && data == -2) {
 			/* The continue button should be disabled when the game is unpaused and
 			 * it was previously paused by the break string ( = a line in the log
 			 * was highlighted )*/
@@ -1048,8 +1072,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 			}
 		}
 
-		/* If the log message is related to the active company tab, check the break string */
-		if (data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
+		/* If the log message is related to the active company tab, check the break string.
+		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
+		if (!gui_scope && data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
 			/* Get the log instance of the active company */
 			Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
 			AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
