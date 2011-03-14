@@ -232,7 +232,7 @@ public:
 
 				/* Get the extra message for the GUI */
 				if (HasBit(spec->callback_mask, CBM_OBJ_FUND_MORE_TEXT)) {
-					uint16 callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, NULL, INVALID_TILE);
+					uint16 callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, NULL, INVALID_TILE, _selected_object_view);
 					if (callback_res != CALLBACK_FAILED) {
 						StringID message = GetGRFStringID(spec->grf_prop.grffile->grfid, 0xD000 + callback_res);
 						if (message != STR_NULL && message != STR_UNDEFINED) {
