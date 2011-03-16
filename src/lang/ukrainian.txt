@@ -290,12 +290,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}Ні
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} пасажирів
-STR_BAGS                                                        :{COMMA} мішків
-STR_TONS                                                        :{COMMA} тони
-STR_LITERS                                                      :{COMMA} літрів
-STR_ITEMS                                                       :{COMMA} штук
-STR_CRATES                                                      :{COMMA} ящики
+STR_PASSENGERS                                                  :{COMMA} пасажир{P "" и ів}
+STR_BAGS                                                        :{COMMA} міш{P ок ка ків}
+STR_TONS                                                        :{COMMA} тон{P а и ""}
+STR_LITERS                                                      :{COMMA} літр{P "" а ів}
+STR_ITEMS                                                       :{COMMA} штук{P а и ""}
+STR_CRATES                                                      :{COMMA} ящик{P "" а ів}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Темно-синій
@@ -1286,10 +1286,10 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :усього т
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Попереджувати, якщо транспорт збитковий: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не старіє: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Автооновлення старого транспорту: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Автооновлення транспорту через {ORANGE}{STRING}{LTBLUE} міс. до/після макс.віку
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Автооновлення транспорту через {ORANGE}{STRING}{LTBLUE} місяц{P 0:1 ь і ів} до/після макс.віку
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Сума, необхідна для автооновлення: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Тривалість повідомлення про помилку: {ORANGE}{STRING} сек.
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Затримка появи підказки при наведенні курсору: {ORANGE}{STRING} сек.
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Тривалість повідомлення про помилку: {ORANGE}{STRING} секунд{P 0:1 а и ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Затримка появи підказки при наведенні курсору: {ORANGE}{STRING} секунд{P 0:1 а и ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Затримка появи підказки при наведенні курсору: {ORANGE}правий клік миші
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показувати населення міста поруч з назвою: {ORANGE}{STRING}
 
@@ -1382,13 +1382,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Доз�
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes перез зупинкою AI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Інтервал техогляду у відсотках: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} дн/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} д{P 0:1 ень ні нів}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}без тех.огляду
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Інтервал техогляду для авто: {ORANGE}{STRING} дн/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Інтервал техогляду для авто: {ORANGE}{STRING} д{P 0:1 ень ні нів}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Інтервал техогляду для авто: {ORANGE}без тех.огляду
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Інтервал техогляду для літаків: {ORANGE}{STRING} дн/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Інтервал техогляду для літаків: {ORANGE}{STRING} д{P 0:1 ень ні нів}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Інтервал техогляду для літаків: {ORANGE}без тех.огляду
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Інтервал техогляду для кораблів: {ORANGE}{STRING} дн/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Інтервал техогляду для кораблів: {ORANGE}{STRING} д{P 0:1 ень ні нів}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Інтервал техогляду для кораблів: {ORANGE}без тех.огляду
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Не робити техогляд, коли вимкнено аварії: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Обмежити швидкість вагонів: {ORANGE}{STRING}
@@ -1432,7 +1432,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :скрізь
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положення головного меню: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиція панелі статусу: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс.
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс{P 0:1 ел ли лів}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Максимальна кількість вікон (що не прилипають): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Максимальна кількість вікон (що не прилипають): {ORANGE}нема
@@ -1914,7 +1914,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Гра ще п�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Гра ще призупинена ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Гра ще призупинена ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Гра знята з паузи ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :недостатньо гравців
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :кількість гравців
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :приєднання клієнтів
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :вручну
 ############ End of leave-in-this-order
@@ -3715,7 +3715,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... лі
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поїзд дуже довгий
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не можна розвернути поїзд...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Неможливо розвернути довгий транспорт
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... складається з декількох частин
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Залізничні колій несумісні
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Неможливо перемістити транспорт...
