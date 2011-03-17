@@ -1,202 +1,199 @@
-# $Id$
-#-------------------------------------------------------------------------------
-# spec file for the openttd rpm package
-#
-# Copyright (c) 2007-2011 The OpenTTD developers
-#
-# This file and all modifications and additions to the pristine
-# package are under the same license as the package itself
-#
-# Note: for (at least) CentOS '#' comments end '\' continue command on new line.
-#       So place all '#' commented parameters of e.g. configure to the end.
-#
-#-------------------------------------------------------------------------------
+%define dedicated       0
 
-Name:          openttd
-Version:       1.2.0
-Release:       1%{?dist}
+%define binname         openttd
 
-Group:         Amusements/Games
-License:       GPLv2
-URL:           http://www.openttd.org
-Summary:       OpenTTD is an Open Source clone of Chris Sawyer's Transport Tycoon Deluxe
+%define srcver          1.2.0
 
-Source:        %{name}-%{version}-source.tar.bz2
+%if %{dedicated}
+Name:           %{binname}-dedicated
+%else
+Name:           %{binname}
+%endif
+Version:        %{srcver}
+Release:        1%{?dist}
+Group:          Amusements/Games/Strategy/Other
+License:        GPLv2
+URL:            http://www.openttd.org
+Summary:        An open source clone of Chris Sawyer's Transport Tycoon Deluxe
 
-Requires:      fontconfig
-Requires:      SDL
-Requires:      zlib
-Requires:      xz-devel
-BuildRequires: gcc-c++
-BuildRequires: fontconfig-devel
-BuildRequires: libpng-devel
-BuildRequires: libicu-devel
-BuildRequires: SDL-devel
-BuildRequires: zlib-devel
+Source:         openttd%{?branch:-%{branch}}-%{srcver}-source.tar.bz2
+
+# the main package works with the exact same data package version only
+Requires:       %{binname}-data = %{version}
+
+BuildRequires:  gcc-c++
+BuildRequires:  libpng-devel
+BuildRequires:  zlib-devel
+
+%if 0%{?mdkversion}
+BuildRequires:  liblzo-devel
+BuildRequires:  liblzma-devel
+%else
+BuildRequires:  lzo-devel
+BuildRequires:  xz-devel
+%endif
+
+#needed by libdrm
+%if 0%{?rhel_version} >= 600
+BuildRequires:  kernel
+%endif
+
+# for lzma detection
+%if 0%{?suse_version}
+BuildRequires:  pkg-config
+%endif
+
+# Desktop specific tags, not needed for dedicated
+%if !%{dedicated}
+BuildRequires:  fontconfig-devel
+BuildRequires:  SDL-devel
+
+BuildRequires:  grfcodec
+
 # vendor specific dependencies
-%if %{_vendor}=="alt"
-Requires:      freetype
-BuildRequires: freetype-devel
-%endif
-%if %{_vendor}=="redhat" || %{_vendor}=="fedora"
-Requires:      freetype
-BuildRequires: freetype-devel
-BuildRequires: desktop-file-utils
-%endif
-%if %{_vendor}=="suse" || %{_vendor}=="mandriva"
-Requires:      freetype2
-BuildRequires: freetype2-devel
-%endif
-%if %{_vendor}=="suse"
-BuildRequires: update-desktop-files
+ %if !0%{?rhel_version}
+BuildRequires:  libicu-devel
+ %endif
+ %if 0%{?rhel_version} || 0%{?fedora}
+BuildRequires:  freetype-devel
+ %endif
+ %if 0%{?suse_version} || 0%{?mdkversion}
+BuildRequires:  freetype2-devel
+ %endif
+ %if 0%{?suse_version}
+BuildRequires:  update-desktop-files
+ %endif
 %endif
 
+%if %{dedicated}
+Conflicts:      %{binname} %{binname}-gui
+%else
+Provides:       %{binname}-gui
+Conflicts:      %{binname}-dedicated
+Requires:       openttd-opensfx
 # recommends works for suse (not sles9) and mandriva, only
-%if 0%{?suse_version} > 910  || %{_vendor}=="mandriva"
-Recommends:	opengfx
-# for 0.8.0
-#Recommends:	opensfx
+ %if 0%{?suse_version} || 0%{?mdkversion}
+# require timidity is part of openmsx
+Recommends:     openttd-openmsx
+ %endif
 %endif
+# Recommends would fit better but not well supported...
+Requires:       openttd-opengfx >= 0.3.2
 
-BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe"
 with lots of new features and enhancements. To play the game you need either
-the original data from the game or install the recommend package OpenGFX.
+the original data from the game or install the recommend subackages OpenGFX for
+free graphics, OpenSFX for free sounds and OpenMSX for free music.
 
 OpenTTD is licensed under the GNU General Public License version 2.0. For more
 information, see the file 'COPYING' included with every release and source
 download of the game.
 
+# the subpackage data needs only to build once, the dedicated version
+# can reuse the data package of the gui package
+%if !%{dedicated}
+%package data
+Summary:        Data package for OpenTTD
+Group:          Amusements/Games/Strategy/Other
+ %if 0%{?suse_version} >= 1120 || 0%{?fedora} || 0%{?mdkversion}
+BuildArch:      noarch
+ %endif
+BuildRequires:  grfcodec
+
+%description data
+OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe"
+with lots of new features and enhancements. To play the game you need either
+the original data from the game or the required package OpenGFX and OpenSFX.
+
+This package is required by openttd gui and openttd dedicated package. This
+way it is possible to install a openttd version without SDL requirement.
+
+%endif
+
 %prep
-%setup -q
+%setup -qn openttd%{?branch:-%{branch}}-%{srcver}
+
+# we build the grfs from sources but validate the result with the existing data
+md5sum bin/data/* > validate.data
 
 %build
-# suse sle <10 has no support for makedepend
-%if 0%{?sles_version} == 9 || 0%{?sles_version} == 10
-%define 	do_makedepend	0
-%else
-%define 	do_makedepend	1
-%endif
 ./configure \
-	--prefix-dir="%{_prefix}" \
-	--binary-name="%{name}" \
-	--enable-strip \
-	--binary-dir="bin" \
-	--data-dir="share/%{name}" \
-	--with-makedepend="%{do_makedepend}" \
-#	--revision="%{ver}%{?prever:-%{prever}}" \
-#	--enable-debug=0 \
-#	--with-sdl \
-#	--with-zlib \
-#	--with-png \
-#	--with-freetype \
-#	--with-fontconfig \
-#	--with-icu \
-#	--menu_group="Game;" \
-#	--menu-name="OpenTTD" \
-#	--doc-dir="share\doc\%{name}" \
-#	--icon-dir="share/pixmaps" \
-#	--icon-theme-dir="share/icons/hicolor" \
-#	--man-dir="share/man/man6" \
-#	--menu-dir="share/applications"
+        --prefix-dir="%{_prefix}" \
+        --binary-name="%{binname}" \
+        --binary-dir="bin" \
+        --data-dir="share/%{binname}" \
+        --doc-dir="share/doc/%{binname}" \
+        --menu-name="OpenTTD%{?branch: %{branch}}" \
+        --menu-group="Game;StrategyGame;" \
+        --enable-dedicated="%{dedicated}" \
 
 make %{?_smp_mflags}
 
 %install
+%if %{dedicated}
+# dedicated package needs binary only
+install -D -m0755 bin/openttd %{buildroot}/%{_bindir}/%{binname}
+%else
 make install INSTALL_DIR="%{buildroot}"
-
-# Validate menu entrys (vendor specific)
-%if %{_vendor} == "redhat" || %{_vendor}=="fedora"
-desktop-file-install \
-	--vendor="%{_vendor}" \
-	--remove-key Version \
-	--dir="%{buildroot}/%{_datadir}/applications/" \
-	"%{buildroot}/%{_datadir}/applications/%{name}.desktop" \
-#	--delete-original
-%endif
-%if %{_vendor}=="suse"
-%__cat > %{name}.desktop << EOF
-[Desktop Entry]
-Encoding=UTF-8
-Name=OpenTTD
-Comment=OpenTTD - A clone of the Microprose game 'Transport Tycoon Deluxe'
-GenericName=OpenTTD
-Type=Application
-Terminal=false
-Exec=%{name}
-Icon=%{name}
-Categories=Game;StrategyGame;
-EOF
-%suse_update_desktop_file -i %{name} Game StrategyGame
+ %if 0%{?suse_version}
+%suse_update_desktop_file -r %{binname} Game StrategyGame
+ %endif
 %endif
 
 %clean
-#rm -rf "%{buildroot}"
+rm -rf "%{buildroot}"
 
-%post
-# Update the icon cache (vendor specific)
-%if %{_vendor}=="mandriva"
-%update_icon_cache hicolor
-%endif
-
-%if %{_vendor} == "redhat" || %{_vendor}=="fedora"
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-	%{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
-%endif
-
-%postun
-# Update the icon cache (vendor specific)
-%if %{_vendor}=="mandriva"
-%update_icon_cache hicolor
-%endif
-
-%if %{_vendor} == "redhat" || %{_vendor}=="fedora"
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-	%{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
-%endif
+%check
+md5sum -c validate.data
 
 %files
-%defattr(-, root, games, -)
-%dir %{_datadir}/doc/%{name}
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/lang
-%dir %{_datadir}/%{name}/data
-%dir %{_datadir}/%{name}/gm
-%dir %{_datadir}/%{name}/scripts
-%attr(755, root, games) %{_bindir}/%{name}
-%{_datadir}/doc/%{name}/*
-%{_datadir}/%{name}/lang/*
-%{_datadir}/%{name}/data/*
-%{_datadir}/%{name}/scripts/*
-%{_datadir}/applications/*%{name}.desktop
-%{_datadir}/pixmaps/*
-%{_datadir}/icons/*
-%doc %{_mandir}/man6/%{name}.6.*
+%attr(755, root, root) %{_bindir}/%{binname}
+
+# all other files are for the gui version only, also no
+# subpackage needed for the dedicated version
+%if !%{dedicated}
+%defattr(-, root, root)
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/16x16
+%dir %{_datadir}/icons/hicolor/16x16/apps
+%dir %{_datadir}/icons/hicolor/32x32
+%dir %{_datadir}/icons/hicolor/32x32/apps
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/64x64
+%dir %{_datadir}/icons/hicolor/64x64/apps
+%dir %{_datadir}/icons/hicolor/128x128
+%dir %{_datadir}/icons/hicolor/128x128/apps
+%dir %{_datadir}/icons/hicolor/256x256
+%dir %{_datadir}/icons/hicolor/256x256/apps
+%{_datadir}/applications/%{binname}.desktop
+%{_datadir}/icons/hicolor/16x16/apps/%{binname}.png
+%{_datadir}/icons/hicolor/32x32/apps/%{binname}.png
+%{_datadir}/icons/hicolor/48x48/apps/%{binname}.png
+%{_datadir}/icons/hicolor/64x64/apps/%{binname}.png
+%{_datadir}/icons/hicolor/128x128/apps/%{binname}.png
+%{_datadir}/icons/hicolor/256x256/apps/%{binname}.png
+%{_datadir}/pixmaps/%{binname}.32.xpm
+
+%files data
+%defattr(-, root, root)
+%dir %{_datadir}/doc/%{binname}
+%dir %{_datadir}/%{binname}
+%dir %{_datadir}/%{binname}/lang
+%dir %{_datadir}/%{binname}/data
+%dir %{_datadir}/%{binname}/gm
+%dir %{_datadir}/%{binname}/scripts
+%dir %{_datadir}/%{binname}/ai
+%{_datadir}/doc/%{binname}/*
+%{_datadir}/%{binname}/lang/*
+%{_datadir}/%{binname}/data/*
+%{_datadir}/%{binname}/scripts/*
+%{_datadir}/%{binname}/ai/*
+%{_datadir}/%{binname}/gm/*
+%doc %{_mandir}/man6/%{binname}.6.*
+%endif
 
 %changelog
-* Sat Sep 26 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.2
-- no subfolder games for datadir
-- cleanup: no post and postun anymore
-- Recommends: opengfx (for suse and mandriva)
-- add SUSE support
-
-* Mon Oct 20 2008 Benedikt Brüggemeier <skidd13@openttd.org>
-- Added libicu dependency
-
-* Thu Sep 23 2008 Benedikt Brüggemeier <skidd13@openttd.org>
-- Merged both versions of the spec file
-
-* Fri Aug 29 2008 Jonathan Coome <maedhros@openttd.org>
-- Rewrite spec file from scratch.
-
-* Sat Aug 02 2008 Benedikt Brüggemeier <skidd13@openttd.org>
-- Updated spec file
-
-* Thu Mar 27 2008 Denis Burlaka <burlaka@yandex.ru>
-- Universal spec file

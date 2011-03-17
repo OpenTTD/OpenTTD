@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Sun Mar  6 09:36:55 UTC 2011 - ammler@openttdcoop.org
+
+- upstream update 1.1.0-RC2
+  * Feature: XZ/LZMA2 savegame support. New default reduces
+    savegame size by 10 to 30% with slightly more CPU usage.
+    (requires xz-devel)
+  * Feature: Remote administration
+  * Feature: a lot improvements with GUI
+  * Feature: Customizable hotkeys
+  * Sources for openttd.grf are pngs (requires grfcodec >= 5.1)
+
+-------------------------------------------------------------------
+Sun Nov 21 11:11:38 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 1.0.5
+  * Fix: Reading (very) recently freed memory [CVE-2010-4168]
+
+-------------------------------------------------------------------
+Sun Oct 31 17:53:41 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 1.0.4
+  * build openttd.grf from source
+
+-------------------------------------------------------------------
+Tue Aug 10 20:16:03 UTC 2010 - ammler@openttdcoop.org
+
+- upstream update 1.0.3
+
+-------------------------------------------------------------------
+Wed Jun 23 11:42:59 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 1.0.2
+  * Feature: Translated desktop shortcut comments (r19884)
+  * many minor Bugfixes
+
+-------------------------------------------------------------------
+Sat May  1 15:59:32 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 1.0.1
+  * Fix: Leaking a file descriptor
+  * Fix a lot small bugs, like minor desync issues on Mulitplayer
+- no strip on make
+
+-------------------------------------------------------------------
+Thu Apr  1 08:53:54 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
+
+- upstream update 1.0.0 (finally!)
+  * completely independend game but still working also
+    with ttd original gaphics, sounds and music
+- Add: Recommends openmsx
+- requires lzo2
+
+-------------------------------------------------------------------
+Fri Dec 18 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.4
+
+- support for differen branches
+- easy support for dedicated branch
+- let openttd build system make the dektop file
+- split the package to data and gui
+- disable requires
+
+-------------------------------------------------------------------
+Thu Oct 01 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.3
+
+- disable libicu for RHEL4
+
+-------------------------------------------------------------------
+Sat Sep 26 2009 Marcel Gmür <ammler@openttdcoop.org> - 0.7.2
+
+- no subfolder games for datadir
+- cleanup: no post and postun anymore
+- Recommends: opengfx (for suse and mandriva)
+- add SUSE support
+
+-------------------------------------------------------------------
+Mon Oct 20 2008 Benedikt Brüggemeier <skidd13@openttd.org>
+
+- Added libicu dependency
+
+-------------------------------------------------------------------
+Thu Sep 23 2008 Benedikt Brüggemeier <skidd13@openttd.org>
+
+- Merged both versions of the spec file
+
+-------------------------------------------------------------------
+Fri Aug 29 2008 Jonathan Coome <maedhros@openttd.org>
+
+- Rewrite spec file from scratch.
+
+-------------------------------------------------------------------
+Sat Aug 02 2008 Benedikt Brüggemeier <skidd13@openttd.org>
+
+- Updated spec file
+
+-------------------------------------------------------------------
+Thu Mar 27 2008 Denis Burlaka <burlaka@yandex.ru>
+
+- Universal spec file
+
