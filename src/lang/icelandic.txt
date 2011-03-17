@@ -1067,7 +1067,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Aðeins á enda
 
 STR_DISASTERS_OFF                                               :Ekki á
 STR_DISASTERS_ON                                                :Á
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 STR_CITY_APPROVAL_TOLERANT                                      :Umburðarlynd
 STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
@@ -1081,6 +1080,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Þróað
 STR_CONFIG_SETTING_OFF                                          :Nei
 STR_CONFIG_SETTING_ON                                           :Já
 STR_CONFIG_SETTING_DISABLED                                     :óvirkt
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leyfilegt að byggja í halla og á strönd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leyfa landslagsbreytingar undir byggingum, teinum o.fl. (landfylling): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Raunverulegri stærð svæðis sem stöðvar ná yfir: {ORANGE}{STRING}
@@ -1322,6 +1325,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Leiðar
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Lestir
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bæir
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Iðnaðuð
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Leiðsagnarkerfi lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

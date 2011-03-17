@@ -1078,7 +1078,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Aan het eind va
 
 STR_DISASTERS_OFF                                               :Uit
 STR_DISASTERS_ON                                                :Aan
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
@@ -1092,6 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavance
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan
 STR_CONFIG_SETTING_DISABLED                                     :uitgeschakeld
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Bouwen op hellingen en kusten toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebruik meer realistische handelsgebieden: {ORANGE}{STRING}
@@ -1348,6 +1351,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routebe
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treinen
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Steden
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrieën
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Routezoeker voor treinen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

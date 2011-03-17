@@ -1135,7 +1135,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Ainult raudtee 
 
 STR_DISASTERS_OFF                                               :Väljas
 STR_DISASTERS_ON                                                :Sees
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Soodustav
 STR_CITY_APPROVAL_TOLERANT                                      :Salliv
 STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik
@@ -1149,6 +1148,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsema
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
 STR_CONFIG_SETTING_DISABLED                                     :väljas
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Nõlvadele ja kallastele ehitamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Maastikukujundus majade, rööbaste jms. all (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Reaalsemad veekogud: {ORANGE}{STRING}
@@ -1405,6 +1408,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruu
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Rongid
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Linnad
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tööstused
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

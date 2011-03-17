@@ -1232,7 +1232,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Только в
 
 STR_DISASTERS_OFF                                               :Выключены
 STR_DISASTERS_ON                                                :Включены
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Дозволяющее
 STR_CITY_APPROVAL_TOLERANT                                      :Терпимое
 STR_CITY_APPROVAL_HOSTILE                                       :Враждебное
@@ -1246,6 +1245,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Расш
 STR_CONFIG_SETTING_OFF                                          :нет
 STR_CONFIG_SETTING_ON                                           :да
 STR_CONFIG_SETTING_DISABLED                                     :отключено
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и на берегу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
@@ -1502,6 +1505,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Мар�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Поезда
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Города
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Промышленность
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Алгоритм поиска пути для поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

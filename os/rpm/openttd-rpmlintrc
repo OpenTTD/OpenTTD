@@ -1,0 +1,6 @@
+# the man page is in the subpackage data
+addFilter("openttd.*: W: no-manual-page-for-binary openttd")
+# no other package depends on this package, so this should not matter
+addFilter("openttd.*: W: file-contains-date-and-time /usr/bin/openttd")
+addFilter("openttd.*: W: file-contains-current-date /usr/bin/openttd")
+

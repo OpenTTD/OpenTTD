@@ -1142,7 +1142,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Csak vonal vég
 
 STR_DISASTERS_OFF                                               :Ki
 STR_DISASTERS_ON                                                :Be
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny
 STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
 STR_CITY_APPROVAL_HOSTILE                                       :Ellenséges
@@ -1156,6 +1155,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó 
 STR_CONFIG_SETTING_OFF                                          :Ki
 STR_CONFIG_SETTING_ON                                           :Be
 STR_CONFIG_SETTING_DISABLED                                     :kikapcsolva
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {ORANGE}{STRING}
@@ -1412,6 +1415,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvona
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vonatok
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Települések
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gazdaság
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Útvonalkereső vonatokhoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

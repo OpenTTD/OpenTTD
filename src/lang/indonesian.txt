@@ -1078,7 +1078,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Hanya pada ujun
 
 STR_DISASTERS_OFF                                               :Non-aktifkan
 STR_DISASTERS_ON                                                :Aktif
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
@@ -1092,6 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pengatur
 STR_CONFIG_SETTING_OFF                                          :Tidak
 STR_CONFIG_SETTING_ON                                           :Ya
 STR_CONFIG_SETTING_DISABLED                                     :Non-aktifkan
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ijinkan pembangunan di lereng dan pantai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
@@ -1348,6 +1351,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pengara
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Kereta
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kota
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industri
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari jejak untuk kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

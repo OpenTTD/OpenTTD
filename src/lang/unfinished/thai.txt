@@ -1067,7 +1067,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :ตรงสุ
 
 STR_DISASTERS_OFF                                               :ปิด
 STR_DISASTERS_ON                                                :เปิด
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
 STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อนผันให้ได้
 STR_CITY_APPROVAL_HOSTILE                                       :ไม่เป็นมิตร

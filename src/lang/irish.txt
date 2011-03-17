@@ -1076,7 +1076,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Ag deireadh na 
 
 STR_DISASTERS_OFF                                               :As
 STR_DISASTERS_ON                                                :Air
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tugtar cead
 STR_CITY_APPROVAL_TOLERANT                                      :Fulangach
 STR_CITY_APPROVAL_HOSTILE                                       :Naimhdeach
@@ -1090,6 +1089,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocru
 STR_CONFIG_SETTING_OFF                                          :As
 STR_CONFIG_SETTING_ON                                           :Air
 STR_CONFIG_SETTING_DISABLED                                     :díchumasaithe
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {ORANGE}{STRING}
@@ -1346,6 +1349,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ródú
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traenacha
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bailte
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tionscail
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Aimsitheoir bealaigh do thraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

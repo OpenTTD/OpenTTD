@@ -1079,7 +1079,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Só no fim da l
 
 STR_DISASTERS_OFF                                               :Desligado
 STR_DISASTERS_ON                                                :Ligado
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
@@ -1093,6 +1092,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opções
 STR_CONFIG_SETTING_OFF                                          :Desligado
 STR_CONFIG_SETTING_ON                                           :Ligado
 STR_CONFIG_SETTING_DISABLED                                     :desactivado
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
@@ -1349,6 +1352,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Em rota
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Comboios
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Sistema de encaminhar comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -3825,7 +3829,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Mealheiro
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Mina de Carvão
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Central Eléctrica
-STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Oficina de Carpintaria
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Marcenaria
 STR_INDUSTRY_NAME_FOREST                                        :{G=f}Floresta
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Refinaria de Petróleo
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma Petrolífera

@@ -1053,7 +1053,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tikai līniju b
 
 STR_DISASTERS_OFF                                               :Izslēgtas
 STR_DISASTERS_ON                                                :Ieslēgtas
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujams
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerants
 STR_CITY_APPROVAL_HOSTILE                                       :Naidīgs
@@ -1066,6 +1065,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildus
 STR_CONFIG_SETTING_OFF                                          :Izslēgts
 STR_CONFIG_SETTING_ON                                           :Ieslēgts
 STR_CONFIG_SETTING_DISABLED                                     :atspējots
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Atļaut celt uz nelīdzenas zemes un krastiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Atļaut zemes transformācijas zem dažādām būvēm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākus mikrorajonus: {ORANGE}{STRING}
@@ -1300,6 +1303,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršru
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vilcieni
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pilsētas
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Rūpniecības nozares
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vilcienu virziena meklētājs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

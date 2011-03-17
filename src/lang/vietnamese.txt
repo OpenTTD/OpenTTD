@@ -1078,7 +1078,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Chỉ cuối đ
 
 STR_DISASTERS_OFF                                               :Tắt
 STR_DISASTERS_ON                                                :Bật
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
 STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
 STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn
@@ -1092,6 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
 STR_CONFIG_SETTING_DISABLED                                     :tắt
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Cho phép xây dựng trên dốc và bờ biển: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mô phỏng thực tế diện tích khu vực đón hàng: {ORANGE}{STRING}
@@ -1256,7 +1259,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Nhân v
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Nhân vật máy không được mua máy bay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Nhân vật máy không được mua tàu thủy: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Cho phép máy chơi ở chế độ multiplayer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Cho phép AI ở chế độ nhiều người chơi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes AI được thực thi cho mỗi chu kỳ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Tần suất bảo trì theo đơn vị phần trăm: {ORANGE}{STRING}
@@ -1334,12 +1337,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Bỏ đ
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Giao Diện
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Dựng
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Ga, bến, cảng
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Ga, Bến, Cảng
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Kinh Tế
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Tùy chỉnh hiển thị
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Tương Tác
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Đèn Báo
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Tương tác
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Đèn báo
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Bốc/dỡ hàng
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Tự thay mới
@@ -1348,6 +1351,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đ
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tàu hoả
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Đô thị
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Nhà máy
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cơ chế tìm đường cho tàu hoả: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

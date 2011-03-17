@@ -1080,7 +1080,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :בסוף המס
 
 STR_DISASTERS_OFF                                               :ללא
 STR_DISASTERS_ON                                                :עם
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
 STR_CITY_APPROVAL_TOLERANT                                      :סביר
 STR_CITY_APPROVAL_HOSTILE                                       :עויין
@@ -1094,6 +1093,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדר
 STR_CONFIG_SETTING_OFF                                          :כבוי
 STR_CONFIG_SETTING_ON                                           :דלוק
 STR_CONFIG_SETTING_DISABLED                                     :מבוטל
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}אפשר לבנות על מידרונות וחופים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{ORANGE}{STRING}{LTBLUE} :'אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {ORANGE}{STRING}
@@ -1328,6 +1331,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}נית�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}רכבות
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}ערים
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}תעשיות
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבות
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

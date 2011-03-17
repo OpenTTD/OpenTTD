@@ -1078,7 +1078,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Vain radan pä�
 
 STR_DISASTERS_OFF                                               :Pois
 STR_DISASTERS_ON                                                :Päällä
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva
 STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
 STR_CITY_APPROVAL_HOSTILE                                       :Vihamielinen
@@ -1092,6 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäase
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
 STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Rakentaminen rinteisiin ja rannikolle sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
@@ -1348,6 +1351,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Reitity
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Junat
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kaupungit
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Laitokset
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Junien käyttämä reitinetsijä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

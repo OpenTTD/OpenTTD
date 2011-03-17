@@ -1026,7 +1026,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Ar ddiwedd y le
 
 STR_DISASTERS_OFF                                               :I  Ffwrdd
 STR_DISASTERS_ON                                                :Ymlaen
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Bodlon
 STR_CITY_APPROVAL_TOLERANT                                      :Hapus
 STR_CITY_APPROVAL_HOSTILE                                       :Gwrthwynebus
@@ -1039,6 +1038,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ffurfwed
 STR_CONFIG_SETTING_OFF                                          :I  Ffwrdd
 STR_CONFIG_SETTING_ON                                           :Ymlaen
 STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Caniatáu adeiladu a'r lethrau ac arfordiroedd {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Caniatáu daearffurfio o dan adeiladau, traciau, etc. (awtolethru): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING}
@@ -1251,6 +1254,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenau
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Trefi
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Diwydiannau
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrwr ar gyfer trenau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

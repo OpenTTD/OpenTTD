@@ -1078,7 +1078,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :At end of line 
 
 STR_DISASTERS_OFF                                               :Off
 STR_DISASTERS_ON                                                :On
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
@@ -1092,6 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :disabled
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow landscaping under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
@@ -1348,6 +1351,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routing
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Towns
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder for trains: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

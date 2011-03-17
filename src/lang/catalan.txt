@@ -1079,7 +1079,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Només al final
 
 STR_DISASTERS_OFF                                               :Desactivat
 STR_DISASTERS_ON                                                :Activat
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiu
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
@@ -1093,6 +1092,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Paràmet
 STR_CONFIG_SETTING_OFF                                          :Inactiu
 STR_CONFIG_SETTING_ON                                           :Actiu
 STR_CONFIG_SETTING_DISABLED                                     :desactivat
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permet construir en desnivells i costes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet modelar el terreny sota edificis, rails, etc. (autopendent): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet una mida més real de l'àrea d'influència: {ORANGE}{STRING}
@@ -1349,6 +1352,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Recorre
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pobles
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Indústries
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cerca de rutes per trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

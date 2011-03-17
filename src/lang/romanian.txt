@@ -1078,7 +1078,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Doar la capăt 
 
 STR_DISASTERS_OFF                                               :Inactiv
 STR_DISASTERS_ON                                                :Activ
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :Ostilă
@@ -1092,6 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
 STR_CONFIG_SETTING_ON                                           :Activ
 STR_CONFIG_SETTING_DISABLED                                     :dezactivat
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permite construirea pe coastă şi în pantă: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realiste: {ORANGE}{STRING}
@@ -1348,6 +1351,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţ
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenuri
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrii
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritm de rutare pentru trenuri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

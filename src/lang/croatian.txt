@@ -1174,7 +1174,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Isključivo na 
 
 STR_DISASTERS_OFF                                               :Isključeno
 STR_DISASTERS_ON                                                :Uključeno
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Agresivan
@@ -1188,6 +1187,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne
 STR_CONFIG_SETTING_OFF                                          :Isključeno
 STR_CONFIG_SETTING_ON                                           :Uključeno
 STR_CONFIG_SETTING_DISABLED                                     :onemogućeno
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dopusti izgradnju na kosinama i obalama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dopusti modeliranje zemlje ispod građevina, tračnica, itd (autonagib): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dopusti realističnije veličine područja zahvaćanja: {ORANGE}{STRING}
@@ -1444,6 +1447,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutanje
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlakovi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Gradovi
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pronalaženje putanje za vlakove: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

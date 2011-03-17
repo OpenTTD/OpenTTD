@@ -1458,7 +1458,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tylko na końcu
 
 STR_DISASTERS_OFF                                               :Wyłączone
 STR_DISASTERS_ON                                                :Włączone
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
@@ -1472,6 +1471,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ustawien
 STR_CONFIG_SETTING_OFF                                          :wył.
 STR_CONFIG_SETTING_ON                                           :wł.
 STR_CONFIG_SETTING_DISABLED                                     :niedostępne
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Pozwól budować na pochyłym terenie i wybrzeżach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Pozwól na zmiany terenu pod budynkami, torami itp. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Pozwól na bardziej realistyczny zasięg obejmowania: {ORANGE}{STRING}
@@ -1728,6 +1731,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wyznacz
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Pociągi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miasta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Przedsiębiorstwa
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Wytyczanie drogi dla pociągów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

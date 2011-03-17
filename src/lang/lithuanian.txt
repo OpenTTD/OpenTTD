@@ -1145,7 +1145,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tik bėgių pab
 
 STR_DISASTERS_OFF                                               :Išjungta
 STR_DISASTERS_ON                                                :Įjungta
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
 STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
@@ -1159,6 +1158,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtin
 STR_CONFIG_SETTING_OFF                                          :Išjungta
 STR_CONFIG_SETTING_ON                                           :Įjungta
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leisti statyti pastatus pakrantėse ir ant šlaitų: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
@@ -1399,6 +1402,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršru
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traukiniai
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miestai
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gamyklos
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Traukinių maršruto radėjas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

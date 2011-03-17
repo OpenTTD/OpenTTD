@@ -1078,7 +1078,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Um Enn vun der 
 
 STR_DISASTERS_OFF                                               :Aus
 STR_DISASTERS_ON                                                :Un
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Erlaabend
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
@@ -1092,6 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweider
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :Un
 STR_CONFIG_SETTING_DISABLED                                     :ausgeschalt
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Erlaabt d'Bauen op Küsten an op Ofhäng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Erlaabt Landforumung ënnert Gebaier, Stroossen, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Erlaabt méi realistësch Staugréisstplazen: {ORANGE}{STRING}
@@ -1348,6 +1351,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routenp
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Zich
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Stied
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrien
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pfadfinder fir Zich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

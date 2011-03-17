@@ -1093,6 +1093,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
 STR_CONFIG_SETTING_DISABLED                                     :Inactif
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Construction côtière et sur pentes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Terrassement sous les bâtiments, voies, etc. (Autoslope){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Autoriser des zones de desserte plus réalistes{NBSP}: {ORANGE}{STRING}
@@ -1349,6 +1353,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routage
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Villes
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Recherche de chemin des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

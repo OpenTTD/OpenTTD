@@ -1067,7 +1067,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Berre ved linje
 
 STR_DISASTERS_OFF                                               :Av
 STR_DISASTERS_ON                                                :På
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatande
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fiendsleg
@@ -1081,6 +1080,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansert
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :deaktivert
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillet bygging på skråningar og i vasskanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillet landskapsendringar under bygningar, spor o.s.b.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
@@ -1317,6 +1320,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vegfinnar for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

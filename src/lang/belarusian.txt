@@ -1395,7 +1395,6 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Толькi ў 
 
 STR_DISASTERS_OFF                                               :Выключаны
 STR_DISASTERS_ON                                                :Уключаны
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Дазваляючае
 STR_CITY_APPROVAL_TOLERANT                                      :Памяркоўнае
 STR_CITY_APPROVAL_HOSTILE                                       :Варожае
@@ -1409,6 +1408,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашы
 STR_CONFIG_SETTING_OFF                                          :не
 STR_CONFIG_SETTING_ON                                           :так
 STR_CONFIG_SETTING_DISABLED                                     :адключана
+
+
+
+
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Дазволіць будаўніцтва на сьхілах і на беразе: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона пакрыцьця залежыць ад тыпу станцыі: {ORANGE}{STRING}
@@ -1665,6 +1668,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Мар�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Цягнікі
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Населеныя пункты
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Прамысловасць
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Альгарытм пошуку шляху для цягнікоў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
