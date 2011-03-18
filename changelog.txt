@@ -1,3 +1,16 @@
+1.1.0-RC3 (2011-03-18)
+------------------------------------------------------------------------
+- Fix: New game settings were applied to early when starting a game via a heightmap. [FS#4557] (r22259)
+- Fix: Do not resort town, industry and signs list directly in OnInvalidateData(). There might be a scheduled rebuild which needs execution first. So, only set a trigger for resorting [FS#4546] (r22249, r22248, r22247, r22246, r22245, r22244, r22243, r22242, r22241, r22236, r22228, r22227, r22226)
+- Fix: [NewGRF] Object variable 0x48 was not available in callback 0x15C (r22231)
+- Fix: Compilation when compiling with --disable-ai (r22222)
+- Fix: When downloading a file via HTTP failed mid-way and OpenTTD fell back to the old system the partial downloaded amount would be counted twice [FS#4543] (r22208)
+- Fix: The 'center' (for movement) of vehicles is (currently still) always at 4/8th original vehicle length from the front, so trains should stop at the same location regardless of the length of the front engine [FS#4545] (r22206)
+- Fix: Make the base costs for building and demolishing NewObjects also local to the individual NewGRFs (r22204)
+- Fix: Removing a station order could stop when removing first automatic order (r22200)
+- Fix: Invalidate the object build window when using the date cheat (r22193)
+
+
 1.1.0-RC2 (2011-03-04)
 ------------------------------------------------------------------------
 - Fix: Following a vehicle with a very high VehicleID was impossible (r22181)
@@ -98,7 +111,7 @@
 - Fix: The town window would not be invalidated in the scenario editor if the ground changed and thus the required cargos for town growth [FS#4554] (r21929)
 - Fix: Converting an expensive rail type to a cheap one could give more money than removing and rebuilding cost (r21919)
 - Fix: Languages improperly sorted in the 'start server' window [FS#4443] (r21918)
-- Fix: the minimum speed needed for (realistic) acceleration to work properly can sometimes be more than the (temporary) maximum speed causing Clamp to 'fail'. Make sure that the minimum speed always overrules the maximum speed  [FS#4442] (r21916)
+- Fix: The minimum speed needed for (realistic) acceleration to work properly can sometimes be more than the (temporary) maximum speed causing Clamp to 'fail'. Make sure that the minimum speed always overrules the maximum speed [FS#4442] (r21916)
 - Fix: Include the capacity of non-refittable vehicles in the refitted-capacity, if their cargo matches (r21904)
 - Fix: Do not count articulated parts when passing the number of vehicles to refit to the command. That may exceed 8 bits (r21902)
 - Fix: [NoAI] Hide automatic orders from AIs as they have no way of dealing with them (r21900)

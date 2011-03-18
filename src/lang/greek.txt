@@ -1391,7 +1391,6 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Πλέγμα 2x
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Πλέγμα 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :τυχαίο
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Θέση της μπάρας κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Οι πόλεις επιτρέπουν το χτίσιμο ισοπέδων διασταυρώσεων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ιδρύση πολέων στο παιχνίδι: {ORANGE}{STRING}
@@ -1405,6 +1404,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε �
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Θέση της μπάρας κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Αριστερά
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Δεξιά
@@ -1443,6 +1443,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρο�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Τρένα
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Βιομηχανίες
+
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Μέθοδος δρομολόγησης για τρένα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF

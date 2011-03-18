@@ -1076,7 +1076,6 @@ STR_ECONOMY_FLUCTUATING                                         :Fluctuant
 
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :À la fin de la ligne et aux gares
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :À la fin de la ligne seulement
-
 STR_DISASTERS_OFF                                               :Désactivé
 STR_DISASTERS_ON                                                :Activé
 
