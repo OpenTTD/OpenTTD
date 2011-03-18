@@ -15,9 +15,129 @@
 #include "strings_type.h"
 #include "string_type.h"
 
+class StringParameters {
+	StringParameters *parent; ///< If not NULL, this instance references data from this parent instance.
+	uint64 *data;             ///< Array with the actual data.
+	WChar *type;              ///< Array with type information about the data. Can be NULL when no type information is needed. See #StringControlCode.
+
+public:
+	uint offset;              ///< Current offset in the data/type arrays.
+	uint num_param;           ///< Length of the data array.
+
+	/** Create a new StringParameters instance. */
+	StringParameters(uint64 *data, uint num_param, WChar *type) :
+		parent(NULL),
+		data(data),
+		type(type),
+		offset(0),
+		num_param(num_param)
+	{ }
+
+	/** Create a new StringParameters instance. */
+	template <size_t Tnum_param>
+	StringParameters(int64 (&data)[Tnum_param]) :
+		parent(NULL),
+		data((uint64 *)data),
+		type(NULL),
+		offset(0),
+		num_param(Tnum_param)
+	{
+		assert_compile(sizeof(data[0]) == sizeof(uint64));
+	}
+
+	/**
+	 * Create a new StringParameters instance that can reference part of the data of
+	 * the given partent instance.
+	 */
+	StringParameters(StringParameters &parent, uint size) :
+		parent(&parent),
+		data(parent.data + parent.offset),
+		offset(0),
+		num_param(size)
+	{
+		assert(size <= parent.num_param - parent.offset);
+		if (parent.type == NULL) {
+			this->type = NULL;
+		} else {
+			this->type = parent.type + parent.offset;
+		}
+	}
+
+	~StringParameters()
+	{
+		if (this->parent != NULL) {
+			this->parent->offset += this->num_param;
+		}
+	}
+
+	void ClearTypeInformation();
+
+	/**
+	 * Read an int64 from the argument array. The offset is increased
+	 * so the next time GetInt64 is called the next value is read.
+	 */
+	int64 GetInt64(WChar type = 0)
+	{
+		assert(this->offset < this->num_param);
+		if (this->type != NULL) {
+			assert(this->type[this->offset] == 0 || this->type[this->offset] == type);
+			this->type[this->offset] = type;
+		}
+		return this->data[this->offset++];
+	}
+
+	/** Read an int32 from the argument array. @see GetInt64. */
+	int32 GetInt32(WChar type = 0)
+	{
+		return (int32)this->GetInt64(type);
+	}
+
+	void ShiftParameters(uint amount);
+
+	/** Get a pointer to the current element in the data array. */
+	uint64 *GetDataPointer() const
+	{
+		return &this->data[this->offset];
+	}
+
+	/** Get a pointer to a specific element in the data array. */
+	uint64 *GetPointerToOffset(uint offset) const
+	{
+		assert(offset < this->num_param);
+		return &this->data[offset];
+	}
+
+	/** Does this instance store information about the type of the parameters. */
+	bool HasTypeInformation() const
+	{
+		return this->type != NULL;
+	}
+
+	/** Get the type of a specific element. */
+	WChar GetTypeAtOffset(uint offset) const
+	{
+		assert(offset < this->num_param);
+		assert(this->HasTypeInformation());
+		return this->type[offset];
+	}
+
+	void SetParam(uint n, uint64 v)
+	{
+		assert(n < this->num_param);
+		this->data[n] = v;
+	}
+
+	uint64 GetParam(uint n) const
+	{
+		assert(n < this->num_param);
+		return this->data[n];
+	}
+};
+extern StringParameters _global_string_params;
+
 char *InlineString(char *buf, StringID string);
 char *GetString(char *buffr, StringID string, const char *last);
-char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const int64 *argve, const char *last, WChar *argt = NULL);
+char *GetStringWithArgs(char *buffr, uint string, StringParameters *args, const char *last);
 const char *GetStringPtr(StringID string);
 
 void InjectDParam(uint amount);
@@ -40,13 +160,13 @@ static inline void SetDParamX(uint64 *s, uint n, uint64 v)
  */
 static inline void SetDParam(uint n, uint64 v)
 {
-	extern uint64 _decode_parameters[20];
-
-	assert(n < lengthof(_decode_parameters));
-	_decode_parameters[n] = v;
+	_global_string_params.SetParam(n, v);
 }
 
 void SetDParamStr(uint n, const char *str);
+
+void CopyInDParam(int offs, const uint64 *src, int num);
+void CopyOutDParam(uint64 *dst, int offs, int num);
 
 /**
  * Get the current string parameter at index \a n from parameter array \a s.
@@ -66,34 +186,7 @@ static inline uint64 GetDParamX(const uint64 *s, uint n)
  */
 static inline uint64 GetDParam(uint n)
 {
-	extern uint64 _decode_parameters[20];
-
-	assert(n < lengthof(_decode_parameters));
-	return _decode_parameters[n];
-}
-
-/**
- * Copy \a num string parameters from array \a src into the global string parameter array.
- * @param offs Index in the global array to copy the first string parameter to.
- * @param src  Source array of string parameters.
- * @param num  Number of string parameters to copy.
- */
-static inline void CopyInDParam(int offs, const uint64 *src, int num)
-{
-	extern uint64 _decode_parameters[20];
-	memcpy(_decode_parameters + offs, src, sizeof(uint64) * (num));
-}
-
-/**
- * Copy \a num string parameters from the global string parameter array to the \a dst array.
- * @param dst  Destination array of string parameters.
- * @param offs Index in the global array to copy the first string parameter from.
- * @param num  Number of string parameters to copy.
- */
-static inline void CopyOutDParam(uint64 *dst, int offs, int num)
-{
-	extern uint64 _decode_parameters[20];
-	memcpy(dst, _decode_parameters + offs, sizeof(uint64) * (num));
+	return _global_string_params.GetParam(n);
 }
 
 extern TextDirection _current_text_dir; ///< Text direction of the currently selected language

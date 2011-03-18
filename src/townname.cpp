@@ -49,8 +49,9 @@ TownNameParams::TownNameParams(const Town *t) :
 char *GetTownName(char *buff, const TownNameParams *par, uint32 townnameparts, const char *last)
 {
 	if (par->grfid == 0) {
-		int64 args[1] = { townnameparts };
-		return GetStringWithArgs(buff, par->type, args, endof(args), last);
+		int64 args_array[1] = { townnameparts };
+		StringParameters tmp_params(args_array);
+		return GetStringWithArgs(buff, par->type, &tmp_params, last);
 	}
 
 	return GRFTownNameGenerate(buff, par->grfid, par->type, townnameparts, last);
