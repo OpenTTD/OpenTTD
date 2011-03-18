@@ -603,8 +603,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 
 			case GLAND_GENERATE_BUTTON: // Generate
-				MakeNewgameSettingsLive();
-
 				if (mode == GLWM_HEIGHTMAP &&
 						(this->x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
 						this->x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
