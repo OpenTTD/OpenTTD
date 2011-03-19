@@ -445,9 +445,9 @@ you remove the graphics file using "make maintainer-clean".
 The following compilers are known to compile OpenTTD:
   - Microsoft Visual C++ (MSVC) 2005, 2008 and 2010.
     Version 2005 gives bogus warnings about scoping issues.
-  - GNU Compiler Collection (GCC) 3.3 - 4.6.
+  - GNU Compiler Collection (GCC) 3.3 - 4.7.
     Versions 4.1 and earlier give bogus warnings about uninitialised variables.
-    Versions 4.4 and later give bogus warnings about freeing heap objects.
+    Versions 4.4 and later give bogus warnings about freeing non-heap objects.
   - Intel C++ Compiler (ICC) 12.0.
 
 The following compilers are known not to compile OpenTTD:
