@@ -707,7 +707,7 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Afişeaz
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nu afişa nicio industrie pe hartă
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Afişează toate industriile pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Comută afişarea hărţii de înălţimi
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nu se afiseaza proprietățile companiilor pe hartă
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nu se afisează proprietățile companiilor pe hartă
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Afișează toate proprietățile companiei pe hartă
 
 # Status bar messages
@@ -1106,7 +1106,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permite
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realiste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Lungimea maximă a trenurilor: {ORANGE}{STRING} dale{P 0:1 "" s}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Lungimea maximă a trenurilor: {ORANGE}{STRING} dal{P 0:1 ă e}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Cantitatea de fum/ scântei ale locomotivei: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelul de acceleraţie al trenurilor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelul de acceleraţie pentru vehiculele rutiere: {ORANGE}{STRING}
@@ -1118,8 +1118,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Folose�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Încarcă vehiculele gradual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflaţia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Livrează marfa doar în staţiile unde aceasta este cerută: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Lungimea maximă a podurilor: {ORANGE}{STRING} dale{P 0:1 "" s}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Lungimea maximă a tunelurilor: {ORANGE}{STRING} dale{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Lungimea maximă a podurilor: {ORANGE}{STRING} dal{P 0:1 ă e}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Lungimea maximă a tunelurilor: {ORANGE}{STRING} dal{P 0:1 ă e}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metoda manuală de construcţie a industriilor primare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
@@ -1164,7 +1164,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Înnoir
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automată cu {ORANGE}{STRING}{LTBLUE} luni înainte de/după atingerea vechimii maxime
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Fonduri minime pentru înnoire automată: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata mesajelor de eroare: {ORANGE}{STRING} secunde
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Arată textele informative: {ORANGE}Tine cursorul pe element pentru {STRING} secunde{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Arată textele informative: {ORANGE}Ţine cursorul pe element pentru {STRING} secund{P 0:1 ă e}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Arată textele informative: {ORANGE}Click dreapta
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afişează populaţia unui oras lângă nume: {ORANGE}{STRING}
 
@@ -2583,7 +2583,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE} - nici una -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subvenţii acordate la ora actuală:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRING} de la {STRING} la {STRING}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe serviciu pentru a centra imaginea pe industrie/oras. Ctrl+Click deshide o fereastra cu locaţia industriei/oraşului
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe serviciu pentru a centra imaginea pe industrie/oraş. Ctrl+Click deshide o fereastră cu locaţia industriei/oraşului
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Numele staţiilor - clic pe un nume pentru a centra imaginea pe staţia respectivă. Ctrl+Click deshide o fereastra cu locaţia staţiei
@@ -2690,7 +2690,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vezi sediul
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vezi sediul companiei
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mută sediu
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Mută sediul companiei (costa 1% din valoarea companiei). Shift+Click arată estimarea de cost fără a muta sediul companiei
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Mută sediul companiei (costă 1% din valoarea companiei). Shift+Click arată estimarea de cost fără a muta sediul companiei
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Schimbă poza
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Alege o nouă poză a preşedintelui
@@ -2839,8 +2839,8 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Cumpăr�
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Cumpără vehiculul feroviar selectat. Shift+Click arată costul estimat fără să cumpere vehiculul
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Cumpără autovehiculul selectat. Shift+Click arată costul estimat fără să cumpere autovehiculul
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Cumpără nava selectată. Shift+Click arată costul estimativ fără a efectua achizitia
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Cumpără aeronava selectată. Shift+Click arată costul estimativ fără a efectua achizitia
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Cumpără nava selectată. Shift+Click arată costul estimativ fără a efectua achiziţia
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Cumpără aeronava selectată. Shift+Click arată costul estimativ fără a efectua achiziţia
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Nume nou
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Nume nou
@@ -2905,10 +2905,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonare 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonare navă
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonare aeronavă
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acest buton va crea o copie a trenului, cu tot cu vagoane. Apasă acest buton, apoi fă click pe un tren din interiorul sau exteriorul depoului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achizitia
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi fă click pe un autovehicul din interiorul sau afara depoului. Ctrl+click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achizitia
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi fă click pe o navă din interiorul sau exteriorul depoului. Ctrl+click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achizitia
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi fă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+Clic va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achizitia
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acest buton va crea o copie a trenului, cu tot cu vagoane. Apasă acest buton, apoi fă click pe un tren din interiorul sau exteriorul depoului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi fă click pe un autovehicul din interiorul sau afara depoului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi fă click pe o navă din interiorul sau exteriorul depoului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi fă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+Click va sincroniza comenzile. Shift+Click arată costul estimativ fără a efectua achiziţia
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrează imaginea pe locaţia depoului. Ctrl+Click deshide o fereastra cu locaţia depoului
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia acestei autobaze. Ctrl+Click deshide o fereastra cu locaţia autobazei
@@ -2977,7 +2977,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicule Monora
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicule Pernă Magnetică
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã) dacã înlocuirea locomotivei ar face trenul mai lung.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă optiunea de autoînlocuire să păstreze identică lungimea unui tren prin eliminarea vagoanelor (începând din faţă) dacă înlocuirea locomotivei ar face trenul mai lung
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3206,7 +3206,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Du-te la cel ma
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel mai apropiat hangar
 STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
 STR_ORDER_SHARE                                                 :Sincronizează ordinele
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'. 'Sincronizarea ordinelor' sau Ctrl permite acestui vehicul sa isi sincronizeze ordinele cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'. 'Sincronizarea ordinelor' sau Ctrl permite acestui vehicul să îşi sincronizeze ordinele cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Adaugă o comandă avansată
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Arata toate vehiculele care se incadreaza in acest program

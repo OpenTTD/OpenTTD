@@ -1893,8 +1893,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Fornecim
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Juntar estação
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construir uma estação separada
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Juntar ponto de passagem
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir um ponto de passagem separado
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Juntar ponto de controlo
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir um ponto de controlo separado
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construir caminhos-de-ferro
@@ -1905,7 +1905,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir MagLe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl alterna a construção/remoção de linha férrea. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl alterna a construção/remoção de caminhos-de-ferro. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios). Shift alterna contruir/mostrar custo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de passagem. Ctrl permite juntar pontos de passagem. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de controlo. Ctrl permite juntar pontos de controlo. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna entre s. clássicos/luminosos{}Arrastar constrói sinais numa linha de caminho-de-ferro. Ctrl constrói sinais até a próxima junção{}Ctrl+Clique alterna entre abrir a janela de selecção de sinais. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna contruir/mostrar custo estimado
@@ -1918,8 +1918,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orienta�
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccionar a orientação do depósito
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Ponto de passagem
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Seleccione um tipo de ponto de passagem
+STR_WAYPOINT_CAPTION                                            :{WHITE}Ponto de controlo
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Seleccione um tipo de ponto de controlo
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Selecção de Estação
@@ -2228,7 +2228,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Área de carreg
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Estação de autocarros
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Doca
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Bóia
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Ponto de passagem
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Ponto de controlo
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Água
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
@@ -2635,12 +2635,12 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Alterar nome de
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar visualização na localização do ponto de passagem. Ctrl+Clique abre um novo visualizador na localização do ponto de passagem
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mudar o nome do ponto de passagem
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar visualização na localização do ponto de controlo. Ctrl+Clique abre um novo visualizador na localização do ponto de controlo
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mudar o nome do ponto de controlo
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visualização na localização da bóia. Ctrl+Clique abre um novo visualizador na localização da bóia
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Mudar o nome da bóia
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de passagem
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controlo
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Finanças de {COMPANY} {BLACK}{COMPANYNUM}
@@ -3563,15 +3563,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Deverá 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Precisa de demolir o aeroporto primeiro
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Junta mais do que um ponto de passagem existente
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado perto de outro ponto de passagem
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Junta mais do que um ponto de controlo existente
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado perto de outro ponto de controlo
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Não é possível construir ponto de passagem de comboio aqui...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Não é possível construir ponto de controlo de comboio aqui...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Não é possível posicionar bóia aqui...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Não é possível alterar o nome do ponto de passagem...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Não é possível alterar o nome do ponto de controlo...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Não é possível remover ponto de passagem de comboio aqui...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}É preciso remover o ponto de passagem primeiro
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Não é possível remover ponto de controlo de comboio aqui...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}É preciso remover o ponto de controlo primeiro
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bóia no caminho
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso por outra empresa!
 
@@ -3848,7 +3848,7 @@ STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fábrica d
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=fp}Fontes de Plástico
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fábrica de Bebidas Gasosas
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Produtor de Bolhas
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Extracção de Caramelo
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Exploração de Caramelo
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de Açúcar
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -4162,8 +4162,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :Bóia de {TOWN}
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :Ponto de passagem {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Ponto de passagem {TOWN}#{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Ponto de controlo {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Ponto de controlo {TOWN}#{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de Comboios de {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de Comboios de {TOWN} #{COMMA}
