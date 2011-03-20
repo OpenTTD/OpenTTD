@@ -1181,7 +1181,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leisti 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Ilgiausi traukiniai: {ORANGE}{STRING} kvadratėl{P 0:1 is iai}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Ilgiausi traukiniai: {ORANGE}{STRING} kvadratėl{P 0:1 is iai ių}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Traukinių įsibėgėjimo nustatymas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Automobilių greitėjimo modelis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Atbrailų statumas traukiniams {ORANGE}{STRING}%
@@ -1192,8 +1192,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Naudoti
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Pakrauti tr. priemones paeiliui: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Infliacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Pristatyti krovinį stotelei tiktai tuomet, kai yra poreikis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Ilgiausias tiltas: {ORANGE}{STRING} kvadratėl{P 0:1 is iai}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Ilgiausias tunelis: {ORANGE}{STRING} kvadratėl{P 0:1 is isi}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Ilgiausias tiltas: {ORANGE}{STRING} kvadratėl{P 0:1 is iai ių}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Ilgiausias tunelis: {ORANGE}{STRING} kvadratėl{P 0:1 is isi ių}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Pagrindinis pramonės statymo būdas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
