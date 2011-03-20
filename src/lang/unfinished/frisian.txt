@@ -1098,6 +1098,9 @@ STR_CONFIG_SETTING_NONE                                         :Gjin
 STR_CONFIG_SETTING_ORIGINAL                                     :Orizjiniel
 STR_CONFIG_SETTING_REALISTIC                                    :Realistysk
 
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lofts
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rjochts
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}It boue op in helling tastean: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean (autoslope): {ORANGE}{STRING}
@@ -1118,7 +1121,7 @@ STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Bringst
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimale brêge hichte: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimale tunnel lingte: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Mei de hân te betsjinjen boumetoade foar primêre yndustryen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Gjint
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Gjin
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :lyk as oare yndustryen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :probearje
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Meitsje Lân om de yndustry hinne flak: {ORANGE}{STRING} tile{P 0:1 "" s}
@@ -1173,11 +1176,13 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Snie hi
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rûgens fan it terrein (allinich TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :O sa glêd
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glêd
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rûch
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :O sa rûch
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algoritme foar pleatsing beamen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Gjint
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Orizjineel
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Ferbettere
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap rotaasje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tsjin de klok yn
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Mei de klok mei
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}De hichte fan in plat senario wurdt: {ORANGE}{STRING}
@@ -1243,18 +1248,80 @@ STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maksimu
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maksimum oantal fleanmasines per bedriuw: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maksimum oantal skepen per bedriuw: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Treinen foar de kompjûter utskeakelje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Ferbied treinen foar computerspiler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Ferbied auto's foar computerspiler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Ferbied Fleantúg foar computerspiler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Ferbied skippen foar computerspiler: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Stea AIs ta yn multiplayer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes Foardat AI Slúten wurdt: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}reperaasje skemas binne yn procenten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standaard skema foar ûnderhald treinen: {ORANGE}{STRING} dei{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Reperaasje skemas foar treinen: {ORANGE}útskeakele
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standaard skema foar ûnderhald auto's: {ORANGE}{STRING} dei{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standaard skema foar ûnderhald auto's: {ORANGE}útskeakele
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standaard skema foar ûnderhald Fleantúg: {ORANGE}{STRING} dei{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standaard skema foar ûnderhald fleantúg: {ORANGE}útskeakele
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standaard skema foar ûnderhald skippen: {ORANGE}{STRING} dei{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standaard skema foar ûnderhald skippen: {ORANGE}útskeakele
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Gjin ûnderhald as stikken gean út steat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Wagon snelheids limiet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}skeakelje elektryske spoaren út: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Krante verskient yn kleur yn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Begjin jier: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jou de ekonomy mear lytse veroarings: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Stea it keapjen fan oandielen ta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentage winst wat oerbliuwt nei oerslach: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}By it slepen set yn sein eltse: {ORANGE}{STRING} vlakken{P 0:1 "" s}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bou semafoor seinen foar it jier: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Brûk sein wurkbalk: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Type sein dat standaard boud wurdt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :blok seinen
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :route seinen
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :ien rjochting seinen
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Gea langs alle sein soarten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :blok seinen allinech
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :route seinen allinech
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allegear
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Manier fan dyken bouen foar doarpen en stêden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :orisjineel
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bettere dyken
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Soksawat
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Doarpen en stêden meie dyken boue: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Stêden meie spoaroergongen boue: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Wetten oer maximale lûdesdruk foar fleanfjilden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Yn stêd boue meie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ferbean
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tastean
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tastean, oanpast strittenpatroan
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Bouen fan beamen yn it spul: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :gjin {RED}(brekt houtseachmûne)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :allinech in reinwâld
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :oerol
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plak fan de haad wurkbalk: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posysje fan statusbar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximum oantal non-sticky finsters: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximum oantal non-sticky finsters: {ORANGE}ferbean
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Tempo fan stêdsútwreiding: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :gjin
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :langsaam
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :gewoan
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :snel
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Hiel snel
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Oantal doarpen dat yn stêd wurde sil: {ORANGE}1 op {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oantal doarpen dat yn stêd wurde sil: {ORANGE}Gjin
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 
+STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
+STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 
 
 
@@ -1566,7 +1633,7 @@ STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Buis, Stiel
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Wegenbou
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bou wei
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bou autodepot (om auto's te bouen en te únderhâlden
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bou autodepot (om auto's te bouen en te únderhâlden)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bou busstasjon
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bou laadstasjon foar frachtauto's
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bou autobrêge
@@ -1854,7 +1921,7 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gea ny f
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warskôging: {SILVER}{STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} makke om te brûken tegeare my{STRING}
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tevolle NewGRF binne laden
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tevolle NewGRF's binne laden
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Warskôging!

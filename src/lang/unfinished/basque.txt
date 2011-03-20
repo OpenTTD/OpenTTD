@@ -704,6 +704,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Dena gai
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Altuera erakutsi
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ez erakutsi industriarik mapan
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Erakutsi industria guztiak mapan
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ez erakutsi konpainiaren jabetzak mapan.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Erakutsi konpaniaren propietate denak mapan
 
 # Status bar messages
@@ -1019,6 +1020,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Udaletx
 
 STR_NONE                                                        :Ezer ez
 STR_FUNDING_ONLY                                                :Finantzazioa bakarrik
+STR_MINIMAL                                                     :Gutxienekoa
 STR_NUM_VERY_LOW                                                :Oso baxua
 STR_NUM_LOW                                                     :Baxua
 STR_NUM_NORMAL                                                  :Normala
@@ -1133,12 +1135,14 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Abisatu ibilgailu bat galduta badagoen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ez
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :bai, baina geldi dauden garraioak baztertu
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :garraio guztiena
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Erakutsi tresnei buruzko argibideak: {ORANGE}Pasatu sagua {STRING} segundu{P 0:1 "" ak}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Erakutsi tresnei buruzko argibideak: {ORANGE}Eskuineko Click
 
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Lur sortzailea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
@@ -1222,6 +1226,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Erakuts
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakzioa
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinaleak
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoberritzea
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
@@ -1764,7 +1769,9 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARG
 
 
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Eskari guztiak ezabatu
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Gelditu konpartitzen
 
+STR_ORDER_SHARE                                                 :Aginduak konpartitu
 
 
 # String parts to build the order string
@@ -1944,6 +1951,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garr
 
 # Order related errors
 
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Ezin da gelditu aginduen zerrenda konpartitzen...
 
 # Timetable related errors
 
