@@ -136,7 +136,6 @@ struct BuildDocksToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		this->last_clicked_widget = (DockToolbarWidgets)widget;
 		switch (widget) {
 			case DTW_CANAL: // Build canal button
 				HandlePlacePushButton(this, DTW_CANAL, SPR_CURSOR_CANAL, HT_RECT);
@@ -174,8 +173,9 @@ struct BuildDocksToolbarWindow : Window {
 				HandlePlacePushButton(this, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_SPECIAL);
 				break;
 
-			default: break;
+			default: return;
 		}
+		this->last_clicked_widget = (DockToolbarWidgets)widget;
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
