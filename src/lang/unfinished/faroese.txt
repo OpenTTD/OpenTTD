@@ -22,6 +22,8 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(undefined string)
+STR_JUST_NOTHING                                                :Einki
 
 # Cargo related strings
 # Plural cargo name
@@ -30,6 +32,9 @@ STR_CARGO_PLURAL_PASSENGERS                                     :Ferðafólk
 STR_CARGO_PLURAL_COAL                                           :Kol
 STR_CARGO_PLURAL_MAIL                                           :Postur
 STR_CARGO_PLURAL_OIL                                            :Olja
+STR_CARGO_PLURAL_LIVESTOCK                                      :Kríatúr
+STR_CARGO_PLURAL_GOODS                                          :Góðs
+STR_CARGO_PLURAL_GRAIN                                          :Korn
 STR_CARGO_PLURAL_WOOD                                           :Viður
 STR_CARGO_PLURAL_IRON_ORE                                       :Jarn Málmur
 STR_CARGO_PLURAL_STEEL                                          :Stál
@@ -48,6 +53,7 @@ STR_CARGO_PLURAL_SUGAR                                          :Sukur
 STR_CARGO_PLURAL_TOYS                                           :Leikur
 STR_CARGO_PLURAL_CANDY                                          :Góðgæti
 STR_CARGO_PLURAL_COLA                                           :Kola
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandifloss
 STR_CARGO_PLURAL_BUBBLES                                        :Bobblur
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Sodavatn
@@ -58,7 +64,9 @@ STR_CARGO_SINGULAR_PASSENGER                                    :Ferðafólk
 STR_CARGO_SINGULAR_COAL                                         :Kol
 STR_CARGO_SINGULAR_MAIL                                         :Postur
 STR_CARGO_SINGULAR_OIL                                          :Olja
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Kríatúr
 STR_CARGO_SINGULAR_GOODS                                        :Góðs
+STR_CARGO_SINGULAR_GRAIN                                        :Korn
 STR_CARGO_SINGULAR_WOOD                                         :Viður
 STR_CARGO_SINGULAR_IRON_ORE                                     :Jarn Málm
 STR_CARGO_SINGULAR_STEEL                                        :Stál
@@ -77,6 +85,7 @@ STR_CARGO_SINGULAR_SUGAR                                        :Sukur
 STR_CARGO_SINGULAR_TOY                                          :Leika
 STR_CARGO_SINGULAR_CANDY                                        :Góðgæti
 STR_CARGO_SINGULAR_COLA                                         :Kola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandifloss
 STR_CARGO_SINGULAR_BUBBLE                                       :Bobbla
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sodavatn
@@ -88,6 +97,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT} av kol
 STR_QUANTITY_MAIL                                               :{COMMA} sekk{P "" ir} av posti
 STR_QUANTITY_OIL                                                :{VOLUME} av olju
 STR_QUANTITY_GOODS                                              :{COMMA} kassa{P "" r} av góðsi
+STR_QUANTITY_GRAIN                                              :{WEIGHT} av korni
 STR_QUANTITY_WOOD                                               :{WEIGHT} av viði
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} av jarn málmi
 STR_QUANTITY_STEEL                                              :{WEIGHT} av stáli
@@ -103,38 +113,159 @@ STR_QUANTITY_WATER                                              :{VOLUME} av vat
 STR_QUANTITY_WHEAT                                              :{WEIGHT} av hveiti
 STR_QUANTITY_RUBBER                                             :{VOLUME} av gummi
 STR_QUANTITY_SUGAR                                              :{WEIGHT} av sukri
+STR_QUANTITY_TOYS                                               :{COMMA} leik{P a ur}
+STR_QUANTITY_SWEETS                                             :{COMMA} sekk{P "" ir} av góðgæti
+STR_QUANTITY_COLA                                               :{VOLUME} av kola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} av kandifloss
+STR_QUANTITY_BUBBLES                                            :{COMMA} sápiblør{P a ir}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} av plastikk
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sodavatn
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}FF
+STR_ABBREV_COAL                                                 :{TINYFONT}KL
+STR_ABBREV_MAIL                                                 :{TINYFONT}PS
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}KÚ
+STR_ABBREV_GOODS                                                :{TINYFONT}GS
+STR_ABBREV_GRAIN                                                :{TINYFONT}KN
+STR_ABBREV_WOOD                                                 :{TINYFONT}VI
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ML
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KM
+STR_ABBREV_MAIZE                                                :{TINYFONT}MS
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}MT
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}GL
+STR_ABBREV_WATER                                                :{TINYFONT}VN
+STR_ABBREV_WHEAT                                                :{TINYFONT}HV
+STR_ABBREV_RUBBER                                               :{TINYFONT}GM
+STR_ABBREV_SUGAR                                                :{TINYFONT}SK
+STR_ABBREV_TOYS                                                 :{TINYFONT}LK
+STR_ABBREV_SWEETS                                               :{TINYFONT}SL
+STR_ABBREV_COLA                                                 :{TINYFONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}KF
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SV
+STR_ABBREV_NONE                                                 :{TINYFONT}EI
+STR_ABBREV_ALL                                                  :{TINYFONT}ALT
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :{COMMA} ferðafólk
+STR_BAGS                                                        :{COMMA} sekk{P "" ir}
+STR_TONS                                                        :{COMMA} ton{P "" s}
+STR_LITERS                                                      :{COMMA} lit{P ur rar}
+STR_CRATES                                                      :{COMMA} kassa{P "" r}
 
 # Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :Myrka Blátt
+STR_COLOUR_PALE_GREEN                                           :Bleikt Grønt
+STR_COLOUR_PINK                                                 :Ljósareytt
+STR_COLOUR_YELLOW                                               :Gult
+STR_COLOUR_RED                                                  :Reytt
+STR_COLOUR_LIGHT_BLUE                                           :Ljósa Blátt
+STR_COLOUR_GREEN                                                :Grønt
+STR_COLOUR_DARK_GREEN                                           :Myrka Grønt
+STR_COLOUR_BLUE                                                 :Blátt
+STR_COLOUR_CREAM                                                :Krem
+STR_COLOUR_MAUVE                                                :Mauve
+STR_COLOUR_PURPLE                                               :Lilla
+STR_COLOUR_ORANGE                                               :Appelsingult
+STR_COLOUR_BROWN                                                :Brúnt
+STR_COLOUR_GREY                                                 :Grátt
+STR_COLOUR_WHITE                                                :Hvítt
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/t
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tons
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P ur rar}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 
+STR_BUTTON_LOCATION                                             :{BLACK}Stað
+STR_BUTTON_RENAME                                               :{BLACK}Endurdoyp
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lat glugga aftur
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Glugga heiti - drag her fyri at fyta glugga
+STR_TOOLTIP_SHADE                                               :{BLACK}Skugga gluggi - vís einans heitis bjálkan
+STR_TOOLTIP_DEBUG                                               :{BLACK}Vís NewGRF debug kunning
+STR_TOOLTIP_RESIZE                                              :{BLACK}Týst og drag fyri at broyta støddina á hesum glugganum
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skift millum stóran/lítlan glugga
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skriðu bjálki - drag listan upp/niður
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skriðu bjálki - drag listan til vinstru/høgru
 
 # Query window
+STR_BUTTON_CANCEL                                               :{BLACK}Angra
+STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Longd: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Øki: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longd: {NUM}{}Hæddar munur: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Øki: {NUM} x {NUM}{}Hæddar munur: {HEIGHT}
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Fólkatal
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Navn
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Fólkatali
+STR_SORT_BY_NAME                                                :Navni
+STR_SORT_BY_PRODUCTION                                          :Framleiðslu
+STR_SORT_BY_TYPE                                                :Slagi
+STR_SORT_BY_TRANSPORTED                                         :Flutt
+STR_SORT_BY_NUMBER                                              :Tali
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Vinningi síðsta ár
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Vinningi hetta ári
+STR_SORT_BY_AGE                                                 :Aldur
+STR_SORT_BY_VALUE                                               :Virði
+STR_SORT_BY_LENGTH                                              :Longd
+STR_SORT_BY_FACILITY                                            :Støð slagi
+STR_SORT_BY_COST                                                :Kostnaði
+STR_SORT_BY_POWER                                               :Megi
+STR_SORT_BY_RUNNING_COST                                        :Raktstrar kostnaði
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Megi/Rakstrar kostnaði
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Steðga spælinum
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Skunda undir spæli
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Møguleikar
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vís bygdar lista
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vís felagsins fíggjarligu støðu
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vís felagsins støðu
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vís grafar
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vís støðuna millum feløgini
 
 # Extra tooltips for the scenario editor toolbar
 
@@ -272,19 +403,75 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK
 
 
 # Extra view window
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Set staðið í hesum glugganum inn í høvuðsgluggan
 
 # Game options window
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spælið Møguleikar
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldsoyra eindir
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Úrval av gjaldsoyra eindum
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Eysturríkskan Shilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiskan Frank (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveisiskan Frank (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjekkisk Koruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danskar Krónir (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finskan Mark (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frankar (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grikkskan Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarskan Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Íslenska Krónu (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italskan Lira (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Niðurlendskan Gillin (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norskar Krónur (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polskan Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumeniskan Leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russiskar Rublar (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenskar Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svenskar Krónur (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkiskan Lira (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiska Koruna (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilskan Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniska Krooni (EEK)
 ############ end of currency region
 
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Máti eindir
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Úrval av máti eindum
 
 ############ start of measuring units region
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperial
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metric
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Akfør
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Áset hvørja síðu á vegnum akfør skulu koyra á
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstrakoyring
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrakoyring
 
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bygdar nøvn
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Áset slag av bygdar nøvnum
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ensk (Original)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Fronsk
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Týsk
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ensk (Additional)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikonsk
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fjákut
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svensk
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Niðurlendsk
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finsk
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polsk
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakisk
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norsk
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
 ############ end of townname region
 
 

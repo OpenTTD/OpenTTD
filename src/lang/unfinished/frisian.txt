@@ -1319,11 +1319,33 @@ STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Oantal 
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oantal doarpen dat yn stêd wurde sil: {ORANGE}Gjin
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}konstruksje
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Auto's
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjons
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomy
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Lit moglikheden sjen
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Fracht ôfhanneling
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatysk fernije
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Ûnderhâld
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treinen
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Stêd
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}yndustryen
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder foar treinen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pathfinder foar auto's: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder foar skippen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :orisjineel {BLUE}(Recommended)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Omkeare fan treinen by seinen: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}veroarje wearde
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1397,6 +1419,12 @@ STR_FACE_FEMALE_BUTTON                                          :{BLACK}Frou
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Selektear froulike gesichten
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nei Gesicht
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Meistje willekeurich nij gesicht
+STR_FACE_NO                                                     :#
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Snorren en earbellen
+STR_FACE_HAIR                                                   :Hier:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Veroarje hier
+STR_FACE_EYECOLOUR                                              :Kleur eagen:
+STR_FACE_GLASSES                                                :Bril:
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ferbining:
@@ -2523,6 +2551,7 @@ STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... dêr
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kin hjir gjin kanaal boue...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kin hjir gjin slûs boue...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kin hjir gjin rivier pleatse
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... moat bout wurde op it wetter
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Kin net op it wetter bouwe
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanaal moat earst fuorthelle wurde
@@ -2537,6 +2566,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kin hjir
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kin hjir gjin brêge boue...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Brêge moat earst fuorthelle wurde
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Begjin en ein kin net op itselde plak wêze
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Útein fan de brêge is net op deselde hichte
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begjin en ein moatte op ien lijn wêze
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... beide úteinden fan'e brêge moatte op lân lizze
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brêge te lang
@@ -2567,6 +2597,7 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Auto yn 
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Skip yn it paad
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fleantúg yn it paad
 
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kin auto net ombouwe
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kin skip net oanpasse
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}kin fleantúg net veroarje
 
@@ -2611,8 +2642,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kin tiid
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... wein verneatige
 
 # Specific vehicle errors
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kin rydrjochting fan de trein net oanpasse
 STR_ERROR_TRAIN_START_NO_CATENARY                               :sûnder boppelieding kin de trein net ride
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Wein kin net omkeare
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Fleantúg is oan it fleanen
 
@@ -2626,11 +2659,18 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kin dizz
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kin disse opdracht net oerslaan...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kin de selektjere opdracht net oerslaan...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... wein kin net alle stasjons berikke
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... auto kin net op it stasjon komme
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ien fan de dielde autos kin net op dat stasjon komme
 
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kin bestimmingen net diele
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kin net stopje my dielde bestimmingen
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kin bestimming net oernimme
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te fier fan lêste bestimming
 
 # Timetable related errors
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kin gjin tsjinst meitsje
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Auto's kinne allinech op stations wachtsje
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Disse auto kin net stoppe op dit stasjon
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te folle buordsjes
