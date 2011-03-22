@@ -782,11 +782,11 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						break;
 					}
 
-					default:
-						/* Skip a single entry */
-						args->GetInt64();
+					default: {
+						StringParameters tmp_params(*args, 1);
 						buff = GetStringWithArgs(buff, cargo_str, args, last);
 						break;
+					}
 				}
 				break;
 			}
