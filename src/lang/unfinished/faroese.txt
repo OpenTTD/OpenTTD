@@ -249,6 +249,8 @@ STR_SORT_BY_NUMBER                                              :Tali
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Vinningi síðsta ár
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Vinningi hetta ári
 STR_SORT_BY_AGE                                                 :Aldur
+STR_SORT_BY_MAX_SPEED                                           :Hægstu fer
+STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Virði
 STR_SORT_BY_LENGTH                                              :Longd
 STR_SORT_BY_FACILITY                                            :Støð slagi
@@ -261,11 +263,18 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Megi/Rakstrar k
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Steðga spælinum
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Skunda undir spæli
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Møguleikar
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Goym spælið, far frá spælið, gevst
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vís kort, eyka glugga ella lista yvir skelti
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vís bygdar lista
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vís lista yvir støðir hjá felagnum
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vís felagsins fíggjarligu støðu
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vís felagsins støðu
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vís grafar
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vís støðuna millum feløgini
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fíggja bygging av nýggjum ídnaði ella vís lista yvir allan ídnað
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vís lista yvir tok hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis lista yvir akfør hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vís lista yvir skip hjá felagnum. Ctrl+Klikk skiftur ímillum bólk/akfar listan
 
 # Extra tooltips for the scenario editor toolbar
 

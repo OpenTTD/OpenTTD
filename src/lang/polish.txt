@@ -2353,7 +2353,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cylindryczny, k
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Tworzenie dróg
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Budowa dróg
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Budowa torowiska tramwajowego
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Zbuduj drogę. Ctrl przełącza buduj/usuń dla konstrukcji drogowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Zbuduj torowisko tramwajowe. Ctrl przełącza buduj/usuń dla konstrukcji tramwajowych. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
@@ -3536,7 +3536,7 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień z
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek któregoś z towarów
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pelny zaladunek wszystkiego
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pełny załadunek wszystkiego
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pełny załadunek któregoś z towarów
 STR_ORDER_DROP_NO_LOADING                                       :Nie ładować
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień zachowanie załadunku podświetlonego rozkazu
