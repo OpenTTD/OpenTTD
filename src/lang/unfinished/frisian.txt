@@ -1317,6 +1317,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Hiel snel
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Oantal doarpen dat yn stêd wurde sil: {ORANGE}1 op {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oantal doarpen dat yn stêd wurde sil: {ORANGE}Gjin
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Helje frjemde stikken dyk fourt by it bouen fan nije routes: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}konstruksje
@@ -1359,6 +1360,8 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispi
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spul Opsjes
 STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikhyd ({STRING})
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF ynstellings
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI ynstellings
 STR_INTRO_QUIT                                                  :{BLACK}Ôfslúte
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begjin in nei spul. Ctrl + klik slaat kaartynstelling oer
