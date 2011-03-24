@@ -1317,6 +1317,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Hiel snel
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Oantal doarpen dat yn stêd wurde sil: {ORANGE}1 op {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oantal doarpen dat yn stêd wurde sil: {ORANGE}Gjin
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Begjin stêdgrutte fermenigfuldiger: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Helje frjemde stikken dyk fourt by it bouen fan nije routes: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
@@ -1326,6 +1327,7 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjon
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomy
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tsjinstânners
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Lit moglikheden sjen
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksje
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Fracht ôfhanneling
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
@@ -1360,7 +1362,9 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispi
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spul Opsjes
 STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikhyd ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avansearre ynstellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF ynstellings
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sikje online ynhâld
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI ynstellings
 STR_INTRO_QUIT                                                  :{BLACK}Ôfslúte
 
@@ -1369,6 +1373,7 @@ STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laad in 
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Begjin in nij spul, mei de hichtekaart as lânskip
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start in nei spul, mei in selsmakke lânskip
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Meitsje in selsmakke lânskip
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Begjin in multiplayer spul
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Selektear 'normaal' lânskip
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Selektear 'iis' lânskip
@@ -1377,6 +1382,9 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selektea
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Lit spul opsjes sjen
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Lit swierrichheid opsjes sjen
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Lit avansearre ynstellings sjen
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Lit NewGRF ynstellings sjen
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Lit AI ynstellings sjen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Slút 'OpenTTD' ôf
 
 # Quit window
@@ -2593,6 +2601,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... it i
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kin de namme net feroarje...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kin dielde auto's oan groep ta foege...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trein yn it paad
