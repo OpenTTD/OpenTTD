@@ -784,7 +784,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 					default: {
 						StringParameters tmp_params(*args, 1);
-						buff = GetStringWithArgs(buff, cargo_str, args, last);
+						buff = GetStringWithArgs(buff, cargo_str, &tmp_params, last);
 						break;
 					}
 				}
