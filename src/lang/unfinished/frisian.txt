@@ -1333,6 +1333,7 @@ STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Fracht 
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer spilers
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatysk fernije
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Ûnderhâld
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Route
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treinen
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Stêd
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}yndustryen
@@ -1384,6 +1385,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Lit spul
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Lit swierrichheid opsjes sjen
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Lit avansearre ynstellings sjen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Lit NewGRF ynstellings sjen
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Strún ynternet ôf om nije ynhâld del te heljen
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Lit AI ynstellings sjen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Slút 'OpenTTD' ôf
 
@@ -1411,13 +1413,55 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Wolsto 
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Wolsto echt dit lânskip slúte?
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}Falsk spielje
+STR_CHEATS_TOOLTIP                                              :{BLACK}Kontrôle finster om te sjen of dast al falsk spiele hast
+STR_CHEAT_MONEY                                                 :{LTBLUE}Stoart jild by{CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spielje as bedriuw: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Gigantyske sloopmodus: {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels Meie inoar krúse: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Grutte fleantúgen stoarte net faak del op lytse fleanfjilden: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Oar klimaat: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gêrs lânskip
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Snie lânskip
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropysk lânskip
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Boartersguodlânskip
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Veroarje tiidstip: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wizigje dit jier
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Stea oanpassen fan produksje ta: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Nei Kleurenskema
 
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Lit gewoane kleurskemas sjen
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Lit kleurskema sjen fan treinen
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Lit kleurskema sjen fan bussen en frachtauto's
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Lit kleurskema sjen fan skippen
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Lit kleurskema sjen fan fleantúgen
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Kies haadkleur fan it selektearre kleurskema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Kies twadde kleur fan it selektearre kleurskema
 
+STR_LIVERY_STEAM                                                :Steam motor
+STR_LIVERY_DIESEL                                               :Diesel motor
+STR_LIVERY_ELECTRIC                                             :Elektryske motor
+STR_LIVERY_MONORAIL                                             :Monorail motor
+STR_LIVERY_MAGLEV                                               :Zweeftrein
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passazjier wagon (Steam)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passazjier wein (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passazjier wein (elektrysk)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passazjier wein (monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passazjier wein (Zweeftrein)
+STR_LIVERY_FREIGHT_WAGON                                        :Fracht wein
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Frachtauto
+STR_LIVERY_PASSENGER_SHIP                                       :Fearboat
+STR_LIVERY_FREIGHT_SHIP                                         :Frachtskip
+STR_LIVERY_HELICOPTER                                           :Wjukkelmasjiene
+STR_LIVERY_SMALL_PLANE                                          :Lyts fleantúg
+STR_LIVERY_LARGE_PLANE                                          :Grut fleantúg
+STR_LIVERY_PASSENGER_TRAM                                       :Passazjier Tram
+STR_LIVERY_FREIGHT_TRAM                                         :Fracht Tram
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Gesicthseleksje
@@ -1430,6 +1474,16 @@ STR_FACE_FEMALE_BUTTON                                          :{BLACK}Frou
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Selektear froulike gesichten
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nei Gesicht
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Meistje willekeurich nij gesicht
+STR_FACE_ADVANCED                                               :{BLACK}Afansjearre
+STR_FACE_LOAD                                                   :{BLACK}Laad
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Laad standaard gesicht
+STR_FACE_FACECODE                                               :{BLACK}Spielers gesicht noemer
+STR_FACE_SAVE                                                   :{BLACK}Opslaan
+STR_FACE_EUROPEAN                                               :{BLACK}Jeropeesk
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selektearje jeropeeske gesichten
+STR_FACE_AFRICAN                                                :{BLACK}Afrikaans
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selektearje Afrikaanske gesichten
+STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :#
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Snorren en earbellen
 STR_FACE_HAIR                                                   :Hier:
@@ -1438,7 +1492,9 @@ STR_FACE_EYECOLOUR                                              :Kleur eagen:
 STR_FACE_GLASSES                                                :Bril:
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ferbining:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Kies tusken internetspul of yn Lokaal netwurk spul (LAN)
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Ynternet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Namme fan spieler:
@@ -1451,12 +1507,17 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Lângrut
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Jieren
 
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server wert dast it lêst op spiele hast
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Spul INFO
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Taal: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Lânskip: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Lângrutte: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tsjinnerferzje: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Server adres: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Start datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER NET BESKIKBER
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER VOL
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}FERKEARDE FERZJE
 
 

@@ -620,7 +620,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Programm
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zufällige Wiedergabe an/aus
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zeige Musiktitelauswahl
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Ein Musikset ohne Songs wurde ausgewählt. Es wird kann folglich keine Musik abgespielt werden
+STR_ERROR_NO_SONGS                                              :{WHITE}Ein Musikset ohne Songs wurde ausgewählt. Es kann folglich keine Musik abgespielt werden
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musik-Programmauswahl

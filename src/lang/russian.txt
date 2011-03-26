@@ -1252,6 +1252,7 @@ STR_CONFIG_SETTING_NONE                                         :нет
 STR_CONFIG_SETTING_ORIGINAL                                     :оригинальное
 STR_CONFIG_SETTING_ORIGINAL.f                                   :оригинальная
 STR_CONFIG_SETTING_REALISTIC                                    :реалистичное
+STR_CONFIG_SETTING_REALISTIC.f                                  :реалистичная
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине

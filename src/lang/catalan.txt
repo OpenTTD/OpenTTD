@@ -3247,7 +3247,7 @@ STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfereix i 
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfereix i espera qualsevol càrrega completa)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfereix i deixa buit)
 STR_ORDER_NO_UNLOAD                                             :(No descarreguis i agafa càrrega)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descarreguis i espera carregar del tot)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descarreguis i espera a carregar del tot)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descarreguis i espera carregar del tot qualsevol càrrega)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descarreguis i no carreguis)
 
