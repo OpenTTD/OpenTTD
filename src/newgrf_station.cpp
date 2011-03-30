@@ -539,6 +539,9 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->reseed          = 0;
 	res->count           = 0;
 	res->grffile         = (statspec != NULL ? statspec->grf_prop.grffile : NULL);
+
+	/* Invalidate all cached vars */
+	_svc.valid = 0;
 }
 
 static const SpriteGroup *ResolveStation(ResolverObject *object)
@@ -572,9 +575,6 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 
 	/* Remember the cargo type we've picked */
 	object->u.station.cargo_type = ctype;
-
-	/* Invalidate all cached vars */
-	_svc.valid = 0;
 
 	return SpriteGroup::Resolve(group, object);
 }
