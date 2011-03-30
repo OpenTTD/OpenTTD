@@ -406,7 +406,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiar nova 
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construir caminhos-de-ferro
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construir caminhos-de-ferro electrificados
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construir monocarril
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construir MagLev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construir Maglev
 ############ range ends here
 
 ############ range for road construction menu starts
@@ -1450,7 +1450,7 @@ STR_LIVERY_STEAM                                                :Motor a Vapor
 STR_LIVERY_DIESEL                                               :Motor Diesel
 STR_LIVERY_ELECTRIC                                             :Motor Eléctrico
 STR_LIVERY_MONORAIL                                             :Motor Monocarril
-STR_LIVERY_MAGLEV                                               :Motor de Levitação Magnética
+STR_LIVERY_MAGLEV                                               :Motor Maglev (Levitação Magnética)
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carruagem de Passageiros (Vapor)
@@ -1900,7 +1900,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constru
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construir caminhos-de-ferro
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construir caminhos-de-ferro electrificados
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construir monocarril
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir MagLev
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl alterna a construção/remoção de linha férrea. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl alterna a construção/remoção de caminhos-de-ferro. Shift alterna contruir/mostrar custo estimado

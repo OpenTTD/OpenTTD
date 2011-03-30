@@ -20,7 +20,7 @@
 
 
 ##id 0x0000
-STR_NULL                                                        :
+STR_NULL                                                        :zum bringen
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(nicht definierter Text)
 STR_JUST_NOTHING                                                :Nichts
@@ -2473,7 +2473,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den mome
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD oder sonstigem unerwünschten Verhalten führen. Bitte keine desbezüglichen Bugreports verfassen.{}Trotzdem fortfahren?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD oder sonstigem unerwünschten Verhalten führen. Bitte keine diesbezüglichen Bugreports verfassen.{}Trotzdem fortfahren?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Datei kann nicht hinzugefügt werden: NewGRF-ID bereits vergeben
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible NewGRF geladen)

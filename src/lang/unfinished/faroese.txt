@@ -330,83 +330,222 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vegager�
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Set tekin
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Goym mannagongd
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Heinta mannagongd
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Heinta hæddarkort
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spæl møguleikar
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sværheidsgrad
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Víðka innstilling
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Allar innstilngar
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NýggjGRF innstilling
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjøgnumskygnis møguleikar
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bygdarnøvn víst
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Statión navn víst
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Positión navn víst
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tekin víst
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animatión
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Allar smálutir
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gjøgnumskygdir bygningar
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjøgnumskygd statións tekin
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :Goym spæl
+STR_FILE_MENU_LOAD_GAME                                         :Heinta spæl
+STR_FILE_MENU_QUIT_GAME                                         :Far frá spæli
+STR_FILE_MENU_EXIT                                              :Útgongd
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :Kort av verð
+STR_MAP_MENU_SIGN_LIST                                          :Listi yvur tekin
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Bygdar yvirlit
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Funnar bygdir
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Rakstrar avkast grafur
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Inntøku grafur
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Avlevera farm grafur
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Avrik søgu grafur
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Virkis virði grafur
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Farma gjald takstur
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Virkis felagsskapur yvirlit
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaliera avriks meting
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Virkis yvurlit
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fíggja nýggj virki
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Jarnbreyta bygging
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :El jarnbreyta bygging
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :einsporað jarnbreyta bygging
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Vegagerð
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Sporvega bygging
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Siglingarrennu bygging
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flogvalla bygging
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Planta trø
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Set tekin
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :Ljóð/ tónleik
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Seinastu boð/tíðinda frásøgn
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Boð innstilling
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landa økis kunning
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_SCREENSHOT                                       :Skermmynd
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suma in skermmynd
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :1.
+STR_ORDINAL_NUMBER_2ND                                          :2.
+STR_ORDINAL_NUMBER_3RD                                          :3.
+STR_ORDINAL_NUMBER_4TH                                          :4.
+STR_ORDINAL_NUMBER_5TH                                          :5.
+STR_ORDINAL_NUMBER_6TH                                          :6.
+STR_ORDINAL_NUMBER_7TH                                          :7.
+STR_ORDINAL_NUMBER_8TH                                          :8.
+STR_ORDINAL_NUMBER_9TH                                          :9.
+STR_ORDINAL_NUMBER_10TH                                         :10.
+STR_ORDINAL_NUMBER_11TH                                         :11.
+STR_ORDINAL_NUMBER_12TH                                         :12.
+STR_ORDINAL_NUMBER_13TH                                         :13.
+STR_ORDINAL_NUMBER_14TH                                         :14.
+STR_ORDINAL_NUMBER_15TH                                         :15.
+STR_ORDINAL_NUMBER_16TH                                         :16.
+STR_ORDINAL_NUMBER_17TH                                         :17.
+STR_ORDINAL_NUMBER_18TH                                         :18.
+STR_ORDINAL_NUMBER_19TH                                         :19.
+STR_ORDINAL_NUMBER_20TH                                         :20.
+STR_ORDINAL_NUMBER_21ST                                         :21.
+STR_ORDINAL_NUMBER_22ND                                         :22.
+STR_ORDINAL_NUMBER_23RD                                         :23.
+STR_ORDINAL_NUMBER_24TH                                         :24.
+STR_ORDINAL_NUMBER_25TH                                         :25.
+STR_ORDINAL_NUMBER_26TH                                         :26.
+STR_ORDINAL_NUMBER_27TH                                         :27.
+STR_ORDINAL_NUMBER_28TH                                         :28.
+STR_ORDINAL_NUMBER_29TH                                         :29.
+STR_ORDINAL_NUMBER_30TH                                         :30.
+STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Mai
+STR_MONTH_ABBREV_JUN                                            :Jun
+STR_MONTH_ABBREV_JUL                                            :Jul
+STR_MONTH_ABBREV_AUG                                            :Aug
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Okt
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Des
 
+STR_MONTH_JAN                                                   :Januar
+STR_MONTH_FEB                                                   :Februar
+STR_MONTH_MAR                                                   :Mars
+STR_MONTH_APR                                                   :Apríl
+STR_MONTH_MAY                                                   :Mai
+STR_MONTH_JUN                                                   :Juni
+STR_MONTH_JUL                                                   :Juli
+STR_MONTH_AUG                                                   :August
+STR_MONTH_SEP                                                   :Septembur
+STR_MONTH_OCT                                                   :Oktobur
+STR_MONTH_NOV                                                   :Novembur
+STR_MONTH_DEC                                                   :Desembur
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Knøttur
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vís knøttar til graf
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Rakstrar avkast grafur
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Inntøku grafur
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Virkis virði
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Farma gjald takstur
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dagar á ferð
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Gilda alt
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Ógilda alt
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vís allan farm á farmagjalds takst grafi
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vís ongan farm á farmagjalds takst grafi
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Knøttur til virkis graf
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Virkis samtaks tabel
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Teknikari
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Ferðslu Leiðari
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Flutnings Samskipari
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Rutu Vegleiðari
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Leiðari
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Ovasti Stjóri
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Leiðari
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljur
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Akfar :
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Støðir:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. vinning:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inntøka:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. iinntøka:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Avlevera:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Last:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pengar:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lán:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 
 # Music window
