@@ -1,6 +1,11 @@
+1.1.0 (2011-04-01)
+------------------------------------------------------------------------
+- Fix: In the scenario editor you could build a ship depot using the appropriate hotkey. Removing that depot causes an assertion to trigger [FS#4558] (r22266)
+
+
 1.1.0-RC3 (2011-03-18)
 ------------------------------------------------------------------------
-- Fix: New game settings were applied to early when starting a game via a heightmap. [FS#4557] (r22259)
+- Fix: New game settings were applied too early when starting a game via a heightmap [FS#4557] (r22259)
 - Fix: Do not resort town, industry and signs list directly in OnInvalidateData(). There might be a scheduled rebuild which needs execution first. So, only set a trigger for resorting [FS#4546] (r22249, r22248, r22247, r22246, r22245, r22244, r22243, r22242, r22241, r22236, r22228, r22227, r22226)
 - Fix: [NewGRF] Object variable 0x48 was not available in callback 0x15C (r22231)
 - Fix: Compilation when compiling with --disable-ai (r22222)
@@ -319,7 +324,7 @@
 - Change: Limit the number of exceptions in the refittable cargo list to 7 (r21083)
 - Change: Reduce the chances to accidentally break savegames with NewGRFs by limiting loading of savegames that miss NewGRFs or change NewGRF settings in-game [FS#3012] (r21116)
 - Change: Tuned realistic acceleration to be a bit more realistic in order to make acceleration 'slower', which highlights the differences between vehicle types more (r21106)
-- Change: Do not make client reconnect waiting time depend on the company; in coop games that does not spread clients at all, and most companies have a low number causing it not to be spread out either. Use the ClientID instead. (r21008)
+- Change: Do not make client reconnect waiting time depend on the company; in coop games that does not spread clients at all, and most companies have a low number causing it not to be spread out either. Use the ClientID instead (r21008)
 - Change: Add installing options or rather options to not install certain documentation, in a similar way to GRFCodec/catcodec (r20999)
 - Change: Only display liveries in the livery window if they are used by some vehicle somewhen (r20849)
 - Change: [NoAI] Rename AIAbstractList to AIList (r20563)
@@ -753,7 +758,7 @@
 - Fix: Report a more useful error when failing to build a bubble generator (r19137)
 - Fix: Resize station cargo widget when needed to display all accepted cargo types [FS#3617] (r19123)
 - Fix: [NewGRF] Industry property 0x17 was interpreted incorrectly and in some cases circumvented the density difficulty setting (r19120)
-- Fix: removing towns (in the scenario editor) that had stations/depots refer to them or vehicles were on the town's road could cause a crash [FS#3616] (r19119)
+- Fix: Removing towns (in the scenario editor) that had stations/depots refer to them or vehicles were on the town's road could cause a crash [FS#3616] (r19119)
 - Fix: In the order window the Non-stop dropdown was not enabled for depot and waypoint orders and some buttons were raised too soon [FS#3593] (r19118, r19117)
 - Fix: Do not crash on broken lng file and prevent it from happening again [FS#3611] (r19113, r19112)
 - Fix: Not all news data was properly freed when starting a new game [FS#3614] (r19105)
@@ -2909,7 +2914,7 @@
 - Fix: Certain resolutions caused a crash when minimap was partly dragged outside the game window (r2424)
 - Fix: Deleting canals under bridges removed bridges first in certain configurations (r2436)
 - Fix: [NPF] Vehicles try to drive into a tunnel entrance from above (r2471)
-- Fix: [NewGRF] Some road vehicle action 0 properties were loaded as the wrong type (int8,int16,int32) causing undefined results. (like cargo types being wrong) (r2474)
+- Fix: [NewGRF] Some road vehicle action 0 properties were loaded as the wrong type (int8, int16, int32) causing undefined results, like cargo types being wrong (r2474)
 - Fix: The console variable autoclean_unprotected was linked to the variable _network_autoclean_protected (r2498)
 - Fix: Old bug in the PCX writer: The first pixel column contained garbage, the picture was shifted one to the right, and the last column was dropped (r2512)
 - Fix: Using the mouse wheel could lead to a crash if mouse was not over a widget (r2530)
@@ -2975,9 +2980,9 @@
 - Fix: Disallow building an oil rig above sea level (r3416)
 - Fix: When removing a town-owned tunnel the player's rating was not reduced (r3418)
 - Fix: (Possible) game crash on removing track/road under bridge if a vehicle was on the track/road under the bridge and the track/road sloped (r3419)
-- Fix: [NewGRF] Only power should decide whether a rail vehicle is an engine or a wagon. (fixes SHIKI 810 in jpsetw.grf) (r3424)
+- Fix: [NewGRF] Only power should decide whether a rail vehicle is an engine or a wagon (r3424)
 - Fix: Incorrect validating of tree-planting command which can allow a buffer-overflow (r3446)
-- Fix: [NewGRF] When changing the sprite ID of a vehicle, if it is not FD (custom graphics), the value needs to changed from a 16bit array offset to an array index. (fixes tropicstw.grf) (r3449)
+- Fix: [NewGRF] When changing the sprite ID of a vehicle, if it is not FD (custom graphics), the value needs to changed from a 16bit array offset to an array index (r3449)
 - Fix: You could not remove an item from a list-type of config ingame from the configuration file (r3475)
 - Fix: [NewGRF] Always reinitialize the TTDPatch flags as patch settings may have changed (r3486)
 - Fix: Price for demolishing a bridge was dependent on orientation and map size (r3487)
@@ -3161,7 +3166,7 @@
 - Fix: Destroyed train locks crossings [SF#1105112]
 - Fix: Upgrade rail fails when train under bridge [SF#1105281]
 - Fix: Trains do not think they're on a slope any more while they drive around in a tunnel [SF#1105959]
-- Fix: Buoys can now only be removed if no ship has it in their schedule. (This makes buoys more useable in multiplayer games again, as buoys cannot be deleted by other players if they are used.) [SF#1105963]
+- Fix: Buoys can now only be removed if no ship has it in their schedule. This makes buoys more useable in multiplayer games again, as buoys cannot be deleted by other players if they are used [SF#1105963]
 - Fix: Graph's keys get confused [SF#1106354]
 - Fix: Placing signals with 2x1 drags is treated as placing a single signal [SF#1106930]
 - Fix: Console ignoring return character occasionally [SF#1107350]
@@ -3261,7 +3266,7 @@
 - Fix: Vehicles slow down under bridge if the track is on a foundation
 - Fix: You can no longer change name of waypoints whom are owned by somebody else
 - Fix: Shares are now also sold when a company goes bankrupt [SF#1090313]
-- Fix: It is no longer possible to crash trains of other companies by building a depot close to a station. (even more: trains do no longer enter tiles that do not belong to his owner) [SF#1087701]
+- Fix: It is no longer possible to crash trains of other companies by building a depot close to a station; trains do no longer enter tiles that do not belong to his owner [SF#1087701]
 - Fix: Crashed trains are not reported to have too few orders any more [SF#1087403]
 - Fix: Backup-order-list was not closed with an OT_NOTHING, [SF#1086375]
 - Fix: Docks now have a button to display the catchment area [SF#1085255]
