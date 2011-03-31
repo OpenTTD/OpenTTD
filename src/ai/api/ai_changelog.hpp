@@ -21,8 +21,6 @@
  *
  * \b 1.1.0
  *
- * 1.1.0 is not yet released. The following changes are not set in stone yet.
- *
  * API additions:
  * \li IsEnd for all lists.
  * \li AIEventTownFounded
