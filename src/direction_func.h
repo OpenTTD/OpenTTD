@@ -35,7 +35,9 @@ static inline Direction ReverseDir(Direction d)
  */
 static inline DirDiff DirDifference(Direction d0, Direction d1)
 {
-	return (DirDiff)((d0 + 8 - d1) % 8);
+	/* Cast to uint so compiler can use bitmask. If the difference is negative
+	 * and we used int instead of uint, further "+ 8" would have to be added. */
+	return (DirDiff)((uint)(d0 - d1) % 8);
 }
 
 /**
@@ -51,7 +53,8 @@ static inline DirDiff DirDifference(Direction d0, Direction d1)
  */
 static inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
 {
-	return (DirDiff)((d + delta) % 8);
+	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
+	return (DirDiff)((uint)(d + delta) % 8);
 }
 
 /**
@@ -66,7 +69,8 @@ static inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
  */
 static inline Direction ChangeDir(Direction d, DirDiff delta)
 {
-	return (Direction)((d + delta) % 8);
+	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
+	return (Direction)((uint)(d + delta) % 8);
 }
 
 
@@ -94,7 +98,8 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
  */
 static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
 {
-	return (DiagDirection)((d + delta) % 4);
+	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
+	return (DiagDirection)((uint)(d + delta) % 4);
 }
 
 /**
