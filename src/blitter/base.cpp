@@ -47,28 +47,29 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 		stepx = 1;
 	}
 
-	if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 	if (dx > dy) {
 		frac = dy - (dx / 2);
+		x2 += stepx; // Make x2 the first column to not draw to
 		while (x != x2) {
+			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 			if (frac >= 0) {
 				y += stepy;
 				frac -= dx;
 			}
 			x += stepx;
 			frac += dy;
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 		}
 	} else {
 		frac = dx - (dy / 2);
+		y2 += stepy; // Make y2 the first row to not draw to
 		while (y != y2) {
+			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 			if (frac >= 0) {
 				x += stepx;
 				frac -= dy;
 			}
 			y += stepy;
 			frac += dx;
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
 		}
 	}
 }
