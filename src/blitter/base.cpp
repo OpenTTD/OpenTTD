@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "base.hpp"
+#include "../core/math_func.hpp"
 
 /**
  * Draw a line with a given colour.
@@ -22,14 +23,14 @@
  * @param screen_width The width of the screen you are drawing in (to avoid buffer-overflows).
  * @param screen_height The height of the screen you are drawing in (to avoid buffer-overflows).
  * @param colour A 8bpp mapping colour.
+ * @param width Line width.
  */
-void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour)
+void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width)
 {
 	int dy;
 	int dx;
 	int stepx;
 	int stepy;
-	int frac;
 
 	dy = (y2 - y) * 2;
 	if (dy < 0) {
@@ -47,29 +48,79 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 		stepx = 1;
 	}
 
+	int frac_diff = width * max(dx, dy);
+	if (width > 1) {
+		int frac_sq = width * width * (dx * dx + dy * dy);
+		while (frac_diff * frac_diff < frac_sq) frac_diff++;
+	}
+
 	if (dx > dy) {
-		frac = dy - (dx / 2);
-		x2 += stepx; // Make x2 the first column to not draw to
+		int y_low     = y;
+		int y_high    = y;
+		int frac_low  = dy - frac_diff / 2;
+		int frac_high = dy + frac_diff / 2;
+
+		while (frac_low + dx / 2 < 0) {
+			frac_low += dx;
+			y_low -= stepy;
+		}
+		while (frac_high - dx / 2 > 0) {
+			frac_high -= dx;
+			y_high += stepy;
+		}
+		x2 += stepx;
+
 		while (x != x2) {
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
-			if (frac >= 0) {
-				y += stepy;
-				frac -= dx;
+			if (x >= 0 && x < screen_width) {
+				for (int y = y_low; y != y_high; y += stepy) {
+					if (y >= 0 && y < screen_height) this->SetPixel(video, x, y, colour);
+				}
+			}
+			if (frac_low >= 0) {
+				y_low += stepy;
+				frac_low -= dx;
+			}
+			if (frac_high >= 0) {
+				y_high += stepy;
+				frac_high -= dx;
 			}
 			x += stepx;
-			frac += dy;
+			frac_low += dy;
+			frac_high += dy;
 		}
 	} else {
-		frac = dx - (dy / 2);
-		y2 += stepy; // Make y2 the first row to not draw to
+		int x_low     = x;
+		int x_high    = x;
+		int frac_low  = dx - frac_diff / 2;
+		int frac_high = dx + frac_diff / 2;
+
+		while (frac_low + dy / 2 < 0) {
+			frac_low += dy;
+			x_low -= stepx;
+		}
+		while (frac_high - dy / 2 > 0) {
+			frac_high -= dy;
+			x_high += stepx;
+		}
+		y2 += stepy;
+
 		while (y != y2) {
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
-			if (frac >= 0) {
-				x += stepx;
-				frac -= dy;
+			if (y >= 0 && y < screen_height) {
+				for (int x = x_low; x != x_high; x += stepx) {
+					if (x >= 0 && x < screen_width) this->SetPixel(video, x, y, colour);
+				}
+			}
+			if (frac_low >= 0) {
+				x_low += stepx;
+				frac_low -= dy;
+			}
+			if (frac_high >= 0) {
+				x_high += stepx;
+				frac_high -= dy;
 			}
 			y += stepy;
-			frac += dx;
+			frac_low += dx;
+			frac_high += dx;
 		}
 	}
 }

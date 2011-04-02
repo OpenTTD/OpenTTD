@@ -192,10 +192,12 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 	}
 }
 
-void GfxDrawLine(int x, int y, int x2, int y2, int colour)
+void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width)
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	DrawPixelInfo *dpi = _cur_dpi;
+
+	assert(width > 0);
 
 	x -= dpi->left;
 	x2 -= dpi->left;
@@ -203,12 +205,12 @@ void GfxDrawLine(int x, int y, int x2, int y2, int colour)
 	y2 -= dpi->top;
 
 	/* Check clipping */
-	if (x < 0 && x2 < 0) return;
-	if (y < 0 && y2 < 0) return;
-	if (x > dpi->width  && x2 > dpi->width)  return;
-	if (y > dpi->height && y2 > dpi->height) return;
+	if (x + width / 2 < 0           && x2 + width / 2 < 0          ) return;
+	if (y + width / 2 < 0           && y2 + width / 2 < 0          ) return;
+	if (x - width / 2 > dpi->width  && x2 - width / 2 > dpi->width ) return;
+	if (y - width / 2 > dpi->height && y2 - width / 2 > dpi->height) return;
 
-	blitter->DrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, colour);
+	blitter->DrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, colour, width);
 }
 
 void GfxDrawLineUnscaled(int x, int y, int x2, int y2, int colour)
@@ -229,7 +231,7 @@ void GfxDrawLineUnscaled(int x, int y, int x2, int y2, int colour)
 
 	blitter->DrawLine(dpi->dst_ptr, UnScaleByZoom(x, dpi->zoom), UnScaleByZoom(y, dpi->zoom),
 			UnScaleByZoom(x2, dpi->zoom), UnScaleByZoom(y2, dpi->zoom),
-			UnScaleByZoom(dpi->width, dpi->zoom), UnScaleByZoom(dpi->height, dpi->zoom), colour);
+			UnScaleByZoom(dpi->width, dpi->zoom), UnScaleByZoom(dpi->height, dpi->zoom), colour, 1);
 }
 
 /**

@@ -101,7 +101,7 @@ public:
 	 */
 	virtual void DrawRect(void *video, int width, int height, uint8 colour) = 0;
 
-	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour);
+	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width);
 
 	/**
 	 * Copy from a buffer to the screen.
