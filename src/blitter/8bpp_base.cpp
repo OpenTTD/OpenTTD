@@ -41,56 +41,6 @@ void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8 colour
 	} while (--height);
 }
 
-void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour)
-{
-	int dy;
-	int dx;
-	int stepx;
-	int stepy;
-	int frac;
-
-	dy = (y2 - y) * 2;
-	if (dy < 0) {
-		dy = -dy;
-		stepy = -1;
-	} else {
-		stepy = 1;
-	}
-
-	dx = (x2 - x) * 2;
-	if (dx < 0) {
-		dx = -dx;
-		stepx = -1;
-	} else {
-		stepx = 1;
-	}
-
-	if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
-	if (dx > dy) {
-		frac = dy - (dx / 2);
-		while (x != x2) {
-			if (frac >= 0) {
-				y += stepy;
-				frac -= dx;
-			}
-			x += stepx;
-			frac += dy;
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
-		}
-	} else {
-		frac = dx - (dy / 2);
-		while (y != y2) {
-			if (frac >= 0) {
-				x += stepx;
-				frac -= dy;
-			}
-			y += stepy;
-			frac += dx;
-			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, colour);
-		}
-	}
-}
-
 void Blitter_8bppBase::CopyFromBuffer(void *video, const void *src, int width, int height)
 {
 	uint8 *dst = (uint8 *)video;

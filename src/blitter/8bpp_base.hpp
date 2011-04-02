@@ -23,7 +23,6 @@ public:
 	/* virtual */ void *MoveTo(const void *video, int x, int y);
 	/* virtual */ void SetPixel(void *video, int x, int y, uint8 colour);
 	/* virtual */ void DrawRect(void *video, int width, int height, uint8 colour);
-	/* virtual */ void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour);
 	/* virtual */ void CopyFromBuffer(void *video, const void *src, int width, int height);
 	/* virtual */ void CopyToBuffer(const void *video, void *dst, int width, int height);
 	/* virtual */ void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch);
