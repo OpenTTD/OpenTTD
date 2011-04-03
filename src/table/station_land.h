@@ -364,32 +364,32 @@ static const DrawTileSeqStruct _station_display_datas_74[] = {
 };
 
 static const DrawTileSeqStruct _station_display_datas_76[] = {
-	TILE_SEQ_LINE( 0,  4,  0, 16,  8,  8, SPR_DOCK_SLOPE_NE)
+	TILE_SEQ_LINE( 0,  4,  0, 16,  8,  8, SPR_DOCK_SLOPE_NE | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_datas_77[] = {
-	TILE_SEQ_LINE( 4,  0,  0,  8, 16,  8, SPR_DOCK_SLOPE_SE)
+	TILE_SEQ_LINE( 4,  0,  0,  8, 16,  8, SPR_DOCK_SLOPE_SE | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_datas_78[] = {
-	TILE_SEQ_LINE( 0,  4,  0, 16,  8,  8, SPR_DOCK_SLOPE_SW)
+	TILE_SEQ_LINE( 0,  4,  0, 16,  8,  8, SPR_DOCK_SLOPE_SW | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_datas_79[] = {
-	TILE_SEQ_LINE( 4,  0,  0,  8, 16,  8, SPR_DOCK_SLOPE_NW)
+	TILE_SEQ_LINE( 4,  0,  0,  8, 16,  8, SPR_DOCK_SLOPE_NW | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_datas_80[] = {
-	TILE_SEQ_LINE( 0,  4,  0, 16,  8,  8, SPR_DOCK_FLAT_X)
+	TILE_SEQ_LINE( 0,  4,  0, 16,  8,  8, SPR_DOCK_FLAT_X | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_datas_81[] = {
-	TILE_SEQ_LINE( 4,  0,  0,  8, 16,  8, SPR_DOCK_FLAT_Y)
+	TILE_SEQ_LINE( 4,  0,  0,  8, 16,  8, SPR_DOCK_FLAT_Y | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
