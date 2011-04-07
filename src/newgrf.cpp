@@ -7613,8 +7613,6 @@ static void FinaliseHouseArray()
 	 * On the other hand, why 1930? Just 'fix' the houses with the lowest
 	 * minimum introduction date to 0.
 	 */
-	Year min_year = MAX_YEAR;
-
 	const GRFFile * const *end = _grf_files.End();
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		HouseSpec **&housespec = (*file)->housespec;
@@ -7632,9 +7630,10 @@ static void FinaliseHouseArray()
 			if (!IsHouseSpecValid(hs, next1, next2, next3, (*file)->filename)) continue;
 
 			_house_mngr.SetEntitySpec(hs);
-			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
 	}
+
+	Year min_year = MAX_YEAR;
 
 	for (int i = 0; i < HOUSE_MAX; i++) {
 		HouseSpec *hs = HouseSpec::Get(i);
@@ -7653,6 +7652,7 @@ static void FinaliseHouseArray()
 			 * building_flags to zero here to make sure any house following
 			 * this one in the pool is properly handled as 1x1 house. */
 			hs->building_flags = TILE_NO_FLAG;
+			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
 	}
 
