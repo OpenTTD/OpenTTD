@@ -7652,6 +7652,7 @@ static void FinaliseHouseArray()
 			 * building_flags to zero here to make sure any house following
 			 * this one in the pool is properly handled as 1x1 house. */
 			hs->building_flags = TILE_NO_FLAG;
+		} else {
 			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
 	}
