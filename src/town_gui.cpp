@@ -73,6 +73,7 @@ private:
 	Town *town;    ///< Town being displayed.
 	int sel_index; ///< Currently selected town action, \c 0 to \c TACT_COUNT-1, \c -1 means no action selected.
 	Scrollbar *vscroll;
+	uint displayed_actions_on_previous_painting; ///< Actions that were available on the previous call to OnPaint()
 
 	/**
 	 * Get the position of the Nth set bit.
@@ -96,7 +97,7 @@ private:
 	}
 
 public:
-	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) : Window(), sel_index(-1)
+	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) : Window(), sel_index(-1), displayed_actions_on_previous_painting(0)
 	{
 		this->town = Town::Get(window_number);
 		this->InitNested(desc, window_number);
@@ -108,6 +109,8 @@ public:
 	{
 		int numact;
 		uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
+		if (buttons != displayed_actions_on_previous_painting) this->SetDirty();
+		displayed_actions_on_previous_painting = buttons;
 
 		this->vscroll->SetCount(numact + 1);
 
