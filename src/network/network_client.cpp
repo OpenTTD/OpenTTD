@@ -719,16 +719,13 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WELCOME)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
 {
-	if (this->status != STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	this->status = STATUS_MAP_WAIT;
+	/* We set the internal wait state when requesting the map. */
+	if (this->status != STATUS_MAP_WAIT) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
+	/* But... only now we set the join status to waiting, instead of requesting. */
 	_network_join_status = NETWORK_JOIN_STATUS_WAITING;
 	_network_join_waiting = p->Recv_uint8();
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
-
-	/* We are put on hold for receiving the map.. we need GUI for this ;) */
-	DEBUG(net, 1, "The server is currently busy sending the map to someone else, please wait..." );
-	DEBUG(net, 1, "There are %d clients in front of you", _network_join_waiting);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
