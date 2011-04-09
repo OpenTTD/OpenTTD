@@ -223,9 +223,20 @@ void InjectDParam(uint amount)
 	_global_string_params.ShiftParameters(amount);
 }
 
-static char *FormatNumber(char *buff, int64 number, const char *last, const char *separator, int zerofill_from = 19)
+/**
+ * Format a number into a string.
+ * @param buff      the buffer to write to
+ * @param number    the number to write down
+ * @param last      the last element in the buffer
+ * @param separator the thousands-separator to use
+ * @param zerofill  minimum number of digits to print. The number will be filled with zeros at the front if necessary.
+ * @return till where we wrote
+ */
+static char *FormatNumber(char *buff, int64 number, const char *last, const char *separator, int zerofill = 1)
 {
+	static const int max_digits = 20;
 	uint64 divisor = 10000000000000000000ULL;
+	int thousands_offset = (max_digits - 1) % 3;
 
 	if (number < 0) {
 		buff += seprintf(buff, last, "-");
@@ -234,15 +245,15 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 
 	uint64 num = number;
 	uint64 tot = 0;
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < max_digits; i++) {
 		uint64 quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
 			num = num % divisor;
 		}
-		if (tot |= quot || i >= zerofill_from) {
+		if (tot |= quot || i >= max_digits - zerofill) {
 			buff += seprintf(buff, last, "%i", (int)quot);
-			if ((i % 3) == 1 && i != 19) buff = strecpy(buff, separator, last);
+			if ((i % 3) == thousands_offset && i != max_digits - 1) buff = strecpy(buff, separator, last);
 		}
 
 		divisor /= 10;
@@ -267,7 +278,7 @@ static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 
 static char *FormatZerofillNumber(char *buff, int64 number, int64 count, const char *last)
 {
-	return FormatNumber(buff, number, last, "", 20 - count);
+	return FormatNumber(buff, number, last, "", count);
 }
 
 static char *FormatHexNumber(char *buff, uint64 number, const char *last)
