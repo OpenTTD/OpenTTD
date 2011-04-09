@@ -1231,7 +1231,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Obnoviť vozidlo {ORANGE}{STRING}{LTBLUE} mesiac{P "" e ov} pred/po dosiahnutí max. veku.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Potrebné financie pre automatickú obnovu vozidiel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dĺžka zobrazenia chybovej správy: {ORANGE}{STRING} sekund
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zobraziť nápovedy: {ORANGE}Zobrazovať {STRING} sekúnd{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zobraziť nápovedy: {ORANGE}Zobrazovať {STRING} sekúnd
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zobraziť nápovedy: {ORANGE}Pravý klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zobraziť počet obyvateľov mesta v jeho názve: {ORANGE}{STRING}
 
@@ -1257,7 +1257,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Povoli�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedna alebo viacero kociek na severnom okraji nie sú prázdne
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna alebo viacero kociek na jedom z okrajov nie je voda
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max. rozsah stanice: {ORANGE}{STRING} tile{P 0:1 "" s} {RED}Pozor: Vysoke hodnoty spomaluju hru
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max. rozsah stanice: {ORANGE}{STRING} tile {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatické opravy vrtuľníkov v heliporte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvárať panel úprav terénu s panelmi výstavby: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Farba krajiny použitá na malej mape: {ORANGE}{STRING}
@@ -1324,11 +1324,11 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povoli�
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes pred AI sú suspendované: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisné intervaly v percentách: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}{STRING} dní{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}{STRING} dní/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}vypnutý
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Implicitný servisný interval pre automobily: {ORANGE}{STRING} dní{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Implicitný servisný interval pre automobily: {ORANGE}{STRING} dní/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}vypnuty
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Implicitný servisný interval pre lietadlá: {ORANGE}{STRING} dní{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Implicitný servisný interval pre lietadlá: {ORANGE}{STRING} dní/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Implicitný servisný interval pre lietadlá: {ORANGE}vypnutý
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Implicitný servisný interval pre lode: {ORANGE}{STRING} dní/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Implicitný servisný interval pre lode: {ORANGE}vypnutý
