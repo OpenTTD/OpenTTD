@@ -92,6 +92,7 @@ static const CmdStruct _cmd_structs[] = {
 
 	/* Numbers */
 	{"COMMA",           EmitSingleChar, SCC_COMMA,              1, C_NONE}, // Number with comma
+	{"DECIMAL",         EmitSingleChar, SCC_DECIMAL,            2, C_NONE}, // Number with comma and fractional part. Second parameter is number of fractional digits, first parameter is number times 10**(second parameter).
 	{"NUM",             EmitSingleChar, SCC_NUM,                1, C_NONE}, // Signed number
 	{"ZEROFILL_NUM",    EmitSingleChar, SCC_ZEROFILL_NUM,       2, C_NONE}, // Unsigned number with zero fill, e.g. "02". First parameter is number, second minimum length
 	{"BYTES",           EmitSingleChar, SCC_BYTES,              1, C_NONE}, // Unsigned number with "bytes", i.e. "1.02 MiB or 123 KiB"
