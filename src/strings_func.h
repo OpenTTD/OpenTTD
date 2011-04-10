@@ -196,12 +196,6 @@ const char *GetCurrentLanguageIsoCode();
 
 int CDECL StringIDSorter(const StringID *a, const StringID *b);
 
-/** Key comparison function for std::map */
-struct StringIDCompare
-{
-	bool operator()(StringID s1, StringID s2) const { return StringIDSorter(&s1, &s2) < 0; }
-};
-
 void CheckForMissingGlyphsInLoadedLanguagePack();
 
 int strnatcmp(const char *s1, const char *s2);
