@@ -243,7 +243,7 @@ struct GameOptionsWindow : Window {
 				}
 				newgrf_names.sort(DropDownListStringItem::NatSortFunc);
 
-				/* Append newgrf_names at the end of list */
+				/* Insert newgrf_names at the top of the list */
 				if (newgrf_names.size() > 0) {
 					newgrf_names.push_back(new DropDownListItem(-1, false)); // separator line
 					list->splice(list->begin(), newgrf_names);
