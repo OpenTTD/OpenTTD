@@ -188,6 +188,7 @@ struct GRFTempEngineData {
 	uint16 cargo_allowed;
 	uint16 cargo_disallowed;
 	RailTypeLabel railtypelabel;
+	const GRFFile *refitmask_grf; ///< GRF providing the cargo translation table for the refitmask.
 	bool refitmask_valid;    ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
@@ -697,6 +698,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x1D: // Refit cargo
 				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].refitmask_grf = _cur_grffile;
 				break;
 
 			case 0x1E: // Callback
@@ -854,6 +856,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x16: // Cargos available for refitting
 				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].refitmask_grf = _cur_grffile;
 				break;
 
 			case 0x17: // Callback mask
@@ -983,6 +986,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x11: // Cargos available for refitting
 				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].refitmask_grf = _cur_grffile;
 				break;
 
 			case 0x12: // Callback mask
@@ -1113,6 +1117,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			case 0x13: // Cargos available for refitting
 				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].refitmask_grf = _cur_grffile;
 				break;
 
 			case 0x14: // Callback mask
@@ -7427,7 +7432,8 @@ static void CalculateRefitMasks()
 		/* Did the newgrf specify any refitting? If not, use defaults. */
 		if (_gted[engine].refitmask_valid) {
 			if (ei->refit_mask != 0) {
-				const GRFFile *file = e->grf_prop.grffile;
+				const GRFFile *file = _gted[engine].refitmask_grf;
+				if (file == NULL) file = e->grf_prop.grffile;
 				if (file != NULL && file->cargo_max != 0) {
 					/* Apply cargo translation table to the refit mask */
 					uint num_cargo = min(32, file->cargo_max);
