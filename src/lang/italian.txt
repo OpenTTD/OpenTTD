@@ -4252,6 +4252,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
