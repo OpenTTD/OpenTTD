@@ -44,14 +44,10 @@ StringID DropDownListParamStringItem::String() const
 	return this->string;
 }
 
-uint DropDownListCharStringItem::Width() const
+StringID DropDownListCharStringItem::String() const
 {
-	return GetStringBoundingBox(this->string).width;
-}
-
-void DropDownListCharStringItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
-{
-	DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->string, sel ? TC_WHITE : TC_BLACK);
+	SetDParamStr(0, this->raw_string);
+	return this->string;
 }
 
 /**

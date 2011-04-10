@@ -14,6 +14,7 @@
 
 #include "../window_type.h"
 #include "../gfx_func.h"
+#include "table/strings.h"
 #include <list>
 
 /**
@@ -67,16 +68,14 @@ public:
 /**
  * List item containing a C char string.
  */
-class DropDownListCharStringItem : public DropDownListItem {
+class DropDownListCharStringItem : public DropDownListStringItem {
 public:
-	const char *string;
+	const char *raw_string;
 
-	DropDownListCharStringItem(const char *string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
+	DropDownListCharStringItem(const char *raw_string, int result, bool masked) : DropDownListStringItem(STR_JUST_RAW_STRING, result, masked), raw_string(raw_string) {}
 	virtual ~DropDownListCharStringItem() {}
 
-	virtual bool Selectable() const { return true; }
-	virtual uint Width() const;
-	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
+	virtual StringID String() const;
 };
 
 /**
