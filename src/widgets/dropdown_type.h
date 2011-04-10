@@ -49,6 +49,8 @@ public:
 	virtual uint Width() const;
 	virtual void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const;
 	virtual StringID String() const { return this->string; }
+
+	static bool NatSortFunc(const DropDownListItem *first, const DropDownListItem *second);
 };
 
 /**

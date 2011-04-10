@@ -38,6 +38,21 @@ void DropDownListStringItem::Draw(int left, int right, int top, int bottom, bool
 	DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 
+/**
+ * Natural sorting comparator function for DropDownList::sort().
+ * @param first Left side of comparison.
+ * @param second Right side of comparison.
+ * @return true if \a first precedes \a second.
+ * @warning All items in the list need to be derivates of DropDownListStringItem.
+ */
+/* static */ bool DropDownListStringItem::NatSortFunc(const DropDownListItem *first, const DropDownListItem *second)
+{
+	char buffer1[512], buffer2[512];
+	GetString(buffer1, static_cast<const DropDownListStringItem*>(first)->String(), lastof(buffer1));
+	GetString(buffer2, static_cast<const DropDownListStringItem*>(second)->String(), lastof(buffer2));
+	return strnatcmp(buffer1, buffer2) < 0;
+}
+
 StringID DropDownListParamStringItem::String() const
 {
 	for (uint i = 0; i < lengthof(this->decode_params); i++) SetDParam(i, this->decode_params[i]);
