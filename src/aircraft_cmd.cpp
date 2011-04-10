@@ -1311,6 +1311,12 @@ static void AircraftEventHandler_InHangar(Aircraft *v, const AirportFTAClass *ap
 			!v->current_order.IsType(OT_GOTO_DEPOT))
 		return;
 
+	/* We are leaving a hangar, but have to go to the exact same one; re-enter */
+	if (v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDestination() == v->targetairport) {
+		VehicleEnterDepot(v);
+		return;
+	}
+
 	/* if the block of the next position is busy, stay put */
 	if (AirportHasBlock(v, &apc->layout[v->pos], apc)) return;
 
