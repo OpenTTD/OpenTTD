@@ -59,21 +59,6 @@ static const StringID _autosave_dropdown[] = {
 	INVALID_STRING_ID,
 };
 
-/**
- * Fill a static array with consecutive stringIDs for use with a drop down.
- * @param base First stringID.
- * @param num  Number of stringIDs (must be at most 32).
- * *return Pointer to the static buffer with stringIDs.
- */
-static StringID *BuildDynamicDropdown(StringID base, int num)
-{
-	static StringID buf[32 + 1];
-	StringID *p = buf;
-	while (--num >= 0) *p++ = base++;
-	*p = INVALID_STRING_ID;
-	return buf;
-}
-
 int _nb_orig_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1; ///< Number of original town names.
 static StringID *_grf_names = NULL; ///< Pointer to town names defined by NewGRFs.
 static int _nb_grf_names = 0;       ///< Number of town names defined by NewGRFs.
@@ -139,44 +124,20 @@ enum GameOptionsWidgets {
 	GOW_BASE_MUSIC_DESCRIPTION, ///< Description of selected base music set
 };
 
-/**
- * Update/redraw the townnames dropdown
- * @param w   the window the dropdown belongs to
- * @param sel the currently selected townname generator
- */
-static void ShowTownnameDropdown(Window *w, int sel)
-{
-	typedef std::map<StringID, int, StringIDCompare> TownList;
-	TownList townnames;
-
-	/* Add and sort original townnames generators */
-	for (int i = 0; i < _nb_orig_names; i++) townnames[STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i] = i;
-
-	/* Add and sort newgrf townnames generators */
-	for (int i = 0; i < _nb_grf_names; i++) townnames[_grf_names[i]] = _nb_orig_names + i;
-
-	DropDownList *list = new DropDownList();
-	for (TownList::iterator it = townnames.begin(); it != townnames.end(); it++) {
-		list->push_back(new DropDownListStringItem((*it).first, (*it).second, !(_game_mode == GM_MENU || Town::GetNumItems() == 0 || (*it).second == sel)));
-	}
-
-	ShowDropDownList(w, list, sel, GOW_TOWNNAME_DROPDOWN);
-}
-
 static void ShowCustCurrency();
 
 template <class T>
-static void ShowSetMenu(Window *w, int widget)
+static DropDownList *BuiltSetDropDownList(int *selected_index)
 {
 	int n = T::GetNumSets();
-	int current = T::GetIndexOfUsedSet();
+	*selected_index = T::GetIndexOfUsedSet();
 
 	DropDownList *list = new DropDownList();
 	for (int i = 0; i < n; i++) {
-		list->push_back(new DropDownListCharStringItem(T::GetSet(i)->name, i, (_game_mode == GM_MENU) ? false : (current != i)));
+		list->push_back(new DropDownListCharStringItem(T::GetSet(i)->name, i, (_game_mode == GM_MENU) ? false : (*selected_index != i)));
 	}
 
-	ShowDropDownList(w, list, current, widget);
+	return list;
 }
 
 struct GameOptionsWindow : Window {
@@ -196,6 +157,153 @@ struct GameOptionsWindow : Window {
 	{
 		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
 		if (this->reload) _switch_mode = SM_MENU;
+	}
+
+	/**
+	 * Build the dropdown list for a specific widget.
+	 * @param widget         Widget to build list for
+	 * @param selected_index Currently selected item
+	 * @return the built dropdown list, or NULL if the widget has no dropdown menu.
+	 */
+	DropDownList *BuildDropDownList(int widget, int *selected_index) const
+	{
+		DropDownList *list = NULL;
+		switch (widget) {
+			case GOW_CURRENCY_DROPDOWN: { // Setup currencies dropdown
+				list = new DropDownList();
+				*selected_index = this->opt->locale.currency;
+				StringID *items = BuildCurrencyDropdown();
+				uint disabled = _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies();
+				int custom_index = -1;
+
+				/* Add non-custom currencies; sorted naturally */
+				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
+					if (*items == STR_GAME_OPTIONS_CURRENCY_CUSTOM) {
+						custom_index = i;
+					} else {
+						list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
+					}
+				}
+				list->sort(DropDownListStringItem::NatSortFunc);
+
+				/* Append custom currency at the end */
+				if (custom_index >= 0) {
+					list->push_back(new DropDownListItem(-1, false)); // separator line
+					list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, custom_index, HasBit(disabled, custom_index)));
+				}
+				break;
+			}
+
+			case GOW_DISTANCE_DROPDOWN: { // Setup distance unit dropdown
+				list = new DropDownList();
+				*selected_index = this->opt->locale.units;
+				const StringID *items = _units_dropdown;
+				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
+					list->push_back(new DropDownListStringItem(*items, i, false));
+				}
+				break;
+			}
+
+			case GOW_ROADSIDE_DROPDOWN: { // Setup road-side dropdown
+				list = new DropDownList();
+				*selected_index = this->opt->vehicle.road_side;
+				const StringID *items = _driveside_dropdown;
+				uint disabled = 0;
+
+				/* You can only change the drive side if you are in the menu or ingame with
+				 * no vehicles present. In a networking game only the server can change it */
+				extern bool RoadVehiclesAreBuilt();
+				if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server)) {
+					disabled = ~(1 << this->opt->vehicle.road_side); // disable the other value
+				}
+
+				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
+					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
+				}
+				break;
+			}
+
+			case GOW_TOWNNAME_DROPDOWN: { // Setup townname dropdown
+				list = new DropDownList();
+				*selected_index = this->opt->game_creation.town_name;
+
+				int enabled_item = (_game_mode == GM_MENU || Town::GetNumItems() == 0) ? -1 : *selected_index;
+
+				/* Add and sort original townnames generators */
+				for (int i = 0; i < _nb_orig_names; i++) {
+					list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0));
+				}
+				list->sort(DropDownListStringItem::NatSortFunc);
+
+				/* Add and sort newgrf townnames generators */
+				DropDownList newgrf_names;
+				for (int i = 0; i < _nb_grf_names; i++) {
+					int result = _nb_orig_names + i;
+					newgrf_names.push_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
+				}
+				newgrf_names.sort(DropDownListStringItem::NatSortFunc);
+
+				/* Append newgrf_names at the end of list */
+				if (newgrf_names.size() > 0) {
+					list->push_back(new DropDownListItem(-1, false)); // separator line
+					list->splice(list->end(), newgrf_names);
+				}
+				break;
+			}
+
+			case GOW_AUTOSAVE_DROPDOWN: { // Setup autosave dropdown
+				list = new DropDownList();
+				*selected_index = _settings_client.gui.autosave;
+				const StringID *items = _autosave_dropdown;
+				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
+					list->push_back(new DropDownListStringItem(*items, i, false));
+				}
+				break;
+			}
+
+			case GOW_LANG_DROPDOWN: { // Setup interface language dropdown
+				list = new DropDownList();
+				for (uint i = 0; i < _languages.Length(); i++) {
+					if (&_languages[i] == _current_language) *selected_index = i;
+					list->push_back(new DropDownListStringItem(SPECSTR_LANGUAGE_START + i, i, false));
+				}
+				list->sort(DropDownListStringItem::NatSortFunc);
+				break;
+			}
+
+			case GOW_RESOLUTION_DROPDOWN: // Setup resolution dropdown
+				list = new DropDownList();
+				*selected_index = GetCurRes();
+				for (int i = 0; i < _num_resolutions; i++) {
+					list->push_back(new DropDownListStringItem(SPECSTR_RESOLUTION_START + i, i, false));
+				}
+				break;
+
+			case GOW_SCREENSHOT_DROPDOWN: // Setup screenshot format dropdown
+				list = new DropDownList();
+				*selected_index = _cur_screenshot_format;
+				for (uint i = 0; i < _num_screenshot_formats; i++) {
+					list->push_back(new DropDownListStringItem(SPECSTR_SCREENSHOT_START + i, i, false));
+				}
+				break;
+
+			case GOW_BASE_GRF_DROPDOWN:
+				list = BuiltSetDropDownList<BaseGraphics>(selected_index);
+				break;
+
+			case GOW_BASE_SFX_DROPDOWN:
+				list = BuiltSetDropDownList<BaseSounds>(selected_index);
+				break;
+
+			case GOW_BASE_MUSIC_DROPDOWN:
+				list = BuiltSetDropDownList<BaseMusic>(selected_index);
+				break;
+
+			default:
+				return NULL;
+		}
+
+		return list;
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -285,66 +393,30 @@ struct GameOptionsWindow : Window {
 					*size = maxdim(*size, GetStringBoundingBox(STR_GAME_OPTIONS_BASE_MUSIC_STATUS));
 				}
 				break;
+
+			default: {
+				int selected;
+				DropDownList *list = this->BuildDropDownList(widget, &selected);
+				if (list != NULL) {
+					/* Find the biggest item for the default size. */
+					for (DropDownList::iterator it = list->begin(); it != list->end(); it++) {
+						static const Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
+						Dimension string_dim;
+						int width = (*it)->Width();
+						string_dim.width = width + extra.width;
+						string_dim.height = (*it)->Height(width) + extra.height;
+						*size = maxdim(*size, string_dim);
+						delete *it;
+					}
+					delete list;
+				}
+			}
 		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case GOW_CURRENCY_DROPDOWN: // Setup currencies dropdown
-				ShowDropDownMenu(this, BuildCurrencyDropdown(), this->opt->locale.currency, GOW_CURRENCY_DROPDOWN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
-				break;
-
-			case GOW_DISTANCE_DROPDOWN: // Setup distance unit dropdown
-				ShowDropDownMenu(this, _units_dropdown, this->opt->locale.units, GOW_DISTANCE_DROPDOWN, 0, 0);
-				break;
-
-			case GOW_ROADSIDE_DROPDOWN: { // Setup road-side dropdown
-				int i = 0;
-				extern bool RoadVehiclesAreBuilt();
-
-				/* You can only change the drive side if you are in the menu or ingame with
-				 * no vehicles present. In a networking game only the server can change it */
-				if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server)) {
-					i = (-1) ^ (1 << this->opt->vehicle.road_side); // disable the other value
-				}
-
-				ShowDropDownMenu(this, _driveside_dropdown, this->opt->vehicle.road_side, GOW_ROADSIDE_DROPDOWN, i, 0);
-				break;
-			}
-
-			case GOW_TOWNNAME_DROPDOWN: // Setup townname dropdown
-				ShowTownnameDropdown(this, this->opt->game_creation.town_name);
-				break;
-
-			case GOW_AUTOSAVE_DROPDOWN: // Setup autosave dropdown
-				ShowDropDownMenu(this, _autosave_dropdown, _settings_client.gui.autosave, GOW_AUTOSAVE_DROPDOWN, 0, 0);
-				break;
-
-			case GOW_LANG_DROPDOWN: { // Setup interface language dropdown
-				typedef std::map<StringID, int, StringIDCompare> LangList;
-
-				/* Sort language names */
-				LangList langs;
-				int current_lang = 0;
-				for (int i = 0; i < (int)_languages.Length(); i++) {
-					if (&_languages[i] == _current_language) current_lang = i;
-					langs[SPECSTR_LANGUAGE_START + i] = i;
-				}
-
-				DropDownList *list = new DropDownList();
-				for (LangList::iterator it = langs.begin(); it != langs.end(); it++) {
-					list->push_back(new DropDownListStringItem((*it).first, (*it).second, false));
-				}
-
-				ShowDropDownList(this, list, current_lang, GOW_LANG_DROPDOWN);
-				break;
-			}
-
-			case GOW_RESOLUTION_DROPDOWN: // Setup resolution dropdown
-				ShowDropDownMenu(this, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GOW_RESOLUTION_DROPDOWN, 0, 0);
-				break;
-
 			case GOW_FULLSCREEN_BUTTON: // Click fullscreen on/off
 				/* try to toggle full-screen on/off */
 				if (!ToggleFullScreen(!_fullscreen)) {
@@ -354,21 +426,14 @@ struct GameOptionsWindow : Window {
 				this->SetDirty();
 				break;
 
-			case GOW_SCREENSHOT_DROPDOWN: // Setup screenshot format dropdown
-				ShowDropDownMenu(this, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GOW_SCREENSHOT_DROPDOWN, 0, 0);
+			default: {
+				int selected;
+				DropDownList *list = this->BuildDropDownList(widget, &selected);
+				if (list != NULL) {
+					ShowDropDownList(this, list, selected, widget);
+				}
 				break;
-
-			case GOW_BASE_GRF_DROPDOWN:
-				ShowSetMenu<BaseGraphics>(this, GOW_BASE_GRF_DROPDOWN);
-				break;
-
-			case GOW_BASE_SFX_DROPDOWN:
-				ShowSetMenu<BaseSounds>(this, GOW_BASE_SFX_DROPDOWN);
-				break;
-
-			case GOW_BASE_MUSIC_DROPDOWN:
-				ShowSetMenu<BaseMusic>(this, GOW_BASE_MUSIC_DROPDOWN);
-				break;
+			}
 		}
 	}
 
