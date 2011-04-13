@@ -3804,7 +3804,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadium
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Offices
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Houses
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Cinema
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Shopping mall
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Shopping centre
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igloo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teapot-House
