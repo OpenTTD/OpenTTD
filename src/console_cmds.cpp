@@ -1459,8 +1459,8 @@ DEF_CONSOLE_CMD(ConHelp)
 	IConsolePrint(CC_DEFAULT, " - to assign strings, or use them as arguments, enclose it within quotes");
 	IConsolePrint(CC_DEFAULT, " like this: '<command> \"string argument with spaces\"'");
 	IConsolePrint(CC_DEFAULT, " - use 'help <command>' to get specific information");
-	IConsolePrint(CC_DEFAULT, " - scroll console output with shift + (up | down) | (pageup | pagedown))");
-	IConsolePrint(CC_DEFAULT, " - scroll console input history with the up | down arrows");
+	IConsolePrint(CC_DEFAULT, " - scroll console output with shift + (up | down | pageup | pagedown)");
+	IConsolePrint(CC_DEFAULT, " - scroll console input history with the up or down arrows");
 	IConsolePrint(CC_DEFAULT, "");
 	return true;
 }
