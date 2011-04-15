@@ -3877,7 +3877,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadion
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Pisarne
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Hiše
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Kino
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Trgovski center
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Nakupovalni center
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipiji
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Čajnik-hiša
@@ -4339,6 +4339,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

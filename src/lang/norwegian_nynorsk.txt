@@ -168,11 +168,11 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passasjer{P "" s}
-STR_BAGS                                                        :{COMMA} sekkar
-STR_TONS                                                        :{COMMA} tonn
-STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} einingar
-STR_CRATES                                                      :{COMMA} kasser
+STR_BAGS                                                        :{COMMA} sekkar{P "" s}
+STR_TONS                                                        :{COMMA} tonn{P "" s}
+STR_LITERS                                                      :{COMMA} liter{P "" s}
+STR_ITEMS                                                       :{COMMA} einingar{P "" s}
+STR_CRATES                                                      :{COMMA} kassar{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå
@@ -333,9 +333,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskap
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygenerering
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrigenerering
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vegbygging
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant tre
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant tre. Shift vekslar mellom planting og kostnadsoverslag
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plasser skilt
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasser objekt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasser objekt, Shift vekslar mellom bygging og estimert kostnad
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lagre scenario
@@ -818,8 +818,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er gammal
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er veldig gammal
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er veldig gammal, og må bytast ut snarast
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikkje finna spor å fortsetta på
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} har køyrt seg vill.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikkje finna spor vidare
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} har køyrt seg vill
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s forteneste i fjor var {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppa pga. ombygningsordre feila
@@ -834,8 +834,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} godtek no {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} godtek no {STRING} og {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} vil ikkje lenger vere subsidiert.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie trekt attende:{}{}Transport av {STRING} frå {STRING} til {STRING} er ikkje subsidiert lenger.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} får ikkje lenger subsidiar
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie trekt attende:{}{}{STRING} teneste frå {STRING} til {STRING} får ikkje lenger subsidiar
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsidie-tilbod:{}{}Første transport av {STRING} frå {STRING} til {STRING} vil vere subsidiert i eit år av bystyret!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje 50{NBSP}% ekstra forteneste det neste året!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje dobbel inntekt i eit år!
@@ -847,9 +847,9 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindauge {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til tilleggsvindauge
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier hovedvisninga til dette tilleggsvindauge
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier stad i hovedvisinga til dette tilleggsvindauga
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kopier frå tilleggsvindauge
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier staden til dette tilleggsvindauget til hovedvisninga
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier staden frå dette tilleggsvindauget til hovedvisinga
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinnstillingar
@@ -1105,7 +1105,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillet 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillet landskapsendringar under bygningar, spor o.s.b.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillet frjerning av fleire vegar, bruar osb. egd av byane.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal lengde på tog {ORANGE}{STRING} ruter{P 0:1 "" s}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal lengde på tog {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Køyretøyers akselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
@@ -1116,8 +1116,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Bruk fo
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last køyretøy gradvis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever varer til ein stasjon kun hvis det er etterspørjing: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimal lengde på bru: {ORANGE}{STRING} ruter{P 0:1 "" s}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimal tunnel lengde: {ORANGE}{STRING} ruter{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimal lengde på bru: {ORANGE}{STRING} rute{P 0:1 "" r}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimal tunnel lengde: {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for primærindustri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :inga
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industriar
@@ -1147,7 +1147,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillet 
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillet stoppestadar med gjennomkøyring på konkurent-eigde vegar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillet å byggje stasjonar inntil andre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Aktiver fleire NewGRF-kjernesett: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Endring av denne instillinga er ikkje mogleg når det finst bilar.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Endring av denne instillinga er ikkje mogleg når det finst køyretøy
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flyplassar utgår aldri: {ORANGE}{STRING}
 
@@ -1161,13 +1161,13 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køyret
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autoforny køyretøy når det vert gamalt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny køyretøy når det er {ORANGE}{STRING}{LTBLUE} mnd. før/etter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum formue for autofornying av køyretøy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING} sekund
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Syne innbyggjartalet til byane i tittel: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landskapsgenerator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maks. avstand frå kartkant for oljeraffinerier {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maks avstand frå kartkant for oljeraffinerier: {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Snøgrense: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Kor ulendt skal terrenget vere (kun TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Særs jamnt
@@ -1214,7 +1214,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Venstreknapps-rulling: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for lagra spel
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for namning av lagra spel
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1239,10 +1239,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hold by
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupper utgifter i firmarekneskapen-vindauget: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Ikkje tillet konstruksjon av infrastruktur om ingen passande køyretøy er tilgjengeleg: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks. antal tog per speler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks. antal køyretøy per spelar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks. antal luftfartøy per spelar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks. antal skip per spelar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks antal bilar per firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal luftfartøy per firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks antal skip per firma: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Hindre datamaskina i å byggje tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Hindre datamaskina i å byggje køyretøy: {ORANGE}{STRING}
@@ -1253,9 +1253,9 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillet 
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes før AI blir avbrutt: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}{STRING} dag{P 0:1 "" ar}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}deaktivert
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standard vedlikehaldsintervall for bilar: {ORANGE}{STRING} dag{P 0:1 "" ar}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard vedlikehaldsintervall for luftfartøy: {ORANGE}{STRING} dagar/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
@@ -1344,6 +1344,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vegfinn
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkje anbefalt)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatisk reversering ved signal: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Byt innstillingsverdi
 
@@ -2030,6 +2031,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg fly
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Vel flyplasstype
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vel storleik og flyplasstype
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Flyplasstype
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
 
 STR_AIRPORT_SMALL                                               :Liten
 STR_AIRPORT_CITY                                                :Storby
@@ -2129,8 +2131,15 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansier
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikjede for {STRING} industri
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Vareproduserande industriar
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Vareaksepterande industriar
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikk på industrien for å sjå vareleverandørar og kundar
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikk på lasta for å sjå leverandørar og kundar
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{G=masculine}{BLACK}Forsyningskjede
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Syn vareleverande og varemottakande industriar
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Kople til oversiktskart
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om landområde
@@ -2398,7 +2407,9 @@ STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Endre Ne
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Lukk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nullstill
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set alle parametrar til standardverdi
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrar: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiser - {STRING}
@@ -3428,6 +3439,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... felt
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... allereie bygd
 STR_ERROR_OWNED_BY                                              :{WHITE}... eigd av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... feltet er eigd av eit anna firma
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landskapningsgrense nådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet må vera unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er i vegen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikkje tillet når spelet er pausa
@@ -3468,6 +3480,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dette se
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikkje byggje nokon byar
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikkje byte namn på byen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikkje grunnleggja by her...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan ikkje utvida byen...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for nært kanten på kartet
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for nær ein annan by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byar
@@ -3475,6 +3488,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbeid pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller ei by-egd rute som ikkje kan fjernast
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passande plass til statue i sentrum av denne byen
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... for mange industriar
@@ -3638,6 +3652,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikkj
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel for lang
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... for mange objekt
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan ikkje byggje objektet...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i vegen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hovudkontor til firma er i vegen
