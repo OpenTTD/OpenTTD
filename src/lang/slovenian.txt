@@ -22,7 +22,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(nedefinirana vrstica)
+STR_UNDEFINED                                                   :(nedoločen niz)
 STR_JUST_NOTHING                                                :Nič
 
 # Cargo related strings
@@ -116,18 +116,22 @@ STR_CARGO_PLURAL_COLA.d                                         :Cockti
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Sladkorna pena
 STR_CARGO_PLURAL_COTTON_CANDY.r                                 :Sladkorne pene
 STR_CARGO_PLURAL_COTTON_CANDY.d                                 :Sladkorni peni
+STR_CARGO_PLURAL_COTTON_CANDY.t                                 :Sladkorno peno
 STR_CARGO_PLURAL_BUBBLES                                        :Mehurčki
 STR_CARGO_PLURAL_BUBBLES.r                                      :Mehurčkov
 STR_CARGO_PLURAL_BUBBLES.d                                      :Mehurčkom
+STR_CARGO_PLURAL_BUBBLES.t                                      :Mehurčke
 STR_CARGO_PLURAL_TOFFEE                                         :Karamela
 STR_CARGO_PLURAL_TOFFEE.r                                       :Karamele
 STR_CARGO_PLURAL_TOFFEE.d                                       :Karameli
+STR_CARGO_PLURAL_TOFFEE.t                                       :Karamelo
 STR_CARGO_PLURAL_BATTERIES                                      :Baterije
 STR_CARGO_PLURAL_BATTERIES.r                                    :Baterij
 STR_CARGO_PLURAL_BATTERIES.d                                    :Baterijam
 STR_CARGO_PLURAL_PLASTIC                                        :Plastika
 STR_CARGO_PLURAL_PLASTIC.r                                      :Plastike
 STR_CARGO_PLURAL_PLASTIC.d                                      :Plastiki
+STR_CARGO_PLURAL_PLASTIC.t                                      :Plastiko
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazirane pijače
 STR_CARGO_PLURAL_FIZZY_DRINKS.r                                 :Gaziranih pijač
 STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :Gaziranim pijačam
@@ -135,36 +139,112 @@ STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :Gaziranim pija�
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Potnik
+STR_CARGO_SINGULAR_PASSENGER.r                                  :Potnika
+STR_CARGO_SINGULAR_PASSENGER.d                                  :Potniku
+STR_CARGO_SINGULAR_PASSENGER.t                                  :Potnika
 STR_CARGO_SINGULAR_COAL                                         :Premog
+STR_CARGO_SINGULAR_COAL.r                                       :Premoga
+STR_CARGO_SINGULAR_COAL.d                                       :Premogu
 STR_CARGO_SINGULAR_MAIL                                         :Pošta
+STR_CARGO_SINGULAR_MAIL.r                                       :Pošte
+STR_CARGO_SINGULAR_MAIL.d                                       :Pošti
+STR_CARGO_SINGULAR_MAIL.t                                       :Pošto
 STR_CARGO_SINGULAR_OIL                                          :Nafta
+STR_CARGO_SINGULAR_OIL.r                                        :Nafte
+STR_CARGO_SINGULAR_OIL.d                                        :Nafti
+STR_CARGO_SINGULAR_OIL.t                                        :Nafto
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Živina
+STR_CARGO_SINGULAR_LIVESTOCK.r                                  :Živine
+STR_CARGO_SINGULAR_LIVESTOCK.d                                  :Živini
+STR_CARGO_SINGULAR_LIVESTOCK.t                                  :Živino
 STR_CARGO_SINGULAR_GOODS                                        :Izdelki
 STR_CARGO_SINGULAR_GRAIN                                        :Žito
+STR_CARGO_SINGULAR_GRAIN.r                                      :Žita
+STR_CARGO_SINGULAR_GRAIN.d                                      :Žitu
 STR_CARGO_SINGULAR_WOOD                                         :Les
+STR_CARGO_SINGULAR_WOOD.r                                       :Lesa
+STR_CARGO_SINGULAR_WOOD.d                                       :Lesu
 STR_CARGO_SINGULAR_IRON_ORE                                     :Železova ruda
+STR_CARGO_SINGULAR_IRON_ORE.r                                   :Železove rude
+STR_CARGO_SINGULAR_IRON_ORE.d                                   :Železovi rudi
+STR_CARGO_SINGULAR_IRON_ORE.t                                   :Železovo rudo
 STR_CARGO_SINGULAR_STEEL                                        :Jeklo
+STR_CARGO_SINGULAR_STEEL.r                                      :Jekla
+STR_CARGO_SINGULAR_STEEL.d                                      :Jeklu
 STR_CARGO_SINGULAR_VALUABLES                                    :Vrednosti
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Bakrova ruda
+STR_CARGO_SINGULAR_COPPER_ORE.r                                 :Bakrove rude
+STR_CARGO_SINGULAR_COPPER_ORE.d                                 :Bakrovi rudi
+STR_CARGO_SINGULAR_COPPER_ORE.t                                 :Bakrovo rudo
 STR_CARGO_SINGULAR_MAIZE                                        :Koruza
+STR_CARGO_SINGULAR_MAIZE.r                                      :Koruze
+STR_CARGO_SINGULAR_MAIZE.d                                      :Koruzi
+STR_CARGO_SINGULAR_MAIZE.t                                      :Koruzo
 STR_CARGO_SINGULAR_FRUIT                                        :Sadje
+STR_CARGO_SINGULAR_FRUIT.r                                      :Sadja
+STR_CARGO_SINGULAR_FRUIT.d                                      :Sadju
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
+STR_CARGO_SINGULAR_DIAMOND.r                                    :Diamanta
+STR_CARGO_SINGULAR_DIAMOND.d                                    :Diamantu
 STR_CARGO_SINGULAR_FOOD                                         :Hrana
+STR_CARGO_SINGULAR_FOOD.r                                       :Hrane
+STR_CARGO_SINGULAR_FOOD.d                                       :Hrani
+STR_CARGO_SINGULAR_FOOD.t                                       :Hrano
 STR_CARGO_SINGULAR_PAPER                                        :Papir
+STR_CARGO_SINGULAR_PAPER.r                                      :Papirja
+STR_CARGO_SINGULAR_PAPER.d                                      :Papirju
 STR_CARGO_SINGULAR_GOLD                                         :Zlato
+STR_CARGO_SINGULAR_GOLD.r                                       :Zlata
+STR_CARGO_SINGULAR_GOLD.d                                       :Zlatu
 STR_CARGO_SINGULAR_WATER                                        :Voda
+STR_CARGO_SINGULAR_WATER.r                                      :Vode
+STR_CARGO_SINGULAR_WATER.d                                      :Vodi
+STR_CARGO_SINGULAR_WATER.t                                      :Vodo
 STR_CARGO_SINGULAR_WHEAT                                        :Pšenica
-STR_CARGO_SINGULAR_RUBBER                                       :Guma
+STR_CARGO_SINGULAR_WHEAT.r                                      :Pšenice
+STR_CARGO_SINGULAR_WHEAT.d                                      :Pšenici
+STR_CARGO_SINGULAR_WHEAT.t                                      :Pšenico
+STR_CARGO_SINGULAR_RUBBER                                       :Kavčuk
+STR_CARGO_SINGULAR_RUBBER.r                                     :Kavčuka
+STR_CARGO_SINGULAR_RUBBER.d                                     :Kavčuku
 STR_CARGO_SINGULAR_SUGAR                                        :Sladkor
+STR_CARGO_SINGULAR_SUGAR.r                                      :Sladkorja
+STR_CARGO_SINGULAR_SUGAR.d                                      :Sladkorju
 STR_CARGO_SINGULAR_TOY                                          :Igrača
+STR_CARGO_SINGULAR_TOY.r                                        :Igrače
+STR_CARGO_SINGULAR_TOY.d                                        :Igrači
+STR_CARGO_SINGULAR_TOY.t                                        :Igračo
 STR_CARGO_SINGULAR_CANDY                                        :Sladkarija
+STR_CARGO_SINGULAR_CANDY.r                                      :Sladkarije
+STR_CARGO_SINGULAR_CANDY.d                                      :Sladkariji
+STR_CARGO_SINGULAR_CANDY.t                                      :Sladkarijo
 STR_CARGO_SINGULAR_COLA                                         :Cockta
+STR_CARGO_SINGULAR_COLA.r                                       :Cockte
+STR_CARGO_SINGULAR_COLA.d                                       :Cockti
+STR_CARGO_SINGULAR_COLA.t                                       :Cockto
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sladkorna pena
+STR_CARGO_SINGULAR_COTTON_CANDY.r                               :Sladkorne pene
+STR_CARGO_SINGULAR_COTTON_CANDY.d                               :Sladkorni peni
+STR_CARGO_SINGULAR_COTTON_CANDY.t                               :Sladkorno peno
 STR_CARGO_SINGULAR_BUBBLE                                       :Mehurček
+STR_CARGO_SINGULAR_BUBBLE.r                                     :Mehurčka
+STR_CARGO_SINGULAR_BUBBLE.d                                     :Mehurčku
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamela
+STR_CARGO_SINGULAR_TOFFEE.r                                     :Karamele
+STR_CARGO_SINGULAR_TOFFEE.d                                     :Karameli
+STR_CARGO_SINGULAR_TOFFEE.t                                     :Karamelo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterija
+STR_CARGO_SINGULAR_BATTERY.r                                    :Baterije
+STR_CARGO_SINGULAR_BATTERY.d                                    :Bateriji
+STR_CARGO_SINGULAR_BATTERY.t                                    :Baterijo
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastika
+STR_CARGO_SINGULAR_PLASTIC.r                                    :Plastike
+STR_CARGO_SINGULAR_PLASTIC.d                                    :Plastiki
+STR_CARGO_SINGULAR_PLASTIC.t                                    :Plastiko
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gazirana pijača
+STR_CARGO_SINGULAR_FIZZY_DRINK.r                                :Gazirane pijače
+STR_CARGO_SINGULAR_FIZZY_DRINK.d                                :Gazirani pijači
+STR_CARGO_SINGULAR_FIZZY_DRINK.t                                :Gazirano pijačo
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -192,7 +272,7 @@ STR_QUANTITY_RUBBER                                             :{VOLUME} kavču
 STR_QUANTITY_SUGAR                                              :{WEIGHT} sladkorja
 STR_QUANTITY_TOYS                                               :{COMMA} igrač{P a i e ""}
 STR_QUANTITY_SWEETS                                             :{COMMA} vreč{P a i e ""} sladkarij
-STR_QUANTITY_COLA                                               :{VOLUME} cockte
+STR_QUANTITY_COLA                                               :{VOLUME} Cockte
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} sladkorne pene
 STR_QUANTITY_BUBBLES                                            :{COMMA} balonč{P ek ka ki kov}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamele
@@ -223,14 +303,14 @@ STR_ABBREV_PAPER                                                :{TINYFONT}PA
 STR_ABBREV_GOLD                                                 :{TINYFONT}ZL
 STR_ABBREV_WATER                                                :{TINYFONT}VO
 STR_ABBREV_WHEAT                                                :{TINYFONT}PN
-STR_ABBREV_RUBBER                                               :{TINYFONT}GU
+STR_ABBREV_RUBBER                                               :{TINYFONT}KČ
 STR_ABBREV_SUGAR                                                :{TINYFONT}SK
 STR_ABBREV_TOYS                                                 :{TINYFONT}IG
 STR_ABBREV_SWEETS                                               :{TINYFONT}SL
 STR_ABBREV_COLA                                                 :{TINYFONT}CK
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}SP
 STR_ABBREV_BUBBLES                                              :{TINYFONT}MH
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GP
@@ -270,16 +350,16 @@ STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}KM
 STR_UNITS_POWER_METRIC                                          :{COMMA}KM
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_SI                                              :{COMMA} kW
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a i e ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P er ra ri ov}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
@@ -290,41 +370,41 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vnesi vrstico za filtriranje
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vnesi besedni ključ, po katerem se bo filtriral seznam
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vnesite niz za filtriranje
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vnesite ključno besedo, s katero se bo filtriral seznam
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberi način sortiranja (padajoče/naraščajoce)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izberi kriterij za sortiranje
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izberi način filtriranja
-STR_BUTTON_SORT_BY                                              :{BLACK}Sortiraj po
-STR_BUTTON_LOCATION                                             :{BLACK}Lokacija
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberite način razvrščanja (padajoče/naraščajoče)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izberite kriterij razvrščanja
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izberite kriterij filtriranja
+STR_BUTTON_SORT_BY                                              :{BLACK}Razvrsti po
+STR_BUTTON_LOCATION                                             :{BLACK}Mesto
 STR_BUTTON_RENAME                                               :{BLACK}Preimenuj
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zapri okno
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov okna - primi in vleci za premik okna
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naziv okna - s tem lahko premaknete okno
 STR_TOOLTIP_SHADE                                               :{BLACK}Senči okno - pokaži samo naslov
-STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaži informacije razhroščevanja NewGRF
+STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaži podatke razhroščevanja NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Označi to okno za nezapirljivo z 'Zapri vsa okna' tipko
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikni in vleci to, da zmanjšaš okno
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Preklopi veliko/majhno velikost okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsnik - premakne seznam gor/dol
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsni trak - premika seznam levo/desno
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsnik - premakne seznam levo/desno
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Poruši zgradbe itd. na kvadratku zemlje. Ctrl izbere diagonalno območje. Shift preklaplja med izgradnjo in predvidenimi stroški
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Privzeto
 STR_BUTTON_CANCEL                                               :{BLACK}Prekliči
-STR_BUTTON_OK                                                   :{BLACK}Potrdi
+STR_BUTTON_OK                                                   :{BLACK}V redu
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :¸1234567890'+qwertzuiopšđasdfghjklčćž<yxcvbnm,.-
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :¨!"#$%&/()=?*QWERTZUIOPŠĐASDFGHJKLČĆŽ>YXCVBNM;:_
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Dolžina: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Območje: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Površina: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dolžina: {NUM}{}Višinska razlika: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Območje: {NUM} x {NUM}{}Višinska razlika: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Površina: {NUM} x {NUM}{}Višinska razlika: {HEIGHT}
 
 
 # These are used in buttons
@@ -335,7 +415,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 STR_SORT_BY_POPULATION                                          :Prebivalstvo
 STR_SORT_BY_NAME                                                :Ime
 STR_SORT_BY_PRODUCTION                                          :Proizvodnja
-STR_SORT_BY_TYPE                                                :Tip
+STR_SORT_BY_TYPE                                                :Vrsta
 STR_SORT_BY_TRANSPORTED                                         :Prepeljano
 STR_SORT_BY_NUMBER                                              :Število
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Dobiček v zadnjem letu
@@ -349,7 +429,7 @@ STR_SORT_BY_VALUE                                               :Vrednost
 STR_SORT_BY_LENGTH                                              :Dolžina
 STR_SORT_BY_LIFE_TIME                                           :Ostala življenjska doba
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zamuda urnika
-STR_SORT_BY_FACILITY                                            :Tip postaje
+STR_SORT_BY_FACILITY                                            :Vrsta postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
 STR_SORT_BY_RATING_MAX                                          :Najvišja ocena tovora
 STR_SORT_BY_RATING_MIN                                          :Najnižja ocena tovora
@@ -363,30 +443,30 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moč/Cena delov
 STR_SORT_BY_CARGO_CAPACITY                                      :Zmogljivost tovora
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pavza
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Premor
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hitro naprej
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Možnosti
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Shrani igro, zapusti igro, izhod
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži zemljevid, dodatno okno ali seznam znakov
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Prikaži imenik mest
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži seznam postaj podjetja
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Prikaži finančne podatke podjetja
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži splošne podatke podjetja
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafe
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Pokaži zemljevid, dodatno okno ali seznam oznak
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Pokaži seznam mest
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Pokaži subvencije
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Pokaži seznam postaj podjetja
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Pokaži finančne podatke podjetja
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Pokaži splošne podatke podjetja
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Pokaži grafe
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tabelo lige podjetij
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiraj izgradnjo nove industrije ali si oglej seznam vseh industrij
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži seznam vlakov podjetja. Ctrl+Klik preklopi na seznam skupin/vozil
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži seznam cestnih vozil podjetja. Ctrl+Klik preklopi na seznam skupin/vozil
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financirajte izgradnjo nove industrije ali si oglejte seznam vseh industrij
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Pokaži seznam vlakov. Ctrl+Klik odpre seznam skupin/vozil
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Pokaži seznam cestnih vozil. Ctrl+Klik preklopi na seznam skupin/vozil
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaži seznam ladij podjetja. Ctrl+Klik preklopi na seznam skupin/vozil
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži seznam letal podjetja. Ctrl+Klik preklopi na seznam skupin/vozil
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Približaj pogled
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Oddalji pogled
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Postavi železniške tire
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Zgradi železniške tire
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Zgradi ceste
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Zgradi pristanišča
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Zgradi letališča
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Odpre orodje za teren in sajenje dreves, itd.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Odpri orodja za oblikovanje terena, sajenje dreves, itd.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Prikaži okno za zvok/glasbo
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Prikaži zadnje sporočilo/novico, prikaži možnosti sporočil
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o terenu, konzola, razhroščevanje UI, zaslonske slike, o OpenTTD
