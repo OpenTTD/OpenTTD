@@ -1870,7 +1870,49 @@ void Vehicle::BeginLoading()
 					(!prev_order->IsType(OT_AUTOMATIC) && !prev_order->IsType(OT_GOTO_STATION)) ||
 					prev_order->GetDestination() != this->last_station_visited) {
 
-				if (!suppress_automatic_orders && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID && Order::CanAllocateItem()) {
+				/* Prefer deleting automatic orders instead of inserting new ones,
+				 * so test whether the right order follows later */
+				int target_index = this->cur_auto_order_index;
+				bool found = false;
+				while (target_index != this->cur_real_order_index) {
+					const Order *order = this->GetOrder(target_index);
+					if (order->IsType(OT_AUTOMATIC) && order->GetDestination() == this->last_station_visited) {
+						found = true;
+						break;
+					}
+					target_index++;
+					if (target_index >= this->orders.list->GetNumOrders()) target_index = 0;
+					assert(target_index != this->cur_auto_order_index); // infinite loop?
+				}
+
+				if (found) {
+					if (suppress_automatic_orders) {
+						/* Skip to the found order */
+						this->cur_auto_order_index = target_index;
+						InvalidateVehicleOrder(this, 0);
+					} else {
+						/* Delete all automatic orders up to the station we just reached */
+						const Order *order = this->GetOrder(this->cur_auto_order_index);
+						while (!order->IsType(OT_AUTOMATIC) || order->GetDestination() != this->last_station_visited) {
+							if (order->IsType(OT_AUTOMATIC)) {
+								/* Delete order effectively deletes order, so get the next before deleting it. */
+								order = order->next;
+								DeleteOrder(this, this->cur_auto_order_index);
+							} else {
+								/* Skip non-automatic orders, e.g. service-orders */
+								order = order->next;
+								this->cur_auto_order_index++;
+							}
+
+							/* Wrap around */
+							if (order == NULL) {
+								order = this->GetOrder(0);
+								this->cur_auto_order_index = 0;
+							}
+							assert(order != NULL);
+						}
+					}
+				} else if (!suppress_automatic_orders && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID && Order::CanAllocateItem()) {
 					/* Insert new automatic order */
 					Order *auto_order = new Order();
 					auto_order->MakeAutomatic(this->last_station_visited);
