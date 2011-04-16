@@ -1797,6 +1797,17 @@ uint GetVehicleCapacity(const Vehicle *v, uint16 *mail_capacity)
  */
 void Vehicle::DeleteUnreachedAutoOrders()
 {
+	if (this->IsGroundVehicle()) {
+		uint16 &gv_flags = this->GetGroundVehicleFlags();
+		if (HasBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS)) {
+			/* Do not delete orders, only skip them */
+			ClrBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+			this->cur_auto_order_index = this->cur_real_order_index;
+			InvalidateVehicleOrder(this, 0);
+			return;
+		}
+	}
+
 	const Order *order = this->GetOrder(this->cur_auto_order_index);
 	while (order != NULL) {
 		if (this->cur_auto_order_index == this->cur_real_order_index) break;
@@ -1843,6 +1854,9 @@ void Vehicle::BeginLoading()
 		this->current_order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
 
 	} else {
+		assert(this->IsGroundVehicle());
+		bool suppress_automatic_orders = HasBit(this->GetGroundVehicleFlags(), GVF_SUPPRESS_AUTOMATIC_ORDERS);
+
 		/* We weren't scheduled to stop here. Insert an automatic order
 		 * to show that we are stopping here, but only do that if the order
 		 * list isn't empty. */
@@ -1850,6 +1864,7 @@ void Vehicle::BeginLoading()
 		if (in_list != NULL && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID &&
 				(!in_list->IsType(OT_AUTOMATIC) ||
 				in_list->GetDestination() != this->last_station_visited) &&
+				!suppress_automatic_orders &&
 				Order::CanAllocateItem()) {
 			Order *auto_order = new Order();
 			auto_order->MakeAutomatic(this->last_station_visited);
