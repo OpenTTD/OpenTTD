@@ -830,6 +830,13 @@ void InsertOrder(Vehicle *v, Order *new_o, VehicleOrderID sel_ord)
 				u->cur_real_order_index = cur;
 			}
 		}
+		if (sel_ord == u->cur_auto_order_index && u->IsGroundVehicle()) {
+			/* We are inserting an order just before the current automatic order.
+			 * We do not know whether we will reach current automatic or the newly inserted order first.
+			 * So, disable creation of automatic orders until we are on track again. */
+			uint16 &gv_flags = u->GetGroundVehicleFlags();
+			SetBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+		}
 		if (sel_ord <= u->cur_auto_order_index) {
 			uint cur = u->cur_auto_order_index + 1;
 			/* Check if we don't go out of bound */

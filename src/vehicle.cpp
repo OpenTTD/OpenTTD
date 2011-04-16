@@ -1870,6 +1870,11 @@ void Vehicle::BeginLoading()
 			auto_order->MakeAutomatic(this->last_station_visited);
 			InsertOrder(this, auto_order, this->cur_auto_order_index);
 			if (this->cur_auto_order_index > 0) --this->cur_auto_order_index;
+
+			/* InsertOrder disabled creation of automatic orders for all vehicles with the same automatic order.
+			 * Reenable it for this vehicle */
+			uint16 &gv_flags = this->GetGroundVehicleFlags();
+			ClrBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
 		}
 		this->current_order.MakeLoading(false);
 	}
