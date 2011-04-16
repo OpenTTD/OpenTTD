@@ -969,11 +969,12 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 		if (order->IsType(OT_CONDITIONAL)) {
 			VehicleOrderID order_id = order->GetConditionSkipToOrder();
 			if (order_id >= sel_ord) {
-				order->SetConditionSkipToOrder(max(order_id - 1, 0));
+				order_id = max(order_id - 1, 0);
 			}
 			if (order_id == cur_order_id) {
-				order->SetConditionSkipToOrder((order_id + 1) % v->GetNumOrders());
+				order_id = (order_id + 1) % v->GetNumOrders();
 			}
+			order->SetConditionSkipToOrder(order_id);
 		}
 		cur_order_id++;
 	}
