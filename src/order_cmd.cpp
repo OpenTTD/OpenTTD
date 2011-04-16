@@ -1865,6 +1865,13 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 				v->cur_auto_order_index = v->cur_real_order_index = next_order;
 				v->UpdateRealOrderIndex();
 				v->current_order_time += v->GetOrder(v->cur_real_order_index)->travel_time;
+
+				/* Disable creation of automatic orders.
+				 * When inserting them we do not know that we would have to make the conditional orders point to them. */
+				if (v->IsGroundVehicle()) {
+					uint16 &gv_flags = v->GetGroundVehicleFlags();
+					SetBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+				}
 			} else {
 				UpdateVehicleTimetable(v, true);
 				v->IncrementRealOrderIndex();
