@@ -1861,20 +1861,28 @@ void Vehicle::BeginLoading()
 		 * to show that we are stopping here, but only do that if the order
 		 * list isn't empty. */
 		Order *in_list = this->GetOrder(this->cur_auto_order_index);
-		if (in_list != NULL && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID &&
+		if (in_list != NULL &&
 				(!in_list->IsType(OT_AUTOMATIC) ||
-				in_list->GetDestination() != this->last_station_visited) &&
-				!suppress_automatic_orders &&
-				Order::CanAllocateItem()) {
-			Order *auto_order = new Order();
-			auto_order->MakeAutomatic(this->last_station_visited);
-			InsertOrder(this, auto_order, this->cur_auto_order_index);
-			if (this->cur_auto_order_index > 0) --this->cur_auto_order_index;
+				in_list->GetDestination() != this->last_station_visited)) {
+			/* Do not create consecutive duplicates of automatic orders */
+			Order *prev_order = this->cur_auto_order_index > 0 ? this->GetOrder(this->cur_auto_order_index - 1) : NULL;
+			if (prev_order == NULL ||
+					(!prev_order->IsType(OT_AUTOMATIC) && !prev_order->IsType(OT_GOTO_STATION)) ||
+					prev_order->GetDestination() != this->last_station_visited) {
 
-			/* InsertOrder disabled creation of automatic orders for all vehicles with the same automatic order.
-			 * Reenable it for this vehicle */
-			uint16 &gv_flags = this->GetGroundVehicleFlags();
-			ClrBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+				if (!suppress_automatic_orders && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID && Order::CanAllocateItem()) {
+					/* Insert new automatic order */
+					Order *auto_order = new Order();
+					auto_order->MakeAutomatic(this->last_station_visited);
+					InsertOrder(this, auto_order, this->cur_auto_order_index);
+					if (this->cur_auto_order_index > 0) --this->cur_auto_order_index;
+
+					/* InsertOrder disabled creation of automatic orders for all vehicles with the same automatic order.
+					 * Reenable it for this vehicle */
+					uint16 &gv_flags = this->GetGroundVehicleFlags();
+					ClrBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+				}
+			}
 		}
 		this->current_order.MakeLoading(false);
 	}
