@@ -1986,6 +1986,11 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			 * then skip to the next order; effectively cancelling this forced service */
 			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->IncrementRealOrderIndex();
 
+			if (this->IsGroundVehicle()) {
+				uint16 &gv_flags = this->GetGroundVehicleFlags();
+				SetBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+			}
+
 			this->current_order.MakeDummy();
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 		}
@@ -2000,6 +2005,11 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 	if (flags & DC_EXEC) {
 		if (this->current_order.IsType(OT_LOADING)) this->LeaveStation();
+
+		if (this->IsGroundVehicle()) {
+			uint16 &gv_flags = this->GetGroundVehicleFlags();
+			SetBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+		}
 
 		this->dest_tile = location;
 		this->current_order.MakeGoToDepot(destination, ODTF_MANUAL);
