@@ -2392,6 +2392,36 @@ const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
 }
 
 /**
+ * Access the ground vehicle flags of the vehicle.
+ * @pre The vehicle is a #GroundVehicle.
+ * @return #GroundVehicleFlags of the vehicle.
+ */
+uint16 &Vehicle::GetGroundVehicleFlags()
+{
+	assert(this->IsGroundVehicle());
+	if (this->type == VEH_TRAIN) {
+		return Train::From(this)->gv_flags;
+	} else {
+		return RoadVehicle::From(this)->gv_flags;
+	}
+}
+
+/**
+ * Access the ground vehicle flags of the vehicle.
+ * @pre The vehicle is a #GroundVehicle.
+ * @return #GroundVehicleFlags of the vehicle.
+ */
+const uint16 &Vehicle::GetGroundVehicleFlags() const
+{
+	assert(this->IsGroundVehicle());
+	if (this->type == VEH_TRAIN) {
+		return Train::From(this)->gv_flags;
+	} else {
+		return RoadVehicle::From(this)->gv_flags;
+	}
+}
+
+/**
  * Calculates the set of vehicles that will be affected by a given selection.
  * @param set [inout] Set of affected vehicles.
  * @param v First vehicle of the selection.

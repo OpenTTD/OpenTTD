@@ -249,6 +249,9 @@ public:
 	GroundVehicleCache *GetGroundVehicleCache();
 	const GroundVehicleCache *GetGroundVehicleCache() const;
 
+	uint16 &GetGroundVehicleFlags();
+	const uint16 &GetGroundVehicleFlags() const;
+
 	void DeleteUnreachedAutoOrders();
 
 	void HandleLoading(bool mode = false);
