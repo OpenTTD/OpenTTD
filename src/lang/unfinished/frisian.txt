@@ -2716,7 +2716,6 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... wein
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kin rydrjochting fan de trein net oanpasse
-STR_ERROR_TRAIN_START_NO_CATENARY                               :sûnder boppelieding kin de trein net ride
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Wein kin net omkeare
 

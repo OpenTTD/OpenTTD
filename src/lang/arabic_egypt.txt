@@ -3736,7 +3736,6 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ال
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}لا يمكن عكس اتجاة القطار...
-STR_ERROR_TRAIN_START_NO_CATENARY                               :هذة السكة تفتقد السلسال لذا لا يستطيع القطار ان يتحرك
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}لا يمكن تغيير اتجاة المركبة الان
 

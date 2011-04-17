@@ -3947,7 +3947,6 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozi
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemoguć je prolaz voza na signal opasnosti...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}... vozilo je uništeno
-STR_ERROR_TRAIN_START_NO_CATENARY                               :Voz ne može da se kreće jer pruga nije elektrifikovana
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Drumsko vozilo ne može da se okrene...
 

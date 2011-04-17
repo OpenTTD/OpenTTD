@@ -3793,7 +3793,6 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... sõi
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Rongi ei saa ohu korral sundida signaale eirama...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ei saa rongi ümber pöörata.
-STR_ERROR_TRAIN_START_NO_CATENARY                               :Selle raja ahel puudub, rong ei saa sõitu alustada
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Maanteesõiduk ei saa ümber pöörata...
 
