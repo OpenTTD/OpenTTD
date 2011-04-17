@@ -55,7 +55,7 @@ DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)
 
 typedef void QueryCallbackProc(Window*, bool);
 
-void ShowQueryString(StringID str, StringID caption, uint max_len, uint max_pixels, Window *parent, CharSetFilter afilter, QueryStringFlags flags);
+void ShowQueryString(StringID str, StringID caption, uint max_len, Window *parent, CharSetFilter afilter, QueryStringFlags flags);
 void ShowQuery(StringID caption, StringID message, Window *w, QueryCallbackProc *callback);
 
 /** The number of 'characters' on the on-screen keyboard. */

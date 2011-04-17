@@ -1365,7 +1365,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 {
 	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
 
-	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, uint max_pixels, const WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
+	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, const WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			QueryStringBaseWindow(max_bytes, max_chars)
 	{
 		GetString(this->edit_str_buf, str, &this->edit_str_buf[max_bytes - 1]);
@@ -1382,7 +1382,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		this->caption = caption;
 		this->afilter = afilter;
 		this->flags = flags;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, max_bytes, max_chars, max_pixels);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, max_bytes, max_chars, 0);
 
 		this->InitNested(desc);
 
@@ -1508,16 +1508,15 @@ static const WindowDesc _query_string_desc(
  * @param str StringID for the text shown in the textbox
  * @param caption StringID of text shown in caption of querywindow
  * @param maxsize maximum size in bytes or characters (including terminating '\0') depending on flags
- * @param maxwidth maximum width in pixels allowed
  * @param parent pointer to a Window that will handle the events (ok/cancel) of this
  *        window. If NULL, results are handled by global function HandleOnEditText
  * @param afilter filters out unwanted character input
  * @param flags various flags, @see QueryStringFlags
  */
-void ShowQueryString(StringID str, StringID caption, uint maxsize, uint maxwidth, Window *parent, CharSetFilter afilter, QueryStringFlags flags)
+void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *parent, CharSetFilter afilter, QueryStringFlags flags)
 {
 	DeleteWindowById(WC_QUERY_STRING, 0);
-	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, maxwidth, &_query_string_desc, parent, afilter, flags);
+	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, &_query_string_desc, parent, afilter, flags);
 }
 
 

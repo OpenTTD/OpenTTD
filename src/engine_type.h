@@ -154,8 +154,7 @@ enum EngineFlags {
 	ENGINE_OFFER_WINDOW_OPEN = 4, ///< The exclusive offer window is currently open for a company.
 };
 
-static const uint MAX_LENGTH_ENGINE_NAME_CHARS  =  32; ///< The maximum length of an engine name in characters including '\0'
-static const uint MAX_LENGTH_ENGINE_NAME_PIXELS = 160; ///< The maximum length of an engine name in pixels
+static const uint MAX_LENGTH_ENGINE_NAME_CHARS = 32; ///< The maximum length of an engine name in characters including '\0'
 
 static const EngineID INVALID_ENGINE = 0xFFFF; ///< Constant denoting an invalid engine.
 

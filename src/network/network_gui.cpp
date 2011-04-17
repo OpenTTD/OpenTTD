@@ -749,7 +749,6 @@ public:
 					STR_JUST_RAW_STRING,
 					STR_NETWORK_SERVER_LIST_ENTER_IP,
 					NETWORK_HOSTNAME_LENGTH,  // maximum number of characters including '\0'
-					0,                        // no limit in pixels
 					this, CS_ALPHANUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
 
@@ -1121,7 +1120,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_SETPWD: // Set password button
 				this->widget_id = NSSW_SETPWD;
 				SetDParamStr(0, _settings_client.network.server_password);
-				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_START_SERVER_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_START_SERVER_SET_PASSWORD, 20, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_CONNTYPE_BTN: // Connection type
@@ -1154,19 +1153,19 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_CLIENTS_TXT:    // Click on number of clients
 				this->widget_id = NSSW_CLIENTS_TXT;
 				SetDParam(0, _settings_client.network.max_clients);
-				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS,    4, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS,    4, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_COMPANIES_TXT:  // Click on number of companies
 				this->widget_id = NSSW_COMPANIES_TXT;
 				SetDParam(0, _settings_client.network.max_companies);
-				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES,  3, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES,  3, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_SPECTATORS_TXT: // Click on number of spectators
 				this->widget_id = NSSW_SPECTATORS_TXT;
 				SetDParam(0, _settings_client.network.max_spectators);
-				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, 4, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, 4, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_LANGUAGE_BTN: { // Language
@@ -2204,7 +2203,7 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION; break;
 		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
 	}
-	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, 180, w, CS_ALPHANUMERAL, QSF_NONE);
+	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_NONE);
 }
 
 

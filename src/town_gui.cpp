@@ -451,7 +451,7 @@ public:
 
 			case TVW_CHANGENAME: // rename
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_TOWN_NAME, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_CHARS, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				ShowQueryString(STR_TOWN_NAME, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
 			case TVW_EXPAND: { // expand town - only available on Scenario editor
@@ -1030,7 +1030,7 @@ public:
 			params(_settings_game.game_creation.town_name)
 	{
 		this->InitNested(desc, window_number);
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars, MAX_LENGTH_TOWN_NAME_PIXELS);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars, 0);
 		this->RandomTownName();
 		this->UpdateButtons(true);
 	}

@@ -1455,7 +1455,7 @@ public:
 			/* 'Company manager face number' button, view and/or set company manager face number */
 			case SCMFW_WIDGET_FACECODE:
 				SetDParam(0, this->face);
-				ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, 0, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			/* Save button */
@@ -1952,13 +1952,13 @@ struct CompanyWindow : Window
 			case CW_WIDGET_PRESIDENT_NAME:
 				this->query_widget = CW_WIDGET_PRESIDENT_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_PRESIDENT_NAME, STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION, MAX_LENGTH_PRESIDENT_NAME_CHARS, MAX_LENGTH_PRESIDENT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				ShowQueryString(STR_PRESIDENT_NAME, STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION, MAX_LENGTH_PRESIDENT_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
 			case CW_WIDGET_COMPANY_NAME:
 				this->query_widget = CW_WIDGET_COMPANY_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_COMPANY_NAME, STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				ShowQueryString(STR_COMPANY_NAME, STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
 			case CW_WIDGET_VIEW_HQ: {
@@ -2007,7 +2007,7 @@ struct CompanyWindow : Window
 					MarkWholeScreenDirty();
 				} else if (NetworkCompanyIsPassworded(company)) {
 					/* ask for the password */
-					ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, 180, this, CS_ALPHANUMERAL, QSF_NONE);
+					ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, this, CS_ALPHANUMERAL, QSF_NONE);
 				} else {
 					/* just send the join command */
 					NetworkClientRequestMove(company);

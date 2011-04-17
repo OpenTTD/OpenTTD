@@ -556,7 +556,7 @@ struct TimetableWindow : Window {
 					}
 				}
 
-				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, this, CS_NUMERAL, QSF_NONE);
 				break;
 			}
 

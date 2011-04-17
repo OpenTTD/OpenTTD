@@ -334,7 +334,7 @@ struct CheatWindow : Window {
 		if (btn == CHT_CHANGE_DATE && x >= 40) {
 			/* Click at the date text directly. */
 			SetDParam(0, value);
-			ShowQueryString(STR_JUST_INT, STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+			ShowQueryString(STR_JUST_INT, STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 			return;
 		}
 

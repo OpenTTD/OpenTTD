@@ -342,7 +342,7 @@ struct NewGRFParametersWindow : public Window {
 				} else if (par_info->type == PTYPE_UINT_ENUM && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
 					SetDParam(0, this->grf_config->param[num]);
-					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, 100, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
 
 				this->SetDirty();
@@ -786,7 +786,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_PRESET_SAVE:
-				ShowQueryString(STR_EMPTY, STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY, 32, 100, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_EMPTY, STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY, 32, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case SNGRFS_PRESET_DELETE:

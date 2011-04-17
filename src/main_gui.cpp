@@ -123,7 +123,7 @@ void ShowNetworkGiveMoneyWindow(CompanyID company)
 {
 	_rename_id = company;
 	_rename_what = 3;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, NULL, CS_NUMERAL, QSF_NONE);
+	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, NULL, CS_NUMERAL, QSF_NONE);
 }
 #endif /* ENABLE_NETWORK */
 

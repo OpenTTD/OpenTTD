@@ -397,7 +397,7 @@ struct AISettingsWindow : public Window {
 					/* Display a query box so users can enter a custom value. */
 					this->clicked_row = num;
 					SetDParam(0, this->ai_config->GetSetting(config_item.name));
-					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, 100, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
 
 				this->SetDirty();

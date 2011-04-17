@@ -633,7 +633,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_START_DATE_TEXT: // Year text
 				this->widget_id = GLAND_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case GLAND_SNOW_LEVEL_DOWN:
@@ -651,7 +651,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SNOW_LEVEL_TEXT: // Snow line text
 				this->widget_id = GLAND_SNOW_LEVEL_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.snow_line_height);
-				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 3, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case GLAND_TREE_PULLDOWN: // Tree placer
@@ -759,7 +759,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				if ((uint)index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					SetDParam(0, _settings_newgame.game_creation.custom_town_number);
-					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_TOWNS, 5, 50, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, QSF_NONE);
 				}
 				IConsoleSetSetting("difficulty.number_towns", index);
 				break;
@@ -780,7 +780,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				if ((uint)index == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					SetDParam(0, _settings_newgame.game_creation.custom_sea_level);
-					ShowQueryString(STR_JUST_INT, STR_MAPGEN_QUANTITY_OF_SEA_LAKES, 3, 50, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_MAPGEN_QUANTITY_OF_SEA_LAKES, 3, this, CS_NUMERAL, QSF_NONE);
 				}
 				GameMode old_gm = _game_mode;
 				_game_mode = GM_MENU;
@@ -1031,7 +1031,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_START_DATE_TEXT: // Year text
 				this->widget_id = CSCEN_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case CSCEN_FLAT_LAND_HEIGHT_DOWN:
@@ -1049,7 +1049,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
 				this->widget_id = CSCEN_FLAT_LAND_HEIGHT_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.se_flat_world_height);
-				ShowQueryString(STR_JUST_INT, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, this, CS_NUMERAL, QSF_NONE);
 				break;
 		}
 	}
