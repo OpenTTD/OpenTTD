@@ -563,13 +563,13 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			WaitTillSaved();
 
 			/* Set the status to DONE_MAP, no we will wait for the client
-				*  to send it is ready (maybe that happens like never ;)) */
+			 *  to send it is ready (maybe that happens like never ;)) */
 			this->status = STATUS_DONE_MAP;
 
 			NetworkClientSocket *new_cs;
 			bool new_map_client = false;
 			/* Check if there is a client waiting for receiving the map
-				*  and start sending him the map */
+			 *  and start sending him the map */
 			FOR_ALL_CLIENT_SOCKETS(new_cs) {
 				if (new_cs->status == STATUS_MAP_WAIT) {
 					/* Check if we already have a new client to send the map to */
