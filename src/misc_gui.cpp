@@ -1159,13 +1159,10 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
  * @param tb Textbuf type which is getting initialized
  * @param buf the buffer that will be holding the data for input
  * @param max_bytes maximum size in bytes, including terminating '\0'
- * @param max_pixels maximum length in pixels of this buffer. If reached, buffer
- * cannot grow, even if maxsize would allow because there is space. Width
- * of zero '0' means the buffer is only restricted by maxsize
  */
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_pixels)
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes)
 {
-	InitializeTextBuffer(tb, buf, max_bytes, max_bytes, max_pixels);
+	InitializeTextBuffer(tb, buf, max_bytes, max_bytes);
 }
 
 /**
@@ -1175,11 +1172,8 @@ void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_p
  * @param buf the buffer that will be holding the data for input
  * @param max_bytes maximum size in bytes, including terminating '\0'
  * @param max_chars maximum size in chars, including terminating '\0'
- * @param max_pixels maximum length in pixels of this buffer. If reached, buffer
- * cannot grow, even if maxsize would allow because there is space. Width
- * of zero '0' means the buffer is only restricted by maxsize
  */
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars, uint16 max_pixels)
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars)
 {
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
@@ -1187,7 +1181,7 @@ void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_c
 	tb->buf        = buf;
 	tb->max_bytes  = max_bytes;
 	tb->max_chars  = max_chars;
-	tb->max_pixels = max_pixels;
+	tb->max_pixels = 0;
 	tb->caret      = true;
 	UpdateTextBufferSize(tb);
 }
@@ -1382,7 +1376,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		this->caption = caption;
 		this->afilter = afilter;
 		this->flags = flags;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, max_bytes, max_chars, 0);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, max_bytes, max_chars);
 
 		this->InitNested(desc);
 

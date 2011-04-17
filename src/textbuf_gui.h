@@ -38,8 +38,8 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode);
 bool InsertTextBufferChar(Textbuf *tb, uint32 key);
 bool InsertTextBufferClipboard(Textbuf *tb);
 bool MoveTextBufferPos(Textbuf *tb, int navmode);
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_pixels);
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars, uint16 max_pixels);
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes);
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars);
 void UpdateTextBufferSize(Textbuf *tb);
 
 /** Flags used in ShowQueryString() call */

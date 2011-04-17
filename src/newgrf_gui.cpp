@@ -510,7 +510,6 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	typedef GUIList<const GRFConfig *> GUIGRFConfigList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50;
-	static const uint EDITBOX_MAX_LENGTH = 300;
 
 	static Listing   last_sorting;   ///< Default sorting of #GUIGRFConfigList.
 	static Filtering last_filtering; ///< Default filtering of #GUIGRFConfigList.
@@ -556,7 +555,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 		this->GetWidget<NWidgetStacked>(SNGRFS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(desc);
 
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(SNGRFS_FILTER);
 
 		this->avails.SetListing(this->last_sorting);

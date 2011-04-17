@@ -356,7 +356,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 		/* snprintf() always outputs trailing '\0', so whole buffer can be used */
 		snprintf(this->edit_str_buf, this->edit_str_size, "%u", _settings_newgame.game_creation.generation_seed);
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
 		this->caption = STR_NULL;
 		this->afilter = CS_NUMERAL;
 

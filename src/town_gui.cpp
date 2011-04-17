@@ -1030,7 +1030,7 @@ public:
 			params(_settings_game.game_creation.town_name)
 	{
 		this->InitNested(desc, window_number);
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars, 0);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars);
 		this->RandomTownName();
 		this->UpdateButtons(true);
 	}
