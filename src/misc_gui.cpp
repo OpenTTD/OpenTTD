@@ -1042,7 +1042,7 @@ bool InsertTextBufferChar(Textbuf *tb, WChar key)
 {
 	const byte charwidth = GetCharacterWidth(FS_NORMAL, key);
 	uint16 len = (uint16)Utf8CharLen(key);
-	if (tb->bytes + len <= tb->max_bytes && tb->chars + 1 <= tb->max_chars && (tb->max_pixels == 0 || tb->pixels + charwidth <= tb->max_pixels)) {
+	if (tb->bytes + len <= tb->max_bytes && tb->chars + 1 <= tb->max_chars) {
 		memmove(tb->buf + tb->caretpos + len, tb->buf + tb->caretpos, tb->bytes - tb->caretpos);
 		Utf8Encode(tb->buf + tb->caretpos, key);
 		tb->chars++;
@@ -1079,7 +1079,6 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		if (tb->chars + chars + 1   > tb->max_chars) break;
 
 		byte char_pixels = GetCharacterWidth(FS_NORMAL, c);
-		if (tb->max_pixels != 0 && pixels + tb->pixels + char_pixels > tb->max_pixels) break;
 
 		pixels += char_pixels;
 		bytes += len;
@@ -1181,7 +1180,6 @@ void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_c
 	tb->buf        = buf;
 	tb->max_bytes  = max_bytes;
 	tb->max_chars  = max_chars;
-	tb->max_pixels = 0;
 	tb->caret      = true;
 	UpdateTextBufferSize(tb);
 }
