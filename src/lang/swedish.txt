@@ -3736,7 +3736,6 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ford
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan inte byta tågets riktning...
-STR_ERROR_TRAIN_START_NO_CATENARY                               :Detta spår saknar kedjekurva, så tåget kan inte starta
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Fordon kan inte vända...
 
@@ -3804,7 +3803,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Arena
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Kontor
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Hus
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Biograf
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Shoppingcentra
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Shoppingcenter
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igloo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Kåtor
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Tekanne-Hus
@@ -4228,6 +4227,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

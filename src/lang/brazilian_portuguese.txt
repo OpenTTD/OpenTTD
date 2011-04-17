@@ -3737,7 +3737,6 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veí
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossível fazer o trem passar o sinal de perigo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Impossível inverter a direção do trem...
-STR_ERROR_TRAIN_START_NO_CATENARY                               :Essa linha não tem energia, portanto o trem não parte
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossível virar o veículo...
 
@@ -3805,7 +3804,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Estádio
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Escritórios
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Casas
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Cinema
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Centro Comercial
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Shopping center
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglú
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Ocas
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa-bule
