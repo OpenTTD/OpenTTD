@@ -262,7 +262,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 		}
 		if (tot |= quot || i >= max_digits - zerofill) {
 			buff += seprintf(buff, last, "%i", (int)quot);
-			if ((i % 3) == thousands_offset && i != max_digits - 1) buff = strecpy(buff, separator, last);
+			if ((i % 3) == thousands_offset && i < max_digits - 1 - fractional_digits) buff = strecpy(buff, separator, last);
 		}
 
 		divisor /= 10;
