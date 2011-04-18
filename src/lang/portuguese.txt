@@ -3804,7 +3804,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Estádio
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Escritórios
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Casas
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Cinema
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Centro Comercial
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Centro comercial
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipis
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa-bule
