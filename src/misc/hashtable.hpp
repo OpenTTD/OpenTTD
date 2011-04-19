@@ -145,19 +145,14 @@ protected:
 	 */
 	typedef CHashTableSlotT<Titem_> Slot;
 
-	Slot *m_slots;     // here we store our data (array of blobs)
-	int   m_num_items; // item counter
+	Slot  m_slots[Tcapacity]; // here we store our data (array of blobs)
+	int   m_num_items;        // item counter
 
 public:
 	/* default constructor */
-	FORCEINLINE CHashTableT()
+	FORCEINLINE CHashTableT() : m_num_items(0)
 	{
-		/* construct all slots */
-		m_slots = new Slot[Tcapacity];
-		m_num_items = 0;
 	}
-
-	~CHashTableT() {delete [] m_slots; m_num_items = 0; m_slots = NULL;}
 
 protected:
 	/** static helper - return hash for the given key modulo number of slots */
@@ -180,7 +175,7 @@ public:
 	FORCEINLINE int Count() const {return m_num_items;}
 
 	/** simple clear - forget all items - used by CSegmentCostCacheT.Flush() */
-	FORCEINLINE void Clear() const {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
+	FORCEINLINE void Clear() {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
 
 	/** const item search */
 	const Titem_ *Find(const Tkey& key) const
