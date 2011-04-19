@@ -2457,6 +2457,9 @@
     <ClInclude Include="..\src\pathfinder\yapf\yapf_node_road.hpp">
       <Filter>YAPF</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\pathfinder\yapf\yapf_node_ship.hpp">
+      <Filter>YAPF</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\pathfinder\yapf\yapf_rail.cpp">
       <Filter>YAPF</Filter>
     </ClCompile>

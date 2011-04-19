@@ -880,6 +880,7 @@ pathfinder/yapf/yapf_destrail.hpp
 pathfinder/yapf/yapf_node.hpp
 pathfinder/yapf/yapf_node_rail.hpp
 pathfinder/yapf/yapf_node_road.hpp
+pathfinder/yapf/yapf_node_ship.hpp
 pathfinder/yapf/yapf_rail.cpp
 pathfinder/yapf/yapf_road.cpp
 pathfinder/yapf/yapf_ship.cpp
