@@ -1329,9 +1329,6 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(מ�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבות
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבים
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לכלי שייט
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :{BLUE}(מקורי (מומלץ
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(לא מומלץ)
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}שנה ערך
 

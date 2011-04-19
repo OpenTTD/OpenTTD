@@ -627,8 +627,6 @@ STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Хул�
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Чӑн {BLUE}(Recommended)
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
 
 # Intro window
