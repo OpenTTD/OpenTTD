@@ -1657,6 +1657,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Цяг�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Населеныя пункты
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Прамысловасць
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :арыгінальны
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(рэкамэндуецца)
 

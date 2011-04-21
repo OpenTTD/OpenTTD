@@ -1436,6 +1436,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlakovi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Gradovi
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Preporučljivo)
 
