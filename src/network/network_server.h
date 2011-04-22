@@ -76,6 +76,7 @@ public:
 	Packet *savegame_packets;      ///< Packet queue of the savegame; send these "slowly" to the client.
 	struct PacketWriter *savegame; ///< Writer used to write the savegame.
 	ThreadMutex *savegame_mutex;   ///< Mutex for making threaded saving safe.
+	NetworkAddress client_address; ///< IP-address of the client (so he can be banned)
 
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();

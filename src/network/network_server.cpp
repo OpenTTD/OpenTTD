@@ -1813,7 +1813,7 @@ void NetworkServerDailyLoop()
  */
 const char *ServerNetworkGameSocketHandler::GetClientIP()
 {
-	return this->GetInfo()->client_address.GetHostname();
+	return this->client_address.GetHostname();
 }
 
 void NetworkServerShowStatusToConsole()
@@ -1936,11 +1936,11 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 	uint n = 0;
 
 	/* There can be multiple clients with the same IP, kick them all */
-	NetworkClientInfo *ci;
-	FOR_ALL_CLIENT_INFOS(ci) {
-		if (ci->client_id == CLIENT_ID_SERVER) continue;
-		if (ci->client_address.IsInNetmask(const_cast<char *>(ip))) {
-			NetworkServerKickClient(ci->client_id);
+	NetworkClientSocket *cs;
+	FOR_ALL_CLIENT_SOCKETS(cs) {
+		if (cs->client_id == CLIENT_ID_SERVER) continue;
+		if (cs->client_address.IsInNetmask(const_cast<char *>(ip))) {
+			NetworkServerKickClient(cs->client_id);
 			n++;
 		}
 	}

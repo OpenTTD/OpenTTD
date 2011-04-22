@@ -484,7 +484,7 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 	ServerNetworkGameSocketHandler *cs = new ServerNetworkGameSocketHandler(s);
-	cs->GetInfo()->client_address = address; // Save the IP of the client
+	cs->client_address = address; // Save the IP of the client
 }
 
 /**
@@ -684,11 +684,6 @@ static void NetworkInitGameInfo()
 	assert(NetworkClientInfo::CanAllocateItem());
 	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : _local_company;
-	/* Give the server a valid IP; banning it is pointless anyways */
-	sockaddr_in sock;
-	memset(&sock, 0, sizeof(sock));
-	sock.sin_family = AF_INET;
-	ci->client_address = NetworkAddress((sockaddr*)&sock, sizeof(sock));
 
 	strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
 }
