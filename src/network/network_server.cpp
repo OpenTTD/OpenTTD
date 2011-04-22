@@ -1919,6 +1919,11 @@ void NetworkServerKickClient(ClientID client_id)
 	NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
 }
 
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban)
+{
+	return NetworkServerKickOrBanIP(GetClientIP(NetworkClientInfo::GetByClientID(client_id)), ban);
+}
+
 uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 {
 	/* Add address to ban-list */

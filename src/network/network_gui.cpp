@@ -1717,7 +1717,7 @@ static void ClientList_Kick(const NetworkClientInfo *ci)
 
 static void ClientList_Ban(const NetworkClientInfo *ci)
 {
-	NetworkServerKickOrBanIP(GetClientIP(const_cast<NetworkClientInfo *>(ci)), true);
+	NetworkServerKickOrBanIP(ci->client_id, true);
 }
 
 static void ClientList_GiveMoney(const NetworkClientInfo *ci)

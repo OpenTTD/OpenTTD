@@ -490,7 +490,7 @@ DEF_CONSOLE_CMD(ConClearBuffer)
 
 static bool ConKickOrBan(const char *argv, bool ban)
 {
-	const char *ip = argv;
+	uint n;
 
 	if (strchr(argv, '.') == NULL && strchr(argv, ':') == NULL) { // banning with ID
 		ClientID client_id = (ClientID)atoi(argv);
@@ -513,10 +513,11 @@ static bool ConKickOrBan(const char *argv, bool ban)
 		}
 
 		/* When banning, kick+ban all clients with that IP */
-		ip = GetClientIP(ci);
+		n = NetworkServerKickOrBanIP(client_id, ban);
+	} else {
+		n = NetworkServerKickOrBanIP(argv, ban);
 	}
 
-	uint n = NetworkServerKickOrBanIP(ip, ban);
 	if (n == 0) {
 		IConsolePrint(CC_DEFAULT, ban ? "Client not online, address added to banlist" : "Client not found");
 	} else {
