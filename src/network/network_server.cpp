@@ -490,9 +490,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 	NetworkClientSocket *new_cs;
 	Packet *p;
 
-	/* Count how many clients are waiting in the queue */
+	/* Count how many clients are waiting in the queue, in front of you! */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status == STATUS_MAP_WAIT) waiting++;
+		if (new_cs->status != STATUS_MAP_WAIT) continue;
+		if (new_cs->GetInfo()->join_date < this->GetInfo()->join_date || (new_cs->GetInfo()->join_date == this->GetInfo()->join_date && new_cs->client_id < this->client_id)) waiting++;
 	}
 
 	p = new Packet(PACKET_SERVER_WAIT);
@@ -561,22 +562,26 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			 *  to send it is ready (maybe that happens like never ;)) */
 			this->status = STATUS_DONE_MAP;
 
+			/* Find the best candidate for joining, i.e. the first joiner. */
 			NetworkClientSocket *new_cs;
-			bool new_map_client = false;
-			/* Check if there is a client waiting for receiving the map
-			 *  and start sending him the map */
+			NetworkClientSocket *best = NULL;
 			FOR_ALL_CLIENT_SOCKETS(new_cs) {
 				if (new_cs->status == STATUS_MAP_WAIT) {
-					/* Check if we already have a new client to send the map to */
-					if (!new_map_client) {
-						/* If not, this client will get the map */
-						new_cs->status = STATUS_AUTHORIZED;
-						new_map_client = true;
-						new_cs->SendMap();
-					} else {
-						/* Else, send the other clients how many clients are in front of them */
-						new_cs->SendWait();
+					if (best == NULL || best->GetInfo()->join_date > new_cs->GetInfo()->join_date || (best->GetInfo()->join_date == new_cs->GetInfo()->join_date && best->client_id > new_cs->client_id)) {
+						best = new_cs;
 					}
+				}
+			}
+
+			/* Is there someone else to join? */
+			if (best != NULL) {
+				/* Let the first start joining. */
+				best->status = STATUS_AUTHORIZED;
+				best->SendMap();
+
+				/* And update the rest. */
+				FOR_ALL_CLIENT_SOCKETS(new_cs) {
+					if (new_cs->status == STATUS_MAP_WAIT) new_cs->SendWait();
 				}
 			}
 		}
