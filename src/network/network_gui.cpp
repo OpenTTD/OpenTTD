@@ -1692,8 +1692,11 @@ NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company)
 
 extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 
-/* Every action must be of this form */
-typedef void ClientList_Action_Proc(byte client_no);
+/**
+ * Prototype for ClientList actions.
+ * @param ci The information about the current client.
+ */
+typedef void ClientList_Action_Proc(const NetworkClientInfo *ci);
 
 static const NWidgetPart _nested_client_list_popup_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, 0), EndContainer(),
@@ -1720,46 +1723,32 @@ static NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 }
 
 /* Here we start to define the options out of the menu */
-static void ClientList_Kick(byte client_no)
+static void ClientList_Kick(const NetworkClientInfo *ci)
 {
-	const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
-
-	if (ci == NULL) return;
-
 	NetworkServerKickClient(ci->client_id);
 }
 
-static void ClientList_Ban(byte client_no)
+static void ClientList_Ban(const NetworkClientInfo *ci)
 {
-	NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
-
-	if (ci == NULL) return;
-
-	NetworkServerKickOrBanIP(GetClientIP(ci), true);
+	NetworkServerKickOrBanIP(GetClientIP(const_cast<NetworkClientInfo *>(ci)), true);
 }
 
-static void ClientList_GiveMoney(byte client_no)
+static void ClientList_GiveMoney(const NetworkClientInfo *ci)
 {
-	if (NetworkFindClientInfo(client_no) != NULL) {
-		ShowNetworkGiveMoneyWindow(NetworkFindClientInfo(client_no)->client_playas);
-	}
+	ShowNetworkGiveMoneyWindow(ci->client_playas);
 }
 
-static void ClientList_SpeakToClient(byte client_no)
+static void ClientList_SpeakToClient(const NetworkClientInfo *ci)
 {
-	if (NetworkFindClientInfo(client_no) != NULL) {
-		ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, NetworkFindClientInfo(client_no)->client_id);
-	}
+	ShowNetworkChatQueryWindow(DESTTYPE_CLIENT,ci->client_id);
 }
 
-static void ClientList_SpeakToCompany(byte client_no)
+static void ClientList_SpeakToCompany(const NetworkClientInfo *ci)
 {
-	if (NetworkFindClientInfo(client_no) != NULL) {
-		ShowNetworkChatQueryWindow(DESTTYPE_TEAM, NetworkFindClientInfo(client_no)->client_playas);
-	}
+	ShowNetworkChatQueryWindow(DESTTYPE_TEAM, ci->client_playas);
 }
 
-static void ClientList_SpeakToAll(byte client_no)
+static void ClientList_SpeakToAll(const NetworkClientInfo *ci)
 {
 	ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
 }
@@ -1872,7 +1861,8 @@ struct NetworkClientListPopupWindow : Window {
 			this->SetDirty();
 		} else {
 			if (index < this->actions.Length() && _cursor.pos.y >= this->top) {
-				this->actions[index].proc(this->client_no);
+				const NetworkClientInfo *ci = NetworkFindClientInfo(this->client_no);
+				if (ci != NULL) this->actions[index].proc(ci);
 			}
 
 			DeleteWindowById(WC_CLIENT_LIST_POPUP, 0);
