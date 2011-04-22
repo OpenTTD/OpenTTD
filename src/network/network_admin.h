@@ -50,7 +50,7 @@ public:
 
 	NetworkRecvStatus SendDate();
 	NetworkRecvStatus SendClientJoin(ClientID client_id);
-	NetworkRecvStatus SendClientInfo(const NetworkClientInfo *ci);
+	NetworkRecvStatus SendClientInfo(const NetworkClientSocket *cs);
 	NetworkRecvStatus SendClientUpdate(const NetworkClientInfo *ci);
 	NetworkRecvStatus SendClientQuit(ClientID client_id);
 	NetworkRecvStatus SendClientError(ClientID client_id, NetworkErrorCode error);
@@ -85,7 +85,7 @@ public:
 #define FOR_ALL_ADMIN_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(ServerNetworkAdminSocketHandler, adminsocket_index, var, start)
 #define FOR_ALL_ADMIN_SOCKETS(var) FOR_ALL_ADMIN_SOCKETS_FROM(var, 0)
 
-void NetworkAdminClientInfo(const NetworkClientInfo *ci, bool new_client = false);
+void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client = false);
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci);
 void NetworkAdminClientQuit(ClientID client_id);
 void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code);

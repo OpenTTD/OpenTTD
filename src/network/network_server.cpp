@@ -979,7 +979,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MAP_OK)
 			}
 		}
 
-		NetworkAdminClientInfo(this->GetInfo(), true);
+		NetworkAdminClientInfo(this, true);
 
 		/* also update the new client with our max values */
 		this->SendConfigUpdate();
