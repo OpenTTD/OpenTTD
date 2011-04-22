@@ -116,6 +116,8 @@ public:
 		return "server";
 	}
 
+	const char *GetClientIP();
+
 	static ServerNetworkGameSocketHandler *GetByClientID(ClientID client_id);
 };
 

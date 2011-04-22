@@ -1016,18 +1016,18 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMMAND)
 	NetworkClientInfo *ci = this->GetInfo();
 
 	if (err != NULL) {
-		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SERVER) && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: server only command from: client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: server only command from: client %d (IP: %s), kicking...", ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_KICKED);
 	}
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SPECTATOR) == 0 && !Company::IsValidID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_KICKED);
 	}
 
@@ -1038,7 +1038,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMMAND)
 	 */
 	if (!(cp.cmd == CMD_COMPANY_CTRL && cp.p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrintF(CC_ERROR, "WARNING: client %d (IP: %s) tried to execute a command as company %d, kicking...",
-		               ci->client_playas + 1, GetClientIP(ci), cp.company + 1);
+		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
 		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
@@ -1306,7 +1306,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_CHAT)
 			NetworkServerSendChat(action, desttype, dest, msg, this->client_id, data);
 			break;
 		default:
-			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
+			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, this->GetClientIP());
 			return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 	return NETWORK_RECV_STATUS_OKAY;
@@ -1807,9 +1807,13 @@ void NetworkServerDailyLoop()
 	if ((_date % 7) == 3) NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 }
 
-const char *GetClientIP(NetworkClientInfo *ci)
+/**
+ * Get the IP address/hostname of the connected client.
+ * @return The IP address.
+ */
+const char *ServerNetworkGameSocketHandler::GetClientIP()
 {
-	return ci->client_address.GetHostname();
+	return this->GetInfo()->client_address.GetHostname();
 }
 
 void NetworkServerShowStatusToConsole()
@@ -1838,7 +1842,7 @@ void NetworkServerShowStatusToConsole()
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-			GetClientIP(ci));
+			cs->GetClientIP());
 	}
 }
 
@@ -1921,7 +1925,7 @@ void NetworkServerKickClient(ClientID client_id)
 
 uint NetworkServerKickOrBanIP(ClientID client_id, bool ban)
 {
-	return NetworkServerKickOrBanIP(GetClientIP(NetworkClientInfo::GetByClientID(client_id)), ban);
+	return NetworkServerKickOrBanIP(NetworkClientSocket::GetByClientID(client_id)->GetClientIP(), ban);
 }
 
 uint NetworkServerKickOrBanIP(const char *ip, bool ban)
@@ -1981,7 +1985,7 @@ void NetworkPrintClients()
 				ci->client_id,
 				ci->client_name,
 				ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-				_network_server ? GetClientIP(NetworkClientInfo::GetByClientID(ci->client_id)) : "");
+				_network_server ? NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP() : "");
 	}
 }
 
