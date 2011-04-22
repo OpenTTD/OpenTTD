@@ -115,6 +115,8 @@ public:
 	{
 		return "server";
 	}
+
+	static ServerNetworkGameSocketHandler *GetByClientID(ClientID client_id);
 };
 
 void NetworkServer_Tick(bool send_frame);

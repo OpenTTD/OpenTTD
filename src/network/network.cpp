@@ -124,7 +124,7 @@ NetworkClientInfo::~NetworkClientInfo()
  * @param client_id the ClientID to search for
  * @return return a pointer to the corresponding NetworkClientSocket struct or NULL when not found
  */
-NetworkClientSocket *NetworkFindClientStateFromClientID(ClientID client_id)
+/* static */ NetworkClientSocket *NetworkClientSocket::GetByClientID(ClientID client_id)
 {
 	NetworkClientSocket *cs;
 

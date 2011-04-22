@@ -1890,7 +1890,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	if (client_id == CLIENT_ID_SERVER) {
 		SetLocalCompany(company_id);
 	} else {
-		NetworkClientSocket *cs = NetworkFindClientStateFromClientID(client_id);
+		NetworkClientSocket *cs = NetworkClientSocket::GetByClientID(client_id);
 		/* When the company isn't authorized we can't move them yet. */
 		if (cs->status < NetworkClientSocket::STATUS_AUTHORIZED) return;
 		cs->SendMove(client_id, company_id);
@@ -1905,12 +1905,12 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const char *string)
 {
-	NetworkFindClientStateFromClientID(client_id)->SendRConResult(colour_code, string);
+	NetworkClientSocket::GetByClientID(client_id)->SendRConResult(colour_code, string);
 }
 
 static void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
 {
-	NetworkFindClientStateFromClientID(client_id)->SendError(error);
+	NetworkClientSocket::GetByClientID(client_id)->SendError(error);
 }
 
 void NetworkServerKickClient(ClientID client_id)
