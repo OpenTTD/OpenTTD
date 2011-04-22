@@ -1772,7 +1772,7 @@ struct NetworkClientListPopupWindow : Window {
 		this->desired_location.x = x;
 		this->desired_location.y = y;
 
-		const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+		const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 		if (_network_own_client_id != ci->client_id) {
 			this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, &ClientList_SpeakToClient);
@@ -1848,7 +1848,7 @@ struct NetworkClientListPopupWindow : Window {
 			this->SetDirty();
 		} else {
 			if (index < this->actions.Length() && _cursor.pos.y >= this->top) {
-				const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(this->client_id);
+				const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(this->client_id);
 				if (ci != NULL) this->actions[index].proc(ci);
 			}
 
@@ -1864,7 +1864,7 @@ static void PopupClientList(ClientID client_id, int x, int y)
 {
 	DeleteWindowByClass(WC_CLIENT_LIST_POPUP);
 
-	if (NetworkFindClientInfoFromClientID(client_id) == NULL) return;
+	if (NetworkClientInfo::GetByClientID(client_id) == NULL) return;
 
 	new NetworkClientListPopupWindow(&_client_list_popup_desc, x, y, client_id);
 }

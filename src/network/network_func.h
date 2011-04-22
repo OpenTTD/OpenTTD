@@ -68,7 +68,6 @@ bool NetworkServerStart();
 void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded);
 bool NetworkServerChangeClientName(ClientID client_id, const char *new_name);
 
-NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id);
 const char *GetClientIP(NetworkClientInfo *ci);
 
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);

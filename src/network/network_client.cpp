@@ -556,7 +556,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CLIENT_INFO)
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
-	ci = NetworkFindClientInfoFromClientID(client_id);
+	ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			/* Client name changed, display the change */
@@ -909,7 +909,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 	int64 data = p->Recv_uint64();
 
-	ci_to = NetworkFindClientInfoFromClientID(client_id);
+	ci_to = NetworkClientInfo::GetByClientID(client_id);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
 
 	/* Did we initiate the action locally? */
@@ -918,7 +918,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
 			case NETWORK_ACTION_CHAT_CLIENT:
 				/* For speaking to client we need the client-name */
 				snprintf(name, sizeof(name), "%s", ci_to->client_name);
-				ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
+				ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				break;
 
 			/* For speaking to company or giving money, we need the company-name */
@@ -930,7 +930,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
 				SetDParam(0, ci_to->client_playas);
 
 				GetString(name, str, lastof(name));
-				ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
+				ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				break;
 			}
 
@@ -954,7 +954,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR_QUIT)
 
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, NULL, GetNetworkErrorMsg((NetworkErrorCode)p->Recv_uint8()));
 		delete ci;
@@ -971,7 +971,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_QUIT)
 
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 		delete ci;
@@ -991,7 +991,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_JOIN)
 
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name);
 	}
@@ -1056,7 +1056,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MOVE)
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	/* Just make sure we do not try to use a client_index that does not exist */
 	if (ci == NULL) return NETWORK_RECV_STATUS_OKAY;
 
@@ -1169,7 +1169,7 @@ void NetworkClientsToSpectators(CompanyID cid)
 
 void NetworkUpdateClientName()
 {
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 
 	if (ci == NULL) return;
 

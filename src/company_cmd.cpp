@@ -812,7 +812,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 #ifdef ENABLE_NETWORK
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
-			NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 			if (ci == NULL) return CommandCost();
 
 			/* Delete multiplayer progress bar */

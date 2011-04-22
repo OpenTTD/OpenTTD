@@ -377,7 +377,7 @@ struct MainWindow : Window
 #ifdef ENABLE_NETWORK
 			case GHK_CHAT: // smart chat; send to team if any, otherwise to all
 				if (_networking) {
-					const NetworkClientInfo *cio = NetworkFindClientInfoFromClientID(_network_own_client_id);
+					const NetworkClientInfo *cio = NetworkClientInfo::GetByClientID(_network_own_client_id);
 					if (cio == NULL) break;
 
 					ShowNetworkChatQueryWindow(NetworkClientPreferTeamChat(cio) ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
@@ -390,7 +390,7 @@ struct MainWindow : Window
 
 			case GHK_CHAT_COMPANY: // send text to all team mates
 				if (_networking) {
-					const NetworkClientInfo *cio = NetworkFindClientInfoFromClientID(_network_own_client_id);
+					const NetworkClientInfo *cio = NetworkClientInfo::GetByClientID(_network_own_client_id);
 					if (cio == NULL) break;
 
 					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas);

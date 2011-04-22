@@ -108,7 +108,7 @@ NetworkClientInfo::~NetworkClientInfo()
  * @param client_id the ClientID to search for
  * @return return a pointer to the corresponding NetworkClientInfo struct or NULL when not found
  */
-NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id)
+/* static */ NetworkClientInfo *NetworkClientInfo::GetByClientID(ClientID client_id)
 {
 	NetworkClientInfo *ci;
 

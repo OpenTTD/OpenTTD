@@ -576,7 +576,7 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 					this->SendClientInfo(ci);
 				}
 			} else {
-				ci = NetworkFindClientInfoFromClientID((ClientID)d1);
+				ci = NetworkClientInfo::GetByClientID((ClientID)d1);
 				if (ci != NULL) this->SendClientInfo(ci);
 			}
 			break;

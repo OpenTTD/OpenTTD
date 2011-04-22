@@ -326,7 +326,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 	memset(clients, 0, sizeof(clients));
 
 	/* Add the local player (if not dedicated) */
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 	if (ci != NULL && Company::IsValidID(ci->client_playas)) {
 		strecpy(clients[ci->client_playas], ci->client_name, lastof(clients[ci->client_playas]));
 	}
@@ -487,7 +487,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 		}
 	}
 	/* Also send the info of the server */
-	return this->SendClientInfo(NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
+	return this->SendClientInfo(NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
@@ -1177,7 +1177,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		case DESTTYPE_CLIENT:
 			/* Are we sending to the server? */
 			if ((ClientID)dest == CLIENT_ID_SERVER) {
-				ci = NetworkFindClientInfoFromClientID(from_id);
+				ci = NetworkClientInfo::GetByClientID(from_id);
 				/* Display the text locally, and that is it */
 				if (ci != NULL) {
 					NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
@@ -1199,8 +1199,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			/* Display the message locally (so you know you have sent it) */
 			if (from_id != (ClientID)dest) {
 				if (from_id == CLIENT_ID_SERVER) {
-					ci = NetworkFindClientInfoFromClientID(from_id);
-					ci_to = NetworkFindClientInfoFromClientID((ClientID)dest);
+					ci = NetworkClientInfo::GetByClientID(from_id);
+					ci_to = NetworkClientInfo::GetByClientID((ClientID)dest);
 					if (ci != NULL && ci_to != NULL) {
 						NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), true, ci_to->client_name, msg, data);
 					}
@@ -1233,8 +1233,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
 			}
 
-			ci = NetworkFindClientInfoFromClientID(from_id);
-			ci_own = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+			ci = NetworkClientInfo::GetByClientID(from_id);
+			ci_own = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 			if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
 				NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 				if (from_id == CLIENT_ID_SERVER) show_local = false;
@@ -1272,7 +1272,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 			NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
 
-			ci = NetworkFindClientInfoFromClientID(from_id);
+			ci = NetworkClientInfo::GetByClientID(from_id);
 			if (ci != NULL) {
 				NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 			}
@@ -1502,7 +1502,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 void NetworkUpdateClientInfo(ClientID client_id)
 {
 	NetworkClientSocket *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 	if (ci == NULL) return;
 
@@ -1547,7 +1547,7 @@ static void NetworkAutoCleanCompanies()
 	}
 
 	if (!_network_dedicated) {
-		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+		ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (Company::IsValidID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
@@ -1622,7 +1622,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 			}
 		}
 		/* Check if it is the same as the server-name */
-		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+		ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (ci != NULL) {
 			if (strcmp(ci->client_name, new_name) == 0) found_name = false; // name already in use
 		}
@@ -1653,7 +1653,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 		if (strcmp(ci->client_name, new_name) == 0) return false;
 	}
 
-	ci = NetworkFindClientInfoFromClientID(client_id);
+	ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci == NULL) return false;
 
 	NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, true, ci->client_name, new_name);
@@ -1880,7 +1880,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	/* Only allow non-dedicated servers and normal clients to be moved */
 	if (client_id == CLIENT_ID_SERVER && _network_dedicated) return;
 
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 	/* No need to waste network resources if the client is in the company already! */
 	if (ci->client_playas == company_id) return;

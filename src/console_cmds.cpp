@@ -500,7 +500,7 @@ static bool ConKickOrBan(const char *argv, bool ban)
 			return true;
 		}
 
-		NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+		NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 		if (ci == NULL) {
 			IConsoleError("Invalid client");
 			return true;
@@ -695,7 +695,7 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 		return true;
 	}
 
-	if (NetworkFindClientInfoFromClientID(client_id) == NULL) {
+	if (NetworkClientInfo::GetByClientID(client_id) == NULL) {
 		IConsoleError("Invalid client");
 		return true;
 	}
@@ -723,7 +723,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 		return true;
 	}
 
-	if (NetworkFindClientInfoFromClientID(_network_own_client_id)->client_playas == company_id) {
+	if (NetworkClientInfo::GetByClientID(_network_own_client_id)->client_playas == company_id) {
 		IConsoleError("You are already there!");
 		return true;
 	}
@@ -762,7 +762,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 		return true;
 	}
 
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID((ClientID)atoi(argv[1]));
+	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID((ClientID)atoi(argv[1]));
 	CompanyID company_id = (CompanyID)(atoi(argv[2]) <= MAX_COMPANIES ? atoi(argv[2]) - 1 : atoi(argv[2]));
 
 	/* check the client exists */
@@ -824,7 +824,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		IConsoleError("Cannot remove company: a client is connected to that company.");
 		return false;
 	}
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 	if (ci->client_playas == index) {
 		IConsoleError("Cannot remove company: the server is connected to that company.");
 		return true;
