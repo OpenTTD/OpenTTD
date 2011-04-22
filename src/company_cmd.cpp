@@ -556,7 +556,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	GeneratePresidentName(c);
 
 	SetWindowDirty(WC_GRAPH_LEGEND, 0);
-	SetWindowDirty(WC_TOOLBAR_MENU, 0);
+	SetWindowDirty(WC_CLIENT_LIST_POPUP, 0);
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 	BuildOwnerLegend();
 	InvalidateWindowData(WC_SMALLMAP, 0, 1);

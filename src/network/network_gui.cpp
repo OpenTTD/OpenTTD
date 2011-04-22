@@ -1701,7 +1701,7 @@ static const NWidgetPart _nested_client_list_popup_widgets[] = {
 
 static const WindowDesc _client_list_popup_desc(
 	WDP_AUTO, 0, 0,
-	WC_TOOLBAR_MENU, WC_CLIENT_LIST,
+	WC_CLIENT_LIST_POPUP, WC_CLIENT_LIST,
 	0,
 	_nested_client_list_popup_widgets, lengthof(_nested_client_list_popup_widgets)
 );
@@ -1875,7 +1875,7 @@ struct NetworkClientListPopupWindow : Window {
 				this->actions[index].proc(this->client_no);
 			}
 
-			DeleteWindowById(WC_TOOLBAR_MENU, 0);
+			DeleteWindowById(WC_CLIENT_LIST_POPUP, 0);
 		}
 	}
 };
@@ -1885,7 +1885,7 @@ struct NetworkClientListPopupWindow : Window {
  */
 static void PopupClientList(int client_no, int x, int y)
 {
-	DeleteWindowById(WC_TOOLBAR_MENU, 0);
+	DeleteWindowById(WC_CLIENT_LIST_POPUP, 0);
 
 	if (NetworkFindClientInfo(client_no) == NULL) return;
 
