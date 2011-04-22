@@ -1797,7 +1797,7 @@ struct NetworkClientListPopupWindow : Window {
 		}
 
 		this->flags4 &= ~WF_WHITE_BORDER_MASK;
-		this->InitNested(desc, 0);
+		this->InitNested(desc, client_id);
 	}
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
@@ -1852,7 +1852,7 @@ struct NetworkClientListPopupWindow : Window {
 				if (ci != NULL) this->actions[index].proc(ci);
 			}
 
-			DeleteWindowById(WC_CLIENT_LIST_POPUP, 0);
+			DeleteWindowByClass(WC_CLIENT_LIST_POPUP);
 		}
 	}
 };
@@ -1862,7 +1862,7 @@ struct NetworkClientListPopupWindow : Window {
  */
 static void PopupClientList(ClientID client_id, int x, int y)
 {
-	DeleteWindowById(WC_CLIENT_LIST_POPUP, 0);
+	DeleteWindowByClass(WC_CLIENT_LIST_POPUP);
 
 	if (NetworkFindClientInfoFromClientID(client_id) == NULL) return;
 

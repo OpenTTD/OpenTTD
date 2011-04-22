@@ -253,6 +253,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	extern byte _network_clients_connected;
 	_network_clients_connected--;
 
+	DeleteWindowById(WC_CLIENT_LIST_POPUP, this->client_id);
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	this->SendPackets(true);
