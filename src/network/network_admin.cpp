@@ -208,9 +208,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientSocket *cs)
 {
+	/* Only send data when we're a proper client, not just someone trying to query the server. */
+	const NetworkClientInfo *ci = cs->GetInfo();
+	if (ci == NULL) return NETWORK_RECV_STATUS_OKAY;
+
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_INFO);
 
-	const NetworkClientInfo *ci = cs->GetInfo();
 	p->Send_uint32(ci->client_id);
 	p->Send_string(const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);

@@ -161,12 +161,6 @@ ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : Netwo
 	 * each Socket will be associated with at most one Info object. As
 	 * such if the Socket was allocated the Info object can as well. */
 	assert_compile(NetworkClientSocketPool::MAX_SIZE == NetworkClientInfoPool::MAX_SIZE);
-	assert(NetworkClientInfo::CanAllocateItem());
-
-	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
-	this->SetInfo(ci);
-	ci->client_playas = COMPANY_INACTIVE_CLIENT;
-	ci->join_date = _date;
 }
 
 /**
@@ -794,7 +788,6 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_JOIN)
 	}
 
 	char name[NETWORK_CLIENT_NAME_LENGTH];
-	NetworkClientInfo *ci;
 	CompanyID playas;
 	NetworkLanguage client_lang;
 	char client_revision[NETWORK_REVISION_LENGTH];
@@ -840,8 +833,10 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_JOIN)
 		return this->SendError(NETWORK_ERROR_NAME_IN_USE);
 	}
 
-	ci = this->GetInfo();
-
+	assert(NetworkClientInfo::CanAllocateItem());
+	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
+	this->SetInfo(ci);
+	ci->join_date = _date;
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
@@ -1221,7 +1216,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			ci_to = NULL;
 			FOR_ALL_CLIENT_SOCKETS(cs) {
 				ci = cs->GetInfo();
-				if (ci->client_playas == (CompanyID)dest) {
+				if (ci != NULL && ci->client_playas == (CompanyID)dest) {
 					cs->SendChat(action, from_id, false, msg, data);
 					if (cs->client_id == from_id) show_local = false;
 					ci_to = ci; // Remember a client that is in the company for company-name
@@ -1834,8 +1829,9 @@ void NetworkServerShowStatusToConsole()
 
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		uint lag = NetworkCalculateLag(cs);
 		NetworkClientInfo *ci = cs->GetInfo();
+		if (ci == NULL) continue;
+		uint lag = NetworkCalculateLag(cs);
 		const char *status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
@@ -1967,7 +1963,7 @@ void ServerNetworkGameSocketHandler::GetClientName(char *client_name, size_t siz
 {
 	const NetworkClientInfo *ci = this->GetInfo();
 
-	if (StrEmpty(ci->client_name)) {
+	if (ci == NULL || StrEmpty(ci->client_name)) {
 		snprintf(client_name, size, "Client #%4d", this->client_id);
 	} else {
 		ttd_strlcpy(client_name, ci->client_name, size);
