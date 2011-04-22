@@ -1965,4 +1965,19 @@ void ServerNetworkGameSocketHandler::GetClientName(char *client_name, size_t siz
 	}
 }
 
+/**
+ * Print all the clients to the console
+ */
+void NetworkPrintClients()
+{
+	NetworkClientInfo *ci;
+	FOR_ALL_CLIENT_INFOS(ci) {
+		IConsolePrintF(CC_INFO, _network_server ? "Client #%1d  name: '%s'  company: %1d  IP: %s" : "Client #%1d  name: '%s'  company: %1d",
+				ci->client_id,
+				ci->client_name,
+				ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
+				_network_server ? GetClientIP(NetworkClientInfo::GetByClientID(ci->client_id)) : "");
+	}
+}
+
 #endif /* ENABLE_NETWORK */
