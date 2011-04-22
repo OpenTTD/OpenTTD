@@ -1709,19 +1709,6 @@ static const WindowDesc _client_list_popup_desc(
 	_nested_client_list_popup_widgets, lengthof(_nested_client_list_popup_widgets)
 );
 
-/* Finds the Xth client-info that is active */
-static NetworkClientInfo *NetworkFindClientInfo(byte client_no)
-{
-	NetworkClientInfo *ci;
-
-	FOR_ALL_CLIENT_INFOS(ci) {
-		if (client_no == 0) return ci;
-		client_no--;
-	}
-
-	return NULL;
-}
-
 /* Here we start to define the options out of the menu */
 static void ClientList_Kick(const NetworkClientInfo *ci)
 {
@@ -1762,7 +1749,7 @@ struct NetworkClientListPopupWindow : Window {
 	};
 
 	uint sel_index;
-	int client_no;
+	ClientID client_id;
 	Point desired_location;
 	SmallVector<ClientListAction, 2> actions; ///< Actions to execute
 
@@ -1778,14 +1765,14 @@ struct NetworkClientListPopupWindow : Window {
 		action->proc = proc;
 	}
 
-	NetworkClientListPopupWindow(const WindowDesc *desc, int x, int y, int client_no) :
+	NetworkClientListPopupWindow(const WindowDesc *desc, int x, int y, ClientID client_id) :
 			Window(),
-			sel_index(0), client_no(client_no)
+			sel_index(0), client_id(client_id)
 	{
 		this->desired_location.x = x;
 		this->desired_location.y = y;
 
-		const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
+		const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 
 		if (_network_own_client_id != ci->client_id) {
 			this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, &ClientList_SpeakToClient);
@@ -1861,7 +1848,7 @@ struct NetworkClientListPopupWindow : Window {
 			this->SetDirty();
 		} else {
 			if (index < this->actions.Length() && _cursor.pos.y >= this->top) {
-				const NetworkClientInfo *ci = NetworkFindClientInfo(this->client_no);
+				const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(this->client_id);
 				if (ci != NULL) this->actions[index].proc(ci);
 			}
 
@@ -1873,13 +1860,13 @@ struct NetworkClientListPopupWindow : Window {
 /**
  * Show the popup (action list)
  */
-static void PopupClientList(int client_no, int x, int y)
+static void PopupClientList(ClientID client_id, int x, int y)
 {
 	DeleteWindowById(WC_CLIENT_LIST_POPUP, 0);
 
-	if (NetworkFindClientInfo(client_no) == NULL) return;
+	if (NetworkFindClientInfoFromClientID(client_id) == NULL) return;
 
-	new NetworkClientListPopupWindow(&_client_list_popup_desc, x, y, client_no);
+	new NetworkClientListPopupWindow(&_client_list_popup_desc, x, y, client_id);
 }
 
 
@@ -2016,7 +2003,15 @@ struct NetworkClientListWindow : Window {
 	{
 		/* Show the popup with option */
 		if (this->selected_item != -1) {
-			PopupClientList(this->selected_item, pt.x + this->left, pt.y + this->top);
+			NetworkClientInfo *ci;
+
+			int client_no = this->selected_item;
+			FOR_ALL_CLIENT_INFOS(ci) {
+				if (client_no == 0) break;
+				client_no--;
+			}
+
+			if (ci != NULL) PopupClientList(ci->client_id, pt.x + this->left, pt.y + this->top);
 		}
 	}
 
