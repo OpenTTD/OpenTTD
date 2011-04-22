@@ -2224,7 +2224,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 
 		this->parent = parent;
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(NCPWW_PASSWORD);
 	}
 

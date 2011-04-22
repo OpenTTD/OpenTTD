@@ -288,7 +288,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		this->dtype   = type;
 		this->dest    = dest;
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
 
 		static const StringID chat_captions[] = {
 			STR_NETWORK_CHAT_ALL_CAPTION,
