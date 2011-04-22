@@ -1986,7 +1986,7 @@ void NetworkPrintClients()
 				ci->client_id,
 				ci->client_name,
 				ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-				_network_server ? NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP() : "");
+				_network_server ? (ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP()) : "");
 	}
 }
 
