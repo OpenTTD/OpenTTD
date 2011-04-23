@@ -1340,6 +1340,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Towns
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 
@@ -3733,6 +3734,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehi
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Can't make train pass signal at danger...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Can't reverse direction of train...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Train has no power
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Can't make road vehicle turn around...
 
