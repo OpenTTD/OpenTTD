@@ -1341,6 +1341,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Comboio
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
 
@@ -3734,6 +3735,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o ve
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Não é possível fazer o comboio passar o sinal com perigo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Não é possível inverter a direcção do comboio...
+STR_ERROR_TRAIN_START_NO_POWER                                  :O comboio não tem energia
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossível fazer o veículo dar a volta...
 
@@ -3811,7 +3813,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Mealheiro
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Mina de Carvão
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Central Eléctrica
-STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Marcenaria
+STR_INDUSTRY_NAME_SAWMILL                                       :Carpintaria
 STR_INDUSTRY_NAME_FOREST                                        :{G=f}Floresta
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Refinaria de Petróleo
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma Petrolífera
