@@ -1337,6 +1337,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列车
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}城镇
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工业设施
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :原始的
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(推荐)
 
@@ -1423,6 +1424,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :寒带景观
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :沙漠景观
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :奇幻景观
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}改变日期：{ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}改变当前年份
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}开启可调整产量模式：{ORANGE}{STRING}
 
 # Livery window
@@ -2822,7 +2824,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}汽车�
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船只列表 - 点击可以查看详细信息
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飞机列表 - 点击可以查看详细信息
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}购买汽车
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}购买车头/车厢
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}购买汽车
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}购买船只
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}购买飞机
@@ -3187,6 +3189,8 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}跳过�
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}删除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}删除高亮的调度命令
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}删除全部调度
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}退出共享调度计划
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}退出共享调度计划。 按住 Ctrl 键单击可以同时清除此运输工具的调度计划。
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的车库
@@ -4211,6 +4215,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

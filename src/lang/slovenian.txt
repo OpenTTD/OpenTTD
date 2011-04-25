@@ -1493,6 +1493,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaki
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mesta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Priporočeno)
 
@@ -3886,6 +3887,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozi
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ni mogoče spremeniti smeri vlaka...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Vlak nima napajanja
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Cestno vozilo ne more obrniti...
 
