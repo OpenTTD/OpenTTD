@@ -2150,7 +2150,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :อุโมง
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :อุโมงค์รถยนต์
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :สะพานแขวนแบบเหล็กสำหรับรถไฟ
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :สะพานนั่งร้านแบบเหล็กสำหรับรถไฟ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :สะพานนั่งร้านแบบเหล็กสำหรับรถไฟ
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :สะพานคานแบบเหล็กกล้าสำหรับรถไฟ
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :สะพานแขวนแบบคอนกรีตเสริมเหล็กสำหรับรถไฟ
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :สะพานแบบไม้สำหรับรถไฟ

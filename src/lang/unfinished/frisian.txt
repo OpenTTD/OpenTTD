@@ -1906,7 +1906,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Spoartunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stielen spoarfakwurkbrêge
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stielen brêge mei balken
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stielen brêge mei balken
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stielen spoarfakwurkbrêge
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Fersterke betonnen spoarhingbrêge
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten spoarbrêge
