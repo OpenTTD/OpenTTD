@@ -2240,7 +2240,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Eisenbahntunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Straßentunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stahlhängebrücke
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stahlträgerbrücke
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stahlträgerbrücke
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Auslegerbrücke (Stahl)
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Stahlbetonbrücke
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Holzbrücke

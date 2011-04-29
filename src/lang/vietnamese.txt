@@ -2240,7 +2240,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Hầm tàu ho�
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Hầm đường bộ
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Cầu treo thép cho tàu hoả
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Cầu dầm thép cho tàu hoả
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Cầu dầm thép cho tàu hoả
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Cầu dầm chìa cho tàu hoả
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Cầu treo bê tông dự ứng lực cho tàu hoả
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Cầu gỗ cho tàu hoả

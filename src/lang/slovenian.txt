@@ -2393,7 +2393,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Železniški pr
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Cestni predor
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Viseč jeklen železniški most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Železniški most z jeklenimi križi
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Železniški most z jeklenimi križi
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Železniški most z jeklenim obokom
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ojačan viseč betonski železniški most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Lesen železniški most

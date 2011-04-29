@@ -2239,7 +2239,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Zuchtunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Stroossentunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stolen Zuchhängebréck
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stoldréier Zuchbréck
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stoldréier Zuchbréck
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stolen fräidroend Zuchbréck
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Stolbeton Zuchhängebréck
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Holzen Zuchbréck

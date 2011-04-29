@@ -2209,7 +2209,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Lestagöng
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Vegagöng
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stálhengibrú, lestir
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stálburðarbitabrú, lestir
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stálburðarbitabrú, lestir
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stálsvifbitabrú, lestir
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Styrkt steypuhengirbú, lestir
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Viðarbrú, lestir

@@ -2328,7 +2328,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Železniční t
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Silniční tunel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ocelový zavěšený železniční most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Ocelový trámový železniční most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ocelový trámový železniční most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ocelový konzolový železniční most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Zpevněný betonový zavěšený železniční most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Dřevěný železniční most

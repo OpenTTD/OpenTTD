@@ -2237,7 +2237,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tollán iarnró
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tollán bóthair
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Droichead iarnróid crochta cruach
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Droichead iarnróid cearchaillí cruach
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Droichead iarnróid cearchaillí cruach
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Droichead iarnróid cruach starrmhaide
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Droichead iarnróid crochta de choincréit threisithe
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Droichead iarnróid adhmaid

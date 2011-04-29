@@ -2239,7 +2239,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tunel feroviar
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tunel rutier
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Pod feroviar suspendat din oţel
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Pod feroviar tip grindă din oţel
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Pod feroviar tip grindă din oţel
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Pod feroviar tip arc din oţel
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Pod feroviar suspendat din beton
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Pod feroviar din lemn

@@ -2182,7 +2182,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Terowong kereta
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Terowong jalanraya
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Jambatan keluli tergantung untuk keretapi
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Jambatan keluli berpalang untuk keretapi
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Jambatan keluli berpalang untuk keretapi
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Jambatan kantilever keluli untuk keretapi
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Jambatan konkrit diperkuatkan tergantung untuk keretapi
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Jambatan kayu untuk keretapi

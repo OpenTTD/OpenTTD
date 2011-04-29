@@ -2199,7 +2199,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Fervoja tunelo
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Voja tunelo
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ŝtala pendanta relponto
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Ŝtala ebena relponto
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ŝtala ebena relponto
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ŝtala luksa relponto
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Fortbetona pendanta relponto
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ligna relponto

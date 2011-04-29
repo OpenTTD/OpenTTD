@@ -2239,7 +2239,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :鉄道トンネ
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :道路トンネル
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :つり橋、鋼鉄製
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :けた橋、鋼鉄製
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :けた橋、鋼鉄製
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :カンチレバー橋、鋼鉄製
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :つり橋、鉄筋コンクリート製
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :橋、木製

@@ -2230,7 +2230,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Jernbanetunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Veitunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Hengebro av stål (jernbane)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Bjelkebro av stål (jernbane)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Bjelkebro av stål (jernbane)
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Frittbærende bro av stål (jernbane)
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hengebro av armert betong (jernbane)
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Trebro (jernbane)

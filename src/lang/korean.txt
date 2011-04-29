@@ -2240,7 +2240,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :철도용 터�
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :도로용 터널
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :강철 현수 철교
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :강철 들보 철교
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :강철 들보 철교
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :강철 캔틸레버 철교
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :철근 콘크리트 현수 철교
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :나무 철교

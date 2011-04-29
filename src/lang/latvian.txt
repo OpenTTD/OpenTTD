@@ -2170,7 +2170,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Dzelzceļa tune
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Autoceļa tunelis
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Tērauda vanšu dzelzceļa tilts
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Tērauda dzelzceļa tilts
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Tērauda dzelzceļa tilts
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Tērauda konsoles dzelzceļa tilts
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Dzelzbetona vanšu dzelzceļa tilts
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Koka dzelzeļa tilts

@@ -2416,7 +2416,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Железно�
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Автомобильный туннель
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Стальной висячий ж/д мост
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Стальной балочный ж/д мост
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Стальной балочный ж/д мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Стальной консольный ж/д мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Железобетонный висячий ж/д мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Деревянный ж/д мост

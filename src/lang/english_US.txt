@@ -2240,7 +2240,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Railroad tunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Road tunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Steel suspension rail bridge
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Steel girder rail bridge
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Steel girder rail bridge
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Steel cantilever rail bridge
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Reinforced concrete suspension rail bridge
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Wooden rail bridge

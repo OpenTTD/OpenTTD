@@ -2240,7 +2240,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Rautatietunneli
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Maantietunneli
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Teräksinen rautatieriippusilta
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Teräksinen rautatiepalkkisilta
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Teräksinen rautatiepalkkisilta
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Teräksinen rautatieulokepalkkisilta
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Vahvennettu betoninen rautatieriippusilta
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Puinen rautatiesilta

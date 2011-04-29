@@ -2364,7 +2364,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Залізни�
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Автомобільний тунель
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Сталевий підвісний залізничний міст
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Сталевий балочний залізничний міст
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Сталевий балочний залізничний міст
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Сталевий каркасний залізничний міст
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Залізобетонний підвісний залізничний міст
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Дерев'яний залізничний міст

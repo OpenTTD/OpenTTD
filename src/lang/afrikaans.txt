@@ -2205,7 +2205,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Spoorweg tonnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Pad tonnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Staal stuspensie spoor brug
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Staal balk spoor brug
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Staal balk spoor brug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Staal vrydraer spoor brug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Versterk beton suspensie spoor brug
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houterig spoor brug

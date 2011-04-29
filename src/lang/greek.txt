@@ -2331,7 +2331,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Τούνελ σ
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Τούνελ δρόμου
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ατσάλινη σιδηροδρομική γέφυρα με αναρτήσεις
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Ατσάλινη σιδηροδρομική γέφυρα με δοκούς
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ατσάλινη σιδηροδρομική γέφυρα με δοκούς
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ατσάλινη κρεμαστή σιδηροδρομική γέφυρα
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Σιδηροδρομική γέφυρα από ενισχυμένο τσιμέντο
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ξύλινη σιδηροδρομική γέφυρα

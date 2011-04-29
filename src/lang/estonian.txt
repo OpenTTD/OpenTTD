@@ -2296,7 +2296,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Raudteetunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Maanteetunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Terasest raudteerippsild
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Terasest võrestikuga raudteesild
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Terasest võrestikuga raudteesild
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Terasest ulgtoestikuga raudteesild
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Raudbetoonist raudteerippsild
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Puitraudteesild

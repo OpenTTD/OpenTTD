@@ -2240,7 +2240,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel ferrovi�
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel rodoviário
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ponte ferroviária suspensa em aço
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Ponte ferroviária com vigas em aço
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ponte ferroviária com vigas em aço
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ponte ferroviária cantilever em aço
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ponte ferroviária suspensa de concreto reforçado
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ponte ferroviária de madeira

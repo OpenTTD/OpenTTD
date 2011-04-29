@@ -2240,7 +2240,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Spoortunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Wegtunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stalen hangbrug (spoor)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Stalen kokerbrug (spoor)
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stalen kokerbrug (spoor)
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalen cantileverbrug (spoor)
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hangbrug van gewapend beton (spoor)
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Houten brug (spoor)

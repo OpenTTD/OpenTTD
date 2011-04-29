@@ -2577,7 +2577,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Чыгунач�
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Аўтамабiльны тунэль
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Сталёвы падвесны чыгуначны мост
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Сталёвы бэлечны чыгуначны мост
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Сталёвы бэлечны чыгуначны мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Сталёвы кансольны чыгуначны мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Жалезабэтонавы падвесны чыгуначны мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Драўляны чыгуначны мост

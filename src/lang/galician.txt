@@ -2148,7 +2148,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel de ferro
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel de estrada
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ponte colgante de aceiro para ferrocarrís
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Ponte de vigas de aceiro para ferrocarrís
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ponte de vigas de aceiro para ferrocarrís
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ponte voladiza de aceiro para ferrocarrís
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ponte colgante de cemento reforzado para ferrocarrís
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ponte de madeira para ferrocarrís

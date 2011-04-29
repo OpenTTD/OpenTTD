@@ -2336,7 +2336,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Željeznički t
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Cestovni tunel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Čelični viseći željeznički most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Čelični noseći željeznički most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Čelični noseći željeznički most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Čelični konzolni željeznički most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ojačani betonski viseći željeznički most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Drveni željeznički most

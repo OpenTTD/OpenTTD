@@ -2236,7 +2236,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :ЖП тунел
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Пътен тунел
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Стоманен висящ ЖП мост
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Стоманен гредореден ЖП мост
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Стоманен гредореден ЖП мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Стоманен конзолен ЖП мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Железобетонен висящ ЖП мост
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Дървен ЖП мост

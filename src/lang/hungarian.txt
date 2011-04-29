@@ -2304,7 +2304,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Vasúti alagút
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Közúti alagút
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Acél függő vasúti híd
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Gerendás acél vasúti híd
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Gerendás acél vasúti híd
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Rácsos acél vasúti híd
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Vasbeton függő vasúti híd
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Fa vasúti híd

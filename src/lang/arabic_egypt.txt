@@ -2239,7 +2239,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :نفق سكة �
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :نفق طريق عربات
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :جسر قطارات بتعليق حديدي
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :جسر قطارات بعوارض حديدية
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :جسر قطارات بعوارض حديدية
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :جسر قطار بحوامل حديدية
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :جسر قطار بتعليق اسمنتي من الغابات الماطرة
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :جسر قطار خشبي

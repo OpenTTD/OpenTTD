@@ -2093,7 +2093,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Twnnel rheilffo
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Twnnel ffordd
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Pont reilffordd grog o ddur
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Pont reilffordd hytrawst o ddur
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Pont reilffordd hytrawst o ddur
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Pont reilffordd cantilifer o ddur
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Pont reilffordd grog o goncrit cyfnerth
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Pont reilffordd bren

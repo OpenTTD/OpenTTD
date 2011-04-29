@@ -2233,7 +2233,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Demiryolu Tüne
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Karayolu Tüneli
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Çelik asma demiryolu köprüsü
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Çelik kirişli demiryolu köprüsü
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Çelik kirişli demiryolu köprüsü
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Çelik ağ demiryolu köprüsü
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Destekli beton asma demiryolu köprüsü
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Odun demiryolu köprüsü

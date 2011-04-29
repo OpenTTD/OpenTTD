@@ -2201,7 +2201,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :מנהרה למ
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :מנהרה למעבר רכבים
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :גשר פלדה תלוי למעבר רכבות
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :גשר קורות פלדה למעבר רכבות
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :גשר קורות פלדה למעבר רכבות
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :גשר זיז מפלדה למעבר רכבות
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :גשר תלוי מבטון מזויין למעבר רכבות
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :גשר עץ למעבר רכבות

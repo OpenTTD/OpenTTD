@@ -2306,7 +2306,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Zeleznicny tune
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Cestny tunel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ocelovy zavesny zeleznicny most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Ocelovy pilierovy zeleznicny most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ocelovy pilierovy zeleznicny most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ocelovy visuty zeleznicny most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Vystuzeny zavesny betonovy zeleznicny most
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Dreveny zeleznicny most

@@ -2619,7 +2619,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tunel kolejowy
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tunel samochodowy
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Podwieszany most kolejowy ze stali
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Dźwigarowy most kolejowy ze stali
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Dźwigarowy most kolejowy ze stali
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stalowy wspornikowy most kolejowy
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Podwieszany most kolejowy wzmocniony betonem
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Drewniany most kolejowy

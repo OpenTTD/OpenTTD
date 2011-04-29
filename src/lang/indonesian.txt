@@ -2239,7 +2239,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Terowongan Kere
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Terowongan jalan
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Jembatan rel suspensi dan baja
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Jembatan rel balok dan baja
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Jembatan rel balok dan baja
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Jembatan rel beton dan baja
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Jembatan rel suspensi beton bertulang
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Jembatan rel kayu

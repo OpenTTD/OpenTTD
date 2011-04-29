@@ -2290,7 +2290,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Geležinkelio t
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tunelis
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Plieninis kabantis geležinkelio tiltas
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Plieno sijų geležinkelio tiltas
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Plieno sijų geležinkelio tiltas
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Plieno konstrukciju gelezinkelio tiltas
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Betoninis kabantis geležinkelio tiltas
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Medinis geležinkelio tiltas
