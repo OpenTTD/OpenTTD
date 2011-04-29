@@ -1555,8 +1555,8 @@ static const PaletteID PALETTE_TO_STRUCT_GREEN     = 0x31F;
 static const PaletteID PALETTE_TO_STRUCT_CONCRETE  = 0x320; // Sets the suspension bridge to concrete, also other strucutures use it
 static const PaletteID PALETTE_TO_STRUCT_YELLOW    = 0x321; // Sets the bridge colour to yellow (suspension and tubular)
 static const PaletteID PALETTE_TO_TRANSPARENT      = 0x322; // This sets the sprite to transparent
-/* This is used for changing the tubular bridges to the silicon display, or some grayish colour */
-static const PaletteID PALETTE_TO_STRUCT_GREY      = 0x323;
+
+static const PaletteID PALETTE_NEWSPAPER           = 0x323; ///< Recolour sprite for newspaper-greying.
 static const PaletteID PALETTE_CRASH               = 0x324;
 
 /* Two recolourings only used by the church */

@@ -1797,7 +1797,7 @@ void NWidgetViewport::Draw(const Window *w)
 	/* Optionally shade the viewport. */
 	if (this->disp_flags & (ND_SHADE_GREY | ND_SHADE_DIMMED)) {
 		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1,
-				(this->disp_flags & ND_SHADE_DIMMED) ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
+				(this->disp_flags & ND_SHADE_DIMMED) ? PALETTE_TO_TRANSPARENT : PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 	}
 }
 

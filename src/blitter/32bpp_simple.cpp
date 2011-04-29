@@ -77,7 +77,7 @@ void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height
 		} while (--height);
 		return;
 	}
-	if (pal == PALETTE_TO_STRUCT_GREY) {
+	if (pal == PALETTE_NEWSPAPER) {
 		do {
 			for (int i = 0; i != width; i++) {
 				*udst = MakeGrey(*udst);

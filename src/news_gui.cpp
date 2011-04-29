@@ -411,7 +411,7 @@ struct NewsWindow : Window {
 			case NTW_MGR_FACE: {
 				const CompanyNewsInformation *cni = (const CompanyNewsInformation*)this->ni->free_data;
 				DrawCompanyManagerFace(cni->face, cni->colour, r.left, r.top);
-				GfxFillRect(r.left + 1, r.top, r.left + 1 + 91, r.top + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
+				GfxFillRect(r.left + 1, r.top, r.left + 1 + 91, r.top + 118, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case NTW_MGR_NAME: {
@@ -437,7 +437,7 @@ struct NewsWindow : Window {
 				assert(this->ni->reftype1 == NR_ENGINE);
 				EngineID engine = this->ni->ref1;
 				DrawVehicleEngine(r.left, r.right, (r.left + r.right) / 2, (r.top + r.bottom) / 2, engine, GetEnginePalette(engine, _local_company));
-				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
+				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case NTW_VEH_INFO: {
