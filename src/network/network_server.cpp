@@ -539,9 +539,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 	if (this->status == STATUS_MAP) {
 		if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
 
+		bool last_packet = false;
+
 		for (uint i = 0; i < sent_packets && this->savegame_packets != NULL; i++) {
 			Packet *p = this->savegame_packets;
-			bool last_packet = p->buffer[2] == PACKET_SERVER_MAP_DONE;
+			last_packet = p->buffer[2] == PACKET_SERVER_MAP_DONE;
 
 			/* Remove the packet from the savegame queue and put it in the real queue. */
 			this->savegame_packets = p->next;
@@ -549,37 +551,40 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			this->NetworkTCPSocketHandler::SendPacket(p);
 
 			if (last_packet) {
-				/* Done reading! */
-
-				/* Set the status to DONE_MAP, no we will wait for the client
-				 *  to send it is ready (maybe that happens like never ;)) */
-				this->status = STATUS_DONE_MAP;
-
-				NetworkClientSocket *new_cs;
-				bool new_map_client = false;
-				/* Check if there is a client waiting for receiving the map
-				 *  and start sending him the map */
-				FOR_ALL_CLIENT_SOCKETS(new_cs) {
-					if (new_cs->status == STATUS_MAP_WAIT) {
-						/* Check if we already have a new client to send the map to */
-						if (!new_map_client) {
-							/* If not, this client will get the map */
-							new_cs->status = STATUS_AUTHORIZED;
-							new_map_client = true;
-							new_cs->SendMap();
-						} else {
-							/* Else, send the other clients how many clients are in front of them */
-							new_cs->SendWait();
-						}
-					}
-				}
-
 				/* There is no more data, so break the for */
 				break;
 			}
 		}
 
 		if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
+
+		if (last_packet) {
+			/* Done reading, make sure saving is done as well */
+			WaitTillSaved();
+
+			/* Set the status to DONE_MAP, no we will wait for the client
+				*  to send it is ready (maybe that happens like never ;)) */
+			this->status = STATUS_DONE_MAP;
+
+			NetworkClientSocket *new_cs;
+			bool new_map_client = false;
+			/* Check if there is a client waiting for receiving the map
+				*  and start sending him the map */
+			FOR_ALL_CLIENT_SOCKETS(new_cs) {
+				if (new_cs->status == STATUS_MAP_WAIT) {
+					/* Check if we already have a new client to send the map to */
+					if (!new_map_client) {
+						/* If not, this client will get the map */
+						new_cs->status = STATUS_AUTHORIZED;
+						new_map_client = true;
+						new_cs->SendMap();
+					} else {
+						/* Else, send the other clients how many clients are in front of them */
+						new_cs->SendWait();
+					}
+				}
+			}
+		}
 
 		switch (this->SendPackets()) {
 			case SPS_CLOSED:

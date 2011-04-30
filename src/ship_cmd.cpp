@@ -266,9 +266,16 @@ static const TileIndexDiffC _ship_leave_depot_offs[] = {
 	{ 0, -1}
 };
 
-static void CheckShipLeaveDepot(Ship *v)
+static bool CheckShipLeaveDepot(Ship *v)
 {
-	if (!v->IsInDepot()) return;
+	if (!v->IsInDepot()) return false;
+
+	/* We are leaving a depot, but have to go to the exact same one; re-enter */
+	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
+			IsShipDepotTile(v->tile) && GetDepotIndex(v->tile) == v->current_order.GetDestination()) {
+		VehicleEnterDepot(v);
+		return true;
+	}
 
 	TileIndex tile = v->tile;
 	Axis axis = GetShipDepotAxis(tile);
@@ -280,7 +287,7 @@ static void CheckShipLeaveDepot(Ship *v)
 	} else if (DiagdirReachesTracks((DiagDirection)(axis + 2)) & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
 		v->direction = AxisToDirection(axis);
 	} else {
-		return;
+		return false;
 	}
 
 	v->state = AxisToTrackBits(axis);
@@ -294,6 +301,8 @@ static void CheckShipLeaveDepot(Ship *v)
 	VehicleServiceInDepot(v);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	SetWindowClassesDirty(WC_SHIPS_LIST);
+
+	return false;
 }
 
 static bool ShipAccelerate(Vehicle *v)
@@ -446,7 +455,7 @@ static void ShipController(Ship *v)
 
 	if (v->current_order.IsType(OT_LOADING)) return;
 
-	CheckShipLeaveDepot(v);
+	if (CheckShipLeaveDepot(v)) return;
 
 	v->ShowVisualEffect();
 

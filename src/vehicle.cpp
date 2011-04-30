@@ -1919,6 +1919,13 @@ void Vehicle::HandleLoading(bool mode)
 
 			this->LeaveStation();
 
+			/* Only advance to next order if we just loaded at the current one */
+			const Order *order = this->GetOrder(this->cur_auto_order_index);
+			if (order == NULL ||
+					(!order->IsType(OT_AUTOMATIC) && !order->IsType(OT_GOTO_STATION)) ||
+					order->GetDestination() != this->last_station_visited) {
+				return;
+			}
 			break;
 		}
 

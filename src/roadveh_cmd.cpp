@@ -941,6 +941,12 @@ static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 	int y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
 
 	if (first) {
+		/* We are leaving a depot, but have to go to the exact same one; re-enter */
+		if (v->current_order.IsType(OT_GOTO_DEPOT) && v->tile == v->dest_tile) {
+			VehicleEnterDepot(v);
+			return true;
+		}
+
 		if (RoadVehFindCloseTo(v, x, y, v->direction, false) != NULL) return true;
 
 		VehicleServiceInDepot(v);
