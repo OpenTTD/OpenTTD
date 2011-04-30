@@ -25,6 +25,7 @@
 #include "../company_gui.h"
 #include "../core/random_func.hpp"
 #include "../date_func.h"
+#include "../gfx_func.h"
 #include "../gui.h"
 #include "../rev.h"
 #include "network.h"
@@ -151,6 +152,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	DEBUG(net, 1, "Closed client connection %d", this->client_id);
 
 	this->SendPackets(true);
+
+	/* Wait a number of ticks so our leave message can reach the server.
+	 * This is especially needed for Windows servers as they seem to get
+	 * the "socket is closed" message before receiving our leave message,
+	 * which would trigger the server to close the connection as well. */
+	CSleep(3 * MILLISECONDS_PER_TICK);
 
 	delete this->GetInfo();
 	delete this;
