@@ -7607,6 +7607,33 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
 }
 
 /**
+ * Make sure there is at least one house available in the year 0 for the given
+ * climate / housezone combination.
+ * @param bitmask The climate and housezone to check for. Exactly one climate
+ *   bit and one housezone bit should be set.
+ */
+static void EnsureEarlyHouse(HouseZones bitmask)
+{
+	Year min_year = MAX_YEAR;
+
+	for (int i = 0; i < HOUSE_MAX; i++) {
+		HouseSpec *hs = HouseSpec::Get(i);
+		if (hs == NULL || !hs->enabled) continue;
+		if ((hs->building_availability & bitmask) != bitmask) continue;
+		if (hs->min_year < min_year) min_year = hs->min_year;
+	}
+
+	if (min_year == 0) return;
+
+	for (int i = 0; i < HOUSE_MAX; i++) {
+		HouseSpec *hs = HouseSpec::Get(i);
+		if (hs == NULL || !hs->enabled) continue;
+		if ((hs->building_availability & bitmask) != bitmask) continue;
+		if (hs->min_year == min_year) hs->min_year = 0;
+	}
+}
+
+/**
  * Add all new houses to the house array. House properties can be set at any
  * time in the GRF file, so we can only add a house spec to the house array
  * after the file has finished loading. We also need to check the dates, due to
@@ -7623,8 +7650,6 @@ static void FinaliseHouseArray()
 	 * On the other hand, why 1930? Just 'fix' the houses with the lowest
 	 * minimum introduction date to 0.
 	 */
-	Year min_year = MAX_YEAR;
-
 	const GRFFile * const *end = _grf_files.End();
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
 		HouseSpec **&housespec = (*file)->housespec;
@@ -7642,7 +7667,6 @@ static void FinaliseHouseArray()
 			if (!IsHouseSpecValid(hs, next1, next2, next3, (*file)->filename)) continue;
 
 			_house_mngr.SetEntitySpec(hs);
-			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
 	}
 
@@ -7666,12 +7690,19 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	if (min_year != 0) {
-		for (int i = 0; i < HOUSE_MAX; i++) {
-			HouseSpec *hs = HouseSpec::Get(i);
+	HouseZones climate_mask = (HouseZones)(1 << (_settings_game.game_creation.landscape + 12));
+	EnsureEarlyHouse(HZ_ZON1 | climate_mask);
+	EnsureEarlyHouse(HZ_ZON2 | climate_mask);
+	EnsureEarlyHouse(HZ_ZON3 | climate_mask);
+	EnsureEarlyHouse(HZ_ZON4 | climate_mask);
+	EnsureEarlyHouse(HZ_ZON5 | climate_mask);
 
-			if (hs->enabled && hs->min_year == min_year) hs->min_year = 0;
-		}
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
+		EnsureEarlyHouse(HZ_ZON1 | HZ_SUBARTC_ABOVE);
+		EnsureEarlyHouse(HZ_ZON2 | HZ_SUBARTC_ABOVE);
+		EnsureEarlyHouse(HZ_ZON3 | HZ_SUBARTC_ABOVE);
+		EnsureEarlyHouse(HZ_ZON4 | HZ_SUBARTC_ABOVE);
+		EnsureEarlyHouse(HZ_ZON5 | HZ_SUBARTC_ABOVE);
 	}
 }
 

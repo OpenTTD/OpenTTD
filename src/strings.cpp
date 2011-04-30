@@ -231,9 +231,23 @@ void InjectDParam(uint amount)
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint64));
 }
 
-static char *FormatNumber(char *buff, int64 number, const char *last, const char *separator, int zerofill_from = 19)
+/**
+ * Format a number into a string.
+ * @param buff      the buffer to write to
+ * @param number    the number to write down
+ * @param last      the last element in the buffer
+ * @param separator the thousands-separator to use
+ * @param zerofill  minimum number of digits to print for the integer part. The number will be filled with zeros at the front if necessary.
+ * @param fractional_digits number of fractional digits to display after a decimal separator. The decimal separator is inserted
+ *                          in front of the \a fractional_digits last digit of \a number.
+ * @return till where we wrote
+ */
+static char *FormatNumber(char *buff, int64 number, const char *last, const char *separator, int zerofill = 1, int fractional_digits = 0)
 {
+	static const int max_digits = 20;
 	uint64 divisor = 10000000000000000000ULL;
+	zerofill += fractional_digits;
+	int thousands_offset = (max_digits - fractional_digits - 1) % 3;
 
 	if (number < 0) {
 		buff += seprintf(buff, last, "-");
@@ -242,15 +256,21 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 
 	uint64 num = number;
 	uint64 tot = 0;
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < max_digits; i++) {
+		if (i == max_digits - fractional_digits) {
+			const char *decimal_separator = _settings_game.locale.digit_decimal_separator;
+			if (decimal_separator == NULL) decimal_separator = _langpack->digit_decimal_separator;
+			buff += seprintf(buff, last, "%s", decimal_separator);
+		}
+
 		uint64 quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
 			num = num % divisor;
 		}
-		if (tot |= quot || i >= zerofill_from) {
+		if (tot |= quot || i >= max_digits - zerofill) {
 			buff += seprintf(buff, last, "%i", (int)quot);
-			if ((i % 3) == 1 && i != 19) buff = strecpy(buff, separator, last);
+			if ((i % 3) == thousands_offset && i < max_digits - 1 - fractional_digits) buff = strecpy(buff, separator, last);
 		}
 
 		divisor /= 10;
@@ -261,11 +281,11 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 	return buff;
 }
 
-static char *FormatCommaNumber(char *buff, int64 number, const char *last)
+static char *FormatCommaNumber(char *buff, int64 number, const char *last, int fractional_digits = 0)
 {
 	const char *separator = _settings_game.locale.digit_group_separator;
 	if (separator == NULL) separator = _langpack->digit_group_separator;
-	return FormatNumber(buff, number, last, separator);
+	return FormatNumber(buff, number, last, separator, 1, fractional_digits);
 }
 
 static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
@@ -275,7 +295,7 @@ static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 
 static char *FormatZerofillNumber(char *buff, int64 number, int64 count, const char *last)
 {
-	return FormatNumber(buff, number, last, "", 20 - count);
+	return FormatNumber(buff, number, last, "", count);
 }
 
 static char *FormatHexNumber(char *buff, uint64 number, const char *last)
@@ -988,6 +1008,13 @@ static char *FormatString(char *buff, const char *str_arg, int64 *argv, const in
 			case SCC_COMMA: // {COMMA}
 				buff = FormatCommaNumber(buff, GetInt64(&argv, argve, &argt, SCC_COMMA), last);
 				break;
+
+			case SCC_DECIMAL: {// {DECIMAL}
+				int64 number = GetInt64(&argv, argve, &argt, SCC_DECIMAL);
+				int digits = GetInt32(&argv, argve, &argt, SCC_DECIMAL);
+				buff = FormatCommaNumber(buff, number, last, digits);
+				break;
+			}
 
 			case SCC_ARG_INDEX: { // Move argument pointer
 				byte offset = (byte)*str++;
