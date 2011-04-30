@@ -816,9 +816,8 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		/* Check if the currently selected company is still active. */
 		if (ai_debug_company == INVALID_COMPANY || !Company::IsValidAiID(ai_debug_company)) {
 			if (ai_debug_company != INVALID_COMPANY) {
-				/* Raise and disable the widget for the previous selection. */
+				/* Raise the widget for the previous selection. */
 				this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
-				this->DisableWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 
 				ai_debug_company = INVALID_COMPANY;
 			}
@@ -847,9 +846,6 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
 
 		if (this->show_break_box) this->DrawEditBox(AID_WIDGET_BREAK_STR_EDIT_BOX);
-
-		/* If there are no active companies, don't display anything else. */
-		if (ai_debug_company == INVALID_COMPANY) return;
 
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
@@ -880,6 +876,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 			byte offset = (i == ai_debug_company) ? 1 : 0;
 			DrawCompanyIcon(i, button->pos_x + button->current_x / 2 - 7 + offset, this->GetWidget<NWidgetBase>(AID_WIDGET_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
 		}
+
+		/* If there are no active companies, don't display anything else. */
+		if (ai_debug_company == INVALID_COMPANY) return;
 
 		Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
 		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
