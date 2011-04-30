@@ -98,7 +98,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refresco
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasajero{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carbón
-STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correo
+STR_QUANTITY_MAIL                                               :{COMMA} bolsa{P "" s} de correo
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeza{P "" s} de ganado
 STR_QUANTITY_GOODS                                              :{COMMA} caja{P "" s} de mercancías
@@ -2521,7 +2521,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veh�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria incorrecta>
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles - {COMMA} Carteles
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles - {COMMA} Cartel{P "" es}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Mayúsculas/minúsculas
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Borrar filtro
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activa/desactiva la comprobación de mayúsculas y minúsculas al filtrar la lista de carteles
@@ -4243,6 +4243,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

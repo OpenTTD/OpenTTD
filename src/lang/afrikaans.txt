@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Hernoem
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Maak venster toe
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Venster titel - sleep om venster te beweeg
 STR_TOOLTIP_SHADE                                               :{BLACK}Skerm venster - Slegs die titelstaaf sal vertoon word
+STR_TOOLTIP_DEBUG                                               :{BLACK}Toon NewGRF debug informasie
 STR_TOOLTIP_STICKY                                              :{BLACK}Merk die venster as ontoemaakbaar met die"Sluit Alle Vensters" sleutel
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliek en sleep om venster te vergroot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tokkel groot/klein venster groote
@@ -283,6 +284,7 @@ STR_SORT_BY_RATING_MIN                                          :Laagte vrag gra
 STR_SORT_BY_ENGINE_ID                                           :EngineID (klassieke sorteer)
 STR_SORT_BY_COST                                                :Koste
 STR_SORT_BY_POWER                                               :Krag
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Trekker inspanning
 STR_SORT_BY_INTRO_DATE                                          :Inleiding Datum
 STR_SORT_BY_RUNNING_COST                                        :Loopkoste
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Krag/Loopkoste
@@ -332,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Nywerhei
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pad konstruksie
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant bome
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plaas teken
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plaas voorwerp. Shift skakel tussen bou/aanduiding koste beraming
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Stoor draaiboek
@@ -441,8 +444,10 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tokkel terminaal
 STR_ABOUT_MENU_AI_DEBUG                                         :AI ontfout
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermskoot (Ctrl-S)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Vergrote skermskoot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Groot Skermskoot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oor 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprite" rigter
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -524,6 +529,9 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Maatskap
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrag Betaalings Grade
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dae in deurtog
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaaling vir aflewering van 10 eenhuide (of 10,000 liters) van vrag 'n afstand van 20 blokkies
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Skakel alles aan
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Skakel alles af
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Toon alle vragte op die vrag betalingskostes grafiek
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skakel grafiek vir vrag tipe aan/af
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 

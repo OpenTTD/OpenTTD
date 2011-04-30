@@ -1258,10 +1258,10 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Кол�
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :нет
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :оригинальное
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :реалистичное
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель ускорения поездов: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель ускорения поездов: {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :оригинальная
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :реалистичная
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модель ускорения автотранспорта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модель ускорения автотранспорта: {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :оригинальная
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :реалистичная
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутизна склонов (для поездов): {ORANGE}{STRING}%
@@ -4463,6 +4463,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
