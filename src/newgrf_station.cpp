@@ -110,24 +110,21 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
 		Swap(x, y);
 	}
 
-	/* Limit our sizes to 4 bits */
-	platforms = min(15, platforms);
-	length    = min(15, length);
-	x = min(15, x);
-	y = min(15, y);
 	if (centred) {
 		x -= platforms / 2;
 		y -= length / 2;
+		x = Clamp(x, -8, 7);
+		y = Clamp(x, -8, 7);
 		SB(retval,  0, 4, y & 0xF);
 		SB(retval,  4, 4, x & 0xF);
 	} else {
-		SB(retval,  0, 4, y);
-		SB(retval,  4, 4, length - y - 1);
-		SB(retval,  8, 4, x);
-		SB(retval, 12, 4, platforms - x - 1);
+		SB(retval,  0, 4, min(15, y));
+		SB(retval,  4, 4, min(15, length - y - 1));
+		SB(retval,  8, 4, min(15, x));
+		SB(retval, 12, 4, min(15, platforms - x - 1));
 	}
-	SB(retval, 16, 4, length);
-	SB(retval, 20, 4, platforms);
+	SB(retval, 16, 4, min(15, length));
+	SB(retval, 20, 4, min(15, platforms));
 	SB(retval, 24, 4, tile);
 
 	return retval;

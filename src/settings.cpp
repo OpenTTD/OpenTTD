@@ -1071,13 +1071,15 @@ static bool CheckFreeformEdges(int32 p1)
 	if (p1 != 0) {
 		Ship *s;
 		FOR_ALL_SHIPS(s) {
+			/* Check if there is a ship on the northern border. */
 			if (TileX(s->tile) == 0 || TileY(s->tile) == 0) {
 				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		BaseStation *st;
+		FOR_ALL_BASE_STATIONS(st) {
+			/* Check if there is a buoy on the northern border. */
 			if (TileX(st->xy) == 0 || TileY(st->xy) == 0) {
 				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, WL_ERROR);
 				return false;
