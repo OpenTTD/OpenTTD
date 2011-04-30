@@ -830,6 +830,13 @@ void InsertOrder(Vehicle *v, Order *new_o, VehicleOrderID sel_ord)
 				u->cur_real_order_index = cur;
 			}
 		}
+		if (sel_ord == u->cur_auto_order_index && u->IsGroundVehicle()) {
+			/* We are inserting an order just before the current automatic order.
+			 * We do not know whether we will reach current automatic or the newly inserted order first.
+			 * So, disable creation of automatic orders until we are on track again. */
+			uint16 &gv_flags = u->GetGroundVehicleFlags();
+			SetBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+		}
 		if (sel_ord <= u->cur_auto_order_index) {
 			uint cur = u->cur_auto_order_index + 1;
 			/* Check if we don't go out of bound */
@@ -969,11 +976,12 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 		if (order->IsType(OT_CONDITIONAL)) {
 			VehicleOrderID order_id = order->GetConditionSkipToOrder();
 			if (order_id >= sel_ord) {
-				order->SetConditionSkipToOrder(max(order_id - 1, 0));
+				order_id = max(order_id - 1, 0);
 			}
 			if (order_id == cur_order_id) {
-				order->SetConditionSkipToOrder((order_id + 1) % v->GetNumOrders());
+				order_id = (order_id + 1) % v->GetNumOrders();
 			}
+			order->SetConditionSkipToOrder(order_id);
 		}
 		cur_order_id++;
 	}
@@ -1863,6 +1871,13 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 				v->cur_auto_order_index = v->cur_real_order_index = next_order;
 				v->UpdateRealOrderIndex();
 				v->current_order_time += v->GetOrder(v->cur_real_order_index)->travel_time;
+
+				/* Disable creation of automatic orders.
+				 * When inserting them we do not know that we would have to make the conditional orders point to them. */
+				if (v->IsGroundVehicle()) {
+					uint16 &gv_flags = v->GetGroundVehicleFlags();
+					SetBit(gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+				}
 			} else {
 				UpdateVehicleTimetable(v, true);
 				v->IncrementRealOrderIndex();
