@@ -15,6 +15,7 @@
 #include "vehicle_gui.h"
 #include "vehicle_base.h"
 #include "group.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"

@@ -198,6 +198,4 @@ int CDECL StringIDSorter(const StringID *a, const StringID *b);
 
 void CheckForMissingGlyphsInLoadedLanguagePack();
 
-int strnatcmp(const char *s1, const char *s2);
-
 #endif /* STRINGS_FUNC_H */
