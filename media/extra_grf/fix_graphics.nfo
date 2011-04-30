@@ -8,13 +8,13 @@
 //
    -1 * 0	 0C "Fixing (alignment) bugs in the orignal graphics. By Addi."
    -1 * 6	 07 83 01 \7= 03 69
-// Different grahpics for same wood truck
+// Different graphics for same wood truck
    -1 * 14	 0A 04 01 87 0C 01 89 0C 01 07 0E 01 09 0E
    -1 sprites/fix_graphics.png 82 8 09 16 22 -6 -7
    -1 sprites/fix_graphics.png 114 8 09 16 22 -14 -7
    -1 sprites/fix_graphics.png 146 8 09 16 22 -6 -7
    -1 sprites/fix_graphics.png 178 8 09 16 22 -14 -7
-// Different grahpics for lots of trucks
+// Different graphics for lots of trucks
    -1 * 5	 0A 01 28 C4 0D
    -1 sprites/fix_graphics.png 226 8 01 18 8 -3 -10
    -1 sprites/fix_graphics.png 242 8 09 16 20 -14 -7
@@ -56,19 +56,19 @@
    -1 sprites/fix_graphics.png 610 40 09 16 20 -14 -7
    -1 sprites/fix_graphics.png 642 40 01 12 28 -14 -6
    -1 sprites/fix_graphics.png 690 40 09 16 20 -6 -7
-// Different grahpics for same truck
+// Different graphics for same truck
    -1 * 14	 0A 04 01 9D 0C 01 9F 0C 01 A1 0C 01 A3 0C
    -1 sprites/fix_graphics.png 738 40 09 16 22 -14 -7
    -1 sprites/fix_graphics.png 770 40 09 16 22 -6 -7
    -1 sprites/fix_graphics.png 2 72 09 16 22 -14 -7
    -1 sprites/fix_graphics.png 34 72 09 16 22 -6 -7
-// Different grahpics for same paper truck
+// Different graphics for same paper truck
    -1 * 14	 0A 04 01 5D 0D 01 5F 0D 01 61 0D 01 63 0D
    -1 sprites/fix_graphics.png 82 72 09 16 22 -14 -7
    -1 sprites/fix_graphics.png 114 72 09 17 22 -5 -7
    -1 sprites/fix_graphics.png 146 72 09 17 22 -14 -8
    -1 sprites/fix_graphics.png 178 72 09 16 22 -6 -7
-// Different grahpics for same paper truck (truck #2)
+// Different graphics for same paper truck (truck #2)
    -1 * 14	 0A 04 01 1D 0E 01 1F 0E 01 21 0E 01 23 0E
    -1 sprites/fix_graphics.png 226 72 09 16 22 -14 -7
    -1 sprites/fix_graphics.png 258 72 09 16 22 -6 -7
@@ -135,13 +135,13 @@
 
 // Non-toyland specific
    -1 * 6	 07 83 01 \7= 03 0A
-// Grahpics for the tubular bridge pillars had incorrect offsets
+// graphics for the tubular bridge pillars had incorrect offsets
    -1 * 5	 0A 01 04 05 0A
    -1 sprites/fix_graphics.png 98 296 09 9 4 2 -1
    -1 sprites/fix_graphics.png 114 296 09 9 4 2 -1
    -1 sprites/fix_graphics.png 130 296 09 9 4 -4 0
    -1 sprites/fix_graphics.png 146 296 09 9 4 -4 0
-// Grahpics for the cantilever bridge pillars had incorrect offsets
+// graphics for the cantilever bridge pillars had incorrect offsets
    -1 * 5	 0A 01 04 DD 09
    -1 sprites/fix_graphics.png 178 296 09 11 10 2 -3
    -1 sprites/fix_graphics.png 194 296 09 12 10 2 -2
@@ -150,15 +150,51 @@
 
 // Toyland specific
    -1 * 6	 07 83 01 \7! 03 0A
-// Grahpics for the toyland tubular bridge pillars had incorrect offsets
+// Graphics for the toyland tubular bridge pillars had incorrect offsets
    -1 * 5	 0A 01 04 05 0A
    -1 sprites/fix_graphics.png 248 296 09 9 4 2 -1
    -1 sprites/fix_graphics.png 264 296 09 9 4 2 -1
    -1 sprites/fix_graphics.png 280 296 09 9 4 -4 0
    -1 sprites/fix_graphics.png 296 296 09 9 4 -4 0
-// Grahpics for the toyland cantilever bridge pillars had incorrect offsets
+// Graphics for the toyland cantilever bridge pillars had incorrect offsets
    -1 * 5	 0A 01 04 DD 09
    -1 sprites/fix_graphics.png 328 296 09 11 10 2 -3
    -1 sprites/fix_graphics.png 344 296 09 12 10 2 -2
    -1 sprites/fix_graphics.png 360 296 09 11 10 -10 -1
    -1 sprites/fix_graphics.png 376 296 09 11 10 -10 -1
+
+// Wrong, non-translated colours in tubular bridge in 'normal' climates
+// Toyland has separate sprites which are not colour translated, thus
+// this does not apply there;
+// Pillars are changed for all climates further up
+   -1 * 6	 07 83 01 \7= 03 \b22
+
+// Main tubular bridge sprites
+   -1 * 5	 0A 01 \b6 \w2559
+   -1 sprites/fix_graphics.png 2 330 09 40 32 -30 -26
+   -1 sprites/fix_graphics.png 52 330 09 50 44 -42 -26
+   -1 sprites/fix_graphics.png 116 330 09 45 46 -42 -21
+   -1 sprites/fix_graphics.png 180 330 09 45 46 -2 -20
+   -1 sprites/fix_graphics.png 244 330 09 50 44 0 -25
+   -1 sprites/fix_graphics.png 308 330 09 41 32 0 -25
+// start rail bridge
+   -1 * 5	 0A 01 01 \w2569
+   -1 sprites/fix_graphics.png 350 330 09 29 52 -25 -4
+// start rail + road bridge
+   -1 * 5	 0A 01 02 \w2574
+   -1 sprites/fix_graphics.png 420 330 09 29 50 -25 -4
+   -1 sprites/fix_graphics.png 489 330 09 29 52 -25 -4
+// start road + monorail bridge
+   -1 * 5	 0A 01 02 \w2580
+   -1 sprites/fix_graphics.png 559 330 09 29 50 -25 -4
+   -1 sprites/fix_graphics.png 629 330 09 29 52 -25 -4
+// start monrail + maglev bridge
+   -1 * 5	 0A 01 02 \w2586
+   -1 sprites/fix_graphics.png 699 330 09 29 50 -25 -4
+   -1 sprites/fix_graphics.png 489 283 09 29 52 -25 -4
+// start maglev bridge
+   -1 * 5	 0A 01 01 \w2592
+   -1 sprites/fix_graphics.png 559 283 09 29 50 -25 -4
+// GUI sprite
+   -1 * 5	 0A 01 01 \w2600
+   -1 sprites/fix_graphics.png 433 298 09 15 40 0 5

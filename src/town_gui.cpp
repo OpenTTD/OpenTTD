@@ -18,6 +18,7 @@
 #include "company_base.h"
 #include "company_gui.h"
 #include "network/network.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "sound_func.h"
 #include "economy_func.h"

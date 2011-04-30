@@ -210,4 +210,6 @@ char *strndup(const char *s, size_t len);
 char *strcasestr(const char *haystack, const char *needle);
 #endif /* strcasestr is available */
 
+int strnatcmp(const char *s1, const char *s2);
+
 #endif /* STRING_FUNC_H */

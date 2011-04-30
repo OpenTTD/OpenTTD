@@ -111,6 +111,4 @@ struct StringIDCompare
 
 void CheckForMissingGlyphsInLoadedLanguagePack();
 
-int strnatcmp(const char *s1, const char *s2);
-
 #endif /* STRINGS_FUNC_H */
