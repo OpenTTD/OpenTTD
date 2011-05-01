@@ -102,9 +102,6 @@ enum AdminCompanyRemoveReason {
 	ADMIN_CRR_BANKRUPT   ///< The company went belly-up.
 };
 
-#define DECLARE_ADMIN_RECEIVE_COMMAND(type) virtual NetworkRecvStatus NetworkPacketReceive_## type ##_command(Packet *p)
-#define DEF_ADMIN_RECEIVE_COMMAND(cls, type) NetworkRecvStatus cls ##NetworkAdminSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p)
-
 /** Main socket handler for admin related connections. */
 class NetworkAdminSocketHandler : public NetworkTCPSocketHandler {
 protected:
@@ -112,25 +109,33 @@ protected:
 	char admin_version[NETWORK_REVISION_LENGTH];           ///< Version string of the admin.
 	AdminStatus status;                                    ///< Status of this admin.
 
+	NetworkRecvStatus ReceiveInvalidPacket(PacketAdminType type);
+
 	/**
 	 * Join the admin network:
 	 * string  Password the server is expecting for this network.
 	 * string  Name of the application being used to connect.
 	 * string  Version string of the application being used to connect.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_JOIN);
+	virtual NetworkRecvStatus Receive_ADMIN_JOIN(Packet *p);
 
 	/**
 	 * Notification to the server that this admin is quitting.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_QUIT);
+	virtual NetworkRecvStatus Receive_ADMIN_QUIT(Packet *p);
 
 	/**
 	 * Register updates to be sent at certain frequencies (as announced in the PROTOCOL packet):
 	 * uint16  Update type (see #AdminUpdateType).
 	 * uint16  Update frequency (see #AdminUpdateFrequency), setting #ADMIN_FREQUENCY_POLL is always ignored.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY);
+	virtual NetworkRecvStatus Receive_ADMIN_UPDATE_FREQUENCY(Packet *p);
 
 	/**
 	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
@@ -138,8 +143,10 @@ protected:
 	 * uint32  ID relevant to the packet type, e.g.
 	 *          - the client ID for #ADMIN_UPDATE_CLIENT_INFO. Use UINT32_MAX to show all clients.
 	 *          - the company ID for #ADMIN_UPDATE_COMPANY_INFO. Use UINT32_MAX to show all companies.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
+	virtual NetworkRecvStatus Receive_ADMIN_POLL(Packet *p);
 
 	/**
 	 * Send chat as the server:
@@ -147,30 +154,40 @@ protected:
 	 * uint8   Destination type such as DESTTYPE_BROADCAST (see #DestType).
 	 * uint32  ID of the destination such as company or client id.
 	 * string  Message.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_CHAT);
+	virtual NetworkRecvStatus Receive_ADMIN_CHAT(Packet *p);
 
 	/**
 	 * Execute a command on the servers console:
 	 * string  Command to be executed.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_RCON);
+	virtual NetworkRecvStatus Receive_ADMIN_RCON(Packet *p);
 
 	/**
 	 * The server is full (connection gets closed).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_FULL);
+	virtual NetworkRecvStatus Receive_SERVER_FULL(Packet *p);
 
 	/**
 	 * The source IP address is banned (connection gets closed).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_BANNED);
+	virtual NetworkRecvStatus Receive_SERVER_BANNED(Packet *p);
 
 	/**
 	 * An error was caused by this admin connection (connection gets closed).
 	 * uint8  NetworkErrorCode the error caused.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_ERROR);
+	virtual NetworkRecvStatus Receive_SERVER_ERROR(Packet *p);
 
 	/**
 	 * Inform a just joined admin about the protocol specifics:
@@ -178,8 +195,10 @@ protected:
 	 * bool    Further protocol data follows (repeats through all update packet types).
 	 * uint16  Update packet type.
 	 * uint16  Frequencies allowed for this update packet (bitwise).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_PROTOCOL);
+	virtual NetworkRecvStatus Receive_SERVER_PROTOCOL(Packet *p);
 
 	/**
 	 * Welcome a connected admin to the game:
@@ -192,30 +211,40 @@ protected:
 	 * uint32  Start date of the Map.
 	 * uint16  Map width.
 	 * uint16  Map height.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_WELCOME);
+	virtual NetworkRecvStatus Receive_SERVER_WELCOME(Packet *p);
 
 	/**
 	 * Notification about a newgame.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_NEWGAME);
+	virtual NetworkRecvStatus Receive_SERVER_NEWGAME(Packet *p);
 
 	/**
 	 * Notification about the server shutting down.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_SHUTDOWN);
+	virtual NetworkRecvStatus Receive_SERVER_SHUTDOWN(Packet *p);
 
 	/**
 	 * Send the current date of the game:
 	 * uint32  Current game date.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_DATE);
+	virtual NetworkRecvStatus Receive_SERVER_DATE(Packet *p);
 
 	/**
 	 * Notification of a new client:
 	 * uint32  ID of the new client.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_JOIN);
+	virtual NetworkRecvStatus Receive_SERVER_CLIENT_JOIN(Packet *p);
 
 	/**
 	 * Client information of a specific client:
@@ -225,35 +254,45 @@ protected:
 	 * uint8   Language of the client.
 	 * uint32  Date the client joined the game.
 	 * uint8   ID of the company the client is playing as (255 for spectators).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_INFO);
+	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet *p);
 
 	/**
 	 * Client update details on a specific client (e.g. after rename or move):
 	 * uint32  ID of the client.
 	 * string  Name of the client.
 	 * uint8   ID of the company the client is playing as (255 for spectators).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_UPDATE);
+	virtual NetworkRecvStatus Receive_SERVER_CLIENT_UPDATE(Packet *p);
 
 	/**
 	 * Notification about a client leaving the game.
 	 * uint32  ID of the client that just left.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_QUIT);
+	virtual NetworkRecvStatus Receive_SERVER_CLIENT_QUIT(Packet *p);
 
 	/**
 	 * Notification about a client error (and thus the clients disconnection).
 	 * uint32  ID of the client that made the error.
 	 * uint8   Error the client made (see NetworkErrorCode).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_ERROR);
+	virtual NetworkRecvStatus Receive_SERVER_CLIENT_ERROR(Packet *p);
 
 	/**
 	 * Notification of a new company:
 	 * uint8   ID of the new company.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_NEW);
+	virtual NetworkRecvStatus Receive_SERVER_COMPANY_NEW(Packet *p);
 
 	/**
 	 * Company information on a specific company:
@@ -264,8 +303,10 @@ protected:
 	 * bool    Company is password protected.
 	 * uint32  Year the company was inaugurated.
 	 * bool    Company is an AI.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_INFO);
+	virtual NetworkRecvStatus Receive_SERVER_COMPANY_INFO(Packet *p);
 
 	/**
 	 * Company information of a specific company:
@@ -279,15 +320,19 @@ protected:
 	 * uint8   Owner of share 2.
 	 * uint8   Owner of share 3.
 	 * uint8   Owner of share 4.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_UPDATE);
+	virtual NetworkRecvStatus Receive_SERVER_COMPANY_UPDATE(Packet *p);
 
 	/**
 	 * Notification about a removed company (e.g. due to banrkuptcy).
 	 * uint8   ID of the company.
 	 * uint8   Reason for being removed (see #AdminCompanyRemoveReason).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_REMOVE);
+	virtual NetworkRecvStatus Receive_SERVER_COMPANY_REMOVE(Packet *p);
 
 	/**
 	 * Economy update of a specific company:
@@ -301,8 +346,10 @@ protected:
 	 * uint64  Company value (previous quarter).
 	 * uint16  Performance (previous quarter).
 	 * uint16  Delivered cargo (previous quarter).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_ECONOMY);
+	virtual NetworkRecvStatus Receive_SERVER_COMPANY_ECONOMY(Packet *p);
 
 	/**
 	 * Company statistics on stations and vehicles:
@@ -317,8 +364,10 @@ protected:
 	 * uint16  Number of bus stops.
 	 * uint16  Number of airports and heliports.
 	 * uint16  Number of harbours.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_STATS);
+	virtual NetworkRecvStatus Receive_SERVER_COMPANY_STATS(Packet *p);
 
 	/**
 	 * Send chat from the game into the admin network:
@@ -327,22 +376,28 @@ protected:
 	 * uint32  ID of the client who sent this message.
 	 * string  Message.
 	 * uint64  Money (only when it is a 'give money' action).
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CHAT);
+	virtual NetworkRecvStatus Receive_SERVER_CHAT(Packet *p);
 
 	/**
 	 * Result of an rcon command:
 	 * uint16  Colour as it would be used on the server or a client.
 	 * string  Output of the executed command.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_RCON);
+	virtual NetworkRecvStatus Receive_SERVER_RCON(Packet *p);
 
 	/**
 	 * Send what would be printed on the server's console also into the admin network.
 	 * string  The origin of the text, e.g. "console" for console, or "net" for network related (debug) messages.
 	 * string  Text as found on the console of the server.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CONSOLE);
+	virtual NetworkRecvStatus Receive_SERVER_CONSOLE(Packet *p);
 
 	/**
 	 * Send DoCommand names to the bot upon request only.
@@ -358,8 +413,10 @@ protected:
 	 * bool    Data to follow.
 	 * uint16  ID of the DoCommand.
 	 * string  Name of DoCommand.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CMD_NAMES);
+	virtual NetworkRecvStatus Receive_SERVER_CMD_NAMES(Packet *p);
 
 	/**
 	 * Send incoming command packets to the admin network.
@@ -378,8 +435,10 @@ protected:
 	 * uint32  Tile where this is taking place.
 	 * string  Text passed to the command.
 	 * uint32  Frame of execution.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
 	 */
-	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CMD_LOGGING);
+	virtual NetworkRecvStatus Receive_SERVER_CMD_LOGGING(Packet *p);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:
