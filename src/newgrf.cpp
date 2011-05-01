@@ -4565,6 +4565,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 		/* Skip number of cargo ids? */
 		buf->ReadByte();
 		uint16 groupid = buf->ReadWord();
+		if (!IsValidGroupID(groupid, "FeatureMapSpriteGroup")) return;
 
 		grfmsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature %d", feature);
 
