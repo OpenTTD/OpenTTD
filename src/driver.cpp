@@ -31,6 +31,12 @@ char *_ini_musicdriver;     ///< The music driver a stored in the configuration 
 
 char *_ini_blitter;         ///< The blitter as stored in the configuration file.
 
+/**
+ * Get a string parameter the list of parameters.
+ * @param parm The parameters.
+ * @param name The parameter name we're looking for.
+ * @return The parameter value.
+ */
 const char *GetDriverParam(const char * const *parm, const char *name)
 {
 	size_t len;
@@ -49,11 +55,24 @@ const char *GetDriverParam(const char * const *parm, const char *name)
 	return NULL;
 }
 
+/**
+ * Get a boolean parameter the list of parameters.
+ * @param parm The parameters.
+ * @param name The parameter name we're looking for.
+ * @return The parameter value.
+ */
 bool GetDriverParamBool(const char * const *parm, const char *name)
 {
 	return GetDriverParam(parm, name) != NULL;
 }
 
+/**
+ * Get an integer parameter the list of parameters.
+ * @param parm The parameters.
+ * @param name The parameter name we're looking for.
+ * @param def  The default value if the parameter doesn't exist.
+ * @return The parameter value.
+ */
 int GetDriverParamInt(const char * const *parm, const char *name, int def)
 {
 	const char *p = GetDriverParam(parm, name);
@@ -173,6 +192,9 @@ void DriverFactoryBase::RegisterDriver(const char *name, Driver::Type type, int 
 
 /**
  * Build a human readable list of available drivers, grouped by type.
+ * @param p The buffer to write to.
+ * @param last The last element in the buffer.
+ * @return The end of the written buffer.
  */
 char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 {

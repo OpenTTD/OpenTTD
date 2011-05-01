@@ -20,10 +20,19 @@ const char *GetDriverParam(const char * const *parm, const char *name);
 bool GetDriverParamBool(const char * const *parm, const char *name);
 int GetDriverParamInt(const char * const *parm, const char *name, int def);
 
+/** A driver for communicating with the user. */
 class Driver {
 public:
+	/**
+	 * Start this driver.
+	 * @param parm Parameters passed to the driver.
+	 * @return NULL if everything went okay, otherwise an error message.
+	 */
 	virtual const char *Start(const char * const *parm) = 0;
 
+	/**
+	 * Stop this driver.
+	 */
 	virtual void Stop() = 0;
 
 	virtual ~Driver() { }
@@ -37,32 +46,50 @@ public:
 		DT_END,       ///< Helper for iteration
 	};
 
+	/**
+	 * Get the name of this driver.
+	 * @return The name of the driver.
+	 */
 	virtual const char *GetName() const = 0;
 };
 
 DECLARE_POSTFIX_INCREMENT(Driver::Type)
 
 
+/** Base for all driver factories. */
 class DriverFactoryBase {
 private:
-	Driver::Type type;
-	const char *name;
-	int priority;
+	Driver::Type type; ///< The type of driver.
+	const char *name;  ///< The name of the drivers of this factory.
+	int priority;      ///< The priority of this factory.
 
-	typedef std::map<const char *, DriverFactoryBase *, StringCompare> Drivers;
+	typedef std::map<const char *, DriverFactoryBase *, StringCompare> Drivers; ///< Type for a map of drivers.
 
+	/**
+	 * Get the map with drivers.
+	 */
 	static Drivers &GetDrivers()
 	{
 		static Drivers &s_drivers = *new Drivers();
 		return s_drivers;
 	}
 
+	/**
+	 * Get the active driver for the given type.
+	 * @param type The type to get the driver for.
+	 * @return The active driver.
+	 */
 	static Driver **GetActiveDriver(Driver::Type type)
 	{
 		static Driver *s_driver[3] = { NULL, NULL, NULL };
 		return &s_driver[type];
 	}
 
+	/**
+	 * Get the driver type name.
+	 * @param type The type of driver to get the name of.
+	 * @return The name of the type.
+	 */
 	static const char *GetDriverTypeName(Driver::Type type)
 	{
 		static const char * const driver_type_name[] = { "music", "sound", "video" };
@@ -95,11 +122,13 @@ public:
 
 	/**
 	 * Get a nice description of the driver-class.
+	 * @return The description.
 	 */
 	virtual const char *GetDescription() = 0;
 
 	/**
 	 * Create an instance of this driver-class.
+	 * @return The instance.
 	 */
 	virtual Driver *CreateInstance() = 0;
 };
