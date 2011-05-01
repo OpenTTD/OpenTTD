@@ -12,9 +12,10 @@
 #ifndef SQUIRREL_HELPER_TYPE_HPP
 #define SQUIRREL_HELPER_TYPE_HPP
 
+/** Definition of a simple array. */
 struct Array {
-	int32 size;
-	int32 array[];
+	int32 size;    ///< The size of the array.
+	int32 array[]; ///< The data of the array.
 };
 
 #endif /* SQUIRREL_HELPER_TYPE_HPP */

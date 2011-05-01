@@ -28,6 +28,7 @@
 
 #include "table/strings.h"
 
+/** The pool of stations. */
 StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
 
@@ -275,8 +276,8 @@ Rect Station::GetCatchmentRect() const
 
 /** Rect and pointer to IndustryVector */
 struct RectAndIndustryVector {
-	Rect rect;
-	IndustryVector *industries_near;
+	Rect rect;                       ///< The rectangle to search the industries in.
+	IndustryVector *industries_near; ///< The nearby industries.
 };
 
 /**

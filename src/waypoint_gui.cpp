@@ -54,6 +54,11 @@ private:
 	}
 
 public:
+	/**
+	 * Construct the window.
+	 * @param desc The description of the window.
+	 * @param window_number The window number, in this case the waypoint's ID.
+	 */
 	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->wp = Waypoint::Get(window_number);

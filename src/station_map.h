@@ -33,8 +33,8 @@ static inline StationID GetStationIndex(TileIndex t)
 }
 
 
-static const int GFX_DOCK_BASE_WATER_PART          =  4;
-static const int GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET =  4;
+static const int GFX_DOCK_BASE_WATER_PART          =  4; ///< The offset for the water parts.
+static const int GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET =  4; ///< The offset for the drive through parts.
 
 /**
  * Get the station type of this tile
@@ -476,6 +476,7 @@ static inline bool IsCustomStationSpecIndex(TileIndex t)
 /**
  * Set the custom station spec for this tile.
  * @param t Tile to set the stationspec of.
+ * @param specindex The new spec.
  * @pre HasStationTileRail(t)
  */
 static inline void SetCustomStationSpecIndex(TileIndex t, byte specindex)
@@ -498,7 +499,8 @@ static inline uint GetCustomStationSpecIndex(TileIndex t)
 
 /**
  * Set the random bits for a station tile.
- * @param t Tile to set random bits for
+ * @param t Tile to set random bits for.
+ * @param random_bits The random bits.
  * @pre IsTileType(t, MP_STATION)
  */
 static inline void SetStationTileRandomBits(TileIndex t, byte random_bits)
@@ -526,6 +528,7 @@ static inline byte GetStationTileRandomBits(TileIndex t)
  * @param sid the station to which this tile belongs
  * @param st the type this station tile
  * @param section the StationGfx to be used for this tile
+ * @param wc The water class of the station
  */
 static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType st, byte section, WaterClass wc = WATER_CLASS_INVALID)
 {
@@ -599,7 +602,7 @@ static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStopTyp
  * @param sid the station to which this tile belongs
  * @param rst the type of roadstop to make this tile
  * @param rt the roadtypes on this tile
- * @param d the direction of the roadstop
+ * @param a the direction of the roadstop
  */
 static inline void MakeDriveThroughRoadStop(TileIndex t, Owner station, Owner road, Owner tram, StationID sid, RoadStopType rst, RoadTypes rt, Axis a)
 {

@@ -1299,6 +1299,13 @@ static void DrawTile_Road(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
+/**
+ * Draw the road depot sprite.
+ * @param x   The x offset to draw at.
+ * @param y   The y offset to draw at.
+ * @param dir The direction the depot must be facing.
+ * @param rt  The road type of the depot to draw.
+ */
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);

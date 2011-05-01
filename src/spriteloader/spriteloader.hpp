@@ -15,8 +15,10 @@
 #include "../core/alloc_type.hpp"
 #include "../gfx_type.h"
 
+/** Interface for the loader of our sprites. */
 class SpriteLoader {
 public:
+	/** Definition of a common pixel in OpenTTD's realm. */
 	struct CommonPixel {
 		uint8 r;  ///< Red-channel
 		uint8 g;  ///< Green-channel

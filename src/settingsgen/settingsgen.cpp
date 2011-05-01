@@ -156,13 +156,18 @@ private:
 		return num_blocks > 0 && this->output_buffer[num_blocks - 1].HasRoom();
 	}
 
-	typedef SmallVector<OutputBuffer, 2> OutputBufferVector;
+	typedef SmallVector<OutputBuffer, 2> OutputBufferVector; ///< Vector type for output buffers.
 	OutputBufferVector output_buffer; ///< Vector of blocks containing the stored output.
 };
 
 
 /** Derived class for loading INI files without going through Fio stuff. */
 struct SettingsIniFile : IniLoadFile {
+	/**
+	 * Construct a new ini loader.
+	 * @param list_group_names A \c NULL terminated list with group names that should be loaded as lists instead of variables. @see IGT_LIST
+	 * @param seq_group_names  A \c NULL terminated list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
+	 */
 	SettingsIniFile(const char * const *list_group_names = NULL, const char * const *seq_group_names = NULL) :
 			IniLoadFile(list_group_names, seq_group_names)
 	{

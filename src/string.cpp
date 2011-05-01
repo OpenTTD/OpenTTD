@@ -160,7 +160,11 @@ char *strecpy(char *dst, const char *src, const char *last)
 	return dst;
 }
 
-
+/**
+ * Format, "printf", into a newly allocated string.
+ * @param str The formatting string.
+ * @return The formatted string. You must free this!
+ */
 char *CDECL str_fmt(const char *str, ...)
 {
 	char buf[4096];

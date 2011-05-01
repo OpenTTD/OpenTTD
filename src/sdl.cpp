@@ -16,6 +16,7 @@
 #include "sdl.h"
 #include <SDL.h>
 
+/** Number of users of the SDL library. */
 static int _sdl_usage;
 
 #ifdef DYNAMICALLY_LOADED_SDL
@@ -78,7 +79,10 @@ static const char *LoadSdlDLL()
 
 #endif /* DYNAMICALLY_LOADED_SDL */
 
-
+/**
+ * Open the SDL library.
+ * @param x The subsystem to load.
+ */
 const char *SdlOpen(uint32 x)
 {
 #ifdef DYNAMICALLY_LOADED_SDL
@@ -96,6 +100,10 @@ const char *SdlOpen(uint32 x)
 	return NULL;
 }
 
+/**
+ * Close the SDL library.
+ * @param x The subsystem to close.
+ */
 void SdlClose(uint32 x)
 {
 	if (x != 0) {

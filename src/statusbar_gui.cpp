@@ -257,6 +257,9 @@ bool IsNewsTickerShown()
 
 int16 *_preferred_statusbar_size = &_main_status_desc.default_width; ///< Pointer to the default size for the status toolbar.
 
+/**
+ * Show our status bar.
+ */
 void ShowStatusBar()
 {
 	new StatusBarWindow(&_main_status_desc);

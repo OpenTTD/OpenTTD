@@ -14,6 +14,7 @@
 
 #include "saveload.h"
 
+/** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
   SLE_CONDVAR(Sign, name,  SLE_NAME,                   0, 83),
   SLE_CONDSTR(Sign, name,  SLE_STR, 0,                84, SL_MAX_VERSION),
@@ -56,6 +57,7 @@ static void Load_SIGN()
 	}
 }
 
+/** Chunk handlers related to signs. */
 extern const ChunkHandler _sign_chunk_handlers[] = {
 	{ 'SIGN', Save_SIGN, Load_SIGN, NULL, NULL, CH_ARRAY | CH_LAST},
 };

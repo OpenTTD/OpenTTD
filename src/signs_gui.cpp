@@ -638,6 +638,10 @@ static const WindowDesc _query_sign_edit_desc(
 	_nested_query_sign_edit_widgets, lengthof(_nested_query_sign_edit_widgets)
 );
 
+/**
+ * Handle clicking on a sign.
+ * @param si The sign that was clicked on.
+ */
 void HandleClickOnSign(const Sign *si)
 {
 	if (_ctrl_pressed && si->owner == _local_company) {
@@ -647,6 +651,10 @@ void HandleClickOnSign(const Sign *si)
 	ShowRenameSignWindow(si);
 }
 
+/**
+ * Show the window to change the text of a sign.
+ * @param si The sign to show the window for.
+ */
 void ShowRenameSignWindow(const Sign *si)
 {
 	/* Delete all other edit windows */
@@ -655,6 +663,10 @@ void ShowRenameSignWindow(const Sign *si)
 	new SignWindow(&_query_sign_edit_desc, si);
 }
 
+/**
+ * Close the sign window associated with the given sign.
+ * @param sign The sign to close the window for.
+ */
 void DeleteRenameSignWindow(SignID sign)
 {
 	SignWindow *w = dynamic_cast<SignWindow *>(FindWindowById(WC_QUERY_STRING, 0));

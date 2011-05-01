@@ -150,6 +150,9 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
+/**
+ * Update the caches of this ship.
+ */
 void Ship::UpdateCache()
 {
 	this->vcache.cached_max_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, ShipVehInfo(this->engine_type)->max_speed);

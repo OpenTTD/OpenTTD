@@ -833,6 +833,10 @@ static const WindowDesc _build_road_scen_desc(
 	_nested_build_road_scen_widgets, lengthof(_nested_build_road_scen_widgets)
 );
 
+/**
+ * Show the road building toolbar in the scenario editor.
+ * @return The just opened toolbar.
+ */
 Window *ShowBuildRoadScenToolbar()
 {
 	_cur_roadtype = ROADTYPE_ROAD;

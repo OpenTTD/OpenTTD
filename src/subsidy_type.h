@@ -20,6 +20,7 @@ enum PartOfSubsidy {
 	POS_SRC = 1 << 0, ///< bit 0 set -> town/industry is source of subsidised path
 	POS_DST = 1 << 1, ///< bit 1 set -> town/industry is destination of subsidised path
 };
+/** Helper to store the PartOfSubsidy data in a single byte. */
 typedef SimpleTinyEnumT<PartOfSubsidy, byte> PartOfSubsidyByte;
 
 DECLARE_ENUM_AS_BIT_SET(PartOfSubsidy)

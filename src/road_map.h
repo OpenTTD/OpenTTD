@@ -260,6 +260,7 @@ enum DisallowedRoadDirections {
 	DRD_END
 };
 DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections)
+/** Helper information for extract tool. */
 template <> struct EnumPropsT<DisallowedRoadDirections> : MakeEnumPropsT<DisallowedRoadDirections, byte, DRD_NONE, DRD_END, DRD_END, 2> {};
 
 /**
@@ -311,7 +312,7 @@ static inline Axis GetCrossingRailAxis(TileIndex t)
 
 /**
  * Get the road bits of a level crossing.
- * @param t The tile to query.
+ * @param tile The tile to query.
  * @return The present road bits.
  */
 static inline RoadBits GetCrossingRoadBits(TileIndex tile)
@@ -321,7 +322,7 @@ static inline RoadBits GetCrossingRoadBits(TileIndex tile)
 
 /**
  * Get the rail track of a level crossing.
- * @param t The tile to query.
+ * @param tile The tile to query.
  * @return The rail track.
  */
 static inline Track GetCrossingRailTrack(TileIndex tile)
@@ -331,7 +332,7 @@ static inline Track GetCrossingRailTrack(TileIndex tile)
 
 /**
  * Get the rail track bits of a level crossing.
- * @param t The tile to query.
+ * @param tile The tile to query.
  * @return The rail track bits.
  */
 static inline TrackBits GetCrossingRailBits(TileIndex tile)

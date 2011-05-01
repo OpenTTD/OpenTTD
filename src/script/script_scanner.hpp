@@ -14,6 +14,7 @@
 
 #include "../fileio_type.h"
 
+/** Scanner to help finding scripts. */
 class ScriptScanner {
 public:
 	ScriptScanner();
@@ -43,8 +44,8 @@ private:
 	void ScanDir(const char *dirname, const char *info_file_name);
 
 protected:
-	class Squirrel *engine;
-	char main_script[1024];
+	class Squirrel *engine; ///< The engine we're scanning with.
+	char main_script[1024]; ///< The name of the current main script.
 };
 
 #endif /* SCRIPT_SCANNER_HPP */

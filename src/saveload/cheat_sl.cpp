@@ -14,6 +14,9 @@
 
 #include "saveload.h"
 
+/**
+ * Save the cheat values.
+ */
 static void Save_CHTS()
 {
 	/* Cannot use lengthof because _cheats is of type Cheats, not Cheat */
@@ -28,6 +31,9 @@ static void Save_CHTS()
 	}
 }
 
+/**
+ * Load the cheat values.
+ */
 static void Load_CHTS()
 {
 	Cheat *cht = (Cheat*)&_cheats;
@@ -39,6 +45,7 @@ static void Load_CHTS()
 	}
 }
 
+/** Chunk handlers related to cheats. */
 extern const ChunkHandler _cheat_chunk_handlers[] = {
 	{ 'CHTS', Save_CHTS, Load_CHTS, NULL, NULL, CH_RIFF | CH_LAST},
 };

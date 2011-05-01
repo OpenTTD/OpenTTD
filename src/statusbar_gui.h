@@ -12,6 +12,7 @@
 #ifndef STATUSBAR_GUI_H
 #define STATUSBAR_GUI_H
 
+/** What of the statusbar must be invalidated? */
 enum StatusBarInvalidate {
 	SBI_SAVELOAD_START,  ///< started saving
 	SBI_SAVELOAD_FINISH, ///< finished saving

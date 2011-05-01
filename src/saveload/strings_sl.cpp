@@ -115,6 +115,9 @@ void InitializeOldNames()
 	_old_name_array = CallocT<char>(512 * 32); // 200 * 24 would be enough for TTO savegames
 }
 
+/**
+ * Load the NAME chunk.
+ */
 static void Load_NAME()
 {
 	int index;
@@ -124,6 +127,7 @@ static void Load_NAME()
 	}
 }
 
+/** Chunk handlers related to strings. */
 extern const ChunkHandler _name_chunk_handlers[] = {
 	{ 'NAME', NULL, Load_NAME, NULL, NULL, CH_ARRAY | CH_LAST},
 };

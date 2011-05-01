@@ -79,6 +79,10 @@ enum Slope {
 };
 DECLARE_ENUM_AS_BIT_SET(Slope)
 
+/**
+ * Helper for creating a bitset of slopes.
+ * @param x The slope to convert into a bitset.
+ */
 #define M(x) (1 << (x))
 /** Constant bitset with safe slopes for building a level crossing. */
 static const uint32 VALID_LEVEL_CROSSING_SLOPES = M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT);

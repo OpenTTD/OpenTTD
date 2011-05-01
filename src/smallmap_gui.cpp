@@ -292,6 +292,9 @@ static const SmallMapColourScheme _heightmap_schemes[] = {
 	{_violet_map_heights,     MKCOLOUR(0x82828282)}, ///< Violet colour scheme.
 };
 
+/**
+ * (Re)build the colour tables for the legends.
+ */
 void BuildLandLegend()
 {
 	for (LegendAndColour *lc = _legend_land_contours; lc->legend == STR_TINY_BLACK_HEIGHT; lc++) {
@@ -1709,6 +1712,9 @@ static const WindowDesc _smallmap_desc(
 	_nested_smallmap_widgets, lengthof(_nested_smallmap_widgets)
 );
 
+/**
+ * Show the smallmap window.
+ */
 void ShowSmallMap()
 {
 	AllocateWindowDescFront<SmallMapWindow>(&_smallmap_desc, 0);

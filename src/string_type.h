@@ -29,6 +29,7 @@ enum CharSetFilter {
 	CS_HEXADECIMAL,       ///< Only hexadecimal characters
 };
 
+/** Type for wide characters, i.e. non-UTF8 encoded unicode characters. */
 typedef uint32 WChar;
 
 /* The following are directional formatting codes used to get the LTR and RTL strings right:

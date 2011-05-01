@@ -18,7 +18,7 @@
 
 #include "table/strings.h"
 
-/* Initialize the sign-pool */
+/** Initialize the sign-pool */
 SignPool _sign_pool("Sign");
 INSTANTIATE_POOL_METHODS(Sign)
 

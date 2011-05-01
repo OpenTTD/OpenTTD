@@ -34,6 +34,7 @@ enum SignalType {
 	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
 	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO
 };
+/** Helper information for extract tool. */
 template <> struct EnumPropsT<SignalType> : MakeEnumPropsT<SignalType, byte, SIGTYPE_NORMAL, SIGTYPE_END, SIGTYPE_END, 3> {};
 
 
