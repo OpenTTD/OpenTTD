@@ -51,14 +51,14 @@ NetworkUDPSocketHandler *_udp_master_socket = NULL; ///< udp master socket
 
 class MasterNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_SESSION_KEY);
+	virtual void Receive_MASTER_ACK_REGISTER(Packet *p, NetworkAddress *client_addr);
+	virtual void Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr);
 public:
 	MasterNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
 	virtual ~MasterNetworkUDPSocketHandler() {}
 };
 
-DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
+void MasterNetworkUDPSocketHandler::Receive_MASTER_ACK_REGISTER(Packet *p, NetworkAddress *client_addr)
 {
 	_network_advertise_retries = 0;
 	DEBUG(net, 2, "[udp] advertising on master server successful (%s)", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
@@ -67,7 +67,7 @@ DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
 	if (!_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(false);
 }
 
-DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_SESSION_KEY)
+void MasterNetworkUDPSocketHandler::Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr)
 {
 	_session_key = p->Recv_uint64();
 	DEBUG(net, 2, "[udp] received new session key from master server (%s)", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
@@ -77,15 +77,15 @@ DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_SESSION_KEY)
 
 class ServerNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS);
+	virtual void Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr);
+	virtual void Receive_CLIENT_DETAIL_INFO(Packet *p, NetworkAddress *client_addr);
+	virtual void Receive_CLIENT_GET_NEWGRFS(Packet *p, NetworkAddress *client_addr);
 public:
 	ServerNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
 	virtual ~ServerNetworkUDPSocketHandler() {}
 };
 
-DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
+void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr)
 {
 	/* Just a fail-safe.. should never happen */
 	if (!_network_udp_server) {
@@ -125,7 +125,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	DEBUG(net, 2, "[udp] queried from %s", client_addr->GetHostname());
 }
 
-DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
+void ServerNetworkUDPSocketHandler::Receive_CLIENT_DETAIL_INFO(Packet *p, NetworkAddress *client_addr)
 {
 	/* Just a fail-safe.. should never happen */
 	if (!_network_udp_server) return;
@@ -192,7 +192,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
  * in_reply and in_reply_count are used to keep a list of GRFs to
  * send in the reply.
  */
-DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
+void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, NetworkAddress *client_addr)
 {
 	uint8 num_grfs;
 	uint i;
@@ -248,15 +248,15 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 
 class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS);
+	virtual void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr);
+	virtual void Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAddress *client_addr);
+	virtual void Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr);
 	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config);
 public:
 	virtual ~ClientNetworkUDPSocketHandler() {}
 };
 
-DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
+void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr)
 {
 	NetworkGameList *item;
 
@@ -322,7 +322,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 	UpdateNetworkGameWindow(false);
 }
 
-DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_MASTER_RESPONSE_LIST)
+void ClientNetworkUDPSocketHandler::Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAddress *client_addr)
 {
 	/* packet begins with the protocol version (uint8)
 	 * then an uint16 which indicates how many
@@ -358,7 +358,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_MASTER_RESPONSE_LIST)
 }
 
 /** The return of the client's request of the names of some NewGRFs */
-DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
+void ClientNetworkUDPSocketHandler::Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr)
 {
 	uint8 num_grfs;
 	uint i;

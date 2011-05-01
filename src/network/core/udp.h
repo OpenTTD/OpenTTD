@@ -8,64 +8,7 @@
  */
 
 /**
- * @file udp.h Basic functions to receive and send UDP packets.
- *
- *
- * *** Requesting game information from a server ***
- *
- * This describes the on-the-wire structure of the request and reply
- * packet of the NetworkGameInfo (see game.h) data.
- *
- * --- Points of attention ---
- *  - all > 1 byte integral values are written in little endian,
- *    unless specified otherwise.
- *      Thus, 0x01234567 would be sent as {0x67, 0x45, 0x23, 0x01}.
- *  - all sent strings are of variable length and terminated by a '\0'.
- *      Thus, the length of the strings is not sent.
- *  - years that are leap years in the 'days since X' to 'date' calculations:
- *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
- *
- * --- Request ---
- * Bytes:  Description:
- *   2       size of the whole packet, in this case 3
- *   1       type of packet, in this case PACKET_UDP_CLIENT_FIND_SERVER (0)
- * This packet would look like: { 0x03, 0x00, 0x00 }
- *
- * --- Reply ---
- * Version: Bytes:  Description:
- *   all      2       size of the whole packet
- *   all      1       type of packet, in this case PACKET_UDP_SERVER_RESPONSE (1)
- *   all      1       the version of this packet's structure
- *
- *   4+       1       number of GRFs attached (n)
- *   4+       n * 20  unique identifier for GRF files. Constists of:
- *                     - one 4 byte variable with the GRF ID
- *                     - 16 bytes (sent sequentially) for the MD5 checksum
- *                       of the GRF
- *
- *   3+       4       current game date in days since 1-1-0 (DMY)
- *   3+       4       game introduction date in days since 1-1-0 (DMY)
- *
- *   2+       1       maximum number of companies allowed on the server
- *   2+       1       number of companies on the server
- *   2+       1       maximum number of spectators allowed on the server
- *
- *   1+       var     string with the name of the server
- *   1+       var     string with the revision of the server
- *   1+       1       the language run on the server
- *                    (0 = any, 1 = English, 2 = German, 3 = French)
- *   1+       1       whether the server uses a password (0 = no, 1 = yes)
- *   1+       1       maximum number of clients allowed on the server
- *   1+       1       number of clients on the server
- *   1+       1       number of spectators on the server
- *   1 & 2    2       current game date in days since 1-1-1920 (DMY)
- *   1 & 2    2       game introduction date in days since 1-1-1920 (DMY)
- *   1+       var     string with the name of the map
- *   1+       2       width of the map in tiles
- *   1+       2       height of the map in tiles
- *   1+       1       type of map:
- *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
- *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
+ * @file core/udp.h Basic functions to receive and send UDP packets.
  */
 
 #ifndef NETWORK_CORE_UDP_H
@@ -103,9 +46,6 @@ enum ServerListType {
 	SLT_END = SLT_AUTODETECT ///< End of 'arrays' marker
 };
 
-#define DECLARE_UDP_RECEIVE_COMMAND(type) virtual void NetworkPacketReceive_## type ##_command(Packet *p, NetworkAddress *client_addr)
-#define DEF_UDP_RECEIVE_COMMAND(cls, type) void cls ##NetworkUDPSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p, NetworkAddress *client_addr)
-
 /** Base socket handler for all UDP sockets */
 class NetworkUDPSocketHandler : public NetworkSocketHandler {
 protected:
@@ -116,20 +56,169 @@ protected:
 
 	NetworkRecvStatus CloseConnection(bool error = true);
 
-	/* Declare all possible packets here. If it can be received by the
-	 * a specific handler, it has to be implemented. */
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_DETAIL_INFO);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_REGISTER);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_LIST);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_UNREGISTER);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_GET_NEWGRFS);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_NEWGRFS);
-	DECLARE_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_SESSION_KEY);
+	void ReceiveInvalidPacket(PacketUDPType, NetworkAddress *client_addr);
+
+	/**
+	 * Queries to the server for information about the game.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * Return of server information to the client.
+	 * This packet has several legacy versions, so we list the version and size of each "field":
+	 *
+	 * Version: Bytes:  Description:
+	 *   all      1       the version of this packet's structure
+	 *
+	 *   4+       1       number of GRFs attached (n)
+	 *   4+       n * 20  unique identifier for GRF files. Constists of:
+	 *                     - one 4 byte variable with the GRF ID
+	 *                     - 16 bytes (sent sequentially) for the MD5 checksum
+	 *                       of the GRF
+	 *
+	 *   3+       4       current game date in days since 1-1-0 (DMY)
+	 *   3+       4       game introduction date in days since 1-1-0 (DMY)
+	 *
+	 *   2+       1       maximum number of companies allowed on the server
+	 *   2+       1       number of companies on the server
+	 *   2+       1       maximum number of spectators allowed on the server
+	 *
+	 *   1+       var     string with the name of the server
+	 *   1+       var     string with the revision of the server
+	 *   1+       1       the language run on the server
+	 *                    (0 = any, 1 = English, 2 = German, 3 = French)
+	 *   1+       1       whether the server uses a password (0 = no, 1 = yes)
+	 *   1+       1       maximum number of clients allowed on the server
+	 *   1+       1       number of clients on the server
+	 *   1+       1       number of spectators on the server
+	 *   1 & 2    2       current game date in days since 1-1-1920 (DMY)
+	 *   1 & 2    2       game introduction date in days since 1-1-1920 (DMY)
+	 *   1+       var     string with the name of the map
+	 *   1+       2       width of the map in tiles
+	 *   1+       2       height of the map in tiles
+	 *   1+       1       type of map:
+	 *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
+	 *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_SERVER_RESPONSE(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * Query for detailed information about companies.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_CLIENT_DETAIL_INFO(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * Reply with detailed company information.
+	 * uint8   Version of the packet.
+	 * uint8   Number of companies.
+	 * For each company:
+	 *   uint8   ID of the company.
+	 *   string  Name of the company.
+	 *   uint32  Year the company was inaugurated.
+	 *   uint64  Value.
+	 *   uint64  Money.
+	 *   uint64  Income.
+	 *   uint16  Performance (last quarter).
+	 *   bool    Company is password protected.
+	 *   uint16  Number of trains.
+	 *   uint16  Number of lorries.
+	 *   uint16  Number of busses.
+	 *   uint16  Number of planes.
+	 *   uint16  Number of ships.
+	 *   uint16  Number of train stations.
+	 *   uint16  Number of lorry stations.
+	 *   uint16  Number of bus stops.
+	 *   uint16  Number of airports and heliports.
+	 *   uint16  Number of harbours.
+	 *   bool    Company is an AI.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_SERVER_DETAIL_INFO(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * Registers the server to the master server.
+	 * string  The "welcome" message to root out other binary packets.
+	 * uint8   Version of the protocol.
+	 * uint16  The port to unregister.
+	 * uint64  The session key.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_SERVER_REGISTER(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The master server acknowledges the registration.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_MASTER_ACK_REGISTER(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The client requests a list of servers.
+	 * uint8   The protocol version.
+	 * uint8   The type of server to look for: IPv4, IPv6 or based on the received packet.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_CLIENT_GET_LIST(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The server sends a list of servers.
+	 * uint8   The protocol version.
+	 * For each server:
+	 *   4 or 16 bytes of IPv4 or IPv6 address.
+	 *   uint8   The port.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * A server unregisters itself at the master server.
+	 * uint8   Version of the protocol.
+	 * uint16  The port to unregister.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_SERVER_UNREGISTER(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The client requests information about some NewGRFs.
+	 * uint8   The number of NewGRFs information is requested about.
+	 * For each NewGRF:
+	 *   uint32      The GRFID.
+	 *   16 * uint8  MD5 checksum of the GRF.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_CLIENT_GET_NEWGRFS(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The server returns information about some NewGRFs.
+	 * uint8   The number of NewGRFs information is requested about.
+	 * For each NewGRF:
+	 *   uint32      The GRFID.
+	 *   16 * uint8  MD5 checksum of the GRF.
+	 *   string      The name of the NewGRF.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_SERVER_NEWGRFS(Packet *p, NetworkAddress *client_addr);
+
+	/**
+	 * The master server sends us a session key.
+	 * uint64  The session key.
+	 * @param p           The received packet.
+	 * @param client_addr The origin of the packet.
+	 */
+	virtual void Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr);
 
 	void HandleUDPPacket(Packet *p, NetworkAddress *client_addr);
 

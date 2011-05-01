@@ -30,6 +30,15 @@ typedef uint8  PacketType; ///< Identifier for the packet
  * limit will give an assertion when sending (i.e. writing) the
  * packet. Reading past the size of the packet when receiving
  * will return all 0 values and "" in case of the string.
+ *
+ * --- Points of attention ---
+ *  - all > 1 byte integral values are written in little endian,
+ *    unless specified otherwise.
+ *      Thus, 0x01234567 would be sent as {0x67, 0x45, 0x23, 0x01}.
+ *  - all sent strings are of variable length and terminated by a '\0'.
+ *      Thus, the length of the strings is not sent.
+ *  - years that are leap years in the 'days since X' to 'date' calculations:
+ *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
  */
 struct Packet {
 	/** The next packet. Used for queueing packets before sending. */
