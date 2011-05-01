@@ -968,6 +968,13 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
 	return layout;
 }
 
+/**
+ * Create the station layout for the given number of tracks and platform length.
+ * @param layout    The layout to write to.
+ * @param numtracks The number of tracks to write.
+ * @param plat_len  The length of the platforms.
+ * @param statspec  The specification of the station to (possibly) get the layout from.
+ */
 void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec)
 {
 	if (statspec != NULL && statspec->lengths >= plat_len &&
@@ -3470,6 +3477,12 @@ static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 	return true;
 }
 
+/**
+ * Clear a single tile of a station.
+ * @param tile The tile to clear.
+ * @param flags The DoCommand flags related to the "command".
+ * @return The cost, or error of clearing.
+ */
 CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) {

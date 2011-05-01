@@ -106,8 +106,8 @@ private:
  */
 class ThreadMutex_Win32 : public ThreadMutex {
 private:
-	CRITICAL_SECTION critical_section;
-	HANDLE event;
+	CRITICAL_SECTION critical_section; ///< The critical section we would enter.
+	HANDLE event;                      ///< Event for signalling.
 
 public:
 	ThreadMutex_Win32()

@@ -91,7 +91,7 @@ Axis GetAxisForNewWaypoint(TileIndex tile)
 	}
 }
 
-CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
+extern CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
 
 /**
  * Check whether the given tile is suitable for a waypoint.
@@ -366,7 +366,11 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WAYPOINT_BUOY]);
 }
 
-
+/**
+ * Check whether the name is unique amongst the waypoints.
+ * @param name The name to check.
+ * @return True iff the name is unique.
+ */
 static bool IsUniqueWaypointName(const char *name)
 {
 	const Waypoint *wp;

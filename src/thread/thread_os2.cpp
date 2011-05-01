@@ -93,8 +93,8 @@ private:
  */
 class ThreadMutex_OS2 : public ThreadMutex {
 private:
-	HMTX mutex;
-	HEV event;
+	HMTX mutex; ///< The mutex.
+	HEV event;  ///< Event for waiting.
 
 public:
 	ThreadMutex_OS2()

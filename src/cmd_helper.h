@@ -14,6 +14,14 @@
 
 #include "core/enum_type.hpp"
 
+/**
+ * Extracts a given type from a value.
+ * @tparam T The type of data we're looking for.
+ * @tparam S The offset in the data.
+ * @tparam N The amount of bits to read.
+ * @tparam U The type of data passed to us.
+ * @param v The data to extract the value from.
+ */
 template<typename T, uint S, uint N, typename U> static inline T Extract(U v)
 {
 	/* Check if there are enough bits in v */

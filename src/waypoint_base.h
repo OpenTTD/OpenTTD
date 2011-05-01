@@ -14,9 +14,14 @@
 
 #include "base_station_base.h"
 
+/** Representation of a waypoint. */
 struct Waypoint : SpecializedStation<Waypoint, true> {
 	uint16 town_cn;    ///< The N-1th waypoint for this town (consecutive number)
 
+	/**
+	 * Create a waypoint at the given tile.
+	 * @param tile The location of the waypoint.
+	 */
 	Waypoint(TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(tile) { }
 	~Waypoint();
 
@@ -62,6 +67,10 @@ struct Waypoint : SpecializedStation<Waypoint, true> {
 	}
 };
 
+/**
+ * Iterate over all waypoints.
+ * @param var The variable used for iteration.
+ */
 #define FOR_ALL_WAYPOINTS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Waypoint, var)
 
 #endif /* WAYPOINT_BASE_H */

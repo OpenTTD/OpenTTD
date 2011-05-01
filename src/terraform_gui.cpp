@@ -368,6 +368,11 @@ static const WindowDesc _terraform_desc(
 	_nested_terraform_widgets, lengthof(_nested_terraform_widgets)
 );
 
+/**
+ * Show the toolbar for terraforming in the game.
+ * @param link The toolbar we might want to link to.
+ * @return The allocated toolbar.
+ */
 Window *ShowTerraformToolbar(Window *link)
 {
 	if (!Company::IsValidID(_local_company)) return NULL;
@@ -781,6 +786,10 @@ static const WindowDesc _scen_edit_land_gen_desc(
 	_nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets)
 );
 
+/**
+ * Show the toolbar for terraforming in the scenario editor.
+ * @return The allocated toolbar.
+ */
 Window *ShowEditorTerraformToolbar()
 {
 	return AllocateWindowDescFront<ScenarioEditorLandscapeGenerationWindow>(&_scen_edit_land_gen_desc, 0);

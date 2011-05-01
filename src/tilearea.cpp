@@ -105,8 +105,8 @@ void TileArea::ClampToMap()
 
 /**
  * Construct the iterator.
- * @param begin Tile from where to begin iterating.
- * @param end   Tile where to end the iterating.
+ * @param corner1 Tile from where to begin iterating.
+ * @param corner2 Tile where to end the iterating.
  */
 DiagonalTileIterator::DiagonalTileIterator(TileIndex corner1, TileIndex corner2) : TileIterator(corner2), base_x(TileX(corner2)), base_y(TileY(corner2)), a_cur(0), b_cur(0)
 {

@@ -14,6 +14,7 @@
 
 #include "core/enum_type.hpp"
 
+/** Type for the company global vehicle unit number. */
 typedef uint16 UnitID;
 
 /** Available types of transport */
@@ -24,14 +25,15 @@ enum TransportType {
 	 * accessing tunnels and bridges. For now, you should just not change
 	 * the values for road and rail.
 	 */
-	TRANSPORT_BEGIN = 0,
+	TRANSPORT_BEGIN = 0, ///< Begin of the iterator.
 	TRANSPORT_RAIL = TRANSPORT_BEGIN, ///< Transport by train
 	TRANSPORT_ROAD,  ///< Transport by road vehicle
 	TRANSPORT_WATER, ///< Transport over water
 	TRANSPORT_AIR,   ///< Transport through air
-	TRANSPORT_END,
-	INVALID_TRANSPORT = 0xff,
+	TRANSPORT_END,   ///< End of iterations.
+	INVALID_TRANSPORT = 0xff, ///< Sentinel for invalid transport types.
 };
+/** Helper information for extract tool. */
 template <> struct EnumPropsT<TransportType> : MakeEnumPropsT<TransportType, byte, TRANSPORT_BEGIN, TRANSPORT_END, INVALID_TRANSPORT, 2> {};
 
 #endif /* TRANSPORT_TYPE_H */

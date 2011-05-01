@@ -670,6 +670,10 @@ static const WindowDesc _timetable_desc(
 	_nested_timetable_widgets, lengthof(_nested_timetable_widgets)
 );
 
+/**
+ * Show the timetable for a given vehicle.
+ * @param v The vehicle to show the timetable for.
+ */
 void ShowTimetableWindow(const Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_DETAILS, v->index, false);

@@ -18,6 +18,13 @@
 
 #include "table/strings.h"
 
+/**
+ * Change/update a particular timetable entry.
+ * @param v            The vehicle to change the timetable of.
+ * @param order_number The index of the timetable in the order list.
+ * @param time         The new time of the timetable entry.
+ * @param is_journey   Whether to set the waiting or travelling time.
+ */
 static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time, bool is_journey)
 {
 	Order *order = v->GetOrder(order_number);
@@ -222,6 +229,11 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	return CommandCost();
 }
 
+/**
+ * Update the timetable for the vehicle.
+ * @param v The vehicle to update the timetable for.
+ * @param travelling Whether we just travelled or waited at a station.
+ */
 void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 {
 	uint timetabled = travelling ? v->current_order.travel_time : v->current_order.wait_time;

@@ -989,6 +989,13 @@ static char *MakeCatalanTownName(char *buf, const char *last, uint32 seed)
 }
 
 
+/**
+ * Type for all town name generator functions.
+ * @param buf  The buffer to write the name to.
+ * @param last The last element of the buffer.
+ * @param seed The seed of the town name.
+ * @return The end of the filled buffer.
+ */
 typedef char *TownNameGenerator(char *buf, const char *last, uint32 seed);
 
 /** Contains pointer to generator and minimum buffer size (not incl. terminating '\0') */

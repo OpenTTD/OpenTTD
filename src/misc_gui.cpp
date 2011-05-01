@@ -1211,6 +1211,11 @@ void UpdateTextBufferSize(Textbuf *tb)
 	tb->caretxoffs = tb->pixels;
 }
 
+/**
+ * Handle the flashing of the caret.
+ * @param tb The text buffer to handle the caret of.
+ * @return True if the caret state changes.
+ */
 bool HandleCaret(Textbuf *tb)
 {
 	/* caret changed? */

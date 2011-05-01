@@ -17,10 +17,10 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-TransparencyOptionBits _transparency_opt;
-TransparencyOptionBits _transparency_lock;
-TransparencyOptionBits _invisibility_opt;
-byte _display_opt;
+TransparencyOptionBits _transparency_opt;  ///< The bits that should be transparent.
+TransparencyOptionBits _transparency_lock; ///< Prevent these bits from flipping with X.
+TransparencyOptionBits _invisibility_opt;  ///< The bits that should be invisible.
+byte _display_opt; ///< What do we want to draw/do?
 
 /** Widget numbers of the transparency window. */
 enum TransparencyToolbarWidgets {
@@ -169,6 +169,9 @@ static const WindowDesc _transparency_desc(
 	_nested_transparency_widgets, lengthof(_nested_transparency_widgets)
 );
 
+/**
+ * Show the transparency toolbar.
+ */
 void ShowTransparencyToolbar()
 {
 	AllocateWindowDescFront<TransparenciesWindow>(&_transparency_desc, 0);

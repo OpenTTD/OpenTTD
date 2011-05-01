@@ -53,6 +53,7 @@ struct VehicleListIdentifier {
 	VehicleListIdentifier() {}
 };
 
+/** A list of vehicles. */
 typedef SmallVector<const Vehicle *, 32> VehicleList;
 
 bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &identifier);

@@ -51,7 +51,7 @@ enum QueryStringFlags {
 
 DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)
 
-
+/** Callback procedure for the ShowQuery method. */
 typedef void QueryCallbackProc(Window*, bool);
 
 void ShowQueryString(StringID str, StringID caption, uint max_len, Window *parent, CharSetFilter afilter, QueryStringFlags flags);

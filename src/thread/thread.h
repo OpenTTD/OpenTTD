@@ -12,8 +12,10 @@
 #ifndef THREAD_H
 #define THREAD_H
 
+/** Definition of all thread entry functions. */
 typedef void (*OTTDThreadFunc)(void *);
 
+/** Signal used for signalling we knowingly want to end the thread. */
 class OTTDThreadExitSignal { };
 
 /**
@@ -52,6 +54,9 @@ public:
  */
 class ThreadMutex {
 public:
+	/**
+	 * Create a new mutex.
+	 */
 	static ThreadMutex *New();
 
 	/**

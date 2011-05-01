@@ -16,6 +16,8 @@
 
 /**
  * Calculates the length of a tunnel or a bridge (without end tiles)
+ * @param begin The begin of the tunnel or bridge.
+ * @param end   The end of the tunnel or bridge.
  * @return length of bridge/tunnel middle
  */
 static inline uint GetTunnelBridgeLength(TileIndex begin, TileIndex end)

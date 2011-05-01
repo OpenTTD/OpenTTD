@@ -22,6 +22,13 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+/**
+ * Callback for building wagons.
+ * @param result The result of the command.
+ * @param tile   The tile the command was executed on.
+ * @param p1 Additional data for the command (for the #CommandProc)
+ * @param p2 Additional data for the command (for the #CommandProc)
+ */
 void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Failed()) return;

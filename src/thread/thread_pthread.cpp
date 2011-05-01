@@ -95,9 +95,9 @@ private:
  */
 class ThreadMutex_pthread : public ThreadMutex {
 private:
-	pthread_mutex_t mutex;
-	pthread_cond_t condition;
-	pthread_mutexattr_t attr;
+	pthread_mutex_t mutex;    ///< The actual mutex.
+	pthread_cond_t condition; ///< Data for conditional waiting.
+	pthread_mutexattr_t attr; ///< Attributes set for the mutex.
 
 public:
 	ThreadMutex_pthread()

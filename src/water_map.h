@@ -17,10 +17,10 @@
 
 /** Available water tile types. */
 enum WaterTileType {
-	WATER_TILE_CLEAR, // Plain water.
-	WATER_TILE_COAST, // Coast.
-	WATER_TILE_LOCK,  // Water lock.
-	WATER_TILE_DEPOT, // Water Depot.
+	WATER_TILE_CLEAR, ///< Plain water.
+	WATER_TILE_COAST, ///< Coast.
+	WATER_TILE_LOCK,  ///< Water lock.
+	WATER_TILE_DEPOT, ///< Water Depot.
 };
 
 /** classes of water (for #WATER_TILE_CLEAR water tile type). */
@@ -30,6 +30,7 @@ enum WaterClass {
 	WATER_CLASS_RIVER,   ///< River.
 	WATER_CLASS_INVALID, ///< Used for industry tiles on land (also for oilrig if newgrf says so).
 };
+/** Helper information for extract tool. */
 template <> struct EnumPropsT<WaterClass> : MakeEnumPropsT<WaterClass, byte, WATER_CLASS_SEA, WATER_CLASS_INVALID, WATER_CLASS_INVALID, 2> {};
 
 /** Sections of the water depot. */
@@ -232,7 +233,7 @@ static inline DiagDirection GetShipDepotDirection(TileIndex t)
 
 /**
  * Get the most northern tile of a ship depot.
- * @param tile One of the tiles of the ship depot.
+ * @param t One of the tiles of the ship depot.
  * @return The northern tile of the depot.
  */
 static inline TileIndex GetShipDepotNorthTile(TileIndex t)

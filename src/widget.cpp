@@ -1833,6 +1833,7 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 /**
  * Compute the row of a scrolled widget that a user clicked in.
  * @param clickpos    Vertical position of the mouse click (without taking scrolling into account).
+ * @param w           The window the click was in.
  * @param widget      Widget number of the widget clicked in.
  * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
  * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.

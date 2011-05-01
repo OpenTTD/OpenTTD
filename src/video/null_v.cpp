@@ -14,6 +14,7 @@
 #include "../blitter/factory.hpp"
 #include "null_v.h"
 
+/** Factory for the null video driver. */
 static FVideoDriver_Null iFVideoDriver_Null;
 
 const char *VideoDriver_Null::Start(const char * const *parm)

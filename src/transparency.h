@@ -38,7 +38,7 @@ typedef uint TransparencyOptionBits; ///< transparency option bits
 extern TransparencyOptionBits _transparency_opt;
 extern TransparencyOptionBits _transparency_lock;
 extern TransparencyOptionBits _invisibility_opt;
-extern byte _display_opt; ///< What do we want to draw/do?
+extern byte _display_opt;
 
 /**
  * Check if the transparency option bit is set

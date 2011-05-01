@@ -29,7 +29,7 @@ struct ViewPort {
 	int virtual_width;   ///< width << zoom
 	int virtual_height;  ///< height << zoom
 
-	ZoomLevel zoom;
+	ZoomLevel zoom; ///< The zoom level of the viewport.
 };
 
 /** Margings for the viewport sign */

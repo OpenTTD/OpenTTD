@@ -16,6 +16,7 @@
 #define TOWNNAME_TYPE_H
 
 #include "newgrf_townname.h"
+#include "town_type.h"
 
 /**
  * Struct holding a parameters used to generate town name.
@@ -37,7 +38,7 @@ struct TownNameParams {
 		this->type = grf ? GetGRFTownNameType(town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + town_name;
 	}
 
-	TownNameParams(const struct Town *t);
+	TownNameParams(const Town *t);
 };
 
 #endif /* TOWNNAME_TYPE_H */

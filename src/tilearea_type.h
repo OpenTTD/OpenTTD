@@ -132,9 +132,12 @@ public:
 /** Iterator to iterate over a diagonal area of the map. */
 class DiagonalTileIterator : public TileIterator {
 private:
-	uint base_x, base_y; ///< The base tile x and y coordinates from where the iterating happens.
-	int a_cur, b_cur;    ///< The current (rotated) x and y coordinates of the iteration.
-	int a_max, b_max;    ///< The (rotated) x and y coordinates of the end of the iteration.
+	uint base_x; ///< The base tile x coordinate from where the iterating happens.
+	uint base_y; ///< The base tile y coordinate from where the iterating happens.
+	int a_cur;   ///< The current (rotated) x coordinate of the iteration.
+	int b_cur;   ///< The current (rotated) y coordinate of the iteration.
+	int a_max;   ///< The (rotated) x coordinats of the end of the iteration.
+	int b_max;   ///< The (rotated) y coordinate of the end of the iteration.
 
 public:
 	DiagonalTileIterator(TileIndex begin, TileIndex end);

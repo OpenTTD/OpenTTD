@@ -1906,8 +1906,7 @@ static WindowDesc _toolb_scen_desc(
 	_nested_toolb_scen_widgets, lengthof(_nested_toolb_scen_widgets)
 );
 
-/* --- Allocating the toolbar --- */
-
+/** Allocate the toolbar. */
 void AllocateToolbar()
 {
 	/* Clean old GUI values; railtype is (re)set by rail_gui.cpp */
