@@ -14,11 +14,13 @@
 
 #include "32bpp_simple.hpp"
 
+/** The optimised 32 bpp blitter (without palette animation). */
 class Blitter_32bppOptimized : public Blitter_32bppSimple {
 public:
+	/** Data stored about a (single) sprite. */
 	struct SpriteData {
-		uint32 offset[ZOOM_LVL_COUNT][2];
-		byte data[];
+		uint32 offset[ZOOM_LVL_COUNT][2]; ///< Offsets (from .data) to streams for different zoom levels, and the normal and remap image information.
+		byte data[];                      ///< Data, all zoomlevels.
 	};
 
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
@@ -29,6 +31,7 @@ public:
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 };
 
+/** Factory for the optimised 32 bpp blitter (without palette animation). */
 class FBlitter_32bppOptimized: public BlitterFactory<FBlitter_32bppOptimized> {
 public:
 	/* virtual */ const char *GetName() { return "32bpp-optimized"; }

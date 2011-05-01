@@ -14,6 +14,7 @@
 #include "../core/random_func.hpp"
 #include "8bpp_debug.hpp"
 
+/** Instantiation of the 8bpp debug blitter factory. */
 static FBlitter_8bppDebug iFBlitter_8bppDebug;
 
 void Blitter_8bppDebug::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)

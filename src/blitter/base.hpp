@@ -15,10 +15,11 @@
 #include "../spritecache.h"
 #include "../spriteloader/spriteloader.hpp"
 
+/** The modes of blitting we can do. */
 enum BlitterMode {
-	BM_NORMAL,
-	BM_COLOUR_REMAP,
-	BM_TRANSPARENT,
+	BM_NORMAL,       ///< Perform the simple blitting.
+	BM_COLOUR_REMAP, ///< Perform a colour remapping.
+	BM_TRANSPARENT,  ///< Perform transparency colour remapping.
 };
 
 /**
@@ -26,20 +27,25 @@ enum BlitterMode {
  */
 class Blitter {
 public:
+	/** Parameters related to blitting. */
 	struct BlitterParams {
-		const void *sprite;      ///< Pointer to the sprite how ever the encoder stored it
-		const byte *remap;       ///< XXX -- Temporary storage for remap array
+		const void *sprite; ///< Pointer to the sprite how ever the encoder stored it
+		const byte *remap;  ///< XXX -- Temporary storage for remap array
 
-		int skip_left, skip_top; ///< How much pixels of the source to skip on the left and top (based on zoom of dst)
-		int width, height;       ///< The width and height in pixels that needs to be drawn to dst
-		int sprite_width;        ///< Real width of the sprite
-		int sprite_height;       ///< Real height of the sprite
-		int left, top;           ///< The offset in the 'dst' in pixels to start drawing
+		int skip_left;      ///< How much pixels of the source to skip on the left (based on zoom of dst)
+		int skip_top;       ///< How much pixels of the source to skip on the top (based on zoom of dst)
+		int width;          ///< The width in pixels that needs to be drawn to dst
+		int height;         ///< The height in pixels that needs to be drawn to dst
+		int sprite_width;   ///< Real width of the sprite
+		int sprite_height;  ///< Real height of the sprite
+		int left;           ///< The left offset in the 'dst' in pixels to start drawing
+		int top;            ///< The top offset in the 'dst' in pixels to start drawing
 
-		void *dst;               ///< Destination buffer
-		int pitch;               ///< The pitch of the destination buffer
+		void *dst;          ///< Destination buffer
+		int pitch;          ///< The pitch of the destination buffer
 	};
 
+	/** Types of palette animation. */
 	enum PaletteAnimation {
 		PALETTE_ANIMATION_NONE,           ///< No palette animation
 		PALETTE_ANIMATION_VIDEO_BACKEND,  ///< Palette animation should be done by video backend (8bpp only!)
@@ -101,7 +107,19 @@ public:
 	 */
 	virtual void DrawRect(void *video, int width, int height, uint8 colour) = 0;
 
-	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width);
+	/**
+	 * Draw a line with a given colour.
+	 * @param video The destination pointer (video-buffer).
+	 * @param x The x coordinate from where the line starts.
+	 * @param y The y coordinate from where the line starts.
+	 * @param x2 The x coordinate to where the line goes.
+	 * @param y2 The y coordinate to where the lines goes.
+	 * @param screen_width The width of the screen you are drawing in (to avoid buffer-overflows).
+	 * @param screen_height The height of the screen you are drawing in (to avoid buffer-overflows).
+	 * @param colour A 8bpp mapping colour.
+	 * @param width Line width.
+	 */
+	virtual void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width);
 
 	/**
 	 * Copy from a buffer to the screen.

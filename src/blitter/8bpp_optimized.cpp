@@ -14,6 +14,7 @@
 #include "../core/math_func.hpp"
 #include "8bpp_optimized.hpp"
 
+/** Instantiation of the 8bpp optimised blitter factory. */
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 
 void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)

@@ -15,11 +15,13 @@
 #include "8bpp_base.hpp"
 #include "factory.hpp"
 
+/** 8bpp blitter optimised for speed. */
 class Blitter_8bppOptimized : public Blitter_8bppBase {
 public:
+	/** Data stored about a (single) sprite. */
 	struct SpriteData {
-		uint32 offset[ZOOM_LVL_COUNT]; ///< offsets (from .data) to streams for different zoom levels
-		byte data[];                   ///< data, all zoomlevels
+		uint32 offset[ZOOM_LVL_COUNT]; ///< Offsets (from .data) to streams for different zoom levels.
+		byte data[];                   ///< Data, all zoomlevels.
 	};
 
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
@@ -28,6 +30,7 @@ public:
 	/* virtual */ const char *GetName() { return "8bpp-optimized"; }
 };
 
+/** Factory for the 8bpp blitter optimised for speed. */
 class FBlitter_8bppOptimized: public BlitterFactory<FBlitter_8bppOptimized> {
 public:
 	/* virtual */ const char *GetName() { return "8bpp-optimized"; }

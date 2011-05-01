@@ -14,6 +14,7 @@
 #include "../core/math_func.hpp"
 #include "32bpp_optimized.hpp"
 
+/** Instantiation of the optimized 32bpp blitter factory. */
 static FBlitter_32bppOptimized iFBlitter_32bppOptimized;
 
 /**

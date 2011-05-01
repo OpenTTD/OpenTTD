@@ -15,6 +15,7 @@
 #include "8bpp_base.hpp"
 #include "factory.hpp"
 
+/** 8bpp debug blitter; colours each sprite differently. */
 class Blitter_8bppDebug : public Blitter_8bppBase {
 public:
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
@@ -23,6 +24,7 @@ public:
 	/* virtual */ const char *GetName() { return "8bpp-debug"; }
 };
 
+/** Factory for the 8bpp debug blitter. */
 class FBlitter_8bppDebug: public BlitterFactory<FBlitter_8bppDebug> {
 public:
 	/* virtual */ const char *GetName() { return "8bpp-debug"; }

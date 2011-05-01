@@ -15,6 +15,7 @@
 #include "32bpp_base.hpp"
 #include "factory.hpp"
 
+/** The most trivial 32 bpp blitter (without palette animation). */
 class Blitter_32bppSimple : public Blitter_32bppBase {
 public:
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
@@ -24,6 +25,7 @@ public:
 	/* virtual */ const char *GetName() { return "32bpp-simple"; }
 };
 
+/** Factory for the simple 32 bpp blitter. */
 class FBlitter_32bppSimple: public BlitterFactory<FBlitter_32bppSimple> {
 public:
 	/* virtual */ const char *GetName() { return "32bpp-simple"; }

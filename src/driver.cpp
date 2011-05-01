@@ -16,20 +16,20 @@
 #include "video/video_driver.hpp"
 #include "string_func.h"
 
-VideoDriver *_video_driver;
-char *_ini_videodriver;
-int _num_resolutions;
-Dimension _resolutions[32];
-Dimension _cur_resolution;
-bool _rightclick_emulate;
+VideoDriver *_video_driver; ///< The currently active video driver.
+char *_ini_videodriver;     ///< The video driver a stored in the configuration file.
+int _num_resolutions;       ///< The number of resolutions.
+Dimension _resolutions[32]; ///< List of resolutions.
+Dimension _cur_resolution;  ///< The current resolution.
+bool _rightclick_emulate;   ///< Whether right clicking is emulated.
 
-SoundDriver *_sound_driver;
-char *_ini_sounddriver;
+SoundDriver *_sound_driver; ///< The currently active sound driver.
+char *_ini_sounddriver;     ///< The sound driver a stored in the configuration file.
 
-MusicDriver *_music_driver;
-char *_ini_musicdriver;
+MusicDriver *_music_driver; ///< The currently active music driver.
+char *_ini_musicdriver;     ///< The music driver a stored in the configuration file.
 
-char *_ini_blitter;
+char *_ini_blitter;         ///< The blitter as stored in the configuration file.
 
 const char *GetDriverParam(const char * const *parm, const char *name)
 {
