@@ -112,13 +112,13 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 	PacketContentType type = (PacketContentType)p->Recv_uint8();
 
 	switch (this->HasClientQuit() ? PACKET_CONTENT_END : type) {
-		CONTENT_COMMAND(PACKET_CONTENT_CLIENT_INFO_LIST);
-		CONTENT_COMMAND(PACKET_CONTENT_CLIENT_INFO_ID);
-		CONTENT_COMMAND(PACKET_CONTENT_CLIENT_INFO_EXTID);
-		CONTENT_COMMAND(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5);
-		CONTENT_COMMAND(PACKET_CONTENT_SERVER_INFO);
-		CONTENT_COMMAND(PACKET_CONTENT_CLIENT_CONTENT);
-		CONTENT_COMMAND(PACKET_CONTENT_SERVER_CONTENT);
+		case PACKET_CONTENT_CLIENT_INFO_LIST:      return this->Receive_CLIENT_INFO_LIST(p);
+		case PACKET_CONTENT_CLIENT_INFO_ID:        return this->Receive_CLIENT_INFO_ID(p);
+		case PACKET_CONTENT_CLIENT_INFO_EXTID:     return this->Receive_CLIENT_INFO_EXTID(p);
+		case PACKET_CONTENT_CLIENT_INFO_EXTID_MD5: return this->Receive_CLIENT_INFO_EXTID_MD5(p);
+		case PACKET_CONTENT_SERVER_INFO:           return this->Receive_SERVER_INFO(p);
+		case PACKET_CONTENT_CLIENT_CONTENT:        return this->Receive_CLIENT_CONTENT(p);
+		case PACKET_CONTENT_SERVER_CONTENT:        return this->Receive_SERVER_CONTENT(p);
 
 		default:
 			if (this->HasClientQuit()) {
@@ -143,26 +143,24 @@ void NetworkContentSocketHandler::ReceivePackets()
 	}
 }
 
+
 /**
- * Create stub implementations for all receive commands that only
- * show a warning that the given command is not available for the
- * socket where the packet came from.
- * @param type the packet type to create the stub for
+ * Helper for logging receiving invalid packets.
+ * @param type The received packet type.
+ * @return Always false, as it's an error.
  */
-#define DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(type) \
-bool NetworkContentSocketHandler::NetworkPacketReceive_## type ##_command(Packet *p) \
-{ \
-	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s", \
-			type, this->client_addr.GetAddressAsString()); \
-	return false; \
+bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
+{
+	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s", type, this->client_addr.GetAddressAsString());
+	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 }
 
-DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_LIST)
-DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_ID)
-DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_EXTID)
-DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5)
-DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_INFO)
-DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_CONTENT)
-DEFINE_UNAVAILABLE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_CONTENT)
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5); }
+bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO); }
+bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
+bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
 
 #endif /* ENABLE_NETWORK */

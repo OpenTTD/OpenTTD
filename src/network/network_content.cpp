@@ -44,7 +44,7 @@ static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
  */
 typedef bool (*HasProc)(const ContentInfo *ci, bool md5sum);
 
-DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
+bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 {
 	ContentInfo *ci = new ContentInfo();
 	ci->type     = (ContentType)p->Recv_uint8();
@@ -425,7 +425,7 @@ static bool GunzipFile(const ContentInfo *ci)
 #endif /* defined(WITH_ZLIB) */
 }
 
-DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
+bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 {
 	if (this->curFile == NULL) {
 		delete this->curInfo;

@@ -80,8 +80,8 @@ protected:
 
 	friend class NetworkContentConnecter;
 
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_INFO);
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_CONTENT);
+	virtual bool Receive_SERVER_INFO(Packet *p);
+	virtual bool Receive_SERVER_CONTENT(Packet *p);
 
 	ContentInfo *GetContent(ContentID cid);
 	void DownloadContentInfo(ContentID cid);

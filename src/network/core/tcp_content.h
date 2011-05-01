@@ -47,9 +47,6 @@ enum PacketContentType {
 	PACKET_CONTENT_END                    ///< Must ALWAYS be on the end of this list!! (period)
 };
 
-#define DECLARE_CONTENT_RECEIVE_COMMAND(type) virtual bool NetworkPacketReceive_## type ##_command(Packet *p)
-#define DEF_CONTENT_RECEIVE_COMMAND(cls, type) bool cls ##NetworkContentSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p)
-
 enum ContentID {
 	INVALID_CONTENT_ID = UINT32_MAX
 };
@@ -98,19 +95,25 @@ protected:
 	NetworkAddress client_addr; ///< The address we're connected to.
 	virtual void Close();
 
+	bool ReceiveInvalidPacket(PacketContentType type);
+
 	/**
 	 * Client requesting a list of content info:
 	 *  byte    type
 	 *  uint32  openttd version
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
 	 */
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_LIST);
+	virtual bool Receive_CLIENT_INFO_LIST(Packet *p);
 
 	/**
 	 * Client requesting a list of content info:
 	 *  uint16  count of ids
 	 *  uint32  id (count times)
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
 	 */
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_ID);
+	virtual bool Receive_CLIENT_INFO_ID(Packet *p);
 
 	/**
 	 * Client requesting a list of content info based on an external
@@ -121,8 +124,10 @@ protected:
 	 *  for each request:
 	 *    uint8 type
 	 *    unique id (uint32)
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
 	 */
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_EXTID);
+	virtual bool Receive_CLIENT_INFO_EXTID(Packet *p);
 
 	/**
 	 * Client requesting a list of content info based on an external
@@ -134,8 +139,10 @@ protected:
 	 *    uint8 type
 	 *    unique id (uint32)
 	 *    md5 (16 bytes)
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
 	 */
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5);
+	virtual bool Receive_CLIENT_INFO_EXTID_MD5(Packet *p);
 
 	/**
 	 * Server sending list of content info:
@@ -150,15 +157,19 @@ protected:
 	 *  uint32  unique id of dependency (dependency count times)
 	 *  uint8   tag count
 	 *  string  tag (max 32 characters for tag count times)
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
 	 */
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_INFO);
+	virtual bool Receive_SERVER_INFO(Packet *p);
 
 	/**
 	 * Client requesting the actual content:
 	 *  uint16  count of unique ids
 	 *  uint32  unique id (count times)
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
 	 */
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_CLIENT_CONTENT);
+	virtual bool Receive_CLIENT_CONTENT(Packet *p);
 
 	/**
 	 * Server sending list of content info:
@@ -167,8 +178,10 @@ protected:
 	 *  string  file name (max 48 characters)
 	 * After this initial packet, packets with the actual data are send using
 	 * the same packet type.
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
 	 */
-	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_CONTENT);
+	virtual bool Receive_SERVER_CONTENT(Packet *p);
 
 	bool HandlePacket(Packet *p);
 public:
