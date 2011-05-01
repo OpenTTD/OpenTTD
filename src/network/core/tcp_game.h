@@ -525,11 +525,32 @@ public:
 	uint last_packet;            ///< Time we received the last frame.
 
 	NetworkRecvStatus CloseConnection(bool error = true);
+
+	/**
+	 * Close the network connection due to the given status.
+	 * @param status The reason the connection got closed.
+	 */
 	virtual NetworkRecvStatus CloseConnection(NetworkRecvStatus status) = 0;
 	virtual ~NetworkGameSocketHandler() {}
 
-	inline void SetInfo(NetworkClientInfo *info) { assert(info != NULL && this->info == NULL); this->info = info; }
-	inline NetworkClientInfo *GetInfo() const { return this->info; }
+	/**
+	 * Sets the client info for this socket handler.
+	 * @param info The new client info.
+	 */
+	inline void SetInfo(NetworkClientInfo *info)
+	{
+		assert(info != NULL && this->info == NULL);
+		this->info = info;
+	}
+
+	/**
+	 * Gets the client info of this socket handler.
+	 * @return The client info.
+	 */
+	inline NetworkClientInfo *GetInfo() const
+	{
+		return this->info;
+	}
 
 	NetworkRecvStatus ReceivePackets();
 

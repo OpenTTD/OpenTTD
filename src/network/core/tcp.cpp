@@ -18,6 +18,10 @@
 
 #include "tcp.h"
 
+/**
+ * Construct a socket handler for a TCP connection.
+ * @param s The just opened TCP connection.
+ */
 NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :
 		NetworkSocketHandler(),
 		packet_queue(NULL), packet_recv(NULL),
@@ -138,8 +142,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 
 /**
  * Receives a packet for the given client
- * @param status the variable to store the status into
- * @return the received packet (or NULL when it didn't receive one)
+ * @return The received packet (or NULL when it didn't receive one)
  */
 Packet *NetworkTCPSocketHandler::ReceivePacket()
 {
@@ -219,7 +222,7 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 /**
  * Check whether this socket can send or receive something.
  * @return \c true when there is something to receive.
- * @note Sets #writeable if more data can be sent.
+ * @note Sets #writable if more data can be sent.
  */
 bool NetworkTCPSocketHandler::CanSendReceive()
 {

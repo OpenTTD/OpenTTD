@@ -19,6 +19,10 @@
 #include "tcp_admin.h"
 #include "../../debug.h"
 
+/**
+ * Create the admin handler for the given socket.
+ * @param s The socket to communicate over.
+ */
 NetworkAdminSocketHandler::NetworkAdminSocketHandler(SOCKET s)
 {
 	this->sock = s;

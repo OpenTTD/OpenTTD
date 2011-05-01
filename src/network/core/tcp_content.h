@@ -47,12 +47,14 @@ enum PacketContentType {
 	PACKET_CONTENT_END                    ///< Must ALWAYS be on the end of this list!! (period)
 };
 
+/** Unique identifier for the content. */
 enum ContentID {
-	INVALID_CONTENT_ID = UINT32_MAX
+	INVALID_CONTENT_ID = UINT32_MAX ///< Sentinel for invalid content.
 };
 
 /** Container for all important information about a piece of content. */
 struct ContentInfo {
+	/** The state the content can be in. */
 	enum State {
 		UNSELECTED,     ///< The content has not been selected
 		SELECTED,       ///< The content has been manually selected

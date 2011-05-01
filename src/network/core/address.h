@@ -20,8 +20,8 @@
 #ifdef ENABLE_NETWORK
 
 class NetworkAddress;
-typedef SmallVector<NetworkAddress, 4> NetworkAddressList;
-typedef SmallMap<NetworkAddress, SOCKET, 4> SocketList;
+typedef SmallVector<NetworkAddress, 4> NetworkAddressList; ///< Type for a list of addresses.
+typedef SmallMap<NetworkAddress, SOCKET, 4> SocketList;    ///< Type for a mapping between address and socket.
 
 /**
  * Wrapper for (un)resolved network addresses; there's no reason to transform
@@ -44,8 +44,9 @@ private:
 	SOCKET Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func);
 public:
 	/**
-	 * Create a network address based on a resolved IP and port
-	 * @param address the IP address with port
+	 * Create a network address based on a resolved IP and port.
+	 * @param address The IP address with port.
+	 * @param address_length The length of the address.
 	 */
 	NetworkAddress(struct sockaddr_storage &address, int address_length) :
 		address_length(address_length),
@@ -55,8 +56,9 @@ public:
 	}
 
 	/**
-	 * Create a network address based on a resolved IP and port
-	 * @param address the IP address with port
+	 * Create a network address based on a resolved IP and port.
+	 * @param address The IP address with port.
+	 * @param address_length The length of the address.
 	 */
 	NetworkAddress(sockaddr *address, int address_length) :
 		address_length(address_length)
@@ -68,7 +70,7 @@ public:
 
 	/**
 	 * Create a network address based on a unresolved host and port
-	 * @param ip the unresolved hostname
+	 * @param hostname the unresolved hostname
 	 * @param port the port
 	 * @param family the address family
 	 */

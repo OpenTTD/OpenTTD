@@ -70,7 +70,7 @@ void Packet::PrepareToSend()
 	this->pos  = 0; // We start reading from here
 }
 
-/**
+/*
  * The next couple of functions make sure we can send
  *  uint8, uint16, uint32 and uint64 endian-safe
  *  over the network. The least significant bytes are
@@ -82,17 +82,29 @@ void Packet::PrepareToSend()
  *  and non-zero means true.
  */
 
+/**
+ * Package a boolean in the packet.
+ * @param data The data to send.
+ */
 void Packet::Send_bool(bool data)
 {
 	this->Send_uint8(data ? 1 : 0);
 }
 
+/**
+ * Package a 8 bits integer in the packet.
+ * @param data The data to send.
+ */
 void Packet::Send_uint8(uint8 data)
 {
 	assert(this->size < SEND_MTU - sizeof(data));
 	this->buffer[this->size++] = data;
 }
 
+/**
+ * Package a 16 bits integer in the packet.
+ * @param data The data to send.
+ */
 void Packet::Send_uint16(uint16 data)
 {
 	assert(this->size < SEND_MTU - sizeof(data));
@@ -100,6 +112,10 @@ void Packet::Send_uint16(uint16 data)
 	this->buffer[this->size++] = GB(data, 8, 8);
 }
 
+/**
+ * Package a 32 bits integer in the packet.
+ * @param data The data to send.
+ */
 void Packet::Send_uint32(uint32 data)
 {
 	assert(this->size < SEND_MTU - sizeof(data));
@@ -109,6 +125,10 @@ void Packet::Send_uint32(uint32 data)
 	this->buffer[this->size++] = GB(data, 24, 8);
 }
 
+/**
+ * Package a 64 bits integer in the packet.
+ * @param data The data to send.
+ */
 void Packet::Send_uint64(uint64 data)
 {
 	assert(this->size < SEND_MTU - sizeof(data));
@@ -123,9 +143,9 @@ void Packet::Send_uint64(uint64 data)
 }
 
 /**
- *  Sends a string over the network. It sends out
- *  the string + '\0'. No size-byte or something.
- * @param data   the string to send
+ * Sends a string over the network. It sends out
+ * the string + '\0'. No size-byte or something.
+ * @param data The string to send
  */
 void Packet::Send_string(const char *data)
 {
@@ -136,14 +156,18 @@ void Packet::Send_string(const char *data)
 }
 
 
-/**
+/*
  * Receiving commands
  * Again, the next couple of functions are endian-safe
  *  see the comment before Send_bool for more info.
  */
 
 
-/** Is it safe to read from the packet, i.e. didn't we run over the buffer ? */
+/**
+ * Is it safe to read from the packet, i.e. didn't we run over the buffer ?
+ * @param bytes_to_read The amount of bytes we want to try to read.
+ * @return True if that is safe, otherwise false.
+ */
 bool Packet::CanReadFromPacket(uint bytes_to_read)
 {
 	/* Don't allow reading from a quit client/client who send bad data */
@@ -179,11 +203,19 @@ void Packet::PrepareToRead()
 	this->pos = sizeof(PacketSize);
 }
 
+/**
+ * Read a boolean from the packet.
+ * @return The read data.
+ */
 bool Packet::Recv_bool()
 {
 	return this->Recv_uint8() != 0;
 }
 
+/**
+ * Read a 8 bits integer from the packet.
+ * @return The read data.
+ */
 uint8 Packet::Recv_uint8()
 {
 	uint8 n;
@@ -194,6 +226,10 @@ uint8 Packet::Recv_uint8()
 	return n;
 }
 
+/**
+ * Read a 16 bits integer from the packet.
+ * @return The read data.
+ */
 uint16 Packet::Recv_uint16()
 {
 	uint16 n;
@@ -205,6 +241,10 @@ uint16 Packet::Recv_uint16()
 	return n;
 }
 
+/**
+ * Read a 32 bits integer from the packet.
+ * @return The read data.
+ */
 uint32 Packet::Recv_uint32()
 {
 	uint32 n;
@@ -218,6 +258,10 @@ uint32 Packet::Recv_uint32()
 	return n;
 }
 
+/**
+ * Read a 64 bits integer from the packet.
+ * @return The read data.
+ */
 uint64 Packet::Recv_uint64()
 {
 	uint64 n;
@@ -235,7 +279,12 @@ uint64 Packet::Recv_uint64()
 	return n;
 }
 
-/** Reads a string till it finds a '\0' in the stream */
+/**
+ * Reads a string till it finds a '\0' in the stream.
+ * @param buffer The buffer to put the data into.
+ * @param size   The size of the buffer.
+ * @param allow_newlines Whether the string validation should remove newlines.
+ */
 void Packet::Recv_string(char *buffer, size_t size, bool allow_newlines)
 {
 	PacketSize pos;

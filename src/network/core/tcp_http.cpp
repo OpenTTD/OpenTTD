@@ -25,8 +25,9 @@ static SmallVector<NetworkHTTPSocketHandler *, 1> _http_connections;
 
 /**
  * Start the querying
- * @param sock     the socket of this connection
+ * @param s        the socket of this connection
  * @param callback the callback for HTTP retrieval
+ * @param host     the hostname of the server to connect to
  * @param url      the url at the server
  * @param data     the data to send
  * @param depth    the depth (redirect recursion) of the queries

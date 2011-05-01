@@ -448,9 +448,6 @@ public:
 	~NetworkAdminSocketHandler();
 
 	NetworkRecvStatus ReceivePackets();
-
-	const char *ReceiveCommand(Packet *p, struct CommandPacket *cp);
-	void SendCommand(Packet *p, const struct CommandPacket *cp);
 };
 
 #endif /* ENABLE_NETWORK */

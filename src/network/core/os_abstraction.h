@@ -279,6 +279,11 @@ typedef unsigned long in_addr_t;
 #	endif
 #endif /* __MORPHOS__ || __AMIGA__ */
 
+/**
+ * Try to set the socket into non-blocking mode.
+ * @param d The socket to set the non-blocking more for.
+ * @return True if setting the non-blocking mode succeeded, otherwise false.
+ */
 static inline bool SetNonBlocking(SOCKET d)
 {
 #ifdef WIN32
@@ -293,6 +298,11 @@ static inline bool SetNonBlocking(SOCKET d)
 #endif
 }
 
+/**
+ * Try to set the socket to not delay sending.
+ * @param d The socket to disable the delaying for.
+ * @return True if disabling the delaying succeeded, otherwise false.
+ */
 static inline bool SetNoDelay(SOCKET d)
 {
 	/* XXX should this be done at all? */
@@ -306,8 +316,8 @@ static inline bool SetNoDelay(SOCKET d)
 }
 
 /* Make sure these structures have the size we expect them to be */
-assert_compile(sizeof(in_addr)  ==  4);
-assert_compile(sizeof(in6_addr) == 16);
+assert_compile(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
+assert_compile(sizeof(in6_addr) == 16); ///< IPv6 addresses should be 16 bytes.
 
 #endif /* ENABLE_NETWORK */
 
