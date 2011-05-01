@@ -760,12 +760,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendConfigUpdate()
  *   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientSocket *cs, Packet *p
  ************/
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMPANY_INFO)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_INFO(Packet *p)
 {
 	return this->SendCompanyInfo();
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_NEWGRFS_CHECKED)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED(Packet *p)
 {
 	if (this->status != STATUS_NEWGRFS_CHECK) {
 		/* Illegal call, return error and ignore the packet */
@@ -786,7 +786,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_NEWGRFS_CHECKED)
 	return this->SendWelcome();
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_JOIN)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 {
 	if (this->status != STATUS_INACTIVE) {
 		/* Illegal call, return error and ignore the packet */
@@ -855,13 +855,13 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_JOIN)
 
 	if (_grfconfig == NULL) {
 		/* Behave as if we received PACKET_CLIENT_NEWGRFS_CHECKED */
-		return this->NetworkPacketReceive_PACKET_CLIENT_NEWGRFS_CHECKED_command(NULL);
+		return this->Receive_CLIENT_NEWGRFS_CHECKED(NULL);
 	}
 
 	return this->SendNewGRFCheck();
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_GAME_PASSWORD)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(Packet *p)
 {
 	if (this->status != STATUS_AUTH_GAME) {
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
@@ -886,7 +886,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_GAME_PASSWORD)
 	return this->SendWelcome();
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMPANY_PASSWORD)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet *p)
 {
 	if (this->status != STATUS_AUTH_COMPANY) {
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
@@ -908,7 +908,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMPANY_PASSWORD)
 	return this->SendWelcome();
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_GETMAP)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *p)
 {
 	NetworkClientSocket *new_cs;
 
@@ -950,7 +950,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_GETMAP)
 	return this->SendMap();
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MAP_OK)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet *p)
 {
 	/* Client has the map, now start syncing */
 	if (this->status == STATUS_DONE_MAP && !this->HasClientQuit()) {
@@ -997,7 +997,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MAP_OK)
  * The client has done a command and wants us to handle it
  * @param p the packet in which the command was sent
  */
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMMAND)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet *p)
 {
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
@@ -1061,7 +1061,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMMAND)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p)
 {
 	/* This packets means a client noticed an error and is reporting this
 	 *  to us. Display the error and report it to the other clients */
@@ -1095,7 +1095,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
 	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet *p)
 {
 	/* The client wants to leave. Display this and report it to the other
 	 *  clients. */
@@ -1122,7 +1122,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
 	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ACK)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
@@ -1281,7 +1281,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 	}
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_CHAT)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
@@ -1313,7 +1313,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_CHAT)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_SET_PASSWORD)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_PASSWORD(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
@@ -1330,7 +1330,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_SET_PASSWORD)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_SET_NAME)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
@@ -1356,7 +1356,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_SET_NAME)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_RCON)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
@@ -1381,7 +1381,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_RCON)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MOVE)
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 

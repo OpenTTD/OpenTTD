@@ -489,7 +489,7 @@ bool ClientNetworkGameSocketHandler::IsConnected()
 extern bool SafeLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL);
 extern StringID _switch_mode_errorstr;
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FULL)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
 {
 	/* We try to join a server which is full */
 	_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_FULL;
@@ -498,7 +498,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FULL)
 	return NETWORK_RECV_STATUS_SERVER_FULL;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_BANNED)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p)
 {
 	/* We try to join a server where we are banned */
 	_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_BANNED;
@@ -507,7 +507,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_BANNED)
 	return NETWORK_RECV_STATUS_SERVER_BANNED;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMPANY_INFO)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Packet *p)
 {
 	if (this->status != STATUS_COMPANY_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -551,7 +551,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMPANY_INFO)
 /* This packet contains info about the client (playas and name)
  *  as client we save this in NetworkClientInfo, linked via 'client_id'
  *  which is always an unique number on a server. */
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CLIENT_INFO)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Packet *p)
 {
 	NetworkClientInfo *ci;
 	ClientID client_id = (ClientID)p->Recv_uint32();
@@ -604,7 +604,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CLIENT_INFO)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p)
 {
 	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
 
@@ -642,7 +642,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR)
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHECK_NEWGRFS)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(Packet *p)
 {
 	if (this->status != STATUS_JOIN) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -675,7 +675,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHECK_NEWGRFS)
 	return ret;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_GAME_PASSWORD)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_GAME_PASSWORD(Packet *p)
 {
 	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_GAME) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	this->status = STATUS_AUTH_GAME;
@@ -690,7 +690,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_GAME_PASSWORD)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_COMPANY_PASSWORD)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PASSWORD(Packet *p)
 {
 	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_COMPANY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	this->status = STATUS_AUTH_COMPANY;
@@ -709,7 +709,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_COMPANY_PASSWORD)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WELCOME)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet *p)
 {
 	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	this->status = STATUS_AUTHORIZED;
@@ -724,7 +724,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WELCOME)
 	return SendGetMap();
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WAIT(Packet *p)
 {
 	/* We set the internal wait state when requesting the map. */
 	if (this->status != STATUS_MAP_WAIT) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
@@ -737,7 +737,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_BEGIN(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED || this->status >= STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	this->status = STATUS_MAP;
@@ -757,7 +757,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_SIZE)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_SIZE(Packet *p)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->savegame == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
@@ -768,7 +768,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_SIZE)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DATA(Packet *p)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->savegame == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
@@ -782,7 +782,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet *p)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->savegame == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
@@ -838,7 +838,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FRAME)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -871,7 +871,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FRAME)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SYNC)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SYNC(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -884,7 +884,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SYNC)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMMAND)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -903,7 +903,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMMAND)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -955,7 +955,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR_QUIT)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -972,7 +972,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR_QUIT)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_QUIT)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_QUIT(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -992,7 +992,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_QUIT)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_JOIN)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_JOIN(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -1008,7 +1008,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_JOIN)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SHUTDOWN)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet *p)
 {
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
@@ -1019,7 +1019,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SHUTDOWN)
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEWGAME)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet *p)
 {
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
@@ -1034,7 +1034,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEWGAME)
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_RCON)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_RCON(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -1049,7 +1049,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_RCON)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MOVE)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -1077,7 +1077,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MOVE)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CONFIG_UPDATE)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet *p)
 {
 	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -1087,7 +1087,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CONFIG_UPDATE)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMPANY_UPDATE)
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet *p)
 {
 	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 

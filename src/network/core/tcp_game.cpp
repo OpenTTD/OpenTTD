@@ -74,49 +74,49 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 	this->last_packet = _realtime_tick;
 
 	switch (this->HasClientQuit() ? PACKET_END : type) {
-		GAME_COMMAND(PACKET_SERVER_FULL)
-		GAME_COMMAND(PACKET_SERVER_BANNED)
-		GAME_COMMAND(PACKET_CLIENT_JOIN)
-		GAME_COMMAND(PACKET_SERVER_ERROR)
-		GAME_COMMAND(PACKET_CLIENT_COMPANY_INFO)
-		GAME_COMMAND(PACKET_SERVER_COMPANY_INFO)
-		GAME_COMMAND(PACKET_SERVER_CLIENT_INFO)
-		GAME_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD)
-		GAME_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)
-		GAME_COMMAND(PACKET_CLIENT_GAME_PASSWORD)
-		GAME_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
-		GAME_COMMAND(PACKET_SERVER_WELCOME)
-		GAME_COMMAND(PACKET_CLIENT_GETMAP)
-		GAME_COMMAND(PACKET_SERVER_WAIT)
-		GAME_COMMAND(PACKET_SERVER_MAP_BEGIN)
-		GAME_COMMAND(PACKET_SERVER_MAP_SIZE)
-		GAME_COMMAND(PACKET_SERVER_MAP_DATA)
-		GAME_COMMAND(PACKET_SERVER_MAP_DONE)
-		GAME_COMMAND(PACKET_CLIENT_MAP_OK)
-		GAME_COMMAND(PACKET_SERVER_JOIN)
-		GAME_COMMAND(PACKET_SERVER_FRAME)
-		GAME_COMMAND(PACKET_SERVER_SYNC)
-		GAME_COMMAND(PACKET_CLIENT_ACK)
-		GAME_COMMAND(PACKET_CLIENT_COMMAND)
-		GAME_COMMAND(PACKET_SERVER_COMMAND)
-		GAME_COMMAND(PACKET_CLIENT_CHAT)
-		GAME_COMMAND(PACKET_SERVER_CHAT)
-		GAME_COMMAND(PACKET_CLIENT_SET_PASSWORD)
-		GAME_COMMAND(PACKET_CLIENT_SET_NAME)
-		GAME_COMMAND(PACKET_CLIENT_QUIT)
-		GAME_COMMAND(PACKET_CLIENT_ERROR)
-		GAME_COMMAND(PACKET_SERVER_QUIT)
-		GAME_COMMAND(PACKET_SERVER_ERROR_QUIT)
-		GAME_COMMAND(PACKET_SERVER_SHUTDOWN)
-		GAME_COMMAND(PACKET_SERVER_NEWGAME)
-		GAME_COMMAND(PACKET_SERVER_RCON)
-		GAME_COMMAND(PACKET_CLIENT_RCON)
-		GAME_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
-		GAME_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
-		GAME_COMMAND(PACKET_SERVER_MOVE)
-		GAME_COMMAND(PACKET_CLIENT_MOVE)
-		GAME_COMMAND(PACKET_SERVER_COMPANY_UPDATE)
-		GAME_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
+		case PACKET_SERVER_FULL:                  return this->Receive_SERVER_FULL(p);
+		case PACKET_SERVER_BANNED:                return this->Receive_SERVER_BANNED(p);
+		case PACKET_CLIENT_JOIN:                  return this->Receive_CLIENT_JOIN(p);
+		case PACKET_SERVER_ERROR:                 return this->Receive_SERVER_ERROR(p);
+		case PACKET_CLIENT_COMPANY_INFO:          return this->Receive_CLIENT_COMPANY_INFO(p);
+		case PACKET_SERVER_COMPANY_INFO:          return this->Receive_SERVER_COMPANY_INFO(p);
+		case PACKET_SERVER_CLIENT_INFO:           return this->Receive_SERVER_CLIENT_INFO(p);
+		case PACKET_SERVER_NEED_GAME_PASSWORD:    return this->Receive_SERVER_NEED_GAME_PASSWORD(p);
+		case PACKET_SERVER_NEED_COMPANY_PASSWORD: return this->Receive_SERVER_NEED_COMPANY_PASSWORD(p);
+		case PACKET_CLIENT_GAME_PASSWORD:         return this->Receive_CLIENT_GAME_PASSWORD(p);
+		case PACKET_CLIENT_COMPANY_PASSWORD:      return this->Receive_CLIENT_COMPANY_PASSWORD(p);
+		case PACKET_SERVER_WELCOME:               return this->Receive_SERVER_WELCOME(p);
+		case PACKET_CLIENT_GETMAP:                return this->Receive_CLIENT_GETMAP(p);
+		case PACKET_SERVER_WAIT:                  return this->Receive_SERVER_WAIT(p);
+		case PACKET_SERVER_MAP_BEGIN:             return this->Receive_SERVER_MAP_BEGIN(p);
+		case PACKET_SERVER_MAP_SIZE:              return this->Receive_SERVER_MAP_SIZE(p);
+		case PACKET_SERVER_MAP_DATA:              return this->Receive_SERVER_MAP_DATA(p);
+		case PACKET_SERVER_MAP_DONE:              return this->Receive_SERVER_MAP_DONE(p);
+		case PACKET_CLIENT_MAP_OK:                return this->Receive_CLIENT_MAP_OK(p);
+		case PACKET_SERVER_JOIN:                  return this->Receive_SERVER_JOIN(p);
+		case PACKET_SERVER_FRAME:                 return this->Receive_SERVER_FRAME(p);
+		case PACKET_SERVER_SYNC:                  return this->Receive_SERVER_SYNC(p);
+		case PACKET_CLIENT_ACK:                   return this->Receive_CLIENT_ACK(p);
+		case PACKET_CLIENT_COMMAND:               return this->Receive_CLIENT_COMMAND(p);
+		case PACKET_SERVER_COMMAND:               return this->Receive_SERVER_COMMAND(p);
+		case PACKET_CLIENT_CHAT:                  return this->Receive_CLIENT_CHAT(p);
+		case PACKET_SERVER_CHAT:                  return this->Receive_SERVER_CHAT(p);
+		case PACKET_CLIENT_SET_PASSWORD:          return this->Receive_CLIENT_SET_PASSWORD(p);
+		case PACKET_CLIENT_SET_NAME:              return this->Receive_CLIENT_SET_NAME(p);
+		case PACKET_CLIENT_QUIT:                  return this->Receive_CLIENT_QUIT(p);
+		case PACKET_CLIENT_ERROR:                 return this->Receive_CLIENT_ERROR(p);
+		case PACKET_SERVER_QUIT:                  return this->Receive_SERVER_QUIT(p);
+		case PACKET_SERVER_ERROR_QUIT:            return this->Receive_SERVER_ERROR_QUIT(p);
+		case PACKET_SERVER_SHUTDOWN:              return this->Receive_SERVER_SHUTDOWN(p);
+		case PACKET_SERVER_NEWGAME:               return this->Receive_SERVER_NEWGAME(p);
+		case PACKET_SERVER_RCON:                  return this->Receive_SERVER_RCON(p);
+		case PACKET_CLIENT_RCON:                  return this->Receive_CLIENT_RCON(p);
+		case PACKET_SERVER_CHECK_NEWGRFS:         return this->Receive_SERVER_CHECK_NEWGRFS(p);
+		case PACKET_CLIENT_NEWGRFS_CHECKED:       return this->Receive_CLIENT_NEWGRFS_CHECKED(p);
+		case PACKET_SERVER_MOVE:                  return this->Receive_SERVER_MOVE(p);
+		case PACKET_CLIENT_MOVE:                  return this->Receive_CLIENT_MOVE(p);
+		case PACKET_SERVER_COMPANY_UPDATE:        return this->Receive_SERVER_COMPANY_UPDATE(p);
+		case PACKET_SERVER_CONFIG_UPDATE:         return this->Receive_SERVER_CONFIG_UPDATE(p);
 
 		default:
 			this->CloseConnection();
@@ -150,61 +150,58 @@ NetworkRecvStatus NetworkGameSocketHandler::ReceivePackets()
 }
 
 /**
- * Create stub implementations for all receive commands that only
- * show a warning that the given command is not available for the
- * socket where the packet came from.
- * @param type the packet type to create the stub for
+ * Helper for logging receiving invalid packets.
+ * @param type The received packet type.
+ * @return The status the network should have, in this case: "malformed packet error".
  */
-#define DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(type) \
-NetworkRecvStatus NetworkGameSocketHandler::NetworkPacketReceive_## type ##_command(Packet *p) \
-{ \
-	DEBUG(net, 0, "[tcp/game] received illegal packet type %d from client %d", \
-			type, this->client_id); \
-	return NETWORK_RECV_STATUS_MALFORMED_PACKET; \
+NetworkRecvStatus NetworkGameSocketHandler::ReceiveInvalidPacket(PacketGameType type)
+{
+	DEBUG(net, 0, "[tcp/game] received illegal packet type %d from client %d", type, this->client_id);
+	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 }
 
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FULL)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_BANNED)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP_BEGIN)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP_SIZE)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP_DATA)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP_DONE)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FRAME)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_SHUTDOWN)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_RCON)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MOVE)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE)
-DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_FULL); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_BANNED); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_JOIN); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_ERROR); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_COMPANY_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_COMPANY_INFO); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_COMPANY_INFO); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CLIENT_INFO); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_NEED_GAME_PASSWORD(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_NEED_GAME_PASSWORD); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PASSWORD(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_NEED_COMPANY_PASSWORD); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_GAME_PASSWORD); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWORD(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_COMPANY_PASSWORD); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_WELCOME); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_GETMAP); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_WAIT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_WAIT); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MAP_BEGIN(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_MAP_BEGIN); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MAP_SIZE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_MAP_SIZE); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MAP_DATA(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_MAP_DATA); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_MAP_DONE); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_MAP_OK); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_JOIN(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_JOIN); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_FRAME); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_SYNC(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_SYNC); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_ACK); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_COMMAND); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_COMMAND); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_CHAT); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CHAT); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_SET_PASSWORD(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_SET_PASSWORD); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_SET_NAME); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_QUIT); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_ERROR); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_QUIT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_QUIT); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_ERROR_QUIT); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_SHUTDOWN); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_NEWGAME); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_RCON(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_RCON); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_RCON); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CHECK_NEWGRFS); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_NEWGRFS_CHECKED); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_MOVE); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_MOVE); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_COMPANY_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_COMPANY_UPDATE); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CONFIG_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CONFIG_UPDATE); }
 
 #endif /* ENABLE_NETWORK */
