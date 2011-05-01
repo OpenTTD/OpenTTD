@@ -1341,6 +1341,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Indústrias
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
 
@@ -2240,7 +2241,7 @@ STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel ferrovi�
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel rodoviário
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ponte ferroviária suspensa em aço
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ponte ferroviária com vigas em aço
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ponte ferroviária com vigas de aço
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ponte ferroviária cantilever em aço
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ponte ferroviária suspensa de concreto reforçado
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ponte ferroviária de madeira
@@ -3734,6 +3735,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veí
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossível fazer o trem passar o sinal de perigo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Impossível inverter a direção do trem...
+STR_ERROR_TRAIN_START_NO_POWER                                  :O Trem não tem energia
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossível virar o veículo...
 
@@ -4225,6 +4227,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
