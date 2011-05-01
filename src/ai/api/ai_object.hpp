@@ -148,6 +148,7 @@ protected:
 	 * from CanSuspend() if the reason we are not allowed
 	 * to execute a DoCommand is in squirrel and not the API.
 	 * In that case use this function to restore the previous value.
+	 * @return True iff DoCommands are allowed in the current scope.
 	 */
 	static bool GetAllowDoCommand();
 

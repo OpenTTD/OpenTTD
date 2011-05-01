@@ -172,11 +172,11 @@ public:
 #endif /* EXPORT_SKIP */
 
 private:
-	typedef std::map<StringID, AIErrorType> AIErrorMap;
-	typedef std::map<AIErrorType, const char *> AIErrorMapString;
+	typedef std::map<StringID, AIErrorType> AIErrorMap;           ///< The type for mapping between error (internal OpenTTD) StringID to the AI error type.
+	typedef std::map<AIErrorType, const char *> AIErrorMapString; ///< The type for mapping between error type and textual representation.
 
-	static AIErrorMap error_map;
-	static AIErrorMapString error_map_string;
+	static AIErrorMap error_map;              ///< The mapping between error (internal OpenTTD) StringID to the AI error type.
+	static AIErrorMapString error_map_string; ///< The mapping between error type and textual representation.
 };
 
 #endif /* AI_ERROR_HPP */

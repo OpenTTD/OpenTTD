@@ -103,11 +103,11 @@ public:
 	static void Print(bool error_msg, const char *message);
 
 private:
-	typedef std::map<const char *, const char *, StringCompare> LoadedLibraryList;
+	typedef std::map<const char *, const char *, StringCompare> LoadedLibraryList; ///< The type for loaded libraries.
 
-	uint ticks;
-	LoadedLibraryList loaded_library;
-	int loaded_library_count;
+	uint ticks;                       ///< The amount of ticks we're sleeping.
+	LoadedLibraryList loaded_library; ///< The libraries we loaded.
+	int loaded_library_count;         ///< The amount of libraries.
 
 	/**
 	 * Register all classes that are known inside the NoAI API.

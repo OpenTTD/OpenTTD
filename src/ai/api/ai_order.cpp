@@ -512,7 +512,7 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 	EnforcePrecondition(false, (order_flags & AIOF_GOTO_NEAREST_DEPOT) == (current & AIOF_GOTO_NEAREST_DEPOT));
 
 	if ((current & AIOF_NON_STOP_FLAGS) != (order_flags & AIOF_NON_STOP_FLAGS)) {
-		return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_NON_STOP_FLAGS) << 4 | MOF_NON_STOP, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
+		return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_NON_STOP_FLAGS) << 4 | MOF_NON_STOP, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 	}
 
 	switch (order->GetType()) {
@@ -521,16 +521,16 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 				uint data = DA_ALWAYS_GO;
 				if (order_flags & AIOF_SERVICE_IF_NEEDED) data = DA_SERVICE;
 				if (order_flags & AIOF_STOP_IN_DEPOT) data = DA_STOP;
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (data << 4) | MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (data << 4) | MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 			}
 			break;
 
 		case OT_GOTO_STATION:
 			if ((current & AIOF_UNLOAD_FLAGS) != (order_flags & AIOF_UNLOAD_FLAGS)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_UNLOAD_FLAGS) << 2 | MOF_UNLOAD, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_UNLOAD_FLAGS) << 2 | MOF_UNLOAD, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 			}
 			if ((current & AIOF_LOAD_FLAGS) != (order_flags & AIOF_LOAD_FLAGS)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_LOAD_FLAGS) >> 1 | MOF_LOAD, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
+				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_LOAD_FLAGS) >> 1 | MOF_LOAD, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 			}
 			break;
 

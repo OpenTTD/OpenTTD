@@ -62,7 +62,7 @@ public:
 	void ResetCosts();
 
 private:
-	Money last_costs;
+	Money last_costs; ///< The last cost we did return.
 };
 
 #endif /* AI_ACCOUNTING_HPP */

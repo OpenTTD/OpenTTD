@@ -35,6 +35,10 @@
 	return (BridgeID)::GetBridgeType(tile);
 }
 
+/**
+ * Helper function to connect a just built bridge to nearby roads.
+ * @param instance The AI we have to built the road for.
+ */
 static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
 {
 	if (!AIBridge::_BuildBridgeRoad2()) {
@@ -47,6 +51,10 @@ static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
 	NOT_REACHED();
 }
 
+/**
+ * Helper function to connect a just built bridge to nearby roads.
+ * @param instance The AI we have to built the road for.
+ */
 static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 {
 	if (!AIBridge::_BuildBridgeRoad1()) {
@@ -90,7 +98,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 
 	AIObject::SetCallbackVariable(0, start);
 	AIObject::SetCallbackVariable(1, end);
-	return AIObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE, NULL, &_DoCommandReturnBuildBridge1);
+	return AIObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE, NULL, &::_DoCommandReturnBuildBridge1);
 }
 
 /* static */ bool AIBridge::_BuildBridgeRoad1()
@@ -102,7 +110,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildBridge2);
+	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &::_DoCommandReturnBuildBridge2);
 }
 
 /* static */ bool AIBridge::_BuildBridgeRoad2()

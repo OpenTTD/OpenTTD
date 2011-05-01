@@ -141,7 +141,7 @@
  *     default for aircraft. It is not necessarily true. This means that even
  *     if the aircraft can carry mail (as secondary cargo) it does not return
  *     true if the aircraft cannot carry it as its only cargo.
- * \li Improve behaviour of (AIEngine|AIEventEnginePreview)::GetCargoType()
+ * \li Improve behaviour of AIEngine::GetCargoType(), AIEventEnginePreview::GetCargoType()
  *     and AIEngine::CanRefitCargo() for articulated vehicles. For
  *     CanRefitCargo true is returned if at least one part can be refitted.
  *     For GetCargoType the first most used cargo type is returned.

@@ -21,6 +21,10 @@
 #include "../ai_instance.hpp"
 #include "ai_error.hpp"
 
+/**
+ * Get the storage associated with the current AIInstance.
+ * @return The storage.
+ */
 static AIStorage *GetStorage()
 {
 	return AIInstance::GetStorage();

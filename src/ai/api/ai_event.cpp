@@ -14,8 +14,9 @@
 
 #include <queue>
 
+/** The queue of events for an AI. */
 struct AIEventData {
-	std::queue<AIEvent *> stack;
+	std::queue<AIEvent *> stack; ///< The actual queue.
 };
 
 /* static */ void AIEventController::CreateEventPointer()

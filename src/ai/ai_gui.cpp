@@ -45,12 +45,17 @@ enum AIListWindowWidgets {
  * Window that let you choose an available AI.
  */
 struct AIListWindow : public Window {
-	const AIInfoList *ai_info_list;
-	int selected;
-	CompanyID slot;
-	int line_height; // Height of a row in the matrix widget.
-	Scrollbar *vscroll;
+	const AIInfoList *ai_info_list; ///< The list of AIs.
+	int selected;                   ///< The currently selected AI.
+	CompanyID slot;                 ///< The company we're selecting a new AI for.
+	int line_height;                ///< Height of a row in the matrix widget.
+	Scrollbar *vscroll;             ///< Cache of the vertical scrollbar.
 
+	/**
+	 * Constructor for the window.
+	 * @param desc The description of the window.
+	 * @param slot The company we're changing the AI for.
+	 */
 	AIListWindow(const WindowDesc *desc, CompanyID slot) : Window(),
 		slot(slot)
 	{
@@ -135,6 +140,9 @@ struct AIListWindow : public Window {
 		}
 	}
 
+	/**
+	 * Changes the AI of the current slot.
+	 */
 	void ChangeAI()
 	{
 		if (this->selected == -1) {
@@ -254,15 +262,20 @@ enum AISettingsWindowWidgest {
  * Window for settings the parameters of an AI.
  */
 struct AISettingsWindow : public Window {
-	CompanyID slot;
-	AIConfig *ai_config;
-	int clicked_button;
-	bool clicked_increase;
-	int timeout;
-	int clicked_row;
-	int line_height; // Height of a row in the matrix widget.
-	Scrollbar *vscroll;
+	CompanyID slot;        ///< The currently show company's setting.
+	AIConfig *ai_config;   ///< The configuration we're modifying.
+	int clicked_button;    ///< The button we clicked.
+	bool clicked_increase; ///< Whether we clicked the increase or decrease button.
+	int timeout;           ///< Timeout for unclicking the button.
+	int clicked_row;       ///< The clicked row of settings.
+	int line_height;       ///< Height of a row in the matrix widget.
+	Scrollbar *vscroll;    ///< Cache of the vertical scrollbar.
 
+	/**
+	 * Constructor for the window.
+	 * @param desc The description of the window.
+	 * @param slot The company we're changing the settings for.
+	 */
 	AISettingsWindow(const WindowDesc *desc, CompanyID slot) : Window(),
 		slot(slot),
 		clicked_button(-1),
@@ -341,6 +354,9 @@ struct AISettingsWindow : public Window {
 		}
 	}
 
+	/**
+	 * Check whether we modified the difficulty level or not.
+	 */
 	void CheckDifficultyLevel()
 	{
 		if (_game_mode == GM_MENU) {
@@ -556,7 +572,7 @@ static const WindowDesc _ai_config_desc(
 struct AIConfigWindow : public Window {
 	CompanyID selected_slot; ///< The currently selected AI slot or \c INVALID_COMPANY.
 	int line_height;         ///< Height of a single AI-name line.
-	Scrollbar *vscroll;
+	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
 
 	AIConfigWindow() : Window()
 	{
@@ -754,22 +770,27 @@ enum AIDebugWindowWidgets {
  * Window with everything an AI prints via AILog.
  */
 struct AIDebugWindow : public QueryStringBaseWindow {
-	static const int top_offset;    ///< Offset of the text at the top of the ::AID_WIDGET_LOG_PANEL.
-	static const int bottom_offset; ///< Offset of the text at the bottom of the ::AID_WIDGET_LOG_PANEL.
+	static const int top_offset;    ///< Offset of the text at the top of the AID_WIDGET_LOG_PANEL.
+	static const int bottom_offset; ///< Offset of the text at the bottom of the AID_WIDGET_LOG_PANEL.
 
-	static const unsigned int MAX_BREAK_STR_STRING_LENGTH = 256;
+	static const unsigned int MAX_BREAK_STR_STRING_LENGTH = 256; ///< Maximum length of the break string.
 
 	static CompanyID ai_debug_company;                     ///< The AI that is (was last) being debugged.
-	int redraw_timer;
-	int last_vscroll_pos;
-	bool autoscroll;
-	bool show_break_box;
+	int redraw_timer;                                      ///< Timer for redrawing the window, otherwise it'll happen every tick.
+	int last_vscroll_pos;                                  ///< Last position of the scrolling.
+	bool autoscroll;                                       ///< Whether automatically scrolling should be enabled or not.
+	bool show_break_box;                                   ///< Whether the break/debug box is visible.
 	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
 	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
 	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
-	Scrollbar *vscroll;
+	Scrollbar *vscroll;                                    ///< Cache of the vertical scrollbar.
 
+	/**
+	 * Constructor for the window.
+	 * @param desc The description of the window.
+	 * @param number The window number (actually unused).
+	 */
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : QueryStringBaseWindow(MAX_BREAK_STR_STRING_LENGTH)
 	{
 		this->CreateNestedTree(desc);
@@ -969,6 +990,10 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		}
 	}
 
+	/**
+	 * Change all settings to select another AI.
+	 * @param show_ai The new AI to show.
+	 */
 	void ChangeToAI(CompanyID show_ai)
 	{
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);

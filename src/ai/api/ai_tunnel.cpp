@@ -46,6 +46,10 @@
 	return tile;
 }
 
+/**
+ * Helper function to connect a just built tunnel to nearby roads.
+ * @param instance The AI we have to built the road for.
+ */
 static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
 {
 	if (!AITunnel::_BuildTunnelRoad2()) {
@@ -58,6 +62,10 @@ static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
 	NOT_REACHED();
 }
 
+/**
+ * Helper function to connect a just built tunnel to nearby roads.
+ * @param instance The AI we have to built the road for.
+ */
 static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 {
 	if (!AITunnel::_BuildTunnelRoad1()) {
@@ -91,7 +99,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	}
 
 	AIObject::SetCallbackVariable(0, start);
-	return AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &_DoCommandReturnBuildTunnel1);
+	return AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &::_DoCommandReturnBuildTunnel1);
 }
 
 /* static */ bool AITunnel::_BuildTunnelRoad1()
@@ -103,7 +111,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildTunnel2);
+	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &::_DoCommandReturnBuildTunnel2);
 }
 
 /* static */ bool AITunnel::_BuildTunnelRoad2()

@@ -24,6 +24,11 @@ typedef void (AISuspendCallbackProc)(class AIInstance *instance);
  */
 class AI_VMSuspend {
 public:
+	/**
+	 * Create the suspend exception.
+	 * @param time The amount of ticks to suspend.
+	 * @param callback The callback to call when the AI may resume again.
+	 */
 	AI_VMSuspend(int time, AISuspendCallbackProc *callback) :
 		time(time),
 		callback(callback)
@@ -51,20 +56,33 @@ private:
  */
 class AI_FatalError {
 public:
+	/**
+	 * Creates a "fatal error" exception.
+	 * @param msg The message describing the cause of the fatal error.
+	 */
 	AI_FatalError(const char *msg) :
 		msg(msg)
 	{}
 
+	/**
+	 * The error message associated with the fatal error.
+	 * @return The error message.
+	 */
 	const char *GetErrorMessage() { return msg; }
 
 private:
-	const char *msg;
+	const char *msg; ///< The error message.
 };
 
 /** Runtime information about an AI like a pointer to the squirrel vm and the current state. */
 class AIInstance {
 public:
 	friend class AIObject;
+
+	/**
+	 * Create a new AI.
+	 * @param info The AI to create the instance of.
+	 */
 	AIInstance(class AIInfo *info);
 	~AIInstance();
 

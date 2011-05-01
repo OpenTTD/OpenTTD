@@ -38,6 +38,10 @@ public:
 	 */
 	void RegisterAI(class AIInfo *info);
 
+	/**
+	 * Register the dummy AI.
+	 * @param info The dummy AI that.
+	 */
 	void SetDummyAI(class AIInfo *info) { this->info_dummy = info; }
 
 	/**
@@ -79,7 +83,7 @@ public:
 	bool HasAI(const struct ContentInfo *ci, bool md5sum);
 #endif
 private:
-	typedef std::map<const char *, class AILibrary *, StringCompare> AILibraryList;
+	typedef std::map<const char *, class AILibrary *, StringCompare> AILibraryList; ///< Type for the list of libraries.
 
 	/**
 	 * Scan the AI dir for scripts.
@@ -91,10 +95,10 @@ private:
 	 */
 	void Reset();
 
-	AIInfo *info_dummy;
-	AIInfoList info_list;
-	AIInfoList info_single_list;
-	AILibraryList library_list;
+	AIInfo *info_dummy;          ///< The dummy AI.
+	AIInfoList info_list;        ///< The list of all AIs.
+	AIInfoList info_single_list; ///< The list of all unique AIs, based on shortname. The best AI (highest version) is shown.
+	AILibraryList library_list;  ///< The list of libraries.
 };
 
 #endif /* AI_SCANNER_HPP */

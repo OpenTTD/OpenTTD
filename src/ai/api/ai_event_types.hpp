@@ -74,9 +74,9 @@ public:
 	CrashReason GetCrashReason() { return this->crash_reason; }
 
 private:
-	TileIndex crash_site;
-	VehicleID vehicle;
-	CrashReason crash_reason;
+	TileIndex crash_site;     ///< The location of the crash.
+	VehicleID vehicle;        ///< The crashed vehicle.
+	CrashReason crash_reason; ///< The reason for crashing.
 };
 
 /**
@@ -109,7 +109,7 @@ public:
 	SubsidyID GetSubsidyID() { return this->subsidy_id; }
 
 private:
-	SubsidyID subsidy_id;
+	SubsidyID subsidy_id; ///< The subsidy that got offered.
 };
 
 /**
@@ -142,7 +142,7 @@ public:
 	SubsidyID GetSubsidyID() { return this->subsidy_id; }
 
 private:
-	SubsidyID subsidy_id;
+	SubsidyID subsidy_id; ///< The subsidy offer that expired.
 };
 
 /**
@@ -175,7 +175,7 @@ public:
 	SubsidyID GetSubsidyID() { return this->subsidy_id; }
 
 private:
-	SubsidyID subsidy_id;
+	SubsidyID subsidy_id; ///< The subsidy that was awared.
 };
 
 /**
@@ -208,7 +208,7 @@ public:
 	 SubsidyID GetSubsidyID() { return this->subsidy_id; }
 
 private:
-	SubsidyID subsidy_id;
+	SubsidyID subsidy_id; ///< The subsidy that expired.
 };
 
 /**
@@ -278,11 +278,11 @@ public:
 	 */
 	Money GetRunningCost();
 
-#ifdef DOXYGEN_SKIP
 	/**
 	 * Get the type of the offered engine.
 	 * @return The type the engine has.
 	 */
+#ifdef DOXYGEN_SKIP
 	AIVehicle::VehicleType GetVehicleType();
 #else
 	int32 GetVehicleType();
@@ -295,7 +295,12 @@ public:
 	bool AcceptPreview();
 
 private:
-	EngineID engine;
+	EngineID engine; ///< The engine the preview is for.
+
+	/**
+	 * Check whether the engine from this preview is still valid.
+	 * @return True iff the engine is still valid.
+	 */
 	bool IsEngineValid() const;
 };
 
@@ -329,7 +334,7 @@ public:
 	AICompany::CompanyID GetCompanyID() { return this->owner; }
 
 private:
-	AICompany::CompanyID owner;
+	AICompany::CompanyID owner; ///< The new company.
 };
 
 /**
@@ -363,7 +368,7 @@ public:
 	AICompany::CompanyID GetCompanyID() { return this->owner; }
 
 private:
-	AICompany::CompanyID owner;
+	AICompany::CompanyID owner; ///< The company that is in trouble.
 };
 
 /**
@@ -411,8 +416,8 @@ public:
 	bool AcceptMerger();
 
 private:
-	AICompany::CompanyID owner;
-	int32 value;
+	AICompany::CompanyID owner; ///< The company that is in trouble.
+	int32 value;                ///< The value of the company, i.e. the amount you would pay.
 };
 
 /**
@@ -457,8 +462,8 @@ public:
 	AICompany::CompanyID GetNewCompanyID() { return this->new_owner; }
 
 private:
-	AICompany::CompanyID old_owner;
-	AICompany::CompanyID new_owner;
+	AICompany::CompanyID old_owner; ///< The company that ended to exist.
+	AICompany::CompanyID new_owner; ///< The company that's the end result of the merger.
 };
 
 /**
@@ -491,7 +496,7 @@ public:
 	AICompany::CompanyID GetCompanyID() { return this->owner; }
 
 private:
-	AICompany::CompanyID owner;
+	AICompany::CompanyID owner; ///< The company that has gone bankrupt.
 };
 
 /**
@@ -524,7 +529,7 @@ public:
 	VehicleID GetVehicleID() { return this->vehicle_id; }
 
 private:
-	VehicleID vehicle_id;
+	VehicleID vehicle_id; ///< The vehicle that is lost.
 };
 
 /**
@@ -557,7 +562,7 @@ public:
 	VehicleID GetVehicleID() { return this->vehicle_id; }
 
 private:
-	VehicleID vehicle_id;
+	VehicleID vehicle_id; ///< The vehicle that is waiting in the depot.
 };
 
 /**
@@ -590,7 +595,7 @@ public:
 	VehicleID GetVehicleID() { return this->vehicle_id; }
 
 private:
-	VehicleID vehicle_id;
+	VehicleID vehicle_id; ///< The vehicle that is unprofitable.
 };
 
 /**
@@ -623,7 +628,7 @@ public:
 	IndustryID GetIndustryID() { return this->industry_id; }
 
 private:
-	IndustryID industry_id;
+	IndustryID industry_id; ///< The industry that opened.
 };
 
 /**
@@ -656,7 +661,7 @@ public:
 	IndustryID GetIndustryID() { return this->industry_id; }
 
 private:
-	IndustryID industry_id;
+	IndustryID industry_id; ///< The industry that closed.
 };
 
 /**
@@ -689,7 +694,7 @@ public:
 	EngineID GetEngineID() { return this->engine; }
 
 private:
-	EngineID engine;
+	EngineID engine; ///< The engine that became available.
 };
 
 /**
@@ -730,8 +735,8 @@ public:
 	VehicleID GetVehicleID() { return this->vehicle; }
 
 private:
-	StationID station;
-	VehicleID vehicle;
+	StationID station; ///< The station the vehicle arived at.
+	VehicleID vehicle; ///< The vehicle that arrived at the station.
 };
 
 /**
@@ -764,7 +769,7 @@ public:
 	StationID GetStationID() { return this->station; }
 
 private:
-	StationID station;
+	StationID station; ///< The station the zeppeliner crashed.
 };
 
 /**
@@ -797,7 +802,7 @@ public:
 	StationID GetStationID() { return this->station; }
 
 private:
-	StationID station;
+	StationID station; ///< The station the zeppeliner crashed.
 };
 
 /**
@@ -830,7 +835,7 @@ public:
 	TownID GetTownID() { return this->town; }
 
 private:
-	TownID town;
+	TownID town; ///< The town that got founded.
 };
 
 #endif /* AI_EVENT_TYPES_HPP */

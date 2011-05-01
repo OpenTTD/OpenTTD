@@ -19,7 +19,9 @@
  */
 class AIListSorter {
 protected:
-	AIList *list;
+	AIList *list;           ///< The list that's being sorted.
+	bool has_no_more_items; ///< Whether we have more items to iterate over.
+	int32 item_next;        ///< The next item we will show.
 
 public:
 	/**
@@ -45,7 +47,10 @@ public:
 	/**
 	 * See if the sorter has reached the end.
 	 */
-	virtual bool IsEnd() = 0;
+	bool IsEnd()
+	{
+		return this->list->buckets.empty() || this->has_no_more_items;
+	}
 
 	/**
 	 * Callback from the list if an item gets removed.
@@ -58,13 +63,15 @@ public:
  */
 class AIListSorterValueAscending : public AIListSorter {
 private:
-	AIList::AIListBucket::iterator bucket_iter;
-	AIList::AIItemList *bucket_list;
-	AIList::AIItemList::iterator bucket_list_iter;
-	bool has_no_more_items;
-	int32 item_next;
+	AIList::AIListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
+	AIList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	AIList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
+	/**
+	 * Create a new sorter.
+	 * @param list The list to sort.
+	 */
 	AIListSorterValueAscending(AIList *list)
 	{
 		this->list = list;
@@ -93,6 +100,9 @@ public:
 		this->item_next = 0;
 	}
 
+	/**
+	 * Find the next item, and store that information.
+	 */
 	void FindNext()
 	{
 		if (this->bucket_list == NULL) {
@@ -132,11 +142,6 @@ public:
 			return;
 		}
 	}
-
-	bool IsEnd()
-	{
-		return this->list->buckets.empty() || this->has_no_more_items;
-	}
 };
 
 /**
@@ -144,13 +149,15 @@ public:
  */
 class AIListSorterValueDescending : public AIListSorter {
 private:
-	AIList::AIListBucket::iterator bucket_iter;
-	AIList::AIItemList *bucket_list;
-	AIList::AIItemList::iterator bucket_list_iter;
-	bool has_no_more_items;
-	int32 item_next;
+	AIList::AIListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
+	AIList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	AIList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
+	/**
+	 * Create a new sorter.
+	 * @param list The list to sort.
+	 */
 	AIListSorterValueDescending(AIList *list)
 	{
 		this->list = list;
@@ -184,6 +191,9 @@ public:
 		this->item_next = 0;
 	}
 
+	/**
+	 * Find the next item, and store that information.
+	 */
 	void FindNext()
 	{
 		if (this->bucket_list == NULL) {
@@ -226,11 +236,6 @@ public:
 			return;
 		}
 	}
-
-	bool IsEnd()
-	{
-		return this->list->buckets.empty() || this->has_no_more_items;
-	}
 };
 
 /**
@@ -238,11 +243,13 @@ public:
  */
 class AIListSorterItemAscending : public AIListSorter {
 private:
-	AIList::AIListMap::iterator item_iter;
-	bool has_no_more_items;
-	int32 item_next;
+	AIList::AIListMap::iterator item_iter; ///< The iterator over the items in the map.
 
 public:
+	/**
+	 * Create a new sorter.
+	 * @param list The list to sort.
+	 */
 	AIListSorterItemAscending(AIList *list)
 	{
 		this->list = list;
@@ -267,6 +274,9 @@ public:
 		this->has_no_more_items = true;
 	}
 
+	/**
+	 * Find the next item, and store that information.
+	 */
 	void FindNext()
 	{
 		if (this->item_iter == this->list->items.end()) {
@@ -296,11 +306,6 @@ public:
 			return;
 		}
 	}
-
-	bool IsEnd()
-	{
-		return this->list->items.empty() || this->has_no_more_items;
-	}
 };
 
 /**
@@ -308,11 +313,13 @@ public:
  */
 class AIListSorterItemDescending : public AIListSorter {
 private:
-	AIList::AIListMap::iterator item_iter;
-	bool has_no_more_items;
-	int32 item_next;
+	AIList::AIListMap::iterator item_iter; ///< The iterator over the items in the map.
 
 public:
+	/**
+	 * Create a new sorter.
+	 * @param list The list to sort.
+	 */
 	AIListSorterItemDescending(AIList *list)
 	{
 		this->list = list;
@@ -338,6 +345,9 @@ public:
 		this->has_no_more_items = true;
 	}
 
+	/**
+	 * Find the next item, and store that information.
+	 */
 	void FindNext()
 	{
 		if (this->item_iter == this->list->items.end()) {
@@ -366,11 +376,6 @@ public:
 			FindNext();
 			return;
 		}
-	}
-
-	bool IsEnd()
-	{
-		return this->list->items.empty() || this->has_no_more_items;
 	}
 };
 
