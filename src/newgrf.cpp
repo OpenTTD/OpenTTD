@@ -7334,12 +7334,11 @@ static void BuildCargoTranslationMap()
 	}
 }
 
-static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
+static void InitNewGRFFile(const GRFConfig *config)
 {
 	GRFFile *newfile = GetFileByFilename(config->filename);
 	if (newfile != NULL) {
 		/* We already loaded it once. */
-		newfile->sprite_offset = sprite_offset;
 		_cur_grffile = newfile;
 		return;
 	}
@@ -7347,7 +7346,6 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 	newfile = CallocT<GRFFile>(1);
 
 	newfile->filename = strdup(config->filename);
-	newfile->sprite_offset = sprite_offset;
 	newfile->grfid = config->ident.grfid;
 
 	/* Initialise local settings to defaults */
@@ -8304,7 +8302,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 				continue;
 			}
 
-			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
+			if (stage == GLS_LABELSCAN) InitNewGRFFile(c);
 			LoadNewGRFFile(c, slot++, stage);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);

@@ -77,7 +77,6 @@ struct GRFFile {
 	char *filename;
 	bool is_ottdfile;
 	uint32 grfid;
-	uint16 sprite_offset;
 	byte grf_version;
 
 	/* A sprite group contains all sprites of a given vehicle (or multiple
