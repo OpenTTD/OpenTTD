@@ -14,6 +14,7 @@
 
 #include "video_driver.hpp"
 
+/** The video driver for windows. */
 class VideoDriver_Win32: public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -32,6 +33,7 @@ public:
 	bool MakeWindow(bool full_screen);
 };
 
+/** The factory for Windows' video driver. */
 class FVideoDriver_Win32: public VideoDriverFactory<FVideoDriver_Win32> {
 public:
 	static const int priority = 10;

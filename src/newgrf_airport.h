@@ -19,7 +19,7 @@
 #include "newgrf_commons.h"
 #include "gfx_type.h"
 
-/* Copy from station_map.h */
+/** Copy from station_map.h */
 typedef byte StationGfx;
 
 /** Tile-offset / AirportTileID pair. */
@@ -93,10 +93,10 @@ struct AirportSpec {
 		return (byte)(this - specs);
 	}
 
-	static AirportSpec dummy;
+	static AirportSpec dummy; ///< The dummy airport.
 
 private:
-	static AirportSpec specs[NUM_AIRPORTS];
+	static AirportSpec specs[NUM_AIRPORTS]; ///< Specs of the airports.
 };
 
 /** Information related to airport classes. */

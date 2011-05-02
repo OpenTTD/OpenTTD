@@ -61,6 +61,12 @@ const char *GetDebugString();
 /* Shorter form for passing filename and linenumber */
 #define FILE_LINE __FILE__, __LINE__
 
+/**
+ * Get the tick counter from the CPU (high precision timing).
+ * @return The count.
+ */
+uint64 ottd_rdtsc();
+
 /* Used for profiling
  *
  * Usage:
@@ -83,7 +89,6 @@ const char *GetDebugString();
  *  it with another block.
  **/
 #define TIC() {\
-	extern uint64 ottd_rdtsc();\
 	uint64 _xxx_ = ottd_rdtsc();\
 	static uint64 __sum__ = 0;\
 	static uint32 __i__ = 0;

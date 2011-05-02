@@ -14,15 +14,21 @@
 
 #include "../driver.h"
 
+/** Base for all sound drivers. */
 class SoundDriver: public Driver {
 public:
-	/* Called once every tick */
+	/** Called once every tick */
 	virtual void MainLoop() {}
 };
 
+/** Base of the factory for the sound drivers. */
 class SoundDriverFactoryBase: public DriverFactoryBase {
 };
 
+/**
+ * Factory for the sound drivers.
+ * @tparam T The type of the sound factory to register.
+ */
 template <class T>
 class SoundDriverFactory: public SoundDriverFactoryBase {
 public:

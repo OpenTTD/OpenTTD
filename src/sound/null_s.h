@@ -14,6 +14,7 @@
 
 #include "sound_driver.hpp"
 
+/** Implementation of the null sound driver. */
 class SoundDriver_Null: public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param) { return NULL; }
@@ -22,6 +23,7 @@ public:
 	/* virtual */ const char *GetName() const { return "null"; }
 };
 
+/** Factory for the null sound driver. */
 class FSoundDriver_Null: public SoundDriverFactory<FSoundDriver_Null> {
 public:
 	static const int priority = 1;

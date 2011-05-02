@@ -35,6 +35,12 @@ static uint32 _industry_creation_random_bits;
 IndustryOverrideManager _industry_mngr(NEW_INDUSTRYOFFSET, NUM_INDUSTRYTYPES, INVALID_INDUSTRYTYPE);
 IndustryTileOverrideManager _industile_mngr(NEW_INDUSTRYTILEOFFSET, NUM_INDUSTRYTILES, INVALID_INDUSTRYTILE);
 
+/**
+ * Map the GRF local type to an industry type.
+ * @param grf_type The GRF local type.
+ * @param grf_id The GRF of the local type.
+ * @return The industry type in the global scope.
+ */
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
 {
 	if (grf_type == IT_INVALID) return IT_INVALID;
@@ -386,6 +392,16 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->grffile         = (indspec != NULL ? indspec->grf_prop.grffile : NULL);
 }
 
+/**
+ * Perform an industry callback.
+ * @param callback The callback to perform.
+ * @param param1 The first parameter.
+ * @param param2 The second parameter.
+ * @param industry The industry to do the callback for.
+ * @param type The type of industry to do the callback for.
+ * @param tile The tile associated with the callback.
+ * @return The callback result.
+ */
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile)
 {
 	ResolverObject object;

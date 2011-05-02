@@ -14,6 +14,7 @@
 
 #include "sound_driver.hpp"
 
+/** Implementation of the SDL sound driver. */
 class SoundDriver_SDL: public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -22,6 +23,7 @@ public:
 	/* virtual */ const char *GetName() const { return "sdl"; }
 };
 
+/** Factory for the SDL sound driver. */
 class FSoundDriver_SDL: public SoundDriverFactory<FSoundDriver_SDL> {
 public:
 	static const int priority = 5;

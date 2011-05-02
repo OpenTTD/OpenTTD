@@ -14,9 +14,10 @@
 
 #include "video_driver.hpp"
 
+/** The null video driver. */
 class VideoDriver_Null: public VideoDriver {
 private:
-	uint ticks;
+	uint ticks; ///< Amount of ticks to run.
 
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -33,6 +34,7 @@ public:
 	/* virtual */ const char *GetName() const { return "null"; }
 };
 
+/** Factory the null video driver. */
 class FVideoDriver_Null: public VideoDriverFactory<FVideoDriver_Null> {
 public:
 	static const int priority = 0;

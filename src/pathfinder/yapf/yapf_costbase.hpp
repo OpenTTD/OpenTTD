@@ -12,7 +12,14 @@
 #ifndef YAPF_COSTBASE_HPP
 #define YAPF_COSTBASE_HPP
 
+/** Base implementation for cost accounting. */
 struct CYapfCostBase {
+	/**
+	 * Does the given track direction on the given tile yeild an uphill penalty?
+	 * @param tile The tile to check.
+	 * @param td   The track direction to check.
+	 * @return True if there's a slope, otherwise false.
+	 */
 	FORCEINLINE static bool stSlopeCost(TileIndex tile, Trackdir td)
 	{
 		if (IsDiagonalTrackdir(td)) {
@@ -33,10 +40,5 @@ struct CYapfCostBase {
 		return false;
 	}
 };
-
-struct CostRailSettings {
-	/* look-ahead signal penalty */
-};
-
 
 #endif /* YAPF_COSTBASE_HPP */

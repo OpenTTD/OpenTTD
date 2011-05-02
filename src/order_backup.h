@@ -69,7 +69,17 @@ public:
 	static void ClearVehicle(const Vehicle *v);
 };
 
+/**
+ * Iterator over all order backups from a given ID.
+ * @param var The variable to iterate with.
+ * @param start The start of the iteration.
+ */
 #define FOR_ALL_ORDER_BACKUPS_FROM(var, start) FOR_ALL_ITEMS_FROM(OrderBackup, order_backup_index, var, start)
+
+/**
+ * Iterator over all order backups.
+ * @param var The variable to iterate with.
+ */
 #define FOR_ALL_ORDER_BACKUPS(var) FOR_ALL_ORDER_BACKUPS_FROM(var, 0)
 
 #endif /* ORDER_BACKUP_H */

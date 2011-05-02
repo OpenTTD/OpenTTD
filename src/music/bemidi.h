@@ -14,6 +14,7 @@
 
 #include "music_driver.hpp"
 
+/** The midi player for BeOS. */
 class MusicDriver_BeMidi: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "bemidi"; }
 };
 
+/** Factory for the BeOS midi player. */
 class FMusicDriver_BeMidi: public MusicDriverFactory<FMusicDriver_BeMidi> {
 public:
 	static const int priority = 10;

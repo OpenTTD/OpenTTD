@@ -29,6 +29,11 @@
  * eh? Anyone would think they both came from the same place originally! ;)
  */
 
+/**
+ * Send a midi command.
+ * @param cmd The command to send.
+ * @return The result of sending it.
+ */
 static long CDECL MidiSendCommand(const char *cmd, ...)
 {
 	va_list va;
@@ -39,6 +44,7 @@ static long CDECL MidiSendCommand(const char *cmd, ...)
 	return mciSendString(buf, NULL, 0, NULL, 0);
 }
 
+/** OS/2's music player's factory. */
 static FMusicDriver_OS2 iFMusicDriver_OS2;
 
 void MusicDriver_OS2::PlaySong(const char *filename)

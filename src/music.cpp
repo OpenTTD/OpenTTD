@@ -11,7 +11,7 @@
 
 #include "stdafx.h"
 
-/* The type of set we're replacing */
+/** The type of set we're replacing */
 #define SET_TYPE "music"
 #include "base_media_func.h"
 
@@ -24,6 +24,7 @@ static const char * const _music_file_names[] = {
 	"new_0", "new_1", "new_2", "new_3", "new_4", "new_5", "new_6", "new_7", "new_8", "new_9",
 	"ezy_0", "ezy_1", "ezy_2", "ezy_3", "ezy_4", "ezy_5", "ezy_6", "ezy_7", "ezy_8", "ezy_9",
 };
+/** Make sure we aren't messing things up. */
 assert_compile(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
 
 template <class T, size_t Tnum_files, Subdirectory Tsubdir>

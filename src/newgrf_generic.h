@@ -14,17 +14,21 @@
 
 #include "cargo_type.h"
 #include "industry_type.h"
+#include "newgrf.h"
 
+struct SpriteGroup;
+
+/** AI events for asking the NewGRF for information. */
 enum AIConstructionEvent {
 	AICE_TRAIN_CHECK_RAIL_ENGINE     = 0x00, ///< Check if we should build an engine
-	AICE_TRAIN_CHECK_ELRAIL_ENGINE   = 0x01,
-	AICE_TRAIN_CHECK_MONORAIL_ENGINE = 0x02,
-	AICE_TRAIN_CHECK_MAGLEV_ENGINE   = 0x03,
-	AICE_TRAIN_GET_RAIL_WAGON        = 0x08,
-	AICE_TRAIN_GET_ELRAIL_WAGON      = 0x09,
-	AICE_TRAIN_GET_MONORAIL_WAGON    = 0x0A,
-	AICE_TRAIN_GET_MAGLEV_WAGON      = 0x0B,
-	AICE_TRAIN_GET_RAILTYPE          = 0x0F,
+	AICE_TRAIN_CHECK_ELRAIL_ENGINE   = 0x01, ///< Check if we should build an engine
+	AICE_TRAIN_CHECK_MONORAIL_ENGINE = 0x02, ///< Check if we should build an engine
+	AICE_TRAIN_CHECK_MAGLEV_ENGINE   = 0x03, ///< Check if we should build an engine
+	AICE_TRAIN_GET_RAIL_WAGON        = 0x08, ///< Check if we should build an engine
+	AICE_TRAIN_GET_ELRAIL_WAGON      = 0x09, ///< Check if we should build an engine
+	AICE_TRAIN_GET_MONORAIL_WAGON    = 0x0A, ///< Check if we should build an engine
+	AICE_TRAIN_GET_MAGLEV_WAGON      = 0x0B, ///< Check if we should build an engine
+	AICE_TRAIN_GET_RAILTYPE          = 0x0F, ///< Check if we should build a railtype
 
 	AICE_ROAD_CHECK_ENGINE           = 0x00, ///< Check if we should build an engine
 	AICE_ROAD_GET_FIRST_ENGINE       = 0x01, ///< Unused, we check all
@@ -43,8 +47,8 @@ static const IndustryType IT_AI_UNKNOWN = 0xFE; ///< The AI has no specific indu
 static const IndustryType IT_AI_TOWN    = 0xFF; ///< The AI actually wants to transport to/from a town, not an industry.
 
 void ResetGenericCallbacks();
-void AddGenericCallback(uint8 feature, const struct GRFFile *file, const struct SpriteGroup *group);
+void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *group);
 
-uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 default_selection, IndustryType src_industry, IndustryType dst_industry, uint8 distance, AIConstructionEvent event, uint8 count, uint8 station_size, const struct GRFFile **file);
+uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 default_selection, IndustryType src_industry, IndustryType dst_industry, uint8 distance, AIConstructionEvent event, uint8 count, uint8 station_size, const GRFFile **file);
 
 #endif /* NEWGRF_GENERIC_H */

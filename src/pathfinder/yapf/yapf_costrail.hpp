@@ -17,7 +17,6 @@
 template <class Types>
 class CYapfCostRailT
 	: public CYapfCostBase
-	, public CostRailSettings
 {
 public:
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)

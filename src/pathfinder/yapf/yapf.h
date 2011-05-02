@@ -65,7 +65,7 @@ FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_pena
 /**
  * Used when user sends train to the nearest depot or if train needs servicing using YAPF.
  * @param v            train that needs to go to some depot
- * @param max_penalty  max distance (int pathfinder penalty) from the current train position
+ * @param max_distance max distance (int pathfinder penalty) from the current train position
  *                     (used also as optimization - the pathfinder can stop path finding if max_penalty
  *                     was reached and no depot was seen)
  * @return             the data about the depot

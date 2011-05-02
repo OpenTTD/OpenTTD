@@ -151,9 +151,12 @@ public:
 		return item;
 	}
 
+	/** The number of items. */
 	FORCEINLINE int TotalCount() {return m_arr.Length();}
+	/** Get a particular item. */
 	FORCEINLINE Titem_& ItemAt(int idx) {return m_arr[idx];}
 
+	/** Helper for creating output of this array. */
 	template <class D> void Dump(D &dmp) const
 	{
 		dmp.WriteStructT("m_arr", &m_arr);

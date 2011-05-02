@@ -186,7 +186,7 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 /**
  * Reset the OrderBackups from GUI/game logic.
- * @param tile     The tile of the order backup.
+ * @param t        The tile of the order backup.
  * @param from_gui Whether the call came from the GUI, i.e. whether
  *                 it must be synced over the network.
  */

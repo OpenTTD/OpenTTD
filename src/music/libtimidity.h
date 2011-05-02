@@ -14,6 +14,7 @@
 
 #include "music_driver.hpp"
 
+/** Music driver making use of libtimidity. */
 class MusicDriver_LibTimidity: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "libtimidity"; }
 };
 
+/** Factory for the libtimidity driver. */
 class FMusicDriver_LibTimidity: public MusicDriverFactory<FMusicDriver_LibTimidity> {
 public:
 	static const int priority = 5;

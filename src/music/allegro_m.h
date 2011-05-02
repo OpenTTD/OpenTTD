@@ -14,6 +14,7 @@
 
 #include "music_driver.hpp"
 
+/** Allegro's music player. */
 class MusicDriver_Allegro: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "allegro"; }
 };
 
+/** Factory for allegro's music player. */
 class FMusicDriver_Allegro: public MusicDriverFactory<FMusicDriver_Allegro> {
 public:
 #if !defined(WITH_SDL) && defined(WITH_ALLEGRO)

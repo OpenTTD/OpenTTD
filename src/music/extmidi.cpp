@@ -26,9 +26,11 @@
 #include <errno.h>
 
 #ifndef EXTERNAL_PLAYER
+/** The default external midi player. */
 #define EXTERNAL_PLAYER "timidity"
 #endif
 
+/** Factory for the midi player that uses external players. */
 static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
 const char *MusicDriver_ExtMidi::Start(const char * const * parm)

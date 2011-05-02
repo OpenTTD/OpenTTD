@@ -14,6 +14,7 @@
 
 #include "music_driver.hpp"
 
+/** Music player making use of DirectX. */
 class MusicDriver_DMusic: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "dmusic"; }
 };
 
+/** Factory for the DirectX music player. */
 class FMusicDriver_DMusic: public MusicDriverFactory<FMusicDriver_DMusic> {
 public:
 	static const int priority = 10;

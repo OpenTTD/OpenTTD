@@ -14,6 +14,7 @@
 
 #include "music_driver.hpp"
 
+/** The Windows music player. */
 class MusicDriver_Win32: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "win32"; }
 };
 
+/** Factory for Windows' music player. */
 class FMusicDriver_Win32: public MusicDriverFactory<FMusicDriver_Win32> {
 public:
 	static const int priority = 5;

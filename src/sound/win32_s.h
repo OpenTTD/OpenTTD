@@ -14,6 +14,7 @@
 
 #include "sound_driver.hpp"
 
+/** Implementation of the sound driver for Windows. */
 class SoundDriver_Win32: public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -22,6 +23,7 @@ public:
 	/* virtual */ const char *GetName() const { return "win32"; }
 };
 
+/** Factory for the sound driver for Windows. */
 class FSoundDriver_Win32: public SoundDriverFactory<FSoundDriver_Win32> {
 public:
 	static const int priority = 10;

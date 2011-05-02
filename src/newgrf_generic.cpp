@@ -46,9 +46,9 @@ void ResetGenericCallbacks()
 
 /**
  * Add a generic feature callback sprite group to the appropriate feature list.
- * @param feature
- * @param file
- * @param group
+ * @param feature The feature for the callback.
+ * @param file The GRF of the callback.
+ * @param group The sprite group of the callback.
  */
 void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *group)
 {

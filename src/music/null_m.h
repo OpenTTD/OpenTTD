@@ -14,6 +14,7 @@
 
 #include "music_driver.hpp"
 
+/** The music player that does nothing. */
 class MusicDriver_Null: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param) { return NULL; }
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "null"; }
 };
 
+/** Factory for the null music player. */
 class FMusicDriver_Null: public MusicDriverFactory<FMusicDriver_Null> {
 public:
 	static const int priority = 1;

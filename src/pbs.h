@@ -30,7 +30,17 @@ struct PBSTileInfo {
 	Trackdir  trackdir;  ///< The reserved trackdir on the tile.
 	bool      okay;      ///< True if tile is a safe waiting position, false otherwise.
 
+	/**
+	 * Create an empty PBSTileInfo.
+	 */
 	PBSTileInfo() : tile(INVALID_TILE), trackdir(INVALID_TRACKDIR), okay(false) {}
+
+	/**
+	 * Create a PBSTileInfo with given tile, track direction and safe waiting position information.
+	 * @param _t The tile where the path ends.
+	 * @param _td The reserved track dir on the tile.
+	 * @param _okay Whether the tile is a safe waiting point or not.
+	 */
 	PBSTileInfo(TileIndex _t, Trackdir _td, bool _okay) : tile(_t), trackdir(_td), okay(_okay) {}
 };
 

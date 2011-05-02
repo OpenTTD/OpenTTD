@@ -275,6 +275,7 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 	}
 }
 
+/** Distribute the commands of ourself and the clients. */
 void NetworkDistributeCommands()
 {
 	/* First send the server's commands. */

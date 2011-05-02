@@ -238,6 +238,13 @@ uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Sta
 	return group->GetCallbackResult();
 }
 
+/**
+ * Get a custom text for the airport.
+ * @param as The airport type's specification.
+ * @param layout The layout index.
+ * @param callback The callback to call.
+ * @return The custom text.
+ */
 StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback)
 {
 	const SpriteGroup *group;

@@ -14,6 +14,7 @@
 
 #include "video_driver.hpp"
 
+/** The dedicated server video driver. */
 class VideoDriver_Dedicated: public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "dedicated"; }
 };
 
+/** Factory for the dedicated server video driver. */
 class FVideoDriver_Dedicated: public VideoDriverFactory<FVideoDriver_Dedicated> {
 public:
 #ifdef DEDICATED

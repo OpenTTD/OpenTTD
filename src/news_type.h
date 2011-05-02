@@ -119,6 +119,13 @@ struct NewsTypeData {
 	NewsDisplay display;        ///< Display mode (off, summary, full)
 	const StringID description; ///< Description of the news type in news settings window
 
+	/**
+	 * Construct this entry.
+	 * @param name The name of the type.
+	 * @param age The maximum age for these messages.
+	 * @param sound The sound to play.
+	 * @param description The description for this type of messages.
+	 */
 	NewsTypeData(const char *name, byte age, SoundFx sound, StringID description) :
 		name(name),
 		age(age),
@@ -129,6 +136,7 @@ struct NewsTypeData {
 	}
 };
 
+/** Information about a single item of news. */
 struct NewsItem {
 	NewsItem *prev;              ///< Previous news item
 	NewsItem *next;              ///< Next news item
@@ -149,7 +157,7 @@ struct NewsItem {
 		free(this->free_data);
 	}
 
-	uint64 params[10];
+	uint64 params[10]; ///< Parameters for string resolving.
 };
 
 /**

@@ -25,7 +25,9 @@
 
 NetworkGameList *_network_game_list = NULL;
 
+/** Mutex for handling delayed insertion/querying of servers. */
 static ThreadMutex *_network_game_list_mutex = ThreadMutex::New();
+/** The games to insert when the GUI thread has time for us. */
 static NetworkGameList *_network_game_delayed_insertion_list = NULL;
 
 /**
@@ -72,7 +74,6 @@ static void NetworkGameListHandleDelayedInsert()
  * Add a new item to the linked gamelist. If the IP and Port match
  * return the existing item instead of adding it again
  * @param address the address of the to-be added item
- * @param port the port the server is running on
  * @return a point to the newly added or already existing item
  */
 NetworkGameList *NetworkGameListAddItem(NetworkAddress address)

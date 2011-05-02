@@ -72,11 +72,13 @@ struct NetworkCompanyState {
 
 struct NetworkClientInfo;
 
+/** The type of password we're asking for. */
 enum NetworkPasswordType {
-	NETWORK_GAME_PASSWORD,
-	NETWORK_COMPANY_PASSWORD,
+	NETWORK_GAME_PASSWORD,    ///< The password of the game.
+	NETWORK_COMPANY_PASSWORD, ///< The password of the company.
 };
 
+/** Destination of our chat messages. */
 enum DestType {
 	DESTTYPE_BROADCAST, ///< Send message/notice to all clients (All)
 	DESTTYPE_TEAM,      ///< Send message/notice to everyone playing the same company (Team)
@@ -98,6 +100,7 @@ enum NetworkAction {
 	NETWORK_ACTION_COMPANY_NEW,
 };
 
+/** The error codes we send around in the protocols. */
 enum NetworkErrorCode {
 	NETWORK_ERROR_GENERAL, // Try to use this one like never
 

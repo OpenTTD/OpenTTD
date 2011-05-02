@@ -1392,6 +1392,9 @@ static const WindowDesc _message_options_desc(
 	_nested_message_options_widgets, lengthof(_nested_message_options_widgets)
 );
 
+/**
+ * Show the settings window for news messages.
+ */
 void ShowMessageOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);

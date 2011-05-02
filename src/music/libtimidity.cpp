@@ -26,6 +26,7 @@
 #include <pspaudiolib.h>
 #endif /* PSP */
 
+/** The state of playing. */
 enum MidiState {
 	MIDI_STOPPED = 0,
 	MIDI_PLAYING = 1,
@@ -39,7 +40,7 @@ static struct {
 	MidiState status;
 	uint32 song_length;
 	uint32 song_position;
-} _midi;
+} _midi; ///< Metadata about the midi we're playing.
 
 #if defined(PSP)
 static void AudioOutCallback(void *buf, unsigned int _reqn, void *userdata)
@@ -51,6 +52,7 @@ static void AudioOutCallback(void *buf, unsigned int _reqn, void *userdata)
 }
 #endif /* PSP */
 
+/** Factory for the libtimidity driver. */
 static FMusicDriver_LibTimidity iFMusicDriver_LibTimidity;
 
 const char *MusicDriver_LibTimidity::Start(const char * const *param)

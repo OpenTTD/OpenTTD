@@ -87,6 +87,14 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, Tile
 	res->count           = 0;
 }
 
+/**
+ * Get the sprite to draw for the given tile.
+ * @param rti The rail type data (spec).
+ * @param tile The tile to get the sprite for.
+ * @param rtsg The type of sprite to draw.
+ * @param content Where are we drawing the tile?
+ * @return The sprite to draw.
+ */
 SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context)
 {
 	assert(rtsg < RTSG_END);
@@ -104,6 +112,12 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 	return group->GetResult();
 }
 
+/**
+ * Perform a reverse railtype lookup to get the GRF internal ID.
+ * @param railtype The global (OpenTTD) railtype.
+ * @param grffile The GRF to do the lookup for.
+ * @return the GRF internal ID.
+ */
 uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 {
 	/* No rail type table present, return rail type as-is */

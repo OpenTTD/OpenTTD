@@ -14,6 +14,7 @@
 
 #include "video_driver.hpp"
 
+/** The allegro video driver. */
 class VideoDriver_Allegro: public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "allegro"; }
 };
 
+/** Factory for the allegro video driver. */
 class FVideoDriver_Allegro: public VideoDriverFactory<FVideoDriver_Allegro> {
 public:
 	static const int priority = 4;

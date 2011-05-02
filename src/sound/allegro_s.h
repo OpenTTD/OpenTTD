@@ -14,6 +14,7 @@
 
 #include "sound_driver.hpp"
 
+/** Implementation of the allegro sound driver. */
 class SoundDriver_Allegro: public SoundDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -24,6 +25,7 @@ public:
 	/* virtual */ const char *GetName() const { return "allegro"; }
 };
 
+/** Factory for the allegro sound driver. */
 class FSoundDriver_Allegro: public SoundDriverFactory<FSoundDriver_Allegro> {
 public:
 	static const int priority = 4;

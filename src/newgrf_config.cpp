@@ -667,8 +667,8 @@ const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8
 
 /** Structure for UnknownGRFs; this is a lightweight variant of GRFConfig */
 struct UnknownGRF : public GRFIdentifier {
-	UnknownGRF *next;
-	GRFTextWrapper *name;
+	UnknownGRF *next;     ///< The next unknown GRF.
+	GRFTextWrapper *name; ///< Name of the GRF.
 };
 
 /**

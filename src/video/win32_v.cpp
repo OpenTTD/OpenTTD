@@ -224,6 +224,11 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 	}
 }
 
+/**
+ * Instantiate a new window.
+ * @param full_screen Whether to make a full screen window or not.
+ * @return True if the window could be created.
+ */
 bool VideoDriver_Win32::MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;

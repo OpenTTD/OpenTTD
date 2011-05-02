@@ -14,6 +14,7 @@
 
 #include "music_driver.hpp"
 
+/** OS/2's music player. */
 class MusicDriver_OS2: public MusicDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "os2"; }
 };
 
+/** Factory for OS/2's music player. */
 class FMusicDriver_OS2: public MusicDriverFactory<FMusicDriver_OS2> {
 public:
 	static const int priority = 10;

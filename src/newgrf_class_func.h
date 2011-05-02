@@ -13,6 +13,10 @@
 
 #include "table/strings.h"
 
+/**
+ * Helper for defining the class method's signatures.
+ * @param type The type of the class.
+ */
 #define DEFINE_NEWGRF_CLASS_METHOD(type) \
 	template <typename Tspec, typename Tid, Tid Tmax> \
 	type NewGRFClass<Tspec, Tid, Tmax>

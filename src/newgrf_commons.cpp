@@ -323,7 +323,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
  * Function used by houses (and soon industries) to get information
  * on type of "terrain" the tile it is queries sits on.
  * @param tile TileIndex of the tile been queried
- * @param upper_halftile If true, query upper halftile in case of rail tiles.
+ * @param context The context of the tile.
  * @return value corresponding to the grf expected format:
  *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline
  */
@@ -394,6 +394,13 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
 	}
 }
 
+/**
+ * Get the tile at the given offset.
+ * @param parameter The NewGRF "encoded" offset.
+ * @param tile The tile to base the offset from.
+ * @param signed_offsets Whether the offsets are to be interpreted as signed or not.
+ * @return The tile at the offset.
+ */
 TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets)
 {
 	int8 x = GB(parameter, 0, 4);

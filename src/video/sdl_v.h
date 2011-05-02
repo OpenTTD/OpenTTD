@@ -14,6 +14,7 @@
 
 #include "video_driver.hpp"
 
+/** The SDL video driver. */
 class VideoDriver_SDL: public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
@@ -30,6 +31,7 @@ public:
 	/* virtual */ const char *GetName() const { return "sdl"; }
 };
 
+/** Factory for the SDL video driver. */
 class FVideoDriver_SDL: public VideoDriverFactory<FVideoDriver_SDL> {
 public:
 	static const int priority = 5;

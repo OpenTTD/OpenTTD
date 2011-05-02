@@ -14,20 +14,41 @@
 
 #include "../driver.h"
 
+/** Driver for all music playback. */
 class MusicDriver: public Driver {
 public:
+	/**
+	 * Play a particular song.
+	 * @param filename The name of file with the song to play.
+	 */
 	virtual void PlaySong(const char *filename) = 0;
 
+	/**
+	 * Stop playing the current song.
+	 */
 	virtual void StopSong() = 0;
 
+	/**
+	 * Are we currently playing a song?
+	 * @return True if a song is being played.
+	 */
 	virtual bool IsSongPlaying() = 0;
 
+	/**
+	 * Set the volume, if possible.
+	 * @param vol The new volume.
+	 */
 	virtual void SetVolume(byte vol) = 0;
 };
 
+/** Base of the factory for the music drivers. */
 class MusicDriverFactoryBase: public DriverFactoryBase {
 };
 
+/**
+ * Factory for the music drivers.
+ * @tparam T The type of the music factory to register.
+ */
 template <class T>
 class MusicDriverFactory: public MusicDriverFactoryBase {
 public:

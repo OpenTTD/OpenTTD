@@ -16,8 +16,10 @@
 /* BeOS System Includes */
 #include <MidiSynthFile.h>
 
+/** The file we're playing. */
 static BMidiSynthFile midiSynthFile;
 
+/** Factory for BeOS' midi player. */
 static FMusicDriver_BeMidi iFMusicDriver_BeMidi;
 
 const char *MusicDriver_BeMidi::Start(const char * const *parm)

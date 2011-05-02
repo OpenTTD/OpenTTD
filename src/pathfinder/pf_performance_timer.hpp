@@ -12,7 +12,7 @@
 #ifndef PF_PERFORMANCE_TIMER_HPP
 #define PF_PERFORMANCE_TIMER_HPP
 
-extern uint64 ottd_rdtsc();
+#include "../debug.h"
 
 struct CPerformanceTimer
 {
