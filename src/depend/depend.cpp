@@ -31,6 +31,7 @@
 #include <stack>
 
 #ifndef PATH_MAX
+/** The maximum length of paths, if we don't know it. */
 #	define PATH_MAX 260
 #endif
 

@@ -67,6 +67,11 @@
 
 #include "table/elrail_data.h"
 
+/**
+ * Get the tile location group of a tile.
+ * @param t The tile to get the tile location group of.
+ * @return The tile location group.
+ */
 static inline TLG GetTLG(TileIndex t)
 {
 	return (TLG)((HasBit(TileX(t), 0) << 1) + HasBit(TileY(t), 0));

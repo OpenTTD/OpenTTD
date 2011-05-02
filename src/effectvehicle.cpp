@@ -558,6 +558,14 @@ static EffectTickProc * const _effect_tick_procs[] = {
 };
 
 
+/**
+ * Create an effect vehicle at a particular location.
+ * @param x The x location on the map.
+ * @param y The y location on the map.
+ * @param z The z location on the map.
+ * @param type The type of effect vehicle.
+ * @return The effect vehicle.
+ */
 EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 {
 	if (!Vehicle::CanAllocateItem()) return NULL;
@@ -579,6 +587,14 @@ EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 	return v;
 }
 
+/**
+ * Create an effect vehicle above a particular location.
+ * @param x The x location on the map.
+ * @param y The y location on the map.
+ * @param z The offset from the ground.
+ * @param type The type of effect vehicle.
+ * @return The effect vehicle.
+ */
 EffectVehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type)
 {
 	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
@@ -586,6 +602,15 @@ EffectVehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType t
 	return CreateEffectVehicle(x, y, GetSlopeZ(safe_x, safe_y) + z, type);
 }
 
+/**
+ * Create an effect vehicle above a particular vehicle.
+ * @param v The vehicle to base the position on.
+ * @param x The x offset to the vehicle.
+ * @param y The y offset to the vehicle.
+ * @param z The z offset to the vehicle.
+ * @param type The type of effect vehicle.
+ * @return The effect vehicle.
+ */
 EffectVehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type)
 {
 	return CreateEffectVehicle(v->x_pos + x, v->y_pos + y, v->z_pos + z, type);

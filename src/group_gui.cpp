@@ -661,6 +661,11 @@ static const WindowDesc _train_group_desc(
 	_nested_group_widgets, lengthof(_nested_group_widgets)
 );
 
+/**
+ * Show the group window for the given company and vehicle type.
+ * @param company The company to show the window for.
+ * @param vehicle_type The type of vehicle to show it for.
+ */
 void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
 {
 	if (!Company::IsValidID(company)) return;

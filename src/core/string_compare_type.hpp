@@ -12,7 +12,14 @@
 #ifndef STRING_COMPARE_TYPE_HPP
 #define STRING_COMPARE_TYPE_HPP
 
+/** Comparator for strings. */
 struct StringCompare {
+	/**
+	 * Compare two strings.
+	 * @param a The first string.
+	 * @param b The second string.
+	 * @return True is the first string is deemed "lower" than the second string.
+	 */
 	bool operator () (const char *a, const char *b) const
 	{
 		return strcmp(a, b) < 0;

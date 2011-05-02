@@ -128,6 +128,11 @@ void ShowEnginePreviewWindow(EngineID engine)
 	AllocateWindowDescFront<EnginePreviewWindow>(&_engine_preview_desc, engine);
 }
 
+/**
+ * Get the capacity of an engine with articulated parts.
+ * @param engine The engine to get the capacity of.
+ * @return The capacity.
+ */
 uint GetTotalCapacityOfArticulatedParts(EngineID engine)
 {
 	uint total = 0;

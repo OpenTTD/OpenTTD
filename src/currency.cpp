@@ -22,6 +22,7 @@
 	 *   |  separator        |           postfix             |
 	 *   |   |   Euro year   |              |                | name
 	 *   |   |    |          |              |                |  | */
+/** The original currency specifications. */
 static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    1, "", CF_NOEURO, "\xC2\xA3",     "",              0, STR_GAME_OPTIONS_CURRENCY_GBP    }, ///< british pounds
 	{    2, "", CF_NOEURO, "$",            "",              0, STR_GAME_OPTIONS_CURRENCY_USD    }, ///< us dollars
@@ -54,7 +55,7 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    1, "", CF_NOEURO, "",             "",              2, STR_GAME_OPTIONS_CURRENCY_CUSTOM }, ///< custom currency
 };
 
-/* Array of currencies used by the system */
+/** Array of currencies used by the system */
 CurrencySpec _currency_specs[NUM_CURRENCY];
 
 /**

@@ -875,21 +875,28 @@ static void _ShowGenerateLandscape(GenenerateLandscapeWindowMode mode)
 	SetWindowDirty(WC_GENERATE_LANDSCAPE, mode);
 }
 
+/** Start with a normal game. */
 void ShowGenerateLandscape()
 {
 	_ShowGenerateLandscape(GLWM_GENERATE);
 }
 
+/** Start with loading a heightmap. */
 void ShowHeightmapLoad()
 {
 	_ShowGenerateLandscape(GLWM_HEIGHTMAP);
 }
 
+/** Start with a scenario editor. */
 void StartScenarioEditor()
 {
 	StartGeneratingLandscape(GLWM_SCENARIO);
 }
 
+/**
+ * Start a normal game without the GUI.
+ * @param seed The seed of the new game.
+ */
 void StartNewGameWithoutGUI(uint seed)
 {
 	/* GenerateWorld takes care of the possible GENERATE_NEW_SEED value in 'seed' */
@@ -1155,6 +1162,7 @@ static const WindowDesc _create_scenario_desc(
 	_nested_create_scenario_widgets, lengthof(_nested_create_scenario_widgets)
 );
 
+/** Show the window to create a scenario. */
 void ShowCreateScenario()
 {
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);

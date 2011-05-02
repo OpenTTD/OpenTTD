@@ -59,6 +59,7 @@ enum LiveryScheme {
 };
 
 DECLARE_POSTFIX_INCREMENT(LiveryScheme)
+/** Helper information for extract tool. */
 template <> struct EnumPropsT<LiveryScheme> : MakeEnumPropsT<LiveryScheme, byte, LS_BEGIN, LS_END, LS_END, 8> {};
 
 /** List of different livery classes, used only by the livery GUI. */
@@ -71,7 +72,7 @@ enum LiveryClass {
 	LC_END
 };
 
-
+/** Information about a particular livery. */
 struct Livery {
 	bool in_use;  ///< Set if this livery should be used instead of the default livery.
 	byte colour1; ///< First colour, for all vehicles.

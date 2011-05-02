@@ -228,7 +228,7 @@ uint DistanceFromEdge(TileIndex tile)
 /**
  * Gets the distance to the edge of the map in given direction.
  * @param tile the tile to get the distance from
- * @param diagdir the direction of interest
+ * @param dir the direction of interest
  * @return the distance from the edge in tiles
  */
 uint DistanceFromEdgeDir(TileIndex tile, DiagDirection dir)

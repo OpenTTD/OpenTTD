@@ -16,6 +16,10 @@
 #include "mem_func.hpp"
 #include "pool_type.hpp"
 
+/**
+ * Helper for defining the method's signature.
+ * @param type The return type of the method.
+ */
 #define DEFINE_POOL_METHOD(type) \
 	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type, bool Tcache, bool Tzero> \
 	type Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero>

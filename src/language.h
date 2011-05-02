@@ -85,6 +85,7 @@ struct LanguagePackHeader {
 		return MAX_NUM_CASES;
 	}
 };
+/** Make sure the size is right. */
 assert_compile(sizeof(LanguagePackHeader) % 4 == 0);
 
 /** Metadata about a single language. */

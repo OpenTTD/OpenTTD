@@ -135,7 +135,7 @@ void CheckExternalFiles()
 	if (add_pos != error_msg) ShowInfoF("%s", error_msg);
 }
 
-
+/** Actually load the sprite tables. */
 static void LoadSpriteTables()
 {
 	memset(_palette_remap_grf, 0, sizeof(_palette_remap_grf));
@@ -199,6 +199,7 @@ static void LoadSpriteTables()
 }
 
 
+/** Initialise and load all the sprites. */
 void GfxLoadSprites()
 {
 	DEBUG(sprite, 2, "Loading sprite set %d", _settings_game.game_creation.landscape);

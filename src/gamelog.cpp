@@ -326,6 +326,7 @@ static void GamelogPrintConsoleProc(const char *s)
 	IConsolePrint(CC_WARNING, s);
 }
 
+/** Print the gamelog data to the console. */
 void GamelogPrintConsole()
 {
 	GamelogPrint(&GamelogPrintConsoleProc);

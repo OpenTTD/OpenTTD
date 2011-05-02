@@ -13,12 +13,16 @@
 #define ENDIAN_TYPE_HPP
 
 #if defined(ARM) || defined(__arm__) || defined(__alpha__)
+	/** The architecture requires aligned access. */
 	#define OTTD_ALIGNMENT 1
 #else
+	/** The architecture does not require aligned access. */
 	#define OTTD_ALIGNMENT 0
 #endif
 
+/** Little endian builds use this for TTD_ENDIAN. */
 #define TTD_LITTLE_ENDIAN 0
+/** Big endian builds use this for TTD_ENDIAN. */
 #define TTD_BIG_ENDIAN 1
 
 /* Windows has always LITTLE_ENDIAN */

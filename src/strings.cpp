@@ -1476,6 +1476,11 @@ bool LanguagePackHeader::IsValid() const
 	       StrValid(this->digit_decimal_separator,        lastof(this->digit_decimal_separator));
 }
 
+/**
+ * Read a particular language.
+ * @param lang The metadata about the language.
+ * @return Whether the loading went okay or not.
+ */
 bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */

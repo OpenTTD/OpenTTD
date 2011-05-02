@@ -18,6 +18,7 @@
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
 
+/** All our depots tucked away in a pool. */
 DepotPool _depot_pool("Depot");
 INSTANTIATE_POOL_METHODS(Depot)
 

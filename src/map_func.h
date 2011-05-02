@@ -187,6 +187,12 @@ static inline TileIndexDiff TileDiffXY(int x, int y)
 	return (y * MapSizeX()) + x;
 }
 
+/**
+ * Get a tile from the virtual XY-coordinate.
+ * @param x The virtual x coordinate of the tile.
+ * @param y The virtual y coordinate of the tile.
+ * @return The TileIndex calculated by the coordinate.
+ */
 static inline TileIndex TileVirtXY(uint x, uint y)
 {
 	return (y >> 4 << MapLogX()) + (x >> 4);

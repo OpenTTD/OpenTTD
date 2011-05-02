@@ -14,12 +14,14 @@
 
 #include "../core/alloc_func.hpp"
 
-/* Enable it if you suspect binary heap doesn't work well */
+/** Enable it if you suspect binary heap doesn't work well */
 #define BINARYHEAP_CHECK 0
 
 #if BINARYHEAP_CHECK
+	/** Check for consistency. */
 	#define CHECK_CONSISTY() this->CheckConsistency()
 #else
+	/** Don't check for consistency. */
 	#define CHECK_CONSISTY() ;
 #endif
 
@@ -55,6 +57,10 @@ private:
 	T **data;      ///< The pointer to the heap item pointers
 
 public:
+	/**
+	 * Create a binary heap.
+	 * @param max_items The limit of the heap
+	 */
 	explicit CBinaryHeapT(uint max_items)
 		: items(0)
 		, capacity(max_items)

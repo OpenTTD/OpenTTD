@@ -76,6 +76,10 @@ public:
 		return item;
 	}
 
+	/**
+	 * Helper for creating a human readable output of this data.
+	 * @param dmp The location to dump to.
+	 */
 	template <typename D> void Dump(D &dmp) const
 	{
 		dmp.WriteLine("capacity = %d", Tcapacity);

@@ -614,6 +614,11 @@ void SetYearEngineAgingStops()
 	}
 }
 
+/**
+ * Start/initialise one engine.
+ * @param e The engine to initialise.
+ * @param aging_date The date used for age calculations.
+ */
 void StartupOneEngine(Engine *e, Date aging_date)
 {
 	const EngineInfo *ei = &e->info;
@@ -654,6 +659,7 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	}
 }
 
+/** Start/initialise all our engines. */
 void StartupEngines()
 {
 	Engine *e;

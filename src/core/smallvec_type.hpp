@@ -35,12 +35,20 @@ protected:
 public:
 	SmallVector() : data(NULL), items(0), capacity(0) { }
 
+	/**
+	 * Copy constructor.
+	 * @param other The other vector to copy.
+	 */
 	template <uint X>
 	SmallVector(const SmallVector<T, X> &other) : data(NULL), items(0), capacity(0)
 	{
 		MemCpyT<T>(this->Append(other.Length()), other.Begin(), other.Length());
 	}
 
+	/**
+	 * Assignment.
+	 * @param other The new vector that.
+	 */
 	template <uint X>
 	SmallVector &operator=(const SmallVector<T, X> &other)
 	{
@@ -318,6 +326,6 @@ public:
 	}
 };
 
-typedef AutoFreeSmallVector<char*, 4> StringList;
+typedef AutoFreeSmallVector<char*, 4> StringList; ///< Type for a list of strings.
 
 #endif /* SMALLVEC_TYPE_HPP */

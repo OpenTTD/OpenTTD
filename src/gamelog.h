@@ -14,6 +14,7 @@
 
 #include "newgrf_config.h"
 
+/** The actions we log. */
 enum GamelogActionType {
 	GLAT_START,        ///< Game created
 	GLAT_LOAD,         ///< Game loaded
@@ -31,6 +32,10 @@ void GamelogStopAction();
 
 void GamelogReset();
 
+/**
+ * Callback for printing text.
+ * @param s The string to print.
+ */
 typedef void GamelogPrintProc(const char *s);
 void GamelogPrint(GamelogPrintProc *proc); // needed for WIN32 / WINCE crash.log
 
