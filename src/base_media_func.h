@@ -274,6 +274,12 @@ template <class Tbase_set>
 #if defined(ENABLE_NETWORK)
 #include "network/network_content.h"
 
+/**
+ * Check whether there's a base set matching some information.
+ * @param ci The content info to compare it to.
+ * @param md5sum Should the MD5 checksum be tested as well?
+ * @param s The list with sets.
+ */
 template <class Tbase_set> bool HasBaseSet(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
 {
 	for (; s != NULL; s = s->next) {

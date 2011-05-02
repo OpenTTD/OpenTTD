@@ -16,6 +16,14 @@
 #include "table/airporttile_ids.h"
 
 
+/**
+ * Define a generic airport.
+ * @param name Suffix of the names of the airport data.
+ * @param terminals The terminals.
+ * @param num_helipads Number of heli pads.
+ * @param flags Information about the class of FTA.
+ * @param delta_z Height of the arport above the land.
+ */
 #define AIRPORT_GENERIC(name, terminals, num_helipads, flags, delta_z) \
 	static AirportFTAClass _airportfta_ ## name(_airport_moving_data_ ## name, terminals, \
 			num_helipads, _airport_entries_ ## name, flags, _airport_fta_ ## name, delta_z);
@@ -154,7 +162,12 @@ static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 	return nofelements;
 }
 
-
+/**
+ * Construct the FTA given a description.
+ * @param nofelements The number of elements in the FTA.
+ * @param apFA The description of the FTA.
+ * @return The FTA describing the airport.
+ */
 static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
 {
 	AirportFTA *FAutomata = MallocT<AirportFTA>(nofelements);

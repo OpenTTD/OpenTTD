@@ -281,7 +281,11 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 	return score;
 }
 
-/*  use INVALID_OWNER as new_owner to delete the company. */
+/**
+ * Change the ownership of all the items of a company.
+ * @param old_owner The company that gets removed.
+ * @param new_owner The company to merge to, or INVALID_OWNER to remove the company.
+ */
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 {
 	/* We need to set _current_company to old_owner before we try to move

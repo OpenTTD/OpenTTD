@@ -2068,6 +2068,10 @@ static const WindowDesc _company_desc(
 	_nested_company_widgets, lengthof(_nested_company_widgets)
 );
 
+/**
+ * Show the window with the overview of the company.
+ * @param company The company to show the window for.
+ */
 void ShowCompany(CompanyID company)
 {
 	if (!Company::IsValidID(company)) return;
@@ -2175,7 +2179,10 @@ static const WindowDesc _buy_company_desc(
 	_nested_buy_company_widgets, lengthof(_nested_buy_company_widgets)
 );
 
-
+/**
+ * Show the query to buy another company.
+ * @param company The company to buy.
+ */
 void ShowBuyCompanyDialog(CompanyID company)
 {
 	AllocateWindowDescFront<BuyCompanyWindow>(&_buy_company_desc, company);

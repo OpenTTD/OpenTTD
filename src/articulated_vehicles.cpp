@@ -40,6 +40,12 @@ static EngineID GetNextArticulatedPart(uint index, EngineID front_type, Vehicle 
 	return GetNewEngineID(GetEngineGRF(front_type), Engine::Get(front_type)->type, GB(callback, 0, 7));
 }
 
+/**
+ * Count the number of articulated parts of an engine.
+ * @param engine_type The engine to get the number of parts of.
+ * @param purchase_window Whether we are in the scope of the purchase window or not, i.e. whether we cannot allocate vehicles.
+ * @return The nmumber of parts.
+ */
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
 	if (!HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
@@ -101,6 +107,11 @@ static inline uint32 GetAvailableVehicleCargoTypes(EngineID engine, bool include
 	return cargos;
 }
 
+/**
+ * Get the capacity of the parts of a given engine.
+ * @param engine The engine to get the capacities from.
+ * @return The cargo capacities.
+ */
 CargoArray GetCapacityOfArticulatedParts(EngineID engine)
 {
 	CargoArray capacity;
@@ -276,6 +287,10 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 	}
 }
 
+/**
+ * Add the remaining articulated parts to the given vehicle.
+ * @param first The head of the articulated bit.
+ */
 void AddArticulatedParts(Vehicle *first)
 {
 	VehicleType type = first->type;

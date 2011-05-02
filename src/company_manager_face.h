@@ -84,6 +84,7 @@ static const CompanyManagerFaceBitsInfo _cmf_info[] = {
 	/* CMFV_TIE_EARRING     */ { 28, 3, {  6,  3,  6,  3 }, { 0x372, 0x37F, 0x372, 0x3D1 } }, ///< Depends on CMFV_HAS_TIE_EARRING
 	/* CMFV_GLASSES         */ { 31, 1, {  2,  2,  2,  2 }, { 0x347, 0x347, 0x3AE, 0x3AE } }  ///< Depends on CMFV_HAS_GLASSES
 };
+/** Make sure the table's size is right. */
 assert_compile(lengthof(_cmf_info) == CMFV_END);
 
 /**

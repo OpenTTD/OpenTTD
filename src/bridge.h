@@ -59,6 +59,11 @@ extern BridgeSpec _bridge[MAX_BRIDGES];
 Foundation GetBridgeFoundation(Slope tileh, Axis axis);
 bool HasBridgeFlatRamp(Slope tileh, Axis axis);
 
+/**
+ * Get the specification of a bridge type.
+ * @param i The type of bridge to get the specification for.
+ * @return The specification.
+ */
 static inline const BridgeSpec *GetBridgeSpec(BridgeType i)
 {
 	assert(i < lengthof(_bridge));

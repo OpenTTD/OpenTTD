@@ -579,6 +579,11 @@ static const WindowDesc _replace_vehicle_desc(
 	_nested_replace_vehicle_widgets, lengthof(_nested_replace_vehicle_widgets)
 );
 
+/**
+ * Show the autoreplace configuration window for a particular group.
+ * @param id_g The group to replace the vehicles for.
+ * @param vehicletype The type of vehicles in the group.
+ */
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
 	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);

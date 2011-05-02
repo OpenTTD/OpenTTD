@@ -393,7 +393,9 @@ bad_town_name:;
 	}
 }
 
+/** Sorting weights for the company colours. */
 static const byte _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
+/** Similar colours, so we can try to prevent same coloured companies. */
 static const Colours _similar_colour[COLOUR_END][2] = {
 	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE
 	{ COLOUR_GREEN,      COLOUR_DARK_GREEN }, // COLOUR_PALE_GREEN
@@ -685,6 +687,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	}
 }
 
+/** Called every tick for updating some company info. */
 void OnTick_Companies()
 {
 	if (_game_mode == GM_EDITOR) return;

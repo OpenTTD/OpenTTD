@@ -246,7 +246,7 @@ void CargoList<Tinst>::Truncate(uint max_remaining)
  *  - MTA_TRANSFER:       Just move without side effects.
  *  - MTA_UNLOAD:         Just move without side effects.
  * @param dest  Destination to move the cargo to.
- * @param count Amount of cargo entities to move.
+ * @param max_move Amount of cargo entities to move.
  * @param mta   How to handle the moving (side effects).
  * @param data  Depending on mta the data of this variable differs:
  *              - MTA_FINAL_DELIVERY - Station ID of packet's origin not to remove.

@@ -310,6 +310,7 @@ static inline void MakeField(TileIndex t, uint field_type, IndustryID industry)
 /**
  * Make a snow tile.
  * @param t the tile to make snowy
+ * @param density The density of snowiness.
  * @pre GetClearGround(t) != CLEAR_SNOW
  */
 static inline void MakeSnow(TileIndex t, uint density = 0)

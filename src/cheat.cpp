@@ -12,8 +12,10 @@
 #include "stdafx.h"
 #include "cheat_type.h"
 
+/** All the cheats. */
 Cheats _cheats;
 
+/** Reinitialise all the cheats. */
 void InitializeCheats()
 {
 	memset(&_cheats, 0, sizeof(Cheats));
