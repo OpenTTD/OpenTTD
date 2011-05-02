@@ -1288,7 +1288,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signaux de chem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tous
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Agencement des routes pour les nouvelles villes{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Meilleures routes
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Grille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Grille 3x3
@@ -1341,6 +1341,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Villes
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommandé)
 
