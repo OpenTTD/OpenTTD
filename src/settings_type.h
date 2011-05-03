@@ -125,6 +125,7 @@ struct GUISettings {
 	bool   ai_developer_tools;               ///< activate AI developer tools
 	bool   scenario_developer;               ///< activate scenario developer: allow modifying NewGRFs in an existing game
 	bool   newgrf_show_old_versions;         ///< whether to show old versions in the NewGRF list
+	uint8  newgrf_default_palette;           ///< default palette to use for NewGRFs without action 14 palette information
 
 	/**
 	 * Returns true when the user has sufficient privileges to edit newgrfs on a running game

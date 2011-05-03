@@ -181,11 +181,14 @@ static void LoadSpriteTables()
 
 	/* We know the palette of the base set, so if the base NewGRF is not
 	 * setting one, use the palette of the base set and not the global
-	 * one which might be the wrong palette for this base NewGRF. */
-	PaletteType old_palette_type = _use_palette;
-	_use_palette = used_set->palette;
+	 * one which might be the wrong palette for this base NewGRF.
+	 * The value set here might be overridden via action14 later. */
+	switch (_use_palette) {
+		case PAL_DOS:     master->palette |= GRFP_GRF_DOS;     break;
+		case PAL_WINDOWS: master->palette |= GRFP_GRF_WINDOWS; break;
+		default: break;
+	}
 	FillGRFDetails(master, false);
-	_use_palette = old_palette_type;
 
 	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;
@@ -263,8 +266,6 @@ static const char * const _graphics_file_names[] = { "base", "logos", "arctic", 
 template <class T, size_t Tnum_files, Subdirectory Tsubdir>
 /* static */ const char * const *BaseSet<T, Tnum_files, Tsubdir>::file_names = _graphics_file_names;
 
-extern void UpdateNewGRFConfigPalette();
-
 /**
  * Determine the palette that has to be used.
  *  - forced palette via command line -> leave it that way
@@ -289,8 +290,6 @@ extern void UpdateNewGRFConfigPalette();
 		default:
 			NOT_REACHED();
 	}
-
-	UpdateNewGRFConfigPalette();
 }
 
 template <class Tbase_set>
