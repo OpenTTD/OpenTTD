@@ -6527,14 +6527,19 @@ static bool ChangeGRFPalette(size_t len, ByteReader *buf)
 		buf->Skip(len);
 	} else {
 		char data = buf->ReadByte();
+		GRFPalette pal = GRFP_GRF_UNSET;
 		switch (data) {
 			case '*':
-			case 'A': _cur_grfconfig->palette |= GRFP_GRF_ANY;     break;
-			case 'W': _cur_grfconfig->palette |= GRFP_GRF_WINDOWS; break;
-			case 'D': _cur_grfconfig->palette |= GRFP_GRF_DOS;     break;
+			case 'A': pal = GRFP_GRF_ANY;     break;
+			case 'W': pal = GRFP_GRF_WINDOWS; break;
+			case 'D': pal = GRFP_GRF_DOS;     break;
 			default:
 				grfmsg(2, "StaticGRFInfo: unexpected value '%02x' for 'INFO'->'PALS', ignoring this field", data);
 				break;
+		}
+		if (pal != GRFP_GRF_UNSET) {
+			_cur_grfconfig->palette &= ~GRFP_GRF_MASK;
+			_cur_grfconfig->palette |= pal;
 		}
 	}
 	return true;
