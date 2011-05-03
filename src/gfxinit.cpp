@@ -183,7 +183,7 @@ static void LoadSpriteTables()
 	 * setting one, use the palette of the base set and not the global
 	 * one which might be the wrong palette for this base NewGRF.
 	 * The value set here might be overridden via action14 later. */
-	switch (_use_palette) {
+	switch (used_set->palette) {
 		case PAL_DOS:     master->palette |= GRFP_GRF_DOS;     break;
 		case PAL_WINDOWS: master->palette |= GRFP_GRF_WINDOWS; break;
 		default: break;
