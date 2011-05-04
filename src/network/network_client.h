@@ -42,7 +42,7 @@ private:
 protected:
 	friend void NetworkExecuteLocalCommandQueue();
 	friend void NetworkClose(bool close_admins);
-	static ClientNetworkGameSocketHandler *my_client;
+	static ClientNetworkGameSocketHandler *my_client; ///< This is us!
 
 	virtual NetworkRecvStatus Receive_SERVER_FULL(Packet *p);
 	virtual NetworkRecvStatus Receive_SERVER_BANNED(Packet *p);
@@ -107,6 +107,7 @@ public:
 	static bool GameLoop();
 };
 
+/** Helper to make the code look somewhat nicer. */
 typedef ClientNetworkGameSocketHandler MyClient;
 
 void NetworkClient_Connected();

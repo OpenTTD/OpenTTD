@@ -78,7 +78,17 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	void DrawEditBox(int wid);
 	void HandleEditBox(int wid);
 	HandleEditBoxResult HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
+
+	/**
+	 * Callback for when the OSK window is opened.
+	 * @param wid The widget the OSK is opened of.
+	 */
 	virtual void OnOpenOSKWindow(int wid);
+
+	/**
+	 * Callback for when on input has been entered with the OSK.
+	 * @param wid The widget the OSK was attached to.
+	 */
 	virtual void OnOSKInput(int wid) {}
 };
 

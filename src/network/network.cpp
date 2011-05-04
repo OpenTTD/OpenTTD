@@ -44,8 +44,10 @@
 bool _ddc_fastforward = true;
 #endif /* DEBUG_DUMP_COMMANDS */
 
+/** Make sure both pools have the same size. */
 assert_compile(NetworkClientInfoPool::MAX_SIZE == NetworkClientSocketPool::MAX_SIZE);
 
+/** The pool with client information. */
 NetworkClientInfoPool _networkclientinfo_pool("NetworkClientInfo");
 INSTANTIATE_POOL_METHODS(NetworkClientInfo)
 
@@ -54,30 +56,30 @@ bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
-NetworkServerGameInfo _network_game_info;
-NetworkCompanyState *_network_company_states = NULL;
-ClientID _network_own_client_id;
-ClientID _redirect_console_to_client;
-bool _network_need_advertise;
-uint32 _network_last_advertise_frame;
-uint8 _network_reconnect;
-StringList _network_bind_list;
-StringList _network_host_list;
-StringList _network_ban_list;
-uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
-uint32 _frame_counter_max; // To where we may go with our clients
-uint32 _frame_counter;
-uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
-NetworkAddressList _broadcast_list;
-uint32 _sync_seed_1;
+NetworkServerGameInfo _network_game_info; ///< Information about our game.
+NetworkCompanyState *_network_company_states = NULL; ///< Statistics about some companies.
+ClientID _network_own_client_id;      ///< Our client identifier.
+ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
+bool _network_need_advertise;         ///< Whether we need to advertise.
+uint32 _network_last_advertise_frame; ///< Last time we did advertise.
+uint8 _network_reconnect;             ///< Reconnect timeout
+StringList _network_bind_list;        ///< The addresses to bind on.
+StringList _network_host_list;        ///< The servers we know.
+StringList _network_ban_list;         ///< The banned clients.
+uint32 _frame_counter_server;         ///< The frame_counter of the server, if in network-mode
+uint32 _frame_counter_max;            ///< To where we may go with our clients
+uint32 _frame_counter;                ///< The current frame.
+uint32 _last_sync_frame;              ///< Used in the server to store the last time a sync packet was sent to clients.
+NetworkAddressList _broadcast_list;   ///< List of broadcast addresses.
+uint32 _sync_seed_1;                  ///< Seed to compare during sync checks.
 #ifdef NETWORK_SEND_DOUBLE_SEED
-uint32 _sync_seed_2;
+uint32 _sync_seed_2;                  ///< Second part of the seed.
 #endif
-uint32 _sync_frame;
-bool _network_first_time;
-bool _network_udp_server;
-uint16 _network_udp_broadcast;
-uint8 _network_advertise_retries;
+uint32 _sync_frame;                   ///< The frame to perform the sync check.
+bool _network_first_time;             ///< Whether we have finished joining or not.
+bool _network_udp_server;             ///< Is the UDP server started?
+uint16 _network_udp_broadcast;        ///< Timeout for the UDP broadcasts.
+uint8 _network_advertise_retries;     ///< The number of advertisement retries we did.
 CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
@@ -88,7 +90,7 @@ extern NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
 extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
 extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 
-/* The amount of clients connected */
+/** The amount of clients connected */
 byte _network_clients_connected = 0;
 
 /* Some externs / forwards */

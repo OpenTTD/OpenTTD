@@ -33,6 +33,7 @@ AdminIndex _redirect_console_to_admin = INVALID_ADMIN_ID;
 /** The amount of admins connected. */
 byte _network_admins_connected = 0;
 
+/** The pool with sockets/clients. */
 NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
 INSTANTIATE_POOL_METHODS(NetworkAdminSocket)
 
@@ -52,6 +53,7 @@ static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL,                                                                                                                                  ///< ADMIN_UPDATE_CMD_NAMES
 	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CMD_LOGGING
 };
+/** Sanity check. */
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
 /**
@@ -655,7 +657,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p)
 
 /**
  * Notify the admin network of a new client (if they did opt in for the respective update).
- * @param ci the client info.
+ * @param cs the client info.
  * @param new_client if this is a new client, send the respective packet too.
  */
 void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client)

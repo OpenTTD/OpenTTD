@@ -19,10 +19,12 @@
 
 /** Vector with content info */
 typedef SmallVector<ContentInfo *, 16> ContentVector;
+/** Vector with constant content info */
 typedef SmallVector<const ContentInfo *, 16> ConstContentVector;
 
 /** Iterator for the content vector */
 typedef ContentInfo **ContentIterator;
+/** Iterator for the constant content vector */
 typedef const ContentInfo * const * ConstContentIterator;
 
 /** Callbacks for notifying others about incoming data */
@@ -66,7 +68,7 @@ struct ContentCallback {
  */
 class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback, HTTPCallback {
 protected:
-	typedef SmallVector<ContentID, 4> ContentIDList;
+	typedef SmallVector<ContentID, 4> ContentIDList; ///< List of content IDs to (possibly) select.
 	SmallVector<ContentCallback *, 2> callbacks; ///< Callbacks to notify "the world"
 	ContentIDList requested;                     ///< ContentIDs we already requested (so we don't do it again)
 	ContentVector infos;                         ///< All content info we received

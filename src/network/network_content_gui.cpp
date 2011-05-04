@@ -71,7 +71,6 @@ public:
 	/**
 	 * Create a new download window based on a list of content information
 	 * with flags whether to download them or not.
-	 * @param infos the list to search in
 	 */
 	NetworkContentDownloadStatusWindow() :
 		cur_id(UINT32_MAX)
@@ -221,23 +220,22 @@ enum NetworkContentListWindowWidgets {
 
 /** Window that lists the content that's at the content server */
 class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
+	/** List with content infos. */
 	typedef GUIList<const ContentInfo*> GUIContentList;
 
-	static const uint EDITBOX_MAX_SIZE   =  50;
-	static const uint EDITBOX_MAX_LENGTH = 300;
+	static const uint EDITBOX_MAX_SIZE   =  50; ///< Maximum size of the editbox in characters.
+	static const uint EDITBOX_MAX_LENGTH = 300; ///< Maximum size of the editbox in pixels.
 
-	/** Runtime saved values */
-	static Listing last_sorting;
-	static Filtering last_filtering;
-	/** The sorter functions */
-	static GUIContentList::SortFunction * const sorter_funcs[];
-	static GUIContentList::FilterFunction * const filter_funcs[];
+	static Listing last_sorting;     ///< The last sorting setting.
+	static Filtering last_filtering; ///< The last filtering setting.
+	static GUIContentList::SortFunction * const sorter_funcs[];   ///< Sorter functions
+	static GUIContentList::FilterFunction * const filter_funcs[]; ///< Filter functions.
 	GUIContentList content;      ///< List with content
 
 	const ContentInfo *selected; ///< The selected content info
 	int list_pos;                ///< Our position in the list
 	uint filesize_sum;           ///< The sum of all selected file sizes
-	Scrollbar *vscroll;
+	Scrollbar *vscroll;          ///< Cache of the vertical scrollbar
 
 	/**
 	 * (Re)build the network game list as its amount has changed because
@@ -344,6 +342,7 @@ public:
 	/**
 	 * Create the content list window.
 	 * @param desc the window description to pass to Window's constructor.
+	 * @param select_all Whether the select all button is allowed or not.
 	 */
 	NetworkContentListWindow(const WindowDesc *desc, bool select_all) :
 			QueryStringBaseWindow(EDITBOX_MAX_SIZE),
@@ -438,6 +437,10 @@ public:
 		}
 	}
 
+	/**
+	 * Draw/fill the matrix with the list of content to download.
+	 * @param r The boundaries of the matrix.
+	 */
 	void DrawMatrix(const Rect &r) const
 	{
 		const NWidgetBase *nwi_checkbox = this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX);
@@ -806,6 +809,7 @@ NetworkContentListWindow::GUIContentList::FilterFunction * const NetworkContentL
 	&TagNameFilter,
 };
 
+/** The widgets for the content list. */
 static const NWidgetPart _nested_network_content_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),

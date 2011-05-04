@@ -19,9 +19,11 @@
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
 
+/** Type for the pool with client information. */
 typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientInfoPool;
 extern NetworkClientInfoPool _networkclientinfo_pool;
 
+/** Container for all information known about a client. */
 struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool> {
 	ClientID client_id;                             ///< Client identifier (same as ClientState->client_id)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
@@ -29,13 +31,27 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	CompanyID client_playas;                        ///< As which company is this client playing (CompanyID)
 	Date join_date;                                 ///< Gamedate the client has joined
 
+	/**
+	 * Create a new client.
+	 * @param client_id The unique identifier of the client.
+	 */
 	NetworkClientInfo(ClientID client_id = INVALID_CLIENT_ID) : client_id(client_id) {}
 	~NetworkClientInfo();
 
 	static NetworkClientInfo *GetByClientID(ClientID client_id);
 };
 
+/**
+ * Iterate over all the clients from a given index.
+ * @param var The variable to iterate with.
+ * @param start The location to start the iteration from.
+ */
 #define FOR_ALL_CLIENT_INFOS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientInfo, clientinfo_index, var, start)
+
+/**
+ * Iterate over all the clients.
+ * @param var The variable to iterate with.
+ */
 #define FOR_ALL_CLIENT_INFOS(var) FOR_ALL_CLIENT_INFOS_FROM(var, 0)
 
 #endif /* ENABLE_NETWORK */

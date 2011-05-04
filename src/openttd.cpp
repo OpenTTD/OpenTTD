@@ -69,6 +69,7 @@
 
 #include "table/strings.h"
 
+/** Error message to show when switching modes. */
 StringID _switch_mode_errorstr;
 
 void CallLandscapeTick();

@@ -280,6 +280,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 /** Our client's connection. */
 ClientNetworkGameSocketHandler * ClientNetworkGameSocketHandler::my_client = NULL;
 
+/** Last frame we performed an ack. */
 static uint32 last_ack_frame;
 
 /** One bit of 'entropy' used to generate a salt for the company passwords. */
@@ -308,6 +309,7 @@ assert_compile(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
  *   DEF_CLIENT_SEND_COMMAND has no parameters
  ************/
 
+/** Query the server for company information. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyInformationQuery()
 {
 	my_client->status = STATUS_COMPANY_INFO;
@@ -319,6 +321,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyInformationQuery()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Tell the server we would like to join. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
 	my_client->status = STATUS_JOIN;
@@ -334,6 +337,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Tell the server we got all the NewGRFs. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 {
 	Packet *p = new Packet(PACKET_CLIENT_NEWGRFS_CHECKED);
@@ -341,6 +345,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Set the game password as requested.
+ * @param password The game password.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_GAME_PASSWORD);
@@ -349,6 +357,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *p
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Set the company password as requested.
+ * @param password The company password.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char *password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_COMPANY_PASSWORD);
@@ -357,6 +369,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Request the map from the server. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 {
 	my_client->status = STATUS_MAP_WAIT;
@@ -373,6 +386,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Tell the server we received the complete map. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 {
 	my_client->status = STATUS_ACTIVE;
@@ -382,6 +396,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Send an acknowledgement from the server's ticks. */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 {
 	Packet *p = new Packet(PACKET_CLIENT_ACK);
@@ -392,7 +407,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/* Send a command packet to the server */
+/**
+ * Send a command to the server.
+ * @param cp The command to send.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
 {
 	Packet *p = new Packet(PACKET_CLIENT_COMMAND);
@@ -402,7 +420,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacke
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/* Send a chat-packet over the network */
+/** Send a chat-packet over the network */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
 	Packet *p = new Packet(PACKET_CLIENT_CHAT);
@@ -417,7 +435,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action,
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/* Send an error-packet over the network */
+/** Send an error-packet over the network */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode errorno)
 {
 	Packet *p = new Packet(PACKET_CLIENT_ERROR);
@@ -427,6 +445,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode err
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Tell the server that we like to change the password of the company.
+ * @param password The new password.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_SET_PASSWORD);
@@ -436,6 +458,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *pa
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Tell the server that we like to change the name of the client.
+ * @param name The new name.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const char *name)
 {
 	Packet *p = new Packet(PACKET_CLIENT_SET_NAME);
@@ -445,6 +471,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const char *name)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Tell the server we would like to quit.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 {
 	Packet *p = new Packet(PACKET_CLIENT_QUIT);
@@ -453,6 +482,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Send a console command.
+ * @param pass The password for the remote command.
+ * @param command The actual command.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const char *pass, const char *command)
 {
 	Packet *p = new Packet(PACKET_CLIENT_RCON);
@@ -462,6 +496,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const char *pass, con
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Ask the server to move us.
+ * @param company The company to move to.
+ * @param password The password of the company to move to.
+ */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, const char *password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_MOVE);
@@ -1131,7 +1170,7 @@ void ClientNetworkGameSocketHandler::CheckConnection()
 }
 
 
-/* Is called after a client is connected to the server */
+/** Is called after a client is connected to the server */
 void NetworkClient_Connected()
 {
 	/* Set the frame-counter to 0 so nothing happens till we are ready */
@@ -1142,6 +1181,11 @@ void NetworkClient_Connected()
 	MyClient::SendJoin();
 }
 
+/**
+ * Send a remote console command.
+ * @param password The password.
+ * @param command The command to execute.
+ */
 void NetworkClientSendRcon(const char *password, const char *command)
 {
 	MyClient::SendRCon(password, command);
@@ -1158,6 +1202,10 @@ void NetworkClientRequestMove(CompanyID company_id, const char *pass)
 	MyClient::SendMove(company_id, pass);
 }
 
+/**
+ * Move the clients of a company to the spectators.
+ * @param cid The company to move the clients of.
+ */
 void NetworkClientsToSpectators(CompanyID cid)
 {
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
@@ -1174,6 +1222,9 @@ void NetworkClientsToSpectators(CompanyID cid)
 	cur_company.Restore();
 }
 
+/**
+ * Send the server our name.
+ */
 void NetworkUpdateClientName()
 {
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
@@ -1194,6 +1245,14 @@ void NetworkUpdateClientName()
 	}
 }
 
+/**
+ * Send a chat message.
+ * @param action The action associated with the message.
+ * @param type The destination type.
+ * @param dest The destination index, be it a company index or client id.
+ * @param msg The actual message.
+ * @param data Arbitrary extra data.
+ */
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
 	MyClient::SendChat(action, type, dest, msg, data);
