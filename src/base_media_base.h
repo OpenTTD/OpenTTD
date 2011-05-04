@@ -207,10 +207,6 @@ struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, DATA_DIR> {
 /** All data/functions related with replacing the base graphics. */
 class BaseGraphics : public BaseMedia<GraphicsSet> {
 public:
-	/**
-	 * Determine the palette of the current graphics set.
-	 */
-	static void DeterminePalette();
 };
 
 /** All data of a sounds set. */

@@ -292,8 +292,8 @@ static void SetColourRemap(TextColour colour)
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
 	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR);
 
-	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[_use_palette][colour];
-	_string_colourremap[2] = no_shade ? 0 : (_use_palette == PAL_DOS ? 1 : 215);
+	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[colour];
+	_string_colourremap[2] = no_shade ? 0 : 1;
 	_colour_remap_ptr = _string_colourremap;
 }
 
@@ -1255,7 +1255,7 @@ void DoPaletteAnimations();
 
 void GfxInitPalettes()
 {
-	memcpy(_cur_palette, _palettes[_use_palette], sizeof(_cur_palette));
+	memcpy(_cur_palette, _palette, sizeof(_cur_palette));
 
 	DoPaletteAnimations();
 	_pal_first_dirty = 0;
@@ -1274,12 +1274,7 @@ void DoPaletteAnimations()
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const Colour *s;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	/* Amount of colours to be rotated.
-	 * A few more for the DOS palette, because the water colours are
-	 * 245-254 for DOS and 217-226 for Windows.  */
-	const int colour_rotation_amount = (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
-	Colour old_val[PALETTE_ANIM_SIZE_DOS];
-	const int oldval_size = colour_rotation_amount * sizeof(*old_val);
+	Colour old_val[PALETTE_ANIM_SIZE];
 	const uint old_tc = palette_animation_counter;
 	uint i;
 	uint j;
@@ -1288,28 +1283,10 @@ void DoPaletteAnimations()
 		palette_animation_counter = 0;
 	}
 
-	Colour *palette_pos = &_cur_palette[PALETTE_ANIM_SIZE_START];  // Points to where animations are taking place on the palette
+	Colour *palette_pos = &_cur_palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
 	/* Makes a copy of the current anmation palette in old_val,
 	 * so the work on the current palette could be compared, see if there has been any changes */
-	memcpy(old_val, palette_pos, oldval_size);
-
-	/* Dark blue water */
-	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_toyland : ev->dark_water;
-	j = EXTR(320, EPV_CYCLES_DARK_WATER);
-	for (i = 0; i != EPV_CYCLES_DARK_WATER; i++) {
-		*palette_pos++ = s[j];
-		j++;
-		if (j == EPV_CYCLES_DARK_WATER) j = 0;
-	}
-
-	/* Glittery water; jumps over 3 colours each cycle! */
-	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_toyland : ev->glitter_water;
-	j = EXTR(128, EPV_CYCLES_GLITTER_WATER);
-	for (i = 0; i != EPV_CYCLES_GLITTER_WATER / 3; i++) {
-		*palette_pos++ = s[j];
-		j += 3;
-		if (j >= EPV_CYCLES_GLITTER_WATER) j -= EPV_CYCLES_GLITTER_WATER;
-	}
+	memcpy(old_val, palette_pos, sizeof(old_val));
 
 	/* Fizzy Drink bubbles animation */
 	s = ev->fizzy_drink;
@@ -1369,34 +1346,31 @@ void DoPaletteAnimations()
 		if (j == EPV_CYCLES_LIGHTHOUSE) j = 0;
 	}
 
-	/* Animate water for old DOS graphics */
-	if (_use_palette == PAL_DOS) {
-		/* Dark blue water DOS */
-		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_toyland : ev->dark_water;
-		j = EXTR(320, EPV_CYCLES_DARK_WATER);
-		for (i = 0; i != EPV_CYCLES_DARK_WATER; i++) {
-			*palette_pos++ = s[j];
-			j++;
-			if (j == EPV_CYCLES_DARK_WATER) j = 0;
-		}
+	/* Dark blue water */
+	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_toyland : ev->dark_water;
+	j = EXTR(320, EPV_CYCLES_DARK_WATER);
+	for (i = 0; i != EPV_CYCLES_DARK_WATER; i++) {
+		*palette_pos++ = s[j];
+		j++;
+		if (j == EPV_CYCLES_DARK_WATER) j = 0;
+	}
 
-		/* Glittery water DOS */
-		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_toyland : ev->glitter_water;
-		j = EXTR(128, EPV_CYCLES_GLITTER_WATER);
-		for (i = 0; i != EPV_CYCLES_GLITTER_WATER / 3; i++) {
-			*palette_pos++ = s[j];
-			j += 3;
-			if (j >= EPV_CYCLES_GLITTER_WATER) j -= EPV_CYCLES_GLITTER_WATER;
-		}
+	/* Glittery water */
+	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_toyland : ev->glitter_water;
+	j = EXTR(128, EPV_CYCLES_GLITTER_WATER);
+	for (i = 0; i != EPV_CYCLES_GLITTER_WATER / 3; i++) {
+		*palette_pos++ = s[j];
+		j += 3;
+		if (j >= EPV_CYCLES_GLITTER_WATER) j -= EPV_CYCLES_GLITTER_WATER;
 	}
 
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		palette_animation_counter = old_tc;
 	} else {
-		if (memcmp(old_val, &_cur_palette[PALETTE_ANIM_SIZE_START], oldval_size) != 0) {
+		if (memcmp(old_val, &_cur_palette[PALETTE_ANIM_START], sizeof(old_val)) != 0) {
 			/* Did we changed anything on the palette? Seems so.  Mark it as dirty */
-			_pal_first_dirty = PALETTE_ANIM_SIZE_START;
-			_pal_count_dirty = colour_rotation_amount;
+			_pal_first_dirty = PALETTE_ANIM_START;
+			_pal_count_dirty = PALETTE_ANIM_SIZE;
 		}
 	}
 }

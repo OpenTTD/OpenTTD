@@ -315,12 +315,6 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 	return TTDPStringIDToOTTDStringIDMapping(str);
 }
 
-static inline uint8 MapDOSColour(uint8 colour)
-{
-	extern const byte _palmap_d2w[];
-	return (_use_palette == PAL_DOS ? colour : _palmap_d2w[colour]);
-}
-
 static std::map<uint32, uint32> _grf_id_overrides;
 
 static void SetNewGRFOverride(uint32 source_grfid, uint32 target_grfid)
@@ -2192,11 +2186,11 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				break;
 
 			case 0x13: // Colour for station rating bars
-				cs->rating_colour = MapDOSColour(buf->ReadByte());
+				cs->rating_colour = buf->ReadByte();
 				break;
 
 			case 0x14: // Colour for cargo graph
-				cs->legend_colour = MapDOSColour(buf->ReadByte());
+				cs->legend_colour = buf->ReadByte();
 				break;
 
 			case 0x15: // Freight status
@@ -2802,7 +2796,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				break;
 
 			case 0x19: // Map colour
-				indsp->map_colour = MapDOSColour(buf->ReadByte());
+				indsp->map_colour = buf->ReadByte();
 				break;
 
 			case 0x1A: // Special industry flags to define special behavior
@@ -3301,7 +3295,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x16: // Map colour
-				rti->map_colour = MapDOSColour(buf->ReadByte());
+				rti->map_colour = buf->ReadByte();
 				break;
 
 			case 0x17: // Introduction date
@@ -7948,7 +7942,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 
 	FioOpenFile(file_index, filename);
 	_file_index = file_index; // XXX
-	_palette_remap_grf[_file_index] = ((config->palette & GRFP_USE_MASK) != (_use_palette == PAL_WINDOWS));
+	_palette_remap_grf[_file_index] = (config->palette & GRFP_USE_MASK);
 
 	_cur_grfconfig = config;
 

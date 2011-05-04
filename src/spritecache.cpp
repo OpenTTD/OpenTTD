@@ -20,6 +20,7 @@
 #include "core/math_func.hpp"
 
 #include "table/sprites.h"
+#include "table/palette_convert.h"
 
 /* Default of 4MB spritecache */
 uint _sprite_cache_size = 4;
@@ -237,7 +238,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 			/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
 			for (int i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
-				dest[i] = _palette_remap[dest_tmp[_palette_reverse_remap[i - 1] + 1]];
+				dest[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i - 1] + 1]];
 			}
 		} else {
 			FioReadBlock(dest, num);

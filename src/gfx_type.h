@@ -234,9 +234,8 @@ DECLARE_ENUM_AS_BIT_SET(TextColour)
 
 /** Defines a few values that are related to animations using palette changes */
 enum PaletteAnimationSizes {
-	PALETTE_ANIM_SIZE_WIN   = 28,   ///< number of animated colours in Windows palette
-	PALETTE_ANIM_SIZE_DOS   = 38,   ///< number of animated colours in DOS palette
-	PALETTE_ANIM_SIZE_START = 217,  ///< Index in  the _palettes array from which all animations are taking places (table/palettes.h)
+	PALETTE_ANIM_SIZE  = 28,   ///< number of animated colours
+	PALETTE_ANIM_START = 227,  ///< Index in  the _palettes array from which all animations are taking places (table/palettes.h)
 };
 
 /** Define the operation GfxFillRect performs */

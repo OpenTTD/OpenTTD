@@ -21,16 +21,9 @@
 #include "base_media_func.h"
 
 #include "table/sprites.h"
-#include "table/palette_convert.h"
 
-/** The currently used palette */
-PaletteType _use_palette = PAL_AUTODETECT;
-/** Whether the given NewGRFs must get a palette remap or not. */
+/** Whether the given NewGRFs must get a palette remap from windows to DOS or not. */
 bool _palette_remap_grf[MAX_FILE_SLOTS];
-/** Palette map to go from the !_use_palette to the _use_palette */
-const byte *_palette_remap = NULL;
-/** Palette map to go from the _use_palette to the !_use_palette */
-const byte *_palette_reverse_remap = NULL;
 
 #include "table/landscape_sprite.h"
 
@@ -96,10 +89,9 @@ void CheckExternalFiles()
 {
 	if (BaseGraphics::GetUsedSet() == NULL || BaseSounds::GetUsedSet() == NULL) return;
 
-	BaseGraphics::DeterminePalette();
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
-	DEBUG(grf, 1, "Using the %s base graphics set with the %s palette", used_set->name, _use_palette == PAL_DOS ? "DOS" : "Windows");
+	DEBUG(grf, 1, "Using the %s base graphics set", used_set->name);
 
 	static const size_t ERROR_MESSAGE_LENGTH = 256;
 	static const size_t MISSING_FILE_MESSAGE_LENGTH = 128;
@@ -142,7 +134,7 @@ static void LoadSpriteTables()
 	uint i = FIRST_GRF_SLOT;
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
-	_palette_remap_grf[i] = (_use_palette != used_set->palette);
+	_palette_remap_grf[i] = (PAL_DOS != used_set->palette);
 	LoadGrfFile(used_set->files[GFT_BASE].filename, 0, i++);
 
 	/*
@@ -151,7 +143,7 @@ static void LoadSpriteTables()
 	 * has a few sprites less. However, we do not care about those missing
 	 * sprites as they are not shown anyway (logos in intro game).
 	 */
-	_palette_remap_grf[i] = (_use_palette != used_set->palette);
+	_palette_remap_grf[i] = (PAL_DOS != used_set->palette);
 	LoadGrfFile(used_set->files[GFT_LOGOS].filename, 4793, i++);
 
 	/*
@@ -160,7 +152,7 @@ static void LoadSpriteTables()
 	 * and the ground sprites.
 	 */
 	if (_settings_game.game_creation.landscape != LT_TEMPERATE) {
-		_palette_remap_grf[i] = (_use_palette != used_set->palette);
+		_palette_remap_grf[i] = (PAL_DOS != used_set->palette);
 		LoadGrfIndexed(
 			used_set->files[GFT_ARCTIC + _settings_game.game_creation.landscape - 1].filename,
 			_landscape_spriteindexes[_settings_game.game_creation.landscape - 1],
@@ -266,32 +258,6 @@ static const char * const _graphics_file_names[] = { "base", "logos", "arctic", 
 template <class T, size_t Tnum_files, Subdirectory Tsubdir>
 /* static */ const char * const *BaseSet<T, Tnum_files, Tsubdir>::file_names = _graphics_file_names;
 
-/**
- * Determine the palette that has to be used.
- *  - forced palette via command line -> leave it that way
- *  - otherwise -> palette based on the graphics pack
- */
-/* static */ void BaseGraphics::DeterminePalette()
-{
-	assert(BaseGraphics::used_set != NULL);
-	if (_use_palette >= MAX_PAL) _use_palette = BaseGraphics::used_set->palette;
-
-	switch (_use_palette) {
-		case PAL_DOS:
-			_palette_remap = _palmap_w2d;
-			_palette_reverse_remap = _palmap_d2w;
-			break;
-
-		case PAL_WINDOWS:
-			_palette_remap = _palmap_d2w;
-			_palette_reverse_remap = _palmap_w2d;
-			break;
-
-		default:
-			NOT_REACHED();
-	}
-}
-
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
 {
@@ -307,7 +273,7 @@ template <class Tbase_set>
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files && (
 					(best->shortname == c->shortname && best->version < c->version) ||
-					(best->palette != _use_palette && c->palette == _use_palette)))) {
+					(best->palette != PAL_DOS && c->palette == PAL_DOS)))) {
 			best = c;
 		}
 	}

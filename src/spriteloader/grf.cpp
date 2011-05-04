@@ -19,6 +19,8 @@
 #include "../core/math_func.hpp"
 #include "grf.hpp"
 
+extern const byte _palmap_w2d[];
+
 /**
  * We found a corrupted sprite. This means that the sprite itself
  * contains invalid data or is too small for the given dimensions.
@@ -129,7 +131,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 				for (int x = 0; x < length; x++) {
 					switch (sprite_type) {
-						case ST_NORMAL: data->m = _palette_remap_grf[file_slot] ? _palette_remap[*dest] : *dest; break;
+						case ST_NORMAL: data->m = _palette_remap_grf[file_slot] ? _palmap_w2d[*dest] : *dest; break;
 						case ST_FONT:   data->m = min(*dest, 2u); break;
 						default:        data->m = *dest; break;
 					}
@@ -154,7 +156,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 		for (int i = 0; i < sprite->width * sprite->height; i++) {
 			switch (sprite_type) {
-				case ST_NORMAL: sprite->data[i].m = _palette_remap_grf[file_slot] ? _palette_remap[dest[i]] : dest[i]; break;
+				case ST_NORMAL: sprite->data[i].m = _palette_remap_grf[file_slot] ? _palmap_w2d[dest[i]] : dest[i]; break;
 				case ST_FONT:   sprite->data[i].m = min(dest[i], 2u); break;
 				default:        sprite->data[i].m = dest[i]; break;
 			}

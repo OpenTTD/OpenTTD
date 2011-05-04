@@ -165,16 +165,16 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 						do {
 							/* Compiler assumes pointer aliasing, can't optimise this on its own */
 							uint m = *src_n++;
-							/* Above 217 (PALETTE_ANIM_SIZE_START) is palette animation */
+							/* Above PALETTE_ANIM_START is palette animation */
 							*anim++ = m;
-							*dst++ = (m >= PALETTE_ANIM_SIZE_START) ? this->LookupColourInPalette(m) : src_px->data;
+							*dst++ = (m >= PALETTE_ANIM_START) ? this->LookupColourInPalette(m) : src_px->data;
 							src_px++;
 						} while (--n != 0);
 					} else {
 						do {
 							uint m = *src_n++;
 							*anim++ = m;
-							if (m >= PALETTE_ANIM_SIZE_START) {
+							if (m >= PALETTE_ANIM_START) {
 								*dst = ComposeColourPANoCheck(this->LookupColourInPalette(m), src_px->a, *dst);
 							} else {
 								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
@@ -299,8 +299,6 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 	uint32 *usrc = (uint32 *)src;
 	uint8 *anim_line = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
 
-	int count = (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
-
 	for (; height > 0; height--) {
 		/* We need to keep those for palette animation. */
 		uint32 *dst_pal = dst;
@@ -323,7 +321,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 		 * palette animation, much cheaper though slightly nastier. */
 		for (int i = 0; i < width; i++) {
 			uint colour = *anim_pal;
-			if (IsInsideBS(colour, PALETTE_ANIM_SIZE_START, count)) {
+			if (IsInsideBS(colour, PALETTE_ANIM_START, PALETTE_ANIM_SIZE)) {
 				/* Update this pixel */
 				*dst_pal = LookupColourInPalette(colour);
 			}
