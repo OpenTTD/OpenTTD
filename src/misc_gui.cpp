@@ -930,7 +930,7 @@ struct TooltipsWindow : public Window
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		/* There is only one widget. */
-		GfxFillRect(r.left, r.top, r.right, r.bottom, 0);
+		GfxFillRect(r.left, r.top, r.right, r.bottom, GREY_SCALE(0));
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0x44);
 
 		for (uint arg = 0; arg < this->paramcount; arg++) {
@@ -1303,7 +1303,7 @@ void QueryString::DrawEditBox(Window *w, int wid)
 	int top    = wi->pos_y;
 	int bottom = wi->pos_y + wi->current_y - 1;
 
-	GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, 215);
+	GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, GREY_SCALE(1));
 
 	/* Limit the drawing of the string inside the widget boundaries */
 	DrawPixelInfo dpi;

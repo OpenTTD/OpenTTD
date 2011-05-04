@@ -978,7 +978,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 					/* Check if the current line should be highlighted */
 					if (pos == this->highlight_row) {
-						GfxFillRect(r.left + 1, r.top + y, r.right - 1, r.top + y + this->resize.step_height - WD_PAR_VSEP_NORMAL, 0);
+						GfxFillRect(r.left + 1, r.top + y, r.right - 1, r.top + y + this->resize.step_height - WD_PAR_VSEP_NORMAL, GREY_SCALE(0));
 						if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.
 					}
 

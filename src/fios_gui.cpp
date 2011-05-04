@@ -351,7 +351,7 @@ public:
 			}
 
 			case SLWW_DRIVES_DIRECTORIES_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, 0xD7);
+				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, GREY_SCALE(1));
 
 				uint y = r.top + WD_FRAMERECT_TOP;
 				for (uint pos = this->vscroll->GetPosition(); pos < _fios_items.Length(); pos++) {
@@ -369,7 +369,7 @@ public:
 
 			case SLWW_DETAILS: {
 				GfxFillRect(r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP,
-						r.right - WD_FRAMERECT_RIGHT, r.top + FONT_HEIGHT_NORMAL * 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, 0x0A);
+						r.right - WD_FRAMERECT_RIGHT, r.top + FONT_HEIGHT_NORMAL * 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, GREY_SCALE(10));
 				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL / 2 + WD_FRAMERECT_TOP, STR_SAVELOAD_DETAIL_CAPTION, TC_FROMSTRING, SA_HOR_CENTER);
 
 				if (this->selected == NULL) break;

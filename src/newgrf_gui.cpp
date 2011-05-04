@@ -695,7 +695,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	{
 		switch (widget) {
 			case SNGRFS_FILE_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, GREY_SCALE(1));
 
 				uint step_height = this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST)->resize_y;
 				uint y = r.top + WD_FRAMERECT_TOP;
@@ -727,7 +727,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_AVAIL_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, GREY_SCALE(1));
 
 				uint step_height = this->GetWidget<NWidgetBase>(SNGRFS_AVAIL_LIST)->resize_y;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;

@@ -335,12 +335,12 @@ struct NewsWindow : Window {
 
 	void DrawNewsBorder(const Rect &r) const
 	{
-		GfxFillRect(r.left,  r.top,    r.right, r.bottom, 0xF);
+		GfxFillRect(r.left,  r.top,    r.right, r.bottom, GREY_SCALE(15));
 
-		GfxFillRect(r.left,  r.top,    r.left,  r.bottom, 0xD7);
-		GfxFillRect(r.right, r.top,    r.right, r.bottom, 0xD7);
-		GfxFillRect(r.left,  r.top,    r.right, r.top,    0xD7);
-		GfxFillRect(r.left,  r.bottom, r.right, r.bottom, 0xD7);
+		GfxFillRect(r.left,  r.top,    r.left,  r.bottom, GREY_SCALE(1));
+		GfxFillRect(r.right, r.top,    r.right, r.bottom, GREY_SCALE(1));
+		GfxFillRect(r.left,  r.top,    r.right, r.top,    GREY_SCALE(1));
+		GfxFillRect(r.left,  r.bottom, r.right, r.bottom, GREY_SCALE(1));
 	}
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
@@ -425,7 +425,7 @@ struct NewsWindow : Window {
 				break;
 
 			case NTW_VEH_BKGND:
-				GfxFillRect(r.left, r.top, r.right, r.bottom, 10);
+				GfxFillRect(r.left, r.top, r.right, r.bottom, GREY_SCALE(10));
 				break;
 
 			case NTW_VEH_NAME:

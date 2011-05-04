@@ -206,7 +206,7 @@ public:
 				if (spec == NULL) break;
 
 				if (!spec->IsAvailable()) {
-					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0, FILLRECT_CHECKER);
+					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, GREY_SCALE(0), FILLRECT_CHECKER);
 				}
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */

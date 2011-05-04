@@ -182,4 +182,11 @@ extern byte _colour_gradient[COLOUR_END][8];
 
 extern bool _palette_remap_grf[];
 
+/**
+ * Return the colour for a particular greyscale level.
+ * @param level Intensity, 0 = black, 15 = white
+ * @return colour
+ */
+#define GREY_SCALE(level) (level)
+
 #endif /* GFX_FUNC_H */

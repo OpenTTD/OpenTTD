@@ -1163,7 +1163,7 @@ public:
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class, type);
 				if (statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
-					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0, FILLRECT_CHECKER);
+					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, GREY_SCALE(0), FILLRECT_CHECKER);
 				}
 
 				/* Set up a clipping area for the station preview. */
