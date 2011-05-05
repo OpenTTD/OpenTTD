@@ -1603,6 +1603,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :długiego (31 g
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótkiego (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Domyślna paleta dla NewGRF które nie posiadają zdefiniowanej palety: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta okien
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Zezwól w czasie wstrzymania gry na: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :brak działań
@@ -1720,6 +1724,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Pociąg
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miasta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Przedsiębiorstwa
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oryginalne
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Zalecane)
 
@@ -4119,6 +4124,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... poja
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepuścić pociągu za sygnał, niebezpieczeństwo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Pociąg nie ma mocy
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nie można zawrócić pojazdu...
 
@@ -4646,6 +4652,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
