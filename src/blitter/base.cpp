@@ -63,7 +63,7 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 			frac_low += dx;
 			y_low -= stepy;
 		}
-		while (frac_high - dx / 2 > 0) {
+		while (frac_high - dx / 2 >= 0) {
 			frac_high -= dx;
 			y_high += stepy;
 		}
@@ -97,7 +97,7 @@ void Blitter::DrawLine(void *video, int x, int y, int x2, int y2, int screen_wid
 			frac_low += dy;
 			x_low -= stepx;
 		}
-		while (frac_high - dy / 2 > 0) {
+		while (frac_high - dy / 2 >= 0) {
 			frac_high -= dy;
 			x_high += stepx;
 		}
