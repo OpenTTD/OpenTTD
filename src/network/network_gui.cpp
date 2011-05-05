@@ -2045,11 +2045,10 @@ void ShowClientList()
 	AllocateWindowDescFront<NetworkClientListWindow>(&_client_list_desc, 0);
 }
 
-/* Vars needed for the join-GUI */
-NetworkJoinStatus _network_join_status;
-uint8 _network_join_waiting;
-uint32 _network_join_bytes;
-uint32 _network_join_bytes_total;
+NetworkJoinStatus _network_join_status; ///< The status of joining.
+uint8 _network_join_waiting;            ///< The number of clients waiting in front of us.
+uint32 _network_join_bytes;             ///< The number of bytes we already downloaded.
+uint32 _network_join_bytes_total;       ///< The total number of bytes to download.
 
 /** Widgets used for the join status window. */
 enum NetworkJoinStatusWidgets {

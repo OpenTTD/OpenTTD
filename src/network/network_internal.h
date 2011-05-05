@@ -52,7 +52,7 @@ extern bool _ddc_fastforward;
 
 typedef class ServerNetworkGameSocketHandler NetworkClientSocket;
 
-
+/** Status of the clients during joining. */
 enum NetworkJoinStatus {
 	NETWORK_JOIN_STATUS_CONNECTING,
 	NETWORK_JOIN_STATUS_AUTHORIZING,

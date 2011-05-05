@@ -43,8 +43,10 @@ static ClientID _network_client_id = CLIENT_ID_FIRST;
 
 /** Make very sure the preconditions given in network_type.h are actually followed */
 assert_compile(MAX_CLIENT_SLOTS > MAX_CLIENTS);
+/** Yes... */
 assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
 
+/** The pool with clients. */
 NetworkClientSocketPool _networkclientsocket_pool("NetworkClientSocket");
 INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 
@@ -296,6 +298,10 @@ static void NetworkHandleCommandQueue(NetworkClientSocket *cs);
  *   DEF_SERVER_SEND_COMMAND has parameter: NetworkClientSocket *cs
  ************/
 
+/**
+ * Send the client information about a client.
+ * @param ci The client to send information about.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientInfo *ci)
 {
 	if (ci->client_id != INVALID_CLIENT_ID) {
@@ -309,6 +315,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientIn
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Send the client information about the companies. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 {
 	/* Fetch the latest version of the stats */
@@ -371,6 +378,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Send an error to the client, and close its connection.
+ * @param error The error to disconnect for.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error)
 {
 	char str[100];
@@ -413,6 +424,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 	return this->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 }
 
+/** Send the check for the NewGRFs. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 {
 	Packet *p = new Packet(PACKET_SERVER_CHECK_NEWGRFS);
@@ -432,6 +444,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Request the game password. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 {
 	/* Invalid packet when status is STATUS_AUTH_GAME or higher */
@@ -444,6 +457,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Request the company password. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 {
 	/* Invalid packet when status is STATUS_AUTH_COMPANY or higher */
@@ -458,6 +472,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Send the client a welcome message with some basic information. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 {
 	Packet *p;
@@ -485,6 +500,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 	return this->SendClientInfo(NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 }
 
+/** Tell the client that its put in a waiting queue. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 {
 	int waiting = 0;
@@ -503,7 +519,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/* This sends the map to the client */
+/** This sends the map to the client */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
 	static uint sent_packets; // How many packets we did send succecfully last time
@@ -609,6 +625,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Tell that a client joined.
+ * @param client_id The client that joined.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendJoin(ClientID client_id)
 {
 	Packet *p = new Packet(PACKET_SERVER_JOIN);
@@ -619,7 +639,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendJoin(ClientID client_id)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-
+/** Tell the client that they may run to a particular frame. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendFrame()
 {
 	Packet *p = new Packet(PACKET_SERVER_FRAME);
@@ -642,6 +662,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendFrame()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Request the client to sync. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendSync()
 {
 	Packet *p = new Packet(PACKET_SERVER_SYNC);
@@ -655,6 +676,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendSync()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Send a command to the client to execute.
+ * @param cp The command to send.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
 {
 	Packet *p = new Packet(PACKET_SERVER_COMMAND);
@@ -667,6 +692,14 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Send a chat message.
+ * @param action The action associated with the message.
+ * @param client_id The origin of the chat message.
+ * @param self_send Whether we did send the message.
+ * @param msg The actual message.
+ * @param data Arbitrary extra data.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data)
 {
 	Packet *p = new Packet(PACKET_SERVER_CHAT);
@@ -681,6 +714,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Tell the client another client quit with an error.
+ * @param client_id The client that quit.
+ * @param errorno The reason the client quit.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendErrorQuit(ClientID client_id, NetworkErrorCode errorno)
 {
 	Packet *p = new Packet(PACKET_SERVER_ERROR_QUIT);
@@ -692,6 +730,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendErrorQuit(ClientID client_
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Tell the client another client quit.
+ * @param client_id The client that quit.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendQuit(ClientID client_id)
 {
 	Packet *p = new Packet(PACKET_SERVER_QUIT);
@@ -702,6 +744,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendQuit(ClientID client_id)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Tell the client we're shutting down. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendShutdown()
 {
 	Packet *p = new Packet(PACKET_SERVER_SHUTDOWN);
@@ -709,6 +752,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendShutdown()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Tell the client we're starting a new game. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGame()
 {
 	Packet *p = new Packet(PACKET_SERVER_NEWGAME);
@@ -716,6 +760,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGame()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Send the result of a console action.
+ * @param colour The colour of the result.
+ * @param command The command that was executed.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16 colour, const char *command)
 {
 	Packet *p = new Packet(PACKET_SERVER_RCON);
@@ -726,6 +775,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16 colour, 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Tell that a client moved to another company.
+ * @param client_id The client that moved.
+ * @param company_id The company the client moved to.
+ */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMove(ClientID client_id, CompanyID company_id)
 {
 	Packet *p = new Packet(PACKET_SERVER_MOVE);
@@ -736,6 +790,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMove(ClientID client_id, C
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Send an update about the company password states. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyUpdate()
 {
 	Packet *p = new Packet(PACKET_SERVER_COMPANY_UPDATE);
@@ -745,6 +800,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyUpdate()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Send an update about the max company/spectator counts. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendConfigUpdate()
 {
 	Packet *p = new Packet(PACKET_SERVER_CONFIG_UPDATE);
@@ -1168,7 +1224,16 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 }
 
 
-
+/**
+ * Send an actual chat message.
+ * @param action The action that's performed.
+ * @param desttype The type of destination.
+ * @param dest The actual destination index.
+ * @param msg The actual message.
+ * @param from_id The origin of the message.
+ * @param data Arbitrary data.
+ * @param from_admin Whether the origin is an admin or not.
+ */
 void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, ClientID from_id, int64 data, bool from_admin)
 {
 	NetworkClientSocket *cs;
@@ -1499,7 +1564,10 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 	}
 }
 
-/* Send a packet to all clients with updated info about this client_id */
+/**
+ * Send updated client info of a particular client.
+ * @param client_id The client to send it for.
+ */
 void NetworkUpdateClientInfo(ClientID client_id)
 {
 	NetworkClientSocket *cs;
@@ -1516,7 +1584,7 @@ void NetworkUpdateClientInfo(ClientID client_id)
 	NetworkAdminClientUpdate(ci);
 }
 
-/* Check if we want to restart the map */
+/** Check if we want to restart the map */
 static void NetworkCheckRestartMap()
 {
 	if (_settings_client.network.restart_game_year != 0 && _cur_year >= _settings_client.network.restart_game_year) {
@@ -1526,11 +1594,12 @@ static void NetworkCheckRestartMap()
 	}
 }
 
-/* Check if the server has autoclean_companies activated
-    Two things happen:
-      1) If a company is not protected, it is closed after 1 year (for example)
-      2) If a company is protected, protection is disabled after 3 years (for example)
-           (and item 1. happens a year later) */
+/** Check if the server has autoclean_companies activated
+ * Two things happen:
+ *     1) If a company is not protected, it is closed after 1 year (for example)
+ *     2) If a company is protected, protection is disabled after 3 years (for example)
+ *          (and item 1. happens a year later)
+ */
 static void NetworkAutoCleanCompanies()
 {
 	const NetworkClientInfo *ci;
@@ -1600,8 +1669,11 @@ static void NetworkAutoCleanCompanies()
 	}
 }
 
-/* This function changes new_name to a name that is unique (by adding #1 ...)
- *  and it returns true if that succeeded. */
+/**
+ * Check whether a name is unique, and otherwise try to make it unique.
+ * @param new_name The name to check/modify.
+ * @return True if an unique name was achieved.
+ */
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 {
 	bool found_name = false;
@@ -1683,7 +1755,10 @@ void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password,
 	NetworkServerUpdateCompanyPassworded(company_id, !StrEmpty(_network_company_states[company_id].password));
 }
 
-/* Handle the local command-queue */
+/**
+ * Handle the command-queue of a socket.
+ * @param cs The socket to handle the queue for.
+ */
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {
 	CommandPacket *cp;
@@ -1693,7 +1768,10 @@ static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 	}
 }
 
-/* This is called every tick if this is a _network_server */
+/**
+ * This is called every tick if this is a _network_server
+ * @param send_frame Whether to send the frame to the clients.
+ */
 void NetworkServer_Tick(bool send_frame)
 {
 	NetworkClientSocket *cs;
@@ -1817,6 +1895,7 @@ const char *ServerNetworkGameSocketHandler::GetClientIP()
 	return this->client_address.GetHostname();
 }
 
+/** Show the status message of all clients on the console. */
 void NetworkServerShowStatusToConsole()
 {
 	static const char * const stat_str[] = {
@@ -1860,6 +1939,11 @@ void NetworkServerSendConfigUpdate()
 	}
 }
 
+/**
+ * Tell that a particular company is (not) passworded.
+ * @param company_id The company that got/removed the password.
+ * @param passworded Whether the password was received or removed.
+ */
 void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
 {
 	if (NetworkCompanyIsPassworded(company_id) == passworded) return;
@@ -1909,27 +1993,42 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	NetworkServerSendChat(action, DESTTYPE_BROADCAST, 0, "", client_id, company_id + 1);
 }
 
+/**
+ * Send an rcon reply to the client.
+ * @param client_id The identifier of the client.
+ * @param colour_code The colour of the text.
+ * @param string The actual reply.
+ */
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const char *string)
 {
 	NetworkClientSocket::GetByClientID(client_id)->SendRConResult(colour_code, string);
 }
 
-static void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
-{
-	NetworkClientSocket::GetByClientID(client_id)->SendError(error);
-}
-
+/**
+ * Kick a single client.
+ * @param client_id The client to kick.
+ */
 void NetworkServerKickClient(ClientID client_id)
 {
 	if (client_id == CLIENT_ID_SERVER) return;
-	NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
+	NetworkClientSocket::GetByClientID(client_id)->SendError(NETWORK_ERROR_KICKED);
 }
 
+/**
+ * Ban, or kick, everyone joined from the given client's IP.
+ * @param client_id The client to check for.
+ * @param ban Whether to ban or kick.
+ */
 uint NetworkServerKickOrBanIP(ClientID client_id, bool ban)
 {
 	return NetworkServerKickOrBanIP(NetworkClientSocket::GetByClientID(client_id)->GetClientIP(), ban);
 }
 
+/**
+ * Kick or ban someone based on an IP address.
+ * @param ip The IP address/range to ban/kick.
+ * @param ban Whether to ban or just kick.
+ */
 uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 {
 	/* Add address to ban-list */
@@ -1950,6 +2049,11 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 	return n;
 }
 
+/**
+ * Check whether a particular company has clients.
+ * @param company The company to check.
+ * @return True if at least one client is joined to the company.
+ */
 bool NetworkCompanyHasClients(CompanyID company)
 {
 	const NetworkClientInfo *ci;

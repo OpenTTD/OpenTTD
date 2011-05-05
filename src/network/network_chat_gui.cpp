@@ -30,30 +30,38 @@
 
 #include "table/strings.h"
 
-/* The draw buffer must be able to contain the chat message, client name and the "[All]" message,
+/** The draw buffer must be able to contain the chat message, client name and the "[All]" message,
  * some spaces and possible translations of [All] to other languages. */
 assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
 
+/** Spacing between chat lines. */
 static const uint NETWORK_CHAT_LINE_SPACING = 3;
 
+/** Container for a message. */
 struct ChatMessage {
-	char message[DRAW_STRING_BUFFER];
-	TextColour colour;
-	uint32 remove_time;
+	char message[DRAW_STRING_BUFFER]; ///< The action message.
+	TextColour colour;  ///< The colour of the message.
+	uint32 remove_time; ///< The time to remove the message.
 };
 
 /* used for chat window */
-static ChatMessage *_chatmsg_list = NULL;
-static bool _chatmessage_dirty = false;
-static bool _chatmessage_visible = false;
-static bool _chat_tab_completion_active;
-static uint MAX_CHAT_MESSAGES = 0;
+static ChatMessage *_chatmsg_list = NULL; ///< The actual chat message list.
+static bool _chatmessage_dirty = false;   ///< Does the chat message need repainting?
+static bool _chatmessage_visible = false; ///< Is a chat message visible.
+static bool _chat_tab_completion_active;  ///< Whether tab completion is active.
+static uint MAX_CHAT_MESSAGES = 0;        ///< The limit of chat messages to show.
 
-/* The chatbox grows from the bottom so the coordinates are pixels from
- * the left and pixels from the bottom. The height is the maximum height */
+/**
+ * The chatbox grows from the bottom so the coordinates are pixels from
+ * the left and pixels from the bottom. The height is the maximum height.
+ */
 static PointDimension _chatmsg_box;
-static uint8 *_chatmessage_backup = NULL;
+static uint8 *_chatmessage_backup = NULL; ///< Backup in case text is moved.
 
+/**
+ * Count the chat messages.
+ * @return The number of chat messages.
+ */
 static inline uint GetChatMessageCount()
 {
 	uint i = 0;
@@ -119,6 +127,7 @@ void NetworkReInitChatBoxSize()
 	_chatmessage_backup  = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * BlitterFactoryBase::GetCurrentBlitter()->GetBytesPerPixel());
 }
 
+/** Initialize all buffers of the chat visualisation. */
 void NetworkInitChatMessage()
 {
 	MAX_CHAT_MESSAGES    = _settings_client.gui.network_chat_box_height;
@@ -258,7 +267,12 @@ void NetworkDrawChatMessage()
 	_chatmessage_dirty = false;
 }
 
-
+/**
+ * Send an actual chat message.
+ * @param buf The message to send.
+ * @param type The type of destination.
+ * @param dest The actual destination index.
+ */
 static void SendChat(const char *buf, DestType type, int dest)
 {
 	if (StrEmpty(buf)) return;
@@ -278,11 +292,18 @@ enum NetWorkChatWidgets {
 	NWCW_SENDBUTTON,
 };
 
+/** Window to enter the chat message in. */
 struct NetworkChatWindow : public QueryStringBaseWindow {
-	DestType dtype;
-	StringID dest_string;
-	int dest;
+	DestType dtype;       ///< The type of destination.
+	StringID dest_string; ///< String representation of the destination.
+	int dest;             ///< The identifier of the destination.
 
+	/**
+	 * Create a chat input window.
+	 * @param desc Description of the looks of the window.
+	 * @param type The type of destination.
+	 * @param dest The actual destination index.
+	 */
 	NetworkChatWindow(const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(NETWORK_CHAT_LENGTH)
 	{
 		this->dtype   = type;
@@ -542,6 +563,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	}
 };
 
+/** The widgets of the chat window. */
 static const NWidgetPart _nested_chat_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, NWCW_CLOSE),
@@ -556,6 +578,7 @@ static const NWidgetPart _nested_chat_window_widgets[] = {
 	EndContainer(),
 };
 
+/** The description of the chat window. */
 static const WindowDesc _chat_window_desc(
 	WDP_MANUAL, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG, WC_NONE,
@@ -563,6 +586,12 @@ static const WindowDesc _chat_window_desc(
 	_nested_chat_window_widgets, lengthof(_nested_chat_window_widgets)
 );
 
+
+/**
+ * Show the chat window.
+ * @param type The type of destination.
+ * @param dest The actual destination index.
+ */
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
 	DeleteWindowByClass(WC_SEND_NETWORK_MSG);

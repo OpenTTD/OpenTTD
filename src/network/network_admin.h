@@ -21,6 +21,7 @@
 extern AdminIndex _redirect_console_to_admin;
 
 class ServerNetworkAdminSocketHandler;
+/** Pool with all admin connections. */
 typedef Pool<ServerNetworkAdminSocketHandler, AdminIndex, 2, MAX_ADMINS, PT_NADMIN> NetworkAdminSocketPool;
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
@@ -82,7 +83,17 @@ public:
 	}
 };
 
+/**
+ * Iterate over all the sockets from a given starting point.
+ * @param var The variable to iterate with.
+ * @param start The start of the iteration.
+ */
 #define FOR_ALL_ADMIN_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(ServerNetworkAdminSocketHandler, adminsocket_index, var, start)
+
+/**
+ * Iterate over all the sockets.
+ * @param var The variable to iterate with.
+ */
 #define FOR_ALL_ADMIN_SOCKETS(var) FOR_ALL_ADMIN_SOCKETS_FROM(var, 0)
 
 void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client = false);

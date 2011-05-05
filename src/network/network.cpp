@@ -126,7 +126,7 @@ NetworkClientInfo::~NetworkClientInfo()
  * @param client_id the ClientID to search for
  * @return return a pointer to the corresponding NetworkClientSocket struct or NULL when not found
  */
-/* static */ NetworkClientSocket *NetworkClientSocket::GetByClientID(ClientID client_id)
+/* static */ ServerNetworkGameSocketHandler *ServerNetworkGameSocketHandler::GetByClientID(ClientID client_id)
 {
 	NetworkClientSocket *cs;
 
@@ -479,6 +479,11 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 	}
 }
 
+/**
+ * Handle the acception of a connection to the server.
+ * @param s The socket of the new connection.
+ * @param address The address of the peer.
+ */
 /* static */ void ServerNetworkGameSocketHandler::AcceptConnection(SOCKET s, const NetworkAddress &address)
 {
 	/* Register the login */

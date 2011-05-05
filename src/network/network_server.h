@@ -19,7 +19,9 @@
 #include "../thread/thread.h"
 
 class ServerNetworkGameSocketHandler;
+/** Make the code look slightliy nicer/simpler. */
 typedef ServerNetworkGameSocketHandler NetworkClientSocket;
+/** Pool with all client sockets. */
 typedef Pool<NetworkClientSocket, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientSocketPool;
 extern NetworkClientSocketPool _networkclientsocket_pool;
 
@@ -125,7 +127,17 @@ public:
 void NetworkServer_Tick(bool send_frame);
 void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password, bool already_hashed = true);
 
+/**
+ * Iterate over all the sockets from a given starting point.
+ * @param var The variable to iterate with.
+ * @param start The start of the iteration.
+ */
 #define FOR_ALL_CLIENT_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientSocket, clientsocket_index, var, start)
+
+/**
+ * Iterate over all the sockets.
+ * @param var The variable to iterate with.
+ */
 #define FOR_ALL_CLIENT_SOCKETS(var) FOR_ALL_CLIENT_SOCKETS_FROM(var, 0)
 
 #else /* ENABLE_NETWORK */
