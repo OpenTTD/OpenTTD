@@ -152,7 +152,7 @@ void NetworkContentSocketHandler::ReceivePackets()
 bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 {
 	DEBUG(net, 0, "[tcp/content] received illegal packet type %d from %s", type, this->client_addr.GetAddressAsString());
-	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	return false;
 }
 
 bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
