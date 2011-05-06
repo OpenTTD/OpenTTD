@@ -1540,6 +1540,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :доўгі (31-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :кароткі (31-01-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-01-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Калі ў NewGRF ня вызначана палітра, выкарыстоўваць: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :палітру DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :палітру Windows
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Аўтаматычнае ўключэньне паўзы напачатку гульні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Падчас паўзы дазволiць: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :нiчога

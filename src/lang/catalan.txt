@@ -1224,6 +1224,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31st De
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Paleta predeterminada pels NewGRFs que no n'especifiquin una: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Windows
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un nou joc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Quan s'estigui en pausa permet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :sense accions
@@ -1341,6 +1345,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pobles
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Indústries
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomanat)
 
