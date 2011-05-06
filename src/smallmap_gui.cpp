@@ -893,8 +893,8 @@ class SmallMapWindow : public Window {
 	 */
 	static inline void DrawVertMapIndicator(int x, int y, int y2)
 	{
-		GfxFillRect(x, y,      x, y + 3, 69);
-		GfxFillRect(x, y2 - 3, x, y2,    69);
+		GfxFillRect(x, y,      x, y + 3, PC_VERY_LIGHT_YELLOW);
+		GfxFillRect(x, y2 - 3, x, y2,    PC_VERY_LIGHT_YELLOW);
 	}
 
 	/**
@@ -905,8 +905,8 @@ class SmallMapWindow : public Window {
 	 */
 	static inline void DrawHorizMapIndicator(int x, int x2, int y)
 	{
-		GfxFillRect(x,      y, x + 3, y, 69);
-		GfxFillRect(x2 - 3, y, x2,    y, 69);
+		GfxFillRect(x,      y, x + 3, y, PC_VERY_LIGHT_YELLOW);
+		GfxFillRect(x2 - 3, y, x2,    y, PC_VERY_LIGHT_YELLOW);
 	}
 
 	/**
@@ -952,7 +952,7 @@ class SmallMapWindow : public Window {
 		_cur_dpi = dpi;
 
 		/* Clear it */
-		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, GREY_SCALE(0));
+		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, PC_BLACK);
 
 		/* Which tile is displayed at (dpi->left, dpi->top)? */
 		int dx;
@@ -1204,7 +1204,7 @@ public:
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
 						} else {
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
-							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, GREY_SCALE(0)); // Outer border of the legend colour
+							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
 						}
 					} else if (this->map_type == SMT_OWNER && tbl->company != INVALID_COMPANY) {
 						SetDParam(0, tbl->company);
@@ -1214,13 +1214,13 @@ public:
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_GREY);
 						} else {
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_BLACK);
-							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, GREY_SCALE(0)); // Outer border of the legend colour
+							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
 						}
 					} else {
 						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);
 
 						/* Anything that is not an industry or a company is using normal process */
-						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, GREY_SCALE(0));
+						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK);
 						DrawString(x + text_left, x + text_right, y, tbl->legend);
 					}
 					GfxFillRect(x + blob_left + 1, y + 2, x + blob_right - 1, y + row_height - 2, tbl->colour); // Legend colour

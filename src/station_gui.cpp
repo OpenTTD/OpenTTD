@@ -168,9 +168,9 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 
 	/* Draw green/red ratings bar (fits into 14 pixels) */
 	y += height + 2;
-	GfxFillRect(left + 1, y, left + 14, y, 0xB8);
+	GfxFillRect(left + 1, y, left + 14, y, PC_RED);
 	rating = minu(rating, rating_full) / 16;
-	if (rating != 0) GfxFillRect(left + 1, y, left + rating, y, 0xD0);
+	if (rating != 0) GfxFillRect(left + 1, y, left + rating, y, PC_GREEN);
 }
 
 typedef GUIList<const Station*> GUIStationList;

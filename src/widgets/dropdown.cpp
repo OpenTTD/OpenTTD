@@ -248,7 +248,7 @@ struct DropdownWindow : Window {
 
 			if (y + item_height < r.bottom) {
 				bool selected = (this->selected_index == item->result);
-				if (selected) GfxFillRect(r.left + 2, y, r.right - 1, y + item_height - 1, GREY_SCALE(0));
+				if (selected) GfxFillRect(r.left + 2, y, r.right - 1, y + item_height - 1, PC_BLACK);
 
 				item->Draw(r.left, r.right, y, r.bottom, selected, colour);
 

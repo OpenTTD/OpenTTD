@@ -204,7 +204,7 @@ struct IConsoleWindow : Window
 	{
 		const int right = this->width - 5;
 
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, GREY_SCALE(0));
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, PC_BLACK);
 		int ypos = this->height - this->line_height;
 		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != NULL; print = print->previous) {
 			SetDParamStr(0, print->buffer);

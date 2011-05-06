@@ -177,7 +177,7 @@ enum CompanyValueWidgets {
 struct BaseGraphWindow : Window {
 protected:
 	static const int GRAPH_MAX_DATASETS     =  32;
-	static const int GRAPH_AXIS_LINE_COLOUR = GREY_SCALE(1);
+	static const int GRAPH_AXIS_LINE_COLOUR = PC_BLACK;
 	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
 
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
@@ -977,7 +977,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		int rect_x = clk_dif + (rtl ? r.right - 12 : r.left + WD_FRAMERECT_LEFT);
 
-		GfxFillRect(rect_x, y + clk_dif, rect_x + 8, y + 5 + clk_dif, GREY_SCALE(0));
+		GfxFillRect(rect_x, y + clk_dif, rect_x + 8, y + 5 + clk_dif, PC_BLACK);
 		GfxFillRect(rect_x + 1, y + 1 + clk_dif, rect_x + 7, y + 4 + clk_dif, cs->legend_colour);
 		SetDParam(0, cs->name);
 		DrawString(rtl ? r.left : x + 14 + clk_dif, (rtl ? r.right - 14 + clk_dif : r.right), y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
@@ -1425,7 +1425,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		ScoreID score_type = (ScoreID)(widget - PRW_SCORE_FIRST);
 
-			/* The colours used to show how the progress is going */
+		/* The colours used to show how the progress is going */
 		int colour_done = _colour_gradient[COLOUR_GREEN][4];
 		int colour_notdone = _colour_gradient[COLOUR_RED][4];
 

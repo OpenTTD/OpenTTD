@@ -396,7 +396,7 @@ public:
 
 					/* Draw the name of the industry in white is selected, otherwise, in orange */
 					DrawString(x + MATRIX_TEXT_OFFSET, r.right - WD_MATRIX_RIGHT, y, indsp->name, selected ? TC_WHITE : TC_ORANGE);
-					GfxFillRect(x,     y + 1,  x + 10, y + 7, selected ? GREY_SCALE(15) : GREY_SCALE(0));
+					GfxFillRect(x,     y + 1,  x + 10, y + 7, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(x + 1, y + 2,  x +  9, y + 6, indsp->map_colour);
 				}
 				break;
@@ -1677,7 +1677,7 @@ struct CargoesField {
 						blob_left  = xpos + BLOB_DISTANCE;
 						blob_right = blob_left + BLOB_WIDTH;
 					}
-					GfxFillRect(blob_left,     ypos2 - BLOB_DISTANCE - BLOB_HEIGHT,     blob_right,     ypos2 - BLOB_DISTANCE,     GREY_SCALE(0)); // Border
+					GfxFillRect(blob_left,     ypos2 - BLOB_DISTANCE - BLOB_HEIGHT,     blob_right,     ypos2 - BLOB_DISTANCE,     PC_BLACK); // Border
 					GfxFillRect(blob_left + 1, ypos2 - BLOB_DISTANCE - BLOB_HEIGHT + 1, blob_right - 1, ypos2 - BLOB_DISTANCE - 1, indsp->map_colour);
 				} else {
 					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TC_FROMSTRING, SA_HOR_CENTER);
@@ -1899,8 +1899,8 @@ const int CargoesField::BLOB_HEIGHT   =  9; ///< Height of the industry legend c
 /** Width of a #CFT_CARGO field. */
 const int CargoesField::CARGO_FIELD_WIDTH = HOR_CARGO_BORDER_SPACE * 2 + HOR_CARGO_WIDTH * MAX_CARGOES + HOR_CARGO_SPACE * (MAX_CARGOES - 1);
 
-const int CargoesField::INDUSTRY_LINE_COLOUR = 191; ///< Line colour of the industry type box.
-const int CargoesField::CARGO_LINE_COLOUR    = 191; ///< Line colour around the cargo.
+const int CargoesField::INDUSTRY_LINE_COLOUR = PC_YELLOW; ///< Line colour of the industry type box.
+const int CargoesField::CARGO_LINE_COLOUR    = PC_YELLOW; ///< Line colour around the cargo.
 
 /** A single row of #CargoesField. */
 struct CargoesRow {

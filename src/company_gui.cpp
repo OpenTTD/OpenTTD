@@ -209,7 +209,7 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 		if (et == INVALID_EXPENSES) {
 			Money cost = subtotal;
 			subtotal = 0;
-			GfxFillRect(r.left, y, r.right, y, GREY_SCALE(1));
+			GfxFillRect(r.left, y, r.right, y, PC_BLACK);
 			y += EXP_LINESPACE;
 			DrawPrice(cost, r.left, r.right, y);
 			y += FONT_HEIGHT_NORMAL + EXP_BLOCKSPACE;
@@ -222,7 +222,7 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 		}
 	}
 
-	GfxFillRect(r.left, y, r.right, y, GREY_SCALE(1));
+	GfxFillRect(r.left, y, r.right, y, PC_BLACK);
 	y += EXP_LINESPACE;
 	DrawPrice(sum, r.left, r.right, y);
 }
@@ -385,7 +385,7 @@ struct CompanyFinancesWindow : Window {
 			}
 
 			case CFW_LOAN_LINE:
-				GfxFillRect(r.left, r.top, r.right, r.top, GREY_SCALE(1));
+				GfxFillRect(r.left, r.top, r.right, r.top, PC_BLACK);
 				break;
 		}
 	}
