@@ -1312,9 +1312,7 @@ public:
 				break;
 
 			case SM_WIDGET_LEGEND: // Legend
-				/* If industry type small map*/
-				if (this->map_type == SMT_INDUSTRY) {
-					/* If click on industries label, find right industry type and enable/disable it */
+				if (this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) {
 					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND); // Label panel
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
 					uint columns = this->GetNumberColumnsLegend(wi->current_x);
@@ -1326,65 +1324,55 @@ public:
 					if (rtl) x = wi->current_x - x;
 					uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
 
-					/* Check if click is on industry label*/
-					int industry_pos = (column * number_of_rows) + line;
-					if (industry_pos < _smallmap_industry_count) {
-						if (_ctrl_pressed) {
-							/* Disable all, except the clicked one */
-							bool changes = false;
-							for (int i = 0; i != _smallmap_industry_count; i++) {
-								bool new_state = i == industry_pos;
-								if (_legend_from_industries[i].show_on_map != new_state) {
-									changes = true;
-									_legend_from_industries[i].show_on_map = new_state;
-								}
-							}
-							if (!changes) {
-								/* Nothing changed? Then show all (again). */
+					/* If industry type small map*/
+					if (this->map_type == SMT_INDUSTRY) {
+						/* If click on industries label, find right industry type and enable/disable it. */
+						int industry_pos = (column * number_of_rows) + line;
+						if (industry_pos < _smallmap_industry_count) {
+							if (_ctrl_pressed) {
+								/* Disable all, except the clicked one. */
+								bool changes = false;
 								for (int i = 0; i != _smallmap_industry_count; i++) {
-									_legend_from_industries[i].show_on_map = true;
+									bool new_state = i == industry_pos;
+									if (_legend_from_industries[i].show_on_map != new_state) {
+										changes = true;
+										_legend_from_industries[i].show_on_map = new_state;
+									}
 								}
+								if (!changes) {
+									/* Nothing changed? Then show all (again). */
+									for (int i = 0; i != _smallmap_industry_count; i++) {
+										_legend_from_industries[i].show_on_map = true;
+									}
+								}
+							} else {
+								_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
 							}
-						} else {
-							_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
 						}
-					}
-					this->SetDirty();
-				} else if (this->map_type == SMT_OWNER) {
-					/* If click on companies label, find right company and enable/disable it. */
-					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND);
-					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
-					uint columns = this->GetNumberColumnsLegend(wi->current_x);
-					uint number_of_rows = max(CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns), this->min_number_of_fixed_rows);
-					if (line >= number_of_rows) break;
-
-					bool rtl = _current_text_dir == TD_RTL;
-					int x = pt.x - wi->pos_x;
-					if (rtl) x = wi->current_x - x;
-					uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
-
-					/* Check if click is on company label. */
-					int company_pos = (column * number_of_rows) + line;
-					if (company_pos < NUM_NO_COMPANY_ENTRIES) break;
-					if (company_pos < _smallmap_company_count) {
-						if (_ctrl_pressed) {
-							/* Disable all, except the clicked one */
-							bool changes = false;
-							for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
-								bool new_state = i == company_pos;
-								if (_legend_land_owners[i].show_on_map != new_state) {
-									changes = true;
-									_legend_land_owners[i].show_on_map = new_state;
-								}
-							}
-							if (!changes) {
-								/* Nothing changed? Then show all (again). */
+					} else if (this->map_type == SMT_OWNER) {
+						/* If click on companies label, find right company and enable/disable it. */
+						int company_pos = (column * number_of_rows) + line;
+						if (company_pos < NUM_NO_COMPANY_ENTRIES) break;
+						if (company_pos < _smallmap_company_count) {
+							if (_ctrl_pressed) {
+								/* Disable all, except the clicked one */
+								bool changes = false;
 								for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
-									_legend_land_owners[i].show_on_map = true;
+									bool new_state = i == company_pos;
+									if (_legend_land_owners[i].show_on_map != new_state) {
+										changes = true;
+										_legend_land_owners[i].show_on_map = new_state;
+									}
 								}
+								if (!changes) {
+									/* Nothing changed? Then show all (again). */
+									for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
+										_legend_land_owners[i].show_on_map = true;
+									}
+								}
+							} else {
+								_legend_land_owners[company_pos].show_on_map = !_legend_land_owners[company_pos].show_on_map;
 							}
-						} else {
-							_legend_land_owners[company_pos].show_on_map = !_legend_land_owners[company_pos].show_on_map;
 						}
 					}
 					this->SetDirty();
