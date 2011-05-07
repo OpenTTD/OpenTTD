@@ -214,68 +214,82 @@ static const LegendAndColour * const _legend_table[] = {
 	_legend_land_owners,
 };
 
-#define MKCOLOUR(x) TO_LE32X(x)
+#define MKCOLOUR(x)         TO_LE32X(x)
+
+#define MKCOLOUR_XXXX(x)    (MKCOLOUR(0x01010101) * (uint)(x))
+#define MKCOLOUR_X0X0(x)    (MKCOLOUR(0x01000100) * (uint)(x))
+#define MKCOLOUR_0X0X(x)    (MKCOLOUR(0x00010001) * (uint)(x))
+#define MKCOLOUR_0XX0(x)    (MKCOLOUR(0x00010100) * (uint)(x))
+#define MKCOLOUR_X00X(x)    (MKCOLOUR(0x01000001) * (uint)(x))
+
+#define MKCOLOUR_XYXY(x, y) (MKCOLOUR_X0X0(x) | MKCOLOUR_0X0X(y))
+#define MKCOLOUR_XYYX(x, y) (MKCOLOUR_X00X(x) | MKCOLOUR_0XX0(y))
+
+#define MKCOLOUR_0000       MKCOLOUR_XXXX(0x00)
+#define MKCOLOUR_0FF0       MKCOLOUR_0XX0(0xFF)
+#define MKCOLOUR_F00F       MKCOLOUR_X00X(0xFF)
+#define MKCOLOUR_FFFF       MKCOLOUR_XXXX(0xFF)
 
 /** Height map colours for the green colour scheme, ordered by height. */
 static const uint32 _green_map_heights[] = {
-	MKCOLOUR(0x5A5A5A5A),
-	MKCOLOUR(0x5A5B5A5B),
-	MKCOLOUR(0x5B5B5B5B),
-	MKCOLOUR(0x5B5C5B5C),
-	MKCOLOUR(0x5C5C5C5C),
-	MKCOLOUR(0x5C5D5C5D),
-	MKCOLOUR(0x5D5D5D5D),
-	MKCOLOUR(0x5D5E5D5E),
-	MKCOLOUR(0x5E5E5E5E),
-	MKCOLOUR(0x5E5F5E5F),
-	MKCOLOUR(0x5F5F5F5F),
-	MKCOLOUR(0x5F1F5F1F),
-	MKCOLOUR(0x1F1F1F1F),
-	MKCOLOUR(0x1F271F27),
-	MKCOLOUR(0x27272727),
-	MKCOLOUR(0x27272727),
+	MKCOLOUR_XXXX(0x5A),
+	MKCOLOUR_XYXY(0x5A, 0x5B),
+	MKCOLOUR_XXXX(0x5B),
+	MKCOLOUR_XYXY(0x5B, 0x5C),
+	MKCOLOUR_XXXX(0x5C),
+	MKCOLOUR_XYXY(0x5C, 0x5D),
+	MKCOLOUR_XXXX(0x5D),
+	MKCOLOUR_XYXY(0x5D, 0x5E),
+	MKCOLOUR_XXXX(0x5E),
+	MKCOLOUR_XYXY(0x5E, 0x5F),
+	MKCOLOUR_XXXX(0x5F),
+	MKCOLOUR_XYXY(0x5F, 0x1F),
+	MKCOLOUR_XXXX(0x1F),
+	MKCOLOUR_XYXY(0x1F, 0x27),
+	MKCOLOUR_XXXX(0x27),
+	MKCOLOUR_XXXX(0x27),
 };
 assert_compile(lengthof(_green_map_heights) == MAX_TILE_HEIGHT + 1);
 
 /** Height map colours for the dark green colour scheme, ordered by height. */
 static const uint32 _dark_green_map_heights[] = {
-	MKCOLOUR(0x60606060),
-	MKCOLOUR(0x60616061),
-	MKCOLOUR(0x61616161),
-	MKCOLOUR(0x61626162),
-	MKCOLOUR(0x62626262),
-	MKCOLOUR(0x62636263),
-	MKCOLOUR(0x63636363),
-	MKCOLOUR(0x63646364),
-	MKCOLOUR(0x64646464),
-	MKCOLOUR(0x64656465),
-	MKCOLOUR(0x65656565),
-	MKCOLOUR(0x65666566),
-	MKCOLOUR(0x66666666),
-	MKCOLOUR(0x66676667),
-	MKCOLOUR(0x67676767),
-	MKCOLOUR(0x67676767),
+	MKCOLOUR_XXXX(0x60),
+	MKCOLOUR_XYXY(0x60, 0x61),
+	MKCOLOUR_XXXX(0x61),
+	MKCOLOUR_XYXY(0x61, 0x62),
+	MKCOLOUR_XXXX(0x62),
+	MKCOLOUR_XYXY(0x62, 0x63),
+	MKCOLOUR_XXXX(0x63),
+	MKCOLOUR_XYXY(0x63, 0x64),
+	MKCOLOUR_XXXX(0x64),
+	MKCOLOUR_XYXY(0x64, 0x65),
+	MKCOLOUR_XXXX(0x65),
+	MKCOLOUR_XYXY(0x65, 0x66),
+	MKCOLOUR_XXXX(0x66),
+	MKCOLOUR_XYXY(0x66, 0x67),
+	MKCOLOUR_XXXX(0x67),
+	MKCOLOUR_XXXX(0x67),
 };
 assert_compile(lengthof(_dark_green_map_heights) == MAX_TILE_HEIGHT + 1);
 
 /** Height map colours for the violet colour scheme, ordered by height. */
 static const uint32 _violet_map_heights[] = {
-	MKCOLOUR(0x80808080),
-	MKCOLOUR(0x80818081),
-	MKCOLOUR(0x81818181),
-	MKCOLOUR(0x81828182),
-	MKCOLOUR(0x82828282),
-	MKCOLOUR(0x82838283),
-	MKCOLOUR(0x83838383),
-	MKCOLOUR(0x83848384),
-	MKCOLOUR(0x84848484),
-	MKCOLOUR(0x84858485),
-	MKCOLOUR(0x85858585),
-	MKCOLOUR(0x85868586),
-	MKCOLOUR(0x86868686),
-	MKCOLOUR(0x86878687),
-	MKCOLOUR(0x87878787),
-	MKCOLOUR(0x87878787),
+	MKCOLOUR_XXXX(0x80),
+	MKCOLOUR_XYXY(0x80, 0x81),
+	MKCOLOUR_XXXX(0x81),
+	MKCOLOUR_XYXY(0x81, 0x82),
+	MKCOLOUR_XXXX(0x82),
+	MKCOLOUR_XYXY(0x82, 0x83),
+	MKCOLOUR_XXXX(0x83),
+	MKCOLOUR_XYXY(0x83, 0x84),
+	MKCOLOUR_XXXX(0x84),
+	MKCOLOUR_XYXY(0x84, 0x85),
+	MKCOLOUR_XXXX(0x85),
+	MKCOLOUR_XYXY(0x85, 0x86),
+	MKCOLOUR_XXXX(0x86),
+	MKCOLOUR_XYXY(0x86, 0x87),
+	MKCOLOUR_XXXX(0x87),
+	MKCOLOUR_XXXX(0x87),
 };
 assert_compile(lengthof(_violet_map_heights) == MAX_TILE_HEIGHT + 1);
 
@@ -287,9 +301,9 @@ struct SmallMapColourScheme {
 
 /** Available colour schemes for height maps. */
 static const SmallMapColourScheme _heightmap_schemes[] = {
-	{_green_map_heights,      MKCOLOUR(0x54545454)}, ///< Green colour scheme.
-	{_dark_green_map_heights, MKCOLOUR(0x62626262)}, ///< Dark green colour scheme.
-	{_violet_map_heights,     MKCOLOUR(0x82828282)}, ///< Violet colour scheme.
+	{_green_map_heights,      MKCOLOUR_XXXX(0x54)}, ///< Green colour scheme.
+	{_dark_green_map_heights, MKCOLOUR_XXXX(0x62)}, ///< Dark green colour scheme.
+	{_violet_map_heights,     MKCOLOUR_XXXX(0x82)}, ///< Violet colour scheme.
 };
 
 /**
@@ -341,34 +355,34 @@ static inline uint32 ApplyMask(uint32 colour, const AndOr *mask)
 
 /** Colour masks for "Contour" and "Routes" modes. */
 static const AndOr _smallmap_contours_andor[] = {
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_CLEAR
-	{MKCOLOUR(0x000A0A00), MKCOLOUR(0xFF0000FF)}, // MP_RAILWAY
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_ROAD
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_HOUSE
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TREES
-	{MKCOLOUR(0x98989898), MKCOLOUR(0x00000000)}, // MP_STATION
-	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)}, // MP_WATER
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_VOID
-	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)}, // MP_INDUSTRY
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TUNNELBRIDGE
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_OBJECT
-	{MKCOLOUR(0x000A0A00), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_CLEAR
+	{MKCOLOUR_0XX0(0x0A), MKCOLOUR_F00F}, // MP_RAILWAY
+	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_ROAD
+	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_HOUSE
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TREES
+	{MKCOLOUR_XXXX(0x98), MKCOLOUR_0000}, // MP_STATION
+	{MKCOLOUR_XXXX(0xCA), MKCOLOUR_0000}, // MP_WATER
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_VOID
+	{MKCOLOUR_XXXX(0xB5), MKCOLOUR_0000}, // MP_INDUSTRY
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
+	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_OBJECT
+	{MKCOLOUR_0XX0(0x0A), MKCOLOUR_F00F},
 };
 
 /** Colour masks for "Vehicles", "Industry", and "Vegetation" modes. */
 static const AndOr _smallmap_vehicles_andor[] = {
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_CLEAR
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_RAILWAY
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_ROAD
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_HOUSE
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TREES
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)}, // MP_STATION
-	{MKCOLOUR(0xCACACACA), MKCOLOUR(0x00000000)}, // MP_WATER
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_VOID
-	{MKCOLOUR(0xB5B5B5B5), MKCOLOUR(0x00000000)}, // MP_INDUSTRY
-	{MKCOLOUR(0x00000000), MKCOLOUR(0xFFFFFFFF)}, // MP_TUNNELBRIDGE
-	{MKCOLOUR(0x00B5B500), MKCOLOUR(0xFF0000FF)}, // MP_OBJECT
-	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_CLEAR
+	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_RAILWAY
+	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_ROAD
+	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_HOUSE
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TREES
+	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_STATION
+	{MKCOLOUR_XXXX(0xCA), MKCOLOUR_0000}, // MP_WATER
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_VOID
+	{MKCOLOUR_XXXX(0xB5), MKCOLOUR_0000}, // MP_INDUSTRY
+	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
+	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_OBJECT
+	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F},
 };
 
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
@@ -463,16 +477,16 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 {
 	if (t == MP_STATION) {
 		switch (GetStationType(tile)) {
-			case STATION_RAIL:    return MKCOLOUR(0x56565656);
-			case STATION_AIRPORT: return MKCOLOUR(0xB8B8B8B8);
-			case STATION_TRUCK:   return MKCOLOUR(0xC2C2C2C2);
-			case STATION_BUS:     return MKCOLOUR(0xBFBFBFBF);
-			case STATION_DOCK:    return MKCOLOUR(0x98989898);
-			default:              return MKCOLOUR(0xFFFFFFFF);
+			case STATION_RAIL:    return MKCOLOUR_XXXX(0x56);
+			case STATION_AIRPORT: return MKCOLOUR_XXXX(0xB8);
+			case STATION_TRUCK:   return MKCOLOUR_XXXX(0xC2);
+			case STATION_BUS:     return MKCOLOUR_XXXX(0xBF);
+			case STATION_DOCK:    return MKCOLOUR_XXXX(0x98);
+			default:              return MKCOLOUR_FFFF;
 		}
 	} else if (t == MP_RAILWAY) {
 		AndOr andor = {
-			GetRailTypeInfo(GetRailType(tile))->map_colour * MKCOLOUR(0x00010100),
+			MKCOLOUR_0XX0(GetRailTypeInfo(GetRailType(tile))->map_colour),
 			_smallmap_contours_andor[t].mand
 		};
 
@@ -487,14 +501,14 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 
 
 static const uint32 _vegetation_clear_bits[] = {
-	MKCOLOUR(0x54545454), ///< full grass
-	MKCOLOUR(0x52525252), ///< rough land
-	MKCOLOUR(0x0A0A0A0A), ///< rocks
-	MKCOLOUR(0x25252525), ///< fields
-	MKCOLOUR(0x98989898), ///< snow
-	MKCOLOUR(0xC2C2C2C2), ///< desert
-	MKCOLOUR(0x54545454), ///< unused
-	MKCOLOUR(0x54545454), ///< unused
+	MKCOLOUR_XXXX(0x54), ///< full grass
+	MKCOLOUR_XXXX(0x52), ///< rough land
+	MKCOLOUR_XXXX(0x0A), ///< rocks
+	MKCOLOUR_XXXX(0x25), ///< fields
+	MKCOLOUR_XXXX(0x98), ///< snow
+	MKCOLOUR_XXXX(0xC2), ///< desert
+	MKCOLOUR_XXXX(0x54), ///< unused
+	MKCOLOUR_XXXX(0x54), ///< unused
 };
 
 /**
@@ -508,19 +522,19 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 {
 	switch (t) {
 		case MP_CLEAR:
-			return (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) ? MKCOLOUR(0x37373737) : _vegetation_clear_bits[GetClearGround(tile)];
+			return (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) ? MKCOLOUR_XXXX(0x37) : _vegetation_clear_bits[GetClearGround(tile)];
 
 		case MP_INDUSTRY:
-			return GetIndustrySpec(Industry::GetByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR(0xD0D0D0D0) : MKCOLOUR(0xB5B5B5B5);
+			return GetIndustrySpec(Industry::GetByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR_XXXX(0xD0) : MKCOLOUR_XXXX(0xB5);
 
 		case MP_TREES:
 			if (GetTreeGround(tile) == TREE_GROUND_SNOW_DESERT || GetTreeGround(tile) == TREE_GROUND_ROUGH_SNOW) {
-				return (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOUR(0x98575798) : MKCOLOUR(0xC25757C2);
+				return (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOUR_XYYX(0x98, 0x57) : MKCOLOUR_XYYX(0xC2, 0x57);
 			}
-			return MKCOLOUR(0x54575754);
+			return MKCOLOUR_XYYX(0x54, 0x57);
 
 		default:
-			return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
+			return ApplyMask(MKCOLOUR_XXXX(0x54), &_smallmap_vehicles_andor[t]);
 	}
 }
 
@@ -536,8 +550,8 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	Owner o;
 
 	switch (t) {
-		case MP_INDUSTRY: return MKCOLOUR(0x20202020);
-		case MP_HOUSE:    return MKCOLOUR(0xB4B4B4B4);
+		case MP_INDUSTRY: return MKCOLOUR_XXXX(0x20);
+		case MP_HOUSE:    return MKCOLOUR_XXXX(0xB4);
 		default:          o = GetTileOwner(tile); break;
 		/* FIXME: For MP_ROAD there are multiple owners.
 		 * GetTileOwner returns the rail owner (level crossing) resp. the owner of ROADTYPE_ROAD (normal road),
@@ -546,14 +560,14 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	}
 
 	if ((o < MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE || o == OWNER_WATER) {
-		if (t == MP_WATER) return MKCOLOUR(0xCACACACA);
+		if (t == MP_WATER) return MKCOLOUR_XXXX(0xCA);
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 		return _smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour;
 	} else if (o == OWNER_TOWN) {
-		return MKCOLOUR(0xB4B4B4B4);
+		return MKCOLOUR_XXXX(0xB4);
 	}
 
-	return _legend_land_owners[_company_to_list_pos[o]].colour * 0x01010101;
+	return MKCOLOUR_XXXX(_legend_land_owners[_company_to_list_pos[o]].colour);
 }
 
 /** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleTypeByte. */
