@@ -56,6 +56,13 @@ static int _smallmap_company_count;  ///< Number of entries in the owner legend.
 
 static const int NUM_NO_COMPANY_ENTRIES = 4; ///< Number of entries in the owner legend that are not companies.
 
+static const uint8 PC_ROUGH_LAND      = 0x52; ///< Dark green palette colour for rough land.
+static const uint8 PC_GRASS_LAND      = 0x54; ///< Dark green palette colour for grass land.
+static const uint8 PC_BARE_LAND       = 0x37; ///< Brown palette colour for bare land.
+static const uint8 PC_FIELDS          = 0x25; ///< Light brown palette colour for fields.
+static const uint8 PC_TREES           = 0x57; ///< Green palette colour for trees.
+static const uint8 PC_WATER           = 0xCA; ///< Dark blue palette colour for water.
+
 /** Macro for ordinary entry of LegendAndColour */
 #define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, false, false}
 
@@ -98,59 +105,59 @@ static LegendAndColour _legend_land_contours[] = {
 	MC(12),
 	MC(14),
 
-	MS(0xD7, STR_SMALLMAP_LEGENDA_ROADS),
-	MK(0x0A, STR_SMALLMAP_LEGENDA_RAILROADS),
-	MK(0x98, STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS),
-	MK(0xB5, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
-	MK(0x0F, STR_SMALLMAP_LEGENDA_VEHICLES),
+	MS(PC_BLACK,           STR_SMALLMAP_LEGENDA_ROADS),
+	MK(PC_GREY,            STR_SMALLMAP_LEGENDA_RAILROADS),
+	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS),
+	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
+	MK(PC_WHITE,           STR_SMALLMAP_LEGENDA_VEHICLES),
 	MKEND()
 };
 
 static const LegendAndColour _legend_vehicles[] = {
-	MK(0xB8, STR_SMALLMAP_LEGENDA_TRAINS),
-	MK(0xBF, STR_SMALLMAP_LEGENDA_ROAD_VEHICLES),
-	MK(0x98, STR_SMALLMAP_LEGENDA_SHIPS),
-	MK(0x0F, STR_SMALLMAP_LEGENDA_AIRCRAFT),
+	MK(PC_RED,             STR_SMALLMAP_LEGENDA_TRAINS),
+	MK(PC_YELLOW,          STR_SMALLMAP_LEGENDA_ROAD_VEHICLES),
+	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_SHIPS),
+	MK(PC_WHITE,           STR_SMALLMAP_LEGENDA_AIRCRAFT),
 
-	MS(0xD7, STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
-	MK(0xB5, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
+	MS(PC_BLACK,           STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
+	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
 	MKEND()
 };
 
 static const LegendAndColour _legend_routes[] = {
-	MK(0xD7, STR_SMALLMAP_LEGENDA_ROADS),
-	MK(0x0A, STR_SMALLMAP_LEGENDA_RAILROADS),
-	MK(0xB5, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
+	MK(PC_BLACK,           STR_SMALLMAP_LEGENDA_ROADS),
+	MK(PC_GREY,            STR_SMALLMAP_LEGENDA_RAILROADS),
+	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
 
-	MS(0x56, STR_SMALLMAP_LEGENDA_RAILROAD_STATION),
-	MK(0xC2, STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY),
-	MK(0xBF, STR_SMALLMAP_LEGENDA_BUS_STATION),
-	MK(0xB8, STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT),
-	MK(0x98, STR_SMALLMAP_LEGENDA_DOCK),
+	MS(PC_VERY_DARK_BROWN, STR_SMALLMAP_LEGENDA_RAILROAD_STATION),
+	MK(PC_ORANGE,          STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY),
+	MK(PC_YELLOW,          STR_SMALLMAP_LEGENDA_BUS_STATION),
+	MK(PC_RED,             STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT),
+	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_DOCK),
 	MKEND()
 };
 
 static const LegendAndColour _legend_vegetation[] = {
-	MK(0x52, STR_SMALLMAP_LEGENDA_ROUGH_LAND),
-	MK(0x54, STR_SMALLMAP_LEGENDA_GRASS_LAND),
-	MK(0x37, STR_SMALLMAP_LEGENDA_BARE_LAND),
-	MK(0x25, STR_SMALLMAP_LEGENDA_FIELDS),
-	MK(0x57, STR_SMALLMAP_LEGENDA_TREES),
-	MK(0xD0, STR_SMALLMAP_LEGENDA_FOREST),
+	MK(PC_ROUGH_LAND,      STR_SMALLMAP_LEGENDA_ROUGH_LAND),
+	MK(PC_GRASS_LAND,      STR_SMALLMAP_LEGENDA_GRASS_LAND),
+	MK(PC_BARE_LAND,       STR_SMALLMAP_LEGENDA_BARE_LAND),
+	MK(PC_FIELDS,          STR_SMALLMAP_LEGENDA_FIELDS),
+	MK(PC_TREES,           STR_SMALLMAP_LEGENDA_TREES),
+	MK(PC_GREEN,           STR_SMALLMAP_LEGENDA_FOREST),
 
-	MS(0x0A, STR_SMALLMAP_LEGENDA_ROCKS),
-	MK(0xC2, STR_SMALLMAP_LEGENDA_DESERT),
-	MK(0x98, STR_SMALLMAP_LEGENDA_SNOW),
-	MK(0xD7, STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
-	MK(0xB5, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
+	MS(PC_GREY,            STR_SMALLMAP_LEGENDA_ROCKS),
+	MK(PC_ORANGE,          STR_SMALLMAP_LEGENDA_DESERT),
+	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_SNOW),
+	MK(PC_BLACK,           STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
+	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
 	MKEND()
 };
 
 static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIES + 1] = {
-	MO(0xCA, STR_SMALLMAP_LEGENDA_WATER),
-	MO(0x00, STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
-	MO(0xB4, STR_SMALLMAP_LEGENDA_TOWNS),
-	MO(0x20, STR_SMALLMAP_LEGENDA_INDUSTRIES),
+	MO(PC_WATER,           STR_SMALLMAP_LEGENDA_WATER),
+	MO(0x00,               STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
+	MO(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_TOWNS),
+	MO(PC_DARK_GREY,       STR_SMALLMAP_LEGENDA_INDUSTRIES),
 	/* The legend will be terminated the first time it is used. */
 	MOEND(),
 };
@@ -355,34 +362,34 @@ static inline uint32 ApplyMask(uint32 colour, const AndOr *mask)
 
 /** Colour masks for "Contour" and "Routes" modes. */
 static const AndOr _smallmap_contours_andor[] = {
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_CLEAR
-	{MKCOLOUR_0XX0(0x0A), MKCOLOUR_F00F}, // MP_RAILWAY
-	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_ROAD
-	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_HOUSE
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TREES
-	{MKCOLOUR_XXXX(0x98), MKCOLOUR_0000}, // MP_STATION
-	{MKCOLOUR_XXXX(0xCA), MKCOLOUR_0000}, // MP_WATER
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_VOID
-	{MKCOLOUR_XXXX(0xB5), MKCOLOUR_0000}, // MP_INDUSTRY
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
-	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_OBJECT
-	{MKCOLOUR_0XX0(0x0A), MKCOLOUR_F00F},
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_CLEAR
+	{MKCOLOUR_0XX0(PC_GREY      ), MKCOLOUR_F00F}, // MP_RAILWAY
+	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_ROAD
+	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_HOUSE
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TREES
+	{MKCOLOUR_XXXX(PC_LIGHT_BLUE), MKCOLOUR_0000}, // MP_STATION
+	{MKCOLOUR_XXXX(PC_WATER     ), MKCOLOUR_0000}, // MP_WATER
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_VOID
+	{MKCOLOUR_XXXX(PC_DARK_RED  ), MKCOLOUR_0000}, // MP_INDUSTRY
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
+	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_OBJECT
+	{MKCOLOUR_0XX0(PC_GREY      ), MKCOLOUR_F00F},
 };
 
 /** Colour masks for "Vehicles", "Industry", and "Vegetation" modes. */
 static const AndOr _smallmap_vehicles_andor[] = {
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_CLEAR
-	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_RAILWAY
-	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_ROAD
-	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_HOUSE
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TREES
-	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F}, // MP_STATION
-	{MKCOLOUR_XXXX(0xCA), MKCOLOUR_0000}, // MP_WATER
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_VOID
-	{MKCOLOUR_XXXX(0xB5), MKCOLOUR_0000}, // MP_INDUSTRY
-	{MKCOLOUR_0000      , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
-	{MKCOLOUR_0XX0(0xB5), MKCOLOUR_F00F}, // MP_OBJECT
-	{MKCOLOUR_0XX0(0xD7), MKCOLOUR_F00F},
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_CLEAR
+	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_RAILWAY
+	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_ROAD
+	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_HOUSE
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TREES
+	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_STATION
+	{MKCOLOUR_XXXX(PC_WATER     ), MKCOLOUR_0000}, // MP_WATER
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_VOID
+	{MKCOLOUR_XXXX(PC_DARK_RED  ), MKCOLOUR_0000}, // MP_INDUSTRY
+	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
+	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_OBJECT
+	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F},
 };
 
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
@@ -477,11 +484,11 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 {
 	if (t == MP_STATION) {
 		switch (GetStationType(tile)) {
-			case STATION_RAIL:    return MKCOLOUR_XXXX(0x56);
-			case STATION_AIRPORT: return MKCOLOUR_XXXX(0xB8);
-			case STATION_TRUCK:   return MKCOLOUR_XXXX(0xC2);
-			case STATION_BUS:     return MKCOLOUR_XXXX(0xBF);
-			case STATION_DOCK:    return MKCOLOUR_XXXX(0x98);
+			case STATION_RAIL:    return MKCOLOUR_XXXX(PC_VERY_DARK_BROWN);
+			case STATION_AIRPORT: return MKCOLOUR_XXXX(PC_RED);
+			case STATION_TRUCK:   return MKCOLOUR_XXXX(PC_ORANGE);
+			case STATION_BUS:     return MKCOLOUR_XXXX(PC_YELLOW);
+			case STATION_DOCK:    return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
 			default:              return MKCOLOUR_FFFF;
 		}
 	} else if (t == MP_RAILWAY) {
@@ -501,14 +508,14 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 
 
 static const uint32 _vegetation_clear_bits[] = {
-	MKCOLOUR_XXXX(0x54), ///< full grass
-	MKCOLOUR_XXXX(0x52), ///< rough land
-	MKCOLOUR_XXXX(0x0A), ///< rocks
-	MKCOLOUR_XXXX(0x25), ///< fields
-	MKCOLOUR_XXXX(0x98), ///< snow
-	MKCOLOUR_XXXX(0xC2), ///< desert
-	MKCOLOUR_XXXX(0x54), ///< unused
-	MKCOLOUR_XXXX(0x54), ///< unused
+	MKCOLOUR_XXXX(PC_GRASS_LAND), ///< full grass
+	MKCOLOUR_XXXX(PC_ROUGH_LAND), ///< rough land
+	MKCOLOUR_XXXX(PC_GREY),       ///< rocks
+	MKCOLOUR_XXXX(PC_FIELDS),     ///< fields
+	MKCOLOUR_XXXX(PC_LIGHT_BLUE), ///< snow
+	MKCOLOUR_XXXX(PC_ORANGE),     ///< desert
+	MKCOLOUR_XXXX(PC_GRASS_LAND), ///< unused
+	MKCOLOUR_XXXX(PC_GRASS_LAND), ///< unused
 };
 
 /**
@@ -522,19 +529,19 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 {
 	switch (t) {
 		case MP_CLEAR:
-			return (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) ? MKCOLOUR_XXXX(0x37) : _vegetation_clear_bits[GetClearGround(tile)];
+			return (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) ? MKCOLOUR_XXXX(PC_BARE_LAND) : _vegetation_clear_bits[GetClearGround(tile)];
 
 		case MP_INDUSTRY:
-			return GetIndustrySpec(Industry::GetByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR_XXXX(0xD0) : MKCOLOUR_XXXX(0xB5);
+			return GetIndustrySpec(Industry::GetByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR_XXXX(PC_GREEN) : MKCOLOUR_XXXX(PC_DARK_RED);
 
 		case MP_TREES:
 			if (GetTreeGround(tile) == TREE_GROUND_SNOW_DESERT || GetTreeGround(tile) == TREE_GROUND_ROUGH_SNOW) {
-				return (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOUR_XYYX(0x98, 0x57) : MKCOLOUR_XYYX(0xC2, 0x57);
+				return (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOUR_XYYX(PC_LIGHT_BLUE, PC_TREES) : MKCOLOUR_XYYX(PC_ORANGE, PC_TREES);
 			}
-			return MKCOLOUR_XYYX(0x54, 0x57);
+			return MKCOLOUR_XYYX(PC_GRASS_LAND, PC_TREES);
 
 		default:
-			return ApplyMask(MKCOLOUR_XXXX(0x54), &_smallmap_vehicles_andor[t]);
+			return ApplyMask(MKCOLOUR_XXXX(PC_GRASS_LAND), &_smallmap_vehicles_andor[t]);
 	}
 }
 
@@ -550,8 +557,8 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	Owner o;
 
 	switch (t) {
-		case MP_INDUSTRY: return MKCOLOUR_XXXX(0x20);
-		case MP_HOUSE:    return MKCOLOUR_XXXX(0xB4);
+		case MP_INDUSTRY: return MKCOLOUR_XXXX(PC_DARK_GREY);
+		case MP_HOUSE:    return MKCOLOUR_XXXX(PC_DARK_RED);
 		default:          o = GetTileOwner(tile); break;
 		/* FIXME: For MP_ROAD there are multiple owners.
 		 * GetTileOwner returns the rail owner (level crossing) resp. the owner of ROADTYPE_ROAD (normal road),
@@ -560,11 +567,11 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	}
 
 	if ((o < MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE || o == OWNER_WATER) {
-		if (t == MP_WATER) return MKCOLOUR_XXXX(0xCA);
+		if (t == MP_WATER) return MKCOLOUR_XXXX(PC_WATER);
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 		return _smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour;
 	} else if (o == OWNER_TOWN) {
-		return MKCOLOUR_XXXX(0xB4);
+		return MKCOLOUR_XXXX(PC_DARK_RED);
 	}
 
 	return MKCOLOUR_XXXX(_legend_land_owners[_company_to_list_pos[o]].colour);
@@ -572,7 +579,7 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 
 /** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleTypeByte. */
 static const byte _vehicle_type_colours[6] = {
-	184, 191, 152, 15, 215, 184
+	PC_RED, PC_YELLOW, PC_LIGHT_BLUE, PC_WHITE, PC_BLACK, PC_RED
 };
 
 
@@ -866,7 +873,7 @@ class SmallMapWindow : public Window {
 			}
 
 			/* Calculate pointer to pixel and the colour */
-			byte colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
+			byte colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : PC_WHITE;
 
 			/* And draw either one or two pixels depending on clipping */
 			blitter->SetPixel(dpi->dst_ptr, x, y, colour);
