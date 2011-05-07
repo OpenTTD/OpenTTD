@@ -99,7 +99,7 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 		# No rev? Maybe it is a custom git-svn clone
 		REV_NR=`LC_ALL=C git log --pretty=format:%b --grep="git-svn-id:.*@[0-9]*" -1 | sed "s@.*\@\([0-9]*\).*@\1@"`
 	fi
-	TAG="`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null`"
+	TAG="`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's@\^0$@@'`"
 	if [ -n "$TAG" ]; then
 		BRANCH=""
 		REV="$TAG"

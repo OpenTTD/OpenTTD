@@ -227,6 +227,9 @@ Function DetermineSVNVersion()
 						Loop
 						If oExec.ExitCode = 0 Then
 							version = oExec.StdOut.ReadLine()
+							If Right(version, 2) = "^0" Then
+								version = Left(version, Len(version) - 2)
+							End If
 							branch = ""
 						End If ' oExec.ExitCode = 0
 					End If ' Err.Number = 0
