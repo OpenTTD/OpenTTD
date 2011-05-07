@@ -112,10 +112,11 @@ static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Indust
  * function.
  * @param param_setID parameter given to the callback, which is the set id, or the local id, in our terminology
  * @param layout_filter on what layout do we filter?
+ * @param town_filter Do we filter on the same town as the current industry?
  * @param current Industry for which the inquiry is made
  * @return the formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout_filter, const Industry *current)
+static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout_filter, bool town_filter, const Industry *current)
 {
 	uint32 GrfID = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
 	IndustryType ind_index;
@@ -141,7 +142,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 	/* If the industry type is invalid, there is none and the closest is far away. */
 	if (ind_index >= NUM_INDUSTRYTYPES) return 0 | 0xFFFF;
 
-	if (layout_filter == 0) {
+	if (layout_filter == 0 && !town_filter) {
 		/* If the filter is 0, it could be because none was specified as well as being really a 0.
 		 * In either case, just do the regular var67 */
 		closest_dist = GetClosestIndustry(current->location.tile, ind_index, current);
@@ -151,7 +152,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		 * Unfortunately, we have to do it manually */
 		const Industry *i;
 		FOR_ALL_INDUSTRIES(i) {
-			if (i->type == ind_index && i != current && i->selected_layout == layout_filter) {
+			if (i->type == ind_index && i != current && (i->selected_layout == layout_filter || layout_filter == 0) && (!town_filter || i->town == current->town)) {
 				closest_dist = min(closest_dist, DistanceManhattan(current->location.tile, i->location.tile));
 				count++;
 			}
@@ -270,7 +271,16 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Count of industry, distance of closest instance
 		 * 68 is the same as 67, but with a filtering on selected layout */
 		case 0x67:
-		case 0x68: return GetCountAndDistanceOfClosestInstance(parameter, variable == 0x68 ? GB(GetRegister(0x101), 0, 8) : 0, industry);
+		case 0x68: {
+			byte layout_filter = 0;
+			bool town_filter = false;
+			if (variable == 0x68) {
+				uint32 reg = GetRegister(0x101);
+				layout_filter = GB(reg, 0, 8);
+				town_filter = HasBit(reg, 8);
+			}
+			return GetCountAndDistanceOfClosestInstance(parameter, layout_filter, town_filter, industry);
+		}
 
 		/* Get a variable from the persistent storage */
 		case 0x7C: return industry->psa.Get(parameter);
