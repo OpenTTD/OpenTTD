@@ -2507,8 +2507,8 @@ static void DrawTile_Station(TileInfo *ti)
 	if (HasStationRail(ti->tile)) {
 		rti = GetRailTypeInfo(GetRailType(ti->tile));
 		roadtypes = ROADTYPES_NONE;
-		total_offset = rti->total_offset;
-		custom_ground_offset = rti->custom_ground_offset;
+		total_offset = rti->GetRailtypeSpriteOffset();
+		custom_ground_offset = rti->fallback_railtype;
 
 		if (IsCustomStationSpecIndex(ti->tile)) {
 			/* look for customization */
@@ -2713,7 +2713,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 
 	if (railtype != INVALID_RAILTYPE) {
 		rti = GetRailTypeInfo(railtype);
-		total_offset = rti->total_offset;
+		total_offset = rti->GetRailtypeSpriteOffset();
 	}
 
 	SpriteID img = t->ground.sprite;
