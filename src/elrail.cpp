@@ -315,7 +315,6 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		};
 		SpriteID pylon_base = (halftile_corner != CORNER_INVALID && HasBit(edge_corners[i], halftile_corner)) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
-		Foundation foundation = FOUNDATION_NONE;
 		byte elevation = GetPCPElevation(ti->tile, i);
 
 		/* Here's one of the main headaches. GetTileSlope does not correct for possibly
@@ -366,8 +365,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			PPPallowed[i] = 0;
 		}
 
-		/* A station is always "flat", so adjust the tileh accordingly */
-		if (IsTileType(neighbour, MP_STATION)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
+		Foundation foundation = FOUNDATION_NONE;
+
+		/* Station and road crossings are always "flat", so adjust the tileh accordingly */
+		if (IsTileType(neighbour, MP_STATION) || IsTileType(neighbour, MP_ROAD)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
 
 		/* Read the foundataions if they are present, and adjust the tileh */
 		if (trackconfig[TS_NEIGHBOUR] != TRACK_BIT_NONE && IsTileType(neighbour, MP_RAILWAY) && HasCatenary(GetRailType(neighbour))) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
