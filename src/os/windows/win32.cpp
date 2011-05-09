@@ -376,9 +376,7 @@ void ShowInfo(const char *str)
 			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
 			wchar_t help_msgW[8192];
 #endif
-			if (MessageBox(GetActiveWindow(), MB_TO_WIDE_BUFFER(str, help_msgW, lengthof(help_msgW)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
-				CreateConsole();
-			}
+			MessageBox(GetActiveWindow(), MB_TO_WIDE_BUFFER(str, help_msgW, lengthof(help_msgW)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OK);
 		}
 		MyShowCursor(old);
 	}
