@@ -5758,7 +5758,7 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 	if (op != 4 && op != 5) {
 		/* Deactivate GRF */
 		grfmsg(0, "ParamSet: GRM: Unable to allocate %d %s, deactivating", count, type);
-		DisableGrf();
+		DisableGrf(STR_NEWGRF_ERROR_GRM_FAILED);
 		return UINT_MAX;
 	}
 
@@ -5833,7 +5833,7 @@ static void ParamSet(ByteReader *buf)
 							/* Check if the allocated sprites will fit below the original sprite limit */
 							if (_cur_spriteid + count >= 16384) {
 								grfmsg(0, "ParamSet: GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
-								DisableGrf();
+								DisableGrf(STR_NEWGRF_ERROR_GRM_FAILED);
 								return;
 							}
 
@@ -6110,7 +6110,7 @@ static void GRFInhibit(ByteReader *buf)
 		/* Unset activation flag */
 		if (file != NULL && file != _cur_grfconfig) {
 			grfmsg(2, "GRFInhibit: Deactivating file '%s'", file->filename);
-			GRFError *error = DisableGrf(STR_NULL, file);
+			GRFError *error = DisableGrf(STR_NEWGRF_ERROR_FORCEFULLY_DISABLED, file);
 			error->data = strdup(_cur_grfconfig->GetName());
 		}
 	}
