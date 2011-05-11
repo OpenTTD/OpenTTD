@@ -282,6 +282,34 @@ static void ClearTemporaryNewGRFData(GRFFile *gf)
 	gf->spritegroups_count = 0;
 }
 
+/**
+ * Disable a GRF
+ * @param message Error message or STR_NULL
+ * @param config GRFConfig to disable, NULL for current
+ * @return Error message of the GRF for further customisation
+ */
+static GRFError *DisableGrf(StringID message = STR_NULL, GRFConfig *config = NULL)
+{
+	GRFFile *file;
+	if (config != NULL) {
+		file = GetFileByGRFID(config->ident.grfid);
+	} else {
+		config = _cur_grfconfig;
+		file = _cur_grffile;
+	}
+
+	config->status = GCS_DISABLED;
+	if (file != NULL) ClearTemporaryNewGRFData(file);
+	if (config == _cur_grfconfig) _skip_sprites = -1;
+
+	if (message != STR_NULL) {
+		delete config->error;
+		config->error = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, message);
+	}
+
+	return config->error;
+}
+
 
 typedef std::map<StringID *, uint32> StringIDToGRFIDMapping;
 static StringIDToGRFIDMapping _string_to_grf_mapping;
@@ -3488,11 +3516,7 @@ static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uin
 
 		case CIR_INVALID_ID:
 			/* No debug message for an invalid ID, as it has already been output */
-			_skip_sprites = -1;
-			_cur_grfconfig->status = GCS_DISABLED;
-			delete _cur_grfconfig->error;
-			_cur_grfconfig->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL);
-			_cur_grfconfig->error->message  = (cir == CIR_INVALID_ID) ? STR_NEWGRF_ERROR_INVALID_ID : STR_NEWGRF_ERROR_UNKNOWN_PROPERTY;
+			DisableGrf(cir == CIR_INVALID_ID ? STR_NEWGRF_ERROR_INVALID_ID : STR_NEWGRF_ERROR_UNKNOWN_PROPERTY);
 			return true;
 	}
 }
@@ -5215,12 +5239,8 @@ static void CfgApply(ByteReader *buf)
  */
 static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 {
-	delete c->error;
-	c->status = GCS_DISABLED;
-	c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC);
-	c->error->data = strdup(_cur_grfconfig->GetName());
-
-	ClearTemporaryNewGRFData(GetFileByGRFID(c->ident.grfid));
+	GRFError *error = DisableGrf(STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC, c);
+	error->data = strdup(_cur_grfconfig->GetName());
 }
 
 /* Action 0x07
@@ -5382,8 +5402,7 @@ static void SkipIf(ByteReader *buf)
 
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
 		if (_cur_grfconfig->status != (_cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED)) {
-			_cur_grfconfig->status = GCS_DISABLED;
-			ClearTemporaryNewGRFData(_cur_grffile);
+			DisableGrf();
 		}
 	}
 }
@@ -5432,11 +5451,7 @@ static void GRFInfo(ByteReader *buf)
 	const char *name = buf->ReadString();
 
 	if (_cur_stage < GLS_RESERVE && _cur_grfconfig->status != GCS_UNKNOWN) {
-		_cur_grfconfig->status = GCS_DISABLED;
-		delete _cur_grfconfig->error;
-		_cur_grfconfig->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_MULTIPLE_ACTION_8);
-
-		_skip_sprites = -1;
+		DisableGrf(STR_NEWGRF_ERROR_MULTIPLE_ACTION_8);
 		return;
 	}
 
@@ -5561,9 +5576,7 @@ static void GRFLoadError(ByteReader *buf)
 	} else if (severity == 3) {
 		/* This is a fatal error, so make sure the GRF is deactivated and no
 		 * more of it gets loaded. */
-		_cur_grfconfig->status = GCS_DISABLED;
-		ClearTemporaryNewGRFData(_cur_grffile);
-		_skip_sprites = -1;
+		DisableGrf();
 	}
 
 	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
@@ -5745,9 +5758,7 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 	if (op != 4 && op != 5) {
 		/* Deactivate GRF */
 		grfmsg(0, "ParamSet: GRM: Unable to allocate %d %s, deactivating", count, type);
-		_cur_grfconfig->status = GCS_DISABLED;
-		ClearTemporaryNewGRFData(_cur_grffile);
-		_skip_sprites = -1;
+		DisableGrf();
 		return UINT_MAX;
 	}
 
@@ -5822,9 +5833,7 @@ static void ParamSet(ByteReader *buf)
 							/* Check if the allocated sprites will fit below the original sprite limit */
 							if (_cur_spriteid + count >= 16384) {
 								grfmsg(0, "ParamSet: GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
-								_cur_grfconfig->status = GCS_DISABLED;
-								ClearTemporaryNewGRFData(_cur_grffile);
-								_skip_sprites = -1;
+								DisableGrf();
 								return;
 							}
 
@@ -6101,7 +6110,8 @@ static void GRFInhibit(ByteReader *buf)
 		/* Unset activation flag */
 		if (file != NULL && file != _cur_grfconfig) {
 			grfmsg(2, "GRFInhibit: Deactivating file '%s'", file->filename);
-			file->status = GCS_DISABLED;
+			GRFError *error = DisableGrf(STR_NULL, file);
+			error->data = strdup(_cur_grfconfig->GetName());
 		}
 	}
 }
@@ -6172,9 +6182,7 @@ static void FeatureTownName(ByteReader *buf)
 				if (townname->nbparts[ref_id] == 0) {
 					grfmsg(0, "FeatureTownName: definition 0x%02X doesn't exist, deactivating", ref_id);
 					DelGRFTownName(grfid);
-					_cur_grfconfig->status = GCS_DISABLED;
-					ClearTemporaryNewGRFData(_cur_grffile);
-					_skip_sprites = -1;
+					DisableGrf(STR_NEWGRF_ERROR_INVALID_ID);
 					return;
 				}
 
@@ -6449,16 +6457,12 @@ static void TranslateGRFStrings(ByteReader *buf)
 	if (c->status == GCS_INITIALISED) {
 		/* If the file is not active but will be activated later, give an error
 		 * and disable this file. */
-		delete _cur_grfconfig->error;
-		_cur_grfconfig->error = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_LOAD_AFTER);
+		GRFError *error = DisableGrf(STR_NEWGRF_ERROR_LOAD_AFTER);
 
 		char tmp[256];
 		GetString(tmp, STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE, lastof(tmp));
-		_cur_grfconfig->error->data = strdup(tmp);
+		error->data = strdup(tmp);
 
-		_cur_grfconfig->status = GCS_DISABLED;
-		ClearTemporaryNewGRFData(_cur_grffile);
-		_skip_sprites = -1;
 		return;
 	}
 
@@ -7902,11 +7906,7 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		}
 	} catch (...) {
 		grfmsg(1, "DecodeSpecialSprite: Tried to read past end of pseudo-sprite data");
-
-		_skip_sprites = -1;
-		_cur_grfconfig->status = GCS_DISABLED;
-		delete _cur_grfconfig->error;
-		_cur_grfconfig->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_READ_BOUNDS);
+		DisableGrf(STR_NEWGRF_ERROR_READ_BOUNDS);
 	}
 }
 
@@ -7981,9 +7981,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		} else {
 			if (_skip_sprites == 0) {
 				grfmsg(0, "LoadNewGRFFile: Unexpected sprite, disabling");
-				config->status = GCS_DISABLED;
-				delete config->error;
-				config->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
+				DisableGrf(STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
 				break;
 			}
 
