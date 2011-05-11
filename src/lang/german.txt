@@ -1224,6 +1224,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langes (25. Dez
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kurzes (25-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-25)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatische Pause bei Spielstart: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Erlauben während angehaltenen Spiels: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :keine Tätigkeiten
@@ -3835,7 +3836,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=w}Wasserquel
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Wasserturm
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=w}Fabrik
 STR_INDUSTRY_NAME_FARM_2                                        :{G=m}Bauernhof
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=w}Holzmühle
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=w}Sägemühle
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Zuckerwattewald
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=w}Bonbonfabrik
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=w}Batterieplantage
