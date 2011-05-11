@@ -34,6 +34,9 @@
  */
 void ShowNewGRFError()
 {
+	/* Do not show errors when entering the main screen */
+	if (_game_mode == GM_MENU) return;
+
 	for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		/* We only want to show fatal errors */
 		if (c->error == NULL || c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL) continue;
