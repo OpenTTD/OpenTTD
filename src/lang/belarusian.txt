@@ -2808,6 +2808,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Змяшчае некалькі Action 8 дзеяньняў.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Дадзеныя раптоўна скончыліся.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай графікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай графікі.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошаныя рэсурсы GRF недаступныя
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} быў адключаны з-за {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асцярожна!

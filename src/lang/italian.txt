@@ -2495,6 +2495,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene occorrenze multiple dell'azione 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lettura oltre la fine dello pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nello stile grafico di base attualmente in uso mancano alcuni sprite.{}È consigliabile aggiornare lo stile grafico di base
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Risorsa GRF richiesta non disponibile
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} è stato disabilitato da {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attenzione!

@@ -2472,6 +2472,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contient plusieurs Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après la fin d'un pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certains sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base
+STR_NEWGRF_ERROR_GRM_FAILED                                     :La ressource GRF demandée n'est pas disponible
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} a été désactivé par {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!
