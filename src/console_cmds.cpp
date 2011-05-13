@@ -495,7 +495,11 @@ static bool ConKickOrBan(const char *argv, bool ban)
 	if (strchr(argv, '.') == NULL && strchr(argv, ':') == NULL) { // banning with ID
 		ClientID client_id = (ClientID)atoi(argv);
 
-		if (client_id == CLIENT_ID_SERVER) {
+		/* Don't kill the server, or the client doing the rcon. The latter can't be kicked because
+		 * kicking frees closes and subsequently free the connection related instances, which we
+		 * would be reading from and writing to after returning. So we would read or write data
+		 * from freed memory up till the segfault triggers. */
+		if (client_id == CLIENT_ID_SERVER || client_id == _redirect_console_to_client) {
 			IConsolePrintF(CC_ERROR, "ERROR: Silly boy, you can not %s yourself!", ban ? "ban" : "kick");
 			return true;
 		}
