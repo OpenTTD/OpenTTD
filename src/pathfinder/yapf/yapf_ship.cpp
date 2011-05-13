@@ -13,6 +13,7 @@
 #include "../../ship.h"
 
 #include "yapf.hpp"
+#include "yapf_node_ship.hpp"
 
 /** Node Follower module of YAPF for ships */
 template <class Types>
