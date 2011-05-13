@@ -2247,7 +2247,7 @@ static void DrawTile_Track(TileInfo *ti)
 			image = SPR_FLAT_GRASS_TILE;
 		} else {
 			image = dts->ground.sprite;
-			if (image != SPR_FLAT_GRASS_TILE) image += rti->total_offset;
+			if (image != SPR_FLAT_GRASS_TILE) image += rti->GetRailtypeSpriteOffset();
 		}
 
 		/* adjust ground tile for desert
@@ -2286,7 +2286,7 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 
 			int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
-			relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->total_offset;
+			relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
 		} else {
 			/* PBS debugging, draw reserved tracks darker */
 			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
@@ -2299,7 +2299,7 @@ static void DrawTile_Track(TileInfo *ti)
 				}
 			}
 
-			relocation = rti->total_offset;
+			relocation = rti->GetRailtypeSpriteOffset();
 		}
 
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
@@ -2314,7 +2314,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	const DrawTileSprites *dts = &_depot_gfx_table[dir];
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID image = rti->UsesOverlay() ? SPR_FLAT_GRASS_TILE : dts->ground.sprite;
-	uint32 offset = rti->total_offset;
+	uint32 offset = rti->GetRailtypeSpriteOffset();
 
 	x += 33;
 	y += 17;

@@ -163,24 +163,14 @@ struct RailtypeInfo {
 	RailTypes compatible_railtypes;
 
 	/**
-	 * Offset between the current railtype and normal rail. This means that:<p>
-	 * 1) All the sprites in a railset MUST be in the same order. This order
-	 *    is determined by normal rail. Check sprites 1005 and following for this order<p>
-	 * 2) The position where the railtype is loaded must always be the same, otherwise
-	 *    the offset will fail.
-	 * @note: Something more flexible might be desirable in the future.
-	 */
-	SpriteID total_offset;
-
-	/**
 	 * Bridge offset
 	 */
 	SpriteID bridge_offset;
 
 	/**
-	 * Offset to add to ground sprite when drawing custom waypoints / stations
+	 * Original railtype number to use when drawing non-newgrf railtypes, or when drawing stations.
 	 */
-	byte custom_ground_offset;
+	byte fallback_railtype;
 
 	/**
 	 * Multiplier for curve maximum speed advantage
@@ -250,6 +240,18 @@ struct RailtypeInfo {
 	inline bool UsesOverlay() const
 	{
 		return this->group[RTSG_GROUND] != NULL;
+	}
+
+	/**
+	 * Offset between the current railtype and normal rail. This means that:<p>
+	 * 1) All the sprites in a railset MUST be in the same order. This order
+	 *    is determined by normal rail. Check sprites 1005 and following for this order<p>
+	 * 2) The position where the railtype is loaded must always be the same, otherwise
+	 *    the offset will fail.
+	 */
+	inline uint GetRailtypeSpriteOffset() const
+	{
+		return 82 * this->fallback_railtype;
 	}
 };
 

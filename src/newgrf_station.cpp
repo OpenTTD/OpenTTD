@@ -768,14 +768,14 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	PaletteID pal = sprites->ground.pal;
 	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
-		image += rti->custom_ground_offset;
+		image += rti->fallback_railtype;
 	} else {
-		image += rti->total_offset;
+		image += rti->GetRailtypeSpriteOffset();
 	}
 
 	DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
 
-	DrawRailTileSeqInGUI(x, y, sprites, rti->total_offset, relocation, palette);
+	DrawRailTileSeqInGUI(x, y, sprites, rti->GetRailtypeSpriteOffset(), relocation, palette);
 
 	return true;
 }

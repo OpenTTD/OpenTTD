@@ -65,13 +65,10 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* Compatible railtypes */
 		RAILTYPES_RAIL | RAILTYPES_ELECTRIC,
 
-		/* main offset */
-		0,
-
 		/* bridge offset */
 		0,
 
-		/* custom ground offset */
+		/* fallback_railtype */
 		0,
 
 		/* curve speed advantage (multiplier) */
@@ -160,13 +157,10 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* Compatible railtypes */
 		RAILTYPES_ELECTRIC | RAILTYPES_RAIL,
 
-		/* main offset */
-		0,
-
 		/* bridge offset */
 		0,
 
-		/* custom ground offset */
+		/* fallback_railtype */
 		0,
 
 		/* curve speed advantage (multiplier) */
@@ -251,13 +245,10 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* Compatible Railtypes */
 		RAILTYPES_MONO,
 
-		/* main offset */
-		82,
-
 		/* bridge offset */
 		16,
 
-		/* custom ground offset */
+		/* fallback_railtype */
 		1,
 
 		/* curve speed advantage (multiplier) */
@@ -342,13 +333,10 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* Compatible Railtypes */
 		RAILTYPES_MAGLEV,
 
-		/* main offset */
-		164,
-
 		/* bridge offset */
 		24,
 
-		/* custom ground offset */
+		/* fallback_railtype */
 		2,
 
 		/* curve speed advantage (multiplier) */
