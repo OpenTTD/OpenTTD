@@ -2666,6 +2666,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži višestruke Action 8 unose
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje posle završetka pseudo-sprajta
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Odabranom skupu osnovnih grafika nedostaje neki broj sprajtova.{}Molimo Vas da ga ažurirate
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Zatraženi GRF resusrsi nisu dostupni
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je isključen od strane {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
