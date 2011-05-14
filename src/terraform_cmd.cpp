@@ -308,16 +308,18 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			if (z_E > z_min) tileh |= SLOPE_E;
 			if (z_N > z_min) tileh |= SLOPE_N;
 
-			/* Check if bridge would take damage */
-			if (direction == 1 && MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) &&
-					GetBridgeHeight(GetSouthernBridgeEnd(tile)) <= z_max * TILE_HEIGHT) {
-				_terraform_err_tile = tile; // highlight the tile under the bridge
-				return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-			}
-			/* Check if tunnel would take damage */
-			if (direction == -1 && IsTunnelInWay(tile, z_min * TILE_HEIGHT)) {
-				_terraform_err_tile = tile; // highlight the tile above the tunnel
-				return_cmd_error(STR_ERROR_EXCAVATION_WOULD_DAMAGE);
+			if (pass == 0) {
+				/* Check if bridge would take damage */
+				if (direction == 1 && MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) &&
+						GetBridgeHeight(GetSouthernBridgeEnd(tile)) <= z_max * TILE_HEIGHT) {
+					_terraform_err_tile = tile; // highlight the tile under the bridge
+					return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+				}
+				/* Check if tunnel would take damage */
+				if (direction == -1 && IsTunnelInWay(tile, z_min * TILE_HEIGHT)) {
+					_terraform_err_tile = tile; // highlight the tile above the tunnel
+					return_cmd_error(STR_ERROR_EXCAVATION_WOULD_DAMAGE);
+				}
 			}
 
 			/* Is the tile already cleared? */
