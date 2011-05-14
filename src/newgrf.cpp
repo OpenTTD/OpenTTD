@@ -1222,19 +1222,16 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 			case 0x09: // Define sprite layout
 				statspec->tiles = buf->ReadExtendedByte();
-				statspec->renderdata = CallocT<DrawTileSprites>(statspec->tiles);
+				statspec->renderdata = new NewGRFSpriteLayout[statspec->tiles];
 
 				for (uint t = 0; t < statspec->tiles; t++) {
-					DrawTileSprites *dts = &statspec->renderdata[t];
-					uint seq_count = 0;
+					NewGRFSpriteLayout *dts = &statspec->renderdata[t];
 
-					dts->seq = NULL;
 					dts->ground.sprite = buf->ReadWord();
 					dts->ground.pal = buf->ReadWord();
 					if (dts->ground.sprite == 0 && dts->ground.pal == 0) {
 						extern const DrawTileSprites _station_display_datas_rail[8];
-						dts->ground = _station_display_datas_rail[t % 8].ground;
-						dts->seq = CopyDrawTileSeqStruct(_station_display_datas_rail[t % 8].seq);
+						dts->Clone(&_station_display_datas_rail[t % 8]);
 						continue;
 					}
 					if (HasBit(dts->ground.pal, 15)) {
@@ -1245,10 +1242,12 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 					MapSpriteMappingRecolour(&dts->ground);
 
+					static SmallVector<DrawTileSeqStruct, 8> tmp_layout;
+					tmp_layout.Clear();
 					for (;;) {
 						/* no relative bounding box support */
-						dts->seq = ReallocT(const_cast<DrawTileSeqStruct *>(dts->seq), ++seq_count);
-						DrawTileSeqStruct *dtss = const_cast<DrawTileSeqStruct *>(&dts->seq[seq_count - 1]);
+						DrawTileSeqStruct *dtss = tmp_layout.Append();
+						MemSetT(dtss, 0);
 
 						dtss->delta_x = buf->ReadByte();
 						if (dtss->IsTerminator()) break;
@@ -1269,6 +1268,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 						MapSpriteMappingRecolour(&dtss->image);
 					}
+					dts->Clone(tmp_layout.Begin());
 				}
 				break;
 
@@ -1282,10 +1282,9 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				}
 
 				statspec->tiles = srcstatspec->tiles;
-				statspec->renderdata = MallocT<DrawTileSprites>(statspec->tiles);
+				statspec->renderdata = new NewGRFSpriteLayout[statspec->tiles];
 				for (uint t = 0; t < statspec->tiles; t++) {
-					statspec->renderdata[t].ground = srcstatspec->renderdata[t].ground;
-					statspec->renderdata[t].seq = CopyDrawTileSeqStruct(srcstatspec->renderdata[t].seq);
+					statspec->renderdata[t].Clone(&srcstatspec->renderdata[t]);
 				}
 				break;
 			}
@@ -3947,7 +3946,7 @@ static void NewSpriteGroup(ByteReader *buf)
 					act_group = group;
 					/* num_building_stages should be 1, if we are only using non-custom sprites */
 					group->num_building_stages = max((uint8)1, num_spriteset_ents);
-					group->dts = CallocT<DrawTileSprites>(1);
+					group->dts = new NewGRFSpriteLayout();
 
 					/* Groundsprite */
 					group->dts->ground.sprite = buf->ReadWord();
@@ -3972,8 +3971,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						}
 					}
 
-					group->dts->seq = CallocT<DrawTileSeqStruct>(num_building_sprites + 1);
-
+					group->dts->Allocate(num_building_sprites);
 					for (i = 0; i < num_building_sprites; i++) {
 						DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&group->dts->seq[i]);
 
@@ -4009,10 +4007,6 @@ static void NewSpriteGroup(ByteReader *buf)
 						seq->size_y = buf->ReadByte();
 						seq->size_z = buf->ReadByte();
 					}
-
-					/* Set the terminator value. */
-					const_cast<DrawTileSeqStruct *>(group->dts->seq)[i].MakeTerminator();
-
 					break;
 				}
 
@@ -7063,10 +7057,7 @@ static void ResetCustomStations()
 			if (stations[i] == NULL) continue;
 			StationSpec *statspec = stations[i];
 
-			for (uint t = 0; t < statspec->tiles; t++) {
-				free((void*)statspec->renderdata[t].seq);
-			}
-			free(statspec->renderdata);
+			delete[] statspec->renderdata;
 
 			/* Release platforms and layouts */
 			if (!statspec->copied_layouts) {

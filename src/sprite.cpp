@@ -110,17 +110,3 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 		}
 	}
 }
-
-/** Create a copy of an existing DrawTileSeqStruct array. */
-const DrawTileSeqStruct *CopyDrawTileSeqStruct(const DrawTileSeqStruct *dtss)
-{
-	const DrawTileSeqStruct *element;
-
-	size_t count = 1; // 1 for the terminator
-	foreach_draw_tile_seq(element, dtss) count++;
-
-	DrawTileSeqStruct *copy = MallocT<DrawTileSeqStruct>(count);
-	MemCpyT(copy, dtss, count);
-
-	return copy;
-}

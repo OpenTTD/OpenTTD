@@ -52,9 +52,11 @@ struct DrawTileSeqStruct {
 	}
 };
 
-const DrawTileSeqStruct *CopyDrawTileSeqStruct(const DrawTileSeqStruct *dtss);
-
-/** Ground palette sprite of a tile, together with its child sprites */
+/**
+ * Ground palette sprite of a tile, together with its sprite layout.
+ * This struct is used for static sprite layouts in the code.
+ * For allocated ones from NewGRF see #NewGRFSpriteLayout.
+ */
 struct DrawTileSprites {
 	PalSpriteID ground;           ///< Palette and sprite for the ground
 	const DrawTileSeqStruct *seq; ///< Array of child sprites. Terminated with a terminator entry

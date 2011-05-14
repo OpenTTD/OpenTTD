@@ -77,7 +77,7 @@ struct StationSpec {
 	 * 6-7 = platform with roof, right side
 	 */
 	uint tiles;
-	DrawTileSprites *renderdata; ///< Array of tile layouts.
+	NewGRFSpriteLayout *renderdata; ///< Array of tile layouts.
 
 	/**
 	 * Cargo threshold for choosing between little and lots of cargo

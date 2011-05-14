@@ -434,3 +434,34 @@ uint32 GetNearbyTileInformation(TileIndex tile)
 	byte terrain_type = GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;
 }
+
+/**
+ * Clone the building sprites of a spritelayout.
+ * @param source The building sprites to copy.
+ */
+void NewGRFSpriteLayout::Clone(const DrawTileSeqStruct *source)
+{
+	assert(this->seq == NULL);
+	assert(source != NULL);
+
+	size_t count = 1; // 1 for the terminator
+	const DrawTileSeqStruct *element;
+	foreach_draw_tile_seq(element, source) count++;
+
+	DrawTileSeqStruct *sprites = MallocT<DrawTileSeqStruct>(count);
+	MemCpyT(sprites, source, count);
+	this->seq = sprites;
+}
+
+/**
+ * Allocate a spritelayout for \a num_sprites building sprites.
+ * @param num_sprites Number of building sprites to allocate memory for. (not counting the terminator)
+ */
+void NewGRFSpriteLayout::Allocate(uint num_sprites)
+{
+	assert(this->seq == NULL);
+
+	DrawTileSeqStruct *sprites = CallocT<DrawTileSeqStruct>(num_sprites + 1);
+	sprites[num_sprites].MakeTerminator();
+	this->seq = sprites;
+}

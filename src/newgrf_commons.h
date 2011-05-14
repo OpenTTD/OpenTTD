@@ -16,12 +16,40 @@
 #define NEWGRF_COMMONS_H
 
 #include "tile_type.h"
+#include "sprite.h"
+#include "core/alloc_type.hpp"
 
-/** Contextx for tile accesses */
+/** Context for tile accesses */
 enum TileContext {
 	TCX_NORMAL,         ///< Nothing special.
 	TCX_UPPER_HALFTILE, ///< Querying information about the upper part of a tile with halftile foundation.
 	TCX_ON_BRIDGE,      ///< Querying information about stuff on the bridge (via some bridgehead).
+};
+
+/**
+ * NewGRF supplied spritelayout.
+ * In contrast to #DrawTileSprites this struct is for allocated
+ * layouts on the heap. It allocates data and frees them on destruction.
+ */
+struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
+	void Allocate(uint num_sprites);
+	void Clone(const DrawTileSeqStruct *source);
+
+	/**
+	 * Clone a spritelayout.
+	 * @param source The spritelayout to copy.
+	 */
+	void Clone(const DrawTileSprites *source)
+	{
+		assert(source != NULL && this != source);
+		this->ground = source->ground;
+		this->Clone(source->seq);
+	}
+
+	virtual ~NewGRFSpriteLayout()
+	{
+		free(const_cast<DrawTileSeqStruct*>(this->seq));
+	}
 };
 
 /**
