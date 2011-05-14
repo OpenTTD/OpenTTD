@@ -280,10 +280,10 @@ struct ResultSpriteGroup : SpriteGroup {
 
 struct TileLayoutSpriteGroup : SpriteGroup {
 	TileLayoutSpriteGroup() : SpriteGroup(SGT_TILELAYOUT) {}
-	~TileLayoutSpriteGroup();
+	~TileLayoutSpriteGroup() {}
 
 	byte num_building_stages;    ///< Number of building stages to show for this house/industry tile
-	NewGRFSpriteLayout *dts;
+	NewGRFSpriteLayout dts;
 };
 
 struct IndustryProductionSpriteGroup : SpriteGroup {

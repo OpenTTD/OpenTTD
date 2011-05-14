@@ -3946,34 +3946,33 @@ static void NewSpriteGroup(ByteReader *buf)
 					act_group = group;
 					/* num_building_stages should be 1, if we are only using non-custom sprites */
 					group->num_building_stages = max((uint8)1, num_spriteset_ents);
-					group->dts = new NewGRFSpriteLayout();
 
 					/* Groundsprite */
-					group->dts->ground.sprite = buf->ReadWord();
-					group->dts->ground.pal    = buf->ReadWord();
+					group->dts.ground.sprite = buf->ReadWord();
+					group->dts.ground.pal    = buf->ReadWord();
 
 					/* Remap transparent/colour modifier bits */
-					MapSpriteMappingRecolour(&group->dts->ground);
+					MapSpriteMappingRecolour(&group->dts.ground);
 
-					if (HasBit(group->dts->ground.pal, 15)) {
+					if (HasBit(group->dts.ground.pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
 						 * last spriteset defined. */
-						uint spriteset = GB(group->dts->ground.sprite, 0, 14);
+						uint spriteset = GB(group->dts.ground.sprite, 0, 14);
 						if (num_spriteset_ents == 0 || spriteset >= num_spritesets) {
 							grfmsg(1, "NewSpriteGroup: Spritelayout uses undefined custom spriteset %d", spriteset);
-							group->dts->ground.sprite = SPR_IMG_QUERY;
-							group->dts->ground.pal = PAL_NONE;
+							group->dts.ground.sprite = SPR_IMG_QUERY;
+							group->dts.ground.pal = PAL_NONE;
 						} else {
 							SpriteID sprite = _cur_grffile->spriteset_start + spriteset * num_spriteset_ents;
-							SB(group->dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
-							ClrBit(group->dts->ground.pal, 15);
-							SetBit(group->dts->ground.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
+							SB(group->dts.ground.sprite, 0, SPRITE_WIDTH, sprite);
+							ClrBit(group->dts.ground.pal, 15);
+							SetBit(group->dts.ground.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 						}
 					}
 
-					group->dts->Allocate(num_building_sprites);
+					group->dts.Allocate(num_building_sprites);
 					for (i = 0; i < num_building_sprites; i++) {
-						DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&group->dts->seq[i]);
+						DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&group->dts.seq[i]);
 
 						seq->image.sprite = buf->ReadWord();
 						seq->image.pal    = buf->ReadWord();

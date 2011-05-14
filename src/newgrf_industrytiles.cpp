@@ -176,7 +176,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 
 static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte rnd_colour, byte stage, IndustryGfx gfx)
 {
-	const DrawTileSprites *dts = group->dts;
+	const DrawTileSprites *dts = &group->dts;
 
 	SpriteID image = dts->ground.sprite;
 	PaletteID pal  = dts->ground.pal;

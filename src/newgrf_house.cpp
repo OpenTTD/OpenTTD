@@ -412,7 +412,7 @@ uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, House
 
 static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte stage, HouseID house_id)
 {
-	const DrawTileSprites *dts = group->dts;
+	const DrawTileSprites *dts = &group->dts;
 
 	const HouseSpec *hs = HouseSpec::Get(house_id);
 	PaletteID palette = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOUR_START;

@@ -264,7 +264,7 @@ uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2,
 
 static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, byte colour, StationGfx gfx)
 {
-	const DrawTileSprites *dts = group->dts;
+	const DrawTileSprites *dts = &group->dts;
 
 	SpriteID image = dts->ground.sprite;
 	SpriteID pal   = dts->ground.pal;
