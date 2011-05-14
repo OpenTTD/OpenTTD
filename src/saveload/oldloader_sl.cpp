@@ -388,7 +388,7 @@ static bool FixTTOEngines()
 		v->engine_type = tto_to_ttd[v->engine_type];
 	}
 
-	/* Load the default engine set. Many of them will be overriden later */
+	/* Load the default engine set. Many of them will be overridden later */
 	uint j = 0;
 	for (uint i = 0; i < lengthof(_orig_rail_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_TRAIN, i);
 	for (uint i = 0; i < lengthof(_orig_road_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_ROAD, i);
@@ -517,9 +517,9 @@ static void ReadTTDPatchFlags()
 	_old_vehicle_names = MallocT<StringID>(_old_vehicle_multiplier * 850);
 
 	/* TTDPatch increases the Vehicle-part in the middle of the game,
-	 * so if the multipler is anything else but 1, the assert fails..
+	 * so if the multiplier is anything else but 1, the assert fails..
 	 * bump the assert value so it doesn't!
-	 * (1 multipler == 850 vehicles
+	 * (1 multiplier == 850 vehicles
 	 * 1 vehicle   == 128 bytes */
 	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
 

@@ -80,7 +80,7 @@ bool AirportSpec::IsAvailable() const
 }
 
 /**
- * This function initialize the airportspec array.
+ * This function initializes the airportspec array.
  */
 void AirportSpec::ResetAirports()
 {

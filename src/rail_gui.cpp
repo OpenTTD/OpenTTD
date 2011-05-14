@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file rail_gui.cpp File for dealing with rail construction user interface */
+/** @file rail_gui.cpp %File for dealing with rail construction user interface */
 
 #include "stdafx.h"
 #include "gui.h"
@@ -54,7 +54,7 @@ struct RailStationGUISettings {
 
 	bool newstations;                 ///< Are custom station definitions available?
 	StationClassID station_class;     ///< Currently selected custom station class (if newstations is \c true )
-	byte station_type;                ///< Station type within the currently selected custom station class (if newstations is \c true )
+	byte station_type;                ///< %Station type within the currently selected custom station class (if newstations is \c true )
 	byte station_count;               ///< Number of custom stations (if newstations is \c true )
 };
 static RailStationGUISettings _railstation; ///< Settings of the station builder GUI

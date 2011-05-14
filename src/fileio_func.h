@@ -27,7 +27,7 @@ void FioReadBlock(void *ptr, size_t size);
 void FioSkipBytes(int n);
 
 /**
- * The searchpaths OpenTTD could search through.
+ * The search paths OpenTTD could search through.
  * At least one of the slots has to be filled with a path.
  * NULL paths tell that there is no such path for the
  * current operating system.

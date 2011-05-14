@@ -232,7 +232,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 					SetTileOwner(other_end, other_owner);
 				}
 
-				/* Mark tiles diry that have been repaved */
+				/* Mark tiles dirty that have been repaved */
 				MarkTileDirtyByTile(tile);
 				MarkTileDirtyByTile(other_end);
 				if (IsBridge(tile)) {
@@ -690,7 +690,7 @@ do_clear:;
 				SetRoadOwner(other_end, rt, _current_company);
 				SetRoadOwner(tile, rt, _current_company);
 
-				/* Mark tiles diry that have been repaved */
+				/* Mark tiles dirty that have been repaved */
 				MarkTileDirtyByTile(other_end);
 				MarkTileDirtyByTile(tile);
 				if (IsBridge(tile)) {
@@ -763,7 +763,7 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 	}
 
 	/* On the X-axis, we have to swap the initial bits, so they
-	 * will be interpreted correctly in the GTTS. Futhermore
+	 * will be interpreted correctly in the GTTS. Furthermore
 	 * when you just 'click' on one tile to build them. */
 	if ((axis == AXIS_Y) == (start_tile == end_tile && HasBit(p2, 0) == HasBit(p2, 1))) drd ^= DRD_BOTH;
 	/* No disallowed direction bits have to be toggled */

@@ -224,9 +224,9 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *ful
  * Calculate and check the MD5 hash of the supplied filename.
  * @param subdir The sub directory to get the files from
  * @return
- *  CR_MATCH if the MD5 hash matches
- *  CR_MISMATCH if the MD5 does not match
- *  CR_NO_FILE if the file misses
+ * - #CR_MATCH if the MD5 hash matches
+ * - #CR_MISMATCH if the MD5 does not match
+ * - #CR_NO_FILE if the file misses
  */
 MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir) const
 {

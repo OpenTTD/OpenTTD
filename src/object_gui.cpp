@@ -45,7 +45,7 @@ class BuildObjectWindow : public PickerWindowBase {
 	int line_height;                    ///< The height of a single line.
 	int object_height;                  ///< The height of the object box.
 	int info_height;                    ///< The height of the info box.
-	Scrollbar *vscroll;                 ///< The scollbar.
+	Scrollbar *vscroll;                 ///< The scrollbar.
 
 public:
 	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w), info_height(1)

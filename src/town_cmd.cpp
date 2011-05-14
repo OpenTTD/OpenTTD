@@ -2053,7 +2053,7 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, uint maxz, bool nos
 {
 	TileIndex tile2 = *tile;
 
-	for (DiagDirection d = DIAGDIR_SE;;d++) { // 'd' goes through DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_END
+	for (DiagDirection d = DIAGDIR_SE;; d++) { // 'd' goes through DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_END
 		if (TownLayoutAllows2x2HouseHere(t, tile2) && CheckFree2x2Area(tile2, t->index, maxz, noslope)) {
 			*tile = tile2;
 			return true;
