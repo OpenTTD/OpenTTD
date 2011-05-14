@@ -576,28 +576,21 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 	return SpriteGroup::Resolve(group, object);
 }
 
-SpriteID GetCustomStationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile)
+/**
+ * Resolve sprites for drawing a station tile.
+ * @param statspec Station spec
+ * @param st Station (NULL in GUI)
+ * @param tile Station tile being drawn (INVALID_TILE in GUI)
+ * @param var10 Value to put in variable 10; normally 0; 1 when resolving the groundsprite and SSF_SEPARATE_GROUND is set.
+ * @return First sprite of the Action 1 spriteset ot use, minus an offset of 0x42D to accommodate for weird NewGRF specs.
+ */
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile, uint32 var10)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
 
 	NewStationResolver(&object, statspec, st, tile);
-
-	group = ResolveStation(&object);
-	if (group == NULL || group->type != SGT_RESULT) return 0;
-	return group->GetResult() - 0x42D;
-}
-
-
-SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile)
-{
-	const SpriteGroup *group;
-	ResolverObject object;
-
-	NewStationResolver(&object, statspec, st, tile);
-	if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
-		object.callback_param1 = 1; // Indicate we are resolving the ground sprite
-	}
+	object.callback_param1 = var10;
 
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
@@ -777,7 +770,12 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	SpriteID image = sprites->ground.sprite;
 	PaletteID pal = sprites->ground.pal;
 	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
+		if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
+			/* Use separate action 1-2-3 chain for ground sprite */
+			image += GetCustomStationRelocation(statspec, NULL, INVALID_TILE, 1);
+		} else {
+			image += relocation;
+		}
 		image += rti->fallback_railtype;
 	} else {
 		image += rti->GetRailtypeSpriteOffset();

@@ -2678,7 +2678,12 @@ draw_default_foundation:
 			}
 		} else {
 			if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-				image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
+				if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
+					/* Use separate action 1-2-3 chain for ground sprite */
+					image += GetCustomStationRelocation(statspec, st, ti->tile, 1);
+				} else {
+					image += relocation;
+				}
 				image += custom_ground_offset;
 			} else {
 				image += total_offset;
