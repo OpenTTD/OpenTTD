@@ -1295,7 +1295,12 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :Ilgas (31st Gru
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :trumpas (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Įprastinė paletė taikoma NewGRF, nenurodžius paletės: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paletė
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paletė
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatinė pauzė paleidžiant naują žaidimą: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visi pasirinkimai
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti pagerintą automobilių sąrašą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Naudotį krovimo indikatorius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rodyti laiką tvarkaraštyje užuot dienas: {ORANGE}{STRING}
@@ -1407,6 +1412,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traukin
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miestai
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gamyklos
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originalas
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekomenduojama)
 
@@ -2512,6 +2518,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Turi veiksmo (Action 8) kelis vienetus.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Įvyko skaitymas už pseudo-paveikslėlio pabaigos.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keletos elementų .{}Atnaujinkite pagrindinį grafikos rinkinį.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Prašyti GRF ištekliai nėra galimi
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} buvo išjungta: {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Įspėjimas!
@@ -3243,6 +3251,7 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleist
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ištrinti
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Ištrinti pažymėta užduotį
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ištrinti visas užduotis
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stabdyti dalijimasi
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Važiuoti
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Grįžti į artimiausią depą
@@ -3496,6 +3505,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... relj
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... kvadratėlių valymo riba pasiekta
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vardas turi būti unikalus
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} kelyje
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Negalima pauzės režime
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} vietos valdžia neleidžia
@@ -3766,6 +3776,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... auto
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Neįmanoma priversti traukinio važiuoti nesaugiai...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Traukinys neturi energijos
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Negalima automobilio priversti apsisukti...
 
