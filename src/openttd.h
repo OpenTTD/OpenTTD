@@ -36,14 +36,14 @@ enum SwitchMode {
 	SM_LOAD_HEIGHTMAP,
 };
 
-/* Display Options */
+/** Display Options */
 enum DisplayOptions {
-	DO_SHOW_TOWN_NAMES     = 0,
-	DO_SHOW_STATION_NAMES  = 1,
-	DO_SHOW_SIGNS          = 2,
-	DO_FULL_ANIMATION      = 3,
-	DO_FULL_DETAIL         = 5,
-	DO_SHOW_WAYPOINT_NAMES = 6,
+	DO_SHOW_TOWN_NAMES     = 0, ///< Display town names.
+	DO_SHOW_STATION_NAMES  = 1, ///< Display station names.
+	DO_SHOW_SIGNS          = 2, ///< Display signs.
+	DO_FULL_ANIMATION      = 3, ///< Perform palette animation.
+	DO_FULL_DETAIL         = 5, ///< Also draw details of track and roads.
+	DO_SHOW_WAYPOINT_NAMES = 6, ///< Display waypoint names.
 };
 
 extern GameMode _game_mode;
@@ -59,7 +59,7 @@ enum PauseMode {
 	PM_PAUSED_ERROR          = 1 << 3, ///< A game paused because a (critical) error
 	PM_PAUSED_ACTIVE_CLIENTS = 1 << 4, ///< A game paused for 'min_active_clients'
 
-	/* Pause mode bits when paused for network reasons */
+	/** Pause mode bits when paused for network reasons. */
 	PMB_PAUSED_NETWORK = PM_PAUSED_ACTIVE_CLIENTS | PM_PAUSED_JOIN,
 };
 DECLARE_ENUM_AS_BIT_SET(PauseMode)

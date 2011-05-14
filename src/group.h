@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file group.h Base class from groups. */
+/** @file group.h Base class for groups and group functions. */
 
 #ifndef GROUP_H
 #define GROUP_H
@@ -19,12 +19,13 @@
 #include "engine_type.h"
 
 typedef Pool<Group, GroupID, 16, 64000> GroupPool;
-extern GroupPool _group_pool;
+extern GroupPool _group_pool; ///< Pool of groups.
 
+/** Group data. */
 struct Group : GroupPool::PoolItem<&_group_pool> {
 	char *name;                             ///< Group Name
 
-	uint16 num_vehicle;                     ///< Number of vehicles wich belong to the group
+	uint16 num_vehicle;                     ///< Number of vehicles in the group
 	OwnerByte owner;                        ///< Group Owner
 	VehicleTypeByte vehicle_type;           ///< Vehicle type of the group
 
@@ -69,12 +70,20 @@ static inline uint GetGroupArraySize()
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 
+/**
+ * Increase the number of vehicles by one in a group.
+ * @param id_g Group id.
+ */
 static inline void IncreaseGroupNumVehicle(GroupID id_g)
 {
 	Group *g = Group::GetIfValid(id_g);
 	if (g != NULL) g->num_vehicle++;
 }
 
+/**
+ * Decrease the number of vehicles by one in a group.
+ * @param id_g Group id.
+ */
 static inline void DecreaseGroupNumVehicle(GroupID id_g)
 {
 	Group *g = Group::GetIfValid(id_g);

@@ -162,7 +162,7 @@ static bool CMSAMine(TileIndex tile)
 /**
  * Check whether the tile is water.
  * @param tile the tile to investigate.
- * @return true if and only if the tile is a mine
+ * @return true if and only if the tile is a water tile
  */
 static bool CMSAWater(TileIndex tile)
 {
@@ -172,7 +172,7 @@ static bool CMSAWater(TileIndex tile)
 /**
  * Check whether the tile is a tree.
  * @param tile the tile to investigate.
- * @return true if and only if the tile is a mine
+ * @return true if and only if the tile is a tree tile
  */
 static bool CMSATree(TileIndex tile)
 {
@@ -182,7 +182,7 @@ static bool CMSATree(TileIndex tile)
 /**
  * Check whether the tile is a forest.
  * @param tile the tile to investigate.
- * @return true if and only if the tile is a mine
+ * @return true if and only if the tile is a forest
  */
 static bool CMSAForest(TileIndex tile)
 {

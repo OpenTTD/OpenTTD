@@ -33,8 +33,10 @@
 /* FILE IO ROUTINES ******************************/
 /*************************************************/
 
+/** Size of the #Fio data buffer. */
 #define FIO_BUFFER_SIZE 512
 
+/** Structure for keeping several open files with just one data buffer. */
 struct Fio {
 	byte *buffer, *buffer_end;             ///< position pointer in local buffer and last valid byte of buffer
 	size_t pos;                            ///< current (system) position in file
@@ -50,7 +52,7 @@ struct Fio {
 #endif /* LIMITED_FDS */
 };
 
-static Fio _fio;
+static Fio _fio; ///< #Fio instance.
 
 /** Whether the working directory should be scanned. */
 static bool _do_scan_working_directory = true;
@@ -58,12 +60,17 @@ static bool _do_scan_working_directory = true;
 extern char *_config_file;
 extern char *_highscore_file;
 
-/* Get current position in file */
+/** Get current position in file. */
 size_t FioGetPos()
 {
 	return _fio.pos + (_fio.buffer - _fio.buffer_end);
 }
 
+/**
+ * Get the filename associated with a slot.
+ * @param slot Index of queried file.
+ * @return Name of the file.
+ */
 const char *FioGetFilename(uint8 slot)
 {
 	return _fio.shortnames[slot];
