@@ -2503,6 +2503,7 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 relocation = 0;
 	const BaseStation *st = NULL;
 	const StationSpec *statspec = NULL;
+	uint tile_layout = 0;
 
 	if (HasStationRail(ti->tile)) {
 		rti = GetRailTypeInfo(GetRailType(ti->tile));
@@ -2516,18 +2517,18 @@ static void DrawTile_Station(TileInfo *ti)
 			statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
 
 			if (statspec != NULL) {
-				uint tile = GetStationGfx(ti->tile);
+				tile_layout = GetStationGfx(ti->tile);
 
 				relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
 				if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
 					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
-					if (callback != CALLBACK_FAILED) tile = (callback & ~1) + GetRailStationAxis(ti->tile);
+					if (callback != CALLBACK_FAILED) tile_layout = (callback & ~1) + GetRailStationAxis(ti->tile);
 				}
 
 				/* Ensure the chosen tile layout is valid for this custom station */
 				if (statspec->renderdata != NULL) {
-					t = &statspec->renderdata[tile < statspec->tiles ? tile : (uint)GetRailStationAxis(ti->tile)];
+					t = &statspec->renderdata[tile_layout < statspec->tiles ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
 				}
 			}
 		}
@@ -2583,8 +2584,14 @@ static void DrawTile_Station(TileInfo *ti)
 	/* don't show foundation for docks */
 	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile)) {
 		if (statspec != NULL && HasBit(statspec->flags, SSF_CUSTOM_FOUNDATIONS)) {
-			/* Station has custom foundations. */
-			SpriteID image = GetCustomStationFoundationRelocation(statspec, st, ti->tile);
+			/* Station has custom foundations.
+			 * Check whether the foundation continues beyond the tile's upper sides. */
+			uint edge_info = 0;
+			uint z;
+			Slope slope = GetFoundationSlope(ti->tile, &z);
+			if (!HasFoundationNW(ti->tile, slope, z)) SetBit(edge_info, 0);
+			if (!HasFoundationNE(ti->tile, slope, z)) SetBit(edge_info, 1);
+			SpriteID image = GetCustomStationFoundationRelocation(statspec, st, ti->tile, tile_layout, edge_info);
 
 			if (HasBit(statspec->flags, SSF_EXTENDED_FOUNDATIONS)) {
 				/* Station provides extended foundations. */
@@ -2617,10 +2624,8 @@ static void DrawTile_Station(TileInfo *ti)
 
 				/* If foundations continue beyond the tile's upper sides then
 				 * mask out the last two pieces. */
-				uint z;
-				Slope slope = GetFoundationSlope(ti->tile, &z);
-				if (!HasFoundationNW(ti->tile, slope, z)) ClrBit(parts, 6);
-				if (!HasFoundationNE(ti->tile, slope, z)) ClrBit(parts, 7);
+				if (HasBit(edge_info, 0)) ClrBit(parts, 6);
+				if (HasBit(edge_info, 1)) ClrBit(parts, 7);
 
 				if (parts == 0) {
 					/* We always have to draw at least one sprite to make sure there is a boundingbox and a sprite with the

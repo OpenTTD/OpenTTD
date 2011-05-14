@@ -604,14 +604,23 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Bas
 	return group->GetResult() - 0x42D;
 }
 
-
-SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile)
+/**
+ * Resolve the sprites for custom station foundations.
+ * @param statspec Station spec
+ * @param st Station
+ * @param tile Station tile being drawn
+ * @param layout Spritelayout as returned by previous callback
+ * @param edge_info Information about northern tile edges; whether they need foundations or merge into adjacent tile's foundations.
+ * @return First sprite of a set of foundation sprites for various slopes.
+ */
+SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile, uint layout, uint edge_info)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
 
 	NewStationResolver(&object, statspec, st, tile);
 	object.callback_param1 = 2; // Indicate we are resolving the foundation sprites
+	object.callback_param2 = layout | (edge_info << 16);
 
 	ClearRegister(0x100);
 	group = ResolveStation(&object);
