@@ -613,6 +613,7 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, const
 	NewStationResolver(&object, statspec, st, tile);
 	object.callback_param1 = 2; // Indicate we are resolving the foundation sprites
 
+	ClearRegister(0x100);
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 	return group->GetResult() + GetRegister(0x100);
