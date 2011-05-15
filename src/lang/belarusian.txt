@@ -1540,6 +1540,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :доўгі (31-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :кароткі (31-01-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-01-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Аўтаматычнае ўключэньне паўзы напачатку гульні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Падчас паўзы дазволiць: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :нiчога
@@ -2820,6 +2821,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Змяшчае некалькі Action 8 дзеяньняў.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Дадзеныя раптоўна скончыліся.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай графікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай графікі.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошаныя рэсурсы GRF недаступныя
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} быў адключаны з-за {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асцярожна!

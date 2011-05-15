@@ -1096,9 +1096,9 @@ STR_CONFIG_SETTING_DISABLED                                     :deaktivert
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillet bygging på skråningar og i vasskanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillet landskapsendringar under bygningar, spor o.s.b.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal lengde på tog {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillet frjerning av fleire vegar, bruar osb. egd av byane.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal lengde på tog {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Opprinneleg
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
@@ -1344,7 +1344,6 @@ STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
 
 
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatisk reversering ved signal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vegfinnar for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Anbefalt)
@@ -1355,6 +1354,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vegfinn
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkje anbefalt)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatisk reversering ved signal: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Byt innstillingsverdi
 
@@ -2710,7 +2710,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25{N
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmanamn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namnet til sjefen
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vi ser etter eit firma som er villig til å overta for oss.{}{}Vil du kjøpe {COMPANY} for {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Me ser etter eit firma som er villig til å overta firmaet vårt.{}{}Vil du kjøpe {COMPANY} for {CURRENCY}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriar
@@ -2935,7 +2935,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er i
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding frå køyretøysprodusent
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nyss designa eit nytt {STRING} - er du interessert i å freiste denne farkosten i eit år, slik at vi kan sjå korleis det verkar før vi gjer han tilgjengeleg for alle?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Me har nyleg designa eit nytt {STRING} - er du interessert i å teste denne farkosten i eit år, slik at me kan sjå korleis det verkar før me gjer han tilgjengeleg på markedet?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotiv
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :køyretøy
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :luftfartøy

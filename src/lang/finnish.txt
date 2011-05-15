@@ -1223,6 +1223,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pitkä (31. jou
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lyhyt (31.12.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uusi peli alkaa pysäytettynä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Pelin ollessa pysäytetty, salli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ei mitkään toiminnot
@@ -2483,6 +2484,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisältää useamman Action 8 -kohdan
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Luku pseudo-spriten ohi
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Käytössä olevasta perusgrafiikkapaketista puuttuu spritejä.{}Ole hyvä ja päivitä perusgrafiikkapaketti
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Pyydetyt GRF-resurssit eivät ole saatavilla
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{4:STRING} poisti käytöstä NewGRF:n {2:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varoitus!
