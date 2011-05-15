@@ -468,7 +468,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		if (widget != NWCW_DESTINATION) return;
 
 		if (this->dtype == DESTTYPE_CLIENT) {
-			SetDParamStr(0, NetworkFindClientInfoFromClientID((ClientID)this->dest)->client_name);
+			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
 		}
 		Dimension d = GetStringBoundingBox(this->dest_string);
 		d.width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
@@ -481,7 +481,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		if (widget != NWCW_DESTINATION) return;
 
 		if (this->dtype == DESTTYPE_CLIENT) {
-			SetDParamStr(0, NetworkFindClientInfoFromClientID((ClientID)this->dest)->client_name);
+			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
 		}
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->dest_string, TC_BLACK, SA_RIGHT);
 	}

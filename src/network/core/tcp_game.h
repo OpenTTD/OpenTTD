@@ -266,7 +266,7 @@ protected:
 
 	/**
 	 * Notification that another client is currently receiving the map:
-	 * uint8   Number of clients awaiting the map.
+	 * uint8   Number of clients waiting in front of you.
 	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_WAIT);
 

@@ -114,7 +114,7 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
 		x -= platforms / 2;
 		y -= length / 2;
 		x = Clamp(x, -8, 7);
-		y = Clamp(x, -8, 7);
+		y = Clamp(y, -8, 7);
 		SB(retval,  0, 4, y & 0xF);
 		SB(retval,  4, 4, x & 0xF);
 	} else {
@@ -613,6 +613,7 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, const
 	NewStationResolver(&object, statspec, st, tile);
 	object.callback_param1 = 2; // Indicate we are resolving the foundation sprites
 
+	ClearRegister(0x100);
 	group = ResolveStation(&object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 	return group->GetResult() + GetRegister(0x100);

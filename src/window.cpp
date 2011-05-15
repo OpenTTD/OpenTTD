@@ -2565,7 +2565,6 @@ restart_search:
 				w->window_class != WC_SELECT_GAME &&
 				w->window_class != WC_MAIN_TOOLBAR &&
 				w->window_class != WC_STATUS_BAR &&
-				w->window_class != WC_TOOLBAR_MENU &&
 				w->window_class != WC_TOOLTIPS &&
 				(w->flags4 & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
 
@@ -2626,7 +2625,6 @@ restart_search:
 /** Delete all always on-top windows to get an empty screen */
 void HideVitalWindows()
 {
-	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	DeleteWindowById(WC_MAIN_TOOLBAR, 0);
 	DeleteWindowById(WC_STATUS_BAR, 0);
 }

@@ -161,12 +161,6 @@ ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : Netwo
 	 * each Socket will be associated with at most one Info object. As
 	 * such if the Socket was allocated the Info object can as well. */
 	assert_compile(NetworkClientSocketPool::MAX_SIZE == NetworkClientInfoPool::MAX_SIZE);
-	assert(NetworkClientInfo::CanAllocateItem());
-
-	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
-	this->SetInfo(ci);
-	ci->client_playas = COMPANY_INACTIVE_CLIENT;
-	ci->join_date = _date;
 }
 
 /**
@@ -253,6 +247,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	extern byte _network_clients_connected;
 	_network_clients_connected--;
 
+	DeleteWindowById(WC_CLIENT_LIST_POPUP, this->client_id);
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	this->SendPackets(true);
@@ -325,7 +320,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 	memset(clients, 0, sizeof(clients));
 
 	/* Add the local player (if not dedicated) */
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 	if (ci != NULL && Company::IsValidID(ci->client_playas)) {
 		strecpy(clients[ci->client_playas], ci->client_name, lastof(clients[ci->client_playas]));
 	}
@@ -486,7 +481,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 		}
 	}
 	/* Also send the info of the server */
-	return this->SendClientInfo(NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
+	return this->SendClientInfo(NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
@@ -495,9 +490,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 	NetworkClientSocket *new_cs;
 	Packet *p;
 
-	/* Count how many clients are waiting in the queue */
+	/* Count how many clients are waiting in the queue, in front of you! */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status == STATUS_MAP_WAIT) waiting++;
+		if (new_cs->status != STATUS_MAP_WAIT) continue;
+		if (new_cs->GetInfo()->join_date < this->GetInfo()->join_date || (new_cs->GetInfo()->join_date == this->GetInfo()->join_date && new_cs->client_id < this->client_id)) waiting++;
 	}
 
 	p = new Packet(PACKET_SERVER_WAIT);
@@ -563,25 +559,29 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			WaitTillSaved();
 
 			/* Set the status to DONE_MAP, no we will wait for the client
-				*  to send it is ready (maybe that happens like never ;)) */
+			 *  to send it is ready (maybe that happens like never ;)) */
 			this->status = STATUS_DONE_MAP;
 
+			/* Find the best candidate for joining, i.e. the first joiner. */
 			NetworkClientSocket *new_cs;
-			bool new_map_client = false;
-			/* Check if there is a client waiting for receiving the map
-				*  and start sending him the map */
+			NetworkClientSocket *best = NULL;
 			FOR_ALL_CLIENT_SOCKETS(new_cs) {
 				if (new_cs->status == STATUS_MAP_WAIT) {
-					/* Check if we already have a new client to send the map to */
-					if (!new_map_client) {
-						/* If not, this client will get the map */
-						new_cs->status = STATUS_AUTHORIZED;
-						new_map_client = true;
-						new_cs->SendMap();
-					} else {
-						/* Else, send the other clients how many clients are in front of them */
-						new_cs->SendWait();
+					if (best == NULL || best->GetInfo()->join_date > new_cs->GetInfo()->join_date || (best->GetInfo()->join_date == new_cs->GetInfo()->join_date && best->client_id > new_cs->client_id)) {
+						best = new_cs;
 					}
+				}
+			}
+
+			/* Is there someone else to join? */
+			if (best != NULL) {
+				/* Let the first start joining. */
+				best->status = STATUS_AUTHORIZED;
+				best->SendMap();
+
+				/* And update the rest. */
+				FOR_ALL_CLIENT_SOCKETS(new_cs) {
+					if (new_cs->status == STATUS_MAP_WAIT) new_cs->SendWait();
 				}
 			}
 		}
@@ -793,7 +793,6 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_JOIN)
 	}
 
 	char name[NETWORK_CLIENT_NAME_LENGTH];
-	NetworkClientInfo *ci;
 	CompanyID playas;
 	NetworkLanguage client_lang;
 	char client_revision[NETWORK_REVISION_LENGTH];
@@ -839,8 +838,10 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_JOIN)
 		return this->SendError(NETWORK_ERROR_NAME_IN_USE);
 	}
 
-	ci = this->GetInfo();
-
+	assert(NetworkClientInfo::CanAllocateItem());
+	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
+	this->SetInfo(ci);
+	ci->join_date = _date;
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
@@ -978,7 +979,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MAP_OK)
 			}
 		}
 
-		NetworkAdminClientInfo(this->GetInfo(), true);
+		NetworkAdminClientInfo(this, true);
 
 		/* also update the new client with our max values */
 		this->SendConfigUpdate();
@@ -1015,18 +1016,18 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMMAND)
 	NetworkClientInfo *ci = this->GetInfo();
 
 	if (err != NULL) {
-		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SERVER) && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: server only command from: client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: server only command from: client %d (IP: %s), kicking...", ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_KICKED);
 	}
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SPECTATOR) == 0 && !Company::IsValidID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_KICKED);
 	}
 
@@ -1037,7 +1038,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMMAND)
 	 */
 	if (!(cp.cmd == CMD_COMPANY_CTRL && cp.p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrintF(CC_ERROR, "WARNING: client %d (IP: %s) tried to execute a command as company %d, kicking...",
-		               ci->client_playas + 1, GetClientIP(ci), cp.company + 1);
+		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
 		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
@@ -1176,7 +1177,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		case DESTTYPE_CLIENT:
 			/* Are we sending to the server? */
 			if ((ClientID)dest == CLIENT_ID_SERVER) {
-				ci = NetworkFindClientInfoFromClientID(from_id);
+				ci = NetworkClientInfo::GetByClientID(from_id);
 				/* Display the text locally, and that is it */
 				if (ci != NULL) {
 					NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
@@ -1198,8 +1199,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			/* Display the message locally (so you know you have sent it) */
 			if (from_id != (ClientID)dest) {
 				if (from_id == CLIENT_ID_SERVER) {
-					ci = NetworkFindClientInfoFromClientID(from_id);
-					ci_to = NetworkFindClientInfoFromClientID((ClientID)dest);
+					ci = NetworkClientInfo::GetByClientID(from_id);
+					ci_to = NetworkClientInfo::GetByClientID((ClientID)dest);
 					if (ci != NULL && ci_to != NULL) {
 						NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), true, ci_to->client_name, msg, data);
 					}
@@ -1220,7 +1221,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			ci_to = NULL;
 			FOR_ALL_CLIENT_SOCKETS(cs) {
 				ci = cs->GetInfo();
-				if (ci->client_playas == (CompanyID)dest) {
+				if (ci != NULL && ci->client_playas == (CompanyID)dest) {
 					cs->SendChat(action, from_id, false, msg, data);
 					if (cs->client_id == from_id) show_local = false;
 					ci_to = ci; // Remember a client that is in the company for company-name
@@ -1232,8 +1233,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
 			}
 
-			ci = NetworkFindClientInfoFromClientID(from_id);
-			ci_own = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+			ci = NetworkClientInfo::GetByClientID(from_id);
+			ci_own = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 			if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
 				NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 				if (from_id == CLIENT_ID_SERVER) show_local = false;
@@ -1271,7 +1272,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 			NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
 
-			ci = NetworkFindClientInfoFromClientID(from_id);
+			ci = NetworkClientInfo::GetByClientID(from_id);
 			if (ci != NULL) {
 				NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 			}
@@ -1305,7 +1306,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_CHAT)
 			NetworkServerSendChat(action, desttype, dest, msg, this->client_id, data);
 			break;
 		default:
-			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
+			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, this->GetClientIP());
 			return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 	return NETWORK_RECV_STATUS_OKAY;
@@ -1501,7 +1502,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 void NetworkUpdateClientInfo(ClientID client_id)
 {
 	NetworkClientSocket *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 	if (ci == NULL) return;
 
@@ -1546,7 +1547,7 @@ static void NetworkAutoCleanCompanies()
 	}
 
 	if (!_network_dedicated) {
-		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+		ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (Company::IsValidID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
@@ -1621,7 +1622,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 			}
 		}
 		/* Check if it is the same as the server-name */
-		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+		ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (ci != NULL) {
 			if (strcmp(ci->client_name, new_name) == 0) found_name = false; // name already in use
 		}
@@ -1652,7 +1653,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 		if (strcmp(ci->client_name, new_name) == 0) return false;
 	}
 
-	ci = NetworkFindClientInfoFromClientID(client_id);
+	ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci == NULL) return false;
 
 	NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, true, ci->client_name, new_name);
@@ -1806,9 +1807,13 @@ void NetworkServerDailyLoop()
 	if ((_date % 7) == 3) NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 }
 
-const char *GetClientIP(NetworkClientInfo *ci)
+/**
+ * Get the IP address/hostname of the connected client.
+ * @return The IP address.
+ */
+const char *ServerNetworkGameSocketHandler::GetClientIP()
 {
-	return ci->client_address.GetHostname();
+	return this->client_address.GetHostname();
 }
 
 void NetworkServerShowStatusToConsole()
@@ -1829,15 +1834,16 @@ void NetworkServerShowStatusToConsole()
 
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		uint lag = NetworkCalculateLag(cs);
 		NetworkClientInfo *ci = cs->GetInfo();
+		if (ci == NULL) continue;
+		uint lag = NetworkCalculateLag(cs);
 		const char *status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-			GetClientIP(ci));
+			cs->GetClientIP());
 	}
 }
 
@@ -1879,7 +1885,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	/* Only allow non-dedicated servers and normal clients to be moved */
 	if (client_id == CLIENT_ID_SERVER && _network_dedicated) return;
 
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 	/* No need to waste network resources if the client is in the company already! */
 	if (ci->client_playas == company_id) return;
@@ -1889,7 +1895,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	if (client_id == CLIENT_ID_SERVER) {
 		SetLocalCompany(company_id);
 	} else {
-		NetworkClientSocket *cs = NetworkFindClientStateFromClientID(client_id);
+		NetworkClientSocket *cs = NetworkClientSocket::GetByClientID(client_id);
 		/* When the company isn't authorized we can't move them yet. */
 		if (cs->status < NetworkClientSocket::STATUS_AUTHORIZED) return;
 		cs->SendMove(client_id, company_id);
@@ -1904,18 +1910,23 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const char *string)
 {
-	NetworkFindClientStateFromClientID(client_id)->SendRConResult(colour_code, string);
+	NetworkClientSocket::GetByClientID(client_id)->SendRConResult(colour_code, string);
 }
 
 static void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
 {
-	NetworkFindClientStateFromClientID(client_id)->SendError(error);
+	NetworkClientSocket::GetByClientID(client_id)->SendError(error);
 }
 
 void NetworkServerKickClient(ClientID client_id)
 {
 	if (client_id == CLIENT_ID_SERVER) return;
 	NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
+}
+
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban)
+{
+	return NetworkServerKickOrBanIP(NetworkClientSocket::GetByClientID(client_id)->GetClientIP(), ban);
 }
 
 uint NetworkServerKickOrBanIP(const char *ip, bool ban)
@@ -1926,11 +1937,11 @@ uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 	uint n = 0;
 
 	/* There can be multiple clients with the same IP, kick them all */
-	NetworkClientInfo *ci;
-	FOR_ALL_CLIENT_INFOS(ci) {
-		if (ci->client_id == CLIENT_ID_SERVER) continue;
-		if (ci->client_address.IsInNetmask(const_cast<char *>(ip))) {
-			NetworkServerKickClient(ci->client_id);
+	NetworkClientSocket *cs;
+	FOR_ALL_CLIENT_SOCKETS(cs) {
+		if (cs->client_id == CLIENT_ID_SERVER) continue;
+		if (cs->client_address.IsInNetmask(const_cast<char *>(ip))) {
+			NetworkServerKickClient(cs->client_id);
 			n++;
 		}
 	}
@@ -1957,10 +1968,25 @@ void ServerNetworkGameSocketHandler::GetClientName(char *client_name, size_t siz
 {
 	const NetworkClientInfo *ci = this->GetInfo();
 
-	if (StrEmpty(ci->client_name)) {
+	if (ci == NULL || StrEmpty(ci->client_name)) {
 		snprintf(client_name, size, "Client #%4d", this->client_id);
 	} else {
 		ttd_strlcpy(client_name, ci->client_name, size);
+	}
+}
+
+/**
+ * Print all the clients to the console
+ */
+void NetworkPrintClients()
+{
+	NetworkClientInfo *ci;
+	FOR_ALL_CLIENT_INFOS(ci) {
+		IConsolePrintF(CC_INFO, _network_server ? "Client #%1d  name: '%s'  company: %1d  IP: %s" : "Client #%1d  name: '%s'  company: %1d",
+				ci->client_id,
+				ci->client_name,
+				ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
+				_network_server ? (ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP()) : "");
 	}
 }
 

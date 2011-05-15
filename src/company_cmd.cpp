@@ -556,7 +556,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	GeneratePresidentName(c);
 
 	SetWindowDirty(WC_GRAPH_LEGEND, 0);
-	SetWindowDirty(WC_TOOLBAR_MENU, 0);
+	SetWindowClassesDirty(WC_CLIENT_LIST_POPUP);
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 	BuildOwnerLegend();
 	InvalidateWindowData(WC_SMALLMAP, 0, 1);
@@ -813,7 +813,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 #ifdef ENABLE_NETWORK
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
-			NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 			if (ci == NULL) return CommandCost();
 
 			/* Delete multiplayer progress bar */

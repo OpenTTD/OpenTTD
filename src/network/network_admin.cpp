@@ -201,12 +201,16 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientInfo *ci)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientSocket *cs)
 {
+	/* Only send data when we're a proper client, not just someone trying to query the server. */
+	const NetworkClientInfo *ci = cs->GetInfo();
+	if (ci == NULL) return NETWORK_RECV_STATUS_OKAY;
+
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_INFO);
 
 	p->Send_uint32(ci->client_id);
-	p->Send_string(const_cast<NetworkAddress &>(ci->client_address).GetHostname());
+	p->Send_string(const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (ci->client_lang);
 	p->Send_uint32(ci->join_date);
@@ -565,14 +569,14 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 
 		case ADMIN_UPDATE_CLIENT_INFO:
 			/* The admin is requesting client info. */
-			const NetworkClientInfo *ci;
+			const NetworkClientSocket *cs;
 			if (d1 == UINT32_MAX) {
-				FOR_ALL_CLIENT_INFOS(ci) {
-					this->SendClientInfo(ci);
+				FOR_ALL_CLIENT_SOCKETS(cs) {
+					this->SendClientInfo(cs);
 				}
 			} else {
-				ci = NetworkFindClientInfoFromClientID((ClientID)d1);
-				if (ci != NULL) this->SendClientInfo(ci);
+				cs = NetworkClientSocket::GetByClientID((ClientID)d1);
+				if (cs != NULL) this->SendClientInfo(cs);
 			}
 			break;
 
@@ -649,14 +653,14 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_CHAT)
  * @param ci the client info.
  * @param new_client if this is a new client, send the respective packet too.
  */
-void NetworkAdminClientInfo(const NetworkClientInfo *ci, bool new_client)
+void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client)
 {
 	ServerNetworkAdminSocketHandler *as;
 	FOR_ALL_ADMIN_SOCKETS(as) {
 		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
-			as->SendClientInfo(ci);
+			as->SendClientInfo(cs);
 			if (new_client) {
-				as->SendClientJoin(ci->client_id);
+				as->SendClientJoin(cs->client_id);
 			}
 		}
 	}

@@ -281,7 +281,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	char *p = buf;
 	p += seprintf(p, lastof(buf), "Graphics set: %s (%u)\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
 	p = strecpy(p, "NewGRFs:\n", lastof(buf));
-	for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+	for (const GRFConfig *c = _game_mode == GM_MENU ? NULL : _grfconfig; c != NULL; c = c->next) {
 		p += seprintf(p, lastof(buf), "%08X ", BSWAP32(c->ident.grfid));
 		p = md5sumToString(p, lastof(buf), c->ident.md5sum);
 		p += seprintf(p, lastof(buf), " %s\n", c->filename);

@@ -27,11 +27,12 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
 	byte client_lang;                               ///< The language of the client
 	CompanyID client_playas;                        ///< As which company is this client playing (CompanyID)
-	NetworkAddress client_address;                  ///< IP-address of the client (so he can be banned)
 	Date join_date;                                 ///< Gamedate the client has joined
 
 	NetworkClientInfo(ClientID client_id = INVALID_CLIENT_ID) : client_id(client_id) {}
 	~NetworkClientInfo();
+
+	static NetworkClientInfo *GetByClientID(ClientID client_id);
 };
 
 #define FOR_ALL_CLIENT_INFOS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientInfo, clientinfo_index, var, start)
