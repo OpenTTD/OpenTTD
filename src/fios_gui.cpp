@@ -211,6 +211,9 @@ void BuildFileList()
 
 		default: FiosGetSavegameList(_saveload_mode); break;
 	}
+
+	/* Invalidate saveload window */
+	InvalidateWindowData(WC_SAVELOAD, 0, 2, true);
 }
 
 static void MakeSortedSaveGameList()
@@ -683,6 +686,12 @@ public:
 					this->SetWidgetDisabledState(SLWW_NEWGRF_INFO,
 							!_load_check_data.HasNewGrfs());
 				}
+				break;
+			case 2:
+				/* _fios_items changed */
+				this->vscroll->SetCount(_fios_items.Length());
+				this->selected = NULL;
+				_load_check_data.Clear();
 				break;
 		}
 	}
