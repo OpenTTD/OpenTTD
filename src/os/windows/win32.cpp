@@ -297,7 +297,21 @@ void CreateConsole()
 
 	/* redirect unbuffered STDIN, STDOUT, STDERR to the console */
 #if !defined(__CYGWIN__)
-	*stdout = *_fdopen( _open_osfhandle((intptr_t)hand, _O_TEXT), "w" );
+
+	/* Check if we can open a handle to STDOUT. */
+	int fd = _open_osfhandle((intptr_t)hand, _O_TEXT);
+	if (fd == -1) {
+		/* Free everything related to the console. */
+		FreeConsole();
+		_has_console = false;
+		_close(fd);
+		CloseHandle(hand);
+
+		ShowInfo("Unable to open an output handle to the console. Check known-bugs.txt for details.");
+		return;
+	}
+
+	*stdout = *_fdopen(fd, "w");
 	*stdin = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r" );
 	*stderr = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w" );
 #else
