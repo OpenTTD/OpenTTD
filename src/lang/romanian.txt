@@ -2471,6 +2471,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conţine multiple înregistrări Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire dincolo de sfârşitul pseudo-imaginii
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele imagini lipsesc din setul grafic de bază.{}Vă rugăm actualizaţi setul grafic de bază
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Resursele GRF solicitate nu sunt disponibile
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} a fost dezactiat de {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atenţie!
