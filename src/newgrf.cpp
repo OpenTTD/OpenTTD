@@ -1221,6 +1221,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			}
 
 			case 0x09: // Define sprite layout
+				delete[] statspec->renderdata; // delete earlier loaded stuff
+
 				statspec->tiles = buf->ReadExtendedByte();
 				statspec->renderdata = new NewGRFSpriteLayout[statspec->tiles];
 
@@ -1280,6 +1282,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					grfmsg(1, "StationChangeInfo: Station %u is not defined, cannot copy sprite layout to %u.", srcid, stid + i);
 					continue;
 				}
+
+				delete[] statspec->renderdata; // delete earlier loaded stuff
 
 				statspec->tiles = srcstatspec->tiles;
 				statspec->renderdata = new NewGRFSpriteLayout[statspec->tiles];
