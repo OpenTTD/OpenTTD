@@ -3237,7 +3237,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatisch)
+STR_ORDER_IMPLICIT                                              :(Implizit)
 
 STR_ORDER_FULL_LOAD                                             :(Voll beladen)
 STR_ORDER_FULL_LOAD_ANY                                         :(Mit einer Fracht voll beladen)
