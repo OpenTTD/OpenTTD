@@ -3323,7 +3323,7 @@ STR_ORDER_STOP_ORDER                                            :(Στάση)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Αυτόματο)
+STR_ORDER_IMPLICIT                                              :(Αυτόματο)
 
 STR_ORDER_FULL_LOAD                                             :(Πλήρης φόρτωση)
 STR_ORDER_FULL_LOAD_ANY                                         :(Πλήρης φόρτωση οποιουδήποτε εμπορεύματος)

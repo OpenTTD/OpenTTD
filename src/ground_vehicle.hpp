@@ -52,7 +52,7 @@ struct GroundVehicleCache {
 enum GroundVehicleFlags {
 	GVF_GOINGUP_BIT               = 0,  ///< Vehicle is currently going uphill. (Cached track information for acceleration)
 	GVF_GOINGDOWN_BIT             = 1,  ///< Vehicle is currently going downhill. (Cached track information for acceleration)
-	GVF_SUPPRESS_AUTOMATIC_ORDERS = 2,  ///< Disable insertion and removal of automatic orders until the vehicle completes the real order.
+	GVF_SUPPRESS_IMPLICIT_ORDERS = 2,  ///< Disable insertion and removal of automatic orders until the vehicle completes the real order.
 };
 
 /**

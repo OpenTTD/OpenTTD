@@ -3222,7 +3222,7 @@ STR_ORDER_STOP_ORDER                                            :(Спри)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :{G=n}(Автоматично)
+STR_ORDER_IMPLICIT                                              :{G=n}(Автоматично)
 
 STR_ORDER_FULL_LOAD                                             :(Напълно натовари)
 STR_ORDER_FULL_LOAD_ANY                                         :(Напълно натовари какъвто и да е товар)

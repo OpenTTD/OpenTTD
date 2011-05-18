@@ -3133,7 +3133,7 @@ STR_ORDER_STOP_ORDER                                            :(Apstādināt)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automātiski)
+STR_ORDER_IMPLICIT                                              :(Automātiski)
 
 STR_ORDER_FULL_LOAD                                             :(Piekraut pilnu)
 STR_ORDER_FULL_LOAD_ANY                                         :(Piekraut pilnu ar jebkuru kravu)

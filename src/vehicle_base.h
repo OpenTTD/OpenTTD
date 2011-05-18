@@ -220,8 +220,8 @@ public:
 
 	byte vehstatus;                     ///< Status
 	Order current_order;                ///< The current order (+ status, like: loading)
-	VehicleOrderID cur_real_order_index;///< The index to the current real (non-automatic) order
-	VehicleOrderID cur_auto_order_index;///< The index to the current automatic order
+	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
+	VehicleOrderID cur_implicit_order_index;///< The index to the current implicit order
 
 	union {
 		OrderList *list;            ///< Pointer to the order list for this vehicle
@@ -252,7 +252,7 @@ public:
 	uint16 &GetGroundVehicleFlags();
 	const uint16 &GetGroundVehicleFlags() const;
 
-	void DeleteUnreachedAutoOrders();
+	void DeleteUnreachedImplicitOrders();
 
 	void HandleLoading(bool mode = false);
 
@@ -552,7 +552,7 @@ public:
 		this->unitnumber = src->unitnumber;
 
 		this->cur_real_order_index = src->cur_real_order_index;
-		this->cur_auto_order_index = src->cur_auto_order_index;
+		this->cur_implicit_order_index = src->cur_implicit_order_index;
 		this->current_order = src->current_order;
 		this->dest_tile  = src->dest_tile;
 
@@ -605,7 +605,7 @@ public:
 private:
 	/**
 	 * Advance cur_real_order_index to the next real order.
-	 * cur_auto_order_index is not touched.
+	 * cur_implicit_order_index is not touched.
 	 */
 	void SkipToNextRealOrderIndex()
 	{
@@ -614,7 +614,7 @@ private:
 			do {
 				this->cur_real_order_index++;
 				if (this->cur_real_order_index >= this->GetNumOrders()) this->cur_real_order_index = 0;
-			} while (this->GetOrder(this->cur_real_order_index)->IsType(OT_AUTOMATIC));
+			} while (this->GetOrder(this->cur_real_order_index)->IsType(OT_IMPLICIT));
 		} else {
 			this->cur_real_order_index = 0;
 		}
@@ -622,39 +622,39 @@ private:
 
 public:
 	/**
-	 * Increments cur_auto_order_index, keeps care of the wrap-around and invalidates the GUI.
+	 * Increments cur_implicit_order_index, keeps care of the wrap-around and invalidates the GUI.
 	 * cur_real_order_index is incremented as well, if needed.
 	 * Note: current_order is not invalidated.
 	 */
-	void IncrementAutoOrderIndex()
+	void IncrementImplicitOrderIndex()
 	{
-		if (this->cur_auto_order_index == this->cur_real_order_index) {
+		if (this->cur_implicit_order_index == this->cur_real_order_index) {
 			/* Increment real order index as well */
 			this->SkipToNextRealOrderIndex();
 		}
 
 		assert(this->cur_real_order_index == 0 || this->cur_real_order_index < this->GetNumOrders());
 
-		/* Advance to next automatic order */
+		/* Advance to next implicit order */
 		do {
-			this->cur_auto_order_index++;
-			if (this->cur_auto_order_index >= this->GetNumOrders()) this->cur_auto_order_index = 0;
-		} while (this->cur_auto_order_index != this->cur_real_order_index && !this->GetOrder(this->cur_auto_order_index)->IsType(OT_AUTOMATIC));
+			this->cur_implicit_order_index++;
+			if (this->cur_implicit_order_index >= this->GetNumOrders()) this->cur_implicit_order_index = 0;
+		} while (this->cur_implicit_order_index != this->cur_real_order_index && !this->GetOrder(this->cur_implicit_order_index)->IsType(OT_IMPLICIT));
 
 		InvalidateVehicleOrder(this, 0);
 	}
 
 	/**
 	 * Advanced cur_real_order_index to the next real order, keeps care of the wrap-around and invalidates the GUI.
-	 * cur_auto_order_index is incremented as well, if it was equal to cur_real_order_index, i.e. cur_real_order_index is skipped
-	 * but not any automatic orders.
+	 * cur_implicit_order_index is incremented as well, if it was equal to cur_real_order_index, i.e. cur_real_order_index is skipped
+	 * but not any implicit orders.
 	 * Note: current_order is not invalidated.
 	 */
 	void IncrementRealOrderIndex()
 	{
-		if (this->cur_auto_order_index == this->cur_real_order_index) {
-			/* Increment both real and auto order */
-			this->IncrementAutoOrderIndex();
+		if (this->cur_implicit_order_index == this->cur_real_order_index) {
+			/* Increment both real and implicit order */
+			this->IncrementImplicitOrderIndex();
 		} else {
 			/* Increment real order only */
 			this->SkipToNextRealOrderIndex();
@@ -663,7 +663,7 @@ public:
 	}
 
 	/**
-	 * Skip automatic orders until cur_real_order_index is a non-automatic order.
+	 * Skip implicit orders until cur_real_order_index is a non-implicit order.
 	 */
 	void UpdateRealOrderIndex()
 	{
@@ -672,7 +672,7 @@ public:
 
 		if (this->GetNumManualOrders() > 0) {
 			/* Advance to next real order */
-			while (this->GetOrder(this->cur_real_order_index)->IsType(OT_AUTOMATIC)) {
+			while (this->GetOrder(this->cur_real_order_index)->IsType(OT_IMPLICIT)) {
 				this->cur_real_order_index++;
 				if (this->cur_real_order_index >= this->GetNumOrders()) this->cur_real_order_index = 0;
 			}

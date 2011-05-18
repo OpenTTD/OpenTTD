@@ -77,7 +77,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	VehicleOrderID order_number = GB(p1, 20, 8);
 	Order *order = v->GetOrder(order_number);
-	if (order == NULL || order->IsType(OT_AUTOMATIC)) return CMD_ERROR;
+	if (order == NULL || order->IsType(OT_IMPLICIT)) return CMD_ERROR;
 
 	bool is_journey = HasBit(p1, 28);
 
@@ -241,10 +241,10 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	v->current_order_time = 0;
 
-	if (v->current_order.IsType(OT_AUTOMATIC)) return; // no timetabling of auto orders
+	if (v->current_order.IsType(OT_IMPLICIT)) return; // no timetabling of auto orders
 
 	VehicleOrderID first_manual_order = 0;
-	for (Order *o = v->GetFirstOrder(); o != NULL && o->IsType(OT_AUTOMATIC); o = o->next) {
+	for (Order *o = v->GetFirstOrder(); o != NULL && o->IsType(OT_IMPLICIT); o = o->next) {
 		++first_manual_order;
 	}
 

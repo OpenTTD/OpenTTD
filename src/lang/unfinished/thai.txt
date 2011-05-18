@@ -2527,7 +2527,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}ลบ�
 
 
 
-STR_ORDER_AUTOMATIC                                             :(อัตโนมัติ)
+STR_ORDER_IMPLICIT                                              :(อัตโนมัติ)
 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(ไม่มีการขนถ่ายสินค้า)
 

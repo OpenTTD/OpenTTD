@@ -3237,7 +3237,7 @@ STR_ORDER_STOP_ORDER                                            :(Para)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automàtic)
+STR_ORDER_IMPLICIT                                              :(Automàtic)
 
 STR_ORDER_FULL_LOAD                                             :(Carrega del tot)
 STR_ORDER_FULL_LOAD_ANY                                         :(Carrega del tot qualsevol càrrega)

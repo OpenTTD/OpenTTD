@@ -798,7 +798,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Hassar l
 
 
 
-STR_ORDER_AUTOMATIC                                             :(Awtomatiku)
+STR_ORDER_IMPLICIT                                              :(Awtomatiku)
 
 
 

@@ -3284,7 +3284,7 @@ STR_ORDER_STOP_ORDER                                            :(Sustoti)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automatinis)
+STR_ORDER_IMPLICIT                                              :(Automatinis)
 
 STR_ORDER_FULL_LOAD                                             :(Pilnai pasikrauti)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pilnai pasikrauti, bet kurio krovinio)

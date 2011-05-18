@@ -3233,7 +3233,7 @@ STR_ORDER_STOP_ORDER                                            :(Dừng)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Tự động)
+STR_ORDER_IMPLICIT                                              :(Tự động)
 
 STR_ORDER_FULL_LOAD                                             :(Bốc đầy hàng)
 STR_ORDER_FULL_LOAD_ANY                                         :(Bốc đủ bất kỳ hàng nào)

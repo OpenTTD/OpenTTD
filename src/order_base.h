@@ -77,7 +77,7 @@ public:
 	void MakeLeaveStation();
 	void MakeDummy();
 	void MakeConditional(VehicleOrderID order);
-	void MakeAutomatic(StationID destination);
+	void MakeImplicit(StationID destination);
 
 	/**
 	 * Gets the destination of this order.

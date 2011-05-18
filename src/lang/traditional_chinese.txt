@@ -3229,7 +3229,7 @@ STR_ORDER_STOP_ORDER                                            :(停止)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(自動)
+STR_ORDER_IMPLICIT                                              :(自動)
 
 STR_ORDER_FULL_LOAD                                             :(滿載)
 STR_ORDER_FULL_LOAD_ANY                                         :(滿載任一種類客貨)

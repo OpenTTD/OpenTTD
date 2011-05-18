@@ -66,11 +66,11 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 		if (order_position == AIOrder::ORDER_INVALID) return NULL;
 	}
 	const Order *order = v->orders.list->GetFirstOrder();
-	while (order->GetType() == OT_AUTOMATIC) order = order->next;
+	while (order->GetType() == OT_IMPLICIT) order = order->next;
 	while (order_position > 0) {
 		order_position = (AIOrder::OrderPosition)(order_position - 1);
 		order = order->next;
-		while (order->GetType() == OT_AUTOMATIC) order = order->next;
+		while (order->GetType() == OT_IMPLICIT) order = order->next;
 	}
 	return order;
 }
@@ -135,12 +135,12 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 		int cur_order_pos = ::Vehicle::Get(vehicle_id)->cur_real_order_index;
 		const Order *order = ::Vehicle::Get(vehicle_id)->GetOrder(0);
 		if (order == NULL) return ORDER_INVALID;
-		int num_automatic_orders = 0;
+		int num_implicit_orders = 0;
 		for (int i = 0; i < cur_order_pos; i++) {
-			if (order->GetType() == OT_AUTOMATIC) num_automatic_orders++;
+			if (order->GetType() == OT_IMPLICIT) num_implicit_orders++;
 			order = order->next;
 		}
-		return (AIOrder::OrderPosition)(cur_order_pos - num_automatic_orders);
+		return (AIOrder::OrderPosition)(cur_order_pos - num_implicit_orders);
 	}
 	return (order_position >= 0 && order_position < ::Vehicle::Get(vehicle_id)->GetNumManualOrders()) ? order_position : ORDER_INVALID;
 }

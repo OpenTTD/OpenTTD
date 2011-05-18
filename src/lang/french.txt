@@ -3237,7 +3237,7 @@ STR_ORDER_STOP_ORDER                                            :(Arrêt)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automatique)
+STR_ORDER_IMPLICIT                                              :(Automatique)
 
 STR_ORDER_FULL_LOAD                                             :(Charger complètement)
 STR_ORDER_FULL_LOAD_ANY                                         :(Charger complètement par un seul type)

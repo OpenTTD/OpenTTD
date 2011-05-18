@@ -3296,7 +3296,7 @@ STR_ORDER_STOP_ORDER                                            :(Zastaviť)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automaticky)
+STR_ORDER_IMPLICIT                                              :(Automaticky)
 
 STR_ORDER_FULL_LOAD                                             :(Plne nalož)
 STR_ORDER_FULL_LOAD_ANY                                         :(Plne nalož akýkoľvek náklad)

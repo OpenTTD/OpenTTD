@@ -3229,7 +3229,7 @@ STR_ORDER_STOP_ORDER                                            :(Berhenti)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Otomatis)
+STR_ORDER_IMPLICIT                                              :(Otomatis)
 
 STR_ORDER_FULL_LOAD                                             :(Penuhi Semua)
 STR_ORDER_FULL_LOAD_ANY                                         :(Penuhi salah satu)

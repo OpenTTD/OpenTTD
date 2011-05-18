@@ -3236,7 +3236,7 @@ STR_ORDER_STOP_ORDER                                            :(Pysähdy)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automaattinen)
+STR_ORDER_IMPLICIT                                              :(Automaattinen)
 
 STR_ORDER_FULL_LOAD                                             :(Täysi lastaus)
 STR_ORDER_FULL_LOAD_ANY                                         :(Lastaa täyteen mitä tahansa rahtia)

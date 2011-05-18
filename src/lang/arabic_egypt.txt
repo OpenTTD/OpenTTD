@@ -3229,7 +3229,7 @@ STR_ORDER_STOP_ORDER                                            :توقف
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(تلقائى)
+STR_ORDER_IMPLICIT                                              :(تلقائى)
 
 STR_ORDER_FULL_LOAD                                             :-تحميل بالكامل-
 STR_ORDER_FULL_LOAD_ANY                                         :-حمل اي بضاعة بالكامل-

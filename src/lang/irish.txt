@@ -3227,7 +3227,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Uathoibríoch)
+STR_ORDER_IMPLICIT                                              :(Uathoibríoch)
 
 STR_ORDER_FULL_LOAD                                             :(Lasta iomlán)
 STR_ORDER_FULL_LOAD_ANY                                         :(Lasta iomlán de lastas ar bith)

@@ -3219,7 +3219,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automatisk)
+STR_ORDER_IMPLICIT                                              :(Automatisk)
 
 STR_ORDER_FULL_LOAD                                             :(Last fullt)
 STR_ORDER_FULL_LOAD_ANY                                         :(Last fullt, vilkårleg last)

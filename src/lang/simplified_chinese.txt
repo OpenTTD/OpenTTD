@@ -3224,7 +3224,7 @@ STR_ORDER_STOP_ORDER                                            :(停留)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(自动)
+STR_ORDER_IMPLICIT                                              :(自动)
 
 STR_ORDER_FULL_LOAD                                             :（装满全部货物）
 STR_ORDER_FULL_LOAD_ANY                                         :（装满任意货物后离开）

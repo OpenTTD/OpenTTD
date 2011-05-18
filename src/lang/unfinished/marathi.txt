@@ -1177,7 +1177,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}सर�
 
 
 
-STR_ORDER_AUTOMATIC                                             :(आपोआप)
+STR_ORDER_IMPLICIT                                              :(आपोआप)
 
 
 

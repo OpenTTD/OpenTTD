@@ -3593,7 +3593,7 @@ STR_ORDER_STOP_ORDER                                            :(Стоп)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Аўтаматычна)
+STR_ORDER_IMPLICIT                                              :(Аўтаматычна)
 
 STR_ORDER_FULL_LOAD                                             :(Поўная загрузка)
 STR_ORDER_FULL_LOAD_ANY                                         :(Поўная загрузка любым грузам)

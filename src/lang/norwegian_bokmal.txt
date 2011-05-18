@@ -3217,7 +3217,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automatisk)
+STR_ORDER_IMPLICIT                                              :(Automatisk)
 
 STR_ORDER_FULL_LOAD                                             :(Full last)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full last av alle varetyper)

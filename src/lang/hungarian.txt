@@ -3294,7 +3294,7 @@ STR_ORDER_STOP_ORDER                                            :(megáll)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automata)
+STR_ORDER_IMPLICIT                                              :(Automata)
 
 STR_ORDER_FULL_LOAD                                             :(Mindenből teljes berakodás)
 STR_ORDER_FULL_LOAD_ANY                                         :(Bármiből teljes berakodás)

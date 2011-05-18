@@ -3223,7 +3223,7 @@ STR_ORDER_STOP_ORDER                                            :(Dur)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Otomatik)
+STR_ORDER_IMPLICIT                                              :(Otomatik)
 
 STR_ORDER_FULL_LOAD                                             :(Tam yükle)
 STR_ORDER_FULL_LOAD_ANY                                         :(Bir kargoyu tam yükle)

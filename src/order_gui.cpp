@@ -198,12 +198,12 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	if (v->cur_real_order_index == order_index) {
 		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
 		DrawSprite(sprite, PAL_NONE, rtl ? right - 2 * sprite_size.width : left + sprite_size.width, y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
-	} else if (v->cur_auto_order_index == order_index) {
+	} else if (v->cur_implicit_order_index == order_index) {
 		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
 	}
 
 	TextColour colour = TC_BLACK;
-	if (order->IsType(OT_AUTOMATIC)) {
+	if (order->IsType(OT_IMPLICIT)) {
 		colour = (selected ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 	} else if (selected) {
 		colour = TC_WHITE;
@@ -220,11 +220,11 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 			SetDParam(1, order->GetDestination());
 			break;
 
-		case OT_AUTOMATIC:
+		case OT_IMPLICIT:
 			SetDParam(0, STR_ORDER_GO_TO_STATION);
 			SetDParam(1, STR_ORDER_GO_TO);
 			SetDParam(2, order->GetDestination());
-			SetDParam(3, timetable ? STR_EMPTY : STR_ORDER_AUTOMATIC);
+			SetDParam(3, timetable ? STR_EMPTY : STR_ORDER_IMPLICIT);
 			break;
 
 		case OT_GOTO_STATION: {
@@ -685,10 +685,10 @@ private:
 	void OrderClick_Skip(int i)
 	{
 		/* Don't skip when there's nothing to skip */
-		if (_ctrl_pressed && this->vehicle->cur_auto_order_index == this->OrderGetSel()) return;
+		if (_ctrl_pressed && this->vehicle->cur_implicit_order_index == this->OrderGetSel()) return;
 		if (this->vehicle->GetNumOrders() <= 1) return;
 
-		DoCommandP(this->vehicle->tile, this->vehicle->index, _ctrl_pressed ? this->OrderGetSel() : ((this->vehicle->cur_auto_order_index + 1) % this->vehicle->GetNumOrders()),
+		DoCommandP(this->vehicle->tile, this->vehicle->index, _ctrl_pressed ? this->OrderGetSel() : ((this->vehicle->cur_implicit_order_index + 1) % this->vehicle->GetNumOrders()),
 				CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_ERROR_CAN_T_SKIP_TO_ORDER : STR_ERROR_CAN_T_SKIP_ORDER));
 	}
 

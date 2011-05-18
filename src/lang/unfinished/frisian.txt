@@ -2381,7 +2381,7 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 
 
 
-STR_ORDER_AUTOMATIC                                             :( Automatysk)
+STR_ORDER_IMPLICIT                                              :( Automatysk)
 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of losse)
 

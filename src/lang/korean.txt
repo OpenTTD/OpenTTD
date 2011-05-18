@@ -3230,7 +3230,7 @@ STR_ORDER_STOP_ORDER                                            :(멈춤)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(자동)
+STR_ORDER_IMPLICIT                                              :(자동)
 
 STR_ORDER_FULL_LOAD                                             :(모든 화물을 가득 실음)
 STR_ORDER_FULL_LOAD_ANY                                         :(아무 화물이나 가득 싣기)

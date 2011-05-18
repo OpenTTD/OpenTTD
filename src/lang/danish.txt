@@ -3229,7 +3229,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_AUTOMATIC                                             :(Automatisk)
+STR_ORDER_IMPLICIT                                              :(Automatisk)
 
 STR_ORDER_FULL_LOAD                                             :(Fuld last)
 STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last vilkårlig type fragt)
