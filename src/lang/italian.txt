@@ -3260,7 +3260,7 @@ STR_ORDER_STOP_ORDER                                            :(Ferma)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatico)
+STR_ORDER_IMPLICIT                                              :(Implicito)
 
 STR_ORDER_FULL_LOAD                                             :(Attendi pieno carico)
 STR_ORDER_FULL_LOAD_ANY                                         :(Attendi carico)

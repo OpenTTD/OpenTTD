@@ -3332,7 +3332,7 @@ STR_ORDER_STOP_ORDER                                            :(Stani)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatsko)
+STR_ORDER_IMPLICIT                                              :(Implicitno)
 
 STR_ORDER_FULL_LOAD                                             :(Puni ukrcaj)
 STR_ORDER_FULL_LOAD_ANY                                         :(Puni ukrcaj bilo kojeg tereta)
