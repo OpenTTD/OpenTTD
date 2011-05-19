@@ -78,10 +78,10 @@ struct CompanyProperties {
 	 */
 	bool is_ai;
 
-	Money yearly_expenses[3][EXPENSES_END];              ///< Expenses of the company for the last three years, in every #Expenses category.
-	CompanyEconomyEntry cur_economy;                     ///< Economic data of the company of this quarter.
-	CompanyEconomyEntry old_economy[MAX_HISTORY_MONTHS]; ///< Economic data of the company of the last #MAX_HISTORY_MONTHS months.
-	byte num_valid_stat_ent;                             ///< Number of valid statistical entries in #old_economy.
+	Money yearly_expenses[3][EXPENSES_END];                ///< Expenses of the company for the last three years, in every #Expenses category.
+	CompanyEconomyEntry cur_economy;                       ///< Economic data of the company of this quarter.
+	CompanyEconomyEntry old_economy[MAX_HISTORY_QUARTERS]; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
+	byte num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
 
 	CompanyProperties() : name(NULL), president_name(NULL) {}
 

@@ -565,7 +565,7 @@ static void CompaniesGenStatistics()
 		c->old_economy[0] = c->cur_economy;
 		memset(&c->cur_economy, 0, sizeof(c->cur_economy));
 
-		if (c->num_valid_stat_ent != MAX_HISTORY_MONTHS) c->num_valid_stat_ent++;
+		if (c->num_valid_stat_ent != MAX_HISTORY_QUARTERS) c->num_valid_stat_ent++;
 
 		UpdateCompanyRatingAndValue(c, true);
 		if (c->block_preview != 0) c->block_preview--;
