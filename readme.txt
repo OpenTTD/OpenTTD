@@ -1,5 +1,5 @@
 OpenTTD readme
-Last updated:    2011-04-01
+Last updated:    2011-05-19
 Release version: 1.1.0
 ------------------------------------------------------------------------
 
@@ -249,9 +249,12 @@ wait for an error message to pop up. The error message will tell you
 
 4.2) OpenTTD directories
 ---- -------------------
-The required 3rd party files listed in the section 4.1 "(Required) 3rd party files"
-as well as other non-compulsory extensions (NewGRFs, AI, heightmaps, scenarios) can be
-placed in a few different locations:
+OpenTTD uses its own directory to store its required 3rd party base set files (see section
+4.1 "Required 3rd party files") and non-compulsory extension and configuration files. See
+below for their proper place within this OpenTTD main data directory.
+
+The main OpenTTD directories can be found in various locations, depending on your operating
+system:
 	1. The current working directory (from where you started OpenTTD)
 		For non-Windows operating systems OpenTTD will not scan for files in this
 		directory if it is your personal directory, i.e. "~/", or when it is the
@@ -273,7 +276,26 @@ placed in a few different locations:
 	5. The installation directory (Linux only)
 		Linux:   /usr/share/games/openttd
 	6. The application bundle (Mac OSX only)
-		It includes the OpenTTD files (grf+lng) and it will work as long as they aren't touched
+		It includes the OpenTTD files (grf+lng) and it will work as long as they aren't
+		touched
+
+Different types of data or extensions go into different subdirectories of the chosen main
+OpenTTD directory:
+	Config File:         (no subdirectory)
+	Screenshots:         (no subdirectory)
+	Base Graphics:       data                    (or a subdirectory thereof)
+	Sound Sets:          data                    (or a subdirectory thereof)
+	NewGRFs:             data                    (or a subdirectory thereof)
+	32bpp Sets:          data                    (or a subdirectory thereof)
+	Music Sets:          gm                      (or a subdirectory thereof)
+	AIs:                 ai                      (or a subdirectory thereof)
+	AI Libraries:        ai/libraries            (or a subdirectory thereof)
+	Savegames:           save
+	Automatic Savegames: save/autosave
+	Scenarios:           scenario
+
+The (automatically created) directory content_download is for OpenTTD's internal use and
+no files should be added to it or its subdirectories manually.
 
 Notes:
 	- Linux in the previous list means .deb, but most paths should be similar for others.
@@ -357,7 +379,7 @@ OpenTTD in debug mode.
 The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like
 .INI format. It's mostly undocumented. Almost all settings can be changed
 ingame by using the 'Advanced Settings' window.
-When you can not find openttd.cfg you should look in the directories as
+When you cannot find openttd.cfg you should look in the directories as
 described in section 4.2. If you do not have an openttd.cfg OpenTTD will
 create one after closing.
 
@@ -419,7 +441,8 @@ DOS:
 ---- ---------------------------
 The following libraries are used by OpenTTD for:
   - libSDL/liballegro: hardware access (video, sound, mouse)
-  - zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads, heightmaps
+  - zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
+    heightmaps
   - liblzo2: (de)compressing of old (pre 0.3.0) savegames
   - liblzma: (de)compressing of savegames (1.1.0 and later)
   - libpng: making screenshots and loading heightmaps
@@ -455,7 +478,8 @@ The following compilers are known not to compile OpenTTD:
   - GNU Compiler Collection (GCC) 3.2 and earlier.
     These old versions fail due to OpenTTD's template usage.
   - Intel C++ Compiler (ICC) 11.1 and earlier.
-    Version 10.0 and earlier fail a configure check and fail with recent system headers.
+    Version 10.0 and earlier fail a configure check and fail with recent system
+        headers.
     Version 10.1 fails to compile station_gui.cpp.
     Version 11.1 fails with internal error when compiling network.cpp.
   - Clang/LLVM 2.8 and earlier.
@@ -542,16 +566,25 @@ Under Windows 98 and lower it is impossible to use a dedicated server; it will
 fail to start. Perhaps this is for the better because those OSes are not known
 for their stability.
 
-With the added support for font-based text selecting a non-latin language will
-result in garbage (lots of '?') shown on screen. Please open your configuration
-file and add a desired font for small/medium/-and large_font. This can be a font
-name like "Tahoma" or a path to a font.
+With the added support for font-based text selecting a non-latin language can
+result in lots of question marks ('?') being shown on screen. Please open your
+configuration file (openttd.cfg - see Section 4.2 for where to find it)
+and add a suitable font for the small, medium and / or large font, e.g.:
+	small_font = "Tahoma"
+	medium_font = "Tahoma"
+	large_font = "Tahoma"
+You should use a font name like "Tahoma" or a path to the desired font.
 
 Any NewGRF file used in a game is stored inside the savegame and will refuse
 to load if you don't have that NewGRF file available. A list of missing files
-will be output to the console at the moment, so use the '-d' flag (on windows)
-to see this list. You just have to find the files (http://grfcrawler.tt-forums.net/)
-put them in the data/ folder and you're set to go.
+can be viewed in the NewGRF window accessible from the file load dialogue window.
+
+You can try to obtain the missing files from that NewGRF dialogue or - if they
+are not available online - you can search manually through our forum's graphics
+development section (http://www.tt-forums.net/viewforum.php?f=66) or GrfCrawler
+(http://grfcrawler.tt-forums.net/). Put the NewGRF files in OpenTTD's data folder
+(see section 4.2 "OpenTTD directories") and rescan the list of available NewGRFs.
+Once you have all missing files, you are set to go.
 
 
 X.X) Credits
