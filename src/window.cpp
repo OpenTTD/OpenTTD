@@ -1550,12 +1550,13 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
 		/* Make sure the title bar isn't hidden behind the main tool bar or the status bar. */
 		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_MAIN_TOOLBAR, 0), w->left, PHD_DOWN);
 		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_STATUS_BAR,   0), w->left, PHD_UP);
-
-		if (w->viewport != NULL) {
-			w->viewport->left += nx - w->left;
-			w->viewport->top  += ny - w->top;
-		}
 	}
+
+	if (w->viewport != NULL) {
+		w->viewport->left += nx - w->left;
+		w->viewport->top  += ny - w->top;
+	}
+
 	w->left = nx;
 	w->top  = ny;
 }
