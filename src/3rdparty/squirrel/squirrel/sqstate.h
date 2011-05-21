@@ -137,7 +137,4 @@ extern SQObjectPtr _minusone_;
 
 bool CompileTypemask(SQIntVec &res,const SQChar *typemask);
 
-void *sq_vm_malloc(SQUnsignedInteger size);
-void *sq_vm_realloc(void *p,SQUnsignedInteger oldsize,SQUnsignedInteger size);
-void sq_vm_free(void *p,SQUnsignedInteger size);
 #endif //_SQSTATE_H_
