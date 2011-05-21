@@ -3131,7 +3131,7 @@ static void StationHandleSmallTick(BaseStation *st)
 	if ((st->facilities & FACIL_WAYPOINT) != 0 || !st->IsInUse()) return;
 
 	byte b = st->delete_ctr + 1;
-	if (b >= 185) b = 0;
+	if (b >= STATION_RATING_TICKS) b = 0;
 	st->delete_ctr = b;
 
 	if (b == 0) UpdateStationRating(Station::From(st));
@@ -3145,10 +3145,10 @@ void OnTick_Station()
 	FOR_ALL_BASE_STATIONS(st) {
 		StationHandleSmallTick(st);
 
-		/* Run 250 tick interval trigger for station animation.
+		/* Run STATION_ACCEPTANCE_TICKS = 250 tick interval trigger for station animation.
 		 * Station index is included so that triggers are not all done
 		 * at the same time. */
-		if ((_tick_counter + st->index) % 250 == 0) {
+		if ((_tick_counter + st->index) % STATION_ACCEPTANCE_TICKS == 0) {
 			/* Stop processing this station if it was deleted */
 			if (!StationHandleBigTick(st)) continue;
 			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);

@@ -164,13 +164,6 @@ enum TownRatingCheckType {
 };
 
 /**
- * This is the number of ticks between towns being processed for building new
- * houses or roads. This value originally came from the size of the town array
- * in TTD.
- */
-static const byte TOWN_GROWTH_FREQUENCY = 70;
-
-/**
  * This enum is used in conjunction with town->flags.
  * IT simply states what bit is used for.
  * It is pretty unrealistic (IMHO) to only have one church/stadium

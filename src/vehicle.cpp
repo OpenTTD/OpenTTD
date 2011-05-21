@@ -801,7 +801,7 @@ void CallVehicleTicks()
 {
 	_vehicles_to_autoreplace.Clear();
 
-	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? 184 : (_age_cargo_skip_counter - 1);
+	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? CARGO_AGING_TICKS - 1 : (_age_cargo_skip_counter - 1);
 
 	RunVehicleDayProc();
 

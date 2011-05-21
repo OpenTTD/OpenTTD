@@ -1068,7 +1068,7 @@ static void ProduceIndustryGoods(Industry *i)
 	i->counter--;
 
 	/* produce some cargo */
-	if ((i->counter & 0xFF) == 0) {
+	if ((i->counter % INDUSTRY_PRODUCE_TICKS) == 0) {
 		if (HasBit(indsp->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
 
 		IndustryBehaviour indbehav = indsp->behaviour;

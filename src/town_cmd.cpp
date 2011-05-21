@@ -704,7 +704,7 @@ void OnTick_Town()
 	Town *t;
 	FOR_ALL_TOWNS(t) {
 		/* Run town tick at regular intervals, but not all at once. */
-		if ((_tick_counter + t->index) % TOWN_GROWTH_FREQUENCY == 0) {
+		if ((_tick_counter + t->index) % TOWN_GROWTH_TICKS == 0) {
 			TownTickHandler(t);
 		}
 	}
@@ -2737,7 +2737,7 @@ static void UpdateTownGrowRate(Town *t)
 	if (_settings_game.economy.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
 
 	/**
-	 * Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
+	 * Towns are processed every TOWN_GROWTH_TICKS ticks, and this is the
 	 * number of times towns are processed before a new building is built.
 	 */
 	static const uint16 _grow_count_values[2][6] = {

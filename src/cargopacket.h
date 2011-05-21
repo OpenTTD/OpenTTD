@@ -86,7 +86,7 @@ public:
 
 	/**
 	 * Gets the number of days this cargo has been in transit.
-	 * This number isn't really in days, but in 2.5 days (185 ticks) and
+	 * This number isn't really in days, but in 2.5 days (CARGO_AGING_TICKS = 185 ticks) and
 	 * it is capped at 255.
 	 * @return Length this cargo has been in transit.
 	 */
