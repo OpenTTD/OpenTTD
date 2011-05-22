@@ -2507,14 +2507,14 @@ STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vrac
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vracht>
 STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige treinmodel>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldig bedrijf>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Hoofdletter gevoelig
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Verwijder filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Verwissel hoofdlettergevoeligheid bij het vergelijken van bordnamen met het filter
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Verwijderd het filter
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Verwijder het filter
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Wijzig tekst van bord
@@ -2667,7 +2667,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totaal:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Max lening: {BLACK}{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Max. lening: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Leen {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+klik om zoveel als mogelijk te lenen
@@ -2820,7 +2820,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Onderhou
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capaciteit: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ombouwbaar)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontworpen: {GOLD}{NUM}{BLACK} Levensduur: {GOLD}{COMMA} jaar
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Betrouwbaarheid: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. betrouwbaarheid: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
@@ -2829,7 +2829,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedre
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Om te bouwen voor: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrachttypen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Trekkracht: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. trekkracht: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Railvoertuigkeuzelijst - klik op een railvoertuig voor informatie
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Wegvoertuigkeuzelijst - klik op een wegvoertuig voor informatie
@@ -3254,7 +3254,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en één soort vracht volledig laden)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Niet lossen en niet laden)
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[vlak bij einde]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[begin]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[einde]
 
@@ -3343,7 +3343,7 @@ STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD 
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AI's beschikbaar!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van de actieve AI's is vastgelopen. Meld dit a.u.b. bij de auteur van deze AI met een schermprint van het AI Debugscherm
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve AI's is vastgelopen. Meld dit a.u.b. bij de auteur van deze AI met een schermprint van het AI Debugscherm
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspeler Debugvenster is alleen beschikbaar voor de server
 
 # AI configuration window
@@ -3464,7 +3464,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De gemeenteraad van {TOWN} staat bouwen van nog een vliegveld niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokale autoriteiten weigeren toestemming te geven voor vliegveld wegens zorgen om geluidsoverlast
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Kan land hier niet ontgraven...
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Je poging tot omkopen is
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ontdekt door een regionale onderzoeker
 
 # Levelling errors
@@ -3693,7 +3693,7 @@ STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Schip in
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Vliegtuig in de weg
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan trein niet ombouwen...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuig niet ombouwen
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuig niet ombouwen...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan schip niet ombouwen...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan vliegtuig niet ombouwen...
 
@@ -3722,7 +3722,7 @@ STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan type
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan type van schip niet hernoemen...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan type van vliegtuig niet hernoemen...
 
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan railvoertuig niet verkopen
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan railvoertuig niet verkopen...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan wegvoertuig niet verkopen...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan schip niet verkopen...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet verkopen...
@@ -4173,7 +4173,7 @@ STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Treindep
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Garage
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Garage #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Dok
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Dok#{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Dok #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :onbekend station
