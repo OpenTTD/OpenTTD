@@ -339,24 +339,24 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 	switch (desc->cmd) {
 	case SDT_NUMX: {
 		char *end;
-		unsigned long val = strtoul(str, &end, 0);
+		size_t val = strtoul(str, &end, 0);
 		if (*end != '\0') ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
 		return (void*)val;
 	}
 	case SDT_ONEOFMANY: {
-		long r = LookupOneOfMany(desc->many, str);
+		size_t r = LookupOneOfMany(desc->many, str);
 		/* if the first attempt of conversion from string to the appropriate value fails,
 		 * look if we have defined a converter from old value to new value. */
-		if (r == -1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
-		if (r != -1) return (void*)r; // and here goes converted value
+		if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
+		if (r != (size_t)-1) return (void*)r; // and here goes converted value
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name); // sorry, we failed
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
-		unsigned long r = LookupManyOfMany(desc->many, str);
-		if (r != (unsigned long)-1) return (void*)r;
+		size_t r = LookupManyOfMany(desc->many, str);
+		if (r != (size_t)-1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
-		return 0;
+		return NULL;
 	}
 	case SDT_BOOLX:
 		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
@@ -571,15 +571,15 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 					break;
 				case SLE_VAR_I8:
 				case SLE_VAR_U8:
-					if (*(byte*)ptr == (byte)(unsigned long)p) continue;
+					if (*(byte*)ptr == (byte)(size_t)p) continue;
 					break;
 				case SLE_VAR_I16:
 				case SLE_VAR_U16:
-					if (*(uint16*)ptr == (uint16)(unsigned long)p) continue;
+					if (*(uint16*)ptr == (uint16)(size_t)p) continue;
 					break;
 				case SLE_VAR_I32:
 				case SLE_VAR_U32:
-					if (*(uint32*)ptr == (uint32)(unsigned long)p) continue;
+					if (*(uint32*)ptr == (uint32)(size_t)p) continue;
 					break;
 				default: NOT_REACHED();
 				}
