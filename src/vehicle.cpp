@@ -1854,16 +1854,16 @@ void Vehicle::BeginLoading()
 		this->current_order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
 
 	} else {
-		assert(this->IsGroundVehicle());
-		bool suppress_implicit_orders = HasBit(this->GetGroundVehicleFlags(), GVF_SUPPRESS_IMPLICIT_ORDERS);
-
 		/* We weren't scheduled to stop here. Insert an implicit order
 		 * to show that we are stopping here, but only do that if the order
-		 * list isn't empty. */
+		 * list isn't empty.
+		 * While only groundvehicles have implicit orders, e.g. aircraft might still enter
+		 * the 'wrong' terminal when skipping orders etc. */
 		Order *in_list = this->GetOrder(this->cur_implicit_order_index);
-		if (in_list != NULL &&
+		if (this->IsGroundVehicle() && in_list != NULL &&
 				(!in_list->IsType(OT_IMPLICIT) ||
 				in_list->GetDestination() != this->last_station_visited)) {
+			bool suppress_implicit_orders = HasBit(this->GetGroundVehicleFlags(), GVF_SUPPRESS_IMPLICIT_ORDERS);
 			/* Do not create consecutive duplicates of implicit orders */
 			Order *prev_order = this->cur_implicit_order_index > 0 ? this->GetOrder(this->cur_implicit_order_index - 1) : NULL;
 			if (prev_order == NULL ||
