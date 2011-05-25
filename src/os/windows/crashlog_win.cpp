@@ -243,11 +243,11 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 	buffer += seprintf(buffer, last, "Registers:\n");
 #ifdef _M_AMD64
 	buffer += seprintf(buffer, last,
-		" RAX: %.16llX RBX: %.16llX RCX: %.16llX RDX: %.16llX\n"
-		" RSI: %.16llX RDI: %.16llX RBP: %.16llX RSP: %.16llX\n"
-		" R8:  %.16llX R9:  %.16llX R10: %.16llX R11: %.16llX\n"
-		" R12: %.16llX R13: %.16llX R14: %.16llX R15: %.16llX\n"
-		" RIP: %.16llX EFLAGS: %.8X\n",
+		" RAX: %.16I64X RBX: %.16I64X RCX: %.16I64X RDX: %.16I64X\n"
+		" RSI: %.16I64X RDI: %.16I64X RBP: %.16I64X RSP: %.16I64X\n"
+		" R8:  %.16I64X R9:  %.16I64X R10: %.16I64X R11: %.16I64X\n"
+		" R12: %.16I64X R13: %.16I64X R14: %.16I64X R15: %.16I64X\n"
+		" RIP: %.16I64X EFLAGS: %.8lX\n",
 		ep->ContextRecord->Rax,
 		ep->ContextRecord->Rbx,
 		ep->ContextRecord->Rcx,
@@ -548,7 +548,6 @@ static void CDECL CustomAbort(int signal)
 
 /* static */ void CrashLog::InitialiseCrashLog()
 {
-#if defined(_MSC_VER)
 #ifdef _M_AMD64
 	CONTEXT ctx;
 	RtlCaptureContext(&ctx);
@@ -559,12 +558,13 @@ static void CDECL CustomAbort(int signal)
 	 * alignment would be wrong in the called function. */
 	_safe_esp = (void *)(ctx.Rsp - 8);
 #else
+#if defined(_MSC_VER)
 	_asm {
 		mov _safe_esp, esp
 	}
-#endif
 #else
 	asm("movl %esp, __safe_esp");
+#endif
 #endif
 
 	/* SIGABRT is not an unhandled exception, so we need to intercept it. */
