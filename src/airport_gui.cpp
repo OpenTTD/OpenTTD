@@ -422,11 +422,6 @@ public:
 		_selected_airport_index = airport_index;
 		_selected_airport_layout = 0;
 
-		if (_selected_airport_index != -1) {
-			const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
-			this->preview_sprite = GetCustomAirportSprite(as, _selected_airport_layout);
-		}
-
 		this->UpdateSelectSize();
 		this->SetDirty();
 	}
@@ -444,6 +439,8 @@ public:
 			Direction rotation = as->rotation[_selected_airport_layout];
 			if (rotation == DIR_E || rotation == DIR_W) Swap(w, h);
 			SetTileSelectSize(w, h);
+
+			this->preview_sprite = GetCustomAirportSprite(as, _selected_airport_layout);
 
 			this->SetWidgetDisabledState(BAIRW_LAYOUT_DECREASE, _selected_airport_layout == 0);
 			this->SetWidgetDisabledState(BAIRW_LAYOUT_INCREASE, _selected_airport_layout + 1 >= as->num_table);
