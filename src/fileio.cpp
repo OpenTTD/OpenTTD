@@ -265,6 +265,24 @@ bool FioCheckFileExists(const char *filename, Subdirectory subdir)
 }
 
 /**
+ * Test whether the fiven filename exists.
+ * @param filename the file to test.
+ * @return true if and only if the file exists.
+ */
+bool FileExists(const char *filename)
+{
+#if defined(WINCE)
+	/* There is always one platform that doesn't support basic commands... */
+	HANDLE hand = CreateFile(OTTD2FS(filename), 0, 0, NULL, OPEN_EXISTING, 0, NULL);
+	if (hand == INVALID_HANDLE_VALUE) return 1;
+	CloseHandle(hand);
+	return 0;
+#else
+	return access(OTTD2FS(filename), 0) == 0;
+#endif
+}
+
+/**
  * Close a file in a safe way.
  */
 void FioFCloseFile(FILE *f)
