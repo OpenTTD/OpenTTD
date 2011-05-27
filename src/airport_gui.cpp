@@ -533,18 +533,6 @@ public:
 	{
 		CheckRedrawStationCoverage(this);
 	}
-
-	virtual void OnTimeout()
-	{
-		if (this->IsWidgetLowered(BAIRW_LAYOUT_DECREASE)) {
-			this->ToggleWidgetLoweredState(BAIRW_LAYOUT_DECREASE);
-			this->SetDirty();
-		}
-		if (this->IsWidgetLowered(BAIRW_LAYOUT_INCREASE)) {
-			this->ToggleWidgetLoweredState(BAIRW_LAYOUT_INCREASE);
-			this->SetDirty();
-		}
-	}
 };
 
 static const NWidgetPart _nested_build_airport_widgets[] = {
@@ -587,7 +575,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 static const WindowDesc _build_airport_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
-	WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION | WDF_UNCLICK_BUTTONS,
 	_nested_build_airport_widgets, lengthof(_nested_build_airport_widgets)
 );
 
