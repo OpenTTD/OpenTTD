@@ -191,7 +191,7 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 	EndContainer(),
 };
 
-/* Colours for fios types */
+/** Colours for fios types, indexed by #FiosType. */
 const TextColour _fios_colours[] = {
 	TC_LIGHT_BLUE, TC_DARK_GREEN,  TC_DARK_GREEN, TC_ORANGE, TC_LIGHT_BROWN,
 	TC_ORANGE,     TC_LIGHT_BROWN, TC_ORANGE,     TC_ORANGE, TC_YELLOW
@@ -733,6 +733,10 @@ static const FileType _file_modetotype[] = {
 	FT_HEIGHTMAP, ///< used for SLD_LOAD_HEIGHTMAP
 };
 
+/**
+ * Launch save/load dialog in the given mode.
+ * @param mode Save/load mode.
+ */
 void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 {
 	DeleteWindowById(WC_SAVELOAD, 0);

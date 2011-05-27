@@ -63,7 +63,7 @@ int CDECL CompareFiosItems(const FiosItem *da, const FiosItem *db)
 	return r;
 }
 
-/** Clear the list */
+/** Free the list of savegames. */
 void FiosFreeSavegameList()
 {
 	_fios_items.Clear();
@@ -84,9 +84,9 @@ StringID FiosGetDescText(const char **path, uint64 *total_free)
 }
 
 /**
- * Browse to a new path based on the passed \a item.
- * @param *item #FiosItem object telling us what to do.
- * @return A string if we have given a file as a target, otherwise \c NULL.
+ * Browse to a new path based on the passed \a item, starting at #_fios_path.
+ * @param *item Item telling us what to do.
+ * @return A filename w/path if we reached a file, otherwise \c NULL.
  */
 const char *FiosBrowseTo(const FiosItem *item)
 {
@@ -142,6 +142,12 @@ const char *FiosBrowseTo(const FiosItem *item)
 	return NULL;
 }
 
+/**
+ * Make a save game or scenario filename from a name.
+ * @param buf Destination buffer for saving the filename.
+ * @param name Name of the file.
+ * @param size Length of buffer \a buf.
+ */
 void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 {
 	const char *extension, *period;
@@ -168,6 +174,10 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 #endif
 }
 
+/**
+ * Delete a file.
+ * @param name Filename to delete.
+ */
 bool FiosDelete(const char *name)
 {
 	char filename[512];
@@ -394,7 +404,6 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 /**
  * Get a list of savegames.
  * @param mode Save/load mode.
- * @return A pointer to an array of FiosItem representing all the files to be shown in the save/load dialog.
  * @see FiosGetFileList
  */
 void FiosGetSavegameList(SaveLoadDialogMode mode)
@@ -446,7 +455,6 @@ static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char 
 /**
  * Get a list of scenarios.
  * @param mode Save/load mode.
- * @return A pointer to an array of FiosItem representing all the files to be shown in the save/load dialog.
  * @see FiosGetFileList
  */
 void FiosGetScenarioList(SaveLoadDialogMode mode)
@@ -511,7 +519,10 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char
 	return type;
 }
 
-/* Get a list of Heightmaps */
+/**
+ * Get a list of heightmaps.
+ * @param mode Save/load mode.
+ */
 void FiosGetHeightmapList(SaveLoadDialogMode mode)
 {
 	static char *fios_hmap_path = NULL;

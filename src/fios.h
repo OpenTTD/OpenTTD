@@ -92,15 +92,16 @@ enum FileSlots {
 	MAX_FILE_SLOTS = 64
 };
 
+/** Mode of the file dialogue window. */
 enum SaveLoadDialogMode {
-	SLD_LOAD_GAME,
-	SLD_LOAD_SCENARIO,
-	SLD_SAVE_GAME,
-	SLD_SAVE_SCENARIO,
-	SLD_LOAD_HEIGHTMAP,
+	SLD_LOAD_GAME,      ///< Load a game.
+	SLD_LOAD_SCENARIO,  ///< Load a scenario.
+	SLD_SAVE_GAME,      ///< Save a game.
+	SLD_SAVE_SCENARIO,  ///< Save a scenario.
+	SLD_LOAD_HEIGHTMAP, ///< Load a heightmap.
 };
 
-/* The different types of files been handled by the system */
+/** The different types of files that the system knows about. */
 enum FileType {
 	FT_NONE,      ///< nothing to do
 	FT_SAVEGAME,  ///< old or new savegame
@@ -122,7 +123,7 @@ enum FiosType {
 	FIOS_TYPE_INVALID = 255,
 };
 
-/* Deals with finding savegames */
+/** Deals with finding savegames */
 struct FiosItem {
 	FiosType type;
 	uint64 mtime;
@@ -130,7 +131,7 @@ struct FiosItem {
 	char name[MAX_PATH];
 };
 
-/* Deals with the type of the savegame, independent of extension */
+/** Deals with the type of the savegame, independent of extension */
 struct SmallFiosItem {
 	int mode;             ///< savegame/scenario type (old, new)
 	FileType filetype;    ///< what type of file are we dealing with
@@ -152,31 +153,23 @@ extern SmallFiosItem _file_to_saveload;
 extern SaveLoadDialogMode _saveload_mode;
 extern SortingBits _savegame_sort_order;
 
-/* Launch save/load dialog */
 void ShowSaveLoadDialog(SaveLoadDialogMode mode);
 
-/* Get a list of savegames */
 void FiosGetSavegameList(SaveLoadDialogMode mode);
-/* Get a list of scenarios */
 void FiosGetScenarioList(SaveLoadDialogMode mode);
-/* Get a list of Heightmaps */
 void FiosGetHeightmapList(SaveLoadDialogMode mode);
-/* Free the list of savegames */
+
 void FiosFreeSavegameList();
-/* Browse to. Returns a filename w/path if we reached a file. */
 const char *FiosBrowseTo(const FiosItem *item);
-/* Return path, free space and stringID */
+
 StringID FiosGetDescText(const char **path, uint64 *total_free);
-/* Delete a name */
 bool FiosDelete(const char *name);
-/* Make a filename from a name */
 void FiosMakeSavegameName(char *buf, const char *name, size_t size);
-/* Determines type of savegame (or tells it is not a savegame) */
+
 FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last);
 
 int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
 
-/* FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
 extern const TextColour _fios_colours[];
 
 void BuildFileList();
