@@ -390,6 +390,7 @@ struct AISettingsWindow : public Window {
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
 				if (IsInsideMM(x, 0, 21)) {
 					int new_val = this->ai_config->GetSetting(config_item.name);
+					int old_val = new_val;
 					if (bool_item) {
 						new_val = !new_val;
 					} else if (x >= 10) {
@@ -404,19 +405,21 @@ struct AISettingsWindow : public Window {
 						this->clicked_increase = false;
 					}
 
-					this->ai_config->SetSetting(config_item.name, new_val);
-					this->clicked_button = num;
-					this->timeout = 5;
+					if (new_val != old_val) {
+						this->ai_config->SetSetting(config_item.name, new_val);
+						this->clicked_button = num;
+						this->timeout = 5;
 
-					this->CheckDifficultyLevel();
+						this->CheckDifficultyLevel();
+
+						this->SetDirty();
+					}
 				} else if (!bool_item) {
 					/* Display a query box so users can enter a custom value. */
 					this->clicked_row = num;
 					SetDParam(0, this->ai_config->GetSetting(config_item.name));
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
-
-				this->SetDirty();
 				break;
 			}
 

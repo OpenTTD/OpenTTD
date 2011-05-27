@@ -325,6 +325,7 @@ struct NewGRFParametersWindow : public Window {
 				/* One of the arrows is clicked */
 				if (IsInsideMM(x, 0, 21)) {
 					uint32 val = par_info->GetValue(this->grf_config);
+					uint32 old_val = val;
 					if (par_info->type == PTYPE_BOOL) {
 						val = !val;
 					} else {
@@ -338,17 +339,18 @@ struct NewGRFParametersWindow : public Window {
 							this->clicked_increase = false;
 						}
 					}
-					par_info->SetValue(this->grf_config, val);
+					if (val != old_val) {
+						par_info->SetValue(this->grf_config, val);
 
-					this->clicked_button = num;
-					this->timeout = 5;
+						this->clicked_button = num;
+						this->timeout = 5;
+						this->SetDirty();
+					}
 				} else if (par_info->type == PTYPE_UINT_ENUM && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
 					SetDParam(0, this->grf_config->param[num]);
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
-
-				this->SetDirty();
 				break;
 			}
 
