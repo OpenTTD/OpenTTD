@@ -339,6 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Situa ob
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Desa l'escenari
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Carrega un escenari
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Desa mapa d'alçades
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carrega Mapa d'alçades
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Surt de l'editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2279,6 +2280,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Carrega 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Desa l'Escenari
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Carrega un Escenari
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carrega un Mapa d'alçades
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Desa Mapa d'alçades
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aquí per anar a la carpeta per defecte actual de desa/carrega
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} lliures
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Llista de dispositius de disc, carpetes i arxius de jocs desats

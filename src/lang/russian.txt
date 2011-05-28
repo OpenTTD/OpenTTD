@@ -464,6 +464,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разм
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Сохранить сценарий
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Загрузить сценарий
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Сохранить карту высот
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Загрузить карту высот
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Выйти из редактора
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2454,6 +2455,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Загр
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Сохранить сценарий
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузить сценарий
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузить карту
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Сохранить карту высот
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Кликните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр

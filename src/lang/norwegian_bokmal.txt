@@ -1217,6 +1217,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Des 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatisk ved start av nytt spill: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Når spillet er satt på pause, tillat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ingen handlinger
@@ -1333,6 +1334,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalt)
 
@@ -2053,7 +2055,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp la
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektvalg
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Velg objekt å bygge
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Velg objekt å bygge. Shift slår på/av beregnet kostnad.
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forhåndsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} ruter
 
@@ -2064,7 +2066,7 @@ STR_OBJECT_CLASS_TRNS                                           :Radiosendere
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trær
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Velg typen tre som skal plantes
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Trær av tilfeldig type
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plasser trær av tilfeldig type
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plasser trær av tilfeldig type. Shift slår på/av beregnet kostnad.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilfeldige trær
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plasser trær tilfeldig i landskapet
 
@@ -2085,7 +2087,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du si
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bygenerering
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Ny by
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Grunnlegg en ny by
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Grunnlegg en ny by. Shift+klikk viser beregnet kostnad.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tilfeldig by
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunnlegg en by på et tilfeldig sted
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfeldige byer
@@ -2456,6 +2458,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere "Action 8" oppføringer
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten på pseudo-sprite.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværende grafikksettet mangler en del spriter.{}Vennligst oppdater grafikksettet.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurte GRF resurser var ikke tilgjengelige.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -2677,7 +2680,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg fir
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Se firmaets hovedkontor
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis firmaets hovedkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytt firmaets hovedkontor
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg firmaets hovedkontor et annet sted til en kostnad av 1{NBSP}% av firmaverdien
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg (flytt) firmaets hovedkontor et annet sted til en kostnad av 1{NBSP}% av firmaverdien. Shift+klikk viser beregnet kostnad uten å flytte kontoret.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikt
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Velg nytt ansikt på sjefen
@@ -2690,8 +2693,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Endre sj
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kjøp 25{NBSP}% av aksjene i firmaet
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Selg 25{NBSP}% av aksjene i firmaet
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kjøp 25{NBSP}% av aksjene i firmaet
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Selg 25{NBSP}% av aksjene i firmaet
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kjøp 25{NBSP}% av aksjene i firmaet. Shift+klikk viser beregnet kostnad uten å kjøpe noen aksjer.
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Selg 25{NBSP}% av aksjene i firmaet. Shift+klikk beregnet inntekt uten å selge noen aksjer
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmanavn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Sjefens navn
@@ -3717,6 +3720,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}...{NBSP
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke tvinge tog til å passere signal ved fare...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke snu om toget...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Toget mangler energi.
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan ikke snu om kjøretøy...
 

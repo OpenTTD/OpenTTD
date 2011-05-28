@@ -3389,7 +3389,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Avtomatično)
+STR_ORDER_IMPLICIT                                              :(Implicitno)
 
 STR_ORDER_FULL_LOAD                                             :(Napolni)
 STR_ORDER_FULL_LOAD_ANY                                         :(Napolni kakršenkoli tovor)
