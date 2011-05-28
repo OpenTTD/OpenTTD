@@ -26,6 +26,7 @@ enum EffectVehicleType {
 	EV_EXPLOSION_SMALL          =  7, ///< Various explosions.
 	EV_BULLDOZER                =  8, ///< Bulldozer at roadworks.
 	EV_BUBBLE                   =  9, ///< Bubble of bubble generator (industry).
+	EV_END
 };
 
 EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type);

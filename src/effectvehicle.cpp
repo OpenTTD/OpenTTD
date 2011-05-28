@@ -544,6 +544,7 @@ static EffectInitProc * const _effect_init_procs[] = {
 	BulldozerInit,      // EV_BULLDOZER
 	BubbleInit,         // EV_BUBBLE
 };
+assert_compile(lengthof(_effect_init_procs) == EV_END);
 
 /** Functions for controling effect vehicles at each tick. */
 static EffectTickProc * const _effect_tick_procs[] = {
@@ -558,6 +559,7 @@ static EffectTickProc * const _effect_tick_procs[] = {
 	BulldozerTick,      // EV_BULLDOZER
 	BubbleTick,         // EV_BUBBLE
 };
+assert_compile(lengthof(_effect_tick_procs) == EV_END);
 
 
 /**
