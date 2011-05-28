@@ -17,6 +17,7 @@
 #include "tar_type.h"
 #ifdef WIN32
 #include <windows.h>
+# define access _taccess
 #elif defined(__HAIKU__)
 #include <Path.h>
 #include <storage/FindDirectory.h>

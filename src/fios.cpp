@@ -19,9 +19,7 @@
 #include "string_func.h"
 #include <sys/stat.h>
 
-#ifdef WIN32
-# define access _taccess
-#else
+#ifndef WIN32
 # include <unistd.h>
 #endif /* WIN32 */
 
