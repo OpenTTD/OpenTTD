@@ -527,7 +527,7 @@ public:
 
 			case SLWW_LOAD_BUTTON:
 				if (this->selected != NULL && !_load_check_data.HasErrors() && (_load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs())) {
-					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
+					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 
 					const char *name = FiosBrowseTo(this->selected);
 					SetFiosType(this->selected->type);
@@ -649,7 +649,7 @@ public:
 
 			UpdateTextBufferSize(&this->text);
 		} else if (this->IsWidgetLowered(SLWW_SAVE_GAME)) { // Save button clicked
-			_switch_mode = SM_SAVE;
+			_switch_mode = SM_SAVE_GAME;
 			FiosMakeSavegameName(_file_to_saveload.name, this->text.buf, sizeof(_file_to_saveload.name));
 
 			/* In the editor set up the vehicle engines correctly (date might have changed) */
