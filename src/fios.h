@@ -99,6 +99,7 @@ enum SaveLoadDialogMode {
 	SLD_SAVE_GAME,      ///< Save a game.
 	SLD_SAVE_SCENARIO,  ///< Save a scenario.
 	SLD_LOAD_HEIGHTMAP, ///< Load a heightmap.
+	SLD_SAVE_HEIGHTMAP, ///< Save a heightmap.
 };
 
 /** The different types of files that the system knows about. */
