@@ -16,6 +16,7 @@ void InitializeScreenshotFormats();
 
 const char *GetScreenshotFormatDesc(int i);
 void SetScreenshotFormat(uint i);
+const char *GetCurrentScreenshotExtension();
 
 /** Type of requested screenshot */
 enum ScreenshotType {
