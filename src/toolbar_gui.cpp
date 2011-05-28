@@ -355,9 +355,10 @@ static CallBackFunction MenuClickSettings(int index)
 enum SaveLoadEditorMenuEntries {
 	SLEME_SAVE_SCENARIO   = 0,
 	SLEME_LOAD_SCENARIO,
+	SLEME_SAVE_HEIGHTMAP,
 	SLEME_LOAD_HEIGHTMAP,
 	SLEME_EXIT_TOINTRO,
-	SLEME_EXIT_GAME       = 5,
+	SLEME_EXIT_GAME       = 6,
 	SLEME_MENUCOUNT,
 };
 
@@ -387,6 +388,7 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 		switch (index) {
 			case SLEME_SAVE_SCENARIO:  ShowSaveLoadDialog(SLD_SAVE_SCENARIO);  break;
 			case SLEME_LOAD_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO);  break;
+			case SLEME_SAVE_HEIGHTMAP: ShowSaveLoadDialog(SLD_SAVE_HEIGHTMAP); break;
 			case SLEME_LOAD_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
 			case SLEME_EXIT_TOINTRO:   AskExitToGameMenu();                    break;
 			case SLEME_EXIT_GAME:      HandleExitGameRequest();                break;

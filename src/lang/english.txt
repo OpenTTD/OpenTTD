@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Place ob
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Save scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Load scenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Save heightmap
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Load heightmap
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Quit editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
