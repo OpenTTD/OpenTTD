@@ -28,6 +28,7 @@
 #include "table/strings.h"
 
 static const char * const SCREENSHOT_NAME = "screenshot"; ///< Default filename of a saved screenshot.
+static const char * const HEIGHTMAP_NAME  = "heightmap";  ///< Default filename of a saved heightmap.
 
 char _screenshot_format_name[8];      ///< Extension of the current screenshot format (corresponds with #_cur_screenshot_format).
 uint _num_screenshot_formats;         ///< Number of available screenshot formats.
@@ -771,6 +772,48 @@ static bool MakeWorldScreenshot()
 }
 
 /**
+ * Callback for generating a heightmap. Supports 8bpp grayscale only.
+ * @param userdata Pointer to user data.
+ * @param buf      Destination buffer.
+ * @param y        Line number of the first line to write.
+ * @param pitch    Number of pixels to write (1 byte for 8bpp, 4 bytes for 32bpp). @see Colour
+ * @param n        Number of lines to write.
+ * @see ScreenshotCallback
+ */
+static void HeightmapCallback(void *userdata, void *buffer, uint y, uint pitch, uint n)
+{
+	byte *buf = (byte *)buffer;
+	while (n > 0) {
+		TileIndex ti = TileXY(MapMaxX(), y);
+		for (uint x = MapMaxX(); true; x--) {
+			*buf = 16 * TileHeight(ti);
+			buf++;
+			if (x == 0) break;
+			ti = TILE_ADDXY(ti, -1, 0);
+		}
+		y++;
+		n--;
+	}
+}
+
+/**
+ * Make a heightmap of the current map.
+ * @param filename Filename to use for saving.
+ */
+bool MakeHeightmapScreenshot(const char *filename)
+{
+	Colour palette[256];
+	for (uint i = 0; i < lengthof(palette); i++) {
+		palette[i].a = 0xff;
+		palette[i].r = i;
+		palette[i].g = i;
+		palette[i].b = i;
+	}
+	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
+	return sf->proc(filename, HeightmapCallback, NULL, MapSizeX(), MapSizeY(), 8, palette);
+}
+
+/**
  * Make an actual screenshot.
  * @param t    the type of screenshot to make.
  * @param name the name to give to the screenshot.
@@ -804,6 +847,12 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 		case SC_WORLD:
 			ret = MakeWorldScreenshot();
 			break;
+
+		case SC_HEIGHTMAP: {
+			const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
+			ret = MakeHeightmapScreenshot(MakeScreenshotName(HEIGHTMAP_NAME, sf->extension));
+			break;
+		}
 
 		default:
 			NOT_REACHED();
