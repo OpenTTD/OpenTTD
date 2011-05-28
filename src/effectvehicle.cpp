@@ -531,30 +531,32 @@ static bool BubbleTick(EffectVehicle *v)
 typedef void EffectInitProc(EffectVehicle *v);
 typedef bool EffectTickProc(EffectVehicle *v);
 
+/** Functions to initialise an effect vehicle after construction. */
 static EffectInitProc * const _effect_init_procs[] = {
-	ChimneySmokeInit,
-	SteamSmokeInit,
-	DieselSmokeInit,
-	ElectricSparkInit,
-	SmokeInit,
-	ExplosionLargeInit,
-	BreakdownSmokeInit,
-	ExplosionSmallInit,
-	BulldozerInit,
-	BubbleInit,
+	ChimneySmokeInit,   // EV_CHIMNEY_SMOKE
+	SteamSmokeInit,     // EV_STEAM_SMOKE
+	DieselSmokeInit,    // EV_DIESEL_SMOKE
+	ElectricSparkInit,  // EV_ELECTRIC_SPARK
+	SmokeInit,          // EV_SMOKE
+	ExplosionLargeInit, // EV_EXPLOSION_LARGE
+	BreakdownSmokeInit, // EV_BREAKDOWN_SMOKE
+	ExplosionSmallInit, // EV_EXPLOSION_SMALL
+	BulldozerInit,      // EV_BULLDOZER
+	BubbleInit,         // EV_BUBBLE
 };
 
+/** Functions for controling effect vehicles at each tick. */
 static EffectTickProc * const _effect_tick_procs[] = {
-	ChimneySmokeTick,
-	SteamSmokeTick,
-	DieselSmokeTick,
-	ElectricSparkTick,
-	SmokeTick,
-	ExplosionLargeTick,
-	BreakdownSmokeTick,
-	ExplosionSmallTick,
-	BulldozerTick,
-	BubbleTick,
+	ChimneySmokeTick,   // EV_CHIMNEY_SMOKE
+	SteamSmokeTick,     // EV_STEAM_SMOKE
+	DieselSmokeTick,    // EV_DIESEL_SMOKE
+	ElectricSparkTick,  // EV_ELECTRIC_SPARK
+	SmokeTick,          // EV_SMOKE
+	ExplosionLargeTick, // EV_EXPLOSION_LARGE
+	BreakdownSmokeTick, // EV_BREAKDOWN_SMOKE
+	ExplosionSmallTick, // EV_EXPLOSION_SMALL
+	BulldozerTick,      // EV_BULLDOZER
+	BubbleTick,         // EV_BUBBLE
 };
 
 

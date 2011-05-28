@@ -16,16 +16,16 @@
 
 /** Effect vehicle types */
 enum EffectVehicleType {
-	EV_CHIMNEY_SMOKE   = 0,
-	EV_STEAM_SMOKE     = 1,
-	EV_DIESEL_SMOKE    = 2,
-	EV_ELECTRIC_SPARK  = 3,
-	EV_SMOKE           = 4,
-	EV_EXPLOSION_LARGE = 5,
-	EV_BREAKDOWN_SMOKE = 6,
-	EV_EXPLOSION_SMALL = 7,
-	EV_BULLDOZER       = 8,
-	EV_BUBBLE          = 9
+	EV_CHIMNEY_SMOKE            =  0, ///< Smoke of power plant (industry).
+	EV_STEAM_SMOKE              =  1, ///< Smoke of steam engines.
+	EV_DIESEL_SMOKE             =  2, ///< Smoke of diesel engines.
+	EV_ELECTRIC_SPARK           =  3, ///< Sparcs of electric engines.
+	EV_SMOKE                    =  4, ///< Smoke of broken aircraft, copper mine and disasters.
+	EV_EXPLOSION_LARGE          =  5, ///< Various explosions.
+	EV_BREAKDOWN_SMOKE          =  6, ///< Smoke of broken vehicles except aircraft.
+	EV_EXPLOSION_SMALL          =  7, ///< Various explosions.
+	EV_BULLDOZER                =  8, ///< Bulldozer at roadworks.
+	EV_BUBBLE                   =  9, ///< Bubble of bubble generator (industry).
 };
 
 EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type);
