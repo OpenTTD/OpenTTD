@@ -33,6 +33,7 @@ struct EffectVehicle : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
 
 	void UpdateDeltaXY(Direction direction);
 	bool Tick();
+	TransparencyOption GetTransparencyOption() const;
 };
 
 /**

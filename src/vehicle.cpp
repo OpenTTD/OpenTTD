@@ -899,8 +899,18 @@ static void DoDrawVehicle(const Vehicle *v)
 
 	if (v->vehstatus & VS_DEFPAL) pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 
+	/* Check whether the vehicle shall be transparent due to the game state */
+	bool shadowed = (v->vehstatus & VS_SHADOW);
+
+	if (v->type == VEH_EFFECT) {
+		/* Check whether the vehicle shall be transparent/invisible due to GUI settings.
+		 * However, transparent smoke and bubbles look weird, so always hide them. */
+		TransparencyOption to = EffectVehicle::From(v)->GetTransparencyOption();
+		if (to != TO_INVALID && (IsTransparencySet(to) || IsInvisibilitySet(to))) return;
+	}
+
 	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
-		v->x_extent, v->y_extent, v->z_extent, v->z_pos, (v->vehstatus & VS_SHADOW) != 0);
+		v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed);
 }
 
 /**

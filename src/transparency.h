@@ -32,6 +32,7 @@ enum TransparencyOption {
 	TO_CATENARY,   ///< catenary
 	TO_LOADING,    ///< loading indicators
 	TO_END,
+	TO_INVALID,    ///< Invalid transparency option
 };
 
 typedef uint TransparencyOptionBits; ///< transparency option bits

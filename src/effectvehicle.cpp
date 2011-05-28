@@ -565,6 +565,23 @@ static EffectTickProc * const _effect_tick_procs[] = {
 };
 assert_compile(lengthof(_effect_tick_procs) == EV_END);
 
+/** Transparency options affecting the effects. */
+static const TransparencyOption _effect_transparency_options[] = {
+	TO_INDUSTRIES,      // EV_CHIMNEY_SMOKE
+	TO_INVALID,         // EV_STEAM_SMOKE
+	TO_INVALID,         // EV_DIESEL_SMOKE
+	TO_INVALID,         // EV_ELECTRIC_SPARK
+	TO_INVALID,         // EV_CRASH_SMOKE
+	TO_INVALID,         // EV_EXPLOSION_LARGE
+	TO_INVALID,         // EV_BREAKDOWN_SMOKE
+	TO_INVALID,         // EV_EXPLOSION_SMALL
+	TO_INVALID,         // EV_BULLDOZER
+	TO_INDUSTRIES,      // EV_BUBBLE
+	TO_INVALID,         // EV_BREAKDOWN_SMOKE_AIRCRAFT
+	TO_INDUSTRIES,      // EV_COPPER_MINE_SMOKE
+};
+assert_compile(lengthof(_effect_transparency_options) == EV_END);
+
 
 /**
  * Create an effect vehicle at a particular location.
@@ -636,4 +653,13 @@ void EffectVehicle::UpdateDeltaXY(Direction direction)
 	this->x_extent      = 1;
 	this->y_extent      = 1;
 	this->z_extent      = 1;
+}
+
+/**
+ * Determines the transparency option affecting the effect.
+ * @return Transparency option, or TO_INVALID if none.
+ */
+TransparencyOption EffectVehicle::GetTransparencyOption() const
+{
+	return _effect_transparency_options[this->subtype];
 }
