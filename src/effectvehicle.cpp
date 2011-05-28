@@ -537,12 +537,14 @@ static EffectInitProc * const _effect_init_procs[] = {
 	SteamSmokeInit,     // EV_STEAM_SMOKE
 	DieselSmokeInit,    // EV_DIESEL_SMOKE
 	ElectricSparkInit,  // EV_ELECTRIC_SPARK
-	SmokeInit,          // EV_SMOKE
+	SmokeInit,          // EV_CRASH_SMOKE
 	ExplosionLargeInit, // EV_EXPLOSION_LARGE
 	BreakdownSmokeInit, // EV_BREAKDOWN_SMOKE
 	ExplosionSmallInit, // EV_EXPLOSION_SMALL
 	BulldozerInit,      // EV_BULLDOZER
 	BubbleInit,         // EV_BUBBLE
+	SmokeInit,          // EV_BREAKDOWN_SMOKE_AIRCRAFT
+	SmokeInit,          // EV_COPPER_MINE_SMOKE
 };
 assert_compile(lengthof(_effect_init_procs) == EV_END);
 
@@ -552,12 +554,14 @@ static EffectTickProc * const _effect_tick_procs[] = {
 	SteamSmokeTick,     // EV_STEAM_SMOKE
 	DieselSmokeTick,    // EV_DIESEL_SMOKE
 	ElectricSparkTick,  // EV_ELECTRIC_SPARK
-	SmokeTick,          // EV_SMOKE
+	SmokeTick,          // EV_CRASH_SMOKE
 	ExplosionLargeTick, // EV_EXPLOSION_LARGE
 	BreakdownSmokeTick, // EV_BREAKDOWN_SMOKE
 	ExplosionSmallTick, // EV_EXPLOSION_SMALL
 	BulldozerTick,      // EV_BULLDOZER
 	BubbleTick,         // EV_BUBBLE
+	SmokeTick,          // EV_BREAKDOWN_SMOKE_AIRCRAFT
+	SmokeTick,          // EV_COPPER_MINE_SMOKE
 };
 assert_compile(lengthof(_effect_tick_procs) == EV_END);
 

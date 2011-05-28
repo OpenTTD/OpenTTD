@@ -210,7 +210,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 				v->age = 0;
 			}
 
-			if (GB(v->tick_counter, 0, 3) == 0) CreateEffectVehicleRel(v, 0, -17, 2, EV_SMOKE);
+			if (GB(v->tick_counter, 0, 3) == 0) CreateEffectVehicleRel(v, 0, -17, 2, EV_CRASH_SMOKE);
 
 		} else if (v->current_order.GetDestination() == 0) {
 			if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {

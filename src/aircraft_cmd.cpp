@@ -1062,7 +1062,7 @@ static void HandleAircraftSmoke(Aircraft *v)
 			smoke_pos[v->direction].x,
 			smoke_pos[v->direction].y,
 			2,
-			EV_SMOKE
+			EV_BREAKDOWN_SMOKE_AIRCRAFT
 		);
 	}
 }

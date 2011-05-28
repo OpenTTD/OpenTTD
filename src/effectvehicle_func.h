@@ -20,12 +20,14 @@ enum EffectVehicleType {
 	EV_STEAM_SMOKE              =  1, ///< Smoke of steam engines.
 	EV_DIESEL_SMOKE             =  2, ///< Smoke of diesel engines.
 	EV_ELECTRIC_SPARK           =  3, ///< Sparcs of electric engines.
-	EV_SMOKE                    =  4, ///< Smoke of broken aircraft, copper mine and disasters.
+	EV_CRASH_SMOKE              =  4, ///< Smoke of disasters.
 	EV_EXPLOSION_LARGE          =  5, ///< Various explosions.
 	EV_BREAKDOWN_SMOKE          =  6, ///< Smoke of broken vehicles except aircraft.
 	EV_EXPLOSION_SMALL          =  7, ///< Various explosions.
 	EV_BULLDOZER                =  8, ///< Bulldozer at roadworks.
 	EV_BUBBLE                   =  9, ///< Bubble of bubble generator (industry).
+	EV_BREAKDOWN_SMOKE_AIRCRAFT = 10, ///< Smoke of broken aircraft.
+	EV_COPPER_MINE_SMOKE        = 11, ///< Smoke at copper mine.
 	EV_END
 };
 

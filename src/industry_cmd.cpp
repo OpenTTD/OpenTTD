@@ -862,7 +862,7 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case GFX_COPPER_MINE_CHIMNEY:
-		CreateEffectVehicleAbove(TileX(tile) * TILE_SIZE + 6, TileY(tile) * TILE_SIZE + 6, 43, EV_SMOKE);
+		CreateEffectVehicleAbove(TileX(tile) * TILE_SIZE + 6, TileY(tile) * TILE_SIZE + 6, 43, EV_COPPER_MINE_SMOKE);
 		break;
 
 
