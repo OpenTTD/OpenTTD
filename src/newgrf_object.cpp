@@ -417,7 +417,7 @@ uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, cons
  */
 static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, const ObjectSpec *spec)
 {
-	const DrawTileSprites *dts = &group->dts;
+	const DrawTileSprites *dts = group->ProcessRegisters(NULL);
 	PaletteID palette = ((spec->flags & OBJECT_FLAG_2CC_COLOUR) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->colour;
 
 	SpriteID image = dts->ground.sprite;
@@ -468,7 +468,7 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view)
 	const SpriteGroup *group = SpriteGroup::Resolve(GetObjectSpriteGroup(spec, NULL), &object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) return;
 
-	const DrawTileSprites *dts = &((const TileLayoutSpriteGroup *)group)->dts;
+	const DrawTileSprites *dts = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(NULL);
 
 	PaletteID palette;
 	if (Company::IsValidID(_local_company)) {

@@ -746,7 +746,7 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)
 {
 	const StationSpec *statspec;
-	const DrawTileSprites *sprites;
+	const DrawTileSprites *sprites = NULL;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	uint tile = 2;
@@ -754,36 +754,57 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	statspec = StationClass::Get(sclass, station);
 	if (statspec == NULL) return false;
 
-	uint relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
-
 	if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
 		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0x2110000, 0, statspec, NULL, INVALID_TILE);
 		if (callback != CALLBACK_FAILED) tile = callback;
 	}
 
+	uint32 total_offset = rti->GetRailtypeSpriteOffset();
+	uint32 relocation = 0;
+	uint32 ground_relocation = 0;
+	const NewGRFSpriteLayout *layout = NULL;
+	DrawTileSprites tmp_rail_layout;
+
 	if (statspec->renderdata == NULL) {
 		sprites = GetStationTileLayout(STATION_RAIL, tile + axis);
 	} else {
-		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : (uint)axis];
+		layout = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : (uint)axis];
+		if (!layout->NeedsPreprocessing()) {
+			sprites = layout;
+			layout = NULL;
+		}
+	}
+
+	if (layout != NULL) {
+		/* Sprite layout which needs preprocessing */
+		bool separate_ground = HasBit(statspec->flags, SSF_SEPARATE_GROUND);
+		uint32 var10_values = layout->PrepareLayout(total_offset, rti->fallback_railtype, 0, separate_ground);
+		uint8 var10;
+		FOR_EACH_SET_BIT(var10, var10_values) {
+			uint32 var10_relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE, var10);
+			layout->ProcessRegisters(var10, var10_relocation, separate_ground);
+		}
+
+		tmp_rail_layout.seq = layout->GetLayout(&tmp_rail_layout.ground);
+		sprites = &tmp_rail_layout;
+		total_offset = 0;
+	} else {
+		/* Simple sprite layout */
+		ground_relocation = relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE, 0);
+		if (HasBit(sprites->ground.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
+			ground_relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE, 1);
+		}
+		ground_relocation += rti->fallback_railtype;
 	}
 
 	SpriteID image = sprites->ground.sprite;
 	PaletteID pal = sprites->ground.pal;
-	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-		if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
-			/* Use separate action 1-2-3 chain for ground sprite */
-			image += GetCustomStationRelocation(statspec, NULL, INVALID_TILE, 1);
-		} else {
-			image += relocation;
-		}
-		image += rti->fallback_railtype;
-	} else {
-		image += rti->GetRailtypeSpriteOffset();
-	}
+	image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
+	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
 
 	DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
 
-	DrawRailTileSeqInGUI(x, y, sprites, rti->GetRailtypeSpriteOffset(), relocation, palette);
+	DrawRailTileSeqInGUI(x, y, sprites, total_offset, relocation, palette);
 
 	return true;
 }

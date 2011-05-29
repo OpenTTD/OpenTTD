@@ -278,12 +278,17 @@ struct ResultSpriteGroup : SpriteGroup {
 	byte GetNumResults() const { return this->num_sprites; }
 };
 
+/**
+ * Action 2 sprite layout for houses, industry tiles, objects and airport tiles.
+ */
 struct TileLayoutSpriteGroup : SpriteGroup {
 	TileLayoutSpriteGroup() : SpriteGroup(SGT_TILELAYOUT) {}
 	~TileLayoutSpriteGroup() {}
 
 	byte num_building_stages;    ///< Number of building stages to show for this house/industry tile
 	NewGRFSpriteLayout dts;
+
+	const DrawTileSprites *ProcessRegisters(uint8 *stage) const;
 };
 
 struct IndustryProductionSpriteGroup : SpriteGroup {

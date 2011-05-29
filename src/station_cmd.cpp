@@ -2495,12 +2495,14 @@ const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx)
 
 static void DrawTile_Station(TileInfo *ti)
 {
+	const NewGRFSpriteLayout *layout = NULL;
+	DrawTileSprites tmp_rail_layout;
 	const DrawTileSprites *t = NULL;
 	RoadTypes roadtypes;
 	int32 total_offset;
-	int32 custom_ground_offset;
 	const RailtypeInfo *rti = NULL;
 	uint32 relocation = 0;
+	uint32 ground_relocation = 0;
 	const BaseStation *st = NULL;
 	const StationSpec *statspec = NULL;
 	uint tile_layout = 0;
@@ -2509,7 +2511,6 @@ static void DrawTile_Station(TileInfo *ti)
 		rti = GetRailTypeInfo(GetRailType(ti->tile));
 		roadtypes = ROADTYPES_NONE;
 		total_offset = rti->GetRailtypeSpriteOffset();
-		custom_ground_offset = rti->fallback_railtype;
 
 		if (IsCustomStationSpecIndex(ti->tile)) {
 			/* look for customization */
@@ -2519,8 +2520,6 @@ static void DrawTile_Station(TileInfo *ti)
 			if (statspec != NULL) {
 				tile_layout = GetStationGfx(ti->tile);
 
-				relocation = GetCustomStationRelocation(statspec, st, ti->tile);
-
 				if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {
 					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
 					if (callback != CALLBACK_FAILED) tile_layout = (callback & ~1) + GetRailStationAxis(ti->tile);
@@ -2528,14 +2527,17 @@ static void DrawTile_Station(TileInfo *ti)
 
 				/* Ensure the chosen tile layout is valid for this custom station */
 				if (statspec->renderdata != NULL) {
-					t = &statspec->renderdata[tile_layout < statspec->tiles ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
+					layout = &statspec->renderdata[tile_layout < statspec->tiles ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
+					if (!layout->NeedsPreprocessing()) {
+						t = layout;
+						layout = NULL;
+					}
 				}
 			}
 		}
 	} else {
 		roadtypes = IsRoadStop(ti->tile) ? GetRoadTypes(ti->tile) : ROADTYPES_NONE;
 		total_offset = 0;
-		custom_ground_offset = 0;
 	}
 
 	if (IsAirport(ti->tile)) {
@@ -2579,7 +2581,7 @@ static void DrawTile_Station(TileInfo *ti)
 		palette = PALETTE_TO_GREY;
 	}
 
-	if (t == NULL || t->seq == NULL) t = GetStationTileLayout(GetStationType(ti->tile), GetStationGfx(ti->tile));
+	if (layout == NULL && (t == NULL || t->seq == NULL)) t = GetStationTileLayout(GetStationType(ti->tile), GetStationGfx(ti->tile));
 
 	/* don't show foundation for docks */
 	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile)) {
@@ -2665,6 +2667,27 @@ draw_default_foundation:
 			}
 		}
 	} else {
+		if (layout != NULL) {
+			/* Sprite layout which needs preprocessing */
+			bool separate_ground = HasBit(statspec->flags, SSF_SEPARATE_GROUND);
+			uint32 var10_values = layout->PrepareLayout(total_offset, rti->fallback_railtype, 0, separate_ground);
+			uint8 var10;
+			FOR_EACH_SET_BIT(var10, var10_values) {
+				uint32 var10_relocation = GetCustomStationRelocation(statspec, st, ti->tile, var10);
+				layout->ProcessRegisters(var10, var10_relocation, separate_ground);
+			}
+			tmp_rail_layout.seq = layout->GetLayout(&tmp_rail_layout.ground);
+			t = &tmp_rail_layout;
+			total_offset = 0;
+		} else if (statspec != NULL) {
+			/* Simple sprite layout */
+			ground_relocation = relocation = GetCustomStationRelocation(statspec, st, ti->tile, 0);
+			if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
+				ground_relocation = GetCustomStationRelocation(statspec, st, ti->tile, 1);
+			}
+			ground_relocation += rti->fallback_railtype;
+		}
+
 		SpriteID image = t->ground.sprite;
 		PaletteID pal  = t->ground.pal;
 		if (rti != NULL && rti->UsesOverlay() && (image == SPR_RAIL_TRACK_X || image == SPR_RAIL_TRACK_Y)) {
@@ -2677,17 +2700,8 @@ draw_default_foundation:
 				DrawGroundSprite(overlay + (image == SPR_RAIL_TRACK_X ? RTO_X : RTO_Y), PALETTE_CRASH);
 			}
 		} else {
-			if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-				if (HasBit(statspec->flags, SSF_SEPARATE_GROUND)) {
-					/* Use separate action 1-2-3 chain for ground sprite */
-					image += GetCustomStationRelocation(statspec, st, ti->tile, 1);
-				} else {
-					image += relocation;
-				}
-				image += custom_ground_offset;
-			} else {
-				image += total_offset;
-			}
+			image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
+			if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
 			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 
 			/* PBS debugging, draw reserved tracks darker */

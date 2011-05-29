@@ -226,3 +226,26 @@ const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject *object) const
 {
 	return object->ResolveReal(object, this);
 }
+
+/**
+ * Process registers and the construction stage into the sprite layout.
+ * The passed construction stage might get reset to zero, if it gets incorporated into the layout
+ * during the preprocessing.
+ * @param [in, out] stage Construction stage (0-3), or NULL if not applicable.
+ * @return sprite layout to draw.
+ */
+const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8 *stage) const
+{
+	if (!this->dts.NeedsPreprocessing()) return &this->dts;
+
+	static DrawTileSprites result;
+	uint8 actual_stage = stage != NULL ? *stage : 0;
+	this->dts.PrepareLayout(0, actual_stage, actual_stage, false);
+	this->dts.ProcessRegisters(0, 0, false);
+	result.seq = this->dts.GetLayout(&result.ground);
+
+	/* Stage has been processed by PrepareLayout(), set it to zero. */
+	if (stage != NULL) *stage = 0;
+
+	return &result;
+}

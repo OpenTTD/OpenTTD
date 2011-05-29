@@ -482,16 +482,19 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
  * Read a sprite and a palette from the GRF and convert them into a format
  * suitable to OpenTTD.
  * @param buf                 Input stream.
+ * @param read_flags          Whether to read TileLayoutFlags.
  * @param invert_action1_flag Set to true, if palette bit 15 means 'not from action 1'.
  * @param action1_offset      Offset to add to action 1 sprites.
  * @param action1_pitch       Factor to multiply action 1 sprite indices with.
  * @param action1_max         Maximal valid action 1 index.
  * @param [out] grf_sprite    Read sprite and palette.
+ * @return read TileLayoutFlags.
  */
-static void ReadSpriteLayoutSprite(ByteReader *buf, bool invert_action1_flag, uint action1_offset, uint action1_pitch, uint action1_max, PalSpriteID *grf_sprite)
+static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, bool invert_action1_flag, uint action1_offset, uint action1_pitch, uint action1_max, PalSpriteID *grf_sprite)
 {
 	grf_sprite->sprite = buf->ReadWord();
 	grf_sprite->pal = buf->ReadWord();
+	TileLayoutFlags flags = read_flags ? (TileLayoutFlags)buf->ReadWord() : TLF_NOTHING;
 
 	MapSpriteMappingRecolour(grf_sprite);
 
@@ -509,7 +512,143 @@ static void ReadSpriteLayoutSprite(ByteReader *buf, bool invert_action1_flag, ui
 			SB(grf_sprite->sprite, 0, SPRITE_WIDTH, sprite);
 			SetBit(grf_sprite->sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
+	} else if ((flags & TLF_SPRITE_VAR10) && !(flags & TLF_SPRITE_REG_FLAGS)) {
+		grfmsg(1, "ReadSpriteLayoutSprite: Spritelayout specifies var10 value for non-action-1 sprite");
+		DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
+		return flags;
 	}
+
+	if (flags & TLF_CUSTOM_PALETTE) {
+		/* Use palette from Action 1 */
+		uint index = GB(grf_sprite->pal, 0, 14);
+		if (action1_pitch == 0 || index >= action1_max) {
+			grfmsg(1, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset %d for 'palette'", index);
+			grf_sprite->pal = PAL_NONE;
+		} else {
+			SpriteID sprite = action1_offset + index * action1_pitch;
+			SB(grf_sprite->pal, 0, SPRITE_WIDTH, sprite);
+			SetBit(grf_sprite->pal, SPRITE_MODIFIER_CUSTOM_SPRITE);
+		}
+	} else if ((flags & TLF_PALETTE_VAR10) && !(flags & TLF_PALETTE_REG_FLAGS)) {
+		grfmsg(1, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 value for non-action-1 palette");
+		DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
+		return flags;
+	}
+
+	return flags;
+}
+
+/**
+ * Preprocess the TileLayoutFlags and read register modifiers from the GRF.
+ * @param buf        Input stream.
+ * @param flags      TileLayoutFlags to process.
+ * @param is_parent  Whether the sprite is a parentsprite with a bounding box.
+ * @param dts        Sprite layout to insert data into.
+ * @param index      Sprite index to process; 0 for ground sprite.
+ */
+static void ReadSpriteLayoutRegisters(ByteReader *buf, TileLayoutFlags flags, bool is_parent, NewGRFSpriteLayout *dts, uint index)
+{
+	if (!(flags & TLF_DRAWING_FLAGS)) return;
+
+	if (dts->registers == NULL) dts->AllocateRegisters();
+	TileLayoutRegisters &regs = const_cast<TileLayoutRegisters&>(dts->registers[index]);
+	regs.flags = flags & TLF_DRAWING_FLAGS;
+
+	if (flags & TLF_DODRAW)  regs.dodraw  = buf->ReadByte();
+	if (flags & TLF_SPRITE)  regs.sprite  = buf->ReadByte();
+	if (flags & TLF_PALETTE) regs.palette = buf->ReadByte();
+
+	if (is_parent) {
+		if (flags & TLF_BB_XY_OFFSET) {
+			regs.delta.parent[0] = buf->ReadByte();
+			regs.delta.parent[1] = buf->ReadByte();
+		}
+		if (flags & TLF_BB_Z_OFFSET)    regs.delta.parent[2] = buf->ReadByte();
+	} else {
+		if (flags & TLF_CHILD_X_OFFSET) regs.delta.child[0]  = buf->ReadByte();
+		if (flags & TLF_CHILD_Y_OFFSET) regs.delta.child[1]  = buf->ReadByte();
+	}
+
+	if (flags & TLF_SPRITE_VAR10) {
+		regs.sprite_var10 = buf->ReadByte();
+		if (regs.sprite_var10 > TLR_MAX_VAR10) {
+			grfmsg(1, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 (%d) exceeding the maximal allowed value %d", regs.sprite_var10, TLR_MAX_VAR10);
+			DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
+			return;
+		}
+	}
+
+	if (flags & TLF_PALETTE_VAR10) {
+		regs.palette_var10 = buf->ReadByte();
+		if (regs.palette_var10 > TLR_MAX_VAR10) {
+			grfmsg(1, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 (%d) exceeding the maximal allowed value %d", regs.palette_var10, TLR_MAX_VAR10);
+			DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
+			return;
+		}
+	}
+}
+
+/**
+ * Read a spritelayout from the GRF.
+ * @param buf                  Input
+ * @param num_building_sprites Number of building sprites to read
+ * @param action1_offset       Offset to add to action 1 sprites
+ * @param action1_pitch        Factor to multiply action 1 sprite indices with
+ * @param action1_max          Maximal valid action 1 index
+ * @param allow_var10          Whether the spritelayout may specifiy var10 values for resolving multiple action-1-2-3 chains
+ * @param no_z_position        Whether bounding boxes have no Z offset
+ * @param dts                  Layout container to output into
+ * @return true on error (GRF was disabled)
+ */
+static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, uint action1_offset, uint action1_pitch, uint action1_max, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts)
+{
+	bool has_flags = HasBit(num_building_sprites, 6);
+	ClrBit(num_building_sprites, 6);
+	TileLayoutFlags valid_flags = TLF_KNOWN_FLAGS;
+	if (!allow_var10) valid_flags &= ~TLF_VAR10_FLAGS;
+	dts->Allocate(num_building_sprites); // allocate before reading groundsprite flags
+
+	/* Groundsprite */
+	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, action1_offset, action1_pitch, action1_max, &dts->ground);
+	if (_skip_sprites < 0) return true;
+
+	if (flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS)) {
+		grfmsg(1, "ReadSpriteLayout: Spritelayout uses invalid flag 0x%x for ground sprite", flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS));
+		DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
+		return true;
+	}
+
+	ReadSpriteLayoutRegisters(buf, flags, false, dts, 0);
+	if (_skip_sprites < 0) return true;
+
+	for (uint i = 0; i < num_building_sprites; i++) {
+		DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&dts->seq[i]);
+
+		flags = ReadSpriteLayoutSprite(buf, has_flags, false, action1_offset, action1_pitch, action1_max, &seq->image);
+		if (_skip_sprites < 0) return true;
+
+		if (flags & ~valid_flags) {
+			grfmsg(1, "ReadSpriteLayout: Spritelayout uses unknown flag 0x%x", flags & ~valid_flags);
+			DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
+			return true;
+		}
+
+		seq->delta_x = buf->ReadByte();
+		seq->delta_y = buf->ReadByte();
+
+		if (!no_z_position) seq->delta_z = buf->ReadByte();
+
+		if (seq->IsParentSprite()) {
+			seq->size_x = buf->ReadByte();
+			seq->size_y = buf->ReadByte();
+			seq->size_z = buf->ReadByte();
+		}
+
+		ReadSpriteLayoutRegisters(buf, flags, seq->IsParentSprite(), dts, i + 1);
+		if (_skip_sprites < 0) return true;
+	}
+
+	return false;
 }
 
 /**
@@ -540,6 +679,7 @@ static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location,
 
 enum ChangeInfoResult {
 	CIR_SUCCESS,    ///< Variable was parsed and read
+	CIR_DISABLED,   ///< GRF was disabled due to error
 	CIR_UNHANDLED,  ///< Variable was parsed but unread
 	CIR_UNKNOWN,    ///< Variable is unknown
 	CIR_INVALID_ID, ///< Attempt to modify an invalid ID
@@ -1269,7 +1409,9 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 						continue;
 					}
 
-					ReadSpriteLayoutSprite(buf, false, 0, 1, UINT_MAX, &dts->ground);
+					ReadSpriteLayoutSprite(buf, false, false, 0, 1, UINT_MAX, &dts->ground);
+					/* On error, bail out immediately. Temporary GRF data was already freed */
+					if (_skip_sprites < 0) return CIR_DISABLED;
 
 					static SmallVector<DrawTileSeqStruct, 8> tmp_layout;
 					tmp_layout.Clear();
@@ -1286,7 +1428,9 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 						dtss->size_y = buf->ReadByte();
 						dtss->size_z = buf->ReadByte();
 
-						ReadSpriteLayoutSprite(buf, true, 0, 1, UINT_MAX, &dtss->image);
+						ReadSpriteLayoutSprite(buf, false, true, 0, 1, UINT_MAX, &dtss->image);
+						/* On error, bail out immediately. Temporary GRF data was already freed */
+						if (_skip_sprites < 0) return CIR_DISABLED;
 					}
 					dts->Clone(tmp_layout.Begin());
 				}
@@ -1426,6 +1570,19 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 			case 0x18: // Animation triggers
 				statspec->animation.triggers = buf->ReadWord();
+				break;
+
+			case 0x20: // Advanced sprite layout
+				statspec->tiles = buf->ReadExtendedByte();
+				delete[] statspec->renderdata; // delete earlier loaded stuff
+				statspec->renderdata = new NewGRFSpriteLayout[statspec->tiles];
+
+				for (uint t = 0; t < statspec->tiles; t++) {
+					NewGRFSpriteLayout *dts = &statspec->renderdata[t];
+					uint num_building_sprites = buf->ReadByte();
+					/* On error, bail out immediately. Temporary GRF data was already freed */
+					if (ReadSpriteLayout(buf, num_building_sprites, 0, 1, UINT_MAX, true, false, dts)) return CIR_DISABLED;
+				}
 				break;
 
 			default:
@@ -3524,6 +3681,10 @@ static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uin
 	switch (cir) {
 		default: NOT_REACHED();
 
+		case CIR_DISABLED:
+			/* Error has already been printed; just stop parsing */
+			return true;
+
 		case CIR_SUCCESS:
 			return false;
 
@@ -3961,7 +4122,6 @@ static void NewSpriteGroup(ByteReader *buf)
 					byte num_spriteset_ents   = _cur_grffile->spriteset_numents;
 					byte num_spritesets       = _cur_grffile->spriteset_numsets;
 					byte num_building_sprites = max((uint8)1, type);
-					uint i;
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
@@ -3969,26 +4129,8 @@ static void NewSpriteGroup(ByteReader *buf)
 					/* num_building_stages should be 1, if we are only using non-custom sprites */
 					group->num_building_stages = max((uint8)1, num_spriteset_ents);
 
-					/* Groundsprite */
-					ReadSpriteLayoutSprite(buf, false, _cur_grffile->spriteset_start, num_spriteset_ents, num_spritesets, &group->dts.ground);
-
-					group->dts.Allocate(num_building_sprites);
-					for (i = 0; i < num_building_sprites; i++) {
-						DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&group->dts.seq[i]);
-
-						ReadSpriteLayoutSprite(buf, false, _cur_grffile->spriteset_start, num_spriteset_ents, num_spritesets, &seq->image);
-						seq->delta_x = buf->ReadByte();
-						seq->delta_y = buf->ReadByte();
-
-						if (type > 0) {
-							seq->delta_z = buf->ReadByte();
-							if (!seq->IsParentSprite()) continue;
-						}
-
-						seq->size_x = buf->ReadByte();
-						seq->size_y = buf->ReadByte();
-						seq->size_z = buf->ReadByte();
-					}
+					/* On error, bail out immediately. Temporary GRF data was already freed */
+					if (ReadSpriteLayout(buf, num_building_sprites, _cur_grffile->spriteset_start, num_spriteset_ents, num_spritesets, false, type == 0, &group->dts)) return;
 					break;
 				}
 

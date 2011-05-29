@@ -18,6 +18,7 @@
 #include "tile_type.h"
 #include "sprite.h"
 #include "core/alloc_type.hpp"
+#include "core/smallvec_type.hpp"
 
 /** Context for tile accesses */
 enum TileContext {
@@ -27,13 +28,74 @@ enum TileContext {
 };
 
 /**
+ * Flags to enable register usage in sprite layouts.
+ */
+enum TileLayoutFlags {
+	TLF_NOTHING           = 0x00,
+
+	TLF_DODRAW            = 0x01,   ///< Only draw sprite if value of register TileLayoutRegisters::dodraw is non-zero.
+	TLF_SPRITE            = 0x02,   ///< Add signed offset to sprite from register TileLayoutRegisters::sprite.
+	TLF_PALETTE           = 0x04,   ///< Add signed offset to palette from register TileLayoutRegisters::palette.
+	TLF_CUSTOM_PALETTE    = 0x08,   ///< Palette is from Action 1 (moved to SPRITE_MODIFIER_CUSTOM_SPRITE in palette during loading).
+
+	TLF_BB_XY_OFFSET      = 0x10,   ///< Add signed offset to bounding box X and Y positions from register TileLayoutRegisters::delta.parent[0..1].
+	TLF_BB_Z_OFFSET       = 0x20,   ///< Add signed offset to bounding box Z positions from register TileLayoutRegisters::delta.parent[2].
+
+	TLF_CHILD_X_OFFSET    = 0x10,   ///< Add signed offset to child sprite X positions from register TileLayoutRegisters::delta.child[0].
+	TLF_CHILD_Y_OFFSET    = 0x20,   ///< Add signed offset to child sprite Y positions from register TileLayoutRegisters::delta.child[1].
+
+	TLF_SPRITE_VAR10      = 0x40,   ///< Resolve sprite with a specific value in variable 10.
+	TLF_PALETTE_VAR10     = 0x80,   ///< Resolve palette with a specific value in variable 10.
+
+	TLF_KNOWN_FLAGS       = 0x7F,   ///< Known flags. Any unknown set flag will disable the GRF.
+
+	/** Flags which are still required after loading the GRF. */
+	TLF_DRAWING_FLAGS     = ~TLF_CUSTOM_PALETTE,
+
+	/** Flags which do not work for the (first) ground sprite. */
+	TLF_NON_GROUND_FLAGS  = TLF_BB_XY_OFFSET | TLF_BB_Z_OFFSET | TLF_CHILD_X_OFFSET | TLF_CHILD_Y_OFFSET,
+
+	/** Flags which refer to using multiple action-1-2-3 chains. */
+	TLF_VAR10_FLAGS       = TLF_SPRITE_VAR10 | TLF_PALETTE_VAR10,
+
+	/** Flags which require resolving the action-1-2-3 chain for the sprite, even if it is no action-1 sprite. */
+	TLF_SPRITE_REG_FLAGS  = TLF_DODRAW | TLF_SPRITE | TLF_BB_XY_OFFSET | TLF_BB_Z_OFFSET | TLF_CHILD_X_OFFSET | TLF_CHILD_Y_OFFSET,
+
+	/** Flags which require resolving the action-1-2-3 chain for the palette, even if it is no action-1 palette. */
+	TLF_PALETTE_REG_FLAGS = TLF_PALETTE,
+};
+DECLARE_ENUM_AS_BIT_SET(TileLayoutFlags)
+
+/**
+ * Additional modifiers for items in sprite layouts.
+ */
+struct TileLayoutRegisters {
+	TileLayoutFlags flags; ///< Flags defining which members are valid and to be used.
+	uint8 dodraw;          ///< Register deciding whether the sprite shall be drawn at all. Non-zero means drawing.
+	uint8 sprite;          ///< Register specifying a signed offset for the sprite.
+	uint8 palette;         ///< Register specifying a signed offset for the palette.
+	union {
+		uint8 parent[3];   ///< Registers for signed offsets for the bounding box position of parent sprites.
+		uint8 child[2];    ///< Registers for signed offsets for the position of child sprites.
+	} delta;
+	uint8 sprite_var10;    ///< Value for variable 10 when resolving the sprite.
+	uint8 palette_var10;   ///< Value for variable 10 when resolving the palette.
+};
+
+static const uint TLR_MAX_VAR10 = 7; ///< Maximum value for var 10.
+
+/**
  * NewGRF supplied spritelayout.
  * In contrast to #DrawTileSprites this struct is for allocated
  * layouts on the heap. It allocates data and frees them on destruction.
  */
 struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
+	const TileLayoutRegisters *registers;
+
 	void Allocate(uint num_sprites);
+	void AllocateRegisters();
 	void Clone(const DrawTileSeqStruct *source);
+	void Clone(const NewGRFSpriteLayout *source);
 
 	/**
 	 * Clone a spritelayout.
@@ -49,7 +111,37 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 	virtual ~NewGRFSpriteLayout()
 	{
 		free(const_cast<DrawTileSeqStruct*>(this->seq));
+		free(const_cast<TileLayoutRegisters*>(this->registers));
 	}
+
+	/**
+	 * Tests whether this spritelayout needs preprocessing by
+	 * #PrepareLayout() and #ProcessRegisters(), or whether it can be
+	 * used directly.
+	 * @return true if preprocessing is needed
+	 */
+	bool NeedsPreprocessing() const
+	{
+		return this->registers != NULL;
+	}
+
+	uint32 PrepareLayout(uint32 orig_offset, uint32 newgrf_ground_offset, uint32 newgrf_offset, bool separate_ground) const;
+	void ProcessRegisters(uint8 resolved_var10, uint32 resolved_sprite, bool separate_ground) const;
+
+	/**
+	 * Returns the result spritelayout after preprocessing.
+	 * @pre #PrepareLayout() and #ProcessRegisters() need calling first.
+	 * @return result spritelayout
+	 */
+	const DrawTileSeqStruct *GetLayout(PalSpriteID *ground) const
+	{
+		DrawTileSeqStruct *front = result_seq.Begin();
+		*ground = front->image;
+		return front + 1;
+	}
+
+private:
+	static SmallVector<DrawTileSeqStruct, 8> result_seq; ///< Temporary storage when preprocessing spritelayouts.
 };
 
 /**
