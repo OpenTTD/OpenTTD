@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Place ob
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Save scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Load scenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Save heightmap
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Load heightmap
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Quit editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2278,6 +2279,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Load Gam
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Save Scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Load Scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Load Heightmap
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Save Heightmap
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click here to jump to the current default save/load directory
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} free
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}List of drives, directories and saved-game files
@@ -2473,6 +2475,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end o
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}The currently used base graphics set is missing a number of sprites.{}Please update the base graphics set
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Requested GRF resources not available
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} was disabled by {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/unknown sprite layout format
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Caution!

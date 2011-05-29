@@ -339,6 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Guardar escenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Cargar escenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Guardar mapa de alturas
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Cargar mapa de alturas
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Salir del editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2278,7 +2279,8 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Cargar Juego
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar Escenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar Escenario
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar Mapas de altura
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar Mapa de Alturas
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar Mapa de Alturas
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pulsa aquí para ir al directorio por defecto de guardado
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listado de unidades, directorios y juegos guardados
@@ -2474,6 +2476,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura despué
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al conjunto de gráficos base actualmente en uso le faltan algunos sprites.{}El conjunto de gráficos base debe ser actualizado
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF requeridos no disponibles
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} fue desactivado por {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de distribución de sprite inválido o incorrecto
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Precaución!

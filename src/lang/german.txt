@@ -339,6 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt p
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Szenario speichern
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Szenario laden
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Reliefkarte speichern
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Reliefkarte laden
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editor verlassen
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2279,6 +2280,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Spiel la
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Szenario speichern
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Szenario laden
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Reliefkarte laden
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Reliefkarte speichern
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardverzeichnis für Spielstände zu gehen
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} frei
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
@@ -2474,6 +2476,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff üb
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Durch ein Update der Basisgrafiken kann dieser Fehler behoben werden
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angeforderten GRF-Ressourcen sind nicht verfügbar
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} wurde von {4:STRING} deaktiviert
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges/unbekanntes SpriteLayout-Format
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!

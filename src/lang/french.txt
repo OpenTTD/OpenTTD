@@ -339,6 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placer u
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sauvegarder scénario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Charger scénario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Sauver la carte d'altitude
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Charger une carte d'altitude
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Quitter éditeur
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2279,6 +2280,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Charger 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sauvegarder Scénario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Charger Scénario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Charger une carte d'altitude
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Sauver la carte d'altitude
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Cliquer ici pour passer au répertoire par défaut courant de charge/sauvegarde
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libre{P "" s}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste des disques, répertoires, et fichiers de sauvegarde
@@ -2474,6 +2476,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après 
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certains sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base
 STR_NEWGRF_ERROR_GRM_FAILED                                     :La ressource GRF demandée n'est pas disponible
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} a été désactivé par {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format d'agencement de sprite invalide/inconnu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!
