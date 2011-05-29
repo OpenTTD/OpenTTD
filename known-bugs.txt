@@ -299,3 +299,25 @@ Can't run OpenTTD with the -d option from a MSYS console [FS#4587]
 	debugging output. Compiling OpenTTD with the --enable-console
 	configure option prevents this issue and allows the -d option to use
 	the MSYS console for its output.
+
+Unreadable characters for non-latin locales [FS#4607]
+	OpenTTD does not ship a non-latin font in its graphics files. As a
+	result OpenTTD needs to acquire the font from somewhere else. What
+	OpenTTD does is ask the operating system, or a system library, for
+	the best font for a given language if the currently loaded font
+	does not provide all characters of the chosen translation. This
+	means that OpenTTD has no influence over the quality of the chosen
+	font; it just does the best it can do.
+
+	If the text is unreadable there are several steps that you can take
+	to improve this. The first step is finding a good font and configure
+	this in the configuration file. See section 9.0 of readme.txt for
+	more information. You can also increase the font size to make the
+	characters bigger and possible better readable.
+
+	If the problem is with the clarity of the font you might want to
+	enable anti-aliasing by setting the small_aa/medium_aa/large_aa
+	settings to "true". However, anti-aliasing only works when a 32 bits
+	blitter has been selected, e.g. blitter = "32bpp-anim", as with the
+	8 bits blitter there are not enough colours to properly perform the
+	anti-aliasing.
