@@ -1255,9 +1255,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			}
 
 			case 0x09: // Define sprite layout
-				delete[] statspec->renderdata; // delete earlier loaded stuff
-
 				statspec->tiles = buf->ReadExtendedByte();
+				delete[] statspec->renderdata; // delete earlier loaded stuff
 				statspec->renderdata = new NewGRFSpriteLayout[statspec->tiles];
 
 				for (uint t = 0; t < statspec->tiles; t++) {
