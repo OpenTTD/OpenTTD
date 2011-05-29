@@ -1473,8 +1473,23 @@ static bool ClickTile_Road(TileIndex tile)
 }
 
 /* Converts RoadBits to TrackBits */
-static const byte _road_trackbits[16] = {
-	0x0, 0x0, 0x0, 0x10, 0x0, 0x2, 0x8, 0x1A, 0x0, 0x4, 0x1, 0x15, 0x20, 0x26, 0x29, 0x3F,
+static const TrackBits _road_trackbits[16] = {
+	TRACK_BIT_NONE,                                  // ROAD_NONE
+	TRACK_BIT_NONE,                                  // ROAD_NW
+	TRACK_BIT_NONE,                                  // ROAD_SW
+	TRACK_BIT_LEFT,                                  // ROAD_W
+	TRACK_BIT_NONE,                                  // ROAD_SE
+	TRACK_BIT_Y,                                     // ROAD_Y
+	TRACK_BIT_LOWER,                                 // ROAD_S
+	TRACK_BIT_LEFT | TRACK_BIT_LOWER | TRACK_BIT_Y,  // ROAD_Y | ROAD_SW
+	TRACK_BIT_NONE,                                  // ROAD_NE
+	TRACK_BIT_UPPER,                                 // ROAD_N
+	TRACK_BIT_X,                                     // ROAD_X
+	TRACK_BIT_LEFT | TRACK_BIT_UPPER | TRACK_BIT_X,  // ROAD_X | ROAD_NW
+	TRACK_BIT_RIGHT,                                 // ROAD_E
+	TRACK_BIT_RIGHT | TRACK_BIT_UPPER | TRACK_BIT_Y, // ROAD_Y | ROAD_NE
+	TRACK_BIT_RIGHT | TRACK_BIT_LOWER | TRACK_BIT_X, // ROAD_X | ROAD_SE
+	TRACK_BIT_ALL,                                   // ROAD_ALL
 };
 
 static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
