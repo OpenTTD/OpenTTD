@@ -10,7 +10,7 @@
 /** @file table/settings.h Settings to save in the savegame and config file. */
 
 /* Callback function used in _settings[] as well as _company_settings[] */
-static int32 ConvertLandscape(const char *value);
+static size_t ConvertLandscape(const char *value);
 
 
 /****************************

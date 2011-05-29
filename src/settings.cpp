@@ -97,10 +97,10 @@ static const char * const _list_group_names[] = {
  * @param onelen force calculation of the *one parameter
  * @return the integer index of the full-list, or -1 if not found
  */
-static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
+static size_t LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
 {
 	const char *s;
-	int idx;
+	size_t idx;
 
 	if (onelen == 0) onelen = strlen(one);
 
@@ -113,7 +113,7 @@ static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
 		s = many;
 		while (*s != '|' && *s != 0) s++;
 		if ((size_t)(s - many) == onelen && !memcmp(one, many, onelen)) return idx;
-		if (*s == 0) return -1;
+		if (*s == 0) return (size_t)-1;
 		many = s + 1;
 		idx++;
 	}
@@ -126,11 +126,11 @@ static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
  * of seperated by a whitespace,tab or | character
  * @return the 'fully' set integer, or -1 if a set is not found
  */
-static uint32 LookupManyOfMany(const char *many, const char *str)
+static size_t LookupManyOfMany(const char *many, const char *str)
 {
 	const char *s;
-	int r;
-	uint32 res = 0;
+	size_t r;
+	size_t res = 0;
 
 	for (;;) {
 		/* skip "whitespace" */
@@ -141,7 +141,7 @@ static uint32 LookupManyOfMany(const char *many, const char *str)
 		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
 
 		r = LookupOneOfMany(many, str, s - str);
-		if (r == -1) return (uint32)-1;
+		if (r == (size_t)-1) return r;
 
 		SetBit(res, r); // value found, set it
 		if (*s == 0) break;
@@ -1059,7 +1059,7 @@ static bool CheckRoadSide(int p1)
  * @param value that was read from config file
  * @return the "hopefully" converted value
  */
-static int32 ConvertLandscape(const char *value)
+static size_t ConvertLandscape(const char *value)
 {
 	/* try with the old values */
 	return LookupOneOfMany("normal|hilly|desert|candy", value);
