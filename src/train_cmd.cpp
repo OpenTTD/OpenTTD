@@ -2292,7 +2292,7 @@ private:
 	TileIndex      old_dest_tile;
 	StationID      old_last_station_visited;
 	VehicleOrderID index;
-	bool           suppress_automatic_orders;
+	bool           suppress_implicit_orders;
 
 public:
 	VehicleOrderSaver(Train *_v) :
@@ -2301,7 +2301,7 @@ public:
 		old_dest_tile(_v->dest_tile),
 		old_last_station_visited(_v->last_station_visited),
 		index(_v->cur_real_order_index),
-		suppress_automatic_orders(HasBit(_v->gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS))
+		suppress_implicit_orders(HasBit(_v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS))
 	{
 	}
 
@@ -2310,7 +2310,7 @@ public:
 		this->v->current_order = this->old_order;
 		this->v->dest_tile = this->old_dest_tile;
 		this->v->last_station_visited = this->old_last_station_visited;
-		SB(this->v->gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS, 1, suppress_automatic_orders ? 1: 0);
+		SB(this->v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS, 1, suppress_implicit_orders ? 1: 0);
 	}
 
 	/**
@@ -3770,7 +3770,7 @@ static void CheckIfTrainNeedsService(Train *v)
 		return;
 	}
 
-	SetBit(v->gv_flags, GVF_SUPPRESS_AUTOMATIC_ORDERS);
+	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
 	v->dest_tile = tfdd.tile;
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);

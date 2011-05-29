@@ -1141,7 +1141,7 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_order ),
 
 	OCL_NULL ( 1 ), ///< num_orders, now calculated
-	OCL_SVAR(  OC_UINT8, Vehicle, cur_auto_order_index ),
+	OCL_SVAR(  OC_UINT8, Vehicle, cur_implicit_order_index ),
 	OCL_SVAR(   OC_TILE, Vehicle, dest_tile ),
 	OCL_SVAR( OC_UINT16, Vehicle, load_unload_ticks ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, date_of_last_service ),

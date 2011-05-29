@@ -90,7 +90,7 @@ static void SetArrivalDepartParams(int param1, int param2, Ticks ticks)
 static bool CanDetermineTimeTaken(const Order *order, bool travelling)
 {
 	/* Current order is conditional */
-	if (order->IsType(OT_CONDITIONAL) || order->IsType(OT_AUTOMATIC)) return false;
+	if (order->IsType(OT_CONDITIONAL) || order->IsType(OT_IMPLICIT)) return false;
 	/* No travel time and we have not already finished travelling */
 	if (travelling && order->travel_time == 0) return false;
 	/* No wait time but we are loading at this timetabled station */
@@ -128,8 +128,8 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
 	do {
 		/* Automatic orders don't influence the overall timetable;
 		 * they just add some untimetabled entries, but the time till
-		 * the next non-automatic order can still be known. */
-		if (!order->IsType(OT_AUTOMATIC)) {
+		 * the next non-implicit order can still be known. */
+		if (!order->IsType(OT_IMPLICIT)) {
 			if (travelling || i != start) {
 				if (!CanDetermineTimeTaken(order, true)) return;
 				sum += order->travel_time;
@@ -330,7 +330,7 @@ struct TimetableWindow : Window {
 			if (selected != -1) {
 				const Order *order = v->GetOrder(((selected + 1) / 2) % v->GetNumOrders());
 				if (selected % 2 == 1) {
-					disable = order != NULL && (order->IsType(OT_CONDITIONAL) || order->IsType(OT_AUTOMATIC));
+					disable = order != NULL && (order->IsType(OT_CONDITIONAL) || order->IsType(OT_IMPLICIT));
 				} else {
 					disable = order == NULL || ((!order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) && !order->IsType(OT_CONDITIONAL));
 				}
@@ -403,7 +403,7 @@ struct TimetableWindow : Window {
 						TextColour colour = (i == selected) ? TC_WHITE : TC_BLACK;
 						if (order->IsType(OT_CONDITIONAL)) {
 							string = STR_TIMETABLE_NO_TRAVEL;
-						} else if (order->IsType(OT_AUTOMATIC)) {
+						} else if (order->IsType(OT_IMPLICIT)) {
 							string = STR_TIMETABLE_NOT_TIMETABLEABLE;
 							colour = ((i == selected) ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 						} else if (order->travel_time == 0) {
