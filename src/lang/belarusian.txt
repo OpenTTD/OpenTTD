@@ -651,6 +651,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разь
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Захаваць сцэнар
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Загрузіць сцэнар
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Захаваць мапу вышынь
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Загрузіць мапу вышыняў
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Выйсьці з рэдактара
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2615,6 +2616,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Загр
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Захаваць сцэнар
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузіць сцэнар
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузіць мапу вышыняў
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Захаваць мапу вышынь
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Націсьніце тут, каб перайсьці да вызначанага па змоўчаньні каталёга захаваньня/загрузкі
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} вольна
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Сьпіс дыскаў, каталёгаў і файлаў захаваных гульняў
@@ -2810,6 +2812,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Дадзены�
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай графікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай графікі.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошаныя рэсурсы GRF недаступныя
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} быў адключаны з-за {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Няслушны/невядомы фармат размяшчэння спрайтаў
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асцярожна!

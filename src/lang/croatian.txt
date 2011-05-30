@@ -434,6 +434,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavi 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Spremi scenarij
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenarij
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Spremi visinsku mapu
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj visinsku kartu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Završi s uređivanjem
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2374,6 +2375,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Učitaj 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Spremi scenarij
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Učitaj scenarij
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitaj visinsku kartu
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Spremi visinsku mapu
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikni ovdje za prelazak u trenutnu pretpostavljenu mapu za snimanje/učitavanje
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} slobod{P an na no}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Popis diskova, mapa i spremljenih datoteka
@@ -2569,6 +2571,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Učitavanje izv
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Baznom grafičkom setu u uporabi nedostaju neki spriteovi.{}Ažurirajte bazni grafički set
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Zatraženi GRF resursi nisu raspoloživi
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je isključen od strane {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Pogrešan/nepoznat prikaz formata sprite-a
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!

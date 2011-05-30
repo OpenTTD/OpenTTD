@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plaats o
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Scenario opslaan
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Scenario openen
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Hoogtekaart opslaan
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Laad hoogtekaart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sluit editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2278,6 +2279,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Spel Lad
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Scenario Opslaan
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Scenario Laden
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laad Hoogtekaart
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Hoogtekaart Opslaan
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar-/laadmap te gaan
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vrij
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lijst van schijven, mappen, en opgeslagen spellen
@@ -2473,6 +2475,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij ei
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF middelen niet beschikbaar
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} is uitgeschakeld door {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldig/onbekend sprite layout formaat
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!

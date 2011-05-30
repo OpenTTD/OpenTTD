@@ -340,6 +340,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posizion
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salva scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Carica scenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salva heightmap
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carica heightmap
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Esci dall'editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2302,6 +2303,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Carica p
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salva scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Carica scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carica heightmap
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salva Heightmap
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Fare clic qui per spostarsi nella cartella di salvataggio predefinita
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} liber{P o i}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Elenco delle unità, delle cartelle e dei file delle partite salvate
@@ -2497,6 +2499,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lettura oltre l
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nello stile grafico di base attualmente in uso mancano alcuni sprite.{}È consigliabile aggiornare lo stile grafico di base
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Risorsa GRF richiesta non disponibile
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} è stato disabilitato da {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato di layout dello sprite non valido o sconosciuto
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attenzione!
