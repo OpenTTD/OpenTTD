@@ -1,3 +1,9 @@
+1.1.1 (2011-06-01)
+------------------------------------------------------------------------
+- Change: Automatic orders are better called implicit orders as no real order influencing path finding is added (r22474, r22473)
+- Fix: Only try to insert implicit orders for ground vehicles. Aircraft may reach unscheduled terminals when skipping orders [FS#4624] (r22492)
+
+
 1.1.1-RC1 (2011-05-15)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Allow to filter by town of the current industry when using industry variable 0x68 [FS#4591] (r22434)
