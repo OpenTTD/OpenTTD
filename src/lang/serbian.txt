@@ -526,6 +526,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavlj
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sačuvaj scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Sačuvaj elevacionu kartu
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj elevacionu kartu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Napusti editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2473,6 +2474,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Učitava
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sačuvaj scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Učitaj scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitavanje Elevacione karte
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Sačuvaj Elevacionu kartu
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pritisnite ovde kako bi ste otišli u uobičajni direktorijum za čuvanje pozicije
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} slobodno
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Spisak diskova, direktorijuma i datoteka sa sačuvanim pozicijama
@@ -2668,6 +2670,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje posle 
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Odabranom skupu osnovnih grafika nedostaje neki broj sprajtova.{}Molimo Vas da ga ažurirate
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Zatraženi GRF resusrsi nisu dostupni
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je isključen od strane {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neispravan/nepoznat format rasporeda sprajta
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
@@ -3447,7 +3450,7 @@ STR_ORDER_STOP_ORDER                                            :(Stani)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatski)
+STR_ORDER_IMPLICIT                                              :(Podrazumevano)
 
 STR_ORDER_FULL_LOAD                                             :(Pun utovar)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pun utovar bilo kog)
