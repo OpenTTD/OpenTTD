@@ -1,6 +1,6 @@
 .\"                                      Hey, EMACS: -*- nroff -*-
 .\" Please adjust this date whenever revising the manpage.
-.Dd Dec 31, 2010
+.Dd May 31, 2011
 .Dt OPENTTD 6
 .Sh NAME
 .Nm openttd
@@ -14,7 +14,6 @@
 .Op Fl D Ar [host][:port]
 .Op Fl g Ar [savegame]
 .Op Fl G Ar seed
-.Op Fl i Ar palette
 .Op Fl I Ar graphicsset
 .Op Fl l Ar host[:port]
 .Op Fl m Ar driver
@@ -61,10 +60,6 @@ at start or start a new game if omitted. The
 must be either absolute or relative to the current path or one of the search paths.
 .It Fl h
 Display a summary of all options and lists all the available AIs, blitters, sound, music and video drivers, graphics sets and sound sets.
-.It Fl i Ar palette
-Set the palette. '0' for the DOS palette, '1' for the Windows palette and '2' to autodetect (default).
-.sp
-The palette depends where the base graphics set originated from. If it came from the Transport Tycoon Deluxe for DOS it has the DOS palette, if it came from the Windows version of Transport Tycoon Deluxe it has the Windows palette. All others likely have the Windows palette as that is the most used palette.
 .It Fl I Ar graphicsset
 Set the graphics set, see
 .Fl h

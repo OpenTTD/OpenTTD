@@ -31,8 +31,8 @@ format. Alpha-channel is fully supported.
 As the core of OpenTTD is 8bpp, and because you of course want company colours
 in your images, you will need to add a mask for every sprite that needs colour
 remapping. The name is simular as above, only you have to put a 'm' behind the
-SpriteID. This image should be a 8bpp palette image, where the palette is the
-OpenTTD palette. Upon load of the PNG, the mask is loaded too, and overrides
+SpriteID. This image should be a 8bpp palette image with the OpenTTD
+DOS palette. Upon load of the PNG, the mask is loaded too, and overrides
 the RGB (not the Alpha) of the original PNG image, and replacing it with a
 8bpp color remapped and converted to 32bpp.
 
