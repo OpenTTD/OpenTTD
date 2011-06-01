@@ -717,6 +717,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Zapisz scenariusz
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Wczytaj scenariusz
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Zapisz mapę wysokości
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Wczytaj mapę wysokości
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Wyjdź z edytora
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1605,7 +1606,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Domyślna paleta dla NewGRF które nie posiadają zdefiniowanej palety: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta okien
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Zezwól w czasie wstrzymania gry na: {ORANGE}{STRING}
@@ -2658,6 +2659,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Wczytaj 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Zapisz scenariusz
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Wczytaj scenariusz
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Wczytaj mapę wysokości
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Zapisz mapę wysokości
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj aby przejść do domyślnego katalogu
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} wolnego miejsca
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista napędów, katalogów i zapisanych gier
@@ -2851,6 +2853,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza koniec pseudo obrazków
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualnie używany zestaw grafik jest niekompletny.{}Proszę zaktualizować podstawowy zestaw grafik
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Wymagane zasoby GRF są niedostępne
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} został wyłączony przez {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
