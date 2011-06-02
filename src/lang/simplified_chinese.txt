@@ -283,6 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :车站中最低
 STR_SORT_BY_ENGINE_ID                                           :引擎ID （默认方式）
 STR_SORT_BY_COST                                                :售价
 STR_SORT_BY_POWER                                               :功率
+STR_SORT_BY_TRACTIVE_EFFORT                                     :牵引力
 STR_SORT_BY_INTRO_DATE                                          :设计日期
 STR_SORT_BY_RUNNING_COST                                        :运行费用
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用 比值
@@ -337,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置�
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :保存场景
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :读取场景
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :保存高度图
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :读取高度图
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :退出编辑器
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1220,6 +1222,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :完整时间 (2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :简短形式 (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS调色板
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows调色板
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}开始新游戏时自动暂停： {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}暂停时允许: {ORANGE}{STRING}
@@ -2269,6 +2273,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}读取�
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}保存场景
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}读取场景
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}读取地形图
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}保存高度图
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}点击这里返回默认的游戏存档目录
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 可用
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}驱动器、目录和游戏存档列表
