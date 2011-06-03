@@ -54,7 +54,7 @@ static const SpriteID SPR_ASCII_SPACE_BIG   = 450;
 
 static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
-/* Extra graphic spritenumbers */
+/** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
 static const uint16 OPENTTD_SPRITE_COUNT = 160;
 
@@ -96,7 +96,7 @@ static const SpriteID SPR_OSK_SHIFT          = SPR_OPENTTD_BASE + 141;
 static const SpriteID SPR_OSK_BACKSPACE      = SPR_OPENTTD_BASE + 142;
 static const SpriteID SPR_OSK_SPECIAL        = SPR_OPENTTD_BASE + 143;
 
-/* Clone vehicles stuff */
+/** Clone vehicles stuff */
 static const SpriteID SPR_CLONE_TRAIN    = SPR_OPENTTD_BASE + 106;
 static const SpriteID SPR_CLONE_ROADVEH  = SPR_OPENTTD_BASE + 107;
 static const SpriteID SPR_CLONE_SHIP     = SPR_OPENTTD_BASE + 108;
@@ -155,7 +155,7 @@ static const uint16 PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT = 240;
 static const SpriteID SPR_CANALS_BASE   = SPR_SIGNALS_BASE + PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT;
 static const uint16 CANALS_SPRITE_COUNT = 65;
 
-/* Sprites for the Aqueduct. */
+/** Sprites for the Aqueduct. */
 static const SpriteID SPR_AQUEDUCT_BASE     = SPR_CANALS_BASE + CANALS_SPRITE_COUNT;
 static const SpriteID SPR_AQUEDUCT_RAMP_SW  = SPR_AQUEDUCT_BASE + 0;
 static const SpriteID SPR_AQUEDUCT_RAMP_SE  = SPR_AQUEDUCT_BASE + 1;
@@ -167,7 +167,7 @@ static const SpriteID SPR_AQUEDUCT_PILLAR_X = SPR_AQUEDUCT_BASE + 6;
 static const SpriteID SPR_AQUEDUCT_PILLAR_Y = SPR_AQUEDUCT_BASE + 7;
 static const uint16 AQUEDUCT_SPRITE_COUNT = 8;
 
-/* Sprites for 'highlighting' tracks on sloped land. */
+/** Sprites for 'highlighting' tracks on sloped land. */
 static const SpriteID SPR_TRACKS_FOR_SLOPES_BASE        = SPR_AQUEDUCT_BASE + AQUEDUCT_SPRITE_COUNT;
 static const SpriteID SPR_TRACKS_FOR_SLOPES_RAIL_BASE   = SPR_TRACKS_FOR_SLOPES_BASE + 0;
 static const SpriteID SPR_TRACKS_FOR_SLOPES_MONO_BASE   = SPR_TRACKS_FOR_SLOPES_BASE + 4;
@@ -179,7 +179,7 @@ static const SpriteID SPR_SLOPES_INCLINED_OFFSET   = 15;
 static const SpriteID SPR_SLOPES_VIRTUAL_BASE      = SPR_SLOPES_BASE - SPR_SLOPES_INCLINED_OFFSET; // The original foundations (see SPR_FOUNDATION_BASE below) are mapped before the additional foundations.
 static const SpriteID SPR_TRKFOUND_BLOCK_SIZE      = 22; // The normal track foundation sprites are organized in blocks of 22.
 static const uint16 NORMAL_FOUNDATION_SPRITE_COUNT = 74;
-/* Halftile foundations */
+/** Halftile foundations */
 static const SpriteID SPR_HALFTILE_FOUNDATION_BASE = SPR_SLOPES_BASE + NORMAL_FOUNDATION_SPRITE_COUNT;
 static const SpriteID SPR_HALFTILE_BLOCK_SIZE      = 4;  // The half tile foundation sprites are organized in blocks of 4.
 static const uint16 NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT = 90;
@@ -193,7 +193,7 @@ static const uint16 ELRAIL_SPRITE_COUNT = 48;
 static const SpriteID SPR_2CCMAP_BASE   = SPR_ELRAIL_BASE + ELRAIL_SPRITE_COUNT;
 static const uint16 TWOCCMAP_SPRITE_COUNT = 256;
 
-/* shore tiles - action 05-0D */
+/** shore tiles - action 05-0D */
 static const SpriteID SPR_SHORE_BASE                  = SPR_2CCMAP_BASE + TWOCCMAP_SPRITE_COUNT;
 static const SpriteID SPR_SHORE_SPRITE_COUNT          = 18;
 static const SpriteID SPR_ORIGINALSHORE_START         = 4062;
@@ -217,7 +217,7 @@ static const SpriteID SPR_GRASS_RIGHT       = SPR_AIRPORTX_BASE + 13;
 static const SpriteID SPR_GRASS_LEFT        = SPR_AIRPORTX_BASE + 14;
 static const uint16 AIRPORTX_SPRITE_COUNT = 15;
 
-/* Airport preview sprites */
+/** Airport preview sprites */
 static const SpriteID SPR_AIRPORT_PREVIEW_BASE             = SPR_AIRPORTX_BASE + AIRPORTX_SPRITE_COUNT;
 static const SpriteID SPR_AIRPORT_PREVIEW_SMALL            = SPR_AIRPORT_PREVIEW_BASE;
 static const SpriteID SPR_AIRPORT_PREVIEW_LARGE            = SPR_AIRPORT_PREVIEW_BASE + 1;
@@ -241,7 +241,7 @@ static const SpriteID SPR_TRUCK_STOP_DT_X_W = SPR_ROADSTOP_BASE + 6;
 static const SpriteID SPR_TRUCK_STOP_DT_X_E = SPR_ROADSTOP_BASE + 7;
 static const uint16 ROADSTOP_SPRITE_COUNT = 8;
 
-/* Tramway sprites */
+/** Tramway sprites */
 static const SpriteID SPR_TRAMWAY_BASE                 = SPR_ROADSTOP_BASE + ROADSTOP_SPRITE_COUNT;
 static const SpriteID SPR_TRAMWAY_OVERLAY              = SPR_TRAMWAY_BASE + 4;
 static const SpriteID SPR_TRAMWAY_TRAM                 = SPR_TRAMWAY_BASE + 27;
@@ -260,11 +260,11 @@ static const SpriteID SPR_TRAMWAY_TUNNEL_WIRES         = SPR_TRAMWAY_BASE + 80;
 static const SpriteID SPR_TRAMWAY_BRIDGE               = SPR_TRAMWAY_BASE + 107;
 static const uint16 TRAMWAY_SPRITE_COUNT = 113;
 
-/* One way road sprites */
+/** One way road sprites */
 static const SpriteID SPR_ONEWAY_BASE = SPR_TRAMWAY_BASE + TRAMWAY_SPRITE_COUNT;
 static const uint16 ONEWAY_SPRITE_COUNT = 6;
 
-/* Flags sprites (in same order as enum NetworkLanguage) */
+/** Flags sprites (in same order as enum NetworkLanguage) */
 static const SpriteID SPR_FLAGS_BASE = SPR_ONEWAY_BASE + ONEWAY_SPRITE_COUNT;
 static const uint16 FLAGS_SPRITE_COUNT = 36;
 
@@ -1039,7 +1039,7 @@ static const SpriteID SPR_XCOM_SKYRANGER         = 3921;
 static const SpriteID SPR_AH_64A                 = 3922; // Gunship
 static const SpriteID SPR_AH_64A_FIRING          = 3923;
 
-/* main_gui.c */
+/* main_gui.cpp */
 static const SpriteID SPR_IMG_TERRAFORM_UP    = 694;
 static const SpriteID SPR_IMG_TERRAFORM_DOWN  = 695;
 static const SpriteID SPR_IMG_DYNAMITE        = 703;
@@ -1084,18 +1084,14 @@ static const SpriteID SPR_IMG_QUERY           = 723;
 static const SpriteID SPR_IMG_SIGN            = 4082;
 static const SpriteID SPR_IMG_BUY_LAND        = 4791;
 
-/* OPEN TRANSPORT TYCOON in gamescreen */
+/* OpenTTD in gamescreen */
 static const SpriteID SPR_OTTD_O                = 4842;
 static const SpriteID SPR_OTTD_P                = 4841;
 static const SpriteID SPR_OTTD_E                = SPR_OPENTTD_BASE + 12;
 static const SpriteID SPR_OTTD_D                = SPR_OPENTTD_BASE + 13;
 static const SpriteID SPR_OTTD_N                = 4839;
 static const SpriteID SPR_OTTD_T                = 4836;
-static const SpriteID SPR_OTTD_R                = 4837;
-static const SpriteID SPR_OTTD_A                = 4838;
-static const SpriteID SPR_OTTD_S                = 4840;
-static const SpriteID SPR_OTTD_Y                = 4843;
-static const SpriteID SPR_OTTD_C                = 4844;
+/* Letters not used: R,A,S,Y,C (4837, 4838, 4840, 4843, 4844) */
 
 static const SpriteID SPR_HIGHSCORE_CHART_BEGIN = 4804;
 static const SpriteID SPR_TYCOON_IMG1_BEGIN     = 4814;
@@ -1243,22 +1239,22 @@ static const SpriteID SPR_BUILD_EW_ELRAIL = SPR_ELRAIL_BASE + 38;
 static const SpriteID SPR_BUILD_Y_ELRAIL  = SPR_ELRAIL_BASE + 39;
 static const SpriteID SPR_BUILD_TUNNEL_ELRAIL = SPR_ELRAIL_BASE + 44;
 
-/* airport_gui.c */
+/* airport_gui.cpp */
 static const SpriteID SPR_IMG_AIRPORT       = 744;
 
-/* dock_gui.c */
+/* dock_gui.cpp */
 static const SpriteID SPR_IMG_SHIP_DEPOT    = 748;
 static const SpriteID SPR_IMG_SHIP_DOCK     = 746;
 static const SpriteID SPR_IMG_BUOY          = 693;
 static const SpriteID SPR_IMG_AQUEDUCT      = SPR_OPENTTD_BASE + 145;
 
-/* music_gui.c */
+/* music_gui.cpp */
 static const SpriteID SPR_IMG_SKIP_TO_PREV  = 709;
 static const SpriteID SPR_IMG_SKIP_TO_NEXT  = 710;
 static const SpriteID SPR_IMG_STOP_MUSIC    = 711;
 static const SpriteID SPR_IMG_PLAY_MUSIC    = 712;
 
-/* road_gui.c */
+/* road_gui.cpp */
 static const SpriteID SPR_IMG_ROAD_Y_DIR    = 1309;
 static const SpriteID SPR_IMG_ROAD_X_DIR    = 1310;
 static const SpriteID SPR_IMG_AUTOROAD      = SPR_OPENTTD_BASE + 82;
@@ -1273,7 +1269,7 @@ static const SpriteID SPR_IMG_TRAMWAY_Y_DIR = SPR_TRAMWAY_BASE + 0;
 static const SpriteID SPR_IMG_TRAMWAY_X_DIR = SPR_TRAMWAY_BASE + 1;
 static const SpriteID SPR_IMG_AUTOTRAM      = SPR_OPENTTD_BASE + 84;
 
-/* rail_gui.c */
+/* rail_gui.cpp */
 static const SpriteID SPR_IMG_RAIL_NS    = 1251;
 static const SpriteID SPR_IMG_RAIL_NE    = 1252;
 static const SpriteID SPR_IMG_RAIL_EW    = 1253;
@@ -1316,7 +1312,7 @@ static const SpriteID SPR_IMG_CONVERT_ELRAIL = SPR_OPENTTD_BASE + 59;
 static const SpriteID SPR_IMG_CONVERT_MONO   = SPR_OPENTTD_BASE + 65;
 static const SpriteID SPR_IMG_CONVERT_MAGLEV = SPR_OPENTTD_BASE + 71;
 
-/* intro_gui.c, genworld_gui.c */
+/* intro_gui.cpp, genworld_gui.cpp */
 static const SpriteID SPR_SELECT_TEMPERATE           = 4882;
 static const SpriteID SPR_SELECT_TEMPERATE_PUSHED    = 4883;
 static const SpriteID SPR_SELECT_SUB_ARCTIC          = 4884;
@@ -1483,14 +1479,10 @@ enum SpriteSetup {
  * @see SpriteSetup
  */
 enum Modifiers {
-	/** Set when a sprite originates from an Action 1 */
-	SPRITE_MODIFIER_CUSTOM_SPRITE = CUSTOM_BIT,
-	/** Set when a sprite must not ever be displayed transparently */
-	SPRITE_MODIFIER_OPAQUE        = OPAQUE_BIT,
-	/** when a sprite is to be displayed transparently, this bit needs to be set. */
-	PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT,
-	/** this bit is set when a recolouring process is in action */
-	PALETTE_MODIFIER_COLOUR       = RECOLOUR_BIT,
+	SPRITE_MODIFIER_CUSTOM_SPRITE = CUSTOM_BIT,      ///< Set when a sprite originates from an Action 1
+	SPRITE_MODIFIER_OPAQUE        = OPAQUE_BIT,      ///< Set when a sprite must not ever be displayed transparently
+	PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT, ///< when a sprite is to be displayed transparently, this bit needs to be set.
+	PALETTE_MODIFIER_COLOUR       = RECOLOUR_BIT,    ///< this bit is set when a recolouring process is in action
 };
 
 /**
@@ -1499,14 +1491,11 @@ enum Modifiers {
  * @see SpriteSetup
  */
 enum SpriteMasks {
-	/** Maximum number of sprites that can be loaded at a given time. */
-	MAX_SPRITES = 1 << SPRITE_WIDTH,
-	/** The mask to for the main sprite */
-	SPRITE_MASK = MAX_SPRITES - 1,
+	MAX_SPRITES = 1 << SPRITE_WIDTH,       ///< Maximum number of sprites that can be loaded at a given time
+	SPRITE_MASK = MAX_SPRITES - 1,         ///< The mask to for the main sprite
 
 	MAX_PALETTES = 1 << PALETTE_WIDTH,
-	/** The mask for the auxiliary sprite (the one that takes care of recolouring) */
-	PALETTE_MASK = MAX_PALETTES - 1,
+	PALETTE_MASK = MAX_PALETTES - 1,       ///< The mask for the auxiliary sprite (the one that takes care of recolouring)
 };
 
 assert_compile( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
@@ -1517,50 +1506,46 @@ assert_compile( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
 
 
 static const PaletteID PAL_NONE                    = 0;
-/** Here a pulsating red tile is drawn if you try to build a wrong tunnel or raise/lower land where it is not possible */
-static const PaletteID PALETTE_TILE_RED_PULSATING  = 0x303;
-/** makes a square red. is used when removing rails or other stuff */
-static const PaletteID PALETTE_SEL_TILE_RED        = 0x304;
-/** This draws a blueish square (catchment areas for example) */
-static const PaletteID PALETTE_SEL_TILE_BLUE       = 0x305;
+static const PaletteID PALETTE_TILE_RED_PULSATING  = 771;  ///< pulsating red tile drawn if you try to build a wrong tunnel or raise/lower land where it is not possible
+static const PaletteID PALETTE_SEL_TILE_RED        = 772;  ///< makes a square red. is used when removing rails or other stuff
+static const PaletteID PALETTE_SEL_TILE_BLUE       = 773;  ///< This draws a blueish square (catchment areas for example)
 
-static const PaletteID PALETTE_RECOLOUR_START      = 0x307;
-static const PaletteID PALETTE_TO_DARK_BLUE        = 0x307;
-static const PaletteID PALETTE_TO_PALE_GREEN       = 0x308;
-static const PaletteID PALETTE_TO_PINK             = 0x309;
-static const PaletteID PALETTE_TO_YELLOW           = 0x30A;
-static const PaletteID PALETTE_TO_RED              = 0x30B;
-static const PaletteID PALETTE_TO_LIGHT_BLUE       = 0x30C;
-static const PaletteID PALETTE_TO_GREEN            = 0x30D;
-static const PaletteID PALETTE_TO_DARK_GREEN       = 0x30E;
-static const PaletteID PALETTE_TO_BLUE             = 0x30F;
-static const PaletteID PALETTE_TO_CREAM            = 0x310;
+/* Company re-colour sprites */
+static const PaletteID PALETTE_RECOLOUR_START      = 775;  ///< First recolour sprite for company colours
+static const PaletteID PALETTE_TO_DARK_BLUE        = 775;
+static const PaletteID PALETTE_TO_PALE_GREEN       = 776;
+static const PaletteID PALETTE_TO_PINK             = 777;
+static const PaletteID PALETTE_TO_YELLOW           = 778;
+static const PaletteID PALETTE_TO_RED              = 779;
+static const PaletteID PALETTE_TO_LIGHT_BLUE       = 780;
+static const PaletteID PALETTE_TO_GREEN            = 781;
+static const PaletteID PALETTE_TO_DARK_GREEN       = 782;
+static const PaletteID PALETTE_TO_BLUE             = 783;
+static const PaletteID PALETTE_TO_CREAM            = 784;
 /* maybe don't use as company colour because it doesn't display in the graphs? */
-static const PaletteID PALETTE_TO_MAUVE            = 0x311;
-static const PaletteID PALETTE_TO_PURPLE           = 0x312;
-static const PaletteID PALETTE_TO_ORANGE           = 0x313;
-static const PaletteID PALETTE_TO_BROWN            = 0x314;
-static const PaletteID PALETTE_TO_GREY             = 0x315;
-static const PaletteID PALETTE_TO_WHITE            = 0x316;
-/* sets colour to bare land stuff, for rail and road (and crossings) */
-static const PaletteID PALETTE_TO_BARE_LAND        = 0x317;
-/* XXX is 318-31A really not used? */
-static const PaletteID PALETTE_TO_STRUCT_BLUE      = 0x31B;
-/* structure colour to something brownish (for the cantilever bridges for example) */
-static const PaletteID PALETTE_TO_STRUCT_BROWN     = 0x31C;
-static const PaletteID PALETTE_TO_STRUCT_WHITE     = 0x31D;
-/* sets bridge or structure to red, little concrete one and cantilever use this one for example */
-static const PaletteID PALETTE_TO_STRUCT_RED       = 0x31E;
-static const PaletteID PALETTE_TO_STRUCT_GREEN     = 0x31F;
-static const PaletteID PALETTE_TO_STRUCT_CONCRETE  = 0x320; // Sets the suspension bridge to concrete, also other strucutures use it
-static const PaletteID PALETTE_TO_STRUCT_YELLOW    = 0x321; // Sets the bridge colour to yellow (suspension and tubular)
-static const PaletteID PALETTE_TO_TRANSPARENT      = 0x322; // This sets the sprite to transparent
+static const PaletteID PALETTE_TO_MAUVE            = 785;
+static const PaletteID PALETTE_TO_PURPLE           = 786;
+static const PaletteID PALETTE_TO_ORANGE           = 787;
+static const PaletteID PALETTE_TO_BROWN            = 788;
+static const PaletteID PALETTE_TO_GREY             = 789;
+static const PaletteID PALETTE_TO_WHITE            = 790;
 
-static const PaletteID PALETTE_NEWSPAPER           = 0x323; ///< Recolour sprite for newspaper-greying.
-static const PaletteID PALETTE_CRASH               = 0x324;
+static const PaletteID PALETTE_TO_BARE_LAND        = 791;  ///< sets colour to bare land stuff for rail, road and crossings
+/* recolour sprites 792-794 are not used */
+static const PaletteID PALETTE_TO_STRUCT_BLUE      = 795;  ///< sets bridge or structure to blue (e.g. some town houses)
+static const PaletteID PALETTE_TO_STRUCT_BROWN     = 796;  ///< sets bridge or structure to brown (e.g. cantilever bridge)
+static const PaletteID PALETTE_TO_STRUCT_WHITE     = 797;  ///< sets bridge or structure to white (e.g. some town houses)
+static const PaletteID PALETTE_TO_STRUCT_RED       = 798;  ///< sets bridge or structure to red (e.g. concrete and cantilever bridge)
+static const PaletteID PALETTE_TO_STRUCT_GREEN     = 799;  ///< sets bridge or structure to green (e.g. bridge)
+static const PaletteID PALETTE_TO_STRUCT_CONCRETE  = 800;  ///< Sets the suspension bridge to concrete, also other structures use it
+static const PaletteID PALETTE_TO_STRUCT_YELLOW    = 801;  ///< Sets the bridge colour to yellow (suspension and tubular)
+static const PaletteID PALETTE_TO_TRANSPARENT      = 802;  ///< This sets the sprite to transparent
+
+static const PaletteID PALETTE_NEWSPAPER           = 803;  ///< Recolour sprite for newspaper-greying.
+static const PaletteID PALETTE_CRASH               = 804;  ///< Recolour sprite greying of crashed vehicles.
 
 /* Two recolourings only used by the church */
-static const PaletteID PALETTE_CHURCH_RED          = 0x59E;
-static const PaletteID PALETTE_CHURCH_CREAM        = 0x59F;
+static const PaletteID PALETTE_CHURCH_RED          = 1438; ///< Recolour sprite for reddish churches
+static const PaletteID PALETTE_CHURCH_CREAM        = 1439; ///< Recolour sprite for white churches
 
 #endif /* SPRITES_H */
