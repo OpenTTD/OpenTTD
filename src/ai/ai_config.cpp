@@ -75,9 +75,9 @@ AIInfo *AIConfig::GetInfo() const
 	return this->info;
 }
 
-bool AIConfig::ResetInfo()
+bool AIConfig::ResetInfo(bool force_exact_match)
 {
-	this->info = AI::FindInfo(this->name, -1, false);
+	this->info = AI::FindInfo(this->name, force_exact_match ? this->version : -1, force_exact_match);
 	return this->info != NULL;
 }
 

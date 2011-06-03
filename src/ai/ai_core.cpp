@@ -170,13 +170,24 @@
 	 *  a random new AI on reload). */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (_settings_game.ai_config[c] != NULL && _settings_game.ai_config[c]->HasAI()) {
-			if (!_settings_game.ai_config[c]->ResetInfo()) {
+			if (!_settings_game.ai_config[c]->ResetInfo(true)) {
 				DEBUG(ai, 0, "After a reload, the AI by the name '%s' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
 				_settings_game.ai_config[c]->ChangeAI(NULL);
+				if (Company::IsValidAiID(c)) {
+					/* The code belonging to an already running AI was deleted. We can only do
+					 * one thing here to keep everything sane and that is kill the AI. After
+					 * killing the offending AI we start a random other one in it's place, just
+					 * like what would happen if the AI was missing during loading. */
+					AI::Stop(c);
+					AI::StartNew(c, false);
+				}
+			} else if (Company::IsValidAiID(c)) {
+				/* Update the reference in the Company struct. */
+				Company::Get(c)->ai_info = _settings_game.ai_config[c]->GetInfo();
 			}
 		}
 		if (_settings_newgame.ai_config[c] != NULL && _settings_newgame.ai_config[c]->HasAI()) {
-			if (!_settings_newgame.ai_config[c]->ResetInfo()) {
+			if (!_settings_newgame.ai_config[c]->ResetInfo(false)) {
 				DEBUG(ai, 0, "After a reload, the AI by the name '%s' was no longer found, and removed from the list.", _settings_newgame.ai_config[c]->GetName());
 				_settings_newgame.ai_config[c]->ChangeAI(NULL);
 			}

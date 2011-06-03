@@ -57,10 +57,12 @@ public:
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This
 	 *  function tells AIConfig about this.
+	 * @param force_exact_match If true try to find the exact same version
+	 *   as specified. If false any version is ok.
 	 * @return \c true if the reset was successful, \c false if the AI was no longer
 	 *  found.
 	 */
-	bool ResetInfo();
+	bool ResetInfo(bool force_exact_match);
 
 	/**
 	 * Get the AIInfo linked to this AIConfig.
