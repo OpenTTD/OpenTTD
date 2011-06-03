@@ -408,6 +408,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umisťte
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Uložit mapu
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Otevřit mapu
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Uložit výškovou mapu
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Použít výškovou mapu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ukončit editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1304,6 +1305,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Pro jm�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlouhý (31. pro 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátký (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Zastavit automaticky hru při začínání nové hry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}V pozastavené hře povolit: {ORANGE}{STRING}
@@ -2362,6 +2364,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Otevří
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Uložit mapu
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Otevřít mapu
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nahrát výškovou mapu
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Uložit výškovou mapu
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknutím sem se přesuneš do současného výchozího ukládacího adresáře
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} voln{P ý é ých}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Seznam jednotek, adresářů a uložených her
@@ -2555,6 +2558,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc GRF akcí 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje grafiky nejsou k dispozici
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!

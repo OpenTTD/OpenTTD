@@ -2476,6 +2476,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura despré
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al joc de gràfics base establert actualment li falten un nombre d'sprites.{}Si us plau actualitza el joc de gràfics base
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Els recursos GRF demanats no estan disponibles
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} ha estat desactivat per {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de disposició d'Sprites invàlid/desconegut
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
@@ -3239,7 +3240,7 @@ STR_ORDER_STOP_ORDER                                            :(Para)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automàtic)
+STR_ORDER_IMPLICIT                                              :(Implícit)
 
 STR_ORDER_FULL_LOAD                                             :(Carrega del tot)
 STR_ORDER_FULL_LOAD_ANY                                         :(Carrega del tot qualsevol càrrega)
