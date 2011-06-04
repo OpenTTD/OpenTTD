@@ -339,6 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Guardar cenário
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Abrir cenário
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Guardar mapa de alturas
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Abrir mapa de alturas
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sair do editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2279,6 +2280,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Abrir Jo
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar Cenário
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar mapa de alturas
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de alturas
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Carregue aqui para saltar para a directoria de gravação/carregamento por defeito
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
