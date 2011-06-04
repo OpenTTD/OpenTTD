@@ -29,8 +29,12 @@ static const byte INITIAL_STATION_RATING = 175;
 struct GoodsEntry {
 	/** Status of this cargo for the station. */
 	enum GoodsEntryStatus {
-		GES_ACCEPTANCE, ///< This cargo is currently being accepted by the station.
-		GES_PICKUP,     ///< This cargo has been picked up at this station at least once.
+		GES_ACCEPTANCE,       ///< This cargo is currently being accepted by the station.
+		GES_PICKUP,           ///< This cargo has been picked up at this station at least once.
+		GES_EVER_ACCEPTED,    ///< The cargo has been accepted at least once.
+		GES_LAST_MONTH,       ///< The cargo was accepted last month.
+		GES_CURRENT_MONTH,    ///< The cargo was accepted this month.
+		GES_ACCEPTED_BIGTICK, ///< The cargo has been accepted since the last periodic processing.
 	};
 
 	GoodsEntry() :

@@ -3001,6 +3001,13 @@ static bool StationHandleBigTick(BaseStation *st)
 		return false;
 	}
 
+	if (Station::IsExpected(st)) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			ClrBit(Station::From(st)->goods[i].acceptance_pickup, GoodsEntry::GES_ACCEPTED_BIGTICK);
+		}
+	}
+
+
 	if ((st->facilities & FACIL_WAYPOINT) == 0) UpdateStationAcceptance(Station::From(st), true);
 
 	return true;
@@ -3171,9 +3178,18 @@ void OnTick_Station()
 	}
 }
 
+/** Monthly loop for stations. */
 void StationMonthlyLoop()
 {
-	/* not used */
+	Station *st;
+
+	FOR_ALL_STATIONS(st) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			GoodsEntry *ge = &st->goods[i];
+			SB(ge->acceptance_pickup, GoodsEntry::GES_LAST_MONTH, 1, GB(ge->acceptance_pickup, GoodsEntry::GES_CURRENT_MONTH, 1));
+			ClrBit(ge->acceptance_pickup, GoodsEntry::GES_CURRENT_MONTH);
+		}
+	}
 }
 
 
