@@ -1180,7 +1180,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			payment->SetCargo(v->cargo_type);
 
-			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.GetUnloadType() & OUFB_TRANSFER)) {
+			if (HasBit(ge->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE) && !(u->current_order.GetUnloadType() & OUFB_TRANSFER)) {
 				/* The cargo has reached its final destination, the packets may now be destroyed */
 				remaining = v->cargo.MoveTo<StationCargoList>(NULL, amount_unloaded, VehicleCargoList::MTA_FINAL_DELIVERY, payment, last_visited);
 
@@ -1195,9 +1195,9 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			 * accept cargo that was loaded at the same station. */
 			if ((u->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) && (!accepted || v->cargo.Count() == cargo_count)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded, u->current_order.GetUnloadType() & OUFB_TRANSFER ? VehicleCargoList::MTA_TRANSFER : VehicleCargoList::MTA_UNLOAD, payment);
-				if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) {
+				if (!HasBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP)) {
 					InvalidateWindowData(WC_STATION_LIST, last_visited);
-					SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
+					SetBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP);
 				}
 
 				dirty_vehicle = dirty_station = true;

@@ -381,7 +381,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 			uint32 value = 0;
 
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (HasBit(this->goods[cargo_type].acceptance_pickup, GoodsEntry::PICKUP)) SetBit(value, cargo_type);
+				if (HasBit(this->goods[cargo_type].acceptance_pickup, GoodsEntry::GES_PICKUP)) SetBit(value, cargo_type);
 			}
 			return value;
 		}
@@ -407,7 +407,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 			case 0x62: return ge->rating;
 			case 0x63: return ge->cargo.DaysInTransit();
 			case 0x64: return ge->last_speed | (ge->last_age << 8);
-			case 0x65: return GB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1) << 3;
+			case 0x65: return GB(ge->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
 		}
 	}
 
@@ -416,7 +416,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
 			case 0: return g->cargo.Count();
-			case 1: return GB(min(g->cargo.Count(), 4095), 0, 4) | (GB(g->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1) << 7);
+			case 1: return GB(min(g->cargo.Count(), 4095), 0, 4) | (GB(g->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
 			case 2: return g->days_since_pickup;
 			case 3: return g->rating;
 			case 4: return g->cargo.Source();

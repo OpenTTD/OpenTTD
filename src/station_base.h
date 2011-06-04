@@ -24,9 +24,9 @@ extern StationPool _station_pool;
 static const byte INITIAL_STATION_RATING = 175;
 
 struct GoodsEntry {
-	enum AcceptancePickup {
-		ACCEPTANCE,
-		PICKUP
+	enum GoodsEntryStatus {
+		GES_ACCEPTANCE,
+		GES_PICKUP,
 	};
 
 	GoodsEntry() :

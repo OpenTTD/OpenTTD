@@ -238,7 +238,7 @@ protected:
 				if (this->facilities & st->facilities) { // only stations with selected facilities
 					int num_waiting_cargo = 0;
 					for (CargoID j = 0; j < NUM_CARGO; j++) {
-						if (HasBit(st->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) {
+						if (HasBit(st->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) {
 							num_waiting_cargo++; // count number of waiting cargo
 							if (HasBit(this->cargo_filter, j)) {
 								*this->stations.Append() = st;
@@ -306,8 +306,8 @@ protected:
 
 		CargoID j;
 		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
-			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, (*a)->goods[j].rating);
-			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, (*b)->goods[j].rating);
+			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) maxr1 = max(maxr1, (*a)->goods[j].rating);
+			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) maxr2 = max(maxr2, (*b)->goods[j].rating);
 		}
 
 		return maxr1 - maxr2;
@@ -321,8 +321,8 @@ protected:
 
 		for (CargoID j = 0; j < NUM_CARGO; j++) {
 			if (!HasBit(cargo_filter, j)) continue;
-			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) minr1 = min(minr1, (*a)->goods[j].rating);
-			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) minr2 = min(minr2, (*b)->goods[j].rating);
+			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) minr1 = min(minr1, (*a)->goods[j].rating);
+			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) minr2 = min(minr2, (*b)->goods[j].rating);
 		}
 
 		return -(minr1 - minr2);
@@ -1112,7 +1112,7 @@ struct StationViewWindow : public Window {
 
 		uint32 cargo_mask = 0;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) SetBit(cargo_mask, i);
+			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::GES_ACCEPTANCE)) SetBit(cargo_mask, i);
 		}
 		Rect s = {r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, r.right - WD_FRAMERECT_RIGHT, INT32_MAX};
 		int bottom = DrawCargoListText(cargo_mask, s, STR_STATION_VIEW_ACCEPTS_CARGO);
@@ -1135,7 +1135,7 @@ struct StationViewWindow : public Window {
 		const CargoSpec *cs;
 		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 			const GoodsEntry *ge = &st->goods[cs->Index()];
-			if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
+			if (!HasBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP)) continue;
 
 			SetDParam(0, cs->name);
 			SetDParam(2, ToPercent8(ge->rating));
