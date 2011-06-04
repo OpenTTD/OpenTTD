@@ -587,4 +587,5 @@ static void ShowBuildAirportPicker(Window *parent)
 void InitializeAirportGui()
 {
 	_selected_airport_class = APC_BEGIN;
+	_selected_airport_index = -1;
 }
