@@ -23,10 +23,14 @@ extern StationPool _station_pool;
 
 static const byte INITIAL_STATION_RATING = 175;
 
+/**
+ * Stores station stats for a single cargo.
+ */
 struct GoodsEntry {
+	/** Status of this cargo for the station. */
 	enum GoodsEntryStatus {
-		GES_ACCEPTANCE,
-		GES_PICKUP,
+		GES_ACCEPTANCE, ///< This cargo is currently being accepted by the station.
+		GES_PICKUP,     ///< This cargo has been picked up at this station at least once.
 	};
 
 	GoodsEntry() :
@@ -37,11 +41,11 @@ struct GoodsEntry {
 		last_age(255)
 	{}
 
-	byte acceptance_pickup;
-	byte days_since_pickup;
-	byte rating;
-	byte last_speed;
-	byte last_age;
+	byte acceptance_pickup; ///< Status of this cargo, see #GoodsEntryStatus.
+	byte days_since_pickup; ///< Number of days since the last pickup for this cargo (up to 255).
+	byte rating;            ///< Station rating for this cargo.
+	byte last_speed;        ///< Maximum speed of the last vehicle that picked up this cargo (up to 255).
+	byte last_age;          ///< Age in years of the last vehicle that picked up this cargo.
 	byte amount_fract;      ///< Fractional part of the amount in the cargo list
 	StationCargoList cargo; ///< The cargo packets of cargo waiting in this station
 };
