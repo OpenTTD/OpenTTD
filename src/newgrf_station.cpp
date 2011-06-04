@@ -329,7 +329,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			return GetAnimationFrame(tile);
 
 		/* Variables which use the parameter */
-		/* Variables 0x60 to 0x65 are handled separately below */
+		/* Variables 0x60 to 0x65 and 0x69 are handled separately below */
 		case 0x66: // Animation frame of nearby tile
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile);
 			return st->TileBelongsToRailStation(tile) ? GetAnimationFrame(tile) : UINT_MAX;
@@ -394,8 +394,8 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 		case 0xF7: return GB(this->airport.flags, 8, 8);
 	}
 
-	/* Handle cargo variables with parameter, 0x60 to 0x65 */
-	if (variable >= 0x60 && variable <= 0x65) {
+	/* Handle cargo variables with parameter, 0x60 to 0x65 and 0x69 */
+	if ((variable >= 0x60 && variable <= 0x65) || variable == 0x69) {
 		CargoID c = GetCargoTranslation(parameter, object->u.station.statspec->grf_prop.grffile);
 
 		if (c == CT_INVALID) return 0;
@@ -408,6 +408,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 			case 0x63: return ge->cargo.DaysInTransit();
 			case 0x64: return ge->last_speed | (ge->last_age << 8);
 			case 0x65: return GB(ge->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
+			case 0x69: return GB(ge->acceptance_pickup, GoodsEntry::GES_EVER_ACCEPTED, 4);
 		}
 	}
 
