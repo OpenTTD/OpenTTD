@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Amplasea
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvează scenariul
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Încarcă scenariu
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvează harta înălţimilor
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Încarcă harta de înălţimi
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ieşire din editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2278,6 +2279,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Încarc�
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvează scenariu
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Încarcă scenariu
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Încarcă harta înălţimilor
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvează harta înălţimilor
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click aici pentru a ajunge la directorul predefinit pentru salvări
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} liberi
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de discuri, directoare şi fişiere cu jocuri salvate
@@ -2472,7 +2474,8 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conţine multip
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire dincolo de sfârşitul pseudo-imaginii
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele imagini lipsesc din setul grafic de bază.{}Vă rugăm actualizaţi setul grafic de bază
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Resursele GRF solicitate nu sunt disponibile
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} a fost dezactiat de {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} a fost dezactivat de {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formatul de poziţionare al imaginii este invalid/necunoscut
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atenţie!
@@ -3236,7 +3239,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automat)
+STR_ORDER_IMPLICIT                                              :(Implicit)
 
 STR_ORDER_FULL_LOAD                                             :(Încărcare maximă)
 STR_ORDER_FULL_LOAD_ANY                                         :(Încărcare orice produs)

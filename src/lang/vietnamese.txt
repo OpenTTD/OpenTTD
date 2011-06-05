@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt �
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu màn chơi kịch bản
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nạp màn chơi kịch bản
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Lưu bản đồ địa hình
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Tải bản đồ địa hình
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoat khỏi trình biên tập
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2278,6 +2279,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nạp V�
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lưu màn chơi kịch bản
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nạp màn chơi kịch bản
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nạp bản đồ địa hình
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Lưu bản đồ địa hình
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Nháy vào đây để tới thư mục mặc định hiện thời để nạp/lưu
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} còn trống
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Danh mục các ổ đĩa, thư mục và file lưu ván chơi (saved-game)
@@ -2473,6 +2475,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc tới đ
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy cập nhật gói đồ họa lên phiên bản mới.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Tài nguyên GRF được yêu cầu không có sẵn
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} bị tắt bởi {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Khuôn dạng sprite không hợp lệ/không hiểu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú Ý!
