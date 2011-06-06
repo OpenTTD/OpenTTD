@@ -2282,7 +2282,7 @@ STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laad Hoo
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Hoogtekaart Opslaan
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar-/laadmap te gaan
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vrij
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lijst van schijven, mappen, en opgeslagen spellen
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lijst van schijven, mappen en opgeslagen spellen
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Huidige gekozen naam voor opgeslagen spel
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Verwijderen
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Verwijder het momenteel geselecteerde opgeslagen spel
@@ -2373,7 +2373,7 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Actieve 
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inactieve NewGRF bestanden
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Kies voorkeur:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter tekst:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laad de geselecteerd voorkeursinstelling
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laad de geselecteerde voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Bewaar voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Bewaar de huidige lijst als voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Kies een naam voor deze voorkeursinstelling
@@ -2385,9 +2385,9 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Bestande
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Werk de lijst van beschikbare NewGRF-bestanden bij
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Verwijderen
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Verwijder het geselecteerde NewGRF-bestand van de lijst
-STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naar Boven
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naar boven
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar boven in de lijst
-STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar Beneden
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar beneden
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden in de lijst
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd. Klik op een bestand om de parameters te wijzigen
 
@@ -2410,7 +2410,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramete
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Geen informatie beschikbaar
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Bestand niet gevonden
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Uitgeschakeld
-STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Niet compatible met deze versie van OpenTTD
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Niet compatibel met deze versie van OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-parameters ingeven
 
@@ -2439,7 +2439,7 @@ STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Afbeeldi
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende afbeelding
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ga verder maar volgende normale afbeelding, sla alle pseudo/herkleur/lettertype afbeeldingen over en ga naar het begin bij het einde
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ga naar afbeelding
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ga naar de opgegeven afbeelding. Wanneer dit niet een normale afbeelding is, ga verder naar de volgende normale afbeelding
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ga naar de opgegeven afbeelding. Wanneer dit geen normale afbeelding is, ga verder naar de volgende normale afbeelding
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige afbeelding
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ga naar vorige normale afbeelding, sla alle pseudo/herkleur/lettertype afbeeldingen over en ga naar het einde bij het begin
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige afbeelding. De uitlijning wordt genegeerd bij het weergeven van de afbeelding
@@ -2492,7 +2492,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Het spel
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Geen
 STR_NEWGRF_LIST_ALL_FOUND                                       :Alle bestanden aanwezig
-STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Compatibel bestanden gevonden
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Compatibele bestanden gevonden
 STR_NEWGRF_LIST_MISSING                                         :{RED}Ontbrekende bestanden
 
 # NewGRF 'it's broken' warnings
@@ -2503,13 +2503,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' Een eindeloze loop gevonden in de productie-callback
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' heeft een eindeloze loop veroorzaakt in de productie-callback
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vracht>
-STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige treinmodel>
+STR_NEWGRF_INVALID_ENGINE                                       :<ongeldig treinmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
 
 # Sign list window
@@ -2561,7 +2561,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN}'s
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Reputatie van transportbedrijven:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Mogelijkheden:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lijst met dingen die mogelijk zijn in dit dorp - klik op een item voor meer details
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lijst met dingen die mogelijk zijn in deze gemeente - klik op een item voor meer details
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Doe het
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Voer de actie uit die in de bovenstaande lijst is geselecteerd
 
@@ -2580,8 +2580,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin e
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Betaal een vernieuwing van het wegennetwerk. Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bouw een standbeeld ter ere van jouw bedrijf.{}Kosten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Betaal de bouw van nieuwe commerciële gebouwen in de stad.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en vracht aleeen toe om jouw stations te gebruiken.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen, met het gevaar van een strenge sanctie, wanneer je gepakt wordt.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en vracht alleen toe om jouw stations te gebruiken.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen, met het gevaar van een strenge sanctie wanneer je gepakt wordt.{}Kosten: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
@@ -2595,7 +2595,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+klik opent een nieuw venster op de locatie van het station
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Houd Ctrl ingedrukt om meer items te kiezen
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stations
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
@@ -2716,7 +2716,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Bedrijfsnaam
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Naam van directeur
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We zoeken voor een transportbedrijf dat ons bedrijf over kan nemen.{}{}Wil je {COMPANY} kopen voor {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We zoeken een transportbedrijf dat ons bedrijf over kan nemen.{}{}Wil je {COMPANY} kopen voor {CURRENCY}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrielijst
@@ -2845,7 +2845,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koop sch
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koop vliegtuig
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Koop het geselecteerde railvoertuig. Shift+Klik toont verwachte kosten zonder te kopen
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koop het geselecteerde wegvoertuig
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koop het geselecteerde wegvoertuig. Shift+Klik toont verwachte kosten zonder te kopen
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koop het geselecteerde schip. Shift+Klik toont verwachte kosten zonder te kopen
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koop het geselecteerde vliegtuig. Shift+Klik toont verwachte kosten zonder te kopen
 
@@ -2962,14 +2962,14 @@ STR_REPLACE_VEHICLE_SHIP                                        :Schip
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Vliegtuig
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Kies het type locomotief om te vervangen
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies een nieuw type locomotief die je wil gebruiken om de links geselecteerde type locomotief te vervangen
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies een nieuw type locomotief die je wilt gebruiken om de links geselecteerde type locomotief te vervangen
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het vervangen
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief wil vervangen met die aan de rechterkant
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief wilt vervangen met die aan de rechterkant
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Niet aan het vervangen
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Geen voertuig geselecteerd
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het vervangen
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief niet wil vervangen
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief niet wilt vervangen
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel tussen locomotief- en wagonvervangvensters
@@ -2977,7 +2977,7 @@ STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt selecteren
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief vervangen wordt
 STR_REPLACE_RAIL_VEHICLES                                       :Railvoertuigen
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrische railvoertuigen
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorailvoertuigen
@@ -2992,7 +2992,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de trein. Ctrl+klik volgt de trein in het hoofdscherm
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centreer het scherm op de locatie van het wegvoertuig. Ctrl+klik volgt het voertuig in het hoofdscherm
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centreer het scherm op de locatie van het schip. Ctrl+klik volgt het schip op het hoofdscherm
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer het scherm op de locatie van het vliegtuig. Ctrl+klik volgt het vliegtuid op het hoofdscherm
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer het scherm op de locatie van het vliegtuig. Ctrl+klik volgt het vliegtuig op het hoofdscherm
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur wegvoertuig naar garage. Ctrl+klik voor alleen onderhoud
@@ -3004,7 +3004,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hierdoor
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van dit schip. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hierdoor wordt een kopie gekocht van dit vliegtuig. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein verder te rijden zonder te wachten op een groen signaal
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein verder te rijden zonder te wachten op een groen sein
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bouw trein om voor een ander goederentype
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Bouw wegvoertuig om voor een ander goederentype
@@ -3015,7 +3015,7 @@ STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Keer tre
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Dwing het wegvoertuig om om te draaien
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon orders van trein. Ctrl+klik toont het tijdschema van de trein
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon orders van wegvoertuig. Ctrl+klik toont tijdschma van het voertuig
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon orders van wegvoertuig. Ctrl+klik toont tijdschema van het voertuig
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Toon orders van schip. Ctrl+klik toont tijdschema van het schip
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Toon orders van vliegtuig. Ctrl+klik toont het tijdschema van het vliegtuig
 
@@ -3070,7 +3070,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht:
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY} {BLACK}Max. T.K.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY} (vorig jaar: {CURRENCY})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Aantal keren motorpech sinds vorig jaar: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Aantal keren motorpech sinds laatste onderhoud: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebouwd: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capaciteit: {LTBLUE}Geen
@@ -3080,10 +3080,10 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacite
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Geldoverdracht: {LTBLUE}{CURRENCY}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval tussen onderhoud: {LTBLUE}{COMMA}dagen{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Service interval: {LTBLUE}{COMMA}%{BLACK}   Laatste service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot interval tussen onderhoud met 10. Ctrl+klik verhoogd de interval met 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein interval tussen onderhoud met 10. Ctrl+klik verlaagt de interval met 5
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Onderhoudsinterval: {LTBLUE}{COMMA}dagen{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Onderhoudsinterval: {LTBLUE}{COMMA}%{BLACK}   Laatste onderhoud: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot onderhoudsinterval met 10. Ctrl+klik verhoogt interval met 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein onderhoudsinterval met 10. Ctrl+klik verlaagt interval met 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Hernoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Hernoem wegvoertuig
@@ -3117,8 +3117,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombouwen)
 STR_REFIT_TITLE                                                 :{GOLD}Selecteer goederentype om te vervoeren:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kosten van ombouwen: {GOLD}{CURRENCY}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Kies het voertuig om om te bouwen. Slepen met de muis geeft de mogelijkheid om meerdere voertuigen te selecteren. Klikken op een lege ruimte selecteerd het hele voertuig. Ctrl+klik selecteerd a voertuig en de volgende keten
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Kies het voertuig om om te bouwen. Slepen met de muis geeft de mogelijkheid om meerdere voertuigen te selecteren. Klikken op een lege ruimte selecteert het hele voertuig. Ctrl+klik selecteert een voertuig en de volgende keten
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies goederentype dat deze trein moet vervoeren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecteer goederentype dat dit wegvoertuig moet vervoeren
@@ -3153,19 +3153,19 @@ STR_ORDER_GO_TO                                                 :Ga naar
 STR_ORDER_GO_NON_STOP_TO                                        :Ga non-stop naar
 STR_ORDER_GO_VIA                                                :Ga via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ga non-stop via
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Verander het stop-gedrag van de geselecteerde order
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Verander het stopgedrag van de geselecteerde order
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Alle vracht volladen
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laden indien beschikbaar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Volledig laden
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Eén soort vracht volledig laden
 STR_ORDER_DROP_NO_LOADING                                       :Niet laden
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Verander het laad-gedrag van de geselecteerde order
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Verander het laadgedrag van de geselecteerde order
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles lossen
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Lossen indien geaccepteerd
 STR_ORDER_DROP_UNLOAD                                           :Alles lossen
-STR_ORDER_DROP_TRANSFER                                         :Transfer
+STR_ORDER_DROP_TRANSFER                                         :Overladen
 STR_ORDER_DROP_NO_UNLOADING                                     :Niet lossen
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Verander het losgedrag van de geselecteerde order
 
@@ -3206,7 +3206,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Verwijde
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Verwijder de geselecteerde order
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Verwijder alle orders
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop met delen
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop met delen van de order lijst. Ctrl+klik verwijderd verder ook alle order van dit voertuig
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop met delen van de order lijst. Ctrl+klik verwijdert verder ook alle orders van dit voertuig
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ga naar
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
@@ -3487,7 +3487,7 @@ STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maxi
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan geen geld meer lenen...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om af te betalen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} benodigd
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan geen lening afbetalen
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan geen lening afbetalen...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan geen geld weggeven dat van de bank geleend is...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan bedrijf niet kopen...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan bedrijfshoofdkantoor niet bouwen...
@@ -3536,8 +3536,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan hier
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Voegt meer dan één bestaand (laad)station samen
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station te omvangrijk
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Teveel (laad)stations
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Teveel treinstationsdelen
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel (laad)stations
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenlaadstations
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te dicht bij een ander station
@@ -3563,7 +3563,7 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...er is
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Verwijder eerst treinstation
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Verwijder eerst bushalte
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Verwijder eerst vrachtwagenlaadhal
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Verwijder eerst passagiers tram station
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Verwijder eerst passagierstramstation
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Verwijder eerst vrachttramhalte
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Verwijder eerst haven
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Verwijder eerst vliegveld
