@@ -321,3 +321,16 @@ Unreadable characters for non-latin locales [FS#4607]
 	blitter has been selected, e.g. blitter = "32bpp-anim", as with the
 	8 bits blitter there are not enough colours to properly perform the
 	anti-aliasing.
+
+Train does not crash with itself [FS#4635]:
+	When a train drives in a circle the front engine passes through
+	wagons of the same train without crashing. This is intentional.
+	Signals are only aware of tracks, they do not consider the train
+	length and whether there would be enough room for a train in some
+	circle it might drive on. Also the path a train might take is not
+	necessarily known when passing a signal.
+	Checking all circumstances would take a lot of additional computational
+	power for signals, which is not considered worth the effort, as
+	it does not add anything to gameplay.
+	Nevertheless trains shall not crash in normal operation, so making
+	a train not crash with itself is the best solution for everyone.
