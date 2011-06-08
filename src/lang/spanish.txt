@@ -2401,7 +2401,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Encontra
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comprobar si el contenido que falta puede ser encontrado en línea
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Fichero: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. versión compatible: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
