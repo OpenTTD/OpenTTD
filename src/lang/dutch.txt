@@ -2062,7 +2062,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Geluidso
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinvorming
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land. Slepen verlaagt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl selecteert het gebied diagonaal. Shift maakt een inschatting van de kosten
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land. Slepen verhoogt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl selecteert het gebied diagonaal. Shift maakt een inschatting van de kosten
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land naar de hoogte van de eerst geselecteerde hoek. Ctrl selecteerd een diagonaal gebied. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land naar de hoogte van de eerst geselecteerde hoek. Ctrl selecteert een diagonaal gebied. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
 
 # Object construction window
@@ -2100,7 +2100,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadsontwikkeling
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuwe stad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuwe stad. Shift+Klik toont aleen de verwachte kosten
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuwe stad. Shift+Klik toont alleen de verwachte kosten
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurige stad
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Sticht stad op willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden

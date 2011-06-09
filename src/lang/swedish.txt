@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placera 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Spara scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Öppna scenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Spara höjdkarta
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Ladda höjdkarta
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avsluta editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1223,6 +1224,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lång (31st Dec
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palett
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automatiskt vid start av nytt spel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Tillåt när spelet är pausat: {ORANGE}{STRING}
@@ -2275,6 +2278,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Ladda sp
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Spara scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Öppna scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Läs höjdkarta
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Spara Höjdkarta
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klicka här för att gå till standardkatalogen för spara/ladda.
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledigt
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listar enheter, kataloger och sparade spel
@@ -2468,7 +2472,9 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutetet av pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF resurser är ej tillgängliga
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} har inaktiverats av {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ogiltig/okänd sprite layout format
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
@@ -3232,7 +3238,7 @@ STR_ORDER_STOP_ORDER                                            :(Stanna)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatisk)
+STR_ORDER_IMPLICIT                                              :(Underförstådd)
 
 STR_ORDER_FULL_LOAD                                             :(Full last)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full last någon godstyp)

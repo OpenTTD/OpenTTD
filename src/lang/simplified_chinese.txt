@@ -1558,7 +1558,7 @@ STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}语　�
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}场景类型: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地图尺寸: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}服务器版本: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}服务器地址: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}该服IP: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}开始日期: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}当前日期: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}有密码保护！

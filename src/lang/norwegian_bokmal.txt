@@ -340,6 +340,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasser 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lagre scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Last inn scenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Lagre høydekart
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Last inn høydekart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avslutt redigeringsprogram
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -666,6 +667,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Vis indu
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Vis transportruter på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Vis vegetasjon på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Vis landeiere på kartet
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikk på et firma for å slå på visning av firmaets eiendom. Ctrl+Klikk deaktiverer visning avalle firmaene unntatt det valgte. Ctrl+Klikk på firmaet igjen for å slå på visning av alle firmaene
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Veier
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Jernbaner
@@ -1027,6 +1029,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Bystyre
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ingen
+STR_FUNDING_ONLY                                                :Kun finansiering
+STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Veldig lavt
 STR_NUM_LOW                                                     :Lavt
 STR_NUM_NORMAL                                                  :Normalt
@@ -1104,6 +1108,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillat landskapsendring under bygninger, spor, osv.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat fjerning av flere veier, broer osv. eid av byene: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal lengde til tog: {ORANGE}{STRING} ruter{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde med lokomotivrøyk/gnister: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kjøretøyers akselerasjonstype: {ORANGE}{STRING}
@@ -1115,6 +1120,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Bruk fo
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last kjøretøy gradvis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever varer til en stasjon kun hvis det er etterspørsel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Msksimal bru lengde: {ORANGE}{STRING} rute{P 0:1 "" r}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimal tunnel lengde: {ORANGE}{STRING} rute{P 0:1 "" er}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for primærindustri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre næringer
@@ -1132,6 +1139,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Kjøret
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillat kjøp av eksklusive transportrettigheter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Tillat finansiering av lokal veikonstruksjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillat pengeoverføring til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flyhastighetsfaktor: {ORANGE}1 / {STRING}
@@ -1237,6 +1245,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vis res
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}La byggingsverktøy være aktive etter bruk: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupper utgifter i firmaets finansvindu: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Deaktiver infrastruktur bygging, når ingen passende kjøretøy er tilgjengelige: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per selskap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks antall kjøretøy per selskap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks antall luftfartøy per selskap: {ORANGE}{STRING}
@@ -1341,6 +1350,7 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anb
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Veifinner for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Veifinner for kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Veifinner for skip: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatisk reversering ved signaler: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Endre verdi
 
@@ -2056,6 +2066,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp la
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektvalg
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Velg objekt å bygge. Shift slår på/av beregnet kostnad.
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Velg hvilken type av objektet du vil bygge
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forhåndsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} ruter
 
@@ -2266,6 +2277,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Last inn
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lagre scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Last inn scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last inn høydekart
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Lagre høydekart
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å komme til standardmappen for lagring og innlasting
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledig
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over disker, mapper og lagrede spill
@@ -2396,6 +2408,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametr
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ingen informasjon tilgjengelig
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchende fil ble ikke funnet
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivert
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ukompatibelt med denne versjonen av OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv inn NewGRF-parametre
 
@@ -3236,6 +3249,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og fo
 STR_ORDER_NO_UNLOAD                                             :(Ingen lossing og last på varer)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ingen lossing og vent på full last)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ingen lossing og vent på første fulle last)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ingen av og pålasting)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[nær slutten]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
@@ -3649,6 +3663,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Må rive
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}En annen tunnel er i veien
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnelen ville munne ut utenfor kartkanten
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikke grave ut land til den andre tunnelinngangen
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel for lang
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... for mange objekter
@@ -4228,6 +4243,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
