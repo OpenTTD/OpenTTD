@@ -36,6 +36,7 @@ static const int STATION_ACCEPTANCE_TICKS = 250; ///< cycle duration for updatin
 static const int CARGO_AGING_TICKS        = 185; ///< cycle duration for aging cargo
 static const int INDUSTRY_PRODUCE_TICKS   = 256; ///< cycle duration for industry production
 static const int TOWN_GROWTH_TICKS        = 70;  ///< cycle duration for towns trying to grow. (this originates from the size of the town array in TTD
+static const int INDUSTRY_CUT_TREE_TICKS  = INDUSTRY_PRODUCE_TICKS * 2; ///< cycle duration for lumber mill's extra action
 
 
 /*

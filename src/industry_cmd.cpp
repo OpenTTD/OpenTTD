@@ -1086,7 +1086,7 @@ static void ProduceIndustryGoods(Industry *i)
 			if (plant) PlantRandomFarmField(i);
 		}
 		if ((indbehav & INDUSTRYBEH_CUT_TREES) != 0) {
-			bool cut = ((i->counter & 0x1FF) == 0);
+			bool cut = ((i->counter % INDUSTRY_CUT_TREE_TICKS) == 0);
 			if (HasBit(indsp->callback_mask, CBM_IND_SPECIAL_EFFECT)) {
 				cut = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, 0, 1, i, i->type, i->location.tile) != 0);
 			}
