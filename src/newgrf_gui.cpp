@@ -344,13 +344,13 @@ struct NewGRFParametersWindow : public Window {
 
 						this->clicked_button = num;
 						this->timeout = 5;
-						this->SetDirty();
 					}
 				} else if (par_info->type == PTYPE_UINT_ENUM && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
 					SetDParam(0, this->grf_config->param[num]);
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
+				this->SetDirty();
 				break;
 			}
 

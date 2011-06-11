@@ -411,8 +411,6 @@ struct AISettingsWindow : public Window {
 						this->timeout = 5;
 
 						this->CheckDifficultyLevel();
-
-						this->SetDirty();
 					}
 				} else if (!bool_item) {
 					/* Display a query box so users can enter a custom value. */
@@ -420,6 +418,7 @@ struct AISettingsWindow : public Window {
 					SetDParam(0, this->ai_config->GetSetting(config_item.name));
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
+				this->SetDirty();
 				break;
 			}
 
