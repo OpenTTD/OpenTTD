@@ -2191,6 +2191,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		st->airport.layout = layout;
 		st->airport.flags = 0;
 		st->airport.rotation = rotation;
+		st->airport.psa.ResetToZero();
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
@@ -2287,6 +2288,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 		st->airport.Clear();
 		st->facilities &= ~FACIL_AIRPORT;
+		st->airport.psa.ResetToZero();
 
 		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_PLANES);
 

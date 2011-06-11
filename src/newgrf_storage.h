@@ -62,6 +62,12 @@ struct PersistentStorageArray : BaseStorageArray {
 		free(this->prev_storage);
 	}
 
+	/** Resets all values to zero. */
+	void ResetToZero()
+	{
+		memset(this->storage, 0, sizeof(this->storage));
+	}
+
 	/**
 	 * Stores some value at a given position.
 	 * If there is no backup of the data that backup is made and then
