@@ -17,6 +17,14 @@
 static std::set<BaseStorageArray*> _changed_storage_arrays;
 
 /**
+ * Remove references to use.
+ */
+BaseStorageArray::~BaseStorageArray()
+{
+	_changed_storage_arrays.erase(this);
+}
+
+/**
  * Add the changed storage array to the list of changed arrays.
  * This is done so we only have to revert/save the changed
  * arrays, which saves quite a few clears, etc. after callbacks.
