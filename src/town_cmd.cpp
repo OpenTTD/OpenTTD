@@ -95,6 +95,9 @@ Town::~Town()
 		}
 	}
 
+	/* Clear the persistent storage list. */
+	this->psa_list.clear();
+
 	DeleteSubsidyWith(ST_TOWN, this->index);
 	DeleteNewGRFInspectWindow(GSF_FAKE_TOWNS, this->index);
 	CargoPacket::InvalidateAllFrom(ST_TOWN, this->index);

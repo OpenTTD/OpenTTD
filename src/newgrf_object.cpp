@@ -224,7 +224,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 
 	if (object->scope == VSG_SCOPE_PARENT) {
 		/* Pass the request on to the town of the object */
-		return TownGetVariable(variable, parameter, available, (o == NULL) ? ClosestTownFromTile(tile, UINT_MAX) : o->town);
+		return TownGetVariable(variable, parameter, available, (o == NULL) ? ClosestTownFromTile(tile, UINT_MAX) : o->town, object->grffile);
 	}
 
 	/* We get the town from the object, or we calculate the closest
@@ -359,6 +359,22 @@ static const SpriteGroup *GetObjectSpriteGroup(const ObjectSpec *spec, const Obj
 }
 
 /**
+ * Store a value into the persistent storage of the object's parent.
+ * @param object Object that we want to query.
+ * @param pos Position in the persistent storage to use.
+ * @param value Value to store.
+ */
+void ObjectStorePSA(ResolverObject *object, uint pos, int32 value)
+{
+	/* Objects have no persistent storage. */
+	Object *o = object->u.object.o;
+	if (object->scope != VSG_SCOPE_PARENT || o == NULL) return;
+
+	/* Pass the request on to the town of the object */
+	TownStorePSA(o->town, object->grffile, pos, value);
+}
+
+/**
  * Returns a resolver object to be used with feature 0F spritegroups.
  */
 static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view = 0)
@@ -368,6 +384,7 @@ static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, Objec
 	res->SetTriggers   = ObjectSetTriggers;
 	res->GetVariable   = ObjectGetVariable;
 	res->ResolveReal   = ObjectResolveReal;
+	res->StorePSA      = ObjectStorePSA;
 
 	res->u.object.o    = o;
 	res->u.object.tile = tile;

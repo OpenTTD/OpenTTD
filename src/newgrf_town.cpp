@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "town.h"
+#include "newgrf.h"
+#include "newgrf_spritegroup.h"
 
 /**
  * This function implements the town variables that newGRF defines.
@@ -19,9 +21,10 @@
  * @param parameter unused
  * @param available will return false if ever the variable asked for does not exist
  * @param t is of course the town we are inquiring
+ * @param caller_grffile #GRFFile of the entity asking for a town variable.
  * @return the value stored in the corresponding variable
  */
-uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t)
+uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t, const GRFFile *caller_grffile)
 {
 	switch (variable) {
 		/* Larger towns */
@@ -32,6 +35,23 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t)
 
 		/* Town index */
 		case 0x41: return t->index;
+
+		/* Get a variable from the persistent storage */
+		case 0x7C: {
+			/* Check the persistent storage for the GrfID stored in register 100h. */
+			uint32 grfid = GetRegister(0x100);
+			if (grfid == 0xFFFFFFFF) {
+				if (caller_grffile == NULL) return 0;
+				grfid = caller_grffile->grfid;
+			}
+
+			std::list<PersistentStorage *>::iterator iter;
+			for (iter = t->psa_list.begin(); iter != t->psa_list.end(); iter++) {
+				if ((*iter)->grfid == grfid) return (*iter)->GetValue(parameter);
+			}
+
+			return 0;
+		}
 
 		/* Town properties */
 		case 0x80: return t->xy;
@@ -105,4 +125,40 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t)
 
 	*available = false;
 	return UINT_MAX;
+}
+
+/**
+ * Store a value in town persistent storage.
+ * @param t Town owning the persistent storage.
+ * @param caller_grffile #GRFFile of the entity that wants to use the storage.
+ * @param pos Position to write at.
+ * @param value Value to write.
+ * @return the value stored in the corresponding variable
+ */
+void TownStorePSA(Town *t, const GRFFile *caller_grffile, uint pos, int32 value)
+{
+	assert(t != NULL);
+	/* We can't store anything if the caller has no #GRFFile. */
+	if (caller_grffile == NULL) return;
+
+	/* Check the persistent storage for the GrfID stored in register 100h. */
+	uint32 grfid = GetRegister(0x100);
+
+	/* A NewGRF can only write in the persistent storage associated to its own GRFID. */
+	if (grfid == 0xFFFFFFFF) grfid = caller_grffile->grfid;
+	if (grfid != caller_grffile->grfid) return;
+
+	/* Check if the storage exists. */
+	std::list<PersistentStorage *>::iterator iter;
+	for (iter = t->psa_list.begin(); iter != t->psa_list.end(); iter++) {
+		if ((*iter)->grfid == grfid) {
+			(*iter)->StoreValue(pos, value);
+			return;
+		}
+	}
+
+	/* Create a new storage. */
+	PersistentStorage *psa = new PersistentStorage(grfid);
+	psa->StoreValue(pos, value);
+	t->psa_list.push_back(psa);
 }

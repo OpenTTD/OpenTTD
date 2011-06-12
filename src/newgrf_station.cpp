@@ -275,7 +275,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			return UINT_MAX;
 		}
 
-		return TownGetVariable(variable, parameter, available, t);
+		return TownGetVariable(variable, parameter, available, t, object->grffile);
 	}
 
 	if (st == NULL) {
@@ -517,6 +517,21 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 }
 
 
+/**
+ * Store a value into the persistent storage of the object's parent.
+ * @param object Object that we want to query.
+ * @param pos Position in the persistent storage to use.
+ * @param value Value to store.
+ */
+void StationStorePSA(ResolverObject *object, uint pos, int32 value)
+{
+	/* Stations have no persistent storage. */
+	BaseStation *st = object->u.station.st;
+	if (object->scope != VSG_SCOPE_PARENT || st == NULL) return;
+
+	TownStorePSA(st->town, object->grffile, pos, value);
+}
+
 static void NewStationResolver(ResolverObject *res, const StationSpec *statspec, BaseStation *st, TileIndex tile)
 {
 	res->GetRandomBits = StationGetRandomBits;
@@ -524,6 +539,7 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->SetTriggers   = StationSetTriggers;
 	res->GetVariable   = StationGetVariable;
 	res->ResolveReal   = StationResolveReal;
+	res->StorePSA      = StationStorePSA;
 
 	res->u.station.st       = st;
 	res->u.station.statspec = statspec;

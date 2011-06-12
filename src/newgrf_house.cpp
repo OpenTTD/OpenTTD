@@ -259,7 +259,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 	HouseID house_id = object->u.house.house_id;
 
 	if (object->scope == VSG_SCOPE_PARENT) {
-		return TownGetVariable(variable, parameter, available, town);
+		return TownGetVariable(variable, parameter, available, town, object->grffile);
 	}
 
 	switch (variable) {
@@ -361,6 +361,21 @@ static const SpriteGroup *HouseResolveReal(const ResolverObject *object, const R
 }
 
 /**
+ * Store a value into the persistent storage of the object's parent.
+ * @param object Object that we want to query.
+ * @param pos Position in the persistent storage to use.
+ * @param value Value to store.
+ */
+void HouseStorePSA(ResolverObject *object, uint pos, int32 value)
+{
+	/* Houses have no persistent storage. */
+	if (object->scope != VSG_SCOPE_PARENT || object->u.house.not_yet_constructed) return;
+
+	/* Pass the request on to the town of the house */
+	TownStorePSA(object->u.house.town, object->grffile, pos, value);
+}
+
+/**
  * NewHouseResolver():
  *
  * Returns a resolver object to be used with feature 07 spritegroups.
@@ -372,6 +387,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->SetTriggers   = HouseSetTriggers;
 	res->GetVariable   = HouseGetVariable;
 	res->ResolveReal   = HouseResolveReal;
+	res->StorePSA      = HouseStorePSA;
 
 	res->u.house.tile     = tile;
 	res->u.house.town     = town;

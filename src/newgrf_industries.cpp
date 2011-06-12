@@ -191,7 +191,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 			return UINT_MAX;
 		}
 
-		return TownGetVariable(variable, parameter, available, t);
+		return TownGetVariable(variable, parameter, available, t, object->grffile);
 	}
 
 	if (industry == NULL) {
@@ -385,7 +385,13 @@ static void IndustrySetTriggers(const ResolverObject *object, int triggers)
 void IndustryStorePSA(ResolverObject *object, uint pos, int32 value)
 {
 	Industry *ind = object->u.industry.ind;
-	if (object->scope != VSG_SCOPE_SELF || ind->index == INVALID_INDUSTRY) return;
+	if (ind->index == INVALID_INDUSTRY) return;
+
+	if (object->scope != VSG_SCOPE_SELF) {
+		/* Pass the request on to the town of the industry. */
+		TownStorePSA(ind->town, object->grffile, pos, value);
+		return;
+	}
 
 	if (ind->psa == NULL) {
 		/* There is no need to create a storage if the value is zero. */
@@ -459,7 +465,7 @@ uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, 
 	TileIndex tile = object->u.industry.tile;
 
 	if (object->scope == VSG_SCOPE_PARENT) {
-		return TownGetVariable(variable, parameter, available, industry->town);
+		return TownGetVariable(variable, parameter, available, industry->town, object->grffile);
 	}
 
 	switch (variable) {

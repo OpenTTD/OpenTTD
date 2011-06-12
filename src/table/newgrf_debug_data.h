@@ -433,7 +433,7 @@ class NIHTown : public NIHelper {
 	const void *GetInstance(uint index)const             { return Town::Get(index); }
 	const void *GetSpec(uint index) const                { return NULL; }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_TOWN_NAME, index); }
-	uint Resolve(uint index, uint var, uint param, bool *avail) const { return TownGetVariable(var, param, avail, Town::Get(index)); }
+	uint Resolve(uint index, uint var, uint param, bool *avail) const { return TownGetVariable(var, param, avail, Town::Get(index), NULL); }
 };
 
 static const NIFeature _nif_town = {
