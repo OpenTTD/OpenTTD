@@ -142,6 +142,16 @@ uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte su
 }
 
 /**
+ * Gives the GRFID of the file the entity belongs to.
+ * @param entity_id ID of the entity being queried.
+ * @return GRFID.
+ */
+uint16 OverrideManagerBase::GetGRFID(uint16 entity_id) const
+{
+	return mapping_ID[entity_id].grfid;
+}
+
+/**
  * Gives the substitute of the entity, as specified by the grf file
  * @param entity_id of the entity being queried
  * @return mapped id

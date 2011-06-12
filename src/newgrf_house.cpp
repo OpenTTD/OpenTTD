@@ -344,7 +344,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 			if (house_id < NEW_HOUSE_OFFSET) return 0;
 			/* Checking the grffile information via HouseSpec doesn't work
 			 * in case the newgrf was removed. */
-			return _house_mngr.mapping_ID[house_id].grfid;
+			return _house_mngr.GetGRFID(house_id);
 		}
 	}
 
