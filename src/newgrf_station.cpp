@@ -517,7 +517,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 }
 
 
-static void NewStationResolver(ResolverObject *res, const StationSpec *statspec, const BaseStation *st, TileIndex tile)
+static void NewStationResolver(ResolverObject *res, const StationSpec *statspec, BaseStation *st, TileIndex tile)
 {
 	res->GetRandomBits = StationGetRandomBits;
 	res->GetTriggers   = StationGetTriggers;
@@ -585,7 +585,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
  * @param var10 Value to put in variable 10; normally 0; 1 when resolving the groundsprite and SSF_SEPARATE_GROUND is set.
  * @return First sprite of the Action 1 spriteset ot use, minus an offset of 0x42D to accommodate for weird NewGRF specs.
  */
-SpriteID GetCustomStationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile, uint32 var10)
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32 var10)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
@@ -607,7 +607,7 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, const BaseStati
  * @param edge_info Information about northern tile edges; whether they need foundations or merge into adjacent tile's foundations.
  * @return First sprite of a set of foundation sprites for various slopes.
  */
-SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile, uint layout, uint edge_info)
+SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint layout, uint edge_info)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
