@@ -283,7 +283,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		}
 
 		/* Get a variable from the persistent storage */
-		case 0x7C: return industry->psa.Get(parameter);
+		case 0x7C: return industry->psa.GetValue(parameter);
 
 		/* Industry structure access*/
 		case 0x80: return industry->location.tile;
@@ -386,7 +386,7 @@ void IndustryStorePSA(ResolverObject *object, uint pos, int32 value)
 {
 	Industry *ind = object->u.industry.ind;
 	if (object->scope != VSG_SCOPE_SELF || ind->index == INVALID_INDUSTRY) return;
-	ind->psa.Store(pos, value);
+	ind->psa.StoreValue(pos, value);
 }
 
 static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus, IndustryType type)

@@ -149,7 +149,7 @@ uint32 AirportGetVariable(const ResolverObject *object, byte variable, byte para
 
 	switch (variable) {
 		/* Get a variable from the persistent storage */
-		case 0x7C: return st->airport.psa.Get(parameter);
+		case 0x7C: return st->airport.psa.GetValue(parameter);
 
 		case 0xF0: return st->facilities;
 		case 0xFA: return Clamp(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535);
@@ -194,7 +194,7 @@ void AirportStorePSA(ResolverObject *object, uint pos, int32 value)
 {
 	Station *st = object->u.airport.st;
 	if (object->scope != VSG_SCOPE_SELF || st == NULL) return;
-	st->airport.psa.Store(pos, value);
+	st->airport.psa.StoreValue(pos, value);
 }
 
 static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st, byte airport_id, byte layout)

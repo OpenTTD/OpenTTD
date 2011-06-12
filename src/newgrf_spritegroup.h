@@ -32,7 +32,7 @@
 static inline uint32 GetRegister(uint i)
 {
 	extern TemporaryStorageArray<int32, 0x110> _temp_store;
-	return _temp_store.Get(i);
+	return _temp_store.GetValue(i);
 }
 
 /**
@@ -43,7 +43,7 @@ static inline uint32 GetRegister(uint i)
 static inline void ClearRegister(uint i)
 {
 	extern TemporaryStorageArray<int32, 0x110> _temp_store;
-	_temp_store.Store(i, 0);
+	_temp_store.StoreValue(i, 0);
 }
 
 /* List of different sprite group types */

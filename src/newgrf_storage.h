@@ -36,7 +36,7 @@ struct BaseStorageArray
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	virtual void Store(uint pos, int32 value) = 0;
+	virtual void StoreValue(uint pos, int32 value) = 0;
 };
 
 /**
@@ -75,7 +75,7 @@ struct PersistentStorageArray : BaseStorageArray {
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void Store(uint pos, int32 value)
+	void StoreValue(uint pos, int32 value)
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return;
@@ -102,7 +102,7 @@ struct PersistentStorageArray : BaseStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE Get(uint pos) const
+	TYPE GetValue(uint pos) const
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return 0;
@@ -147,7 +147,7 @@ struct TemporaryStorageArray : BaseStorageArray {
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void Store(uint pos, int32 value)
+	void StoreValue(uint pos, int32 value)
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return;
@@ -161,7 +161,7 @@ struct TemporaryStorageArray : BaseStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE Get(uint pos) const
+	TYPE GetValue(uint pos) const
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return 0;

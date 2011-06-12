@@ -158,7 +158,7 @@ void IndustryTileStorePSA(ResolverObject *object, uint pos, int32 value)
 {
 	Industry *ind = object->u.industry.ind;
 	if (object->scope != VSG_SCOPE_PARENT || ind->index == INVALID_INDUSTRY) return;
-	ind->psa.Store(pos, value);
+	ind->psa.StoreValue(pos, value);
 }
 
 static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIndex tile, Industry *indus)

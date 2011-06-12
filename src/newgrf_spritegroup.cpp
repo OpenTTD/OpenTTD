@@ -53,7 +53,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x5F: return (object->GetRandomBits(object) << 8) | object->GetTriggers(object);
 
-		case 0x7D: return _temp_store.Get(parameter);
+		case 0x7D: return _temp_store.GetValue(parameter);
 
 		case 0x7F:
 			if (object == NULL || object->grffile == NULL) return 0;
@@ -111,7 +111,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObjec
 		case DSGA_OP_AND:  return last_value & value;
 		case DSGA_OP_OR:   return last_value | value;
 		case DSGA_OP_XOR:  return last_value ^ value;
-		case DSGA_OP_STO:  _temp_store.Store((U)value, (S)last_value); return last_value;
+		case DSGA_OP_STO:  _temp_store.StoreValue((U)value, (S)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
 		case DSGA_OP_STOP: if (object->StorePSA != NULL) object->StorePSA(object, (U)value, (S)last_value); return last_value;
 		case DSGA_OP_ROR:  return RotateRight(last_value, value);
