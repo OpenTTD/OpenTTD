@@ -180,7 +180,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 	/* Shall the variable get resolved in parent scope and are we not yet in parent scope? */
 	if (object->u.industry.gfx == INVALID_INDUSTRYTILE && object->scope == VSG_SCOPE_PARENT) {
 		/* Pass the request on to the town of the industry */
-		const Town *t;
+		Town *t;
 
 		if (industry != NULL) {
 			t = industry->town;

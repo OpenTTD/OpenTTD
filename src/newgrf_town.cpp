@@ -21,7 +21,7 @@
  * @param t is of course the town we are inquiring
  * @return the value stored in the corresponding variable
  */
-uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Town *t)
+uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t)
 {
 	switch (variable) {
 		/* Larger towns */

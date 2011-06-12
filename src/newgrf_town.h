@@ -17,6 +17,6 @@
 /* Currently there is no direct town resolver; we only need to get town
  * variable results from inside stations, house tiles and industry tiles. */
 
-uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Town *t);
+uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t);
 
 #endif /* NEWGRF_TOWN_H */

@@ -254,7 +254,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
  */
 static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
-	const Town *town = object->u.house.town;
+	Town *town = object->u.house.town;
 	TileIndex tile   = object->u.house.tile;
 	HouseID house_id = object->u.house.house_id;
 

@@ -264,7 +264,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 	if (object->scope == VSG_SCOPE_PARENT) {
 		/* Pass the request on to the town of the station */
-		const Town *t;
+		Town *t;
 
 		if (st != NULL) {
 			t = st->town;
