@@ -1271,7 +1271,7 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
  * @precond \c *t != NULL
  * @postcon \c *t points to a town on success, and \c NULL on failure.
  */
-static CommandCost FindTownForIndustry(TileIndex tile, int type, const Town **t)
+static CommandCost FindTownForIndustry(TileIndex tile, int type, Town **t)
 {
 	*t = ClosestTownFromTile(tile, UINT_MAX);
 
@@ -1540,7 +1540,7 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int t
  * @param founder Founder of the industry; OWNER_NONE in case of random construction.
  * @param initial_random_bits Random bits for the industry.
  */
-static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, const IndustryTileTable *it, byte layout, const Town *t, Owner founder, uint16 initial_random_bits)
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, const IndustryTileTable *it, byte layout, Town *t, Owner founder, uint16 initial_random_bits)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
@@ -1704,7 +1704,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	ret = CheckIfFarEnoughFromConflictingIndustry(tile, type);
 	if (ret.Failed()) return ret;
 
-	const Town *t = NULL;
+	Town *t = NULL;
 	ret = FindTownForIndustry(tile, type, &t);
 	if (ret.Failed()) return ret;
 	assert(t != NULL);

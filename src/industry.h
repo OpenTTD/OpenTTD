@@ -41,7 +41,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	typedef PersistentStorageArray<int32, 16> PersistentStorage;
 
 	TileArea location;                  ///< Location of the industry
-	const Town *town;                   ///< Nearest town
+	Town *town;                         ///< Nearest town
 	CargoID produced_cargo[2];          ///< 2 production cargo slots
 	uint16 produced_cargo_waiting[2];   ///< amount of cargo produced per cargo
 	uint16 incoming_cargo_waiting[3];   ///< incoming cargo waiting to be processed
