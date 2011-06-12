@@ -365,7 +365,7 @@ static const SpriteGroup *HouseResolveReal(const ResolverObject *object, const R
  *
  * Returns a resolver object to be used with feature 07 spritegroups.
  */
-static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex tile, const Town *town)
+static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex tile, Town *town)
 {
 	res->GetRandomBits = HouseGetRandomBits;
 	res->GetTriggers   = HouseGetTriggers;
@@ -390,7 +390,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->grffile         = (hs != NULL ? hs->grf_prop.grffile : NULL);
 }
 
-uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, const Town *town, TileIndex tile, bool not_yet_constructed, uint8 initial_random_bits)
+uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed, uint8 initial_random_bits)
 {
 	ResolverObject object;
 	const SpriteGroup *group;

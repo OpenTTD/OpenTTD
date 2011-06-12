@@ -336,7 +336,7 @@ struct ResolverObject {
 		} station;
 		struct {
 			TileIndex tile;
-			const Town *town;
+			Town *town;                    ///< Town of this house
 			HouseID house_id;
 			uint16 initial_random_bits;    ///< Random bits during construction checks
 			bool not_yet_constructed;      ///< True for construction check
