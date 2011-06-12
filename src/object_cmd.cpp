@@ -526,7 +526,7 @@ static void TileLoop_Object(TileIndex tile)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
 	if (spec->flags & OBJECT_FLAG_ANIMATION) {
-		const Object *o = Object::GetByTile(tile);
+		Object *o = Object::GetByTile(tile);
 		TriggerObjectTileAnimation(o, tile, OAT_TILELOOP, spec);
 		if (o->location.tile == tile) TriggerObjectAnimation(o, OAT_256_TICKS, spec);
 	}

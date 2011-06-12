@@ -25,7 +25,7 @@
  * @tparam Tobj        Object related to the animated tile.
  * @tparam GetCallback The callback function pointer.
  */
-template <typename Tbase, typename Tspec, typename Tobj, uint16 (*GetCallback)(CallbackID callback, uint32 param1, uint32 param2, const Tspec *statspec, const Tobj *st, TileIndex tile)>
+template <typename Tbase, typename Tspec, typename Tobj, uint16 (*GetCallback)(CallbackID callback, uint32 param1, uint32 param2, const Tspec *statspec, Tobj *st, TileIndex tile)>
 struct AnimationBase {
 	/**
 	 * Animate a single tile.
@@ -35,7 +35,7 @@ struct AnimationBase {
 	 * @param tile        Tile to animate changes for.
 	 * @param random_animation Whether to pass random bits to the "next frame" callback.
 	 */
-	static void AnimateTile(const Tspec *spec, const Tobj *obj, TileIndex tile, bool random_animation)
+	static void AnimateTile(const Tspec *spec, Tobj *obj, TileIndex tile, bool random_animation)
 	{
 		assert(spec != NULL);
 
@@ -110,7 +110,7 @@ struct AnimationBase {
 	 * @param random_bits Random bits for this update. To be passed as parameter to the NewGRF.
 	 * @param trigger     What triggered this update? To be passed as parameter to the NewGRF.
 	 */
-	static void ChangeAnimationFrame(CallbackID cb, const Tspec *spec, const Tobj *obj, TileIndex tile, uint32 random_bits, uint32 trigger)
+	static void ChangeAnimationFrame(CallbackID cb, const Tspec *spec, Tobj *obj, TileIndex tile, uint32 random_bits, uint32 trigger)
 	{
 		uint16 callback = GetCallback(cb, random_bits, trigger, spec, obj, tile);
 		if (callback == CALLBACK_FAILED) return;

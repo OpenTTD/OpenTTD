@@ -246,7 +246,7 @@ static void AirportTileResolver(ResolverObject *res, const AirportTileSpec *ats,
 	res->grffile         = ats->grf_prop.grffile;
 }
 
-uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2, const AirportTileSpec *ats, const Station *st, TileIndex tile)
+uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2, const AirportTileSpec *ats, Station *st, TileIndex tile)
 {
 	ResolverObject object;
 	const SpriteGroup *group;
