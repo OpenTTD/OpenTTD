@@ -371,7 +371,7 @@ struct ResolverObject {
 			TileIndex tile;                ///< Tile for the callback, only valid for airporttile callbacks.
 		} airport;
 		struct {
-			const struct Object *o;        ///< The object the callback is ran for.
+			struct Object *o;              ///< The object the callback is ran for.
 			TileIndex tile;                ///< The tile related to the object.
 			uint8 view;                    ///< The view of the object.
 		} object;

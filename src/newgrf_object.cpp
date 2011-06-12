@@ -361,7 +361,7 @@ static const SpriteGroup *GetObjectSpriteGroup(const ObjectSpec *spec, const Obj
 /**
  * Returns a resolver object to be used with feature 0F spritegroups.
  */
-static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, const Object *o, TileIndex tile, uint8 view = 0)
+static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view = 0)
 {
 	res->GetRandomBits = ObjectGetRandomBits;
 	res->GetTriggers   = ObjectGetTriggers;
@@ -395,7 +395,7 @@ static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, const
  * @param view     The view of the object (only used when o == NULL).
  * @return The result of the callback.
  */
-uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, const Object *o, TileIndex tile, uint8 view)
+uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view)
 {
 	ResolverObject object;
 	NewObjectResolver(&object, spec, o, tile, view);
@@ -444,7 +444,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 {
 	ResolverObject object;
-	const Object *o = Object::GetByTile(ti->tile);
+	Object *o = Object::GetByTile(ti->tile);
 	NewObjectResolver(&object, spec, o, ti->tile);
 
 	const SpriteGroup *group = SpriteGroup::Resolve(GetObjectSpriteGroup(spec, o), &object);
