@@ -2191,7 +2191,6 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		st->airport.layout = layout;
 		st->airport.flags = 0;
 		st->airport.rotation = rotation;
-		st->airport.psa.ResetToZero();
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
@@ -2271,6 +2270,9 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
+		/* Clear the persistent storage. */
+		delete st->airport.psa;
+
 		const AirportSpec *as = st->airport.GetSpec();
 		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
 			DeleteWindowById(
@@ -2288,7 +2290,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 		st->airport.Clear();
 		st->facilities &= ~FACIL_AIRPORT;
-		st->airport.psa.ResetToZero();
 
 		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_PLANES);
 

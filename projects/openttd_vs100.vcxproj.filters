@@ -1440,6 +1440,9 @@
     <ClCompile Include="..\src\saveload\station_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\saveload\storage_sl.cpp">
+      <Filter>Save/Load handlers</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\saveload\strings_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>

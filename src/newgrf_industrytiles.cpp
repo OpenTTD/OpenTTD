@@ -158,7 +158,19 @@ void IndustryTileStorePSA(ResolverObject *object, uint pos, int32 value)
 {
 	Industry *ind = object->u.industry.ind;
 	if (object->scope != VSG_SCOPE_PARENT || ind->index == INVALID_INDUSTRY) return;
-	ind->psa.StoreValue(pos, value);
+
+	if (ind->psa == NULL) {
+		/* There is no need to create a storage if the value is zero. */
+		if (value == 0) return;
+
+		/* Create storage on first modification. */
+		const IndustrySpec *indsp = GetIndustrySpec(ind->type);
+		uint32 grfid = (indsp->grf_prop.grffile != NULL) ? indsp->grf_prop.grffile->grfid : 0;
+		assert(PersistentStorage::CanAllocateItem());
+		ind->psa = new PersistentStorage(grfid);
+	}
+
+	ind->psa->StoreValue(pos, value);
 }
 
 static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIndex tile, Industry *indus)

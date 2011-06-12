@@ -88,6 +88,7 @@ enum SLRefType {
 	REF_ENGINE_RENEWS = 6, ///< Load/save a reference to an engine renewal (autoreplace).
 	REF_CARGO_PACKET  = 7, ///< Load/save a reference to a cargo packet.
 	REF_ORDERLIST     = 8, ///< Load/save a reference to an orderlist.
+	REF_STORAGE       = 9, ///< Load/save a reference to a persistent storage.
 };
 
 /** Highest possible savegame version. */

@@ -158,7 +158,7 @@ public:
 
 	/**
 	 * Allows to know the size of the persistent storage.
-	 * @param index Unused.
+	 * @param index Index of the item.
 	 * @param grfid Unused.
 	 * @return Size of the persistent storage in indices.
 	 */
@@ -169,7 +169,7 @@ public:
 
 	/**
 	 * Gets the first position of the array containing the persistent storage.
-	 * @param index Unused.
+	 * @param index Index of the item.
 	 * @param grfid Unused.
 	 * @return Pointer to the first position of the storage array or NULL if not present.
 	 */
@@ -368,11 +368,11 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		uint psa_size = nih->GetPSASize(0, 0);
-		if (psa_size != 0) {
+		uint psa_size = nih->GetPSASize(index, 0);
+		int32 *psa = nih->GetPSAFirstPosition(index, 0);
+		if (psa_size != 0 && psa != NULL) {
 			this->DrawString(r, i++, "Persistent storage:");
 			assert(psa_size % 4 == 0);
-			int32 *psa = nih->GetPSAFirstPosition(0, 0);
 			for (uint j = 0; j < psa_size; j += 4, psa += 4) {
 				this->DrawString(r, i++, "  %i: %i %i %i %i", j, psa[0], psa[1], psa[2], psa[3]);
 			}

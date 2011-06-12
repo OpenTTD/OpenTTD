@@ -15,6 +15,7 @@
 #include "../roadstop_base.h"
 #include "../vehicle_base.h"
 #include "../newgrf_station.h"
+#include "../newgrf.h"
 
 #include "saveload.h"
 #include "table/strings.h"
@@ -344,6 +345,8 @@ static const SaveLoad _base_station_desc[] = {
 	      SLE_END()
 };
 
+static OldPersistentStorage _old_st_persistent_storage;
+
 static const SaveLoad _station_desc[] = {
 	SLE_WRITEBYTE(Station, facilities,                 FACIL_NONE),
 	SLE_ST_INCLUDE(),
@@ -362,7 +365,8 @@ static const SaveLoad _station_desc[] = {
 	  SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 145, SL_MAX_VERSION),
 	      SLE_VAR(Station, airport.flags,              SLE_UINT64),
 	  SLE_CONDVAR(Station, airport.rotation,           SLE_UINT8,                 145, SL_MAX_VERSION),
-	  SLE_CONDARR(Station, airport.psa.storage,        SLE_UINT32, 16,            145, SL_MAX_VERSION),
+	 SLEG_CONDARR(_old_st_persistent_storage.storage,  SLE_UINT32, 16,            145, 160),
+	  SLE_CONDREF(Station, airport.psa,                REF_STORAGE,               161, SL_MAX_VERSION),
 
 	      SLE_VAR(Station, indtype,                    SLE_UINT8),
 
@@ -437,6 +441,15 @@ static void Load_STNN()
 
 		if (!waypoint) {
 			Station *st = Station::From(bst);
+
+			/* Before savegame version 161, persistent storages were not stored in a pool. */
+			if (IsSavegameVersionBefore(161) && !IsSavegameVersionBefore(145) && st->facilities & FACIL_AIRPORT) {
+				/* Store the old persistent storage. The GRFID will be added later. */
+				assert(PersistentStorage::CanAllocateItem());
+				st->airport.psa = new PersistentStorage(0);
+				memcpy(st->airport.psa->storage, _old_st_persistent_storage.storage, sizeof(st->airport.psa->storage));
+			}
+
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				SlObject(&st->goods[i], GetGoodsDesc());
 			}

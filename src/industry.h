@@ -38,8 +38,6 @@ enum ProductionLevels {
  * Defines the internal data of a functional industry.
  */
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
-	typedef PersistentStorageArray<int32, 16> PersistentStorage;
-
 	TileArea location;                  ///< Location of the industry
 	Town *town;                         ///< Nearest town
 	CargoID produced_cargo[2];          ///< 2 production cargo slots
@@ -72,7 +70,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	byte random_triggers;               ///< Triggers for the random
 	uint16 random;                      ///< Random value used for randomisation of all kinds of things
 
-	PersistentStorage psa;              ///< Persistent storage for NewGRF industries.
+	PersistentStorage *psa;             ///< Persistent storage for NewGRF industries.
 
 	Industry(TileIndex tile = INVALID_TILE) : location(tile, 0, 0) {}
 	~Industry();

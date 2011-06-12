@@ -56,15 +56,14 @@ struct GoodsEntry {
 
 /** All airport-related information. Only valid if tile != INVALID_TILE. */
 struct Airport : public TileArea {
-	typedef PersistentStorageArray<int32, 16> PersistentStorage;
-
 	Airport() : TileArea(INVALID_TILE, 0, 0) {}
 
 	uint64 flags;       ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 	byte type;          ///< Type of this airport, @see AirportTypes.
 	byte layout;        ///< Airport layout number.
 	Direction rotation; ///< How this airport is rotated.
-	PersistentStorage psa; ///< Persistent storage for NewGRF airports
+
+	PersistentStorage *psa; ///< Persistent storage for NewGRF airports.
 
 	/**
 	 * Get the AirportSpec that from the airport type of this airport. If there

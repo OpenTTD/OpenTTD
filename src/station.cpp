@@ -96,6 +96,10 @@ Station::~Station()
 		}
 	}
 
+	/* Clear the persistent storage. */
+	delete this->airport.psa;
+
+
 	InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
 	DeleteWindowById(WC_STATION_VIEW, index);

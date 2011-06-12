@@ -498,6 +498,7 @@ saveload/saveload_filter.h
 saveload/saveload_internal.h
 saveload/signs_sl.cpp
 saveload/station_sl.cpp
+saveload/storage_sl.cpp
 saveload/strings_sl.cpp
 saveload/subsidy_sl.cpp
 saveload/town_sl.cpp

@@ -291,12 +291,13 @@ class NIHIndustry : public NIHelper {
 	const void *GetSpec(uint index) const                { return GetIndustrySpec(Industry::Get(index)->type); }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_INDUSTRY_NAME, index); }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetIndustryResolver(ResolverObject *ro, uint index); GetIndustryResolver(ro, index); }
-	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(Industry, psa.storage); }
+	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(PersistentStorage, storage); }
 
 	int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
 	{
-		const void *base = this->GetInstance(index);
-		return (int32*)((byte*)base + cpp_offsetof(Industry, psa.storage));
+		Industry *i = (Industry *)this->GetInstance(index);
+		if (i->psa == NULL) return NULL;
+		return (int32 *)(&i->psa->storage);
 	}
 };
 

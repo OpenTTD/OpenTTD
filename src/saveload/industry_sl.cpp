@@ -11,9 +11,12 @@
 
 #include "../stdafx.h"
 #include "../industry.h"
+#include "../newgrf.h"
 
 #include "saveload.h"
 #include "newgrf_sl.h"
+
+static OldPersistentStorage _old_ind_persistent_storage;
 
 static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, location.tile,              SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
@@ -50,7 +53,8 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, last_cargo_accepted_at,     SLE_INT32,                 70, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 73, SL_MAX_VERSION),
 
-	SLE_CONDARR(Industry, psa.storage,                SLE_UINT32, 16,            76, SL_MAX_VERSION),
+	SLEG_CONDARR(_old_ind_persistent_storage.storage, SLE_UINT32, 16,            76, 160),
+	SLE_CONDREF(Industry, psa,                        REF_STORAGE,              161, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Industry, random_triggers,            SLE_UINT8,                 82, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                82, SL_MAX_VERSION),
@@ -90,6 +94,14 @@ static void Load_INDY()
 	while ((index = SlIterateArray()) != -1) {
 		Industry *i = new (index) Industry();
 		SlObject(i, _industry_desc);
+
+		/* Before savegame version 161, persistent storages were not stored in a pool. */
+		if (IsSavegameVersionBefore(161) && !IsSavegameVersionBefore(76)) {
+			/* Store the old persistent storage. The GRFID will be added later. */
+			assert(PersistentStorage::CanAllocateItem());
+			i->psa = new PersistentStorage(0);
+			memcpy(i->psa->storage, _old_ind_persistent_storage.storage, sizeof(i->psa->storage));
+		}
 		Industry::IncIndustryTypeCount(i->type);
 	}
 }

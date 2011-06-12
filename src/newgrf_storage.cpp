@@ -11,7 +11,11 @@
 
 #include "stdafx.h"
 #include "newgrf_storage.h"
+#include "core/pool_func.hpp"
 #include <set>
+
+PersistentStoragePool _persistent_storage_pool("PersistentStorage");
+INSTANTIATE_POOL_METHODS(PersistentStorage)
 
 /** The changed storage arrays */
 static std::set<BaseStorageArray*> _changed_storage_arrays;

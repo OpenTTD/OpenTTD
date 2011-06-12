@@ -740,6 +740,7 @@
     <ClInclude Include="..\src\saveload\saveload_internal.h" />
     <ClCompile Include="..\src\saveload\signs_sl.cpp" />
     <ClCompile Include="..\src\saveload\station_sl.cpp" />
+    <ClCompile Include="..\src\saveload\storage_sl.cpp" />
     <ClCompile Include="..\src\saveload\strings_sl.cpp" />
     <ClCompile Include="..\src\saveload\subsidy_sl.cpp" />
     <ClCompile Include="..\src\saveload\town_sl.cpp" />

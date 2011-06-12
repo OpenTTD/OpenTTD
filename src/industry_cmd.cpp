@@ -167,6 +167,9 @@ Industry::~Industry()
 	/* don't let any disaster vehicle target invalid industry */
 	ReleaseDisastersTargetingIndustry(this->index);
 
+	/* Clear the persistent storage. */
+	delete this->psa;
+
 	DecIndustryTypeCount(this->type);
 
 	DeleteIndustryNews(this->index);

@@ -149,7 +149,7 @@ uint32 AirportGetVariable(const ResolverObject *object, byte variable, byte para
 
 	switch (variable) {
 		/* Get a variable from the persistent storage */
-		case 0x7C: return st->airport.psa.GetValue(parameter);
+		case 0x7C: return (st->airport.psa != NULL) ? st->airport.psa->GetValue(parameter) : 0;
 
 		case 0xF0: return st->facilities;
 		case 0xFA: return Clamp(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535);
@@ -194,7 +194,17 @@ void AirportStorePSA(ResolverObject *object, uint pos, int32 value)
 {
 	Station *st = object->u.airport.st;
 	if (object->scope != VSG_SCOPE_SELF || st == NULL) return;
-	st->airport.psa.StoreValue(pos, value);
+
+	if (st->airport.psa == NULL) {
+		/* There is no need to create a storage if the value is zero. */
+		if (value == 0) return;
+
+		/* Create storage on first modification. */
+		uint32 grfid = (object->grffile != NULL) ? object->grffile->grfid : 0;
+		assert(PersistentStorage::CanAllocateItem());
+		st->airport.psa = new PersistentStorage(grfid);
+	}
+	st->airport.psa->StoreValue(pos, value);
 }
 
 static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st, byte airport_id, byte layout)

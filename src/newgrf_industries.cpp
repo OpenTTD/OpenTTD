@@ -283,7 +283,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		}
 
 		/* Get a variable from the persistent storage */
-		case 0x7C: return industry->psa.GetValue(parameter);
+		case 0x7C: return (industry->psa != NULL) ? industry->psa->GetValue(parameter) : 0;
 
 		/* Industry structure access*/
 		case 0x80: return industry->location.tile;
@@ -386,7 +386,19 @@ void IndustryStorePSA(ResolverObject *object, uint pos, int32 value)
 {
 	Industry *ind = object->u.industry.ind;
 	if (object->scope != VSG_SCOPE_SELF || ind->index == INVALID_INDUSTRY) return;
-	ind->psa.StoreValue(pos, value);
+
+	if (ind->psa == NULL) {
+		/* There is no need to create a storage if the value is zero. */
+		if (value == 0) return;
+
+		/* Create storage on first modification. */
+		const IndustrySpec *indsp = GetIndustrySpec(ind->type);
+		uint32 grfid = (indsp->grf_prop.grffile != NULL) ? indsp->grf_prop.grffile->grfid : 0;
+		assert(PersistentStorage::CanAllocateItem());
+		ind->psa = new PersistentStorage(grfid);
+	}
+
+	ind->psa->StoreValue(pos, value);
 }
 
 static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus, IndustryType type)

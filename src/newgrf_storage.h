@@ -13,6 +13,7 @@
 #define NEWGRF_STORAGE_H
 
 #include "core/alloc_func.hpp"
+#include "core/pool_type.hpp"
 
 /**
  * Base class for all NewGRF storage arrays. Nothing fancy, only here
@@ -177,5 +178,41 @@ struct TemporaryStorageArray : BaseStorageArray {
 
 void AddChangedStorage(BaseStorageArray *storage);
 void ClearStorageChanges(bool keep_changes);
+
+
+typedef PersistentStorageArray<int32, 16> OldPersistentStorage;
+
+typedef uint32 PersistentStorageID;
+
+struct PersistentStorage;
+typedef Pool<PersistentStorage, PersistentStorageID, 1, 0xFF000> PersistentStoragePool;
+
+extern PersistentStoragePool _persistent_storage_pool;
+
+/**
+ * Class for pooled persistent storage of data.
+ * On ClearChanges that data is always zero-ed.
+ */
+struct PersistentStorage : PersistentStorageArray<int32, 16>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
+	uint32 grfid; ///< GRFID associated to this persistent storage. A value of zero means "default".
+
+	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
+	PersistentStorage(const uint32 new_grfid) : grfid(new_grfid)
+	{
+		this->prev_storage = NULL;
+		memset(this->storage, 0, sizeof(this->storage));
+	}
+
+	/** Free the memory used by the persistent storage. */
+	~PersistentStorage()
+	{
+		free(this->prev_storage);
+	}
+};
+
+assert_compile(cpp_lengthof(OldPersistentStorage, storage) == cpp_lengthof(PersistentStorage, storage));
+
+#define FOR_ALL_STORAGES_FROM(var, start) FOR_ALL_ITEMS_FROM(PersistentStorage, storage_index, var, start)
+#define FOR_ALL_STORAGES(var) FOR_ALL_STORAGES_FROM(var, 0)
 
 #endif /* NEWGRF_STORAGE_H */
