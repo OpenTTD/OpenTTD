@@ -1760,7 +1760,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De serve
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Je bent verbannen van deze server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Je bent van de server geschopt
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Valsspelen is niet toegestaan op deze server
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Je stuurde teveel commando's naar de server
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Je stuurde te veel commando's naar de server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemene fout
@@ -1942,18 +1942,18 @@ STR_STATION_CLASS_WAYP                                          :Controleposten
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinkeuze
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksein (armsein){}Dit is het simpelste soort sein, dat slechts een trein tegelijk in hetzelfde blok toelaat
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangssein (semafoor){}Groen zolang als er een of meer groene uitgangsseinen zijn volgend na dit sein. Anders is deze rood
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksein (armsein){}Dit is het simpelste soort sein, dat slechts één trein tegelijk in hetzelfde blok toelaat
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangssein (semafoor){}Groen zolang als er één of meer groene uitgangsseinen zijn volgend na dit sein. Anders is deze rood
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgangssein (armsein){}Gedraagt zich hetzelfde als een gewoon bloksein, maar is nodig om ingangs- en combinatieseinen te sturen
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinatiesein (armsein){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangssein. Zo kun je grote netwerken van beginseinen maken
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinatiesein (armsein){}Het combinatiesein gedraagt zich als zowel ingangs- als uitgangssein. Zo kun je grote netwerken van beginseinen maken
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Routesein (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Eenrichtingsrouteseinen (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan één trein
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electrisch){}Groen als er meer dan één groen uitgangssein is in het volgende traject. Anders is deze rood
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgangssein (elektrisch){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combinatie-seinen aan te sturen
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Routeseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Eenrichtingsrouteseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Routeseinen (elektrisch){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Eenrichtingsrouteseinen (elektrisch){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Indien geselecteerd, zal door te klikken op een bestaand sein deze worden omgebouwd naar het geselecteerde seintype en variant, Ctrl+klik verandert de bestaande variant (armsein/elektrisch). Shift+klik toont de geschatte ombouwkosten
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dichtheid van seinen bij het slepen
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Verklein dichtheid van seinen bij het slepen
@@ -2018,7 +2018,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterweg
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bouw kanalen. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bouw sluis. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bouw dok (voor het kopen en onderhoud van schepen). Shift schakelt tussen bouwen/inschatting van de kosten
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw haven. Houd Ctrl ingedrukt om samen te voegen met ander station.Shift schakelt tussen bouwen/inschatting van de kosten
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw haven. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaats boei, deze kan gebruikt worden voor extra tussenstops. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bouw aquaduct. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definieer watergebied.{}Maak een kanaal, tenzij Ctrl wordt vastgehouden op zeeniveau, dan zal de omgeving overstromen
@@ -2062,11 +2062,11 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Geluidso
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinvorming
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land. Slepen verlaagt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl selecteert het gebied diagonaal. Shift maakt een inschatting van de kosten
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land. Slepen verhoogt de eerste geselecteerde hoek en brengt het geselecteerde gebied naar de hoogte van die hoek. Ctrl selecteert het gebied diagonaal. Shift maakt een inschatting van de kosten
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land naar de hoogte van de eerst geselecteerde hoek. Ctrl selecteert een diagonaal gebied. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land naar de hoogte van de eerst geselecteerde hoek. Ctrl selecteert een diagonaal gebied. Shift+klik wisselt tussen bouwen/tonen verwachte kosten
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik. Shift+klik wisselt tussen bouwen/tonen verwachte kosten
 
 # Object construction window
-STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Keuze van Object
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Keuze van object
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Kies het te bouwen object. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Kies klasse van het te bouwen object
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Bekijk het object
@@ -2079,7 +2079,7 @@ STR_OBJECT_CLASS_TRNS                                           :Zender
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een soort boom om te planten
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurige soort. Shift+Klik wisselt tussen bouwen/toont verwachte kosten
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurige soort. Shift+klik wisselt tussen bouwen/toont verwachte kosten
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Verspreid bomen willekeurig over de kaart
 
@@ -2100,7 +2100,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadsontwikkeling
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuwe stad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuwe stad. Shift+Klik toont alleen de verwachte kosten
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuwe stad. Shift+klik toont alleen de verwachte kosten
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurige stad
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Sticht stad op willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
@@ -2697,7 +2697,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bouw bed
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Bekijk bedrijfshoofdkwartier
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Toon bedrijfshoofdkwartier
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verplaats bedrijfshoofdkwartier
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbouw bedrijfshoofdkwartier ergens anders voor 1% van de bedrijfswaarde. Shift+Klik toont verwachte kosten zonder HQ te verplaatsen
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbouw bedrijfshoofdkwartier ergens anders voor 1% van de bedrijfswaarde. Shift+klik toont verwachte kosten zonder HQ te verplaatsen
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nieuw gezicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Kies nieuw gezicht voor directeur
@@ -2710,8 +2710,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Verander
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Koop 25% aandeel in bedrijf
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Verkoop 25% aandeel in bedrijf
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Koop een aandeel van 25% in dit bedrijf. Shift+Klik toont verwachte kosten zonder te kopen
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop een aandeel van 25% in dit bedrijf. Shift+Klik toont verwachte kosten zonder te kopen
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Koop een aandeel van 25% in dit bedrijf. Shift+klik toont verwachte kosten zonder te kopen
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop een aandeel van 25% in dit bedrijf. Shift+klik toont verwachte kosten zonder te kopen
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Bedrijfsnaam
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Naam van directeur
@@ -2844,10 +2844,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koop weg
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koop schip
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koop vliegtuig
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Koop het geselecteerde railvoertuig. Shift+Klik toont verwachte kosten zonder te kopen
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koop het geselecteerde wegvoertuig. Shift+Klik toont verwachte kosten zonder te kopen
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koop het geselecteerde schip. Shift+Klik toont verwachte kosten zonder te kopen
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koop het geselecteerde vliegtuig. Shift+Klik toont verwachte kosten zonder te kopen
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Koop het geselecteerde railvoertuig. Shift+klik toont verwachte kosten zonder te kopen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koop het geselecteerde wegvoertuig. Shift+klik toont verwachte kosten zonder te kopen
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koop het geselecteerde schip. Shift+klik toont verwachte kosten zonder te kopen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koop het geselecteerde vliegtuig. Shift+klik toont verwachte kosten zonder te kopen
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Hernoem
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Hernoem
@@ -2875,7 +2875,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" en}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig voor toevoegen/verwijderen van trein, klik rechts voor trein informatie, CTRL+klik voor samengestelde informatie
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig voor toevoegen/verwijderen van trein, klik rechts voor trein informatie, Ctrl+klik voor samengestelde informatie
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wegvoertuigen - rechts-klik op wegvoertuig voor informatie
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - rechts-klik op schip voor informatie
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - rechts-klik op vliegtuig voor informatie
@@ -2912,10 +2912,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloon we
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloon schip
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloon vliegtuig
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hierdoor wordt een kopie gekocht van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hierdoor wordt een kopie gekocht van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hierdoor wordt een kopie gekocht van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hierdoor wordt een kopie gekocht van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hierdoor wordt een kopie gekocht van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hierdoor wordt een kopie gekocht van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het scherm op de locatie van het treindepot. Ctrl+klik opent een nieuw scherm op de locatie van het treindepot
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de garage. Ctrl+klik opent een nieuw scherm op de locatie van de garage
@@ -2952,7 +2952,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :zweeflocomotief
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prijs: {CURRENCY} Gewicht: {WEIGHT_S}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {CARGO}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prijs: {CURRENCY} Gewicht: {WEIGHT_S}{}Snelheid: {VELOCITY}  Kracht: {POWER}  Max. T.E.: {6:FORCE}{}Bedrijfskosten: {4:CURRENCY}/yr{}Capaciteit: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosten: {CURRENCY} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO}, {CARGO}{}Gebruikskosten: {CURRENCY}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosten: {CURRENCY} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO}{}Gebruikeskosten: {CURRENCY}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosten: {CURRENCY} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO}{}Gebruikskosten: {CURRENCY}/jaar
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
@@ -2999,10 +2999,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur we
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur schip naar dok. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar. Ctrl+klik voor alleen onderhoud
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hierdoor wordt een kopie gekocht van deze trein inclusief wagons. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hierdoor wordt een kopie gekocht van dit wegvoertuig. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van dit schip. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hierdoor wordt een kopie gekocht van dit vliegtuig. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hierdoor wordt een kopie gekocht van deze trein inclusief wagons. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hierdoor wordt een kopie gekocht van dit wegvoertuig. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van dit schip. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hierdoor wordt een kopie gekocht van dit vliegtuig. Ctrl+klik deelt de orders. Shift+klik toont verwachte kosten zonder te kopen
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein verder te rijden zonder te wachten op een groen sein
 
@@ -3335,7 +3335,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijde
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Afbreken als een AI logbericht overeenstemt met de afbreektekst aan/uitschakelen
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Afbreken op:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Afbreken aan
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Als een AI logbericht overeenstemt met deze string wordt het spel gepauseerd
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Als een AI logbericht overeenstemt met deze string wordt het spel gepauzeerd
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Hoofdlettergevoelig
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hoofdlettergevoeligheid bij vergelijken van AI logberichten t.o.v. de afbreekstring aan/uitzetten
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Doorgaan
@@ -3510,7 +3510,7 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... teveel industrieën
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te veel industrieën
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen industrieën genereren...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan {STRING} hier niet bouwen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan dit type industrie hier niet bouwen...

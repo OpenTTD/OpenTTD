@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Byt mellom stor/liten storleik på vindauga
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefelt - blar lista opp/ned
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefelt - blar lista til venstre/høgre
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv bygningar o.l.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv bygningar o.a. i eit firkanta område. Ctrl vel området diagonalt. Shift syner estimert rivingskostnad
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
@@ -340,6 +340,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasser 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lagre scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Last inn scenario
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Lagre høgdekart
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Last inn høgdekart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avslutt redigeringsprogram
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -350,6 +351,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinstillingar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskegrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte instillingar
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI-instillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjennomsiktigheitsinnstillingar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Syne bynamn
@@ -444,6 +446,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Forstørra skjermbilete
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
@@ -1106,6 +1109,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillet 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillet frjerning av fleire vegar, bruar osb. egd av byane.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal lengde på tog {ORANGE}{STRING} rute{P 0:1 "" r}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde køyretøyrøyk/-gnistar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Køyretøyers akselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
@@ -1162,6 +1166,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autofor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny køyretøy når det er {ORANGE}{STRING}{LTBLUE} mnd. før/etter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum formue for autofornying av køyretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING} sekund
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Syn verktøytips: {ORANGE}Høgreklikk
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Syne innbyggjartalet til byane i tittel: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landskapsgenerator: {ORANGE}{STRING}
@@ -1218,6 +1223,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {O
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-palett
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Når spelet er pausa, tillet: {ORANGE}{STRING}
@@ -1335,6 +1343,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Byar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalt)
 
@@ -2265,6 +2274,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Last inn
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lagre scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Last inn scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last inn høgdekart
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Lagre høgdekart
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å kome til standardmappa for lagring og innlasting
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledig
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over diskar, mapper og lagra spel
@@ -2458,6 +2468,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneheld fleire "Action 8" oppføringar.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Las forbi slutten på pseudo-sprite.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværande grafikksettet manglar ein del spriter.{}Vennligst oppdater grafikksettet.
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} vart deaktivert av {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Åtvaring!
@@ -3219,7 +3230,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatisk)
+STR_ORDER_IMPLICIT                                              :(implisitt)
 
 STR_ORDER_FULL_LOAD                                             :(Last fullt)
 STR_ORDER_FULL_LOAD_ANY                                         :(Last fullt, vilkårleg last)
@@ -3395,25 +3406,25 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Kan ikkje lese 
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Kan ikkje skrive til fila
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetssjekk av data mislukkast
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet har blitt lagra i ein versjon utan støtte for trikk. Alle trikkar har blitt fjerna.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet har blitt lagra i ein versjon utan støtte for trikk. Alle trikkar har blitt fjerna
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kart-generering avbrutt...{}... ingen passande by-plasseringar
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det er ingen byar i dette scenarioet
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan ikkje laste inn landskap frå PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fann ikkje fila.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikkje konvertere biletetypen. Eit 8- eller 24-bits PNG-bilete trengst.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noko gjekk akkurat gale. Orsak. (truleg ei øydelagd fil)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fann ikkje fila
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikkje konvertere bilettypen. Eit 8- eller 24-bits PNG-bilete trengst
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noko gjekk akkurat gale (truleg ei øydelagd fil)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan ikkje laste inn landskap frå BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan ikkje konvertere biletetype.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan ikkje konvertere bilettype
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalaåtvaring
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endre storleiken på kjeldekartet for mykje er ikkje anbefalt. Vil du halde fram med genereringa?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun eit reservelydsett ble funne. Hvis du vil ha lyder, installer eit lydsett via spelets nedlastingssystem.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun eit reservelydsett ble funne. Hvis du vil ha lyder, installer eit lydsett via innhaldsnedlastinga
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermdumpen vart lagra som '{STRING}'
@@ -3482,7 +3493,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for nær ein annan by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byar
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det er ikkje meir plass på kartet
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbeid pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller ei by-egd rute som ikkje kan fjernast
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passande plass til statue i sentrum av denne byen
@@ -3525,6 +3536,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For nær
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan ikkje endre namnet på stasjonen...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denne vegen eigast av ein by
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vegen peiker feil veg
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... gjennomkøyring-stopp kan ikkje ha svingar
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... gjennomkøyring-stopp kan ikkje ha kryss
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikkje fjerne del av stasjonen...
@@ -3573,7 +3586,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... må 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan berre endrast når dei står stille i togstallen
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan ikkje snu køyretøyet...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikkje snu køyretøy som er samansette av fleire enhetar...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... samansett av fleire enhetar
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Jernbanetypane passar ikkje saman
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan ikkje flytte køyretøy...
@@ -3585,7 +3598,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Gal type garasj
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er for langt etter byte
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ingen autoutbyting-/fornyingsreglar lagt til.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ingen autoutbyting-/fornyingsreglar lagt til
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pengegrense)
 
 # Rail construction errors
@@ -3594,6 +3607,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Må fjer
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Upassande jernbanespor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Må fjerne jernbanespor først
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegen er einvegskøyrd eller blokkert
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Overgang ikkje tillate for denne typen jernbane
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan ikkje byggje signaler her...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikkje byggje jernbanespor her...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikkje fjerne jernbanespor herfrå...
@@ -3718,6 +3732,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... køy
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikkje tvinge tog til å passere signal ved fare...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikkje snu toget...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Toget har ikkje strøm
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan ikkje snu køyretøyet...
 
@@ -3753,7 +3768,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikkje sletta skilt...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein Transport Tycoon Deluxe-klone
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Eit simulatorspel basert på Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4209,6 +4224,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
