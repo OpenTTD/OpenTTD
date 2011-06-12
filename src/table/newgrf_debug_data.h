@@ -66,6 +66,7 @@ class NIHVehicle : public NIHelper {
 	const void *GetInstance(uint index)const             { return Vehicle::Get(index); }
 	const void *GetSpec(uint index) const                { return Engine::Get(Vehicle::Get(index)->engine_type); }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_VEHICLE_NAME, index); }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? Engine::Get(Vehicle::Get(index)->engine_type)->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetVehicleResolver(ResolverObject *ro, uint index); GetVehicleResolver(ro, index); }
 };
 
@@ -122,6 +123,7 @@ class NIHStation : public NIHelper {
 	const void *GetInstance(uint index)const             { return NULL; }
 	const void *GetSpec(uint index) const                { return GetStationSpec(index); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? GetStationSpec(index)->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetStationResolver(ResolverObject *ro, uint index); GetStationResolver(ro, index); }
 };
 
@@ -181,6 +183,7 @@ class NIHHouse : public NIHelper {
 	const void *GetInstance(uint index)const             { return NULL; }
 	const void *GetSpec(uint index) const                { return HouseSpec::Get(GetHouseType(index)); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_TOWN_NAME, GetTownIndex(index), index); }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? HouseSpec::Get(GetHouseType(index))->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetHouseResolver(ResolverObject *ro, uint index); GetHouseResolver(ro, index); }
 };
 
@@ -225,6 +228,7 @@ class NIHIndustryTile : public NIHelper {
 	const void *GetInstance(uint index)const             { return NULL; }
 	const void *GetSpec(uint index) const                { return GetIndustryTileSpec(GetIndustryGfx(index)); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_INDUSTRY_NAME, GetIndustryIndex(index), index); }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? GetIndustryTileSpec(GetIndustryGfx(index))->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetIndustryTileResolver(ResolverObject *ro, uint index); GetIndustryTileResolver(ro, index); }
 };
 
@@ -290,6 +294,7 @@ class NIHIndustry : public NIHelper {
 	const void *GetInstance(uint index)const             { return Industry::Get(index); }
 	const void *GetSpec(uint index) const                { return GetIndustrySpec(Industry::Get(index)->type); }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_INDUSTRY_NAME, index); }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? GetIndustrySpec(Industry::Get(index)->type)->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetIndustryResolver(ResolverObject *ro, uint index); GetIndustryResolver(ro, index); }
 	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(PersistentStorage, storage); }
 
@@ -347,6 +352,7 @@ class NIHObject : public NIHelper {
 	const void *GetInstance(uint index)const             { return Object::GetByTile(index); }
 	const void *GetSpec(uint index) const                { return ObjectSpec::GetByTile(index); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT, INVALID_STRING_ID, index); }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? ObjectSpec::GetByTile(index)->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetObjectResolver(ResolverObject *ro, uint index); GetObjectResolver(ro, index); }
 };
 
@@ -373,6 +379,7 @@ class NIHRailType : public NIHelper {
 	const void *GetInstance(uint index)const             { return NULL; }
 	const void *GetSpec(uint index) const                { return NULL; }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE, INVALID_STRING_ID, index); }
+	uint32 GetGRFID(uint index) const                    { return 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetRailTypeResolver(ResolverObject *ro, uint index); GetRailTypeResolver(ro, index); }
 };
 
@@ -401,6 +408,7 @@ class NIHAirportTile : public NIHelper {
 	const void *GetInstance(uint index)const             { return NULL; }
 	const void *GetSpec(uint index) const                { return AirportTileSpec::Get(GetAirportGfx(index)); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? AirportTileSpec::Get(GetAirportGfx(index))->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetAirportTileTypeResolver(ResolverObject *ro, uint index); GetAirportTileTypeResolver(ro, index); }
 };
 
@@ -433,6 +441,7 @@ class NIHTown : public NIHelper {
 	const void *GetInstance(uint index)const             { return Town::Get(index); }
 	const void *GetSpec(uint index) const                { return NULL; }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_TOWN_NAME, index); }
+	uint32 GetGRFID(uint index) const                    { return 0; }
 	uint Resolve(uint index, uint var, uint param, bool *avail) const { return TownGetVariable(var, param, avail, Town::Get(index), NULL); }
 };
 

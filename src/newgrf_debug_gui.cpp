@@ -141,6 +141,13 @@ public:
 	virtual void SetStringParameters(uint index) const = 0;
 
 	/**
+	 * Get the GRFID of the file that includes this item.
+	 * @param index index to check.
+	 * @return GRFID of the item. 0 means that the item is not inspectable.
+	 */
+	virtual uint32 GetGRFID(uint index) const = 0;
+
+	/**
 	 * Resolve (action2) variable for a given index.
 	 * @param index The (instance) index to resolve the variable for.
 	 * @param var   The variable to actually resolve.
@@ -277,6 +284,9 @@ struct NewGRFInspectWindow : Window {
 	/** The value for the variable 60 parameters. */
 	static byte var60params[GSF_FAKE_END][0x20];
 
+	/** GRFID of the caller of this window, 0 if it has no caller. */
+	uint32 caller_grfid;
+
 	/** The currently editted parameter, to update the right one. */
 	byte current_edit_param;
 
@@ -290,6 +300,16 @@ struct NewGRFInspectWindow : Window {
 	static bool HasVariableParameter(uint variable)
 	{
 		return IsInsideBS(variable, 0x60, 0x20);
+	}
+
+	/**
+	 * Set the GRFID of the item opening this window.
+	 * @param grfid GRFID of the item opening this window, or 0 if not opened by other window.
+	 */
+	void SetCallerGRFID(uint32 grfid)
+	{
+		this->caller_grfid = grfid;
+		this->SetDirty();
 	}
 
 	NewGRFInspectWindow(const WindowDesc *desc, WindowNumber wno) : Window()
@@ -442,8 +462,9 @@ struct NewGRFInspectWindow : Window {
 	{
 		switch (widget) {
 			case NIW_PARENT: {
-				uint index = GetFeatureHelper(this->window_number)->GetParent(GetFeatureIndex(this->window_number));
-				::ShowNewGRFInspectWindow((GrfSpecFeature)GB(index, 24, 8), GetFeatureIndex(index));
+				const NIHelper *nih   = GetFeatureHelper(this->window_number);
+				uint index = nih->GetParent(GetFeatureIndex(this->window_number));
+				::ShowNewGRFInspectWindow((GrfSpecFeature)GB(index, 24, 8), GetFeatureIndex(index), nih->GetGRFID(GetFeatureIndex(this->window_number)));
 				break;
 			}
 
@@ -516,13 +537,16 @@ static const WindowDesc _newgrf_inspect_desc(
  * we want to inspect.
  * @param feature The feature we want to inspect.
  * @param index   The index/identifier of the feature to inspect.
+ * @param grfid   GRFID of the item opening this window, or 0 if not opened by other window.
  */
-void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index)
+void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index, const uint32 grfid)
 {
 	if (!IsNewGRFInspectable(feature, index)) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	AllocateWindowDescFront<NewGRFInspectWindow>(&_newgrf_inspect_desc, wno);
+	NewGRFInspectWindow *w = AllocateWindowDescFront<NewGRFInspectWindow>(&_newgrf_inspect_desc, wno);
+	if (w == NULL) w = (NewGRFInspectWindow *)FindWindowById(WC_NEWGRF_INSPECT, wno);
+	w->SetCallerGRFID(grfid);
 }
 
 /**
