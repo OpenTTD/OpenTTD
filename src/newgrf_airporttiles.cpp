@@ -221,7 +221,7 @@ static uint32 AirportTileGetRandomBits(const ResolverObject *object)
 	return (st == NULL ? 0 : st->random_bits) | (tile == INVALID_TILE ? 0 : GetStationTileRandomBits(tile) << 16);
 }
 
-static void AirportTileResolver(ResolverObject *res, const AirportTileSpec *ats, TileIndex tile, const Station *st)
+static void AirportTileResolver(ResolverObject *res, const AirportTileSpec *ats, TileIndex tile, Station *st)
 {
 	res->GetRandomBits = AirportTileGetRandomBits;
 	res->GetTriggers   = NULL;

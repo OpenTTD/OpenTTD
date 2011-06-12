@@ -365,7 +365,7 @@ struct ResolverObject {
 			TileContext context;           ///< Are we resolving sprites for the upper halftile, or on a bridge?
 		} routes;
 		struct {
-			const struct Station *st;      ///< Station of the airport for which the callback is run, or NULL for build gui.
+			struct Station *st;            ///< Station of the airport for which the callback is run, or NULL for build gui.
 			byte airport_id;               ///< Type of airport for which the callback is run
 			byte layout;                   ///< Layout of the airport to build.
 			TileIndex tile;                ///< Tile for the callback, only valid for airporttile callbacks.
