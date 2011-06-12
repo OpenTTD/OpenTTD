@@ -74,8 +74,6 @@ static const NIFeature _nif_vehicle = {
 	_nic_vehicles,
 	_niv_vehicles,
 	new NIHVehicle(),
-	0,
-	0
 };
 
 
@@ -132,8 +130,6 @@ static const NIFeature _nif_station = {
 	_nic_stations,
 	_niv_stations,
 	new NIHStation(),
-	0,
-	0
 };
 
 
@@ -193,8 +189,6 @@ static const NIFeature _nif_house = {
 	_nic_house,
 	_niv_house,
 	new NIHHouse(),
-	0,
-	0
 };
 
 
@@ -239,8 +233,6 @@ static const NIFeature _nif_industrytile = {
 	_nic_industrytiles,
 	_niv_industrytiles,
 	new NIHIndustryTile(),
-	0,
-	0
 };
 
 
@@ -299,6 +291,13 @@ class NIHIndustry : public NIHelper {
 	const void *GetSpec(uint index) const                { return GetIndustrySpec(Industry::Get(index)->type); }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_INDUSTRY_NAME, index); }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetIndustryResolver(ResolverObject *ro, uint index); GetIndustryResolver(ro, index); }
+	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(Industry, psa.storage); }
+
+	int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
+	{
+		const void *base = this->GetInstance(index);
+		return (int32*)((byte*)base + cpp_offsetof(Industry, psa.storage));
+	}
 };
 
 static const NIFeature _nif_industry = {
@@ -306,8 +305,6 @@ static const NIFeature _nif_industry = {
 	_nic_industries,
 	_niv_industries,
 	new NIHIndustry(),
-	cpp_lengthof(Industry, psa.storage),
-	cpp_offsetof(Industry, psa.storage)
 };
 
 
@@ -357,8 +354,6 @@ static const NIFeature _nif_object = {
 	_nic_objects,
 	_niv_objects,
 	new NIHObject(),
-	0,
-	0
 };
 
 
@@ -385,8 +380,6 @@ static const NIFeature _nif_railtype = {
 	NULL,
 	_niv_railtypes,
 	new NIHRailType(),
-	0,
-	0
 };
 
 
@@ -415,8 +408,6 @@ static const NIFeature _nif_airporttile = {
 	_nic_airporttiles,
 	_niv_industrytiles, // Yes, they share this (at least now)
 	new NIHAirportTile(),
-	0,
-	0
 };
 
 
@@ -449,8 +440,6 @@ static const NIFeature _nif_town = {
 	NULL,
 	_niv_towns,
 	new NIHTown(),
-	0,
-	0
 };
 
 /** Table with all NIFeatures. */

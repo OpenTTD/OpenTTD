@@ -156,6 +156,28 @@ public:
 		return ro.GetVariable(&ro, var, param, avail);
 	}
 
+	/**
+	 * Allows to know the size of the persistent storage.
+	 * @param index Unused.
+	 * @param grfid Unused.
+	 * @return Size of the persistent storage in indices.
+	 */
+	virtual uint GetPSASize(uint index, uint32 grfid) const
+	{
+		return 0;
+	}
+
+	/**
+	 * Gets the first position of the array containing the persistent storage.
+	 * @param index Unused.
+	 * @param grfid Unused.
+	 * @return Pointer to the first position of the storage array or NULL if not present.
+	 */
+	virtual int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
+	{
+		return NULL;
+	}
+
 protected:
 	/**
 	 * Actually execute the real resolving for a given (instance) index.
@@ -199,8 +221,6 @@ struct NIFeature {
 	const NICallback *callbacks;  ///< The callbacks associated with this feature.
 	const NIVariable *variables;  ///< The variables associated with this feature.
 	const NIHelper   *helper;     ///< The class container all helper functions.
-	uint psa_size;                ///< The size of the persistent storage in indices.
-	size_t psa_offset;            ///< Offset to the array in the PSA.
 };
 
 /* Load all the NewGRF debug data; externalised as it is just a huge bunch of tables. */
@@ -348,11 +368,12 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		if (nif->psa_size != 0) {
+		uint psa_size = nih->GetPSASize(0, 0);
+		if (psa_size != 0) {
 			this->DrawString(r, i++, "Persistent storage:");
-			assert(nif->psa_size % 4 == 0);
-			int32 *psa = (int32*)((byte*)base + nif->psa_offset);
-			for (uint j = 0; j < nif->psa_size; j += 4, psa += 4) {
+			assert(psa_size % 4 == 0);
+			int32 *psa = nih->GetPSAFirstPosition(0, 0);
+			for (uint j = 0; j < psa_size; j += 4, psa += 4) {
 				this->DrawString(r, i++, "  %i: %i %i %i %i", j, psa[0], psa[1], psa[2], psa[3]);
 			}
 		}
