@@ -314,8 +314,6 @@ struct ResolverObject {
 	VarSpriteGroupScope scope;  ///< Scope of currently resolved DeterministicSpriteGroup resp. RandomizedSpriteGroup
 	byte count;                 ///< Additional scope for RandomizedSpriteGroup
 
-	BaseStorageArray *psa;      ///< The persistent storage array of this resolved object.
-
 	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
 
 	union {
@@ -382,6 +380,7 @@ struct ResolverObject {
 	void (*SetTriggers)(const struct ResolverObject*, int);
 	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte, bool*);
 	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const RealSpriteGroup*);
+	void (*StorePSA)(struct ResolverObject*, uint, int32);
 };
 
 #endif /* NEWGRF_SPRITEGROUP_H */

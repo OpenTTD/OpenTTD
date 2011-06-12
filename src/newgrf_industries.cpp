@@ -376,6 +376,19 @@ static void IndustrySetTriggers(const ResolverObject *object, int triggers)
 	ind->random_triggers = triggers;
 }
 
+/**
+ * Store a value into the object's persistent storage.
+ * @param object Object that we want to query.
+ * @param pos Position in the persistent storage to use.
+ * @param value Value to store.
+ */
+void IndustryStorePSA(ResolverObject *object, uint pos, int32 value)
+{
+	Industry *ind = object->u.industry.ind;
+	if (object->scope != VSG_SCOPE_SELF || ind->index == INVALID_INDUSTRY) return;
+	ind->psa.Store(pos, value);
+}
+
 static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus, IndustryType type)
 {
 	res->GetRandomBits = IndustryGetRandomBits;
@@ -383,8 +396,8 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->SetTriggers   = IndustrySetTriggers;
 	res->GetVariable   = IndustryGetVariable;
 	res->ResolveReal   = IndustryResolveReal;
+	res->StorePSA      = IndustryStorePSA;
 
-	res->psa             = &indus->psa;
 	res->u.industry.tile = tile;
 	res->u.industry.ind  = indus;
 	res->u.industry.gfx  = INVALID_INDUSTRYTILE;

@@ -228,9 +228,9 @@ static void AirportTileResolver(ResolverObject *res, const AirportTileSpec *ats,
 	res->SetTriggers   = NULL;
 	res->GetVariable   = AirportTileGetVariable;
 	res->ResolveReal   = AirportTileResolveReal;
+	res->StorePSA      = NULL;
 
 	assert(st != NULL);
-	res->psa                  = NULL;
 	res->u.airport.airport_id = st->airport.type;
 	res->u.airport.st         = st;
 	res->u.airport.tile       = tile;

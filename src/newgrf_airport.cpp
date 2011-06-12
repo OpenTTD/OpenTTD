@@ -184,6 +184,19 @@ static void AirportSetTriggers(const ResolverObject *object, int triggers)
 {
 }
 
+/**
+ * Store a value into the object's persistent storage.
+ * @param object Object that we want to query.
+ * @param pos Position in the persistent storage to use.
+ * @param value Value to store.
+ */
+void AirportStorePSA(ResolverObject *object, uint pos, int32 value)
+{
+	Station *st = object->u.airport.st;
+	if (object->scope != VSG_SCOPE_SELF || st == NULL) return;
+	st->airport.psa.Store(pos, value);
+}
+
 static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st, byte airport_id, byte layout)
 {
 	res->GetRandomBits = AirportGetRandomBits;
@@ -191,8 +204,8 @@ static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st,
 	res->SetTriggers   = AirportSetTriggers;
 	res->GetVariable   = AirportGetVariable;
 	res->ResolveReal   = AirportResolveReal;
+	res->StorePSA      = AirportStorePSA;
 
-	res->psa                  = st != NULL ? &st->airport.psa : NULL;
 	res->u.airport.st         = st;
 	res->u.airport.airport_id = airport_id;
 	res->u.airport.layout     = layout;
