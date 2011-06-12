@@ -158,6 +158,7 @@ void TownStorePSA(Town *t, const GRFFile *caller_grffile, uint pos, int32 value)
 	}
 
 	/* Create a new storage. */
+	assert(PersistentStorage::CanAllocateItem());
 	PersistentStorage *psa = new PersistentStorage(grfid);
 	psa->StoreValue(pos, value);
 	t->psa_list.push_back(psa);

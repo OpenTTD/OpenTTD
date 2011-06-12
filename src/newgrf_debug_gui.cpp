@@ -164,9 +164,18 @@ public:
 	}
 
 	/**
+	 * Used to decide if the PSA needs a parameter or not.
+	 * @return True iff this item has a PSA that requires a parameter.
+	 */
+	virtual bool PSAWithParameter() const
+	{
+		return false;
+	}
+
+	/**
 	 * Allows to know the size of the persistent storage.
 	 * @param index Index of the item.
-	 * @param grfid Unused.
+	 * @param grfid Parameter for the PSA. Only required for items with parameters.
 	 * @return Size of the persistent storage in indices.
 	 */
 	virtual uint GetPSASize(uint index, uint32 grfid) const
@@ -177,7 +186,7 @@ public:
 	/**
 	 * Gets the first position of the array containing the persistent storage.
 	 * @param index Index of the item.
-	 * @param grfid Unused.
+	 * @param grfid Parameter for the PSA. Only required for items with parameters.
 	 * @return Pointer to the first position of the storage array or NULL if not present.
 	 */
 	virtual int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
@@ -388,10 +397,14 @@ struct NewGRFInspectWindow : Window {
 			}
 		}
 
-		uint psa_size = nih->GetPSASize(index, 0);
-		int32 *psa = nih->GetPSAFirstPosition(index, 0);
+		uint psa_size = nih->GetPSASize(index, this->caller_grfid);
+		int32 *psa = nih->GetPSAFirstPosition(index, this->caller_grfid);
 		if (psa_size != 0 && psa != NULL) {
-			this->DrawString(r, i++, "Persistent storage:");
+			if (nih->PSAWithParameter()) {
+				this->DrawString(r, i++, "Persistent storage [%08X]:", BSWAP32(this->caller_grfid));
+			} else {
+				this->DrawString(r, i++, "Persistent storage:");
+			}
 			assert(psa_size % 4 == 0);
 			for (uint j = 0; j < psa_size; j += 4, psa += 4) {
 				this->DrawString(r, i++, "  %i: %i %i %i %i", j, psa[0], psa[1], psa[2], psa[3]);
