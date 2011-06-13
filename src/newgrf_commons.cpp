@@ -536,7 +536,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 	result->image = ground;
 	result->delta_x = 0;
 	result->delta_y = 0;
-	result->delta_z = 0x80;
+	result->delta_z = (int8)0x80;
 
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, this->seq) {
