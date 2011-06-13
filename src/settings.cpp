@@ -143,7 +143,7 @@ static size_t LookupManyOfMany(const char *many, const char *str)
 		r = LookupOneOfMany(many, str, s - str);
 		if (r == (size_t)-1) return r;
 
-		SetBit(res, r); // value found, set it
+		SetBit(res, (uint8)r); // value found, set it
 		if (*s == 0) break;
 		str = s + 1;
 	}
