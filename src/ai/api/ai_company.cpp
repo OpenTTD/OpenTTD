@@ -101,13 +101,64 @@
 	return HasBit(ge, ::GENDER_FEMALE) ? GENDER_FEMALE : GENDER_MALE;
 }
 
-/* static */ Money AICompany::GetCompanyValue(AICompany::CompanyID company)
+/* static */ Money AICompany::GetQuarterlyIncome(AICompany::CompanyID company, uint32 quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
+	if (quarter > EARLIEST_QUARTER) return -1;
 
-	return ::CalculateCompanyValue(::Company::Get((CompanyID)company));
+	if (quarter == CURRENT_QUARTER) {
+		return ::Company::Get((::CompanyID)company)->cur_economy.income;
+	}
+	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].income;
 }
+
+/* static */ Money AICompany::GetQuarterlyExpenses(AICompany::CompanyID company, uint32 quarter)
+{
+	company = ResolveCompanyID(company);
+	if (company == COMPANY_INVALID) return -1;
+	if (quarter > EARLIEST_QUARTER) return -1;
+
+	if (quarter == CURRENT_QUARTER) {
+		return ::Company::Get((::CompanyID)company)->cur_economy.expenses;
+	}
+	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].expenses;
+}
+
+/* static */ int32 AICompany::GetQuarterlyCargoDelivered(AICompany::CompanyID company, uint32 quarter)
+{
+	company = ResolveCompanyID(company);
+	if (company == COMPANY_INVALID) return -1;
+	if (quarter > EARLIEST_QUARTER) return -1;
+
+	if (quarter == CURRENT_QUARTER) {
+		return ::Company::Get((::CompanyID)company)->cur_economy.delivered_cargo;
+	}
+	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].delivered_cargo;
+}
+
+/* static */ int32 AICompany::GetQuarterlyPerformanceRating(AICompany::CompanyID company, uint32 quarter)
+{
+	company = ResolveCompanyID(company);
+	if (company == COMPANY_INVALID) return -1;
+	if (quarter > EARLIEST_QUARTER) return -1;
+	if (quarter == CURRENT_QUARTER) return -1;
+
+	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].performance_history;
+}
+
+/* static */ Money AICompany::GetQuarterlyCompanyValue(AICompany::CompanyID company, uint32 quarter)
+{
+	company = ResolveCompanyID(company);
+	if (company == COMPANY_INVALID) return -1;
+	if (quarter > EARLIEST_QUARTER) return -1;
+
+	if (quarter == CURRENT_QUARTER) {
+		return ::CalculateCompanyValue(::Company::Get((::CompanyID)company));
+	}
+	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].company_value;
+}
+
 
 /* static */ Money AICompany::GetBankBalance(AICompany::CompanyID company)
 {

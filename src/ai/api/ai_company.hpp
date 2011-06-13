@@ -22,6 +22,12 @@ public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AICompany"; }
 
+	/** The range of possible quarters to get company information of. */
+	enum Quarter {
+		CURRENT_QUARTER = 0,                     ///< The current quarter.
+		EARLIEST_QUARTER = MAX_HISTORY_QUARTERS, ///< The earliest quarter company information is available for.
+	};
+
 	/** Different constants related to CompanyID. */
 	enum CompanyID {
 		COMPANY_FIRST   = 0,               ///< The first available company.
@@ -149,20 +155,64 @@ public:
 	static Money GetLoanInterval();
 
 	/**
-	 * Gets the current value of the given company.
-	 * @param company The company to get the company value of.
-	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @return The current value of the given company.
-	 */
-	static Money GetCompanyValue(CompanyID company);
-
-	/**
 	 * Gets the bank balance. In other words, the amount of money the given company can spent.
 	 * @param company The company to get the bank balance of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The actual bank balance.
 	 */
 	static Money GetBankBalance(CompanyID company);
+
+	/**
+	 * Get the income of the company in the given quarter.
+	 * @param company The company to get the quarterly income of.
+	 * @param quarter The quarter to get the income of.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre quarter <= EARLIEST_QUARTER.
+	 * @return The bruto income of the company in the given quarter.
+	 */
+	static Money GetQuarterlyIncome(CompanyID company, uint32 quarter);
+
+	/**
+	 * Get the expenses of the company in the given quarter.
+	 * @param company The company to get the quarterly expenses of.
+	 * @param quarter The quarter to get the expenses of.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre quarter <= EARLIEST_QUARTER.
+	 * @return The expenses of the company in the given quarter.
+	 */
+	static Money GetQuarterlyExpenses(CompanyID company, uint32 quarter);
+
+	/**
+	 * Get the amount of cargo delivered by the given company in the given quarter.
+	 * @param company The company to get the amount of delivered cargo of.
+	 * @param quarter The quarter to get the amount of delivered cargo of.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre quarter <= EARLIEST_QUARTER.
+	 * @return The amount of cargo delivered by the given company in the given quarter.
+	 */
+	static int32 GetQuarterlyCargoDelivered(CompanyID company, uint32 quarter);
+
+	/**
+	 * Get the performance rating of the given company in the given quarter.
+	 * @param company The company to get the performance rating of.
+	 * @param quarter The quarter to get the performance rating of.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre quarter <= EARLIEST_QUARTER.
+	 * @pre quarter != CURRENT_QUARTER.
+	 * @note The performance rating is calculated after every quarter, so the value for CURRENT_QUARTER is undefined.
+	 * @return The performance rating of the given company in the given quarter.
+	 */
+	static int32 GetQuarterlyPerformanceRating(CompanyID company, uint32 quarter);
+
+	/**
+	 * Get the value of the company in the given quarter.
+	 * @param company The company to get the value of.
+	 * @param quarter The quarter to get the value of.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @pre quarter <= EARLIEST_QUARTER.
+	 * @return The value of the company in the given quarter.
+	 */
+	static Money GetQuarterlyCompanyValue(CompanyID company, uint32 quarter);
 
 	/**
 	 * Build your company's HQ on the given tile.

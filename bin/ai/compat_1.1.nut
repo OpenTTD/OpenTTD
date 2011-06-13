@@ -8,3 +8,8 @@
  */
 
 AILog.Info("1.1 API compatability in effect.");
+
+AICompany.GetCompanyValue <- function(company)
+{
+	return AICompany.GetQuarterlyCompanyValue(company, AICompany.CURRENT_QUARTER);
+}

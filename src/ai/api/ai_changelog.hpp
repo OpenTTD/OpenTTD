@@ -19,6 +19,17 @@
  *
  * 1.2.0 is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ *
+ * \li AICompany::GetQuarterlyIncome
+ * \li AICompany::GetQuarterlyExpenses
+ * \li AICompany::GetQuarterlyCargoDelivered
+ * \li AICompany::GetQuarterlyPerformanceRating
+ * \li AICompany::GetQuarterlyCompanyValue
+ *
+ * API removals:
+ * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.
+ *
  * \b 1.1.0
  *
  * API additions:

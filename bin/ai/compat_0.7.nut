@@ -321,3 +321,8 @@ AIAbstractList <- AIList;
 AIList.ChangeItem <- AIList.SetValue;
 
 AIRail.ERR_NONUNIFORM_STATIONS_DISABLED <- 0xFFFF;
+
+AICompany.GetCompanyValue <- function(company)
+{
+	return AICompany.GetQuarterlyCompanyValue(company, AICompany.CURRENT_QUARTER);
+}
