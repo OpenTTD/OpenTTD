@@ -2624,7 +2624,7 @@ bool AfterLoadGame()
 		if (!IsSavegameVersionBefore(145)) {
 			Station *st;
 			FOR_ALL_STATIONS(st) {
-				if (!st->facilities & FACIL_AIRPORT) continue;
+				if (!(st->facilities & FACIL_AIRPORT)) continue;
 				assert(st->airport.psa != NULL);
 
 				/* Check if the old storage was empty. */
