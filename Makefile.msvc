@@ -39,4 +39,4 @@ bundle_pdb:
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).pdb.xz'
 	$(Q)mkdir -p "$(BUNDLES_DIR)"
 	$(Q)cp objs/$(TARGET)/Release/$(PDB) $(BUNDLES_DIR)/$(BUNDLE_NAME).pdb
-	$(Q)cd xz -9 $(BUNDLES_DIR)/$(BUNDLE_NAME).pdb
+	$(Q)xz -9 $(BUNDLES_DIR)/$(BUNDLE_NAME).pdb
