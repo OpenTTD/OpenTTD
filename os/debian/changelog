@@ -4,6 +4,18 @@ openttd (1.2.0~alpha) unstable; urgency=low
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 01 Apr 2011 00:00:01 +0100
 
+openttd (1.1.1) unstable; urgency=low
+
+  * New upstream release 1.1.1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 01 Jun 2011 00:00:00 +0200
+
+openttd (1.1.1~RC1) unstable; urgency=low
+
+  * New upstream release 1.1.1-RC1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 15 May 2011 21:00:00 +0200
+
 openttd (1.1.0) unstable; urgency=low
 
   * New upstream release 1.1.0
