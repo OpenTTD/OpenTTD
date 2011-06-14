@@ -339,6 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브�
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :시나리오 저장
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :시나리오 불러오기
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Heightmap 저장
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Heightmap 불러오기
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :에디터 종료
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1344,6 +1345,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :오리지널
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(추천)
 
@@ -2277,6 +2279,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}게임 �
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}시나리오 저장하기
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}시나리오 불러오기
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Heightmap 불러오기
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Heightmap 저장
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 남음
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
