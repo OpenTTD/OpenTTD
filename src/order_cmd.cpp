@@ -1808,8 +1808,9 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
  * @param order the order the vehicle currently has
  * @param v the vehicle to update
  * @param conditional_depth the depth (amount of steps) to go with conditional orders. This to prevent infinite loops.
+ * @param pbs_look_ahead Whether we are forecasting orders for pbs reservations in advance. If true, the order indices must not be modified.
  */
-bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
+bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool pbs_look_ahead)
 {
 	if (conditional_depth > v->GetNumOrders()) return false;
 
@@ -1820,6 +1821,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 
 		case OT_GOTO_DEPOT:
 			if ((order->GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) {
+				assert(!pbs_look_ahead);
 				UpdateVehicleTimetable(v, true);
 				v->IncrementRealOrderIndex();
 				break;
@@ -1832,6 +1834,9 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 				bool reverse;
 
 				if (v->FindClosestDepot(&location, &destination, &reverse)) {
+					/* PBS reservations cannot reverse */
+					if (pbs_look_ahead && reverse) return false;
+
 					v->dest_tile = location;
 					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), v->current_order.GetNonStopType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo(), v->current_order.GetRefitSubtype());
 
@@ -1849,6 +1854,9 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 					return true;
 				}
 
+				/* If there is no depot, we cannot help PBS either. */
+				if (pbs_look_ahead) return false;
+
 				UpdateVehicleTimetable(v, true);
 				v->IncrementRealOrderIndex();
 			} else {
@@ -1864,6 +1872,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			return true;
 
 		case OT_CONDITIONAL: {
+			assert(!pbs_look_ahead);
 			VehicleOrderID next_order = ProcessConditionalOrder(order, v);
 			if (next_order != INVALID_VEH_ORDER_ID) {
 				/* Jump to next_order. cur_implicit_order_index becomes exactly that order,
@@ -1908,7 +1917,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 	}
 
 	v->current_order = *order;
-	return UpdateOrderDest(v, order, conditional_depth + 1);
+	return UpdateOrderDest(v, order, conditional_depth + 1, pbs_look_ahead);
 }
 
 /**

@@ -2340,8 +2340,7 @@ public:
 				case OT_GOTO_STATION:
 				case OT_GOTO_WAYPOINT:
 					this->v->current_order = *order;
-					UpdateOrderDest(this->v, order);
-					return true;
+					return UpdateOrderDest(this->v, order, 0, true);
 				case OT_CONDITIONAL: {
 					if (conditional_depth > this->v->GetNumOrders()) return false;
 					VehicleOrderID next = ProcessConditionalOrder(order, this->v);
