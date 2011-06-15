@@ -165,8 +165,8 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} teithiwr
-STR_BAGS                                                        :{COMMA} bag
+STR_PASSENGERS                                                  :{COMMA} teithiwr{P "" s}
+STR_BAGS                                                        :{COMMA} bag{P "" s}
 STR_TONS                                                        :{COMMA} tunnell
 STR_LITERS                                                      :{COMMA} litr
 STR_ITEMS                                                       :{COMMA} eitem
@@ -429,7 +429,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gwybodaeth arda
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol
 STR_ABOUT_MENU_AI_DEBUG                                         :Dadfygio AI
-STR_ABOUT_MENU_SCREENSHOT                                       :Ciplun (Ctrl-S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Llun Sgrîn
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ciplun anferth (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Gwybodaeth am 'OpenTTD'
 ############ range ends here
@@ -1093,15 +1093,15 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :o bob cerbyd
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Rhybuddio os yw cerbyd yn gwneud colled: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nid yw cerbydau'n darfod: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Awtoadnewyddu cerbyd pan aiff yn hen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Awtoadnewyddu cerbyd {ORANGE}{STRING}{LTBLUE} mis cyn ei oedran eithaf
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Awtoadnewyddu cerbyd {ORANGE}{STRING}{LTBLUE} mis{P 0:1 "" oedd} cyn ei oedran eithaf
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Isafswm arain awtoadnewyddu ar gyfer adolygu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Cyfnod dangos neges wall: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Cyfnod dangos neges wall: {ORANGE}{STRING} eiliad{P 0:1 "" s}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Dangos poblogaeth tref yn label y dref: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Cynhyrchydd Tir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gwreiddiol
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Uchafswm pellter o'r ymyl ar gyfer Purfeydd Olew {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Uchafswm pellter o'r ymyl ar gyfer Purfeydd Olew {ORANGE}{STRING} sgwar{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Uchder Llinell Eira: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Garwder y tirwedd (TerraGenesis yn unig) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Llyfn Iawn
@@ -1149,6 +1149,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :hir (31fed Rhag
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :byr(31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Oedi'n awtomatig wrth gychwyn gêm newydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Defnyddio'r rhestr cerbydau uwch {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Dangos llwytho: {ORANGE}{STRING}
@@ -1192,7 +1193,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Bydd ne
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Blwyddyn gychwyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Galluogi economi llyfn (mwy o newidiadau llai): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pan yn llusgo, gosod signalau bob: {ORANGE}{STRING} sgwâr
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pan yn llusgo, gosod signalau bob: {ORANGE}{STRING} sgwâr{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Adeiladu semafforau cyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Galluogi'r GUI signalau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Y math o signal i'w adeiladu fel rhagosodiad: {ORANGE}{STRING}
@@ -1665,7 +1666,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :collwyd y cyswl
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :gwall protocol
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF ddim yn cyfateb
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :heb ei awdurdodi
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :wedi derbyn paced od
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :wedi derbyn paced od neu anghywir
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :fersiwn anghywir
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :enw eisoes mewn defnydd
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :cyfrinair anghywir
@@ -1954,7 +1955,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plannu c
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Cynhyrchu Tirwedd
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Gosod ardaloedd creigiog ar y tirwedd
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pennu ardal anialwch.{}Gwasgwch a dal CTRL i lawr i gael gwared ohono
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pennu ardal anialwch.{}Dal CTRL i gael gwared ohono
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Cynyddu'r arwynebedd tir i'w godi neu ostwng
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Lleihau'r arwynebedd tir i'w godi neu ostwng
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Cynhyrchu Tir ar Hap
@@ -2016,7 +2017,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Perchenn
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Perchennog rheilffordd: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Awdurdod Lleol: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Dim
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Cyfeirnodau: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Cyfeirnodau: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Adeiladwyd: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Dosbarth gorsaf: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Math gorsaf: {LTBLUE}{STRING}
@@ -2174,7 +2175,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Â Llaw
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Cylchdro Map Uchder:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Enw'r Map Uchder
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Maint:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Rhowch hedyn hap
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Newid uchder Llinell Eira
@@ -2293,7 +2294,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Gall dad
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Mae ymddygiad NewGRF '{0:STRING}' yn debygol o beri dadsyncroneiddio ac/neu crasio.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Bydd yn newid hyd cerbyd i '{1:ENGINE}' pan na fyddd o fewn y depo.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Wedi newid hyd cerbyd i '{1:ENGINE}' pan na fyddai mewn depo.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Mae gan y trên'{VEHICLE}' sy'n eiddo i '{COMPANY}' hyd annilys. Mwy na thebyg fe'u hachoswyd gan NewGRFau. Gall y gêm ddadsyncroneiddio neu grasio.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Mae NewGRF '{0:STRING}' yn darparu gwybodaeth anghywir.
@@ -2378,7 +2379,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliciwch
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Enwau Gorsafoedd - cliciwch ar enw i ganoli'r brif olygfa ar yr orsaf
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Gwasgwch a daliwch CTRL i ddewis mwy nag un
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Daliwch CTRL i ddewis mwy nag un eitem
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Gorsaf{P "" oedd}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Dim -
@@ -2596,7 +2597,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Cyflymde
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Côst Rhedeg: {GOLD}{CURRENCY}/flwyddyn
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Gallu cludo: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(gallu ailffitio)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Cynlluniwyd: {GOLD}{NUM}{BLACK} Bywyd: {GOLD}{COMMA} mlynedd
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Cynlluniwyd: {GOLD}{NUM}{BLACK} Bywyd: {GOLD}{COMMA} mlynedd{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Dibynadwyedd Uchaf : {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Côst: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pwysau: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
@@ -3279,7 +3280,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Does dim
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Does dim modd tynnu'r pwynt llwybr trên yma...
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bwi yn y ffordd
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bwi mewn defnydd!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bwi mewn defnydd gan cwmni arall!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Methu adeiladu trên depo yma...
@@ -3288,10 +3289,10 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Methu ad
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Methu adeiladu depo llong yma...
 
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Rhaid i'r trên fod wedi'i stopio mewn depo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Rhaid i'r llong fod wedi'i stopio mewn depo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Rhaid i awyrennau rhaid i awyrennau fod wedi'i stopio mewn awyrendy
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... wedi'i stopio mewn depo
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... rhaid iddo stopio mewn depo
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... fod wedi'i stopio mewn depo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... fod wedi'i stopio mewn awyrendâi
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Gellir newid trenau yn unig pan fyddan nhw wedi stopio tu mewn i ddepo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Mae'r Trên yn rhy hir
