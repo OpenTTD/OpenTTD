@@ -13,6 +13,7 @@
 #include "bmp.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_func.hpp"
+#include "core/mem_func.hpp"
 
 void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file)
 {
@@ -287,6 +288,7 @@ bool BmpReadHeader(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	uint32 header_size;
 	assert(info != NULL);
+	MemSetT(info, 0);
 
 	/* Reading BMP header */
 	if (ReadWord(buffer) != 0x4D42) return false; // signature should be 'BM'
