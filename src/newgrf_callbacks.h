@@ -56,7 +56,7 @@ enum CallbackID {
 	CBID_HOUSE_ALLOW_CONSTRUCTION        = 0x17, // 8 bit callback
 
 	/** AI construction/purchase selection */
-	CBID_GENERIC_AI_PURCHASE_SELECTION   = 0x18, // 8 bit callback, not implemented
+	CBID_GENERIC_AI_PURCHASE_SELECTION   = 0x18, // 8 bit callback, implemented for stations only
 
 	/** Determine the cargo "suffixes" for each refit possibility of a cargo. */
 	CBID_VEHICLE_CARGO_SUFFIX            = 0x19,
