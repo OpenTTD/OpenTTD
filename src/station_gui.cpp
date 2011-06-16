@@ -84,7 +84,7 @@ static int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	if (tile < MapSize()) {
+	if (_thd.drawstyle == HT_RECT && tile < MapSize()) {
 		CargoArray cargos;
 		if (supplies) {
 			cargos = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
