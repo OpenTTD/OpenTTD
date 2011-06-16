@@ -1004,12 +1004,9 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 		this->preset = index;
 
 		if (index != -1) {
-			GRFConfig *c = LoadGRFPresetFromConfig(_grf_preset_list[index]);
-
-			this->active_sel = NULL;
-			this->actives = c;
-			this->avails.ForceRebuild();
+			this->actives = LoadGRFPresetFromConfig(_grf_preset_list[index]);
 		}
+		this->avails.ForceRebuild();
 
 		DeleteWindowByClass(WC_GRF_PARAMETERS);
 		this->active_sel = NULL;
