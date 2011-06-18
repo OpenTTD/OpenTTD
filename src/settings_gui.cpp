@@ -475,6 +475,8 @@ struct GameOptionsWindow : Window {
 
 		missing_files = BaseMusic::GetUsedSet()->GetNumInvalid() == 0;
 		this->GetWidget<NWidgetCore>(GOW_BASE_MUSIC_STATUS)->SetDataTip(missing_files ? STR_EMPTY : STR_GAME_OPTIONS_BASE_MUSIC_STATUS, STR_NULL);
+
+		InitGRFTownGeneratorNames();
 	}
 };
 
