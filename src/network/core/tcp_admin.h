@@ -295,6 +295,7 @@ protected:
 	 * uint64  Money.
 	 * uint64  Loan.
 	 * uint64  Income.
+	 * uint16  Delivered cargo (this quarter).
 	 * uint64  Company value (last quarter).
 	 * uint16  Performance (last quarter).
 	 * uint16  Delivered cargo (last quarter).
