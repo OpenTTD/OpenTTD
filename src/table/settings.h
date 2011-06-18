@@ -34,7 +34,7 @@ static bool DifficultyChange(int32);
 static bool DifficultyNoiseChange(int32 i);
 static bool MaxNoAIsChange(int32 i);
 static bool CheckRoadSide(int p1);
-static int32 ConvertLandscape(const char *value);
+static size_t ConvertLandscape(const char *value);
 static bool CheckFreeformEdges(int32 p1);
 static bool ChangeDynamicEngines(int32 p1);
 static bool StationCatchmentChanged(int32 p1);

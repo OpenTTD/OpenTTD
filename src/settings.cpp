@@ -97,10 +97,10 @@ static const char * const _list_group_names[] = {
  * @param onelen force calculation of the *one parameter
  * @return the integer index of the full-list, or -1 if not found
  */
-static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
+static size_t LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
 {
 	const char *s;
-	int idx;
+	size_t idx;
 
 	if (onelen == 0) onelen = strlen(one);
 
@@ -113,7 +113,7 @@ static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
 		s = many;
 		while (*s != '|' && *s != 0) s++;
 		if ((size_t)(s - many) == onelen && !memcmp(one, many, onelen)) return idx;
-		if (*s == 0) return -1;
+		if (*s == 0) return (size_t)-1;
 		many = s + 1;
 		idx++;
 	}
@@ -126,11 +126,11 @@ static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
  * of seperated by a whitespace,tab or | character
  * @return the 'fully' set integer, or -1 if a set is not found
  */
-static uint32 LookupManyOfMany(const char *many, const char *str)
+static size_t LookupManyOfMany(const char *many, const char *str)
 {
 	const char *s;
-	int r;
-	uint32 res = 0;
+	size_t r;
+	size_t res = 0;
 
 	for (;;) {
 		/* skip "whitespace" */
@@ -141,7 +141,7 @@ static uint32 LookupManyOfMany(const char *many, const char *str)
 		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
 
 		r = LookupOneOfMany(many, str, s - str);
-		if (r == -1) return (uint32)-1;
+		if (r == (size_t)-1) return r;
 
 		SetBit(res, r); // value found, set it
 		if (*s == 0) break;
@@ -339,24 +339,24 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 	switch (desc->cmd) {
 	case SDT_NUMX: {
 		char *end;
-		unsigned long val = strtoul(str, &end, 0);
+		size_t val = strtoul(str, &end, 0);
 		if (*end != '\0') ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
 		return (void*)val;
 	}
 	case SDT_ONEOFMANY: {
-		long r = LookupOneOfMany(desc->many, str);
+		size_t r = LookupOneOfMany(desc->many, str);
 		/* if the first attempt of conversion from string to the appropriate value fails,
 		 * look if we have defined a converter from old value to new value. */
-		if (r == -1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
-		if (r != -1) return (void*)r; // and here goes converted value
+		if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
+		if (r != (size_t)-1) return (void*)r; // and here goes converted value
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name); // sorry, we failed
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
-		unsigned long r = LookupManyOfMany(desc->many, str);
-		if (r != (unsigned long)-1) return (void*)r;
+		size_t r = LookupManyOfMany(desc->many, str);
+		if (r != (size_t)-1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
-		return 0;
+		return NULL;
 	}
 	case SDT_BOOLX:
 		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
@@ -571,15 +571,15 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 					break;
 				case SLE_VAR_I8:
 				case SLE_VAR_U8:
-					if (*(byte*)ptr == (byte)(unsigned long)p) continue;
+					if (*(byte*)ptr == (byte)(size_t)p) continue;
 					break;
 				case SLE_VAR_I16:
 				case SLE_VAR_U16:
-					if (*(uint16*)ptr == (uint16)(unsigned long)p) continue;
+					if (*(uint16*)ptr == (uint16)(size_t)p) continue;
 					break;
 				case SLE_VAR_I32:
 				case SLE_VAR_U32:
-					if (*(uint32*)ptr == (uint32)(unsigned long)p) continue;
+					if (*(uint32*)ptr == (uint32)(size_t)p) continue;
 					break;
 				default: NOT_REACHED();
 				}
@@ -1059,7 +1059,7 @@ static bool CheckRoadSide(int p1)
  * @param value that was read from config file
  * @return the "hopefully" converted value
  */
-static int32 ConvertLandscape(const char *value)
+static size_t ConvertLandscape(const char *value)
 {
 	/* try with the old values */
 	return LookupOneOfMany("normal|hilly|desert|candy", value);
