@@ -20,8 +20,7 @@
  */
 struct BaseStorageArray
 {
-	/** The needed destructor */
-	virtual ~BaseStorageArray() {}
+	virtual ~BaseStorageArray();
 
 	/**
 	 * Clear the changes made since the last ClearChanges.

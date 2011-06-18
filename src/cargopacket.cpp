@@ -216,7 +216,7 @@ void CargoList<Tinst>::Truncate(uint max_remaining)
 		CargoPacket *cp = *it;
 		if (max_remaining == 0) {
 			/* Nothing should remain, just remove the packets. */
-			this->packets.erase(it++);
+			it = this->packets.erase(it);
 			static_cast<Tinst *>(this)->RemoveFromCache(cp);
 			delete cp;
 			continue;
@@ -276,7 +276,7 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 		if (cp->count <= max_move) {
 			/* Can move the complete packet */
 			max_move -= cp->count;
-			this->packets.erase(it++);
+			it = this->packets.erase(it);
 			static_cast<Tinst *>(this)->RemoveFromCache(cp);
 			switch (mta) {
 				case MTA_FINAL_DELIVERY:
