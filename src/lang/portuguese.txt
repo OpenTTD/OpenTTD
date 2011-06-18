@@ -2476,6 +2476,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapa
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}O conjunto de gráficos base actual tem objectos gráficos em falta.{}Por favor faça a sua actualização.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :{G=m}Recursos GRF pedidos não disponíveis
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} foi desactivado por {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato gráfico inválido/desconhecido
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
