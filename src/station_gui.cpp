@@ -84,7 +84,8 @@ static int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	if (tile < MapSize()) {
+	uint32 cargo_mask = 0;
+	if (_thd.drawstyle == HT_RECT && tile < MapSize()) {
 		CargoArray cargos;
 		if (supplies) {
 			cargos = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
@@ -93,7 +94,6 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 		}
 
 		/* Convert cargo counts to a set of cargo bits, and draw the result. */
-		uint32 cargo_mask = 0;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			switch (sct) {
 				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
@@ -103,11 +103,9 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 			}
 			if (cargos[i] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, i);
 		}
-		Rect r = {left, top, right, INT32_MAX};
-		return DrawCargoListText(cargo_mask, r, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
 	}
-
-	return top;
+	Rect r = {left, top, right, INT32_MAX};
+	return DrawCargoListText(cargo_mask, r, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
 }
 
 /**

@@ -27,9 +27,21 @@ SRC_DIR     = "$(ROOT_DIR)/src"
 BUNDLE_DIR  = "$(ROOT_DIR)/bundle"
 BUNDLES_DIR = "$(ROOT_DIR)/bundles"
 TTD         = openttd.exe
+PDB         = openttd.pdb
+MODE        = Release
 TARGET     := $(shell echo $(PLATFORM) | sed "s@win64@x64@;s@win32@Win32@")
 
 all:
-	$(Q)cp objs/$(TARGET)/Release/$(TTD) $(BIN_DIR)/$(TTD)
+	$(Q)cp objs/$(TARGET)/$(MODE)/$(TTD) $(BIN_DIR)/$(TTD)
 
 include Makefile.bundle.in
+
+bundle_pdb:
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).pdb.xz'
+	$(Q)mkdir -p "$(BUNDLES_DIR)"
+	$(Q)cp objs/$(TARGET)/Release/$(PDB) $(BUNDLES_DIR)/$(BUNDLE_NAME).pdb
+	$(Q)xz -9 $(BUNDLES_DIR)/$(BUNDLE_NAME).pdb
+
+regression: all
+	$(Q)cp bin/$(TTD) bin/openttd
+	$(Q)cd bin && sh ai/regression/run.sh

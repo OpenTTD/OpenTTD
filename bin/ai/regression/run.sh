@@ -28,6 +28,7 @@ else
 	./openttd -x -c ai/regression/regression.cfg $params -g ai/regression/regression.sav -d ai=2 2>&1 | awk '{ gsub("0x(\\(nil\\)|0+)(x0)?", "0x00000000", $0); gsub("^dbg: \\[ai\\]", "", $0); gsub("^ ", "ERROR: ", $0); gsub("ERROR: \\[1\\] ", "", $0); gsub("\\[P\\] ", "", $0); print $0; }' > tmp.regression
 fi
 
+ret=0
 if [ -z "$gdb" ]; then
 	res="`diff -ub ai/regression/regression.txt tmp.regression`"
 	if [ -z "$res" ]; then
@@ -35,6 +36,7 @@ if [ -z "$gdb" ]; then
 	else
 		echo "Regression test failed! Difference:"
 		echo "$res"
+		ret=1
 	fi
 	echo ""
 	echo "Regression test done"
@@ -49,3 +51,5 @@ fi
 if [ "$1" != "-k" ]; then
 	rm -f tmp.regression
 fi
+
+exit $ret
