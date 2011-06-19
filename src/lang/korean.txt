@@ -1225,6 +1225,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2008년 12
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2008.12.31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}NewGRF에서 자체 설정된 팔레트가 없을 경우 기본으로 설정할 팔레트: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :도스 팔레트
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :윈도우 팔레트
 
@@ -2473,6 +2474,9 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Action 8 엔트리가 여러 개 존재합니다.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :객체의 읽기 범위를 초과했습니다.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}최근에 이용한 기본 그래픽 세트에 객체가 많이 손실되었습니다.{}기본 그래픽 세트를 업데이트 하십시오.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :요청한 GRF 제원을 사용할 수 없습니다
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING}(은)는 {4:STRING} 때문에 사용할 수 없습니다
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :유효하지 않은/알수 없는 스프라이트 구조 형식
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}경고!
@@ -3740,6 +3744,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차�
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}열차를 회차시킬 수 없습니다...
+STR_ERROR_TRAIN_START_NO_POWER                                  :동력차가 없습니다
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}자동차를 U턴시킬 수 없습니다...
 
