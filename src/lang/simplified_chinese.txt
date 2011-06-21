@@ -1028,6 +1028,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}市政�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :没有
+STR_FUNDING_ONLY                                                :不生成
+STR_MINIMAL                                                     :每种仅一个
 STR_NUM_VERY_LOW                                                :非常低
 STR_NUM_LOW                                                     :低
 STR_NUM_NORMAL                                                  :一般
@@ -3751,6 +3753,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}车辆�
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一个共享此调度计划的载具无法到达那个车站
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}不能共享调度计划……
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}不能停止共享调度计划……
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}不能复制调度计划……
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}……距离前一目的地太远
 
