@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Fermu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj opcioj
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Malfacilec-agordoj
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancitaj agordoj
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Ebloj por travidebleco
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
@@ -1935,6 +1936,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elektu R
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elektu Vojan Ponton
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pontelekto - klaku vian preferatan ponton por konstrui ĝin
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ŝtala pendanta
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ŝtala ebena
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ŝtala luksa
@@ -3268,7 +3270,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elekti j
 STR_AI_DEBUG                                                    :{WHITE}Sencimigo de la AI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nomo de la AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Agordoj de la AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Agordoj
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi agordojn de la AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reŝarĝi AI-on
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mortigi la AI-on, reŝarĝi la skripton, kaj restarti la AI-on
