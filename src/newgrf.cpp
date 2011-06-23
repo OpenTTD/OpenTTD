@@ -1572,7 +1572,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				statspec->animation.triggers = buf->ReadWord();
 				break;
 
-			case 0x20: // Advanced sprite layout
+			case 0x1A: // Advanced sprite layout
 				statspec->tiles = buf->ReadExtendedByte();
 				delete[] statspec->renderdata; // delete earlier loaded stuff
 				statspec->renderdata = new NewGRFSpriteLayout[statspec->tiles];
