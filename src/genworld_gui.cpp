@@ -602,12 +602,22 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				this->SetDirty();
 				break;
 
-			case GLAND_GENERATE_BUTTON: // Generate
+			case GLAND_GENERATE_BUTTON: { // Generate
+				/* Get rotated map size. */
+				uint map_x;
+				uint map_y;
+				if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
+					map_x = this->y;
+					map_y = this->x;
+				} else {
+					map_x = this->x;
+					map_y = this->y;
+				}
 				if (mode == GLWM_HEIGHTMAP &&
-						(this->x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
-						this->x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
-						this->y * 2 < (1U << _settings_newgame.game_creation.map_y) ||
-						this->y / 2 > (1U << _settings_newgame.game_creation.map_y))) {
+						(map_x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
+						map_x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
+						map_y * 2 < (1U << _settings_newgame.game_creation.map_y) ||
+						map_y / 2 > (1U << _settings_newgame.game_creation.map_y))) {
 					ShowQuery(
 						STR_WARNING_HEIGHTMAP_SCALE_CAPTION,
 						STR_WARNING_HEIGHTMAP_SCALE_MESSAGE,
@@ -617,6 +627,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 					StartGeneratingLandscape(mode);
 				}
 				break;
+			}
 
 			case GLAND_START_DATE_DOWN:
 			case GLAND_START_DATE_UP: // Year buttons
