@@ -463,6 +463,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Помі
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Зберегти сценарій
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Завантажити сценарій
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Зберегти карту висот
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Завантажити карту висот
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Вийти з редактору
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1348,6 +1349,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :довгий (3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Стандартна палітра для NewGRF пакунків, для яких її не встановлено: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Палітра DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Палітра Windows
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Дозволити коли на паузі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :немає дій
@@ -1465,6 +1470,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Пої�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Міста
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Промисловість
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :оригінальна
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(рекомендовано)
 
@@ -2398,6 +2404,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Зава
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Зберегти сценарій
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Завантажити сценарій
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Завантажити ландшафт
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Зберегти карту висот
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Натисніть для переходу до поточного каталогу збереження/завантаження
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} вільно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список пристроїв, каталогів і збережених файлів гри
@@ -2591,6 +2598,9 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Містить багато записів Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Читання за кінцем псевдоспрайту
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У базовому наборі графіки, що зараз використовується не вистачає спрайтів.{}Будь-ласка оновіть базовий набір графіки
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Запитуваний GRF ресурс є недоступним
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} був вимкнений {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Невірний/невідомий формат розміщення спрайтів
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Обережно!
@@ -3858,6 +3868,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... тр
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Неможливо проїхати сигнал - небезпечно...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Неможливо розвернути поїзд...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Поїзд не має тяги
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Неможливо розвернути машину...
 
@@ -4386,6 +4397,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

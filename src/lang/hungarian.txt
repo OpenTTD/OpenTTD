@@ -401,6 +401,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektum
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Pálya mentése
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Pálya betöltése
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Magasságtérkép mentése
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Magasságtérkép betöltése
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Kilépés a szerkesztőből
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2342,6 +2343,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Játék 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Pálya mentése
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Pálya betöltése
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Magasságtérkép betöltése
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Magasságtérkép mentése
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kattints ide az aktuális mentési könyvtárra való ugráshoz
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} szabad
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Meghajtók, könyvtárak és mentések listája
@@ -2537,6 +2539,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite táv
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot
 STR_NEWGRF_ERROR_GRM_FAILED                                     :A kívánt GRF források nem elérhetőek
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} kikapcsolva {4:STRING} által
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Érvénytelen/ismeretlen sprite felépítés formátum
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
