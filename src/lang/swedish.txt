@@ -1225,8 +1225,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Standardpalett för NewGRF när ingen annan palett är angiven: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palett
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palett
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-palett
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automatiskt vid start av nytt spel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Tillåt när spelet är pausat: {ORANGE}{STRING}
@@ -2473,7 +2473,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutetet av pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF resurser är ej tillgängliga
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är ej tillgängliga
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} har inaktiverats av {4:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ogiltig/okänd sprite layout format
 
@@ -3743,7 +3743,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ford
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan inte byta tågets riktning...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Tåg har ingen kraft
+STR_ERROR_TRAIN_START_NO_POWER                                  :Tåget har ingen kraft
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Fordon kan inte vända...
 
