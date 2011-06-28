@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektua
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Eszenarioa gorde
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Eszenarioa kargatu
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Altuera mapa gorde
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Garaiera-mapa kargatu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editoretik irten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1175,6 +1176,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :luzea (2008ko A
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :laburra (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paleta
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paleta
+
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Jokoa geldituta dagoenean baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :egintzarik ez
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :eraikitzeko ez diren egintza guztiak
@@ -1231,6 +1235,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originala
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
 
@@ -1475,6 +1480,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Konpainia jabe 
 # About OpenTTD window
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Altuera mapa gorde
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Kargatu
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Aukeratutako partida kargatu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Jokoaren Xehetasunak
@@ -1551,6 +1557,8 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Joan "sp
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larri bat gertatu da: {}{STRING}
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aukeratuta daukazun oinarrizko grafiko paketean "sprite" batzuk falta dira.{}Mesedez eguneratu oinarrizko grafiko paketea
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Eskatutako GRF baliabideak ez daude erabilgarri
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} desgaitua izan da {4:STRING}(en)gatik
 
 # NewGRF related 'general' warnings
 
@@ -1780,7 +1788,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatikoa)
+STR_ORDER_IMPLICIT                                              :(Implizitua)
 
 
 
@@ -1943,6 +1951,7 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ezin da 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garraioa suntsituta
 
 # Specific vehicle errors
+STR_ERROR_TRAIN_START_NO_POWER                                  :Trenak ez du potentziarik
 
 
 
@@ -2050,6 +2059,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
