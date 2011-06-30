@@ -1229,8 +1229,11 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiaki
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Erakutsi aukerak
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakzioa
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinaleak
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Zamen manipulazioa
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoberritzea
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Zerbitzuak
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Bideraketa
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
@@ -1240,6 +1243,7 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
 
 
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1247,6 +1251,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Partida Berria
 STR_INTRO_LOAD_GAME                                             :{BLACK}Partida Kargatu
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Eszenarioa Jokatu
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Altuera mapa jokatu
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eszenario Editorea
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijokoa
 
@@ -1257,8 +1262,10 @@ STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-r
 STR_INTRO_AI_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
 STR_INTRO_QUIT                                                  :{BLACK}Irten
 
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Multijokalari joko bat hasi
 
 
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Jokoaren aukerak erakutsi
 
 # Quit window
 
