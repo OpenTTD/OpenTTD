@@ -310,7 +310,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			for (i = 0; i < 4; i++) {
 				if (c->share_owners[i] == old_owner) {
 					/* Sell his shares */
-					CommandCost res = DoCommand(0, c->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+					CommandCost res = DoCommand(0, c->index, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
 					/* Because we are in a DoCommand, we can't just execute another one and
 					 *  expect the money to be removed. We need to do it ourself! */
 					SubtractMoneyFromCompany(res);
@@ -325,7 +325,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			cur_company2.Change(c->share_owners[i]);
 			if (_current_company != INVALID_OWNER) {
 				/* Sell the shares */
-				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
 				/* Because we are in a DoCommand, we can't just execute another one and
 				 *  expect the money to be removed. We need to do it ourself! */
 				SubtractMoneyFromCompany(res);
@@ -1600,9 +1600,12 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 	CompanyID target_company = (CompanyID)p1;
 	Company *c = Company::GetIfValid(target_company);
 
-	/* Check if selling shares is allowed (protection against modified clients)
-	 * Cannot sell own shares */
-	if (c == NULL || !_settings_game.economy.allow_shares || _current_company == target_company) return CMD_ERROR;
+	/* Cannot sell own shares */
+	if (c == NULL || _current_company == target_company) return CMD_ERROR;
+
+	/* Check if selling shares is allowed (protection against modified clients).
+	 * However, we must sell shares of companies being closed down. */
+	if (!_settings_game.economy.allow_shares && !(flags & DC_BANKRUPT)) return CMD_ERROR;
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(c, _current_company) == 0) return CommandCost();
