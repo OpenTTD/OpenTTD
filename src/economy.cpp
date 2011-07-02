@@ -1511,16 +1511,6 @@ static void DoAcquireCompany(Company *c)
 		owner->current_loan += c->current_loan;
 	}
 
-	Money value = CalculateCompanyValue(c) >> 2;
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
-	for (int i = 0; i != 4; i++) {
-		if (c->share_owners[i] != COMPANY_SPECTATOR) {
-			cur_company.Change(c->share_owners[i]);
-			SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -value));
-		}
-	}
-	cur_company.Restore();
-
 	if (c->is_ai) AI::Stop(c->index);
 
 	DeleteCompanyWindows(ci);
