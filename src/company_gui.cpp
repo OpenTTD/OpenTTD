@@ -1824,6 +1824,15 @@ struct CompanyWindow : Window
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
+			case CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE: {
+				Point offset;
+				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
+				d.width -= offset.x;
+				d.height -= offset.y;
+				*size = maxdim(*size, d);
+				break;
+			}
+
 			case CW_WIDGET_DESC_COMPANY_VALUE:
 				SetDParam(0, INT64_MAX); // Arguably the maximum company value
 				size->width = GetStringBoundingBox(STR_COMPANY_VIEW_COMPANY_VALUE).width;
@@ -1869,9 +1878,13 @@ struct CompanyWindow : Window
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_CENTER);
 				break;
 
-			case CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE:
-				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), (r.left + r.right) / 2, r.top + FONT_HEIGHT_NORMAL / 10);
+			case CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE: {
+				Point offset;
+				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
+				d.height -= offset.y;
+				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r.left - offset.x, (r.top + r.bottom - d.height) / 2 - offset.y);
 				break;
+			}
 
 			case CW_WIDGET_DESC_VEHICLE_COUNTS: {
 				uint amounts[4];

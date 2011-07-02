@@ -1116,12 +1116,18 @@ skip_cont:;
 /**
  * Get the size of a sprite.
  * @param sprid Sprite to examine.
+ * @param [out] offset Optionally returns the sprite position offset.
  * @return Sprite size in pixels.
  * @note The size assumes (0, 0) as top-left coordinate and ignores any part of the sprite drawn at the left or above that position.
  */
-Dimension GetSpriteSize(SpriteID sprid)
+Dimension GetSpriteSize(SpriteID sprid, Point *offset)
 {
 	const Sprite *sprite = GetSprite(sprid, ST_NORMAL);
+
+	if (offset != NULL) {
+		offset->x = sprite->x_offs;
+		offset->y = sprite->y_offs;
+	}
 
 	Dimension d;
 	d.width  = max<int>(0, sprite->x_offs + sprite->width);

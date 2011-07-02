@@ -88,7 +88,7 @@ static const int DRAW_STRING_BUFFER = 2048;
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
-Dimension GetSpriteSize(SpriteID sprid);
+Dimension GetSpriteSize(SpriteID sprid, Point *offset = NULL);
 void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub = NULL);
 
 /** How to align the to-be drawn text. */
