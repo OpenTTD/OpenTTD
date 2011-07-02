@@ -527,7 +527,7 @@ struct GameOptionsWindow : Window {
 
 	/**
 	 * Some data on this window has become invalid.
-	 * @param data Information about the changed data.
+	 * @param data Information about the changed data. @see GameOptionsInvalidationData
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
@@ -797,7 +797,7 @@ public:
 
 	/**
 	 * Some data on this window has become invalid.
-	 * @param data Information about the changed data.
+	 * @param data Information about the changed data. @see GameOptionsInvalidationData
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)

@@ -1269,7 +1269,7 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 
 	TarScanner::DoScan();
 	ScanNewGRFFiles();
-	InvalidateWindowData(WC_GAME_OPTIONS, 0, 1);
+	InvalidateWindowData(WC_GAME_OPTIONS, 0, GOID_NEWGRF_RESCANNED);
 
 	return true;
 }

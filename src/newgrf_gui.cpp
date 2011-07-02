@@ -569,7 +569,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 		this->avails.SetFilterFuncs(this->filter_funcs);
 		this->avails.ForceRebuild();
 
-		this->OnInvalidateData(2);
+		this->OnInvalidateData(GOID_NEWGRF_LIST_EDITED);
 	}
 
 	~NewGRFWindow()
@@ -881,7 +881,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				this->avail_pos = -1;
 				this->avail_sel = NULL;
 				this->avails.ForceRebuild();
-				this->InvalidateData(2);
+				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				break;
 			}
 
@@ -921,7 +921,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				if (new_pos >= 0) this->avail_sel = this->avails[new_pos];
 
 				this->avails.ForceRebuild();
-				this->InvalidateData(2);
+				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				break;
 			}
 
@@ -989,7 +989,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				this->avail_sel = NULL;
 				this->avail_pos = -1;
 				this->avails.ForceRebuild();
-				this->InvalidateData(1);
+				this->InvalidateData(GOID_NEWGRF_RESCANNED);
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				InvalidateWindowClassesData(WC_SAVELOAD);
 				break;
@@ -1010,7 +1010,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 		DeleteWindowByClass(WC_GRF_PARAMETERS);
 		this->active_sel = NULL;
-		this->InvalidateData(3);
+		this->InvalidateData(GOID_NEWGRF_PRESET_LOADED);
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -1033,24 +1033,18 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 	/**
 	 * Some data on this window has become invalid.
-	 * @param data Information about the changed data.
-	 *  - 0: (optionally) build availables, update button status.
-	 *  - 1: build availables, Add newly found grfs, update button status.
-	 *  - 2: (optionally) build availables, Reset preset, + 3
-	 *  - 3: (optionally) build availables, Update active scrollbar, update button status.
-	 *  - 4: Force a rebuild of the availables, + 2
+	 * @param data Information about the changed data. @see GameOptionsInvalidationData
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
 		switch (data) {
-			default: NOT_REACHED();
-			case 0:
+			default:
 				/* Nothing important to do */
 				break;
 
-			case 1:
+			case GOID_NEWGRF_RESCANNED:
 				/* Search the list for items that are now found and mark them as such. */
 				for (GRFConfig **l = &this->actives; *l != NULL; l = &(*l)->next) {
 					GRFConfig *c = *l;
@@ -1067,14 +1061,14 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 					delete c;
 				}
-				/* FALL THROUGH */
-			case 4:
+
 				this->avails.ForceRebuild();
 				/* FALL THROUGH */
-			case 2:
+			case GOID_NEWGRF_LIST_EDITED:
 				this->preset = -1;
 				/* FALL THROUGH */
-			case 3: {
+			case GOID_NEWGRF_PRESET_LOADED: {
+				/* Update scrollbars */
 				int i = 0;
 				for (const GRFConfig *c = this->actives; c != NULL; c = c->next, i++) {}
 
