@@ -659,9 +659,6 @@ public:
 	{
 		this->InitNested(desc);
 
-		/* Copy current settings (ingame or in intro) to temporary holding place
-		 * change that when setting stuff, copy back on clicking 'OK' */
-		this->opt_mod_temp = GetGameSettings();
 		/* Setup disabled buttons when creating window
 		 * disable all other difficulty buttons during gameplay except for 'custom' */
 		this->SetWidgetsDisabledState(_game_mode != GM_MENU,
@@ -672,8 +669,9 @@ public:
 			WIDGET_LIST_END);
 		this->SetWidgetDisabledState(GDW_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
 		this->SetWidgetDisabledState(GDW_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
-		this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
-		this->OnInvalidateData();
+
+		/* Read data */
+		this->OnInvalidateData(GOID_DIFFICULTY_CHANGED);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -803,6 +801,17 @@ public:
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
+
+		if (data == GOID_DIFFICULTY_CHANGED) {
+			/* Window was created or settings were changed on server. Reread everything. */
+
+			/* Copy current settings (ingame or in intro) to temporary holding place
+			 * change that when setting stuff, copy back on clicking 'OK' */
+			this->opt_mod_temp = GetGameSettings();
+
+			this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
+		}
+
 		uint i;
 		const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i);
 		for (i = 0; i < GAME_DIFFICULTY_NUM; i++, sd++) {
