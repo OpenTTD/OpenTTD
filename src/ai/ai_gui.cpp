@@ -251,7 +251,7 @@ static void ShowAIListWindow(CompanyID slot)
 }
 
 /** Enum referring to the widgets of the AI settings window */
-enum AISettingsWindowWidgest {
+enum AISettingsWindowWidgets {
 	AIS_WIDGET_BACKGROUND,   ///< Panel to draw the settings on
 	AIS_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through all settings
 	AIS_WIDGET_ACCEPT,       ///< Accept button
