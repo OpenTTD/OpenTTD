@@ -86,15 +86,20 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 	return true;
 }
 
-bool PlayTileSound(const GRFFile *file, SoundID sound_id, TileIndex tile)
+/**
+ * Play a NewGRF sound effect at the location of a specfic tile.
+ * @param file NewGRF triggering the sound effect.
+ * @param sound_id Sound effect the NewGRF wants to play.
+ * @param tile Location of the effect.
+ */
+void PlayTileSound(const GRFFile *file, SoundID sound_id, TileIndex tile)
 {
 	if (sound_id >= ORIGINAL_SAMPLE_COUNT) {
 		sound_id -= ORIGINAL_SAMPLE_COUNT;
-		if (sound_id > file->num_sounds) return false;
+		if (sound_id > file->num_sounds) return;
 		sound_id += file->sound_offset;
 	}
 
 	assert(sound_id < GetNumSounds());
 	SndPlayTileFx(sound_id, tile);
-	return true;
 }
