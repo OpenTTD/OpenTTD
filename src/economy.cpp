@@ -296,6 +296,21 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	/* In all cases, make spectators of clients connected to that company */
 	if (_networking) NetworkClientsToSpectators(old_owner);
 #endif /* ENABLE_NETWORK */
+	if (old_owner == _local_company) {
+		/* Single player cheated to AI company.
+		 * There are no specatators in single player, so we must pick some other company. */
+		assert(!_networking);
+		Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if (c->index != old_owner) {
+				SetLocalCompany(c->index);
+				break;
+			}
+		}
+		cur_company.Restore();
+		assert(old_owner != _local_company);
+	}
 
 	Town *t;
 
