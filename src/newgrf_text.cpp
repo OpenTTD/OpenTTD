@@ -969,8 +969,9 @@ void RestoreTextRefStackBackup(struct TextRefStack *backup)
  * normal string parameters again.
  *
  * @param numEntries number of entries to copy from the registers
+ * @param values values to copy onto the stack; if NULL the temporary NewGRF registers will be used instead
  */
-void StartTextRefStackUsage(byte numEntries)
+void StartTextRefStackUsage(byte numEntries, const uint32 *values)
 {
 	extern TemporaryStorageArray<int32, 0x110> _temp_store;
 
@@ -978,8 +979,9 @@ void StartTextRefStackUsage(byte numEntries)
 
 	byte *p = _newgrf_textrefstack->stack;
 	for (uint i = 0; i < numEntries; i++) {
+		uint32 value = values != NULL ? values[i] : _temp_store.GetValue(0x100 + i);
 		for (uint j = 0; j < 32; j += 8) {
-			*p = GB(_temp_store.GetValue(0x100 + i), j, 8);
+			*p = GB(value, j, 8);
 			p++;
 		}
 	}
