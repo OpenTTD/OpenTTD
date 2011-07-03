@@ -566,6 +566,8 @@ struct ErrmsgWindow : public Window {
 private:
 	uint duration;                  ///< Length of display of the message. 0 means forever,
 	uint64 decode_params[20];       ///< Parameters of the message strings.
+	uint textref_stack_size;        ///< Number of uint32 values to put on the #TextRefStack for the error message.
+	uint32 textref_stack[16];       ///< Values to put on the #TextRefStack for the error message.
 	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
 	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
 	uint height_summary;            ///< Height of the #summary_msg string in pixels in the #EMW_MESSAGE widget.
@@ -574,13 +576,17 @@ private:
 	CompanyID face;                 ///< Company belonging to the face being shown. #INVALID_COMPANY if no face present.
 
 public:
-	ErrmsgWindow(Point pt, StringID summary_msg, StringID detailed_msg, bool no_timeout) : Window()
+	ErrmsgWindow(Point pt, StringID summary_msg, StringID detailed_msg, bool no_timeout, uint textref_stack_size, const uint32 *textref_stack) : Window()
 	{
 		this->position = pt;
 		this->duration = no_timeout ? 0 : _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
 		this->summary_msg  = summary_msg;
 		this->detailed_msg = detailed_msg;
+		this->textref_stack_size = textref_stack_size;
+		if (textref_stack_size > 0) {
+			MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
+		}
 
 		CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
 		this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company < MAX_COMPANIES) ? company : INVALID_COMPANY;
@@ -596,17 +602,13 @@ public:
 		if (widget != EMW_MESSAGE) return;
 
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
-		/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
-		 * If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
-		 */
-		SwitchToErrorRefStack();
-		RewindTextRefStack();
+		if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
 
 		int text_width = max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
 		this->height_summary  = GetStringHeight(this->summary_msg, text_width);
 		this->height_detailed = (this->detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(this->detailed_msg, text_width);
 
-		SwitchToNormalRefStack(); // Switch back to the normal text ref. stack for NewGRF texts.
+		if (this->textref_stack_size > 0) StopTextRefStackUsage();
 
 		uint panel_height = WD_FRAMERECT_TOP + this->height_summary + WD_FRAMERECT_BOTTOM;
 		if (this->detailed_msg != INVALID_STRING_ID) panel_height += this->height_detailed + WD_PAR_VSEP_WIDE;
@@ -672,8 +674,7 @@ public:
 
 			case EMW_MESSAGE:
 				CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
-				SwitchToErrorRefStack();
-				RewindTextRefStack();
+				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
 
 				if (this->detailed_msg == INVALID_STRING_ID) {
 					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
@@ -691,7 +692,7 @@ public:
 					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, top, bottom, this->detailed_msg, TC_WHITE, SA_CENTER);
 				}
 
-				SwitchToNormalRefStack(); // Switch back to the normal text ref. stack for NewGRF texts.
+				if (this->textref_stack_size > 0) StopTextRefStackUsage();
 				break;
 
 			default:
@@ -734,19 +735,28 @@ public:
  * @param wl           Message severity.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param textref_stack_size Number of uint32 values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
+ * @param textref_stack Values to put on the #TextRefStack.
  */
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x, int y)
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x, int y, uint textref_stack_size, const uint32 *textref_stack)
 {
+	assert(textref_stack_size == 0 || textref_stack != NULL);
 	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
 
 	if (wl != WL_INFO) {
 		/* Print message to console */
 		char buf[DRAW_STRING_BUFFER];
+
+		if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_size, textref_stack);
+
 		char *b = GetString(buf, summary_msg, lastof(buf));
 		if (detailed_msg != INVALID_STRING_ID) {
 			b += seprintf(b, lastof(buf), " ");
 			GetString(b, detailed_msg, lastof(buf));
 		}
+
+		if (textref_stack_size > 0) StopTextRefStackUsage();
+
 		switch (wl) {
 			case WL_WARNING: IConsolePrint(CC_WARNING, buf); break;
 			default:         IConsoleError(buf); break;
@@ -760,7 +770,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	DeleteWindowById(WC_ERRMSG, 0);
 
 	Point pt = {x, y};
-	new ErrmsgWindow(pt, summary_msg, detailed_msg, no_timeout);
+	new ErrmsgWindow(pt, summary_msg, detailed_msg, no_timeout, textref_stack_size, textref_stack);
 }
 
 /**

@@ -25,30 +25,33 @@ class CommandCost {
 	Money cost;       ///< The cost of this action
 	StringID message; ///< Warning message for when success is unset
 	bool success;     ///< Whether the comment went fine up to this moment
+	uint textref_stack_size;   ///< Number of uint32 values to put on the #TextRefStack for the error message.
+
+	static uint32 textref_stack[16];
 
 public:
 	/**
 	 * Creates a command cost return with no cost and no error
 	 */
-	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true) {}
+	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_size(0) {}
 
 	/**
 	 * Creates a command return value the is failed with the given message
 	 */
-	explicit CommandCost(StringID msg) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false) {}
+	explicit CommandCost(StringID msg) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false), textref_stack_size(0) {}
 
 	/**
 	 * Creates a command cost with given expense type and start cost of 0
 	 * @param ex_t the expense type
 	 */
-	explicit CommandCost(ExpensesType ex_t) : expense_type(ex_t), cost(0), message(INVALID_STRING_ID), success(true) {}
+	explicit CommandCost(ExpensesType ex_t) : expense_type(ex_t), cost(0), message(INVALID_STRING_ID), success(true), textref_stack_size(0) {}
 
 	/**
 	 * Creates a command return value with the given start cost and expense type
 	 * @param ex_t the expense type
 	 * @param cst the initial cost of this command
 	 */
-	CommandCost(ExpensesType ex_t, const Money &cst) : expense_type(ex_t), cost(cst), message(INVALID_STRING_ID), success(true) {}
+	CommandCost(ExpensesType ex_t, const Money &cst) : expense_type(ex_t), cost(cst), message(INVALID_STRING_ID), success(true), textref_stack_size(0) {}
 
 
 	/**
@@ -98,6 +101,26 @@ public:
 		assert(message != INVALID_STRING_ID);
 		this->success = false;
 		this->message = message;
+	}
+
+	void UseTextRefStack(uint num_registers);
+
+	/**
+	 * Returns the number of uint32 values for the #TextRefStack of the error message.
+	 * @return number of uint32 values.
+	 */
+	uint GetTextRefStackSize() const
+	{
+		return this->textref_stack_size;
+	}
+
+	/**
+	 * Returns a pointer to the values for the #TextRefStack of the error message.
+	 * @return uint32 values for the #TextRefStack
+	 */
+	const uint32 *GetTextRefStack() const
+	{
+		return textref_stack;
 	}
 
 	/**
