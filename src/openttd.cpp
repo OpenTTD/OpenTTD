@@ -314,7 +314,10 @@ void MakeNewgameSettingsLive()
 	}
 #endif /* ENABLE_AI */
 
+	/* Copy newgame settings to active settings.
+	 * Also initialise old settings needed for savegame conversion. */
 	_settings_game = _settings_newgame;
+	_old_vds = _settings_client.company.vehicle;
 
 #ifdef ENABLE_AI
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {

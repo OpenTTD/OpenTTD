@@ -465,6 +465,9 @@ extern GameSettings _settings_game;
 /** The settings values that are used for new games and/or modified in config file. */
 extern GameSettings _settings_newgame;
 
+/** Old vehicle settings, which were game settings before, and are company settings now. (Needed for savegame conversion) */
+extern VehicleDefaultSettings _old_vds;
+
 /**
  * Get the settings-object applicable for the current situation: the newgame settings
  * when we're in the main menu and otherwise the settings of the current game.
