@@ -459,7 +459,7 @@ public:
 						str = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
 						if (str != STR_UNDEFINED) {
 							StartTextRefStackUsage(6);
-							DrawStringMultiLine(left, right, y, bottom, str);
+							DrawStringMultiLine(left, right, y, bottom, str, TC_YELLOW);
 							StopTextRefStackUsage();
 						}
 					}
