@@ -310,7 +310,7 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
 	SwitchToErrorRefStack();
-	PrepareTextRefStackUsage(4);
+	StartTextRefStackUsage(4);
 	SwitchToNormalRefStack();
 
 	switch (callback_res) {

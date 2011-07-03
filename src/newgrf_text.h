@@ -34,7 +34,7 @@ void CleanUpGRFText(struct GRFText *grftext);
 
 bool CheckGrfLangID(byte lang_id, byte grf_version);
 
-void PrepareTextRefStackUsage(byte numEntries);
+void StartTextRefStackUsage(byte numEntries);
 void StopTextRefStackUsage();
 void SwitchToNormalRefStack();
 void SwitchToErrorRefStack();

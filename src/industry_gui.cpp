@@ -74,7 +74,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 	if (HasBit(indspec->callback_mask, CBM_IND_CARGO_SUFFIX)) {
 		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, const_cast<Industry *>(ind), ind_type, (cst != CST_FUND) ? ind->location.tile : INVALID_TILE);
 		if (GB(callback, 0, 8) != 0xFF) {
-			PrepareTextRefStackUsage(6);
+			StartTextRefStackUsage(6);
 			GetString(suffix, GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback), suffix_last);
 			StopTextRefStackUsage();
 		}
@@ -458,7 +458,7 @@ public:
 					if (callback_res != CALLBACK_FAILED) {  // Did it fail?
 						str = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
 						if (str != STR_UNDEFINED) {
-							PrepareTextRefStackUsage(6);
+							StartTextRefStackUsage(6);
 							DrawStringMultiLine(left, right, y, bottom, str);
 							StopTextRefStackUsage();
 						}
@@ -788,7 +788,7 @@ public:
 				if (message != STR_NULL && message != STR_UNDEFINED) {
 					y += WD_PAR_VSEP_WIDE;
 
-					PrepareTextRefStackUsage(6);
+					StartTextRefStackUsage(6);
 					/* Use all the available space left from where we stand up to the
 					 * end of the window. We ALSO enlarge the window if needed, so we
 					 * can 'go' wild with the bottom of the window. */

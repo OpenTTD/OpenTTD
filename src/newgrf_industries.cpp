@@ -551,7 +551,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
 	SwitchToErrorRefStack();
-	PrepareTextRefStackUsage(4);
+	StartTextRefStackUsage(4);
 	SwitchToNormalRefStack();
 
 	switch (result) {

@@ -955,10 +955,22 @@ void RestoreTextRefStackBackup(struct TextRefStack *backup)
 }
 
 /**
- * Prepare the TTDP compatible string code parsing
+ * Start using the TTDP compatible string code parsing.
+ *
+ * On start a number of values is copied on the #TextRefStack.
+ * You can then use #GetString() and the normal string drawing functions,
+ * and they will use the #TextRefStack for NewGRF string codes.
+ *
+ * However, when you want to draw a string multiple times using the same stack,
+ * you have to call #RewindTextRefStack() between draws.
+ *
+ * After you are done with drawing, you must disable usage of the #TextRefStack
+ * by calling #StopTextRefStackUsage(), so NewGRF string codes operate on the
+ * normal string parameters again.
+ *
  * @param numEntries number of entries to copy from the registers
  */
-void PrepareTextRefStackUsage(byte numEntries)
+void StartTextRefStackUsage(byte numEntries)
 {
 	extern TemporaryStorageArray<int32, 0x110> _temp_store;
 
