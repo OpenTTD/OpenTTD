@@ -369,7 +369,14 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 	return ret;
 }
 
-static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, Industry *ind)
+/**
+ * Trigger random triggers for an industry tile and reseed its random bits.
+ * @param tile Industry tile to trigger.
+ * @param trigger Trigger to trigger.
+ * @param ind Industry of the tile.
+ * @param [in,out] reseed_industry Collects bits to reseed for the industry.
+ */
+static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, Industry *ind, uint32 &reseed_industry)
 {
 	ResolverObject object;
 
@@ -390,24 +397,55 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 
 	byte new_random_bits = Random();
 	byte random_bits = GetIndustryRandomBits(tile);
-	random_bits &= ~object.reseed;
-	random_bits |= new_random_bits & object.reseed;
+	random_bits &= ~object.reseed[VSG_SCOPE_SELF];
+	random_bits |= new_random_bits & object.reseed[VSG_SCOPE_SELF];
 	SetIndustryRandomBits(tile, random_bits);
 	MarkTileDirtyByTile(tile);
+
+	reseed_industry |= object.reseed[VSG_SCOPE_PARENT];
 }
 
+/**
+ * Reseeds the random bits of an industry.
+ * @param ind Industry.
+ * @param reseed Bits to reseed.
+ */
+static void DoReseedIndustry(Industry *ind, uint32 reseed)
+{
+	if (reseed == 0 || ind == NULL) return;
+
+	uint16 random_bits = Random();
+	ind->random &= reseed;
+	ind->random |= random_bits & reseed;
+}
+
+/**
+ * Trigger a random trigger for a single industry tile.
+ * @param tile Industry tile to trigger.
+ * @param trigger Trigger to trigger.
+ */
 void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
 {
-	DoTriggerIndustryTile(tile, trigger, Industry::GetByTile(tile));
+	uint32 reseed_industry = 0;
+	Industry *ind = Industry::GetByTile(tile);
+	DoTriggerIndustryTile(tile, trigger, ind, reseed_industry);
+	DoReseedIndustry(ind, reseed_industry);
 }
 
+/**
+ * Trigger a random trigger for all industry tiles.
+ * @param ind Industry to trigger.
+ * @param trigger Trigger to trigger.
+ */
 void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
 {
+	uint32 reseed_industry = 0;
 	TILE_AREA_LOOP(tile, ind->location) {
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
-			DoTriggerIndustryTile(tile, trigger, ind);
+			DoTriggerIndustryTile(tile, trigger, ind, reseed_industry);
 		}
 	}
+	DoReseedIndustry(ind, reseed_industry);
 }
 
 /**

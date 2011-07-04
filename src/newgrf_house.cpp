@@ -606,8 +606,9 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 
 	byte new_random_bits = Random();
 	byte random_bits = GetHouseRandomBits(tile);
-	random_bits &= ~object.reseed;
-	random_bits |= (first ? new_random_bits : base_random) & object.reseed;
+	uint32 reseed = object.GetReseedSum(); // The scope only affects triggers, not the reseeding
+	random_bits &= ~reseed;
+	random_bits |= (first ? new_random_bits : base_random) & reseed;
 	SetHouseRandomBits(tile, random_bits);
 
 	switch (trigger) {

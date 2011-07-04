@@ -1070,8 +1070,9 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	if (group == NULL) return;
 
 	new_random_bits = Random();
-	v->random_bits &= ~object.reseed;
-	v->random_bits |= (first ? new_random_bits : base_random_bits) & object.reseed;
+	uint32 reseed = object.GetReseedSum(); // The scope only affects triggers, not the reseeding
+	v->random_bits &= ~reseed;
+	v->random_bits |= (first ? new_random_bits : base_random_bits) & reseed;
 
 	switch (trigger) {
 		case VEHICLE_TRIGGER_NEW_CARGO:

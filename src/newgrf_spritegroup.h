@@ -122,12 +122,15 @@ protected:
 
 /* Shared by deterministic and random groups. */
 enum VarSpriteGroupScope {
-	VSG_SCOPE_SELF,
-	/* Engine of consists for vehicles, city for stations. */
-	VSG_SCOPE_PARENT,
-	/* Any vehicle in the consist (vehicles only) */
-	VSG_SCOPE_RELATIVE,
+	VSG_BEGIN,
+
+	VSG_SCOPE_SELF = VSG_BEGIN, ///< Resolved object itself
+	VSG_SCOPE_PARENT,           ///< Related object of the resolved one
+	VSG_SCOPE_RELATIVE,         ///< Relative position (vehicles only)
+
+	VSG_END
 };
+DECLARE_POSTFIX_INCREMENT(VarSpriteGroupScope)
 
 enum DeterministicSpriteGroupSize {
 	DSG_SIZE_BYTE,
@@ -309,7 +312,7 @@ struct ResolverObject {
 	byte trigger;
 
 	uint32 last_value;          ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
-	uint32 reseed;              ///< Collects bits to rerandomise while triggering triggers.
+	uint32 reseed[VSG_END];     ///< Collects bits to rerandomise while triggering triggers.
 
 	VarSpriteGroupScope scope;  ///< Scope of currently resolved DeterministicSpriteGroup resp. RandomizedSpriteGroup
 	byte count;                 ///< Additional scope for RandomizedSpriteGroup
@@ -383,6 +386,20 @@ struct ResolverObject {
 	void (*StorePSA)(struct ResolverObject*, uint, int32);
 
 	/**
+	 * Returns the OR-sum of all bits that need reseeding
+	 * independent of the scope they were accessed with.
+	 * @return OR-sum of the bits.
+	 */
+	uint32 GetReseedSum() const
+	{
+		uint32 sum = 0;
+		for (VarSpriteGroupScope vsg = VSG_BEGIN; vsg < VSG_END; vsg++) {
+			sum |= this->reseed[vsg];
+		}
+		return sum;
+	}
+
+	/**
 	 * Resets the dynamic state of the resolver object.
 	 * To be called before resolving an Action-1-2-3 chain.
 	 */
@@ -390,7 +407,7 @@ struct ResolverObject {
 	{
 		this->last_value = 0;
 		this->trigger    = 0;
-		this->reseed     = 0;
+		memset(this->reseed, 0, sizeof(this->reseed));
 	}
 };
 

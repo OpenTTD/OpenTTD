@@ -207,7 +207,7 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject *object) const
 
 		if (res) {
 			waiting_triggers &= ~match;
-			object->reseed |= (this->num_groups - 1) << this->lowest_randbit;
+			object->reseed[this->var_scope] |= (this->num_groups - 1) << this->lowest_randbit;
 		} else {
 			waiting_triggers |= object->trigger;
 		}
