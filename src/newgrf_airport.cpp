@@ -171,8 +171,7 @@ static const SpriteGroup *AirportResolveReal(const ResolverObject *object, const
 static uint32 AirportGetRandomBits(const ResolverObject *object)
 {
 	const Station *st = object->u.airport.st;
-	const TileIndex tile = object->u.airport.tile;
-	return (st == NULL ? 0 : st->random_bits) | (tile == INVALID_TILE ? 0 : GetStationTileRandomBits(tile) << 16);
+	return st == NULL ? 0 : st->random_bits;
 }
 
 static uint32 AirportGetTriggers(const ResolverObject *object)
