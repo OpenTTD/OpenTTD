@@ -393,10 +393,7 @@ static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, Objec
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
-	res->last_value      = 0;
-	res->trigger         = 0;
-	res->reseed          = 0;
-	res->count           = 0;
+	res->ResetState();
 
 	res->grffile = spec->grf_prop.grffile;
 }

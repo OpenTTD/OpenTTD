@@ -548,10 +548,8 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
-	res->last_value      = 0;
-	res->trigger         = 0;
-	res->reseed          = 0;
-	res->count           = 0;
+	res->ResetState();
+
 	res->grffile         = (statspec != NULL ? statspec->grf_prop.grffile : NULL);
 
 	/* Invalidate all cached vars */

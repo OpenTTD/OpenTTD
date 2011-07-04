@@ -424,10 +424,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
-	res->last_value      = 0;
-	res->trigger         = 0;
-	res->reseed          = 0;
-	res->count           = 0;
+	res->ResetState();
 
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	res->grffile         = (indspec != NULL ? indspec->grf_prop.grffile : NULL);

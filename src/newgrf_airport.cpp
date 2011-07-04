@@ -224,10 +224,7 @@ static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st,
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
-	res->last_value      = 0;
-	res->trigger         = 0;
-	res->reseed          = 0;
-	res->count           = 0;
+	res->ResetState();
 
 	const AirportSpec *as = AirportSpec::Get(airport_id);
 	res->grffile         = as->grf_prop.grffile;

@@ -381,6 +381,17 @@ struct ResolverObject {
 	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte, bool*);
 	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const RealSpriteGroup*);
 	void (*StorePSA)(struct ResolverObject*, uint, int32);
+
+	/**
+	 * Resets the dynamic state of the resolver object.
+	 * To be called before resolving an Action-1-2-3 chain.
+	 */
+	void ResetState()
+	{
+		this->last_value = 0;
+		this->trigger    = 0;
+		this->reseed     = 0;
+	}
 };
 
 #endif /* NEWGRF_SPRITEGROUP_H */
