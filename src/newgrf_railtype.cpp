@@ -67,7 +67,7 @@ static const SpriteGroup *RailTypeResolveReal(const ResolverObject *object, cons
 	return NULL;
 }
 
-static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, TileContext context)
+static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, TileContext context, const GRFFile *grffile)
 {
 	res->GetRandomBits = &RailTypeGetRandomBits;
 	res->GetTriggers   = &RailTypeGetTriggers;
@@ -85,6 +85,8 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, Tile
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+
+	res->grffile         = grffile;
 }
 
 /**
@@ -104,7 +106,7 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 	const SpriteGroup *group;
 	ResolverObject object;
 
-	NewRailTypeResolver(&object, tile, context);
+	NewRailTypeResolver(&object, tile, context, rti->grffile[rtsg]);
 
 	group = SpriteGroup::Resolve(rti->group[rtsg], &object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
@@ -140,5 +142,7 @@ uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
  */
 void GetRailTypeResolver(ResolverObject *ro, uint index)
 {
-	NewRailTypeResolver(ro, index, TCX_NORMAL);
+	/* There is no unique GRFFile for the tile. Multiple GRFs can define different parts of the railtype.
+	 * However, currently the NewGRF Debug GUI does not display variables depending on the GRF (like 0x7F) anyway. */
+	NewRailTypeResolver(ro, index, TCX_NORMAL, NULL);
 }

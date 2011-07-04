@@ -4599,6 +4599,7 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			if (railtypes[i] != INVALID_RAILTYPE) {
 				RailtypeInfo *rti = &_railtypes[railtypes[i]];
 
+				rti->grffile[ctype] = _cur_grffile;
 				rti->group[ctype] = _cur_grffile->spritegroups[groupid];
 			}
 		}
