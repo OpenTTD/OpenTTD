@@ -279,8 +279,8 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
-		MakeWaterKeepingClass(tile + delta, GetTileOwner(tile));
-		MakeWaterKeepingClass(tile - delta, GetTileOwner(tile));
+		MakeWaterKeepingClass(tile + delta, GetTileOwner(tile + delta));
+		MakeWaterKeepingClass(tile - delta, GetTileOwner(tile - delta));
 		MarkCanalsAndRiversAroundDirty(tile - delta);
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
