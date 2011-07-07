@@ -552,7 +552,7 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
  * @param f sound effect
  * @param g refittable
  */
-#define SVI(a, b, c, d, e, f, g) { a, b, c, d, e, f, g, VE_DEFAULT }
+#define SVI(a, b, c, d, e, f, g) { a, b, c, d, e, f, g, VE_DEFAULT, 0, 0 }
 static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
 	/*   image_index    capacity                   refittable
 	 *   |    cost_factor    running_cost          |
