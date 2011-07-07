@@ -3396,8 +3396,8 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Custo: {CURRENCY}
 STR_INCOME_FLOAT_COST                                           :{RED}Custo: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Renda: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Renda: {CURRENCY}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Lucro: {CURRENCY}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Lucro: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Custo Estimado: {CURRENCY}
