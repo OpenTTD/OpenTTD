@@ -943,7 +943,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				break;
 
 			case SNGRFS_SET_PARAMETERS: { // Edit parameters
-				if (this->active_sel == NULL || !this->editable || !this->show_params) break;
+				if (this->active_sel == NULL || !this->editable || !this->show_params || this->active_sel->num_valid_params == 0) break;
 
 				OpenGRFParameterWindow(this->active_sel);
 				break;
@@ -1098,7 +1098,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			SNGRFS_MOVE_DOWN,
 			WIDGET_LIST_END
 		);
-		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all);
+		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(SNGRFS_TOGGLE_PALETTE, disable_all);
 
 		if (!disable_all) {
