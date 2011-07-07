@@ -155,7 +155,12 @@ static void CheckIfShipNeedsService(Vehicle *v)
  */
 void Ship::UpdateCache()
 {
-	this->vcache.cached_max_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, ShipVehInfo(this->engine_type)->max_speed);
+	const ShipVehicleInfo *svi = ShipVehInfo(this->engine_type);
+
+	/* Get speed fraction for the current water type. Aqueducts are always canals. */
+	byte speed_frac = (!IsTileType(this->tile, MP_TUNNELBRIDGE) && GetWaterClass(this->tile) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
+	/* speed_frac == 0 means no reduction while 0xFF means reduction to 1/256. */
+	this->vcache.cached_max_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, svi->max_speed) * (256 - speed_frac) / 256;
 
 	this->UpdateVisualEffect();
 }
@@ -545,6 +550,11 @@ static void ShipController(Ship *v)
 			if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
 				v->tile = gp.new_tile;
 				v->state = TrackToTrackBits(track);
+
+				/* Update ship cache when the water class changes. Aqueducts are always canals. */
+				WaterClass old_wc = IsTileType(gp.old_tile, MP_TUNNELBRIDGE) ? WATER_CLASS_CANAL : GetWaterClass(gp.old_tile);
+				WaterClass new_wc = IsTileType(gp.new_tile, MP_TUNNELBRIDGE) ? WATER_CLASS_CANAL : GetWaterClass(gp.new_tile);
+				if (old_wc != new_wc) v->UpdateCache();
 			}
 
 			v->direction = (Direction)b[2];

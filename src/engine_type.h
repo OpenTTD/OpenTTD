@@ -72,6 +72,8 @@ struct ShipVehicleInfo {
 	SoundID sfx;
 	bool old_refittable;   ///< Is ship refittable; only used during initialisation. Later use EngineInfo::refit_mask.
 	byte visual_effect;    ///< Bitstuffed NewGRF visual effect data
+	byte ocean_speed_frac; ///< Fraction of maximum speed for ocean tiles.
+	byte canal_speed_frac; ///< Fraction of maximum speed for canal/river tiles.
 };
 
 /**

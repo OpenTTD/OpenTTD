@@ -1194,10 +1194,11 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x14: // Ocean speed fraction
+				svi->ocean_speed_frac = buf->ReadByte();
+				break;
+
 			case 0x15: // Canal speed fraction
-				/** @todo Speed fractions for ships on oceans and canals */
-				buf->ReadByte();
-				ret = CIR_UNHANDLED;
+				svi->canal_speed_frac = buf->ReadByte();
 				break;
 
 			case 0x16: // Retire vehicle early
