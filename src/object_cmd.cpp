@@ -214,6 +214,10 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					/* Normal water tiles don't have to be cleared. For all other tile types clear
 					 * the tile but leave the water. */
 					cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
+				} else {
+					/* Can't build on water owned by another company. */
+					Owner o = GetTileOwner(t);
+					if (o != OWNER_NONE && o != OWNER_WATER) cost.AddCost(CheckOwnership(o, t));
 				}
 			} else {
 				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
