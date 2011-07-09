@@ -1514,7 +1514,7 @@ bool AfterLoadGame()
 	 */
 	if (IsSavegameVersionBefore(83)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (IsTileType(t, MP_WATER) && IsShipDepot(t)) {
+			if (IsShipDepotTile(t)) {
 				_m[t].m4 = (TileHeight(t) == 0) ? OWNER_WATER : OWNER_NONE;
 			}
 		}
