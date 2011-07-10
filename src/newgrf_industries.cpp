@@ -548,10 +548,10 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 
 	CommandCost res;
 	switch (result) {
-		case 0x401: res = CommandCost(STR_ERROR_SITE_UNSUITABLE);
-		case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
-		case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
-		default:    res = CommandCost(GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + result));
+		case 0x401: res = CommandCost(STR_ERROR_SITE_UNSUITABLE); break;
+		case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
+		case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
+		default:    res = CommandCost(GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + result)); break;
 	}
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
