@@ -125,7 +125,9 @@ CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  */
 static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
 {
-	DoCommandP(0, PM_PAUSED_ERROR, confirmed ? 0 : 1, CMD_PAUSE);
+	if (confirmed) {
+		DoCommandP(0, PM_PAUSED_ERROR, 0, CMD_PAUSE);
+	}
 }
 
 /**

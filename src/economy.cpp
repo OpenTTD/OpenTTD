@@ -292,6 +292,21 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	/* In all cases, make spectators of clients connected to that company */
 	if (_networking) NetworkClientsToSpectators(old_owner);
 #endif /* ENABLE_NETWORK */
+	if (old_owner == _local_company) {
+		/* Single player cheated to AI company.
+		 * There are no specatators in single player, so we must pick some other company. */
+		assert(!_networking);
+		Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if (c->index != old_owner) {
+				SetLocalCompany(c->index);
+				break;
+			}
+		}
+		cur_company.Restore();
+		assert(old_owner != _local_company);
+	}
 
 	Town *t;
 
@@ -306,7 +321,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			for (i = 0; i < 4; i++) {
 				if (c->share_owners[i] == old_owner) {
 					/* Sell his shares */
-					CommandCost res = DoCommand(0, c->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+					CommandCost res = DoCommand(0, c->index, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
 					/* Because we are in a DoCommand, we can't just execute another one and
 					 *  expect the money to be removed. We need to do it ourself! */
 					SubtractMoneyFromCompany(res);
@@ -321,7 +336,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 			cur_company2.Change(c->share_owners[i]);
 			if (_current_company != INVALID_OWNER) {
 				/* Sell the shares */
-				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
 				/* Because we are in a DoCommand, we can't just execute another one and
 				 *  expect the money to be removed. We need to do it ourself! */
 				SubtractMoneyFromCompany(res);
@@ -1500,16 +1515,6 @@ static void DoAcquireCompany(Company *c)
 		owner->current_loan += c->current_loan;
 	}
 
-	Money value = CalculateCompanyValue(c) >> 2;
-	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
-	for (int i = 0; i != 4; i++) {
-		if (c->share_owners[i] != COMPANY_SPECTATOR) {
-			cur_company.Change(c->share_owners[i]);
-			SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -value));
-		}
-	}
-	cur_company.Restore();
-
 	if (c->is_ai) AI::Stop(c->index);
 
 	DeleteCompanyWindows(ci);
@@ -1589,9 +1594,12 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 	CompanyID target_company = (CompanyID)p1;
 	Company *c = Company::GetIfValid(target_company);
 
-	/* Check if selling shares is allowed (protection against modified clients)
-	 * Cannot sell own shares */
-	if (c == NULL || !_settings_game.economy.allow_shares || _current_company == target_company) return CMD_ERROR;
+	/* Cannot sell own shares */
+	if (c == NULL || _current_company == target_company) return CMD_ERROR;
+
+	/* Check if selling shares is allowed (protection against modified clients).
+	 * However, we must sell shares of companies being closed down. */
+	if (!_settings_game.economy.allow_shares && !(flags & DC_BANKRUPT)) return CMD_ERROR;
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(c, _current_company) == 0) return CommandCost();

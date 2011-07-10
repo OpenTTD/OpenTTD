@@ -980,6 +980,9 @@ public:
 						this->EnableWidget(ORDER_WIDGET_NON_STOP);
 						this->SetWidgetLoweredState(ORDER_WIDGET_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					}
+					/* Disable refit button if the order is no 'always go' order.
+					 * However, keep the service button enabled for refit-orders to allow clearing refits (without knowing about ctrl). */
+					this->SetWidgetDisabledState(ORDER_WIDGET_REFIT, (order->GetDepotOrderType() & ODTFB_SERVICE) || (order->GetDepotActionType() & ODATFB_HALT));
 					this->SetWidgetLoweredState(ORDER_WIDGET_SERVICE, order->GetDepotOrderType() & ODTFB_SERVICE);
 					break;
 
