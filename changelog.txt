@@ -27,7 +27,6 @@
 - Fix: When a game uses a lot of NewGRFs the buffer for storing that information in the PNG is too small (r22388)
 - Fix: Windows' recv seems to return 'graceful closed' before having passed the remaining buffer which causes OpenTTD to think all connections are 'incorrectly' terminated, i.e. without the 'I am leaving' packet from the client. So let the client wait a tiny bit after sending the 'I am leaving' packet and before gracefully closing the connection [FS#4601] (r22387)
 - Fix: When the last AI company gets removed, the 'dead' state was not reset in the AI debug window [FS#4602] (r22386)
-- Fix: No client error packet was sent to the admin bots [FS#4585] (r22384)
 - Fix: Recolouring of silicon bridge was done incorrectly (r22380, r22379, r22378)
 - Fix: Crash when clicking a removed company in the vehicle list dropdowns [FS#4592] (r22373)
 - Fix: Keep better accounting of the order in which clients joined; client cannot be starved from joining and they get shown the amount of clients waiting in front of them (r22372, r22370, r22369, r22368, r22367, r22366, r22365, r22364, r22363, r22362, r22361)

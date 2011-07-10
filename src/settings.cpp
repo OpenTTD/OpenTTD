@@ -1009,9 +1009,7 @@ static bool DifficultyChange(int32)
 	/* If we are a network-client, update the difficult setting (if it is open).
 	 * Use this instead of just dirtying the window because we need to load in
 	 * the new difficulty settings */
-	if (_networking && FindWindowById(WC_GAME_OPTIONS, 0) != NULL) {
-		ShowGameDifficulty();
-	}
+	if (_networking) InvalidateWindowClassesData(WC_GAME_OPTIONS, GOID_DIFFICULTY_CHANGED);
 
 	return true;
 }

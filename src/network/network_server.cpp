@@ -240,6 +240,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		}
 	}
 
+	NetworkAdminClientError(this->client_id, NETWORK_ERROR_CONNECTION_LOST);
 	DEBUG(net, 1, "Closed client connection %d", this->client_id);
 
 	/* We just lost one client :( */

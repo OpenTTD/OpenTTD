@@ -115,6 +115,17 @@ enum WindowClass {
 	WC_INVALID = 0xFFFF
 };
 
+/**
+ * Data value for #Window::OnInvalidateData() of windows with class #WC_GAME_OPTIONS.
+ */
+enum GameOptionsInvalidationData {
+	GOID_DEFAULT = 0,
+	GOID_NEWGRF_RESCANNED,     ///< NewGRFs were just rescanned.
+	GOID_NEWGRF_LIST_EDITED,   ///< List of active NewGRFs is being edited.
+	GOID_NEWGRF_PRESET_LOADED, ///< A NewGRF preset was picked.
+	GOID_DIFFICULTY_CHANGED,   ///< Difficulty settings were changed.
+};
+
 struct Window;
 
 /** Number to differentiate different windows of the same class */
