@@ -381,10 +381,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
-	res->last_value      = 0;
-	res->trigger         = 0;
-	res->reseed          = 0;
-	res->count           = 0;
+	res->ResetState();
 
 	const HouseSpec *hs  = HouseSpec::Get(house_id);
 	res->grffile         = (hs != NULL ? hs->grf_prop.grffile : NULL);
@@ -592,8 +589,9 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 
 	byte new_random_bits = Random();
 	byte random_bits = GetHouseRandomBits(tile);
-	random_bits &= ~object.reseed;
-	random_bits |= (first ? new_random_bits : base_random) & object.reseed;
+	uint32 reseed = object.GetReseedSum(); // The scope only affects triggers, not the reseeding
+	random_bits &= ~reseed;
+	random_bits |= (first ? new_random_bits : base_random) & reseed;
 	SetHouseRandomBits(tile, random_bits);
 
 	switch (trigger) {

@@ -171,8 +171,7 @@ static const SpriteGroup *AirportResolveReal(const ResolverObject *object, const
 static uint32 AirportGetRandomBits(const ResolverObject *object)
 {
 	const Station *st = object->u.airport.st;
-	const TileIndex tile = object->u.airport.tile;
-	return (st == NULL ? 0 : st->random_bits) | (tile == INVALID_TILE ? 0 : GetStationTileRandomBits(tile) << 16);
+	return st == NULL ? 0 : st->random_bits;
 }
 
 static uint32 AirportGetTriggers(const ResolverObject *object)
@@ -201,10 +200,7 @@ static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st,
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
-	res->last_value      = 0;
-	res->trigger         = 0;
-	res->reseed          = 0;
-	res->count           = 0;
+	res->ResetState();
 
 	const AirportSpec *as = AirportSpec::Get(airport_id);
 	res->grffile         = as->grf_prop.grffile;
