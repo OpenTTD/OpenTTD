@@ -233,6 +233,11 @@ struct RailtypeInfo {
 	byte sorting_order;
 
 	/**
+	 * NewGRF providing the Action3 for the railtype. NULL if not available.
+	 */
+	const GRFFile *grffile[RTSG_END];
+
+	/**
 	 * Sprite groups for resolving sprites
 	 */
 	const SpriteGroup *group[RTSG_END];

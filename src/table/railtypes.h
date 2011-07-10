@@ -105,6 +105,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		0 << 4 | 7,
 
 		{ NULL },
+		{ NULL },
 	},
 
 	/** Electrified railway */
@@ -197,6 +198,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		1 << 4 | 7,
 
 		{ NULL },
+		{ NULL },
 	},
 
 	/** Monorail */
@@ -285,6 +287,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		2 << 4 | 7,
 
 		{ NULL },
+		{ NULL },
 	},
 
 	/** Maglev */
@@ -372,6 +375,7 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* sort order */
 		3 << 4 | 7,
 
+		{ NULL },
 		{ NULL },
 	},
 };
