@@ -236,7 +236,7 @@ public:
 					if (callback_res != CALLBACK_FAILED) {
 						StringID message = GetGRFStringID(spec->grf_prop.grffile->grfid, 0xD000 + callback_res);
 						if (message != STR_NULL && message != STR_UNDEFINED) {
-							PrepareTextRefStackUsage(6);
+							StartTextRefStackUsage(6);
 							/* Use all the available space left from where we stand up to the
 							 * end of the window. We ALSO enlarge the window if needed, so we
 							 * can 'go' wild with the bottom of the window. */

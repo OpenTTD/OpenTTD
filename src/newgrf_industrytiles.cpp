@@ -279,17 +279,18 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 	}
 	if (callback_res == 0x400) return CommandCost();
 
-	/* Copy some parameters from the registers to the error message text ref. stack */
-	SwitchToErrorRefStack();
-	PrepareTextRefStackUsage(4);
-	SwitchToNormalRefStack();
-
+	CommandCost res;
 	switch (callback_res) {
-		case 0x401: return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
-		case 0x402: return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
-		case 0x403: return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
-		default:    return_cmd_error(GetGRFStringID(its->grf_prop.grffile->grfid, 0xD000 + callback_res));
+		case 0x401: res = CommandCost(STR_ERROR_SITE_UNSUITABLE); break;
+		case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
+		case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
+		default:    res = CommandCost(GetGRFStringID(its->grf_prop.grffile->grfid, 0xD000 + callback_res)); break;
 	}
+
+	/* Copy some parameters from the registers to the error message text ref. stack */
+	res.UseTextRefStack(4);
+
+	return res;
 }
 
 /* Simple wrapper for GetHouseCallback to keep the animation unified. */

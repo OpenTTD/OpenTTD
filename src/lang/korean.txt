@@ -1224,6 +1224,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2008년 12
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2008.12.31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}새 게임을 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}일시정지시 가능한 행동: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :아무 것도 못함
@@ -2484,6 +2485,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Action 8 엔트리가 여러 개 존재합니다.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :객체의 읽기 범위를 초과했습니다.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}최근에 이용한 기본 그래픽 세트에 객체가 많이 손실되었습니다.{}기본 그래픽 세트를 업데이트 하십시오.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :요청한 GRF 제원을 사용할 수 없습니다
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING}(은)는 {4:STRING} 때문에 사용할 수 없습니다
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}경고!

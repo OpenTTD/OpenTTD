@@ -2484,6 +2484,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutetet av pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är ej tillgängliga
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} har inaktiverats av {4:STRING}
 
 # NewGRF related 'general' warnings
@@ -3248,7 +3249,7 @@ STR_ORDER_STOP_ORDER                                            :(Stanna)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatisk)
+STR_ORDER_IMPLICIT                                              :(Underförstådd)
 
 STR_ORDER_FULL_LOAD                                             :(Full last)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full last någon godstyp)

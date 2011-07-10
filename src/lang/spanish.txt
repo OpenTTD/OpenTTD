@@ -1140,7 +1140,7 @@ STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permiti
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar derechos de transporte exclusivos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permitir pagar la reconstrucción de las carreteras locales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinero a otras empresas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor velocidad avión: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Cantidad de aviones estrellados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ninguno
@@ -1148,7 +1148,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite construir paradas sobre carreteras de pueblo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir pasar a través de las paradas de carretera de los competidores: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción en estaciones contiguas : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción de estaciones contiguas : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Permitir múltiples NewGRFs de vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cambiar esta opción no es posible cuando ya existen vehículos
 
@@ -2291,7 +2291,7 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Cargar Juego
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar Escenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar Escenario
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar Mapas de altura
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar Mapa de Alturas
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pulsa aquí para ir al directorio por defecto de guardado
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listado de unidades, directorios y juegos guardados
@@ -2412,7 +2412,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Encontra
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comprobar si el contenido que falta puede ser encontrado en línea
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Fichero: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. versión compatible: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}

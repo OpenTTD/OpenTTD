@@ -740,7 +740,7 @@ static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 
 	/* STR_BLACK_STRING is used to start the string with {BLACK} */
 	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
-	PrepareTextRefStackUsage(0);
+	StartTextRefStackUsage(0);
 	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, STR_BLACK_STRING);
 	StopTextRefStackUsage();
 	return result;

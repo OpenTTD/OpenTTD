@@ -2864,6 +2864,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza koniec pseudo obrazków
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualnie używany zestaw grafik jest niekompletny.{}Proszę zaktualizować podstawowy zestaw grafik
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Wymagane zasoby GRF są niedostępne
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} został wyłączony przez {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!

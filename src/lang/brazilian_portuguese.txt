@@ -38,12 +38,12 @@ STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereais
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madeira
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Minério de Ferro
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Aço
-STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Objetos de Valor
+STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Preciosidades
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Minério de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :{G=m}Milho
 STR_CARGO_PLURAL_FRUIT                                          :{G=f}Fruta
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Diamantes
-STR_CARGO_PLURAL_FOOD                                           :{G=m}Alimentos
+STR_CARGO_PLURAL_FOOD                                           :{G=m}Alimento
 STR_CARGO_PLURAL_PAPER                                          :{G=m}Papel
 STR_CARGO_PLURAL_GOLD                                           :{G=m}Ouro
 STR_CARGO_PLURAL_WATER                                          :{G=f}Água
@@ -707,7 +707,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Habilita
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altitude
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não exibir indústrias no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Exibir todas as indústrias no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alternar a exibição de mapa de elevação
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alternar a exibição de mapa topográfico
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Não exibir propriedade da empresa no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Exibir todas as propriedades da empresa no mapa
 
@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algorí
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nenhum
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Melhorado
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotação do mapa em relevo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotação do mapa topográfico: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido Anti-Horário
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido Horário
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}A altitude de um mapa regular é de: {ORANGE}{STRING}
@@ -1375,7 +1375,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Novo Jogo
 STR_INTRO_LOAD_GAME                                             :{BLACK}Abrir Jogo
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar Cenário
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar num mapa de relevo
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar num mapa topográfico
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de Cenário
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jogador
 
@@ -1389,7 +1389,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Sair
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique para pular a configuração do mapa
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Carregar um jogo salvado
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Inica um novo jogo, a partir de um mapa de relevo
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Inica um novo jogo, a partir de um mapa topográfico
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Iniciar um novo jogo, usando um cenário personalizado
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Criar um cenário de jogo personalizado
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Iniciar um jogo de vários jogadores
@@ -1864,7 +1864,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :IA's disponíveis
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de altitudes
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa topográfico
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons padrão
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicsas padrão
 
@@ -2291,7 +2291,7 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Salvar J
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Abrir Jogo
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvar Cenário
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar Relevo
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar mapa topográfico
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clique aqui para selecionar o diretório padrão de jogos salvos
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, diretórios e arquivos de jogos gravados
@@ -2343,8 +2343,8 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Randômi
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Randômico
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação do mapa em relevo:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa em relevo:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação do mapa topográfico:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa topográfico:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
@@ -2485,6 +2485,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém entradas múltiplas de Ação 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Continuar lendo após o fim do pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Estão faltando alguns sprites na base de gráficos em uso.{}Por favor atualize a base de gráficos
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF requisitados não estão dispon.
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} foi desativado por {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
@@ -3404,8 +3406,8 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Custo: {CURRENCY}
 STR_INCOME_FLOAT_COST                                           :{RED}Custo: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Renda: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Renda: {CURRENCY}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Lucro: {CURRENCY}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Lucro: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Custo Estimado: {CURRENCY}

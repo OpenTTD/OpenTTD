@@ -2859,6 +2859,9 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 		if (w != NULL) w->OnPlaceObjectAbort();
 	}
 
+	/* Mark the old selection dirty, in case the selection shape or colour changes */
+	if ((_thd.drawstyle & HT_DRAG_MASK) != HT_NONE) SetSelectionTilesDirty();
+
 	SetTileSelectSize(1, 1);
 
 	_thd.make_square_red = false;

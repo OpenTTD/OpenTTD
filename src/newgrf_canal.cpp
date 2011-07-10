@@ -50,7 +50,7 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 		case 0x80: {
 			uint z = GetTileZ(tile) / TILE_HEIGHT;
 			/* Return consistent height within locks */
-			if (IsTileType(tile, MP_WATER) && IsLock(tile) && GetSection(tile) == LOCK_UPPER) z--;
+			if (IsTileType(tile, MP_WATER) && IsLock(tile) && GetSection(tile) >= 8) z--;
 			return z;
 		}
 

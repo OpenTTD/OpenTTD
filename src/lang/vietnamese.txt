@@ -2484,6 +2484,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Chứa nhiều mục action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc tới điểm cuối của sprite-giả
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy cập nhật gói đồ họa lên phiên bản mới.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Tài nguyên GRF được yêu cầu không có sẵn
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} bị tắt bởi {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú Ý!
