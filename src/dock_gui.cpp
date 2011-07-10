@@ -522,10 +522,10 @@ public:
 	{
 		this->DrawWidgets();
 
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 18, 0);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 34, 1);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 18, 2);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 34, 3);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 18, AXIS_X, DEPOT_PART_NORTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 34, AXIS_X, DEPOT_PART_SOUTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 18, AXIS_Y, DEPOT_PART_NORTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 34, AXIS_Y, DEPOT_PART_SOUTH);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

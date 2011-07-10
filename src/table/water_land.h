@@ -53,11 +53,15 @@ static const DrawTileSeqStruct _shipdepot_display_seq_4[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites _shipdepot_display_data[] = {
-	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_1)
-	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_2)
-	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_3)
-	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_4)
+static const DrawTileSprites _shipdepot_display_data[][DEPOT_PART_END] = {
+	{ // AXIS_X
+		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_1) // DEPOT_PART_NORTH
+		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_2) // DEPOT_PART_SOUTH
+	},
+	{ // AXIS_Y
+		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_3) // DEPOT_PART_NORTH
+		TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_4) // DEPOT_PART_SOUTH
+	},
 };
 
 static const DrawTileSeqStruct _lock_display_seq_0[] = {
@@ -132,21 +136,27 @@ static const DrawTileSeqStruct _lock_display_seq_3t[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites _lock_display_data[] = {
-	TILE_SPRITE_LINE(1, _lock_display_seq_0)
-	TILE_SPRITE_LINE(0, _lock_display_seq_1)
-	TILE_SPRITE_LINE(2, _lock_display_seq_2)
-	TILE_SPRITE_LINE(3, _lock_display_seq_3)
+static const DrawTileSprites _lock_display_data[][DIAGDIR_END] = {
+	{ // LOCK_PART_MIDDLE
+		TILE_SPRITE_LINE(1, _lock_display_seq_0) // NE
+		TILE_SPRITE_LINE(0, _lock_display_seq_1) // SE
+		TILE_SPRITE_LINE(2, _lock_display_seq_2) // SW
+		TILE_SPRITE_LINE(3, _lock_display_seq_3) // NW
+	},
 
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_0b)
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_1b)
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_2b)
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_3b)
+	{ // LOCK_PART_LOWER
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_0b) // NE
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_1b) // SE
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_2b) // SW
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_3b) // NW
+	},
 
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_0t)
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_1t)
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_2t)
-	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_3t)
+	{ // LOCK_PART_UPPER
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_0t) // NE
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_1t) // SE
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_2t) // SW
+		TILE_SPRITE_LINE(0xFDD, _lock_display_seq_3t) // NW
+	},
 };
 
 #undef TILE_SEQ_LINE

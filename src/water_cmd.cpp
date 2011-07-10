@@ -134,8 +134,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		Depot *depot = new Depot(tile);
 		depot->build_date = _date;
 
-		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_NORTH, axis, wc1);
-		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_SOUTH, axis, wc2);
+		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_PART_NORTH, axis, wc1);
+		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_PART_SOUTH, axis, wc2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 		MakeDefaultName(depot);
@@ -426,16 +426,17 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 		}
 
 		case WATER_TILE_LOCK: {
-			static const TileIndexDiffC _lock_tomiddle_offs[] = {
-				{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
-				{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
-				{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
+			static const TileIndexDiffC _lock_tomiddle_offs[][DIAGDIR_END] = {
+				/*   NE       SE        SW      NW       */
+				{ { 0,  0}, {0,  0}, { 0, 0}, {0,  0} }, // LOCK_PART_MIDDLE
+				{ {-1,  0}, {0,  1}, { 1, 0}, {0, -1} }, // LOCK_PART_LOWER
+				{ { 1,  0}, {0, -1}, {-1, 0}, {0,  1} }, // LOCK_PART_UPPER
 			};
 
 			if (flags & DC_AUTO) return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
 			if (_current_company == OWNER_WATER) return CMD_ERROR;
 			/* move to the middle tile.. */
-			return RemoveLock(tile + ToTileIndexDiff(_lock_tomiddle_offs[GetSection(tile)]), flags);
+			return RemoveLock(tile + ToTileIndexDiff(_lock_tomiddle_offs[GetLockPart(tile)][GetLockDirection(tile)]), flags);
 		}
 
 		case WATER_TILE_DEPOT:
@@ -641,8 +642,8 @@ static void DrawWaterTileStruct(const TileInfo *ti, const DrawTileSeqStruct *dts
 /** Draw a lock tile. */
 static void DrawWaterLock(const TileInfo *ti)
 {
-	int section = GetSection(ti->tile);
-	const DrawTileSprites &dts = _lock_display_data[section];
+	int part = GetLockPart(ti->tile);
+	const DrawTileSprites &dts = _lock_display_data[part][GetLockDirection(ti->tile)];
 
 	/* Draw ground sprite. */
 	SpriteID image = dts.ground.sprite;
@@ -670,7 +671,7 @@ static void DrawWaterLock(const TileInfo *ti)
 	if (base == 0) {
 		/* If no custom graphics, use defaults. */
 		base = SPR_LOCK_BASE;
-		uint8 z_threshold = section >= 8 ? 8 : 0;
+		uint8 z_threshold = part == LOCK_PART_UPPER ? 8 : 0;
 		zoffs = ti->z > z_threshold ? 24 : 0;
 	}
 
@@ -681,7 +682,7 @@ static void DrawWaterLock(const TileInfo *ti)
 static void DrawWaterDepot(const TileInfo *ti)
 {
 	DrawWaterClassGround(ti);
-	DrawWaterTileStruct(ti, _shipdepot_display_data[GetSection(ti->tile)].seq, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), CF_END);
+	DrawWaterTileStruct(ti, _shipdepot_display_data[GetShipDepotAxis(ti->tile)][GetShipDepotPart(ti->tile)].seq, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), CF_END);
 }
 
 static void DrawRiverWater(const TileInfo *ti)
@@ -773,9 +774,9 @@ static void DrawTile_Water(TileInfo *ti)
 	}
 }
 
-void DrawShipDepotSprite(int x, int y, int image)
+void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 {
-	const DrawTileSprites &dts = _shipdepot_display_data[image];
+	const DrawTileSprites &dts = _shipdepot_display_data[axis][part];
 
 	DrawSprite(dts.ground.sprite, dts.ground.pal, x, y);
 	DrawOrigTileSeqInGUI(x, y, &dts, COMPANY_SPRITE_COLOUR(_local_company));
