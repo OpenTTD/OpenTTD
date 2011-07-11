@@ -464,6 +464,11 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, uint32 grfi
 		case 0x401: res = CommandCost(default_error); break;
 		case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
 		case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
+		case 0x404: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE); break;
+		case 0x405: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE); break;
+		case 0x406: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_SEA); break;
+		case 0x407: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_CANAL); break;
+		case 0x408: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER); break;
 		default:    res = CommandCost(GetGRFStringID(grfid, 0xD000 + cb_res)); break;
 	}
 
