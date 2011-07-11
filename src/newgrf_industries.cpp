@@ -544,20 +544,9 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	 * the building of the industry, as that's how it's done in TTDP. */
 	if (group == NULL) return CommandCost();
 	uint16 result = group->GetCallbackResult();
-	if (result == 0x400 || result == CALLBACK_FAILED) return CommandCost();
+	if (result == CALLBACK_FAILED) return CommandCost();
 
-	CommandCost res;
-	switch (result) {
-		case 0x401: res = CommandCost(STR_ERROR_SITE_UNSUITABLE); break;
-		case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
-		case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
-		default:    res = CommandCost(GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + result)); break;
-	}
-
-	/* Copy some parameters from the registers to the error message text ref. stack */
-	res.UseTextRefStack(4);
-
-	return res;
+	return GetErrorMessageFromLocationCallbackResult(result, indspec->grf_prop.grffile->grfid, STR_ERROR_SITE_UNSUITABLE);
 }
 
 /**

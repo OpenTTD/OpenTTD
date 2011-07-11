@@ -24,6 +24,9 @@
 #include "newgrf_object.h"
 #include "genworld.h"
 #include "newgrf_spritegroup.h"
+#include "newgrf_text.h"
+
+#include "table/strings.h"
 
 /**
  * Constructor of generic class
@@ -444,6 +447,30 @@ uint32 GetNearbyTileInformation(TileIndex tile)
 	Slope tileh = GetTileSlope(tile, &z);
 	byte terrain_type = (HasTileWaterClass(tile) ? GetWaterClass(tile) : WATER_CLASS_INVALID) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;
+}
+
+/**
+ * Get the error message from a shape/location/slope check callback result.
+ * @param cb_res Callback result to translate. If bit 10 is set this is a standard error message, otherwise a NewGRF provided string.
+ * @param grfid grfID to use to resolve a custom error message.
+ * @param default_error Error message to use for the generic error.
+ * @return CommandCost indicating success or the error message.
+ */
+CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, uint32 grfid, StringID default_error)
+{
+	CommandCost res;
+	switch (cb_res) {
+		case 0x400: return res; // No error.
+		case 0x401: res = CommandCost(default_error); break;
+		case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
+		case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
+		default:    res = CommandCost(GetGRFStringID(grfid, 0xD000 + cb_res)); break;
+	}
+
+	/* Copy some parameters from the registers to the error message text ref. stack */
+	res.UseTextRefStack(4);
+
+	return res;
 }
 
 /* static */ SmallVector<DrawTileSeqStruct, 8> NewGRFSpriteLayout::result_seq;
