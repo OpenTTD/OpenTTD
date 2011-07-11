@@ -3524,6 +3524,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... can 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... can only be built in low areas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... can only be positioned near edges of map
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... forest can only be planted above snow-line
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... can only be built above the snow-line
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... can only be built below the snow-line
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Can't build railroad station here...
@@ -3645,6 +3647,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Can't bu
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Can't place rivers here...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... must be built on water
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... can't build on water
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... can't build on open sea
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... can't build on canal
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... can't build on river
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Must demolish canal first
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Can't build aqueduct here...
 

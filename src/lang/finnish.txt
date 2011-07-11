@@ -3524,6 +3524,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... void
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... voidaan rakentaa vain matalille alueille
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... voidaan asettaa vain kartan reunoille
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsää voi istuttaa vain lumirajan yläpuolelle
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan yläpuolelle
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... voidaan rakentaa vain lumirajan alapuolelle
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Rautatieasemaa ei voi rakentaa.
@@ -3645,6 +3647,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Sulkua e
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tähän ei voi asettaa jokea...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... se pitää rakentaa veteen.
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... veteen ei voi rakentaa.
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ei voida rakentaa merelle
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ei voida rakentaa kanaaliin
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ei voida rakentaa jokeen
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanava täytyy purkaa ensin
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tähän ei voi rakentaa akveduktia...
 
