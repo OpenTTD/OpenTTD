@@ -20,6 +20,7 @@
 #include "core/alloc_type.hpp"
 #include "core/smallvec_type.hpp"
 #include "command_type.h"
+#include "direction_type.h"
 
 /** Context for tile accesses */
 enum TileContext {
@@ -266,7 +267,7 @@ extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
 
 uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
-TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true);
+TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true, Axis axis = INVALID_AXIS);
 uint32 GetNearbyTileInformation(TileIndex tile);
 CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, uint32 grfid, StringID default_error);
 

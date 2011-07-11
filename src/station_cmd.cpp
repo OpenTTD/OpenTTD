@@ -749,21 +749,35 @@ CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags)
  * Checks if a rail station can be built at the given area.
  * @param tile_area Area to check.
  * @param flags Operation to perform.
- * @param invalid_dirs Prohibited directions (set of #DiagDirection).
+ * @param axis Rail station axis.
  * @param station StationID to be queried and returned if available.
  * @param rt The rail type to check for (overbuilding rail stations over rail).
  * @param affected_vehicles List of trains with PBS reservations on the tiles
+ * @param spec_class Station class.
+ * @param spec_index Index into the station class.
+ * @param plat_len Platform length.
+ * @param numtracks Number of platforms.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag flags, uint invalid_dirs, StationID *station, RailType rt, SmallVector<Train *, 4> &affected_vehicles)
+static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag flags, Axis axis, StationID *station, RailType rt, SmallVector<Train *, 4> &affected_vehicles, StationClassID spec_class, byte spec_index, byte plat_len, byte numtracks)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
+	uint invalid_dirs = 5 << axis;
+
+	const StationSpec *statspec = StationClass::Get(spec_class, spec_index);
+	bool slope_cb = statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_SLOPE_CHECK);
 
 	TILE_AREA_LOOP(tile_cur, tile_area) {
 		CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
+
+		if (slope_cb) {
+			/* Do slope check if requested. */
+			ret = PerformStationTileSlopeCheck(tile_area.tile, tile_cur, statspec, axis, plat_len, numtracks);
+			if (ret.Failed()) return ret;
+		}
 
 		/* if station is set, then we have special handling to allow building on top of already existing stations.
 		 * so station points to INVALID_STATION if we can build on any station.
@@ -1140,7 +1154,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	StationID est = INVALID_STATION;
 	SmallVector<Train *, 4> affected_vehicles;
 	/* Clear the land below the station. */
-	CommandCost cost = CheckFlatLandRailStation(TileArea(tile_org, w_org, h_org), flags, 5 << axis, &est, rt, affected_vehicles);
+	CommandCost cost = CheckFlatLandRailStation(TileArea(tile_org, w_org, h_org), flags, axis, &est, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
 	if (cost.Failed()) return cost;
 	/* Add construction expenses. */
 	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);

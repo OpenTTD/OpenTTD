@@ -211,7 +211,7 @@ enum CallbackID {
 	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // 15 bit callback, not implemented
 
 	/** Callback done for each tile of a station to check the slope. */
-	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // 15 bit callback, not implemented
+	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // 15 bit callback
 
 	/** Called to determine the colour of an industry. */
 	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A, // 4 bit callback

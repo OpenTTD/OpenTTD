@@ -413,9 +413,10 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
  * @param parameter The NewGRF "encoded" offset.
  * @param tile The tile to base the offset from.
  * @param signed_offsets Whether the offsets are to be interpreted as signed or not.
+ * @param axis Axis of a railways station.
  * @return The tile at the offset.
  */
-TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets)
+TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets, Axis axis)
 {
 	int8 x = GB(parameter, 0, 4);
 	int8 y = GB(parameter, 4, 4);
@@ -424,7 +425,8 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets)
 	if (signed_offsets && y >= 8) y -= 16;
 
 	/* Swap width and height depending on axis for railway stations */
-	if (HasStationTileRail(tile) && GetRailStationAxis(tile) == AXIS_Y) Swap(x, y);
+	if (axis == INVALID_AXIS && HasStationTileRail(tile)) axis = GetRailStationAxis(tile);
+	if (axis == AXIS_Y) Swap(x, y);
 
 	/* Make sure we never roam outside of the map, better wrap in that case */
 	return TILE_MASK(tile + TileDiffXY(x, y));

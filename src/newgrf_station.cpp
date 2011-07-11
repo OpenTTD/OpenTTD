@@ -279,7 +279,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 	}
 
 	if (st == NULL) {
-		/* Station does not exist, so we're in a purchase list */
+		/* Station does not exist, so we're in a purchase list or the land slope check callback. */
 		switch (variable) {
 			case 0x40:
 			case 0x41:
@@ -289,6 +289,17 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x42: return 0;                // Rail type (XXX Get current type from GUI?)
 			case 0x43: return _current_company; // Station owner
 			case 0x44: return 2;                // PBS status
+			case 0x67: // Land info of nearby tile
+				if (object->u.station.axis != INVALID_AXIS && tile != INVALID_TILE) {
+					if (parameter != 0) tile = GetNearbyTile(parameter, tile, true, object->u.station.axis); // only perform if it is required
+
+					Slope tileh = GetTileSlope(tile, NULL);
+					bool swap = (object->u.station.axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
+
+					return GetNearbyTileInformation(tile) ^ (swap ? SLOPE_EW : 0);
+				}
+				break;
+
 			case 0xFA: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Build date, clamped to a 16 bit value
 		}
 
@@ -544,6 +555,7 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->u.station.st       = st;
 	res->u.station.statspec = statspec;
 	res->u.station.tile     = tile;
+	res->u.station.axis     = INVALID_AXIS;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
@@ -651,6 +663,39 @@ uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, con
 	group = ResolveStation(&object);
 	if (group == NULL) return CALLBACK_FAILED;
 	return group->GetCallbackResult();
+}
+
+/**
+ * Check the slope of a tile of a new station.
+ * @param north_tile Norther tile of the station rect.
+ * @param cur_tile Tile to check.
+ * @param statspec Station spec.
+ * @param axis Axis of the new station.
+ * @param plat_len Platform length.
+ * @param numtracks Number of platforms.
+ * @return Succeeded or failed command.
+ */
+CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, byte plat_len, byte numtracks)
+{
+	TileIndexDiff diff = cur_tile - north_tile;
+	Slope slope = GetTileSlope(cur_tile, NULL);
+
+	ResolverObject object;
+	NewStationResolver(&object, statspec, NULL, cur_tile);
+
+	object.callback        = CBID_STATION_LAND_SLOPE_CHECK;
+	object.callback_param1 = slope << 4 | slope ^ (axis == AXIS_Y && HasBit(slope, CORNER_W) != HasBit(slope, CORNER_E) ? SLOPE_EW : 0);
+	object.callback_param2 = numtracks << 24 | plat_len << 16 | (axis == AXIS_Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff));
+	object.u.station.axis  = axis;
+
+	const SpriteGroup *group = ResolveStation(&object);
+	uint16 cb_res = group != NULL ? group->GetCallbackResult() : CALLBACK_FAILED;
+
+	/* Failed callback means success. */
+	if (cb_res == CALLBACK_FAILED) return CommandCost();
+
+	/* The meaning of bit 10 is inverted in the result of this callback. */
+	return GetErrorMessageFromLocationCallbackResult(ToggleBit(cb_res, 10), statspec->grf_prop.grffile->grfid, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 }
 
 
