@@ -1329,7 +1329,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Ген�
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. расстояние от края карты до нефтезавода: {ORANGE}{STRING} клет{P 0:1 ка ки ок}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Высота снежной линии: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Высота снеговой линии: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Неровность земли (только для TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
@@ -3710,6 +3710,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... мо
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можно строить только в низинах
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... может находиться только у края карты
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можно сажать только выше линии снега
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... можно строить только выше снеговой линии
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... можно строить только ниже снеговой линии
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Здесь невозможно построить станцию...
@@ -3831,6 +3833,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Здес
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Здесь невозможно расположить реку...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... нужно строить в воде
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... нельзя строить в воде
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... нельзя строить в открытом море
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... нельзя строить на канале
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... нельзя строить на реке
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Сначала снесите канал
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Здесь невозможно построить акведук...
 

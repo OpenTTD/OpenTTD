@@ -3547,7 +3547,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... può
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... può essere costruito solo in città
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... può essere costruito solo a basse quote
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... può essere posizionata solo vicino ai bordi della mappa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una foresta può essere piantata solo in una zona innevata
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una foresta può essere piantata solo al di sopra della linea delle nevi perenni
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... può essere costruita solo al di sopra della linea delle nevi perenni
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... può essere costruita solo al di sotto della linea delle nevi perenni
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Impossibile costruire la stazione qui...
@@ -3669,6 +3671,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossib
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossibile creare un fiume qui...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... deve essere costruito sull'acqua
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... impossibile costruire sull'acqua
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... impossibile costruire in mare aperto
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... impossibile costruire su un canale
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... impossibile costruire su un fiume
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Bisogna demolire il canale prima
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Impossibile costruire un acquedotto qui...
 

@@ -3620,6 +3620,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... mož
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... može biti izgrađen samo u nizinskim područjima
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... može se postaviti samo blizu rubova karte
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šume mogu biti posađene jedino iznad linije snijega
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... moguće graditi samo iznad razine snijega
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... moguće graditi samo ispod razine snijega
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ovdje nije moguće izgraditi željezničku postaju...
@@ -3741,6 +3743,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ovdje nije moguće postaviti rijeku...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... mora biti izgrađen na vodi
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nije moguće graditi na vodi
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nemoguće graditi na otvorenom moru
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nemoguće graditi na kanalu
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nemoguće graditi na rijeci
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprije je potrebno srušiti kanal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ovdje nije moguće izgraditi akvadukt...
 

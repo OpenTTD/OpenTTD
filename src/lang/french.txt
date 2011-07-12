@@ -3525,6 +3525,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... peut
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... peut seulement être construit dans les zones basses
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... positionnement uniquement sur les bords de la carte
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les forêts ne peuvent être plantées qu'au dessus de l'altitude d'enneigement
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... peut seulement être construit au dessus de l'altitude d'enneigement
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... peut seulement être construit en dessous de l'altitude d'enneigement
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Impossible de construire la gare ici...
@@ -3646,6 +3648,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossib
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossible de construire une rivière ici...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... doit être construit sur l'eau
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... impossible de construire sur l'eau
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... impossible de construire sur la mer
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... impossible de construire sur un canal
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... impossible de construire sur une rivière
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Vous devez d'abord détruire le canal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Impossible de construire un aqueduc ici...
 

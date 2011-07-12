@@ -3524,6 +3524,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan alleen in laaggelegen gebieden gebouwd worden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan alleen aan de rand van de kaart geplaatst worden
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bossen kunnen alleen boven de sneeuwgrens worden geplant
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan alleen boven de sneeuwlijn gebouwd worden
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan alleen onder de sneeuwlijn gebouwd worden
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan hier geen treinstation bouwen...
@@ -3645,6 +3647,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan hier
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan hier geen rivier plaatsen...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... moet op water gebouwd worden
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan niet op water bouwen
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kan niet op de zee bouwen
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kan niet op kanaal bouwen
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... kan niet op rivier bouwen
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Het kanaal moet eerst verwijderd worden
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan hier geen aquaduct bouwen...
 

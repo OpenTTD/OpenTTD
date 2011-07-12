@@ -3524,6 +3524,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... ch�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... chỉ có thể xây ở vùng đất thấp
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... chỉ có thể đặt ở gần mép bản đồ
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... rừng này chỉ đặt ở trên vùng núi cao có tuyết
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía trên núi cao có tuyết
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... chỉ có thể xây phía dưới núi cao có tuyết
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Không thể xây ga tàu hoả ở đây...
@@ -3645,6 +3647,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Không t
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Không thể đặt sông ở đây...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... phải xây trên mặt nước
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... không thể xây trên nước
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... không thể xây trên biển
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... không thể xây trên kênh
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... không thể xây trên sông
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Phải lấp kênh đào trước
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Không thể xây cống ở đây...
 
