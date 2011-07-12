@@ -684,7 +684,7 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 	NewStationResolver(&object, statspec, NULL, cur_tile);
 
 	object.callback        = CBID_STATION_LAND_SLOPE_CHECK;
-	object.callback_param1 = slope << 4 | slope ^ (axis == AXIS_Y && HasBit(slope, CORNER_W) != HasBit(slope, CORNER_E) ? SLOPE_EW : 0);
+	object.callback_param1 = slope << 4 | (slope ^ (axis == AXIS_Y && HasBit(slope, CORNER_W) != HasBit(slope, CORNER_E) ? SLOPE_EW : 0));
 	object.callback_param2 = numtracks << 24 | plat_len << 16 | (axis == AXIS_Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff));
 	object.u.station.axis  = axis;
 
