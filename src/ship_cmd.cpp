@@ -32,8 +32,28 @@
 #include "pathfinder/opf/opf_ship.h"
 #include "engine_base.h"
 #include "company_base.h"
+#include "tunnelbridge_map.h"
 
 #include "table/strings.h"
+
+/**
+ * Determine the effective #WaterClass for a ship travelling on a tile.
+ * @param tile Tile of interest
+ * @return the waterclass to be used by the ship.
+ */
+static WaterClass GetEffectiveWaterClass(TileIndex tile)
+{
+	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER);
+		return WATER_CLASS_CANAL;
+	}
+	if (IsTileType(tile, MP_RAILWAY)) {
+		assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
+		return WATER_CLASS_SEA;
+	}
+	NOT_REACHED();
+}
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
@@ -158,7 +178,7 @@ void Ship::UpdateCache()
 	const ShipVehicleInfo *svi = ShipVehInfo(this->engine_type);
 
 	/* Get speed fraction for the current water type. Aqueducts are always canals. */
-	byte speed_frac = (!IsTileType(this->tile, MP_TUNNELBRIDGE) && GetWaterClass(this->tile) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
+	byte speed_frac = (GetEffectiveWaterClass(this->tile) == WATER_CLASS_SEA) ? svi->ocean_speed_frac : svi->canal_speed_frac;
 	/* speed_frac == 0 means no reduction while 0xFF means reduction to 1/256. */
 	this->vcache.cached_max_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, svi->max_speed) * (256 - speed_frac) / 256;
 
@@ -552,8 +572,8 @@ static void ShipController(Ship *v)
 				v->state = TrackToTrackBits(track);
 
 				/* Update ship cache when the water class changes. Aqueducts are always canals. */
-				WaterClass old_wc = IsTileType(gp.old_tile, MP_TUNNELBRIDGE) ? WATER_CLASS_CANAL : GetWaterClass(gp.old_tile);
-				WaterClass new_wc = IsTileType(gp.new_tile, MP_TUNNELBRIDGE) ? WATER_CLASS_CANAL : GetWaterClass(gp.new_tile);
+				WaterClass old_wc = GetEffectiveWaterClass(gp.old_tile);
+				WaterClass new_wc = GetEffectiveWaterClass(gp.new_tile);
 				if (old_wc != new_wc) v->UpdateCache();
 			}
 
