@@ -3735,6 +3735,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... grad
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gradnja je dozvoljena samo u nizijskim oblastima
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... može biti postavljeno samo blizu ivica terena
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šuma može biti posađena samo iznad linije snega
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... može biti izgrađena samo iznad linije snega
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... može biti izgrađena samo ispod linije snega
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Izgradnja železničke stanice ovde nije moguća...
@@ -3856,6 +3858,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovde nij
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ovde je nemoguće postavljanje reke...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... mora biti izgrađen na vodi
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Ne može se graditi na vodi
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ne može se izgraditi na moru
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ne može se izgraditi na kanalu
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ne može se izgraditi na reci
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Potrebno je prvo ukloniti kanal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akvadukt se ovde ne može izgraditi...
 
