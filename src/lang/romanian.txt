@@ -3524,6 +3524,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... se p
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... poate fi construit(ă) doar în zone joase
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... se poate construi doar la marginea hărţii
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... pădurile pot fi plantate doar în zonele înzăpezite
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... poate fi construit doar deasupra liniei zăpezii
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... poate fi construit doar sub linia zăpezii
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nu se poate construi o gară aici...
@@ -3645,6 +3647,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nu se po
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Nu pot plasa râuri aici...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... trebuie construit pe apă
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nu se poate construi pe apă
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nu poate fi construit pe mare
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nu poate fi construit pe canal
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nu poate fi construit pe râu
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Trebuie sa demolezi canalul inainte
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nu pot construi apeductul aici...
 
