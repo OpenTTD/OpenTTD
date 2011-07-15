@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt p
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Szenario späicheren
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Szenario lueden
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Héichtenkaart späicheren
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Lued Héichtenkaart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Eraus aus dem Editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2278,6 +2279,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Spill lu
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Szenario späicheren
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Szenario lueden
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lued Héichtenkaart
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Héichtenkaart späichern
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klickt hei fir op d'Standard Späicher-/Luedeverzeeschnis ze goen
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} fräi
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lëscht vun den Laafwierker, Dossieren an Späicherstänn
@@ -2473,6 +2475,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Iwwert d'Enn vu
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}D'momentan benotzten Grafikset huet e puer Sprites ze mann. {}W.e.g d'Basisgrafikset updaten
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Ugefroten GRF net verfügbar
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} gouf ausgeschalt vun {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongültëgen/onbekannten Sprite Layout Format
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Opgepasst!
@@ -3236,7 +3239,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatësch)
+STR_ORDER_IMPLICIT                                              :(Implizit)
 
 STR_ORDER_FULL_LOAD                                             :(Voll lueden)
 STR_ORDER_FULL_LOAD_ANY                                         :(Voll lueden mat all Wuer)
@@ -3521,6 +3524,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kann
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kann nëmmen an niddregen Beräicher gebaut ginn
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann nëmmen no un den Ecker vun der Kaart positionéiert ginn
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Bësch kann nëmmen iwert der Schnéilinn geplanzt ginn
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann nëmmen iwwert der Schnéilinn gebaut ginn
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann net ënnert der Schnéilinn bauen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kann d'Gare hei net bauen...
@@ -3642,6 +3647,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kann kee
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kann hei keen Floss platzéiren...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... muss op Waasser gebaut ginn
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Kann net op d'Waasser bauen
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kann net op opener Séi bauen
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kann net um Kanal bauen
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... kann net um Floss bauen
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Musst den Kanal fir d'éischt ofrappen
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kann den Aquadukt héi net bauen...
 

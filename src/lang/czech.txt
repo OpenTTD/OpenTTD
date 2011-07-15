@@ -2561,6 +2561,8 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc G
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje grafiky nejsou k dispozici
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} byla vypnuta {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Chybný/neznámý formát sprajtu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
@@ -3615,6 +3617,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... mů�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... může se postavit jen v nížinách
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... může být umístěno pouze poblíž okrajů mapy
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... lesy lze vysadit jen nad sněhovou čáru
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... lze stavět pouze nad sněhovou čáru
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... nelze stavět pod sněhovou čáru
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Zde nelze postavit nádraží...
@@ -3736,6 +3740,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Zde nelz
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Zde nelze vytvořit řeku...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musí být postaven na vodě
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nelze stavět na vodě
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nelze stavět na otevřeném moři
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nelze stavět na průplavu
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nelze stavět na řece
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Nejprve je třeba zničit průplav
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Zde nelze postavit akvadukt...
 
