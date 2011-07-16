@@ -319,10 +319,17 @@ size_t Utf8StringLength(const char *s)
  * using certain locales: eg in Turkish the uppercase 'I' was converted to
  * '?', so just revert to the old functionality
  * @param str string to convert
+ * @return String has changed.
  */
-void strtolower(char *str)
+bool strtolower(char *str)
 {
-	for (; *str != '\0'; str++) *str = tolower(*str);
+	bool changed = false;
+	for (; *str != '\0'; str++) {
+		char new_str = tolower(*str);
+		changed |= new_str != *str;
+		*str = new_str;
+	}
+	return changed;
 }
 
 /**

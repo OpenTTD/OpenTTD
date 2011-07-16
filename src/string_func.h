@@ -41,7 +41,7 @@ char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
 
 void str_validate(char *str, const char *last, bool allow_newlines = false, bool ignore = false);
 void str_strip_colours(char *str);
-void strtolower(char *str);
+bool strtolower(char *str);
 
 bool StrValid(const char *str, const char *last);
 

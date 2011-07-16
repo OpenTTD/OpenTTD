@@ -320,8 +320,7 @@ char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char 
 		/* Be, as opening files, aware that sometimes the filename
 		 * might be in uppercase when it is in lowercase on the
 		 * disk. Ofcourse Windows doesn't care about casing. */
-		strtolower(buf + strlen(_searchpaths[sp]) - 1);
-		if (FileExists(buf)) return buf;
+		if (strtolower(buf + strlen(_searchpaths[sp]) - 1) && FileExists(buf)) return buf;
 #endif
 	}
 
@@ -378,8 +377,7 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
 
 	f = fopen(buf, mode);
 #if !defined(WIN32)
-	if (f == NULL) {
-		strtolower(buf + ((subdir == NO_DIRECTORY) ? 0 : strlen(_searchpaths[sp]) - 1));
+	if (f == NULL && strtolower(buf + ((subdir == NO_DIRECTORY) ? 0 : strlen(_searchpaths[sp]) - 1))) {
 		f = fopen(buf, mode);
 	}
 #endif
