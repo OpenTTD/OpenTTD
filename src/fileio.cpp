@@ -300,6 +300,14 @@ char *FioGetFullPath(char *buf, size_t buflen, Searchpath sp, Subdirectory subdi
 	return buf;
 }
 
+/**
+ * Find a path to the filename in one of the search directories.
+ * @param buf [out] Destination buffer for the path.
+ * @param buflen Length of the destination buffer.
+ * @param subdir Subdirectory to try.
+ * @param filename Filename to look for.
+ * @return \a buf containing the path if the path was found, else \c NULL.
+ */
 char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char *filename)
 {
 	Searchpath sp;
@@ -307,17 +315,17 @@ char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char 
 
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioGetFullPath(buf, buflen, sp, subdir, filename);
-		if (FileExists(buf)) break;
+		if (FileExists(buf)) return buf;
 #if !defined(WIN32)
 		/* Be, as opening files, aware that sometimes the filename
 		 * might be in uppercase when it is in lowercase on the
 		 * disk. Ofcourse Windows doesn't care about casing. */
 		strtolower(buf + strlen(_searchpaths[sp]) - 1);
-		if (FileExists(buf)) break;
+		if (FileExists(buf)) return buf;
 #endif
 	}
 
-	return buf;
+	return NULL;
 }
 
 char *FioAppendDirectory(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir)
@@ -1049,9 +1057,7 @@ void DeterminePaths(const char *exe)
 		}
 	} else {
 		char personal_dir[MAX_PATH];
-		FioFindFullPath(personal_dir, lengthof(personal_dir), BASE_DIR, "openttd.cfg");
-
-		if (FileExists(personal_dir)) {
+		if (FioFindFullPath(personal_dir, lengthof(personal_dir), BASE_DIR, "openttd.cfg") != NULL) {
 			char *end = strrchr(personal_dir, PATHSEPCHAR);
 			if (end != NULL) end[1] = '\0';
 			_personal_dir = strdup(personal_dir);
