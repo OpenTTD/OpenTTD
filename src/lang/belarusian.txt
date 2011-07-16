@@ -3880,7 +3880,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... мо
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будаваць толькі ў гарадах
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можна будаваць толькі ў нізінах
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можа знаходзіцца толькі ля краю мапы
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй за лінію сьнегу
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй за сьнегавую лiнiю
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... магчыма пабудаваць толькi вышэй за сьнегавую лiнiю
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... магчыма пабудаваць толькi нiжэй за сьнегавую лiнiю
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тут немагчыма пабудаваць чыгуначную станцыю...
@@ -4002,6 +4004,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Тут �
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Тут немагчыма разьмясьціць раку...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... трэба будаваць у вадзе
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... нельга будаваць у вадзе
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... немагчыма пабудаваць у адкрытым моры
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... немагчыма пабудаваць на канале
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... немагчыма пабудаваць на рацэ
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Спачатку зьнясіце канал
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут немагчыма пабудаваць аквэдук...
 
