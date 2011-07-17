@@ -690,9 +690,10 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			}
 			DoCommand(t, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
-			/* draw explosion animation... */
+			/* draw explosion animation...
+			 * Disable explosions when game is paused. Looks silly and blocks the view. */
 			TileIndex off = t - ta.tile;
-			if ((TileX(off) == 0 || TileX(off) == ta.w - 1U) && (TileY(off) == 0 || TileY(off) == ta.h - 1U)) {
+			if ((TileX(off) == 0 || TileX(off) == ta.w - 1U) && (TileY(off) == 0 || TileY(off) == ta.h - 1U) && _pause_mode == PM_UNPAUSED) {
 				/* big explosion in each corner, or small explosion for single tiles */
 				CreateEffectVehicleAbove(TileX(t) * TILE_SIZE + TILE_SIZE / 2, TileY(t) * TILE_SIZE + TILE_SIZE / 2, 2,
 					ta.w == 1 && ta.h == 1 ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
