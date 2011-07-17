@@ -3625,7 +3625,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatycznie)
+STR_ORDER_IMPLICIT                                              :(Sugerujący)
 
 STR_ORDER_FULL_LOAD                                             :(Pełen załadunek)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pełen załadunek dowolnego towaru)
@@ -3910,6 +3910,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... moż
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... może być budowane tylko na niskich terenach
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... może być usytuowane tylko blisko krawędzi mapy
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... las może być posadzony tylko powyżej linii śniegu
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... można zbudować tylko powyżej linii śniegu
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... można zbudować tylko poniżej linii śniegu
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nie można tutaj wybudować stacji...
@@ -4030,7 +4032,10 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nie można tutaj zbudować śluzy...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Nie można tutaj umieścić rzeki...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musi być wybudowane na wodzie
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nie można wybudować na wodzie
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nie można zbudować na wodzie
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nie można zbudować na otwartym morzu
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nie można zbudować na kanale
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nie można budować na rzece
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Należy najpierw usunąć kanał
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nie można zbudować tutaj akweduktu...
 

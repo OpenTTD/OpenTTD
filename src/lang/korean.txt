@@ -3525,6 +3525,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 도�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 낮은 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 맵 가장자리에만 위치할 수 있습니다.
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 만년설 고도 위에만 지을 수 있습니다
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 만년설 고도 아래에만 지을 수 있습니다
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}여기에 역을 건설할 수 없습니다...
@@ -3646,6 +3648,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}여기�
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}여기에 강을 만들 수 없습니다...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... 물 위에 지어져야 합니다!
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... 물 위에 지을 수 없습니다
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... 바다 위에 지을 수 없습니다
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... 운하 위에 지을 수 없습니다
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... 강 위에 지을 수 없습니다
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}운하를 먼저 제거하십시오
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}여기에 수도교를 지을 수 없습니다...
 
