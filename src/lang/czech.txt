@@ -335,11 +335,11 @@ STR_SORT_BY_PRODUCTION                                          :produkce
 STR_SORT_BY_TYPE                                                :typu
 STR_SORT_BY_TRANSPORTED                                         :přepravy
 STR_SORT_BY_NUMBER                                              :čísla
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :hrubého zisku vloni
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :hrubého zisku letos
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :hrubého zisku minulý rok
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :hrubého zisku za tento rok
 STR_SORT_BY_AGE                                                 :stáří
 STR_SORT_BY_RELIABILITY                                         :spolehlivosti
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :celkové kapacity podle druhu nákladu
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :celkové kapacity dle druhu nákladu
 STR_SORT_BY_MAX_SPEED                                           :max. rychlosti
 STR_SORT_BY_MODEL                                               :modelu
 STR_SORT_BY_VALUE                                               :hodnoty
@@ -1769,7 +1769,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Přijímání informací o hře...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Přijímání informací o společnosti...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i ů} před námi
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i ů} před vámi
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} staženo
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} staženo
 

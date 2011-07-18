@@ -3525,6 +3525,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kann
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kann nur im Tiefland gebaut werden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann nur in der Nähe des Spielfeldrandes errichtet werden
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Wald kann nur oberhalb der Schneegrenze gepflanzt werden
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann nur oberhalb der Schneegrenze errichtet werden
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann nur unterhalb der Schneegrenze errichtet werden
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Bahnhof kann hier nicht gebaut werden...
@@ -3646,6 +3648,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Schleuse
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Flüsse können hier nicht platziert werden...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... muss auf Wasser gebaut werden
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kann nicht auf Wasser gebaut werden
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kann nicht auf offener See errichtet werden
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kann nicht auf Kanal errichtet werden
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... kann nicht auf Fluß errichtet werden
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal muss erst abgerissen werden
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Aquädukt kann hier nicht gebaut werden...
 
