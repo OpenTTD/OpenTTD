@@ -3524,6 +3524,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan kun bygges i lavtliggende områder
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan kun placeres nær kanten af kortet
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skov kan kun plantes over snelinjen
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE} ... kan kun bygges over snegrænsen
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE} ... kan kun bygges under snegrænsen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikke bygge en banegård her...
@@ -3645,6 +3647,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan ikke
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan ikke placere floder her...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... skal bygges på vand
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan ikke bygge på vand
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE} ... kan ikke bygge på åbent hav
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE} ... kan ikke bygge på kanalen
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE} ... kan ikke bygge på floden
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal må fjernes først
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikke bygge akvædukt her...
 
