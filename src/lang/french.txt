@@ -449,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Copie d'écran 
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie d'écran de la carte entière
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À Propos de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afficher/cacher les boites de dimensions maximum
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -618,7 +619,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Choisir 
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Sélectionner programme de musique 'Ezy Street'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Choisir le programme personnalisé 'Personnalisé 1'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Choisir le programme personnalisé 'Personnalisé 2'
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Active/Désactive le mode aléatoire
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Active/désactive le mode aléatoire
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afficher la fenêtre de sélection de pistes
 
 STR_ERROR_NO_SONGS                                              :{WHITE}Un ensemble de musique vide a été choisis. Aucune musique ne sera jouée

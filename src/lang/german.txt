@@ -449,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Hereingezoomter
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Standard: Strg+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Über 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-Ausrichtung
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hüllquader anzeigen/ausblenden
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

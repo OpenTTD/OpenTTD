@@ -3902,7 +3902,7 @@ STR_TOWN_BUILDING_NAME_PARK_1                                   :Park
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Kancelářský blok
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Obchody a kanceláře
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Moderní kancelářský blok
-STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Výrobní hala
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Skladiště
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Kancelářský blok
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadion
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Staré domy

@@ -449,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con zoo
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -3525,6 +3526,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... solo
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... solo puede construirse en zonas bajas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sólo se puede colocar cerca de los bordes del mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... sólo se puede plantar bosques sobre la nieve
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... solamente puede construirse por encima de la línea de nieve
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... solamente puede construirse por debajo de la línea de nieve
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}No se puede construir estación de tren aquí...
@@ -3646,6 +3649,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}No se pu
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}No se pueden situar ríos aquí...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... debe construirse sobre el agua
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... no se puede construir sobre el agua
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... no se puede construir en mar abierto
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... no se puede construir en un canal
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... no se puede construir en un río
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Debes demoler el canal primero
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}No se puede construir un acueducto aquí
 
