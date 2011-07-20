@@ -828,7 +828,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 9 : 8);
+	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 10 : 8);
 	return CBF_NONE;
 }
 
@@ -847,6 +847,28 @@ static void MenuClickWorldScreenshot()
 	MakeScreenshot(SC_WORLD, NULL);
 }
 
+/**
+ * Toggle drawing of sprites' bounding boxes
+ * @note has only an effect when newgrf_developer_tools are active
+ *
+ * Function is found here and not in viewport.cpp in order to avoid
+ * importing the settings structs to there
+ */
+void ToggleBoundingBoxes()
+{
+	extern bool _draw_bounding_boxes;
+	/* Always allow to toggle them off */
+	if (_settings_client.gui.newgrf_developer_tools || _draw_bounding_boxes) {
+		_draw_bounding_boxes = !_draw_bounding_boxes;
+		MarkWholeScreenDirty();
+	}
+}
+
+/**
+ * Choose the proper callback function for the main toolbar's help menu
+ * @param index The menu index which was selected
+ * @return CBF_NONE
+ */
 static CallBackFunction MenuClickHelp(int index)
 {
 	switch (index) {
@@ -858,6 +880,7 @@ static CallBackFunction MenuClickHelp(int index)
 		case 6: MenuClickWorldScreenshot();    break;
 		case 7: ShowAboutWindow();             break;
 		case 8: ShowSpriteAlignerWindow();     break;
+		case 9: ToggleBoundingBoxes();         break;
 	}
 	return CBF_NONE;
 }
