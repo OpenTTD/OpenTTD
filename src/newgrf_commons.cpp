@@ -447,7 +447,8 @@ uint32 GetNearbyTileInformation(TileIndex tile)
 
 	uint z;
 	Slope tileh = GetTileSlope(tile, &z);
-	byte terrain_type = (HasTileWaterClass(tile) ? GetWaterClass(tile) : WATER_CLASS_INVALID) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
+	/* Return 0 if the tile is a land tile */
+	byte terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;
 }
 
