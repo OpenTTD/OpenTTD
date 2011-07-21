@@ -448,6 +448,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ingezoomd scree
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot van hele kaart
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite uitlijner
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Schakel selectiekaders
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

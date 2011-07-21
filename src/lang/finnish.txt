@@ -448,6 +448,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Lähennetty kuv
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Koko kartan kuvakaappaus
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja 'OpenTTD':stä
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Reunat päälle/pois
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

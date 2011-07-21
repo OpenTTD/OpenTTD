@@ -544,6 +544,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zumirano u slic
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Slika zaslona cijele mape
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjanje sprite-a
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Odaberi granične okvire
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
