@@ -23,17 +23,32 @@
 
 #include <png.h>
 
+/**
+ * Handle pnglib error.
+ *
+ * @param png_ptr Pointer to png struct.
+ * @param message Error message text.
+ */
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 {
 	DEBUG(misc, 0, "[libpng] error: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
 	longjmp(png_jmpbuf(png_ptr), 1);
 }
 
+/**
+ * Handle warning in pnglib.
+ *
+ * @param png_ptr Pointer to png struct.
+ * @param message Warning message text.
+ */
 static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 {
 	DEBUG(misc, 1, "[libpng] warning: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
 }
 
+/**
+ * Display a splash image shown on startup (WITH_PNG).
+ */
 void DisplaySplashImage()
 {
 	FILE *f = FioFOpenFile(SPLASH_IMAGE_FILE);
@@ -162,6 +177,9 @@ void DisplaySplashImage()
 
 #else /* WITH_PNG */
 
+/**
+ * Empty 'Display a splash image' routine (WITHOUT_PNG).
+ */
 void DisplaySplashImage() {}
 
 #endif /* WITH_PNG */

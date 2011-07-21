@@ -7,6 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/** @file macos.mm Code related to MacOSX. */
+
 #include "../../stdafx.h"
 #include "../../core/bitmath_func.hpp"
 #include "../../rev.h"
@@ -57,6 +59,13 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 
 #ifdef WITH_SDL
 
+/**
+ * Show the system dialogue message (SDL on MacOSX).
+ *
+ * @param title Window title.
+ * @param message Message text.
+ * @param buttonLabel Button text.
+ */
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	NSRunAlertPanel([ NSString stringWithUTF8String:title ], [ NSString stringWithUTF8String:message ], [ NSString stringWithUTF8String:buttonLabel ], nil, nil);
@@ -66,6 +75,13 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
 
 extern void CocoaDialog(const char *title, const char *message, const char *buttonLabel);
 
+/**
+ * Show the system dialogue message (Cocoa on MacOSX).
+ *
+ * @param title Window title.
+ * @param message Message text.
+ * @param buttonLabel Button text.
+ */
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	CocoaDialog(title, message, buttonLabel);
@@ -74,6 +90,13 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
 
 #else
 
+/**
+ * Show the system dialogue message (console on MacOSX).
+ *
+ * @param title Window title.
+ * @param message Message text.
+ * @param buttonLabel Button text.
+ */
 void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	fprintf(stderr, "%s: %s\n", title, message);
@@ -82,6 +105,12 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
 #endif
 
 
+/**
+ * Show an error message.
+ *
+ * @param buf error message text.
+ * @param system message text originates from OS.
+ */
 void ShowOSErrorBox(const char *buf, bool system)
 {
 	/* Display the error in the best way possible. */
@@ -93,7 +122,9 @@ void ShowOSErrorBox(const char *buf, bool system)
 }
 
 
-/** Determine the current user's locale. */
+/**
+ * Determine and return the current user's locale.
+ */
 const char *GetCurrentLocale(const char *)
 {
 	static char retbuf[32] = { '\0' };
@@ -120,6 +151,13 @@ const char *GetCurrentLocale(const char *)
 
 
 #ifdef WITH_COCOA
+/**
+ * Return the contents of the clipboard (COCOA).
+ *
+ * @param buffer Clipboard content..
+ * @param buff_len Length of the clipboard content..
+ * @return Whether clipboard is empty or not.
+ */
 bool GetClipboardContents(char *buffer, size_t buff_len)
 {
 	NSPasteboard *pb = [ NSPasteboard generalPasteboard ];

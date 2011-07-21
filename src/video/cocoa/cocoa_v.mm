@@ -7,6 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/** @file cocoa_v.mm Code related to the cocoa video driver(s). */
+
 /******************************************************************************
  *                             Cocoa video driver                             *
  * Known things left to do:                                                   *
@@ -56,9 +58,13 @@ CocoaSubdriver *_cocoa_subdriver = NULL;
 
 
 
-/* The main class of the application, the application's delegate */
+/**
+ * The main class of the application, the application's delegate.
+ */
 @implementation OTTDMain
-/* Called when the internal event loop has just started running */
+/**
+ * Called when the internal event loop has just started running.
+ */
 - (void) applicationDidFinishLaunching: (NSNotification*) note
 {
 	/* Hand off to main application code */
@@ -68,7 +74,9 @@ CocoaSubdriver *_cocoa_subdriver = NULL;
 	[ NSApp stop:_ottd_main ];
 }
 
-/* Display the in game quit confirmation dialog */
+/**
+ * Display the in game quit confirmation dialog.
+ */
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication*) sender
 {
 
@@ -78,6 +86,9 @@ CocoaSubdriver *_cocoa_subdriver = NULL;
 }
 @end
 
+/**
+ * Initialize the application menu shown in top bar.
+ */
 static void setApplicationMenu()
 {
 	NSString *appName = @"OTTD";
@@ -117,7 +128,9 @@ static void setApplicationMenu()
 	[ menuItem release ];
 }
 
-/* Create a window menu */
+/**
+ * Create a window menu.
+ */
 static void setupWindowMenu()
 {
 	NSMenu *windowMenu = [ [ NSMenu alloc ] initWithTitle:@"Window" ];
@@ -138,6 +151,9 @@ static void setupWindowMenu()
 	[ menuItem release ];
 }
 
+/**
+ * Startup the application.
+ */
 static void setupApplication()
 {
 	ProcessSerialNumber psn = { 0, kCurrentProcess };
@@ -167,7 +183,11 @@ static void setupApplication()
 	[ NSApp setDelegate:_ottd_main ];
 }
 
-
+/**
+ * Update the video modus.
+ *
+ * @pre _cocoa_subdriver != NULL
+ */
 static void QZ_UpdateVideoModes()
 {
 	assert(_cocoa_subdriver != NULL);
@@ -183,7 +203,9 @@ static void QZ_UpdateVideoModes()
 	_num_resolutions = count;
 }
 
-
+/**
+ * Handle a change of the display area.
+ */
 void QZ_GameSizeChanged()
 {
 	if (_cocoa_subdriver == NULL) return;
@@ -200,7 +222,14 @@ void QZ_GameSizeChanged()
 	GameSizeChanged();
 }
 
-
+/**
+ * Find a suitable cocoa window subdriver.
+ *
+ * @param width Width of display area.
+ * @param height Height of display area.
+ * @param bpp Colour depth of display area.
+ * @return Pointer to window subdriver.
+ */
 static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 {
 #if defined(ENABLE_COCOA_QUARTZ) || defined(ENABLE_COCOA_QUICKDRAW)
@@ -238,7 +267,17 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 	return NULL;
 }
 
-
+/**
+ * Find a suitable cocoa subdriver.
+ *
+ * @param width Width of display area.
+ * @param height Height of display area.
+ * @param bpp Colour depth of display area.
+ * @param fullscreen Wether a fullscreen mode is requested.
+ * @param fallback Whether we look for a fallback driver.
+ * @return Pointer to subdriver.
+ * @return Pointer to window subdriver.
+ */
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
 	CocoaSubdriver *ret = fullscreen ? QZ_CreateFullscreenSubdriver(width, height, bpp) : QZ_CreateWindowSubdriver(width, height, bpp);
@@ -264,6 +303,9 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 
 static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
 
+/**
+ * Stop the cocoa video subdriver.
+ */
 void VideoDriver_Cocoa::Stop()
 {
 	if (!_cocoa_video_started) return;
@@ -276,6 +318,9 @@ void VideoDriver_Cocoa::Stop()
 	_cocoa_video_started = false;
 }
 
+/**
+ * Initialize a cocoa video subdriver.
+ */
 const char *VideoDriver_Cocoa::Start(const char * const *parm)
 {
 	if (!MacOSVersionIsAtLeast(10, 3, 0)) return "The Cocoa video driver requires Mac OS X 10.3 or later.";
@@ -304,6 +349,14 @@ const char *VideoDriver_Cocoa::Start(const char * const *parm)
 	return NULL;
 }
 
+/**
+ * Set dirty a rectangle managed by a cocoa video subdriver.
+ *
+ * @param left Left x cooordinate of the dirty rectangle.
+ * @param top Uppder y coordinate of the dirty rectangle.
+ * @param width Width of the dirty rectangle.
+ * @param height Height of the dirty rectangle.
+ */
 void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
 {
 	assert(_cocoa_subdriver != NULL);
@@ -311,12 +364,22 @@ void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
 	_cocoa_subdriver->MakeDirty(left, top, width, height);
 }
 
+/**
+ * Start the main programme loop when using a cocoa video driver.
+ */
 void VideoDriver_Cocoa::MainLoop()
 {
 	/* Start the main event loop */
 	[ NSApp run ];
 }
 
+/**
+ * Change the resolution when using a cocoa video driver.
+ *
+ * @param w New window width.
+ * @param h New window height.
+ * @return Whether the video driver was successfully updated.
+ */
 bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 {
 	assert(_cocoa_subdriver != NULL);
@@ -329,6 +392,12 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 	return ret;
 }
 
+/**
+ * Toggle between windowed and full screen mode for cocoa display driver.
+ *
+ * @param full_screen Whether to switch to full screen or not.
+ * @return Whether the mode switch was successful.
+ */
 bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
 	assert(_cocoa_subdriver != NULL);
@@ -355,7 +424,15 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	return _cocoa_subdriver->IsFullscreen() == full_screen;
 }
 
-/* This is needed since sometimes assert is called before the videodriver is initialized */
+/**
+ * Catch asserts prior to initialization of the videodriver.
+ *
+ * @param title Window title.
+ * @param message Message text.
+ * @param buttonLabel Button text.
+ *
+ * @note This is needed since sometimes assert is called before the videodriver is initialized .
+ */
 void CocoaDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	_cocoa_video_dialog = true;
@@ -375,8 +452,11 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	_cocoa_video_dialog = false;
 }
 
-/* This is needed since OS X application bundles do not have a
- * current directory and the data files are 'somewhere' in the bundle */
+/** Set the application's bundle directory.
+ *
+ * This is needed since OS X application bundles do not have a
+ * current directory and the data files are 'somewhere' in the bundle.
+ */
 void cocoaSetApplicationBundleDir()
 {
 	char tmp[MAXPATHLEN];
@@ -391,7 +471,10 @@ void cocoaSetApplicationBundleDir()
 	CFRelease(url);
 }
 
-/* These are called from main() to prevent a _NSAutoreleaseNoPool error when
+/**
+ * Setup autorelease for the application pool.
+ *
+ * These are called from main() to prevent a _NSAutoreleaseNoPool error when
  * exiting before the cocoa video driver has been loaded
  */
 void cocoaSetupAutoreleasePool()
@@ -399,6 +482,9 @@ void cocoaSetupAutoreleasePool()
 	_ottd_autorelease_pool = [ [ NSAutoreleasePool alloc ] init ];
 }
 
+/**
+ * Autorelease the application pool.
+ */
 void cocoaReleaseAutoreleasePool()
 {
 	[ _ottd_autorelease_pool release ];
