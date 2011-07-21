@@ -53,6 +53,7 @@
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;
 
+/** Toobar modes */
 enum ToolbarMode {
 	TB_NORMAL,
 	TB_UPPER,
@@ -66,6 +67,7 @@ enum CallBackFunction {
 	CBF_PLACE_LANDINFO,
 };
 
+/** Toolbar widgets in the normal game mode */
 enum ToolbarNormalWidgets {
 	TBN_PAUSE         = 0,
 	TBN_FASTFORWARD,
@@ -99,6 +101,7 @@ enum ToolbarNormalWidgets {
 	TBN_END                ///< The end marker
 };
 
+/** Toolbar widgets in the scenario editor */
 enum ToolbarScenEditorWidgets {
 	TBSE_PAUSE        = 0,
 	TBSE_FASTFORWARD,
@@ -272,8 +275,12 @@ static CallBackFunction ToolbarPauseClick(Window *w)
 	return CBF_NONE;
 }
 
-/* --- Fast forwarding --- */
-
+/**
+ * Toggle fast forward mode.
+ *
+ * @param w Unused.
+ * @return #CBF_NONE
+ */
 static CallBackFunction ToolbarFastForwardClick(Window *w)
 {
 	_fast_forward ^= true;
@@ -281,8 +288,9 @@ static CallBackFunction ToolbarFastForwardClick(Window *w)
 	return CBF_NONE;
 }
 
-/* --- Options button menu --- */
-
+/**
+ * Game Option button menu entries.
+ */
 enum OptionMenuEntries {
 	OME_GAMEOPTIONS,
 	OME_DIFFICULTIES,
@@ -300,6 +308,12 @@ enum OptionMenuEntries {
 	OME_SHOW_STATIONSIGNS,
 };
 
+/**
+ * Handle click on Options button in toolbar.
+ *
+ * @param w parent window the shown Drop down list is attached to.
+ * @return #CBF_NONE
+ */
 static CallBackFunction ToolbarOptionsClick(Window *w)
 {
 	DropDownList *list = new DropDownList();
@@ -327,6 +341,12 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on one of the entries in the Options button menu.
+ *
+ * @param index Index being clicked.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickSettings(int index)
 {
 	switch (index) {
@@ -350,8 +370,9 @@ static CallBackFunction MenuClickSettings(int index)
 	return CBF_NONE;
 }
 
-/* --- Saving/loading button menu --- */
-
+/**
+ * SaveLoad entries in scenario editor mode.
+ */
 enum SaveLoadEditorMenuEntries {
 	SLEME_SAVE_SCENARIO   = 0,
 	SLEME_LOAD_SCENARIO,
@@ -362,6 +383,9 @@ enum SaveLoadEditorMenuEntries {
 	SLEME_MENUCOUNT,
 };
 
+/**
+ * SaveLoad entries in normal game mode.
+ */
 enum SaveLoadNormalMenuEntries {
 	SLNME_SAVE_GAME   = 0,
 	SLNME_LOAD_GAME,
@@ -370,18 +394,36 @@ enum SaveLoadNormalMenuEntries {
 	SLNME_MENUCOUNT,
 };
 
+/**
+ * Handle click on Save button in toolbar in normal game mode.
+ *
+ * @param w parent window the shown save dialogue is attached to.
+ * @return #CBF_NONE
+ */
 static CallBackFunction ToolbarSaveClick(Window *w)
 {
 	PopupMainToolbMenu(w, TBN_SAVEGAME, STR_FILE_MENU_SAVE_GAME, SLNME_MENUCOUNT);
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on SaveLoad button in toolbar in the scenario editor.
+ *
+ * @param w parent window the shown save dialogue is attached to.
+ * @return #CBF_NONE
+ */
 static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 {
 	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, SLEME_MENUCOUNT);
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on one of the entries in the SaveLoad menu.
+ *
+ * @param index Index being clicked.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickSaveLoad(int index = 0)
 {
 	if (_game_mode == GM_EDITOR) {
@@ -427,6 +469,12 @@ static CallBackFunction ToolbarScenMapTownDir(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on one of the entries in the Map menu.
+ *
+ * @param index Index being clicked.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickMap(int index)
 {
 	switch (index) {
@@ -446,6 +494,12 @@ static CallBackFunction ToolbarTownClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on one of the entries in the Town menu.
+ *
+ * @param index Index being clicked.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickTown(int index)
 {
 	switch (index) {
@@ -465,6 +519,12 @@ static CallBackFunction ToolbarSubsidiesClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Subsidies menu.
+ *
+ * @param index Unused.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickSubsidies(int index)
 {
 	ShowSubsidiesList();
@@ -479,6 +539,12 @@ static CallBackFunction ToolbarStationsClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Stations menu
+ *
+ * @param index CompanyID to show station list for
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickStations(int index)
 {
 	ShowCompanyStations((CompanyID)index);
@@ -493,6 +559,12 @@ static CallBackFunction ToolbarFinancesClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the finances overview menu.
+ *
+ * @param index CompanyID to show finances for.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickFinances(int index)
 {
 	ShowCompanyFinances((CompanyID)index);
@@ -507,6 +579,12 @@ static CallBackFunction ToolbarCompaniesClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Company menu.
+ *
+ * @param index Menu entry to handle.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickCompany(int index)
 {
 #ifdef ENABLE_NETWORK
@@ -547,6 +625,12 @@ static CallBackFunction ToolbarGraphsClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Graphs menu.
+ *
+ * @param index Graph to show.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickGraphs(int index)
 {
 	switch (index) {
@@ -571,6 +655,12 @@ static CallBackFunction ToolbarLeagueClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the CompanyLeague menu.
+ *
+ * @param index Menu entry number.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickLeague(int index)
 {
 	switch (index) {
@@ -589,6 +679,12 @@ static CallBackFunction ToolbarIndustryClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Industry menu.
+ *
+ * @param index Menu entry number.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickIndustry(int index)
 {
 	switch (index) {
@@ -618,6 +714,12 @@ static CallBackFunction ToolbarTrainClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Train menu.
+ *
+ * @param index CompanyID to show train list for.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickShowTrains(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_TRAIN);
@@ -632,6 +734,12 @@ static CallBackFunction ToolbarRoadClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Road Vehicles menu.
+ *
+ * @param index CompanyID to show road vehicles list for.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickShowRoad(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_ROAD);
@@ -646,6 +754,12 @@ static CallBackFunction ToolbarShipClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Ships menu.
+ *
+ * @param index CompanyID to show ship list for.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickShowShips(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_SHIP);
@@ -660,6 +774,12 @@ static CallBackFunction ToolbarAirClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Aircraft menu.
+ *
+ * @param index CompanyID to show aircraft list for.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickShowAir(int index)
 {
 	ShowVehicleListWindow((CompanyID)index, VEH_AIRCRAFT);
@@ -697,6 +817,12 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Build Rail menu.
+ *
+ * @param index RailType to show the build toolbar for.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickBuildRail(int index)
 {
 	_last_built_railtype = (RailType)index;
@@ -728,6 +854,12 @@ static CallBackFunction ToolbarBuildRoadClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Build Road menu.
+ *
+ * @param index RoadType to show the build toolbar for.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickBuildRoad(int index)
 {
 	_last_built_roadtype = (RoadType)index;
@@ -743,6 +875,12 @@ static CallBackFunction ToolbarBuildWaterClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Build Waterways menu.
+ *
+ * @param index Unused.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickBuildWater(int index)
 {
 	ShowBuildDocksToolbar();
@@ -757,6 +895,12 @@ static CallBackFunction ToolbarBuildAirClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Build Air menu.
+ *
+ * @param index Unused.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickBuildAir(int index)
 {
 	ShowBuildAirToolbar();
@@ -771,6 +915,12 @@ static CallBackFunction ToolbarForestClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the landscaping menu.
+ *
+ * @param index Menu entry clicked.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickForest(int index)
 {
 	switch (index) {
@@ -789,6 +939,12 @@ static CallBackFunction ToolbarMusicClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Music menu.
+ *
+ * @param index Unused.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickMusicWindow(int index)
 {
 	ShowMusicWindow();
@@ -803,6 +959,12 @@ static CallBackFunction ToolbarNewspaperClick(Window *w)
 	return CBF_NONE;
 }
 
+/**
+ * Handle click on the entry in the Newspaper menu.
+ *
+ * @param index Menu entry clicked.
+ * @return #CBF_NONE
+ */
 static CallBackFunction MenuClickNewspaper(int index)
 {
 	switch (index) {
@@ -848,11 +1010,11 @@ static void MenuClickWorldScreenshot()
 }
 
 /**
- * Toggle drawing of sprites' bounding boxes
- * @note has only an effect when newgrf_developer_tools are active
+ * Toggle drawing of sprites' bounding boxes.
+ * @note has only an effect when newgrf_developer_tools are active.
  *
  * Function is found here and not in viewport.cpp in order to avoid
- * importing the settings structs to there
+ * importing the settings structs to there.
  */
 void ToggleBoundingBoxes()
 {
@@ -865,8 +1027,8 @@ void ToggleBoundingBoxes()
 }
 
 /**
- * Choose the proper callback function for the main toolbar's help menu
- * @param index The menu index which was selected
+ * Choose the proper callback function for the main toolbar's help menu.
+ * @param index The menu index which was selected.
  * @return CBF_NONE
  */
 static CallBackFunction MenuClickHelp(int index)
@@ -1051,8 +1213,8 @@ public:
 
 	/**
 	 * Check whether the given widget type is a button for us.
-	 * @param type the widget type to check
-	 * @return true if it is a button for us
+	 * @param type the widget type to check.
+	 * @return true if it is a button for us.
 	 */
 	bool IsButton(WidgetType type) const
 	{
@@ -1186,11 +1348,11 @@ public:
 
 	/**
 	 * Get the arrangement of the buttons for the toolbar.
-	 * @param width the new width of the toolbar
-	 * @param arrangable_count output of the number of visible items
-	 * @param button_count output of the number of visible buttons
-	 * @param spacer_count output of the number of spacers
-	 * @return the button configuration
+	 * @param width the new width of the toolbar.
+	 * @param arrangable_count output of the number of visible items.
+	 * @param button_count output of the number of visible buttons.
+	 * @param spacer_count output of the number of spacers.
+	 * @return the button configuration.
 	 */
 	virtual const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const = 0;
 };
