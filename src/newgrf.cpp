@@ -5150,7 +5150,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x11: // current rail tool type
-			*value = 0;
+			*value = 0; // constant fake value to avoid desync
 			return true;
 
 		case 0x12: // Game mode
@@ -5168,7 +5168,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x1B: // Display options
-			*value = GB(_display_opt, 0, 6);
+			*value = 0x3F; // constant fake value to avoid desync
 			return true;
 
 		case 0x1D: // TTD Platform, 00=TTDPatch, 01=OpenTTD
@@ -5183,7 +5183,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			if (_cur_grffile->traininfo_vehicle_width == VEHICLEINFO_FULL_VEHICLE_WIDTH) SetBit(*value, GMB_TRAIN_WIDTH_32_PIXELS);
 			return true;
 
-		/* case 0x1F: // locale dependent settings not implemented */
+		/* case 0x1F: // locale dependent settings not implemented to avoid desync */
 
 		case 0x20: // snow line height
 			*value = _settings_game.game_creation.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
