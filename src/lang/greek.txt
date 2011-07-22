@@ -402,6 +402,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Τοπο
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Αποθήκευση σεναρίου
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Φόρτωση σεναρίου
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Αποθηκευση χάρτη υψομετρίας
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Φόρτωση χάρτη υψομετρίας
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος από το πρόγραμμα επεξεργασίας
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -2370,6 +2371,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Φόρτ
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Αποθήκευση Σεναρίου
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Φόρτωση Σεναρίου
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Φόρτωση χάρτη υψομετρίας
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Αποθήκευση Χάρτη Υψομετρίας
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Κάντε κλικ εδώ για να πάτε στον τρέχων φάκελλο αποθήκευσης
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ελεύθερα
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Λίστα δίσκων, φακέλλων και αποθηκευμένων παιχνιδιών
