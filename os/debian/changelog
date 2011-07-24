@@ -1,3 +1,9 @@
+openttd (1.1.2~RC1) unstable; urgency=low
+
+  * New upstream release 1.1.2-RC1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 24 Jul 2011 21:00:00 +0200
+
 openttd (1.1.1) unstable; urgency=low
 
   * New upstream release 1.1.1

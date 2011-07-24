@@ -1191,9 +1191,9 @@ STR_CONFIG_SETTING_DISABLED                                     :απενεργ�
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ποσότητα καπνού/σπινθύρων οχήματος: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Μέγιστο μήκος τρένων: {ORANGE}{STRING} πλακιδι{P 0:1 ο α}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ποσότητα καπνού/σπινθύρων οχήματος: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Κανένα
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Γνήσιο
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Ρεαλιστικό

@@ -2,7 +2,7 @@
 
 %define binname         openttd
 
-%define srcver          1.1.1
+%define srcver          1.1.2
 
 %if %{dedicated}
 Name:           %{binname}-dedicated
