@@ -335,11 +335,11 @@ STR_SORT_BY_PRODUCTION                                          :produkce
 STR_SORT_BY_TYPE                                                :typu
 STR_SORT_BY_TRANSPORTED                                         :přepravy
 STR_SORT_BY_NUMBER                                              :čísla
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :hrubého zisku vloni
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :hrubého zisku letos
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :hrubého zisku minulý rok
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :hrubého zisku za tento rok
 STR_SORT_BY_AGE                                                 :stáří
 STR_SORT_BY_RELIABILITY                                         :spolehlivosti
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :celkové kapacity podle druhu nákladu
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :celkové kapacity dle druhu nákladu
 STR_SORT_BY_MAX_SPEED                                           :max. rychlosti
 STR_SORT_BY_MODEL                                               :modelu
 STR_SORT_BY_VALUE                                               :hodnoty
@@ -1781,7 +1781,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Přijímání informací o hře...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Přijímání informací o společnosti...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i ů} před námi
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i ů} před vámi
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} staženo
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} staženo
 
@@ -2573,6 +2573,7 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc G
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje grafiky nejsou k dispozici
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} byla vypnuta {4:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
@@ -3626,7 +3627,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... mů�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... může se postavit jedině ve městě
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... může se postavit jen v nížinách
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... může být umístěno pouze poblíž okrajů mapy
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... lesy lze vysadit jen nad sněhovou čáru
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les lze vysadit pouze nad sněžnou čárou
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Zde nelze postavit nádraží...
@@ -3906,7 +3907,7 @@ STR_TOWN_BUILDING_NAME_PARK_1                                   :Park
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Kancelářský blok
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Obchody a kanceláře
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Moderní kancelářský blok
-STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Výrobní hala
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Skladiště
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Kancelářský blok
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadion
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Staré domy

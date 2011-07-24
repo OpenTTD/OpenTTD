@@ -301,9 +301,7 @@ struct MainWindow : Window
 				return ES_HANDLED;
 
 			case GHK_BOUNDING_BOXES:
-				extern bool _draw_bounding_boxes;
-				_draw_bounding_boxes = !_draw_bounding_boxes;
-				MarkWholeScreenDirty();
+				ToggleBoundingBoxes();
 				return ES_HANDLED;
 		}
 

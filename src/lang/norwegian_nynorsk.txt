@@ -1099,9 +1099,9 @@ STR_CONFIG_SETTING_DISABLED                                     :deaktivert
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillet bygging på skråningar og i vasskanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillet landskapsendringar under bygningar, spor o.s.b.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Meir realistisk storleik på oppfangingsområde: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde køyretøyrøyk/-gnistar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillet frjerning av fleire vegar, bruar osb. egd av byane.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal lengde på tog {ORANGE}{STRING} rute{P 0:1 "" r}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde køyretøyrøyk/-gnistar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Opprinneleg
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}

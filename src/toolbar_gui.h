@@ -13,6 +13,7 @@
 #define TOOLBAR_GUI_H
 
 void AllocateToolbar();
+void ToggleBoundingBoxes();
 
 extern int16 *_preferred_toolbar_size;
 

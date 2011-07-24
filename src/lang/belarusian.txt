@@ -3890,7 +3890,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... мо
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будаваць толькі ў гарадах
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можна будаваць толькі ў нізінах
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можа знаходзіцца толькі ля краю мапы
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй за лінію сьнегу
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй за сьнегавую лiнiю
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тут немагчыма пабудаваць чыгуначную станцыю...

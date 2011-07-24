@@ -449,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Screenshot zoom
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot intera mappa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informazioni su 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Strumento allineamento sprite
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Attiva/disattiva bounding box
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -3547,7 +3548,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... può
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... può essere costruito solo in città
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... può essere costruito solo a basse quote
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... può essere posizionata solo vicino ai bordi della mappa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una foresta può essere piantata solo in una zona innevata
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una foresta può essere piantata solo al di sopra della linea delle nevi perenni
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Impossibile costruire la stazione qui...

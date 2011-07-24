@@ -3249,7 +3249,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatësch)
+STR_ORDER_IMPLICIT                                              :(Implizit)
 
 STR_ORDER_FULL_LOAD                                             :(Voll lueden)
 STR_ORDER_FULL_LOAD_ANY                                         :(Voll lueden mat all Wuer)

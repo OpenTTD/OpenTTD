@@ -448,6 +448,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con zoo
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activar cajas delimitadoras
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

@@ -3635,7 +3635,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatycznie)
+STR_ORDER_IMPLICIT                                              :(Sugerujący)
 
 STR_ORDER_FULL_LOAD                                             :(Pełen załadunek)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pełen załadunek dowolnego towaru)
@@ -4040,7 +4040,7 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nie można tutaj zbudować śluzy...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Nie można tutaj umieścić rzeki...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musi być wybudowane na wodzie
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nie można wybudować na wodzie
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nie można zbudować na wodzie
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Należy najpierw usunąć kanał
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nie można zbudować tutaj akweduktu...
 
