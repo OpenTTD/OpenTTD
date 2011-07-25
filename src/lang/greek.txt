@@ -2581,7 +2581,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Συνέ
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Κανένα
-STR_NEWGRF_LIST_ALL_FOUND                                       :Όλα τα αρχεία είναι παρώντα
+STR_NEWGRF_LIST_ALL_FOUND                                       :Όλα τα αρχεία είναι παρόντα
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Βρέθηκαν συμβατά αρχεία
 STR_NEWGRF_LIST_MISSING                                         :{RED}Λείπουν αρχεία
 
@@ -2598,7 +2598,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <μη έγκυρου φορτίου>
-STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυρη μηχανή>
+STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυρο μοντέλο μηχανής>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυρη βιομηχανία>
 
 # Sign list window
@@ -3332,7 +3332,7 @@ STR_ORDER_STOP_ORDER                                            :(Στάση)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Αυτόματο)
+STR_ORDER_IMPLICIT                                              :(Σιωπηρή)
 
 STR_ORDER_FULL_LOAD                                             :(Πλήρης φόρτωση)
 STR_ORDER_FULL_LOAD_ANY                                         :(Πλήρης φόρτωση οποιουδήποτε εμπορεύματος)
@@ -3438,7 +3438,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφά
 STR_ERROR_NO_AI                                                 :{WHITE}Στο OpenTTD δεν ενσωματώθηκε υποστήριξη ΤΝ...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... καμία ΤΝ δεν είναι διαθέσιμη!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου"
+STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης AI είναι διαθέσιμο μόνο για τον διακομιστή
 

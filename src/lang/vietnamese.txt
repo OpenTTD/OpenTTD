@@ -4178,11 +4178,11 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Điểm mốc {
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Xưởng Tàu Hỏa
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Xưởng Tàu Hỏa #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Xưởng Xe Ôtô
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Xưởng Xe Ôtô #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Xưởng Tàu
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Xưởng Tàu #{COMMA}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Xưởng
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Xưởng Xe Ôtô {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Xưởng Xe Ôtô {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Xưởng Tàu {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Xưởng Tàu {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Xưởng {STATION}
 
 STR_UNKNOWN_STATION                                             :Ga,bến không biết
 STR_DEFAULT_SIGN_NAME                                           :Biển hiệu
