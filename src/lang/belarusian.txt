@@ -761,6 +761,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Здымак э
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Здымак усёй мапы (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Аб гульні OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выраўноўваньне спрайтаў
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Пераключыць абмяжоўвальныя рамкі
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

@@ -511,6 +511,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Kinagyított k�
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Befoglaló doboz ki/bekapcsolása
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -3588,6 +3589,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... csak
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... csak alacsony terepen építhető
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... csak a térkép határaihoz közel építhető
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... erdő csak a hóhatár fölé ültethető
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... csak a hóhatár fölé építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... csak a hóhatár alá építhető
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nem építhetsz ide vasútállomást...
@@ -3709,6 +3712,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ide nem 
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ide nem lehet folyót elhelyezni...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... csak vízen építhető
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nem építhető vízen
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nem építhető nyílt tengerre
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nem építhető csatornára
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nem építhető folyóra
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}A csatornát előbb le kell rombolni
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ide nem lehet akvaduktot építeni...
 
