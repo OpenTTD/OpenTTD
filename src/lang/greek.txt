@@ -1585,7 +1585,7 @@ STR_FACE_FACECODE                                               :{BLACK}Αρ. π
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Εμφάνιση και/ή επιλογή του αριθμού του προσώπου του παίκτη
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Προβολη και/ή ορισμός του αριθμού του προσώπου του παίκτη
 STR_FACE_FACECODE_SET                                           :{WHITE}Ο νέος αριθμός προσώπου έχει οριστεί
-STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν μπορεί να οριστεί ο αριθμός προσώπου του παίκτη - πρέπει να είναι αριθμητικός μεταξύ του 0 και του 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν μπορεί να οριστεί ο αριθμός προσώπου του παίκτη - πρέπει να είναι αριθμητικός μεταξύ του 0 και του 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Αποθήκευση
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Αποθήκευση αγαπημένου προσώπου
 STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκεύτει ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
@@ -2034,8 +2034,8 @@ STR_STATION_CLASS_WAYP                                          :Σημείο κ
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή σηματοδότη
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Σηματοδότες τμήματος (σηματοφόρος){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να είναι στο ίδιο τμήμα την ίδια στιγμή
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Σηματοδότης-Εισόδου (σηματοφόρος){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες-εξόδου από επόμενο τομέα γράμμης. Αλλιώς δείχνει κόκκινο.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Σηματοδότες τμήματος (σηματοφόρος){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να βρίσκεται σε κάθε τμήμα κάθε φορά
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Σηματοδότης-Εισόδου (σηματοφόρος){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες-εξόδου στο επόμενο τμήμα γράμμης. Αλλιώς δείχνει κόκκινο
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Σηματοδότης-Εξόδου (σηματοφόρος){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να θέσει το σωστό χρώμα στην είσοδο στους συνδιασμένους προ-σηματοδότες.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Συνδιασμένος Σηματοδότης (σηματοφόρος){}Ο συνδιασμένος σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου. Αυτό επιτρέπει το χτήσιμο μεγάλυτερων "δέντρων" με προ-σηματοδότες.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Σηματοδότης τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Κανονίκοι σηματοδότες τροχιάς μπόρουν να περαστούν από την άλλη πλεύρα.
@@ -2587,11 +2587,11 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Λείπο
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF '{0:STRING}' είναι πιθάνο να προκαλέσει αποσυγχρονισμούς και/ή κρασαρίσματα.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Αλλάξει το μήκος του οχήματος '{1:ENGINE}' ενώ δεν βρισκόταν μέσα σε αμαξοστάσιο
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος '{1:ENGINE}' ενώ δεν βρισκόταν μέσα σε αμαξοστάσιο
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρενο'{VEHICLE}' που ανήκει στην εταιρία '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κρασάρει.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευή για την μηχανή '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει να ανακατασκευάσει σώστα
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευής για το '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει στην σωστή ανακατασκευή
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόγχο στην ανακοίνωση παραγωγής.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -2784,7 +2784,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίσ
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Προβολή Αρχηγείου
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Προβολή αρχηγείου εταιρίας
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ανοικοδόμηση Αρχηγείου
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ανοικοδόμηση του αρχηγείου της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Επανοικοδόμηση της έδρας της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς επανατοποθέτηση της έδρας.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Νέο Πρόσωπο
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Επιλογή νέου προσώπου διευθυντή
@@ -2797,8 +2797,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Αλλα
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% στην εταιρία
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Πώληση μεριδίου 25% της εταιρίας
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% της εταιρίας
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% σε αυτή την εταιρεία. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς την αγορά μετοχών
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+κλικ εμφναίζεται το κόστος χωρίς την πώληση μετοχών
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Όνομα Διευθυντή
@@ -2853,7 +2853,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Διαθέσι�
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Διαθέσιμα Οχήματα
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Διαθέσιμα Πλοία
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Διαθέσιμα Αεροπλάνα
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για τον τύπο οχήματος.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για αυτον τύπο οχήματος
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Διαχείριση λίστας
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Στείλε οδηγίες σε όλα τα οχήματα σε αυτή λίστα
@@ -2931,10 +2931,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Αγορ
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Αγορά Πλοίου
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Αγορά Αεροπλάνου
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγοράστε το επιλεγμένο οχήμα τρένου
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγοράστε το επιλεγμένο οχήμα δρόμου
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγοράστε το επιλεγμένο πλοίο
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγοράστε το επιλεγμένο αεροπλάνο
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγοράστε το επιλεγμένο οχήμα τρένου. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγοράστε το επιλεγμένο οχήμα δρόμου. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγοράστε το επιλεγμένο πλοίο. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγοράστε το επιλεγμένο αεροπλάνο. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Μετανομασία
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Μετανομασία
@@ -3980,7 +3980,7 @@ STR_SV_STNAME_HEIGHTS                                           :Λόφοι {STR
 STR_SV_STNAME_WOODS                                             :Δάσος {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Λίμνη {STRING}
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Ανταλλαγής
-STR_SV_STNAME_AIRPORT                                           :αεροδρόμιο {STRING}
+STR_SV_STNAME_AIRPORT                                           :Αεροδρόμιο {STRING}
 STR_SV_STNAME_OILFIELD                                          :{G=m}Πετρελαιοπηγές {STRING}
 STR_SV_STNAME_MINES                                             :{G=n}Ορυχεία {STRING}
 STR_SV_STNAME_DOCKS                                             :{G=n}Λιμάνι {STRING}

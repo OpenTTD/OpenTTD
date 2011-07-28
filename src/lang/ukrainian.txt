@@ -573,6 +573,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Збільше�
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Знімок всієї карти (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Про гру 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Вирівнювання спрайтів
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Вкл./відкл. обмежуючі рамки
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -3649,6 +3650,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... мо
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можна будувати лише у низинах
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можна розмістити лише біля країв карти
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... садити ліс можна тільки вище рівня снігу
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... можна будувати тільки вище рівня снігу
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... можна будувати тільки нижче рівня снігу
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Неможливо будувати станцію тут...
@@ -3770,6 +3773,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Немо
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Тут не можна зробити річку...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... має бути збудовано на воді
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... неможливо будувати на воді
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... неможливо будувати у відкритому морі
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... неможливо будувати на каналі
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... неможливо будувати на річці
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Спочатку потрібно прибрати канал
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут не можна побудувати акведук...
 

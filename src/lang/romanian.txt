@@ -448,6 +448,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captură mărit
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniere imagini
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afisează/ascunde casetele de incadrare
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
