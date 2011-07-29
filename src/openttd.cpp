@@ -231,17 +231,6 @@ static void ParseResolution(Dimension *res, const char *s)
 	res->height = max(strtoul(t + 1, NULL, 0), 64UL);
 }
 
-static void InitializeDynamicVariables()
-{
-	/* Dynamic stuff needs to be initialized somewhere... */
-	_engine_mngr.ResetToDefaultMapping();
-	_house_mngr.ResetMapping();
-	_industry_mngr.ResetMapping();
-	_industile_mngr.ResetMapping();
-	_airport_mngr.ResetMapping();
-	_airporttile_mngr.ResetMapping();
-}
-
 
 /**
  * Unitializes drivers, frees allocated memory, cleans pools, ...
@@ -553,9 +542,6 @@ int ttd_main(int argc, char *argv[])
 	/* initialize screenshot formats */
 	InitializeScreenshotFormats();
 
-	/* initialize all variables that are allocated dynamically */
-	InitializeDynamicVariables();
-
 	/* Initialize FreeType */
 	InitFreeType();
 
@@ -780,7 +766,6 @@ static void MakeNewGame(bool from_heightmap, bool reset_settings)
 	_game_mode = GM_NORMAL;
 
 	ResetGRFConfig(true);
-	InitializeDynamicVariables();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
 	GenerateWorld(from_heightmap ? GWM_HEIGHTMAP : GWM_NEWGAME, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y, reset_settings);

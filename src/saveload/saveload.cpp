@@ -2557,8 +2557,6 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 	_next_offs = 0;
 
 	if (!load_check) {
-		_engine_mngr.ResetToDefaultMapping();
-
 		/* Old maps were hardcoded to 256x256 and thus did not contain
 		 * any mapsize information. Pre-initialize to 256x256 to not to
 		 * confuse old games */
@@ -2662,7 +2660,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 	/* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
-		_engine_mngr.ResetToDefaultMapping();
 		InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 
 		/* TTD/TTO savegames have no NewGRFs, TTDP savegame have them

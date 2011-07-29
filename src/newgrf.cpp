@@ -7432,6 +7432,20 @@ void ResetNewGRFData()
 	_spritegroup_pool.CleanPool();
 }
 
+/**
+ * Reset NewGRF data which is stored persistently in savegames.
+ */
+void ResetPersistentNewGRFData()
+{
+	/* Reset override managers */
+	_engine_mngr.ResetToDefaultMapping();
+	_house_mngr.ResetMapping();
+	_industry_mngr.ResetMapping();
+	_industile_mngr.ResetMapping();
+	_airport_mngr.ResetMapping();
+	_airporttile_mngr.ResetMapping();
+}
+
 static void BuildCargoTranslationMap()
 {
 	memset(_cur_grffile->cargo_map, 0xFF, sizeof(_cur_grffile->cargo_map));
