@@ -491,9 +491,9 @@ static void NetworkUDPQueryServerThread(void *pntr)
 
 	/* Clear item in gamelist */
 	NetworkGameList *item = CallocT<NetworkGameList>(1);
-	item->address = *info;
 	info->GetAddressAsString(item->info.server_name, lastof(item->info.server_name));
 	strecpy(item->info.hostname, info->GetHostname(), lastof(item->info.hostname));
+	item->address = *info;
 	item->manually = info->manually;
 	NetworkGameListAddItemDelayed(item);
 

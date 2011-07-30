@@ -33,6 +33,7 @@ private:
 	char hostname[NETWORK_HOSTNAME_LENGTH]; ///< The hostname
 	int address_length;                     ///< The length of the resolved address
 	sockaddr_storage address;               ///< The resolved address
+	bool resolved;                          ///< Whether the address has been (tried to be) resolved
 
 	/**
 	 * Helper function to resolve something to a socket.
@@ -50,7 +51,8 @@ public:
 	 */
 	NetworkAddress(struct sockaddr_storage &address, int address_length) :
 		address_length(address_length),
-		address(address)
+		address(address),
+		resolved(address_length != 0)
 	{
 		*this->hostname = '\0';
 	}
@@ -61,7 +63,8 @@ public:
 	 * @param address_length The length of the address.
 	 */
 	NetworkAddress(sockaddr *address, int address_length) :
-		address_length(address_length)
+		address_length(address_length),
+		resolved(address_length != 0)
 	{
 		*this->hostname = '\0';
 		memset(&this->address, 0, sizeof(this->address));
@@ -75,7 +78,8 @@ public:
 	 * @param family the address family
 	 */
 	NetworkAddress(const char *hostname = "", uint16 port = 0, int family = AF_UNSPEC) :
-		address_length(0)
+		address_length(0),
+		resolved(false)
 	{
 		/* Also handle IPv6 bracket enclosed hostnames */
 		if (StrEmpty(hostname)) hostname = "";
@@ -123,7 +127,7 @@ public:
 	 */
 	bool IsResolved() const
 	{
-		return this->address_length != 0;
+		return this->resolved;
 	}
 
 	bool IsFamily(int family);

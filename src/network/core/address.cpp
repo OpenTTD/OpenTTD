@@ -132,6 +132,7 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 		 * that means "don't care whether it is SOCK_STREAM or SOCK_DGRAM".
 		 */
 		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, NULL, ResolveLoopProc);
+		this->resolved = true;
 	}
 	return &this->address;
 }
