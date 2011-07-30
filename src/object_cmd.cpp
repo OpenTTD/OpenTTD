@@ -425,10 +425,6 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	Object *o = Object::GetByTile(tile);
 	TileArea ta = o->location;
 
-	ClearedObjectArea *cleared_area = _cleared_object_areas.Append();
-	cleared_area->first_tile = tile;
-	cleared_area->area = ta;
-
 	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h / 5);
 	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
 
@@ -485,6 +481,10 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 		default:
 			break;
 	}
+
+	ClearedObjectArea *cleared_area = _cleared_object_areas.Append();
+	cleared_area->first_tile = tile;
+	cleared_area->area = ta;
 
 	if (flags & DC_EXEC) ReallyClearObjectTile(o);
 
