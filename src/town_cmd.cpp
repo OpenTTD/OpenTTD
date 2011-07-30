@@ -2128,8 +2128,16 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	}
 
 	uint maxz = GetTileMaxZ(tile);
+	TileIndex baseTile = tile;
 
 	while (probability_max > 0) {
+		/* Building a multitile building can change the location of tile.
+		 * The building would still be built partially on that tile, but
+		 * its nothern tile would be elsewere. However, if the callback
+		 * fails we would be basing further work from the changed tile.
+		 * So a next 1x1 tile building could be built on the wrong tile. */
+		tile = baseTile;
+
 		uint r = RandomRange(probability_max);
 		uint i;
 		for (i = 0; i < num; i++) {
