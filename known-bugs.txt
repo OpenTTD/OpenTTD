@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2011-07-24
-Release version: 1.1.2-RC1
+Last updated:    2011-07-30
+Release version: 1.1.2-RC2
 ------------------------------------------------------------------------
 
 
@@ -40,7 +40,6 @@ we only apply bug fixes provided by the community but we are unable to fix
 these bugs ourselves.
 
 - 4695  [OSX] Crash when switching to full screen with OS X Lion
-- 4694  HQ (partly) destroyed when funding town
 - 4689  [OSX] Crash when hiding window after coming from full screen
 - 4594  [Windows] Minimizing the windows when a modal error message is
         shown makes it difficult to exit the game

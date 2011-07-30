@@ -1,3 +1,13 @@
+1.1.2-RC2 (2011-07-30)
+------------------------------------------------------------------------
+- Fix: Cost of adding an extra road type to a bridge or tunnel was undercalculated [FS#4680, FS#4681] (r22700, r22699)
+- Fix: Only insert cleared object tiles into _cleared_object_areas if clearing actually succeeds, else subsequential tests of the same tile will be skipped and considered successful [FS#4694] (r22698)
+- Fix: When building a house it could be built at the wrong place if multitile houses failed some tests (r22697)
+- Fix: [Network] Failed network address resolving could trigger temporary freezes [FS#4697] (r22696, r22695)
+- Fix: [NewGRF] The override managers were not reset in some cases like creating a new scenario [FS#4691] (r22693)
+- Fix: [NewGRF] Aircrafts defined with IDs above the default aircrafts always defaulted to passenger cargo (r22690)
+
+
 1.1.2-RC1 (2011-07-24)
 ------------------------------------------------------------------------
 - Change: [NewGRF] Only allow access (via hotkey and menu) to the bounding box visualisation when NewGRF developer tools are enabled (r22675)
