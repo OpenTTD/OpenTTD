@@ -889,6 +889,11 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, NGWW_MATRIX);
 		this->GetWidget<NWidgetCore>(NGWW_MATRIX)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
+
+	virtual void OnTick()
+	{
+		NetworkGameListRequery();
+	}
 };
 
 Listing NetworkGameWindow::last_sorting = {false, 5};
