@@ -560,12 +560,12 @@ Function CheckWindowsVersion
 	StrCmp $R0 "win9x" 0 WinNT
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" Done 0
-	MessageBox MB_OKCANCEL|MB_ICONSTOP "You are trying to install the Windows 2000, XP and Vista version on Windows 95, 98 or ME. This is will not work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_OKCANCEL|MB_ICONSTOP "You are trying to install the Windows 2000, XP, Vista and 7 version on Windows 95, 98 or ME. This is will not work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
 	GoTo Done
 WinNT:
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" 0 Done
-	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98 and ME version on Windows 2000, XP or Vista. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98 and ME version on Windows 2000, XP, Vista or 7. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
 Abort:
 	Quit
 Done:

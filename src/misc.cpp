@@ -14,6 +14,7 @@
 #include "news_func.h"
 #include "ai/ai.hpp"
 #include "ai/ai_gui.hpp"
+#include "newgrf.h"
 #include "newgrf_house.h"
 #include "group.h"
 #include "economy_func.h"
@@ -76,6 +77,8 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
 		InitializeOldNames();
 	}
+
+	ResetPersistentNewGRFData();
 
 	InitializeSound();
 	InitializeMusic();
