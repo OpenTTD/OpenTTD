@@ -662,12 +662,14 @@ do_clear:;
 		if (ret.Failed()) return ret;
 
 	}
-	cost.AddCost(CountBits(pieces) * _price[PR_BUILD_ROAD]);
 
-	if (!need_to_clear && IsTileType(tile, MP_TUNNELBRIDGE)) {
-		/* Pay for *every* tile of the bridge or tunnel */
-		cost.MultiplyCost(GetTunnelBridgeLength(GetOtherTunnelBridgeEnd(tile), tile) + 2);
-	}
+	uint num_pieces = (!need_to_clear && IsTileType(tile, MP_TUNNELBRIDGE)) ?
+			/* There are 2 pieces on *every* tile of the bridge or tunnel */
+			2 * (GetTunnelBridgeLength(GetOtherTunnelBridgeEnd(tile), tile) + 2) :
+			/* Count pieces */
+			CountBits(pieces);
+
+	cost.AddCost(num_pieces * _price[PR_BUILD_ROAD]);
 
 	if (flags & DC_EXEC) {
 		switch (GetTileType(tile)) {
