@@ -420,7 +420,11 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 
 		Money infra_cost = 0;
 		switch (transport_type) {
-			case TRANSPORT_ROAD: infra_cost = (bridge_len + 2) * _price[PR_BUILD_ROAD] * 2; break;
+			case TRANSPORT_ROAD:
+				infra_cost = (bridge_len + 2) * _price[PR_BUILD_ROAD] * 2;
+				/* In case we add a new road type as well, we must be aware of those costs. */
+				if (IsBridgeTile(start)) infra_cost *= CountBits(GetRoadTypes(start) | (RoadTypes)road_rail_type);
+				break;
 			case TRANSPORT_RAIL: infra_cost = (bridge_len + 2) * RailBuildCost((RailType)road_rail_type); break;
 			default: break;
 		}
