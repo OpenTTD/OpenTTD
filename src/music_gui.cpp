@@ -519,7 +519,6 @@ enum MusicWidgets {
 	MW_PLAY,
 	MW_SLIDERS,
 	MW_MUSIC_VOL,
-	MW_GAUGE,
 	MW_EFFECT_VOL,
 	MW_BACKGROUND,
 	MW_TRACK,
@@ -591,21 +590,6 @@ struct MusicWindow : public Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case MW_GAUGE:
-				GfxFillRect(r.left, r.top, r.right, r.bottom, PC_BLACK);
-
-				for (uint i = 0; i != 8; i++) {
-					int colour = PC_GREEN;
-					if (i > 4) {
-						colour = PC_YELLOW;
-						if (i > 6) {
-							colour = PC_RED;
-						}
-					}
-					GfxFillRect(r.left, r.bottom - i * 2, r.right, r.bottom - i * 2, colour);
-				}
-				break;
-
 			case MW_TRACK_NR: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, PC_BLACK);
 				StringID str = STR_MUSIC_TRACK_NONE;
@@ -740,7 +724,7 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, -1), SetFill(1, 1), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY, MW_SLIDERS),
-			NWidget(NWID_HORIZONTAL), SetPIP(20, 0, 20),
+			NWidget(NWID_HORIZONTAL), SetPIP(20, 20, 20),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, COLOUR_GREY, -1), SetFill(1, 0), SetDataTip(STR_MUSIC_MUSIC_VOLUME, STR_NULL),
 					NWidget(WWT_EMPTY, COLOUR_GREY, MW_MUSIC_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
@@ -754,7 +738,6 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MAX, STR_NULL),
 					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_PANEL, COLOUR_GREY, MW_GAUGE), SetMinimalSize(16, 20), SetPadding(1, 11, 1, 11), SetFill(0, 0), EndContainer(),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, COLOUR_GREY, -1), SetFill(1, 0), SetDataTip(STR_MUSIC_EFFECTS_VOLUME, STR_NULL),
 					NWidget(WWT_EMPTY, COLOUR_GREY, MW_EFFECT_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
