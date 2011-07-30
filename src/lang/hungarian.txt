@@ -510,6 +510,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Kinagyított k�
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Befoglaló doboz ki/bekapcsolása
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
