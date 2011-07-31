@@ -652,17 +652,18 @@ void RecomputePrices()
 
 			default: break;
 		}
-		if (mod < 1) {
-			price = price * 3 >> 2;
-		} else if (mod > 1) {
-			price = price * 9 >> 3;
+		switch (mod) {
+			case 0: price *= 6; break;
+			case 1: price *= 8; break; // normalised to 1 below
+			case 2: price *= 9; break;
+			default: NOT_REACHED();
 		}
 
 		/* Apply inflation */
 		price = (int64)price * _economy.inflation_prices;
 
-		/* Apply newgrf modifiers, and remove fractional part of inflation */
-		int shift = _price_base_multiplier[i] - 16;
+		/* Apply newgrf modifiers, remove fractional part of inflation, and normalise on medium difficulty. */
+		int shift = _price_base_multiplier[i] - 16 - 3;
 		if (shift >= 0) {
 			price <<= shift;
 		} else {
