@@ -776,43 +776,40 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 {
 	if (DistanceFromEdge(tile) == 0) return false;
 
-	Slope cur_slope, desired_slope;
-
-	for (;;) {
-		/* Check if there already is a road at this point? */
-		if (GetTownRoadBits(tile) == ROAD_NONE) {
-			/* No, try if we are able to build a road piece there.
-			 * If that fails clear the land, and if that fails exit.
-			 * This is to make sure that we can build a road here later. */
-			if (DoCommand(tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X), 0, DC_AUTO, CMD_BUILD_ROAD).Failed() &&
-					DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR).Failed())
-				return false;
-		}
-
-		cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationSlope(tile, NULL) : GetTileSlope(tile, NULL);
-		bool ret = !IsNeighborRoadTile(tile, dir, t->layout == TL_ORIGINAL ? 1 : 2);
-		if (cur_slope == SLOPE_FLAT) return ret;
-
-		/* If the tile is not a slope in the right direction, then
-		 * maybe terraform some. */
-		desired_slope = (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? SLOPE_NW : SLOPE_NE;
-		if (desired_slope != cur_slope && ComplementSlope(desired_slope) != cur_slope) {
-			if (Chance16(1, 8)) {
-				CommandCost res = CMD_ERROR;
-				if (!_generating_world && Chance16(1, 10)) {
-					/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
-					res = DoCommand(tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, 0,
-							DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-				}
-				if (res.Failed() && Chance16(1, 3)) {
-					/* We can consider building on the slope, though. */
-					return ret;
-				}
-			}
+	/* Check if there already is a road at this point? */
+	if (GetTownRoadBits(tile) == ROAD_NONE) {
+		/* No, try if we are able to build a road piece there.
+		 * If that fails clear the land, and if that fails exit.
+		 * This is to make sure that we can build a road here later. */
+		if (DoCommand(tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X), 0, DC_AUTO, CMD_BUILD_ROAD).Failed() &&
+				DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR).Failed()) {
 			return false;
 		}
-		return ret;
 	}
+
+	Slope cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationSlope(tile, NULL) : GetTileSlope(tile, NULL);
+	bool ret = !IsNeighborRoadTile(tile, dir, t->layout == TL_ORIGINAL ? 1 : 2);
+	if (cur_slope == SLOPE_FLAT) return ret;
+
+	/* If the tile is not a slope in the right direction, then
+	 * maybe terraform some. */
+	Slope desired_slope = (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? SLOPE_NW : SLOPE_NE;
+	if (desired_slope != cur_slope && ComplementSlope(desired_slope) != cur_slope) {
+		if (Chance16(1, 8)) {
+			CommandCost res = CMD_ERROR;
+			if (!_generating_world && Chance16(1, 10)) {
+				/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
+				res = DoCommand(tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, 0,
+						DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
+			}
+			if (res.Failed() && Chance16(1, 3)) {
+				/* We can consider building on the slope, though. */
+				return ret;
+			}
+		}
+		return false;
+	}
+	return ret;
 }
 
 static bool TerraformTownTile(TileIndex tile, int edges, int dir)
