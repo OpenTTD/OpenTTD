@@ -30,10 +30,6 @@
 #include <sys/stat.h>
 #include <algorithm>
 
-/*************************************************/
-/* FILE IO ROUTINES ******************************/
-/*************************************************/
-
 /** Size of the #Fio data buffer. */
 #define FIO_BUFFER_SIZE 512
 
@@ -61,7 +57,10 @@ static bool _do_scan_working_directory = true;
 extern char *_config_file;
 extern char *_highscore_file;
 
-/** Get current position in file. */
+/**
+ * Get position in the current file.
+ * @return Position in the file.
+ */
 size_t FioGetPos()
 {
 	return _fio.pos + (_fio.buffer - _fio.buffer_end);
@@ -77,6 +76,11 @@ const char *FioGetFilename(uint8 slot)
 	return _fio.shortnames[slot];
 }
 
+/**
+ * Seek in the current file.
+ * @param pos New position.
+ * @param mode Type of seek (\c SEEK_CUR means \a pos is relative to current position, \c SEEK_SET means \a pos is absolute).
+ */
 void FioSeekTo(size_t pos, int mode)
 {
 	if (mode == SEEK_CUR) pos += FioGetPos();
@@ -97,7 +101,11 @@ static void FioRestoreFile(int slot)
 }
 #endif /* LIMITED_FDS */
 
-/* Seek to a file and a position */
+/**
+ * Switch to a different file and seek to a position.
+ * @param slot Slot number of the new file.
+ * @param pos New absolute position in the new file.
+ */
 void FioSeekToFile(uint8 slot, size_t pos)
 {
 	FILE *f;
@@ -112,6 +120,10 @@ void FioSeekToFile(uint8 slot, size_t pos)
 	FioSeekTo(pos, SEEK_SET);
 }
 
+/**
+ * Read a byte from the file.
+ * @return Read byte.
+ */
 byte FioReadByte()
 {
 	if (_fio.buffer == _fio.buffer_end) {
@@ -125,6 +137,10 @@ byte FioReadByte()
 	return *_fio.buffer++;
 }
 
+/**
+ * Skip \a n bytes ahead in the file.
+ * @param n Number of bytes to skip reading.
+ */
 void FioSkipBytes(int n)
 {
 	for (;;) {
@@ -137,24 +153,41 @@ void FioSkipBytes(int n)
 	}
 }
 
+/**
+ * Read a word (16 bits) from the file (in low endian format).
+ * @return Read word.
+ */
 uint16 FioReadWord()
 {
 	byte b = FioReadByte();
 	return (FioReadByte() << 8) | b;
 }
 
+/**
+ * Read a double word (32 bits) from the file (in low endian format).
+ * @return Read word.
+ */
 uint32 FioReadDword()
 {
 	uint b = FioReadWord();
 	return (FioReadWord() << 16) | b;
 }
 
+/**
+ * Read a block.
+ * @param ptr Destination buffer.
+ * @param size Number of bytes to read.
+ */
 void FioReadBlock(void *ptr, size_t size)
 {
 	FioSeekTo(FioGetPos(), SEEK_SET);
 	_fio.pos += fread(ptr, 1, size, _fio.cur_fh);
 }
 
+/**
+ * Close the file at the given slot number.
+ * @param slot File index to close.
+ */
 static inline void FioCloseFile(int slot)
 {
 	if (_fio.handles[slot] != NULL) {
@@ -170,6 +203,7 @@ static inline void FioCloseFile(int slot)
 	}
 }
 
+/** Close all slotted open files. */
 void FioCloseAll()
 {
 	for (int i = 0; i != lengthof(_fio.handles); i++) {
@@ -201,6 +235,11 @@ static void FioFreeHandle()
 }
 #endif /* LIMITED_FDS */
 
+/**
+ * Open a slotted file.
+ * @param slot Index to assign.
+ * @param filename Name of the file at the disk.
+ */
 void FioOpenFile(int slot, const char *filename)
 {
 	FILE *f;
@@ -252,7 +291,7 @@ static TarLinkList _tar_linklist; ///< List of directory links
 
 /**
  * Check whether the given file exists
- * @param filename the file to try for existance
+ * @param filename the file to try for existence.
  * @param subdir the subdirectory to look in
  * @return true if and only if the file can be opened
  */
@@ -266,7 +305,7 @@ bool FioCheckFileExists(const char *filename, Subdirectory subdir)
 }
 
 /**
- * Test whether the fiven filename exists.
+ * Test whether the given filename exists.
  * @param filename the file to test.
  * @return true if and only if the file exists.
  */
@@ -319,7 +358,7 @@ char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char 
 #if !defined(WIN32)
 		/* Be, as opening files, aware that sometimes the filename
 		 * might be in uppercase when it is in lowercase on the
-		 * disk. Ofcourse Windows doesn't care about casing. */
+		 * disk. Of course Windows doesn't care about casing. */
 		if (strtolower(buf + strlen(_searchpaths[sp]) - 1) && FileExists(buf)) return buf;
 #endif
 	}
@@ -390,6 +429,13 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
 	return f;
 }
 
+/**
+ * Opens a file from inside a tar archive.
+ * @param entry The entry to open.
+ * @param filesize [out] If not \c NULL, size of the opened file.
+ * @return File handle of the opened file, or \c NULL if the file is not available.
+ * @note The file is read from within the tar file, and may not return \c EOF after reading the whole file.
+ */
 FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
 {
 	FILE *f = fopen(entry->tar_filename, "rb");
@@ -400,7 +446,13 @@ FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
 	return f;
 }
 
-/** Opens OpenTTD files somewhere in a personal or global directory */
+/**
+ * Opens a OpenTTD file somewhere in a personal or global directory.
+ * @param filename Name of the file to open.
+ * @param subdir Subdirectory to open.
+ * @param filename Name of the file to open.
+ * @return File handle of the opened file, or \c NULL if the file is not available.
+ */
 FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize)
 {
 	FILE *f = NULL;
@@ -483,7 +535,7 @@ static void FioCreateDirectory(const char *name)
  * Appends, if necessary, the path separator character to the end of the string.
  * It does not add the path separator to zero-sized strings.
  * @param buf    string to append the separator to
- * @param buflen the length of the buf
+ * @param buflen the length of \a buf.
  * @return true iff the operation succeeded
  */
 bool AppendPathSeparator(char *buf, size_t buflen)
@@ -526,6 +578,10 @@ char *BuildWithFullPath(const char *dir)
 	return dest;
 }
 
+/**
+ * Find the first directory in a tar archive.
+ * @param tarname the name of the tar archive to look in.
+ */
 const char *FioTarFirstDir(const char *tarname)
 {
 	TarList::iterator it = _tar_list.find(tarname);
@@ -561,7 +617,7 @@ void FioTarAddLink(const char *src, const char *dest)
 
 /**
  * Simplify filenames from tars.
- * Replace '/' by PATHSEPCHAR, and force 'name' to lowercase.
+ * Replace '/' by #PATHSEPCHAR, and force 'name' to lowercase.
  * @param name Filename to process.
  */
 static void SimplifyFileName(char *name)
@@ -1141,6 +1197,14 @@ void SanitizeFilename(char *filename)
 	}
 }
 
+/**
+ * Load a file into memory.
+ * @param filename Name of the file to load.
+ * @param lenp [out] Length of loaded data.
+ * @param maxsize Maximum size to load.
+ * @return Pointer to new memory containing the loaded data, or \c NULL if loading failed.
+ * @note If \a maxsize less than the length of the file, loading fails.
+ */
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {
 	FILE *in = fopen(filename, "rb");
