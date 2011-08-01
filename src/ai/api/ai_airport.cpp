@@ -131,7 +131,7 @@
 	extern uint8 GetAirportNoiseLevelForTown(const AirportSpec *as, TileIndex town_tile, TileIndex tile);
 
 	if (!::IsValidTile(tile)) return -1;
-	if (!IsValidAirportType(type)) return -1;
+	if (!IsAirportInformationAvailable(type)) return -1;
 
 	if (_settings_game.economy.station_noise_level) {
 		const AirportSpec *as = ::AirportSpec::Get(type);

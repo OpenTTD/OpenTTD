@@ -180,6 +180,7 @@ public:
 	 *  built at this tile.
 	 * @param tile The tile to check.
 	 * @param type The AirportType to check.
+	 * @pre IsAirportInformationAvailable(type).
 	 * @return The amount of noise added to the nearest town.
 	 * @note The noise will be added to the town with TownID GetNearestTown(tile, type).
 	 */
