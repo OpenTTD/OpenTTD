@@ -42,6 +42,7 @@
 #include "newgrf_debug.h"
 #include "hotkeys.h"
 #include "engine_base.h"
+#include "settings_type.h"
 
 #include "network/network.h"
 #include "network/network_gui.h"
@@ -302,6 +303,7 @@ enum OptionMenuEntries {
 	OME_SHOW_STATIONNAMES,
 	OME_SHOW_WAYPOINTNAMES,
 	OME_SHOW_SIGNS,
+	OME_SHOW_COMPETITOR_SIGNS,
 	OME_FULL_ANIMATION,
 	OME_FULL_DETAILS,
 	OME_TRANSPARENTBUILDINGS,
@@ -331,6 +333,7 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES, false, HasBit(_display_opt, DO_SHOW_STATION_NAMES)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED,     OME_SHOW_WAYPOINTNAMES, false, HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_SIGNS_DISPLAYED,         OME_SHOW_SIGNS, false, HasBit(_display_opt, DO_SHOW_SIGNS)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS,   OME_SHOW_COMPETITOR_SIGNS, false, HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_FULL_ANIMATION,          OME_FULL_ANIMATION, false, HasBit(_display_opt, DO_FULL_ANIMATION)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_FULL_DETAIL,             OME_FULL_DETAILS, false, HasBit(_display_opt, DO_FULL_DETAIL)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
@@ -361,6 +364,10 @@ static CallBackFunction MenuClickSettings(int index)
 		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES);  break;
 		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
 		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);          break;
+		case OME_SHOW_COMPETITOR_SIGNS:
+			ToggleBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
+			InvalidateWindowClassesData(WC_SIGN_LIST, -1);
+			break;
 		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION);      break;
 		case OME_FULL_DETAILS:         ToggleBit(_display_opt, DO_FULL_DETAIL);         break;
 		case OME_TRANSPARENTBUILDINGS: ToggleTransparency(TO_HOUSES);                   break;

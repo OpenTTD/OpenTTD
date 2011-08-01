@@ -26,6 +26,7 @@
 #include "string_func.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
+#include "transparency.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -116,11 +117,22 @@ struct SignList {
 		return (filter_info.case_sensitive ? strstr(buf1, filter_info.string) : strcasestr(buf1, filter_info.string)) != NULL;
 	}
 
+	/** Filter sign list by owner */
+	static bool CDECL OwnerVisibilityFilter(const Sign * const *a, FilterInfo filter_info)
+	{
+		assert(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS));
+		/* Hide sign if non-own signs are hidden in the viewport */
+		return (*a)->owner == _local_company;
+	}
+
 	/** Filter out signs from the sign list that does not match the name filter */
 	void FilterSignList()
 	{
 		FilterInfo filter_info = {this->filter_string, this->match_case};
 		this->signs.Filter(&SignNameFilter, filter_info);
+		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS)) {
+			this->signs.Filter(&OwnerVisibilityFilter, filter_info);
+		}
 	}
 };
 
@@ -199,7 +211,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 			/* There is no new string -> clear this->filter_string */
 			this->filter_string[0] = '\0';
 
-			this->signs.SetFilterState(false);
+			this->signs.SetFilterState(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS)); // keep sign list filtering active if competitor signs should be hidden
 			this->DisableWidget(SLW_FILTER_CLEAR_BTN);
 		}
 
@@ -374,10 +386,15 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
+		if (data == -1) {
+			/* The DO_SHOW_COMPETITOR_SIGNS display option has changed */
+			this->signs.SetFilterState(!StrEmpty(this->filter_string) || !HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS));
+		}
+
 		/* When there is a filter string, we always need to rebuild the list even if
 		 * the amount of signs in total is unchanged, as the subset of signs that is
 		 * accepted by the filter might has changed. */
-		if (data == 0 || !StrEmpty(this->filter_string)) { // New or deleted sign, or there is a filter string
+		if (data == 0 || data == -1 || !StrEmpty(this->filter_string)) { // New or deleted sign, changed visibility setting or there is a filter string
 			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->signs.ForceRebuild();
 		} else { // Change of sign contents while there is no filter string

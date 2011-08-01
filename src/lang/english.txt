@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Town names disp
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Station names displayed
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Waypoint names displayed
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Signs displayed
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Competitor signs and names displayed
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Full detail
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparent buildings

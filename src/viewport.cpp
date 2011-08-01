@@ -1186,6 +1186,9 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 		/* Don't draw if the display options are disabled */
 		if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) continue;
 
+		/* Don't draw if station is owned by another company and competitor station names are hidden. Stations owned by none are never ignored. */
+		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != st->owner && st->owner != OWNER_NONE) continue;
+
 		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &st->sign,
 				is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT,
 				(is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT) + 1, STR_NULL,
@@ -1201,6 +1204,11 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 
 	const Sign *si;
 	FOR_ALL_SIGNS(si) {
+		/* Don't draw if sign is owned by another company and competitor signs should be hidden.
+		 * Note: It is intentional that also signs owned by OWNER_NONE are hidden. Bankrupt
+		 * companies can leave OWNER_NONE signs after them. */
+		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != si->owner) continue;
+
 		ViewportAddString(dpi, ZOOM_LVL_OUT_4X, &si->sign,
 				STR_WHITE_SIGN,
 				IsTransparencySet(TO_SIGNS) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
