@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Toon plaatsname
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Toon stationsnamen
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Toon controlepostnamen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Toon borden
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Toon tegenstander's borden en namen
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Alle animaties
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Alle details
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparante gebouwen

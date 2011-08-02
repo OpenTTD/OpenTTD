@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nime
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Asemien nimet näkyvissä
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Reittipisteitten nimet näkyvissä
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Kyltit näkyvissä
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Vastustajien kyltit ja nimet näkyvissä
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Täysi animointi
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Kaikki yksityiskohdat
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Läpinäkyvät rakennukset
