@@ -237,6 +237,8 @@ static void CheckValidVehicles()
 	}
 }
 
+extern byte _age_cargo_skip_counter; // From misc_sl.cpp
+
 /** Called after load to update coordinates */
 void AfterLoadVehicles(bool part_of_load)
 {
@@ -340,6 +342,13 @@ void AfterLoadVehicles(bool part_of_load)
 					v->current_order.Free();
 					v->unitnumber = 0;
 				}
+			}
+		}
+
+		if (IsSavegameVersionBefore(162)) {
+			/* Set the vehicle-local cargo age counter from the old global counter. */
+			FOR_ALL_VEHICLES(v) {
+				v->cargo_age_counter = _age_cargo_skip_counter;
 			}
 		}
 	}
@@ -499,6 +508,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		     SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
 		SLEG_CONDVAR(         _cargo_count,          SLE_UINT16,                   0,  67),
 		 SLE_CONDLST(Vehicle, cargo.packets,         REF_CARGO_PACKET,            68, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 162, SL_MAX_VERSION),
 
 		     SLE_VAR(Vehicle, day_counter,           SLE_UINT8),
 		     SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),

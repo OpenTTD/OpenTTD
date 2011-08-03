@@ -60,6 +60,7 @@ void ResetViewportAfterLoadGame()
 	MarkWholeScreenDirty();
 }
 
+byte _age_cargo_skip_counter; ///< Skip aging of cargo? Used before savegame version 162.
 
 static const SaveLoadGlobVarList _date_desc[] = {
 	SLEG_CONDVAR(_date,                   SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
@@ -67,7 +68,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	    SLEG_VAR(_date_fract,             SLE_UINT16),
 	    SLEG_VAR(_tick_counter,           SLE_UINT16),
 	SLE_CONDNULL(2, 0, 156), // _vehicle_id_ctr_day
-	    SLEG_VAR(_age_cargo_skip_counter, SLE_UINT8),
+	SLEG_CONDVAR(_age_cargo_skip_counter, SLE_UINT8,                   0, 161),
 	SLE_CONDNULL(1, 0, 45),
 	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_UINT32,                  6, SL_MAX_VERSION),
@@ -92,7 +93,7 @@ static const SaveLoadGlobVarList _date_check_desc[] = {
 	    SLE_NULL(2),                       // _date_fract
 	    SLE_NULL(2),                       // _tick_counter
 	SLE_CONDNULL(2, 0, 156),               // _vehicle_id_ctr_day
-	    SLE_NULL(1),                       // _age_cargo_skip_counter
+	SLE_CONDNULL(1, 0, 161),               // _age_cargo_skip_counter
 	SLE_CONDNULL(1, 0, 45),
 	SLE_CONDNULL(2, 0, 5),                 // _cur_tileloop_tile
 	SLE_CONDNULL(4, 6, SL_MAX_VERSION),    // _cur_tileloop_tile

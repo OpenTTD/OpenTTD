@@ -201,6 +201,9 @@ void RoadVehUpdateCache(RoadVehicle *v)
 
 		/* Invalidate the vehicle colour map */
 		u->colourmap = PAL_NONE;
+
+		/* Update cargo aging period. */
+		u->vcache.cached_cargo_age_period = GetVehicleProperty(u, PROP_ROADVEH_CARGO_AGE_PERIOD, EngInfo(u->engine_type)->cargo_age_period);
 	}
 
 	uint max_speed = GetVehicleProperty(v, PROP_ROADVEH_SPEED, 0);

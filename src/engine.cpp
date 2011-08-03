@@ -98,6 +98,8 @@ Engine::Engine(VehicleType type, EngineID base)
 			case VEH_SHIP:  this->u.ship.visual_effect = VE_DEFAULT; break;
 			default: break; // The aircraft, disasters and especially visual effects have no NewGRF configured visual effects
 		}
+		/* Set cargo aging period to the default value. */
+		this->info.cargo_age_period = CARGO_AGING_TICKS;
 		return;
 	}
 

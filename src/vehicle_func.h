@@ -161,7 +161,6 @@ CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
 extern uint16 _returned_mail_refit_capacity;
-extern byte _age_cargo_skip_counter;
 
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);
 bool CanVehicleUseStation(const Vehicle *v, const struct Station *st);

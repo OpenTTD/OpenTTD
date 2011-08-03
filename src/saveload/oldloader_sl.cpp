@@ -1573,6 +1573,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 extern TileIndex _cur_tileloop_tile;
 extern uint16 _disaster_delay;
 extern byte _trees_tick_ctr;
+extern byte _age_cargo_skip_counter; // From misc_sl.cpp
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0 ),
 	OCL_ASSERT( OC_TTO, 0 ),

@@ -966,6 +966,10 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				ei->base_intro = buf->ReadDWord();
 				break;
 
+			case PROP_TRAIN_CARGO_AGE_PERIOD: // 0x2B Cargo aging period
+				ei->cargo_age_period = buf->ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1108,6 +1112,10 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 				break;
 
+			case PROP_ROADVEH_CARGO_AGE_PERIOD: // 0x22 Cargo aging period
+				ei->cargo_age_period = buf->ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1238,6 +1246,10 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 				break;
 
+			case PROP_SHIP_CARGO_AGE_PERIOD: // 0x1D Cargo aging period
+				ei->cargo_age_period = buf->ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1350,6 +1362,10 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x1B: // Alter purchase list sort order
 				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
+				break;
+
+			case PROP_AIRCRAFT_CARGO_AGE_PERIOD: // 0x1C Cargo aging period
+				ei->cargo_age_period = buf->ReadWord();
 				break;
 
 			default:
