@@ -452,6 +452,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikaži imena 
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Prikaži imena postaja
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Imena čvorišta su prikazana
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Prikaži znakove
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Prikazani znakovi i imena od konkurenata
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Sve animacije
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Svi detalji
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Prozirne građevine

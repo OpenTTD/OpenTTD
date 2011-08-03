@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afişează nume
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Afişează numele staţiilor
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Afişează numele punctelor de tranzit
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afişează semnele de pe hartă
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Afisare nume și semne competiție
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animaţie completă
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalii grafice complete
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Peisaj transparent

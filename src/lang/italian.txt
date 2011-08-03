@@ -358,6 +358,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra nomi cit
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostra nomi stazioni
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra nomi waypoint
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra cartelli
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra nomi e cartelli degli avversari
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animazione completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Massimo dettaglio
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifici trasparenti

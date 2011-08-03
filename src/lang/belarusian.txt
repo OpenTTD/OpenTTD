@@ -669,6 +669,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Паказва�
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Паказваць назвы станцыяў
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Паказваць назвы пунктаў шляху
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Паказваць меткi
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Паказаны знакi й назвы канкурэнта
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Поўная анімацыя
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Поўная дэталізацыя
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Празрыстыя будынкі
