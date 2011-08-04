@@ -26,6 +26,7 @@
 #include "widgets/dropdown_type.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
+#include "vehicle_func.h"
 #include "sprite.h"
 
 #include "table/strings.h"
@@ -107,6 +108,7 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
+		if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
 		int num = CheckHotkeyMatch(airtoolbar_hotkeys, keycode, this);
 		if (num == -1) return ES_NOT_HANDLED;
 		this->OnClick(Point(), num, 1);
