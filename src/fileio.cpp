@@ -22,9 +22,7 @@
 #include <Path.h>
 #include <storage/FindDirectory.h>
 #else
-#if defined(OPENBSD) || defined(DOS)
 #include <unistd.h>
-#endif
 #include <pwd.h>
 #endif
 #include <sys/stat.h>
