@@ -108,7 +108,6 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
 		int num = CheckHotkeyMatch(airtoolbar_hotkeys, keycode, this);
 		if (num == -1) return ES_NOT_HANDLED;
 		this->OnClick(Point(), num, 1);
@@ -197,6 +196,7 @@ Window *ShowBuildAirToolbar()
 
 EventState AirportToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
+	if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
 	int num = CheckHotkeyMatch<BuildAirToolbarWindow>(_airtoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildAirToolbar();
