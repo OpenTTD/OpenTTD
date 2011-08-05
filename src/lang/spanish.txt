@@ -357,6 +357,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de 
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Ver nombres de estaciones
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ver puntos de ruta
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Ver carteles
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Carteles y nombres del competidor mostrados
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animación completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalle completo
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificios transparentes
@@ -2477,7 +2478,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura despué
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al conjunto de gráficos base actualmente en uso le faltan algunos sprites.{}El conjunto de gráficos base debe ser actualizado
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF requeridos no disponibles
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} fue desactivado por {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de distribución de sprite inválido o incorrecto
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de distribución de sprite inválido o desconocido
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Precaución!

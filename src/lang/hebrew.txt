@@ -179,7 +179,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}כל
 STR_ABBREV_ALL                                                  :{TINYFONT}הכל
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} נוסעים
+STR_PASSENGERS                                                  :{COMMA} נוסע{P "" ים}
 STR_BAGS                                                        :{COMMA} שקים
 STR_TONS                                                        :{COMMA} טונות
 STR_LITERS                                                      :{COMMA} ליטרים
@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :שמות ערי
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :שמות תחנות
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :שמות נקודות ציון מוצגים
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :סימניות
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :שלטי ושמות המתחרה מוצגים
 STR_SETTINGS_MENU_FULL_ANIMATION                                :אנימציה מלאה
 STR_SETTINGS_MENU_FULL_DETAIL                                   :פרטים מלאים
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :בניינים שקופים
@@ -1213,6 +1214,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}השת�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ארוך (31 בדצמבר 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :קצר (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}עצור משחק אוטומטית אחרי התחלת משחק חדש: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}השתמש ברשימת כלי הרכב המתקדמת: {ORANGE}{STRING}
@@ -3172,7 +3174,8 @@ STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(העבר מט�
 STR_ORDER_TRANSFER_NO_LOAD                                      :(העבר מטען קיים ועזוב ריק)
 STR_ORDER_NO_UNLOAD                                             :(אל תפרוק, העמס מטען זמין)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(אל תפרוק והמתן להעמסה מלאה)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(אל תפרוק והמתן עד להעמסה מלאה של כל סוג מטען)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(אל תפרוק, המתן עד להעמסה כוללת ומלאה)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(אל תפרוק ואל תעמיס)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[קצה קרוב]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[אמצע]
@@ -3503,7 +3506,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... חי
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}ניתן לשנות את הרכבת בעת עצירה במוסך בלבד
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}רכבת ארוכה מידי
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}לא ניתן להפוך כיוון כלי הרכב...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}לא ניתן לסובב כלי רכב המורכבים ממספר יחידות...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}מורכבים ממספר יחידות...
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :סוג הפסים אינו מתאים
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}לא ניתן להזיז את כלי הרכב...
@@ -3546,6 +3549,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}לא נ�
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}לא ניתן לבנות כאן נהר...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... חייב להיבנות על מים
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... לא ניתן לבנות על מים
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}לא ניתן לבנות על ים...
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}לא ניתן לבנות על תעלה...
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}לא ניתן לבנות על נהר...
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}חובה למחוק את התעלה קודם
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}לא ניתן לבנות מוביל-מים באתר זה...
 
