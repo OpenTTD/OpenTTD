@@ -279,6 +279,7 @@ public:
 	 * @pre num_platforms > 0 && num_platforms <= 255.
 	 * @pre platform_length > 0 && platform_length <= 255.
 	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
+	 * @pre AICargo::IsValidCargo(cargo_type)
 	 * @pre source_industry == AIIndustryType::INDUSTRYTYPE_UNKNOWN || source_industry == AIIndustryType::INDUSTRYTYPE_TOWN || AIIndustryType::IsValidIndustryType(source_industry).
 	 * @pre goal_industry == AIIndustryType::INDUSTRYTYPE_UNKNOWN || goal_industry == AIIndustryType::INDUSTRYTYPE_TOWN || AIIndustryType::IsValidIndustryType(goal_industry).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
