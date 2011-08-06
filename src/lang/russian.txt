@@ -482,6 +482,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показыв�
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показывать названия станций
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать имена точек пути
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать метки
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показывать названия станций конкурентов
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Полная анимация
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Полная детализация
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрачные здания
