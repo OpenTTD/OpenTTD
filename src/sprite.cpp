@@ -43,13 +43,11 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 		}
 
 		/* TTD sprite 0 means no sprite */
-		if (GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
+		if ((GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) ||
+				(IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE))) {
 			skip_childs = dtss->IsParentSprite();
 			continue;
 		}
-
-		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
-		if (IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
 
 		image += (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? newgrf_offset : orig_offset);
 		if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += newgrf_offset;
