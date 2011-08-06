@@ -4004,18 +4004,16 @@ static void NewSpriteGroup(ByteReader *buf)
 				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
 			}
 
+			static SmallVector<DeterministicSpriteGroupAdjust, 16> adjusts;
+			adjusts.Clear();
+
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
 			do {
-				DeterministicSpriteGroupAdjust *adjust;
-
-				group->num_adjusts++;
-				group->adjusts = ReallocT(group->adjusts, group->num_adjusts);
-
-				adjust = &group->adjusts[group->num_adjusts - 1];
+				DeterministicSpriteGroupAdjust *adjust = adjusts.Append();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust->operation = group->num_adjusts == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
+				adjust->operation = adjusts.Length() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
 				adjust->variable  = buf->ReadByte();
 				if (adjust->variable == 0x7E) {
 					/* Link subroutine group */
@@ -4039,6 +4037,10 @@ static void NewSpriteGroup(ByteReader *buf)
 
 				/* Continue reading var adjusts while bit 5 is set. */
 			} while (HasBit(varadjust, 5));
+
+			group->num_adjusts = adjusts.Length();
+			group->adjusts = MallocT<DeterministicSpriteGroupAdjust>(group->num_adjusts);
+			MemCpyT(group->adjusts, adjusts.Begin(), group->num_adjusts);
 
 			group->num_ranges = buf->ReadByte();
 			if (group->num_ranges > 0) group->ranges = CallocT<DeterministicSpriteGroupRange>(group->num_ranges);
