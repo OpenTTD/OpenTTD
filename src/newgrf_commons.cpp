@@ -647,26 +647,26 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8 resolved_var10, uint32 resolved_
 				/* Apply registers */
 				if ((flags & TLF_DODRAW) && GetRegister(regs->dodraw) == 0) {
 					result->image.sprite = 0;
-					continue;
-				}
-				if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) result->image.sprite += resolved_sprite;
-				if (flags & TLF_SPRITE) result->image.sprite += (int16)GetRegister(regs->sprite); // mask to 16 bits to avoid trouble
-
-				if (result->IsParentSprite()) {
-					if (flags & TLF_BB_XY_OFFSET) {
-						result->delta_x += (int32)GetRegister(regs->delta.parent[0]);
-						result->delta_y += (int32)GetRegister(regs->delta.parent[1]);
-					}
-					if (flags & TLF_BB_Z_OFFSET)    result->delta_z += (int32)GetRegister(regs->delta.parent[2]);
 				} else {
-					if (flags & TLF_CHILD_X_OFFSET) result->delta_x += (int32)GetRegister(regs->delta.child[0]);
-					if (flags & TLF_CHILD_Y_OFFSET) result->delta_y += (int32)GetRegister(regs->delta.child[1]);
+					if (HasBit(result->image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) result->image.sprite += resolved_sprite;
+					if (flags & TLF_SPRITE) result->image.sprite += (int16)GetRegister(regs->sprite); // mask to 16 bits to avoid trouble
+
+					if (result->IsParentSprite()) {
+						if (flags & TLF_BB_XY_OFFSET) {
+							result->delta_x += (int32)GetRegister(regs->delta.parent[0]);
+							result->delta_y += (int32)GetRegister(regs->delta.parent[1]);
+						}
+						if (flags & TLF_BB_Z_OFFSET)    result->delta_z += (int32)GetRegister(regs->delta.parent[2]);
+					} else {
+						if (flags & TLF_CHILD_X_OFFSET) result->delta_x += (int32)GetRegister(regs->delta.child[0]);
+						if (flags & TLF_CHILD_Y_OFFSET) result->delta_y += (int32)GetRegister(regs->delta.child[1]);
+					}
 				}
 			}
 		}
 
 		/* Is the palette affected by an action-1-2-3 chain? */
-		if (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS)) {
+		if (result->image.sprite != 0 && (HasBit(result->image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (flags & TLF_PALETTE_REG_FLAGS))) {
 			/* Does the var10 value apply to this sprite? */
 			uint8 var10 = (flags & TLF_PALETTE_VAR10) ? regs->palette_var10 : (ground && separate_ground ? 1 : 0);
 			if (var10 == resolved_var10) {
