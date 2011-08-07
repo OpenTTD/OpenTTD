@@ -1299,6 +1299,13 @@ make_compiler_cflags() {
 			cxxflags="$cxxflags -std=gnu++0x"
 		fi
 
+		if [ $cc_version -ge 47 ]; then
+			# Disable -Wnarrowing which gives many warnings, such as:
+			# warning: narrowing conversion of '...' from 'unsigned int' to 'int' inside { } [-Wnarrowing]
+			# They are valid according to the C++ standard, but useless.
+			cxxflags="$cxxflags -Wno-narrowing"
+		fi
+
 		if [ "$enable_lto" != "0" ]; then
 			# GCC 4.5 outputs '%{flto}', GCC 4.6 outputs '%{flto*}'
 			has_lto=`$1 -dumpspecs | grep '\%{flto'`
