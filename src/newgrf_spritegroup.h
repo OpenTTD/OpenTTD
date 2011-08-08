@@ -292,6 +292,25 @@ struct TileLayoutSpriteGroup : SpriteGroup {
 	NewGRFSpriteLayout dts;
 
 	const DrawTileSprites *ProcessRegisters(uint8 *stage) const;
+
+	/**
+	 * Determines which sprite to use from a spriteset for a specific construction stage.
+	 * @param construction_stage Construction stage 0 - 3.
+	 * @return Sprite to use
+	 */
+	uint GetConstructionStageOffset(uint construction_stage) const
+	{
+		uint num_sprites = this->num_building_stages;
+		assert(num_sprites > 0);
+		if (num_sprites > 4) num_sprites = 4;
+		switch (construction_stage) {
+			case 0: return 0;
+			case 1: return num_sprites > 2 ? 1 : 0;
+			case 2: return num_sprites > 2 ? num_sprites - 2 : 0;
+			case 3: return num_sprites - 1;
+			default: NOT_REACHED();
+		}
+	}
 };
 
 struct IndustryProductionSpriteGroup : SpriteGroup {
