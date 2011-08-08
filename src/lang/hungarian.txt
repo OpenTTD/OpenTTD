@@ -419,6 +419,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Városnevek mut
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Állomásnevek mutatása
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ellenőrző pontok mutatása
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Feliratok mutatása
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Versenyzői feliratok és nevek kijelzése
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Teljes animáció
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Minden részlet
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Átlátszó épületek
