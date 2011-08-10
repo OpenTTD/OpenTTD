@@ -1526,7 +1526,7 @@ STR_FACE_JACKET                                                 :Haină:
 STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Schimbă haina
 STR_FACE_COLLAR                                                 :Guler:
 STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Schimbă gulerul
-STR_FACE_TIE                                                    :Cravata:
+STR_FACE_TIE                                                    :Cravată:
 STR_FACE_EARRING                                                :Cercei:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă cravata sau cerceii
 
@@ -1851,7 +1851,7 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... desc
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafică de bază
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Libarie IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Librărie IA
 STR_CONTENT_TYPE_SCENARIO                                       :Scenariu
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hartă topografică
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Set sunet de bază
@@ -2831,7 +2831,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Rearanjabil in: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modificabil pentru: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de mărfuri
 STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu excepţia {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tractor max.: {GOLD}{FORCE}
@@ -2939,7 +2939,7 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Click pt
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Click pt pornirea tuturor vaselor din depou
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Click pt pornirea tuturor aeronavelor din hangar
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Esti pe cale sa vinzi toate vehiculele din depou. Esti sigur?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Eşti pe cale să vinzi toate vehiculele din depou. Eşti sigur?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaj de la producătorul de vehicule
@@ -2957,7 +2957,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cost: {C
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cost: {CURRENCY} Viteză max.: {VELOCITY}{}Capacitate: {CARGO}{}Mentenanţă: {CURRENCY}/an
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieste {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieşte {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Trenul
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autovehicolul
 STR_REPLACE_VEHICLE_SHIP                                        :Nava
@@ -2967,11 +2967,11 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Alege ti
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Alege noul tip de motor pe care doreşti să-l foloseşti în locul motorului selectat în stânga
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasa aici pentru a incepe inlocuirea motorului selectat in stanga cu cel selectat in dreapta
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasă aici pentru a începe înlocuirea motorului selectat în stânga cu cel selectat în dreapta
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Neinlocuire
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nici un vehicul selectat
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire inlocuire vehicule
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasa aici pentru oprirea inlocuirii motorului selectat in stanga
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire înlocuire vehicule
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasă aici pentru a opri înlocuirea motorului selectat în stânga
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Comutã între ferestrele de înlocuire motoare si vagoane
@@ -3158,14 +3158,14 @@ STR_ORDER_GO_NON_STOP_VIA                                       :Du-te fără op
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Schimbă comportamentul de oprire pentru ordinul selectat
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Încarcă orice produs
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Incarca daca este disponibil
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Încarcă dacă este disponibil
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Încarcă toate produsele
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Încarcă orice produs
 STR_ORDER_DROP_NO_LOADING                                       :Nu încărca
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Schimbă comportamentul de încărcare pentru ordinul selectat
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarca tot
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarcă dacă este cerere
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarcă tot
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarcă dacă este acceptat
 STR_ORDER_DROP_UNLOAD                                           :Descarcă tot
 STR_ORDER_DROP_TRANSFER                                         :Transferă
 STR_ORDER_DROP_NO_UNLOADING                                     :Nu descărca
@@ -3175,8 +3175,8 @@ STR_ORDER_REFIT                                                 :{BLACK}Rearanje
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Alege tipul de marfă pentru rearanjarea în comandă. Ctrl+clic pentru a anula rearanjarea
 
 STR_ORDER_SERVICE                                               :{BLACK}Service
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Todeauna avanseaza
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Service daca este nevoie
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Merge mereu
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Service dacă este nevoie
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sari peste aceastã comandã dacã nu este necesar un service
 
@@ -3184,11 +3184,11 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datele v
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procentaj încărcare
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Eficienţă
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Viteză maximă
-STR_ORDER_CONDITIONAL_AGE                                       :Vechime vehicol (ani)
+STR_ORDER_CONDITIONAL_AGE                                       :Vechime vehicul (ani)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necesită service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Întotdeauna
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cum se face compararea datelor din vehicul cu valoarea data
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cum se face compararea datelor din vehicul cu valoarea dată
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :este egal cu
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nu este egal cu
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :este mai mic decât
@@ -3213,7 +3213,7 @@ STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Opreşte
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mergi la
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Du-te la cel mai apropiat depou
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel mai apropiat hangar
-STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
+STR_ORDER_CONDITIONAL                                           :Salt în ordine condiţionată
 STR_ORDER_SHARE                                                 :Sincronizează ordinele
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'. 'Sincronizarea ordinelor' sau Ctrl permite acestui vehicul să îşi sincronizeze ordinele cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Adaugă o comandă avansată
@@ -3246,7 +3246,7 @@ STR_ORDER_IMPLICIT                                              :(Implicit)
 STR_ORDER_FULL_LOAD                                             :(Încărcare maximă)
 STR_ORDER_FULL_LOAD_ANY                                         :(Încărcare orice produs)
 STR_ORDER_NO_LOAD                                               :(Fără încărcare)
-STR_ORDER_UNLOAD                                                :(Descarca si preia marfa)
+STR_ORDER_UNLOAD                                                :(Descarcă şi preia marfa)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarcă şi aşteaptă încărcare maximă)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarcă şi aşteaptă orice încărcătură)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarcă şi pleacă)
@@ -3280,10 +3280,10 @@ STR_TIMETABLE_NO_TRAVEL                                         :NU este calator
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Călătorie (automat; orar generat de următorul ordin manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
 STR_TIMETABLE_TRAVEL_FOR                                        :Calatorii pentru {STRING}
-STR_TIMETABLE_STAY_FOR                                          :si opriri pentru {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :si calatoreste pentru {STRING}
+STR_TIMETABLE_STAY_FOR                                          :şi opreşte pentru {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :şi călătoreşte pentru {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} zi{P "" le}
-STR_TIMETABLE_TICKS                                             :{COMMA} programare{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tic{P "" uri}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Acest orar va lua {STRING} pentru finalizare
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
@@ -3297,14 +3297,14 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Acest or
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dată pornire
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Alege o dată de pornire pentru acestu orar
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifica timpul
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifică timpul
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifică durata de timp alocată pentru comanda selectată
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Curata timp
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina durata de timp pentru comanda selectata
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimină durata de timp pentru comanda selectată
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reinitializeaza contorul de intarziere
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinitializeaza contorul de intarziere, astfel ca vehiculul sa ajunga la timp
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniţializează contorul de întârziere, astfel ca vehiculul să ajungă la timp
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completează automat tabela cu timpi cu valorile pentru urmatoarea călătorie (CTRL-clic pentru a încerca să păstraţi timpii de aşteptare)
@@ -3411,11 +3411,11 @@ STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Discul n
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Salvarea jocului eşuată{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ştergerea jocului eşuată
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Încărcarea jocului eşuată{}{STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Eroare interna: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvare eronata - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Slavarea a fost facuta cu o versiune mai noua
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fisierul nu poate fi citit
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fisierul nu poate fi scris
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Eroare internă: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvare eronată - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvarea a fost făcută cu o versiune mai nouă
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fişierul nu poate fi citit
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fişierul nu poate fi scris
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritatea datelor compromisă
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<indisponibil>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate
@@ -3901,7 +3901,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} de Sus
 STR_SV_STNAME_LOWER                                             :{STRING} de Jos
 STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING}
 STR_SV_STNAME_FOREST                                            :Pădurea {STRING}
-STR_SV_STNAME_FALLBACK                                          :{STRING} Statia #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} Staţia #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -4186,7 +4186,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :Depou nave {TOW
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Depou nave #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
-STR_UNKNOWN_STATION                                             :statie necunoscuta
+STR_UNKNOWN_STATION                                             :staţie necunoscută
 STR_DEFAULT_SIGN_NAME                                           :Semn
 STR_COMPANY_SOMEONE                                             :cineva
 
