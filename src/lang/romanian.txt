@@ -1326,7 +1326,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapidă
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Foarte rapidă
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporţia oraşelor care se vor dezvolta de două ori mai repede: {ORANGE}1 din {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporţia oraşelor care se vor dezvolta de două ori mai repede: {ORANGE}nici unul
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator iniţial dimensiune oras: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator iniţial dimensiune oraş: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Elimină elementele de drum absurde pe durata construcţiei drumului: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaţă
@@ -3259,7 +3259,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nu descărca �
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nu descărca şi aşteaptă orice încărcătură)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Fără încărcare sau descărcare)
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capatul apropiat]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capătul apropiat]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[la mijloc]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[la capătul îndepărtat]
 
