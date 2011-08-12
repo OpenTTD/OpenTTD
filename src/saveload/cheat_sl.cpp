@@ -38,6 +38,8 @@ static void Load_CHTS()
 {
 	Cheat *cht = (Cheat*)&_cheats;
 	size_t count = SlGetFieldLength() / 2;
+	/* Cannot use lengthof because _cheats is of type Cheats, not Cheat */
+	if (count > sizeof(_cheats) / sizeof(Cheat)) SlErrorCorrupt("Too many cheat values");
 
 	for (uint i = 0; i < count; i++) {
 		cht[i].been_used = (SlReadByte() != 0);
