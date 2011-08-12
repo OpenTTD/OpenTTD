@@ -15,6 +15,10 @@
 
 #include "table/strings.h"
 
+static const int NUM_OLD_STRINGS     = 512; ///< The number of custom strings stored in old savegames.
+static const int LEN_OLD_STRINGS     =  32; ///< The number of characters per string.
+static const int LEN_OLD_STRINGS_TTO =  24; ///< The number of characters per string in TTO savegames.
+
 /**
  * Remap a string ID from the old format to the new format
  * @param s StringID that requires remapping
@@ -57,10 +61,9 @@ char *CopyFromOldName(StringID id)
 	if (GB(id, 11, 5) != 15) return NULL;
 
 	if (IsSavegameVersionBefore(37)) {
-		/* Old names were 24/32 characters long, so 128 characters should be
-		 * plenty to allow for expansion when converted to UTF-8. */
-		char tmp[128];
-		uint offs = _savegame_type == SGT_TTO ? 24 * GB(id, 0, 8) : 32 * GB(id, 0, 9);
+		/* Allow for expansion when converted to UTF-8. */
+		char tmp[LEN_OLD_STRINGS * MAX_CHAR_LENGTH];
+		uint offs = _savegame_type == SGT_TTO ? LEN_OLD_STRINGS_TTO * GB(id, 0, 8) : LEN_OLD_STRINGS * GB(id, 0, 9);
 		const char *strfrom = &_old_name_array[offs];
 		char *strto = tmp;
 
@@ -92,7 +95,7 @@ char *CopyFromOldName(StringID id)
 		return strdup(tmp);
 	} else {
 		/* Name will already be in UTF-8. */
-		return strdup(&_old_name_array[32 * GB(id, 0, 9)]);
+		return strdup(&_old_name_array[LEN_OLD_STRINGS * GB(id, 0, 9)]);
 	}
 }
 
@@ -112,7 +115,7 @@ void ResetOldNames()
 void InitializeOldNames()
 {
 	free(_old_name_array);
-	_old_name_array = CallocT<char>(512 * 32); // 200 * 24 would be enough for TTO savegames
+	_old_name_array = CallocT<char>(NUM_OLD_STRINGS * LEN_OLD_STRINGS); // 200 * 24 would be enough for TTO savegames
 }
 
 /**
@@ -123,7 +126,7 @@ static void Load_NAME()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		SlArray(&_old_name_array[32 * index], SlGetFieldLength(), SLE_UINT8);
+		SlArray(&_old_name_array[LEN_OLD_STRINGS * index], SlGetFieldLength(), SLE_UINT8);
 	}
 }
 
