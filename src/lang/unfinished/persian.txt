@@ -21,6 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(رشته تعریف نشده)
 STR_JUST_NOTHING                                                :هیچی
 
 # Cargo related strings
@@ -164,6 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}همه
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :{COMMA} مسافر{P "" s}
+STR_BAGS                                                        :{COMMA} کیف{P "" s}
+STR_TONS                                                        :{COMMA} تن{P "" s}
+STR_LITERS                                                      :{COMMA} لیتر{P "" s}
+STR_ITEMS                                                       :{COMMA} فقره{P "" s}
+STR_CRATES                                                      :{COMMA} جعبه{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :آبی تیره
@@ -206,6 +213,8 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} متر 
 
 STR_UNITS_FORCE_SI                                              :{COMMA} کیلو نیوتن
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} پا
+STR_UNITS_HEIGHT_SI                                             :{COMMA} متر
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}وارد کردن رشته پایش
@@ -219,6 +228,10 @@ STR_BUTTON_LOCATION                                             :{BLACK}مختص
 STR_BUTTON_RENAME                                               :{BLACK}نام گزاری
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان پنجره - پرای جابجا کردن پنجره این قسمت را بکشید.
+STR_TOOLTIP_DEBUG                                               :{BLACK}نمایش اطلاعات عیب یابیNewGRF
+STR_TOOLTIP_STICKY                                              :{BLACK}این پنجره را قفل کن که هنگامی که دکمه "همه پنجره ها را ببند" فشرده شد،این پنجره باز بماند
+STR_TOOLTIP_RESIZE                                              :{BLACK}کلیک کنید و بکشید تا اندازه پنجره تغییر کند
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تغییر دادن اندازه ی صفحه
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین.با فشردن همزمان دکمه Ctrl به طور مورب می توانید تخریب کنید.فشردن همزمان دکمه Shift برآورد هزینه را نمایش می دهد.
 

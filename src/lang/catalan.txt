@@ -357,6 +357,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostra els noms de les estacions
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostra els punts de control
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostra les senyals
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra noms i senyals dels competidors
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animació completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detall complet
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificis Transparents
