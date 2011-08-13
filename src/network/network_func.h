@@ -36,7 +36,7 @@ extern StringList _network_ban_list;
 byte NetworkSpectatorCount();
 void NetworkUpdateClientName();
 bool NetworkCompanyHasClients(CompanyID company);
-const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password, bool already_hashed = true);
+const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password);
 void NetworkReboot();
 void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();

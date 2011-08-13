@@ -158,12 +158,12 @@ byte NetworkSpectatorCount()
  * @param password The unhashed password we like to set ('*' or '' resets the password)
  * @return The password.
  */
-const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password, bool already_hashed)
+const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password)
 {
 	if (strcmp(password, "*") == 0) password = "";
 
 	if (_network_server) {
-		NetworkServerSetCompanyPassword(company_id, password, already_hashed);
+		NetworkServerSetCompanyPassword(company_id, password, false);
 	} else {
 		NetworkClientSetCompanyPassword(password);
 	}
