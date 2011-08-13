@@ -1248,12 +1248,18 @@ void AircraftNextAirportPos_and_Order(Aircraft *v)
 	v->pos = v->previous_pos = AircraftGetEntryPoint(v, apc, rotation);
 }
 
+/**
+ * Aircraft is about to leave the hangar.
+ * @param v Aircraft leaving.
+ */
 void AircraftLeaveHangar(Aircraft *v)
 {
+	const Station *st = Station::GetByTile(v->tile);
+
 	v->cur_speed = 0;
 	v->subspeed = 0;
 	v->progress = 0;
-	v->direction = DIR_SE;
+	v->direction = st->airport.GetHangarExitDirection(v->tile);
 	v->vehstatus &= ~VS_HIDDEN;
 	{
 		Vehicle *u = v->Next();
