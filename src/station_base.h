@@ -135,20 +135,28 @@ struct Airport : public TileArea {
 	}
 
 	/**
-	 * Get the hangar number of the hangar on a specific tile.
+	 * Get the exit direction of the hangar at a specific tile.
+	 * @param tile The tile to query.
+	 * @pre IsHangarTile(tile).
+	 * @return The exit direction of the hangar, taking airport rotation into account.
+	 */
+	FORCEINLINE Direction GetHangarExitDirection(TileIndex tile) const
+	{
+		const AirportSpec *as = this->GetSpec();
+		const HangarTileTable *htt = GetHangarDataByTile(tile);
+		return ChangeDir(htt->dir, DirDifference(this->rotation, as->rotation[0]));
+	}
+
+	/**
+	 * Get the hangar number of the hangar at a specific tile.
 	 * @param tile The tile to query.
 	 * @pre IsHangarTile(tile).
 	 * @return The hangar number of the hangar at the given tile.
 	 */
 	FORCEINLINE uint GetHangarNum(TileIndex tile) const
 	{
-		const AirportSpec *as = this->GetSpec();
-		for (uint i = 0; i < as->nof_depots; i++) {
-			if (this->GetRotatedTileFromOffset(as->depot_table[i].ti) == tile) {
-				return as->depot_table[i].hangar_num;
-			}
-		}
-		NOT_REACHED();
+		const HangarTileTable *htt = GetHangarDataByTile(tile);
+		return htt->hangar_num;
 	}
 
 	/** Get the number of hangars on this airport. */
@@ -164,6 +172,24 @@ struct Airport : public TileArea {
 			}
 		}
 		return num;
+	}
+
+private:
+	/**
+	 * Retrieve hangar information of a hangar at a given tile.
+	 * @param tile %Tile containing the hangar.
+	 * @return The requested hangar information.
+	 * @pre The \a tile must be at a hangar tile at an airport.
+	 */
+	FORCEINLINE const HangarTileTable *GetHangarDataByTile(TileIndex tile) const
+	{
+		const AirportSpec *as = this->GetSpec();
+		for (uint i = 0; i < as->nof_depots; i++) {
+			if (this->GetRotatedTileFromOffset(as->depot_table[i].ti) == tile) {
+				return as->depot_table + i;
+			}
+		}
+		NOT_REACHED();
 	}
 };
 
