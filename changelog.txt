@@ -1,3 +1,9 @@
+1.1.2 (2011-08-14)
+------------------------------------------------------------------------
+- Fix: Some corrupted savegames could crash OpenTTD instead of showing the 'savegame corrupted' message [FS#4717] (r22737, r22736)
+- Fix: [NewGRF] Triggering NOT_REACHED when playing with a NewGRF that supplies genders/cases for a language that was not installed [FS#4718] (r22735)
+
+
 1.1.2-RC2 (2011-07-30)
 ------------------------------------------------------------------------
 - Fix: Cost of adding an extra road type to a bridge or tunnel was undercalculated [FS#4680, FS#4681] (r22700, r22699)
