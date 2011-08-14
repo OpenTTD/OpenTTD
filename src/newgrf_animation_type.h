@@ -28,7 +28,7 @@ struct AnimationInfo {
 enum StationAnimationTrigger {
 	SAT_BUILT,         ///< Trigger tile when built.
 	SAT_NEW_CARGO,     ///< Trigger station on new cargo arrival.
-	SAT_CARGO_TAKEN,   ///< Trigger station when cargo is taken.
+	SAT_CARGO_TAKEN,   ///< Trigger station when cargo is completely taken.
 	SAT_TRAIN_ARRIVES, ///< Trigger platform when train arrives.
 	SAT_TRAIN_DEPARTS, ///< Trigger platform when train leaves.
 	SAT_TRAIN_LOADS,   ///< Trigger platform when train loads/unloads.

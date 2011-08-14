@@ -1329,8 +1329,10 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 			st->time_since_load = 0;
 			st->last_vehicle_type = v->type;
 
-			TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
-			AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
+			if (ge->cargo.Empty()) {
+				TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
+				AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
+			}
 
 			unloading_time += cap;
 
