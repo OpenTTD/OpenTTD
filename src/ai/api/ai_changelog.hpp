@@ -30,6 +30,14 @@
  * API removals:
  * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.
  *
+ * \b 1.1.2
+ *
+ * No changes
+ *
+ * \b 1.1.1
+ *
+ * No changes
+ *
  * \b 1.1.0
  *
  * API additions:

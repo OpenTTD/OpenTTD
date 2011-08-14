@@ -2,7 +2,25 @@ openttd (1.2.0~alpha) unstable; urgency=low
 
   * Alpha releases of trunk leading to 1.2.0-beta1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 01 Apr 2011 00:00:01 +0100
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 15 Aug 2011 00:00:01 +0100
+
+openttd (1.1.2) unstable; urgency=low
+
+  * New upstream release 1.1.2
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 14 Aug 2011 17:00:00 +0200
+
+openttd (1.1.2~RC2) unstable; urgency=low
+
+  * New upstream release 1.1.2-RC2
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 30 Jul 2011 21:00:00 +0200
+
+openttd (1.1.2~RC1) unstable; urgency=low
+
+  * New upstream release 1.1.2-RC1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 24 Jul 2011 21:00:00 +0200
 
 openttd (1.1.1) unstable; urgency=low
 
