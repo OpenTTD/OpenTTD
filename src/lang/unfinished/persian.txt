@@ -229,10 +229,13 @@ STR_BUTTON_RENAME                                               :{BLACK}نام �
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان پنجره - پرای جابجا کردن پنجره این قسمت را بکشید.
+STR_TOOLTIP_SHADE                                               :{BLACK}باریک کردن پنجره - فقط نوار عنوان نمایش داده می شود
 STR_TOOLTIP_DEBUG                                               :{BLACK}نمایش اطلاعات عیب یابیNewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}این پنجره را قفل کن که هنگامی که دکمه "همه پنجره ها را ببند" فشرده شد،این پنجره باز بماند
 STR_TOOLTIP_RESIZE                                              :{BLACK}کلیک کنید و بکشید تا اندازه پنجره تغییر کند
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تغییر دادن اندازه ی صفحه
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}نوار اسکرول - لیست را بالا و پایین می کند
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}نوار اسکرول - لیست را چپ و راست می کند
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین.با فشردن همزمان دکمه Ctrl به طور مورب می توانید تخریب کنید.فشردن همزمان دکمه Shift برآورد هزینه را نمایش می دهد.
 
 # Query window
@@ -241,8 +244,14 @@ STR_BUTTON_CANCEL                                               :{BLACK}لغو
 STR_BUTTON_OK                                                   :{BLACK}تایید
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`۱۲۳۴۵۶۷۸۹۰-=\ضصثقفغعهخحجچشسیبلاتنمکگ  ظطزرذدئو./ پ
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :×!@#$%^&*)(_+|ًٌٍريال،؛,][\{{}}َُِّۀآـ«»:"  ةيژؤإأء<>؟ .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}اندازه: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}مساحت: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}اندازه: {NUM}{}تفاوت عرض: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}مساحت: {NUM} x {NUM}{}تفاوت اندازه: {HEIGHT}
 
 
 # These are used in buttons
@@ -250,6 +259,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}جمعی
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :جمعیت
+STR_SORT_BY_NAME                                                :نام
 STR_SORT_BY_PRODUCTION                                          :تولید
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :منتقل شده
@@ -264,6 +275,7 @@ STR_SORT_BY_MODEL                                               :مدل
 STR_SORT_BY_VALUE                                               :قیمت
 STR_SORT_BY_LENGTH                                              :طول
 STR_SORT_BY_LIFE_TIME                                           :عمر مفید باقی مانده
+STR_SORT_BY_TIMETABLE_DELAY                                     :تاخیر جدول زمانی
 STR_SORT_BY_FACILITY                                            :نوع ایستگاه
 STR_SORT_BY_WAITING                                             :ارزش محموله ی درانتظار
 STR_SORT_BY_RATING_MAX                                          :حداکثر نرخ محموله
@@ -271,6 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :کمترین ن
 STR_SORT_BY_ENGINE_ID                                           :شناسه موتور
 STR_SORT_BY_COST                                                :قیمت
 STR_SORT_BY_POWER                                               :توان
+STR_SORT_BY_TRACTIVE_EFFORT                                     :تلاش کششی
 STR_SORT_BY_INTRO_DATE                                          :تاریخ احداث
 STR_SORT_BY_RUNNING_COST                                        :هزینه کارکرد
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :توان/هزینه کارکرد
@@ -278,15 +291,18 @@ STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت مح
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}متوقف کردن بازی
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}بالا بردن سرعت بازی
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}تنضیمات
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}ذخیره بازی، ترک بازی، خروج از بازی
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}نقشه، پنجره اضافی یا لیست علامت ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}لیست شهرها را نشان می دهد
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}نمایش یارانه ها
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}نمایش لیست ایستگاه های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}اطلاعات مالی شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}توضیحات کلی راجع به شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}نمودار ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}جدول رده بندی شرکت ها را نشان می دهد
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ساخت صنایع جدید یا لیست همه صنایع موجود
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}نمایش لیست قطار های شرکت، Ctrl+Click نمابش را بین گروه ها و قطار ها تغییر می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}نمایش لیست ماشین های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}نمایش لیست کشتی های شرکت
@@ -297,13 +313,19 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ساخت
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}ساخت جاده
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}ساخت اسکله
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ساخت فرودگاه
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}باز کردن نوار ابزار محوطه سازی به منظور بالا بردن / پایین بردن زمین ، کاشت درخت، و غیره
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}صفحه ی صدا/موسیقی
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}نمایش تاریخ و زمان آخرین پیام / خبر و تنظیمات پیغام خصوصی
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضیحات درباره ی زمین
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}عوض کردن نوار ابزار
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}ذخیره سناریو، بارگزاری سناریو، خروج از ویرایشگر سناریو، خروج
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}ویرایشگر سناریو
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}روز شروع بازی را یک سال به عقب برگردان
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}روز شروع بازی را یک سال جلو ببر
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}برای وارد کردن سال شروع کلیک کنید
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}نقشه، لیست شهر ها را نشان می دهد
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}طراحی اتوماتیک سرزمین
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}طراحی مشخصات شهر ها
@@ -311,9 +333,13 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}طراح
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}طراحی مشخصات کارخانه ها
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}کاشت درخت.دکمه Shift برآورد قيمت را نشان مي دهد.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}علامت گذاری
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}قراردادن شیء. گرفتن Shift برآورد هزینه ساخت را نمایش می دهد
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :ذخیره سناریو
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :بارگزاری سناریو
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :ذخیره heightmap
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :بارگزاری heightmap
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :خارج شدن از محیط طراحی
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
@@ -322,13 +348,19 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :تنظیمات سختی
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :تنظیمات پیشرفته
+STR_SETTINGS_MENU_AI_SETTINGS                                   :تنظیمات AI(هوش مصنوعی)
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :گزینه های شفافیت
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :نام شهرها نشان داده شود
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :نام ایستگاه ها نشان داده شود
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :نام محل های انتخابی نمایش داده شده است
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :علامت ها نشان داده شوند
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :نشانه های رقبا و اسامی نمایش داده شده
 STR_SETTINGS_MENU_FULL_ANIMATION                                :انیمیشن کامل
 STR_SETTINGS_MENU_FULL_DETAIL                                   :جزعیات کامل
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :ساختمان های نامرئی
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف کردن نشان های ایستگاه ها
 ############ range ends here
 
 ############ range for file menu starts
@@ -340,12 +372,16 @@ STR_FILE_MENU_EXIT                                              :خروج
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :نمای اضافه
+STR_MAP_MENU_SIGN_LIST                                          :لیست نشانه
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :ساخت شهر
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :یارانه ها
 ############ range ends here
 
 ############ range for graph menu starts
@@ -363,20 +399,24 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :جزییات ا
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :فهرست صنایع
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ساخت کارخانه جدید
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :ساخت راه آهن
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :ساخت و ساز ریل برقی
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :ساخت مونوریل
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :ساخت ریل مغناطیسی
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :ساخت جاده
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ساخت ساز تراموا
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :ساخت ساز آبراهه
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -384,6 +424,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان 
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :محوطه سازی
 STR_LANDSCAPING_MENU_PLANT_TREES                                :کاشتن درخت
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :قرار دادن علامت
 ############ range ends here
@@ -393,13 +434,18 @@ STR_TOOLBAR_SOUND_MUSIC                                         :صدا/موسی
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :گزارش آخرین پیام/خبر
 STR_NEWS_MENU_MESSAGE_SETTINGS                                  :تنظیمات پیغام ها
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخچه پیام ها
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :اطلاعات زمین ها
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :باز و بسته کردن کنسول
 STR_ABOUT_MENU_AI_DEBUG                                         :رفع اشکالات هوش مصنوعی
 STR_ABOUT_MENU_SCREENSHOT                                       :تصویر از بازی
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :عکس از صفحه زوم شده
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :(Ctrl-G) تصویر از دنیا
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' درباره
 ############ range ends here
@@ -452,25 +498,52 @@ STR_MONTH_ABBREV_OCT                                            :آبان
 STR_MONTH_ABBREV_NOV                                            :آذر
 STR_MONTH_ABBREV_DEC                                            :دی
 
+STR_MONTH_JAN                                                   :ژانویه
+STR_MONTH_FEB                                                   :فوریه
+STR_MONTH_MAR                                                   :مارس
+STR_MONTH_APR                                                   :آوریل
+STR_MONTH_MAY                                                   :مه
+STR_MONTH_JUN                                                   :ژوئن
+STR_MONTH_JUL                                                   :جولای
+STR_MONTH_AUG                                                   :آگوست
+STR_MONTH_SEP                                                   :سپتامبر
+STR_MONTH_OCT                                                   :اکتبر
+STR_MONTH_NOV                                                   :نوامبر
+STR_MONTH_DEC                                                   :دسامبر
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}کلید
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}نمودار سود کارکرد
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}نمودار دریافتی
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}تعداد واحدهای محموله های تحویل شده
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}رتبه بندی راندمان شرکت (رتبه بیشینه = 1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}ارزش نقدی شرکت
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}مبلغ پرداختی محموله ها
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}روز های گذشته در حمل
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}فعال سازی همه
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}غیر فعال سازی همه
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}نمایش تمام محموله در نمودار نرخ نرخ پرداخت محموله ها
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}نمایش ندادن محموله ها در نمودار نرخ پرداخت محموله ها
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}نمایش جزئیات رتبه بندی راندمان
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}کلید نمودار شرکت
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}برای نمایش/عدم نمایش دریافتی شرکت بر روی نمودار کلیک کنید
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}جدول اتحادیه شرکت ها
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مهندس
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :مدیر ترافیکی
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :رئیس حمل و نقل
@@ -482,32 +555,77 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :رئیس جمه
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :ترک اصیل!
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}رتبه راندمان تفصیلی
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}جزییات
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}مشاهده جزییات درباره این شرکت
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}خودرو ها:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}ایستگاه ها:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}کمینه سود:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}کمینه دریافتی:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}بیشینه دریافتی:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}تحویل شده:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}بار:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}پول:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}وام:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}مجموع:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}تعداد خودروهای که سال گذشته سوددهی داشته اند. این شامل وسایل نقلیه جاده ای ، قطار ، کشتی ها و هواپیما می باشد
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} تعداد قطعات تازه سرویس شده ایستگاه. هر بخشی از یک ایستگاه (به عنوان مثال ایستگاه قطار، ایستگاه اتوبوس، فرودگاه) شمارش شده است، حتی اگر آنها به عنوان یک ایستگاه متصل باشند
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}سود از خودرو با کمترین درآمد (تنها وسایل نقلیه بزرگتر از دو سال در نظر گرفته)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK} مقدار پول نقد در سه ماهه با کمترین سود از 12 سه ماهه آخر
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK} مقدار پول نقد درآمده در این سه ماهه با بیشترین سود از 12 سه ماهه گذشته
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}تعداد محموله هایی که در چهار فصل گذشته تحویل شدند
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}تعداد نوع محموله هایی که در چهار فصل گذشته تحویل شدند
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}مقدار پولی که شرکت در بانک دارد
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}مقدار پولی که شرکت به صورت وام دریافت کرده است
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}تعداد نقاط ممکن
 
 # Music window
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}پخش جاز
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}همه:
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}مدل قدیمی
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}مدل جدید
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}خیابان داریوش کبیر
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}انتخابی 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}انتخابی 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}شدت صدای موسیقی
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}شدت صدای محیط
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}کمینه
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}بیشینه
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}آهنگ
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}عنوان
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}پخش تصادفی
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}برنامه
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}بازگشت به آهنگ قبلی در لیست انتخاب شده ها
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}آهنگ بعدی در لیست انتخاب شده ها
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}توقف موسیقی
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}پخش موسیقی
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}برای انتخاب موسیقی و افکت های صدا ولوم ها را تغییر دهید
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}انتخاب برنامه «همه آهنگ ها»
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}انتخاب برنامه «موسیقی های قدیمی»
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}انتخاب برنامه «موسیقی های جدید»
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}انتخاب برنامه «خیابان اِزی»
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}انتخاب برنامه «سفارشی 1»(تعریف شده توسط کاربر)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}انتخاب برنامه «سفارشی 2»(تعریف شده توسط کاربر)
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}پخش به صورت لیست برهم ریخته
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}نمایش پنجره لیست آهنگهای انتخابی
 
+STR_ERROR_NO_SONGS                                              :{WHITE}در مجموعه موسیقی آهنگی انتخاب نشده است. هیچ آهنگی پخش نخواهد شد
 
 # Playlist window
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}انتخاب برنامه پخش موسیقی
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}شماره ی آهنگ
+STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}برنامه - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}پاک کن
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}ذخیره کن
 

@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Hiển thị t�
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Hiển thị tên nhà ga
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Hiển thị tên điểm mốc
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Hiển thị ký hiệu
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Hiển thị biển hiệu và tên của đối thủ
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation đầy đủ
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Chi tiết
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Làm trong suốt nhà cửa
@@ -448,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to ảnh
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Bật/tắt hiển thị khối nhà
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
