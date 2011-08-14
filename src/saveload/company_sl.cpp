@@ -283,6 +283,7 @@ static void SaveLoad_PLYR_common(Company *c, CompanyProperties *cprops)
 	SlObject(&cprops->cur_economy, _company_economy_desc);
 
 	/* Write old economy entries. */
+	if (cprops->num_valid_stat_ent > lengthof(cprops->old_economy)) SlErrorCorrupt("Too many old economy entries");
 	for (i = 0; i < cprops->num_valid_stat_ent; i++) {
 		SlObject(&cprops->old_economy[i], _company_economy_desc);
 	}
