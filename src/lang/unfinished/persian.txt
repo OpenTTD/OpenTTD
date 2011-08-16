@@ -131,7 +131,7 @@ STR_QUANTITY_N_A                                                :N/A
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}CL
+STR_ABBREV_COAL                                                 :{TINYFONT}زس
 STR_ABBREV_MAIL                                                 :{TINYFONT}ML
 STR_ABBREV_OIL                                                  :{TINYFONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
@@ -304,9 +304,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}نمود
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}جدول رده بندی شرکت ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ساخت صنایع جدید یا لیست همه صنایع موجود
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}نمایش لیست قطار های شرکت، Ctrl+Click نمابش را بین گروه ها و قطار ها تغییر می دهد
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}نمایش لیست ماشین های شرکت
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}نمایش لیست کشتی های شرکت
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}نمایش لیست هواپیماهای شرکت
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}نمایش لیست ماشین های شرکت. Ctrl+Click لیست خودرو/گروه را نمایش می دهد
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}نمایش لیست کشتی های شرکت.. Ctrl+Click لیست خودرو/گروه را نمایش می دهد
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}نمایش لیست هواپیماهای شرکت. Ctrl+Click لیست خودرو/گروه را نمایش می دهد
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}نمایش نواحی کوچکتر
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}نمایش نواحی بزرگتر
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ساخت راه آهن
@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ساخت
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}باز کردن نوار ابزار محوطه سازی به منظور بالا بردن / پایین بردن زمین ، کاشت درخت، و غیره
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}صفحه ی صدا/موسیقی
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}نمایش تاریخ و زمان آخرین پیام / خبر و تنظیمات پیغام خصوصی
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضیحات درباره ی زمین
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضیحات درباره ی زمین، کنسول، خطایابی هوش مصنوعی، عکس گرفتن از صفحه نمایش، درباره OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}عوض کردن نوار ابزار
 
 # Extra tooltips for the scenario editor toolbar
@@ -443,11 +443,13 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخچه 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :اطلاعات زمین ها
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :باز و بسته کردن کنسول
-STR_ABOUT_MENU_AI_DEBUG                                         :رفع اشکالات هوش مصنوعی
+STR_ABOUT_MENU_AI_DEBUG                                         :خطایابی هوش مصنوعی
 STR_ABOUT_MENU_SCREENSHOT                                       :تصویر از بازی
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :عکس از صفحه زوم شده
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :(Ctrl-G) تصویر از دنیا
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :تصویر از همه نقشه
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' درباره
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :تراز کردن تصویر گرافیکی
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :باز/بسته کردن محدوده جعبه ها
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -514,6 +516,7 @@ STR_MONTH_DEC                                                   :دسامبر
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}کلید
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}نمایش کلید نمودار
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
@@ -659,7 +662,7 @@ STR_SMALLMAP_TYPE_ROUTES                                        :راه ها
 STR_SMALLMAP_TYPE_VEGETATION                                    :پوشش گیاهی
 STR_SMALLMAP_TYPE_OWNERS                                        :صاحبان
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}حاشیه ی زمین را در نقشه نشان بده
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}وسایل حمل و نقل را در صفحه نشن بده
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}وسایل نقلیه را در صفحه نشان بده
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}کارخانه ها را در نقشه نشان بده
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}مسیر های حمل و نقل را در نقشه نشان بده
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}نمایش گیاهان روی نقشه
@@ -791,30 +794,64 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT} {BLACK} اتحادیه پولی اروپا!{}{} یورو به عنوان تنها ارز برای معاملات روزمره در کشور معرفی گردید!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}رکود جهانی!{}{}کارشناسان اقتصادی از رکود اقتصادی فراگیر اظهار نگرانی می کنند!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}رکود برطرف شد!{}{}برطرف شدن رکود باعث گرمی بازار خرید و فروش گردید و شرکت ها تقویت می گردند!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} افزایش تولید داشت!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} تولید در {INDUSTRY} به مقدار {COMMA}% افزایش یافت!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}تولید {INDUSTRY} 50% کاهش یافت
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}هجوم حشرات باعث تخریب {INDUSTRY}گردید!{}تولید به مقدار ۵۰% کاهش یافت!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} تولید در {INDUSTRY} ب مقدار {COMMA}۵۰% افزایش یافت!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} در گاراژ منتظر است
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} در گاراژ منتظر است
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} در گاراژ منتظر است
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :تعداد دستورهای نسبت داده ی {WHITE}{VEHICLE} کم تر از حد می باشد
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :برنامه حرکت {WHITE}{VEHICLE} باطل شده است
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :برنامه جابجایی {WHITE}{VEHICLE} دستور تکراری دارد
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} یک ایستگاه نا معتبر در برنامه جابجایی خود دارد
 # end of order system
 
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} قدیمی شده است
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} بسیار قدیمی شده است
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} نمی تواند مسیری برای ادامه دادن پیدا کند
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} گمشده
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :سود سال گذشته {WHITE}{VEHICLE}به مقدار {CURRENCY} بوده است
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} متوقف گردید چون تغییر کاربرد با شکست مواجه شد
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}نوسازی خودکار {VEHICLE}{}{STRING} با شکست مواجه شده است
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK} {STRING} جدید هم اکنون قابل دسترسی است!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK} {STRING} جدید هم اکنون قابل دسترسی است!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} دیگر {STRING} و {STRING} قبول نمی کند
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} {STRING} و {STRING} را از این به بعد قبول می کند
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}پیشنهاد یارانه باطل شد:{}{}{STRING} از {STRING} به {STRING} دیگر یارانه ای به همراه نخواهد داشت
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}یارانه بازپس گرفته شد:{}{}{STRING} خدمات از {STRING} به {STRING} دیگر شامل یارانه نمی باشند
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}پیشنهاد پرداخت یارانه:{}{}نخستین {STRING} خدمات از {STRING} به {STRING} توسط فرماندار محلی به مدت یک سال شامل یارانه می گردد!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال شامل ۵۰ درصد اضافه می گردد!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال دوبرابر پرداخت میشود!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK} {STRING}برنده یارانه خدمات گردید!{}{}{STRING} دستمزد خدمات از {STRING} به {STRING} به مدت یک سال سه برابر پرداخت می شود!
 
 
 # Extra view window
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}نمای اضافه {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK} به نمای اضافه منتقل کن
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}موقعیت نمای اصلی را به این نمای اضافه منتقل کن
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}موقعیت نمای اضافه را به نمای اصلی منتقل کن
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}موقعیت این نمای اضافهرا به نمای اصلی منتقل کن
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
@@ -822,8 +859,39 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}واحد
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}انتخب واحد پول
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :پوند (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :دلار ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :ین (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :شیلینگ استرالیا (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :فرانک بلژیک (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :فرانک سوییس (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :کرونای چک (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :مارک آلمان (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :کرون دانمارک (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :پزوتا (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :مارک فنلاند (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :فرانک (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :دراخمای یونان (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :فورینت مجارستان (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :کرون ایسلندی (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :لیره ایتالیا (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :گیلدر هلندی (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :کرون نروژ (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :زلتای لهستانی (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :لئو رومانیایی (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :روبل روسیه (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :تولار اسلونی (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :کرون سوییس (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :لیره ترکیه (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :کرونای اسلواکی (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :رئال برزیل (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :کرونی استونی (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :دلخواه...
 ############ end of currency region
 
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}واحد های اندازه گیری
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}انتخاب واحدهای اندازه گیری
 
 ############ start of measuring units region
 STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :شاهنشاهی
@@ -831,7 +899,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :متری
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK} وسایل حمل و نقل جاده ای
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK} خودروی جاده ای
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}انتخاب جهت فرمان ماشین ها
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :چپ فرمان
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :راست فرمان
@@ -840,18 +908,45 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK} نام 
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}انتخاب نوع نام شهرها
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :انگلیسی (اصلی)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :فرانسوی
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :آلمانی
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :انگلیسی (اضافه)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :آمریکای لاتین
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :سیلی
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :سوئدی
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :هلندی
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :فنلاند
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :لهستان
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :اسلواکی
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :نروژی
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :مجاری
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :اتریشی
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :رومانیایی
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :چکی
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :سوییسی
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :دانمارکی
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ترکیه ای
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :ایتالیایی
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :کاتالانی
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK} ذخیره اتوماتیک
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :خاموش
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :هر 3 ماه
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :هر 6 ماه
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :هر 12 ماه
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :هر ماه
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :هر ۳ ماه
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :هر ۶ ماه
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :هر ۱۲ ماه
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}زبان
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}زبان واسط کاربری را برای استفاده انتخاب کنید
 
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}تمام صفحه
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}برای بازی کردن OpenTTD در حالت تمام صفحه این جعبه را انتخاب کنید
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}وضوح تصویر
 
 
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
@@ -953,7 +1048,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک ک�
 STR_INTRO_AI_SETTINGS                                           :{BLACK}تنظیمات هوش مصنوعی
 STR_INTRO_QUIT                                                  :{BLACK}خروج
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید. Ctrl+Click پیش تنظیمات نقشه را رد و از تنظیمات گذشته استفاده می کند.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}ادامه ی بازی گذشته
 
 
@@ -1122,8 +1217,8 @@ STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :ساخت راه
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :ساخت مونوریل
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :ساخت ریل مغناطیسی
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ساخت راه آهن
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} سات ایستگاه قطار
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ساخت راه آهن. گرفتن دکمه Ctrl وضیعیت ابزار را به صورت ساخت/حذف در می آورد. دکمه Shift برآورد هزینه را نمایش می دهد
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} سات ایستگاه قطار. گرفتن Ctrl ایستگاه ها را به یکدیگر متصل می کند.دکمه Shift برآورد هزینه ساخت را نمایش می دهد
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}ساخت چراغ راهنمایی راه آهن
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK} ساخت پل راه آهن.دکمه Shift برآورد قيمت را نشان مي دهد.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK} ساخت تونل راه آهن.دکمه Shift برآورد قیمت را نشان می دهد.
@@ -1406,7 +1501,7 @@ STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن امتیازات ایستگاه
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}رده بندی محلی درباره ی وضعیت حمل و نقل
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
@@ -1562,13 +1657,13 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}وسیل
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}وسایل نقلیه ی جدید
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK} هواپیمای جدید
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}ساخت قطار جدید
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}ساخت کشتی جدید
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}ساخت هواپیمای جدید
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}خرید قطار تازه
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}خرید کشتی تازه
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}خرید هواپیمای تازه
 
 
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}نمای اصلی جایگاه ایستگاه قطار
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}انتقال نمای اصلی را به جایگاه ایستگاه قطار.Ctrl+Click یک نمای جدید از جایگاه ایستگاه می سازد.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}نمای اصلی از جایگاه لنگرگاه کشتی
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}نمای اصلی از جایگاه آشیانه
 
@@ -1612,18 +1707,18 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ارسا
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}قطار را مجبور کن بدون صبر برای علامت ترخیص شروع به حرکت کند
 
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}تعمیر مجدد کشتی باری برای حمل نوع دیگری از محموله ها
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}تعمیر مجدد هواپیما برای حمل نوع دیگری از محموله ها
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}تغییر کاربرد کشتی باری برای حمل نوع دیگری از محموله ها
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}تغییر کاربرد هواپیما برای حمل نوع دیگری از محموله ها
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}برعکس کردن جهت حرکت قطار
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}نمایش دستورات قطار
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}نمایش وظایف کشتی
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}نمایش وظایف هواپیما
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}نمایش برنامه حرکت قطار. Ctrl+Click جدول زمانی قطار را نمایش می دهد
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}نمایش برنامه حرکت کشتی. Ctrl+Click جدول زماني کشتی را نمايش مي دهد
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}نمایش برنامه حرکت هواپیما. Ctrl+Click جدول زمانی هواپیما را نمایش می دهد
 
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}نمایش مشخصات قطار
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}نمایش مشخصات کشتی
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}نمایش مشخصات هوا پیما
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}نمایش ویژگی های قطار
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}نمایش ویژگی های کشتی
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}نمایش ویژگی های هوا پیما
 
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}فعالیت فعلی قطار - برای توقف/شروع حرکت قطار کلیک کن.Ctrl+Click برای رفتن به مقضد
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}عمل فعلی کشتی - برای شروع/توقف کشتی اینجا کلیک کنید.Ctrl+Click برای رفتن به مقضد
@@ -1693,15 +1788,15 @@ STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}انتخ
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}تعمیر مجدد کشتی
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}تعمیر مجدد هواپیما
 
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}تعمیر مجدد کشتی باری برای حمل محموله مشخص شده
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تعمیر جدید هواپیما برای حمل  محموله ی مشخص شده
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}تغییر کاربرد کشتی باری برای حمل محموله مشخص شده
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تغییر کاربرد هواپیما برای حمل محموله ی مشخص شده
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورات)
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورها)
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}لیست دستورات - برای مشخص کردن دستور روی آن کلیک کنید. Ctrl+click به ایستگاه میرود
 
-STR_ORDERS_END_OF_ORDERS                                        :- - پایان دستورات - -
+STR_ORDERS_END_OF_ORDERS                                        :- - پایان دستورها - -
 
 # Order bottom buttons
 
@@ -2007,7 +2102,7 @@ STR_ERROR_TRAIN_START_NO_POWER                                  :قطار انر
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}هواپاما در حال پرواز است
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}برای دستورات بیشتر جا نداریم
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}برای دستورهای بیشتر جا نیست
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}دستورات بسیار زیاد شده اند
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}نمی شود دستور جدید قرار داد ...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی شود دستور را حذف کرد
@@ -2095,8 +2190,37 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :معدن شکر
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_SHIP_NAME                                                :کشتی {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :هواپیما {COMMA}
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} شمال
+STR_SV_STNAME_SOUTH                                             :{STRING} جنوب
+STR_SV_STNAME_EAST                                              :{STRING} شرق
+STR_SV_STNAME_WEST                                              :{STRING} غرب
+STR_SV_STNAME_CENTRAL                                           :{STRING} مرکزی
+STR_SV_STNAME_TRANSFER                                          :{STRING} انتقال
+STR_SV_STNAME_HALT                                              :{STRING} آویزان
+STR_SV_STNAME_VALLEY                                            :{STRING} وادی
+STR_SV_STNAME_HEIGHTS                                           :{STRING} ارتفاعات
+STR_SV_STNAME_WOODS                                             :{STRING} الوار
+STR_SV_STNAME_LAKESIDE                                          :{STRING} کنار دریاچه
+STR_SV_STNAME_EXCHANGE                                          :{STRING} مبادله
+STR_SV_STNAME_AIRPORT                                           :{STRING} فرودگاه
+STR_SV_STNAME_OILFIELD                                          :{STRING} چاه نفت
+STR_SV_STNAME_MINES                                             :{STRING} معدن ها
+STR_SV_STNAME_DOCKS                                             :{STRING} اسکله ها
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :{STRING} فرعی
+STR_SV_STNAME_SIDINGS                                           :{STRING} کناره ها
+STR_SV_STNAME_BRANCH                                            :{STRING} شاخه
+STR_SV_STNAME_UPPER                                             :بالاتر {STRING}
+STR_SV_STNAME_LOWER                                             :پایین تر {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} فرودگاه بالگرد
+STR_SV_STNAME_FOREST                                            :{STRING} جنگل
+STR_SV_STNAME_FALLBACK                                          :{STRING} ایستگاه #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -2144,6 +2268,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :واگن کاغ
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :واگن سنگ مس
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :تانکر آب
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :واگن حمل میوه
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :واگن حمل لاستیک
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :واگن حمل شکر
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :واگن حمل پشمک
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :واگن حمل تافی
@@ -2173,6 +2298,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :وان کاغذ
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :واگن سنگ مس
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :تانکر آب
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :واگن حمل میوه
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :واگن حمل لاستیک
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :واگن شکر
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :واگن حمل پشمک
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :واگن حمل تافی
@@ -2210,6 +2336,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :واگن حمل
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :واگن حمل تافی
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :واگن حباب
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :تانکر نوشابه
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :واگن حمل شکلات
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :واگن اسباب بازی
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :کامیون حمل باتری
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :کامیون نوشابه گازدار
@@ -2287,6 +2414,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :کامیون ح
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :واگن حمل اسباب بازی MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :واگن حمل اسباب بازی Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :واگن حمل اسباب بازی Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :کامیون حمل شکلات MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :کامیون حمل شکلات Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :کامیون حمل شکلات Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :کامیون حمل باتری MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :کامیون حمل باتری Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :کامیون حمل باتری Wizzowow
@@ -2332,6 +2462,7 @@ STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
 STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
@@ -2358,14 +2489,28 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} شناور
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} شناور #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(شرکت {COMMA})
 STR_FORMAT_GROUP_NAME                                           :گروه {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} نقطه راهنما
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} نقطه راهنما #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} گاراژ قطار
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} گاراژ قطار #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} گاراژ خوردوها
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} گاراژ خوردوها #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} لنگرگاه
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} لنگرگاه #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} آشیانه
 
+STR_UNKNOWN_STATION                                             :ایستگاه نامعلوم
 STR_DEFAULT_SIGN_NAME                                           :علامت
 STR_COMPANY_SOMEONE                                             :یک نفر
 
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :تماشاگر, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -2385,6 +2530,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -2406,6 +2552,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -2423,12 +2570,17 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
@@ -2446,3 +2598,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
