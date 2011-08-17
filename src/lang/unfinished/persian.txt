@@ -845,6 +845,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال دوبرابر پرداخت میشود!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK} {STRING}برنده یارانه خدمات گردید!{}{}{STRING} دستمزد خدمات از {STRING} به {STRING} به مدت یک سال سه برابر پرداخت می شود!
 
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}ترافیک شدید در {TOWN}!{}{}هزینه روکش کردن آسفالت توسط {STRING} پرداخت گردیده و باعث 6 ماه بدبختی و دردسر برای رانندگان شده است!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}نمای اضافه {COMMA}
@@ -947,15 +948,31 @@ STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}تمام
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}برای بازی کردن OpenTTD در حالت تمام صفحه این جعبه را انتخاب کنید
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}وضوح تصویر
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}وضوح تصویر دلخواه را انتخاب کنید
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}قالب ذخیره تصویر بازی
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}قالب ذخیره تصویر بازی را انتخاب نمایید
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بسته گرافیک پایه
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بسته گرافیک پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} فایل {P "" s} وجود ندارد یا خراب است
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}بسته صدای پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}بسته صدای پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}اطلاعات اضافه درباره بسته ی صدای پایه
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}بسته موسیقی پایه
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}بسته موسیقی پایه را انتخاب کنید
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} فایل {P "" s} خراب است
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}اطلاعات اضافه درباره بسته ی موسیقی پایه
 
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}حالت تمام صفحه با شکست مواجه شد
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}واحد پول دلخواه
 
 
 
@@ -1911,7 +1928,7 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}بازی
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}تصویر با موفقیت در {STRING} ذخیره شد
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصئیر ذخیره نشد
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصویر از بازی ذخیره نشد
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}پیام

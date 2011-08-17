@@ -357,6 +357,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름�
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :역 이름을 표시함
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :웨이포인트 이름을 표시함
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :팻말을 표시함
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :경쟁사의 팻말과 이름을 표시
 STR_SETTINGS_MENU_FULL_ANIMATION                                :완전한 애니메이션
 STR_SETTINGS_MENU_FULL_DETAIL                                   :아주 상세하게
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :건물 안 보이기
@@ -449,6 +450,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :확대된 스�
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :맵 전체 스크린샷
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계선 토글
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

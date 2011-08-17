@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Kontrolsteder vist
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skilte vist
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Modstander skilte og navne vist
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Fuld animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Fuld detalje
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gennemsigtige bygninger
@@ -448,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoomet skærmbi
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Kæmpe skærmbillede (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Tilpas grafikelement
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå afgrænsningsrammerne til/fra
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
