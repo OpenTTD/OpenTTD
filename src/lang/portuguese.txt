@@ -357,6 +357,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes d
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nomes de estações
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostrar nomes dos pontos de passagem
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar sinais
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar sinais e nomes dos oponentes
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Máximo de detalhes
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifícios transparentes
