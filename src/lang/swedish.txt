@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamn visas
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Riktmärken visas
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skyltar visas
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Motståndarnas skyltar och namn visas
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animering
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Full detaljnivå
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Genomskinliga byggnader
@@ -448,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Inzoomad skärm
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skärmdump av hela kartan
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Justering av spriteobjekt
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå av/på yttre gränser för grafiska element
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2304,9 +2306,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal städer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snölinjens höjd:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snölinjens höjd ett upp
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snölinjens höjd ett ner
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snögränsens höjd:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snögränsens höjd ett upp
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett ner
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Slumpnummer:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klicka för att mata in ett slump-nummer
 STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
@@ -2337,7 +2339,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storlek:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Mata in ett slumpmässigt frö
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ändra snölinjens höjd
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ändra snögränsens höjd
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ändra Startår
 
 # SE Map generation
@@ -2619,7 +2621,7 @@ STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Lokal v�
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Hemskt Dålig
+STR_CARGO_RATING_APPALLING                                      :Hemskt dålig
 STR_CARGO_RATING_VERY_POOR                                      :Väldigt dålig
 STR_CARGO_RATING_POOR                                           :Dålig
 STR_CARGO_RATING_MEDIOCRE                                       :Medelmåttig
@@ -3523,7 +3525,9 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan bara byggas i städer
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan bara byggas i låglandsområden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan bara placeras nära kartans kant
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bara planteras ovanför snölinjen
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bara planteras ovanför snögränsen
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kan endast byggas ovanför snögränsen
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kan endast byggas nedanför snögränsen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan inte bygga järnvägsstation här...
@@ -3645,6 +3649,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan inte
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan inte placera flod här...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... måste byggas på vatten
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan inte bygga på vatten
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... kan inte bygga på öppet vatten
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kan inte bygga på kanal
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... kan inte bygga på flod
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Måste först ta bort kanalen
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan inte bygga akvedukt här...
 

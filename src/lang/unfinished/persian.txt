@@ -844,6 +844,7 @@ STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال شامل ۵۰ درصد اضافه می گردد!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال دوبرابر پرداخت میشود!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK} {STRING}برنده یارانه خدمات گردید!{}{}{STRING} دستمزد خدمات از {STRING} به {STRING} به مدت یک سال سه برابر پرداخت می شود!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}یارانه خدمات به {STRING}هدیه داده شد!{}{}{STRING} خدمات ترابری از {STRING} به {STRING} تا یک سال آینده چهار برابر پرداخت خواهد شد!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}ترافیک شدید در {TOWN}!{}{}هزینه روکش کردن آسفالت توسط {STRING} پرداخت گردیده و باعث 6 ماه بدبختی و دردسر برای رانندگان شده است!
 
@@ -973,10 +974,28 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}حالت
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}واحد پول دلخواه
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}نرخ ارز: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}کم کردن ارزش واحد پول در ازای یک پوند (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}زیاد کردن ارزش واحد پول در ازای یک پوند (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}نرخ ارز واحد پول را در ازای یک پوند تنظیم کنید (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}جدا کننده: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}حرف جداکننده را انتخاب کنید
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}پیشوند: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}پیشوند واحد پولتان را انتخاب کنید
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}پسوند: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}پسوند واحد پولتان انتخاب کنید
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}تبدیل به یورو: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}تبدیل به یورو: {ORANGE}هیچگاه
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}سال برای تبدیل شدن به یورو را انتخاب کنید
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}زودتر به یورو تبدیل شود
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}دیرتر به یورو تبدیل شود
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}پیشنما: {ORANGE}{CURRENCY}
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}۱۰۰۰۰ پوند (£) به واحد پول شما می شود
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}تغییر دلخواه پارامترهای واحد پول
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}سطح سختی
@@ -988,30 +1007,91 @@ STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}سخت
 STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}انتخابی
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}نمایش لیست بالاترین امتیاز
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}ذخیره
 
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}تعداد شهر ها: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}تعداد کارخانه ها: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}میزان سود نخست: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}هزینه نگهداری خودروها: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}سرعت ساخت رقیبان: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}خرابی های خودرو: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}مضرب یارانه: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}هزینه ساخت: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}پستی و بلندی ها: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}تعداد دریا/دریاچه ها: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}اقتصاد: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}تغییر جهت قطار: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}بلایا: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}نگرش شورای شهر نسبت به بازسازی منطقه: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :هیچکدام
 STR_FUNDING_ONLY                                                :فقط سرمایه گذاری
 STR_MINIMAL                                                     :کمینه
+STR_NUM_VERY_LOW                                                :خیلی کم
+STR_NUM_LOW                                                     :کم
+STR_NUM_NORMAL                                                  :عادی
+STR_NUM_HIGH                                                    :زیاد
 STR_NUM_CUSTOM                                                  :انتخابی
+STR_NUM_CUSTOM_NUMBER                                           :دلخواه ({NUM})
 
+STR_VARIETY_NONE                                                :هیچکدام
+STR_VARIETY_VERY_LOW                                            :خیلی کم
+STR_VARIETY_LOW                                                 :کم
+STR_VARIETY_MEDIUM                                              :متوسط
+STR_VARIETY_HIGH                                                :زیاد
+STR_VARIETY_VERY_HIGH                                           :بسیار زیاد
 
+STR_AI_SPEED_VERY_SLOW                                          :بسیار آهسته
+STR_AI_SPEED_SLOW                                               :آهسته
+STR_AI_SPEED_MEDIUM                                             :متوسط
+STR_AI_SPEED_FAST                                               :سریع
+STR_AI_SPEED_VERY_FAST                                          :بسیار سریع
 
+STR_SEA_LEVEL_VERY_LOW                                          :خیلی کم
+STR_SEA_LEVEL_LOW                                               :کم
+STR_SEA_LEVEL_MEDIUM                                            :متوسط
+STR_SEA_LEVEL_HIGH                                              :زیاد
+STR_SEA_LEVEL_CUSTOM                                            :دلخواه
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :دلخواه ({NUM}%)
 
+STR_DISASTER_NONE                                               :هیچکدام
+STR_DISASTER_REDUCED                                            :کم
+STR_DISASTER_NORMAL                                             :عادی
 
+STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X2                                                  :x2
+STR_SUBSIDY_X3                                                  :x3
+STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :بسیار یکدست
+STR_TERRAIN_TYPE_FLAT                                           :یکدست
+STR_TERRAIN_TYPE_HILLY                                          :تپه مانند
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :کوه مانند
 
+STR_ECONOMY_STEADY                                              :استوار
+STR_ECONOMY_FLUCTUATING                                         :همراه با نوسان
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :پایان خط و در ایستگاه ها
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :فقط در پایان خط
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :آسان گیر
+STR_CITY_APPROVAL_TOLERANT                                      :سخت گیر
+STR_CITY_APPROVAL_HOSTILE                                       :دشمنانه
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ بسته هوش مصنوعی موجود نیست...{}شما می توانید چندین بسته هوش مصنوعی(AI) را از قسمت محتویات برخط بارگیری کنید
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}این کار سبب شد که میزان سختی بازی به دلخواه تغییر کند
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}تنظیمات پیشرفته
 
+STR_CONFIG_SETTING_OFF                                          :خاموش
+STR_CONFIG_SETTING_ON                                           :روشن
+STR_CONFIG_SETTING_DISABLED                                     :غیر فعال
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :خاموش
 STR_CONFIG_SETTING_COMPANIES_OWN                                :شرکت من
@@ -1025,15 +1105,140 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :چپ
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :مرکز
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :راست
 
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}اجازه ساخت در دامنه ها و سواحل: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره (شیب خودکار): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}واقع بینانه تر شدن اندازه حوضه آبریز: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}اجازه برای داشتن قابلیت بیشتر ازبین بردن راه ها،پلها و تونل های شهر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}بیشترین اندازه یک قطار: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}مقدار دود/جرقه های خودرو : {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}روش سرعت گرفتن قطار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}روش سرعت گرفتن خودرو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}میزان کم شدن سرعت قطار در شیب ها {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}میزان کم شدن سرعت خودروهای جاده ای در شیب ها {ORANGE}{STRING}%
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}غیر قابل پیچیدن سر پیچ های ۹۰° برای قطار و کشتی ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}قابلیت اتصال ایستگاه هایی که مستقیما به هم وصل نیستند: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}استفاده از الگوریتم بهبود یافته برای بارگذاری : {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}بارگیری وسایل نقلیه به تدریج: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}تورم: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}بار را فقط زمانی به ایستگاه تحویل بده که درخواستی برای آن باشد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}بیشترین اندازه پل: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}بیشترین اندازه تونل: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}روش ساخت و ساز اولیه صنعت توسط کاربر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :هیچکدام
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :همانند دیگر صنایع
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :رونق گرفتن
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}تعداد قطعه بدون پستی و بلندی دور صنایع: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}قابلیت به وجود آمدین جندین صنایع شبیه به هم به ازای هر شهر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}نشانه ها در راستای جهت رانندگی باشد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}نمایش پنجره مالی در پایان سال: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}برنامه های حرکت به طور پیش فرض «بدون توقف» باشند: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}توقف قطار ها به طور پیش فرض در: {ORANGE}{STRING}{LTBLUE} ایستگاه
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ابتدا
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :میانه
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :انتها
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}جاده صف‌بندی خودروی جاده‌ای (با اثرات کوانتومی): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}جابجا‌شدن نمایش هنگام نزدیک شدن نشانگر موس به لبه ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}قابلیت رشوه دادن به مقامات محلی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}قابلیت انحصاری کردن حقوق حمل و نقل: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}قابلیت بازسازی خیابان‌های شهر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}قابلیت فرستادن پول به بقیه شرکت‌ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}مضرب برای بار قطار تا حس قطار سنگین به وجود آید: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}فاکتور سرعت هواپیما: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}تعداد سوانح هوایی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :هیچکدام
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کم
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :عادی
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}اجازه رانندگی در خیابان‌های شهر{ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}اجازه استفاده از جاده یک بازیکن توسط دیگر رقیبان: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}قابلیت ساخت ایستگاه‌های متصل به هم: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}قابلیت استفاده از چندین بسته NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغییر دادن این تنظیم هنگامی که خودرو وجود دارد ممکن نیست
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}فرودگاه‌ها هیچ‌گاه از کار نیافتند: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}اعلام هشدار هنگام گم شدن وسیله نقلیه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}بازبینی برنامه حرکت وسایل نقلیه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :خیر
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :بله، ولی به غیر از خودروهای ایستاده
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :از همه خودرو‌ها
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}هشدار هنگام منفی بودن درآمد خودرو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}وسایل نقلیه هیچگاه از بین نروند: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}نوکردن خودکار وسایل نقلیه کهنه شده: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}نوکردن وسایل نقلیه {ORANGE}{STRING}{LTBLUE} ماه{P 0:1 "" s} قبل/بعد از بیشترین سن مجاز خودرو
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}کمترین اندازه پول برای نو کردن وسایل نقلیه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}مدت زمان نمایش پیغام خطا: {ORANGE}{STRING} ثانیه{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}نمایش متن کمکی: {ORANGE}بعد از {STRING} ثانیه صبر{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}نمایش متن کمکی: {ORANGE}کلیک راست
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}نمایش جمعیت شهر در عنوان شهر: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}طراح زمین: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :پیدایش زمین
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}بیشترین فاصله از لبه نقشه برای پالایشگاه‌ها: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}ارتفاع خط برف: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}پستی و بلندی های شدید (فقط در حالت «پیدایش زمین») : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بسیار هموار
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :هموار
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :ناهموار
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :بسیار ناهموار
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}الگوریتم قرار دهنده مکان درخت‌ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :هیچکدام
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :اصلی
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بهبودیافته
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}جهت چرخش نقشه بلندی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :پادساعت‌گرد
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ساعت‌گرد
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}سطح ارتفاعی که نقشه‌ی سناریو می‌تواند داشته باشد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}فعال کردن محوطه سازی با قطعه‌ها در مرزهای نقشه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}یک یا چند قطعه در لبه شمالی که خالی نیست
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}یک یا چند قطعه در لبه شمالی که آب نیست
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}بیشترین گستردگی ایستگاه: {ORANGE}{STRING} قطعه{P 0:1 "" s} {RED}هشدار:مقدارهای بالا از سرعت بازی می‌کاهد
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}تعمیر و بازبینی بالگردها در فرودگاه به طور خودکار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}وصل بودن نوار ابزار محوطه سازی به نوار ابزار وسایل نقلیه‌ی ریلی/جاده‌ای/آبی/هوایی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}رنگ استفاده شده به عنوان زمین در نقشه کوچک: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :سبز
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :سبز تیره
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفش
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}برعکس کردن جهت حرکت کردن صفحه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}تصویر صاف در نمای اضافه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}نمایش متن کمکی وقتی از چندین ابزار استفاده می شود: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}نمایش دخل و خرج شرکت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :هیچکدام
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :شرکت خود
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :همه شرکت‌ها
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}چت با تیم با دکمه «Enter»: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}عمل غلطک ماوس: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :بزرگنمایی نقشه
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :جابجا کردن نقشه
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :خاموش
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}سرعت حرکت نقشه با چرخاندن غلطک ماوس: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}شبیه سازی کلیک راست: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :دستور+کلیک
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :کنترل+کلیک
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :خاموش
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}حرکت در نقشه با کلیک چپ:: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}از این {ORANGE}{STRING}{LTBLUE} برای نام فایل‌های ذخیره استفاده کن
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طولانی (31st Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :کوتاه(31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}پالت پیش فرض برای NewGRF هایی که پالتی برایشان مشخص نگردیده: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :پالت سیستم عامل داس
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :پالت ویندوز
 
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}توقف خودکار هنگام آغاز بازی جدید: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}قابلیت ها در زمان متوقف بودن بازی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :هیچ کار
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :همه کارها غیر از ساخت و ساز
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :همه کارها به جز تغییر پستی/بلندی زمین
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :همه کارها
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}اسنفاده از لیست پیشرفته خودرو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}استفاده از نشانه‌های بارگیری/بارگذاری: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}استفاده از تیک(هزارم ثانیه) به جای روز در برنامه ساعتی: {ORANGE}{STRING}
 
 
 
@@ -1169,7 +1374,7 @@ STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}برای
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}انتخاب تمامی موارد
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}علامت گذاری تمامی موارد را برای دانلود
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}انتخاب موارد ارتقاع
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} علامت گذاری برای دانلود ِ تمام مواردی که برای ارتقاع محتوی موجود لازم می باشد
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} نشانه گذاری همه مواردی که برای بهبود محتوای موجود باید بارگیری شوند
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}پاک کردن تمام انتخاب ها
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}علامت گذاری تمامی موارد را برای عدم دانلود
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}برچسب/پایش بر اساس نام
@@ -1235,7 +1440,7 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :ساخت مون
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :ساخت ریل مغناطیسی
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ساخت راه آهن. گرفتن دکمه Ctrl وضیعیت ابزار را به صورت ساخت/حذف در می آورد. دکمه Shift برآورد هزینه را نمایش می دهد
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} سات ایستگاه قطار. گرفتن Ctrl ایستگاه ها را به یکدیگر متصل می کند.دکمه Shift برآورد هزینه ساخت را نمایش می دهد
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} ساخت ایستگاه قطار. گرفتن Ctrl ایستگاه ها را به یکدیگر متصل می کند.دکمه Shift برآورد هزینه ساخت را نمایش می دهد
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}ساخت چراغ راهنمایی راه آهن
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK} ساخت پل راه آهن.دکمه Shift برآورد قيمت را نشان مي دهد.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK} ساخت تونل راه آهن.دکمه Shift برآورد قیمت را نشان می دهد.
@@ -2125,21 +2330,27 @@ STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}نمی �
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی شود دستور را حذف کرد
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این دستور تغییر نمی کند...
 
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}نمی توان برنامه حرکت را کپی کرد...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است...
 
 # Timetable related errors
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}وسایل نقلیه فقط در ایستگاه می توانند منتظر بمانند
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}این وسیله نقلیه در این ایستگاه توقف نمی کند
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}تعداد لامات بسیار زیاد شده
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}اینجا نمی شود علامت ساخت
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}نمی شود اسم علامت را عوض کرد
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}نشانه را نمی توان پاک کرد...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :یک بازی شبیه سازی بر اساس Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :ساختمان اداری بلند
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :ساختمان اداری
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :آپارتمان کوچک
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :کلیسا
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :ساختمان اداری بزرگ
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :خانه های شهر
@@ -2156,16 +2367,20 @@ STR_TOWN_BUILDING_NAME_STADIUM_1                                :ورزشگاه
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :خانه قدیمی
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :کلبه ها
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :خانه ها
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :آپارتمان
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :ساختمان اداری بلند
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :فروشگاه ها و ادارات
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :فروشگاه ها و ادارات
+STR_TOWN_BUILDING_NAME_THEATER_1                                :تئاتر
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :ورزشگاه
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :ادارات
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :خانه ها
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :سینما
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :مرکز خرید
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :ایگلو
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :خیمه ها
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :خانه-قوری
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :بانک خوکی
 
 ##id 0x4800
 # industry names
@@ -2182,12 +2397,14 @@ STR_INDUSTRY_NAME_FARM                                          :مزرعه
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :معدن سنگ مس
 STR_INDUSTRY_NAME_OIL_WELLS                                     :چاه نفت
 STR_INDUSTRY_NAME_BANK                                          :بانک
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :کارخانه فرآوری موادغذایی
 STR_INDUSTRY_NAME_PAPER_MILL                                    :کاغذ سازی
 STR_INDUSTRY_NAME_GOLD_MINE                                     :معدن طلا
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :بانک
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :معدن الماس
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :معدن سنگ آهن
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :باغ میوه
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :مزرعه لاستیک
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :منبع آب
 STR_INDUSTRY_NAME_WATER_TOWER                                   :برج آب
 STR_INDUSTRY_NAME_FACTORY_2                                     :کارخانه
@@ -2202,11 +2419,16 @@ STR_INDUSTRY_NAME_TOY_FACTORY                                   :کارخانه 
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :چشمه ی پلاستک
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :کارخانه نوشابه گاز دار
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :مولد حباب
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :معدن تافی
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :معدن شکر
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :بی نام
+STR_SV_TRAIN_NAME                                               :قطار {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :خودرو جاده ای {COMMA}
 STR_SV_SHIP_NAME                                                :کشتی {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :هواپیما {COMMA}
 

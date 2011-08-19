@@ -950,7 +950,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anders
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Anders
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshotformaat
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecteer het bestandsformaat van screenshots
@@ -3455,7 +3455,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landhell
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan dit niet uitvoeren...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebouw moet eerst gesloopt worden
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan dit gebied niet ontruimen...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lokatie ongeschikt
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... locatie ongeschikt
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... reeds gebouwd
 STR_ERROR_OWNED_BY                                              :{WHITE}... is eigendom van {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is van ander bedrijf
