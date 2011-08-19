@@ -209,7 +209,8 @@ public:
 
 	/**
 	 * Find out if this tile is within the rating influence of a town.
-	 *  Stations on this tile influence the rating of the town.
+	 *  If a station sign would be on this tile, the servicing quality of the station would
+	 *  influence the rating of the town.
 	 * @param town_id The town to check.
 	 * @param tile The tile to check.
 	 * @pre IsValidTown(town_id).

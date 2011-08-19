@@ -117,7 +117,8 @@ public:
 
 	/**
 	 * Find out if this station is within the rating influence of a town.
-	 *  Stations within the radius influence the rating of the town.
+	 *  The service quality of stations with signs within this radius
+	 *  influences the rating of the town.
 	 * @param station_id The station to check.
 	 * @param town_id The town to check.
 	 * @return True if the tile is within the rating influence of the town.
