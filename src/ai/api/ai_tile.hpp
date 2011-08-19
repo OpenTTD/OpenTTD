@@ -450,6 +450,13 @@ public:
 	static bool IsWithinTownInfluence(TileIndex tile, TownID town_id);
 
 	/**
+	 * Find the town which has authority for the tile.
+	 *  The rating of your company in this town will be checked and affected when
+	 *  building stations, trees etc.
+	 */
+	static TownID GetTownAuthority(TileIndex tile);
+
+	/**
 	 * Find the town that is closest to a tile. Stations you build at this tile
 	 *  will belong to this town.
 	 * @param tile The tile to check.

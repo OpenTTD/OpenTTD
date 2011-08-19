@@ -26,6 +26,7 @@
  * \li AICompany::GetQuarterlyCargoDelivered
  * \li AICompany::GetQuarterlyPerformanceRating
  * \li AICompany::GetQuarterlyCompanyValue
+ * \li AITown::GetTownAuthority
  *
  * API removals:
  * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.

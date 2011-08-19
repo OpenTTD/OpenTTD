@@ -268,6 +268,13 @@
 	return AITown::IsWithinTownInfluence(town_id, tile);
 }
 
+/* static */ TownID AITile::GetTownAuthority(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+
+	return ::ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority)->index;
+}
+
 /* static */ TownID AITile::GetClosestTown(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return INVALID_TOWN;

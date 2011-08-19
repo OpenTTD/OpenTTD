@@ -125,6 +125,7 @@ void SQAITile_Register(Squirrel *engine)
 	SQAITile.DefSQStaticMethod(engine, &AITile::PlantTree,                  "PlantTree",                  2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::PlantTreeRectangle,         "PlantTreeRectangle",         4, ".iii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &AITile::GetTownAuthority,           "GetTownAuthority",           2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetClosestTown,             "GetClosestTown",             2, ".i");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetBuildCost,               "GetBuildCost",               2, ".i");
 
