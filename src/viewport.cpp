@@ -1833,6 +1833,9 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 		/* Don't check if the display options are disabled */
 		if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) continue;
 
+		/* Don't check if competitor signs are not shown and the sign isn't owned by the local company */
+		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != st->owner && st->owner != OWNER_NONE) continue;
+
 		if (CheckClickOnViewportSign(vp, x, y, &st->sign)) {
 			if (is_station) {
 				ShowStationViewWindow(st->index);
@@ -1854,6 +1857,9 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 
 	const Sign *si;
 	FOR_ALL_SIGNS(si) {
+		/* If competitor signs are hidden, don't check signs that aren't owned by local company */
+		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != si->owner) continue;
+
 		if (CheckClickOnViewportSign(vp, x, y, &si->sign)) {
 			HandleClickOnSign(si);
 			return true;
