@@ -989,9 +989,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				this->avail_sel = NULL;
 				this->avail_pos = -1;
 				this->avails.ForceRebuild();
-				this->InvalidateData(GOID_NEWGRF_RESCANNED);
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
-				InvalidateWindowClassesData(WC_SAVELOAD);
 				break;
 		}
 	}

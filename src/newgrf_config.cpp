@@ -605,33 +605,37 @@ void ScanNewGRFFiles()
 	uint num = GRFFileScanner::DoScan();
 
 	DEBUG(grf, 1, "Scan complete, found %d files", num);
-	if (num == 0 || _all_grfs == NULL) return;
+	if (num != 0 && _all_grfs != NULL) {
+		/* Sort the linked list using quicksort.
+		* For that we first have to make an array, then sort and
+		* then remake the linked list. */
+		GRFConfig **to_sort = MallocT<GRFConfig*>(num);
 
-	/* Sort the linked list using quicksort.
-	 * For that we first have to make an array, then sort and
-	 * then remake the linked list. */
-	GRFConfig **to_sort = MallocT<GRFConfig*>(num);
+		uint i = 0;
+		for (GRFConfig *p = _all_grfs; p != NULL; p = p->next, i++) {
+			to_sort[i] = p;
+		}
+		/* Number of files is not necessarily right */
+		num = i;
 
-	uint i = 0;
-	for (GRFConfig *p = _all_grfs; p != NULL; p = p->next, i++) {
-		to_sort[i] = p;
-	}
-	/* Number of files is not necessarily right */
-	num = i;
+		QSortT(to_sort, num, &GRFSorter);
 
-	QSortT(to_sort, num, &GRFSorter);
+		for (i = 1; i < num; i++) {
+			to_sort[i - 1]->next = to_sort[i];
+		}
+		to_sort[num - 1]->next = NULL;
+		_all_grfs = to_sort[0];
 
-	for (i = 1; i < num; i++) {
-		to_sort[i - 1]->next = to_sort[i];
-	}
-	to_sort[num - 1]->next = NULL;
-	_all_grfs = to_sort[0];
-
-	free(to_sort);
+		free(to_sort);
 
 #ifdef ENABLE_NETWORK
-	NetworkAfterNewGRFScan();
+		NetworkAfterNewGRFScan();
 #endif
+	}
+
+	/* Yes... these are the NewGRF windows */
+	InvalidateWindowClassesData(WC_SAVELOAD);
+	InvalidateWindowData(WC_GAME_OPTIONS, 0, GOID_NEWGRF_RESCANNED);
 }
 
 

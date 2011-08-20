@@ -115,9 +115,6 @@ public:
 
 				case CONTENT_TYPE_NEWGRF:
 					ScanNewGRFFiles();
-					/* Yes... these are the NewGRF windows */
-					InvalidateWindowClassesData(WC_SAVELOAD);
-					InvalidateWindowData(WC_GAME_OPTIONS, 0, GOID_NEWGRF_RESCANNED);
 					break;
 
 				case CONTENT_TYPE_SCENARIO:
