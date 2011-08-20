@@ -92,6 +92,7 @@ enum GenerateLandscapeWindowWidgets {
 
 	GLAND_TERRAIN_PULLDOWN,    ///< Dropdown 'Terrain type'
 	GLAND_WATER_PULLDOWN,      ///< Dropdown 'Sea level'
+	GLAND_RIVER_PULLDOWN,      ///< Dropdown 'Rivers'
 	GLAND_SMOOTHNESS_PULLDOWN, ///< Dropdown 'Smoothness'
 	GLAND_VARIETY_PULLDOWN,    ///< Dropdown 'Variety distribution'
 
@@ -181,6 +182,10 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 				NWidget(WWT_TEXTBTN, COLOUR_ORANGE, GLAND_RANDOM_BUTTON), SetDataTip(STR_MAPGEN_RANDOM, STR_MAPGEN_RANDOM_HELP), SetFill(1, 0),
+				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
+					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_RIVER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
+				EndContainer(),
 				NWidget(NWID_SPACER), SetFill(1, 1),
 				NWidget(WWT_TEXTBTN, COLOUR_GREEN, GLAND_GENERATE_BUTTON), SetMinimalSize(84, 30), SetDataTip(STR_MAPGEN_GENERATE, STR_NULL), SetFill(1, 0),
 			EndContainer(),
@@ -331,6 +336,7 @@ static DropDownList *BuildMapsizeDropDown()
 
 static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, INVALID_STRING_ID};
 static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM, INVALID_STRING_ID};
+static const StringID _rivers[]      = {STR_RIVERS_NONE, STR_RIVERS_FEW, STR_RIVERS_MODERATE, STR_RIVERS_LOT, INVALID_STRING_ID};
 static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
 static const StringID _tree_placer[] = {STR_CONFIG_SETTING_TREE_PLACER_NONE, STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL, STR_CONFIG_SETTING_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
 static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
@@ -404,6 +410,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				}
 				break;
 
+			case GLAND_RIVER_PULLDOWN:      SetDParam(0, _rivers[_settings_newgame.game_creation.amount_of_rivers]); break;
 			case GLAND_SMOOTHNESS_PULLDOWN: SetDParam(0, _smoothness[_settings_newgame.game_creation.tgen_smoothness]); break;
 			case GLAND_VARIETY_PULLDOWN:    SetDParam(0, _variety[_settings_newgame.game_creation.variety]); break;
 			case GLAND_BORDERS_RANDOM:      SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL); break;
@@ -517,6 +524,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				*size = GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
 				break;
 
+			case GLAND_RIVER_PULLDOWN:      strs = _rivers; break;
 			case GLAND_SMOOTHNESS_PULLDOWN: strs = _smoothness; break;
 			case GLAND_VARIETY_PULLDOWN:    strs = _variety; break;
 			case GLAND_HEIGHTMAP_ROTATION_PULLDOWN: strs = _rotation; break;
@@ -691,6 +699,10 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 			}
 
+			case GLAND_RIVER_PULLDOWN: // Amount of rivers
+				ShowDropDownMenu(this, _rivers, _settings_newgame.game_creation.amount_of_rivers, GLAND_RIVER_PULLDOWN, 0, 0);
+				break;
+
 			case GLAND_SMOOTHNESS_PULLDOWN: // Map smoothness
 				ShowDropDownMenu(this, _smoothness, _settings_newgame.game_creation.tgen_smoothness, GLAND_SMOOTHNESS_PULLDOWN, 0, 0);
 				break;
@@ -761,6 +773,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_MAPSIZE_X_PULLDOWN:     _settings_newgame.game_creation.map_x = index; break;
 			case GLAND_MAPSIZE_Y_PULLDOWN:     _settings_newgame.game_creation.map_y = index; break;
 			case GLAND_TREE_PULLDOWN:          _settings_newgame.game_creation.tree_placer = index; break;
+			case GLAND_RIVER_PULLDOWN:         _settings_newgame.game_creation.amount_of_rivers = index; break;
 			case GLAND_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 			case GLAND_VARIETY_PULLDOWN:       _settings_newgame.game_creation.variety = index; break;
 			case GLAND_LANDSCAPE_PULLDOWN:     _settings_newgame.game_creation.land_generator = index; break;

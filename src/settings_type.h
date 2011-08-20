@@ -219,6 +219,9 @@ struct GameCreationSettings {
 	uint16 custom_town_number;               ///< manually entered number of towns
 	byte   variety;                          ///< variety level applied to TGP
 	byte   custom_sea_level;                 ///< manually entered percentage of water in the map
+	byte   min_river_length;                 ///< the minimum river length
+	byte   river_route_random;               ///< the amount of randomicity for the route finding
+	byte   amount_of_rivers;                 ///< the amount of rivers
 };
 
 /** Settings related to construction in-game */
