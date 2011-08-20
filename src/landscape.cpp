@@ -1167,9 +1167,12 @@ static void CreateRivers()
 	int amount = _settings_game.game_creation.amount_of_rivers;
 	if (amount == 0) return;
 
+	uint wells = ScaleByMapSize(4 << _settings_game.game_creation.amount_of_rivers);
+	SetGeneratingWorldProgress(GWP_RIVER, wells);
 	bool *marks = CallocT<bool>(MapSize());
 
-	for (uint wells = ScaleByMapSize(4 << _settings_game.game_creation.amount_of_rivers); wells != 0; wells--) {
+	for (; wells != 0; wells--) {
+		IncreaseGeneratingWorldProgress(GWP_RIVER);
 		for (int tries = 0; tries < 128; tries++) {
 			TileIndex t = RandomTile();
 			if (!CircularTileSearch(&t, 8, FindSpring, NULL)) continue;

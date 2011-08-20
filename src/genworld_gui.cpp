@@ -411,6 +411,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 
 			case GLAND_RIVER_PULLDOWN:      SetDParam(0, _rivers[_settings_newgame.game_creation.amount_of_rivers]); break;
+			case GLAND_RIVER_PULLDOWN:      SetDParam(0, _rivers[_settings_newgame.game_creation.amount_of_rivers]); break;
 			case GLAND_SMOOTHNESS_PULLDOWN: SetDParam(0, _smoothness[_settings_newgame.game_creation.tgen_smoothness]); break;
 			case GLAND_VARIETY_PULLDOWN:    SetDParam(0, _variety[_settings_newgame.game_creation.variety]); break;
 			case GLAND_BORDERS_RANDOM:      SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL); break;
@@ -1233,6 +1234,7 @@ static GenWorldStatus _gws;
 static const StringID _generation_class_table[]  = {
 	STR_GENERATION_WORLD_GENERATION,
 	STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION,
+	STR_GENERATION_RIVER_GENERATION,
 	STR_GENERATION_CLEARING_TILES,
 	STR_SCENEDIT_TOOLBAR_TOWN_GENERATION,
 	STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION,
@@ -1343,8 +1345,8 @@ void ShowGenerateWorldProgress()
 
 static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uint total)
 {
-	static const int percent_table[GWP_CLASS_COUNT + 1] = {0, 5, 15, 20, 40, 60, 65, 80, 85, 99, 100 };
-
+	static const int percent_table[] = {0, 5, 14, 17, 20, 40, 60, 65, 80, 85, 99, 100 };
+	assert_compile(lengthof(percent_table) == GWP_CLASS_COUNT + 1);
 	assert(cls < GWP_CLASS_COUNT);
 
 	/* Do not run this function if we aren't in a thread */

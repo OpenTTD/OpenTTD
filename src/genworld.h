@@ -59,6 +59,7 @@ struct GenWorldInfo {
 enum GenWorldProgress {
 	GWP_MAP_INIT,    ///< Initialize/allocate the map, start economy
 	GWP_LANDSCAPE,   ///< Create the landscape
+	GWP_RIVER,       ///< Create the rivers
 	GWP_ROUGH_ROCKY, ///< Make rough and rocky areas
 	GWP_TOWN,        ///< Generate towns
 	GWP_INDUSTRY,    ///< Generate industries
