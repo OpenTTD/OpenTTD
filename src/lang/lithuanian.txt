@@ -1243,7 +1243,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatiskai atnaujinti tr. pr. kai bus {ORANGE}{STRING}{LTBLUE} menes{P io ių ių} iki/po maks. amžiaus
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimali suma reikalinga automatiniam atnaujinimui: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Klaidos pranešimų rodymo trukmė: {ORANGE}{STRING} sekund{P ė ės žių}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Rodyti paaiškinimus: {ORANGE}Užvedus {STRING} sekundėms {P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Rodyti paaiškinimus: {ORANGE}Užvedus {STRING} sekund{P 0:1 ė ės žių}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Rodyti paaiškinimus: {ORANGE}Dešinio pelės klavišo paspaudimas
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rodyti miestų gyventojų skaičių šalia pavadinimo: {ORANGE}{STRING}
 
