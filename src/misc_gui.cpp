@@ -437,6 +437,7 @@ static const char * const _credits[] = {
 	"  L. Peter Deutsch - MD5 implementation \xC2\xA9 1999, 2000, 2002",
 	"  Michael Blunck - Pre-Signals and Semaphores \xC2\xA9 2003",
 	"  George - Canal/Lock graphics \xC2\xA9 2003-2004",
+	"  Andrew Parkhouse - River graphics",
 	"  David Dallaston - Tram tracks",
 	"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
 	"  All Translators - Who made OpenTTD a truly international game",

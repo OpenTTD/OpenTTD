@@ -42,8 +42,8 @@ NFORENUM := $(shell [ `nforenum -s -v 2>/dev/null | wc -l ` -eq 1 ] && echo "nfo
 MD5SUM   := $(shell [ "$(OS)" = "OSX" ] && echo "md5 -r" || echo "md5sum")
 
 # Some "should not be changed" settings.
-NFO_FILES    := $(GRF_DIR)/*.nfo
-PNG_FILES    := $(GRF_DIR)/*.png
+NFO_FILES    := $(GRF_DIR)/*.nfo $(GRF_DIR)/rivers/*.nfo
+PNG_FILES    := $(GRF_DIR)/*.png $(GRF_DIR)/rivers/*.png
 
 # Build the GRF.
 all: $(BIN_DIR)/openttd.grf
