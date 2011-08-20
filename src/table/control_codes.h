@@ -129,6 +129,8 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_WORD_HEX,                        ///< Read 2 bytes from the stack and print it as hex
 	SCC_NEWGRF_PRINT_DWORD_HEX,                       ///< Read 4 bytes from the stack and print it as hex
 	SCC_NEWGRF_PRINT_QWORD_HEX,                       ///< Read 8 bytes from the stack and print it as hex
+	SCC_NEWGRF_PRINT_DWORD_DATE_LONG,                 ///< Read 4 bytes from the stack as base 0 date
+	SCC_NEWGRF_PRINT_DWORD_DATE_SHORT,                ///< Read 4 bytes from the stack as base 0 date
 	SCC_NEWGRF_PUSH_WORD,                             ///< Pushes 2 bytes onto the stack
 	SCC_NEWGRF_UNPRINT,                               ///< "Unprints" the given number of bytes from the string
 	SCC_NEWGRF_DISCARD_WORD,                          ///< Discard the next two bytes

@@ -567,6 +567,9 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 						}
 						break;
 
+					case 0x16:
+					case 0x17: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16); break;
+
 					default:
 						grfmsg(1, "missing handler for extended format code");
 						break;
@@ -1017,7 +1020,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_DWORD_SIGNED:     *argv = _newgrf_textrefstack.PopSignedDWord();   break;
 
 			case SCC_NEWGRF_PRINT_BYTE_HEX:         *argv = _newgrf_textrefstack.PopUnsignedByte();  break;
-			case SCC_NEWGRF_PRINT_DWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedDWord(); break;
 			case SCC_NEWGRF_PRINT_QWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedQWord(); break;
 
 			case SCC_NEWGRF_PRINT_WORD_HEX:
@@ -1026,6 +1028,10 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_WORD_WEIGHT:
 			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
+
+			case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
+			case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
+			case SCC_NEWGRF_PRINT_DWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedDWord(); break;
 
 			case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
 			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  *argv = _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
@@ -1064,9 +1070,11 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			return SCC_NEWGRF_PRINT_WORD_STRING_ID;
 
 		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
+		case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
 			return SCC_DATE_LONG;
 
 		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:
+		case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
 			return SCC_DATE_SHORT;
 
 		case SCC_NEWGRF_PRINT_WORD_SPEED:
