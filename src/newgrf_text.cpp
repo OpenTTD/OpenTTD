@@ -568,7 +568,8 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 						break;
 
 					case 0x16:
-					case 0x17: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16); break;
+					case 0x17:
+					case 0x18: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16); break;
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
@@ -1026,6 +1027,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
 			case SCC_NEWGRF_PRINT_WORD_VOLUME:
 			case SCC_NEWGRF_PRINT_WORD_WEIGHT:
+			case SCC_NEWGRF_PRINT_WORD_POWER:
 			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
 
@@ -1085,6 +1087,9 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT:
 			return SCC_WEIGHT;
+
+		case SCC_NEWGRF_PRINT_WORD_POWER:
+			return SCC_POWER;
 
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			return SCC_STATION_NAME;

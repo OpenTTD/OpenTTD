@@ -120,9 +120,9 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_WORD_STRING_ID,                  ///< Read 2 bytes from the stack as String ID
 	SCC_NEWGRF_PRINT_WORD_DATE_LONG,                  ///< Read 2 bytes from the stack as base 1920 date
 	SCC_NEWGRF_PRINT_WORD_DATE_SHORT,                 ///< Read 2 bytes from the stack as base 1920 date
-	SCC_NEWGRF_PRINT_WORD_SPEED,                      ///< Read 2 bytes from the stack as signed speed
-	SCC_NEWGRF_PRINT_WORD_VOLUME,                     ///< Read 2 bytes from the stack as signed volume
-	SCC_NEWGRF_PRINT_WORD_WEIGHT,                     ///< Read 2 bytes from the stack as signed weight
+	SCC_NEWGRF_PRINT_WORD_SPEED,                      ///< Read 2 bytes from the stack as unsigned speed
+	SCC_NEWGRF_PRINT_WORD_VOLUME,                     ///< Read 2 bytes from the stack as unsigned volume
+	SCC_NEWGRF_PRINT_WORD_WEIGHT,                     ///< Read 2 bytes from the stack as unsigned weight
 	SCC_NEWGRF_PRINT_WORD_STATION_NAME,               ///< Read 2 bytes from the stack as station name
 	SCC_NEWGRF_PRINT_QWORD_CURRENCY,                  ///< Read 8 bytes from the stack as currency
 	SCC_NEWGRF_PRINT_BYTE_HEX,                        ///< Read 1 byte from the stack and print it as hex
@@ -131,6 +131,7 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_QWORD_HEX,                       ///< Read 8 bytes from the stack and print it as hex
 	SCC_NEWGRF_PRINT_DWORD_DATE_LONG,                 ///< Read 4 bytes from the stack as base 0 date
 	SCC_NEWGRF_PRINT_DWORD_DATE_SHORT,                ///< Read 4 bytes from the stack as base 0 date
+	SCC_NEWGRF_PRINT_WORD_POWER,                      ///< Read 2 bytes from the stack as unsigned power
 	SCC_NEWGRF_PUSH_WORD,                             ///< Pushes 2 bytes onto the stack
 	SCC_NEWGRF_UNPRINT,                               ///< "Unprints" the given number of bytes from the string
 	SCC_NEWGRF_DISCARD_WORD,                          ///< Discard the next two bytes
