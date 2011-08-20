@@ -388,20 +388,7 @@ static const SpriteID SPR_WAYPOINT_X_1            = SPR_OPENTTD_BASE + 78;
 static const SpriteID SPR_WAYPOINT_X_2            = SPR_OPENTTD_BASE + 79;
 static const SpriteID SPR_WAYPOINT_Y_1            = SPR_OPENTTD_BASE + 80;
 static const SpriteID SPR_WAYPOINT_Y_2            = SPR_OPENTTD_BASE + 81;
-
-static const uint16 OFFSET_TILEH_IMPOSSIBLE     = 0;
-static const uint16 OFFSET_TILEH_1              = 14;
-static const uint16 OFFSET_TILEH_2              = 15;
-static const uint16 OFFSET_TILEH_3              = 22;
-static const uint16 OFFSET_TILEH_4              = 13;
-static const uint16 OFFSET_TILEH_6              = 21;
-static const uint16 OFFSET_TILEH_7              = 17;
-static const uint16 OFFSET_TILEH_8              = 12;
-static const uint16 OFFSET_TILEH_9              = 23;
-static const uint16 OFFSET_TILEH_11             = 18;
-static const uint16 OFFSET_TILEH_12             = 20;
-static const uint16 OFFSET_TILEH_13             = 19;
-static const uint16 OFFSET_TILEH_14             = 16;
+/* see _track_sloped_sprites in rail_cmd.cpp for slope offsets */
 
 /* Track fences */
 static const SpriteID SPR_TRACK_FENCE_FLAT_X    = 1301;
@@ -537,8 +524,10 @@ static const SpriteID SPR_BUOY                        = 4076; // XXX this sucks,
 /* Sprites for road */
 static const SpriteID SPR_ROAD_Y                  = 1332;
 static const SpriteID SPR_ROAD_X                  = 1333;
+static const SpriteID SPR_ROAD_SLOPE_START        = 1343;
 static const SpriteID SPR_ROAD_Y_SNOW             = 1351;
 static const SpriteID SPR_ROAD_X_SNOW             = 1352;
+/* see _road_sloped_sprites_offset in road_cmd.cpp for offsets for sloped road tiles */
 
 static const SpriteID SPR_EXCAVATION_X = 1414;
 static const SpriteID SPR_EXCAVATION_Y = 1415;

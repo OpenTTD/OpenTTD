@@ -1138,7 +1138,7 @@ static void DrawRoadBits(TileInfo *ti)
 
 		/* DrawFoundation() modifies ti.
 		 * Default sloped sprites.. */
-		if (ti->tileh != SLOPE_FLAT) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
+		if (ti->tileh != SLOPE_FLAT) image = _road_sloped_sprites[ti->tileh - 1] + SPR_ROAD_SLOPE_START;
 	}
 
 	if (image == 0) image = _road_tile_sprites_1[road != ROAD_NONE ? road : tram];
