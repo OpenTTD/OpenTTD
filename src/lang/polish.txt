@@ -735,6 +735,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie n
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Wyświetlanie nazw stacji
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wyświetlanie nazw pkt. orientacyjnych
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Wyświetlanie napisów
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Znaki konkurentów i nazwy są wyświetlane
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pełna animacja
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Wszystkie detale
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Przeźroczyste budynki
@@ -827,6 +828,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut powiększ
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Wł./wył. ramki
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1436,6 +1438,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Średni
 STR_SEA_LEVEL_HIGH                                              :Wysoki
 STR_SEA_LEVEL_CUSTOM                                            :Własny
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Własny ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Brak
 STR_DISASTER_REDUCED                                            :Zredukowane

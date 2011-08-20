@@ -1060,6 +1060,11 @@ STR_SEA_LEVEL_HIGH                                              :Élevé
 STR_SEA_LEVEL_CUSTOM                                            :Personnalisé
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personnalisé ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Aucune
+STR_RIVERS_FEW                                                  :Peu
+STR_RIVERS_MODERATE                                             :Modérée
+STR_RIVERS_LOT                                                  :Beaucoup
+
 STR_DISASTER_NONE                                               :Aucune
 STR_DISASTER_REDUCED                                            :Réduites
 STR_DISASTER_NORMAL                                             :Normales
@@ -2318,6 +2323,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Généra
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ajout des arbres{NBSP}:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Type de terrain{NBSP}:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Niveau de la mer{NBSP}:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivières{NBSP}:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lissage{NBSP}:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variété de distribution{NBSP}:
 STR_MAPGEN_GENERATE                                             :{WHITE}Créer
@@ -2362,6 +2368,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Voulez-
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% terminé
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Création du monde
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Création des rivières
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des non-déplacables
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Création des zones rugueuses et rocheuses

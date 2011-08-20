@@ -406,13 +406,14 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Kraštov
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Miesto įkūrimas
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Pramonės kūrimas
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Kelio tiesimas
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sodinti medžius
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sodinti medžius. Shift perjungia tarp statymo/kainos parodymo
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Statyti ženklą
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Statyti objektą
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Statyti objektą. Shift perjungia tarp statymo/kainos parodymo
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Išsaugoti scenarijų
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Įkelti scenarijų
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Išsaugoti aukščių žemėlapį
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Atverti aukščių žemėlapį
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Uždaryti redaktorių
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -430,6 +431,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rodyti miestų 
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Rodyti stotelių pavadinimus
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rodyti tarpines stoteles
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Rodyti ženklus
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rodomi konkurentų ženklai ir pavadinimai
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Visa animacija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Visos smulkmenos
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Permatomi pastatai
@@ -522,6 +524,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekrano nuotrauk
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Fotografuoti viso ekrano vaizdą
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Apie „OpenTTD“
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Animacinių objektų išdėstytuvas
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Rodyti/slėpti apvadus
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1131,6 +1134,7 @@ STR_SEA_LEVEL_HIGH                                              :Aukštas
 STR_SEA_LEVEL_CUSTOM                                            :Nurodytas
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Nurodytas ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Nėra
 STR_DISASTER_REDUCED                                            :Sumažintas
 STR_DISASTER_NORMAL                                             :Normalus
@@ -1182,6 +1186,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leisti 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Ilgiausi traukiniai: {ORANGE}{STRING} kvadratėl{P 0:1 is iai ių}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transporto priemonių dūmų / žiežirbų kiekis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Traukinių įsibėgėjimo nustatymas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Automobilių greitėjimo modelis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Atbrailų statumas traukiniams {ORANGE}{STRING}%
@@ -1238,6 +1243,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatiskai atnaujinti tr. pr. kai bus {ORANGE}{STRING}{LTBLUE} menes{P io ių ių} iki/po maks. amžiaus
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimali suma reikalinga automatiniam atnaujinimui: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Klaidos pranešimų rodymo trukmė: {ORANGE}{STRING} sekund{P ė ės žių}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Rodyti paaiškinimus: {ORANGE}Užvedus {STRING} sekundėms {P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Rodyti paaiškinimus: {ORANGE}Dešinio pelės klavišo paspaudimas
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rodyti miestų gyventojų skaičių šalia pavadinimo: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Sausumos kūrimas: {ORANGE}{STRING}
@@ -1300,6 +1307,10 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paletė
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paletė
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatinė pauzė paleidžiant naują žaidimą: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Kuomet pristabdytas, leisti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :jokių veiksmų
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visi ne statybiniai veiksmai
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visi, išskyrus landšafto, modifikavimo veiksmai
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visi pasirinkimai
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti pagerintą automobilių sąrašą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Naudotį krovimo indikatorius: {ORANGE}{STRING}
@@ -1499,6 +1510,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arktinis kl
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropinis klimatas
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :'Žaislinis' klimatas
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Pakeisti datą: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Pakeisti dabartinius metus
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leisti keisti produkcijos vertes: {ORANGE}{STRING}
 
 # Livery window
@@ -1754,6 +1766,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Gaunama 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Gaunama kompanijos informacija..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} vartotoj{P as ai ų} prieš tave
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} parsisiųsta iki šiol
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} parsiųsta
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atsijungti
@@ -1846,6 +1859,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilnas
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :siuntė per daug komandų
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Galimas ryšio praradimas
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1967,16 +1981,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifikuoto 
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Vienbėgio geležinkelio statyba
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :„Maglev“ statyba
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Statyti geležinkelio bėgius. Ctrl keičia tarp geležinkelio statymo/griovimo
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Statyti geležinkelio bėgius naudojant automatinį režimą. Ctrl keičia geležinkelio statymą/griovimą
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Statyti traukinių depą (traukinių pirkimui ir aptarnavimui)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Paversti bėgius į kontrolės punktą. Ctrl įjumgia kontrolės punktų jungimą
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Statyti geležinkelio stotį. Ctrl įjungia stočių jungimą
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Statyti geležinkelio šviesoforus. Ctrl keičia tarp semaforų/šviesoforų{} Vilkimas stato signalus palei tiesią begių liniją. Ctrl stato signalus iki sankryžos{}Ctrl+Paspaudimas keičia tarp signalų pasirinkimo lango atidarymo
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Statyti geležinkelio tiltą
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Statyti geležinkelio tunelį
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Statyti geležinkelio bėgius. Ctrl keičia tarp geležinkelio statymo/griovimo. Shift perjungia tarp statymo/kainos parodymo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Statyti geležinkelio bėgius naudojant automatinį režimą. Ctrl keičia geležinkelio statymą/griovimą. Shift perjungia tarp statymo/kainos parodymo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Statyti traukinių depą (traukinių pirkimui ir aptarnavimui). Shift perjungia tarp statymo/kainos parodymo
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Paversti bėgius į kontrolės punktą. Ctrl įjungia kontrolės punktų jungimą. Shift perjungia tarp statymo/kainos parodymo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Statyti geležinkelio stotį. Ctrl įjungia stočių jungimą. Shift perjungia tarp statymo/kainos parodymo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Statyti geležinkelio šviesoforus. Ctrl keičia tarp semaforų/šviesoforų{} Vilkimas stato signalus palei tiesią begių liniją. Ctrl stato signalus iki sankryžos{}Ctrl+Click keičia tarp signalų pasirinkimo lango atidarymo. Shift perjungia tarp statymo/kainos parodymo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Statyti geležinkelio tiltą. Shift perjungia tarp statymo/kainos parodymo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Statyti geležinkelio tunelį. Shift perjungia tarp statymo/kainos parodymo
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Keisti tarp bėgių, signalų, kontrolės punktų ir stočių statymo/griovimo.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pakeisti ar pagerinti bėgio tipą
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pakeisti ar pagerinti bėgio tipą. Shift perjungia tarp statymo/kainos parodymo
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Traukinių depo padėtis
@@ -2041,21 +2055,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Vamzdinis (sili
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Kelio tiesimas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvajaus konstrukcija
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tiesti kelią. Ctrl keičia tarp kelio statymo/griovimo
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Statyti tramvajaus liniją. Ctrl keičia tarp statymo/griovimo
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Statyti kelio sekciją naudojantis automatine sistema. Ctrl keičia tarp statymo/griovimo
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Statyti tramvajaus bėgius naudojantis automatine sistema. Ctrl keičia tarp statymo/griovimo
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Statyti automobilių garažą (automoilių pirkimui ir remontui)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Statyti tramvajaus depą (skirtą pirkti ir aptarnauti tramvajus)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Statyti autobusų stotelę. Ctrl įjungia stočių jungimą
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Statyti keleivinio tramvajaus stotelę. Ctrl įjungia stotelių jungimą
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Statyti sunkvežimių pakrovimo aikštelę. Ctrl įjungia aikštelių jungimą
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Statyti krovininio tramvajaus stotelę. Ctrl įjungia stotelių jungimą
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tiesti kelią. Ctrl keičia tarp kelio statymo/griovimo. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Statyti tramvajaus liniją. Ctrl keičia tarp statymo/griovimo. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Statyti kelio sekciją naudojantis automatine sistema. Ctrl keičia tarp statymo/griovimo. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Statyti tramvajaus bėgius naudojantis automatine sistema. Ctrl keičia tarp statymo/griovimo. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Statyti automobilių garažą (automoilių pirkimui ir remontui). Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Statyti tramvajaus depą (skirtą pirkti ir aptarnauti tramvajus). Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Statyti autobusų stotelę. Ctrl įjungia stočių jungimą. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Statyti keleivinio tramvajaus stotelę. Ctrl įjungia stotelių jungimą. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Statyti sunkvežimių pakrovimo aikštelę. Ctrl įjungia aikštelių jungimą. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Statyti krovininio tramvajaus stotelę. Ctrl įjungia stotelių jungimą. Shift perjungia tarp statymo/kainos parodymo
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Įjungti/Išjungti vienpusio kelio statymo rėžimą
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Statyti tiltą automobiliams
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Statyti tramvajaus tiltą
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Statyti tunelį automobiliams
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Statyti tramvajaus tunelį
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Statyti tiltą automobiliams. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Statyti tramvajaus tiltą. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Statyti tunelį automobiliams. Shift perjungia tarp statymo/kainos parodymo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Statyti tramvajaus tunelį. Shift perjungia tarp statymo/kainos parodymo
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Kelių konstrukcijų statyba/šalinimas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Keisti statybos griovimo rėžimus
 
@@ -2079,11 +2093,11 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Pasirink
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Kanalų kasimas
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalai
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Statyk kanalus.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Įrengti šliuzus
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Statyti laivų depą (naujų laivų įsigijimui ir remontui)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Statyti laivų doką. Ctrl leidžia prijungti stoteles
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Statyti pludura, kuris bus naudojamas kaip tarpine stotele
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Statyti akveduką
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Įrengti šliuzus. Shift perjungia tarp statymo/kainos parodymo
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Statyti laivų depą (naujų laivų įsigijimui ir remontui). Shift perjungia tarp statymo/kainos parodymo
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Statyti laivų doką. Ctrl leidžia prijungti stoteles. Shift perjungia tarp statymo/kainos parodymo
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Statyti pludura, kuris bus naudojamas kaip tarpine stotele. Shift perjungia tarp statymo/kainos parodymo
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Statyti akveduką. Shift perjungia tarp statymo/kainos parodymo
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Nurodykite vandens viena.{}Sukurkit kanalą. Jeigu nuspaustas CTRL jūros lygyje, tada aplinka bus užlieta
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Kasti upes.
 
@@ -2096,12 +2110,13 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Prieplau
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Oro uostai
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Statyti opo uosta. Ctrl įjungia uostų jungimą
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Statyti opo uosta. Ctrl įjungia uostų jungimą. Shift perjungia tarp statymo/kainos parodymo
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Oro uosto pasirinkimas
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pasirinkite oro uosto dydį/tipą
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Oro uostų tipas
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Išdėstymas {NUM}
 
 STR_AIRPORT_SMALL                                               :Mažas
 STR_AIRPORT_CITY                                                :Miestas
@@ -2125,11 +2140,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Žemės 
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Pažeminti žemės lygį
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Paaukštinti žemės lygį
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Žemės lygis
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Nusipirkti žemę vėlesniam naudojimui
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Nusipirkti žemę vėlesniam naudojimui. Shift perjungia tarp statymo/kainos parodymo
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekto pasirinkimas
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pasirink norimą objektą statymui
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pasirink norimą objektą statymui. Shift perjungia tarp statymo/kainos parodymo
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pasirink statomo objekto tipą
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekto peržiūra
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dydis: {GOLD}{NUM} x {NUM} kvad.
@@ -2141,7 +2156,7 @@ STR_OBJECT_CLASS_TRNS                                           :Siųstuvai
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Medžiai
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sodina atsitiktinės rūšies medžius
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sodina atsitiktinės rūšies medžius. Shift perjungia tarp kainos parodymo/statymo
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Atsitiktiniai medžiai
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Atsitiktinai apsodinti sausumą medžiais
 
@@ -2162,7 +2177,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ar tikra
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Miesto įkūrimas
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Naujas miestas
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Įkurti naują miestą
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Įkurti naują miestą. Shift+Click tik parodys kainą
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Atsitiktinis miestas
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Pastatyti miestą atsitiktinėje vietoje
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Daug atsitiktinių miestų
@@ -2202,6 +2217,17 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Statyti
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansuoti
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Pramonės grandinė {STRING} pramonei
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Pramonės grandinė {STRING} kroviniams
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Gamybos pramonės šakos
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Priimančios pramonės šakos
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Namai
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Paspauskite ant pramonės tam, kad pamatytumėte tiekėjus ir pirkėjus
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Paspauskite ant krovinio tam, kad pamatytumėte tiekėjus ir pirkėjus
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Parodyti grandinę
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Parodyti krovinį tiekiančias ir priimančias pramones
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Nuoroda į mažą žemėlapį
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pasirinkti pavaizduotas pramones taip pat ir mažajame žemėlapyje
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacija apie žemės plotą
@@ -2330,6 +2356,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Įkelti 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Išsaugoti scenarijų
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Įkelti scenarijų
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Atverti aukščių žemėlapį
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Išsaugoti aukščių žemėlapį
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Spausti čia perėjimui į numatytąją saugojimo/įkrovimo direktoriją
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} laisva
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Diskų, katalogų ir išsaugotu žaidimų sąrašas
@@ -2451,6 +2478,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Patikrin
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Failo vardas: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versija: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Anksčiausia suderinama versija: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5suma: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletė: {SILVER}{STRING}
@@ -2464,8 +2492,12 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nesuderina
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Įveskite Papild. grafikos parametrus
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Pakeisti NewGRF parametrus
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Uždaryti
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Atstatyti
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nustayti pradines reikšmes visiems parametrams
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametras {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametrų skaičius: {ORANGE}{NUM}
 
 # NewGRF inspect window
@@ -2520,6 +2552,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Įvyko skaityma
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keletos elementų .{}Atnaujinkite pagrindinį grafikos rinkinį.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Prašyti GRF ištekliai nėra galimi
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} buvo išjungta: {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas animacinio objekto išdėstymas
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Įspėjimas!
@@ -2541,6 +2574,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Trūkstamo
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF elgesys '{0:STRING}' gali desinchronizuoti ir/arba nutraukti žaidimą.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Tai pakeitė varomo vagono būseną '{1:ENGINE}' kai ji nėra depe.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tai pakeitė transporto priemonės ilgį '{1:ENGINE}' kai ji nėra depe.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Traukinys '{VEHICLE}' priklausantis '{COMPANY}' yra netinkamo ilgio. It is probably caused by problems with NewGRFs. Žaidimas gali būti išsinchronizuotas arba išjungtas.
 
@@ -2740,7 +2774,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Statyi �
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Apžiūrėti būstinę
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Žiūrėti įmonės būstinę
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Perkelti bustinę
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Perstatyti kompanijos bustinę kitur už 1% kompanijos vertės
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Perstatyti kompanijos bustinę kitur už 1% kompanijos vertės. Shift+Click parodys kainą neperstatant būstinės
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Naujas veidas
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pasirink naują veidą
@@ -2753,8 +2787,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Keičia 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Pirkti 25% kompanijos akcijų
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Parduoti 25% kompanijos akcijų
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Pirkti 25% šios kompanijos akcijų
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Parduoti 25% šios kompanijos akcijų
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Pirkti 25% šios kompanijos akcijų. Shift+Click parodys kainą neperkant jokių akcijų
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Parduoti 25% šios kompanijos akcijų. Shift+Click parodys pardavimo kainą neparduodant akcijų
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompanijos pavadinimas
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktoriaus vardas
@@ -2887,10 +2921,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Pirkti t
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Pirkti Laivą
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Pirkti lėktuvą
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Įsigyti pažymetą traukinio dalį
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Pirkti pažymetą traukinį. Shift+Click parodys kainą neperkant
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Įsigyti pažymetą transporto priemonę
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Pirkti pažymetą laivą
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Pirkti pažymėtą lėktuvą
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Pirkti pažymetą laivą. Shift+Click parodys kainą neperkant
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Pirkti pažymėtą lėktuvą. Shift+Click parodys kainą neperkant
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Pervardinti
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Pervardinti
@@ -2955,10 +2989,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kopijuot
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kopijuoti laivą
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kopijuoti lėktuvą
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tai nupirks traukinio kopiją su visais vagonais. Spragtelkite šį mygtuką, o tada traukinį esantį depe arba už jo ribų. Spragtelėjus laikant Ctrl nukopijuojami nurodymai
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tai nupirks automobilio kopiją. Spragtelkite šį mygtuką, o tada automobilį esantį garaže arba už jo ribų. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Tai nupirks laivo kopiją. Spragtelkite šį mygtuką, o tada traukinį esantį depe arba už jo ribų. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Tai nupirks lėktuvo kopiją. Spragtelkite šį mygtuką, o tada traukinį esantį angare arba už jo ribų. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tai nupirks traukinio kopiją su visais vagonais. Spragtelkite šį mygtuką, o tada traukinį esantį depe arba už jo ribų. Ctrl+Click nukopijuojami nurodymai. Shift+Click parodys kainą neperkant
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tai nupirks automobilio kopiją. Spragtelkite šį mygtuką, o tada automobilį esantį garaže arba už jo ribų. Ctrl+Click nukopijuojami nurodymai. Shift+Click parodys kainą neperkant
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Tai nupirks laivo kopiją. Spragtelkite šį mygtuką, o tada laivą esantį depe arba už jo ribų. Ctrl+Click nukopijuojami nurodymai. Shift+Click parodys kainą neperkant
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Tai nupirks lėktuvo kopiją. Spragtelkite šį mygtuką, o tada lėktuvą esantį angare arba už jo ribų. Spragtelėjus laikant Ctrl+Click nukopijuojami nurodymai. Shift+Click parodys kainą neperkant
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Parodyti traukinių depą ekrano centre. Ctrl+Paspaudimas atidaro naują langą su depo vaidu
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Rodyti automobilių garažą ekrano centre. Ctrl+Click atidaro naują automobilių garažo vietos peržiūrą
@@ -3046,7 +3080,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Siusti a
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Nukreipti laivą į depą. Ctrl+Paspaudimas nukreips tik aptarnavimui.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Nukreipti lėktuvą į angarą. Ctrl+Paspaudimas nukreips tik aptarnavimui.
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Bus nupirkta traukinio kopija su visais vagonais. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Bus nupirkta traukinio kopija su visais vagonais. Spragtelėjus laikant Ctrl nukopijuojami nurodymai
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Bus nupirkta automobilio kopija. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai. Shift+Paspaudimas parodo kainą
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tai nupirks laivo kopiją. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai. Shift+Paspaudimas parodo kainą
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tai nupirks lėktuvo kopiją. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai. Shift+Paspaudinimas parodo kainą
@@ -3165,6 +3199,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Pasirink 'sergimo' krovinio tipa:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nauja talpa: {GOLD}{CARGO}{}{BLACK}Remonto kaina: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nauja talpa: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Pertvarkymo kaina: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pasirinkite transporto priemones, kurias perdarysite. Norėdami pasirinkti kelias transporto priemones, tempkite su pele. Spaudžiant ant tuščio ploto, pasirinksite visą transporto priemonę. Ctrl+Click pasirinks transporto priemonę ir sekančią jų eilę
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pasirink prioritetinį krovinio tipą, kuriuo rūpinsis traukinys
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Nurodykite šios transporto priemonės pervežamą krovinių tipą
@@ -3252,6 +3287,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ištrint
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Ištrinti pažymėta užduotį
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ištrinti visas užduotis
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stabdyti dalijimasi
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebesidalinti užsakymų sąrašu.. Ctrl+Click papildomai ištrins visus užsakymus šiai transporto priemonei
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Važiuoti
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Grįžti į artimiausią depą
@@ -3427,6 +3463,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nekeisti
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrai
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Uždaryti
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atstatyti
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3543,6 +3580,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ši komp
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Neimanoma statyti jokiu miestu
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Miesto pervardinti negalima...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Negalima įkurti miesto...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Negalima praplėsti miestelio...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... per arti žemėlapio krašto
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... per arti kito miesto
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... per daug miestų
@@ -3550,6 +3588,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daug
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miestas nestatys kelių. Jūs galite įjungti kelių statyba per Sudėtingesni nustatymai>Ekonomika>Miestai.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vyksta kelio darbai
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotis arba depas, arba miestui priklausantis vienas iš laukelių negali būti ištrintas.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nėra tinkamos vietos statulai šio miesto centre
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... per daug pramonės įmonių
@@ -3566,6 +3605,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gali
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... galima statyti tik žemose vietose
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... gali būti tik prie žemėlapio kraštų
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... miškas gali būti pasodintas tik virš sniego ribos
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... gali būti statoma tik aukščiau sniego linijos
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... gali būti statoma tik žemiau sniego linijos
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Geležinkelio stoties čia statyti negalima...
@@ -3589,6 +3630,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Per arti
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stotelės pervardinti negalima...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... šis kelias priklauso miestui
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... kelias atsuktas į blogą pusę
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... pravažiavimas pro sustojimus negali turėti posūkių
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... pravažiavimas pro sustojimus negali turėti sankryžų
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Neįmanoma pašalinti stoties dalies...
@@ -3598,6 +3641,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Neįmano
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Neįmanoma griauti keleivinio tramvajaus stotelės...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Neįmanoma griauti krovininio tramvajaus stotelės...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Visų pirmą reikia pašalinti stotelę
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... nėra stoties
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Pirmiausia reikia nugriauti geležinkelio stotį
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Pirmiausia turi nugriauti autobusų stotelę
@@ -3648,7 +3692,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Netinkamas depo
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} yra per ilgas po pakeitimo
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nėra automatinio atnaujinimo taisyklių
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nėra automatinio taisyklių pakeitimo/atnaujinimo pritaikymo
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pinigu limitas)
 
 # Rail construction errors
@@ -3663,6 +3707,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Begių �
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Šių bėgių pašalinti negalima...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Šio šviesoforo pašalinti negalima...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Čia negalima konvertuoti signalų...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... nėra geležinkelio
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nėra signalų
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Neįmanoma čia pakeisti bėgio tipo...
 
@@ -3673,6 +3719,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Čia tie
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Čia neįmanoma statyti tramvajaus...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Šio kelio pašalinti negalima...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Neįmanoma pašalinti tramvajaus...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nėra kelio
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nėra kelio tramvajui
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Neimanoma cia iskasti kanalu...
@@ -3680,6 +3728,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Neįmano
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Upių čia iškasti negalima...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... turi būti statoma ant vandens
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... negalima statyti ant vandens
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... negalima statyti atviroje jūroje
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... negalima statyti kanale
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... negalima statyti upėje
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Sunaikinkite kanalus prieš tęsdami!
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Čia akveduko nepastatysite...
 
@@ -3709,6 +3760,8 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nepavyko
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunelis per ilgas
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... per daug objektų
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Negalima pastatyti objekto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Kelyje objektas
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... trukdo įmonės būstinė
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Neįmanoma užsisakyti šio langelio...
@@ -3802,8 +3855,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... per 
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Neįmanoma sudaryti grafiko...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transportas gali laukti tik stotelėse.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}transporto priemonė čia nestoja.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Transporto priemonė gali laukti tik stotelėse.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ši transporto priemonė nestoja šioje stotyje.
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... per daug ženklų
@@ -3844,7 +3897,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadionas
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Biurai
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Namai
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Kino teatras
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Parduotuvių rajonas
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Prekybos centras
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglus
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Vigvamai
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Arbatos namai
@@ -4268,6 +4321,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

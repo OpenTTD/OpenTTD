@@ -1060,6 +1060,11 @@ STR_SEA_LEVEL_HIGH                                              :Hoch
 STR_SEA_LEVEL_CUSTOM                                            :Individuell
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Individuell ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Keine
+STR_RIVERS_FEW                                                  :Wenige
+STR_RIVERS_MODERATE                                             :einige
+STR_RIVERS_LOT                                                  :Viele
+
 STR_DISASTER_NONE                                               :Keine
 STR_DISASTER_REDUCED                                            :Verringert
 STR_DISASTER_NORMAL                                             :Normal
@@ -2318,6 +2323,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgene
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baumalgorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Gewässermenge:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flüsse:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gleichmäßigkeit:
 STR_MAPGEN_VARIETY                                              :{BLACK}Größe der Geländeformen:
 STR_MAPGEN_GENERATE                                             :{WHITE}Erzeugen
@@ -2362,6 +2368,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Soll di
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% abgeschlossen
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Spielfeld wird erzeugt
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Flußgenerierung
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bäume werden erzeugt
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Unbewegliche Objekte werden erzeugt
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Raue, felsige Landschaft wird erzeugt

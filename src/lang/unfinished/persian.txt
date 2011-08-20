@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :زیاد
 STR_SEA_LEVEL_CUSTOM                                            :دلخواه
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :دلخواه ({NUM}%)
 
+STR_RIVERS_NONE                                                 :هیچ
+STR_RIVERS_FEW                                                  :کم
+STR_RIVERS_MODERATE                                             :متوسط
+STR_RIVERS_LOT                                                  :زیاد
+
 STR_DISASTER_NONE                                               :هیچکدام
 STR_DISASTER_REDUCED                                            :کم
 STR_DISASTER_NORMAL                                             :عادی
@@ -1239,43 +1244,159 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :همه کاره
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}اسنفاده از لیست پیشرفته خودرو: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}استفاده از نشانه‌های بارگیری/بارگذاری: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}استفاده از تیک(هزارم ثانیه) به جای روز در برنامه ساعتی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}نشان دادن ورود و خروج در جدول زمانی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}ساخت سریع برنامه حرکت وسایل نقلیه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}نوع پیش‌فرض ریل (بعد از بازی جدید/بارگزاری): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :اولین نمونه در دسترس
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :آخرین نمونه در دسترس
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :نمونه با بیشترین استفاده
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}نمایش ریلهای محفوظ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}فعال ماندن ابزار ساخت و ساز پس از استفاده: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}غیر فعال کردن ساختمان مربوط به خودرویی که در دسترس نیست: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}بیشترین قطار یک شرکت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}بیشترین خودروی‌جاده‌ای یک شرکت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}بیشترین هواپیمای یک شرکت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}بیشترین تعداد کشتی یک شرکت : {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}غیرفعال بودن قطار برای رایانه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}غیر فعال بودن خودروی‌جاده‌ای برای رایانه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}غیر‌فعال بودن هواپیما برای رایانه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}غیر فعال بودن کشتی برای رایانه: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}امکان حضور هوش مصنوعی در بازی چندنفره: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}مقدار #opcodes قبل ازاینکه هوش مصنوعی متوقف شود: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}درصد زمان برای تعمیر/نگهداری به نسبت زمان کار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری قطار: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}زمان پیش‌فرض برای تعمیر/بازنگری قطار : {ORANGE}غیر فعال
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری خودروی جاده‌ای:: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری خودروی جاده‌ای {ORANGE}غیرفعال
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری هواپیما: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری هواپیما: {ORANGE}غیرفعال
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری کشتی: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری کشتی: {ORANGE}غیر‌فعال
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}غیرفعال کردن تعمیر/بازنگری کلیه وسایل نقلیه وقتی که طبق تنظیمات بازی خودرو ها خراب نشوند : {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}فعال کردن حد برای سرعت واگن: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}غیر فعال کردن ریل برقی: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}نمایش خبرهای رنگی در سال: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}سال شروع: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}فعال بودن اقتصاد ملایم (بیشتر،تغییرات کوچک انجام می‌شود): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}قابلیت خرید سهام بقیه شرکت‌ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}درصد سود پایه برای پرداخت در سیستم های پرداخت: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}موقع کشیدن، هر : {ORANGE}{STRING} قطعه نصب یک نشانگر{P 0:1 "" s}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}نصب علمک مکانیکی به جای چراغ راهنمایی قبل از سال: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}فعال کردن صفحه واسط کاربری برای نشانگر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}نوع نشانگر پیش فرض: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :نشانگر توقف
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :نشانگر مسیر
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :نشانگر مسیر یکطرفه
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}]تغییر نوع نشانگرها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :فقط نشانگرهای توقف
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :فقط نشانگرهای مسیر
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :همه
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}نمایه خیابان‌های شهر جدید: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :اصلی
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :راه‌های بهتر
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :قطعه ۲x۲
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :قطعه ۳x۳
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :اتفاقی
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}قابلیت ساخت راه‌ توسط شهرها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}امکان ساخته شدن شهر در محل ناهموار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}قابلیت کنترل سطح صدای فرودگاه‌ها توسط شهر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}ساخت شهر در بازی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ممنوع
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :آزاد
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :آزاد و با نمایه دلخواه
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}محل قرارگرفتن درخت‌ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :هیچکدام{RED}(سبب تعطیلی صنعت چوب والوار می‌شود)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :فقط در جنگلهای بارانی
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :همه جا
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}محل نوار ابزار اصلی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}محل نوار وضعیت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}چسبیدن پنجره ها به هم در نزدیک شدن به یکدیگر : {ORANGE}{STRING} پیکسل{P 0:1 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}چسبيدن پنجره ها به هم در نزديک شدن به يکديگر: {ORANGE}غیرفعال
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}بیشترین تعداد پنجره‌های غیرمهم: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}بیشترین مقدار پنجره های غیرمهم: {ORANGE}غیرفعال
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}سرعت رشد شهر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :هیچکدام
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :آهسته
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :عادی
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تند
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بسیار تند
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}نسبت شهرستانهایی که به شهر تبدیل می‌شوند: {ORANGE}۱ در {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}نسبت شهرستانهایی که به شهر تبدیل می‌شوند: {ORANGE}هیچکدام
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}مضرب ابتدایی اندازه شهرستان: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}حذف عناصر پوچ جاده در طول ساخت و ساز جاده: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}واسط کاربری
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}ساخت و ساز
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}ایستگاه ها
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}اقتصاد
+STR_CONFIG_SETTING_AI                                           :{ORANGE}رقیبان
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}نمایش گزینه ها
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}اثرمتقابل
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}نشانگرها
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}مدیریت محموله
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}بازیگران رایانه
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}نوسازی خودکار
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}تعمیر و بازبینی
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}مسیریابی
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}قطارها
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}شهرها
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}صنایع
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(توصیه می گردد)
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}مسیریاب برای قطارها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}مسیریاب برای خودروهای جاده ای: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}مسیریاب برای کشتی ها: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}برگشت خودکار با رسیدن به نشانه ها: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}تغییر مقدار
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}بازی جدید
 STR_INTRO_LOAD_GAME                                             :{BLACK}ادامه بازی های قبلی
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}بازی سناریو
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}بازی نقشه پستی/بلندی
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}ساخت سناریو
 STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی چند نفره
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
 STR_INTRO_DIFFICULTY                                            :{BLACK}سختی ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}تنظیمات پیشرفته
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}تنظیمات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
 STR_INTRO_AI_SETTINGS                                           :{BLACK}تنظیمات هوش مصنوعی
 STR_INTRO_QUIT                                                  :{BLACK}خروج
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید. Ctrl+Click پیش تنظیمات نقشه را رد و از تنظیمات گذشته استفاده می کند.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}ادامه ی بازی گذشته
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}آغاز بازی جدید،استفاده از یک نقشه پستی/بلندی به عنوان محوطه بازی
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}آغاز بازی جدید،استفاده از یک سناریوی دلخواه
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}ساخت یک دنیای بازی/سناریوی دلخواه
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}آغاز یک بازی چند نفره
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}انتخاب «معتدل» برای سبک بازی
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}انتخاب «قطب شمال» برای سبک بازی
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}انتخاب «استوا» برای سبک بازی
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}انتخاب «سرزمین اسباب بازی‌ها» برای سبک بازی
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}نشان دادن تنظیمات بازی
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK} نشان دادن تنظیمات سختی
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}نمایش تنظیمات پیشرفته
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}نمایش تنظیمات NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}نمایش تنظیمات هوش مصنوعی
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} خروج از 'OpenTTD'
@@ -1292,6 +1413,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :هایکو
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1300,21 +1422,162 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}رها کردن بازی
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا مطمئن هستی که میخواهی این بازی را از بین ببری؟
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}آیا مطمئنید که می خواهید این سناریو را رها کنید؟
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}تقلبها
+STR_CHEATS_TOOLTIP                                              :{BLACK}جعبه انتخاب ها نشان می دهند که قبلا از چه تقلبی استفاده کردید
+STR_CHEATS_WARNING                                              :{BLACK}هشدار!شما می خواهید که به رقبای همکارتان خیانت کنید. بدانید که چنین رسوایی تا ابد به یاد خواهد ماند
+STR_CHEAT_MONEY                                                 :{LTBLUE}اضافه کردن پول به مقدار {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}بازی به عنوان شرکت: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}بولدوزر جادویی(ازبین بردن صنایع و اشیاء غیرقابل حرکت): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}قابلیت رد شدن تونل های متقاطع از یکدیکر: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}هواپیماهای جت دیگر روی فرودگاه های کوچک سقوط نمی کنند: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}تغییر هوا و اقلیم: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :آب و هوای معتدل
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :آب و هوای قطبی
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :آب و هوای استوایی
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :دنیای اسباب بازی ها
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}تغییر تاریخ: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}تغییر سال جاری
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}قابلیت تغییر سطح تولید صنایع: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}طرح رنگ جدید
 
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}نمایش طرح رنگهای اصلی
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}نمایش طرح رنگهای قطار
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}نمایش طرح رنگهای خودروی جاده ای
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}نمایش طرح رنگهای کشتی
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}نمایش طرح رنگهای هواپیما
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}انتخاب رنگ اولیه برای طرح انتخابی
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}انتخاب رنگ دوم برای طرح انتخابی
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}طرح رنگ را تغییر دهید ، یا طرح های متعدد را با کنترل + کلیک انتخاب کنید.استفاده از طرح را با کلیک بر روی جعبه انتخاب مشخص کنید
 
+STR_LIVERY_DEFAULT                                              :طرح استاندارد
+STR_LIVERY_STEAM                                                :موتور بخار
+STR_LIVERY_DIESEL                                               :موتور دیزل
+STR_LIVERY_ELECTRIC                                             :موتور برقی
+STR_LIVERY_MONORAIL                                             :موتور تک ریل
+STR_LIVERY_MAGLEV                                               :موتور ماگلِو
+STR_LIVERY_DMU                                                  :دی ام یو
+STR_LIVERY_EMU                                                  :ای اِم یو
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :واگن مسافربری (بخار)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :واگن مسافربری (دیزل)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :واگن مسافربری (برقی)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :واگن مسافربری (تک ریل)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :واگن مسافربری (ماگلو)
+STR_LIVERY_FREIGHT_WAGON                                        :واگن باربری
+STR_LIVERY_BUS                                                  :اتوبوس
+STR_LIVERY_TRUCK                                                :کامیون بارکش
+STR_LIVERY_PASSENGER_SHIP                                       :کشتی مسافربری
+STR_LIVERY_FREIGHT_SHIP                                         :کشتی باربری
+STR_LIVERY_HELICOPTER                                           :بالگرد
+STR_LIVERY_SMALL_PLANE                                          :هواپیمای کوچک
+STR_LIVERY_LARGE_PLANE                                          :هواپیمای بزرگ
+STR_LIVERY_PASSENGER_TRAM                                       :تراموای مسافربری
+STR_LIVERY_FREIGHT_TRAM                                         :تراموای باربری
 
 # Face selection window
+STR_FACE_CAPTION                                                :{WHITE}انتخاب صورت
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}لغو انتخاب صورت جدید
+STR_FACE_OK_TOOLTIP                                             :{BLACK}تایید انتخاب صورت جدید
 
+STR_FACE_MALE_BUTTON                                            :{BLACK}مرد
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}انتخاب صورت مردانه
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}زن
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}انتخاب صورت زنانه
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}صورت جدید
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}تولید صورت جدید با تنظیمات تصادفی
+STR_FACE_ADVANCED                                               :{BLACK}پیشرفته
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}انتخاب پیشرفته صورت
+STR_FACE_SIMPLE                                                 :{BLACK}ساده
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}انتخاب ساده صورت
+STR_FACE_LOAD                                                   :{BLACK}بارگزاری
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}بارگزاری صورت دلخواه
+STR_FACE_LOAD_DONE                                              :{WHITE}صورت دلخواه شما از فایل تنظیمات بازی بارگزاری گردید
+STR_FACE_FACECODE                                               :{BLACK}صورت کاربر،شماره‌ی.
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}دیدن و یا تنظیم شماره صورت رییس شرکت
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}دیدن و یا تنظیم شماره صورت رییس
+STR_FACE_FACECODE_SET                                           :{WHITE}شماره صورت جدید ثبت گردید
+STR_FACE_FACECODE_ERR                                           :{WHITE}صورت رییس شرکت را نمی توان به این شماره ثبت کرد - عدد باید بین 0 و 4,294,967,295 باشد!
+STR_FACE_SAVE                                                   :{BLACK}ذخیره
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}ذخیره صورت دلخواه
+STR_FACE_SAVE_DONE                                              :{WHITE}این صورت به عنوان صورت دلخواه شما در فایل تنظیمات بازی ذخیره می گردد
+STR_FACE_EUROPEAN                                               :{BLACK}اروپایی
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}انتخاب صورت های اروپایی
+STR_FACE_AFRICAN                                                :{BLACK}آفریقایی
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}انتخاب صورت های آفریقایی
+STR_FACE_YES                                                    :بله
+STR_FACE_NO                                                     :خیر
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}فعال کردن سبیل و یا گوشواره
+STR_FACE_HAIR                                                   :مو:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}تغییر مو
+STR_FACE_EYEBROWS                                               :ابروها:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}تغییر ابروها
+STR_FACE_EYECOLOUR                                              :رنگ چشم:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}تغییر رنگ چشم
+STR_FACE_GLASSES                                                :عینک:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}فعال کردن عینک
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}تغییر عینک
+STR_FACE_NOSE                                                   :بینی:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}تغییر بینی
+STR_FACE_LIPS                                                   :لب ها:
+STR_FACE_MOUSTACHE                                              :سبیل:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}تغییر لب ها و یا سبیل
+STR_FACE_CHIN                                                   :چانه:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}تغییر چانه
+STR_FACE_JACKET                                                 :کت:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}تغییر کت
+STR_FACE_COLLAR                                                 :یقه:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}تغییر یقه
+STR_FACE_TIE                                                    :کراوات:
+STR_FACE_EARRING                                                :گوشواره:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}تغییر کراوات یا گوشواره
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}چندنفره
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}اتصال:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}بین اینترنت و شبکه محلی داخلی یکی را انتخاب نمایید
+STR_NETWORK_SERVER_LIST_LAN                                     :شبکه محلی
+STR_NETWORK_SERVER_LIST_INTERNET                                :اینترنت
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}نام بازیگر:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}این نامی است که بقیه بازیگران شما را به آن نام می شناسند
 
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}نام
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}نام بازی
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}سرویس گیرنده ها
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}سرویس گیرنده‌های آنلاین / بیشتربن تعداد سرویس گیرنده‌ها{}شرکت‌های آنلاین / بیشترین تعداد شرکت‌ها
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}اندازه نقشه
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}اندازه نقشه بازی{}برای مرتب سازی بر اساس محیط کلیک کنید
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}تاریخ
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}تاریخ فعلی
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}سال
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}تعداد سالهایی{}که بازی در حال اجراست
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}زبان، ویرایش برنامه سرویس دهنده و غیره.
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}برای انتخاب روی یک بازی از لیست کلیک کنید
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}آخرین سرویس دهنده‌ای که شما وارد آن شده‌اید:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}برای انتخاب سرویس دهنده‌ای که آخرین بار در آن بازی کرده‌اید، کلیک کنید
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}اطلاعات بازی
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}سرویس گیرنده‌ها: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}زبان: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}زمین: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}اندازه نقشه: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}ویرایش سرویس دهنده: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}نشانی سرویس دهنده: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}تاریخ شروع: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}تاریخ فعلی: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}محافظت شده با رمز!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}سرویس دهنده خاموش
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}سرویس دهنده پر
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}عدم مطابقت ویرایش
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}عدم مطابقت NewGRF
 
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}ورود به بازی
 
 
 
@@ -1389,7 +1652,7 @@ STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}شما 
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}این محتوی ناشناخته است و قابلیت دانلود در OpenTTD را ندارد
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}این مورد جایگزینی برای گزینه ی موجود است {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}نام:{WHITE}{STRING}
-STR_CONTENT_DETAIL_VERSION                                      :{SILVER}نسخه: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}ویرایش: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}شرح: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}آدرس اینترنتی: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}نوع: {WHITE}{STRING}
@@ -1611,7 +1874,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :زمین خری
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD در باره ی
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD ویرایش {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2011 The OpenTTD team
 
 # Save/load game/scenario
@@ -1626,6 +1889,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}ذخیر
 # World generation
 STR_MAPGEN_MAPSIZE                                              :{BLACK}اندازه نقشه:
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}رودخانه ها:
 
 # Strings for map borders at game generation
 
@@ -1635,6 +1899,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 
 # Map generation progress
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ساخت رودخانه
 
 # NewGRF settings
 
@@ -2095,7 +2360,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}تنظب
 STR_AI_LIST_CAPTION                                             :{WHITE}هوش مصنوعی های موجود
 STR_AI_LIST_TOOLTIP                                             :{BLACK}برای انتخلب هوش مصنوعی کلیک کنید
 
-STR_AI_LIST_VERSION                                             :{BLACK}نسخه: {NUM}
+STR_AI_LIST_VERSION                                             :{BLACK}ویرایش: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}آدرس اینترنتی: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}قبول

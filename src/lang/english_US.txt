@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :High
 STR_SEA_LEVEL_CUSTOM                                            :Custom
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
+STR_RIVERS_NONE                                                 :None
+STR_RIVERS_FEW                                                  :Few
+STR_RIVERS_MODERATE                                             :Medium
+STR_RIVERS_LOT                                                  :Many
+
 STR_DISASTER_NONE                                               :None
 STR_DISASTER_REDUCED                                            :Reduced
 STR_DISASTER_NORMAL                                             :Normal
@@ -2317,6 +2322,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land gen
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tree algorithm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Sea level:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivers:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Smoothness:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variety distribution:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generate
@@ -2361,6 +2367,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Do you 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% complete
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}World generation
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}River generation
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object generation
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
