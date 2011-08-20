@@ -454,7 +454,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			}
 			case 0x82:
 			case 0x83:
-			case 0x84: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DATE + c - 0x82); break;
+			case 0x84: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DATE_LONG + c - 0x82); break;
 			case 0x85: d += Utf8Encode(d, SCC_NEWGRF_DISCARD_WORD);       break;
 			case 0x86: d += Utf8Encode(d, SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
 			case 0x87: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_VOLUME);  break;
@@ -1027,8 +1027,8 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
 
-			case SCC_NEWGRF_PRINT_DATE:
-			case SCC_NEWGRF_PRINT_MONTH_YEAR:     *argv = _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
+			case SCC_NEWGRF_PRINT_DATE_LONG:
+			case SCC_NEWGRF_PRINT_DATE_SHORT:     *argv = _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
 
 			case SCC_NEWGRF_DISCARD_WORD:         _newgrf_textrefstack.PopUnsignedWord(); break;
 
@@ -1063,11 +1063,11 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_STRING_ID:
 			return SCC_NEWGRF_PRINT_STRING_ID;
 
-		case SCC_NEWGRF_PRINT_DATE:
+		case SCC_NEWGRF_PRINT_DATE_LONG:
 			return SCC_DATE_LONG;
 
-		case SCC_NEWGRF_PRINT_MONTH_YEAR:
-			return SCC_DATE_TINY;
+		case SCC_NEWGRF_PRINT_DATE_SHORT:
+			return SCC_DATE_SHORT;
 
 		case SCC_NEWGRF_PRINT_WORD_SPEED:
 			return SCC_VELOCITY;
