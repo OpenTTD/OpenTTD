@@ -713,8 +713,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 			}
 
-			case SCC_NEWGRF_PRINT_STRING_ID: {
-				StringID substr = args->GetInt32(SCC_NEWGRF_PRINT_STRING_ID);
+			case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
+				StringID substr = args->GetInt32(SCC_NEWGRF_PRINT_WORD_STRING_ID);
 				str_stack.push(GetStringPtr(substr));
 				break;
 			}

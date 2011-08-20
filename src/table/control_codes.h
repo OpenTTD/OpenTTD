@@ -112,30 +112,30 @@ enum StringControlCode {
 	 * It uses a "stack" of bytes and reads from there.
 	 */
 	SCC_NEWGRF_FIRST,
-	SCC_NEWGRF_PRINT_DWORD = SCC_NEWGRF_FIRST, ///< Read 4 bytes from the stack
-	SCC_NEWGRF_PRINT_SIGNED_WORD,              ///< Read 2 bytes from the stack as signed value
-	SCC_NEWGRF_PRINT_SIGNED_BYTE,              ///< Read 1 byte from the stack as signed value
-	SCC_NEWGRF_PRINT_UNSIGNED_WORD,            ///< Read 2 bytes from the stack as unsigned value
-	SCC_NEWGRF_PRINT_DWORD_CURRENCY,           ///< Read 4 bytes from the stack as currency
-	SCC_NEWGRF_PRINT_STRING_ID,                ///< Read 2 bytes from the stack as String ID
-	SCC_NEWGRF_PRINT_DATE_LONG,                ///< Read 2 bytes from the stack as base 1920 date
-	SCC_NEWGRF_PRINT_DATE_SHORT,               ///< Read 2 bytes from the stack as base 1920 date
-	SCC_NEWGRF_PRINT_WORD_SPEED,               ///< Read 2 bytes from the stack as signed speed
-	SCC_NEWGRF_PRINT_WORD_VOLUME,              ///< Read 2 bytes from the stack as signed volume
-	SCC_NEWGRF_PRINT_WORD_WEIGHT,              ///< Read 2 bytes from the stack as signed weight
-	SCC_NEWGRF_PRINT_WORD_STATION_NAME,        ///< Read 2 bytes from the stack as station name
-	SCC_NEWGRF_PRINT_QWORD_CURRENCY,           ///< Read 8 bytes from the stack as currency
-	SCC_NEWGRF_PRINT_HEX_BYTE,                 ///< Read 1 byte from the stack and print it as hex
-	SCC_NEWGRF_PRINT_HEX_WORD,                 ///< Read 2 bytes from the stack and print it as hex
-	SCC_NEWGRF_PRINT_HEX_DWORD,                ///< Read 4 bytes from the stack and print it as hex
-	SCC_NEWGRF_PRINT_HEX_QWORD,                ///< Read 8 bytes from the stack and print it as hex
-	SCC_NEWGRF_PUSH_WORD,                      ///< Pushes 2 bytes onto the stack
-	SCC_NEWGRF_UNPRINT,                        ///< "Unprints" the given number of bytes from the string
-	SCC_NEWGRF_DISCARD_WORD,                   ///< Discard the next two bytes
-	SCC_NEWGRF_ROTATE_TOP_4_WORDS,             ///< Rotate the top 4 words of the stack (W4 W1 W2 W3)
+	SCC_NEWGRF_PRINT_DWORD_SIGNED = SCC_NEWGRF_FIRST, ///< Read 4 bytes from the stack
+	SCC_NEWGRF_PRINT_WORD_SIGNED,                     ///< Read 2 bytes from the stack as signed value
+	SCC_NEWGRF_PRINT_BYTE_SIGNED,                     ///< Read 1 byte from the stack as signed value
+	SCC_NEWGRF_PRINT_WORD_UNSIGNED,                   ///< Read 2 bytes from the stack as unsigned value
+	SCC_NEWGRF_PRINT_DWORD_CURRENCY,                  ///< Read 4 bytes from the stack as currency
+	SCC_NEWGRF_PRINT_WORD_STRING_ID,                  ///< Read 2 bytes from the stack as String ID
+	SCC_NEWGRF_PRINT_WORD_DATE_LONG,                  ///< Read 2 bytes from the stack as base 1920 date
+	SCC_NEWGRF_PRINT_WORD_DATE_SHORT,                 ///< Read 2 bytes from the stack as base 1920 date
+	SCC_NEWGRF_PRINT_WORD_SPEED,                      ///< Read 2 bytes from the stack as signed speed
+	SCC_NEWGRF_PRINT_WORD_VOLUME,                     ///< Read 2 bytes from the stack as signed volume
+	SCC_NEWGRF_PRINT_WORD_WEIGHT,                     ///< Read 2 bytes from the stack as signed weight
+	SCC_NEWGRF_PRINT_WORD_STATION_NAME,               ///< Read 2 bytes from the stack as station name
+	SCC_NEWGRF_PRINT_QWORD_CURRENCY,                  ///< Read 8 bytes from the stack as currency
+	SCC_NEWGRF_PRINT_BYTE_HEX,                        ///< Read 1 byte from the stack and print it as hex
+	SCC_NEWGRF_PRINT_WORD_HEX,                        ///< Read 2 bytes from the stack and print it as hex
+	SCC_NEWGRF_PRINT_DWORD_HEX,                       ///< Read 4 bytes from the stack and print it as hex
+	SCC_NEWGRF_PRINT_QWORD_HEX,                       ///< Read 8 bytes from the stack and print it as hex
+	SCC_NEWGRF_PUSH_WORD,                             ///< Pushes 2 bytes onto the stack
+	SCC_NEWGRF_UNPRINT,                               ///< "Unprints" the given number of bytes from the string
+	SCC_NEWGRF_DISCARD_WORD,                          ///< Discard the next two bytes
+	SCC_NEWGRF_ROTATE_TOP_4_WORDS,                    ///< Rotate the top 4 words of the stack (W4 W1 W2 W3)
 	SCC_NEWGRF_LAST = SCC_NEWGRF_ROTATE_TOP_4_WORDS,
 
-	SCC_NEWGRF_STRINL,                         ///< Inline another string at the current position, StringID is encoded in the string
+	SCC_NEWGRF_STRINL,                                ///< Inline another string at the current position, StringID is encoded in the string
 
 	/* Special printable symbols.
 	 * These are mapped to the original glyphs */

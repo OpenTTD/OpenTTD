@@ -442,7 +442,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			case 0x7D:
 			case 0x7E:
 			case 0x7F:
-			case 0x80: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD + c - 0x7B); break;
+			case 0x80: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
 			case 0x81: {
 				if (str[0] == '\0' || str[1] == '\0') goto string_end;
 				StringID string;
@@ -454,7 +454,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			}
 			case 0x82:
 			case 0x83:
-			case 0x84: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DATE_LONG + c - 0x82); break;
+			case 0x84: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_DATE_LONG + c - 0x82); break;
 			case 0x85: d += Utf8Encode(d, SCC_NEWGRF_DISCARD_WORD);       break;
 			case 0x86: d += Utf8Encode(d, SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
 			case 0x87: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_VOLUME);  break;
@@ -500,11 +500,11 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 						d += Utf8Encode(d, SCC_NEWGRF_UNPRINT);
 						d += Utf8Encode(d, *str++);
 						break;
-					case 0x06: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_BYTE);          break;
-					case 0x07: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_WORD);          break;
-					case 0x08: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_DWORD);         break;
+					case 0x06: d += Utf8Encode(d, SCC_NEWGRF_PRINT_BYTE_HEX);          break;
+					case 0x07: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_HEX);          break;
+					case 0x08: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_HEX);         break;
 					/* 0x09, 0x0A are TTDPatch internal use only string codes. */
-					case 0x0B: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_QWORD);         break;
+					case 0x0B: d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_HEX);         break;
 					case 0x0C: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
 					case 0x0D: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_WEIGHT);       break;
 					case 0x0E:
@@ -1009,34 +1009,34 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 	if (_newgrf_textrefstack.used) {
 		switch (scc) {
 			default: NOT_REACHED();
-			case SCC_NEWGRF_PRINT_SIGNED_BYTE:    *argv = _newgrf_textrefstack.PopSignedByte();    break;
-			case SCC_NEWGRF_PRINT_SIGNED_WORD:    *argv = _newgrf_textrefstack.PopSignedWord();    break;
-			case SCC_NEWGRF_PRINT_QWORD_CURRENCY: *argv = _newgrf_textrefstack.PopUnsignedQWord(); break;
+			case SCC_NEWGRF_PRINT_BYTE_SIGNED:      *argv = _newgrf_textrefstack.PopSignedByte();    break;
+			case SCC_NEWGRF_PRINT_WORD_SIGNED:      *argv = _newgrf_textrefstack.PopSignedWord();    break;
+			case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   *argv = _newgrf_textrefstack.PopUnsignedQWord(); break;
 
 			case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
-			case SCC_NEWGRF_PRINT_DWORD:          *argv = _newgrf_textrefstack.PopSignedDWord();   break;
+			case SCC_NEWGRF_PRINT_DWORD_SIGNED:     *argv = _newgrf_textrefstack.PopSignedDWord();   break;
 
-			case SCC_NEWGRF_PRINT_HEX_BYTE:       *argv = _newgrf_textrefstack.PopUnsignedByte();  break;
-			case SCC_NEWGRF_PRINT_HEX_DWORD:      *argv = _newgrf_textrefstack.PopUnsignedDWord(); break;
-			case SCC_NEWGRF_PRINT_HEX_QWORD:      *argv = _newgrf_textrefstack.PopSignedQWord(); break;
+			case SCC_NEWGRF_PRINT_BYTE_HEX:         *argv = _newgrf_textrefstack.PopUnsignedByte();  break;
+			case SCC_NEWGRF_PRINT_DWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedDWord(); break;
+			case SCC_NEWGRF_PRINT_QWORD_HEX:        *argv = _newgrf_textrefstack.PopSignedQWord(); break;
 
-			case SCC_NEWGRF_PRINT_HEX_WORD:
+			case SCC_NEWGRF_PRINT_WORD_HEX:
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
 			case SCC_NEWGRF_PRINT_WORD_VOLUME:
 			case SCC_NEWGRF_PRINT_WORD_WEIGHT:
 			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
-			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
+			case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
 
-			case SCC_NEWGRF_PRINT_DATE_LONG:
-			case SCC_NEWGRF_PRINT_DATE_SHORT:     *argv = _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
+			case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
+			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  *argv = _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
 
-			case SCC_NEWGRF_DISCARD_WORD:         _newgrf_textrefstack.PopUnsignedWord(); break;
+			case SCC_NEWGRF_DISCARD_WORD:           _newgrf_textrefstack.PopUnsignedWord(); break;
 
-			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:   _newgrf_textrefstack.RotateTop4Words(); break;
-			case SCC_NEWGRF_PUSH_WORD:            _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
-			case SCC_NEWGRF_UNPRINT:              *buff = max(*buff - Utf8Consume(str), buf_start); break;
+			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     _newgrf_textrefstack.RotateTop4Words(); break;
+			case SCC_NEWGRF_PUSH_WORD:              _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
+			case SCC_NEWGRF_UNPRINT:                *buff = max(*buff - Utf8Consume(str), buf_start); break;
 
-			case SCC_NEWGRF_PRINT_STRING_ID:
+			case SCC_NEWGRF_PRINT_WORD_STRING_ID:
 				*argv = TTDPStringIDToOTTDStringIDMapping(_newgrf_textrefstack.PopUnsignedWord());
 				break;
 		}
@@ -1044,29 +1044,29 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 	switch (scc) {
 		default: NOT_REACHED();
-		case SCC_NEWGRF_PRINT_DWORD:
-		case SCC_NEWGRF_PRINT_SIGNED_WORD:
-		case SCC_NEWGRF_PRINT_SIGNED_BYTE:
-		case SCC_NEWGRF_PRINT_UNSIGNED_WORD:
+		case SCC_NEWGRF_PRINT_DWORD_SIGNED:
+		case SCC_NEWGRF_PRINT_WORD_SIGNED:
+		case SCC_NEWGRF_PRINT_BYTE_SIGNED:
+		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:
 			return SCC_COMMA;
 
-		case SCC_NEWGRF_PRINT_HEX_BYTE:
-		case SCC_NEWGRF_PRINT_HEX_WORD:
-		case SCC_NEWGRF_PRINT_HEX_DWORD:
-		case SCC_NEWGRF_PRINT_HEX_QWORD:
+		case SCC_NEWGRF_PRINT_BYTE_HEX:
+		case SCC_NEWGRF_PRINT_WORD_HEX:
+		case SCC_NEWGRF_PRINT_DWORD_HEX:
+		case SCC_NEWGRF_PRINT_QWORD_HEX:
 			return SCC_HEX;
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
 		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
 			return SCC_CURRENCY;
 
-		case SCC_NEWGRF_PRINT_STRING_ID:
-			return SCC_NEWGRF_PRINT_STRING_ID;
+		case SCC_NEWGRF_PRINT_WORD_STRING_ID:
+			return SCC_NEWGRF_PRINT_WORD_STRING_ID;
 
-		case SCC_NEWGRF_PRINT_DATE_LONG:
+		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
 			return SCC_DATE_LONG;
 
-		case SCC_NEWGRF_PRINT_DATE_SHORT:
+		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:
 			return SCC_DATE_SHORT;
 
 		case SCC_NEWGRF_PRINT_WORD_SPEED:
