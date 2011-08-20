@@ -1028,7 +1028,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack.PopUnsignedWord();  break;
 
 			case SCC_NEWGRF_PRINT_DATE:
-			case SCC_NEWGRF_PRINT_MONTH_YEAR:     *argv = _newgrf_textrefstack.PopSignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
+			case SCC_NEWGRF_PRINT_MONTH_YEAR:     *argv = _newgrf_textrefstack.PopUnsignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
 
 			case SCC_NEWGRF_DISCARD_WORD:         _newgrf_textrefstack.PopUnsignedWord(); break;
 
