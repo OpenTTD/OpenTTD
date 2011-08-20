@@ -308,6 +308,13 @@ CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	return DoBuildLock(tile, dir, flags);
 }
 
+/** Callback to create non-desert around a river tile. */
+bool RiverModifyDesertZone(TileIndex tile, void *)
+{
+	if (GetTropicZone(tile) == TROPICZONE_DESERT) SetTropicZone(tile, TROPICZONE_NORMAL);
+	return false;
+}
+
 /**
  * Build a piece of canal.
  * @param tile end tile of stretch-dragging
@@ -350,6 +357,10 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			switch (wc) {
 				case WATER_CLASS_RIVER:
 					MakeRiver(tile, Random());
+					if (_game_mode == GM_EDITOR) {
+						TileIndex tile2 = tile;
+						CircularTileSearch(&tile2, 5, RiverModifyDesertZone, NULL);
+					}
 					break;
 
 				case WATER_CLASS_SEA:

@@ -41,4 +41,6 @@ void DrawShoreTile(Slope tileh);
 
 void MakeWaterKeepingClass(TileIndex tile, Owner o);
 
+bool RiverModifyDesertZone(TileIndex tile, void *data);
+
 #endif /* WATER_H */

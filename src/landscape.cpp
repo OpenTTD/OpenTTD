@@ -1038,7 +1038,12 @@ static void River_GetNeighbours(AyStar *aystar, OpenListNode *current)
 static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
 {
 	for (PathNode *path = &current->path; path != NULL; path = path->parent) {
-		if (!IsWaterTile(path->node.tile)) MakeRiver(path->node.tile, Random());
+		TileIndex tile = path->node.tile;
+		if (!IsWaterTile(tile)) {
+			MakeRiver(tile, Random());
+			/* Remove desert directly around the river tile. */
+			CircularTileSearch(&tile, 5, RiverModifyDesertZone, NULL);
+		}
 	}
 }
 
@@ -1168,7 +1173,7 @@ static void CreateRivers()
 	if (amount == 0) return;
 
 	uint wells = ScaleByMapSize(4 << _settings_game.game_creation.amount_of_rivers);
-	SetGeneratingWorldProgress(GWP_RIVER, wells);
+	SetGeneratingWorldProgress(GWP_RIVER, wells + 256 / 64); // Include the tile loop calls below.
 	bool *marks = CallocT<bool>(MapSize());
 
 	for (; wells != 0; wells--) {
@@ -1181,6 +1186,12 @@ static void CreateRivers()
 	}
 
 	free(marks);
+
+	/* Run tile loop to update the ground density. */
+	for (uint i = 0; i != 256; i++) {
+		if (i % 64 == 0) IncreaseGeneratingWorldProgress(GWP_RIVER);
+		RunTileLoop();
+	}
 }
 
 void GenerateLandscape(byte mode)
