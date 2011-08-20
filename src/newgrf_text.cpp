@@ -1014,7 +1014,6 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		switch (scc) {
 			default: NOT_REACHED();
 			case SCC_NEWGRF_PRINT_BYTE_SIGNED:      *argv = _newgrf_textrefstack.PopSignedByte();    break;
-			case SCC_NEWGRF_PRINT_WORD_SIGNED:      *argv = _newgrf_textrefstack.PopSignedWord();    break;
 			case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   *argv = _newgrf_textrefstack.PopSignedQWord();   break;
 
 			case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
@@ -1023,9 +1022,11 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_BYTE_HEX:         *argv = _newgrf_textrefstack.PopUnsignedByte();  break;
 			case SCC_NEWGRF_PRINT_QWORD_HEX:        *argv = _newgrf_textrefstack.PopUnsignedQWord(); break;
 
-			case SCC_NEWGRF_PRINT_WORD_HEX:
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
 			case SCC_NEWGRF_PRINT_WORD_VOLUME:
+			case SCC_NEWGRF_PRINT_WORD_SIGNED:      *argv = _newgrf_textrefstack.PopSignedWord();    break;
+
+			case SCC_NEWGRF_PRINT_WORD_HEX:
 			case SCC_NEWGRF_PRINT_WORD_WEIGHT:
 			case SCC_NEWGRF_PRINT_WORD_POWER:
 			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:

@@ -120,8 +120,8 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_WORD_STRING_ID,                  ///< Read 2 bytes from the stack as String ID
 	SCC_NEWGRF_PRINT_WORD_DATE_LONG,                  ///< Read 2 bytes from the stack as base 1920 date
 	SCC_NEWGRF_PRINT_WORD_DATE_SHORT,                 ///< Read 2 bytes from the stack as base 1920 date
-	SCC_NEWGRF_PRINT_WORD_SPEED,                      ///< Read 2 bytes from the stack as unsigned speed
-	SCC_NEWGRF_PRINT_WORD_VOLUME,                     ///< Read 2 bytes from the stack as unsigned volume
+	SCC_NEWGRF_PRINT_WORD_SPEED,                      ///< Read 2 bytes from the stack as signed speed
+	SCC_NEWGRF_PRINT_WORD_VOLUME,                     ///< Read 2 bytes from the stack as signed volume
 	SCC_NEWGRF_PRINT_WORD_WEIGHT,                     ///< Read 2 bytes from the stack as unsigned weight
 	SCC_NEWGRF_PRINT_WORD_STATION_NAME,               ///< Read 2 bytes from the stack as station name
 	SCC_NEWGRF_PRINT_QWORD_CURRENCY,                  ///< Read 8 bytes from the stack as currency
