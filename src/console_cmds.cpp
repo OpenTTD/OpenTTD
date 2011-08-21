@@ -1268,7 +1268,7 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 	}
 
 	TarScanner::DoScan();
-	ScanNewGRFFiles();
+	ScanNewGRFFiles(NULL);
 
 	return true;
 }

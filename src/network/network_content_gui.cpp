@@ -114,7 +114,7 @@ public:
 					break;
 
 				case CONTENT_TYPE_NEWGRF:
-					ScanNewGRFFiles();
+					ScanNewGRFFiles(NULL);
 					break;
 
 				case CONTENT_TYPE_SCENARIO:

@@ -196,7 +196,7 @@ struct NewGRFScanCallback {
 	virtual void OnNewGRFsScanned() = 0;
 };
 
-void ScanNewGRFFiles(NewGRFScanCallback *callback = NULL);
+void ScanNewGRFFiles(NewGRFScanCallback *callback);
 void CheckForMissingSprites();
 const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = NULL, uint32 desired_version = 0);
 GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
