@@ -718,7 +718,11 @@ int ttd_main(int argc, char *argv[])
 
 	CheckForMissingGlyphsInLoadedLanguagePack();
 
+#if defined(ENABLE_NETWORK)
 	ScanNewGRFFiles(new AfterNewGRFScan(network ? network_conn : NULL, join_server_password, join_company_password));
+#else
+	ScanNewGRFFiles(new AfterNewGRFScan(NULL, NULL, NULL));
+#endif
 
 	_video_driver->MainLoop();
 
