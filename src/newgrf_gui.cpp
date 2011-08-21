@@ -511,7 +511,7 @@ enum ShowNewGRFStateWidgets {
 /**
  * Window for showing NewGRF files
  */
-struct NewGRFWindow : public QueryStringBaseWindow {
+struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	typedef GUIList<const GRFConfig *> GUIGRFConfigList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50;
@@ -985,13 +985,17 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			case SNGRFS_RESCAN_FILES:
 			case SNGRFS_RESCAN_FILES2:
 				TarScanner::DoScan();
-				ScanNewGRFFiles();
-				this->avail_sel = NULL;
-				this->avail_pos = -1;
-				this->avails.ForceRebuild();
-				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+				ScanNewGRFFiles(this);
 				break;
 		}
+	}
+
+	virtual void OnNewGRFsScanned()
+	{
+		this->avail_sel = NULL;
+		this->avail_pos = -1;
+		this->avails.ForceRebuild();
+		this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
