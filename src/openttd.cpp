@@ -319,6 +319,69 @@ void MakeNewgameSettingsLive()
 #endif /* ENABLE_AI */
 }
 
+/** Callback structure of statements to be executed after the NewGRF scan. */
+struct AfterNewGRFScan : NewGRFScanCallback {
+	char *network_conn;                ///< Information about the server to connect to, or NULL.
+	const char *join_server_password;  ///< The password to join the server with.
+	const char *join_company_password; ///< The password to join the company with.
+
+	/**
+	 * Create the structure.
+	 * @param network_conn Information about the server to connect to, or NULL.
+	 * @param join_server_password The password to join the server with.
+	 * @param join_company_password The password to join the company with.
+	 */
+	AfterNewGRFScan(char *network_conn, const char *join_server_password, const char *join_company_password) :
+		network_conn(network_conn), join_server_password(join_server_password), join_company_password(join_company_password)
+	{
+	}
+
+	virtual void OnNewGRFsScanned()
+	{
+		ResetGRFConfig(false);
+
+		/* initialize the ingame console */
+		IConsoleInit();
+		_cursor.in_window = true;
+		InitializeGUI();
+		IConsoleCmdExec("exec scripts/autoexec.scr 0");
+
+		/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
+		if (_switch_mode != SM_NONE) MakeNewgameSettingsLive();
+
+#ifdef ENABLE_NETWORK
+		if (_network_available && network_conn != NULL) {
+			const char *port = NULL;
+			const char *company = NULL;
+			uint16 rport = NETWORK_DEFAULT_PORT;
+			CompanyID join_as = COMPANY_NEW_COMPANY;
+
+			ParseConnectionString(&company, &port, network_conn);
+
+			if (company != NULL) {
+				join_as = (CompanyID)atoi(company);
+
+				if (join_as != COMPANY_SPECTATOR) {
+					join_as--;
+					if (join_as >= MAX_COMPANIES) {
+						delete this;
+						return;
+					}
+				}
+			}
+			if (port != NULL) rport = atoi(port);
+
+			LoadIntroGame();
+			_switch_mode = SM_NONE;
+			NetworkClientConnectGame(NetworkAddress(network_conn, rport), join_as, join_server_password, join_company_password);
+		}
+#endif /* ENABLE_NETWORK */
+
+		/* After the scan we're not used anymore. */
+		delete this;
+	}
+};
+
 #if defined(UNIX) && !defined(__MORPHOS__)
 extern void DedicatedFork();
 #endif
@@ -640,19 +703,6 @@ int ttd_main(int argc, char *argv[])
 	}
 #endif /* ENABLE_NETWORK */
 
-	ScanNewGRFFiles();
-
-	ResetGRFConfig(false);
-
-	/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
-	if (_switch_mode != SM_NONE) MakeNewgameSettingsLive();
-
-	/* initialize the ingame console */
-	IConsoleInit();
-	_cursor.in_window = true;
-	InitializeGUI();
-	IConsoleCmdExec("exec scripts/autoexec.scr 0");
-
 	/* Take our initial lock on whatever we might want to do! */
 	_modal_progress_paint_mutex->BeginCritical();
 	_modal_progress_work_mutex->BeginCritical();
@@ -662,32 +712,7 @@ int ttd_main(int argc, char *argv[])
 
 	CheckForMissingGlyphsInLoadedLanguagePack();
 
-#ifdef ENABLE_NETWORK
-	if (network && _network_available) {
-		if (network_conn != NULL) {
-			const char *port = NULL;
-			const char *company = NULL;
-			uint16 rport = NETWORK_DEFAULT_PORT;
-			CompanyID join_as = COMPANY_NEW_COMPANY;
-
-			ParseConnectionString(&company, &port, network_conn);
-
-			if (company != NULL) {
-				join_as = (CompanyID)atoi(company);
-
-				if (join_as != COMPANY_SPECTATOR) {
-					join_as--;
-					if (join_as >= MAX_COMPANIES) return false;
-				}
-			}
-			if (port != NULL) rport = atoi(port);
-
-			LoadIntroGame();
-			_switch_mode = SM_NONE;
-			NetworkClientConnectGame(NetworkAddress(network_conn, rport), join_as, join_server_password, join_company_password);
-		}
-	}
-#endif /* ENABLE_NETWORK */
+	ScanNewGRFFiles(new AfterNewGRFScan(network ? network_conn : NULL, join_server_password, join_company_password));
 
 	_video_driver->MainLoop();
 
