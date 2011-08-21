@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :Cao
 STR_SEA_LEVEL_CUSTOM                                            :Tùy chỉnh
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Tùy chỉnh ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Không
+STR_RIVERS_FEW                                                  :Ít
+STR_RIVERS_MODERATE                                             :Bình thường
+STR_RIVERS_LOT                                                  :Nhiều
+
 STR_DISASTER_NONE                                               :Không Có
 STR_DISASTER_REDUCED                                            :Giảm
 STR_DISASTER_NORMAL                                             :Thường
@@ -2317,6 +2322,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo n�
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực nước biển:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Số sông/suối:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
 STR_MAPGEN_VARIETY                                              :{BLACK}Phân bổ sự đa dạng:
 STR_MAPGEN_GENERATE                                             :{WHITE}Khởi tạo
@@ -2361,6 +2367,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Bạn c
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hoàn thành
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tạo màn
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Khởi tạo sông suối
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Sinh đá và sự gồ ghề
@@ -2513,6 +2520,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng hoá bất hợp lệ
 STR_NEWGRF_INVALID_ENGINE                                       :<sai mẫu xe>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh Sách Biển Hiệu - {COMMA} Biển Hiệu

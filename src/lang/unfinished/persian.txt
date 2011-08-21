@@ -27,9 +27,9 @@ STR_JUST_NOTHING                                                :هیچی
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :مسافر
+STR_CARGO_PLURAL_PASSENGERS                                     :مسافران
 STR_CARGO_PLURAL_COAL                                           :ذغال
-STR_CARGO_PLURAL_MAIL                                           :پاکت پستی
+STR_CARGO_PLURAL_MAIL                                           :نامه
 STR_CARGO_PLURAL_OIL                                            :نفت
 STR_CARGO_PLURAL_LIVESTOCK                                      :چارپایان
 STR_CARGO_PLURAL_GOODS                                          :محصولات مصرفی
@@ -95,9 +95,9 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :نوشابه گ
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" ان}
 STR_QUANTITY_COAL                                               :{WEIGHT} از زغال سنگ
-STR_QUANTITY_MAIL                                               :{COMMA}بسته{P "" s} از نامه
+STR_QUANTITY_MAIL                                               :{COMMA}بسته نامه
 STR_QUANTITY_OIL                                                :{VOLUME} نفت
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} فقره{P "" s} از جارپایان
 STR_QUANTITY_GOODS                                              :{COMMA} جعبه{P "" s} محموله تجاری
@@ -1559,7 +1559,7 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}تعدا
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}زبان، ویرایش برنامه سرویس دهنده و غیره.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}برای انتخاب روی یک بازی از لیست کلیک کنید
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}آخرین سرویس دهنده‌ای که شما وارد آن شده‌اید:
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}آخرین سرویس دهنده‌ای که شما به آن پیوسته بودید:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}برای انتخاب سرویس دهنده‌ای که آخرین بار در آن بازی کرده‌اید، کلیک کنید
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}اطلاعات بازی
@@ -1578,53 +1578,222 @@ STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}عدم 
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}عدم مطابقت NewGRF
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}ورود به بازی
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}تازه سازی سرویس دهنده
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}تازه سازی اطلاعات سرویس دهنده
 
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}جستجوی سرویس دهنده
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}جستجو در شبکه برای سرویس دهنده
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}اضافه کردن سرویس دهنده
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}اضافه کردن یک سرویس دهنده به لیست که هربار برای بازی در حال اجرا آزمایش می گردد
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}اجرای سرویس دهنده
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}راه اندازی سرویس دهنده خود
 
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}نام خود را وارد نماببد
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}نشانی میزبان را وارد کنید
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}آغاز بازی چندنفره
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}نام بازی:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}بازی درلیست انتخاب بازی چند نفره دیگران به این نام نمایش داده خواهد شد
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ثبت رمز
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}اگر بازی برای استفاده همگان نیست، بازی خود را با رمز محافظت کنید
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :شبکه محلی / اینترنت
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :اینترنت (آگهی)
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} سرویس گیرنده{P "" s}
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}بیشترین تعداد سرویس گیرنده:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}بیشترین تعداد سرویس گیرنده را مشخص کنید.لازم نیست دقیقا به تعداد نفرات باشد
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} شرک{P ت تها}
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}بیشترین تعداد شرکت ها:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}محدود کردن سرویس دهنده به داشتن تعداد مشخصی شرکت
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} تماشاگر{P "" ها}
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}بیشترین تعداد تماشاگر:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}محدود کردن سرویس دهنده به داشتن تعداد مشخصی تماشاگر
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}زبان گفتگو:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دیگر بازیگران می فهمند که با چه زبانی در این سرویس دهنده گفتگو می شود
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}برای بازی شبکه‌ای یک نام وارد نمایید
 
 # Network game languages
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :هر زبانی
+STR_NETWORK_LANG_ENGLISH                                        :انگلیسی
+STR_NETWORK_LANG_GERMAN                                         :آلمانی
+STR_NETWORK_LANG_FRENCH                                         :فرانسوی
+STR_NETWORK_LANG_BRAZILIAN                                      :برزیلی
+STR_NETWORK_LANG_BULGARIAN                                      :بلغاری
+STR_NETWORK_LANG_CHINESE                                        :چینی
+STR_NETWORK_LANG_CZECH                                          :چکی
+STR_NETWORK_LANG_DANISH                                         :دانمارکی
+STR_NETWORK_LANG_DUTCH                                          :هلندی
+STR_NETWORK_LANG_ESPERANTO                                      :اسپرانتو
+STR_NETWORK_LANG_FINNISH                                        :فنلاندی
+STR_NETWORK_LANG_HUNGARIAN                                      :مجارستانی
+STR_NETWORK_LANG_ICELANDIC                                      :ایسلندی
+STR_NETWORK_LANG_ITALIAN                                        :ایتالیایی
+STR_NETWORK_LANG_JAPANESE                                       :زاپنی
+STR_NETWORK_LANG_KOREAN                                         :کُره‌ای
+STR_NETWORK_LANG_LITHUANIAN                                     :لیتوانیایی
+STR_NETWORK_LANG_NORWEGIAN                                      :نروژی
+STR_NETWORK_LANG_POLISH                                         :لهستانی
+STR_NETWORK_LANG_PORTUGUESE                                     :پرتغالی
+STR_NETWORK_LANG_ROMANIAN                                       :رومانیایی
+STR_NETWORK_LANG_RUSSIAN                                        :روسی
+STR_NETWORK_LANG_SLOVAK                                         :اسلوواکیایی
+STR_NETWORK_LANG_SLOVENIAN                                      :اسلوونیایی
+STR_NETWORK_LANG_SPANISH                                        :اسپانیایی
+STR_NETWORK_LANG_SWEDISH                                        :سوئدی
+STR_NETWORK_LANG_TURKISH                                        :ترکی
+STR_NETWORK_LANG_UKRAINIAN                                      :اوکراینی
+STR_NETWORK_LANG_AFRIKAANS                                      :آفریقایی
+STR_NETWORK_LANG_CROATIAN                                       :کرواسی
+STR_NETWORK_LANG_CATALAN                                        :کاتالانی
+STR_NETWORK_LANG_ESTONIAN                                       :استوونی
+STR_NETWORK_LANG_GALICIAN                                       :گالیسیایی
+STR_NETWORK_LANG_GREEK                                          :یونانی
+STR_NETWORK_LANG_LATVIAN                                        :لاتویانی
 ############ End of leave-in-this-order
 
 # Network game lobby
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}سالن انتظار بازی چندنفره
 
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}آماده سازی برای پیوستن: {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}لیستی از تمامی شرکت هایی که در بازی وجود دارند. شما می توانید به یکی از آنها بپیوندید یا در صورت وجود جای خالی برای ساخت شرکت، یک شرکت جدید بسازید
 
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}مشخصات شرکت
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}نام شرکت: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}گشایش: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}ارزش شرکت: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}موجودی فعلی: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}درآمد سال گذشته: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}کارایی: {WHITE}{NUM}
 
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}وسایل نقلیه: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}ایستگاه ها: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}بازیگران: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}شرکت جدید
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}ساختن یک شرکت جدید
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}تماشای بازی
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}دیدن بازی به عنوان یک تماشاگر
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}پیوستن به شرکت
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}کمک به مدیریت این شرکت
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}درحال وصل شدن...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) درحال وصل شدن...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) درخواست اجازه ورود...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) صبر کنید...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) بارگیری نقشه...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) پردازش داده...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) در حال ثبت...
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}درخواست اطلاعات بازی...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}درخواست اطلاعات شرکت...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} تعداد سرویس دهند{P ه های} مقابل شما
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} مقدار بارگیری شده تاکنون
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} مقدار بارگیری شده تاکنون
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}قطع
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}سرویس دهنده محافظت شده است.رمز را وارد نمایید
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}شرکت محافظت شده است.رمز را وارد نمایید
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست سرویس گیرنده ها
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}تماشا
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}شرکت جدید
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :اخراج
+STR_NETWORK_CLIENTLIST_BAN                                      :قدغن کردن
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :پول دادن
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :گفتگو با همه
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :گفتگو با شرکت
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پیام خصوصی
 
+STR_NETWORK_SERVER                                              :سرویس دهنده
+STR_NETWORK_CLIENT                                              :سرویس گیرنده
+STR_NETWORK_SPECTATORS                                          :تماشاگران
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}مقدار پولی که می خواهید دریافت نمایید را وارد کنید
 
 # Network set password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}رمز وارد شده را به خاطر نسپار
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}دادن رمز جدید به شرکت
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}رمز شرکت
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}رمز پیش فرض شرکت
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}استفاده از این رمز شرکت به عنوان پیش فرض برای شرکت های جدید
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}پیوستن
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}پیوستن و بازی به عنوان این شرکت
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}رمز
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}شرکت خود را با رمز محافظت کنید تا هر بازیگری نتواند به شرکت شما بپیوندد
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ثبت رمز جدید
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}ارسال
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[تیم] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[خصوصی] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[همه] :
 
+STR_NETWORK_CHAT_COMPANY                                        :[تیم] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[تیم] به {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[خصوصی] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[خصوصی] به {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[همه] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}متن برای گفتگو در شبکه را وارد کنید
 
 # Network messages
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}هیچ دستگاه شبکه ای یافت نشد یا بازی بدون ENABLE_NETWORK ساخته شده
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}هیچ بازی شبکه ای یافت نشد
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}سرویس دهنده به درخواست پاسخ نمی دهد
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}محتوی NewFGRF یکسان نیست و نمی توان وصل شد
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}هماهنگ سازی بازی شبکه ای با شکست مواجه شد
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}اتصال بازی شبکه از بین رفت
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}فایل ذخیره شده بازی را نمی توان بارگزاری کرد
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}نمی توان سرویس دهنده را راه انداخت
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}نمی توان وصل شد
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}اتصال #{NUM} timed out
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}خطا در پروتکل تشخیص داده شد و اتصال بسته شد
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}ویرایش بازی این سرویس گیرنده با ویرایش سرویس دهنده مطابق نیست
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}رمز اشتباه
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}سرویس دهنده پر است
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}شما از ورود به این سرویس دهنده منع شده اید
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}شما از بازی اخراج شدید
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}تقلب روی این سرویس دهنده ممنوع است
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}شما دستورات بسیار زیادی به سرویس دهنده فرستادید
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :خطای اصلی
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :نمی توان نقشه را بارگزاری کرد
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :ارتباط از بین رفت...
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :خطای پروتکل
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :عدم مطابقت NewGRF
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :نداشتن اجازه دسترسی
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :دریافت بسته نامعتبر یا ناخواسته
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :ویرایش بازبینی اشتباه
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :نام فبلا استفاده شده
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :رمز اشتباه
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :شرکت اشتباه در DoCommand
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :اخراج توسط سرویس دهنده
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :تلاش کرد از تقلب استفاده کند
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :سرویس دهنده پر
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :دستورات زیادی ارسال کرده
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}اتصال مورد استفاده قطع شد
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :بازی متوقف شده ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :بازی هنوز متوقف است ({STRING})
 ############ End of leave-in-this-order
 
 # Content downloading window
@@ -1635,21 +1804,21 @@ STR_CONTENT_NAME_CAPTION                                        :{BLACK}نام
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}نام محتوی
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}برای مشاهده ی جزئیات روی خط کلیک کنید {}برای اتنخاب برای دانلود روی چک باکس کلیک کنید
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}انتخاب تمامی موارد
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}علامت گذاری تمامی موارد را برای دانلود
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}علامت گذاری تمامی موارد را برای بارگیری
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}انتخاب موارد ارتقاع
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} نشانه گذاری همه مواردی که برای بهبود محتوای موجود باید بارگیری شوند
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}پاک کردن تمام انتخاب ها
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}علامت گذاری تمامی موارد را برای عدم دانلود
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}علامت گذاری تمامی موارد برای بارگیری نکردن
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}برچسب/پایش بر اساس نام
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}دانلود
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}شروع به دانلود موارد انتخاب شده
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}حجم کل دانلود: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}اطلاعات محتوی
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER} شما این گزینه را برای دانلود انتخاب نکرده اید
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}شما این گزینه را برای دانلود انتخاب کرده اید
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}این پیوست برای دانلود انتخاب شده است
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER} شما این گزینه را برای بارگیری انتخاب نکرده اید
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}شما این گزینه را برای بارگیری انتخاب کرده اید
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}این پیوست برای بارگیری انتخاب شده است
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}شما این را از قبل داشته اید
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}این محتوی ناشناخته است و قابلیت دانلود در OpenTTD را ندارد
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}این محتوی ناشناخته است و قابلیت بارگیری در OpenTTD را ندارد
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}این مورد جایگزینی برای گزینه ی موجود است {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}نام:{WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}ویرایش: {WHITE}{STRING}
@@ -1676,14 +1845,14 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}در ح�
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}در حال درخواست فایل...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}دانلود شده {STRING} ({NUM} of {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}اتمام دانلود
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} از {BYTES} دانلود شده ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} از {BYTES} بارگیری شده ({NUM} %)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}امکان برقراری ارتباط با سرور ممکن نیست...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}دانلود ناموفق بود...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ارتباط از بین رفت
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فایل قابلیت درج ندارد
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل دانلود شده ممکن نیست
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل بارگیری شده ممکن نیست
 
 # Transparency settings window
 
@@ -1935,6 +2104,8 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطا
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+
+# NewGRF scanning window
 
 # Sign list window
 

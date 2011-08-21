@@ -1254,6 +1254,11 @@ STR_SEA_LEVEL_HIGH                                              :Visoka
 STR_SEA_LEVEL_CUSTOM                                            :Prilagođeno
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Prilagođeno ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Nijedna
+STR_RIVERS_FEW                                                  :Nekoliko
+STR_RIVERS_MODERATE                                             :Prosečno
+STR_RIVERS_LOT                                                  :Mnogo
+
 STR_DISASTER_NONE                                               :nema
 STR_DISASTER_REDUCED                                            :redukovani
 STR_DISASTER_NORMAL                                             :normalni
@@ -2512,6 +2517,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikova
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritam za drveća:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivo mora:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Broj reka:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Postepenost:
 STR_MAPGEN_VARIETY                                              :{BLACK}Raznolikost:
 STR_MAPGEN_GENERATE                                             :{WHITE}Napravi
@@ -2556,6 +2562,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Da li s
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% završeno
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Stvaranje sveta
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Određivanje toka reka
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Postavljanje drveća
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Postavljenje nepomičnih objekata
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Dodavanje grubih i stenovitih područja
@@ -2708,6 +2715,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nevažeć{P i a eg} tovar{P 0 "" a a}>
 STR_NEWGRF_INVALID_ENGINE                                       :<nevažeći model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}

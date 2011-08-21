@@ -1060,6 +1060,11 @@ STR_SEA_LEVEL_HIGH                                              :Alto
 STR_SEA_LEVEL_CUSTOM                                            :Personalizado
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizado ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Nenhum
+STR_RIVERS_FEW                                                  :Poucos
+STR_RIVERS_MODERATE                                             :Médio
+STR_RIVERS_LOT                                                  :Muitos
+
 STR_DISASTER_NONE                                               :Nenhum
 STR_DISASTER_REDUCED                                            :Reduzido
 STR_DISASTER_NORMAL                                             :Normal
@@ -2318,6 +2323,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gerador 
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorítimo de árvores
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Regularidade
 STR_MAPGEN_VARIETY                                              :{BLACK}Distribuição da variedade
 STR_MAPGEN_GENERATE                                             :{WHITE}Gerar
@@ -2362,6 +2368,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Você q
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Geração de mundo
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Geração de rios
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Geração de árvores
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração imóvel
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de area rochosa e irregular
@@ -2514,6 +2521,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga inválida>
 STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veíc. inválido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inválida>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}

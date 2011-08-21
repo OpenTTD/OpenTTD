@@ -1134,6 +1134,10 @@ STR_SEA_LEVEL_HIGH                                              :Aukštas
 STR_SEA_LEVEL_CUSTOM                                            :Nurodytas
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Nurodytas ({NUM}%)
 
+STR_RIVERS_NONE                                                 :{G=vyr}Nei vienas
+STR_RIVERS_FEW                                                  :Keli
+STR_RIVERS_MODERATE                                             :Vidutiniškai
+STR_RIVERS_LOT                                                  :Daug
 
 STR_DISASTER_NONE                                               :Nėra
 STR_DISASTER_REDUCED                                            :Sumažintas
@@ -1269,7 +1273,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Leisti 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Vienas ar daugiau blokų šiauriniame krašte yra ne tušti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Viena ar daugiau plokštumų nėra ant vandens
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Didž. stoties plotis: {ORANGE}{STRING} {RED}Dėmesio: Aukšti parametrai lėtina žaidimą
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Didž. stoties plotis: {ORANGE}{STRING} plytel{P ė ės ių} {RED}Dėmesio: Aukšti parametrai lėtina žaidimą
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Remontuoti sraigtasparnius automatiškai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Susieti kraštovaizdžio įrankių juostą su bėgių/kelių/vandens/orouostų įrankių juostomis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Mažame žemėlapyje naudojama žemės spalva: {ORANGE}{STRING}
@@ -1297,7 +1301,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Left-click scrolling: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Naudoti {ORANGE}{STRING}{LTBLUE} datos formatą žaidimo išsaugojimo varduose.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Naudoti {ORANGE}{STRING}{LTBLUE} datos formatą pavadinimuose, saugant žaidimą
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :Ilgas (31st Gruo 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :trumpas (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1326,10 +1330,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Palikti
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupuoti išlaidas finansinės ataskaitos lange: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks. traukinių vienam žaidėjui: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks. automobilių vienam žaidėjui: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks. lėktuvų vienam žaidėjui: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks. laivų vienam žaidėjui: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Didžiausias traukinių skaičius vienam žaidėjui: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Didžiausias automobilių skaičius vienam žaidėjui: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Didžiausias lėktuvų skaičius vienam žaidėjui: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Didžiausias laivų skaičius vienam žaidėjui: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Uždrausti kompiuteriui traukinius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Uždrausti kompiuteriui automobilius: {ORANGE}{STRING}
@@ -1860,6 +1864,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :siuntė per dau
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Galimas ryšio praradimas
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Paskutines {NUM} sekund{P ė ės žių} jokių duomenų iš serverio
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2392,6 +2397,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Pasaulio
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Medžių algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūros lygis:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upės:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jautrumas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Įvairovės paskirstymas:
 STR_MAPGEN_GENERATE                                             :{WHITE}Sukurti
@@ -2436,6 +2442,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ar jus 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% užbaigta
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pasaulio generacija
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upių generavimas
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Medžių generacija
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nejudinama generacija
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Daubų ir uolų generacija
@@ -2588,6 +2595,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vnt. <netinkamo krovinio>
 STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas variklis>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama industrija>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}

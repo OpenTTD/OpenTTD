@@ -1213,6 +1213,11 @@ STR_SEA_LEVEL_HIGH.p                                            :Высокие
 STR_SEA_LEVEL_CUSTOM                                            :Заданный
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Заданный ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Нет
+STR_RIVERS_FEW                                                  :Мало
+STR_RIVERS_MODERATE                                             :Средне
+STR_RIVERS_LOT                                                  :Много
+
 STR_DISASTER_NONE                                               :Выключено
 STR_DISASTER_REDUCED                                            :Умеренная
 STR_DISASTER_NORMAL                                             :Обычная
@@ -2493,6 +2498,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Гене
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Рек:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкость:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразие ландшафта:
 STR_MAPGEN_GENERATE                                             :{WHITE}Создать
@@ -2537,6 +2543,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Вы с
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% готово
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Создание мира
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Создание рек
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высадка лесов
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Создание объектов
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстановка декораций и камней
@@ -2689,6 +2696,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <неизвестного груза>
 STR_NEWGRF_INVALID_ENGINE                                       :<неправильная модель>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвестное предприятие>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список табличек - {COMMA} таблич{P ка ки ек}

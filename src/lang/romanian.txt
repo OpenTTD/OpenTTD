@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :Ridicat
 STR_SEA_LEVEL_CUSTOM                                            :Personalizat
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizat ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Deloc
+STR_RIVERS_FEW                                                  :Puţine
+STR_RIVERS_MODERATE                                             :Mediu
+STR_RIVERS_LOT                                                  :Multe
+
 STR_DISASTER_NONE                                               :Deloc
 STR_DISASTER_REDUCED                                            :Redus
 STR_DISASTER_NORMAL                                             :Frecvenţă normală
@@ -2317,6 +2322,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generato
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm arbore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivelul mării:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Râuri:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Netezime:
 STR_MAPGEN_VARIETY                                              :{BLACK}Distribuţia varietăţii:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generează
@@ -2361,6 +2367,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Sigur d
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% efectuat
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generare lume
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generarea râurilor
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generare arbori
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generare fixă
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zonă dură şi pietroasă
@@ -2513,6 +2520,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cargo invalid>
 STR_NEWGRF_INVALID_ENGINE                                       :<model vehicul invalid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industrie invalid>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne
