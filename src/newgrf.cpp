@@ -109,16 +109,16 @@ struct GrfProcessingState {
 	/** Clear temporary data before processing the next file in the current loading stage */
 	void ClearDataForNextFile()
 	{
-		nfo_line = 0;
-		skip_sprites = 0;
-		data_blocks = 0;
+		this->nfo_line = 0;
+		this->skip_sprites = 0;
+		this->data_blocks = 0;
 
-		spriteset_start = 0;
-		spriteset_numsets = 0;
-		spriteset_numents = 0;
-		spriteset_feature = GSF_INVALID;
+		this->spriteset_start = 0;
+		this->spriteset_numsets = 0;
+		this->spriteset_numents = 0;
+		this->spriteset_feature = GSF_INVALID;
 
-		memset(spritegroups, 0, sizeof(spritegroups));
+		memset(this->spritegroups, 0, sizeof(this->spritegroups));
 	}
 };
 
