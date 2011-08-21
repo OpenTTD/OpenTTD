@@ -95,12 +95,23 @@ struct GrfProcessingState {
 	byte data_blocks;         ///< Number of binary include sprites to read before processing the next pseudo sprite.
 	GrfDataType data_type;    ///< Type of the binary include sprites to read.
 
+	/* Currently referenceable spritesets */
+	SpriteID spriteset_start; ///< SpriteID of the first sprite of the first set.
+	int spriteset_numsets;    ///< Number of spritesets.
+	int spriteset_numents;    ///< Number of sprites per set.
+	int spriteset_feature;    ///< GrfSpecFeature of the spriteset.
+
 	/** Clear temporary data before processing the next file in the current loading stage */
 	void ClearDataForNextFile()
 	{
 		nfo_line = 0;
 		skip_sprites = 0;
 		data_blocks = 0;
+
+		spriteset_start = 0;
+		spriteset_numsets = 0;
+		spriteset_numents = 0;
+		spriteset_feature = GSF_INVALID;
 	}
 };
 
@@ -3885,10 +3896,10 @@ static void NewSpriteSet(ByteReader *buf)
 	uint8 num_sets  = buf->ReadByte();
 	uint16 num_ents = buf->ReadExtendedByte();
 
-	_cur.grffile->spriteset_start = _cur.spriteid;
-	_cur.grffile->spriteset_feature = feature;
-	_cur.grffile->spriteset_numsets = num_sets;
-	_cur.grffile->spriteset_numents = num_ents;
+	_cur.spriteset_start = _cur.spriteid;
+	_cur.spriteset_feature = feature;
+	_cur.spriteset_numsets = num_sets;
+	_cur.spriteset_numents = num_ents;
 
 	grfmsg(7, "New sprite set at %d of type %d, consisting of %d sets with %d views each (total %d)",
 		_cur.spriteid, feature, num_sets, num_ents, num_sets * num_ents
@@ -3937,31 +3948,31 @@ static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte 
 		return new CallbackResultSpriteGroup(spriteid);
 	}
 
-	if (spriteid >= _cur.grffile->spriteset_numsets) {
-		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set %u invalid, max %u", setid, type, spriteid, _cur.grffile->spriteset_numsets);
+	if (spriteid >= _cur.spriteset_numsets) {
+		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set %u invalid, max %u", setid, type, spriteid, _cur.spriteset_numsets);
 		return NULL;
 	}
 
 	/* Check if the sprite is within range. This can fail if the Action 0x01
 	 * is skipped, as TTDPatch mandates that Action 0x02s must be processed.
 	 * We don't have that rule, but must live by the Patch... */
-	if (_cur.grffile->spriteset_start + spriteid * num_sprites + num_sprites > _cur.spriteid) {
+	if (_cur.spriteset_start + spriteid * num_sprites + num_sprites > _cur.spriteid) {
 		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Real Sprite IDs 0x%04X - 0x%04X do not (all) exist (max 0x%04X), leaving empty",
 				setid, type,
-				_cur.grffile->spriteset_start + spriteid * num_sprites,
-				_cur.grffile->spriteset_start + spriteid * num_sprites + num_sprites - 1, _cur.spriteid - 1);
+				_cur.spriteset_start + spriteid * num_sprites,
+				_cur.spriteset_start + spriteid * num_sprites + num_sprites - 1, _cur.spriteid - 1);
 		return NULL;
 	}
 
-	if (feature != _cur.grffile->spriteset_feature) {
+	if (feature != _cur.spriteset_feature) {
 		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set feature 0x%02X does not match action feature 0x%02X, skipping",
 				setid, type,
-				_cur.grffile->spriteset_feature, feature);
+				_cur.spriteset_feature, feature);
 		return NULL;
 	}
 
 	assert(ResultSpriteGroup::CanAllocateItem());
-	return new ResultSpriteGroup(_cur.grffile->spriteset_start + spriteid * num_sprites, num_sprites);
+	return new ResultSpriteGroup(_cur.spriteset_start + spriteid * num_sprites, num_sprites);
 }
 
 /* Action 0x02 */
@@ -4114,11 +4125,11 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_AIRPORTS:
 				case GSF_RAILTYPES:
 				{
-					byte sprites     = _cur.grffile->spriteset_numents;
+					byte sprites     = _cur.spriteset_numents;
 					byte num_loaded  = type;
 					byte num_loading = buf->ReadByte();
 
-					if (_cur.grffile->spriteset_start == 0) {
+					if (_cur.spriteset_start == 0) {
 						grfmsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
 						return;
 					}
@@ -4154,8 +4165,8 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_AIRPORTTILES:
 				case GSF_OBJECTS:
 				case GSF_INDUSTRYTILES: {
-					byte num_spriteset_ents   = _cur.grffile->spriteset_numents;
-					byte num_spritesets       = _cur.grffile->spriteset_numsets;
+					byte num_spriteset_ents   = _cur.spriteset_numents;
+					byte num_spritesets       = _cur.spriteset_numsets;
 					byte num_building_sprites = max((uint8)1, type);
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
@@ -4165,7 +4176,7 @@ static void NewSpriteGroup(ByteReader *buf)
 					group->num_building_stages = max((uint8)1, num_spriteset_ents);
 
 					/* On error, bail out immediately. Temporary GRF data was already freed */
-					if (ReadSpriteLayout(buf, num_building_sprites, _cur.grffile->spriteset_start, num_spriteset_ents, num_spritesets, false, type == 0, &group->dts)) return;
+					if (ReadSpriteLayout(buf, num_building_sprites, _cur.spriteset_start, num_spriteset_ents, num_spritesets, false, type == 0, &group->dts)) return;
 					break;
 				}
 
