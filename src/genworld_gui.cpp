@@ -1365,7 +1365,7 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 	}
 
 	/* Don't update the screen too often. So update it once in every once in a while... */
-	if (!_network_dedicated && _gws.timer != 0 && _realtime_tick - _gws.timer < GENWORLD_REDRAW_TIMEOUT) return;
+	if (!_network_dedicated && _gws.timer != 0 && _realtime_tick - _gws.timer < MODAL_PROGRESS_REDRAW_TIMEOUT) return;
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
 	_gws.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_gws.current == 0 ? 0 : _gws.current - 1) / _gws.total;

@@ -22,8 +22,8 @@ enum LandscapeGenerator {
 	LG_TERRAGENESIS = 1,  ///< TerraGenesis Perlin landscape generator
 };
 
-static const uint GENERATE_NEW_SEED       = UINT_MAX; ///< Create a new random seed
-static const uint GENWORLD_REDRAW_TIMEOUT = 200;      ///< Timeout between redraws
+static const uint GENERATE_NEW_SEED = UINT_MAX; ///< Create a new random seed
+static const uint MODAL_PROGRESS_REDRAW_TIMEOUT = 200; ///< Timeout between redraws
 
 /** Modes for GenerateWorld */
 enum GenWorldMode {
