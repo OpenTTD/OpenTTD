@@ -1565,6 +1565,12 @@ void DrawDirtyBlocks()
 		_realtime_tick += MODAL_PROGRESS_REDRAW_TIMEOUT;
 		_modal_progress_paint_mutex->BeginCritical();
 		_modal_progress_work_mutex->BeginCritical();
+
+		extern void SwitchToMode(SwitchMode new_mode);
+		if (_switch_mode != SM_NONE && !HasModalProgress()) {
+			SwitchToMode(_switch_mode);
+			_switch_mode = SM_NONE;
+		}
 	}
 
 	y = 0;
