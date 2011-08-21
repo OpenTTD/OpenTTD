@@ -78,6 +78,8 @@ enum GrfDataType {
 	GDT_SOUND,
 };
 
+static const uint MAX_SPRITEGROUP = UINT8_MAX; ///< Maximum GRF-local ID for a spritegroup.
+
 /** Temporary data during loading of GRFs */
 struct GrfProcessingState {
 	/* Global state */
@@ -101,6 +103,9 @@ struct GrfProcessingState {
 	int spriteset_numents;    ///< Number of sprites per set.
 	int spriteset_feature;    ///< GrfSpecFeature of the spriteset.
 
+	/* Currently referenceable spritegroups */
+	SpriteGroup *spritegroups[MAX_SPRITEGROUP + 1];
+
 	/** Clear temporary data before processing the next file in the current loading stage */
 	void ClearDataForNextFile()
 	{
@@ -112,6 +117,8 @@ struct GrfProcessingState {
 		spriteset_numsets = 0;
 		spriteset_numents = 0;
 		spriteset_feature = GSF_INVALID;
+
+		memset(spritegroups, 0, sizeof(spritegroups));
 	}
 };
 
@@ -302,11 +309,6 @@ static void ClearTemporaryNewGRFData(GRFFile *gf)
 		l = l2;
 	}
 	gf->label = NULL;
-
-	/* Clear the list of spritegroups */
-	free(gf->spritegroups);
-	gf->spritegroups = NULL;
-	gf->spritegroups_count = 0;
 }
 
 /**
@@ -3932,12 +3934,12 @@ static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 grou
 		return new CallbackResultSpriteGroup(groupid);
 	}
 
-	if (groupid >= _cur.grffile->spritegroups_count || _cur.grffile->spritegroups[groupid] == NULL) {
+	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == NULL) {
 		grfmsg(1, "GetGroupFromGroupID(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty", setid, type, groupid);
 		return NULL;
 	}
 
-	return _cur.grffile->spritegroups[groupid];
+	return _cur.spritegroups[groupid];
 }
 
 /* Helper function to either create a callback or a result sprite group. */
@@ -3993,15 +3995,6 @@ static void NewSpriteGroup(ByteReader *buf)
 	uint8 feature = buf->ReadByte();
 	uint8 setid   = buf->ReadByte();
 	uint8 type    = buf->ReadByte();
-
-	if (setid >= _cur.grffile->spritegroups_count) {
-		/* Allocate memory for new sprite group references. */
-		_cur.grffile->spritegroups = ReallocT(_cur.grffile->spritegroups, setid + 1);
-		/* Initialise new space to NULL */
-		for (; _cur.grffile->spritegroups_count < (setid + 1); _cur.grffile->spritegroups_count++) {
-			_cur.grffile->spritegroups[_cur.grffile->spritegroups_count] = NULL;
-		}
-	}
 
 	/* Sprite Groups are created here but they are allocated from a pool, so
 	 * we do not need to delete anything if there is an exception from the
@@ -4216,7 +4209,7 @@ static void NewSpriteGroup(ByteReader *buf)
 		}
 	}
 
-	_cur.grffile->spritegroups[setid] = act_group;
+	_cur.spritegroups[setid] = act_group;
 }
 
 static CargoID TranslateCargo(uint8 feature, uint8 ctype)
@@ -4279,8 +4272,8 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 
 static bool IsValidGroupID(uint16 groupid, const char *function)
 {
-	if (groupid >= _cur.grffile->spritegroups_count || _cur.grffile->spritegroups[groupid] == NULL) {
-		grfmsg(1, "%s: Spriteset 0x%04X out of range (maximum 0x%02X) or empty, skipping.", function, groupid, _cur.grffile->spritegroups_count - 1);
+	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == NULL) {
+		grfmsg(1, "%s: Spriteset 0x%04X out of range or empty, skipping.", function, groupid);
 		return false;
 	}
 
@@ -4345,9 +4338,9 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 			grfmsg(7, "VehicleMapSpriteGroup: [%d] Engine %d...", i, engine);
 
 			if (wagover) {
-				SetWagonOverrideSprites(engine, ctype, _cur.grffile->spritegroups[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, ctype, _cur.spritegroups[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, ctype, _cur.grffile->spritegroups[groupid]);
+				SetCustomEngineSprites(engine, ctype, _cur.spritegroups[groupid]);
 			}
 		}
 	}
@@ -4361,9 +4354,9 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 		EngineID engine = engines[i];
 
 		if (wagover) {
-			SetWagonOverrideSprites(engine, CT_DEFAULT, _cur.grffile->spritegroups[groupid], last_engines, last_engines_count);
+			SetWagonOverrideSprites(engine, CT_DEFAULT, _cur.spritegroups[groupid], last_engines, last_engines_count);
 		} else {
-			SetCustomEngineSprites(engine, CT_DEFAULT, _cur.grffile->spritegroups[groupid]);
+			SetCustomEngineSprites(engine, CT_DEFAULT, _cur.spritegroups[groupid]);
 			SetEngineGRF(engine, _cur.grffile);
 		}
 	}
@@ -4392,7 +4385,7 @@ static void CanalMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		}
 
 		_water_feature[cf].grffile = _cur.grffile;
-		_water_feature[cf].group = _cur.grffile->spritegroups[groupid];
+		_water_feature[cf].group = _cur.spritegroups[groupid];
 	}
 }
 
@@ -4421,7 +4414,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 				continue;
 			}
 
-			statspec->grf_prop.spritegroup[ctype] = _cur.grffile->spritegroups[groupid];
+			statspec->grf_prop.spritegroup[ctype] = _cur.spritegroups[groupid];
 		}
 	}
 
@@ -4441,7 +4434,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		statspec->grf_prop.spritegroup[CT_DEFAULT] = _cur.grffile->spritegroups[groupid];
+		statspec->grf_prop.spritegroup[CT_DEFAULT] = _cur.spritegroups[groupid];
 		statspec->grf_prop.grffile = _cur.grffile;
 		statspec->grf_prop.local_id = stations[i];
 		StationClass::Assign(statspec);
@@ -4476,7 +4469,7 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		hs->grf_prop.spritegroup[0] = _cur.grffile->spritegroups[groupid];
+		hs->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
 	}
 }
 
@@ -4507,7 +4500,7 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		indsp->grf_prop.spritegroup[0] = _cur.grffile->spritegroups[groupid];
+		indsp->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
 	}
 }
 
@@ -4538,7 +4531,7 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		indtsp->grf_prop.spritegroup[0] = _cur.grffile->spritegroups[groupid];
+		indtsp->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
 	}
 }
 
@@ -4566,7 +4559,7 @@ static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 		CargoSpec *cs = CargoSpec::Get(cid);
 		cs->grffile = _cur.grffile;
-		cs->group = _cur.grffile->spritegroups[groupid];
+		cs->group = _cur.spritegroups[groupid];
 	}
 }
 
@@ -4599,7 +4592,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 				continue;
 			}
 
-			spec->grf_prop.spritegroup[ctype] = _cur.grffile->spritegroups[groupid];
+			spec->grf_prop.spritegroup[ctype] = _cur.spritegroups[groupid];
 		}
 	}
 
@@ -4619,7 +4612,7 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		spec->grf_prop.spritegroup[0] = _cur.grffile->spritegroups[groupid];
+		spec->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
 		spec->grf_prop.grffile        = _cur.grffile;
 		spec->grf_prop.local_id       = objects[i];
 	}
@@ -4646,7 +4639,7 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 				RailtypeInfo *rti = &_railtypes[railtypes[i]];
 
 				rti->grffile[ctype] = _cur.grffile;
-				rti->group[ctype] = _cur.grffile->spritegroups[groupid];
+				rti->group[ctype] = _cur.spritegroups[groupid];
 			}
 		}
 	}
@@ -4682,7 +4675,7 @@ static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		as->grf_prop.spritegroup[0] = _cur.grffile->spritegroups[groupid];
+		as->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
 	}
 }
 
@@ -4713,7 +4706,7 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		airtsp->grf_prop.spritegroup[0] = _cur.grffile->spritegroups[groupid];
+		airtsp->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
 	}
 }
 
@@ -4735,11 +4728,6 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 	 * W cid           cargo ID (sprite group ID) for this type of cargo
 	 * W def-cid       default cargo ID (sprite group ID) */
 
-	if (_cur.grffile->spritegroups == NULL) {
-		grfmsg(1, "FeatureMapSpriteGroup: No sprite groups to work on! Skipping");
-		return;
-	}
-
 	uint8 feature = buf->ReadByte();
 	uint8 idcount = buf->ReadByte();
 
@@ -4752,7 +4740,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 
 		grfmsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature %d", feature);
 
-		AddGenericCallback(feature, _cur.grffile, _cur.grffile->spritegroups[groupid]);
+		AddGenericCallback(feature, _cur.grffile, _cur.spritegroups[groupid]);
 		return;
 	}
 

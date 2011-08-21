@@ -79,9 +79,6 @@ struct GRFFile {
 	uint32 grfid;
 	byte grf_version;
 
-	int spritegroups_count;
-	struct SpriteGroup **spritegroups;
-
 	uint sound_offset;
 	uint16 num_sounds;
 
