@@ -594,8 +594,11 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
 	return strcasecmp(c1->GetName(), c2->GetName());
 }
 
-/** Scan for all NewGRFs. */
-void ScanNewGRFFiles()
+/**
+ * Scan for all NewGRFs.
+ * @param callback The callback to call after the scanning is complete.
+ */
+void ScanNewGRFFiles(NewGRFScanCallback *callback)
 {
 	ClearGRFConfigList(&_all_grfs);
 
@@ -636,6 +639,7 @@ void ScanNewGRFFiles()
 	/* Yes... these are the NewGRF windows */
 	InvalidateWindowClassesData(WC_SAVELOAD);
 	InvalidateWindowData(WC_GAME_OPTIONS, 0, GOID_NEWGRF_RESCANNED);
+	if (callback != NULL) callback->OnNewGRFsScanned();
 }
 
 

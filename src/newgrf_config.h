@@ -188,7 +188,15 @@ extern GRFConfig *_grfconfig;         ///< First item in list of current GRF set
 extern GRFConfig *_grfconfig_newgame; ///< First item in list of default GRF set up
 extern GRFConfig *_grfconfig_static;  ///< First item in list of static GRF set up
 
-void ScanNewGRFFiles();
+/** Callback for NewGRF scanning. */
+struct NewGRFScanCallback {
+	/** Make sure the right destructor gets called. */
+	virtual ~NewGRFScanCallback() {}
+	/** Called whenever the NewGRF scan completed. */
+	virtual void OnNewGRFsScanned() = 0;
+};
+
+void ScanNewGRFFiles(NewGRFScanCallback *callback = NULL);
 void CheckForMissingSprites();
 const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = NULL, uint32 desired_version = 0);
 GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
