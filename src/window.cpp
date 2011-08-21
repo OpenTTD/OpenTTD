@@ -469,6 +469,27 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 }
 
 /**
+ * Returns whether a window may be shown or not.
+ * @param w The window to consider.
+ * @return True iff it may be shown, otherwise false.
+ */
+static bool MayBeShown(const Window *w)
+{
+	/* If we're not modal, everything is okay. */
+	if (!HasModalProgress()) return true;
+
+	switch (w->window_class) {
+		case WC_MAIN_WINDOW:    ///< The background, i.e. the game.
+		case WC_MODAL_PROGRESS: ///< The actual progress window.
+		case WC_QUERY_STRING:   ///< The abort window.
+			return true;
+
+		default:
+			return false;
+	}
+}
+
+/**
  * Generate repaint events for the visible part of window w within the rectangle.
  *
  * The function goes recursively upwards in the window stack, and splits the rectangle
@@ -484,11 +505,12 @@ static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bo
 {
 	const Window *v;
 	FOR_ALL_WINDOWS_FROM_BACK_FROM(v, w->z_front) {
-		if (right > v->left &&
+		if (MayBeShown(v) &&
+				right > v->left &&
 				bottom > v->top &&
 				left < v->left + v->width &&
 				top < v->top + v->height) {
-			/* v and rectangle intersect with eeach other */
+			/* v and rectangle intersect with each other */
 			int x;
 
 			if (left < (x = v->left)) {
@@ -546,7 +568,8 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 	_cur_dpi = &bk;
 
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (right > w->left &&
+		if (MayBeShown(w) &&
+				right > w->left &&
 				bottom > w->top &&
 				left < w->left + w->width &&
 				top < w->top + w->height) {
