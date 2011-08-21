@@ -23,7 +23,6 @@ enum LandscapeGenerator {
 };
 
 static const uint GENERATE_NEW_SEED = UINT_MAX; ///< Create a new random seed
-static const uint MODAL_PROGRESS_REDRAW_TIMEOUT = 200; ///< Timeout between redraws
 
 /** Modes for GenerateWorld */
 enum GenWorldMode {
@@ -42,7 +41,6 @@ typedef void GWAbortProc(); ///< Called when genworld is aborted
 
 /** Properties of current genworld process */
 struct GenWorldInfo {
-	bool active;           ///< Is generating world active
 	bool abort;            ///< Whether to abort the thread ASAP
 	bool quit_thread;      ///< Do we want to quit the active thread
 	bool threaded;         ///< Whether we run _GenerateWorld threaded
@@ -71,16 +69,6 @@ enum GenWorldProgress {
 	GWP_CLASS_COUNT
 };
 
-/**
- * Check if we are currently in the process of generating a world.
- * @return are we generating world?
- */
-static inline bool HasModalProgress()
-{
-	extern GenWorldInfo _gw;
-	return _gw.active;
-}
-
 /* genworld.cpp */
 bool IsGenerateWorldThreaded();
 void GenerateWorldSetCallback(GWDoneProc *proc);
@@ -101,8 +89,6 @@ void StartNewGameWithoutGUI(uint seed);
 void ShowCreateScenario();
 void StartScenarioEditor();
 
-extern class ThreadMutex *_modal_progress_work_mutex;
-extern class ThreadMutex *_modal_progress_paint_mutex;
 extern bool _generating_world;
 
 #endif /* GENWORLD_H */

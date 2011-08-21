@@ -18,7 +18,7 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "console_gui.h"
-#include "genworld.h"
+#include "progress.h"
 #include "transparency_gui.h"
 #include "map_func.h"
 #include "sound_func.h"

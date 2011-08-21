@@ -640,6 +640,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\progress.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\rail.cpp"
 				>
 			</File>
@@ -1325,6 +1329,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\pbs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\progress.h"
 				>
 			</File>
 			<File

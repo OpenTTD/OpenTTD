@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "gfx_func.h"
 #include "fontcache.h"
-#include "genworld.h"
+#include "progress.h"
 #include "zoom_func.h"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"

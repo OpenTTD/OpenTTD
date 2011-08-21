@@ -40,6 +40,7 @@
 #include "ai/ai_config.hpp"
 #include "settings_func.h"
 #include "genworld.h"
+#include "progress.h"
 #include "group.h"
 #include "strings_func.h"
 #include "date_func.h"

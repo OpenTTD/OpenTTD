@@ -29,6 +29,7 @@
 #include "settings_func.h"
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
+#include "progress.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

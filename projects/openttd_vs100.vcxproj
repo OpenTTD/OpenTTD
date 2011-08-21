@@ -343,6 +343,7 @@
     <ClCompile Include="..\src\order_backup.cpp" />
     <ClCompile Include="..\src\os_timer.cpp" />
     <ClCompile Include="..\src\pbs.cpp" />
+    <ClCompile Include="..\src\progress.cpp" />
     <ClCompile Include="..\src\rail.cpp" />
     <ClCompile Include="..\src\rev.cpp" />
     <ClCompile Include="..\src\road.cpp" />
@@ -514,6 +515,7 @@
     <ClInclude Include="..\src\order_func.h" />
     <ClInclude Include="..\src\order_type.h" />
     <ClInclude Include="..\src\pbs.h" />
+    <ClInclude Include="..\src\progress.h" />
     <ClInclude Include="..\src\querystring_gui.h" />
     <ClInclude Include="..\src\rail.h" />
     <ClInclude Include="..\src\rail_gui.h" />

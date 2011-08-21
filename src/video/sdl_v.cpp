@@ -19,7 +19,7 @@
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
 #include "../thread/thread.h"
-#include "../genworld.h"
+#include "../progress.h"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
 #include "sdl_v.h"

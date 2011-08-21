@@ -51,6 +51,7 @@ openttd.cpp
 order_backup.cpp
 os_timer.cpp
 pbs.cpp
+progress.cpp
 rail.cpp
 rev.cpp
 road.cpp
@@ -247,6 +248,7 @@ order_base.h
 order_func.h
 order_type.h
 pbs.h
+progress.h
 querystring_gui.h
 rail.h
 rail_gui.h

@@ -17,6 +17,7 @@
 #include "console_gui.h"
 #include "viewport_func.h"
 #include "genworld.h"
+#include "progress.h"
 #include "blitter/factory.hpp"
 #include "zoom_func.h"
 #include "vehicle_base.h"
