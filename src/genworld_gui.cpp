@@ -1396,10 +1396,10 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 	 * paint thread. The 'other' thread already has the paint thread rights so
 	 * this ensures us that we are waiting until the paint thread is done
 	 * before we reacquire the mapgen rights */
-	_genworld_mapgen_mutex->EndCritical();
-	_genworld_paint_mutex->BeginCritical();
-	_genworld_mapgen_mutex->BeginCritical();
-	_genworld_paint_mutex->EndCritical();
+	_modal_progress_work_mutex->EndCritical();
+	_modal_progress_paint_mutex->BeginCritical();
+	_modal_progress_work_mutex->BeginCritical();
+	_modal_progress_paint_mutex->EndCritical();
 
 	_gws.timer = _realtime_tick;
 }

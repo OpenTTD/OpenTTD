@@ -1557,14 +1557,14 @@ void DrawDirtyBlocks()
 	if (HasModalProgress()) {
 		/* We are generating the world, so release our rights to the map and
 		 * painting while we are waiting a bit. */
-		_genworld_paint_mutex->EndCritical();
-		_genworld_mapgen_mutex->EndCritical();
+		_modal_progress_paint_mutex->EndCritical();
+		_modal_progress_work_mutex->EndCritical();
 
 		/* Wait a while and update _realtime_tick so we are given the rights */
 		CSleep(GENWORLD_REDRAW_TIMEOUT);
 		_realtime_tick += GENWORLD_REDRAW_TIMEOUT;
-		_genworld_paint_mutex->BeginCritical();
-		_genworld_mapgen_mutex->BeginCritical();
+		_modal_progress_paint_mutex->BeginCritical();
+		_modal_progress_work_mutex->BeginCritical();
 	}
 
 	y = 0;

@@ -54,10 +54,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
  */
 GenWorldInfo _gw;
 
-/** Rights for the map generation */
-ThreadMutex *_genworld_mapgen_mutex = ThreadMutex::New();
-/** Rights for the painting */
-ThreadMutex *_genworld_paint_mutex = ThreadMutex::New();
+/** Rights for the performing work. */
+ThreadMutex *_modal_progress_work_mutex = ThreadMutex::New();
+/** Rights for the painting. */
+ThreadMutex *_modal_progress_paint_mutex = ThreadMutex::New();
 
 /** Whether we are generating the map or not. */
 bool _generating_world;
@@ -101,7 +101,7 @@ static void _GenerateWorld(void *)
 
 	try {
 		_generating_world = true;
-		_genworld_mapgen_mutex->BeginCritical();
+		_modal_progress_work_mutex->BeginCritical();
 		if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
@@ -177,7 +177,7 @@ static void _GenerateWorld(void *)
 		IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
 		CleanupGeneration();
-		_genworld_mapgen_mutex->EndCritical();
+		_modal_progress_work_mutex->EndCritical();
 
 		ShowNewGRFError();
 
@@ -192,7 +192,7 @@ static void _GenerateWorld(void *)
 	} catch (...) {
 		if (_cur_company.IsValid()) _cur_company.Restore();
 		_generating_world = false;
-		_genworld_mapgen_mutex->EndCritical();
+		_modal_progress_work_mutex->EndCritical();
 		throw;
 	}
 }
@@ -225,15 +225,15 @@ void WaitTillGeneratedWorld()
 {
 	if (_gw.thread == NULL) return;
 
-	_genworld_mapgen_mutex->EndCritical();
-	_genworld_paint_mutex->EndCritical();
+	_modal_progress_work_mutex->EndCritical();
+	_modal_progress_paint_mutex->EndCritical();
 	_gw.quit_thread = true;
 	_gw.thread->Join();
 	delete _gw.thread;
 	_gw.thread   = NULL;
 	_gw.threaded = false;
-	_genworld_mapgen_mutex->BeginCritical();
-	_genworld_paint_mutex->BeginCritical();
+	_modal_progress_work_mutex->BeginCritical();
+	_modal_progress_paint_mutex->BeginCritical();
 }
 
 /**
@@ -318,9 +318,9 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 			!ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
-		_genworld_mapgen_mutex->EndCritical();
+		_modal_progress_work_mutex->EndCritical();
 		_GenerateWorld(NULL);
-		_genworld_mapgen_mutex->BeginCritical();
+		_modal_progress_work_mutex->BeginCritical();
 		return;
 	}
 

@@ -653,8 +653,8 @@ int ttd_main(int argc, char *argv[])
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
 	/* Take our initial lock on whatever we might want to do! */
-	_genworld_paint_mutex->BeginCritical();
-	_genworld_mapgen_mutex->BeginCritical();
+	_modal_progress_paint_mutex->BeginCritical();
+	_modal_progress_work_mutex->BeginCritical();
 
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();
