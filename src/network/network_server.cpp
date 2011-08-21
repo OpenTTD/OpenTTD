@@ -975,7 +975,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *
 	 * branches we make tarballs of the OpenTTDs compiled from tarball
 	 * will have the lower bits set to 0. As such they would become
 	 * incompatible, which we would like to prevent by this. */
-	if (HasBit(_openttd_newgrf_version, 19)) {
+	if (IsReleasedVersion()) {
 		if (_openttd_newgrf_version != p->Recv_uint32()) {
 			/* The version we get from the client differs, it must have the
 			 * wrong version. The client must be wrong. */

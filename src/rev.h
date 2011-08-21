@@ -17,4 +17,6 @@ extern const char _openttd_build_date[];
 extern const byte _openttd_revision_modified;
 extern const uint32 _openttd_newgrf_version;
 
+bool IsReleasedVersion();
+
 #endif /* REV_H */

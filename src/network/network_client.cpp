@@ -381,7 +381,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 	 * branches we make tarballs of the OpenTTDs compiled from tarball
 	 * will have the lower bits set to 0. As such they would become
 	 * incompatible, which we would like to prevent by this. */
-	if (HasBit(_openttd_newgrf_version, 19)) p->Send_uint32(_openttd_newgrf_version);
+	if (IsReleasedVersion()) p->Send_uint32(_openttd_newgrf_version);
 	my_client->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
