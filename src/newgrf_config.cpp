@@ -17,6 +17,8 @@
 #include "gfx_func.h"
 #include "newgrf_text.h"
 #include "window_func.h"
+#include "progress.h"
+#include "thread/thread.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -527,7 +529,14 @@ compatible_grf:
 
 /** Helper for scanning for files with GRF as extension */
 class GRFFileScanner : FileScanner {
+	uint next_update; ///< The next (realtime tick) we do update the screen.
+	uint num_scanned; ///< The number of GRFs we have scanned.
+
 public:
+	GRFFileScanner() : next_update(_realtime_tick), num_scanned(0)
+	{
+	}
+
 	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
 
 	/** Do the scan for GRFs. */
@@ -571,6 +580,22 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
 		added = false;
 	}
 
+	this->num_scanned++;
+	if (this->next_update <= _realtime_tick) {
+		_modal_progress_work_mutex->EndCritical();
+		_modal_progress_paint_mutex->BeginCritical();
+
+		const char *name = NULL;
+		if (c->name != NULL) name = GetGRFStringFromGRFText(c->name->text);
+		if (name == NULL) name = c->filename;
+		DEBUG(grf, 0, "Scanning %i: %s", this->num_scanned, name);
+
+		_modal_progress_work_mutex->BeginCritical();
+		_modal_progress_paint_mutex->EndCritical();
+
+		this->next_update = _realtime_tick + 200;
+	}
+
 	if (!added) {
 		/* File couldn't be opened, or is either not a NewGRF or is a
 		 * 'system' NewGRF or it's already known, so forget about it. */
@@ -595,11 +620,20 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
 }
 
 /**
- * Scan for all NewGRFs.
+ * Really perform the scan for all NewGRFs.
  * @param callback The callback to call after the scanning is complete.
  */
-void ScanNewGRFFiles(NewGRFScanCallback *callback)
+void DoScanNewGRFFiles(void *callback)
 {
+	/* First set the modal progress. This ensures that it will eventually let go of the paint mutex. */
+	SetModalProgress(true);
+	_modal_progress_paint_mutex->BeginCritical();
+
+	/* Only then can we really start, especially by marking the whole screen dirty. Get those other windows hidden!. */
+	MarkWholeScreenDirty();
+	_modal_progress_work_mutex->BeginCritical();
+	_modal_progress_paint_mutex->EndCritical();
+
 	ClearGRFConfigList(&_all_grfs);
 
 	TarScanner::DoScan();
@@ -636,12 +670,32 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
 #endif
 	}
 
+	_modal_progress_work_mutex->EndCritical();
+	_modal_progress_paint_mutex->BeginCritical();
+
 	/* Yes... these are the NewGRF windows */
-	InvalidateWindowClassesData(WC_SAVELOAD);
-	InvalidateWindowData(WC_GAME_OPTIONS, 0, GOID_NEWGRF_RESCANNED);
-	if (callback != NULL) callback->OnNewGRFsScanned();
+	InvalidateWindowClassesData(WC_SAVELOAD, 0, true);
+	InvalidateWindowData(WC_GAME_OPTIONS, 0, GOID_NEWGRF_RESCANNED, true);
+	if (callback != NULL) ((NewGRFScanCallback*)callback)->OnNewGRFsScanned();
+
+	DeleteWindowByClass(WC_MODAL_PROGRESS);
+	SetModalProgress(false);
+	MarkWholeScreenDirty();
+	_modal_progress_paint_mutex->EndCritical();
 }
 
+/**
+ * Scan for all NewGRFs.
+ * @param callback The callback to call after the scanning is complete.
+ */
+void ScanNewGRFFiles(NewGRFScanCallback *callback)
+{
+	if (!ThreadObject::New(&DoScanNewGRFFiles, callback, NULL)) {
+		_modal_progress_work_mutex->EndCritical();
+		DoScanNewGRFFiles(callback);
+		_modal_progress_work_mutex->BeginCritical();
+	}
+}
 
 /**
  * Find a NewGRF in the scanned list.
