@@ -265,11 +265,15 @@ static void ShutdownGame()
 	FioCloseAll();
 }
 
-static void LoadIntroGame()
+/**
+ * Load the introduction game.
+ * @param load_newgrfs Whether to load the NewGRFs or not.
+ */
+static void LoadIntroGame(bool load_newgrfs = true)
 {
 	_game_mode = GM_MENU;
 
-	ResetGRFConfig(false);
+	if (load_newgrfs) ResetGRFConfig(false);
 
 	/* Setup main window */
 	ResetWindowSystem();
@@ -709,6 +713,8 @@ int ttd_main(int argc, char *argv[])
 
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
 	WaitTillGeneratedWorld();
+
+	LoadIntroGame(false);
 
 	CheckForMissingGlyphsInLoadedLanguagePack();
 
@@ -1227,7 +1233,7 @@ void GameLoop()
 	}
 
 	/* switch game mode? */
-	if (_switch_mode != SM_NONE) {
+	if (_switch_mode != SM_NONE && !HasModalProgress()) {
 		SwitchToMode(_switch_mode);
 		_switch_mode = SM_NONE;
 	}
