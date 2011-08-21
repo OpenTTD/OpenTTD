@@ -1554,7 +1554,7 @@ void DrawDirtyBlocks()
 	int x;
 	int y;
 
-	if (IsGeneratingWorld()) {
+	if (HasModalProgress()) {
 		/* We are generating the world, so release our rights to the map and
 		 * painting while we are waiting a bit. */
 		_genworld_paint_mutex->EndCritical();

@@ -282,7 +282,7 @@ struct MainWindow : Window
 		 * generating the world, otherwise they create threading
 		 * problem during the generating, resulting in random
 		 * assertions that are hard to trigger and debug */
-		if (IsGeneratingWorld()) return ES_NOT_HANDLED;
+		if (HasModalProgress()) return ES_NOT_HANDLED;
 
 		switch (num) {
 			case GHK_ABANDON:

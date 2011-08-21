@@ -500,10 +500,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	/* Cost estimation is generally only done when the
 	 * local user presses shift while doing somthing.
 	 * However, in case of incoming network commands,
-	 * map generation of the pause button we do want
+	 * map generation or the pause button we do want
 	 * to execute. */
 	bool estimate_only = _shift_pressed && IsLocalCompany() &&
-			!IsGeneratingWorld() &&
+			!_generating_world &&
 			!(cmd & CMD_NETWORK_COMMAND) &&
 			(cmd & CMD_ID_MASK) != CMD_PAUSE;
 

@@ -106,7 +106,7 @@ bool HasRoadTypesAvail(const CompanyID company, const RoadTypes rts)
 {
 	RoadTypes avail_roadtypes;
 
-	if (company == OWNER_TOWN || _game_mode == GM_EDITOR || IsGeneratingWorld()) {
+	if (company == OWNER_TOWN || _game_mode == GM_EDITOR || _generating_world) {
 		avail_roadtypes = ROADTYPES_ROAD;
 	} else {
 		Company *c = Company::GetIfValid(company);

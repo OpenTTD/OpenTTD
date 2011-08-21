@@ -594,7 +594,7 @@ void VideoDriver_SDL::MainLoop()
 		}
 
 		/* End of the critical part. */
-		if (_draw_threaded && !IsGeneratingWorld()) {
+		if (_draw_threaded && !HasModalProgress()) {
 			_draw_mutex->SendSignal();
 		} else {
 			/* Oh, we didn't have threads, then just draw unthreaded */

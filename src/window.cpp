@@ -1997,7 +1997,7 @@ void HandleKeypress(uint32 raw_key)
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || IsLocalCompany());
+	assert(HasModalProgress() || IsLocalCompany());
 
 	/* Setup event */
 	uint16 key     = GB(raw_key,  0, 16);
@@ -2063,7 +2063,7 @@ static int _input_events_this_tick = 0;
  */
 static void HandleAutoscroll()
 {
-	if (_settings_client.gui.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
+	if (_settings_client.gui.autoscroll && _game_mode != GM_MENU && !HasModalProgress()) {
 		int x = _cursor.pos.x;
 		int y = _cursor.pos.y;
 		Window *w = FindWindowFromPt(x, y);
@@ -2158,7 +2158,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || IsLocalCompany());
+	assert(HasModalProgress() || IsLocalCompany());
 
 	HandlePlacePresize();
 	UpdateTileSelection();
@@ -2182,8 +2182,8 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (click != MC_HOVER && !MaybeBringWindowToFront(w)) return;
 	ViewPort *vp = IsPtInWindowViewport(w, x, y);
 
-	/* Don't allow any action in a viewport if either in menu of in generating world */
-	if (vp != NULL && (_game_mode == GM_MENU || IsGeneratingWorld())) return;
+	/* Don't allow any action in a viewport if either in menu or when having a modal progress window */
+	if (vp != NULL && (_game_mode == GM_MENU || HasModalProgress())) return;
 
 	if (mousewheel != 0) {
 		/* Send mousewheel event to window */
@@ -2248,7 +2248,7 @@ void HandleMouseEvents()
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || IsLocalCompany());
+	assert(HasModalProgress() || IsLocalCompany());
 
 	static int double_click_time = 0;
 	static Point double_click_pos = {0, 0};
@@ -2355,7 +2355,7 @@ void InputLoop()
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || IsLocalCompany());
+	assert(HasModalProgress() || IsLocalCompany());
 
 	CheckSoftLimit();
 	HandleKeyScrolling();

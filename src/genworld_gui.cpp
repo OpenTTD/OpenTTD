@@ -1250,7 +1250,7 @@ static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
 		AbortGeneratingWorld();
-	} else if (IsGeneratingWorld() && !IsGeneratingWorldAborted()) {
+	} else if (HasModalProgress() && !IsGeneratingWorldAborted()) {
 		SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
 	}
 }

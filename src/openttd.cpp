@@ -1113,7 +1113,7 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		return;
 	}
-	if (IsGeneratingWorld()) return;
+	if (HasModalProgress()) return;
 
 	ClearStorageChanges(false);
 
@@ -1217,7 +1217,7 @@ void GameLoop()
 	/* Check for UDP stuff */
 	if (_network_available) NetworkUDPGameLoop();
 
-	if (_networking && !IsGeneratingWorld()) {
+	if (_networking && !HasModalProgress()) {
 		/* Multiplayer */
 		NetworkGameLoop();
 	} else {

@@ -75,7 +75,7 @@ enum GenWorldProgress {
  * Check if we are currently in the process of generating a world.
  * @return are we generating world?
  */
-static inline bool IsGeneratingWorld()
+static inline bool HasModalProgress()
 {
 	extern GenWorldInfo _gw;
 	return _gw.active;
