@@ -1216,7 +1216,7 @@ static const NWidgetPart _nested_generate_progress_widgets[] = {
 
 static const WindowDesc _generate_progress_desc(
 	WDP_CENTER, 0, 0,
-	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
+	WC_MODAL_PROGRESS, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
 	_nested_generate_progress_widgets, lengthof(_nested_generate_progress_widgets)
 );
@@ -1339,7 +1339,7 @@ void PrepareGenerateWorldProgress()
  */
 void ShowGenerateWorldProgress()
 {
-	if (BringWindowToFrontById(WC_GENERATE_PROGRESS_WINDOW, 0)) return;
+	if (BringWindowToFrontById(WC_MODAL_PROGRESS, 0)) return;
 	new GenerateProgressWindow();
 }
 
@@ -1390,7 +1390,7 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 		return;
 	}
 
-	SetWindowDirty(WC_GENERATE_PROGRESS_WINDOW, 0);
+	SetWindowDirty(WC_MODAL_PROGRESS, 0);
 	MarkWholeScreenDirty();
 
 	/* Release the rights to the map generator, and acquire the rights to the

@@ -83,7 +83,7 @@ static void CleanupGeneration()
 	_gw.abortp   = NULL;
 	_gw.threaded = false;
 
-	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
+	DeleteWindowById(WC_MODAL_PROGRESS, 0);
 	MarkWholeScreenDirty();
 }
 
