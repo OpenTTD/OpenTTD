@@ -1131,7 +1131,7 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 	if (found) {
 		/* Flow further down hill. */
 		found = FlowRiver(marks, spring, end);
-	} else if (count > 10) {
+	} else if (count > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
 		TileIndex lakeCenter = 0;
 		for (int i = RandomRange(count - 1); i != 0; lakeCenter++) {
