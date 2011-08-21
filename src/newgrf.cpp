@@ -94,6 +94,14 @@ struct GrfProcessingState {
 	int skip_sprites;         ///< Number of psuedo sprites to skip before processing the next one. (-1 to skip to end of file)
 	byte data_blocks;         ///< Number of binary include sprites to read before processing the next pseudo sprite.
 	GrfDataType data_type;    ///< Type of the binary include sprites to read.
+
+	/** Clear temporary data before processing the next file in the current loading stage */
+	void ClearDataForNextFile()
+	{
+		nfo_line = 0;
+		skip_sprites = 0;
+		data_blocks = 0;
+	}
 };
 
 static GrfProcessingState _cur;
@@ -8116,8 +8124,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		return;
 	}
 
-	_cur.skip_sprites = 0; // XXX
-	_cur.nfo_line = 0;
+	_cur.ClearDataForNextFile();
 
 	ReusableBuffer<byte> buf;
 
