@@ -218,4 +218,6 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 GRFTextWrapper *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
 #endif /* ENABLE_NETWORK */
 
+void UpdateNewGRFScanStatus(uint num, const char *name);
+
 #endif /* NEWGRF_CONFIG_H */

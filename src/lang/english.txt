@@ -2521,6 +2521,11 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <inv
 STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicle model>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanning NewGRFs
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scanning NewGRFs. Depending on the amount this can take a while...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} scanned out of an estimated {NUM} NewGRF{P "" s}
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Match case

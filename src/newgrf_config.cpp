@@ -543,7 +543,11 @@ public:
 	static uint DoScan()
 	{
 		GRFFileScanner fs;
-		return fs.Scan(".grf", DATA_DIR);
+		int ret = fs.Scan(".grf", DATA_DIR);
+		/* The number scanned and the number returned may not be the same;
+		 * duplicate NewGRFs and base sets are ignored in the return value. */
+		_settings_client.gui.last_newgrf_count = fs.num_scanned;
+		return ret;
 	}
 };
 
@@ -588,7 +592,7 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
 		const char *name = NULL;
 		if (c->name != NULL) name = GetGRFStringFromGRFText(c->name->text);
 		if (name == NULL) name = c->filename;
-		DEBUG(grf, 0, "Scanning %i: %s", this->num_scanned, name);
+		UpdateNewGRFScanStatus(this->num_scanned, name);
 
 		_modal_progress_work_mutex->BeginCritical();
 		_modal_progress_paint_mutex->EndCritical();
