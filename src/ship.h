@@ -13,8 +13,10 @@
 #define SHIP_H
 
 #include "vehicle_base.h"
+#include "water_map.h"
 
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
+WaterClass GetEffectiveWaterClass(TileIndex tile);
 
 /**
  * All ships have this type.

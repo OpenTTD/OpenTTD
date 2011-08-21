@@ -41,7 +41,7 @@
  * @param tile Tile of interest
  * @return the waterclass to be used by the ship.
  */
-static WaterClass GetEffectiveWaterClass(TileIndex tile)
+WaterClass GetEffectiveWaterClass(TileIndex tile)
 {
 	if (HasTileWaterClass(tile)) return GetWaterClass(tile);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
