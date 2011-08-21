@@ -1350,7 +1350,7 @@ Window *FindWindowFromPt(int x, int y)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		if (IsInsideBS(x, w->left, w->width) && IsInsideBS(y, w->top, w->height)) {
+		if (MayBeShown(w) && IsInsideBS(x, w->left, w->width) && IsInsideBS(y, w->top, w->height)) {
 			return w;
 		}
 	}
