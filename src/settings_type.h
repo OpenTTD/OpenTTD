@@ -111,6 +111,7 @@ struct GUISettings {
 	bool   persistent_buildingtools;         ///< keep the building tools active after usage
 	bool   expenses_layout;                  ///< layout of expenses window
 	uint32 last_newgrf_count;                ///< the numbers of NewGRFs we found during the last scan
+	byte   missing_strings_threshold;        ///< the number of missing strings before showing the warning
 
 	uint16 console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
 	uint16 console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.

@@ -23,6 +23,8 @@
 #include "ai/ai_gui.hpp"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
+#include "language.h"
+#include "rev.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -38,6 +40,8 @@ enum SelectGameIntroWidgets {
 	SGI_ARCTIC_LANDSCAPE,
 	SGI_TROPIC_LANDSCAPE,
 	SGI_TOYLAND_LANDSCAPE,
+	SGI_TRANSLATION_SELECTION,
+	SGI_TRANSLATION,
 	SGI_OPTIONS,
 	SGI_DIFFICULTIES,
 	SGI_SETTINGS_OPTIONS,
@@ -51,7 +55,8 @@ struct SelectGameWindow : public Window {
 
 	SelectGameWindow(const WindowDesc *desc) : Window()
 	{
-		this->InitNested(desc);
+		this->CreateNestedTree(desc);
+		this->FinishInitNested(desc, 0);
 		this->OnInvalidateData();
 	}
 
@@ -74,18 +79,52 @@ struct SelectGameWindow : public Window {
 		if (widget == SGI_DIFFICULTIES) SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
 	}
 
+	virtual void OnInit()
+	{
+		bool missing = _current_language->missing >= _settings_client.gui.missing_strings_threshold && !IsReleasedVersion();
+		this->GetWidget<NWidgetStacked>(SGI_TRANSLATION_SELECTION)->SetDisplayedPlane(missing ? 0 : SZSP_NONE);
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (widget) {
+			case SGI_TRANSLATION:
+				SetDParam(0, _current_language->missing);
+				DrawStringMultiLine(r.left, r.right, r.top,  r.bottom, STR_INTRO_TRANSLATION, TC_FROMSTRING, SA_CENTER);
+				break;
+		}
+	}
+
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != SGI_DIFFICULTIES) return;
+		switch (widget) {
+			case SGI_DIFFICULTIES: {
+				Dimension textdim = {0, 0};
+				for (uint i = STR_DIFFICULTY_LEVEL_EASY; i <= STR_DIFFICULTY_LEVEL_CUSTOM; i++) {
+					SetDParam(0, i);
+					textdim = maxdim(textdim, GetStringBoundingBox(STR_INTRO_DIFFICULTY));
+				}
+				textdim.width += padding.width;
+				textdim.height += padding.height;
+				*size = maxdim(*size, textdim);
+				break;
+			}
 
-		Dimension textdim = {0, 0};
-		for (uint i = STR_DIFFICULTY_LEVEL_EASY; i <= STR_DIFFICULTY_LEVEL_CUSTOM; i++) {
-			SetDParam(0, i);
-			textdim = maxdim(textdim, GetStringBoundingBox(STR_INTRO_DIFFICULTY));
+			case SGI_TRANSLATION: {
+				SetDParam(0, _current_language->missing);
+				int height = GetStringHeight(STR_INTRO_TRANSLATION, size->width);
+				if (height > 3 * FONT_HEIGHT_NORMAL) {
+					/* Don't let the window become too high. */
+					Dimension textdim = GetStringBoundingBox(STR_INTRO_TRANSLATION);
+					textdim.height *= 3;
+					textdim.width -= textdim.width / 2;
+					*size = maxdim(*size, textdim);
+				} else {
+					size->height = height + padding.height;
+				}
+				break;
+			}
 		}
-		textdim.width += padding.width;
-		textdim.height += padding.height;
-		*size = maxdim(*size, textdim);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -193,6 +232,11 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 	EndContainer(),
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 7),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, SGI_TRANSLATION_SELECTION),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_EMPTY, COLOUR_ORANGE, SGI_TRANSLATION), SetMinimalSize(316, 12), SetFill(1, 0), SetPadding(0, 10, 7, 10),
+		EndContainer(),
+	EndContainer(),
 
 	/* 'game options' and 'difficulty options' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
