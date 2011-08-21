@@ -38,6 +38,7 @@ struct LanguagePackHeader {
 	char digit_group_separator_currency[8];
 	/** Decimal separator */
 	char digit_decimal_separator[8];
+	uint16 missing;     ///< number of missing strings.
 	byte plural_form;   ///< plural form index
 	byte text_dir;      ///< default direction of the text
 	/**
@@ -52,7 +53,7 @@ struct LanguagePackHeader {
 	uint8 newgrflangid; ///< newgrf language id
 	uint8 num_genders;  ///< the number of genders of this language
 	uint8 num_cases;    ///< the number of cases of this language
-	byte pad[1];        ///< pad header to be a multiple of 4
+	byte pad[3];        ///< pad header to be a multiple of 4
 
 	char genders[MAX_NUM_GENDERS][CASE_GENDER_LEN]; ///< the genders used by this translation
 	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation

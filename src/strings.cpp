@@ -1657,7 +1657,10 @@ static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
 	bool ret = read == 1 && hdr->IsValid();
 
 	/* Convert endianness for the windows language ID */
-	if (ret) hdr->winlangid = FROM_LE16(hdr->winlangid);
+	if (ret) {
+		hdr->missing = FROM_LE16(hdr->missing);
+		hdr->winlangid = FROM_LE16(hdr->winlangid);
+	}
 	return ret;
 }
 

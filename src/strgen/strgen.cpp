@@ -1061,10 +1061,16 @@ static void WriteLangfile(const char *filename)
 
 		in_use[i] = n;
 		_lang.offsets[i] = TO_LE16(n);
+
+		for (uint j = 0; j != in_use[i]; j++) {
+			const LangString *ls = _strings[(i << 11) + j];
+			if (ls != NULL && ls->translated == NULL) _lang.missing++;
+		}
 	}
 
 	_lang.ident = TO_LE32(LanguagePackHeader::IDENT);
 	_lang.version = TO_LE32(_hash);
+	_lang.missing = TO_LE16(_lang.missing);
 	_lang.winlangid = TO_LE16(_lang.winlangid);
 
 	fwrite(&_lang, sizeof(_lang), 1, _output_file);
