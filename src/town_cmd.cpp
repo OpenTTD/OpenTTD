@@ -1110,9 +1110,10 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	} else {
 		bool allow_house = true; // Value which decides if we want to construct a house
 
-		/* Reached a tunnel/bridge? Then continue at the other side of it. */
+		/* Reached a tunnel/bridge? Then continue at the other side of it, unless
+		 * it is the starting tile. Half the time, we stay on this side then.*/
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (target_dir != DIAGDIR_END || Chance16(1, 2))) {
 				*tile_ptr = GetOtherTunnelBridgeEnd(tile);
 			}
 			return;
