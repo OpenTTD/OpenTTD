@@ -95,8 +95,8 @@ static void Load_NGRF()
 {
 	Load_NGRF_common(_grfconfig);
 
-	/* Append static NewGRF configuration */
-	AppendStaticGRFConfigs(&_grfconfig);
+	/* Append static NewGRF configuration, but only if there are some NewGRFs. */
+	if (_game_mode != GM_MENU || _all_grfs != NULL) AppendStaticGRFConfigs(&_grfconfig);
 }
 
 static void Check_NGRF()
