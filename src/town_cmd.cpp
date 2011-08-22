@@ -1236,9 +1236,14 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 			return _grow_town_result;
 		}
 
-		/* Select a random bit from the blockmask, walk a step
-		 * and continue the search from there. */
-		do target_dir = RandomDiagDir(); while (!(cur_rb & DiagDirToRoadBits(target_dir)));
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			/* Only build in the direction away from the tunnel or bridge. */
+			target_dir = ReverseDiagDir(GetTunnelBridgeDirection(tile));
+		} else {
+			/* Select a random bit from the blockmask, walk a step
+			 * and continue the search from there. */
+			do target_dir = RandomDiagDir(); while (!(cur_rb & DiagDirToRoadBits(target_dir)));
+		}
 		tile = TileAddByDiagDir(tile, target_dir);
 
 		if (IsTileType(tile, MP_ROAD) && !IsRoadDepot(tile) && HasTileRoadType(tile, ROADTYPE_ROAD)) {
