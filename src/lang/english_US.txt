@@ -861,26 +861,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pounds (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollars ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :British Pound (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :American Dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanese Yen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrian Shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgian Franc (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Swiss Franc (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Czech Koruna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danish Krone (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanish Peseta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnish Markka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :French Franc (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Greek Drachma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Hungarian Forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Icelandic Krona (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian Lira (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Dutch Guilder (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegian Krone (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Złoty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian Leu (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russian Rubel (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar (SIT)
@@ -1400,6 +1400,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display 
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Display AI settings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quit 'OpenTTD'
+
+STR_INTRO_TRANSLATION                                           :{BLACK}This translation misses {NUM} string{P "" s}. Please help make OpenTTD better by signing up as translator. See readme.txt for details.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Quit

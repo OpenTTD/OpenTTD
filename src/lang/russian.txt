@@ -1557,6 +1557,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найт
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показать настройки искусственного интеллекта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйти из OpenTTD
 
+STR_INTRO_TRANSLATION                                           :{BLACK}На этот язык не переведен{P 0 а ы о} {NUM} строк{P а и ""}. Вы можете помочь проекту, зарегистрировавшись как переводчик. Инструкции в файле readme.txt.
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Выход
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Вы уверены, что хотите прервать игру и вернуться в {STRING}?
@@ -2698,6 +2700,9 @@ STR_NEWGRF_INVALID_ENGINE                                       :<неправи
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвестное предприятие>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканирование NewGRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Идёт сканирование NewGRF. Это займёт некоторое время...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Просканирован{P 0 "" о о} {NUM} из {NUM} модул{P я ей ей} NewGRF
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список табличек - {COMMA} таблич{P ка ки ек}

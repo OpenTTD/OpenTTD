@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :Hoog
 STR_SEA_LEVEL_CUSTOM                                            :Aangepast
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Aangepast ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Geen
+STR_RIVERS_FEW                                                  :Weinig
+STR_RIVERS_MODERATE                                             :Gemiddeld
+STR_RIVERS_LOT                                                  :Veel
+
 STR_DISASTER_NONE                                               :Geen
 STR_DISASTER_REDUCED                                            :Verminderd
 STR_DISASTER_NORMAL                                             :Normaal
@@ -1395,6 +1400,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon New
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Toon AI-instellingen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help aub om OpenTTD beter te maken door je al vertaler aan te melden. Zie readme.txt voor details.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Afsluiten
@@ -2317,6 +2324,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgene
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Bosalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Zeeniveau:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivieren:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gladheid:
 STR_MAPGEN_VARIETY                                              :{BLACK}Landschapsvariatie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Maak aan
@@ -2361,6 +2369,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% compleet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivierplaatsing
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
@@ -2513,6 +2522,11 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vracht>
 STR_NEWGRF_INVALID_ENGINE                                       :<ongeldig treinmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen van NewGRFs
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scannen van NewGRFs. Afhankelijk van het aantal, kan dit even duren...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} gescanned van een geschatte {NUM} NewGRF{P "" s}
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}

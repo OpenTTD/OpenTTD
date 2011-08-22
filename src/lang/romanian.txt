@@ -1401,6 +1401,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verific�
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afişează setările pentru Inteligenţa Artificială
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieşi din 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Acestei traduceri îi lipses{P 0 "te" "c"} {NUM} text{P "" e}. Te rugăm să ajuti la îmbunătățirea OpenTTD înrolându-te ca traducător. Citește fișierul readme.txt pentru detalii.
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Ieşire din joc
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Eşti sigur că vrei să abandonezi jocul curent şi să revii în {STRING}?
@@ -2522,6 +2524,9 @@ STR_NEWGRF_INVALID_ENGINE                                       :<model vehicul 
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industrie invalid>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanez resursele NewGRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Se scanează resursele NewGRF. În funcție de numărul acestora, această operație poate dura un timp...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} resurs{P 0 "ă" "e"}NewGRF scanat{P "ă" "e"} din aproximativ {NUM} resurs{P "ă" "e"} NewGRF disponibil{P "ă" "e"}
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne

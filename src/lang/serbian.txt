@@ -1596,6 +1596,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled 
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikazuje VI podešavanja
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napušta 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Ovom prevodu nedostaje {NUM} nisk{P a e i}. Pomozite da OpenTTD bude bolji - prijavite se kao prevodilac. Za detalje pogledajte readme.txt.
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Izađi
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Da li ste sigurni da želite da napustite OpenTTD i vratite se u {STRING}?
@@ -2717,6 +2719,9 @@ STR_NEWGRF_INVALID_ENGINE                                       :<nevažeći mod
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Pregledanje NewGRF-ova
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Pregledanje NewGRF-ova. U zavisnosti od količine ovo može i da potraje...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" -a -ova} pregledano od odprilike procenjeno {NUM} NewGRF{P -a -a -ova}
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}
