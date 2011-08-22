@@ -866,7 +866,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selezion
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlina (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollaro ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scellino Austriaco (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco Belga (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco Svizzero (CHF)

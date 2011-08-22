@@ -1177,7 +1177,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Выба
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Брытанскі фунт (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Даляр ЗША ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Эўра (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Японская ена (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Японская ена (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Аўстралійскі шылінг (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бэльгійскі франк (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швайцарскі франк (CHF)

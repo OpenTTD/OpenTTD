@@ -866,7 +866,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Naudas v
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Mārciņas (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolāri ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eiro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jenas (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jenas (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijas šiliņi (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Beļģijas franki (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Šveices franki (CHF)

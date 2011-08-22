@@ -863,7 +863,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Velg val
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Østerriksk shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsisk franc (CHF)

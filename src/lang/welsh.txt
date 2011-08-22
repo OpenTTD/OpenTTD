@@ -827,7 +827,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Dewis un
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punnoedd (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Doleri ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ewro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Swllt Awstriaidd (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Ffranc Belgaidd (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ffranc Swisaidd (CHF)

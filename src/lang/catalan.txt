@@ -865,7 +865,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecci�
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lliures (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dòlars ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Iens (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Iens (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shillings Austríacs (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Francs Belgues (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Francs Suïssos (CHF)

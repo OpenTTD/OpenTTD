@@ -960,7 +960,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor no
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funte (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolari ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euri (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeni (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jeni (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijski šiling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski franak (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švicarski franak (CHF)

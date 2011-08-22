@@ -939,7 +939,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valiutos
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Svarai sterlingai (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Doleriai ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eurai (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jenos (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jenos (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austru silingai (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijos frankai (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveicarijos frankai (CHF)

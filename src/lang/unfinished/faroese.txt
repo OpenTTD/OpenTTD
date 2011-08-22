@@ -613,7 +613,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Úrval a
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Eysturríkskan Shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiskan Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveisiskan Frank (CHF)

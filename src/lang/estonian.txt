@@ -918,7 +918,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta 
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Naelad (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarid ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jeen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austria ðilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgia frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitði frank (CHF)

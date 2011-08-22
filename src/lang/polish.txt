@@ -1244,7 +1244,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Wybór w
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funty (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolary ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeny (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jeny (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Szyling austriacki (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Frank belgijski (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Frank szwajcarski (CHF)

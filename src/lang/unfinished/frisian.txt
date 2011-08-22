@@ -862,7 +862,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Munt ien
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pûnen (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollars ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Australyske Shilling (ASS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgyske Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Switserske Frank (SWF)

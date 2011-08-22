@@ -861,7 +861,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilih ma
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Poundsterling (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Austria (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc Belgia (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc Swiss (CHF)

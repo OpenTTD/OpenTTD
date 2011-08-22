@@ -854,7 +854,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Diru uni
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolarrak ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yena (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yena (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Txelin Austriarra (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franko Belgikarra (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Suitzar Frankoa (CHF)

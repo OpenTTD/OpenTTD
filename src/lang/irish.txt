@@ -859,7 +859,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Aonaid a
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Puint (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollair ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scilling na hOstaire (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc na Beilge (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc na hEilbhéise (CHF)

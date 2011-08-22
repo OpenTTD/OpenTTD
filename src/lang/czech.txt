@@ -944,7 +944,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Výběr 
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Japonský jen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japonský jen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Rakouský šilink (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgický frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švýcarský frank (CHF)

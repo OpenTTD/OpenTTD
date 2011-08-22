@@ -955,7 +955,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλ
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Αγγλική Λίρα (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάρια ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Γιεν (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Γιεν (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Αυστραικό Σελίνι (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Βελγικό Φράγκο (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ελβετικό Φράγκο (CHF)

@@ -928,7 +928,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}A haszn�
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Font (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollár ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euró (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Osztrák Shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belga Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svájci Frank (CHF)

@@ -861,7 +861,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}通貨�
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英ポンド（£）
 STR_GAME_OPTIONS_CURRENCY_USD                                   :米ドル（$）
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :ユーロ（€）
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :日本円（￥）
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :日本円（￥）
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :オーストリアシリング（ATS）
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :ベルギーフランク（BEF）
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :スイスフランク（CHF）

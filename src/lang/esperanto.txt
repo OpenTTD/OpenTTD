@@ -860,7 +860,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto d
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pundoj (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolaroj ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eŭroj (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Enoj (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Enoj (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Aŭstriaj Ŝilingoj (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgaj Frankoj (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svisaj Frankoj (CHF)

@@ -27,7 +27,7 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    1, "", CF_NOEURO, "\xC2\xA3",     "",              0, STR_GAME_OPTIONS_CURRENCY_GBP    }, ///< british pounds
 	{    2, "", CF_NOEURO, "$",            "",              0, STR_GAME_OPTIONS_CURRENCY_USD    }, ///< us dollars
 	{    2, "", CF_ISEURO, "\xE2\x82\xAC", "",              0, STR_GAME_OPTIONS_CURRENCY_EUR    }, ///< Euro
-	{  220, "", CF_NOEURO, "\xC2\xA5",     "",              0, STR_GAME_OPTIONS_CURRENCY_YEN    }, ///< yen
+	{  220, "", CF_NOEURO, "\xC2\xA5",     "",              0, STR_GAME_OPTIONS_CURRENCY_JPY    }, ///< yen
 	{   20, "", 2002,      "",             NBSP"S.",        1, STR_GAME_OPTIONS_CURRENCY_ATS    }, ///< austrian schilling
 	{   59, "", 2002,      "BEF"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_BEF    }, ///< belgian franc
 	{    2, "", CF_NOEURO, "CHF"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_CHF    }, ///< swiss franc
@@ -68,7 +68,7 @@ enum Currencies {
 	CURR_GBP,
 	CURR_USD,
 	CURR_EUR,
-	CURR_YEN,
+	CURR_JPY,
 	CURR_ATS,
 	CURR_BEF,
 	CURR_CHF,
@@ -107,7 +107,7 @@ const byte TTDPatch_To_OTTDIndex[] =
 	CURR_USD,
 	CURR_FRF,
 	CURR_DEM,
-	CURR_YEN,
+	CURR_JPY,
 	CURR_ESP,
 	CURR_HUF,
 	CURR_PLN,

@@ -864,7 +864,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa ch
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yên (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yên (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Úc (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Phơ-răng Bỉ (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Phơ-răng Thụy Sỹ (CHF)

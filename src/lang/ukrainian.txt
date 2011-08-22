@@ -988,7 +988,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Вибе
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Фунт (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Долар ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Євро (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Ієна (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ієна (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Австрійський шилінг (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бельгійський франк (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швейцарський франк (CHF)

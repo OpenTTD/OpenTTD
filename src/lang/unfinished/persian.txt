@@ -864,7 +864,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}انتخ
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :پوند (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :دلار ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :یورو (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :ین (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :ین (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :شیلینگ استرالیا (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :فرانک بلژیک (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :فرانک سوییس (CHF)

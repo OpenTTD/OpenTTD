@@ -864,7 +864,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksi
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punta (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollari ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeni (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jeni (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Itävallan shillinki (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgian frangi (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsin frangi (CHF)

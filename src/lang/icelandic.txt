@@ -855,7 +855,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Val á g
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Bandaríkjadalur ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evra (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austurrískur skildingur (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgískur franki (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svissneskur franki (CHF)

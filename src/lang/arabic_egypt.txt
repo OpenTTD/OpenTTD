@@ -861,7 +861,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختي
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :جنية(£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :دولار ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :يورو (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :ين (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :ين (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :شلنق استرالي (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :فرنك بلجيكي (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :فرنك سويسري (CHF)
