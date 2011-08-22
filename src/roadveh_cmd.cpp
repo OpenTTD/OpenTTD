@@ -1591,12 +1591,13 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 
 void RoadVehicle::OnNewDay()
 {
+	AgeVehicle(this);
+
 	if (!this->IsFrontEngine()) return;
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 	if (this->blocked_ctr == 0) CheckVehicleBreakdown(this);
 
-	AgeVehicle(this);
 	CheckIfRoadVehNeedsService(this);
 
 	CheckOrders(this);

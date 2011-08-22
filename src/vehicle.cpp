@@ -1138,6 +1138,8 @@ void AgeVehicle(Vehicle *v)
 {
 	if (v->age < MAX_DAY) v->age++;
 
+	if (!v->IsPrimaryVehicle() && (v->type != VEH_TRAIN || !Train::From(v)->IsEngine())) return;
+
 	int age = v->age - v->max_age;
 	if (age == DAYS_IN_LEAP_YEAR * 0 || age == DAYS_IN_LEAP_YEAR * 1 ||
 			age == DAYS_IN_LEAP_YEAR * 2 || age == DAYS_IN_LEAP_YEAR * 3 || age == DAYS_IN_LEAP_YEAR * 4) {
