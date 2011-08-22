@@ -861,7 +861,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittish Pound (GBP)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :British Pound (GBP)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :American Dollar (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanese Yen (JPY)
