@@ -1402,6 +1402,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifie
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afficher la configuration des IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Il manque {NUM} chaine{P "" s} dans cette traduction. Merci d'aider à rendre OpenTTD meilleur en vous inscrivant comme traducteur. Voir readme.txt pour les details.
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Quitter
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Êtes vous sur de vouloir quitter OpenTTD et retourner à {STRING}{NBSP}?

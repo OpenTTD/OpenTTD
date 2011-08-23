@@ -941,10 +941,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Měna
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Výběr jednotek měny
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japonský jen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japonský jen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Rakouský šilink (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgický frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švýcarský frank (CHF)
@@ -1138,6 +1138,7 @@ STR_SEA_LEVEL_MEDIUM                                            :střední
 STR_SEA_LEVEL_HIGH                                              :vysoká
 STR_SEA_LEVEL_CUSTOM                                            :Uživatelský
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Uživatelský ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :žádné
 STR_DISASTER_REDUCED                                            :snížené
@@ -1475,6 +1476,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ukázat 
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Ukázat, jaký nový nebo upravený obsah se dá stáhnout
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Ukázat nastavení AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončit 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Konec
@@ -2599,6 +2601,9 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky ek} <neplatného nákladu>
 STR_NEWGRF_INVALID_ENGINE                                       :<neplatný druh vozidla>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný průmysl>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Prohledávání grafik
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}

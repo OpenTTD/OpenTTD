@@ -925,26 +925,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Pénznem
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}A használt pénznem kiválasztása
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Font (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollár ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euró (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Angol Font (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikai Dollár (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euró (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japán Jen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Osztrák Shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belga Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svájci Frank (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Cseh Korona (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Német Márka (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dán Korona (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanyol Pezeta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finn Márka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Svájci Frank (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Görög Drachma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Magyar Forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Izlandi Korona (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Olasz Líra (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holland Gulden (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvég Korona (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Legyel Zlotyi (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Lengyel Zlotyi (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Román Lej (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Orosz Rubel (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Szlovén Tolár (SIT)
@@ -1122,6 +1122,11 @@ STR_SEA_LEVEL_MEDIUM                                            :Közepes
 STR_SEA_LEVEL_HIGH                                              :Magas
 STR_SEA_LEVEL_CUSTOM                                            :Egyedi
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Egyedi ({NUM}%)
+
+STR_RIVERS_NONE                                                 :Nincs
+STR_RIVERS_FEW                                                  :Kevés
+STR_RIVERS_MODERATE                                             :Közepes
+STR_RIVERS_LOT                                                  :Sok
 
 STR_DISASTER_NONE                                               :Nincs
 STR_DISASTER_REDUCED                                            :Ritka
@@ -1459,6 +1464,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF b
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}A gépi ellenfelek beállításainak megjelenítése
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépés az OpenTTD-ből
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Ebből a fordításból {NUM} sor hiányzik. Segíts Te is jobbá tenni az OpenTTD-t és jelentkezz fordítónak! További részletekért lásd a readme.txt-t.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Kilépés
@@ -2381,6 +2388,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algoritmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Tengerszint:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Folyók:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Simaság:
 STR_MAPGEN_VARIETY                                              :{BLACK}Változatosság eloszlása:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generál
@@ -2425,6 +2433,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Tényle
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% kész
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Világ létrehozása
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Folyó generálás
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Durva és köves területek generálása
@@ -2577,6 +2586,11 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <érvénytelen rakomány>
 STR_NEWGRF_INVALID_ENGINE                                       :<érvénytelen jármű modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen gazdasági épület>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ek beolvasása
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF-ek beolvasása. Mennyiségtől függően eltarthat egy ideig...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF beolvasva kb. {NUM} NewGRF közül
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)

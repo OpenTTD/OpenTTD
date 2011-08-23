@@ -861,26 +861,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksi
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta.
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punta (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollari ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jeni (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Englannin punta (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Yhdysvaltain dollari (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanin jeni (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Itävallan shillinki (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgian frangi (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsin frangi (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsekin koruna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Saksan markka (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Tanskan kruunu (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Espanjan peseta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Suomen markka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frangi (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Ranskan frangi (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Kreikan drakma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Unkarin forintti (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islannin kruunu (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian liira (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollannin guldeni (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norjan kruunu (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Puolan zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Puolan złoty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian leu (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Venjän rupla (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian tolari (SIT)
@@ -1058,6 +1058,11 @@ STR_SEA_LEVEL_MEDIUM                                            :Keskitaso
 STR_SEA_LEVEL_HIGH                                              :Korkea
 STR_SEA_LEVEL_CUSTOM                                            :Oma
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Oma ({NUM}%)
+
+STR_RIVERS_NONE                                                 :Ei yhtään
+STR_RIVERS_FEW                                                  :Vähän
+STR_RIVERS_MODERATE                                             :Keskisuuri
+STR_RIVERS_LOT                                                  :Monia
 
 STR_DISASTER_NONE                                               :Ei mitään
 STR_DISASTER_REDUCED                                            :Vähennetty
@@ -1395,6 +1400,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä 
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Näytä tekoälyasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje OpenTTD.
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi rekisteröitymällä kääntäjäksi. Lisätietoja tiedostossa readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sulje
@@ -2317,6 +2324,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maastoge
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puiden algoritmi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merenpinta:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Joet:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Tasaisuus:
 STR_MAPGEN_VARIETY                                              :{BLACK}Vaihtelu:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generoi
@@ -2361,6 +2369,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Haluatk
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% valmiina
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailman luominen
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jokien luominen
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puiden luominen
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Siirtämättömän luominen
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Karun ja kivisen alueen luominen
@@ -2513,6 +2522,11 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <virheellistä rahtia>
 STR_NEWGRF_INVALID_ENGINE                                       :<virheellinen kulkuneuvo>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<virheellinen teollisuus>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannataan NewGRF-tiedostoja
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannataan NewGRF-tiedostoja. Lukumäärästä riippuen tässä voi kestää hetki...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" ää} skannattu. Arvioitu kokonaismäärä {NUM} NewGRF{P "" ää}
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä

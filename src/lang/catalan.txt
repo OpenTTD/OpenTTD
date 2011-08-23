@@ -862,19 +862,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitats 
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció d'unitats de moneda
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lliures (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dòlars ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Iens (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lliura Esterlina (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dòlar Americà (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ien Japonès (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shillings Austríacs (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Francs Belgues (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Francs Suïssos (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corones Txeques (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marcs Alemanys (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corones Daneses (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesseta Espanyola (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marcs Finesos (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Francès (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracmes Gregues (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florí Hongarès (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corones Islandeses (ISK)
@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_MEDIUM                                            :Mitjà
 STR_SEA_LEVEL_HIGH                                              :Alt
 STR_SEA_LEVEL_CUSTOM                                            :Personalitzat
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalitzat ({NUM}%)
+
+STR_RIVERS_NONE                                                 :Cap
+STR_RIVERS_FEW                                                  :Pocs
+STR_RIVERS_MODERATE                                             :Mitjà
+STR_RIVERS_LOT                                                  :Molts
 
 STR_DISASTER_NONE                                               :Cap
 STR_DISASTER_REDUCED                                            :Reduït
@@ -1396,6 +1401,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra e
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra els paràmetres IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
+
+STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falta {NUM} string{P "" s}. Si us plau ajuda a fer millor OpenTTD unint-te com a traductor. Veure readme.txt per més detalls.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Surt
@@ -2318,6 +2325,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gen. de 
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritme d'arbres:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivell del mar:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rius:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Planitut:
 STR_MAPGEN_VARIETY                                              :{BLACK}Distribució de la varietat:
 STR_MAPGEN_GENERATE                                             :{WHITE}Genera
@@ -2362,6 +2370,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Realmen
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% complet
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generació del món
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generació de rius
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generació d'arbres
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generació inamovible
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generació d'una àrea escarpada i rocosa
@@ -2514,6 +2523,11 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <càrrega invàlida>
 STR_NEWGRF_INVALID_ENGINE                                       :<model de vehicle invàlid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria invàlida>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escanejant NewGRFs
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Escanejant NewGRFs. Depenent de la quantitat pot trigar una estona...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} escanejats de {NUM} NewGRF{P "" s} estimats
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyal{P "" s}

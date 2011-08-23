@@ -862,24 +862,24 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währung
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währung auswählen
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Engl. Pfund (GBP)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Englische Pfund (GBP)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :US-Dollar (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jap. Yen (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österreich. Schilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanische Yen (JPY)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österreichische Schilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgische Francs (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schweizer Franken (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tschechische Kronen (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutsche Mark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dänische Kronen (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Span. Peseten (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanische Peseten (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnische Mark(FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frz. Francs (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Griech. Drachmen (GRD)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Französische Francs (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Griechische Drachmen (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarische Forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländische Kronen (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italienische Lire (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Niederländ. Gulden (NLG)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Niederländische Gulden (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegische Kronen (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polnische Zloty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänische Lei (RON)
@@ -889,7 +889,7 @@ STR_GAME_OPTIONS_CURRENCY_SEK                                   :Schwedische Kro
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türkische Lire (TRY)
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slowakische Kronen (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianische Reais (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnische Krone (EEK)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnische Kronen (EEK)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigene...
 ############ end of currency region
 

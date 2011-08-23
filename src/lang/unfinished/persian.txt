@@ -104,12 +104,12 @@ STR_QUANTITY_GOODS                                              :{COMMA} جعب�
 STR_QUANTITY_GRAIN                                              :{WEIGHT}حبوبات
 STR_QUANTITY_WOOD                                               :{WEIGHT} چوب
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} سنگ آهن
-STR_QUANTITY_STEEL                                              :{WEIGHT} فولادl
-STR_QUANTITY_VALUABLES                                          :{COMMA} بسته{P "" s} اشیای قیمتی
+STR_QUANTITY_STEEL                                              :{WEIGHT} فولاد
+STR_QUANTITY_VALUABLES                                          :{COMMA} بسته{P "" های} اشیای قیمتی
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} سنگ مس
 STR_QUANTITY_MAIZE                                              :{WEIGHT} ذرت
 STR_QUANTITY_FRUIT                                              :{WEIGHT} میوه
-STR_QUANTITY_DIAMONDS                                           :{COMMA} بسته{P "" s} الماس
+STR_QUANTITY_DIAMONDS                                           :{COMMA} بسته{P "" های} الماس
 STR_QUANTITY_FOOD                                               :{WEIGHT} غذا
 STR_QUANTITY_PAPER                                              :{WEIGHT} کاغذ
 STR_QUANTITY_GOLD                                               :{COMMA} بسته{P "" s} طلا
@@ -1401,6 +1401,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررس
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}نمایش تنظیمات هوش مصنوعی
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} خروج از 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}این ترجمه {NUM} رشته{P ی های}ترجمه نشده دارد. با ثبت نام کردن به عنوان مترجم ما را در بهتر سازی OpenTTD یاری نمایید. فایل readme.txt را برای جزییات بیشتر بخوانید.
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}خروج
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}آیا می‌خواهید از بازی خارج شوید و برگردید به{STRING}?
@@ -1771,6 +1773,7 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}شما �
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :خطای اصلی
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :خطای ناهمگام سازی
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :نمی توان نقشه را بارگزاری کرد
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :ارتباط از بین رفت...
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :خطای پروتکل
@@ -1788,13 +1791,32 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :دستورات 
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}اتصال مورد استفاده قطع شد
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}در {NUM} ثانیه گذشته هیچ داده ای از سرویس دهنده دریافت نگردیده
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :بازی متوقف شده ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :بازی هنوز متوقف است ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :بازی هنوز متوقف است ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :بازی هنوز متوقف است ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :بازی از توقف بیرون آمد ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :تعداد بازیگران
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :در حال اتصال سرویس گیرنده ها
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :دستی
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :می رود
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} به بازی پیوست
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} به بازی پیوست (سرویس گیرنده #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} به شرکت پیوست #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} به تماشاچیان پیوست
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} یک شرکت جدید آغاز کرد (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} از بازی بیرون رفت ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نامش را به {STRING} تغییر داد
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} به شرکت شما {2:CURRENCY} پول داد
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** شما {1:STRING}به شرکت {2:CURRENCY} دادید
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرویس دهنده جلسه را تعطیل کرد
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}راه اندازی مجدد سرویس دهنده...{}لطفا صبر کنید...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}در حال دانلود
@@ -1839,6 +1861,8 @@ STR_CONTENT_TYPE_AI                                             :هوش مصنو
 STR_CONTENT_TYPE_AI_LIBRARY                                     :مجموعه ماخذ AI
 STR_CONTENT_TYPE_SCENARIO                                       :سناریو
 STR_CONTENT_TYPE_HEIGHTMAP                                      :نقشه
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :صداهای پایه
+STR_CONTENT_TYPE_BASE_MUSIC                                     :موسیقی پایه
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}در حال دانلود...
@@ -1855,32 +1879,58 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فا
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل بارگیری شده ممکن نیست
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}گزینه های شفافیت
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}فعال/غیر فعال کردن شفافیت برای نشانه های ایستگاه. کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}فعال/غیر فعال کردن شفافیت برای درخت ها. کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}فعال/غیر فعال کردن شفافیت برای خانه ها. کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}فعال/غیر فعال کردن شفافیت برای صنایع. کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}فعال/غیر فعال کردن شفافیت برای ساختمان ها مانند ایستگاه، گاراژ و نقطه های مسیر. کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}فعال/غیر فعال کردن شفافیت برای پل ها. کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}فعال/غیر فعال کردن شفافیت برای دستگاه ها نظیر فانوس دریایی و آنتن ها.کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}فعال/غیر فعال کردن شفافیت برای جاده ها و ریل ها.کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}فعال/غیر فعال کردن شفافیت برای نشانه پر و خالی شدن بار. کنترل+کلیک برای قفل کردن
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}اشیاء به جای شفاف، نامرئی شوند
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}نور ناحیه ی اطراف ایستگاه
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}خاموش
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}روشن
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}منطقه تحت پوشش از سایت پیشنهادی را نشان نده
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}منطقه تحت پوشش از سایت پیشنهادی را نشان بده
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{STRING}{BLACK}قبول می کند:
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{BLACK}تدارکات:
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}پیوستن ایستگاه
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}ساخت یک ایستگاه جداگانه
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}پیوستن نقطه مسیر
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}ساخت یک نقطه مسیر جداگانه
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :ساخت راه آهن
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :ساخت و ساز ریل برقی
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :ساخت مونوریل
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :ساخت ریل مغناطیسی
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ساخت راه آهن. گرفتن دکمه Ctrl وضیعیت ابزار را به صورت ساخت/حذف در می آورد. دکمه Shift برآورد هزینه را نمایش می دهد
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} ساخت ایستگاه قطار. گرفتن Ctrl ایستگاه ها را به یکدیگر متصل می کند.دکمه Shift برآورد هزینه ساخت را نمایش می دهد
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ساخت راه آهن. گرفتن دکمه کنترل وضیعیت ابزار را به صورت ساخت/حذف در می آورد. دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}ساخت ریل راه آهن با روش ریل خودکار. گرفتن دکمه کنترل سبب ساخت/حذف ریل راه آهن می شود. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}ساخت گاراژ قطار(برای خرید و بازبینی قطارها). گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}تبدیل ریل به نقطه مسیر.گرفتن کنترل نقطه مسیر ها را به یکدیگر می پیوندد. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} ساخت ایستگاه قطار. گرفتن کنترل ایستگاه ها را به یکدیگر متصل می کند.دکمه شیفت برآورد هزینه ساخت را نمایش می دهد
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}ساخت چراغ راهنمایی راه آهن
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK} ساخت پل راه آهن.دکمه Shift برآورد قيمت را نشان مي دهد.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK} ساخت تونل راه آهن.دکمه Shift برآورد قیمت را نشان می دهد.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK} ساخت پل راه آهن.دکمه شیفت برآورد قيمت را نشان مي دهد.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK} ساخت تونل راه آهن.دکمه شیفت برآورد قیمت را نشان می دهد.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}تغییر بین حذف یا ساخت چراغ راهنمایی و ریل
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}تغییر/به روز رسانی نوع ریل. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
 
 # Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}جهت گاراژ قطار
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}جهت گاراژ قطار را انتخاب نمایید
 
 # Rail waypoint construction window
+STR_WAYPOINT_CAPTION                                            :{WHITE}نقطه مسیر
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}نوع نقطه مسیر را انتخاب نمایید
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}انتخاب ایستگاه راه آهن
@@ -1890,40 +1940,102 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK} تعد�
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}انتخاب تعداد سکوها برای ایستگاه راه آهن
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}طول ایستگاه
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}انتخاب طول ایستگاه راه آهن
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}بکشید و بیاندازید
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ساخت ایستگاه با استفاده از کشیدن و انداختن
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}کلاس ایستگاه را برای نمایش انتخاب کنید
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}ایک نوع ایستگاه را برای ساخت انتخاب کنید
 
+STR_STATION_CLASS_DFLT                                          :ایستگاه پیش فرض
+STR_STATION_CLASS_WAYP                                          :نقطه مسیر ها
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}انتخاب نشانگرها
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}سیگنال توقف (پرچم){}این ساده ترین نوع سیگنال است، سبب می شود تنها یک قطار در یک قطعه در یک زمان اجازه عبور داشته باشد.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}نشانگر ورود (پرچم){}سبز است تا زمانی که یک یا چند خروجی سبز از آن بخش از ریل موجود باشد.در غیر اینصورت قرمز نشان می دهد
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}نشانگر خروج (پرچم){}مانند نشانگر توقف عمل می کند ولی برای درست کار کردن پیش نشانگرهای ورودی و چندگانه لازم است
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}نشانگر چندگانه (پرچم){}مانند هر دو نشانگر ورودی و نشانگر خروجی عمل می کند. با آن می توانید درختی از پیش نشانگر ها بسازید
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}نشانگر مسیر (پرچم){}یک نشانگر مسیر اجازه می دهد که بیش از یک قطار به یک قطعه ریل در یک زمان وارد گردد، البته اگر قطار مسیری برای رسیدن به محل توقف امن داشته باشد. نشانگر های مسیر قابل رد شدن از پشت هستند
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}نشانگر مسیر یکطرفه (پرچم){}یک نشانگر مسیر یکطرفه اجازه می دهد که بیش از یک قطار به یک قطعه نشانگر در یک زمان وارد گردد،البته اگر قطار مسیری برای رسیدن به محل توقف امن داشته باشد. نشانگر های مسیر قابل رد شدن از پشت هستند
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}سیگنال توقف (برقی){}این ساده ترین نوع سیگنال است، سبب می شود تنها یک قطار در یک قطعه در یک زمان اجازه عبور داشته باشد.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}نشانگر ورود (برقی){}سبز است تا زمانی که یک یا چند خروجی سبز از آن بخش از ریل موجود باشد.در غیر اینصورت قرمز نشان می دهد
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}نشانگر خروج (برقی){}مانند نشانگر توقف عمل می کند ولی برای درست کار کردن پیش نشانگرهای ورودی و چندگانه لازم است
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}نشانگر چندگانه (برقی){}مانند هر دو نشانگر ورودی و نشانگر خروجی عمل می کند. با آن می توانید درختی از پیش نشانگر ها بسازید
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}نشانگر مسیر (برقی){}یک نشانگر مسیر اجازه می دهد که بیش از یک قطار به یک قطعه ریل در یک زمان وارد گردد، البته اگر قطار مسیری برای رسیدن به محل توقف امن داشته باشد. نشانگر های مسیر قابل رد شدن از پشت هستند
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}نشانگر مسیر یکطرفه (برقی){}یک نشانگر مسیر یکطرفه اجازه می دهد که بیش از یک قطار به یک قطعه نشانگر در یک زمان وارد گردد،البته اگر قطار مسیری برای رسیدن به محل توقف امن داشته باشد. نشانگر های مسیر قابل رد شدن از پشت هستند
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}تبدیل نشانگر{}کلیک بر روی نشانگرهای موجود آنها را به نوع نشانگر انتخاب شده تبدیل می کند, کنترل+کلیک گونه نشانگرهای موجود را تغییر می دهد. شیفت+کلیک برآورد هزینه تبدیل را نشان می دهد
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}اندازه قطعه برای کاشتن نشانگر(موقع کشیدن)
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}کم کردن اندازه قطعه کاشتن نشانگر(موقع کشیدن)
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}زیاد کردن اندازه قطعه کاشتن نشانگر(موقع کشیدن)
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}انتخب پل راه آهن
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}ساخت پل ماشین رو
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :معلق، فولادی
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :پیوسته، فولادی
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :پایه دار، فولادی
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :معلق، بتونی
 STR_BRIDGE_NAME_WOODEN                                          :چوبی
+STR_BRIDGE_NAME_CONCRETE                                        :بتونی
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :لوله ای،فولادی
+STR_BRIDGE_TUBULAR_SILICON                                      :لوله ای، سیلیکونی
 
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}ساخت جاده
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}ساخت و ساز تراموا
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}بخش ساخت جاده
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}بخش ساخت ریل تراموا.گرفتن دکمه کنترل برای حذف ریل تراموا. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}بخش ساخت جاده با روش جاده خودکار. گرفتن دکمه کنترل برای حذف جاده. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}بخش ساخت ریل تراموا با روش ریل خودکار.گرفتن دکمه کنترل برای حذف ریل. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}ساخت گاراژ خودرو (برای خرید و بازبینی خودروها). گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}ساخت گاراژ تراموا (برای خرید و بازبینی تراموا). گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}ساخت ایستگاه اتوبوس
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}ساخت ایستگاه تراموای مسافربری.گرفتن دکمه کنترل ایستگاه ها را به هم می پیوندد. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}ساخت ایستگاه بارگیری/تخلیه بار کامیون
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}ساخت ایستگاه تراموای باری.گرفتن دکمه کنترل ایستگاه ها را به هم می پیوندد. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}فعال/غیر فعال کردن مسیر یکطرفه
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}ساخت پل ماشین رو.دکمه Shift برآورد قیمت را نشان می دهد.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}ساخت پل تراموا.دکمه شیفت برآورد قیمت را نشان می دهد.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}ساخت تونل ماشین رو.دکمه Shift برآورد قیمت را نشان می دهد
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}ساخت تونل تراموا.دکمه شیفت برآورد قیمت را نشان می دهد
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK} تغییر بین ساخت/حذف جاده
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}تغییر حالت بین ساخت/جذف برای ساخت و ساز تراموا
 
 # Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}جهت گاراژ خودروی جاده ای
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}جهت گاراژ خودرو جاده ای را انتخاب نمایید
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}جهت گاراژ تراموا
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}جهت گاراژ تراموا را انتخاب نمایید
 
 # Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}جهت ایستگاه اتوبوس
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}انتخاب جهت ایستگاه اتوبوس
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}ایستگاه باربری
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}انتخاب جهت محل بارگیری کامیون
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}جهت ایستگاه تراموای مسافربری
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}جهت ایستگاه مسافربری تراموا را انتخاب نمایید
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}جهت ایستگاه تراموای باربری
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}جهت ایستگاه باربری تراموا را انتخاب نمایید
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}ساخت و ساز راه های آبی
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}راه های آبی
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}ساخت آبراه.دکمه شیفت برآورد قيمت را نشان مي دهد.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}ساخت سد.دکمه شیفت برآورد قيمت را نشان مي دهد.
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}ساخت گاراژ کشتی (برای خرید و بازبینی کشتی ها). گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}ساخت بندر
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}یک شناور به عنوان نمایانگر راه قرار بده.دکمه Shift برآورد قیمت را نشان می دهد
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}ساخت مجرای آب.دکمه شیفت برآورد قیمت را نشان می دهد
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}محدوده آبی تعریف کنید.{}ساخت آبراه، تا زمانی که دکمه کنترل گرفته شده در سطح دریا، به جای آن محیط اطراف را پر می کند.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}ساخت رودخانه ها
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}جهت گاراژ کشتی
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}جهت گاراژ کشتی را انتخاب نمایید
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}اسکله
@@ -1935,21 +2047,48 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ساخت
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}انتخاب فرودگاه
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}انتخاب اندازه/نوع فرودگاه
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}اندازه فرودگاه
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}نما {NUM}
 
+STR_AIRPORT_SMALL                                               :کوچک
+STR_AIRPORT_CITY                                                :شهر
+STR_AIRPORT_METRO                                               :شهر بزرگ
+STR_AIRPORT_INTERNATIONAL                                       :بین المللی
+STR_AIRPORT_COMMUTER                                            :پر رفت و آمد
+STR_AIRPORT_INTERCONTINENTAL                                    :بین قاره ای
+STR_AIRPORT_HELIPORT                                            :فرودگاه بالگرد
+STR_AIRPORT_HELIDEPOT                                           :گاراژ بالگرد
+STR_AIRPORT_HELISTATION                                         :ایستگاه بالگرد
 
+STR_AIRPORT_CLASS_SMALL                                         :فرودگاه کوچک
+STR_AIRPORT_CLASS_LARGE                                         :فرودگاه بزرگ
+STR_AIRPORT_CLASS_HUB                                           :فرودگاه قطبی
+STR_AIRPORT_CLASS_HELIPORTS                                     :فرودگاه بالگرد
 
+STR_STATION_BUILD_NOISE                                         :{BLACK}سروصدای تولید شده: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}محوطه سازی
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}پایین آوردن گوشه ی نقشه
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}بالا آوردن گوشه ی نقشه.گرفتن دکمه Ctrl به صورت مورب بالا می آورد.دکمه Shift برآورد قيمت را نشان مي دهد.
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}پستی/بلندی زمین را به اندازه اولین نقطه انتخاب شده در می آورد.گرفتن دکمه کنترل محیط را به طور مورب انتخاب می کند.گرفتن دکمه شیفت برآورد هزینه تغییر ارع سطح زمین را نشان می دهد
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}خرید زمین برای استفاده های بعدی.با گرفتن دکمه Shift برآورد قیمت را نمایش می دهد.
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}انتخاب شیء
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}شیء را برای ساخت انتخاب نمایید. گرفتن دکمه شیفت برآورد هزینه ساخت را نمایش می دهد
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}نوع شیء را برای ساخت انتخاب کنید
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}پیش نمای شیء
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}اندازه: {GOLD}{NUM} x {NUM} قطعه
 
+STR_OBJECT_CLASS_LTHS                                           :فانوس دریایی
+STR_OBJECT_CLASS_TRNS                                           :فرستنده
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}درختان
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}نوع درخت را مشخص کنید تا کاشته شود
+STR_TREES_RANDOM_TYPE                                           :{BLACK}درختان با نوع تصادفی
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}نشاندن درختان با نوع تصادفی.گرفتن دکمه شیفت برآورد هزینه ساخت را نمایش می دهد
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK} درخت های تصادفی
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به شکل تصافی در تمام نقشه درخت بکار
 
@@ -1957,10 +2096,15 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به ش
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}مکان های سنگی در نقشه ایجاد کن
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK} ناحیه ی بیابانی را مشخص کن {} دکمه ی "کنترل" را فشار بده تا حذف کند
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}افزایش مساحت زمین به بالا/پایین
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}کاهش مساحت زمین به بالا/پایین
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}نقشه ی تصادفی بساز
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}ساخت سناریو جدید
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}تمام تغییرات را بر گردان
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}حذف کلیه‌ی دارایی های شرکت از روی نقشه
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}تمام تغییرات را بر گردان
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}آیا مطمئنید که می خواهید همه دارایی های شرکت را از بین ببرید؟
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}طراحی مشخصات شهر ها
@@ -1968,17 +2112,36 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}شهر �
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ساختن شهر جدید
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}شهر صادفی
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}شهری در مکانی تصادفی بساز
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}تعدادی شهر با محل و جمعیت تصادفی
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}پوشاندن نقشه با شهرهای تصادفی
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}نام شهر:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}نام شهر
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}برای وارد کردن نام شهر کلیک کنید
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}نام تصادفی
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}تولید نام تصادفی جدید
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}اندازه ی شهر :
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}کوچک
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}متوسط
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}بزرگ
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}تصادفی
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}انتخاب اندازه ی شهر
+STR_FOUND_TOWN_CITY                                             :{BLACK}شهر
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}شهرها از شهرستان های معمولی سریعتر رشد می کنند{}بسته به تنظیمات، موقع ساختن بزرگتر از شهرستان ها هستند
 
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}نمای خیابان های شهر:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}نمای خیابان ها را برای این شهر انتخاب کنید
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}اصلی
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}راه های بهتر
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}شبکه ۲x۲
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}شبکه ۳x۳
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}به صورت تصادفی
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ساخت کارخانه جدید
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}صنعت مورد نظر خود را از این لیست انتخاب کنید
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :ساخت صنایع بسیار به طور تصادفی
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
 
 # Industry cargoes window
@@ -2136,7 +2299,7 @@ STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}کاره
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}لیست کارهایی که می شود در این شهر انجام داد- برای اطلاعات بیشتر کلیک کنید
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}انجام بده
 
-STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :ساخت مجسمه رئیس شرکت
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :ساخت تندیس رییس شرکت
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ساخت اختمان های جدید
 
 

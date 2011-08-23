@@ -1214,9 +1214,9 @@ STR_SEA_LEVEL_CUSTOM                                            :Заданны�
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Заданный ({NUM}%)
 
 STR_RIVERS_NONE                                                 :Нет
-STR_RIVERS_FEW                                                  :Мало
-STR_RIVERS_MODERATE                                             :Средне
-STR_RIVERS_LOT                                                  :Много
+STR_RIVERS_FEW                                                  :Малое
+STR_RIVERS_MODERATE                                             :Среднее
+STR_RIVERS_LOT                                                  :Большое
 
 STR_DISASTER_NONE                                               :Выключено
 STR_DISASTER_REDUCED                                            :Умеренная
@@ -1422,7 +1422,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Не д
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Не допускать постройки кораблей компьютером: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить ИИ в сетевой игре: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Число тактов перед остановкой ИИ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Количество тактов перед остановкой ИИ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал обслуживания в процентах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал обслуживания поездов: {ORANGE}{STRING} д{P 0:1 ень ня ней}/%
@@ -1477,8 +1477,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Пол�
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Расположение строки состояния: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон: {ORANGE}{STRING} пикс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радиус прилипания окон: {ORANGE}отключено
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. число открытых окон (не «приклеенных»): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. число открытых окон (не «приклеенных»): {ORANGE}не ограничено
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. количество открытых окон (не «приклеенных»): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. количество открытых окон (не «приклеенных»): {ORANGE}не ограничено
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Скорость роста городов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :нет
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :низкая
@@ -1764,7 +1764,7 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} компани{P я и й}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. компаний:
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ограничить максимальное число компаний на сервере
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ограничить максимальное количество компаний на сервере
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} наблюдател{P ь я ей}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. наблюдателей:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ограничить максимальное количество наблюдателей на сервере
@@ -2108,10 +2108,10 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выбо
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбор ж/д станции
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Направление
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Выберите направление ж/д станции
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Число путей
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Выберите число платформ ж/д станции
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Количество путей
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Укажите количество платформ ж/д станции
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Длина платформы
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выберите длину ж/д станции
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Укажите длину ж/д станции
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Участок
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Постройка станции на указанном игроком участке
 
@@ -2486,7 +2486,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введ
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Создание мира
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Размер карты:
 STR_MAPGEN_BY                                                   :{BLACK}×
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Число городов:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Количество городов:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кол-во предпр.:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снеговая линия:
@@ -2500,7 +2500,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Гене
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Рек:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Кол-во рек:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкость:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразие ландшафта:
 STR_MAPGEN_GENERATE                                             :{WHITE}Создать
@@ -2514,7 +2514,7 @@ STR_MAPGEN_SOUTHWEST                                            :{BLACK}Юго-�
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Свободный
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Водный
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Случайно
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случайный
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случайно
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вручную
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот карты:

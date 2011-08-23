@@ -1186,7 +1186,7 @@ STR_GAME_OPTIONS_CURRENCY_DEM                                   :Нямецка�
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Дацкая крона (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Гішпанская пэсэта (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінская марка (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Францускі франк (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Французскі франк (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грэцкая драхма (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Вугорскі форынт (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісьляндзкая крона (ISK)
@@ -1375,6 +1375,11 @@ STR_SEA_LEVEL_MEDIUM                                            :Сярэдня�
 STR_SEA_LEVEL_HIGH                                              :Вялiкая
 STR_SEA_LEVEL_CUSTOM                                            :Зададзены
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Зададзены ({NUM}%)
+
+STR_RIVERS_NONE                                                 :Няма
+STR_RIVERS_FEW                                                  :Малая
+STR_RIVERS_MODERATE                                             :Сярэдняя
+STR_RIVERS_LOT                                                  :Вялікая
 
 STR_DISASTER_NONE                                               :Выключаны
 STR_DISASTER_REDUCED                                            :Зьніжаныя
@@ -1712,6 +1717,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Пака
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы і абноўлены кантэнт, каб спампаваць
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Паказаць наладкi ШI/АІ
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
+
+STR_INTRO_TRANSLATION                                           :{BLACK}На гэту мову не перакладзен{P 0 ы ы а} {NUM} рад{P ок кі оў}. Вы можаце дапамагчы праекту, зарэгістраваўшыся як перакладнік. Інструкцыі ў файле readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Выхад
@@ -2654,6 +2661,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генэ
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Альгарытм дрэваў:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тып ляндшафту:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Колькасьць азёраў/мораў:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Колькасць рэк:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкасьць:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнастайнасьць ляндшафту:
 STR_MAPGEN_GENERATE                                             :{WHITE}Стварыць
@@ -2698,6 +2706,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Вы с
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% гатова
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Стварэньне сусьвету
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Стварэньне рэк
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высаджваньне лясоў
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генэрацыя нерухомасьці
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстаноўка дэкарацыяў і камянёў
@@ -2850,6 +2859,11 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <невядомага грузу>
 STR_NEWGRF_INVALID_ENGINE                                       :<няправільная мадэль>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядомае прадпрыемства>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканаваньне NewGRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Ідзе сканаваньне NewGRF. Гэта зойме некаторы час...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Прасканаван{P 0 ы ы а} {NUM} з {NUM} модул{P я ёў ёў} NewGRF
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс таблічак - {COMMA} табліч{P ка кi ак}
