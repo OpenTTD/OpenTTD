@@ -27,18 +27,26 @@ bool _palette_remap_grf[MAX_FILE_SLOTS];
 
 #include "table/landscape_sprite.h"
 
+/** Offsets for loading the different "replacement" sprites in the files. */
 static const SpriteID * const _landscape_spriteindexes[] = {
-	_landscape_spriteindexes_1,
-	_landscape_spriteindexes_2,
-	_landscape_spriteindexes_3,
+	_landscape_spriteindexes_arctic,
+	_landscape_spriteindexes_tropic,
+	_landscape_spriteindexes_toyland,
 };
 
+/**
+ * Load an old fashioned GRF file.
+ * @param filename   The name of the file to open.
+ * @param load_index The offset of the first sprite.
+ * @param file_index The Fio offset to load the file in.
+ * @return The number of loaded sprites.
+ */
 static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 {
 	uint load_index_org = load_index;
 	uint sprite_id = 0;
 
-	FioOpenFile(file_index, filename, NEWGRF_DIR);
+	FioOpenFile(file_index, filename, BASESET_DIR);
 
 	DEBUG(sprite, 2, "Reading grf-file '%s'", filename);
 
@@ -54,30 +62,31 @@ static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 	return load_index - load_index_org;
 }
 
-
-static void LoadSpritesIndexed(int file_index, uint *sprite_id, const SpriteID *index_tbl)
+/**
+ * Load an old fashioned GRF file to replace already loaded sprites.
+ * @param filename   The name of the file to open.
+ * @param index_tlb  The offsets of each of the sprites.
+ * @param file_index The Fio offset to load the file in.
+ * @return The number of loaded sprites.
+ */
+static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, int file_index)
 {
 	uint start;
+	uint sprite_id = 0;
+
+	FioOpenFile(file_index, filename, BASESET_DIR);
+
+	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
+
 	while ((start = *index_tbl++) != END) {
 		uint end = *index_tbl++;
 
 		do {
-			bool b = LoadNextSprite(start, file_index, *sprite_id);
+			bool b = LoadNextSprite(start, file_index, sprite_id);
 			assert(b);
-			(*sprite_id)++;
+			sprite_id++;
 		} while (++start <= end);
 	}
-}
-
-static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int file_index)
-{
-	uint sprite_id = 0;
-
-	FioOpenFile(file_index, filename, NEWGRF_DIR);
-
-	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
-
-	LoadSpritesIndexed(file_index, &sprite_id, index_tbl);
 }
 
 /**
@@ -153,7 +162,7 @@ static void LoadSpriteTables()
 	 */
 	if (_settings_game.game_creation.landscape != LT_TEMPERATE) {
 		_palette_remap_grf[i] = (PAL_DOS != used_set->palette);
-		LoadGrfIndexed(
+		LoadGrfFileIndexed(
 			used_set->files[GFT_ARCTIC + _settings_game.game_creation.landscape - 1].filename,
 			_landscape_spriteindexes[_settings_game.game_creation.landscape - 1],
 			i++

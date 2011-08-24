@@ -11,7 +11,7 @@
 
 static const SpriteID END = 0xFFFF;
 
-static const SpriteID _landscape_spriteindexes_1[] = {
+static const SpriteID _landscape_spriteindexes_arctic[] = {
  0xF67,  0xF9F,
  0xAAD,  0xAB0,
  0x83A,  0x845,
@@ -37,7 +37,7 @@ static const SpriteID _landscape_spriteindexes_1[] = {
 END
 };
 
-static const SpriteID _landscape_spriteindexes_2[] = {
+static const SpriteID _landscape_spriteindexes_tropic[] = {
  0xF67,  0xF9F,
  0xAAD,  0xAB0,
  0xFA0,  0xFC9,
@@ -74,7 +74,7 @@ static const SpriteID _landscape_spriteindexes_2[] = {
 END
 };
 
-static const SpriteID _landscape_spriteindexes_3[] = {
+static const SpriteID _landscape_spriteindexes_toyland[] = {
  0xF54,  0xF9F,
  0xFDD,  0xFE5,
  0xFEC,  0xFEC,
