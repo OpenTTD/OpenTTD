@@ -14,6 +14,7 @@
 
 #include "cargotype.h"
 #include "rail_type.h"
+#include "fileio_type.h"
 
 enum GrfLoadingStage {
 	GLS_FILESCAN,
@@ -139,7 +140,7 @@ struct GRFLoadedFeatures {
 /* Indicates which are the newgrf features currently loaded ingame */
 extern GRFLoadedFeatures _loaded_newgrf_features;
 
-void LoadNewGRFFile(struct GRFConfig *config, uint file_index, GrfLoadingStage stage);
+void LoadNewGRFFile(struct GRFConfig *config, uint file_index, GrfLoadingStage stage, Subdirectory subdir);
 void LoadNewGRF(uint load_index, uint file_index);
 void ReloadNewGRFData(); // in saveload/afterload.cpp
 void ResetNewGRFData();

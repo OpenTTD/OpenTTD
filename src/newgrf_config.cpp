@@ -282,9 +282,10 @@ bool UpdateNewGRFConfigPalette(int32 p1)
 /**
  * Calculate the MD5 sum for a GRF, and store it in the config.
  * @param config GRF to compute.
+ * @param subdir The subdirectory to look in.
  * @return MD5 sum was successfully computed
  */
-static bool CalcGRFMD5Sum(GRFConfig *config)
+static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
 {
 	FILE *f;
 	Md5 checksum;
@@ -292,7 +293,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 	size_t len, size;
 
 	/* open the file */
-	f = FioFOpenFile(config->filename, "rb", NEWGRF_DIR, &size);
+	f = FioFOpenFile(config->filename, "rb", subdir, &size);
 	if (f == NULL) return false;
 
 	/* calculate md5sum */
@@ -312,17 +313,18 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
  * Find the GRFID of a given grf, and calculate its md5sum.
  * @param config    grf to fill.
  * @param is_static grf is static.
+ * @param subdir    the subdirectory to search in.
  * @return Operation was successfully completed.
  */
-bool FillGRFDetails(GRFConfig *config, bool is_static)
+bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir)
 {
-	if (!FioCheckFileExists(config->filename)) {
+	if (!FioCheckFileExists(config->filename, subdir)) {
 		config->status = GCS_NOT_FOUND;
 		return false;
 	}
 
 	/* Find and load the Action 8 information */
-	LoadNewGRFFile(config, CONFIG_SLOT, GLS_FILESCAN);
+	LoadNewGRFFile(config, CONFIG_SLOT, GLS_FILESCAN, subdir);
 	config->SetSuitablePalette();
 
 	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
@@ -330,13 +332,13 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
-		LoadNewGRFFile(config, 62, GLS_SAFETYSCAN);
+		LoadNewGRFFile(config, 62, GLS_SAFETYSCAN, subdir);
 
 		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
 		if (HasBit(config->flags, GCF_UNSAFE)) return false;
 	}
 
-	return CalcGRFMD5Sum(config);
+	return CalcGRFMD5Sum(config, subdir);
 }
 
 

@@ -8076,7 +8076,14 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 }
 
 
-void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
+/**
+ * Load a particular NewGRF.
+ * @param config     The configuration of the to be loaded NewGRF.
+ * @param file_index The Fio index of the first NewGRF to load.
+ * @param stage      The loading stage of the NewGRF.
+ * @param subdir     The sub directory to find the NewGRF in.
+ */
+void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, Subdirectory subdir)
 {
 	const char *filename = config->filename;
 	uint16 num;
@@ -8105,7 +8112,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		return;
 	}
 
-	FioOpenFile(file_index, filename, NEWGRF_DIR);
+	FioOpenFile(file_index, filename, subdir);
 	_cur.file_index = file_index; // XXX
 	_palette_remap_grf[_cur.file_index] = (config->palette & GRFP_USE_MASK);
 
@@ -8404,6 +8411,11 @@ static void AfterLoadGRFs()
 	_grm_sprites.clear();
 }
 
+/**
+ * Load all the NewGRFs.
+ * @param load_index The offset for the first sprite to add.
+ * @param file_index The Fio index of the first NewGRF to load.
+ */
 void LoadNewGRF(uint load_index, uint file_index)
 {
 	/* In case of networking we need to "sync" the start values
@@ -8458,14 +8470,15 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
-			if (!FioCheckFileExists(c->filename)) {
+			Subdirectory subdir = slot == file_index ? BASESET_DIR : NEWGRF_DIR;
+			if (!FioCheckFileExists(c->filename, subdir)) {
 				DEBUG(grf, 0, "NewGRF file is missing '%s'; disabling", c->filename);
 				c->status = GCS_NOT_FOUND;
 				continue;
 			}
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c);
-			LoadNewGRFFile(c, slot++, stage);
+			LoadNewGRFFile(c, slot++, stage, subdir);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {

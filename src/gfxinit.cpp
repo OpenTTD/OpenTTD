@@ -180,7 +180,7 @@ static void LoadSpriteTables()
 		case PAL_WINDOWS: master->palette |= GRFP_GRF_WINDOWS; break;
 		default: break;
 	}
-	FillGRFDetails(master, false);
+	FillGRFDetails(master, false, BASESET_DIR);
 
 	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;

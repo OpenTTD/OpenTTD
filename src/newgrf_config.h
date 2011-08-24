@@ -16,6 +16,7 @@
 #include "core/alloc_type.hpp"
 #include "core/smallmap_type.hpp"
 #include "misc/countedptr.hpp"
+#include "fileio_type.h"
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -206,7 +207,7 @@ void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
 void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig);
-bool FillGRFDetails(GRFConfig *config, bool is_static);
+bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir = NEWGRF_DIR);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 
 /* In newgrf_gui.cpp */
