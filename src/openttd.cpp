@@ -766,7 +766,7 @@ static void MakeNewGameDone()
 	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
 
 	/* In a dedicated server, the server does not play */
-	if (_network_dedicated || BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0) {
+	if (!_video_driver->HasGUI()) {
 		SetLocalCompany(COMPANY_SPECTATOR);
 		IConsoleCmdExec("exec scripts/game_start.scr 0");
 		return;

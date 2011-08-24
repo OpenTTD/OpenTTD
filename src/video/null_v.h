@@ -32,6 +32,7 @@ public:
 
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
 	/* virtual */ const char *GetName() const { return "null"; }
+	/* virtual */ bool HasGUI() const { return false; }
 };
 
 /** Factory the null video driver. */

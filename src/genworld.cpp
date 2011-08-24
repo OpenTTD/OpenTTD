@@ -24,7 +24,7 @@
 #include "engine_func.h"
 #include "newgrf_storage.h"
 #include "water.h"
-#include "blitter/factory.hpp"
+#include "video/video_driver.hpp"
 #include "tilehighlight_func.h"
 #include "saveload/saveload.h"
 #include "void_map.h"
@@ -310,8 +310,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 		_gw.thread = NULL;
 	}
 
-	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0 ||
-			!ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
+	if (!_video_driver->HasGUI() || !ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_modal_progress_work_mutex->EndCritical();

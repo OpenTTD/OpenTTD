@@ -19,8 +19,7 @@
 #include "window_func.h"
 #include "progress.h"
 #include "thread/thread.h"
-#include "blitter/factory.hpp"
-#include "network/network.h"
+#include "video/video_driver.hpp"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -696,7 +695,7 @@ void DoScanNewGRFFiles(void *callback)
  */
 void ScanNewGRFFiles(NewGRFScanCallback *callback)
 {
-	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0 || _network_dedicated || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL)) {
+	if (!_video_driver->HasGUI() || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL)) {
 		_modal_progress_work_mutex->EndCritical();
 		_modal_progress_paint_mutex->EndCritical();
 		DoScanNewGRFFiles(callback);

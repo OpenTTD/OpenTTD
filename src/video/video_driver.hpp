@@ -46,6 +46,19 @@ public:
 	 * @return True if the change succeeded.
 	 */
 	virtual bool ToggleFullscreen(bool fullscreen) = 0;
+
+	/**
+	 * Whether the driver has a graphical user interface with the end user.
+	 * Or in other words, whether we should spawn a thread for world generation
+	 * and NewGRF scanning so the graphical updates can keep coming. Otherwise
+	 * progress has to be shown on the console, which uses by definition another
+	 * thread/process for display purposes.
+	 * @return True for all drivers except null and dedicated.
+	 */
+	virtual bool HasGUI() const
+	{
+		return true;
+	}
 };
 
 /** Base of the factory for the video drivers. */
