@@ -364,14 +364,15 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
  * @param file filename to get the title for
  * @param title the title buffer to fill
  * @param last the last element in the title buffer
+ * @param subdir the sub directory to search in
  */
-static void GetFileTitle(const char *file, char *title, const char *last)
+static void GetFileTitle(const char *file, char *title, const char *last, Subdirectory subdir)
 {
 	char buf[MAX_PATH];
 	strecpy(buf, file, lastof(buf));
 	strecat(buf, ".title", lastof(buf));
 
-	FILE *f = FioFOpenFile(buf, "r");
+	FILE *f = FioFOpenFile(buf, "r", subdir);
 	if (f == NULL) return;
 
 	size_t read = fread(title, 1, last - title, f);
@@ -400,7 +401,7 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 	 * .SV1 Transport Tycoon Deluxe (Patch) saved game
 	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game */
 	if (strcasecmp(ext, ".sav") == 0) {
-		GetFileTitle(file, title, last);
+		GetFileTitle(file, title, last, SAVE_DIR);
 		return FIOS_TYPE_FILE;
 	}
 
@@ -452,7 +453,7 @@ static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char 
 	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
 	 * .SS0 Transport Tycoon Deluxe preset scenario */
 	if (strcasecmp(ext, ".scn") == 0) {
-		GetFileTitle(file, title, last);
+		GetFileTitle(file, title, last, SCENARIO_DIR);
 		return FIOS_TYPE_SCENARIO;
 	}
 
@@ -528,7 +529,7 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char
 		if (!match) return FIOS_TYPE_INVALID;
 	}
 
-	GetFileTitle(file, title, last);
+	GetFileTitle(file, title, last, HEIGHTMAP_DIR);
 
 	return type;
 }
