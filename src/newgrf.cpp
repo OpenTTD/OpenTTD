@@ -8105,7 +8105,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		return;
 	}
 
-	FioOpenFile(file_index, filename);
+	FioOpenFile(file_index, filename, NEWGRF_DIR);
 	_cur.file_index = file_index; // XXX
 	_palette_remap_grf[_cur.file_index] = (config->palette & GRFP_USE_MASK);
 

@@ -38,7 +38,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 	uint load_index_org = load_index;
 	uint sprite_id = 0;
 
-	FioOpenFile(file_index, filename);
+	FioOpenFile(file_index, filename, NEWGRF_DIR);
 
 	DEBUG(sprite, 2, "Reading grf-file '%s'", filename);
 
@@ -73,7 +73,7 @@ static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int 
 {
 	uint sprite_id = 0;
 
-	FioOpenFile(file_index, filename);
+	FioOpenFile(file_index, filename, NEWGRF_DIR);
 
 	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
 

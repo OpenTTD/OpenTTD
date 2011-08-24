@@ -30,7 +30,7 @@ static void OpenBankFile(const char *filename)
 	/* If there is no sound file (nosound set), don't load anything */
 	if (filename == NULL) return;
 
-	FioOpenFile(SOUND_SLOT, filename);
+	FioOpenFile(SOUND_SLOT, filename, BASESET_DIR);
 	size_t pos = FioGetPos();
 	uint count = FioReadDword();
 

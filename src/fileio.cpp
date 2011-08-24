@@ -237,15 +237,16 @@ static void FioFreeHandle()
  * Open a slotted file.
  * @param slot Index to assign.
  * @param filename Name of the file at the disk.
- */
-void FioOpenFile(int slot, const char *filename)
+ * @param subdir The sub directory to search this file in.
+  */
+void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 {
 	FILE *f;
 
 #if defined(LIMITED_FDS)
 	FioFreeHandle();
 #endif /* LIMITED_FDS */
-	f = FioFOpenFile(filename);
+	f = FioFOpenFile(filename, "rb", subdir);
 	if (f == NULL) usererror("Cannot open file '%s'", filename);
 	uint32 pos = ftell(f);
 
