@@ -198,7 +198,7 @@ enum GraphicsFileType {
 };
 
 /** All data of a graphics set. */
-struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, DATA_DIR> {
+struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, BASESET_DIR> {
 	PaletteType palette;       ///< Palette of this graphics set
 
 	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
@@ -210,7 +210,7 @@ public:
 };
 
 /** All data of a sounds set. */
-struct SoundsSet : BaseSet<SoundsSet, 1, DATA_DIR> {
+struct SoundsSet : BaseSet<SoundsSet, 1, BASESET_DIR> {
 };
 
 /** All data/functions related with replacing the base sounds */

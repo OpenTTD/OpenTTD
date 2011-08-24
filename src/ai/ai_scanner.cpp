@@ -384,7 +384,7 @@ struct AIFileChecksumCreator : FileScanner {
 		byte tmp_md5sum[16];
 
 		/* Open the file ... */
-		FILE *f = FioFOpenFile(filename, "rb", DATA_DIR, &size);
+		FILE *f = FioFOpenFile(filename, "rb", AI_DIR, &size);
 		if (f == NULL) return false;
 
 		/* ... calculate md5sum... */

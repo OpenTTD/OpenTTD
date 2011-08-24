@@ -375,10 +375,10 @@ static char *GetFullFilename(const ContentInfo *ci, bool compressed)
 	Subdirectory dir;
 	switch (ci->type) {
 		default: return NULL;
-		case CONTENT_TYPE_BASE_GRAPHICS: dir = DATA_DIR;       break;
+		case CONTENT_TYPE_BASE_GRAPHICS: dir = BASESET_DIR;    break;
 		case CONTENT_TYPE_BASE_MUSIC:    dir = GM_DIR;         break;
-		case CONTENT_TYPE_BASE_SOUNDS:   dir = DATA_DIR;       break;
-		case CONTENT_TYPE_NEWGRF:        dir = DATA_DIR;       break;
+		case CONTENT_TYPE_BASE_SOUNDS:   dir = BASESET_DIR;    break;
+		case CONTENT_TYPE_NEWGRF:        dir = NEWGRF_DIR;     break;
 		case CONTENT_TYPE_AI:            dir = AI_DIR;         break;
 		case CONTENT_TYPE_AI_LIBRARY:    dir = AI_LIBRARY_DIR; break;
 		case CONTENT_TYPE_SCENARIO:      dir = SCENARIO_DIR;   break;

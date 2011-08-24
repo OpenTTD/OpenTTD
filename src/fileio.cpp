@@ -267,7 +267,7 @@ void FioOpenFile(int slot, const char *filename)
 	FioSeekToFile(slot, pos);
 }
 
-static const char * const _subdirs[NUM_SUBDIRS] = {
+static const char * const _subdirs[] = {
 	"",
 	"save" PATHSEP,
 	"save" PATHSEP "autosave" PATHSEP,
@@ -275,10 +275,12 @@ static const char * const _subdirs[NUM_SUBDIRS] = {
 	"scenario" PATHSEP "heightmap" PATHSEP,
 	"gm" PATHSEP,
 	"data" PATHSEP,
+	"data" PATHSEP,
 	"lang" PATHSEP,
 	"ai" PATHSEP,
 	"ai" PATHSEP "library" PATHSEP,
 };
+assert_compile(lengthof(_subdirs) == NUM_SUBDIRS);
 
 const char *_searchpaths[NUM_SEARCHPATHS];
 TarList _tar_list;
@@ -636,7 +638,7 @@ static void SimplifyFileName(char *name)
 
 	DEBUG(misc, 1, "Scanning for tars");
 	TarScanner fs;
-	uint num = fs.Scan(".tar", DATA_DIR, false);
+	uint num = fs.Scan(".tar", NEWGRF_DIR, false);
 	num += fs.Scan(".tar", AI_DIR, false);
 	num += fs.Scan(".tar", AI_LIBRARY_DIR, false);
 	num += fs.Scan(".tar", SCENARIO_DIR, false);
@@ -1156,7 +1158,7 @@ void DeterminePaths(const char *exe)
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
-	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, DATA_DIR, AI_DIR, AI_LIBRARY_DIR, GM_DIR };
+	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GM_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
 		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], _subdirs[dirs[i]]);
 		FioCreateDirectory(tmp);

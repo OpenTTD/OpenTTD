@@ -24,7 +24,8 @@ enum Subdirectory {
 	SCENARIO_DIR,  ///< Base directory for all scenarios
 	HEIGHTMAP_DIR, ///< Subdirectory of scenario for heightmaps
 	GM_DIR,        ///< Subdirectory for all music
-	DATA_DIR,      ///< Subdirectory for all data (GRFs, sample.cat, intro game)
+	BASESET_DIR,   ///< Subdirectory for all base data (base sets, intro game)
+	NEWGRF_DIR,    ///< Subdirectory for all NewGRFs
 	LANG_DIR,      ///< Subdirectory for all translation files
 	AI_DIR,        ///< Subdirectory for all AI files
 	AI_LIBRARY_DIR,///< Subdirectory for all AI libraries

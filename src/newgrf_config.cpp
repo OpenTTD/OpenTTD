@@ -292,7 +292,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 	size_t len, size;
 
 	/* open the file */
-	f = FioFOpenFile(config->filename, "rb", DATA_DIR, &size);
+	f = FioFOpenFile(config->filename, "rb", NEWGRF_DIR, &size);
 	if (f == NULL) return false;
 
 	/* calculate md5sum */
@@ -543,7 +543,7 @@ public:
 	static uint DoScan()
 	{
 		GRFFileScanner fs;
-		int ret = fs.Scan(".grf", DATA_DIR);
+		int ret = fs.Scan(".grf", NEWGRF_DIR);
 		/* The number scanned and the number returned may not be the same;
 		 * duplicate NewGRFs and base sets are ignored in the return value. */
 		_settings_client.gui.last_newgrf_count = fs.num_scanned;
