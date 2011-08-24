@@ -26,10 +26,7 @@ static inline bool HasModalProgress()
 	return _in_modal_progress;
 }
 
-/**
- * Set the modal progress state.
- * @param state The new state; are we modal or not?
- */
+bool IsFirstModalProgressLoop();
 void SetModalProgress(bool state);
 
 extern class ThreadMutex *_modal_progress_work_mutex;

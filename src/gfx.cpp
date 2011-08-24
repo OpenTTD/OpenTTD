@@ -1561,7 +1561,7 @@ void DrawDirtyBlocks()
 		_modal_progress_work_mutex->EndCritical();
 
 		/* Wait a while and update _realtime_tick so we are given the rights */
-		CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
+		if (!IsFirstModalProgressLoop()) CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
 		_realtime_tick += MODAL_PROGRESS_REDRAW_TIMEOUT;
 		_modal_progress_paint_mutex->BeginCritical();
 		_modal_progress_work_mutex->BeginCritical();

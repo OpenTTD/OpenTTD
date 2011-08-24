@@ -629,14 +629,7 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
  */
 void DoScanNewGRFFiles(void *callback)
 {
-	/* First set the modal progress. This ensures that it will eventually let go of the paint mutex. */
-	SetModalProgress(true);
-	_modal_progress_paint_mutex->BeginCritical();
-
-	/* Only then can we really start, especially by marking the whole screen dirty. Get those other windows hidden!. */
-	MarkWholeScreenDirty();
 	_modal_progress_work_mutex->BeginCritical();
-	_modal_progress_paint_mutex->EndCritical();
 
 	ClearGRFConfigList(&_all_grfs);
 
@@ -694,12 +687,19 @@ void DoScanNewGRFFiles(void *callback)
  */
 void ScanNewGRFFiles(NewGRFScanCallback *callback)
 {
+	/* First set the modal progress. This ensures that it will eventually let go of the paint mutex. */
+	SetModalProgress(true);
+	/* Only then can we really start, especially by marking the whole screen dirty. Get those other windows hidden!. */
+	MarkWholeScreenDirty();
+
 	if (!_video_driver->HasGUI() || !ThreadObject::New(&DoScanNewGRFFiles, callback, NULL)) {
 		_modal_progress_work_mutex->EndCritical();
 		_modal_progress_paint_mutex->EndCritical();
 		DoScanNewGRFFiles(callback);
 		_modal_progress_paint_mutex->BeginCritical();
 		_modal_progress_work_mutex->BeginCritical();
+	} else {
+		UpdateNewGRFScanStatus(0, NULL);
 	}
 }
 
