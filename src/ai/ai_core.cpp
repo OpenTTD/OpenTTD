@@ -334,4 +334,8 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	AI::ai_scanner->RescanAIDir();
 	ResetConfig();
+
+	InvalidateWindowData(WC_AI_LIST, 0, 1);
+	SetWindowClassesDirty(WC_AI_DEBUG);
+	SetWindowDirty(WC_AI_SETTINGS, 0);
 }

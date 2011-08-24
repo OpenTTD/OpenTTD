@@ -1253,8 +1253,6 @@ DEF_CONSOLE_CMD(ConRescanAI)
 
 	TarScanner::DoScan();
 	AI::Rescan();
-	InvalidateWindowData(WC_AI_LIST, 0, 1);
-	SetWindowDirty(WC_AI_SETTINGS, 0);
 
 	return true;
 }
