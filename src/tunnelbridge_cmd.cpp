@@ -673,8 +673,14 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 		}
 
 		case TRANSPORT_RAIL:
-		case TRANSPORT_WATER:
 			return CheckOwnership(GetTileOwner(tile));
+
+		case TRANSPORT_WATER: {
+			/* Always allow to remove aqueducts without owner. */
+			Owner aqueduct_owner = GetTileOwner(tile);
+			if (aqueduct_owner == OWNER_NONE) aqueduct_owner = _current_company;
+			return CheckOwnership(aqueduct_owner);
+		}
 
 		default: NOT_REACHED();
 	}
