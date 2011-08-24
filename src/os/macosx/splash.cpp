@@ -51,7 +51,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
  */
 void DisplaySplashImage()
 {
-	FILE *f = FioFOpenFile(SPLASH_IMAGE_FILE);
+	FILE *f = FioFOpenFile(SPLASH_IMAGE_FILE, "r", BASE_DIR);
 	if (f == NULL) return;
 
 	png_byte header[8];
