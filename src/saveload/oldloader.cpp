@@ -281,7 +281,7 @@ bool LoadOldSaveGame(const char *file)
 	InitLoading(&ls);
 
 	/* Open file */
-	ls.file = FioFOpenFile(file, "rb");
+	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
 	if (ls.file == NULL) {
 		DEBUG(oldloader, 0, "Cannot open file '%s'", file);
@@ -320,7 +320,7 @@ bool LoadOldSaveGame(const char *file)
 
 void GetOldSaveGameName(const char *file, char *title, const char *last)
 {
-	FILE *f = FioFOpenFile(file, "rb");
+	FILE *f = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
 	if (f == NULL) {
 		*title = '\0';

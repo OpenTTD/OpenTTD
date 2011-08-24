@@ -599,7 +599,7 @@ public:
 
 	/* virtual */ bool AddFile(const char *filename, size_t basepath_length)
 	{
-		FILE *f = FioFOpenFile(filename, "r");
+		FILE *f = FioFOpenFile(filename, "r", SCENARIO_DIR);
 		if (f == NULL) return false;
 
 		ScenarioIdentifier id;

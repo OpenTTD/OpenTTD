@@ -42,7 +42,7 @@ static bool OpenPNGFile(const char *filename, uint32 id, bool mask)
 	/* Add path separator after 'sprites' if not present */
 	const char *sep = (filename[0] == PATHSEPCHAR) ? "" : PATHSEP;
 	snprintf(png_file, sizeof(png_file), "sprites%s%s" PATHSEP "%d%s.png", sep, filename, id, mask ? "m" : "");
-	if (FioCheckFileExists(png_file)) {
+	if (FioCheckFileExists(png_file, NEWGRF_DIR)) {
 		FioOpenFile(PNG_SLOT, png_file, NEWGRF_DIR);
 		return true;
 	}

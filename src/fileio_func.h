@@ -48,8 +48,8 @@ static inline bool IsValidSearchPath(Searchpath sp)
 #define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
 
 void FioFCloseFile(FILE *f);
-FILE *FioFOpenFile(const char *filename, const char *mode = "rb", Subdirectory subdir = NEWGRF_DIR, size_t *filesize = NULL);
-bool FioCheckFileExists(const char *filename, Subdirectory subdir = NEWGRF_DIR);
+FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize = NULL);
+bool FioCheckFileExists(const char *filename, Subdirectory subdir);
 char *FioGetFullPath(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir, const char *filename);
 char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char *filename);
 char *FioAppendDirectory(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir);

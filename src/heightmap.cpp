@@ -105,7 +105,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	png_structp png_ptr = NULL;
 	png_infop info_ptr  = NULL;
 
-	fp = FioFOpenFile(filename, "rb");
+	fp = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
 	if (fp == NULL) {
 		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_PNGMAP_FILE_NOT_FOUND, WL_ERROR);
 		return false;
@@ -228,7 +228,7 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 	/* Init BmpData */
 	memset(&data, 0, sizeof(data));
 
-	f = FioFOpenFile(filename, "rb");
+	f = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
 	if (f == NULL) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_PNGMAP_FILE_NOT_FOUND, WL_ERROR);
 		return false;
