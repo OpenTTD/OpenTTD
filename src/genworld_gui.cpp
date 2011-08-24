@@ -25,7 +25,6 @@
 #include "landscape_type.h"
 #include "querystring_gui.h"
 #include "town.h"
-#include "thread/thread.h"
 #include "settings_func.h"
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"

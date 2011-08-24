@@ -18,7 +18,6 @@
 #include "newgrf_text.h"
 #include "window_func.h"
 #include "progress.h"
-#include "thread/thread.h"
 #include "video/video_driver.hpp"
 
 #include "fileio_func.h"

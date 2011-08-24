@@ -12,6 +12,8 @@
 #ifndef PROGRESS_H
 #define PROGRESS_H
 
+#include "thread/thread.h"
+
 static const uint MODAL_PROGRESS_REDRAW_TIMEOUT = 200; ///< Timeout between redraws
 
 /**
