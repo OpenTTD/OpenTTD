@@ -2528,6 +2528,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ungültige Ind
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFs scannen
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFs scannen. Abhängig von deren Anzahl kann dieses ein wenig dauern...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} von geschätzten {NUM} NewGRF{P "" s} gescannt
+STR_NEWGRF_SCAN_ARCHIVES                                        :Scannen nach Archivdateien
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste ({COMMA} Schild{P "" er})

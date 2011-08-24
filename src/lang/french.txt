@@ -2528,6 +2528,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrie inva
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Analyse des NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Analyse des NewGRFs. Cela peut prendre du temps...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} analysé{P "" s} sur une estimation de {NUM} NewGRF{P "" s}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Recherche des archives
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}

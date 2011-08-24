@@ -2142,6 +2142,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}به ص�
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ساخت کارخانه جدید
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}صنعت مورد نظر خود را از این لیست انتخاب کنید
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :ساخت صنایع بسیار به طور تصادفی
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}پر کردن نقشه با صنایع با محل تصادفی
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
 
 # Industry cargoes window

@@ -1056,10 +1056,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor valute
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funta (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funta (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijski Šiling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski Franak (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švajcarski Franak (CHF)
@@ -2722,6 +2722,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća ind
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Pregledanje NewGRF-ova
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Pregledanje NewGRF-ova. U zavisnosti od količine ovo može i da potraje...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" -a -ova} pregledano od odprilike procenjeno {NUM} NewGRF{P -a -a -ova}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Pretraživanje arhiva
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}
