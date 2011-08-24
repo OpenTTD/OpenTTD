@@ -12,6 +12,8 @@
 #ifndef INI_TYPE_H
 #define INI_TYPE_H
 
+#include "fileio_type.h"
+
 /** Types of groups */
 enum IniGroupType {
 	IGT_VARIABLES = 0, ///< Values of the form "landscape = hilly".
@@ -62,15 +64,16 @@ struct IniLoadFile {
 	IniGroup *GetGroup(const char *name, size_t len = 0, bool create_new = true);
 	void RemoveGroup(const char *name);
 
-	void LoadFromDisk(const char *filename);
+	void LoadFromDisk(const char *filename, Subdirectory subdir);
 
 	/**
 	 * Open the INI file.
 	 * @param filename Name of the INI file.
+	 * @param subdir The subdir to load the file from.
 	 * @param size [out] Size of the opened file.
 	 * @return File handle of the opened file, or \c NULL.
 	 */
-	virtual FILE *OpenFile(const char *filename, size_t *size) = 0;
+	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) = 0;
 
 	/**
 	 * Report an error about the file contents.
@@ -87,7 +90,7 @@ struct IniFile : IniLoadFile {
 
 	bool SaveToDisk(const char *filename);
 
-	virtual FILE *OpenFile(const char *filename, size_t *size);
+	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size);
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post);
 };
 

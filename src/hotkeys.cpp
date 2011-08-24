@@ -253,7 +253,7 @@ struct SignListWindow;
 static void SaveLoadHotkeys(bool save)
 {
 	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(_hotkeys_file);
+	ini->LoadFromDisk(_hotkeys_file, BASE_DIR);
 
 	IniGroup *group;
 

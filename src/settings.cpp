@@ -1503,7 +1503,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 static IniFile *IniLoadConfig()
 {
 	IniFile *ini = new IniFile(_list_group_names);
-	ini->LoadFromDisk(_config_file);
+	ini->LoadFromDisk(_config_file, BASE_DIR);
 	return ini;
 }
 

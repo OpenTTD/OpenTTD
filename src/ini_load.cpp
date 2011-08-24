@@ -204,9 +204,10 @@ void IniLoadFile::RemoveGroup(const char *name)
 /**
  * Load the Ini file's data from the disk.
  * @param filename the file to load.
+ * @param subdir the sub directory to load the file from.
  * @pre nothing has been loaded yet.
  */
-void IniLoadFile::LoadFromDisk(const char *filename)
+void IniLoadFile::LoadFromDisk(const char *filename, Subdirectory subdir)
 {
 	assert(this->last_group == &this->group);
 
@@ -218,7 +219,7 @@ void IniLoadFile::LoadFromDisk(const char *filename)
 	uint comment_alloc = 0;
 
 	size_t end;
-	FILE *in = this->OpenFile(filename, &end);
+	FILE *in = this->OpenFile(filename, subdir, &end);
 	if (in == NULL) return;
 
 	end += ftell(in);

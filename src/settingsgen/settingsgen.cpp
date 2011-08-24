@@ -173,7 +173,7 @@ struct SettingsIniFile : IniLoadFile {
 	{
 	}
 
-	virtual FILE *OpenFile(const char *filename, size_t *size)
+	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size)
 	{
 		/* Open the text file in binary mode to prevent end-of-line translations
 		 * done by ftell() and friends, as defined by K&R. */
@@ -203,6 +203,7 @@ static const char *DEFAULTS_GROUP_NAME  = "defaults";   ///< Name of the group c
 /**
  * Load the INI file.
  * @param filename Name of the file to load.
+ * @param subdir   The subdirectory to load from.
  * @return         Loaded INI data.
  */
 static IniLoadFile *LoadIniFile(const char *filename)
@@ -210,7 +211,7 @@ static IniLoadFile *LoadIniFile(const char *filename)
 	static const char * const seq_groups[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, NULL};
 
 	IniLoadFile *ini = new SettingsIniFile(NULL, seq_groups);
-	ini->LoadFromDisk(filename);
+	ini->LoadFromDisk(filename, NO_DIRECTORY);
 	return ini;
 }
 
