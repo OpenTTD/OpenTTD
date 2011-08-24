@@ -470,7 +470,7 @@ The following compilers are known to compile OpenTTD:
     Version 2005 gives bogus warnings about scoping issues.
   - GNU Compiler Collection (GCC) 3.3 - 4.7.
     Versions 4.1 and earlier give bogus warnings about uninitialised variables.
-    Versions 4.4 and later give bogus warnings about freeing non-heap objects.
+    Versions 4.4 - 4.6 give bogus warnings about freeing non-heap objects.
     Versions 4.5 and later give invalid warnings when lto is enabled.
   - Intel C++ Compiler (ICC) 12.0.
 

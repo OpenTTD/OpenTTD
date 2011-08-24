@@ -1304,6 +1304,8 @@ make_compiler_cflags() {
 			# warning: narrowing conversion of '...' from 'unsigned int' to 'int' inside { } [-Wnarrowing]
 			# They are valid according to the C++ standard, but useless.
 			cxxflags="$cxxflags -Wno-narrowing"
+			# Disable bogus 'attempt to free a non-heap object' warning
+			flags="$flags -Wno-free-nonheap-object"
 		fi
 
 		if [ "$enable_lto" != "0" ]; then
