@@ -1110,9 +1110,10 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	} else {
 		bool allow_house = true; // Value which decides if we want to construct a house
 
-		/* Reached a tunnel/bridge? Then continue at the other side of it. */
+		/* Reached a tunnel/bridge? Then continue at the other side of it, unless
+		 * it is the starting tile. Half the time, we stay on this side then.*/
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (target_dir != DIAGDIR_END || Chance16(1, 2))) {
 				*tile_ptr = GetOtherTunnelBridgeEnd(tile);
 			}
 			return;
@@ -1236,9 +1237,14 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 			return _grow_town_result;
 		}
 
-		/* Select a random bit from the blockmask, walk a step
-		 * and continue the search from there. */
-		do target_dir = RandomDiagDir(); while (!(cur_rb & DiagDirToRoadBits(target_dir)));
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			/* Only build in the direction away from the tunnel or bridge. */
+			target_dir = ReverseDiagDir(GetTunnelBridgeDirection(tile));
+		} else {
+			/* Select a random bit from the blockmask, walk a step
+			 * and continue the search from there. */
+			do target_dir = RandomDiagDir(); while (!(cur_rb & DiagDirToRoadBits(target_dir)));
+		}
 		tile = TileAddByDiagDir(tile, target_dir);
 
 		if (IsTileType(tile, MP_ROAD) && !IsRoadDepot(tile) && HasTileRoadType(tile, ROADTYPE_ROAD)) {
