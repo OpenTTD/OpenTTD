@@ -67,8 +67,9 @@ bool ExtractTar(const char *tar_filename);
 extern char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 
 /** Helper for scanning for files with a given name */
-class FileScanner
-{
+class FileScanner {
+protected:
+	Subdirectory subdir; ///< The current sub directory we are searching through
 public:
 	/** Destruct the proper one... */
 	virtual ~FileScanner() {}

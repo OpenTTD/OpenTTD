@@ -1317,6 +1317,8 @@ static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterato
  */
 uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool recursive)
 {
+	this->subdir = sd;
+
 	Searchpath sp;
 	char path[MAX_PATH];
 	TarFileList::iterator tar;
