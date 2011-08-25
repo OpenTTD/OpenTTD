@@ -2527,6 +2527,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industr
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanez resursele NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Se scanează resursele NewGRF. În funcție de numărul acestora, această operație poate dura un timp...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} resurs{P 0 "ă" "e"}NewGRF scanat{P "ă" "e"} din aproximativ {NUM} resurs{P "ă" "e"} NewGRF disponibil{P "ă" "e"}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Scanez pentru arhive
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne

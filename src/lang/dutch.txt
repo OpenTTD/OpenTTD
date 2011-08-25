@@ -861,10 +861,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Kies valuta
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pond (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britse Pond (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanse Yen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Oostenrijkse Shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgische Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Zwitserse Frank (CHF)

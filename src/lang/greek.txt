@@ -2613,6 +2613,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυ�
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Σαρώνονται Νέα GRF
+STR_NEWGRF_SCAN_ARCHIVES                                        :Σάρωση για αρχεία
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}

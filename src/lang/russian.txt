@@ -2703,6 +2703,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвес
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканирование NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Идёт сканирование NewGRF. Это займёт некоторое время...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Просканирован{P 0 "" о о} {NUM} из {NUM} модул{P я ей ей} NewGRF
+STR_NEWGRF_SCAN_ARCHIVES                                        :Поиск архивов
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список табличек - {COMMA} таблич{P ка ки ек}
