@@ -1089,9 +1089,9 @@ STR_CONFIG_SETTING_DISABLED                                     :tiada
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarkan pembinaan di tepi pantai dan cerun bukit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Panjang maksima gerabak: {ORANGE}{STRING} petak
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Benarkan kawasan tangkapan yang lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Benarkan lebih pemusnahan jalanraya, jambatan, dan sbgnya yang dimiliki bandar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Panjang maksima gerabak: {ORANGE}{STRING} petak
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tiada
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Asli
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistik
@@ -1336,7 +1336,6 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industr
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari laluan untuk keretapi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Disyorkan)
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Berundur secara automatik di isyarat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pencari laluan untuk kenderaan jalanraya: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Disyorkan)
@@ -1344,6 +1343,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Asal {BLUE}(Disyorkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tidak disyorkan)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Berundur secara automatik di isyarat: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Tukar nilai tetapan
 

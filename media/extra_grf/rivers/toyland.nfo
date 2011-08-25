@@ -1,0 +1,146 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Toyland river graphics by andythenorth (Andrew Parkhouse)"
+   -1 * 4	 01 05 01 3C
+   -1 sprites/toyland.png  10  10 09 19 38  -5  0
+   -1 sprites/toyland.png  58  10 09 18 38  -5 13
+   -1 sprites/toyland.png 106  10 09 18 38 -31 13
+   -1 sprites/toyland.png 154  10 09 19 38 -31  0
+   -1 sprites/toyland.png 202  10 09  9 19  14 11
+   -1 sprites/toyland.png 234  10 09  9 16  -7 22
+   -1 sprites/toyland.png 266  10 09  9 19 -31 11
+   -1 sprites/toyland.png 298  10 09  9 16  -7  0
+   -1 sprites/toyland.png 330  10 09  6  8  25 13
+   -1 sprites/toyland.png 346  10 09  4 12  -5 27
+   -1 sprites/toyland.png 364  10 09  6  8 -31 13
+   -1 sprites/toyland.png 380  10 09  5 12  -5  0
+
+   -1 sprites/toyland.png  10  40 09 11 40  -7  0
+   -1 sprites/toyland.png  58  40 09 18 39  -6  5
+   -1 sprites/toyland.png 106  40 09 11 38 -31 12
+   -1 sprites/toyland.png 154  40 09 18 39 -31  0
+   -1 sprites/toyland.png 202  40 09  6 20  13  5
+   -1 sprites/toyland.png 234  40 09  7 13  -6 16
+   -1 sprites/toyland.png 266  40 09  6 20 -31 12
+   -1 sprites/toyland.png 298  40 09  7 13  -5  0
+   -1 sprites/toyland.png 330  40 09  5  8  25  6
+   -1 sprites/toyland.png 346  40 09  3 12  -5 20
+   -1 sprites/toyland.png 364  40 09  4  8 -31 13
+   -1 sprites/toyland.png 380  40 09  4 15  -7  0
+
+   -1 sprites/toyland.png  10  70 09 20 38  -5 -8
+   -1 sprites/toyland.png  58  70 09 26 38  -5  5
+   -1 sprites/toyland.png 106  70 09 20 37 -31 11
+   -1 sprites/toyland.png 154  70 09 27 38 -31 -8
+   -1 sprites/toyland.png 202  70 09  9 16  17  3
+   -1 sprites/toyland.png 234  70 09  9 15  -7 22
+   -1 sprites/toyland.png 266  70 09  9 16 -31 11
+   -1 sprites/toyland.png 298  70 09  9 15  -6 -8
+   -1 sprites/toyland.png 330  70 09  7  8  25  5
+   -1 sprites/toyland.png 346  70 09  5 10  -4 27
+   -1 sprites/toyland.png 364  70 09  7  8 -31 11
+   -1 sprites/toyland.png 380  70 09  6 12  -5 -8
+
+   -1 sprites/toyland.png  10 100 09 18 39  -6  0
+   -1 sprites/toyland.png  58 100 09 11 38  -5 12
+   -1 sprites/toyland.png 106 100 09 18 39 -31  5
+   -1 sprites/toyland.png 154 100 09 11 40 -32  0
+   -1 sprites/toyland.png 202 100 09  6 20  13 12
+   -1 sprites/toyland.png 234 100 09  7 13  -5 16
+   -1 sprites/toyland.png 266 100 09  6 20 -31  5
+   -1 sprites/toyland.png 298 100 09  7 13  -6  0
+   -1 sprites/toyland.png 330 100 09  4  8  26 13
+   -1 sprites/toyland.png 346 100 09  3 12  -5 20
+   -1 sprites/toyland.png 364 100 09  5  8 -31  6
+   -1 sprites/toyland.png 380 100 09  4 15  -6  0
+
+   -1 sprites/toyland.png  10 130 09 27 38  -5 -8
+   -1 sprites/toyland.png  58 130 09 20 37  -4 11
+   -1 sprites/toyland.png 106 130 09 26 37 -31  5
+   -1 sprites/toyland.png 154 130 09 20 38 -31 -8
+   -1 sprites/toyland.png 202 130 09  9 16  17 11
+   -1 sprites/toyland.png 234 130 09  9 15  -6 22
+   -1 sprites/toyland.png 266 130 09  9 16 -31  3
+   -1 sprites/toyland.png 298 130 09  9 15  -7 -8
+   -1 sprites/toyland.png 330 130 09  7  8  25 11
+   -1 sprites/toyland.png 346 130 09  5 10  -4 26
+   -1 sprites/toyland.png 364 130 09  7  8 -31  5
+   -1 sprites/toyland.png 380 130 09  6 12  -5 -8
+   -1 * 7	 02 05 50 01 00 00 00
+
+   -1 * 4	 01 05 01 3C
+   -1 sprites/toyland.png  10 210 09 19 38  -5  0
+   -1 sprites/toyland.png  58 210 09 18 38  -5 13
+   -1 sprites/toyland.png 106 210 09 18 38 -31 13
+   -1 sprites/toyland.png 154 210 09 19 38 -31  0
+   -1 sprites/toyland.png 202 210 09  9 19  14 11
+   -1 sprites/toyland.png 234 210 09  9 16  -7 22
+   -1 sprites/toyland.png 266 210 09  9 19 -31 11
+   -1 sprites/toyland.png 298 210 09  9 16  -7  0
+   -1 sprites/toyland.png 330 210 09  6  8  25 13
+   -1 sprites/toyland.png 346 210 09  4 12  -5 27
+   -1 sprites/toyland.png 364 210 09  6  8 -31 13
+   -1 sprites/toyland.png 380 210 09  5 12  -5  0
+
+   -1 sprites/toyland.png  10 240 09 11 40  -7  0
+   -1 sprites/toyland.png  58 240 09 18 39  -6  5
+   -1 sprites/toyland.png 106 240 09 11 38 -31 12
+   -1 sprites/toyland.png 154 240 09 18 39 -31  0
+   -1 sprites/toyland.png 202 240 09  6 20  13  5
+   -1 sprites/toyland.png 234 240 09  7 13  -6 16
+   -1 sprites/toyland.png 266 240 09  6 20 -31 12
+   -1 sprites/toyland.png 298 240 09  7 13  -5  0
+   -1 sprites/toyland.png 330 240 09  5  8  25  6
+   -1 sprites/toyland.png 346 240 09  3 12  -5 20
+   -1 sprites/toyland.png 364 240 09  4  8 -31 13
+   -1 sprites/toyland.png 380 240 09  4 15  -7  0
+
+   -1 sprites/toyland.png  10 270 09 20 38  -5 -8
+   -1 sprites/toyland.png  58 270 09 26 38  -5  5
+   -1 sprites/toyland.png 106 270 09 20 37 -31 11
+   -1 sprites/toyland.png 154 270 09 27 38 -31 -8
+   -1 sprites/toyland.png 202 270 09  9 16  17  3
+   -1 sprites/toyland.png 234 270 09  9 15  -7 22
+   -1 sprites/toyland.png 266 270 09  9 16 -31 11
+   -1 sprites/toyland.png 298 270 09  9 15  -6 -8
+   -1 sprites/toyland.png 330 270 09  7  8  25  5
+   -1 sprites/toyland.png 346 270 09  5 10  -4 27
+   -1 sprites/toyland.png 364 270 09  7  8 -31 11
+   -1 sprites/toyland.png 380 270 09  6 12  -5 -8
+
+   -1 sprites/toyland.png  10 300 09 18 39  -6  0
+   -1 sprites/toyland.png  58 300 09 11 38  -5 12
+   -1 sprites/toyland.png 106 300 09 18 39 -31  5
+   -1 sprites/toyland.png 154 300 09 11 40 -32  0
+   -1 sprites/toyland.png 202 300 09  6 20  13 12
+   -1 sprites/toyland.png 234 300 09  7 13  -5 16
+   -1 sprites/toyland.png 266 300 09  6 20 -31  5
+   -1 sprites/toyland.png 298 300 09  7 13  -6  0
+   -1 sprites/toyland.png 330 300 09  4  8  26 13
+   -1 sprites/toyland.png 346 300 09  3 12  -5 20
+   -1 sprites/toyland.png 364 300 09  5  8 -31  6
+   -1 sprites/toyland.png 380 300 09  4 15  -6  0
+
+   -1 sprites/toyland.png  10 330 09 27 38  -5 -8
+   -1 sprites/toyland.png  58 330 09 20 37  -4 11
+   -1 sprites/toyland.png 106 330 09 26 37 -31  5
+   -1 sprites/toyland.png 154 330 09 20 38 -31 -8
+   -1 sprites/toyland.png 202 330 09  9 16  17 11
+   -1 sprites/toyland.png 234 330 09  9 15  -6 22
+   -1 sprites/toyland.png 266 330 09  9 16 -31  3
+   -1 sprites/toyland.png 298 330 09  9 15  -7 -8
+   -1 sprites/toyland.png 330 330 09  7  8  25 11
+   -1 sprites/toyland.png 346 330 09  5 10  -4 26
+   -1 sprites/toyland.png 364 330 09  7  8 -31  5
+   -1 sprites/toyland.png 380 330 09  6 12  -5 -8
+   -1 * 7	 02 05 51 01 00 00 00
+
+   -1 * 14	 02 05 52 81 80 00 FF 01 50 00 00 00 51 00
+   -1 * 6	 07 83 01 \7! 03 01
+   -1 * 7	 03 05 01 06 00 52 00

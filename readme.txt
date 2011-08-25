@@ -591,51 +591,52 @@ Once you have all missing files, you are set to go.
 X.X) Credits
 ---- -------
 The OpenTTD team (in alphabetical order):
-  Albert Hofkamp (Alberth)       - GUI expert
-  Jean-François Claeys (Belugas) - GUI, newindustries and more
-  Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework
-  Christoph Elsenhans (frosch)   - General coding
-  Loïc Guilloux (glx)            - Windows Expert
-  Michael Lutz (michi_cc)        - Path based signals
-  Owen Rudge (orudge)            - Forum host, OS/2 port
-  Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
-  Ingo von Borstel (planetmaker) - Support
-  Remko Bijker (Rubidium)        - Lead coder and way more
-  Zdeněk Sojka (SmatZ)           - Bug finder and fixer
-  José Soler (Terkhen)           - General coding
-  Thijs Marinussen (Yexo)        - AI Framework
+  Albert Hofkamp (Alberth)        - GUI expert
+  Jean-François Claeys (Belugas)  - GUI, newindustries and more
+  Matthijs Kooijman (blathijs)    - Pathfinder-guru, pool rework
+  Christoph Elsenhans (frosch)    - General coding
+  Loïc Guilloux (glx)             - Windows Expert
+  Michael Lutz (michi_cc)         - Path based signals
+  Owen Rudge (orudge)             - Forum host, OS/2 port
+  Peter Nelson (peter1138)        - Spiritual descendant from newGRF gods
+  Ingo von Borstel (planetmaker)  - Support
+  Remko Bijker (Rubidium)         - Lead coder and way more
+  Zdeněk Sojka (SmatZ)            - Bug finder and fixer
+  José Soler (Terkhen)            - General coding
+  Thijs Marinussen (Yexo)         - AI Framework
 
 Inactive Developers:
-  Bjarni Corfitzen (Bjarni)      - MacOSX port, coder and vehicles
-  Victor Fischer (Celestar)      - Programming everywhere you need him to
-  Tamás Faragó (Darkvater)       - Ex-Lead coder
-  Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
-  Jonathan Coome (Maedhros)      - High priest of the NewGRF Temple
-  Attila Bán (MiHaMiX)           - WebTranslator 1 and 2
-  Christoph Mallon (Tron)        - Programmer, code correctness police
+  Bjarni Corfitzen (Bjarni)       - MacOSX port, coder and vehicles
+  Victor Fischer (Celestar)       - Programming everywhere you need him to
+  Tamás Faragó (Darkvater)        - Ex-Lead coder
+  Jaroslav Mazanec (KUDr)         - YAPG (Yet Another Pathfinder God) ;)
+  Jonathan Coome (Maedhros)       - High priest of the NewGRF Temple
+  Attila Bán (MiHaMiX)            - WebTranslator 1 and 2
+  Christoph Mallon (Tron)         - Programmer, code correctness police
 
 Retired Developers:
-  Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
-  Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
-  Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
-  Benedikt Brüggemeier (skidd13) - Bug fixer and code reworker
-  Patric Stout (TrueLight)       - Programmer (0.3 - pre0.7), sys op (active)
+  Ludvig Strigeus (ludde)         - OpenTTD author, main coder (0.1 - 0.3.3)
+  Serge Paquet (vurlix)           - Assistant project manager, coder (0.1 - 0.3.3)
+  Dominik Scherer (dominik81)     - Lead programmer, GUI expert (0.3.0 - 0.3.6)
+  Benedikt Brüggemeier (skidd13)  - Bug fixer and code reworker
+  Patric Stout (TrueLight)        - Programmer (0.3 - pre0.7), sys op (active)
 
 Thanks to:
-  Josef Drexler                  - For his great work on TTDPatch.
-  Marcin Grzegorczyk             - For his TTDPatch work and documentation of Transport Tycoon Deluxe internals and graphics (signals and track foundations)
-  Petr Baudiš (pasky)            - Many patches, newgrf support, etc.
-  Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with
-  Stefan Meißner (sign_de)       - For his work on the console
-  Mike Ragsdale                  - OpenTTD installer
-  Cian Duffy (MYOB)              - BeOS port / manual writing
-  Christian Rosentreter (tokai)  - MorphOS / AmigaOS port
-  Richard Kempton (RichK67)      - Additional airports, initial TGP implementation
-  Alberto Demichelis             - Squirrel scripting language
-  L. Peter Deutsch               - MD5 implementation
-  Michael Blunck                 - For revolutionizing TTD with awesome graphics
-  George                         - Canal graphics
-  David Dallaston (Pikka)        - Tram tracks
-  All Translators                - For their support to make OpenTTD a truly international game
-  Bug Reporters                  - Thanks for all bug reports
-  Chris Sawyer                   - For an amazing game!
+  Josef Drexler                   - For his great work on TTDPatch.
+  Marcin Grzegorczyk              - For his TTDPatch work and documentation of Transport Tycoon Deluxe internals and graphics (signals and track foundations)
+  Petr Baudiš (pasky)             - Many patches, newgrf support, etc.
+  Simon Sasburg (HackyKid)        - For the many bugfixes he has blessed us with
+  Stefan Meißner (sign_de)        - For his work on the console
+  Mike Ragsdale                   - OpenTTD installer
+  Cian Duffy (MYOB)               - BeOS port / manual writing
+  Christian Rosentreter (tokai)   - MorphOS / AmigaOS port
+  Richard Kempton (RichK67)       - Additional airports, initial TGP implementation
+  Alberto Demichelis              - Squirrel scripting language
+  L. Peter Deutsch                - MD5 implementation
+  Michael Blunck                  - For revolutionizing TTD with awesome graphics
+  George                          - Canal graphics
+  Andrew Parkhouse (andythenorth) - River graphics
+  David Dallaston (Pikka)         - Tram tracks
+  All Translators                 - For their support to make OpenTTD a truly international game
+  Bug Reporters                   - Thanks for all bug reports
+  Chris Sawyer                    - For an amazing game!

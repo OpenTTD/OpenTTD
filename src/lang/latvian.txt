@@ -1354,7 +1354,6 @@ STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Apkopē
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutējas
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vilcieni
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pilsētas
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automātiska apgriešanās pie luksoforiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Rūpniecības nozares
 
 
@@ -1368,6 +1367,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Kuģu c
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oriģinālais {BLUE}(Ieteicamais)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nav ieteicams)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automātiska apgriešanās pie luksoforiem: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mainīt iestatījuma vērtību
 

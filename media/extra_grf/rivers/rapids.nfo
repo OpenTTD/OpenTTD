@@ -1,0 +1,139 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Rapid graphics"
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10  10 09 23 64 -31  0
+   -1 sprites/rapids.png  90  10 09 39 64 -31 -8
+   -1 sprites/rapids.png 170  10 09 23 64 -31  0
+   -1 sprites/rapids.png 250  10 09 39 64 -31 -8
+   -1 * 7	 02 05 00 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10  60 09 23 64 -31  0
+   -1 sprites/rapids.png  90  60 09 39 64 -31 -8
+   -1 sprites/rapids.png 170  60 09 23 64 -31  0
+   -1 sprites/rapids.png 250  60 09 39 64 -31 -8
+   -1 * 7	 02 05 01 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 110 09 23 64 -31  0
+   -1 sprites/rapids.png  90 110 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 110 09 23 64 -31  0
+   -1 sprites/rapids.png 250 110 09 39 64 -31 -8
+   -1 * 7	 02 05 02 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 160 09 23 64 -31  0
+   -1 sprites/rapids.png  90 160 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 160 09 23 64 -31  0
+   -1 sprites/rapids.png 250 160 09 39 64 -31 -8
+   -1 * 7	 02 05 03 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 210 09 23 64 -31  0
+   -1 sprites/rapids.png  90 210 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 210 09 23 64 -31  0
+   -1 sprites/rapids.png 250 210 09 39 64 -31 -8
+   -1 * 7	 02 05 04 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 260 09 23 64 -31  0
+   -1 sprites/rapids.png  90 260 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 260 09 23 64 -31  0
+   -1 sprites/rapids.png 250 260 09 39 64 -31 -8
+   -1 * 7	 02 05 05 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 310 09 23 64 -31  0
+   -1 sprites/rapids.png  90 310 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 310 09 23 64 -31  0
+   -1 sprites/rapids.png 250 310 09 39 64 -31 -8
+   -1 * 7	 02 05 06 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 360 09 23 64 -31  0
+   -1 sprites/rapids.png  90 360 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 360 09 23 64 -31  0
+   -1 sprites/rapids.png 250 360 09 39 64 -31 -8
+   -1 * 7	 02 05 07 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 410 09 23 64 -31  0
+   -1 sprites/rapids.png  90 410 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 410 09 23 64 -31  0
+   -1 sprites/rapids.png 250 410 09 39 64 -31 -8
+   -1 * 7	 02 05 08 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 460 09 23 64 -31  0
+   -1 sprites/rapids.png  90 460 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 460 09 23 64 -31  0
+   -1 sprites/rapids.png 250 460 09 39 64 -31 -8
+   -1 * 7	 02 05 09 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 510 09 23 64 -31  0
+   -1 sprites/rapids.png  90 510 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 510 09 23 64 -31  0
+   -1 sprites/rapids.png 250 510 09 39 64 -31 -8
+   -1 * 7	 02 05 0A 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 560 09 23 64 -31  0
+   -1 sprites/rapids.png  90 560 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 560 09 23 64 -31  0
+   -1 sprites/rapids.png 250 560 09 39 64 -31 -8
+   -1 * 7	 02 05 0B 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 610 09 23 64 -31  0
+   -1 sprites/rapids.png  90 610 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 610 09 23 64 -31  0
+   -1 sprites/rapids.png 250 610 09 39 64 -31 -8
+   -1 * 7	 02 05 0C 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 660 09 23 64 -31  0
+   -1 sprites/rapids.png  90 660 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 660 09 23 64 -31  0
+   -1 sprites/rapids.png 250 660 09 39 64 -31 -8
+   -1 * 7	 02 05 0D 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 710 09 23 64 -31  0
+   -1 sprites/rapids.png  90 710 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 710 09 23 64 -31  0
+   -1 sprites/rapids.png 250 710 09 39 64 -31 -8
+   -1 * 7	 02 05 0E 01 00 00 00
+
+   -1 * 4	 01 05 01 04
+   -1 sprites/rapids.png  10 760 09 23 64 -31  0
+   -1 sprites/rapids.png  90 760 09 39 64 -31 -8
+   -1 sprites/rapids.png 170 760 09 23 64 -31  0
+   -1 sprites/rapids.png 250 760 09 39 64 -31 -8
+   -1 * 7	 02 05 0F 01 00 00 00
+
+   -1 * 39	 02 05 10 80 00 01 10
+            00 00
+            01 00
+            02 00
+            03 00
+            04 00
+            05 00
+            06 00
+            07 00
+            08 00
+            09 00
+            0A 00
+            0B 00
+            0C 00
+            0D 00
+            0E 00
+            0F 00
+   -1 * 7	 03 05 01 05 00 10 00
