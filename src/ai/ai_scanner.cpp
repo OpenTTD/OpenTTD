@@ -24,8 +24,8 @@ void AIScanner::RescanAIDir()
 {
 	/* Get rid of information of old AIs. */
 	this->Reset();
-	this->ScanScriptDir("info.nut", AI_DIR);
-	this->ScanScriptDir("library.nut", AI_LIBRARY_DIR);
+	this->Scan(PATHSEP "info.nut", AI_DIR);
+	this->Scan(PATHSEP "library.nut", AI_LIBRARY_DIR);
 }
 
 AIScanner::AIScanner() :
@@ -56,7 +56,9 @@ AIScanner::AIScanner() :
 
 	/* Create the dummy AI */
 	this->engine->ResetCrashed();
-	strecpy(this->main_script, "%_dummy", lastof(this->main_script));
+
+	free(this->main_script);
+	this->main_script = strdup("%_dummy");
 	extern void AI_CreateAIInfoDummy(HSQUIRRELVM vm);
 	AI_CreateAIInfoDummy(this->engine->GetVM());
 }

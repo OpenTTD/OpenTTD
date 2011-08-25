@@ -12,10 +12,10 @@
 #ifndef SCRIPT_SCANNER_HPP
 #define SCRIPT_SCANNER_HPP
 
-#include "../fileio_type.h"
+#include "../fileio_func.h"
 
 /** Scanner to help finding scripts. */
-class ScriptScanner {
+class ScriptScanner : public FileScanner {
 public:
 	ScriptScanner();
 	~ScriptScanner();
@@ -30,22 +30,11 @@ public:
 	 */
 	const char *GetMainScript() { return this->main_script; }
 
-	/**
-	 * Rescan for scripts.
-	 * @param info_file_name The name of the 'info.nut' file.
-	 * @param search_dir The subdirecotry to search for scripts.
-	 */
-	void ScanScriptDir(const char *info_file_name, Subdirectory search_dir);
-
-private:
-	/**
-	 * Scan a dir for scripts.
-	 */
-	void ScanDir(const char *dirname, const char *info_file_name);
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
 
 protected:
 	class Squirrel *engine; ///< The engine we're scanning with.
-	char main_script[1024]; ///< The name of the current main script.
+	char *main_script;      ///< The name of the current main script.
 };
 
 #endif /* SCRIPT_SCANNER_HPP */
