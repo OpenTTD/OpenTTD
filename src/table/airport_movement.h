@@ -417,7 +417,7 @@ static const AirportFTAbuildup _airport_fta_dummy[] = {
 
 /* First element of terminals array tells us how many depots there are (to know size of array)
  * this may be changed later when airports are moved to external file  */
-static const HangarTileTable _airport_depots_country[] = { {{3, 0}, 0} };
+static const HangarTileTable _airport_depots_country[] = { {{3, 0}, DIR_SE, 0} };
 static const byte _airport_terminal_country[] = {1, 2};
 static const byte _airport_entries_country[] = {16, 15, 18, 17};
 static const AirportFTAbuildup _airport_fta_country[] = {
@@ -449,7 +449,7 @@ static const AirportFTAbuildup _airport_fta_country[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-static const HangarTileTable _airport_depots_commuter[] = { {{4, 0}, 0} };
+static const HangarTileTable _airport_depots_commuter[] = { {{4, 0}, DIR_SE, 0} };
 static const byte _airport_terminal_commuter[] = { 1, 3 };
 static const byte _airport_entries_commuter[] = {22, 21, 24, 23};
 static const AirportFTAbuildup _airport_fta_commuter[] = {
@@ -499,7 +499,7 @@ static const AirportFTAbuildup _airport_fta_commuter[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-static const HangarTileTable _airport_depots_city[] = { {{5, 0}, 0} };
+static const HangarTileTable _airport_depots_city[] = { {{5, 0}, DIR_SE, 0} };
 static const byte _airport_terminal_city[] = { 1, 3 };
 static const byte _airport_entries_city[] = {26, 29, 27, 28};
 static const AirportFTAbuildup _airport_fta_city[] = {
@@ -540,7 +540,7 @@ static const AirportFTAbuildup _airport_fta_city[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-static const HangarTileTable _airport_depots_metropolitan[] = { {{5, 0}, 0} };
+static const HangarTileTable _airport_depots_metropolitan[] = { {{5, 0}, DIR_SE, 0} };
 static const byte _airport_terminal_metropolitan[] = { 1, 3 };
 static const byte _airport_entries_metropolitan[] = {20, 19, 22, 21};
 static const AirportFTAbuildup _airport_fta_metropolitan[] = {
@@ -579,7 +579,7 @@ static const AirportFTAbuildup _airport_fta_metropolitan[] = {
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
 
-static const HangarTileTable _airport_depots_international[] = { {{0, 3}, 0}, {{6, 1}, 1} };
+static const HangarTileTable _airport_depots_international[] = { {{0, 3}, DIR_SE, 0}, {{6, 1}, DIR_SE, 1} };
 static const byte _airport_terminal_international[] = { 2, 3, 3 };
 static const byte _airport_entries_international[] = { 38, 37, 40, 39 };
 static const AirportFTAbuildup _airport_fta_international[] = {
@@ -644,7 +644,7 @@ static const AirportFTAbuildup _airport_fta_international[] = {
 };
 
 /* intercontinental */
-static const HangarTileTable _airport_depots_intercontinental[] = { {{0, 5}, 0}, {{8, 4}, 1} };
+static const HangarTileTable _airport_depots_intercontinental[] = { {{0, 5}, DIR_SE, 0}, {{8, 4}, DIR_SE, 1} };
 static const byte _airport_terminal_intercontinental[] = { 2, 4, 4 };
 static const byte _airport_entries_intercontinental[] = { 44, 43, 46, 45 };
 static const AirportFTAbuildup _airport_fta_intercontinental[] = {
@@ -756,7 +756,7 @@ static const AirportFTAbuildup _airport_fta_heliport[] = {
 #define _airport_fta_oilrig _airport_fta_heliport
 
 /* helidepots */
-static const HangarTileTable _airport_depots_helidepot[] = { {{1, 0}, 0} };
+static const HangarTileTable _airport_depots_helidepot[] = { {{1, 0}, DIR_SE, 0} };
 static const byte _airport_entries_helidepot[] = { 4, 4, 4, 4 };
 static const AirportFTAbuildup _airport_fta_helidepot[] = {
 	{  0, HANGAR, NOTHING_block, 1 },
@@ -785,7 +785,7 @@ static const AirportFTAbuildup _airport_fta_helidepot[] = {
 };
 
 /* helistation */
-static const HangarTileTable _airport_depots_helistation[] = { {{0, 0}, 0} };
+static const HangarTileTable _airport_depots_helistation[] = { {{0, 0}, DIR_SE, 0} };
 static const byte _airport_entries_helistation[] = { 25, 25, 25, 25 };
 static const AirportFTAbuildup _airport_fta_helistation[] = {
 	{  0, HANGAR, NOTHING_block, 8 },    { 0, HELIPAD1, 0, 1 }, { 0, HELIPAD2, 0, 1 }, { 0, HELIPAD3, 0, 1 }, { 0, HELITAKEOFF, 0, 1 }, { 0, 0, 0, 0 },

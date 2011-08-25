@@ -7132,6 +7132,7 @@ static void ResetCustomAirports()
 						free((void*)as->table[j]);
 					}
 					free((void*)as->table);
+					free((void*)as->depot_table);
 
 					free(as);
 				}
