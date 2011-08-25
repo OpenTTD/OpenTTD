@@ -856,26 +856,26 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pega la 
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones del juego
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades de moneda
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidades de moneda
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidad de moneda
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidad de moneda
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólares ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Británica (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar Americano (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen Japonés (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Chelín Austriaco (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco Belga (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco Suizo (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corona Checa (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marcos (DEM)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco Alemán (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corona Danesa (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesetas (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Española (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Finlandés (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francos (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco Francés (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma Griego (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florines Húngaros (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona de Islandia (ISK)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florín Húngaro (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona Islandesa (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiana (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florín Holandés (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona Noruega(NOK)
@@ -888,7 +888,7 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turca (TRY
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Eslovaca
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brasileño (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonio (EEK)
-STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Medir unidades
@@ -1057,6 +1057,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Medio
 STR_SEA_LEVEL_HIGH                                              :Alto
 STR_SEA_LEVEL_CUSTOM                                            :Personalizado
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizado ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Ninguna
 STR_DISASTER_REDUCED                                            :Reducidas
@@ -1407,6 +1408,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Muestra 
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Muestra ajustes de la IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Salir
@@ -2523,6 +2525,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga incorrecta>
 STR_NEWGRF_INVALID_ENGINE                                       :<modelo de vehículo incorrecto>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria incorrecta>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles - {COMMA} Cartel{P "" es}

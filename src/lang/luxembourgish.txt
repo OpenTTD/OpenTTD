@@ -447,6 +447,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ragezoomten Scr
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot vun der ganzer Kaart (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Iwwert 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite Alignéirer
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Zeechen-Boxen un/aus
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

@@ -948,7 +948,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anders
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Anders
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshotformaat
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecteer het bestandsformaat van screenshots
@@ -1056,6 +1056,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Gemiddeld
 STR_SEA_LEVEL_HIGH                                              :Hoog
 STR_SEA_LEVEL_CUSTOM                                            :Aangepast
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Aangepast ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Geen
 STR_DISASTER_REDUCED                                            :Verminderd
@@ -1406,6 +1407,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon New
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Toon AI-instellingen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Afsluiten
@@ -2523,6 +2525,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <on
 STR_NEWGRF_INVALID_ENGINE                                       :<ongeldig treinmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Hoofdletter gevoelig
@@ -3464,7 +3468,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landhell
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan dit niet uitvoeren...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebouw moet eerst gesloopt worden
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan dit gebied niet ontruimen...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lokatie ongeschikt
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... locatie ongeschikt
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... reeds gebouwd
 STR_ERROR_OWNED_BY                                              :{WHITE}... is eigendom van {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is van ander bedrijf

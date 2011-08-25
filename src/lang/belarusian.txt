@@ -1184,7 +1184,7 @@ STR_GAME_OPTIONS_CURRENCY_DEM                                   :Нямецка�
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Дацкая крона (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Гішпанская пэсэта (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінская марка (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Францускі франк (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Французскі франк (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грэцкая драхма (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Вугорскі форынт (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісьляндзкая крона (ISK)
@@ -1373,6 +1373,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Сярэдня�
 STR_SEA_LEVEL_HIGH                                              :Вялiкая
 STR_SEA_LEVEL_CUSTOM                                            :Зададзены
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Зададзены ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Выключаны
 STR_DISASTER_REDUCED                                            :Зьніжаныя
@@ -1723,6 +1724,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Пака
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы і абноўлены кантэнт, каб спампаваць
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Паказаць наладкi ШI/АІ
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Выхад
@@ -2859,6 +2861,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <невядомага грузу>
 STR_NEWGRF_INVALID_ENGINE                                       :<няправільная мадэль>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядомае прадпрыемства>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс таблічак - {COMMA} табліч{P ка кi ак}

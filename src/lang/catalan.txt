@@ -860,19 +860,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitats 
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció d'unitats de moneda
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lliures (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dòlars ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Iens (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Lliura Esterlina (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dòlar Americà (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Ien Japonès (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shillings Austríacs (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Francs Belgues (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Francs Suïssos (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Corones Txeques (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marcs Alemanys (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Corones Daneses (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesseta Espanyola (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marcs Finesos (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Francès (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracmes Gregues (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florí Hongarès (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corones Islandeses (ISK)
@@ -1057,6 +1057,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Mitjà
 STR_SEA_LEVEL_HIGH                                              :Alt
 STR_SEA_LEVEL_CUSTOM                                            :Personalitzat
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalitzat ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Cap
 STR_DISASTER_REDUCED                                            :Reduït
@@ -1407,6 +1408,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra e
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra els paràmetres IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Surt
@@ -2523,6 +2525,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <càrrega invàlida>
 STR_NEWGRF_INVALID_ENGINE                                       :<model de vehicle invàlid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria invàlida>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyal{P "" s}

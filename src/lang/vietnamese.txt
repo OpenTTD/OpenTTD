@@ -447,6 +447,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to ảnh
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Bật/tắt hiển thị khối nhà
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1055,6 +1056,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Trung Bình
 STR_SEA_LEVEL_HIGH                                              :Cao
 STR_SEA_LEVEL_CUSTOM                                            :Tùy chỉnh
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Tùy chỉnh ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Không Có
 STR_DISASTER_REDUCED                                            :Giảm
@@ -2521,6 +2523,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng hoá bất hợp lệ
 STR_NEWGRF_INVALID_ENGINE                                       :<sai mẫu xe>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh Sách Biển Hiệu - {COMMA} Biển Hiệu

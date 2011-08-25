@@ -826,6 +826,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut powiększ
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Wł./wył. ramki
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1436,6 +1437,7 @@ STR_SEA_LEVEL_HIGH                                              :Wysoki
 STR_SEA_LEVEL_CUSTOM                                            :Własny
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Własny ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Brak
 STR_DISASTER_REDUCED                                            :Zredukowane
 STR_DISASTER_NORMAL                                             :Normalne
@@ -1785,6 +1787,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wyświet
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych lub zaktualizowanych dodatków do pobrania
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Wyświetl ustawienia SI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Wyjdź z 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Wyjście
@@ -2901,6 +2904,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy model pojazdu>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy przemysł>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista napisów - {COMMA} napis{P "" y ów}

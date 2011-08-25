@@ -1054,10 +1054,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor valute
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funta (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funta (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijski Šiling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski Franak (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švajcarski Franak (CHF)
@@ -1251,6 +1251,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Srednja
 STR_SEA_LEVEL_HIGH                                              :Visoka
 STR_SEA_LEVEL_CUSTOM                                            :Prilagođeno
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Prilagođeno ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :nema
 STR_DISASTER_REDUCED                                            :redukovani
@@ -1601,6 +1602,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikazuj
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikazuje VI podešavanja
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napušta 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Izađi
@@ -2717,6 +2719,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nevažeć{P i a eg} tovar{P 0 "" a a}>
 STR_NEWGRF_INVALID_ENGINE                                       :<nevažeći model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}

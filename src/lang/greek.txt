@@ -952,25 +952,25 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλ
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Αγγλική Λίρα (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάρια ($)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α. ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Γιεν (¥)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Ιαπωνικό Γιεν (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Αυστραικό Σελίνι (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Βελγικό Φράγκο (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ελβετικό Φράγκο (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Τσέχικη Κορώνα (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Γερμανικό Μάρκο (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Δανέζικη Κορώνα (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Πεσέτα (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Ισπανική Πεσέτα (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Φινλανδικό Μάρκο (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Φράγκο (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Γαλλικό Φράγκο (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Δραχμή(δρχ.)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ουγγρικό Φλουρί (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ισλανδική Κορώνα (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ιταλική Λίρα (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Ολλανδικό Φιορίνι (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Νορβηγική Κορώνα (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Πολωνικό Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Πολωνικό Ζλότυ (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Ρουμάνικο Λευ (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ρώσσικες Ρούβλες (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Σλοβένικο Tolar (SIT)
@@ -1148,6 +1148,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Μέτριο
 STR_SEA_LEVEL_HIGH                                              :Υψηλό
 STR_SEA_LEVEL_CUSTOM                                            :Προσαρμόσμενο
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Προσαρμόσμενο ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Κανένα
 STR_DISASTER_REDUCED                                            :Μειωμένο
@@ -1498,6 +1499,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφά
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Εμφάνιση ρυθμίσεων AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Έξοδος
@@ -2576,6 +2578,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθ�
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως ένα κόκκινο ερωματικό (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασμα τέλους του ψεύδο-sprite
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Δεν είναι διαθέσιμοι οι πόροι του GRF που ζητήσατε
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {2:STRING} απενεργοποιήθηκε από το {4:STRING}
 
 # NewGRF related 'general' warnings
@@ -2612,8 +2615,11 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <μη �
 STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυρο μοντέλο μηχανής>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυρη βιομηχανία>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Αντιστοίχιση πεζών/κεφαλαίων
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Καθαρισμός φίλτρου
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Καθαρισμός κειμένου φίλτρου
 
@@ -3010,10 +3016,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλων
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλωνοποίηση πλοίου
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση αεροπλάνου
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Κάντε κλικ σε αυτό το κουμπί και στο τρένο μέσα ή έξω από το αμαξοστάσιο. Ctrl+κλικ για μοιραστεί τις εντολές
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος δρόμου. Κάντε κλικ σε αυτό το κουμπί και στο όχημα μέσα ή έξω από το αμαξοστάσιο. Ctrl+κλικ για μοιραστεί τις εντολές
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Κάντε κλικ σε αυτό το κουμπί και στο πλοίο μέσα ή έξω από το ναυπηγείο. Ctrl+κλικ για μοιραστεί τις εντολές
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροπλάνου. Κάντε κλικ σε αυτό το κουμπί και στο αεροπλάνο μέσα ή έξω από το υπόστεγο. Ctrl+κλικ για μοιραστεί τις εντολές
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τραίνου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροπλάνου. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροπλάνο μέσα στο ή έξω από το υπόστεγο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
@@ -3104,9 +3110,9 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Στέλ
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροπλάνο στο υπόστεγο. Ctrl+κλικ για να κάνει μόνο επισκευή
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με όλα τα βαγόνια. Ctrl+κλικ θα μοιράστει τις εντολές
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος δρόμου. Ctrl+κλικ θα μοιράστει τις εντολές
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Ctrl+κλικ θα μοιράστει τις εντολές
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροπλάνου. Ctrl+κλικ θα μοιράστει τις εντολές
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροπλάνου. Με Ctrl+κλικ θα έχιε τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χώρις να περιμένει το σηματοδότη να το επιτρέψει
 

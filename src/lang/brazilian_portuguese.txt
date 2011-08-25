@@ -448,6 +448,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ampliado em cap
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de tela do mapa inteiro
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "sprites"
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar caixas limítrofes
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -540,7 +541,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir a
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Chave para gráficos da empresa
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clique aqui para alternar a entrada da empresa no gráfico em ligado/desligado
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clique aqui para alternar a entrada da empresa no gráfico
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabela da Liga das Empresas
@@ -1056,6 +1057,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Médio
 STR_SEA_LEVEL_HIGH                                              :Alto
 STR_SEA_LEVEL_CUSTOM                                            :Personalizado
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizado ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Nenhum
 STR_DISASTER_REDUCED                                            :Reduzido
@@ -1922,7 +1924,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito (para compra e manutenção de trens). Shift altera construção/estimação de custo
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de controle. Ctrl permite a união de pontos de controle. Shift altera construção/estimação de custo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite a união de estações. Shift altera construção/estimação de custo
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl liga/desliga a constução de semáforos/sinais{}Clicar e arrastar constroi sinais até a próxima junção{}Ctrl+Clique liga/desliga a janela de seleção de sinais. Shift altera construção/estimação de custo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna a construção de semáforos/sinais{}Clicar e arrastar constroi sinais até a próxima junção{}Ctrl+Clique alterna a janela de seleção de sinais. Shift altera construção/estimação de custo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift altera construção/estimação de custo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift altera construção/estimação de custo
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar construir/remover ferrovias, sinais, pontos de controle e estações. Segure ctrl para remover os trilhos de estações e pontos de controle.
@@ -2404,8 +2406,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o N
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos NewGRF instalados. Clique em um deles para mudar seus parâmetros
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Liga/Desliga paleta
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Liga/desliga a paleta do NewGRF selecionado.{}Faça isso quando os gráficos deste ficarem rosa durante o jogo
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alterna paleta
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Alterna a paleta do NewGRF selecionado.{}Faça isso quando os gráficos deste ficarem rosa durante o jogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar alterações
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Procurar o conteúdo on-line
@@ -2522,6 +2524,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga inválida>
 STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veíc. inválido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inválida>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
