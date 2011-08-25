@@ -13,6 +13,7 @@
 #include "ai_tile.hpp"
 #include "ai_map.hpp"
 #include "ai_town.hpp"
+#include "ai_cargo.hpp"
 #include "../../station_func.h"
 #include "../../company_func.h"
 #include "../../water_map.h"
@@ -192,7 +193,7 @@
 
 /* static */ int32 AITile::GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius)
 {
-	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0) return -1;
+	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0 || !AICargo::IsValidCargo(cargo_type)) return -1;
 
 	CargoArray acceptance = ::GetAcceptanceAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
 	return acceptance[cargo_type];
@@ -200,7 +201,7 @@
 
 /* static */ int32 AITile::GetCargoProduction(TileIndex tile, CargoID cargo_type, int width, int height, int radius)
 {
-	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0) return -1;
+	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0 || !AICargo::IsValidCargo(cargo_type)) return -1;
 
 	CargoArray produced = ::GetProductionAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
 	return produced[cargo_type];

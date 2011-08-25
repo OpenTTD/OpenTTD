@@ -1640,7 +1640,7 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 		return false;
 	}
 
-	password = NetworkChangeCompanyPassword(company_id, password, false);
+	password = NetworkChangeCompanyPassword(company_id, password);
 
 	if (StrEmpty(password)) {
 		IConsolePrintF(CC_WARNING, "Company password cleared");

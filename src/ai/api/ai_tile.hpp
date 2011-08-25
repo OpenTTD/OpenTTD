@@ -319,6 +319,7 @@ public:
 	 * @param height The height of the station.
 	 * @param radius The radius of the station.
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre AICargo::IsValidCargo(cargo_type)
 	 * @pre width > 0.
 	 * @pre height > 0.
 	 * @pre radius >= 0.
@@ -335,6 +336,7 @@ public:
 	 * @param height The height of the station.
 	 * @param radius The radius of the station.
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre AICargo::IsValidCargo(cargo_type)
 	 * @pre width > 0.
 	 * @pre height > 0.
 	 * @pre radius >= 0.

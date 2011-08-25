@@ -14,6 +14,7 @@
 #include "ai_map.hpp"
 #include "ai_station.hpp"
 #include "ai_industrytype.hpp"
+#include "ai_cargo.hpp"
 #include "../../debug.h"
 #include "../../station_base.h"
 #include "../../company_func.h"
@@ -170,6 +171,7 @@
 	EnforcePrecondition(false, platform_length > 0 && platform_length <= 0xFF);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
+	EnforcePrecondition(false, AICargo::IsValidCargo(cargo_id));
 	EnforcePrecondition(false, source_industry == AIIndustryType::INDUSTRYTYPE_UNKNOWN || source_industry == AIIndustryType::INDUSTRYTYPE_TOWN || AIIndustryType::IsValidIndustryType(source_industry));
 	EnforcePrecondition(false, goal_industry   == AIIndustryType::INDUSTRYTYPE_UNKNOWN || goal_industry   == AIIndustryType::INDUSTRYTYPE_TOWN || AIIndustryType::IsValidIndustryType(goal_industry));
 

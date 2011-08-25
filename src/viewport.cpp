@@ -2778,11 +2778,11 @@ calc_heightdiff_single_direction:;
 					}
 				}
 
-				if (t0 != 1 || t1 != 1) {
+				if (dx != 1 || dy != 1) {
 					int heightdiff = CalcHeightdiff(style, 0, t0, t1);
 
-					params[index++] = dx;
-					params[index++] = dy;
+					params[index++] = dx - (style & HT_POINT ? 1 : 0);
+					params[index++] = dy - (style & HT_POINT ? 1 : 0);
 					if (heightdiff != 0) params[index++] = heightdiff;
 				}
 
