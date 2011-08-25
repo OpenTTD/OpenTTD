@@ -792,7 +792,7 @@ public:
 					/* Use all the available space left from where we stand up to the
 					 * end of the window. We ALSO enlarge the window if needed, so we
 					 * can 'go' wild with the bottom of the window. */
-					y = DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, UINT16_MAX, message);
+					y = DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, UINT16_MAX, message, TC_BLACK);
 					StopTextRefStackUsage();
 				}
 			}

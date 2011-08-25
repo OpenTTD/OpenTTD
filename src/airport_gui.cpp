@@ -26,6 +26,7 @@
 #include "widgets/dropdown_type.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
+#include "vehicle_func.h"
 #include "sprite.h"
 
 #include "table/strings.h"
@@ -195,6 +196,7 @@ Window *ShowBuildAirToolbar()
 
 EventState AirportToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
+	if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
 	int num = CheckHotkeyMatch<BuildAirToolbarWindow>(_airtoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildAirToolbar();

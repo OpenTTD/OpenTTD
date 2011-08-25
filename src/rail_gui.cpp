@@ -31,6 +31,7 @@
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "engine_base.h"
+#include "vehicle_func.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -849,6 +850,7 @@ Window *ShowBuildRailToolbar(RailType railtype)
 
 EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
+	if (!CanBuildVehicleInfrastructure(VEH_TRAIN)) return ES_NOT_HANDLED;
 	extern RailType _last_built_railtype;
 	int num = CheckHotkeyMatch<BuildRailToolbarWindow>(_railtoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
