@@ -731,7 +731,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	GroupID id_g = GB(p1, 16, 16);
 	CommandCost cost;
 
-	if (!Group::IsValidID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
+	if (Group::IsValidID(id_g) ? Group::Get(id_g)->owner != _current_company : !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
 	if (!Engine::IsValidID(old_engine_type)) return CMD_ERROR;
 
 	if (new_engine_type != INVALID_ENGINE) {

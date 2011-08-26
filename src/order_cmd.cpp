@@ -727,10 +727,10 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case OT_CONDITIONAL: {
 			VehicleOrderID skip_to = new_order.GetConditionSkipToOrder();
 			if (skip_to != 0 && skip_to >= v->GetNumOrders()) return CMD_ERROR; // Always allow jumping to the first (even when there is no order).
-			if (new_order.GetConditionVariable() > OCV_END) return CMD_ERROR;
+			if (new_order.GetConditionVariable() >= OCV_END) return CMD_ERROR;
 
 			OrderConditionComparator occ = new_order.GetConditionComparator();
-			if (occ > OCC_END) return CMD_ERROR;
+			if (occ >= OCC_END) return CMD_ERROR;
 			switch (new_order.GetConditionVariable()) {
 				case OCV_REQUIRES_SERVICE:
 					if (occ != OCC_IS_TRUE && occ != OCC_IS_FALSE) return CMD_ERROR;

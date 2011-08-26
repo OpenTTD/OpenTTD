@@ -308,7 +308,7 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 	if (!IsValidCommand(cp->cmd))               return "invalid command";
 	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "offline only command";
 	if ((cp->cmd & CMD_FLAGS_MASK) != 0)        return "invalid command flag";
-	if (callback > lengthof(_callback_table))   return "invalid callback";
+	if (callback >= lengthof(_callback_table))  return "invalid callback";
 
 	cp->callback = _callback_table[callback];
 	return NULL;
