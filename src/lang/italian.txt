@@ -2551,6 +2551,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria non 
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scansione NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scansione dei NewGRF in corso. A seconda della quantità, questa operazione può richiedere molto tempo...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF esaminat{P o i} su un totale stimato di {NUM} NewGRF
+STR_NEWGRF_SCAN_ARCHIVES                                        :Ricerca di archivi
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Elenco cartelli - {COMMA} cartell{P o i}

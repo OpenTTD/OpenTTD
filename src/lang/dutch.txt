@@ -2527,6 +2527,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige indu
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen van NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scannen van NewGRFs. Afhankelijk van het aantal, kan dit even duren...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} gescanned van een geschatte {NUM} NewGRF{P "" s}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Zoeken naar archieven
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
