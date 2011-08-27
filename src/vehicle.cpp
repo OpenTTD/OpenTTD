@@ -81,7 +81,9 @@ bool Vehicle::NeedsAutorenewing(const Company *c) const
 
 	if (!c->settings.engine_renew) return false;
 	if (this->age - this->max_age < (c->settings.engine_renew_months * 30)) return false;
-	if (this->age == 0) return false; // rail cars don't age and lacks a max age
+
+	/* Only engines need renewing */
+	if (this->type == VEH_TRAIN && !Train::From(this)->IsEngine()) return false;
 
 	return true;
 }
