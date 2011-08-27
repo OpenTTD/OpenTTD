@@ -666,10 +666,27 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 	const Engine *e = Engine::Get(engine_number);
 
 	/* Purchase cost - Max speed */
+	uint raw_speed = e->GetDisplayMaxSpeed();
+	uint ocean_speed = e->u.ship.ApplyWaterClassSpeedFrac(raw_speed, true);
+	uint canal_speed = e->u.ship.ApplyWaterClassSpeedFrac(raw_speed, false);
+
 	SetDParam(0, e->GetCost());
-	SetDParam(1, e->GetDisplayMaxSpeed());
-	DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
-	y += FONT_HEIGHT_NORMAL;
+	if (ocean_speed == canal_speed) {
+		SetDParam(1, ocean_speed);
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+		y += FONT_HEIGHT_NORMAL;
+	} else {
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+		y += FONT_HEIGHT_NORMAL;
+
+		SetDParam(0, ocean_speed);
+		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_OCEAN);
+		y += FONT_HEIGHT_NORMAL;
+
+		SetDParam(0, canal_speed);
+		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_CANAL);
+		y += FONT_HEIGHT_NORMAL;
+	}
 
 	/* Cargo type + capacity */
 	SetDParam(0, e->GetDefaultCargoType());
