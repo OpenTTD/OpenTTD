@@ -74,6 +74,13 @@ struct ShipVehicleInfo {
 	byte visual_effect;    ///< Bitstuffed NewGRF visual effect data
 	byte ocean_speed_frac; ///< Fraction of maximum speed for ocean tiles.
 	byte canal_speed_frac; ///< Fraction of maximum speed for canal/river tiles.
+
+	/** Apply ocean/canal speed fraction to a velocity */
+	uint ApplyWaterClassSpeedFrac(uint raw_speed, bool is_ocean) const
+	{
+		/* speed_frac == 0 means no reduction while 0xFF means reduction to 1/256. */
+		return raw_speed * (256 - (is_ocean ? this->ocean_speed_frac : this->canal_speed_frac)) / 256;
+	}
 };
 
 /**
