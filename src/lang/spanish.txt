@@ -2837,6 +2837,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nueva Aeronave
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidad: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocidad en el océano: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocidad en canales/ríos: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coste de operación: {GOLD}{CURRENCY}/año
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidad: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(reformable)

@@ -3031,6 +3031,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Letilice
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Težina: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Brzina na moru: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Brzina na kanalu/reci: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena održavanja: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(prepravljiv)

@@ -2528,6 +2528,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inv
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escanejant NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Escanejant NewGRFs. Depenent de la quantitat pot trigar una estona...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} escanejats de {NUM} NewGRF{P "" s} estimats
+STR_NEWGRF_SCAN_ARCHIVES                                        :Escanejant arxius
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyal{P "" s}
