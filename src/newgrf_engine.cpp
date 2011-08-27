@@ -432,12 +432,21 @@ static void VehicleSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
-static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
+/**
+ * Determines the livery of an engine.
+ *
+ * This always uses dual company colours independent of GUI settings. So it is desync-safe.
+ *
+ * @param engine Engine type
+ * @param v Vehicle, NULL in purchase list.
+ * @return Livery to use
+ */
+static const Livery *LiveryHelper(EngineID engine, const Vehicle *v)
 {
 	const Livery *l;
 
 	if (v == NULL) {
-		if (!Company::IsValidID(_current_company)) return 0;
+		if (!Company::IsValidID(_current_company)) return NULL;
 		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL, LIT_ALL);
 	} else if (v->IsGroundVehicle()) {
 		l = GetEngineLivery(v->engine_type, v->owner, v->GetGroundVehicleCache()->first_engine, v, LIT_ALL);
@@ -445,7 +454,7 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v, LIT_ALL);
 	}
 
-	return l->colour1 + l->colour2 * 16;
+	return l;
 }
 
 /**
@@ -481,7 +490,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	if (v == NULL) {
 		/* Vehicle does not exist, so we're in a purchase list */
 		switch (variable) {
-			case 0x43: return _current_company | (Company::IsValidAiID(_current_company) ? 0x10000 : 0) | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
+			case 0x43: return GetCompanyInfo(_current_company, LiveryHelper(object->u.vehicle.self_type, NULL)); // Owner information
 			case 0x46: return 0;               // Motion counter
 			case 0x47: { // Vehicle cargo info
 				const Engine *e = Engine::Get(object->u.vehicle.self_type);
@@ -581,7 +590,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x43: // Company information
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_COMPANY_INFORMATION)) {
-				v->grf_cache.company_information = v->owner | (Company::IsHumanID(v->owner) ? 0 : 0x10000) | (LiveryHelper(v->engine_type, v) << 24);
+				v->grf_cache.company_information = GetCompanyInfo(v->owner, LiveryHelper(v->engine_type, v));
 				SetBit(v->grf_cache.cache_valid, NCVV_COMPANY_INFORMATION);
 			}
 			return v->grf_cache.company_information;

@@ -25,6 +25,8 @@
 #include "genworld.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
+#include "livery.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 
@@ -450,6 +452,18 @@ uint32 GetNearbyTileInformation(TileIndex tile)
 	/* Return 0 if the tile is a land tile */
 	byte terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;
+}
+
+/**
+ * Returns company information like in vehicle var 43 or station var 43.
+ * @param owner Owner of the object.
+ * @param l Livery of the object; NULL to use default.
+ * @return NewGRF company information.
+ */
+uint32 GetCompanyInfo(CompanyID owner, const Livery *l)
+{
+	if (l == NULL && Company::IsValidID(owner)) l = &Company::Get(owner)->livery[LS_DEFAULT];
+	return owner | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != NULL ? (l->colour1 << 24) | (l->colour2 << 28) : 0);
 }
 
 /**

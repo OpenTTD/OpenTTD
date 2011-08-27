@@ -287,7 +287,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x47:
 			case 0x49: return 0x2110000;        // Platforms, tracks & position
 			case 0x42: return 0;                // Rail type (XXX Get current type from GUI?)
-			case 0x43: return _current_company; // Station owner
+			case 0x43: return GetCompanyInfo(_current_company); // Station owner
 			case 0x44: return 2;                // PBS status
 			case 0x67: // Land info of nearby tile
 				if (object->u.station.axis != INVALID_AXIS && tile != INVALID_TILE) {
@@ -318,7 +318,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			return _svc.v41;
 
 		case 0x42: return GetTerrainType(tile) | (GetReverseRailTypeTranslation(GetRailType(tile), object->u.station.statspec->grf_prop.grffile) << 8);
-		case 0x43: return st->owner; // Station owner
+		case 0x43: return GetCompanyInfo(st->owner); // Station owner
 		case 0x44: return HasStationReservation(tile) ? 7 : 4; // PBS status
 		case 0x45:
 			if (!HasBit(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SetBit(_svc.valid, 2); }
