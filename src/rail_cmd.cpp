@@ -2284,9 +2284,6 @@ static void DrawTile_Track(TileInfo *ti)
 					default: break;
 				}
 			}
-
-			int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
-			relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
 		} else {
 			/* PBS debugging, draw reserved tracks darker */
 			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
@@ -2298,9 +2295,9 @@ static void DrawTile_Track(TileInfo *ti)
 					default: break;
 				}
 			}
-
-			relocation = rti->GetRailtypeSpriteOffset();
 		}
+		int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
+		relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->GetRailtypeSpriteOffset();
 
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
@@ -2332,10 +2329,9 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 			case DIAGDIR_SE: DrawSprite(ground + RTO_Y, PAL_NONE, x, y); break;
 			default: break;
 		}
-
-		int depot_sprite = GetCustomRailSprite(rti, INVALID_TILE, RTSG_DEPOT);
-		if (depot_sprite != 0) offset = depot_sprite - SPR_RAIL_DEPOT_SE_1;
 	}
+	int depot_sprite = GetCustomRailSprite(rti, INVALID_TILE, RTSG_DEPOT);
+	if (depot_sprite != 0) offset = depot_sprite - SPR_RAIL_DEPOT_SE_1;
 
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
 }
