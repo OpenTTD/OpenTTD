@@ -100,7 +100,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT} از �
 STR_QUANTITY_MAIL                                               :{COMMA}بسته نامه
 STR_QUANTITY_OIL                                                :{VOLUME} نفت
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} فقره{P "" s} از جارپایان
-STR_QUANTITY_GOODS                                              :{COMMA} جعبه{P "" s} محموله تجاری
+STR_QUANTITY_GOODS                                              :{COMMA} جعبه{P ی های} محموله تجاری
 STR_QUANTITY_GRAIN                                              :{WEIGHT}حبوبات
 STR_QUANTITY_WOOD                                               :{WEIGHT} چوب
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} سنگ آهن
@@ -2144,6 +2144,8 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}صنعت
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :ساخت صنایع بسیار به طور تصادفی
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}پر کردن نقشه با صنایع با محل تصادفی
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}ساخت
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}سرمایه گذاری
 
 # Industry cargoes window
 
