@@ -453,6 +453,8 @@ public:
 	 * Find the town which has authority for the tile.
 	 *  The rating of your company in this town will be checked and affected when
 	 *  building stations, trees etc.
+	 * @param tile The tile to check.
+	 * @return The TownID of the town which has authority on this tile.
 	 */
 	static TownID GetTownAuthority(TileIndex tile);
 
