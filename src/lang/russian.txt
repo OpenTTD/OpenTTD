@@ -3012,6 +3012,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новый ав
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Вес: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость в океане: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорость в канале/реке: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY}/год
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмкость: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(переоб.)
@@ -3938,7 +3940,7 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не у�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Не удалось продать корабль...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не удалось продать самолёт...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Локомотив недоступен
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Локомотив и/или вагон недоступен
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Автотранспорт недоступен
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Корабль недоступен
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Авиатранспорт недоступен

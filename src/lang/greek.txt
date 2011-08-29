@@ -1492,6 +1492,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγ
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Εμφάνιση ρυθμίσεων AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Λείπουν {NUM} παράμετροι από τη μετάφραση. Παρακαλούμε βοηθήστε να κάνουμε το OpenTTD καλύτερο εγγραφόμενοι ως μεταφραστές. Δείτε το αρχείο readme.txt για λεπτομέρειες.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Έξοδος
@@ -2613,6 +2614,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυ�
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Σαρώνονται Νέα GRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Σαρώνεται το NewGRFs. Ανάλογα με το μέγεθος, αυτό μπορεί να απαιτήσει κάποιο χρόνο...
 STR_NEWGRF_SCAN_ARCHIVES                                        :Σάρωση για αρχεία
 
 # Sign list window
@@ -2921,6 +2923,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αερο
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY}{BLACK} Βάρος: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Ιπποδύναμη: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ταχύτητα στον ωκεανό: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ταχύτητα σε κανάλι/ποταμό: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Κόστος λειτουργίας: {GOLD}{CURRENCY}/χρ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
@@ -3107,7 +3111,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Στέλ
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Στέλνει το πλοίο στο ναυπηγείο. Ctrl+κλικ για να κάνει μόνο επισκευή
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροπλάνο στο υπόστεγο. Ctrl+κλικ για να κάνει μόνο επισκευή
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με όλα τα βαγόνια. Ctrl+κλικ θα μοιράστει τις εντολές
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με όλα τα βαγόνια. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να αγοράζεται.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροπλάνου. Με Ctrl+κλικ θα έχιε τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
@@ -3321,7 +3325,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
 STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη, ή να προστεθεί στο τέλος της λίστας. Ctrl κάνει τις εντολές του σταθμού 'πληρής φόρτωση οποιοδήποτε εμπορεύματος', εντολές σημείου καθοδήγησης 'χωρίς στάση' and εντολές αμαξοστασίου 'επισκευή'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές του σταθμού γίνονται 'πληρής φόρτωση οποιοδήποτε εμπορεύματος', οι εντολές σημείου καθοδήγησης 'χωρίς στάση' και οι εντολές αμαξοστασίου 'επισκευή'. Με 'Ίδιες ενοτλές' ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Εισαγώγη μιας προχωρημένης εντολής
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχήματων που μοιράζονται αυτό το δρομολόγιο
