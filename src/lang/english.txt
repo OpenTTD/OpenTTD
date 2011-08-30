@@ -3198,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Skip this order unless a service is needed
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Load percentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliability
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum speed
-STR_ORDER_CONDITIONAL_AGE                                       :Vehicle age (years)
+STR_ORDER_CONDITIONAL_AGE                                       :Age (years)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requires service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Always
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Remaining lifetime (years)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How to compare the vehicle data to the given value
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is equal to

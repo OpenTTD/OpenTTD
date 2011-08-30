@@ -19,6 +19,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "company_func.h"
+#include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "textbuf_gui.h"
 #include "string_func.h"
@@ -134,14 +135,15 @@ static const StringID _order_goto_dropdown_aircraft[] = {
 	INVALID_STRING_ID
 };
 
-static const StringID _order_conditional_variable[] = {
-	STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE,
-	STR_ORDER_CONDITIONAL_RELIABILITY,
-	STR_ORDER_CONDITIONAL_MAX_SPEED,
-	STR_ORDER_CONDITIONAL_AGE,
-	STR_ORDER_CONDITIONAL_REQUIRES_SERVICE,
-	STR_ORDER_CONDITIONAL_UNCONDITIONALLY,
-	INVALID_STRING_ID,
+/** Variables for conditional orders; this defines the order of appearance in the dropdown box */
+static const OrderConditionVariable _order_conditional_variable[] = {
+	OCV_LOAD_PERCENTAGE,
+	OCV_RELIABILITY,
+	OCV_MAX_SPEED,
+	OCV_AGE,
+	OCV_REMAINING_LIFETIME,
+	OCV_REQUIRES_SERVICE,
+	OCV_UNCONDITIONALLY,
 };
 
 static const StringID _order_conditional_condition[] = {
@@ -783,8 +785,8 @@ public:
 
 			case ORDER_WIDGET_COND_VARIABLE: {
 				Dimension d = {0, 0};
-				for (int i = 0; _order_conditional_variable[i] != INVALID_STRING_ID; i++) {
-					d = maxdim(d, GetStringBoundingBox(_order_conditional_variable[i]));
+				for (uint i = 0; i < lengthof(_order_conditional_variable); i++) {
+					d = maxdim(d, GetStringBoundingBox(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + _order_conditional_variable[i]));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -996,7 +998,7 @@ public:
 					}
 					OrderConditionVariable ocv = order->GetConditionVariable();
 					/* Set the strings for the dropdown boxes. */
-					this->GetWidget<NWidgetCore>(ORDER_WIDGET_COND_VARIABLE)->widget_data   = _order_conditional_variable[order == NULL ? 0 : ocv];
+					this->GetWidget<NWidgetCore>(ORDER_WIDGET_COND_VARIABLE)->widget_data   = STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + (order == NULL ? 0 : ocv);
 					this->GetWidget<NWidgetCore>(ORDER_WIDGET_COND_COMPARATOR)->widget_data = _order_conditional_condition[order == NULL ? 0 : order->GetConditionComparator()];
 					this->SetWidgetDisabledState(ORDER_WIDGET_COND_COMPARATOR, ocv == OCV_UNCONDITIONALLY);
 					this->SetWidgetDisabledState(ORDER_WIDGET_COND_VALUE, ocv == OCV_REQUIRES_SERVICE || ocv == OCV_UNCONDITIONALLY);
@@ -1225,9 +1227,14 @@ public:
 				ShowTimetableWindow(this->vehicle);
 				break;
 
-			case ORDER_WIDGET_COND_VARIABLE:
-				ShowDropDownMenu(this, _order_conditional_variable, this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable(), ORDER_WIDGET_COND_VARIABLE, 0, 0);
+			case ORDER_WIDGET_COND_VARIABLE: {
+				DropDownList *list = new DropDownList();
+				for (uint i = 0; i < lengthof(_order_conditional_variable); i++) {
+					list->push_back(new DropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + _order_conditional_variable[i], _order_conditional_variable[i], false));
+				}
+				ShowDropDownList(this, list, this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable(), ORDER_WIDGET_COND_VARIABLE);
 				break;
+			}
 
 			case ORDER_WIDGET_COND_COMPARATOR: {
 				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
@@ -1264,6 +1271,7 @@ public:
 				case OCV_RELIABILITY:
 				case OCV_LOAD_PERCENTAGE:
 					value = Clamp(value, 0, 100);
+					break;
 
 				default:
 					break;
