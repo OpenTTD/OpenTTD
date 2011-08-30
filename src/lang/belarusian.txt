@@ -2864,6 +2864,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядом
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканаваньне NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Ідзе сканаваньне NewGRF. Гэта зойме некаторы час...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Прасканаван{P 0 ы ы а} {NUM} з {NUM} модул{P я ёў ёў} NewGRF
+STR_NEWGRF_SCAN_ARCHIVES                                        :Пошук архіваў
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс таблічак - {COMMA} табліч{P ка кi ак}
@@ -3172,6 +3173,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новы авi�
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Кошт: {GOLD}{CURRENCY}{BLACK} Вага: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Хуткасьць: {GOLD}{VELOCITY}{BLACK} Магутнасьць: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Хуткасьць: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Хуткасць у акіяне: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Хуткасць у канале/рацэ: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Кошт абслугоўваньня: {GOLD}{CURRENCY}/год
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмістасьць: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(пераабст.)

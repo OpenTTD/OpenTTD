@@ -339,6 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Senaryoyu kaydet
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Senaryoyu yükle
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Yükseklik haritasını kaydet
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Yükseklik haritası yükle
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editörden çık
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -356,6 +357,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Şehir isimleri
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :İstasyon isimlerini göster
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Yolimlerini göster
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tabelaları göster
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rakip tabela ve isimlerini göster
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Tüm animasyonlar
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Tam detay
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Şeffaf binalar
@@ -448,6 +450,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran fotoğraf
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tüm harita ekran görüntüsü
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprayt hizalayıcı
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Çerçeveleri aç/kapa
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1028,6 +1031,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Belediy
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Hiç
+STR_FUNDING_ONLY                                                :Yalnız yatırım
+STR_MINIMAL                                                     :En düşük
 STR_NUM_VERY_LOW                                                :Çok Az
 STR_NUM_LOW                                                     :Düşük
 STR_NUM_NORMAL                                                  :Normal
@@ -1054,6 +1059,11 @@ STR_SEA_LEVEL_MEDIUM                                            :Orta
 STR_SEA_LEVEL_HIGH                                              :Yüksek
 STR_SEA_LEVEL_CUSTOM                                            :Özel
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Özel (%{NUM})
+
+STR_RIVERS_NONE                                                 :Hiç
+STR_RIVERS_FEW                                                  :Az
+STR_RIVERS_MODERATE                                             :Orta
+STR_RIVERS_LOT                                                  :Çok
 
 STR_DISASTER_NONE                                               :Hiç
 STR_DISASTER_REDUCED                                            :Azaltılmış
@@ -1105,6 +1115,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Sahile 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Trenlerin azami uzunluğu: {ORANGE}{STRING} kare
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Araçlardan çıkan duman veya kıvılcım miktarı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Tren ivme modeli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kara taşıtı ivme modeli: {ORANGE}{STRING}
@@ -1116,6 +1127,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gelişt
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Araçlar yavaş yavaş dolsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Enflasyon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Sadece istek varsa kargo kabul edilsin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Azami köprü uzunluğu: {ORANGE}{STRING} kare
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Azami tünel uzunluğu: {ORANGE}{STRING} kare
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Üretim fabrikalarının yapım yöntemi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
@@ -1133,6 +1146,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Karayol
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Şehrin ulaşım haklarını satın alma izinli: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Yerel yol tamiratlarına izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Diğer şirketlere para gönderme izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Uçak hızı çarpanı: {ORANGE}1 / {STRING}
@@ -1217,6 +1231,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Kaydedi
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :uzun (31 Ara 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kısa (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Palet belirtmeyen NewGRF'ler için varsayılan palet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paleti
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paleti
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Yeni bir oyun başlatırken zamanı duraklat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Oyun durakladığında izin verilenler: {ORANGE}{STRING}
@@ -1335,12 +1353,14 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenler
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Şehirler
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Endüstri
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orjinal
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Önerilen)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Trenler için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Arabalar için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Gemiler için yol bulucu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}İşaretlerde otomatik geri çevirme: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ayar değerini değiştir
 
@@ -1381,6 +1401,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF a
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}YZ ayarlarını göster
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Bu çeviride {NUM} eksik metin var. Çevirmen olarak kaydolarak OpenTTD'nin iyileştirilmesine yardım edin. Ayrıntılar için readme.txt'ye bakın.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Çıkış
@@ -2267,6 +2289,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Yükle
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Senaryoyu Kaydet
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Senaryoyu Yükle
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Yükseklik haritası yükle
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Yükseklik Haritasını Kaydet
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Su anki varsayılan kayıt/yükleme dizinine gitmek için tıklayın
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} bos
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Sürücü, klasör ve kayıtli oyun listesi
@@ -2302,6 +2325,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Harita �
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ağaç algoritmasi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Deniz seviyesi:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nehirler:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Düzlük seviyesi:
 STR_MAPGEN_VARIETY                                              :{BLACK}Çeşitlilik dağılımı:
 STR_MAPGEN_GENERATE                                             :{WHITE}Oluştur
@@ -2346,6 +2370,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Oluştu
 STR_GENERATION_PROGRESS                                         :{WHITE}%{NUM} tamamlandı
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Harita üretimi
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Nehir oluşturma
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ağaç üretimi
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Tasinmaz üretimi
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Engebeli ve kayalik alan oluştur
@@ -2460,6 +2485,9 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden fazla Action 8 girişi içeriyor
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprite bitiminden sonrasını okudu
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin
+STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} {4:STRING} tarafından deaktive edildi
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz/bilinmeyen sprayt biçimi
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
@@ -2495,6 +2523,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <geçersiz kargo>
 STR_NEWGRF_INVALID_ENGINE                                       :<geçersiz araç modeli>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<geçersiz fabrika>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF'ler taranıyor
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF'ler taranıyor. Sayıya bağlı olarak bu işlem biraz zaman alabilir...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{1:NUM} NewGRF'den tahminen {0:NUM} NewGRF tarandı
+STR_NEWGRF_SCAN_ARCHIVES                                        :Arşivler taranıyor
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
@@ -2803,6 +2837,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Yeni Uçak
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Ağırlık: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hız: {GOLD}{VELOCITY}{BLACK} Güç: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hız: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Okyanus hızı: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Kanal/nehir üzerinde hız: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Bakım: {GOLD}{CURRENCY}/sene
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(modifiyeli)
@@ -3239,6 +3275,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Aktar ve boş 
 STR_ORDER_NO_UNLOAD                                             :(Boşaltma ve kargo al)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Boşaltma ve tam dolduruşu bekle)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Boşaltma ve herhangi bir tam dolduruşu bekle)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Boşaltma ve yükleme yok)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[yakın uç]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[orta]
@@ -3507,6 +3544,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... yaln
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... yalnız alçak bölgelere yapılabilir
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sadece haritanın kenarlarına yerleştirilebilir
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... orman sadece kar sınırı üzerinde olabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin üzerinde yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... yalnız kar çizgisinin altında yapılabilir
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Buraya tren istasyonu yapılamıyor...
@@ -3628,6 +3667,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Buraya k
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Burada nehirler yapamazsınız...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... suya yapılmali
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... suya yapılamaz
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... açık denizde yapılamaz
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... kanal üzerinde yapılamaz
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nehir üzerinde yapılamaz
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Önce kanal kaldırılmalı
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Buraya su kemeri yapılamaz...
 
@@ -3654,6 +3696,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Önce t�
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Yolda başka bir tünel var
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tünel haritanın dışında bitiyor
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tünelin diğer ucunda düzeltme yapılmasi gerekiyor
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tünel çok uzun
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... çok fazla nesne var
@@ -3725,6 +3768,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ara�
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tren çevrilemez...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Trenin gücü yok
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kara taşıtı U dönüşü yapamıyor...
 
@@ -4226,6 +4270,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

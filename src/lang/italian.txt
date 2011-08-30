@@ -285,7 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Valutazione min
 STR_SORT_BY_ENGINE_ID                                           :EngineID (ordine classico)
 STR_SORT_BY_COST                                                :Costo
 STR_SORT_BY_POWER                                               :Potenza
-STR_SORT_BY_TRACTIVE_EFFORT                                     :Forza di trazione
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Sforzo di trazione
 STR_SORT_BY_INTRO_DATE                                          :Data introduzione
 STR_SORT_BY_RUNNING_COST                                        :Costo d'esercizio
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza / Costo d'esercizio
@@ -2860,6 +2860,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuovo aeromobil
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK} Potenza: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocità: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocità sull'oceano: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocità su canali/fiumi: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costo d'esercizio: {GOLD}{CURRENCY}/anno
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacità: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(riadattabile)
@@ -2873,7 +2875,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni a
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Forza di trazione massima: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Elenco di selezione dei veicoli ferroviari - fare clic su un veicolo per informazioni
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Elenco selezione automezzi - fare clic su un veicolo per informazioni
@@ -2991,7 +2993,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}motrice mo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}motrice maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo d'esercizio: {CURRENCY}/anno{}Capacità: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}  F.T. max.: {6:FORCE}{}Costo d'esercizio: {4:CURRENCY}/anno{}Capacità: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}  S.T. max.: {6:FORCE}{}Costo d'esercizio: {4:CURRENCY}/anno{}Capacità: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Costo: {CURRENCY} Velocità max.: {VELOCITY}{}Capacità: {CARGO}, {CARGO}{}Costo d'esercizio: {CURRENCY}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Costo: {CURRENCY} Velocità max.: {VELOCITY}{}Capacità: {CARGO}{}Costo d'esercizio: {CURRENCY}/anno
 
@@ -3108,7 +3110,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocità max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY} {BLACK}F.T. max.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY} {BLACK}S.T. max.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY} (anno scorso: {CURRENCY})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenzione: {LTBLUE}{COMMA}
