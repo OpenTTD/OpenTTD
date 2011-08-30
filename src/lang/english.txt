@@ -274,7 +274,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maximum speed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Value
 STR_SORT_BY_LENGTH                                              :Length
-STR_SORT_BY_LIFE_TIME                                           :Remaining life time
+STR_SORT_BY_LIFE_TIME                                           :Remaining lifetime
 STR_SORT_BY_TIMETABLE_DELAY                                     :Timetable delay
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waiting cargo value
