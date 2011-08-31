@@ -66,6 +66,7 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQConst(engine, AIOrder::OC_AGE,                                           "OC_AGE");
 	SQAIOrder.DefSQConst(engine, AIOrder::OC_REQUIRES_SERVICE,                              "OC_REQUIRES_SERVICE");
 	SQAIOrder.DefSQConst(engine, AIOrder::OC_UNCONDITIONALLY,                               "OC_UNCONDITIONALLY");
+	SQAIOrder.DefSQConst(engine, AIOrder::OC_REMAINING_LIFETIME,                            "OC_REMAINING_LIFETIME");
 	SQAIOrder.DefSQConst(engine, AIOrder::OC_INVALID,                                       "OC_INVALID");
 	SQAIOrder.DefSQConst(engine, AIOrder::CF_EQUALS,                                        "CF_EQUALS");
 	SQAIOrder.DefSQConst(engine, AIOrder::CF_NOT_EQUALS,                                    "CF_NOT_EQUALS");

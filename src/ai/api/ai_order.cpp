@@ -176,6 +176,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 		case OC_RELIABILITY:
 		case OC_MAX_SPEED:
 		case OC_AGE:
+		case OC_REMAINING_LIFETIME:
 			return compare >= CF_EQUALS && compare <= CF_MORE_EQUALS;
 
 		case OC_REQUIRES_SERVICE:

@@ -87,13 +87,14 @@ public:
 	 */
 	enum OrderCondition {
 		/* Order _is_ important, as it's based on OrderConditionVariable in order_type.h. */
-		OC_LOAD_PERCENTAGE,  ///< Skip based on the amount of load, value is in tons.
-		OC_RELIABILITY,      ///< Skip based on the reliability, value is percent (0..100).
-		OC_MAX_SPEED,        ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see AIEngine::GetMaxSpeed.
-		OC_AGE,              ///< Skip based on the age, value is in years.
-		OC_REQUIRES_SERVICE, ///< Skip when the vehicle requires service, no value.
-		OC_UNCONDITIONALLY,  ///< Always skip, no compare function, no value.
-		OC_INVALID = -1,     ///< An invalid condition, do not use.
+		OC_LOAD_PERCENTAGE,    ///< Skip based on the amount of load, value is in tons.
+		OC_RELIABILITY,        ///< Skip based on the reliability, value is percent (0..100).
+		OC_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see AIEngine::GetMaxSpeed.
+		OC_AGE,                ///< Skip based on the age, value is in years.
+		OC_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service, no value.
+		OC_UNCONDITIONALLY,    ///< Always skip, no compare function, no value.
+		OC_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime
+		OC_INVALID = -1,       ///< An invalid condition, do not use.
 	};
 
 	/**
