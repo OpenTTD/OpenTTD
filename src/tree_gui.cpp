@@ -43,6 +43,21 @@ enum BuildTreesWidgets {
 	BTW_MANY_RANDOM,
 };
 
+/** Tree Sprites with their palettes */
+const PalSpriteID tree_sprites[] = {
+	{ 1621, PAL_NONE }, { 1587, PAL_NONE }, { 1656, PAL_NONE }, { 1579, PAL_NONE },
+	{ 1607, PAL_NONE }, { 1593, PAL_NONE }, { 1614, PAL_NONE }, { 1586, PAL_NONE },
+	{ 1663, PAL_NONE }, { 1677, PAL_NONE }, { 1691, PAL_NONE }, { 1705, PAL_NONE },
+	{ 1711, PAL_NONE }, { 1746, PAL_NONE }, { 1753, PAL_NONE }, { 1732, PAL_NONE },
+	{ 1739, PAL_NONE }, { 1718, PAL_NONE }, { 1725, PAL_NONE }, { 1760, PAL_NONE },
+	{ 1838, PAL_NONE }, { 1844, PAL_NONE }, { 1866, PAL_NONE }, { 1871, PAL_NONE },
+	{ 1899, PAL_NONE }, { 1935, PAL_NONE }, { 1928, PAL_NONE }, { 1915, PAL_NONE },
+	{ 1887, PAL_NONE }, { 1908, PAL_NONE }, { 1824, PAL_NONE }, { 1943, PAL_NONE },
+	{ 1950, PAL_NONE }, { 1957, PALETTE_TO_GREEN }, { 1964, PALETTE_TO_RED },        { 1971, PAL_NONE },
+	{ 1978, PAL_NONE }, { 1985, PALETTE_TO_RED, },  { 1992, PALETTE_TO_PALE_GREEN }, { 1999, PALETTE_TO_YELLOW }, { 2006, PALETTE_TO_RED }
+};
+
+
 /**
  * The build trees window.
  */
@@ -59,8 +74,40 @@ public:
 		ResetObjectToPlace();
 	}
 
+	/**
+	 * Calculate the maximum size of all tree sprites
+	 * @return Dimension of the largest tree sprite
+	 */
+	Dimension GetMaxTreeSpriteSize()
+	{
+		Dimension size, this_size;
+		Point offset;
+		/* Avoid to use it uninitialized */
+		size.width  = 32; // default width - 2
+		size.height = 39; // default height - 7
+		offset.x = 0;
+		offset.y = 0;
+
+		for (uint i = this->base; i < this->base + this->count; i++) {
+			if (i >= lengthof(tree_sprites)) return size;
+			this_size = GetSpriteSize(tree_sprites[i].sprite, &offset);
+			size.width = max<int>(size.width, 2 * max<int>(this_size.width, -offset.x));
+			size.height = max<int>(size.height, max<int>(this_size.height, -offset.y));
+		}
+
+		return size;
+	}
+
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
+		if (widget >= BTW_TYPE_11 && widget <= BTW_TYPE_34) {
+			Dimension d = GetMaxTreeSpriteSize();
+			/* Allow some pixels extra width and height */
+			size->width = d.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+			size->height = d.height + WD_FRAMERECT_RIGHT + WD_FRAMERECT_BOTTOM + 7; // we need some more space
+			return;
+		}
+
 		if (widget != BTW_MANY_RANDOM) return;
 
 		if (_game_mode != GM_EDITOR) {
@@ -71,29 +118,16 @@ public:
 
 	virtual void OnPaint()
 	{
-		this->OnInvalidateData(0);
 		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		static const PalSpriteID tree_sprites[] = {
-			{ 0x655, PAL_NONE }, { 0x663, PAL_NONE }, { 0x678, PAL_NONE }, { 0x62B, PAL_NONE },
-			{ 0x647, PAL_NONE }, { 0x639, PAL_NONE }, { 0x64E, PAL_NONE }, { 0x632, PAL_NONE },
-			{ 0x67F, PAL_NONE }, { 0x68D, PAL_NONE }, { 0x69B, PAL_NONE }, { 0x6A9, PAL_NONE },
-			{ 0x6AF, PAL_NONE }, { 0x6D2, PAL_NONE }, { 0x6D9, PAL_NONE }, { 0x6C4, PAL_NONE },
-			{ 0x6CB, PAL_NONE }, { 0x6B6, PAL_NONE }, { 0x6BD, PAL_NONE }, { 0x6E0, PAL_NONE },
-			{ 0x72E, PAL_NONE }, { 0x734, PAL_NONE }, { 0x74A, PAL_NONE }, { 0x74F, PAL_NONE },
-			{ 0x76B, PAL_NONE }, { 0x78F, PAL_NONE }, { 0x788, PAL_NONE }, { 0x77B, PAL_NONE },
-			{ 0x75F, PAL_NONE }, { 0x774, PAL_NONE }, { 0x720, PAL_NONE }, { 0x797, PAL_NONE },
-			{ 0x79E, PAL_NONE }, { 0x7A5, PALETTE_TO_GREEN }, { 0x7AC, PALETTE_TO_RED }, { 0x7B3, PAL_NONE },
-			{ 0x7BA, PAL_NONE }, { 0x7C1, PALETTE_TO_RED, }, { 0x7C8, PALETTE_TO_PALE_GREEN }, { 0x7CF, PALETTE_TO_YELLOW }, { 0x7D6, PALETTE_TO_RED }
-		};
-
 		if (widget < BTW_TYPE_11 || widget > BTW_TYPE_34 || widget - BTW_TYPE_11 >= this->count) return;
 
 		int i = this->base + widget - BTW_TYPE_11;
-		DrawSprite(tree_sprites[i].sprite, tree_sprites[i].pal, (r.left + r.right) / 2, r.bottom - 7);
+		/* Trees "grow" in the centre on the bottom line of the buttons */
+		DrawSprite(tree_sprites[i].sprite, tree_sprites[i].pal, (r.left + r.right) / 2 + WD_FRAMERECT_LEFT, r.bottom - 7);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -145,13 +179,10 @@ public:
 	}
 
 	/**
-	 * Some data on this window has become invalid.
-	 * @param data Information about the changed data.
-	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 * Initialize the window data
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	virtual void OnInit()
 	{
-		if (!gui_scope) return;
 		this->base  = _tree_base_by_landscape[_settings_game.game_creation.landscape];
 		this->count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
 	}
