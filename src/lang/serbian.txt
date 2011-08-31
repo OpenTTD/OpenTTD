@@ -462,7 +462,7 @@ STR_SORT_BY_MAX_SPEED                                           :Nejvećoj brzin
 STR_SORT_BY_MODEL                                               :Modelu
 STR_SORT_BY_VALUE                                               :Vrednosti
 STR_SORT_BY_LENGTH                                              :Dužini
-STR_SORT_BY_LIFE_TIME                                           :Preostalom životnom veku
+STR_SORT_BY_LIFE_TIME                                           :Isticanju životnog veka
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje u rasporedu
 STR_SORT_BY_FACILITY                                            :Vrsti stanice
 STR_SORT_BY_WAITING                                             :Vrednosti tovara na čekanju
@@ -3409,12 +3409,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Zaustavljanje
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskače ovu naredbu ukoliko servis nije potreban
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Skok na osnovu podatka o vozilu
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenat natovarenog
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pouzdanost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najveća brzina
-STR_ORDER_CONDITIONAL_AGE                                       :Starost vozila (godine)
+STR_ORDER_CONDITIONAL_AGE                                       :Starost (godine)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Uvek
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Isticanje životnog veka (godine)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako se upoređuje podatak o vozilu sa unetom vrednošću
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jednako

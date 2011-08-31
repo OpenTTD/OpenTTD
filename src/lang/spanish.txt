@@ -3199,12 +3199,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Detenerse
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Saltar esta orden a menos que un mantenimiento sea necesario
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos del vehículo para saltarse
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentaje de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidad
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidad Máxima
-STR_ORDER_CONDITIONAL_AGE                                       :Edad del vehículo (años)
+STR_ORDER_CONDITIONAL_AGE                                       :Edad (años)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requiere mantenimiento
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Siempre
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tiempo de vida restante (años)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar los datos del vehículo al valor dado
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :es igual a

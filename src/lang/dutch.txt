@@ -3198,10 +3198,12 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sla deze order over tenzij onderhoud nodig is
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig info voor basisspringen wanneer
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laad percentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouwbaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum snelheid
-STR_ORDER_CONDITIONAL_AGE                                       :Voertuigleeftijd (jaren)
+STR_ORDER_CONDITIONAL_AGE                                       :Leeftijd (jaren)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Heeft onderhoud nodig
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altijd
 

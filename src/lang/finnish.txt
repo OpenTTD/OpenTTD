@@ -1118,8 +1118,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Junien 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Kulkuneuvon savun/kipinöiden määrä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Junien kiihdytysmalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ajoneuvojen kiihdytysmalli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Mäkien jyrkkyys junille {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Mäkien jyrkkyys ajoneuvoille {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Mäkien jyrkkyys junille: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Mäkien jyrkkyys ajoneuvoille: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}90 asteen käännökset kielletty junilta ja laivoilta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}
@@ -3198,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Pysähdy
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ohita tämä käsky, ellei palvelua tarvita.
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kulkuneuvon tiedot, joiden perusteella hypätään
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lastin prosentuaalinen määrä
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Luotettavuus
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Huippunopeus
-STR_ORDER_CONDITIONAL_AGE                                       :Kulkuneuvon ikä (vuotta)
+STR_ORDER_CONDITIONAL_AGE                                       :Ikä (vuotta)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vaatii huoltoa
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Aina
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Jäljelläoleva elinikä (vuotta)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Miten kulkuneuvon tietoja verrataan annettuihin arvoihin
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :on yhtä kuin

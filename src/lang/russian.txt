@@ -3384,12 +3384,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропустить это задание, если обслуживание не требуется
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент погрузки
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надёжность
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. скорость
 STR_ORDER_CONDITIONAL_AGE                                       :Возраст (лет)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Требуется обслуживание
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Всегда
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Оставшийся срок службы (лет)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Условие перехода
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :равно
