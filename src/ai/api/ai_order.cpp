@@ -336,7 +336,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 {
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position));
-	EnforcePrecondition(false, condition >= OC_LOAD_PERCENTAGE && condition <= OC_UNCONDITIONALLY);
+	EnforcePrecondition(false, condition >= OC_LOAD_PERCENTAGE && condition <= OC_REMAINING_LIFETIME);
 
 	return AIObject::DoCommand(0, vehicle_id | (order_position << 20), MOF_COND_VARIABLE | (condition << 4), CMD_MODIFY_ORDER);
 }
