@@ -148,7 +148,7 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, co
 		const SpriteGroup *group = it->group;
 		object->grffile = it->file;
 		group = SpriteGroup::Resolve(group, object);
-		if (group == NULL) continue;
+		if (group == NULL || group->GetCallbackResult() == CALLBACK_FAILED) continue;
 
 		/* Return NewGRF file if necessary */
 		if (file != NULL) *file = it->file;
