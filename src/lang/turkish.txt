@@ -3199,12 +3199,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Dur
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Bakım gerekmiyorsa bunu atla
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dallanmanın temel alacağı araç verisi
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Yükleme yüzdesi
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Güvenilirlik
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Azami hız
 STR_ORDER_CONDITIONAL_AGE                                       :Araç yaşı (yıl)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Bakım gerektirir
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Her zaman
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Kalan ömrü (yıl)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Araç verisinin verilen değerle nasıl karşılaştırılacağı
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :eşittir

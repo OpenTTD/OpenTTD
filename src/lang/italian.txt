@@ -828,7 +828,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} si è perso
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profitto di {VEHICLE} per l'anno scorso è stato {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato a causa del fallimento di un ordine di riadattamento
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato perché un ordine di riadattamento non è riuscito
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} non riuscito
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o o a} {STRING} disponibile!
@@ -3222,12 +3222,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Ferma in deposi
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ignora quest'ordine a meno che non sia necessaria una manutenzione
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dato del veicolo sul quale basare il salto
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentuale di carico
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Affidabilità
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocità massima
-STR_ORDER_CONDITIONAL_AGE                                       :Età del veicolo (anni)
+STR_ORDER_CONDITIONAL_AGE                                       :Età (anni)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Manutenzione richiesta
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Vita rimanente (anni)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Modalità di confronto del dato del veicolo con il valore inserito
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :è uguale a

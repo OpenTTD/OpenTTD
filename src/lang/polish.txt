@@ -1241,10 +1241,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Waluta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Wybór waluty
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funty (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolary ($)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funt brytyjski (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar amerykański ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jeny (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen japoński (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Szyling austriacki (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Frank belgijski (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Frank szwajcarski (CHF)
@@ -1260,7 +1260,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Korona islandzk
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira włoska (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Gulden holenderski (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Korona norweska (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty polski (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polski złoty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Lej rumuński (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubel rosyjski (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar słowenski (SIT)
@@ -1498,8 +1498,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksyma
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ilość dymu / iskier lokomotywy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model przyspieszania pociągu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model przyspieszania samochodów: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nachylenie zboczy dla pociągów {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nachylenie zboczy dla samochodów {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nachylenie zboczy dla pociągów: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nachylenie zboczy dla samochodów: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabroń pociągom i statkom skręcać o 90 stopni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Pozwól na łączenie stacji nie sąsiadujących bezpośrednio: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Użyj ulepszonego algorytmu załadunku: {ORANGE}{STRING}
@@ -2907,6 +2907,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanowanie NewGRFów
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanuje NewGRFy. Może to zająć chwilę w zależności od ilości...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Przeskanowano {NUM} NewGRF{P "" y ów} z około {NUM} NewGRFów
+STR_NEWGRF_SCAN_ARCHIVES                                        :Skanowanie w poszukiwaniu archiwum
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista napisów - {COMMA} napis{P "" y ów}
@@ -3215,6 +3216,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nowy samolot
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK} Moc: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Prędkość na oceanie: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Prędkość na kanale/rzece: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty użytkowania: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Pojemność: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowywalny)
@@ -3581,12 +3584,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dane pojazdu wykorzystane w warunku
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procent załadowania
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
-STR_ORDER_CONDITIONAL_AGE                                       :Wiek pojazdu (lata)
+STR_ORDER_CONDITIONAL_AGE                                       :Wiek (w latach)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga serwisowania
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Pozostały czas życia (w latach)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porównać dane pojazdu z zadaną wartością
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jest równy

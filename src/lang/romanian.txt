@@ -1118,7 +1118,7 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Lungime
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Cantitatea de fum/ scântei ale locomotivei: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelul de acceleraţie al trenurilor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelul de acceleraţie pentru vehiculele rutiere: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Înclinarea pantelor pentru trenuri {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Înclinarea pantelor pentru trenuri: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Înclinarea pantei (pentru vehicule) {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă întoarceri la 90°: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permite unirea staţiilor neînvecinate: {ORANGE}{STRING}
@@ -3198,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sari peste aceastã comandã dacã nu este necesar un service
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datele vehiculului pe care se bazează
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procentaj încărcare
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Eficienţă
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Viteză maximă
-STR_ORDER_CONDITIONAL_AGE                                       :Vechime vehicul (ani)
+STR_ORDER_CONDITIONAL_AGE                                       :Vechime (ani)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necesită service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Întotdeauna
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Durată de viaţă rămasă
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cum se face compararea datelor din vehicul cu valoarea dată
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :este egal cu

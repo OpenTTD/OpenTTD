@@ -275,7 +275,7 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidade máx
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Comprimento
-STR_SORT_BY_LIFE_TIME                                           :Restante tempo de vida
+STR_SORT_BY_LIFE_TIME                                           :Tempo de vida restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso do horário
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
@@ -861,19 +861,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecção de unidades monetárias
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Iene (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britânica (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar dos Estados Unidos (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Japonês (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Xelim Austríaco (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco Belga (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco Suíço (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Coroa Checa (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco Alemão (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Coroa Dinamarquesa (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Espanhola (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marco Finlandês (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco Francês (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma Grego (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florim Húngaro (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Coroa Islandesa (ISK)
@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :Alto
 STR_SEA_LEVEL_CUSTOM                                            :Personalizado
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizado ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Nenhum
+STR_RIVERS_FEW                                                  :Poucos
+STR_RIVERS_MODERATE                                             :Alguns
+STR_RIVERS_LOT                                                  :Muitos
+
 STR_DISASTER_NONE                                               :Nenhum
 STR_DISASTER_REDUCED                                            :Reduzido
 STR_DISASTER_NORMAL                                             :Normal
@@ -1113,8 +1118,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Comprim
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumo/faíscas de veículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleração de comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração dos veículos de estrada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Declive das inclinações para comboios {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinação das subidas para veículos de estrada {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Declive das inclinações para comboios: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Declive das inclinações para v. de estrada: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos fazer curvas de 90º: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitir juntar estações não adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
@@ -1395,6 +1400,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostrar 
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostrar definições da IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nesta tradução. Ajude o OpenTTD em inscrever-se como tradutor. Leia readme.txt para mais detalhes.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
@@ -2317,6 +2324,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Criaçã
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Colocação de árvores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedade da distribuição:
 STR_MAPGEN_GENERATE                                             :{WHITE}Criar
@@ -2361,6 +2369,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Quer me
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}A gerar mundo
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}A gerar rios
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}A gerar árvores
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geração inamovível
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}A gerar zonas rochosas e montanhosas
@@ -2513,6 +2522,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <mercadoria inválida>
 STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veículo inválido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inválida>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Procurar NewGRFs
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Procurar NewGRFs. Dependendo da quantidade, isto pode demorar algum tempo...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} investigados num total estimado de {NUM} NewGRF{P "" s}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Procurar por arquivos
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sina{P l is}
@@ -2821,6 +2836,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK} Potência: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocidade no oceano: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocidade no canal/rio: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Custo de manutenção: {GOLD}{CURRENCY}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(adaptável)
@@ -3181,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Pare
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Saltar esta ordem a menos que seja necessário manutenção
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentagem de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máximo
-STR_ORDER_CONDITIONAL_AGE                                       :Idade de veículo (anos)
+STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requer manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o parâmetro passado
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a

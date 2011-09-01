@@ -3206,6 +3206,7 @@ STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum snelhei
 STR_ORDER_CONDITIONAL_AGE                                       :Leeftijd (jaren)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Heeft onderhoud nodig
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altijd
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resterende levensverwachting (jaren)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Op welke manier vergelijken van de voertuiginfo bij de opgegeven waarde
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is gelijk aan

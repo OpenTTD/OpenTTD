@@ -861,19 +861,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaen
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiska pund (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikanska Dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanska Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österrikiska shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiska franc (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schweiziska franc (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjeckiska kronor (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Tyska mark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska kronor (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanska Peseta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franska Franc (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grekiska drachmer (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungerska Forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländska kronor (ISK)
@@ -1118,8 +1118,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximal
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mängden rök/gnistor från fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Accelerationsmodell för tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Accelerationsmodell för vägfordon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Slutnings lutning för tåg {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lutningars lutningsgrad för vägfordon {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Lutningars lutningsgrad för tåg: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lutningars lutningsgrad för vägfordon: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Förbjud tåg och skepp att göra 90° svängar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Använd förbättrad algoritm: {ORANGE}{STRING}
@@ -2527,6 +2527,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<icke giltig in
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannar NewGRFer
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannar NewGRFer. Beroende på antal kan det ta en stund...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" er} skannade utav uppskattningsvis {NUM} NewGRF{P "" er} totalt
+STR_NEWGRF_SCAN_ARCHIVES                                        :Skannar efter arkiv
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
@@ -2835,6 +2836,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nytt flygplan
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vikt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighet: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Hastighet i hav: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Hastighet i kanal/flod: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitet: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(anpassningsbart)
@@ -3195,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stanna
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Skippa den här ordern om service ej behövs
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fordonsdata att basera hoppning på
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laddningsprocent
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Tillförlitlighet
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Toppfart
-STR_ORDER_CONDITIONAL_AGE                                       :Fordonsålder (år)
+STR_ORDER_CONDITIONAL_AGE                                       :Ålder (år)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Behöver service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltid
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Återstående livstid (år)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hur man jämför fordonsdata med givet värde
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :samma som

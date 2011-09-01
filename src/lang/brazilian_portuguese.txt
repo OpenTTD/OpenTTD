@@ -1402,6 +1402,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar p
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Exibir configs. da IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nessa tradução. Por favor faça o OpenTTD melhor se inscrevendo como tradutor. Leia Readme.txt para mais detalhes.
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Tem a certeza que deseja abandonar este jogo e voltar ao {STRING}?
@@ -2523,6 +2525,10 @@ STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veí
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inválida>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escaneando NewGRFs
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Escaneando NewGRFs. Dependendo da quantidade, isso pode levar um tempo...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} escaneados, de estimados {NUM} NewGRF{P "" s}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Procurando arquivos
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
@@ -2831,6 +2837,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK} Potência: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocidade em oceanos: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocidade em canais/rios: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Manutenção: {GOLD}{CURRENCY}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(adaptável)
@@ -3191,12 +3199,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Parar
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Pular esta ordem a menos que necessite de manutenção
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo no qual se basear para pular ordem
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentual carregado
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Confiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima
 STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessia de manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comprarar os dados do veículo com o valor fornecido
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a

@@ -2144,33 +2144,85 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}صنعت
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :ساخت صنایع بسیار به طور تصادفی
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}پر کردن نقشه با صنایع با محل تصادفی
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}دورنما
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}ساخت
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}سرمایه گذاری
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}زنجیره ساخت برای صنعت {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}زنجیره ساخت برای بار {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}در حال ساخت صنایع
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}قبول کردن صنایع
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}خانه ها
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}روی صنایع کلیک کنید تا تولید کننده و مشتریان را ببینید
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}روی بار کلیک کنید تا تولیدکنندگان و مشتریان آنرا ببینید
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}نمایش زنجیره
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}نمایش صنایعی که بار را تولید و قبول می کنند
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}پیوند به نقشه کوچک
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}انتخاب صنایع نشان داده شده در نقشه کوچک
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}هزینه پاک کردن: {LTBLUE}0
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}درآمد زمان پاکسازی: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :0
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}مالک: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}مالک جاده: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}مالک راه تراموا: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}مالک ریل راه آهن: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}فرماندار محلی: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :هیچکدام
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}مختصات: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}ساخته شده در: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}کلاس ایستگاه: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}نوع ایستگاه: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}کلاس هواپیما: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}نام فرودگاه: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}نام قطعه فرودگاه: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}محموله های دریافتی : {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}حد سرعت ریل: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :صخره
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :سرزمین سنگلاخی
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :سرزمین بایر
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :چمن
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :زمین ها
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :زمین پوشیده از برف
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :صحرا
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :قطعه ریل راه آهن
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :ریل با نشانگرهای توقف
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :ریل راه آهن با پیش نشانگرها
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :ریل راه آهن با نشانگرهای خروجی
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :ریل راه آهن با نشانگرهای چندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :ریل راه آهن با نشانگرهای مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :ریل راه آهن با نشانگرهای راه یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :ریل راه آهن با نشانگرهای توقف و پیش نشانگرها
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :ریل راه آهن با نشانگرهای توقف و نشانگر خروج
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :ریل راه آهن با نشانگرهای توقف و نشانگرهای چندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :ریل راه آهن با نشانگرهای توقف و نشانگرهای مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :ریل راه آهن با نشانگرهای توقف و نشانگرهای راه یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :ریل راه آهن با پیش نشانگر و نشانگرهای خروچی
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :ریل راه آهن با پیش نشانگرها و نشاگرهای چندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :ریل راه آهن با پیش نشانگرها و نشانگرهای مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :ریل راه آهن با پیش نشانگرها و نشانگرهای مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :ریل راه آهن با نشانگرهای خروج و نشانگرهای چندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :ریل راه آهن با نشانگرهای توقف و نشانگرهای مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :ریل راه آهن با نشانگرهای توقف و نشانگرهای مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :ریل راه آهن با نشانگرهای چندگانه و نشانگرهای مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :ریل راه آهن با نشانگرهای چندگانه و نشانگرهای راه یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :ریل راه آهن با نشانگرهای مسیر و نشانگرهای راه یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :گاراژ راه آهن
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :جاده
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :جاده با چراغ راهنمایی رانندگی
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :جاده 3 لاین
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :گاراژ خودروی جاده ای
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :راه تراموا
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (در دست ساخت)
@@ -2185,15 +2237,22 @@ STR_LAI_STATION_DESCRIPTION_AIRPORT                             :فرودگاه
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :محوطه بارگیری کامیون
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :ایستگاه اتوبوس
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :اسکله
+STR_LAI_STATION_DESCRIPTION_BUOY                                :شناور
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :نقطه مسیر
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :آب
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :آبراه
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :قفل
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :رودخانه
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :خلیج یا ساحل رودخانه
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :گاراژ کشتی
 
 # Industries come directly from their industry names
 
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :تونل راه آهن
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :تونل ماشین رو
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :پل معلق راه آهن فولادی
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :پل راه آهن با شاه تیر فولادی
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :پل راه آهن چوبی
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :پل لوله ای راه آهن
@@ -2272,6 +2331,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطا
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی در بایگانی
 
 # Sign list window
 
@@ -2432,6 +2492,8 @@ STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :وسایل ری
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :ماشین های جدید
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :هواپیمای جدید
 
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}سرعت در اقیانوس: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}سرعت در کانال/رودخانه: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_REFITTABLE                                    :(قابل تعمیر)
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
@@ -2628,6 +2690,9 @@ STR_ORDERS_END_OF_ORDERS                                        :- - پایان 
 
 
 
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :عمر مفید باقی مانده (سال)
 
 
 

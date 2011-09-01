@@ -1118,8 +1118,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Độ d
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Lượng khói thải của phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Kiểu tăng tốc của tàu hỏa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kiểu tăng tốc cho ôtô: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Độ dốc khi vượt dốc cho tàu hoả {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Độ dốc cho xe ôtô là {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Độ dốc khi vượt dốc cho tàu hoả: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Độ dốc cho xe ôtô là: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Cho phép gộp ga, bến, cảng không sát nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Sử dụng thuật toán bốc/dỡ hàng cải tiến: {ORANGE}{STRING}
@@ -3198,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Dừng
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Bỏ điểm lộ trình này trừ khi cần bảo trì
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dữ kiện của phương tiện để xác định
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Tiến độ bốc xếp
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Độ tin cậy
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tốc độ tối đa
 STR_ORDER_CONDITIONAL_AGE                                       :Tuổi phương tiện (năm)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Yêu cầu bảo trì
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Luôn luôn
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Thời gian sử dụng còn lại (năm)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cách so sánh dữ kiện của phương tiện với giá trị cho trước
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :bằng với
