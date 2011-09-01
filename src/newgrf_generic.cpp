@@ -115,7 +115,7 @@ static const SpriteGroup *GenericCallbackResolveReal(const ResolverObject *objec
 }
 
 
-static inline void NewGenericResolver(ResolverObject *res, const GRFFile *grffile)
+static inline void NewGenericResolver(ResolverObject *res)
 {
 	res->GetRandomBits = &GenericCallbackGetRandomBits;
 	res->GetTriggers   = &GenericCallbackGetTriggers;
@@ -127,8 +127,6 @@ static inline void NewGenericResolver(ResolverObject *res, const GRFFile *grffil
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->ResetState();
-
-	res->grffile         = grffile;
 }
 
 
@@ -137,7 +135,8 @@ static inline void NewGenericResolver(ResolverObject *res, const GRFFile *grffil
  * answer
  * @param feature GRF Feature of callback
  * @param object  pre-populated resolver object
- * @param file    address of GRFFile object if file reference is needed, NULL is valid
+ * @param [out] file Optionally returns the GRFFile which made the final decision for the callback result.
+ *                   May be NULL if not required.
  * @return callback value if successful or CALLBACK_FAILED
  */
 static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, const GRFFile **file)
@@ -147,6 +146,7 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, co
 	/* Test each feature callback sprite group. */
 	for (GenericCallbackList::const_iterator it = _gcl[feature].begin(); it != _gcl[feature].end(); ++it) {
 		const SpriteGroup *group = it->group;
+		object->grffile = it->file;
 		group = SpriteGroup::Resolve(group, object);
 		if (group == NULL) continue;
 
@@ -163,12 +163,25 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, co
 
 /**
  * 'Execute' an AI purchase selection callback
+ *
+ * @param feature GRF Feature to call callback for.
+ * @param cargo_type Cargotype to pass to callback. (Variable 80)
+ * @param default_selection 'Default selection' to pass to callback. (Variable 82)
+ * @param src_industry 'Source industry type' to pass to callback. (Variable 83)
+ * @param dst_industry 'Destination industry type' to pass to callback. (Variable 84)
+ * @param distance 'Distance between source and destination' to pass to callback. (Variable 85)
+ * @param event 'AI construction event' to pass to callback. (Variable 86)
+ * @param count 'Construction number' to pass to callback. (Variable 87)
+ * @param station_size 'Station size' to pass to callback. (Variable 88)
+ * @param [out] file Optionally returns the GRFFile which made the final decision for the callback result.
+ *                   May be NULL if not required.
+ * @return callback value if successful or CALLBACK_FAILED
  */
 uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 default_selection, IndustryType src_industry, IndustryType dst_industry, uint8 distance, AIConstructionEvent event, uint8 count, uint8 station_size, const GRFFile **file)
 {
 	ResolverObject object;
 
-	NewGenericResolver(&object, *file);
+	NewGenericResolver(&object);
 
 	if (src_industry != IT_AI_UNKNOWN && src_industry != IT_AI_TOWN) {
 		const IndustrySpec *is = GetIndustrySpec(src_industry);
