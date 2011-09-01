@@ -85,10 +85,10 @@ static void GenericCallbackSetTriggers(const ResolverObject *object, int trigger
 static uint32 GenericCallbackGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	switch (variable) {
-		case 0x40: return object->u.generic.cargo_type;
+		case 0x40: return object->grffile->cargo_map[object->u.generic.cargo_type];
 
 		case 0x80: return object->u.generic.cargo_type;
-		case 0x81: return object->u.generic.cargo_type;
+		case 0x81: return CargoSpec::Get(object->u.generic.cargo_type)->bitnum;
 		case 0x82: return object->u.generic.default_selection;
 		case 0x83: return object->u.generic.src_industry;
 		case 0x84: return object->u.generic.dst_industry;
