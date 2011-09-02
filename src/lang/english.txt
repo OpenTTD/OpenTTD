@@ -3452,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... some
 STR_ERROR_BMPMAP                                                :{WHITE}Can't load landscape from BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... could not convert image type
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... image is too large
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Scale warning
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
 
