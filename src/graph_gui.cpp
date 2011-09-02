@@ -1155,6 +1155,8 @@ private:
 	GUIList<const Company*> companies;
 	uint ordinal_width; ///< The width of the ordinal number
 	uint text_width;    ///< The width of the actual text
+	uint icon_width;    ///< The width of the company icon
+	int line_height;    ///< Height of the text lines
 
 	/**
 	 * (Re)Build the company league list
@@ -1200,8 +1202,8 @@ public:
 	{
 		if (widget != CLW_BACKGROUND) return;
 
-		uint y = r.top + WD_FRAMERECT_TOP;
-		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - 10) / 2;
+		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - this->line_height) / 2;
+		uint y = r.top + WD_FRAMERECT_TOP - icon_y_offset;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		uint ordinal_left  = rtl ? r.right - WD_FRAMERECT_LEFT - this->ordinal_width : r.left + WD_FRAMERECT_LEFT;
@@ -1220,7 +1222,7 @@ public:
 			SetDParam(1, c->index);
 			SetDParam(2, GetPerformanceTitleFromValue(c->old_economy[0].performance_history));
 			DrawString(text_left, text_right, y, STR_COMPANY_LEAGUE_COMPANY_NAME);
-			y += FONT_HEIGHT_NORMAL;
+			y += this->line_height;
 		}
 	}
 
@@ -1244,6 +1246,10 @@ public:
 			}
 		}
 
+		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
+		this->icon_width = d.width + 2;
+		this->line_height = max<int>(d.height + 2, FONT_HEIGHT_NORMAL);
+
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			SetDParam(0, c->index);
@@ -1254,7 +1260,8 @@ public:
 
 		this->text_width = widest_width + 30; // Keep some extra spacing
 
-		size->width = WD_FRAMERECT_LEFT + this->ordinal_width + WD_FRAMERECT_RIGHT + 16 + WD_FRAMERECT_LEFT + this->text_width + WD_FRAMERECT_RIGHT;
+		size->width = WD_FRAMERECT_LEFT + this->ordinal_width + WD_FRAMERECT_RIGHT + this->icon_width + WD_FRAMERECT_LEFT + this->text_width + WD_FRAMERECT_RIGHT;
+		size->height = WD_FRAMERECT_TOP + this->line_height * MAX_COMPANIES + WD_FRAMERECT_BOTTOM;
 	}
 
 
