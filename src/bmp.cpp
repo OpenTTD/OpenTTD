@@ -143,6 +143,7 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 			switch (c) {
 			case 0: // end of line
 				x = 0;
+				if (y == 0) return false;
 				pixel = &data->bitmap[--y * info->width];
 				break;
 			case 1: // end of bitmap
@@ -153,7 +154,7 @@ static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 			case 2: // delta
 				x += ReadByte(buffer);
 				i = ReadByte(buffer);
-				if (x >= info->width || (y == 0 && i > 0)) return false;
+				if (x >= info->width || i > y) return false;
 				y -= i;
 				pixel = &data->bitmap[y * info->width + x];
 				break;
@@ -226,6 +227,7 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 			switch (c) {
 			case 0: // end of line
 				x = 0;
+				if (y == 0) return false;
 				pixel = &data->bitmap[--y * info->width];
 				break;
 			case 1: // end of bitmap
@@ -236,13 +238,16 @@ static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 			case 2: // delta
 				x += ReadByte(buffer);
 				i = ReadByte(buffer);
-				if (x >= info->width || (y == 0 && i > 0)) return false;
+				if (x >= info->width || i > y) return false;
 				y -= i;
 				pixel = &data->bitmap[y * info->width + x];
 				break;
 			default: // uncompressed
-				if ((x += c) > info->width) return false;
-				for (i = 0; i < c; i++) *pixel++ = ReadByte(buffer);
+				for (i = 0; i < c; i++) {
+					if (EndOfBuffer(buffer) || x >= info->width) return false;
+					*pixel++ = ReadByte(buffer);
+					x++;
+				}
 				/* Padding for 16 bit align */
 				SkipBytes(buffer, c % 2);
 				break;
