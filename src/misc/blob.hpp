@@ -260,6 +260,7 @@ public:
 		if (Capacity() >= new_size) return;
 		/* calculate minimum block size we need to allocate
 		 * and ask allocation policy for some reasonable block size */
+		assert(new_size < SIZE_MAX - header_size - tail_reserve);
 		new_size = AllocPolicy(header_size + new_size + tail_reserve);
 
 		/* allocate new block and setup header */

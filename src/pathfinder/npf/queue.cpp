@@ -234,6 +234,9 @@ void Hash::Init(Hash_HashProc *hash, uint num_buckets)
 	/* Allocate space for the Hash, the buckets and the bucket flags */
 	uint i;
 
+	/* Ensure the size won't overflow. */
+	assert(num_buckets < SIZE_MAX / (sizeof(*this->buckets) + sizeof(*this->buckets_in_use)));
+
 	this->hash = hash;
 	this->size = 0;
 	this->num_buckets = num_buckets;

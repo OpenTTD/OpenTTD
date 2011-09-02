@@ -42,6 +42,9 @@ static FORCEINLINE T *MallocT(size_t num_elements)
 	 */
 	if (num_elements == 0) return NULL;
 
+	/* Ensure the size does not overflow. */
+	if (num_elements > SIZE_MAX / sizeof(T)) MallocError(SIZE_MAX);
+
 	T *t_ptr = (T*)malloc(num_elements * sizeof(T));
 	if (t_ptr == NULL) MallocError(num_elements * sizeof(T));
 	return t_ptr;
@@ -96,12 +99,17 @@ static FORCEINLINE T *ReallocT(T *t_ptr, size_t num_elements)
 		return NULL;
 	}
 
+	/* Ensure the size does not overflow. */
+	if (num_elements > SIZE_MAX / sizeof(T)) MallocError(SIZE_MAX);
+
 	t_ptr = (T*)realloc(t_ptr, num_elements * sizeof(T));
 	if (t_ptr == NULL) ReallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
 
 /** alloca() has to be called in the parent function, so define AllocaM() as a macro */
-#define AllocaM(T, num_elements) ((T*)alloca((num_elements) * sizeof(T)))
+#define AllocaM(T, num_elements) \
+	((num_elements) > SIZE_MAX / sizeof(T) && (MallocError(SIZE_MAX), NULL), \
+	(T*)alloca((num_elements) * sizeof(T)))
 
 #endif /* ALLOC_FUNC_HPP */

@@ -63,6 +63,10 @@
 #include <climits>
 #include <cassert>
 
+#ifndef SIZE_MAX
+	#define SIZE_MAX ((size_t)-1)
+#endif
+
 #if defined(UNIX) || defined(__MINGW32__)
 	#include <sys/types.h>
 #endif
