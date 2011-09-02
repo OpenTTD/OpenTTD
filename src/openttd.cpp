@@ -596,11 +596,12 @@ int ttd_main(int argc, char *argv[])
 
 	/*
 	 * The width and height must be at least 1 pixel and width times
-	 * height must still fit within a 32 bits integer, this way all
-	 * internal drawing routines work correctly.
+	 * height times bytes per pixel must still fit within a 32 bits
+	 * integer, even for 32 bpp video modes. This way all internal
+	 * drawing routines work correctly.
 	 */
-	_cur_resolution.width  = ClampU(_cur_resolution.width,  1, UINT16_MAX);
-	_cur_resolution.height = ClampU(_cur_resolution.height, 1, UINT16_MAX);
+	_cur_resolution.width  = ClampU(_cur_resolution.width,  1, UINT16_MAX / 2);
+	_cur_resolution.height = ClampU(_cur_resolution.height, 1, UINT16_MAX / 2);
 
 	/* enumerate language files */
 	InitializeLanguagePacks();

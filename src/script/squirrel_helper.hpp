@@ -118,6 +118,9 @@ namespace SQConvert {
 
 	template <> inline Array      *GetParam(ForceType<Array *>,      HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
 	{
+		/* Sanity check of the size. */
+		if (sq_getsize(vm, index) > UINT16_MAX) throw sq_throwerror(vm, _SC("an array used as parameter to a function is too large"));
+
 		SQObject obj;
 		sq_getstackobj(vm, index, &obj);
 		sq_pushobject(vm, obj);

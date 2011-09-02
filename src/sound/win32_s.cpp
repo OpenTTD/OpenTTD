@@ -63,7 +63,9 @@ const char *SoundDriver_Win32::Start(const char * const *parm)
 	wfex.nBlockAlign = (wfex.nChannels * wfex.wBitsPerSample) / 8;
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
+	/* Limit buffer size to prevent overflows. */
 	_bufsize = GetDriverParamInt(parm, "bufsize", (GB(GetVersion(), 0, 8) > 5) ? 8192 : 4096);
+	_bufsize = min(_bufsize, UINT16_MAX);
 
 	try {
 		if (NULL == (_event = CreateEvent(NULL, FALSE, FALSE, NULL))) throw "Failed to create event";

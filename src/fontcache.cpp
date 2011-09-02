@@ -1034,6 +1034,9 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	width  = max(1, slot->bitmap.width + (size == FS_NORMAL));
 	height = max(1, slot->bitmap.rows  + (size == FS_NORMAL));
 
+	/* Limit glyph size to prevent overflows later on. */
+	if (width > 256 || height > 256) usererror("Font glyph is too large");
+
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
 	sprite.AllocateData(width * height);
 	sprite.width = width;
