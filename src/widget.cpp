@@ -1996,19 +1996,19 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 
 		case WWT_STICKYBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_STICKYBOX_WIDTH, 14);
+			this->SetMinimalSize(WD_STICKYBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_STICKY);
 			break;
 
 		case WWT_SHADEBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_SHADEBOX_TOP, 14);
+			this->SetMinimalSize(WD_SHADEBOX_TOP, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_SHADE);
 			break;
 
 		case WWT_DEBUGBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_DEBUGBOX_TOP, 14);
+			this->SetMinimalSize(WD_DEBUGBOX_TOP, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEBUG);
 			break;
 
@@ -2020,7 +2020,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 
 		case WWT_CLOSEBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_CLOSEBOX_WIDTH, 14);
+			this->SetMinimalSize(WD_CLOSEBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW);
 			break;
 
