@@ -450,6 +450,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura ampliad
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar as caixas envolventes
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

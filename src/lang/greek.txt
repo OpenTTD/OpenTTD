@@ -1210,8 +1210,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Μέγ�
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ποσότητα καπνού/σπινθύρων οχήματος: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Μοντέλο επιτάχυνσης οχημάτων δρόμου: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Υπερβολική κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Υπερβολική κλίση για τα οχήματα δρόμου {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Κλίση γραμμης για τρένων: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Κλίση για οχήματα δρόμου: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στα τρένα και πλοια να κάνουν στροφες 90°: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
@@ -3291,12 +3291,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Στάση
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Παράλειψη αυτής της εντολής εκτός αν χρειάζεται επισκευή
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Δεδομένα οχήματος για να γίνει άλμα
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :{G=n}Ποσοστό φόρτωσης
 STR_ORDER_CONDITIONAL_RELIABILITY                               :{G=f}Αξιοπιστία
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :{G=f}Μέγιστη ταχύτητα
-STR_ORDER_CONDITIONAL_AGE                                       :{G=f}Ηλικία οχήματος (χρόνια)
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Μέγιστη ταχύτητα
+STR_ORDER_CONDITIONAL_AGE                                       :{G=f}Ηλικία (χρόνια)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Απαιτεί επισκευή
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Πάντα
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Υπόλοιπη διάρκεια ζωής (χρόνια)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Πως να συγκρίνετε τα δεδομένα του οχήματος με την δοσμένη τιμή
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :είναι ίσο με

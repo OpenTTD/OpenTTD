@@ -2110,7 +2110,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}آیا �
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}طراحی مشخصات شهر ها
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}شهر جدید
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ساختن شهر جدید
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}شهر صادفی
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}شهر تصادفی
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}شهری در مکانی تصادفی بساز
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}تعدادی شهر با محل و جمعیت تصادفی
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}پوشاندن نقشه با شهرهای تصادفی
@@ -2222,6 +2222,7 @@ STR_LAI_ROAD_DESCRIPTION_ROAD                                   :جاده
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :جاده با چراغ راهنمایی رانندگی
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :جاده 3 لاین
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :گاراژ خودروی جاده ای
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :سطح عبور راه / راه آهن
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :راه تراموا
 
 # Houses come directly from their building names
@@ -2254,13 +2255,23 @@ STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :تونل ماش
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :پل معلق راه آهن فولادی
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :پل راه آهن با شاه تیر فولادی
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :پل راه آهن پایه فولادی
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :پل معلق راه آهن با بتون مسلح
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :پل راه آهن چوبی
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :پل راه آهن بتونی
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :پل لوله ای راه آهن
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :پل معلق فولادی
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :پل شاه تیر فولادی
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :پل پایه فولادی
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :پل معلق با بتون تقویت شده
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :پل ماشین رو چوبی
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :پل بتونی
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :پل جاده ای لوله ای
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :مجرای آب
 
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :فرستنده
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :فانوس دریایی
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :ساختمان اصلی شرکت
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :زمین خریداری شده
@@ -2274,15 +2285,39 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}ذخیره ی بازی
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}ادامه ی بازی
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}ذخیره سناریو
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}بارگذاری سناریو
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}بارگذاری نقشه پستی/بلندی
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}ذخیره Heightmap
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}برای برگشت به پوشه پیش فرض ذخیره اینجا را کلیک کنید
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} فضای آزاد
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}لیست درایو ها، پوشه ها و بازی های ذخیره شده
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}نام فعلی انتخاب شده برای ذخیره بازی
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}حذف
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}فایل ذخیره بازی انتخاب شده را پاک کن
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}ذخیره
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}ذخیره بازی با نام انتخاب شده
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}بارگذاری
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}بارگذاری بازی انتخاب شده
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}جزییات بازی
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}هیچ اطلاعاتی در دسترس نیست
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}نام فایل ذخیره بازی را وارد کنید
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}سازنده دنیا
 STR_MAPGEN_MAPSIZE                                              :{BLACK}اندازه نقشه:
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}تعداد شهرها:
+STR_MAPGEN_DATE                                                 :{BLACK}تاریخ:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}تعداد صنایع:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}ارتفاع خط برف:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}اضافه کردن یک واحد به ارتفاع خط برف
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}کم کردن یک واحد به ارتفاع خط برف
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}شماره ساخت تصادفی:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}برای وارد کردن شماره تصادفی کلیک کنید
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}رودخانه ها:
 
 # Strings for map borders at game generation
