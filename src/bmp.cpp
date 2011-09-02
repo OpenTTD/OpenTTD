@@ -130,54 +130,63 @@ static inline bool BmpRead4(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
  */
 static inline bool BmpRead4Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
-	uint i;
 	uint x = 0;
 	uint y = info->height - 1;
-	byte n, c, b;
 	byte *pixel = &data->bitmap[y * info->width];
 	while (y != 0 || x < info->width) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
-		n = ReadByte(buffer);
-		c = ReadByte(buffer);
+
+		byte n = ReadByte(buffer);
+		byte c = ReadByte(buffer);
 		if (n == 0) {
 			switch (c) {
-			case 0: // end of line
-				x = 0;
-				if (y == 0) return false;
-				pixel = &data->bitmap[--y * info->width];
-				break;
-			case 1: // end of bitmap
-				x = info->width;
-				y = 0;
-				pixel = NULL;
-				break;
-			case 2: // delta
-				x += ReadByte(buffer);
-				i = ReadByte(buffer);
-				if (x >= info->width || i > y) return false;
-				y -= i;
-				pixel = &data->bitmap[y * info->width + x];
-				break;
-			default: // uncompressed
-				i = 0;
-				while (i++ < c) {
-					if (EndOfBuffer(buffer) || x >= info->width) return false;
-					b = ReadByte(buffer);
-					*pixel++ = GB(b, 4, 4);
-					x++;
-					if (x < info->width && i++ < c) {
-						*pixel++ = GB(b, 0, 4);
-						x++;
-					}
+				case 0: // end of line
+					x = 0;
+					if (y == 0) return false;
+					pixel = &data->bitmap[--y * info->width];
+					break;
+
+				case 1: // end of bitmap
+					return true;
+
+				case 2: { // delta
+					if (EndOfBuffer(buffer)) return false;
+					byte dx = ReadByte(buffer);
+					byte dy = ReadByte(buffer);
+
+					/* Check for over- and underflow. */
+					if (x + dx >= info->width || x + dx < x || dy > y) return false;
+
+					x += dx;
+					y -= dy;
+					pixel = &data->bitmap[y * info->width + x];
+					break;
 				}
-				/* Padding for 16 bit align */
-				SkipBytes(buffer, ((c + 1) / 2) % 2);
-				break;
+
+				default: { // uncompressed
+					uint i = 0;
+					while (i++ < c) {
+						if (EndOfBuffer(buffer) || x >= info->width) return false;
+						byte b = ReadByte(buffer);
+						*pixel++ = GB(b, 4, 4);
+						x++;
+						if (i++ < c) {
+							if (x >= info->width) return false;
+							*pixel++ = GB(b, 0, 4);
+							x++;
+						}
+					}
+					/* Padding for 16 bit align */
+					SkipBytes(buffer, ((c + 1) / 2) % 2);
+					break;
+				}
 			}
 		} else {
-			i = 0;
-			while (i++ < n) {
-				if (EndOfBuffer(buffer) || x >= info->width) return false;
+			/* Apparently it is common to encounter BMPs where the count of
+			 * pixels to be written is higher than the remaining line width.
+			 * Ignore the superfluous pixels instead of reporting an error. */
+			uint i = 0;
+			while (x < info->width && i++ < n) {
 				*pixel++ = GB(c, 4, 4);
 				x++;
 				if (x < info->width && i++ < n) {
@@ -214,47 +223,55 @@ static inline bool BmpRead8(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
  */
 static inline bool BmpRead8Rle(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
-	uint i;
 	uint x = 0;
 	uint y = info->height - 1;
-	byte n, c;
 	byte *pixel = &data->bitmap[y * info->width];
 	while (y != 0 || x < info->width) {
 		if (EndOfBuffer(buffer)) return false; // the file is shorter than expected
-		n = ReadByte(buffer);
-		c = ReadByte(buffer);
+
+		byte n = ReadByte(buffer);
+		byte c = ReadByte(buffer);
 		if (n == 0) {
 			switch (c) {
-			case 0: // end of line
-				x = 0;
-				if (y == 0) return false;
-				pixel = &data->bitmap[--y * info->width];
-				break;
-			case 1: // end of bitmap
-				x = info->width;
-				y = 0;
-				pixel = NULL;
-				break;
-			case 2: // delta
-				x += ReadByte(buffer);
-				i = ReadByte(buffer);
-				if (x >= info->width || i > y) return false;
-				y -= i;
-				pixel = &data->bitmap[y * info->width + x];
-				break;
-			default: // uncompressed
-				for (i = 0; i < c; i++) {
-					if (EndOfBuffer(buffer) || x >= info->width) return false;
-					*pixel++ = ReadByte(buffer);
-					x++;
+				case 0: // end of line
+					x = 0;
+					if (y == 0) return false;
+					pixel = &data->bitmap[--y * info->width];
+					break;
+
+				case 1: // end of bitmap
+					return true;
+
+				case 2: { // delta
+					if (EndOfBuffer(buffer)) return false;
+					byte dx = ReadByte(buffer);
+					byte dy = ReadByte(buffer);
+
+					/* Check for over- and underflow. */
+					if (x + dx >= info->width || x + dx < x || dy > y) return false;
+
+					x += dx;
+					y -= dy;
+					pixel = &data->bitmap[y * info->width + x];
+					break;
 				}
-				/* Padding for 16 bit align */
-				SkipBytes(buffer, c % 2);
-				break;
+
+				default: { // uncompressed
+					for (uint i = 0; i < c; i++) {
+						if (EndOfBuffer(buffer) || x >= info->width) return false;
+						*pixel++ = ReadByte(buffer);
+						x++;
+					}
+					/* Padding for 16 bit align */
+					SkipBytes(buffer, c % 2);
+					break;
+				}
 			}
 		} else {
-			for (i = 0; i < n; i++) {
-				if (x >= info->width) return false;
+			/* Apparently it is common to encounter BMPs where the count of
+			 * pixels to be written is higher than the remaining line width.
+			 * Ignore the superfluous pixels instead of reporting an error. */
+			for (uint i = 0; x < info->width && i < n; i++) {
 				*pixel++ = c;
 				x++;
 			}
