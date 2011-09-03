@@ -355,7 +355,7 @@ int Train::GetCurveSpeedLimit() const
 			if (lastpos != -1) {
 				numcurve++;
 				sum += pos - lastpos;
-				if (pos - lastpos == 1) {
+				if (pos - lastpos == 1 && max_speed > 88) {
 					max_speed = 88;
 				}
 			}
