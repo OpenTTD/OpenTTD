@@ -339,6 +339,7 @@ assert_compile(sizeof(uint64) == 8);
 assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);
 assert_compile(sizeof(uint8)  == 1);
+assert_compile(SIZE_MAX >= UINT32_MAX);
 
 #ifndef M_PI_2
 #define M_PI_2 1.57079632679489661923

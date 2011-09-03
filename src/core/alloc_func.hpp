@@ -23,6 +23,29 @@ void NORETURN MallocError(size_t size);
 void NORETURN ReallocError(size_t size);
 
 /**
+ * Checks whether allocating memory would overflow size_t.
+ *
+ * @param element_size Size of the structure to allocate.
+ * @param num_elements Number of elements to allocate.
+ */
+static inline void CheckAllocationConstraints(size_t element_size, size_t num_elements)
+{
+	if (num_elements > SIZE_MAX / element_size) MallocError(SIZE_MAX);
+}
+
+/**
+ * Checks whether allocating memory would overflow size_t.
+ *
+ * @tparam T Structure to allocate.
+ * @param num_elements Number of elements to allocate.
+ */
+template <typename T>
+static inline void CheckAllocationConstraints(size_t num_elements)
+{
+	CheckAllocationConstraints(sizeof(T), num_elements);
+}
+
+/**
  * Simplified allocation function that allocates the specified number of
  * elements of the given type. It also explicitly casts it to the requested
  * type.
@@ -43,7 +66,7 @@ static FORCEINLINE T *MallocT(size_t num_elements)
 	if (num_elements == 0) return NULL;
 
 	/* Ensure the size does not overflow. */
-	if (num_elements > SIZE_MAX / sizeof(T)) MallocError(SIZE_MAX);
+	CheckAllocationConstraints<T>(num_elements);
 
 	T *t_ptr = (T*)malloc(num_elements * sizeof(T));
 	if (t_ptr == NULL) MallocError(num_elements * sizeof(T));
@@ -100,7 +123,7 @@ static FORCEINLINE T *ReallocT(T *t_ptr, size_t num_elements)
 	}
 
 	/* Ensure the size does not overflow. */
-	if (num_elements > SIZE_MAX / sizeof(T)) MallocError(SIZE_MAX);
+	CheckAllocationConstraints<T>(num_elements);
 
 	t_ptr = (T*)realloc(t_ptr, num_elements * sizeof(T));
 	if (t_ptr == NULL) ReallocError(num_elements * sizeof(T));
@@ -109,7 +132,7 @@ static FORCEINLINE T *ReallocT(T *t_ptr, size_t num_elements)
 
 /** alloca() has to be called in the parent function, so define AllocaM() as a macro */
 #define AllocaM(T, num_elements) \
-	((num_elements) > SIZE_MAX / sizeof(T) && (MallocError(SIZE_MAX), NULL), \
+	(CheckAllocationConstraints<T>(num_elements), \
 	(T*)alloca((num_elements) * sizeof(T)))
 
 #endif /* ALLOC_FUNC_HPP */

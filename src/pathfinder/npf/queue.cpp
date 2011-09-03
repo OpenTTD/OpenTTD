@@ -235,7 +235,7 @@ void Hash::Init(Hash_HashProc *hash, uint num_buckets)
 	uint i;
 
 	/* Ensure the size won't overflow. */
-	assert(num_buckets < SIZE_MAX / (sizeof(*this->buckets) + sizeof(*this->buckets_in_use)));
+	CheckAllocationConstraints(sizeof(*this->buckets) + sizeof(*this->buckets_in_use), num_buckets);
 
 	this->hash = hash;
 	this->size = 0;
