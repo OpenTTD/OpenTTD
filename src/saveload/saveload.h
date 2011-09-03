@@ -15,12 +15,6 @@
 #include "../fileio_type.h"
 #include "../strings_type.h"
 
-#ifdef SIZE_MAX
-#undef SIZE_MAX
-#endif
-
-#define SIZE_MAX ((size_t)-1)
-
 /** Save or load result codes. */
 enum SaveOrLoadResult {
 	SL_OK     = 0, ///< completed successfully
