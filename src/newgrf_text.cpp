@@ -57,7 +57,7 @@ StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
 	};
 
 	/* A string straight from a NewGRF; no need to remap this as it's already mapped. */
-	if (IsInsideMM(str, 0xD000, 0xD7FF) || IsInsideMM(str, 0xDC00, 0xDCFF)) return str;
+	if (IsInsideMM(str, 0xD000, 0xD7FF)) return str;
 
 #define TEXTID_TO_STRINGID(begin, end, stringid) if (str >= begin && str <= end) return str + (stringid - begin)
 	/* We have some changes in our cargo strings, resulting in some missing. */
