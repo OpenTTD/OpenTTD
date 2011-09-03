@@ -63,6 +63,10 @@
 #include <climits>
 #include <cassert>
 
+#ifndef SIZE_MAX
+	#define SIZE_MAX ((size_t)-1)
+#endif
+
 #if defined(UNIX) || defined(__MINGW32__)
 	#include <sys/types.h>
 #endif
@@ -335,6 +339,7 @@ assert_compile(sizeof(uint64) == 8);
 assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);
 assert_compile(sizeof(uint8)  == 1);
+assert_compile(SIZE_MAX >= UINT32_MAX);
 
 #ifndef M_PI_2
 #define M_PI_2 1.57079632679489661923

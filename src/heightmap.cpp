@@ -142,13 +142,24 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 		return false;
 	}
 
+	uint width = png_get_image_width(png_ptr, info_ptr);
+	uint height = png_get_image_height(png_ptr, info_ptr);
+
+	/* Check if image dimensions don't overflow a size_t to avoid memory corruption. */
+	if ((uint64)width * height >= (size_t)-1) {
+		ShowErrorMessage(STR_ERROR_PNGMAP, STR_ERROR_HEIGHTMAP_TOO_LARGE, WL_ERROR);
+		fclose(fp);
+		png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+		return false;
+	}
+
 	if (map != NULL) {
-		*map = MallocT<byte>(png_get_image_width(png_ptr, info_ptr) * png_get_image_height(png_ptr, info_ptr));
+		*map = MallocT<byte>(width * height);
 		ReadHeightmapPNGImageData(*map, png_ptr, info_ptr);
 	}
 
-	*x = png_get_image_width(png_ptr, info_ptr);
-	*y = png_get_image_height(png_ptr, info_ptr);
+	*x = width;
+	*y = height;
 
 	fclose(fp);
 	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
@@ -238,6 +249,14 @@ static bool ReadHeightmapBMP(char *filename, uint *x, uint *y, byte **map)
 
 	if (!BmpReadHeader(&buffer, &info, &data)) {
 		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_BMPMAP_IMAGE_TYPE, WL_ERROR);
+		fclose(f);
+		BmpDestroyData(&data);
+		return false;
+	}
+
+	/* Check if image dimensions don't overflow a size_t to avoid memory corruption. */
+	if ((uint64)info.width * info.height >= (size_t)-1 / (info.bpp == 24 ? 3 : 1)) {
+		ShowErrorMessage(STR_ERROR_BMPMAP, STR_ERROR_HEIGHTMAP_TOO_LARGE, WL_ERROR);
 		fclose(f);
 		BmpDestroyData(&data);
 		return false;

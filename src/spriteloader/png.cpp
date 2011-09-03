@@ -106,9 +106,21 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 			if (strcmp("y_offs", text_ptr[i].key) == 0) sprite->y_offs = strtol(text_ptr[i].text, NULL, 0);
 		}
 
-		sprite->height = png_get_image_height(png_ptr, info_ptr);
-		sprite->width  = png_get_image_width(png_ptr, info_ptr);
+		uint height = png_get_image_height(png_ptr, info_ptr);
+		uint width  = png_get_image_width(png_ptr, info_ptr);
+		/* Check if sprite dimensions aren't larger than what is allowed in GRF-files. */
+		if (height > UINT8_MAX || width > UINT16_MAX) {
+			png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
+			return false;
+		}
+		sprite->height = height;
+		sprite->width  = width;
 		sprite->AllocateData(sprite->width * sprite->height);
+	} else if (sprite->height != png_get_image_height(png_ptr, info_ptr) || sprite->width != png_get_image_width(png_ptr, info_ptr)) {
+		/* Make sure the mask image isn't larger than the sprite image. */
+		DEBUG(misc, 0, "Ignoring mask for SpriteID %d as it isn't the same dimension as the masked sprite", id);
+		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
+		return true;
 	}
 
 	bit_depth  = png_get_bit_depth(png_ptr, info_ptr);
@@ -116,6 +128,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 
 	if (mask && (bit_depth != 8 || colour_type != PNG_COLOR_TYPE_PALETTE)) {
 		DEBUG(misc, 0, "Ignoring mask for SpriteID %d as it isn't a 8 bit palette image", id);
+		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 		return true;
 	}
 

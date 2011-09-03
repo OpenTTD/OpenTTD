@@ -198,6 +198,8 @@ public:
 	FORCEINLINE void Include(T *new_item)
 	{
 		if (this->IsFull()) {
+			assert(this->capacity < UINT_MAX / 2);
+
 			this->capacity *= 2;
 			this->data = ReallocT<T*>(this->data, this->capacity + 1);
 		}
