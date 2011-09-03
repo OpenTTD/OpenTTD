@@ -15,6 +15,7 @@
 #include "../mixer.h"
 #include "../core/alloc_func.hpp"
 #include "../core/bitmath_func.hpp"
+#include "../core/math_func.hpp"
 #include "win32_s.h"
 #include <windows.h>
 #include <mmsystem.h>
