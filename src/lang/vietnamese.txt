@@ -3452,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... có 
 STR_ERROR_BMPMAP                                                :{WHITE}Không thể nạp nền từ file BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... không thể chuyển đổi kiểu ảnh.
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... ảnh quá lớn
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Sai tỉ lệ bản đồ
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Co dãn bản đồ gốc quá nhiều là không nên làm. Bạn vẫn cứ thực hiện chứ?
 

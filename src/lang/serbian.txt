@@ -3663,6 +3663,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... neš
 STR_ERROR_BMPMAP                                                :{WHITE}Ne može se naparaviti reljef iz BMP slike...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ne može se preraditi vrsta slike
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... slika je previše velika
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozorenje o veličini
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Preterana promena veličine karte nije preporučljiva. Da li da se nastavi generisanje?
 

@@ -3638,6 +3638,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... чт
 STR_ERROR_BMPMAP                                                :{WHITE}Не удалось загрузить ландшафт из BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... невозможно преобразовать изображение
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... изображение слишком большое
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Выход за пределы доступных значений
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Изменение размеров исходной карты до таких значений не рекомендуется. Продолжить?
 

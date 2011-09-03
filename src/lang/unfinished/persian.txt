@@ -112,7 +112,7 @@ STR_QUANTITY_FRUIT                                              :{WEIGHT} میو
 STR_QUANTITY_DIAMONDS                                           :{COMMA} بسته{P "" های} الماس
 STR_QUANTITY_FOOD                                               :{WEIGHT} غذا
 STR_QUANTITY_PAPER                                              :{WEIGHT} کاغذ
-STR_QUANTITY_GOLD                                               :{COMMA} بسته{P "" s} طلا
+STR_QUANTITY_GOLD                                               :{COMMA} بسته‌ی طلا
 STR_QUANTITY_WATER                                              :{VOLUME} آب
 STR_QUANTITY_WHEAT                                              :{WEIGHT} گندم
 STR_QUANTITY_RUBBER                                             :{VOLUME} کائوچو
@@ -339,7 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}قرار
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :ذخیره سناریو
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :بارگزاری سناریو
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :ذخیره heightmap
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :بارگزاری heightmap
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :بارگزاری نقشه پستی/بلندی
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :خارج شدن از محیط طراحی
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
@@ -2315,23 +2315,95 @@ STR_MAPGEN_DATE                                                 :{BLACK}تاری
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}تعداد صنایع:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}ارتفاع خط برف:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}اضافه کردن یک واحد به ارتفاع خط برف
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}کم کردن یک واحد به ارتفاع خط برف
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}کم کردن یک واحد از ارتفاع خط برف
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}شماره ساخت تصادفی:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}برای وارد کردن شماره تصادفی کلیک کنید
+STR_MAPGEN_RANDOM                                               :{BLACK}انتخاب تصادفی
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}شماره ساخت تصادفی برای ساخت زمین و پستی و بلندی ها به کار می رود
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}سازنده زمین:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}الگوریتم درخت ها:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}نوع پستی/بلندی:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}سطح دریا:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}رودخانه ها:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}همواری:
+STR_MAPGEN_VARIETY                                              :{BLACK}توزیع انواع:
+STR_MAPGEN_GENERATE                                             :{WHITE}بساز
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}لبه های نقشه:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}شمال غربی
+STR_MAPGEN_NORTHEAST                                            :{BLACK}شمال شرقی
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}جنوب شرقی
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}جنوب غربی
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}قالب آزاد
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}دریا
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}تصادفی
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}تصادفی
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}دستی
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}جهت چرخش نقشه پستی/بلندی:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}نام نقشه پستی/بلندی:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}اندازه:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}یک عدد تصادفی وارد کنید
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}تغییر ارتفاع خط برف
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}تغییر سال آغاز
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}نوع سناریو
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}زمین تخت
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}یک زمین تخت بساز
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}زمین تصادفی
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}ارتفاع زمین تخت:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}کم کردن بک واحد از ارتفاع زمین تخت
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}اضافه کردن بک واحد به ارتفاع زمین تخت
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}تغییر ارتفاع زمین تخت
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}درحال ساخت دنیا...
+STR_GENERATION_ABORT                                            :{BLACK}لغو
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}لغو ساخت دنیا
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}آیا مطمئنید که می خواهید روند ساخت را متوقف کنید؟
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% کامل شده
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}ساختن دنیا
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ساخت رودخانه
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}ساختن درخت
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}ساختن اشیاء
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}ساختن مناطق ناهموار و صخره ها
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}راه اندازی بازی
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}اجرای حلقه قطعه ها
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}آماده سازی بازی
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}تنظیمات NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}اطلاعات مفصل NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}فایل های NewGRF فعال
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}فایل های NewGRF غیر فعال
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}انتخاب موارد ثبت شده:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}جستجوی کلمه:
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}مورد از پیش ثبت شده ای که انتخاب شده را بارگذاری می کند
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}ذخیره به عنوان مورد از پیش ثبت شده
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}لیست فعلی را به عنوان موارد از پیش ثبت شده ذخیره کن
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}نام برای موارد از پیش ثبت شده
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}پاک کردن مورد از پیش ثبت شده
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}مورد از پیش ثبت شده ای که انتخاب شده را پاک می کند
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}اضافه
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}NewGRF انتخاب شده را به پیکربندی بازی اضافه می کند
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}بازبینی فایل ها
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}به روز رسانی لیست فایل های NewGRF در دسترس
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}حذف
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}NewGRF انتخاب شده را از پیکربندی بازی حذف می کند
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}حرکت به بالا
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF انتخاب شده را به بالا می فرستد
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}حرکت به پایین
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF انتخاب شده را به پایین می فرستد
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}لیست فایل های NewGRF نصب شده. روی فایل کلیک کنید تا پارامترها را بتوانید تغییر بدهید
 
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ثبت پارامترها
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}تغییر پالت
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}یافتن مجموعه ای که کم است در اینترنت
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه
@@ -2829,6 +2901,8 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}بازی
 # Map generation messages
 
 
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}تصویر بسیار بزرگ است...
 
 
 # Soundset messages

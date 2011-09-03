@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :显示城镇名
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :显示车站名称
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :显示路点
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :显示标志
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :显示其他公司放置的标志
 STR_SETTINGS_MENU_FULL_ANIMATION                                :完全动画
 STR_SETTINGS_MENU_FULL_DETAIL                                   :完全细节
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :透明建筑
@@ -1057,6 +1058,11 @@ STR_SEA_LEVEL_HIGH                                              :高
 STR_SEA_LEVEL_CUSTOM                                            :自定义
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :自定义 ({NUM}%)
 
+STR_RIVERS_NONE                                                 :没有
+STR_RIVERS_FEW                                                  :较少
+STR_RIVERS_MODERATE                                             :一些
+STR_RIVERS_LOT                                                  :布满
+
 STR_DISASTER_NONE                                               :没有
 STR_DISASTER_REDUCED                                            :较少
 STR_DISASTER_NORMAL                                             :正常
@@ -1392,6 +1398,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GR
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}显示AI设定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
+
+STR_INTRO_TRANSLATION                                           :{BLACK}中文语言版本缺失了 {NUM} 条翻译。 请注册成为翻译人员，以帮助OpenTTD发展。详见readme.txt。
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}退出
@@ -2311,6 +2319,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}生成�
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}生成树木：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形特点：
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海洋面积：
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流数量:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}平滑度：
 STR_MAPGEN_VARIETY                                              :{BLACK}多样的分发：
 STR_MAPGEN_GENERATE                                             :{WHITE}生成
@@ -2355,6 +2364,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}确定�
 STR_GENERATION_PROGRESS                                         :{WHITE}已完成 {NUM}%
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}地图生成
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}生成河流
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}生成树木
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}生成固定设施
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}生成岩石地貌
@@ -2470,6 +2480,8 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含复数的
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :读取最后的伪 Sprite 结尾
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
 STR_NEWGRF_ERROR_GRM_FAILED                                     :所必需的GRF资源不可用
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} 被 {4:STRING} 禁用
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :非法的/未知的 sprite 输出格式
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
@@ -2505,6 +2517,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <invalid cargo>
 STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicle model>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}正在扫描 NewGRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}正在扫描 NewGRF。 这可能需要一些时间，取决于其数量...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}已扫描{NUM}个 NewGRF，预计 NewGRF总数为 {NUM}
+STR_NEWGRF_SCAN_ARCHIVES                                        :正在扫描压缩包
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} 个标志
@@ -2813,6 +2831,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :购买飞机
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK} 重量：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}在海洋上的速度： {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}在河流上的速度： {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}运行费用：{GOLD}{CURRENCY}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}运载能力：{GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(可改装)
@@ -3111,6 +3131,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}运力�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO}{}{BLACK}改装费用：{GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}改装所需： {GOLD}{CURRENCY}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}请选择要改装的车辆. 拖动鼠标可多选.点击空白区域选择整辆列车. Ctrl+左键 选定该车厢及其之后车厢。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
@@ -3172,12 +3193,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :停留
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}除非需要在此处保养，否则跳过这一项目
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳过所需的车辆数据值
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :装载进度
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠性
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最大速度
 STR_ORDER_CONDITIONAL_AGE                                       :寿命(年)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要维修
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :总是
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :剩余寿命年限 (年)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}如何比较车辆数据值与所给数据
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :等于
@@ -3422,6 +3446,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}似乎�
 STR_ERROR_BMPMAP                                                :{WHITE}无法从 BMP 文件中读取场景……
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}不能转换图像格式。
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... 图像太大了
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}缩放警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
 
@@ -3515,6 +3541,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}只能�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}只能在低海拔区域建设……
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}只能被放置在地图边缘……
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}林场只能设置在雪线以上的地方……
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 只能在雪线以上建造
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 只能在雪线以下建造
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}不能在这里建设火车站……
@@ -3636,6 +3664,8 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}不能�
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}不能在这里加设河流...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}必须在水上建造……
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}不能在水上建造……
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... 不能在运河上建设
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... 不能在河流上建造……
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}请先移除运河
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}无法在此建设水渠……
 

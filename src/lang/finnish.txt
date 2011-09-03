@@ -3452,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... tapa
 STR_ERROR_BMPMAP                                                :{WHITE}Maastoa ei voida ladata BMP-tiedostosta...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kuvan tyyppiä ei voitu muuntaa
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... kuva on liian suuri
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Mittakaava-varoitus
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
 

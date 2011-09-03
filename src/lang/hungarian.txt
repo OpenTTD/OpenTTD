@@ -2591,6 +2591,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen 
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ek beolvasása
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF-ek beolvasása. Mennyiségtől függően eltarthat egy ideig...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF beolvasva kb. {NUM} NewGRF közül
+STR_NEWGRF_SCAN_ARCHIVES                                        :Archív fájlok keresése
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
@@ -2899,6 +2900,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Új repülőgé
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Sebesség: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Sebesség óceánon: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Sebesség folyón/csatornán: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Üzemeltetés: {GOLD}{CURRENCY}/év
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitás: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(átalakítható)
@@ -3259,12 +3262,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Utasítás kihagyása, ha javítás szükséges
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Rakomány százaléka
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Megbízhatóság
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximális sebesség
-STR_ORDER_CONDITIONAL_AGE                                       :Életkor (év)
+STR_ORDER_CONDITIONAL_AGE                                       :Kor (év)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Javításra szorul
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Mindig
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Hátralévő élettartam (év)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan viszonyul a jármű kiválasztott adata a megadott értékhez
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egyenlő
@@ -3509,6 +3515,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... vala
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nem sikerült a térkép betöltése a BMP-ből...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nem sikerült a képtípust konvertálni
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... túl nagy a kép
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Átméretezési figyelmeztetés
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}A forrás térkép túlságosan nagy mértékű átméretezése nem javasolt. Folytatod mégis?

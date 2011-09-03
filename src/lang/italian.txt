@@ -3476,6 +3476,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... qual
 STR_ERROR_BMPMAP                                                :{WHITE}Impossibile caricare il terreno dal file BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... impossibile convertire il tipo di immagine
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... l'immagine è troppo ampia
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avviso scala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ridimensionare di molto l'heightmap sorgente non è consigliabile. Continuare con la generazione?
 

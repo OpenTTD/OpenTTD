@@ -3452,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... någ
 STR_ERROR_BMPMAP                                                :{WHITE}Kan inte ladda landskap från BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kunde inte konvertera bildformat
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... för stor bild
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala-varning
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}För stora storleksändringar av källkarta är inte rekomenderat. Fortsätt med generering?
 

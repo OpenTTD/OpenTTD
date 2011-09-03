@@ -3453,6 +3453,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algo
 STR_ERROR_BMPMAP                                                :{WHITE}No se pudo cargar mapa de alturas BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no se pudo convertir el tipo de imagen
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... la imagen es demasiado grande
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Alerta de escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Cambiar demasiado el tamaño del mapa de origen no está recomendado. ¿Desea continuar con la generación?
 
