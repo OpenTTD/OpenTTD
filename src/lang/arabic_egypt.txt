@@ -99,7 +99,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}راكب
 STR_QUANTITY_COAL                                               :{WEIGHT} من الفحم
 STR_QUANTITY_MAIL                                               :{COMMA} صندوق من البريد
 STR_QUANTITY_OIL                                                :{VOLUME} من النفط
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}رأس من الماشية
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}راس من الماشية
 STR_QUANTITY_GOODS                                              :{COMMA} قفص من البضائع
 STR_QUANTITY_GRAIN                                              :{WEIGHT} من الحبوب
 STR_QUANTITY_WOOD                                               :{WEIGHT} من الخشب
@@ -117,7 +117,7 @@ STR_QUANTITY_WATER                                              :{VOLUME} من �
 STR_QUANTITY_WHEAT                                              :{WEIGHT} من القمح
 STR_QUANTITY_RUBBER                                             :{VOLUME} من المطاط
 STR_QUANTITY_SUGAR                                              :{WEIGHT} من السكر
-STR_QUANTITY_TOYS                                               :{COMMA}الألعاب
+STR_QUANTITY_TOYS                                               :{COMMA}الالعاب
 STR_QUANTITY_SWEETS                                             :{COMMA} كيس من الحلويات
 STR_QUANTITY_COLA                                               :{VOLUME} من الكولا
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} من الحلاوة القطنية
@@ -338,6 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}وضع �
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :حفظ الخريطة
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :فتح خريطة
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :حفظ خريطة مرتفعات مصورة
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :فتح خريطة مرتفعات
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :خروج من المحرر
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -355,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :عرض اسما
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :عرض اسماء المحطات
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :عرض نقاط العبور
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :عرض العلامات
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :عرض علامات و اسماء المنافسين
 STR_SETTINGS_MENU_FULL_ANIMATION                                :تأثيرات متحركة كاملة
 STR_SETTINGS_MENU_FULL_DETAIL                                   :كل التفاصيل
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :مباني شفافة
@@ -447,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :صورة للش
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :صورة كبيرة لكامل الخريطة -Ctrl-G -
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :حول 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :موائم العفريتات
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :اضهار /اخفاء مربح الحوارات/الخيارات
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1056,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :عالي
 STR_SEA_LEVEL_CUSTOM                                            :مخصص
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :مخصص ({NUM}%)
 
+STR_RIVERS_NONE                                                 :بدون
+STR_RIVERS_FEW                                                  :قليلة
+STR_RIVERS_MODERATE                                             :متوسطة
+STR_RIVERS_LOT                                                  :كثيرة
+
 STR_DISASTER_NONE                                               :بدون
 STR_DISASTER_REDUCED                                            :قليل
 STR_DISASTER_NORMAL                                             :طبيعي
@@ -1223,6 +1231,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 �
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير - 31 - 12 - 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ايزو 31-12-2008
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}النوافذ القياسية للاضافة غير محددة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :نوافذ الدوس
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :نوافذ الوندوز
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}إيقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}عندمل توقف أسمح: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :لا تصرف
@@ -1340,6 +1352,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطا
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} مدن
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلي
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(مفضل)
 
@@ -1388,6 +1401,8 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} ابح�
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK} عرض اعدادات الذكاء الصناعي
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}اغلاق'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}هذة الترجمة تفتقد لـ {NUM}عبارات/عبارة. فضلا اجعل الترجمة افضل بالتسجيل في موقع الترجمة, اقرأ ملف المساعدة readme
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}انهاء
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}هل تود اغلاق النسخة المفتوحة و العودة لـ {STRING}?
@@ -1399,11 +1414,11 @@ STR_OSNAME_WINDOWS                                              :ويندوز
 STR_OSNAME_DOS                                                  :دوس
 STR_OSNAME_UNIX                                                 :يونكس
 STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_BEOS                                                 :بي أو أس
+STR_OSNAME_BEOS                                                 :بي او اس
 STR_OSNAME_HAIKU                                                :هايكو
-STR_OSNAME_MORPHOS                                              :مورف أو أس
-STR_OSNAME_AMIGAOS                                              :أميقا
-STR_OSNAME_OS2                                                  :أو أس/2
+STR_OSNAME_MORPHOS                                              :مورف او اس
+STR_OSNAME_AMIGAOS                                              :اميقا
+STR_OSNAME_OS2                                                  :او اس/2
 STR_OSNAME_SUNOS                                                :صن
 
 # Abandon game
@@ -2263,7 +2278,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :ارض مملو
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}حول النسخة المفتوحة
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}الحقوق الأصلية {COPYRIGHT} كريس سوير 1995 , جميع الحقوق محفوظة
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}الحقوق الاصلية {COPYRIGHT} كريس سوير 1995 , جميع الحقوق محفوظة
 STR_ABOUT_VERSION                                               :{BLACK}النسخة المفتوحة رقم {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}النسخة المفتوحة {COPYRIGHT}2002-2011 فريق النسخة المفتوحة
 
@@ -2273,6 +2288,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}فتح
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}حفظ خريطة
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}فتح خريطة
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}حمل خريطة مرتفعات
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}حفظ خريطة مرتفعات مصورة
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}اضغط هنا لتوجة الى دليل الحفظ/الفتح القياسي
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} متاح
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}قائمة بالاقراص - المجلدات - الملفات المخزنة
@@ -2308,6 +2324,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد
 STR_MAPGEN_TREE_PLACER                                          :{BLACK} لوغاريثم الشجر:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}مستوى البحر
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}انهار:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK} النعومة:
 STR_MAPGEN_VARIETY                                              :{BLACK}توزيع التنوع:
 STR_MAPGEN_GENERATE                                             :{WHITE}ولد
@@ -2352,6 +2369,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}هل ا
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% انتهى
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK} مولد الخريطة
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}مولد الانهار
 STR_GENERATION_TREE_GENERATION                                  :{BLACK} مولد الشجر
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}صانع الخامات
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}مولد المناطق الخشنة والصخرية
@@ -2466,6 +2484,9 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :يحتوي على اوامر متعددة - 8 مدخلات
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :خطأ في قرائة البرمجة
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}ملف الرسوم المستخدم حاليا يفتقد لبعض الرسوم الاساسية.{}الرجاء حدث ملف الرسوم.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :معلومات الاضافة غير متاحة
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING}تم تعطيلة بواسطة{4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :شبح/ ماكرو غير معروف
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}تحذير!
@@ -2501,6 +2522,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :؟؟
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} لـ<حمولة غير صالحة>
 STR_NEWGRF_INVALID_ENGINE                                       :<موديل العربة غير صالح>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<المصنع غير صالح>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}بحث اضافات جديدة
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}تحديث الاضافات. وقت البحث يعتمدعلى عدد الاضافات. من الممكن ان يستغرق وقتا اطول...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM}الاضافات الجديدة من {NUM}مجموع الاضافات
+STR_NEWGRF_SCAN_ARCHIVES                                        :البحث للارشيفات
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات - {COMMA} علامة
@@ -2809,6 +2836,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :طائرة جد
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK} التكلفة: {GOLD}{CURRENCY}{BLACK} الوزن: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}السرعة: {GOLD}{VELOCITY}{BLACK} الطاقة: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}السرعة: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}السرعة في المحيط: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}السرعة في القناة/النهر: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}تكلفة التشغيل: {GOLD}{CURRENCY}/ سنة
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}السعة: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :)قابل لتغيير(
@@ -3110,7 +3139,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}السع
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}السعة الجديدة: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}تكلفة اعادة التهيئة: {GOLD}{CURRENCY}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}اختر العربة لاعادة تهيئتها. اسحب بالفارة لاختيار عدة عربات. اضغط على مساحة خالية لاختيار كل العربات. اضغط + كنترول لاختيار العربة الحالية وما بعدها.
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}أختر نوع البضاعة لينقلها القطار
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}اختر نوع البضاعة لينقلها القطار
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK} اختر نوع حمولة العربة
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}اختر نوع الحمولة للسفينة
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}اختر نوع الحمولة للطائرة
@@ -3169,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :توقف
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}تجاوز هذا الامر الا اذا لم تكن الصيانة مطلوبة
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}بيانات العربة لتعريف التجاوز الى
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :نسبة التحميل
 STR_ORDER_CONDITIONAL_RELIABILITY                               :الصلاحية
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :السرعة القصوى
 STR_ORDER_CONDITIONAL_AGE                                       :عمر العربة - سنة
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :يحتاج صيانة
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :دائما
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :العمر الافتراضي المتبقي (سنة)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}كيف تقارن معلومات العربة لخاصية معينة.
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :يساوي لـ
@@ -3420,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}حدث �
 STR_ERROR_BMPMAP                                                :{WHITE}لا يمكن تحميل الخريطة من BMP ...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}لايمكن تحويل نوع الصورة...
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}الصورة ضخمة جدا ...
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}تحذير
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}اعادة تحجيم الخريطة المصدر كثيرا غير مستحسن. هل تريد اكمال توليد الخريطة؟
 
@@ -3514,6 +3548,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... يب
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... يمكن بنائه في المناطق المنخفضة فقط
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... يمكن بنائة على اطراف الخريطة فقط
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... يمكن زراعة الغابة فوق خط الثلج فقط
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}يمكن بنائة فوق خط الثلج فقط
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}يمكن بنائة تحت خط الثلج فقط
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}لا يمكن بناء محطة سكة حديد هنا ...
@@ -3635,6 +3671,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}لا ي�
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}لا يمكن وضع نهر هنا ...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}يجب ان يبنى في الماء
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... لا يمكن بنائة على الماء
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}لا يمكن بناءة في البحر المفتوح
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}لا يمكن بناءة على القناة
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}لا يمكن بنائة على النهر
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}يجب هدم القتاة اولا
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}لا يمكن بناء قناة مياة هنا ...
 
@@ -3733,6 +3772,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ال
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}لا يمكن عكس اتجاة القطار...
+STR_ERROR_TRAIN_START_NO_POWER                                  :ليس للقطار طاقة كافية
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}لا يمكن تغيير اتجاة المركبة الان
 
@@ -4224,6 +4264,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

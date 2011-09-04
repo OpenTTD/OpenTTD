@@ -519,6 +519,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Přiblíženo n
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot celé mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Zarovnávání spritů
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Přepnout ohraničení
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1140,6 +1141,8 @@ STR_SEA_LEVEL_HIGH                                              :vysoká
 STR_SEA_LEVEL_CUSTOM                                            :Uživatelský
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Uživatelský ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Žádné
+STR_RIVERS_FEW                                                  :Pár
 STR_RIVERS_MODERATE                                             :Střední
 STR_RIVERS_LOT                                                  :Mnoho
 
@@ -2609,6 +2612,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný prů
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Prohledávání grafik
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Prohledávám grafiky. Toto může chvíli trvat...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Prohledáno {NUM} grafik z {NUM}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Hledám archivy
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
@@ -2918,6 +2924,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rychlost na moři: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rychlost v průplavech a řekách: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Provozní cena: {GOLD}{CURRENCY} ročně
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(lze přestavět)

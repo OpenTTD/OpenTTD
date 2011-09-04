@@ -587,7 +587,7 @@ STR_SORT_BY_MAX_SPEED                                           :Максыма�
 STR_SORT_BY_MODEL                                               :Мадэль
 STR_SORT_BY_VALUE                                               :Кошт
 STR_SORT_BY_LENGTH                                              :Даўжыня
-STR_SORT_BY_LIFE_TIME                                           :Астатні тэрмін службы
+STR_SORT_BY_LIFE_TIME                                           :Рэшткавы тэрмін службы
 STR_SORT_BY_TIMETABLE_DELAY                                     :Адставаньне ад графіку
 STR_SORT_BY_FACILITY                                            :Тып станцыі
 STR_SORT_BY_WAITING                                             :Коль-ць грузу на станцыі
@@ -3555,12 +3555,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Прапусціць гэтае заданьне, калі абслугоўваньне не патрабуецца
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Парамэтр транспарту для параўнаньня
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Працэнт пагрузкі
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надзейнасьць
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. хуткасьць
 STR_ORDER_CONDITIONAL_AGE                                       :Узрост (гадоў)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Патрабуецца абслугоўваньне
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Заўсёды
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Рэшткавы тэрмiн службы (гадоў)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Умова пераходу
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :роўна
@@ -3805,6 +3808,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... не
 
 STR_ERROR_BMPMAP                                                :{WHITE}Не атрымалася загрузіць ляндшафт з BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... немагчыма пераўтварыць тып вiдарысу.
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... выява занадта вялiкая
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Выхад за межы даступных значэньняў
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Змяненьне памераў зыходнай карты да такіх значэньняў не рэкамендуецца. Працягваць?

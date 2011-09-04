@@ -1060,6 +1060,7 @@ STR_SEA_LEVEL_HIGH                                              :높음
 STR_SEA_LEVEL_CUSTOM                                            :사용자 설정
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :사용자 설정 ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :고장 안남
 STR_DISASTER_REDUCED                                            :적음
 STR_DISASTER_NORMAL                                             :일반
@@ -1396,6 +1397,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF �
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}인공지능 설정 보기
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD를 종료합니다
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}종료
@@ -2515,6 +2517,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA}<인식�
 STR_NEWGRF_INVALID_ENGINE                                       :<인식오류 차량모델>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<인식오류 산업시설>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}대소문자 매치
@@ -2822,6 +2826,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 중량: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}속력: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서의 속도: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서의 속도: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}운행비용: {GOLD}{CURRENCY}/년
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(개조 가능)
@@ -3182,12 +3188,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :멈춤
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 차량값
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :적재율
 STR_ORDER_CONDITIONAL_RELIABILITY                               :신뢰도
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :최고 속력
 STR_ORDER_CONDITIONAL_AGE                                       :연식 (년)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :점검 필요성
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :항상
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :남은 수명 (년)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}차량 데이터와 주어진 값을 비교하는 방법
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :=
@@ -3432,6 +3441,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 뭔�
 
 STR_ERROR_BMPMAP                                                :{WHITE}BMP파일로부터 지형을 불러올 수 없습니다...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 이미지 타입을 변경할 수 없습니다.
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}맵 크기 경고
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
