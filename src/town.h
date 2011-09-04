@@ -36,11 +36,10 @@ extern TownPool _town_pool;
 
 /** Town data structure. */
 struct Town : TownPool::PoolItem<&_town_pool> {
-	TileIndex xy;
+	TileIndex xy;                  ///< town center tile
 
-	/* Current population of people and amount of houses. */
-	uint32 num_houses;
-	uint32 population;
+	uint32 num_houses;             ///< amount of houses
+	uint32 population;             ///< current population of people
 
 	/* Town name */
 	uint32 townnamegrfid;
@@ -48,8 +47,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 townnameparts;
 	char *name;
 
-	/* NOSAVE: Location of name sign, UpdateVirtCoord updates this. */
-	ViewportSign sign;
+	ViewportSign sign;             ///< NOSAVE: Location of name sign, UpdateVirtCoord updates this
 
 	/* Makes sure we don't build certain house types twice.
 	 * bit 0 = Building funds received
@@ -57,22 +55,19 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	 * bit 2 = STADIUM */
 	byte flags;
 
-	/* level of noise that all the airports are generating */
-	uint16 noise_reached;
+	uint16 noise_reached;          ///< level of noise that all the airports are generating
 
-	/* Which companies have a statue? */
-	CompanyMask statues;
+	CompanyMask statues;           ///< which companies have a statue?
 
-	/* Company ratings as well as a mask that determines which companies have a rating. */
-	CompanyMask have_ratings;
+	/* Company ratings. */
+	CompanyMask have_ratings;      ///< which companies have a rating
 	uint8 unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyByte exclusivity;       ///< which company has exclusivity
 	uint8 exclusive_counter;       ///< months till the exclusivity expires
-	int16 ratings[MAX_COMPANIES];  ///< Ratings of each company for this town.
+	int16 ratings[MAX_COMPANIES];  ///< ratings of each company for this town
 
-	/* Maximum amount of passengers and mail that can be transported. */
-	uint32 max_pass;
-	uint32 max_mail;
+	uint32 max_pass;               ///< maximum amount of passengers that can be transported
+	uint32 max_mail;               ///< maximum amount of mail that can be transported
 	uint32 new_max_pass;
 	uint32 new_max_mail;
 	uint32 act_pass;
@@ -80,48 +75,40 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 new_act_pass;
 	uint32 new_act_mail;
 
-	/* Amount of passengers that were transported. */
-	byte pct_pass_transported;
-	byte pct_mail_transported;
+	byte pct_pass_transported;     ///< amount of passengers that were transported
+	byte pct_mail_transported;     ///< amount of mail that was transported
 
-	/* Amount of food and paper that was transported. Actually a bit mask would be enough. */
-	uint16 act_food;
-	uint16 act_water;
+	uint16 act_food;               ///< amount of food that was transported
+	uint16 act_water;              ///< amount of water that was transported
 	uint16 new_act_food;
 	uint16 new_act_water;
 
-	/* Time until we rebuild a house. */
-	uint16 time_until_rebuild;
+	uint16 time_until_rebuild;     ///< time until we rebuild a house
 
-	/* When to grow town next time. */
-	uint16 grow_counter;
-	int16 growth_rate;
+	uint16 grow_counter;           ///< counter to count when to grow
+	int16 growth_rate;             ///< town growth rate
 
-	/* Fund buildings program in action? */
-	byte fund_buildings_months;
+	byte fund_buildings_months;    ///< fund buildings program in action?
+	byte road_build_months;        ///< fund road reconstruction in action?
 
-	/* Fund road reconstruction in action? */
-	byte road_build_months;
-
-	/* If this is a larger town, and should grow more quickly. */
-	bool larger_town;
-	TownLayoutByte layout; ///< town specific road layout
+	bool larger_town;              ///< if this is a larger town and should grow more quickly
+	TownLayoutByte layout;         ///< town specific road layout
 
 	std::list<PersistentStorage *> psa_list;
 
 	PartOfSubsidyByte part_of_subsidy; ///< NOSAVE: is this town a source/destination of a subsidy?
 
-	/* NOSAVE: UpdateTownRadius updates this given the house count. */
-	uint32 squared_town_zone_radius[HZB_END];
+	uint32 squared_town_zone_radius[HZB_END]; ///< NOSAVE: UpdateTownRadius updates this given the house count
 
-	BuildingCounts<uint16> building_counts; ///< NOSAVE: The number of each type of building in the town.
+	BuildingCounts<uint16> building_counts; ///< NOSAVE: the number of each type of building in the town
 
 	/**
-	 * Creates a new town
+	 * Creates a new town.
+	 * @param tile center tile of the town
 	 */
 	Town(TileIndex tile = INVALID_TILE) : xy(tile) { }
 
-	/** Destroy the town */
+	/** Destroy the town. */
 	~Town();
 
 	void InitializeLayout(TownLayout layout);
