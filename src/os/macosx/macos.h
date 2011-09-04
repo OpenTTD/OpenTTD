@@ -29,6 +29,14 @@
 #define MAC_OS_X_VERSION_10_6 1060
 #endif
 
+#ifndef MAC_OS_X_VERSION_10_7
+#define MAC_OS_X_VERSION_10_7 1070
+#endif
+
+#ifndef MAC_OS_X_VERSION_10_8
+#define MAC_OS_X_VERSION_10_8 1080
+#endif
+
 
 /** Helper function displaying a message the best possible way. */
 void ShowMacDialog(const char *title, const char *message, const char *button_label);

@@ -309,8 +309,17 @@ class FullscreenSubdriver: public CocoaSubdriver {
 			goto ERR_NO_SWITCH;
 		}
 
-		this->window_buffer = CGDisplayBaseAddress(this->display_id);
-		this->window_pitch  = CGDisplayBytesPerRow(this->display_id);
+		/* Since CGDisplayBaseAddress and CGDisplayBytesPerRow are no longer available on 10.7,
+		 * disable until a replacement can be found. */
+        if (MacOSVersionIsAtLeast(10, 7, 0)) {
+            this->window_buffer = NULL;
+            this->window_pitch  = NULL;
+        } else {
+#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_7)
+            this->window_buffer = CGDisplayBaseAddress(this->display_id);
+            this->window_pitch  = CGDisplayBytesPerRow(this->display_id);
+#endif
+        }
 
 		this->device_width  = CGDisplayPixelsWide(this->display_id);
 		this->device_height = CGDisplayPixelsHigh(this->display_id);
@@ -565,6 +574,15 @@ public:
 
 CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp)
 {
+	/* OSX 10.7 doesn't support this way of the fullscreen driver. If we end up here
+	 * OpenTTD was compiled without SDK 10.7 available and - and thus we don't support
+	 * fullscreen mode in OSX 10.7 or higher, as necessary elements for this way have
+	 * been removed from the API.
+	 */
+	if (MacOSVersionIsAtLeast(10, 7, 0)) {
+		return NULL;
+	}
+
 	FullscreenSubdriver *ret = new FullscreenSubdriver(bpp);
 
 	if (!ret->ChangeResolution(width, height)) {
