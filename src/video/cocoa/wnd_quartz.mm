@@ -206,10 +206,14 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 
 void WindowQuartzSubdriver::GetDeviceInfo()
 {
-	/* Initialize the video settings; this data persists between mode switches */
+	/* Initialize the video settings; this data persists between mode switches
+	 * and gather some information that is useful to know about the display */
+
+#	if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_6
+	/* This way is deprecated as of OSX 10.6 but continues to work.Thus use it
+	 * always, unless allowed to skip compatibility with 10.5 and earlier */
 	CFDictionaryRef cur_mode = CGDisplayCurrentMode(kCGDirectMainDisplay);
 
-	/* Gather some information that is useful to know about the display */
 	CFNumberGetValue(
 		(const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayWidth),
 		kCFNumberSInt32Type, &this->device_width
@@ -219,6 +223,16 @@ void WindowQuartzSubdriver::GetDeviceInfo()
 		(const __CFNumber*)CFDictionaryGetValue(cur_mode, kCGDisplayHeight),
 		kCFNumberSInt32Type, &this->device_height
 	);
+#	else
+	/* Use the new API when compiling for OSX 10.6 or later */
+	CGDisplayModeRef cur_mode = CGDisplayCopyDisplayMode(kCGDirectMainDisplay);
+	if (cur_mode == NULL) { return; }
+
+	this->device_width = CGDisplayModeGetWidth(cur_mode);
+	this->device_height = CGDisplayModeGetHeight(cur_mode);
+
+	CGDisplayModeRelease(cur_mode);
+#	endif
 }
 
 /** Switch to full screen mode on OSX 10.7
