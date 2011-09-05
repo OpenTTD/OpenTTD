@@ -20,16 +20,36 @@ class VideoDriver_Cocoa: public VideoDriver {
 public:
 	/* virtual */ const char *Start(const char * const *param);
 
+	/** Stop the video driver */
 	/* virtual */ void Stop();
 
+	/** Mark dirty a screen region
+	 * @param left x-coordinate of left border
+	 * @param top  y-coordinate of top border
+	 * @param width width or dirty rectangle
+	 * @param height height of dirty rectangle
+	 */
 	/* virtual */ void MakeDirty(int left, int top, int width, int height);
 
+	/** Programme main loop */
 	/* virtual */ void MainLoop();
 
+	/** Change window resolution
+	 * @param w New window width
+	 * @param h New window height
+	 * @return Whether change was successful
+	 */
 	/* virtual */ bool ChangeResolution(int w, int h);
 
+	/** Set a new window mode
+	 * @param fullscreen Whether to set fullscreen mode or not
+	 * @return Whether changing the screen mode was successful
+	 */
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
 
+	/** Return driver name
+	 * @return driver name
+	 */
 	/* virtual */ const char *GetName() const { return "cocoa"; }
 };
 
@@ -49,59 +69,116 @@ public:
  */
 class CocoaSubdriver {
 public:
-	int device_width;
-	int device_height;
-	int device_depth;
+	int device_width;     ///< Width of device in pixel
+	int device_height;    ///< Height of device in pixel
+	int device_depth;     ///< Colour depth of device in bit
 
-	int window_width;
-	int window_height;
+	int window_width;     ///< Current window width in pixel
+	int window_height;    ///< Current window height in pixel
 	int window_pitch;
 
-	int buffer_depth;
-	void *pixel_buffer;   // used for direct pixel access
-	void *window_buffer;  // has colour translation from palette to screen
-	id window;            // pointer to window object
+	int buffer_depth;     ///< Colour depth of used frame buffer
+	void *pixel_buffer;   ///< used for direct pixel access
+	void *window_buffer;  ///< Colour translation from palette to screen
+	id window;            ///< Pointer to window object
 
 #	define MAX_DIRTY_RECTS 100
-	Rect dirty_rects[MAX_DIRTY_RECTS];
-	int num_dirty_rects;
-	uint32 palette[256];
+	Rect dirty_rects[MAX_DIRTY_RECTS]; ///< dirty rectangles
+	int num_dirty_rects;  ///< Number of dirty rectangles
+	uint32 palette[256];  ///< Colour Palette
 
-	bool active;
+	bool active;          ///< Whether the window is visible
 	bool setup;
 
-	id cocoaview;         // pointer to view object
+	id cocoaview;         ///< Pointer to view object
 
 	/* Separate driver vars for Quarz
 	 * Needed here in order to avoid much code duplication */
-	CGContextRef cgcontext;
+	CGContextRef cgcontext;    ///< Context reference for Quartz subdriver
 
 	/* Driver methods */
+	/** Initialize driver */
 	virtual ~CocoaSubdriver() {}
 
+	/** Draw window
+	 * @param force_update Whether to redraw unconditionally
+	 */
 	virtual void Draw(bool force_update = false) = 0;
+
+	/** Mark dirty a screen region
+	 * @param left x-coordinate of left border
+	 * @param top  y-coordinate of top border
+	 * @param width width or dirty rectangle
+	 * @param height height of dirty rectangle
+	 */
 	virtual void MakeDirty(int left, int top, int width, int height) = 0;
+
+	/** Update the palette */
 	virtual void UpdatePalette(uint first_color, uint num_colors) = 0;
 
 	virtual uint ListModes(OTTD_Point *modes, uint max_modes) = 0;
 
+	/** Change window resolution
+	 * @param w New window width
+	 * @param h New window height
+	 * @return Whether change was successful
+	 */
 	virtual bool ChangeResolution(int w, int h) = 0;
 
+	/** Are we in fullscreen mode
+	 * @return whether fullscreen mode is currently used
+	 */
 	virtual bool IsFullscreen() = 0;
+
+	/** Toggle between fullscreen and windowed mode
+	 * @return whether switch was successfull
+	 */
 	virtual bool ToggleFullscreen() { return false; };
+
+	/** Return the width of the current view
+	 * @return width of the current view
+	 */
 	virtual int GetWidth() = 0;
+
+	/** Return the height of the current view
+	 * @return height of the current view
+	 */
 	virtual int GetHeight() = 0;
+
+	/** Return the current pixel buffer
+	 * @return pixelbuffer
+	 */
 	virtual void *GetPixelBuffer() = 0;
 
-	/* Convert local coordinate to window server (CoreGraphics) coordinate */
+	/** Convert local coordinate to window server (CoreGraphics) coordinate
+	 * @param p local coordinates
+	 * @return window driver coordinates
+	 */
 	virtual CGPoint PrivateLocalToCG(NSPoint *p) = 0;
 
+	/** Return the mouse location
+	 * @param event UI event
+	 * @return mouse location as NSPoint
+	 */
 	virtual NSPoint GetMouseLocation(NSEvent *event) = 0;
+
+	/** Return whether the mouse is within our view
+	 * @param pt Mouse coordinates
+	 * @return Whether mouse coordinates are within view
+	 */
 	virtual bool MouseIsInsideView(NSPoint *pt) = 0;
 
+	/** Return whether the window is active (visible)
+	 * @return whether the window is visible or not
+	 */
 	virtual bool IsActive() = 0;
 
+	/** Makes the *game region* of the window 100% opaque. */
 	virtual void SetPortAlphaOpaque() { return; };
+
+	/** Whether the window was successfully resized
+	 * @return whether the window was succesfully resized
+	 */
 	virtual bool WindowResized() { return false; };
 };
 
