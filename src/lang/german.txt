@@ -1402,7 +1402,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe a
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Einstellungen für KI anzeigen und / oder ändern
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' beenden
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Dieser Übersetzung fehlen {NUM} String{P "" s}. Bitte hilf, OpenTTD zu verbessern und melde Dich als Übersetzer an. Siehe readme.txt für weitere Details.
+STR_INTRO_TRANSLATION                                           :{BLACK}Dieser Übersetzung fehl{P t en} {NUM} String{P "" s}. Bitte hilf, OpenTTD zu verbessern und melde Dich als Übersetzer an. Siehe readme.txt für weitere Details.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Verlassen
@@ -3452,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... irge
 
 STR_ERROR_BMPMAP                                                :{WHITE}Landschaft kann nicht aus BMP-Datei geladen werden...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... Bildtyp kann nicht umgewandelt werden
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... Bild ist zu groß
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalierungswarnung
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Zu starke Skalierung des Spielfeldes wird nicht empfohlen. Generierung dennoch fortsetzen?

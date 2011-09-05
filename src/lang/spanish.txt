@@ -2083,7 +2083,7 @@ STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vista pr
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM} x {NUM} casillas
 
 STR_OBJECT_CLASS_LTHS                                           :Faro
-STR_OBJECT_CLASS_TRNS                                           :Transmisores
+STR_OBJECT_CLASS_TRNS                                           :Transmisor
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles

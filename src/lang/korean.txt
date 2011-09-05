@@ -3442,6 +3442,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 뭔�
 STR_ERROR_BMPMAP                                                :{WHITE}BMP파일로부터 지형을 불러올 수 없습니다...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 이미지 타입을 변경할 수 없습니다.
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... 이미지가 너무 큽니다.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}맵 크기 경고
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?

@@ -3453,6 +3453,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algu
 STR_ERROR_BMPMAP                                                :{WHITE}Impossível carregar paisagem de BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não pode converter tipo de imagem
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... a imagem é demasiado grande
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de redimensionamento
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
 
