@@ -259,22 +259,22 @@ assert_compile(lengthof(_news_subtype_data) == NS_END);
  * Per-NewsType data
  */
 NewsTypeData _news_type_data[] = {
-	/*            name,              age, sound,           description */
-	NewsTypeData("arrival_player",    60, SND_1D_APPLAUSE, STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN       ),  ///< NT_ARRIVAL_COMPANY
-	NewsTypeData("arrival_other",     60, SND_1D_APPLAUSE, STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER     ),  ///< NT_ARRIVAL_OTHER
-	NewsTypeData("accident",          90, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                ),  ///< NT_ACCIDENT
-	NewsTypeData("company_info",      60, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                ),  ///< NT_COMPANY_INFO
-	NewsTypeData("open",              90, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                      ),  ///< NT_INDUSTRY_OPEN
-	NewsTypeData("close",             90, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                     ),  ///< NT_INDUSTRY_CLOSE
-	NewsTypeData("economy",           30, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                    ),  ///< NT_ECONOMY
-	NewsTypeData("production_player", 30, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY ),  ///< NT_INDUSTRY_COMPANY
-	NewsTypeData("production_other",  30, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER   ),  ///< NT_INDUSTRY_OTHER
-	NewsTypeData("production_nobody", 30, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED          ),  ///< NT_INDUSTRY_NOBODY
-	NewsTypeData("advice",           150, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY      ),  ///< NT_ADVICE
-	NewsTypeData("new_vehicles",      30, SND_1E_OOOOH,    STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                       ),  ///< NT_NEW_VEHICLES
-	NewsTypeData("acceptance",        90, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE        ),  ///< NT_ACCEPTANCE
-	NewsTypeData("subsidies",        180, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_SUBSIDIES                          ),  ///< NT_SUBSIDIES
-	NewsTypeData("general",           60, SND_BEGIN,       STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                ),  ///< NT_GENERAL
+	/*            name,              age, sound,           display,    description */
+	NewsTypeData("arrival_player",    60, SND_1D_APPLAUSE, ND_FULL,    STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN       ),  ///< NT_ARRIVAL_COMPANY
+	NewsTypeData("arrival_other",     60, SND_1D_APPLAUSE, ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER     ),  ///< NT_ARRIVAL_OTHER
+	NewsTypeData("accident",          90, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                ),  ///< NT_ACCIDENT
+	NewsTypeData("company_info",      60, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                ),  ///< NT_COMPANY_INFO
+	NewsTypeData("open",              90, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                      ),  ///< NT_INDUSTRY_OPEN
+	NewsTypeData("close",             90, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                     ),  ///< NT_INDUSTRY_CLOSE
+	NewsTypeData("economy",           30, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                    ),  ///< NT_ECONOMY
+	NewsTypeData("production_player", 30, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY ),  ///< NT_INDUSTRY_COMPANY
+	NewsTypeData("production_other",  30, SND_BEGIN,       ND_OFF,     STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER   ),  ///< NT_INDUSTRY_OTHER
+	NewsTypeData("production_nobody", 30, SND_BEGIN,       ND_OFF,     STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED          ),  ///< NT_INDUSTRY_NOBODY
+	NewsTypeData("advice",           150, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY      ),  ///< NT_ADVICE
+	NewsTypeData("new_vehicles",      30, SND_1E_OOOOH,    ND_FULL,    STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                       ),  ///< NT_NEW_VEHICLES
+	NewsTypeData("acceptance",        90, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE        ),  ///< NT_ACCEPTANCE
+	NewsTypeData("subsidies",        180, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_SUBSIDIES                          ),  ///< NT_SUBSIDIES
+	NewsTypeData("general",           60, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                ),  ///< NT_GENERAL
 };
 
 assert_compile(lengthof(_news_type_data) == NT_END);

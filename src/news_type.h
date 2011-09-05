@@ -126,11 +126,11 @@ struct NewsTypeData {
 	 * @param sound The sound to play.
 	 * @param description The description for this type of messages.
 	 */
-	NewsTypeData(const char *name, byte age, SoundFx sound, StringID description) :
+	NewsTypeData(const char *name, byte age, SoundFx sound, NewsDisplay display, StringID description) :
 		name(name),
 		age(age),
 		sound(sound),
-		display(ND_FULL),
+		display(display),
 		description(description)
 	{
 	}
