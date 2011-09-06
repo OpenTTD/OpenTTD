@@ -3452,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er g
 STR_ERROR_BMPMAP                                                :{WHITE}Kan het landschap uit BMP niet laden...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type afbeelding niet omzetten
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... afbeelding is te groot
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaalwaarschuwing
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaart is niet aan te bevelen. Toch doorgaan?
 
