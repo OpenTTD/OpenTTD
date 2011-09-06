@@ -355,6 +355,10 @@ static FORCEINLINE T ROR(const T x, const uint8 n)
 	 * warnings if we don't cast those (why?) */
 	#define BSWAP32(x) ((uint32)Endian32_Swap(x))
 	#define BSWAP16(x) ((uint16)Endian16_Swap(x))
+#elif defined(_MSC_VER)
+	/* MSVC has intrinsics for swapping, resulting in faster code */
+	#define BSWAP32(x) (_byteswap_ulong(x))
+	#define BSWAP16(x) (_byteswap_ushort(x))
 #else
 	/**
 	 * Perform a 32 bits endianness bitswap on x.
