@@ -971,12 +971,11 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	assert(bridge_dir < DIAGDIR_END);
 
 	const Slope slope = GetTileSlope(tile, NULL);
-	if (slope == SLOPE_FLAT) return false; // no slope, no bridge
 
 	/* Make sure the direction is compatible with the slope.
 	 * Well we check if the slope has an up bit set in the
 	 * reverse direction. */
-	if (slope & InclinedSlope(bridge_dir)) return false;
+	if (slope != SLOPE_FLAT && slope & InclinedSlope(bridge_dir)) return false;
 
 	/* Assure that the bridge is connectable to the start side */
 	if (!(GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(bridge_dir))) & DiagDirToRoadBits(bridge_dir))) return false;
@@ -986,13 +985,25 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	TileIndex bridge_tile = tile; // Used to store the other waterside
 
 	const int delta = TileOffsByDiagDir(bridge_dir);
-	do {
-		if (bridge_length++ >= 11) {
-			/* Max 11 tile long bridges */
-			return false;
-		}
-		bridge_tile += delta;
-	} while (TileX(bridge_tile) != 0 && TileY(bridge_tile) != 0 && IsWaterTile(bridge_tile));
+
+	if (slope == SLOPE_FLAT) {
+		/* Bridges starting on flat tiles are only allowed when crossing rivers. */
+		do {
+			if (bridge_length++ >= 4) {
+				/* Allow to cross rivers, not big lakes. */
+				return false;
+			}
+			bridge_tile += delta;
+		} while (IsValidTile(bridge_tile) && IsWaterTile(bridge_tile) && !IsSea(bridge_tile));
+	} else {
+		do {
+			if (bridge_length++ >= 11) {
+				/* Max 11 tile long bridges */
+				return false;
+			}
+			bridge_tile += delta;
+		} while (IsValidTile(bridge_tile) && IsWaterTile(bridge_tile));
+	}
 
 	/* no water tiles in between? */
 	if (bridge_length == 1) return false;
