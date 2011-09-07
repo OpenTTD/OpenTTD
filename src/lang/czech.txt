@@ -1143,7 +1143,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Uživatelský (
 
 STR_RIVERS_NONE                                                 :Žádné
 STR_RIVERS_FEW                                                  :Pár
-STR_RIVERS_MODERATE                                             :Střední
+STR_RIVERS_MODERATE                                             :Více
 STR_RIVERS_LOT                                                  :Mnoho
 
 STR_DISASTER_NONE                                               :žádné
@@ -1483,6 +1483,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Ukázat,
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Ukázat nastavení AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončit 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Tento překlad postrádá {NUM} řetěz{P ec ce ců}. Prosím pomozte OpenTTD udělat lepším a přihlaste se jako překladatel. Pro více informací, čtěte readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Konec
