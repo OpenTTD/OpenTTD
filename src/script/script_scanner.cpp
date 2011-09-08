@@ -17,7 +17,7 @@
 #include "../script/squirrel.hpp"
 #include "script_scanner.hpp"
 
-bool ScriptScanner::AddFile(const char *filename, size_t basepath_length)
+bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
 	free(this->main_script);
 	this->main_script = strdup(filename);

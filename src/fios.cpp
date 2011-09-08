@@ -232,7 +232,7 @@ public:
 		callback_proc(callback_proc)
 	{}
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename);
 };
 
 /**
@@ -241,7 +241,7 @@ public:
  * @param basepath_length amount of characters to chop of before to get a relative filename
  * @return true if the file is added.
  */
-bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length)
+bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
 	const char *ext = strrchr(filename, '.');
 	if (ext == NULL) return false;
@@ -597,7 +597,7 @@ public:
 		this->scanned = true;
 	}
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length)
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 	{
 		FILE *f = FioFOpenFile(filename, "r", SCENARIO_DIR);
 		if (f == NULL) return false;

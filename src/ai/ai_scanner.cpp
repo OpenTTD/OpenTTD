@@ -378,7 +378,7 @@ struct AIFileChecksumCreator : FileScanner {
 	}
 
 	/* Add the file and calculate the md5 sum. */
-	virtual bool AddFile(const char *filename, size_t basepath_length)
+	virtual bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 	{
 		Md5 checksum;
 		uint8 buffer[1024];
@@ -446,7 +446,7 @@ static bool IsSameAI(const ContentInfo *ci, bool md5sum, AIFileInfo *info)
 
 			/* Create the full path name, */
 			seprintf(path, lastof(path), "%s%c%s", tar->second.tar_filename, PATHSEPCHAR, tar->first.c_str());
-			checksum.AddFile(path, 0);
+			checksum.AddFile(path, 0, NULL);
 		}
 	} else {
 		/* Add the path sep char back when searching a directory, so we are

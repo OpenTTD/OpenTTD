@@ -30,11 +30,17 @@ public:
 	 */
 	const char *GetMainScript() { return this->main_script; }
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+	/**
+	 * Get the current tar file the ScanDir is currently tracking.
+	 */
+	const char *GetTarFile() { return this->tar_file; }
+
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename);
 
 protected:
 	class Squirrel *engine; ///< The engine we're scanning with.
 	char *main_script;      ///< The name of the current main script.
+	char *tar_file;         ///< The filename of the tar for the main script.
 };
 
 #endif /* SCRIPT_SCANNER_HPP */

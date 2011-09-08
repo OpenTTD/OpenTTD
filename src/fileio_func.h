@@ -82,15 +82,16 @@ public:
 	 * @param filename        the full path to the file to read
 	 * @param basepath_length amount of characters to chop of before to get a
 	 *                        filename relative to the search path.
+	 * @param tar_filename    the name of the tar file the file is read from.
 	 * @return true if the file is added.
 	 */
-	virtual bool AddFile(const char *filename, size_t basepath_length) = 0;
+	virtual bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) = 0;
 };
 
 /** Helper for scanning for files with tar as extension */
 class TarScanner : FileScanner {
 public:
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = NULL);
 
 	/** Do the scan for Tars. */
 	static uint DoScan();

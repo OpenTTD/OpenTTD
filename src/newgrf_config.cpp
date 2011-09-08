@@ -539,7 +539,7 @@ public:
 	{
 	}
 
-	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename);
 
 	/** Do the scan for GRFs. */
 	static uint DoScan()
@@ -553,7 +553,7 @@ public:
 	}
 };
 
-bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
+bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
 	GRFConfig *c = new GRFConfig(filename + basepath_length);
 

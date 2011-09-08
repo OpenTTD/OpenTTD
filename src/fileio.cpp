@@ -647,8 +647,11 @@ static void SimplifyFileName(char *name)
 	return num;
 }
 
-bool TarScanner::AddFile(const char *filename, size_t basepath_length)
+bool TarScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
+	/* No tar within tar. */
+	assert(tar_filename == NULL);
+
 	/* The TAR-header, repeated for every file */
 	typedef struct TarHeader {
 		char name[100];      ///< Name of the file
@@ -1281,7 +1284,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 			num += ScanPath(fs, extension, filename, basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
-			if (MatchesExtension(extension, filename) && fs->AddFile(filename, basepath_length)) num++;
+			if (MatchesExtension(extension, filename) && fs->AddFile(filename, basepath_length, NULL)) num++;
 		}
 	}
 
@@ -1301,7 +1304,7 @@ static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterato
 	uint num = 0;
 	const char *filename = (*tar).first.c_str();
 
-	if (MatchesExtension(extension, filename) && fs->AddFile(filename, 0)) num++;
+	if (MatchesExtension(extension, filename) && fs->AddFile(filename, 0, (*tar).second.tar_filename)) num++;
 
 	return num;
 }
