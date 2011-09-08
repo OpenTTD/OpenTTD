@@ -57,6 +57,7 @@ Var CDDRIVE
 ; Modern interface settings
 !include "MUI2.nsh"
 !include "InstallOptions.nsh"
+!include "WinVer.nsh"
 
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE_3LINES
@@ -518,17 +519,17 @@ hasCD:
 FunctionEnd
 
 ;-------------------------------------------------------------------------------
-; Determine windows version, returns "win9x" if Win9x/Me or "winnt" on the stack
+; Determine windows version, returns "win9x" if Win9x/Me/2000/XP SP2- or "winnt" for the rest on the stack
 Function GetWindowsVersion
 	ClearErrors
-	StrCpy $R0 "winnt"
-
-	GetVersion::WindowsPlatformId
-	Pop $R0
-	IntCmp $R0 2 WinNT 0
 	StrCpy $R0 "win9x"
-WinNT:
-	ClearErrors
+	${If} ${IsNT}
+		${If} ${IsWinXP}
+		${AndIf} ${AtLeastServicePack} 3
+		${OrIf} ${AtLeastWin2003}
+			StrCpy $R0 "winnt"
+		${EndIf}
+	${EndIf}
 	Push $R0
 FunctionEnd
 
@@ -540,12 +541,12 @@ Function CheckProcessorArchitecture
 	IntCmp $R0 64 Win64 0
 	ClearErrors
 	IntCmp ${APPBITS} 64 0 Done
-	MessageBox MB_OKCANCEL|MB_ICONSTOP "You are trying to install the 64-bit OpenTTD on a 32-bit operating system. This is not going to work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_YESNO|MB_ICONSTOP "You are trying to install the 64-bit OpenTTD on a 32-bit operating system. This is not going to work. Please download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
 	GoTo Done
 Win64:
 	ClearErrors
 	IntCmp ${APPBITS} 64 Done 0
-	MessageBox MB_OKCANCEL|MB_ICONINFORMATION "You are trying to install the 32-bit OpenTTD on a 64-bit operating system. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_YESNO|MB_ICONINFORMATION "You are trying to install the 32-bit OpenTTD on a 64-bit operating system. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
 	GoTo Done
 Abort:
 	Quit
@@ -560,12 +561,12 @@ Function CheckWindowsVersion
 	StrCmp $R0 "win9x" 0 WinNT
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" Done 0
-	MessageBox MB_OKCANCEL|MB_ICONSTOP "You are trying to install the Windows 2000, XP, Vista and 7 version on Windows 95, 98 or ME. This is will not work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_YESNO|MB_ICONSTOP "You are trying to install the Windows XP SP3, Vista and 7 version on Windows 95, 98, ME, 2000 and XP without SP3. This is will not work. Please download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
 	GoTo Done
 WinNT:
 	ClearErrors
 	StrCmp ${APPARCH} "win9x" 0 Done
-	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98 and ME version on Windows 2000, XP, Vista or 7. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98, 2000 and XP without SP3 version on Windows XP SP3, Vista or 7. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDYES Done IDNO Abort
 Abort:
 	Quit
 Done:
@@ -674,8 +675,7 @@ WelcomeToSetup:
 	ReadRegStr $OLDVERSION HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "DisplayVersion"
 	; Gets the older version then displays it in a message box
 	MessageBox MB_OK|MB_ICONINFORMATION \
-		"Welcome to ${APPNAMEANDVERSION} Setup.$\n \
-		This will allow you to upgrade from version $OLDVERSION."
+		"Welcome to ${APPNAMEANDVERSION} Setup.$\nThis will allow you to upgrade from version $OLDVERSION."
 	SectionSetFlags ${Section2} 0x80 ; set bit 7
 	SectionSetFlags ${Section3} 0x80 ; set bit 7
 	SectionSetFlags ${Section4} 0x80 ; set bit 7
@@ -686,8 +686,7 @@ VersionsAreEqual:
 	ReadRegStr $UninstallString HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "UninstallString"
 	IfFileExists "$UninstallString" "" FinishCallback
 	MessageBox MB_YESNO|MB_ICONQUESTION \
-		"Setup detected ${APPNAMEANDVERSION} on your system. This is the same version that this program will install.$\n \
-		Are you trying to uninstall it?" \
+		"Setup detected ${APPNAMEANDVERSION} on your system. This is the same version that this program will install.$\nAre you trying to uninstall it?" \
 		IDYES DoUninstall IDNO FinishCallback
 DoUninstall: ; You have the same version as this installer.  This allows you to uninstall.
 	Exec "$UninstallString"
@@ -695,8 +694,7 @@ DoUninstall: ; You have the same version as this installer.  This allows you to 
 
 InstallerIsOlder:
 	MessageBox MB_OK|MB_ICONSTOP \
-		"You have a newer version of ${APPNAME}.$\n \
-		Setup will now exit."
+		"You have a newer version of ${APPNAME}.$\nSetup will now exit."
 	Quit
 
 FinishCallback:
