@@ -1076,7 +1076,7 @@ STR_SUBSIDY_X4                                                  :x4
 
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Muy llano
 STR_TERRAIN_TYPE_FLAT                                           :Llano
-STR_TERRAIN_TYPE_HILLY                                          :Ondulado
+STR_TERRAIN_TYPE_HILLY                                          :Accidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montañoso
 
 STR_ECONOMY_STEADY                                              :Estable
