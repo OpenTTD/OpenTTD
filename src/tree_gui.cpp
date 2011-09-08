@@ -88,8 +88,8 @@ public:
 		offset.x = 0;
 		offset.y = 0;
 
-		for (uint i = this->base; i < this->base + this->count; i++) {
-			if (i >= lengthof(tree_sprites)) return size;
+		for (int i = this->base; i < this->base + this->count; i++) {
+			if (i >= (int)lengthof(tree_sprites)) return size;
 			this_size = GetSpriteSize(tree_sprites[i].sprite, &offset);
 			size.width = max<int>(size.width, 2 * max<int>(this_size.width, -offset.x));
 			size.height = max<int>(size.height, max<int>(this_size.height, -offset.y));
