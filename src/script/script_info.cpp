@@ -31,6 +31,7 @@ ScriptFileInfo::~ScriptFileInfo()
 	free((void *)this->instance_name);
 	free((void *)this->url);
 	free(this->main_script);
+	free(this->tar_file);
 	free(this->SQ_instance);
 }
 
@@ -69,6 +70,8 @@ bool ScriptFileInfo::CheckMethod(const char *name) const
 	}
 
 	info->main_script = strdup(scanner->GetMainScript());
+	const char *tar_name = scanner->GetTarFile();
+	if (tar_name != NULL) info->tar_file = strdup(tar_name);
 
 	/* Cache the data the info file gives us. */
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;

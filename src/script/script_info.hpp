@@ -20,6 +20,7 @@ public:
 	ScriptFileInfo() :
 		SQ_instance(NULL),
 		main_script(NULL),
+		tar_file(NULL),
 		author(NULL),
 		name(NULL),
 		short_name(NULL),
@@ -77,6 +78,11 @@ public:
 	const char *GetMainScript() const { return this->main_script; }
 
 	/**
+	 * Get the filename of the tar the script is in.
+	 */
+	const char *GetTarFile() const { return this->tar_file; }
+
+	/**
 	 * Check if a given method exists.
 	 */
 	bool CheckMethod(const char *name) const;
@@ -91,6 +97,7 @@ protected:
 	HSQOBJECT *SQ_instance;
 private:
 	char *main_script;
+	char *tar_file;
 	const char *author;
 	const char *name;
 	const char *short_name;

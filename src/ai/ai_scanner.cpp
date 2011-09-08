@@ -423,15 +423,8 @@ static bool IsSameAI(const ContentInfo *ci, bool md5sum, AIFileInfo *info)
 	if (!md5sum) return true;
 
 	AIFileChecksumCreator checksum;
-	char path[MAX_PATH];
-	strecpy(path, info->GetMainScript(), lastof(path));
-	/* There'll always be at least 2 path separator characters in an AI's
-	 * main script name as the search algorithm requires the main script to
-	 * be in a subdirectory of the AI directory; so ai/<path>/main.nut. */
-	*strrchr(path, PATHSEPCHAR) = '\0';
-	*strrchr(path, PATHSEPCHAR) = '\0';
-	TarList::iterator iter = _tar_list.find(path);
-
+	const char *tar_filename = info->GetTarFile();
+	TarList::iterator iter = _tar_list.find(tar_filename);
 	if (iter != _tar_list.end()) {
 		/* The main script is in a tar file, so find all files that
 		 * are in the same tar and add them to the MD5 checksumming. */
@@ -444,14 +437,15 @@ static bool IsSameAI(const ContentInfo *ci, bool md5sum, AIFileInfo *info)
 			const char *ext = strrchr(tar->first.c_str(), '.');
 			if (ext == NULL || strcasecmp(ext, ".nut") != 0) continue;
 
-			/* Create the full path name, */
-			seprintf(path, lastof(path), "%s%c%s", tar->second.tar_filename, PATHSEPCHAR, tar->first.c_str());
-			checksum.AddFile(path, 0, NULL);
+			checksum.AddFile(tar->first.c_str(), 0, tar_filename);
 		}
 	} else {
-		/* Add the path sep char back when searching a directory, so we are
-		 * in the actual directory. */
-		path[strlen(path)] = PATHSEPCHAR;
+		char path[MAX_PATH];
+		strecpy(path, info->GetMainScript(), lastof(path));
+		/* There'll always be at least 1 path separator character in an AI's
+		 * main script name as the search algorithm requires the main script to
+		 * be in a subdirectory of the AI directory; so ai/<path>/main.nut. */
+		*strrchr(path, PATHSEPCHAR) = '\0';
 		checksum.Scan(".nut", path);
 	}
 
