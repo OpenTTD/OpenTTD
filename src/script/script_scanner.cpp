@@ -57,6 +57,7 @@ ScriptScanner::ScriptScanner()
 	/* Mark this class as global pointer */
 	this->engine->SetGlobalPointer(this);
 	this->main_script = NULL;
+	this->tar_file = NULL;
 }
 
 ScriptScanner::~ScriptScanner()
