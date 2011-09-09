@@ -424,8 +424,8 @@ static bool IsSameAI(const ContentInfo *ci, bool md5sum, AIFileInfo *info)
 
 	AIFileChecksumCreator checksum;
 	const char *tar_filename = info->GetTarFile();
-	TarList::iterator iter = _tar_list.find(tar_filename);
-	if (iter != _tar_list.end()) {
+	TarList::iterator iter;
+	if (tar_filename != NULL && (iter = _tar_list.find(tar_filename)) != _tar_list.end()) {
 		/* The main script is in a tar file, so find all files that
 		 * are in the same tar and add them to the MD5 checksumming. */
 		TarFileList::iterator tar;
