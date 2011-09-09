@@ -253,6 +253,9 @@ $(BIN_DIR)/$(TTD): $(TTD)
 ifeq ($(OS), UNIX)
 	$(Q)cp $(MEDIA_DIR)/openttd.32.bmp $(BIN_DIR)/data/
 endif
+ifeq ($(OS), OSX)
+	$(Q)cp $(ROOT_DIR)/os/macosx/splash.png $(BIN_DIR)/data/
+endif
 
 $(TTD): $(OBJS) $(CONFIG_CACHE_LINKER)
 	$(E) '$(STAGE) Linking $@'
