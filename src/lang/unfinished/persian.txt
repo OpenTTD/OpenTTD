@@ -2404,24 +2404,72 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}لیست
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ثبت پارامترها
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}تغییر پالت
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}تغییر نوع پالت برای NewGRF مورد نظر.{}اگر گرافیک صورتی رنگ به نظر آمد این پالت را تغییر دهید
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}ثبت تغییرات
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}یافتن مجموعه ای که کم است در اینترنت
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه
 
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}نام فایل: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}ویرایش: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}کمترین ویرایش دارای سازگاری: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}پالت: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}پارامترها: {SILVER}{STRING}
 
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}هیچ اطلاعاتی در دسترس نیست
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}فایل همسان پیدا نشد
+STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}غیرفعال
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}با این ورژن از OpenTTD همخوانی ندارد
 
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}پارامترهای NewGRF را وارد کنید
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}تغییر پارامترهای NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}بسته
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}برگرداندن تغییرات
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ثبت مقدار پیش فرض برای همه پارامترها
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :پارامتر{NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}تعداد پارامتر: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}رسیدگی - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}والد
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}بازرسی شی ء مکان والد
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} در {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :شی‌ء
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :نوع ریل
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}متغیر NewGRF 60 + پارامتر (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}جابجا کردن تصویر گرافیک {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}تصویر بعدی
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}نمایش تصویر بعدی، بدون انجام دادن هر گونه تغییرات در آخر
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}رفتن به تصویر
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}رفتن به تصویر بعد. اگر تصویر معمولی نیست به تصویر معمولی بعدی می رود
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}تصویر قبلی
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نمایش تصویر عادی قبلی، بدون انجام دادن هر گونه تغییرات بر آخر
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}نمایش تصویر انتخاب شده. تغییر مکان تصویر در زمان بارگزاری اعمال نمی شود
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}تغییر مکان تصویر، تغییر مقدار اضافه شونده به X و Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}مقدار اضافه شونده به X: {NUM}, مقدار اضافه شونده به Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}برداشتن تصویر
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}برداشتن یک تصویر از یک نقطه از صفحه نمایش
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}برو به تصویر
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}هشدار: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}خطا: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}خطای وخیم: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}یک خطای وخیم در NewGRF اتفاق افتاده: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} با TTDPatch که ویرایش آن توسط OpenTTD گزارش شده کار نمی کند
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} برای ویرایش {STRING}TTD می باشد
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} طراحی شده برای استفاده با {STRING}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :منبع GRF درخواست شده در دسترس نمی باشد.
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :طرح با قالب ناشناخته/نامعتبر
 

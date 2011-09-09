@@ -3453,6 +3453,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... quel
 STR_ERROR_BMPMAP                                                :{WHITE}Chargement du paysage depuis BMP impossible...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... n'a pas pu convertir le type d'image
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... image trop grande
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avertissement de redimensionnement
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Trop redimensionner la carte source n'est pas recommandé. Continuer la génération{NBSP}?
 

@@ -406,7 +406,7 @@ STR_SORT_BY_FACILITY                                            :Тип стан
 STR_SORT_BY_WAITING                                             :Кол-во товара на станции
 STR_SORT_BY_RATING_MAX                                          :Наивысший рейтинг
 STR_SORT_BY_RATING_MIN                                          :Низший рейтинг
-STR_SORT_BY_ENGINE_ID                                           :Название
+STR_SORT_BY_ENGINE_ID                                           :Идентификатор
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Мощность
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Тяговое усилие
@@ -3012,8 +3012,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новый ав
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Вес: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость в океане: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорость в канале/реке: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорость по океану: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорость по каналу/реке: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY}/год
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмкость: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(переоб.)
