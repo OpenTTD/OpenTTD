@@ -22,6 +22,7 @@
 #include "../progress.h"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
+#include "../fileio_func.h"
 #include "sdl_v.h"
 #include <SDL.h>
 
@@ -203,10 +204,6 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 	*h = _resolutions[best].height;
 }
 
-#ifndef ICON_DIR
-#define ICON_DIR "media"
-#endif
-
 #ifdef WIN32
 /* Let's redefine the LoadBMP macro with because we are dynamically
  * loading SDL and need to 'SDL_CALL' all functions */
@@ -226,15 +223,18 @@ static bool CreateMainSurface(uint w, uint h)
 
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 
-	/* Give the application an icon */
-	icon = SDL_CALL SDL_LoadBMP(ICON_DIR PATHSEP "openttd.32.bmp");
-	if (icon != NULL) {
-		/* Get the colourkey, which will be magenta */
-		uint32 rgbmap = SDL_CALL SDL_MapRGB(icon->format, 255, 0, 255);
+	char icon_path[MAX_PATH];
+	if (FioFindFullPath(icon_path, lengthof(icon_path), BASESET_DIR, "openttd.32.bmp") != NULL) {
+		/* Give the application an icon */
+		icon = SDL_CALL SDL_LoadBMP(icon_path);
+		if (icon != NULL) {
+			/* Get the colourkey, which will be magenta */
+			uint32 rgbmap = SDL_CALL SDL_MapRGB(icon->format, 255, 0, 255);
 
-		SDL_CALL SDL_SetColorKey(icon, SDL_SRCCOLORKEY, rgbmap);
-		SDL_CALL SDL_WM_SetIcon(icon, NULL);
-		SDL_CALL SDL_FreeSurface(icon);
+			SDL_CALL SDL_SetColorKey(icon, SDL_SRCCOLORKEY, rgbmap);
+			SDL_CALL SDL_WM_SetIcon(icon, NULL);
+			SDL_CALL SDL_FreeSurface(icon);
+		}
 	}
 
 	/* DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK */

@@ -61,6 +61,9 @@ ifdef OSXAPP
 	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "$(BUNDLE_DIR)/$(OSXAPP)" "$(REV)"
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(DATA_DIR)"
 endif
+ifeq ($(OS),UNIX)
+	$(Q)cp "$(ROOT_DIR)/media/openttd.32.bmp" "$(DATA_DIR)/"
+endif
 	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
 	$(Q)cp "$(BIN_DIR)/ai/"compat_*.nut       "$(AI_DIR)/"
 	$(Q)cp "$(BIN_DIR)/data/"*.grf            "$(DATA_DIR)/"

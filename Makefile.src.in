@@ -249,7 +249,10 @@ $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 	$(Q)$(WINDRES) -o $@ -I `basename $<` $<
 
 $(BIN_DIR)/$(TTD): $(TTD)
-	$(Q)cp $< $@
+	$(Q)cp $(TTD) $(BIN_DIR)/$(TTD)
+ifeq ($(OS), UNIX)
+	$(Q)cp $(MEDIA_DIR)/openttd.32.bmp $(BIN_DIR)/data/
+endif
 
 $(TTD): $(OBJS) $(CONFIG_CACHE_LINKER)
 	$(E) '$(STAGE) Linking $@'
