@@ -1251,15 +1251,17 @@ void AircraftNextAirportPos_and_Order(Aircraft *v)
 /**
  * Aircraft is about to leave the hangar.
  * @param v Aircraft leaving.
+ * @param exit_dir The direction the vehicle leaves the hangar.
+ * @note This function is called in AfterLoadGame for old savegames, so don't rely
+ *       on any data to be valid, especially don't rely on the fact that the vehicle
+ *       is actually on the ground inside a depot.
  */
-void AircraftLeaveHangar(Aircraft *v)
+void AircraftLeaveHangar(Aircraft *v, Direction exit_dir)
 {
-	const Station *st = Station::GetByTile(v->tile);
-
 	v->cur_speed = 0;
 	v->subspeed = 0;
 	v->progress = 0;
-	v->direction = st->airport.GetHangarExitDirection(v->tile);
+	v->direction = exit_dir;
 	v->vehstatus &= ~VS_HIDDEN;
 	{
 		Vehicle *u = v->Next();
@@ -1344,7 +1346,8 @@ static void AircraftEventHandler_InHangar(Aircraft *v, const AirportFTAClass *ap
 		/* airplane goto state takeoff, helicopter to helitakeoff */
 		v->state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 	}
-	AircraftLeaveHangar(v);
+	const Station *st = Station::GetByTile(v->tile);
+	AircraftLeaveHangar(v, st->airport.GetHangarExitDirection(v->tile));
 	AirportMove(v, apc);
 }
 
