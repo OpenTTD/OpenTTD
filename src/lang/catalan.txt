@@ -3453,6 +3453,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algu
 STR_ERROR_BMPMAP                                                :{WHITE}Impossible carregar el terreny des del BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir el tipus d'imatge
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... l'imatge és massa gran
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Alerta d'escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}No es recomana redimensionar massa el mapa d'origen. Vols continuar amb la generació?
 

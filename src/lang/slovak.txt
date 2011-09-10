@@ -300,7 +300,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Uchop a 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Prepnúť veľkosť okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Navigacná lišta
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Navigacna lista - posuva vypis dolava/doprava
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolácia budov, úprava terénu, ...
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolácia budov atď. na rovný terén. CTRL označí oblasť diagonálne. Shift zobrazí odhad nákladov
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardné
@@ -395,9 +395,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Vytvoren
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Vytvorenie mesta
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Vytvorenie priemyslu
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Stavba cesty
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Zasadit stromy
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sadenie stromov. Shift zobrazí odhad nákladov
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umiestnit popis
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umiestniť objekt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umiestniť objekt. Shift zobrazí odhad nákladov
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Uložiť scenár
@@ -1123,6 +1123,7 @@ STR_SEA_LEVEL_HIGH                                              :Vysoká
 STR_SEA_LEVEL_CUSTOM                                            :Vlastná
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Vlastná ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Žiadne
 STR_DISASTER_REDUCED                                            :Obmedzené
 STR_DISASTER_NORMAL                                             :Normálne
@@ -1290,6 +1291,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlhý (31st Dec
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátky (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatická pauza pri štarte novej hry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Ak je hra pozastavená povol: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :žiadne akcie
@@ -1396,7 +1398,7 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Možnosti zobrazenia
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcia
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Styk
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulácia s tovarom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
@@ -1454,6 +1456,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobrazi�
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Zobraziť AI nastavenia
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť OpenTTD
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Koniec
@@ -1965,9 +1968,9 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifikovana
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Jednokoľajka - Monorail
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetická dráha - MagLev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Postavit zeleznicne kolaje
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Automaticka stavba zeleznicnych kolaji
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Postavit zeleznicne depo (pre vyrobu a opravu vlakov)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Vybudovať železničnú trať. Ctrl prepína stavať/odobrať stavbu železnice. Shift zobrazí odhad nákladov
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Stavba železničnej trate s režimom Autorail. Ctrl odoberie konštrukciu. Shift zobrazí výšku nákladov
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Postavit zeleznicne depo (pre nákup a opravu vlakov). So Shift-om zobrazíte odhadovanú výšku nákladov
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Konvertovať železnicu na smerové body
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Postaviť železničnú stanicu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Postaviť železničné semafóry
@@ -2010,12 +2013,12 @@ STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinov
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Obojstranné signály (semaphore){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály umožňujú vlakom prechádzať trať z oboch strán.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednosmerné signály (semaphore){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály umožňujú vlakom prechádzať trať iba z jednej strany.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardný signál (elektrický){}Signály sú nevyhnutné pre zabránenie zrážke v železnicnej sieti s viac ako 1 vlakom.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vstupný signál (elektrický){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vstupný signál (elektrický){}Zelený, ak je 1 alebo viac zelených výstupných signálov na nasledujúcom úseku, inak svieti červený
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre určenie správnej farby na vstupných a kombinovaných signáloch
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovaný signál (elektrický){}Funguje jednoducho ako vstupný a výstupný signál zároveň, čo umožňuje budovať "stromové" štruktúry.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Obojstranné signály (electric){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály umožňujú vlakom prechádzať trať z oboch strán.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmerné signály (electric){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály umožňujú vlakom prechádzať trať iba z jednej strany.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverzia signálu{}Pri vybraní, kliknutie na existujúci signál ho zmení na vybraný typ a variant, CTRL+klik prepne existujúci variant.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Obojstranné signály (elektrické){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály môžu byť postavené vedľa seba zadnou stranou
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmerné signály (elektrické){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály nemôžu byť postavené vedľa zadnou stranou
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverzia signálu{}Po vybratí, kliknutie na existujúci signál zmení na vybraný typ a variant, CTRL+klik prepne existujúci variant. Shift+klik zobrazí odhad nákladov
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Hustota signálov pri stavbe ťahaním
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Znižit hustotu signálov
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit hustotu signálov
@@ -2076,14 +2079,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vyberte 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Výstavba vodných ciest
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodné cesty
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Stavba kanálov.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Stavba kanálov. Shift zobrazí odhad nákladov
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Postaviť stavidlá.
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postaviť lodenicu (pre výrobu a opravy lodí)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postaviť lodenicu
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavit boju pouzitelnu pre vyznacenie trasy
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postaviť akvadukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definovat oblast vody.{}Vytvorí kanál, pri stlacení CTRL na úrovni mora zaplaví okolie
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Vytvoriť rieky.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Umiestniť rieku.
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientácia lodenice
@@ -2351,7 +2354,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Uložiť
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Načítať
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Načítať označenú hru
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detaily hry
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nie sú dostupné žiadne informácie.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informácia nie je k dispozícii
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2517,22 +2520,22 @@ STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SI
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritická chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Nastala závažná chyba pri použití NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovať s TTDPatch verziou nahlásenou OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pre {STRING} verziu TTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pre verziu {STRING} TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navrhnutý pre použitie s {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parameter {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musí byt nahratý pred {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musí byt nahratý po {STRING}.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musí byť načítaný pred {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musí byť načítaný po {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vyžaduje verziu OpenTTD {STRING} alebo vyššiu.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Nahraných príliš veľa NewGRF súborov.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {2:STRING} ako statického NewGRF s {4:STRING} by mohlo spôsobiť desynchronizáciu.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Načítaných priveľa súborov NewGRF.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {2:STRING} ako statického NewGRF s {4:STRING} môže spôsobiť chybné zobrazenie.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočakávaný sprite.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma Akcia 0 nehnuteľnosti.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Požiadavka na neplatného ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškodený sprite. Všetky poškodené sprites budú zobrazované ako červený otáznik (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje viacero akcií 8 položiek.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čítaj na konci náhradného podkladu.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V aktuálne používanej základnej grafickej sade chýba niekoľko grafických objektov.{}Doplňte prosím základnú grafickú sadu.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma nehnuteľnosť Akcia 0.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použitie neplatného ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškodený sprite. Všetky poškodené sprajty budú zobrazené ako červený otáznik (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje viac položiek Action 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čítam do konca pseudo-spriteov
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V používanej základnej grafickej sade chýbajú niektoré grafické objekty.{}Aktualizujte prosím základnú grafickú sadu.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Upozornenie!
@@ -2553,14 +2556,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Nájden
 STR_NEWGRF_LIST_MISSING                                         :{RED}Chýbajúce súbory
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Správanie NewGRF '{STRING}' asi sposobí desynchronizáciu a/alebo pád hry.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmenilo stav napájaného vozňa v '{1:ENGINE}' mimo depa.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dĺžku vozidla '{1:ENGINE}' mimo depa.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patriaci '{COMPANY}' má neplatnu dlžku. Pravdeposobne to sposobil problém s NewGRF. Je možná desynchronizácia alebo pád hry.
+STR_NEWGRF_BROKEN                                               :{WHITE}Správanie NewGRF '{STRING}' môže sposobiť chybu obrazu a/alebo pád hry.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmenilo stav hnacieho vozidla v '{1:ENGINE}' keď nebolo v depe.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dĺžku vozidla '{1:ENGINE}' keď nebolo v depe.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patriaci '{COMPANY}' má neplatnú dlžku. Pravdeposobne to spôsobil problém s NewGRF. Môže nastať chybné zobrazenie alebo pád hry.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nekorektné informácie.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informácia o zmene nákladu pre'{1:ENGINE}' sa líši od kúpneho listu. Môže to spôsobiť, že nové vozidlá sa nebudú prerábať na určitý tovar korektne.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spôsobilo nekonečnú slučku v spätnom odvolávaní produckie.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nesprávne informácie.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informácia o zmene nákladu pre'{1:ENGINE}' sa líši od konštrukčného listu pri kúpe. Môže to spôsobiť, že nové vozidlá sa nebudú prerábať na určitý tovar korektne.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spôsobil nekonečnú slučku v spätnom odvolávaní produkcie.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
@@ -2568,6 +2571,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky iek} <neplatného nákladu>
 STR_NEWGRF_INVALID_ENGINE                                       :<chybný model rušňa>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný priemysel>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
@@ -3236,6 +3241,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Zastav
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Vynechať tento príkaz pokiaľ nie je potrebná oprava
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolahlivost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlosť
@@ -3487,11 +3494,12 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... nie�
 STR_ERROR_BMPMAP                                                :{WHITE}Nie je možné načítať krajinu z BMP súboru...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nie je možné zkonvertovať formát obrázku
 
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozornenie na stupnicu
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Príliš veľká zmena veľkosti zdrojovej mapy sa neodporúča. Pokračovať s generovaním?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Bola nájdená len núdzová sada zvukov. Pre plnú podporu zvukových efektov je potrebné nainštalovať zvukovú sadu cez online obsah.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Bola nájdená len núdzová sada zvukov. Pre viac zvukových efektov je potrebné stiahnuť zvukovú sadu cez online.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Snímka bola uložená na disk ako '{STRING}'
@@ -3561,7 +3569,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... prí
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... príliš blízko iného mesta
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... príliš veľa miest
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie je dalsie miesto na mape
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesto nevybuduje cesty. Môžete povoliť budovanie ciest cez Pokročilé nasvavenia->Ekonomika->Mestá.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesto nebude stavať cesty. Môžete povoliť budovanie ciest cez Pokročilé nasvavenia->Ekonomika->Mestá.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Prebiehaju cestne prace
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Toto mesto nie je možné odstrániť...{}Stanica alebo depo sa odvoláva na mesto, alebo parcela vo vlastníctve mesta nemôže byť odstránená
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v centre mesta sa nenachádza žiadne vhodné miesto pre sochu
