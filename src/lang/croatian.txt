@@ -1497,7 +1497,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Provjeri
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikaži postavke umjetne inteligencije
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Završi 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Ovom prijevodu nedostaje {NUM} slijed{P 0:1 "" s}. Molimo, pomognite učiniti OpenTTD boljim tako da se prijavite kao prevoditelj. Pogledajte readme.txt za detalje.
+STR_INTRO_TRANSLATION                                           :{BLACK}Ovom prijevodu nedostaje {NUM} slijed. Molimo, pomognite učiniti OpenTTD boljim tako da se prijavite kao prevoditelj. Pogledajte readme.txt za detalje.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Prekid
@@ -2622,7 +2622,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna indu
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tražim NewGRFove
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Tražim NewGRFove. Ovisno o količini ovo može malo potrajati...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P 0:1 "" s} skeniran iz procijenjenog {NUM} NewGRF{P 0:1 "" s}
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF skeniran iz procijenjenog {NUM} NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :Tražim arhive
 
 # Sign list window
