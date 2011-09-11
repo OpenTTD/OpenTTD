@@ -311,15 +311,15 @@ class FullscreenSubdriver: public CocoaSubdriver {
 
 		/* Since CGDisplayBaseAddress and CGDisplayBytesPerRow are no longer available on 10.7,
 		 * disable until a replacement can be found. */
-        if (MacOSVersionIsAtLeast(10, 7, 0)) {
-            this->window_buffer = NULL;
-            this->window_pitch  = NULL;
-        } else {
+		if (MacOSVersionIsAtLeast(10, 7, 0)) {
+			this->window_buffer = NULL;
+			this->window_pitch  = NULL;
+		} else {
 #if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_7)
-            this->window_buffer = CGDisplayBaseAddress(this->display_id);
-            this->window_pitch  = CGDisplayBytesPerRow(this->display_id);
+			this->window_buffer = CGDisplayBaseAddress(this->display_id);
+			this->window_pitch  = CGDisplayBytesPerRow(this->display_id);
 #endif
-        }
+		}
 
 		this->device_width  = CGDisplayPixelsWide(this->display_id);
 		this->device_height = CGDisplayPixelsHigh(this->display_id);

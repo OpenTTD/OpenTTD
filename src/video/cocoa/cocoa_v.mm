@@ -143,7 +143,7 @@ static void setupWindowMenu()
 	[ menuItem setSubmenu:windowMenu ];
 	[ [ NSApp mainMenu ] addItem:menuItem ];
 
-	if(MacOSVersionIsAtLeast(10, 7, 0)) {
+	if (MacOSVersionIsAtLeast(10, 7, 0)) {
 		/* The OS will change the name of this menu item automatically */
 		[ windowMenu addItemWithTitle:@"Fullscreen" action:@selector(toggleFullScreen:) keyEquivalent:@"^f" ];
 	}
@@ -241,14 +241,12 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 	CocoaSubdriver *ret;
 #endif
 
-#ifdef ENABLE_COCOA_QUARTZ
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
+#ifdef ENABLE_COCOA_QUARTZ && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
 	/* The reason for the version mismatch is due to the fact that the 10.4 binary needs to work on 10.5 as well. */
 	if (MacOSVersionIsAtLeast(10, 5, 0)) {
 		ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
 		if (ret != NULL) return ret;
 	}
-#endif
 #endif
 
 #ifdef ENABLE_COCOA_QUICKDRAW
@@ -256,8 +254,7 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 	if (ret != NULL) return ret;
 #endif
 
-#ifdef ENABLE_COCOA_QUARTZ
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
+#ifdef ENABLE_COCOA_QUARTZ && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
 	/*
 	 * If we get here we are running 10.4 or earlier and either openttd was compiled without the QuickDraw driver
 	 * or it failed to load for some reason. Fall back to Quartz if possible even though that driver is slower.
@@ -266,7 +263,6 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 		ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
 		if (ret != NULL) return ret;
 	}
-#endif
 #endif
 
 	return NULL;
@@ -307,11 +303,14 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 	ret = QZ_CreateWindowSubdriver(640, 480, bpp);
 	if (ret != NULL) return ret;
 
-#ifdef _DEBUG && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
-	/* Try fullscreen too when in debug mode */
-	DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 fullscreen mode.");
-	ret = QZ_CreateFullscreenSubdriver(640, 480, bpp);
-	if (ret != NULL) return ret;
+#ifdef _DEBUG
+	/* This Fullscreen mode crashes on OSX 10.7 */
+	if !(MacOSVersionIsAtLeast(10, 7, 0) {
+		/* Try fullscreen too when in debug mode */
+		DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 fullscreen mode.");
+		ret = QZ_CreateFullscreenSubdriver(640, 480, bpp);
+		if (ret != NULL) return ret;
+	}
 #endif
 
 	return NULL;
@@ -681,8 +680,8 @@ void cocoaReleaseAutoreleasePool()
 {
 	NSPoint loc = [ self convertPoint:[ [ self window ] mouseLocationOutsideOfEventStream ] fromView:nil ];
 	BOOL inside = ([ self hitTest:loc ]==self);
-	if(inside) [ [ self window] makeFirstResponder:self ];
-	trackingtag = [ self addTrackingRect:[self visibleRect] owner:self userData:nil assumeInside:inside ];
+	if (inside) [ [ self window ] makeFirstResponder:self ];
+	trackingtag = [ self addTrackingRect:[ self visibleRect ] owner:self userData:nil assumeInside:inside ];
 }
 /**
  * Return responsibility for the application window to system
@@ -713,7 +712,7 @@ void cocoaReleaseAutoreleasePool()
  */
 - (void)viewDidMoveToWindow
 {
-	if([ self window ]) [ self setTrackingRect ];
+	if ([ self window ]) [ self setTrackingRect ];
 }
 /**
  * Make OpenTTD aware that it has control over the mouse
