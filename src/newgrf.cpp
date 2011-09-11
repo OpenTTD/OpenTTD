@@ -129,14 +129,15 @@ public:
 	 * Records new spritesets.
 	 * @param feature GrfSpecFeature the set is defined for.
 	 * @param first_sprite SpriteID of the first sprite in the set.
+	 * @param first_set First spriteset to define.
 	 * @param numsets Number of sets to define.
 	 * @param numents Number of sprites per set to define.
 	 */
-	void AddSpriteSets(byte feature, SpriteID first_sprite, uint numsets, uint numents)
+	void AddSpriteSets(byte feature, SpriteID first_sprite, uint first_set, uint numsets, uint numents)
 	{
 		assert(feature < GSF_END);
 		for (uint i = 0; i < numsets; i++) {
-			SpriteSet &set = this->spritesets[feature][i];
+			SpriteSet &set = this->spritesets[feature][first_set + i];
 			set.sprite = first_sprite + i * numents;
 			set.num_sprites = numents;
 		}
@@ -4197,9 +4198,17 @@ static void NewSpriteSet(ByteReader *buf)
 
 	uint8 feature   = buf->ReadByte();
 	uint8 num_sets  = buf->ReadByte();
+	uint16 first_set = 0;
+
+	if (num_sets == 0 && buf->HasData(2)) {
+		/* Extended Action1 format.
+		 * Some GRFs define zero sets of zero sprites, though there is actually no use in that. Ignore them. */
+		first_set = buf->ReadExtendedByte();
+		num_sets = buf->ReadExtendedByte();
+	}
 	uint16 num_ents = buf->ReadExtendedByte();
 
-	_cur.AddSpriteSets(feature, _cur.spriteid, num_sets, num_ents);
+	_cur.AddSpriteSets(feature, _cur.spriteid, first_set, num_sets, num_ents);
 
 	grfmsg(7, "New sprite set at %d of type %d, consisting of %d sets with %d views each (total %d)",
 		_cur.spriteid, feature, num_sets, num_ents, num_sets * num_ents
