@@ -83,11 +83,14 @@ static const uint MAX_SPRITEGROUP = UINT8_MAX; ///< Maximum GRF-local ID for a s
 /** Temporary data during loading of GRFs */
 struct GrfProcessingState {
 private:
-	/* Currently referenceable spritesets */
-	SpriteID spriteset_start; ///< SpriteID of the first sprite of the first set.
-	uint spriteset_numsets;   ///< Number of spritesets.
-	uint spriteset_numents;   ///< Number of sprites per set.
-	byte spriteset_feature;   ///< GrfSpecFeature of the spriteset.
+	/** Definition of a single Action1 spriteset */
+	struct SpriteSet {
+		SpriteID sprite;  ///< SpriteID of the first sprite of the set.
+		uint num_sprites; ///< Number of sprites in the set.
+	};
+
+	/** Currently referenceable spritesets */
+	std::map<uint, SpriteSet> spritesets[GSF_END];
 
 public:
 	/* Global state */
@@ -115,10 +118,9 @@ public:
 		this->skip_sprites = 0;
 		this->data_blocks = 0;
 
-		this->spriteset_start = 0;
-		this->spriteset_numsets = 0;
-		this->spriteset_numents = 0;
-		this->spriteset_feature = GSF_INVALID;
+		for (uint i = 0; i < GSF_END; i++) {
+			this->spritesets[i].clear();
+		}
 
 		memset(this->spritegroups, 0, sizeof(this->spritegroups));
 	}
@@ -132,10 +134,12 @@ public:
 	 */
 	void AddSpriteSets(byte feature, SpriteID first_sprite, uint numsets, uint numents)
 	{
-		this->spriteset_feature = feature;
-		this->spriteset_start = first_sprite;
-		this->spriteset_numsets = numsets;
-		this->spriteset_numents = numents;
+		assert(feature < GSF_END);
+		for (uint i = 0; i < numsets; i++) {
+			SpriteSet &set = this->spritesets[feature][i];
+			set.sprite = first_sprite + i * numents;
+			set.num_sprites = numents;
+		}
 	}
 
 	/**
@@ -146,7 +150,8 @@ public:
 	 */
 	bool HasValidSpriteSets(byte feature) const
 	{
-		return feature == this->spriteset_feature && this->spriteset_numsets > 0;
+		assert(feature < GSF_END);
+		return !this->spritesets[feature].empty();
 	}
 
 	/**
@@ -158,7 +163,8 @@ public:
 	 */
 	bool IsValidSpriteSet(byte feature, uint set) const
 	{
-		return feature == this->spriteset_feature && set < this->spriteset_numsets;
+		assert(feature < GSF_END);
+		return this->spritesets[feature].find(set) != this->spritesets[feature].end();
 	}
 
 	/**
@@ -170,7 +176,7 @@ public:
 	SpriteID GetSprite(byte feature, uint set) const
 	{
 		assert(IsValidSpriteSet(feature, set));
-		return this->spriteset_start + set * this->spriteset_numents;
+		return this->spritesets[feature].find(set)->second.sprite;
 	}
 
 	/**
@@ -182,7 +188,7 @@ public:
 	uint GetNumEnts(byte feature, uint set) const
 	{
 		assert(IsValidSpriteSet(feature, set));
-		return this->spriteset_numents;
+		return this->spritesets[feature].find(set)->second.num_sprites;
 	}
 };
 
