@@ -476,7 +476,6 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 		/* Limit the building stage to the number of stages supplied. */
 		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
 		byte stage = GetHouseBuildingStage(ti->tile);
-		stage = tlgroup->GetConstructionStageOffset(stage);
 		DrawTileLayout(ti, tlgroup, stage, house_id);
 	}
 }

@@ -236,6 +236,7 @@ const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject *object) const
  */
 const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8 *stage) const
 {
+	if (stage != NULL) *stage = GetConstructionStageOffset(*stage, this->num_building_stages);
 	if (!this->dts.NeedsPreprocessing()) return &this->dts;
 
 	static DrawTileSprites result;
