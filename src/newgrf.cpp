@@ -1650,15 +1650,15 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteRead
 	}
 
 	for (int i = 0; i < numinfo; i++) {
-		WaterFeature *wf = &_water_feature[id + i];
+		CanalProperties *cp = &_cur.grffile->canal_local_properties[id + i];
 
 		switch (prop) {
 			case 0x08:
-				wf->callback_mask = buf->ReadByte();
+				cp->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x09:
-				wf->flags = buf->ReadByte();
+				cp->flags = buf->ReadByte();
 				break;
 
 			default:
@@ -7656,6 +7656,17 @@ static void CalculateRefitMasks()
 	}
 }
 
+/** Set to use the correct action0 properties for each canal feature */
+static void FinaliseCanals()
+{
+	for (uint i = 0; i < CF_END; i++) {
+		if (_water_feature[i].grffile != NULL) {
+			_water_feature[i].callback_mask = _water_feature[i].grffile->canal_local_properties[i].callback_mask;
+			_water_feature[i].flags = _water_feature[i].grffile->canal_local_properties[i].flags;
+		}
+	}
+}
+
 /** Check for invalid engines */
 static void FinaliseEngineArray()
 {
@@ -8347,6 +8358,9 @@ static void AfterLoadGRFs()
 
 	/* Polish engines */
 	FinaliseEngineArray();
+
+	/* Set the actually used Canal properties */
+	FinaliseCanals();
 
 	/* Set the block size in the depot windows based on vehicle sprite sizes */
 	InitDepotWindowBlockSizes();

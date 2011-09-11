@@ -16,21 +16,6 @@
 #include "tile_type.h"
 #include "newgrf_generic.h"
 
-/**
- * List of different canal 'features'.
- * Each feature gets an entry in the canal spritegroup table
- */
-enum CanalFeature {
-	CF_WATERSLOPE,
-	CF_LOCKS,
-	CF_DIKES,
-	CF_ICON,
-	CF_DOCKS,
-	CF_RIVER_SLOPE,
-	CF_RIVER_EDGE,
-	CF_END,
-};
-
 /** Flags controlling the display of canals. */
 enum CanalFeatureFlag {
 	CFF_HAS_FLAT_SPRITE = 0, ///< Additional flat ground sprite in the beginning.
