@@ -127,6 +127,7 @@ static GrfProcessingState _cur;
 
 class OTTDByteReaderSignal { };
 
+/** Class to read from a NewGRF file */
 class ByteReader {
 protected:
 	byte *data;
@@ -217,7 +218,7 @@ typedef void (*SpecialSpriteHandler)(ByteReader *buf);
 
 static const uint MAX_STATIONS = 256;
 
-/* Temporary data used when loading only */
+/** Temporary engine data used when loading only */
 struct GRFTempEngineData {
 	uint16 cargo_allowed;
 	uint16 cargo_disallowed;
@@ -228,14 +229,15 @@ struct GRFTempEngineData {
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 };
 
-static GRFTempEngineData *_gted;
+static GRFTempEngineData *_gted;  ///< Temporary engine data used during NewGRF loading
 
-/* Contains the GRF ID of the owner of a vehicle if it has been reserved.
+/**
+ * Contains the GRF ID of the owner of a vehicle if it has been reserved.
  * GRM for vehicles is only used if dynamic engine allocation is disabled,
  * so 256 is the number of original engines. */
 static uint32 _grm_engines[256];
 
-/* Contains the GRF ID of the owner of a cargo if it has been reserved */
+/** Contains the GRF ID of the owner of a cargo if it has been reserved */
 static uint32 _grm_cargos[NUM_CARGO * 2];
 
 struct GRFLocation {
@@ -281,6 +283,11 @@ void CDECL grfmsg(int severity, const char *str, ...)
 	DEBUG(grf, severity, "[%s:%d] %s", _cur.grfconfig->filename, _cur.nfo_line, buf);
 }
 
+/**
+ * Obtain a NewGRF file by its grfID
+ * @param grfid The grfID to obtain the file for
+ * @return The file.
+ */
 static GRFFile *GetFileByGRFID(uint32 grfid)
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -290,6 +297,11 @@ static GRFFile *GetFileByGRFID(uint32 grfid)
 	return NULL;
 }
 
+/**
+ * Obtain a NewGRF file by its filename
+ * @param filename The filename to obtain the file for.
+ * @return The file.
+ */
 static GRFFile *GetFileByFilename(const char *filename)
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -313,9 +325,9 @@ static void ClearTemporaryNewGRFData(GRFFile *gf)
 
 /**
  * Disable a GRF
- * @param message Error message or STR_NULL
- * @param config GRFConfig to disable, NULL for current
- * @return Error message of the GRF for further customisation
+ * @param message Error message or STR_NULL.
+ * @param config GRFConfig to disable, NULL for current.
+ * @return Error message of the GRF for further customisation.
  */
 static GRFError *DisableGrf(StringID message = STR_NULL, GRFConfig *config = NULL)
 {
@@ -346,9 +358,9 @@ static StringIDToGRFIDMapping _string_to_grf_mapping;
 /**
  * Used when setting an object's property to map to the GRF's strings
  * while taking in consideration the "drift" between TTDPatch string system and OpenTTD's one
- * @param grfid Id of the grf file
- * @param str StringID that we want to have the equivalent in OoenTTD
- * @return the properly adjusted StringID
+ * @param grfid Id of the grf file.
+ * @param str StringID that we want to have the equivalent in OoenTTD.
+ * @return The properly adjusted StringID.
  */
 StringID MapGRFStringID(uint32 grfid, StringID str)
 {
@@ -374,6 +386,11 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 
 static std::map<uint32, uint32> _grf_id_overrides;
 
+/**
+ * Set the override for a NewGRF
+ * @param source_grfid The grfID which wants to override another NewGRF.
+ * @param target_grfid The grfID which is being overridden.
+ */
 static void SetNewGRFOverride(uint32 source_grfid, uint32 target_grfid)
 {
 	_grf_id_overrides[source_grfid] = target_grfid;
@@ -382,11 +399,11 @@ static void SetNewGRFOverride(uint32 source_grfid, uint32 target_grfid)
 
 /**
  * Returns the engine associated to a certain internal_id, resp. allocates it.
- * @param file NewGRF that wants to change the engine
- * @param type Vehicle type
- * @param internal_id Engine ID inside the NewGRF
- * @param static_access If the engine is not present, return NULL instead of allocating a new engine. (Used for static Action 0x04)
- * @return The requested engine
+ * @param file NewGRF that wants to change the engine.
+ * @param type Vehicle type.
+ * @param internal_id Engine ID inside the NewGRF.
+ * @param static_access If the engine is not present, return NULL instead of allocating a new engine. (Used for static Action 0x04).
+ * @return The requested engine.
  */
 static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 internal_id, bool static_access = false)
 {
@@ -473,6 +490,16 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	return e;
 }
 
+/**
+ * Return the ID of a new engine
+ * @param file The NewGRF file providing the engine.
+ * @param type The Vehicle type.
+ * @param internal_id NewGRF-internal ID of the engine.
+ * @return The new EngineID.
+ * @note depending on the dynamic_engine setting and a possible override
+ *       property the grfID may be unique or overwriting or partially re-defining
+ *       properties of an existing engine.
+ */
 EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id)
 {
 	uint32 scope_grfid = INVALID_GRFID; // If not using dynamic_engines, all newgrfs share their ID range
@@ -487,7 +514,7 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_i
 
 /**
  * Map the colour modifiers of TTDPatch to those that Open is using.
- * @param grf_sprite pointer to the structure been modified
+ * @param grf_sprite Pointer to the structure been modified.
  */
 static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 {
@@ -517,7 +544,7 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
  * @param action1_pitch       Factor to multiply action 1 sprite indices with.
  * @param action1_max         Maximal valid action 1 index.
  * @param [out] grf_sprite    Read sprite and palette.
- * @return read TileLayoutFlags.
+ * @return Read TileLayoutFlags.
  */
 static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, bool invert_action1_flag, uint action1_offset, uint action1_pitch, uint action1_max, PalSpriteID *grf_sprite)
 {
@@ -627,7 +654,7 @@ static void ReadSpriteLayoutRegisters(ByteReader *buf, TileLayoutFlags flags, bo
  * @param allow_var10          Whether the spritelayout may specifiy var10 values for resolving multiple action-1-2-3 chains
  * @param no_z_position        Whether bounding boxes have no Z offset
  * @param dts                  Layout container to output into
- * @return true on error (GRF was disabled)
+ * @return True on error (GRF was disabled).
  */
 static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, uint action1_offset, uint action1_pitch, uint action1_max, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts)
 {
@@ -706,6 +733,7 @@ static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location,
 	*index = (Price)((base_pointer - start) / size);
 }
 
+/** Possible return values for the FeatureChangeInfo functions */
 enum ChangeInfoResult {
 	CIR_SUCCESS,    ///< Variable was parsed and read
 	CIR_DISABLED,   ///< GRF was disabled due to error
@@ -716,6 +744,13 @@ enum ChangeInfoResult {
 
 typedef ChangeInfoResult (*VCI_Handler)(uint engine, int numinfo, int prop, ByteReader *buf);
 
+/**
+ * Define properties common to all vehicles
+ * @param ei Engine info.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteReader *buf)
 {
 	switch (prop) {
@@ -751,6 +786,14 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 	return CIR_SUCCESS;
 }
 
+/**
+ * Define properties for rail vehicles
+ * @param engine :ocal ID of the first vehicle.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1008,6 +1051,14 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 	return ret;
 }
 
+/**
+ * Define properties for road vehicles
+ * @param engine Local ID of the first vehicle.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1154,6 +1205,14 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 	return ret;
 }
 
+/**
+ * Define properties for ships
+ * @param engine Local ID of the first vehicle.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1288,6 +1347,14 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 	return ret;
 }
 
+/**
+ * Define properties for aircraft
+ * @param engine Local ID of the aircraft.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1406,6 +1473,14 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 	return ret;
 }
 
+/**
+ * Define properties for stations
+ * @param stdid StationID of the first station tile.
+ * @param numinfo Number of subsequent station tiles to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1640,6 +1715,14 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 	return ret;
 }
 
+/**
+ * Define properties for water features
+ * @param id Type of the first water feature.
+ * @param numinfo Number of subsequent water feature ids to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1670,6 +1753,14 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteRead
 	return ret;
 }
 
+/**
+ * Define properties for bridges
+ * @param brid BridgeID of the bridge.
+ * @param numinfo Number of subsequent bridgeIDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1774,6 +1865,12 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 	return ret;
 }
 
+/**
+ * Ignore a house property
+ * @param prop Property to read.
+ * @param buf Property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1830,6 +1927,14 @@ static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader *buf)
 	return ret;
 }
 
+/**
+ * Define properties for houses
+ * @param hid HouseID of the house.
+ * @param numinfo Number of subsequent houseIDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2066,7 +2171,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
  * Get the language map associated with a given NewGRF and language.
  * @param grfid       The NewGRF to get the map for.
  * @param language_id The (NewGRF) language ID to get the map for.
- * @return the LanguageMap, or NULL if it couldn't be found.
+ * @return The LanguageMap, or NULL if it couldn't be found.
  */
 /* static */ const LanguageMap *LanguageMap::GetLanguageMap(uint32 grfid, uint8 language_id)
 {
@@ -2075,6 +2180,14 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 	return (grffile != NULL && grffile->language_map != NULL && language_id < MAX_LANG) ? &grffile->language_map[language_id] : NULL;
 }
 
+/**
+ * Define properties for global variables
+ * @param gvid ID of the global variable.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2361,6 +2474,14 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 }
 
 
+/**
+ * Define properties for cargos
+ * @param cid Local ID of the cargo.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2492,6 +2613,14 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 }
 
 
+/**
+ * Define properties for sound effects
+ * @param sid Local ID of the sound.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2541,6 +2670,12 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 	return ret;
 }
 
+/**
+ * Ignore an industry tile property
+ * @param prop The property to ignore.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult IgnoreIndustryTileProperty(int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2569,6 +2704,14 @@ static ChangeInfoResult IgnoreIndustryTileProperty(int prop, ByteReader *buf)
 	return ret;
 }
 
+/**
+ * Define properties for industry tiles
+ * @param indtid Local ID of the industry tile.
+ * @param numinfo Number of subsequent industry tile IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2681,6 +2824,12 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 	return ret;
 }
 
+/**
+ * Ignore an industry property
+ * @param prop The property to ignore.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2762,9 +2911,9 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 
 /**
  * Validate the industry layout; e.g. to prevent duplicate tiles.
- * @param layout the layout to check
- * @param size the size of the layout
- * @return true if the layout is deemed valid
+ * @param layout The layout to check.
+ * @param size The size of the layout.
+ * @return True if the layout is deemed valid.
  */
 static bool ValidateIndustryLayout(const IndustryTileTable *layout, int size)
 {
@@ -2793,6 +2942,14 @@ static void CleanIndustryTileTable(IndustrySpec *ind)
 	}
 }
 
+/**
+ * Define properties for industries
+ * @param indid Local ID of the industry.
+ * @param numinfo Number of subsequent industry IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -3126,6 +3283,14 @@ static void DuplicateTileTable(AirportSpec *as)
 	as->depot_table = depot_table;
 }
 
+/**
+ * Define properties for airports
+ * @param airport Local ID of the airport.
+ * @param numinfo Number of subsequent airport IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -3292,6 +3457,12 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 	return ret;
 }
 
+/**
+ * Ignore properties for objects
+ * @param prop The property to ignore.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -3329,6 +3500,14 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
 	return ret;
 }
 
+/**
+ * Define properties for objects
+ * @param id Local ID of the object.
+ * @param numinfo Number of subsequent objectIDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -3450,6 +3629,14 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 	return ret;
 }
 
+/**
+ * Define properties for railtypes
+ * @param id ID of the railtype.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param prop The property to change.
+ * @param buf The property value.
+ * @return ChangeInfoResult.
+ */
 static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -4923,11 +5110,11 @@ static void FeatureNewName(ByteReader *buf)
 
 /**
  * Sanitize incoming sprite offsets for Action 5 graphics replacements.
- * @param num         the number of sprites to load.
- * @param offset      offset from the base.
- * @param max_sprites the maximum number of sprites that can be loaded in this action 5.
- * @param name        used for error warnings.
- * @return the number of sprites that is going to be skipped
+ * @param num         The number of sprites to load.
+ * @param offset      Offset from the base.
+ * @param max_sprites The maximum number of sprites that can be loaded in this action 5.
+ * @param name        Used for error warnings.
+ * @return The number of sprites that is going to be skipped.
  */
 static uint16 SanitizeSpriteOffset(uint16& num, uint16 offset, int max_sprites, const char *name)
 {
@@ -5388,7 +5575,7 @@ static void CfgApply(ByteReader *buf)
  * We could just tell the NewGRF querying that the file doesn't exist,
  * but that might give unwanted results. Disabling the NewGRF gives the
  * best result as no NewGRF author can complain about that.
- * @param c the NewGRF to disable.
+ * @param c The NewGRF to disable.
  */
 static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 {
@@ -5920,7 +6107,7 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 }
 
 
-/* Action 0x0D */
+/** Action 0x0D: Set parameter */
 static void ParamSet(ByteReader *buf)
 {
 	/* <0D> <target> <operation> <source1> <source2> [<data>]
@@ -6269,7 +6456,7 @@ static void GRFInhibit(ByteReader *buf)
 	}
 }
 
-/* Action 0x0F */
+/** Action 0x0F - Define Town names */
 static void FeatureTownName(ByteReader *buf)
 {
 	/* <0F> <id> <style-name> <num-parts> <parts>
@@ -6353,7 +6540,7 @@ static void FeatureTownName(ByteReader *buf)
 	}
 }
 
-/* Action 0x10 */
+/** Action 0x10 - Define goto label */
 static void DefineGotoLabel(ByteReader *buf)
 {
 	/* <10> <label> [<comment>]
@@ -6537,7 +6724,7 @@ static void LoadGRFSound(ByteReader *buf)
 	MemSetT(sound, 0);
 }
 
-/* Action 0x12 */
+/** Action 0x12 */
 static void LoadFontGlyph(ByteReader *buf)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>
@@ -6564,7 +6751,7 @@ static void LoadFontGlyph(ByteReader *buf)
 	}
 }
 
-/* Action 0x12 (SKIP) */
+/** Action 0x12 (SKIP) */
 static void SkipAct12(ByteReader *buf)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>
@@ -6590,7 +6777,7 @@ static void SkipAct12(ByteReader *buf)
 	grfmsg(3, "SkipAct12: Skipping %d sprites", _cur.skip_sprites);
 }
 
-/* Action 0x13 */
+/** Action 0x13 */
 static void TranslateGRFStrings(ByteReader *buf)
 {
 	/* <13> <grfid> <num-ent> <offset> <text...>
@@ -6933,6 +7120,7 @@ static bool ChangeGRFParamValueNames(ByteReader *buf)
 	return true;
 }
 
+/** Action14 parameter tags */
 AllowedSubtags _tags_parameters[] = {
 	AllowedSubtags('NAME', ChangeGRFParamName),
 	AllowedSubtags('DESC', ChangeGRFParamDescription),
@@ -6978,6 +7166,7 @@ static bool HandleParameterInfo(ByteReader *buf)
 	return true;
 }
 
+/** Action14 tags for the INFO node */
 AllowedSubtags _tags_info[] = {
 	AllowedSubtags('NAME', ChangeGRFName),
 	AllowedSubtags('DESC', ChangeGRFDescription),
@@ -6989,6 +7178,7 @@ AllowedSubtags _tags_info[] = {
 	AllowedSubtags()
 };
 
+/** Action14 root tags */
 AllowedSubtags _tags_root[] = {
 	AllowedSubtags('INFO', _tags_info),
 	AllowedSubtags()
@@ -6997,6 +7187,8 @@ AllowedSubtags _tags_root[] = {
 
 /**
  * Try to skip the current node and all subnodes (if it's a branch node).
+ * @param buf Buffer.
+ * @param type The node type to skip.
  * @return True if we could skip the node, false if an error occured.
  */
 static bool SkipUnknownInfo(ByteReader *buf, byte type)
@@ -7031,6 +7223,14 @@ static bool SkipUnknownInfo(ByteReader *buf, byte type)
 	return true;
 }
 
+/**
+ * Handle the nodes of an Action14
+ * @param type Type of node.
+ * @param id ID.
+ * @param buf Buffer.
+ * @param subtags Allowed subtags.
+ * @return Whether all tags could be handled.
+ */
 static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags subtags[])
 {
 	uint i = 0;
@@ -7063,6 +7263,12 @@ static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags sub
 	return SkipUnknownInfo(buf, type);
 }
 
+/**
+ * Handle the contents of a 'C' choice of an Action14
+ * @param buf Buffer.
+ * @param subtags List of subtags.
+ * @return Whether the nodes could all be handled.
+ */
 static bool HandleNodes(ByteReader *buf, AllowedSubtags subtags[])
 {
 	byte type = buf->ReadByte();
@@ -7074,14 +7280,17 @@ static bool HandleNodes(ByteReader *buf, AllowedSubtags subtags[])
 	return true;
 }
 
-/* Action 0x14 */
+/**
+ * Handle Action 0x14
+ * @param buf Buffer.
+ */
 static void StaticGRFInfo(ByteReader *buf)
 {
 	/* <14> <type> <id> <text/data...> */
 	HandleNodes(buf, _tags_root);
 }
 
-/* 'Action 0xFF' */
+/** 'Action 0xFF' */
 static void GRFDataBlock(ByteReader *buf)
 {
 	/* <FF> <name_len> <name> '\0' <data> */
@@ -7111,8 +7320,11 @@ static void GRFDataBlock(ByteReader *buf)
 	}
 }
 
-
-/* Used during safety scan on unsafe actions */
+/**
+ * Set the current NewGRF as unsafe for static use
+ * @param buf Unused.
+ * @note Used during safety scan on unsafe actions.
+ */
 static void GRFUnsafe(ByteReader *buf)
 {
 	SetBit(_cur.grfconfig->flags, GCF_UNSAFE);
@@ -7122,6 +7334,7 @@ static void GRFUnsafe(ByteReader *buf)
 }
 
 
+/** Initialize the TTDPatch flags */
 static void InitializeGRFSpecial()
 {
 	_ttdpatch_flags[0] = ((_settings_game.station.never_expire_airports ? 1 : 0) << 0x0C)  // keepsmallairport
@@ -7206,6 +7419,7 @@ static void InitializeGRFSpecial()
 	                   |                                                      (1 << 0x1F); // any switch is on
 }
 
+/** Reset and clear all NewGRF stations */
 static void ResetCustomStations()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -7240,6 +7454,7 @@ static void ResetCustomStations()
 	}
 }
 
+/** Reset and clear all NewGRF houses */
 static void ResetCustomHouses()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -7255,6 +7470,7 @@ static void ResetCustomHouses()
 	}
 }
 
+/** Reset and clear all NewGRF airports */
 static void ResetCustomAirports()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -7291,6 +7507,7 @@ static void ResetCustomAirports()
 	}
 }
 
+/** Reset and clear all NewGRF industries */
 static void ResetCustomIndustries()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -7330,6 +7547,7 @@ static void ResetCustomIndustries()
 	}
 }
 
+/** Reset and clear all NewObjects */
 static void ResetCustomObjects()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -7345,7 +7563,7 @@ static void ResetCustomObjects()
 	}
 }
 
-
+/** Reset and clear all NewGRFs */
 static void ResetNewGRF()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -7362,6 +7580,7 @@ static void ResetNewGRF()
 	_cur.grffile   = NULL;
 }
 
+/** Clear all NewGRF errors */
 static void ResetNewGRFErrors()
 {
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
@@ -7480,6 +7699,10 @@ void ResetPersistentNewGRFData()
 	_airporttile_mngr.ResetMapping();
 }
 
+/**
+ * Construct the Cargo Mapping
+ * @note This is the reverse of a cargo translation table
+ */
 static void BuildCargoTranslationMap()
 {
 	memset(_cur.grffile->cargo_map, 0xFF, sizeof(_cur.grffile->cargo_map));
@@ -7503,6 +7726,10 @@ static void BuildCargoTranslationMap()
 	}
 }
 
+/**
+ * Prepare loading a NewGRF file with its config
+ * @param config The NewGRF configuration struct with name, id, parameters and alike.
+ */
 static void InitNewGRFFile(const GRFConfig *config)
 {
 	GRFFile *newfile = GetFileByFilename(config->filename);
@@ -8337,6 +8564,7 @@ void InitDepotWindowBlockSizes();
 
 extern void InitGRFTownGeneratorNames();
 
+/** Finish loading NewGRFs and execute needed post-processing */
 static void AfterLoadGRFs()
 {
 	for (StringIDToGRFIDMapping::iterator it = _string_to_grf_mapping.begin(); it != _string_to_grf_mapping.end(); it++) {
@@ -8519,6 +8747,11 @@ void LoadNewGRF(uint load_index, uint file_index)
 	_display_opt  = display_opt;
 }
 
+/**
+ * Check for grf miscelaneous bits
+ * @param bit The bit to check.
+ * @return Whether the bit is set.
+ */
 bool HasGrfMiscBit(GrfMiscBit bit)
 {
 	return HasBit(_misc_grf_features, bit);
