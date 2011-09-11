@@ -75,8 +75,11 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 new_act_pass;
 	uint32 new_act_mail;
 
-	byte pct_pass_transported;     ///< amount of passengers that were transported
-	byte pct_mail_transported;     ///< amount of mail that was transported
+	/** Percentage of passengers transported last month (0xFF=100%) */
+	inline byte GetPercentPassTransported() const { return this->act_pass * 256 / (this->max_pass + 1); }
+
+	/** Percentage of mail transported last month (0xFF=100%) */
+	inline byte GetPercentMailTransported() const { return this->act_mail * 256 / (this->max_mail + 1); }
 
 	uint16 act_food;               ///< amount of food that was transported
 	uint16 act_water;              ///< amount of water that was transported

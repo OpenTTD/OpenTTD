@@ -99,8 +99,8 @@
 	const Town *t = ::Town::Get(town_id);
 
 	switch (AICargo::GetTownEffect(cargo_id)) {
-		case AICargo::TE_PASSENGERS: return ::ToPercent8(t->pct_pass_transported);
-		case AICargo::TE_MAIL:       return ::ToPercent8(t->pct_mail_transported);
+		case AICargo::TE_PASSENGERS: return ::ToPercent8(t->GetPercentPassTransported());
+		case AICargo::TE_MAIL:       return ::ToPercent8(t->GetPercentMailTransported());
 		default: return -1;
 	}
 }

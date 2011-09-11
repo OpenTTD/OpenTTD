@@ -107,8 +107,8 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t, 
 		case 0xC7: return GB(ClampToU16(t->act_pass), 8, 8);
 		case 0xC8: return ClampToU16(t->act_mail);
 		case 0xC9: return GB(ClampToU16(t->act_mail), 8, 8);
-		case 0xCA: return t->pct_pass_transported;
-		case 0xCB: return t->pct_mail_transported;
+		case 0xCA: return t->GetPercentPassTransported();
+		case 0xCB: return t->GetPercentMailTransported();
 		case 0xCC: return t->new_act_food;
 		case 0xCD: return GB(t->new_act_food, 8, 8);
 		case 0xCE: return t->new_act_water;

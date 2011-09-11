@@ -577,8 +577,7 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, act_pass ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, act_mail ),
 
-	OCL_SVAR(  OC_UINT8, Town, pct_pass_transported ),
-	OCL_SVAR(  OC_UINT8, Town, pct_mail_transported ),
+	OCL_NULL( 2 ),         ///< pct_pass_transported / pct_mail_transported, now computed on the fly
 
 	OCL_SVAR( OC_TTD | OC_UINT16, Town, new_act_food ),
 	OCL_SVAR( OC_TTD | OC_UINT16, Town, new_act_water ),

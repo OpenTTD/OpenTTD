@@ -146,8 +146,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, new_act_pass,          SLE_UINT32,                 9, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, new_act_mail,          SLE_UINT32,                 9, SL_MAX_VERSION),
 
-	    SLE_VAR(Town, pct_pass_transported,  SLE_UINT8),
-	    SLE_VAR(Town, pct_mail_transported,  SLE_UINT8),
+	SLE_CONDNULL(2, 0, 163),                 ///< pct_pass_transported / pct_mail_transported, now computed on the fly
 
 	    SLE_VAR(Town, act_food,              SLE_UINT16),
 	    SLE_VAR(Town, act_water,             SLE_UINT16),

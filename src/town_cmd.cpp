@@ -1431,8 +1431,6 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->act_pass = 0;
 	t->act_mail = 0;
 
-	t->pct_pass_transported = 0;
-	t->pct_mail_transported = 0;
 	t->fund_buildings_months = 0;
 	t->new_act_food = 0;
 	t->new_act_water = 0;
@@ -2804,16 +2802,11 @@ static void UpdateTownGrowRate(Town *t)
 
 static void UpdateTownAmounts(Town *t)
 {
-	/* Using +1 here to prevent overflow and division by zero */
-	t->pct_pass_transported = t->new_act_pass * 256 / (t->new_max_pass + 1);
-
 	t->max_pass = t->new_max_pass; t->new_max_pass = 0;
 	t->act_pass = t->new_act_pass; t->new_act_pass = 0;
 	t->act_food = t->new_act_food; t->new_act_food = 0;
 	t->act_water = t->new_act_water; t->new_act_water = 0;
 
-	/* Using +1 here to prevent overflow and division by zero */
-	t->pct_mail_transported = t->new_act_mail * 256 / (t->new_max_mail + 1);
 	t->max_mail = t->new_max_mail; t->new_max_mail = 0;
 	t->act_mail = t->new_act_mail; t->new_act_mail = 0;
 
