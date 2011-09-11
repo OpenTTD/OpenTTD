@@ -838,7 +838,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	if (layout != NULL) {
 		/* Sprite layout which needs preprocessing */
 		bool separate_ground = HasBit(statspec->flags, SSF_SEPARATE_GROUND);
-		uint32 var10_values = layout->PrepareLayout(total_offset, rti->fallback_railtype, 0, separate_ground);
+		uint32 var10_values = layout->PrepareLayout(total_offset, rti->fallback_railtype, 0, 0, separate_ground);
 		uint8 var10;
 		FOR_EACH_SET_BIT(var10, var10_values) {
 			uint32 var10_relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE, var10);

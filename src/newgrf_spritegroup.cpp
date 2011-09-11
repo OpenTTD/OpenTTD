@@ -236,12 +236,14 @@ const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject *object) const
  */
 const DrawTileSprites *TileLayoutSpriteGroup::ProcessRegisters(uint8 *stage) const
 {
-	if (stage != NULL) *stage = GetConstructionStageOffset(*stage, this->num_building_stages);
-	if (!this->dts.NeedsPreprocessing()) return &this->dts;
+	if (!this->dts.NeedsPreprocessing()) {
+		if (stage != NULL && this->dts.consistent_max_offset > 0) *stage = GetConstructionStageOffset(*stage, this->dts.consistent_max_offset);
+		return &this->dts;
+	}
 
 	static DrawTileSprites result;
 	uint8 actual_stage = stage != NULL ? *stage : 0;
-	this->dts.PrepareLayout(0, actual_stage, actual_stage, false);
+	this->dts.PrepareLayout(0, 0, 0, actual_stage, false);
 	this->dts.ProcessRegisters(0, 0, false);
 	result.seq = this->dts.GetLayout(&result.ground);
 

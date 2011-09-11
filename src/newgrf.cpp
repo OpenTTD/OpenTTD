@@ -607,9 +607,11 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
  * @param use_cur_spritesets  Whether to use currently referenceable action 1 sets.
  * @param feature             GrfSpecFeature to use spritesets from.
  * @param [out] grf_sprite    Read sprite and palette.
+ * @param [out] max_sprite_offset  Optionally returns the number of sprites in the spriteset of the sprite. (0 if no spritset)
+ * @param [out] max_palette_offset Optionally returns the number of sprites in the spriteset of the palette. (0 if no spritset)
  * @return Read TileLayoutFlags.
  */
-static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, byte feature, PalSpriteID *grf_sprite)
+static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16 *max_sprite_offset = NULL, uint16 *max_palette_offset = NULL)
 {
 	grf_sprite->sprite = buf->ReadWord();
 	grf_sprite->pal = buf->ReadWord();
@@ -628,6 +630,7 @@ static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, 
 			grf_sprite->pal = PAL_NONE;
 		} else {
 			SpriteID sprite = use_cur_spritesets ? _cur.GetSprite(feature, index) : index;
+			if (max_sprite_offset != NULL) *max_sprite_offset = use_cur_spritesets ? _cur.GetNumEnts(feature, index) : UINT16_MAX;
 			SB(grf_sprite->sprite, 0, SPRITE_WIDTH, sprite);
 			SetBit(grf_sprite->sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
@@ -645,6 +648,7 @@ static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, 
 			grf_sprite->pal = PAL_NONE;
 		} else {
 			SpriteID sprite = use_cur_spritesets ? _cur.GetSprite(feature, index) : index;
+			if (max_palette_offset != NULL) *max_palette_offset = use_cur_spritesets ? _cur.GetNumEnts(feature, index) : UINT16_MAX;
 			SB(grf_sprite->pal, 0, SPRITE_WIDTH, sprite);
 			SetBit(grf_sprite->pal, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
@@ -726,8 +730,13 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 	if (!allow_var10) valid_flags &= ~TLF_VAR10_FLAGS;
 	dts->Allocate(num_building_sprites); // allocate before reading groundsprite flags
 
+	uint16 *max_sprite_offset = AllocaM(uint16, num_building_sprites + 1);
+	uint16 *max_palette_offset = AllocaM(uint16, num_building_sprites + 1);
+	MemSetT(max_sprite_offset, 0, num_building_sprites + 1);
+	MemSetT(max_palette_offset, 0, num_building_sprites + 1);
+
 	/* Groundsprite */
-	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &dts->ground);
+	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &dts->ground, max_sprite_offset, max_palette_offset);
 	if (_cur.skip_sprites < 0) return true;
 
 	if (flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS)) {
@@ -742,7 +751,7 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 	for (uint i = 0; i < num_building_sprites; i++) {
 		DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&dts->seq[i]);
 
-		flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &seq->image);
+		flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &seq->image, max_sprite_offset + i + 1, max_palette_offset + i + 1);
 		if (_cur.skip_sprites < 0) return true;
 
 		if (flags & ~valid_flags) {
@@ -764,6 +773,42 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 
 		ReadSpriteLayoutRegisters(buf, flags, seq->IsParentSprite(), dts, i + 1);
 		if (_cur.skip_sprites < 0) return true;
+	}
+
+	/* Check if the number of sprites per spriteset is consistent */
+	bool is_consistent = true;
+	dts->consistent_max_offset = 0;
+	for (uint i = 0; i < num_building_sprites + 1; i++) {
+		if (max_sprite_offset[i] > 0) {
+			if (dts->consistent_max_offset == 0) {
+				dts->consistent_max_offset = max_sprite_offset[i];
+			} else if (dts->consistent_max_offset != max_sprite_offset[i]) {
+				is_consistent = false;
+				break;
+			}
+		}
+		if (max_palette_offset[i] > 0) {
+			if (dts->consistent_max_offset == 0) {
+				dts->consistent_max_offset = max_palette_offset[i];
+			} else if (dts->consistent_max_offset != max_palette_offset[i]) {
+				is_consistent = false;
+				break;
+			}
+		}
+	}
+
+	/* When the Action1 sets are unknown, everything should be 0 (no spriteset usage) or UINT16_MAX (some spriteset usage) */
+	assert(use_cur_spritesets || (is_consistent && (dts->consistent_max_offset == 0 || dts->consistent_max_offset == UINT16_MAX)));
+
+	if (!is_consistent || dts->registers != NULL) {
+		dts->consistent_max_offset = 0;
+		if (dts->registers == NULL) dts->AllocateRegisters();
+
+		for (uint i = 0; i < num_building_sprites + 1; i++) {
+			TileLayoutRegisters &regs = const_cast<TileLayoutRegisters&>(dts->registers[i]);
+			regs.max_sprite_offset = max_sprite_offset[i];
+			regs.max_palette_offset = max_palette_offset[i];
+		}
 	}
 
 	return false;
@@ -1584,6 +1629,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 				for (uint t = 0; t < statspec->tiles; t++) {
 					NewGRFSpriteLayout *dts = &statspec->renderdata[t];
+					dts->consistent_max_offset = UINT16_MAX; // Spritesets are unknown, so no limit.
 
 					if (buf->HasData(4) && *(uint32*)buf->Data() == 0) {
 						buf->Skip(4);
@@ -4403,13 +4449,6 @@ static void NewSpriteGroup(ByteReader *buf)
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
 					act_group = group;
-					/* num_building_stages should be 1, if we are only using non-custom sprites */
-					if (_cur.HasValidSpriteSets(feature)) {
-						/* This assumes that all spritesets have the same number of sprites. */
-						group->num_building_stages = max(1u, _cur.GetNumEnts(feature, 0));
-					} else {
-						group->num_building_stages = 1;
-					}
 
 					/* On error, bail out immediately. Temporary GRF data was already freed */
 					if (ReadSpriteLayout(buf, num_building_sprites, true, feature, false, type == 0, &group->dts)) return;

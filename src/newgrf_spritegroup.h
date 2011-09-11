@@ -288,7 +288,6 @@ struct TileLayoutSpriteGroup : SpriteGroup {
 	TileLayoutSpriteGroup() : SpriteGroup(SGT_TILELAYOUT) {}
 	~TileLayoutSpriteGroup() {}
 
-	byte num_building_stages;    ///< Number of building stages to show for this house/industry tile
 	NewGRFSpriteLayout dts;
 
 	const DrawTileSprites *ProcessRegisters(uint8 *stage) const;
