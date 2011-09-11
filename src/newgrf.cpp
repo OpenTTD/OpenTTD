@@ -82,6 +82,14 @@ static const uint MAX_SPRITEGROUP = UINT8_MAX; ///< Maximum GRF-local ID for a s
 
 /** Temporary data during loading of GRFs */
 struct GrfProcessingState {
+private:
+	/* Currently referenceable spritesets */
+	SpriteID spriteset_start; ///< SpriteID of the first sprite of the first set.
+	uint spriteset_numsets;   ///< Number of spritesets.
+	uint spriteset_numents;   ///< Number of sprites per set.
+	byte spriteset_feature;   ///< GrfSpecFeature of the spriteset.
+
+public:
 	/* Global state */
 	GrfLoadingStage stage;    ///< Current loading stage
 	SpriteID spriteid;        ///< First available SpriteID for loading realsprites.
@@ -96,12 +104,6 @@ struct GrfProcessingState {
 	int skip_sprites;         ///< Number of psuedo sprites to skip before processing the next one. (-1 to skip to end of file)
 	byte data_blocks;         ///< Number of binary include sprites to read before processing the next pseudo sprite.
 	GrfDataType data_type;    ///< Type of the binary include sprites to read.
-
-	/* Currently referenceable spritesets */
-	SpriteID spriteset_start; ///< SpriteID of the first sprite of the first set.
-	int spriteset_numsets;    ///< Number of spritesets.
-	int spriteset_numents;    ///< Number of sprites per set.
-	int spriteset_feature;    ///< GrfSpecFeature of the spriteset.
 
 	/* Currently referenceable spritegroups */
 	SpriteGroup *spritegroups[MAX_SPRITEGROUP + 1];
@@ -119,6 +121,68 @@ struct GrfProcessingState {
 		this->spriteset_feature = GSF_INVALID;
 
 		memset(this->spritegroups, 0, sizeof(this->spritegroups));
+	}
+
+	/**
+	 * Records new spritesets.
+	 * @param feature GrfSpecFeature the set is defined for.
+	 * @param first_sprite SpriteID of the first sprite in the set.
+	 * @param numsets Number of sets to define.
+	 * @param numents Number of sprites per set to define.
+	 */
+	void AddSpriteSets(byte feature, SpriteID first_sprite, uint numsets, uint numents)
+	{
+		this->spriteset_feature = feature;
+		this->spriteset_start = first_sprite;
+		this->spriteset_numsets = numsets;
+		this->spriteset_numents = numents;
+	}
+
+	/**
+	 * Check whether there are any valid spritesets for a feature.
+	 * @param feature GrfSpecFeature to check.
+	 * @return true if there are any valid sets.
+	 * @note Spritesets with zero sprites are valid to allow callback-failures.
+	 */
+	bool HasValidSpriteSets(byte feature) const
+	{
+		return feature == this->spriteset_feature && this->spriteset_numsets > 0;
+	}
+
+	/**
+	 * Check whether a specific set is defined.
+	 * @param feature GrfSpecFeature to check.
+	 * @param set Set to check.
+	 * @return true if the set is valid.
+	 * @note Spritesets with zero sprites are valid to allow callback-failures.
+	 */
+	bool IsValidSpriteSet(byte feature, uint set) const
+	{
+		return feature == this->spriteset_feature && set < this->spriteset_numsets;
+	}
+
+	/**
+	 * Returns the first sprite of a spriteset.
+	 * @param feature GrfSpecFeature to query.
+	 * @param set Set to query.
+	 * @return First sprite of the set.
+	 */
+	SpriteID GetSprite(byte feature, uint set) const
+	{
+		assert(IsValidSpriteSet(feature, set));
+		return this->spriteset_start + set * this->spriteset_numents;
+	}
+
+	/**
+	 * Returns the number of sprites in a spriteset
+	 * @param feature GrfSpecFeature to query.
+	 * @param set Set to query.
+	 * @return Number of sprites in the set.
+	 */
+	uint GetNumEnts(byte feature, uint set) const
+	{
+		assert(IsValidSpriteSet(feature, set));
+		return this->spriteset_numents;
 	}
 };
 
@@ -540,13 +604,12 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
  * @param buf                 Input stream.
  * @param read_flags          Whether to read TileLayoutFlags.
  * @param invert_action1_flag Set to true, if palette bit 15 means 'not from action 1'.
- * @param action1_offset      Offset to add to action 1 sprites.
- * @param action1_pitch       Factor to multiply action 1 sprite indices with.
- * @param action1_max         Maximal valid action 1 index.
+ * @param use_cur_spritesets  Whether to use currently referenceable action 1 sets.
+ * @param feature             GrfSpecFeature to use spritesets from.
  * @param [out] grf_sprite    Read sprite and palette.
  * @return Read TileLayoutFlags.
  */
-static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, bool invert_action1_flag, uint action1_offset, uint action1_pitch, uint action1_max, PalSpriteID *grf_sprite)
+static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, byte feature, PalSpriteID *grf_sprite)
 {
 	grf_sprite->sprite = buf->ReadWord();
 	grf_sprite->pal = buf->ReadWord();
@@ -559,12 +622,12 @@ static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, 
 	if (custom_sprite) {
 		/* Use sprite from Action 1 */
 		uint index = GB(grf_sprite->sprite, 0, 14);
-		if (action1_pitch == 0 || index >= action1_max) {
+		if (use_cur_spritesets && (!_cur.IsValidSpriteSet(feature, index) || _cur.GetNumEnts(feature, index) == 0)) {
 			grfmsg(1, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset %d", index);
 			grf_sprite->sprite = SPR_IMG_QUERY;
 			grf_sprite->pal = PAL_NONE;
 		} else {
-			SpriteID sprite = action1_offset + index * action1_pitch;
+			SpriteID sprite = use_cur_spritesets ? _cur.GetSprite(feature, index) : index;
 			SB(grf_sprite->sprite, 0, SPRITE_WIDTH, sprite);
 			SetBit(grf_sprite->sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
@@ -577,11 +640,11 @@ static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader *buf, bool read_flags, 
 	if (flags & TLF_CUSTOM_PALETTE) {
 		/* Use palette from Action 1 */
 		uint index = GB(grf_sprite->pal, 0, 14);
-		if (action1_pitch == 0 || index >= action1_max) {
+		if (use_cur_spritesets && (!_cur.IsValidSpriteSet(feature, index) || _cur.GetNumEnts(feature, index) == 0)) {
 			grfmsg(1, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset %d for 'palette'", index);
 			grf_sprite->pal = PAL_NONE;
 		} else {
-			SpriteID sprite = action1_offset + index * action1_pitch;
+			SpriteID sprite = use_cur_spritesets ? _cur.GetSprite(feature, index) : index;
 			SB(grf_sprite->pal, 0, SPRITE_WIDTH, sprite);
 			SetBit(grf_sprite->pal, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
@@ -648,15 +711,14 @@ static void ReadSpriteLayoutRegisters(ByteReader *buf, TileLayoutFlags flags, bo
  * Read a spritelayout from the GRF.
  * @param buf                  Input
  * @param num_building_sprites Number of building sprites to read
- * @param action1_offset       Offset to add to action 1 sprites
- * @param action1_pitch        Factor to multiply action 1 sprite indices with
- * @param action1_max          Maximal valid action 1 index
+ * @param use_cur_spritesets   Whether to use currently referenceable action 1 sets.
+ * @param feature              GrfSpecFeature to use spritesets from.
  * @param allow_var10          Whether the spritelayout may specifiy var10 values for resolving multiple action-1-2-3 chains
  * @param no_z_position        Whether bounding boxes have no Z offset
  * @param dts                  Layout container to output into
  * @return True on error (GRF was disabled).
  */
-static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, uint action1_offset, uint action1_pitch, uint action1_max, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts)
+static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool use_cur_spritesets, byte feature, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts)
 {
 	bool has_flags = HasBit(num_building_sprites, 6);
 	ClrBit(num_building_sprites, 6);
@@ -665,7 +727,7 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, uint ac
 	dts->Allocate(num_building_sprites); // allocate before reading groundsprite flags
 
 	/* Groundsprite */
-	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, action1_offset, action1_pitch, action1_max, &dts->ground);
+	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &dts->ground);
 	if (_cur.skip_sprites < 0) return true;
 
 	if (flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS)) {
@@ -680,7 +742,7 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, uint ac
 	for (uint i = 0; i < num_building_sprites; i++) {
 		DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&dts->seq[i]);
 
-		flags = ReadSpriteLayoutSprite(buf, has_flags, false, action1_offset, action1_pitch, action1_max, &seq->image);
+		flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &seq->image);
 		if (_cur.skip_sprites < 0) return true;
 
 		if (flags & ~valid_flags) {
@@ -1530,7 +1592,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 						continue;
 					}
 
-					ReadSpriteLayoutSprite(buf, false, false, 0, 1, UINT_MAX, &dts->ground);
+					ReadSpriteLayoutSprite(buf, false, false, false, GSF_STATIONS, &dts->ground);
 					/* On error, bail out immediately. Temporary GRF data was already freed */
 					if (_cur.skip_sprites < 0) return CIR_DISABLED;
 
@@ -1549,7 +1611,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 						dtss->size_y = buf->ReadByte();
 						dtss->size_z = buf->ReadByte();
 
-						ReadSpriteLayoutSprite(buf, false, true, 0, 1, UINT_MAX, &dtss->image);
+						ReadSpriteLayoutSprite(buf, false, true, false, GSF_STATIONS, &dtss->image);
 						/* On error, bail out immediately. Temporary GRF data was already freed */
 						if (_cur.skip_sprites < 0) return CIR_DISABLED;
 					}
@@ -1702,7 +1764,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					NewGRFSpriteLayout *dts = &statspec->renderdata[t];
 					uint num_building_sprites = buf->ReadByte();
 					/* On error, bail out immediately. Temporary GRF data was already freed */
-					if (ReadSpriteLayout(buf, num_building_sprites, 0, 1, UINT_MAX, true, false, dts)) return CIR_DISABLED;
+					if (ReadSpriteLayout(buf, num_building_sprites, false, GSF_STATIONS, true, false, dts)) return CIR_DISABLED;
 				}
 				break;
 
@@ -4085,10 +4147,7 @@ static void NewSpriteSet(ByteReader *buf)
 	uint8 num_sets  = buf->ReadByte();
 	uint16 num_ents = buf->ReadExtendedByte();
 
-	_cur.spriteset_start = _cur.spriteid;
-	_cur.spriteset_feature = feature;
-	_cur.spriteset_numsets = num_sets;
-	_cur.spriteset_numents = num_ents;
+	_cur.AddSpriteSets(feature, _cur.spriteid, num_sets, num_ents);
 
 	grfmsg(7, "New sprite set at %d of type %d, consisting of %d sets with %d views each (total %d)",
 		_cur.spriteid, feature, num_sets, num_ents, num_sets * num_ents
@@ -4129,39 +4188,34 @@ static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 grou
 	return _cur.spritegroups[groupid];
 }
 
-/* Helper function to either create a callback or a result sprite group. */
-static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid, uint16 num_sprites)
+/**
+ * Helper function to either create a callback or a result sprite group.
+ * @param feature GrfSpecFeature to define spritegroup for.
+ * @param setid SetID of the currently being parsed Action2. (only for debug output)
+ * @param type Type of the currently being parsed Action2. (only for debug output)
+ * @param spriteid Raw value from the GRF for the new spritegroup; describes either the return value or the referenced spritegroup.
+ * @return Created spritegroup.
+ */
+static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid)
 {
 	if (HasBit(spriteid, 15)) {
 		assert(CallbackResultSpriteGroup::CanAllocateItem());
 		return new CallbackResultSpriteGroup(spriteid);
 	}
 
-	if (spriteid >= _cur.spriteset_numsets) {
-		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set %u invalid, max %u", setid, type, spriteid, _cur.spriteset_numsets);
+	if (!_cur.IsValidSpriteSet(feature, spriteid)) {
+		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set %u invalid", setid, type, spriteid);
 		return NULL;
 	}
 
-	/* Check if the sprite is within range. This can fail if the Action 0x01
-	 * is skipped, as TTDPatch mandates that Action 0x02s must be processed.
-	 * We don't have that rule, but must live by the Patch... */
-	if (_cur.spriteset_start + spriteid * num_sprites + num_sprites > _cur.spriteid) {
-		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Real Sprite IDs 0x%04X - 0x%04X do not (all) exist (max 0x%04X), leaving empty",
-				setid, type,
-				_cur.spriteset_start + spriteid * num_sprites,
-				_cur.spriteset_start + spriteid * num_sprites + num_sprites - 1, _cur.spriteid - 1);
-		return NULL;
-	}
+	SpriteID spriteset_start = _cur.GetSprite(feature, spriteid);
+	uint num_sprites = _cur.GetNumEnts(feature, spriteid);
 
-	if (feature != _cur.spriteset_feature) {
-		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set feature 0x%02X does not match action feature 0x%02X, skipping",
-				setid, type,
-				_cur.spriteset_feature, feature);
-		return NULL;
-	}
+	/* Ensure that the sprites are loeded */
+	assert(spriteset_start + num_sprites <= _cur.spriteid);
 
 	assert(ResultSpriteGroup::CanAllocateItem());
-	return new ResultSpriteGroup(_cur.spriteset_start + spriteid * num_sprites, num_sprites);
+	return new ResultSpriteGroup(spriteset_start, num_sprites);
 }
 
 /* Action 0x02 */
@@ -4305,11 +4359,10 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_AIRPORTS:
 				case GSF_RAILTYPES:
 				{
-					byte sprites     = _cur.spriteset_numents;
 					byte num_loaded  = type;
 					byte num_loading = buf->ReadByte();
 
-					if (_cur.spriteset_start == 0) {
+					if (!_cur.HasValidSpriteSets(feature)) {
 						grfmsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
 						return;
 					}
@@ -4323,18 +4376,18 @@ static void NewSpriteGroup(ByteReader *buf)
 					if (num_loaded  > 0) group->loaded = CallocT<const SpriteGroup*>(num_loaded);
 					if (num_loading > 0) group->loading = CallocT<const SpriteGroup*>(num_loading);
 
-					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u views, %u loaded, %u loading",
-							setid, sprites, num_loaded, num_loading);
+					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u loaded, %u loading",
+							setid, num_loaded, num_loading);
 
 					for (uint i = 0; i < num_loaded; i++) {
 						uint16 spriteid = buf->ReadWord();
-						group->loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
+						group->loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						grfmsg(8, "NewSpriteGroup: + rg->loaded[%i]  = subset %u", i, spriteid);
 					}
 
 					for (uint i = 0; i < num_loading; i++) {
 						uint16 spriteid = buf->ReadWord();
-						group->loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
+						group->loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						grfmsg(8, "NewSpriteGroup: + rg->loading[%i] = subset %u", i, spriteid);
 					}
 
@@ -4345,18 +4398,21 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_AIRPORTTILES:
 				case GSF_OBJECTS:
 				case GSF_INDUSTRYTILES: {
-					byte num_spriteset_ents   = _cur.spriteset_numents;
-					byte num_spritesets       = _cur.spriteset_numsets;
 					byte num_building_sprites = max((uint8)1, type);
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
 					act_group = group;
 					/* num_building_stages should be 1, if we are only using non-custom sprites */
-					group->num_building_stages = max((uint8)1, num_spriteset_ents);
+					if (_cur.HasValidSpriteSets(feature)) {
+						/* This assumes that all spritesets have the same number of sprites. */
+						group->num_building_stages = max(1u, _cur.GetNumEnts(feature, 0));
+					} else {
+						group->num_building_stages = 1;
+					}
 
 					/* On error, bail out immediately. Temporary GRF data was already freed */
-					if (ReadSpriteLayout(buf, num_building_sprites, _cur.spriteset_start, num_spriteset_ents, num_spritesets, false, type == 0, &group->dts)) return;
+					if (ReadSpriteLayout(buf, num_building_sprites, true, feature, false, type == 0, &group->dts)) return;
 					break;
 				}
 
@@ -4460,7 +4516,7 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 static bool IsValidGroupID(uint16 groupid, const char *function)
 {
 	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == NULL) {
-		grfmsg(1, "%s: Spriteset 0x%04X out of range or empty, skipping.", function, groupid);
+		grfmsg(1, "%s: Spritegroup 0x%04X out of range or empty, skipping.", function, groupid);
 		return false;
 	}
 
@@ -8735,6 +8791,9 @@ void LoadNewGRF(uint load_index, uint file_index)
 			}
 		}
 	}
+
+	/* Pseudo sprite processing is finished; free temporary stuff */
+	_cur.ClearDataForNextFile();
 
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();
