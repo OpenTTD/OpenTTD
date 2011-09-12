@@ -3305,8 +3305,8 @@ STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Fejlett 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Megmutatja az összes járművet, amik megosztják ezt a menetrendet
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Menj át a(z) {WAYPOINT.ba}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Megállás nélkül menj át a(z) {WAYPOINT.ba}
+STR_ORDER_GO_TO_WAYPOINT                                        :Menj át a(z) {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Megállás nélkül menj át a(z) {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Javításra menj
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Javításra megállás nélkül menj
