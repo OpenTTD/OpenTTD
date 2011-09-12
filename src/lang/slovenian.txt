@@ -427,7 +427,7 @@ STR_SORT_BY_MAX_SPEED                                           :Največja hitro
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrednost
 STR_SORT_BY_LENGTH                                              :Dolžina
-STR_SORT_BY_LIFE_TIME                                           :Ostala življenjska doba
+STR_SORT_BY_LIFE_TIME                                           :Preostala življenjska doba
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zamuda urnika
 STR_SORT_BY_FACILITY                                            :Vrsta postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
@@ -491,6 +491,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavi 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Shrani scenarij
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Naloži scenarij
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Shrani višinsko karto
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Naloži višinsko karto
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Izhod iz urejevalnika
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -508,6 +509,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Imena mest prik
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Imena postaj prikazana
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Prikazane točke poti
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Sporočila prikazana
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Tekmečevi znaki in imena prikazana
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Popolne animacije
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Vse podrobnosti
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Prosojne stavbe
@@ -600,6 +602,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zajemi približ
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Uravnavanje sličice
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Vklop/izklop okvirjev
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1209,6 +1212,11 @@ STR_SEA_LEVEL_HIGH                                              :Veliko
 STR_SEA_LEVEL_CUSTOM                                            :Po meri
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Po meri ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Brez
+STR_RIVERS_FEW                                                  :Malo
+STR_RIVERS_MODERATE                                             :Srednje
+STR_RIVERS_LOT                                                  :Mnogo
+
 STR_DISASTER_NONE                                               :Brez
 STR_DISASTER_REDUCED                                            :Zmanjšano
 STR_DISASTER_NORMAL                                             :Normalno
@@ -1545,6 +1553,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikaži nastavitve UI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izhod iz 'OpenTTD'
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Temu prevodu manjka {NUM} vnos{P "" a i ov}. Prosimo pomagaj izboljšati OpenTTD in se vpiši za prevajanje. Preveri readme.txt za podrobnosti.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Izhod
@@ -2431,6 +2441,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Naloži 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Shrani scenarij
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Naloži scenarij
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Naloži višinsko karto
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Shrani višinsko karto
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikni tukaj za skok v mapo shrani/naloži
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} prosto
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Seznam pogonov, map in shranjenih iger
@@ -2466,6 +2477,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ustvarja
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritem dreves:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Morska gladina:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Reke:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Glajenje:
 STR_MAPGEN_VARIETY                                              :{BLACK}Raznolika distribucija:
 STR_MAPGEN_GENERATE                                             :{WHITE}Ustvari
@@ -2510,6 +2522,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Zares z
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% narejeno
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Ustvarjanje sveta
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Ustvarjanje reke
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarjanje dreves
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarjanje zgradbe
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generiranje grobih in skalnatih tal
@@ -2626,6 +2639,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Preberi po konc
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Zahtevane GRF sestavine niso razpoložljive
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je bil izklopljen zaradi {4:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neveljaven/nepoznan format sistema sličic
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
@@ -2661,6 +2675,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neveljaven tovor>
 STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neveljavna industrija>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Preiskava NewGRF-jev
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Preiskujem NewGRF-je. Odvisno od količine lahko traja nekaj časa...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" ja ji jev} preiskanih od ocenjenih {NUM} NewGRF{P "" ja ji jev}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Iskanje arhivov
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}
@@ -2969,6 +2989,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova letala
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Teža: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hitrost: {GOLD}{VELOCITY}{BLACK} Moč: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hitrost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Hitrost po morju: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Hitrost po kanalu/reki: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena delovanja: {GOLD}{CURRENCY}/leto
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Zmogljivost: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(spremenljivo)
@@ -3329,12 +3351,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskoči ta ukaz, razen če je potreben servis
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Podatki vozila na osnovni preskok
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenti polnjenja
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zanesljivost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najvišja hitrost
 STR_ORDER_CONDITIONAL_AGE                                       :Starost (leta)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Potrebuje servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vedno
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Preostala življenjska doba (let)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako primerjati podatke vozila na podano vrednost
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je enaka
@@ -3580,6 +3605,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... neka
 STR_ERROR_BMPMAP                                                :{WHITE}Ni mogoče naložiti pokrajine iz formata BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče spremeniti tipa slike
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... slika je prevelika
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Opozorilo za merilo
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporočena. Nadaljujem?
 
@@ -3674,6 +3701,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... grad
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gradnja možna samo v nižjih predelih
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... mogoče zgraditi samo ob robu zemljevida
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... gozd je mogoče posaditi samo nad nivojem snežne odeje
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... lahko se zgradi samo nad snežno mejo
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... lahko se zgradi samo pod snežno mejo
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Tukaj ni mogoče zgraditi železniške postaje...
@@ -3795,6 +3824,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Tukaj ni
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tukaj ni mogoča postavitev rek...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... mora biti zgrajeno na vodi
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nemogoča gradnja na vodi
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ni možna gradnja na odprtem morju
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ni možna gradnja v kanalu
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ni možna gradnja na reki
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprej moraš porušiti kanal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tukaj ni mogoče zgraditi akvedukta...
 
