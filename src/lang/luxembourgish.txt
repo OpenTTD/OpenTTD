@@ -1059,6 +1059,11 @@ STR_SEA_LEVEL_HIGH                                              :Vill
 STR_SEA_LEVEL_CUSTOM                                            :Eegen
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Eegen ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Keng
+STR_RIVERS_FEW                                                  :Wéineg
+STR_RIVERS_MODERATE                                             :Mëttel
+STR_RIVERS_LOT                                                  :Vill
+
 STR_DISASTER_NONE                                               :Keng
 STR_DISASTER_REDUCED                                            :Manner
 STR_DISASTER_NORMAL                                             :Normal
@@ -1113,7 +1118,7 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximal
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Unzuel vun Gefiererdamp/partikel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Zuchbeschleunegung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Stroossengefier Beschleunigungsmodell: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Neigungsstärkt fir Zich{ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Neigungsstärkt fir Zich: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Steigung fir Stroossengefierer {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbidd Zich an Schëffer fir 90 Grad Kéieren ze maachen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {ORANGE}{STRING}
@@ -1395,6 +1400,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF A
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann downgeload gin
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}KI Astellungen uweisen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'OpenTTD' eraus goen
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Des Iwwersetzung huet {NUM} String{P "" s}. Hëlleft OpenTTD besser ze man andem der ierch als Iwwersetzer mellt!. Liest readme.txt fir d'Detailer.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Eraus
@@ -2317,6 +2324,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgene
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baam Algorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mieresspigel:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flëss:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Mëllt:
 STR_MAPGEN_VARIETY                                              :{BLACK}Vielfaltverdeelung:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generéiren
@@ -2361,6 +2369,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Wëllt 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% komplett
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Welt Generatioun
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generéiren vun Flëss
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Baam Generatioun
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Unbewegbar Generatioun
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generatioun vun knubblegen an stengegen Land
@@ -2513,6 +2522,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vun <invalider Wuer>
 STR_NEWGRF_INVALID_ENGINE                                       :<invaliden Gefier-Modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid Industrie>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen NewGRFen
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scannen NewGRFen. Dëst kann eng Weil dauern, je no Emfang ...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" en} gescanned vun ongeféier {NUM} NewGRF{P "" en}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Archiver scannen
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schëlderlëscht - {COMMA} Schëld{P "" er}
@@ -2821,6 +2836,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Neien Fliger
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Käschten: {GOLD}{CURRENCY}{BLACK} Gewiicht: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Kraaft: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschw.: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindegkeet um Ozean: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Geschwindegkeet um Kanal/Floss: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriibskäschtent: {GOLD}{CURRENCY}/Jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazitéit: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ëmbaubar)
@@ -3181,12 +3198,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Iwwersprang dësen Optrag wann keng Revisioun néideg ass
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gefiertsdaten als Basis fir den Optragssprong
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Prozent gelueden
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zouverlässegkeet
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximal Geschwindegkeet
-STR_ORDER_CONDITIONAL_AGE                                       :Gefiertalter (Joer)
+STR_ORDER_CONDITIONAL_AGE                                       :Alter (Joer)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Brauch eng Revisioun
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ëmmer
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Reschtlaafzäit (Joer)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Wéi Gefiertsdaten verglach sollen ginn
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ass gläich
@@ -3431,6 +3451,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eppe
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kann d'Landschaft net aus der BMP lueden...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... konnt den Bildtyp net konvertéieren
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... Bild ass ze grouss
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Scaléirungswarnung
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Quellenkaart zevill an der Gréisst änneren ass net ugeroden. Weiderman ?

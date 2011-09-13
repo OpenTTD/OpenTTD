@@ -45,7 +45,7 @@ STR_CARGO_PLURAL_GRAIN                                          :Obilie
 STR_CARGO_PLURAL_GRAIN.g                                        :obilia
 STR_CARGO_PLURAL_WOOD                                           :Drevo
 STR_CARGO_PLURAL_WOOD.g                                         :dreva
-STR_CARGO_PLURAL_IRON_ORE                                       :Železnú rudu
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=z}Železná ruda
 STR_CARGO_PLURAL_IRON_ORE.g                                     :železnej rudy
 STR_CARGO_PLURAL_STEEL                                          :Oceľ
 STR_CARGO_PLURAL_STEEL.g                                        :ocele
@@ -138,23 +138,23 @@ STR_CARGO_SINGULAR_RUBBER                                       :Kaucuk
 STR_CARGO_SINGULAR_RUBBER.g                                     :kaucuku
 STR_CARGO_SINGULAR_SUGAR                                        :Cukor
 STR_CARGO_SINGULAR_SUGAR.g                                      :cukru
-STR_CARGO_SINGULAR_TOY                                          :Hracky
+STR_CARGO_SINGULAR_TOY                                          :Hračka
 STR_CARGO_SINGULAR_TOY.g                                        :hraciek
-STR_CARGO_SINGULAR_CANDY                                        :Cukriky
+STR_CARGO_SINGULAR_CANDY                                        :Cukrík
 STR_CARGO_SINGULAR_CANDY.g                                      :cukrikov
 STR_CARGO_SINGULAR_COLA                                         :Kofola
 STR_CARGO_SINGULAR_COLA.g                                       :kofoly
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Cukrova vata
 STR_CARGO_SINGULAR_COTTON_CANDY.g                               :cukrovej vaty
-STR_CARGO_SINGULAR_BUBBLE                                       :Bubliny
+STR_CARGO_SINGULAR_BUBBLE                                       :Bublina
 STR_CARGO_SINGULAR_BUBBLE.g                                     :bublin
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamel
 STR_CARGO_SINGULAR_TOFFEE.g                                     :karamelu
-STR_CARGO_SINGULAR_BATTERY                                      :Baterie
+STR_CARGO_SINGULAR_BATTERY                                      :Batéria
 STR_CARGO_SINGULAR_BATTERY.g                                    :baterii
-STR_CARGO_SINGULAR_PLASTIC                                      :Zuvacky
+STR_CARGO_SINGULAR_PLASTIC                                      :Žuvacka
 STR_CARGO_SINGULAR_PLASTIC.g                                    :zuvaciek
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sumienka
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Šumienka
 STR_CARGO_SINGULAR_FIZZY_DRINK.g                                :sumienky
 
 # Quantity of cargo
@@ -188,8 +188,8 @@ STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukrov
 STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P a y ""}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamelu
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P a e i}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} zuvacka
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sumien{P ka ky ok}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} zuvačiek
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} šumien{P ka ky ok}
 STR_QUANTITY_N_A                                                :Nie je
 
 # Two letter abbreviation of cargo name
@@ -299,7 +299,7 @@ STR_TOOLTIP_STICKY                                              :{BLACK}Zamknú�
 STR_TOOLTIP_RESIZE                                              :{BLACK}Uchop a ťahaj pre zmenu veľkosti okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Prepnúť veľkosť okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Navigacná lišta
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Navigacna lista - posuva vypis dolava/doprava
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Posuvná lišta - posúva zoznam doľava/doprava
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolácia budov atď. na rovný terén. CTRL označí oblasť diagonálne. Shift zobrazí odhad nákladov
 
 # Query window
@@ -361,7 +361,7 @@ STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Zobraziť mapu
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Zobraziť zoznam miest
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Zobraziť dotácie
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Zoznam staníc spoločnosti
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Zoznam staníc spoločností
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Finančné informácie o spoločnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Informácie o spoločnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafy
@@ -1332,7 +1332,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Zakáza
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakázať lietadlá pre počítač: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Zakázať lode pre počítač: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povoliť AI v hre viacerých hráčov (experimentálne): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povoliť AI-ov v hre viacerých hráčov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes pred AI sú suspendované: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisné intervaly v percentách: {ORANGE}{STRING}
@@ -1605,12 +1605,12 @@ STR_FACE_EARRING                                                :Náušnica:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmenit kravatu alebo náušnicu
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hra pre viac hrácov
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hra pre viac hráčov
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Pripojenie:
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Vyber si medzi hrou na internete alebo na lokalnej sieti
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
-STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Meno hraca:
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Meno hráča:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Názov
@@ -2900,7 +2900,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nove automobily
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nove lode
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Lietadlo
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnosť: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rýchlosť: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rýchlosť: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rýchlosť na oceáne: {GOLD}{VELOCITY}
@@ -2912,9 +2912,9 @@ STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolahlivost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnosť: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rýchlosť: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Poháňané vagóny: {GOLD}+{POWER}{BLACK} Hmotnosť: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prestavatelne na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všetky druhy nákladu
 STR_PURCHASE_INFO_ALL_BUT                                       :Všetko okrem {GOLD}
@@ -3047,15 +3047,15 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=m}Automobil
 STR_REPLACE_VEHICLE_SHIP                                        :{G=z}Lod
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=s}Lietadlo
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vyber typ lokomotivy na vymenu
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vyber typ novej lokomotivy, ktoru chces pouzit namiesto typu v zozname nalavo
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zvoľte typ lokomotívy na výmenu
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Zvoľte nový typ lokomotívy, ktorú chceš použiť namiesto typu z ľavého zoznamu
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Začať výmenu vozidiel
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Stlac toto tlacidlo, ak chces zacat vymienat typ lokomotivy v lavom zozname za typ lokomotivy v pravom zozname
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Stlačte pre začatie výmeny typu lokomotívy v ľavom zozname za lokomotívu v pravom zozname
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nevymiena sa
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nie je oznacene vozidlo
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zastaviť výmenu vozidiel
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Stlac toto tlacidlo, ak nechces vymienat typ lokomotivy vybrany v lavom zozname
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Stlačte pre zastavenie výmeny lokomotívy vybranej z ľavého zoznamu
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prepne medzi oknami na vymenu lokomotiv a vagonov
@@ -3063,14 +3063,14 @@ STR_REPLACE_ENGINES                                             :Lokomotívy
 STR_REPLACE_WAGONS                                              :Vagonov
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ koľajníc, pre ktoré chceš vymieňať lokomotívy
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Zobrazenie za ktoru lokomotivu sa lokomotiva v zozname nalavo zamiena
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Zobrazí, ak existuje lokomotíva z ľavého zoznamu, ktorá sa zamení s ňou
 STR_REPLACE_RAIL_VEHICLES                                       :Lokomotívy
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrické lokomotívy
 STR_REPLACE_MONORAIL_VEHICLES                                   :Lokomotiva pre jednokolajovku
 STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotiva pre magneticku drahu
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatického vylepšovania vlakov môže udržovať rovnakú dĺžku vlakov odstraňovaním vagónov (od začiatku vlakov), pokiaľ by zmena rušňa vlak predĺžila
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstránenie vagónu: {ORANGE}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zachovanie pôvodnej dĺžky vlaku, odstránením vagónov (odpredu), keď by funkcia automatickej zmeny rušňa vlak predĺžila
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3943,14 +3943,14 @@ STR_INDUSTRY_NAME_FARM_2                                        :Farma
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Pila
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Les cukrovej vaty
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Cukrovar
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Vyroba baterii
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Výroba batérii
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Výroba kofoly
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Hrackarstvo
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Vyroba hraciek
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Zuvackova fontana
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Žuvačkové fontány
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Vyroba sumienky
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Bublifuk
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamelovy lom
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamelový lom
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukrová baňa
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -4022,45 +4022,45 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elektr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Vagon pre cestujucich
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Postovy vagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Vagón pre cestujúcich
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Poštový vagón
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Vagón na uhlie
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Vagón na ropu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagon na dobytok
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vagon na tovar
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Vagon na obilie
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagón na dobytok
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vagón na tovar
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Vagón na obilie
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Vagón na drevo
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Vagon na zeleznu rudu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Vagón na železnú rudu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Vagón na oceľ
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Obrneny vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagon na jedlo
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Obrnený vagón
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagón na jedlo
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Vagón na papier
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Vagon na medennu rudu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Vagón na medenú rudu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Vagón na vodu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagón na ovocie
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagon na kaucuk
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagón na kaučuk
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagón na cukor
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagon na cukrovu vatu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagon na karamel
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagon na bubliny
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagón na cukrovú vatu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagón na karamel
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagón na bubliny
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Vagón na kofolu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagon na cukriky
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagon na hracky
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagon na baterie
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Vagon na sumienku
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagon na zuvacky
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagón na cukríky
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagón na hračky
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagón na batérie
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Vagón na šumienku
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagón na žuvačky
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Vagon pre cestujucich
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Postovy vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Vagon na uhlie
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Vagón pre cestujúcich
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Poštový vagón
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Vagón na uhlie
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Vagon na ropu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Vagon na dobytok
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Vagon na tovar
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Vagon na obilie
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Vagon na drevo
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Vagon na zeleznu rudu
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Vagón na železnú rudu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Vagon na ocel
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Obrneny vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagon na jedlo
@@ -4072,13 +4072,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagon na kaucuk
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Vagon na cukor
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagon na cukrovu vatu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Vagon na karamel
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagon na bubliny
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagón na bubliny
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Vagon na kofolu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Vagon na cukriky
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagon na hracky
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagón na hračky
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Vagon na baterie
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Vagon na sumienku
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagon na zuvacky
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagón na žuvačky
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elektricky)
@@ -4104,13 +4104,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagon na kaucuk
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Vagon na cukor
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagon na cukrovu vatu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Vagon na karamel
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagon na bubliny
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagón na bubliny
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Vagon na kofolu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Vagon na cukriky
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagon na hracky
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagón na hračky
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagon na baterie
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagon na sumienku
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagon na zuvacky
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagón na žuvačky
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Autobus
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Autobus
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Autobus
@@ -4124,9 +4124,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW - Uhlie
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS - Posta
 STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard - Posta
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry - Posta
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover - Posta
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught - Posta
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover - Pošta
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught - Pošta
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow - Pošta
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe - Ropa
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster - Ropa
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry - Ropa
@@ -4181,21 +4181,21 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow - Cukr
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover - Karamel
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught - Karamel
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow - Karamel
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover - Hracky
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught - Hracky
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow - Hracky
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover - Cukriky
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught - Cukriky
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow - Cukriky
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover - Hračky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught - Hračky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow - Hračky
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover - Cukríky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught - Cukríky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow - Cukríky
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover - Baterie
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught - Baterie
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow - Baterie
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover - Sumienka
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught - Sumienka
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow - Sumienka
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover - Zuvacky
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught - Zuvacky
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow - Zuvacky
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover - Žuvačky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught - Žuvačky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow - Žuvačky
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover - Bubliny
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught - Bubliny
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow - Bubliny

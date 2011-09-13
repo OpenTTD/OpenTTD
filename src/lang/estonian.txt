@@ -395,6 +395,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Paigalda
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvesta kaart
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Laadi kaart
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvesta kõrguskaart
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Lae kõrguskaart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Lahku redaktorist
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -412,6 +413,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad lin
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Näidatavad jaamanimed
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Näidatavad meldepunktid
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Näidatavad sildid
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Konkurentide nimesid ja silte kuvatakse
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Täielik animeerimine
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Kõik täpsustused
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Läbipaistvad hooned
@@ -504,6 +506,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suumitud ekraan
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ekraanitõmmis
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kontuuride kuvamine
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -915,19 +918,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta valimine
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Naelad (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarid ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jeen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Suurbritannia nael (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :USA dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jaapani jeen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austria ðilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgia frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitði frank (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tðehhi kroon (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Saksamargad (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Taani kroon (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Hispaania peseeta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Soome mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Prantsuse frank (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Kreeka drahm (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungari Forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandi kroon (ISK)
@@ -1112,6 +1115,11 @@ STR_SEA_LEVEL_MEDIUM                                            :Keskmine
 STR_SEA_LEVEL_HIGH                                              :Kõrge
 STR_SEA_LEVEL_CUSTOM                                            :Kohandatud
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kohandatud ({NUM}%)
+
+STR_RIVERS_NONE                                                 :Mitte ühtegi
+STR_RIVERS_FEW                                                  :Vähe
+STR_RIVERS_MODERATE                                             :Keskmiselt
+STR_RIVERS_LOT                                                  :Palju
 
 STR_DISASTER_NONE                                               :Puudub
 STR_DISASTER_REDUCED                                            :Vähendatud
@@ -1449,6 +1457,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näita N
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Näita tehismõistuse seadeid
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Sellel tõlkel on puudu {NUM} string{P "" i}. Palun aita teha OpenTTD veel paremaks ning registreeru tõlkijaks. Täpsem info asub failis readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Mängust väljumine
@@ -2335,6 +2345,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Laadi m�
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvesta stsenaarium
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laadi stsenaariumit
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laadi kõrguskaart
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvesta kõrguskaart
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Vajuta siia, et minna praegusesse vaikimisi valitud salvestamise/laadimise kausta
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vaba
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Nimekiri ketastest, kataloogidest ja salvestatud mängudest
@@ -2370,6 +2381,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maa gene
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puude algoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merepinna tase:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Jõed:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Tasapinnalisus:
 STR_MAPGEN_VARIETY                                              :{BLACK}Varieeruvuse jaotamine:
 STR_MAPGEN_GENERATE                                             :{WHITE}Tekita
@@ -2414,6 +2426,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Kas sa 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% valmis
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailma genereerimine
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jõgede genereerimine
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puude genereerimine
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Liigutamatu tekitamine
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Mägise ja kivise maaala tegemine
@@ -2530,6 +2543,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Loeti pseudo-sp
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Hetkel kasutatavast alus graafikapaketist puuduvad mõned spraidid.{}Palun uuenda alus graafikapaketti
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Soovitud GRF ressurss ei ole saadaval
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} blokeeriti {4:STRING} poolt
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Vigane/tundmatu spriidi asetuse formaat
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Ettevaatust!
@@ -2565,6 +2579,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <vale või vigane kaup>
 STR_NEWGRF_INVALID_ENGINE                                       :<sobimatu mootorimudel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<vigane tööstus>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ide skanneerimine
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF-de skanneerimine. Olenevalt failide arvust võib selleks kuluda mõni aeg...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Skanneeritud {NUM} NewGRF{P "" i} {NUM} NewGRF-ist
+STR_NEWGRF_SCAN_ARCHIVES                                        :Arhiivide otsimine
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
@@ -2873,6 +2893,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uus lennuk
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Hind: {GOLD}{CURRENCY}{BLACK} Tühimass: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tippkiirus: {GOLD}{VELOCITY}{BLACK} Võimsus: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Tippkiirus: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Kiirus ookeanil: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Kiirus kanalil/jõel: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käituskulud: {GOLD}{CURRENCY}/aastas
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kandevõime: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ümberseadistatav)
@@ -3233,12 +3255,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Peatu
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Jäta see käsk vahele, kui hooldust ei vajata
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel sihtpunkti vahetamine põhineb
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Koorem prontsentides
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Tehnoseisund
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tippkiirus
-STR_ORDER_CONDITIONAL_AGE                                       :Sõiduki vanus (aastates)
+STR_ORDER_CONDITIONAL_AGE                                       :Vanus (aastates)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vajab hooldust
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alati
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Allesjäänud eluaeg (aastates)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kuidas sõiduki andmeid antud väärtusega võrreldakse
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :on võrdne
@@ -3484,6 +3509,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... mida
 STR_ERROR_BMPMAP                                                :{WHITE}Ei suuda laadida maastikku BMP failist...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ei suutnud muuta pildi tüüpi
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... pilt on liiga suur
+
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skaala hoiatus
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaardi suuruse liigne muutmine pole soovitatav. Jätka?
 
@@ -3578,6 +3605,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... saab
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... saab ainult madalatele aladele ehitada
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... saab ainult ehitada kaardi serva
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsa saab istutada ainult lumepiirist kõrgemale
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... saab ehitada ainult ülespoole lumepiiri
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... saab ehitada ainult allapoole lumepiiri
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Siia ei saa raudteejaama ehitada...
@@ -3699,6 +3728,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Siia ei 
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Jõgesid ei saa siia teha...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... peab ehitama vette
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... vette ei saa ehitada
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ei saa ehitada avamerele
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ei saa ehitada kanali peale
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ei saa ehitada jõe peale
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal tuleb enne lammutada
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Siia ei saa veejuhet ehitada...
 

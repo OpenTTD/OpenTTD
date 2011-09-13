@@ -874,7 +874,7 @@ STR_GAME_OPTIONS_CURRENCY_DEM                                   :Alman markı (D
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danimarka Kronu (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Fin Markka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Fransız Frankı (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Yunan Drachma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Macar Forinti (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Iceland Kronasi (ISK)
@@ -1119,8 +1119,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Trenler
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Araçlardan çıkan duman veya kıvılcım miktarı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Tren ivme modeli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kara taşıtı ivme modeli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Trenler için eğim dikliği {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kara taşıtları için eğim dikliği %{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Trenler için eğim dikliği: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kara taşıtları için eğim dikliği: %{ORANGE}{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Doğrudan bitişik olmayan istasyonları birleştirme izni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Geliştirilmiş yükleme algoritması kullan: {ORANGE}{STRING}
@@ -3452,6 +3452,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... yanl
 
 STR_ERROR_BMPMAP                                                :{WHITE}Arazi BMP'den yüklenemedi...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... resim türü çevrilemedi
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... resim çok büyük
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
