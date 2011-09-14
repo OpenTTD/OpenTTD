@@ -2470,12 +2470,28 @@ STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}یک خ�
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} با TTDPatch که ویرایش آن توسط OpenTTD گزارش شده کار نمی کند
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} برای ویرایش {STRING}TTD می باشد
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} طراحی شده برای استفاده با {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :پارامتر نا معتبر برای {1:STRING}: پارامتر {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} باید قبلا از {STRING} بار زده می شد.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} باید بعد از {STRING} بار زده شود
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} نیاز به OpenTTD با ویرایش {STRING} یا بالاتر نیاز است
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :فایل GRF برای ترجمه شدن طراحی شده
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :تعداد NewGRF بیشتر از حد می باشد
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :در حال بارگزاری {2:STRING} به عنوان NewGRF ایستا با {4:STRING} مشکل همخوانی دارد
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :تصویر غیر منتظره
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :ویژگی فعالیت 0 ناشناخته است
+STR_NEWGRF_ERROR_INVALID_ID                                     :تلاش برای استفاده از آی دی نا معتبر
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} دارای یک تصویر خراب می باشد. تصویرهای خراب با علامت سوال قرمز (؟) نشان داده شدند.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :دارای چندین ورودی فعالیت 8 می باشد
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :خواندن تصویر از انتها گذشت
 STR_NEWGRF_ERROR_GRM_FAILED                                     :منبع GRF درخواست شده در دسترس نمی باشد.
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} غیر فعال گردیده توسط {4:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :طرح با قالب ناشناخته/نامعتبر
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطار!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}شما دارید در یک بازی درحال اجرا تغییر اعمال می کنید که ممکن است باعث برهم خوردن بازی شود.{}آیا مطمئنید؟
 
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}نمی توان فایل را اضافه کرد: GRF ID تکراری
 
 
 # NewGRF status

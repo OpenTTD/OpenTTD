@@ -314,20 +314,20 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Dlžka: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Plocha: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dlžka: {NUM}{}Výškový rozdiel: {HEIGHT}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dĺžka: {NUM}{}Výškový rozdiel: {HEIGHT}
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: {NUM} x {NUM}{}Výškový rozdiel: {HEIGHT}
 
 
 # These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populacia
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Názov
-STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dátum
 # These are used in dropdowns
 STR_SORT_BY_POPULATION                                          :Populácia
 STR_SORT_BY_NAME                                                :Meno
 STR_SORT_BY_PRODUCTION                                          :Produkcia
 STR_SORT_BY_TYPE                                                :Typ
-STR_SORT_BY_TRANSPORTED                                         :Prepravene
+STR_SORT_BY_TRANSPORTED                                         :Prepravované
 STR_SORT_BY_NUMBER                                              :Číslo
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zisk v poslednom roku
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zisk v tomto roku
@@ -489,7 +489,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Výstavba letis
 
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Úprava terénu
-STR_LANDSCAPING_MENU_PLANT_TREES                                :Vysadba stromov
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Výsadba stromov
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umiestnenie popisu
 ############ range ends here
 
@@ -634,13 +634,13 @@ STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zisk:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. prijem:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. prijem:
-STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Prepravene:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Naklad:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Doručené:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Náklad:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Hotovost:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Úver:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Spolu:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet vozidiel (automobilov, vlakov, lodí a lietadiel), ktoré zmenili svoj zisk minulý rok.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet vozidiel (automobilov, vlakov, lodí a lietadiel), ktoré zmenili zisk minulý rok
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Pocet casti stanic. Kazda cast stanice (napr. zeleznicna stanica, autobusova zastavka, letisko) je zapocitana, aj ked su spojene do jednej stanice.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zisk vozidla s najnizsim prijmom (zo vsetkych vozidiel starsich ako 2 roky)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najmenším ziskom v posledných 12 kvartáloch
@@ -678,8 +678,8 @@ STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Zastavi�
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Spustiť prehrávanie hudby
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Tahat posúvace pre zmenu hlasitosti
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Vybrať program 'všetky skladby'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Vybrat 'Stary styl'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Vybrat 'Novy styl'
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Vybrať 'Starý štýl'
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Vybrať 'Nový štýl'
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Vyber 'Ezy Street style music' program
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vybrat 'Vlastny 1' (uzivatelom definovany) program
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vybrat 'Vlastny 2' (uzivatelom definovany) program
@@ -1257,8 +1257,8 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Žiadny
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Pôvodný
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Vylepšený
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orientacia vyskovej mapy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Proti smeru hodinovych ruciciek
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orientácia výškovej mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Proti smeru hodinových ručičiek
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :V smere hodinovych ruciciek
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vyskova uroven pre rovinaty scenar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Povoliť formovanie povrchu kociek na okrajoch mapy: {ORANGE}{STRING}
@@ -1380,7 +1380,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :povolené
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :povolené, vlastné rozloženie mesta
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Umiestnenie stromov počas hry: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nikde {RED}(znefunkční pílu)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :žiadne {RED}(znefunkční pílu)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :len v dažďových pralesoch
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všade
 
@@ -1399,7 +1399,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Veľmi rýchly
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Pomer miest, ktoré sa budú rozvíjat rýchlejšie: {ORANGE}1 z {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Pomer miest, ktoré sa budú rozvíjat rýchlejšie: {ORANGE}žiadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Násobok pociatocnej velkosti mesta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Odstránit nezmyselné casti pri rekonštrukcii ciest: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Pri rekonštrukcii ciest odstrániť nezmyselné časti: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rozhranie
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
@@ -1456,7 +1456,7 @@ STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Vytvori�
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Spustiť hru viacerých hráčov
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Vybrať krajinu mierneho pásma
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Vybrať subarktickú krajinu
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Vybrať subpolárnu krajinu
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vybrať subtropickú krajinu
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vybrať krajinu hračiek
 
@@ -1504,7 +1504,7 @@ STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely 
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Prúdové lietadlá nehavarujú (tak často) na malých letiskách: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmeniť klímu: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Krajina mierneho pásma
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktická krajina
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subpolárna krajina
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropická krajina
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajina hračiek
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmeniť dátum: {ORANGE} {DATE_SHORT}
@@ -2156,7 +2156,7 @@ STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vybrať typ stromu pre sadenie
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne stromy
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umiestniť náhodné stromy. Shift prepína nakúp a zobrazenie ceny bez nákupu
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nahodne stromy
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nahodné stromy
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadit nahodne stromy
 
 # Land generation window (SE)
@@ -2167,17 +2167,17 @@ STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvý
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvýšenie/zníženie oblasti je potrebné zmenšiť územie
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Vygenerovať náhodné územie
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Vytvoriť nový scenár
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Zresetovat uzemie
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Zresetovat územie
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Odstránit všetok majetok vlastnený hrácom z mapy
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Zresetovat Uzemie
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Zresetovat Územie
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Naozaj odstrániť všetok hráčov majetok z mapy?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Vytvorenie mesta
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nove mesto
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nové mesto
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Založiť nové mesto. Shift+klik zobrazí predpokladanú cenu
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nahodne mesto
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nahodné mesto
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Postaviť mesto na náhodnej pozícii
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veľa náhodných miest
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pokryt mapu nahodne umiestnenymi mestami
@@ -3391,7 +3391,7 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Vymazat 
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vymazať dĺžku trvania označeného príkazu
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset meskania
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetnút pocítadlo meškania, takye vozidlo pojde presne
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Vynulovať počítadlo meškania, takže vozidlo pôjde presne
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň časový plán automaticky s hodnotami z nasledujúcej trasy (CTRL-klik - pokúsiť sa udržať čakacie doby)
@@ -3401,7 +3401,7 @@ STR_TIMETABLE_SCHEDULED                                         :{BLACK}Napláno
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi čakaním a cestovným poriadkom
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:
 
 
 # Date window (for timetable)
@@ -3414,7 +3414,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vyberte 
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI debugovanie
+STR_AI_DEBUG                                                    :{WHITE}AI ladenie chýb
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Meno AI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavenia AI
@@ -3934,11 +3934,11 @@ STR_INDUSTRY_NAME_GOLD_MINE                                     :Zlatá baňa
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantová baňa
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Železorudná baňa
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Ovocny sad
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Kaucukova plantaz
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Ovocný sad
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Kaučuková plantáž
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vodný zdroj
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodojem
-STR_INDUSTRY_NAME_FACTORY_2                                     :Tovaren
+STR_INDUSTRY_NAME_FACTORY_2                                     :Továreň
 STR_INDUSTRY_NAME_FARM_2                                        :Farma
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Pila
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Les cukrovej vaty
@@ -3946,9 +3946,9 @@ STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Cukrovar
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Výroba batérii
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Výroba kofoly
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Hrackarstvo
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Vyroba hraciek
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Výroba hračiek
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Žuvačkové fontány
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Vyroba sumienky
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Výroba šumienky
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Bublifuk
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamelový lom
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukrová baňa
