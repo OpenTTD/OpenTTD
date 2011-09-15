@@ -139,9 +139,9 @@ STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :Gaziranim pija�
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Potnik
-STR_CARGO_SINGULAR_PASSENGER.r                                  :Potnika
-STR_CARGO_SINGULAR_PASSENGER.d                                  :Potniku
-STR_CARGO_SINGULAR_PASSENGER.t                                  :Potnika
+STR_CARGO_SINGULAR_PASSENGER.r                                  :Potnikov
+STR_CARGO_SINGULAR_PASSENGER.d                                  :Potnikom
+STR_CARGO_SINGULAR_PASSENGER.t                                  :Potnike
 STR_CARGO_SINGULAR_COAL                                         :Premog
 STR_CARGO_SINGULAR_COAL.r                                       :Premoga
 STR_CARGO_SINGULAR_COAL.d                                       :Premogu
@@ -954,10 +954,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova žila premoga odkrita v {INDUSTRY}!{}Pričakuje se podvojitev proizvodnje!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nove rezerve nafte odkrite v {INDUSTRY}!{}Predvidena podvojitev proizvodnje!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Izboljšane metode pridelovanja v {INDUSTRY} naj bi podvojile proizvodnjo!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} proizvodnja v {INDUSTRY} narašča za {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} proizvodnja upada za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insekti so povzročili opustošenje v {INDUSTRY}!{}Proizvodnja zmanjšana za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :Proizvodnja {BIGFONT}{BLACK}{STRING} v {INDUSTRY} upada za {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :Proizvodnja {BIGFONT}{BLACK}{STRING.r} v {INDUSTRY.d} narašča za {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY.d} proizvodnja upada za 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insekti so povzročili opustošenje v {INDUSTRY.d}!{}Proizvodnja zmanjšana za 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :Proizvodnja {BIGFONT}{BLACK}{STRING.r} v {INDUSTRY.d} upada za {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaka v garaži
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaka v garaži
@@ -4008,6 +4008,7 @@ STR_INDUSTRY_NAME_POWER_STATION                                 :Termo elektrarn
 STR_INDUSTRY_NAME_POWER_STATION.r                               :Termo elektrarne
 STR_INDUSTRY_NAME_SAWMILL                                       :Žaga
 STR_INDUSTRY_NAME_SAWMILL.r                                     :Žage
+STR_INDUSTRY_NAME_SAWMILL.d                                     :Žagi
 STR_INDUSTRY_NAME_FOREST                                        :Gozd
 STR_INDUSTRY_NAME_FOREST.r                                      :Gozda
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Naftna rafinerija
@@ -4016,6 +4017,7 @@ STR_INDUSTRY_NAME_OIL_RIG                                       :Naftna plošča
 STR_INDUSTRY_NAME_OIL_RIG.r                                     :Naftne ploščadi
 STR_INDUSTRY_NAME_FACTORY                                       :Tovarna
 STR_INDUSTRY_NAME_FACTORY.r                                     :Tovarne
+STR_INDUSTRY_NAME_FACTORY.d                                     :Tovarni
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tiskarna
 STR_INDUSTRY_NAME_PRINTING_WORKS.r                              :Tiskarne
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Jeklarna
@@ -4030,6 +4032,7 @@ STR_INDUSTRY_NAME_BANK                                          :Banka
 STR_INDUSTRY_NAME_BANK.r                                        :Banke
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Prehrambeni obrat
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.r                       :Prehrambenega obrata
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.d                       :Prehrambenem obratu
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papirnica
 STR_INDUSTRY_NAME_PAPER_MILL.r                                  :Papirnice
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Rudnik zlata
@@ -4050,10 +4053,12 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodni stolp
 STR_INDUSTRY_NAME_WATER_TOWER.r                                 :Vodnega stolpa
 STR_INDUSTRY_NAME_FACTORY_2                                     :Tovarna
 STR_INDUSTRY_NAME_FACTORY_2.r                                   :Tovarne
+STR_INDUSTRY_NAME_FACTORY_2.d                                   :Tovarni
 STR_INDUSTRY_NAME_FARM_2                                        :Kmetija
 STR_INDUSTRY_NAME_FARM_2.r                                      :Kmetije
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Gozdarski obrat
 STR_INDUSTRY_NAME_LUMBER_MILL.r                                 :Gozdarskega obrata
+STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :Gozdarskem obratu
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Gozd sladkorne pene
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.r                         :Gozda sladkorne pene
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Tovarna slaščic
