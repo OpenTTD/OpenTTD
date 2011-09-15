@@ -96,6 +96,14 @@ public:
  */
 #define FOR_ALL_ADMIN_SOCKETS(var) FOR_ALL_ADMIN_SOCKETS_FROM(var, 0)
 
+/**
+ * Iterate over all the active sockets.
+ * @param var The variable to iterate with.
+ */
+#define FOR_ALL_ACTIVE_ADMIN_SOCKETS(var) \
+	FOR_ALL_ADMIN_SOCKETS(var) \
+		if (var->GetAdminStatus() == ADMIN_STATUS_ACTIVE)
+
 void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client = false);
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci);
 void NetworkAdminClientQuit(ClientID client_id);

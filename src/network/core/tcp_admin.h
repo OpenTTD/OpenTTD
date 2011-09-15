@@ -449,6 +449,15 @@ public:
 	~NetworkAdminSocketHandler();
 
 	NetworkRecvStatus ReceivePackets();
+
+	/**
+	 * Get the status of the admin.
+	 * @return The status of the admin.
+	 */
+	AdminStatus GetAdminStatus() const
+	{
+		return this->status;
+	}
 };
 
 #endif /* ENABLE_NETWORK */
