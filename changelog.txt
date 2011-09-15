@@ -1,6 +1,45 @@
+1.1.3 (2011-09-15)
+------------------------------------------------------------------------
+- Fix: Prevent authentication bypass for the admin port when a new game is started [FS#4771] (r22934)
+- Fix: TTO savegames with any aircraft not in an hangar caused crashes during load (r22915)
+- Fix: Windows 2000 and XP without service pack 3 must use the win9x binary/installer; the newer MSVC compiler of the compile farm does not support those versions of Windows anymore [FS#4749] (r22909)
+
+
+1.1.3-RC1 (2011-09-04)
+------------------------------------------------------------------------
+- Add: River graphics for the original base set (r22766)
+- Fix: [NewGRF] DCxx text references via the textstack are not allowed, but caused crash [FS#4758] (r22882)
+- Fix: Harden memory allocation (r22881, r22880, r22875)
+- Fix: Miscalculation of train curve speed limits (r22879)
+- Fix: Validate image dimensions before loading [CVE-2011-3343] [FS#4747] (r22878, r22877, r22874, r22873)
+- Fix: Report an error in the news if autoreplace/renew fails due to the engine type being no longer available [FS#4712] (r22876)
+- Fix: Perform stricter checks on RLE compressed BMP images [CVE-2011-3343] [FS#4746] (r22872, r22871)
+- Fix: [NewGRF] Variables 40 and 81 of callback 18 are not the same as 80 (r22867)
+- Fix: [NewGRF] Generic callbacks shall chain to the next GRF when the callback fails (r22866, r22865)
+- Fix: Perform stricter checks on some commands [CVE-2011-3341] [FS#4745] (r22845)
+- Fix: Harden savegame load against too many AI config settings [CVE-2011-3342] [FS#4748] (r22843)
+- Fix: Compilation with GCC 4.7 (r22832, r22728, r22719)
+- Fix: Allow to demolish aqueducts built in the scenario editor [FS#4741] (r22821)
+- Fix: Towns expanding from the "wrong" side of a tunnel or bridge [FS#4731] (r22810, r22809)
+- Fix: [NewGRF] String codes for dates should use unsigned words, like old OpenTTD did before it learned dates before 1920 (r22774)
+- Fix: [NoAI] Clarify the meaning of AIStation::IsWithinTownInfluence(), AITile::IsWithinTownInfluence() and AITown::IsWithinTownInfluence() [FS#4702] (r22763)
+- Fix: [NewGRF] Also free allocated depot tables of NewGRF airports (r22760)
+- Fix: [NewGRF] Invalid memory access when querying the grfID of the default objects [FS#4730] (r22757)
+- Fix: When marking tile selections dirty, use the height information of the corners instead of the surface slope. This is more accurate when the foundation is kind of undefined [FS#4727] (r22755)
+- Fix: Make aircraft point to the exit when leaving the hangar [FS#4696] (r22743, r22742, r22741)
+- Fix: Display the size of the leveled platform in the measurement tooltip of terraforming operations [FS#4708] (r22740, r22739)
+- Fix: Setting company passwords via the GUI on servers (including starting a company with the default password) failed, so no client could join that company [FS#4722] (r22738)
+- Fix: [NewGRF] The construction stage sprites were incorrectly selected in cases other than 1 or 4 sprites per set (r22731)
+- Fix: [NoAI] AITile::GetCargoAcceptance, AITile::GetCargoProduction and AIRail::BuildNewGRFRailStation did not check the cargo argument for validity (r22726)
+- Fix: [NewGRF] Always draw NewGRF supplied texts with a default colour (r22725)
+- Fix: [NewGRF] Do not restrict AdvVarAct2 to 255 operations (r22723)
+- Fix: If there is no point in opening the rail/air toolbar, do not open it for people who use hotkeys either rather than only for those using GUI elements (r22716, r22715, r22714)
+- Fix: [NoAI] Allow AIAirport::GetNoiseLevelIncrease() also for expired airports [FS#4704] (r22710)
+
+
 1.1.2 (2011-08-14)
 ------------------------------------------------------------------------
-- Fix: Some corrupted savegames could crash OpenTTD instead of showing the 'savegame corrupted' message [FS#4717] (r22737, r22736)
+- Fix: Some corrupted savegames could crash OpenTTD instead of showing the 'savegame corrupted' message [CVE-2011-3342] [FS#4717] (r22737, r22736)
 - Fix: [NewGRF] Triggering NOT_REACHED when playing with a NewGRF that supplies genders/cases for a language that was not installed [FS#4718] (r22735)
 
 
