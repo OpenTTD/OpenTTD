@@ -750,7 +750,7 @@ void NetworkReboot()
 		}
 
 		ServerNetworkAdminSocketHandler *as;
-		FOR_ALL_ADMIN_SOCKETS(as) {
+		FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
 			as->SendNewGame();
 			as->SendPackets();
 		}
@@ -777,7 +777,7 @@ void NetworkDisconnect(bool blocking, bool close_admins)
 
 		if (close_admins) {
 			ServerNetworkAdminSocketHandler *as;
-			FOR_ALL_ADMIN_SOCKETS(as) {
+			FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
 				as->SendShutdown();
 				as->SendPackets();
 			}

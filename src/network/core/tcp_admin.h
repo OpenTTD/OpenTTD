@@ -393,6 +393,15 @@ public:
 
 	const char *ReceiveCommand(Packet *p, struct CommandPacket *cp);
 	void SendCommand(Packet *p, const struct CommandPacket *cp);
+
+	/**
+	 * Get the status of the admin.
+	 * @return The status of the admin.
+	 */
+	AdminStatus GetAdminStatus() const
+	{
+		return this->status;
+	}
 };
 
 #endif /* ENABLE_NETWORK */

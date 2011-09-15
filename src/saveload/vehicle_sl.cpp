@@ -178,7 +178,7 @@ void UpdateOldAircraft()
 				continue;
 			}
 
-			AircraftLeaveHangar(a); // make airplane visible if it was in a depot for example
+			AircraftLeaveHangar(a, a->direction); // make airplane visible if it was in a depot for example
 			a->vehstatus &= ~VS_STOPPED; // make airplane moving
 			UpdateAircraftCache(a);
 			a->cur_speed = a->vcache.cached_max_speed; // so aircraft don't have zero speed while in air
