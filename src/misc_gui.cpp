@@ -902,7 +902,7 @@ struct TooltipsWindow : public Window
 
 		this->InitNested(&_tool_tips_desc);
 
-		this->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK); // remove white-border from tooltip
 	}
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)

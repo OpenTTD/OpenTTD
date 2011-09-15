@@ -89,11 +89,11 @@ struct StatusBarWindow : Window {
 
 	StatusBarWindow(const WindowDesc *desc) : Window()
 	{
-		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 		this->ticker_scroll    =   TICKER_STOP;
 		this->reminder_timeout = REMINDER_STOP;
 
 		this->InitNested(desc);
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 		PositionStatusbar(this);
 	}
 

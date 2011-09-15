@@ -148,7 +148,7 @@ struct DropdownWindow : Window {
 		this->GetWidget<NWidgetStacked>(DDM_SHOW_SCROLL)->SetDisplayedPlane(scroll ? 0 : SZSP_NONE);
 
 		this->FinishInitNested(&_dropdown_desc, 0);
-		this->flags4 &= ~WF_WHITE_BORDER_MASK;
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 
 		/* Total length of list */
 		int list_height = 0;

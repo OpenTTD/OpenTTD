@@ -1801,8 +1801,8 @@ struct NetworkClientListPopupWindow : Window {
 			this->AddAction(STR_NETWORK_CLIENTLIST_BAN, &ClientList_Ban);
 		}
 
-		this->flags4 &= ~WF_WHITE_BORDER_MASK;
 		this->InitNested(desc, client_id);
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 	}
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
