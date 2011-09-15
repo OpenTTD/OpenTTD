@@ -1239,10 +1239,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Waluta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Wybór waluty
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funty (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolary ($)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funt brytyjski (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar amerykański ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeny (¥)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jen japoński (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Szyling austriacki (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Frank belgijski (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Frank szwajcarski (CHF)
@@ -1258,7 +1258,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Korona islandzk
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira włoska (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Gulden holenderski (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Korona norweska (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty polski (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polski złoty (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Lej rumuński (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rubel rosyjski (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar słowenski (SIT)
@@ -1492,8 +1492,8 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :realistyczny
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model przyspieszania samochodów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :oryginalny
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :realistyczny
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nachylenie zboczy dla pociągów {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nachylenie zboczy dla samochodów {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nachylenie zboczy dla pociągów: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nachylenie zboczy dla samochodów: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabroń pociągom i statkom skręcać o 90 stopni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Pozwól na łączenie stacji nie sąsiadujących bezpośrednio: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Użyj ulepszonego algorytmu załadunku: {ORANGE}{STRING}
@@ -3580,10 +3580,12 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dane pojazdu wykorzystane w warunku
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procent załadowania
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
-STR_ORDER_CONDITIONAL_AGE                                       :Wiek pojazdu (lata)
+STR_ORDER_CONDITIONAL_AGE                                       :Wiek (w latach)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga serwisowania
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
 
@@ -3829,7 +3831,9 @@ STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nie 
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... coś poszło nie tak (prawdopodobnie zepsuty plik)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nie można wczytać krajobrazu z BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nie można konwertować typu obrazu
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nie można skonwertować tego typu obrazu
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... obraz jest za duży
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ostrzeżenie o skali
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źródłowej. Kontynuować tworzenie?
@@ -4121,7 +4125,7 @@ STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nie można kupić statku...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nie można kupić samolotu...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nie można zmienić nazwy typu pojazdu...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nie można zmienić nazwy typu pociągu...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nie można zmienić nazwy typu samochodu...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nie można zmienić nazwy typu statku...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nie można zmienić nazwy typu samolotu...

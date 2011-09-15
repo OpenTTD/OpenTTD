@@ -956,25 +956,25 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor no
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funte (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolari ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euri (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeni (¥)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Američki Dolar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Japanski Jen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijski šiling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski franak (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švicarski franak (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Češka kruna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Njemačka marka (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska kruna (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Španjolska Pezeta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska marka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franak (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francuski Franak (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grčka drahma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Mađarski forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandska kruna (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Talijanska lira (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nizozemski gulden (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveška kruna (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski zloti (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski Zloti (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunjski lev (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruske rublje (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenski tolar (SIT)
@@ -1153,6 +1153,7 @@ STR_SEA_LEVEL_HIGH                                              :Visoko
 STR_SEA_LEVEL_CUSTOM                                            :Proizvoljno
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Proizvoljno ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Ništa
 STR_DISASTER_REDUCED                                            :Smanjeno
 STR_DISASTER_NORMAL                                             :Normalno
@@ -1207,7 +1208,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistični
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model ubrzavanja za cestovna vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :{G=middle}Originalno
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :{G=middle}Stvarno
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost kosina za vlakove {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nagib padine za vlakove: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nagib padine za cestovna vozila {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabrani vlakovima i brodovima skretanja pod 90 stupnjeva: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dopusti spajanje postaja koje nisu izravno jedna do druge {ORANGE}{STRING}
@@ -1502,6 +1503,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikaži postavke umjetne inteligencije
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Završi 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Prekid
@@ -2619,6 +2621,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <pog
 STR_NEWGRF_INVALID_ENGINE                                       :<pogrešan model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna industrija>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} znak{P "" a ova}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Velika i mala slova
@@ -3286,6 +3290,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stani
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskoči ovu narudžbu osim ako servis nije potreban
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Podaci vozila prema kojima se zasniva skok
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Postotak ukrcaja
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pouzdanost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimalna brzina
@@ -3536,6 +3542,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... neš
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nije moguće učitati krajolik iz BMP-a...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ne mogu pretvoriti vrstu slike.
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... slika je prevelika
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozorenje o veličini
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine karte nije preporučena. Nastaviti sa kreiranjem?

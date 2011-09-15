@@ -1056,6 +1056,7 @@ STR_SEA_LEVEL_HIGH                                              :高
 STR_SEA_LEVEL_CUSTOM                                            :自定义
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :自定义 ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :没有
 STR_DISASTER_REDUCED                                            :较少
 STR_DISASTER_NORMAL                                             :正常
@@ -1405,6 +1406,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GR
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}显示AI设定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}退出
@@ -2482,6 +2484,7 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含复数的
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :读取最后的伪 Sprite 结尾
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
 STR_NEWGRF_ERROR_GRM_FAILED                                     :所必需的GRF资源不可用
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} 被 {4:STRING} 禁用
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
@@ -2517,6 +2520,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <invalid cargo>
 STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicle model>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} 个标志
@@ -3123,6 +3128,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}运力�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO}{}{BLACK}改装费用：{GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}改装所需： {GOLD}{CURRENCY}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}请选择要改装的车辆. 拖动鼠标可多选.点击空白区域选择整辆列车. Ctrl+左键 选定该车厢及其之后车厢。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
@@ -3184,6 +3190,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :停留
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}除非需要在此处保养，否则跳过这一项目
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳过所需的车辆数据值
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :装载进度
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠性
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最大速度
@@ -3433,6 +3441,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}似乎�
 
 STR_ERROR_BMPMAP                                                :{WHITE}无法从 BMP 文件中读取场景……
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}不能转换图像格式。
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... 图像太大了
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}缩放警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？

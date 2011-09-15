@@ -3195,6 +3195,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Arrêt
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sauter cet ordre tant qu'aucun entretien n'est requis
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Données du véhicule servant de base au saut
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Pourcentage de chargement
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilité
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Vitesse maximum
@@ -3445,6 +3447,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... quel
 
 STR_ERROR_BMPMAP                                                :{WHITE}Chargement du paysage depuis BMP impossible...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... n'a pas pu convertir le type d'image
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... image trop grande
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avertissement de redimensionnement
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Trop redimensionner la carte source n'est pas recommandé. Continuer la génération{NBSP}?

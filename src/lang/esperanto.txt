@@ -856,9 +856,9 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Monunuoj
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto de monunuoj
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pundoj (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolaroj ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eŭroj (€)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brita Pundo (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerika Dolaro (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eŭro (EUR)
 STR_GAME_OPTIONS_CURRENCY_YEN                                   :Enoj (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Aŭstriaj Ŝilingoj (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgaj Frankoj (BEF)
@@ -1050,6 +1050,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Meze
 STR_SEA_LEVEL_HIGH                                              :Alte
 STR_SEA_LEVEL_CUSTOM                                            :Alia
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Alia ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Neniu
 STR_DISASTER_REDUCED                                            :Malpli
@@ -1398,6 +1399,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri N
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Montri AI-agordojn.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Fermi
@@ -2472,6 +2474,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <mal
 STR_NEWGRF_INVALID_ENGINE                                       :<malvalida modelo de veturilo>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<malvalida industrio>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Parigu kazon
@@ -3136,6 +3140,8 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Prizorgu se nec
 STR_ORDER_DROP_HALT_DEPOT                                       :Haltu.
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transsalti ordonon escepte de prizorgo necesas
 
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ŝarĝu procenton
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidindo
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimuma rapido.
@@ -3375,6 +3381,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... io s
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ne povas ŝarĝi landaspekton el BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ne povis transigi bildotipon.
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... bildo estas tro granda
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala averto
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?

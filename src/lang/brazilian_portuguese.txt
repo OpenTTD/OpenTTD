@@ -1409,6 +1409,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar p
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Exibir configs. da IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
+
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Tem a certeza que deseja abandonar este jogo e voltar ao {STRING}?
@@ -3194,6 +3195,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Parar
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Pular esta ordem a menos que necessite de manutenção
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo no qual se basear para pular ordem
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentual carregado
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Confiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima

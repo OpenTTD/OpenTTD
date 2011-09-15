@@ -448,6 +448,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran fotoğraf
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tüm harita ekran görüntüsü
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprayt hizalayıcı
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Çerçeveleri aç/kapa
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -871,7 +872,7 @@ STR_GAME_OPTIONS_CURRENCY_DEM                                   :Alman markı (D
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danimarka Kronu (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Fin Markka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Fransız Frankı (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Yunan Drachma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Macar Forinti (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Iceland Kronasi (ISK)
@@ -1028,6 +1029,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Belediy
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Hiç
+STR_FUNDING_ONLY                                                :Yalnız yatırım
+STR_MINIMAL                                                     :En düşük
 STR_NUM_VERY_LOW                                                :Çok Az
 STR_NUM_LOW                                                     :Düşük
 STR_NUM_NORMAL                                                  :Normal
@@ -1054,6 +1057,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Orta
 STR_SEA_LEVEL_HIGH                                              :Yüksek
 STR_SEA_LEVEL_CUSTOM                                            :Özel
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Özel (%{NUM})
+
 
 STR_DISASTER_NONE                                               :Hiç
 STR_DISASTER_REDUCED                                            :Azaltılmış
@@ -1098,6 +1102,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Sahile 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Trenlerin azami uzunluğu: {ORANGE}{STRING} kare
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Araçlardan çıkan duman veya kıvılcım miktarı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Yok
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orijinal
@@ -1108,14 +1113,16 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Gerçekçi
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kara taşıtı ivme modeli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orijinal
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Gerçekçi
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Trenler için eğim dikliği {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kara taşıtları için eğim dikliği %{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Trenler için eğim dikliği: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kara taşıtları için eğim dikliği: %{ORANGE}{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Doğrudan bitişik olmayan istasyonları birleştirme izni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Geliştirilmiş yükleme algoritması kullan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Araçlar yavaş yavaş dolsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Enflasyon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Sadece istek varsa kargo kabul edilsin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Azami köprü uzunluğu: {ORANGE}{STRING} kare
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Azami tünel uzunluğu: {ORANGE}{STRING} kare
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Üretim fabrikalarının yapım yöntemi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
@@ -1133,6 +1140,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Karayol
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Şehrin ulaşım haklarını satın alma izinli: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Yerel yol tamiratlarına izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Diğer şirketlere para gönderme izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Uçak hızı çarpanı: {ORANGE}1 / {STRING}
@@ -1217,6 +1225,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Kaydedi
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :uzun (31 Ara 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kısa (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Yeni bir oyun başlatırken zamanı duraklat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Oyun durakladığında izin verilenler: {ORANGE}{STRING}
@@ -1339,6 +1348,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Görün
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Etkileşim
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyaller
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kargo idaresi
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}İşaretlerde otomatik geri çevirme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Otomatik yenileme
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Bakımlar
@@ -1398,6 +1408,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF a
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}YZ ayarlarını göster
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Çıkış
@@ -2477,6 +2488,8 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden fazla Action 8 girişi içeriyor
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprite bitiminden sonrasını okudu
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin
+STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} {4:STRING} tarafından deaktive edildi
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
@@ -2512,6 +2525,8 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <geçersiz kargo>
 STR_NEWGRF_INVALID_ENGINE                                       :<geçersiz araç modeli>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<geçersiz fabrika>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
@@ -3180,6 +3195,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Dur
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Bakım gerekmiyorsa bunu atla
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dallanmanın temel alacağı araç verisi
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Yükleme yüzdesi
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Güvenilirlik
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Azami hız
@@ -3256,6 +3273,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Aktar ve boş 
 STR_ORDER_NO_UNLOAD                                             :(Boşaltma ve kargo al)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Boşaltma ve tam dolduruşu bekle)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Boşaltma ve herhangi bir tam dolduruşu bekle)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Boşaltma ve yükleme yok)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[yakın uç]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[orta]
@@ -3429,6 +3447,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... yanl
 
 STR_ERROR_BMPMAP                                                :{WHITE}Arazi BMP'den yüklenemedi...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... resim türü çevrilemedi
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... resim çok büyük
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
@@ -3671,6 +3691,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Önce t�
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Yolda başka bir tünel var
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tünel haritanın dışında bitiyor
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tünelin diğer ucunda düzeltme yapılmasi gerekiyor
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tünel çok uzun
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... çok fazla nesne var
@@ -4244,6 +4265,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

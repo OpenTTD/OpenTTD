@@ -1070,7 +1070,7 @@ STR_SUBSIDY_X4                                                  :x4
 
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Muy llano
 STR_TERRAIN_TYPE_FLAT                                           :Llano
-STR_TERRAIN_TYPE_HILLY                                          :Ondulado
+STR_TERRAIN_TYPE_HILLY                                          :Accidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montañoso
 
 STR_ECONOMY_STEADY                                              :Estable
@@ -2089,7 +2089,7 @@ STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vista pr
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM} x {NUM} casillas
 
 STR_OBJECT_CLASS_LTHS                                           :Faro
-STR_OBJECT_CLASS_TRNS                                           :Transmisores
+STR_OBJECT_CLASS_TRNS                                           :Transmisor
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
@@ -3195,10 +3195,12 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Detenerse
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Saltar esta orden a menos que un mantenimiento sea necesario
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos del vehículo para saltarse
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentaje de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidad
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidad Máxima
-STR_ORDER_CONDITIONAL_AGE                                       :Edad del vehículo (años)
+STR_ORDER_CONDITIONAL_AGE                                       :Edad (años)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requiere mantenimiento
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Siempre
 
@@ -3445,6 +3447,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algo
 
 STR_ERROR_BMPMAP                                                :{WHITE}No se pudo cargar mapa de alturas BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no se pudo convertir el tipo de imagen
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... la imagen es demasiado grande
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Alerta de escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Cambiar demasiado el tamaño del mapa de origen no está recomendado. ¿Desea continuar con la generación?

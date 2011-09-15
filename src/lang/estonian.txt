@@ -504,6 +504,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suumitud ekraan
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ekraanitõmmis
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kontuuride kuvamine
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -915,19 +916,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta valimine
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Naelad (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarid ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Suurbritannia nael (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :USA dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jaapani jeen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austria ðilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgia frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitði frank (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tðehhi kroon (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Saksamargad (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Taani kroon (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Hispaania peseeta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Soome mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Prantsuse frank (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Kreeka drahm (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungari Forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandi kroon (ISK)
@@ -1112,6 +1113,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Keskmine
 STR_SEA_LEVEL_HIGH                                              :Kõrge
 STR_SEA_LEVEL_CUSTOM                                            :Kohandatud
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kohandatud ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Puudub
 STR_DISASTER_REDUCED                                            :Vähendatud
@@ -1462,6 +1464,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näita N
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Näita tehismõistuse seadeid
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Mängust väljumine
@@ -2579,6 +2582,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <vale v
 STR_NEWGRF_INVALID_ENGINE                                       :<sobimatu mootorimudel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<vigane tööstus>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Tõstutundlik
@@ -3246,10 +3251,12 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Peatu
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Jäta see käsk vahele, kui hooldust ei vajata
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel sihtpunkti vahetamine põhineb
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Koorem prontsentides
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Tehnoseisund
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tippkiirus
-STR_ORDER_CONDITIONAL_AGE                                       :Sõiduki vanus (aastates)
+STR_ORDER_CONDITIONAL_AGE                                       :Vanus (aastates)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vajab hooldust
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alati
 
@@ -3496,6 +3503,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... mida
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ei suuda laadida maastikku BMP failist...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ei suutnud muuta pildi tüüpi
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... pilt on liiga suur
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skaala hoiatus
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaardi suuruse liigne muutmine pole soovitatav. Jätka?

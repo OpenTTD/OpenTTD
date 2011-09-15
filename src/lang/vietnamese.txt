@@ -859,26 +859,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Đơn v�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa chọn đơn vị tiền tệ
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yên (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yên Nhật (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Úc (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Phơ-răng Bỉ (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Phơ-răng Thụy Sỹ (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Séc (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mác Đức (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Đan Mạch (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Tây Ban Nha(ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Phần Lan (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Phơ-răng (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Pháp (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Hy Lạp (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Hungary (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Đồng Króna (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Ý (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder Hà Lan (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Na Uy (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Đồng Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Phần Lan (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Ru-ma-ni (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúp Nga (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar (SIT)
@@ -1112,8 +1112,8 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Giống thực
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kiểu tăng tốc cho ôtô: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Nguyên bản
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Giống thực tế
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Độ dốc khi vượt dốc cho tàu hoả {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Độ dốc cho xe ôtô là {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Độ dốc khi vượt dốc cho tàu hoả: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Độ dốc cho xe ôtô là: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Cho phép gộp ga, bến, cảng không sát nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Sử dụng thuật toán bốc/dỡ hàng cải tiến: {ORANGE}{STRING}
@@ -1407,6 +1407,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển t
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Hiện thị tùy chỉnh AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Thoát 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Thoát
@@ -3193,6 +3194,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Dừng
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Bỏ điểm lộ trình này trừ khi cần bảo trì
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dữ kiện của phương tiện để xác định
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Tiến độ bốc xếp
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Độ tin cậy
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tốc độ tối đa
@@ -3443,6 +3446,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... có 
 
 STR_ERROR_BMPMAP                                                :{WHITE}Không thể nạp nền từ file BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... không thể chuyển đổi kiểu ảnh.
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... ảnh quá lớn
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Sai tỉ lệ bản đồ
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Co dãn bản đồ gốc quá nhiều là không nên làm. Bạn vẫn cứ thực hiện chứ?

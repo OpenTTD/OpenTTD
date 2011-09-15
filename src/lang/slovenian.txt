@@ -139,9 +139,9 @@ STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :Gaziranim pija�
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Potnik
-STR_CARGO_SINGULAR_PASSENGER.r                                  :Potnika
-STR_CARGO_SINGULAR_PASSENGER.d                                  :Potniku
-STR_CARGO_SINGULAR_PASSENGER.t                                  :Potnika
+STR_CARGO_SINGULAR_PASSENGER.r                                  :Potnikov
+STR_CARGO_SINGULAR_PASSENGER.d                                  :Potnikom
+STR_CARGO_SINGULAR_PASSENGER.t                                  :Potnike
 STR_CARGO_SINGULAR_COAL                                         :Premog
 STR_CARGO_SINGULAR_COAL.r                                       :Premoga
 STR_CARGO_SINGULAR_COAL.d                                       :Premogu
@@ -427,7 +427,7 @@ STR_SORT_BY_MAX_SPEED                                           :Največja hitro
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrednost
 STR_SORT_BY_LENGTH                                              :Dolžina
-STR_SORT_BY_LIFE_TIME                                           :Ostala življenjska doba
+STR_SORT_BY_LIFE_TIME                                           :Preostala življenjska doba
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zamuda urnika
 STR_SORT_BY_FACILITY                                            :Vrsta postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
@@ -600,6 +600,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zajemi približ
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Uravnavanje sličice
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Vklop/izklop okvirjev
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -951,10 +952,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova žila premoga odkrita v {INDUSTRY}!{}Pričakuje se podvojitev proizvodnje!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nove rezerve nafte odkrite v {INDUSTRY}!{}Predvidena podvojitev proizvodnje!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Izboljšane metode pridelovanja v {INDUSTRY} naj bi podvojile proizvodnjo!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} proizvodnja v {INDUSTRY} narašča za {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} proizvodnja upada za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insekti so povzročili opustošenje v {INDUSTRY}!{}Proizvodnja zmanjšana za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :Proizvodnja {BIGFONT}{BLACK}{STRING} v {INDUSTRY} upada za {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :Proizvodnja {BIGFONT}{BLACK}{STRING.r} v {INDUSTRY.d} narašča za {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY.d} proizvodnja upada za 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insekti so povzročili opustošenje v {INDUSTRY.d}!{}Proizvodnja zmanjšana za 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :Proizvodnja {BIGFONT}{BLACK}{STRING.r} v {INDUSTRY.d} upada za {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaka v garaži
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaka v garaži
@@ -1208,6 +1209,7 @@ STR_SEA_LEVEL_MEDIUM                                            :Srednje
 STR_SEA_LEVEL_HIGH                                              :Veliko
 STR_SEA_LEVEL_CUSTOM                                            :Po meri
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Po meri ({NUM}%)
+
 
 STR_DISASTER_NONE                                               :Brez
 STR_DISASTER_REDUCED                                            :Zmanjšano
@@ -1558,6 +1560,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikaži nastavitve UI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izhod iz 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Izhod
@@ -2675,6 +2678,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <nev
 STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neveljavna industrija>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ujemanje začetnic
@@ -3342,6 +3347,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskoči ta ukaz, razen če je potreben servis
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Podatki vozila na osnovni preskok
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenti polnjenja
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zanesljivost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najvišja hitrost
@@ -3592,6 +3599,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... neka
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ni mogoče naložiti pokrajine iz formata BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče spremeniti tipa slike
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... slika je prevelika
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Opozorilo za merilo
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporočena. Nadaljujem?
@@ -3989,6 +3998,7 @@ STR_INDUSTRY_NAME_POWER_STATION                                 :Termo elektrarn
 STR_INDUSTRY_NAME_POWER_STATION.r                               :Termo elektrarne
 STR_INDUSTRY_NAME_SAWMILL                                       :Žaga
 STR_INDUSTRY_NAME_SAWMILL.r                                     :Žage
+STR_INDUSTRY_NAME_SAWMILL.d                                     :Žagi
 STR_INDUSTRY_NAME_FOREST                                        :Gozd
 STR_INDUSTRY_NAME_FOREST.r                                      :Gozda
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Naftna rafinerija
@@ -3997,6 +4007,7 @@ STR_INDUSTRY_NAME_OIL_RIG                                       :Naftna plošča
 STR_INDUSTRY_NAME_OIL_RIG.r                                     :Naftne ploščadi
 STR_INDUSTRY_NAME_FACTORY                                       :Tovarna
 STR_INDUSTRY_NAME_FACTORY.r                                     :Tovarne
+STR_INDUSTRY_NAME_FACTORY.d                                     :Tovarni
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tiskarna
 STR_INDUSTRY_NAME_PRINTING_WORKS.r                              :Tiskarne
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Jeklarna
@@ -4011,6 +4022,7 @@ STR_INDUSTRY_NAME_BANK                                          :Banka
 STR_INDUSTRY_NAME_BANK.r                                        :Banke
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Prehrambeni obrat
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.r                       :Prehrambenega obrata
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.d                       :Prehrambenem obratu
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papirnica
 STR_INDUSTRY_NAME_PAPER_MILL.r                                  :Papirnice
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Rudnik zlata
@@ -4031,10 +4043,12 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodni stolp
 STR_INDUSTRY_NAME_WATER_TOWER.r                                 :Vodnega stolpa
 STR_INDUSTRY_NAME_FACTORY_2                                     :Tovarna
 STR_INDUSTRY_NAME_FACTORY_2.r                                   :Tovarne
+STR_INDUSTRY_NAME_FACTORY_2.d                                   :Tovarni
 STR_INDUSTRY_NAME_FARM_2                                        :Kmetija
 STR_INDUSTRY_NAME_FARM_2.r                                      :Kmetije
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Gozdarski obrat
 STR_INDUSTRY_NAME_LUMBER_MILL.r                                 :Gozdarskega obrata
+STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :Gozdarskem obratu
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Gozd sladkorne pene
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.r                         :Gozda sladkorne pene
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Tovarna slaščic

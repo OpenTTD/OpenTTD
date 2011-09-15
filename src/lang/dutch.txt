@@ -859,10 +859,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Kies valuta
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pond (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britse Pond (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Japanse Yen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Oostenrijkse Shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgische Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Zwitserse Frank (CHF)
@@ -3194,10 +3194,12 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sla deze order over tenzij onderhoud nodig is
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig info voor basisspringen wanneer
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laad percentage
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouwbaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum snelheid
-STR_ORDER_CONDITIONAL_AGE                                       :Voertuigleeftijd (jaren)
+STR_ORDER_CONDITIONAL_AGE                                       :Leeftijd (jaren)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Heeft onderhoud nodig
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altijd
 
@@ -3444,6 +3446,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er g
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan het landschap uit BMP niet laden...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type afbeelding niet omzetten
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... afbeelding is te groot
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaalwaarschuwing
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaart is niet aan te bevelen. Toch doorgaan?

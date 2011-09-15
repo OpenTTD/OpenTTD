@@ -344,7 +344,7 @@ STR_SORT_BY_MAX_SPEED                                           :max. rychlosti
 STR_SORT_BY_MODEL                                               :modelu
 STR_SORT_BY_VALUE                                               :hodnoty
 STR_SORT_BY_LENGTH                                              :délky
-STR_SORT_BY_LIFE_TIME                                           :zbývající životnosti
+STR_SORT_BY_LIFE_TIME                                           :Zbývající životnost
 STR_SORT_BY_TIMETABLE_DELAY                                     :zpoždění
 STR_SORT_BY_FACILITY                                            :druhu stanice
 STR_SORT_BY_WAITING                                             :množství čekajícího nákladu
@@ -517,6 +517,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Přiblíženo n
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot celé mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Zarovnávání spritů
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Přepnout ohraničení
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -3287,6 +3288,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Zastavit
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vlastnost vozidla, podle které přeskakovat
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procento naložení
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolehlivost
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximální rychlost
@@ -3537,6 +3540,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... něc
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nebylo možné nahrát krajinu z BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nelze převést formát obrázku
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... obrázek je příliš velký
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Varování kvůli velikosti
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tak velká zmena velikosti zdrojové mapy není doporučena. Pokračovat s generováním?

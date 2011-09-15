@@ -406,7 +406,7 @@ STR_SORT_BY_FACILITY                                            :Тип стан
 STR_SORT_BY_WAITING                                             :Кол-во товара на станции
 STR_SORT_BY_RATING_MAX                                          :Наивысший рейтинг
 STR_SORT_BY_RATING_MIN                                          :Низший рейтинг
-STR_SORT_BY_ENGINE_ID                                           :Название
+STR_SORT_BY_ENGINE_ID                                           :Идентификатор
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Мощность
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Тяговое усилие
@@ -3378,6 +3378,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропустить это задание, если обслуживание не требуется
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Параметр транспорта для сравнения
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент погрузки
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надёжность
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. скорость
@@ -3628,6 +3630,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... чт
 
 STR_ERROR_BMPMAP                                                :{WHITE}Не удалось загрузить ландшафт из BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... невозможно преобразовать изображение
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... изображение слишком большое
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Выход за пределы доступных значений
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Изменение размеров исходной карты до таких значений не рекомендуется. Продолжить?
@@ -3929,7 +3933,7 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не у�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Не удалось продать корабль...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не удалось продать самолёт...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Локомотив недоступен
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Локомотив и/или вагон недоступен
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Автотранспорт недоступен
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Корабль недоступен
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Авиатранспорт недоступен
