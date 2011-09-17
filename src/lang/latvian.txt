@@ -59,7 +59,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :Burbuļi
 STR_CARGO_PLURAL_TOFFEE                                         :Īriss
 STR_CARGO_PLURAL_BATTERIES                                      :Baterijas
 STR_CARGO_PLURAL_PLASTIC                                        :Plastmasa
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Limonāde
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Dzirkstošie dzērieni
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -93,39 +93,39 @@ STR_CARGO_SINGULAR_BUBBLE                                       :Burbuļi
 STR_CARGO_SINGULAR_TOFFEE                                       :Īriss
 STR_CARGO_SINGULAR_BATTERY                                      :Baterijas
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastmasas
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Burbuļūdens
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Dzirkstošais dzēriens
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} pasažieru
+STR_QUANTITY_PASSENGERS                                         :{COMMA} pasažier{P is i u}
 STR_QUANTITY_COAL                                               :{WEIGHT} ogļu
-STR_QUANTITY_MAIL                                               :{COMMA} pasta maisu
+STR_QUANTITY_MAIL                                               :{COMMA} pasta mais{P s i u}
 STR_QUANTITY_OIL                                                :{VOLUME} naftas
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} liellopu
-STR_QUANTITY_GOODS                                              :{COMMA} preču kastes
+STR_QUANTITY_GOODS                                              :{COMMA} preču kaste{P "" s s}
 STR_QUANTITY_GRAIN                                              :{WEIGHT} graudu
 STR_QUANTITY_WOOD                                               :{WEIGHT} kokmateriālu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} dzelzsrūdas
 STR_QUANTITY_STEEL                                              :{WEIGHT} tērauda
-STR_QUANTITY_VALUABLES                                          :{COMMA} maisu ar vērtspapīriem
+STR_QUANTITY_VALUABLES                                          :{COMMA} mais{P s i u} ar vērtspapīriem
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} vara rūdas
 STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurūzas
 STR_QUANTITY_FRUIT                                              :{WEIGHT} augļu
 STR_QUANTITY_DIAMONDS                                           :{COMMA} maisi ar dimantiem
 STR_QUANTITY_FOOD                                               :{WEIGHT} pārtikas preču
 STR_QUANTITY_PAPER                                              :{WEIGHT} papīra
-STR_QUANTITY_GOLD                                               :{COMMA} zelta maisu
+STR_QUANTITY_GOLD                                               :{COMMA} zelta mais{P s i u}
 STR_QUANTITY_WATER                                              :{VOLUME} ūdens
 STR_QUANTITY_WHEAT                                              :{WEIGHT} kviešu
-STR_QUANTITY_RUBBER                                             :{VOLUME} gumijas
+STR_QUANTITY_RUBBER                                             :{VOLUME} kaučuka
 STR_QUANTITY_SUGAR                                              :{WEIGHT} cukura
-STR_QUANTITY_TOYS                                               :{COMMA} rotaļlietu
-STR_QUANTITY_SWEETS                                             :{COMMA} saldumu maisu
+STR_QUANTITY_TOYS                                               :{COMMA} rotaļliet{P a as u}
+STR_QUANTITY_SWEETS                                             :{COMMA} saldumu mais{P s i u}
 STR_QUANTITY_COLA                                               :{VOLUME} kolas
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukurvates
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuļi
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} īrisa konfekšu
-STR_QUANTITY_BATTERIES                                          :{COMMA} baterijas
+STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a as u}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmasu
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} burbuļūdens
 STR_QUANTITY_N_A                                                :Nav info
@@ -150,7 +150,7 @@ STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
 STR_ABBREV_FOOD                                                 :{TINYFONT}PP
 STR_ABBREV_PAPER                                                :{TINYFONT}PS
 STR_ABBREV_GOLD                                                 :{TINYFONT}ZE
-STR_ABBREV_WATER                                                :{TINYFONT}UD
+STR_ABBREV_WATER                                                :{TINYFONT}ŪD
 STR_ABBREV_WHEAT                                                :{TINYFONT}KV
 STR_ABBREV_RUBBER                                               :{TINYFONT}GU
 STR_ABBREV_SUGAR                                                :{TINYFONT}CU
@@ -210,7 +210,7 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P s i ""}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P s i u}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
@@ -227,7 +227,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izvēlie
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izvēlieties atlasīšanas nosacījumus
 STR_BUTTON_SORT_BY                                              :{BLACK}Kārtot pēc
 STR_BUTTON_LOCATION                                             :{BLACK}Izvietojums
-STR_BUTTON_RENAME                                               :{BLACK}Pārsaukt
+STR_BUTTON_RENAME                                               :{BLACK}Pārdēvēt
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Aizvērt logu
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Loga virsraksts - velc šo, lai pārvietotu logu
@@ -261,8 +261,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Iedzīvo
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Vārda
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datuma
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Iedzīvotāji
-STR_SORT_BY_NAME                                                :Nosaukums
+STR_SORT_BY_POPULATION                                          :Iedzīvotājiem
+STR_SORT_BY_NAME                                                :Nosaukuma
 STR_SORT_BY_PRODUCTION                                          :Produkcijas
 STR_SORT_BY_TYPE                                                :Tipa
 STR_SORT_BY_TRANSPORTED                                         :Transportētā
@@ -272,24 +272,24 @@ STR_SORT_BY_PROFIT_THIS_YEAR                                    :Ienākumiem šo
 STR_SORT_BY_AGE                                                 :Vecuma
 STR_SORT_BY_RELIABILITY                                         :Uzticamības
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kopējās ietilpības pēc kravas tipa
-STR_SORT_BY_MAX_SPEED                                           :Maks. ātruma
+STR_SORT_BY_MAX_SPEED                                           :Maksimālā ātruma
 STR_SORT_BY_MODEL                                               :Modeļa
 STR_SORT_BY_VALUE                                               :Vērtības
 STR_SORT_BY_LENGTH                                              :Garuma
 STR_SORT_BY_LIFE_TIME                                           :Atlikušā ekspluatācijas laika
-STR_SORT_BY_TIMETABLE_DELAY                                     :Saraksta aizture
+STR_SORT_BY_TIMETABLE_DELAY                                     :Saraksta kavējuma
 STR_SORT_BY_FACILITY                                            :Stacijas veida
 STR_SORT_BY_WAITING                                             :Gaidošās kravas vērtības
-STR_SORT_BY_RATING_MAX                                          :Augstākais kravu reitings
-STR_SORT_BY_RATING_MIN                                          :Zemākais kravu reitings
+STR_SORT_BY_RATING_MAX                                          :Augstākā kravu vērtējuma
+STR_SORT_BY_RATING_MIN                                          :Zemākā kravu vērtējuma
 STR_SORT_BY_ENGINE_ID                                           :DzinējaID (klasiskais veids)
 STR_SORT_BY_COST                                                :Izmaksas
-STR_SORT_BY_POWER                                               :Jauda
-STR_SORT_BY_TRACTIVE_EFFORT                                     :Vilcējspēks
-STR_SORT_BY_INTRO_DATE                                          :Ieviešanas datums
+STR_SORT_BY_POWER                                               :Jaudas
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Vilcējspēka
+STR_SORT_BY_INTRO_DATE                                          :Ieviešanas datuma
 STR_SORT_BY_RUNNING_COST                                        :Lietošanas izmaksas
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Jaudas/lietošanas izmaksas
-STR_SORT_BY_CARGO_CAPACITY                                      :Kravnesība
+STR_SORT_BY_CARGO_CAPACITY                                      :Kravnesības
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzēt spēli
@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Būvēt 
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atvērt aiznavas rīkjoslu, lai mainītu zemes līmeni, stādīt kokus utt.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rādīt skaņas/mūzikas logu
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Parādīt pēdējo ziņojumu/ziņu rādīšanas režīmus
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemesgabalu, konsole, MI atkļūdošana, ekrānšāviņi, par OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemesgabalu, konsole, MI atkļūdošana, ekrānuzņēmumi, par OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Pārslēgt skaidrojumus
 
 # Extra tooltips for the scenario editor toolbar
@@ -340,7 +340,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Novietot
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Saglabāt scenāriju
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Ielādēt scenāriju
-STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Saglabāt augstumkarti
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Saglabāt augstumu karti
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Ielādēt augstumu karti
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Iziet no redaktora
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -1061,6 +1061,7 @@ STR_SEA_LEVEL_HIGH                                              :Augsts
 STR_SEA_LEVEL_CUSTOM                                            :Cits
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Cits ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Nav
 STR_DISASTER_REDUCED                                            :Samazināta
 STR_DISASTER_NORMAL                                             :Normāla
@@ -1397,6 +1398,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Parādī
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudiet vai nav pieejami atjauninājumi
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Parādīt mākslīgā intelekta uzstādījumus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Iziet no 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Iziet
@@ -2516,6 +2518,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nepare
 STR_NEWGRF_INVALID_ENGINE                                       :<nepareizs transportlīdzekļa modelis>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nepareiza rūpnīca>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zīmju saraksts- {COMMA} Zīm{P e es ju}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Saskaņot lielos/mazos burtus
@@ -2559,7 +2563,7 @@ STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Palielin
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Izdzēst
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Pilnībā dzēst šo pilsētu
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Pārsaukt pilsētu
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Pārdēvēt pilsētu
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} pašvaldība
@@ -2809,7 +2813,7 @@ STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik, la
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pievienot kopējos transportus
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Izņemt visus transportus
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pārsaukt grupu
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pārdēvēt grupu
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Jauni vilcieni
@@ -2867,7 +2871,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Pārsauk
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pārsaukt vilciena vagona tipu
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pārsaukt transportl. tipu
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Pārsaukt kuģa tipu
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Pārdēvēt kuģa tipu
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Pārsaukt lidaparāta veidu
 
 # Depot window
@@ -3185,6 +3189,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Apstādināt
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Izlaist šo rīkojumu, izņemot, ja vajadzīga apkope
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Cik procenti ielādēti
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Uzticamība
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maks. ātrums
@@ -3435,6 +3441,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... kaut
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nevar ielādēt no BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nav iespējams pārkonvertēt šo attēla veidu.
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Līmeņa brīdinājums
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Pārāk Izmainīt pamatkarti nav ieteicams. Turpināt ģenerēšanu?
