@@ -516,8 +516,8 @@ STR_MONTH_DEC                                                   :Diciembre
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}Clave
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Mostrar clave en gráficos
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Leyenda
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Mostrar leyenda en gráficos
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
@@ -542,7 +542,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLAC
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar detalles de rendimiento
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Clave de los gráficos
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leyenda de los gráficos
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click aquí para intercambiar la entrada de la empresa
 
 # Company league window

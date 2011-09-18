@@ -2492,19 +2492,45 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطا
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}شما دارید در یک بازی درحال اجرا تغییر اعمال می کنید که ممکن است باعث برهم خوردن بازی شود.{}آیا مطمئنید؟
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}نمی توان فایل را اضافه کرد: GRF ID تکراری
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}فایل تطبیق یافت نشد (GRF سازگار بارگذاری گردید)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF های سازگار برای فایل هایی که موجود نیستند بارگذاری گردید
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}GRF هایی که همه فایلهای آن موجود نیست غیر فعال گردیدند
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}فایل های GRF موجود نیست
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ادامه دادن بازی ممکن است باعث خطا و بسته شدن بازی گردد.اگر این اتفاق افتاد، این مورد را به عنوان خطا (باگ) گزارش ندهید.{}آیا می خواهید ادامه دهید؟
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :هیچکدام
+STR_NEWGRF_LIST_ALL_FOUND                                       :همه فایل ها موجود است
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}فایل های سازگار یافت شد
+STR_NEWGRF_LIST_MISSING                                         :{RED}نبود فایل
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN                                               :{WHITE}رفتار NewGRF '{0:STRING}' به گونه ای است که باعث خطا یا/و بسته شدن بازی می گردد
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}وضعیت واگن قطار برقی '{1:ENGINE}' بدون حضور در گاراژ تغییر یافته
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}طول خودرو '{1:ENGINE}' را بدون حضور در گاراژ تغییر داده است
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}قطار '{VEHICLE}' مربوط به شرکت '{COMPANY}' طول معتبر ندارد. این مشکل احتمالا بر اثر فایل های NewGRF به وجود آمده است. بازی ممکن است باخطا مواجه و بسته شود
 
+STR_NEWGRF_BUGGY                                                :{WHITE}فایل NewGRF '{0:STRING}' اطلاعات اشتباه داده است
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}تغییر کاربری بار '{1:ENGINE}' متفاوت از آنچه که در لیست قروش ارائه کرده بود. این خطا ممکن است در نوسازی خودکار و با در هنگام تغییر کاربری مشکل ساز گردد
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' در روند طراحی سبب حلقه بی پایان گردیده
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_CARGO                                        :«بار نامعتبر»
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :؟؟
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} از «بار نامعتبر»
+STR_NEWGRF_INVALID_ENGINE                                       :«مدل وسیله نقلیه نامعتبر»
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :«صنایع نامعتبر»
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}چک کردن برای فایل های NewGRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}چک کردن فایل های NewGRF. زمان انجام، به تعداد فایلها بسته است...
 STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی در بایگانی
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "ها" }
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}حالت تطبیق
+STR_SIGN_LIST_CLEAR                                             :{BLACK}پاک کردن همه فیلترها
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}تغییر نام علامت
