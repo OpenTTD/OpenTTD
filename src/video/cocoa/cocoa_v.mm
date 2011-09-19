@@ -305,7 +305,7 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 
 #ifdef _DEBUG
 	/* This Fullscreen mode crashes on OSX 10.7 */
-	if !(MacOSVersionIsAtLeast(10, 7, 0) {
+	if (!MacOSVersionIsAtLeast(10, 7, 0)) {
 		/* Try fullscreen too when in debug mode */
 		DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 fullscreen mode.");
 		ret = QZ_CreateFullscreenSubdriver(640, 480, bpp);
