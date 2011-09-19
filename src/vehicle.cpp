@@ -632,6 +632,21 @@ bool Vehicle::IsEngineCountable() const
 }
 
 /**
+ * Check whether Vehicle::engine_type has any meaning.
+ * @return true if the vehicle has a useable engine type.
+ */
+bool Vehicle::HasEngineType() const
+{
+	switch (this->type) {
+		case VEH_AIRCRAFT: return Aircraft::From(this)->IsNormalAircraft();
+		case VEH_TRAIN:
+		case VEH_ROAD:
+		case VEH_SHIP: return true;
+		default: return false;
+	}
+}
+
+/**
  * Handle the pathfinding result, especially the lost status.
  * If the vehicle is now lost and wasn't previously fire an
  * event to the AIs and a news message to the user. If the
@@ -784,7 +799,7 @@ static void RunVehicleDayProc()
 		if (v == NULL) continue;
 
 		/* Call the 32-day callback if needed */
-		if ((v->day_counter & 0x1F) == 0) {
+		if ((v->day_counter & 0x1F) == 0 && v->HasEngineType()) {
 			uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 			if (callback != CALLBACK_FAILED) {
 				if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
