@@ -99,7 +99,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} مسا�
 STR_QUANTITY_COAL                                               :{WEIGHT} از زغال سنگ
 STR_QUANTITY_MAIL                                               :{COMMA}بسته نامه
 STR_QUANTITY_OIL                                                :{VOLUME} نفت
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} فقره{P "" s} از جارپایان
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} فقره از جارپایان
 STR_QUANTITY_GOODS                                              :{COMMA} جعبه{P ی های} محموله تجاری
 STR_QUANTITY_GRAIN                                              :{WEIGHT}حبوبات
 STR_QUANTITY_WOOD                                               :{WEIGHT} چوب
@@ -117,15 +117,15 @@ STR_QUANTITY_WATER                                              :{VOLUME} آب
 STR_QUANTITY_WHEAT                                              :{WEIGHT} گندم
 STR_QUANTITY_RUBBER                                             :{VOLUME} کائوچو
 STR_QUANTITY_SUGAR                                              :{WEIGHT} شکر
-STR_QUANTITY_TOYS                                               :{COMMA} اسباب بازی{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} بسته{P "" s} شیرینی
+STR_QUANTITY_TOYS                                               :{COMMA} اسباب بازی
+STR_QUANTITY_SWEETS                                             :{COMMA} بسته شیرینی
 STR_QUANTITY_COLA                                               :{VOLUME} نوشابه
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} پشمک
-STR_QUANTITY_BUBBLES                                            :{COMMA} حباب{P "" s}
+STR_QUANTITY_BUBBLES                                            :{COMMA} حباب
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} آب نبات
-STR_QUANTITY_BATTERIES                                          :{COMMA}باطری{P y ies}
+STR_QUANTITY_BATTERIES                                          :{COMMA}باطری
 STR_QUANTITY_PLASTIC                                            :{VOLUME}پلاستیک
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} نوشیدنی گاز دار{P "" s}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} نوشیدنی گاز دار
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}همه
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} مسافر{P "" s}
-STR_BAGS                                                        :{COMMA} کیف{P "" s}
-STR_TONS                                                        :{COMMA} تن{P "" s}
-STR_LITERS                                                      :{COMMA} لیتر{P "" s}
-STR_ITEMS                                                       :{COMMA} فقره{P "" s}
-STR_CRATES                                                      :{COMMA} جعبه{P "" s}
+STR_PASSENGERS                                                  :{COMMA} مسافر
+STR_BAGS                                                        :{COMMA} کیف
+STR_TONS                                                        :{COMMA} تن
+STR_LITERS                                                      :{COMMA} لیتر
+STR_ITEMS                                                       :{COMMA} فقره
+STR_CRATES                                                      :{COMMA} جعبه
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :آبی تیره
@@ -202,13 +202,13 @@ STR_UNITS_POWER_SI                                              :{COMMA}کیلو
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}تن
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}کیلوگرم
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} تن{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} تن
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} کیلو گرم
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}لیتر
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}متر مکعب
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} لیتر{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} لیتر
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} متر مکعب
 
 STR_UNITS_FORCE_SI                                              :{COMMA} کیلو نیوتن
@@ -957,7 +957,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}قالب
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بسته گرافیک پایه
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بسته گرافیک پایه را انتخاب کنید
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} فایل {P "" s} وجود ندارد یا خراب است
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} فایل وجود ندارد یا خراب است
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}بسته صدای پایه را انتخاب کنید
@@ -966,7 +966,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}اطلا
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}بسته موسیقی پایه
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}بسته موسیقی پایه را انتخاب کنید
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} فایل {P "" s} خراب است
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} فایل خراب است
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}اطلاعات اضافه درباره بسته ی موسیقی پایه
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}حالت تمام صفحه با شکست مواجه شد
@@ -1114,7 +1114,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}اجا�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره (شیب خودکار): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}واقع بینانه تر شدن اندازه حوضه آبریز: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}اجازه برای داشتن قابلیت بیشتر ازبین بردن راه ها،پلها و تونل های شهر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}بیشترین اندازه یک قطار: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}بیشترین اندازه یک قطار: {ORANGE}{STRING} قطعه
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}مقدار دود/جرقه های خودرو : {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}روش سرعت گرفتن قطار: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}روش سرعت گرفتن خودرو: {ORANGE}{STRING}
@@ -1126,13 +1126,13 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}است�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}بارگیری وسایل نقلیه به تدریج: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}تورم: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}بار را فقط زمانی به ایستگاه تحویل بده که درخواستی برای آن باشد: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}بیشترین اندازه پل: {ORANGE}{STRING} قطعه{P 0:1 "" s}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}بیشترین اندازه تونل: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}بیشترین اندازه پل: {ORANGE}{STRING} قطعه
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}بیشترین اندازه تونل: {ORANGE}{STRING} قطعه
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}روش ساخت و ساز اولیه صنعت توسط کاربر: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :هیچکدام
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :همانند دیگر صنایع
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :رونق گرفتن
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}تعداد قطعه بدون پستی و بلندی دور صنایع: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}تعداد قطعه بدون پستی و بلندی دور صنایع: {ORANGE}{STRING} قطعه
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}قابلیت به وجود آمدین جندین صنایع شبیه به هم به ازای هر شهر: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}نشانه ها در راستای جهت رانندگی باشد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}نمایش پنجره مالی در پایان سال: {ORANGE}{STRING}
@@ -1169,17 +1169,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :از همه خ�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}هشدار هنگام منفی بودن درآمد خودرو: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}وسایل نقلیه هیچگاه از بین نروند: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}نوکردن خودکار وسایل نقلیه کهنه شده: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}نوکردن وسایل نقلیه {ORANGE}{STRING}{LTBLUE} ماه{P 0:1 "" s} قبل/بعد از بیشترین سن مجاز خودرو
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}نوکردن وسایل نقلیه {ORANGE}{STRING}{LTBLUE} ماه قبل/بعد از بیشترین سن مجاز خودرو
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}کمترین اندازه پول برای نو کردن وسایل نقلیه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}مدت زمان نمایش پیغام خطا: {ORANGE}{STRING} ثانیه{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}نمایش متن کمکی: {ORANGE}بعد از {STRING} ثانیه صبر{P 0:1 "" s}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}مدت زمان نمایش پیغام خطا: {ORANGE}{STRING} ثانیه
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}نمایش متن کمکی: {ORANGE}بعد از {STRING} ثانیه صبر
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}نمایش متن کمکی: {ORANGE}کلیک راست
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}نمایش جمعیت شهر در عنوان شهر: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}طراح زمین: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :پیدایش زمین
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}بیشترین فاصله از لبه نقشه برای پالایشگاه‌ها: {ORANGE}{STRING} قطعه{P 0:1 "" s}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}بیشترین فاصله از لبه نقشه برای پالایشگاه‌ها: {ORANGE}{STRING} قطعه
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}ارتفاع خط برف: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}پستی و بلندی های شدید (فقط در حالت «پیدایش زمین») : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بسیار هموار
@@ -1198,7 +1198,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}فعا�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}یک یا چند قطعه در لبه شمالی که خالی نیست
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}یک یا چند قطعه در لبه شمالی که آب نیست
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}بیشترین گستردگی ایستگاه: {ORANGE}{STRING} قطعه{P 0:1 "" s} {RED}هشدار:مقدارهای بالا از سرعت بازی می‌کاهد
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}بیشترین گستردگی ایستگاه: {ORANGE}{STRING} قطعه {RED}هشدار:مقدارهای بالا از سرعت بازی می‌کاهد
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}تعمیر و بازبینی بالگردها در فرودگاه به طور خودکار: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}وصل بودن نوار ابزار محوطه سازی به نوار ابزار وسایل نقلیه‌ی ریلی/جاده‌ای/آبی/هوایی: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}رنگ استفاده شده به عنوان زمین در نقشه کوچک: {ORANGE}{STRING}
@@ -1269,13 +1269,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}امک�
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}مقدار #opcodes قبل ازاینکه هوش مصنوعی متوقف شود: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}درصد زمان برای تعمیر/نگهداری به نسبت زمان کار: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری قطار: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری قطار: {ORANGE}{STRING} روز/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}زمان پیش‌فرض برای تعمیر/بازنگری قطار : {ORANGE}غیر فعال
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری خودروی جاده‌ای:: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری خودروی جاده‌ای:: {ORANGE}{STRING} روز/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری خودروی جاده‌ای {ORANGE}غیرفعال
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری هواپیما: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری هواپیما: {ORANGE}{STRING} روز/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری هواپیما: {ORANGE}غیرفعال
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری کشتی: {ORANGE}{STRING} روز{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری کشتی: {ORANGE}{STRING} روز/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری کشتی: {ORANGE}غیر‌فعال
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}غیرفعال کردن تعمیر/بازنگری کلیه وسایل نقلیه وقتی که طبق تنظیمات بازی خودرو ها خراب نشوند : {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}فعال کردن حد برای سرعت واگن: {ORANGE}{STRING}
@@ -1286,7 +1286,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}سال 
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}فعال بودن اقتصاد ملایم (بیشتر،تغییرات کوچک انجام می‌شود): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}قابلیت خرید سهام بقیه شرکت‌ها: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}درصد سود پایه برای پرداخت در سیستم های پرداخت: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}موقع کشیدن، هر : {ORANGE}{STRING} قطعه نصب یک نشانگر{P 0:1 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}موقع کشیدن، هر : {ORANGE}{STRING} قطعه نصب یک نشانگر
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}نصب علمک مکانیکی به جای چراغ راهنمایی قبل از سال: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}فعال کردن صفحه واسط کاربری برای نشانگر: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}نوع نشانگر پیش فرض: {ORANGE}{STRING}
@@ -1319,7 +1319,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :همه جا
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}محل نوار ابزار اصلی: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}محل نوار وضعیت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}چسبیدن پنجره ها به هم در نزدیک شدن به یکدیگر : {ORANGE}{STRING} پیکسل{P 0:1 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}چسبیدن پنجره ها به هم در نزدیک شدن به یکدیگر : {ORANGE}{STRING} پیکسل
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}چسبيدن پنجره ها به هم در نزديک شدن به يکديگر: {ORANGE}غیرفعال
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}بیشترین تعداد پنجره‌های غیرمهم: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}بیشترین مقدار پنجره های غیرمهم: {ORANGE}غیرفعال
@@ -1603,7 +1603,7 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}اگر �
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :شبکه محلی / اینترنت
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :اینترنت (آگهی)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} سرویس گیرنده{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} سرویس گیرنده
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}بیشترین تعداد سرویس گیرنده:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}بیشترین تعداد سرویس گیرنده را مشخص کنید.لازم نیست دقیقا به تعداد نفرات باشد
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} شرک{P ت تها}
@@ -2528,7 +2528,7 @@ STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}چک ک�
 STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی در بایگانی
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "ها" }
+STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "" ها }
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}حالت تطبیق
 STR_SIGN_LIST_CLEAR                                             :{BLACK}پاک کردن همه فیلترها
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}پاک کردن متن فیلتر
@@ -2679,8 +2679,8 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}محصو
 
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} قطار{P "" s}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ماشین{P "" s}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} قطار
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ماشین
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} هواپیما
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید
@@ -2858,8 +2858,8 @@ STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}نام �
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگذاری هواپیما
 
 # The next two need to stay in this order
-STR_VEHICLE_INFO_AGE                                            :{COMMA}سال{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} سال{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA}سال ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} سال ({COMMA})
 
 
 
