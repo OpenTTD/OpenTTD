@@ -213,6 +213,8 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} tr
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Rhowch linyn hidlydd
@@ -227,12 +229,14 @@ STR_BUTTON_RENAME                                               :{BLACK}Ailenwi
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Clau Ffenestr
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Teitl ffenestr - llusgwch hwn i symud ffenestr
+STR_TOOLTIP_SHADE                                               :{BLACK}Cysgodi'r ffenest - dangos y bar teitl yn unig
+STR_TOOLTIP_DEBUG                                               :{BLACK}Dangos gwybodaeth dadnamu NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Peri na fydd y fysell 'cau pob Ffenestr' yn cau'r ffenestr hon
 STR_TOOLTIP_RESIZE                                              :{BLACK}Cliciwch a llusgo er mwyn newid maint y ffenestr
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toglu maint ffenestri mawr/bach
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar sgrolio - sgrolio'r rhestr i fyny neu i lawr
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar sgrolio - sgrolio'r rhestr i'r chwith neu i'r dde
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Dymchwel adeiladau ayb. ar sgwâr o dir
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Dymchwel adeiladau ayb. ar sgwâr o dir. Mae Ctrl yn dewis ardal deiagonal. Mae Shift yn toglo adeiladu/dangos amcangyfrif cost
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Rhagosodiad
@@ -255,6 +259,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Poblogae
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Enw
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dyddiad
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Poblogaeth
+STR_SORT_BY_NAME                                                :Enw
 STR_SORT_BY_PRODUCTION                                          :Cynyrch
 STR_SORT_BY_TYPE                                                :Math
 STR_SORT_BY_TRANSPORTED                                         :Wedi'i gludo
@@ -432,7 +438,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol
 STR_ABOUT_MENU_AI_DEBUG                                         :Dadfygio AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Llun Sgrîn
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ciplun anferth (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ciplun o'r map cyfan
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Gwybodaeth am 'OpenTTD'
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglo bocsys ffinio
 ############ range ends here
@@ -556,11 +562,11 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Arian:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Benthyciad:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Cyfanswm:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nifer y cerbydau; mae hyn yn cynnwys cerbydau ffordd, trenau, llongau ac awyrennau
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nifer y rhannau gorsaf. Mae pob rhan o orsaf (e.e. gorsaf drenau, gorsaf fysiau a meysydd awyr) yn cael eu cyfrif, hyd yn oed os ydyn nhw wedi'u cysylltu fel un gorsaf
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Elw'r cerbyd gyda'r incwm lleiaf (o bob cerbyd dros 2 flwydd oed)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cyfanswm yr arian a enillwyd yn y mis gyda'r elw isaf o'r 12 chwarter ddiwethaf
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cyfanswm yr arian a enillwyd yn y mis gyda'r elw isaf o'r 12 chwarter ddiwethaf
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nifer y cerbydau Mae hyn yn cynnwys cerbydau a enillodd elw y llynedd. ffordd, trenau, llongau ac awyrennau
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nifer ardaloedd gorsaf gyda gwasanaeth diweddar. Mae pob ardal o orsaf (e.e. gorsaf drenau, gorsaf fysiau a meysydd awyr) yn cael eu cyfrif, hyd yn oed os ydynt wedi'u cysylltu fel un gorsaf
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Elw'r cerbyd gyda'r incwm lleiaf (o'r rhai sydd dros deuflwydd oed)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cyfanswm yr arian a enillwyd yn y chwarter gyda'r elw isaf o'r 12 chwarter ddiwethaf
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cyfanswm yr arian a enillwyd yn y chwarter gyda'r elw uchaf o'r 12 chwarter ddiwethaf
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Cyfanswm yr unedau llwyth a gludwyd yn y 4 chwarter diwethaf
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Nifer y mathau gwahanol o lwythi a gludwyd yn y chwarter diwethaf
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Cyfanswm yr arian sydd gan y cwmni hwn yn y banc
@@ -1273,6 +1279,7 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Arg
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrwr ar gyfer trenau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Llwybrwr ar gyfer cerbydau ffordd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Llwybrwr ar gyfer llongau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Troi'n ôl yn awtomatig wrth signalau: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Newid gwerth gosodiad
 
@@ -2075,7 +2082,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trac rheilfford
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trac rheilffordd gyda signalau gadaela signalau llwybr
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trac rheilffordd gyda signalau gadael a signalau llwybr un-ffordd
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trac rheilffordd gyda signalau cyfun a signalau llwybr
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trac rheilffordd gyda signalau cyfuna signalau llwybr un-ffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trac rheilffordd gyda signalau cyfun a signalau llwybr un-ffordd
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trac rheilffordd gyda signalau llwybr a signalau llwybr un-ffordd
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Rheilffordd trên depo
 
@@ -2880,7 +2887,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwyse
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosi: {LTBLUE}{CURRENCY}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}days{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rhwng gwasanaethu: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Cynyddu'r bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Gostwng y bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 

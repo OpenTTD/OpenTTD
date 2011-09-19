@@ -2531,37 +2531,70 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی د
 STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "ها" }
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}حالت تطبیق
 STR_SIGN_LIST_CLEAR                                             :{BLACK}پاک کردن همه فیلترها
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}پاک کردن متن فیلتر
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}تغییر نام علامت
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}برو به نشانه بعدی
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}برو به نشانه قبلی
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}برای نشانه یک نام وارد کنید
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}شهرها
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- هیچکدام -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}نام شهرها - کلیک روی نام شهر آن را در وسط صفحه نمایش می دهد. کنترل + کلیک یک نمای اضافه از مکان شهر باز می کند
+STR_TOWN_POPULATION                                             :{BLACK}جمعیت جهان: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (شهر)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}جمعیت: {ORANGE}{COMMA}{BLACK}  خانه ها: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}مسافران در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}نامه ها در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}نوع بار برای رشد شهر:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} ضروری
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} در زمستان ضروری است
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} ماه پیش تحویل داده شد
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}حد سروصدا در شهر: {ORANGE}{COMMA}{BLACK}  بیشینه: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}نمایش شهر در وسط صفحه نمایش. کنترل+کلیک یک نمای اضافه از شهر باز می کند
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}مقامات محلی
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}نمایش اطلاعات مقامات محلی
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}تغییر نام شهر
 
+STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}گسترش
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}افزایش اندازه شهر
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}پاک کردن
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK} این شهر را به شکل کامل حذف کن
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :تغییر اسم شهر
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} مقامات محلی
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK} امتیازات شرکت
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}کارهای ممکن :
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}لیست کارهایی که می شود در این شهر انجام داد- برای اطلاعات بیشتر کلیک کنید
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}انجام بده
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}انجام عمل مشخص شده در لیست بالا
 
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :برنامه تبلیغاتی کوچک
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :برنامه تبلیغاتی متوسط
+STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :برنامه تبلیغاتی بزرگ
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :پرداخت هزینه بازسازی آسفالت خیابان ها
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :ساخت تندیس رییس شرکت
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ساخت اختمان های جدید
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :خرید انحصاری کلیه حقوق حمل و نقل
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :رشوه به مقامات محلی
 
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}اجرای یک برنامه آگهی متوسط برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی بزرگ برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}پرداخت هزینه بازسازی روکش آسفالت شهری. سبب ترافیک قابل ملاحظه ای تا شش ماه می شود{}قیمت: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}ساخت مجسمه برای بزرگداشت شرکت شما{}قیمت: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}پرداخت هزینه ساخت ساختمان های تجاری.{}قیمت: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}خرید انحصاری حقوق حمل و نقل به مدت یک سال. مقامات شهر به مسافران و بارها اجازه استفاده از شرکت حمل و نقل دیگری را نمی دهند{}Cost: {CURRENCY}
 
 # Subsidies window
 
