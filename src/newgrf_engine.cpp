@@ -596,7 +596,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return v->grf_cache.company_information;
 
 		case 0x44: // Aircraft information
-			if (v->type != VEH_AIRCRAFT) return UINT_MAX;
+			if (v->type != VEH_AIRCRAFT || !Aircraft::From(v)->IsNormalAircraft()) return UINT_MAX;
 
 			{
 				const Vehicle *w = v->Next();
