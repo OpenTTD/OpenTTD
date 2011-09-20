@@ -166,7 +166,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}EKKER
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} farþegar
+STR_PASSENGERS                                                  :{COMMA} farþeg{P i ar}
 STR_BAGS                                                        :{COMMA} pokar
 STR_TONS                                                        :{COMMA} tonn
 STR_LITERS                                                      :{COMMA} lítrar
@@ -1045,6 +1045,7 @@ STR_SEA_LEVEL_LOW                                               :Lítið
 STR_SEA_LEVEL_MEDIUM                                            :Miðlungs
 STR_SEA_LEVEL_HIGH                                              :Mikið
 
+
 STR_DISASTER_NONE                                               :Ekkert
 STR_DISASTER_REDUCED                                            :Minnkað
 STR_DISASTER_NORMAL                                             :Venjulegt
@@ -1098,7 +1099,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leyfa m
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Magn reyks/neista frá lestum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Hröðun lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Hröðun bifreiða: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Brattleiki brekkna fyrir lestar {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Halli brekku fyrir lestar {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Halli brekku fyrir bifreiðar {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Banna lestum og skipum að taka 90° beygjur: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Leyfa sameiningu stöðva sem ekki tengjast á korti: {ORANGE}{STRING}
@@ -1206,6 +1207,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Nota da
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :löngu (31. Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :stuttu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Setja leik á bið þegar nýr leikur er hafinn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Ítarlegur listi yfir farartæki: {ORANGE}{STRING}
@@ -1363,6 +1365,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna Ne
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Sýna stillingar gervigreindar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Hætta í OpenTTD
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Hætta
@@ -2469,6 +2472,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} af <inv
 STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicle model>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} Merki{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Stemma há-/lágstafi
@@ -3132,10 +3137,12 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stoppa
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gögn farartækis sem skilyrði byggja á
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Hleðsluhlutfall
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Áreiðanleiki
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Hámarkshraði
-STR_ORDER_CONDITIONAL_AGE                                       :Aldur farartækis (í árum)
+STR_ORDER_CONDITIONAL_AGE                                       :Aldur (ár)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Þarfnast þjónustu
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltaf
 
@@ -3375,6 +3382,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eitt
 
 STR_ERROR_BMPMAP                                                :{WHITE}Get ekki hlaðið landslagi úr BMP skrá...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki breytt myndsniði.
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Stærð hæðarlínukorts
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ekki er mælt með því að breyta stærð grunnkorts of mikið. Viltu halda áfram?
