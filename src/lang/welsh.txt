@@ -763,7 +763,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Damwain Awyren!{}Bu farw {COMMA} mewn tanchwa yn {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Awyren wedi syrthio!{}Rhedodd yr awyren allan o danwydd, bu farw {COMMA} yn y ddamwain!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Damwain Awyren!{}Dim digon o danwydd yn yr awyren, {COMMA} yn marw mewn coelcerth
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Trychineb Zeppelin yn {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Cerbyd ffordd wedi'i ddinistrio ar ôl taro 'UFO'!
@@ -794,7 +794,7 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Mae diffyg unrhyw goed gerllaw wedi gorfodi i {STRING} ddatgan ei fod ar fin cau!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Arian Sengl Ewropeaidd!{}{}Cafodd yr Ewro ei gyflwyno fel unig arian cyfred eich gwlad!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Dirwasgiad Byd-eang!{}{}Mae arbenigwyr ariannol yn ofni'r gwaethaf wrth i'r economi gwympo!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Dirwasgiad Byd-eang!{}{}Arbenigwyr ariannol yn ofni'r gwaethaf wrth i'r economi gwympo!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Dirwasgiad ar Ben!{}{}Mae cynnydd mewn masnach yn rhoi hyder i ddiwydiant wrth i'r economi gryfhau!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Mae {INDUSTRY} `yn cynyddu ei gynnyrch!

@@ -406,7 +406,7 @@ STR_SORT_BY_FACILITY                                            :Тип стан
 STR_SORT_BY_WAITING                                             :Кол-во товара на станции
 STR_SORT_BY_RATING_MAX                                          :Наивысший рейтинг
 STR_SORT_BY_RATING_MIN                                          :Низший рейтинг
-STR_SORT_BY_ENGINE_ID                                           :Идентификатор
+STR_SORT_BY_ENGINE_ID                                           :Идентификатор (классическая сортировка)
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Мощность
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Тяговое усилие
@@ -455,7 +455,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Нажм
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Показать карту; список городов
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Создание ландшафта
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Создание городов
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание промышленности
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание предприятий
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильных дорог
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья. При нажатом Shift - оценка стоимости высадки.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить метку
@@ -661,7 +661,7 @@ STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}График прибыли
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}График доходов
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}График дохода
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Количество доставленного груза
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг компании (макс=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Стоимость компании
@@ -802,13 +802,13 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Карт
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Рельеф
 STR_SMALLMAP_TYPE_VEHICLES                                      :Транспорт
-STR_SMALLMAP_TYPE_INDUSTRIES                                    :Промышленность
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :Предприятия
 STR_SMALLMAP_TYPE_ROUTES                                        :Маршруты
 STR_SMALLMAP_TYPE_VEGETATION                                    :Растительность
 STR_SMALLMAP_TYPE_OWNERS                                        :Владельцы
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Показать контуры земли на карте
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Показать транспорт на карте
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Показать промышленность на карте
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Показать предприятия на карте
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Показать маршруты на карте
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Показать растительность на карте
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Показать владельцев земли на карте
@@ -1488,7 +1488,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :очень вы
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Количество мегаполисов: {ORANGE}1 из {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Количество мегаполисов: {ORANGE}нет
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Изначальный множитель размера города: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Удалять бесполезные элементы дорог во время реконструкции: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Удалять бесполезные элементы во время постройки дорог: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строительство
@@ -1506,7 +1506,7 @@ STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Обс�
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Поезда
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Города
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Промышленность
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Предприятия
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :оригинальный
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -2052,15 +2052,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не у�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки прозрачности
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Переключение прозрачности значков станций. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Переключение прозрачности деревьев. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Переключение прозрачности городских зданий. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Переключение прозрачности промышленных объектов. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Переключение прозрачности построенных игроками объектов: станций, депо, точек пути и пр. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Переключение прозрачности мостов. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Переключение прозрачности таких сооружений, как маяки и антенны. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Переключение прозрачности контактной сети. Ctrl+щелчок - блокировка.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Переключение прозрачности индикаторов загрузки. Ctrl+щелчок - блокировка.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Переключение прозрачности значков станций. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Переключение прозрачности деревьев. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Переключение прозрачности городских зданий. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Переключение прозрачности предприятий. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Переключение прозрачности построенных игроками объектов: станций, депо, точек пути и пр. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Переключение прозрачности мостов. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Переключение прозрачности таких сооружений, как маяки и антенны. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Переключение прозрачности контактной сети. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Переключение прозрачности индикаторов загрузки. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Сделать объекты не прозрачными, а полностью невидимыми
 
 # Base for station construction window(s)
@@ -2500,7 +2500,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Гене
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Кол-во рек:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Количество рек:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкость:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразие ландшафта:
 STR_MAPGEN_GENERATE                                             :{WHITE}Создать
@@ -2912,7 +2912,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Имя дире
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Мы ищем транспортную компанию для присоединения к ней.{}{}Вы хотите купить {COMPANY} за {CURRENCY}?
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Промышленность
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Предприятия
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Нет -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
@@ -3721,7 +3721,7 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}...в ц
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... слишком много предприятий
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Невозможно создать промышленность...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Невозможно создать предприятия...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Здесь нельзя создать {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Построить это предприятие невозможно...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... слишком близко к другому предприятию
