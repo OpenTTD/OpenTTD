@@ -3,9 +3,9 @@
 ##isocode cy_GB
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
-##decimalsep ,
+##digitsep ,
+##digitsepcur ,
+##decimalsep .
 ##winlangid 0x0452
 ##grflangid 0x0f
 
