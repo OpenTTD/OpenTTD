@@ -275,11 +275,11 @@ STR_SORT_BY_MODEL                                               :Modeloa
 STR_SORT_BY_VALUE                                               :Balioa
 STR_SORT_BY_LENGTH                                              :Luzera
 STR_SORT_BY_LIFE_TIME                                           :Geratzen zaion bizitza denbora
-STR_SORT_BY_TIMETABLE_DELAY                                     :denbora zutabeko atzerapenaz
+STR_SORT_BY_TIMETABLE_DELAY                                     :Ordutegiko atzerapena
 STR_SORT_BY_FACILITY                                            :Geltoki mota
 STR_SORT_BY_WAITING                                             :Karga balioa itxaroten
-STR_SORT_BY_RATING_MAX                                          :Karga balorazio handiena
-STR_SORT_BY_RATING_MIN                                          :Karga balorazio txikiena
+STR_SORT_BY_RATING_MAX                                          :Zama balorazio handiena
+STR_SORT_BY_RATING_MIN                                          :Zama balorazio txikiena
 STR_SORT_BY_ENGINE_ID                                           :MotoreID (ordenatze klasikoa)
 STR_SORT_BY_COST                                                :Kostua
 STR_SORT_BY_POWER                                               :Potentzia
@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izen erak
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Geltoki izen erakutsiak
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ibilbide izen erakutsiak
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Erakutsitako kartelak
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Aurkarien izenak eta kartelak erakutsi
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animazio betea
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Xehetasun betea
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Eraikin transparenteak
@@ -665,6 +666,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Erakutsi
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Erakutsi garraio-iblibideak mapan
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Erakutsi begetazioa mapan
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Erakutsi lur-jabeak mapan
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click egin industria mota batetan hau erakusteko/ ez erakusteko. Ctrl+Click hautatutakoa izan ezik guztiak desaktibatzeko . Berriro Ctrl+Click hautatutakoan industria mota guztiak aktibatzeko
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click egin kompainia batetan haren ondasunak ikusteko/ ez ikusteko. Ctrl+Click egitean hautatutakoa izan ezik baino beste kompainia guztiak desaktibatzeko. Berriro Ctrl+Click egin hautatutakoankompania guztiak aktibatzeko
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Errepideak
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Trenbideak
@@ -705,6 +708,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Dena gai
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Altuera erakutsi
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ez erakutsi industriarik mapan
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Erakutsi industria guztiak mapan
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Altuera mapa erakutsi/ ez erakutsi
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ez erakutsi konpainiaren jabetzak mapan.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Erakutsi konpaniaren propietate denak mapan
 
@@ -1049,6 +1053,11 @@ STR_SEA_LEVEL_HIGH                                              :Altua
 STR_SEA_LEVEL_CUSTOM                                            :Pertsonalizatua
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :(%{NUM}) pertsonalizatua
 
+STR_RIVERS_NONE                                                 :Bat ere ez
+STR_RIVERS_FEW                                                  :Gutxi
+STR_RIVERS_MODERATE                                             :Ez asko ez gutxi
+STR_RIVERS_LOT                                                  :Asko
+
 STR_DISASTER_NONE                                               :Ezer ez
 STR_DISASTER_REDUCED                                            :Mugatua
 STR_DISASTER_NORMAL                                             :Normala
@@ -1099,6 +1108,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Aldapa 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Eraikinen, trenbideen etabarren azpian paisaia aldatzea baimendu. (autoaldapak): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Bilketa guneen tamaina errealago egitea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Herriarenak diren errepide, zubi eta tunel gehiago kentzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Trenen gehienezko luzera: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Trenaren ke/txinparta kantitatea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trenaren azelerazio modeloa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ibilgailuen azelerazio modelua: {ORANGE}{STRING}
@@ -1110,6 +1120,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Zamatze
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Ibilgailuak mailaka zamatu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflazioa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Geltoki batetan bakarrik bertan hartzen duten zama baino ez utzi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Zubien gehienezko luzera: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Tunelen gehienezko luzera: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Industria primarioa eraikitzeko era: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ezer ez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :beste industriak bezala
@@ -1127,6 +1139,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Errepid
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Leioa mugitu kurtsorea ertzean dagoenean: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Udaletxeko agintariak erostea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Garraiatzeko eskubide esklusiboen erosketa baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Bertako errepideak hobetzea utzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Beste empresei dirua bidaltzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Zamaren pisuaren biderkatzailea tren astunagoak simulatzeko: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}hegazkinen: {ORANGE}1 / {STRING}
@@ -1266,6 +1279,8 @@ STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Multijok
 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Jokoaren aukerak erakutsi
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Itzultze honi {NUM} string{P "" s} falta zaio. Mesedez OpenTTD hobeago egiten lagundu itzultzaile bezala aritzen. Ikusi readme.txt zehetasunentzako.
 
 # Quit window
 
@@ -1498,6 +1513,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 
 # World generation
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Errekak:
 STR_MAPGEN_VARIETY                                              :{BLACK}Barietateen distribuzioa:
 
 # Strings for map borders at game generation
@@ -1509,6 +1525,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Barietat
 
 # Map generation progress
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Erreka sorkuntza
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objektu sorkuntza
 
 # NewGRF settings
@@ -1586,6 +1603,11 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <baliogabeko zama>
 STR_NEWGRF_INVALID_ENGINE                                       :<garraio modelo baliogabea>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria baliogabea>
+
+# NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE} NewGRF berriak bilatzen.
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK} NewGRFak bilatzen. Zenbatekoaren arabera tartetxo baterako luza litzateke...
+STR_NEWGRF_SCAN_ARCHIVES                                        :Fitxategiak bilatzen
 
 # Sign list window
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Bat egin maiuskula eta minuskulak
@@ -1679,6 +1701,8 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Produkzi
 # Build vehicle window
 
 
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Abiadura ozeanoan: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Abiadura kanaletan/erreketan: {GOLD}{VELOCITY}
 
 
 
@@ -1777,6 +1801,9 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARG
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Geratzen zaion bizitza (urteetan)
+
 
 
 
@@ -1859,6 +1886,8 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ez dago baliag
 # Map generation messages
 
 
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... irudia handiegia da
 
 
 # Soundset messages
