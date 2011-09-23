@@ -349,8 +349,7 @@ static void Check_PLYR()
 		SaveLoad_PLYR_common(NULL, cprops);
 
 		/* We do not load old custom names */
-		if (IsSavegameVersionBefore(84))
-		{
+		if (IsSavegameVersionBefore(84)) {
 			if (GB(cprops->name_1, 11, 5) == 15) {
 				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 			}
@@ -358,6 +357,13 @@ static void Check_PLYR()
 			if (GB(cprops->president_name_1, 11, 5) == 15) {
 				cprops->president_name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 			}
+		}
+
+		if (cprops->name == NULL && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_LAST + 1) &&
+				cprops->name_1 != STR_GAME_SAVELOAD_NOT_AVAILABLE && cprops->name_1 != STR_SV_UNNAMED &&
+				cprops->name_1 != SPECSTR_ANDCO_NAME && cprops->name_1 != SPECSTR_PRESIDENT_NAME &&
+				cprops->name_1 != SPECSTR_SILLY_NAME) {
+			cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 		}
 
 		if (!_load_check_data.companies.Insert(index, cprops)) delete cprops;
