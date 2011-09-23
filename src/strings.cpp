@@ -1409,7 +1409,7 @@ static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, c
 {
 	switch (ind) {
 		case 1: // not used
-			return strecpy(buff, _silly_company_names[args->GetInt32() & 0xFFFF], last);
+			return strecpy(buff, _silly_company_names[min(args->GetInt32() & 0xFFFF, lengthof(_silly_company_names) - 1)], last);
 
 		case 2: // used for Foobar & Co company names
 			return GenAndCoName(buff, args->GetInt32(), last);
