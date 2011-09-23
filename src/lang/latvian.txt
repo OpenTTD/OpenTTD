@@ -954,8 +954,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrāna 
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekrāna izšķirtspējas izvēle
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :cita
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekrānuzņēmuma formāts
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Ekrānuzņēmuma formāta izvēle
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekrānuzņēmumu formāts
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Ekrānuzņēmumu formāta izvēle
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pamata grafikas komplekts
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Atlasīt lietošanai pamata grafikas komplektu
@@ -1487,7 +1487,7 @@ STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izvēlē
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Sieviete
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Izvēlēties sieviešu sejas
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Jauna seja
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Ģenerēt gadījuma principa seju
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Ģenerēt nejaušu seju
 STR_FACE_ADVANCED                                               :{BLACK}Papildus
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Papildus seju izvēle
 STR_FACE_SIMPLE                                                 :{BLACK}Vienkāršs
@@ -1496,9 +1496,9 @@ STR_FACE_LOAD                                                   :{BLACK}Ielādē
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Ielādēt iemīļoto seju
 STR_FACE_LOAD_DONE                                              :{WHITE}Jūsu iemīļotā seja tika ielādēta no OpenTDD iestatījumu faila
 STR_FACE_FACECODE                                               :{BLACK}Spēlētāja sejas nr.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Skatīt un/vai pielikt kompānijas prezidenta sejas nr.
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Skatīt un/vai pielikt prezidenta sejas nr.
-STR_FACE_FACECODE_SET                                           :{WHITE}Jauns sejas nr. ir pielikts
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Skatīt un/vai pielikt uzņēmuma prezidenta sejas numuru
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Skatīt un/vai pielikt prezidenta sejas numuru
+STR_FACE_FACECODE_SET                                           :{WHITE}Jauns sejas numurs ir pielikts
 STR_FACE_FACECODE_ERR                                           :{WHITE}Nevar pielikt nr. spēlētāja sejai - nr, jābūt ciparu no 0 līdz 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Saglabāt
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Saglabāt iemīļoto seju
@@ -1901,7 +1901,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Piegād�
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Pievienot staciju
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Būvēt atdalītu staciju
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Pievienot maršruta punktu
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Pievienot ceļapunktu
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Uzbūvēt jaunu maršruta punktu
 
 # Rail construction toolbar
@@ -1926,7 +1926,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Vilcienu
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlieties vilcienu depo orientāciju
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Kontrolpunkts
+STR_WAYPOINT_CAPTION                                            :{WHITE}Ceļapunkts
 STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Izvēlieties kontrolpunkta veidu
 
 # Rail station construction window
@@ -1989,7 +1989,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Būvēt 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt ceļu Autoroad režīmā. Ctrl pārslēdz ceļu būvēšanu/demolēšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaja sliedes ar Autotram paņēmienu. Ctrl pārslēdz tramvaja sliežu būvēšanu/nojaukšanu. Shift pārslēdz ēkas/rādīt izmaksu tāmi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt automašīnu depo (automašīnu pirkšanai un apkopei). Shift pārslēdz ēkas/rādīt izmaksu tāmi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :Editted: {BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz ēkas/rādīt izmaksu tāmi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz ēkas/rādīt izmaksu tāmi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu. Ctrl iespējo staciju apvienošanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaja pieturu. Ctrl iespējo staciju apvienošanu. Shift pārslēdz ēkas/rādīt izmaksu tāmi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automašīnu staciju. Ctrl iespējo staciju apvienošanu
@@ -3232,7 +3232,7 @@ STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ievietot
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Rādīt visus ar šo plānu saistītos transportlīdzekļus
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Caur {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :Brauc caur {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Brauc caur {WAYPOINT} bez apstāšanās
 
 STR_ORDER_SERVICE_AT                                            :Apkalpot
@@ -3389,10 +3389,10 @@ STR_AI_LIST_URL                                                 :{BLACK}URL: {ST
 STR_AI_LIST_ACCEPT                                              :{BLACK}Apstiprināt
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izvēlēties izcelto MI
 STR_AI_LIST_CANCEL                                              :{BLACK}Atcelt
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainiet AL
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainiet MI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Ala Parametri
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI parametri
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Pārspiest
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4187,7 +4187,7 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} boja Nr.
 STR_FORMAT_COMPANY_NUM                                          :(Uzņēmums {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :Kontrolpunkts {TOWN}
+STR_FORMAT_WAYPOINT_NAME                                        :Ceļapunkts {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Kontrolpunkts {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN}s Vilcienu depo

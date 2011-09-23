@@ -3928,9 +3928,9 @@ STR_SV_STNAME_WEST                                              :{STRING} Ovest
 STR_SV_STNAME_CENTRAL                                           :{STRING} Centrale
 STR_SV_STNAME_TRANSFER                                          :{STRING} Interscambio
 STR_SV_STNAME_HALT                                              :{STRING} Fermata
-STR_SV_STNAME_VALLEY                                            :Valle di {STRING}
+STR_SV_STNAME_VALLEY                                            :{STRING} Valle
 STR_SV_STNAME_HEIGHTS                                           :Alture di {STRING}
-STR_SV_STNAME_WOODS                                             :Bosco di {STRING}
+STR_SV_STNAME_WOODS                                             :{STRING} Bosco
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Lago
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Scambio
 STR_SV_STNAME_AIRPORT                                           :Aeroporto di {STRING}
