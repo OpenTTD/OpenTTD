@@ -29,8 +29,8 @@ StringID RemapOldStringID(StringID s)
 	switch (s) {
 		case 0x0006: return STR_SV_EMPTY;
 		case 0x7000: return STR_SV_UNNAMED;
-		case 0x70E4: return SPECSTR_PLAYERNAME_ENGLISH;
-		case 0x70E9: return SPECSTR_PLAYERNAME_ENGLISH;
+		case 0x70E4: return SPECSTR_COMPANY_NAME_START;
+		case 0x70E9: return SPECSTR_COMPANY_NAME_START;
 		case 0x8864: return STR_SV_TRAIN_NAME;
 		case 0x902B: return STR_SV_ROAD_VEHICLE_NAME;
 		case 0x9830: return STR_SV_SHIP_NAME;
