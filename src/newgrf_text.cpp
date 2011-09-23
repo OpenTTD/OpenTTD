@@ -66,6 +66,7 @@ StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
 	if (str >= 0x004E && str <= 0x006D) return units_volume[str - 0x004E];
 	TEXTID_TO_STRINGID(0x006E, 0x008D, STR_QUANTITY_NOTHING);
 	TEXTID_TO_STRINGID(0x008E, 0x00AD, STR_ABBREV_NOTHING);
+	TEXTID_TO_STRINGID(0x00D1, 0x00E0, STR_COLOUR_DARK_BLUE);
 
 	/* Map building names according to our lang file changes. There are several
 	 * ranges of house ids, all of which need to be remapped to allow newgrfs
