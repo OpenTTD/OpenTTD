@@ -2525,7 +2525,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<virheellinen t
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannataan NewGRF-tiedostoja
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannataan NewGRF-tiedostoja. Lukumäärästä riippuen tässä voi kestää hetki...
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannataan NewGRF-tiedostoja. Tiedostojen määrästä riippuen riippuen tässä voi kestää hetki...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" ää} skannattu. Arvioitu kokonaismäärä {NUM} NewGRF{P "" ää}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skannataan arkistoja
 
