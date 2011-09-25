@@ -918,7 +918,6 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	Slope tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT && (
 				!_settings_game.construction.build_on_slopes ||
-				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(dir, tileh)
 			)) {
 		return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
@@ -1343,16 +1342,17 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 
 static uint GetSlopeZ_Road(TileIndex tile, uint x, uint y)
 {
-	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
 
-	if (tileh == SLOPE_FLAT) return z;
 	if (IsNormalRoad(tile)) {
+		uint z;
+		Slope tileh = GetTileSlope(tile, &z);
+		if (tileh == SLOPE_FLAT) return z;
+
 		Foundation f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
 		z += ApplyFoundationToSlope(f, &tileh);
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
-		return z + TILE_HEIGHT;
+		return GetTileMaxZ(tile);
 	}
 }
 

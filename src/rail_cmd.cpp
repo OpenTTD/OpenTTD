@@ -874,7 +874,6 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (tileh != SLOPE_FLAT && (
 				!_settings_game.construction.build_on_slopes ||
-				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(dir, tileh)
 			)) {
 		return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
@@ -2338,15 +2337,15 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 
 static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)
 {
-	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
-
-	if (tileh == SLOPE_FLAT) return z;
 	if (IsPlainRail(tile)) {
+		uint z;
+		Slope tileh = GetTileSlope(tile, &z);
+		if (tileh == SLOPE_FLAT) return z;
+
 		z += ApplyFoundationToSlope(GetRailFoundation(tileh, GetTrackBits(tile)), &tileh);
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
-		return z + TILE_HEIGHT;
+		return GetTileMaxZ(tile);
 	}
 }
 

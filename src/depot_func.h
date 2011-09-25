@@ -26,19 +26,14 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v);
  * @param direction The direction in which the depot's exit points
  * @param tileh The slope of the tile in question
  * @return true if the construction is possible
-
- * This is checked by the ugly 0x4C >> direction magic, which does the following:
- * 0x4C is 0100 1100 and tileh has only bits 0..3 set (steep tiles are ruled out)
- * So: for direction (only the significant bits are shown)<p>
- * 00 (exit towards NE) we need either bit 2 or 3 set in tileh: 0x4C >> 0 = 1100<p>
- * 01 (exit towards SE) we need either bit 1 or 2 set in tileh: 0x4C >> 1 = 0110<p>
- * 02 (exit towards SW) we need either bit 0 or 1 set in tileh: 0x4C >> 2 = 0011<p>
- * 03 (exit towards NW) we need either bit 0 or 4 set in tileh: 0x4C >> 3 = 1001<p>
- * So ((0x4C >> direction) & tileh) determines whether the depot can be built on the current tileh
  */
 static inline bool CanBuildDepotByTileh(DiagDirection direction, Slope tileh)
 {
-	return ((0x4C >> direction) & tileh) != 0;
+	assert(tileh != SLOPE_FLAT);
+	Slope entrance_corners = InclinedSlope(direction);
+	/* For steep slopes both entrance corners must be raised (i.e. neither of them is the lowest corner),
+	 * For non-steep slopes at least one corner must be raised. */
+	return IsSteepSlope(tileh) ? (tileh & entrance_corners) == entrance_corners : (tileh & entrance_corners) != 0;
 }
 
 #endif /* DEPOT_FUNC_H */
