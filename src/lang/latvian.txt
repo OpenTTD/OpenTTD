@@ -2307,9 +2307,9 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Ievadiet
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pasaules radīšana
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartes izmērii:
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Pilsētu sk.:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Pilsētu skaits:
 STR_MAPGEN_DATE                                                 :{BLACK}Datums:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Rūpnīcu sk.:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Rūpnīcu skaits:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniega līnijas augstums
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaugstināt sniega līnijas augstumu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pazemināt sniega līnijas augstumu
@@ -2321,6 +2321,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Zemes ra
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Koka algoritms:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Apgabala tips:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūras līmenis:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upes
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gludums:
 STR_MAPGEN_VARIETY                                              :{BLACK}Dažādības izplatība:
 STR_MAPGEN_GENERATE                                             :{WHITE}Radīt
