@@ -7,7 +7,7 @@
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
    -1 * 0	 0C "Fixing (alignment) bugs in the orignal graphics. By Addi."
-   -1 * 6	 07 83 01 \7= 03 69
+   -1 * 6	 07 83 01 \7= 03 7D
 // Different graphics for same wood truck
    -1 * 14	 0A 04 01 87 0C 01 89 0C 01 07 0E 01 09 0E
    -1 sprites/fix_graphics.png 82 8 09 16 22 -6 -7
@@ -79,6 +79,11 @@
    -1 sprites/fix_graphics.png 370 72 09 35 48 -23 -7
    -1 sprites/fix_graphics.png 434 72 09 35 48 -23 -7
    -1 sprites/fix_graphics.png 498 72 09 21 49 -24 3
+// Misaligned maglev bridge heads
+   -1 * 8	 0A 02 01 12 11 02 14 11
+   -1 sprites/fix_graphics.png 322 486 09 35 48 -23 -7
+   -1 sprites/fix_graphics.png 386 486 09 35 48 -23 -7
+   -1 sprites/fix_graphics.png 450 486 09 21 49 -24 3
 // Improperly cut cinema
    -1 * 5	 0A 01 02 34 11
    -1 sprites/fix_graphics.png 578 72 09 31 64 -31 0
@@ -198,3 +203,127 @@
 // GUI sprite
    -1 * 5	 0A 01 01 \w2600
    -1 sprites/fix_graphics.png 433 298 09 15 40 0 5
+// Make level crossings in tropical climate look normal
+   -1 * 6	 07 83 01 \7! 02 19
+   -1 * 14	 0A 04 04 5A 05 08 62 05 08 6E 05 04 7A 05
+   -1 sprites/fix_graphics.png 2 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 162 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 242 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 322 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 402 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 482 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 562 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 642 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 722 390 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 2 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 162 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 242 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 322 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 402 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 482 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 562 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 642 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 722 438 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 2 486 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 486 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 162 486 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 242 486 09 31 64 -31 0
+// Fix transparency of steel mill
+   -1 * 6	 07 83 01 \7! 00 0A
+   -1 * 5	 0A 01 04 4D 08
+   -1 sprites/fix_graphics.png 610 486 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 690 486 09 61 59 -31 -33
+   -1 sprites/fix_graphics.png 2 566 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 566 09 50 51 -25 -21
+   -1 * 5	 0A 01 04 58 08
+   -1 sprites/fix_graphics.png 162 566 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 242 566 09 52 59 -31 -24
+   -1 sprites/fix_graphics.png 306 566 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 386 566 09 44 51 -25 -15
+// Fix transparency of oil well
+   -1 * 6	 07 83 01 \7= 03 10
+   -1 * 5	 0A 01 06 7E 08
+   -1 sprites/fix_graphics.png 482 566 09 50 31 -11 -28
+   -1 sprites/fix_graphics.png 530 566 09 47 31 -11 -25
+   -1 sprites/fix_graphics.png 578 566 09 47 31 -11 -25
+   -1 sprites/fix_graphics.png 626 566 09 47 31 -11 -25
+   -1 sprites/fix_graphics.png 674 566 09 49 31 -11 -27
+   -1 sprites/fix_graphics.png 722 566 09 52 31 -11 -30
+   -1 * 6	 07 83 01 \7! 00 02
+   -1 * 5	 0A 01 01 7D 08
+   -1 sprites/fix_graphics.png 2 630 09 31 64 -31 0
+   -1 * 6	 07 83 01 \7! 01 02
+   -1 * 5	 0A 01 01 7D 08
+   -1 sprites/fix_graphics.png 114 630 09 31 64 -31 0
+   -1 * 6	 07 83 01 \7! 02 02
+   -1 * 5	 0A 01 01 7D 08
+   -1 sprites/fix_graphics.png 226 630 09 31 64 -31 0
+   -1 * 6	 07 83 01 \7! 03 0F
+   -1 * 5	 0A 01 06 91 04
+// Fix toyland overlay for PBS on maglev
+   -1 sprites/fix_graphics.png 338 630 09 16 30 -14 8
+   -1 sprites/fix_graphics.png 386 630 09 16 30 -14 8
+   -1 sprites/fix_graphics.png 434 630 01 7 40 -19 4
+   -1 sprites/fix_graphics.png 482 630 01 7 40 -19 20
+   -1 sprites/fix_graphics.png 530 630 01 19 12 11 6
+   -1 sprites/fix_graphics.png 562 630 01 19 12 -21 6
+// Fix toyland monorail bridge alignment
+   -1 * 8	 0A 02 01 EA 10 02 EC 10
+   -1 sprites/fix_graphics.png 610 630 09 35 48 -23 -7
+   -1 sprites/fix_graphics.png 674 630 09 35 48 -23 -7
+   -1 sprites/fix_graphics.png 738 630 09 21 49 -24 3
+// Fix toyland maglev bridge alignment
+   -1 * 8	 0A 02 01 12 11 02 14 11
+   -1 sprites/fix_graphics.png 18 678 09 35 48 -23 -7
+   -1 sprites/fix_graphics.png 82 678 09 35 48 -23 -7
+   -1 sprites/fix_graphics.png 146 678 09 21 49 -24 3
+// Fix city airport's grass for temperate
+   -1 * 6	 07 83 01 \7! 00 0A
+   -1 * 5	 0A 01 09 4C 0A
+   -1 sprites/fix_graphics.png 242 678 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 322 678 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 402 678 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 482 678 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 562 678 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 642 678 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 722 678 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 2 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 726 09 31 64 -31 0
+// Fix city airport's grass for arctic
+   -1 * 6	 07 83 01 \7! 01 0A
+   -1 * 5	 0A 01 09 4C 0A
+   -1 sprites/fix_graphics.png 194 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 274 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 354 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 434 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 514 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 594 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 674 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 2 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 774 09 31 64 -31 0
+// Fix city airport's grass for tropical
+   -1 * 6	 07 83 01 \7! 02 0A
+   -1 * 5	 0A 01 09 4C 0A
+   -1 sprites/fix_graphics.png 194 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 274 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 354 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 434 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 514 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 594 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 674 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 2 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 822 09 31 64 -31 0
+// Fix city airport's grass for toyland
+   -1 * 6	 07 83 01 \7! 03 0A
+   -1 * 5	 0A 01 09 4C 0A
+   -1 sprites/fix_graphics.png 194 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 274 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 354 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 434 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 514 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 594 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 674 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 2 870 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 82 870 09 31 64 -31 0
