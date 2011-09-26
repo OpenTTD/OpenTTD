@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :แสดงช
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :แสดงชื่อสถานี
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :แสดงจุดผ่าน
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :แสดงป้าย
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :ชื่อและป้ายของคู่แข่ง
 STR_SETTINGS_MENU_FULL_ANIMATION                                :ภาพเคลื่อนไหวเต็มที่
 STR_SETTINGS_MENU_FULL_DETAIL                                   :รายละเอียดเต็มที่
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :สิ่งก่อสร้างแบบโปร่งใส
@@ -1056,6 +1057,11 @@ STR_SEA_LEVEL_HIGH                                              :สูง
 STR_SEA_LEVEL_CUSTOM                                            :กำหนดเอง
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :กำหนดเอง ({NUM}%)
 
+STR_RIVERS_NONE                                                 :ไม่มี
+STR_RIVERS_FEW                                                  :น้อย
+STR_RIVERS_MODERATE                                             :ปานกลาง
+STR_RIVERS_LOT                                                  :หลาย
+
 STR_DISASTER_NONE                                               :ไม่มี
 STR_DISASTER_REDUCED                                            :ภาวะลดลง
 STR_DISASTER_NORMAL                                             :ภาวะปกติ
@@ -1392,6 +1398,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}แส�
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}ตรวจสอบเนื้อหาใหม่และการปรับปรุงสำหรับดาวโหลด
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}แสดงการกำหนดค่า AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}ออกจากเกม 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}ออกจากเกม
@@ -1970,6 +1977,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}สร�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}เลือกใช้ / ยกเลิกการใช้ ถนนวันเวย์
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}สร้างสะพานสำหรับรถยนต์ กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}สร้างสะพานสำหรับรถราง กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}สลับโหมด สร้าง/ลบ ถนน
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}สลับโหมด สร้าง/ลบ รางสำหรับรถราง
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}ทิศทางของอู่รถ
@@ -1982,8 +1991,11 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}ทิ�
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}เลือกทิศทางของอู่รถเมล์
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}ทิศทางของท่าขนส่งสินค้า
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}เลือกทิศทางของท่าขนส่งสินค้า
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}ทิศทางผู้โดยสารรถราง
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}เลือกทิษทางสำหรับผู้โดยสารรถราง
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}การก่อสร้างทางน้ำ
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}คลอง
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}สร้างคลอง กด Shift + คลิก เพื่อประมาณการค่าใช้จ่าย
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}ปักป้ายบนน้ำ
@@ -2220,6 +2232,7 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}เส�
 STR_MAPGEN_RANDOM                                               :{BLACK}สุ่ม
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tอัลกอริธึมต้นไม้:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}ระดับทะเล:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}แม่น้ำ:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}ความเรียบ:
 
 # Strings for map borders at game generation
@@ -2240,6 +2253,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x
 
 
 # Map generation progress
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}สร้างแม่น้ำ
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}สร้างวัตถุ
 
 # NewGRF settings
@@ -2287,6 +2301,8 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE} รถ�
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ให้รายละเอียดไม่ถูกต้อง.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CLEAR                                             :{BLACK}ล้างตัวกรอง
@@ -2392,6 +2408,8 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :รถใหม
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :เรือใหม่
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :เครื่องบินใหม่
 
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}ความเร็วบนทะเล: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}ความเร็วบนคลอง/แม่น้ำ: {GOLD}{VELOCITY}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}รายการรถไฟ - คลิกที่รถไฟเพื่อดูรายละเอียด
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}รายการรถ - คลิกที่รถเพื่อดูรายละเอียด
@@ -2530,6 +2548,9 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - สิ้�
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :อายุการ (ปี)
+
 
 
 
@@ -2608,6 +2629,8 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :เกมที
 # Map generation messages
 
 
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... ภาพมีขนาดใหญ่เกินไป
 
 
 # Soundset messages
@@ -2701,6 +2724,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}ตร�
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}ตรงนี้ไม่สามารถวางแม่น้ำได้
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... สร้างได้เฉพาะบนน้ำเท่านั้น
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... สร้างบนน้ำไม่ได้
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... สร้างบนทะเลเปิดไม่ได้นะจ๊ะ
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... สร้างบนคลองไม่ได้นะจ๊ะ
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... สร้างบนแม่น้ำไม่ได้นะจ๊ะ
 
 # Tree related errors
 

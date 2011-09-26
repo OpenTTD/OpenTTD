@@ -292,8 +292,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Karga Edukiera
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Jokoa bizkor aurreratu
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Aukerak
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Jokoa gorde, Jokoa utzi, Irten
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Ezarpenak
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Jokoa gorde, jokoa utzi, Irten
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Erakutsi mapa, ikusbegi extra edo kartelen zerrenda
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Erakutsi herri direktorioa
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidioak erakutsi
@@ -303,14 +303,14 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikoak erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Erakutsi konpaniaren elkarte zerrenda
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Eraiki industria berria edo industri guztien zerrenda erakutsi
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}erakutsi konpaniako trenen zerrenda. Ctrl+Click taldea zabaltzea/garraioen zerrenda agertzea uzten du
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Erakutsi konpaniako trenen zerrenda. Ctrl+Click talde/garraioen zerrenda agertzea uzten du
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Konpaniako errepideko garraioen zerrenda erakutsi. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Erakutsi konpaniako itsasontzien zerrenda. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Erakutsi konpaniako hegazkinen zerrenda. Ctrl+Click taldearen/garraioaren zerrenda zabaltzen uzten du
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ikuspegia handitu
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Ikuspegia txikitu
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Trenbideak eraiki
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bideak eraiki
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Errepideak eraiki
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Itsasontzi kaiak eraiki
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Aireportuak eraiki
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zabaldu paisaiko tresna-barra lurra igotzeko/beheratzeko, zuhaitzak landatu, etab.
@@ -351,33 +351,33 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zailtasun ezarp
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ezarpen aurreratuak
 STR_SETTINGS_MENU_AI_SETTINGS                                   :IA-ren ezarpenak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia aukerak
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izen erakutsiak
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Geltoki izen erakutsiak
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ibilbide izen erakutsiak
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Erakutsitako kartelak
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia ezarpenak
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izenak erakutsita
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Geltoki izenak erakutsita
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ibilbide izenak erakutsita
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Erakutsitako errotuluak
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Aurkarien izenak eta kartelak erakutsi
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animazio betea
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Xehetasun betea
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Eraikin transparenteak
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Geltoki kartel transparenteak
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Geltoki errotulu transparenteak
 ############ range ends here
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Jokoa gorde
 STR_FILE_MENU_LOAD_GAME                                         :Jokoa kargatu
 STR_FILE_MENU_QUIT_GAME                                         :Jokoa utzi
-STR_FILE_MENU_EXIT                                              :Windowsera irten
+STR_FILE_MENU_EXIT                                              :Irten
 ############ range ends here
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Munduko mapa
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Bista extra
-STR_MAP_MENU_SIGN_LIST                                          :Kartel zerrenda
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ikuspegi extra
+STR_MAP_MENU_SIGN_LIST                                          :Errotulu zerrenda
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Herri direktorioa
 ############ end of the 'Display map' dropdown
-STR_TOWN_MENU_FOUND_TOWN                                        :Hiria aurkitua
+STR_TOWN_MENU_FOUND_TOWN                                        :Herria eraiki
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -385,17 +385,17 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidioak
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Operazio onuren grafikoa
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Operazio benefizioen grafikoa
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Irabazien grafikoa
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Entregatutako kargaren grafikoa
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Jardunaldi historiako grafikoa
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Errendimendu historiako grafikoa
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Konpaniako balioaren grafikoa
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Karga ordainketaren tasa
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Konpanien ligaren tabloia
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Jardunaldi xehetuaren tasa
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Errendimentu xehetuaren tasa
 ############ range ends here
 
 ############ range for industry menu starts
@@ -449,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pantailan dagoe
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Mapa osoaren argazkia hartu (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'-ri buruz
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprit" lerrokatzailea
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kaxen neurriak aldatu
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -856,9 +857,9 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Diru uni
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolarrak ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yena (¥)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar Amerikarrak (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yena (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Txelin Austriarra (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franko Belgikarra (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Suitzar Frankoa (CHF)
@@ -1112,8 +1113,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Trenen 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Trenaren ke/txinparta kantitatea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trenaren azelerazio modeloa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ibilgailuen azelerazio modelua: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Aldapen zailtasuna trenentzako {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Aldapen zailtasuna errepide garraioetarako{ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Aldapen zailtasuna trenentzako: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Aldapen zailtasuna errepide garraioetarako: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Itsasontzi eta trenei 90 graduko biraketak debekatu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Elkarren ondoan ez baina oso hurbil dauden geltokiak bateratu : {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Zamatzeko algoritmo hobetua erabili: {ORANGE}{STRING}
@@ -1147,22 +1148,39 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazki
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Herrien errepideetan zehar gidatzen diren errepide geltokiak baimendu : {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Arerioen errepideetan zahar gidatzeko errepide geltokiak baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Alboko geltokiak eraikitzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}NewGRF set bat baino gehiago erabili ahal izatea aktibatu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Hau ezin da aldatu ibilgailuak daudenean
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aireportuei inoiz ez zaie epea amaitzen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Abisatu ibilgailu bat galduta badagoen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Ibilgailuen aginduak aztertu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ez
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :bai, baina geldi dauden garraioak baztertu
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :garraio guztiena
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Ohartarazi ibilgailu baten irabazketak negatiboak badira: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ibilgailuei inoiz ez zaie epea amaitzen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Ibilgailu bat zaharra bihurtzen denean automatikoki berritzea: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Ibilgailuak berritzeko behar den gutxienezko dirua: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Akats mezuaren iraupena: {ORANGE}{STRING} segundu{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Erakutsi tresnei buruzko argibideak: {ORANGE}Pasatu sagua {STRING} segundu{P 0:1 "" ak}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Erakutsi tresnei buruzko argibideak: {ORANGE}Eskuineko Click
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Herriaren bistanleria herriaren izen kartela erakutsi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Lur sortzailea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maparen ertzetik findegiak eraiki ahal diren gehienezko distantzia: {ORANGE}{STRING} laukitxo{P 0:1 "" s}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Elurra hasten den altuera: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Paisaiaren malkartasun maila (TerraGenesis erabiltzean soilik) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Oso Zakarra
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Zuhaitz kokatzeko algoritmoa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originala
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
@@ -2024,10 +2042,22 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Altzairu Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Altzairu Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Kobre Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Fruit Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Fruta Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Fruta Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Rubber Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Rubber Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Rubber Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Sugar Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Azukre Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Azukre Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Cola Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Cola Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Cola Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Candyfloss Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Candyfloss Truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Candyfloss Truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Toffee Kamioia
@@ -2038,6 +2068,14 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Toy
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Toy Van
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Sweet Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Sweet Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Sweet Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Battery Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Battery Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Battery Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Fizzy Drink Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Fizzy Drink Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Fizzy Drink Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastic Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastic Truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastic Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Bubble Truck
