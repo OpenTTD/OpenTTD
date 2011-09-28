@@ -349,7 +349,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimalų grei
 STR_SORT_BY_MODEL                                               :Modelį
 STR_SORT_BY_VALUE                                               :Vertę
 STR_SORT_BY_LENGTH                                              :Ilgį
-STR_SORT_BY_LIFE_TIME                                           :Likusį gyvavimo laiką
+STR_SORT_BY_LIFE_TIME                                           :Likusį naudojimo laiką
 STR_SORT_BY_TIMETABLE_DELAY                                     :Tvarkaraščio užtrukimą
 STR_SORT_BY_FACILITY                                            :Stoties tipą
 STR_SORT_BY_WAITING                                             :Laukiančio krovinio vertę
@@ -914,7 +914,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} jau priima {STRING} ir {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsidijų pasiūlymas baigėsi:{}{}{STRING.ko} pervežimas iš {STRING.ko} į {STRING.ka} daugiau nebesubsidijuojamas.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidijų laikas baigėsi:{}{}{STRING.ko} transportavimas iš {STRING} į {STRING} daugiau nebesubsidijuojama.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidijų laikas baigėsi:{}{}{STRING.ko} transportavimas iš {STRING} į {STRING} daugiau nebesubsidijuojamas.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsidijų pasiūlymas:{}{}Pirmasis pervežęs {STRING.ka} iš {STRING} į {STRING} gaus metinę vietinės valdžios subsidiją!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STRING} į {STRING} visus metus bus apmokamas 50% daugiau!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidijos suteiktos {STRING}!{}{}{STRING} pervežimas iš {STRING} į {STRING} visus metus bus apmokamas dvigubai!
@@ -936,10 +936,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valiuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valiutos pasirinkimas
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Svarai sterlingai (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Doleriai ($)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Svaras sterlingų (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikos Doleris ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eurai (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jenos (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japonijos jenos (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austru silingai (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijos frankai (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveicarijos frankai (CHF)
@@ -948,7 +948,7 @@ STR_GAME_OPTIONS_CURRENCY_DEM                                   :Vokietijos mark
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danijos kronos (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Ispanijos pesetos (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Suomijos markes (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Prancuzijos frankai (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Prancūzijos frankai (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Graikijos drachmos (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Vengrijos forintai (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandijos kronos (ISK)
@@ -1193,7 +1193,7 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Ilgiaus
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transporto priemonių dūmų / žiežirbų kiekis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Traukinių įsibėgėjimo nustatymas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Automobilių greitėjimo modelis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Atbrailų statumas traukiniams {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nuokalnės statumas traukiniams {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nuokalnių statumas automobiliams {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Drausti traukiniams/laivams pasisukti 90 laips.kampu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Leidžia sujungti stoteles, kurios nėra šalia: {ORANGE}{STRING}
@@ -1396,8 +1396,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pagrind
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Būsenos juostos vieta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Langų persidengimo atstumas: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Langų kibumo atstumas: {ORANGE}disabled
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Langų negriežtas limitas (nelipnių): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Langų negriežtas limitas (nelipnių): {ORANGE}išjungtas
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Didž. skaičius langų (nelipnių): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Didž. skaičius langų (nelipnių): {ORANGE}išjungtas
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Miestų augimo greitis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Joks
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lėtas
@@ -1475,6 +1475,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Atvaizdu
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Patikrinti dėl naujų ir atnaujintą turinį atsisiuntimui
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Rodyti AI nustatymus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti iš 'OpenTTD'
+
+STR_INTRO_TRANSLATION                                           :{BLACK}Šiam vertimui trūksta {NUM} eilu{P ė tės čių}. Padėkite OpenTTD užsiregistruodami kaip vertėjas. Daugiau informacijos rasite readme.txt .
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Baigti
@@ -1565,17 +1567,17 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Pasirink
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Naujas veidas
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Parinka naują atsitiktinį veidą
 STR_FACE_ADVANCED                                               :{BLACK}Plačiau
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Platesnis veido pasirinkimas.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Išplėstinis veido parinkimas
 STR_FACE_SIMPLE                                                 :{BLACK}Paprastas
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Paprastas veido pasirinkimas.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Paprastas veido parinkimas
 STR_FACE_LOAD                                                   :{BLACK}Atverti
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Atverti mėgstamą veidą
 STR_FACE_LOAD_DONE                                              :{WHITE}Tavo mėgstamas veidas sėkmingai įkeltas iš OpenTTD nustatymų failo.
 STR_FACE_FACECODE                                               :{BLACK}Žaidėjo veido nr.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tikrinti ir/arba nustatyti žaidėjo veido numerį
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tikrinti ir/arba nustatyti žaidėjo veido numerį
-STR_FACE_FACECODE_SET                                           :{WHITE}Naujas veido numeris sėkmingai nustatytas.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Negalėjau nustatyti veido numerio - turi būti skaičius tarp 0 ir 4,294,967,295!
+STR_FACE_FACECODE_SET                                           :{WHITE}Nustatytas naujas veido numeris
+STR_FACE_FACECODE_ERR                                           :{WHITE}Prezidento veido numeris nepriskirtas - turi būti skaičius tarp 0 ir 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Išsaugoti
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Išsaugoti mėgstamą veidą
 STR_FACE_SAVE_DONE                                              :{WHITE}Šis veidas bus išsaugotas kaip tavo mėgstamas OpenTTD nustatymų faile.
@@ -1760,8 +1762,8 @@ STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Jungiama
 
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Jungiamasi..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizuojamasi..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Laukiama..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizuoja..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Laukia..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Siunčiamas žemėlapis..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Duomenų apdorojimas...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registruojamasi..
@@ -1808,7 +1810,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Naudoti 
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Prisijungti
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Prisijunkite ir žaiskite kaip šios kompanijos
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Slaptažodis
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Slaptažodis apsaugo tavo kompanija nuo neleistinų vartotojų prisijungimo.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Apsaugok savo kompaniją slaptažodžiu nuo neleistinų vartotojų prisijungimo
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Įvesti slaptažodį
 
 # Network chat
@@ -1953,15 +1955,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nepavyko
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Permatomumo nustatymai
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Nustatyti permatomumą stočių ženklams. Ctrl+Click to lock.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Nustatyti permatomumą medžiams. Ctrl+Click to lock.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Nustatyti permatomumą namams. Ctrl+Click to lock.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Nustatyti permatomumą pramoniniams pastatams. Ctrl+Click to lock.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Perjungti permatomumą pastatams, tokiems kaip stotys, garažai ir kontrolės punktai. Ctrl+Paspaudimas užrakina.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Nustatyti permatomumą tiltams. Ctrl+Click to lock.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Perjungti permatomumą pastatams, tokiems kaip švyturiai ir antenos.Ctrl+Paspaudimas užrakina
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Perjungti permatomumą laidams. Ctrl+Paspaudimas užrakina.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Perjungti permatomumą krovimo indikatoriams. Ctrl+Paspaudimas užrakina.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Nustatyti stočių ženklų permatomumą. Ctrl+Click to užrakinti.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Nustatyti medžių permatomumą . Ctrl+Click to užrakinti.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Nustatyti namų permatomumą . Ctrl+Click užrakinti.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Nustatyti pramoninių pastatų permatomumą . Ctrl+Click užrakinti
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Perjungti statomų pastatų, tokių kaip stotys, garažai ir kontrolės punktai, permatomumą. Ctrl+Click užrakinti.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Nustatyti tiltų permatomumą. Ctrl+Click užrakinti
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Perjungti pastatų, tokių kaip švyturiai ir antenos, permatomumą.Ctrl+Click užrakinti
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Perjungti laidų permatomumą . Ctrl+Click užrakinti.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Perjungti krovimo indikatorių permatomumą. Ctrl+Click užrakinti
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nustatyti objektus nematomais vietoje permatomų
 
 # Base for station construction window(s)
@@ -2597,6 +2599,10 @@ STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas var
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama industrija>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tikrinami NewGRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Nuskaitomi NewGRF. Tai gali užtrukti, priklausomai nuo kiekio...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Nuskaitomi {NUM} NewGRF{P "" "" ""} iš paskaičiuotų {NUM} NewGRF{P "" "" ""}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Ieškoma archyvų
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}
@@ -2905,6 +2911,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Naujas lektuvas
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Svoris: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK} Galia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Greitis: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Greitis vandenyne: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Greitis kanale/upėje: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Važiavimo kaina: {GOLD}{CURRENCY}/m
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Talpa: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(perorientuotinas)
@@ -3269,12 +3277,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Sustoti
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Automobilio duomenys bazei šokant ant
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovimosi kiekis (proc)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Patikimumas
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Max. greitis
-STR_ORDER_CONDITIONAL_AGE                                       :Automobilio amžius
+STR_ORDER_CONDITIONAL_AGE                                       :Amžius (metais)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia taisymo
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visada
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Likęs naudojimo laikas (metais)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kaip lyginti automobilio duomenis su duota reikšme
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu su
@@ -3519,6 +3530,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... kaž
 
 STR_ERROR_BMPMAP                                                :{WHITE}Negalima nuskaityti kraštovaizdžio iš BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nepavyko pakeisti vaizdo failo formato.
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... paveikslėlis yra per didelis
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skales ispejimas
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?

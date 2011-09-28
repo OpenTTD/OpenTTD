@@ -101,7 +101,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} pasaži
 STR_QUANTITY_COAL                                               :{WEIGHT} ogļu
 STR_QUANTITY_MAIL                                               :{COMMA} pasta mais{P s i u}
 STR_QUANTITY_OIL                                                :{VOLUME} naftas
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} liellopu
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} mājlop{P s i u}
 STR_QUANTITY_GOODS                                              :{COMMA} preču kaste{P "" s s}
 STR_QUANTITY_GRAIN                                              :{WEIGHT} graudu
 STR_QUANTITY_WOOD                                               :{WEIGHT} kokmateriālu
@@ -802,7 +802,7 @@ STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} palielina ražošanas apjomu!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Atklāts jauns ogļu slānis {INDUSTRY}!{}Paredzams ogļu ieguves apjoma dubultošanās!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Atrastas jaunas naftas rezerves {INDUSTRY}!{}Paredzams naftas ieguves apjoma dubultošanās!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Uzlabotas apsaimniekošanas metodes {INDUSTRY} palielinās saražoto divkārtīgi!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Uzlaboti zemkopības paņēmieni {INDUSTRY} divkārtīgi palielinās saražoto!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} {INDUSTRY} ražošanas apjoms palielinās par {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} saražotā apjoms samazinās par 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Kukaiņu uzbrukums {INDUSTRY}!{} Saražotā apjoms samazinās par 50%
@@ -1061,6 +1061,10 @@ STR_SEA_LEVEL_HIGH                                              :Augsts
 STR_SEA_LEVEL_CUSTOM                                            :Cits
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Cits ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Neviena
+STR_RIVERS_FEW                                                  :Nedaudzas
+STR_RIVERS_MODERATE                                             :Vidējs
+STR_RIVERS_LOT                                                  :Daudzas
 
 STR_DISASTER_NONE                                               :Nav
 STR_DISASTER_REDUCED                                            :Samazināta
@@ -1090,7 +1094,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav piee
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rīcība nomainīja grūtības līmeni uz citu
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildus uzstādījumi
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildus iestatījumi
 
 STR_CONFIG_SETTING_OFF                                          :Izslēgts
 STR_CONFIG_SETTING_ON                                           :Ieslēgts
@@ -1327,7 +1331,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lēns
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Vidējs
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Ātrs
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Ļoti ātrs
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Ciematu proporcija, kas kļūs par pilsētām: {ORANGE}1 pret {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Pilsētu daļa kura kļūs par lielpilsētām: {ORANGE}1 pret {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ciematu proporcija, kas kļūs par pilsētām: {ORANGE}Neviens
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Sākotnējais pilsētas lieluma daudzkārtnis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Novākt absurdus ceļa elementus, ceļu būves laikā: {ORANGE}{STRING}
@@ -1373,8 +1377,8 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Tīkla s
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles opcijas
 STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtības pakāpe ({STRING})
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildus opcijas
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF opcijas
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildus iestatījumi
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudiet tiešaistes saturu
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI uzstādījumi
 STR_INTRO_QUIT                                                  :{BLACK}Iziet
@@ -2124,8 +2128,8 @@ STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Vidējs
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Liels
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Nejaušs
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Norādīt pilsētas izmērus
-STR_FOUND_TOWN_CITY                                             :{BLACK}Pilsēta
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Lielpilsētas attīstās ātrāk kā mazpilsētas{}Atkarībā no uzstādījumiem tās dibināšanas brīdī ir lielākas.
+STR_FOUND_TOWN_CITY                                             :{BLACK}Lielpilsēta
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Lielpilsētas attīstās ātrāk kā pilsētas{}Atkarībā no iestatījumiem, dibināšanas brīdī tās ir lielākas
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Pilsētas ceļu izskats:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Uzslēgt pilsētas ceļa izskatu
@@ -2275,7 +2279,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Uzņēmumam pie
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Par OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Orģinālās autortiesības {COPYRIGHT} 1995 Chris Sawyer, Visas tiesības rezervētas
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Oriģināla autortiesības {COPYRIGHT} 1995 Kriss Sojers. Visas tiesības paturētas
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versija {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2011 OpenTTD grupa
 
@@ -2375,7 +2379,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Skrejoš
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Sagatavo spēli
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF opcijas
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF iestatījumi
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Padziļināta NewGRF informācija
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktīvie NewGRF faili
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktīvie NewGRF faili
@@ -3310,7 +3314,7 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Sākuma 
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izvēlēties starta datumu šim grafikam
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt laiku,kas izceltajam maršrutam nepieciešams
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt iezīmētajam maršrutam nepieciešamo laiku
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Notīrīt laiku
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst laiku izceltajam maršrutam
@@ -3699,7 +3703,7 @@ STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... pār
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nevar uzbūvēt objektu...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Traucējošs objekts
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... traucē uzņēmuma birojs
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nevar nopirkt šo zemes pleķi...
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nevar nopirkt šo zemes platību...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... tev jau tā pieder!
 
 # Group related errors
@@ -3727,9 +3731,9 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nevar p�
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nevar nosaukt lidaparātu...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nevar apturēt/palaist vilcienu...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Autotransporta līdzekli nevar apturēt/palaist...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nevar apturēt/palaist autotransportu...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nevar apturēt/palaist kuģi...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nav iespējams apturēt/palaist lidaparātu...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nevar apturēt/palaist lidaparātu...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nevar aizsūtīt vilcienu uz depo...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nevar aizsūtīt uz depo
@@ -3848,7 +3852,7 @@ STR_INDUSTRY_NAME_OIL_REFINERY                                  :Naftas pārstr�
 STR_INDUSTRY_NAME_OIL_RIG                                       :Naftas ieguve
 STR_INDUSTRY_NAME_FACTORY                                       :Rūpnīca
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tipogrāfija
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Tērauda lietuve
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Tēraudlietuve
 STR_INDUSTRY_NAME_FARM                                          :Ferma
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Vara rūdas raktuves
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Naftas urbumi

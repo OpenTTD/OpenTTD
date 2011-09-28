@@ -862,19 +862,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 �
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :파운드 (￡)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :달러 ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :유로 (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :엔 (￥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :영국 파운드 (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :미국 달러 (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :유로 (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :일본 엔 (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :오스트리아 실링 (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :벨기에 프랑크 (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :스위스 프랑크 (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :체코 코루나 (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :독일 마르크 (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :덴마크 크로네 (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :페세타 (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :스페인 페세타 (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :핀란드 마르카 (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :프랑크 (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :프랑스 프랑크 (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :그리스 드라크마 (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :헝가리 프로인트 (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :아이슬란드 크로나 (ISK)
@@ -1060,6 +1060,10 @@ STR_SEA_LEVEL_HIGH                                              :높음
 STR_SEA_LEVEL_CUSTOM                                            :사용자 설정
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :사용자 설정 ({NUM}%)
 
+STR_RIVERS_NONE                                                 :없음
+STR_RIVERS_FEW                                                  :적게
+STR_RIVERS_MODERATE                                             :적당히
+STR_RIVERS_LOT                                                  :많이
 
 STR_DISASTER_NONE                                               :고장 안남
 STR_DISASTER_REDUCED                                            :적음
@@ -1398,6 +1402,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 �
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}인공지능 설정 보기
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD를 종료합니다
 
+STR_INTRO_TRANSLATION                                           :{BLACK}이 언어는 {NUM}개의 문자열이 번역되지 않았습니다. 번역자로 등록하시어 OpenTTD를 더 나은 게임으로 만들어주십시오. 상세한 정보는 readme.txt를 참고하십시오.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}종료
@@ -2320,6 +2325,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 �
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}나무 알고리즘:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}해수면:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}강:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}지표면을 깎는 방식:
 STR_MAPGEN_VARIETY                                              :{BLACK}산세 험준도:
 STR_MAPGEN_GENERATE                                             :{WHITE}만들기
@@ -2364,6 +2370,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% 완료
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}지형 만드는 중
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}강 제작
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 심는 중
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}거친 암석지대 만드는 중
@@ -2518,6 +2525,10 @@ STR_NEWGRF_INVALID_ENGINE                                       :<인식오류 �
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<인식오류 산업시설>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF 검색
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF을 검색하는 중입니다. 파일의 양에 따라 시간이 걸릴 수도 있습니다...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}약 {1:NUM}개의 NewGRF 중에서 {0:NUM}개의 NewGRF을 찾았습니다
+STR_NEWGRF_SCAN_ARCHIVES                                        :자료 검색
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개

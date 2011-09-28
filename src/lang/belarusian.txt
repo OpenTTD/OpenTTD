@@ -545,7 +545,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Зага
 STR_TOOLTIP_SHADE                                               :{BLACK}Згарнуць вакно, пакінуўшы загаловак
 STR_TOOLTIP_DEBUG                                               :{BLACK}Паказаць наладачную iнфармацыю NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Ігнараваць націск клявішы «Закрыць усе вокны»
-STR_TOOLTIP_RESIZE                                              :{BLACK}Націсьніце ды цягнiце для змяненьня памеру вакна
+STR_TOOLTIP_RESIZE                                              :{BLACK}Націсьніце ды цягнiце для зьмяненьня памеру вакна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вялікае/маленькае вакно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка ўверх/уніз
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка налева/направа
@@ -564,7 +564,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 STR_MEASURE_LENGTH                                              :{BLACK}Даўжыня: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Плошча: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Даўжыня: {NUM}{}Розніца вышыняў: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плошча: {NUM} x {NUM}{}Рознiца вышыняў: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плошча: {NUM} x {NUM}{}Розьнiца вышыняў: {HEIGHT}
 
 
 # These are used in buttons
@@ -626,7 +626,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Буда
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будаўніцтва аўтамабільных дарог
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будаўніцтва водных камунікацыяў
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будаўніцтва аэрапортаў
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Адкрыць панэль ляндшафту для змяненьня рэльефу, пасадкi дрэваў i г.д.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Адкрыць панэль ляндшафту для зьмяненьня рэльефу, пасадкi дрэваў i г.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Наладка гуку й музыкі
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Паказаць апошнiя паведамленьнi/навiны, паказаць наладкi паведамленьняў
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Iнфармацыя аб зямлi; кансоль; наладка штучнага інтэлекту (AI/ШI); здымкi экрана; аб гульні
@@ -1635,7 +1635,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :толькі ў
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :усюды
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Разьмяшчэньне галоўнай панэлі: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Размяшчэньне радка стану: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Разьмяшчэньне радка стану: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}{STRING} пікс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}адключана
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}{STRING}
@@ -1758,7 +1758,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :субаркт�
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :субтрапічны ляндшафт
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :цацачны ляндшафт
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Зьмяненьне даты: {ORANGE}{DATE_SHORT}
-STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Змянiць бягучы год
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Зьмянiць бягучы год
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дазволіць зьмяненьне прадукцыйнасьці: {ORANGE}{STRING}
 
 # Livery window
@@ -1949,7 +1949,7 @@ STR_NETWORK_LANG_DUTCH                                          :Нідэрля�
 STR_NETWORK_LANG_ESPERANTO                                      :Эспэранта
 STR_NETWORK_LANG_FINNISH                                        :Фінская
 STR_NETWORK_LANG_HUNGARIAN                                      :Вугорская
-STR_NETWORK_LANG_ICELANDIC                                      :Ісляндзкая
+STR_NETWORK_LANG_ICELANDIC                                      :Ісьляндзкая
 STR_NETWORK_LANG_ITALIAN                                        :Італьянская
 STR_NETWORK_LANG_JAPANESE                                       :Японская
 STR_NETWORK_LANG_KOREAN                                         :Карэйская
@@ -2433,8 +2433,8 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Паса
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Стварэньне ляндшафту
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Разьмясьціць камяні па мапе
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Разьмясьціць пустэльню.{}Націсьніце Ctrl, каб выдаліць яе.
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Павялічыць плошчу змяненьня рэльефу
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Паменшыць плошчу змяненьня рэльефу
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Павялічыць плошчу зьмяненьня рэльефу
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Паменшыць плошчу зьмяненьня рэльефу
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Стварыць выпадковую мапу
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Стварыць новы сцэнар
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Ачысьціць ляндшафт
@@ -2785,7 +2785,7 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Пара
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Выраўноўваньне спрайта {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Наступны спрайт
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перайсьці да наступнага нармальнага спрайта, прапускаючы псэўдаспрайты, а таксама змяненьнi колеру/шрыфтавыя.
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перайсьці да наступнага нармальнага спрайта, прапускаючы псэўдаспрайты, а таксама зьмяненьнi колеру/шрыфтавыя.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Перайсьці да спрайта
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Перайсьці да зададзеных спрайту. Калі спрайт не нармальны, пераход адбудзецца да наступнага нармальнага.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Папярэдні спрайт
@@ -2818,12 +2818,12 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Нечакан�
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Невядомая ўласьцівасьць для Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Выкарыстоўваецца няправільны ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} утрымлiвае пашкоджаны спрайт. Усе пашкоджаныя спрайты будуць паказаны чырвоным знакам пытаньня (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Змяшчае некалькі Action 8 дзеяньняў.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Зьмяшчае некалькі Action 8 дзеяньняў.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Дадзеныя раптоўна скончыліся.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай графікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай графікі.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошаныя рэсурсы GRF недаступныя
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} быў адключаны з-за {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Няслушны/невядомы фармат размяшчэньня спрайтаў
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Няслушны/невядомы фармат разьмяшчэньня спрайтаў
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асцярожна!
@@ -2850,7 +2850,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Мяня
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Цягнік «{VEHICLE}», які належыць «{COMPANY}», мае няправільную даўжыню. Верагодна, гэта выклікана праблемамі ў файле новай графікі. Гульня можа рассынхранізавацца або «выляцець».
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» падае няправільную інфармацыю.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфармацыя аб умяшчальнасьці/пераабсталяваньнi для лякаматыва «{1:ENGINE}» пасля пабудовы адрозніваецца ад зьвестак у сьпісе пакупкі, што можа перашкодзіць функцыі аўтаабнаўленьня/аўтазамены карэктна зрабіць пераабсталяваньне.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфармацыя аб умяшчальнасьці/пераабсталяваньнi для лякаматыва «{1:ENGINE}» пасьля пабудовы адрозніваецца ад зьвестак у сьпісе пакупкі, што можа перашкодзіць функцыі аўтаабнаўленьня/аўтазамены карэктна зрабіць пераабсталяваньне.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» выклікаў бясконцы цыкл.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -3053,8 +3053,8 @@ STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Агле
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Перамясьціць
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перамясьціць штаб-кватэру кампаніі ў іншае месца за 1% ацэнкавага кошту капіталу кампаніі. Shift+пстрычка - ацэнка кошту пераносу.
 
-STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Знешнасьць
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Зьмяніць знешнасьць дырэктара
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Зьнешнасьць
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Зьмяніць зьнешнасьць дырэктара
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Колер
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Зьмяніць колер транспартных сродкаў кампаніі
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Назва кампаніі
@@ -3812,7 +3812,7 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... выява занадта вялiкая
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Выхад за межы даступных значэньняў
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Змяненьне памераў зыходнай мапы да такіх значэньняў не рэкамэндуецца. Працягваць?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Зьмяненьне памераў зыходнай мапы да такіх значэньняў не рэкамэндуецца. Працягваць?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Бягучая гукавая схэма абрана сістэмай аўтаматычна. Дадатковыя наборы гукаў можна загрузіць праз сістэму анлайн-кантэнту.
@@ -3849,7 +3849,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}... ад
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Адміністрацыя г. {NBSP}{TOWN} забараняе пабудову яшчэ аднаго аэрапорта ў горадзе
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Адміністрацыя г. {NBSP}{TOWN} не дазваляе будаўніцтва аэрапорта з-за высокага ўзроўню шуму.
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша спроба даць хабар была
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}выяўлена рэгіянальным следчым
+STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}выяўлена рэгіянальным сьледчым
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Тут немагчыма падвысіць узровень зямлі...

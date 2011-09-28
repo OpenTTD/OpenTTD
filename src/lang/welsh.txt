@@ -2430,6 +2430,7 @@ STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Newid pa
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cau
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ailosod
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Gosod pob paramedr i'w werth rhagosodedig
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramedr {NUM}
 
 # NewGRF inspect window
 
