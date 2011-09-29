@@ -1708,7 +1708,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Mae'r cw
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Rhestr Cleientiaid
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gwylio
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cwmni Newydd
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cwmni newydd
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Cicio
@@ -1735,7 +1735,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Defnyddi
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Ymuno
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Ymuno a chwarae fel y cwmni hwn
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Cyfrinair
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Cyfrinair - diogelwch eich cwmni er mwyn rhwystro defnyddwyr heb awdurdod rhag ymuno.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Diogelwch eich cwmni gyda cyfrinair er mwyn rhwystro rhai heb awdurdod rhag ymuno
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Gosod cyfrinair cwmni
 
 # Network chat
@@ -1824,7 +1824,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Math
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Math y cynnwys
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Enw
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Enw'r cynnwys
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Cliciwch ar linell  i weld ei fanylion{}Cliciwch ar flwch ticio i'w ddewis er mwyn ei lwytho i lawr
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Cliciwch ar linell i weld ei fanylion{}Ticiwch y blwch i'w ddewis ar gyfer llawrlwytho
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Dewis y cyfan
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marcio'r cynnwys i gyd er mwyn cael ei lwytho i lawr
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Dewis uwchraddiadau
@@ -1840,8 +1840,8 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ni ddew
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dewisoch chi hwn i'w lwytho i lawr
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cafodd y dibyniaeth hwn ei ddewis i'w lwytho i lawr
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Mae hwn eisoes gennych
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Mae'r cynnwys hwn yn anhysbys ac nid oes modd ei lwytho i lawr yn OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Mae hwn  yn disodli {STRING}
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Mae'r cynnwys yma'n anhysbys ac nid oes modd ei lawrlwytho yn OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Mae hwn yn disodli {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Enw: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Fersiwn: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Disgrifiad: {WHITE}{STRING}
@@ -1880,15 +1880,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Doedd di
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Dewisiadau Tryloywder
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion gorsafoedd. Ctrl+Clic i gloi.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer coed. Ctrl+Clic i gloi.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toglu tryloywder ar gyfer tai. Ctrl+Clic i gloi.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toglu tryloywder ar gyfer diwydiannau. Ctrl+Clic i gloi.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toglu tryloywder ar gyfer eitemau adeiladwy fel gorsafoedd, depos a pwyntiau llwybro. Ctrl+Clic i gloi.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toglu tryloywder ar gyfer pontydd. Ctrl+Clic i gloi.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toglu tryloywder ar gyfer adeiledau fel goleudai ac antenau. Ctrl+Clic i gloi.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toglu tryloywder ar gyfer catenâu. Ctrl+Clic i gloi.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Toglu tryloywder ar gyfer dangosyddion llwytho. Ctrl+Clic i gloi.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion gorsafoedd. Mae Ctrl+Clic yn cloi
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer coed. Ctrl+Clic i gloi
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toglu tryloywder ar gyfer tai. Ctrl+Clic i gloi
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toglu tryloywder ar gyfer diwydiannau. Ctrl+Clic i gloi
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toglu tryloywder ar gyfer eitemau adeiladwy fel gorsafoedd, depos a phwyntiau llwybro. Ctrl+Clic i gloi
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toglu tryloywder ar gyfer pontydd. Ctrl+Clic i gloi
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toglu tryloywder ar gyfer adeiledau fel goleudai ac antenau. Ctrl+Clic i gloi
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toglu tryloywder ar gyfer gwifrau. Ctrl+Clic i gloi
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Toglu tryloywder ar gyfer dangosyddion llwytho. Ctrl+Clic i gloi
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gosod gwrthrychau'n anweledig yn hytrach nac yn dryloyw
 
 # Base for station construction window(s)
@@ -1913,15 +1913,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Adeiladu Rheilf
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Adeiladu Monoreilffyrdd
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Adeiladu Maglef
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Adeiladu trac rheilffordd
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Adeiladu trac yn defnyddio'r modd Awtoreilffordd
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Adeiladu trên depo (ar gyfer adeiladu a rhoi gwasanaeth i drenau)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Adeiladu trac rheilffordd. Mae Ctrl yn toglo adeiladu/codi'r rheilffordd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Adeiladu trac yn defnyddio'r modd Awtoreilffordd. Mae Ctrl yn toglo adeiladu/codi'r rheilffordd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Adeiladu trên depo (ar gyfer adeiladu a rhoi gwasanaeth i drenau). Mae Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Newid rheilffordd yn bwynt llwybro. Mae Ctrl yn galluogi uno pwyntiau llwybro, tra fod Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Adeiladu gorsaf reilffordd
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Adeiladu gorsaf reilffordd. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Adeiladu signalau rheilffordd. Mae Ctrl yn toglo signalau semafor/golau lliw{}Mae llusgo'n adeiladu signalau ar hyd trac syth. Mae Ctrl yn adeiladu signalau hyd y gyffordd nesaf{}Mae Ctrl+Clic yn toglo agor y ffenestr dewis signalau. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Adeiladu pont reilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Adeiladu twnnel rheilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau a signalau
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau, signalau, a pwyntiau llwybro. Wrth ddal Ctrl, caiff cledrau pwyntiau llwybro a gorsafoedd eu tynnu hefyd
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trosi/Diweddaru math y rheilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 
 # Rail depot construction window
@@ -1951,19 +1951,19 @@ STR_STATION_CLASS_WAYP                                          :Pwyntiau llwybr
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Dewis Signal
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Signal Blocio (semaffor){}Dyma'r math mwyaf sylfaenol o signal, sy'n caniatáu dimond un trên yn yr un sgwâr ar yr un pryd.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Signal-Mynediad (semaffor){}Gwyrdd cyhyd a bod un neu fwy o signalau gadael yn wyrdd yn y rhan o'r trac sy'n dilyn. Fel arall bydd yn dangos yn goch.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Signal Gadael (semaffor){}Ymddwyn yn yr un ffordd â signal bloc ond yn angenrheidiol ar gyfer gweithredu'r lliw cywir ar rag-signalau mynediad a chyfun
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signal Cyfun (semaffor){}Mae'r signal cyfun yn gweithredu fel signal mynediad ac fel signal gadael. Mae hyn yn eich galluogi i adeiladu "coed" o ragsignalau,
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Signal Llwybr (semaffor){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gadw llwybr yn glir at fan aros diogel. Gellir pasio signalau llwybro cyffredin o'r ochr gefn.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Signal Llwybr Un-ffordd (semaffor){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gadw llwybr yn glir at fan aros diogel. Ni ellir pasio signalau llwybr un-ffordd o'r ochr gefn.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Signal Bloc (trydan){}Dyma'r math mwyaf sylfaenol o signal, sy'n caniatáu i un trên yn unig fod yn yr un bloc ar yr un pryd.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Signal mynediad (trydan){}Bydd yn dangos golau gwyrdd cyhyd â bod un neu fwy o Signalau Gadael gwyrdd ar y darn o drac sy'n dilyn. Fel arall bydd yn dangos golau coch.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Signal Gadael (trydan){}Ymddwyn yn yr un ffordd â signal bloc ond yn angenrheidiol ar gyfer gweithredu'r lliw cywir ar rag-signalau mynediad a chyfun
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal Cyfun (trydan){}Mae'r signal cyfun yn gweithredu fel signal mynediad ac fel signal gadael. Mae hyn yn eich galluogi i adeiladu "coed" o ragsignalau,
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal Llwybr (trydan){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gadw llwybr yn glir at fan aros diogel. Gellir pasio signalau llwybro cyffredin o'r ochr gefn.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal Llwybr Un-ffordd (trydan){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gadw llwybr yn glir at fan aros diogel. Ni ellir pasio signalau llwybr un-ffordd o'r ochr gefn.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Trosi Signal{}Pan fydd wedi'i ddewis, bydd clicio ar signal sydd eisoes yn bodoli yn ei drosi i'r math a'r amrywiad signal a ddewiswyd, Bydd Ctrl+Clic yn toglu'r amrywiad sy'n bodoli.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Signal Bloc (semaffor){}Dyma'r math mwyaf sylfaenol o signal, sy'n caniatáu un trên yn unig ymhob bloc ar unrhyw adeg
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Signal Mynediad (semaffor){}Gwyrdd cyhyd a bod un neu fwy o signalau gadael yn wyrdd yn yr ardal nesaf. Coch fel arall
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Signal Gadael (semaffor){}Yn ymddwyn fel signal bloc, ond yn angenrheidiol ar gyfer gweithredu'r lliw cywir ar signalau mynediad a chyfun
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signal Cyfun (semaffor){}Mae'r signal cyfun yn gweithredu fel signal mynediad ac fel signal gadael. Mae hyn yn eich galluogi i adeiladu "coed" o ragsignalau
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Signal Llwybr (semaffor){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Gellir pasio signalau llwybro cyffredin o'r ochr gefn
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Signal Llwybr Unffordd (semaffor){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Ni ellir pasio signalau llwybro unffordd o'r ochr gefn
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Signal Bloc (trydan){}Dyma'r math mwyaf sylfaenol o signal, sy'n caniatáu un trên yn unig ymhob bloc ar unrhyw adeg
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Signal Mynediad (trydan){}Gwyrdd cyhyd a bod un neu fwy o signalau gadael yn wyrdd yn yr ardal nesaf. Coch fel arall
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Signal Gadael (trydan){}Yn ymddwyn fel signal bloc, ond yn angenrheidiol ar gyfer gweithredu'r lliw cywir ar signalau mynediad a chyfun
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal Cyfun (trydan){}Mae'r signal cyfun yn gweithredu fel signal mynediad ac fel signal gadael. Mae hyn yn eich galluogi i adeiladu "coed" o ragsignalau
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal Llwybr (trydan){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Gellir pasio signalau llwybro cyffredin o'r ochr gefn
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal Llwybr Unffordd (trydan){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Ni ellir pasio signalau llwybro unffordd o'r ochr gefn
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Trosi Signal{}Pan fydd wedi'i ddewis, bydd clicio ar signal sy'n bodoli yn ei drosi i'r math ac amrywiad a ddewiswyd, bydd Ctrl+Clic yn toglu'r amrywiad sy'n bodoli. Mae Shift+Clic yn dangos amcangyfrif o'r gost
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dwysedd llusgo signalau
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Cynyddu dwysedd llusgo signalau
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Cynyddu amlder y signalau wrth lusgo
@@ -1971,7 +1971,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Cynyddu 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Dewiswch Bont Rheilffordd
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Dewiswch Bont Ffordd
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Dewi pont - cliciwch ar y bont rydych chi'n dymuno ei hadeiladu
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Dewis pont - cliciwch ar y eich dewis i'w hadeiladu
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Crog, Dur
@@ -1987,16 +1987,16 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tiwbaidd, Silic
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Adeiladu Ffyrdd
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Adeiladu Tramffordd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Adeiladu rhan o ffordd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Adeiladu darn tramffordd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Adeiladu darnau ffordd gan ddefnyddio'r modd Awtoffordd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Adeiladu darn tramffordd gan ddefnyddio'r modd Awtoffordd
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Adeiladu depo cerbyd ffordd (ar gyfer adeiladu a rhoi gwasanaeth i gerbydau ffordd)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Adeiladu garej cerbyd tram (ar gyfer adeiladu a chreu cerbydau)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Adeiladu gorsaf fysiau
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Adeiladu gorsaf tramiau teithwyr
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Adeiladu bae llwytho lorïau
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Adeiladu gorsaf tramiau nwyddau
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Adeiladu darn o ffordd. Mae ctrl yn toglo adeiladu/clirio'r ffordd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Adeiladu darn tramffordd. Mae Ctrl yn toglo adeiladu/codi tramffordd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Adeiladu darnau ffordd gan ddefnyddio'r modd Awtoffordd. Mae Ctrl yn toglo adeiladu/clirio ffordd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Adeiladu darn tramffordd gan ddefnyddio'r modd Awtoffordd. Mae Ctrl yn toglo adeiladu/codi tramffordd, tra fo Shift yn toglo adeiladu/amcangyfrif y gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Adeiladu depo cerbydau ffordd (ar gyfer adeiladu a gwasanaethu cerbydau ffordd). Mae Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Adeiladu garej cerbyd tram (ar gyfer adeiladu a gwasanaethu cerbydau tram). Mae Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Adeiladu gorsaf fysiau. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Adeiladu gorsaf tramiau teithwyr. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Adeiladu bae llwytho lorïau. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Adeiladu gorsaf tramiau nwyddau. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Gweithredu/dadweithredu ffyrdd un-ffordd
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Adeiladu pont ffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Adeiladu pont tramffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
@@ -2022,15 +2022,15 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Cyfeiria
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Dewiswch gyfeiriad yr orsaf tramiau nwyddau
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Adeiladu camlesi
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Adeiladu Camlesi
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Camlesi
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Adeiladu camlesi.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Adeiladu camlesi. Mae Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Adeiladu lociau. Mae Shift yn toglo adeiladu/amcangyfrif y gost
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Adeiladu depo llongau  (ar gyfer adeiladu a rhoi gwasanaeth i longau)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Adeiladu doc llongau
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Adeiladu depo llongau (ar gyfer adeiladu a gwasanaethu llongau). Mae Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Adeiladu doc llongau. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Gosod bwi a ellir ei ddefnyddio fel pwynt llwybro. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Adeiladu traphont. Mae Shift yn toglo adeiladu/amcangyfrif y gost
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Pennu ardal Dŵr.{}Creu camlas, oni bai fod CTRL yn cael ei ddal i lawr ar lefel y  môr, fydd yn gorlifo'r ardal o'i gwmpas yn lle
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Pennu ardal dŵr.{}Creu camlas, oni bai fod Ctrl yn cael ei ddal i lawr ar lefel y môr, pan fydd yn boddi'r ardal o'i gwmpas
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Creu afonydd
 
 # Ship depot construction window
@@ -2042,7 +2042,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doc
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Meysydd Awyr
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Adeiladu maes awyr
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Adeiladu maes awyr. Mae Ctrl yn galluogi uno gorsafoedd, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Dewiswch Faes Awyr
@@ -2069,9 +2069,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Swn a gy
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tirweddu
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Gostwng cornel o dir
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Codi cornel o dir
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Gwastatáu Tir
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Gostwng cornel o dir. Mae llusgo'n gostwng y gornel gyntaf a ddewisir ac yna'n lefelu'r ardal a ddewisir i uchder newydd y gornel. Mae Ctrl yn dewis ardal yn ddeiagonal, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Codi cornel o dir. Mae llusgo'n codi'r gornel gyntaf a ddewisir ac yna'n lefelu'r ardal a ddewisir i uchder newydd y gornel. Mae Ctrl yn dewis ardal yn ddeiagonal, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Gwastatáu ardal o dir i uchder y gornel gyntaf a ddewisir. Mae Ctrl yn dewis ardal yn ddeiagonal, tra fo Shift yn toglo adeiladu/dangos amcangyfrif o'r gost
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Prynu tir ar gyfer defnydd yn y dyfodol. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 
 # Object construction window
@@ -2101,10 +2101,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Lleihau'
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Cynhyrchu Tir ar Hap
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Creu senario newydd
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Ailosod Tirwedd
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Dileu holl eiddo'r chwaraewr o'r map
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Dileu holl eiddo'r cwmni o'r map
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Ailosod Tirwedd
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ydych chi'n siwr eich bod chi eisiau dileu holl eiddo'r chwaraewr o'r map?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ydych chi'n siwr eich bod eisiau dileu holl eiddo'r cwmni o'r map?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Cynhyrchu Trefi
@@ -2431,20 +2431,42 @@ STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cau
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ailosod
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Gosod pob paramedr i'w werth rhagosodedig
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramedr {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nifer y paramedrau: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Arolygu - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Rhiant
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Arolygu'r gwrthrych rhiant
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} yn {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Gwrthrych
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Math rheilffordd
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinio corlun {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Corlun nesaf
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mynd i'r corlun cyffredin nesaf, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio ar y diwedd
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mynd i gorlun
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mynd i'r corlun a ddynodir. Os nad yw'r corlun yn gorlun cyffredin, mynd i'r corlun gyffredin nesaf
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Corlun blaenorol
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mynd i'r corlun cyffredin blaenorol, gan hepgor unrhyw gorluniau ailliwio/ffont/llidgorluniau, ac amlapio ar y diwedd
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Cynrychioliad o'r corlun a ddewiswyd. Fe anwybyddir yr aliniad wrth lunio'r corlun
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Symud y corlun, gan newid yr atredau X ac Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Atred X: {NUM}, Atred Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Dewis corlun
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Dewis corlun o ynrhyw fan ar y sgrïn
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Mynd i gorlun
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rhybudd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Gwall: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Angheuol: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Ni fydd {1:STRING} yn gweithio gyda'r fersiwn o TTDPatch y mae OpenTTD yn ei gefnogi.
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Mae gwall angheuol NewGRF wedi digwydd: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Ni fydd {1:STRING} yn gweithio gyda'r fersiwn o TTDPatch yr adroddir gan OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Mae {1:STRING} ar gyfer y fersiwn {STRING} o TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Mae {1:STRING} wedi ei gynllunio i gael ei ddefnyddio gyda {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramedr Annilys ar gyfer {1:STRING}: paramedr {STRING} ({NUM})
@@ -2460,6 +2482,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Ceisio defnyddi
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Mae'r {STRING} yn cynnwys corlun llygredig. Bydd corluniau llygredig yn cael eu dynodi gan farc cwestiwn coch (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Mae'n cynnwys mwy nac un Gweithred 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Darllen wedi diwedd y llid-gorlun
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Mae'r set raffeg sylfaenol a ddefnyddir ar hyn o bryd yn brin o sawl corlun{}Diweddarwch y set raffeg sylfaenol i ddatrys hyn
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Nid yw'r adnoddau GRF a geiswyd ar gael
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Fe analluogwyd {2:STRING} gan {4:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Fformat gosodiad corlun annilys/anhysbys
@@ -2477,6 +2500,10 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ffeil(i
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Gall dadseibio beri i OpenTTD grasio. Peidiwch ag anfon adroddiadau am fygiau ar gyfer crasiau pellach.{}Ydych chi wir eisiau dadseibio?
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Dim
+STR_NEWGRF_LIST_ALL_FOUND                                       :Pob ffeil yn bresennol
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Canfuwyd ffeiliau cydnaws
+STR_NEWGRF_LIST_MISSING                                         :{RED}Ffeiliau coll
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Mae ymddygiad NewGRF '{0:STRING}' yn debygol o beri dadsyncroneiddio a/neu chwalfa
@@ -2488,6 +2515,8 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Mae'r wy
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' wedi creu lŵp diddiwedd yn y system adalw cynhyrchu
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_CARGO                                        :<cargo annilys>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Yn sganio NewGRFau
@@ -3578,7 +3607,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... rydy
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Methu creu grw^p
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Methu dileu'r grw^p hwn...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Methu ailenwi'r grw^p...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Methu dileu pob cerbyd o'r grw^p hwn...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Methu dileu pob cerbyd o'r grŵp hwn...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Methu ychawnegu'r cerbyd i'r grw^p hwn...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Methu ychwanegu cerbyd a rennir i'r grw^p...
 
@@ -3652,7 +3681,7 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Methu he
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Does dim modd hepgor y gorchymyn a ddewiswyd...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}ni all y cerbyd fynd i bob gorsaf
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}ni all y cerbyd fynd i'r orsaf honno
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}ni all cerbyd sy'n rhannu'r gorchymyn hwn fynd i'r orsaf honno
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ni all cerbyd sy'n rhannu'r gorchymyn hwn fynd i'r orsaf honno
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Does dim modd rhannu'r rhestr gorchmynion...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Does dim modd copïo'r rhestr gorchmynion...
