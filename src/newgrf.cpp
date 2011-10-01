@@ -5153,15 +5153,15 @@ static void FeatureNewName(ByteReader *buf)
 				if (!generic) {
 					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, HasBit(_cur.grfconfig->flags, GCF_STATIC));
 					if (e == NULL) break;
-					StringID string = AddGRFString(_cur.grffile->grfid, e->index, lang, new_scheme, name, e->info.string_id);
+					StringID string = AddGRFString(_cur.grffile->grfid, e->index, lang, false, new_scheme, name, e->info.string_id);
 					e->info.string_id = string;
 				} else {
-					AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+					AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
 				}
 				break;
 
 			case GSF_INDUSTRIES: {
-				AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+				AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
 				break;
 			}
 
@@ -5173,7 +5173,7 @@ static void FeatureNewName(ByteReader *buf)
 							grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 						} else {
 							StationClassID cls_id = _cur.grffile->stations[GB(id, 0, 8)]->cls_id;
-							StationClass::SetName(cls_id, AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED));
+							StationClass::SetName(cls_id, AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED));
 						}
 						break;
 
@@ -5181,7 +5181,7 @@ static void FeatureNewName(ByteReader *buf)
 						if (_cur.grffile->stations == NULL || _cur.grffile->stations[GB(id, 0, 8)] == NULL) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 						} else {
-							_cur.grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+							_cur.grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
@@ -5189,7 +5189,7 @@ static void FeatureNewName(ByteReader *buf)
 						if (_cur.grffile->airtspec == NULL || _cur.grffile->airtspec[GB(id, 0, 8)] == NULL) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined airport tile 0x%X, ignoring", GB(id, 0, 8));
 						} else {
-							_cur.grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+							_cur.grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
@@ -5197,7 +5197,7 @@ static void FeatureNewName(ByteReader *buf)
 						if (_cur.grffile->housespec == NULL || _cur.grffile->housespec[GB(id, 0, 8)] == NULL) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined house 0x%X, ignoring.", GB(id, 0, 8));
 						} else {
-							_cur.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+							_cur.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
@@ -5206,7 +5206,7 @@ static void FeatureNewName(ByteReader *buf)
 					case 0xD2:
 					case 0xD3:
 					case 0xDC:
-						AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+						AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
 						break;
 
 					default:
@@ -5875,11 +5875,11 @@ static void ScanInfo(ByteReader *buf)
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur.grfconfig->flags, GCF_SYSTEM);
 
-	AddGRFTextToList(&_cur.grfconfig->name->text, 0x7F, grfid, name);
+	AddGRFTextToList(&_cur.grfconfig->name->text, 0x7F, grfid, false, name);
 
 	if (buf->HasData()) {
 		const char *info = buf->ReadString();
-		AddGRFTextToList(&_cur.grfconfig->info->text, 0x7F, grfid, info);
+		AddGRFTextToList(&_cur.grfconfig->info->text, 0x7F, grfid, true, info);
 	}
 
 	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
@@ -6046,7 +6046,7 @@ static void GRFLoadError(ByteReader *buf)
 		if (buf->HasData()) {
 			const char *message = buf->ReadString();
 
-			error->custom_message = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, message);
+			error->custom_message = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, message);
 		} else {
 			grfmsg(7, "GRFLoadError: No custom message supplied.");
 			error->custom_message = strdup("");
@@ -6058,7 +6058,7 @@ static void GRFLoadError(ByteReader *buf)
 	if (buf->HasData()) {
 		const char *data = buf->ReadString();
 
-		error->data = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, data);
+		error->data = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, data);
 	} else {
 		grfmsg(7, "GRFLoadError: No message data supplied.");
 		error->data = strdup("");
@@ -6596,11 +6596,11 @@ static void FeatureTownName(ByteReader *buf)
 
 			const char *name = buf->ReadString();
 
-			char *lang_name = TranslateTTDPatchCodes(grfid, lang, name);
+			char *lang_name = TranslateTTDPatchCodes(grfid, lang, false, name);
 			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, lang_name);
 			free(lang_name);
 
-			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 
 			lang = buf->ReadByte();
 		} while (lang != 0);
@@ -6640,7 +6640,7 @@ static void FeatureTownName(ByteReader *buf)
 				townname->partlist[id][i].parts[j].data.id = ref_id;
 			} else {
 				const char *text = buf->ReadString();
-				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(grfid, 0, text);
+				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(grfid, 0, false, text);
 				grfmsg(6, "FeatureTownName: part %d, text %d, '%s' (with probability %d)", i, j, townname->partlist[id][i].parts[j].data.text, prob);
 			}
 			townname->partlist[id][i].parts[j].prob = prob;
@@ -6937,21 +6937,21 @@ static void TranslateGRFStrings(ByteReader *buf)
 		 * new_scheme has to be true as well. A language id of 0x7F will be
 		 * overridden by a non-generic id, so this will not change anything if
 		 * a string has been provided specifically for this language. */
-		AddGRFString(grfid, first_id + i, 0x7F, true, string, STR_UNDEFINED);
+		AddGRFString(grfid, first_id + i, 0x7F, true, true, string, STR_UNDEFINED);
 	}
 }
 
 /** Callback function for 'INFO'->'NAME' to add a translation to the newgrf name. */
 static bool ChangeGRFName(byte langid, const char *str)
 {
-	AddGRFTextToList(&_cur.grfconfig->name->text, langid, _cur.grfconfig->ident.grfid, str);
+	AddGRFTextToList(&_cur.grfconfig->name->text, langid, _cur.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'DESC' to add a translation to the newgrf description. */
 static bool ChangeGRFDescription(byte langid, const char *str)
 {
-	AddGRFTextToList(&_cur.grfconfig->info->text, langid, _cur.grfconfig->ident.grfid, str);
+	AddGRFTextToList(&_cur.grfconfig->info->text, langid, _cur.grfconfig->ident.grfid, true, str);
 	return true;
 }
 
@@ -7031,14 +7031,14 @@ static GRFParameterInfo *_cur_parameter; ///< The parameter which info is curren
 /** Callback function for 'INFO'->'PARAM'->param_num->'NAME' to set the name of a parameter. */
 static bool ChangeGRFParamName(byte langid, const char *str)
 {
-	AddGRFTextToList(&_cur_parameter->name, langid, _cur.grfconfig->ident.grfid, str);
+	AddGRFTextToList(&_cur_parameter->name, langid, _cur.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'PARAM'->param_num->'DESC' to set the description of a parameter. */
 static bool ChangeGRFParamDescription(byte langid, const char *str)
 {
-	AddGRFTextToList(&_cur_parameter->desc, langid, _cur.grfconfig->ident.grfid, str);
+	AddGRFTextToList(&_cur_parameter->desc, langid, _cur.grfconfig->ident.grfid, true, str);
 	return true;
 }
 
@@ -7218,10 +7218,10 @@ static bool ChangeGRFParamValueNames(ByteReader *buf)
 
 		SmallPair<uint32, GRFText *> *val_name = _cur_parameter->value_names.Find(id);
 		if (val_name != _cur_parameter->value_names.End()) {
-			AddGRFTextToList(&val_name->second, langid, _cur.grfconfig->ident.grfid, name_string);
+			AddGRFTextToList(&val_name->second, langid, _cur.grfconfig->ident.grfid, false, name_string);
 		} else {
 			GRFText *list = NULL;
-			AddGRFTextToList(&list, langid, _cur.grfconfig->ident.grfid, name_string);
+			AddGRFTextToList(&list, langid, _cur.grfconfig->ident.grfid, false, name_string);
 			_cur_parameter->value_names.Insert(id, list);
 		}
 

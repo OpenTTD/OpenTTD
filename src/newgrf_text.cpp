@@ -389,13 +389,14 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 
 /**
  * Translate TTDPatch string codes into something OpenTTD can handle (better).
- * @param grfid       The (NewGRF) ID associated with this string
- * @param language_id The (NewGRF) language ID associated with this string.
- * @param str         The string to translate.
- * @param [out] olen  The length of the final string.
+ * @param grfid          The (NewGRF) ID associated with this string
+ * @param language_id    The (NewGRF) language ID associated with this string.
+ * @param allow_newlines Whether newlines are allowed in the string or not.
+ * @param str            The string to translate.
+ * @param [out] olen     The length of the final string.
  * @return The translated string.
  */
-char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, int *olen)
+char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const char *str, int *olen)
 {
 	char *tmp = MallocT<char>(strlen(str) * 10 + 1); // Allocate space to allow for expansion
 	char *d = tmp;
@@ -434,7 +435,13 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 				*d++ = *str++;
 				break;
 			case 0x0A: break;
-			case 0x0D: *d++ = 0x0A; break;
+			case 0x0D:
+				if (allow_newlines) {
+					*d++ = 0x0A;
+				} else {
+					grfmsg(1, "Detected newline in string that does not allow one");
+				}
+				break;
 			case 0x0E: d += Utf8Encode(d, SCC_TINYFONT); break;
 			case 0x0F: d += Utf8Encode(d, SCC_BIGFONT); break;
 			case 0x1F:
@@ -647,13 +654,14 @@ void AddGRFTextToList(GRFText **list, GRFText *text_to_add)
  * @param list The list where the text should be added to.
  * @param langid The language of the new text.
  * @param grfid The grfid where this string is defined.
+ * @param allow_newlines Whether newlines are allowed in this string.
  * @param text_to_add The text to add to the list.
  * @note All text-codes will be translated.
  */
-void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, const char *text_to_add)
+void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add)
 {
 	int len;
-	char *translatedtext = TranslateTTDPatchCodes(grfid, langid, text_to_add, &len);
+	char *translatedtext = TranslateTTDPatchCodes(grfid, langid, allow_newlines, text_to_add, &len);
 	GRFText *newtext = GRFText::New(langid, translatedtext, len);
 	free(translatedtext);
 
@@ -690,7 +698,7 @@ GRFText *DuplicateGRFText(GRFText *orig)
 /**
  * Add the new read string into our structure.
  */
-StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, const char *text_to_add, StringID def_string)
+StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, bool allow_newlines, const char *text_to_add, StringID def_string)
 {
 	char *translatedtext;
 	uint id;
@@ -706,9 +714,9 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 			langid_to_add = GRFLX_ENGLISH;
 		} else {
 			StringID ret = STR_EMPTY;
-			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, GRFLX_GERMAN,  true, text_to_add, def_string);
-			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, GRFLX_FRENCH,  true, text_to_add, def_string);
-			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, GRFLX_SPANISH, true, text_to_add, def_string);
+			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, GRFLX_GERMAN,  true, allow_newlines, text_to_add, def_string);
+			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, GRFLX_FRENCH,  true, allow_newlines, text_to_add, def_string);
+			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, GRFLX_SPANISH, true, allow_newlines, text_to_add, def_string);
 			return ret;
 		}
 	}
@@ -723,7 +731,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
 
 	int len;
-	translatedtext = TranslateTTDPatchCodes(grfid, langid_to_add, text_to_add, &len);
+	translatedtext = TranslateTTDPatchCodes(grfid, langid_to_add, allow_newlines, text_to_add, &len);
 
 	GRFText *newtext = GRFText::New(langid_to_add, translatedtext, len);
 
