@@ -449,6 +449,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :高清截图
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全地图截图
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 对齐
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切换边界框
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2074,6 +2075,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}选择要建造的物件类型
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 瓦
 
 STR_OBJECT_CLASS_LTHS                                           :灯塔
@@ -3664,6 +3666,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}不能�
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}不能在这里加设河流...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}必须在水上建造……
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}不能在水上建造……
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}...不能建築在公海上
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... 不能在运河上建设
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... 不能在河流上建造……
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}请先移除运河

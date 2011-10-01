@@ -1059,6 +1059,7 @@ STR_SEA_LEVEL_HIGH                                              :Højt
 STR_SEA_LEVEL_CUSTOM                                            :Brugerdefineret
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Brugerdefineret ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Ingen
 STR_DISASTER_REDUCED                                            :Reduceret
 STR_DISASTER_NORMAL                                             :Normal
@@ -1083,7 +1084,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere genem'Online Indhold'.
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handling ændrer sværhedsgraden til speciel
 
 # Advanced settings window
@@ -1395,6 +1396,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewG
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Vis indstillinger for computerstyrede spillere
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Afslut 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Afslut
@@ -2514,6 +2516,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} af <ikk
 STR_NEWGRF_INVALID_ENGINE                                       :<ugyldig køretøjsmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ikke gyldig industri type>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste over skilte - {COMMA} Skilt{P "" e}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Match store og små bogstaver
@@ -3181,6 +3185,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Spring denne ordre over medmindre der er behov for service
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data som ordrespring baseres på
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Last-procentdel
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålidelighed
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tophastighed
@@ -3347,7 +3353,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Se debug
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er kompileret uden understøttelse for kunstig intelligens...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ingen kunstig intelligens er tilgængeligt!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passende AI kan findes.{}Denne AI er en pladsholder, og vil ikke gøre noget.{} Du kan downloade indtil flere AI'er fra 'Online Contet' systemet.
+STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passende AI kan findes.{}Denne AI er en pladsholder, og vil ikke gøre noget.{} Du kan downloade indtil flere AI'er fra 'Online Indhold'-systemet.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspiller-debugvindue er kun tilgængeligt på serveren
 
@@ -3431,6 +3437,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noge
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan ikke hente landskab fra BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikke konvertere billedtypen.
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalerings advarsel
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}At ændre størrelsen på kildebilledet anbefales ikke. Fortsæt genereringen?

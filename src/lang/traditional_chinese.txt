@@ -1056,6 +1056,7 @@ STR_SEA_LEVEL_HIGH                                              :高
 STR_SEA_LEVEL_CUSTOM                                            :自訂
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :自訂 ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :無
 STR_DISASTER_REDUCED                                            :減少
 STR_DISASTER_NORMAL                                             :普通
@@ -1223,6 +1224,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長格式 (31st
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際格式 (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}當暫停時允許: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :無動作
@@ -1387,6 +1389,8 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}顯示 N
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}顯示 AI 設定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}離開「OpenTTD」
+
+STR_INTRO_TRANSLATION                                           :{BLACK}此段翻譯缺了{NUM}字串。請成為OpenTTD的翻譯員以讓本遊戲更完整。詳情請參閱readme.txt。
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}離開
@@ -2502,6 +2506,9 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} / <無�
 STR_NEWGRF_INVALID_ENGINE                                       :<無效交通工具模型>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無效工業>
 
+# NewGRF scanning window
+STR_NEWGRF_SCAN_ARCHIVES                                        :審視檔案中
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}符合大小寫
@@ -3169,12 +3176,15 @@ STR_ORDER_DROP_HALT_DEPOT                                       :停留
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}跳過這個指令，除非需要維護
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳躍指令依據
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :裝載進度 (%)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠度
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :極速
 STR_ORDER_CONDITIONAL_AGE                                       :車輛年齡 (年)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要維護
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :總是
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :剩餘年限 (年)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}如何與指定數值比對交通工具資料
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :等於
@@ -3419,6 +3429,8 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 出�
 
 STR_ERROR_BMPMAP                                                :{WHITE}無法從 BMP 檔載入地形...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 無法轉換影像格式
+
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... 影像過大
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}縮放警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不建議過度縮放地圖。要繼續產生嗎？

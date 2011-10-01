@@ -684,7 +684,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transporta maršruti
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Mežs
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Dzelzsceļa stacija
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Kravas auto iekrautuve
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Kravas automobiļu iekrautuve
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Autobusa stacija
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Lidosta/Helikopteru osta
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Doki
@@ -818,7 +818,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} sarakstā ir pārāk maz pieturvietu
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ir nederīgs maršruts
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} ir divi vienādi maršruti
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} maršrutā ir nefunkcionējoša pieturvieta
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} norīkojumā ir nederīga pieturvieta
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} pamazām noveco
@@ -1164,7 +1164,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iest
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lidostas darbosies mūžīgi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Brīdināt, ja transportlīdzeklis ir noklīdis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportu rīkojumus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportlīdzekļu rīkojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apstādinātos transportlīdzekļus
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
@@ -1247,7 +1247,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Lietot 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lietot piekraušanas indikatorus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu tikos nevis dienās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Maršrutu sarakstos rādīt pienākšanu un atiešanu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Transporta norīkojumu ātrā veidošana: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Transportlīdzekļu norīkojumu ātrā veidošana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Noklusējuma sliežu veids (pēc jaunas spēles/spēles ielādes): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Pēdējās pieejamās
@@ -1386,7 +1386,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Iziet
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Sākt jaunu spēli. Ctrl+klikšķis izlaiž kartes konfigurēšanu
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ielādēt saglabāto spēli
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Sākt jaunu spēli, ainavai izmantojot augstumu karti
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Sākt jaunu spēli ar speciālu scenāriju
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Sākt jaunu spēli ar pielāgotu scenāriju
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Izveidot speciālu spēles pasauli/scenāriju
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Sākt daudzspēlētāju spēli
 
@@ -1997,7 +1997,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu. Ctrl iespējo staciju apvienošanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaja pieturu. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automašīnu staciju. Ctrl iespējo staciju apvienošanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automobiļu staciju. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaja pieturu. Ctrl iespējo staciju apvienošanu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ieslēgt/izslēgt vienvirziena ceļus
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Būvēt tiltu
@@ -2182,7 +2182,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stacijas
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lidostas klase: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Lidostas nosaukums: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lidostas lauciņa nosaukums: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}JaunsGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Pieņem kravu: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Sliežu ātruma limits: {LTBLUE}{VELOCITY}
@@ -2296,7 +2296,7 @@ STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Disku, mapju un saglabāto spēļu datņu saraksts
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Šobrīd izvēlētais saglabājamās spēles nosaukums
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Dzēst
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Dzēst izvēlēto saglabāto spēli
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Dzēst šobrīd atlasīto saglabāto spēli
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Saglabāt
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Saglabāt šo spēli izmantojot izvēlēto nosaukumu
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ielādēt
@@ -2458,28 +2458,28 @@ STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Iet pie 
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Izvēlētā objekta attēlojums. To attēlojot, izkārtojums ir ignorēts
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pārvietot objektu, lai mainītu X un Y vērtības
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X garums: {NUM}, Y garums: {NUM}
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}PAņemiet objektu
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Paņemiet objektu no jebkuras vietas ekrānā
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Paņemiet gariņu
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Paņemiet gariņu no jebkuras vietas ekrānā
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Iet pie objekta
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Iet pie gariņa
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Brīdinājums: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kļūda: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatāls: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Notikusi fatāla NewGRF kļūme: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Notikusi fatāla NewGRF kļūda: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nedarbosies kopā ar TTDPatch versiju pēc OpenTTD ziņojuma.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir priekš {STRING} TTD versijas.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir izgatavots, lai lietotu kopā ar {STRING}
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ir TTD {STRING} versijai
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ir paredzēts lietošanai kopā ar {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nepareizs parametrs priekš {1:STRING}: parametrs {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} jābūt ielādētam pirms {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} jābūt ielādētam pēc {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nepieciešama Open TTD versija {STRING} vai labāka.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radīts tulkošanai
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Pārāk daudz NewGRF ir ielādēti.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ir ielādēti pārāk daudzi NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {2:STRING} kā statisks NewGRF {4:STRING} var radīt desinhronizāciju.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Negaidīts sprite.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neparedzēts gariņš
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nezināma darbība 0 īpašumu
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mēģina lietot neesošu ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} satur bojātu spraitu.Visi bojātie spraiti tiks parādīti ar sarkanu jautājuma zīmi (?)
@@ -2899,9 +2899,9 @@ STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Transpor
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kuģi - uzspied uz kuģa priekš informācijas
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lidaparāts - klikot uz lidaparāta, lai iegūtu info
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Velc vagonu šeit, lai to pārdotu
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Pārvilkt vagonu uz šejieni, lai to pārdotu
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Velc transportl. šeit ,lai to pārdotu
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Velc kuģi šeit, lai to pārdotu
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Pārvilkt kuģi uz šejieni, lai to pārdotu
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Pārvilkt lidaparātu uz šejieni, lai to pārdotu
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Pārvēlciet šeit vilciena lokomotīvi, lai pārdotu visu vilcienu
@@ -3208,7 +3208,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Nepieciešama a
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vienmēr
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Atlikušais kalpošanas laiks (gadi)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kā salīdzināt transportalīdzekļa datus ar dotajām vērtībām
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kā salīdzināt transportalīdzekļa datus ar norādītajām vērtībām
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ir vienāds ar
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nav vienāds ar
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ir mazāks par
@@ -3553,8 +3553,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... var 
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Šeit nevar būvēt dzelzceļa staciju...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nevar uzbūvēt autobusa pieturu...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nevar uzbūvēt kravas automašīnu staciju...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nevar būvēt autobusa pieturu...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nevar būvēt kravas automobiļu staciju...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nevar būvēt pasažieru tramvaju pieturu...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nevar būvēt kravas tramvaju pieturu...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Šeit nevar būvēt ostu...
@@ -3563,9 +3563,9 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Šeit ne
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Piekļaujas vairāk par vienu staciju/iekraušanas zonu
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacija ir pārāk izplesta
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Pārāk daudz staciju/iekraušanas zonu
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Pārāk daudz dzelzceļastacijas daļu
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pa'ra'k daudz autobusa pieturu
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}pa'ra'k daudz kravas auto staciju
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Pārāk daudz dzelzceļa stacijas daļu
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pārāk daudz autobusu pieturu
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Pārāk daudz kravas automobiļu staciju
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Pārāk tuvu citai dzelzceļa stacijai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Pārāk tuvu citam dokam
@@ -3580,7 +3580,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... caur
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nevar novākt daļu stacijas...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Virspirms jānovāc stacija
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nevar novākt autobusa pieturu...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nevar novākt kravas auto pieturu...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nevar novākt kravas automobiļu pieturu...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nevar novākt pasažieru tramvaju pieturu...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nevar novākt kravas tramvaju pieturu...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Vispirms jānoņem pietura
