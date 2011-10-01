@@ -254,7 +254,13 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
-			const Slope tileh = GetTileSlope(tile, NULL);
+			Slope tileh = GetTileSlope(tile, NULL);
+
+			/* Steep slopes behave the same as slopes with one corner raised. */
+			if (IsSteepSlope(tileh)) {
+				tileh = SlopeWithOneCornerRaised(GetHighestSlopeCorner(tileh));
+			}
+
 			RoadBits present = GetRoadBits(tile, rt);
 			const RoadBits other = GetOtherRoadBits(tile, rt);
 			const Foundation f = GetRoadFoundation(tileh, present);
@@ -262,11 +268,9 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			if (HasRoadWorks(tile) && _current_company != OWNER_WATER) return_cmd_error(STR_ERROR_ROAD_WORKS_IN_PROGRESS);
 
 			/* Autocomplete to a straight road
-			 * @li on steep slopes
 			 * @li if the bits of the other roadtypes result in another foundation
 			 * @li if build on slopes is disabled */
-			if (IsSteepSlope(tileh) || (IsStraightRoad(other) &&
-					(other & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) != ROAD_NONE) ||
+			if ((IsStraightRoad(other) && (other & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) != ROAD_NONE) ||
 					(tileh != SLOPE_FLAT && !_settings_game.construction.build_on_slopes)) {
 				pieces |= MirrorRoadBits(pieces);
 			}
@@ -383,19 +387,9 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 	/* All RoadBit combos are valid on flat land */
 	if (tileh == SLOPE_FLAT) return CommandCost();
 
-	/* Proceed steep Slopes first to reduce lookup table size */
+	/* Steep slopes behave the same as slopes with one corner raised. */
 	if (IsSteepSlope(tileh)) {
-		/* Force straight roads. */
-		*pieces |= MirrorRoadBits(*pieces);
-
-		/* Use existing as all existing since only straight
-		 * roads are allowed here. */
-		existing |= other;
-
-		if ((existing == ROAD_NONE || existing == *pieces) && IsStraightRoad(*pieces)) {
-			return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
-		}
-		return CMD_ERROR;
+		tileh = SlopeWithOneCornerRaised(GetHighestSlopeCorner(tileh));
 	}
 
 	/* Save the merge of all bits of the current type */
@@ -1033,15 +1027,18 @@ static Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 	/* Flat land and land without a road doesn't require a foundation */
 	if (tileh == SLOPE_FLAT || bits == ROAD_NONE) return FOUNDATION_NONE;
 
-	if (!IsSteepSlope(tileh)) {
-		/* Leveled RoadBits on a slope */
-		if ((_invalid_tileh_slopes_road[0][tileh] & bits) == ROAD_NONE) return FOUNDATION_LEVELED;
-
-		/* Straight roads without foundation on a slope */
-		if (!IsSlopeWithOneCornerRaised(tileh) &&
-				(_invalid_tileh_slopes_road[1][tileh] & bits) == ROAD_NONE)
-			return FOUNDATION_NONE;
+	/* Steep slopes behave the same as slopes with one corner raised. */
+	if (IsSteepSlope(tileh)) {
+		tileh = SlopeWithOneCornerRaised(GetHighestSlopeCorner(tileh));
 	}
+
+	/* Leveled RoadBits on a slope */
+	if ((_invalid_tileh_slopes_road[0][tileh] & bits) == ROAD_NONE) return FOUNDATION_LEVELED;
+
+	/* Straight roads without foundation on a slope */
+	if (!IsSlopeWithOneCornerRaised(tileh) &&
+			(_invalid_tileh_slopes_road[1][tileh] & bits) == ROAD_NONE)
+		return FOUNDATION_NONE;
 
 	/* Roads on steep Slopes or on Slopes with one corner raised */
 	return (bits == ROAD_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);

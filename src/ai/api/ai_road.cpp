@@ -193,21 +193,9 @@ static RoadBits NeighbourToRoadBits(int32 neighbour)
  */
 static int32 LookupWithBuildOnSlopes(::Slope slope, Array *existing, int32 start, int32 end)
 {
-	if (::IsSteepSlope(slope)) {
-		switch (slope) {
-			/* On steep slopes one can only build straight roads that will be
-			 * automatically expanded to a straight road. Just check that the existing
-			 * road parts are in the same direction. */
-			case SLOPE_STEEP_S:
-			case SLOPE_STEEP_W:
-			case SLOPE_STEEP_N:
-			case SLOPE_STEEP_E:
-				return CheckAutoExpandedRoadBits(existing, start, end) ? (existing->size == 0 ? 2 : 1) : 0;
-
-			/* All other slopes are invalid slopes!. */
-			default:
-				return -1;
-		}
+	/* Steep slopes behave the same as slopes with one corner raised. */
+	if (IsSteepSlope(slope)) {
+		slope = SlopeWithOneCornerRaised(GetHighestSlopeCorner(slope));
 	}
 
 	/* The slope is not steep. Furthermore lots of slopes are generally the
