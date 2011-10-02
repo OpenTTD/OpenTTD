@@ -6,13 +6,26 @@
 // OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
-   -1 * 0	 0C "Aqueduct graphics by Jonathan G. Rennison"
+   -1 * 0	 0C "Aqueduct graphics by Jonathan G. Rennison / PaulC"
+// temperate aqueduct
+   -1 * 6	 07 83 01 \7! 00 09
    -1 * 3	 05 12 08
-   -1 sprites/aqueduct.png 34 8 09 33 64 -34 -10
-   -1 sprites/aqueduct.png 114 8 09 33 66 -37 -9
-   -1 sprites/aqueduct.png 194 8 09 33 64 -34 -10
-   -1 sprites/aqueduct.png 274 8 09 33 66 -37 -9
-   -1 sprites/aqueduct.png 354 8 09 33 64 -34 -5
-   -1 sprites/aqueduct.png 434 8 09 33 66 -37 -4
-   -1 sprites/aqueduct.png 514 8 09 23 33 -31 0
-   -1 sprites/aqueduct.png 562 8 09 23 33 0 1
+   -1 sprites/aqueduct.png  34  8 09 32 61 -30 -9
+   -1 sprites/aqueduct.png 114  8 09 31 62 -29 -9
+   -1 sprites/aqueduct.png 194  8 09 32 61 -30 -9
+   -1 sprites/aqueduct.png 274  8 09 31 62 -29 -9
+   -1 sprites/aqueduct.png 354  8 09 32 61 -30 -4
+   -1 sprites/aqueduct.png 434  8 09 31 62 -29 -4
+   -1 sprites/aqueduct.png 514  8 09 23 33 -31  0
+   -1 sprites/aqueduct.png 562  8 09 23 33   0  1
+// non-temperate aqueduct
+   -1 * 6	 07 83 01 \7= 00 09
+   -1 * 3	 05 12 08
+   -1 sprites/aqueduct.png  34 48 09 32 61 -30 -9
+   -1 sprites/aqueduct.png 114 48 09 31 62 -29 -9
+   -1 sprites/aqueduct.png 194 48 09 32 61 -30 -9
+   -1 sprites/aqueduct.png 274 48 09 31 62 -29 -9
+   -1 sprites/aqueduct.png 354 48 09 32 61 -30 -4
+   -1 sprites/aqueduct.png 434 48 09 31 62 -29 -4
+   -1 sprites/aqueduct.png 514 48 09 23 33 -31  0
+   -1 sprites/aqueduct.png 562 48 09 23 33   0  1

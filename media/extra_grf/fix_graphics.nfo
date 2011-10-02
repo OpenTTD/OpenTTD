@@ -6,7 +6,7 @@
 // OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
-   -1 * 0	 0C "Fixing (alignment) bugs in the orignal graphics. By Addi."
+   -1 * 0	 0C "Fixing (alignment) bugs in the original graphics. By Addi and PaulC."
    -1 * 6	 07 83 01 \7= 03 7D
 // Different graphics for same wood truck
    -1 * 14	 0A 04 01 87 0C 01 89 0C 01 07 0E 01 09 0E
