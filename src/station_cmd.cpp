@@ -23,6 +23,7 @@
 #include "newgrf_cargo.h"
 #include "newgrf_debug.h"
 #include "newgrf_station.h"
+#include "newgrf_canal.h" /* For the buoy */
 #include "pathfinder/yapf/yapf_cache.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "autoslope.h"
@@ -2669,7 +2670,11 @@ draw_default_foundation:
 		}
 	}
 
-	if (IsBuoy(ti->tile) || IsDock(ti->tile) || (IsOilRig(ti->tile) && IsTileOnWater(ti->tile))) {
+	if (IsBuoy(ti->tile)) {
+		DrawWaterClassGround(ti);
+		SpriteID sprite = GetCanalSprite(CF_BUOY, ti->tile);
+		if (sprite != 0) total_offset = sprite - SPR_IMG_BUOY;
+	} else if (IsDock(ti->tile) || (IsOilRig(ti->tile) && IsTileOnWater(ti->tile))) {
 		if (ti->tileh == SLOPE_FLAT) {
 			DrawWaterClassGround(ti);
 		} else {

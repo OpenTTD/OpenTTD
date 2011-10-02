@@ -28,6 +28,8 @@ enum CanalFeature {
 	CF_DOCKS,
 	CF_RIVER_SLOPE,
 	CF_RIVER_EDGE,
+	CF_RIVER_GUI,
+	CF_BUOY,
 	CF_END,
 };
 
