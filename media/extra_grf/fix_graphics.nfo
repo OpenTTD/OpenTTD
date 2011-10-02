@@ -327,3 +327,8 @@
    -1 sprites/fix_graphics.png 674 822 09 31 64 -31 0
    -1 sprites/fix_graphics.png 2 870 09 31 64 -31 0
    -1 sprites/fix_graphics.png 82 870 09 31 64 -31 0
+// Fix buoy in-game; don't show black outline
+   -1 * 4        01 05 01 \b1
+   -1 sprites/fix_graphics.png 575 490 09 11 7 7 4
+   -1 * 7        02 05 17 01 00 00 00
+   -1 * 7        03 05 01 08 00 17 00
