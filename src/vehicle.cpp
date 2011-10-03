@@ -697,7 +697,7 @@ void Vehicle::PreDestructor()
 		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
 
 		DeleteGroupHighlightOfVehicle(this);
-		if (Group::IsValidID(this->group_id)) Group::Get(this->group_id)->num_engines[this->engine_type]--;
+		if (Group::IsValidID(this->group_id)) Group::Get(this->group_id)->statistics.num_engines[this->engine_type]--;
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 

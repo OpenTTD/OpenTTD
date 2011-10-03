@@ -21,16 +21,25 @@
 typedef Pool<Group, GroupID, 16, 64000> GroupPool;
 extern GroupPool _group_pool; ///< Pool of groups.
 
+/** Statistics and caches on the vehicles in a group. */
+struct GroupStatistics {
+	uint16 num_vehicle;                     ///< Number of vehicles.
+	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns.
+
+	GroupStatistics();
+	~GroupStatistics();
+
+	void Clear();
+};
+
 /** Group data. */
 struct Group : GroupPool::PoolItem<&_group_pool> {
 	char *name;                             ///< Group Name
-
-	uint16 num_vehicle;                     ///< Number of vehicles in the group
 	OwnerByte owner;                        ///< Group Owner
 	VehicleTypeByte vehicle_type;           ///< Vehicle type of the group
 
 	bool replace_protection;                ///< If set to true, the global autoreplace have no effect on the group
-	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns (no need to save this)
+	GroupStatistics statistics;             ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
 	Group(CompanyID owner = INVALID_COMPANY);
 	~Group();
@@ -77,7 +86,7 @@ uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 static inline void IncreaseGroupNumVehicle(GroupID id_g)
 {
 	Group *g = Group::GetIfValid(id_g);
-	if (g != NULL) g->num_vehicle++;
+	if (g != NULL) g->statistics.num_vehicle++;
 }
 
 /**
@@ -87,7 +96,7 @@ static inline void IncreaseGroupNumVehicle(GroupID id_g)
 static inline void DecreaseGroupNumVehicle(GroupID id_g)
 {
 	Group *g = Group::GetIfValid(id_g);
-	if (g != NULL) g->num_vehicle--;
+	if (g != NULL) g->statistics.num_vehicle--;
 }
 
 

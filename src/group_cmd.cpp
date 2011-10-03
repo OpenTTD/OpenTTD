@@ -32,6 +32,29 @@ GroupID _new_group_id;
 GroupPool _group_pool("Group");
 INSTANTIATE_POOL_METHODS(Group)
 
+GroupStatistics::GroupStatistics()
+{
+	this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
+}
+
+GroupStatistics::~GroupStatistics()
+{
+	free(this->num_engines);
+}
+
+/**
+ * Clear all caches.
+ */
+void GroupStatistics::Clear()
+{
+	this->num_vehicle = 0;
+
+	/* This is also called when NewGRF change. So the number of engines might have changed. Reallocate. */
+	free(this->num_engines);
+	this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
+}
+
+
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one
  * @note called in SetTrainGroupID and UpdateTrainGroupID
@@ -43,10 +66,10 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 {
 	if (old_g != new_g) {
 		/* Decrease the num engines of EngineID i of the old group if it's not the default one */
-		if (!IsDefaultGroupID(old_g) && Group::IsValidID(old_g)) Group::Get(old_g)->num_engines[i]--;
+		if (!IsDefaultGroupID(old_g) && Group::IsValidID(old_g)) Group::Get(old_g)->statistics.num_engines[i]--;
 
 		/* Increase the num engines of EngineID i of the new group if it's not the default one */
-		if (!IsDefaultGroupID(new_g) && Group::IsValidID(new_g)) Group::Get(new_g)->num_engines[i]++;
+		if (!IsDefaultGroupID(new_g) && Group::IsValidID(new_g)) Group::Get(new_g)->statistics.num_engines[i]++;
 	}
 }
 
@@ -55,16 +78,11 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 Group::Group(Owner owner)
 {
 	this->owner = owner;
-
-	if (!Company::IsValidID(owner)) return;
-
-	this->num_engines = CallocT<uint16>(Engine::GetPoolSize());
 }
 
 Group::~Group()
 {
 	free(this->name);
-	free(this->num_engines);
 }
 
 
@@ -414,14 +432,14 @@ void UpdateTrainGroupID(Train *v)
  */
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
-	if (Group::IsValidID(id_g)) return Group::Get(id_g)->num_engines[id_e];
+	if (Group::IsValidID(id_g)) return Group::Get(id_g)->statistics.num_engines[id_e];
 
 	uint num = Company::Get(company)->num_engines[id_e];
 	if (!IsDefaultGroupID(id_g)) return num;
 
 	const Group *g;
 	FOR_ALL_GROUPS(g) {
-		if (g->owner == company) num -= g->num_engines[id_e];
+		if (g->owner == company) num -= g->statistics.num_engines[id_e];
 	}
 	return num;
 }

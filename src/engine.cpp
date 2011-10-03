@@ -477,9 +477,7 @@ void SetCachedEngineCounts()
 	/* Recalculate */
 	Group *g;
 	FOR_ALL_GROUPS(g) {
-		g->num_vehicle = 0;
-		free(g->num_engines);
-		g->num_engines = CallocT<EngineID>(engines);
+		g->statistics.Clear();
 	}
 
 	const Vehicle *v;
@@ -496,8 +494,8 @@ void SetCachedEngineCounts()
 		assert(v->type == g->vehicle_type);
 		assert(v->owner == g->owner);
 
-		g->num_engines[v->engine_type]++;
-		if (v->IsPrimaryVehicle()) g->num_vehicle++;
+		g->statistics.num_engines[v->engine_type]++;
+		if (v->IsPrimaryVehicle()) g->statistics.num_vehicle++;
 	}
 }
 

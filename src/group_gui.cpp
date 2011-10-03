@@ -303,8 +303,8 @@ public:
 
 					SetDParam(0, STR_GROUP_NAME);
 					SetDParam(1, g->index);
-					SetDParam(2, g->num_vehicle);
-					SetDParam(3, g->num_vehicle);
+					SetDParam(2, g->statistics.num_vehicle);
+					SetDParam(3, g->statistics.num_vehicle);
 				}
 				break;
 		}
@@ -391,7 +391,7 @@ public:
 					DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, y1, STR_GROUP_NAME, (this->vli.index == g->index) ? TC_WHITE : TC_BLACK);
 
 					/* draw the number of vehicles of the group */
-					SetDParam(0, g->num_vehicle);
+					SetDParam(0, g->statistics.num_vehicle);
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y1 + 1, STR_TINY_COMMA, (this->vli.index == g->index) ? TC_WHITE : TC_BLACK, SA_RIGHT);
 
 					y1 += this->tiny_step_height;
