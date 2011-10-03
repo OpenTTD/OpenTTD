@@ -117,6 +117,7 @@ private:
 	/* Columns in the group list */
 	enum ListColumns {
 		VGC_NAME,          ///< Group name.
+		VGC_PROFIT,        ///< Profit icon.
 		VGC_NUMBER,        ///< Number of vehicles in the group.
 
 		VGC_END
@@ -185,6 +186,15 @@ private:
 		this->column_size[VGC_NAME].width = max(170u, this->column_size[VGC_NAME].width);
 		this->tiny_step_height = this->column_size[VGC_NAME].height;
 
+		this->column_size[VGC_PROFIT].width = 0;
+		this->column_size[VGC_PROFIT].height = 0;
+		static const SpriteID profit_sprites[] = {SPR_PROFIT_NA, SPR_PROFIT_NEGATIVE, SPR_PROFIT_SOME, SPR_PROFIT_LOT};
+		for (uint i = 0; i < lengthof(profit_sprites); i++) {
+			Dimension d = GetSpriteSize(profit_sprites[i]);
+			this->column_size[VGC_PROFIT] = maxdim(this->column_size[VGC_PROFIT], d);
+		}
+		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_PROFIT].height);
+
 		SetDParam(0, GroupStatistics::Get(this->vli.company, ALL_GROUP, this->vli.vtype).num_vehicle > 900 ? 9999 : 999);
 		this->column_size[VGC_NUMBER] = GetStringBoundingBox(STR_TINY_COMMA);
 		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_NUMBER].height);
@@ -193,6 +203,7 @@ private:
 
 		return WD_FRAMERECT_LEFT + 8 +
 			this->column_size[VGC_NAME].width + 8 +
+			this->column_size[VGC_PROFIT].width + 2 +
 			this->column_size[VGC_NUMBER].width + 2 +
 			WD_FRAMERECT_RIGHT;
 	}
@@ -224,8 +235,22 @@ private:
 		int x = rtl ? right - WD_FRAMERECT_RIGHT - 8 - this->column_size[VGC_NAME].width + 1 : left + WD_FRAMERECT_LEFT + 8;
 		DrawString(x, x + this->column_size[VGC_NAME].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, str, colour);
 
+		/* draw the profit icon */
+		x = rtl ? x - 8 - this->column_size[VGC_PROFIT].width : x + 8 + this->column_size[VGC_NAME].width;
+		SpriteID spr;
+		if (stats.num_profit_vehicle == 0) {
+			spr = SPR_PROFIT_NA;
+		} else if (stats.profit_last_year < 0) {
+			spr = SPR_PROFIT_NEGATIVE;
+		} else if (stats.profit_last_year < 10000 * stats.num_profit_vehicle) { // TODO magic number
+			spr = SPR_PROFIT_SOME;
+		} else {
+			spr = SPR_PROFIT_LOT;
+		}
+		DrawSprite(spr, PAL_NONE, x, y + (this->tiny_step_height - this->column_size[VGC_PROFIT].height) / 2);
+
 		/* draw the number of vehicles of the group */
-		x = rtl ? x - 8 - this->column_size[VGC_NUMBER].width : x + 8 + this->column_size[VGC_NAME].width;
+		x = rtl ? x - 2 - this->column_size[VGC_NUMBER].width : x + 2 + this->column_size[VGC_PROFIT].width;
 		SetDParam(0, stats.num_vehicle);
 		DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, STR_TINY_COMMA, colour, SA_RIGHT | SA_FORCE);
 	}

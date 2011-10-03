@@ -193,11 +193,11 @@ static void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	SpriteID spr;
 
 	/* draw profit-based coloured icons */
-	if (v->age <= DAYS_IN_YEAR * 2) {
+	if (v->age <= VEHICLE_PROFIT_MIN_AGE) {
 		spr = SPR_PROFIT_NA;
 	} else if (v->GetDisplayProfitLastYear() < 0) {
 		spr = SPR_PROFIT_NEGATIVE;
-	} else if (v->GetDisplayProfitLastYear() < 10000) {
+	} else if (v->GetDisplayProfitLastYear() < VEHICLE_PROFIT_THRESHOLD) {
 		spr = SPR_PROFIT_SOME;
 	} else {
 		spr = SPR_PROFIT_LOT;

@@ -26,10 +26,19 @@ struct GroupStatistics {
 	uint16 num_vehicle;                     ///< Number of vehicles.
 	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns.
 
+	uint16 num_profit_vehicle;              ///< Number of vehicles considered for profit statistics;
+	Money profit_last_year;                 ///< Sum of profits for all vehicles.
+
 	GroupStatistics();
 	~GroupStatistics();
 
 	void Clear();
+
+	void ClearProfits()
+	{
+		this->num_profit_vehicle = 0;
+		this->profit_last_year = 0;
+	}
 
 	static GroupStatistics &Get(CompanyID company, GroupID id_g, VehicleType type);
 	static GroupStatistics &Get(const Vehicle *v);
@@ -37,7 +46,9 @@ struct GroupStatistics {
 
 	static void CountVehicle(const Vehicle *v, int delta);
 	static void CountEngine(const Vehicle *v, int delta);
+	static void VehicleReachedProfitAge(const Vehicle *v);
 
+	static void UpdateProfits();
 	static void UpdateAfterLoad();
 };
 

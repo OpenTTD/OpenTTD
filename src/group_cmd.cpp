@@ -48,6 +48,8 @@ GroupStatistics::~GroupStatistics()
 void GroupStatistics::Clear()
 {
 	this->num_vehicle = 0;
+	this->num_profit_vehicle = 0;
+	this->profit_last_year = 0;
 
 	/* This is also called when NewGRF change. So the number of engines might have changed. Reallocate. */
 	free(this->num_engines);
@@ -139,6 +141,13 @@ void GroupStatistics::Clear()
 
 	stats_all.num_vehicle += delta;
 	stats.num_vehicle += delta;
+
+	if (v->age > VEHICLE_PROFIT_MIN_AGE) {
+		stats_all.num_profit_vehicle += delta;
+		stats_all.profit_last_year += v->GetDisplayProfitLastYear() * delta;
+		stats.num_profit_vehicle += delta;
+		stats.profit_last_year += v->GetDisplayProfitLastYear() * delta;
+	}
 }
 
 /**
@@ -153,6 +162,45 @@ void GroupStatistics::Clear()
 	GroupStatistics::Get(v).num_engines[v->engine_type] += delta;
 }
 
+/**
+ * Add a vehicle to the profit sum of its group.
+ */
+/* static */ void GroupStatistics::VehicleReachedProfitAge(const Vehicle *v)
+{
+	GroupStatistics &stats_all = GroupStatistics::GetAllGroup(v);
+	GroupStatistics &stats = GroupStatistics::Get(v);
+
+	stats_all.num_profit_vehicle++;
+	stats_all.profit_last_year += v->GetDisplayProfitLastYear();
+	stats.num_profit_vehicle++;
+	stats.profit_last_year += v->GetDisplayProfitLastYear();
+}
+
+/**
+ * Recompute the profits for all groups.
+ */
+/* static */ void GroupStatistics::UpdateProfits()
+{
+	/* Set up the engine count for all companies */
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			c->group_all[type].ClearProfits();
+			c->group_default[type].ClearProfits();
+		}
+	}
+
+	/* Recalculate */
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		g->statistics.ClearProfits();
+	}
+
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->IsPrimaryVehicle() && v->age > VEHICLE_PROFIT_MIN_AGE) GroupStatistics::VehicleReachedProfitAge(v);
+	}
+}
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one

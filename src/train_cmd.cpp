@@ -1192,6 +1192,12 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	Train *original_src_head = src_head;
 	Train *original_dst_head = (dst_head == src_head ? NULL : dst_head);
 
+	if (flags & DC_EXEC) {
+		/* Remove old heads from the statistics */
+		if (original_src_head != NULL && original_src_head->IsFrontEngine()) GroupStatistics::CountVehicle(original_src_head, -1);
+		if (original_dst_head != NULL && original_dst_head->IsFrontEngine()) GroupStatistics::CountVehicle(original_dst_head, -1);
+	}
+
 	/* (Re)arrange the trains in the wanted arrangement. */
 	ArrangeTrains(&dst_head, dst, &src_head, src, move_chain);
 
@@ -1242,18 +1248,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
 			DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
 
-			/* We are going to be moved to a different train, and
-			 * we were the front engine of the original train. */
-			if (dst_head != NULL && dst_head != src && (src_head == NULL || !src_head->IsFrontEngine())) {
-				GroupStatistics::CountVehicle(src, -1);
-			}
-
-			/* The front engine is going to be moved later in the
-			 * current train, and it will not be a train anymore. */
-			if (dst_head == NULL && !src_head->IsFrontEngine()) {
-				GroupStatistics::CountVehicle(src, -1);
-			}
-
 			/* Delete orders, group stuff and the unit number as we're not the
 			 * front of any vehicle anymore. */
 			DeleteVehicleOrders(src);
@@ -1261,17 +1255,15 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			src->unitnumber = 0;
 		}
 
-		/* We were a front engine and we are becoming one for a different train.
-		 * Increase the group counter accordingly. */
-		if (original_src_head == src && dst_head == src) {
-			GroupStatistics::CountVehicle(src, 1);
-		}
-
 		/* We weren't a front engine but are becoming one. So
 		 * we should be put in the default group. */
 		if (original_src_head != src && dst_head == src) {
 			SetTrainGroupID(src, DEFAULT_GROUP);
 		}
+
+		/* Add new heads to statistics */
+		if (src_head != NULL && src_head->IsFrontEngine()) GroupStatistics::CountVehicle(src_head, 1);
+		if (dst_head != NULL && dst_head->IsFrontEngine()) GroupStatistics::CountVehicle(dst_head, 1);
 
 		/* Handle 'new engine' part of cases #1b, #2b, #3b, #4b and #5 in NormaliseTrainHead. */
 		NormaliseTrainHead(src_head);
@@ -1354,7 +1346,7 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 
 			/* Copy other important data from the front engine */
 			new_head->CopyVehicleConfigAndStatistics(first);
-			GroupStatistics::CountVehicle(new_head, 1);
+			GroupStatistics::CountVehicle(new_head, 1); // after copying over the profit
 
 			/* If we deleted a window then open a new one for the 'new' train */
 			if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_head);
