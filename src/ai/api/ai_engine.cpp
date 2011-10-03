@@ -24,8 +24,7 @@
 /* static */ bool AIEngine::IsValidEngine(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
-	return e != NULL && (::IsEngineBuildable(engine_id, e->type, _current_company) || ::Company::Get(_current_company)->num_engines[engine_id] > 0);
-
+	return e != NULL && (::IsEngineBuildable(engine_id, e->type, _current_company) || ::Company::Get(_current_company)->group_all[e->type].num_engines[engine_id] > 0);
 }
 
 /* static */ bool AIEngine::IsBuildable(EngineID engine_id)

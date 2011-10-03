@@ -142,7 +142,6 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the auto replace window (must be called before incrementing num_engines)
 		}
 
-		Company::Get(_current_company)->num_engines[eid]++;
 		GroupStatistics::CountEngine(v, 1);
 
 		if (v->IsPrimaryVehicle()) {

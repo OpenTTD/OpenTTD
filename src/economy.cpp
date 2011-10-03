@@ -407,7 +407,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					v->colourmap = PAL_NONE;
 
 					if (v->IsEngineCountable()) {
-						Company::Get(new_owner)->num_engines[v->engine_type]++;
 						GroupStatistics::CountEngine(v, 1);
 					}
 					if (v->IsPrimaryVehicle()) {

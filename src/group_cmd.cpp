@@ -71,6 +71,7 @@ void GroupStatistics::Clear()
 	}
 
 	if (IsDefaultGroupID(id_g)) return Company::Get(company)->group_default[type];
+	if (IsAllGroupID(id_g)) return Company::Get(company)->group_all[type];
 
 	NOT_REACHED();
 }
@@ -86,18 +87,25 @@ void GroupStatistics::Clear()
 }
 
 /**
+ * Returns the GroupStatistic for the ALL_GROUPO of a vehicle type.
+ * @param v Vehicle.
+ * @return GroupStatistics for the ALL_GROUP of the vehicle type.
+ */
+/* static */ GroupStatistics &GroupStatistics::GetAllGroup(const Vehicle *v)
+{
+	return GroupStatistics::Get(v->owner, ALL_GROUP, v->type);
+}
+
+/**
  * Update all caches after loading a game, changing NewGRF etc..
  */
 /* static */ void GroupStatistics::UpdateAfterLoad()
 {
-	size_t engines = Engine::GetPoolSize();
-
 	/* Set up the engine count for all companies */
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
-		free(c->num_engines);
-		c->num_engines = CallocT<EngineID>(engines);
 		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+			c->group_all[type].Clear();
 			c->group_default[type].Clear();
 		}
 	}
@@ -111,10 +119,6 @@ void GroupStatistics::Clear()
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (!v->IsEngineCountable()) continue;
-
-		assert(v->engine_type < engines);
-
-		Company::Get(v->owner)->num_engines[v->engine_type]++;
 
 		GroupStatistics::CountEngine(v, 1);
 		if (v->IsPrimaryVehicle()) GroupStatistics::CountVehicle(v, 1);
@@ -130,8 +134,10 @@ void GroupStatistics::Clear()
 {
 	assert(delta == 1 || delta == -1);
 
+	GroupStatistics &stats_all = GroupStatistics::GetAllGroup(v);
 	GroupStatistics &stats = GroupStatistics::Get(v);
 
+	stats_all.num_vehicle += delta;
 	stats.num_vehicle += delta;
 }
 
@@ -143,6 +149,7 @@ void GroupStatistics::Clear()
 /* static */ void GroupStatistics::CountEngine(const Vehicle *v, int delta)
 {
 	assert(delta == 1 || delta == -1);
+	GroupStatistics::GetAllGroup(v).num_engines[v->engine_type] += delta;
 	GroupStatistics::Get(v).num_engines[v->engine_type] += delta;
 }
 
@@ -525,7 +532,6 @@ void UpdateTrainGroupID(Train *v)
  */
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
-	if (IsAllGroupID(id_g)) return Company::Get(company)->num_engines[id_e];
 	const Engine *e = Engine::Get(id_e);
 	return GroupStatistics::Get(company, id_g, e->type).num_engines[id_e];
 }

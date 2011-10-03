@@ -68,8 +68,6 @@ Company::Company(uint16 name_1, bool is_ai)
 /** Destructor. */
 Company::~Company()
 {
-	free(this->num_engines);
-
 	if (CleaningPool()) return;
 
 	DeleteCompanyWindows(this->index);
@@ -564,8 +562,6 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	InvalidateWindowData(WC_SMALLMAP, 0, 1);
 
 	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
-
-	c->num_engines = CallocT<uint16>(Engine::GetPoolSize());
 
 	return c;
 }
