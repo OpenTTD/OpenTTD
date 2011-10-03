@@ -30,7 +30,6 @@ typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
-void CountCompanyVehicles(CompanyID cid, uint counts[4]);
 void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);

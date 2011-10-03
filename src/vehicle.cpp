@@ -600,21 +600,6 @@ uint CountVehiclesInChain(const Vehicle *v)
 }
 
 /**
- * Count the number of vehicles of a company.
- * @param c Company owning the vehicles.
- * @param [out] counts Array of counts. Contains the vehicle count ordered by type afterwards.
- */
-void CountCompanyVehicles(CompanyID cid, uint counts[4])
-{
-	for (uint i = 0; i < 4; i++) counts[i] = 0;
-
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (v->owner == cid && v->IsPrimaryVehicle()) counts[v->type]++;
-	}
-}
-
-/**
  * Check if a vehicle is counted in num_engines in each company struct
  * @return true if the vehicle is counted in num_engines
  */
@@ -1518,10 +1503,8 @@ UnitID GetFreeUnitNumber(VehicleType type)
 		default: NOT_REACHED();
 	}
 
-	uint amounts[4];
-	CountCompanyVehicles(_current_company, amounts);
-	assert((uint)type < lengthof(amounts));
-	if (amounts[type] >= max_veh) return UINT16_MAX; // Currently already at the limit, no room to make a new one.
+	const Company *c = Company::Get(_current_company);
+	if (c->group_all[type].num_vehicle >= max_veh) return UINT16_MAX; // Currently already at the limit, no room to make a new one.
 
 	FreeUnitIDGenerator gen(type, _current_company);
 

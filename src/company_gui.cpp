@@ -1888,7 +1888,10 @@ struct CompanyWindow : Window
 
 			case CW_WIDGET_DESC_VEHICLE_COUNTS: {
 				uint amounts[4];
-				CountCompanyVehicles((CompanyID)this->window_number, amounts);
+				amounts[0] = c->group_all[VEH_TRAIN].num_vehicle;
+				amounts[1] = c->group_all[VEH_ROAD].num_vehicle;
+				amounts[2] = c->group_all[VEH_SHIP].num_vehicle;
+				amounts[3] = c->group_all[VEH_AIRCRAFT].num_vehicle;
 
 				int y = r.top;
 				if (amounts[0] + amounts[1] + amounts[2] + amounts[3] == 0) {

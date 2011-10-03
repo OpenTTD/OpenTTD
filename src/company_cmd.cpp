@@ -610,15 +610,14 @@ void InitializeCompanies()
  */
 bool MayCompanyTakeOver(CompanyID cbig, CompanyID csmall)
 {
-	uint big_counts[4], small_counts[4];
-	CountCompanyVehicles(cbig,   big_counts);
-	CountCompanyVehicles(csmall, small_counts);
+	const Company *c1 = Company::Get(cbig);
+	const Company *c2 = Company::Get(csmall);
 
 	/* Do the combined vehicle counts stay within the limits? */
-	return big_counts[VEH_TRAIN]     + small_counts[VEH_TRAIN]    <= _settings_game.vehicle.max_trains &&
-		big_counts[VEH_ROAD]     + small_counts[VEH_ROAD]     <= _settings_game.vehicle.max_roadveh &&
-		big_counts[VEH_SHIP]     + small_counts[VEH_SHIP]     <= _settings_game.vehicle.max_ships &&
-		big_counts[VEH_AIRCRAFT] + small_counts[VEH_AIRCRAFT] <= _settings_game.vehicle.max_aircraft;
+	return c1->group_all[VEH_TRAIN].num_vehicle + c2->group_all[VEH_TRAIN].num_vehicle <= _settings_game.vehicle.max_trains &&
+		c1->group_all[VEH_ROAD].num_vehicle     + c2->group_all[VEH_ROAD].num_vehicle     <= _settings_game.vehicle.max_roadveh &&
+		c1->group_all[VEH_SHIP].num_vehicle     + c2->group_all[VEH_SHIP].num_vehicle     <= _settings_game.vehicle.max_ships &&
+		c1->group_all[VEH_AIRCRAFT].num_vehicle + c2->group_all[VEH_AIRCRAFT].num_vehicle <= _settings_game.vehicle.max_aircraft;
 }
 
 /**
