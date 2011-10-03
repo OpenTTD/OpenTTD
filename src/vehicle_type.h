@@ -19,14 +19,20 @@ typedef uint32 VehicleID;
 
 /** Available vehicle types. */
 enum VehicleType {
-	VEH_TRAIN,          ///< %Train vehicle type.
-	VEH_ROAD,           ///< Road vehicle type.
-	VEH_SHIP,           ///< %Ship vehicle type.
-	VEH_AIRCRAFT,       ///< %Aircraft vehicle type.
-	VEH_EFFECT,         ///< Effect vehicle type (smoke, explosions, sparks, bubbles)
-	VEH_DISASTER,       ///< Disaster vehicle type.
+	VEH_BEGIN,
+
+	VEH_TRAIN = VEH_BEGIN,        ///< %Train vehicle type.
+	VEH_ROAD,                     ///< Road vehicle type.
+	VEH_SHIP,                     ///< %Ship vehicle type.
+	VEH_AIRCRAFT,                 ///< %Aircraft vehicle type.
+
+	VEH_COMPANY_END,              ///< Last company-ownable type.
+
+	VEH_EFFECT = VEH_COMPANY_END, ///< Effect vehicle type (smoke, explosions, sparks, bubbles)
+	VEH_DISASTER,                 ///< Disaster vehicle type.
+
 	VEH_END,
-	VEH_INVALID = 0xFF, ///< Non-existing type of vehicle.
+	VEH_INVALID = 0xFF,           ///< Non-existing type of vehicle.
 };
 DECLARE_POSTFIX_INCREMENT(VehicleType)
 /** Helper information for extract tool. */

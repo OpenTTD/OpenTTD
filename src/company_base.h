@@ -20,6 +20,7 @@
 #include "economy_type.h"
 #include "tile_type.h"
 #include "settings_type.h"
+#include "group.h"
 
 struct CompanyEconomyEntry {
 	Money income;
@@ -105,6 +106,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	EngineRenewList engine_renew_list; ///< Engine renewals of this company.
 	CompanySettings settings;          ///< settings specific for each company
 	uint16 *num_engines;               ///< caches the number of engines of each type the company owns (no need to save this)
+	GroupStatistics group_default[VEH_COMPANY_END];  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
 
 	/**
 	 * Is this company a valid company, controlled by the computer (a NoAI program)?

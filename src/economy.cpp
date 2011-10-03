@@ -400,10 +400,20 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				if (new_owner == INVALID_OWNER) {
 					if (v->Previous() == NULL) delete v;
 				} else {
+					if (v->IsEngineCountable()) GroupStatistics::CountEngine(v, -1);
+					if (v->IsPrimaryVehicle()) GroupStatistics::CountVehicle(v, -1);
+
 					v->owner = new_owner;
 					v->colourmap = PAL_NONE;
-					if (v->IsEngineCountable()) Company::Get(new_owner)->num_engines[v->engine_type]++;
-					if (v->IsPrimaryVehicle()) v->unitnumber = unitidgen[v->type].NextID();
+
+					if (v->IsEngineCountable()) {
+						Company::Get(new_owner)->num_engines[v->engine_type]++;
+						GroupStatistics::CountEngine(v, 1);
+					}
+					if (v->IsPrimaryVehicle()) {
+						GroupStatistics::CountVehicle(v, 1);
+						v->unitnumber = unitidgen[v->type].NextID();
+					}
 
 					/* Invalidate the vehicle's cargo payment "owner cache". */
 					if (v->cargo_payment != NULL) v->cargo_payment->owner = NULL;

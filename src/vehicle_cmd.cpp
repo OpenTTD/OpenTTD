@@ -139,12 +139,16 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		InvalidateWindowClassesData(GetWindowClassForVehicleType(type), 0);
 		SetWindowDirty(WC_COMPANY, _current_company);
 		if (IsLocalCompany()) {
-			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the auto replace window
+			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the auto replace window (must be called before incrementing num_engines)
 		}
 
 		Company::Get(_current_company)->num_engines[eid]++;
+		GroupStatistics::CountEngine(v, 1);
 
-		if (v->IsPrimaryVehicle()) OrderBackup::Restore(v, p2);
+		if (v->IsPrimaryVehicle()) {
+			GroupStatistics::CountVehicle(v, 1);
+			OrderBackup::Restore(v, p2);
+		}
 	}
 
 	return value;

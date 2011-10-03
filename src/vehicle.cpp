@@ -694,11 +694,11 @@ void Vehicle::PreDestructor()
 
 	if (this->IsEngineCountable()) {
 		Company::Get(this->owner)->num_engines[this->engine_type]--;
-		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
-
-		DeleteGroupHighlightOfVehicle(this);
 		GroupStatistics::CountEngine(this, -1);
 		if (this->IsPrimaryVehicle()) GroupStatistics::CountVehicle(this, -1);
+
+		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
+		DeleteGroupHighlightOfVehicle(this);
 	}
 
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
