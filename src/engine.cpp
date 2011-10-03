@@ -477,6 +477,7 @@ void SetCachedEngineCounts()
 	/* Recalculate */
 	Group *g;
 	FOR_ALL_GROUPS(g) {
+		g->num_vehicle = 0;
 		free(g->num_engines);
 		g->num_engines = CallocT<EngineID>(engines);
 	}
@@ -496,6 +497,7 @@ void SetCachedEngineCounts()
 		assert(v->owner == g->owner);
 
 		g->num_engines[v->engine_type]++;
+		if (v->IsPrimaryVehicle()) g->num_vehicle++;
 	}
 }
 
