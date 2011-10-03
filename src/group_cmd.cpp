@@ -55,6 +55,35 @@ void GroupStatistics::Clear()
 }
 
 /**
+ * Returns the GroupStatistics for a specific group.
+ * @param company Owner of the group.
+ * @param id_g    GroupID of the group.
+ * @param type    VehicleType of the vehicles in the group.
+ * @return Statistics for the group.
+ */
+/* static */ GroupStatistics &GroupStatistics::Get(CompanyID company, GroupID id_g, VehicleType type)
+{
+	if (Group::IsValidID(id_g)) {
+		Group *g = Group::Get(id_g);
+		assert(g->owner == company);
+		assert(g->vehicle_type == type);
+		return g->statistics;
+	}
+
+	NOT_REACHED();
+}
+
+/**
+ * Returns the GroupStatistic for the group of a vehicle.
+ * @param v Vehicle.
+ * @return GroupStatistics for the group of the vehicle.
+ */
+/* static */ GroupStatistics &GroupStatistics::Get(const Vehicle *v)
+{
+	return GroupStatistics::Get(v->owner, v->group_id, v->type);
+}
+
+/**
  * Update all caches after loading a game, changing NewGRF etc..
  */
 /* static */ void GroupStatistics::UpdateAfterLoad()
@@ -89,8 +118,23 @@ void GroupStatistics::Clear()
 		assert(v->owner == g->owner);
 
 		g->statistics.num_engines[v->engine_type]++;
-		if (v->IsPrimaryVehicle()) g->statistics.num_vehicle++;
+		if (v->IsPrimaryVehicle()) GroupStatistics::CountVehicle(v, 1);
 	}
+}
+
+/**
+ * Update num_vehicle when adding or removing a vehicle.
+ * @param v Vehicle to count.
+ * @param delta +1 to add, -1 to remove.
+ */
+/* static */ void GroupStatistics::CountVehicle(const Vehicle *v, int delta)
+{
+	assert(delta == 1 || delta == -1);
+	if (!Group::IsValidID(v->group_id)) return;
+
+	GroupStatistics &stats = GroupStatistics::Get(v);
+
+	stats.num_vehicle += delta;
 }
 
 
@@ -276,8 +320,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (v->owner != _current_company || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		DecreaseGroupNumVehicle(v->group_id);
-		IncreaseGroupNumVehicle(new_g);
+		GroupStatistics::CountVehicle(v, -1);
 
 		switch (v->type) {
 			default: NOT_REACHED();
@@ -291,6 +334,8 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				v->group_id = new_g;
 				break;
 		}
+
+		GroupStatistics::CountVehicle(v, 1);
 
 		/* Update the Replace Vehicle Windows */
 		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
@@ -412,7 +457,7 @@ void RemoveVehicleFromGroup(const Vehicle *v)
 {
 	if (!v->IsPrimaryVehicle()) return;
 
-	if (!IsDefaultGroupID(v->group_id)) DecreaseGroupNumVehicle(v->group_id);
+	if (!IsDefaultGroupID(v->group_id)) GroupStatistics::CountVehicle(v, -1);
 }
 
 

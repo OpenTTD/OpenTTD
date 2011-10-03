@@ -31,6 +31,11 @@ struct GroupStatistics {
 
 	void Clear();
 
+	static GroupStatistics &Get(CompanyID company, GroupID id_g, VehicleType type);
+	static GroupStatistics &Get(const Vehicle *v);
+
+	static void CountVehicle(const Vehicle *v, int delta);
+
 	static void UpdateAfterLoad();
 };
 
@@ -80,27 +85,6 @@ static inline uint GetGroupArraySize()
 }
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
-
-/**
- * Increase the number of vehicles by one in a group.
- * @param id_g Group id.
- */
-static inline void IncreaseGroupNumVehicle(GroupID id_g)
-{
-	Group *g = Group::GetIfValid(id_g);
-	if (g != NULL) g->statistics.num_vehicle++;
-}
-
-/**
- * Decrease the number of vehicles by one in a group.
- * @param id_g Group id.
- */
-static inline void DecreaseGroupNumVehicle(GroupID id_g)
-{
-	Group *g = Group::GetIfValid(id_g);
-	if (g != NULL) g->statistics.num_vehicle--;
-}
-
 
 void SetTrainGroupID(Train *v, GroupID grp);
 void UpdateTrainGroupID(Train *v);

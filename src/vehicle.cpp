@@ -698,7 +698,7 @@ void Vehicle::PreDestructor()
 
 		DeleteGroupHighlightOfVehicle(this);
 		if (Group::IsValidID(this->group_id)) Group::Get(this->group_id)->statistics.num_engines[this->engine_type]--;
-		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
+		if (this->IsPrimaryVehicle()) GroupStatistics::CountVehicle(this, -1);
 	}
 
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {

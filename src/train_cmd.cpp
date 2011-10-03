@@ -1245,13 +1245,13 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			/* We are going to be moved to a different train, and
 			 * we were the front engine of the original train. */
 			if (dst_head != NULL && dst_head != src && (src_head == NULL || !src_head->IsFrontEngine())) {
-				DecreaseGroupNumVehicle(src->group_id);
+				GroupStatistics::CountVehicle(src, -1);
 			}
 
 			/* The front engine is going to be moved later in the
 			 * current train, and it will not be a train anymore. */
 			if (dst_head == NULL && !src_head->IsFrontEngine()) {
-				DecreaseGroupNumVehicle(src->group_id);
+				GroupStatistics::CountVehicle(src, -1);
 			}
 
 			/* Delete orders, group stuff and the unit number as we're not the
@@ -1264,7 +1264,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		/* We were a front engine and we are becoming one for a different train.
 		 * Increase the group counter accordingly. */
 		if (original_src_head == src && dst_head == src) {
-			IncreaseGroupNumVehicle(src->group_id);
+			GroupStatistics::CountVehicle(src, 1);
 		}
 
 		/* We weren't a front engine but are becoming one. So
@@ -1354,7 +1354,7 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 
 			/* Copy other important data from the front engine */
 			new_head->CopyVehicleConfigAndStatistics(first);
-			IncreaseGroupNumVehicle(new_head->group_id);
+			GroupStatistics::CountVehicle(new_head, 1);
 
 			/* If we deleted a window then open a new one for the 'new' train */
 			if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_head);
