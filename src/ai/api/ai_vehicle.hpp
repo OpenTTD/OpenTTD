@@ -65,6 +65,8 @@ public:
 		/** Vehicle is without power */
 		ERR_VEHICLE_NO_POWER,                   // [STR_ERROR_TRAIN_START_NO_POWER]
 
+		/** Vehicle would get too long during construction. */
+		ERR_VEHICLE_TOO_LONG,                   // [STR_ERROR_TRAIN_TOO_LONG]
 	};
 
 	/**

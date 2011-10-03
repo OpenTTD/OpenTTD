@@ -27,6 +27,7 @@
  * \li AICompany::GetQuarterlyPerformanceRating
  * \li AICompany::GetQuarterlyCompanyValue
  * \li AITown::GetTownAuthority
+ * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached
  *
  * API removals:
  * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.
