@@ -25,7 +25,6 @@ extern const uint8 _engine_offsets[4];
 
 bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company);
 bool IsEngineRefittable(EngineID engine);
-void SetCachedEngineCounts();
 void SetYearEngineAgingStops();
 void StartupOneEngine(Engine *e, Date aging_date);
 

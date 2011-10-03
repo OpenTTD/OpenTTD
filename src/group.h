@@ -30,6 +30,8 @@ struct GroupStatistics {
 	~GroupStatistics();
 
 	void Clear();
+
+	static void UpdateAfterLoad();
 };
 
 /** Group data. */

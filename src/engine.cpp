@@ -461,45 +461,6 @@ bool EngineOverrideManager::ResetToCurrentNewGRFConfig()
 }
 
 /**
- * Sets cached values in Company::num_vehicles and Group::num_vehicles
- */
-void SetCachedEngineCounts()
-{
-	size_t engines = Engine::GetPoolSize();
-
-	/* Set up the engine count for all companies */
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
-		free(c->num_engines);
-		c->num_engines = CallocT<EngineID>(engines);
-	}
-
-	/* Recalculate */
-	Group *g;
-	FOR_ALL_GROUPS(g) {
-		g->statistics.Clear();
-	}
-
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (!v->IsEngineCountable()) continue;
-
-		assert(v->engine_type < engines);
-
-		Company::Get(v->owner)->num_engines[v->engine_type]++;
-
-		if (v->group_id == DEFAULT_GROUP) continue;
-
-		g = Group::Get(v->group_id);
-		assert(v->type == g->vehicle_type);
-		assert(v->owner == g->owner);
-
-		g->statistics.num_engines[v->engine_type]++;
-		if (v->IsPrimaryVehicle()) g->statistics.num_vehicle++;
-	}
-}
-
-/**
  * Initialise the engine pool with the data from the original vehicles.
  */
 void SetupEngines()
