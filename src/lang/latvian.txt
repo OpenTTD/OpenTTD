@@ -1000,7 +1000,7 @@ STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 m�
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mainīt pašreizējās valūtas rādītāju
 
 # Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Grūtības pakāpes
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Grūtības pakāpe
 
 ############ range for difficulty levels starts
 STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Viegla
@@ -1114,7 +1114,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Pa labi
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Atļaut celt uz nelīdzenas zemes un krastiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Atļaut zemes transformācijas zem ekām, ceļiem, utt.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākus mikrorajonus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākas, palielinātas apkalpojamās platības: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimālais vilcienu garums: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transportlīdzekļa izmešu efektu daudzums: {ORANGE}{STRING}
@@ -1267,7 +1267,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Izslēg
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Izslēgt datoram lidaparātus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Izslēgt datoram kuģus: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Atļaut AIs vairākspēlētāju spēlē: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Atļaut MI vairākspēlētāju spēlē: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes pirms AI ir izslēgts: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Apkalpošanas intervāls procentos: {ORANGE}{STRING}
@@ -1286,7 +1286,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Izslēg
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Iekrāsotās ziņas parādās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Sākuma gads: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt lēzenas izmaiņas ekonomikā: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citām kompānijām: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citiem uzņēmumiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procenti no kopējās peļņas, ko maksā tranzītstacijās: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Velkot, izvietot signālus uz katra {ORANGE}{STRING}. lauciņa
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automātiski būvēt semaforus pirms: {ORANGE}{STRING}
@@ -1373,7 +1373,7 @@ STR_INTRO_LOAD_GAME                                             :{BLACK}Ielādē
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Spēlēt scenāriju
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spēlēt augstumu karti
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenāriju redaktors
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Tīkla spēle
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Vairākspēlētāju spēle
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles opcijas
 STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtības pakāpe ({STRING})
@@ -1387,8 +1387,8 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Sākt ja
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ielādēt saglabāto spēli
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Sākt jaunu spēli, ainavai izmantojot augstumu karti
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Sākt jaunu spēli ar pielāgotu scenāriju
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Izveidot speciālu spēles pasauli/scenāriju
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Sākt daudzspēlētāju spēli
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Izveidot pielāgotu spēles pasauli/scenāriju
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Sākt vairākspēlētāju spēli
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Izvēlēties 'mērena klimata' zemes stilu
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Izvēlēties 'subarktiska klimata' zemes stilu
@@ -1425,7 +1425,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Pamest spēli
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Vai jūs tiešām vēlaties pārtraukt šo spēli?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Vai jūs tiešām vēlaties pamest šo spēli?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Vai esat pārliecināts, ka vēlaties pamest šo scenāriju?
 
 # Cheat window
@@ -1540,19 +1540,19 @@ STR_FACE_EARRING                                                :Auskars:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt kaklasaiti vai auskarus
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairāk spēlētāju režīms
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Savienojums:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Izvēlaties starp spēli caur internetu vai spēli lokālajā tīklā
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Izvēlieties starp spēli internetā vai spēli lokālajā tīklā
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internets
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Šis vārds, pēc kura jūs pazīs citi spēlētāji
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pēc šā vārda jūs atpazīs citi spēlētāji
 
-STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Vārds
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nosaukums
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Spēles nosaukums
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Klienti
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klienti tiešsaitē / Maks. klientu skaits{}Uzņēmumi tiešsaistē / Maks. uzņēmumu skaits
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klienti tiešsaistē / Maks. klientu skaits{}Uzņēmumi tiešsaistē / Maks. uzņēmumu skaits
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartes izmērs
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Spēles kartes izmērs{}Klik, lai šķirotu pa zonām
@@ -1562,14 +1562,14 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Gadi
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Gadu skaits{}spēle ir palaista
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Valoda, servera versija utt.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klik uz spēles sarakstā, lai to izvēlētos
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serveris, kuram Jūs pievienojāties pēdējoreiz:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik, lai izvēlētos serveri, kurā Jūs spēlējāt pagāšreiz
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klikšķis sarakstā uz spēles, lai to izvēlētos
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serveris, kuram jūs pievienojāties pēdējoreiz:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikšķis, lai izvēlētos serveri kurā jūs spēlējāt pēdējoreiz
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPĒLES INFORMĀCIJA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Valoda: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Grafikas kopa: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ainava: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartes izmērs: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Servera versija: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Servera adrese: {WHITE}{STRING}
@@ -1578,8 +1578,8 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Šībr�
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Aizsargāts ar paroli!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVERIS NAV TIEŠSAISTĒ
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVERIS IR PILNS
-STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIJU NESAKRITĪBA
-STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF NESAKRITĪBA
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIJU NEATBILSTĪBA
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF NEATBILSTĪBA
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pievienoties spēlei
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atjaunināt serveri
@@ -1588,7 +1588,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atjaunin
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Atrast serveri
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Meklēt serveri tīklā
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pievienot serveri
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pievieno serveri sarakstam, kurš vienmēr tiks pārbaudīts, vai tajā nav palaistas spēles.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pievienot serveri sarakstam, kurš vienmēr tiks pārbaudīts vai tajā nav palaistas spēles
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Palaist serveri
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Palaist jūsu personīgo serveri
 
@@ -1596,7 +1596,7 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Ievadiet
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Ievadiet servera adresi
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Sākt jaunu daudzspēlētāju spēli
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Sākt jaunu vairākspēlētāju spēli
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spēles nosaukums:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles nosaukums, kas tiks attēlots citiem spēlētajiem vairākspēlētāju spēļu izvēlnē
@@ -1660,7 +1660,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latviešu
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Tīkla spēles vestibils
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Vairākspēlētāju spēles vestibils
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Gatavojos pievienoties: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Spēlē esošo kompāniju saraksts. Jūs varat vai nu pievienoties kādai, vai arī sākt jaunu, ja ir brīvs kompānijas slots
@@ -1677,40 +1677,40 @@ STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Satiksm
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stacijas: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spēlētāji: {WHITE}{STRING}
 
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Jauna kompānija
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Izveidot jaunu kompāniju
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Jauns uzņēmums
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Izveidot jaunu uzņēmumu
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Novērot spēli
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Skatīties spēli kā novērotājam
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Pievienoties kompānijai
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Palīdzēt vadīt šo kompāniju
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Pievienoties uzņēmumam
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Palīdzēt vadīt šo uzņēmumu
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Savienojas...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Savienojos..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizējos..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Gaidu..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Savienojas...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizējas...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Gaida...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Lejupielādē karti...
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Apstrādāju datus..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Apstrādā datus...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Reģistrējas...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Pieņemu spēles informāciju..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Pieņemu kompānijas informāciju..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Pieņem spēles informāciju...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Pieņem uzņēmuma informāciju...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P s i u} tavā priekšā
-STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Līdz šim ielādēti {BYTES}
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P s i u} ir jūsu priekšā
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Līdz šim lejupielādēti {BYTES}
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lejuplādēti līdz šim
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atvienoties
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris ir aizsargāts. Ierakstiet paroli
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ierakstiet paroli
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris ir aizsargāts. Ievadiet paroli
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ievadiet paroli
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientu saraksts
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Skatīt
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauna kompānija
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauns uzņēmums
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izmest
@@ -1757,7 +1757,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ievadiet
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Neviena tīkla iekārta nav atrasta vai kompilēta bez ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nevar atrast nevienu interneta spēli
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neadbildēja uz pieprasījumu
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nevar pieslēgties sakarā ar NewGRF nesaderību
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nevar pieslēgties sakarā ar NewGRF neatbilstību
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Tīkla-Spēļu sinhronizācija neveiksmīga
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Interneta spēlei zudis savienojums
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nevar ielādēt saglabāto spēli
@@ -1770,7 +1770,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nepareiz
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris ir pilns
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jūs esat izraidīts no šī severa
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Tu esi izmests no šīs spēles
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Krāpšanās nav atļauta uz šī servera
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Uz šī servera blēdības nav atļautas
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Jūs sūtījāt uz serveri pārak daudz rīkojumu
 
 ############ Leave those lines in this order!!
@@ -1779,15 +1779,15 @@ STR_NETWORK_ERROR_CLIENT_DESYNC                                 :asinhronizācij
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nevar ielādēt karti
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :zuduši sakari
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokola kļūda
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF nesaderība
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF neatbilstība
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nav autorizēts
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :saņemta savāda pakete
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :nepareiza versija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :šo vārdu jau lieto
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :nepareiza parole
-STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :VeiktKomandas nepareizs kompānijas-id
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :serveris tevi izmeta
-STR_NETWORK_ERROR_CLIENT_CHEATER                                :mēģināja krāpties
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :VeiktKomandā nepareizs uzņēmums
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :serveris jūs izmeta
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :mēģināja blēdīties
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilns
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sūtīja pārak daudz rīkojumu
 ############ End of leave-in-this-order
@@ -1810,7 +1810,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuālā
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :aizeju
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ir pievienojies spēlei
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ir pievienojies spēlei (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ir pievienojies kompānijai #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ir pievienojies uzņēmumam #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir pievienojis skatītājus
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ir nodibinājis jaunu uzņēmumu (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ir pametis spēli ({2:STRING})
@@ -1822,7 +1822,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Satura lejupielāde
-STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Veids
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tips
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Satura veids
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nosaukums
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Satura nosaukums
@@ -2397,7 +2397,7 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Pievieno
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Pārskenēt failus
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Atjaunināt pieejamo NewGRF failu sarakstu
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Noņemt
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Noņemt izvēlēto NewGRF failu no saraksta
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Noņemt atlasīto NewGRF failu no saraksta
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Uz augšu
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pārvietot atlasīto NewGRF failu saraksta augšā
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Uz leju
@@ -2409,7 +2409,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Iespējo
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Mainīt iezīmētā New GRF paleti.{}Tas jādara ,kad grafiks no NewGRF izskatās rōzā
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Lietot izmaiņas
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Meklējiet pazudušo saturu tiešaisaistē
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Meklēt pazudušo saturu tiešaisaistē
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Pārbaudīt vai pazudušais saturs nav atrodams tiešsaistē.
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Faila nosaukums: {SILVER}{STRING}
@@ -3294,7 +3294,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Rīkojumi
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Pārslēgt uz rīkojumu skatu
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Saraksts-uzklikšķiniet uz maršrutu, lai izceltu to
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Saraksts - uzklikšķiniet uz norīkojuma, lai to atlasītu
 
 STR_TIMETABLE_NO_TRAVEL                                         :Bez braukšanas
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ceļot (automātiski; iegrafikosies līdz ar nākamo pašrocīgo rīkojumu)
@@ -3321,7 +3321,7 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt 
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt iezīmētajam maršrutam nepieciešamo laiku
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Notīrīt laiku
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst laiku izceltajam maršrutam
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst laiku atlasītajam norīkojumam
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nomest kavējuma skaitītāju
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju,lai transportlīdzeklis būtu laikā
@@ -3349,7 +3349,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izvēlie
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Al vārds
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}MI nosaukums
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}MI iestatījumi
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Mainīt MI iestatījumus
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ielādēt Al
@@ -3444,12 +3444,12 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spēle b
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartes ģenerēšana apturēta...{}... nav piemērotas pozīcijas pilsētām
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... šajā scenārijā nav pilsētu
 
-STR_ERROR_PNGMAP                                                :{WHITE}Nevar ielādēt reljefu no PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fails nav atrasts.
+STR_ERROR_PNGMAP                                                :{WHITE}Nevar ielādēt ainavu no PNG...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fails nav atrasts
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nav iespējams pārkonvertēt šo attēla veidu. Vajadzīgs 8 vai 24-bitu PNG attēls.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... kaut kas nogāja greizi. Atvainojiet. (iespējams bojāts fails)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... kautkas nogāja greizi (iespējams ka fails ir bojāts)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Nevar ielādēt no BMP...
+STR_ERROR_BMPMAP                                                :{WHITE}Nevar ielādēt ainavu no BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nav iespējams pārkonvertēt šo attēla veidu.
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... attēls ir pārāk liels
