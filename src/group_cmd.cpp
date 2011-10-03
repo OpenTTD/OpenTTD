@@ -111,13 +111,7 @@ void GroupStatistics::Clear()
 
 		Company::Get(v->owner)->num_engines[v->engine_type]++;
 
-		if (v->group_id == DEFAULT_GROUP) continue;
-
-		g = Group::Get(v->group_id);
-		assert(v->type == g->vehicle_type);
-		assert(v->owner == g->owner);
-
-		g->statistics.num_engines[v->engine_type]++;
+		GroupStatistics::CountEngine(v, 1);
 		if (v->IsPrimaryVehicle()) GroupStatistics::CountVehicle(v, 1);
 	}
 }
@@ -137,22 +131,34 @@ void GroupStatistics::Clear()
 	stats.num_vehicle += delta;
 }
 
+/**
+ * Update num_engines when adding/removing an engine.
+ * @param v Engine to count.
+ * @param delta +1 to add, -1 to remove.
+ */
+/* static */ void GroupStatistics::CountEngine(const Vehicle *v, int delta)
+{
+	assert(delta == 1 || delta == -1);
+	if (!Group::IsValidID(v->group_id)) return;
+	GroupStatistics::Get(v).num_engines[v->engine_type] += delta;
+}
+
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one
  * @note called in SetTrainGroupID and UpdateTrainGroupID
- * @param i     EngineID we have to update
+ * @param v     Vehicle we have to update
  * @param old_g index of the old group
  * @param new_g index of the new group
  */
-static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g)
+static inline void UpdateNumEngineGroup(const Vehicle *v, GroupID old_g, GroupID new_g)
 {
 	if (old_g != new_g) {
-		/* Decrease the num engines of EngineID i of the old group if it's not the default one */
-		if (!IsDefaultGroupID(old_g) && Group::IsValidID(old_g)) Group::Get(old_g)->statistics.num_engines[i]--;
+		/* Decrease the num engines in the old group */
+		if (Group::IsValidID(old_g)) GroupStatistics::Get(v->owner, old_g, v->type).num_engines[v->engine_type]--;
 
-		/* Increase the num engines of EngineID i of the new group if it's not the default one */
-		if (!IsDefaultGroupID(new_g) && Group::IsValidID(new_g)) Group::Get(new_g)->statistics.num_engines[i]++;
+		/* Increase the num engines in the new group */
+		if (Group::IsValidID(new_g)) GroupStatistics::Get(v->owner, new_g, v->type).num_engines[v->engine_type]++;
 	}
 }
 
@@ -330,7 +336,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				if (v->IsEngineCountable()) UpdateNumEngineGroup(v->engine_type, v->group_id, new_g);
+				if (v->IsEngineCountable()) UpdateNumEngineGroup(v, v->group_id, new_g);
 				v->group_id = new_g;
 				break;
 		}
@@ -474,7 +480,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 	assert(v->IsFrontEngine() || IsDefaultGroupID(new_g));
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		if (u->IsEngineCountable()) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
+		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
 	}
@@ -497,7 +503,7 @@ void UpdateTrainGroupID(Train *v)
 
 	GroupID new_g = v->IsFrontEngine() ? v->group_id : (GroupID)DEFAULT_GROUP;
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		if (u->IsEngineCountable()) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
+		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
 	}

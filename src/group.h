@@ -35,6 +35,7 @@ struct GroupStatistics {
 	static GroupStatistics &Get(const Vehicle *v);
 
 	static void CountVehicle(const Vehicle *v, int delta);
+	static void CountEngine(const Vehicle *v, int delta);
 
 	static void UpdateAfterLoad();
 };
