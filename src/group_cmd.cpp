@@ -125,6 +125,10 @@ void GroupStatistics::Clear()
 		GroupStatistics::CountEngine(v, 1);
 		if (v->IsPrimaryVehicle()) GroupStatistics::CountVehicle(v, 1);
 	}
+
+	FOR_ALL_COMPANIES(c) {
+		GroupStatistics::UpdateAutoreplace(c->index);
+	}
 }
 
 /**
@@ -199,6 +203,37 @@ void GroupStatistics::Clear()
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->IsPrimaryVehicle() && v->age > VEHICLE_PROFIT_MIN_AGE) GroupStatistics::VehicleReachedProfitAge(v);
+	}
+}
+
+/**
+ * Update autoreplace_defined and autoreplace_finished of all statistics of a company.
+ * @param company Company to update statistics for.
+ */
+/* static */ void GroupStatistics::UpdateAutoreplace(CompanyID company)
+{
+	/* Set up the engine count for all companies */
+	Company *c = Company::Get(company);
+	for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
+		c->group_all[type].ClearAutoreplace();
+		c->group_default[type].ClearAutoreplace();
+	}
+
+	/* Recalculate */
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->owner != company) continue;
+		g->statistics.ClearAutoreplace();
+	}
+
+	for (EngineRenewList erl = c->engine_renew_list; erl != NULL; erl = erl->next) {
+		const Engine *e = Engine::Get(erl->from);
+		GroupStatistics &stats = GroupStatistics::Get(company, erl->group_id, e->type);
+		if (!stats.autoreplace_defined) {
+			stats.autoreplace_defined = true;
+			stats.autoreplace_finished = true;
+		}
+		if (stats.num_engines[erl->from] > 0) stats.autoreplace_finished = false;
 	}
 }
 
@@ -400,6 +435,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		GroupStatistics::CountVehicle(v, 1);
+		GroupStatistics::UpdateAutoreplace(v->owner);
 
 		/* Update the Replace Vehicle Windows */
 		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
@@ -544,6 +580,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 	}
 
 	/* Update the Replace Vehicle Windows */
+	GroupStatistics::UpdateAutoreplace(v->owner);
 	SetWindowDirty(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 
@@ -567,6 +604,7 @@ void UpdateTrainGroupID(Train *v)
 	}
 
 	/* Update the Replace Vehicle Windows */
+	GroupStatistics::UpdateAutoreplace(v->owner);
 	SetWindowDirty(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 

@@ -143,6 +143,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 
 		GroupStatistics::CountEngine(v, 1);
+		GroupStatistics::UpdateAutoreplace(_current_company);
 
 		if (v->IsPrimaryVehicle()) {
 			GroupStatistics::CountVehicle(v, 1);

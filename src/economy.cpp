@@ -419,6 +419,8 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				}
 			}
 		}
+
+		if (new_owner != INVALID_OWNER) GroupStatistics::UpdateAutoreplace(new_owner);
 	}
 
 	/*  Change ownership of tiles */

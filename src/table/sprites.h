@@ -56,7 +56,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 160;
+static const uint16 OPENTTD_SPRITE_COUNT = 162;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -123,6 +123,8 @@ static const SpriteID SPR_PROFIT_LOT        = SPR_OPENTTD_BASE + 157;
 
 static const SpriteID SPR_UNREAD_NEWS                = SPR_OPENTTD_BASE + 158;
 static const SpriteID SPR_EXCLUSIVE_TRANSPORT        = SPR_OPENTTD_BASE + 159;
+static const SpriteID SPR_GROUP_REPLACE_PROTECT      = SPR_OPENTTD_BASE + 160;
+static const SpriteID SPR_GROUP_REPLACE_ACTIVE       = SPR_OPENTTD_BASE + 161;
 
 static const SpriteID SPR_GROUP_CREATE_TRAIN         = SPR_OPENTTD_BASE + 114;
 static const SpriteID SPR_GROUP_CREATE_ROADVEH       = SPR_OPENTTD_BASE + 115;

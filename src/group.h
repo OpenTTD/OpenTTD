@@ -26,6 +26,9 @@ struct GroupStatistics {
 	uint16 num_vehicle;                     ///< Number of vehicles.
 	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns.
 
+	bool autoreplace_defined;               ///< Are any autoreplace rules set?
+	bool autoreplace_finished;              ///< Have all autoreplacement finished?
+
 	uint16 num_profit_vehicle;              ///< Number of vehicles considered for profit statistics;
 	Money profit_last_year;                 ///< Sum of profits for all vehicles.
 
@@ -40,6 +43,12 @@ struct GroupStatistics {
 		this->profit_last_year = 0;
 	}
 
+	void ClearAutoreplace()
+	{
+		this->autoreplace_defined = false;
+		this->autoreplace_finished = false;
+	}
+
 	static GroupStatistics &Get(CompanyID company, GroupID id_g, VehicleType type);
 	static GroupStatistics &Get(const Vehicle *v);
 	static GroupStatistics &GetAllGroup(const Vehicle *v);
@@ -50,6 +59,7 @@ struct GroupStatistics {
 
 	static void UpdateProfits();
 	static void UpdateAfterLoad();
+	static void UpdateAutoreplace(CompanyID company);
 };
 
 /** Group data. */

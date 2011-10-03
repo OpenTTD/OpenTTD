@@ -117,6 +117,8 @@ private:
 	/* Columns in the group list */
 	enum ListColumns {
 		VGC_NAME,          ///< Group name.
+		VGC_PROTECT,       ///< Autoreplace protect icon.
+		VGC_AUTOREPLACE,   ///< Autoreplace active icon.
 		VGC_PROFIT,        ///< Profit icon.
 		VGC_NUMBER,        ///< Number of vehicles in the group.
 
@@ -186,6 +188,12 @@ private:
 		this->column_size[VGC_NAME].width = max(170u, this->column_size[VGC_NAME].width);
 		this->tiny_step_height = this->column_size[VGC_NAME].height;
 
+		this->column_size[VGC_PROTECT] = GetSpriteSize(SPR_GROUP_REPLACE_PROTECT);
+		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_PROTECT].height);
+
+		this->column_size[VGC_AUTOREPLACE] = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
+		this->tiny_step_height = max(this->tiny_step_height, this->column_size[VGC_AUTOREPLACE].height);
+
 		this->column_size[VGC_PROFIT].width = 0;
 		this->column_size[VGC_PROFIT].height = 0;
 		static const SpriteID profit_sprites[] = {SPR_PROFIT_NA, SPR_PROFIT_NEGATIVE, SPR_PROFIT_SOME, SPR_PROFIT_LOT};
@@ -203,6 +211,8 @@ private:
 
 		return WD_FRAMERECT_LEFT + 8 +
 			this->column_size[VGC_NAME].width + 8 +
+			this->column_size[VGC_PROTECT].width + 2 +
+			this->column_size[VGC_AUTOREPLACE].width + 2 +
 			this->column_size[VGC_PROFIT].width + 2 +
 			this->column_size[VGC_NUMBER].width + 2 +
 			WD_FRAMERECT_RIGHT;
@@ -214,8 +224,9 @@ private:
 	 * @param left Left of the row.
 	 * @param right Right of the row.
 	 * @param g_id Group to list.
+	 * @param protection Whether autoreplace protection is set.
 	 */
-	void DrawGroupInfo(int y, int left, int right, GroupID g_id) const
+	void DrawGroupInfo(int y, int left, int right, GroupID g_id, bool protection = false) const
 	{
 		/* draw the selected group in white, else we draw it in black */
 		TextColour colour = g_id == this->vli.index ? TC_WHITE : TC_BLACK;
@@ -235,8 +246,16 @@ private:
 		int x = rtl ? right - WD_FRAMERECT_RIGHT - 8 - this->column_size[VGC_NAME].width + 1 : left + WD_FRAMERECT_LEFT + 8;
 		DrawString(x, x + this->column_size[VGC_NAME].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, str, colour);
 
+		/* draw autoreplace protection */
+		x = rtl ? x - 8 - this->column_size[VGC_PROTECT].width : x + 8 + this->column_size[VGC_NAME].width;
+		if (protection) DrawSprite(SPR_GROUP_REPLACE_PROTECT, PAL_NONE, x, y + (this->tiny_step_height - this->column_size[VGC_PROTECT].height) / 2);
+
+		/* draw autoreplace status */
+		x = rtl ? x - 2 - this->column_size[VGC_AUTOREPLACE].width : x + 2 + this->column_size[VGC_PROTECT].width;
+		if (stats.autoreplace_defined) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, stats.autoreplace_finished ? PALETTE_CRASH : PAL_NONE, x, y + (this->tiny_step_height - this->column_size[VGC_AUTOREPLACE].height) / 2);
+
 		/* draw the profit icon */
-		x = rtl ? x - 8 - this->column_size[VGC_PROFIT].width : x + 8 + this->column_size[VGC_NAME].width;
+		x = rtl ? x - 2 - this->column_size[VGC_PROFIT].width : x + 2 + this->column_size[VGC_AUTOREPLACE].width;
 		SpriteID spr;
 		if (stats.num_profit_vehicle == 0) {
 			spr = SPR_PROFIT_NA;
@@ -489,7 +508,7 @@ public:
 
 					assert(g->owner == this->owner);
 
-					DrawGroupInfo(y1, r.left, r.right, g->index);
+					DrawGroupInfo(y1, r.left, r.right, g->index, g->replace_protection);
 
 					y1 += this->tiny_step_height;
 				}
