@@ -111,7 +111,11 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PARAMETER);
 
 		/* Draw the palette of the NewGRF */
-		SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows" : "DOS");
+		if (c->palette & GRFP_BLT_32BPP) {
+			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows / 32 bpp" : "DOS / 32 bpp");
+		} else {
+			SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows" : "DOS");
+		}
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
 	}
 
