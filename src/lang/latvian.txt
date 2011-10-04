@@ -1459,13 +1459,13 @@ STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izvēlie
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Izvēlieties, kuru shēmu mainīt vai vairākas ar CTRL+klik. Klikot uz četrstūra, lai pārslēgtu shēmas izmantošanu
 
 STR_LIVERY_DEFAULT                                              :Standarta pajūgs
-STR_LIVERY_STEAM                                                :Tvaika dzinējs
-STR_LIVERY_DIESEL                                               :Dīzeļdzinējs
-STR_LIVERY_ELECTRIC                                             :Elektriskais
-STR_LIVERY_MONORAIL                                             :Viensliežu
-STR_LIVERY_MAGLEV                                               :Magnētiskais
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_STEAM                                                :Tvaika lokomotīve
+STR_LIVERY_DIESEL                                               :Dīzeļlokomotīve
+STR_LIVERY_ELECTRIC                                             :Elektrolokomotīve
+STR_LIVERY_MONORAIL                                             :Viensliedes lokomotīve
+STR_LIVERY_MAGLEV                                               :Magleva lokomotīve
+STR_LIVERY_DMU                                                  :Dīzeļvilciens
+STR_LIVERY_EMU                                                  :Elektrovilciens
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Pasažieru vagons (tvaika)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Pasažieru vagons (dīzeļa)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Pasažieru vagons (elektriskais)
@@ -1738,7 +1738,7 @@ STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pievieno
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Pievienoties un spēlēt ar šo uzņēmumu
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Parole
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Uzstādīt paroli, lai aizsargātu savu uzņēmumu pret neautorizētu lietotāju pievienošanos
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Uzstādīt uzņēmuma paroli
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Iestatīt uzņēmuma paroli
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Sūtīt
@@ -2375,7 +2375,7 @@ STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Upes rad
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Koka radīšana
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nepārvietojama radīšana
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Klinšaina un akmeņaina apvidus ģenerācija
-STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Uzstādīt spēli
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Iestatīt spēli
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Skrejošs nosaukums
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Sagatavo spēli
 
@@ -2386,12 +2386,12 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktīvie
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktīvie NewGRF faili
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Izvēlēties paraugu:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrēšanas rinda:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ielādēt izvēlēto shēmu
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Saglabāt shēmu
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Saglabāt šo sarakstu kā shēmu
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Ievadiet shēmas vārdu
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Dzēst shēmu
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Dzēst izvēlēto shēmu
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ielādēt izvēlēto iepriekšiestatījumu
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Saglabāt iepriekšiestatījumu
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Saglabāt šo sarakstu kā iepriekšiestatījumu
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Ievadiet iepriekšiestatījuma nosaukumu
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Dzēst iepriekšiestatījumu
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Dzēst šobrīd atlasīto iepriekšiestatījumu
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pievienot
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Pievienot atlasītos NewGRF failus jūsu konfigurācijai
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Pārskenēt failus
@@ -2404,9 +2404,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Uz leju
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pārvietot atlasīto NewGRF failu saraksta apakšā
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalēto NewGRF failu saraksts. Klik uz faila, lai mainītu tā parametrus
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Likt parametrus
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Iestatīt parametrus
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Iespējot paleti
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Mainīt iezīmētā New GRF paleti.{}Tas jādara ,kad grafiks no NewGRF izskatās rōzā
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Mainīt atlasītā New GRF paleti.{}Tas jādara ja NewGRF grafika izskatās sārta
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Lietot izmaiņas
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Meklēt pazudušo saturu tiešaisaistē
@@ -2425,13 +2425,13 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nevar atra
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Atspējots
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nav savietojams ar šo OpenTTD versiju
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Ievadi NewGRF parametrus
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Ievadīt NewGRF parametrus
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mainīt 'NewGRF' parametrus
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mainīt NewGRF parametrus
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Aizvērt
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Atjaunot
-STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Uzlikt parametriem to noklusētās vērtības
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Iestatīt visiem parametriem to noklusētās vērtības
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :{NUM}. parametrs
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametru skaits: {ORANGE}{NUM}
@@ -2922,7 +2922,7 @@ STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Jauni ku
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Jauns lidaparāts
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Pirkt jaunu vilciena vagonu
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Būvēt jaunu transportl.
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Pirkt jaunu automobili
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Uzbūvēt jaunu kuģi
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Būvēt jaunu lidaparātu
 
@@ -3075,7 +3075,7 @@ STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nosaukums
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nosaukt vilcienu
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nosaukt transportl.
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nosaukt automobili
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nosaukt kuģi
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nosaukt lidaparātu
 
@@ -3105,7 +3105,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielin
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes intervālu par 10. Ctrl+Klikšķis samazina apkopes intervālu par 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nosaukt vilcienu
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nosaukt transportl.
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nosaukt automobili
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nosaukt kuģi
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nosaukt lidaparātu
 
@@ -3145,7 +3145,7 @@ STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Izvēlie
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Izvēlieties kādu kravas veidu lidaparāts pārvadās
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Pārbūvēt vilcienu
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Pārbūvēt ceļu transportlīdzekli
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Pārbūvēt automobili
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Pārveidot kuģi
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Pārbūvēt lidaparātu
 
@@ -3504,8 +3504,8 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... pār
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ir jau plakans
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nevar mainīt uzņēmuma nosaukumu..
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nevar mainīt vadītāja vārdu..
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Uzņēmuma nosaukumu nevar mainīt...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Vadītāja vārdu nevar mainīt...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimāli pieļaujamais aizņēmuma apjoms ir {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nevar aizņemties vairāk naudu...
@@ -3627,11 +3627,11 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... sast
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nesaderīgi sliežu veidi
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Transporta līdzekli nevar pārvietot...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Aizmugures dzinējs vienmēr sekos priekšējam dzinējam
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Aizmugurējā lokomotīve vienmēr seko priekšējai dubultniecei
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nevar atrast ceļu uz vietējo depo
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nevar atrast vietējo depo
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nepareiz depo veids
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nepareizs depo veids
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ir par garu pēc aizstāšanas
@@ -3656,10 +3656,10 @@ STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... iztr
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nevar pārveidot sliežu veidu šeit...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Vispirms jānojauc ceļš
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Vispirms jānojauc ceļu
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... vienvirziena ceļiem nevar būt krustojumi
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Šeit nevar būvēt ceļu...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Šeit nevar būvēt tramvaja sliežu ceļu...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Šeit nevar būvēt tramvaju sliežu ceļu...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Šeit nevar nojaukt ceļu...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Šeit nevar nojaukt tramvaju sliežu ceļu...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... iztrūkst ceļš
@@ -3725,12 +3725,12 @@ STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Kuģis i
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Lidaparāts ceļā
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nevar pārbūvēt vilcienu...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nav iespējams pārbūvēt ceļu transportlīdzekli
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Automobili nevar pārbūvēt
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nevar pārveidot kuģi...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nav iespējams pārbūvēt lidaparātu...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nevar nosaukt vilcienu...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nevar nosaukt transportl. ...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Automobili nevar nosaukt...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nevar pārdēvēt kuģi...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nevar nosaukt lidaparātu...
 
@@ -3740,22 +3740,22 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nevar ap
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nevar apturēt/palaist lidaparātu...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nevar aizsūtīt vilcienu uz depo...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nevar aizsūtīt uz depo
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Automobili nevar aizsūtīt uz depo...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kuģi nevar aizsūtīt uz depo...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Lidaparātu nevar aizsūtīt uz angāru...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Vilcienu nevar uzbūvēt...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nevar uzbūvēt transportl. ...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Automobili nevar nopirkt...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nevar uzbūvēt kuģi...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nevar būvēt lidaparātu...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nevar pārdēvēt vilciena vagona veidu...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Vilciena vagona tipu nevar pārdēvēt...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nevar pārdēvēt autotransporta veidu...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nevar pārdēvēt kuģa veidu...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nevar pārdēvēt lidaparāta veidu...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Vilcienu nevar pārdot...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Transportl. nevar pārdot...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Automobili nevar pārdot...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nevar pārdot kuģi...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nevar pārdot lidaparātu...
 
@@ -3765,7 +3765,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Kuģis n
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Lidaparāts nav pieejams
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Spēlē ir pārāk daudz transportlīdzekļu
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nevar mainīt apkopes intervālu...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Apkopes intervālu nevar mainīt...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... transportlīdzeklis ir iznīcināts
 
@@ -3804,7 +3804,7 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Šis tra
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... pārāk daudz zīmju
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Šeit nevar novietot zīmi...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nevar mainīt zīmes nosaukumu...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Zīmes nosaukumu nevar mainīt...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nevar dzēst zīmi...
 
 # Translatable comment for OpenTTD's desktop shortcut
