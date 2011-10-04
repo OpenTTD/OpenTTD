@@ -652,6 +652,34 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			}
 			return 0;
 
+		case 0x62: { // Curvature/position difference for n-th vehicle in chain [signed number relative to vehicle]
+			/* Format: zzyyxxFD
+			 * zz - Signed difference of z position between the selected and this vehicle.
+			 * yy - Signed difference of y position between the selected and this vehicle.
+			 * xx - Signed difference of x position between the selected and this vehicle.
+			 * F  - Flags, bit 7 corresponds to VS_HIDDEN.
+			 * D  - Dir difference, like in 0x45.
+			 */
+			if (!v->IsGroundVehicle()) return 0;
+
+			const Vehicle *u = v->Move((int8)parameter);
+			if (u == NULL) return 0;
+
+			/* Get direction difference. */
+			bool prev = (int8)parameter < 0;
+			uint32 ret = prev ? DirDifference(u->direction, v->direction) : DirDifference(v->direction, u->direction);
+			if (ret > DIRDIFF_REVERSE) ret |= 0x08;
+
+			if (u->vehstatus & VS_HIDDEN) ret |= 0x80;
+
+			/* Get position difference. */
+			ret |= ((prev ? u->x_pos - v->x_pos : v->x_pos - u->x_pos) & 0xFF) << 8;
+			ret |= ((prev ? u->y_pos - v->y_pos : v->y_pos - u->y_pos) & 0xFF) << 16;
+			ret |= ((prev ? u->z_pos - v->z_pos : v->z_pos - u->z_pos) & 0xFF) << 24;
+
+			return ret;
+		}
+
 		case 0xFE:
 		case 0xFF: {
 			uint16 modflags = 0;
