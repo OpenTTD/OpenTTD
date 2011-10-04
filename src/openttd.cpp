@@ -647,10 +647,14 @@ int ttd_main(int argc, char *argv[])
 
 	DEBUG(misc, 1, "Loading blitter...");
 	if (blitter == NULL && _ini_blitter != NULL) blitter = strdup(_ini_blitter);
-	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL) {
-		StrEmpty(blitter) ?
-			usererror("Failed to autoprobe blitter") :
-			usererror("Failed to select requested blitter '%s'; does it exist?", blitter);
+	_blitter_autodetected = StrEmpty(blitter);
+	/* If we have a 32 bpp base set, try to select the 32 bpp blitter first, but only if we autoprobe the blitter. */
+	if (!_blitter_autodetected || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP || BlitterFactoryBase::SelectBlitter("32bpp-anim") == NULL) {
+		if (BlitterFactoryBase::SelectBlitter(blitter) == NULL) {
+			StrEmpty(blitter) ?
+				usererror("Failed to autoprobe blitter") :
+				usererror("Failed to select requested blitter '%s'; does it exist?", blitter);
+		}
 	}
 	free(blitter);
 

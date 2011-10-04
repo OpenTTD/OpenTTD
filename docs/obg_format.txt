@@ -42,6 +42,8 @@ description  = foo
 description.en_US = howdie
 ; palette used by the set; either DOS or Windows
 palette      = DOS
+; preferred blitter, optional; either 8bpp (default) or 32bpp.
+blitter      = 8bpp
 
 ; The files section lists the files that replace sprites.
 ; The file names are case sensitive.

@@ -15,12 +15,15 @@
 #include "3rdparty/md5/md5.h"
 #include "fontcache.h"
 #include "gfx_func.h"
+#include "blitter/factory.hpp"
+#include "video/video_driver.hpp"
 
 /* The type of set we're replacing */
 #define SET_TYPE "graphics"
 #include "base_media_func.h"
 
 #include "table/sprites.h"
+#include "table/strings.h"
 
 /** Whether the given NewGRFs must get a palette remap from windows to DOS or not. */
 bool _palette_remap_grf[MAX_FILE_SLOTS];
@@ -203,11 +206,32 @@ static void LoadSpriteTables()
 }
 
 
+/**
+ * Check blitter needed by NewGRF config and switch if needed.
+ */
+static void SwitchNewGRFBlitter()
+{
+	/* Get blitter of base set. */
+	bool is_32bpp = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP;
+
+	/* A GRF would like a 32 bpp blitter, switch blitter if needed. Never switch if the blitter was specified by the user. */
+	if (_blitter_autodetected && is_32bpp && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 0 && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() < 16) {
+		const char *cur_blitter = BlitterFactoryBase::GetCurrentBlitter()->GetName();
+		if (BlitterFactoryBase::SelectBlitter("32bpp-anim") != NULL) {
+			if (!_video_driver->AfterBlitterChange()) {
+				/* Failed to switch blitter, let's hope we can return to the old one. */
+				if (BlitterFactoryBase::SelectBlitter(cur_blitter) == NULL || !_video_driver->AfterBlitterChange()) usererror("Failed to reinitialize video driver for 32 bpp blitter. Specify a fixed blitter in the config");
+			}
+		}
+	}
+}
+
 /** Initialise and load all the sprites. */
 void GfxLoadSprites()
 {
 	DEBUG(sprite, 2, "Loading sprite set %d", _settings_game.game_creation.landscape);
 
+	SwitchNewGRFBlitter();
 	GfxInitSpriteMem();
 	LoadSpriteTables();
 	GfxInitPalettes();
@@ -224,6 +248,10 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *ful
 
 		fetch_metadata("palette");
 		this->palette = (*item->value == 'D' || *item->value == 'd') ? PAL_DOS : PAL_WINDOWS;
+
+		/* Get optional blitter information. */
+		item = metadata->GetItem("blitter", false);
+		this->blitter = (item != NULL && *item->value == '3') ? BLT_32BPP : BLT_8BPP;
 	}
 	return ret;
 }

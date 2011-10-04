@@ -197,9 +197,16 @@ enum GraphicsFileType {
 	MAX_GFT       ///< We are looking for this amount of GRFs
 };
 
+/** Blitter type for base graphics sets. */
+enum BlitterType {
+	BLT_8BPP,       ///< Base set has 8 bpp sprites only.
+	BLT_32BPP,      ///< Base set has both 8 bpp and 32 bpp sprites.
+};
+
 /** All data of a graphics set. */
 struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, BASESET_DIR> {
 	PaletteType palette;       ///< Palette of this graphics set
+	BlitterType blitter;       ///< Blitter of this graphics set
 
 	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
 };
