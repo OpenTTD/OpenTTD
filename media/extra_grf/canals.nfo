@@ -6,70 +6,166 @@
 // OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
-   -1 * 0	 0C "Canal graphics by George"
+   -1 * 0	 0C "Canal graphics by George / PaulC"
    -1 * 3	 05 08 41
-   -1 sprites/canals.png 66 8 09 23 64 -31 0
-   -1 sprites/canals.png 146 8 09 39 64 -31 -8
-   -1 sprites/canals.png 226 8 09 23 64 -31 0
-   -1 sprites/canals.png 306 8 09 39 64 -31 -8
-   -1 sprites/canals.png 386 8 09 59 64 -31 -36
-   -1 sprites/canals.png 466 8 09 65 64 -31 -34
-   -1 sprites/canals.png 546 8 09 59 64 -31 -36
-   -1 sprites/canals.png 626 8 09 59 64 -31 -28
-   -1 sprites/canals.png 706 8 09 62 64 -1 -51
-   -1 sprites/canals.png 2 88 09 62 64 -61 -43
-   -1 sprites/canals.png 82 88 09 62 64 -61 -51
-   -1 sprites/canals.png 162 88 09 62 64 -1 -43
-   -1 sprites/canals.png 242 88 09 59 64 -31 -28
-   -1 sprites/canals.png 322 88 09 65 66 -33 -34
-   -1 sprites/canals.png 402 88 09 59 64 -31 -28
-   -1 sprites/canals.png 482 88 09 59 64 -31 -28
-   -1 sprites/canals.png 562 88 09 62 64 -1 -43
-   -1 sprites/canals.png 642 88 09 60 64 -61 -43
-   -1 sprites/canals.png 722 88 09 62 66 -61 -43
-   -1 sprites/canals.png 2 168 09 60 64 -1 -43
-   -1 sprites/canals.png 82 168 09 59 64 -31 -28
-   -1 sprites/canals.png 162 168 09 59 64 -31 -28
-   -1 sprites/canals.png 242 168 09 59 64 -31 -28
-   -1 sprites/canals.png 322 168 09 59 64 -31 -28
-   -1 sprites/canals.png 402 168 09 60 64 -1 -43
-   -1 sprites/canals.png 482 168 09 62 68 -61 -43
-   -1 sprites/canals.png 562 168 09 60 64 -61 -43
-   -1 sprites/canals.png 642 168 09 62 64 -1 -43
-   -1 sprites/canals.png 722 168 09 59 64 -31 -36
-   -1 sprites/canals.png 2 248 09 65 64 -31 -34
-   -1 sprites/canals.png 82 248 09 59 64 -31 -36
-   -1 sprites/canals.png 162 248 09 59 64 -31 -28
-   -1 sprites/canals.png 242 248 09 62 64 -1 -51
-   -1 sprites/canals.png 322 248 09 62 64 -61 -43
-   -1 sprites/canals.png 402 248 09 62 64 -61 -51
-   -1 sprites/canals.png 482 248 09 62 64 -1 -43
-   -1 sprites/canals.png 562 248 09 59 64 -31 -28
-   -1 sprites/canals.png 642 248 09 65 66 -33 -34
-   -1 sprites/canals.png 722 248 09 59 64 -31 -28
-   -1 sprites/canals.png 2 328 09 59 64 -31 -28
-   -1 sprites/canals.png 82 328 09 62 64 -1 -43
-   -1 sprites/canals.png 162 328 09 60 64 -61 -43
-   -1 sprites/canals.png 242 328 09 62 66 -61 -43
-   -1 sprites/canals.png 322 328 09 60 64 -1 -43
-   -1 sprites/canals.png 402 328 09 59 64 -31 -28
-   -1 sprites/canals.png 482 328 09 59 64 -31 -28
-   -1 sprites/canals.png 562 328 09 59 64 -31 -28
-   -1 sprites/canals.png 642 328 09 59 64 -31 -28
-   -1 sprites/canals.png 722 328 09 60 64 -1 -43
-   -1 sprites/canals.png 2 408 09 62 68 -61 -43
-   -1 sprites/canals.png 82 408 09 60 64 -61 -43
-   -1 sprites/canals.png 162 408 09 62 64 -1 -43
-   -1 sprites/canals.png 242 408 09 37 70 -31 -6
-   -1 sprites/canals.png 322 408 09 37 70 -31 0
-   -1 sprites/canals.png 402 408 09 37 70 -37 0
-   -1 sprites/canals.png 482 408 09 37 70 -37 -6
-   -1 sprites/canals.png 562 408 09 31 64 -31 0
-   -1 sprites/canals.png 642 408 09 31 64 -31 0
-   -1 sprites/canals.png 722 408 09 31 64 -31 0
-   -1 sprites/canals.png 2 488 09 37 64 -31 -6
-   -1 sprites/canals.png 82 488 09 31 64 -31 0
-   -1 sprites/canals.png 162 488 09 31 64 -31 0
-   -1 sprites/canals.png 242 488 09 31 64 -31 0
-   -1 sprites/canals.png 322 488 09 37 64 -31 -6
-   -1 sprites/canals.png 402 488 09 20 20 0 0
+// Canal slopes
+   -1 sprites/canal_locks.png 66 8 09 23 64 -31 0
+   -1 sprites/canal_locks.png 146 8 09 39 64 -31 -8
+   -1 sprites/canal_locks.png 226 8 09 23 64 -31 0
+   -1 sprites/canal_locks.png 306 8 09 39 64 -31 -8
+// Lock sides
+   -1 sprites/canal_locks.png 386 8 09 59 64 -31 -36
+   -1 sprites/canal_locks.png 466 8 09 65 64 -31 -34
+   -1 sprites/canal_locks.png 546 8 09 59 64 -31 -36
+   -1 sprites/canal_locks.png 626 8 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 706 8 09 62 64 -1 -51
+   -1 sprites/canal_locks.png 2 88 09 62 64 -61 -43
+   -1 sprites/canal_locks.png 82 88 09 62 64 -61 -51
+   -1 sprites/canal_locks.png 162 88 09 62 64 -1 -43
+   -1 sprites/canal_locks.png 242 88 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 322 88 09 65 66 -33 -34
+   -1 sprites/canal_locks.png 402 88 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 482 88 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 562 88 09 62 64 -1 -43
+   -1 sprites/canal_locks.png 642 88 09 60 64 -61 -43
+   -1 sprites/canal_locks.png 722 88 09 62 66 -61 -43
+   -1 sprites/canal_locks.png 2 168 09 60 64 -1 -43
+   -1 sprites/canal_locks.png 82 168 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 162 168 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 242 168 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 322 168 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 402 168 09 60 64 -1 -43
+   -1 sprites/canal_locks.png 482 168 09 62 68 -61 -43
+   -1 sprites/canal_locks.png 562 168 09 60 64 -61 -43
+   -1 sprites/canal_locks.png 642 168 09 62 64 -1 -43
+   -1 sprites/canal_locks.png 722 168 09 59 64 -31 -36
+   -1 sprites/canal_locks.png 2 248 09 65 64 -31 -34
+   -1 sprites/canal_locks.png 82 248 09 59 64 -31 -36
+   -1 sprites/canal_locks.png 162 248 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 242 248 09 62 64 -1 -51
+   -1 sprites/canal_locks.png 322 248 09 62 64 -61 -43
+   -1 sprites/canal_locks.png 402 248 09 62 64 -61 -51
+   -1 sprites/canal_locks.png 482 248 09 62 64 -1 -43
+   -1 sprites/canal_locks.png 562 248 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 642 248 09 65 66 -33 -34
+   -1 sprites/canal_locks.png 722 248 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 2 328 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 82 328 09 62 64 -1 -43
+   -1 sprites/canal_locks.png 162 328 09 60 64 -61 -43
+   -1 sprites/canal_locks.png 242 328 09 62 66 -61 -43
+   -1 sprites/canal_locks.png 322 328 09 60 64 -1 -43
+   -1 sprites/canal_locks.png 402 328 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 482 328 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 562 328 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 642 328 09 59 64 -31 -28
+   -1 sprites/canal_locks.png 722 328 09 60 64 -1 -43
+   -1 sprites/canal_locks.png 2 408 09 62 68 -61 -43
+   -1 sprites/canal_locks.png 82 408 09 60 64 -61 -43
+   -1 sprites/canal_locks.png 162 408 09 62 64 -1 -43
+// Canal edges (temperate)
+   -1 sprites/canals.png  30  10 09 22 45 -11 -1
+   -1 sprites/canals.png  94  10 09 21 41  -8 10
+   -1 sprites/canals.png 142  10 09 21 42 -31 10
+   -1 sprites/canals.png 190  10 09 22 43 -31 -1
+   -1 sprites/canals.png 238  10 09 22 22  11  4
+   -1 sprites/canals.png 270  10 09 16 24 -11 15
+   -1 sprites/canals.png 302  10 09 23 23 -31  4
+   -1 sprites/canals.png 334  10 09 18 24 -11 -1
+   -1 sprites/canals.png 366  10 09 11 12  21 10
+   -1 sprites/canals.png 398  10 09 10 19  -8 21
+   -1 sprites/canals.png 430  10 09 10 11 -31 10
+   -1 sprites/canals.png 446  10 09 16 24 -11 -6
+// Canal icon
+   -1 sprites/canal_locks.png 242 408 09 20 20 0 0
+
+// Differentiation for the climates starts here
+
+// Canal edges (arctic snowy)
+   -1 * 4        01 05 01 \b12
+   -1 sprites/canals.png  30  40 09 22 45 -11 -1
+   -1 sprites/canals.png  94  40 09 21 41  -8 10
+   -1 sprites/canals.png 142  40 09 21 42 -31 10
+   -1 sprites/canals.png 190  40 09 22 43 -31 -1
+   -1 sprites/canals.png 238  40 09 22 22  11  4
+   -1 sprites/canals.png 270  40 09 16 24 -11 15
+   -1 sprites/canals.png 302  40 09 23 23 -31  4
+   -1 sprites/canals.png 334  40 09 18 24 -11 -1
+   -1 sprites/canals.png 366  40 09 11 12  21 10
+   -1 sprites/canals.png 398  40 09 10 19  -8 21
+   -1 sprites/canals.png 430  40 09 10 11 -31 10
+   -1 sprites/canals.png 446  40 09 16 24 -11 -6
+   -1 * 7        02 05 10 01 00 00 00
+
+// Canal edges (arctic normal)
+   -1 * 4        01 05 01 \b12
+   -1 sprites/canals.png  30  70 09 22 45 -11 -1
+   -1 sprites/canals.png  94  70 09 21 41  -8 10
+   -1 sprites/canals.png 142  70 09 21 42 -31 10
+   -1 sprites/canals.png 190  70 09 22 43 -31 -1
+   -1 sprites/canals.png 238  70 09 22 22  11  4
+   -1 sprites/canals.png 270  70 09 16 24 -11 15
+   -1 sprites/canals.png 302  70 09 23 23 -31  4
+   -1 sprites/canals.png 334  70 09 18 24 -11 -1
+   -1 sprites/canals.png 366  70 09 11 12  21 10
+   -1 sprites/canals.png 398  70 09 10 19  -8 21
+   -1 sprites/canals.png 430  70 09 10 11 -31 10
+   -1 sprites/canals.png 446  70 09 16 24 -11 -6
+   -1 * 7        02 05 11 01 00 00 00
+// Choose the right arctic canal edges
+   -1 * 14       02 05 12 81 81 00 FF 01 10 00 04 04 11 00
+   -1 * 6        07 83 01 \7! 01 01
+   -1 * 7        03 05 01 02 00 12 00
+
+// Canal edges (tropic desert)
+   -1 * 4        01 05 01 \b12
+   -1 sprites/canals.png  30 100 09 22 45 -11 -1
+   -1 sprites/canals.png  94 100 09 21 41  -8 10
+   -1 sprites/canals.png 142 100 09 21 42 -31 10
+   -1 sprites/canals.png 190 100 09 22 43 -31 -1
+   -1 sprites/canals.png 238 100 09 22 22  11  4
+   -1 sprites/canals.png 270 100 09 16 24 -11 15
+   -1 sprites/canals.png 302 100 09 23 23 -31  4
+   -1 sprites/canals.png 334 100 09 18 24 -11 -1
+   -1 sprites/canals.png 366 100 09 11 12  21 10
+   -1 sprites/canals.png 398 100 09 10 19  -8 21
+   -1 sprites/canals.png 430 100 09 10 11 -31 10
+   -1 sprites/canals.png 446 100 09 16 24 -11 -6
+   -1 * 7        02 05 13 01 00 00 00
+
+// Canal edges (tropic rainforest)
+   -1 * 4        01 05 01 \b12
+   -1 sprites/canals.png  30 130 09 22 45 -11 -1
+   -1 sprites/canals.png  94 130 09 21 41  -8 10
+   -1 sprites/canals.png 142 130 09 21 42 -31 10
+   -1 sprites/canals.png 190 130 09 22 43 -31 -1
+   -1 sprites/canals.png 238 130 09 22 22  11  4
+   -1 sprites/canals.png 270 130 09 16 24 -11 15
+   -1 sprites/canals.png 302 130 09 23 23 -31  4
+   -1 sprites/canals.png 334 130 09 18 24 -11 -1
+   -1 sprites/canals.png 366 130 09 11 12  21 10
+   -1 sprites/canals.png 398 130 09 10 19  -8 21
+   -1 sprites/canals.png 430 130 09 10 11 -31 10
+   -1 sprites/canals.png 446 130 09 16 24 -11 -6
+   -1 * 7        02 05 14 01 00 00 00
+// Choose the right tropic canal edges
+   -1 * 14       02 05 15 81 81 00 FF 01 13 00 01 01 14 00
+   -1 * 6        07 83 01 \7! 02 01
+   -1 * 7        03 05 01 02 00 15 00
+
+// Canal edges (toyland)
+   -1 * 4        01 05 01 \b12
+   -1 sprites/canals.png  30 160 09 22 45 -11 -1
+   -1 sprites/canals.png  94 160 09 21 41  -8 10
+   -1 sprites/canals.png 142 160 09 21 42 -31 10
+   -1 sprites/canals.png 190 160 09 22 43 -31 -1
+   -1 sprites/canals.png 238 160 09 22 22  11  4
+   -1 sprites/canals.png 270 160 09 16 24 -11 15
+   -1 sprites/canals.png 302 160 09 23 23 -31  4
+   -1 sprites/canals.png 334 160 09 18 24 -11 -1
+   -1 sprites/canals.png 366 160 09 11 12  21 10
+   -1 sprites/canals.png 398 160 09 10 19  -8 21
+   -1 sprites/canals.png 430 160 09 10 11 -31 10
+   -1 sprites/canals.png 446 160 09 16 24 -11 -6
+   -1 * 7        02 05 16 01 00 00 00
+   -1 * 6        07 83 01 \7! 03 01
+   -1 * 7        03 05 01 02 00 16 00

@@ -15,6 +15,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.1.4
+ *
+ * API additions:
+ * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached.
+ *
  * \b 1.1.3
  *
  * No changes
