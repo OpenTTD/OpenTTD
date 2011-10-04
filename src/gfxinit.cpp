@@ -214,6 +214,13 @@ static void SwitchNewGRFBlitter()
 	/* Get blitter of base set. */
 	bool is_32bpp = BaseGraphics::GetUsedSet()->blitter == BLT_32BPP;
 
+	/* Get combined blitter mode of all NewGRFs. */
+	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+		if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_INIT_ONLY)) continue;
+
+		if (c->palette & GRFP_BLT_32BPP) is_32bpp = true;
+	}
+
 	/* A GRF would like a 32 bpp blitter, switch blitter if needed. Never switch if the blitter was specified by the user. */
 	if (_blitter_autodetected && is_32bpp && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 0 && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() < 16) {
 		const char *cur_blitter = BlitterFactoryBase::GetCurrentBlitter()->GetName();

@@ -58,6 +58,8 @@ enum GRFPalette {
 	GRFP_USE_BIT     = 0,   ///< The bit used for storing the palette to use.
 	GRFP_GRF_OFFSET  = 2,   ///< The offset of the GRFP_GRF data.
 	GRFP_GRF_SIZE    = 2,   ///< The size of the GRFP_GRF data.
+	GRFP_BLT_OFFSET  = 4,   ///< The offset of the GRFP_BLT data.
+	GRFP_BLT_SIZE    = 1,   ///< The size of the GRFP_BLT data.
 
 	GRFP_USE_DOS     = 0x0, ///< The palette state is set to use the DOS palette.
 	GRFP_USE_WINDOWS = 0x1, ///< The palette state is set to use the Windows palette.
@@ -68,6 +70,10 @@ enum GRFPalette {
 	GRFP_GRF_WINDOWS = 0x2 << GRFP_GRF_OFFSET,          ///< The NewGRF says the Windows palette can be used.
 	GRFP_GRF_ANY     = GRFP_GRF_DOS | GRFP_GRF_WINDOWS, ///< The NewGRF says any palette can be used.
 	GRFP_GRF_MASK    = GRFP_GRF_ANY,                    ///< Bitmask to get only the NewGRF supplied information.
+
+	GRFP_BLT_UNSET   = 0x0 << GRFP_BLT_OFFSET,          ///< The NewGRF provided no information or doesn't care about a 32 bpp blitter.
+	GRFP_BLT_32BPP   = 0x1 << GRFP_BLT_OFFSET,          ///< The NewGRF prefers a 32 bpp blitter.
+	GRFP_BLT_MASK    = GRFP_BLT_32BPP,                  ///< Bitmask to only get the blitter information.
 };
 
 

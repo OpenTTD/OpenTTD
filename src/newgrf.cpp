@@ -6993,6 +6993,28 @@ static bool ChangeGRFPalette(size_t len, ByteReader *buf)
 	return true;
 }
 
+/** Callback function for 'INFO'->'BLTR' to set the blitter info. */
+static bool ChangeGRFBlitter(size_t len, ByteReader *buf)
+{
+	if (len != 1) {
+		grfmsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'BLTR' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		char data = buf->ReadByte();
+		GRFPalette pal = GRFP_BLT_UNSET;
+		switch (data) {
+			case '8': pal = GRFP_BLT_UNSET; break;
+			case '3': pal = GRFP_BLT_32BPP;  break;
+			default:
+				grfmsg(2, "StaticGRFInfo: unexpected value '%02x' for 'INFO'->'BLTR', ignoring this field", data);
+				return true;
+		}
+		_cur.grfconfig->palette &= ~GRFP_BLT_MASK;
+		_cur.grfconfig->palette |= pal;
+	}
+	return true;
+}
+
 /** Callback function for 'INFO'->'VRSN' to the version of the NewGRF. */
 static bool ChangeGRFVersion(size_t len, ByteReader *buf)
 {
@@ -7282,6 +7304,7 @@ AllowedSubtags _tags_info[] = {
 	AllowedSubtags('DESC', ChangeGRFDescription),
 	AllowedSubtags('NPAR', ChangeGRFNumUsedParams),
 	AllowedSubtags('PALS', ChangeGRFPalette),
+	AllowedSubtags('BLTR', ChangeGRFBlitter),
 	AllowedSubtags('VRSN', ChangeGRFVersion),
 	AllowedSubtags('MINV', ChangeGRFMinVersion),
 	AllowedSubtags('PARA', HandleParameterInfo),
