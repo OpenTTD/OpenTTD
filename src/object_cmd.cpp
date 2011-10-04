@@ -204,7 +204,9 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		/* Owned land is special as it can be placed on any slope. */
 		cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
 	} else {
-		/* Check the surface to build on. */
+		/* Check the surface to build on. At this time we can't actually execute the
+		 * the CLEAR_TILE commands since the newgrf callback later on can check
+		 * some information about the tiles. */
 		bool allow_water = (spec->flags & (OBJECT_FLAG_BUILT_ON_WATER | OBJECT_FLAG_NOT_ON_LAND)) != 0;
 		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
 		TILE_AREA_LOOP(t, ta) {
@@ -213,7 +215,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (!IsWaterTile(t)) {
 					/* Normal water tiles don't have to be cleared. For all other tile types clear
 					 * the tile but leave the water. */
-					cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
+					cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_NO_WATER & ~DC_EXEC, CMD_LANDSCAPE_CLEAR));
 				} else {
 					/* Can't build on water owned by another company. */
 					Owner o = GetTileOwner(t);
@@ -222,7 +224,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			} else {
 				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 				/* For non-water tiles, we'll have to clear it before building. */
-				cost.AddCost(DoCommand(t, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
+				cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR));
 			}
 		}
 
@@ -242,6 +244,20 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			} else if (callback != 0) {
 				/* The meaning of bit 10 is inverted in the result of this callback. */
 				return GetErrorMessageFromLocationCallbackResult(ToggleBit(callback, 10), spec->grf_prop.grffile->grfid, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+		}
+
+		if (flags & DC_EXEC) {
+			/* This is basically a copy of the loop above with the exception that we now
+			 * execute the commands and don't check for errors, since that's already done. */
+			TILE_AREA_LOOP(t, ta) {
+				if (HasTileWaterGround(t)) {
+					if (!IsWaterTile(t)) {
+						DoCommand(t, 0, 0, (flags & ~DC_NO_WATER) | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
+					}
+				} else {
+					DoCommand(t, 0, 0, flags | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
+				}
 			}
 		}
 	}
