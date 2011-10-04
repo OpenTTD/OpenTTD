@@ -499,6 +499,22 @@ public:
 	}
 
 	/**
+	 * Get the vehicle at offset #n of this vehicle chain.
+	 * @param n Offset from the current vehicle.
+	 * @return The new vehicle or NULL if the offset is out-of-bounds.
+	 */
+	inline Vehicle *Move(int n)
+	{
+		Vehicle *v = this;
+		if (n < 0) {
+			for (int i = 0; i != n && v != NULL; i--) v = v->Previous();
+		} else {
+			for (int i = 0; i != n && v != NULL; i++) v = v->Next();
+		}
+		return v;
+	}
+
+	/**
 	 * Get the first order of the vehicles order list.
 	 * @return first order of order list.
 	 */

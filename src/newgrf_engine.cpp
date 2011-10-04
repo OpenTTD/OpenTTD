@@ -483,36 +483,8 @@ static uint32 PositionHelper(const Vehicle *v, bool consecutive)
 	return chain_before | chain_after << 8 | (chain_before + chain_after + consecutive) << 16;
 }
 
-static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
-	Vehicle *v = const_cast<Vehicle*>(GRV(object));
-
-	if (v == NULL) {
-		/* Vehicle does not exist, so we're in a purchase list */
-		switch (variable) {
-			case 0x43: return GetCompanyInfo(_current_company, LiveryHelper(object->u.vehicle.self_type, NULL)); // Owner information
-			case 0x46: return 0;               // Motion counter
-			case 0x47: { // Vehicle cargo info
-				const Engine *e = Engine::Get(object->u.vehicle.self_type);
-				CargoID cargo_type = e->GetDefaultCargoType();
-				if (cargo_type != CT_INVALID) {
-					const CargoSpec *cs = CargoSpec::Get(cargo_type);
-					return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(e->index)->cargo_map[cargo_type];
-				} else {
-					return 0x000000FF;
-				}
-			}
-			case 0x48: return Engine::Get(object->u.vehicle.self_type)->flags; // Vehicle Type Info
-			case 0x49: return _cur_year; // 'Long' format build year
-			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
-			case 0xDA: return INVALID_VEHICLE; // Next vehicle
-			case 0xF2: return 0; // Cargo subtype
-		}
-
-		*available = false;
-		return UINT_MAX;
-	}
-
 	/* Calculated vehicle parameters */
 	switch (variable) {
 		case 0x25: // Get engine GRF ID
@@ -667,6 +639,18 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 				return count;
 			}
+
+		case 0x61: // Get variable of n-th vehicle in chain [signed number relative to vehicle]
+			if (!v->IsGroundVehicle() || parameter == 0x61) return 0;
+
+			/* Only allow callbacks that don't change properties to avoid circular dependencies. */
+			if (object->callback == CBID_NO_CALLBACK || object->callback == CBID_TRAIN_ALLOW_WAGON_ATTACH || object->callback == CBID_VEHICLE_START_STOP_CHECK || object->callback == CBID_VEHICLE_32DAY_CALLBACK) {
+				Vehicle *u = v->Move((int32)GetRegister(0x10F));
+				if (u == NULL) return 0;
+
+				return VehicleGetVariable(u, object, parameter, GetRegister(0x10E), available);
+			}
+			return 0;
 
 		case 0xFE:
 		case 0xFF: {
@@ -844,6 +828,39 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	*available = false;
 	return UINT_MAX;
+}
+
+static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+{
+	Vehicle *v = const_cast<Vehicle*>(GRV(object));
+
+	if (v == NULL) {
+		/* Vehicle does not exist, so we're in a purchase list */
+		switch (variable) {
+			case 0x43: return GetCompanyInfo(_current_company, LiveryHelper(object->u.vehicle.self_type, NULL)); // Owner information
+			case 0x46: return 0;               // Motion counter
+			case 0x47: { // Vehicle cargo info
+				const Engine *e = Engine::Get(object->u.vehicle.self_type);
+				CargoID cargo_type = e->GetDefaultCargoType();
+				if (cargo_type != CT_INVALID) {
+					const CargoSpec *cs = CargoSpec::Get(cargo_type);
+					return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(e->index)->cargo_map[cargo_type];
+				} else {
+					return 0x000000FF;
+				}
+			}
+			case 0x48: return Engine::Get(object->u.vehicle.self_type)->flags; // Vehicle Type Info
+			case 0x49: return _cur_year; // 'Long' format build year
+			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
+			case 0xDA: return INVALID_VEHICLE; // Next vehicle
+			case 0xF2: return 0; // Cargo subtype
+		}
+
+		*available = false;
+		return UINT_MAX;
+	}
+
+	return VehicleGetVariable(v, object, variable, parameter, available);
 }
 
 
