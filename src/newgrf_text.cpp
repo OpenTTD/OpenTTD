@@ -371,7 +371,9 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const char *str = this->strings[this->strings.Contains(idx) ? idx : 0];
-				size_t len = strlen(str);
+				/* Limit the length of the string we copy to 0xFE. The length is written above
+				 * as a byte and we need room for the final '\0'. */
+				size_t len = min(0xFE, strlen(str));
 				memcpy(d, str, len);
 				d += len;
 				*d++ = '\0';
