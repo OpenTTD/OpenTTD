@@ -15,6 +15,27 @@
 #include "cargotype.h"
 #include "rail_type.h"
 
+/**
+ * List of different canal 'features'.
+ * Each feature gets an entry in the canal spritegroup table
+ */
+enum CanalFeature {
+	CF_WATERSLOPE,
+	CF_LOCKS,
+	CF_DIKES,
+	CF_ICON,
+	CF_DOCKS,
+	CF_RIVER_SLOPE,
+	CF_RIVER_EDGE,
+	CF_END,
+};
+
+/** Canal properties local to the NewGRF */
+struct CanalProperties {
+	uint8 callback_mask;  ///< Bitmask of canal callbacks that have to be called.
+	uint8 flags;          ///< Flags controlling display.
+};
+
 enum GrfLoadingStage {
 	GLS_FILESCAN,
 	GLS_SAFETYSCAN,
@@ -122,6 +143,8 @@ struct GRFFile {
 	uint8 railtype_max;
 	RailTypeLabel *railtype_list;
 	RailType railtype_map[RAILTYPE_END];
+
+	CanalProperties canal_local_properties[CF_END]; ///< Canal properties as set by this NewGRF
 
 	struct LanguageMap *language_map; ///< Mappings related to the languages.
 

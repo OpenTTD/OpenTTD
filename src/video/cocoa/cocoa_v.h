@@ -88,6 +88,7 @@ public:
 	virtual bool ChangeResolution(int w, int h) = 0;
 
 	virtual bool IsFullscreen() = 0;
+	virtual bool ToggleFullscreen() { return false; };
 	virtual int GetWidth() = 0;
 	virtual int GetHeight() = 0;
 	virtual void *GetPixelBuffer() = 0;
