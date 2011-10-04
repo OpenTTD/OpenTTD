@@ -48,6 +48,15 @@ public:
 	virtual bool ToggleFullscreen(bool fullscreen) = 0;
 
 	/**
+	 * Callback invoked after the blitter was changed.
+	 * @return True if no error.
+	 */
+	virtual bool AfterBlitterChange()
+	{
+		return true;
+	}
+
+	/**
 	 * Whether the driver has a graphical user interface with the end user.
 	 * Or in other words, whether we should spawn a thread for world generation
 	 * and NewGRF scanning so the graphical updates can keep coming. Otherwise

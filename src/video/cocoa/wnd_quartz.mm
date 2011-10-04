@@ -63,10 +63,10 @@ private:
 	void BlitIndexedToView32(int left, int top, int right, int bottom);
 
 	virtual void GetDeviceInfo();
-	virtual bool SetVideoMode(int width, int height);
+	virtual bool SetVideoMode(int width, int height, int bpp);
 
 public:
-	WindowQuartzSubdriver(int bpp);
+	WindowQuartzSubdriver();
 	virtual ~WindowQuartzSubdriver();
 
 	virtual void Draw(bool force_update);
@@ -75,7 +75,7 @@ public:
 
 	virtual uint ListModes(OTTD_Point *modes, uint max_modes);
 
-	virtual bool ChangeResolution(int w, int h);
+	virtual bool ChangeResolution(int w, int h, int bpp);
 
 	virtual bool IsFullscreen() { return false; }
 	virtual bool ToggleFullscreen(); /* Full screen mode on OSX 10.7 */
@@ -248,7 +248,7 @@ bool WindowQuartzSubdriver::ToggleFullscreen()
 #endif
 }
 
-bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
+bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 {
 	this->setup = true;
 	this->GetDeviceInfo();
@@ -337,6 +337,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 
 	this->window_width = width;
 	this->window_height = height;
+	this->buffer_depth = bpp;
 
 	[ this->window center ];
 
@@ -381,11 +382,11 @@ void WindowQuartzSubdriver::BlitIndexedToView32(int left, int top, int right, in
 }
 
 
-WindowQuartzSubdriver::WindowQuartzSubdriver(int bpp)
+WindowQuartzSubdriver::WindowQuartzSubdriver()
 {
 	this->window_width  = 0;
 	this->window_height = 0;
-	this->buffer_depth  = bpp;
+	this->buffer_depth  = 0;
 	this->window_buffer  = NULL;
 	this->pixel_buffer  = NULL;
 	this->active        = false;
@@ -481,13 +482,14 @@ uint WindowQuartzSubdriver::ListModes(OTTD_Point *modes, uint max_modes)
 	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, this->buffer_depth);
 }
 
-bool WindowQuartzSubdriver::ChangeResolution(int w, int h)
+bool WindowQuartzSubdriver::ChangeResolution(int w, int h, int bpp)
 {
 	int old_width  = this->window_width;
 	int old_height = this->window_height;
+	int old_bpp    = this->buffer_depth;
 
-	if (this->SetVideoMode(w, h)) return true;
-	if (old_width != 0 && old_height != 0) this->SetVideoMode(old_width, old_height);
+	if (this->SetVideoMode(w, h, bpp)) return true;
+	if (old_width != 0 && old_height != 0) this->SetVideoMode(old_width, old_height, old_bpp);
 
 	return false;
 }
@@ -599,9 +601,9 @@ CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 		return NULL;
 	}
 
-	WindowQuartzSubdriver *ret = new WindowQuartzSubdriver(bpp);
+	WindowQuartzSubdriver *ret = new WindowQuartzSubdriver();
 
-	if (!ret->ChangeResolution(width, height)) {
+	if (!ret->ChangeResolution(width, height, bpp)) {
 		delete ret;
 		return NULL;
 	}

@@ -400,7 +400,7 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 {
 	assert(_cocoa_subdriver != NULL);
 
-	bool ret = _cocoa_subdriver->ChangeResolution(w, h);
+	bool ret = _cocoa_subdriver->ChangeResolution(w, h, BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth());
 
 	QZ_GameSizeChanged();
 	QZ_UpdateVideoModes();
@@ -441,6 +441,16 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	QZ_UpdateVideoModes();
 
 	return _cocoa_subdriver->IsFullscreen() == full_screen;
+}
+
+/**
+ * Callback invoked after the blitter was changed.
+ *
+ * @return True if no error.
+ */
+bool VideoDriver_Cocoa::AfterBlitterChange()
+{
+	return this->ChangeResolution(_screen.width, _screen.height);
 }
 
 /**

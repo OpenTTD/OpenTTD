@@ -81,10 +81,10 @@ private:
 	void DrawResizeIcon();
 
 	virtual void GetDeviceInfo();
-	virtual bool SetVideoMode(int width, int height);
+	virtual bool SetVideoMode(int width, int height, int bpp);
 
 public:
-	WindowQuickdrawSubdriver(int bpp);
+	WindowQuickdrawSubdriver();
 	virtual ~WindowQuickdrawSubdriver();
 
 	virtual void Draw(bool force_update);
@@ -93,7 +93,7 @@ public:
 
 	virtual uint ListModes(OTTD_Point *modes, uint max_modes);
 
-	virtual bool ChangeResolution(int w, int h);
+	virtual bool ChangeResolution(int w, int h, int bpp);
 
 	virtual bool IsFullscreen() { return false; }
 
@@ -152,12 +152,12 @@ void WindowQuickdrawSubdriver::GetDeviceInfo()
 		kCFNumberSInt32Type, &this->device_height);
 }
 
-bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
+bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height, int bpp)
 {
 	this->setup = true;
 	this->GetDeviceInfo();
 
-	if (this->buffer_depth > this->device_depth) {
+	if (bpp > this->device_depth) {
 		DEBUG(driver, 0, "Cannot use a blitter with a higer screen depth than the display when running in windowed mode.");
 		this->setup = false;
 		return false;
@@ -217,6 +217,7 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 	/* Update again */
 	this->window_width = width;
 	this->window_height = height;
+	this->buffer_depth = bpp;
 
 	[ this->window center ];
 
@@ -335,11 +336,11 @@ void WindowQuickdrawSubdriver::DrawResizeIcon()
 }
 
 
-WindowQuickdrawSubdriver::WindowQuickdrawSubdriver(int bpp)
+WindowQuickdrawSubdriver::WindowQuickdrawSubdriver()
 {
 	this->window_width  = 0;
 	this->window_height = 0;
-	this->buffer_depth  = bpp;
+	this->buffer_depth  = 0;
 	this->pixel_buffer  = NULL;
 	this->active        = false;
 	this->setup         = false;
@@ -440,14 +441,15 @@ uint WindowQuickdrawSubdriver::ListModes(OTTD_Point *modes, uint max_modes)
 	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, this->buffer_depth);
 }
 
-bool WindowQuickdrawSubdriver::ChangeResolution(int w, int h)
+bool WindowQuickdrawSubdriver::ChangeResolution(int w, int h, int bpp)
 {
 	int old_width  = this->window_width;
 	int old_height = this->window_height;
+	int old_bpp    = this->buffer_depth;
 
-	if (this->SetVideoMode(w, h)) return true;
+	if (this->SetVideoMode(w, h, bpp)) return true;
 
-	if (old_width != 0 && old_height != 0) this->SetVideoMode(old_width, old_height);
+	if (old_width != 0 && old_height != 0) this->SetVideoMode(old_width, old_height, old_bpp);
 
 	return false;
 }
@@ -544,9 +546,9 @@ CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp
 		return NULL;
 	}
 
-	ret = new WindowQuickdrawSubdriver(bpp);
+	ret = new WindowQuickdrawSubdriver();
 
-	if (!ret->ChangeResolution(width, height)) {
+	if (!ret->ChangeResolution(width, height, bpp)) {
 		delete ret;
 		return NULL;
 	}

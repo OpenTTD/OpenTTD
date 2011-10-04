@@ -250,7 +250,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 	}
 
 
-	bool SetVideoMode(int w, int h)
+	bool SetVideoMode(int w, int h, int bpp)
 	{
 		/* Define this variables at the top (against coding style) because
 		 * otherwise GCC 4.2 barfs at the goto's jumping over variable initialization. */
@@ -266,14 +266,14 @@ class FullscreenSubdriver: public CocoaSubdriver {
 
 		/* See if requested mode exists */
 		boolean_t exact_match;
-		this->cur_mode = CGDisplayBestModeForParameters(this->display_id, this->device_depth, w, h, &exact_match);
+		this->cur_mode = CGDisplayBestModeForParameters(this->display_id, bpp, w, h, &exact_match);
 
 		/* If the mode wasn't an exact match, check if it has the right bpp, and update width and height */
 		if (!exact_match) {
-			int bpp;
+			int act_bpp;
 			CFNumberRef number = (const __CFNumber*) CFDictionaryGetValue(this->cur_mode, kCGDisplayBitsPerPixel);
-			CFNumberGetValue(number, kCFNumberSInt32Type, &bpp);
-			if (bpp != this->device_depth) {
+			CFNumberGetValue(number, kCFNumberSInt32Type, &act_bpp);
+			if (act_bpp != bpp) {
 				DEBUG(driver, 0, "Failed to find display resolution");
 				goto ERR_NO_MATCH;
 			}
@@ -323,6 +323,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 
 		this->device_width  = CGDisplayPixelsWide(this->display_id);
 		this->device_height = CGDisplayPixelsHigh(this->display_id);
+		this->device_depth  = bpp;
 
 		/* Setup double-buffer emulation */
 		this->pixel_buffer = malloc(this->device_width * this->device_height * this->device_depth / 8);
@@ -418,22 +419,18 @@ ERR_NO_MATCH:
 	}
 
 public:
-	FullscreenSubdriver(int bpp)
+	FullscreenSubdriver()
 	{
-		if (bpp != 8 && bpp != 32) {
-			error("Cocoa: This video driver only supports 8 and 32 bpp blitters.");
-		}
-
 		/* Initialize the video settings; this data persists between mode switches */
 		this->display_id = kCGDirectMainDisplay;
 		this->save_mode  = CGDisplayCurrentMode(this->display_id);
 
-		if (bpp == 8) this->palette = CGPaletteCreateDefaultColorPalette();
+		this->palette = CGPaletteCreateDefaultColorPalette();
 
 		this->device_width  = CGDisplayPixelsWide(this->display_id);
 		this->device_height = CGDisplayPixelsHigh(this->display_id);
-		this->device_depth  = bpp;
-		this->pixel_buffer   = NULL;
+		this->device_depth  = 0;
+		this->pixel_buffer  = NULL;
 
 		this->num_dirty_rects = MAX_DIRTY_RECTS;
 	}
@@ -512,14 +509,16 @@ public:
 		return QZ_ListModes(modes, max_modes, this->display_id, this->device_depth);
 	}
 
-	virtual bool ChangeResolution(int w, int h)
+	virtual bool ChangeResolution(int w, int h, int bpp)
 	{
 		int old_width  = this->device_width;
 		int old_height = this->device_height;
+		int old_bpp    = this->device_depth;
 
-		if (SetVideoMode(w, h)) return true;
+		if (bpp != 8 && bpp != 32) error("Cocoa: This video driver only supports 8 and 32 bpp blitters.");
 
-		if (old_width != 0 && old_height != 0) SetVideoMode(old_width, old_height);
+		if (SetVideoMode(w, h, bpp)) return true;
+		if (old_width != 0 && old_height != 0) SetVideoMode(old_width, old_height, old_bpp);
 
 		return false;
 	}
@@ -583,9 +582,9 @@ CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp)
 		return NULL;
 	}
 
-	FullscreenSubdriver *ret = new FullscreenSubdriver(bpp);
+	FullscreenSubdriver *ret = new FullscreenSubdriver();
 
-	if (!ret->ChangeResolution(width, height)) {
+	if (!ret->ChangeResolution(width, height, bpp)) {
 		delete ret;
 		return NULL;
 	}

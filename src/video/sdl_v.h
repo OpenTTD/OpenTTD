@@ -28,6 +28,9 @@ public:
 	/* virtual */ bool ChangeResolution(int w, int h);
 
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+
+	/* virtual */ bool AfterBlitterChange();
+
 	/* virtual */ const char *GetName() const { return "sdl"; }
 };
 

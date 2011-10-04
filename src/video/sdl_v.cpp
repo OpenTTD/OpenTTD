@@ -635,4 +635,9 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 	return true;
 }
 
+bool VideoDriver_SDL::AfterBlitterChange()
+{
+	return this->ChangeResolution(_screen.width, _screen.height)
+}
+
 #endif /* WITH_SDL */

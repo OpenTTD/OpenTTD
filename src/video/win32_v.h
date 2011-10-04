@@ -28,6 +28,9 @@ public:
 	/* virtual */ bool ChangeResolution(int w, int h);
 
 	/* virtual */ bool ToggleFullscreen(bool fullscreen);
+
+	/* virtual */ bool AfterBlitterChange();
+
 	/* virtual */ const char *GetName() const { return "win32"; }
 
 	bool MakeWindow(bool full_screen);

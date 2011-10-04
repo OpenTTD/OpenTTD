@@ -555,4 +555,9 @@ bool VideoDriver_Allegro::ToggleFullscreen(bool fullscreen)
 #endif
 }
 
+bool VideoDriver_Allegro::AfterBlitterChange()
+{
+	return CreateMainSurface(_screen.width, _screen.height);
+}
+
 #endif /* WITH_ALLEGRO */

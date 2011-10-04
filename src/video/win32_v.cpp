@@ -149,7 +149,7 @@ static uint MapWindowsKey(uint sym)
 	return key;
 }
 
-static bool AllocateDibSection(int w, int h);
+static bool AllocateDibSection(int w, int h, bool force = false);
 
 static void ClientSizeChanged(int w, int h)
 {
@@ -690,7 +690,7 @@ static void RegisterWndClass()
 	}
 }
 
-static bool AllocateDibSection(int w, int h)
+static bool AllocateDibSection(int w, int h, bool force)
 {
 	BITMAPINFO *bi;
 	HDC dc;
@@ -701,7 +701,7 @@ static bool AllocateDibSection(int w, int h)
 
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 
-	if (w == _screen.width && h == _screen.height) return false;
+	if (!force && w == _screen.width && h == _screen.height) return false;
 
 	_screen.width = w;
 	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
@@ -926,4 +926,9 @@ bool VideoDriver_Win32::ChangeResolution(int w, int h)
 bool VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 {
 	return this->MakeWindow(full_screen);
+}
+
+bool VideoDriver_Win32::AfterBlitterChange()
+{
+	return AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
 }
