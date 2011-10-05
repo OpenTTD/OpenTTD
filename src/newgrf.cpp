@@ -5332,11 +5332,21 @@ static void GraphicsNew(ByteReader *buf)
 
 	const Action5Type *action5_type = &_action5_types[type];
 
-	/* Contrary to TTDP we allow always to specify too few sprites as we allow always an offset.
-	 * Thus no check for the amount of sprites is needed (anymore).
-	 * The only no-offset entry, shores, is handled above already.
-	 * We'll assume that offsets are always allowed further down, thus assert on this */
-	assert(action5_type->block_type == A5BLOCK_ALLOW_OFFSET);
+	/* Contrary to TTDP we allow always to specify too few sprites as we allow always an offset,
+	 * except for the long version of the shore type:
+	 * Ignore offset if not allowed */
+	if ((action5_type->block_type != A5BLOCK_ALLOW_OFFSET) && (offset != 0)) {
+		grfmsg(1, "GraphicsNew: %s (type 0x%02X) do not allow an <offset> field. Ignoring offset.", action5_type->name, type);
+		offset = 0;
+	}
+
+	/* Ignore action5 if too few sprites are specified. (for TTDP compatibility)
+	 * This does not make sense, if <offset> is allowed */
+	if ((action5_type->block_type == A5BLOCK_FIXED) && (num < action5_type->min_sprites)) {
+		grfmsg(1, "GraphicsNew: %s (type 0x%02X) count must be at least %d. Only %d were specified. Skipping.", action5_type->name, type, action5_type->min_sprites, num);
+		_cur.skip_sprites = num;
+		return;
+	}
 
 	/* Load at most max_sprites sprites. Skip remaining sprites. (for compatibility with TTDP and future extentions) */
 	uint16 skip_num = SanitizeSpriteOffset(num, offset, action5_type->max_sprites, action5_type->name);
