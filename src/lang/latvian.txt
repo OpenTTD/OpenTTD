@@ -903,7 +903,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriskā
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Ceļu satiksmes līdzekļi
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autotransporta līdzekļi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Braucamās ceļa puses izvēle
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :brauc pa kreiso pusi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :brauc pa labo pusi
@@ -1038,7 +1038,7 @@ STR_NUM_VERY_LOW                                                :Ļoti zems
 STR_NUM_LOW                                                     :Zems
 STR_NUM_NORMAL                                                  :Normāls
 STR_NUM_HIGH                                                    :Augsts
-STR_NUM_CUSTOM                                                  :Pielāgots
+STR_NUM_CUSTOM                                                  :Pielāgotie
 STR_NUM_CUSTOM_NUMBER                                           :Pielāgots ({NUM})
 
 STR_VARIETY_NONE                                                :Nav
@@ -2404,7 +2404,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Uz leju
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pārvietot atlasīto NewGRF failu saraksta apakšā
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalēto NewGRF failu saraksts. Klik uz faila, lai mainītu tā parametrus
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Iestatīt parametrus
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Iestatīt param.
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Iespējot paleti
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Mainīt atlasītā New GRF paleti.{}Tas jādara ja NewGRF grafika izskatās sārta
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Lietot izmaiņas
@@ -2802,7 +2802,7 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Dalītie
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Visi vilcieni
-STR_GROUP_ALL_ROAD_VEHICLES                                     :Visi transportlīdzekļi
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Visi automobiļi
 STR_GROUP_ALL_SHIPS                                             :Visi kuģi
 STR_GROUP_ALL_AIRCRAFTS                                         :Visi lidaparāti
 

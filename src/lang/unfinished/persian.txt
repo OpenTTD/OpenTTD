@@ -2483,6 +2483,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :تلاش برا
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} دارای یک تصویر خراب می باشد. تصویرهای خراب با علامت سوال قرمز (؟) نشان داده شدند.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :دارای چندین ورودی فعالیت 8 می باشد
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :خواندن تصویر از انتها گذشت
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}بسته گرافیک استفاده شده تعدادی از تصاوبر را ندارد.{}لطفا بسته گرافیکی را به روز کنید
 STR_NEWGRF_ERROR_GRM_FAILED                                     :منبع GRF درخواست شده در دسترس نمی باشد.
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} غیر فعال گردیده توسط {4:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :طرح با قالب ناشناخته/نامعتبر
@@ -2525,6 +2526,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :«صنایع ن
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}چک کردن برای فایل های NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}چک کردن فایل های NewGRF. زمان انجام، به تعداد فایلها بسته است...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" ها} از حدود تعداد {NUM} NewGRF{P "" ها}
 STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی در بایگانی
 
 # Sign list window
@@ -2595,11 +2597,24 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}پرد�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}ساخت مجسمه برای بزرگداشت شرکت شما{}قیمت: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}پرداخت هزینه ساخت ساختمان های تجاری.{}قیمت: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}خرید انحصاری حقوق حمل و نقل به مدت یک سال. مقامات شهر به مسافران و بارها اجازه استفاده از شرکت حمل و نقل دیگری را نمی دهند{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشوه به فرماندار محلی برای افزایش رده، با احتمال جریمه زیاد در صورت گیر افتادن.{}قیمت: {CURRENCY}
 
 # Subsidies window
+STR_SUBSIDIES_CAPTION                                           :{WHITE}یارانه ها
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}یارانه های پیشنهادی برای انجام سرویس های:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} از {STRING} به {STRING}{YELLOW} (توسط {DATE_SHORT})
+STR_SUBSIDIES_NONE                                              :{ORANGE}- هیچکدام-
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}سرویس هایی که قبلا یارانه ای بوده:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} از {STRING} به {STRING}{YELLOW} ({COMPANY}{YELLOW}, تا {DATE_SHORT})
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}روی سرویس کلیک کنید تا آن شهر/صنایع در مرکز صفحه نمایش نشان داده شود. کنترل+کلیک یک صفحه نمایش تازه برای محل شهر/صنایع باز خواهد کرد
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}برای انتخاب بیش از یک آیتم، کنترل را بگیرید
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} ایستگاه{P "" ها}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
+STR_STATION_LIST_NONE                                           :{YELLOW}- هیچکدام -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}انتخاب تمامی تسهیلات
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}انتخاب همه ی انواع محموله ها (شامل محموله های در انتظار)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}هیچ نوع محموله در انتظار نیست
@@ -2633,10 +2648,15 @@ STR_CARGO_RATING_OUTSTANDING                                    :بسیار عا
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}مرکز تصویر اصلی را روی محل ایستگاه قرار بده
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}تغییر نام ایستگاه
 
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}همه قطار هایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}همه خودروهایی هایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}همه هواپیماهایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}همه کشتی هایی هایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :نام گذاری محوطه ایستگاه/بارگیری
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window

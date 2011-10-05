@@ -863,7 +863,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecç�
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra Britânica (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar dos Estados Unidos (USD)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar dos E.U.A. (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Japonês (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Xelim Austríaco (ATS)
