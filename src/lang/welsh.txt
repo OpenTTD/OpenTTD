@@ -522,7 +522,7 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graff Elw Gweithredu
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graff Elw Gweithredol
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graff Incwm
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Llwythi wedi'u cludo (mewn unedau)
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Graddfeydd Perfformiad Cwmni (gradd uchaf=1000)
@@ -1154,7 +1154,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Dim
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Llai
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :arferol
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Caniatáu gorsafoedd gyrru-drwodd ar ffyrdd sy'n eiddo i gystadleuwyr: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Caniatáu gorsafoedd gyrru-trwodd ar ffyrdd sy'n eiddo i gystadleuwyr: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Caniatáu adeiladu gorsafoedd cyfochrog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Galluogi defnyddio mwy nag un o setiau injian NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw'n bosib newid y gosodiad yma pan fo cerbydau'n bodoli
@@ -2109,9 +2109,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ydych ch
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Cynhyrchu Trefi
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Tref Newydd
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Adeiladu tref newydd
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sefydlu tref newydd. Mae Shift+Clic yn dangos amcangyfrif o'r gost
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tref ar hap
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Adeiladu tref mewn safle ar hap
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Sefydlu tref mewn safle ar hap
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Llawer o drefi ar hap
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Gorchuddio'r map gyda threfi wedi'i lleoli ar hap
 
@@ -2362,7 +2362,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Symud uc
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Newid uchder tir gwastad
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Wrthi'n cynhyrchu'r byd...
+STR_GENERATION_WORLD                                            :{WHITE}Wrthi'n Cynhyrchu'r Byd...
 STR_GENERATION_ABORT                                            :{BLACK}Diddymu
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Diddymu Cynhyrchu Byd
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ydych chi eisiau diddymu cynhyrchu'r byd?
@@ -2489,9 +2489,9 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Fformat gosodia
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rhybudd!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Rydych ar fin gwneud newidiadau i gêm sy'n rhedeg; all hyn beri i OpenTTD grashio.{}Ydych chi'n siŵr eich bod chi eisiau gwneud hyn?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Rydych ar fin gwneud newidiadau i gêm sy'n rhedeg. Gall hyn beri i OpenTTD chwalu, neu dorri stâd y gêm. Peidiwch a gyrru adroddiadau am y namau yma.{}Ydych chi'n hollol siŵr am hyn?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Does dim modd ychwanegu'r ffeil: ID GRF dyblyg
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Methu ychwanegu'r ffeil: ID GRF dyblyg
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ni ddarganfuwyd ffeil sy'n cydweddu (GRF cydnaws wedi'i lwytho)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Llwythwyd GRF(au) cydnaws yn lle'r rhai coll
@@ -2546,7 +2546,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Rhowch e
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Trefi
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Dim -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Enwau trefi - cliciwch ar enw tref i ganoli ar y dref honno
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Enwau trefi - cliciwch ar enw tref i ganoli'r brif olygfa ar y dref. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y dref
 STR_TOWN_POPULATION                                             :{BLACK}Poblogaeth y Byd: {COMMA}
 
 # Town view window
@@ -2560,7 +2560,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ei angen yn y gaeaf
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} dosbarthu mis diwethaf
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Uchafswm swn mewn trefi: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Canoli'r prif olygfa ar y dref
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Canoli'r prif olygfa ar y dref. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y dref
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Awdurdod lleol
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Dangos gwybodaeth am yr awdurdod lleol
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}newid enw'r dref
@@ -2596,7 +2596,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Dechrau
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Ariannu gwaith ffordd ar y rhwydwaith ffyrdd trefol. Bydd yn amharu'n fawr ar drafnidiaeth y dref am hyd at 6 mis .{} Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Adeiladu a statue in honour o your company.{} Côst: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Ariannu adeiladu adeiladau masnachol newydd yn y dref.{} Côst: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Prynu'r hawl i fod yr unig gwmni trafnidiaeth sy'n cael gweithredu yn ardal y dref  am flwydd. Dim ond eich gorsafoedd chi fydd yr awdurdod lleol yn caniatáu i deithwyr a llwythi eu defnyddio.{} Côst: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Prynu'r hawl i fod yr unig gyflenwr trafnidiaeth yn y dref am flwyddyn. Dim ond eich gorsafoedd chi fydd yr awdurdod lleol yn caniatáu i deithwyr a llwythi eu defnyddio.{} Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY}
 
 # Subsidies window
@@ -2606,10 +2606,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Dim -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Gwasanaethau sydd eisoes yn derbyn cymhorthdal:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} o {STRING} i {STRING}{YELLOW} ({COMPANY}{YELLOW}, tan {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliciwch ar y gwasanaeth i ganoli'r olygfa ar y diwydiant neu dref
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliciwch ar y gwasanaeth i ganoli'r olygfa ar y diwydiant/tref. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant/tref
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Enwau Gorsafoedd - cliciwch ar enw i ganoli'r brif olygfa ar yr orsaf
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Enwau gorsafoedd - cliciwch ar enw i ganoli'r brif olygfa ar yr orsaf. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad yr orsaf
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Daliwch CTRL i ddewis mwy nag un eitem
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Gorsaf
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2645,7 +2645,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Gwych
 STR_CARGO_RATING_OUTSTANDING                                    :Rhagorol
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad yr orsaf
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad yr orsaf. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad yr orsaf
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Newid enw'r orsaf
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Dangos pob trên sydd â'r orsaf hon yn eu hamserlen
@@ -2689,9 +2689,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Benthyci
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Uchafswm Benthyciad: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Benthyg {CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Cynyddu maint y benthyciad
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Cynyddu maint y benthyciad. Mae Ctrl+Clic yn benthyca gymait ag y sydd bosib
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ad-dalu {CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Ad-dalu rhan o'r benthycid
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Ad-dalu rhan o'r benthyciad. Mae Ctrl+Clic yn ad-dalu gymaint ag y sydd bosib
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2740,13 +2740,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Dim -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% wedi'i gludo)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% wedi'i gludo)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Enwau diwydiannau - cliciwch ar enw i ganoli'r sgrin ar ddiwydiant
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Enwau diwydiannau - cliciwch ar enw i ganoli'r sgrin ar ddiwydiant. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Cynnyrch mis diwethaf:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% wedi'i gludo)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Canoli'r brif olygfa ar y diwydiant
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Canoli'r brif olygfa ar y diwydiant. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Lefel cynhyrchu: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -2853,7 +2853,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Popeth ond{GOLD
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Grym Tynnol Uchaf: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Rhestr dewis trenau - cliciwch ar cerbyd am wybodaeth
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Rhestr dewis cerbydau ffordd - cliciwch ar gerbyd am wybodaeth
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Rhestr ddewis llongau - cliciwch ar long am wybodaeth
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Rhestr ddewis awyrennau - cliciwch ar awyren am wybodaeth
 
@@ -2862,10 +2862,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Prynu Ce
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Prynu Llong
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Prynu Awyren
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Adeiladu'r cerbyd trên sydd wedi'i amlygu
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r awyren sydd wedi'i hamlygu
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Adeiladu'r cerbyd trên sydd wedi'i amlygu. Mae Shift+Clic yn dangos amcangyfrif o'r gost
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu. Mae Shift+Clic yn dangos amcangyfrif o'r gost
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu. Mae Shift+Clic yn dfangos amcangyfrif o'r gost
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r awyren sydd wedi'i hamlygu. Mae Shift+Clic yn dangos amcangyfrif o'r gost
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ailenwi
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ailenwi
@@ -2893,7 +2893,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} cerbyd{P "" au}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên. Daliwch Ctrl os am i'r ddau ffwythiant weithredu ar y gadwyn sy'n dilyn
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Cerbydau - cliciwch ar gerbyd am wybodaeth
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Llongau - cliciwch ar long am wybodaeth
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
@@ -2930,15 +2930,15 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Dyblygu 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Dyblygu Llong
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Dyblygu Awyren
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Bydd hyn yn adeiladu copi o'r trên gan gynnwys pob cerbyd. Cliciwch ar y botwm hwn ac yna ar drên sydd unai tu allan neu tu mewn y depo. Bydd Ctrl-clic yn rhannu'r gorchmynion.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Bydd hyn yn adeiladu copi o a cerbyd ffordd. Cliciwch ar y botwm hwn ac yna ar gerbyd ffordd sydd unai tu allan neu tu mewn y depo. Bydd Ctrl-clic yn rhannu'r gorchmynion.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Bydd hyn yn adeiladu copi o a llong. Cliciwch a y botwm hwn ac yna ar long tu mewn neu tu allan i'r depo. Bydd Ctrl-clic yn rhannu'r gorchmynion
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Bydd hyn yn adeiladu copi o awyren. Cliciwch ar y botwm hwn ac yna ar awyren sydd unai tu mewn neu tu allan i'r awyrendy. Bydd Ctrl-clic yn rhannu'r gorchmynion
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Bydd hyn yn prynu copi o'r trên gan gynnwys pob cerbyd. Cliciwch ar y botwm hwn ac yna ar drên sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Bydd hyn yn adeiladu copi o a cerbyd ffordd. Cliciwch ar y botwm hwn ac yna ar gerbyd sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Bydd hyn yn adeiladu copi o long. Cliciwch ar y botwm hwn ac yna ar long sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Bydd hyn yn adeiladu copi o awyren. Cliciwch ar y botwm hwn ac yna ar awyren sydd tu fewn neu tu allan i'r awyrendy. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Canoli'r prif olygfa ar leoliad y depo trên
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Canoli'r brif olygfa ar leoliad y depo cerbyd ffordd
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad depo'r llong
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Canoli'r prif olygfa ar leoliad yr awyrendy
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Canoli'r prif olygfa ar leoliad y depo trên. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y depo
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Canoli'r brif olygfa ar leoliad y depo cerbyd ffordd. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y depo
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad depo'r llong. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y depo
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Canoli'r prif olygfa ar leoliad yr awyrendy. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad yr awyrendy
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Dangos rhestr o bob trên gyda'r depo presennol yn eu gorchmynion
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Dangos rhestr o bob cerbyd ffordd gyda'r depo presennol yn eu gorchmynion
@@ -2983,7 +2983,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Dewiswch
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Dewiswch y math injan newydd yr hoffech chi ei ddefnyddio yn lle'r math injan ar y chwith
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Dechrau Disodli Cerbydau
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Gwasgwch i ddechrau disodli'r  math injan sydd wedi'i ddewis ar y chwith gyda'r math injan ar y dde
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pwyswch i ddechrau disodli'r math injan a ddewiswyd ar y chwith gyda'r math injan a ddewiswyd ar y dde
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ddim yn disodli
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Dim cerbyd wedi'i ddewis
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Dechrau Disodli Cerbydau
@@ -3017,10 +3017,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Anfon ce
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Gyrru'r llong i ddepo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Anfon awyren to awyrendy. Bydd CTRL+click yn rhoi gwasanaeth iddo'n unig
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Bydd hyn yn adeiladu copi o'r trên gan gynnwys pob un o'i gerbydau. Bydd Ctrl-clic yn rhannu'r gorchmynion.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Bydd hyn yn adeiladu copi o the cerbyd ffordd. Bydd Ctrl-clic yn rhannu'r gorchmynion
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Bydd hyn yn adeiladu copi o'r llong. Bydd Ctrl-clic yn rhannu'r gorchmynion
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Bydd hyn yn adeiladu copi o'r awyren. Bydd Ctrl-clic yn rhannu'r gorchmynion
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Bydd hyn yn adeiladu copi o'r trên gan gynnwys pob un o'i gerbydau. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Bydd hyn yn adeiladu copi o'r cerbyd ffordd. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Bydd hyn yn adeiladu copi o'r llong. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Bydd hyn yn adeiladu copi o'r awyren. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Gorfodi trên i barhau heb fod signal yn ei glirio
 
@@ -3042,10 +3042,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos m
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Dangos manylion llong
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Dangos manylion awyren
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gweithred y trên sydd wedi'i ddewis - cliciwch yma gychwyn/stopio trên
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gweithred gyfredol y cerbyd - cliciwch yma i gychwyn/stopio'r cerbyd
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gweithred y llong gyfredol - cliciwch yma i gychwyn/stopio llong
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gweithred gyfredol yr awyren - cliciwch yma i stopio/cychwyn awyren
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gweithred y trên - cliciwch yma stopio/cychwyn y trên. Ctrl+Clic i sgrolio i'r gyrchfan
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gweithred y cerbyd - cliciwch yma stopio/cychwyn y cerbyd. Ctrl+Clic i sgrolio i'r gyrchfan
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gweithred y llong - cliciwch yma stopio/cychwyn y llong. Ctrl+Clic i sgrolio i'r gyrchfan
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gweithred yr awyren - cliciwch yma stopio/cychwyn yr awyren. Ctrl+Clic i sgrolio i'r gyrchfan
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Llwytho / Dadlwytho
@@ -3462,6 +3462,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... eiso
 STR_ERROR_OWNED_BY                                              :{WHITE}... eiddo {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... mae'r ardal yn eiddo i gwmni arall
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... wedi cyrraedd y diben tirffurfio
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... diben clirio teiliau wedi ei gyrraedd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Rhaid i'r enw fod yn unigryw
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} yn y ffordd
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni chaniateir hynny tra fo'r gêm wedi ei oedi
@@ -3509,8 +3510,11 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... gorm
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nid oes mwy o le ar y map
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ni fydd y dref yn adeiladu ffyrdd. Gallwch alluogi adeiladu ffyrdd yn Gosodiadau Uwch->Economi->Trefi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Mae gwaith yn cael ei wneud ar y ffordd
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Methu dileu'r dref...{}Mae gorsaf neu depo sy'n cyfeirio i'r dref neu deil ym mherchnogaeth y dref na ellir ei ddileu
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nid oes man addas i'r cerflun yn nghanol y ddinas yma
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... gormod o ddiwydiannau
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Doedd dim modd cynhyrchu diwydiannau...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ni ellir adeiladu {STRING} yma...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Does dim modd adeiladu diwydiant o'r math hwn yma...
@@ -3521,6 +3525,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gell
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gellir ei adeiladu mewn ardal coedwig glaw yn unig
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gellir ei adeiladu mewn ardal anialwch yn unig
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gellir ei adeiladu mewn trefi yn unig
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gellir ei adeiladu mewn manau ise ly unig
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... dim ond ger ymyl y map y gellir ei leoli
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... dim ond uwch ben y llinell eira mae modd plannu fforest
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... gellir ei adeiladu uwchben yr eirlin yn unig
@@ -3548,6 +3553,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Rhy agos
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Methu ailenwi gorsaf...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... mae'r ffordd hon yn eiddo i dref
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... mae'r ffordd yn gorwedd yn y cyfeiriad anghywir
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... ni all arosfannau gyrru-trwodd fod â chorneli
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... ni all arosfannau gyrru-trwodd fod â chyffyrdd
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Methu tynnu rhan o orsaf...
@@ -3556,6 +3563,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Methu di
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Methu dileu gorsaf lorïau...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Methu dileu gorsaf tramiau teithwyr...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Methu dileu gorsaf tramiau nwyddau...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Rhaid tynnu'r arhosfan ffordd gyntaf
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... nid oes gorsaf yma
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Rhaid dymchwel gorsaf reilffordd yn gyntaf
@@ -3567,12 +3575,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Rhaid dy
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Rhaid dymchwel maes awyr yn gyntaf
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Cyfagos â mwy nag un pwynt llwybro
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Rhy agos at bwynt llwybro arall
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Does dim modd adeiladu pwynt llwybro trên yma...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Methu gosod bwï yma...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Does dim modd newid enw pwynt llwybro...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Does dim modd tynnu'r pwynt llwybro trên yma...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Rhaid tynnu'r pwynt llwybro rheilffordd yn gyntaf
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bwï yn y ffordd
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bwï mewn defnydd gan cwmni arall!
 
@@ -3613,6 +3624,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Rhaid ty
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Dim trac rheilffordd addas
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rhaid tynnu'r trac rheilffordd yn gyntaf
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Mae'r ffordd yn ffordd un-ffordd, neu wedi'i blocio
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ni chaniateir croesfannau ar y cledrau yma
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Methu adeiladu signalau yma...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Methu adeiladu trac rheilffordd yma...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Methu tynnu trac rheilffordd oddi yma...
