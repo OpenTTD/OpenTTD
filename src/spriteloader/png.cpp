@@ -132,6 +132,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		return true;
 	}
 
+	bool win_palette = false;
 	if (!mask) {
 		if (bit_depth == 16) png_set_strip_16(png_ptr);
 
@@ -156,6 +157,23 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		pixelsize = sizeof(uint32);
 	} else {
 		pixelsize = sizeof(uint8);
+
+		/* Check whether the DOS greyscale is in place. If not, we assume WIN palette */
+		png_colorp palette;
+		int num_palette;
+		if (png_get_PLTE(png_ptr, info_ptr, &palette, &num_palette) && num_palette == 256) {
+			for (uint i = 3; i <= 5; i++) {
+				/* Allow differences between -4 and +4 */
+				uint8 intensity = i * 16 - 4;
+				uint8 diff_r = palette[i].red - intensity;
+				uint8 diff_g = palette[i].green - intensity;
+				uint8 diff_b = palette[i].blue - intensity;
+				if (diff_r > 8 || diff_g > 8 || diff_b > 8) {
+					win_palette = true;
+					break;
+				}
+			}
+		}
 	}
 
 	png_bytep row_pointer = AllocaM(png_byte, png_get_image_width(png_ptr, info_ptr) * pixelsize);
@@ -172,7 +190,9 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 					dst[x].g = 0;
 					dst[x].b = 0;
 					/* Alpha channel is used from the original image (to allow transparency in remap colours) */
-					dst[x].m = row_pointer[x * sizeof(uint8)];
+					extern const byte _palmap_w2d[];
+					byte color = row_pointer[x * sizeof(uint8)];
+					dst[x].m = win_palette ? _palmap_w2d[color] : color;
 				}
 			} else {
 				dst[x].r = row_pointer[x * sizeof(uint32) + 0];
