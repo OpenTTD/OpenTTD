@@ -37,9 +37,9 @@
 		AIObject::GetLogPointer() = new LogData();
 		LogData *log = (LogData *)AIObject::GetLogPointer();
 
-		log->lines = CallocT<char *>(80);
-		log->type = CallocT<AILog::AILogType>(80);
-		log->count = 80;
+		log->lines = CallocT<char *>(400);
+		log->type = CallocT<AILog::AILogType>(400);
+		log->count = 400;
 		log->pos = log->count - 1;
 		log->used = 0;
 	}
