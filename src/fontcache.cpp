@@ -1045,7 +1045,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	sprite.y_offs = _ascender[size] - slot->bitmap_top;
 
 	/* Draw shadow for medium size */
-	if (size == FS_NORMAL) {
+	if (size == FS_NORMAL && !aa) {
 		for (y = 0; y < slot->bitmap.rows; y++) {
 			for (x = 0; x < slot->bitmap.width; x++) {
 				if (aa ? (slot->bitmap.buffer[x + y * slot->bitmap.pitch] > 0) : HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
@@ -1071,6 +1071,12 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	SetGlyphPtr(size, key, &new_glyph);
 
 	return new_glyph.sprite;
+}
+
+
+bool GetDrawGlyphShadow()
+{
+	return GetFontFace(FS_NORMAL) != NULL && GetFontAAState(FS_NORMAL);
 }
 
 

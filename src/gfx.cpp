@@ -1057,6 +1057,7 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 static int ReallyDoDrawString(const UChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
+	bool draw_shadow = GetDrawGlyphShadow();
 	UChar c;
 	int xo = x;
 
@@ -1087,7 +1088,13 @@ skip_cont:;
 		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + _max_char_width >= dpi->left) {
-				GfxMainBlitter(GetGlyph(params.fontsize, c), x, y, BM_COLOUR_REMAP);
+				const Sprite *glyph = GetGlyph(params.fontsize, c);
+				if (draw_shadow && params.fontsize == FS_NORMAL && params.cur_colour != TC_BLACK && !(c >= SCC_SPRITE_START && c <= SCC_SPRITE_END)) {
+					SetColourRemap(TC_BLACK);
+					GfxMainBlitter(glyph, x + 1, y + 1, BM_COLOUR_REMAP);
+					SetColourRemap(params.cur_colour);
+				}
+				GfxMainBlitter(glyph, x, y, BM_COLOUR_REMAP);
 			}
 			x += GetCharacterWidth(params.fontsize, c);
 		} else if (c == '\n') { // newline = {}

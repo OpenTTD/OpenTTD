@@ -45,6 +45,7 @@ void InitFreeType();
 void UninitFreeType();
 const Sprite *GetGlyph(FontSize size, uint32 key);
 uint GetGlyphWidth(FontSize size, uint32 key);
+bool GetDrawGlyphShadow();
 
 typedef bool (SetFallbackFontCallback)(const char **);
 /**
@@ -80,6 +81,11 @@ static inline uint GetGlyphWidth(FontSize size, uint32 key)
 	SpriteID sprite = GetUnicodeGlyph(size, key);
 	if (sprite == 0) sprite = GetUnicodeGlyph(size, '?');
 	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + (size != FS_NORMAL) : 0;
+}
+
+static inline bool GetDrawGlyphShadow()
+{
+	return false;
 }
 
 #endif /* WITH_FREETYPE */
