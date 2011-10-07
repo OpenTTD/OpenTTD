@@ -169,23 +169,23 @@ static const DrawTileSeqStruct _station_display_hangar_se[] = {
 };
 
 static const DrawTileSeqStruct _station_display_jetway_1[] = {
-	TILE_SEQ_LINE( 7, 11,  0,  3,  3, 14, SPR_AIRPORT_JETWAY_1)
+	TILE_SEQ_LINE( 7, 11,  0,  3,  3, 14, SPR_AIRPORT_JETWAY_1 | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_jetway_2[] = {
-	TILE_SEQ_LINE( 2,  7,  0,  3,  3, 14, SPR_AIRPORT_JETWAY_2)
+	TILE_SEQ_LINE( 2,  7,  0,  3,  3, 14, SPR_AIRPORT_JETWAY_2 | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_jetway_3[] = {
-	TILE_SEQ_LINE( 3,  2,  0,  3,  3, 14, SPR_AIRPORT_JETWAY_3)
+	TILE_SEQ_LINE( 3,  2,  0,  3,  3, 14, SPR_AIRPORT_JETWAY_3 | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_passenger_tunnel[] = {
-	TILE_SEQ_LINE( 0,  8,  0, 14,  3, 14, SPR_AIRPORT_PASSENGER_TUNNEL)
+	TILE_SEQ_LINE( 0,  8,  0, 14,  3, 14, SPR_AIRPORT_PASSENGER_TUNNEL | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
