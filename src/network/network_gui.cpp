@@ -716,9 +716,8 @@ public:
 			}
 
 			case NGWW_LASTJOINED: {
-				NetworkGameList *last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
-				if (last_joined != NULL) {
-					this->server = last_joined;
+				if (this->last_joined != NULL) {
+					this->server = this->last_joined;
 
 					/* search the position of the newly selected server */
 					for (uint i = 0; i < this->servers.Length(); i++) {
@@ -861,6 +860,7 @@ public:
 			if (this->server != NULL) {
 				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
 					NetworkGameListRemoveItem(this->server);
+					if (this->server == this->last_joined) this->last_joined = NULL;
 					this->server = NULL;
 					this->list_pos = SLP_INVALID;
 				}
