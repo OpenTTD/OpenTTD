@@ -1401,7 +1401,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Gwirio a
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Dangos Gosodiadau AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gadael 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Mae'r cyfieithiad yma'n brin o {NUM} linyn. Helpwch wella OpenTTD drwy ymaelodi fel cyfieithydd. Gweler readme.txt am fanylion.
+STR_INTRO_TRANSLATION                                           :{BLACK}Mae'r cyfieithiad yma'n brin o {NUM} llinyn. Helpwch wella OpenTTD drwy ymaelodi fel cyfieithydd. Gweler readme.txt am fanylion.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Gadael
@@ -2893,7 +2893,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} cerbyd{P "" au}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên. Daliwch Ctrl os am i'r ddau ffwythiant weithredu ar y gadwyn sy'n dilyn
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên. Daliwch Ctrl i symyd pob cerbyd y tu ôl hefyd
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Cerbydau - cliciwch ar gerbyd am wybodaeth
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Llongau - cliciwch ar long am wybodaeth
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
@@ -3135,6 +3135,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Cynhwyse
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ailffitio)
 STR_REFIT_TITLE                                                 :{GOLD}Dewiswch y math o lwyth i'w gario:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}bellach yn gallu cario: {GOLD}{CARGO}{}{BLACK}Côst o ailffitio: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cost ailffitio: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Dewiswch fath o lwyth i'r trên ei gario
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Dewiswch y math o lwyth i'r cerbyd ffordd gario
