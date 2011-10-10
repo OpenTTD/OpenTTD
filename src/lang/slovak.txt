@@ -230,11 +230,11 @@ STR_ABBREV_ALL                                                  :{TINYFONT}VS.
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} cestujúci{P "" "" ch}
-STR_BAGS                                                        :{COMMA} vriec
-STR_TONS                                                        :{COMMA} ton
-STR_LITERS                                                      :{COMMA} litrov
-STR_ITEMS                                                       :{COMMA} kusov
-STR_CRATES                                                      :{COMMA} debien
+STR_BAGS                                                        :{COMMA} vr{P ece ecia iec}
+STR_TONS                                                        :{COMMA} ton{P a y ""}
+STR_LITERS                                                      :{COMMA} lit{P er re rov}
+STR_ITEMS                                                       :{COMMA} kus{P "" y ov}
+STR_CRATES                                                      :{COMMA} deb{P na ny ien}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tmavomodrá
@@ -701,16 +701,17 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliknú�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknite na hudobnú stopu pre jej odstránenie z programu (len Vlastný1 alebo Vlastný2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najlepsie spolocnosti, ktore dosiahli {NUM}{}({STRING} uroven)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najlepšie spoločnosti, ktoré dosiahli {NUM}{}({STRING} úroveň)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabuľka spoločnosti v roku {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Obchodnik
-STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Podnikateľ
-STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Priemyselnik
-STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalista
-STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnát
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=z}Obchodníčka
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN.g                   :{G=s}Obchodníci
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=z}Podnikateľka
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :{G=m}Priemyselník
+STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :{G=m}Kapitalista
+STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :{G=m}Magnát
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon Storočia
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} získal označenie '{STRING}'!
@@ -799,7 +800,7 @@ STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Nastave
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Prehrať zvuk pre stručné novinové správy
 STR_NEWS_MESSAGES_OFF                                           :Vypnuté
 STR_NEWS_MESSAGES_SUMMARY                                       :Obsah
-STR_NEWS_MESSAGES_FULL                                          :Plne
+STR_NEWS_MESSAGES_FULL                                          :Plné
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Typ správ:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Príchod prvého vozidla do stanice hráča
@@ -838,17 +839,17 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Za nejasných okolností bola zničená továreň neďaleko mesta {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' pristalo nedaleko mesta {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Zaval v uholnej bani nedaleko mesta {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Povoden!{}Najmenej {COMMA} ludi je nezvestnych alebo mrtvych po obrovskych zaplavach!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Povodeň!{}Najmenej {COMMA} ľudí je nezvestných alebo mŕtvych po obrovských záplavách!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Dopravna spolocnost ma problemy!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} bude predana alebo vyhlasi bankrot pokial coskoro nezvysi produktivitu!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Dopravne spolocnosti sa zlucili!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} bola predana {STRING} za {CURRENCY}!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Dopravná spoločnosť má problémy!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} bude predaná alebo vyhlási bankrot pokiaľ čoskoro nezvýši produktivitu!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Dopravné spoločnosti sa zlúčili!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} bola predaná {STRING} za {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrot!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} bola zavreta veritelmi a cely majetok bol rozpredany!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Zalozena nova dopravna spolocnost!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} bola zavretá veriteľmi a celý majetok bol rozpredaný!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Založená nová dopravná spoločnosť!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}Príchod nového konkurenta {STRING} pri meste {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} bola kupena spolocnostou {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} bola kúpená spoločnosťou {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Prezident)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponzoroval výstavbu nového mesta {TOWN}!
@@ -856,13 +857,13 @@ STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{G=s}{BIGFONT}{BLACK}Nové {STRING} sa začína stavať neďaleko mesta {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{G=s}{BIGFONT}{BLACK}Nové {STRING} bude postavené neďaleko mesta {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} oznamuje skore uzavretie!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} oznamuje skoré uzavretie!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Kvôli zásobovacím problémom {STRING} oznamuje skoré uzavretie!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Nedostatok dostupnej drevnej suroviny donutil {STRING} oznamit skore uzavretie!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Nedostatok dostupnej drevnej suroviny donútil {STRING} oznámiť skoré uzavretie!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre bezne pouzivanie v tejto krajine.
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Európska Menová Únia!{}{}Euro bolo uvedené ako hlavná mena pre bežné používanie v tejto krajine!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Svetová kríza!{}{}Finanční experti majú obavy z prepadu ekonomiky!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Koniec kíizy!{}{}Očakáva sa vzostup predaja a posilnenie ekonomiky!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} zvyšuje produkciu!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nove nalezisko uhlia sa objavilo v {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
@@ -870,7 +871,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Na {INDUSTRY} zlepsili pouzivane metody!Ocakava sa zdvojnasobenie produkcie!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} zvyšuje produkciu {0:STRING.g} o {2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} znižuje produkciu o 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Premnozenie skodcov sposobilo znicenie urody na {INDUSTRY}!{}Produkcia sa znizila o 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Premnoženie škodcov spôsobilo zničenie úrody na {INDUSTRY}!{}Produkcia sa zíižila o 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} znižuje produkciu {0:STRING.g} o {2:COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaká v depe
@@ -3361,7 +3362,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Príkazy
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Prepnúť na zobrazenie príkazov
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Cestovný poriadok - kliknite na príkaz pre jeho oznacenie
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Cestovný poriadok - kliknite na príkaz pre jeho označenie
 
 STR_TIMETABLE_NO_TRAVEL                                         :Necestuj
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Cestovanie (automaticky; nastavené po ďalšom zadaní objednávky)
@@ -3372,7 +3373,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :a cestuj {STRIN
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ni ní}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" y ov}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Na dokoncenie cestovného poriadku je potrebných {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Na dokončenie cestovného poriadku je potrebných {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Na dokončenie cestovného poriadku je potrebných min. {STRING} (nie všetko je určené)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Toto vozidlo ide presne

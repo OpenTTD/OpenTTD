@@ -843,9 +843,9 @@ STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio removido:{}{} Serviço de {STRING} de {STRING} para {STRING} não é mais subsidiado
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsídio de serviço oferecido:{}{} Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá subsídio de um ano da autoridade local!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará 50% extra durante o próximo ano ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o dobro de impostos durante o próximo ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o triplo de impostos durante o próximo ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o quadruplo de impostos durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o dobro de tarifas durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o triplo de tarifas durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o quadruplo de tarifas durante o próximo ano!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{} Programa de reconstrução rodoviária financiado por {STRING} provoca 6 meses de miséria aos condutores!
 
@@ -3452,6 +3452,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algu
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossível carregar terreno a partir de BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de Escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?

@@ -111,7 +111,7 @@ STR_QUANTITY_MAIZE                                              :{WEIGHT} ذرت
 STR_QUANTITY_FRUIT                                              :{WEIGHT} میوه
 STR_QUANTITY_DIAMONDS                                           :{COMMA} بسته{P "" های} الماس
 STR_QUANTITY_FOOD                                               :{WEIGHT} غذا
-STR_QUANTITY_PAPER                                              :{WEIGHT} کاغذ
+STR_QUANTITY_PAPER                                              :{WEIGHT}از کاغذ
 STR_QUANTITY_GOLD                                               :{COMMA} بسته‌ی طلا
 STR_QUANTITY_WATER                                              :{VOLUME} آب
 STR_QUANTITY_WHEAT                                              :{WEIGHT} گندم
@@ -2530,7 +2530,7 @@ STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} Ne
 STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی در بایگانی
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "" ها }
+STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "" "ها"}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}حالت تطبیق
 STR_SIGN_LIST_CLEAR                                             :{BLACK}پاک کردن همه فیلترها
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}پاک کردن متن فیلتر
