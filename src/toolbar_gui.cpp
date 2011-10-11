@@ -159,13 +159,13 @@ public:
  * Drop down list entry for showing a company entry, with companies 'blob'.
  */
 class DropDownListCompanyItem : public DropDownListItem {
-	uint icon_width;
+	Dimension icon_size;
 public:
 	bool greyed;
 
 	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed)
 	{
-		this->icon_width = GetSpriteSize(SPR_COMPANY_ICON).width;
+		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
 	}
 
 	virtual ~DropDownListCompanyItem() {}
@@ -180,7 +180,12 @@ public:
 		CompanyID company = (CompanyID)this->result;
 		SetDParam(0, company);
 		SetDParam(1, company);
-		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_width + 3;
+		return GetStringBoundingBox(STR_COMPANY_NAME_COMPANY_NUM).width + this->icon_size.width + 3;
+	}
+
+	uint Height(uint width) const
+	{
+		return max(this->icon_size.height + 2U, (uint)FONT_HEIGHT_NORMAL);
 	}
 
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
@@ -191,7 +196,10 @@ public:
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
-		DrawCompanyIcon(company, rtl ? right - this->icon_width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + 1 + (FONT_HEIGHT_NORMAL - 10) / 2);
+		int icon_offset = (bottom - top - icon_size.height) / 2;
+		int text_offset = (bottom - top - FONT_HEIGHT_NORMAL) / 2;
+
+		DrawCompanyIcon(company, rtl ? right - this->icon_size.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + icon_offset);
 
 		SetDParam(0, company);
 		SetDParam(1, company);
@@ -201,7 +209,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : 3 + this->icon_width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_width : 0), top, STR_COMPANY_NAME_COMPANY_NUM, col);
+		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : 3 + this->icon_size.width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 0), top + text_offset, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
