@@ -81,7 +81,7 @@ static const NWidgetPart _nested_group_widgets[] = {
 				NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_REPLACE_PROTECTION), SetMinimalSize(24, 25), SetFill(0, 1),
 						SetDataTip(SPR_GROUP_REPLACE_OFF_TRAIN, STR_GROUP_REPLACE_PROTECTION_TOOLTIP),
-				NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(WD_VSCROLLBAR_WIDTH, 25), SetFill(0, 1), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY), SetFill(0, 1), EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		/* right part */

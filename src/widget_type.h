@@ -717,6 +717,14 @@ public:
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
+
+	static void InvalidateDimensionCache();
+	static Dimension GetVerticalDimension();
+	static Dimension GetHorizontalDimension();
+
+private:
+	static Dimension vertical_dimension;   ///< Cached size of vertical scrollbar button.
+	static Dimension horizontal_dimension; ///< Cached size of horizontal scrollbar button.
 };
 
 /**

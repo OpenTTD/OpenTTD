@@ -38,8 +38,14 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bo
 {
 	/* Base for reversion */
 	int rev_base = top + bottom;
-	top += 10;   // top    points to just below the up-button
-	bottom -= 9; // bottom points to top of the down-button
+	int button_size;
+	if (horizontal) {
+		button_size = NWidgetScrollbar::GetHorizontalDimension().width;
+	} else {
+		button_size = NWidgetScrollbar::GetVerticalDimension().height;
+	}
+	top += button_size;    // top    points to just below the up-button
+	bottom -= button_size; // bottom points to top of the down-button
 
 	int height = (bottom - top);
 	int pos = sb->GetPosition();
@@ -53,11 +59,11 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bo
 
 	Point pt;
 	if (horizontal && _current_text_dir == TD_RTL) {
-		pt.x = rev_base - (bottom - 1);
+		pt.x = rev_base - bottom;
 		pt.y = rev_base - top;
 	} else {
 		pt.x = top;
-		pt.y = bottom - 1;
+		pt.y = bottom;
 	}
 	return pt;
 }
@@ -74,15 +80,18 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bo
 static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, int y, int mi, int ma)
 {
 	int pos;
+	int button_size;
 	bool rtl = false;
 
 	if (sb->type == NWID_HSCROLLBAR) {
 		pos = x;
 		rtl = _current_text_dir == TD_RTL;
+		button_size = NWidgetScrollbar::GetHorizontalDimension().width;
 	} else {
 		pos = y;
+		button_size = NWidgetScrollbar::GetVerticalDimension().height;
 	}
-	if (pos <= mi + 9) {
+	if (pos < mi + button_size) {
 		/* Pressing the upper button? */
 		SetBit(sb->disp_flags, NDB_SCROLLBAR_UP);
 		if (_scroller_click_timeout <= 1) {
@@ -90,7 +99,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 			sb->UpdatePosition(rtl ? 1 : -1);
 		}
 		w->scrolling_scrollbar = sb->index;
-	} else if (pos >= ma - 10) {
+	} else if (pos >= ma - button_size) {
 		/* Pressing the lower button? */
 		SetBit(sb->disp_flags, NDB_SCROLLBAR_DOWN);
 
@@ -107,8 +116,8 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 		} else if (pos > pt.y) {
 			sb->UpdatePosition(rtl ? -1 : 1, Scrollbar::SS_BIG);
 		} else {
-			_scrollbar_start_pos = pt.x - mi - 9;
-			_scrollbar_size = ma - mi - 23;
+			_scrollbar_start_pos = pt.x - mi - button_size;
+			_scrollbar_size = ma - mi - button_size * 2;
 			w->scrolling_scrollbar = sb->index;
 			_cursorpos_drag_start = _cursor.pos;
 		}
@@ -308,25 +317,28 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
  */
 static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_clicked, bool bar_dragged, bool down_clicked, const Scrollbar *scrollbar)
 {
+	int centre = (r.right - r.left) / 2;
+	int height = NWidgetScrollbar::GetVerticalDimension().height;
+
 	/* draw up/down buttons */
-	DrawFrameRect(r.left, r.top, r.right, r.top + 9, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(r.left, r.top, r.right, r.top + height - 1, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
 	DrawString(r.left + up_clicked, r.right + up_clicked, r.top + up_clicked, UPARROW, TC_BLACK, SA_HOR_CENTER);
 
-	DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, colour, (down_clicked) ? FR_LOWERED : FR_NONE);
-	DrawString(r.left + down_clicked, r.right + down_clicked, r.bottom - 9 + down_clicked, DOWNARROW, TC_BLACK, SA_HOR_CENTER);
+	DrawFrameRect(r.left, r.bottom - (height - 1), r.right, r.bottom, colour, (down_clicked) ? FR_LOWERED : FR_NONE);
+	DrawString(r.left + down_clicked, r.right + down_clicked, r.bottom - (height - 1) + down_clicked, DOWNARROW, TC_BLACK, SA_HOR_CENTER);
 
 	int c1 = _colour_gradient[colour & 0xF][3];
 	int c2 = _colour_gradient[colour & 0xF][7];
 
 	/* draw "shaded" background */
-	GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
-	GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c1, FILLRECT_CHECKER);
+	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c2);
+	GfxFillRect(r.left, r.top + height, r.right, r.bottom - height, c1, FILLRECT_CHECKER);
 
 	/* draw shaded lines */
-	GfxFillRect(r.left + 2, r.top + 10, r.left + 2, r.bottom - 10, c1);
-	GfxFillRect(r.left + 3, r.top + 10, r.left + 3, r.bottom - 10, c2);
-	GfxFillRect(r.left + 7, r.top + 10, r.left + 7, r.bottom - 10, c1);
-	GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
+	GfxFillRect(r.left + centre - 3, r.top + height, r.left + centre - 3, r.bottom - height, c1);
+	GfxFillRect(r.left + centre - 2, r.top + height, r.left + centre - 2, r.bottom - height, c2);
+	GfxFillRect(r.left + centre + 2, r.top + height, r.left + centre + 2, r.bottom - height, c1);
+	GfxFillRect(r.left + centre + 3, r.top + height, r.left + centre + 3, r.bottom - height, c2);
 
 	Point pt = HandleScrollbarHittest(scrollbar, r.top, r.bottom, false);
 	DrawFrameRect(r.left, pt.x, r.right, pt.y, colour, bar_dragged ? FR_LOWERED : FR_NONE);
@@ -343,24 +355,27 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
  */
 static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool left_clicked, bool bar_dragged, bool right_clicked, const Scrollbar *scrollbar)
 {
-	DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, colour, left_clicked ? FR_LOWERED : FR_NONE);
+	int centre = (r.bottom - r.top) / 2;
+	int width = NWidgetScrollbar::GetHorizontalDimension().width;
+
+	DrawFrameRect(r.left, r.top, r.left + width - 1, r.bottom, colour, left_clicked ? FR_LOWERED : FR_NONE);
 	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + left_clicked, r.top + 1 + left_clicked);
 
-	DrawFrameRect(r.right - 9, r.top, r.right, r.bottom, colour, right_clicked ? FR_LOWERED : FR_NONE);
-	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - 8 + right_clicked, r.top + 1 + right_clicked);
+	DrawFrameRect(r.right - (width - 1), r.top, r.right, r.bottom, colour, right_clicked ? FR_LOWERED : FR_NONE);
+	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - (width - 2) + right_clicked, r.top + 1 + right_clicked);
 
 	int c1 = _colour_gradient[colour & 0xF][3];
 	int c2 = _colour_gradient[colour & 0xF][7];
 
 	/* draw "shaded" background */
-	GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c2);
-	GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c1, FILLRECT_CHECKER);
+	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c2);
+	GfxFillRect(r.left + width, r.top, r.right - width, r.bottom, c1, FILLRECT_CHECKER);
 
 	/* draw shaded lines */
-	GfxFillRect(r.left + 10, r.top + 2, r.right - 10, r.top + 2, c1);
-	GfxFillRect(r.left + 10, r.top + 3, r.right - 10, r.top + 3, c2);
-	GfxFillRect(r.left + 10, r.top + 7, r.right - 10, r.top + 7, c1);
-	GfxFillRect(r.left + 10, r.top + 8, r.right - 10, r.top + 8, c2);
+	GfxFillRect(r.left + width, r.top + centre - 3, r.right - width, r.top + centre - 3, c1);
+	GfxFillRect(r.left + width, r.top + centre - 2, r.right - width, r.top + centre - 2, c2);
+	GfxFillRect(r.left + width, r.top + centre + 2, r.right - width, r.top + centre + 2, c1);
+	GfxFillRect(r.left + width, r.top + centre + 3, r.right - width, r.top + centre + 3, c2);
 
 	/* draw actual scrollbar */
 	Point pt = HandleScrollbarHittest(scrollbar, r.left, r.right, true);
@@ -1876,14 +1891,14 @@ NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : N
 
 	switch (this->type) {
 		case NWID_HSCROLLBAR:
-			this->SetMinimalSize(0, WD_HSCROLLBAR_HEIGHT);
+			this->SetMinimalSize(0, NWidgetScrollbar::GetHorizontalDimension().height);
 			this->SetResize(1, 0);
 			this->SetFill(1, 0);
 			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case NWID_VSCROLLBAR:
-			this->SetMinimalSize(WD_VSCROLLBAR_WIDTH, 0);
+			this->SetMinimalSize(NWidgetScrollbar::GetVerticalDimension().width, 0);
 			this->SetResize(0, 1);
 			this->SetFill(0, 1);
 			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
@@ -1930,6 +1945,37 @@ void NWidgetScrollbar::Draw(const Window *w)
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
 }
+
+/* static */ void NWidgetScrollbar::InvalidateDimensionCache()
+{
+	vertical_dimension.width   = vertical_dimension.height   = 0;
+	horizontal_dimension.width = horizontal_dimension.height = 0;
+}
+
+/* static */ Dimension NWidgetScrollbar::GetVerticalDimension()
+{
+	static const Dimension extra = {WD_SCROLLBAR_LEFT + WD_SCROLLBAR_RIGHT, WD_SCROLLBAR_TOP + WD_SCROLLBAR_BOTTOM};
+	if (vertical_dimension.width == 0) {
+		vertical_dimension = maxdim(GetSpriteSize(SPR_ARROW_UP), GetSpriteSize(SPR_ARROW_DOWN));
+		vertical_dimension.width += extra.width;
+		vertical_dimension.height += extra.height;
+	}
+	return vertical_dimension;
+}
+
+/* static */ Dimension NWidgetScrollbar::GetHorizontalDimension()
+{
+	static const Dimension extra = {WD_SCROLLBAR_LEFT + WD_SCROLLBAR_RIGHT, WD_SCROLLBAR_TOP + WD_SCROLLBAR_BOTTOM};
+	if (horizontal_dimension.width == 0) {
+		horizontal_dimension = maxdim(GetSpriteSize(SPR_ARROW_LEFT), GetSpriteSize(SPR_ARROW_RIGHT));
+		horizontal_dimension.width += extra.width;
+		horizontal_dimension.height += extra.height;
+	}
+	return horizontal_dimension;
+}
+
+Dimension NWidgetScrollbar::vertical_dimension = {0, 0};
+Dimension NWidgetScrollbar::horizontal_dimension = {0, 0};
 
 /** Reset the cached dimensions. */
 /* static */ void NWidgetLeaf::InvalidateDimensionCache()

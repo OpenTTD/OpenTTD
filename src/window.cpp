@@ -1374,6 +1374,7 @@ void InitWindowSystem()
 	_mouse_hovering = false;
 
 	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
+	NWidgetScrollbar::InvalidateDimensionCache();
 }
 
 /**
@@ -2658,6 +2659,7 @@ void HideVitalWindows()
 void ReInitAllWindows()
 {
 	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
+	NWidgetScrollbar::InvalidateDimensionCache();
 
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {

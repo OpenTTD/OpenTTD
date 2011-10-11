@@ -97,6 +97,7 @@ enum NetworkGameWindowWidgets {
 
 	NGWW_LASTJOINED_LABEL, ///< Label "Last joined server:"
 	NGWW_LASTJOINED,    ///< Info about the last joined server
+	NGWW_LASTJOINED_SPACER, ///< Spacer after last joined server panel
 
 	NGWW_DETAILS,       ///< Panel with game details
 	NGWW_DETAILS_SPACER, ///< Spacer for game actual details
@@ -507,6 +508,10 @@ public:
 
 			case NGWW_LASTJOINED:
 				size->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
+				break;
+
+			case NGWW_LASTJOINED_SPACER:
+				size->width = NWidgetScrollbar::GetVerticalDimension().width;
 				break;
 
 			case NGWW_NAME:
@@ -943,10 +948,11 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 					NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED_LABEL), SetFill(1, 0),
 										SetDataTip(STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
-					NWidget(NWID_HORIZONTAL), SetPIP(0, 0, WD_VSCROLLBAR_WIDTH),
+					NWidget(NWID_HORIZONTAL),
 						NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED), SetFill(1, 0), SetResize(1, 0),
 											SetDataTip(0x0, STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST),
 						EndContainer(),
+						NWidget(WWT_EMPTY, INVALID_COLOUR, NGWW_LASTJOINED_SPACER), SetFill(0, 0),
 					EndContainer(),
 				EndContainer(),
 				/* RIGHT SIDE */

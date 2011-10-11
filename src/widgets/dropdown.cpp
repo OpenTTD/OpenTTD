@@ -137,7 +137,7 @@ struct DropdownWindow : Window {
 
 		this->vscroll = this->GetScrollbar(DDM_SCROLL);
 
-		uint items_width = size.width - (scroll ? WD_VSCROLLBAR_WIDTH : 0);
+		uint items_width = size.width - (scroll ? NWidgetScrollbar::GetVerticalDimension().width : 0);
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(DDM_ITEMS);
 		nwi->SetMinimalSize(items_width, size.height + 4);
 		nwi->colour = wi_colour;
@@ -414,7 +414,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 			scroll = true;
 			/* Add space for the scroll bar if we automatically determined
 			 * the width of the list. */
-			max_item_width += WD_VSCROLLBAR_WIDTH;
+			max_item_width += NWidgetScrollbar::GetVerticalDimension().width;
 		}
 	}
 

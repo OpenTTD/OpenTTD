@@ -51,9 +51,10 @@ enum WidgetDrawDistances {
 	WD_INSET_RIGHT = 2,         ///< Right offset of string.
 	WD_INSET_TOP   = 1,         ///< Top offset of string.
 
-	WD_VSCROLLBAR_WIDTH  = 12,  ///< Width of a vertical scrollbar.
-
-	WD_HSCROLLBAR_HEIGHT = 12,  ///< Height of a horizontal scrollbar.
+	WD_SCROLLBAR_LEFT   = 2,    ///< Left offset of scrollbar.
+	WD_SCROLLBAR_RIGHT  = 2,    ///< Right offset of scrollbar.
+	WD_SCROLLBAR_TOP    = 2,    ///< Top offset of scrollbar.
+	WD_SCROLLBAR_BOTTOM = 2,    ///< Bottom offset of scrollbar.
 
 	/* FrameRect widgets, all text buttons, panel, editbox */
 	WD_FRAMERECT_LEFT   = 2,    ///< Offset at left to draw the frame rectangular area
