@@ -514,7 +514,11 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
 		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[owner]][4]);
 	}
 
-	if (str != STR_NULL) DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + WD_CAPTIONTEXT_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
+	if (str != STR_NULL) {
+		Dimension d = GetStringBoundingBox(str);
+		int offset = max(0, ((int)(r.bottom - r.top + 1) - (int)d.height) / 2); // Offset for rendering the text vertically centered
+		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + offset, str, TC_FROMSTRING, SA_HOR_CENTER);
+	}
 }
 
 /**
