@@ -841,10 +841,10 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Mae {STA
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Cynnig cymhorthdal ar ben:{}{}Ni fydd cludo {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Cymhorthdal wedi'i dynnu'n ôl: {}{}Ni fydd gwasanaeth {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Cynnig cymhorthdal:{}{}Bydd y gwasanaeth {STRING} cyntaf o {STRING} i {STRING} yn derbyn blwyddyn o gymhorthdal gan yr awdurdod lleol!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STRING} i {STRING} yn talu 50% yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STRING} i {STRING} yn talu dwywaith yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STRING} i {STRING} yn talu teirgwaith yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}! Bydd y gwasanaeth {}{}{STRING} o {STRING} i {STRING} yn talu pedair gwaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu 50% yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu dwywaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu teirgwaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu pedair gwaith yn fwy am y flwyddyn nesaf!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Anrhefn traffig yn {TOWN}!{}{}Daw gwaith ffordd a ariannwyd gan {STRING} â 6 mis o boen i deithwyr ffordd y dref!
 
@@ -1035,7 +1035,7 @@ STR_MINIMAL                                                     :Lleiafsymol
 STR_NUM_VERY_LOW                                                :Isel Iawn
 STR_NUM_LOW                                                     :Isel
 STR_NUM_NORMAL                                                  :Arferol
-STR_NUM_HIGH                                                    :Anodd
+STR_NUM_HIGH                                                    :Uchel
 STR_NUM_CUSTOM                                                  :Addasedig
 STR_NUM_CUSTOM_NUMBER                                           :Addasiedig ({NUM})
 
@@ -1179,7 +1179,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Dangos 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Cynhyrchydd Tir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gwreiddiol
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Pellter uchafsymol o'r ymyl ar gyfer Purfeydd Olew {ORANGE}{STRING} sgwar{P 0:1 "" s}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Pellter uchafsymol o'r ymyl ar gyfer Purfeydd Olew {ORANGE}{STRING} sgwâr
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Uchder Llinell Eira: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Garwder y tirwedd (TerraGenesis yn unig) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Llyfn Iawn
@@ -2336,7 +2336,7 @@ STR_MAPGEN_NORTHEAST                                            :{BLACK}Gog. Ddw
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}De Ddwyrain
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}De Orllewin
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ffurfrydd
-STR_MAPGEN_BORDER_WATER                                         :{BLACK}Dw^r
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Dŵr
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ar hap
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ar hap
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Â Llaw
@@ -3774,7 +3774,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Does dim
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Methu gwrthdroi'r trên...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Mae'r trên heb bŵer
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}ddim yn methu troi'r cerbyd...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Methu troi'r cerbyd...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}mae'r awyren yn hedfan
 

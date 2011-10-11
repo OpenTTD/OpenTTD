@@ -118,7 +118,7 @@ STR_QUANTITY_PLASTIC                                            :{VOLUME} ta' pl
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passiġġieri
-STR_BAGS                                                        :{COMMA} boroż
+STR_BAGS                                                        :{COMMA} bagalji
 STR_TONS                                                        :{COMMA} tunnellati
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} oġġetti
@@ -126,6 +126,7 @@ STR_CRATES                                                      :{COMMA} kaxxi
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu Skur
+STR_COLOUR_PALE_GREEN                                           :Aħdar ċar
 STR_COLOUR_PINK                                                 :Roża
 STR_COLOUR_YELLOW                                               :Isfar
 STR_COLOUR_RED                                                  :Aħmar
@@ -134,33 +135,73 @@ STR_COLOUR_GREEN                                                :Aħdar
 STR_COLOUR_DARK_GREEN                                           :Aħdar Skur
 STR_COLOUR_BLUE                                                 :Blu
 STR_COLOUR_CREAM                                                :Krema
+STR_COLOUR_PURPLE                                               :Vjola
 STR_COLOUR_ORANGE                                               :Oranġjo
 STR_COLOUR_BROWN                                                :Kannella
 STR_COLOUR_GREY                                                 :Griż
 STR_COLOUR_WHITE                                                :Abjad
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tunnellata
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litru
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Daħħal sentenza għall-iffiltrar
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Daħħal kelma biex tiffiltra din il-lista għall-
 
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Għazel ordni biex tissortja (tielgħa/niezel)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Għazel il-kriterju biex tissortja
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Għazel il-kriterju biex tiffilterja
+STR_BUTTON_SORT_BY                                              :{BLACK}Issortja b'dan
+STR_BUTTON_LOCATION                                             :{BLACK}Lokal
+STR_BUTTON_RENAME                                               :{BLACK}Semmi mil-ġdid
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Għalaq it-tieqa
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlu tat-Tieqa - iddregja din biex tmexxi it-tieqa
+STR_TOOLTIP_SHADE                                               :{BLACK}Tieqa tad-dell - uri biss il-faxxa tat-titlu
+STR_TOOLTIP_DEBUG                                               :{BLACK}Uri l-informazzjoni tan-NewGRF debug
+STR_TOOLTIP_STICKY                                              :{BLACK}Immarka din it-tieqa li ma tistax tingħalaq mil-buttuna 'Għalaq it-twieqi kolla'
+STR_TOOLTIP_RESIZE                                              :{BLACK}Għafas u dragja biex tbiddel id-daqs tat-tieqa
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Biddel id-daqs tat-tieqa bejn kbir u zgħir
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Faxxa biex tiskrolja - iskrolja l-lista l-fuq jew l-isfel
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Faxxa biex tiskrolja - iskrolja l-lista lejn ix-xellug jew lemin
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Waqqa bini, etc.., Ctrl tagħzel zona dijagonali. Shift taqleb bejn bini/turija ta' stima ta' l-ispiza
 
 # Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}Default
+STR_BUTTON_CANCEL                                               :{BLACK}Ikkanċella
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Tul: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Arja: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Tul: {NUM}{}Differenza fl-għoli: {HEIGHT}
 
 
 # These are used in buttons
@@ -372,6 +413,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
+
 # Advanced settings window
 
 
@@ -381,6 +423,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avza jekk jintilef il-vehikolu: {ORANGE}{STRING}
+
 
 
 
@@ -403,6 +446,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :l-azzjonijiet k
 
 
 # Intro window
+
 
 
 
@@ -627,6 +671,8 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ma jaqblux
 STR_NEWGRF_INVALID_ENGINE                                       :<magna invalida>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija invalida>
 
+# NewGRF scanning window
+
 # Sign list window
 
 # Sign window
@@ -785,6 +831,8 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem t
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -844,6 +892,7 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 # Saveload messages
 
 # Map generation messages
+
 
 
 
