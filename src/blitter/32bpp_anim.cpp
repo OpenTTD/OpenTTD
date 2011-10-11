@@ -123,7 +123,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 								*anim = 0;
 							} else {
 								uint r = remap[m];
-								*anim = r;
+								*anim = 0;
 								if (r != 0) *dst = ComposeColourPANoCheck(this->LookupColourInPalette(r), src_px->a, *dst);
 							}
 							anim++;
@@ -173,7 +173,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 					} else {
 						do {
 							uint m = *src_n++;
-							*anim++ = m;
+							*anim++ = 0;
 							if (m >= PALETTE_ANIM_START) {
 								*dst = ComposeColourPANoCheck(this->LookupColourInPalette(m), src_px->a, *dst);
 							} else {
