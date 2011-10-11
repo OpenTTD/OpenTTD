@@ -570,9 +570,11 @@ enum SelectCompanyLiveryWindowWidgets {
 /** Company livery colour scheme window. */
 struct SelectCompanyLiveryWindow : public Window {
 private:
-	static const uint TEXT_INDENT = 15; ///< Number of pixels to indent the text in each column in the #SCLW_WIDGET_MATRIX to make room for the (coloured) rectangles.
 	uint32 sel;
 	LiveryClass livery_class;
+	Dimension square;
+	Dimension box;
+	uint line_height;
 
 	void ShowColourDropDownMenu(uint32 widget)
 	{
@@ -608,6 +610,11 @@ public:
 	{
 		this->livery_class = LC_OTHER;
 		this->sel = 1;
+
+		this->square = GetSpriteSize(SPR_SQUARE);
+		this->box    = maxdim(GetSpriteSize(SPR_BOX_CHECKED), GetSpriteSize(SPR_BOX_EMPTY));
+		this->line_height = max(max(this->square.height, this->box.height), (uint)FONT_HEIGHT_NORMAL) + 4;
+
 		this->InitNested(desc, company);
 		this->owner = company;
 		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
@@ -623,7 +630,7 @@ public:
 				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + scheme));
 				}
-				size->width = max(size->width, TEXT_INDENT + d.width + WD_FRAMERECT_RIGHT);
+				size->width = max(size->width, 5 + this->box.width + d.width + WD_FRAMERECT_RIGHT);
 				break;
 			}
 
@@ -634,7 +641,7 @@ public:
 						livery_height++;
 					}
 				}
-				size->height = livery_height * (4 + FONT_HEIGHT_NORMAL);
+				size->height = livery_height * this->line_height;
 				this->GetWidget<NWidgetCore>(SCLW_WIDGET_MATRIX)->widget_data = (livery_height << MAT_ROW_START) | (1 << MAT_COL_START);
 				break;
 			}
@@ -646,8 +653,9 @@ public:
 				}
 				/* FALL THROUGH */
 			case SCLW_WIDGET_PRI_COL_DROPDOWN: {
+				int padding = this->square.width + NWidgetScrollbar::GetVerticalDimension().width + 10;
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
-					size->width = max(size->width, GetStringBoundingBox(*id).width + 34);
+					size->width = max(size->width, GetStringBoundingBox(*id).width + padding);
 				}
 				break;
 			}
@@ -702,10 +710,14 @@ public:
 		int sec_left = nwi->pos_x;
 		int sec_right = sec_left + nwi->current_x - 1;
 
-		int text_left  = (rtl ? (uint)WD_FRAMERECT_LEFT : TEXT_INDENT);
-		int text_right = (rtl ? TEXT_INDENT : (uint)WD_FRAMERECT_RIGHT);
+		int text_left  = (rtl ? (uint)WD_FRAMERECT_LEFT : (this->box.width + 5));
+		int text_right = (rtl ? (this->box.width + 5) : (uint)WD_FRAMERECT_RIGHT);
 
-		int y = r.top + 3;
+		int box_offs    = (this->line_height - this->box.height) / 2;
+		int square_offs = (this->line_height - this->square.height) / 2 + 1;
+		int text_offs   = (this->line_height - FONT_HEIGHT_NORMAL) / 2 + 1;
+
+		int y = r.top;
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
@@ -713,21 +725,21 @@ public:
 
 				/* Optional check box + scheme name. */
 				if (scheme != LS_DEFAULT) {
-					DrawSprite(c->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, (rtl ? sch_right - TEXT_INDENT + WD_FRAMERECT_RIGHT : sch_left) + WD_FRAMERECT_LEFT, y);
+					DrawSprite(c->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, (rtl ? sch_right - (this->box.width + 5) + WD_FRAMERECT_RIGHT : sch_left) + WD_FRAMERECT_LEFT, y + box_offs);
 				}
-				DrawString(sch_left + text_left, sch_right - text_right, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
+				DrawString(sch_left + text_left, sch_right - text_right, y + text_offs, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
 
 				/* Text below the first dropdown. */
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), (rtl ? pri_right - TEXT_INDENT + WD_FRAMERECT_RIGHT : pri_left) + WD_FRAMERECT_LEFT, y);
-				DrawString(pri_left + text_left, pri_right - text_right, y, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour1), (rtl ? pri_right - (this->box.width + 5) + WD_FRAMERECT_RIGHT : pri_left) + WD_FRAMERECT_LEFT, y + square_offs);
+				DrawString(pri_left + text_left, pri_right - text_right, y + text_offs, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
 
 				/* Text below the second dropdown. */
 				if (sec_right > sec_left) { // Second dropdown has non-zero size.
-					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), (rtl ? sec_right - TEXT_INDENT + WD_FRAMERECT_RIGHT : sec_left) + WD_FRAMERECT_LEFT, y);
-					DrawString(sec_left + text_left, sec_right - text_right, y, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
+					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(c->livery[scheme].colour2), (rtl ? sec_right - (this->box.width + 5) + WD_FRAMERECT_RIGHT : sec_left) + WD_FRAMERECT_LEFT, y + square_offs);
+					DrawString(sec_left + text_left, sec_right - text_right, y + text_offs, STR_COLOUR_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
 				}
 
-				y += 4 + FONT_HEIGHT_NORMAL;
+				y += this->line_height;
 			}
 		}
 	}
@@ -767,7 +779,7 @@ public:
 
 			case SCLW_WIDGET_MATRIX: {
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SCLW_WIDGET_MATRIX);
-				LiveryScheme j = (LiveryScheme)((pt.y - wid->pos_y) / (4 + FONT_HEIGHT_NORMAL));
+				LiveryScheme j = (LiveryScheme)((pt.y - wid->pos_y) / this->line_height);
 
 				for (LiveryScheme scheme = LS_BEGIN; scheme <= j; scheme++) {
 					if (_livery_class[scheme] != this->livery_class || !HasBit(_loaded_newgrf_features.used_liveries, scheme)) j++;
@@ -776,7 +788,7 @@ public:
 				if (j >= LS_END) return;
 
 				/* If clicking on the left edge, toggle using the livery */
-				if (_current_text_dir == TD_RTL ? pt.x - wid->pos_x > wid->current_x - TEXT_INDENT : pt.x - wid->pos_x < TEXT_INDENT) {
+				if (_current_text_dir == TD_RTL ? pt.x - wid->pos_x > wid->current_x - (this->box.width + 5) : pt.x - wid->pos_x < (this->box.width + 5)) {
 					DoCommandP(0, j | (2 << 8), !Company::Get((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOUR);
 				}
 
