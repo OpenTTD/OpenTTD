@@ -595,9 +595,12 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	{
 		switch (widget) {
 			case SNGRFS_FILE_LIST:
-				resize->height = max(12, FONT_HEIGHT_NORMAL + 2);
+			{
+				Dimension d = maxdim(GetSpriteSize(SPR_SQUARE), GetSpriteSize(SPR_WARNING_SIGN));
+				resize->height = max(d.height + 2U, FONT_HEIGHT_NORMAL + 2U);
 				size->height = max(size->height, WD_FRAMERECT_TOP + 6 * resize->height + WD_FRAMERECT_BOTTOM);
 				break;
+			}
 
 			case SNGRFS_AVAIL_LIST:
 				resize->height = max(12, FONT_HEIGHT_NORMAL + 2);
@@ -708,14 +711,17 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 
 				uint step_height = this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST)->resize_y;
 				uint y = r.top + WD_FRAMERECT_TOP;
-				int sprite_offset_y = (step_height - 10) / 2;
+				Dimension square = GetSpriteSize(SPR_SQUARE);
+				Dimension warning = GetSpriteSize(SPR_WARNING_SIGN);
+				int square_offset_y = (step_height - square.height) / 2;
+				int warning_offset_y = (step_height - warning.height) / 2;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 
 				bool rtl = _current_text_dir == TD_RTL;
-				uint text_left    = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + 25;
-				uint text_right   = rtl ? r.right - 25 : r.right - WD_FRAMERECT_RIGHT;
-				uint square_left  = rtl ? r.right - 15 : r.left + 5;
-				uint warning_left = rtl ? r.right - 30 : r.left + 20;
+				uint text_left    = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + square.width + 15;
+				uint text_right   = rtl ? r.right - square.width - 15 : r.right - WD_FRAMERECT_RIGHT;
+				uint square_left  = rtl ? r.right - square.width - 5 : r.left + 5;
+				uint warning_left = rtl ? r.right - square.width - warning.width - 10 : r.left + square.width + 10;
 
 				int i = 0;
 				for (const GRFConfig *c = this->actives; c != NULL; c = c->next, i++) {
@@ -725,9 +731,9 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 						PaletteID pal = this->GetPalette(c);
 
 						if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, PC_DARK_BLUE);
-						DrawSprite(SPR_SQUARE, pal, square_left, y + sprite_offset_y);
-						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y + sprite_offset_y);
-						uint txtoffset = c->error == NULL ? 0 : 10;
+						DrawSprite(SPR_SQUARE, pal, square_left, y + square_offset_y);
+						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y + warning_offset_y);
+						uint txtoffset = c->error == NULL ? 0 : warning.width;
 						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), y + offset_y, text, h ? TC_WHITE : TC_ORANGE);
 						y += step_height;
 					}
