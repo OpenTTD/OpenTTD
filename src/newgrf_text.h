@@ -40,7 +40,7 @@ void RewindTextRefStack();
 bool UsingNewGRFTextStack();
 struct TextRefStack *CreateTextRefStackBackup();
 void RestoreTextRefStackBackup(struct TextRefStack *backup);
-uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv);
+uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, bool modify_argv);
 
 StringID TTDPStringIDToOTTDStringIDMapping(StringID string);
 

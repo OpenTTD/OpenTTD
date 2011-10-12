@@ -668,7 +668,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 	uint orig_offset = args->offset;
 
 	/* When there is no array with types there is no need to do a dry run. */
-	if (!args->HasTypeInformation()) dry_run = true;
+	if (!args->HasTypeInformation() && !UsingNewGRFTextStack()) dry_run = true;
 	if (!dry_run) {
 		if (UsingNewGRFTextStack()) {
 			/* Values from the NewGRF text stack are only copied to the normal
@@ -702,7 +702,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified; oh boy. */
 			//todo: should argve be passed here too?
-			b = RemapNewGRFStringControlCode(b, buf_start, &buff, &str, (int64 *)args->GetDataPointer());
+			b = RemapNewGRFStringControlCode(b, buf_start, &buff, &str, (int64 *)args->GetDataPointer(), dry_run);
 			if (b == 0) continue;
 		}
 

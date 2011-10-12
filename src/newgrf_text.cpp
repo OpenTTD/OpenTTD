@@ -1020,11 +1020,12 @@ void RewindTextRefStack()
  * @param buff  the buffer we're writing to
  * @param str   the string that we need to write
  * @param argv  the OpenTTD stack of values
+ * @param modify_argv When true, modify the OpenTTD stack.
  * @return the string control code to "execute" now
  */
-uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv)
+uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv, bool modify_argv)
 {
-	if (_newgrf_textrefstack.used) {
+	if (_newgrf_textrefstack.used && modify_argv) {
 		switch (scc) {
 			default: NOT_REACHED();
 			case SCC_NEWGRF_PRINT_BYTE_SIGNED:      *argv = _newgrf_textrefstack.PopSignedByte();    break;
