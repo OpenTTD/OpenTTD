@@ -70,11 +70,12 @@ struct GraphLegendWindow : Window {
 
 		bool rtl = _current_text_dir == TD_RTL;
 
-		DrawCompanyIcon(cid, rtl ? r.right - 16 : r.left + 2, r.top + 2 + (FONT_HEIGHT_NORMAL - 10) / 2);
+		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
+		DrawCompanyIcon(cid, rtl ? r.right - d.width - 2 : r.left + 2, r.top + (r.bottom - r.top - d.height) / 2);
 
 		SetDParam(0, cid);
 		SetDParam(1, cid);
-		DrawString(r.left + (rtl ? WD_FRAMERECT_LEFT : 19), r.right - (rtl ? 19 : WD_FRAMERECT_RIGHT), r.top + WD_FRAMERECT_TOP, STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
+		DrawString(r.left + (rtl ? (uint)WD_FRAMERECT_LEFT : (d.width + 4)), r.right - (rtl ? (d.width + 4) : (uint)WD_FRAMERECT_RIGHT), r.top + (r.bottom - r.top + 1 - FONT_HEIGHT_NORMAL) / 2, STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -115,10 +116,11 @@ struct GraphLegendWindow : Window {
 static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 {
 	NWidgetVertical *vert = new NWidgetVertical();
+	uint line_height = max<uint>(GetSpriteSize(SPR_COMPANY_ICON).height, FONT_HEIGHT_NORMAL) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 	for (int widnum = GLW_FIRST_COMPANY; widnum <= GLW_LAST_COMPANY; widnum++) {
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
-		panel->SetMinimalSize(246, FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		panel->SetMinimalSize(246, line_height);
 		panel->SetFill(1, 0);
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		vert->Add(panel);
