@@ -274,7 +274,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimuma rapid
 STR_SORT_BY_MODEL                                               :Tipo
 STR_SORT_BY_VALUE                                               :Valoro
 STR_SORT_BY_LENGTH                                              :Longo
-STR_SORT_BY_LIFE_TIME                                           :Restanta vivdaŭro
+STR_SORT_BY_LIFE_TIME                                           :Resta vivo
 STR_SORT_BY_TIMETABLE_DELAY                                     :Horara malfruo
 STR_SORT_BY_FACILITY                                            :Stacidoma tipo
 STR_SORT_BY_WAITING                                             :Valoro de atendanta ŝarĝo
@@ -2775,6 +2775,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novaj Aviadiloj
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosto: {GOLD}{CURRENCY}{BLACK} Pezo: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rapido: {GOLD}{VELOCITY}{BLACK} Forto: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rapido: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rapido sur oceano: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rapido sur kanalo/rivero: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Irkosto: {GOLD}po {CURRENCY} jare
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapablo: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(transformebla)
@@ -3141,6 +3143,7 @@ STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimuma rapid
 STR_ORDER_CONDITIONAL_AGE                                       :Aĝo de la veturilo (jaroj)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Prizorgo necesas.
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ĉiam
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resta vivo (jaroj)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egalas al
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ne egalas al

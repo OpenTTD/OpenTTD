@@ -1228,7 +1228,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Kreisā klikšķa ritināšana: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Lietot {ORANGE}{STRING}{LTBLUE} datuma formātu saglabāto spēļu nosaukumiem .
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Lietot {ORANGE}{STRING}{LTBLUE} datuma formātu saglabāto spēļu nosaukumiem
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garš (31. Dec. 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īss (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1390,17 +1390,17 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Sākt ja
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Izveidot pielāgotu spēles pasauli/scenāriju
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Sākt vairākspēlētāju spēli
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Izvēlēties 'mērena klimata' zemes stilu
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Izvēlēties 'subarktiska klimata' zemes stilu
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izvēlēties 'subtropiska klimata' zemes stilu
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izvēlēties 'rotaļu' zemes stilu
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Izvēlēties 'mērena klimata' ainavas stilu
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Izvēlēties 'subarktiska klimata' ainavas stilu
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izvēlēties 'subtropiska klimata' ainavas stilu
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izvēlēties 'rotaļlietu zemes' ainavas stilu
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rādīt spēles opcijas
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Rādīt grūtības pakāpju opcijas
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Parādīt spēles opcijas
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Parādīt grūtības pakāpju opcijas
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Parādīt papildus iestatījumus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Parādīt NewGRF iestatījumus
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai nav pieejami atjauninājumi
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Parādīt MI iestatījumus
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai lejupielādei nav pieejams jauns un atjaunināts saturs
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Parādīt mākslīgā intelekta iestatījumus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Iziet no 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Šim tulkojumam trūkst {NUM} virk{P ne nes ņu}. Lūdzu palīdziet OpenTTD veidot labāku piesakoties par tulkotāju. Informācijai skatīt readme.txt.
@@ -1582,8 +1582,8 @@ STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIJU
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF NEATBILSTĪBA
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pievienoties spēlei
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atjaunināt serveri
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atjaunināt servera informāciju
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atsvaidzināt serveri
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atsvaidzināt servera informāciju
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Atrast serveri
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Meklēt serveri tīklā
@@ -1601,27 +1601,27 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Sākt ja
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spēles nosaukums:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles nosaukums, kas tiks attēlots citiem spēlētajiem vairākspēlētāju spēļu izvēlnē
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Uzstādīt paroli
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja jūs nevēlaties, lai tā būtu publiski pieejama
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja nevēlaties lai tā būtu publiski pieejama
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internets
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internets (reklamēt)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P s i u}
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. klientu sk.:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. klientu skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlaties maks. klientu skaitu. Ne visiem slotiem ir jābūt aizpildītiem
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompānij{P a as u}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. uzņēmumu sk.:
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} uzņēmum{P s i u}
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. uzņēmumu skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ierobežo serveri noteiktam uzņēmumu skaitam
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} novērotāj{P s i u}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. novērotāju sk.:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. novērotāju skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ierobežo serveri noteiktam novērotāju skaitam
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Valodu, kurā runā:
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Valoda, kurā runā:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lietotāji zinās, kurā valodā tiek runāts uz servera
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ievadiet tīkla spēles nosaukumu
 
 # Network game languages
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Jebkurā
+STR_NETWORK_LANG_ANY                                            :Jebkura
 STR_NETWORK_LANG_ENGLISH                                        :Angļu
 STR_NETWORK_LANG_GERMAN                                         :Vācu
 STR_NETWORK_LANG_FRENCH                                         :Franču
@@ -1663,10 +1663,10 @@ STR_NETWORK_LANG_LATVIAN                                        :Latviešu
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Vairākspēlētāju spēles vestibils
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Gatavojos pievienoties: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Spēlē esošo kompāniju saraksts. Jūs varat vai nu pievienoties kādai, vai arī sākt jaunu, ja ir brīvs kompānijas slots
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Spēlē esošo uzņēmumu saraksts. Jūs varat vai nu kādam pievienoties, vai arī sākt jaunu, ja ir brīvs uzņēmuma slots
 
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}KOMPĀNIJAS INFO
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Kompānijas nosaukums: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}UZŅĒMUMA INFORMĀCIJA
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Uzņēmuma nosaukums: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Atklāšana: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Uzņēmuma vērtība: {WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Šībrīža bilance: {WHITE}{CURRENCY}
@@ -1758,8 +1758,8 @@ STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Neviena 
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nevar atrast nevienu interneta spēli
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neadbildēja uz pieprasījumu
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nevar pieslēgties sakarā ar NewGRF neatbilstību
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Tīkla-Spēļu sinhronizācija neveiksmīga
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Interneta spēlei zudis savienojums
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Tīkla spēles sinhronizācija neizdevās
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tīkla spēlei zudis savienojums
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nevar ielādēt saglabāto spēli
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nevar uzsākt servera darbību
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nevar savienot
@@ -1769,7 +1769,7 @@ STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klienta 
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nepareiza Parole
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris ir pilns
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jūs esat izraidīts no šī severa
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Tu esi izmests no šīs spēles
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Jūs esat izmests no šīs spēles
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Uz šī servera blēdības nav atļautas
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Jūs sūtījāt uz serveri pārak daudz rīkojumu
 
@@ -1777,11 +1777,11 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Jūs sū
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :galvenā kļūda
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :asinhronizācijas kļūda
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nevar ielādēt karti
-STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :zuduši sakari
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :pazudis savienojums
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokola kļūda
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF neatbilstība
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nav autorizēts
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :saņemta savāda pakete
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :saņemta nederīga vai neparedzēta pakete
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :nepareiza versija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :šo vārdu jau lieto
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :nepareiza parole
@@ -1823,7 +1823,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Satura lejupielāde
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tips
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Satura veids
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Satura tips
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nosaukums
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Satura nosaukums
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klikšķiniet uz līnijas lai redzētu detaļas{}Klikšķiniet kvadrātā, lai iezīmētu to lejupielādei
@@ -1915,10 +1915,10 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrificētā
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Viensliedes būvniecība
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magleva būvēšana
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Būvēt sliedes. Ctrl pārslēdz sliežu būvniecību/demolēšanu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Būvēt sliedes. Ctrl pārslēdz sliežu būvniecību/nojaukšanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt dzelzceļu, izmantojot Autorail režīmu. Ctrl pārslēdz sliežu būvniecību/demolēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Būvēt vilcienu depo (vilcienu pirkšanai un apkopei). Shift pārslēdz būvi/rādīt izmaksu tāmi
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pārvērst sliedes par maršruta punktu. Ctrl iespējo maršrutu punktu apvienošanu
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pārvērst sliedes par ceļapunktu. Ctrl iespējo ceļapunktu apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt dzelzceļa signālus. Ctrl pārslēdz semaforus/luksoforus{}Vilkšana uzbūvē signālus uz taisna sliežu posma. Ctrl uzbūvē signālus līdz nākamajam sazarojumam{}Ctrl+klikšķis pārslēdz signālu izvēles loga atvēršanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu
@@ -2174,7 +2174,7 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Ceļa ī
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvaja īpašnieks: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dzelzceļa īpašnieks: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pašvaldība: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neviens/neviena
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neviena
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinātes: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Uzbūvēts: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stacijas klase: {LTBLUE}{STRING}
@@ -3208,21 +3208,21 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Nepieciešama a
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vienmēr
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Atlikušais kalpošanas laiks (gadi)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kā salīdzināt transportalīdzekļa datus ar norādītajām vērtībām
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kā salīdzināt transportlīdzekļa datus ar norādītajām vērtībām
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ir vienāds ar
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nav vienāds ar
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ir mazāks par
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ir mazāks vai vienāds ar
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ir lielāks par
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ir lielāks un vienāds ar
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ir lielāks vai vienāds ar
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :ir patiess
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ir nepatiess
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Vērtība transporta datu salīdzināšanai pret
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Vērtība transportlīdzekļa datu salīdzināšanai pret
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Ievadiet vērtību ar kuru salīdzināsiet
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Izlaist
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Izlaist pašreizējo rīkojumu un doties pie nākamā, Ctrl+klik izlaiž līdz atzīmētajam rīkojumam
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Izlaist pašreizējo rīkojumu un doties pie nākamā. Ctrl+klikšķis izlaiž līdz atlasītajam rīkojumam
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Izdzēst
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Dzēst atzīmēto rīkojumu
@@ -3231,9 +3231,9 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Pārtrau
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Pārtraukt rīkojumu koplietošanu. Ctrl+klikšķis papildus dzēš arī šī transportlīdzekļa rīkojumus
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Doties uz
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Braukt uz tuvāko depo
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Braukt uz tuvāko angāru
-STR_ORDER_CONDITIONAL                                           :Nosacīts maršruta lēciens
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Doties uz tuvāko depo
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Doties uz tuvāko angāru
+STR_ORDER_CONDITIONAL                                           :Nosacītais rīkojuma lēciens
 STR_ORDER_SHARE                                                 :Koplietot rīkojumus
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms atzīmētā rīkojuma, vai saraksta beigās. Ctrl stacijā norīko piekraut pilnu ar jebkuru kravu, maršruta punktam braukt cauri bez apstājas un depo veikt apkopi
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ievietot papildinātu rīkojumu
@@ -3241,8 +3241,8 @@ STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ievietot
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Rādīt visus ar šo plānu saistītos transportlīdzekļus
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Brauc caur {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Brauc caur {WAYPOINT} bez apstāšanās
+STR_ORDER_GO_TO_WAYPOINT                                        :Dodas caur {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Dodas caur {WAYPOINT} bez apstāšanās
 
 STR_ORDER_SERVICE_AT                                            :Apkalpot
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Bez apstājas apkope
@@ -3250,7 +3250,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Bez apstājas a
 STR_ORDER_NEAREST_DEPOT                                         :tuvākais
 STR_ORDER_NEAREST_HANGAR                                        :tuvākais angārs
 STR_ORDER_TRAIN_DEPOT                                           :Vilcienu depo
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Ceļu transporta depo
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Autotransporta depo
 STR_ORDER_SHIP_DEPOT                                            :Kuģu depo
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
@@ -3929,7 +3929,7 @@ STR_SV_STNAME_FALLBACK                                          :{STRING} Stacij
 ##id 0x8000
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (tvaika)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (dīzelis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (dīzeļa)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Mazais čukčukbānītis
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Stiprais čukčukbānis
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Varenais čukčukbānis
@@ -3939,18 +3939,18 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (tv
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (tvaika)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (tvaika)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (tvaika)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (dīzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (dīzelis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (dīzeļa)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (dīzeļa)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (elektriskā)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (elektriskā)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (elektriskā)
