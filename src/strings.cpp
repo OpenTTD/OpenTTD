@@ -668,8 +668,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 	uint orig_offset = args->offset;
 
 	/* When there is no array with types there is no need to do a dry run. */
-	if (!args->HasTypeInformation() && !UsingNewGRFTextStack()) dry_run = true;
-	if (!dry_run) {
+	if (args->HasTypeInformation() && !dry_run) {
 		if (UsingNewGRFTextStack()) {
 			/* Values from the NewGRF text stack are only copied to the normal
 			 * argv array at the time they are encountered. That means that if
