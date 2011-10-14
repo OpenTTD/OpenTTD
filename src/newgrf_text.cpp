@@ -528,7 +528,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 						int mapped = lm != NULL ? lm->GetMapping(index, code == 0x0E) : -1;
 						if (mapped >= 0) {
 							d += Utf8Encode(d, code == 0x0E ? SCC_GENDER_INDEX : SCC_SETCASE);
-							d += Utf8Encode(d, mapped);
+							d += Utf8Encode(d, code == 0x0E ? mapped : mapped + 1);
 						}
 						break;
 					}
