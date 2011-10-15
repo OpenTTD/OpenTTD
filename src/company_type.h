@@ -54,4 +54,13 @@ typedef uint16 CompanyMask;
 struct Company;
 typedef uint32 CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h
 
+/** The reason why the company was removed. */
+enum CompanyRemoveReason {
+	CRR_MANUAL,    ///< The company is manually removed.
+	CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
+	CRR_BANKRUPT,  ///< The company went belly-up.
+
+	CRR_END        ///< Sentinel for end.
+};
+
 #endif /* COMPANY_TYPE_H */

@@ -99,7 +99,9 @@ DECLARE_ENUM_AS_BIT_SET(AdminUpdateFrequency)
 enum AdminCompanyRemoveReason {
 	ADMIN_CRR_MANUAL,    ///< The company is manually removed.
 	ADMIN_CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
-	ADMIN_CRR_BANKRUPT   ///< The company went belly-up.
+	ADMIN_CRR_BANKRUPT,  ///< The company went belly-up.
+
+	ADMIN_CRR_END        ///< Sentinel for end.
 };
 
 /** Main socket handler for admin related connections. */

@@ -770,13 +770,14 @@ void CompanyAdminUpdate(const Company *company)
 }
 
 /**
- * Called whenever a company goes bankrupt in order to notify admins.
- * @param company_id The company that went bankrupt.
+ * Called whenever a company is removed in order to notify admins.
+ * @param company_id The company that was removed.
+ * @param reason     The reason the company was removed.
  */
-void CompanyAdminBankrupt(CompanyID company_id)
+void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
 {
 #ifdef ENABLE_NETWORK
-	if (_network_server) NetworkAdminCompanyRemove(company_id, ADMIN_CRR_BANKRUPT);
+	if (_network_server) NetworkAdminCompanyRemove(company_id, (AdminCompanyRemoveReason)reason);
 #endif /* ENABLE_NETWORK */
 }
 
@@ -843,7 +844,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 
 			if (_network_server) {
-				CompanyID old_playas = ci->client_playas;
 				ci->client_playas = c->index;
 				NetworkUpdateClientInfo(ci->client_id);
 
@@ -882,6 +882,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 
 		case 2: { // Delete a company
+			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p2, 0, 2);
+			if (reason >= CRR_END) return CMD_ERROR;
+
 			Company *c = Company::GetIfValid(company_id);
 			if (c == NULL) return CMD_ERROR;
 
@@ -905,7 +908,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			CompanyID c_index = c->index;
 			delete c;
 			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
-			CompanyAdminBankrupt(c_index);
+			CompanyAdminRemove(c_index, (CompanyRemoveReason)reason);
 			break;
 		}
 
