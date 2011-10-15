@@ -866,11 +866,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					NetworkSendCommand(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name, ci->client_playas);
 				}
 
-				/* Announce new company on network, if the client was a SPECTATOR before */
-				if (old_playas == COMPANY_SPECTATOR) {
-					NetworkAdminCompanyInfo(c, true);
-					NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, ci->client_playas + 1);
-				}
+				/* Announce new company on network. */
+				NetworkAdminCompanyInfo(c, true);
+				NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, ci->client_playas + 1);
 			}
 #endif /* ENABLE_NETWORK */
 			break;
