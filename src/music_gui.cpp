@@ -84,7 +84,8 @@ static byte * const _playlists[] = {
 void ValidatePlaylist(byte *playlist)
 {
 	while (*playlist != 0) {
-		if (*playlist <= BaseMusic::GetUsedSet()->num_available) {
+		/* Song indices are saved off-by-one so 0 is "nothing". */
+		if (*playlist <= NUM_SONGS_AVAILABLE && !StrEmpty(GetSongName(*playlist - 1))) {
 			playlist++;
 			continue;
 		}
