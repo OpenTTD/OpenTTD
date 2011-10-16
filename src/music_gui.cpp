@@ -79,20 +79,24 @@ static byte * const _playlists[] = {
 
 /**
  * Validate a playlist.
- * @param playlist the playlist to validate
+ * @param playlist The playlist to validate.
+ * @param last The last location in the list.
  */
-void ValidatePlaylist(byte *playlist)
+void ValidatePlaylist(byte *playlist, const byte *last)
 {
-	while (*playlist != 0) {
+	while (*playlist != 0 && playlist <= last) {
 		/* Song indices are saved off-by-one so 0 is "nothing". */
 		if (*playlist <= NUM_SONGS_AVAILABLE && !StrEmpty(GetSongName(*playlist - 1))) {
 			playlist++;
 			continue;
 		}
-		for (byte *p = playlist; *p != 0; p++) {
+		for (byte *p = playlist; *p != 0 && p <= last; p++) {
 			p[0] = p[1];
 		}
 	}
+
+	/* Make sure the list is null terminated. */
+	*last = 0;
 }
 
 /** Initialize the playlists */
@@ -118,8 +122,8 @@ void InitializeMusic()
 		_playlists[k + 1][j] = 0;
 	}
 
-	ValidatePlaylist(_settings_client.music.custom_1);
-	ValidatePlaylist(_settings_client.music.custom_2);
+	ValidatePlaylist(_settings_client.music.custom_1, lastof(_settings_client.music.custom_1));
+	ValidatePlaylist(_settings_client.music.custom_2, lastof(_settings_client.music.custom_2));
 
 	if (BaseMusic::GetUsedSet()->num_available < _music_wnd_cursong) {
 		/* If there are less songs than the currently played song,
