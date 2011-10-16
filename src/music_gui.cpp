@@ -82,7 +82,7 @@ static byte * const _playlists[] = {
  * @param playlist The playlist to validate.
  * @param last The last location in the list.
  */
-void ValidatePlaylist(byte *playlist, const byte *last)
+void ValidatePlaylist(byte *playlist, byte *last)
 {
 	while (*playlist != 0 && playlist <= last) {
 		/* Song indices are saved off-by-one so 0 is "nothing". */
