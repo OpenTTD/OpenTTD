@@ -5153,7 +5153,7 @@ static void FeatureNewName(ByteReader *buf)
 				if (!generic) {
 					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, HasBit(_cur.grfconfig->flags, GCF_STATIC));
 					if (e == NULL) break;
-					StringID string = AddGRFString(_cur.grffile->grfid, e->index, lang, false, new_scheme, name, e->info.string_id);
+					StringID string = AddGRFString(_cur.grffile->grfid, e->index, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;
 				} else {
 					AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, true, name, STR_UNDEFINED);
