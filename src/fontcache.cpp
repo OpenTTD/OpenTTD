@@ -746,18 +746,25 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 static void SetFontGeometry(FT_Face face, FontSize size, int pixels)
 {
-	FT_Set_Pixel_Sizes(face, 0, pixels);
+	FT_Error err = FT_Set_Pixel_Sizes(face, 0, pixels);
+	if (err == FT_Err_Invalid_Pixel_Size) {
 
-	if (FT_IS_SCALABLE(face)) {
-		int asc = face->ascender * pixels / face->units_per_EM;
-		int dec = face->descender * pixels / face->units_per_EM;
+		/* Find nearest size to that requested */
+		FT_Bitmap_Size *bs = face->available_sizes;
+		int i = face->num_fixed_sizes;
+		int n = bs->height;
+		for (; --i; bs++) {
+			if (abs(pixels - bs->height) < abs(pixels - n)) n = bs->height;
+		}
 
-		_ascender[size] = asc;
-		_font_height[size] = asc - dec;
-	} else {
-		_ascender[size] = pixels;
-		_font_height[size] = pixels;
+		FT_Set_Pixel_Sizes(face, 0, n);
 	}
+
+	int asc = face->size->metrics.ascender >> 6;
+	int dec = face->size->metrics.descender >> 6;
+
+	_ascender[size] = asc;
+	_font_height[size] = asc - dec;
 }
 
 /**
