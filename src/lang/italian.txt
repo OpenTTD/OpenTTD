@@ -800,9 +800,9 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recessione finita!{}{}La ripresa del commercio da fiducia alle industrie e rafforza l'economia!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} incrementa la produzione!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Trovato nuovo giacimento di carbone alla {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Grazie a metodi di coltivazione migliorati alla {INDUSTRY} è atteso un raddoppiamento della produzione!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Trovato nuovo giacimento di carbone alla {INDUSTRY}!{}Atteso un raddoppio della produzione!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppio della produzione!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Migliori tecniche di coltivazione alla {INDUSTRY} raddoppieranno la produzione!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}La produzione di {STRING} a {INDUSTRY} è aumentata del {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}La produzione a {INDUSTRY} scende del 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Infestazione di insetti devasta la {INDUSTRY}!{}Produzione scesa del 50%
