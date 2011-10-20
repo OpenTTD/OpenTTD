@@ -346,7 +346,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gadael
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Ge^m
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Gêm
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Gosodiadau Anhawster
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gosodiadau uwch
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Gosodiadau AI
@@ -1196,7 +1196,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clocwedd
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Y lefel map uchder mae map senario fflat yn ei dderbyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Galluogi tirffurfio'r teiliau ar ymylon y map: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Nid yw un neu fwy o'r teiliau ar ymyl gogleddol y map yn wag
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Nid yw un neu fwy o'r teiliau ar un o'r ymylon yn ddw^r
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Nid yw un neu fwy o'r teiliau ar un o'r ymylon yn ddŵr
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Ymlediad mwyaf gorsaf: {ORANGE}{STRING} teil {RED}Rhybudd: Bydd gwerth uchel yn arafu'r gêm
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Rhoi gwasanaeth i hofrenyddion ar helepads yn awtomatig: {ORANGE}{STRING}
@@ -2812,15 +2812,15 @@ STR_GROUP_DEFAULT_SHIPS                                         :Llongau heb eu 
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Awyrenau heb eu grwpio
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grŵp - cliciwch ar rŵp i restru pob cerbyd yn y grŵp hwn
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Cliciwch i greu grw^p
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Cliciwch i greu grŵp
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dileu'r grŵp a ddewiswyd
-STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ailenwi'r grw^p a ddewiswyd
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Cliciwch i amddiffyn y grw^p rhag awtoddisodli gêm-eang
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ailenwi'r grŵp a ddewiswyd
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Cliciwch i amddiffyn y grŵp rhag awtoddisodli gêm-eang
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Ychwanegu cerbyd a rennir
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Dileu pob cerbyd
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ailenwi grw^p
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ailenwi grŵp
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Cerbydau Rheilffordd Newydd
@@ -3490,7 +3490,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni chani
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Nid yw awdurdod lleol {TOWN}yn caniatáu hyn
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Mae awdurdod lleol {TOWN} yn gwrthod caniatáu i faes awyr arall gael ei adeiladu ger y dref hon
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Mae awdurdod lleol {TOWN} wedi gwrthod caniatâd ar gyfer maes awyr oherwydd pryderon ynglŷn â sw^n
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Mae awdurdod lleol {TOWN} wedi gwrthod caniatâd ar gyfer maes awyr oherwydd pryderon ynglŷn â sŵn
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cafodd eich ymgais i lwgrwobrwyo ei
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ddarganfod gan ymchwilydd ardal
 
@@ -3711,12 +3711,12 @@ STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Does dim
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... rydych chi eisoes yn berchen arno!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Methu creu grw^p
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Methu dileu'r grw^p hwn...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Methu ailenwi'r grw^p...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Methu creu grŵp
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Methu dileu'r grŵp hwn...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Methu ailenwi'r grŵp...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Methu dileu pob cerbyd o'r grŵp hwn...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Methu ychawnegu'r cerbyd i'r grw^p hwn...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Methu ychwanegu cerbyd a rennir i'r grw^p...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Methu ychawnegu'r cerbyd i'r grŵp hwn...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Methu ychwanegu cerbyd a rennir i'r grŵp...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trên yn y ffordd
@@ -4195,7 +4195,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_BUOY_NAME                                            :Bwï {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Bwï {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Cwmni {COMMA})
-STR_FORMAT_GROUP_NAME                                           :Grw^p {COMMA}
+STR_FORMAT_GROUP_NAME                                           :Grŵp {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Pwynt Llwybro {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pwynt Llwybro {TOWN} #{COMMA}
