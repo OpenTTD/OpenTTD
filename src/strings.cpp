@@ -126,19 +126,17 @@ const char *GetStringPtr(StringID string)
 }
 
 /**
- * The highest 8 bits of string contain the "case index".
- * These 8 bits will only be set when FormatString wants to print
- * the string in a different case. No one else except FormatString
- * should set those bits, therefore string CANNOT be StringID, but uint32.
+ * Get a parsed string with most special stringcodes replaced by the string parameters.
  * @param buffr  Pointer to a string buffer where the formatted string should be written to.
  * @param string
  * @param args   Arguments for the string.
  * @param last   Pointer just past the end of buffr.
+ * @param case_index  The "case index". This will only be set when FormatString wants to print the string in a different case.
  * @return       Pointer to the final zero byte of the formatted string.
  */
-char *GetStringWithArgs(char *buffr, uint string, StringParameters *args, const char *last)
+char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index)
 {
-	if (GB(string, 0, 16) == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
+	if (string == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
 
 	uint index = GB(string,  0, 11);
 	uint tab   = GB(string, 11,  5);
@@ -164,18 +162,18 @@ char *GetStringWithArgs(char *buffr, uint string, StringParameters *args, const 
 			/* Include string within newgrf text (format code 81) */
 			if (HasBit(index, 10)) {
 				StringID string = GetGRFStringID(0, 0xD000 + GB(index, 0, 10));
-				return GetStringWithArgs(buffr, string, args, last);
+				return GetStringWithArgs(buffr, string, args, last, case_index);
 			}
 			break;
 
 		case 28:
-			return FormatString(buffr, GetGRFStringPtr(index), args, GB(string, 24, 8), last);
+			return FormatString(buffr, GetGRFStringPtr(index), args, case_index, last);
 
 		case 29:
-			return FormatString(buffr, GetGRFStringPtr(index + 0x0800), args, GB(string, 24, 8), last);
+			return FormatString(buffr, GetGRFStringPtr(index + 0x0800), args, case_index, last);
 
 		case 30:
-			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), args, GB(string, 24, 8), last);
+			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), args, case_index, last);
 
 		case 31:
 			NOT_REACHED();
@@ -185,7 +183,7 @@ char *GetStringWithArgs(char *buffr, uint string, StringParameters *args, const 
 		error("String 0x%X is invalid. You are probably using an old version of the .lng file.\n", string);
 	}
 
-	return FormatString(buffr, GetStringPtr(GB(string, 0, 16)), args, GB(string, 24, 8), last);
+	return FormatString(buffr, GetStringPtr(string), args, case_index, last);
 }
 
 char *GetString(char *buffr, StringID string, const char *last)
@@ -335,24 +333,24 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 	return buff;
 }
 
-static char *FormatYmdString(char *buff, Date date, uint modifier, const char *last)
+static char *FormatYmdString(char *buff, Date date, uint case_index, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
 	int64 args[] = {ymd.day + STR_ORDINAL_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year};
 	StringParameters tmp_params(args);
-	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_LONG), &tmp_params, modifier >> 24, last);
+	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_LONG), &tmp_params, case_index, last);
 }
 
-static char *FormatMonthAndYear(char *buff, Date date, uint modifier, const char *last)
+static char *FormatMonthAndYear(char *buff, Date date, uint case_index, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
 	int64 args[] = {STR_MONTH_JAN + ymd.month, ymd.year};
 	StringParameters tmp_params(args);
-	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_SHORT), &tmp_params, modifier >> 24, last);
+	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_SHORT), &tmp_params, case_index, last);
 }
 
 static char *FormatTinyOrISODate(char *buff, Date date, StringID str, const char *last)
@@ -686,7 +684,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 		args->offset = orig_offset;
 	}
 	WChar b;
-	uint modifier = 0;
+	uint next_substr_case_index = 0;
 	char *buf_start = buff;
 	std::stack<const char *> str_stack;
 	str_stack.push(str_arg);
@@ -715,8 +713,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 				StringID substr = args->GetInt32(SCC_NEWGRF_PRINT_WORD_STRING_ID);
 				str_stack.push(GetStringPtr(substr));
-				case_index = modifier >> 24;
-				modifier = 0;
+				case_index = next_substr_case_index;
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -747,27 +745,27 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_DATE_LONG: // {DATE_LONG}
-				buff = FormatYmdString(buff, args->GetInt32(SCC_DATE_LONG), modifier, last);
+				buff = FormatYmdString(buff, args->GetInt32(SCC_DATE_LONG), next_substr_case_index, last);
 				break;
 
 			case SCC_DATE_SHORT: // {DATE_SHORT}
-				buff = FormatMonthAndYear(buff, args->GetInt32(SCC_DATE_SHORT), modifier, last);
+				buff = FormatMonthAndYear(buff, args->GetInt32(SCC_DATE_SHORT), next_substr_case_index, last);
 				break;
 
 			case SCC_VELOCITY: { // {VELOCITY}
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[] = {ConvertSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY) * 10 / 16)};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].velocity), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].velocity), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
 			case SCC_HEIGHT: { // {HEIGHT}
 				int64 args_array[] = {_units[_settings_game.locale.units].c_height.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].height), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].height), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -789,8 +787,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						assert(_settings_game.locale.units < lengthof(_units));
 						int64 args_array[] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64())};
 						StringParameters tmp_params(args_array);
-						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, modifier >> 24, last);
-						modifier = 0;
+						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, next_substr_case_index, last);
+						next_substr_case_index = 0;
 						break;
 					}
 
@@ -798,8 +796,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						assert(_settings_game.locale.units < lengthof(_units));
 						int64 args_array[] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64())};
 						StringParameters tmp_params(args_array);
-						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, modifier >> 24, last);
-						modifier = 0;
+						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, next_substr_case_index, last);
+						next_substr_case_index = 0;
 						break;
 					}
 
@@ -814,46 +812,46 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_STRING1: { // {STRING1}
 				/* String that consumes ONE argument */
-				uint str = modifier + args->GetInt32(SCC_STRING1);
+				StringID str = args->GetInt32(SCC_STRING1);
 				StringParameters sub_args(*args, 1);
-				buff = GetStringWithArgs(buff, str, &sub_args, last);
-				modifier = 0;
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				next_substr_case_index = 0;
 				break;
 			}
 
 			case SCC_STRING2: { // {STRING2}
 				/* String that consumes TWO arguments */
-				uint str = modifier + args->GetInt32(SCC_STRING2);
+				StringID str = args->GetInt32(SCC_STRING2);
 				StringParameters sub_args(*args, 2);
-				buff = GetStringWithArgs(buff, str, &sub_args, last);
-				modifier = 0;
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				next_substr_case_index = 0;
 				break;
 			}
 
 			case SCC_STRING3: { // {STRING3}
 				/* String that consumes THREE arguments */
-				uint str = modifier + args->GetInt32(SCC_STRING3);
+				StringID str = args->GetInt32(SCC_STRING3);
 				StringParameters sub_args(*args, 3);
-				buff = GetStringWithArgs(buff, str, &sub_args, last);
-				modifier = 0;
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				next_substr_case_index = 0;
 				break;
 			}
 
 			case SCC_STRING4: { // {STRING4}
 				/* String that consumes FOUR arguments */
-				uint str = modifier + args->GetInt32(SCC_STRING4);
+				StringID str = args->GetInt32(SCC_STRING4);
 				StringParameters sub_args(*args, 4);
-				buff = GetStringWithArgs(buff, str, &sub_args, last);
-				modifier = 0;
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				next_substr_case_index = 0;
 				break;
 			}
 
 			case SCC_STRING5: { // {STRING5}
 				/* String that consumes FIVE arguments */
-				uint str = modifier + args->GetInt32(SCC_STRING5);
+				StringID str = args->GetInt32(SCC_STRING5);
 				StringParameters sub_args(*args, 5);
-				buff = GetStringWithArgs(buff, str, &sub_args, last);
-				modifier = 0;
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -872,8 +870,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				int64 args_array[2] = {i->town->index, GetIndustrySpec(i->type)->name};
 				StringParameters tmp_params(args_array);
 
-				buff = FormatString(buff, GetStringPtr(STR_FORMAT_INDUSTRY_NAME), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(STR_FORMAT_INDUSTRY_NAME), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -881,8 +879,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64(SCC_VOLUME))};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -940,8 +938,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_power.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].power), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].power), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -949,8 +947,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_volume), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_volume), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -958,8 +956,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64(SCC_WEIGHT))};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -967,8 +965,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_weight), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_weight), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -976,8 +974,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_force.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].force), &tmp_params, modifier >> 24, last);
-				modifier = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].force), &tmp_params, next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -993,13 +991,13 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 
 			case SCC_STRING: {// {STRING}
-				uint str = modifier + args->GetInt32(SCC_STRING);
+				StringID str = args->GetInt32(SCC_STRING);
 				/* WARNING. It's prohibited for the included string to consume any arguments.
 				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
 				 * To debug stuff you can set argv to NULL and it will tell you */
 				StringParameters tmp_params(args->GetDataPointer(), args->num_param - args->offset, NULL);
-				buff = GetStringWithArgs(buff, str, &tmp_params, last);
-				modifier = 0;
+				buff = GetStringWithArgs(buff, str, &tmp_params, last, next_substr_case_index);
+				next_substr_case_index = 0;
 				break;
 			}
 
@@ -1243,7 +1241,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_SETCASE: { // {SETCASE}
 				/* This is a pseudo command, it's outputted when someone does {STRING.ack}
 				 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */
-				modifier = (byte)*str++ << 24;
+				next_substr_case_index = (byte)*str++;
 				break;
 			}
 
