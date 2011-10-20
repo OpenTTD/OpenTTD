@@ -755,7 +755,7 @@ static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
 	if (callback == CALLBACK_FAILED) return y;
 
-	StartTextRefStackUsage(4);
+	StartTextRefStackUsage(6);
 	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback), TC_BLACK);
 	StopTextRefStackUsage();
 	return result;
