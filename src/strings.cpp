@@ -100,7 +100,7 @@ static char *StationGetSpecialString(char *buff, int x, const char *last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
 static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, const char *last);
 
-static char *FormatString(char *buff, const char *str, StringParameters *args, uint casei, const char *last, bool dry_run = false);
+static char *FormatString(char *buff, const char *str, StringParameters *args, uint case_index, const char *last, bool dry_run = false);
 
 struct LanguagePack : public LanguagePackHeader {
 	char data[]; // list of strings
@@ -659,11 +659,11 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
  * @param buff  The buffer to write the final string to.
  * @param str   The original string with format codes.
  * @param args  Pointer to extra arguments used by various string codes.
- * @param casei
+ * @param case_index
  * @param last  Pointer to just past the end of the buff array.
  * @param dry_run True when the argt array is not yet initialized.
  */
-static char *FormatString(char *buff, const char *str_arg, StringParameters *args, uint casei, const char *last, bool dry_run)
+static char *FormatString(char *buff, const char *str_arg, StringParameters *args, uint case_index, const char *last, bool dry_run)
 {
 	uint orig_offset = args->offset;
 
@@ -677,10 +677,10 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			 * pass makes sure the argv array is correctly filled and the second
 			 * pass can reference later values without problems. */
 			struct TextRefStack *backup = CreateTextRefStackBackup();
-			FormatString(buff, str_arg, args, casei, last, true);
+			FormatString(buff, str_arg, args, case_index, last, true);
 			RestoreTextRefStackBackup(backup);
 		} else {
-			FormatString(buff, str_arg, args, casei, last, true);
+			FormatString(buff, str_arg, args, case_index, last, true);
 		}
 		/* We have to restore the original offset here to to read the correct values. */
 		args->offset = orig_offset;
@@ -715,7 +715,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 				StringID substr = args->GetInt32(SCC_NEWGRF_PRINT_WORD_STRING_ID);
 				str_stack.push(GetStringPtr(substr));
-				casei = modifier >> 24;
+				case_index = modifier >> 24;
 				modifier = 0;
 				break;
 			}
@@ -742,7 +742,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
 				const char *str = (const char *)(size_t)args->GetInt64();
-				buff = FormatString(buff, str, args, casei, last);
+				buff = FormatString(buff, str, args, case_index, last);
 				break;
 			}
 
@@ -1252,7 +1252,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				 * Each LEN is printed using 2 bytes in big endian order. */
 				uint num = (byte)*str++;
 				while (num) {
-					if ((byte)str[0] == casei) {
+					if ((byte)str[0] == case_index) {
 						/* Found the case, adjust str pointer and continue */
 						str += 3;
 						break;
