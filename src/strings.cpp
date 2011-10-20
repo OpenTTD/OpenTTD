@@ -746,26 +746,26 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_DATE_LONG: // {DATE_LONG}
 				buff = FormatYmdString(buff, args->GetInt32(SCC_DATE_LONG), next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 
 			case SCC_DATE_SHORT: // {DATE_SHORT}
 				buff = FormatMonthAndYear(buff, args->GetInt32(SCC_DATE_SHORT), next_substr_case_index, last);
+				next_substr_case_index = 0;
 				break;
 
 			case SCC_VELOCITY: { // {VELOCITY}
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[] = {ConvertSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY) * 10 / 16)};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].velocity), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].velocity), &tmp_params, 0, last);
 				break;
 			}
 
 			case SCC_HEIGHT: { // {HEIGHT}
 				int64 args_array[] = {_units[_settings_game.locale.units].c_height.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].height), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].height), &tmp_params, 0, last);
 				break;
 			}
 
@@ -787,8 +787,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						assert(_settings_game.locale.units < lengthof(_units));
 						int64 args_array[] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64())};
 						StringParameters tmp_params(args_array);
-						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, next_substr_case_index, last);
-						next_substr_case_index = 0;
+						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, 0, last);
 						break;
 					}
 
@@ -796,8 +795,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						assert(_settings_game.locale.units < lengthof(_units));
 						int64 args_array[] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64())};
 						StringParameters tmp_params(args_array);
-						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, next_substr_case_index, last);
-						next_substr_case_index = 0;
+						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, 0, last);
 						break;
 					}
 
@@ -879,8 +877,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64(SCC_VOLUME))};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, 0, last);
 				break;
 			}
 
@@ -938,8 +935,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_power.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].power), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].power), &tmp_params, 0, last);
 				break;
 			}
 
@@ -947,8 +943,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_volume), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_volume), &tmp_params, 0, last);
 				break;
 			}
 
@@ -956,8 +951,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64(SCC_WEIGHT))};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, 0, last);
 				break;
 			}
 
@@ -965,8 +959,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_weight), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_weight), &tmp_params, 0, last);
 				break;
 			}
 
@@ -974,8 +967,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				assert(_settings_game.locale.units < lengthof(_units));
 				int64 args_array[1] = {_units[_settings_game.locale.units].c_force.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].force), &tmp_params, next_substr_case_index, last);
-				next_substr_case_index = 0;
+				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].force), &tmp_params, 0, last);
 				break;
 			}
 
