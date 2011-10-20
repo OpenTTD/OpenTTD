@@ -755,10 +755,8 @@ static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
 	if (callback == CALLBACK_FAILED) return y;
 
-	/* STR_BLACK_STRING is used to start the string with {BLACK} */
-	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
-	StartTextRefStackUsage(0);
-	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, STR_BLACK_STRING);
+	StartTextRefStackUsage(4);
+	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback), TC_BLACK);
 	StopTextRefStackUsage();
 	return result;
 }
