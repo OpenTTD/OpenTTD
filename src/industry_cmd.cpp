@@ -911,6 +911,30 @@ static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_
 	if (i->founder == old_owner) i->founder = (new_owner == INVALID_OWNER) ? OWNER_NONE : new_owner;
 }
 
+/**
+ * Check whether the tile is a forest.
+ * @param tile the tile to investigate.
+ * @return true if and only if the tile is a forest
+ */
+bool IsTileForestIndustry(TileIndex tile)
+{
+	/* Check for industry tile */
+	if (!IsTileType(tile, MP_INDUSTRY)) return false;
+
+	const Industry *ind = Industry::GetByTile(tile);
+
+	/* Check for organic industry (i.e. not processing or extractive) */
+	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;
+
+	/* Check for wood production */
+	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
+		/* The industry produces wood. */
+		if (ind->produced_cargo[i] != CT_INVALID && CargoSpec::Get(ind->produced_cargo[i])->label == 'WOOD') return true;
+	}
+
+	return false;
+}
+
 static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
 
 static bool IsBadFarmFieldTile(TileIndex tile)

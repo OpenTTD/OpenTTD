@@ -180,29 +180,6 @@ static bool CMSATree(TileIndex tile)
 	return IsTileType(tile, MP_TREES);
 }
 
-/**
- * Check whether the tile is a forest.
- * @param tile the tile to investigate.
- * @return true if and only if the tile is a forest
- */
-static bool CMSAForest(TileIndex tile)
-{
-	/* No industry */
-	if (!IsTileType(tile, MP_INDUSTRY)) return false;
-
-	const Industry *ind = Industry::GetByTile(tile);
-
-	/* No extractive industry */
-	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;
-
-	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
-		/* The industry produces wood. */
-		if (ind->produced_cargo[i] != CT_INVALID && CargoSpec::Get(ind->produced_cargo[i])->label == 'WOOD') return true;
-	}
-
-	return false;
-}
-
 #define M(x) ((x) - STR_SV_STNAME)
 
 enum StationNaming {
@@ -322,7 +299,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	/* Check woods */
 	if (HasBit(free_names, M(STR_SV_STNAME_WOODS)) && (
 				CountMapSquareAround(tile, CMSATree) >= 8 ||
-				CountMapSquareAround(tile, CMSAForest) >= 2)
+				CountMapSquareAround(tile, IsTileForestIndustry) >= 2)
 			) {
 		return _settings_game.game_creation.landscape == LT_TROPIC ? STR_SV_STNAME_FOREST : STR_SV_STNAME_WOODS;
 	}
