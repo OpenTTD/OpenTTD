@@ -1090,10 +1090,6 @@ bool Vehicle::HandleBreakdown()
 				this->breakdowns_since_last_service++;
 			}
 
-			this->MarkDirty();
-			SetWindowDirty(WC_VEHICLE_VIEW, this->index);
-			SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
-
 			if (this->type == VEH_AIRCRAFT) {
 				/* Aircraft just need this flag, the rest is handled elsewhere */
 				this->vehstatus |= VS_AIRCRAFT_BROKEN;
@@ -1111,6 +1107,11 @@ bool Vehicle::HandleBreakdown()
 					if (u != NULL) u->animation_state = this->breakdown_delay * 2;
 				}
 			}
+
+			this->MarkDirty(); // Update graphics after speed is zeroed
+			SetWindowDirty(WC_VEHICLE_VIEW, this->index);
+			SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+
 			/* FALL THROUGH */
 		case 1:
 			/* Aircraft breakdowns end only when arriving at the airport */
