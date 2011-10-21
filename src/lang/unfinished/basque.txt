@@ -849,6 +849,11 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK} Trafiko nahaste-borrastea {TOWN}en!{}{} {STRING}k ordaindutako errepideen konponketa plana sei hilabeterako arazoak esanguratzen die gidariei!
 
 # Extra view window
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Leihoa {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Leihora kopiatu
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK} Leiho nagusian ikusten dena leiho honetara kopiatu
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Leihotik kpiatutakoa itsatsi
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Leiho honetan ikusten dena leiho nagusian itsasi
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Joko Aukerak
@@ -1143,13 +1148,13 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Garraia
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Bertako errepideak hobetzea utzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Beste empresei dirua bidaltzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Zamaren pisuaren biderkatzailea tren astunagoak simulatzeko: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}hegazkinen: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hegazkinen abiaduraren erlazioa: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazkinen akzidente kopurua : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :gutxitua
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :arrunta
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Herrien errepideetan zehar gidatzen diren errepide geltokiak baimendu : {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Arerioen errepideetan zahar gidatzeko errepide geltokiak baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Arerioen errepideetan zehar-gidatzeko-errepide-geltokiak baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Alboko geltokiak eraikitzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}NewGRF set bat baino gehiago erabili ahal izatea aktibatu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Hau ezin da aldatu ibilgailuak daudenean
@@ -1164,6 +1169,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :garraio guztien
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Ohartarazi ibilgailu baten irabazketak negatiboak badira: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ibilgailuei inoiz ez zaie epea amaitzen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Ibilgailu bat zaharra bihurtzen denean automatikoki berritzea: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Ibilgailuak haien gehienezko adina {ORANGE}{STRING}{LTBLUE} {P 0:1 "" s} hilabete eta gero/baino lehen zaharberritzea
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Ibilgailuak berritzeko behar den gutxienezko dirua: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Akats mezuaren iraupena: {ORANGE}{STRING} segundu{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Erakutsi tresnei buruzko argibideak: {ORANGE}Pasatu sagua {STRING} segundu{P 0:1 "" ak}
@@ -1184,37 +1190,56 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Zuhaitz
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originala
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Altuera mapen rotazioa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Eszenario-mapa lauak hartzen duten altuera maila: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Maparen ertzean dauden laukitxoetan paisaia eraldatzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ipar ertzean dauden laukitxoetako bat, edo bat baino gehiago ez daude hutsik
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Edozein ertzean dauden laukitxo bat edo bat baino gehiagotan ez da urik egongo
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Geltokien gehienezko zabalera: {ORANGE}{STRING} {P 0:1 "" s} laukitxo {RED}Kontuz: zenbaki haundiak jokoa astiroago iblitzea eragin dezakete
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Heliportuetan helikopteroak automatikoki hornitu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Paisaia eraldatzeko lanabesak tren/ura/errepide/aireportu eraikitzeko tauletan agertzea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Mapa txikian erabiltzeko lur kolorea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Berdea
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Berde iluna
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Bioleta
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Leihoa mapan zehar mugitzeko sagua mugitzeko era aldrebes jarri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Mapan zehar mugitzeko mugimenduak egitean, hauen abiadura leuntzea: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Zerbait eraikitzerakoan neurtresna bat agertzea : {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Konpainien armarria erakutsi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ezer ez
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Enpresa propioa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Enpresa guztiak
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Saguaren gurpilaren eginkizuna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Mapari zoom egin
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mapa korritu
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Itzalita
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mapan zehar mugitzerakoan saguaren gurpilaren abiadura: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komandoa+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Itzalita
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Saguaren ezkerreko botoiarekin mapan zehar mugitzea: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Gordetako jokoen izenetan {ORANGE}{STRING}{LTBLUE} data fomatua erabili
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :luzea (2008ko Abe 31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :laburra (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Paletarik zehazten ez duten NewGRF berrientzat aurretik zehaztutako paleta erabiltzea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paleta
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paleta
 
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikoki jokoa pausan jarri joko berri bat hastearakoan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Jokoa geldituta dagoenean baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :egintzarik ez
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :eraikitzeko ez diren egintza guztiak
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :guztiak paisaia eraldatzeko egintzak baino
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :egintza guztiak
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Hobetutako ibilgailu zerrendak erabili: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Lehena eskuragarri
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Azkena eskuragarri
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Gehien erabilia
