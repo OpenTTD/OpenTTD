@@ -274,7 +274,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimuma rapid
 STR_SORT_BY_MODEL                                               :Tipo
 STR_SORT_BY_VALUE                                               :Valoro
 STR_SORT_BY_LENGTH                                              :Longo
-STR_SORT_BY_LIFE_TIME                                           :Restanta vivdaŭro
+STR_SORT_BY_LIFE_TIME                                           :Resta vivo
 STR_SORT_BY_TIMETABLE_DELAY                                     :Horara malfruo
 STR_SORT_BY_FACILITY                                            :Stacidoma tipo
 STR_SORT_BY_WAITING                                             :Valoro de atendanta ŝarĝo

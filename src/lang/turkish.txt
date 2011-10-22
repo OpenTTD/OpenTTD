@@ -1348,7 +1348,6 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Görün
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Etkileşim
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyaller
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kargo idaresi
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}İşaretlerde otomatik geri çevirme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Otomatik yenileme
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Bakımlar
@@ -1361,6 +1360,7 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Endüst
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Trenler için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Önerilen)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}İşaretlerde otomatik geri çevirme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Arabalar için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Önerilen)
