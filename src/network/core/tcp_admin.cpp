@@ -19,6 +19,12 @@
 #include "tcp_admin.h"
 #include "../../debug.h"
 
+/* Make sure that these enums match. */
+assert_compile((int)CRR_MANUAL    == (int)ADMIN_CRR_MANUAL);
+assert_compile((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);
+assert_compile((int)CRR_BANKRUPT  == (int)ADMIN_CRR_BANKRUPT);
+assert_compile((int)CRR_END       == (int)ADMIN_CRR_END);
+
 NetworkAdminSocketHandler::NetworkAdminSocketHandler(SOCKET s)
 {
 	this->sock = s;
