@@ -191,7 +191,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 /* static */ int32 AIOrder::GetOrderCount(VehicleID vehicle_id)
 {
-	return AIVehicle::IsValidVehicle(vehicle_id) ? ::Vehicle::Get(vehicle_id)->GetNumOrders() : -1;
+	return AIVehicle::IsValidVehicle(vehicle_id) ? ::Vehicle::Get(vehicle_id)->GetNumManualOrders() : -1;
 }
 
 /* static */ TileIndex AIOrder::GetOrderDestination(VehicleID vehicle_id, OrderPosition order_position)
