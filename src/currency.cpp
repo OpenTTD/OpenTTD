@@ -28,30 +28,30 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    2, "", CF_NOEURO, "$",            "",              0, STR_GAME_OPTIONS_CURRENCY_USD    }, ///< american dollar
 	{    2, "", CF_ISEURO, "\xE2\x82\xAC", "",              0, STR_GAME_OPTIONS_CURRENCY_EUR    }, ///< euro
 	{  220, "", CF_NOEURO, "\xC2\xA5",     "",              0, STR_GAME_OPTIONS_CURRENCY_JPY    }, ///< japanese yen
-	{   20, "", 2002,      "",             NBSP"S.",        1, STR_GAME_OPTIONS_CURRENCY_ATS    }, ///< austrian schilling
-	{   59, "", 2002,      "BEF"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_BEF    }, ///< belgian franc
+	{   27, "", 2002,      "",             NBSP"S.",        1, STR_GAME_OPTIONS_CURRENCY_ATS    }, ///< austrian schilling
+	{   81, "", 2002,      "BEF"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_BEF    }, ///< belgian franc
 	{    2, "", CF_NOEURO, "CHF"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_CHF    }, ///< swiss franc
 	{   41, "", CF_NOEURO, "",             NBSP"K\xC4\x8D", 1, STR_GAME_OPTIONS_CURRENCY_CZK    }, ///< czech koruna
-	{    3, "", 2002,      "DM"NBSP,       "",              0, STR_GAME_OPTIONS_CURRENCY_DEM    }, ///< deutsche mark
+	{    4, "", 2002,      "DM"NBSP,       "",              0, STR_GAME_OPTIONS_CURRENCY_DEM    }, ///< deutsche mark
 	{   11, "", CF_NOEURO, "",             NBSP"kr",        1, STR_GAME_OPTIONS_CURRENCY_DKK    }, ///< danish krone
-	{  245, "", 2002,      "Pts"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_ESP    }, ///< spanish peseta
-	{    9, "", 2002,      "",             NBSP"mk",        1, STR_GAME_OPTIONS_CURRENCY_FIM    }, ///< finnish markka
-	{   10, "", 2002,      "FF"NBSP,       "",              0, STR_GAME_OPTIONS_CURRENCY_FRF    }, ///< french franc
-	{  500, "", 2002,      "",             "Dr.",           1, STR_GAME_OPTIONS_CURRENCY_GRD    }, ///< greek drachma
+	{  333, "", 2002,      "Pts"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_ESP    }, ///< spanish peseta
+	{   12, "", 2002,      "",             NBSP"mk",        1, STR_GAME_OPTIONS_CURRENCY_FIM    }, ///< finnish markka
+	{   13, "", 2002,      "FF"NBSP,       "",              0, STR_GAME_OPTIONS_CURRENCY_FRF    }, ///< french franc
+	{  681, "", 2002,      "",             "Dr.",           1, STR_GAME_OPTIONS_CURRENCY_GRD    }, ///< greek drachma
 	{  378, "", CF_NOEURO, "",             NBSP"Ft",        1, STR_GAME_OPTIONS_CURRENCY_HUF    }, ///< hungarian forint
 	{  130, "", CF_NOEURO, "",             NBSP"Kr",        1, STR_GAME_OPTIONS_CURRENCY_ISK    }, ///< icelandic krona
-	{ 2850, "", 2002,      "",             NBSP"L.",        1, STR_GAME_OPTIONS_CURRENCY_ITL    }, ///< italian lira
-	{    3, "", 2002,      "NLG"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_NLG    }, ///< dutch gulden
+	{ 3873, "", 2002,      "",             NBSP"L.",        1, STR_GAME_OPTIONS_CURRENCY_ITL    }, ///< italian lira
+	{    4, "", 2002,      "NLG"NBSP,      "",              0, STR_GAME_OPTIONS_CURRENCY_NLG    }, ///< dutch gulden
 	{   12, "", CF_NOEURO, "",             NBSP"Kr",        1, STR_GAME_OPTIONS_CURRENCY_NOK    }, ///< norwegian krone
 	{    6, "", CF_NOEURO, "",             NBSP"z\xC5\x82", 1, STR_GAME_OPTIONS_CURRENCY_PLN    }, ///< polish zloty
 	{    5, "", CF_NOEURO, "",             NBSP"Lei",       1, STR_GAME_OPTIONS_CURRENCY_RON    }, ///< romanian leu
 	{   50, "", CF_NOEURO, "",             NBSP"p",         1, STR_GAME_OPTIONS_CURRENCY_RUR    }, ///< russian rouble
-	{  352, "", 2007,      "",             NBSP"SIT",       1, STR_GAME_OPTIONS_CURRENCY_SIT    }, ///< slovenian tolar
+	{  479, "", 2007,      "",             NBSP"SIT",       1, STR_GAME_OPTIONS_CURRENCY_SIT    }, ///< slovenian tolar
 	{   13, "", CF_NOEURO, "",             NBSP"Kr",        1, STR_GAME_OPTIONS_CURRENCY_SEK    }, ///< swedish krona
 	{    3, "", CF_NOEURO, "",             NBSP"TL",        1, STR_GAME_OPTIONS_CURRENCY_TRY    }, ///< turkish lira
-	{   52, "", 2009,      "",             NBSP"Sk",        1, STR_GAME_OPTIONS_CURRENCY_SKK    }, ///< slovak koruna
+	{   60, "", 2009,      "",             NBSP"Sk",        1, STR_GAME_OPTIONS_CURRENCY_SKK    }, ///< slovak koruna
 	{    4, "", CF_NOEURO, "R$"NBSP,       "",              0, STR_GAME_OPTIONS_CURRENCY_BRL    }, ///< brazil real
-	{   20, "", 2011,      "",             NBSP"EEK",       1, STR_GAME_OPTIONS_CURRENCY_EEK    }, ///< estonian krooni
+	{   31, "", 2011,      "",             NBSP"EEK",       1, STR_GAME_OPTIONS_CURRENCY_EEK    }, ///< estonian krooni
 	{    1, "", CF_NOEURO, "",             "",              2, STR_GAME_OPTIONS_CURRENCY_CUSTOM }, ///< custom currency
 };
 
