@@ -574,6 +574,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 
 
+
 # Advanced settings window
 
 
@@ -587,6 +588,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}உள�
 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {ORANGE}{STRING}
+
 
 
 
@@ -612,6 +614,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}சி�
 
 
 STR_INTRO_QUIT                                                  :{BLACK}விட்டுச் செல்
+
 
 
 
@@ -840,6 +843,8 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 
+# NewGRF scanning window
+
 # Sign list window
 
 # Sign window
@@ -995,6 +1000,9 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :மீதமிருக்கும் வாழ்நாள் (வருடங்கள்)
+
 
 
 
@@ -1054,6 +1062,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம்
 # Saveload messages
 
 # Map generation messages
+
 
 
 
