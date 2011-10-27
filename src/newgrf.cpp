@@ -2114,13 +2114,6 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 					housespec->cargo_acceptance[2] = 0;
 				}
 
-				/**
-				 * New houses do not (currently) expect to have a default start
-				 * date before 1930, as this breaks the build date stuff.
-				 * @see FinaliseHouseArray() for more details.
-				 */
-				if (housespec->min_year < 1930) housespec->min_year = 1930;
-
 				_loaded_newgrf_features.has_newhouses = true;
 				break;
 			}
