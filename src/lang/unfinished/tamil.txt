@@ -316,6 +316,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}தக�
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :சித்திரக்காட்சியை பதி
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :சித்திரக்காட்சியை ஏற்று
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :வரைபடத்தினை சேமி
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :திருத்தியை விட்டுச் செல்
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :விட்டுச் செல்
@@ -324,6 +325,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :விட்ட
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :விளையாட்டு விருப்ப பேரம்
 STR_SETTINGS_MENU_AI_SETTINGS                                   :செயற்கை அறிவாற்றல் அமைப்பு
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :கணினி குறியீடுகள் மற்றும் பெயர்கள் காட்டப்படுகின்றன
 ############ range ends here
 
 ############ range for file menu starts
@@ -356,30 +358,52 @@ STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :கம்பெ
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :புதிய தொழிற்சாலையை நிறுவு
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :இரயில்வே கட்டுமானம்
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :மின்சார இரயில்வே கட்டுமானம்
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :மோனோ இரயில் கட்டுமானம்
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :மேக்லெவ் கட்டுமானம்
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :சாலை கட்டுமானம்
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ட்ரேம்வே கட்டுமானம்
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :கடல்வழி போக்குவரத்து கட்டுமானம்
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :விமானநிலைய கட்டுமானம்
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :நிலத்தோற்றம் மாற்றுதல்
+STR_LANDSCAPING_MENU_PLANT_TREES                                :மரங்களை நடு
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :அறிவிக்கை பலகை வை
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :ஒலி/இசை
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :கடைசி செய்தி/செய்தி அறிவிக்கை
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :செய்தி அமைப்புகள்
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :செய்தி வரலாறு
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :நிலா பகுதி விவரம்
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
+STR_ABOUT_MENU_AI_DEBUG                                         :AI சரிபார்
+STR_ABOUT_MENU_SCREENSHOT                                       :திரைபடம்
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :முழு வரைபடத்தை படம் எடு
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' பற்றி
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -457,30 +481,85 @@ STR_GRAPH_INCOME_CAPTION                                        :{WHITE}வர�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}கம்பெனி செயல்வரம்பு (அதிகபட்ச செயல்வரம்பு=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}கம்பெனி மதிப்பீடுகள்
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}சரக்கு விற்பனை விலை
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}எடுத்துச் செல்லுதல் நாட்கள்
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}அனைத்தையும் செயலாக்கு
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}அனைத்தையும் செயலிளக்கவை
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}அனைத்து சரக்குகளையும் க்ராப்பில் காண்பி
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}எந்த சரக்கையும் க்ராபில் காட்டாதே
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}விவரமான செயல்திறன் விவரங்களை காண்பி
 
 # Graph key window
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}நிருவனங்களின் பட்டியல்
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :பொறியியலாளர்
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :போக்குவரத்து மேலாளர்
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :நிறுவனர்
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}விவரம்
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}இந்த நிறுவனத்தை பற்றி விவரங்களை பார்
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}வாகனங்கள்:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}நிலையங்கள்:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}குறைந்தபட்ச லாபம்:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}குறைந்தபட்ச வருமானம்:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}அதிபட்ச வருமானம்:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}சேர்க்கப்பட்டவை:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}சரக்கு:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}பணம்:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}கடன்:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}மொத்தம்:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}சென்ற வருடம் லபமடைந்த வக்கனங்களின் எண்ணிக்கை. இதில் இரயில், சாலை, விமான வாகங்கள் அடங்கும்
 
 # Music window
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}அனைத்தும்
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}பழைய பாணி
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}புதிய பாணி
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}ஒலி அளவு
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}குறைந்தபட்ச
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}அதிகபட்ச
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}இசைத்தடம்
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}தலைப்பு
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}இசையை நிறுத்து
 
 
 # Playlist window
+STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}இசைத்தடம் வரிசை
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}அழி
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}பதி
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}இசை அமைப்பை பத
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}நிறுவனங்களின் பட்டியல் {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :தொழிலதிபர்
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 
 # Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}வரைபடம் - {STRING}
 
+STR_SMALLMAP_TYPE_VEHICLES                                      :வாகனங்கள்
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :தொழிற்சாலைகள்
+STR_SMALLMAP_TYPE_ROUTES                                        :வழித்தடங்கள்
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}வரைபடத்தில் வாகனங்களை காட்டு
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}வரைபடத்தில் தொழிற்சாலைகளை காட்டு
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}வரைபடத்தில் வழித்தடங்களை காட்டு
 
 
 STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
@@ -522,6 +601,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 # Game options window
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :ஜப்பானிய என் (JPY)
 ############ end of currency region
 
 
@@ -567,7 +647,12 @@ STR_MINIMAL                                                     :குறைந
 
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
+STR_RIVERS_NONE                                                 :ஒன்றுமில்லை
+STR_RIVERS_FEW                                                  :சில
+STR_RIVERS_MODERATE                                             :நடுத்தரம்
+STR_RIVERS_LOT                                                  :பல
 
+STR_DISASTER_NONE                                               :ஒன்றுமில்லை
 
 
 
@@ -578,8 +663,15 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 # Advanced settings window
 
 
+STR_CONFIG_SETTING_COMPANIES_ALL                                :எல்லா நிறுவனங்களும்
 
+STR_CONFIG_SETTING_NONE                                         :ஒன்றுமில்லை
+STR_CONFIG_SETTING_ORIGINAL                                     :உண்மையான
+STR_CONFIG_SETTING_REALISTIC                                    :இயற்கையான
 
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :இடது
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :நடு
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :வலது
 
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ரயில் வண்டியின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}பாலத்தின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
@@ -594,6 +686,8 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}வா�
 
 
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :டாஸ் வண்ணத்தட்டு
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :விண்டோஸ் வண்ணத்தட்டு
 
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {ORANGE}{STRING}
@@ -606,6 +700,9 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தக�
 
 
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :அசல்
+STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
+STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(பரிந்துரைக்கப்பட்டது)
 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}சிக்னல்களில் தானியங்கி மீட்சி: {ORANGE}{STRING}
 
@@ -618,6 +715,7 @@ STR_INTRO_QUIT                                                  :{BLACK}வி�
 
 
 
+STR_INTRO_TRANSLATION                                           :{BLACK}இந்த மொழிபெயர்ப்பில் {NUM} இல்லை {P "" s}.மொழிபெயர்பாளராக பதிவு செய்து OpenTTDவிற்கு உதவவும். மேலும் விவரங்கள் அறிய readme.txt ஐ பார்க்கவும்..
 
 # Quit window
 STR_QUIT_YES                                                    :{BLACK}ஆமாம்
@@ -794,6 +892,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 # Industries come directly from their industry names
 
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :எஃகு தூண் இரயில்வே பாலம்
 
 
 
@@ -801,9 +900,11 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 # About OpenTTD window
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}வரைபடத்தினை சேமி
 
 
 # World generation
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}ஆறுகள்:
 
 # Strings for map borders at game generation
 
@@ -813,6 +914,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 
 
 # Map generation progress
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ஆறு உருவாக்குதல்
 
 # NewGRF settings
 
@@ -831,6 +933,9 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_GRM_FAILED                                     :கேட்ட GRF பதிவுகள் கிடைக்காது
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING}, {4:STRING}ஆல் செயலிழக்க செய்யப்பட்டது
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :இல்லாத/தெரியாத ஸ்ப்ரைட் வடிவமைப்பு
 
 # NewGRF related 'general' warnings
 
@@ -844,6 +949,9 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF பதிவுகள் ஆராயப்படுகின்றன
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF பதிவுகள் ஆராயப்படுகின்றன. அவற்றின் எண்ணிக்கையை பொறுத்து காலதாமதம் ஆகலாம்...
+STR_NEWGRF_SCAN_ARCHIVES                                        :சுவடிகள் தேடப்படுகின்றன
 
 # Sign list window
 
@@ -916,6 +1024,9 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 # Build vehicle window
 
 
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}கடலில் வேகம்: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}கால்வாய்/ஆறில் வேகம்: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}செலவுகள்: {GOLD}{CURRENCY}/வருடத்திற்கு
 
 
 
@@ -1065,6 +1176,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம்
 
 
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... படம் ரொம்ப பெரியதாக உள்ளது.
 
 
 # Soundset messages
@@ -1087,8 +1199,11 @@ STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ம�
 # Town related errors
 
 # Industry related errors
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... பனி-கோடின் மேலே மட்டுமே கட்ட முடியும்
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... பனி-கோடின் கீழே மட்டுமே கட்ட முடியும்
 
 # Station construction related errors
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}இங்கே இரயில் நிலையம் கட்ட முடியாது...
 
 
 # Station destruction related errors
@@ -1118,6 +1233,9 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...ச�
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...ட்ராம் வழி இல்லை
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... கடலில் கட்ட முடியாது
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... கால்வாயின் மேல் கட்ட முடியாது
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ஆற்றின் மேல் கட்ட முடியாது.
 
 # Tree related errors
 
@@ -1143,6 +1261,7 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... ச�
 
 
 # Specific vehicle errors
+STR_ERROR_TRAIN_START_NO_POWER                                  :இரயில கிளம்ப ஆற்றல் இல்லை
 
 
 
@@ -1172,6 +1291,9 @@ STR_SV_STNAME                                                   :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :பாலாக்ஃ எஃகு லாரி
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl எஃகு லாரி
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :கெல்லிங் எஃகு பாரஊர்தி
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl பேபர் ட்ரக்
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS பேபர் ட்ரக்
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :பாலொகஃ பழ ட்ரக்
@@ -1259,7 +1381,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} காவியக்கட்டை
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} காவியக்கட்டை #{COMMA}
-STR_FORMAT_COMPANY_NUM                                          :(கம்பெனி {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(நிறுவனம் {COMMA})
 STR_FORMAT_GROUP_NAME                                           :குழு {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} பாதைப்புள்ளி
@@ -1329,6 +1451,7 @@ STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLAC
 STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
