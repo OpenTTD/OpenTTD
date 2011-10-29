@@ -584,7 +584,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 					case 0x17:
 					case 0x18:
 					case 0x19:
-					case 0x20: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16); break;
+					case 0x1A: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16); break;
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
