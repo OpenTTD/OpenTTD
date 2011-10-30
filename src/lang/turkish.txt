@@ -121,7 +121,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT} şeker
 STR_QUANTITY_TOYS                                               :{COMMA} oyuncak
 STR_QUANTITY_SWEETS                                             :{COMMA} çanta tatlı
 STR_QUANTITY_COLA                                               :{VOLUME} kola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} pamukhelva
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} pamuk helva
 STR_QUANTITY_BUBBLES                                            :{COMMA} balon
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} bonbon
 STR_QUANTITY_BATTERIES                                          :{COMMA} pil
@@ -505,14 +505,14 @@ STR_MONTH_JAN                                                   :Ocak
 STR_MONTH_FEB                                                   :Subat
 STR_MONTH_MAR                                                   :Mart
 STR_MONTH_APR                                                   :Nisan
-STR_MONTH_MAY                                                   :Mayis
+STR_MONTH_MAY                                                   :Mayıs
 STR_MONTH_JUN                                                   :Haziran
 STR_MONTH_JUL                                                   :Temmuz
 STR_MONTH_AUG                                                   :Ağustos
 STR_MONTH_SEP                                                   :Eylül
 STR_MONTH_OCT                                                   :Ekim
 STR_MONTH_NOV                                                   :Kasım
-STR_MONTH_DEC                                                   :Aralik
+STR_MONTH_DEC                                                   :Aralık
 ############ range for months ends
 
 # Graph window
@@ -790,8 +790,8 @@ STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} tükendi, kapaniyor!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} kaynak sorunları yüzünden kapaniyor!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} her an kapanabileceğini duyurdu!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} kaynak sorunları yüzünden kapanıyor!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Yakında ağaç olmadığı için {STRING} kapanıyor!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Euro kullanılacak!
@@ -2290,7 +2290,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Senaryoy
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Senaryoyu Yükle
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Yükseklik haritası yükle
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Yükseklik Haritasını Kaydet
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Su anki varsayılan kayıt/yükleme dizinine gitmek için tıklayın
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Şu anki varsayılan kayıt/yükleme dizinine gitmek için tıklayın
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} bos
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Sürücü, klasör ve kayıtli oyun listesi
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Kaydetmek için kullanılacak dosya adı
@@ -3931,7 +3931,7 @@ STR_SV_STNAME_ANNEXE                                            :{STRING} Ekleme
 STR_SV_STNAME_SIDINGS                                           :{STRING} Kenarı
 STR_SV_STNAME_BRANCH                                            :{STRING} Kolu
 STR_SV_STNAME_UPPER                                             :Yukarı {STRING}
-STR_SV_STNAME_LOWER                                             :Asağı {STRING}
+STR_SV_STNAME_LOWER                                             :Aşağı {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Ormanı
 STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. istasyon
@@ -3976,7 +3976,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Tahıl Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Odun Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Demir Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Çelik Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Zirhli Vagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Zırhlı Vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Yiyecek Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Kağıt Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Bakır Vagonu
@@ -4006,7 +4006,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Tahıl Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Odun Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Demir Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Çelik Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Zirhli Vagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Zırhlı Vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Yiyecek Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Kağıt Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Bakır Vagonu
@@ -4038,7 +4038,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Tahıl Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Odun Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Demir Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Çelik Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Zirhli Vagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Zırhlı Vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Yiyecek Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Kağıt Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Bakır Vagonu
@@ -4092,9 +4092,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Demir Ka
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Çelik Kamyonu
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Çelik Kamyonu
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Çelik Kamyonu
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Zirhli Araç
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Zirhli Araç
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Zirhli Araç
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Zırhlı Araç
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Zırhlı Araç
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Zırhlı Araç
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Yiyecek Arabası
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Yiyecek Arabası
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Yiyecek Arabası

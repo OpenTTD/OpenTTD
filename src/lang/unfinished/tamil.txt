@@ -269,15 +269,15 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :கடந்த
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :இந்த ஆண்டு வருமானம்
 STR_SORT_BY_AGE                                                 :வயது
 STR_SORT_BY_RELIABILITY                                         :நம்பகத்தன்மை
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity per cargo type
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :மொத்த கொள்ளளவு ஒவ்வொரு சரக்கிற்கும்
 STR_SORT_BY_MAX_SPEED                                           :அதிகபட்ச வேகம்
 STR_SORT_BY_MODEL                                               :மாடல்
 STR_SORT_BY_VALUE                                               :மதிப்பு
 STR_SORT_BY_LENGTH                                              :நீளம்
 STR_SORT_BY_LIFE_TIME                                           :மீதமிருக்கும் வாழ்நாள்
-STR_SORT_BY_TIMETABLE_DELAY                                     :Timetable delay
+STR_SORT_BY_TIMETABLE_DELAY                                     :கால தாமதம்
 STR_SORT_BY_FACILITY                                            :நிலைய வகை
-STR_SORT_BY_WAITING                                             :Waiting cargo value
+STR_SORT_BY_WAITING                                             :காத்திருக்கும் சரக்கின் அளவு
 STR_SORT_BY_RATING_MAX                                          :சரக்கு உச்ச வகைமதிப்பு
 STR_SORT_BY_RATING_MIN                                          :சரக்கு மீச்சிறு வகைமதிப்பு
 STR_SORT_BY_ENGINE_ID                                           :இயந்திரம் அடையாளம் (வரிசை செய்)
@@ -292,6 +292,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :சரக்க
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}விருப்பத் தேர்வு
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}விளையாட்டை சேமி,கைவிடு, வெளியேறு
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}நகர புத்தகம் காண்பி
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}உதவித் தொகை காண்பி
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}நிறுவனத்தின் நிலையங்களின் பட்டியலை காண்பி
@@ -311,6 +312,7 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}கர�
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}சித்திரக்காட்சி திருத்தி
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}ஆரம்பிக்கும் வருடத்தை எழுது
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}வரைபடம் மற்றும் நகரங்களின் பட்டியலை காட்டு
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}நிலத்தோற்றம் உருவாக்கு
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}நகரம் உருவாக்கு
@@ -491,6 +493,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}தொழிற்பாட்டு இலாப வரைபடம்
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}வருமான வரைபடம்
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}பரிமாற்றம் செய்யப்பட்ட சரக்குப்பெட்டிகள்
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}கம்பெனி செயல்வரம்பு (அதிகபட்ச செயல்வரம்பு=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}கம்பெனி மதிப்பீடுகள்
 
@@ -1104,8 +1107,18 @@ STR_OBJECT_CLASS_LTHS                                           :கலங்க
 
 
 # Town generation window (SE)
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}நகரம் உருவாக்குதல்
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}புதிய நகரம்
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}நகரத்தின் பெயர்:
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}ஏதோ ஒரு பெயர்
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}புதிய பெயர் ஒன்றை உருவாக்கு
 
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}நகரத்தின் அளவு:
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}சிறியது
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}நடுத்தரம்
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}பெரியது
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}நகரத்தின் அளவை தேர்ந்தெடு
 
 
 # Fund new industry window
@@ -1523,10 +1536,17 @@ STR_SV_EMPTY                                                    :
 
 STR_SV_STNAME                                                   :{STRING}
 ##id 0x6020
+STR_SV_STNAME_BRANCH                                            :{STRING} பிரிவு
+STR_SV_STNAME_FOREST                                            :{STRING} காடு
+STR_SV_STNAME_FALLBACK                                          :{STRING} நிலையம் #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS ரீகல் பேருந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :ஹியர்போர்ட் லியோபார்ட் பேருந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :ப்பாஸ்டர் பேருந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :பாஸ்டர் MkII பேருந்து
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :பாலாக்ஃ எஃகு லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl எஃகு லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :கெல்லிங் எஃகு பாரஊர்தி
