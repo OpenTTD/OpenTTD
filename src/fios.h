@@ -37,7 +37,10 @@ struct LoadCheckData {
 	GRFConfig *grfconfig;                         ///< NewGrf configuration from save.
 	GRFListCompatibility grf_compatibility;       ///< Summary state of NewGrfs, whether missing files or only compatible found.
 
-	LoadCheckData() : error_data(NULL), grfconfig(NULL)
+	struct LoggedAction *gamelog_action;          ///< Gamelog actions
+	uint gamelog_actions;                         ///< Number of gamelog actions
+
+	LoadCheckData() : error_data(NULL), grfconfig(NULL), gamelog_action(NULL)
 	{
 		this->Clear();
 	}

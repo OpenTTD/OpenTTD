@@ -179,6 +179,7 @@ static void ShowHelp()
 		"  -M music_set        = Force the music set (see below)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
 		"  -x                  = Do not automatically save to config file on exit\n"
+		"  -q savegame         = Write some information about the savegame and exit\n"
 		"\n",
 		lastof(buf)
 	);
@@ -203,6 +204,44 @@ static void ShowHelp()
 	AI::Initialize();
 	p = AI::GetConsoleList(p, lastof(buf), true);
 	AI::Uninitialize(true);
+
+	/* ShowInfo put output to stderr, but version information should go
+	 * to stdout; this is the only exception */
+#if !defined(WIN32) && !defined(WIN64)
+	printf("%s\n", buf);
+#else
+	ShowInfo(buf);
+#endif
+}
+
+static void WriteSavegameInfo(const char *name)
+{
+	extern uint16 _sl_version;
+	uint32 last_ottd_rev = 0;
+	byte ever_modified = 0;
+	bool removed_newgrfs = false;
+
+	GamelogInfo(_load_check_data.gamelog_action, _load_check_data.gamelog_actions, &last_ottd_rev, &ever_modified, &removed_newgrfs);
+
+	char buf[8192];
+	char *p = buf;
+	p += seprintf(p, lastof(buf), "Name:         %s\n", name);
+	p += seprintf(p, lastof(buf), "Savegame ver: %d\n", _sl_version);
+	p += seprintf(p, lastof(buf), "NewGRF ver:   0x%08X\n", last_ottd_rev);
+	p += seprintf(p, lastof(buf), "Modified:     %d\n", ever_modified);
+
+	if (removed_newgrfs) {
+		p += seprintf(p, lastof(buf), "NewGRFs have been removed\n");
+	}
+
+	p = strecpy(p, "NewGRFs:\n", lastof(buf));
+	if (_load_check_data.HasNewGrfs()) {
+		for (GRFConfig *c = _load_check_data.grfconfig; c != NULL; c = c->next) {
+			char md5sum[33];
+			md5sumToString(md5sum, lastof(md5sum), HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum);
+			p += seprintf(p, lastof(buf), "%08X %s %s\n", c->ident.grfid, md5sum, c->filename);
+		}
+	}
 
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
@@ -432,6 +471,7 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_VALUE('G'),
 	 GETOPT_SHORT_VALUE('c'),
 	 GETOPT_SHORT_NOVAL('x'),
+	 GETOPT_SHORT_VALUE('q'),
 	 GETOPT_SHORT_NOVAL('h'),
 	GETOPT_END()
 };
@@ -542,6 +582,30 @@ int ttd_main(int argc, char *argv[])
 				scanner->generation_seed = InteractiveRandom();
 			}
 			break;
+		case 'q': {
+			DeterminePaths(argv[0]);
+			if (StrEmpty(mgo.opt)) return 1;
+			char title[80];
+			title[0] = '\0';
+			FiosGetSavegameListCallback(SLD_LOAD_GAME, mgo.opt, strrchr(mgo.opt, '.'), title, lastof(title));
+
+			_load_check_data.Clear();
+			SaveOrLoadResult res = SaveOrLoad(mgo.opt, SL_LOAD_CHECK, SAVE_DIR, false);
+			if (res != SL_OK || _load_check_data.HasErrors()) {
+				fprintf(stderr, "Failed to open savegame\n");
+				if (_load_check_data.HasErrors()) {
+					char buf[256];
+					SetDParamStr(0, _load_check_data.error_data);
+					GetString(buf, _load_check_data.error, lastof(buf));
+					fprintf(stderr, "%s\n", buf);
+				}
+				return 1;
+			}
+
+			WriteSavegameInfo(title);
+
+			return 0;
+		}
 		case 'G': scanner->generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
 		case 'x': save_config = false; break;
