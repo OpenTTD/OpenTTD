@@ -908,8 +908,14 @@ bool IsStationTileElectrifiable(TileIndex tile)
 			!HasBit(statspec->wires, GetStationGfx(tile));
 }
 
+/** Wrapper for animation control, see #GetStationCallback. */
+uint16 GetAnimStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, BaseStation *st, TileIndex tile, int extra_data)
+{
+	return GetStationCallback(callback, param1, param2, statspec, st, tile);
+}
+
 /** Helper class for animation control. */
-struct StationAnimationBase : public AnimationBase<StationAnimationBase, StationSpec, BaseStation, GetStationCallback> {
+struct StationAnimationBase : public AnimationBase<StationAnimationBase, StationSpec, BaseStation, int, GetAnimStationCallback> {
 	static const CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
 

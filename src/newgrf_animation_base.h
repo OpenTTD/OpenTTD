@@ -23,9 +23,10 @@
  * @tparam Tbase       Instantiation of this class.
  * @tparam Tspec       NewGRF specification related to the animated tile.
  * @tparam Tobj        Object related to the animated tile.
+ * @tparam Textra      Custom extra callback data.
  * @tparam GetCallback The callback function pointer.
  */
-template <typename Tbase, typename Tspec, typename Tobj, uint16 (*GetCallback)(CallbackID callback, uint32 param1, uint32 param2, const Tspec *statspec, Tobj *st, TileIndex tile)>
+template <typename Tbase, typename Tspec, typename Tobj, typename Textra, uint16 (*GetCallback)(CallbackID callback, uint32 param1, uint32 param2, const Tspec *statspec, Tobj *st, TileIndex tile, Textra extra_data)>
 struct AnimationBase {
 	/**
 	 * Animate a single tile.
@@ -34,15 +35,16 @@ struct AnimationBase {
 	 * @param obj         Object related to the tile.
 	 * @param tile        Tile to animate changes for.
 	 * @param random_animation Whether to pass random bits to the "next frame" callback.
+	 * @param extra_data  Custom extra callback data.
 	 */
-	static void AnimateTile(const Tspec *spec, Tobj *obj, TileIndex tile, bool random_animation)
+	static void AnimateTile(const Tspec *spec, Tobj *obj, TileIndex tile, bool random_animation, Textra extra_data = 0)
 	{
 		assert(spec != NULL);
 
 		/* Acquire the animation speed from the NewGRF. */
 		uint8 animation_speed = spec->animation.speed;
 		if (HasBit(spec->callback_mask, Tbase::cbm_animation_speed)) {
-			uint16 callback = GetCallback(Tbase::cb_animation_speed, 0, 0, spec, obj, tile);
+			uint16 callback = GetCallback(Tbase::cb_animation_speed, 0, 0, spec, obj, tile, extra_data);
 			if (callback != CALLBACK_FAILED) animation_speed = Clamp(callback & 0xFF, 0, 16);
 		}
 
@@ -58,7 +60,7 @@ struct AnimationBase {
 		bool frame_set_by_callback = false;
 
 		if (HasBit(spec->callback_mask, Tbase::cbm_animation_next_frame)) {
-			uint16 callback = GetCallback(Tbase::cb_animation_next_frame, random_animation ? Random() : 0, 0, spec, obj, tile);
+			uint16 callback = GetCallback(Tbase::cb_animation_next_frame, random_animation ? Random() : 0, 0, spec, obj, tile, extra_data);
 
 			if (callback != CALLBACK_FAILED) {
 				frame_set_by_callback = true;
@@ -109,10 +111,11 @@ struct AnimationBase {
 	 * @param tile        Tile to consider animation changes for.
 	 * @param random_bits Random bits for this update. To be passed as parameter to the NewGRF.
 	 * @param trigger     What triggered this update? To be passed as parameter to the NewGRF.
+	 * @param extra_data  Custom extra data for callback processing.
 	 */
-	static void ChangeAnimationFrame(CallbackID cb, const Tspec *spec, Tobj *obj, TileIndex tile, uint32 random_bits, uint32 trigger)
+	static void ChangeAnimationFrame(CallbackID cb, const Tspec *spec, Tobj *obj, TileIndex tile, uint32 random_bits, uint32 trigger, Textra extra_data = 0)
 	{
-		uint16 callback = GetCallback(cb, random_bits, trigger, spec, obj, tile);
+		uint16 callback = GetCallback(cb, random_bits, trigger, spec, obj, tile, extra_data);
 		if (callback == CALLBACK_FAILED) return;
 
 		switch (callback & 0xFF) {

@@ -243,7 +243,7 @@ static void AirportTileResolver(ResolverObject *res, const AirportTileSpec *ats,
 	res->grffile         = ats->grf_prop.grffile;
 }
 
-uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2, const AirportTileSpec *ats, Station *st, TileIndex tile)
+uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2, const AirportTileSpec *ats, Station *st, TileIndex tile, int extra_data = 0)
 {
 	ResolverObject object;
 	const SpriteGroup *group;
@@ -306,7 +306,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const Airport
 }
 
 /** Helper class for animation control. */
-struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, GetAirportTileCallback> {
+struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, int, GetAirportTileCallback> {
 	static const CallbackID cb_animation_speed      = CBID_AIRPTILE_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIM_NEXT_FRAME;
 

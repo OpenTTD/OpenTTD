@@ -307,13 +307,13 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 }
 
 /* Simple wrapper for GetHouseCallback to keep the animation unified. */
-uint16 GetSimpleIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, const IndustryTileSpec *spec, Industry *ind, TileIndex tile)
+uint16 GetSimpleIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, const IndustryTileSpec *spec, Industry *ind, TileIndex tile, int extra_data)
 {
 	return GetIndustryTileCallback(callback, param1, param2, spec - GetIndustryTileSpec(0), ind, tile);
 }
 
 /** Helper class for animation control. */
-struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, GetSimpleIndustryCallback> {
+struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, int, GetSimpleIndustryCallback> {
 	static const CallbackID cb_animation_speed      = CBID_INDTILE_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_INDTILE_ANIM_NEXT_FRAME;
 

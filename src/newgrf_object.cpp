@@ -521,15 +521,16 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view)
  * @param spec     The specification of the object / the entry point.
  * @param o        The object to call the callback for.
  * @param tile     The tile the callback is called for.
+ * @param extra_data Ignored.
  * @return The result of the callback.
  */
-uint16 StubGetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, Object *o, TileIndex tile)
+uint16 StubGetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, Object *o, TileIndex tile, int extra_data)
 {
 	return GetObjectCallback(callback, param1, param2, spec, o, tile);
 }
 
 /** Helper class for animation control. */
-struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, StubGetObjectCallback> {
+struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, int, StubGetObjectCallback> {
 	static const CallbackID cb_animation_speed      = CBID_OBJECT_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_OBJECT_ANIMATION_NEXT_FRAME;
 
