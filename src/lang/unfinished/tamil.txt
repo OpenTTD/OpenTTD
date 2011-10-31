@@ -578,23 +578,54 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}வர�
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}வரைபடத்தில் தொழிற்சாலைகளை காட்டு
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}வரைபடத்தில் வழித்தடங்களை காட்டு
 
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}வாகனங்கள்
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}இரயில்வண்டிகள்
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}சாலை வாகனங்கள்
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}கப்பல்கள்
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}விமானங்கள்
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}போக்குவரத்து வழித்தடங்கள்
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}காடு
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}இரயில் நிலையம்
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}சரக்கு ஏற்றும் இடம்
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}பேருந்து நிலையம்
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}மரங்கள்
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}பாறைகள்
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}நீர்
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}நகரங்கள்
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}தொழிற்சாலைகள்
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}பாலைவனம்
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}பனி
 
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}உயரத்தை காட்டு
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}எந்த ஆலைகளையும் வரைபடத்தில் காட்டாதே
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}அனைத்து ஆலைகளையும் வரைபடத்தில் காட்டு
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}எந்த கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டாதே
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}அனைத்து கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டு
 
 # Status bar messages
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ஆட்டம் பதிவாகிறது  *  *
 
 # News message history
+STR_MESSAGE_HISTORY                                             :{WHITE}செய்தி வரலாறு
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}சமீப செய்திகளின் பட்டியல்
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}செய்தி
+STR_NEWS_MESSAGES_FULL                                          :முழு
+
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}நிறுவனத்தின் விவரம்
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}புதிய வாகனங்கள்
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}பொதுவான விவரம்
 
 
 
 
-
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(மேலாளர்)
 
 
 
@@ -787,6 +818,10 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தக�
 
 
 
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :மெதுவாக
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :சாதாரணமாக
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :வேகமாக
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :அதிவேகமாக
 
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}கட்டுமானம்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
@@ -837,7 +872,7 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}விளையாட்டை கைவிடு
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}ஆட்டத்தை கைவிடு
 
 # Cheat window
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :மிதமான நிலத்தோற்றம்
@@ -854,6 +889,7 @@ STR_LIVERY_PASSENGER_WAGON_DIESEL                               :பயணிக
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :பயணிகள் பெட்டி (மின்சாரம்)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :பயணிகள் பெட்டி (மோனோ-இரயில்)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :பயணிகள் பெட்டி (மக்-லெவ்)
+STR_LIVERY_FREIGHT_WAGON                                        :சரக்குப் பெட்டி
 STR_LIVERY_BUS                                                  :பேருந்து
 STR_LIVERY_TRUCK                                                :லாரி
 STR_LIVERY_PASSENGER_SHIP                                       :பயணிகள் கப்பல்
@@ -1062,6 +1098,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... த�
 STR_WAYPOINT_CAPTION                                            :{WHITE}பாதைப்புள்ளி
 
 # Rail station construction window
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}தடங்களின் எண்ணிக்கை
 
 
 
@@ -1235,9 +1272,19 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :சுவடி
 
 
 # Finances window
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}புதிய வாகனங்கள்
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}இரயில்வே வருமானம்
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}அதி. கடன்: {BLACK}{CURRENCY}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 
 # Company view
 
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}வாகனங்கள்:
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} இரயில்{P "" கள்}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} சாலை வாகனம்{P "" கள்}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} கப்பல்{P "" கள்}
 
 
 
@@ -1259,12 +1306,18 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :சுவடி
 
 
 
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :கிடைக்கும் இரயில்கள்
 
 
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :பணிமனைக்கு அனுப்பு
 
 
 
 # Group window
+STR_GROUP_ALL_TRAINS                                            :அனைத்து இரயில்கள்
+STR_GROUP_ALL_ROAD_VEHICLES                                     :அனைத்து சாலை வாகனங்கள்
+STR_GROUP_ALL_SHIPS                                             :அனைத்து கப்பல்கள்
+STR_GROUP_ALL_AIRCRAFTS                                         :அனைத்து விமானங்கள்
 
 
 
