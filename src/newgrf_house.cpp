@@ -24,6 +24,8 @@
 #include "sprite.h"
 #include "genworld.h"
 #include "newgrf_animation_base.h"
+#include "newgrf_cargo.h"
+#include "station_base.h"
 
 static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
@@ -309,7 +311,29 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		}
 
 		/* Cargo acceptance history of nearby stations */
-		/*case 0x64: not implemented yet */
+		case 0x64: {
+			CargoID cid = GetCargoTranslation(parameter, object->grffile);
+			if (cid == CT_INVALID) return 0;
+
+			/* Extract tile offset. */
+			int8 x_offs = GB(GetRegister(0x100), 0, 8);
+			int8 y_offs = GB(GetRegister(0x100), 8, 8);
+			TileIndex testtile = TILE_MASK(tile + TileDiffXY(x_offs, y_offs));
+
+			const StationList *sl = StationFinder(TileArea(testtile, 1, 1)).GetStations();
+
+			/* Collect acceptance stats. */
+			uint32 res = 0;
+			for (Station * const * st_iter = sl->Begin(); st_iter != sl->End(); st_iter++) {
+				const Station *st = *st_iter;
+				if (HasBit(st->goods[cid].acceptance_pickup, GoodsEntry::GES_EVER_ACCEPTED))    SetBit(res, 0);
+				if (HasBit(st->goods[cid].acceptance_pickup, GoodsEntry::GES_LAST_MONTH))       SetBit(res, 1);
+				if (HasBit(st->goods[cid].acceptance_pickup, GoodsEntry::GES_CURRENT_MONTH))    SetBit(res, 2);
+				if (HasBit(st->goods[cid].acceptance_pickup, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(res, 3);
+			}
+
+			return res;
+		}
 
 		/* Distance test for some house types */
 		case 0x65: return GetDistanceFromNearbyHouse(parameter, tile, object->u.house.house_id);
