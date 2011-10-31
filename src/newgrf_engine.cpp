@@ -627,6 +627,9 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			return (HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) | GetReverseRailTypeTranslation(rt, object->grffile);
 		}
 
+		case 0x4B: // Long date of last service
+			return v->date_of_last_service;
+
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
 			//EngineID engine = GetNewEngineID(GetEngineGRF(v->engine_type), v->type, parameter);
@@ -879,6 +882,9 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 			case 0x48: return Engine::Get(object->u.vehicle.self_type)->flags; // Vehicle Type Info
 			case 0x49: return _cur_year; // 'Long' format build year
+			case 0x4B: return _date; // Long date of last service
+			case 0x92: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF); // Date of last service
+			case 0x93: return GB(Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
 			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle
 			case 0xF2: return 0; // Cargo subtype
