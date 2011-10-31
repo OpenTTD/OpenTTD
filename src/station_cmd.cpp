@@ -49,6 +49,7 @@
 #include "table/airporttile_ids.h"
 #include "newgrf_airporttiles.h"
 #include "order_backup.h"
+#include "newgrf_house.h"
 
 #include "table/strings.h"
 
@@ -2987,6 +2988,31 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 }
 
 /**
+ * Run the watched cargo callback for all houses in the catchment area.
+ * @param st Station.
+ */
+void TriggerWatchedCargoCallbacks(Station *st)
+{
+	/* Collect cargoes accepted since the last big tick. */
+	uint cargoes = 0;
+	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
+		if (HasBit(st->goods[cid].acceptance_pickup, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(cargoes, cid);
+	}
+
+	/* Anything to do? */
+	if (cargoes == 0) return;
+
+	/* Loop over all houses in the catchment. */
+	Rect r = st->GetCatchmentRect();
+	TileArea ta(TileXY(r.left, r.top), TileXY(r.right, r.bottom));
+	TILE_AREA_LOOP(tile, ta) {
+		if (IsTileType(tile, MP_HOUSE)) {
+			WatchedCargoCallback(tile, cargoes);
+		}
+	}
+}
+
+/**
  * This function is called for each station once every 250 ticks.
  * Not all stations will get the tick at the same time.
  * @param st the station receiving the tick.
@@ -3000,6 +3026,8 @@ static bool StationHandleBigTick(BaseStation *st)
 	}
 
 	if (Station::IsExpected(st)) {
+		TriggerWatchedCargoCallbacks(Station::From(st));
+
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			ClrBit(Station::From(st)->goods[i].acceptance_pickup, GoodsEntry::GES_ACCEPTED_BIGTICK);
 		}

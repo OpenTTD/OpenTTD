@@ -2031,7 +2031,6 @@ static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader *buf)
 		case 0x20: {
 			byte count = buf->ReadByte();
 			for (byte j = 0; j < count; j++) buf->ReadByte();
-			ret = CIR_UNHANDLED;
 			break;
 		}
 
@@ -2251,10 +2250,12 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				housespec->minimum_life = buf->ReadByte();
 				break;
 
-			case 0x20: { // @todo Cargo acceptance watch list
+			case 0x20: { // Cargo acceptance watch list
 				byte count = buf->ReadByte();
-				for (byte j = 0; j < count; j++) buf->ReadByte();
-				ret = CIR_UNHANDLED;
+				for (byte j = 0; j < count; j++) {
+					CargoID cargo = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					if (cargo != CT_INVALID) SetBit(housespec->watched_cargoes, cargo);
+				}
 				break;
 			}
 

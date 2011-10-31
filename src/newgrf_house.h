@@ -44,7 +44,8 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
 void AnimateNewHouseTile(TileIndex tile);
 void AnimateNewHouseConstruction(TileIndex tile);
 
-uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed = false, uint8 initial_random_bits = 0);
+uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed = false, uint8 initial_random_bits = 0, uint32 watched_cargo_triggers = 0);
+void WatchedCargoCallback(TileIndex tile, uint32 trigger_cargoes);
 
 bool CanDeleteHouse(TileIndex tile);
 

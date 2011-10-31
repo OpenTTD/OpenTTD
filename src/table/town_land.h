@@ -1813,7 +1813,7 @@ assert_compile(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
  */
 #define MS(mnd, mxd, p, rc, bn, rr, mg, ca1, ca2, ca3, bf, ba, cg1, cg2, cg3) \
 	{mnd, mxd, p, rc, bn, rr, mg, {ca1, ca2, ca3}, {cg1, cg2, cg3}, bf, ba, true, \
-	 GRFFileProps(INVALID_HOUSE_ID), 0, {0, 0, 0, 0}, 16, NO_EXTRA_FLAG, HOUSE_NO_CLASS, {0, 2, 0, 0}, 0, 0}
+	 GRFFileProps(INVALID_HOUSE_ID), 0, {0, 0, 0, 0}, 16, NO_EXTRA_FLAG, HOUSE_NO_CLASS, {0, 2, 0, 0}, 0, 0, 0}
 /** House specifications from original data */
 static const HouseSpec _original_house_specs[] = {
 	/**

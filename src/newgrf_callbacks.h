@@ -208,7 +208,7 @@ enum CallbackID {
 	CBID_CANALS_SPRITE_OFFSET            = 0x147, // 15 bit callback
 
 	/** Called when a cargo type specified in property 20 is accepted. */
-	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // 15 bit callback, not implemented
+	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // 15 bit callback
 
 	/** Callback done for each tile of a station to check the slope. */
 	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // 15 bit callback
