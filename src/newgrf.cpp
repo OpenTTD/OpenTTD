@@ -8015,15 +8015,9 @@ static void CalculateRefitMasks()
 			only_defaultcargo = (ei->refit_mask == 0);
 		}
 
-		/* Clear refit_mask for not refittable ships */
-		if (e->type == VEH_SHIP && !e->u.ship.old_refittable) {
-			ei->refit_mask = 0;
-			only_defaultcargo = true;
-		}
-
 		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargos.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
-		if (!only_defaultcargo && ei->cargo_type != CT_INVALID && !HasBit(ei->refit_mask, ei->cargo_type)) {
+		if (!only_defaultcargo && (e->type != VEH_SHIP || e->u.ship.old_refittable) && ei->cargo_type != CT_INVALID && !HasBit(ei->refit_mask, ei->cargo_type)) {
 			ei->cargo_type = CT_INVALID;
 		}
 
@@ -8031,6 +8025,11 @@ static void CalculateRefitMasks()
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
 		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
 		if (ei->cargo_type == CT_INVALID) ei->climates = 0;
+
+		/* Clear refit_mask for not refittable ships */
+		if (e->type == VEH_SHIP && !e->u.ship.old_refittable) {
+			ei->refit_mask = 0;
+		}
 	}
 }
 
