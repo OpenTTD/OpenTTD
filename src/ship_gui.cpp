@@ -28,11 +28,11 @@
  * @param y         Vertical position to draw at
  * @param selection Selected vehicle to draw a frame around
  */
-void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
+void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
-	SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W);
+	SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
 
 	int x = rtl ? right - real_sprite->width - real_sprite->x_offs : left - real_sprite->x_offs;

@@ -25,10 +25,10 @@ void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, ui
 StringID GetEngineCategoryName(EngineID engine);
 StringID GetEngineInfoString(EngineID engine);
 
-void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal);
-void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal);
-void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal);
-void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal);
-void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal);
+void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
+void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
+void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
+void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
+void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
 
 #endif /* ENGINE_GUI_H */

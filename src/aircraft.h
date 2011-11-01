@@ -27,7 +27,7 @@ enum AircraftSubType {
 
 
 void HandleAircraftEnterHangar(Aircraft *v);
-void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height);
+void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, EngineImageType image_type);
 void UpdateAirplanesOnNewStation(const Station *st);
 void UpdateAircraftCache(Aircraft *v);
 
@@ -58,7 +58,7 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
 	bool IsPrimaryVehicle() const                  { return this->IsNormalAircraft(); }
-	SpriteID GetImage(Direction direction) const;
+	SpriteID GetImage(Direction direction, EngineImageType image_type) const;
 	int GetDisplaySpeed() const    { return this->cur_speed; }
 	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
 	int GetSpeedOldUnits() const   { return this->vcache.cached_max_speed * 10 / 128; }
@@ -90,7 +90,7 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
  */
 #define FOR_ALL_AIRCRAFT(var) FOR_ALL_VEHICLES_OF_TYPE(Aircraft, var)
 
-SpriteID GetRotorImage(const Aircraft *v);
+SpriteID GetRotorImage(const Aircraft *v, EngineImageType image_type);
 
 Station *GetTargetAirportIfValid(const Aircraft *v);
 

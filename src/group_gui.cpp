@@ -573,7 +573,7 @@ public:
 
 				this->vehicle_sel = v->index;
 
-				int image = v->GetImage(_current_text_dir == TD_RTL ? DIR_E : DIR_W);
+				int image = v->GetImage(_current_text_dir == TD_RTL ? DIR_E : DIR_W, EIT_IN_LIST);
 				SetObjectToPlaceWnd(image, GetVehiclePalette(v), HT_DRAG, this);
 				_cursor.vehchain = true;
 

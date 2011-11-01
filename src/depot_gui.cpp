@@ -180,8 +180,8 @@ static void InitBlocksizeForShipAircraft(VehicleType type)
 
 		switch (type) {
 			default: NOT_REACHED();
-			case VEH_SHIP:     GetShipSpriteSize(    eid, x, y); break;
-			case VEH_AIRCRAFT: GetAircraftSpriteSize(eid, x, y); break;
+			case VEH_SHIP:     GetShipSpriteSize(    eid, x, y, EIT_IN_DEPOT); break;
+			case VEH_AIRCRAFT: GetAircraftSpriteSize(eid, x, y, EIT_IN_DEPOT); break;
 		}
 		if (x > max_width)  max_width  = x;
 		if (y > max_height) max_height = y;
@@ -283,7 +283,7 @@ struct DepotWindow : Window {
 
 				uint x_space = free_wagon ? TRAININFO_DEFAULT_VEHICLE_WIDTH : 0;
 				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1,
-						this->sel, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
+						this->sel, EIT_IN_DEPOT, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
 				/* Length of consist in tiles with 1 fractional digit (rounded up) */
 				SetDParam(0, CeilDiv(u->gcache.cached_total_length * 10, TILE_SIZE));
@@ -292,13 +292,13 @@ struct DepotWindow : Window {
 				break;
 			}
 
-			case VEH_ROAD:     DrawRoadVehImage( v, image_left, image_right, sprite_y, this->sel); break;
-			case VEH_SHIP:     DrawShipImage(    v, image_left, image_right, sprite_y, this->sel); break;
+			case VEH_ROAD:     DrawRoadVehImage( v, image_left, image_right, sprite_y, this->sel, EIT_IN_DEPOT); break;
+			case VEH_SHIP:     DrawShipImage(    v, image_left, image_right, sprite_y, this->sel, EIT_IN_DEPOT); break;
 			case VEH_AIRCRAFT: {
-				const Sprite *spr = GetSprite(v->GetImage(DIR_W), ST_NORMAL);
+				const Sprite *spr = GetSprite(v->GetImage(DIR_W, EIT_IN_DEPOT), ST_NORMAL);
 				DrawAircraftImage(v, image_left, image_right,
 									y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
-									this->sel);
+									this->sel, EIT_IN_DEPOT);
 				break;
 			}
 			default: NOT_REACHED();
@@ -501,7 +501,7 @@ struct DepotWindow : Window {
 					this->sel = INVALID_VEHICLE;
 					TrainDepotMoveVehicle(v, sel, gdvp.head);
 				} else if (v != NULL) {
-					int image = v->GetImage(_current_text_dir == TD_RTL ? DIR_E : DIR_W);
+					int image = v->GetImage(_current_text_dir == TD_RTL ? DIR_E : DIR_W, EIT_IN_DEPOT);
 					SetObjectToPlaceWnd(image, GetVehiclePalette(v), HT_DRAG, this);
 
 					this->sel = v->index;

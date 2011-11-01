@@ -419,12 +419,12 @@ void AfterLoadVehicles(bool part_of_load)
 
 			case VEH_TRAIN:
 			case VEH_SHIP:
-				v->cur_image = v->GetImage(v->direction);
+				v->cur_image = v->GetImage(v->direction, EIT_ON_MAP);
 				break;
 
 			case VEH_AIRCRAFT:
 				if (Aircraft::From(v)->IsNormalAircraft()) {
-					v->cur_image = v->GetImage(v->direction);
+					v->cur_image = v->GetImage(v->direction, EIT_ON_MAP);
 
 					/* The plane's shadow will have the same image as the plane */
 					Vehicle *shadow = v->Next();
@@ -433,7 +433,7 @@ void AfterLoadVehicles(bool part_of_load)
 					/* In the case of a helicopter we will update the rotor sprites */
 					if (v->subtype == AIR_HELICOPTER) {
 						Vehicle *rotor = shadow->Next();
-						rotor->cur_image = GetRotorImage(Aircraft::From(v));
+						rotor->cur_image = GetRotorImage(Aircraft::From(v), EIT_ON_MAP);
 					}
 
 					UpdateAircraftCache(Aircraft::From(v));

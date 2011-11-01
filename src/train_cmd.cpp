@@ -473,7 +473,7 @@ static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
 	return ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
 }
 
-SpriteID Train::GetImage(Direction direction) const
+SpriteID Train::GetImage(Direction direction, EngineImageType image_type) const
 {
 	uint8 spritenum = this->spritenum;
 	SpriteID sprite;
@@ -481,7 +481,7 @@ SpriteID Train::GetImage(Direction direction) const
 	if (HasBit(this->flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
 	if (is_custom_sprite(spritenum)) {
-		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)));
+		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)), image_type);
 		if (sprite != 0) return sprite;
 
 		spritenum = this->GetEngine()->original_image_index;
@@ -494,14 +494,14 @@ SpriteID Train::GetImage(Direction direction) const
 	return sprite;
 }
 
-static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
+static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType image_type)
 {
 	const Engine *e = Engine::Get(engine);
 	Direction dir = rear_head ? DIR_E : DIR_W;
 	uint8 spritenum = e->u.rail.image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		SpriteID sprite = GetCustomVehicleIcon(engine, dir);
+		SpriteID sprite = GetCustomVehicleIcon(engine, dir, image_type);
 		if (sprite != 0) {
 			if (e->GetGRF() != NULL) {
 				y += e->GetGRF()->traininfo_vehicle_pitch;
@@ -517,14 +517,14 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 	return GetDefaultTrainSprite(spritenum, DIR_W);
 }
 
-void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal)
+void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
 {
 	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
 		int yf = y;
 		int yr = y;
 
-		SpriteID spritef = GetRailIcon(engine, false, yf);
-		SpriteID spriter = GetRailIcon(engine, true, yr);
+		SpriteID spritef = GetRailIcon(engine, false, yf, image_type);
+		SpriteID spriter = GetRailIcon(engine, true, yr, image_type);
 		const Sprite *real_spritef = GetSprite(spritef, ST_NORMAL);
 		const Sprite *real_spriter = GetSprite(spriter, ST_NORMAL);
 
@@ -533,7 +533,7 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 		DrawSprite(spritef, pal, preferred_x - 14, yf);
 		DrawSprite(spriter, pal, preferred_x + 15, yr);
 	} else {
-		SpriteID sprite = GetRailIcon(engine, false, y);
+		SpriteID sprite = GetRailIcon(engine, false, y, image_type);
 		const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
 		preferred_x = Clamp(preferred_x, left - real_sprite->x_offs, right - real_sprite->width - real_sprite->x_offs);
 		DrawSprite(sprite, pal, preferred_x, y);
@@ -2046,7 +2046,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	v->cur_speed = 0;
 
 	v->UpdateDeltaXY(v->direction);
-	v->cur_image = v->GetImage(v->direction);
+	v->cur_image = v->GetImage(v->direction, EIT_ON_MAP);
 	VehicleMove(v, false);
 	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	v->UpdateAcceleration();
@@ -3317,7 +3317,7 @@ static void ChangeTrainDirRandomly(Train *v)
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
 			v->UpdateDeltaXY(v->direction);
-			v->cur_image = v->GetImage(v->direction);
+			v->cur_image = v->GetImage(v->direction, EIT_ON_MAP);
 			/* Refrain from updating the z position of the vehicle when on
 			 * a bridge, because UpdateInclination() will put the vehicle under
 			 * the bridge in that case */

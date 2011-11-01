@@ -143,12 +143,12 @@ static StationID FindNearestHangar(const Aircraft *v)
 	return index;
 }
 
-SpriteID Aircraft::GetImage(Direction direction) const
+SpriteID Aircraft::GetImage(Direction direction, EngineImageType image_type) const
 {
 	uint8 spritenum = this->spritenum;
 
 	if (is_custom_sprite(spritenum)) {
-		SpriteID sprite = GetCustomVehicleSprite(this, direction);
+		SpriteID sprite = GetCustomVehicleSprite(this, direction, image_type);
 		if (sprite != 0) return sprite;
 
 		spritenum = this->GetEngine()->original_image_index;
@@ -157,13 +157,13 @@ SpriteID Aircraft::GetImage(Direction direction) const
 	return direction + _aircraft_sprite[spritenum];
 }
 
-SpriteID GetRotorImage(const Aircraft *v)
+SpriteID GetRotorImage(const Aircraft *v, EngineImageType image_type)
 {
 	assert(v->subtype == AIR_HELICOPTER);
 
 	const Aircraft *w = v->Next()->Next();
 	if (is_custom_sprite(v->spritenum)) {
-		SpriteID sprite = GetCustomRotorSprite(v, false);
+		SpriteID sprite = GetCustomRotorSprite(v, false, image_type);
 		if (sprite != 0) return sprite;
 	}
 
@@ -171,13 +171,13 @@ SpriteID GetRotorImage(const Aircraft *v)
 	return SPR_ROTOR_STOPPED + w->state;
 }
 
-static SpriteID GetAircraftIcon(EngineID engine)
+static SpriteID GetAircraftIcon(EngineID engine, EngineImageType image_type)
 {
 	const Engine *e = Engine::Get(engine);
 	uint8 spritenum = e->u.air.image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
+		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W, image_type);
 		if (sprite != 0) return sprite;
 
 		spritenum = e->original_image_index;
@@ -186,15 +186,15 @@ static SpriteID GetAircraftIcon(EngineID engine)
 	return DIR_W + _aircraft_sprite[spritenum];
 }
 
-void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal)
+void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
 {
-	SpriteID sprite = GetAircraftIcon(engine);
+	SpriteID sprite = GetAircraftIcon(engine, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
 	preferred_x = Clamp(preferred_x, left - real_sprite->x_offs, right - real_sprite->width - real_sprite->x_offs);
 	DrawSprite(sprite, pal, preferred_x, y);
 
 	if (!(AircraftVehInfo(engine)->subtype & AIR_CTOL)) {
-		SpriteID rotor_sprite = GetCustomRotorIcon(engine);
+		SpriteID rotor_sprite = GetCustomRotorIcon(engine, image_type);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
 		DrawSprite(rotor_sprite, PAL_NONE, preferred_x, y - 5);
 	}
@@ -206,9 +206,9 @@ void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID en
  * @param width The width of the sprite
  * @param height The height of the sprite
  */
-void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
+void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, EngineImageType image_type)
 {
-	const Sprite *spr = GetSprite(GetAircraftIcon(engine), ST_NORMAL);
+	const Sprite *spr = GetSprite(GetAircraftIcon(engine, image_type), ST_NORMAL);
 
 	width  = spr->width;
 	height = spr->height;
@@ -449,13 +449,13 @@ static void HelicopterTickHandler(Aircraft *v)
 	SpriteID img;
 	if (spd == 0) {
 		u->state = HRS_ROTOR_STOPPED;
-		img = GetRotorImage(v);
+		img = GetRotorImage(v, EIT_ON_MAP);
 		if (u->cur_image == img) return;
 	} else if (tick >= spd) {
 		u->tick_counter = 0;
 		u->state++;
 		if (u->state > HRS_ROTOR_MOVING_3) u->state = HRS_ROTOR_MOVING_1;
-		img = GetRotorImage(v);
+		img = GetRotorImage(v, EIT_ON_MAP);
 	} else {
 		return;
 	}
@@ -479,7 +479,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	v->z_pos = z;
 
 	v->UpdateViewport(true, false);
-	if (v->subtype == AIR_HELICOPTER) v->Next()->Next()->cur_image = GetRotorImage(v);
+	if (v->subtype == AIR_HELICOPTER) v->Next()->Next()->cur_image = GetRotorImage(v, EIT_ON_MAP);
 
 	Aircraft *u = v->Next();
 
@@ -1116,7 +1116,7 @@ TileIndex Aircraft::GetOrderStationLocation(StationID station)
 void Aircraft::MarkDirty()
 {
 	this->UpdateViewport(false, false);
-	if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this);
+	if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this, EIT_ON_MAP);
 }
 
 

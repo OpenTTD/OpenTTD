@@ -964,12 +964,14 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 }
 
 
-SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction)
+SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
 
 	NewVehicleResolver(&object, engine, v);
+
+	object.callback_param1 = image_type;
 
 	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v), &object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
@@ -978,7 +980,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 }
 
 
-SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_view)
+SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_view, EngineImageType image_type)
 {
 	const Engine *e = Engine::Get(engine);
 
@@ -990,6 +992,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 
 	NewVehicleResolver(&object, engine, v);
 
+	object.callback_param1 = image_type;
 	object.u.vehicle.info_view = info_view;
 
 	const SpriteGroup *group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);

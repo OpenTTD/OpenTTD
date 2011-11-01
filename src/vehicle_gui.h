@@ -48,10 +48,10 @@ enum TrainDetailsWindowTabs {
 
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number);
 
-void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, int skip, VehicleID drag_dest = INVALID_VEHICLE);
-void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection, int skip = 0);
-void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection);
-void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID selection);
+void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest = INVALID_VEHICLE);
+void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip = 0);
+void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type);
+void DrawAircraftImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type);
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type);
 
@@ -73,7 +73,7 @@ static inline uint GetVehicleHeight(VehicleType type)
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
 
-int GetVehicleWidth(Vehicle *v);
+int GetVehicleWidth(Vehicle *v, EngineImageType image_type);
 
 /**
  * Get WindowClass for vehicle list of given vehicle type
@@ -99,6 +99,6 @@ void StartStopVehicle(const Vehicle *v, bool texteffect);
 
 Vehicle *CheckClickOnVehicle(const struct ViewPort *vp, int x, int y);
 
-void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, int skip);
+void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip);
 
 #endif /* VEHICLE_GUI_H */

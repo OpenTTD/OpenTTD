@@ -83,4 +83,14 @@ enum AccelerationModel {
 	AM_REALISTIC,
 };
 
+/** Visualisation contexts of vehicles and engines. */
+enum EngineImageType {
+	EIT_ON_MAP     = 0x00,  ///< Vehicle drawn in viewport.
+	EIT_IN_DEPOT   = 0x10,  ///< Vehicle drawn in depot.
+	EIT_IN_DETAILS = 0x11,  ///< Vehicle drawn in vehicle details, refit window, ...
+	EIT_IN_LIST    = 0x12,  ///< Vehicle drawn in vehicle list, group list, ...
+	EIT_PURCHASE   = 0x20,  ///< Vehicle drawn in purchase list, autoreplace gui, ...
+	EIT_PREVIEW    = 0x21,  ///< Vehicle drawn in preview window, news, ...
+};
+
 #endif /* VEHICLE_TYPE_H */
