@@ -37,7 +37,8 @@ static EngineID GetNextArticulatedPart(uint index, EngineID front_type, Vehicle 
 	if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return INVALID_ENGINE;
 
 	if (mirrored != NULL) *mirrored = HasBit(callback, 7);
-	return GetNewEngineID(GetEngineGRF(front_type), Engine::Get(front_type)->type, GB(callback, 0, 7));
+	const Engine *front_engine = Engine::Get(front_type);
+	return GetNewEngineID(front_engine->GetGRF(), front_engine->type, GB(callback, 0, 7));
 }
 
 /**

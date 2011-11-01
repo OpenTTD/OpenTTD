@@ -36,8 +36,6 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, bool 
 struct GRFFile;
 
 void SetEngineGRF(EngineID engine, const struct GRFFile *file);
-const struct GRFFile *GetEngineGRF(EngineID engine);
-uint32 GetEngineGRFID(EngineID engine);
 
 uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v);
 uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent);

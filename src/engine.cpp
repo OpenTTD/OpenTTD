@@ -156,6 +156,17 @@ bool Engine::IsEnabled() const
 }
 
 /**
+ * Retrieve the GRF ID of the NewGRF the engine is tied to.
+ * This is the GRF providing the Action 3.
+ * @return GRF ID of the associated NewGRF.
+ */
+uint32 Engine::GetGRFID() const
+{
+	const GRFFile *file = this->GetGRF();
+	return file == NULL ? 0 : file->grfid;
+}
+
+/**
  * Determines whether an engine can carry something.
  * A vehicle cannot carry anything if its capacity is zero, or none of the possible cargos is available in the climate.
  * @return true if the vehicle can carry something.
@@ -265,7 +276,7 @@ Money Engine::GetRunningCost() const
 		default: NOT_REACHED();
 	}
 
-	return GetPrice(base_price, cost_factor, this->grf_prop.grffile, -8);
+	return GetPrice(base_price, cost_factor, this->GetGRF(), -8);
 }
 
 /**
@@ -305,7 +316,7 @@ Money Engine::GetCost() const
 		default: NOT_REACHED();
 	}
 
-	return GetPrice(base_price, cost_factor, this->grf_prop.grffile, -8);
+	return GetPrice(base_price, cost_factor, this->GetGRF(), -8);
 }
 
 /**

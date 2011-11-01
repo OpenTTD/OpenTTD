@@ -456,9 +456,9 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	int vehicle_pitch = 0;
 
 	const Engine *e = this->GetEngine();
-	if (e->grf_prop.grffile != NULL && is_custom_sprite(e->u.rail.image_index)) {
-		reference_width = e->grf_prop.grffile->traininfo_vehicle_width;
-		vehicle_pitch = e->grf_prop.grffile->traininfo_vehicle_pitch;
+	if (e->GetGRF() != NULL && is_custom_sprite(e->u.rail.image_index)) {
+		reference_width = e->GetGRF()->traininfo_vehicle_width;
+		vehicle_pitch = e->GetGRF()->traininfo_vehicle_pitch;
 	}
 
 	if (offset != NULL) {
@@ -503,8 +503,8 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 	if (is_custom_sprite(spritenum)) {
 		SpriteID sprite = GetCustomVehicleIcon(engine, dir);
 		if (sprite != 0) {
-			if (e->grf_prop.grffile != NULL) {
-				y += e->grf_prop.grffile->traininfo_vehicle_pitch;
+			if (e->GetGRF() != NULL) {
+				y += e->GetGRF()->traininfo_vehicle_pitch;
 			}
 			return sprite;
 		}
@@ -993,7 +993,7 @@ static CommandCost CheckTrainAttachment(Train *t)
 				StringID error = STR_NULL;
 
 				if (callback == 0xFD) error = STR_ERROR_INCOMPATIBLE_RAIL_TYPES;
-				if (callback  < 0xFD) error = GetGRFStringID(GetEngineGRFID(head->engine_type), 0xD000 + callback);
+				if (callback  < 0xFD) error = GetGRFStringID(head->GetGRFID(), 0xD000 + callback);
 
 				if (error != STR_NULL) return_cmd_error(error);
 			}
@@ -3696,7 +3696,7 @@ Money Train::GetRunningCost() const
 		/* Halve running cost for multiheaded parts */
 		if (v->IsMultiheaded()) cost_factor /= 2;
 
-		cost += GetPrice(e->u.rail.running_cost_class, cost_factor, e->grf_prop.grffile);
+		cost += GetPrice(e->u.rail.running_cost_class, cost_factor, e->GetGRF());
 	} while ((v = v->GetNextVehicle()) != NULL);
 
 	return cost;

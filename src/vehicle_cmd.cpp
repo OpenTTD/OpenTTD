@@ -241,7 +241,7 @@ static CommandCost GetRefitCost(EngineID engine_type)
 
 		default: NOT_REACHED();
 	}
-	return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->grf_prop.grffile, -10));
+	return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->GetGRF(), -10));
 }
 
 /**
@@ -448,7 +448,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	 * return 0xFF if it can. */
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
 	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF && HasBit(p2, 0)) {
-		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
+		StringID error = GetGRFStringID(v->GetGRFID(), 0xD000 + callback);
 		return_cmd_error(error);
 	}
 

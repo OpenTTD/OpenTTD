@@ -59,7 +59,7 @@ uint GetNumSounds()
  */
 bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 {
-	const GRFFile *file = GetEngineGRF(v->engine_type);
+	const GRFFile *file = v->GetGRF();
 	uint16 callback;
 
 	/* If the engine has no GRF ID associated it can't ever play any new sounds */

@@ -276,7 +276,7 @@ struct RefitOption {
 	CargoID cargo;    ///< Cargo to refit to
 	byte subtype;     ///< Subcargo to use
 	uint16 value;     ///< GRF-local String to display for the cargo
-	EngineID engine;  ///< Engine for which to resolve #value
+	const Engine *engine;  ///< Engine for which to resolve #value
 
 	/**
 	 * Inequality operator for #RefitOption.
@@ -330,7 +330,7 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 			SetDParam(0, CargoSpec::Get(refit.cargo)->name);
 			/* If the callback succeeded, draw the cargo suffix. */
 			if (refit.value != CALLBACK_FAILED) {
-				SetDParam(1, GetGRFStringID(GetEngineGRFID(refit.engine), 0xD000 + refit.value));
+				SetDParam(1, GetGRFStringID(refit.engine->GetGRFID(), 0xD000 + refit.value));
 				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_SPACE_STRING, colour);
 			} else {
 				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING, colour);
@@ -428,7 +428,7 @@ struct RefitWindow : public Window {
 						option.cargo   = cid;
 						option.subtype = refit_cyc;
 						option.value   = callback;
-						option.engine  = v->engine_type;
+						option.engine  = v->GetEngine();
 						this->list[current_index].Include(option);
 					}
 
@@ -445,7 +445,7 @@ struct RefitWindow : public Window {
 					option.cargo   = cid;
 					option.subtype = 0;
 					option.value   = CALLBACK_FAILED;
-					option.engine  = INVALID_ENGINE;
+					option.engine  = NULL;
 					this->list[current_index].Include(option);
 				}
 				current_index++;
@@ -976,7 +976,7 @@ StringID GetCargoSubtypeText(const Vehicle *v)
 	if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
 		uint16 cb = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
 		if (cb != CALLBACK_FAILED) {
-			return GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + cb);
+			return GetGRFStringID(v->GetGRFID(), 0xD000 + cb);
 		}
 	}
 	return STR_EMPTY;

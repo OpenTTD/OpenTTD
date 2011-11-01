@@ -211,8 +211,7 @@ uint Vehicle::Crash(bool flooded)
 void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRFBugs bug_type, bool critical)
 {
 	const Engine *e = Engine::Get(engine);
-	uint32 grfid = e->grf_prop.grffile->grfid;
-	GRFConfig *grfconfig = GetGRFConfig(grfid);
+	GRFConfig *grfconfig = GetGRFConfig(e->GetGRFID());
 
 	if (!HasBit(grfconfig->grf_bugs, bug_type)) {
 		SetBit(grfconfig->grf_bugs, bug_type);
@@ -639,6 +638,26 @@ bool Vehicle::HasEngineType() const
 const Engine *Vehicle::GetEngine() const
 {
 	return Engine::Get(this->engine_type);
+}
+
+/**
+ * Retrieve the NewGRF the vehicle is tied to.
+ * This is the GRF providing the Action 3 for the engine type.
+ * @return NewGRF associated to the vehicle.
+ */
+const GRFFile *Vehicle::GetGRF() const
+{
+	return this->GetEngine()->GetGRF();
+}
+
+/**
+ * Retrieve the GRF ID of the NewGRF the vehicle is tied to.
+ * This is the GRF providing the Action 3 for the engine type.
+ * @return GRF ID of the associated NewGRF.
+ */
+uint32 Vehicle::GetGRFID() const
+{
+	return this->GetEngine()->GetGRFID();
 }
 
 /**

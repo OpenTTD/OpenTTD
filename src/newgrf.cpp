@@ -7956,7 +7956,7 @@ static void CalculateRefitMasks()
 		if (_gted[engine].refitmask_valid) {
 			if (ei->refit_mask != 0) {
 				const GRFFile *file = _gted[engine].refitmask_grf;
-				if (file == NULL) file = e->grf_prop.grffile;
+				if (file == NULL) file = e->GetGRF();
 				if (file != NULL && file->cargo_max != 0) {
 					/* Apply cargo translation table to the refit mask */
 					uint num_cargo = min(32, file->cargo_max);
@@ -8029,7 +8029,7 @@ static void FinaliseEngineArray()
 	Engine *e;
 
 	FOR_ALL_ENGINES(e) {
-		if (e->grf_prop.grffile == NULL) {
+		if (e->GetGRF() == NULL) {
 			const EngineIDMapping &eid = _engine_mngr[e->index];
 			if (eid.grfid != INVALID_GRFID || eid.internal_id != eid.substitute_id) {
 				e->info.string_id = STR_NEWGRF_INVALID_ENGINE;
@@ -8039,7 +8039,7 @@ static void FinaliseEngineArray()
 		/* When the train does not set property 27 (misc flags), but it
 		 * is overridden by a NewGRF graphically we want to disable the
 		 * flipping possibility. */
-		if (e->type == VEH_TRAIN && !_gted[e->index].prop27_set && e->grf_prop.grffile != NULL && is_custom_sprite(e->u.rail.image_index)) {
+		if (e->type == VEH_TRAIN && !_gted[e->index].prop27_set && e->GetGRF() != NULL && is_custom_sprite(e->u.rail.image_index)) {
 			ClrBit(e->info.misc_flags, EF_RAIL_FLIPS);
 		}
 

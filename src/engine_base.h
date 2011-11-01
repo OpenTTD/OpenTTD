@@ -101,6 +101,18 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	{
 		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
 	}
+
+	/**
+	 * Retrieve the NewGRF the engine is tied to.
+	 * This is the GRF providing the Action 3.
+	 * @return NewGRF associated to the engine.
+	 */
+	const GRFFile *GetGRF() const
+	{
+		return this->grf_prop.grffile;
+	}
+
+	uint32 GetGRFID() const;
 };
 
 struct EngineIDMapping {

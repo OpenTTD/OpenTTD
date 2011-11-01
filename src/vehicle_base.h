@@ -118,6 +118,8 @@ struct LoadgameState;
 extern bool LoadOldVehicle(LoadgameState *ls, int num);
 extern void FixOldVehicles();
 
+struct GRFFile;
+
 /** %Vehicle data structure. */
 struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle {
 private:
@@ -346,6 +348,9 @@ public:
 	 * @return the sprite for the given vehicle in the given direction
 	 */
 	virtual SpriteID GetImage(Direction direction) const { return 0; }
+
+	const GRFFile *GetGRF() const;
+	uint32 GetGRFID() const;
 
 	/**
 	 * Invalidates cached NewGRF variables

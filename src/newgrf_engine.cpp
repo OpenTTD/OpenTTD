@@ -111,29 +111,6 @@ void SetEngineGRF(EngineID engine, const GRFFile *file)
 }
 
 
-/**
- * Retrieve the GRFFile tied to an engine
- * @param engine Engine ID to retrieve.
- * @return Pointer to GRFFile.
- */
-const GRFFile *GetEngineGRF(EngineID engine)
-{
-	return Engine::Get(engine)->grf_prop.grffile;
-}
-
-
-/**
- * Retrieve the GRF ID of the GRFFile tied to an engine
- * @param engine Engine ID to retrieve.
- * @return 32 bit GRFID value.
- */
-uint32 GetEngineGRFID(EngineID engine)
-{
-	const GRFFile *file = GetEngineGRF(engine);
-	return file == NULL ? 0 : file->grfid;
-}
-
-
 static int MapOldSubType(const Vehicle *v)
 {
 	switch (v->type) {
@@ -488,7 +465,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 	/* Calculated vehicle parameters */
 	switch (variable) {
 		case 0x25: // Get engine GRF ID
-			return GetEngineGRFID(v->engine_type);
+			return v->GetGRFID();
 
 		case 0x40: // Get length of consist
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_POSITION_CONSIST_LENGTH)) {
@@ -615,7 +592,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			 */
 			const CargoSpec *cs = CargoSpec::Get(v->cargo_type);
 
-			return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(v->engine_type)->cargo_map[v->cargo_type];
+			return (cs->classes << 16) | (cs->weight << 8) | v->GetGRF()->cargo_map[v->cargo_type];
 		}
 
 		case 0x48: return v->GetEngine()->flags; // Vehicle Type Info
@@ -632,8 +609,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
-			//EngineID engine = GetNewEngineID(GetEngineGRF(v->engine_type), v->type, parameter);
-			if (v->type != VEH_TRAIN) return v->GetEngine()->grf_prop.local_id == parameter;
+			if (v->type != VEH_TRAIN) return v->GetEngine()->grf_prop.local_id == parameter ? 1 : 0;
 
 			{
 				uint count = 0;
@@ -875,7 +851,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				CargoID cargo_type = e->GetDefaultCargoType();
 				if (cargo_type != CT_INVALID) {
 					const CargoSpec *cs = CargoSpec::Get(cargo_type);
-					return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(e->index)->cargo_map[cargo_type];
+					return (cs->classes << 16) | (cs->weight << 8) | e->GetGRF()->cargo_map[cargo_type];
 				} else {
 					return 0x000000FF;
 				}
@@ -941,7 +917,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->ResetState();
 
 	const Engine *e = Engine::Get(engine_type);
-	res->grffile         = (e != NULL ? e->grf_prop.grffile : NULL);
+	res->grffile         = (e != NULL ? e->GetGRF() : NULL);
 }
 
 
@@ -1199,10 +1175,8 @@ void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 uint ListPositionOfEngine(EngineID engine)
 {
 	const Engine *e = Engine::Get(engine);
-	if (e->grf_prop.grffile == NULL) return e->list_position;
-
 	/* Crude sorting to group by GRF ID */
-	return (e->grf_prop.grffile->grfid * 256) + e->list_position;
+	return (e->GetGRFID() * 256) + e->list_position;
 }
 
 struct ListOrderChange {
@@ -1239,7 +1213,7 @@ void CommitVehicleListOrderChanges()
 		/* Populate map with current list positions */
 		Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, source_e->type) {
-			if (!_settings_game.vehicle.dynamic_engines || e->grf_prop.grffile == source_e->grf_prop.grffile) {
+			if (!_settings_game.vehicle.dynamic_engines || e->GetGRF() == source_e->GetGRF()) {
 				if (e->grf_prop.local_id == target) target_e = e;
 				lptr_map[e->list_position] = e;
 			}
