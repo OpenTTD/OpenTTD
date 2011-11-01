@@ -7948,12 +7948,17 @@ static void CalculateRefitMasks()
 	FOR_ALL_ENGINES(e) {
 		EngineID engine = e->index;
 		EngineInfo *ei = &e->info;
+		bool only_defaultcargo; ///< Set if the vehicle shall carry only the default cargo
 
 		/* Did the newgrf specify any refitting? If not, use defaults. */
 		if (_gted[engine].refitmask_valid) {
 			uint32 mask = 0;
 			uint32 not_mask = 0;
 			uint32 xor_mask = 0;
+
+			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
+			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
+			only_defaultcargo = (ei->refit_mask == 0 && _gted[engine].cargo_allowed == 0);
 
 			if (ei->refit_mask != 0) {
 				const GRFFile *file = _gted[engine].refitmask_grf;
@@ -8005,6 +8010,15 @@ static void CalculateRefitMasks()
 			}
 
 			ei->refit_mask = xor_mask & _cargo_mask;
+
+			/* If the mask is zero, the vehicle shall only carry the default cargo */
+			only_defaultcargo = (ei->refit_mask == 0);
+		}
+
+		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargos.
+		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
+		if (!only_defaultcargo && ei->cargo_type != CT_INVALID && !HasBit(ei->refit_mask, ei->cargo_type)) {
+			ei->cargo_type = CT_INVALID;
 		}
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
