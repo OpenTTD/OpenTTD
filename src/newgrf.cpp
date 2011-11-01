@@ -7948,12 +7948,13 @@ static void CalculateRefitMasks()
 	FOR_ALL_ENGINES(e) {
 		EngineID engine = e->index;
 		EngineInfo *ei = &e->info;
-		uint32 mask = 0;
-		uint32 not_mask = 0;
-		uint32 xor_mask = 0;
 
 		/* Did the newgrf specify any refitting? If not, use defaults. */
 		if (_gted[engine].refitmask_valid) {
+			uint32 mask = 0;
+			uint32 not_mask = 0;
+			uint32 xor_mask = 0;
+
 			if (ei->refit_mask != 0) {
 				const GRFFile *file = _gted[engine].refitmask_grf;
 				if (file == NULL) file = e->GetGRF();
@@ -7985,7 +7986,11 @@ static void CalculateRefitMasks()
 					if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, cs->Index());
 				}
 			}
+
+			ei->refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
 		} else {
+			uint32 xor_mask = 0;
+
 			/* Don't apply default refit mask to wagons nor engines with no capacity */
 			if (e->type != VEH_TRAIN || (e->u.rail.capacity != 0 && e->u.rail.railveh_type != RAILVEH_WAGON)) {
 				const CargoLabel *cl = _default_refitmasks[e->type];
@@ -7998,9 +8003,9 @@ static void CalculateRefitMasks()
 					SetBit(xor_mask, cargo);
 				}
 			}
-		}
 
-		ei->refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
+			ei->refit_mask = xor_mask & _cargo_mask;
+		}
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
