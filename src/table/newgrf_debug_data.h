@@ -61,12 +61,12 @@ static const NIVariable _niv_vehicles[] = {
 };
 
 class NIHVehicle : public NIHelper {
-	bool IsInspectable(uint index) const                 { return Engine::Get(Vehicle::Get(index)->engine_type)->grf_prop.grffile != NULL; }
+	bool IsInspectable(uint index) const                 { return Vehicle::Get(index)->GetEngine()->grf_prop.grffile != NULL; }
 	uint GetParent(uint index) const                     { const Vehicle *first = Vehicle::Get(index)->First(); return GetInspectWindowNumber(GetGrfSpecFeature(first->type), first->index); }
 	const void *GetInstance(uint index)const             { return Vehicle::Get(index); }
-	const void *GetSpec(uint index) const                { return Engine::Get(Vehicle::Get(index)->engine_type); }
+	const void *GetSpec(uint index) const                { return Vehicle::Get(index)->GetEngine(); }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_VEHICLE_NAME, index); }
-	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? Engine::Get(Vehicle::Get(index)->engine_type)->grf_prop.grffile->grfid : 0; }
+	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? Vehicle::Get(index)->GetEngine()->grf_prop.grffile->grfid : 0; }
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetVehicleResolver(ResolverObject *ro, uint index); GetVehicleResolver(ro, index); }
 };
 

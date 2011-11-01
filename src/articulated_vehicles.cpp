@@ -251,7 +251,7 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
  */
 void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 {
-	const Engine *engine = Engine::Get(v->engine_type);
+	const Engine *engine = v->GetEngine();
 
 	uint32 purchase_refit_union, purchase_refit_intersection;
 	GetArticulatedRefitMasks(v->engine_type, true, &purchase_refit_union, &purchase_refit_intersection);

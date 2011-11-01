@@ -92,7 +92,7 @@ byte FreightWagonMult(CargoID cargo)
 static void RailVehicleLengthChanged(const Train *u)
 {
 	/* show a warning once for each engine in whole game and once for each GRF after each game load */
-	const Engine *engine = Engine::Get(u->engine_type);
+	const Engine *engine = u->GetEngine();
 	uint32 grfid = engine->grf_prop.grffile->grfid;
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 	if (GamelogGRFBugReverse(grfid, engine->grf_prop.local_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
@@ -189,7 +189,7 @@ void Train::ConsistChanged(bool same_length)
 	}
 
 	for (Train *u = this; u != NULL; u = u->Next()) {
-		const Engine *e_u = Engine::Get(u->engine_type);
+		const Engine *e_u = u->GetEngine();
 		const RailVehicleInfo *rvi_u = &e_u->u.rail;
 
 		if (!HasBit(e_u->info.misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
@@ -455,7 +455,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	int reference_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 	int vehicle_pitch = 0;
 
-	const Engine *e = Engine::Get(this->engine_type);
+	const Engine *e = this->GetEngine();
 	if (e->grf_prop.grffile != NULL && is_custom_sprite(e->u.rail.image_index)) {
 		reference_width = e->grf_prop.grffile->traininfo_vehicle_width;
 		vehicle_pitch = e->grf_prop.grffile->traininfo_vehicle_pitch;
@@ -484,7 +484,7 @@ SpriteID Train::GetImage(Direction direction) const
 		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)));
 		if (sprite != 0) return sprite;
 
-		spritenum = Engine::Get(this->engine_type)->original_image_index;
+		spritenum = this->GetEngine()->original_image_index;
 	}
 
 	sprite = GetDefaultTrainSprite(spritenum, direction);
@@ -3687,7 +3687,7 @@ Money Train::GetRunningCost() const
 	const Train *v = this;
 
 	do {
-		const Engine *e = Engine::Get(v->engine_type);
+		const Engine *e = v->GetEngine();
 		if (e->u.rail.running_cost_class == INVALID_PRICE) continue;
 
 		uint cost_factor = GetVehicleProperty(v, PROP_TRAIN_RUNNING_COST_FACTOR, e->u.rail.running_cost);

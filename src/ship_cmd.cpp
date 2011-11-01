@@ -107,7 +107,7 @@ SpriteID Ship::GetImage(Direction direction) const
 		SpriteID sprite = GetCustomVehicleSprite(this, direction);
 		if (sprite != 0) return sprite;
 
-		spritenum = Engine::Get(this->engine_type)->original_image_index;
+		spritenum = this->GetEngine()->original_image_index;
 	}
 
 	return _ship_sprites[spritenum] + direction;
@@ -190,7 +190,7 @@ void Ship::UpdateCache()
 
 Money Ship::GetRunningCost() const
 {
-	const Engine *e = Engine::Get(this->engine_type);
+	const Engine *e = this->GetEngine();
 	uint cost_factor = GetVehicleProperty(this, PROP_SHIP_RUNNING_COST_FACTOR, e->u.ship.running_cost);
 	return GetPrice(PR_RUNNING_SHIP, cost_factor, e->grf_prop.grffile);
 }

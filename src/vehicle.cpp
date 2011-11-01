@@ -92,7 +92,7 @@ void VehicleServiceInDepot(Vehicle *v)
 {
 	v->date_of_last_service = _date;
 	v->breakdowns_since_last_service = 0;
-	v->reliability = Engine::Get(v->engine_type)->reliability;
+	v->reliability = v->GetEngine()->reliability;
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 }
 
@@ -111,7 +111,7 @@ bool Vehicle::NeedsServicing() const
 	/* Are we ready for the next service cycle? */
 	const Company *c = Company::Get(this->owner);
 	if (c->settings.vehicle.servint_ispercent ?
-			(this->reliability >= Engine::Get(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
+			(this->reliability >= this->GetEngine()->reliability * (100 - this->service_interval) / 100) :
 			(this->date_of_last_service + this->service_interval >= _date)) {
 		return false;
 	}
@@ -629,6 +629,16 @@ bool Vehicle::HasEngineType() const
 		case VEH_SHIP: return true;
 		default: return false;
 	}
+}
+
+/**
+ * Retrieves the engine of the vehicle.
+ * @return Engine of the vehicle.
+ * @pre HasEngineType() == true
+ */
+const Engine *Vehicle::GetEngine() const
+{
+	return Engine::Get(this->engine_type);
 }
 
 /**
@@ -1158,7 +1168,7 @@ void AgeVehicle(Vehicle *v)
 	if (v->Previous() != NULL || v->owner != _local_company || (v->vehstatus & VS_CRASHED) != 0) return;
 
 	/* Don't warn if a renew is active */
-	if (Company::Get(v->owner)->settings.engine_renew && Engine::Get(v->engine_type)->company_avail != 0) return;
+	if (Company::Get(v->owner)->settings.engine_renew && v->GetEngine()->company_avail != 0) return;
 
 	StringID str;
 	if (age == -DAYS_IN_LEAP_YEAR) {
@@ -1756,7 +1766,7 @@ PaletteID GetVehiclePalette(const Vehicle *v)
 uint GetVehicleCapacity(const Vehicle *v, uint16 *mail_capacity)
 {
 	if (mail_capacity != NULL) *mail_capacity = 0;
-	const Engine *e = Engine::Get(v->engine_type);
+	const Engine *e = v->GetEngine();
 
 	if (!e->CanCarryCargo()) return 0;
 
@@ -2113,7 +2123,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 void Vehicle::UpdateVisualEffect(bool allow_power_change)
 {
 	bool powered_before = HasBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER);
-	const Engine *e = Engine::Get(this->engine_type);
+	const Engine *e = this->GetEngine();
 
 	/* Evaluate properties */
 	byte visual_effect;

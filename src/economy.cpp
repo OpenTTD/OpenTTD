@@ -1201,7 +1201,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 	for (Vehicle *v = front; v != NULL; v = v->Next()) {
 		if (v->cargo_cap == 0) continue;
 
-		const Engine *e = Engine::Get(v->engine_type);
+		const Engine *e = v->GetEngine();
 		byte load_amount = e->info.load_amount;
 
 		/* The default loadamount for mail is 1/4 of the load amount for passengers */

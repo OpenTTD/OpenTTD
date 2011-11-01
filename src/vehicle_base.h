@@ -338,6 +338,8 @@ public:
 	 */
 	virtual bool IsPrimaryVehicle() const { return false; }
 
+	const Engine *GetEngine() const;
+
 	/**
 	 * Gets the sprite to show for the given direction
 	 * @param direction the direction the vehicle is facing

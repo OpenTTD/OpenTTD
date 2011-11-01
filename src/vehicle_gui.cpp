@@ -217,8 +217,8 @@ static const uint MAX_REFIT_CYCLE = 256;
  */
 byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
 {
-	const Engine *e_from = Engine::Get(v_from->engine_type);
-	const Engine *e_for  = Engine::Get(v_for->engine_type);
+	const Engine *e_from = v_from->GetEngine();
+	const Engine *e_for  = v_for->GetEngine();
 
 	/* If one them doesn't carry cargo, there's no need to find a sub type */
 	if (!e_from->CanCarryCargo() || !e_for->CanCarryCargo()) return 0;
@@ -386,7 +386,7 @@ struct RefitWindow : public Window {
 
 		do {
 			if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index)) continue;
-			const Engine *e = Engine::Get(v->engine_type);
+			const Engine *e = v->GetEngine();
 			uint32 cmask = e->info.refit_mask;
 			byte callback_mask = e->info.callback_mask;
 

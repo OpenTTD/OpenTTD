@@ -273,7 +273,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
 		if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index) && !only_this) continue;
 
-		const Engine *e = Engine::Get(v->engine_type);
+		const Engine *e = v->GetEngine();
 		if (!e->CanCarryCargo()) continue;
 
 		/* If the vehicle is not refittable, count its capacity nevertheless if the cargo matches */
@@ -789,7 +789,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 					break;
 				}
 			} else {
-				const Engine *e = Engine::Get(v->engine_type);
+				const Engine *e = v->GetEngine();
 				CargoID initial_cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 
 				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {

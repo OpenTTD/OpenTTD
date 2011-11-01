@@ -618,7 +618,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(v->engine_type)->cargo_map[v->cargo_type];
 		}
 
-		case 0x48: return Engine::Get(v->engine_type)->flags; // Vehicle Type Info
+		case 0x48: return v->GetEngine()->flags; // Vehicle Type Info
 		case 0x49: return v->build_year;
 
 		case 0x4A: {
@@ -633,12 +633,12 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
 			//EngineID engine = GetNewEngineID(GetEngineGRF(v->engine_type), v->type, parameter);
-			if (v->type != VEH_TRAIN) return Engine::Get(v->engine_type)->grf_prop.local_id == parameter;
+			if (v->type != VEH_TRAIN) return v->GetEngine()->grf_prop.local_id == parameter;
 
 			{
 				uint count = 0;
 				for (; v != NULL; v = v->Next()) {
-					if (Engine::Get(v->engine_type)->grf_prop.local_id == parameter) count++;
+					if (v->GetEngine()->grf_prop.local_id == parameter) count++;
 				}
 				return count;
 			}
@@ -776,8 +776,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 		case 0x43: return GB(ClampToU16(v->max_age), 8, 8);
 		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
-		case 0x46: return Engine::Get(v->engine_type)->grf_prop.local_id;
-		case 0x47: return GB(Engine::Get(v->engine_type)->grf_prop.local_id, 8, 8);
+		case 0x46: return v->GetEngine()->grf_prop.local_id;
+		case 0x47: return GB(v->GetEngine()->grf_prop.local_id, 8, 8);
 		case 0x48:
 			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
 			return HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
