@@ -2104,7 +2104,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 	/* Above snow? */
 	int land = _settings_game.game_creation.landscape;
-	if (land == LT_ARCTIC && z >= _settings_game.game_creation.snow_line) land = -1;
+	if (land == LT_ARCTIC && z >= HighestSnowLine()) land = -1;
 
 	uint bitmask = (1 << rad) + (1 << (land + 12));
 
