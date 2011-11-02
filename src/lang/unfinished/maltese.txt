@@ -998,7 +998,7 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ma tista
 # Sign related errors
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klonu ta' Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Logħba simulazzjoni bbażata fuq Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
