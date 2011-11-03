@@ -2648,6 +2648,11 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* When any NewGRF has been changed the availability of some vehicles might
+	 * have been changed too. e->company_avail must be set to 0 in that case
+	 * which is done by StartupEngines(). */
+	if (gcf_res != GLC_ALL_GOOD) StartupEngines();
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

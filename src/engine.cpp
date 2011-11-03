@@ -635,7 +635,10 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	}
 }
 
-/** Start/initialise all our engines. */
+/**
+ * Start/initialise all our engines. Must be called whenever there are changes
+ * to the NewGRF config.
+ */
 void StartupEngines()
 {
 	Engine *e;
