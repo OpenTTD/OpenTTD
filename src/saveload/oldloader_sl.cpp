@@ -1724,7 +1724,7 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR ( OC_TTD | OC_UINT8,    1, &_trees_tick_ctr ),
 
 	OCL_CNULL( OC_TTD, 1 ),               ///< Custom vehicle types yes/no, no longer used
-	OCL_VAR ( OC_TTD | OC_UINT8,    1, &_settings_game.game_creation.snow_line ),
+	OCL_VAR ( OC_TTD | OC_UINT8,    1, &_settings_game.game_creation.snow_line_height ),
 
 	OCL_CNULL( OC_TTD, 32 ),              ///< new_industry_randtable, no longer used (because of new design)
 	OCL_CNULL( OC_TTD, 36 ),              ///< cargo-stuff

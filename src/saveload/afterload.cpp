@@ -2648,6 +2648,11 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* This triggers only when old snow_lines were copied into the snow_line_height. */
+	if (IsSavegameVersionBefore(164) && _settings_game.game_creation.snow_line_height >= MIN_SNOWLINE_HEIGHT * TILE_HEIGHT) {
+		_settings_game.game_creation.snow_line_height /= TILE_HEIGHT;
+	}
+
 	/* When any NewGRF has been changed the availability of some vehicles might
 	 * have been changed too. e->company_avail must be set to 0 in that case
 	 * which is done by StartupEngines(). */

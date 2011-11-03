@@ -79,7 +79,7 @@ extern const byte _slope_to_sprite_offset[32] = {
 /**
  * Description of the snow line throughout the year.
  *
- * If it is \c NULL, a static snowline height is used, as set by \c _settings_game.game_creation.snow_line.
+ * If it is \c NULL, a static snowline height is used, as set by \c _settings_game.game_creation.snow_line_height.
  * Otherwise it points to a table loaded from a newGRF file that describes the variable snowline.
  * @ingroup SnowLineGroup
  * @see GetSnowLine() GameCreationSettings
@@ -561,7 +561,7 @@ void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
  */
 byte GetSnowLine()
 {
-	if (_snow_line == NULL) return _settings_game.game_creation.snow_line;
+	if (_snow_line == NULL) return _settings_game.game_creation.snow_line_height * TILE_HEIGHT;
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
@@ -575,7 +575,7 @@ byte GetSnowLine()
  */
 byte HighestSnowLine()
 {
-	return _snow_line == NULL ? _settings_game.game_creation.snow_line : _snow_line->highest_value;
+	return _snow_line == NULL ? _settings_game.game_creation.snow_line_height * TILE_HEIGHT : _snow_line->highest_value;
 }
 
 /**
@@ -585,7 +585,7 @@ byte HighestSnowLine()
  */
 byte LowestSnowLine()
 {
-	return _snow_line == NULL ? _settings_game.game_creation.snow_line : _snow_line->lowest_value;
+	return _snow_line == NULL ? _settings_game.game_creation.snow_line_height * TILE_HEIGHT : _snow_line->lowest_value;
 }
 
 /**

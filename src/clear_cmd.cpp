@@ -361,11 +361,6 @@ static void ChangeTileOwner_Clear(TileIndex tile, Owner old_owner, Owner new_own
 	return;
 }
 
-void InitializeClearLand()
-{
-	_settings_game.game_creation.snow_line = _settings_game.game_creation.snow_line_height * TILE_HEIGHT;
-}
-
 static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
