@@ -163,6 +163,11 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 	SetConsoleTitle(_T("OpenTTD Dedicated Server"));
 #endif
 
+#ifdef _MSC_VER
+	/* Disable the MSVC assertion message box. */
+	_set_error_mode(_OUT_TO_STDERR);
+#endif
+
 #ifdef __OS2__
 	/* For OS/2 we also need to switch to console mode instead of PM mode */
 	OS2_SwitchToConsoleMode();
