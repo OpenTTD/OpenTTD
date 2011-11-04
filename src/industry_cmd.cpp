@@ -1165,7 +1165,7 @@ static CommandCost CheckNewIndustry_NULL(TileIndex tile)
 static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTileZ(tile) < HighestSnowLine() + 2U) {
+		if (GetTileZ(tile) < HighestSnowLine() + 2) {
 			return_cmd_error(STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED);
 		}
 	}

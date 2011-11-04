@@ -2338,7 +2338,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 static uint GetSlopePixelZ_Track(TileIndex tile, uint x, uint y)
 {
 	if (IsPlainRail(tile)) {
-		uint z;
+		int z;
 		Slope tileh = GetTilePixelSlope(tile, &z);
 		if (tileh == SLOPE_FLAT) return z;
 
@@ -2366,7 +2366,7 @@ static void TileLoop_Track(TileIndex tile)
 
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC: {
-			uint z;
+			int z;
 			Slope slope = GetTileSlope(tile, &z);
 			bool half = false;
 
@@ -2828,7 +2828,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 
 static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
-	uint z_old;
+	int z_old;
 	Slope tileh_old = GetTileSlope(tile, &z_old);
 	if (IsPlainRail(tile)) {
 		TrackBits rail_bits = GetTrackBits(tile);

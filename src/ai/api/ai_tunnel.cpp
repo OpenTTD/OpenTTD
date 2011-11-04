@@ -29,13 +29,13 @@
 	/* If it's a tunnel already, take the easy way out! */
 	if (IsTunnelTile(tile)) return ::GetOtherTunnelEnd(tile);
 
-	uint start_z;
+	int start_z;
 	Slope start_tileh = ::GetTileSlope(tile, &start_z);
 	DiagDirection direction = ::GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return INVALID_TILE;
 
 	TileIndexDiff delta = ::TileOffsByDiagDir(direction);
-	uint end_z;
+	int end_z;
 	do {
 		tile += delta;
 		if (!::IsValidTile(tile)) return INVALID_TILE;

@@ -18,7 +18,7 @@
  * @param h    If not \c NULL, pointer to storage of z height
  * @return Slope of the tile, except for the HALFTILE part
  */
-Slope GetTileSlope(TileIndex tile, uint *h)
+Slope GetTileSlope(TileIndex tile, int *h)
 {
 	assert(tile < MapSize());
 
@@ -28,13 +28,13 @@ Slope GetTileSlope(TileIndex tile, uint *h)
 		return SLOPE_FLAT;
 	}
 
-	uint a = TileHeight(tile); // Height of the N corner
-	uint min = a; // Minimal height of all corners examined so far
-	uint b = TileHeight(tile + TileDiffXY(1, 0)); // Height of the W corner
+	int a = TileHeight(tile); // Height of the N corner
+	int min = a; // Minimal height of all corners examined so far
+	int b = TileHeight(tile + TileDiffXY(1, 0)); // Height of the W corner
 	if (min > b) min = b;
-	uint c = TileHeight(tile + TileDiffXY(0, 1)); // Height of the E corner
+	int c = TileHeight(tile + TileDiffXY(0, 1)); // Height of the E corner
 	if (min > c) min = c;
-	uint d = TileHeight(tile + TileDiffXY(1, 1)); // Height of the S corner
+	int d = TileHeight(tile + TileDiffXY(1, 1)); // Height of the S corner
 	if (min > d) min = d;
 
 	/* Due to the fact that tiles must connect with each other without leaving gaps, the
@@ -64,11 +64,11 @@ Slope GetTileSlope(TileIndex tile, uint *h)
  * @param tile Tile to compute height of
  * @return Minimum height of the tile
  */
-uint GetTileZ(TileIndex tile)
+int GetTileZ(TileIndex tile)
 {
 	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
 
-	uint h = TileHeight(tile); // N corner
+	int h = TileHeight(tile); // N corner
 	h = min(h, TileHeight(tile + TileDiffXY(1, 0))); // W corner
 	h = min(h, TileHeight(tile + TileDiffXY(0, 1))); // E corner
 	h = min(h, TileHeight(tile + TileDiffXY(1, 1))); // S corner
@@ -81,14 +81,14 @@ uint GetTileZ(TileIndex tile)
  * @param t Tile to compute height of
  * @return Maximum height of the tile
  */
-uint GetTileMaxZ(TileIndex t)
+int GetTileMaxZ(TileIndex t)
 {
 	if (TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) return 0;
 
-	uint h = TileHeight(t); // N corner
-	h = max(h, TileHeight(t + TileDiffXY(1, 0))); // W corner
-	h = max(h, TileHeight(t + TileDiffXY(0, 1))); // E corner
-	h = max(h, TileHeight(t + TileDiffXY(1, 1))); // S corner
+	int h = TileHeight(t); // N corner
+	h = max<int>(h, TileHeight(t + TileDiffXY(1, 0))); // W corner
+	h = max<int>(h, TileHeight(t + TileDiffXY(0, 1))); // E corner
+	h = max<int>(h, TileHeight(t + TileDiffXY(1, 1))); // S corner
 
 	return h;
 }

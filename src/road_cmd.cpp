@@ -1080,7 +1080,7 @@ void DrawTramCatenary(const TileInfo *ti, RoadBits tram)
 
 	/* Don't draw the catenary under a low bridge */
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_CATENARY)) {
-		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
+		int height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
 		if (height <= GetTileMaxZ(ti->tile) + 1) return;
 	}
@@ -1187,8 +1187,8 @@ static void DrawRoadBits(TileInfo *ti)
 
 	/* Do not draw details (street lights, trees) under low bridge */
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && (roadside == ROADSIDE_TREES || roadside == ROADSIDE_STREET_LIGHTS)) {
-		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
-		uint minz = GetTileMaxZ(ti->tile) + 2;
+		int height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
+		int minz = GetTileMaxZ(ti->tile) + 2;
 
 		if (roadside == ROADSIDE_TREES) minz++;
 
@@ -1341,7 +1341,7 @@ static uint GetSlopePixelZ_Road(TileIndex tile, uint x, uint y)
 {
 
 	if (IsNormalRoad(tile)) {
-		uint z;
+		int z;
 		Slope tileh = GetTilePixelSlope(tile, &z);
 		if (tileh == SLOPE_FLAT) return z;
 
@@ -1696,7 +1696,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, uint 
 				if (CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE, ROAD_NONE).Succeeded()) {
 					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
 					if (bits == bits_copy) {
-						uint z_old;
+						int z_old;
 						Slope tileh_old = GetTileSlope(tile, &z_old);
 
 						/* Get the slope on top of the foundation */

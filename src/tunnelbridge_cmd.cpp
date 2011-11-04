@@ -138,7 +138,7 @@ static inline const PalSpriteID *GetBridgeSpriteTable(int index, BridgePieces ta
  * @param z TileZ corresponding to tileh, gets modified as well
  * @return Error or cost for bridge foundation
  */
-static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, uint *z)
+static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, int *z)
 {
 	Foundation f = GetBridgeFoundation(*tileh, axis);
 	*z += ApplyFoundationToSlope(f, tileh);
@@ -159,7 +159,7 @@ static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, uint *z)
  * @param z TileZ corresponding to tileh, gets modified as well
  * @return Error or cost for bridge foundation
  */
-static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
+static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, int *z)
 {
 	Foundation f = GetBridgeFoundation(*tileh, axis);
 	*z += ApplyFoundationToSlope(f, tileh);
@@ -267,8 +267,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		if (bridge_len > _settings_game.construction.max_bridge_length) return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 	}
 
-	uint z_start;
-	uint z_end;
+	int z_start;
+	int z_end;
 	Slope tileh_start = GetTileSlope(tile_start, &z_start);
 	Slope tileh_end = GetTileSlope(tile_end, &z_end);
 	bool pbs_reservation = false;
@@ -525,8 +525,8 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		default: return CMD_ERROR;
 	}
 
-	uint start_z;
-	uint end_z;
+	int start_z;
+	int end_z;
 	Slope start_tileh = GetTileSlope(start_tile, &start_z);
 	DiagDirection direction = GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
@@ -1361,7 +1361,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 
 static uint GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y)
 {
-	uint z;
+	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
 
 	x &= 0xF;
@@ -1380,7 +1380,7 @@ static uint GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y)
 
 		/* On the bridge ramp? */
 		if (5 <= pos && pos <= 10) {
-			uint delta;
+			int delta;
 
 			if (tileh != SLOPE_FLAT) return z + TILE_HEIGHT;
 
@@ -1679,16 +1679,16 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;
-		uint z_old;
+		int z_old;
 		Slope tileh_old = GetTileSlope(tile, &z_old);
 
 		/* Check if new slope is valid for bridges in general (so we can safely call GetBridgeFoundation()) */
 		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {
 			CheckBridgeSlopeSouth(axis, &tileh_old, &z_old);
-			res = CheckBridgeSlopeSouth(axis, &tileh_new, &z_new);
+			res = CheckBridgeSlopeSouth(axis, &tileh_new, (int*)&z_new);
 		} else {
 			CheckBridgeSlopeNorth(axis, &tileh_old, &z_old);
-			res = CheckBridgeSlopeNorth(axis, &tileh_new, &z_new);
+			res = CheckBridgeSlopeNorth(axis, &tileh_new, (int*)&z_new);
 		}
 
 		/* Surface slope is valid and remains unchanged? */

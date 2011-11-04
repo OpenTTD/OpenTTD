@@ -46,7 +46,7 @@ struct TileInfo {
 	uint y;         ///< Y position of the tile in unit coordinates
 	Slope tileh;    ///< Slope of the tile
 	TileIndex tile; ///< Tile index
-	uint z;         ///< Height
+	int z;          ///< Height
 };
 
 /** Tile description for the 'land area information' tool */

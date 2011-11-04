@@ -170,7 +170,7 @@
 {
 	if (!::IsValidTile(tile) || !::IsValidCorner((::Corner)corner)) return -1;
 
-	uint z;
+	int z;
 	::Slope slope = ::GetTileSlope(tile, &z);
 	return (z + ::GetSlopeZInCorner(slope, (::Corner)corner));
 }

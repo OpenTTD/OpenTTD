@@ -230,7 +230,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 		/* So, now the surface is checked... check the slope of said surface. */
 		int allowed_z;
-		if (GetTileSlope(tile, (uint*)&allowed_z) != SLOPE_FLAT) allowed_z++;
+		if (GetTileSlope(tile, &allowed_z) != SLOPE_FLAT) allowed_z++;
 
 		TILE_AREA_LOOP(t, ta) {
 			uint16 callback = CALLBACK_FAILED;
@@ -384,7 +384,7 @@ static void DrawTile_Object(TileInfo *ti)
 static uint GetSlopePixelZ_Object(TileIndex tile, uint x, uint y)
 {
 	if (IsOwnedLand(tile)) {
-		uint z;
+		int z;
 		Slope tileh = GetTilePixelSlope(tile, &z);
 
 		return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
@@ -642,7 +642,7 @@ void GenerateObjects()
 	for (uint i = ScaleByMapSize(1000); i != 0 && Object::CanAllocateItem(); i--) {
 		TileIndex tile = RandomTile();
 
-		uint h;
+		int h;
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= 4 && !IsBridgeAbove(tile)) {
 			TileIndex t = tile;
 			if (CircularTileSearch(&t, 9, HasTransmitter, NULL)) continue;
@@ -679,7 +679,7 @@ void GenerateObjects()
 		if (!IsTileType(tile, MP_WATER)) continue;
 
 		for (int j = 0; j < 19; j++) {
-			uint h;
+			int h;
 			if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= 2 && !IsBridgeAbove(tile)) {
 				BuildObject(OBJECT_LIGHTHOUSE, tile);
 				IncreaseGeneratingWorldProgress(GWP_OBJECT);

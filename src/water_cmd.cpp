@@ -149,7 +149,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 	WaterClass wc = GetWaterClass(tile);
 
 	/* Autoslope might turn an originally canal or river tile into land */
-	uint z;
+	int z;
 	if (GetTileSlope(tile, &z) != SLOPE_FLAT) wc = WATER_CLASS_INVALID;
 
 	if (wc == WATER_CLASS_SEA && z > 0) wc = WATER_CLASS_CANAL;
@@ -796,7 +796,7 @@ void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 
 static uint GetSlopePixelZ_Water(TileIndex tile, uint x, uint y)
 {
-	uint z;
+	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
@@ -1079,7 +1079,7 @@ void TileLoop_Water(TileIndex tile)
 				/* do not try to flood water tiles - increases performance a lot */
 				if (IsTileType(dest, MP_WATER)) continue;
 
-				uint z_dest;
+				int z_dest;
 				Slope slope_dest = GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 				if (z_dest > 0) continue;
 
@@ -1109,7 +1109,7 @@ void TileLoop_Water(TileIndex tile)
 
 void ConvertGroundTilesIntoWaterTiles()
 {
-	uint z;
+	int z;
 
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
 		Slope slope = GetTileSlope(tile, &z);

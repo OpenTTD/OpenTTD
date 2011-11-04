@@ -67,9 +67,9 @@ TileIndex GetOtherBridgeEnd(TileIndex tile)
  * @param tile the bridge ramp tile to get the bridge height from
  * @return the height of the bridge.
  */
-uint GetBridgeHeight(TileIndex t)
+int GetBridgeHeight(TileIndex t)
 {
-	uint h;
+	int h;
 	Slope tileh = GetTileSlope(t, &h);
 	Foundation f = GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(t)));
 

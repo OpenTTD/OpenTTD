@@ -216,7 +216,7 @@ static void PlaceTreeGroups(uint num_groups)
  * @param tile The base tile to add a new tree somewhere around
  * @param height The height (like the one from the tile)
  */
-static void PlaceTreeAtSameHeight(TileIndex tile, uint height)
+static void PlaceTreeAtSameHeight(TileIndex tile, int height)
 {
 	for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
 		uint32 r = Random();
@@ -247,7 +247,7 @@ static void PlaceTreeAtSameHeight(TileIndex tile, uint height)
  */
 void PlaceTreesRandomly()
 {
-	uint i, j, ht;
+	int i, j, ht;
 
 	i = ScaleByMapSize(DEFAULT_TREE_STEPS);
 	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
@@ -518,7 +518,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 static uint GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y)
 {
-	uint z;
+	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);

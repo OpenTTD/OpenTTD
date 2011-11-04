@@ -292,14 +292,14 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			if (IsTileType(tile, MP_VOID)) continue;
 
 			/* Find new heights of tile corners */
-			uint z_N = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
-			uint z_W = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
-			uint z_S = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
-			uint z_E = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
+			int z_N = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
+			int z_W = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
+			int z_S = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
+			int z_E = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
 
 			/* Find min and max height of tile */
-			uint z_min = min(min(z_N, z_W), min(z_S, z_E));
-			uint z_max = max(max(z_N, z_W), max(z_S, z_E));
+			int z_min = min(min(z_N, z_W), min(z_S, z_E));
+			int z_max = max(max(z_N, z_W), max(z_S, z_E));
 
 			/* Compute tile slope */
 			Slope tileh = (z_max > z_min + 1 ? SLOPE_STEEP : SLOPE_FLAT);

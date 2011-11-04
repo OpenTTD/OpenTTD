@@ -36,7 +36,7 @@ byte LowestSnowLine();
 void ClearSnowLine();
 
 int GetSlopeZInCorner(Slope tileh, Corner corner);
-Slope GetFoundationSlope(TileIndex tile, uint *z = NULL);
+Slope GetFoundationSlope(TileIndex tile, int *z = NULL);
 
 uint GetPartialPixelZ(int x, int y, Slope corners);
 int GetSlopePixelZ(int x, int y);
@@ -64,7 +64,7 @@ static inline int GetSlopePixelZInCorner(Slope tileh, Corner corner)
  * @param z returns the z of the foundation slope. (Can be NULL, if not needed)
  * @return The slope on top of the foundation.
  */
-static inline Slope GetFoundationPixelSlope(TileIndex tile, uint *z)
+static inline Slope GetFoundationPixelSlope(TileIndex tile, int *z)
 {
 	assert(z != NULL);
 	Slope s = GetFoundationSlope(tile, z);

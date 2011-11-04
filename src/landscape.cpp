@@ -337,7 +337,7 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
  * @param z returns the z of the foundation slope. (Can be NULL, if not needed)
  * @return The slope on top of the foundation.
  */
-Slope GetFoundationSlope(TileIndex tile, uint *z)
+Slope GetFoundationSlope(TileIndex tile, int *z)
 {
 	Slope tileh = GetTileSlope(tile, z);
 	Foundation f = _tile_type_procs[GetTileType(tile)]->get_foundation_proc(tile, tileh);
@@ -349,7 +349,7 @@ Slope GetFoundationSlope(TileIndex tile, uint *z)
 
 bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 {
-	uint z;
+	int z;
 
 	int z_W_here = z_here;
 	int z_N_here = z_here;
@@ -366,7 +366,7 @@ bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 
 bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 {
-	uint z;
+	int z;
 
 	int z_E_here = z_here;
 	int z_N_here = z_here;
@@ -393,7 +393,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	assert(f != FOUNDATION_STEEP_BOTH);
 
 	uint sprite_block = 0;
-	uint z;
+	int z;
 	Slope slope = GetFoundationPixelSlope(ti->tile, &z);
 
 	/* Select the needed block of foundations sprites
@@ -926,7 +926,7 @@ static void CreateDesertOrRainForest()
  */
 static bool FindSpring(TileIndex tile, void *user_data)
 {
-	uint referenceHeight;
+	int referenceHeight;
 	Slope s = GetTileSlope(tile, &referenceHeight);
 	if (s != SLOPE_FLAT || IsWaterTile(tile)) return false;
 
@@ -988,8 +988,8 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 {
 	assert(DistanceManhattan(begin, end) == 1);
 
-	uint heightBegin;
-	uint heightEnd;
+	int heightBegin;
+	int heightEnd;
 	Slope slopeBegin = GetTileSlope(begin, &heightBegin);
 	Slope slopeEnd   = GetTileSlope(end, &heightEnd);
 

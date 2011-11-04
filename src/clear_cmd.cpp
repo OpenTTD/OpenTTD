@@ -109,7 +109,7 @@ static void DrawTile_Clear(TileInfo *ti)
 
 static uint GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y)
 {
-	uint z;
+	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
 
 	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
@@ -230,7 +230,7 @@ static void TileLoop_Clear(TileIndex tile)
 {
 	/* If the tile is at any edge flood it to prevent maps without water. */
 	if (_settings_game.construction.freeform_edges && DistanceFromEdge(tile) == 1) {
-		uint z;
+		int z;
 		Slope slope = GetTileSlope(tile, &z);
 		if (z == 0 && slope == SLOPE_FLAT) {
 			DoFloodTile(tile);

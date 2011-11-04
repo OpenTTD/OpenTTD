@@ -23,7 +23,7 @@ TileIndex GetOtherTunnelEnd(TileIndex tile)
 {
 	DiagDirection dir = GetTunnelBridgeDirection(tile);
 	TileIndexDiff delta = TileOffsByDiagDir(dir);
-	uint z = GetTileZ(tile);
+	int z = GetTileZ(tile);
 
 	dir = ReverseDiagDir(dir);
 	do {
