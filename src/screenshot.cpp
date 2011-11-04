@@ -758,9 +758,9 @@ static bool MakeWorldScreenshot()
 	const ScreenshotFormat *sf;
 
 	/* We need to account for a hill or high building at tile 0,0. */
-	int extra_height_top = TileHeight(0) * TILE_HEIGHT + 150;
+	int extra_height_top = TilePixelHeight(0) + 150;
 	/* If there is a hill at the bottom don't create a large black area. */
-	int reclaim_height_bottom = TileHeight(MapSize() - 1) * TILE_HEIGHT;
+	int reclaim_height_bottom = TilePixelHeight(MapSize() - 1);
 
 	vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 	vp.left = 0;
