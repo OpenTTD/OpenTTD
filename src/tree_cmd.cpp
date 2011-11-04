@@ -27,6 +27,7 @@
 #include "landscape_type.h"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include "newgrf_generic.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -620,12 +621,14 @@ static void TileLoopTreesAlps(TileIndex tile)
 static void TileLoop_Trees(TileIndex tile)
 {
 	if (GetTreeGround(tile) == TREE_GROUND_SHORE) {
-		TileLoop_Water(tile);
+		TileLoop_Water(tile); // Calls AmbientSoundEffectCallback
 	} else {
 		switch (_settings_game.game_creation.landscape) {
 			case LT_TROPIC: TileLoopTreesDesert(tile); break;
 			case LT_ARCTIC: TileLoopTreesAlps(tile);   break;
 		}
+
+		AmbientSoundEffectCallback(tile);
 	}
 
 	TileLoopClearHelper(tile);

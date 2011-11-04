@@ -20,6 +20,7 @@
 #include "viewport_func.h"
 #include "water.h"
 #include "core/random_func.hpp"
+#include "newgrf_generic.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -239,6 +240,7 @@ static void TileLoop_Clear(TileIndex tile)
 		}
 	}
 	TileLoopClearHelper(tile);
+	AmbientSoundEffectCallback(tile);
 
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: TileLoopClearDesert(tile); break;

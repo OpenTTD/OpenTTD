@@ -1071,6 +1071,8 @@ static void DoDryUp(TileIndex tile)
  */
 void TileLoop_Water(TileIndex tile)
 {
+	AmbientSoundEffectCallback(tile);
+
 	switch (GetFloodingBehaviour(tile)) {
 		case FLOOD_ACTIVE:
 			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {

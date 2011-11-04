@@ -196,7 +196,7 @@ enum CallbackID {
 	CBID_HOUSE_DENY_DESTRUCTION          = 0x143, // 15 bit callback
 
 	/** Select an ambient sound to play for a given type of tile. */
-	CBID_SOUNDS_AMBIENT_EFFECT           = 0x144, // 15 bit callback, not implemented
+	CBID_SOUNDS_AMBIENT_EFFECT           = 0x144, // 15 bit callback
 
 	/** Called to calculate part of a station rating. */
 	CBID_CARGO_STATION_RATING_CALC       = 0x145, // 15 bit callback

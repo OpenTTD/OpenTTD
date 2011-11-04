@@ -15,6 +15,7 @@
 #include "cargo_type.h"
 #include "industry_type.h"
 #include "newgrf.h"
+#include "tile_type.h"
 
 struct SpriteGroup;
 
@@ -50,5 +51,6 @@ void ResetGenericCallbacks();
 void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *group);
 
 uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 default_selection, IndustryType src_industry, IndustryType dst_industry, uint8 distance, AIConstructionEvent event, uint8 count, uint8 station_size, const GRFFile **file);
+void AmbientSoundEffectCallback(TileIndex tile);
 
 #endif /* NEWGRF_GENERIC_H */

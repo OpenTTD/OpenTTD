@@ -15,6 +15,9 @@
 #include "newgrf_spritegroup.h"
 #include "industrytype.h"
 #include "core/bitmath_func.hpp"
+#include "core/random_func.hpp"
+#include "tile_map.h"
+#include "newgrf_sound.h"
 #include <list>
 
 
@@ -84,6 +87,14 @@ static void GenericCallbackSetTriggers(const ResolverObject *object, int trigger
 
 static uint32 GenericCallbackGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
+	DEBUG(grf, 1, "Unhandled generic feature variable 0x%02X", variable);
+
+	*available = false;
+	return UINT_MAX;
+}
+
+static uint32 GenericAiCallbackGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+{
 	switch (variable) {
 		case 0x40: return object->grffile->cargo_map[object->u.generic.cargo_type];
 
@@ -115,12 +126,12 @@ static const SpriteGroup *GenericCallbackResolveReal(const ResolverObject *objec
 }
 
 
-static inline void NewGenericResolver(ResolverObject *res)
+static inline void NewGenericResolver(ResolverObject *res, bool ai_callback)
 {
 	res->GetRandomBits = &GenericCallbackGetRandomBits;
 	res->GetTriggers   = &GenericCallbackGetTriggers;
 	res->SetTriggers   = &GenericCallbackSetTriggers;
-	res->GetVariable   = &GenericCallbackGetVariable;
+	res->GetVariable   = ai_callback ? &GenericAiCallbackGetVariable : &GenericCallbackGetVariable;
 	res->ResolveReal   = &GenericCallbackResolveReal;
 
 	res->callback        = CBID_NO_CALLBACK;
@@ -181,7 +192,7 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 {
 	ResolverObject object;
 
-	NewGenericResolver(&object);
+	NewGenericResolver(&object, true);
 
 	if (src_industry != IT_AI_UNKNOWN && src_industry != IT_AI_TOWN) {
 		const IndustrySpec *is = GetIndustrySpec(src_industry);
@@ -208,4 +219,33 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 	uint16 callback = GetGenericCallbackResult(feature, &object, file);
 	if (callback != CALLBACK_FAILED) callback = GB(callback, 0, 8);
 	return callback;
+}
+
+
+/**
+ * 'Execute' the ambient sound effect callback.
+ * @param tile Tile the sound effect should be generated for.
+ */
+void AmbientSoundEffectCallback(TileIndex tile)
+{
+	assert(IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES) || IsTileType(tile, MP_WATER));
+
+	/* Only run callback if enabled. */
+	if (!HasGrfMiscBit(GMB_AMBIENT_SOUND_CALLBACK)) return;
+	/* Only run every 1/200-th time. */
+	uint32 r; // Save for later
+	if (!Chance16R(1, 200, r)) return;
+
+	ResolverObject object;
+
+	/* Prepare resolver object. */
+	NewGenericResolver(&object, false);
+	object.callback = CBID_SOUNDS_AMBIENT_EFFECT;
+	object.callback_param1 = GetTileType(tile) << 28 | TileHeight(tile) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
+
+	/* Run callback. */
+	const GRFFile *grf_file;
+	uint16 callback = GetGenericCallbackResult(GSF_SOUNDFX, &object, &grf_file);
+
+	if (callback != CALLBACK_FAILED) PlayTileSound(grf_file, callback, tile);
 }
