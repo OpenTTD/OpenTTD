@@ -30,7 +30,7 @@
 	if (IsTunnelTile(tile)) return ::GetOtherTunnelEnd(tile);
 
 	uint start_z;
-	Slope start_tileh = ::GetTilePixelSlope(tile, &start_z);
+	Slope start_tileh = ::GetTileSlope(tile, &start_z);
 	DiagDirection direction = ::GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return INVALID_TILE;
 
@@ -40,7 +40,7 @@
 		tile += delta;
 		if (!::IsValidTile(tile)) return INVALID_TILE;
 
-		::GetTilePixelSlope(tile, &end_z);
+		::GetTileSlope(tile, &end_z);
 	} while (start_z != end_z);
 
 	return tile;

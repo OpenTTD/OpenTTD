@@ -156,14 +156,14 @@
 {
 	if (!::IsValidTile(tile)) return -1;
 
-	return ::GetTilePixelZ(tile) / ::TILE_HEIGHT;
+	return ::GetTileZ(tile);
 }
 
 /* static */ int32 AITile::GetMaxHeight(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return -1;
 
-	return ::GetTileMaxPixelZ(tile) / ::TILE_HEIGHT;
+	return ::GetTileMaxZ(tile);
 }
 
 /* static */ int32 AITile::GetCornerHeight(TileIndex tile, Corner corner)
@@ -171,8 +171,8 @@
 	if (!::IsValidTile(tile) || !::IsValidCorner((::Corner)corner)) return -1;
 
 	uint z;
-	::Slope slope = ::GetTilePixelSlope(tile, &z);
-	return (z + ::GetSlopePixelZInCorner(slope, (::Corner)corner)) / ::TILE_HEIGHT;
+	::Slope slope = ::GetTileSlope(tile, &z);
+	return (z + ::GetSlopeZInCorner(slope, (::Corner)corner));
 }
 
 /* static */ AICompany::CompanyID AITile::GetOwner(TileIndex tile)
