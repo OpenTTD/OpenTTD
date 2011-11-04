@@ -8611,9 +8611,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetNumWagons():       3
   GetLength():          24
   GetWagonEngineType(): 9
-  GetWagonAge():        0
+  GetWagonAge():        1
   GetWagonEngineType(): 27
-  GetWagonAge():        0
+  GetWagonAge():        1
   GetWagonEngineType(): 27
   GetWagonAge():        0
   GetWagonEngineType(): 65535
@@ -8647,11 +8647,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    17 => 1
+    16 => 1
     14 => 1
     13 => 1
     12 => 1
-    17 => 0
-    16 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -8659,9 +8659,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10980
+    16 => 10979
     14 => 10979
-    17 => 7320
+    17 => 7319
     13 => 5489
     12 => 5489
   CurrentSpeed ListDump:
