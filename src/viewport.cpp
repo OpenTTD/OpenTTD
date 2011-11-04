@@ -205,7 +205,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 		uint y = TileY(follow_flags) * TILE_SIZE;
 
 		vp->follow_vehicle = INVALID_VEHICLE;
-		pt = MapXYZToViewport(vp, x, y, GetSlopeZ(x, y));
+		pt = MapXYZToViewport(vp, x, y, GetSlopePixelZ(x, y));
 	}
 
 	vp->scrollpos_x = pt.x;
@@ -400,9 +400,9 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 
 	int min_coord = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
 
-	for (int i = 0; i < 5; i++) z = GetSlopeZ(Clamp(a + (int)max(z, 4u) - 4, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, 4u) - 4, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
-	for (uint malus = 3; malus > 0; malus--) z = GetSlopeZ(Clamp(a + (int)max(z, malus) - (int)malus, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, malus) - (int)malus, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
-	for (int i = 0; i < 5; i++) z = GetSlopeZ(Clamp(a + (int)z, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)z, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + (int)max(z, 4u) - 4, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, 4u) - 4, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (uint malus = 3; malus > 0; malus--) z = GetSlopePixelZ(Clamp(a + (int)max(z, malus) - (int)malus, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, malus) - (int)malus, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + (int)z, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)z, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
 
 	pt.x = Clamp(a + (int)z, min_coord, MapMaxX() * TILE_SIZE - 1);
 	pt.y = Clamp(b + (int)z, min_coord, MapMaxY() * TILE_SIZE - 1);
@@ -1084,7 +1084,7 @@ static void ViewportAddLandscape()
 					}
 
 					ti.tile = tile;
-					ti.tileh = GetTileSlope(tile, &ti.z);
+					ti.tileh = GetTilePixelSlope(tile, &ti.z);
 					tt = GetTileType(tile);
 				}
 			}
@@ -1101,7 +1101,7 @@ static void ViewportAddLandscape()
 					(y_cur == (int)MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE + 1))) {
 				TileIndex tile = TileVirtXY(x_cur, y_cur);
 				ti.tile = tile;
-				ti.tileh = GetTileSlope(tile, &ti.z);
+				ti.tileh = GetTilePixelSlope(tile, &ti.z);
 				tt = GetTileType(tile);
 			}
 			if (ti.tile != INVALID_TILE) DrawTileSelection(&ti);
@@ -1652,7 +1652,7 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom)
  */
 void MarkTileDirtyByTile(TileIndex tile)
 {
-	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, GetTileZ(tile));
+	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, GetTilePixelZ(tile));
 	MarkAllViewportsDirty(
 		pt.x - 31,
 		pt.y - 122,
@@ -1725,11 +1725,11 @@ static void SetSelectionTilesDirty()
 		do {
 			/* topmost dirty point */
 			TileIndex top_tile = TileVirtXY(top_x, top_y);
-			Point top = RemapCoords(top_x, top_y, GetTileMaxZ(top_tile));
+			Point top = RemapCoords(top_x, top_y, GetTileMaxPixelZ(top_tile));
 
 			/* bottommost point */
 			TileIndex bottom_tile = TileVirtXY(bot_x, bot_y);
-			Point bot = RemapCoords(bot_x + TILE_SIZE, bot_y + TILE_SIZE, GetTileZ(bottom_tile)); // bottommost point
+			Point bot = RemapCoords(bot_x + TILE_SIZE, bot_y + TILE_SIZE, GetTilePixelZ(bottom_tile)); // bottommost point
 
 			/* the 'x' coordinate of 'top' and 'bot' is the same (and always in the same distance from tile middle),
 			 * tile height/slope affects only the 'y' on-screen coordinate! */
@@ -1946,7 +1946,7 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
-	if (z == -1) z = GetSlopeZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1));
+	if (z == -1) z = GetSlopePixelZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1));
 
 	Point pt = MapXYZToViewport(w->viewport, x, y, z);
 	w->viewport->follow_vehicle = INVALID_VEHICLE;

@@ -106,7 +106,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
 		(MayHaveBridgeAbove(tile2) && IsBridgeAbove(tile2))) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (GetTileSlope(tile, NULL) != SLOPE_FLAT || GetTileSlope(tile2, NULL) != SLOPE_FLAT) {
+	if (GetTilePixelSlope(tile, NULL) != SLOPE_FLAT || GetTilePixelSlope(tile2, NULL) != SLOPE_FLAT) {
 		/* Prevent depots on rapids */
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
@@ -150,7 +150,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 
 	/* Autoslope might turn an originally canal or river tile into land */
 	uint z;
-	if (GetTileSlope(tile, &z) != SLOPE_FLAT) wc = WATER_CLASS_INVALID;
+	if (GetTilePixelSlope(tile, &z) != SLOPE_FLAT) wc = WATER_CLASS_INVALID;
 
 	if (wc == WATER_CLASS_SEA && z > 0) wc = WATER_CLASS_CANAL;
 
@@ -220,7 +220,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
 	}
-	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
+	if (GetTilePixelSlope(tile - delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -233,7 +233,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
 	}
-	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
+	if (GetTilePixelSlope(tile + delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -299,7 +299,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
  */
 CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
+	DiagDirection dir = GetInclinedSlopeDirection(GetTilePixelSlope(tile, NULL));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	/* Disallow building of locks on river rapids */
@@ -341,7 +341,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	TILE_AREA_LOOP(tile, ta) {
 		CommandCost ret;
 
-		Slope slope = GetTileSlope(tile, NULL);
+		Slope slope = GetTilePixelSlope(tile, NULL);
 		if (slope != SLOPE_FLAT && (wc != WATER_CLASS_RIVER || !IsInclinedSlope(slope))) {
 			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 		}
@@ -419,7 +419,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 		}
 
 		case WATER_TILE_COAST: {
-			Slope slope = GetTileSlope(tile, NULL);
+			Slope slope = GetTilePixelSlope(tile, NULL);
 
 			/* Make sure no vehicle is on the tile */
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -477,7 +477,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 				case WATER_TILE_LOCK: return DiagDirToAxis(GetLockDirection(tile)) == DiagDirToAxis(DirToDiagDir(from));
 
 				case WATER_TILE_COAST:
-					switch (GetTileSlope(tile, NULL)) {
+					switch (GetTilePixelSlope(tile, NULL)) {
 						case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
 						case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
 						case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
@@ -489,7 +489,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 		case MP_RAILWAY:
 			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
 				assert(IsPlainRail(tile));
-				switch (GetTileSlope(tile, NULL)) {
+				switch (GetTilePixelSlope(tile, NULL)) {
 					case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
 					case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
 					case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
@@ -509,7 +509,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 
 				return IsTileOnWater(tile);
 			}
-			return (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
+			return (IsDock(tile) && GetTilePixelSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
 
 		case MP_INDUSTRY: {
 			/* Do not draw waterborders inside of industries.
@@ -794,12 +794,12 @@ void DrawShipDepotSprite(int x, int y, Axis axis, DepotPart part)
 }
 
 
-static uint GetSlopeZ_Water(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Water(TileIndex tile, uint x, uint y)
 {
 	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTilePixelSlope(tile, &z);
 
-	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
+	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
 static Foundation GetFoundation_Water(TileIndex tile, Slope tileh)
@@ -860,7 +860,7 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 		default: break;
 
 		case VEH_AIRCRAFT: {
-			if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) break;
+			if (!IsAirportTile(v->tile) || GetTileMaxPixelZ(v->tile) != 0) break;
 			if (v->subtype == AIR_SHADOW) break;
 
 			/* We compare v->z_pos against delta_z + 1 because the shadow
@@ -910,7 +910,7 @@ static void FloodVehicles(TileIndex tile)
 	}
 
 	TileIndex end = GetOtherBridgeEnd(tile);
-	z = GetBridgeHeight(tile);
+	z = GetBridgePixelHeight(tile);
 
 	FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 	FindVehicleOnPos(end, &z, &FloodVehicleProc);
@@ -931,7 +931,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_WATER:
 			if (IsCoast(tile)) {
-				Slope tileh = GetTileSlope(tile, NULL);
+				Slope tileh = GetTilePixelSlope(tile, NULL);
 				return (IsSlopeWithOneCornerRaised(tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			}
 			/* FALL THROUGH */
@@ -942,7 +942,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 
 		case MP_RAILWAY:
 			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
-				return (IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
+				return (IsSlopeWithOneCornerRaised(GetTilePixelSlope(tile, NULL)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			}
 			return FLOOD_NONE;
 
@@ -965,7 +965,7 @@ void DoFloodTile(TileIndex target)
 
 	Backup<CompanyByte> cur_company(_current_company, OWNER_WATER, FILE_LINE);
 
-	Slope tileh = GetTileSlope(target, NULL);
+	Slope tileh = GetTilePixelSlope(target, NULL);
 	if (tileh != SLOPE_FLAT) {
 		/* make coast.. */
 		switch (GetTileType(target)) {
@@ -1080,7 +1080,7 @@ void TileLoop_Water(TileIndex tile)
 				if (IsTileType(dest, MP_WATER)) continue;
 
 				uint z_dest;
-				Slope slope_dest = GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+				Slope slope_dest = GetFoundationPixelSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 				if (z_dest > 0) continue;
 
 				if (!HasBit(_flood_from_dirs[slope_dest], ReverseDir(dir))) continue;
@@ -1090,7 +1090,7 @@ void TileLoop_Water(TileIndex tile)
 			break;
 
 		case FLOOD_DRYUP: {
-			Slope slope_here = GetFoundationSlope(tile, NULL) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+			Slope slope_here = GetFoundationPixelSlope(tile, NULL) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			uint dir;
 			FOR_EACH_SET_BIT(dir, _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir((Direction)dir));
@@ -1112,7 +1112,7 @@ void ConvertGroundTilesIntoWaterTiles()
 	uint z;
 
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
-		Slope slope = GetTileSlope(tile, &z);
+		Slope slope = GetTilePixelSlope(tile, &z);
 		if (IsTileType(tile, MP_CLEAR) && z == 0) {
 			/* Make both water for tiles at level 0
 			 * and make shore, as that looks much better
@@ -1133,7 +1133,7 @@ void ConvertGroundTilesIntoWaterTiles()
 					uint dir;
 					FOR_EACH_SET_BIT(dir, _flood_from_dirs[slope & ~SLOPE_STEEP]) {
 						TileIndex dest = TILE_ADD(tile, TileOffsByDir((Direction)dir));
-						Slope slope_dest = GetTileSlope(dest, NULL) & ~SLOPE_STEEP;
+						Slope slope_dest = GetTilePixelSlope(dest, NULL) & ~SLOPE_STEEP;
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest)) {
 							MakeShore(tile);
 							break;
@@ -1154,8 +1154,8 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 	if (mode != TRANSPORT_WATER) return 0;
 
 	switch (GetWaterTileType(tile)) {
-		case WATER_TILE_CLEAR: ts = (GetTileSlope(tile, NULL) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
-		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
+		case WATER_TILE_CLEAR: ts = (GetTilePixelSlope(tile, NULL) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
+		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTilePixelSlope(tile, NULL) & 0xF]; break;
 		case WATER_TILE_LOCK:  ts = DiagDirToDiagTrackBits(GetLockDirection(tile)); break;
 		case WATER_TILE_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
 		default: return 0;
@@ -1213,7 +1213,7 @@ static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, uint
 
 extern const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,           // draw_tile_proc
-	GetSlopeZ_Water,          // get_slope_z_proc
+	GetSlopePixelZ_Water,     // get_slope_z_proc
 	ClearTile_Water,          // clear_tile_proc
 	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Water,        // get_tile_desc_proc

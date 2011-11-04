@@ -255,10 +255,10 @@ void SndPlayTileFx(SoundID sound, TileIndex tile)
 	/* emits sound from center of the tile */
 	int x = min(MapMaxX() - 1, TileX(tile)) * TILE_SIZE + TILE_SIZE / 2;
 	int y = min(MapMaxY() - 1, TileY(tile)) * TILE_SIZE - TILE_SIZE / 2;
-	uint z = (y < 0 ? 0 : GetSlopeZ(x, y));
+	uint z = (y < 0 ? 0 : GetSlopePixelZ(x, y));
 	Point pt = RemapCoords(x, y, z);
 	y += 2 * TILE_SIZE;
-	Point pt2 = RemapCoords(x, y, GetSlopeZ(x, y));
+	Point pt2 = RemapCoords(x, y, GetSlopePixelZ(x, y));
 	SndPlayScreenCoordFx(sound, pt.x, pt2.x, pt.y, pt2.y);
 }
 

@@ -293,7 +293,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 				if (object->u.station.axis != INVALID_AXIS && tile != INVALID_TILE) {
 					if (parameter != 0) tile = GetNearbyTile(parameter, tile, true, object->u.station.axis); // only perform if it is required
 
-					Slope tileh = GetTileSlope(tile, NULL);
+					Slope tileh = GetTilePixelSlope(tile, NULL);
 					bool swap = (object->u.station.axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
 
 					return GetNearbyTileInformation(tile) ^ (swap ? SLOPE_EW : 0);
@@ -350,7 +350,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 
-			Slope tileh = GetTileSlope(tile, NULL);
+			Slope tileh = GetTilePixelSlope(tile, NULL);
 			bool swap = (axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
 
 			return GetNearbyTileInformation(tile) ^ (swap ? SLOPE_EW : 0);
@@ -678,7 +678,7 @@ uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, con
 CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_tile, const StationSpec *statspec, Axis axis, byte plat_len, byte numtracks)
 {
 	TileIndexDiff diff = cur_tile - north_tile;
-	Slope slope = GetTileSlope(cur_tile, NULL);
+	Slope slope = GetTilePixelSlope(cur_tile, NULL);
 
 	ResolverObject object;
 	NewStationResolver(&object, statspec, NULL, cur_tile);

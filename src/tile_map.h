@@ -226,9 +226,9 @@ static inline void SetAnimationFrame(TileIndex t, byte frame)
 	_me[t].m7 = frame;
 }
 
-Slope GetTileSlope(TileIndex tile, uint *h);
-uint GetTileZ(TileIndex tile);
-uint GetTileMaxZ(TileIndex tile);
+Slope GetTilePixelSlope(TileIndex tile, uint *h);
+uint GetTilePixelZ(TileIndex tile);
+uint GetTileMaxPixelZ(TileIndex tile);
 
 
 /**

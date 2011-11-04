@@ -51,7 +51,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		si->x = x;
 		si->y = y;
-		si->z = GetSlopeZ(x, y);
+		si->z = GetSlopePixelZ(x, y);
 		if (!StrEmpty(text)) {
 			si->name = strdup(text);
 		}

@@ -168,9 +168,9 @@ static void SetDisasterVehiclePos(DisasterVehicle *v, int x, int y, byte z)
 		int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 
 		u->x_pos = x;
-		u->y_pos = y - 1 - (max(z - GetSlopeZ(safe_x, safe_y), 0U) >> 3);
+		u->y_pos = y - 1 - (max(z - GetSlopePixelZ(safe_x, safe_y), 0U) >> 3);
 		safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
-		u->z_pos = GetSlopeZ(safe_x, safe_y);
+		u->z_pos = GetSlopePixelZ(safe_x, safe_y);
 		u->direction = v->direction;
 
 		DisasterVehicleUpdateImage(u);
@@ -249,7 +249,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 
 	int x = v->x_pos;
 	int y = v->y_pos;
-	byte z = GetSlopeZ(x, y);
+	byte z = GetSlopePixelZ(x, y);
 	if (z < v->z_pos) z = v->z_pos - 1;
 	SetDisasterVehiclePos(v, x, y, z);
 
@@ -509,7 +509,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			return false;
 		}
 
-		byte z = GetSlopeZ(v->x_pos, v->y_pos);
+		byte z = GetSlopePixelZ(v->x_pos, v->y_pos);
 		if (z < v->z_pos) {
 			SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos - 1);
 			return true;

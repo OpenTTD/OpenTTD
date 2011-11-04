@@ -237,8 +237,8 @@ static uint NPFSlopeCost(AyStarNode *current)
 	/* Get the height on both sides of the tile edge.
 	 * Avoid testing the height on the tile-center. This will fail for halftile-foundations.
 	 */
-	int z1 = GetSlopeZ(x1 + dx4, y1 + dy4);
-	int z2 = GetSlopeZ(x2 - dx4, y2 - dy4);
+	int z1 = GetSlopePixelZ(x1 + dx4, y1 + dy4);
+	int z2 = GetSlopePixelZ(x2 - dx4, y2 - dy4);
 
 	if (z2 - z1 > 1) {
 		/* Slope up */

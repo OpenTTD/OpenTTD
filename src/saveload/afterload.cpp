@@ -77,7 +77,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
 {
 	/* If the slope is not flat, we always assume 'land' (if allowed). Also for one-corner-raised-shores.
 	 * Note: Wrt. autosloping under industry tiles this is the most fool-proof behaviour. */
-	if (GetTileSlope(t, NULL) != SLOPE_FLAT) {
+	if (GetTilePixelSlope(t, NULL) != SLOPE_FLAT) {
 		if (include_invalid_water_class) {
 			SetWaterClass(t, WATER_CLASS_INVALID);
 			return;
@@ -458,12 +458,12 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 		case INVALID_DIR: break;
 		default: NOT_REACHED();
 	}
-	byte entry_z = GetSlopeZ(entry_x, entry_y);
+	byte entry_z = GetSlopePixelZ(entry_x, entry_y);
 
 	/* Compute middle of the tile. */
 	int middle_x = (v->x_pos & ~TILE_UNIT_MASK) + HALF_TILE_SIZE;
 	int middle_y = (v->y_pos & ~TILE_UNIT_MASK) + HALF_TILE_SIZE;
-	byte middle_z = GetSlopeZ(middle_x, middle_y);
+	byte middle_z = GetSlopePixelZ(middle_x, middle_y);
 
 	/* middle_z == entry_z, no height change. */
 	if (middle_z == entry_z) return 0;
@@ -1060,7 +1060,7 @@ bool AfterLoadGame()
 						if (GB(_m[t].m5, 3, 2) == 0) {
 							MakeClear(t, CLEAR_GRASS, 3);
 						} else {
-							if (GetTileSlope(t, NULL) != SLOPE_FLAT) {
+							if (GetTilePixelSlope(t, NULL) != SLOPE_FLAT) {
 								MakeShore(t);
 							} else {
 								if (GetTileOwner(t) == OWNER_WATER) {
@@ -1096,7 +1096,7 @@ bool AfterLoadGame()
 					case DIAGDIR_SW: if ((v->x_pos & 0xF) != TILE_SIZE - 1) continue; break;
 					case DIAGDIR_NW: if ((v->y_pos & 0xF) !=  0)            continue; break;
 				}
-			} else if (v->z_pos > GetSlopeZ(v->x_pos, v->y_pos)) {
+			} else if (v->z_pos > GetSlopePixelZ(v->x_pos, v->y_pos)) {
 				v->tile = GetNorthernBridgeEnd(v->tile);
 			} else {
 				continue;
@@ -1670,7 +1670,7 @@ bool AfterLoadGame()
 		 * on its neighbouring tiles. Done after river and canal updates to
 		 * ensure neighbours are correct. */
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (GetTileSlope(t, NULL) != SLOPE_FLAT) continue;
+			if (GetTilePixelSlope(t, NULL) != SLOPE_FLAT) continue;
 
 			if (IsTileType(t, MP_WATER) && IsLock(t)) SetWaterClassDependingOnSurroundings(t, false);
 			if (IsTileType(t, MP_STATION) && (IsDock(t) || IsBuoy(t))) SetWaterClassDependingOnSurroundings(t, false);
@@ -2355,7 +2355,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(149)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (!IsTileType(t, MP_STATION)) continue;
-			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && GetTileSlope(t, NULL) == SLOPE_FLAT)) {
+			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && GetTilePixelSlope(t, NULL) == SLOPE_FLAT)) {
 				SetWaterClass(t, WATER_CLASS_INVALID);
 			}
 		}
@@ -2394,7 +2394,7 @@ bool AfterLoadGame()
 			if (!IsTunnelTile(vtile)) continue;
 
 			/* Are we actually in this tunnel? Or maybe a lower tunnel? */
-			if (GetSlopeZ(v->x_pos, v->y_pos) != v->z_pos) continue;
+			if (GetSlopePixelZ(v->x_pos, v->y_pos) != v->z_pos) continue;
 
 			/* What way are we going? */
 			const DiagDirection dir = GetTunnelBridgeDirection(vtile);
@@ -2544,7 +2544,7 @@ bool AfterLoadGame()
 				/* In old versions, z_pos was 1 unit lower on bridge heads.
 				 * However, this invalid state could be converted to new savegames
 				 * by loading and saving the game in a new version. */
-				v->z_pos = GetSlopeZ(v->x_pos, v->y_pos);
+				v->z_pos = GetSlopePixelZ(v->x_pos, v->y_pos);
 				DiagDirection dir = GetTunnelBridgeDirection(v->tile);
 				if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) &&
 						v->direction != DiagDirToDir(dir)) {
@@ -2558,7 +2558,7 @@ bool AfterLoadGame()
 
 			/* If the vehicle is really above v->tile (not in a wormhole),
 			 * it should have set v->z_pos correctly. */
-			assert(v->tile != TileVirtXY(v->x_pos, v->y_pos) || v->z_pos == GetSlopeZ(v->x_pos, v->y_pos));
+			assert(v->tile != TileVirtXY(v->x_pos, v->y_pos) || v->z_pos == GetSlopePixelZ(v->x_pos, v->y_pos));
 		}
 
 		/* Fill Vehicle::cur_real_order_index */

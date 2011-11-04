@@ -268,13 +268,13 @@ protected: // These functions should not be called outside acceleration code.
 	}
 
 	/**
-	 * Road vehicles have to use GetSlopeZ() to compute their height
+	 * Road vehicles have to use GetSlopePixelZ() to compute their height
 	 * if they are reversing because in that case, their direction
 	 * is not parallel with the road. It is safe to return \c true
 	 * even if it is not reversing.
 	 * @return are we (possibly) reversing?
 	 */
-	FORCEINLINE bool HasToUseGetSlopeZ()
+	FORCEINLINE bool HasToUseGetSlopePixelZ()
 	{
 		const RoadVehicle *rv = this->First();
 

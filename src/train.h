@@ -303,7 +303,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * have always the same direction as the track under them.
 	 * @return false
 	 */
-	FORCEINLINE bool HasToUseGetSlopeZ()
+	FORCEINLINE bool HasToUseGetSlopePixelZ()
 	{
 		return false;
 	}

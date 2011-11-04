@@ -67,7 +67,7 @@ void DrawClearLandFence(const TileInfo *ti)
 
 	if (!fence_sw && !fence_se) return;
 
-	int z = GetSlopeZInCorner(ti->tileh, CORNER_S);
+	int z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
 
 	if (fence_sw) {
 		DrawGroundSpriteAt(_clear_land_fence_sprites[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh_sw[ti->tileh], PAL_NONE, 0, 0, z);
@@ -107,12 +107,12 @@ static void DrawTile_Clear(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
-static uint GetSlopeZ_Clear(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Clear(TileIndex tile, uint x, uint y)
 {
 	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTilePixelSlope(tile, &z);
 
-	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
+	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
 static Foundation GetFoundation_Clear(TileIndex tile, Slope tileh)
@@ -158,7 +158,7 @@ void TileLoopClearHelper(TileIndex tile)
 /** Convert to or from snowy tiles. */
 static void TileLoopClearAlps(TileIndex tile)
 {
-	int k = GetTileZ(tile) - GetSnowLine() + TILE_HEIGHT;
+	int k = GetTilePixelZ(tile) - GetSnowLine() + TILE_HEIGHT;
 
 	if (k < 0) {
 		/* Below the snow line, do nothing if no snow. */
@@ -231,7 +231,7 @@ static void TileLoop_Clear(TileIndex tile)
 	/* If the tile is at any edge flood it to prevent maps without water. */
 	if (_settings_game.construction.freeform_edges && DistanceFromEdge(tile) == 1) {
 		uint z;
-		Slope slope = GetTileSlope(tile, &z);
+		Slope slope = GetTilePixelSlope(tile, &z);
 		if (z == 0 && slope == SLOPE_FLAT) {
 			DoFloodTile(tile);
 			MarkTileDirtyByTile(tile);
@@ -368,7 +368,7 @@ static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, uint
 
 extern const TileTypeProcs _tile_type_clear_procs = {
 	DrawTile_Clear,           ///< draw_tile_proc
-	GetSlopeZ_Clear,          ///< get_slope_z_proc
+	GetSlopePixelZ_Clear,     ///< get_slope_z_proc
 	ClearTile_Clear,          ///< clear_tile_proc
 	NULL,                     ///< add_accepted_cargo_proc
 	GetTileDesc_Clear,        ///< get_tile_desc_proc

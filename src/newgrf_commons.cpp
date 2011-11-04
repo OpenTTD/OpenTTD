@@ -380,7 +380,7 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
 
 				case MP_TUNNELBRIDGE:
 					if (context == TCX_ON_BRIDGE) {
-						has_snow = (GetBridgeHeight(tile) > GetSnowLine());
+						has_snow = (GetBridgePixelHeight(tile) > GetSnowLine());
 					} else {
 						/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 						if (_generating_world) goto genworld; // we do not care about foundations here
@@ -393,13 +393,13 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
 				case MP_INDUSTRY:
 				case MP_OBJECT:
 					/* These tiles usually have a levelling foundation. So use max Z */
-					has_snow = (GetTileMaxZ(tile) > GetSnowLine());
+					has_snow = (GetTileMaxPixelZ(tile) > GetSnowLine());
 					break;
 
 				case MP_VOID:
 				case MP_WATER:
 				genworld:
-					has_snow = (GetTileZ(tile) > GetSnowLine());
+					has_snow = (GetTilePixelZ(tile) > GetSnowLine());
 					break;
 
 				default: NOT_REACHED();
@@ -448,7 +448,7 @@ uint32 GetNearbyTileInformation(TileIndex tile)
 	if (IsTileType(tile, MP_TREES) && GetTreeGround(tile) == TREE_GROUND_SHORE) tile_type = MP_WATER;
 
 	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTilePixelSlope(tile, &z);
 	/* Return 0 if the tile is a land tile */
 	byte terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
 	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;

@@ -89,7 +89,7 @@ TileIndex GetNorthernBridgeEnd(TileIndex t);
 TileIndex GetSouthernBridgeEnd(TileIndex t);
 TileIndex GetOtherBridgeEnd(TileIndex t);
 
-uint GetBridgeHeight(TileIndex tile);
+uint GetBridgePixelHeight(TileIndex tile);
 
 /**
  * Remove the bridge over the given axis.

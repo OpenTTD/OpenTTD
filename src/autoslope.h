@@ -33,7 +33,7 @@
  */
 static inline bool AutoslopeCheckForEntranceEdge(TileIndex tile, uint z_new, Slope tileh_new, DiagDirection entrance)
 {
-	if (GetTileMaxZ(tile) != z_new + GetSlopeMaxZ(tileh_new)) return false;
+	if (GetTileMaxPixelZ(tile) != z_new + GetSlopeMaxPixelZ(tileh_new)) return false;
 	return ((tileh_new == SLOPE_FLAT) || CanBuildDepotByTileh(entrance, tileh_new));
 }
 

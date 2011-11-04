@@ -624,7 +624,7 @@ EffectVehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType t
 {
 	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 	int safe_y = Clamp(y, 0, MapMaxY() * TILE_SIZE);
-	return CreateEffectVehicle(x, y, GetSlopeZ(safe_x, safe_y) + z, type);
+	return CreateEffectVehicle(x, y, GetSlopePixelZ(safe_x, safe_y) + z, type);
 }
 
 /**

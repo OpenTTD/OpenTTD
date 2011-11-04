@@ -94,7 +94,7 @@ static SnowLine *_snow_line = NULL;
  * @param s  The #Slope to modify.
  * @return   Increment to the tile Z coordinate.
  */
-uint ApplyFoundationToSlope(Foundation f, Slope *s)
+uint ApplyPixelFoundationToSlope(Foundation f, Slope *s)
 {
 	if (!IsFoundation(f)) return 0;
 
@@ -147,24 +147,24 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s)
  * @param corners slope to examine
  * @return height of given point of given slope
  */
-uint GetPartialZ(int x, int y, Slope corners)
+uint GetPartialPixelZ(int x, int y, Slope corners)
 {
 	if (IsHalftileSlope(corners)) {
 		switch (GetHalftileSlopeCorner(corners)) {
 			case CORNER_W:
-				if (x - y >= 0) return GetSlopeMaxZ(corners);
+				if (x - y >= 0) return GetSlopeMaxPixelZ(corners);
 				break;
 
 			case CORNER_S:
-				if (x - (y ^ 0xF) >= 0) return GetSlopeMaxZ(corners);
+				if (x - (y ^ 0xF) >= 0) return GetSlopeMaxPixelZ(corners);
 				break;
 
 			case CORNER_E:
-				if (y - x >= 0) return GetSlopeMaxZ(corners);
+				if (y - x >= 0) return GetSlopeMaxPixelZ(corners);
 				break;
 
 			case CORNER_N:
-				if ((y ^ 0xF) - x >= 0) return GetSlopeMaxZ(corners);
+				if ((y ^ 0xF) - x >= 0) return GetSlopeMaxPixelZ(corners);
 				break;
 
 			default: NOT_REACHED();
@@ -274,7 +274,7 @@ uint GetPartialZ(int x, int y, Slope corners)
 	return z;
 }
 
-uint GetSlopeZ(int x, int y)
+uint GetSlopePixelZ(int x, int y)
 {
 	TileIndex tile = TileVirtXY(x, y);
 
@@ -290,7 +290,7 @@ uint GetSlopeZ(int x, int y)
  * @param corner The corner.
  * @return Z position of corner relative to TileZ.
  */
-int GetSlopeZInCorner(Slope tileh, Corner corner)
+int GetSlopePixelZInCorner(Slope tileh, Corner corner)
 {
 	assert(!IsHalftileSlope(tileh));
 	return ((tileh & SlopeWithOneCornerRaised(corner)) != 0 ? TILE_HEIGHT : 0) + (tileh == SteepSlope(corner) ? TILE_HEIGHT : 0);
@@ -308,7 +308,7 @@ int GetSlopeZInCorner(Slope tileh, Corner corner)
  * @param z1 Gets incremented by the height of the first corner of the edge. (near corner wrt. the camera)
  * @param z2 Gets incremented by the height of the second corner of the edge. (far corner wrt. the camera)
  */
-void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
+void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
 {
 	static const Slope corners[4][4] = {
 		/*    corner     |          steep slope
@@ -331,17 +331,17 @@ void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
 
 /**
  * Get slope of a tile on top of a (possible) foundation
- * If a tile does not have a foundation, the function returns the same as GetTileSlope.
+ * If a tile does not have a foundation, the function returns the same as GetTilePixelSlope.
  *
  * @param tile The tile of interest.
  * @param z returns the z of the foundation slope. (Can be NULL, if not needed)
  * @return The slope on top of the foundation.
  */
-Slope GetFoundationSlope(TileIndex tile, uint *z)
+Slope GetFoundationPixelSlope(TileIndex tile, uint *z)
 {
-	Slope tileh = GetTileSlope(tile, z);
+	Slope tileh = GetTilePixelSlope(tile, z);
 	Foundation f = _tile_type_procs[GetTileType(tile)]->get_foundation_proc(tile, tileh);
-	uint z_inc = ApplyFoundationToSlope(f, &tileh);
+	uint z_inc = ApplyPixelFoundationToSlope(f, &tileh);
 	if (z != NULL) *z += z_inc;
 	return tileh;
 }
@@ -353,12 +353,12 @@ bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 
 	int z_W_here = z_here;
 	int z_N_here = z_here;
-	GetSlopeZOnEdge(slope_here, DIAGDIR_NW, &z_W_here, &z_N_here);
+	GetSlopePixelZOnEdge(slope_here, DIAGDIR_NW, &z_W_here, &z_N_here);
 
-	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, 0, -1), &z);
+	Slope slope = GetFoundationPixelSlope(TILE_ADDXY(tile, 0, -1), &z);
 	int z_W = z;
 	int z_N = z;
-	GetSlopeZOnEdge(slope, DIAGDIR_SE, &z_W, &z_N);
+	GetSlopePixelZOnEdge(slope, DIAGDIR_SE, &z_W, &z_N);
 
 	return (z_N_here > z_N) || (z_W_here > z_W);
 }
@@ -370,12 +370,12 @@ bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 
 	int z_E_here = z_here;
 	int z_N_here = z_here;
-	GetSlopeZOnEdge(slope_here, DIAGDIR_NE, &z_E_here, &z_N_here);
+	GetSlopePixelZOnEdge(slope_here, DIAGDIR_NE, &z_E_here, &z_N_here);
 
-	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, -1, 0), &z);
+	Slope slope = GetFoundationPixelSlope(TILE_ADDXY(tile, -1, 0), &z);
 	int z_E = z;
 	int z_N = z;
-	GetSlopeZOnEdge(slope, DIAGDIR_SW, &z_E, &z_N);
+	GetSlopePixelZOnEdge(slope, DIAGDIR_SW, &z_E, &z_N);
 
 	return (z_N_here > z_N) || (z_E_here > z_E);
 }
@@ -394,7 +394,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 
 	uint sprite_block = 0;
 	uint z;
-	Slope slope = GetFoundationSlope(ti->tile, &z);
+	Slope slope = GetFoundationPixelSlope(ti->tile, &z);
 
 	/* Select the needed block of foundations sprites
 	 * Block 0: Walls at NW and NE edge
@@ -419,7 +419,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 		}
 
 		Corner highest_corner = GetHighestSlopeCorner(ti->tileh);
-		ti->z += ApplyFoundationToSlope(f, &ti->tileh);
+		ti->z += ApplyPixelFoundationToSlope(f, &ti->tileh);
 
 		if (IsInclinedFoundation(f)) {
 			/* inclined foundation */
@@ -481,7 +481,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			);
 			OffsetGroundSprite(31, 9);
 		}
-		ti->z += ApplyFoundationToSlope(f, &ti->tileh);
+		ti->z += ApplyPixelFoundationToSlope(f, &ti->tileh);
 	}
 }
 
@@ -927,7 +927,7 @@ static void CreateDesertOrRainForest()
 static bool FindSpring(TileIndex tile, void *user_data)
 {
 	uint referenceHeight;
-	Slope s = GetTileSlope(tile, &referenceHeight);
+	Slope s = GetTilePixelSlope(tile, &referenceHeight);
 	if (s != SLOPE_FLAT || IsWaterTile(tile)) return false;
 
 	/* In the tropics rivers start in the rainforest. */
@@ -938,7 +938,7 @@ static bool FindSpring(TileIndex tile, void *user_data)
 	for (int dx = -1; dx <= 1; dx++) {
 		for (int dy = -1; dy <= 1; dy++) {
 			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > referenceHeight) num++;
+			if (t != INVALID_TILE && GetTileMaxPixelZ(t) > referenceHeight) num++;
 		}
 	}
 
@@ -948,7 +948,7 @@ static bool FindSpring(TileIndex tile, void *user_data)
 	for (int dx = -16; dx <= 16; dx++) {
 		for (int dy = -16; dy <= 16; dy++) {
 			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxZ(t) > referenceHeight + 2 * TILE_HEIGHT) return false;
+			if (t != INVALID_TILE && GetTileMaxPixelZ(t) > referenceHeight + 2 * TILE_HEIGHT) return false;
 		}
 	}
 
@@ -964,7 +964,7 @@ static bool FindSpring(TileIndex tile, void *user_data)
 static bool MakeLake(TileIndex tile, void *user_data)
 {
 	uint height = *(uint*)user_data;
-	if (!IsValidTile(tile) || TileHeight(tile) != height || GetTileSlope(tile, NULL) != SLOPE_FLAT) return false;
+	if (!IsValidTile(tile) || TileHeight(tile) != height || GetTilePixelSlope(tile, NULL) != SLOPE_FLAT) return false;
 	if (_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
 
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
@@ -990,8 +990,8 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 
 	uint heightBegin;
 	uint heightEnd;
-	Slope slopeBegin = GetTileSlope(begin, &heightBegin);
-	Slope slopeEnd   = GetTileSlope(end, &heightEnd);
+	Slope slopeBegin = GetTilePixelSlope(begin, &heightBegin);
+	Slope slopeEnd   = GetTilePixelSlope(end, &heightEnd);
 
 	return heightEnd <= heightBegin &&
 			/* Slope either is inclined or flat; rivers don't support other slopes. */
@@ -1113,7 +1113,7 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 		queue.pop_front();
 
 		uint height2 = TileHeight(end);
-		if (GetTileSlope(end, NULL) == SLOPE_FLAT && (height2 < height || (height2 == height && IsWaterTile(end)))) {
+		if (GetTilePixelSlope(end, NULL) == SLOPE_FLAT && (height2 < height || (height2 == height && IsWaterTile(end)))) {
 			found = true;
 			break;
 		}
@@ -1140,7 +1140,7 @@ static bool FlowRiver(bool *marks, TileIndex spring, TileIndex begin)
 
 		if (IsValidTile(lakeCenter) &&
 				/* A river, or lake, can only be built on flat slopes. */
-				GetTileSlope(lakeCenter, NULL) == SLOPE_FLAT &&
+				GetTilePixelSlope(lakeCenter, NULL) == SLOPE_FLAT &&
 				/* We want the lake to be built at the height of the river. */
 				TileHeight(begin) == TileHeight(lakeCenter) &&
 				/* We don't want the lake at the entry of the valley. */

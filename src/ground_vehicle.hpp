@@ -134,7 +134,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 */
 	FORCEINLINE void UpdateZPositionAndInclination()
 	{
-		this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
+		this->z_pos = GetSlopePixelZ(this->x_pos, this->y_pos);
 		ClrBit(this->gv_flags, GVF_GOINGUP_BIT);
 		ClrBit(this->gv_flags, GVF_GOINGDOWN_BIT);
 
@@ -143,7 +143,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			 * direction it is sloped, we get the 'z' at the center of
 			 * the tile (middle_z) and the edge of the tile (old_z),
 			 * which we then can compare. */
-			byte middle_z = GetSlopeZ((this->x_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE, (this->y_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE);
+			byte middle_z = GetSlopePixelZ((this->x_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE, (this->y_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE);
 
 			if (middle_z != this->z_pos) {
 				SetBit(this->gv_flags, (middle_z > this->z_pos) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
@@ -198,9 +198,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		 * depending on orientation of the slope and vehicle's direction */
 
 		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT) || HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
-			if (T::From(this)->HasToUseGetSlopeZ()) {
-				/* In some cases, we have to use GetSlopeZ() */
-				this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
+			if (T::From(this)->HasToUseGetSlopePixelZ()) {
+				/* In some cases, we have to use GetSlopePixelZ() */
+				this->z_pos = GetSlopePixelZ(this->x_pos, this->y_pos);
 				return;
 			}
 			/* DirToDiagDir() is a simple right shift */
@@ -220,7 +220,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			this->z_pos += HasBit(this->gv_flags, GVF_GOINGUP_BIT) ? d : -d;
 		}
 
-		assert(this->z_pos == GetSlopeZ(this->x_pos, this->y_pos));
+		assert(this->z_pos == GetSlopePixelZ(this->x_pos, this->y_pos));
 	}
 
 	/**

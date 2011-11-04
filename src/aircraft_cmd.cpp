@@ -251,7 +251,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 		v->x_pos = u->x_pos = x;
 		v->y_pos = u->y_pos = y;
 
-		u->z_pos = GetSlopeZ(x, y);
+		u->z_pos = GetSlopePixelZ(x, y);
 		v->z_pos = u->z_pos + 1;
 
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
@@ -486,10 +486,10 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 	int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 	u->x_pos = x;
-	u->y_pos = y - ((v->z_pos - GetSlopeZ(safe_x, safe_y)) >> 3);
+	u->y_pos = y - ((v->z_pos - GetSlopePixelZ(safe_x, safe_y)) >> 3);
 
 	safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
-	u->z_pos = GetSlopeZ(safe_x, safe_y);
+	u->z_pos = GetSlopePixelZ(safe_x, safe_y);
 	u->cur_image = v->cur_image;
 
 	VehicleMove(u, true);
@@ -805,7 +805,7 @@ static bool AircraftController(Aircraft *v)
 		v->tile = tile;
 
 		/* Find altitude of landing position. */
-		int z = GetSlopeZ(x, y) + 1 + afc->delta_z;
+		int z = GetSlopePixelZ(x, y) + 1 + afc->delta_z;
 
 		if (z == v->z_pos) {
 			Vehicle *u = v->Next()->Next();
@@ -950,7 +950,7 @@ static bool AircraftController(Aircraft *v)
 				continue;
 			}
 
-			uint curz = GetSlopeZ(x + amd.x, y + amd.y) + 1;
+			uint curz = GetSlopePixelZ(x + amd.x, y + amd.y) + 1;
 
 			/* We're not flying below our destination, right? */
 			assert(curz <= z);
@@ -966,7 +966,7 @@ static bool AircraftController(Aircraft *v)
 
 		/* We've landed. Decrease speed when we're reaching end of runway. */
 		if (amd.flag & AMED_BRAKE) {
-			uint curz = GetSlopeZ(x, y) + 1;
+			uint curz = GetSlopePixelZ(x, y) + 1;
 
 			if (z > curz) {
 				z--;
@@ -993,7 +993,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 
 	/* make aircraft crash down to the ground */
 	if (v->crashed_counter < 500 && st == NULL && ((v->crashed_counter % 3) == 0) ) {
-		uint z = GetSlopeZ(v->x_pos, v->y_pos);
+		uint z = GetSlopePixelZ(v->x_pos, v->y_pos);
 		v->z_pos -= 1;
 		if (v->z_pos == z) {
 			v->crashed_counter = 500;

@@ -430,7 +430,7 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
  */
 CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 {
-	byte z = GetTileMaxZ(tile);
+	byte z = GetTileMaxPixelZ(tile);
 
 	/* Value v is not safe in MP games, however, it is used to generate a local
 	 * error message only (which may be different for different machines).

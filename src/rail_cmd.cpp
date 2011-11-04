@@ -381,7 +381,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 
-	Slope tileh = GetTileSlope(tile, NULL);
+	Slope tileh = GetTilePixelSlope(tile, NULL);
 	TrackBits trackbit = TrackToTrackBits(track);
 
 	switch (GetTileType(tile)) {
@@ -590,7 +590,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				owner = GetTileOwner(tile);
 				present ^= trackbit;
 				if (present == 0) {
-					Slope tileh = GetTileSlope(tile, NULL);
+					Slope tileh = GetTilePixelSlope(tile, NULL);
 					/* If there is flat water on the lower halftile, convert the tile to shore so the water remains */
 					if (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh)) {
 						MakeShore(tile);
@@ -649,7 +649,7 @@ bool FloodHalftile(TileIndex t)
 	bool flooded = false;
 	if (GetRailGroundType(t) == RAIL_GROUND_WATER) return flooded;
 
-	Slope tileh = GetTileSlope(t, NULL);
+	Slope tileh = GetTilePixelSlope(t, NULL);
 	TrackBits rail_bits = GetTrackBits(t);
 
 	if (IsSlopeWithOneCornerRaised(tileh)) {
@@ -676,7 +676,7 @@ bool FloodHalftile(TileIndex t)
 		}
 	} else {
 		/* Make shore on steep slopes and 'three-corners-raised'-slopes. */
-		if (ApplyFoundationToSlope(GetRailFoundation(tileh, rail_bits), &tileh) == 0) {
+		if (ApplyPixelFoundationToSlope(GetRailFoundation(tileh, rail_bits), &tileh) == 0) {
 			if (IsSteepSlope(tileh) || IsSlopeWithThreeCornersRaised(tileh)) {
 				flooded = true;
 				SetRailGroundType(t, RAIL_GROUND_WATER);
@@ -861,7 +861,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	RailType railtype = Extract<RailType, 0, 4>(p1);
 	if (!ValParamRailtype(railtype)) return CMD_ERROR;
 
-	Slope tileh = GetTileSlope(tile, NULL);
+	Slope tileh = GetTilePixelSlope(tile, NULL);
 
 	DiagDirection dir = Extract<DiagDirection, 0, 2>(p2);
 
@@ -1637,7 +1637,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_SIGNALS:
 		case RAIL_TILE_NORMAL: {
-			Slope tileh = GetTileSlope(tile, NULL);
+			Slope tileh = GetTilePixelSlope(tile, NULL);
 			/* Is there flat water on the lower halftile that gets cleared expensively? */
 			bool water_ground = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh));
 
@@ -1683,7 +1683,7 @@ static uint GetSaveSlopeZ(uint x, uint y, Track track)
 		case TRACK_RIGHT: x &= ~0xF; y |=  0xF; break;
 		default: break;
 	}
-	return GetSlopeZ(x, y);
+	return GetSlopePixelZ(x, y);
 }
 
 static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint image, uint pos)
@@ -1774,7 +1774,7 @@ static void DrawTrackFence_NE_SW(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_NS_1(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_W);
+	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_W);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1784,7 +1784,7 @@ static void DrawTrackFence_NS_1(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_NS_2(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_E);
+	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_E);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1794,7 +1794,7 @@ static void DrawTrackFence_NS_2(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_WE_1(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_N);
+	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_N);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1804,7 +1804,7 @@ static void DrawTrackFence_WE_1(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_WE_2(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_S);
+	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_S);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -2335,17 +2335,17 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
 }
 
-static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Track(TileIndex tile, uint x, uint y)
 {
 	if (IsPlainRail(tile)) {
 		uint z;
-		Slope tileh = GetTileSlope(tile, &z);
+		Slope tileh = GetTilePixelSlope(tile, &z);
 		if (tileh == SLOPE_FLAT) return z;
 
-		z += ApplyFoundationToSlope(GetRailFoundation(tileh, GetTrackBits(tile)), &tileh);
-		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
+		z += ApplyPixelFoundationToSlope(GetRailFoundation(tileh, GetTrackBits(tile)), &tileh);
+		return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 	} else {
-		return GetTileMaxZ(tile);
+		return GetTileMaxPixelZ(tile);
 	}
 }
 
@@ -2367,7 +2367,7 @@ static void TileLoop_Track(TileIndex tile)
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC: {
 			uint z;
-			Slope slope = GetTileSlope(tile, &z);
+			Slope slope = GetTilePixelSlope(tile, &z);
 			bool half = false;
 
 			/* for non-flat track, use lower part of track
@@ -2795,8 +2795,8 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	if (CheckRailSlope(tileh_new, rail_bits, TRACK_BIT_NONE, tile).Failed()) return_cmd_error(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 
 	/* Get the slopes on top of the foundations */
-	z_old += ApplyFoundationToSlope(GetRailFoundation(tileh_old, rail_bits), &tileh_old);
-	z_new += ApplyFoundationToSlope(GetRailFoundation(tileh_new, rail_bits), &tileh_new);
+	z_old += ApplyPixelFoundationToSlope(GetRailFoundation(tileh_old, rail_bits), &tileh_old);
+	z_new += ApplyPixelFoundationToSlope(GetRailFoundation(tileh_new, rail_bits), &tileh_new);
 
 	Corner track_corner;
 	switch (rail_bits) {
@@ -2812,8 +2812,8 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
-	z_old += GetSlopeZInCorner(RemoveHalftileSlope(tileh_old), track_corner);
-	z_new += GetSlopeZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
+	z_old += GetSlopePixelZInCorner(RemoveHalftileSlope(tileh_old), track_corner);
+	z_new += GetSlopePixelZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
 	if (z_old != z_new) return_cmd_error(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
@@ -2829,7 +2829,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	uint z_old;
-	Slope tileh_old = GetTileSlope(tile, &z_old);
+	Slope tileh_old = GetTilePixelSlope(tile, &z_old);
 	if (IsPlainRail(tile)) {
 		TrackBits rail_bits = GetTrackBits(tile);
 		/* Is there flat water on the lower halftile that must be cleared expensively? */
@@ -2856,7 +2856,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 		/* Everything is valid, which only changes allowed_corner */
 		for (Corner corner = (Corner)0; corner < CORNER_END; corner = (Corner)(corner + 1)) {
 			if (allowed_corner == corner) continue;
-			if (z_old + GetSlopeZInCorner(tileh_old, corner) != z_new + GetSlopeZInCorner(tileh_new, corner)) return autoslope_result;
+			if (z_old + GetSlopePixelZInCorner(tileh_old, corner) != z_new + GetSlopePixelZInCorner(tileh_new, corner)) return autoslope_result;
 		}
 
 		/* Make the ground dirty */
@@ -2874,7 +2874,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 
 extern const TileTypeProcs _tile_type_rail_procs = {
 	DrawTile_Track,           // draw_tile_proc
-	GetSlopeZ_Track,          // get_slope_z_proc
+	GetSlopePixelZ_Track,     // get_slope_z_proc
 	ClearTile_Track,          // clear_tile_proc
 	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Track,        // get_tile_desc_proc

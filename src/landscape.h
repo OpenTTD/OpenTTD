@@ -35,11 +35,11 @@ byte HighestSnowLine();
 byte LowestSnowLine();
 void ClearSnowLine();
 
-uint GetPartialZ(int x, int y, Slope corners);
-uint GetSlopeZ(int x, int y);
-void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
-int GetSlopeZInCorner(Slope tileh, Corner corner);
-Slope GetFoundationSlope(TileIndex tile, uint *z);
+uint GetPartialPixelZ(int x, int y, Slope corners);
+uint GetSlopePixelZ(int x, int y);
+void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
+int GetSlopePixelZInCorner(Slope tileh, Corner corner);
+Slope GetFoundationPixelSlope(TileIndex tile, uint *z);
 
 /**
  * Map 3D world or tile coordinate to equivalent 2D coordinate as used in the viewports and smallmap.
@@ -67,7 +67,7 @@ static inline Point RemapCoords(int x, int y, int z)
  */
 static inline Point RemapCoords2(int x, int y)
 {
-	return RemapCoords(x, y, GetSlopeZ(x, y));
+	return RemapCoords(x, y, GetSlopePixelZ(x, y));
 }
 
 /**
@@ -84,7 +84,7 @@ static inline Point InverseRemapCoords(int x, int y)
 	return pt;
 }
 
-uint ApplyFoundationToSlope(Foundation f, Slope *s);
+uint ApplyPixelFoundationToSlope(Foundation f, Slope *s);
 void DrawFoundation(TileInfo *ti, Foundation f);
 bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here);
 bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here);

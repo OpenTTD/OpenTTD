@@ -255,9 +255,9 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Town(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Town(TileIndex tile, uint x, uint y)
 {
-	return GetTileMaxZ(tile);
+	return GetTileMaxPixelZ(tile);
 }
 
 /** Tile callback routine */
@@ -787,7 +787,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		}
 	}
 
-	Slope cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationSlope(tile, NULL) : GetTileSlope(tile, NULL);
+	Slope cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationPixelSlope(tile, NULL) : GetTilePixelSlope(tile, NULL);
 	bool ret = !IsNeighborRoadTile(tile, dir, t->layout == TL_ORIGINAL ? 1 : 2);
 	if (cur_slope == SLOPE_FLAT) return ret;
 
@@ -828,7 +828,7 @@ static void LevelTownLand(TileIndex tile)
 
 	/* Don't terraform if land is plain or if there's a house there. */
 	if (IsTileType(tile, MP_HOUSE)) return;
-	Slope tileh = GetTileSlope(tile, NULL);
+	Slope tileh = GetTilePixelSlope(tile, NULL);
 	if (tileh == SLOPE_FLAT) return;
 
 	/* First try up, then down */
@@ -871,7 +871,7 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 
 	RoadBits rb_template;
 
-	switch (GetTileSlope(tile, NULL)) {
+	switch (GetTilePixelSlope(tile, NULL)) {
 		default:       rb_template = ROAD_ALL; break;
 		case SLOPE_W:  rb_template = ROAD_NW | ROAD_SW; break;
 		case SLOPE_SW: rb_template = ROAD_Y  | ROAD_SW; break;
@@ -970,7 +970,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 {
 	assert(bridge_dir < DIAGDIR_END);
 
-	const Slope slope = GetTileSlope(tile, NULL);
+	const Slope slope = GetTilePixelSlope(tile, NULL);
 
 	/* Make sure the direction is compatible with the slope.
 	 * Well we check if the slope has an up bit set in the
@@ -1337,7 +1337,7 @@ static bool GrowTown(Town *t)
 		tile = t->xy;
 		for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 			/* Only work with plain land that not already has a house */
-			if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile, NULL) == SLOPE_FLAT) {
+			if (!IsTileType(tile, MP_HOUSE) && GetTilePixelSlope(tile, NULL) == SLOPE_FLAT) {
 				if (DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR).Succeeded()) {
 					DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 					cur_company.Restore();
@@ -1500,7 +1500,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 	}
 
 	/* Can only build on clear flat areas, possibly with trees. */
-	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
+	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTilePixelSlope(tile, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -1697,7 +1697,7 @@ static bool FindFurthestFromWater(TileIndex tile, void *user_data)
 	uint dist = GetClosestWaterDistance(tile, true);
 
 	if (IsTileType(tile, MP_CLEAR) &&
-			GetTileSlope(tile, NULL) == SLOPE_FLAT &&
+			GetTilePixelSlope(tile, NULL) == SLOPE_FLAT &&
 			IsTileAlignedToGrid(tile, sp->layout) &&
 			dist > sp->max_dist) {
 		sp->tile = tile;
@@ -1907,7 +1907,7 @@ static void MakeTownHouse(TileIndex t, Town *town, byte counter, byte stage, Hou
 static inline bool CanBuildHouseHere(TileIndex tile, TownID town, bool noslope)
 {
 	/* cannot build on these slopes... */
-	Slope slope = GetTileSlope(tile, NULL);
+	Slope slope = GetTilePixelSlope(tile, NULL);
 	if ((noslope && slope != SLOPE_FLAT) || IsSteepSlope(slope)) return false;
 
 	/* building under a bridge? */
@@ -1935,7 +1935,7 @@ static inline bool CheckBuildHouseSameZ(TileIndex tile, TownID town, uint z, boo
 	if (!CanBuildHouseHere(tile, town, noslope)) return false;
 
 	/* if building on slopes is allowed, there will be flattening foundation (to tile max z) */
-	if (GetTileMaxZ(tile) != z) return false;
+	if (GetTileMaxPixelZ(tile) != z) return false;
 
 	return true;
 }
@@ -2096,7 +2096,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	if (!CanBuildHouseHere(tile, t->index, false)) return false;
 
 	uint z;
-	Slope slope = GetTileSlope(tile, &z);
+	Slope slope = GetTilePixelSlope(tile, &z);
 
 	/* Get the town zone type of the current tile, as well as the climate.
 	 * This will allow to easily compare with the specs of the new house to build */
@@ -2139,7 +2139,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		houses[num++] = (HouseID)i;
 	}
 
-	uint maxz = GetTileMaxZ(tile);
+	uint maxz = GetTileMaxPixelZ(tile);
 	TileIndex baseTile = tile;
 
 	while (probability_max > 0) {
@@ -2525,7 +2525,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 static bool SearchTileForStatue(TileIndex tile, void *user_data)
 {
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
-	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
+	if (IsSteepSlope(GetTilePixelSlope(tile, NULL))) return false;
 	/* Don't build statues under bridges. */
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 
@@ -3055,7 +3055,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint 
 
 		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
 		if (((hs->building_flags & TILE_NOT_SLOPED) == 0) && !IsSteepSlope(tileh_new) &&
-				(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
+				(GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new))) {
 			bool allow_terraform = true;
 
 			/* Call the autosloping callback per tile, not for the whole building at once. */
@@ -3077,7 +3077,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint 
 /** Tile callback functions for a town */
 extern const TileTypeProcs _tile_type_town_procs = {
 	DrawTile_Town,           // draw_tile_proc
-	GetSlopeZ_Town,          // get_slope_z_proc
+	GetSlopePixelZ_Town,     // get_slope_z_proc
 	ClearTile_Town,          // clear_tile_proc
 	AddAcceptedCargo_Town,   // add_accepted_cargo_proc
 	GetTileDesc_Town,        // get_tile_desc_proc

@@ -113,7 +113,7 @@ Foundation GetBridgeFoundation(Slope tileh, Axis axis)
  */
 bool HasBridgeFlatRamp(Slope tileh, Axis axis)
 {
-	ApplyFoundationToSlope(GetBridgeFoundation(tileh, axis), &tileh);
+	ApplyPixelFoundationToSlope(GetBridgeFoundation(tileh, axis), &tileh);
 	/* If the foundation slope is flat the bridge has a non-flat ramp and vice versa. */
 	return (tileh != SLOPE_FLAT);
 }
@@ -141,7 +141,7 @@ static inline const PalSpriteID *GetBridgeSpriteTable(int index, BridgePieces ta
 static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, uint *z)
 {
 	Foundation f = GetBridgeFoundation(*tileh, axis);
-	*z += ApplyFoundationToSlope(f, tileh);
+	*z += ApplyPixelFoundationToSlope(f, tileh);
 
 	Slope valid_inclined = (axis == AXIS_X ? SLOPE_NE : SLOPE_NW);
 	if ((*tileh != SLOPE_FLAT) && (*tileh != valid_inclined)) return CMD_ERROR;
@@ -162,7 +162,7 @@ static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, uint *z)
 static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 {
 	Foundation f = GetBridgeFoundation(*tileh, axis);
-	*z += ApplyFoundationToSlope(f, tileh);
+	*z += ApplyPixelFoundationToSlope(f, tileh);
 
 	Slope valid_inclined = (axis == AXIS_X ? SLOPE_SW : SLOPE_SE);
 	if ((*tileh != SLOPE_FLAT) && (*tileh != valid_inclined)) return CMD_ERROR;
@@ -269,8 +269,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	uint z_start;
 	uint z_end;
-	Slope tileh_start = GetTileSlope(tile_start, &z_start);
-	Slope tileh_end = GetTileSlope(tile_end, &z_end);
+	Slope tileh_start = GetTilePixelSlope(tile_start, &z_start);
+	Slope tileh_end = GetTilePixelSlope(tile_end, &z_end);
 	bool pbs_reservation = false;
 
 	CommandCost terraform_cost_north = CheckBridgeSlopeNorth(direction, &tileh_start, &z_start);
@@ -361,7 +361,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 					if (direction == GetBridgeAxis(heads[i])) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-					if (z_start + TILE_HEIGHT == GetBridgeHeight(north_head)) {
+					if (z_start + TILE_HEIGHT == GetBridgePixelHeight(north_head)) {
 						return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 					}
 				}
@@ -370,7 +370,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
-			if (GetTileMaxZ(tile) > z_start) return_cmd_error(STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN);
+			if (GetTileMaxPixelZ(tile) > z_start) return_cmd_error(STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN);
 
 			if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
 				/* Disallow crossing bridges for the time being */
@@ -393,13 +393,13 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				case MP_TUNNELBRIDGE:
 					if (IsTunnel(tile)) break;
 					if (direction == DiagDirToAxis(GetTunnelBridgeDirection(tile))) goto not_valid_below;
-					if (z_start < GetBridgeHeight(tile)) goto not_valid_below;
+					if (z_start < GetBridgePixelHeight(tile)) goto not_valid_below;
 					break;
 
 				case MP_OBJECT: {
 					const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
 					if ((spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) == 0) goto not_valid_below;
-					if (GetTileMaxZ(tile) + spec->height * TILE_HEIGHT > z_start) goto not_valid_below;
+					if (GetTileMaxPixelZ(tile) + spec->height * TILE_HEIGHT > z_start) goto not_valid_below;
 					break;
 				}
 
@@ -527,7 +527,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	uint start_z;
 	uint end_z;
-	Slope start_tileh = GetTileSlope(start_tile, &start_z);
+	Slope start_tileh = GetTilePixelSlope(start_tile, &start_z);
 	DiagDirection direction = GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
 
@@ -563,7 +563,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	for (;;) {
 		end_tile += delta;
 		if (!IsValidTile(end_tile)) return_cmd_error(STR_ERROR_TUNNEL_THROUGH_MAP_BORDER);
-		end_tileh = GetTileSlope(end_tile, &end_z);
+		end_tileh = GetTilePixelSlope(end_tile, &end_z);
 
 		if (start_z == end_z) break;
 
@@ -794,7 +794,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		/* read this value before actual removal of bridge */
 		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
 		Owner owner = GetTileOwner(tile);
-		uint height = GetBridgeHeight(tile);
+		uint height = GetBridgePixelHeight(tile);
 		Train *v = NULL;
 
 		if (rail && HasTunnelBridgeReservation(tile)) {
@@ -807,7 +807,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
 			/* do not let trees appear from 'nowhere' after removing bridge */
 			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
-				uint minz = GetTileMaxZ(c) + 3 * TILE_HEIGHT;
+				uint minz = GetTileMaxPixelZ(c) + 3 * TILE_HEIGHT;
 				if (height < minz) SetRoadside(c, ROADSIDE_PAVED);
 			}
 			ClearBridgeMiddle(c);
@@ -913,8 +913,8 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	int z_back_north = ti->z;
 	int z_front_south = ti->z;
 	int z_back_south = ti->z;
-	GetSlopeZOnEdge(ti->tileh, south_dir, &z_front_south, &z_back_south);
-	GetSlopeZOnEdge(ti->tileh, ReverseDiagDir(south_dir), &z_front_north, &z_back_north);
+	GetSlopePixelZOnEdge(ti->tileh, south_dir, &z_front_south, &z_back_south);
+	GetSlopePixelZOnEdge(ti->tileh, ReverseDiagDir(south_dir), &z_front_north, &z_back_north);
 
 	/* Shared height of pillars */
 	int z_front = max(z_front_north, z_front_south);
@@ -1277,7 +1277,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 
 	int x = ti->x;
 	int y = ti->y;
-	uint bridge_z = GetBridgeHeight(rampsouth);
+	uint bridge_z = GetBridgePixelHeight(rampsouth);
 	uint z = bridge_z - BRIDGE_Z_START;
 
 	/* Add a bounding box that separates the bridge from things below it. */
@@ -1359,10 +1359,10 @@ void DrawBridgeMiddle(const TileInfo *ti)
 }
 
 
-static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y)
 {
 	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTilePixelSlope(tile, &z);
 
 	x &= 0xF;
 	y &= 0xF;
@@ -1376,7 +1376,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 		DiagDirection dir = GetTunnelBridgeDirection(tile);
 		uint pos = (DiagDirToAxis(dir) == AXIS_X ? y : x);
 
-		z += ApplyFoundationToSlope(GetBridgeFoundation(tileh, DiagDirToAxis(dir)), &tileh);
+		z += ApplyPixelFoundationToSlope(GetBridgeFoundation(tileh, DiagDirToAxis(dir)), &tileh);
 
 		/* On the bridge ramp? */
 		if (5 <= pos && pos <= 10) {
@@ -1395,7 +1395,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 		}
 	}
 
-	return z + GetPartialZ(x, y, tileh);
+	return z + GetPartialPixelZ(x, y, tileh);
 }
 
 static Foundation GetFoundation_TunnelBridge(TileIndex tile, Slope tileh)
@@ -1457,7 +1457,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 			/* As long as we do not have a snow density, we want to use the density
 			 * from the entry endge. For tunnels this is the lowest point for bridges the highest point.
 			 * (Independent of foundations) */
-			uint z = IsBridge(tile) ? GetTileMaxZ(tile) : GetTileZ(tile);
+			uint z = IsBridge(tile) ? GetTileMaxPixelZ(tile) : GetTilePixelZ(tile);
 			if (snow_or_desert != (z > GetSnowLine())) {
 				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				MarkTileDirtyByTile(tile);
@@ -1532,7 +1532,7 @@ extern const byte _tunnel_visibility_frame[DIAGDIR_END] = {12, 8, 8, 12};
 
 static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
-	int z = GetSlopeZ(x, y) - v->z_pos;
+	int z = GetSlopePixelZ(x, y) - v->z_pos;
 
 	if (abs(z) > 2) return VETSB_CANNOT_ENTER;
 	/* Direction into the wormhole */
@@ -1680,7 +1680,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;
 		uint z_old;
-		Slope tileh_old = GetTileSlope(tile, &z_old);
+		Slope tileh_old = GetTilePixelSlope(tile, &z_old);
 
 		/* Check if new slope is valid for bridges in general (so we can safely call GetBridgeFoundation()) */
 		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {
@@ -1700,7 +1700,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 
 extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	DrawTile_TunnelBridge,           // draw_tile_proc
-	GetSlopeZ_TunnelBridge,          // get_slope_z_proc
+	GetSlopePixelZ_TunnelBridge,     // get_slope_z_proc
 	ClearTile_TunnelBridge,          // clear_tile_proc
 	NULL,                            // add_accepted_cargo_proc
 	GetTileDesc_TunnelBridge,        // get_tile_desc_proc

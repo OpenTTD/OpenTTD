@@ -540,7 +540,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		 * the server, when it has cost the local company
 		 * something. Furthermore in the editor there is no
 		 * concept of cost, so don't show it there either. */
-		ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res.GetCost());
+		ShowCostOrIncomeAnimation(x, y, GetSlopePixelZ(x, y), res.GetCost());
 	}
 
 	if (!estimate_only && !only_sending && callback != NULL) {

@@ -60,7 +60,7 @@ void CcBuildCanal(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
 static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = NULL)
 {
 	uint z;
-	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, &z));
+	DiagDirection dir = GetInclinedSlopeDirection(GetTilePixelSlope(tile_from, &z));
 
 	/* If the direction isn't right, just return the next tile so the command
 	 * complains about the wrong slope instead of the ends not matching up.
@@ -79,7 +79,7 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = N
 
 		if (length > max_length) break;
 
-		if (GetTileMaxZ(endtile) > z) {
+		if (GetTileMaxPixelZ(endtile) > z) {
 			if (tile_to != NULL) *tile_to = endtile;
 			break;
 		}
@@ -212,7 +212,7 @@ struct BuildDocksToolbarWindow : Window {
 				CommandContainer cmdcont = { tile, _ctrl_pressed, p2, CMD_BUILD_DOCK | CMD_MSG(STR_ERROR_CAN_T_BUILD_DOCK_HERE), CcBuildDocks, "" };
 
 				/* Determine the watery part of the dock. */
-				DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
+				DiagDirection dir = GetInclinedSlopeDirection(GetTilePixelSlope(tile, NULL));
 				TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
 
 				ShowSelectStationIfNeeded(cmdcont, TileArea(tile, tile_to));
@@ -276,7 +276,7 @@ struct BuildDocksToolbarWindow : Window {
 		if (this->last_clicked_widget == DTW_BUILD_AQUEDUCT) {
 			GetOtherAqueductEnd(tile_from, &tile_to);
 		} else {
-			DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, NULL));
+			DiagDirection dir = GetInclinedSlopeDirection(GetTilePixelSlope(tile_from, NULL));
 			if (IsValidDiagDirection(dir)) {
 				/* Locks and docks always select the tile "down" the slope. */
 				tile_to = TileAddByDiagDir(tile_from, ReverseDiagDir(dir));

@@ -364,9 +364,9 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Industry(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Industry(TileIndex tile, uint x, uint y)
 {
-	return GetTileMaxZ(tile);
+	return GetTileMaxPixelZ(tile);
 }
 
 static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
@@ -698,7 +698,7 @@ static void CreateChimneySmoke(TileIndex tile)
 {
 	uint x = TileX(tile) * TILE_SIZE;
 	uint y = TileY(tile) * TILE_SIZE;
-	uint z = GetTileMaxZ(tile);
+	uint z = GetTileMaxPixelZ(tile);
 
 	CreateEffectVehicle(x + 15, y + 14, z + 59, EV_CHIMNEY_SMOKE);
 }
@@ -979,7 +979,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 static void PlantFarmField(TileIndex tile, IndustryID industry)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine()) return;
+		if (GetTilePixelZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine()) return;
 	}
 
 	/* determine field size */
@@ -1165,7 +1165,7 @@ static CommandCost CheckNewIndustry_NULL(TileIndex tile)
 static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTileZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
+		if (GetTilePixelZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
 			return_cmd_error(STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED);
 		}
 	}
@@ -1209,7 +1209,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
+		if (GetTilePixelZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
 			return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 		}
 	}
@@ -1262,7 +1262,7 @@ static CommandCost CheckNewIndustry_Lumbermill(TileIndex tile)
  */
 static CommandCost CheckNewIndustry_BubbleGen(TileIndex tile)
 {
-	if (GetTileZ(tile) > TILE_HEIGHT * 4) {
+	if (GetTilePixelZ(tile) > TILE_HEIGHT * 4) {
 		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS);
 	}
 	return CommandCost();
@@ -1359,7 +1359,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 
 		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
-					GetTileSlope(cur_tile, NULL) != SLOPE_FLAT) {
+					GetTilePixelSlope(cur_tile, NULL) != SLOPE_FLAT) {
 				return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 			}
 		} else {
@@ -1379,7 +1379,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				CommandCost ret = PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index, initial_random_bits, founder, creation_type);
 				if (ret.Failed()) return ret;
 			} else {
-				Slope tileh = GetTileSlope(cur_tile, NULL);
+				Slope tileh = GetTilePixelSlope(cur_tile, NULL);
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 			}
 
@@ -2724,9 +2724,9 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, u
 		 *  - Allow autoslope by default.
 		 *  - Disallow autoslope if callback succeeds and returns non-zero.
 		 */
-		Slope tileh_old = GetTileSlope(tile, NULL);
+		Slope tileh_old = GetTilePixelSlope(tile, NULL);
 		/* TileMaxZ must not be changed. Slopes must not be steep. */
-		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
+		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new))) {
 			const IndustryGfx gfx = GetIndustryGfx(tile);
 			const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
@@ -2746,7 +2746,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, u
 
 extern const TileTypeProcs _tile_type_industry_procs = {
 	DrawTile_Industry,           // draw_tile_proc
-	GetSlopeZ_Industry,          // get_slope_z_proc
+	GetSlopePixelZ_Industry,     // get_slope_z_proc
 	ClearTile_Industry,          // clear_tile_proc
 	AddAcceptedCargo_Industry,   // add_accepted_cargo_proc
 	GetTileDesc_Industry,        // get_tile_desc_proc

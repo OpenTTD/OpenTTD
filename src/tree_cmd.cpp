@@ -70,7 +70,7 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:
-			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
+			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTilePixelSlope(tile, NULL));
 
 		case MP_CLEAR:
 			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && GetRawClearGround(tile) != CLEAR_ROCKS &&
@@ -232,7 +232,7 @@ static void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 		if (!CanPlantTreesOnTile(cur_tile, true)) continue;
 
 		/* Not too much height difference */
-		if (Delta(GetTileZ(cur_tile), height) > 2) continue;
+		if (Delta(GetTilePixelZ(cur_tile), height) > 2) continue;
 
 		/* Place one tree and quit */
 		PlaceTree(cur_tile, r);
@@ -264,9 +264,9 @@ void PlaceTreesRandomly()
 			/* Place a number of trees based on the tile height.
 			 *  This gives a cool effect of multiple trees close together.
 			 *  It is almost real life ;) */
-			ht = GetTileZ(tile);
+			ht = GetTilePixelZ(tile);
 			/* The higher we get, the more trees we plant */
-			j = GetTileZ(tile) / TILE_HEIGHT * 2;
+			j = GetTilePixelZ(tile) / TILE_HEIGHT * 2;
 			/* Above snowline more trees! */
 			if (_settings_game.game_creation.landscape == LT_ARCTIC && ht > GetSnowLine()) j *= 3;
 			while (j--) {
@@ -363,7 +363,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				break;
 
 			case MP_WATER:
-				if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL))) {
+				if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTilePixelSlope(tile, NULL))) {
 					msg = STR_ERROR_CAN_T_BUILD_ON_WATER;
 					continue;
 				}
@@ -493,7 +493,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	}
 
 	/* draw them in a sorted way */
-	byte z = ti->z + GetSlopeMaxZ(ti->tileh) / 2;
+	byte z = ti->z + GetSlopeMaxPixelZ(ti->tileh) / 2;
 
 	for (; trees > 0; trees--) {
 		uint min = te[0].x + te[0].y;
@@ -516,12 +516,12 @@ static void DrawTile_Trees(TileInfo *ti)
 }
 
 
-static uint GetSlopeZ_Trees(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y)
 {
 	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
+	Slope tileh = GetTilePixelSlope(tile, &z);
 
-	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
+	return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 }
 
 static Foundation GetFoundation_Trees(TileIndex tile, Slope tileh)
@@ -588,7 +588,7 @@ static void TileLoopTreesDesert(TileIndex tile)
 
 static void TileLoopTreesAlps(TileIndex tile)
 {
-	int k = GetTileZ(tile) - GetSnowLine() + TILE_HEIGHT;
+	int k = GetTilePixelZ(tile) - GetSnowLine() + TILE_HEIGHT;
 
 	if (k < 0) {
 		switch (GetTreeGround(tile)) {
@@ -784,7 +784,7 @@ static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlag flags, uint
 
 extern const TileTypeProcs _tile_type_trees_procs = {
 	DrawTile_Trees,           // draw_tile_proc
-	GetSlopeZ_Trees,          // get_slope_z_proc
+	GetSlopePixelZ_Trees,     // get_slope_z_proc
 	ClearTile_Trees,          // clear_tile_proc
 	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Trees,        // get_tile_desc_proc

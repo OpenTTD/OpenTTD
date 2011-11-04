@@ -23,7 +23,7 @@ static void DrawTile_Void(TileInfo *ti)
 }
 
 
-static uint GetSlopeZ_Void(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Void(TileIndex tile, uint x, uint y)
 {
 	return TilePixelHeight(tile);
 }
@@ -67,7 +67,7 @@ static CommandCost TerraformTile_Void(TileIndex tile, DoCommandFlag flags, uint 
 
 extern const TileTypeProcs _tile_type_void_procs = {
 	DrawTile_Void,            // draw_tile_proc
-	GetSlopeZ_Void,           // get_slope_z_proc
+	GetSlopePixelZ_Void,      // get_slope_z_proc
 	ClearTile_Void,           // clear_tile_proc
 	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Void,         // get_tile_desc_proc

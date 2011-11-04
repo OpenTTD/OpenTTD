@@ -230,13 +230,13 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 		/* So, now the surface is checked... check the slope of said surface. */
 		int allowed_z;
-		if (GetTileSlope(tile, (uint*)&allowed_z) != SLOPE_FLAT) allowed_z += TILE_HEIGHT;
+		if (GetTilePixelSlope(tile, (uint*)&allowed_z) != SLOPE_FLAT) allowed_z += TILE_HEIGHT;
 
 		TILE_AREA_LOOP(t, ta) {
 			uint16 callback = CALLBACK_FAILED;
 			if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
 				TileIndex diff = t - tile;
-				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t, NULL), TileY(diff) << 4 | TileX(diff), spec, NULL, t, view);
+				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTilePixelSlope(t, NULL), TileY(diff) << 4 | TileX(diff), spec, NULL, t, view);
 			}
 
 			if (callback == CALLBACK_FAILED) {
@@ -267,7 +267,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	TILE_AREA_LOOP(t, ta) {
 		if (MayHaveBridgeAbove(t) && IsBridgeAbove(t) && (
 				!(spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) ||
-				(GetTileMaxZ(t) + spec->height * TILE_HEIGHT >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
+				(GetTileMaxPixelZ(t) + spec->height * TILE_HEIGHT >= GetBridgePixelHeight(GetSouthernBridgeEnd(t))))) {
 			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 	}
@@ -276,7 +276,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	switch (type) {
 		case OBJECT_TRANSMITTER:
 		case OBJECT_LIGHTHOUSE:
-			if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+			if (GetTilePixelSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 			break;
 
 		case OBJECT_OWNED_LAND:
@@ -381,15 +381,15 @@ static void DrawTile_Object(TileInfo *ti)
 	if (spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) DrawBridgeMiddle(ti);
 }
 
-static uint GetSlopeZ_Object(TileIndex tile, uint x, uint y)
+static uint GetSlopePixelZ_Object(TileIndex tile, uint x, uint y)
 {
 	if (IsOwnedLand(tile)) {
 		uint z;
-		Slope tileh = GetTileSlope(tile, &z);
+		Slope tileh = GetTilePixelSlope(tile, &z);
 
-		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
+		return z + GetPartialPixelZ(x & 0xF, y & 0xF, tileh);
 	} else {
-		return GetTileMaxZ(tile);
+		return GetTileMaxPixelZ(tile);
 	}
 }
 
@@ -643,7 +643,7 @@ void GenerateObjects()
 		TileIndex tile = RandomTile();
 
 		uint h;
-		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4 && !IsBridgeAbove(tile)) {
+		if (IsTileType(tile, MP_CLEAR) && GetTilePixelSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4 && !IsBridgeAbove(tile)) {
 			TileIndex t = tile;
 			if (CircularTileSearch(&t, 9, HasTransmitter, NULL)) continue;
 
@@ -680,7 +680,7 @@ void GenerateObjects()
 
 		for (int j = 0; j < 19; j++) {
 			uint h;
-			if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)) {
+			if (IsTileType(tile, MP_CLEAR) && GetTilePixelSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)) {
 				BuildObject(OBJECT_LIGHTHOUSE, tile);
 				IncreaseGeneratingWorldProgress(GWP_OBJECT);
 				lighthouses_to_build--;
@@ -731,9 +731,9 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uin
 		 *  - Allow autoslope by default.
 		 *  - Disallow autoslope if callback succeeds and returns non-zero.
 		 */
-		Slope tileh_old = GetTileSlope(tile, NULL);
+		Slope tileh_old = GetTilePixelSlope(tile, NULL);
 		/* TileMaxZ must not be changed. Slopes must not be steep. */
-		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
+		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new))) {
 			const ObjectSpec *spec = ObjectSpec::Get(type);
 
 			/* Call callback 'disable autosloping for objects'. */
@@ -753,7 +753,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uin
 
 extern const TileTypeProcs _tile_type_object_procs = {
 	DrawTile_Object,             // draw_tile_proc
-	GetSlopeZ_Object,            // get_slope_z_proc
+	GetSlopePixelZ_Object,       // get_slope_z_proc
 	ClearTile_Object,            // clear_tile_proc
 	AddAcceptedCargo_Object,     // add_accepted_cargo_proc
 	GetTileDesc_Object,          // get_tile_desc_proc

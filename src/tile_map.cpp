@@ -18,7 +18,7 @@
  * @param h    If not \c NULL, pointer to storage of z height
  * @return Slope of the tile, except for the HALFTILE part
  */
-Slope GetTileSlope(TileIndex tile, uint *h)
+Slope GetTilePixelSlope(TileIndex tile, uint *h)
 {
 	assert(tile < MapSize());
 
@@ -64,7 +64,7 @@ Slope GetTileSlope(TileIndex tile, uint *h)
  * @param tile Tile to compute height of
  * @return Minimum height of the tile
  */
-uint GetTileZ(TileIndex tile)
+uint GetTilePixelZ(TileIndex tile)
 {
 	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
 
@@ -81,7 +81,7 @@ uint GetTileZ(TileIndex tile)
  * @param t Tile to compute height of
  * @return Maximum height of the tile
  */
-uint GetTileMaxZ(TileIndex t)
+uint GetTileMaxPixelZ(TileIndex t)
 {
 	if (TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) return 0;
 
