@@ -1090,7 +1090,7 @@ void TileLoop_Water(TileIndex tile)
 			break;
 
 		case FLOOD_DRYUP: {
-			Slope slope_here = GetFoundationPixelSlope(tile, NULL) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+			Slope slope_here = GetFoundationSlope(tile) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			uint dir;
 			FOR_EACH_SET_BIT(dir, _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir((Direction)dir));
