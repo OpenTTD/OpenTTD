@@ -133,7 +133,7 @@ static void DisasterVehicleUpdateImage(DisasterVehicle *v)
  * Initialize a disaster vehicle. These vehicles are of type VEH_DISASTER, are unclickable
  * and owned by nobody
  */
-static void InitializeDisasterVehicle(DisasterVehicle *v, int x, int y, byte z, Direction direction, byte subtype)
+static void InitializeDisasterVehicle(DisasterVehicle *v, int x, int y, int z, Direction direction, byte subtype)
 {
 	v->x_pos = x;
 	v->y_pos = y;
@@ -152,7 +152,7 @@ static void InitializeDisasterVehicle(DisasterVehicle *v, int x, int y, byte z, 
 	MarkSingleVehicleDirty(v);
 }
 
-static void SetDisasterVehiclePos(DisasterVehicle *v, int x, int y, byte z)
+static void SetDisasterVehiclePos(DisasterVehicle *v, int x, int y, int z)
 {
 	v->x_pos = x;
 	v->y_pos = y;
@@ -249,7 +249,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 
 	int x = v->x_pos;
 	int y = v->y_pos;
-	byte z = GetSlopePixelZ(x, y);
+	int z = GetSlopePixelZ(x, y);
 	if (z < v->z_pos) z = v->z_pos - 1;
 	SetDisasterVehiclePos(v, x, y, z);
 
@@ -344,7 +344,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		v->direction = GetDirectionTowards(v, u->x_pos, u->y_pos);
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
-		byte z = v->z_pos;
+		int z = v->z_pos;
 		if (dist <= TILE_SIZE && z > u->z_pos) z--;
 		SetDisasterVehiclePos(v, gp.x, gp.y, z);
 
@@ -509,7 +509,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			return false;
 		}
 
-		byte z = GetSlopePixelZ(v->x_pos, v->y_pos);
+		int z = GetSlopePixelZ(v->x_pos, v->y_pos);
 		if (z < v->z_pos) {
 			SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos - 1);
 			return true;

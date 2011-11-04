@@ -1144,7 +1144,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 			if (HasBit(rts, ROADTYPE_TRAM)) {
 				uint offset = tunnelbridge_direction;
-				uint z = ti->z;
+				int z = ti->z;
 				if (ti->tileh != SLOPE_FLAT) {
 					offset = (offset + 1) & 1;
 					z += TILE_HEIGHT;
@@ -1278,7 +1278,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	int x = ti->x;
 	int y = ti->y;
 	uint bridge_z = GetBridgePixelHeight(rampsouth);
-	uint z = bridge_z - BRIDGE_Z_START;
+	int z = bridge_z - BRIDGE_Z_START;
 
 	/* Add a bounding box that separates the bridge from things below it. */
 	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, 16, 16, 1, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR);
@@ -1457,7 +1457,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 			/* As long as we do not have a snow density, we want to use the density
 			 * from the entry endge. For tunnels this is the lowest point for bridges the highest point.
 			 * (Independent of foundations) */
-			uint z = IsBridge(tile) ? GetTileMaxZ(tile) : GetTileZ(tile);
+			int z = IsBridge(tile) ? GetTileMaxZ(tile) : GetTileZ(tile);
 			if (snow_or_desert != (z > GetSnowLine())) {
 				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				MarkTileDirtyByTile(tile);

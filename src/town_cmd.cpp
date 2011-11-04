@@ -1930,7 +1930,7 @@ static inline bool CanBuildHouseHere(TileIndex tile, TownID town, bool noslope)
  * @return true iff house can be built here
  * @see CanBuildHouseHere()
  */
-static inline bool CheckBuildHouseSameZ(TileIndex tile, TownID town, uint z, bool noslope)
+static inline bool CheckBuildHouseSameZ(TileIndex tile, TownID town, int z, bool noslope)
 {
 	if (!CanBuildHouseHere(tile, town, noslope)) return false;
 
@@ -1950,7 +1950,7 @@ static inline bool CheckBuildHouseSameZ(TileIndex tile, TownID town, uint z, boo
  * @return true iff house can be built
  * @see CheckBuildHouseSameZ()
  */
-static bool CheckFree2x2Area(TileIndex tile, TownID town, uint z, bool noslope)
+static bool CheckFree2x2Area(TileIndex tile, TownID town, int z, bool noslope)
 {
 	/* we need to check this tile too because we can be at different tile now */
 	if (!CheckBuildHouseSameZ(tile, town, z, noslope)) return false;
@@ -2039,7 +2039,7 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
  * @param noslope are slopes forbidden?
  * @param second diagdir from first tile to second tile
  */
-static bool CheckTownBuild2House(TileIndex *tile, Town *t, uint maxz, bool noslope, DiagDirection second)
+static bool CheckTownBuild2House(TileIndex *tile, Town *t, int maxz, bool noslope, DiagDirection second)
 {
 	/* 'tile' is already checked in BuildTownHouse() - CanBuildHouseHere() and slope test */
 
@@ -2064,7 +2064,7 @@ static bool CheckTownBuild2House(TileIndex *tile, Town *t, uint maxz, bool noslo
  * @param maxz all tiles should have the same height
  * @param noslope are slopes forbidden?
  */
-static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, uint maxz, bool noslope)
+static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool noslope)
 {
 	TileIndex tile2 = *tile;
 
@@ -2139,7 +2139,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		houses[num++] = (HouseID)i;
 	}
 
-	uint maxz = GetTileMaxZ(tile);
+	int maxz = GetTileMaxZ(tile);
 	TileIndex baseTile = tile;
 
 	while (probability_max > 0) {

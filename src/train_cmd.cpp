@@ -2696,7 +2696,7 @@ static const RailtypeSlowdownParams _railtype_slowdown[] = {
 };
 
 /** Modify the speed of the vehicle due to a change in altitude */
-static inline void AffectSpeedByZChange(Train *v, byte old_z)
+static inline void AffectSpeedByZChange(Train *v, int old_z)
 {
 	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) return;
 
@@ -3160,7 +3160,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 		v->y_pos = gp.y;
 
 		/* update the Z position of the vehicle */
-		byte old_z = v->UpdateInclination(gp.new_tile != gp.old_tile, false);
+		int old_z = v->UpdateInclination(gp.new_tile != gp.old_tile, false);
 
 		if (prev == NULL) {
 			/* This is the first vehicle in the train */

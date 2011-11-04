@@ -698,7 +698,7 @@ static void CreateChimneySmoke(TileIndex tile)
 {
 	uint x = TileX(tile) * TILE_SIZE;
 	uint y = TileY(tile) * TILE_SIZE;
-	uint z = GetTileMaxPixelZ(tile);
+	int z = GetTileMaxPixelZ(tile);
 
 	CreateEffectVehicle(x + 15, y + 14, z + 59, EV_CHIMNEY_SMOKE);
 }

@@ -306,8 +306,8 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	}
 
 	/* check elevation compared to town */
-	uint z = GetTileZ(tile);
-	uint z2 = GetTileZ(t->xy);
+	int z = GetTileZ(tile);
+	int z2 = GetTileZ(t->xy);
 	if (z < z2) {
 		if (HasBit(free_names, M(STR_SV_STNAME_VALLEY))) return STR_SV_STNAME_VALLEY;
 	} else if (z > z2) {

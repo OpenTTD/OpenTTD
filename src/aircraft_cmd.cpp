@@ -38,10 +38,10 @@
 
 #include "table/strings.h"
 
-static const uint ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.
+static const int ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.
 
-static const uint PLANE_HOLDING_ALTITUDE = 150;  ///< Altitude of planes in holding pattern (= lowest flight altitude).
-static const uint HELI_FLIGHT_ALTITUDE   = 184;  ///< Normal flight altitude of helicopters.
+static const int PLANE_HOLDING_ALTITUDE = 150;  ///< Altitude of planes in holding pattern (= lowest flight altitude).
+static const int HELI_FLIGHT_ALTITUDE   = 184;  ///< Normal flight altitude of helicopters.
 
 
 void Aircraft::UpdateDeltaXY(Direction direction)
@@ -930,7 +930,7 @@ static bool AircraftController(Aircraft *v)
 		if (amd.flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = 0;
 
 		/* Adjust Z for land or takeoff? */
-		uint z = v->z_pos;
+		int z = v->z_pos;
 
 		if (amd.flag & AMED_TAKEOFF) {
 			z = min(z + 2, GetAircraftFlyingAltitude(v));
@@ -950,7 +950,7 @@ static bool AircraftController(Aircraft *v)
 				continue;
 			}
 
-			uint curz = GetSlopePixelZ(x + amd.x, y + amd.y) + 1;
+			int curz = GetSlopePixelZ(x + amd.x, y + amd.y) + 1;
 
 			/* We're not flying below our destination, right? */
 			assert(curz <= z);
@@ -966,7 +966,7 @@ static bool AircraftController(Aircraft *v)
 
 		/* We've landed. Decrease speed when we're reaching end of runway. */
 		if (amd.flag & AMED_BRAKE) {
-			uint curz = GetSlopePixelZ(x, y) + 1;
+			int curz = GetSlopePixelZ(x, y) + 1;
 
 			if (z > curz) {
 				z--;

@@ -875,7 +875,7 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 
 		case VEH_TRAIN:
 		case VEH_ROAD: {
-			byte z = *(byte*)data;
+			int z = *(int*)data;
 			if (v->z_pos > z) break;
 			FloodVehicle(v->First());
 			break;
@@ -892,7 +892,7 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
  */
 static void FloodVehicles(TileIndex tile)
 {
-	byte z = 0;
+	int z = 0;
 
 	if (IsAirportTile(tile)) {
 		const Station *st = Station::GetByTile(tile);

@@ -369,7 +369,7 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 {
 	Point pt;
 	int a, b;
-	uint z;
+	int z;
 
 	if ( (uint)(x -= vp->left) >= (uint)vp->width ||
 				(uint)(y -= vp->top) >= (uint)vp->height) {
@@ -400,12 +400,12 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 
 	int min_coord = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
 
-	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + (int)max(z, 4u) - 4, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, 4u) - 4, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
-	for (uint malus = 3; malus > 0; malus--) z = GetSlopePixelZ(Clamp(a + (int)max(z, malus) - (int)malus, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, malus) - (int)malus, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
-	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + (int)z, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)z, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + max(z, 4) - 4, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + max(z, 4) - 4, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (int malus = 3; malus > 0; malus--) z = GetSlopePixelZ(Clamp(a + max(z, malus) - malus, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + max(z, malus) - malus, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (int i = 0; i < 5; i++) z = GetSlopePixelZ(Clamp(a + z, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + z, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
 
-	pt.x = Clamp(a + (int)z, min_coord, MapMaxX() * TILE_SIZE - 1);
-	pt.y = Clamp(b + (int)z, min_coord, MapMaxY() * TILE_SIZE - 1);
+	pt.x = Clamp(a + z, min_coord, MapMaxX() * TILE_SIZE - 1);
+	pt.y = Clamp(b + z, min_coord, MapMaxY() * TILE_SIZE - 1);
 
 	return pt;
 }

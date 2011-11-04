@@ -493,7 +493,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	}
 
 	/* draw them in a sorted way */
-	byte z = ti->z + GetSlopeMaxPixelZ(ti->tileh) / 2;
+	int z = ti->z + GetSlopeMaxPixelZ(ti->tileh) / 2;
 
 	for (; trees > 0; trees--) {
 		uint min = te[0].x + te[0].y;

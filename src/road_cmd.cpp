@@ -1112,7 +1112,7 @@ static void DrawRoadDetail(SpriteID img, const TileInfo *ti, int dx, int dy, int
 {
 	int x = ti->x | dx;
 	int y = ti->y | dy;
-	byte z = ti->z;
+	int z = ti->z;
 	if (ti->tileh != SLOPE_FLAT) z = GetSlopePixelZ(x, y);
 	AddSortableSpriteToDraw(img, PAL_NONE, x, y, 2, 2, h, z);
 }

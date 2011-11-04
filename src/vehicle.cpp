@@ -415,7 +415,7 @@ bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
  */
 static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
-	byte z = *(byte*)data;
+	int z = *(int*)data;
 
 	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
 	if (v->z_pos > z) return NULL;
@@ -430,7 +430,7 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
  */
 CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 {
-	byte z = GetTileMaxPixelZ(tile);
+	int z = GetTileMaxPixelZ(tile);
 
 	/* Value v is not safe in MP games, however, it is used to generate a local
 	 * error message only (which may be different for different machines).

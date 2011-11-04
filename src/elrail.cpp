@@ -209,7 +209,7 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
  * @param PCPpos The PCP of the tile.
  * @return The Z position of the PCP.
  */
-static byte GetPCPElevation(TileIndex tile, DiagDirection PCPpos)
+static int GetPCPElevation(TileIndex tile, DiagDirection PCPpos)
 {
 	/* The elevation of the "pylon"-sprite should be the elevation at the PCP.
 	 * PCPs are always on a tile edge.
@@ -225,7 +225,7 @@ static byte GetPCPElevation(TileIndex tile, DiagDirection PCPpos)
 	 * Also note that the result of GetSlopePixelZ() is very special on bridge-ramps.
 	 */
 
-	byte z = GetSlopePixelZ(TileX(tile) * TILE_SIZE + min(x_pcp_offsets[PCPpos], TILE_SIZE - 1), TileY(tile) * TILE_SIZE + min(y_pcp_offsets[PCPpos], TILE_SIZE - 1));
+	int z = GetSlopePixelZ(TileX(tile) * TILE_SIZE + min(x_pcp_offsets[PCPpos], TILE_SIZE - 1), TileY(tile) * TILE_SIZE + min(y_pcp_offsets[PCPpos], TILE_SIZE - 1));
 	return (z + 2) & ~3; // this means z = (z + TILE_HEIGHT / 4) / (TILE_HEIGHT / 2) * (TILE_HEIGHT / 2);
 }
 

@@ -1774,7 +1774,7 @@ static void DrawTrackFence_NE_SW(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_NS_1(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_W);
+	int z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_W);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1784,7 +1784,7 @@ static void DrawTrackFence_NS_1(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_NS_2(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_E);
+	int z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_E);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1794,7 +1794,7 @@ static void DrawTrackFence_NS_2(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_WE_1(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_N);
+	int z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_N);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1804,7 +1804,7 @@ static void DrawTrackFence_WE_1(const TileInfo *ti, SpriteID base_image)
  */
 static void DrawTrackFence_WE_2(const TileInfo *ti, SpriteID base_image)
 {
-	uint z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_S);
+	int z = ti->z + GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_S);
 	AddSortableSpriteToDraw(base_image + RFO_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -2787,7 +2787,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
  * @param tileh_new New TileSlope.
  * @param rail_bits Trackbits.
  */
-static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_old, Slope tileh_old, uint z_new, Slope tileh_new, TrackBits rail_bits)
+static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, int z_old, Slope tileh_old, int z_new, Slope tileh_new, TrackBits rail_bits)
 {
 	if (!_settings_game.construction.build_on_slopes || !AutoslopeEnabled()) return_cmd_error(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 

@@ -143,7 +143,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			 * direction it is sloped, we get the 'z' at the center of
 			 * the tile (middle_z) and the edge of the tile (old_z),
 			 * which we then can compare. */
-			byte middle_z = GetSlopePixelZ((this->x_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE, (this->y_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE);
+			int middle_z = GetSlopePixelZ((this->x_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE, (this->y_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE);
 
 			if (middle_z != this->z_pos) {
 				SetBit(this->gv_flags, (middle_z > this->z_pos) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
