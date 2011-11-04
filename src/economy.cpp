@@ -1275,6 +1275,49 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 		/* Do not pick up goods when we have no-load set or loading is stopped. */
 		if (front->current_order.GetLoadType() & OLFB_NO_LOAD || HasBit(front->vehicle_flags, VF_STOP_LOADING)) continue;
 
+		/* This order has a refit, the vehicle is a normal vehicle and completely empty, do it now. */
+		if (front->current_order.IsRefit() && !v->IsArticulatedPart() && v->cargo.Count() == 0 &&
+				(v->type != VEH_AIRCRAFT || (Aircraft::From(v)->IsNormalAircraft() && v->Next()->cargo.Count() == 0))) {
+			CargoID new_cid = front->current_order.GetRefitCargo();
+			byte new_subtype = front->current_order.GetRefitSubtype();
+
+			Backup<CompanyByte> cur_company(_current_company, front->owner, FILE_LINE);
+
+			/* Check if all articulated parts are empty and collect refit mask. */
+			uint32 refit_mask = e->info.refit_mask;
+			Vehicle *w = v;
+			while (w->HasArticulatedPart()) {
+				w = w->GetNextArticulatedPart();
+				if (w->cargo.Count() > 0) new_cid = CT_NO_REFIT;
+				refit_mask |= EngInfo(w->engine_type)->refit_mask;
+			}
+
+			if (new_cid == CT_AUTO_REFIT) {
+				/* Get refittable cargo type with the most waiting cargo. */
+				int amount = 0;
+				CargoID cid;
+				FOR_EACH_SET_CARGO_ID(cid, refit_mask) {
+					if (cargo_left[cid] > amount) {
+						/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
+						 * the returned refit capacity will be greater than zero. */
+						DoCommand(v->tile, v->index, cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v)); // Auto-refit and only this vehicle including artic parts.
+						if (_returned_refit_capacity > 0) {
+							amount = cargo_left[cid];
+							new_cid = cid;
+						}
+					}
+				}
+			}
+
+			/* Refit if given a valid cargo. */
+			if (new_cid < NUM_CARGO) {
+				DoCommand(v->tile, v->index, new_cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v)); // Auto-refit and only this vehicle including artic parts.
+				ge = &st->goods[v->cargo_type];
+			}
+
+			cur_company.Restore();
+		}
+
 		/* update stats */
 		int t;
 		switch (front->type) {

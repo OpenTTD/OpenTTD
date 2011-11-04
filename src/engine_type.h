@@ -153,6 +153,7 @@ enum EngineMiscFlags {
 	EF_USES_2CC   = 1, ///< Vehicle uses two company colours
 	EF_RAIL_IS_MU = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
 	EF_RAIL_FLIPS = 3, ///< Rail vehicle can be flipped in the depot
+	EF_AUTO_REFIT = 4, ///< Automatic refitting is allowed
 };
 
 /**

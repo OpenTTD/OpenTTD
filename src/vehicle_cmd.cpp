@@ -208,7 +208,7 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 }
 
 /** Helper to run the refit cost callback. */
-static uint GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype)
+static uint GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype, bool *auto_refit_allowed)
 {
 	/* Prepare callback param with info about the new cargo type. */
 	const Engine *e = Engine::Get(engine_type);
@@ -217,9 +217,11 @@ static uint GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID n
 
 	uint16 cb_res = GetVehicleCallback(CBID_VEHICLE_REFIT_COST, param1, 0, engine_type, v);
 	if (cb_res != CALLBACK_FAILED) {
+		*auto_refit_allowed = HasBit(cb_res, 14);
 		return GB(cb_res, 0, 14);
 	}
 
+	*auto_refit_allowed = e->info.refit_cost == 0;
 	return e->info.refit_cost;
 }
 
@@ -230,13 +232,14 @@ static uint GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID n
  * @param new_cid Cargo type we are refitting to.
  * @param new_subtype New cargo subtype.
  * @return Price for refitting
+ * @return[out] auto_refit_allowed The refit is allowed as an auto-refit.
  */
-static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype)
+static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype, bool *auto_refit_allowed)
 {
 	ExpensesType expense_type;
 	const Engine *e = Engine::Get(engine_type);
 	Price base_price;
-	uint cost_factor = GetRefitCostFactor(v, engine_type, new_cid, new_subtype);
+	uint cost_factor = GetRefitCostFactor(v, engine_type, new_cid, new_subtype, auto_refit_allowed);
 	switch (e->type) {
 		case VEH_SHIP:
 			base_price = PR_BUILD_VEHICLE_SHIP;
@@ -273,9 +276,10 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID 
  * @param new_cid      Cargotype to refit to
  * @param new_subtype  Cargo subtype to refit to
  * @param flags        Command flags
+ * @param auto_refit   Refitting is done as automatic refitting outside a depot.
  * @return Refit cost.
  */
-static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, CargoID new_cid, byte new_subtype, DoCommandFlag flags)
+static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, CargoID new_cid, byte new_subtype, DoCommandFlag flags, bool auto_refit)
 {
 	CommandCost cost(v->GetExpenseType(false));
 	uint total_capacity = 0;
@@ -296,8 +300,9 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		const Engine *e = v->GetEngine();
 		if (!e->CanCarryCargo()) continue;
 
-		/* If the vehicle is not refittable, count its capacity nevertheless if the cargo matches */
-		bool refittable = HasBit(e->info.refit_mask, new_cid);
+		/* If the vehicle is not refittable, or does not allow automatic refitting,
+		 * count its capacity nevertheless if the cargo matches */
+		bool refittable = HasBit(e->info.refit_mask, new_cid) && (!auto_refit || HasBit(e->info.misc_flags, EF_AUTO_REFIT));
 		if (!refittable && v->cargo_type != new_cid) continue;
 
 		/* Back up the vehicle's cargo type */
@@ -321,7 +326,15 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		v->cargo_subtype = temp_subtype;
 
 		if (new_cid != v->cargo_type) {
-			cost.AddCost(GetRefitCost(v, v->engine_type, new_cid, new_subtype));
+			bool auto_refit_allowed;
+			CommandCost refit_cost = GetRefitCost(v, v->engine_type, new_cid, new_subtype, &auto_refit_allowed);
+			if (auto_refit && !auto_refit_allowed) {
+				/* Sorry, auto-refitting not allowed, subtract the cargo amount again from the total. */
+				total_capacity -= amount;
+				total_mail_capacity -= mail_capacity;
+				continue;
+			}
+			cost.AddCost(refit_cost);
 		}
 
 		if (flags & DC_EXEC) {
@@ -349,6 +362,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
  * @param p1 vehicle ID to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-4)   - New cargo type to refit to.
+ * - p2 = (bit 6)     - Automatic refitting.
  * - p2 = (bit 7)     - Refit only this vehicle. Used only for cloning vehicles.
  * - p2 = (bit 8-15)  - New cargo subtype to refit to.
  * - p2 = (bit 16-23) - Number of vehicles to refit (not counting articulated parts). Zero means all vehicles.
@@ -370,9 +384,12 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	CommandCost ret = CheckOwnership(front->owner);
 	if (ret.Failed()) return ret;
 
+	bool auto_refit = HasBit(p2, 6);
+
 	/* Don't allow shadows and such to be refitted. */
 	if (v != front && (v->type == VEH_SHIP || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
-	if (!front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
+	/* Allow auto-refitting only during loading and normal refitting only in a depot. */
+	if ((!auto_refit || !front->current_order.IsType(OT_LOADING)) && !front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 	if (front->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	/* Check cargo */
@@ -384,7 +401,7 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	bool only_this = HasBit(p2, 7) || front->type == VEH_SHIP || front->type == VEH_AIRCRAFT;
 	uint8 num_vehicles = GB(p2, 16, 8);
 
-	CommandCost cost = RefitVehicle(v, only_this, num_vehicles, new_cid, new_subtype, flags);
+	CommandCost cost = RefitVehicle(v, only_this, num_vehicles, new_cid, new_subtype, flags, auto_refit);
 
 	if (flags & DC_EXEC) {
 		/* Update the cached variables */
@@ -813,7 +830,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				CargoID initial_cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 
 				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {
-					total_cost.AddCost(GetRefitCost(NULL, v->engine_type, v->cargo_type, v->cargo_subtype));
+					bool dummy;
+					total_cost.AddCost(GetRefitCost(NULL, v->engine_type, v->cargo_type, v->cargo_subtype, &dummy));
 				}
 			}
 

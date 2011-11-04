@@ -144,10 +144,10 @@ void Order::MakeImplicit(StationID destination)
 }
 
 /**
- * Make this depot order also a refit order.
+ * Make this depot/station order also a refit order.
  * @param cargo   the cargo type to change to.
  * @param subtype the subtype to change to.
- * @pre IsType(OT_GOTO_DEPOT).
+ * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION).
  */
 void Order::SetRefit(CargoID cargo, byte subtype)
 {
@@ -1256,6 +1256,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		switch (mof) {
 			case MOF_NON_STOP:
 				order->SetNonStopType((OrderNonStopFlags)data);
+				if (data & ONSF_NO_STOP_AT_DESTINATION_STATION) order->SetRefit(CT_NO_REFIT);
 				break;
 
 			case MOF_STOP_LOCATION:
@@ -1268,6 +1269,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			case MOF_LOAD:
 				order->SetLoadType((OrderLoadFlags)data);
+				if (data & OLFB_NO_LOAD) order->SetRefit(CT_NO_REFIT);
 				break;
 
 			case MOF_DEPOT_ACTION: {
@@ -1517,7 +1519,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	CargoID cargo = GB(p2, 0, 8);
 	byte subtype  = GB(p2, 8, 8);
 
-	if (cargo >= NUM_CARGO && cargo != CT_NO_REFIT) return CMD_ERROR;
+	if (cargo >= NUM_CARGO && cargo != CT_NO_REFIT && cargo != CT_AUTO_REFIT) return CMD_ERROR;
 
 	const Vehicle *v = Vehicle::GetIfValid(veh);
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
@@ -1527,6 +1529,9 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	Order *order = v->GetOrder(order_number);
 	if (order == NULL) return CMD_ERROR;
+
+	/* Automatic refit cargo is only supported for goto station orders. */
+	if (cargo == CT_AUTO_REFIT && !order->IsType(OT_GOTO_STATION)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		order->SetRefit(cargo, subtype);

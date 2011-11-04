@@ -95,21 +95,28 @@ public:
 
 	/**
 	 * Is this order a refit order.
-	 * @pre IsType(OT_GOTO_DEPOT)
+	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
 	 * @return true if a refit should happen.
 	 */
-	inline bool IsRefit() const { return this->refit_cargo < NUM_CARGO; }
+	inline bool IsRefit() const { return this->refit_cargo < NUM_CARGO || this->refit_cargo == CT_AUTO_REFIT; }
+
+	/**
+	 * Is this order a auto-refit order.
+	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
+	 * @return true if a auto-refit should happen.
+	 */
+	inline bool IsAutoRefit() const { return this->refit_cargo == CT_AUTO_REFIT; }
 
 	/**
 	 * Get the cargo to to refit to.
-	 * @pre IsType(OT_GOTO_DEPOT)
+	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
 	 * @return the cargo type.
 	 */
 	inline CargoID GetRefitCargo() const { return this->refit_cargo; }
 
 	/**
 	 * Get the cargo subtype to to refit to.
-	 * @pre IsType(OT_GOTO_DEPOT)
+	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
 	 * @return the cargo subtype.
 	 */
 	inline byte GetRefitSubtype() const { return this->refit_subtype; }
