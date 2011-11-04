@@ -306,8 +306,8 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	}
 
 	/* check elevation compared to town */
-	uint z = GetTilePixelZ(tile);
-	uint z2 = GetTilePixelZ(t->xy);
+	uint z = GetTileZ(tile);
+	uint z2 = GetTileZ(t->xy);
 	if (z < z2) {
 		if (HasBit(free_names, M(STR_SV_STNAME_VALLEY))) return STR_SV_STNAME_VALLEY;
 	} else if (z > z2) {
@@ -665,7 +665,7 @@ CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z
 	if (ret.Failed()) return ret;
 
 	uint z;
-	Slope tileh = GetTilePixelSlope(tile, &z);
+	Slope tileh = GetTileSlope(tile, &z);
 
 	/* Prohibit building if
 	 *   1) The tile is "steep" (i.e. stretches two height levels).
@@ -677,7 +677,7 @@ CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z
 	}
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	int flat_z = z + GetSlopeMaxPixelZ(tileh);
+	int flat_z = z + GetSlopeMaxZ(tileh);
 	if (tileh != SLOPE_FLAT) {
 		/* Forbid building if the tile faces a slope in a invalid direction. */
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir != DIAGDIR_END; dir++) {

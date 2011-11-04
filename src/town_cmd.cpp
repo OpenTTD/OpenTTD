@@ -1935,7 +1935,7 @@ static inline bool CheckBuildHouseSameZ(TileIndex tile, TownID town, uint z, boo
 	if (!CanBuildHouseHere(tile, town, noslope)) return false;
 
 	/* if building on slopes is allowed, there will be flattening foundation (to tile max z) */
-	if (GetTileMaxPixelZ(tile) != z) return false;
+	if (GetTileMaxZ(tile) != z) return false;
 
 	return true;
 }
@@ -2139,7 +2139,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		houses[num++] = (HouseID)i;
 	}
 
-	uint maxz = GetTileMaxPixelZ(tile);
+	uint maxz = GetTileMaxZ(tile);
 	TileIndex baseTile = tile;
 
 	while (probability_max > 0) {
