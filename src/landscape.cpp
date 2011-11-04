@@ -927,7 +927,7 @@ static void CreateDesertOrRainForest()
 static bool FindSpring(TileIndex tile, void *user_data)
 {
 	uint referenceHeight;
-	Slope s = GetTilePixelSlope(tile, &referenceHeight);
+	Slope s = GetTileSlope(tile, &referenceHeight);
 	if (s != SLOPE_FLAT || IsWaterTile(tile)) return false;
 
 	/* In the tropics rivers start in the rainforest. */
@@ -938,7 +938,7 @@ static bool FindSpring(TileIndex tile, void *user_data)
 	for (int dx = -1; dx <= 1; dx++) {
 		for (int dy = -1; dy <= 1; dy++) {
 			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxPixelZ(t) > referenceHeight) num++;
+			if (t != INVALID_TILE && GetTileMaxZ(t) > referenceHeight) num++;
 		}
 	}
 
@@ -948,7 +948,7 @@ static bool FindSpring(TileIndex tile, void *user_data)
 	for (int dx = -16; dx <= 16; dx++) {
 		for (int dy = -16; dy <= 16; dy++) {
 			TileIndex t = TileAddWrap(tile, dx, dy);
-			if (t != INVALID_TILE && GetTileMaxPixelZ(t) > referenceHeight + 2 * TILE_HEIGHT) return false;
+			if (t != INVALID_TILE && GetTileMaxZ(t) > referenceHeight + 2) return false;
 		}
 	}
 
@@ -990,8 +990,8 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 
 	uint heightBegin;
 	uint heightEnd;
-	Slope slopeBegin = GetTilePixelSlope(begin, &heightBegin);
-	Slope slopeEnd   = GetTilePixelSlope(end, &heightEnd);
+	Slope slopeBegin = GetTileSlope(begin, &heightBegin);
+	Slope slopeEnd   = GetTileSlope(end, &heightEnd);
 
 	return heightEnd <= heightBegin &&
 			/* Slope either is inclined or flat; rivers don't support other slopes. */

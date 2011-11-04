@@ -150,7 +150,7 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 
 	/* Autoslope might turn an originally canal or river tile into land */
 	uint z;
-	if (GetTilePixelSlope(tile, &z) != SLOPE_FLAT) wc = WATER_CLASS_INVALID;
+	if (GetTileSlope(tile, &z) != SLOPE_FLAT) wc = WATER_CLASS_INVALID;
 
 	if (wc == WATER_CLASS_SEA && z > 0) wc = WATER_CLASS_CANAL;
 
@@ -860,7 +860,7 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 		default: break;
 
 		case VEH_AIRCRAFT: {
-			if (!IsAirportTile(v->tile) || GetTileMaxPixelZ(v->tile) != 0) break;
+			if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) break;
 			if (v->subtype == AIR_SHADOW) break;
 
 			/* We compare v->z_pos against delta_z + 1 because the shadow
@@ -1080,7 +1080,7 @@ void TileLoop_Water(TileIndex tile)
 				if (IsTileType(dest, MP_WATER)) continue;
 
 				uint z_dest;
-				Slope slope_dest = GetFoundationPixelSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
+				Slope slope_dest = GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 				if (z_dest > 0) continue;
 
 				if (!HasBit(_flood_from_dirs[slope_dest], ReverseDir(dir))) continue;
@@ -1112,7 +1112,7 @@ void ConvertGroundTilesIntoWaterTiles()
 	uint z;
 
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
-		Slope slope = GetTilePixelSlope(tile, &z);
+		Slope slope = GetTileSlope(tile, &z);
 		if (IsTileType(tile, MP_CLEAR) && z == 0) {
 			/* Make both water for tiles at level 0
 			 * and make shore, as that looks much better
