@@ -813,16 +813,16 @@ static void GenerateTerrain(int type, uint flag)
 	if (x + w >= MapMaxX() - 1) return;
 	if (y + h >= MapMaxY() - 1) return;
 
-	Tile *tile = &_m[TileXY(x, y)];
+	TileIndex tile = TileXY(x, y);
 
 	switch (direction) {
 		default: NOT_REACHED();
 		case DIAGDIR_NE:
 			do {
-				Tile *tile_cur = tile;
+				TileIndex tile_cur = tile;
 
 				for (uint w_cur = w; w_cur != 0; --w_cur) {
-					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
+					if (GB(*p, 0, 4) >= TileHeight(tile_cur)) SetTileHeight(tile_cur, GB(*p, 0, 4));
 					p++;
 					tile_cur++;
 				}
@@ -832,10 +832,10 @@ static void GenerateTerrain(int type, uint flag)
 
 		case DIAGDIR_SE:
 			do {
-				Tile *tile_cur = tile;
+				TileIndex tile_cur = tile;
 
 				for (uint h_cur = h; h_cur != 0; --h_cur) {
-					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
+					if (GB(*p, 0, 4) >= TileHeight(tile_cur)) SetTileHeight(tile_cur, GB(*p, 0, 4));
 					p++;
 					tile_cur += TileDiffXY(0, 1);
 				}
@@ -846,10 +846,10 @@ static void GenerateTerrain(int type, uint flag)
 		case DIAGDIR_SW:
 			tile += TileDiffXY(w - 1, 0);
 			do {
-				Tile *tile_cur = tile;
+				TileIndex tile_cur = tile;
 
 				for (uint w_cur = w; w_cur != 0; --w_cur) {
-					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
+					if (GB(*p, 0, 4) >= TileHeight(tile_cur)) SetTileHeight(tile_cur, GB(*p, 0, 4));
 					p++;
 					tile_cur--;
 				}
@@ -860,10 +860,10 @@ static void GenerateTerrain(int type, uint flag)
 		case DIAGDIR_NW:
 			tile += TileDiffXY(0, h - 1);
 			do {
-				Tile *tile_cur = tile;
+				TileIndex tile_cur = tile;
 
 				for (uint h_cur = h; h_cur != 0; --h_cur) {
-					if (GB(*p, 0, 4) >= tile_cur->type_height) tile_cur->type_height = GB(*p, 0, 4);
+					if (GB(*p, 0, 4) >= TileHeight(tile_cur)) SetTileHeight(tile_cur, GB(*p, 0, 4));
 					p++;
 					tile_cur -= TileDiffXY(0, 1);
 				}
