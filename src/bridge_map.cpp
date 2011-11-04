@@ -63,16 +63,16 @@ TileIndex GetOtherBridgeEnd(TileIndex tile)
 }
 
 /**
- * Get the height ('z') of a bridge in pixels.
+ * Get the height ('z') of a bridge.
  * @param tile the bridge ramp tile to get the bridge height from
- * @return the height of the bridge in pixels
+ * @return the height of the bridge.
  */
-uint GetBridgePixelHeight(TileIndex t)
+uint GetBridgeHeight(TileIndex t)
 {
 	uint h;
-	Slope tileh = GetTilePixelSlope(t, &h);
+	Slope tileh = GetTileSlope(t, &h);
 	Foundation f = GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(t)));
 
 	/* one height level extra for the ramp */
-	return h + TILE_HEIGHT + ApplyPixelFoundationToSlope(f, &tileh);
+	return h + 1 + ApplyFoundationToSlope(f, &tileh);
 }

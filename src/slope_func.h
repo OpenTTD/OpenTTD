@@ -159,11 +159,22 @@ static inline Corner GetHalftileSlopeCorner(Slope s)
  * @param s The #Slope.
  * @return Relative height of highest corner.
  */
-static inline uint GetSlopeMaxPixelZ(Slope s)
+static inline uint GetSlopeMaxZ(Slope s)
 {
 	if (s == SLOPE_FLAT) return 0;
-	if (IsSteepSlope(s)) return 2 * TILE_HEIGHT;
-	return TILE_HEIGHT;
+	if (IsSteepSlope(s)) return 2;
+	return 1;
+}
+
+/**
+ * Returns the height of the highest corner of a slope relative to TileZ (= minimal height)
+ *
+ * @param s The #Slope.
+ * @return Relative height of highest corner.
+ */
+static inline uint GetSlopeMaxPixelZ(Slope s)
+{
+	return GetSlopeMaxZ(s) * TILE_HEIGHT;
 }
 
 /**

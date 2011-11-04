@@ -18,13 +18,13 @@
  * @param h    If not \c NULL, pointer to storage of z height
  * @return Slope of the tile, except for the HALFTILE part
  */
-Slope GetTilePixelSlope(TileIndex tile, uint *h)
+Slope GetTileSlope(TileIndex tile, uint *h)
 {
 	assert(tile < MapSize());
 
 	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY() ||
 			(_settings_game.construction.freeform_edges && (TileX(tile) == 0 || TileY(tile) == 0))) {
-		if (h != NULL) *h = TileHeight(tile) * TILE_HEIGHT;
+		if (h != NULL) *h = TileHeight(tile);
 		return SLOPE_FLAT;
 	}
 
@@ -54,7 +54,7 @@ Slope GetTilePixelSlope(TileIndex tile, uint *h)
 	if ((d -= min) != 0) r += (--d << 4) + SLOPE_S;
 	if ((b -= min) != 0) r += (--b << 4) + SLOPE_W;
 
-	if (h != NULL) *h = min * TILE_HEIGHT;
+	if (h != NULL) *h = min;
 
 	return (Slope)r;
 }
@@ -64,7 +64,7 @@ Slope GetTilePixelSlope(TileIndex tile, uint *h)
  * @param tile Tile to compute height of
  * @return Minimum height of the tile
  */
-uint GetTilePixelZ(TileIndex tile)
+uint GetTileZ(TileIndex tile)
 {
 	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
 
@@ -73,7 +73,7 @@ uint GetTilePixelZ(TileIndex tile)
 	h = min(h, TileHeight(tile + TileDiffXY(0, 1))); // E corner
 	h = min(h, TileHeight(tile + TileDiffXY(1, 1))); // S corner
 
-	return h * TILE_HEIGHT;
+	return h;
 }
 
 /**
@@ -81,7 +81,7 @@ uint GetTilePixelZ(TileIndex tile)
  * @param t Tile to compute height of
  * @return Maximum height of the tile
  */
-uint GetTileMaxPixelZ(TileIndex t)
+uint GetTileMaxZ(TileIndex t)
 {
 	if (TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) return 0;
 
@@ -90,5 +90,5 @@ uint GetTileMaxPixelZ(TileIndex t)
 	h = max(h, TileHeight(t + TileDiffXY(0, 1))); // E corner
 	h = max(h, TileHeight(t + TileDiffXY(1, 1))); // S corner
 
-	return h * TILE_HEIGHT;
+	return h;
 }

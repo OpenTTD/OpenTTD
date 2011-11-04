@@ -94,12 +94,12 @@ static SnowLine *_snow_line = NULL;
  * @param s  The #Slope to modify.
  * @return   Increment to the tile Z coordinate.
  */
-uint ApplyPixelFoundationToSlope(Foundation f, Slope *s)
+uint ApplyFoundationToSlope(Foundation f, Slope *s)
 {
 	if (!IsFoundation(f)) return 0;
 
 	if (IsLeveledFoundation(f)) {
-		uint dz = TILE_HEIGHT + (IsSteepSlope(*s) ? TILE_HEIGHT : 0);
+		uint dz = 1 + (IsSteepSlope(*s) ? 1 : 0);
 		*s = SLOPE_FLAT;
 		return dz;
 	}
@@ -114,7 +114,7 @@ uint ApplyPixelFoundationToSlope(Foundation f, Slope *s)
 		return 0;
 	}
 
-	uint dz = IsSteepSlope(*s) ? TILE_HEIGHT : 0;
+	uint dz = IsSteepSlope(*s) ? 1 : 0;
 	Corner highest_corner = GetHighestSlopeCorner(*s);
 
 	switch (f) {
@@ -290,10 +290,10 @@ uint GetSlopePixelZ(int x, int y)
  * @param corner The corner.
  * @return Z position of corner relative to TileZ.
  */
-int GetSlopePixelZInCorner(Slope tileh, Corner corner)
+int GetSlopeZInCorner(Slope tileh, Corner corner)
 {
 	assert(!IsHalftileSlope(tileh));
-	return ((tileh & SlopeWithOneCornerRaised(corner)) != 0 ? TILE_HEIGHT : 0) + (tileh == SteepSlope(corner) ? TILE_HEIGHT : 0);
+	return ((tileh & SlopeWithOneCornerRaised(corner)) != 0 ? 1 : 0) + (tileh == SteepSlope(corner) ? 1 : 0);
 }
 
 /**
@@ -337,11 +337,11 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
  * @param z returns the z of the foundation slope. (Can be NULL, if not needed)
  * @return The slope on top of the foundation.
  */
-Slope GetFoundationPixelSlope(TileIndex tile, uint *z)
+Slope GetFoundationSlope(TileIndex tile, uint *z)
 {
-	Slope tileh = GetTilePixelSlope(tile, z);
+	Slope tileh = GetTileSlope(tile, z);
 	Foundation f = _tile_type_procs[GetTileType(tile)]->get_foundation_proc(tile, tileh);
-	uint z_inc = ApplyPixelFoundationToSlope(f, &tileh);
+	uint z_inc = ApplyFoundationToSlope(f, &tileh);
 	if (z != NULL) *z += z_inc;
 	return tileh;
 }
