@@ -3191,6 +3191,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Modifier
 
 STR_ORDER_REFIT                                                 :{BLACK}Réaménager
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Choisir pour quelle cargaison réaménager avec cet ordre. Ctrl-clic pour retirer l'instruction de réaménagement
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Réaménagement automatique
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Sélectionner pour quel type de cargaison cet ordre va réaménager automatiquement. Ctrl-Clic pour retirer l'instruction de réaménagement. Le réaménagement automatique ne sera fait que si le véhicule l'autorise
+STR_ORDER_DROP_REFIT_AUTO                                       :Cargaison fixée
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargaison disponible
 
 STR_ORDER_SERVICE                                               :{BLACK}Entretien
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Toujours aller
@@ -3279,6 +3283,21 @@ STR_ORDER_NO_UNLOAD                                             :(Ne pas déchar
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne pas décharger et attendre pleine charge)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne pas décharger et attendre pleine charge par un seul type)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne pas décharger et ne pas charger)
+
+STR_ORDER_AUTO_REFIT                                            :(Réaménager automatiquement pour {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Charger complétement avec réaménagement automatique pour {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Charger complétement par un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Décharger et charger avec réaménagement automatique pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Décharger et attendre pleine charge avec réaménagement automatique pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Décharger et attendre pleine charge par un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transférer et charger avec réaménagement automatique pour {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transférer et attendre pleine charge avec réaménagement automatique pour {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transférer et attendre pleine charge par un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Ne pas décharger et charger avec réaménagement automatique pour {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ne pas décharger et attendre pleine charge avec réaménagement automatique pour {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne pas décharger et attendre pleine charge par un seul type avec réaménagement automatique pour {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :cargaison disponible
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[queue]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[milieu]

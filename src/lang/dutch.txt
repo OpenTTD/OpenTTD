@@ -3190,6 +3190,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Verander
 
 STR_ORDER_REFIT                                                 :{BLACK}Ombouwen
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Kies naar welk type vracht ombouwen in deze order. Ctrl+klik om ombouw instructie te verwijderen
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-ombouwen
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Kies vrachttype voor auto-ombouwen naar in deze order. Ctrl+Klik om ombouw opdracht te verwijderen. Auto-ombouwen wordt alleen uitgevoerd als het voertuig dit toelaat
+STR_ORDER_DROP_REFIT_AUTO                                       :Voorgedefinieerde vracht
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beschikbare vracht
 
 STR_ORDER_SERVICE                                               :{BLACK}Onderhoud
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ga altijd
@@ -3278,6 +3282,21 @@ STR_ORDER_NO_UNLOAD                                             :(Niet lossen en
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en volledig laden)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en één soort vracht volledig laden)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Niet lossen en niet laden)
+
+STR_ORDER_AUTO_REFIT                                            :(Auto-ombouw naar {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Volledig laden met auto-ombouw naar {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Volledig willekeurige vracht laden met auto-ombouw naar {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Lossen en neem vracht met auto-ombouw naar {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Lossen en wacht op volledig geladen vracht met auto-ombouw naar {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Lossen en wacht op willekeurig volledig geladen vracht met auto-ombouw naar {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Overdragen en neem vracht met auto-ombouw naar {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Overdragen en wacht op volledig geladen vracht met auto-ombouw naar {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Overdragen en wacht op willekeurige vollediggeladen vracht met auto-ombouw naar {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Niet lossen en neem vracht met auto-ombouw naar {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Niet lossen en wacht op volledig geladen vracht met auto-ombouw naar {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Niet lossen en wacht voor willekeurige volledigladen vracht met auto-ombouw naar {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :beschikbare vracht
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[begin]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]

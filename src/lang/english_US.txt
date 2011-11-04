@@ -3190,6 +3190,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change t
 
 STR_ORDER_REFIT                                                 :{BLACK}Refit
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Select what cargo type to refit to in this order. Ctrl+Click to remove refit instruction
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-refit
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Select what cargo type to auto-refit to in this order. Ctrl+Click to remove refit instruction. Auto-refitting will only be done if the vehicle allows it
+STR_ORDER_DROP_REFIT_AUTO                                       :Fixed cargo
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Available cargo
 
 STR_ORDER_SERVICE                                               :{BLACK}Maintenance
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Always go
@@ -3278,6 +3282,21 @@ STR_ORDER_NO_UNLOAD                                             :(No unloading a
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unloading and wait for full load)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unloading and wait for any full load)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No unloading and no loading)
+
+STR_ORDER_AUTO_REFIT                                            :(Auto-refit to {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Full load with auto-refit to {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Full load any cargo with auto-refit to {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Unload and take cargo with auto-refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Unload and wait for full load with auto-refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Unload and wait for any full load with auto-refit to {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transfer and take cargo with auto-refit to {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfer and wait for full load with auto-refit to {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfer and wait for any full load with auto-refit to {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(No unloading and take cargo with auto-refit to {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No unloading and wait for full load with auto-refit to {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No unloading and wait for any full load with auto-refit to {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :available cargo
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]

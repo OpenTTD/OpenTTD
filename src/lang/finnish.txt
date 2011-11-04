@@ -3190,6 +3190,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Muuta ko
 
 STR_ORDER_REFIT                                                 :{BLACK}Sovita
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Valitse mihin rahtityyppiin tämä käsky sovittaa. Ctrl+Klik poistaa sovituskäskyn
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaattinen sovitus
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Valitse tällä määräyksellä automaattisesti sovitettava rahtityyppi. Ctrl+Klik poistaaksesi sovitusmääräyksen. Automaattinen sovitus suoritetaan vain, jos kulkuneuvo sallii sen.
+STR_ORDER_DROP_REFIT_AUTO                                       :Määrätty rahti
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Saatavilla oleva rahti
 
 STR_ORDER_SERVICE                                               :{BLACK}Huolto
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mene aina
@@ -3278,6 +3282,21 @@ STR_ORDER_NO_UNLOAD                                             :(Ei purkua mutt
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei lastin purkua, mutta odota uuden lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purkua, mutta odota minkä tahansa lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei purkua eikä lastausta)
+
+STR_ORDER_AUTO_REFIT                                            :(Sovita automaattisesti rahdille {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Täysi lasti ja automaattinen sovitus rahdille {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Täysi lasti mitä tahansa rahtia sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Pura ja ota rahti sekä automaattinen sovitus rahdille {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Pura ja odota täyttä lastia sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Pura ja odota mitä tahansa täyttä lastia sekä sovita rahdille {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Siirrä ja ota rahti sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Siirrä ja odota täyttä lastia sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Siirrä ja odota mitä tahansa täyttä lastia sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei purkua ja ota rahti sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei purkua ja odota täyttä lastia sekä sovita automaattisesti rahdille {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei purkua ja odota mitä tahansa täyttä lastia sekä sovita automaattisesti rahdille {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :saatavilla oleva rahti
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[alkupäähän]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]
