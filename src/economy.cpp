@@ -1311,7 +1311,8 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 
 			/* Refit if given a valid cargo. */
 			if (new_cid < NUM_CARGO) {
-				DoCommand(v->tile, v->index, new_cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v)); // Auto-refit and only this vehicle including artic parts.
+				CommandCost cost = DoCommand(v->tile, v->index, new_cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v)); // Auto-refit and only this vehicle including artic parts.
+				if (cost.Succeeded()) front->profit_this_year -= cost.GetCost() << 8;
 				ge = &st->goods[v->cargo_type];
 			}
 
