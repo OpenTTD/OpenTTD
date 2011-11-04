@@ -371,6 +371,7 @@ struct RefitWindow : public Window {
 	int click_x;                 ///< Position of the first click while dragging.
 	VehicleID selected_vehicle;  ///< First vehicle in the current selection.
 	uint8 num_vehicles;          ///< Number of selected vehicles.
+	bool auto_refit;             ///< Select cargo for auto-refitting.
 
 	/**
 	 * Collects all (cargo, subcargo) refit options of a vehicle chain.
@@ -392,6 +393,8 @@ struct RefitWindow : public Window {
 
 			/* Skip this engine if it does not carry anything */
 			if (!e->CanCarryCargo()) continue;
+			/* Skip this engine if we build the list for auto-refitting and engine doesn't allow it. */
+			if (this->auto_refit && !HasBit(e->info.misc_flags, EF_AUTO_REFIT)) continue;
 
 			/* Loop through all cargos in the refit mask */
 			int current_index = 0;
@@ -479,9 +482,10 @@ struct RefitWindow : public Window {
 		return NULL;
 	}
 
-	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window()
+	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order, bool auto_refit) : Window()
 	{
 		this->sel = -1;
+		this->auto_refit = auto_refit;
 		this->CreateNestedTree(desc);
 
 		this->vscroll = this->GetScrollbar(VRW_SCROLLBAR);
@@ -587,7 +591,7 @@ struct RefitWindow : public Window {
 	{
 		assert(_current_company == _local_company);
 		Vehicle *v = Vehicle::Get(this->window_number);
-		CommandCost cost = DoCommand(v->tile, this->selected_vehicle, option->cargo | option->subtype << 8 |
+		CommandCost cost = DoCommand(v->tile, this->selected_vehicle, option->cargo | (int)this->auto_refit << 6 | option->subtype << 8 |
 				this->num_vehicles << 16, DC_QUERY_COST, GetCmdRefitVeh(v->type));
 
 		if (cost.Failed()) return INVALID_STRING_ID;
@@ -910,11 +914,12 @@ static const WindowDesc _vehicle_refit_desc(
  * @param *v The vehicle to show the refit window for
  * @param order of the vehicle ( ? )
  * @param parent the parent window of the refit window
+ * @param auto_refit Choose cargo for auto-refitting
  */
-void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent)
+void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit)
 {
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
-	RefitWindow *w = new RefitWindow(&_vehicle_refit_desc, v, order);
+	RefitWindow *w = new RefitWindow(&_vehicle_refit_desc, v, order, auto_refit);
 	w->parent = parent;
 }
 
