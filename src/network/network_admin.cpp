@@ -226,18 +226,18 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 
 /**
  * Send an initial set of data from some client's information.
- * @param cs The information about a client.
+ * @param cs The socket of the client.
+ * @param ci The information about the client.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientSocket *cs)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientSocket *cs, const NetworkClientInfo *ci)
 {
 	/* Only send data when we're a proper client, not just someone trying to query the server. */
-	const NetworkClientInfo *ci = cs->GetInfo();
 	if (ci == NULL) return NETWORK_RECV_STATUS_OKAY;
 
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_INFO);
 
 	p->Send_uint32(ci->client_id);
-	p->Send_string(const_cast<NetworkAddress &>(cs->client_address).GetHostname());
+	p->Send_string(cs == NULL ? "" : const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (ci->client_lang);
 	p->Send_uint32(ci->join_date);
@@ -658,12 +658,17 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 			/* The admin is requesting client info. */
 			const NetworkClientSocket *cs;
 			if (d1 == UINT32_MAX) {
+				this->SendClientInfo(NULL, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 				FOR_ALL_CLIENT_SOCKETS(cs) {
-					this->SendClientInfo(cs);
+					this->SendClientInfo(cs, cs->GetInfo());
 				}
 			} else {
-				cs = NetworkClientSocket::GetByClientID((ClientID)d1);
-				if (cs != NULL) this->SendClientInfo(cs);
+				if (d1 == CLIENT_ID_SERVER) {
+					this->SendClientInfo(NULL, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
+				} else {
+					cs = NetworkClientSocket::GetByClientID((ClientID)d1);
+					if (cs != NULL) this->SendClientInfo(cs, cs->GetInfo());
+				}
 			}
 			break;
 
@@ -745,7 +750,7 @@ void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client)
 	ServerNetworkAdminSocketHandler *as;
 	FOR_ALL_ACTIVE_ADMIN_SOCKETS(as) {
 		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
-			as->SendClientInfo(cs);
+			as->SendClientInfo(cs, cs->GetInfo());
 			if (new_client) {
 				as->SendClientJoin(cs->client_id);
 			}

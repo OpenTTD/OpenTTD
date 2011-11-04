@@ -51,7 +51,7 @@ public:
 
 	NetworkRecvStatus SendDate();
 	NetworkRecvStatus SendClientJoin(ClientID client_id);
-	NetworkRecvStatus SendClientInfo(const NetworkClientSocket *cs);
+	NetworkRecvStatus SendClientInfo(const NetworkClientSocket *cs, const NetworkClientInfo *ci);
 	NetworkRecvStatus SendClientUpdate(const NetworkClientInfo *ci);
 	NetworkRecvStatus SendClientQuit(ClientID client_id);
 	NetworkRecvStatus SendClientError(ClientID client_id, NetworkErrorCode error);
