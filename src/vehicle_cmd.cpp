@@ -407,10 +407,10 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		/* Update the cached variables */
 		switch (v->type) {
 			case VEH_TRAIN:
-				Train::From(front)->ConsistChanged(false);
+				Train::From(front)->ConsistChanged(auto_refit);
 				break;
 			case VEH_ROAD:
-				RoadVehUpdateCache(RoadVehicle::From(front));
+				RoadVehUpdateCache(RoadVehicle::From(front), auto_refit);
 				if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) RoadVehicle::From(front)->CargoChanged();
 				break;
 

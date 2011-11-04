@@ -52,6 +52,7 @@
 #include "bridge_map.h"
 #include "tunnel_map.h"
 #include "depot_map.h"
+#include "gamelog.h"
 
 #include "table/strings.h"
 
@@ -231,6 +232,22 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	SetDParam(1, engine);
 	GetString(buffer, part2, lastof(buffer));
 	DEBUG(grf, 0, "%s", buffer + 3);
+}
+
+/**
+ * Logs a bug in GRF and shows a warning message if this
+ * is for the first time this happened.
+ * @param u first vehicle of chain
+ */
+void VehicleLengthChanged(const Vehicle *u)
+{
+	/* show a warning once for each engine in whole game and once for each GRF after each game load */
+	const Engine *engine = u->GetEngine();
+	uint32 grfid = engine->grf_prop.grffile->grfid;
+	GRFConfig *grfconfig = GetGRFConfig(grfid);
+	if (GamelogGRFBugReverse(grfid, engine->grf_prop.local_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
+		ShowNewGrfVehicleError(u->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, GBUG_VEH_LENGTH, true);
+	}
 }
 
 /**

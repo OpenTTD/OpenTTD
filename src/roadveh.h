@@ -79,7 +79,7 @@ static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 /** The number of ticks a vehicle has for overtaking. */
 static const byte RV_OVERTAKE_TIMEOUT = 35;
 
-void RoadVehUpdateCache(RoadVehicle *v);
+void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 
 /**
  * Buses, trucks and trams belong to this class.

@@ -84,22 +84,6 @@ byte FreightWagonMult(CargoID cargo)
 	return _settings_game.vehicle.freight_trains;
 }
 
-/**
- * Logs a bug in GRF and shows a warning message if this
- * is for the first time this happened.
- * @param u first vehicle of chain
- */
-static void RailVehicleLengthChanged(const Train *u)
-{
-	/* show a warning once for each engine in whole game and once for each GRF after each game load */
-	const Engine *engine = u->GetEngine();
-	uint32 grfid = engine->grf_prop.grffile->grfid;
-	GRFConfig *grfconfig = GetGRFConfig(grfid);
-	if (GamelogGRFBugReverse(grfid, engine->grf_prop.local_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
-		ShowNewGrfVehicleError(u->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, GBUG_VEH_LENGTH, true);
-	}
-}
-
 /** Checks if lengths of all rail vehicles are valid. If not, shows an error message. */
 void CheckTrainsLengths()
 {
@@ -244,7 +228,7 @@ void Train::ConsistChanged(bool same_length)
 		veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
 
 		/* verify length hasn't changed */
-		if (same_length && veh_len != u->gcache.cached_veh_length) RailVehicleLengthChanged(u);
+		if (same_length && veh_len != u->gcache.cached_veh_length) VehicleLengthChanged(u);
 
 		/* update vehicle length? */
 		if (!same_length) u->gcache.cached_veh_length = veh_len;

@@ -174,9 +174,10 @@ static uint GetRoadVehLength(const RoadVehicle *v)
 /**
  * Update the cache of a road vehicle.
  * @param v Road vehicle needing an update of its cache.
+ * @param same_length should length of vehicles stay the same?
  * @pre \a v must be first road vehicle.
  */
-void RoadVehUpdateCache(RoadVehicle *v)
+void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
 {
 	assert(v->type == VEH_ROAD);
 	assert(v->IsFrontEngine());
@@ -193,7 +194,11 @@ void RoadVehUpdateCache(RoadVehicle *v)
 		u->gcache.first_engine = (v == u) ? INVALID_ENGINE : v->engine_type;
 
 		/* Update the length of the vehicle. */
-		u->gcache.cached_veh_length = GetRoadVehLength(u);
+		uint veh_len = GetRoadVehLength(u);
+		/* Verify length hasn't changed. */
+		if (same_length && veh_len != u->gcache.cached_veh_length) VehicleLengthChanged(u);
+
+		u->gcache.cached_veh_length = veh_len;
 		v->gcache.cached_total_length += u->gcache.cached_veh_length;
 
 		/* Update visual effect */

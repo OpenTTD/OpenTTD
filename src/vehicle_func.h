@@ -41,6 +41,8 @@ bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 
+void VehicleLengthChanged(const Vehicle *u);
+
 byte VehicleRandomBits();
 void ResetVehiclePosHash();
 void ResetVehicleColourMap();
