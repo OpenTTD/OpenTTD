@@ -272,6 +272,9 @@ enum CallbackID {
 
 	/** Called to determine if one can alter the ground below an object tile */
 	CBID_OBJECT_AUTOSLOPE                = 0x15D, // 15 bit callback
+
+	/** Called to determine the cost factor for refitting a vehicle. */
+	CBID_VEHICLE_REFIT_COST              = 0x15E, // 15 bit callback
 };
 
 /**

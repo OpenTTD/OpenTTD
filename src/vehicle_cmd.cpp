@@ -31,6 +31,7 @@
 #include "company_base.h"
 #include "order_backup.h"
 #include "ship.h"
+#include "newgrf.h"
 
 #include "table/strings.h"
 
@@ -206,17 +207,36 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return ret;
 }
 
+/** Helper to run the refit cost callback. */
+static uint GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype)
+{
+	/* Prepare callback param with info about the new cargo type. */
+	const Engine *e = Engine::Get(engine_type);
+	const CargoSpec *cs = CargoSpec::Get(new_cid);
+	uint32 param1 = (cs->classes << 16) | (new_subtype << 8) | e->GetGRF()->cargo_map[new_cid];
+
+	uint16 cb_res = GetVehicleCallback(CBID_VEHICLE_REFIT_COST, param1, 0, engine_type, v);
+	if (cb_res != CALLBACK_FAILED) {
+		return GB(cb_res, 0, 14);
+	}
+
+	return e->info.refit_cost;
+}
+
 /**
  * Learn the price of refitting a certain engine
+ * @param v The vehicle we are refitting, can be NULL.
  * @param engine_type Which engine to refit
+ * @param new_cid Cargo type we are refitting to.
+ * @param new_subtype New cargo subtype.
  * @return Price for refitting
  */
-static CommandCost GetRefitCost(EngineID engine_type)
+static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype)
 {
 	ExpensesType expense_type;
 	const Engine *e = Engine::Get(engine_type);
 	Price base_price;
-	uint cost_factor = e->info.refit_cost;
+	uint cost_factor = GetRefitCostFactor(v, engine_type, new_cid, new_subtype);
 	switch (e->type) {
 		case VEH_SHIP:
 			base_price = PR_BUILD_VEHICLE_SHIP;
@@ -301,7 +321,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		v->cargo_subtype = temp_subtype;
 
 		if (new_cid != v->cargo_type) {
-			cost.AddCost(GetRefitCost(v->engine_type));
+			cost.AddCost(GetRefitCost(v, v->engine_type, new_cid, new_subtype));
 		}
 
 		if (flags & DC_EXEC) {
@@ -793,7 +813,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				CargoID initial_cargo = (e->CanCarryCargo() ? e->GetDefaultCargoType() : (CargoID)CT_INVALID);
 
 				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {
-					total_cost.AddCost(GetRefitCost(v->engine_type));
+					total_cost.AddCost(GetRefitCost(NULL, v->engine_type, v->cargo_type, v->cargo_subtype));
 				}
 			}
 
