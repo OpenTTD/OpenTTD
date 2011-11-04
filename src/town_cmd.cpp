@@ -255,7 +255,7 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 }
 
-static uint GetSlopePixelZ_Town(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_Town(TileIndex tile, uint x, uint y)
 {
 	return GetTileMaxPixelZ(tile);
 }
@@ -3046,7 +3046,7 @@ void TownsYearlyLoop()
 	}
 }
 
-static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {
 		HouseID house = GetHouseType(tile);

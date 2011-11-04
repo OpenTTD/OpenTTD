@@ -1359,7 +1359,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 }
 
 
-static uint GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y)
+static int GetSlopePixelZ_TunnelBridge(TileIndex tile, uint x, uint y)
 {
 	int z;
 	Slope tileh = GetTilePixelSlope(tile, &z);
@@ -1673,7 +1673,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	return VETSB_CONTINUE;
 }
 
-static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile) && GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) {
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
@@ -1685,10 +1685,10 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flag
 		/* Check if new slope is valid for bridges in general (so we can safely call GetBridgeFoundation()) */
 		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {
 			CheckBridgeSlopeSouth(axis, &tileh_old, &z_old);
-			res = CheckBridgeSlopeSouth(axis, &tileh_new, (int*)&z_new);
+			res = CheckBridgeSlopeSouth(axis, &tileh_new, &z_new);
 		} else {
 			CheckBridgeSlopeNorth(axis, &tileh_old, &z_old);
-			res = CheckBridgeSlopeNorth(axis, &tileh_new, (int*)&z_new);
+			res = CheckBridgeSlopeNorth(axis, &tileh_new, &z_new);
 		}
 
 		/* Surface slope is valid and remains unchanged? */
