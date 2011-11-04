@@ -1080,9 +1080,9 @@ void DrawTramCatenary(const TileInfo *ti, RoadBits tram)
 
 	/* Don't draw the catenary under a low bridge */
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_CATENARY)) {
-		uint height = GetBridgePixelHeight(GetNorthernBridgeEnd(ti->tile));
+		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
-		if (height <= GetTileMaxPixelZ(ti->tile) + TILE_HEIGHT) return;
+		if (height <= GetTileMaxZ(ti->tile) + 1) return;
 	}
 
 	SpriteID front;
@@ -1187,10 +1187,10 @@ static void DrawRoadBits(TileInfo *ti)
 
 	/* Do not draw details (street lights, trees) under low bridge */
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && (roadside == ROADSIDE_TREES || roadside == ROADSIDE_STREET_LIGHTS)) {
-		uint height = GetBridgePixelHeight(GetNorthernBridgeEnd(ti->tile));
-		uint minz = GetTileMaxPixelZ(ti->tile) + 2 * TILE_HEIGHT;
+		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
+		uint minz = GetTileMaxZ(ti->tile) + 2;
 
-		if (roadside == ROADSIDE_TREES) minz += TILE_HEIGHT;
+		if (roadside == ROADSIDE_TREES) minz++;
 
 		if (height < minz) return;
 	}

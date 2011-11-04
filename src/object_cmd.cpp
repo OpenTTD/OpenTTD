@@ -267,7 +267,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	TILE_AREA_LOOP(t, ta) {
 		if (MayHaveBridgeAbove(t) && IsBridgeAbove(t) && (
 				!(spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) ||
-				(GetTileMaxPixelZ(t) + spec->height * TILE_HEIGHT >= GetBridgePixelHeight(GetSouthernBridgeEnd(t))))) {
+				(GetTileMaxZ(t) + spec->height >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
 			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 	}

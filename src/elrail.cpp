@@ -401,9 +401,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
 			Track bridgetrack = GetBridgeAxis(ti->tile) == AXIS_X ? TRACK_X : TRACK_Y;
-			uint height = GetBridgePixelHeight(GetNorthernBridgeEnd(ti->tile));
+			uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
-			if ((height <= GetTileMaxPixelZ(ti->tile) + TILE_HEIGHT) &&
+			if ((height <= GetTileMaxZ(ti->tile) + 1) &&
 					(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) {
 				SetBit(OverridePCP, i);
 			}
@@ -438,9 +438,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	/* Don't draw a wire under a low bridge */
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_CATENARY)) {
-		uint height = GetBridgePixelHeight(GetNorthernBridgeEnd(ti->tile));
+		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
-		if (height <= GetTileMaxPixelZ(ti->tile) + TILE_HEIGHT) return;
+		if (height <= GetTileMaxZ(ti->tile) + 1) return;
 	}
 
 	SpriteID wire_normal = GetWireBase(ti->tile);
