@@ -254,7 +254,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
-			Slope tileh = GetTilePixelSlope(tile, NULL);
+			Slope tileh = GetTileSlope(tile);
 
 			/* Steep slopes behave the same as slopes with one corner raised. */
 			if (IsSteepSlope(tileh)) {
@@ -467,7 +467,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	DisallowedRoadDirections toggle_drd = Extract<DisallowedRoadDirections, 6, 2>(p1);
 
-	Slope tileh = GetTilePixelSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile);
 
 	bool need_to_clear = false;
 	switch (GetTileType(tile)) {
@@ -636,7 +636,7 @@ do_clear:;
 
 			/* Check if new road bits will have the same foundation as other existing road types */
 			if (IsNormalRoad(tile)) {
-				Slope slope = GetTilePixelSlope(tile, NULL);
+				Slope slope = GetTileSlope(tile);
 				Foundation found_new = GetRoadFoundation(slope, pieces | existing);
 
 				/* Test if all other roadtypes can be built at that foundation */
@@ -909,7 +909,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
-	Slope tileh = GetTilePixelSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile);
 	if (tileh != SLOPE_FLAT && (
 				!_settings_game.construction.build_on_slopes ||
 				!CanBuildDepotByTileh(dir, tileh)

@@ -70,7 +70,7 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:
-			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTilePixelSlope(tile, NULL));
+			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
 		case MP_CLEAR:
 			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && GetRawClearGround(tile) != CLEAR_ROCKS &&
@@ -363,7 +363,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				break;
 
 			case MP_WATER:
-				if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTilePixelSlope(tile, NULL))) {
+				if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {
 					msg = STR_ERROR_CAN_T_BUILD_ON_WATER;
 					continue;
 				}

@@ -317,9 +317,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		byte elevation = GetPCPElevation(ti->tile, i);
 
-		/* Here's one of the main headaches. GetTilePixelSlope does not correct for possibly
+		/* Here's one of the main headaches. GetTileSlope does not correct for possibly
 		 * existing foundataions, so we do have to do that manually later on.*/
-		tileh[TS_NEIGHBOUR] = GetTilePixelSlope(neighbour, NULL);
+		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour);
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
 		wireconfig[TS_NEIGHBOUR] = MaskWireBits(neighbour, trackconfig[TS_NEIGHBOUR]);
 		if (IsTunnelTile(neighbour) && i != GetTunnelBridgeDirection(neighbour)) wireconfig[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;

@@ -106,7 +106,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
 		(MayHaveBridgeAbove(tile2) && IsBridgeAbove(tile2))) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (GetTilePixelSlope(tile, NULL) != SLOPE_FLAT || GetTilePixelSlope(tile2, NULL) != SLOPE_FLAT) {
+	if (GetTileSlope(tile) != SLOPE_FLAT || GetTileSlope(tile2) != SLOPE_FLAT) {
 		/* Prevent depots on rapids */
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
@@ -220,7 +220,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
 	}
-	if (GetTilePixelSlope(tile - delta, NULL) != SLOPE_FLAT) {
+	if (GetTileSlope(tile - delta) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -233,7 +233,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		cost.AddCost(ret);
 		cost.AddCost(_price[PR_BUILD_CANAL]);
 	}
-	if (GetTilePixelSlope(tile + delta, NULL) != SLOPE_FLAT) {
+	if (GetTileSlope(tile + delta) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -299,7 +299,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
  */
 CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	DiagDirection dir = GetInclinedSlopeDirection(GetTilePixelSlope(tile, NULL));
+	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	/* Disallow building of locks on river rapids */
@@ -341,7 +341,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	TILE_AREA_LOOP(tile, ta) {
 		CommandCost ret;
 
-		Slope slope = GetTilePixelSlope(tile, NULL);
+		Slope slope = GetTileSlope(tile);
 		if (slope != SLOPE_FLAT && (wc != WATER_CLASS_RIVER || !IsInclinedSlope(slope))) {
 			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 		}
@@ -419,7 +419,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 		}
 
 		case WATER_TILE_COAST: {
-			Slope slope = GetTilePixelSlope(tile, NULL);
+			Slope slope = GetTileSlope(tile);
 
 			/* Make sure no vehicle is on the tile */
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -477,7 +477,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 				case WATER_TILE_LOCK: return DiagDirToAxis(GetLockDirection(tile)) == DiagDirToAxis(DirToDiagDir(from));
 
 				case WATER_TILE_COAST:
-					switch (GetTilePixelSlope(tile, NULL)) {
+					switch (GetTileSlope(tile)) {
 						case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
 						case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
 						case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
@@ -489,7 +489,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 		case MP_RAILWAY:
 			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
 				assert(IsPlainRail(tile));
-				switch (GetTilePixelSlope(tile, NULL)) {
+				switch (GetTileSlope(tile)) {
 					case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
 					case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
 					case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
@@ -509,7 +509,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 
 				return IsTileOnWater(tile);
 			}
-			return (IsDock(tile) && GetTilePixelSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
+			return (IsDock(tile) && GetTileSlope(tile) == SLOPE_FLAT) || IsBuoy(tile);
 
 		case MP_INDUSTRY: {
 			/* Do not draw waterborders inside of industries.
@@ -931,7 +931,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_WATER:
 			if (IsCoast(tile)) {
-				Slope tileh = GetTilePixelSlope(tile, NULL);
+				Slope tileh = GetTileSlope(tile);
 				return (IsSlopeWithOneCornerRaised(tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			}
 			/* FALL THROUGH */
@@ -942,7 +942,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 
 		case MP_RAILWAY:
 			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
-				return (IsSlopeWithOneCornerRaised(GetTilePixelSlope(tile, NULL)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
+				return (IsSlopeWithOneCornerRaised(GetTileSlope(tile)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			}
 			return FLOOD_NONE;
 
@@ -965,7 +965,7 @@ void DoFloodTile(TileIndex target)
 
 	Backup<CompanyByte> cur_company(_current_company, OWNER_WATER, FILE_LINE);
 
-	Slope tileh = GetTilePixelSlope(target, NULL);
+	Slope tileh = GetTileSlope(target);
 	if (tileh != SLOPE_FLAT) {
 		/* make coast.. */
 		switch (GetTileType(target)) {
@@ -1133,7 +1133,7 @@ void ConvertGroundTilesIntoWaterTiles()
 					uint dir;
 					FOR_EACH_SET_BIT(dir, _flood_from_dirs[slope & ~SLOPE_STEEP]) {
 						TileIndex dest = TILE_ADD(tile, TileOffsByDir((Direction)dir));
-						Slope slope_dest = GetTilePixelSlope(dest, NULL) & ~SLOPE_STEEP;
+						Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest)) {
 							MakeShore(tile);
 							break;
@@ -1154,8 +1154,8 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 	if (mode != TRANSPORT_WATER) return 0;
 
 	switch (GetWaterTileType(tile)) {
-		case WATER_TILE_CLEAR: ts = (GetTilePixelSlope(tile, NULL) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
-		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTilePixelSlope(tile, NULL) & 0xF]; break;
+		case WATER_TILE_CLEAR: ts = (GetTileSlope(tile) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
+		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile) & 0xF]; break;
 		case WATER_TILE_LOCK:  ts = DiagDirToDiagTrackBits(GetLockDirection(tile)); break;
 		case WATER_TILE_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
 		default: return 0;

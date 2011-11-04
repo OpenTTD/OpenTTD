@@ -124,7 +124,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Failed()) return ret;
 
-	Slope tileh = GetTilePixelSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile);
 	if (tileh != SLOPE_FLAT &&
 			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
 		return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
@@ -285,7 +285,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (tile == 0 || !HasTileWaterGround(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (GetTilePixelSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+	if (GetTileSlope(tile) != SLOPE_FLAT) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
 	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY, OWNER_NONE);

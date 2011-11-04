@@ -27,13 +27,13 @@ struct CYapfCostBase {
 				/* it is bridge ramp, check if we are entering the bridge */
 				if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(td)) return false; // no, we are leaving it, no penalty
 				/* we are entering the bridge */
-				Slope tile_slope = GetTilePixelSlope(tile, NULL);
+				Slope tile_slope = GetTileSlope(tile);
 				Axis axis = DiagDirToAxis(GetTunnelBridgeDirection(tile));
 				return !HasBridgeFlatRamp(tile_slope, axis);
 			} else {
 				/* not bridge ramp */
 				if (IsTunnelTile(tile)) return false; // tunnel entry/exit doesn't slope
-				Slope tile_slope = GetTilePixelSlope(tile, NULL);
+				Slope tile_slope = GetTileSlope(tile);
 				return IsUphillTrackdir(tile_slope, td); // slopes uphill => apply penalty
 			}
 		}

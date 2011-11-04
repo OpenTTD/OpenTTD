@@ -295,7 +295,7 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 
 	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, creation_type << 8 | itspec_index, gfx, &ind, ind_tile);
 	if (callback_res == CALLBACK_FAILED) {
-		if (!IsSlopeRefused(GetTilePixelSlope(ind_tile, NULL), its->slopes_refused)) return CommandCost();
+		if (!IsSlopeRefused(GetTileSlope(ind_tile), its->slopes_refused)) return CommandCost();
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 	if (its->grf_prop.grffile->grf_version < 7) {

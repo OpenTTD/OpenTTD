@@ -381,7 +381,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 
-	Slope tileh = GetTilePixelSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile);
 	TrackBits trackbit = TrackToTrackBits(track);
 
 	switch (GetTileType(tile)) {
@@ -590,7 +590,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				owner = GetTileOwner(tile);
 				present ^= trackbit;
 				if (present == 0) {
-					Slope tileh = GetTilePixelSlope(tile, NULL);
+					Slope tileh = GetTileSlope(tile);
 					/* If there is flat water on the lower halftile, convert the tile to shore so the water remains */
 					if (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh)) {
 						MakeShore(tile);
@@ -649,7 +649,7 @@ bool FloodHalftile(TileIndex t)
 	bool flooded = false;
 	if (GetRailGroundType(t) == RAIL_GROUND_WATER) return flooded;
 
-	Slope tileh = GetTilePixelSlope(t, NULL);
+	Slope tileh = GetTileSlope(t);
 	TrackBits rail_bits = GetTrackBits(t);
 
 	if (IsSlopeWithOneCornerRaised(tileh)) {
@@ -861,7 +861,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	RailType railtype = Extract<RailType, 0, 4>(p1);
 	if (!ValParamRailtype(railtype)) return CMD_ERROR;
 
-	Slope tileh = GetTilePixelSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile);
 
 	DiagDirection dir = Extract<DiagDirection, 0, 2>(p2);
 
@@ -1637,7 +1637,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_SIGNALS:
 		case RAIL_TILE_NORMAL: {
-			Slope tileh = GetTilePixelSlope(tile, NULL);
+			Slope tileh = GetTileSlope(tile);
 			/* Is there flat water on the lower halftile that gets cleared expensively? */
 			bool water_ground = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh));
 

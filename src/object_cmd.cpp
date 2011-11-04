@@ -236,7 +236,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			uint16 callback = CALLBACK_FAILED;
 			if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
 				TileIndex diff = t - tile;
-				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTilePixelSlope(t, NULL), TileY(diff) << 4 | TileX(diff), spec, NULL, t, view);
+				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, NULL, t, view);
 			}
 
 			if (callback == CALLBACK_FAILED) {
@@ -276,7 +276,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	switch (type) {
 		case OBJECT_TRANSMITTER:
 		case OBJECT_LIGHTHOUSE:
-			if (GetTilePixelSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+			if (GetTileSlope(tile) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 			break;
 
 		case OBJECT_OWNED_LAND:
@@ -731,7 +731,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uin
 		 *  - Allow autoslope by default.
 		 *  - Disallow autoslope if callback succeeds and returns non-zero.
 		 */
-		Slope tileh_old = GetTilePixelSlope(tile, NULL);
+		Slope tileh_old = GetTileSlope(tile);
 		/* TileMaxZ must not be changed. Slopes must not be steep. */
 		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new))) {
 			const ObjectSpec *spec = ObjectSpec::Get(type);

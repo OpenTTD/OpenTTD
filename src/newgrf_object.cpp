@@ -289,7 +289,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 		}
 
 		/* Tile information. */
-		case 0x41: return GetTilePixelSlope(tile, NULL) << 8 | GetTerrainType(tile);
+		case 0x41: return GetTileSlope(tile) << 8 | GetTerrainType(tile);
 
 		/* Construction date */
 		case 0x42: return o->build_date;

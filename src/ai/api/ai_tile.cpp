@@ -142,7 +142,7 @@
 {
 	if (!::IsValidTile(tile)) return SLOPE_INVALID;
 
-	return (Slope)::GetTilePixelSlope(tile, NULL);
+	return (Slope)::GetTileSlope(tile);
 }
 
 /* static */ AITile::Slope AITile::GetComplementSlope(Slope slope)

@@ -1359,7 +1359,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 
 		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
-					GetTilePixelSlope(cur_tile, NULL) != SLOPE_FLAT) {
+					GetTileSlope(cur_tile) != SLOPE_FLAT) {
 				return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 			}
 		} else {
@@ -1379,7 +1379,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				CommandCost ret = PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index, initial_random_bits, founder, creation_type);
 				if (ret.Failed()) return ret;
 			} else {
-				Slope tileh = GetTilePixelSlope(cur_tile, NULL);
+				Slope tileh = GetTileSlope(cur_tile);
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 			}
 
@@ -2724,7 +2724,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, u
 		 *  - Allow autoslope by default.
 		 *  - Disallow autoslope if callback succeeds and returns non-zero.
 		 */
-		Slope tileh_old = GetTilePixelSlope(tile, NULL);
+		Slope tileh_old = GetTileSlope(tile);
 		/* TileMaxZ must not be changed. Slopes must not be steep. */
 		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new))) {
 			const IndustryGfx gfx = GetIndustryGfx(tile);

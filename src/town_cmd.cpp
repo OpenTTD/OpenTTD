@@ -787,7 +787,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		}
 	}
 
-	Slope cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationPixelSlope(tile, NULL) : GetTilePixelSlope(tile, NULL);
+	Slope cur_slope = _settings_game.construction.build_on_slopes ? GetFoundationPixelSlope(tile, NULL) : GetTileSlope(tile);
 	bool ret = !IsNeighborRoadTile(tile, dir, t->layout == TL_ORIGINAL ? 1 : 2);
 	if (cur_slope == SLOPE_FLAT) return ret;
 
@@ -828,7 +828,7 @@ static void LevelTownLand(TileIndex tile)
 
 	/* Don't terraform if land is plain or if there's a house there. */
 	if (IsTileType(tile, MP_HOUSE)) return;
-	Slope tileh = GetTilePixelSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile);
 	if (tileh == SLOPE_FLAT) return;
 
 	/* First try up, then down */
@@ -871,7 +871,7 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 
 	RoadBits rb_template;
 
-	switch (GetTilePixelSlope(tile, NULL)) {
+	switch (GetTileSlope(tile)) {
 		default:       rb_template = ROAD_ALL; break;
 		case SLOPE_W:  rb_template = ROAD_NW | ROAD_SW; break;
 		case SLOPE_SW: rb_template = ROAD_Y  | ROAD_SW; break;
@@ -970,7 +970,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 {
 	assert(bridge_dir < DIAGDIR_END);
 
-	const Slope slope = GetTilePixelSlope(tile, NULL);
+	const Slope slope = GetTileSlope(tile);
 
 	/* Make sure the direction is compatible with the slope.
 	 * Well we check if the slope has an up bit set in the
@@ -1337,7 +1337,7 @@ static bool GrowTown(Town *t)
 		tile = t->xy;
 		for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 			/* Only work with plain land that not already has a house */
-			if (!IsTileType(tile, MP_HOUSE) && GetTilePixelSlope(tile, NULL) == SLOPE_FLAT) {
+			if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile) == SLOPE_FLAT) {
 				if (DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR).Succeeded()) {
 					DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 					cur_company.Restore();
@@ -1500,7 +1500,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 	}
 
 	/* Can only build on clear flat areas, possibly with trees. */
-	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTilePixelSlope(tile, NULL) != SLOPE_FLAT) {
+	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -1697,7 +1697,7 @@ static bool FindFurthestFromWater(TileIndex tile, void *user_data)
 	uint dist = GetClosestWaterDistance(tile, true);
 
 	if (IsTileType(tile, MP_CLEAR) &&
-			GetTilePixelSlope(tile, NULL) == SLOPE_FLAT &&
+			GetTileSlope(tile) == SLOPE_FLAT &&
 			IsTileAlignedToGrid(tile, sp->layout) &&
 			dist > sp->max_dist) {
 		sp->tile = tile;
@@ -1907,7 +1907,7 @@ static void MakeTownHouse(TileIndex t, Town *town, byte counter, byte stage, Hou
 static inline bool CanBuildHouseHere(TileIndex tile, TownID town, bool noslope)
 {
 	/* cannot build on these slopes... */
-	Slope slope = GetTilePixelSlope(tile, NULL);
+	Slope slope = GetTileSlope(tile);
 	if ((noslope && slope != SLOPE_FLAT) || IsSteepSlope(slope)) return false;
 
 	/* building under a bridge? */
@@ -2525,7 +2525,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 static bool SearchTileForStatue(TileIndex tile, void *user_data)
 {
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
-	if (IsSteepSlope(GetTilePixelSlope(tile, NULL))) return false;
+	if (IsSteepSlope(GetTileSlope(tile))) return false;
 	/* Don't build statues under bridges. */
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 
