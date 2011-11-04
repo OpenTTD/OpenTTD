@@ -408,7 +408,7 @@ bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 }
 
 /**
- * Callback that returns 'real' vehicles lower or at height \c *(byte*)data .
+ * Callback that returns 'real' vehicles lower or at height \c *(int*)data .
  * @param v Vehicle to examine.
  * @param data Pointer to height data.
  * @return \a v if conditions are met, else \c NULL.

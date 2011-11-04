@@ -599,7 +599,7 @@ void OffsetGroundSprite(int x, int y)
  * @param z position z of the sprite.
  * @param sub Only draw a part of the sprite.
  */
-static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, byte z, const SubSprite *sub)
+static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, int z, const SubSprite *sub)
 {
 	Point pt = RemapCoords(x, y, z);
 	const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
@@ -984,7 +984,7 @@ draw_inner:
 			if (!is_redsq) DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
 		} else if (_thd.drawstyle & HT_POINT) {
 			/* Figure out the Z coordinate for the single dot. */
-			byte z = 0;
+			int z = 0;
 			FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
 			if (ti->tileh & SLOPE_N) {
 				z += TILE_HEIGHT;

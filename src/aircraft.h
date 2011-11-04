@@ -34,7 +34,7 @@ void UpdateAircraftCache(Aircraft *v);
 void AircraftLeaveHangar(Aircraft *v, Direction exit_dir);
 void AircraftNextAirportPos_and_Order(Aircraft *v);
 void SetAircraftPosition(Aircraft *v, int x, int y, int z);
-byte GetAircraftFlyingAltitude(const Aircraft *v);
+int GetAircraftFlyingAltitude(const Aircraft *v);
 
 /**
  * Aircraft, helicopters, rotors and their shadows belong to this class.

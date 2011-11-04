@@ -630,14 +630,14 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
  * @param v The vehicle. Should be an aircraft
  * @returns Altitude in pixel units
  */
-byte GetAircraftFlyingAltitude(const Aircraft *v)
+int GetAircraftFlyingAltitude(const Aircraft *v)
 {
 	if (v->subtype == AIR_HELICOPTER) return HELI_FLIGHT_ALTITUDE;
 
 	/* Make sure Aircraft fly no lower so that they don't conduct
 	 * CFITs (controlled flight into terrain)
 	 */
-	byte base_altitude = PLANE_HOLDING_ALTITUDE;
+	int base_altitude = PLANE_HOLDING_ALTITUDE;
 
 	/* Make sure eastbound and westbound planes do not "crash" into each
 	 * other by providing them with vertical seperation
@@ -776,7 +776,7 @@ static bool AircraftController(Aircraft *v)
 			count = UpdateAircraftSpeed(v);
 			if (count > 0) {
 				v->tile = 0;
-				byte z_dest = GetAircraftFlyingAltitude(v);
+				int z_dest = GetAircraftFlyingAltitude(v);
 
 				/* Reached altitude? */
 				if (v->z_pos >= z_dest) {

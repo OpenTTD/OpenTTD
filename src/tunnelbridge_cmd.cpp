@@ -794,7 +794,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		/* read this value before actual removal of bridge */
 		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
 		Owner owner = GetTileOwner(tile);
-		uint height = GetBridgeHeight(tile);
+		int height = GetBridgeHeight(tile);
 		Train *v = NULL;
 
 		if (rail && HasTunnelBridgeReservation(tile)) {
@@ -807,7 +807,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
 			/* do not let trees appear from 'nowhere' after removing bridge */
 			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
-				uint minz = GetTileMaxZ(c) + 3;
+				int minz = GetTileMaxZ(c) + 3;
 				if (height < minz) SetRoadside(c, ROADSIDE_PAVED);
 			}
 			ClearBridgeMiddle(c);
@@ -950,7 +950,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
  * @param overlay do we want to still see the road?
  * @param head    are we drawing bridge head?
  */
-static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay, bool head)
+static void DrawBridgeTramBits(int x, int y, int z, int offset, bool overlay, bool head)
 {
 	static const SpriteID tram_offsets[2][6] = { { 107, 108, 109, 110, 111, 112 }, { 4, 5, 15, 16, 17, 18 } };
 	static const SpriteID back_offsets[6]    =   {  95,  96,  99, 102, 100, 101 };
