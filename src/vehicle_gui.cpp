@@ -213,9 +213,10 @@ static const uint MAX_REFIT_CYCLE = 256;
  * Assuming they are going to carry the same cargo ofcourse!
  * @param v_from the vehicle to match the subtype from
  * @param v_for  the vehicle to get the subtype for
+ * @param dest_cargo_type Destination cargo type, taken from #v_from if set to #INVALID_CARGO.
  * @return the best sub type
  */
-byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
+byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type)
 {
 	const Engine *e_from = v_from->GetEngine();
 	const Engine *e_for  = v_for->GetEngine();
@@ -229,8 +230,10 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
 		return 0;
 	}
 
+	if (dest_cargo_type == INVALID_CARGO) dest_cargo_type = v_from->cargo_type;
+
 	/* It has to be possible for v_for to carry the cargo of v_from. */
-	if (!HasBit(e_for->info.refit_mask, v_from->cargo_type)) return 0;
+	if (!HasBit(e_for->info.refit_mask, dest_cargo_type)) return 0;
 
 	StringID expected_string = GetCargoSubtypeText(v_from);
 
@@ -239,7 +242,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for)
 	byte ret_refit_cyc = 0;
 
 	/* Set the 'destination' cargo */
-	v_for->cargo_type = v_from->cargo_type;
+	v_for->cargo_type = dest_cargo_type;
 
 	/* Cycle through the refits */
 	for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {

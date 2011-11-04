@@ -21,6 +21,7 @@
 #include "newgrf_config.h"
 #include "track_type.h"
 #include "livery.h"
+#include "cargotype.h"
 
 #define is_custom_sprite(x) (x >= 0xFD)
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
@@ -44,7 +45,7 @@ byte VehicleRandomBits();
 void ResetVehiclePosHash();
 void ResetVehicleColourMap();
 
-byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for);
+byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type = INVALID_CARGO);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
