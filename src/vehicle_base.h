@@ -183,7 +183,7 @@ public:
 
 	int32 x_pos;                        ///< x coordinate.
 	int32 y_pos;                        ///< y coordinate.
-	byte z_pos;                         ///< z coordinate.
+	int32 z_pos;                        ///< z coordinate.
 	DirectionByte direction;            ///< facing
 
 	OwnerByte owner;                    ///< Which company owns the vehicle?

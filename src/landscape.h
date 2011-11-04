@@ -39,7 +39,7 @@ int GetSlopeZInCorner(Slope tileh, Corner corner);
 Slope GetFoundationSlope(TileIndex tile, uint *z = NULL);
 
 uint GetPartialPixelZ(int x, int y, Slope corners);
-uint GetSlopePixelZ(int x, int y);
+int GetSlopePixelZ(int x, int y);
 void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
 
 /**

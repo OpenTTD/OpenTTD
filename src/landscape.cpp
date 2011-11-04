@@ -274,7 +274,7 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 	return z;
 }
 
-uint GetSlopePixelZ(int x, int y)
+int GetSlopePixelZ(int x, int y)
 {
 	TileIndex tile = TileVirtXY(x, y);
 

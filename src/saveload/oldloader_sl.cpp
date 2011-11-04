@@ -1152,7 +1152,7 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Vehicle, x_pos ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Vehicle, y_pos ),
-	OCL_SVAR(  OC_UINT8, Vehicle, z_pos ),
+	OCL_SVAR( OC_FILE_U8  | OC_VAR_I32, Vehicle, z_pos ),
 	OCL_SVAR(  OC_UINT8, Vehicle, direction ),
 	OCL_NULL( 2 ),         ///< x_offs and y_offs, calculated automatically
 	OCL_NULL( 2 ),         ///< x_extent and y_extent, calculated automatically

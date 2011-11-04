@@ -16,14 +16,15 @@
 
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
-  SLE_CONDVAR(Sign, name,  SLE_NAME,                   0, 83),
-  SLE_CONDSTR(Sign, name,  SLE_STR, 0,                84, SL_MAX_VERSION),
-  SLE_CONDVAR(Sign, x,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
-  SLE_CONDVAR(Sign, y,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
-  SLE_CONDVAR(Sign, x,     SLE_INT32,                  5, SL_MAX_VERSION),
-  SLE_CONDVAR(Sign, y,     SLE_INT32,                  5, SL_MAX_VERSION),
-  SLE_CONDVAR(Sign, owner, SLE_UINT8,                  6, SL_MAX_VERSION),
-      SLE_VAR(Sign, z,     SLE_UINT8),
+	SLE_CONDVAR(Sign, name,  SLE_NAME,                   0, 83),
+	SLE_CONDSTR(Sign, name,  SLE_STR, 0,                84, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, x,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
+	SLE_CONDVAR(Sign, y,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
+	SLE_CONDVAR(Sign, x,     SLE_INT32,                  5, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, y,     SLE_INT32,                  5, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, owner, SLE_UINT8,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, z,     SLE_FILE_U8  | SLE_VAR_I32, 0, 164),
+	SLE_CONDVAR(Sign, z,     SLE_INT32,                164, SL_MAX_VERSION),
 	SLE_END()
 };
 

@@ -993,7 +993,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 
 	/* make aircraft crash down to the ground */
 	if (v->crashed_counter < 500 && st == NULL && ((v->crashed_counter % 3) == 0) ) {
-		uint z = GetSlopePixelZ(v->x_pos, v->y_pos);
+		int z = GetSlopePixelZ(v->x_pos, v->y_pos);
 		v->z_pos -= 1;
 		if (v->z_pos == z) {
 			v->crashed_counter = 500;
