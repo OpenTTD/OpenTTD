@@ -621,16 +621,15 @@ static void TileLoopTreesAlps(TileIndex tile)
 static void TileLoop_Trees(TileIndex tile)
 {
 	if (GetTreeGround(tile) == TREE_GROUND_SHORE) {
-		TileLoop_Water(tile); // Calls AmbientSoundEffectCallback
+		TileLoop_Water(tile);
 	} else {
 		switch (_settings_game.game_creation.landscape) {
 			case LT_TROPIC: TileLoopTreesDesert(tile); break;
 			case LT_ARCTIC: TileLoopTreesAlps(tile);   break;
 		}
-
-		AmbientSoundEffectCallback(tile);
 	}
 
+	AmbientSoundEffectCallback(tile);
 	TileLoopClearHelper(tile);
 
 	uint treeCounter = GetTreeCounter(tile);

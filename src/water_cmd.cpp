@@ -1071,7 +1071,7 @@ static void DoDryUp(TileIndex tile)
  */
 void TileLoop_Water(TileIndex tile)
 {
-	AmbientSoundEffectCallback(tile);
+	if (IsTileType(tile, MP_WATER)) AmbientSoundEffectCallback(tile);
 
 	switch (GetFloodingBehaviour(tile)) {
 		case FLOOD_ACTIVE:
