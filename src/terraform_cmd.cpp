@@ -316,7 +316,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 				}
 				/* Check if tunnel would take damage */
-				if (direction == -1 && IsTunnelInWay(tile, z_min * TILE_HEIGHT)) {
+				if (direction == -1 && IsTunnelInWay(tile, z_min)) {
 					_terraform_err_tile = tile; // highlight the tile above the tunnel
 					return_cmd_error(STR_ERROR_EXCAVATION_WOULD_DAMAGE);
 				}

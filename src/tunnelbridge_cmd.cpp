@@ -113,7 +113,7 @@ Foundation GetBridgeFoundation(Slope tileh, Axis axis)
  */
 bool HasBridgeFlatRamp(Slope tileh, Axis axis)
 {
-	ApplyPixelFoundationToSlope(GetBridgeFoundation(tileh, axis), &tileh);
+	ApplyFoundationToSlope(GetBridgeFoundation(tileh, axis), &tileh);
 	/* If the foundation slope is flat the bridge has a non-flat ramp and vice versa. */
 	return (tileh != SLOPE_FLAT);
 }
@@ -527,7 +527,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	uint start_z;
 	uint end_z;
-	Slope start_tileh = GetTilePixelSlope(start_tile, &start_z);
+	Slope start_tileh = GetTileSlope(start_tile, &start_z);
 	DiagDirection direction = GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
 
@@ -563,7 +563,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	for (;;) {
 		end_tile += delta;
 		if (!IsValidTile(end_tile)) return_cmd_error(STR_ERROR_TUNNEL_THROUGH_MAP_BORDER);
-		end_tileh = GetTilePixelSlope(end_tile, &end_z);
+		end_tileh = GetTileSlope(end_tile, &end_z);
 
 		if (start_z == end_z) break;
 
