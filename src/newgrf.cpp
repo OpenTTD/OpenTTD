@@ -2411,6 +2411,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 					for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
 						for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
 							table[i][j] = buf->ReadByte();
+							if (table[i][j] != 0xFF) table[i][j] /= TILE_HEIGHT;
 						}
 					}
 					SetSnowLine(table);
@@ -5512,7 +5513,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		/* case 0x1F: // locale dependent settings not implemented to avoid desync */
 
 		case 0x20: // snow line height
-			*value = _settings_game.game_creation.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
+			*value = _settings_game.game_creation.landscape == LT_ARCTIC ? GetSnowLine() * TILE_HEIGHT : 0xFF;
 			return true;
 
 		case 0x21: // OpenTTD version

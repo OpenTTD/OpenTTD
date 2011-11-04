@@ -2367,7 +2367,7 @@ static void TileLoop_Track(TileIndex tile)
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC: {
 			uint z;
-			Slope slope = GetTilePixelSlope(tile, &z);
+			Slope slope = GetTileSlope(tile, &z);
 			bool half = false;
 
 			/* for non-flat track, use lower part of track
@@ -2379,31 +2379,31 @@ static void TileLoop_Track(TileIndex tile)
 				switch (f) {
 					case FOUNDATION_NONE:
 						/* no foundation - is the track on the upper side of three corners raised tile? */
-						if (IsSlopeWithThreeCornersRaised(slope)) z += TILE_HEIGHT;
+						if (IsSlopeWithThreeCornersRaised(slope)) z++;
 						break;
 
 					case FOUNDATION_INCLINED_X:
 					case FOUNDATION_INCLINED_Y:
 						/* sloped track - is it on a steep slope? */
-						if (IsSteepSlope(slope)) z += TILE_HEIGHT;
+						if (IsSteepSlope(slope)) z++;
 						break;
 
 					case FOUNDATION_STEEP_LOWER:
 						/* only lower part of steep slope */
-						z += TILE_HEIGHT;
+						z++;
 						break;
 
 					default:
 						/* if it is a steep slope, then there is a track on higher part */
-						if (IsSteepSlope(slope)) z += TILE_HEIGHT;
-						z += TILE_HEIGHT;
+						if (IsSteepSlope(slope)) z++;
+						z++;
 						break;
 				}
 
 				half = IsInsideMM(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
 			} else {
 				/* is the depot on a non-flat tile? */
-				if (slope != SLOPE_FLAT) z += TILE_HEIGHT;
+				if (slope != SLOPE_FLAT) z++;
 			}
 
 			/* 'z' is now the lowest part of the highest track bit -
@@ -2411,7 +2411,7 @@ static void TileLoop_Track(TileIndex tile)
 			 * for two track bits, it is 'z' of higher track bit
 			 * For non-continuous foundations (and STEEP_BOTH), 'half' is set */
 			if (z > GetSnowLine()) {
-				if (half && z - GetSnowLine() == TILE_HEIGHT) {
+				if (half && z - GetSnowLine() == 1) {
 					/* track on non-continuous foundation, lower part is not under snow */
 					new_ground = RAIL_GROUND_HALF_SNOW;
 				} else {

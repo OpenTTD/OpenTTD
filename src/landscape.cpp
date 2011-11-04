@@ -561,7 +561,7 @@ void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
  */
 byte GetSnowLine()
 {
-	if (_snow_line == NULL) return _settings_game.game_creation.snow_line_height * TILE_HEIGHT;
+	if (_snow_line == NULL) return _settings_game.game_creation.snow_line_height;
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
@@ -575,7 +575,7 @@ byte GetSnowLine()
  */
 byte HighestSnowLine()
 {
-	return _snow_line == NULL ? _settings_game.game_creation.snow_line_height * TILE_HEIGHT : _snow_line->highest_value;
+	return _snow_line == NULL ? _settings_game.game_creation.snow_line_height : _snow_line->highest_value;
 }
 
 /**
@@ -585,7 +585,7 @@ byte HighestSnowLine()
  */
 byte LowestSnowLine()
 {
-	return _snow_line == NULL ? _settings_game.game_creation.snow_line_height * TILE_HEIGHT : _snow_line->lowest_value;
+	return _snow_line == NULL ? _settings_game.game_creation.snow_line_height : _snow_line->lowest_value;
 }
 
 /**

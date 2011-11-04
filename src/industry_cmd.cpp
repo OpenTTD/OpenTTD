@@ -979,7 +979,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 static void PlantFarmField(TileIndex tile, IndustryID industry)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTilePixelZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine()) return;
+		if (GetTileZ(tile) + 2 >= GetSnowLine()) return;
 	}
 
 	/* determine field size */
@@ -1165,7 +1165,7 @@ static CommandCost CheckNewIndustry_NULL(TileIndex tile)
 static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTilePixelZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
+		if (GetTileZ(tile) < HighestSnowLine() + 2U) {
 			return_cmd_error(STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED);
 		}
 	}
@@ -1209,7 +1209,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTilePixelZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
+		if (GetTileZ(tile) + 2 >= HighestSnowLine()) {
 			return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 		}
 	}

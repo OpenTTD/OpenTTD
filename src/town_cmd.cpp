@@ -2096,7 +2096,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	if (!CanBuildHouseHere(tile, t->index, false)) return false;
 
 	uint z;
-	Slope slope = GetTilePixelSlope(tile, &z);
+	Slope slope = GetTileSlope(tile, &z);
 
 	/* Get the town zone type of the current tile, as well as the climate.
 	 * This will allow to easily compare with the specs of the new house to build */
@@ -2779,7 +2779,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (TilePixelHeight(t->xy) >= GetSnowLine() && t->act_food == 0 && t->population > 90) return;
+		if (TileHeight(t->xy) >= GetSnowLine() && t->act_food == 0 && t->population > 90) return;
 
 	} else if (_settings_game.game_creation.landscape == LT_TROPIC) {
 		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food == 0 || t->act_water == 0) && t->population > 60) return;

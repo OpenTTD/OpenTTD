@@ -158,7 +158,7 @@ void TileLoopClearHelper(TileIndex tile)
 /** Convert to or from snowy tiles. */
 static void TileLoopClearAlps(TileIndex tile)
 {
-	int k = GetTilePixelZ(tile) - GetSnowLine() + TILE_HEIGHT;
+	int k = GetTileZ(tile) - GetSnowLine() + 1;
 
 	if (k < 0) {
 		/* Below the snow line, do nothing if no snow. */
@@ -173,7 +173,7 @@ static void TileLoopClearAlps(TileIndex tile)
 	}
 	/* Update snow density. */
 	uint curent_density = GetClearDensity(tile);
-	uint req_density = (k < 0) ? 0u : min((uint)k / TILE_HEIGHT, 3);
+	uint req_density = (k < 0) ? 0u : min((uint)k, 3);
 
 	if (curent_density < req_density) {
 		AddClearDensity(tile, 1);

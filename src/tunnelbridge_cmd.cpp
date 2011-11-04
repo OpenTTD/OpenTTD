@@ -1457,7 +1457,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 			/* As long as we do not have a snow density, we want to use the density
 			 * from the entry endge. For tunnels this is the lowest point for bridges the highest point.
 			 * (Independent of foundations) */
-			uint z = IsBridge(tile) ? GetTileMaxPixelZ(tile) : GetTilePixelZ(tile);
+			uint z = IsBridge(tile) ? GetTileMaxZ(tile) : GetTileZ(tile);
 			if (snow_or_desert != (z > GetSnowLine())) {
 				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				MarkTileDirtyByTile(tile);

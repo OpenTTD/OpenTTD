@@ -232,7 +232,7 @@ static void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 		if (!CanPlantTreesOnTile(cur_tile, true)) continue;
 
 		/* Not too much height difference */
-		if (Delta(GetTilePixelZ(cur_tile), height) > 2) continue;
+		if (Delta(GetTileZ(cur_tile), height) > 2) continue;
 
 		/* Place one tree and quit */
 		PlaceTree(cur_tile, r);
@@ -264,9 +264,9 @@ void PlaceTreesRandomly()
 			/* Place a number of trees based on the tile height.
 			 *  This gives a cool effect of multiple trees close together.
 			 *  It is almost real life ;) */
-			ht = GetTilePixelZ(tile);
+			ht = GetTileZ(tile);
 			/* The higher we get, the more trees we plant */
-			j = GetTilePixelZ(tile) / TILE_HEIGHT * 2;
+			j = GetTileZ(tile) * 2;
 			/* Above snowline more trees! */
 			if (_settings_game.game_creation.landscape == LT_ARCTIC && ht > GetSnowLine()) j *= 3;
 			while (j--) {
@@ -588,7 +588,7 @@ static void TileLoopTreesDesert(TileIndex tile)
 
 static void TileLoopTreesAlps(TileIndex tile)
 {
-	int k = GetTilePixelZ(tile) - GetSnowLine() + TILE_HEIGHT;
+	int k = GetTileZ(tile) - GetSnowLine() + 1;
 
 	if (k < 0) {
 		switch (GetTreeGround(tile)) {
@@ -597,7 +597,7 @@ static void TileLoopTreesAlps(TileIndex tile)
 			default: return;
 		}
 	} else {
-		uint density = min((uint)k / TILE_HEIGHT, 3);
+		uint density = min<uint>(k, 3);
 
 		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT && GetTreeGround(tile) != TREE_GROUND_ROUGH_SNOW) {
 			TreeGround tg = GetTreeGround(tile) == TREE_GROUND_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;

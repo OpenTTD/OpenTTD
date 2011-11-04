@@ -380,8 +380,8 @@ public:
 		uint cargo_needed_for_growth = 0;
 		switch (_settings_game.game_creation.landscape) {
 			case LT_ARCTIC:
-				if (TilePixelHeight(this->town->xy) >= LowestSnowLine()) cargo_needed_for_growth = 1;
-				if (TilePixelHeight(this->town->xy) < GetSnowLine()) required_text = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER;
+				if (TileHeight(this->town->xy) >= LowestSnowLine()) cargo_needed_for_growth = 1;
+				if (TileHeight(this->town->xy) < GetSnowLine()) required_text = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER;
 				break;
 
 			case LT_TROPIC:
@@ -493,7 +493,7 @@ public:
 
 		switch (_settings_game.game_creation.landscape) {
 			case LT_ARCTIC:
-				if (TilePixelHeight(this->town->xy) >= LowestSnowLine()) aimed_height += 2 * FONT_HEIGHT_NORMAL;
+				if (TileHeight(this->town->xy) >= LowestSnowLine()) aimed_height += 2 * FONT_HEIGHT_NORMAL;
 				break;
 
 			case LT_TROPIC:
