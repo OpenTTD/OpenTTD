@@ -23,7 +23,7 @@ static const SaveLoad _sign_desc[] = {
 	SLE_CONDVAR(Sign, x,     SLE_INT32,                  5, SL_MAX_VERSION),
 	SLE_CONDVAR(Sign, y,     SLE_INT32,                  5, SL_MAX_VERSION),
 	SLE_CONDVAR(Sign, owner, SLE_UINT8,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, z,     SLE_FILE_U8  | SLE_VAR_I32, 0, 164),
+	SLE_CONDVAR(Sign, z,     SLE_FILE_U8  | SLE_VAR_I32, 0, 163),
 	SLE_CONDVAR(Sign, z,     SLE_INT32,                164, SL_MAX_VERSION),
 	SLE_END()
 };
