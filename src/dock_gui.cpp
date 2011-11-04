@@ -60,7 +60,7 @@ void CcBuildCanal(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
 static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = NULL)
 {
 	uint z;
-	DiagDirection dir = GetInclinedSlopeDirection(GetTilePixelSlope(tile_from, &z));
+	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, &z));
 
 	/* If the direction isn't right, just return the next tile so the command
 	 * complains about the wrong slope instead of the ends not matching up.
@@ -79,7 +79,7 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = N
 
 		if (length > max_length) break;
 
-		if (GetTileMaxPixelZ(endtile) > z) {
+		if (GetTileMaxZ(endtile) > z) {
 			if (tile_to != NULL) *tile_to = endtile;
 			break;
 		}

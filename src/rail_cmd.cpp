@@ -676,7 +676,7 @@ bool FloodHalftile(TileIndex t)
 		}
 	} else {
 		/* Make shore on steep slopes and 'three-corners-raised'-slopes. */
-		if (ApplyPixelFoundationToSlope(GetRailFoundation(tileh, rail_bits), &tileh) == 0) {
+		if (ApplyFoundationToSlope(GetRailFoundation(tileh, rail_bits), &tileh) == 0) {
 			if (IsSteepSlope(tileh) || IsSlopeWithThreeCornersRaised(tileh)) {
 				flooded = true;
 				SetRailGroundType(t, RAIL_GROUND_WATER);

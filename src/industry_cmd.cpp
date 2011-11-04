@@ -1262,7 +1262,7 @@ static CommandCost CheckNewIndustry_Lumbermill(TileIndex tile)
  */
 static CommandCost CheckNewIndustry_BubbleGen(TileIndex tile)
 {
-	if (GetTilePixelZ(tile) > TILE_HEIGHT * 4) {
+	if (GetTileZ(tile) > 4) {
 		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS);
 	}
 	return CommandCost();

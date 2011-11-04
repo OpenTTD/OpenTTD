@@ -376,7 +376,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetTunnelBridgeDirection(neighbour)));
 		}
 
-		ApplyPixelFoundationToSlope(foundation, &tileh[TS_NEIGHBOUR]);
+		ApplyFoundationToSlope(foundation, &tileh[TS_NEIGHBOUR]);
 
 		/* Half tile slopes coincide only with horizontal/vertical track.
 		 * Faking a flat slope results in the correct sprites on positions. */
