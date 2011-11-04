@@ -172,6 +172,13 @@ public:
 	 * call from within a function called by the AI.
 	 */
 	void Suspend();
+
+	/**
+	 * Get the number of operations the AI can execute before being suspended.
+	 * This function is safe to call from within a function called by the AI.
+	 * @return The number of operations to execute.
+	 */
+	SQInteger GetOpsTillSuspend();
 private:
 	class AIController *controller;  ///< The AI main class.
 	class AIStorage *storage;        ///< Some global information for each running AI.

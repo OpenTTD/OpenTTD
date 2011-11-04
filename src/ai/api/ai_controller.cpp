@@ -66,6 +66,11 @@ AIController::~AIController()
 	return ::Company::Get(_current_company)->ai_instance->GetController()->ticks;
 }
 
+/* static */ int AIController::GetOpsTillSuspend()
+{
+	return ::Company::Get(_current_company)->ai_instance->GetOpsTillSuspend();
+}
+
 /* static */ int AIController::GetSetting(const char *name)
 {
 	return AIConfig::GetConfig(_current_company)->GetSetting(name);

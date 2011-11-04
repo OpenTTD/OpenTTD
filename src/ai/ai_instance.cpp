@@ -789,3 +789,8 @@ bool AIInstance::CallLoad()
 	sq_pop(vm, 4);
 	return true;
 }
+
+SQInteger AIInstance::GetOpsTillSuspend()
+{
+	return this->engine->GetOpsTillSuspend();
+}

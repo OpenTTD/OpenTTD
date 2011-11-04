@@ -553,3 +553,8 @@ bool Squirrel::CanSuspend()
 {
 	return sq_can_suspend(this->vm);
 }
+
+SQInteger Squirrel::GetOpsTillSuspend()
+{
+	return this->vm->_ops_till_suspend;
+}

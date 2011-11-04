@@ -26,6 +26,7 @@
  * \li AICompany::GetQuarterlyCargoDelivered
  * \li AICompany::GetQuarterlyPerformanceRating
  * \li AICompany::GetQuarterlyCompanyValue
+ * \li AIController::GetOpsTillSuspend
  * \li AITown::GetTownAuthority
  * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached
  *

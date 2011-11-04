@@ -13,11 +13,12 @@ void SQAIController_Register(Squirrel *engine)
 {
 	DefSQClass <AIController> SQAIController("AIController");
 	SQAIController.PreRegister(engine);
-	SQAIController.DefSQStaticMethod(engine, &AIController::GetTick,         "GetTick",         1, ".");
-	SQAIController.DefSQStaticMethod(engine, &AIController::SetCommandDelay, "SetCommandDelay", 2, ".i");
-	SQAIController.DefSQStaticMethod(engine, &AIController::Sleep,           "Sleep",           2, ".i");
-	SQAIController.DefSQStaticMethod(engine, &AIController::GetSetting,      "GetSetting",      2, ".s");
-	SQAIController.DefSQStaticMethod(engine, &AIController::GetVersion,      "GetVersion",      1, ".");
-	SQAIController.DefSQStaticMethod(engine, &AIController::Print,           "Print",           3, ".bs");
+	SQAIController.DefSQStaticMethod(engine, &AIController::GetTick,           "GetTick",           1, ".");
+	SQAIController.DefSQStaticMethod(engine, &AIController::GetOpsTillSuspend, "GetOpsTillSuspend", 1, ".");
+	SQAIController.DefSQStaticMethod(engine, &AIController::SetCommandDelay,   "SetCommandDelay",   2, ".i");
+	SQAIController.DefSQStaticMethod(engine, &AIController::Sleep,             "Sleep",             2, ".i");
+	SQAIController.DefSQStaticMethod(engine, &AIController::GetSetting,        "GetSetting",        2, ".s");
+	SQAIController.DefSQStaticMethod(engine, &AIController::GetVersion,        "GetVersion",        1, ".");
+	SQAIController.DefSQStaticMethod(engine, &AIController::Print,             "Print",             3, ".bs");
 	SQAIController.PostRegister(engine);
 }

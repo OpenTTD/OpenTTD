@@ -1,7 +1,9 @@
 
 --TestInit--
+ Ops:      9988
  TickTest: 1
  TickTest: 2
+ Ops:      9990
  SetCommandDelay: (null : 0x00000000)
  IsValid(vehicle.plane_speed): true
  vehicle.plane_speed: 2
@@ -79,6 +81,7 @@
    20
    30
    40
+ Ops:      8673
 
 --Std--
  abs(-21): 21

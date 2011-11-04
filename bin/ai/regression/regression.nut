@@ -10,9 +10,11 @@ function Regression::TestInit()
 {
 	print("");
 	print("--TestInit--");
+	print(" Ops:      " + this.GetOpsTillSuspend());
 	print(" TickTest: " + this.GetTick());
 	this.Sleep(1);
 	print(" TickTest: " + this.GetTick());
+	print(" Ops:      " + this.GetOpsTillSuspend());
 	print(" SetCommandDelay: " + AIController.SetCommandDelay(1));
 	print(" IsValid(vehicle.plane_speed): " + AIGameSettings.IsValid("vehicle.plane_speed"));
 	print(" vehicle.plane_speed: " + AIGameSettings.GetValue("vehicle.plane_speed"));
@@ -166,6 +168,8 @@ function Regression::TestInit()
 	foreach (idx, val in list) {
 		print("   " + idx);
 	}
+
+	print(" Ops:      " + this.GetOpsTillSuspend());
 }
 
 function Regression::Std()
