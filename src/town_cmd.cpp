@@ -3055,7 +3055,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint 
 
 		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
 		if (((hs->building_flags & TILE_NOT_SLOPED) == 0) && !IsSteepSlope(tileh_new) &&
-				(GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new))) {
+				(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
 			bool allow_terraform = true;
 
 			/* Call the autosloping callback per tile, not for the whole building at once. */

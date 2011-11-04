@@ -2795,8 +2795,8 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	if (CheckRailSlope(tileh_new, rail_bits, TRACK_BIT_NONE, tile).Failed()) return_cmd_error(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 
 	/* Get the slopes on top of the foundations */
-	z_old += ApplyPixelFoundationToSlope(GetRailFoundation(tileh_old, rail_bits), &tileh_old);
-	z_new += ApplyPixelFoundationToSlope(GetRailFoundation(tileh_new, rail_bits), &tileh_new);
+	z_old += ApplyFoundationToSlope(GetRailFoundation(tileh_old, rail_bits), &tileh_old);
+	z_new += ApplyFoundationToSlope(GetRailFoundation(tileh_new, rail_bits), &tileh_new);
 
 	Corner track_corner;
 	switch (rail_bits) {
@@ -2812,8 +2812,8 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
-	z_old += GetSlopePixelZInCorner(RemoveHalftileSlope(tileh_old), track_corner);
-	z_new += GetSlopePixelZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
+	z_old += GetSlopeZInCorner(RemoveHalftileSlope(tileh_old), track_corner);
+	z_new += GetSlopeZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
 	if (z_old != z_new) return_cmd_error(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK);
 
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
@@ -2829,7 +2829,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	uint z_old;
-	Slope tileh_old = GetTilePixelSlope(tile, &z_old);
+	Slope tileh_old = GetTileSlope(tile, &z_old);
 	if (IsPlainRail(tile)) {
 		TrackBits rail_bits = GetTrackBits(tile);
 		/* Is there flat water on the lower halftile that must be cleared expensively? */
@@ -2856,7 +2856,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 		/* Everything is valid, which only changes allowed_corner */
 		for (Corner corner = (Corner)0; corner < CORNER_END; corner = (Corner)(corner + 1)) {
 			if (allowed_corner == corner) continue;
-			if (z_old + GetSlopePixelZInCorner(tileh_old, corner) != z_new + GetSlopePixelZInCorner(tileh_new, corner)) return autoslope_result;
+			if (z_old + GetSlopeZInCorner(tileh_old, corner) != z_new + GetSlopeZInCorner(tileh_new, corner)) return autoslope_result;
 		}
 
 		/* Make the ground dirty */

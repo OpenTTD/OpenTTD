@@ -1682,7 +1682,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, uint 
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
 		switch (GetRoadTileType(tile)) {
 			case ROAD_TILE_CROSSING:
-				if (!IsSteepSlope(tileh_new) && (GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 				break;
 
 			case ROAD_TILE_DEPOT:
@@ -1697,11 +1697,11 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlag flags, uint 
 					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
 					if (bits == bits_copy) {
 						uint z_old;
-						Slope tileh_old = GetTilePixelSlope(tile, &z_old);
+						Slope tileh_old = GetTileSlope(tile, &z_old);
 
 						/* Get the slope on top of the foundation */
-						z_old += ApplyPixelFoundationToSlope(GetRoadFoundation(tileh_old, bits), &tileh_old);
-						z_new += ApplyPixelFoundationToSlope(GetRoadFoundation(tileh_new, bits), &tileh_new);
+						z_old += ApplyFoundationToSlope(GetRoadFoundation(tileh_old, bits), &tileh_old);
+						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), &tileh_new);
 
 						/* The surface slope must not be changed */
 						if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);

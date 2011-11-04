@@ -3595,7 +3595,7 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, ui
 		/* TODO: If you implement newgrf callback 149 'land slope check', you have to decide what to do with it here.
 		 *       TTDP does not call it.
 		 */
-		if (GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new)) {
+		if (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) {
 			switch (GetStationType(tile)) {
 				case STATION_WAYPOINT:
 				case STATION_RAIL: {

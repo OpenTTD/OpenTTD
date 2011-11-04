@@ -1676,8 +1676,6 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile) && GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) {
-		z_new /= TILE_HEIGHT;
-
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;

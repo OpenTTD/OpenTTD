@@ -733,7 +733,7 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uin
 		 */
 		Slope tileh_old = GetTileSlope(tile);
 		/* TileMaxZ must not be changed. Slopes must not be steep. */
-		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxPixelZ(tile) == z_new + GetSlopeMaxPixelZ(tileh_new))) {
+		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
 			const ObjectSpec *spec = ObjectSpec::Get(type);
 
 			/* Call callback 'disable autosloping for objects'. */
