@@ -3214,6 +3214,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambia l
 
 STR_ORDER_REFIT                                                 :{BLACK}Riadatta
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selezionare il tipo di carico per il quale riadattare in questo ordine. Premere CTRL+clic per rimuovere l'istruzione di riadattamento
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-riadatta
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selezionare il tipo di carico per il quale auto-riadattare in questo ordine. Premere CTRL+clic per rimuovere l'istruzione di riadattamento. L'auto-riadattamento sarà eseguito solo se il veicolo lo consente
+STR_ORDER_DROP_REFIT_AUTO                                       :Carico prefissato
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carico in attesa
 
 STR_ORDER_SERVICE                                               :{BLACK}Manutieni
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Sempre
@@ -3290,7 +3294,7 @@ STR_ORDER_IMPLICIT                                              :(Implicito)
 STR_ORDER_FULL_LOAD                                             :(Attendi pieno carico)
 STR_ORDER_FULL_LOAD_ANY                                         :(Attendi carico)
 STR_ORDER_NO_LOAD                                               :(Non caricare)
-STR_ORDER_UNLOAD                                                :(Scarica)
+STR_ORDER_UNLOAD                                                :(Scarica e carica)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Scarica e attendi pieno carico)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Scarica e attendi carico)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Scarica e parti vuoto)
@@ -3302,6 +3306,21 @@ STR_ORDER_NO_UNLOAD                                             :(Non scaricare 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non scaricare e attendi pieno carico)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non scaricare e attendi carico)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Non scaricare e non caricare)
+
+STR_ORDER_AUTO_REFIT                                            :(Auto-riadatta per {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Attendi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Attendi carico, auto-riadatta per {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Scarica e carica, auto-riadatta per {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Scarica e attendi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Scarica e attendi carico, auto-riadatta per {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Trasferisci e carica, auto-riadatta per {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trasferisci e attendi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trasferisci e attendi carico, auto-riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Non scaricare e carica, auto-riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Non scaricare e attendi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non scaricare e attendi carico, auto-riadatta per {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :il carico in attesa
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :(inizio)
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :(centro)

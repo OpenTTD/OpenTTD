@@ -332,9 +332,16 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :விட்ட
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :விளையாட்டு விருப்ப பேரம்
 STR_SETTINGS_MENU_AI_SETTINGS                                   :செயற்கை அறிவாற்றல் அமைப்பு
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF அமைப்புகள்
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ஒளி அமைப்புகள்
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :நகரத்தின் பெயர்களை காட்டு
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :நிலையங்களின் பெயர்களை காண்பி
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :பாதைப்புள்ளி பெயர்களை காட்டு
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :குறிகளை காட்டு
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :கணினி குறியீடுகள் மற்றும் பெயர்கள் காட்டப்படுகின்றன
+STR_SETTINGS_MENU_FULL_ANIMATION                                :முழு அசையூட்டம்
 STR_SETTINGS_MENU_FULL_DETAIL                                   :முழு விவரம்
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :கட்டடங்களை காட்டாதே
 ############ range ends here
 
 ############ range for file menu starts
@@ -347,6 +354,7 @@ STR_FILE_MENU_EXIT                                              :வெளிய
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :உலகப் படம்
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :கூடுதல் பார்வைபடம்
+STR_MAP_MENU_SIGN_LIST                                          :குறிகளின் பட்டியல்
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :நகர புத்தகம்
 ############ end of the 'Display map' dropdown
@@ -414,11 +422,13 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :செய்த
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :நிலா பகுதி விவரம்
+STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
 STR_ABOUT_MENU_AI_DEBUG                                         :AI சரிபார்
 STR_ABOUT_MENU_SCREENSHOT                                       :திரைபடம்
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :முழு வரைபடத்தை படம் எடு
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' பற்றி
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ஸ்ரைட்டு அலைனர்
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -515,6 +525,7 @@ STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPAN
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :பொறியியலாளர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :போக்குவரத்து மேலாளர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :நிறுவனர்
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :ஜனாதிபதி
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}விவரமான செயல்திறன் மதிப்பீடு
@@ -607,6 +618,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}அன�
 
 # Status bar messages
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  நிறுத்தப்பட்டுள்ளது  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}பதிவுசெய்தல்
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ஆட்டம் பதிவாகிறது  *  *
 
 # News message history
@@ -616,8 +629,10 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}செய்தி
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}செய்தி அமைப்புகள்
 STR_NEWS_MESSAGES_FULL                                          :முழு
 
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}செய்தி வகைகள்:
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}நிறுவனத்தின் விவரம்
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}புதிய வாகனங்கள்
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}பொதுவான விவரம்
@@ -1432,6 +1447,8 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}அன�
 STR_ORDER_IMPLICIT                                              :(தானியங்கி)
 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(லோடிங் அன்லோடிங் தடைசெய்யப்பட்டுள்ளது)
+
+
 
 
 

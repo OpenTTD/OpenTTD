@@ -1058,6 +1058,7 @@ STR_SEA_LEVEL_HIGH                                              :Høgt
 STR_SEA_LEVEL_CUSTOM                                            :Eigendefinert
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Eigendefinert ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Ingen
 STR_DISASTER_REDUCED                                            :Redusert
 STR_DISASTER_NORMAL                                             :Normalt
@@ -1121,7 +1122,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last k�
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever varer til ein stasjon kun hvis det er etterspørjing: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimal lengde på bru: {ORANGE}{STRING} rute{P 0:1 "" r}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimal tunnel lengde: {ORANGE}{STRING} rute{P 0:1 "" r}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimal tunnellengde: {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for primærindustri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :inga
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industriar
@@ -1391,6 +1392,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne New
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Syne AI-instillingar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Avslutt
@@ -2504,6 +2506,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} med <in
 STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicle model>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt{P "" er}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Skriftformgjenkjenning
@@ -3170,6 +3174,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Hopp over ordren dersom ikkje vedlikehald trengst
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Køyretøy-data å basere hopp på
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lastprosent
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålitelegheit
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maks. hastigheit
@@ -3247,6 +3253,8 @@ STR_ORDER_NO_UNLOAD                                             :(Ingen lossing 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ingen lossing og vent på full last)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ingen lossing og vent på første fulle last)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ingen lossing og ingen lasting)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[starten]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
@@ -3419,6 +3427,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noko
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan ikkje laste inn landskap frå BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan ikkje konvertere bilettype
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalaåtvaring
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endre storleiken på kjeldekartet for mykje er ikkje anbefalt. Vil du halde fram med genereringa?

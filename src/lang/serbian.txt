@@ -3401,6 +3401,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Promena 
 
 STR_ORDER_REFIT                                                 :{BLACK}Prepravi
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Označite za koji tovar da se prepravi u ovoj naredbi. Ctrl+Klik za uklanjanje prepravljanja
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Samo-prepravljanje
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Odabir vrste tereta za samo-prepravljanje po redosledu. Ctrl+Klik za uklanjanje komande za prepravljanje. Samo-prepravljanje će se izvršiti samo ako vozilo to dozvoljava
+STR_ORDER_DROP_REFIT_AUTO                                       :Određen tovar
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupan tovar
 
 STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Uvek
@@ -3489,6 +3493,21 @@ STR_ORDER_NO_UNLOAD                                             :(Bez istovara i
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez istovara i pun utovar)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Bez istovara i pun utovar bilo kog)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Bez istovara i bez utovara)
+
+STR_ORDER_AUTO_REFIT                                            :(Samo-prepravljanje za {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Pun utovar sa samo-prepravljanjem za {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Pun utovar bilo kog sa samo-prepravljanjem za {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Istovar i utovar sa samo-prepravljanjem za {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Istovar i pun utovar svega sa samo-prepravljanjem za {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Istovar i pun utovar bilo kog sa samo-prepravljanjem za {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Prevoz i utovar sa samo-prepravljanjem za {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Prevoz i pun utovar svega sa samo-prepravljanjem za {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Prevoz i pun utovar bilo kog sa samo-prepravljanjem za {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Bez istovara i utovar sa samo-prepravljanjem za {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Bez istovara i pun utovar sa samo-prepravljanjem za {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Bez istovara i pun utovar bilo kog sa samo-prepravljanjem za {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :dostupni tovar
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[pri početku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[na sredini]
