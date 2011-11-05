@@ -338,7 +338,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (order_position != ORDER_CURRENT && !IsGotoStationOrder(vehicle_id, order_position) && !IsGotoDepotOrder(vehicle_id, order_position)) return CT_NO_REFIT;
 
 	const Order *order = ::ResolveOrder(vehicle_id, order_position);
-	return order->IsRefit() ? order->GetRefitCargo() : CT_NO_REFIT;
+	return order->IsRefit() ? order->GetRefitCargo() : (CargoID)CT_NO_REFIT;
 }
 
 /* static */ bool AIOrder::SetOrderJumpTo(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to)
