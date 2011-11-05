@@ -96,6 +96,7 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsGotoWaypointOrder,           "IsGotoWaypointOrder",           3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsConditionalOrder,            "IsConditionalOrder",            3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsVoidOrder,                   "IsVoidOrder",                   3, ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsRefitOrder,                  "IsRefitOrder",                  3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsCurrentOrderPartOfOrderList, "IsCurrentOrderPartOfOrderList", 2, ".i");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ResolveOrderPosition,          "ResolveOrderPosition",          3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AreOrderFlagsValid,            "AreOrderFlagsValid",            3, ".ii");
@@ -108,11 +109,13 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCompareFunction,       "GetOrderCompareFunction",       3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCompareValue,          "GetOrderCompareValue",          3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetStopLocation,               "GetStopLocation",               3, ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderRefit,                 "GetOrderRefit",                 3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderJumpTo,                "SetOrderJumpTo",                4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCondition,             "SetOrderCondition",             4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCompareFunction,       "SetOrderCompareFunction",       4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCompareValue,          "SetOrderCompareValue",          4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetStopLocation,               "SetStopLocation",               4, ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderRefit,                 "SetOrderRefit",                 4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendOrder,                   "AppendOrder",                   4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendConditionalOrder,        "AppendConditionalOrder",        3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertOrder,                   "InsertOrder",                   5, ".iiii");

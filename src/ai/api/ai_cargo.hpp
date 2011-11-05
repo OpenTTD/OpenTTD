@@ -51,6 +51,14 @@ public:
 	};
 
 	/**
+	 * Special cargo types.
+	 */
+	enum SpecialCargoID {
+		CT_AUTO_REFIT = 0xFD, ///< Automatically choose cargo type when doing auto-refitting.
+		CT_NO_REFIT   = 0xFE, ///< Do not refit cargo of a vehicle.
+	};
+
+	/**
 	 * Checks whether the given cargo type is valid.
 	 * @param cargo_type The cargo to check.
 	 * @return True if and only if the cargo type is valid.

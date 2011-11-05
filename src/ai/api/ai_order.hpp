@@ -191,6 +191,15 @@ public:
 	static bool IsVoidOrder(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
+	 * Checks whether the given order has a valid refit cargo.
+	 * @param vehicle_id The vehicle to check.
+	 * @param order_position The order index to check.
+	 * @pre order_position != ORDER_CURRENT && IsValidVehicleOrder(vehicle_id, order_position).
+	 * @return True if and only if the order is has a valid refit cargo.
+	 */
+	static bool IsRefitOrder(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
 	 * Checks whether the current order is part of the orderlist.
 	 * @param vehicle_id The vehicle to check.
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
@@ -320,6 +329,21 @@ public:
 	static StopLocation GetStopLocation(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
+	 * Gets the refit cargo type of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to get the refit cargo for.
+	 * @param order_position The order to get the refit cargo for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre order_position == ORDER_CURRENT || IsGotoStationOrder(vehicle_id, order_position) || IsGotoDepotOrder(vehicle_id, order_position).
+	 * @note Giving ORDER_CURRENT as order_position will give the order that is
+	 *  currently being executed by the vehicle. This is not necessarily the
+	 *  current order as given by ResolveOrderPosition (the current index in the
+	 *  order list) as manual or autoservicing depot orders do not show up
+	 *  in the orderlist, but they can be the current order of a vehicle.
+	 * @return The refit cargo of the order or CT_NO_REFIT if no refit is set.
+	 */
+	static CargoID GetOrderRefit(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
 	 * Sets the OrderPosition to jump to if the check succeeds of the given order for the given vehicle.
 	 * @param vehicle_id The vehicle to set the OrderPosition for.
 	 * @param order_position The order to set the OrderPosition for.
@@ -379,6 +403,18 @@ public:
 	 * @return Whether the order has been/can be changed.
 	 */
 	static bool SetStopLocation(VehicleID vehicle_id, OrderPosition order_position, StopLocation stop_location);
+
+	/**
+	 * Sets the refit cargo type of the given order for the given vehicle.
+	 * @param vehicle_id The vehicle to set the refit cargo for.
+	 * @param order_position The order to set the refit cargo for.
+	 * @param refit_cargo The cargo to refit to. The refit can be cleared by passing CT_NO_REFIT.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre IsGotoStationOrder(vehicle_id, order_position) || (IsGotoDepotOrder(vehicle_id, order_position) && refit_cargo != CT_AUTO_REFIT).
+	 * @pre AICargo::IsValidCargo(refit_cargo) || refit_cargo == CT_AUTO_REFIT || refit_cargo == CT_NO_REFIT
+	 * @return Whether the order has been/can be changed.
+	 */
+	static bool SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoID refit_cargo);
 
 	/**
 	 * Appends an order to the end of the vehicle's order list.

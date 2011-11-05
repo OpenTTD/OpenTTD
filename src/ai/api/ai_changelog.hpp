@@ -21,12 +21,17 @@
  *
  * API additions:
  *
+ * \li AICargo::CT_AUTO_REFIT
+ * \li AICargo::CT_NO_REFIT
  * \li AICompany::GetQuarterlyIncome
  * \li AICompany::GetQuarterlyExpenses
  * \li AICompany::GetQuarterlyCargoDelivered
  * \li AICompany::GetQuarterlyPerformanceRating
  * \li AICompany::GetQuarterlyCompanyValue
  * \li AIController::GetOpsTillSuspend
+ * \li AIOrder::GetOrderRefit
+ * \li AIOrder::IsRefitOrder
+ * \li AIOrder::SetOrderRefit
  * \li AITown::GetTownAuthority
  * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached
  *

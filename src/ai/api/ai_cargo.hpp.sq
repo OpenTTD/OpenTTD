@@ -17,6 +17,8 @@ namespace SQConvert {
 	template <> int Return<AICargo::CargoClass>(HSQUIRRELVM vm, AICargo::CargoClass res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AICargo::TownEffect GetParam(ForceType<AICargo::TownEffect>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AICargo::TownEffect)tmp; }
 	template <> int Return<AICargo::TownEffect>(HSQUIRRELVM vm, AICargo::TownEffect res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AICargo::SpecialCargoID GetParam(ForceType<AICargo::SpecialCargoID>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AICargo::SpecialCargoID)tmp; }
+	template <> int Return<AICargo::SpecialCargoID>(HSQUIRRELVM vm, AICargo::SpecialCargoID res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AICargo to be used as Squirrel parameter */
 	template <> AICargo *GetParam(ForceType<AICargo *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargo *)instance; }
@@ -48,6 +50,8 @@ void SQAICargo_Register(Squirrel *engine)
 	SQAICargo.DefSQConst(engine, AICargo::TE_GOODS,        "TE_GOODS");
 	SQAICargo.DefSQConst(engine, AICargo::TE_WATER,        "TE_WATER");
 	SQAICargo.DefSQConst(engine, AICargo::TE_FOOD,         "TE_FOOD");
+	SQAICargo.DefSQConst(engine, AICargo::CT_AUTO_REFIT,   "CT_AUTO_REFIT");
+	SQAICargo.DefSQConst(engine, AICargo::CT_NO_REFIT,     "CT_NO_REFIT");
 
 	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsValidCargo,   "IsValidCargo",   2, ".i");
 	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetCargoLabel,  "GetCargoLabel",  2, ".i");

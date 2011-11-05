@@ -12,6 +12,7 @@
 #include "../../stdafx.h"
 #include "ai_order.hpp"
 #include "ai_vehicle.hpp"
+#include "ai_cargo.hpp"
 #include "../ai_instance.hpp"
 #include "../../debug.h"
 #include "../../vehicle_base.h"
@@ -115,6 +116,14 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
 	return order->GetType() == OT_DUMMY;
+}
+
+/* static */ bool AIOrder::IsRefitOrder(VehicleID vehicle_id, OrderPosition order_position)
+{
+	if (!IsValidVehicleOrder(vehicle_id, order_position)) return false;
+
+	const Order *order = ::ResolveOrder(vehicle_id, order_position);
+	return order != NULL && order->IsRefit();
 }
 
 /* static */ bool AIOrder::IsCurrentOrderPartOfOrderList(VehicleID vehicle_id)
@@ -323,6 +332,15 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	return (AIOrder::StopLocation)order->GetStopLocation();
 }
 
+/* static */ CargoID AIOrder::GetOrderRefit(VehicleID vehicle_id, OrderPosition order_position)
+{
+	if (!IsValidVehicleOrder(vehicle_id, order_position)) return CT_NO_REFIT;
+	if (order_position != ORDER_CURRENT && !IsGotoStationOrder(vehicle_id, order_position) && !IsGotoDepotOrder(vehicle_id, order_position)) return CT_NO_REFIT;
+
+	const Order *order = ::ResolveOrder(vehicle_id, order_position);
+	return order->IsRefit() ? order->GetRefitCargo() : CT_NO_REFIT;
+}
+
 /* static */ bool AIOrder::SetOrderJumpTo(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to)
 {
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
@@ -370,6 +388,17 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	uint32 p1 = vehicle_id | (order_position << 20);
 	uint32 p2 = MOF_STOP_LOCATION | (stop_location << 4);
 	return AIObject::DoCommand(0, p1, p2, CMD_MODIFY_ORDER);
+}
+
+/* static */ bool AIOrder::SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoID refit_cargo)
+{
+	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
+	EnforcePrecondition(false, IsGotoStationOrder(vehicle_id, order_position) || (IsGotoDepotOrder(vehicle_id, order_position) && refit_cargo != CT_AUTO_REFIT));
+	EnforcePrecondition(false, AICargo::IsValidCargo(refit_cargo) || refit_cargo == CT_AUTO_REFIT || refit_cargo == CT_NO_REFIT);
+
+	uint32 p1 = vehicle_id;
+	uint32 p2 = refit_cargo | AIOrder::ResolveOrderPosition(vehicle_id, order_position) << 16;
+	return AIObject::DoCommand(0, p1, p2, CMD_ORDER_REFIT);
 }
 
 /* static */ bool AIOrder::AppendOrder(VehicleID vehicle_id, TileIndex destination, AIOrderFlags order_flags)
