@@ -3190,6 +3190,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Thay đ�
 
 STR_ORDER_REFIT                                                 :{BLACK}Cải biến
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Chọn xem loại hàng hoá nào sẽ được cải biến trong lộ trình chạy này. Ctrl+Click để loại bỏ yêu cầu cải biến
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Tự động cải biến
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Chọn loại hàng nào để tự cải biến trong lộ trình. Ctrl+Click để loại bỏ chỉ dẫn cái biến. Tự động cải biến chỉ có thể thực hiện khi phương tiện cho phép
+STR_ORDER_DROP_REFIT_AUTO                                       :Loại hàng cố định
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Loại hàng sẵn có
 
 STR_ORDER_SERVICE                                               :{BLACK}Bảo trì
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Chạy suốt
@@ -3278,6 +3282,21 @@ STR_ORDER_NO_UNLOAD                                             :(Không dỡ v�
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Không dỡ và chờ lấy thêm đầy hàng)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Không dỡ và chờ lấy đủ hàng bất kỳ)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Không bốc hàng và không dỡ hàng)
+
+STR_ORDER_AUTO_REFIT                                            :(Tự cải biến thành {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Tự cải biến và chất đầy {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Tự cải biến và chất đầy bất kỳ {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Dỡ hàng và tự cải biến để lấy {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Dỡ hàng và tự cải biến đề bốc đầy {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Dỡ hàng và tự cải biến để bốc đầy bất kỳ {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Trung chuyển và tự cải biến để lấy {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trung chuyển và tự cải biến đề bốc đầy {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trung chuyển và tự cải biến để bốc đầy bất kỳ {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Không dỡ hàng và tự cái biến để lấy {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Không dỡ hàng và tự cải biến để bốc đầy {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Không dỡ hàng và tự cải biến để bốc đầy bất kỳ {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :hàng hóa sẵn có
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[đỗ ở đầu gần]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[đỗ ở giữa]

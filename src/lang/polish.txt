@@ -3576,6 +3576,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}}Zmień 
 
 STR_ORDER_REFIT                                                 :{BLACK}Przeksztalc
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przekształcenia. Ctrl+klik usuwa zmianę
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatyczne odnowienie
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do automatycznego odnowienia w tym poleceniu.Ctrl+Click by usunąć instrukcję odnowienia. Automatyczne odnowienie zostanie wykonane jedynie, jeśli dany pojazd na to pozwala
+STR_ORDER_DROP_REFIT_AUTO                                       :Naprawiony ładunek
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostępny ładunek
 
 STR_ORDER_SERVICE                                               :{BLACK}Serwis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
@@ -3664,6 +3668,21 @@ STR_ORDER_NO_UNLOAD                                             :(Nie rozładowu
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełen załadunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełen załadunek któregoś z towarów)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nie rozładowuj i nie ładuj)
+
+STR_ORDER_AUTO_REFIT                                            :(Automatyczne odnowienie do {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Załaduj do pełna z automatycznym odnowieniem do {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Załaduj do pełna dowolny ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj i zabierz ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj i zaczekaj na dowolny pełny ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Przetwórz i zabierz ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przewie i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przewieź i poczekaj na dowolny pełen ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj i zabierz ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj i zaczekaj na dowolny pełen ładunek z automatycznym odnowieniem do {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :dostępny ładunek
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[bliższy koniec]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[środek]

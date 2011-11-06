@@ -3191,6 +3191,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar 
 
 STR_ORDER_REFIT                                                 :{BLACK}Reformar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+Click para eliminar la orden de reforma
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-reforma
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Seleccionar el tipo de carga con el que emplear auto-reforma para esta orden. Ctrl+Click elimina la orden de reforma. La auto-reforma solamente puede llevarse a cabo si el vehículo lo permite
+STR_ORDER_DROP_REFIT_AUTO                                       :Carga fijada
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carga disponible
 
 STR_ORDER_SERVICE                                               :{BLACK}Mantenimiento
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir siempre
@@ -3279,6 +3283,21 @@ STR_ORDER_NO_UNLOAD                                             :(No descargar y
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descargar y esperar a carga completa)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y esperar a cualquier carga completa)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descargar y no cargar)
+
+STR_ORDER_AUTO_REFIT                                            :(Auto-reforma a {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Carga completa con auto-reforma a {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Cualquier carga completa con auto-reforma a {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Descargar y tomar carga con auto-reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descargar y esperar carga completa con auto-reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar y esperar a cualquier carga completa con auto-reforma a {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transferir y tomar carga con auto-reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir y esperar a carga completa con auto-reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir y esperar a cualquier carga completa con auto-reforma a {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(No descargar y tomar carga con auto-reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descargar y esperar a carga completa con auto-reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y esperar a cualquier carga completa con auto-reforma a {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :carga disponible
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[cerca del fin]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[medio]

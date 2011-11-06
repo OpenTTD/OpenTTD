@@ -1247,7 +1247,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Dangos cyrraedd a gadael mewn amserlenni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y Cyntaf sydd ar gael
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y cyntaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yr olaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Defnydd mwyaf
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Dangos traciau wedi'u cadw: {ORANGE}{STRING}
@@ -3190,6 +3190,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Newid ym
 
 STR_ORDER_REFIT                                                 :{BLACK}Ailffitio
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Dewiswch y math o lwyth yr hoffech chi ailffitio gyda'r gorchymyn hwn. Cliciwch Ctrl-clic er mwyn diddymu'r cyfarwyddyd hwn.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Awto-ailffitio
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Dewis y math o lwyth i awto-ailffitio ar ei gyfer yn y gorchymyn yma. Mae Ctrl+Clic yn tynnu'r gorchymyn. Bydd awto-ailffitio ond yn digwydd os yw'r cerbyd yn caniatáu hynny
+STR_ORDER_DROP_REFIT_AUTO                                       :Llwyth gosodedig
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Llwythi ar gael
 
 STR_ORDER_SERVICE                                               :{BLACK}Gwasanaeth
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mynd bob tro
@@ -3278,6 +3282,21 @@ STR_ORDER_NO_UNLOAD                                             :(Dim dadlwytho 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Dim dadlwytho, aros am lwyth llawn)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Dim dadlwytho, aros am unrhyw lwyth llawn)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Dim llwytho na dadlwytho)
+
+STR_ORDER_AUTO_REFIT                                            :(Awto-ailffitio i {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Llwyth llawn gan awto-ailffitio i {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Llwyth llawn o unrhyw gargo gan awto-ailffitio i {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Dadlwytho a cymryd cargo gan awto-ailffitio i {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Dadlwytho ac aros am lwyth llawn o gargo gan awto-ailffitio i {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Dadlwytho ac aros am unrhyw lwyth llawn gan awto-ailffitio o {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Trosglwyddo a cymryd cargo gan awto-ailffitio i {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trosglwyddo ac aros am lwyth llawn gan awto-ailffitio i {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trosglwyddo ac aros am unrhyw lwyth llawn gan awto-ailffitio i {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Dim dadlwytho ond cymryd cargo gan awto-ailffitio i {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Dim dadlwytho ac aros am lwyth llawn gan awto-ailffitio i {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Dim dadlwytho ac aros am unrhyw lwyth llawn gan awto-ailffitio i {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :llwythi ar gael
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[ochr agos]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[canol]
