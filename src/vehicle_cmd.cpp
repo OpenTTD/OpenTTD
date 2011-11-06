@@ -208,7 +208,7 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 }
 
 /** Helper to run the refit cost callback. */
-static uint GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype, bool *auto_refit_allowed)
+static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype, bool *auto_refit_allowed)
 {
 	/* Prepare callback param with info about the new cargo type. */
 	const Engine *e = Engine::Get(engine_type);
@@ -218,7 +218,9 @@ static uint GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID n
 	uint16 cb_res = GetVehicleCallback(CBID_VEHICLE_REFIT_COST, param1, 0, engine_type, v);
 	if (cb_res != CALLBACK_FAILED) {
 		*auto_refit_allowed = HasBit(cb_res, 14);
-		return GB(cb_res, 0, 14);
+		int factor = GB(cb_res, 0, 14);
+		if (factor >= 0x2000) factor -= 0x4000; // Treat as signed integer.
+		return factor;
 	}
 
 	*auto_refit_allowed = e->info.refit_cost == 0;
@@ -239,7 +241,7 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID 
 	ExpensesType expense_type;
 	const Engine *e = Engine::Get(engine_type);
 	Price base_price;
-	uint cost_factor = GetRefitCostFactor(v, engine_type, new_cid, new_subtype, auto_refit_allowed);
+	int cost_factor = GetRefitCostFactor(v, engine_type, new_cid, new_subtype, auto_refit_allowed);
 	switch (e->type) {
 		case VEH_SHIP:
 			base_price = PR_BUILD_VEHICLE_SHIP;
@@ -264,7 +266,11 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID 
 
 		default: NOT_REACHED();
 	}
-	return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->GetGRF(), -10));
+	if (cost_factor < 0) {
+		return CommandCost(expense_type, -GetPrice(base_price, -cost_factor, e->GetGRF(), -10));
+	} else {
+		return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->GetGRF(), -10));
+	}
 }
 
 /**
