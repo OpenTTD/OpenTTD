@@ -400,7 +400,6 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 
 		/* initialize the ingame console */
 		IConsoleInit();
-		_cursor.in_window = true;
 		InitializeGUI();
 		IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
@@ -666,6 +665,12 @@ int ttd_main(int argc, char *argv[])
 	 */
 	_cur_resolution.width  = ClampU(_cur_resolution.width,  1, UINT16_MAX / 2);
 	_cur_resolution.height = ClampU(_cur_resolution.height, 1, UINT16_MAX / 2);
+
+	/* Assume the cursor starts within the game as not all video drivers
+	 * get an event that the cursor is within the window when it is opened.
+	 * Saying the cursor is there makes no visible difference as it would
+	 * just be out of the bounds of the window. */
+	_cursor.in_window = true;
 
 	/* enumerate language files */
 	InitializeLanguagePacks();
