@@ -212,15 +212,19 @@ static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID ne
 {
 	/* Prepare callback param with info about the new cargo type. */
 	const Engine *e = Engine::Get(engine_type);
-	const CargoSpec *cs = CargoSpec::Get(new_cid);
-	uint32 param1 = (cs->classes << 16) | (new_subtype << 8) | e->GetGRF()->cargo_map[new_cid];
 
-	uint16 cb_res = GetVehicleCallback(CBID_VEHICLE_REFIT_COST, param1, 0, engine_type, v);
-	if (cb_res != CALLBACK_FAILED) {
-		*auto_refit_allowed = HasBit(cb_res, 14);
-		int factor = GB(cb_res, 0, 14);
-		if (factor >= 0x2000) factor -= 0x4000; // Treat as signed integer.
-		return factor;
+	/* Is this vehicle a NewGRF vehicle? */
+	if (e->GetGRF() != NULL) {
+		const CargoSpec *cs = CargoSpec::Get(new_cid);
+		uint32 param1 = (cs->classes << 16) | (new_subtype << 8) | e->GetGRF()->cargo_map[new_cid];
+
+		uint16 cb_res = GetVehicleCallback(CBID_VEHICLE_REFIT_COST, param1, 0, engine_type, v);
+		if (cb_res != CALLBACK_FAILED) {
+			*auto_refit_allowed = HasBit(cb_res, 14);
+			int factor = GB(cb_res, 0, 14);
+			if (factor >= 0x2000) factor -= 0x4000; // Treat as signed integer.
+			return factor;
+		}
 	}
 
 	*auto_refit_allowed = e->info.refit_cost == 0;
