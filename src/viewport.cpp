@@ -1887,8 +1887,8 @@ static void PlaceObject()
 	if (pt.x == -1) return;
 
 	if ((_thd.place_mode & HT_DRAG_MASK) == HT_POINT) {
-		pt.x += 8;
-		pt.y += 8;
+		pt.x += TILE_SIZE / 2;
+		pt.y += TILE_SIZE / 2;
 	}
 
 	_tile_fract_coords.x = pt.x & TILE_UNIT_MASK;
