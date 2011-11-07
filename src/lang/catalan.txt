@@ -2195,30 +2195,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Camps
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreny nevat
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desert
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Via de tren
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Via de tren amb senyals tram
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Via de tren amb pre-senyals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Via de tren amb senyals de sortida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Via de tren amb senyals combinades
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Via de tren amb senyals de camí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Via de tren amb senyals de camí d'un sentit
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Via de tren amb senyals tram i pre-senyals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Via de tren amb senyals tram i senyals de sortida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Via de tren amb senyals tram i senyals combinades
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Via de tren amb senyals tram i de camí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Via de tren amb senyals tram i de camí d'un sentit
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Via de tren amb pre-senyals i senyals de sortida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Via de tren amb pre-senyals i senyals combinades
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Via de tren amb senyals pre- i de camí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Via de tren amb senyals pre- i de camí d'un sentit
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Via de tren amb senyals de sortida i senyals combinades
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Via de tren amb senyals sortida- i de camí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Via de tren amb senyals sortida- i de camí d'un sentit
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Via de tren amb senyals combo- i de camí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Via de tren amb senyals combo- i de camí d'un sentit
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Via de tren amb senyals de camí i de camí d'un sentit
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Cotxeres de tren
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Carretera
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Carretera amb fanals
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Carretera de tres carrils

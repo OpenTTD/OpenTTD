@@ -146,6 +146,7 @@ struct RailtypeInfo {
 	} cursor;
 
 	struct {
+		StringID name;
 		StringID toolbar_caption;
 		StringID menu_text;
 		StringID build_caption;

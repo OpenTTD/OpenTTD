@@ -1878,9 +1878,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fjilden
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snie
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woastine
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoarwei
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Treindepot
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Wei
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Wei mei strjitteljochten
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Wei mei beammen oan 'e siden

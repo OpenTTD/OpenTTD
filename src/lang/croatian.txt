@@ -2290,30 +2290,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zemlja pokrivena snijegom
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustinja
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Željeznička pruga
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Željeznička pruga s blokirajućim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Željeznička pruga s pre-signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Željeznička pruga s izlaznim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Željeznička pruga s kombo signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Željeznička pruga s putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Željeznička pruga s jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Željeznička pruga s normalnim i pre-signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Željeznička pruga s blokirajućim i izlaznim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Željeznička pruga s blokirajućim i kombo signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Željeznička pruga s blokirajućim i putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Željeznička pruga s blokirajućim i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Željeznička pruga s pre- i izlaznim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Željeznička pruga s pre- i kombo signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Željeznička pruga s pre- i putnim znakovima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Željeznička pruga s pre- i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Željeznička pruga s izlaznim i kombo signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Željeznička pruga s izlaznim i putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Željeznička pruga s izlaznim i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Željeznička pruga s kombo i putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Željeznička pruga s kombo i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Željeznička pruga s putnim i jednosmjernim putnim signalima
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Željezničko spremište vlakova
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta s javnom rasvjetom
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Cesta s tri trake

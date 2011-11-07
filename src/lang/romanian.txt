@@ -2194,30 +2194,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Teren agricol
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Teren înzăpezit
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deşert
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cale ferată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cale ferată cu semnalizare normală
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cale ferată cu presemnalizare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cale ferată cu semnale de ieşire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cale ferată cu semnale combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cale ferată cu semnale de cale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cale ferată cu semnale de cale cu sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cale ferată cu semnale normale şi presemnalizare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cale ferată cu semnale normale şi semnale de ieşire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cale ferată cu semnale normale şi semnale combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cale ferată cu semnale normale şi semnale de cale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cale ferată cu semnale normale şi semnale de cale cu sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cale ferată cu presemnalizare şi semnale de ieşire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cale ferată cu presemnalizare şi semnale combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cale ferată cu presemnalizare şi semnale de cale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cale ferată cu presemnalizare şi semnale de cale cu sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cale ferată cu semnale de ieşire şi semnale combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cale ferată cu semnale de ieşire şi semnale de cale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cale ferată cu semnale de ieşire şi semnale de cale cu sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cale ferată cu semnale combinate şi semnale de cale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cale ferată cu semnale combinate şi semnale de cale cu sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cale ferată cu semnale de cale şi semnale de cale cu sens unic
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depou de cale ferată
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Şosea
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Stradă iluminată
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Stradă cu copaci pe margine

@@ -2269,30 +2269,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Laukai
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Užpustyta žemė
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Dykuma
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Geležinkelio bėgiai
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Gelezinkelio bėgiai su paprastais šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Geležinkelio bėgiai su pre-šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Gelezinkelio bėgiai su exit-šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :geležinkelio bėgiai su kombo signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Geležinkelis su krypties šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Geležinkelis su vienpusiais krypties signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Geležinkelis su paprastais ir pre-signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Geležinkelis su paprastais ir išėjimo signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Geležinkelis su paprastais ir kombo-signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Geležinkelis su paprastais ir krypties signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Geležinkelis su paprastais ir vienpusiais kelio signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Geležinkelis su pre- ir išėjimo signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Geležinkelis su pre- ir kombo- signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Geležinkelis su pre- ir krypties signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Geležinkelio bėgiai su pre- ir vienpusias trajektorijos signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Geležinkelis su išėjimo ir kombo- šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Geležinkelis su išėjimo ir krypties šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Geležinkelis su išėjimo ir vienpusiais krypties šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Bėgiai su kombo ir krypties signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Bėgiai su combo- ir vienpusiais krypties signalais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Bėgiai su krypties ir vienpusiais krypties šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Traukinių depas
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Kelias
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Kelias su žibintais
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Trijuostis kelias

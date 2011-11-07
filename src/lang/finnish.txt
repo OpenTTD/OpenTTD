@@ -2194,30 +2194,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Peltoja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumen peittämää maata
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Aavikkoa
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Rautatie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Rautatie suojastusopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Rautatie tulo-opastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Rautatie poistumisopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Rautatie yhdistelmäopastein
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Rautatie reittiopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Rautatie yksisuuntaisin reittiopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Rautatie suojastus- ja tulo-opastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Rautatie suojastus- ja poistumisopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Rautatie suojastus- ja yhdistelmäopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Rautatie suojastus- ja reittiopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Rautatie suojastus- ja yksisuuntaisin reittiopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Rautatie esi- ja poistumisopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Rautatie esi- ja yhdistelmäopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Rautatie esi- ja reittiopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Rautatie esi- ja yksisuuntaisin reittiopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Rautatie poistumis- ja yhdistelmäopastimin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Rautatie poistumis- ja reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Rautatie poistumis- ja yksisuuntaisopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Rautatie yhdistelmä- ja reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Rautatie yhdistelmä- ja yksisuuntaisilla reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Rautatie reitti- ja yksisuuntaisilla reittiopastimilla
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Veturitalli
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Tie
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Tie katuvaloilla
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Puilla reunustettu tie

@@ -3770,9 +3770,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				buf->ReadDWord();
 				break;
 
-			case 0x09: // Name of railtype
-				rti->strings.toolbar_caption = buf->ReadWord();
+			case 0x09: // Toolbar caption of railtype (sets name as well for backwards compatibility)
+				rti->strings.name = rti->strings.toolbar_caption = buf->ReadWord();
 				_string_to_grf_mapping[&rti->strings.toolbar_caption] = _cur.grffile->grfid;
+				_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
 				break;
 
 			case 0x0A: // Menu text of railtype
@@ -3855,6 +3856,11 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				rti->sorting_order = buf->ReadByte();
 				break;
 
+			case 0x1B: // Name of railtype (overridden by prop 09)
+				rti->strings.name = buf->ReadWord();
+				_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -3890,13 +3896,14 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 				break;
 			}
 
-			case 0x09: // Name of railtype
+			case 0x09: // Toolbar caption of railtype
 			case 0x0A: // Menu text
 			case 0x0B: // Build window caption
 			case 0x0C: // Autoreplace text
 			case 0x0D: // New loco
 			case 0x13: // Construction cost
 			case 0x14: // Speed limit
+			case 0x1B: // Name of railtype
 				buf->ReadWord();
 				break;
 

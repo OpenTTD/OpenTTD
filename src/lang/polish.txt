@@ -2574,30 +2574,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pola
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zaśnieżony teren
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustynia
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Tory kolejowe
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Tory kolejowe ze zwykłą sygnalizacją
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Tory kolejowe z pre-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Tory kolejowe z exit-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Tory kolejowe z combo-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Tor kolejowy z sygnalizacją
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Tor kolejowy z sygnalizacją jednokierunkową
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Tory kolejowe z normalnymi i pre-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Tory kolejowe z normalnymi i exit-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Tory kolejowe z normalnymi i combo-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Tory kolejowe z sygnalizatorami blokowania i jazdy
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Tor kolejowy z blokadą i jednokierunkowymi sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Tory kolejowe z pre- i exit-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Tory kolejowe z pre i combo-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Tor kolejowy z sygnalizatorami wejścia i trasy
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Tor kolejowy z sygnalizatorami wejścia i jednokierunkowymi trasy
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Tory kolejowe z exit i combo-sygnałami
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Tor kolejowy z sygnałami wyjścia- i trasy
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Tor kolejowy z sygnałami wyjścia- i trasy jednokierunkowej
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Tor kolejowy z sygnałami mieszanymi- i trasy
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Tor kolejowy z sygnałami mieszanymi- i trasy jednokierunkowej
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Tor kolejowy z sygnałami trasy i trasy jednokierunkowej
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Zajezdnia kolejowa
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Droga
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Droga z oświetleniem ulicznym
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Droga z drzewami

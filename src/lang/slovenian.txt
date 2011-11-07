@@ -2347,30 +2347,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežen teren
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Puščava
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železniška proga
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železniški tiri z normalnimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železniški tiri s pred-signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železniški tiri z izhodnimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železniški tiri s kombiniranimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železnica z naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železnica z enosmernimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Tiri z normalnimi in uvodnimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Tiri z normalnimi in izhodnimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Železniški tiri z normalnimi in kombiniranimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železnica z navadnimi in naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Železnica z navadnimi in enosmernimi naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Tiri z uvodnimi in izhodnimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Železniški tiri s pred- in kombiniranimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železnica s pred- in naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Železnica s pred- in enosmernimi naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Železniški tiri z izhodnimi in kombiniranimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železnica z izhodnimi in naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železnica z izhodnimi in enosmernimi naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železnica s kombiniranimi in naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železnica s kombiniranimi in enosmernimi naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železnica z naprednimi in enosmernimi naprednimi signali
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železniška garaža
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta z razsvetljavo
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Drevored

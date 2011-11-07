@@ -2145,30 +2145,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Velde
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Sneeu-bedekte land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woestyn
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoorweg
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Spoorweg spoor met gewone seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Spoorweg spoor met gewone seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Spoorweg spoor met uitgang-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Spoorweg spoor met kombo-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Treinspoor met rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Treinspoor met een-rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Spoorweg spoor met gewone en pre-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Spoorweg spoor met geowne en uitgang-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Spoorweg spoor met gewone en kombo-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Trainspoor met blok en rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Trainspoor met blok en een-rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Spoorweg spoor met pre- en uitgang-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Spoorweg spoor met pre- en kombo-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Spoorweg spoor met pre- en pad seiene
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Spoorweg spoor met pre- en een-rigting seiene
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Spoorweg spoor met uitgang- en kombo-seine
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Spoorweg spoor met afklim- en pad seiene
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Treinspoor met afklim- en een-rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trainspoor met kombineer- en rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trainspoor met kombineer- en een-rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trainspoor met rigting- en een-rigting aanwysers
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Spoorweg trein depot
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Pad
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Pad met straatligte
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Boom-belynde pad

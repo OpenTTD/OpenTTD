@@ -31,6 +31,7 @@
 #include "company_base.h"
 #include "core/backup_type.hpp"
 #include "date_func.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"
@@ -2594,6 +2595,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	td->rail_speed = rti->max_speed;
 	td->owner[0] = GetTileOwner(tile);
+	SetDParamX(td->dparam, 0, rti->strings.name);
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_NORMAL:
 			td->str = STR_LAI_RAIL_DESCRIPTION_TRACK;

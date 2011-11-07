@@ -2531,30 +2531,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Палi
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Засьнежаная зямля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустэльня
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Рэйкі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Рэйкi са звычайнымi сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Рэйкі з уваходнымі прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Рэйкі з выхаднымi прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Рэйкі з камбiнаванымi прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Рэйкі з маршрутнымi сыгналамi (PMS)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Рэйкі з аднабаковымi маршрутнымi сыгналамi (PMS)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Рэйкі са звычайнымi й уваходнымi прэсыгналамі
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Рэйкі са звычайнымi й выхаднымi прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Рэйкі са звычайнымi й камбiнаванымi прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Рэйкі са звычайнымi й маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Рэйкі са звычайнымi й аднабаковымi маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Рэйкі з уваходнымi й выхаднымi прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Рэйкі з уваходнымi й камбiнаванымi прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Рэйкі з уваходнымi прэсыгналамі й маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Рэйкі з уваходнымi прэсыгналамі й аднабаковымi маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Рэйкі з выхаднымi й камбiнаванымi прэсыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Рэйкі з выхаднымi прэсыгналамі й маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Рэйкі з выхаднымi прэсыгналамі й аднабаковымi маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Рэйкі з камбiнаванымi прэсыгналамі й маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Рэйкі з камбiнаванымi прэсыгналамі й аднабаковымi маршрутнымi (PMS) сыгналамi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Рэйкі з двухбаковымі й аднабаковымi маршрутнымi сыгналамi (PMS)
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Чыгуначнае дэпо
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дарога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дарога з вулічным асьвятленьнем
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Дарога з азеляненьнем

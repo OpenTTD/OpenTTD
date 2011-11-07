@@ -2176,30 +2176,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснежена земя
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустиня
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :ЖП линия
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :ЖП линия с нормални сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :ЖП линия с пре-сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :ЖП линия с изходни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Железопътна линиа с комбинирани знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :ЖП линия с маршрутизиращи знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :ЖП линия с еднопоссочни маршрутизиращи знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Железопътна линиа с нормални и пре-сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Железопътна линиа с нормални и изходни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Железопътна линиа с нормални и комбинирани знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :ЖП линия с обикновени и маршрутизиращи знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :ЖП линия с обикновени и еднопосочни маршрутизиращи знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Железопътна линиа с пре- и изходни сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Железопътна линиа с пре- и комбинирани сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :ЖП линия с пре- и маршрутизиращи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :ЖП линия с пре- и еднопосочни маршрутизиращи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Железопътна линиа с изходни и комбинирани знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :ЖП линия с изходни и еднопосочни маршрутизиращи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :ЖП линия с изходни и еднопосочни маршрутизиращи сигнали
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Релсов път със смесени и двупосочни знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Релсов път със смесени и еднопосочни знаци
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Релсов път с двупосочни и еднопосочни знаци
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :ЖП депо
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :път
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Асфалтов път с улично осветление
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Асфалтов път с дървета

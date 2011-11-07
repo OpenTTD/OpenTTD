@@ -2196,30 +2196,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Lauki
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Apsnigusi zeme
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Tuksnesis
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Sliežu ceļš
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Sliedes ar bloka signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Sliedes ar pirms-signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Sliedes ar izejas signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Sliedes ar kombinētiem signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Sliedes ar virziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Sliedes ar vienvirziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Sliedes ar bloku un pirms-signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Sliedes ar bloku un izejas signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Sliedes ar bloku un kombinētiem signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Sliedes ar bloku un virziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Sliedes ar bloka un vienvirziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Sliedes ar pirms un izejas signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Sliedes ar pirms un kombinētiem signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Sliedes ar pirms un virziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Sliedes ar pirms un vienvirziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Sliedes ar izejas un kombinētiem signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Sliedes ar izejas un virziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Sliedes ar izejas un vienvirziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Sliedes ar kombinētiem un virziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Sliedes ar kombinētiem un vienvirziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Sliedes ar virziena un vienvirziena signāliem
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Vilcienu depo
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ceļš
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Apgaismots ceļš
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Aleja

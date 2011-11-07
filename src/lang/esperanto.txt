@@ -2157,30 +2157,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Kampoj
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Neĝkovrita lando
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Dezerto
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trako
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Trako kun blok-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Trako kun antaŭ-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Trako kun elir-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Trako kun kombin-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Trako kun pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Trako kun unudirektaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Trako kun blok- kaj antaŭ-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Trako kun blok- kaj elir-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Trako kun blok- kaj kombin-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Trako kun blok- kaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Trako kun blok- kaj unudirektaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Trako kun antaŭ- kaj elir-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Trako kun antaŭ- kaj kombin-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Trako kun antaŭ kaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Trako kun antaŭ- kaj unudirektaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trako kun elir- kaj kombin-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trako kun elir- kaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trako kun elir- kaj unudirektaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trako kun kombin- kaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trako kun kombin- kaj unudirektaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trako kun pad- kaj unudirektaj pad-signaloj
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trajngaraĝo
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strato
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strato kun lampoj
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Strato kun arboj apude

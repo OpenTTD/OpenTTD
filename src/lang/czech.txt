@@ -2282,30 +2282,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pole
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasněžená země
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Poušť
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Koleje
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Koleje s obyčejným návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Koleje s vjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Koleje s výjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Koleje s cestovým (kombinovaným) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Koleje s dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Koleje s jednosměrným dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Koleje s normálním a vjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Koleje s obyčejným a výjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Koleje s obyčejným a cestovým (kombinovaným) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Koleje s obyčejným a dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Koleje s obyčejným a jednosměrným dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Koleje s vjezdovým a výjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Koleje s vjezdovým a cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Koleje s vjezdovým a dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Koleje s vjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Koleje s výjezdovým a cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Koleje s výjezdovým a dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Koleje s výjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Koleje s cestovým (kombinovaným) a dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Koleje s cestovým (kombinovaným) a jednosměrným dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Koleje s dokonalejším (PBS) a jednosměrným dokonalejším návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železniční depo
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Silnice
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Silnice s pouličním osvětlením
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Silnice s alejí

@@ -2389,30 +2389,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snegom prekrivena zemlja
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustinja
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železnička pruga
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Pruga sa blok signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Pruga sa predsignalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Pruga sa izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Pruga sa ulzno-izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Pruga sa putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Pruga sa jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Pruga sa predsignalizacijom i blok signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Pruga sa blok i izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Pruga sa blok i ulazno-izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Pruga sa blok i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Pruga sa blok i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Pruga sa predsignalizacijom i izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Pruga sa predsignalizacijom i ulazno-izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Pruga sa predsignalizacijom i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Pruga sa predsignalizacijom i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Pruga sa izlaznom i ulazno-izlaznom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Pruga sa izlaznom i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Pruga sa izlaznom i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Pruga sa ulazno-izlaznom i putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Pruga sa ulazno-izlaznom i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Pruga sa putnom i jednosmernom putnom signalizacijom
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železnički depo
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Put
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Kolovoz sa uličnom rasvetom
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Put sa drvoredom

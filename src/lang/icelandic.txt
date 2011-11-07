@@ -2152,30 +2152,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akur
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snjóþekið land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Eyðimörk
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Lestarteinn
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Lestarteinn með venjulegum ljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Lestarteinn með forljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Lestarteinn með útljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Járnbrautarspor með fjölljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Járnbrautarteinar með háþróuðum skiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Járnbrautarteinar með háþróuðum einstefnuskiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Járbrautarspor með venjulegum ljósum og forljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Járnbrautarspor með venjulegum ljósum og útgangsljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Járnbrautarspor með venjulegum ljósum og fjölljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Járnbrautarteinar með venjulegum og háþróuðum skiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Járnbrautarteinar með venjulegum skiltum og háþróuðum einstefnuskiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Járnbrautarspor með for- og útgangsljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Járnbrautarspor með for- og fjölljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Járnbrautarteinar með for- og háþróuðum skiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Járnbrautarteinar með forskiltum og háþróuðum einstefnuskiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Járnbrautarspor með útgangs- og fjölljósum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Járnbrautarteinar með útgöngu- og háþróuðum skiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Járnbrautarteinar með útgönguskiltum og háþróuðum einstefnuskiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Lestarteinar með samskeyta- og leiðar-merkjum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Járnbrautarspor með fjöl- og einstefnuskiltum
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Járnbrautarspor með háþróuðum og einstefnuskiltum
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Lestarskýli
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Vegur
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Vegur með götuljósum
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Trjáskreyttur vegur

@@ -2154,30 +2154,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ladang
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tanah diliputi salji
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Padang pasir
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Landasan keretapi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Landasan keretapi dengan isyarat blok
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Landasan keretapi dengan pra-isyarat
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Landasan keretapi dengan isyarat-keluar
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Landasan keretapi dengan isyarat-kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Landasan keretapi dengan isyarat laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Landasan keretapi dengan isyarat laluan sehala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Landasan keretapi dengan isyarat blok dan pra-isyarat
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Landasan keretapi dengan isyarat blok dan isyarat-keluar
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Landasan keretapi dengan isyarat blok dan isyarat-kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Landasan keretapi dengan isyarat blok dan isyarat laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Landasan keretapi dengan isyarat blok dan isyarat laluan sehala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Landasan keretapi dengan pra-isyarat dan isyarat-keluar
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Landasan keretapi dengan pra-isyarat dan isyarat kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Landasan keretapi dengan pra-isyarat dan isyarat laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Landasan keretapi dengan pra-isyarat dan isyarat laluan sehala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Landasan keretapi dengan isyarat-keluar dan isyarat kombo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Landasan keretapi dengan isyarat-keluar dan isyarat laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Landasan keretapi dengan isyarat-keluar dan isyarat laluan sehala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Landasan keretapi dengan isyarat-kombo dan isyarat laluan
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Landasan keretapi dengan isyarat-kombo dan isyarat laluan sehala
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Landasan keretapi dengan isyarat laluan dan isyarat laluan sehala
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depot keretapi
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalanraya
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalan raya berlampu
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Jalanraya dibarisi pokok

@@ -2195,30 +2195,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Champs
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terre enneigée
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Désert
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Rails
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Rails avec des signaux de bloc
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Rails avec des signaux d'entrée
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Rails avec des signaux de sortie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Rails avec des signaux combinés
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Rails avec des signaux de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Rails avec des signaux de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Rails avec des signaux de bloc et d'entrée
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Rails avec des signaux de bloc et de sortie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Rails avec des signaux de bloc et combinés
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Rails avec des signaux de bloc et de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Rails avec des signaux de bloc et de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Rails avec des signaux d'entrée et de sortie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Rails avec des signaux d'entrée et combinés
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Rails avec des signaux d'entrée et de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Rails avec des signaux d'entrée et de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Rails avec des signaux de sortie et combinés
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Rails avec des signaux de sortie et de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Rails avec des signaux de sortie et de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Rails avec des signaux combinés et de chemin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Rails avec des signaux combinés et de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Rails avec des signaux de chemin et de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dépôt ferroviaire
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Route
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Route avec lampadaires
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Route avec lignée d'arbustes

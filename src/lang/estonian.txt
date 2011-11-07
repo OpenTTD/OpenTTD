@@ -2251,30 +2251,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Põllud
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumine maa
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Kõrb
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Rööbastee
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Läbisõidusignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Hoiatussignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Väljasõidusignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Mitmiksignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Ühesuunaliste täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Läbisõidu- ja hoiatussignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Läbisõidu- ja väljasõidusignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Läbisõidu- ja mitmiksignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Tavaliste ja täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Tavaliste ja ühesuunaliste täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Hoiatus- ja väljasõidusignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Hoiatus- ja mitmiksignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Hoiatus- ja täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Hoiatus- ja ühesuunaliste täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Väljasõidu- ja mitmiksignaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Väljasõidu- ja täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Väljasõidu- ja ühesuunaliste täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Mitmik- ja täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Mitmik- ja ühesuunaliste täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Täiustatud ja ühesuunaliste täiustatud signaalidega rööbastee osa
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Rongidepoo
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Sõidutee
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Valgustatud sõidutee
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Puiestee

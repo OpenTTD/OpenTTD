@@ -2370,30 +2370,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснеженная земля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустыня
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Рельсы
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Ж/д пути с обычными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Ж/д пути со входными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Ж/д пути с выходными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Ж/д пути с комбинированными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Ж/д пути с маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Ж/д пути с одностор. маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Ж/д пути с обычными и входными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ж/д пути с обычными и выходными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Ж/д пути с обычными и комбо-сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Ж/д пути с обычными и маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Ж/д пути с обычными и одностор. маршр. сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ж/д пути со входными и выходными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ж/д пути со входными и комбо-сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ж/д пути со входными и маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ж/д пути со входными и одностор. маршр. сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Ж/д пути с выходными и комбо-сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Ж/д пути с выходными и маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Ж/д пути с выходными и одностор. маршр. сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ж/д пути с комбо- и маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ж/д пути с комбо- и одностор. маршр. сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ж/д пути с маршр. и одностор. маршр. сигналами
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Ж/д депо
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога с уличным освещением
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Дорога с озеленением

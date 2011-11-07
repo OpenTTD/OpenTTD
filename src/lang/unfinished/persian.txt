@@ -2194,30 +2194,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :زمین ها
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :زمین پوشیده از برف
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :صحرا
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :قطعه ریل راه آهن
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :ریل با نشانگرهای توقف
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :ریل راه آهن با پیش نشانگرها
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :ریل راه آهن با نشانگرهای خروجی
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :ریل راه آهن با نشانگرهای چندگانه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :ریل راه آهن با نشانگرهای مسیر
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :ریل راه آهن با نشانگرهای راه یکطرفه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :ریل راه آهن با نشانگرهای توقف و پیش نشانگرها
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :ریل راه آهن با نشانگرهای توقف و نشانگر خروج
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :ریل راه آهن با نشانگرهای توقف و نشانگرهای چندگانه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :ریل راه آهن با نشانگرهای توقف و نشانگرهای مسیر
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :ریل راه آهن با نشانگرهای توقف و نشانگرهای راه یکطرفه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :ریل راه آهن با پیش نشانگر و نشانگرهای خروچی
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :ریل راه آهن با پیش نشانگرها و نشاگرهای چندگانه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :ریل راه آهن با پیش نشانگرها و نشانگرهای مسیر
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :ریل راه آهن با پیش نشانگرها و نشانگرهای مسیر یکطرفه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :ریل راه آهن با نشانگرهای خروج و نشانگرهای چندگانه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :ریل راه آهن با نشانگرهای توقف و نشانگرهای مسیر
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :ریل راه آهن با نشانگرهای توقف و نشانگرهای مسیر یکطرفه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :ریل راه آهن با نشانگرهای چندگانه و نشانگرهای مسیر
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :ریل راه آهن با نشانگرهای چندگانه و نشانگرهای راه یکطرفه
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :ریل راه آهن با نشانگرهای مسیر و نشانگرهای راه یکطرفه
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :گاراژ راه آهن
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :جاده
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :جاده با چراغ راهنمایی رانندگی
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :جاده 3 لاین

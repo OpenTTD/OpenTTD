@@ -2194,30 +2194,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Caeau
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tir ag eira
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Anialdir
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trac rheilffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Trac rheilffordd gyda signalau cyffredin
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Trac rheilffordd gyda chynsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Trac rheilffordd gyda allsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Trac rheilffordd gyda chyfunsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Trac rheilffordd gyda signalau llwybr
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Trac rheilffordd gyda signalau llwybr un-ffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Trac rheilffordd gyda signalau bloc a rhagsignalau
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Trac rheilffordd gyda signalau bloc a signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Trac rheilffordd gyda signalau bloc a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Trac rheilffordd gyda signalau bloc a signalau llwybr
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Trac rheilffordd gyda signalau bloc a signalau llwybr un-ffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Trac rheilffordd gyda rhagsignalau a signalau gadael
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Trac rheilffordd gyda rhagsignalau a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Trac rheilffordd gyda rhagsignalau a signalau llwybr
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Trac rheilffordd gyda rhagsignalau a signalau llwybr un-ffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trac rheilffordd gyda signalau gadael a signalau cyfun
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trac rheilffordd gyda signalau gadaela signalau llwybr
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trac rheilffordd gyda signalau gadael a signalau llwybr un-ffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trac rheilffordd gyda signalau cyfun a signalau llwybr
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trac rheilffordd gyda signalau cyfun a signalau llwybr un-ffordd
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trac rheilffordd gyda signalau llwybr a signalau llwybr un-ffordd
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Rheilffordd trên depo
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ffordd gyda goleuadau stryd
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ffordd gyda coed wedi'i plannu

@@ -2285,30 +2285,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Χωράφια
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Χιονισμένο έδαφος
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Έρημος
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Σιδηρόδρομος
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Κομματι σιδηρόδρομου με σηματοδότες τμήματος
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Κομματι σιδηρόδρομου με προ-σηματοδότες
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Κομματι σιδηρόδρομου με σηματοδότες εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Κομματι σιδηρόδρομου με συνδιασμένους σηματοδότες
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Κομμάτι σιδηρόδρομου με σηματοδότες τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Κομμάτι σιδηρόδρομου με σηματοδότες μονόδρομης τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Κομμάτι σιδηρόδρομου με προ-σηματοδότες και τμήματος
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Κομμάτι σιδηρόδρομου με σηματοδότες τμήματος και εξόδου
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Κομμάτι σιδηρόδρομου με σηματοδότες τμήματος και συνδιασμένους
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Κομμάτι σιδηρόδρομου με σηματοδότες τμήματος και τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Κομμάτι σιδηρόδρομου με σηματοδότες τμήματος και μονόδρομης τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Κομμάτι σιδηρόδρομου με προ και εξόδου σηματοδότες
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Κομμάτι σιδηρόδρομου με προ και συνδιασμένους σηματοδότες
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Κομματι σιδηρόδρομου με προ και τροχιάς σηματοδότες
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Κομμάτι σιδηρόδρομου με σηματοδότες προ και μονόδρομης τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Κομμάτι σιδηρόδρομου με εξόδου και συνδιασμένους σηματοδότες
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Κομμάτι σιδηρόδρομου με σηματοδότες εξόδου και μονόδρομης τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Κομμάτι σιδηρόδρομου με σηματοδότες εξόδου και μονόδρομης τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Κομμάτι σιδηρόδρομου με σηματοδότες συνδιασμένους και τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Κομμάτι σιδηρόδρομου με σηματοδότες συνδιασμένους και μονόδρομης τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Κομμάτι σιδηρόδρομου με σηματοδότες τροχιάς και μονόδρομης τροχιάς
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Αμαξοστάσιο σιδηρόδρομου
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Δρόμος
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Δρόμος με φωτισμό
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Δρόμος με δέντρα

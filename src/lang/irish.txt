@@ -2177,30 +2177,6 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Garrantaí
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Talamh faoi shneachta
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Fásach
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Ráille iarnróid
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Ráille iarnróid le comhartaí bloic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Ráille iarnróid le réamh-chomharthaí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Ráille iarnróid le comharthaí amach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Ráille iarnróid le comharthaí teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Ráille iarnróid le comharthaí cosán
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Ráille iarnróid le comharthaí cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Ráille iarnróid le comharthaí bloic agus réamh-chomharthaí
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ráille iarnróid le comharthaí bloic agus amach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Ráille iarnróid le comharthaí bloic agus teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Ráille iarnróid le comharthaí bloic agus cosán
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Ráille iarnróid le comharthaí bloic agus cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí amach
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí cosán
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Ráille iarnróid le comharthaí comharthaí amach agus teaglama
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Ráille iarnróid le comharthaí comharthaí amach agus cosán
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Ráille iarnróid le comharthaí amach agus cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ráille iarnróid le comharthaí teaglama agus cosán
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ráille iarnróid le comharthaí teaglama agus cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ráille iarnróid le comharthaí cosán agus cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Iosta traenach
-
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Bóthair
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Bóthair le soilse sráide
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Bóthair le crainn ar gach taobh
