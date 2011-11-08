@@ -531,7 +531,10 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 					}
 				}
 
-				uint8 common_bitnum = (common_cargo_type == CT_INVALID ? 0xFF : CargoSpec::Get(common_cargo_type)->bitnum);
+				/* Unlike everywhere else the cargo translation table is only used since grf version 8, not 7. */
+				const GRFFile *grffile = v->GetGRF();
+				uint8 common_bitnum = (common_cargo_type == CT_INVALID) ? 0xFF :
+					(grffile->grf_version < 8) ? CargoSpec::Get(common_cargo_type)->bitnum : grffile->cargo_map[common_cargo_type];
 				v->grf_cache.consist_cargo_information = cargo_classes | (common_bitnum << 8) | (common_subtype << 16) | (user_def_data << 24);
 				SetBit(v->grf_cache.cache_valid, NCVV_CONSIST_CARGO_INFORMATION);
 			}
