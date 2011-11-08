@@ -6202,6 +6202,10 @@ static uint32 GetPatchVariable(uint8 param)
 				(log_X << 12) | (log_Y << 8) | (log_X + log_Y);
 		}
 
+		/* The maximum height of the map. */
+		case 0x14:
+			return MAX_TILE_HEIGHT;
+
 		default:
 			grfmsg(2, "ParamSet: Unknown Patch variable 0x%02X.", param);
 			return 0;
