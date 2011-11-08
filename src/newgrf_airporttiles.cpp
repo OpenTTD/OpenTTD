@@ -112,14 +112,15 @@ static const SpriteGroup *AirportTileResolveReal(const ResolverObject *object, c
  * @param parameter from callback. It's in fact a pair of coordinates
  * @param tile TileIndex from which the callback was initiated
  * @param index of the industry been queried for
+ * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return a construction of bits obeying the newgrf format
  */
-uint32 GetNearbyAirportTileInformation(byte parameter, TileIndex tile, StationID index)
+static uint32 GetNearbyAirportTileInformation(byte parameter, TileIndex tile, StationID index, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 	bool is_same_airport = (IsTileType(tile, MP_STATION) && IsAirport(tile) && GetStationIndex(tile) == index);
 
-	return GetNearbyTileInformation(tile) | (is_same_airport ? 1 : 0) << 8;
+	return GetNearbyTileInformation(tile, grf_version8) | (is_same_airport ? 1 : 0) << 8;
 }
 
 
@@ -194,7 +195,7 @@ static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable
 		case 0x44: return GetAnimationFrame(tile);
 
 		/* Land info of nearby tiles */
-		case 0x60: return GetNearbyAirportTileInformation(parameter, tile, st->index);
+		case 0x60: return GetNearbyAirportTileInformation(parameter, tile, st->index, object->grffile);
 
 		/* Animation stage of nearby tiles */
 		case 0x61:

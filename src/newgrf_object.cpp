@@ -157,14 +157,15 @@ static uint32 GetObjectIDAtOffset(TileIndex tile, uint32 cur_grfid)
  * @param parameter from callback.  It's in fact a pair of coordinates
  * @param tile TileIndex from which the callback was initiated
  * @param index of the object been queried for
+ * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return a construction of bits obeying the newgrf format
  */
-static uint32 GetNearbyObjectTileInformation(byte parameter, TileIndex tile, ObjectID index)
+static uint32 GetNearbyObjectTileInformation(byte parameter, TileIndex tile, ObjectID index, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 	bool is_same_object = (IsTileType(tile, MP_OBJECT) && GetObjectIndex(tile) == index);
 
-	return GetNearbyTileInformation(tile) | (is_same_object ? 1 : 0) << 8;
+	return GetNearbyTileInformation(tile, grf_version8) | (is_same_object ? 1 : 0) << 8;
 }
 
 /**
@@ -321,7 +322,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, uin
 			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == o) ? GetObjectRandomBits(tile) : 0;
 
 		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyObjectTileInformation(parameter, tile, o == NULL ? INVALID_OBJECT : o->index);
+		case 0x62: return GetNearbyObjectTileInformation(parameter, tile, o == NULL ? INVALID_OBJECT : o->index, object->grffile->grf_version >= 8);
 
 		/* Animation counter of nearby tile */
 		case 0x63:

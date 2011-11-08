@@ -251,7 +251,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, uint32 p
 			return (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == industry) ? GetIndustryRandomBits(tile) : 0;
 
 		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY, false);
+		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY, false, object->grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x63:

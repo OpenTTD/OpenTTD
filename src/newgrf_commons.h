@@ -296,7 +296,7 @@ extern ObjectOverrideManager _object_mngr;
 
 uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true, Axis axis = INVALID_AXIS);
-uint32 GetNearbyTileInformation(TileIndex tile);
+uint32 GetNearbyTileInformation(TileIndex tile, bool grf_version8);
 uint32 GetCompanyInfo(CompanyID owner, const struct Livery *l = NULL);
 CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, uint32 grfid, StringID default_error);
 

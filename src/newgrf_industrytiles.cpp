@@ -32,14 +32,15 @@
  * @param tile TileIndex from which the callback was initiated
  * @param index of the industry been queried for
  * @param signed_offsets Are the x and y offset encoded in parameter signed?
+ * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return a construction of bits obeying the newgrf format
  */
-uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index, bool signed_offsets)
+uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index, bool signed_offsets, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile, signed_offsets); // only perform if it is required
 	bool is_same_industry = (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == index);
 
-	return GetNearbyTileInformation(tile) | (is_same_industry ? 1 : 0) << 8;
+	return GetNearbyTileInformation(tile, grf_version8) | (is_same_industry ? 1 : 0) << 8;
 }
 
 /**
@@ -87,7 +88,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		case 0x44: return (IsTileType(tile, MP_INDUSTRY)) ? GetAnimationFrame(tile) : 0;
 
 		/* Land info of nearby tiles */
-		case 0x60: return GetNearbyIndustryTileInformation(parameter, tile, inds == NULL ? (IndustryID)INVALID_INDUSTRY : inds->index);
+		case 0x60: return GetNearbyIndustryTileInformation(parameter, tile, inds == NULL ? (IndustryID)INVALID_INDUSTRY : inds->index, true, object->grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x61:

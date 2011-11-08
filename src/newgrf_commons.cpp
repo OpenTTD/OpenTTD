@@ -442,9 +442,10 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets, Axi
  * Common part of station var 0x67, house var 0x62, indtile var 0x60, industry var 0x62.
  *
  * @param tile the tile of interest.
+ * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
  * @return 0czzbbss: c = TileType; zz = TileZ; bb: 7-3 zero, 4-2 TerrainType, 1 water/shore, 0 zero; ss = TileSlope
  */
-uint32 GetNearbyTileInformation(TileIndex tile)
+uint32 GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 {
 	TileType tile_type = GetTileType(tile);
 
@@ -455,7 +456,8 @@ uint32 GetNearbyTileInformation(TileIndex tile)
 	Slope tileh = GetTilePixelSlope(tile, &z);
 	/* Return 0 if the tile is a land tile */
 	byte terrain_type = (HasTileWaterClass(tile) ? (GetWaterClass(tile) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
-	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;
+	if (grf_version8) z /= TILE_HEIGHT;
+	return tile_type << 24 | Clamp(z, 0, 0xFF) << 16 | terrain_type << 8 | tileh;
 }
 
 /**

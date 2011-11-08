@@ -296,7 +296,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, ui
 					Slope tileh = GetTileSlope(tile);
 					bool swap = (object->u.station.axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
 
-					return GetNearbyTileInformation(tile) ^ (swap ? SLOPE_EW : 0);
+					return GetNearbyTileInformation(tile, object->grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
 				}
 				break;
 
@@ -353,7 +353,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, ui
 			Slope tileh = GetTileSlope(tile);
 			bool swap = (axis == AXIS_Y && HasBit(tileh, CORNER_W) != HasBit(tileh, CORNER_E));
 
-			return GetNearbyTileInformation(tile) ^ (swap ? SLOPE_EW : 0);
+			return GetNearbyTileInformation(tile, object->grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
 		}
 
 		case 0x68: { // Station info of nearby tiles
