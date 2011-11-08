@@ -241,9 +241,10 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			if (callback == CALLBACK_FAILED) {
 				cost.AddCost(CheckBuildableTile(t, 0, allowed_z, false, false));
-			} else if (callback != 0) {
-				/* The meaning of bit 10 is inverted in the result of this callback. */
-				return GetErrorMessageFromLocationCallbackResult(ToggleBit(callback, 10), spec->grf_prop.grffile->grfid, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+			} else {
+				/* The meaning of bit 10 is inverted for a grf version < 8. */
+				if (spec->grf_prop.grffile->grf_version < 8) ToggleBit(callback, 10);
+				return GetErrorMessageFromLocationCallbackResult(callback, spec->grf_prop.grffile->grfid, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 		}
 
