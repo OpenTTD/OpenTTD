@@ -561,7 +561,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 					airporttype = st->airport.GetSpec()->ttd_airport_type;
 				}
 
-				return (altitude << 8) | airporttype;
+				return (Clamp(altitude, 0, 0xFF) << 8) | airporttype;
 			}
 
 		case 0x45: { // Curvature info
