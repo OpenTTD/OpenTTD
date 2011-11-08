@@ -1004,11 +1004,15 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x15: { // Cargo type
 				uint8 ctype = buf->ReadByte();
 
-				if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
-					ei->cargo_type = ctype;
-				} else if (ctype == 0xFF) {
+				if (ctype == 0xFF) {
 					/* 0xFF is specified as 'use first refittable' */
 					ei->cargo_type = CT_INVALID;
+				} else if (_cur.grffile->grf_version >= 8) {
+					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
+					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
+				} else if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
+					/* Use untranslated cargo. */
+					ei->cargo_type = ctype;
 				} else {
 					ei->cargo_type = CT_INVALID;
 					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
@@ -1214,15 +1218,20 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x10: { // Cargo type
-				uint8 cargo = buf->ReadByte();
+				uint8 ctype = buf->ReadByte();
 
-				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
-					ei->cargo_type = cargo;
-				} else if (cargo == 0xFF) {
+				if (ctype == 0xFF) {
+					/* 0xFF is specified as 'use first refittable' */
 					ei->cargo_type = CT_INVALID;
+				} else if (_cur.grffile->grf_version >= 8) {
+					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
+					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
+				} else if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
+					/* Use untranslated cargo. */
+					ei->cargo_type = ctype;
 				} else {
 					ei->cargo_type = CT_INVALID;
-					grfmsg(2, "RoadVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
+					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
 				}
 				break;
 			}
@@ -1364,15 +1373,20 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x0C: { // Cargo type
-				uint8 cargo = buf->ReadByte();
+				uint8 ctype = buf->ReadByte();
 
-				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
-					ei->cargo_type = cargo;
-				} else if (cargo == 0xFF) {
+				if (ctype == 0xFF) {
+					/* 0xFF is specified as 'use first refittable' */
 					ei->cargo_type = CT_INVALID;
+				} else if (_cur.grffile->grf_version >= 8) {
+					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
+					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
+				} else if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
+					/* Use untranslated cargo. */
+					ei->cargo_type = ctype;
 				} else {
 					ei->cargo_type = CT_INVALID;
-					grfmsg(2, "ShipVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
+					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
 				}
 				break;
 			}
