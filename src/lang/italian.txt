@@ -1948,6 +1948,15 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Costruis
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterna costruzione/rimozione di binari, segnali, waypoint e stazioni. Tenere premuto CTRL per rimuovere anche i binari.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converte/aggiorna il tipo di rotaie. MAIUSC alterna fra costruzione e stima dei costi
 
+STR_RAIL_NAME_RAILROAD                                          :Ferrovia
+STR_RAIL_NAME_RAILROAD.ms                                       :ferroviario
+STR_RAIL_NAME_ELRAIL                                            :Ferrovia elettrificata
+STR_RAIL_NAME_ELRAIL.ms                                         :ferroviario elettrificato
+STR_RAIL_NAME_MONORAIL                                          :Monorotaia
+STR_RAIL_NAME_MONORAIL.ms                                       :monorotaia
+STR_RAIL_NAME_MAGLEV                                            :Guidovia Maglev
+STR_RAIL_NAME_MAGLEV.ms                                         :Maglev
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientamento deposito
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleziona l'orientamento del deposito ferroviario
@@ -2217,6 +2226,30 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Erba
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campi
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreno innevato
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
+
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} con segnali di blocco
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} con pre-segnali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} con segnali di uscita
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} con segnali combinati
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} con segnali a percorso
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} con segnali a percorso s.u.
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} con segnali di blocco e pre-segnali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} con segnali di blocco e di uscita
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} con segnali di blocco e combinati
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} con segnali di blocco e a percorso
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} con segnali di blocco e a percorso s.u.
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} con pre-segnali e segnali di uscita
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} con pre-segnali e segnali combinati
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} con pre-segnali e segnali a percorso
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} con pre-segnali e segnali a percorso s.u.
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} con segnali di uscita e combinati
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} con segnali di uscita e a percorso
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} con segnali di uscita e a percorso s.u.
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} con segnali combinati e a percorso
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} con segnali combinati e a percorso s.u.
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} con segnali a percorso e a percorso s.u.
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Deposito {STRING.ms}
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strada con lampioni

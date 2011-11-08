@@ -1924,6 +1924,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Pidä pohjassa Ctrl-näppäintä poistaaksesi myös aseman tai reittipisteen alla olevat raiteet.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muunna/päivitä raidetyyppi. Shift vaihtaa muuntotilan ja kustannearvion välillä
 
+STR_RAIL_NAME_RAILROAD                                          :Rautatie
+STR_RAIL_NAME_ELRAIL                                            :Sähköistetty rautatie
+STR_RAIL_NAME_MONORAIL                                          :Yksiraiteinen
+STR_RAIL_NAME_MAGLEV                                            :Maglev-rata
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Veturitallin suunta
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Valitse veturitallin suunta.
@@ -2193,6 +2198,30 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Ruohikkoa
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Peltoja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumen peittämää maata
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Aavikkoa
+
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} suojastusopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} tulo-opastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} poistumisopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} yhdistelmäopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} yksisuuntaisilla reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} suojastus- ja tulo-opastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} suojastus- ja poistumisopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} suojastus- ja yhdistelmäopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} suojastus- ja reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} suojastus- ja yksisuuntaisilla reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} tulo- ja poistumisopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} tulo- ja yhdistelmäopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} tulo- ja reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} tulo- ja yksisuuntaisilla reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} poistumis- ja yhdistelmäopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} poistumis- ja reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} poistumis- ja yksisuuntaisilla opastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} yhdistelmä- ja reittiopastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} yhdistelmä- ja yksisuuntaisilla opastimilla
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} reitti- ja yksisuuntaisilla opastimilla
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} veturitalli
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Tie
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Tie katuvaloilla
@@ -2491,6 +2520,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiöll
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Rahti/uudelleensovitustiedot kulkuneuvolle '{1:ENGINE}' ovat eri kuin ostolistassa rakentamisen jälkeen. Tämä voi aiheuttaa, että kulkuneuvon korvaus ei uudelleensovita oikein
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' aiheutti ikuisen silmukan tuotannon callback-funktiossa
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktio 0x{HEX} palautti tuntemattoman/kelvottoman tuloksen 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<virheellinen rahti>

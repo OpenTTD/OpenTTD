@@ -1924,6 +1924,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Xây h�
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm mốc và nhà ga. Giữ Ctrl để phá bỏ đường ray tính từ điểm mốc hay nhà ga
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Chuyển đổi loại đường ray. Shift để xem chi phí dự tính
 
+STR_RAIL_NAME_RAILROAD                                          :Đường ray
+STR_RAIL_NAME_ELRAIL                                            :Ray điện
+STR_RAIL_NAME_MONORAIL                                          :Ray đơn
+STR_RAIL_NAME_MAGLEV                                            :Ray điện từ
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Hướng Của Xưởng Tàu Hỏa
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Chọn hướng đặt xưởng tàu hoả
@@ -2193,6 +2198,8 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Bãi cỏ
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Cánh đồng
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Đất tuyết phủ
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Hoang mạc
+
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Xưởng tàu hỏa {STRING}
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Đường bộ
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Đường phố có đèn

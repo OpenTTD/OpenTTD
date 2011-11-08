@@ -1925,6 +1925,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbah
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss mit aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gleistyp in den ausgewählten umwandeln. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 
+STR_RAIL_NAME_RAILROAD                                          :Schienen
+STR_RAIL_NAME_ELRAIL                                            :Elektrifizierte Schienen
+STR_RAIL_NAME_MONORAIL                                          :Einschienenbahn
+STR_RAIL_NAME_MAGLEV                                            :Magnetschwebebahn
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ausrichtung Zugdepot
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Ausrichtung des Zugdepots auswählen
@@ -2194,6 +2199,7 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ackerland
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Schneebedecktes Land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüste
+
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Straße
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Straße mit Laternen

@@ -2096,6 +2096,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Стро
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Переключение между строительством и удалением ж/д путей, сигналов, станций. При нажатом Ctrl убирает станции с рельсами.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Преобразовать/модернизировать рельсы. При нажатом Shift - оценка стоимости преобразования.
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Направление депо
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбор направления депо
@@ -2369,6 +2370,7 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Трава
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснеженная земля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустыня
+
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога с уличным освещением
@@ -3352,6 +3354,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Изме
 
 STR_ORDER_REFIT                                                 :{BLACK}Переоборудовать
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Выберите тип груза для переоборудования. Ctrl+клик - для удаления задания.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Переоборудование
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Выберите тип груза для переоборудования. Оно будет проведено, если ТС позволяет это сделать. Ctrl+щелчок отменит переоборудование.
 
 STR_ORDER_SERVICE                                               :{BLACK}Обслуживание
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда идти
@@ -3440,6 +3444,20 @@ STR_ORDER_NO_UNLOAD                                             :(Не разг�
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не разгружаться и ждать полной загрузки)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разгружаться и ждать полной загрузки любым грузом)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Не разгружаться и не загружаться)
+
+STR_ORDER_AUTO_REFIT                                            :(Переоборуд. под {STRING.acc})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Переоборуд. под {STRING.acc} и ждать полной загрузки)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Переоборуд. под {STRING.acc} и ждать полной загрузки любым грузом)
+STR_ORDER_UNLOAD_REFIT                                          :(Разгрузиться, переоборуд. под {STRING.acc} и забрать груз)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Разгрузиться, переоборуд. под {STRING.acc} и ждать полной загрузки)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Разгрузиться, переоборуд. под {STRING.acc} и ждать полной загрузки любым грузом)
+STR_ORDER_TRANSFER_REFIT                                        :(Передать и переоборуд. под {STRING.acc})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Передать, переоборуд. под {STRING.acc} и ждать полной загрузки)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Передать, переоборуд. под {STRING.acc} и ждать полной загрузки любым грузом)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Не разгружаться, переоборуд. под {STRING.acc} и забрать груз)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Не разгружаться, переоборуд. под {STRING.acc} и ждать полной загрузки)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Не разгружаться, переоборуд. под {STRING.acc} и ждать полной загрузки любым грузом)
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[начало станции]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[середина станции]
