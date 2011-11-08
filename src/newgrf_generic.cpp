@@ -18,6 +18,7 @@
 #include "core/random_func.hpp"
 #include "tile_map.h"
 #include "newgrf_sound.h"
+#include "water_map.h"
 #include <list>
 
 
@@ -146,11 +147,13 @@ static inline void NewGenericResolver(ResolverObject *res, bool ai_callback)
  * answer
  * @param feature GRF Feature of callback
  * @param object  pre-populated resolver object
+ * @param param1_grfv7 callback_param1 for GRFs up to version 7.
+ * @param param1_grfv8 callback_param1 for GRFs from version 8 on.
  * @param [out] file Optionally returns the GRFFile which made the final decision for the callback result.
  *                   May be NULL if not required.
  * @return callback value if successful or CALLBACK_FAILED
  */
-static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, const GRFFile **file)
+static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, uint32 param1_grfv7, uint32 param1_grfv8, const GRFFile **file)
 {
 	assert(feature < lengthof(_gcl));
 
@@ -158,6 +161,8 @@ static uint16 GetGenericCallbackResult(uint8 feature, ResolverObject *object, co
 	for (GenericCallbackList::const_iterator it = _gcl[feature].begin(); it != _gcl[feature].end(); ++it) {
 		const SpriteGroup *group = it->group;
 		object->grffile = it->file;
+		/* Set callback param based on GRF version. */
+		object->callback_param1 = it->file->grf_version >= 8 ? param1_grfv8 : param1_grfv7;
 		group = SpriteGroup::Resolve(group, object);
 		if (group == NULL || group->GetCallbackResult() == CALLBACK_FAILED) continue;
 
@@ -216,7 +221,7 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 	object.u.generic.count             = count;
 	object.u.generic.station_size      = station_size;
 
-	uint16 callback = GetGenericCallbackResult(feature, &object, file);
+	uint16 callback = GetGenericCallbackResult(feature, &object, 0, 0, file);
 	if (callback != CALLBACK_FAILED) callback = GB(callback, 0, 8);
 	return callback;
 }
@@ -241,11 +246,13 @@ void AmbientSoundEffectCallback(TileIndex tile)
 	/* Prepare resolver object. */
 	NewGenericResolver(&object, false);
 	object.callback = CBID_SOUNDS_AMBIENT_EFFECT;
-	object.callback_param1 = GetTileType(tile) << 28 | TileHeight(tile) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
+
+	uint32 param1_v7 = GetTileType(tile) << 28 | Clamp(TileHeight(tile), 0, 15) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
+	uint32 param1_v8 = GetTileType(tile) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? GetWaterClass(tile) : 0) << 3 | GetTerrainType(tile);
 
 	/* Run callback. */
 	const GRFFile *grf_file;
-	uint16 callback = GetGenericCallbackResult(GSF_SOUNDFX, &object, &grf_file);
+	uint16 callback = GetGenericCallbackResult(GSF_SOUNDFX, &object, param1_v7, param1_v8, &grf_file);
 
 	if (callback != CALLBACK_FAILED) PlayTileSound(grf_file, callback, tile);
 }
