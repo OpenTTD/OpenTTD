@@ -216,12 +216,12 @@ static inline void SetIndustryIndexOfField(TileIndex t, IndustryID i)
 /**
  * Is there a fence at the south eastern border?
  * @param t the tile to check for fences
- * @pre IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)
+ * @pre IsClearGround(t, CLEAR_FIELDS)
  * @return 0 if there is no fence, otherwise the fence type
  */
 static inline uint GetFenceSE(TileIndex t)
 {
-	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES));
+	assert(IsClearGround(t, CLEAR_FIELDS));
 	return GB(_m[t].m4, 2, 3);
 }
 
@@ -230,23 +230,23 @@ static inline uint GetFenceSE(TileIndex t)
  * eastern border.
  * @param t the tile to check for fences
  * @param h 0 if there is no fence, otherwise the fence type
- * @pre IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)
+ * @pre IsClearGround(t, CLEAR_FIELDS)
  */
 static inline void SetFenceSE(TileIndex t, uint h)
 {
-	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)); // XXX incomplete
+	assert(IsClearGround(t, CLEAR_FIELDS));
 	SB(_m[t].m4, 2, 3, h);
 }
 
 /**
  * Is there a fence at the south western border?
  * @param t the tile to check for fences
- * @pre IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)
+ * @pre IsClearGround(t, CLEAR_FIELDS)
  * @return 0 if there is no fence, otherwise the fence type
  */
 static inline uint GetFenceSW(TileIndex t)
 {
-	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES));
+	assert(IsClearGround(t, CLEAR_FIELDS));
 	return GB(_m[t].m4, 5, 3);
 }
 
@@ -255,12 +255,62 @@ static inline uint GetFenceSW(TileIndex t)
  * western border.
  * @param t the tile to check for fences
  * @param h 0 if there is no fence, otherwise the fence type
- * @pre IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)
+ * @pre IsClearGround(t, CLEAR_FIELDS)
  */
 static inline void SetFenceSW(TileIndex t, uint h)
 {
-	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)); // XXX incomplete
+	assert(IsClearGround(t, CLEAR_FIELDS));
 	SB(_m[t].m4, 5, 3, h);
+}
+
+/**
+ * Is there a fence at the north eastern border?
+ * @param t the tile to check for fences
+ * @pre IsClearGround(t, CLEAR_FIELDS)
+ * @return 0 if there is no fence, otherwise the fence type
+ */
+static inline uint GetFenceNE(TileIndex t)
+{
+	assert(IsClearGround(t, CLEAR_FIELDS));
+	return GB(_m[t].m3, 5, 3);
+}
+
+/**
+ * Sets the type of fence (and whether there is one) for the north
+ * eastern border.
+ * @param t the tile to check for fences
+ * @param h 0 if there is no fence, otherwise the fence type
+ * @pre IsClearGround(t, CLEAR_FIELDS)
+ */
+static inline void SetFenceNE(TileIndex t, uint h)
+{
+	assert(IsClearGround(t, CLEAR_FIELDS));
+	SB(_m[t].m3, 5, 3, h);
+}
+
+/**
+ * Is there a fence at the north western border?
+ * @param t the tile to check for fences
+ * @pre IsClearGround(t, CLEAR_FIELDS)
+ * @return 0 if there is no fence, otherwise the fence type
+ */
+static inline uint GetFenceNW(TileIndex t)
+{
+	assert(IsClearGround(t, CLEAR_FIELDS));
+	return GB(_m[t].m6, 2, 3);
+}
+
+/**
+ * Sets the type of fence (and whether there is one) for the north
+ * western border.
+ * @param t the tile to check for fences
+ * @param h 0 if there is no fence, otherwise the fence type
+ * @pre IsClearGround(t, CLEAR_FIELDS)
+ */
+static inline void SetFenceNW(TileIndex t, uint h)
+{
+	assert(IsClearGround(t, CLEAR_FIELDS));
+	SB(_m[t].m6, 2, 3, h);
 }
 
 

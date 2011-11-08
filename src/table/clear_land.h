@@ -34,6 +34,20 @@ static const byte _fence_mod_by_tileh_se[32] = {
 	1, 1, 5, 5, 3, 3, 3, 1,
 };
 
+static const byte _fence_mod_by_tileh_ne[32] = {
+	0, 0, 0, 0, 4, 4, 4, 4,
+	2, 2, 2, 2, 0, 0, 0, 0,
+	0, 0, 0, 0, 4, 4, 4, 4,
+	2, 2, 2, 2, 0, 0, 0, 0,
+};
+
+static const byte _fence_mod_by_tileh_nw[32] = {
+	1, 5, 1, 5, 1, 5, 1, 5,
+	3, 1, 3, 1, 3, 1, 3, 1,
+	1, 5, 1, 5, 1, 5, 1, 5,
+	3, 1, 3, 1, 3, 1, 3, 1,
+};
+
 
 static const SpriteID _clear_land_fence_sprites[7] = {
 	SPR_HEDGE_BUSHES,

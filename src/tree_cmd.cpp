@@ -453,8 +453,6 @@ static void DrawTile_Trees(TileInfo *ti)
 		default: DrawGroundSprite(_clear_land_sprites_snow_desert[GetTreeDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE); break;
 	}
 
-	DrawClearLandFence(ti);
-
 	/* Do not draw trees when the invisible trees setting is set */
 	if (IsInvisibilitySet(TO_TREES)) return;
 
@@ -630,7 +628,6 @@ static void TileLoop_Trees(TileIndex tile)
 	}
 
 	AmbientSoundEffectCallback(tile);
-	TileLoopClearHelper(tile);
 
 	uint treeCounter = GetTreeCounter(tile);
 

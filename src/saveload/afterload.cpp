@@ -1267,10 +1267,6 @@ bool AfterLoadGame()
 			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) {
 				/* remove fields */
 				MakeClear(t, CLEAR_GRASS, 3);
-			} else if (IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)) {
-				/* remove fences around fields */
-				SetFenceSE(t, 0);
-				SetFenceSW(t, 0);
 			}
 		}
 
@@ -2651,6 +2647,24 @@ bool AfterLoadGame()
 	/* This triggers only when old snow_lines were copied into the snow_line_height. */
 	if (IsSavegameVersionBefore(164) && _settings_game.game_creation.snow_line_height >= MIN_SNOWLINE_HEIGHT * TILE_HEIGHT) {
 		_settings_game.game_creation.snow_line_height /= TILE_HEIGHT;
+	}
+
+	if (IsSavegameVersionBefore(164) && !IsSavegameVersionBefore(32)) {
+		/* We store 4 fences in the field tiles instead of only SE and SW. */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (!IsTileType(t, MP_CLEAR) && !IsTileType(t, MP_TREES)) continue;
+			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) continue;
+			uint fence = GB(_m[t].m4, 5, 3);
+			if (fence != 0 && IsTileType(TILE_ADDXY(t, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(t, 1, 0), CLEAR_FIELDS)) {
+				SetFenceNE(TILE_ADDXY(t, 1, 0), fence);
+			}
+			fence = GB(_m[t].m4, 2, 3);
+			if (fence != 0 && IsTileType(TILE_ADDXY(t, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(t, 0, 1), CLEAR_FIELDS)) {
+				SetFenceNW(TILE_ADDXY(t, 0, 1), fence);
+			}
+			SB(_m[t].m4, 2, 3, 0);
+			SB(_m[t].m4, 5, 3, 0);
+		}
 	}
 
 	/* When any NewGRF has been changed the availability of some vehicles might

@@ -61,22 +61,44 @@ void DrawHillyLandTile(const TileInfo *ti)
 	}
 }
 
-void DrawClearLandFence(const TileInfo *ti)
+static void DrawClearLandFence(const TileInfo *ti)
 {
+	/* combine fences into one sprite object */
+	StartSpriteCombine();
+
+	int maxz = GetSlopeMaxPixelZ(ti->tileh);
+
+	bool fence_nw = GetFenceNW(ti->tile) != 0;
+	if (fence_nw) {
+		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_W);
+		SpriteID sprite = _clear_land_fence_sprites[GetFenceNW(ti->tile) - 1] + _fence_mod_by_tileh_nw[ti->tileh];
+		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y - 15, 16, 31, maxz - z + 4, ti->z + z, false, 0, 15, -z);
+	}
+
+	bool fence_ne = GetFenceNE(ti->tile) != 0;
+	if (fence_ne) {
+		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_E);
+		SpriteID sprite = _clear_land_fence_sprites[GetFenceNE(ti->tile) - 1] + _fence_mod_by_tileh_ne[ti->tileh];
+		AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x - 15, ti->y, 31, 16, maxz - z + 4, ti->z + z, false, 15, 0, -z);
+	}
+
 	bool fence_sw = GetFenceSW(ti->tile) != 0;
 	bool fence_se = GetFenceSE(ti->tile) != 0;
 
-	if (!fence_sw && !fence_se) return;
+	if (fence_sw || fence_se) {
+		int z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
 
-	int z = GetSlopePixelZInCorner(ti->tileh, CORNER_S);
+		if (fence_sw) {
+			SpriteID sprite = _clear_land_fence_sprites[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh_sw[ti->tileh];
+			AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y, 16, 16, maxz - z + 4, ti->z + z, false, 0, 0, -z);
+		}
 
-	if (fence_sw) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh_sw[ti->tileh], PAL_NONE, 0, 0, z);
+		if (fence_se) {
+			SpriteID sprite = _clear_land_fence_sprites[GetFenceSE(ti->tile) - 1] + _fence_mod_by_tileh_se[ti->tileh];
+			AddSortableSpriteToDraw(sprite, PAL_NONE, ti->x, ti->y, 16, 16, maxz - z + 4, ti->z + z, false, 0, 0, -z);
+		}
 	}
-
-	if (fence_se) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites[GetFenceSE(ti->tile) - 1] + _fence_mod_by_tileh_se[ti->tileh], PAL_NONE, 0, 0, z);
-	}
+	EndSpriteCombine();
 }
 
 static void DrawTile_Clear(TileInfo *ti)
@@ -96,6 +118,7 @@ static void DrawTile_Clear(TileInfo *ti)
 
 		case CLEAR_FIELDS:
 			DrawGroundSprite(_clear_land_sprites_farmland[GetFieldType(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			DrawClearLandFence(ti);
 			break;
 
 		case CLEAR_SNOW:
@@ -104,7 +127,6 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 	}
 
-	DrawClearLandFence(ti);
 	DrawBridgeMiddle(ti);
 }
 
@@ -121,35 +143,33 @@ static Foundation GetFoundation_Clear(TileIndex tile, Slope tileh)
 	return FOUNDATION_NONE;
 }
 
-void TileLoopClearHelper(TileIndex tile)
+static void UpdateFences(TileIndex tile)
 {
-	bool self = (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
+	assert(IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
 	bool dirty = false;
 
 	bool neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CLEAR_FIELDS));
-	if (GetFenceSW(tile) == 0) {
-		if (self != neighbour) {
-			SetFenceSW(tile, 3);
-			dirty = true;
-		}
-	} else {
-		if (self == 0 && neighbour == 0) {
-			SetFenceSW(tile, 0);
-			dirty = true;
-		}
+	if (!neighbour && GetFenceSW(tile) == 0) {
+		SetFenceSW(tile, 3);
+		dirty = true;
 	}
 
 	neighbour = (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, 1), CLEAR_FIELDS));
-	if (GetFenceSE(tile) == 0) {
-		if (self != neighbour) {
-			SetFenceSE(tile, 3);
-			dirty = true;
-		}
-	} else {
-		if (self == 0 && neighbour == 0) {
-			SetFenceSE(tile, 0);
-			dirty = true;
-		}
+	if (!neighbour && GetFenceSE(tile) == 0) {
+		SetFenceSE(tile, 3);
+		dirty = true;
+	}
+
+	neighbour = (IsTileType(TILE_ADDXY(tile, -1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, -1, 0), CLEAR_FIELDS));
+	if (!neighbour && GetFenceNE(tile) == 0) {
+		SetFenceNE(tile, 3);
+		dirty = true;
+	}
+
+	neighbour = (IsTileType(TILE_ADDXY(tile, 0, -1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, -1), CLEAR_FIELDS));
+	if (!neighbour && GetFenceNW(tile) == 0) {
+		SetFenceNW(tile, 3);
+		dirty = true;
 	}
 
 	if (dirty) MarkTileDirtyByTile(tile);
@@ -239,7 +259,6 @@ static void TileLoop_Clear(TileIndex tile)
 			return;
 		}
 	}
-	TileLoopClearHelper(tile);
 	AmbientSoundEffectCallback(tile);
 
 	switch (_settings_game.game_creation.landscape) {
@@ -264,8 +283,8 @@ static void TileLoop_Clear(TileIndex tile)
 			}
 			break;
 
-		case CLEAR_FIELDS: {
-			uint field_type;
+		case CLEAR_FIELDS:
+			UpdateFences(tile);
 
 			if (_game_mode == GM_EDITOR) return;
 
@@ -280,12 +299,11 @@ static void TileLoop_Clear(TileIndex tile)
 				/* This farmfield is no longer farmfield, so make it grass again */
 				MakeClear(tile, CLEAR_GRASS, 2);
 			} else {
-				field_type = GetFieldType(tile);
+				uint field_type = GetFieldType(tile);
 				field_type = (field_type < 8) ? field_type + 1 : 0;
 				SetFieldType(tile, field_type);
 			}
 			break;
-		}
 
 		default:
 			return;
