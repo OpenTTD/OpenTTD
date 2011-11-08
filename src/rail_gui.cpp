@@ -67,6 +67,20 @@ static void ShowBuildWaypointPicker(Window *parent);
 static void ShowStationBuilder(Window *parent);
 static void ShowSignalBuilder(Window *parent);
 
+/**
+ * Check whether a station type can be build.
+ * @return true if building is allowed.
+ */
+static bool IsStationAvailable(const StationSpec *statspec)
+{
+	if (statspec == NULL || !HasBit(statspec->callback_mask, CBM_STATION_AVAIL)) return true;
+
+	uint16 cb_res = GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE);
+	if (cb_res == CALLBACK_FAILED) return true;
+
+	return Convert8bitBooleanCallback(statspec->grf_prop.grffile, CBID_STATION_AVAILABILITY, cb_res);
+}
+
 void CcPlaySound1E(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded()) SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -1163,8 +1177,7 @@ public:
 				assert(type < _railstation.station_count);
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class, type);
-				if (statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
-						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
+				if (!IsStationAvailable(statspec)) {
 					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
 				}
 
@@ -1358,8 +1371,7 @@ public:
 
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(_railstation.station_class, y);
-				if (statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
-						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
+				if (!IsStationAvailable(statspec)) return;
 
 				_railstation.station_type = y;
 
@@ -1814,9 +1826,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);
 				DrawWaypointSprite(r.left + TILE_PIXELS, r.bottom - TILE_PIXELS, type, _cur_railtype);
 
-				if (statspec != NULL &&
-						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
-						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
+				if (!IsStationAvailable(statspec)) {
 					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
 				}
 			}
@@ -1832,9 +1842,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);
-				if (statspec != NULL &&
-						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
-						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
+				if (!IsStationAvailable(statspec)) return;
 
 				_cur_waypoint_type = type;
 				this->GetWidget<NWidgetMatrix>(BRWW_WAYPOINT_MATRIX)->SetClicked(_cur_waypoint_type);

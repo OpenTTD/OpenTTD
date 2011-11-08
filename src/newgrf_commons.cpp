@@ -538,6 +538,45 @@ void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res)
 	DEBUG(grf, 0, "%s", buffer + 3);
 }
 
+/**
+ * Converts a callback result into a boolean.
+ * For grf version < 8 the result is checked for zero or non-zero.
+ * For grf version >= 8 the callback result must be 0 or 1.
+ * @param grffile NewGRF returning the value.
+ * @param cbid Callback returning the value.
+ * @param cb_res Callback result.
+ * @return Boolean value. True if cb_res != 0.
+ */
+bool ConvertBooleanCallback(const GRFFile *grffile, uint16 cbid, uint16 cb_res)
+{
+	assert(cb_res != CALLBACK_FAILED); // We do not know what to return
+
+	if (grffile->grf_version < 8) return cb_res != 0;
+
+	if (cb_res > 1) ErrorUnknownCallbackResult(grffile->grfid, cbid, cb_res);
+	return cb_res != 0;
+}
+
+/**
+ * Converts a callback result into a boolean.
+ * For grf version < 8 the first 8 bit of the result are checked for zero or non-zero.
+ * For grf version >= 8 the callback result must be 0 or 1.
+ * @param grffile NewGRF returning the value.
+ * @param cbid Callback returning the value.
+ * @param cb_res Callback result.
+ * @return Boolean value. True if cb_res != 0.
+ */
+bool Convert8bitBooleanCallback(const GRFFile *grffile, uint16 cbid, uint16 cb_res)
+{
+	assert(cb_res != CALLBACK_FAILED); // We do not know what to return
+
+	if (grffile->grf_version < 8) return GB(cb_res, 0, 8) != 0;
+
+	if (cb_res > 1) ErrorUnknownCallbackResult(grffile->grfid, cbid, cb_res);
+	return cb_res != 0;
+}
+
+
 /* static */ SmallVector<DrawTileSeqStruct, 8> NewGRFSpriteLayout::result_seq;
 
 /**

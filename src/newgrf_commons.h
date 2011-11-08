@@ -301,6 +301,8 @@ uint32 GetCompanyInfo(CompanyID owner, const struct Livery *l = NULL);
 CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, uint32 grfid, StringID default_error);
 
 void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res);
+bool ConvertBooleanCallback(const struct GRFFile *grffile, uint16 cbid, uint16 cb_res);
+bool Convert8bitBooleanCallback(const struct GRFFile *grffile, uint16 cbid, uint16 cb_res);
 
 /**
  * Data related to the handling of grf files.

@@ -489,7 +489,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 		if (HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
 			/* Called to determine the type (if any) of foundation to draw for the house tile */
 			uint32 callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, house_id, Town::GetByTile(ti->tile), ti->tile);
-			draw_old_one = (callback_res != 0);
+			if (callback_res != CALLBACK_FAILED) draw_old_one = ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DRAW_FOUNDATIONS, callback_res);
 		}
 
 		if (draw_old_one) DrawFoundation(ti, FOUNDATION_LEVELED);
@@ -552,7 +552,7 @@ bool CanDeleteHouse(TileIndex tile)
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DENY_DESTRUCTION)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
-		return (callback_res == CALLBACK_FAILED || callback_res == 0);
+		return (callback_res == CALLBACK_FAILED || !ConvertBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DENY_DESTRUCTION, callback_res));
 	} else {
 		return !(hs->extra_flags & BUILDING_IS_PROTECTED);
 	}
@@ -600,7 +600,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	/* Check callback 21, which determines if a house should be destroyed. */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DESTRUCTION)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
-		if (callback_res != CALLBACK_FAILED && GB(callback_res, 0, 8) > 0) {
+		if (callback_res != CALLBACK_FAILED && Convert8bitBooleanCallback(hs->grf_prop.grffile, CBID_HOUSE_DESTRUCTION, callback_res)) {
 			ClearTownHouse(Town::GetByTile(tile), tile);
 			return false;
 		}

@@ -661,7 +661,7 @@ bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type)
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO,
 				0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile),
 				ind, ind->type, ind->location.tile);
-		return res == 0;
+		if (res != CALLBACK_FAILED) return !ConvertBooleanCallback(indspec->grf_prop.grffile, CBID_INDUSTRY_REFUSE_CARGO, res);
 	}
 	return false;
 }

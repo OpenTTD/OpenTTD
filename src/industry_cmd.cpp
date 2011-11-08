@@ -381,7 +381,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 		const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 		if (indts->grf_prop.spritegroup[0] != NULL && HasBit(indts->callback_mask, CBM_INDT_DRAW_FOUNDATIONS)) {
 			uint32 callback_res = GetIndustryTileCallback(CBID_INDTILE_DRAW_FOUNDATIONS, 0, 0, gfx, Industry::GetByTile(tile), tile);
-			if (callback_res == 0) return FOUNDATION_NONE;
+			if (callback_res != CALLBACK_FAILED && !ConvertBooleanCallback(indts->grf_prop.grffile, CBID_INDTILE_DRAW_FOUNDATIONS, callback_res)) return FOUNDATION_NONE;
 		}
 	}
 	return FlatteningFoundation(tileh);
@@ -1103,9 +1103,14 @@ static void ProduceIndustryGoods(Industry *i)
 		i->produced_cargo_waiting[1] = min(0xffff, i->produced_cargo_waiting[1] + i->production_rate[1]);
 
 		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
-			bool plant;
+			uint16 cb_res = CALLBACK_FAILED;
 			if (HasBit(indsp->callback_mask, CBM_IND_SPECIAL_EFFECT)) {
-				plant = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 0, i, i->type, i->location.tile) != 0);
+				cb_res = GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 0, i, i->type, i->location.tile);
+			}
+
+			bool plant;
+			if (cb_res != CALLBACK_FAILED) {
+				plant = ConvertBooleanCallback(indsp->grf_prop.grffile, CBID_INDUSTRY_SPECIAL_EFFECT, cb_res);
 			} else {
 				plant = Chance16(1, 8);
 			}
@@ -1113,9 +1118,16 @@ static void ProduceIndustryGoods(Industry *i)
 			if (plant) PlantRandomFarmField(i);
 		}
 		if ((indbehav & INDUSTRYBEH_CUT_TREES) != 0) {
-			bool cut = ((i->counter % INDUSTRY_CUT_TREE_TICKS) == 0);
+			uint16 cb_res = CALLBACK_FAILED;
 			if (HasBit(indsp->callback_mask, CBM_IND_SPECIAL_EFFECT)) {
-				cut = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 1, i, i->type, i->location.tile) != 0);
+				cb_res = GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 1, i, i->type, i->location.tile);
+			}
+
+			bool cut;
+			if (cb_res != CALLBACK_FAILED) {
+				cut = ConvertBooleanCallback(indsp->grf_prop.grffile, CBID_INDUSTRY_SPECIAL_EFFECT, cb_res);
+			} else {
+				cut = ((i->counter % INDUSTRY_CUT_TREE_TICKS) == 0);
 			}
 
 			if (cut) ChopLumberMillTrees(i);
@@ -2734,7 +2746,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, i
 			if (HasBit(itspec->callback_mask, CBM_INDT_AUTOSLOPE)) {
 				/* If the callback fails, allow autoslope. */
 				uint16 res = GetIndustryTileCallback(CBID_INDTILE_AUTOSLOPE, 0, 0, gfx, Industry::GetByTile(tile), tile);
-				if ((res == 0) || (res == CALLBACK_FAILED)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+				if (res == CALLBACK_FAILED || !ConvertBooleanCallback(itspec->grf_prop.grffile, CBID_INDTILE_AUTOSLOPE, res)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			} else {
 				/* allow autoslope */
 				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
