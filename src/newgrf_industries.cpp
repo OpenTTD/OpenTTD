@@ -170,7 +170,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
  * @param available will return false if ever the variable asked for does not exist
  * @return the value stored in the corresponding variable
  */
-uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+uint32 IndustryGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	const Industry *industry = object->u.industry.ind;
 	TileIndex tile = object->u.industry.tile;
@@ -456,7 +456,7 @@ uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, In
 	return group->GetCallbackResult();
 }
 
-uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	const Industry *industry = object->u.industry.ind;
 	TileIndex tile = object->u.industry.tile;

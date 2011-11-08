@@ -460,7 +460,7 @@ static uint32 PositionHelper(const Vehicle *v, bool consecutive)
 	return chain_before | chain_after << 8 | (chain_before + chain_after + consecutive) << 16;
 }
 
-static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	/* Calculated vehicle parameters */
 	switch (variable) {
@@ -837,7 +837,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 	return UINT_MAX;
 }
 
-static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	Vehicle *v = const_cast<Vehicle*>(GRV(object));
 

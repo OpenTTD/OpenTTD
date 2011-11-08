@@ -41,7 +41,7 @@ static void CanalSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
-static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 CanalGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	TileIndex tile = object->u.canal.tile;
 

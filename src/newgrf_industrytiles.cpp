@@ -61,7 +61,7 @@ uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 	return ((y & 0xF) << 20) | ((x & 0xF) << 16) | (y << 8) | x;
 }
 
-static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	const Industry *inds = object->u.industry.ind;
 	TileIndex tile       = object->u.industry.tile;

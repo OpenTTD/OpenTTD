@@ -383,7 +383,7 @@ struct ResolverObject {
 	uint32 (*GetRandomBits)(const struct ResolverObject*);
 	uint32 (*GetTriggers)(const struct ResolverObject*);
 	void (*SetTriggers)(const struct ResolverObject*, int);
-	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte, bool*);
+	uint32 (*GetVariable)(const struct ResolverObject *object, byte variable, uint32 parameter, bool *available);
 	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const RealSpriteGroup*);
 	void (*StorePSA)(struct ResolverObject*, uint, int32);
 

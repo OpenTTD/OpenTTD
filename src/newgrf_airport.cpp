@@ -127,7 +127,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	}
 }
 
-uint32 AirportGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+uint32 AirportGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	const Station *st = object->u.airport.st;
 	byte layout       = object->u.airport.layout;

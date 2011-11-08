@@ -166,7 +166,7 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 	return 0xFF << 8 | ats->grf_prop.subst_id; // so just give him the substitute
 }
 
-static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	const Station *st = object->u.airport.st;
 	TileIndex tile    = object->u.airport.tile;

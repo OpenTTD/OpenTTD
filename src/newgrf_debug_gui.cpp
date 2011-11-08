@@ -291,7 +291,7 @@ struct NewGRFInspectWindow : Window {
 	static const int BOTTOM_OFFSET = 5; ///< Position of bottom edge
 
 	/** The value for the variable 60 parameters. */
-	static byte var60params[GSF_FAKE_END][0x20];
+	static uint32 var60params[GSF_FAKE_END][0x20];
 
 	/** GRFID of the caller of this window, 0 if it has no caller. */
 	uint32 caller_grfid;
@@ -497,7 +497,7 @@ struct NewGRFInspectWindow : Window {
 					if (!HasVariableParameter(niv->var)) break;
 
 					this->current_edit_param = niv->var;
-					ShowQueryString(STR_EMPTY, STR_NEWGRF_INSPECT_QUERY_CAPTION, 3, this, CS_HEXADECIMAL, QSF_NONE);
+					ShowQueryString(STR_EMPTY, STR_NEWGRF_INSPECT_QUERY_CAPTION, 9, this, CS_HEXADECIMAL, QSF_NONE);
 				}
 			}
 		}
@@ -517,7 +517,7 @@ struct NewGRFInspectWindow : Window {
 	}
 };
 
-/* static */ byte NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
+/* static */ uint32 NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
 
 static const NWidgetPart _nested_newgrf_inspect_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

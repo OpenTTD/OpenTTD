@@ -85,7 +85,7 @@ static void GenericCallbackSetTriggers(const ResolverObject *object, int trigger
 }
 
 
-static uint32 GenericCallbackGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 GenericCallbackGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	DEBUG(grf, 1, "Unhandled generic feature variable 0x%02X", variable);
 
@@ -93,7 +93,7 @@ static uint32 GenericCallbackGetVariable(const ResolverObject *object, byte vari
 	return UINT_MAX;
 }
 
-static uint32 GenericAiCallbackGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 GenericAiCallbackGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	switch (variable) {
 		case 0x40: return object->grffile->cargo_map[object->u.generic.cargo_type];

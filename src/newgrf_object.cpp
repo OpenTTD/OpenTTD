@@ -222,7 +222,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 }
 
 /** Used by the resolver to get values for feature 0F deterministic spritegroups. */
-static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	const Object *o = object->u.object.o;
 	TileIndex tile = object->u.object.tile;

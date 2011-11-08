@@ -38,7 +38,7 @@ RandomizedSpriteGroup::~RandomizedSpriteGroup()
 TemporaryStorageArray<int32, 0x110> _temp_store;
 
 
-static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static inline uint32 GetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	/* First handle variables common with Action7/9/D */
 	uint32 value;

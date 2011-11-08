@@ -257,7 +257,7 @@ static struct {
 	uint8 valid; ///< Bits indicating what variable is valid (for each bit, \c 0 is invalid, \c 1 is valid).
 } _svc;
 
-static uint32 StationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 StationGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	const BaseStation *st = object->u.station.st;
 	TileIndex tile = object->u.station.tile;

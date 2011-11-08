@@ -254,7 +254,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
  *
  * Used by the resolver to get values for feature 07 deterministic spritegroups.
  */
-static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 HouseGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	Town *town = object->u.house.town;
 	TileIndex tile   = object->u.house.tile;

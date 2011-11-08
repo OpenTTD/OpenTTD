@@ -24,7 +24,7 @@
  * @param caller_grffile #GRFFile of the entity asking for a town variable.
  * @return the value stored in the corresponding variable
  */
-uint32 TownGetVariable(byte variable, byte parameter, bool *available, Town *t, const GRFFile *caller_grffile)
+uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t, const GRFFile *caller_grffile)
 {
 	switch (variable) {
 		/* Larger towns */

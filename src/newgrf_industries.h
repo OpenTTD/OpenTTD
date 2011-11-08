@@ -35,7 +35,7 @@ enum IndustryAvailabilityCallType {
 };
 
 /* in newgrf_industry.cpp */
-uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available);
+uint32 IndustryGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available);
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile);
 uint32 GetIndustryIDAtOffset(TileIndex new_tile, const Industry *i, uint32 cur_grfid);
 void IndustryProductionCallback(Industry *ind, int reason);

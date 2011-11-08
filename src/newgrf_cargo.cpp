@@ -33,7 +33,7 @@ static void CargoSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
-static uint32 CargoGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+static uint32 CargoGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
 {
 	DEBUG(grf, 1, "Unhandled cargo variable 0x%X", variable);
 
