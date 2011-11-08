@@ -8682,9 +8682,10 @@ static void FinalisePriceBaseMultipliers()
 		}
 	}
 
-	/* Apply fallback prices */
+	/* Apply fallback prices for grf version < 8 */
 	const GRFFile * const *end = _grf_files.End();
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		if ((*file)->grf_version >= 8) continue;
 		PriceMultipliers &price_base_multipliers = (*file)->price_base_multipliers;
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			Price fallback_price = _price_base_specs[p].fallback_price;
