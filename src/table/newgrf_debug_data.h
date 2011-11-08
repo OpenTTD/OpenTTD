@@ -253,7 +253,7 @@ static const NIProperty _nip_industries[] = {
 
 #define NICI(cb_id, bit) NIC(cb_id, IndustrySpec, callback_mask, bit)
 static const NICallback _nic_industries[] = {
-	NICI(CBID_INDUSTRY_AVAILABLE,            CBM_IND_AVAILABLE),
+	NICI(CBID_INDUSTRY_PROBABILITY,          CBM_IND_PROBABILITY),
 	NICI(CBID_INDUSTRY_LOCATION,             CBM_IND_LOCATION),
 	NICI(CBID_INDUSTRY_PRODUCTION_CHANGE,    CBM_IND_PRODUCTION_CHANGE),
 	NICI(CBID_INDUSTRY_MONTHLYPROD_CHANGE,   CBM_IND_MONTHLYPROD_CHANGE),

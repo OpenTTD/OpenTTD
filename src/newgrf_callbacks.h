@@ -85,8 +85,8 @@ enum CallbackID {
 	/** Called periodically to determine if a house should be destroyed. */
 	CBID_HOUSE_DESTRUCTION               = 0x21, // 8 bit callback
 
-	/** Called to determine if the given industry type is available */
-	CBID_INDUSTRY_AVAILABLE              = 0x22, // 15 bit callback
+	/** Called to determine if the given industry type is available. For grf version >= 8 also a probability can be returned. */
+	CBID_INDUSTRY_PROBABILITY            = 0x22, // 15 bit callback
 
 	/**
 	 * This callback is called from vehicle purchase lists. It returns a value to be
@@ -341,7 +341,7 @@ enum CargoCallbackMask {
  * Callback masks for Industries
  */
 enum IndustryCallbackMask {
-	CBM_IND_AVAILABLE                 =  0, ///< industry availability callback
+	CBM_IND_PROBABILITY               =  0, ///< industry availability/probability callback
 	CBM_IND_PRODUCTION_CARGO_ARRIVAL  =  1, ///< call production callback when cargo arrives at the industry
 	CBM_IND_PRODUCTION_256_TICKS      =  2, ///< call production callback every 256 ticks
 	CBM_IND_LOCATION                  =  3, ///< check industry construction on given area

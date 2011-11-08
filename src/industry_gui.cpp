@@ -209,7 +209,7 @@ class BuildIndustryWindow : public Window {
 	bool timer_enabled;                         ///< timer can be used
 	uint16 count;                               ///< How many industries are loaded
 	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
-	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_AVAILABLE (if ever)
+	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_PROBABILITY (if ever)
 	Scrollbar *vscroll;
 
 	/** The offset for the text in the matrix. */
@@ -247,7 +247,7 @@ class BuildIndustryWindow : public Window {
 					continue;
 				}
 				this->index[this->count] = ind;
-				this->enabled[this->count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
+				this->enabled[this->count] = (_game_mode == GM_EDITOR) || GetIndustryProbabilityCallback(ind, IACT_USERCREATION, 1) > 0;
 				/* Keep the selection to the correct line */
 				if (this->selected_type == ind) this->selected_index = this->count;
 				this->count++;
@@ -582,7 +582,7 @@ public:
 			const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 
 			if (indsp->enabled) {
-				bool call_back_result = CheckIfCallBackAllowsAvailability(this->selected_type, IACT_USERCREATION);
+				bool call_back_result = GetIndustryProbabilityCallback(this->selected_type, IACT_USERCREATION, 1) > 0;
 
 				/* Only if result does match the previous state would it require a redraw. */
 				if (call_back_result != this->enabled[this->selected_index]) {

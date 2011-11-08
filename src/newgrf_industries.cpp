@@ -550,22 +550,32 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 }
 
 /**
- * Check with callback #CBM_IND_AVAILABLE whether the industry can be built.
+ * Check with callback #CBID_INDUSTRY_PROBABILITY whether the industry can be built.
  * @param type Industry type to check.
  * @param creation_type Reason to construct a new industry.
  * @return If the industry has no callback or allows building, \c true is returned. Otherwise, \c false is returned.
  */
-bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCallType creation_type)
+uint32 GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityCallType creation_type, uint32 default_prob)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	if (HasBit(indspec->callback_mask, CBM_IND_AVAILABLE)) {
-		uint16 res = GetIndustryCallback(CBID_INDUSTRY_AVAILABLE, 0, creation_type, NULL, type, INVALID_TILE);
+	if (HasBit(indspec->callback_mask, CBM_IND_PROBABILITY)) {
+		uint16 res = GetIndustryCallback(CBID_INDUSTRY_PROBABILITY, 0, creation_type, NULL, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
-			return (res == 0);
+			if (indspec->grf_prop.grffile->grf_version < 8) {
+				/* Disallow if result != 0 */
+				if (res != 0) default_prob = 0;
+			} else {
+				/* Use returned probability. 0x100 to use default */
+				if (res < 0x100) {
+					default_prob = res;
+				} else if (res > 0x100) {
+					ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_PROBABILITY, res);
+				}
+			}
 		}
 	}
-	return true;
+	return default_prob;
 }
 
 static int32 DerefIndProd(int field, bool use_register)

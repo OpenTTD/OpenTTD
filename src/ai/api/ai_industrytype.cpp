@@ -91,7 +91,7 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	if (!::CheckIfCallBackAllowsAvailability(industry_type, IACT_USERCREATION)) return false;
+	if (::GetIndustryProbabilityCallback(industry_type, IACT_USERCREATION, 1) == 0) return false;
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return true;
 
 	/* raw_industry_construction == 1 means "Build as other industries" */
@@ -103,7 +103,7 @@
 	if (!IsValidIndustryType(industry_type)) return false;
 
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
-	if (!::CheckIfCallBackAllowsAvailability(industry_type, IACT_USERCREATION)) return false;
+	if (::GetIndustryProbabilityCallback(industry_type, IACT_USERCREATION, 1) == 0) return false;
 
 	/* raw_industry_construction == 2 means "prospect" */
 	return _settings_game.construction.raw_industry_construction == 2;

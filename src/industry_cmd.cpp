@@ -1777,7 +1777,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		return CMD_ERROR;
 	}
 
-	if (_game_mode != GM_EDITOR && !CheckIfCallBackAllowsAvailability(it, IACT_USERCREATION)) {
+	if (_game_mode != GM_EDITOR && GetIndustryProbabilityCallback(it, IACT_USERCREATION, 1) == 0) {
 		return CMD_ERROR;
 	}
 
@@ -1876,9 +1876,9 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	uint32 chance = ind_spc->appear_creation[_settings_game.game_creation.landscape] * 16; // * 16 to increase precision
-	if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0 ||
-			!CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION) ||
-			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY)) {
+	if (!ind_spc->enabled || ind_spc->num_table == 0 ||
+			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) ||
+			(chance = GetIndustryProbabilityCallback(it, IACT_MAPGENERATION, chance)) == 0) {
 		*force_at_least_one = false;
 		return 0;
 	} else {
@@ -1906,10 +1906,10 @@ static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
 
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
-	if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0 ||
+	if (!ind_spc->enabled || ind_spc->num_table == 0 ||
 			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) ||
 			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) ||
-			!CheckIfCallBackAllowsAvailability(it, IACT_RANDOMCREATION)) {
+			(chance = GetIndustryProbabilityCallback(it, IACT_RANDOMCREATION, chance)) == 0) {
 		*min_number = 0;
 		return 0;
 	}
