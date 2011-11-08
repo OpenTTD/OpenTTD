@@ -34,6 +34,7 @@
 #include "core/random_func.hpp"
 #include "company_base.h"
 #include "core/backup_type.hpp"
+#include "newgrf.h"
 
 #include "table/strings.h"
 
@@ -164,7 +165,14 @@ static uint GetRoadVehLength(const RoadVehicle *v)
 	const Engine *e = v->GetEngine();
 	uint length = e->u.road.shorten_factor;
 
-	uint16 veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, v->engine_type, v);
+	uint16 veh_len = CALLBACK_FAILED;
+	if (e->GetGRF() != NULL && e->GetGRF()->grf_version >= 8) {
+		/* Use callback 36 */
+		veh_len = GetVehicleProperty(v, PROP_ROADVEH_SHORTEN_FACTOR, CALLBACK_FAILED);
+	} else {
+		/* Use callback 11 */
+		veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, v->engine_type, v);
+	}
 	if (veh_len != CALLBACK_FAILED) {
 		if (veh_len >= VEHICLE_LENGTH) ErrorUnknownCallbackResult(e->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
 		length -= Clamp(veh_len, 0, VEHICLE_LENGTH - 1);

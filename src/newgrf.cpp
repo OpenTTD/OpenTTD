@@ -1099,7 +1099,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->air_drag = buf->ReadByte();
 				break;
 
-			case 0x21: // Shorter vehicle
+			case PROP_TRAIN_SHORTEN_FACTOR: // 0x21 Shorter vehicle
 				rvi->shorten_factor = buf->ReadByte();
 				break;
 
@@ -1319,7 +1319,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				ei->cargo_age_period = buf->ReadWord();
 				break;
 
-			case 0x23: // Shorter vehicle
+			case PROP_ROADVEH_SHORTEN_FACTOR: // 0x23 Shorter vehicle
 				rvi->shorten_factor = buf->ReadByte();
 				break;
 
