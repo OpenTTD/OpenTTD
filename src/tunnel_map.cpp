@@ -45,10 +45,10 @@ TileIndex GetOtherTunnelEnd(TileIndex tile)
  * @param dir  the direction to start searching to.
  * @return true if and only if there is a tunnel.
  */
-bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
+bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(dir);
-	uint height;
+	int height;
 
 	do {
 		tile -= delta;
@@ -65,7 +65,7 @@ bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
  * @param z the 'z' to search on.
  * @return true if and only if there is a tunnel.
  */
-bool IsTunnelInWay(TileIndex tile, uint z)
+bool IsTunnelInWay(TileIndex tile, int z)
 {
 	return IsTunnelInWayDir(tile, z, (TileX(tile) > (MapMaxX() / 2)) ? DIAGDIR_NE : DIAGDIR_SW) ||
 			IsTunnelInWayDir(tile, z, (TileY(tile) > (MapMaxY() / 2)) ? DIAGDIR_NW : DIAGDIR_SE);
