@@ -2429,7 +2429,16 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 					for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
 						for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
 							table[i][j] = buf->ReadByte();
-							if (table[i][j] != 0xFF) table[i][j] /= TILE_HEIGHT;
+							if (_cur.grffile->grf_version >= 8) {
+								if (table[i][j] != 0xFF) table[i][j] = table[i][j] * (1 + MAX_TILE_HEIGHT) / 256;
+							} else {
+								if (table[i][j] >= 128) {
+									/* no snow */
+									table[i][j] = 0xFF;
+								} else {
+									table[i][j] = table[i][j] * (1 + MAX_TILE_HEIGHT) / 128;
+								}
+							}
 						}
 					}
 					SetSnowLine(table);
