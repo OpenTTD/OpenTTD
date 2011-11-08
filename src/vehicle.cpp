@@ -835,6 +835,8 @@ static void RunVehicleDayProc()
 			if (callback != CALLBACK_FAILED) {
 				if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
 				if (HasBit(callback, 1)) v->colourmap = PAL_NONE;
+
+				if (callback & ~3) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_32DAY_CALLBACK, callback);
 			}
 		}
 
@@ -2175,6 +2177,8 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
 
 		if (callback != CALLBACK_FAILED) {
+			if (callback >= 0x100 && e->GetGRF()->grf_version >= 8) ErrorUnknownCallbackResult(e->GetGRFID(), CBID_VEHICLE_VISUAL_EFFECT, callback);
+
 			callback = GB(callback, 0, 8);
 			/* Avoid accidentally setting 'visual_effect' to the default value
 			 * Since bit 6 (disable effects) is set anyways, we can safely erase some bits. */

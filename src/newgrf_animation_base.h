@@ -45,7 +45,10 @@ struct AnimationBase {
 		uint8 animation_speed = spec->animation.speed;
 		if (HasBit(spec->callback_mask, Tbase::cbm_animation_speed)) {
 			uint16 callback = GetCallback(Tbase::cb_animation_speed, 0, 0, spec, obj, tile, extra_data);
-			if (callback != CALLBACK_FAILED) animation_speed = Clamp(callback & 0xFF, 0, 16);
+			if (callback != CALLBACK_FAILED) {
+				if (callback >= 0x100 && spec->grf_prop.grffile->grf_version >= 8) ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, Tbase::cb_animation_speed, callback);
+				animation_speed = Clamp(callback & 0xFF, 0, 16);
+			}
 		}
 
 		/* An animation speed of 2 means the animation frame changes 4 ticks, and

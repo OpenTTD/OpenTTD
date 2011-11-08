@@ -1252,7 +1252,13 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 					/* As the station is not yet completely finished, the station does not yet exist. */
 					uint16 callback = GetStationCallback(CBID_STATION_TILE_LAYOUT, platinfo, 0, statspec, NULL, tile);
-					if (callback != CALLBACK_FAILED && callback < 8) SetStationGfx(tile, (callback & ~1) + axis);
+					if (callback != CALLBACK_FAILED) {
+						if (callback < 8) {
+							SetStationGfx(tile, (callback & ~1) + axis);
+						} else {
+							ErrorUnknownCallbackResult(statspec->grf_prop.grffile->grfid, CBID_STATION_TILE_LAYOUT, callback);
+						}
+					}
 
 					/* Trigger station animation -- after building? */
 					TriggerStationAnimation(st, tile, SAT_BUILT);

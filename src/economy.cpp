@@ -1209,7 +1209,14 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 
 		if (_settings_game.order.gradual_loading && HasBit(e->info.callback_mask, CBM_VEHICLE_LOAD_AMOUNT)) {
 			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
-			if (cb_load_amount != CALLBACK_FAILED && GB(cb_load_amount, 0, 8) != 0) load_amount = GB(cb_load_amount, 0, 8);
+			if (cb_load_amount != CALLBACK_FAILED) {
+				if (e->GetGRF()->grf_version < 8) cb_load_amount = GB(cb_load_amount, 0, 8);
+				if (cb_load_amount >= 0x100) {
+					ErrorUnknownCallbackResult(e->GetGRFID(), CBID_VEHICLE_LOAD_AMOUNT, cb_load_amount);
+				} else if (cb_load_amount != 0) {
+					load_amount = cb_load_amount;
+				}
+			}
 		}
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];

@@ -223,6 +223,10 @@ void Train::ConsistChanged(bool same_length)
 		uint16 veh_len = CALLBACK_FAILED;
 		if (HasBit(e_u->info.callback_mask, CBM_VEHICLE_LENGTH)) {
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
+
+			if (veh_len != CALLBACK_FAILED && veh_len >= VEHICLE_LENGTH) {
+				ErrorUnknownCallbackResult(e_u->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
+			}
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
 		veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);

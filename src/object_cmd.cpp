@@ -93,7 +93,10 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 
 	if (HasBit(spec->callback_mask, CBM_OBJ_COLOUR)) {
 		uint16 res = GetObjectCallback(CBID_OBJECT_COLOUR, o->colour, 0, spec, o, tile);
-		if (res != CALLBACK_FAILED) o->colour = GB(res, 0, 8);
+		if (res != CALLBACK_FAILED) {
+			if (res >= 0x100) ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_COLOUR, res);
+			o->colour = GB(res, 0, 8);
+		}
 	}
 
 	assert(o->town != NULL);

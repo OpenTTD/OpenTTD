@@ -165,6 +165,7 @@ static uint GetRoadVehLength(const RoadVehicle *v)
 
 	uint16 veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, v->engine_type, v);
 	if (veh_len != CALLBACK_FAILED) {
+		if (veh_len >= VEHICLE_LENGTH) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
 		length -= Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
 	}
 
