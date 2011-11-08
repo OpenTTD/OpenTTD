@@ -50,7 +50,7 @@ enum CallbackID {
 	CBID_VEHICLE_REFIT_CAPACITY          = 0x15, // 15 bit callback
 
 	/** Builds articulated engines for trains and RVs. */
-	CBID_VEHICLE_ARTIC_ENGINE            = 0x16, // 8 bit callback
+	CBID_VEHICLE_ARTIC_ENGINE            = 0x16, // 8 bit callback for grf version < 8
 
 	/** Determine whether the house can be built on the specified tile. */
 	CBID_HOUSE_ALLOW_CONSTRUCTION        = 0x17, // 8 bit callback

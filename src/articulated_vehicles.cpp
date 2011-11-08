@@ -15,6 +15,7 @@
 #include "vehicle_func.h"
 #include "engine_func.h"
 #include "company_func.h"
+#include "newgrf.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -33,12 +34,25 @@ static EngineID GetNextArticulatedPart(uint index, EngineID front_type, Vehicle 
 {
 	assert(front == NULL || front->engine_type == front_type);
 
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, index, 0, front_type, front);
-	if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return INVALID_ENGINE;
-
-	if (mirrored != NULL) *mirrored = HasBit(callback, 7);
 	const Engine *front_engine = Engine::Get(front_type);
-	return GetNewEngineID(front_engine->GetGRF(), front_engine->type, GB(callback, 0, 7));
+
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, index, 0, front_type, front);
+	if (callback == CALLBACK_FAILED) return INVALID_ENGINE;
+
+	if (front_engine->GetGRF()->grf_version < 8) {
+		/* 8 bits, bit 7 for mirroring */
+		callback = GB(callback, 0, 8);
+		if (callback == 0xFF) return INVALID_ENGINE;
+		if (mirrored != NULL) *mirrored = HasBit(callback, 7);
+		callback = GB(callback, 0, 7);
+	} else {
+		/* 15 bits, bit 14 for mirroring */
+		if (callback == 0x7FFF) return INVALID_ENGINE;
+		if (mirrored != NULL) *mirrored = HasBit(callback, 14);
+		callback = GB(callback, 0, 14);
+	}
+
+	return GetNewEngineID(front_engine->GetGRF(), front_engine->type, callback);
 }
 
 /**
