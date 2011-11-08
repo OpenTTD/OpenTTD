@@ -12,8 +12,10 @@
 #include "../../stdafx.h"
 #include "ai_cargolist.hpp"
 #include "ai_industry.hpp"
+#include "ai_station.hpp"
 #include "../../cargotype.h"
 #include "../../industry.h"
+#include "../../station_base.h"
 
 AICargoList::AICargoList()
 {
@@ -46,5 +48,15 @@ AICargoList_IndustryProducing::AICargoList_IndustryProducing(IndustryID industry
 		if (cargo_id != CT_INVALID) {
 			this->AddItem(cargo_id);
 		}
+	}
+}
+
+AICargoList_StationAccepting::AICargoList_StationAccepting(StationID station_id)
+{
+	if (!AIStation::IsValidStation(station_id)) return;
+
+	Station *st = ::Station::Get(station_id);
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
+		if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::GES_ACCEPTANCE)) this->AddItem(i);
 	}
 }

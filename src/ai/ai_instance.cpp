@@ -186,6 +186,7 @@ void AIInstance::RegisterAPI()
 	SQAICargoList_Register(this->engine);
 	SQAICargoList_IndustryAccepting_Register(this->engine);
 	SQAICargoList_IndustryProducing_Register(this->engine);
+	SQAICargoList_StationAccepting_Register(this->engine);
 	SQAICompany_Register(this->engine);
 	SQAIDate_Register(this->engine);
 	SQAIDepotList_Register(this->engine);

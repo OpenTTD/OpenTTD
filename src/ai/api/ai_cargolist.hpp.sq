@@ -64,3 +64,21 @@ void SQAICargoList_IndustryProducing_Register(Squirrel *engine)
 
 	SQAICargoList_IndustryProducing.PostRegister(engine);
 }
+
+namespace SQConvert {
+	/* Allow AICargoList_StationAccepting to be used as Squirrel parameter */
+	template <> AICargoList_StationAccepting *GetParam(ForceType<AICargoList_StationAccepting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList_StationAccepting *)instance; }
+	template <> AICargoList_StationAccepting &GetParam(ForceType<AICargoList_StationAccepting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList_StationAccepting *)instance; }
+	template <> const AICargoList_StationAccepting *GetParam(ForceType<const AICargoList_StationAccepting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList_StationAccepting *)instance; }
+	template <> const AICargoList_StationAccepting &GetParam(ForceType<const AICargoList_StationAccepting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList_StationAccepting *)instance; }
+	template <> int Return<AICargoList_StationAccepting *>(HSQUIRRELVM vm, AICargoList_StationAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList_StationAccepting", res, NULL, DefSQDestructorCallback<AICargoList_StationAccepting>); return 1; }
+} // namespace SQConvert
+
+void SQAICargoList_StationAccepting_Register(Squirrel *engine)
+{
+	DefSQClass <AICargoList_StationAccepting> SQAICargoList_StationAccepting("AICargoList_StationAccepting");
+	SQAICargoList_StationAccepting.PreRegister(engine, "AIList");
+	SQAICargoList_StationAccepting.AddConstructor<void (AICargoList_StationAccepting::*)(StationID station_id), 2>(engine, "xi");
+
+	SQAICargoList_StationAccepting.PostRegister(engine);
+}

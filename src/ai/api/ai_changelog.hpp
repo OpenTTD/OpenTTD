@@ -23,6 +23,7 @@
  *
  * \li AICargo::CT_AUTO_REFIT
  * \li AICargo::CT_NO_REFIT
+ * \li AICargoList_StationAccepting
  * \li AICompany::GetQuarterlyIncome
  * \li AICompany::GetQuarterlyExpenses
  * \li AICompany::GetQuarterlyCargoDelivered
