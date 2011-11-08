@@ -253,7 +253,10 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 		v_for->InvalidateNewGRFCache();
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v_for->engine_type, v_for);
 
-		if (callback == 0xFF) callback = CALLBACK_FAILED;
+		if (callback != CALLBACK_FAILED) {
+			if (callback > 0x400) ErrorUnknownCallbackResult(v_for->GetGRFID(), CBID_VEHICLE_CARGO_SUFFIX, callback);
+			if (callback >= 0x400 || (v_for->GetGRF()->grf_version < 8 && callback == 0xFF)) callback = CALLBACK_FAILED;
+		}
 		if (callback == CALLBACK_FAILED) break;
 
 		if (GetCargoSubtypeText(v_for) != expected_string) continue;
@@ -332,7 +335,7 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 			/* Get the cargo name. */
 			SetDParam(0, CargoSpec::Get(refit.cargo)->name);
 			/* If the callback succeeded, draw the cargo suffix. */
-			if (refit.value != CALLBACK_FAILED) {
+			if (refit.value != CALLBACK_FAILED && refit.value < 0x400) {
 				SetDParam(1, GetGRFStringID(refit.engine->GetGRFID(), 0xD000 + refit.value));
 				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_SPACE_STRING, colour);
 			} else {
@@ -427,7 +430,10 @@ struct RefitWindow : public Window {
 						v->InvalidateNewGRFCache();
 						uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
 
-						if (callback == 0xFF) callback = CALLBACK_FAILED;
+						if (callback != CALLBACK_FAILED) {
+							if (callback > 0x400) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_CARGO_SUFFIX, callback);
+							if (callback >= 0x400 || (v->GetGRF()->grf_version < 8 && callback == 0xFF)) callback = CALLBACK_FAILED;
+						}
 						if (refit_cyc != 0 && callback == CALLBACK_FAILED) break;
 
 						RefitOption option;
@@ -983,6 +989,10 @@ StringID GetCargoSubtypeText(const Vehicle *v)
 {
 	if (HasBit(EngInfo(v->engine_type)->callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
 		uint16 cb = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
+		if (cb != CALLBACK_FAILED) {
+			if (cb > 0x400) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_CARGO_SUFFIX, cb);
+			if (cb >= 0x400 || (v->GetGRF()->grf_version < 8 && cb == 0xFF)) cb = CALLBACK_FAILED;
+		}
 		if (cb != CALLBACK_FAILED) {
 			return GetGRFStringID(v->GetGRFID(), 0xD000 + cb);
 		}

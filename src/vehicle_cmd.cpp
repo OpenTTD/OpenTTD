@@ -491,12 +491,30 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		default: return CMD_ERROR;
 	}
 
-	/* Check if this vehicle can be started/stopped. The callback will fail or
-	 * return 0xFF if it can. */
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
-	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF && HasBit(p2, 0)) {
-		StringID error = GetGRFStringID(v->GetGRFID(), 0xD000 + callback);
-		return_cmd_error(error);
+	if (HasBit(p2, 0)) {
+		/* Check if this vehicle can be started/stopped. Failure means 'allow'. */
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
+		StringID error = STR_NULL;
+		if (callback != CALLBACK_FAILED) {
+			if (v->GetGRF()->grf_version < 8) {
+				/* 8 bit result 0xFF means 'allow' */
+				if (callback < 0x400 && GB(callback, 0, 8) != 0xFF) error = GetGRFStringID(v->GetGRFID(), 0xD000 + callback);
+			} else {
+				if (callback < 0x400) {
+					error = GetGRFStringID(v->GetGRFID(), 0xD000 + callback);
+				} else {
+					switch (callback) {
+						case 0x400: // allow
+							break;
+
+						default: // unknown reason -> disallow
+							error = STR_ERROR_INCOMPATIBLE_RAIL_TYPES;
+							break;
+					}
+				}
+			}
+		}
+		if (error != STR_NULL) return_cmd_error(error);
 	}
 
 	if (flags & DC_EXEC) {

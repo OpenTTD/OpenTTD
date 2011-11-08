@@ -273,7 +273,12 @@ StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callb
 	object.callback = (CallbackID)callback;
 
 	group = SpriteGroup::Resolve(as->grf_prop.spritegroup[0], &object);
-	if (group == NULL) return STR_UNDEFINED;
+	uint16 cb_res = (group != NULL) ? group->GetCallbackResult() : CALLBACK_FAILED;
+	if (cb_res == CALLBACK_FAILED || cb_res == 0x400) return STR_UNDEFINED;
+	if (cb_res > 0x400) {
+		ErrorUnknownCallbackResult(as->grf_prop.grffile->grfid, callback, cb_res);
+		return STR_UNDEFINED;
+	}
 
-	return GetGRFStringID(as->grf_prop.grffile->grfid, 0xD000 + group->GetCallbackResult());
+	return GetGRFStringID(as->grf_prop.grffile->grfid, 0xD000 + cb_res);
 }

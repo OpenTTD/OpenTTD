@@ -480,17 +480,24 @@ uint32 GetCompanyInfo(CompanyID owner, const Livery *l)
 CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, uint32 grfid, StringID default_error)
 {
 	CommandCost res;
-	switch (cb_res) {
-		case 0x400: return res; // No error.
-		case 0x401: res = CommandCost(default_error); break;
-		case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
-		case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
-		case 0x404: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE); break;
-		case 0x405: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE); break;
-		case 0x406: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_SEA); break;
-		case 0x407: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_CANAL); break;
-		case 0x408: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER); break;
-		default:    res = CommandCost(GetGRFStringID(grfid, 0xD000 + cb_res)); break;
+
+	if (cb_res < 0x400) {
+		res = CommandCost(GetGRFStringID(grfid, 0xD000 + cb_res));
+	} else {
+		switch (cb_res) {
+			case 0x400: return res; // No error.
+
+			default:    // unknown reason -> default error
+			case 0x401: res = CommandCost(default_error); break;
+
+			case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
+			case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
+			case 0x404: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE); break;
+			case 0x405: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE); break;
+			case 0x406: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_SEA); break;
+			case 0x407: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_CANAL); break;
+			case 0x408: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER); break;
+		}
 	}
 
 	/* Copy some parameters from the registers to the error message text ref. stack */

@@ -233,19 +233,23 @@ public:
 				/* Get the extra message for the GUI */
 				if (HasBit(spec->callback_mask, CBM_OBJ_FUND_MORE_TEXT)) {
 					uint16 callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, NULL, INVALID_TILE, _selected_object_view);
-					if (callback_res != CALLBACK_FAILED) {
-						StringID message = GetGRFStringID(spec->grf_prop.grffile->grfid, 0xD000 + callback_res);
-						if (message != STR_NULL && message != STR_UNDEFINED) {
-							StartTextRefStackUsage(6);
-							/* Use all the available space left from where we stand up to the
-							 * end of the window. We ALSO enlarge the window if needed, so we
-							 * can 'go' wild with the bottom of the window. */
-							int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top;
-							StopTextRefStackUsage();
-							if (y > this->info_height) {
-								BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
-								bow->info_height = y + 2;
-								bow->ReInit();
+					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
+						if (callback_res > 0x400) {
+							ErrorUnknownCallbackResult(spec->grf_prop.grffile->grfid, CBID_OBJECT_FUND_MORE_TEXT, callback_res);
+						} else {
+							StringID message = GetGRFStringID(spec->grf_prop.grffile->grfid, 0xD000 + callback_res);
+							if (message != STR_NULL && message != STR_UNDEFINED) {
+								StartTextRefStackUsage(6);
+								/* Use all the available space left from where we stand up to the
+								 * end of the window. We ALSO enlarge the window if needed, so we
+								 * can 'go' wild with the bottom of the window. */
+								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top;
+								StopTextRefStackUsage();
+								if (y > this->info_height) {
+									BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
+									bow->info_height = y + 2;
+									bow->ReInit();
+								}
 							}
 						}
 					}
