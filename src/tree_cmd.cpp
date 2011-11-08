@@ -793,8 +793,8 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	GetTileTrackStatus_Trees, // get_tile_track_status_proc
 	NULL,                     // click_tile_proc
 	NULL,                     // animate_tile_proc
-	TileLoop_Trees,           // tile_loop_clear
-	ChangeTileOwner_Trees,    // change_tile_owner_clear
+	TileLoop_Trees,           // tile_loop_proc
+	ChangeTileOwner_Trees,    // change_tile_owner_proc
 	NULL,                     // add_produced_cargo_proc
 	NULL,                     // vehicle_enter_tile_proc
 	GetFoundation_Trees,      // get_foundation_proc

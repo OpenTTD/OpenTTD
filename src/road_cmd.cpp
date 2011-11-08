@@ -1727,8 +1727,8 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	GetTileTrackStatus_Road, // get_tile_track_status_proc
 	ClickTile_Road,          // click_tile_proc
 	NULL,                    // animate_tile_proc
-	TileLoop_Road,           // tile_loop_clear
-	ChangeTileOwner_Road,    // change_tile_owner_clear
+	TileLoop_Road,           // tile_loop_proc
+	ChangeTileOwner_Road,    // change_tile_owner_proc
 	NULL,                    // add_produced_cargo_proc
 	VehicleEnter_Road,       // vehicle_enter_tile_proc
 	GetFoundation_Road,      // get_foundation_proc

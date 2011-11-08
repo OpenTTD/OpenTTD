@@ -1222,8 +1222,8 @@ extern const TileTypeProcs _tile_type_water_procs = {
 	GetTileTrackStatus_Water, // get_tile_track_status_proc
 	ClickTile_Water,          // click_tile_proc
 	NULL,                     // animate_tile_proc
-	TileLoop_Water,           // tile_loop_clear
-	ChangeTileOwner_Water,    // change_tile_owner_clear
+	TileLoop_Water,           // tile_loop_proc
+	ChangeTileOwner_Water,    // change_tile_owner_proc
 	NULL,                     // add_produced_cargo_proc
 	VehicleEnter_Water,       // vehicle_enter_tile_proc
 	GetFoundation_Water,      // get_foundation_proc

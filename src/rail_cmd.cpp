@@ -2883,8 +2883,8 @@ extern const TileTypeProcs _tile_type_rail_procs = {
 	GetTileTrackStatus_Track, // get_tile_track_status_proc
 	ClickTile_Track,          // click_tile_proc
 	NULL,                     // animate_tile_proc
-	TileLoop_Track,           // tile_loop_clear
-	ChangeTileOwner_Track,    // change_tile_owner_clear
+	TileLoop_Track,           // tile_loop_proc
+	ChangeTileOwner_Track,    // change_tile_owner_proc
 	NULL,                     // add_produced_cargo_proc
 	VehicleEnter_Track,       // vehicle_enter_tile_proc
 	GetFoundation_Track,      // get_foundation_proc

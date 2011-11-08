@@ -764,8 +764,8 @@ extern const TileTypeProcs _tile_type_object_procs = {
 	GetTileTrackStatus_Object,   // get_tile_track_status_proc
 	ClickTile_Object,            // click_tile_proc
 	AnimateTile_Object,          // animate_tile_proc
-	TileLoop_Object,             // tile_loop_clear
-	ChangeTileOwner_Object,      // change_tile_owner_clear
+	TileLoop_Object,             // tile_loop_proc
+	ChangeTileOwner_Object,      // change_tile_owner_proc
 	NULL,                        // add_produced_cargo_proc
 	NULL,                        // vehicle_enter_tile_proc
 	GetFoundation_Object,        // get_foundation_proc

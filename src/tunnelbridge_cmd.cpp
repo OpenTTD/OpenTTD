@@ -1707,8 +1707,8 @@ extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	GetTileTrackStatus_TunnelBridge, // get_tile_track_status_proc
 	NULL,                            // click_tile_proc
 	NULL,                            // animate_tile_proc
-	TileLoop_TunnelBridge,           // tile_loop_clear
-	ChangeTileOwner_TunnelBridge,    // change_tile_owner_clear
+	TileLoop_TunnelBridge,           // tile_loop_proc
+	ChangeTileOwner_TunnelBridge,    // change_tile_owner_proc
 	NULL,                            // add_produced_cargo_proc
 	VehicleEnter_TunnelBridge,       // vehicle_enter_tile_proc
 	GetFoundation_TunnelBridge,      // get_foundation_proc

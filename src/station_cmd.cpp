@@ -3642,8 +3642,8 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	GetTileTrackStatus_Station, // get_tile_track_status_proc
 	ClickTile_Station,          // click_tile_proc
 	AnimateTile_Station,        // animate_tile_proc
-	TileLoop_Station,           // tile_loop_clear
-	ChangeTileOwner_Station,    // change_tile_owner_clear
+	TileLoop_Station,           // tile_loop_proc
+	ChangeTileOwner_Station,    // change_tile_owner_proc
 	NULL,                       // add_produced_cargo_proc
 	VehicleEnter_Station,       // vehicle_enter_tile_proc
 	GetFoundation_Station,      // get_foundation_proc

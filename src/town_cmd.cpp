@@ -3088,8 +3088,8 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	GetTileTrackStatus_Town, // get_tile_track_status_proc
 	NULL,                    // click_tile_proc
 	AnimateTile_Town,        // animate_tile_proc
-	TileLoop_Town,           // tile_loop_clear
-	ChangeTileOwner_Town,    // change_tile_owner_clear
+	TileLoop_Town,           // tile_loop_proc
+	ChangeTileOwner_Town,    // change_tile_owner_proc
 	AddProducedCargo_Town,   // add_produced_cargo_proc
 	NULL,                    // vehicle_enter_tile_proc
 	GetFoundation_Town,      // get_foundation_proc

@@ -377,8 +377,8 @@ extern const TileTypeProcs _tile_type_clear_procs = {
 	GetTileTrackStatus_Clear, ///< get_tile_track_status_proc
 	NULL,                     ///< click_tile_proc
 	NULL,                     ///< animate_tile_proc
-	TileLoop_Clear,           ///< tile_loop_clear
-	ChangeTileOwner_Clear,    ///< change_tile_owner_clear
+	TileLoop_Clear,           ///< tile_loop_proc
+	ChangeTileOwner_Clear,    ///< change_tile_owner_proc
 	NULL,                     ///< add_produced_cargo_proc
 	NULL,                     ///< vehicle_enter_tile_proc
 	GetFoundation_Clear,      ///< get_foundation_proc

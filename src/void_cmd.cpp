@@ -74,8 +74,8 @@ extern const TileTypeProcs _tile_type_void_procs = {
 	GetTileTrackStatus_Void,  // get_tile_track_status_proc
 	NULL,                     // click_tile_proc
 	NULL,                     // animate_tile_proc
-	TileLoop_Void,            // tile_loop_clear
-	ChangeTileOwner_Void,     // change_tile_owner_clear
+	TileLoop_Void,            // tile_loop_proc
+	ChangeTileOwner_Void,     // change_tile_owner_proc
 	NULL,                     // add_produced_cargo_proc
 	NULL,                     // vehicle_enter_tile_proc
 	GetFoundation_Void,       // get_foundation_proc
