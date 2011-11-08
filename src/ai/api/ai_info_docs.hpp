@@ -183,10 +183,11 @@ public:
 
 	/** Miscellaneous flags for AI settings. */
 	enum AIConfigFlags {
-		AICONFIG_NONE,    ///< Normal setting.
-		AICONFIG_RANDOM,  ///< When randomizing the AI, pick any value between min_value and max_value.
-		AICONFIG_BOOLEAN, ///< This value is a boolean (either 0 (false) or 1 (true) ).
-		AICONFIG_INGAME,  ///< This setting can be changed while the AI is running.
+		AICONFIG_NONE,         ///< Normal setting.
+		AICONFIG_RANDOM,       ///< When randomizing the AI, pick any value between min_value and max_value.
+		AICONFIG_BOOLEAN,      ///< This value is a boolean (either 0 (false) or 1 (true) ).
+		AICONFIG_INGAME,       ///< This setting can be changed while the AI is running.
+		AICONFIG_AI_DEVELOPER, ///< This setting will only be visible when the ai development tools are active.
 	};
 
 	/**

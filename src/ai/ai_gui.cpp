@@ -32,6 +32,8 @@
 
 #include "table/strings.h"
 
+#include <vector>
+
 /** Enum referring to the widgets of the AI list window */
 enum AIListWindowWidgets {
 	AIL_WIDGET_LIST,             ///< The matrix with all available AIs
@@ -262,14 +264,16 @@ enum AISettingsWindowWidgets {
  * Window for settings the parameters of an AI.
  */
 struct AISettingsWindow : public Window {
-	CompanyID slot;        ///< The currently show company's setting.
-	AIConfig *ai_config;   ///< The configuration we're modifying.
-	int clicked_button;    ///< The button we clicked.
-	bool clicked_increase; ///< Whether we clicked the increase or decrease button.
-	int timeout;           ///< Timeout for unclicking the button.
-	int clicked_row;       ///< The clicked row of settings.
-	int line_height;       ///< Height of a row in the matrix widget.
-	Scrollbar *vscroll;    ///< Cache of the vertical scrollbar.
+	CompanyID slot;                       ///< The currently show company's setting.
+	AIConfig *ai_config;                  ///< The configuration we're modifying.
+	int clicked_button;                   ///< The button we clicked.
+	bool clicked_increase;                ///< Whether we clicked the increase or decrease button.
+	int timeout;                          ///< Timeout for unclicking the button.
+	int clicked_row;                      ///< The clicked row of settings.
+	int line_height;                      ///< Height of a row in the matrix widget.
+	Scrollbar *vscroll;                   ///< Cache of the vertical scrollbar.
+	typedef std::vector<const AIConfigItem *> VisibleSettingsList;
+	VisibleSettingsList visible_settings; ///< List of visible AI settings
 
 	/**
 	 * Constructor for the window.
@@ -282,6 +286,7 @@ struct AISettingsWindow : public Window {
 		timeout(0)
 	{
 		this->ai_config = AIConfig::GetConfig(slot);
+		this->RebuildVisibleSettings();
 
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(AIS_WIDGET_SCROLLBAR);
@@ -289,7 +294,25 @@ struct AISettingsWindow : public Window {
 
 		this->SetWidgetDisabledState(AIS_WIDGET_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
 
-		this->vscroll->SetCount((int)this->ai_config->GetConfigList()->size());
+		this->vscroll->SetCount(this->visible_settings.size());
+	}
+
+	/**
+	 * Rebuilds the list of visible settings. AI settings with the flag
+	 * AICONFIG_AI_DEVELOPER set will only be visible if the game setting
+	 * gui.ai_developer_tools is enabled.
+	 */
+	void RebuildVisibleSettings()
+	{
+		visible_settings.clear();
+
+		AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+		for (; it != this->ai_config->GetConfigList()->end(); it++) {
+			bool no_hide = (it->flags & AICONFIG_AI_DEVELOPER) == 0;
+			if (no_hide || _settings_client.gui.ai_developer_tools) {
+				visible_settings.push_back(&(*it));
+			}
+		}
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -308,7 +331,7 @@ struct AISettingsWindow : public Window {
 		if (widget != AIS_WIDGET_BACKGROUND) return;
 
 		AIConfig *config = this->ai_config;
-		AIConfigItemList::const_iterator it = config->GetConfigList()->begin();
+		VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 		int i = 0;
 		for (; !this->vscroll->IsVisible(i); i++) it++;
 
@@ -319,30 +342,31 @@ struct AISettingsWindow : public Window {
 
 
 		int y = r.top;
-		for (; this->vscroll->IsVisible(i) && it != config->GetConfigList()->end(); i++, it++) {
-			int current_value = config->GetSetting((*it).name);
-			bool editable = _game_mode == GM_MENU || !Company::IsValidID(this->slot) || (it->flags & AICONFIG_INGAME) != 0;
+		for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
+			const AIConfigItem &config_item = **it;
+			int current_value = config->GetSetting((config_item).name);
+			bool editable = _game_mode == GM_MENU || !Company::IsValidID(this->slot) || (config_item.flags & AICONFIG_INGAME) != 0;
 
 			StringID str;
 			TextColour colour;
 			uint idx = 0;
-			if (StrEmpty((*it).description)) {
+			if (StrEmpty(config_item.description)) {
 				str = STR_JUST_STRING;
 				colour = TC_ORANGE;
 			} else {
 				str = STR_AI_SETTINGS_SETTING;
 				colour = TC_LIGHT_BLUE;
-				SetDParamStr(idx++, (*it).description);
+				SetDParamStr(idx++, config_item.description);
 			}
 
-			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
+			if ((config_item.flags & AICONFIG_BOOLEAN) != 0) {
 				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
 				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
-				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > (*it).min_value, editable && current_value < (*it).max_value);
-				if (it->labels != NULL && it->labels->Contains(current_value)) {
+				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+				if (config_item.labels != NULL && config_item.labels->Contains(current_value)) {
 					SetDParam(idx++, STR_JUST_RAW_STRING);
-					SetDParamStr(idx++, it->labels->Find(current_value)->second);
+					SetDParamStr(idx++, config_item.labels->Find(current_value)->second);
 				} else {
 					SetDParam(idx++, STR_JUST_INT);
 					SetDParam(idx++, current_value);
@@ -375,11 +399,11 @@ struct AISettingsWindow : public Window {
 			case AIS_WIDGET_BACKGROUND: {
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(AIS_WIDGET_BACKGROUND);
 				int num = (pt.y - wid->pos_y) / this->line_height + this->vscroll->GetPosition();
-				if (num >= (int)this->ai_config->GetConfigList()->size()) break;
+				if (num >= (int)this->visible_settings.size()) break;
 
-				AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+				VisibleSettingsList::const_iterator it = this->visible_settings.begin();
 				for (int i = 0; i < num; i++) it++;
-				AIConfigItem config_item = *it;
+				const AIConfigItem config_item = **it;
 				if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot) && (config_item.flags & AICONFIG_INGAME) == 0) return;
 
 				bool bool_item = (config_item.flags & AICONFIG_BOOLEAN) != 0;
@@ -469,7 +493,11 @@ struct AISettingsWindow : public Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) delete this;
+		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
+			delete this;
+		} else {
+			this->RebuildVisibleSettings();
+		}
 	}
 };
 

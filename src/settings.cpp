@@ -920,6 +920,12 @@ static bool InvalidateIndustryViewWindow(int32 p1)
 	return true;
 }
 
+static bool InvalidateAISettingsWindow(int32 p1)
+{
+	InvalidateWindowClassesData(WC_AI_SETTINGS);
+	return true;
+}
+
 /**
  * Update the town authority window after a town authority setting change.
  * @param p1 Unused.
