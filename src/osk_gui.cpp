@@ -157,16 +157,13 @@ struct OskWindow : public Window {
 				this->GetWidget<NWidgetCore>(OSK_WIDGET_SHIFT)->colour = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
 				this->SetDirty();
 			}
+			/* Return focus to the parent widget and window. */
+			this->parent->SetFocusedWidget(this->text_btn);
+			SetFocusedWindow(this->parent);
 			return;
 		}
 
 		switch (widget) {
-			case OSK_WIDGET_TEXT:
-				/* Return focus to the parent widget and window. */
-				this->parent->SetFocusedWidget(this->text_btn);
-				SetFocusedWindow(this->parent);
-				break;
-
 			case OSK_WIDGET_BACKSPACE:
 				if (DeleteTextBufferChar(&this->qs->text, WKC_BACKSPACE)) this->InvalidateParent();
 				break;
@@ -229,6 +226,9 @@ struct OskWindow : public Window {
 				}
 				break;
 		}
+		/* Return focus to the parent widget and window. */
+		this->parent->SetFocusedWidget(this->text_btn);
+		SetFocusedWindow(this->parent);
 	}
 
 	void InvalidateParent()
