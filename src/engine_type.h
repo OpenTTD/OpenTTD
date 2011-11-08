@@ -121,6 +121,7 @@ struct RoadVehicleInfo {
 	uint8 tractive_effort;   ///< Coefficient of tractive effort
 	uint8 air_drag;          ///< Coefficient of air drag
 	byte visual_effect;      ///< Bitstuffed NewGRF visual effect data
+	byte shorten_factor;     ///< length on main map for this type is 8 - shorten_factor
 };
 
 /**

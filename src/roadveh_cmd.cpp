@@ -161,11 +161,12 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
  */
 static uint GetRoadVehLength(const RoadVehicle *v)
 {
-	uint length = VEHICLE_LENGTH;
+	const Engine *e = v->GetEngine();
+	uint length = e->u.road.shorten_factor;
 
 	uint16 veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, v->engine_type, v);
 	if (veh_len != CALLBACK_FAILED) {
-		if (veh_len >= VEHICLE_LENGTH) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
+		if (veh_len >= VEHICLE_LENGTH) ErrorUnknownCallbackResult(e->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
 		length -= Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
 	}
 
