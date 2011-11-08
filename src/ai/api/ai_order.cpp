@@ -82,7 +82,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
  * @param order_position The OrderPosition to convert.
  * @return An OpenTTD-internal index for the same order.
  */
-static const int AIOrderPositionToRealOrderPosition(VehicleID vehicle_id, AIOrder::OrderPosition order_position)
+static int AIOrderPositionToRealOrderPosition(VehicleID vehicle_id, AIOrder::OrderPosition order_position)
 {
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	if (order_position == v->GetNumManualOrders()) return v->GetNumOrders();
