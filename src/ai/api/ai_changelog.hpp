@@ -30,6 +30,7 @@
  * \li AICompany::GetQuarterlyPerformanceRating
  * \li AICompany::GetQuarterlyCompanyValue
  * \li AIController::GetOpsTillSuspend
+ * \li AIInfo::AICONFIG_AI_DEVELOPER
  * \li AIOrder::GetOrderRefit
  * \li AIOrder::IsRefitOrder
  * \li AIOrder::SetOrderRefit
