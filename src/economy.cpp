@@ -1207,8 +1207,15 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 		/* The default loadamount for mail is 1/4 of the load amount for passengers */
 		if (v->type == VEH_AIRCRAFT && !Aircraft::From(v)->IsNormalAircraft()) load_amount = CeilDiv(load_amount, 4);
 
-		if (_settings_game.order.gradual_loading && HasBit(e->info.callback_mask, CBM_VEHICLE_LOAD_AMOUNT)) {
-			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
+		if (_settings_game.order.gradual_loading) {
+			uint16 cb_load_amount = CALLBACK_FAILED;
+			if (e->GetGRF() != NULL && e->GetGRF()->grf_version >= 8) {
+				/* Use callback 36 */
+				cb_load_amount = GetVehicleProperty(v, PROP_VEHICLE_LOAD_AMOUNT, CALLBACK_FAILED);
+			} else if (HasBit(e->info.callback_mask, CBM_VEHICLE_LOAD_AMOUNT)) {
+				/* Use callback 12 */
+				cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
+			}
 			if (cb_load_amount != CALLBACK_FAILED) {
 				if (e->GetGRF()->grf_version < 8) cb_load_amount = GB(cb_load_amount, 0, 8);
 				if (cb_load_amount >= 0x100) {

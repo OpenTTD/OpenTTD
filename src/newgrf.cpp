@@ -888,7 +888,7 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 			ei->climates = buf->ReadByte();
 			break;
 
-		case 0x07: // Loading speed
+		case PROP_VEHICLE_LOAD_AMOUNT: // 0x07 Loading speed
 			/* Amount of cargo loaded during a vehicle's "loading tick" */
 			ei->load_amount = buf->ReadByte();
 			break;

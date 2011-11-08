@@ -18,6 +18,8 @@
  * @todo Currently the list only contains properties which are used more than once in the code. I.e. they are available for callback 0x36.
  */
 enum PropertyID {
+	PROP_VEHICLE_LOAD_AMOUNT                    = 0x07, ///< Loading speed
+
 	PROP_TRAIN_SPEED                            = 0x09, ///< Max. speed: 1 unit = 1/1.6 mph = 1 km-ish/h
 	PROP_TRAIN_POWER                            = 0x0B, ///< Power in hp          (if dualheaded: sum of both vehicles)
 	PROP_TRAIN_RUNNING_COST_FACTOR              = 0x0D, ///< Yearly runningcost   (if dualheaded: sum of both vehicles)
