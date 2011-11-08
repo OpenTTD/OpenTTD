@@ -13,10 +13,12 @@
  */
 
 #include "stdafx.h"
+#include "debug.h"
 #include "landscape.h"
 #include "house.h"
 #include "industrytype.h"
 #include "newgrf.h"
+#include "newgrf_config.h"
 #include "clear_map.h"
 #include "station_map.h"
 #include "tree_map.h"
@@ -27,6 +29,8 @@
 #include "newgrf_text.h"
 #include "livery.h"
 #include "company_base.h"
+#include "gui.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
 
@@ -493,6 +497,38 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, uint32 grfi
 	res.UseTextRefStack(4);
 
 	return res;
+}
+
+/**
+ * Record that a NewGRF returned an unknown/invalid callback result.
+ * Also show an error to the user.
+ * @param grfid ID of the NewGRF causing the problem.
+ * @param cbid Callback causing the problem.
+ * @param cb_res Invalid result returned by the callback.
+ */
+void ErrorUnknownCallbackResult(uint32 grfid, uint16 cbid, uint16 cb_res)
+{
+	GRFConfig *grfconfig = GetGRFConfig(grfid);
+
+	if (!HasBit(grfconfig->grf_bugs, GBUG_UNKNOWN_CB_RESULT)) {
+		SetBit(grfconfig->grf_bugs, GBUG_UNKNOWN_CB_RESULT);
+		SetDParamStr(0, grfconfig->GetName());
+		SetDParam(1, cbid);
+		SetDParam(2, cb_res);
+		ShowErrorMessage(STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, WL_CRITICAL);
+	}
+
+	/* debug output */
+	char buffer[512];
+
+	SetDParamStr(0, grfconfig->GetName());
+	GetString(buffer, STR_NEWGRF_BUGGY, lastof(buffer));
+	DEBUG(grf, 0, "%s", buffer + 3);
+
+	SetDParam(1, cbid);
+	SetDParam(2, cb_res);
+	GetString(buffer, STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, lastof(buffer));
+	DEBUG(grf, 0, "%s", buffer + 3);
 }
 
 /* static */ SmallVector<DrawTileSeqStruct, 8> NewGRFSpriteLayout::result_seq;

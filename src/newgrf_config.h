@@ -44,6 +44,7 @@ enum GRFBugs {
 	GBUG_VEH_LENGTH,        ///< Length of rail vehicle changes when not inside a depot
 	GBUG_VEH_REFIT,         ///< Articulated vehicles carry different cargos resp. are differently refittable than specified in purchase list
 	GBUG_VEH_POWERED_WAGON, ///< Powered wagon changed poweredness state when not inside a depot
+	GBUG_UNKNOWN_CB_RESULT, ///< A callback returned an unknown/invalid result
 };
 
 /** Status of post-gameload GRF compatibility check */
