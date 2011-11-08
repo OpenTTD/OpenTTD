@@ -240,14 +240,15 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 	/**
 	 * Creates a spritegroup representing a callback result
 	 * @param value The value that was used to represent this callback result
+	 * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
 	 */
-	CallbackResultSpriteGroup(uint16 value) :
+	CallbackResultSpriteGroup(uint16 value, bool grf_version8) :
 		SpriteGroup(SGT_CALLBACK),
 		result(value)
 	{
-		/* Old style callback results have the highest byte 0xFF so signify it is a callback result
+		/* Old style callback results (only valid for version < 8) have the highest byte 0xFF so signify it is a callback result.
 		 * New style ones only have the highest bit set (allows 15-bit results, instead of just 8) */
-		if ((this->result >> 8) == 0xFF) {
+		if (!grf_version8 && (this->result >> 8) == 0xFF) {
 			this->result &= ~0xFF00;
 		} else {
 			this->result &= ~0x8000;

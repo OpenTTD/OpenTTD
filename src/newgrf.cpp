@@ -4240,7 +4240,7 @@ static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 grou
 {
 	if (HasBit(groupid, 15)) {
 		assert(CallbackResultSpriteGroup::CanAllocateItem());
-		return new CallbackResultSpriteGroup(groupid);
+		return new CallbackResultSpriteGroup(groupid, _cur.grffile->grf_version >= 8);
 	}
 
 	if (groupid > MAX_SPRITEGROUP || _cur.spritegroups[groupid] == NULL) {
@@ -4263,7 +4263,7 @@ static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte 
 {
 	if (HasBit(spriteid, 15)) {
 		assert(CallbackResultSpriteGroup::CanAllocateItem());
-		return new CallbackResultSpriteGroup(spriteid);
+		return new CallbackResultSpriteGroup(spriteid, _cur.grffile->grf_version >= 8);
 	}
 
 	if (!_cur.IsValidSpriteSet(feature, spriteid)) {
