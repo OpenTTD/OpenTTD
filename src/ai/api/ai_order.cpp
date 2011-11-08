@@ -128,7 +128,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 /* static */ bool AIOrder::IsCurrentOrderPartOfOrderList(VehicleID vehicle_id)
 {
-	if (AIVehicle::IsValidVehicle(vehicle_id)) return false;
+	if (!AIVehicle::IsValidVehicle(vehicle_id)) return false;
 	if (GetOrderCount(vehicle_id) == 0) return false;
 
 	const Order *order = &::Vehicle::Get(vehicle_id)->current_order;
