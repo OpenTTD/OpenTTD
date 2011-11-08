@@ -5443,9 +5443,10 @@ void CheckForMissingSprites()
  *
  * @param param variable number (as for VarAction2, for Action7/9/D you have to subtract 0x80 first).
  * @param value returns the value of the variable.
+ * @param grffile NewGRF querying the variable
  * @return true iff the variable is known and the value is returned in 'value'.
  */
-bool GetGlobalVariable(byte param, uint32 *value)
+bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 {
 	switch (param) {
 		case 0x00: // current date
@@ -5546,9 +5547,16 @@ bool GetGlobalVariable(byte param, uint32 *value)
 
 		/* case 0x1F: // locale dependent settings not implemented to avoid desync */
 
-		case 0x20: // snow line height
-			*value = _settings_game.game_creation.landscape == LT_ARCTIC ? GetSnowLine() * TILE_HEIGHT : 0xFF;
+		case 0x20: { // snow line height
+			byte snowline = GetSnowLine();
+			if (_settings_game.game_creation.landscape == LT_ARCTIC && snowline <= MAX_TILE_HEIGHT) {
+				*value = Clamp(snowline * (grffile->grf_version >= 8 ? 1 : TILE_HEIGHT), 0, 0xFE);
+			} else {
+				/* No snow */
+				*value = 0xFF;
+			}
 			return true;
+		}
 
 		case 0x21: // OpenTTD version
 			*value = _openttd_newgrf_version;
@@ -5574,7 +5582,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 {
 	/* First handle variable common with VarAction2 */
 	uint32 value;
-	if (GetGlobalVariable(param - 0x80, &value)) return value;
+	if (GetGlobalVariable(param - 0x80, &value, _cur.grffile)) return value;
 
 	/* Non-common variable */
 	switch (param) {
