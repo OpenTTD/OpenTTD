@@ -76,6 +76,31 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	return order;
 }
 
+/**
+ * Convert an AIOrder::OrderPosition (which is the manual order index) to an order index
+ * as expected by the OpenTTD commands.
+ * @param order_position The OrderPosition to convert.
+ * @return An OpenTTD-internal index for the same order.
+ */
+static const int AIOrderPositionToRealOrderPosition(VehicleID vehicle_id, AIOrder::OrderPosition order_position)
+{
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+	if (order_position == v->GetNumManualOrders()) return v->GetNumOrders();
+
+	assert(AIOrder::IsValidVehicleOrder(vehicle_id, order_position));
+
+	int res = (int)order_position;
+	const Order *order = v->orders.list->GetFirstOrder();
+	for (; order->GetType() == OT_IMPLICIT; order = order->next) res++;
+	while (order_position > 0) {
+		order_position = (AIOrder::OrderPosition)(order_position - 1);
+		order = order->next;
+		for (; order->GetType() == OT_IMPLICIT; order = order->next) res++;
+	}
+
+	return res;
+}
+
 /* static */ bool AIOrder::IsGotoStationOrder(VehicleID vehicle_id, OrderPosition order_position)
 {
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return false;
@@ -105,7 +130,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (order_position == ORDER_CURRENT) return false;
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return false;
 
-	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
+	const Order *order = ::Vehicle::Get(vehicle_id)->GetOrder(AIOrderPositionToRealOrderPosition(order_position));
 	return order->GetType() == OT_CONDITIONAL;
 }
 
@@ -114,7 +139,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (order_position == ORDER_CURRENT) return false;
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return false;
 
-	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
+	const Order *order = ::ResolveOrder(vehicle_id, order_position);
 	return order->GetType() == OT_DUMMY;
 }
 
@@ -356,7 +381,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, condition >= OC_LOAD_PERCENTAGE && condition <= OC_REMAINING_LIFETIME);
 
-	return AIObject::DoCommand(0, vehicle_id | (order_position << 20), MOF_COND_VARIABLE | (condition << 4), CMD_MODIFY_ORDER);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), MOF_COND_VARIABLE | (condition << 4), CMD_MODIFY_ORDER);
 }
 
 /* static */ bool AIOrder::SetOrderCompareFunction(VehicleID vehicle_id, OrderPosition order_position, CompareFunction compare)
@@ -365,7 +391,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, compare >= CF_EQUALS && compare <= CF_IS_FALSE);
 
-	return AIObject::DoCommand(0, vehicle_id | (order_position << 20), MOF_COND_COMPARATOR | (compare << 4), CMD_MODIFY_ORDER);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), MOF_COND_COMPARATOR | (compare << 4), CMD_MODIFY_ORDER);
 }
 
 /* static */ bool AIOrder::SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, int32 value)
@@ -375,7 +402,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, value >= 0 && value < 2048);
 	if (GetOrderCondition(vehicle_id, order_position) == OC_MAX_SPEED) value = value * 10 / 16;
 
-	return AIObject::DoCommand(0, vehicle_id | (order_position << 20), MOF_COND_VALUE | (value << 4), CMD_MODIFY_ORDER);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), MOF_COND_VALUE | (value << 4), CMD_MODIFY_ORDER);
 }
 
 /* static */ bool AIOrder::SetStopLocation(VehicleID vehicle_id, OrderPosition order_position, StopLocation stop_location)
@@ -385,7 +413,10 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, IsGotoStationOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, stop_location >= STOPLOCATION_NEAR && stop_location <= STOPLOCATION_FAR);
 
-	uint32 p1 = vehicle_id | (order_position << 20);
+	order_position = AIOrder::ResolveOrderPosition(vehicle_id, order_position);
+
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	uint32 p1 = vehicle_id | (order_pos << 20);
 	uint32 p2 = MOF_STOP_LOCATION | (stop_location << 4);
 	return AIObject::DoCommand(0, p1, p2, CMD_MODIFY_ORDER);
 }
@@ -397,7 +428,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, AICargo::IsValidCargo(refit_cargo) || refit_cargo == CT_AUTO_REFIT || refit_cargo == CT_NO_REFIT);
 
 	uint32 p1 = vehicle_id;
-	uint32 p2 = refit_cargo | AIOrder::ResolveOrderPosition(vehicle_id, order_position) << 16;
+	uint32 p2 = refit_cargo | AIOrderPositionToRealOrderPosition(AIOrder::ResolveOrderPosition(vehicle_id, order_position)) << 16;
 	return AIObject::DoCommand(0, p1, p2, CMD_ORDER_REFIT);
 }
 
@@ -406,7 +437,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, AIVehicle::IsValidVehicle(vehicle_id));
 	EnforcePrecondition(false, AreOrderFlagsValid(destination, order_flags));
 
-	return InsertOrder(vehicle_id, (AIOrder::OrderPosition)::Vehicle::Get(vehicle_id)->GetNumOrders(), destination, order_flags);
+	return InsertOrder(vehicle_id, (AIOrder::OrderPosition)::Vehicle::Get(vehicle_id)->GetNumManualOrders(), destination, order_flags);
 }
 
 /* static */ bool AIOrder::AppendConditionalOrder(VehicleID vehicle_id, OrderPosition jump_to)
@@ -414,7 +445,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	EnforcePrecondition(false, AIVehicle::IsValidVehicle(vehicle_id));
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, jump_to));
 
-	return InsertConditionalOrder(vehicle_id, (AIOrder::OrderPosition)::Vehicle::Get(vehicle_id)->GetNumOrders(), jump_to);
+	return InsertConditionalOrder(vehicle_id, (AIOrder::OrderPosition)::Vehicle::Get(vehicle_id)->GetNumManualOrders(), jump_to);
 }
 
 /* static */ bool AIOrder::InsertOrder(VehicleID vehicle_id, OrderPosition order_position, TileIndex destination, AIOrder::AIOrderFlags order_flags)
@@ -423,7 +454,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (order_position == ORDER_CURRENT) order_position = AIOrder::ResolveOrderPosition(vehicle_id, order_position);
 
 	EnforcePrecondition(false, AIVehicle::IsValidVehicle(vehicle_id));
-	EnforcePrecondition(false, order_position >= 0 && order_position <= ::Vehicle::Get(vehicle_id)->GetNumOrders());
+	EnforcePrecondition(false, order_position >= 0 && order_position <= ::Vehicle::Get(vehicle_id)->GetNumManualOrders());
 	EnforcePrecondition(false, AreOrderFlagsValid(destination, order_flags));
 
 	Order order;
@@ -467,7 +498,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 	order.SetNonStopType((OrderNonStopFlags)GB(order_flags, 0, 2));
 
-	return AIObject::DoCommand(0, vehicle_id | (order_position << 20), order.Pack(), CMD_INSERT_ORDER);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), order.Pack(), CMD_INSERT_ORDER);
 }
 
 /* static */ bool AIOrder::InsertConditionalOrder(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to)
@@ -476,12 +508,14 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (order_position == ORDER_CURRENT) order_position = AIOrder::ResolveOrderPosition(vehicle_id, order_position);
 
 	EnforcePrecondition(false, AIVehicle::IsValidVehicle(vehicle_id));
-	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, jump_to));
+	EnforcePrecondition(false, order_position >= 0 && order_position <= ::Vehicle::Get(vehicle_id)->GetNumManualOrders());
+	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, jump_to) && jump_to != ORDER_CURRENT);
 
 	Order order;
 	order.MakeConditional(jump_to);
 
-	return AIObject::DoCommand(0, vehicle_id | (order_position << 20), order.Pack(), CMD_INSERT_ORDER);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), order.Pack(), CMD_INSERT_ORDER);
 }
 
 /* static */ bool AIOrder::RemoveOrder(VehicleID vehicle_id, OrderPosition order_position)
@@ -490,7 +524,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
 
-	return AIObject::DoCommand(0, vehicle_id, order_position, CMD_DELETE_ORDER);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	return AIObject::DoCommand(0, vehicle_id, order_pos, CMD_DELETE_ORDER);
 }
 
 /* static */ bool AIOrder::SkipToOrder(VehicleID vehicle_id, OrderPosition next_order)
@@ -499,7 +534,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, next_order));
 
-	return AIObject::DoCommand(0, vehicle_id, next_order, CMD_SKIP_TO_ORDER);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, next_order);
+	return AIObject::DoCommand(0, vehicle_id, order_pos, CMD_SKIP_TO_ORDER);
 }
 
 /**
@@ -536,13 +572,14 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 	EnforcePrecondition(false, AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags));
 
 	const Order *order = ::ResolveOrder(vehicle_id, order_position);
+	int order_pos = AIOrderPositionToRealOrderPosition(vehicle_id, order_position);
 
 	AIOrderFlags current = GetOrderFlags(vehicle_id, order_position);
 
 	EnforcePrecondition(false, (order_flags & AIOF_GOTO_NEAREST_DEPOT) == (current & AIOF_GOTO_NEAREST_DEPOT));
 
 	if ((current & AIOF_NON_STOP_FLAGS) != (order_flags & AIOF_NON_STOP_FLAGS)) {
-		return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_NON_STOP_FLAGS) << 4 | MOF_NON_STOP, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
+		return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), (order_flags & AIOF_NON_STOP_FLAGS) << 4 | MOF_NON_STOP, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 	}
 
 	switch (order->GetType()) {
@@ -551,16 +588,16 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 				uint data = DA_ALWAYS_GO;
 				if (order_flags & AIOF_SERVICE_IF_NEEDED) data = DA_SERVICE;
 				if (order_flags & AIOF_STOP_IN_DEPOT) data = DA_STOP;
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (data << 4) | MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
+				return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), (data << 4) | MOF_DEPOT_ACTION, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 			}
 			break;
 
 		case OT_GOTO_STATION:
 			if ((current & AIOF_UNLOAD_FLAGS) != (order_flags & AIOF_UNLOAD_FLAGS)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_UNLOAD_FLAGS) << 2 | MOF_UNLOAD, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
+				return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), (order_flags & AIOF_UNLOAD_FLAGS) << 2 | MOF_UNLOAD, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 			}
 			if ((current & AIOF_LOAD_FLAGS) != (order_flags & AIOF_LOAD_FLAGS)) {
-				return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_LOAD_FLAGS) >> 1 | MOF_LOAD, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
+				return AIObject::DoCommand(0, vehicle_id | (order_pos << 20), (order_flags & AIOF_LOAD_FLAGS) >> 1 | MOF_LOAD, CMD_MODIFY_ORDER, NULL, &::_DoCommandReturnSetOrderFlags);
 			}
 			break;
 
@@ -591,7 +628,9 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position_move));
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position_target));
 
-	return AIObject::DoCommand(0, vehicle_id, order_position_move | (order_position_target << 16), CMD_MOVE_ORDER);
+	int order_pos_move = AIOrderPositionToRealOrderPosition(vehicle_id, order_position_move);
+	int order_pos_target = AIOrderPositionToRealOrderPosition(vehicle_id, order_position_target);
+	return AIObject::DoCommand(0, vehicle_id, order_pos_move | (order_pos_target << 16), CMD_MOVE_ORDER);
 }
 
 /* static */ bool AIOrder::CopyOrders(VehicleID vehicle_id, VehicleID main_vehicle_id)
