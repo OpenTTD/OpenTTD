@@ -3797,10 +3797,13 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				buf->ReadDWord();
 				break;
 
-			case 0x09: // Toolbar caption of railtype (sets name as well for backwards compatibility)
-				rti->strings.name = rti->strings.toolbar_caption = buf->ReadWord();
+			case 0x09: // Toolbar caption of railtype (sets name as well for backwards compatibility for grf ver < 8)
+				rti->strings.toolbar_caption = buf->ReadWord();
 				_string_to_grf_mapping[&rti->strings.toolbar_caption] = _cur.grffile->grfid;
-				_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
+				if (_cur.grffile->grf_version < 8) {
+					rti->strings.name = rti->strings.toolbar_caption;
+					_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
+				}
 				break;
 
 			case 0x0A: // Menu text of railtype
@@ -3883,7 +3886,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				rti->sorting_order = buf->ReadByte();
 				break;
 
-			case 0x1B: // Name of railtype (overridden by prop 09)
+			case 0x1B: // Name of railtype (overridden by prop 09 for grf ver < 8)
 				rti->strings.name = buf->ReadWord();
 				_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
 				break;
