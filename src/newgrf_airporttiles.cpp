@@ -195,7 +195,7 @@ static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable
 		case 0x44: return GetAnimationFrame(tile);
 
 		/* Land info of nearby tiles */
-		case 0x60: return GetNearbyAirportTileInformation(parameter, tile, st->index, object->grffile);
+		case 0x60: return GetNearbyAirportTileInformation(parameter, tile, st->index, object->grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x61:
