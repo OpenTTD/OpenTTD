@@ -488,7 +488,7 @@ uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, 
 		case 0x89: return min(DistanceManhattan(industry->town->xy, tile), 255);
 
 		/* Lowest height of the tile */
-		case 0x8A: return GetTilePixelZ(tile);
+		case 0x8A: return Clamp(GetTileZ(tile) * (object->grffile->grf_version >= 8 ? 1 : TILE_HEIGHT), 0, 0xFF);
 
 		/* Distance to the nearest water/land tile */
 		case 0x8B: return GetClosestWaterDistance(tile, (GetIndustrySpec(industry->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
