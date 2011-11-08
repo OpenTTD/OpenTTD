@@ -7971,6 +7971,7 @@ static void CalculateRefitMasks()
 		EngineID engine = e->index;
 		EngineInfo *ei = &e->info;
 		bool only_defaultcargo; ///< Set if the vehicle shall carry only the default cargo
+		const uint8 *cargo_map_for_first_refittable = NULL;
 
 		/* Did the newgrf specify any refitting? If not, use defaults. */
 		if (_gted[engine].refitmask_valid) {
@@ -7982,9 +7983,13 @@ static void CalculateRefitMasks()
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
 			only_defaultcargo = (ei->refit_mask == 0 && _gted[engine].cargo_allowed == 0);
 
+			const GRFFile *file = _gted[engine].refitmask_grf;
+			if (file == NULL) file = e->GetGRF();
+			if (file != NULL && file->grf_version >= 8 && file->cargo_max != 0) {
+				cargo_map_for_first_refittable = file->cargo_map;
+			}
+
 			if (ei->refit_mask != 0) {
-				const GRFFile *file = _gted[engine].refitmask_grf;
-				if (file == NULL) file = e->GetGRF();
 				if (file != NULL && file->cargo_max != 0) {
 					/* Apply cargo translation table to the refit mask */
 					uint num_cargo = min(32, file->cargo_max);
@@ -8045,7 +8050,23 @@ static void CalculateRefitMasks()
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
-		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
+		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) {
+			if (cargo_map_for_first_refittable == NULL) {
+				/* Use first refittable cargo slot */
+				ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
+			} else {
+				/* Use first refittable cargo from cargo translation table */
+				byte best_local_slot = 0xFF;
+				CargoID cargo_type;
+				FOR_EACH_SET_CARGO_ID(cargo_type, ei->refit_mask) {
+					byte local_slot = cargo_map_for_first_refittable[cargo_type];
+					if (local_slot < best_local_slot) {
+						best_local_slot = local_slot;
+						ei->cargo_type = cargo_type;
+					}
+				}
+			}
+		}
 		if (ei->cargo_type == CT_INVALID) ei->climates = 0;
 
 		/* Clear refit_mask for not refittable ships */
