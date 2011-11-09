@@ -2096,6 +2096,18 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Стро
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Переключение между строительством и удалением ж/д путей, сигналов, станций. При нажатом Ctrl убирает станции с рельсами.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Преобразовать/модернизировать рельсы. При нажатом Shift - оценка стоимости преобразования.
 
+STR_RAIL_NAME_RAILROAD                                          :Ж/д
+STR_RAIL_NAME_RAILROAD.m                                        :Ж/д
+STR_RAIL_NAME_RAILROAD.n                                        :Ж/д
+STR_RAIL_NAME_ELRAIL                                            :Электрифиц. ж/д
+STR_RAIL_NAME_ELRAIL.m                                          :Электрифиц. ж/д
+STR_RAIL_NAME_ELRAIL.n                                          :Электрифиц. ж/д
+STR_RAIL_NAME_MONORAIL                                          :Монорельсовый
+STR_RAIL_NAME_MONORAIL.m                                        :Монорельсовый
+STR_RAIL_NAME_MONORAIL.n                                        :Монорельсовое
+STR_RAIL_NAME_MAGLEV                                            :Магнитный
+STR_RAIL_NAME_MAGLEV.m                                          :Магнитный
+STR_RAIL_NAME_MAGLEV.n                                          :Магнитное
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Направление депо
@@ -2340,10 +2352,10 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Пока
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация об участке земли
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Чтобы очистить, надо: {LTBLUE}(нет данных)
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Чтобы очистить, надо: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Стоимость очистки: {LTBLUE}(недоступна)
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Стоимость очистки: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Выручка от продажи: {LTBLUE}{CURRENCY}
-STR_LAND_AREA_INFORMATION_OWNER_N_A                             :нет данных
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :отсутствует
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Владелец: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Владелец дороги: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Владелец трамвая: {LTBLUE}{STRING}
@@ -2371,6 +2383,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснеженная земля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустыня
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} путь
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} путь с сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} путь с входными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} путь с выходными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} путь с комбинированными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} путь с маршрутными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} путь с односторонним маршрутным сигналом
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} путь с обычными и входными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} путь с обычными и выходными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} путь с обычными и комбиниров. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} путь с обычными и маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} путь с обычными и одностор. маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} путь с входными и выходными сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} путь с входными и комбинир. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} путь с входными и маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} путь с входными и одностор. маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} путь с выходными и комбиниров. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} путь с выходными и маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} путь с выходными и односторонн. маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} путь с комбинир. и маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} путь с комбинир. и односторонн. маршрутн. сигналами
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} путь с маршрутным и одностор. маршрутным сигналами
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING.n} депо
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога с уличным освещением
@@ -2669,6 +2704,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поез
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» предоставляет неверную информацию.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация о вместимости/переоборудовании для локомотива «{1:ENGINE}» после постройки отличается от сведений в списке покупки, что может помешать функции автообновления/автозамены корректно произвести переоборудование.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Модуль «{1:STRING}» вызвал бесконечный цикл
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Функция обратного вызова 0x{HEX} вернула непонятный/неверный результат 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<неизвестный груз>
@@ -3219,7 +3255,7 @@ STR_VEHICLE_STATUS_CRASHED                                      :{RED}Попал
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Поломка
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Остановлен
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Останавливается; {VELOCITY}
-STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Нет тока
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Нет тяги
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ожидает свободного пути
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Идёт к {STATION}; {VELOCITY}
@@ -3353,9 +3389,11 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Не разгр
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Изменить способ разгрузки на указанной станции
 
 STR_ORDER_REFIT                                                 :{BLACK}Переоборудовать
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Выберите тип груза для переоборудования. Ctrl+клик - для удаления задания.
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Выберите тип груза для переоборудования. Ctrl+щелчок отменит переоборудование.
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Переоборудование
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Выберите тип груза для переоборудования. Оно будет проведено, если ТС позволяет это сделать. Ctrl+щелчок отменит переоборудование.
+STR_ORDER_DROP_REFIT_AUTO                                       :Определённый груз
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступный груз
 
 STR_ORDER_SERVICE                                               :{BLACK}Обслуживание
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда идти
@@ -3458,6 +3496,7 @@ STR_ORDER_NO_UNLOAD_REFIT                                       :(Не разг�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Не разгружаться, переоборуд. под {STRING.acc} и ждать полной загрузки)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Не разгружаться, переоборуд. под {STRING.acc} и ждать полной загрузки любым грузом)
 
+STR_ORDER_AUTO_REFIT_ANY                                        :доступный груз
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[начало станции]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[середина станции]

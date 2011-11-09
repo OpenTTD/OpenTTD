@@ -1107,6 +1107,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... த�
 # Rail construction toolbar
 
 
+STR_RAIL_NAME_RAILROAD                                          :இரயில்வே
+STR_RAIL_NAME_ELRAIL                                            :மின்மயமாக்கப்பட்ட இரயில்வே
+STR_RAIL_NAME_MONORAIL                                          :மோனோ இரயில்
+STR_RAIL_NAME_MAGLEV                                            :மேக்லெவ்
+
 # Rail depot construction window
 
 # Rail waypoint construction window
@@ -1449,6 +1454,7 @@ STR_ORDER_IMPLICIT                                              :(தானி�
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(லோடிங் அன்லோடிங் தடைசெய்யப்பட்டுள்ளது)
 
 
+STR_ORDER_AUTO_REFIT_ANY                                        :கிடைக்கும் சரக்கு
 
 
 

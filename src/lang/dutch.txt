@@ -2199,6 +2199,19 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akkers
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Sneeuw
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woestijn
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} spoor
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} spoor met blokseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} spoor met voorseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} spoor met exitseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} spoor met combo-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} spoor met routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} spoor met eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} spoor met blok en voorseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} spoor met blok en exitseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} spoor met blok en combo-seinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} spoor met blok en routeseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} spoor met blok en eenrichtingsseinen
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} spoor met voor- en exitseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} spoor met voor- en combo-seinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} spoor met voor- en routeseinen
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} spoor met voor- en eenrichtingsseinen
@@ -2507,6 +2520,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' heeft een eindeloze loop veroorzaakt in de productie-callback
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback 0x{HEX} gaf inbekend/ongeldig resultaat 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>

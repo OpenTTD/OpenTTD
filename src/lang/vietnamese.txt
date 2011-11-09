@@ -1290,7 +1290,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Khi ké
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Xây cờ hiệu thay vì đèn trước năm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bật GUI đèn tín hiệu : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Kiểu đèn tín hiệu đc xây mặc định: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn dừng
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn hiệu khóa
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Đèn dẫn đường
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Đèn dẫn đường 1-chiều
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Đổi tuần hoàn các kiểu đèn báo: {ORANGE}{STRING}
@@ -1876,7 +1876,7 @@ STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Không t
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Tải bất thành...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... kết nối bị đứt
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... không ghi được file
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Không thể giải nétn file đã tải
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Không thể giải nén file đã tải
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Tuỳ Hiệu Ứng Trong Suốt
@@ -2199,6 +2199,28 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Cánh đồng
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Đất tuyết phủ
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Hoang mạc
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Đường ray {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Đường ray {STRING} với đèn hiệu khóa
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Đường ray {STRING} với đèn tín hiệu báo trước
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Đường ray {STRING} với đèn tín hiệu cửa thoát
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Đường ray {STRING} với đèn tín hiệu kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Đường ray {STRING} với đèn dẫn đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Đường ray {STRING} với đèn dẫn đường 1-chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Đường ray {STRING} với đèn hiệu khóa và đèn tín hiệu báo trước
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Đường ray {STRING} với đèn hiệu khóa và đèn tín hiệu cửa thoát
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Đường ray {STRING} với đèn hiệu khóa và đèn tín hiệu kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Đường ray {STRING} với đèn hiệu khóa và đèn dẫn đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Đường ray {STRING} với đèn hiệu khóa và đèn dẫn đường 1-chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Đường ray {STRING} với đèn tín hiệu báo trước và đèn tín hiệu cửa thoát
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Đường ray {STRING} với đèn tín hiệu báo trước và đèn tín hiệu kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Đường ray {STRING} với đèn tín hiệu báo trước và đèn dẫn đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Đường ray {STRING} với đèn tín hiệu báo trước và đèn dẫn đường 1-chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Đường ray {STRING} với đèn tín hiệu cửa thoát và đèn tín hiệu kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Đường ray {STRING} với đèn tín hiệu cửa thoát và đèn dẫn đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Đường ray {STRING} với đèn tín hiệu cửa thoát và đèn dẫn đường 1-chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Đường ray {STRING} với đèn tín hiệu kết hợp và đèn dẫn đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Đường ray {STRING} với đèn tín hiệu kết hợp và đèn dẫn đường 1-chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Đường ray {STRING} với đèn dẫn đường và đèn dẫn đường 1-chiều
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Xưởng tàu hỏa {STRING}
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Đường bộ
@@ -2498,6 +2520,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn t
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' không hợp lệ.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến được cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' gây ra một vòng lặp vô tận khi gọi hàm callback.
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Hàm callback 0x{HEX} gửi trả kết quả sai/không rõ 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<sai kiểu hàng>
@@ -3922,7 +3945,7 @@ STR_SV_STNAME_ANNEXE                                            :{STRING} phụ
 STR_SV_STNAME_SIDINGS                                           :{STRING} kế
 STR_SV_STNAME_BRANCH                                            :Nhánh {STRING}
 STR_SV_STNAME_UPPER                                             :{STRING} thượng
-STR_SV_STNAME_LOWER                                             :{STRING} Hạ
+STR_SV_STNAME_LOWER                                             :{STRING} hạ
 STR_SV_STNAME_HELIPORT                                          :Sân bay trực thăng {STRING}
 STR_SV_STNAME_FOREST                                            :Rừng {STRING}
 STR_SV_STNAME_FALLBACK                                          :Bến {STRING} số #{NUM}

@@ -1924,6 +1924,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl+Click înlătură şinele din punctele de tranzit şi din staţii
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteşte tipul de cale ferată. Shift comută între convertire/afişare cost estimat
 
+STR_RAIL_NAME_RAILROAD                                          :Cale ferată
+STR_RAIL_NAME_ELRAIL                                            :Șină electrificată
+STR_RAIL_NAME_MONORAIL                                          :Monoșină
+STR_RAIL_NAME_MAGLEV                                            :Pernă magnetică
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientarea depoului feroviar
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Alege orientarea depoului
@@ -2193,6 +2198,8 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Verdeaţă
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Teren agricol
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Teren înzăpezit
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deşert
+
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depou trenuri
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Şosea
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Stradă iluminată
@@ -3254,6 +3261,9 @@ STR_ORDER_NO_UNLOAD                                             :(Nu descărca �
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nu descărca şi aşteaptă încărcare maximă)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nu descărca şi aşteaptă orice încărcătură)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Fără încărcare sau descărcare)
+
+
+STR_ORDER_AUTO_REFIT_ANY                                        :incărcătura disponibilă
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capătul apropiat]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[la mijloc]
