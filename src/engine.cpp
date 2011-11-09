@@ -200,27 +200,28 @@ bool Engine::CanCarryCargo() const
 /**
  * Determines capacity of a given vehicle from scratch.
  * For aircraft the main capacity is determined. Mail might be present as well.
- * @note Keep this function consistent with Engine::GetDisplayDefaultCapacity().
- * @param v Vehicle of interest
+ * @param v Vehicle of interest; NULL in purchase list
  * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
  * @return Capacity
  */
 uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 {
-	assert(this->index == v->engine_type);
+	assert(v == NULL || this->index == v->engine_type);
 	if (mail_capacity != NULL) *mail_capacity = 0;
 
 	if (!this->CanCarryCargo()) return 0;
 
-	if (mail_capacity != NULL && this->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
+	CargoID default_cargo = this->GetDefaultCargoType();
+	CargoID cargo_type = (v != NULL) ? v->cargo_type : default_cargo;
+
+	if (mail_capacity != NULL && this->type == VEH_AIRCRAFT && IsCargoInClass(cargo_type, CC_PASSENGERS)) {
 		*mail_capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 	}
-	CargoID default_cargo = this->GetDefaultCargoType();
 
 	/* Check the refit capacity callback if we are not in the default configuration.
 	 * Note: This might change to become more consistent/flexible/sane, esp. when default cargo is first refittable. */
 	if (HasBit(this->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY) &&
-			(default_cargo != v->cargo_type || v->cargo_subtype != 0)) {
+			(default_cargo != cargo_type || (v != NULL && v->cargo_subtype != 0))) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
 		if (callback != CALLBACK_FAILED) return callback;
 	}
@@ -230,6 +231,9 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	switch (this->type) {
 		case VEH_TRAIN:
 			capacity = GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY,        this->u.rail.capacity, v);
+
+			/* In purchase list add the capacity of the second head. Always use the plain property for this. */
+			if (v == NULL && this->u.rail.railveh_type == RAILVEH_MULTIHEAD) capacity += this->u.rail.capacity;
 			break;
 
 		case VEH_ROAD:
@@ -242,10 +246,10 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 
 		case VEH_AIRCRAFT:
 			capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity, v);
-			if (!IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
+			if (!IsCargoInClass(cargo_type, CC_PASSENGERS)) {
 				capacity += GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 			}
-			if (v->cargo_type == CT_MAIL) return capacity;
+			if (cargo_type == CT_MAIL) return capacity;
 			default_cargo = CT_PASSENGERS; // Always use 'passengers' wrt. cargo multipliers
 			break;
 
@@ -254,14 +258,14 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 
 	/* Apply multipliers depending on cargo- and vehicletype.
 	 * Note: This might change to become more consistent/flexible. */
-	if (this->type != VEH_SHIP) {
+	if (this->type != VEH_SHIP && default_cargo != cargo_type) {
 		switch (default_cargo) {
 			case CT_PASSENGERS: break;
 			case CT_MAIL:
 			case CT_GOODS: capacity *= 2; break;
 			default:       capacity *= 4; break;
 		}
-		switch (v->cargo_type) {
+		switch (cargo_type) {
 			case CT_PASSENGERS: break;
 			case CT_MAIL:
 			case CT_GOODS: capacity /= 2; break;
@@ -270,52 +274,6 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	}
 
 	return capacity;
-}
-
-/**
- * Determines the default cargo capacity of an engine for display purposes.
- *
- * For planes carrying both passenger and mail this is the passenger capacity.
- * For multiheaded engines this is the capacity of both heads.
- * For articulated engines use GetCapacityOfArticulatedParts
- *
- * @note Keep this function consistent with Engine::DetermineCapacity().
- * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
- * @return The default capacity
- * @see GetDefaultCargoType
- */
-uint Engine::GetDisplayDefaultCapacity(uint16 *mail_capacity) const
-{
-	if (mail_capacity != NULL) *mail_capacity = 0;
-	if (!this->CanCarryCargo()) return 0;
-	switch (type) {
-		case VEH_TRAIN:
-			return GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY, this->u.rail.capacity) + (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? this->u.rail.capacity : 0);
-
-		case VEH_ROAD:
-			return GetEngineProperty(this->index, PROP_ROADVEH_CARGO_CAPACITY, this->u.road.capacity);
-
-		case VEH_SHIP:
-			return GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY, this->u.ship.capacity);
-
-		case VEH_AIRCRAFT: {
-			uint capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity);
-			CargoID cargo = this->GetDefaultCargoType();
-			if (IsCargoInClass(cargo, CC_PASSENGERS)) {
-				if (mail_capacity != NULL) *mail_capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity);
-			} else {
-				capacity += GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity);
-			}
-			switch (cargo) {
-				case CT_PASSENGERS:
-				case CT_MAIL:       return capacity;
-				case CT_GOODS:      return capacity / 2;
-				default:            return capacity / 4;
-			}
-		}
-
-		default: NOT_REACHED();
-	}
 }
 
 /**

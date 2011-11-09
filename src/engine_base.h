@@ -86,7 +86,23 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint DetermineCapacity(const Vehicle *v, uint16 *mail_capacity = NULL) const;
 
 	bool CanCarryCargo() const;
-	uint GetDisplayDefaultCapacity(uint16 *mail_capacity = NULL) const;
+
+	/**
+	 * Determines the default cargo capacity of an engine for display purposes.
+	 *
+	 * For planes carrying both passenger and mail this is the passenger capacity.
+	 * For multiheaded engines this is the capacity of both heads.
+	 * For articulated engines use GetCapacityOfArticulatedParts
+	 *
+	 * @param mail_capacity returns secondary cargo (mail) capacity of aircraft
+	 * @return The default capacity
+	 * @see GetDefaultCargoType
+	 */
+	uint GetDisplayDefaultCapacity(uint16 *mail_capacity = NULL) const
+	{
+		return this->DetermineCapacity(NULL, mail_capacity);
+	}
+
 	Money GetRunningCost() const;
 	Money GetCost() const;
 	uint GetDisplayMaxSpeed() const;
