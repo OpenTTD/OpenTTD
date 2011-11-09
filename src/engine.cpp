@@ -213,7 +213,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	if (!this->CanCarryCargo()) return 0;
 
 	if (mail_capacity != NULL && this->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
-		*mail_capacity = GetVehicleProperty(v, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity);
+		*mail_capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 	}
 	CargoID default_cargo = this->GetDefaultCargoType();
 
@@ -228,10 +228,10 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	/* Get capacity according to property resp. CB */
 	uint capacity;
 	switch (this->type) {
-		case VEH_TRAIN:    capacity = GetVehicleProperty(v, PROP_TRAIN_CARGO_CAPACITY,        this->u.rail.capacity); break;
-		case VEH_ROAD:     capacity = GetVehicleProperty(v, PROP_ROADVEH_CARGO_CAPACITY,      this->u.road.capacity); break;
-		case VEH_SHIP:     capacity = GetVehicleProperty(v, PROP_SHIP_CARGO_CAPACITY,         this->u.ship.capacity); break;
-		case VEH_AIRCRAFT: capacity = GetVehicleProperty(v, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity); break;
+		case VEH_TRAIN:    capacity = GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY,        this->u.rail.capacity, v); break;
+		case VEH_ROAD:     capacity = GetEngineProperty(this->index, PROP_ROADVEH_CARGO_CAPACITY,      this->u.road.capacity, v); break;
+		case VEH_SHIP:     capacity = GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY,         this->u.ship.capacity, v); break;
+		case VEH_AIRCRAFT: capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity, v); break;
 		default: NOT_REACHED();
 	}
 
@@ -240,7 +240,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	if (this->type != VEH_SHIP) {
 		if (this->type == VEH_AIRCRAFT) {
 			if (!IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
-				capacity += GetVehicleProperty(v, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity);
+				capacity += GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 			}
 			if (v->cargo_type == CT_MAIL) return capacity;
 		} else {
