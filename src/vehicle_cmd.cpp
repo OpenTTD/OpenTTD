@@ -324,7 +324,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		}
 
 		uint16 mail_capacity = 0;
-		uint amount = GetVehicleCapacity(v, &mail_capacity);
+		uint amount = e->DetermineCapacity(v, &mail_capacity);
 		total_capacity += amount;
 		/* mail_capacity will always be zero if the vehicle is not an aircraft. */
 		total_mail_capacity += mail_capacity;

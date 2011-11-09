@@ -675,7 +675,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, u
 
 		v->InvalidateNewGRFCacheOfChain();
 
-		v->cargo_cap = GetVehicleCapacity(v);
+		v->cargo_cap = e->DetermineCapacity(v);
 
 		v->InvalidateNewGRFCacheOfChain();
 

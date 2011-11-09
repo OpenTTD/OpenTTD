@@ -290,7 +290,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 
 		/* Call various callbacks after the whole consist has been constructed */
 		for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
-			u->cargo_cap = GetVehicleCapacity(u);
+			u->cargo_cap = u->GetEngine()->DetermineCapacity(u);
 			v->InvalidateNewGRFCache();
 			u->InvalidateNewGRFCache();
 		}
