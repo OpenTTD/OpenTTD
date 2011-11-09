@@ -228,28 +228,38 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	/* Get capacity according to property resp. CB */
 	uint capacity;
 	switch (this->type) {
-		case VEH_TRAIN:    capacity = GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY,        this->u.rail.capacity, v); break;
-		case VEH_ROAD:     capacity = GetEngineProperty(this->index, PROP_ROADVEH_CARGO_CAPACITY,      this->u.road.capacity, v); break;
-		case VEH_SHIP:     capacity = GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY,         this->u.ship.capacity, v); break;
-		case VEH_AIRCRAFT: capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity, v); break;
+		case VEH_TRAIN:
+			capacity = GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY,        this->u.rail.capacity, v);
+			break;
+
+		case VEH_ROAD:
+			capacity = GetEngineProperty(this->index, PROP_ROADVEH_CARGO_CAPACITY,      this->u.road.capacity, v);
+			break;
+
+		case VEH_SHIP:
+			capacity = GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY,         this->u.ship.capacity, v);
+			break;
+
+		case VEH_AIRCRAFT:
+			capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity, v);
+			if (!IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
+				capacity += GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
+			}
+			if (v->cargo_type == CT_MAIL) return capacity;
+			default_cargo = CT_PASSENGERS; // Always use 'passengers' wrt. cargo multipliers
+			break;
+
 		default: NOT_REACHED();
 	}
 
 	/* Apply multipliers depending on cargo- and vehicletype.
 	 * Note: This might change to become more consistent/flexible. */
 	if (this->type != VEH_SHIP) {
-		if (this->type == VEH_AIRCRAFT) {
-			if (!IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
-				capacity += GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
-			}
-			if (v->cargo_type == CT_MAIL) return capacity;
-		} else {
-			switch (default_cargo) {
-				case CT_PASSENGERS: break;
-				case CT_MAIL:
-				case CT_GOODS: capacity *= 2; break;
-				default:       capacity *= 4; break;
-			}
+		switch (default_cargo) {
+			case CT_PASSENGERS: break;
+			case CT_MAIL:
+			case CT_GOODS: capacity *= 2; break;
+			default:       capacity *= 4; break;
 		}
 		switch (v->cargo_type) {
 			case CT_PASSENGERS: break;
