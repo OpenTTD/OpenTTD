@@ -822,7 +822,9 @@ public:
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(ORDER_WIDGET_SCROLLBAR);
 		this->FinishInitNested(desc, v->index);
-		this->DisableWidget(ORDER_WIDGET_EMPTY);
+		if (v->owner == _local_company) {
+			this->DisableWidget(ORDER_WIDGET_EMPTY);
+		}
 
 		this->selected_order = -1;
 		this->order_over = INVALID_VEH_ORDER_ID;
