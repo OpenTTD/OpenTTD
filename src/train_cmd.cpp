@@ -992,8 +992,8 @@ static CommandCost CheckTrainAttachment(Train *t)
 						error = GetGRFStringID(head->GetGRFID(), 0xD000 + callback);
 					} else {
 						switch (callback) {
-							case 0x400: // allow
-							case 0x401: // allow if railtypes match (always the case for OpenTTD)
+							case 0x400: // allow if railtypes match (always the case for OpenTTD)
+							case 0x401: // allow
 								break;
 
 							default:    // unknown reason -> disallow
