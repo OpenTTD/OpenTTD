@@ -831,3 +831,21 @@ bool GRFConfig::IsOpenTTDBaseGRF() const
 {
 	return (this->ident.grfid & 0x00FFFFFF) == OPENTTD_GRAPHICS_BASE_GRF_ID;
 }
+
+/**
+ * Search the readme.txt file next to this NewGRF.
+ * @return The filename for the readme, \c NULL otherwise.
+ */
+const char *GRFConfig::GetReadme() const
+{
+	if (this->filename == NULL) return NULL;
+
+	static char readme_path[MAX_PATH];
+	strecpy(readme_path, this->filename, lastof(readme_path));
+
+	char *slash = strrchr(readme_path, PATHSEPCHAR);
+	if (slash == NULL) return NULL;
+
+	strecpy(slash + 1, "readme.txt", lastof(readme_path));
+	return FioCheckFileExists(readme_path, NEWGRF_DIR) ? readme_path : NULL;
+}

@@ -450,7 +450,7 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 	EndContainer(),
 };
 
-/* Window definition for the change grf parameters window */
+/** Window definition for the change grf parameters window */
 static const WindowDesc _newgrf_parameters_desc(
 	WDP_CENTER, 500, 208,
 	WC_GRF_PARAMETERS, WC_NONE,
@@ -462,6 +462,176 @@ void OpenGRFParameterWindow(GRFConfig *c)
 {
 	DeleteWindowByClass(WC_GRF_PARAMETERS);
 	new NewGRFParametersWindow(&_newgrf_parameters_desc, c);
+}
+
+/** Widgets of the #NewGRFReadmeWindow. */
+enum ShowNewGRFReadmeWidgets {
+	GRW_WIDGET_CAPTION,    ///< The caption of the window.
+	GRW_WIDGET_BACKGROUND, ///< Panel to draw the readme on.
+	GRW_WIDGET_VSCROLLBAR, ///< Vertical scrollbar to scroll through the readme up-and-down.
+	GRW_WIDGET_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the readme left-to-right.
+};
+
+/** Window for displaying the readme of a NewGRF. */
+struct NewGRFReadmeWindow : public Window {
+	const GRFConfig *grf_config;         ///< View the readme of this GRFConfig.
+	int line_height;                     ///< Height of a line in the display widget.
+	Scrollbar *vscroll;                  ///< Vertical scrollbar.
+	Scrollbar *hscroll;                  ///< Horizontal scrollbar.
+	char *text;                          ///< Lines of text from the NewGRF's readme.
+	SmallVector<const char *, 64> lines; ///< #text, split into lines in a table with lines.
+	uint max_length;                     ///< The longest line in the readme (in pixels).
+
+	static const int TOP_SPACING    = WD_FRAMETEXT_TOP;    ///< Additional spacing at the top of the #GRW_WIDGET_BACKGROUND widget.
+	static const int BOTTOM_SPACING = WD_FRAMETEXT_BOTTOM; ///< Additional spacing at the bottom of the #GRW_WIDGET_BACKGROUND widget.
+
+	NewGRFReadmeWindow(const WindowDesc *desc, const GRFConfig *c) : Window(), grf_config(c)
+	{
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(GRW_WIDGET_VSCROLLBAR);
+		this->hscroll = this->GetScrollbar(GRW_WIDGET_HSCROLLBAR);
+		this->FinishInitNested(desc);
+
+		this->LoadReadme();
+	}
+
+	~NewGRFReadmeWindow()
+	{
+		free(this->text);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		switch (widget) {
+			case GRW_WIDGET_BACKGROUND:
+				this->line_height = FONT_HEIGHT_NORMAL + 2;
+				resize->height = this->line_height;
+
+				size->height = 4 * resize->height + TOP_SPACING + BOTTOM_SPACING; // At least 4 lines are visible.
+				size->width = max(200u, size->width); // At least 200 pixels wide.
+				break;
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == GRW_WIDGET_CAPTION) SetDParamStr(0, this->grf_config->GetName());
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != GRW_WIDGET_BACKGROUND) return;
+
+		DrawPixelInfo new_dpi;
+		if (!FillDrawPixelInfo(&new_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) return;
+
+		DrawPixelInfo *old_dpi = _cur_dpi;
+		_cur_dpi = &new_dpi;
+
+		int left = WD_FRAMETEXT_LEFT - this->hscroll->GetPosition();
+		int right = r.right - r.left - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT;
+		int top = TOP_SPACING;
+		for (uint i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->lines.Length(); i++) {
+			DrawString(left, right, top + i * this->line_height, this->lines[i + this->vscroll->GetPosition()], TC_WHITE);
+		}
+
+		_cur_dpi = old_dpi;
+	}
+
+	virtual void OnResize()
+	{
+		this->vscroll->SetCapacityFromWidget(this, GRW_WIDGET_BACKGROUND, this->line_height);
+		this->hscroll->SetCapacityFromWidget(this, GRW_WIDGET_BACKGROUND);
+	}
+
+private:
+
+	/**
+	 * Load the NewGRF's readme text from file, and setup #lines, #max_length, and both scrollbars.
+	 */
+	void LoadReadme()
+	{
+		this->lines.Clear();
+
+		/* Does GRF have readme? */
+		const char *readme = this->grf_config->GetReadme();
+		if (readme == NULL) return;
+
+		/* Get text from file */
+		size_t filesize;
+		FILE *handle = FioFOpenFile(readme, "rb", NEWGRF_DIR, &filesize);
+		if (handle == NULL) return;
+
+		this->text = ReallocT(this->text, filesize + 1);
+		size_t read = fread(this->text, 1, filesize, handle);
+		fclose(handle);
+
+		if (read != filesize) return;
+
+		this->text[filesize] = '\0';
+
+		/* Replace tabs and line feeds with a space since str_validate removes those. */
+		for (char *p = this->text; *p != '\0'; p++) {
+			if (*p == '\t' || *p == '\r') *p = ' ';
+		}
+
+		/* Check for the byte-order-mark, and skip it if needed. */
+		char *p = this->text + (strncmp("\xEF\xBB\xBF", this->text, 3) == 0 ? 3 : 0);
+
+		/* Make sure the string is a valid UTF-8 sequence. */
+		str_validate(p, this->text + filesize, true);
+
+		/* Split the string on newlines. */
+		*this->lines.Append() = p;
+		for (; *p != '\0'; p++) {
+			if (*p == '\n') {
+				*p = '\0';
+				*this->lines.Append() = p + 1;
+			}
+		}
+
+		/* Initialize scrollbars */
+		this->vscroll->SetCount(this->lines.Length());
+
+		this->max_length = 0;
+		for (uint i = 0; i < this->lines.Length(); i++) {
+			this->max_length = max(this->max_length, GetStringBoundingBox(this->lines[i]).width);
+		}
+		this->hscroll->SetCount(this->max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+		this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
+	}
+};
+
+static const NWidgetPart _nested_newgrf_readme_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, GRW_WIDGET_CAPTION), SetDataTip(STR_NEWGRF_README_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_MAUVE, GRW_WIDGET_BACKGROUND), SetMinimalSize(200, 125), SetResize(1, 12), SetScrollbar(GRW_WIDGET_VSCROLLBAR),
+		EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, GRW_WIDGET_VSCROLLBAR),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HSCROLLBAR, COLOUR_MAUVE, GRW_WIDGET_HSCROLLBAR),
+		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+	EndContainer(),
+};
+
+/** Window definition for the grf readme window */
+static const WindowDesc _newgrf_readme_desc(
+	WDP_CENTER, 630, 460,
+	WC_NEWGRF_README, WC_NONE,
+	WDF_UNCLICK_BUTTONS,
+	_nested_newgrf_readme_widgets, lengthof(_nested_newgrf_readme_widgets)
+);
+
+void ShowNewGRFReadmeWindow(const GRFConfig *c)
+{
+	DeleteWindowByClass(WC_NEWGRF_README);
+	new NewGRFReadmeWindow(&_newgrf_readme_desc, c);
 }
 
 static GRFPresetList _grf_preset_list;
@@ -501,6 +671,7 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_SCROLL2BAR,
 	SNGRFS_NEWGRF_INFO_TITLE,
 	SNGRFS_NEWGRF_INFO,
+	SNGRFS_NEWGRF_README,
 	SNGRFS_SET_PARAMETERS,
 	SNGRFS_TOGGLE_PALETTE,
 	SNGRFS_APPLY_CHANGES,
@@ -579,6 +750,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	~NewGRFWindow()
 	{
 		DeleteWindowByClass(WC_GRF_PARAMETERS);
+		DeleteWindowByClass(WC_NEWGRF_README);
 
 		if (this->editable && !this->execute) {
 			CopyGRFConfigList(this->orig_list, this->actives, true);
@@ -952,6 +1124,12 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 
+			case SNGRFS_NEWGRF_README: // View GRF readme
+				if (this->active_sel == NULL && this->avail_sel == NULL) break;
+
+				ShowNewGRFReadmeWindow(this->active_sel != NULL ? this->active_sel : this->avail_sel);
+				break;
+
 			case SNGRFS_SET_PARAMETERS: { // Edit parameters
 				if (this->active_sel == NULL || !this->editable || !this->show_params || this->active_sel->num_valid_params == 0) break;
 
@@ -1005,7 +1183,8 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		this->avail_sel = NULL;
 		this->avail_pos = -1;
 		this->avails.ForceRebuild();
-		this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+		this->DeleteChildWindows(WC_QUERY_STRING);  // Remove the parameter query window
+		this->DeleteChildWindows(WC_NEWGRF_README); // Remove the view readme window
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
@@ -1110,6 +1289,10 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 			SNGRFS_MOVE_DOWN,
 			WIDGET_LIST_END
 		);
+
+		const GRFConfig *c = (this->avail_sel == NULL) ? this->active_sel : this->avail_sel;
+		this->SetWidgetDisabledState(SNGRFS_NEWGRF_README, c == NULL || c->GetReadme() == NULL);
+
 		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(SNGRFS_TOGGLE_PALETTE, disable_all);
 
@@ -1594,6 +1777,8 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_MAUVE), SetPadding(0, 0, 2, 0),
 		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_NEWGRF_README), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_NEWGRF_SETTINGS_VIEW_README, STR_NULL), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, SNGRFS_SHOW_APPLY),
 		/* Right side, buttons. */
