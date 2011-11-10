@@ -485,7 +485,7 @@ static SQInteger array_resize(HSQUIRRELVM v)
 
 
 //QSORT ala Sedgewick
-bool _qsort_compare(HSQUIRRELVM v,SQObjectPtr &arr,SQObjectPtr &a,SQObjectPtr &b,SQInteger func,SQInteger &ret)
+bool _qsort_compare(HSQUIRRELVM v,SQObjectPtr &arr,const SQObjectPtr &a,const SQObjectPtr &b,SQInteger func,SQInteger &ret)
 {
 	if(func < 0) {
 		if(!v->ObjCmp(a,b,ret)) return false;
@@ -511,7 +511,7 @@ struct qsort_cmp
 {
 	HSQUIRRELVM v;
 	SQInteger func;
-	bool operator() (SQObjectPtr &a, SQObjectPtr &b) const
+	bool operator() (const SQObjectPtr &a, const SQObjectPtr &b) const
 	{
 		SQInteger res;
 		SQObjectPtr dummy;
