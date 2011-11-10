@@ -19,6 +19,7 @@
 #include "window_func.h"
 #include "progress.h"
 #include "video/video_driver.hpp"
+#include "strings_func.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -845,6 +846,12 @@ const char *GRFConfig::GetReadme() const
 
 	char *slash = strrchr(readme_path, PATHSEPCHAR);
 	if (slash == NULL) return NULL;
+
+	seprintf(slash + 1, lastof(readme_path), "readme_%s.txt", GetCurrentLanguageIsoCode());
+	if (FioCheckFileExists(readme_path, NEWGRF_DIR)) return readme_path;
+
+	seprintf(slash + 1, lastof(readme_path), "readme_%.2s.txt", GetCurrentLanguageIsoCode());
+	if (FioCheckFileExists(readme_path, NEWGRF_DIR)) return readme_path;
 
 	strecpy(slash + 1, "readme.txt", lastof(readme_path));
 	return FioCheckFileExists(readme_path, NEWGRF_DIR) ? readme_path : NULL;
