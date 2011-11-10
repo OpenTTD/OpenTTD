@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <ctype.h>
+#include <algorithm>
 
 bool str2num(const SQChar *s,SQObjectPtr &res)
 {
@@ -506,40 +507,26 @@ bool _qsort_compare(HSQUIRRELVM v,SQObjectPtr &arr,SQObjectPtr &a,SQObjectPtr &b
 	}
 	return true;
 }
-//QSORT ala Sedgewick
-bool _qsort(HSQUIRRELVM v,SQObjectPtr &arr, SQInteger l, SQInteger r,SQInteger func)
+struct qsort_cmp
 {
-	SQInteger i, j;
-	SQArray *a=_array(arr);
-	SQObjectPtr pivot,t;
-	if( l < r ){
-		pivot = a->_values[l];
-		i = l; j = r+1;
-		while(1){
-			SQInteger ret;
-			do {
-				++i;
-				if(i > r) break;
-				if(!_qsort_compare(v,arr,a->_values[i],pivot,func,ret))
-					return false;
-			} while( ret <= 0);
-			do {
-				--j;
-				if ( j < 0 ) {
-					v->Raise_Error( _SC("Invalid qsort, probably compare function defect") );
-					return false;
-				}
-				if(!_qsort_compare(v,arr,a->_values[j],pivot,func,ret))
-					return false;
-			}
-			while( ret > 0 );
-			if( i >= j ) break;
-			t = a->_values[i]; a->_values[i] = a->_values[j]; a->_values[j] = t;
-		}
-		t = a->_values[l]; a->_values[l] = a->_values[j]; a->_values[j] = t;
-		if(!_qsort( v, arr, l, j-1,func)) return false;
-		if(!_qsort( v, arr, j+1, r,func)) return false;
+	HSQUIRRELVM v;
+	SQInteger func;
+	bool operator() (SQObjectPtr &a, SQObjectPtr &b) const
+	{
+		SQInteger res;
+		SQObjectPtr dummy;
+		if (!_qsort_compare(v, dummy, a, b, func, res)) return false;
+		return res < 0;
 	}
+};
+
+bool _qsort(HSQUIRRELVM v,SQObjectPtr &arr, SQInteger func)
+{
+	SQArray *a=_array(arr);
+	qsort_cmp cur_cmp;
+	cur_cmp.v = v;
+	cur_cmp.func = func;
+	std::sort(a->_values._vals, a->_values._vals + a->Size(), cur_cmp);
 	return true;
 }
 
@@ -550,7 +537,7 @@ static SQInteger array_sort(HSQUIRRELVM v)
 	SQObject &funcobj = stack_get(v,2);
 	if(_array(o)->Size() > 1) {
 		if(type(funcobj) == OT_CLOSURE || type(funcobj) == OT_NATIVECLOSURE) func = 2;
-		if(!_qsort(v, o, 0, _array(o)->Size()-1, func))
+		if(!_qsort(v, o, func))
 			return SQ_ERROR;
 
 	}
