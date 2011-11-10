@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populati
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Name
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Date
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_NAME                                                :Name
 STR_SORT_BY_PRODUCTION                                          :Production
 STR_SORT_BY_TYPE                                                :Type
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Track Index
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programme - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Clear
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Save
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clear current programme (Custom1 or Custom2 only)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Save music settings
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click on music track to add to current programme (Custom1 or Custom2 only)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click on music track to remove it from current programme (Custom1 or Custom2 only)
 
@@ -3248,7 +3245,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest h
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_SHARE                                                 :Share orders
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list. Ctrl makes station orders 'full load any cargo', waypoint orders 'non-stop' and depot orders 'service'. 'Share orders' or Ctrl lets this vehicle share orders with the selected vehicle. Clicking a vehicle copies the orders from that vehicle
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Insert an advanced order
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Show all vehicles that share this schedule
 
@@ -3593,7 +3589,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railway station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Too many lorry stations
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Too close to another railway station
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Too close to another station/loading area
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Too close to another dock
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport
