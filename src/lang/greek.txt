@@ -323,7 +323,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Πληθ
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Όνομα
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Μέρα
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Πληθυσμός
 STR_SORT_BY_NAME                                                :Όνομα
 STR_SORT_BY_PRODUCTION                                          :Παραγωγή
 STR_SORT_BY_TYPE                                                :Τύπος
@@ -724,9 +723,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Λίστα Κομματιών
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Πρόγραμμα - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Καθαρισμός
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Αποθήκευση
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Καθαρισμός τρέχοντος προγράμματος (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Αποθήκευση επιλογών μουσικής
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Κάντε κλικ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Κάντε κλικ στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
 
@@ -2490,7 +2487,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν β�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συμβατό με αυτή την έκδοση του OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισαγώγη παραμέτρων NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
@@ -3305,7 +3301,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε 
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
 STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές του σταθμού γίνονται 'πληρής φόρτωση οποιοδήποτε εμπορεύματος', οι εντολές σημείου καθοδήγησης 'χωρίς στάση' και οι εντολές αμαξοστασίου 'επισκευή'. Με 'Ίδιες ενοτλές' ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό.
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Εισαγώγη μιας προχωρημένης εντολής
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχήματων που μοιράζονται αυτό το δρομολόγιο
 
@@ -3556,8 +3551,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Δεν �
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Οι τοπικές αρχές της πόλης {TOWN} δεν το επιτρέπουν
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Η τοπική αρχή της πόλης {TOWN} αρνείται να επιτρέψει τη δημιουργία νέου αεροδρομίου
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} Οι τοπικές αρχές αρνούνται να δώσουν την άδεια για αεροδρόμιο λογω ανησυχιών για τον θόρυβο
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Η δωροδοκία έγινε
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}αντιληπτή από περιφερειακό επιθεωρητή
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Αδύνατο να υψωθεί η γη εδώ...
@@ -3631,7 +3624,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Πάρα
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Πάρα πολλά κομμάτια σιδηροδρομικού σταθμού
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Πάρα πολλές στάσεις λεωφορείου
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Πάρα πολλοί σταθμοί φορτηγών
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Πολύ κοντά σε άλλο σιδηροδρομικό σταθμό
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Πολύ κοντά σε μιά άλλη περιοχή σταθμού/φόρτωσης
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Πολύ κοντά σε άλλο αεροδρόμιο

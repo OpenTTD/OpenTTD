@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名稱
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_NAME                                                :名稱
 STR_SORT_BY_PRODUCTION                                          :產量
 STR_SORT_BY_TYPE                                                :種類
@@ -627,9 +626,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}音軌索引
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}播放清單 - 「{STRING}」
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}清除
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}儲存
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}清除現有播放清單 (只適用「自訂一」或「自訂二」)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}儲存背景音樂設定
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}點擊音軌以新增至現有播放清單(只適用「自訂一」或「自訂二」)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}點選音樂從目前清單中移除 (僅限「自訂一」或「自訂二」
 
@@ -2385,7 +2382,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}找不到�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}關閉
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}與此版本的OpenTTD不相容
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}輸入 NewGRF 參數
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
@@ -3190,7 +3186,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的
 STR_ORDER_CONDITIONAL                                           :條件式跳躍指令
 STR_ORDER_SHARE                                                 :分享命令
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在最後新增指令。按住 Ctrl 於車站時可直接設為「滿載任一種類客貨」，於號誌站時則為「直達」，於機廠時則為「維護」
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}插入進階指令
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共用這份指令的交通工具
 
@@ -3445,8 +3440,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}當暫�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 地方政府不同意
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 地方政府拒絕在城內建造另一座機場
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 地方政府因噪音限制拒絕建造新機場
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}您嘗試行賄的舉動
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}已被地方調查員發現
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}無法提昇土地...
@@ -3518,7 +3511,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}太多�
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}太多火車站元件
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}太多公車站
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}太多貨運站
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}太接近另一個火車站
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}太接近另一個車站／載貨區
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}太接近另一個碼頭
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}太接近另一個機場

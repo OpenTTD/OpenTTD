@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名前
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日付
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_NAME                                                :名前
 STR_SORT_BY_PRODUCTION                                          :生産量
 STR_SORT_BY_TYPE                                                :種類
@@ -629,9 +628,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}曲の索引
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}プレイリスト - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}消去
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}保存
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}選択したプレイリストの内容を消去します。（カスタム1/2 のみ）
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}音楽の設定を保存します。
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}曲をクリックすると、曲を選択したプレイリストに追加します。（カスタム1/2 のみ）
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}曲をクリックすると、曲を選択したプレイリストから除外します。（カスタム1/2 のみ）
 
@@ -2398,7 +2395,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致し�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}このバージョンのOpenTTDと適合しません。
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF設定を入力
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更
@@ -3210,7 +3206,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :近辺の格納
 STR_ORDER_CONDITIONAL                                           :条件ジャンプ
 STR_ORDER_SHARE                                                 :オーダを共有する
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}詳しい注文を挿入
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}この指令リストを共有しているすべての車両を表示します
 
@@ -3465,8 +3460,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}一時�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}の町議会が拒否しました。
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}町議会は町内に他の空港の建設を許可しません
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} の地方自治体は騒音公害の心配によって空港の建設を許可しません。
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}買収未遂が
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}地方の腐敗防止監視機関に露見しました
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}ここの土地を上げられません
@@ -3540,7 +3533,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}駅／�
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}駅の部分が多すぎます。
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}バス停が多すぎます
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}荷役所が多すぎます
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}他の駅に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}他の駅／荷役所に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}他の埠頭に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}他の空港に近すぎます

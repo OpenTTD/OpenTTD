@@ -316,7 +316,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Rahvaarv
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Daatum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Rahvaarv
 STR_SORT_BY_NAME                                                :Nimi
 STR_SORT_BY_PRODUCTION                                          :Toodang
 STR_SORT_BY_TYPE                                                :Tüüp
@@ -687,9 +686,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Loo number
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programm - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Puhasta
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Salvesta
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tühjenda valitud programm (ainult omatehtud 1 ja omatehtud 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Muusikaseadete salvestamine
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Vajuta loole, et seda programmi lisada (ainult omatehtud 1 ja omatehtud 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Vajuta laulule, et see eemaldada praegusest progammist (Custom1 või Custom2 ainult)
 
@@ -2456,7 +2453,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sobivat fa
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Väljas
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Mitteühilduv selle OpenTTD versiooniga
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sisesta NewGRF parameetrid
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuda NewGRF parameetreid
@@ -3269,7 +3265,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mine lähimasse
 STR_ORDER_CONDITIONAL                                           :Tinglik sihtpunkti vahetamine
 STR_ORDER_SHARE                                                 :Jaga korraldusi
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisa uus käsk nimekirja lõppu, või enne valitud käsku. Ctrl määrab jaama puhul korralduseks 'lae üks täis', meldepunkti puhul 'peatuseta' ja depoo puhul 'hooldus'. 'Jaga korraldusi' või Ctrl lubab sellel sõidukil jagada korraldusi valitud veovahendiga. Klõpsates teisel sõidukil kopeeritakse selle korraldused
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Täpsustatud käskluse lisamine
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näita kõiki sama sõidugraafikuga mootorsõidukeid
 
@@ -3524,8 +3519,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Pole lub
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} kohalik omavalitsus keeldub seda lubamast
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Linna {TOWN} kohalik omavalitsus keeldub uut lennujaama lubamast
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} kohalik omavalitsus keeldub ehitusluba lennujaamale väljastamast kuna on mures müra pärast
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sinu altkäemaksu proov on
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}kohalike uurijate poolt avastatud
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Siin ei saa maad kõrgendada...
@@ -3599,7 +3592,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liiga pa
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Liiga palju raudteejaama osasid
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liiga palju bussipeatusi
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liiga palju laadimisplatvorme
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Teisele raudteejaamale liiga lähedal
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Mõnele teisele jaamale liiga lähedal
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liiga lähedal teisele dokile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liiga lähedal teisele lennuväljale

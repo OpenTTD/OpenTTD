@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Enloĝan
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nomo
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Enloĝantaro
 STR_SORT_BY_NAME                                                :Nomo
 STR_SORT_BY_PRODUCTION                                          :Produktado
 STR_SORT_BY_TYPE                                                :Tipo
@@ -627,9 +626,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Numera Indekso
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programo - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Viŝu
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Konservu
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Viŝu nunan programon (nur propran)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Konservu muzikagordojn
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Alklaku muzikeron por aldoni al la nuna programo (nur propra)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Alklaku muzikeron por viŝi el la nuna programo (nur propra)
 
@@ -2360,7 +2357,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ne trovis 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Malaktiva
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Malkongrua ĉe ĉi tio versio de OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enigu NewGRF-parametrojn
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ŝanĝu parametroj de la NewGRF
@@ -3147,7 +3143,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Iru al la plej 
 STR_ORDER_CONDITIONAL                                           :Kondiĉe transsaltu ordonon
 STR_ORDER_SHARE                                                 :Kunhavu ordonojn
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo.
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Enigi altnivelan ordonon.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Montru ĉiujn veturilojn kiuj dividas ĉi tiun planon
 
@@ -3392,8 +3387,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ne perme
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}La loka estraro de {TOWN} rifuzas permesi ĉi tion
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}La lokaj estroj de {TOWN} rifuzas permesi konstruadon de plia flughaveno ĉi-urbe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokestro ne permesas aerohavenon kaŭze de brugravecoj
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Via subaĉeta provo estas
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}malkovrita de regiona esploristo
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Ne povas altigi landon ĉi tie...
@@ -3464,7 +3457,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Tro da s
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tro da partoj de stacidomo
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tro da ŝarĝaŭtaj stacioj
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Tro proksime al alia stacidomo
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Tro proksime al alia stacioj/ŝarĝejoj
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Tro proksime al alia haveno
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Tro proksime al alia flughaveno

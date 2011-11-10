@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Indbygge
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Navn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Befolkning
 STR_SORT_BY_NAME                                                :Navn
 STR_SORT_BY_PRODUCTION                                          :Produktion
 STR_SORT_BY_TYPE                                                :Type
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Nummerliste
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Ryd
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Gem
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ryd det valgte program (Gælder kun Custom1/Custom2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Gem opsætning for musik
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik på et musiknummer for at tilføje det til programlisten (kun for Custom1/Custom2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun for Custom1/Custom2)
 
@@ -2392,7 +2389,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Tilsvarend
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktiveret
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ikke kompatibel med denne version af OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Indtast NewGRF-parameter
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ændre NewGRF parameterne
@@ -3198,7 +3194,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Flyv til nærme
 STR_ORDER_CONDITIONAL                                           :Betinget ordrespring
 STR_ORDER_SHARE                                                 :Del ordrer
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', kontrolsted ordrer med 'Uden stop', og depotordrer med 'Service'
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Indsæt en avanceret ordre
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle transportmidler, der deler denne ruteplan
 
@@ -3452,8 +3447,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikke til
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} de lokale myndigheder nægter at tillade dette
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} lokale myndigheder nægter at tillade, at endnu en lufthavn bygges i byen
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}s lokale myndigheder afviser tilladelse til lufthavn pga. støjgener
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Dit forsøg på bestikkelse er blevet
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}opdaget af en inspektør.
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
@@ -3527,7 +3520,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mang
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Banegården er i for mange dele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busterminaler
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}For mange fragtcentraler
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}For tæt på en anden banegård
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}For tæt på en anden station/fragtcentral
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}For tæt på en anden havn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For tæt på en anden lufthavn

@@ -244,7 +244,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populo
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nomo
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Populo
 STR_SORT_BY_NAME                                                :Nomo
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportita

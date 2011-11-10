@@ -322,7 +322,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Lakossá
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Név
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dátum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Lakosság
 STR_SORT_BY_NAME                                                :Név
 STR_SORT_BY_PRODUCTION                                          :Termelés
 STR_SORT_BY_TYPE                                                :Típus
@@ -693,9 +692,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Számlista
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}"{STRING}" Műsora
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Törlés
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Mentés
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Az aktuális műsor törlése (csak Saját 1 és Saját 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Zenei beállítások elmentése
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kattints a zeneszámra a zenei műsorhoz való hozzáadására (csak Saját 1 és Saját 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kattints a zeneszámra annak az aktuális zenei műsorból való eltávolításához (csak Saját 1 és Saját 2 esetén)
 
@@ -2463,7 +2460,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fájl nem 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Kikapcsolva
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nem kompatibilis az OpenTTD ezen verziójával
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg NewGRF paramétereket
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF paraméterek megváltoztatása
@@ -3276,7 +3272,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi h
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
 STR_ORDER_SHARE                                                 :Menetrend megosztása
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új utasítás beillesztése a kijelölt utasítás elé vagy a lista végére. Ctrl+Kattintás állomásoknál 'bármiből teljes rakományra vár'-t, ellenőrző pontoknál 'Non-stop'-ot, járműtelepeknél 'Javításra menj' parancsot ad a célponthoz. 'Menetrend megosztása' esetén a jármű megosztja az utasításait a kiválasztott járművel.
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Fejlett utasítás elhelyezése
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Megmutatja az összes járművet, amik megosztják ezt a menetrendet
 
@@ -3531,8 +3526,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Szünet 
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} önkormányzata nem engedélyezi
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} önkormányzata nem engedélyez új repülőteret a városban
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} önkormányzata a zajszintnormák miatt megtagadta a repülőtér építését
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}A megvesztegetési kísérleted
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}lefülelte egy helyi nyomozó!
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nem emelheted fel itt a földet...
@@ -3606,7 +3599,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Túl sok
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Túl sok vasútállomás-rész
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Túl sok buszmegálló
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Túl sok a teherautó-rakodóhely
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Túl közel van egy másik vasútállomáshoz
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Túl közel van egy másik állomáshoz/rakodóhelyhez
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Túl közel van egy másik kikötőhöz
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Túl közel van egy másik repülőtérhez

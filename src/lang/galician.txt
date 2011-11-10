@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Poboaci�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nome
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Poboación
 STR_SORT_BY_NAME                                                :Nome
 STR_SORT_BY_PRODUCTION                                          :Producción
 STR_SORT_BY_TYPE                                                :Tipo
@@ -614,9 +613,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Índice de Pistas
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Limpar
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Grabar
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Limpa-lo programa actual(Só Persoalizado 1 e Persoalizado 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Graba-la configuración da música
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Pincha nunha pista de música para engadi-la ó programa actual(Sólo Persoal 1 e Persoal 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pincha na pista de música para borrala do programa actual (Só Persoal1 ou Persoal2)
 
@@ -2279,7 +2276,6 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Non hai 
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ficheiro non atopado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introduce os parámetros do NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Pechar
@@ -3029,7 +3025,6 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir ó depósito
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir ó hangar máis cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orde condicional
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insertar unha nova orde despois da seleccionada, o insertar unha nova orde ó final da lista
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Insertar unha orde avanzada
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostrar tódolos vehículos que comparten esta planificación
 
@@ -3264,8 +3259,6 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}: a autoridade local négase a permitilo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}A autoridade local de {TOWN} négase a permiti-la construción doutro aeroporto
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}As autoridades locais de {TOWN} rechazan o permiso para aeroporto debido a problemas co ruído
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}O tento de suborno foi
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}descuberto por un investigador rexional
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Non se pode subir o terreo aí...
@@ -3333,7 +3326,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Hay dema
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de bus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas estacións de camións
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiado cerca doutra estación de ferrocarril
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiado cerca doutra estación ou área de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca doutro peirao
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca doutro aeroporto

@@ -384,7 +384,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}за н�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}за назвою
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}за датою
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Населення
 STR_SORT_BY_NAME                                                :Ім'я
 STR_SORT_BY_PRODUCTION                                          :за продуктивністю
 STR_SORT_BY_TYPE                                                :за типом
@@ -754,9 +753,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Назва доріжки
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Програма - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Очистити
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Зберегти
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистити програму (тільки для Набору 1 або Набору 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Зберегти налаштування музики
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Виберіть доріжку, щоб додати до програми (тільки для Набору 1 або Набору 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніть на мелодії для її видалення зі списку (лише Набір1 та Набір2)
 
@@ -2514,7 +2511,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Таких
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкнено
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несумісне з поточною версією OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Введіть параметри NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змінити параметри NewGRF
@@ -3316,7 +3312,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Прямува�
 STR_ORDER_CONDITIONAL                                           :Зміна наказу з умовою
 STR_ORDER_SHARE                                                 :Спільні накази
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставити новий наказ перед вибраним, або додати в кінець списку. Утримуйте Ctrl аби створити наказ як "повне завантаження будь-якого вантажу", для точок маршруту - "без зупинок", і для депо - "обслуговування". Пункт "Спільні накази" або утримування Ctrl дозволяє поділитися спільними наказами з виділеним транспортом. Клік на транспорті копіює з нього накази
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Додати складний наказ
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показати транспорт з таким самим маршрутом
 
@@ -3569,8 +3564,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Не д�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Влада міста {TOWN} проти цього
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Влада міста {TOWN} відмовляє у будівництві ще одного аеропорту.
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}: місцева влада відмовляє у дозволі на аеропорт з міркувань шуму
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша спроба дати хабара була
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}викрита місцевим слідчим
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Неможливо підняти ділянку...
@@ -3644,7 +3637,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Дуже
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Забагато частин залізничної станції
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Дуже багато зупинок
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Дуже багато вантажних станцій
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Дуже близько до іншої залізничної станції
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Дуже близько до іншої станції
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Дуже близько до іншого порту
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Дуже близько до іншого аеропорту

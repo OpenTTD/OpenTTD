@@ -260,7 +260,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Nüfus
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}İsim
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarih
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Nüfus
 STR_SORT_BY_NAME                                                :İsim
 STR_SORT_BY_PRODUCTION                                          :Üretim
 STR_SORT_BY_TYPE                                                :Tür
@@ -631,9 +630,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Parça Listesi
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Temizle
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Kaydet
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Şimdiki programı temizle (Sadece Özel1 ve Özel2 için)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Müzik ayarlarını kaydet
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Şu anki programa eklenecek parçayı seçin (Sadece Özel1 ve Özel2 için)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kullanilan programdan kaldırilacak müzige tıklayın(Custom1 veya Custom2 için geçerli)
 
@@ -2400,7 +2397,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Eşleşen 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Etkisiz
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD'nin bu sürümüyle uyumlu değil
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF seçeneklerini girin
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametrelerini değiştir
@@ -3213,7 +3209,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hanga
 STR_ORDER_CONDITIONAL                                           :Duruma göre dallan
 STR_ORDER_SHARE                                                 :Emirleri paylaştır
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili emrin önüne ya da listenin sonuna yeni emir ekle. Ctrl; istasyon emirlerini 'bir kargo tipini tam yükle', yol imi emirlerini 'durmaksızın', garaj emirlerini 'bakıma gir' olarak değiştirir
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Gelişmiş talimat ekle
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Aynı talimatlara sahip bütün araçları göster
 
@@ -3468,8 +3463,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Oyun dur
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} belediyesi buna izin vermiyor
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} belediyesi bu şehir için başka havalimanına izin vermiyor
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} belediyesi gürültü endişesiyle havalimanına izin vermiyor
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Rüsvet teşebbüsünüzü
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}Reha Muhtar açığa çıkardı
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Burada arazi yükseltilemez...
@@ -3543,7 +3536,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Haritada
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Çok fazla demiryolu istasyon parçası var
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Çok fazla durak var
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Çok fazla kamyon yükleme yeri var
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Başka tren istasyonuna çok yakın
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Başka bir istasyona çok yakın
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Başka bir limana çok yakın
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Başka bir havalimanına çok yakın

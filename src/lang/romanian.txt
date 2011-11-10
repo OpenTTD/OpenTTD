@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populaţ
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nume
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dată
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Populaţie
 STR_SORT_BY_NAME                                                :Nume
 STR_SORT_BY_PRODUCTION                                          :Producţie
 STR_SORT_BY_TYPE                                                :Tip
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Lista melodiilor
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Şterge
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Salvează
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Şterge programul curent (doar pentru cele personale)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Salvează setările pentru muzică
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click pe o melodie pentru a o adăuga în programul personal curent
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Apasă pe melodie pentru a o elimina din programul actual (doar Custom1 sau Custom2)
 
@@ -2406,7 +2403,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Niciun fis
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dezactivat
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatibil cu această versiune de OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdu parametrii NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Schimbă parametrii NewGRF
@@ -3219,7 +3215,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel ma
 STR_ORDER_CONDITIONAL                                           :Salt în ordine condiţionată
 STR_ORDER_SHARE                                                 :Sincronizează ordinele
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'. 'Sincronizarea ordinelor' sau Ctrl permite acestui vehicul să îşi sincronizeze ordinele cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Adaugă o comandă avansată
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Arata toate vehiculele care se incadreaza in acest program
 
@@ -3477,8 +3472,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nepermis
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Autorităţile locale din {TOWN} refuză să permită această acţiune
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Autoritatea locală din {TOWN} refuză să permită construirea unui nou aeroport în acest oraş
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Autoritatea locală din {TOWN} nu permite construirea unui nou aeroport datorită poluării fonice
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Încercarea ta de mituire
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}a fost descoperită de un procuror local
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nu se poate înălţa terenul...
@@ -3552,7 +3545,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Prea mul
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Staţia are prea multe componente
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Prea multe staţii de autobuz
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Prea multe staţii de camion
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Prea aproape de altă gară
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Prea aproape de altă staţie
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Prea aproape de alt port
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Prea aproape de un alt aeroport

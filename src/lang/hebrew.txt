@@ -273,7 +273,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}אכלו
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}שם
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}תאריך
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :אוכלוסייה
 STR_SORT_BY_NAME                                                :שם
 STR_SORT_BY_PRODUCTION                                          :ייצור
 STR_SORT_BY_TYPE                                                :סוג
@@ -637,9 +636,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}רשימת רצועות
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}תוכנית- '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}מחק
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}שמור
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}מחק תוכנית נוכחית
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}שמור הגדרות נגינה
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ כאן כדי להוסיף לתוכנית הנוכחית(מותאם אישית1 או מותאם אישית 2 בלבד
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 
@@ -2343,7 +2340,6 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}לא ק�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}לא נמצא קובץ מתאים
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}הכנס פרמטרים
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}אתחל
@@ -3111,7 +3107,6 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :עבור דרך
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :עבור דרך סככת המטוסים הקרובה
 STR_ORDER_CONDITIONAL                                           :דילוג מותנה על יעד
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}הכנס הוראה חדשה לפני ההוראה המודגשת, או הוסף הוראה לסוף הרשימה. Ctrl גורם להוראות של תחנות להיות 'טען מטען כלשהו במלואו', נקודות ציון להיות 'ללא עצירה' והוראות מוסכים להיות 'בשירות'
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}הכנס יעד מורכב
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}הצג את כל הרכבים אשר עבורם יעד זה הוא מצומד
 
@@ -3357,8 +3352,6 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}חוסם
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}הרשות המקומית של {TOWN} מתנגדת לפעולה זו
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}הרשות המקומית של {TOWN} מתנגדת לבניית שדה תעופה נוסף בעיר
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}הרשות המקומית ב{TOWN} מתנגדת להקמת שדה תעופה בשל חשש מהרעש
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}ניסיונך לשחד את הרשות המקומית
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}נחשף ע"י מבקר המדינה
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}לא ניתן להגביה את הקרקע...
@@ -3428,7 +3421,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}יותר
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}התחנה מורכבת מיותר מידי חלקים
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}יותר מידי תחנות אוטובוס
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}יותר מידי תחנות משאיות
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}קרוב מידי לתחנה אחרת
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}קרוב מידי לתחנה או איזור טעינה אחרים
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}יותר מידי קרוב למזח אחר
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}קרוב מידי לשדה תעופה אחר

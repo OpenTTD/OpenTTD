@@ -261,7 +261,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Iedzīvo
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nosaukums
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datuma
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Iedzīvotājiem
 STR_SORT_BY_NAME                                                :Nosaukuma
 STR_SORT_BY_PRODUCTION                                          :Produkcijas
 STR_SORT_BY_TYPE                                                :Veida
@@ -632,9 +631,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Celiņa indekss
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Dzēst
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Saglabāt
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Dzēst pašreizējo programmu (tikai Pielāgotais 1 vai Pielāgotais 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Saglabāt mūzikas iestatījumus
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikšķināt uz mūzikas celiņa, lai to pievienotu pašreizējai programmai (tikai Pielāgotā 1 vai Pielāgotā 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikšķināt uz mūzikas celiņa, lai to izdzēstu no pašreizējās programmas (tikai Pielāgotā1 un Pielāgotā2)
 
@@ -2401,7 +2398,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nevar atra
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Atspējots
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nav savietojams ar šo OpenTTD versiju
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Ievadīt NewGRF parametrus
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mainīt NewGRF parametrus
@@ -3212,7 +3208,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Doties uz tuvā
 STR_ORDER_CONDITIONAL                                           :Nosacītais rīkojuma lēciens
 STR_ORDER_SHARE                                                 :Koplietot rīkojumus
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms atzīmētā rīkojuma, vai saraksta beigās. Ctrl stacijā norīko piekraut pilnu ar jebkuru kravu, maršruta punktam braukt cauri bez apstājas un depo veikt apkopi
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ievietot papildinātu rīkojumu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Rādīt visus ar šo plānu saistītos transportlīdzekļus
 
@@ -3467,8 +3462,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nav atļ
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} vietējā pašvaldība neatļauj šādu rīcību
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} vietējā pašvaldība aizliedz būvēt vēl vienu lidostu šajā pilsetā
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} vietējā pašvaldība atsaka atļauju lidostai sakarā ar paaugstinātu trokšņa līmeni
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Jūsu mēģinājumu piekukuļot
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}atklājis reģionālais izmeklētājs
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Šeit nevar uzbērt augstāk...
@@ -3542,7 +3535,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Pārāk 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Pārāk daudz dzelzceļa stacijas daļu
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pārāk daudz autobusu pieturu
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Pārāk daudz kravas automobiļu staciju
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Pārāk tuvu citai dzelzceļa stacijai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Pārāk tuvu citam dokam
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Pārāk tuvu citai lidostai

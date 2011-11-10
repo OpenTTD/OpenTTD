@@ -236,7 +236,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}लो�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}नाव
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}दिनांक
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :लोकसंख्या
 STR_SORT_BY_NAME                                                :नाव
 STR_SORT_BY_PRODUCTION                                          :निर्मिती
 STR_SORT_BY_TYPE                                                :प्रकार

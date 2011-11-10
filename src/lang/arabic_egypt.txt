@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}عدد �
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}اسم
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاريخ
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :السكان
 STR_SORT_BY_NAME                                                :الاسم
 STR_SORT_BY_PRODUCTION                                          :إنتاج
 STR_SORT_BY_TYPE                                                :نوع
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}قائمة المعزوفات
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}برنامج - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}مسح
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}حفظ
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}مسح البرنامج الاختياري الحالي
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}حفظ اعدادات الموسيقى
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}اضغط على المسار الموسيقي لإضافتة للقائمة
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}اضغط على المسار لازالته من القائمة
 
@@ -2399,7 +2396,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}لم يت�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}معطل
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}متعارض مع هذا اللإصدار من Openttd
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}ادخل اعدادات NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}غير خصائص الاضافات الجديدة
@@ -3212,7 +3208,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :اذهب الى
 STR_ORDER_CONDITIONAL                                           :امر انتقال شرطي
 STR_ORDER_SHARE                                                 :شارك الأوامر
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}اضافة امر قبل الامر المختار, او لاخر الاوامر
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}ادخل امر متقدم
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK} عرض جميع العربات التي تشترك في هذا الجدول
 
@@ -3467,8 +3462,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}غير �
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}بلدية المدينة ترفض السماح بهذا
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}البلدية ترفض بناء مطار آخر في هذه المدينة
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}بلدية {TOWN}{} ترفض السماح بمطار هنا بسبب تتعلق بالضوضاء العالية منه .
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}محاولتك لرشوة السلطات المحلية فشلت
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}أكتشفت من مقبل اللمحققين المحلين
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}لا يمكن رفع الأرض هنا
@@ -3542,7 +3535,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}الكث
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}قطاعات المحطة كثيرة جدا
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}محطات توقف الباصات كثيرة جدا
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}محطات تحميل العربات كثيرة جدا
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}قريبة جدا من محطة أخرى
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}قريب جدا من محطة موجودة
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}قريب جدا من مرفء آخر
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}قريب جدا من مطار آخر

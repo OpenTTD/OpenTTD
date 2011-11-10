@@ -412,7 +412,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Prebival
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ime
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Prebivalstvo
 STR_SORT_BY_NAME                                                :Ime
 STR_SORT_BY_PRODUCTION                                          :Proizvodnja
 STR_SORT_BY_TYPE                                                :Vrsta
@@ -783,9 +782,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Kazalo skladb
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Zbriši
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Shrani
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Zbriši trenutni glasbeni program (samo po meri 1 in 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Shrani glasbene nastavitve
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni na skladbo, če jo želiš dodati na trenutni program (samo po meri 1 in 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na skladbo, če jo želiš odstraniti iz programa (samo Poljubno1 ali Poljubno2)
 
@@ -2552,7 +2549,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ujemajo
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogočeno
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nekompatibilno s to različico OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Vnesi NewGRF parametre
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Spremeni NewGRF parametre
@@ -3365,7 +3361,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Pojdi v najbli�
 STR_ORDER_CONDITIONAL                                           :Pogojni preskok ukaza
 STR_ORDER_SHARE                                                 :Deli ukaze
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na konec seznama. Ctrl naredi ukaze postaj 'napolni kakršenkoli tovor', ukaze točk poti 'non-stop' in ukaze garaž 'servis'. 'Deli ukaze' ali Ctrl deli ukaze z drugim izbranim vozilom. Klik na vozilo kopira ukaze
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Vstavi napreden ukaz
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Prikaz vseh vozil, ki si delijo ta urnik
 
@@ -3620,8 +3615,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni dovol
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} mestna oblast tega ne dovoli
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} mestni svet prepoveduje gradnjo še enega letališča v tem mestu
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :Lokalne oblasti mesta {WHITE}{TOWN} ne dovolijo gradnje letališča zaradi hrupa
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tvoj poskus podkupovanja je bil
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}odkrit s strani regionalnih preiskovalcev
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tukaj ni možen dvig terena...
@@ -3695,7 +3688,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Preveč 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Preveč delov železniške postaje
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Preveč avtobusnih postaj
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Preveč tovornih postaj
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Preblizu druge železniške postaje
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Preblizu druge postaje
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Preblizu drugemu pristanišču
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Preblizu sosednjemu letališču

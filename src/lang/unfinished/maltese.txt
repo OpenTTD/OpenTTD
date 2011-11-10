@@ -209,7 +209,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Popolazz
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Isem
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Popolazzjoni
 STR_SORT_BY_NAME                                                :Isem
 STR_SORT_BY_PRODUCTION                                          :Produzzjoni
 STR_SORT_BY_TYPE                                                :Tip

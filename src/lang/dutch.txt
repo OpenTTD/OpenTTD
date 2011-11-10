@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Inwoners
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Naam
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Inwoners
 STR_SORT_BY_NAME                                                :Naam
 STR_SORT_BY_PRODUCTION                                          :Productie
 STR_SORT_BY_TYPE                                                :Soort
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Nummerindex
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Maak leeg
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Opslaan
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Maak huidig programma leeg (alleen Aangepast1 en Aangepast2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Sla muziekinstellingen op
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op het nummer om deze aan het programma toe te voegen (alleen Aangepast1 en Aangepast2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op het nummer om deze uit het programma te verwijderen (alleen Aangepast1 en Aangepast2)
 
@@ -2428,7 +2425,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Bestand ni
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Uitgeschakeld
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Niet compatibel met deze versie van OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-parameters ingeven
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parameters wijzigen
@@ -3246,7 +3242,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtst
 STR_ORDER_CONDITIONAL                                           :Conditionele order sprong
 STR_ORDER_SHARE                                                 :Orders delen
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan het eind van de lijst. Ctrl+klik maakt stationsorders "Eén soort vracht volledig laden", controlepost-orders "Ga non-stop via" en depot-orders "Onderhoud bij". "Orders delen" of Ctrl laat dit voertuig de orders delen met het geselecteerde voertuig. Klikken op een voertuig kopieert de orders van dat voertuig
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Voeg een geavanceerde order toe
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Toon alle voertuigen met dezelfde gedeelde orders
 
@@ -3516,8 +3511,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De gemeenteraad van {TOWN} staat bouwen van nog een vliegveld niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokale autoriteiten weigeren toestemming te geven voor vliegveld wegens zorgen om geluidsoverlast
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Je poging tot omkopen is
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ontdekt door een regionale onderzoeker
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan land hier niet ophogen...
@@ -3591,7 +3584,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenlaadstations
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te dicht bij een ander station
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te dicht bij een ander (laad)station
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te dicht bij een ander vliegveld

@@ -261,7 +261,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Насе
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Име
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Население
 STR_SORT_BY_NAME                                                :Име
 STR_SORT_BY_PRODUCTION                                          :Продукция
 STR_SORT_BY_TYPE                                                :Вид
@@ -628,9 +627,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Номер на песен
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Програма - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Изчисти
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Запази
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Изчисти текущата програма (само Мой вкус1 или Мой вкус2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Запази музикалните настройки
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Натисни върху музикално парче за да го добавиш към текущата програма (само Мой вкус1 или Мой вкус2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Натиснете върху парче за да го премахнете от програмата (Custom1 и Custom2 само)
 
@@ -2378,7 +2375,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Не е н
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изключен
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Несъвместимо с тази версия на OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Въвеждане на NewGRF параметри
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промени параметрите на новите графики (NewGRF)
@@ -3173,7 +3169,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Отиди до
 STR_ORDER_CONDITIONAL                                           :Условна променяща се заповед
 STR_ORDER_SHARE                                                 :Сподели назначенията
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Добавяне на назначение преди избраната или в края на списъка. Като натиснете Ctrl добавяте назначение за 'Напълно натовари какъвто и да е товар', назначение за пътна точка 'без спиране' и назначение за депо 'обслужване'. 'Споделяне на назначенията' или Ctrl позволява на това превозно средство да сподели назначенията с друго избрано такова, когато се кликне върху него.
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Вмъкни допълнителна заповед
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показване на всички превозни средства които споделят разписанието
 
@@ -3417,8 +3412,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Не е 
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} местните власти отказват да позволят това
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} местни власти отказват да позволят построяването на друго летище в града
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} локалните власти отказват разрешение за летището (твърде шумно)
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Твоят опит за подкуп беше
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}разкрит от местен дознател
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Не може да повдигаш земята тук...
@@ -3490,7 +3483,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Твър
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Твърде много части на гара
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Твърде много автобусни спирки
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Твърде много гари за камиони
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Твърде близо до друга жп гара
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Твърде близо до друга гара/товарна платформа
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Прекалено близо до друг док
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Прекалено близо до друго летище

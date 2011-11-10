@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Poblogae
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Enw
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dyddiad
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Poblogaeth
 STR_SORT_BY_NAME                                                :Enw
 STR_SORT_BY_PRODUCTION                                          :Cynyrch
 STR_SORT_BY_TYPE                                                :Math
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Indecs Traciau
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Rhaglen - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Clirio
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Cadw
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clirio'r rhaglen gyfredol (Cyfaddas 1 neu Cyfaddas 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Cadw gosodiadau cerddoriaeth
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliciwch i ychwanegu trac cerddoriaeth i'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliciwch i dynnu trac cerddoriaeth o'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
 
@@ -2399,7 +2396,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ddargan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwyd
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Anghydnaws gyda'r fersiwn yma o OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Rhoi paramedrau NewGRF newydd
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Newid paramedrau NewGRF
@@ -3216,7 +3212,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mynd i'r awyren
 STR_ORDER_CONDITIONAL                                           :Naid gorchymyn amodol
 STR_ORDER_SHARE                                                 :Rhannu gorchmynion
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Creu gorchymyn newydd cyn yr orchymyn a amlygwyd, neu creu ar ddiwedd y daflen. Mae Ctrl yn gwneud gorchymynion orsaf yn rhai 'llwyth llawn unrhyw cargo', gorchymynion pwyntiau llwybro 'heb aros' a gorchmynion depot 'gwasanaethu'. Mae 'Rhannu gorchmynion' neu Ctrl yn gadael i'r cerbyd yma rannu gorchmynion gyda'r cerbyd a ddewisir. Mae clicio ar gerbyd yn copïo gorchmynion o'r cerbyd hwnnw
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Mewnosod gorchymyn uwch
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Dangos pob cerbydau sy'n rhannu'r amserlen hon
 
@@ -3486,8 +3481,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni chani
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Nid yw awdurdod lleol {TOWN}yn caniatáu hyn
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Mae awdurdod lleol {TOWN} yn gwrthod caniatáu i faes awyr arall gael ei adeiladu ger y dref hon
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Mae awdurdod lleol {TOWN} wedi gwrthod caniatâd ar gyfer maes awyr oherwydd pryderon ynglŷn â sŵn
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cafodd eich ymgais i lwgrwobrwyo ei
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ddarganfod gan ymchwilydd ardal
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Does dim modd codi tir yma...
@@ -3561,7 +3554,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Gormod o
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Mae gan yr orsaf ormod o rannau
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Gormod o arosfannau bysus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Gormod o orsafoedd lorïau
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Rhy agos i orsaf reilffordd arall
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Rhy agos i orsaf/ardal lwytho
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Rhy agos i ddoc arall
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Rhy agos i faes awyr arall

@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}மக�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}பெயர்
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}தேதி
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
 STR_SORT_BY_NAME                                                :பெயர்
 STR_SORT_BY_PRODUCTION                                          :உற்பத்தி
 STR_SORT_BY_TYPE                                                :வகை
@@ -569,8 +568,6 @@ STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}இச�
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}இசைத்தடம் வரிசை
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}அழி
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}பதி
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}இசை அமைப்பை பத
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}நிறுவனங்களின் பட்டியல் {NUM}

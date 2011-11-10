@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}جمعی
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :جمعیت
 STR_SORT_BY_NAME                                                :نام
 STR_SORT_BY_PRODUCTION                                          :تولید
 STR_SORT_BY_TYPE                                                :نوع
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}شماره ی آهنگ
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}برنامه - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}پاک کن
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}ذخیره کن
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}پاک کردن برنامه فعلی (برنامه های سفارشی شده 1 و سفارشی شده 2 فقط پاک می شوند)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}ذخیره تنظیمات موسیقی
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}روی آهنگ کلیک کنید تا به برنامه فعلی اضافه شوند (فقط لیست سفارشی 1 و سفارشی 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}روی آهنگ کلیک کنید تا از برنامه فعلی پاک شوند (فقط لیست سفارشی 1 و سفارشی 2)
 
@@ -2399,7 +2396,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}فایل �
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}غیرفعال
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}با این ورژن از OpenTTD همخوانی ندارد
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}پارامترهای NewGRF را وارد کنید
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}تغییر پارامترهای NewGRF
@@ -3091,7 +3087,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}نمی �
 
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}ایستگاه زیادی پخش شده است
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}به ایستگاه دیگری بسیار نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}به بندر دیگری بسییار نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}به فرودگاه دیگری بسیار نزدیک شده

@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Asukaslu
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Päiväys
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Asukasluku
 STR_SORT_BY_NAME                                                :Nimi
 STR_SORT_BY_PRODUCTION                                          :Tuotto
 STR_SORT_BY_TYPE                                                :Tyyppi
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Raita
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Soittolista - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Tyhjennä
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Tallenna
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tyhjennä nykyinen soittolista (vain Oma1 tai Oma2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Tallenna musiikkiasetukset
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Valitse musiikkiraita lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikkaa raitaa poistaaksesi se nykyisestä ohjelmasta (ainoastaan Custom1 tai Custom2)
 
@@ -2428,7 +2425,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sopivaa ti
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytössä
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Epäyhteensopiva tämän OpenTTD-version kanssa
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna NewGRF-parametrit
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametrejä
@@ -3246,7 +3242,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmäl
 STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppykäsky
 STR_ORDER_SHARE                                                 :Jaa käskyt
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa käskyt' jakaa käskyt valitun kulkuneuvon kanssa. Kulkuneuvon klikkaaminen kopioi käskyt siitä kulkuneuvosta
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Lisää kehittynyt käsky
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki ajoneuvot, jotka jakavat nämä käskyt
 
@@ -3516,8 +3511,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ei salli
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}: paikallisviranomaiset kieltäytyvät.
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} paikallisviranomaiset eivät salli toisen lentokentän rakentamista tähän kaupunkiin.
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} paikallisviranomaiset kieltävät lentokentän rakennuksen äänekkyyden takia
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Yleinen syyttäjä on saanut selville
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}lahjontayrityksesi.
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Maata ei voi korottaa.
@@ -3591,7 +3584,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liian mo
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Rautatieasema on jakautunut liian moneen osaan
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liian monta linja-autopysäkkiä.
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liian monta lastauslaituria.
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Liian lähellä toista rautatieasemaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Liian lähellä toista asemaa tai lastausaluetta.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liian lähellä toista satamaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liian lähellä toista lentokenttää.

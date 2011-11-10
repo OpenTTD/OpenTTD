@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名称
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_NAME                                                :名称
 STR_SORT_BY_PRODUCTION                                          :产量
 STR_SORT_BY_TYPE                                                :类型
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}全部音轨列表
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}当前选用'{STRING}'列表
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}清除
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}保存
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}清除当前列表中曲目{}（仅限自定义1或自定义2）
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}保存游戏设定
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}点击音乐曲目以加入当前播放列表{}(仅限自定义1或自定义2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
 
@@ -2396,7 +2393,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}与此版本OpenTTD不兼容
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 NewGRF 参数
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
@@ -3209,7 +3205,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的
 STR_ORDER_CONDITIONAL                                           :条件性命令跳过
 STR_ORDER_SHARE                                                 :共享调度计划
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在调度列表的结尾或高亮显示项目前面{}增加一条新指令，Ctrl使车站命令为“装满任意货物”{}路点命令为“不停车”{}车库命令为“保养”
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}插入高级指令
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}显示所有共享此调度计划的{}车辆/船只/飞机
 
@@ -3462,8 +3457,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 地方政府不批准此操作……
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}地方政府{}不同意在本市范围内再兴建一座机场
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 考虑到噪音控制，地方当局拒绝修建机场。
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}你试图行贿地方官员已经
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}被当地检察机关发现了！
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}不能提高这里的地面……
@@ -3537,7 +3530,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}车站�
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}分体站台太多
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}公共汽车站过多
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}汽车货场过多
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}距离另一火车站过近
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}距离另一车站过近
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}距离另一码头过近
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}距离另一机场过近

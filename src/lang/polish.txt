@@ -638,7 +638,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populacj
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nazwa
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Populacja
 STR_SORT_BY_NAME                                                :Nazwa
 STR_SORT_BY_PRODUCTION                                          :Produkcja
 STR_SORT_BY_TYPE                                                :Typ
@@ -1009,9 +1008,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Wykaz ścieżek
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programuj - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Wyczyść
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Zapisz
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Wyczyść obecny program (tylko Wlasny1 lub Wlasny2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Zapisz ustawienia muzyki
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na ścieżce aby dodać do obecnego programu (Wlasny1 i Wlasny2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżce muzycznej aby usunąć ją z wybranego programu (Wlasny1 lub Wlasny2)
 
@@ -2779,7 +2776,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nie znalez
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Niedostępny
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Niekompatybilne z tą wersją OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Wprowadź parametry NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmień parametry NewGRF
@@ -3602,7 +3598,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizs
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełen załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Dodaj zaawansowany rozkaz
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -3872,8 +3867,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na to
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na budowę kolejnego lotniska w tym mieście
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokalne władzę odmawiają zgody na lotnisko ze względu na poziom hałasu
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba wręczenia łapówki została
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}wykryta przez lokalnych śledczych
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść lądu...
@@ -3947,7 +3940,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Za duzo 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Za dużo części stacji kolejowej
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zbyt wiele przystanków autobusowych
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zbyt wiele stacji załadunku ciężarówek
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Zbyt blisko innej stacji
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Zbyt blisko innej stacji/strefy załadunku
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zbyt blisko innego portu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zbyt blisko innego lotniska

@@ -261,7 +261,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Popolazi
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nome
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Popolazione
 STR_SORT_BY_NAME                                                :Nome
 STR_SORT_BY_PRODUCTION                                          :Produzione
 STR_SORT_BY_TYPE                                                :Tipo
@@ -632,9 +631,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Indice brani
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Elimina
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Salva
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Elimina il programma corrente (solo Personale1 e Personale2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Salva le impostazioni della musica
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Fare clic su un brano per aggiungerlo al programma corrente (solo Personale1 o Personale2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Fare clic su un brano per rimuoverlo dal programma corrente (solo Personale1 o Personale2)
 
@@ -2456,7 +2453,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File corri
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabilitato
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatibile con questa versione di OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Inserire i parametri NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambia parametri NewGRF
@@ -3274,7 +3270,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar più vic
 STR_ORDER_CONDITIONAL                                           :Salto condizionale
 STR_ORDER_SHARE                                                 :Condividi ordini
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista. Facendo clic con CTRL gli ordini verso le stazioni diventano 'attendi carico', quelli verso waypoint 'no-stop' e quelli verso depositi 'manutenzione'. L'opzione 'Condividi ordini' o il tasto CTRL consentono a questo veicolo di condividere gli ordini con un veicolo selezionato. Cliccando su un veicolo gli ordini vengono invece copiati dallo stesso
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Inserisce un ordine avanzato
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tutti i veicoli che condividono questa lista ordini
 
@@ -3544,8 +3539,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non cons
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}L'autorità locale di {TOWN} non lo autorizza
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}L'autorità locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}L'autorità locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Il tuo tentativo di corruzione è stato
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}scoperto dalla Guardia di Finanzia.
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossibile alzare il terreno qui...
@@ -3619,7 +3612,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Troppe s
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Stazione composta da troppe parti
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Troppe stazioni degli autobus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Troppe aree di carico per camion
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Troppo vicino a un'altra stazione ferroviaria
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Troppo vicino ad un'altra stazione/area di carico
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Troppo vicino ad un altro molo
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Troppo vicino ad un altro aeroporto

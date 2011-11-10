@@ -572,7 +572,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Насе
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Назва
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Насельнiцтва
 STR_SORT_BY_NAME                                                :Назва
 STR_SORT_BY_PRODUCTION                                          :Вытворчасьць
 STR_SORT_BY_TYPE                                                :Тып
@@ -943,9 +942,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Сьпіс трэкаў
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programme - «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Ачысьціць
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Захаваць
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ачысьціць сьпіс уласнай праграмы
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Захаваць наладкі музыкі
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клікніце па назьве трэка, каб дадаць яго ва ўласную праграму
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праграмы
 
@@ -2758,7 +2755,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл �
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Адключана
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несумяшчальна з дадзенай вэрсіяй OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Увядзіце парамэтры файла NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Зьмянiць парамэтры NewGRF
@@ -3596,7 +3592,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ісьці да
 STR_ORDER_CONDITIONAL                                           :Умоўны пераход да заданьня
 STR_ORDER_SHARE                                                 :Агульныя заданьнi
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Уставіць новае заданьне перад вылучаным, або ў канец сьпісу. Ctrl дадае на станцыях «поўная пагрузка любым грузам», на пунктах шляху - «без прыпынку», на дэпо - «абслугоўваньне». «Агульныя заданьнi» або Ctrl дазваляюць гэтаму транспарту мець агульныя заданьнi з вылучаным транспартам. Пстрычка па транспарце капiруе заданьнi гэтага транспарту.
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Дадаць пашыранае заданьне
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Паказаць ўвесь транспарт з агульнымі заданьнямі
 
@@ -3866,8 +3861,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Заба
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}... адміністрацыя горада {TOWN} забараняе вам гэта рабіць
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Адміністрацыя г. {NBSP}{TOWN} забараняе пабудову яшчэ аднаго аэрапорта ў горадзе
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Адміністрацыя г. {NBSP}{TOWN} не дазваляе будаўніцтва аэрапорта з-за высокага ўзроўню шуму.
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша спроба даць хабар была
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}выяўлена рэгіянальным сьледчым
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Тут немагчыма падвысіць узровень зямлі...
@@ -3941,7 +3934,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Зана
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Занадта вялікая чыгуначная станцыя
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Занадта шмат аўтобусных прыпынкаў
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Занадта шмат грузавых тэрмiналаў
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Занадта блізка да іншай чыгуначнай станцыі
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Занадта блізка да іншай станцыі
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Занадта блізка да іншай прыстані
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Занадта блізка да іншага аэрапорта

@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populasi
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nama
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tanggal
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Populasi
 STR_SORT_BY_NAME                                                :Nama
 STR_SORT_BY_PRODUCTION                                          :Produksi
 STR_SORT_BY_TYPE                                                :Jenis
@@ -627,9 +626,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Daftar Track
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Kosong
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Simpan
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Hapus program saat ini (hanya Bebas 1 atau Bebas 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Simpan aturan musik
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pada musik track untuk menambah pada program sekarang (hanya Bebas 1 atau Bebas 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada track musik untuk menghapusnya dari program saat ini. (Bebas 1 atau Bebas 2 saja)
 
@@ -2382,7 +2379,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Berkas yan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Non-aktifkan
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak kompatibel dengan versi OpenTTD ini
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan Parameter NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
@@ -3181,7 +3177,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar terdekat
 STR_ORDER_CONDITIONAL                                           :Melompat ke perintah lain
 STR_ORDER_SHARE                                                 :Berbagi perintah
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan pemberhentian baru sebelum pemberhentian yang terpilih, atau tambahkan pada akhir daftar. Ctrl, akan membuat pemberhentian ke stasiun menjadi 'muat penuh sembarang', penunjuk jalan menjadi 'non-stop', dan pemberhentian di bengkel/depo/galangan/hangar menjadi 'perbaikan'. 'Berbagi Perintah' atau Ctrl akan membuat perintah berbagi dengan kendaraan yg terpilih. Klik pada kendaraan untuk menduplikat daftar perintah dari kendaraan tersebut
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Masukkan perintah berikutnya
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Tampilkan semua kendaraan yang mempunyai perintah bersama.
 
@@ -3434,8 +3429,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak di
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Pemkot {TOWN} tidak mengijinkan anda melakukan ini
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Pemkot {TOWN} menolak pemberian izin pembangunan bandara lain di kota ini
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} Pihak Pemkot menolak izin pembangunan bandara karena masalah kebisingan
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Usaha anda untuk menyuap telah
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ditemukan oleh seorang investigator wilayah
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tidak dapat menaikkan tanah disini
@@ -3507,7 +3500,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlalu 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlalu banyak bag. stasiun
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Terlalu banyak pemberhentian Bus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Terlalu banyak terminal truk
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Terlalu dekat dengan stasion kereta lainnya
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Terlalu dekat dengan stasiun/area bongkar muat lainnya
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Terlalu dekat dengan dok/galangan kapal lainnya
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Terlalu dekat dengan bandara lainnya

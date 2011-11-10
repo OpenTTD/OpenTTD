@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Daonra
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ainm
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dáta
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Daonra
 STR_SORT_BY_NAME                                                :Ainm
 STR_SORT_BY_PRODUCTION                                          :Ag táirgeadh
 STR_SORT_BY_TYPE                                                :Cineál
@@ -627,9 +626,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Innéacs na Rianta
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Clár - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Glan
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Sábháil
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Glan an clár reatha (Saincheaptha1 nó Saincheaptha2 amháin)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Sábháil socruithe ceoil
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliceáil ar rian ceoil chun é a chur leis an gclár reatha (Saincheaptha1 nó Saincheaptha2 amháin)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliceáil ar rian ceoil chun é a bhaint ón gclár reatha (Saincheaptha1 nó Sainche
 
@@ -2379,7 +2376,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Níor aims
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Díchumasaithe
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Neamhchomhoiriúnach leis an leagan seo de OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Iontráil paraiméadair NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Athraigh na paraiméadair NewGRF
@@ -3178,7 +3174,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gabh chuig an h
 STR_ORDER_CONDITIONAL                                           :Léim choinníollach ordaithe
 STR_ORDER_SHARE                                                 :Comhroinn orduithe
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ionsáigh ordú nua roimh an ordú aibhsithe, nó cuir le deireadh an liosta é. Le Ctrl, beidh orduithe stáisiúin 'lasta iomlán de lastas ar bith', beidh orduithe do phointí bealaigh 'gan stad' agus beidh orduithe d'iostaí 'déan seirbhísiú'
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Cuir isteach ard-ordú
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Taispeáin gach feithicil a dhéanann an sceideal seo a chomhroinnt
 
@@ -3431,8 +3426,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ní chea
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Ní cheadaíonn údarás áitiúil {TOWN} é seo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Diúltaíonn údarás áitiúil {TOWN} cead a thabhairt chun aerfort eile a thógáil sa bhaile seo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Diúltaíonn údarás áitiúil {TOWN} cead don aerfort mar gheall ar imní faoi thorann
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}D'aimsigh imscrúdaitheoir réigiúnda
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}d'iarracht ar bhreab a thabhairt
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Ní féidir talamh a ardú anseo...
@@ -3504,7 +3497,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}An iomar
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}An iomarca codanna stáisiún iarnróid
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}An iomarca stadanna bus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}An iomarca stáisiúin leoraithe
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Roghearr do stáisiún iarnróid eile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Roghearr do stáisiún/limistéar lódála eile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Roghearr do dug eile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Roghearr d'aerfort eile

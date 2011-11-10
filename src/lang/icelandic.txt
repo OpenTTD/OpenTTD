@@ -260,7 +260,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Fólksfj
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nafn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dagsetning
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Fólksfjöldi
 STR_SORT_BY_NAME                                                :Nafn
 STR_SORT_BY_PRODUCTION                                          :Framleiðsla
 STR_SORT_BY_TYPE                                                :Tegund
@@ -626,9 +625,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Laganúmer
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Listi - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Hreinsa
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Vista
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Hreinsa núverandi lista (aðeins Sérval1 eða Sérval2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Vista tónlistarstillingar
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Veldu lag til að bæta í núverandi lista (aðeins Sérval1 eða Sérval2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Smelltu á lag til að fjarlægja það úr listanum (á aðeins við um Sérvalið1 og Sérvalið2)
 
@@ -2352,7 +2349,6 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Engar up
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Viðeigandi skrá finnst ekki
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Óvirkt
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sláðu inn NewGRF breytur
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Breyta NewGRF stillingum
@@ -3146,7 +3142,6 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fara í næsta 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fara í næsta flugskýli
 STR_ORDER_CONDITIONAL                                           :Skilyrðisbundin hunsun skipana
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Skeyta inn nýrri skipun á undan valdri skipun, eða bæta við á enda listans. Ctrl bætir við stöðvar sjálfkrafa 'fullhlaða hvaða farmi sem er', við millistöðvar 'Ekki stöðva' og við skýli 'þjónusta'
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Bæta við ítarlegri skipun
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Sýna öll farartæki sem deila þessari áætlun
 
@@ -3394,8 +3389,6 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} bæjaryfirvöld leyfa þetta ekki
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Bæjaryfirvöld {TOWN} leyfa ekki byggingu annars flugvallar nærliggjandi bænum
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} Stjórn bæjarins hafnar leyfir fyrir flugvelli vegna hljóðmengunar
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tilraun þín til múturs var
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}uppgvötuð af héraðsrannsóknarmanni
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Get ekki lyft landssvæði hér...
@@ -3467,7 +3460,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Of marga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Of margir hlutar af lestarstöðvum
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Of margar strætisvagnastöðvar
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Of margar vörubílastöðvar
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Of nálægt annarri lestarstöð
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Of nálægt annarri stöð/lestunarsvæði
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Of nálægt annarri bryggju
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Of nálægt öðrum flugvelli

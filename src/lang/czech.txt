@@ -329,7 +329,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Podle po
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Podle jména
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Podle data
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :populace
 STR_SORT_BY_NAME                                                :jména
 STR_SORT_BY_PRODUCTION                                          :produkce
 STR_SORT_BY_TYPE                                                :typu
@@ -712,9 +711,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Index skladeb
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Vymazat
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Uložit
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Vyprázdnit současný program (jen u Voleb 1 a 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Uložit nastavení hudby
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Skladba se přidá do zvoleného programu (Volba 1 nebo 2) klepnutím na její název
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Hudební stopu odstraníš ze současného programu (pouze u vlastního) kliknutím na ni
 
@@ -2487,7 +2484,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nenalezen 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Vypnuto
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Není kompatibilní s touto verzí OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadej parametry grafiky
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Úprava nastavení parametrů
@@ -3306,7 +3302,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Jet do nejbliž
 STR_ORDER_CONDITIONAL                                           :Podmíněné přeskočení příkazu
 STR_ORDER_SHARE                                                 :Sdílet příkazy
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vložit nový příkaz před označený příkaz, nebo přidat na konec seznamu. Ctrl přidá příkaz pro stanici jako 'plně naložit cokoliv', pro směrování na trati jako 'bez zastavení' a pro depo jako 'údržba'. 'Sdílet příkazy' nebo Ctrl nechá vozidlo sdílet příkazy s vybraným vozidlem. Kliknutí na vozidlo zkopíruje jeho příkazy
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Vložit složitější příkaz
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Zobrazit všechny prostředky se stejným jízdním řádem
 
@@ -3561,8 +3556,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nelze v 
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Místní správa města {TOWN} odmítla vydat povolení
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Místní správa města {TOWN} zakazuje stavbu dalšího letiště v tomto městě
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Zastupitelstvo města {TOWN} odmítá vydat povolení na stavbu letiště kvůli hlukovým limitům
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tvůj pokus o úplatek byl
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}odhalen místním vyšetřovatelem
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Zde nelze zvednout terén...
@@ -3636,7 +3629,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Příli�
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Příliš mnoho staničních částí
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Příliš mnoho autobusových zastávek
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Příliš mnoho zastávek nákladních automobilů
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Příliš blízko jinému nádraží
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Příliš blízko k jinému nádraží nebo nákladové rampě
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Příliš blízko k jinému doku
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Příliš blízko k jinému letišti

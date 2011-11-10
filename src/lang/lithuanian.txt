@@ -334,7 +334,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populiac
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Vardą
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datą
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Populiacija
 STR_SORT_BY_NAME                                                :Pavadinimą
 STR_SORT_BY_PRODUCTION                                          :Produkciją
 STR_SORT_BY_TYPE                                                :Tipą
@@ -705,9 +704,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Takelio numeris
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programa - „{STRING}“
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Išvalyti
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Išsaugoti
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Panaikinti esamą programą (tik „Speciali 1“ arba „Speciali 2“)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Išsaugoti muzikos nustatymus
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Paspauskite ant garso takelio, norėdami įtraukti į sąrašą (tik „Speciali 1“ arba „Speciali 2“)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Spragtelėjus takelį, jis pašalinamas iš dabartinės programos (tik „Speciali 1“ ir „Speciali 2“)
 
@@ -2474,7 +2471,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Atitinkama
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Išjungta
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nesuderinamas su šia OpenTTD versija
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Įveskite Papild. grafikos parametrus
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Pakeisti NewGRF parametrus
@@ -3291,7 +3287,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Skristi į arti
 STR_ORDER_CONDITIONAL                                           :Sąlyginis užsakymo šuolis
 STR_ORDER_SHARE                                                 :Dalintis užduotimis
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Iterpti nauja uzduoti pries pazymeta, arba iterpti saraso pabaigoje. Ctrl+Paspaudimas verčia stotelių nurodymus į 'pilnai pasikrauti bet kokio krovinio', kontrolės punktų į 'praleisti' ir garažų - 'aptarnauti'
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Įterpti užsakymą
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Parodyti visas tr. priemones, kurios dalijasi šiais nurodymais
 
@@ -3548,8 +3543,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Negalima
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} vietos valdžia neleidžia
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} vietinė valdžia neleidžia statyti kito oro uosto šiame mieste
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} vietos valdžia atsisako suteikti leidimą statyti oro uosta dėl triukšmo problemų
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tavo meginimas papirkti buvo
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}issaiskinta vietiniu pareigunu
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Žemės lygio čia paaukštinti negalima...
@@ -3623,7 +3616,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Per daug
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Perdaug traukinių stoties dalių
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Per daug sunkvežimių pakrovimo aikstelių
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Per arti kitos geležinkelio stoties
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Per arti kitos stotelės
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Per arti kitos prieplaukos
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Per arti kito oro uosto

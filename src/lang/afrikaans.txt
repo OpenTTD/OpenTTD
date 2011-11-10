@@ -260,7 +260,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populasi
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Naam
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Populasie
 STR_SORT_BY_NAME                                                :Naam
 STR_SORT_BY_PRODUCTION                                          :Produksie
 STR_SORT_BY_TYPE                                                :Tipe
@@ -627,9 +626,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Liedjie Indeks
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Maak skoon
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Stoor
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Maak huidige musiek keuse skoon (slegs Bestelling1 of Bestelling2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Stoor musiek stellings
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliek op 'n liedjie om by huidige musiek lys by te sit (slegs Bestelling1 of Bestelling2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliek op musiek lied om te verwyder van huidige program (Slegs Gewoonte1 of Gewoonte2)
 
@@ -2343,7 +2340,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Gelyke lê
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Gestrem
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Onversoenbaar met hierdie weergawe van OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Invoer NewGRF parameters
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Verander NewGRF parameters
@@ -3104,7 +3100,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gaan na naaste 
 STR_ORDER_CONDITIONAL                                           :Konditioneele bevel oor sien
 STR_ORDER_SHARE                                                 :Deel opdragte
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Invoeg 'n nuwe opdrag voor die verlig opdrag, of byvoeg na einde van lys
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Sit 'n bevorderde bevel in
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Toon alle voertuie wat die rooster deel
 
@@ -3345,8 +3340,6 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} plaaslike raad weier om dit te toelaat
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} plaaslike raad weier om nog 'n lighawe te bou in hierdie stad
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} plaaslikke raad weier toestemming vir lughawes omdat die dorp oor geraas bekommer
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Jou omkooping onderneeming is deur
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}'n streek navorser uitgevind
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}kan nie land hier verhoog nie...
@@ -3417,7 +3410,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstasie deele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushalte
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vragmotor stasies
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te naby aan 'n ander spoorweg stasie
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te naby aan 'n ander stasie/laai area
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te naby aan 'n ander werf
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te naby aan 'n ander lughawe

@@ -467,9 +467,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Индекс на песната
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Програм - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Исчисти
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Зачувај
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Исчисти го тековниот програм (само Сопствен1 или Сопствен2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Зачувај поставки за музика
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Кликни на песна за да ја додадеш во тековниот програм (само Сопствен1 или Сопствен2)
 
 # Highscore window
@@ -1337,8 +1335,6 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... во
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} во начинот на
 
 # Local authority errors
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Твојот обид за поткуп беше
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}разоткриен од локалната инспекција
 
 # Levelling errors
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... веќе рамно

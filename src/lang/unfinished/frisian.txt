@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Ynwenner
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Namme
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Ynwenners
 STR_SORT_BY_NAME                                                :Namme
 STR_SORT_BY_PRODUCTION                                          :Produksje
 STR_SORT_BY_TYPE                                                :Soart
@@ -628,9 +627,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Nûmer Yndex
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Leech meitsje
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Bewarje
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Leechje dit programma (allinnich Oanpast 1 of Oanpast 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Sla musyk ynstellings op
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op musyknûmer om ta te foegjen oan dit programma (allinnich Oanpast 1 of Oanpast 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op musyknûmmer om't út it aktive programma it heljen (allinnich Oanpast1 of Oanpast2)
 
@@ -2545,7 +2542,6 @@ STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te folle stasjons
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te folle bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te folle frachtstasjons
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te ticht by in oar stasjon
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te ticht by in oar stasjon
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te ticht by in oare haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te ticht by in oar fleanfjild

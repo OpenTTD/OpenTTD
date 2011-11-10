@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}ปร�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}ชื่อ
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}วันที่
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :จำนวนประชากร
 STR_SORT_BY_NAME                                                :ชื่อ
 STR_SORT_BY_PRODUCTION                                          :ผลผลิต
 STR_SORT_BY_TYPE                                                :ประเภท
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}รายการเพลง
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}โปรแกรม - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}ลบทั้งหมด
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}บันทึก
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}ลบโปรแกรมปัจจุบัน (สำหรับโปรแกรมกำหนดเอง 1 หรือ กำหนดเอง 2 เท่านั้น)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}บันทึกการตั้งค่าเพลง
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}คลิกที่รายการเพลงเพื่อเพิ่มไปยังโปรแกรมปัจจุบัน (สำหรับโปรแกรมกำหนดเอง 1 หรือ กำหนดเอง 2 เท่านั้น)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}คลิกที่ชื่อเพลงเพื่อลบออกจากโปรแกรม (Custom1 or Custom2 เท่านั้น)
 

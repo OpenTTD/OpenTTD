@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Biztanle
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Izena
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Biztanleria
 STR_SORT_BY_NAME                                                :Izena
 STR_SORT_BY_PRODUCTION                                          :Produkzioa
 STR_SORT_BY_TYPE                                                :Mota
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Pistaren Indizea
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programatu - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Garbitu
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Gorde
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Uneko programa ezabatu (Perstonala1 edo Pertsonala2 bakarrik)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Musikaren ezarpenak gorde
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Musika kantan click egin uneko programari gehitzeko (Perstonala1 edo Perstonala2 bakarrik)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Musika kantan clik egin uneko programatik ezabatzeko (Perstonala1 edo Pertsonala2 bakarrik)
 

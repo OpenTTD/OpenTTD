@@ -227,7 +227,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}آباد
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :آبادی
 STR_SORT_BY_NAME                                                :نام
 STR_SORT_BY_PRODUCTION                                          :پیداوار
 STR_SORT_BY_TYPE                                                :طرز

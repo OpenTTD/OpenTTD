@@ -260,7 +260,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}인구
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}이름
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}날짜
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :인구
 STR_SORT_BY_NAME                                                :이름
 STR_SORT_BY_PRODUCTION                                          :생산
 STR_SORT_BY_TYPE                                                :종류
@@ -631,9 +630,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}트랙 인덱스
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}프로그램 - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}초기화
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}저장
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}현재 음악 프로그램을 초기화합니다 (사용자1, 사용자2에서만 선택 가능합니다)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}음악 설정을 저장합니다
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}음악 목록에 트랙을 추가하려면 클릭하세요 (사용자1, 사용자2만 사용 가능합니다)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}음악 목록에서 트랙을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
 
@@ -2400,7 +2397,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}일치하�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용안함
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTTD 버전과 맞지 않습니다...
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF 파라미터 입력
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 바꾸기
@@ -3213,7 +3209,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격�
 STR_ORDER_CONDITIONAL                                           :조건부 경로 건너뛰기
 STR_ORDER_SHARE                                                 :경로 공유
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다. Ctrl키와 함께 누르면 역에서는 '아무 화물이나 가득 싣고', 웨이포인트에서는 '논스톱', 차량기지에서는 '점검' 이 실행됩니다.
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}확장된 이동경로를 입력합니다
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다.
 
@@ -3468,8 +3463,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}일시�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}에 대한 낮은 성취도로 인해 지역당국이 이 행위를 거절했습니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 지역당국은 이 도시에 다른 공항이 들어서는 것을 거부합니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 지역 당국이 소음 문제로 인해 공항 건설을 거부하였습니다
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}당신의 뇌물 수수 행위가
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}지역 당국에 의해 발각되었습니다!
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}이곳의 땅을 올릴 수 없습니다...
@@ -3543,7 +3536,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}역이 �
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}철도역 조각이 너무 많습니다
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}버스 정류장이 너무 많습니다
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}트럭 적하장이 너무 많습니다
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}다른 철도역과 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}다른 역과 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 항구와 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다!

@@ -260,7 +260,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Bevölke
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Name
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Bevölkerung
 STR_SORT_BY_NAME                                                :Name
 STR_SORT_BY_PRODUCTION                                          :Produktion
 STR_SORT_BY_TYPE                                                :Typ
@@ -631,9 +630,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Track Inhalt
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programm - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Bereinigen
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Speichern
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Lösche laufendes Programm (nur für Benutzerdefiniert 1 und 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Musikeinstellungen speichern
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicke auf den Musiktitel, um ihn in das laufende Programm zu übernehmen (nur für Benutzerdefiniert 1 und 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicke auf einen Musiktitel, um ihn aus der aktuellen Liste zu entfernen (nur für Benutzerdefiniert 1 und 2)
 
@@ -2406,7 +2403,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Zugehörig
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktiviert
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nicht mit dieser Version von OpenTTD kompatibel
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-Parameter eingeben
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter ändern
@@ -3223,7 +3219,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hanga
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Halt' und für Depots 'Wartung' auszuwählen. 'Gemeinsame Aufträge' erlauben ein Fahrzeug auszuwählen mit dem dieses die Aufträge teilt. Klicken auf ein Fahrzeug kopiert die Aufträge von diesem
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Erweiterten Auftrag einfügen
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
 
@@ -3493,8 +3488,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nicht er
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Die Stadtverwaltung von {TOWN} erteilt keine Genehmigung
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Die Stadtverwaltung von {TOWN} verweigert die Genehmigung für den Bau eines weiteren Flughafens in der Stadt
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Die Stadtverwaltung von {TOWN} verweigert aus Lärmschutzgründen den Bau des Flughafens
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Der Bestechungsversuch wurde
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}von einem regionalen Untersuchungsbeamten aufgedeckt
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Land kann nicht angehoben werden...
@@ -3568,7 +3561,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Zu viele
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Zu viele Bahnsteigteile
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zu viele Busbahnhöfe
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zu viele Lkw-Ladeplätze
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Zu nah an einem anderen Bahnhof
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Stationen/Ladeplätze liegen zu dicht beisammen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zu dicht an einem anderen Hafen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zu dicht an einem anderen Flughafen

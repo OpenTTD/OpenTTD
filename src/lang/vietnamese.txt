@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Dân s�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Tên
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ngày tháng
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Dân số
 STR_SORT_BY_NAME                                                :Tên
 STR_SORT_BY_PRODUCTION                                          :Sản lượng
 STR_SORT_BY_TYPE                                                :Kiểu
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Bảng Bài Nhạc
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Chương Trình - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Xóa
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Lưu
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Xóa chương trình đang chọn ("Tự chọn 1" và "Tự chọn 2")
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Lưu tùy chọn nhạc
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click vào bài nhạc để thêm vào chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click vào bài nhạc để xóa khỏi chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 
@@ -2428,7 +2425,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Không tương thích với phiên bản OpenTTD này.
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay Đổi Tham Số NewGRF
@@ -3246,7 +3242,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Đi tới xư�
 STR_ORDER_CONDITIONAL                                           :Điểm lộ trình có điều kiện
 STR_ORDER_SHARE                                                 :Lịch trình chia sẻ
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Thêm một điểm lộ trình trước điểm đã chọn, hoặc thêm nó vào cuối danh sách. Ctrl để là ga thì 'bốc xếp đủ bất kỳ hàng nào', là điểm mốc thì 'đi suốt' và là xưởng thì 'bảo trì'. 'Lộ trình chia sẻ" hoặc giữ Ctrl để cho phép phương tiện này chia sẻ lộ trình với phương tiện đã chọn. Nháy vào một phương tiện để sao chép lộ trình từ phương tiện đó.
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Thêm một điểm lộ trình tuỳ biến
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Hiện tất cả phương tiện chia sẻ lộ trình này
 
@@ -3516,8 +3511,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Không c
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Chính quyền {TOWN} từ chối bạn làm việc này
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Chính quyền {TOWN} từ chối có thêm một sân bay nữa trong địa phận của họ
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Chính quyền {TOWN} từ chối sân bay vì dân chúng phàn nàn là quá ồn ào
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Việc hối lộ của bạn đã
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}bị phát giác bởi cơ quan chức năng
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Không thể nâng đất ở đây...
@@ -3591,7 +3584,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Quá nhi
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Quá nhiều mảnh của ga tàu hoả
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Quá nhiều điểm đừng xe buýt
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Quá nhiều trạm bốc dỡ hàng xe tải
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Quá sát với nhà ga tài hoả khác
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Quá sát với một bến khác
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Quá sát với hải cảng khác
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Quá sát với sân bay khác

@@ -258,7 +258,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Fólkata
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Navn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Fólkatali
 STR_SORT_BY_NAME                                                :Navni
 STR_SORT_BY_PRODUCTION                                          :Framleiðslu
 STR_SORT_BY_TYPE                                                :Slagi

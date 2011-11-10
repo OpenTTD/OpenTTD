@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Bevölke
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Numm
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Bevölkerung
 STR_SORT_BY_NAME                                                :Numm
 STR_SORT_BY_PRODUCTION                                          :Produktioun
 STR_SORT_BY_TYPE                                                :Typ
@@ -630,9 +629,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Lidder Index
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programm - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Leschen
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Späicheren
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Den gewielten Program reseten (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Musék Astellungen späicheren
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klick op d'Lidd fir et zum aktuellen Program dobäi zesetzen (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klickt op d'Lidd fir et vum aktuellen Programm ze läschen (Benotzerdefinéiert 1 an 2 nëmmen)
 
@@ -2399,7 +2396,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Datei net 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ausgeschalt
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Onkompatibel mat dëser Versioun vun OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF Parameter aginn
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter änneren
@@ -3212,7 +3208,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Géi bei den no
 STR_ORDER_CONDITIONAL                                           :Bedéngten Optragssprong
 STR_ORDER_SHARE                                                 :Opträg deelen
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Setzt en neien Optrag firun den ungewielten Optrag, oder un d'Enn vun der Lëscht. Ctrl setzt Statioun Opträg op voll lueden, Weepunkter op 'non-stop', an Depot Opträg 'Revisioun'. Op en Gefiert klicken, kopéiert d'Opträg vun dem Gefiert
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Setzt en erweiderten Optrag an
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Weis all Gefierer déi dësen Plang deelen
 
@@ -3467,8 +3462,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net erla
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} d'Gemeng wëll dat net erlaaben
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} d'Gemeng erlabt keen weideren Fluchhafen an der Stad
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}er Gemeng refüséiert den Bau fir den Flughafen wéinst Kaméidi
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Äer versichten Bestiechung ass
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}vun engem lokalen Fahnder entdeckt ginn
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kann d'Land hei net unhiewen...
@@ -3542,7 +3535,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill 
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Ze vill Garesdeeler
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busgaren
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Ze vill Camionsgaren
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Ze noo un enger aanerer Gare
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Ze noo un enger aanerer Gare
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Ze noo bei engem aanerem Hafen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Ze noo un engem aaneren Fluchhafen

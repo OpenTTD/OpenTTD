@@ -259,7 +259,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Jumlah P
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nama
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarikh
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Jumlah penduduk
 STR_SORT_BY_NAME                                                :Nama
 STR_SORT_BY_PRODUCTION                                          :Pengeluaran
 STR_SORT_BY_TYPE                                                :Jenis
@@ -622,9 +621,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Indeks Lagu
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Bersih
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Simpan
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Batal progam semasa (Custom1 atau Custom2 sahaja)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Simpankan tetapan muzik
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pada lagu untuk memasukkan ke dalam rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada lagu untuk mengeluarkan daripada rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 
@@ -2356,7 +2353,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fail yang 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahaktifkan
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak serasi dengan versi OpenTTD ini
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan parameter NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
@@ -3176,8 +3172,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak di
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} majlis tempatan tidak membenarkannya
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Pihak berkuasa {TOWN} tidak boleh membenarkan satu lagi lapangan terbang dibina di bandar ini
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Pihak berkuasa {TOWN} tidak membenarkan pembinaan lapangan terbang kerana khuatir ianya bising
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cubaan anda telah
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ditangkap oleh penyiasat Badan Pencegah Rasuah
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tanah ini tidak dapat ditinggikan...
@@ -3250,7 +3244,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlampa
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlampau banyak bahagian-bahagian stesen keretapi
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Terlampau banyak stesen bas
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Terlampau banyak ruang punggah lori
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Terlalu hampir dengan stesen keretapi lain
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Terlalu hampir dengan stesen/kawasan muatan lain
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Terlalu hampir dengan pelabuhan lain
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Terlalu hampir dengan lapangan terbang lain

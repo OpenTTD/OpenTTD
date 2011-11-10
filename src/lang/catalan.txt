@@ -260,7 +260,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Poblaci�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nom
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Població
 STR_SORT_BY_NAME                                                :Nom
 STR_SORT_BY_PRODUCTION                                          :Producció
 STR_SORT_BY_TYPE                                                :Tipus
@@ -631,9 +630,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Index de Pista
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Esborra
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Desa
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Esborra el programa actual (només Opcional 1 o Opcional 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Desa els paràmetres de la música
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clica a la pista de música per afegir-la al programa actual (només Opcional 1 o Opcional 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clica a la pista de música per treure-la del programa actual (Custom1 o Custom2 només)
 
@@ -2400,7 +2397,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}No s'ha tr
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivat
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Versió incompatible amb aquesta versió de OpenTTD
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdueix els paràmetres NewGRF
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Canvia els paràmetres NewGRF
@@ -3213,7 +3209,6 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ves a l'hangar 
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
 STR_ORDER_SHARE                                                 :Comparteix ordres
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de control 'sense parada' i les ordres de cotxeres 'revisió'. 'Comparteix ordres' o Ctrl permet que aquest vehicle comparteixi ordres amb el vehicle seleccionat. Clicant un vehicle copia les ordres des d'aquest vehicle
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Insereix una ordre avançada
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 
@@ -3468,8 +3463,6 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No està
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Les autoritats locals de {TOWN} no permeten fer això
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} l'autoritat local denega el permís de construir un altre aeroport en aquesta població
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}L'autoritat local de {TOWN} rebutja donar el permís per a l'aeroport degut al soroll que causaria
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}El teu intent de suborn ha estat
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}descobert per un investigador regional
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Aquí no es pot elevar el terreny...
@@ -3543,7 +3536,6 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Massa es
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Hi ha massa parts d'estacions de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Massa parades d'autobús
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses estacions de càrrega
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Massa prop d'una altra estació de tren
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Massa prop d'una altra estació/àrea de càrrega
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport

@@ -190,7 +190,6 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Ҫыни
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ячӗ
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Кун
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Ҫынисем
 STR_SORT_BY_NAME                                                :Ячӗ
 STR_SORT_BY_PRODUCTION                                          :Тухӑҫлӑх
 STR_SORT_BY_TYPE                                                :Тип
@@ -386,7 +385,6 @@ STR_MUSIC_XTITLE                                                :{TINYFONT}{BLAC
 # Playlist window
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Тасат
-STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Упра
 
 # Highscore window
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
