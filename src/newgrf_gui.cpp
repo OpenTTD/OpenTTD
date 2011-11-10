@@ -1710,7 +1710,7 @@ static const NWidgetPart _nested_newgrf_actives_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
 			NWidget(WWT_PANEL, COLOUR_MAUVE),
 				NWidget(WWT_INSET, COLOUR_MAUVE, SNGRFS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
-						SetFill(1, 1), SetResize(1, 1), SetScrollbar(SNGRFS_SCROLLBAR),
+						SetFill(1, 1), SetResize(1, 1), SetScrollbar(SNGRFS_SCROLLBAR), SetDataTip(STR_NULL, STR_NEWGRF_SETTINGS_FILE_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLLBAR),

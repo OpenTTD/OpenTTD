@@ -831,7 +831,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_NAME), SetResize(1, 0), SetFill(1, 0),
 											SetDataTip(STR_CONTENT_NAME_CAPTION, STR_CONTENT_NAME_CAPTION_TOOLTIP),
 						EndContainer(),
-						NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NCLWW_MATRIX), SetResize(1, 14), SetFill(1, 1), SetScrollbar(NCLWW_SCROLLBAR),
+						NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NCLWW_MATRIX), SetResize(1, 14), SetFill(1, 1), SetScrollbar(NCLWW_SCROLLBAR), SetDataTip(STR_NULL, STR_CONTENT_MATRIX_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_VSCROLLBAR, COLOUR_LIGHT_BLUE, NCLWW_SCROLLBAR),
 				EndContainer(),
