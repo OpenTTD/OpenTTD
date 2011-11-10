@@ -3514,8 +3514,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Not allo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} local authority refuses to allow this
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} local authority refuses to allow another airport to be built in this town
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} local authority refuses permission for airport due to noise concerns
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Your attempted bribe has been
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}discovered by a regional investigator
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Your attempted bribe has been discovered by a regional investigator
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Can't raise land here...

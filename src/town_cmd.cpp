@@ -2618,7 +2618,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 
 			/* only show errormessage to the executing player. All errors are handled command.c
 			 * but this is special, because it can only 'fail' on a DC_EXEC */
-			if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, STR_ERROR_BRIBE_FAILED_2, WL_INFO);
+			if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, INVALID_STRING_ID, WL_INFO);
 
 			/* decrease by a lot!
 			 * ChangeTownRating is only for stuff in demolishing. Bribe failure should
