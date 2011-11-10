@@ -639,6 +639,7 @@ STR_MINIMAL                                                     :کم از کم
 
 
 
+
 STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
@@ -676,12 +677,14 @@ STR_SUBSIDY_X4                                                  :x4
 
 
 
+
 # Intro window
 
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
 
 
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
+
 
 
 
@@ -777,6 +780,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{
 
 
 # Rail construction toolbar
+
 
 
 # Rail depot construction window
@@ -892,8 +896,9 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK} نئی 
 
 
 
-
 # NewGRF parameters window
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE} معایِئنھ کیجیئے - {STRING}
@@ -931,6 +936,8 @@ STR_NEWGRF_INVALID_CARGO                                        :<غلط سام�
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<غلط سامان> کا {COMMA}
 STR_NEWGRF_INVALID_ENGINE                                       :<غلط انجن ماڈل>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<غلط صنعت>
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE} فھرستِ اشارھ - {COMMA} اشار{P ھ ے}
@@ -1117,6 +1124,8 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -1124,6 +1133,8 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 
 
 # String parts to build the order string
+
+
 
 
 
@@ -1174,6 +1185,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقف�
 # Saveload messages
 
 # Map generation messages
+
 
 
 
@@ -1253,7 +1265,7 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}سورن
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}پہلے سورنگ ختم کرئں
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}دوسری سورنگ بئچ مین ہے
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}سورنگ نقشے سے بائر نکل جاے گی
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}سورنگ کے دوسرے حصے کی طرف روکاوٹ ہے
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}سرنگ کے دوسرے حصے کی طرف روکاوٹ ہے
 
 # Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}کوئی عمارت یا چیذ راستے مین ہے

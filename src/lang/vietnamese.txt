@@ -2425,7 +2425,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Không tương thích với phiên bản OpenTTD này.
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay Đổi Tham Số NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Đóng
@@ -2434,6 +2433,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt t
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Số các thông số: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}
@@ -3762,9 +3763,9 @@ STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Không t
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Không thể gửi máy bay về xưởng...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Không thể mua tàu hỏa này...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Không thể mua xe này...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Không thể mua tàu này...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Không thể mua phi cơ này...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Không thể mua ôtô này...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Không thể mua tàu thủy này...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Không thể mua máy bay này...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Không thể đổi tên kiểu tàu hoả...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Không thể đổi tên kiểu ôtô...
@@ -3789,7 +3790,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... xe �
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Không thể để tàu hoả qua tín hiệu đèn khi nguy hiểm...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Không thể đổi hướng đoàn tàu...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Tàu hỏa không có năng lượng
+STR_ERROR_TRAIN_START_NO_POWER                                  :Tàu hỏa chưa có năng lượng
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Không thể làm xe quay lại được...
 
@@ -3861,7 +3862,7 @@ STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Trung tâm mua 
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Túp lều
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Lều vải
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Nhà ấm trà
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Nhà con heo đất
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Nhà băng heo đất
 
 ##id 0x4800
 # industry names
@@ -3891,13 +3892,13 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Tháp nước
 STR_INDUSTRY_NAME_FACTORY_2                                     :Nhà máy thực phẩm
 STR_INDUSTRY_NAME_FARM_2                                        :Nông trại
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Nhà máy chế biến gỗ
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Nhà máy chế biến kẹo bông
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Rừng kẹo bông
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Nhà máy sản xuất kẹo
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Nhà máy sản xuất pin
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Nhà máy đồ uống cola
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Nông trại pin
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Giếng cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Cửa hàng đồ chơi
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Nhà máy sản xuất đồ chơi
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Nhà máy chất dẻo
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Suối chất dẻo
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Nhà máy đồ uống có ga
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Nhà máy tạo bong bóng
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Mỏ kẹo bơ cứng
@@ -3923,7 +3924,7 @@ STR_SV_STNAME_TRANSFER                                          :Trung chuyển 
 STR_SV_STNAME_HALT                                              :{STRING} phụ
 STR_SV_STNAME_VALLEY                                            :Thung lũng {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Cao nguyên {STRING}
-STR_SV_STNAME_WOODS                                             :Hàng hoá {STRING}
+STR_SV_STNAME_WOODS                                             :Rừng {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Bờ hồ {STRING}
 STR_SV_STNAME_EXCHANGE                                          :Trung chuyển {STRING}
 STR_SV_STNAME_AIRPORT                                           :Sân bay {STRING}

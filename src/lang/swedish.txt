@@ -1921,6 +1921,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertera/Uppgradera spårtyp. Shift växlar mellan att bygga/visa beräknad kostnad
 
+STR_RAIL_NAME_RAILROAD                                          :Järnväg
+STR_RAIL_NAME_ELRAIL                                            :Elektrifierad järnväg
+STR_RAIL_NAME_MONORAIL                                          :Monorail
+STR_RAIL_NAME_MAGLEV                                            :Maglev
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Riktning för depå
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Välj riktning för depå
@@ -2191,6 +2196,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fält
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snötäckt land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Öken
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} järnvägsspår
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} järnvägsspår med normal signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} järnvägsspår med försignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} järnvägsspår med utfartssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} järnvägsspår med kombinationssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} järnvägsspår med avancerad signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} järnvägsspår med avancerad envägssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} järnvägsspår med normal signal och försignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} järnvägsspår med normal signal och utfartssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} järnvägsspår med normal signal och kombinationssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} järnvägsspår med normal signal och avancerad signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} järnvägsspår med normal signal och avancerad envägssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} järnvägsspår med för- och utfartssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} järnvägsspår med för- och kombinationssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} järnvägsspår med försignal och avancerad signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} järnvägsspår med försignal och envägs avancerad signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} järnvägsspår med utfarts- och kombinationssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} järnvägsspår med utfartssignal och avancerad signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} järnvägsspår med utfartssignal och avancerad envägssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} järnvägsspår med kombinationssignal och avancerad signal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} järnvägsspår med kombinationssignal och avancerad envägssignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} järnvägsspår med avancerad signal och avancerad envägssignal
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} järvägsdepå
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Väg
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Väg med gatubelysning
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Väg med träd
@@ -2396,7 +2425,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchande 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Avstängd
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ej kompatibel med den här versionen av OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ändra NewGRF parametrar
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Stäng
@@ -2405,6 +2433,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Återst�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrar: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}
@@ -2487,6 +2517,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att utomatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en ändlös loop i en produktions-callback-funktion
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktion 0x{HEX} returnerade ett okänt/ogiltligt resultat 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
@@ -3162,6 +3193,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändra a
 
 STR_ORDER_REFIT                                                 :{BLACK}Anpassa
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. Ctrl-klick för att ta bort anpassningsordern
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-anpassning
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Välj vilket lasttyp att auto-anpassa till i den här ordern. Ctrl+klicka för att ta bort anpassningsinstruktionen. Auto-anpassning kommer enbart att utföras om fordonet tillåter det
+STR_ORDER_DROP_REFIT_AUTO                                       :Fast lasttyp
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tillgängliga lasttyper
 
 STR_ORDER_SERVICE                                               :{BLACK}Service
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Åk alltid
@@ -3249,6 +3284,21 @@ STR_ORDER_NO_UNLOAD                                             :(Lasta ej av me
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Lasta ej av men vänta på full last)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Lasta ej av men vänta på full last av någon godstyp)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Lasta ej av och lasta ej)
+
+STR_ORDER_AUTO_REFIT                                            :(Auto-anpassa till {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Vänta på full last och auto-anpassa till {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Vänta på full last av någon godstyp och auto-anpassa till {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Lasta av och på gods. Auto-anpassa till {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Lasta av och vänta på full last. Auto-anpassa till {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Lasta av och vänta på full last av någon godstyp. Auto-anpassa till {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Överför och lasta gods. Auto-anpassa till {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Överför och vänta på full last. Auto-anpassa till {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Överför och vänta på full last av någon godstyp. Auto-anpassa till {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Lasta ej av men lasta på och auto-anpassa till {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Lasta ej av men vänta på full last och auto-anpassa till {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Lasta ej av men vänta på full last av någon godstyp och auto-anpassa till {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :tillgänglig last
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[början]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[mitten]
