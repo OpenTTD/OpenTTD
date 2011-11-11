@@ -11,7 +11,7 @@
 
 #include "../core/endian_type.hpp"
 
-#define M(r, g, b) { 0xff << 24 | (r) << 16 | (g) << 8 | (b) }
+#define M(r, g, b) { 0xFF000000U | (r) << 16 | (g) << 8 | (b) }
 
 /** Colour palette (DOS) */
 static const Colour _palette[256] = {
