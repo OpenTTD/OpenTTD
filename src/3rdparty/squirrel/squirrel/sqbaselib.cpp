@@ -1,6 +1,9 @@
 /*
 	see copyright notice in squirrel.h
 */
+/* Needs to be first due to a squirrel header defining type() and type()
+ * being used in some versions of the headers included by algorithm. */
+#include <algorithm>
 #include "sqpcheader.h"
 #include "sqvm.h"
 #include "sqstring.h"
@@ -12,7 +15,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <ctype.h>
-#include <algorithm>
 
 bool str2num(const SQChar *s,SQObjectPtr &res)
 {
