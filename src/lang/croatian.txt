@@ -2017,6 +2017,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi 
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge, signala, čvorišta i postaja. Držanjem tipke Ctrl također se uklanjaju tračnice na čvorištima i postajama.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadogradi vrstu pruge. Shift mijenja prikaz građenje/procjena troškova.
 
+STR_RAIL_NAME_RAILROAD                                          :Pruga
+STR_RAIL_NAME_ELRAIL                                            :Elektrificirana pruga
+STR_RAIL_NAME_MONORAIL                                          :Pruga s jednim kolosijekom
+STR_RAIL_NAME_MAGLEV                                            :Maglev
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Smjer spremišta vlakova
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Odaberi smjer željezničkog spremišta
@@ -2287,6 +2292,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zemlja pokrivena snijegom
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustinja
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} pruga
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} pruga sa blok-signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} pruga sa pred-signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} pruga sa izlaznim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} pruga sa kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} pruga sa putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} pruga sa jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} pruga sa blok-signalima i pred-signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} pruga sa blok-signalima i izlaznim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} pruga sa blok-signalima i kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} pruga sa blok-signalima i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} pruga sa blok-signalima i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} pruga sa pred-signalima i izlaznim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} pruga sa pred-signalima i kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} pruga sa pred-signalima i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} pruga sa pred-signalima i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} pruga sa izlaznim i kombiniranim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} pruga sa izlaznim i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} pruga sa izlaznim i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} pruga sa kombiniranim i putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} pruga sa kombiniranim i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} pruga sa putnim i jednosmjernim putnim signalima
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depo vlaka
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta s javnom rasvjetom
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Cesta s tri trake
@@ -2469,7 +2498,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Pomakni 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomakni odabranu NewGRF datoteku gore na listi
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK} Pomakni dolje
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomakni odabranu NewGRF datoteku dolje na listi
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Popis instaliranih NewGRF datoteka. Kliknite na datoteku da bi promijenili njene parametre
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Popis instaliranih NewGRF datoteka.
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Pogledaj "pročitaj me" datoteku
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Aktiviraj paletu
@@ -2492,7 +2522,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nije prona
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogućeno
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nije kompatibilno sa ovom verzijom OpenTTD-a
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promijeni NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvori
@@ -2501,6 +2530,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Namjesti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Broj parametara: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF "pročitaj me" datoteka od {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Pregledaj - {STRING}
@@ -2583,6 +2615,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak'{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' daje netočne informacije
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o teretu/remontu za '{1:ENGINE}' je različita od kupovne liste nakon izgradnje. Zbog toga bi automatsko obnavljanje/zamjena mogla biti neuspješna
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{G=male}{WHITE}'{1:STRING}' je uzrokovao beskonačnu petlju u pozivu za povrat produkcije
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Povratnica 0x{HEX} je vratio nepoznat/nemoguć rezultat 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<pogrešan teret>
@@ -3258,6 +3291,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Promijen
 
 STR_ORDER_REFIT                                                 :{BLACK}Prenamijeni
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Odaberi vrstu tereta za prenamijenu u ovoj naredbi. Ctrl+klik kako bi uklonio naputak za prenamjenu
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-remont
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Odaberi za koji tip tereta odraditi auto-remont. Ctrl+Click za micanje remontnih uputa. Auto-remont će se odraditi samo ako ga vozilo dopušta.
+STR_ORDER_DROP_REFIT_AUTO                                       :Popravljen teret
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupni teret
 
 STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Idi neprekidno
@@ -3345,6 +3382,21 @@ STR_ORDER_NO_UNLOAD                                             :(Preuzmi teret 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Čekaj puni ukrcaj bez iskrcavanja)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Čekaj bilo koji puni ukrcaj bez iskrcavanja)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Bez iskrcaja i bez ukrcaja)
+
+STR_ORDER_AUTO_REFIT                                            :(Auto-remont u {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Puni teret sa auto-remontom u {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Bilo koji puni teret sa auto-remontom u {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Iskrcaj i preuzimanje tereta sa auto-remontom u {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Iskrcaj i čekanje punog tereta sa auto-remontom u {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Iskrcaj i čekanje bilo kojeg punog tereta sa auto-remontom u {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transfer i preuzimanje tereta sa auto-remontom u {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfer i čekanje punog tereta sa auto-remontom u {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfer i čekanje bilo kojeg punog tereta sa auto-remontom u {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Bez iskrcaja i preuzimanje tereta sa auto-remontom u {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Bez iskrcaja i čekanje punog tereta sa auto-remontom u {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Bez iskrcaja i čekanje bilo kojeg punog tereta sa auto-remontom u {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :dostupan teret
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[početak]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
@@ -3558,6 +3610,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nije doz
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} lokalna samouprava odbija to dopustiti
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalna samouprava grada {TOWN}a odbija dopustiti izgradnju još jedne zračne luke u ovom gradu
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} ne dopušta izgradnju zračne luke zbog brige o buci
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Vaš pokušaj podmićivanja je primijetio regionalni istražitelj
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Ovdje nije moguće povisiti zemlju...

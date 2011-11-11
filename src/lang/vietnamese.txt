@@ -2403,6 +2403,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Dịch N
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Chuyển xuống
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Chuyển NewGRF file xuống dưới
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Danh sách NewGRF file đã cài đặt. Chọn một file để thay đổi tham số
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Xem readme
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Đặt tham số
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Đổi bảng màu
@@ -2435,6 +2436,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Số các thông số: {ORANGE}{NUM}
 
 # NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}Readme của NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}
@@ -3512,6 +3514,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Không c
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Chính quyền {TOWN} từ chối bạn làm việc này
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Chính quyền {TOWN} từ chối có thêm một sân bay nữa trong địa phận của họ
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Chính quyền {TOWN} từ chối sân bay vì dân chúng phàn nàn là quá ồn ào
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sự cố gắng trong việc hối lộ của bạn đã bị phát hiện bởi các nhà điều tra
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Không thể nâng đất ở đây...

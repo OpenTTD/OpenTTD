@@ -206,7 +206,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK} کلک 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK} ونڈو کا بڑا یا چھوٹا پیمانا چنیئے
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھرستی پٹی - فھرست کو اوپر نیچے کرنے کے لیے
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھرستی پٹی - فھرست کو دایئں بایئں کرنے کے لیے
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گرائیں. Ctrl ترچھے انداز میں علاقے کا انتخاب کرتا ہے. عمارتیں یا انکی لاگت تخمینہ دیکھنے کے لئے Shift کا استعمال کیجیے.
 
 # Query window
 STR_BUTTON_CANCEL                                               :{BLACK} ترک کیجیئے

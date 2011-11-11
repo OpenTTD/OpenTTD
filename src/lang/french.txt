@@ -1922,6 +1922,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Basculer construire/retirer pour les voies, les signaux, les points de contrôle et les stations. Maintenir Ctrl pour retirer également la voie lors du retrait des points de contrôle et des stations
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Améliorer le type de rail. Shift pour basculer entre construire et afficher le coût estimé
 
+STR_RAIL_NAME_RAILROAD                                          :Voie normale
+STR_RAIL_NAME_ELRAIL                                            :Voie Electrifiée
+STR_RAIL_NAME_MONORAIL                                          :Mono-rail
+STR_RAIL_NAME_MAGLEV                                            :Maglev
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientation du dépôt
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Choisir l'orientation du dépôt ferroviaire
@@ -2192,6 +2197,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Champs
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terre enneigée
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Désert
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} voie
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} voie avec signal de bloc
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} voie avec pré-signaux
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} voie avec signaux de sortie
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} voie avec signaux combinés
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} voie avec signaux de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} voie avec signaux de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} voie avec signal de bloc et pré-signaux
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} voie avec signal de bloc et signaux de sortie
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} voie avec signal de bloc et signaux combinés
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} voie avec signaux de bloc et de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} voie avec signaux de bloc et de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} voie avec pré-signal et signal de sortie
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} voie avec pré-signal et signal combiné
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} voie avec pré-signal et signal de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} voie avec pré-signal et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} voie avec signal de sortie et signal combiné
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} voie avec signal de sortie et signal de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} voie avec signal de sortie et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} voie avec signal combiné et signal de chemin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} voie avec signal combiné et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} voie avec signal de chemin et signal de chemin à sens unique
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dépôt de train de {STRING}
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Route
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Route avec lampadaires
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Route avec lignée d'arbustes
@@ -2375,6 +2404,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter l
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le fichier NewGRF sélectionné dans la liste
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des fichiers NewGRF installés. Cliquer sur un fichier pour modifier ses paramètres
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Voir le Lisez Moi
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Basculer palette
@@ -2397,7 +2427,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichier co
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Désactivé
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible avec cette version d'OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Modifier les paramètres NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fermer
@@ -2406,6 +2435,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Régler 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramètre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}{NBSP}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombre de paramètres{NBSP}: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF Lisez-moi pour {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspection - {STRING}
@@ -2488,6 +2520,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train
 STR_NEWGRF_BUGGY                                                :{WHITE}Le NewGRF '{0:STRING}' fournit une information incorrecte
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}L'information de cargaison/réaménagement pour '{1:ENGINE}' après sa construction est différent de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a causé une boucle infinie dans la fonction de rappel de production
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback 0x{HEX} a retourné un résultat invalide 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<marchandise invalide>
@@ -3482,6 +3515,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non auto
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}La municipalité de {TOWN} refuse cette opération
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}La municipalité de {TOWN} refuse la construction d'un autre aéroport dans la ville
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}La municipalité de {TOWN} refuse la permission pour cet aéroport, en raison de nuisances sonores
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Votre tentative de corruption a été découverte par bribe par un enquêteur
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossible d'élever le terrain ici...

@@ -2586,7 +2586,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Ввер
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Переместить выбранный файл NewGRF выше
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Вниз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Переместить выбранный файл NewGRF ниже
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список установленных файлов NewGRF. Выберите файл для просмотра информации о нём
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список установленных файлов NewGRF.
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Посмотреть инструкцию
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключить палитру
@@ -2609,7 +2610,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл �
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Отключено
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несовместимо с данной версией OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Изменить параметры NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыть
@@ -2618,6 +2618,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Сбро
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Количество параметров: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}Инструкция к NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Просмотр - {STRING}
@@ -3705,6 +3708,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Запр
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}... администрация города {TOWN} запрещает вам это делать
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Администрация г.{NBSP}{TOWN} запрещает постройку ещё одного аэропорта в городе
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Администрация г.{NBSP}{TOWN} не разрешает строительство аэропорта из-за высокого уровня шума.
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша попытка дать взятку была раскрыта местным следователем
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Здесь невозможно повысить уровень земли...

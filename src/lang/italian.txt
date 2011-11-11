@@ -2430,7 +2430,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Sposta s
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Sposta il file NewGRF selezionato più in alto nell'elenco
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Sposta giù
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Sposta il file NewGRF selezionato più in basso nell'elenco
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Elenco dei file NewGRF installati. Fare clic su un file per cambiarne i parametri
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Elenco dei file NewGRF installati.
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Visualizza file leggimi
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Imposta parametri
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alterna tavolozze
@@ -2453,7 +2454,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File corri
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabilitato
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatibile con questa versione di OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambia parametri NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Chiudi
@@ -2462,6 +2462,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Imposta 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Numero di parametri: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}File leggimi NewGRF di {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Ispeziona - {STRING}
@@ -3539,6 +3542,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non cons
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}L'autorità locale di {TOWN} non lo autorizza
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}L'autorità locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}L'autorità locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Il tentativo di corruzione è stato scoperto da un'ispettore regionale
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossibile alzare il terreno qui...

@@ -2402,7 +2402,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naar bov
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar boven in de lijst
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar beneden
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden in de lijst
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd. Klik op een bestand om de parameters te wijzigen
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd.
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Bekijk leesme
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet omzetten
@@ -2425,7 +2426,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Bestand ni
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Uitgeschakeld
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Niet compatibel met deze versie van OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parameters wijzigen
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sluiten
@@ -2434,6 +2434,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Zet alle
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Aantal parameters: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF leesme van {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecteer - {STRING}
@@ -3511,6 +3514,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De gemeenteraad van {TOWN} staat bouwen van nog een vliegveld niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokale autoriteiten weigeren toestemming te geven voor vliegveld wegens zorgen om geluidsoverlast
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Je omkopingspoging is ontdekt door een regionale controleur
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan land hier niet ophogen...

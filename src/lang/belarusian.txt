@@ -1715,7 +1715,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Прав
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Паказаць наладкi ШI/АІ
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
 
-STR_INTRO_TRANSLATION                                           :{BLACK}На гэту мову не перакладзен{P 0 ы ы а} {NUM} рад{P ок кі оў}. Вы можаце дапамагчы праекту, зарэгістраваўшыся як перакладнік. Інструкцыі ў файле readme.txt.
+STR_INTRO_TRANSLATION                                           :{BLACK}На гэту мову не перакладзен{P 0 ы ы а} {NUM} рад{P ок кі коў}. Вы можаце дапамагчы праекту, калi зарэгіструецеся як перакладнік. Інструкцыі ў файле readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Выхад

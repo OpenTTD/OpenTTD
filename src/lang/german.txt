@@ -2218,7 +2218,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING}: Schie
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING}: Schienen mit Ausfahrt- und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING}: Schienen mit Kombinations- und Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING}: Schienen mit Kombinations- und einseitigem Pfadsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} Schienen mit Pfad- und einseitigem Pfadsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING}: Schienen mit Pfad- und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING}: Zugdepot
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Straße
