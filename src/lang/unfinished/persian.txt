@@ -1921,6 +1921,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK} ساخ�
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}تغییر بین حذف یا ساخت چراغ راهنمایی و ریل
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}تغییر/به روز رسانی نوع ریل. گرفتن دکمه شیفت برآورد هزینه را نمایش می دهد
 
+STR_RAIL_NAME_RAILROAD                                          :راه‌آهن
+STR_RAIL_NAME_ELRAIL                                            :راه‌آهن برقی
+STR_RAIL_NAME_MONORAIL                                          :تک ریل
+STR_RAIL_NAME_MAGLEV                                            :ماگلِو
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}جهت گاراژ قطار
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}جهت گاراژ قطار را انتخاب نمایید
@@ -2191,6 +2196,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :زمین ها
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :زمین پوشیده از برف
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :صحرا
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} ریل
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} ریل با نشانگر توقف
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} ریل با پیش نشانگر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} ریل با نشانگر خروج
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} ریل با نشانگر چندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} ریل با نشانگر مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} ریل با نشانگر مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} ریل با نشانگرهای توقف و پیش نشانگر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} ریل با نشانگرهای توقف و خروج
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} ریل با نشانگرهای توقف و چندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} ریل با نشانگرهای توقف و مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} ریل با نشانگرهای توقف و مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} ریل با پیش نشانگر و نشانگرخروج
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} ریل با پیش نشانگر و نشانگرچندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} ریل با پیش نشانگر و نشانگز مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} ریل با پیش نشانگر و نشانگر مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} ریل با نشانگرهای خروج و چندگانه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} ریل با نشانگرهای خروج و مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} ریل با نشانگرهای خروج و مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} ریل با نشانگرهای چندگانه و مسیر
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} ریل با نشانگرهای چندگانه و مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} ریل با نشانگرهای مسیر و مسیر یکطرفه
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} گاراژ قطار
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :جاده
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :جاده با چراغ راهنمایی رانندگی
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :جاده 3 لاین
@@ -2374,6 +2403,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF �
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}حرکت به پایین
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF انتخاب شده را به پایین می فرستد
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}لیست فایل های NewGRF نصب شده. روی فایل کلیک کنید تا پارامترها را بتوانید تغییر بدهید
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}مشاهده راهنما
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ثبت پارامترها
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}تغییر پالت
@@ -2396,7 +2426,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}فایل �
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}غیرفعال
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}با این ورژن از OpenTTD همخوانی ندارد
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}تغییر پارامترهای NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}بسته
@@ -2405,6 +2434,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ثبت �
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :پارامتر{NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}تعداد پارامتر: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}راهنمای NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}رسیدگی - {STRING}
@@ -2487,6 +2519,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}قطار
 STR_NEWGRF_BUGGY                                                :{WHITE}فایل NewGRF '{0:STRING}' اطلاعات اشتباه داده است
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}تغییر کاربری بار '{1:ENGINE}' متفاوت از آنچه که در لیست قروش ارائه کرده بود. این خطا ممکن است در نوسازی خودکار و با در هنگام تغییر کاربری مشکل ساز گردد
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' در روند طراحی سبب حلقه بی پایان گردیده
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}بازگشت تابع 0x{HEX} نتیجه ناشناخته/نامعتبر بازگردانده است 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :«بار نامعتبر»
@@ -2937,6 +2970,9 @@ STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}وارد
 STR_ORDER_IMPLICIT                                              :(ضمنی)
 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(نه بارگیری و نه بارگذاری)
+
+
+STR_ORDER_AUTO_REFIT_ANY                                        :بار موجود
 
 
 

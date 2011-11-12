@@ -3542,7 +3542,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non cons
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}L'autorità locale di {TOWN} non lo autorizza
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}L'autorità locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}L'autorità locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Il tentativo di corruzione è stato scoperto da un'ispettore regionale
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Il tentativo di corruzione è stato scoperto da un ispettore regionale
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossibile alzare il terreno qui...

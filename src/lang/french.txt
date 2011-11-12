@@ -3515,7 +3515,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non auto
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}La municipalité de {TOWN} refuse cette opération
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}La municipalité de {TOWN} refuse la construction d'un autre aéroport dans la ville
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}La municipalité de {TOWN} refuse la permission pour cet aéroport, en raison de nuisances sonores
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Votre tentative de corruption a été découverte par bribe par un enquêteur
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Votre tentative de corruption a été découverte par un enquêteur
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossible d'élever le terrain ici...
