@@ -275,7 +275,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	f = fopen(name, "wb");
 	if (f == NULL) return false;
 
-	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, (void *)name, png_my_error, png_my_warning);
+	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, const_cast<char *>(name), png_my_error, png_my_warning);
 
 	if (png_ptr == NULL) {
 		fclose(f);

@@ -514,7 +514,7 @@ static inline bool IsNumericType(VarType conv)
  */
 static inline void *GetVariableAddress(const void *object, const SaveLoad *sld)
 {
-	return (byte*)(sld->global ? NULL : object) + (ptrdiff_t)sld->address;
+	return const_cast<byte *>((const byte*)(sld->global ? NULL : object) + (ptrdiff_t)sld->address);
 }
 
 int64 ReadValue(const void *ptr, VarType conv);

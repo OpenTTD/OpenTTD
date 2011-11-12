@@ -511,7 +511,7 @@ static const uint AISAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for it
 			if (!test) {
 				_ai_sl_byte = (byte)len;
 				SlObject(NULL, _ai_byte);
-				SlArray((void*)buf, len, SLE_CHAR);
+				SlArray(const_cast<char *>(buf), len, SLE_CHAR);
 			}
 			return true;
 		}
