@@ -281,7 +281,8 @@ protected:
 	/** Sort servers by name. */
 	static int CDECL NGameNameSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
-		return strnatcmp((*a)->info.server_name, (*b)->info.server_name); // Sort by name (natural sorting).
+		int r = strnatcmp((*a)->info.server_name, (*b)->info.server_name); // Sort by name (natural sorting).
+		return r == 0 ? (*a)->address.CompareTo((*b)->address) : r;
 	}
 
 	/**
