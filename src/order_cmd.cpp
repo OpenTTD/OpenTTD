@@ -41,6 +41,19 @@ INSTANTIATE_POOL_METHODS(Order)
 OrderListPool _orderlist_pool("OrderList");
 INSTANTIATE_POOL_METHODS(OrderList)
 
+/** Clean everything up. */
+Order::~Order()
+{
+	if (CleaningPool()) return;
+
+	/* We can visit oil rigs and buoys that are not our own. They will be shown in
+	 * the list of stations. So, we need to invalidate that window if needed. */
+	if (this->IsType(OT_GOTO_STATION) || this->IsType(OT_GOTO_WAYPOINT)) {
+		BaseStation *bs = BaseStation::GetIfValid(this->GetDestination());
+		if (bs != NULL && bs->owner == OWNER_NONE) InvalidateWindowClassesData(WC_STATION_LIST, 0);
+	}
+}
+
 /**
  * 'Free' the order
  * @note ONLY use on "current_order" vehicle orders!
@@ -367,6 +380,14 @@ void OrderList::InsertOrderAt(Order *new_order, int index)
 	++this->num_orders;
 	if (!new_order->IsType(OT_IMPLICIT)) ++this->num_manual_orders;
 	this->timetable_duration += new_order->wait_time + new_order->travel_time;
+
+	/* We can visit oil rigs and buoys that are not our own. They will be shown in
+	 * the list of stations. So, we need to invalidate that window if needed. */
+	if (new_order->IsType(OT_GOTO_STATION) || new_order->IsType(OT_GOTO_WAYPOINT)) {
+		BaseStation *bs = BaseStation::Get(new_order->GetDestination());
+		if (bs->owner == OWNER_NONE) InvalidateWindowClassesData(WC_STATION_LIST, 0);
+	}
+
 }
 
 

@@ -51,7 +51,7 @@ public:
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
 
 	Order() : refit_cargo(CT_NO_REFIT) {}
-	~Order() {}
+	~Order();
 
 	Order(uint32 packed);
 
