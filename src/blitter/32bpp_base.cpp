@@ -12,7 +12,7 @@
 #include "../stdafx.h"
 #include "32bpp_base.hpp"
 
-void *Blitter_32bppBase::MoveTo(const void *video, int x, int y)
+void *Blitter_32bppBase::MoveTo(void *video, int x, int y)
 {
 	return (uint32 *)video + x + y * _screen.pitch;
 }
@@ -39,7 +39,7 @@ void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8 colou
 void Blitter_32bppBase::CopyFromBuffer(void *video, const void *src, int width, int height)
 {
 	uint32 *dst = (uint32 *)video;
-	uint32 *usrc = (uint32 *)src;
+	const uint32 *usrc = (const uint32 *)src;
 
 	for (; height > 0; height--) {
 		memcpy(dst, usrc, width * sizeof(uint32));
@@ -51,7 +51,7 @@ void Blitter_32bppBase::CopyFromBuffer(void *video, const void *src, int width, 
 void Blitter_32bppBase::CopyToBuffer(const void *video, void *dst, int width, int height)
 {
 	uint32 *udst = (uint32 *)dst;
-	uint32 *src = (uint32 *)video;
+	const uint32 *src = (const uint32 *)video;
 
 	for (; height > 0; height--) {
 		memcpy(udst, src, width * sizeof(uint32));
@@ -63,7 +63,7 @@ void Blitter_32bppBase::CopyToBuffer(const void *video, void *dst, int width, in
 void Blitter_32bppBase::CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch)
 {
 	uint32 *udst = (uint32 *)dst;
-	uint32 *src = (uint32 *)video;
+	const uint32 *src = (const uint32 *)video;
 
 	for (; height > 0; height--) {
 		memcpy(udst, src, width * sizeof(uint32));

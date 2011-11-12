@@ -87,7 +87,7 @@ public:
 	 * @param y How much you want to scroll to the bottom.
 	 * @return A new destination pointer moved the the requested place.
 	 */
-	virtual void *MoveTo(const void *video, int x, int y) = 0;
+	virtual void *MoveTo(void *video, int x, int y) = 0;
 
 	/**
 	 * Draw a pixel with a given colour on the video-buffer.

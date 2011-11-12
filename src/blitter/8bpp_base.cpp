@@ -23,7 +23,7 @@ void Blitter_8bppBase::DrawColourMappingRect(void *dst, int width, int height, P
 	} while (--height);
 }
 
-void *Blitter_8bppBase::MoveTo(const void *video, int x, int y)
+void *Blitter_8bppBase::MoveTo(void *video, int x, int y)
 {
 	return (uint8 *)video + x + y * _screen.pitch;
 }
@@ -44,7 +44,7 @@ void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8 colour
 void Blitter_8bppBase::CopyFromBuffer(void *video, const void *src, int width, int height)
 {
 	uint8 *dst = (uint8 *)video;
-	uint8 *usrc = (uint8 *)src;
+	const uint8 *usrc = (const uint8 *)src;
 
 	for (; height > 0; height--) {
 		memcpy(dst, usrc, width * sizeof(uint8));
@@ -56,7 +56,7 @@ void Blitter_8bppBase::CopyFromBuffer(void *video, const void *src, int width, i
 void Blitter_8bppBase::CopyToBuffer(const void *video, void *dst, int width, int height)
 {
 	uint8 *udst = (uint8 *)dst;
-	uint8 *src = (uint8 *)video;
+	const uint8 *src = (const uint8 *)video;
 
 	for (; height > 0; height--) {
 		memcpy(udst, src, width * sizeof(uint8));
@@ -68,7 +68,7 @@ void Blitter_8bppBase::CopyToBuffer(const void *video, void *dst, int width, int
 void Blitter_8bppBase::CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch)
 {
 	uint8 *udst = (uint8 *)dst;
-	uint8 *src = (uint8 *)video;
+	const uint8 *src = (const uint8 *)video;
 
 	for (; height > 0; height--) {
 		memcpy(udst, src, width * sizeof(uint8));

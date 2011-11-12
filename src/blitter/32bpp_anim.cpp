@@ -44,7 +44,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		const Colour *src_px_ln = (const Colour *)((const byte *)src_px + *(const uint32 *)src_px);
 		src_px++;
 
-		const uint8 *src_n_ln = src_n + *(uint32 *)src_n;
+		const uint8 *src_n_ln = src_n + *(const uint32 *)src_n;
 		src_n += 4;
 
 		uint32 *dst_end = dst + bp->skip_left;
@@ -296,7 +296,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 	assert(!_screen_disable_anim);
 	assert(video >= _screen.dst_ptr && video <= (uint32 *)_screen.dst_ptr + _screen.width + _screen.height * _screen.pitch);
 	uint32 *dst = (uint32 *)video;
-	uint32 *usrc = (uint32 *)src;
+	const uint32 *usrc = (const uint32 *)src;
 	uint8 *anim_line = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
 
 	for (; height > 0; height--) {
@@ -309,7 +309,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 		dst += _screen.pitch;
 		/* Copy back the anim-buffer */
 		memcpy(anim_line, usrc, width * sizeof(uint8));
-		usrc = (uint32 *)((uint8 *)usrc + width);
+		usrc = (const uint32 *)((const uint8 *)usrc + width);
 		anim_line += this->anim_buf_width;
 
 		/* Okay, it is *very* likely that the image we stored is using
@@ -336,12 +336,12 @@ void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 	assert(!_screen_disable_anim);
 	assert(video >= _screen.dst_ptr && video <= (uint32 *)_screen.dst_ptr + _screen.width + _screen.height * _screen.pitch);
 	uint32 *udst = (uint32 *)dst;
-	uint32 *src = (uint32 *)video;
-	uint8 *anim_line;
+	const uint32 *src = (const uint32 *)video;
+	const uint8 *anim_line;
 
 	if (this->anim_buf == NULL) return;
 
-	anim_line = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
+	anim_line = ((const uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
 
 	for (; height > 0; height--) {
 		memcpy(udst, src, width * sizeof(uint32));

@@ -459,7 +459,7 @@ bool SQVM::DerefInc(SQInteger op,SQObjectPtr &target, SQObjectPtr &self, SQObjec
 #define sarg1 (*(const_cast<SQInt32 *>(&_i_._arg1)))
 #define arg2 (_i_._arg2)
 #define arg3 (_i_._arg3)
-#define sarg3 ((SQInteger)*((signed char *)&_i_._arg3))
+#define sarg3 ((SQInteger)*((const signed char *)&_i_._arg3))
 
 SQRESULT SQVM::Suspend()
 {
@@ -742,7 +742,7 @@ exception_restore:
 				continue;
 			case _OP_LOAD: TARGET = ci->_literals[arg1]; continue;
 			case _OP_LOADINT: TARGET = (SQInteger)arg1; continue;
-			case _OP_LOADFLOAT: TARGET = *((SQFloat *)&arg1); continue;
+			case _OP_LOADFLOAT: TARGET = *((const SQFloat *)&arg1); continue;
 			case _OP_DLOAD: TARGET = ci->_literals[arg1]; STK(arg2) = ci->_literals[arg3];continue;
 			case _OP_TAILCALL:
 				temp_reg = STK(arg1);
@@ -1434,7 +1434,7 @@ bool SQVM::DeleteSlot(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPtr
 					_table(self)->Remove(key);
 				}
 				else {
-					Raise_IdxError((SQObject &)key);
+					Raise_IdxError((const SQObject &)key);
 					return false;
 				}
 			}
