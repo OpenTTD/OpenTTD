@@ -298,9 +298,9 @@ class NIHIndustry : public NIHelper {
 	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetIndustryResolver(ResolverObject *ro, uint index); GetIndustryResolver(ro, index); }
 	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(PersistentStorage, storage); }
 
-	int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
+	const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
 	{
-		Industry *i = (Industry *)this->GetInstance(index);
+		const Industry *i = (const Industry *)this->GetInstance(index);
 		if (i->psa == NULL) return NULL;
 		return (int32 *)(&i->psa->storage);
 	}
@@ -446,7 +446,7 @@ class NIHTown : public NIHelper {
 	bool PSAWithParameter() const                        { return true; }
 	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(PersistentStorage, storage); }
 
-	int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
+	const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
 	{
 		Town *t = Town::Get(index);
 

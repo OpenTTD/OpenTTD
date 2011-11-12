@@ -248,17 +248,17 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 static void MakeIntList(char *buf, const char *last, const void *array, int nelems, VarType type)
 {
 	int i, v = 0;
-	byte *p = (byte*)array;
+	const byte *p = (const byte *)array;
 
 	for (i = 0; i != nelems; i++) {
 		switch (type) {
 		case SLE_VAR_BL:
-		case SLE_VAR_I8:  v = *(int8*)p;   p += 1; break;
-		case SLE_VAR_U8:  v = *(byte*)p;   p += 1; break;
-		case SLE_VAR_I16: v = *(int16*)p;  p += 2; break;
-		case SLE_VAR_U16: v = *(uint16*)p; p += 2; break;
-		case SLE_VAR_I32: v = *(int32*)p;  p += 4; break;
-		case SLE_VAR_U32: v = *(uint32*)p; p += 4; break;
+		case SLE_VAR_I8:  v = *(const   int8 *)p; p += 1; break;
+		case SLE_VAR_U8:  v = *(const  uint8 *)p; p += 1; break;
+		case SLE_VAR_I16: v = *(const  int16 *)p; p += 2; break;
+		case SLE_VAR_U16: v = *(const uint16 *)p; p += 2; break;
+		case SLE_VAR_I32: v = *(const  int32 *)p; p += 4; break;
+		case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
 		default: NOT_REACHED();
 		}
 		buf += seprintf(buf, last, (i == 0) ? "%d" : ",%d", v);
@@ -493,7 +493,7 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 					free(*(char**)ptr);
 					*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
 					break;
-				case SLE_VAR_CHAR: if (p != NULL) *(char*)ptr = *(char*)p; break;
+				case SLE_VAR_CHAR: if (p != NULL) *(char *)ptr = *(const char *)p; break;
 				default: NOT_REACHED();
 			}
 			break;
@@ -1947,10 +1947,10 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 
 	if (sd->desc.cmd == SDT_STRING) {
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char **)ptr : (const char *)ptr);
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
 	} else {
 		if (sd->desc.cmd == SDT_BOOLX) {
-			snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
+			snprintf(value, sizeof(value), (*(const bool*)ptr != 0) ? "on" : "off");
 		} else {
 			snprintf(value, sizeof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
@@ -1976,9 +1976,9 @@ void IConsoleListSettings(const char *prefilter)
 		const void *ptr = GetVariableAddress(&GetGameSettings(), &sd->save);
 
 		if (sd->desc.cmd == SDT_BOOLX) {
-			snprintf(value, lengthof(value), (*(bool*)ptr == 1) ? "on" : "off");
+			snprintf(value, lengthof(value), (*(const bool *)ptr != 0) ? "on" : "off");
 		} else if (sd->desc.cmd == SDT_STRING) {
-			snprintf(value, sizeof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char **)ptr : (const char *)ptr);
+			snprintf(value, sizeof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
 		} else {
 			snprintf(value, lengthof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}

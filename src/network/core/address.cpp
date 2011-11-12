@@ -39,10 +39,10 @@ uint16 NetworkAddress::GetPort() const
 	switch (this->address.ss_family) {
 		case AF_UNSPEC:
 		case AF_INET:
-			return ntohs(((struct sockaddr_in *)&this->address)->sin_port);
+			return ntohs(((const struct sockaddr_in *)&this->address)->sin_port);
 
 		case AF_INET6:
-			return ntohs(((struct sockaddr_in6 *)&this->address)->sin6_port);
+			return ntohs(((const struct sockaddr_in6 *)&this->address)->sin6_port);
 
 		default:
 			NOT_REACHED();

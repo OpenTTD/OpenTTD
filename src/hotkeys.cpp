@@ -75,7 +75,7 @@ static uint16 ParseCode(const char *start, const char *end)
 	if (end - start == 1) {
 		if (*start >= 'a' && *start <= 'z') return *start - ('a'-'A');
 		/* Ignore invalid keycodes */
-		if (*(uint8*)start < 128) return *start;
+		if (*(const uint8 *)start < 128) return *start;
 	}
 	return 0;
 }

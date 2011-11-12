@@ -101,7 +101,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 #endif
 
 		/* Send the buffer */
-		int res = sendto(s->second, (const char*)p->buffer, p->size, 0, (struct sockaddr *)send.GetAddress(), send.GetAddressLength());
+		int res = sendto(s->second, (const char*)p->buffer, p->size, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
 		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString());
 
 		/* Check for any errors, but ignore it otherwise */
