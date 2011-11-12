@@ -884,15 +884,15 @@ size_t SlGetFieldLength()
 int64 ReadValue(const void *ptr, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL:  return (*(bool *)ptr != 0);
-		case SLE_VAR_I8:  return *(int8  *)ptr;
-		case SLE_VAR_U8:  return *(byte  *)ptr;
-		case SLE_VAR_I16: return *(int16 *)ptr;
-		case SLE_VAR_U16: return *(uint16*)ptr;
-		case SLE_VAR_I32: return *(int32 *)ptr;
-		case SLE_VAR_U32: return *(uint32*)ptr;
-		case SLE_VAR_I64: return *(int64 *)ptr;
-		case SLE_VAR_U64: return *(uint64*)ptr;
+		case SLE_VAR_BL:  return (*(const bool *)ptr != 0);
+		case SLE_VAR_I8:  return *(const int8  *)ptr;
+		case SLE_VAR_U8:  return *(const byte  *)ptr;
+		case SLE_VAR_I16: return *(const int16 *)ptr;
+		case SLE_VAR_U16: return *(const uint16*)ptr;
+		case SLE_VAR_I32: return *(const int32 *)ptr;
+		case SLE_VAR_U32: return *(const uint32*)ptr;
+		case SLE_VAR_I64: return *(const int64 *)ptr;
+		case SLE_VAR_U64: return *(const uint64*)ptr;
 		case SLE_VAR_NULL:return 0;
 		default: NOT_REACHED();
 	}
@@ -1012,12 +1012,12 @@ static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType con
 		default: NOT_REACHED();
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
-			str = *(const char**)ptr;
+			str = *(const char * const *)ptr;
 			len = SIZE_MAX;
 			break;
 		case SLE_VAR_STRB:
 		case SLE_VAR_STRBQ:
-			str = (const char*)ptr;
+			str = (const char *)ptr;
 			len = length;
 			break;
 	}
@@ -1265,7 +1265,7 @@ static void *IntToReference(size_t index, SLRefType rt)
  */
 static inline size_t SlCalcListLen(const void *list)
 {
-	std::list<void *> *l = (std::list<void *> *) list;
+	const std::list<void *> *l = (const std::list<void *> *) list;
 
 	int type_size = IsSavegameVersionBefore(69) ? 2 : 4;
 	/* Each entry is saved as type_size bytes, plus type_size bytes are used for the length
