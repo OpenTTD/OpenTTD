@@ -1175,7 +1175,7 @@ void DeterminePaths(const char *exe)
 	/* If we don't have networking, we don't need to make the directory. But
 	 * if it exists we keep it, otherwise remove it from the search paths. */
 	if (!FileExists(_searchpaths[SP_AUTODOWNLOAD_DIR]))  {
-		free((void*)_searchpaths[SP_AUTODOWNLOAD_DIR]);
+		free(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 		_searchpaths[SP_AUTODOWNLOAD_DIR] = NULL;
 	}
 #endif /* ENABLE_NETWORK */

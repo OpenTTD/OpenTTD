@@ -354,7 +354,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 		lengths[z][1] = (byte *)dst_n_ln  - (byte *)dst_n_orig[z];
 
 		free(src_orig->data);
-		free((void *)src_orig);
+		free(src_orig);
 	}
 
 	uint len = 0; // total length of data

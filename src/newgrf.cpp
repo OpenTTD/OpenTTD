@@ -3071,10 +3071,10 @@ static void CleanIndustryTileTable(IndustrySpec *ind)
 	if (HasBit(ind->cleanup_flag, CLEAN_TILELAYOUT) && ind->table != NULL) {
 		for (int j = 0; j < ind->num_table; j++) {
 			/* remove the individual layouts */
-			free((void*)ind->table[j]);
+			free(ind->table[j]);
 		}
 		/* remove the layouts pointers */
-		free((void*)ind->table);
+		free(ind->table);
 		ind->table = NULL;
 	}
 }
@@ -3322,7 +3322,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				}
 
 				if (HasBit(indsp->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
-					free((void*)indsp->random_sounds);
+					free(indsp->random_sounds);
 				}
 				indsp->random_sounds = sounds;
 				SetBit(indsp->cleanup_flag, CLEAN_RANDOMSOUNDS);
@@ -7663,10 +7663,10 @@ static void ResetCustomAirports()
 					/* We need to remove the tiles layouts */
 					for (int j = 0; j < as->num_table; j++) {
 						/* remove the individual layouts */
-						free((void*)as->table[j]);
+						free(as->table[j]);
 					}
-					free((void*)as->table);
-					free((void*)as->depot_table);
+					free(as->table);
+					free(as->depot_table);
 
 					free(as);
 				}
@@ -7703,7 +7703,7 @@ static void ResetCustomIndustries()
 
 				/* We need to remove the sounds array */
 				if (HasBit(ind->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
-					free((void*)ind->random_sounds);
+					free(ind->random_sounds);
 				}
 
 				/* We need to remove the tiles layouts */

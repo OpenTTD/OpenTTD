@@ -73,7 +73,7 @@ NetworkHTTPSocketHandler::~NetworkHTTPSocketHandler()
 
 	if (this->sock != INVALID_SOCKET) closesocket(this->sock);
 	this->sock = INVALID_SOCKET;
-	free((void*)this->data);
+	free(this->data);
 }
 
 NetworkRecvStatus NetworkHTTPSocketHandler::CloseConnection(bool error)

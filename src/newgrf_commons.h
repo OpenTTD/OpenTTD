@@ -140,8 +140,8 @@ struct NewGRFSpriteLayout : ZeroedMemoryAllocator, DrawTileSprites {
 
 	virtual ~NewGRFSpriteLayout()
 	{
-		free(const_cast<DrawTileSeqStruct*>(this->seq));
-		free(const_cast<TileLayoutRegisters*>(this->registers));
+		free(this->seq);
+		free(this->registers);
 	}
 
 	/**

@@ -438,6 +438,15 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 #endif
 
 /**
+ * Version of the standard free that accepts const pointers.
+ * @param ptr The data to free.
+ */
+static FORCEINLINE void free(const void *ptr)
+{
+	free(const_cast<void *>(ptr));
+}
+
+/**
  * The largest value that can be entered in a variable
  * @param type the type of the variable
  */

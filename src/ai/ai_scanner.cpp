@@ -68,16 +68,16 @@ void AIScanner::Reset()
 {
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
-		free((void *)(*it).first);
+		free((*it).first);
 		delete (*it).second;
 	}
 	it = this->info_single_list.begin();
 	for (; it != this->info_single_list.end(); it++) {
-		free((void *)(*it).first);
+		free((*it).first);
 	}
 	AILibraryList::iterator lit = this->library_list.begin();
 	for (; lit != this->library_list.end(); lit++) {
-		free((void *)(*lit).first);
+		free((*lit).first);
 		delete (*lit).second;
 	}
 

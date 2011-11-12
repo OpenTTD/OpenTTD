@@ -448,7 +448,7 @@ struct GameOptionsWindow : Window {
 		if (_game_mode == GM_MENU) {
 			const char *name = T::GetSet(index)->name;
 
-			free(const_cast<char *>(T::ini_set));
+			free(T::ini_set);
 			T::ini_set = strdup(name);
 
 			T::SetSet(name);

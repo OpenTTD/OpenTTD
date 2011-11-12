@@ -806,9 +806,9 @@ int ttd_main(int argc, char *argv[])
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
 
-	free(const_cast<char *>(BaseGraphics::ini_set));
-	free(const_cast<char *>(BaseSounds::ini_set));
-	free(const_cast<char *>(BaseMusic::ini_set));
+	free(BaseGraphics::ini_set);
+	free(BaseSounds::ini_set);
+	free(BaseMusic::ini_set);
 	free(_ini_musicdriver);
 	free(_ini_sounddriver);
 	free(_ini_videodriver);

@@ -236,8 +236,8 @@ DriverFactoryBase::~DriverFactoryBase()
 	const char *longname = (*it).first;
 
 	GetDrivers().erase(it);
-	free((void *)longname);
+	free(longname);
 
 	if (GetDrivers().empty()) delete &GetDrivers();
-	free((void *)this->name);
+	free(this->name);
 }

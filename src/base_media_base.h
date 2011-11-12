@@ -70,16 +70,16 @@ struct BaseSet {
 	/** Free everything we allocated */
 	~BaseSet()
 	{
-		free((void*)this->name);
+		free(this->name);
 
 		for (TranslatedStrings::iterator iter = this->description.Begin(); iter != this->description.End(); iter++) {
-			free((void*)iter->first);
-			free((void*)iter->second);
+			free(iter->first);
+			free(iter->second);
 		}
 
 		for (uint i = 0; i < NUM_FILES; i++) {
-			free((void*)this->files[i].filename);
-			free((void*)this->files[i].missing_warning);
+			free(this->files[i].filename);
+			free(this->files[i].missing_warning);
 		}
 
 		delete this->next;

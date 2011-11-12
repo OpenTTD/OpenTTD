@@ -78,7 +78,7 @@ public:
 		if (this->name == NULL) return;
 		GetBlitters().erase(this->name);
 		if (GetBlitters().empty()) delete &GetBlitters();
-		free((void *)this->name);
+		free(this->name);
 	}
 
 	/**

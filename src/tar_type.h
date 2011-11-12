@@ -24,7 +24,7 @@ struct TarListEntry {
 	 * to free filename, which isn't set at that moment... but because it
 	 * initializes the variable with garbage, it's going to segfault. */
 	TarListEntry() : filename(NULL), dirname(NULL) {}
-	~TarListEntry() { free((void*)this->filename); free((void*)this->dirname); }
+	~TarListEntry() { free(this->filename); free(this->dirname); }
 };
 
 struct TarFileListEntry {

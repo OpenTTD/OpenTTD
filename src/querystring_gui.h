@@ -48,7 +48,7 @@ struct QueryString {
 	 */
 	~QueryString()
 	{
-		free((void*)this->orig);
+		free(this->orig);
 	}
 
 private:

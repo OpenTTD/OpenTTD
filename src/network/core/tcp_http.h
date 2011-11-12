@@ -105,13 +105,13 @@ public:
 	/** Free all our allocated data. */
 	~NetworkHTTPContentConnecter()
 	{
-		free((void*)this->url);
+		free(this->url);
 	}
 
 	virtual void OnFailure()
 	{
 		this->callback->OnFailure();
-		free((void*)this->data);
+		free(this->data);
 	}
 
 	virtual void OnConnect(SOCKET s)

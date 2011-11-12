@@ -17,7 +17,7 @@
 
 void AIConfig::ChangeAI(const char *name, int version, bool force_exact_match, bool is_random_ai)
 {
-	free((void *)this->name);
+	free(this->name);
 	this->name = (name == NULL) ? NULL : strdup(name);
 	this->info = (name == NULL) ? NULL : AI::FindInfo(this->name, version, force_exact_match);
 	this->version = (info == NULL) ? -1 : info->GetVersion();
@@ -31,7 +31,7 @@ void AIConfig::ChangeAI(const char *name, int version, bool force_exact_match, b
 	int start_date = this->GetSetting("start_date");
 
 	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
-		free((void*)(*it).first);
+		free((*it).first);
 	}
 	this->settings.clear();
 
@@ -65,7 +65,7 @@ AIConfig::AIConfig(const AIConfig *config)
 
 AIConfig::~AIConfig()
 {
-	free((void *)this->name);
+	free(this->name);
 	this->ResetSettings();
 	if (this->config_list != NULL) delete this->config_list;
 }
@@ -148,7 +148,7 @@ void AIConfig::SetSetting(const char *name, int value)
 void AIConfig::ResetSettings()
 {
 	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
-		free((void*)(*it).first);
+		free((*it).first);
 	}
 	this->settings.clear();
 }

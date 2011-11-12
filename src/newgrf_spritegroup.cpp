@@ -20,8 +20,8 @@ INSTANTIATE_POOL_METHODS(SpriteGroup)
 
 RealSpriteGroup::~RealSpriteGroup()
 {
-	free((void*)this->loaded);
-	free((void*)this->loading);
+	free(this->loaded);
+	free(this->loading);
 }
 
 DeterministicSpriteGroup::~DeterministicSpriteGroup()
@@ -32,7 +32,7 @@ DeterministicSpriteGroup::~DeterministicSpriteGroup()
 
 RandomizedSpriteGroup::~RandomizedSpriteGroup()
 {
-	free((void*)this->groups);
+	free(this->groups);
 }
 
 TemporaryStorageArray<int32, 0x110> _temp_store;
