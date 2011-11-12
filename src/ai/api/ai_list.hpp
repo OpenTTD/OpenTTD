@@ -239,7 +239,7 @@ public:
 	 */
 	void KeepList(AIList *list);
 
-#ifndef DOXYGEN_SKIP
+#ifndef DOXYGEN_AI_DOCS
 	/**
 	 * Used for 'foreach()' and [] get from Squirrel.
 	 */
@@ -280,7 +280,7 @@ public:
 	 *  list.Valuate(MyVal, 12);
 	 */
 	void Valuate(void *valuator_function, int params, ...);
-#endif /* DOXYGEN_SKIP */
+#endif /* DOXYGEN_AI_DOCS */
 };
 
 #endif /* AI_LIST_HPP */

@@ -38,6 +38,7 @@ class AIObject : public SimpleCountedObject {
 friend void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2);
 friend class AIInstance;
 friend class AIController;
+#ifndef DOXYGEN_AI_DOCS
 protected:
 	/**
 	 * Executes a raw DoCommand for the AI.
@@ -181,51 +182,45 @@ protected:
 public:
 	/**
 	 * Store the latest result of a DoCommand per company.
-	 * @note NEVER use this yourself in your AI!
 	 * @param res The result of the last command.
 	 */
 	static void SetLastCommandRes(bool res);
 
 	/**
 	 * Store a new_vehicle_id per company.
-	 * @note NEVER use this yourself in your AI!
 	 * @param vehicle_id The new VehicleID.
 	 */
 	static void SetNewVehicleID(VehicleID vehicle_id);
 
 	/**
 	 * Store a new_sign_id per company.
-	 * @note NEVER use this yourself in your AI!
 	 * @param sign_id The new SignID.
 	 */
 	static void SetNewSignID(SignID sign_id);
 
 	/**
 	 * Store a new_tunnel_endtile per company.
-	 * @note NEVER use this yourself in your AI!
 	 * @param tile The new TileIndex.
 	 */
 	static void SetNewTunnelEndtile(TileIndex tile);
 
 	/**
 	 * Store a new_group_id per company.
-	 * @note NEVER use this yourself in your AI!
 	 * @param group_id The new GroupID.
 	 */
 	static void SetNewGroupID(GroupID group_id);
 
 	/**
 	 * Store a allow_do_command per company.
-	 * @note NEVER use this yourself in your AI!
 	 * @param allow The new allow.
 	 */
 	static void SetAllowDoCommand(bool allow);
 
 	/**
 	 * Get the pointer to store log message in.
-	 * @note NEVER use this yourself in your AI!
 	 */
 	static void *&GetLogPointer();
+#endif /* DOXYGEN_AI_DOCS */
 };
 
 #endif /* AI_OBJECT_HPP */

@@ -480,12 +480,12 @@ public:
 	 */
 	static bool RemoveOrder(VehicleID vehicle_id, OrderPosition order_position);
 
-#ifndef DOXYGEN_SKIP
+#ifndef DOXYGEN_AI_DOCS
 	/**
 	 * Internal function to help SetOrderFlags.
 	 */
 	static bool _SetOrderFlags();
-#endif /* DOXYGEN_SKIP */
+#endif /* DOXYGEN_AI_DOCS */
 
 	/**
 	 * Changes the order flags of the given order.

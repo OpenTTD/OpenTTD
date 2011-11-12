@@ -294,7 +294,7 @@ struct AISettingsWindow : public Window {
 
 		this->SetWidgetDisabledState(AIS_WIDGET_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
 
-		this->vscroll->SetCount(this->visible_settings.size());
+		this->vscroll->SetCount((int)this->visible_settings.size());
 	}
 
 	/**

@@ -282,7 +282,7 @@ public:
 	 * Get the type of the offered engine.
 	 * @return The type the engine has.
 	 */
-#ifdef DOXYGEN_SKIP
+#ifdef DOXYGEN_AI_DOCS
 	AIVehicle::VehicleType GetVehicleType();
 #else
 	int32 GetVehicleType();

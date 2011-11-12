@@ -10,7 +10,7 @@
 /** @file ai_info_docs.hpp Description of the functions an AI can/must provide in AIInfo. */
 
 /* This file exists purely for doxygen purposes. */
-#ifdef DOXYGEN_SKIP
+#ifdef DOXYGEN_AI_DOCS
 /**
  * 'Abstract' class of the class AIs/AI libraries use to register themselves.
  *
