@@ -14,54 +14,54 @@
    -1 sprites/canal_locks.png 226 8 09 23 64 -31 0
    -1 sprites/canal_locks.png 306 8 09 39 64 -31 -8
 // Lock sides
-   -1 sprites/canal_locks.png 386 8 09 59 64 -31 -36
-   -1 sprites/canal_locks.png 466 8 09 65 64 -31 -34
-   -1 sprites/canal_locks.png 546 8 09 59 64 -31 -36
-   -1 sprites/canal_locks.png 626 8 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 706 8 09 62 64 -1 -51
-   -1 sprites/canal_locks.png 2 88 09 62 64 -61 -43
-   -1 sprites/canal_locks.png 82 88 09 62 64 -61 -51
-   -1 sprites/canal_locks.png 162 88 09 62 64 -1 -43
-   -1 sprites/canal_locks.png 242 88 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 322 88 09 65 66 -33 -34
-   -1 sprites/canal_locks.png 402 88 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 482 88 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 562 88 09 62 64 -1 -43
-   -1 sprites/canal_locks.png 642 88 09 60 64 -61 -43
-   -1 sprites/canal_locks.png 722 88 09 62 66 -61 -43
-   -1 sprites/canal_locks.png 2 168 09 60 64 -1 -43
-   -1 sprites/canal_locks.png 82 168 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 162 168 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 242 168 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 322 168 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 402 168 09 60 64 -1 -43
-   -1 sprites/canal_locks.png 482 168 09 62 68 -61 -43
-   -1 sprites/canal_locks.png 562 168 09 60 64 -61 -43
-   -1 sprites/canal_locks.png 642 168 09 62 64 -1 -43
-   -1 sprites/canal_locks.png 722 168 09 59 64 -31 -36
-   -1 sprites/canal_locks.png 2 248 09 65 64 -31 -34
-   -1 sprites/canal_locks.png 82 248 09 59 64 -31 -36
-   -1 sprites/canal_locks.png 162 248 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 242 248 09 62 64 -1 -51
-   -1 sprites/canal_locks.png 322 248 09 62 64 -61 -43
-   -1 sprites/canal_locks.png 402 248 09 62 64 -61 -51
-   -1 sprites/canal_locks.png 482 248 09 62 64 -1 -43
-   -1 sprites/canal_locks.png 562 248 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 642 248 09 65 66 -33 -34
-   -1 sprites/canal_locks.png 722 248 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 2 328 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 82 328 09 62 64 -1 -43
-   -1 sprites/canal_locks.png 162 328 09 60 64 -61 -43
-   -1 sprites/canal_locks.png 242 328 09 62 66 -61 -43
-   -1 sprites/canal_locks.png 322 328 09 60 64 -1 -43
-   -1 sprites/canal_locks.png 402 328 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 482 328 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 562 328 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 642 328 09 59 64 -31 -28
-   -1 sprites/canal_locks.png 722 328 09 60 64 -1 -43
-   -1 sprites/canal_locks.png 2 408 09 62 68 -61 -43
-   -1 sprites/canal_locks.png 82 408 09 60 64 -61 -43
-   -1 sprites/canal_locks.png 162 408 09 62 64 -1 -43
+   -1 sprites/canal_locks.png 386 8 09 26 40 -7 -12
+   -1 sprites/canal_locks.png 434 8 09 33 42 -31 -13
+   -1 sprites/canal_locks.png 482 8 09 25 40 -31 -12
+   -1 sprites/canal_locks.png 530 8 09 34 42 -9 -14
+   -1 sprites/canal_locks.png 578 8 09 27 32 -1 -17
+   -1 sprites/canal_locks.png 626 8 09 35 32 -29 -17
+   -1 sprites/canal_locks.png 674 8 09 27 32 -29 -17
+   -1 sprites/canal_locks.png 722 8 09 35 32 -1 -17
+   -1 sprites/canal_locks.png 2 72 09 44 40 -7 -24
+   -1 sprites/canal_locks.png 50 72 09 33 42 -31 -13
+   -1 sprites/canal_locks.png 98 72 09 32 40 -31 -12
+   -1 sprites/canal_locks.png 146 72 09 31 41 -8 -12
+   -1 sprites/canal_locks.png 194 72 09 32 34 -1 -13
+   -1 sprites/canal_locks.png 242 72 09 34 38 -35 -17
+   -1 sprites/canal_locks.png 290 72 09 44 34 -29 -26
+   -1 sprites/canal_locks.png 338 72 09 34 38 -1 -17
+   -1 sprites/canal_locks.png 386 72 09 24 42 -9 -4
+   -1 sprites/canal_locks.png 434 72 09 24 43 -31 -4
+   -1 sprites/canal_locks.png 482 72 09 24 53 -31 -4
+   -1 sprites/canal_locks.png 546 72 09 37 43 -10 -16
+   -1 sprites/canal_locks.png 594 72 09 26 38 -1 -9
+   -1 sprites/canal_locks.png 642 72 09 37 34 -29 -18
+   -1 sprites/canal_locks.png 690 72 09 26 38 -35 -9
+   -1 sprites/canal_locks.png 738 72 09 23 32 -1 -5
+   -1 sprites/canal_locks.png 2 136 09 26 40 -7 -12
+   -1 sprites/canal_locks.png 50 136 09 33 42 -31 -13
+   -1 sprites/canal_locks.png 98 136 09 25 40 -31 -12
+   -1 sprites/canal_locks.png 146 136 09 34 42 -9 -14
+   -1 sprites/canal_locks.png 194 136 09 27 32 -1 -17
+   -1 sprites/canal_locks.png 242 136 09 35 32 -29 -17
+   -1 sprites/canal_locks.png 290 136 09 27 32 -29 -17
+   -1 sprites/canal_locks.png 338 136 09 35 32 -1 -17
+   -1 sprites/canal_locks.png 386 136 09 32 40 -7 -12
+   -1 sprites/canal_locks.png 434 136 09 33 42 -31 -13
+   -1 sprites/canal_locks.png 482 136 09 32 40 -31 -12
+   -1 sprites/canal_locks.png 530 136 09 31 41 -8 -12
+   -1 sprites/canal_locks.png 578 136 09 32 34 -1 -13
+   -1 sprites/canal_locks.png 626 136 09 34 38 -35 -17
+   -1 sprites/canal_locks.png 674 136 09 32 34 -29 -14
+   -1 sprites/canal_locks.png 722 136 09 34 38 -1 -17
+   -1 sprites/canal_locks.png 2 184 09 24 42 -9 -4
+   -1 sprites/canal_locks.png 50 184 09 24 43 -31 -4
+   -1 sprites/canal_locks.png 98 184 09 24 53 -31 -4
+   -1 sprites/canal_locks.png 162 184 09 25 43 -10 -4
+   -1 sprites/canal_locks.png 210 184 09 26 38 -1 -9
+   -1 sprites/canal_locks.png 258 184 09 25 34 -29 -6
+   -1 sprites/canal_locks.png 306 184 09 26 38 -35 -9
+   -1 sprites/canal_locks.png 354 184 09 23 32 -1 -5
 // Canal edges (temperate)
    -1 sprites/canals.png  30  10 09 22 45 -11 -1
    -1 sprites/canals.png  94  10 09 21 41  -8 10
@@ -76,7 +76,7 @@
    -1 sprites/canals.png 430  10 09 10 11 -31 10
    -1 sprites/canals.png 446  10 09 16 24 -11 -6
 // Canal icon
-   -1 sprites/canal_locks.png 242 408 09 20 20 0 0
+   -1 sprites/canal_locks.png 50 232 09 20 20 0 0
 
 // Differentiation for the climates starts here
 
