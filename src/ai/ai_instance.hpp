@@ -81,10 +81,15 @@ public:
 
 	/**
 	 * Create a new AI.
+	 */
+	AIInstance();
+	~AIInstance();
+
+	/**
+	 * Initialize the AI and prepare it for its first run.
 	 * @param info The AI to create the instance of.
 	 */
-	AIInstance(class AIInfo *info);
-	~AIInstance();
+	void Initialize(class AIInfo *info);
 
 	/**
 	 * An AI in multiplayer waits for the server to handle his DoCommand.
@@ -105,7 +110,12 @@ public:
 	/**
 	 * Get the storage of this AI.
 	 */
-	static class AIStorage *GetStorage();
+	class AIStorage *GetStorage();
+
+	/**
+	 * Get the log pointer of this AI.
+	 */
+	void *GetLogPointer();
 
 	/**
 	 * Return a true/false reply for a DoCommand.
@@ -173,6 +183,22 @@ public:
 	 * @return The number of operations to execute.
 	 */
 	SQInteger GetOpsTillSuspend();
+
+	/**
+	 * DoCommand callback function for all commands executed by AIs.
+	 * @param result The result of the command.
+	 * @param tile The tile on which the command was executed.
+	 * @param p1 p1 as given to DoCommandPInternal.
+	 * @param p2 p2 as given to DoCommandPInternal.
+	 */
+	void DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2);
+
+	/**
+	 * Insert an event for this AI.
+	 * @param event The event to insert.
+	 */
+	void InsertEvent(class AIEvent *event);
+
 private:
 	class AIController *controller;  ///< The AI main class.
 	class AIStorage *storage;        ///< Some global information for each running AI.

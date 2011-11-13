@@ -12,8 +12,6 @@
 #include "../../stdafx.h"
 #include "../../script/squirrel.hpp"
 #include "../../command_func.h"
-#include "../../company_base.h"
-#include "../../company_func.h"
 #include "../../network/network.h"
 #include "../../tunnelbridge.h"
 
@@ -27,8 +25,29 @@
  */
 static AIStorage *GetStorage()
 {
-	return AIInstance::GetStorage();
+	return AIObject::GetActiveInstance()->GetStorage();
 }
+
+
+/* static */ AIInstance *AIObject::ActiveInstance::active = NULL;
+
+AIObject::ActiveInstance::ActiveInstance(AIInstance *instance)
+{
+	this->last_active = AIObject::ActiveInstance::active;
+	AIObject::ActiveInstance::active = instance;
+}
+
+AIObject::ActiveInstance::~ActiveInstance()
+{
+	AIObject::ActiveInstance::active = this->last_active;
+}
+
+/* static */ AIInstance *AIObject::GetActiveInstance()
+{
+	assert(AIObject::ActiveInstance::active != NULL);
+	return AIObject::ActiveInstance::active;
+}
+
 
 /* static */ void AIObject::SetDoCommandDelay(uint ticks)
 {
@@ -179,7 +198,7 @@ static AIStorage *GetStorage()
 
 /* static */ bool AIObject::CanSuspend()
 {
-	Squirrel *squirrel = Company::Get(_current_company)->ai_instance->engine;
+	Squirrel *squirrel = AIObject::GetActiveInstance()->engine;
 	return GetStorage()->allow_do_command && squirrel->CanSuspend();
 }
 

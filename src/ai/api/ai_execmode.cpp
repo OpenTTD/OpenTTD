@@ -32,9 +32,8 @@ AIExecMode::AIExecMode()
 AIExecMode::~AIExecMode()
 {
 	if (this->GetDoCommandModeInstance() != this) {
-		AIInstance *instance = Company::Get(_current_company)->ai_instance;
 		/* Ignore this error if the AI already died. */
-		if (!instance->IsDead()) {
+		if (!AIObject::GetActiveInstance()->IsDead()) {
 			throw AI_FatalError("AIExecMode object was removed while it was not the latest AI*Mode object created.");
 		}
 	}

@@ -100,7 +100,7 @@ static void PrintFunc(bool error_msg, const SQChar *message)
 	AIController::Print(error_msg, SQ2OTTD(message));
 }
 
-AIInstance::AIInstance(AIInfo *info) :
+AIInstance::AIInstance() :
 	controller(NULL),
 	storage(NULL),
 	engine(NULL),
@@ -111,13 +111,16 @@ AIInstance::AIInstance(AIInfo *info) :
 	suspend(0),
 	callback(NULL)
 {
-	/* Set the instance already, so we can use AIObject::Set commands */
-	Company::Get(_current_company)->ai_instance = this;
+	this->storage = new AIStorage();
+	this->engine  = new Squirrel();
+	this->engine->SetPrintFunction(&PrintFunc);
+}
+
+void AIInstance::Initialize(AIInfo *info)
+{
+	AIObject::ActiveInstance active(this);
 
 	this->controller = new AIController();
-	this->storage    = new AIStorage();
-	this->engine     = new Squirrel();
-	this->engine->SetPrintFunction(&PrintFunc);
 
 	/* The import method is available at a very early stage */
 	this->engine->AddMethod("import", &AILibrary::Import, 4, ".ssi");
@@ -163,6 +166,8 @@ AIInstance::AIInstance(AIInfo *info) :
 
 AIInstance::~AIInstance()
 {
+	AIObject::ActiveInstance active(this);
+
 	if (instance != NULL) this->engine->ReleaseObject(this->instance);
 	if (engine != NULL) delete this->engine;
 	delete this->storage;
@@ -316,6 +321,8 @@ void AIInstance::Died()
 
 void AIInstance::GameLoop()
 {
+	AIObject::ActiveInstance active(this);
+
 	if (this->IsDead()) return;
 	if (this->engine->HasScriptCrashed()) {
 		/* The script crashed during saving, kill it here. */
@@ -423,10 +430,16 @@ void AIInstance::CollectGarbage() const
 	instance->engine->InsertResult(AIObject::GetNewGroupID());
 }
 
-/* static */ AIStorage *AIInstance::GetStorage()
+AIStorage *AIInstance::GetStorage()
 {
-	assert(Company::IsValidAiID(_current_company));
-	return Company::Get(_current_company)->ai_instance->storage;
+	return this->storage;
+}
+
+void *AIInstance::GetLogPointer()
+{
+	AIObject::ActiveInstance active(this);
+
+	return AIObject::GetLogPointer();
 }
 
 /*
@@ -598,6 +611,8 @@ static const uint AISAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for it
 
 void AIInstance::Save()
 {
+	AIObject::ActiveInstance active(this);
+
 	/* Don't save data if the AI didn't start yet or if it crashed. */
 	if (this->engine == NULL || this->engine->HasScriptCrashed()) {
 		SaveEmpty();
@@ -662,7 +677,6 @@ void AIInstance::Save()
 		_ai_sl_byte = 0;
 		SlObject(NULL, _ai_byte);
 	}
-
 }
 
 void AIInstance::Suspend()
@@ -739,6 +753,8 @@ void AIInstance::Suspend()
 
 void AIInstance::Load(int version)
 {
+	AIObject::ActiveInstance active(this);
+
 	if (this->engine == NULL || version == -1) {
 		LoadEmpty();
 		return;
@@ -794,4 +810,25 @@ bool AIInstance::CallLoad()
 SQInteger AIInstance::GetOpsTillSuspend()
 {
 	return this->engine->GetOpsTillSuspend();
+}
+
+void AIInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+{
+	AIObject::ActiveInstance active(this);
+
+	AIObject::SetLastCommandRes(result.Succeeded());
+
+	if (result.Failed()) {
+		AIObject::SetLastError(AIError::StringToError(result.GetErrorMessage()));
+	} else {
+		AIObject::IncreaseDoCommandCosts(result.GetCost());
+		AIObject::SetLastCost(result.GetCost());
+	}
+}
+
+void AIInstance::InsertEvent(class AIEvent *event)
+{
+	AIObject::ActiveInstance active(this);
+
+	AIEventController::InsertEvent(event);
 }

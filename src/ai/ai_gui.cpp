@@ -931,9 +931,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		/* If there are no active companies, don't display anything else. */
 		if (ai_debug_company == INVALID_COMPANY) return;
 
-		Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
-		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
-		cur_company.Restore();
+		AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 
 		int scroll_count = (log == NULL) ? 0 : log->used;
 		if (this->vscroll->GetCount() != scroll_count) {
@@ -986,9 +984,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		switch (widget) {
 			case AID_WIDGET_LOG_PANEL: {
-				Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
-				AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
-				cur_company.Restore();
+				AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 				if (log == NULL) return;
 
 				int y = this->top_offset;
@@ -1029,9 +1025,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		ai_debug_company = show_ai;
 
-		Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
-		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
-		cur_company.Restore();
+		AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 		this->vscroll->SetCount((log == NULL) ? 0 : log->used);
 
 		this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
@@ -1130,8 +1124,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
 		if (!gui_scope && data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
 			/* Get the log instance of the active company */
-			Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
-			AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
+			AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 
 			if (log != NULL && case_sensitive_break_check?
 					strstr(log->lines[log->pos], this->edit_str_buf) != 0 :
@@ -1149,8 +1142,6 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				/* Highlight row that matched */
 				this->highlight_row = log->pos;
 			}
-
-			cur_company.Restore();
 		}
 	}
 

@@ -35,10 +35,26 @@ typedef bool (AIModeProc)();
  *   command processing, and command-validation checks.
  */
 class AIObject : public SimpleCountedObject {
-friend void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2);
 friend class AIInstance;
-friend class AIController;
 #ifndef DOXYGEN_AI_DOCS
+protected:
+	/**
+	 * A class that handles the current active instance. By instantiating it at
+	 *  the beginning of a function with the current active instance, it remains
+	 *  active till the scope of the variable closes. It then automatically
+	 *  reverts to the active instance it was before instantiating.
+	 */
+	class ActiveInstance {
+	friend class AIObject;
+	public:
+		ActiveInstance(AIInstance *instance);
+		~ActiveInstance();
+	private:
+		AIInstance *last_active;    ///< The active instance before we go instantiated.
+
+		static AIInstance *active;  ///< The global current active instance.
+	};
+
 public:
 	/**
 	 * Store the latest result of a DoCommand per company.
@@ -47,9 +63,10 @@ public:
 	static void SetLastCommandRes(bool res);
 
 	/**
-	 * Get the pointer to store log message in.
+	 * Get the currently active instance.
+	 * @return The instance.
 	 */
-	static void *&GetLogPointer();
+	static class AIInstance *GetActiveInstance();
 
 protected:
 	/**
@@ -196,6 +213,11 @@ protected:
 	 * Get the pointer to store event data in.
 	 */
 	static void *&GetEventPointer();
+
+	/**
+	 * Get the pointer to store log message in.
+	 */
+	static void *&GetLogPointer();
 
 private:
 	/**
