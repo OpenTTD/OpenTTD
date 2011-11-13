@@ -1287,11 +1287,11 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pan yn 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Adeiladu semafforau cyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Galluogi'r GUI signalau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Y math o signal i'w adeiladu fel rhagosodiad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blocio signalau
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signalau Bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Signalau Llwybr
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Signalau Llwybr Un-ffordd
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cylchu trwy mathau signal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signalau blocio'n unig
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signalau bloc yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signalau llwybr yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Pob math
 
@@ -1921,6 +1921,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Adeiladu
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau, signalau, a pwyntiau llwybro. Wrth ddal Ctrl, caiff cledrau pwyntiau llwybro a gorsafoedd eu tynnu hefyd
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trosi/Diweddaru math y rheilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 
+STR_RAIL_NAME_RAILROAD                                          :rheilffordd
+STR_RAIL_NAME_ELRAIL                                            :rheilffordd drydan
+STR_RAIL_NAME_MONORAIL                                          :monoreilffordd
+STR_RAIL_NAME_MAGLEV                                            :maglef
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Cyfeiriad Depo Trên
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Dewiswch gyfeiriad depo rheilffordd
@@ -2191,6 +2196,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Caeau
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tir ag eira
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Anialdir
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cledrau {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cledrau {STRING} gyda signalau bloc
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cledrau {STRING} gyda rhagsignalau
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cledrau {STRING} gyda signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cledrau {STRING} gyda signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cledrau {STRING} gyda signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cledrau {STRING} gyda signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cledrau {STRING} gyda signalau bloc a rhagsignalau
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cledrau {STRING} gyda signalau bloc a signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cledrau {STRING} gyda signalau bloc a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cledrau {STRING} gyda signalau bloc a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cledrau {STRING} gyda signalau bloc a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cledrau {STRING} gyda rhagsignalau a signalau gadael
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cledrau {STRING} gyda rhagsignalau a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cledrau {STRING} gyda rhagsignalau a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cledrau {STRING} gyda rhag-signalau a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cledrau {STRING} gyda signalau gadael a signalau cyfun
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cledrau {STRING} gyda signalau gadael a signalau llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cledrau {STRING} gyda signalau gadael a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cledrau {STRING} gyda signalau cyfun a llwybro
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cledrau {STRING} gyda signalau cyfun a signalau llwybr unffordd
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cledrau {STRING} gyda signalau llwybro a signalau llwybro unffordd
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo trên {STRING}
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ffordd
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ffordd gyda goleuadau stryd
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ffordd gyda coed wedi'i plannu
@@ -2373,7 +2402,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Symud i 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i fyny'r rhestr
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Symud i Lawr
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i lawr y rhestr
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o bob ffeil NewGRF sydd wedi'u gosod. Cliciwch ar ffeil i newid ei baramedrau
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o bob ffeil NewGRF sydd wedi'u gosod.
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Gweld dogfenyddiaeth
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Gosod paramedrau
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toglu palet
@@ -2396,7 +2426,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ddargan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwyd
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Anghydnaws gyda'r fersiwn yma o OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Newid paramedrau NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cau
@@ -2405,6 +2434,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Gosod po
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramedr {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nifer y paramedrau: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}Dogfenyddiaeth NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Arolygu - {STRING}
@@ -2487,6 +2519,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Mae gan 
 STR_NEWGRF_BUGGY                                                :{WHITE}Mae NewGRF '{0:STRING}' yn darparu gwybodaeth anghywir
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Mae'r wybodaeth cargo/ailffitio ar gyfer '{1:ENGINE}' yn wahanol i'r rhestr brynu wedi'r adeiladu. Gall hyn beri i awtoadnewyddu/-ddisodli fethu ag ailfitio'n gywir
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' wedi creu lŵp diddiwedd yn y system adalw cynhyrchu
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Dychwelodd adalwad 0x{HEX} ganlyniad anhysbys/annilys 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<cargo annilys>
@@ -3481,6 +3514,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni chani
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Nid yw awdurdod lleol {TOWN}yn caniatáu hyn
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Mae awdurdod lleol {TOWN} yn gwrthod caniatáu i faes awyr arall gael ei adeiladu ger y dref hon
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Mae awdurdod lleol {TOWN} wedi gwrthod caniatâd ar gyfer maes awyr oherwydd pryderon ynglŷn â sŵn
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cawsoch eich dal gan ymchwilydd rhanbarth wrth geisio llwgrwobrwyo
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Does dim modd codi tir yma...

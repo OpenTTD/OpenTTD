@@ -1978,6 +1978,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Ehita ro
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Vaheta rongitee, signaalide, meldepunktide ja jaamade ehitamise ja lammutamise vahel. Ctrl-klahviga eemaldatakse meldepunktid ja jaamad.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muuda/uuenda rööpaliiki. Shift valib ehitamise/hinna kuvamise režiimi
 
+STR_RAIL_NAME_RAILROAD                                          :Raudtee
+STR_RAIL_NAME_ELRAIL                                            :Elektriraudtee
+STR_RAIL_NAME_MONORAIL                                          :Monorelss
+STR_RAIL_NAME_MAGLEV                                            :Magnethõljuk
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Depoo suund
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Depoole suuna valimine
@@ -2248,6 +2253,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Põllud
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumine maa
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Kõrb
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Sõidutee
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Valgustatud sõidutee
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Puiestee
@@ -2430,7 +2436,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Liiguta 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF-faili liigutamine loendis üles.
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Liiguta alla
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF-faili liigutamine loendis alla
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Nimekiri installeerimata NewGRF failidest. Parameetrite muutmiseks klõpsa failil.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}NewGRF failidest nimekiri installeerimata. Parameetrite muutmiseks klõpsa failil.
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vaata abi
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Vali parameetrid
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vaheta paletti
@@ -2453,7 +2460,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sobivat fa
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Väljas
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Mitteühilduv selle OpenTTD versiooniga
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuda NewGRF parameetreid
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulge
@@ -2462,6 +2468,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Säti k�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameeter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parameetrite arv: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}{STRING} NewGRF abi.
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspekteeri- {STRING}
@@ -2544,6 +2553,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõt
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' sisaldab väära teavet.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Veose/ümberseadistamise teave sõidukil '{1:ENGINE}' erineb ehitamisaegsest ostunimekirjast. Seetõttu võib uuendamisel või asendamisel ümberseadistamine ebaõnnestuda
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' põhjustas toodangu tagasikutsumises lõpmatu korduse
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Tagasikutse 0x{HEX} tagastas teadmata/kehtetu vaste 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<vale või vigane kaup>
@@ -3306,6 +3316,8 @@ STR_ORDER_NO_UNLOAD                                             :(Maha ei laadit
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Maha ei laadita ja oodatakse täislaadungit)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Maha ei laadita ja oodatakse suvalist täislaadungit)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Maha ei laadita ja peale ei laadita)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[lõpu lähedal]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskel]
