@@ -39,6 +39,18 @@ friend void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 friend class AIInstance;
 friend class AIController;
 #ifndef DOXYGEN_AI_DOCS
+public:
+	/**
+	 * Store the latest result of a DoCommand per company.
+	 * @param res The result of the last command.
+	 */
+	static void SetLastCommandRes(bool res);
+
+	/**
+	 * Get the pointer to store log message in.
+	 */
+	static void *&GetLogPointer();
+
 protected:
 	/**
 	 * Executes a raw DoCommand for the AI.
@@ -141,9 +153,10 @@ protected:
 	static GroupID GetNewGroupID();
 
 	/**
-	 * Can we suspend the AI at this moment?
+	 * Store a allow_do_command per company.
+	 * @param allow The new allow.
 	 */
-	static bool CanSuspend();
+	static void SetAllowDoCommand(bool allow);
 
 	/**
 	 * Get the internal value of allow_do_command. This can differ
@@ -153,11 +166,6 @@ protected:
 	 * @return True iff DoCommands are allowed in the current scope.
 	 */
 	static bool GetAllowDoCommand();
-
-	/**
-	 * Get the pointer to store event data in.
-	 */
-	static void *&GetEventPointer();
 
 	/**
 	 * Set the cost of the last command.
@@ -179,13 +187,17 @@ protected:
 	 */
 	static int GetCallbackVariable(int index);
 
-public:
 	/**
-	 * Store the latest result of a DoCommand per company.
-	 * @param res The result of the last command.
+	 * Can we suspend the AI at this moment?
 	 */
-	static void SetLastCommandRes(bool res);
+	static bool CanSuspend();
 
+	/**
+	 * Get the pointer to store event data in.
+	 */
+	static void *&GetEventPointer();
+
+private:
 	/**
 	 * Store a new_vehicle_id per company.
 	 * @param vehicle_id The new VehicleID.
@@ -209,17 +221,6 @@ public:
 	 * @param group_id The new GroupID.
 	 */
 	static void SetNewGroupID(GroupID group_id);
-
-	/**
-	 * Store a allow_do_command per company.
-	 * @param allow The new allow.
-	 */
-	static void SetAllowDoCommand(bool allow);
-
-	/**
-	 * Get the pointer to store log message in.
-	 */
-	static void *&GetLogPointer();
 #endif /* DOXYGEN_AI_DOCS */
 };
 

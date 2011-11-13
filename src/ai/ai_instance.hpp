@@ -155,12 +155,6 @@ public:
 	void Load(int version);
 
 	/**
-	 * Call the AI Load function if it exists and data was loaded
-	 *  from a savegame.
-	 */
-	bool CallLoad();
-
-	/**
 	 * Load and discard data from a savegame.
 	 */
 	static void LoadEmpty();
@@ -205,6 +199,12 @@ private:
 	 * Tell the AI it died.
 	 */
 	void Died();
+
+	/**
+	 * Call the AI Load function if it exists and data was loaded
+	 *  from a savegame.
+	 */
+	bool CallLoad();
 
 	/**
 	 * Save one object (int / string / array / table) to the savegame.
