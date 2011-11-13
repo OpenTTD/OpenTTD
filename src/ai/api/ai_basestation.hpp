@@ -19,9 +19,6 @@
  */
 class AIBaseStation : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIBaseStation"; }
-
 	/**
 	 * Special station IDs for building adjacent/new stations when
 	 * the adjacent/distant join features are enabled.

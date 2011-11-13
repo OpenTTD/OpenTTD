@@ -21,9 +21,6 @@
  */
 class AIEvent : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEvent"; }
-
 	/**
 	 * The type of event. Needed to lookup the detailed class.
 	 */
@@ -80,12 +77,6 @@ protected:
  */
 class AIEventController : public AIObject {
 public:
-	/**
-	 * The name of the class, needed by several sub-processes.
-	 */
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventController"; }
-
 	/**
 	 * Check if there is an event waiting.
 	 * @return true if there is an event on the stack.

@@ -19,9 +19,6 @@
  */
 class AIVehicle : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIVehicle"; }
-
 	/**
 	 * All vehicle related error messages.
 	 */

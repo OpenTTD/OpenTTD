@@ -21,9 +21,6 @@
  */
 class AIStationList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIStationList"; }
-
 	/**
 	 * @param station_type The type of station to make a list of stations for.
 	 */
@@ -36,9 +33,6 @@ public:
  */
 class AIStationList_Vehicle : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIStationList_Vehicle"; }
-
 	/**
 	 * @param vehicle_id The vehicle to get the list of stations he has in its orders from.
 	 */

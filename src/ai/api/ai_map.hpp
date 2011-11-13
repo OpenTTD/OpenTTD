@@ -22,9 +22,6 @@ class AIMap : public AIObject {
 public:
 	static const int TILE_INVALID = (int)INVALID_TILE; ///< Invalid TileIndex.
 
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIMap"; }
-
 	/**
 	 * Checks whether the given tile is valid.
 	 * @param tile The tile to check.

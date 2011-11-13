@@ -19,9 +19,6 @@
  */
 class AICargo : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AICargo"; }
-
 	/**
 	 * The classes of cargo (from newgrf_cargo.h).
 	 */

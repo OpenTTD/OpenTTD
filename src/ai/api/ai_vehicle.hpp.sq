@@ -28,6 +28,8 @@ namespace SQConvert {
 	template <> int Return<AIVehicle *>(HSQUIRRELVM vm, AIVehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicle", res, NULL, DefSQDestructorCallback<AIVehicle>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIVehicle>() { return "AIVehicle"; }
+
 void SQAIVehicle_Register(Squirrel *engine)
 {
 	DefSQClass <AIVehicle> SQAIVehicle("AIVehicle");

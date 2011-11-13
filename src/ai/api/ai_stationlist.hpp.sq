@@ -20,6 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIStationList *>(HSQUIRRELVM vm, AIStationList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList", res, NULL, DefSQDestructorCallback<AIStationList>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIStationList>() { return "AIStationList"; }
+
 void SQAIStationList_Register(Squirrel *engine)
 {
 	DefSQClass <AIStationList> SQAIStationList("AIStationList");
@@ -37,6 +39,8 @@ namespace SQConvert {
 	template <> const AIStationList_Vehicle &GetParam(ForceType<const AIStationList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList_Vehicle *)instance; }
 	template <> int Return<AIStationList_Vehicle *>(HSQUIRRELVM vm, AIStationList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList_Vehicle", res, NULL, DefSQDestructorCallback<AIStationList_Vehicle>); return 1; }
 } // namespace SQConvert
+
+template <> const char *GetClassName<AIStationList_Vehicle>() { return "AIStationList_Vehicle"; }
 
 void SQAIStationList_Vehicle_Register(Squirrel *engine)
 {

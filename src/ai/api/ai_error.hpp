@@ -43,9 +43,6 @@
  */
 class AIError : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIError"; }
-
 	/**
 	 * All categories errors can be divided in.
 	 */

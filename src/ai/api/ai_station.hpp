@@ -20,9 +20,6 @@
  */
 class AIStation : public AIBaseStation {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIStation"; }
-
 	/**
 	 * All station related error messages.
 	 */

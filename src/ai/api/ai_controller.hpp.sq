@@ -9,6 +9,8 @@
 
 #include "ai_controller.hpp"
 
+template <> const char *GetClassName<AIController>() { return "AIController"; }
+
 void SQAIController_Register(Squirrel *engine)
 {
 	DefSQClass <AIController> SQAIController("AIController");

@@ -19,9 +19,6 @@
  */
 class AIRail : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIRail"; }
-
 	/**
 	 * All rail related error messages.
 	 */

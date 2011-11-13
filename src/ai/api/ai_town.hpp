@@ -19,9 +19,6 @@
  */
 class AITown : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AITown"; }
-
 	/**
 	 * Actions that one can perform on a town.
 	 */

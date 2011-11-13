@@ -28,6 +28,8 @@ void AIScanner::RescanAIDir()
 	this->Scan(PATHSEP "library.nut", AI_LIBRARY_DIR);
 }
 
+template <> const char *GetClassName<AIInfo>() { return "AIInfo"; }
+
 AIScanner::AIScanner() :
 	ScriptScanner(),
 	info_dummy(NULL)

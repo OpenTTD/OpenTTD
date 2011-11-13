@@ -19,9 +19,6 @@
  */
 class AIRoad : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIRoad"; }
-
 	/**
 	 * All road related error messages.
 	 */

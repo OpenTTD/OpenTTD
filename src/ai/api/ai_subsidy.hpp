@@ -19,9 +19,6 @@
  */
 class AISubsidy : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AISubsidy"; }
-
 	/**
 	 * Enumeration for source and destination of a subsidy.
 	 * @note The list of values may grow in future.

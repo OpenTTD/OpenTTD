@@ -21,9 +21,6 @@
  */
 class AIDepotList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIDepotList"; }
-
 	/**
 	 * @param transport_type The type of transport to make a list of depots for.
 	 */

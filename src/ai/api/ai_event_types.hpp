@@ -21,9 +21,6 @@
  */
 class AIEventVehicleCrashed : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventVehicleCrashed"; }
-
 	/**
 	 * The reasons for vehicle crashes
 	 */
@@ -84,9 +81,6 @@ private:
  */
 class AIEventSubsidyOffer : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventSubsidyOffer"; }
-
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -117,9 +111,6 @@ private:
  */
 class AIEventSubsidyOfferExpired : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventSubsidyOfferExpired"; }
-
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -150,9 +141,6 @@ private:
  */
 class AIEventSubsidyAwarded : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventSubsidyAwarded"; }
-
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -183,9 +171,6 @@ private:
  */
 class AIEventSubsidyExpired : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventSubsidyExpired"; }
-
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
@@ -218,9 +203,6 @@ private:
  */
 class AIEventEnginePreview : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventEnginePreview"; }
-
 	/**
 	 * @param engine The engine offered to test.
 	 */
@@ -309,9 +291,6 @@ private:
  */
 class AIEventCompanyNew : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventCompanyNew"; }
-
 	/**
 	 * @param owner The new company.
 	 */
@@ -343,9 +322,6 @@ private:
  */
 class AIEventCompanyInTrouble : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventCompanyInTrouble"; }
-
 	/**
 	 * @param owner The company that is in trouble.
 	 */
@@ -376,9 +352,6 @@ private:
  */
 class AIEventCompanyAskMerger : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventCompanyAskMerger"; }
-
 	/**
 	 * @param owner The company that can be bough.
 	 * @param value The value/costs of buying the company.
@@ -426,9 +399,6 @@ private:
  */
 class AIEventCompanyMerger : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventCompanyMerger"; }
-
 	/**
 	 * @param old_owner The company bought off.
 	 * @param new_owner The company that bougth owner.
@@ -471,9 +441,6 @@ private:
  */
 class AIEventCompanyBankrupt : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventCompanyBankrupt"; }
-
 	/**
 	 * @param owner The company that has gone bankrupt.
 	 */
@@ -504,9 +471,6 @@ private:
  */
 class AIEventVehicleLost : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventVehicleLost"; }
-
 	/**
 	 * @param vehicle_id The vehicle that is lost.
 	 */
@@ -537,9 +501,6 @@ private:
  */
 class AIEventVehicleWaitingInDepot : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventVehicleWaitingInDepot"; }
-
 	/**
 	 * @param vehicle_id The vehicle that is waiting in a depot.
 	 */
@@ -570,9 +531,6 @@ private:
  */
 class AIEventVehicleUnprofitable : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventVehicleUnprofitable"; }
-
 	/**
 	 * @param vehicle_id The vehicle that was unprofitable.
 	 */
@@ -603,9 +561,6 @@ private:
  */
 class AIEventIndustryOpen : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventIndustryOpen"; }
-
 	/**
 	 * @param industry_id The new industry.
 	 */
@@ -636,9 +591,6 @@ private:
  */
 class AIEventIndustryClose : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventIndustryClose"; }
-
 	/**
 	 * @param industry_id The new industry.
 	 */
@@ -669,9 +621,6 @@ private:
  */
 class AIEventEngineAvailable : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventEngineAvailable"; }
-
 	/**
 	 * @param engine The engine that is available.
 	 */
@@ -702,9 +651,6 @@ private:
  */
 class AIEventStationFirstVehicle : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventStationFirstVehicle"; }
-
 	/**
 	 * @param station The station visited for the first time.
 	 * @param vehicle The vehicle visiting the station.
@@ -744,9 +690,6 @@ private:
  */
 class AIEventDisasterZeppelinerCrashed : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventDisasterZeppelinerCrashed"; }
-
 	/**
 	 * @param station The station containing the affected airport
 	 */
@@ -777,9 +720,6 @@ private:
  */
 class AIEventDisasterZeppelinerCleared : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventDisasterZeppelinerCleared"; }
-
 	/**
 	 * @param station The station containing the affected airport
 	 */
@@ -810,9 +750,6 @@ private:
  */
 class AIEventTownFounded : public AIEvent {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEventTownFounded"; }
-
 	/**
 	 * @param town The town that was created.
 	 */

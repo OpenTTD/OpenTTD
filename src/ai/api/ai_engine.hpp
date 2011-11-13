@@ -21,9 +21,6 @@
  */
 class AIEngine : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEngine"; }
-
 	/**
 	 * Checks whether the given engine type is valid. An engine is valid if you
 	 * have at least one vehicle of this engine or it's currently buildable.

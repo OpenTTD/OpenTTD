@@ -19,9 +19,6 @@
  */
 class AIOrder : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIOrder"; }
-
 	/**
 	 * All order related error messages.
 	 */

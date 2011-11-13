@@ -21,9 +21,6 @@
  */
 class AITileList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AITileList"; }
-
 	/**
 	 * Adds the rectangle between tile_from and tile_to to the to-be-evaluated tiles.
 	 * @param tile_from One corner of the tiles to add.
@@ -64,9 +61,6 @@ public:
  */
 class AITileList_IndustryAccepting : public AITileList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AITileList_IndustryAccepting"; }
-
 	/**
 	 * @param industry_id The industry to create the AITileList around.
 	 * @param radius The radius of the station you will be using.
@@ -83,9 +77,6 @@ public:
  */
 class AITileList_IndustryProducing : public AITileList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AITileList_IndustryProducing"; }
-
 	/**
 	 * @param industry_id The industry to create the AITileList around.
 	 * @param radius The radius of the station you will be using.
@@ -102,9 +93,6 @@ public:
  */
 class AITileList_StationType : public AITileList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AITileList_StationType"; }
-
 	/**
 	 * @param station_id The station to create the AITileList for.
 	 * @param station_type The StationType to create the AIList for.

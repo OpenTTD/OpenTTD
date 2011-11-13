@@ -23,9 +23,6 @@ class AILog : public AIObject {
 	friend class AIController;
 
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AILog"; }
-
 #ifndef EXPORT_SKIP
 	/**
 	 * Log levels; The value is also feed to DEBUG() lvl.

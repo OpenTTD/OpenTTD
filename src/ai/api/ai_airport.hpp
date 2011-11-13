@@ -19,9 +19,6 @@
  */
 class AIAirport : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIAirport"; }
-
 	/**
 	 * The types of airports available in the game.
 	 */

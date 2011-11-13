@@ -19,6 +19,8 @@
 #include "../string_func.h"
 #include "squirrel_helper_type.hpp"
 
+template <class CL> const char *GetClassName();
+
 /**
  * The Squirrel convert routines
  */
@@ -766,7 +768,8 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		sq_pushstring(vm, OTTD2SQ(Tcls::GetClassName()), -1);
+		const char *className = GetClassName<Tcls>();
+		sq_pushstring(vm, OTTD2SQ(className), -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
 		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, _SC("class method is non-static"));
@@ -808,7 +811,8 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		sq_pushstring(vm, OTTD2SQ(Tcls::GetClassName()), -1);
+		const char *className = GetClassName<Tcls>();
+		sq_pushstring(vm, OTTD2SQ(className), -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
 		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, _SC("class method is non-static"));

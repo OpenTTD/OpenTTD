@@ -20,6 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIIndustryTypeList *>(HSQUIRRELVM vm, AIIndustryTypeList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryTypeList", res, NULL, DefSQDestructorCallback<AIIndustryTypeList>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIIndustryTypeList>() { return "AIIndustryTypeList"; }
+
 void SQAIIndustryTypeList_Register(Squirrel *engine)
 {
 	DefSQClass <AIIndustryTypeList> SQAIIndustryTypeList("AIIndustryTypeList");

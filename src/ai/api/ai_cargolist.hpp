@@ -20,8 +20,6 @@
  */
 class AICargoList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AICargoList"; }
 	AICargoList();
 };
 
@@ -33,9 +31,6 @@ public:
  */
 class AICargoList_IndustryAccepting : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AICargoList_IndustryAccepting"; }
-
 	/**
 	 * @param industry_id The industry to get the list of cargos it accepts from.
 	 */
@@ -48,9 +43,6 @@ public:
  */
 class AICargoList_IndustryProducing : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AICargoList_IndustryProducing"; }
-
 	/**
 	 * @param industry_id The industry to get the list of cargos it produces from.
 	 */
@@ -63,9 +55,6 @@ public:
  */
 class AICargoList_StationAccepting : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AICargoList_StationAccepting"; }
-
 	/**
 	 * @param station_id The station to get the list of cargos it accepts from.
 	 */

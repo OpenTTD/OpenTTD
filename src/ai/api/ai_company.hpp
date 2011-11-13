@@ -19,9 +19,6 @@
  */
 class AICompany : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AICompany"; }
-
 	/** The range of possible quarters to get company information of. */
 	enum Quarter {
 		CURRENT_QUARTER = 0,                     ///< The current quarter.

@@ -21,9 +21,6 @@
  */
 class AIWaypointList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIWaypointList"; }
-
 	/**
 	 * @param waypoint_type The type of waypoint to make a list of waypoints for.
 	 */
@@ -36,9 +33,6 @@ public:
  */
 class AIWaypointList_Vehicle : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIWaypointList_Vehicle"; }
-
 	/**
 	 * @param vehicle_id The vehicle to get the list of waypoints he has in its orders from.
 	 */

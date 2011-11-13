@@ -39,9 +39,6 @@ public:
 		ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT, // [STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT]
 	};
 
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIBridge"; }
-
 	/**
 	 * Checks whether the given bridge type is valid.
 	 * @param bridge_id The bridge to check.

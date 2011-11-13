@@ -29,9 +29,6 @@
  */
 class AIAccounting : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIAccounting"; }
-
 	/**
 	 * Creating instance of this class starts counting the costs of commands
 	 *   from zero. Saves the current value of GetCosts so we can return to

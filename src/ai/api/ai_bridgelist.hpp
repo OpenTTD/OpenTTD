@@ -20,8 +20,6 @@
  */
 class AIBridgeList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIBridgeList"; }
 	AIBridgeList();
 };
 
@@ -31,9 +29,6 @@ public:
  */
 class AIBridgeList_Length : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIBridgeList_Length"; }
-
 	/**
 	 * @param length The length of the bridge you want to build.
 	 */

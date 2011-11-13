@@ -26,6 +26,8 @@ namespace SQConvert {
 	template <> int Return<AIWaypoint *>(HSQUIRRELVM vm, AIWaypoint *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypoint", res, NULL, DefSQDestructorCallback<AIWaypoint>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIWaypoint>() { return "AIWaypoint"; }
+
 void SQAIWaypoint_Register(Squirrel *engine)
 {
 	DefSQClass <AIWaypoint> SQAIWaypoint("AIWaypoint");

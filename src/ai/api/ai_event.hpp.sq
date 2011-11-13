@@ -24,6 +24,8 @@ namespace SQConvert {
 	template <> int Return<AIEvent *>(HSQUIRRELVM vm, AIEvent *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, "AIEvent", res, NULL, DefSQDestructorCallback<AIEvent>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIEvent>() { return "AIEvent"; }
+
 void SQAIEvent_Register(Squirrel *engine)
 {
 	DefSQClass <AIEvent> SQAIEvent("AIEvent");
@@ -67,6 +69,8 @@ namespace SQConvert {
 	template <> const AIEventController &GetParam(ForceType<const AIEventController &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventController *)instance; }
 	template <> int Return<AIEventController *>(HSQUIRRELVM vm, AIEventController *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventController", res, NULL, DefSQDestructorCallback<AIEventController>); return 1; }
 } // namespace SQConvert
+
+template <> const char *GetClassName<AIEventController>() { return "AIEventController"; }
 
 void SQAIEventController_Register(Squirrel *engine)
 {

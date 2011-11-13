@@ -24,9 +24,6 @@ class AIController {
 	friend class AIInstance;
 
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIController"; }
-
 	/**
 	 * Initializer of the AIController.
 	 */

@@ -24,10 +24,6 @@
  *   the cost would be.
  */
 class AITestMode : public AIObject {
-public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AITestMode"; }
-
 private:
 	AIModeProc *last_mode;   ///< The previous mode we were in.
 	AIObject *last_instance; ///< The previous instace of the mode.

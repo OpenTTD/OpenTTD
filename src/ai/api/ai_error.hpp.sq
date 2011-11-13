@@ -26,6 +26,8 @@ namespace SQConvert {
 	template <> int Return<AIError *>(HSQUIRRELVM vm, AIError *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIError", res, NULL, DefSQDestructorCallback<AIError>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIError>() { return "AIError"; }
+
 void SQAIError_Register(Squirrel *engine)
 {
 	DefSQClass <AIError> SQAIError("AIError");

@@ -24,9 +24,6 @@ class AIListSorter;
  */
 class AIList : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIList"; }
-
 	/** Type of sorter */
 	enum SorterType {
 		SORT_BY_VALUE, ///< Sort the list based on the value of the item.

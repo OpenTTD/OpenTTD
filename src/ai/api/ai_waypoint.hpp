@@ -19,9 +19,6 @@
  */
 class AIWaypoint : public AIBaseStation {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIWaypoint"; }
-
 	/**
 	 * Type of waypoints known in the game.
 	 */

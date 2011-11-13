@@ -209,6 +209,9 @@ BEGIN {
 	print "} // namespace SQConvert"
 
 	print "";
+	print "template <> const char *GetClassName<" cls ">() { return \"" cls "\"; }"
+	print "";
+
 	# Then do the registration functions of the class. */
 	print "void SQ" cls "_Register(Squirrel *engine)"
 	print "{"
@@ -414,7 +417,6 @@ BEGIN {
 		cls_param[1] = len;
 		cls_param[2] = types;
 	} else if (substr(funcname, 0, 1) == "_" && types != "v") {
-	} else if (funcname == "GetClassName" && types == ".") {
 	} else if (is_static) {
 		static_method_size++
 		static_methods[static_method_size, 0] = funcname

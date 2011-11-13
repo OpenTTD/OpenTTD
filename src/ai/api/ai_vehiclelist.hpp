@@ -21,8 +21,6 @@
  */
 class AIVehicleList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIVehicleList"; }
 	AIVehicleList();
 };
 
@@ -32,9 +30,6 @@ public:
  */
 class AIVehicleList_Station : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIVehicleList_Station"; }
-
 	/**
 	 * @param station_id The station to get the list of vehicles from, which have orders to it.
 	 * @pre AIBaseStation::IsValidBaseStation(station_id)
@@ -52,9 +47,6 @@ public:
  */
 class AIVehicleList_Depot : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIVehicleList_Depot"; }
-
 	/**
 	 * @param tile The tile of the depot to get the list of vehicles from, which have orders to it.
 	 */
@@ -67,9 +59,6 @@ public:
  */
 class AIVehicleList_SharedOrders : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIVehicleList_SharedOrders"; }
-
 	/**
 	 * @param vehicle_id The vehicle that the rest shared orders with.
 	 */
@@ -82,9 +71,6 @@ public:
  */
 class AIVehicleList_Group : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIVehicleList_Group"; }
-
 	/**
 	 * @param group_id The ID of the group the vehicles are in.
 	 */
@@ -97,9 +83,6 @@ public:
  */
 class AIVehicleList_DefaultGroup : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIVehicleList_DefaultGroup"; }
-
 	/**
 	 * @param vehicle_type The VehicleType to get the list of vehicles for.
 	 */

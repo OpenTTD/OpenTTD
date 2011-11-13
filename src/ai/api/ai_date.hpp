@@ -26,9 +26,6 @@
  */
 class AIDate : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIDate"; }
-
 	/**
 	 * Get the current date.
 	 * This is the number of days since epoch under the assumption that

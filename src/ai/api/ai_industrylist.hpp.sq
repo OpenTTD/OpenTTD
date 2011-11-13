@@ -20,6 +20,8 @@ namespace SQConvert {
 	template <> int Return<AIIndustryList *>(HSQUIRRELVM vm, AIIndustryList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryList", res, NULL, DefSQDestructorCallback<AIIndustryList>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIIndustryList>() { return "AIIndustryList"; }
+
 void SQAIIndustryList_Register(Squirrel *engine)
 {
 	DefSQClass <AIIndustryList> SQAIIndustryList("AIIndustryList");
@@ -38,6 +40,8 @@ namespace SQConvert {
 	template <> int Return<AIIndustryList_CargoAccepting *>(HSQUIRRELVM vm, AIIndustryList_CargoAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryList_CargoAccepting", res, NULL, DefSQDestructorCallback<AIIndustryList_CargoAccepting>); return 1; }
 } // namespace SQConvert
 
+template <> const char *GetClassName<AIIndustryList_CargoAccepting>() { return "AIIndustryList_CargoAccepting"; }
+
 void SQAIIndustryList_CargoAccepting_Register(Squirrel *engine)
 {
 	DefSQClass <AIIndustryList_CargoAccepting> SQAIIndustryList_CargoAccepting("AIIndustryList_CargoAccepting");
@@ -55,6 +59,8 @@ namespace SQConvert {
 	template <> const AIIndustryList_CargoProducing &GetParam(ForceType<const AIIndustryList_CargoProducing &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustryList_CargoProducing *)instance; }
 	template <> int Return<AIIndustryList_CargoProducing *>(HSQUIRRELVM vm, AIIndustryList_CargoProducing *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryList_CargoProducing", res, NULL, DefSQDestructorCallback<AIIndustryList_CargoProducing>); return 1; }
 } // namespace SQConvert
+
+template <> const char *GetClassName<AIIndustryList_CargoProducing>() { return "AIIndustryList_CargoProducing"; }
 
 void SQAIIndustryList_CargoProducing_Register(Squirrel *engine)
 {

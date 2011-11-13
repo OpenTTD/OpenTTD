@@ -21,9 +21,6 @@
  */
 class AIEngineList : public AIList {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIEngineList"; }
-
 	/**
 	 * @param vehicle_type The type of vehicle to make a list of engines for.
 	 */

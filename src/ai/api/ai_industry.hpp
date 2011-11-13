@@ -19,9 +19,6 @@
  */
 class AIIndustry : public AIObject {
 public:
-	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIIndustry"; }
-
 	/** Ways for an industry to accept a cargo. */
 	enum CargoAcceptState {
 		CAS_NOT_ACCEPTED, ///< The CargoID is not accepted by this industry.
