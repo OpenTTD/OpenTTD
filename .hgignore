@@ -1,5 +1,6 @@
 syntax: glob
 
+.svn
 bin/data/openttd.32.bmp
 bin/lang/*
 bin/openttd*
