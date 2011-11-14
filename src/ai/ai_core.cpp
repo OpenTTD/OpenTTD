@@ -17,6 +17,7 @@
 #include "../network/network.h"
 #include "../window_func.h"
 #include "../command_func.h"
+#include "../fileio_func.h"
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"
@@ -136,7 +137,10 @@
 	if (AI::ai_scanner != NULL) AI::Uninitialize(true);
 
 	AI::frame_counter = 0;
-	if (AI::ai_scanner == NULL) AI::ai_scanner = new AIScanner();
+	if (AI::ai_scanner == NULL) {
+		TarScanner::DoScan(TarScanner::AI);
+		AI::ai_scanner = new AIScanner();
+	}
 }
 
 /* static */ void AI::Uninitialize(bool keepConfig)
@@ -325,6 +329,8 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 
 /* static */ void AI::Rescan()
 {
+	TarScanner::DoScan(TarScanner::AI);
+
 	AI::ai_scanner->RescanAIDir();
 	ResetConfig();
 

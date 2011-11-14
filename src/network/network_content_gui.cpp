@@ -91,7 +91,7 @@ public:
 			switch (*iter) {
 				case CONTENT_TYPE_AI:
 				case CONTENT_TYPE_AI_LIBRARY:
-					mode |= TarScanner::AI;
+					/* AI::Rescan calls the scanner. */
 					break;
 
 				case CONTENT_TYPE_BASE_GRAPHICS:
@@ -101,7 +101,7 @@ public:
 					break;
 
 				case CONTENT_TYPE_NEWGRF:
-					mode |= TarScanner::NEWGRF;
+					/* ScanNewGRFFiles calls the scanner. */
 					break;
 
 				case CONTENT_TYPE_SCENARIO:

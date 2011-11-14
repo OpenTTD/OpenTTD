@@ -1251,7 +1251,6 @@ DEF_CONSOLE_CMD(ConRescanAI)
 		return true;
 	}
 
-	TarScanner::DoScan(TarScanner::AI);
 	AI::Rescan();
 
 	return true;
@@ -1265,7 +1264,6 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 		return true;
 	}
 
-	TarScanner::DoScan(TarScanner::NEWGRF);
 	ScanNewGRFFiles(NULL);
 
 	return true;

@@ -635,6 +635,7 @@ void DoScanNewGRFFiles(void *callback)
 	_modal_progress_work_mutex->BeginCritical();
 
 	ClearGRFConfigList(&_all_grfs);
+	TarScanner::DoScan(TarScanner::NEWGRF);
 
 	DEBUG(grf, 1, "Scanning for NewGRFs");
 	uint num = GRFFileScanner::DoScan();
