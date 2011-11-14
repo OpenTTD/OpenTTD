@@ -60,9 +60,9 @@ bool AppendPathSeparator(char *buf, size_t buflen);
 void DeterminePaths(const char *exe);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const char *filename);
-const char *FioTarFirstDir(const char *tarname);
-void FioTarAddLink(const char *src, const char *dest);
-bool ExtractTar(const char *tar_filename);
+const char *FioTarFirstDir(const char *tarname, Subdirectory subdir);
+void FioTarAddLink(const char *src, const char *dest, Subdirectory subdir);
+bool ExtractTar(const char *tar_filename, Subdirectory subdir);
 
 extern char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 
@@ -90,6 +90,7 @@ public:
 
 /** Helper for scanning for files with tar as extension */
 class TarScanner : FileScanner {
+	uint DoScan(Subdirectory sd);
 public:
 	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = NULL);
 

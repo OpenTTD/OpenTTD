@@ -284,11 +284,11 @@ static const char * const _subdirs[] = {
 assert_compile(lengthof(_subdirs) == NUM_SUBDIRS);
 
 const char *_searchpaths[NUM_SEARCHPATHS];
-TarList _tar_list;
-TarFileList _tar_filelist;
+TarList _tar_list[NUM_SUBDIRS];
+TarFileList _tar_filelist[NUM_SUBDIRS];
 
 typedef std::map<std::string, std::string> TarLinkList;
-static TarLinkList _tar_linklist; ///< List of directory links
+static TarLinkList _tar_linklist[NUM_SUBDIRS]; ///< List of directory links
 
 /**
  * Check whether the given file exists
@@ -467,7 +467,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 	}
 
 	/* We can only use .tar in case of data-dir, and read-mode */
-	if (f == NULL && mode[0] == 'r') {
+	if (f == NULL && mode[0] == 'r' && subdir != NO_DIRECTORY) {
 		static const uint MAX_RESOLVED_LENGTH = 2 * (100 + 100 + 155) + 1; // Enough space to hold two filenames plus link. See 'TarHeader'.
 		char resolved_name[MAX_RESOLVED_LENGTH];
 
@@ -478,7 +478,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		size_t resolved_len = strlen(resolved_name);
 
 		/* Resolve ONE directory link */
-		for (TarLinkList::iterator link = _tar_linklist.begin(); link != _tar_linklist.end(); link++) {
+		for (TarLinkList::iterator link = _tar_linklist[subdir].begin(); link != _tar_linklist[subdir].end(); link++) {
 			const std::string &src = link->first;
 			size_t len = src.length();
 			if (resolved_len >= len && resolved_name[len - 1] == PATHSEPCHAR && strncmp(src.c_str(), resolved_name, len) == 0) {
@@ -492,8 +492,8 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 			}
 		}
 
-		TarFileList::iterator it = _tar_filelist.find(resolved_name);
-		if (it != _tar_filelist.end()) {
+		TarFileList::iterator it = _tar_filelist[subdir].find(resolved_name);
+		if (it != _tar_filelist[subdir].end()) {
 			f = FioFOpenFileTar(&((*it).second), filesize);
 		}
 	}
@@ -582,15 +582,16 @@ char *BuildWithFullPath(const char *dir)
 /**
  * Find the first directory in a tar archive.
  * @param tarname the name of the tar archive to look in.
+ * @param subdir  the subdirectory to look in.
  */
-const char *FioTarFirstDir(const char *tarname)
+const char *FioTarFirstDir(const char *tarname, Subdirectory subdir)
 {
-	TarList::iterator it = _tar_list.find(tarname);
-	if (it == _tar_list.end()) return NULL;
+	TarList::iterator it = _tar_list[subdir].find(tarname);
+	if (it == _tar_list[subdir].end()) return NULL;
 	return (*it).second.dirname;
 }
 
-static void TarAddLink(const std::string &srcParam, const std::string &destParam)
+static void TarAddLink(const std::string &srcParam, const std::string &destParam, Subdirectory subdir)
 {
 	std::string src = srcParam;
 	std::string dest = destParam;
@@ -598,22 +599,22 @@ static void TarAddLink(const std::string &srcParam, const std::string &destParam
 	std::transform(src.begin(), src.end(), src.begin(), tolower);
 	std::transform(dest.begin(), dest.end(), dest.begin(), tolower);
 
-	TarFileList::iterator dest_file = _tar_filelist.find(dest);
-	if (dest_file != _tar_filelist.end()) {
+	TarFileList::iterator dest_file = _tar_filelist[subdir].find(dest);
+	if (dest_file != _tar_filelist[subdir].end()) {
 		/* Link to file. Process the link like the destination file. */
-		_tar_filelist.insert(TarFileList::value_type(src, dest_file->second));
+		_tar_filelist[subdir].insert(TarFileList::value_type(src, dest_file->second));
 	} else {
 		/* Destination file not found. Assume 'link to directory'
 		 * Append PATHSEPCHAR to 'src' and 'dest' if needed */
 		const std::string src_path = ((*src.rbegin() == PATHSEPCHAR) ? src : src + PATHSEPCHAR);
 		const std::string dst_path = (dest.length() == 0 ? "" : ((*dest.rbegin() == PATHSEPCHAR) ? dest : dest + PATHSEPCHAR));
-		_tar_linklist.insert(TarLinkList::value_type(src_path, dst_path));
+		_tar_linklist[subdir].insert(TarLinkList::value_type(src_path, dst_path));
 	}
 }
 
-void FioTarAddLink(const char *src, const char *dest)
+void FioTarAddLink(const char *src, const char *dest, Subdirectory subdir)
 {
-	TarAddLink(src, dest);
+	TarAddLink(src, dest, subdir);
 }
 
 /**
@@ -632,17 +633,26 @@ static void SimplifyFileName(char *name)
 #endif
 }
 
+/**
+ * Perform the scanning of a particular subdirectory.
+ * @param subdir The subdirectory to scan.
+ * @return The number of found tar files.
+ */
+uint TarScanner::DoScan(Subdirectory sd)
+{
+	_tar_filelist[sd].clear();
+	_tar_list[sd].clear();
+	return this->Scan(".tar", sd, false);
+}
+
 /* static */ uint TarScanner::DoScan()
 {
-	_tar_filelist.clear();
-	_tar_list.clear();
-
 	DEBUG(misc, 1, "Scanning for tars");
 	TarScanner fs;
-	uint num = fs.Scan(".tar", NEWGRF_DIR, false);
-	num += fs.Scan(".tar", AI_DIR, false);
-	num += fs.Scan(".tar", AI_LIBRARY_DIR, false);
-	num += fs.Scan(".tar", SCENARIO_DIR, false);
+	uint num = fs.DoScan(NEWGRF_DIR);
+	num += fs.DoScan(AI_DIR);
+	num += fs.DoScan(AI_LIBRARY_DIR);
+	num += fs.DoScan(SCENARIO_DIR);
 	DEBUG(misc, 1, "Scan complete, found %d files", num);
 	return num;
 }
@@ -675,8 +685,8 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 	} TarHeader;
 
 	/* Check if we already seen this file */
-	TarList::iterator it = _tar_list.find(filename);
-	if (it != _tar_list.end()) return false;
+	TarList::iterator it = _tar_list[this->subdir].find(filename);
+	if (it != _tar_list[this->subdir].end()) return false;
 
 	FILE *f = fopen(filename, "rb");
 	/* Although the file has been found there can be
@@ -686,8 +696,8 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 	if (f == NULL) return false;
 
 	const char *dupped_filename = strdup(filename);
-	_tar_list[filename].filename = dupped_filename;
-	_tar_list[filename].dirname = NULL;
+	_tar_list[this->subdir][filename].filename = dupped_filename;
+	_tar_list[this->subdir][filename].dirname = NULL;
 
 	TarLinkList links; ///< Temporary list to collect links
 
@@ -755,7 +765,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 				SimplifyFileName(name);
 
 				DEBUG(misc, 6, "Found file in tar: %s (" PRINTF_SIZE " bytes, " PRINTF_SIZE " offset)", name, skip, pos);
-				if (_tar_filelist.insert(TarFileList::value_type(name, entry)).second) num++;
+				if (_tar_filelist[this->subdir].insert(TarFileList::value_type(name, entry)).second) num++;
 
 				break;
 			}
@@ -828,7 +838,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 				/* Store the first directory name we detect */
 				DEBUG(misc, 6, "Found dir in tar: %s", name);
-				if (_tar_list[filename].dirname == NULL) _tar_list[filename].dirname = strdup(name);
+				if (_tar_list[this->subdir][filename].dirname == NULL) _tar_list[this->subdir][filename].dirname = strdup(name);
 				break;
 
 			default:
@@ -857,7 +867,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 	for (TarLinkList::iterator link = links.begin(); link != links.end(); link++) {
 		const std::string &src = link->first;
 		const std::string &dest = link->second;
-		TarAddLink(src, dest);
+		TarAddLink(src, dest, this->subdir);
 	}
 
 	return true;
@@ -867,13 +877,14 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
  * Extract the tar with the given filename in the directory
  * where the tar resides.
  * @param tar_filename the name of the tar to extract.
+ * @param subdir The sub directory the tar is in.
  * @return false on failure.
  */
-bool ExtractTar(const char *tar_filename)
+bool ExtractTar(const char *tar_filename, Subdirectory subdir)
 {
-	TarList::iterator it = _tar_list.find(tar_filename);
+	TarList::iterator it = _tar_list[subdir].find(tar_filename);
 	/* We don't know the file. */
-	if (it == _tar_list.end()) return false;
+	if (it == _tar_list[subdir].end()) return false;
 
 	const char *dirname = (*it).second.dirname;
 
@@ -891,7 +902,7 @@ bool ExtractTar(const char *tar_filename)
 	DEBUG(misc, 8, "Extracting %s to directory %s", tar_filename, filename);
 	FioCreateDirectory(filename);
 
-	for (TarFileList::iterator it2 = _tar_filelist.begin(); it2 != _tar_filelist.end(); it2++) {
+	for (TarFileList::iterator it2 = _tar_filelist[subdir].begin(); it2 != _tar_filelist[subdir].end(); it2++) {
 		if (strcmp((*it2).second.tar_filename, tar_filename) != 0) continue;
 
 		strecpy(p, (*it2).first.c_str(), lastof(filename));
@@ -1335,8 +1346,8 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 		num += ScanPath(this, extension, path, strlen(path), recursive);
 	}
 
-	if (tars) {
-		FOR_ALL_TARS(tar) {
+	if (tars && sd != NO_DIRECTORY) {
+		FOR_ALL_TARS(tar, sd) {
 			num += ScanTar(this, extension, tar);
 		}
 	}

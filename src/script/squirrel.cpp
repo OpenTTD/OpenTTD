@@ -429,6 +429,7 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 {
 	size_t size;
 	FILE *file = FioFOpenFile(filename, "rb", AI_DIR, &size);
+	if (file == NULL) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
 	SQInteger ret;
 	unsigned short us;
 	unsigned char uc;
