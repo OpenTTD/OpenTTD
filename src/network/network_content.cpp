@@ -376,7 +376,7 @@ static char *GetFullFilename(const ContentInfo *ci, bool compressed)
 	switch (ci->type) {
 		default: return NULL;
 		case CONTENT_TYPE_BASE_GRAPHICS: dir = BASESET_DIR;    break;
-		case CONTENT_TYPE_BASE_MUSIC:    dir = GM_DIR;         break;
+		case CONTENT_TYPE_BASE_MUSIC:    dir = BASESET_DIR;    break;
 		case CONTENT_TYPE_BASE_SOUNDS:   dir = BASESET_DIR;    break;
 		case CONTENT_TYPE_NEWGRF:        dir = NEWGRF_DIR;     break;
 		case CONTENT_TYPE_AI:            dir = AI_DIR;         break;
@@ -535,7 +535,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
-			ExtractTar(GetFullFilename(this->curInfo, false), GM_DIR);
+			ExtractTar(GetFullFilename(this->curInfo, false), BASESET_DIR);
 			unlink(GetFullFilename(this->curInfo, false));
 		}
 

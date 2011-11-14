@@ -276,7 +276,8 @@ static const char * const _subdirs[] = {
 	"scenario" PATHSEP "heightmap" PATHSEP,
 	"gm" PATHSEP,
 	"data" PATHSEP,
-	"data" PATHSEP,
+	"baseset" PATHSEP,
+	"newgrf" PATHSEP,
 	"lang" PATHSEP,
 	"ai" PATHSEP,
 	"ai" PATHSEP "library" PATHSEP,
@@ -501,7 +502,17 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 	/* Sometimes a full path is given. To support
 	 * the 'subdirectory' must be 'removed'. */
 	if (f == NULL && subdir != NO_DIRECTORY) {
-		f = FioFOpenFile(filename, mode, NO_DIRECTORY, filesize);
+		switch (subdir) {
+			case BASESET_DIR:
+				f = FioFOpenFile(filename, mode, OLD_GM_DIR, filesize);
+			case NEWGRF_DIR:
+				f = FioFOpenFile(filename, mode, OLD_DATA_DIR, filesize);
+				break;
+
+			default:
+				f = FioFOpenFile(filename, mode, NO_DIRECTORY, filesize);
+				break;
+		}
 	}
 
 	return f;
@@ -642,7 +653,9 @@ uint TarScanner::DoScan(Subdirectory sd)
 {
 	_tar_filelist[sd].clear();
 	_tar_list[sd].clear();
-	return this->Scan(".tar", sd, false);
+	uint num = this->Scan(".tar", sd, false);
+	if (sd == BASESET_DIR || sd == NEWGRF_DIR) num += this->Scan(".tar", OLD_DATA_DIR, false);
+	return num;
 }
 
 /* static */ uint TarScanner::DoScan(TarScanner::Mode mode)
@@ -650,8 +663,10 @@ uint TarScanner::DoScan(Subdirectory sd)
 	DEBUG(misc, 1, "Scanning for tars");
 	TarScanner fs;
 	uint num = 0;
-	if (mode & (TarScanner::BASESET | TarScanner::NEWGRF)) {
+	if (mode & TarScanner::BASESET) {
 		num += fs.DoScan(BASESET_DIR);
+	}
+	if (mode & TarScanner::NEWGRF) {
 		num += fs.DoScan(NEWGRF_DIR);
 	}
 	if (mode & TarScanner::AI) {
@@ -1181,7 +1196,7 @@ void DeterminePaths(const char *exe)
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
-	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GM_DIR };
+	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
 		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], _subdirs[dirs[i]]);
 		FioCreateDirectory(tmp);

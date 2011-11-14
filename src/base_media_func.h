@@ -131,7 +131,7 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 			file->missing_warning = strdup(item->value);
 		}
 
-		switch (file->CheckMD5(Tsearch_in_tars ? BASESET_DIR : GM_DIR)) {
+		switch (file->CheckMD5(BASESET_DIR)) {
 			case MD5File::CR_MATCH:
 				this->valid_files++;
 				/* FALL THROUGH */
@@ -155,7 +155,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 
 	Tbase_set *set = new Tbase_set();
 	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(filename, Tbase_set::SEARCH_IN_TARS ? BASESET_DIR : GM_DIR);
+	ini->LoadFromDisk(filename, BASESET_DIR);
 
 	char *path = strdup(filename + basepath_length);
 	char *psep = strrchr(path, PATHSEPCHAR);

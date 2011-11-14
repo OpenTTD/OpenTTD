@@ -178,7 +178,7 @@ static void MusicVolumeChanged(byte new_vol)
 static void DoPlaySong()
 {
 	char filename[MAX_PATH];
-	FioFindFullPath(filename, lengthof(filename), GM_DIR,
+	FioFindFullPath(filename, lengthof(filename), BASESET_DIR,
 			BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename);
 	_music_driver->PlaySong(filename);
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
@@ -200,7 +200,7 @@ static void SelectSongToPlay()
 		const char *filename = BaseMusic::GetUsedSet()->files[_playlists[_settings_client.music.playlist][i] - 1].filename;
 		/* We are now checking for the existence of that file prior
 		 * to add it to the list of available songs */
-		if (!StrEmpty(filename) && FioCheckFileExists(filename, GM_DIR)) {
+		if (!StrEmpty(filename) && FioCheckFileExists(filename, BASESET_DIR)) {
 			_cur_playlist[j] = _playlists[_settings_client.music.playlist][i];
 			j++;
 		}

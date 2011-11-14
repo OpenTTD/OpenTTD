@@ -164,8 +164,9 @@ public:
 	static uint FindSets()
 	{
 		BaseMedia<Tbase_set> fs;
-		/* Searching in tars is only done in the sound and graphics base sets. */
-		return fs.Scan(GetExtension(), Tbase_set::SEARCH_IN_TARS ? BASESET_DIR : GM_DIR, Tbase_set::SEARCH_IN_TARS);
+		/* Searching in tars is only done in the old "data" directories basesets. */
+		uint num = fs.Scan(GetExtension(), Tbase_set::SEARCH_IN_TARS ? OLD_DATA_DIR : OLD_GM_DIR, Tbase_set::SEARCH_IN_TARS);
+		return num + fs.Scan(GetExtension(), BASESET_DIR, Tbase_set::SEARCH_IN_TARS);
 	}
 
 	static bool SetSet(const char *name);
