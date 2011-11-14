@@ -1181,7 +1181,7 @@ void DeterminePaths(const char *exe)
 #endif
 
 	static const Subdirectory default_subdirs[] = {
-		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR
+		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR
 	};
 
 	for (uint i = 0; i < lengthof(default_subdirs); i++) {
