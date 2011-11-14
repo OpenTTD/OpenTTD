@@ -251,10 +251,10 @@ $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 $(BIN_DIR)/$(TTD): $(TTD)
 	$(Q)cp $(TTD) $(BIN_DIR)/$(TTD)
 ifeq ($(OS), UNIX)
-	$(Q)cp $(MEDIA_DIR)/openttd.32.bmp $(BIN_DIR)/data/
+	$(Q)cp $(MEDIA_DIR)/openttd.32.bmp $(BIN_DIR)/baseset/
 endif
 ifeq ($(OS), OSX)
-	$(Q)cp $(ROOT_DIR)/os/macosx/splash.png $(BIN_DIR)/data/
+	$(Q)cp $(ROOT_DIR)/os/macosx/splash.png $(BIN_DIR)/baseset/
 endif
 
 $(TTD): $(OBJS) $(CONFIG_CACHE_LINKER)

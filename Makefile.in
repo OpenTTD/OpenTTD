@@ -148,7 +148,7 @@ mrproper:
 distclean: mrproper
 
 maintainer-clean: distclean
-	$(Q)rm -f $(BIN_DIR)/data/openttd.grf
+	$(Q)rm -f $(BIN_DIR)/baseset/openttd.grf
 
 depend:
 	@for dir in $(SRC_DIRS); do \

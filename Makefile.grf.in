@@ -20,7 +20,7 @@
 
 ROOT_DIR = !!ROOT_DIR!!
 GRF_DIR  = $(ROOT_DIR)/media/extra_grf
-BIN_DIR  = !!BIN_DIR!!/data
+BIN_DIR  = !!BIN_DIR!!/baseset
 OBJS_DIR = !!GRF_OBJS_DIR!!
 OS       = !!OS!!
 STAGE    = !!STAGE!!

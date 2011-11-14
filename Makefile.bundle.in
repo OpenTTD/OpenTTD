@@ -29,17 +29,15 @@ endif
 
 # An OSX application bundle needs the data files, lang files and openttd executable in a different location.
 ifdef OSXAPP
-AI_DIR   = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/ai
-DATA_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/data
-LANG_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/lang
-GM_DIR   = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/gm
-TTD_DIR  = $(BUNDLE_DIR)/$(OSXAPP)/Contents/MacOS
+AI_DIR      = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/ai
+BASESET_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/baseset
+LANG_DIR    = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/lang
+TTD_DIR     = $(BUNDLE_DIR)/$(OSXAPP)/Contents/MacOS
 else
-AI_DIR   = $(BUNDLE_DIR)/ai
-DATA_DIR = $(BUNDLE_DIR)/data
-LANG_DIR = $(BUNDLE_DIR)/lang
-GM_DIR   = $(BUNDLE_DIR)/gm
-TTD_DIR  = $(BUNDLE_DIR)
+AI_DIR      = $(BUNDLE_DIR)/ai
+BASESET_DIR = $(BUNDLE_DIR)/baseset
+LANG_DIR    = $(BUNDLE_DIR)/lang
+TTD_DIR     = $(BUNDLE_DIR)
 endif
 
 bundle: all
@@ -51,27 +49,26 @@ bundle: all
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
 	$(Q)mkdir -p "$(TTD_DIR)"
 	$(Q)mkdir -p "$(AI_DIR)"
-	$(Q)mkdir -p "$(DATA_DIR)"
+	$(Q)mkdir -p "$(BASESET_DIR)"
 	$(Q)mkdir -p "$(LANG_DIR)"
-	$(Q)mkdir -p "$(GM_DIR)"
 ifdef OSXAPP
 	$(Q)mkdir -p "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources"
 	$(Q)echo "APPL????" >                                          "$(BUNDLE_DIR)/$(OSXAPP)/Contents/PkgInfo"
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/openttd.icns"                 "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/openttd.icns"
 	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "$(BUNDLE_DIR)/$(OSXAPP)" "$(REV)"
-	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(DATA_DIR)"
+	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(BASESET_DIR)"
 endif
 ifeq ($(OS),UNIX)
-	$(Q)cp "$(ROOT_DIR)/media/openttd.32.bmp" "$(DATA_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/media/openttd.32.bmp" "$(BASESET_DIR)/"
 endif
 	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
 	$(Q)cp "$(BIN_DIR)/ai/"compat_*.nut       "$(AI_DIR)/"
-	$(Q)cp "$(BIN_DIR)/data/"*.grf            "$(DATA_DIR)/"
-	$(Q)cp "$(BIN_DIR)/data/"*.obg            "$(DATA_DIR)/"
-	$(Q)cp "$(BIN_DIR)/data/"*.obs            "$(DATA_DIR)/"
-	$(Q)cp "$(BIN_DIR)/data/opntitle.dat"     "$(DATA_DIR)/"
+	$(Q)cp "$(BIN_DIR)/baseset/"*.grf         "$(BASESET_DIR)/"
+	$(Q)cp "$(BIN_DIR)/baseset/"*.obg         "$(BASESET_DIR)/"
+	$(Q)cp "$(BIN_DIR)/baseset/"*.obs         "$(BASESET_DIR)/"
+	$(Q)cp "$(BIN_DIR)/baseset/opntitle.dat"  "$(BASESET_DIR)/"
+	$(Q)cp "$(BIN_DIR)/baseset/"*.obm         "$(BASESET_DIR)/"
 	$(Q)cp "$(BIN_DIR)/lang/"*.lng            "$(LANG_DIR)/"
-	$(Q)cp "$(BIN_DIR)/gm/"*.obm              "$(GM_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/readme.txt"           "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/known-bugs.txt"       "$(BUNDLE_DIR)/"
@@ -175,11 +172,9 @@ install: bundle
 	@echo '[INSTALL] Installing OpenTTD'
 	$(Q)install -d "$(INSTALL_BINARY_DIR)"
 	$(Q)install -d "$(INSTALL_ICON_DIR)"
-	$(Q)install -d "$(INSTALL_DATA_DIR)/gm"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/ai"
-	$(Q)install -d "$(INSTALL_DATA_DIR)/data"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/baseset"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
-	$(Q)install -d "$(INSTALL_DATA_DIR)/gm"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/scripts"
 ifeq ($(TTD), openttd.exe)
 	$(Q)install -m 755 "$(BUNDLE_DIR)/$(TTD)" "$(INSTALL_BINARY_DIR)/${BINARY_NAME}.exe"
@@ -188,8 +183,7 @@ else
 endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/lang/"* "$(INSTALL_DATA_DIR)/lang"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/ai/"* "$(INSTALL_DATA_DIR)/ai"
-	$(Q)install -m 644 "$(BUNDLE_DIR)/data/"* "$(INSTALL_DATA_DIR)/data"
-	$(Q)install -m 644 "$(BUNDLE_DIR)/gm/"* "$(INSTALL_DATA_DIR)/gm"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/baseset/"* "$(INSTALL_DATA_DIR)/baseset"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/scripts/"* "$(INSTALL_DATA_DIR)/scripts"
 ifndef DO_NOT_INSTALL_DOCS
 	$(Q)install -d "$(INSTALL_DOC_DIR)"
