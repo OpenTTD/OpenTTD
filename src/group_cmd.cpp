@@ -313,14 +313,10 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	Group *g = Group::GetIfValid(p1);
 	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
+	/* Remove all vehicles from the group */
+	DoCommand(0, p1, 0, flags, CMD_REMOVE_ALL_VEHICLES_GROUP);
+
 	if (flags & DC_EXEC) {
-		Vehicle *v;
-
-		/* Add all vehicles belong to the group to the default group */
-		FOR_ALL_VEHICLES(v) {
-			if (v->group_id == g->index && v->type == g->vehicle_type) v->group_id = DEFAULT_GROUP;
-		}
-
 		/* Update backupped orders if needed */
 		OrderBackup::ClearGroup(g->index);
 
