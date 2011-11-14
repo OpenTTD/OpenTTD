@@ -1489,12 +1489,14 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 }
 
 /* Common handler for saving/loading variables to the configuration file */
-static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list)
+static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list, bool minimal = false)
 {
 	proc(ini, (const SettingDesc*)_misc_settings,    "misc",  NULL);
 #if defined(WIN32) && !defined(DEDICATED)
 	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
+
+	if (minimal) return;
 
 	proc(ini, _settings,         "patches",  &_settings_newgame);
 	proc(ini, _currency_settings,"currency", &_custom_currency);
@@ -1514,23 +1516,30 @@ static IniFile *IniLoadConfig()
 	return ini;
 }
 
-/** Load the values from the configuration files */
-void LoadFromConfig()
+/**
+ * Load the values from the configuration files
+ * @param minimal Load the minimal amount of the configuration to "bootstrap" the blitter and such.
+ */
+void LoadFromConfig(bool minimal)
 {
 	IniFile *ini = IniLoadConfig();
-	ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
+	if (!minimal) ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
 
-	HandleSettingDescs(ini, IniLoadSettings, IniLoadSettingList);
-	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
-	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
-	NewsDisplayLoadConfig(ini, "news_display");
-	AILoadConfig(ini, "ai_players");
+	HandleSettingDescs(ini, IniLoadSettings, IniLoadSettingList, minimal);
 
-	PrepareOldDiffCustom();
-	IniLoadSettings(ini, _gameopt_settings, "gameopt", &_settings_newgame);
-	HandleOldDiffCustom(false);
+	if (!minimal) {
+		_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
+		_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
+		NewsDisplayLoadConfig(ini, "news_display");
+		AILoadConfig(ini, "ai_players");
 
-	ValidateSettings();
+		PrepareOldDiffCustom();
+		IniLoadSettings(ini, _gameopt_settings, "gameopt", &_settings_newgame);
+		HandleOldDiffCustom(false);
+
+		ValidateSettings();
+	}
+
 	delete ini;
 }
 

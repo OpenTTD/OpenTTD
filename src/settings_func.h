@@ -20,7 +20,7 @@ void IConsoleSetSetting(const char *name, int32 value);
 void IConsoleGetSetting(const char *name, bool force_newgame = false);
 void IConsoleListSettings(const char *prefilter);
 
-void LoadFromConfig();
+void LoadFromConfig(bool minimal = false);
 void SaveToConfig();
 void CheckConfig();
 

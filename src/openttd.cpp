@@ -370,11 +370,19 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	char *network_conn;                ///< Information about the server to connect to, or NULL.
 	const char *join_server_password;  ///< The password to join the server with.
 	const char *join_company_password; ///< The password to join the company with.
+	bool *save_config_ptr;             ///< The pointer to the save config setting.
+	bool save_config;                  ///< The save config setting.
 
-	AfterNewGRFScan() :
+	/**
+	 * Create a new callback.
+	 * @param save_config_ptr Pointer to the save_config local variable which
+	 *                        decides whether to save of exit or not.
+	 */
+	AfterNewGRFScan(bool *save_config_ptr) :
 			startyear(INVALID_YEAR), generation_seed(GENERATE_NEW_SEED),
 			dedicated_host(NULL), dedicated_port(0), network_conn(NULL),
-			join_server_password(NULL), join_company_password(NULL)
+			join_server_password(NULL), join_company_password(NULL),
+			save_config_ptr(save_config_ptr), save_config(true)
 	{
 	}
 
@@ -382,9 +390,23 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	{
 		ResetGRFConfig(false);
 
+		TarScanner::DoScan(TarScanner::SCENARIO);
+
+		AI::Initialize();
+
+		/* We want the new (correct) NewGRF count to survive the loading. */
+		uint last_newgrf_count = _settings_client.gui.last_newgrf_count;
+		LoadFromConfig();
+		_settings_client.gui.last_newgrf_count = last_newgrf_count;
+
+		AI::Uninitialize(true);
 		CheckConfig();
 		LoadFromHighScore();
 		LoadHotkeysFromConfig();
+
+		/* We have loaded the config, so we may possibly save it. */
+		*save_config_ptr = save_config;
+
 
 		if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
@@ -485,8 +507,9 @@ int ttd_main(int argc, char *argv[])
 	char *sounds_set = NULL;
 	char *music_set = NULL;
 	Dimension resolution = {0, 0};
-	bool save_config = true;
-	AfterNewGRFScan *scanner = new AfterNewGRFScan();
+	/* AfterNewGRFScan sets save_config to true after scanning completed. */
+	bool save_config = false;
+	AfterNewGRFScan *scanner = new AfterNewGRFScan(&save_config);
 #if defined(ENABLE_NETWORK)
 	bool dedicated = false;
 	char *debuglog_conn = NULL;
@@ -606,7 +629,7 @@ int ttd_main(int argc, char *argv[])
 		}
 		case 'G': scanner->generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
-		case 'x': save_config = false; break;
+		case 'x': scanner->save_config = false; break;
 		case 'h':
 			i = -2; // Force printing of help.
 			break;
@@ -636,7 +659,7 @@ int ttd_main(int argc, char *argv[])
 #endif
 
 	DeterminePaths(argv[0]);
-	TarScanner::DoScan(TarScanner::BASESET | TarScanner::SCENARIO);
+	TarScanner::DoScan(TarScanner::BASESET);
 	BaseGraphics::FindSets();
 	BaseSounds::FindSets();
 	BaseMusic::FindSets();
@@ -651,11 +674,9 @@ int ttd_main(int argc, char *argv[])
 #endif
 #endif
 
-	AI::Initialize();
-	LoadFromConfig();
-	AI::Uninitialize(true);
+	LoadFromConfig(true);
 
-	if (resolution.width != 0) { _cur_resolution = resolution; }
+	if (resolution.width != 0) _cur_resolution = resolution;
 
 	/*
 	 * The width and height must be at least 1 pixel and width times
