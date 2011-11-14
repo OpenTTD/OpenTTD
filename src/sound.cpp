@@ -281,8 +281,8 @@ INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<SoundsSet>, SoundsSet)
 static const char * const _sound_file_names[] = { "samples" };
 
 
-template <class T, size_t Tnum_files, Subdirectory Tsubdir>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsubdir>::file_names = _sound_file_names;
+template <class T, size_t Tnum_files, bool Tsearch_in_tars>
+/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _sound_file_names;
 
 template <class Tbase_set>
 /* static */ const char *BaseMedia<Tbase_set>::GetExtension()

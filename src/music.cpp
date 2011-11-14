@@ -27,8 +27,8 @@ static const char * const _music_file_names[] = {
 /** Make sure we aren't messing things up. */
 assert_compile(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
 
-template <class T, size_t Tnum_files, Subdirectory Tsubdir>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsubdir>::file_names = _music_file_names;
+template <class T, size_t Tnum_files, bool Tsearch_in_tars>
+/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _music_file_names;
 
 template <class Tbase_set>
 /* static */ const char *BaseMedia<Tbase_set>::GetExtension()
@@ -60,7 +60,7 @@ template <class Tbase_set>
 
 bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)
 {
-	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR>::FillSetDetails(ini, path, full_filename);
+	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false>::FillSetDetails(ini, path, full_filename);
 	if (ret) {
 		this->num_available = 0;
 		IniGroup *names = ini->GetGroup("names");

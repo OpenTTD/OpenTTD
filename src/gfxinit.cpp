@@ -248,7 +248,7 @@ void GfxLoadSprites()
 
 bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)
 {
-	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, BASESET_DIR>::FillSetDetails(ini, path, full_filename, false);
+	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, true>::FillSetDetails(ini, path, full_filename, false);
 	if (ret) {
 		IniGroup *metadata = ini->GetGroup("metadata");
 		IniItem *item;
@@ -299,8 +299,8 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir) const
 static const char * const _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
 
 /** Implementation */
-template <class T, size_t Tnum_files, Subdirectory Tsubdir>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsubdir>::file_names = _graphics_file_names;
+template <class T, size_t Tnum_files, bool Tsearch_in_tars>
+/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _graphics_file_names;
 
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()

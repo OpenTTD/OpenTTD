@@ -39,8 +39,8 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplica
  * @param allow_empty_filename empty filenames are valid
  * @return true if loading was successful.
  */
-template <class T, size_t Tnum_files, Subdirectory Tsubdir>
-bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename)
+template <class T, size_t Tnum_files, bool Tsearch_in_tars>
+bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename)
 {
 	memset(this, 0, sizeof(*this));
 
@@ -78,9 +78,9 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 	for (uint i = 0; i < Tnum_files; i++) {
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */
-		item = files->GetItem(BaseSet<T, Tnum_files, Tsubdir>::file_names[i], false);
+		item = files->GetItem(BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names[i], false);
 		if (item == NULL || (item->value == NULL && !allow_empty_filename)) {
-			DEBUG(grf, 0, "No " SET_TYPE " file for: %s (in %s)", BaseSet<T, Tnum_files, Tsubdir>::file_names[i], full_filename);
+			DEBUG(grf, 0, "No " SET_TYPE " file for: %s (in %s)", BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names[i], full_filename);
 			return false;
 		}
 
@@ -131,7 +131,7 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 			file->missing_warning = strdup(item->value);
 		}
 
-		switch (file->CheckMD5(Tsubdir)) {
+		switch (file->CheckMD5(Tsearch_in_tars ? BASESET_DIR : GM_DIR)) {
 			case MD5File::CR_MATCH:
 				this->valid_files++;
 				/* FALL THROUGH */
@@ -155,7 +155,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 
 	Tbase_set *set = new Tbase_set();
 	IniFile *ini = new IniFile();
-	ini->LoadFromDisk(filename, Tbase_set::SUBDIR);
+	ini->LoadFromDisk(filename, Tbase_set::SEARCH_IN_TARS ? BASESET_DIR : GM_DIR);
 
 	char *path = strdup(filename + basepath_length);
 	char *psep = strrchr(path, PATHSEPCHAR);

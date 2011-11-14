@@ -40,17 +40,17 @@ struct MD5File {
  * Information about a single base set.
  * @tparam T the real class we're going to be
  * @tparam Tnum_files the number of files in the set
- * @tparam Tsubdir the subdirectory where to find the files
+ * @tparam Tsearch_in_tars whether to search in the tars or not
  */
-template <class T, size_t Tnum_files, Subdirectory Tsubdir>
+template <class T, size_t Tnum_files, bool Tsearch_in_tars>
 struct BaseSet {
 	typedef SmallMap<const char *, const char *> TranslatedStrings;
 
 	/** Number of files in this set */
 	static const size_t NUM_FILES = Tnum_files;
 
-	/** The sub directory to search for the files */
-	static const Subdirectory SUBDIR = Tsubdir;
+	/** Whether to search in the tars or not. */
+	static const bool SEARCH_IN_TARS = Tsearch_in_tars;
 
 	/** Internal names of the files in this set. */
 	static const char * const *file_names;
@@ -164,9 +164,8 @@ public:
 	static uint FindSets()
 	{
 		BaseMedia<Tbase_set> fs;
-		/* GM_DIR == music set. Music sets don't support tars,
-		 * so there is no need to search for tars in that case. */
-		return fs.Scan(GetExtension(), Tbase_set::SUBDIR, Tbase_set::SUBDIR != GM_DIR);
+		/* Searching in tars is only done in the sound and graphics base sets. */
+		return fs.Scan(GetExtension(), Tbase_set::SEARCH_IN_TARS ? BASESET_DIR : GM_DIR, Tbase_set::SEARCH_IN_TARS);
 	}
 
 	static bool SetSet(const char *name);
@@ -204,7 +203,7 @@ enum BlitterType {
 };
 
 /** All data of a graphics set. */
-struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, BASESET_DIR> {
+struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
 	PaletteType palette;       ///< Palette of this graphics set
 	BlitterType blitter;       ///< Blitter of this graphics set
 
@@ -217,7 +216,7 @@ public:
 };
 
 /** All data of a sounds set. */
-struct SoundsSet : BaseSet<SoundsSet, 1, BASESET_DIR> {
+struct SoundsSet : BaseSet<SoundsSet, 1, true> {
 };
 
 /** All data/functions related with replacing the base sounds */
@@ -236,7 +235,7 @@ static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
 static const uint NUM_SONGS_PLAYLIST  = 32;
 
 /** All data of a music set. */
-struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR> {
+struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
 	/** The name of the different songs. */
 	char song_name[NUM_SONGS_AVAILABLE][32];
 	byte track_nr[NUM_SONGS_AVAILABLE];
