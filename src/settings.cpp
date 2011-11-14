@@ -768,6 +768,7 @@ static bool UpdateConsists(int32 p1)
 		/* Update the consist of all trains so the maximum speed is set correctly. */
 		if (t->IsFrontEngine() || t->IsFreeWagon()) t->ConsistChanged(true);
 	}
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
 	return true;
 }
 
