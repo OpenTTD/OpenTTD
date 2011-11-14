@@ -3,8 +3,8 @@ if "%1" == "" goto err
 
 echo Removing OpenGFX...
 
-del %1\data\opengfx\*.* /n
-rmdir %1\data\opengfx
+del %1\baseset\opengfx\*.* /n
+rmdir %1\baseset\opengfx
 
 echo OpenGFX has been removed.
 goto end

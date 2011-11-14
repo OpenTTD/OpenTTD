@@ -189,7 +189,7 @@ an AI a message will be shown that the 'dummy' AI has been started.
 
 4.1) (Required) 3rd party files
 ---- --------------------------
-Before you run OpenTTD, you need to put the game's data files into a data/
+Before you run OpenTTD, you need to put the game's data files into a baseset/
 directory which can be located in various places addressed in the following
 section.
 
@@ -227,10 +227,11 @@ You need to copy the following files:
 
 4.1.3) Original Transport Tycoon Deluxe music
 ------ --------------------------------------
-If you want the Transport Tycoon Deluxe music, copy the gm/ folder from the
-Windows version of Transport Tycoon Deluxe to your OpenTTD folder (not your
-data folder - also explained in the following sections). The music from the
-DOS version as well as the original Transport Tycoon does not work.
+If you want the Transport Tycoon Deluxe music, copy the files from the gm/
+folder from the Windows version of Transport Tycoon Deluxe to the baseset
+folder in your OpenTTD folder (also explained in the following sections).
+The music from the DOS version as well as the original Transport Tycoon does
+not work.
 
 4.1.4) AIs
 ------ ---
@@ -283,11 +284,11 @@ Different types of data or extensions go into different subdirectories of the ch
 OpenTTD directory:
 	Config File:         (no subdirectory)
 	Screenshots:         (no subdirectory)
-	Base Graphics:       data                    (or a subdirectory thereof)
-	Sound Sets:          data                    (or a subdirectory thereof)
-	NewGRFs:             data                    (or a subdirectory thereof)
-	32bpp Sets:          data                    (or a subdirectory thereof)
-	Music Sets:          gm                      (or a subdirectory thereof)
+	Base Graphics:       baseset                 (or a subdirectory thereof)
+	Sound Sets:          baseset                 (or a subdirectory thereof)
+	NewGRFs:             newgrf                  (or a subdirectory thereof)
+	32bpp Sets:          newgrf                  (or a subdirectory thereof)
+	Music Sets:          baseset                 (or a subdirectory thereof)
 	AIs:                 ai                      (or a subdirectory thereof)
 	AI Libraries:        ai/libraries            (or a subdirectory thereof)
 	Savegames:           save
@@ -315,12 +316,12 @@ personal directory (where the game will then also place savegames and screenshot
 You can install OpenTTD on external media so you can take it with you, i.e.
 using a USB key, or a USB HDD, etc.
 Create a directory where you shall store the game in (i.e. OpenTTD/).
-Copy the binary (OpenTTD.exe, OpenTTD.app, openttd, etc), data/ and your
+Copy the binary (OpenTTD.exe, OpenTTD.app, openttd, etc), baseset/ and your
 openttd.cfg to this directory.
 You can copy binaries for any operating system into this directory, which will
 allow you to play the game on nearly any computer you can attach the external
 media to.
-As always - additional grf files are stored in the data/ dir (for details,
+As always - additional grf files are stored in the newgrf/ dir (for details,
 again, see section 4.1).
 
 
@@ -583,7 +584,7 @@ can be viewed in the NewGRF window accessible from the file load dialogue window
 You can try to obtain the missing files from that NewGRF dialogue or - if they
 are not available online - you can search manually through our forum's graphics
 development section (http://www.tt-forums.net/viewforum.php?f=66) or GrfCrawler
-(http://grfcrawler.tt-forums.net/). Put the NewGRF files in OpenTTD's data folder
+(http://grfcrawler.tt-forums.net/). Put the NewGRF files in OpenTTD's newgrf folder
 (see section 4.2 "OpenTTD directories") and rescan the list of available NewGRFs.
 Once you have all missing files, you are set to go.
 

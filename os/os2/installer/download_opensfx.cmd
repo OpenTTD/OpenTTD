@@ -4,12 +4,12 @@ if "%2" == "" goto err
 
 echo Downloading OpenSFX...
 
-%1\wget http://binaries.openttd.org/installer/opensfx-OPENSFX_VERSION.7z -O %2/data/opensfx.7z
+%1\wget http://binaries.openttd.org/installer/opensfx-OPENSFX_VERSION.7z -O %2/baseset/opensfx.7z
 
 echo Extracting OpenSFX...
 
-%1\7za x -y -O%2/data %2/data/opensfx.7z
-del %1\data\opensfx.7z /n
+%1\7za x -y -O%2/baseset %2/baseset/opensfx.7z
+del %1\baseset\opensfx.7z /n
 
 echo OpenSFX has been installed.
 goto end

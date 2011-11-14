@@ -117,7 +117,7 @@ way it is possible to install a openttd version without SDL requirement.
 %setup -qn openttd%{?branch:-%{branch}}-%{srcver}
 
 # we build the grfs from sources but validate the result with the existing data
-md5sum bin/data/* > validate.data
+md5sum bin/baseset/* > validate.data
 
 %build
 ./configure \
@@ -183,16 +183,14 @@ md5sum -c validate.data
 %dir %{_datadir}/doc/%{binname}
 %dir %{_datadir}/%{binname}
 %dir %{_datadir}/%{binname}/lang
-%dir %{_datadir}/%{binname}/data
-%dir %{_datadir}/%{binname}/gm
+%dir %{_datadir}/%{binname}/baseset
 %dir %{_datadir}/%{binname}/scripts
 %dir %{_datadir}/%{binname}/ai
 %{_datadir}/doc/%{binname}/*
 %{_datadir}/%{binname}/lang/*
-%{_datadir}/%{binname}/data/*
+%{_datadir}/%{binname}/baseset/*
 %{_datadir}/%{binname}/scripts/*
 %{_datadir}/%{binname}/ai/*
-%{_datadir}/%{binname}/gm/*
 %doc %{_mandir}/man6/%{binname}.6.*
 %endif
 

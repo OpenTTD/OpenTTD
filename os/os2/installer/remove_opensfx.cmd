@@ -3,8 +3,8 @@ if "%1" == "" goto err
 
 echo Removing OpenSFX...
 
-del %1\data\opensfx\*.* /n
-rmdir %1\data\opensfx
+del %1\baseset\opensfx\*.* /n
+rmdir %1\baseset\opensfx
 
 echo OpenSFX has been removed.
 goto end

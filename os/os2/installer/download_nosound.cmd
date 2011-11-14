@@ -4,12 +4,12 @@ if "%2" == "" goto err
 
 echo Downloading NoSound...
 
-%1\wget http://binaries.openttd.org/installer/nosound-NOSOUND_VERSION.7z -O %2/data/nosound.7z
+%1\wget http://binaries.openttd.org/installer/nosound-NOSOUND_VERSION.7z -O %2/baseset/nosound.7z
 
 echo Extracting NoSound...
 
-%1\7za x -y -O%2/data %2/data/nosound.7z
-del %1\data\nosound.7z /n
+%1\7za x -y -O%2/baseset %2/baseset/nosound.7z
+del %1\baseset\nosound.7z /n
 
 echo NoSound has been installed.
 goto end
