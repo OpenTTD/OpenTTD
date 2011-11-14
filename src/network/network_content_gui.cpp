@@ -86,7 +86,35 @@ public:
 	/** Free whatever we've allocated */
 	~NetworkContentDownloadStatusWindow()
 	{
-		TarScanner::DoScan();
+		TarScanner::Mode mode = TarScanner::NONE;
+		for (ContentType *iter = this->receivedTypes.Begin(); iter != this->receivedTypes.End(); iter++) {
+			switch (*iter) {
+				case CONTENT_TYPE_AI:
+				case CONTENT_TYPE_AI_LIBRARY:
+					mode |= TarScanner::AI;
+					break;
+
+				case CONTENT_TYPE_BASE_GRAPHICS:
+				case CONTENT_TYPE_BASE_SOUNDS:
+				case CONTENT_TYPE_BASE_MUSIC:
+					mode |= TarScanner::BASESET;
+					break;
+
+				case CONTENT_TYPE_NEWGRF:
+					mode |= TarScanner::NEWGRF;
+					break;
+
+				case CONTENT_TYPE_SCENARIO:
+				case CONTENT_TYPE_HEIGHTMAP:
+					mode |= TarScanner::SCENARIO;
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		TarScanner::DoScan(mode);
 
 		/* Tell all the backends about what we've downloaded */
 		for (ContentType *iter = this->receivedTypes.Begin(); iter != this->receivedTypes.End(); iter++) {

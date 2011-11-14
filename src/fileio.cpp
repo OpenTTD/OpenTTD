@@ -645,14 +645,21 @@ uint TarScanner::DoScan(Subdirectory sd)
 	return this->Scan(".tar", sd, false);
 }
 
-/* static */ uint TarScanner::DoScan()
+/* static */ uint TarScanner::DoScan(TarScanner::Mode mode)
 {
 	DEBUG(misc, 1, "Scanning for tars");
 	TarScanner fs;
-	uint num = fs.DoScan(NEWGRF_DIR);
-	num += fs.DoScan(AI_DIR);
-	num += fs.DoScan(AI_LIBRARY_DIR);
-	num += fs.DoScan(SCENARIO_DIR);
+	uint num = 0;
+	if (mode & (TarScanner::BASESET | TarScanner::NEWGRF)) {
+		num += fs.DoScan(NEWGRF_DIR);
+	}
+	if (mode & TarScanner::AI) {
+		num += fs.DoScan(AI_DIR);
+		num += fs.DoScan(AI_LIBRARY_DIR);
+	}
+	if (mode & TarScanner::SCENARIO) {
+		num += fs.DoScan(SCENARIO_DIR);
+	}
 	DEBUG(misc, 1, "Scan complete, found %d files", num);
 	return num;
 }
@@ -1190,8 +1197,6 @@ void DeterminePaths(const char *exe)
 		_searchpaths[SP_AUTODOWNLOAD_DIR] = NULL;
 	}
 #endif /* ENABLE_NETWORK */
-
-	TarScanner::DoScan();
 }
 
 /**

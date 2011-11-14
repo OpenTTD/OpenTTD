@@ -1172,7 +1172,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 
 			case SNGRFS_RESCAN_FILES:
 			case SNGRFS_RESCAN_FILES2:
-				TarScanner::DoScan();
+				TarScanner::DoScan(TarScanner::NEWGRF);
 				ScanNewGRFFiles(this);
 				break;
 		}

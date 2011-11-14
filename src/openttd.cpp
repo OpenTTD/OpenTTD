@@ -200,7 +200,6 @@ static void ShowHelp()
 	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
 
 	/* We need to initialize the AI, so it finds the AIs */
-	TarScanner::DoScan();
 	AI::Initialize();
 	p = AI::GetConsoleList(p, lastof(buf), true);
 	AI::Uninitialize(true);
@@ -622,6 +621,7 @@ int ttd_main(int argc, char *argv[])
 		 * The next two functions are needed to list the graphics sets. We can't do them earlier
 		 * because then we cannot show it on the debug console as that hasn't been configured yet. */
 		DeterminePaths(argv[0]);
+		TarScanner::DoScan(TarScanner::AI | TarScanner::BASESET);
 		BaseGraphics::FindSets();
 		BaseSounds::FindSets();
 		BaseMusic::FindSets();
@@ -636,6 +636,7 @@ int ttd_main(int argc, char *argv[])
 #endif
 
 	DeterminePaths(argv[0]);
+	TarScanner::DoScan(TarScanner::ALL);
 	BaseGraphics::FindSets();
 	BaseSounds::FindSets();
 	BaseMusic::FindSets();
@@ -650,7 +651,6 @@ int ttd_main(int argc, char *argv[])
 #endif
 #endif
 
-	TarScanner::DoScan();
 	AI::Initialize();
 	LoadFromConfig();
 	AI::Uninitialize(true);
