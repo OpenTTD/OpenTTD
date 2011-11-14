@@ -355,6 +355,7 @@ enum CommandFlags {
 	CMD_NO_WATER  = 0x40, ///< set the DC_NO_WATER flag on this command
 	CMD_CLIENT_ID = 0x80, ///< set p2 with the ClientID of the sending client.
 };
+DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 
 /** Types of commands we have. */
 enum CommandType {
@@ -406,10 +407,10 @@ typedef CommandCost CommandProc(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * the #CMD_AUTO, #CMD_OFFLINE and #CMD_SERVER values.
  */
 struct Command {
-	CommandProc *proc; ///< The procedure to actually executing
-	const char *name;  ///< A human readable name for the procedure
-	byte flags;        ///< The (command) flags to that apply to this command
-	CommandType type;  ///< The type of command.
+	CommandProc *proc;  ///< The procedure to actually executing
+	const char *name;   ///< A human readable name for the procedure
+	CommandFlags flags; ///< The (command) flags to that apply to this command
+	CommandType type;   ///< The type of command.
 };
 
 /**

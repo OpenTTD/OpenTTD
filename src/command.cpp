@@ -173,7 +173,7 @@ CommandProc CmdSetVehicleOnTime;
 CommandProc CmdAutofillTimetable;
 CommandProc CmdSetTimetableStart;
 
-#define DEF_CMD(proc, flags, type) {proc, #proc, flags, type}
+#define DEF_CMD(proc, flags, type) {proc, #proc, (CommandFlags)flags, type}
 
 /**
  * The master command table
@@ -327,7 +327,7 @@ bool IsValidCommand(uint32 cmd)
  * @param cmd The integer value of the command
  * @return The flags for this command
  */
-byte GetCommandFlags(uint32 cmd)
+CommandFlags GetCommandFlags(uint32 cmd)
 {
 	assert(IsValidCommand(cmd));
 
@@ -590,7 +590,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	assert(proc != NULL);
 
 	/* Command flags are used internally */
-	uint cmd_flags = GetCommandFlags(cmd);
+	CommandFlags cmd_flags = GetCommandFlags(cmd);
 	/* Flags get send to the DoCommand */
 	DoCommandFlag flags = CommandFlagsToDCFlags(cmd_flags);
 

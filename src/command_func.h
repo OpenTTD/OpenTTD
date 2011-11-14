@@ -49,7 +49,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 extern Money _additional_cash_required;
 
 bool IsValidCommand(uint32 cmd);
-byte GetCommandFlags(uint32 cmd);
+CommandFlags GetCommandFlags(uint32 cmd);
 const char *GetCommandName(uint32 cmd);
 Money GetAvailableMoneyForCommand();
 bool IsCommandAllowedWhilePaused(uint32 cmd);
@@ -59,7 +59,7 @@ bool IsCommandAllowedWhilePaused(uint32 cmd);
  * @param cmd_flags Flags from GetCommandFlags
  * @return flags for DoCommand
  */
-static inline DoCommandFlag CommandFlagsToDCFlags(uint cmd_flags)
+static inline DoCommandFlag CommandFlagsToDCFlags(CommandFlags cmd_flags)
 {
 	DoCommandFlag flags = DC_NONE;
 	if (cmd_flags & CMD_NO_WATER) flags |= DC_NO_WATER;
