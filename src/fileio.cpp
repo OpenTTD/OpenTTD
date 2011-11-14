@@ -651,6 +651,7 @@ uint TarScanner::DoScan(Subdirectory sd)
 	TarScanner fs;
 	uint num = 0;
 	if (mode & (TarScanner::BASESET | TarScanner::NEWGRF)) {
+		num += fs.DoScan(BASESET_DIR);
 		num += fs.DoScan(NEWGRF_DIR);
 	}
 	if (mode & TarScanner::AI) {
@@ -1180,7 +1181,7 @@ void DeterminePaths(const char *exe)
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
-	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GM_DIR };
+	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GM_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
 		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], _subdirs[dirs[i]]);
 		FioCreateDirectory(tmp);
