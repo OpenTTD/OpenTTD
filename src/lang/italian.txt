@@ -3320,13 +3320,13 @@ STR_ORDER_FULL_LOAD_REFIT                                       :(Attendi pieno 
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Attendi carico, auto-riadatta per {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Scarica e carica, auto-riadatta per {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Scarica e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Scarica e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Scarica e attendi carico, auto-riadatta per {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Trasferisci e carica, auto-riadatta per {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trasferisci e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trasferisci e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trasferisci e attendi carico, auto-riadatta per {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Non scaricare e carica, auto-riadatta per {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Non scaricare e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non scaricare e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non scaricare e attendi carico, auto-riadatta per {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :il carico in attesa
 

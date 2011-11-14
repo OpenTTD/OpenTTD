@@ -2740,6 +2740,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Пера
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Унiз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перамясьціць выбраны файл NewGRF ніжэй
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Сьпіс устаноўленых файлаў NewGRF. Выберыце файл для зьмяненьня парамэтраў
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Прагледзець iнструкцыю
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Усталяваць парамэтры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Пераключыць палітру
@@ -2772,6 +2773,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Колькасьць парамэтраў: {ORANGE}{NUM}
 
 # NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}Iнструкцыя (readme) аб новай графiцы{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Прагляд - {STRING}
@@ -3869,6 +3871,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Заба
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}... адміністрацыя горада {TOWN} забараняе вам гэта рабіць
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Адміністрацыя г. {NBSP}{TOWN} забараняе пабудову яшчэ аднаго аэрапорта ў горадзе
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Адміністрацыя г. {NBSP}{TOWN} не дазваляе будаўніцтва аэрапорта з-за высокага ўзроўню шуму.
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Вашая спроба даць хабар была высьветлена рэгiянальным сьледчым
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Тут немагчыма падвысіць узровень зямлі...
