@@ -795,7 +795,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			switch (variable - 0x80) {
 				case 0x62: return t->track;
 				case 0x66: return t->railtype;
-				case 0x73: return t->gcache.cached_veh_length;
+				case 0x73: return 0x80 + VEHICLE_LENGTH - t->gcache.cached_veh_length;
 				case 0x74: return t->gcache.cached_power;
 				case 0x75: return GB(t->gcache.cached_power,  8, 24);
 				case 0x76: return GB(t->gcache.cached_power, 16, 16);
