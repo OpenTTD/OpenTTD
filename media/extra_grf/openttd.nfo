@@ -67,7 +67,7 @@
              00
 
 // GRF ID, must start with FF so it gets ignored
-   -1 * 0	 08 07 FF "OTT"
+   -1 * 0	 08 08 FF "OTT"
 
 // Name of the GRF
              "OpenTTD's base graphics " 00
@@ -103,7 +103,6 @@
 #include "openttdgui.nfo"
 #include "airport_preview.nfo"
 #include "chars.nfo"
-#include "overrides.nfo"
 #include "fix_graphics.nfo"
 #include "rivers/rapids.nfo"
 #include "rivers/temperate.nfo"

@@ -8927,6 +8927,17 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
 		}
 
+		if (stage == GLS_RESERVE) {
+			static const uint32 overrides[][2] = {
+				{ 0x44442202, 0x44440111 }, // UKRS addons modifies UKRS
+				{ 0x6D620402, 0x6D620401 }, // DBSetXL ECS extension modifies DBSetXL
+				{ 0x4D656f20, 0x4D656F17 }, // LV4cut modifies LV4
+			};
+			for (size_t i = 0; i < lengthof(overrides); i++) {
+				SetNewGRFOverride(BSWAP32(overrides[i][0]), BSWAP32(overrides[i][1]));
+			}
+		}
+
 		uint slot = file_index;
 
 		_cur.stage = stage;
