@@ -568,21 +568,21 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, time_until_rebuild ),
 	OCL_SVAR(  OC_FILE_U8 | OC_VAR_I16, Town, growth_rate ),
 
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_max_pass ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_max_mail ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_act_pass ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_act_mail ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, max_pass ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, max_mail ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, act_pass ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, act_mail ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, pass.new_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, mail.new_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, pass.new_act ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, mail.new_act ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, pass.old_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, mail.old_max ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, pass.old_act ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, mail.old_act ),
 
 	OCL_NULL( 2 ),         ///< pct_pass_transported / pct_mail_transported, now computed on the fly
 
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, new_act_food ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, new_act_water ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, act_food ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Town, act_water ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, food.new_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, water.new_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, food.old_act ),
+	OCL_SVAR( OC_TTD | OC_UINT16, Town, water.old_act ),
 
 	OCL_SVAR(  OC_UINT8, Town, road_build_months ),
 	OCL_SVAR(  OC_UINT8, Town, fund_buildings_months ),

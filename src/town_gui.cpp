@@ -368,12 +368,12 @@ public:
 		SetDParam(1, this->town->num_houses);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y, STR_TOWN_VIEW_POPULATION_HOUSES);
 
-		SetDParam(0, this->town->act_pass);
-		SetDParam(1, this->town->max_pass);
+		SetDParam(0, this->town->pass.old_act);
+		SetDParam(1, this->town->pass.old_max);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX);
 
-		SetDParam(0, this->town->act_mail);
-		SetDParam(1, this->town->max_mail);
+		SetDParam(0, this->town->mail.old_act);
+		SetDParam(1, this->town->mail.old_max);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX);
 
 		StringID required_text = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED;
@@ -406,9 +406,9 @@ public:
 			CargoID first_water_cargo = (water != NULL) ? water->Index() : (CargoID)CT_INVALID;
 			StringID water_name       = (water != NULL) ? water->name    : STR_CARGO_PLURAL_WATER;
 
-			if (first_food_cargo != CT_INVALID && this->town->act_food > 0) {
+			if (first_food_cargo != CT_INVALID && this->town->food.old_act > 0) {
 				SetDParam(0, first_food_cargo);
-				SetDParam(1, this->town->act_food);
+				SetDParam(1, this->town->food.old_act);
 				DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
 			} else {
 				SetDParam(0, food_name);
@@ -416,9 +416,9 @@ public:
 			}
 
 			if (cargo_needed_for_growth > 1) {
-				if (first_water_cargo != CT_INVALID && this->town->act_water > 0) {
+				if (first_water_cargo != CT_INVALID && this->town->water.old_act > 0) {
 					SetDParam(0, first_water_cargo);
-					SetDParam(1, this->town->act_water);
+					SetDParam(1, this->town->water.old_act);
 					DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
 				} else {
 					SetDParam(0, water_name);

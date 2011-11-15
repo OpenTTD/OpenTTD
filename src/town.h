@@ -66,25 +66,16 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint8 exclusive_counter;       ///< months till the exclusivity expires
 	int16 ratings[MAX_COMPANIES];  ///< ratings of each company for this town
 
-	uint32 max_pass;               ///< maximum amount of passengers that can be transported
-	uint32 max_mail;               ///< maximum amount of mail that can be transported
-	uint32 new_max_pass;
-	uint32 new_max_mail;
-	uint32 act_pass;
-	uint32 act_mail;
-	uint32 new_act_pass;
-	uint32 new_act_mail;
+	TransportedCargoStat<uint32> pass;  ///< Passenger cargo statistics.
+	TransportedCargoStat<uint32> mail;  ///< Mail cargo statistics.
+	TransportedCargoStat<uint16> food;  ///< Food cargo statistics.
+	TransportedCargoStat<uint16> water; ///< Water cargo statistics.
 
 	/** Percentage of passengers transported last month (0xFF=100%) */
-	inline byte GetPercentPassTransported() const { return this->act_pass * 256 / (this->max_pass + 1); }
+	inline byte GetPercentPassTransported() const { return this->pass.old_act * 256 / (this->pass.old_max + 1); }
 
 	/** Percentage of mail transported last month (0xFF=100%) */
-	inline byte GetPercentMailTransported() const { return this->act_mail * 256 / (this->max_mail + 1); }
-
-	uint16 act_food;               ///< amount of food that was transported
-	uint16 act_water;              ///< amount of water that was transported
-	uint16 new_act_food;
-	uint16 new_act_water;
+	inline byte GetPercentMailTransported() const { return this->mail.old_act * 256 / (this->mail.old_max + 1); }
 
 	uint16 time_until_rebuild;     ///< time until we rebuild a house
 
