@@ -505,6 +505,8 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		switch (subdir) {
 			case BASESET_DIR:
 				f = FioFOpenFile(filename, mode, OLD_GM_DIR, filesize);
+				if (f != NULL) break;
+				/* FALL THROUGH */
 			case NEWGRF_DIR:
 				f = FioFOpenFile(filename, mode, OLD_DATA_DIR, filesize);
 				break;
