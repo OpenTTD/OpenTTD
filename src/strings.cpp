@@ -1780,7 +1780,7 @@ static bool FindMissingGlyphs(const char **str)
 					size = FS_SMALL;
 				} else if (c == SCC_BIGFONT) {
 					size = FS_LARGE;
-				} else if (IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
+				} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
 					/* The character is printable, but not in the normal font. This is the case we were testing for. */
 					return true;
 				}
