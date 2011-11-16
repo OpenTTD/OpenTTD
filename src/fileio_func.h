@@ -105,6 +105,8 @@ public:
 
 	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = NULL);
 
+	bool AddFile(Subdirectory sd, const char *filename);
+
 	/** Do the scan for Tars. */
 	static uint DoScan(TarScanner::Mode mode);
 };

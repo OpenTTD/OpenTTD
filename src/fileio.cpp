@@ -682,6 +682,18 @@ uint TarScanner::DoScan(Subdirectory sd)
 	return num;
 }
 
+/**
+ * Add a single file to the scanned files of a tar, circumventing the scanning code.
+ * @param sd       The sub directory the file is in.
+ * @param filename The name of the file to add.
+ * @return True if the additions went correctly.
+ */
+bool TarScanner::AddFile(Subdirectory sd, const char *filename)
+{
+	this->subdir = sd;
+	return this->AddFile(filename, 0);
+}
+
 bool TarScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
 {
 	/* No tar within tar. */
