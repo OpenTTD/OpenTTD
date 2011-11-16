@@ -2116,6 +2116,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradnj
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Izgradnja/Uklanjanje železničkih pruga, signalizacije, putnih tačaka i stanica (kad je uključeno). Držanjem Ctrl takođe se uklanja pruga sa putnih tačaka i stanica
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Promena/Nadogradnja vrste pruge. Shift prebacuje između promene/nadogradnje i prikaza procene troškova
 
+STR_RAIL_NAME_RAILROAD                                          :Železnica
+STR_RAIL_NAME_ELRAIL                                            :Elektrifikovana železnica
+STR_RAIL_NAME_MONORAIL                                          :Jednošinska železnica
+STR_RAIL_NAME_MAGLEV                                            :Magnetna železnica
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orijentacija železničkog depoa
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izbor orijentacije železničkog depoa
@@ -2386,6 +2391,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snegom prekrivena zemlja
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustinja
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} kolosek
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} kolosek sa blok signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} kolosek sa predsignalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} kolosek sa izlaznom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} kolosek sa kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} kolosek sa putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} kolosek sa jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} kolosek sa blok i predsignalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} kolosek sa blok i izlaznom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} kolosek sa blok i kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} kolosek sa blok i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} kolosek sa blok i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} kolosek sa pred i izlaznom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} kolosek sa pred i kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} kolosek sa pred i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} kolosek sa pred i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} kolosek sa izlaznom i kombinovanom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} kolosek sa izlaznom i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} kolosek sa izlaznom i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} kolosek sa kombinovanom i putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} kolosek sa kombinovanom i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} kolosek sa putnom i jednosmernom putnom signalizacijom
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} železnički depo
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Put
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Kolovoz sa uličnom rasvetom
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Put sa drvoredom
@@ -2568,7 +2597,8 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naviše
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomera označenu NewGRF datoteku više na spisku
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naniže
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomera označenu NewGRF datoteku niže na spisku
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Spisak instaliranih NewGRF datoteka. Kliknite na datoteku kako bi promenili njena svojstva
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Spisak instaliranih NewGRF datoteka.
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Prikaži uputstvo
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Promeni paletu
@@ -2591,7 +2621,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Odabrana d
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Isključen
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nije kompatibilno sa ovom OpenTTD verzijom
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promena NewGRF parametara
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvori
@@ -2600,6 +2629,9 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Postavlj
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Broj parametara: {ORANGE}{NUM}
+
+# NewGRF readme window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF uputstvo za {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Provera - {STRING}
@@ -2682,6 +2714,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Voz '{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sadrži neispravne podatke
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Podaci o tovaru/prenameni za '{1:ENGINE}' se posle izgradnje razlikuju od nabavne liste. Ovo može izazvati neispravnu automatsku zamenu/preuređenje
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' je izazvao beskrajnu petlju tokom povratnog poziva proizvodnje
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Povratni poziv 0x{HEX} vratio je nepoznatu/neispravnu vrednost 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nevažeći tovar>
@@ -3692,6 +3725,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nije doz
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} vlast odbija da izda dozvolu
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalna uprava naselja {TOWN} ne namerava da izda dozvolu za gradnju još jednog aerodroma
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokalna vlast odbija da dâ dozvolu za aerodrom zbog visokog nivoa buke
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Pokušaj podmićivanja otkrio je regionalni finansijski istražitelj
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nije izvodljivo ovde podići zemljište...
