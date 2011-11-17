@@ -196,6 +196,6 @@ const char *GetCurrentLanguageIsoCode();
 
 int CDECL StringIDSorter(const StringID *a, const StringID *b);
 
-void CheckForMissingGlyphsInLoadedLanguagePack();
+void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font = true);
 
 #endif /* STRINGS_FUNC_H */

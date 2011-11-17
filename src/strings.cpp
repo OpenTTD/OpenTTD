@@ -1799,10 +1799,11 @@ static bool FindMissingGlyphs(const char **str)
  * mean it might use characters that are not in the
  * font, which is the whole reason this check has
  * been added.
+ * @param base_font Whether to look at the base font as well.
  */
-void CheckForMissingGlyphsInLoadedLanguagePack()
+void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font)
 {
-	bool bad_font = FindMissingGlyphs(NULL);
+	bool bad_font = !base_font || FindMissingGlyphs(NULL);
 #ifdef WITH_FREETYPE
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
@@ -1814,7 +1815,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 
 		memcpy(&_freetype, &backup, sizeof(backup));
 
-		if (bad_font) {
+		if (bad_font && base_font) {
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
