@@ -662,9 +662,6 @@ int ttd_main(int argc, char *argv[])
 
 	DeterminePaths(argv[0]);
 	TarScanner::DoScan(TarScanner::BASESET);
-	BaseGraphics::FindSets();
-	BaseSounds::FindSets();
-	BaseMusic::FindSets();
 
 #if defined(ENABLE_NETWORK)
 	if (dedicated) DEBUG(net, 0, "Starting dedicated version %s", _openttd_revision);
@@ -698,39 +695,18 @@ int ttd_main(int argc, char *argv[])
 	/* enumerate language files */
 	InitializeLanguagePacks();
 
-	/* initialize screenshot formats */
-	InitializeScreenshotFormats();
-
 	/* Initialize FreeType */
 	InitFreeType();
 
 	/* This must be done early, since functions use the SetWindowDirty* calls */
 	InitWindowSystem();
 
-	/* Look for the sounds before the graphics. Otherwise none would be set and
-	 * the first initialisation of the video happens on the wrong data. Now it
-	 * can do the first initialisation right. */
-	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = strdup(BaseSounds::ini_set);
-	if (!BaseSounds::SetSet(sounds_set)) {
-		StrEmpty(sounds_set) ?
-			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of readme.txt.") :
-			usererror("Failed to select requested sounds set '%s'", sounds_set);
-	}
-	free(sounds_set);
-
+	BaseGraphics::FindSets();
 	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = strdup(BaseGraphics::ini_set);
 	if (!BaseGraphics::SetSet(graphics_set) && !StrEmpty(graphics_set)) {
 		usererror("Failed to select requested graphics set '%s'", graphics_set);
 	}
 	free(graphics_set);
-
-	if (music_set == NULL && BaseMusic::ini_set != NULL) music_set = strdup(BaseMusic::ini_set);
-	if (!BaseMusic::SetSet(music_set)) {
-		StrEmpty(music_set) ?
-			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of readme.txt.") :
-			usererror("Failed to select requested music set '%s'", music_set);
-	}
-	free(music_set);
 
 	/* Initialize game palette */
 	GfxInitPalettes();
@@ -748,17 +724,6 @@ int ttd_main(int argc, char *argv[])
 	}
 	free(blitter);
 
-	DEBUG(driver, 1, "Loading drivers...");
-
-	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = strdup(_ini_sounddriver);
-	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
-	if (_sound_driver == NULL) {
-		StrEmpty(sounddriver) ?
-			usererror("Failed to autoprobe sound driver") :
-			usererror("Failed to select requested sound driver '%s'", sounddriver);
-	}
-	free(sounddriver);
-
 	if (videodriver == NULL && _ini_videodriver != NULL) videodriver = strdup(_ini_videodriver);
 	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
 	if (_video_driver == NULL) {
@@ -768,25 +733,10 @@ int ttd_main(int argc, char *argv[])
 	}
 	free(videodriver);
 
-	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
-	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
-	if (_music_driver == NULL) {
-		StrEmpty(musicdriver) ?
-			usererror("Failed to autoprobe music driver") :
-			usererror("Failed to select requested music driver '%s'", musicdriver);
-	}
-	free(musicdriver);
-
 	/* Initialize the zoom level of the screen to normal */
 	_screen.zoom = ZOOM_LVL_NORMAL;
 
 	NetworkStartUp(); // initialize network-core
-
-	if (!HandleBootstrap()) goto exit;
-
-	/* restore saved music volume */
-	_music_driver->SetVolume(_settings_client.music.music_vol);
-	_video_driver->ClaimMousePointer();
 
 #if defined(ENABLE_NETWORK)
 	if (debuglog_conn != NULL && _network_available) {
@@ -802,6 +752,52 @@ int ttd_main(int argc, char *argv[])
 		NetworkStartDebugLog(NetworkAddress(debuglog_conn, rport));
 	}
 #endif /* ENABLE_NETWORK */
+
+	if (!HandleBootstrap()) goto exit;
+
+	_video_driver->ClaimMousePointer();
+
+	/* initialize screenshot formats */
+	InitializeScreenshotFormats();
+
+	BaseSounds::FindSets();
+	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = strdup(BaseSounds::ini_set);
+	if (!BaseSounds::SetSet(sounds_set)) {
+		StrEmpty(sounds_set) ?
+			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of readme.txt.") :
+			usererror("Failed to select requested sounds set '%s'", sounds_set);
+	}
+	free(sounds_set);
+
+	BaseMusic::FindSets();
+	if (music_set == NULL && BaseMusic::ini_set != NULL) music_set = strdup(BaseMusic::ini_set);
+	if (!BaseMusic::SetSet(music_set)) {
+		StrEmpty(music_set) ?
+			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of readme.txt.") :
+			usererror("Failed to select requested music set '%s'", music_set);
+	}
+	free(music_set);
+
+	if (sounddriver == NULL && _ini_sounddriver != NULL) sounddriver = strdup(_ini_sounddriver);
+	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
+	if (_sound_driver == NULL) {
+		StrEmpty(sounddriver) ?
+			usererror("Failed to autoprobe sound driver") :
+			usererror("Failed to select requested sound driver '%s'", sounddriver);
+	}
+	free(sounddriver);
+
+	if (musicdriver == NULL && _ini_musicdriver != NULL) musicdriver = strdup(_ini_musicdriver);
+	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
+	if (_music_driver == NULL) {
+		StrEmpty(musicdriver) ?
+			usererror("Failed to autoprobe music driver") :
+			usererror("Failed to select requested music driver '%s'", musicdriver);
+	}
+	free(musicdriver);
+
+	/* restore saved music volume */
+	_music_driver->SetVolume(_settings_client.music.music_vol);
 
 	/* Take our initial lock on whatever we might want to do! */
 	_modal_progress_paint_mutex->BeginCritical();
