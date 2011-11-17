@@ -615,6 +615,9 @@
     <ClInclude Include="..\src\network\network_content.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\network\network_content_gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\network\network_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -465,6 +465,7 @@
     <ClInclude Include="..\src\network\network_base.h" />
     <ClInclude Include="..\src\network\network_client.h" />
     <ClInclude Include="..\src\network\network_content.h" />
+    <ClInclude Include="..\src\network\network_content_gui.h" />
     <ClInclude Include="..\src\network\network_func.h" />
     <ClInclude Include="..\src\network\network_gamelist.h" />
     <ClInclude Include="..\src\network\network_gui.h" />

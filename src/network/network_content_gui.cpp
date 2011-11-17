@@ -20,16 +20,10 @@
 #include "../sortlist_type.h"
 #include "../querystring_gui.h"
 #include "../core/geometry_func.hpp"
-#include  "network_content.h"
+#include "network_content_gui.h"
 
 #include "table/strings.h"
 #include "../table/sprites.h"
-
-/** Widgets used by this window */
-enum DownloadStatusWindowWidgets {
-	NCDSWW_BACKGROUND, ///< Background
-	NCDSWW_CANCELOK,   ///< Cancel/OK button
-};
 
 /** Nested widgets for the download window. */
 static const NWidgetPart _nested_network_content_download_status_window_widgets[] = {
@@ -53,34 +47,75 @@ static const WindowDesc _network_content_download_status_window_desc(
 	_nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
 );
 
+BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(const WindowDesc *desc) :
+		cur_id(UINT32_MAX)
+{
+	_network_content_client.AddCallback(this);
+	_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
+
+	this->InitNested(desc, 0);
+}
+
+BaseNetworkContentDownloadStatusWindow::~BaseNetworkContentDownloadStatusWindow()
+{
+	_network_content_client.RemoveCallback(this);
+}
+
+/* virtual */ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, int widget) const
+{
+	if (widget != NCDSWW_BACKGROUND) return;
+
+	/* Draw nice progress bar :) */
+	DrawFrameRect(r.left + 20, r.top + 4, r.left + 20 + (int)((this->width - 40LL) * this->downloaded_bytes / this->total_bytes), r.top + 14, COLOUR_MAUVE, FR_NONE);
+
+	int y = r.top + 20;
+	SetDParam(0, this->downloaded_bytes);
+	SetDParam(1, this->total_bytes);
+	SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
+	DrawString(r.left + 2, r.right - 2, y, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_HOR_CENTER);
+
+	StringID str;
+	if (this->downloaded_bytes == this->total_bytes) {
+		str = STR_CONTENT_DOWNLOAD_COMPLETE;
+	} else if (!StrEmpty(this->name)) {
+		SetDParamStr(0, this->name);
+		SetDParam(1, this->downloaded_files);
+		SetDParam(2, this->total_files);
+		str = STR_CONTENT_DOWNLOAD_FILE;
+	} else {
+		str = STR_CONTENT_DOWNLOAD_INITIALISE;
+	}
+
+	y += FONT_HEIGHT_NORMAL + 5;
+	DrawStringMultiLine(r.left + 2, r.right - 2, y, y + FONT_HEIGHT_NORMAL * 2, str, TC_FROMSTRING, SA_CENTER);
+}
+
+/* virtual */ void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInfo *ci, int bytes)
+{
+	if (ci->id != this->cur_id) {
+		strecpy(this->name, ci->filename, lastof(this->name));
+		this->cur_id = ci->id;
+		this->downloaded_files++;
+	}
+
+	this->downloaded_bytes += bytes;
+	this->SetDirty();
+}
+
+
 /** Window for showing the download status of content */
-struct NetworkContentDownloadStatusWindow : public Window, ContentCallback {
+struct NetworkContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
 private:
-	ClientNetworkContentSocketHandler *connection; ///< Our connection with the content server
 	SmallVector<ContentType, 4> receivedTypes;     ///< Types we received so we can update their cache
-
-	uint total_files;      ///< Number of files to download
-	uint downloaded_files; ///< Number of files downloaded
-	uint total_bytes;      ///< Number of bytes to download
-	uint downloaded_bytes; ///< Number of bytes downloaded
-
-	uint32 cur_id; ///< The current ID of the downloaded file
-	char name[48]; ///< The current name of the downloaded file
 
 public:
 	/**
 	 * Create a new download window based on a list of content information
 	 * with flags whether to download them or not.
 	 */
-	NetworkContentDownloadStatusWindow() :
-		cur_id(UINT32_MAX)
+	NetworkContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(&_network_content_download_status_window_desc)
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, 1);
-
-		_network_content_client.AddCallback(this);
-		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
-
-		this->InitNested(&_network_content_download_status_window_desc, 0);
 	}
 
 	/** Free whatever we've allocated */
@@ -157,36 +192,6 @@ public:
 
 		/* Always invalidate the download window; tell it we are going to be gone */
 		InvalidateWindowData(WC_NETWORK_WINDOW, 1, 2);
-		_network_content_client.RemoveCallback(this);
-	}
-
-	virtual void DrawWidget(const Rect &r, int widget) const
-	{
-		if (widget != NCDSWW_BACKGROUND) return;
-
-		/* Draw nice progress bar :) */
-		DrawFrameRect(r.left + 20, r.top + 4, r.left + 20 + (int)((this->width - 40LL) * this->downloaded_bytes / this->total_bytes), r.top + 14, COLOUR_MAUVE, FR_NONE);
-
-		int y = r.top + 20;
-		SetDParam(0, this->downloaded_bytes);
-		SetDParam(1, this->total_bytes);
-		SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
-		DrawString(r.left + 2, r.right - 2, y, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_HOR_CENTER);
-
-		StringID str;
-		if (this->downloaded_bytes == this->total_bytes) {
-			str = STR_CONTENT_DOWNLOAD_COMPLETE;
-		} else if (!StrEmpty(this->name)) {
-			SetDParamStr(0, this->name);
-			SetDParam(1, this->downloaded_files);
-			SetDParam(2, this->total_files);
-			str = STR_CONTENT_DOWNLOAD_FILE;
-		} else {
-			str = STR_CONTENT_DOWNLOAD_INITIALISE;
-		}
-
-		y += FONT_HEIGHT_NORMAL + 5;
-		DrawStringMultiLine(r.left + 2, r.right - 2, y, y + FONT_HEIGHT_NORMAL * 2, str, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -199,20 +204,14 @@ public:
 
 	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes)
 	{
-		if (ci->id != this->cur_id) {
-			strecpy(this->name, ci->filename, lastof(this->name));
-			this->cur_id = ci->id;
-			this->downloaded_files++;
-			this->receivedTypes.Include(ci->type);
-		}
-		this->downloaded_bytes += bytes;
+		BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(ci, bytes);
+
+		if (ci->id != this->cur_id) this->receivedTypes.Include(ci->type);
 
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {
 			this->GetWidget<NWidgetCore>(NCDSWW_CANCELOK)->widget_data = STR_BUTTON_OK;
 		}
-
-		this->SetDirty();
 	}
 };
 

@@ -198,6 +198,7 @@ network/network_admin.h
 network/network_base.h
 network/network_client.h
 network/network_content.h
+network/network_content_gui.h
 network/network_func.h
 network/network_gamelist.h
 network/network_gui.h
