@@ -1823,6 +1823,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\bootstrap_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\bridge_gui.cpp"
 				>
 			</File>

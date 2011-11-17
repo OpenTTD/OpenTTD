@@ -387,6 +387,7 @@ core/string_compare_type.hpp
 aircraft_gui.cpp
 airport_gui.cpp
 autoreplace_gui.cpp
+bootstrap_gui.cpp
 bridge_gui.cpp
 build_vehicle_gui.cpp
 cheat_gui.cpp

@@ -79,6 +79,7 @@ void DoPaletteAnimations();
 void MusicLoop();
 void ResetMusic();
 void CallWindowTickEvent();
+bool HandleBootstrap();
 
 extern void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
@@ -297,7 +298,8 @@ static void ShutdownGame()
 
 	PoolBase::Clean(PT_ALL);
 
-	ResetNewGRFData();
+	/* No NewGRFs were loaded when it was still bootstrapping. */
+	if (_game_mode != GM_BOOTSTRAP) ResetNewGRFData();
 
 	/* Close all and any open filehandles */
 	FioCloseAll();
@@ -717,10 +719,8 @@ int ttd_main(int argc, char *argv[])
 	free(sounds_set);
 
 	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = strdup(BaseGraphics::ini_set);
-	if (!BaseGraphics::SetSet(graphics_set)) {
-		StrEmpty(graphics_set) ?
-			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD. See section 4.1 of readme.txt.") :
-			usererror("Failed to select requested graphics set '%s'", graphics_set);
+	if (!BaseGraphics::SetSet(graphics_set) && !StrEmpty(graphics_set)) {
+		usererror("Failed to select requested graphics set '%s'", graphics_set);
 	}
 	free(graphics_set);
 
@@ -739,7 +739,7 @@ int ttd_main(int argc, char *argv[])
 	if (blitter == NULL && _ini_blitter != NULL) blitter = strdup(_ini_blitter);
 	_blitter_autodetected = StrEmpty(blitter);
 	/* If we have a 32 bpp base set, try to select the 32 bpp blitter first, but only if we autoprobe the blitter. */
-	if (!_blitter_autodetected || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP || BlitterFactoryBase::SelectBlitter("32bpp-anim") == NULL) {
+	if (!_blitter_autodetected || BaseGraphics::GetUsedSet() == NULL || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP || BlitterFactoryBase::SelectBlitter("32bpp-anim") == NULL) {
 		if (BlitterFactoryBase::SelectBlitter(blitter) == NULL) {
 			StrEmpty(blitter) ?
 				usererror("Failed to autoprobe blitter") :
@@ -780,11 +780,13 @@ int ttd_main(int argc, char *argv[])
 	/* Initialize the zoom level of the screen to normal */
 	_screen.zoom = ZOOM_LVL_NORMAL;
 
+	NetworkStartUp(); // initialize network-core
+
+	if (!HandleBootstrap()) goto exit;
+
 	/* restore saved music volume */
 	_music_driver->SetVolume(_settings_client.music.music_vol);
 	_video_driver->ClaimMousePointer();
-
-	NetworkStartUp(); // initialize network-core
 
 #if defined(ENABLE_NETWORK)
 	if (debuglog_conn != NULL && _network_available) {
@@ -825,6 +827,7 @@ int ttd_main(int argc, char *argv[])
 		SaveToHighScore();
 	}
 
+exit:
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
 
@@ -841,7 +844,7 @@ int ttd_main(int argc, char *argv[])
 
 void HandleExitGameRequest()
 {
-	if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
+	if (_game_mode == GM_MENU || _game_mode == GM_BOOTSTRAP) { // do not ask to quit on the main screen
 		_exit_game = true;
 	} else if (_settings_client.gui.autosave_on_exit) {
 		DoExitSave();
@@ -1317,6 +1320,15 @@ static void DoAutosave()
 
 void GameLoop()
 {
+	if (_game_mode == GM_BOOTSTRAP) {
+#ifdef ENABLE_NETWORK
+		/* Check for UDP stuff */
+		if (_network_available) NetworkUDPGameLoop();
+#endif
+		InputLoop();
+		return;
+	}
+
 	ProcessAsyncSaveFinish();
 
 	/* autosave game? */

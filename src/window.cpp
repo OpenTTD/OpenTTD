@@ -2786,6 +2786,10 @@ void RelocateAllWindows(int neww, int newh)
 		/* XXX - this probably needs something more sane. For example specifying
 		 * in a 'backup'-desc that the window should always be centered. */
 		switch (w->window_class) {
+			case WC_BOOTSTRAP:
+				ResizeWindow(w, neww, newh);
+				continue;
+
 			case WC_MAIN_TOOLBAR:
 				ResizeWindow(w, min(neww, *_preferred_toolbar_size) - w->width, 0);
 

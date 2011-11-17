@@ -1125,6 +1125,9 @@
     <ClCompile Include="..\src\autoreplace_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\bootstrap_gui.cpp">
+      <Filter>GUI Source Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\bridge_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>

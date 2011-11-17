@@ -19,6 +19,7 @@ enum GameMode {
 	GM_MENU,
 	GM_NORMAL,
 	GM_EDITOR,
+	GM_BOOTSTRAP
 };
 
 /** Mode which defines what mode we're switching to. */

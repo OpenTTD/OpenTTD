@@ -635,6 +635,7 @@
     <ClCompile Include="..\src\aircraft_gui.cpp" />
     <ClCompile Include="..\src\airport_gui.cpp" />
     <ClCompile Include="..\src\autoreplace_gui.cpp" />
+    <ClCompile Include="..\src\bootstrap_gui.cpp" />
     <ClCompile Include="..\src\bridge_gui.cpp" />
     <ClCompile Include="..\src\build_vehicle_gui.cpp" />
     <ClCompile Include="..\src\cheat_gui.cpp" />
