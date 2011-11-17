@@ -1027,13 +1027,13 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Quan đ
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Không Có
-STR_FUNDING_ONLY                                                :Chỉ cấp vốn
-STR_MINIMAL                                                     :Tối thiểu
-STR_NUM_VERY_LOW                                                :Ít nhất
+STR_FUNDING_ONLY                                                :Chỉ Cấp Vốn
+STR_MINIMAL                                                     :Tối Thiểu
+STR_NUM_VERY_LOW                                                :Ít Nhất
 STR_NUM_LOW                                                     :Ít
-STR_NUM_NORMAL                                                  :Trung bình
+STR_NUM_NORMAL                                                  :Trung Bình
 STR_NUM_HIGH                                                    :Nhiều
-STR_NUM_CUSTOM                                                  :Tuỳ chọn
+STR_NUM_CUSTOM                                                  :Tùy Chọn
 STR_NUM_CUSTOM_NUMBER                                           :Tùy chỉnh ({NUM})
 
 STR_VARIETY_NONE                                                :Không
@@ -1058,7 +1058,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Tùy chỉnh ({
 
 STR_RIVERS_NONE                                                 :Không
 STR_RIVERS_FEW                                                  :Ít
-STR_RIVERS_MODERATE                                             :Bình thường
+STR_RIVERS_MODERATE                                             :Bình Thường
 STR_RIVERS_LOT                                                  :Nhiều
 
 STR_DISASTER_NONE                                               :Không Có
@@ -1161,21 +1161,21 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Sân ba
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Cảnh báo nếu phương tiện bị thất lạc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kiểm soát lộ trình của các phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :không
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các ph.tiện đang dừng
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả ph.tiện
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của ph.tiện bị âm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các phương tiện đang dừng
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phương tiện
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của phương tiện bị âm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Phương tiện không bao giờ thành đồ cổ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Tự thay mới phương tiện nếu nó hết tuổi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Tự thay mới phương tiện vào {ORANGE}{STRING}{LTBLUE} tháng trước/sau khi quá tuổi
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự thay mới ph.tiện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự thay mới phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Khoảng thời gian hiện báo lỗi: {ORANGE}{STRING} giây
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Thông báo các sự kiện hiện ra: {ORANGE}{STRING} giây
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}THông báo các sự kiện hiện ra: {ORANGE}Click phải
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Hiện dân số đô thị trong nhãn tên của đô thị: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tạo nền đất: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên bản
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :Đất liền
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Khoảng cách tối đa từ mép bản đồ tới Nhà máy lọc dầu {ORANGE}{STRING} ô
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Độ cao tuyết phủ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Độ gồ ghề của địa chất (cho TerraGenesis) : {ORANGE}{STRING}
@@ -2320,7 +2320,7 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuy�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Số ngẫu nhiên:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Chọn để nhập con số ngẫu nhiên khi tạo bản đồ
-STR_MAPGEN_RANDOM                                               :{BLACK}Sinh ngẫu nhiên
+STR_MAPGEN_RANDOM                                               :{BLACK}Sinh Ngẫu Nhiên
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Thay đổi con số ngẫu nhiên để khởi tạo địa hình ngẫu nhiên
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
@@ -2329,7 +2329,7 @@ STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực n�
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Số sông/suối:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
 STR_MAPGEN_VARIETY                                              :{BLACK}Phân bổ sự đa dạng:
-STR_MAPGEN_GENERATE                                             :{WHITE}Khởi tạo
+STR_MAPGEN_GENERATE                                             :{WHITE}Khởi Tạo
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Rìa bản đồ:
@@ -2337,11 +2337,11 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Tây B�
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Đông Bắc
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Đông Nam
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Tây Nam
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng tự do
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng Tự Do
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Nước
-STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu nhiên
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu nhiên
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng tay
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu Nhiên
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu Nhiên
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng Tay
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay bản đồ địa hình:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên bản đồ địa hình:
@@ -3395,10 +3395,10 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có mộ
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI chỉ có trên server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Cấu Hình AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Thiết Lập AI
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Tất cả AI sẽ nạp tại ván chơi kế tiếp
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
-STR_AI_CONFIG_RANDOM_AI                                         :AI Ngẫu Nhiên
+STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiên
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Di Chuyển Lên Trên
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuyển AI lên trên danh sách
@@ -3407,7 +3407,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Di chuy�
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Chọn AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Nạp một AI khác
-STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Cấu Hình
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
 
 # Available AIs window
@@ -3426,7 +3426,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không �
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tham Số AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
-STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết lập lại
+STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
@@ -3470,7 +3470,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... khô
 STR_ERROR_PNGMAP                                                :{WHITE}Không thể nạp nền từ file PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... không tìm thấy file.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... không thể chuyển kiểu ảnh. Phải là ảnh PNG 8 hoặc 24-bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... có lỗi gì đó, rất tiếc. (có thể là hỏng file)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... có lỗi gì đó, rất tiếc (có thể là hỏng file)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Không thể nạp nền từ file BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... không thể chuyển đổi kiểu ảnh.
