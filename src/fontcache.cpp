@@ -1001,7 +1001,15 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	if (face == NULL || (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END)) {
 		SpriteID sprite = GetUnicodeGlyph(size, key);
 		if (sprite == 0) sprite = GetUnicodeGlyph(size, '?');
-		return GetSprite(sprite, ST_FONT);
+
+		/* Load the sprite if it's known. */
+		if (sprite != 0) return GetSprite(sprite, ST_FONT);
+
+		/* For the 'rare' case there is no font available at all. */
+		if (face == NULL) error("No sprite font and no real font either... bailing!");
+
+		/* Use the '?' from the freetype font. */
+		key = '?';
 	}
 
 	/* Check for the glyph in our cache */
