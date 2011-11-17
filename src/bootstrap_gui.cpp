@@ -12,6 +12,9 @@
 #include "stdafx.h"
 #include "base_media_base.h"
 #include "blitter/factory.hpp"
+
+#if defined(ENABLE_NETWORK) && defined(WITH_FREETYPE)
+
 #include "core/geometry_func.hpp"
 #include "fileio_func.h"
 #include "fontcache.h"
@@ -205,6 +208,8 @@ public:
 		delete this;
 	}
 };
+
+#endif /* defined(ENABLE_NETWORK) && defined(WITH_FREETYPE) */
 
 /**
  * Handle all procedures for bootstrapping OpenTTD without a base grapics set.
