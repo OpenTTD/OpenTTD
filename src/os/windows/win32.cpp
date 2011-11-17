@@ -28,14 +28,16 @@
 #include <sys/stat.h>
 
 static bool _has_console;
+static bool _cursor_disable = true;
+static bool _cursor_visible = true;
 
-static bool cursor_visible = true;
-
-bool MyShowCursor(bool show)
+bool MyShowCursor(bool show, bool toggle)
 {
-	if (cursor_visible == show) return show;
+	if (toggle) _cursor_disable = !_cursor_disable;
+	if (_cursor_disable) return show;
+	if (_cursor_visible == show) return show;
 
-	cursor_visible = show;
+	_cursor_visible = show;
 	ShowCursor(show);
 
 	return !show;

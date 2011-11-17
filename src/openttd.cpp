@@ -782,6 +782,7 @@ int ttd_main(int argc, char *argv[])
 
 	/* restore saved music volume */
 	_music_driver->SetVolume(_settings_client.music.music_vol);
+	_video_driver->ClaimMousePointer();
 
 	NetworkStartUp(); // initialize network-core
 

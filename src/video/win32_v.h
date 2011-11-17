@@ -31,6 +31,8 @@ public:
 
 	/* virtual */ bool AfterBlitterChange();
 
+	/* virtual */ bool ClaimMousePointer();
+
 	/* virtual */ const char *GetName() const { return "win32"; }
 
 	bool MakeWindow(bool full_screen);

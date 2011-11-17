@@ -56,6 +56,11 @@ public:
 		return true;
 	}
 
+	virtual bool ClaimMousePointer()
+	{
+		return true;
+	}
+
 	/**
 	 * Whether the driver has a graphical user interface with the end user.
 	 * Or in other words, whether we should spawn a thread for world generation

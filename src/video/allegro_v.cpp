@@ -225,8 +225,20 @@ static bool CreateMainSurface(uint w, uint h)
 	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
 	set_window_title(caption);
 
+	enable_hardware_cursor();
+	select_mouse_cursor(MOUSE_CURSOR_ARROW);
+	show_mouse(_allegro_screen);
+
 	GameSizeChanged();
 
+	return true;
+}
+
+bool VideoDriver_Allegro::ClaimMousePointer()
+{
+	select_mouse_cursor(MOUSE_CURSOR_NONE);
+	show_mouse(_allegro_screen);
+	disable_hardware_cursor();
 	return true;
 }
 

@@ -259,10 +259,15 @@ static bool CreateMainSurface(uint w, uint h)
 
 	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
 	SDL_CALL SDL_WM_SetCaption(caption, caption);
-	SDL_CALL SDL_ShowCursor(0);
 
 	GameSizeChanged();
 
+	return true;
+}
+
+bool VideoDriver_SDL::ClaimMousePointer()
+{
+	SDL_CALL SDL_ShowCursor(0);
 	return true;
 }
 

@@ -81,6 +81,12 @@ static void UpdatePalette(HDC dc, uint start, uint count)
 	SetDIBColorTable(dc, start, count, rgb);
 }
 
+bool VideoDriver_Win32::ClaimMousePointer()
+{
+	MyShowCursor(false, true);
+	return true;
+}
+
 struct VkMapping {
 	byte vk_from;
 	byte vk_count;

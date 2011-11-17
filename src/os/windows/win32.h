@@ -13,7 +13,7 @@
 #define WIN32_H
 
 #include <windows.h>
-bool MyShowCursor(bool show);
+bool MyShowCursor(bool show, bool toggle = false);
 
 typedef void (*Function)(int);
 bool LoadLibraryList(Function proc[], const char *dll);
