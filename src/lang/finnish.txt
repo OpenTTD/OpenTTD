@@ -1884,6 +1884,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... yhte
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... tiedostoa ei voitu kirjoittaa
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ei voitu purkaa ladattua tiedostoa
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läpinäkyvyysasetukset
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Muuta asemakylttien läpinäkyvyyttä. Ctrl+Klik lukitaksesi
@@ -1929,6 +1930,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli. Shift vaihtaa rakennustilan ja kustannearvion välillä
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien, opastimien, reittipisteiden ja asemien rakentaminen/poisto päälle/pois. Pidä pohjassa Ctrl-näppäintä poistaaksesi myös aseman tai reittipisteen alla olevat raiteet.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muunna/päivitä raidetyyppi. Shift vaihtaa muuntotilan ja kustannearvion välillä
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Veturitallin suunta
@@ -2405,6 +2407,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Siirrä 
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Siirrä valittua NewGRF-tiedostoa listassa alaspäin
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista asennetuista NewGRF-tiedostoista. Valitse tiedosto muokataksesi sen parametreja.
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Aseta parametrit
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Käytä eri palettia
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Käytä valitun NewGRF:n kanssa eri palettia.{}Tee näin, jos tämän NewGRF:n grafiikat näkyvät pelissä vaaleanpunaisina.
@@ -2427,7 +2431,6 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytö
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Epäyhteensopiva tämän OpenTTD-version kanssa
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna NewGRF-parametrit
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametrejä
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulje
@@ -2436,6 +2439,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Aseta ka
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametri {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametrien määrä: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Tutki - {STRING}
@@ -3273,6 +3278,8 @@ STR_ORDER_NO_UNLOAD                                             :(Ei purkua mutt
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei lastin purkua, mutta odota uuden lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purkua, mutta odota minkä tahansa lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei purkua eikä lastausta)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[alkupäähän]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]

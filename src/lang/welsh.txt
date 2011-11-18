@@ -1117,7 +1117,7 @@ STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Chwyddi
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Danfon llwyth i orsaf dim ond pan fo galw: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Hyd pont uchafsymol: {ORANGE}{STRING} teil
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Hyd uchafsymol twneli: {ORANGE}{STRING} teil
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Prif ddull adeiladu diwydiant â llaw: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Prif ddull adeiladu diwydiannau cynradd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :dim
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :fel diwydiannau eraill
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :mwynchwilio am adnoddau crai
@@ -1239,7 +1239,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Dangos cyrraedd a gadael mewn amserlenni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y Cyntaf sydd ar gael
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y cyntaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yr olaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Defnydd mwyaf
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Dangos traciau wedi'u cadw: {ORANGE}{STRING}
@@ -1282,11 +1282,11 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pan yn 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Adeiladu semafforau cyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Galluogi'r GUI signalau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Y math o signal i'w adeiladu fel rhagosodiad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blocio signalau
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signalau Bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Signalau Llwybr
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Signalau Llwybr Un-ffordd
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cylchu trwy mathau signal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signalau blocio'n unig
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signalau bloc yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signalau llwybr yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Pob math
 
@@ -1876,6 +1876,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... coll
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dim modd ysgrifennu'r ffeil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Doedd dim modd datgywasgu'r ffeil
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Dewisiadau Tryloywder
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion gorsafoedd. Mae Ctrl+Clic yn cloi
@@ -1921,6 +1922,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Adeiladu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Adeiladu twnnel rheilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau, signalau, a pwyntiau llwybro. Wrth ddal Ctrl, caiff cledrau pwyntiau llwybro a gorsafoedd eu tynnu hefyd
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trosi/Diweddaru math y rheilffordd. Mae Shift yn toglo adeiladu/amcangyfrif y gost
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Cyfeiriad Depo Trên
@@ -2397,6 +2399,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Symud i 
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i lawr y rhestr
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o bob ffeil NewGRF sydd wedi'u gosod. Cliciwch ar ffeil i newid ei baramedrau
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Gosod paramedrau
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toglu palet
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Toglu palet y NewGRFa ddewiswyd.{}Gwnech hyn pan fo graffegau'r NewGRF yn edrych yn binc yn y gêm
@@ -2419,7 +2423,6 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwy
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Anghydnaws gyda'r fersiwn yma o OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Rhoi paramedrau NewGRF newydd
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Newid paramedrau NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cau
@@ -2428,6 +2431,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Gosod po
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramedr {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nifer y paramedrau: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Arolygu - {STRING}
@@ -3265,6 +3270,8 @@ STR_ORDER_NO_UNLOAD                                             :(Dim dadlwytho 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Dim dadlwytho, aros am lwyth llawn)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Dim dadlwytho, aros am unrhyw lwyth llawn)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Dim llwytho na dadlwytho)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[ochr agos]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[canol]

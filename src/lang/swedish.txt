@@ -1930,6 +1930,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertera/Uppgradera spårtyp. Shift växlar mellan att bygga/visa beräknad kostnad
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Riktning för depå
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Välj riktning för depå
@@ -2404,7 +2405,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Flytta u
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Flytta ned
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytta ner den markerade NewGRF-filen i listan
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En lista med installerade NewGRF-filer . Välj en fil för att ändra dess parametrar
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametrar
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Byt palett
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Ändra palett för markerad NewGRF.{}Gör detta när grafiken från denna NewGRF är rosa i spelet
@@ -2436,6 +2436,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Återst�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrar: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}
@@ -3273,6 +3275,8 @@ STR_ORDER_NO_UNLOAD                                             :(Lasta ej av me
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Lasta ej av men vänta på full last)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Lasta ej av men vänta på full last av någon godstyp)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Lasta ej av och lasta ej)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[början]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[mitten]

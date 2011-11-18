@@ -1884,6 +1884,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conn
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... file not writable
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Could not decompress the downloaded file
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparency Options
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toggle transparency for station signs. Ctrl+Click to lock
@@ -1929,6 +1930,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Build ra
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Build railway tunnel. Shift toggles building/showing cost estimate
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toggle build/remove for railway track, signals, waypoints and stations. Hold Ctrl to also remove the rail of waypoints and stations
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convert/Upgrade the type of rail. Shift toggles building/showing cost estimate
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Train Depot Orientation
@@ -2405,6 +2407,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Move Dow
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move the selected NewGRF file down the list
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A list of the NewGRF files that are installed. Click a file to change its parameters
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toggle palette
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Toggle the palette of the selected NewGRF.{}Do this when the graphics from this NewGRF look pink in-game
@@ -2427,7 +2431,6 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabled
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible with this version of OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enter NewGRF parameters
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Change NewGRF parameters
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Close
@@ -2436,6 +2439,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set all 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING1}: {ORANGE}{STRING1}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Number of parameters: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspect - {STRING5}
@@ -3273,6 +3278,8 @@ STR_ORDER_NO_UNLOAD                                             :(No unloading a
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unloading and wait for full load)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unloading and wait for any full load)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No unloading and no loading)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]

@@ -1944,6 +1944,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Costruis
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterna costruzione/rimozione di binari, segnali, waypoint e stazioni. Tenere premuto CTRL per rimuovere anche i binari.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converte/aggiorna il tipo di rotaie. MAIUSC alterna fra costruzione e stima dei costi
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientamento deposito
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleziona l'orientamento del deposito ferroviario
@@ -2418,7 +2419,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Sposta i
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Sposta giù
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Sposta il file NewGRF selezionato più in basso nell'elenco
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Elenco dei file NewGRF installati. Fare clic su un file per cambiarne i parametri
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Imposta parametri
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alterna tavolozze
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Alterna la tavolozza colori utilizzata dal NewGRF selezionato.{}Utilizzare questa impostazione se la grafica di questo NewGRF durante il gioco appare rosa.
@@ -2450,6 +2450,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Imposta 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Numero di parametri: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Ispeziona - {STRING}
@@ -3275,7 +3277,7 @@ STR_ORDER_IMPLICIT                                              :(Implicito)
 STR_ORDER_FULL_LOAD                                             :(Attendi pieno carico)
 STR_ORDER_FULL_LOAD_ANY                                         :(Attendi carico)
 STR_ORDER_NO_LOAD                                               :(Non caricare)
-STR_ORDER_UNLOAD                                                :(Scarica)
+STR_ORDER_UNLOAD                                                :(Scarica e carica)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Scarica e attendi pieno carico)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Scarica e attendi carico)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Scarica e parti vuoto)
@@ -3287,6 +3289,8 @@ STR_ORDER_NO_UNLOAD                                             :(Non scaricare 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non scaricare e attendi pieno carico)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non scaricare e attendi carico)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Non scaricare e non caricare)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :(inizio)
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :(centro)

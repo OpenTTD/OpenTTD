@@ -1885,6 +1885,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Verb
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kann Datei nicht schreiben
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann heruntergeladene Datei nicht entpacken
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzeinstellungen
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparenz für Stationsschilder einstellen. Strg+Klick, um Umschalten zu verhindern
@@ -1930,6 +1931,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbah
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss mit aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gleistyp in den ausgewählten umwandeln. Shift schaltet zwischen Bauen und Kostenvoranschlag um
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ausrichtung Zugdepot
@@ -2406,6 +2408,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Nach unt
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Die ausgewählte NewGRF-Datei in der Liste nach unten verschieben
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eine Liste der installierten NewGRF-Dateien. Zum Ändern der Parameter Datei auswählen
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parameter setzen
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Farbpalette ändern
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Farbpalette des ausgewählten NewGRF ändern.{}Nutze dieses, wenn die Grafiken des NewGRF im Spiel pink dargestellt werden
@@ -2428,7 +2432,6 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivier
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nicht mit dieser Version von OpenTTD kompatibel
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-Parameter eingeben
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter ändern
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Schließen
@@ -2437,6 +2440,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Alle Par
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Anzahl Parameter: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiziere - {STRING}
@@ -3274,6 +3279,8 @@ STR_ORDER_NO_UNLOAD                                             :(Nicht entladen
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nicht entladen, aber auf volle Ladung warten)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nicht entladen, aber voll beladen mit beliebiger Fracht)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Kein Entladen und kein Laden)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[am Anfang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[in der Mitte]

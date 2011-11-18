@@ -1931,6 +1931,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Fixar o Ctrl também remove a linha férrea de pontos de passagem e estações
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Actualizar tipo de linha. Shift alterna contruir/mostrar custo estimado
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do Depósito
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccionar a orientação do depósito
@@ -2405,7 +2406,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move o f
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Para Baixo
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o ficheiro NewGRF seleccionado para baixo na lista
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos ficheiros NewGRF instalados. Clique num ficheiro para alterar os seus parâmetros
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alternar palete
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Alterna a palete do NewGRF seleccionado.{}Alterne quando os gráficos deste NewGRF aparecerem a cor-de-rosa no jogo
@@ -2437,6 +2437,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Retorna 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número de parâmetros: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
@@ -3274,6 +3276,8 @@ STR_ORDER_NO_UNLOAD                                             :(Não descarreg
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e aguardar até encher)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e aguardar até encher de qq. carga)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Não descarregar e não carregar)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[extremo perto]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[no meio]

@@ -1987,6 +1987,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Ehita ro
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Vaheta rongitee, signaalide, meldepunktide ja jaamade ehitamise ja lammutamise vahel. Ctrl-klahviga eemaldatakse meldepunktid ja jaamad.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muuda/uuenda rööpaliiki. Shift valib ehitamise/hinna kuvamise režiimi
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Depoo suund
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Depoole suuna valimine
@@ -2461,7 +2462,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF-f
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Liiguta alla
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF-faili liigutamine loendis alla
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Nimekiri installeerimata NewGRF failidest. Parameetrite muutmiseks klõpsa failil.
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Vali parameetrid
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vaheta paletti
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Vaheta valitud NewGRF-i paletti.{}Tee seda, kui NewGRF-i graafika paistab mängus roosa.
@@ -2493,6 +2493,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Säti k�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameeter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parameetrite arv: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspekteeri- {STRING}
@@ -3330,6 +3332,8 @@ STR_ORDER_NO_UNLOAD                                             :(Maha ei laadit
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Maha ei laadita ja oodatakse täislaadungit)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Maha ei laadita ja oodatakse suvalist täislaadungit)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Maha ei laadita ja peale ei laadita)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[lõpu lähedal]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskel]

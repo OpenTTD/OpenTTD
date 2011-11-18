@@ -1931,6 +1931,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Basculer construire/retirer pour les voies, les signaux, les points de contrôle et les stations. Maintenir Ctrl pour retirer également la voie lors du retrait des points de contrôle et des stations
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Améliorer le type de rail. Shift pour basculer entre construire et afficher le coût estimé
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientation du dépôt
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Choisir l'orientation du dépôt ferroviaire
@@ -2405,7 +2406,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter l
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le fichier NewGRF sélectionné dans la liste
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des fichiers NewGRF installés. Cliquer sur un fichier pour modifier ses paramètres
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Basculer palette
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Basculer la palette du NewGRF sélectionné.{}Faites ceci quand les graphiques de ce NewGRF sont rose dans le jeu
@@ -2437,6 +2437,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Régler 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramètre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}{NBSP}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombre de paramètres{NBSP}: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspection - {STRING}
@@ -3274,6 +3276,8 @@ STR_ORDER_NO_UNLOAD                                             :(Ne pas déchar
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne pas décharger et attendre pleine charge)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne pas décharger et attendre pleine charge par un seul type)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne pas décharger et ne pas charger)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[queue]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[milieu]

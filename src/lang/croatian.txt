@@ -2026,6 +2026,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi 
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge, signala, čvorišta i postaja. Držanjem tipke Ctrl također se uklanjaju tračnice na čvorištima i postajama.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadogradi vrstu pruge. Shift mijenja prikaz građenje/procjena troškova.
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Smjer spremišta vlakova
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Odaberi smjer željezničkog spremišta
@@ -2500,7 +2501,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomakni 
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK} Pomakni dolje
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomakni odabranu NewGRF datoteku dolje na listi
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Popis instaliranih NewGRF datoteka. Kliknite na datoteku da bi promijenili njene parametre
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Aktiviraj paletu
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Prilagodi paletu izabranog NewGRF-a.{}Učini ovo kada grafike iz ovog NewGRF-a izgledaju ljubičasto tijekom igre.
@@ -2532,6 +2532,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Namjesti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Broj parametara: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Pregledaj - {STRING}
@@ -3369,6 +3371,8 @@ STR_ORDER_NO_UNLOAD                                             :(Preuzmi teret 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Čekaj puni ukrcaj bez iskrcavanja)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Čekaj bilo koji puni ukrcaj bez iskrcavanja)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Bez iskrcaja i bez ukrcaja)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[početak]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]

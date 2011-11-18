@@ -1930,6 +1930,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf sp
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen van sporen, seinen, controleposten en stations. Houd Ctrl ingedrukt om ook het spoor van controleposten en stations te verwijderen
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander spoortype. Shift schakelt tussen bouwen/inschatting van de kosten
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Richting van treindepot
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecteer richting van treindepot
@@ -2404,7 +2405,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Verplaat
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar beneden
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden in de lijst
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd. Klik op een bestand om de parameters te wijzigen
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet omzetten
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Verander het palet van het geselecteerde NewGRF-bestand.{}Gebruik deze mogelijkheid als de afbeeldingen van dit NewGRF-bestand er paars uit zien in het spel
@@ -2436,6 +2436,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Zet alle
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Aantal parameters: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecteer - {STRING}
@@ -3273,6 +3275,8 @@ STR_ORDER_NO_UNLOAD                                             :(Niet lossen en
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en volledig laden)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en één soort vracht volledig laden)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Niet lossen en niet laden)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[begin]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]

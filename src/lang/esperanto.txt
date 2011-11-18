@@ -446,6 +446,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pligrandiga ekranfoto
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tuta karto ekranfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montri limigujo
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1106,8 +1107,8 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisme
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de stratveturilakcelado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originale
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realisme
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kruteco de deklivo por vagonaroj {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kruteco de deklivo por stratveturiloj {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Dekliva kruteco por vagonaroj: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Dekliva kruteco por stratveturiloj: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vagonaroj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permesu ligi staciojn ne rekte najbarajn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
@@ -1872,6 +1873,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... neko
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosiero ne skribebla
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ne povis malkompaktigi la elŝutitan dosieron
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ebloj por travidebleco
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Baskuligi travideblecon de staciosignoj. Stir+Klak por ŝlosi.
@@ -1916,6 +1918,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Konstruu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Konstruu fervojtunelon
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elekti inter konstruado/forigado de trako, signaliloj, vojpunktoj kaj stacidomoj. Tenu Stir-klavon por forigi relojn de vojpunktoj kaj stacioj.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Transigu reltipon
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Direkto de la trajngaraĝo
@@ -2372,6 +2375,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Malsupre
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Movu la elektitan NewGRF-dosieron malsupren en la listo
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Listo da instalitaj NewGRF-dosieroj. Alklaku dosieron por ŝanĝi la parametrojn
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Agordu parametrojn
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Baskuligi paletron
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Apliku ŝanĝojn
@@ -2393,7 +2398,6 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Malaktiva
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Malkongrua ĉe ĉi tio versio de OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enigu NewGRF-parametrojn
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ŝanĝu parametroj de la NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fermu
@@ -2402,6 +2406,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kondiĉu
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombro da parametroj: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektu - {STRING}
@@ -2430,14 +2436,14 @@ STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eraro: {SI
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalo: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Neriparebla NewGRF-eraro okazis: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} estas por versio {STRING} de TTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} estas por la {STRING} versio de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} estas intencita por uzo kun {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nevalida parametro por {1:STRING}: parametro{STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} estu ŝarĝata antaŭ {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} estu ŝarĝata post {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} bezonas almenaŭ version {STRING} de OpenTTD
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} devi esti ŝarĝata antaŭ {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} devi esti ŝarĝata post {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} bezonas OpenTTD versio {STRING} aŭ pli bona
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :la GRF-dosiero estas farita por traduki
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tro da novaj grafikaĵoj estas ŝarĝataj
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tro da NewGRF-oj estas ŝarĝataj
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neatendita bildeto.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Atenco uzi nevalida ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enhavas rompitan bildeton. Ĉiuj rompitaj bildetoj aspektos kiel ruĝaj demandsignoj (?).
@@ -2965,7 +2971,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sendi av
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Aĉeti kopion de la trajno kun ĉiuj vagonoj. Stir+Klak por kunhavigi la itineron.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Aĉeti kopion de la stratveturilo. Stir+Klak por kunhavigi la itineron.
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Aĉeti kopion de la ŝipo. Stir+Klak por kunhavigi la itineron.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Aĉeti kopion de la aviadilo. Stir+Klak por kunhavigi la itineron.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Aĉeti kopion de la aviadilo. Stir+Klak por kunhavigi la itinero. Maj+klak montros la antaŭvidatan koston sen jam aĉetin.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Igu trajnon iri malgraŭ signalo
 
@@ -3145,7 +3151,7 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transsal
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ŝarĝu procenton
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidindo
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimuma rapido.
-STR_ORDER_CONDITIONAL_AGE                                       :Aĝo de la veturilo (jaroj)
+STR_ORDER_CONDITIONAL_AGE                                       :Aĝo (jaroj)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Prizorgo necesas.
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ĉiam
 
@@ -3217,6 +3223,8 @@ STR_ORDER_NO_UNLOAD                                             :(Ne malŝarĝu 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne malŝarĝu kaj atendu plenan ŝarĝon)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne malŝarĝu kaj atendu ajnan plenan ŝarĝon)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne malŝarĝu kaj ne ŝarĝu)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
@@ -3388,6 +3396,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala av
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
 
 # Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Sola bakupa sona aro estis trovata. Se vi bezonas sonojn, instalu sonan aron per la enhava elŝulta sistemo
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekranfoto sukcese konserviĝis kiel '{STRING}'
@@ -3459,6 +3468,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tro 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... spaco mankas sur la mapo
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La urbo ne konstruos stratojn. Vi povas ebligi stratkonstruadon per Avancitaj Agordoj->Ekonomio->Urboj.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Aktivas vojprilaborado
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ne povas forviŝi ĉi tiun urbon...{}Stacidomo aŭ tenejo rilatas al la urbon aŭ urban kahelon ne povas forviŝigi
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ne jen estas konvenan lokon por statuo en la centro de ĉi tiu urbo
 
 # Industry related errors

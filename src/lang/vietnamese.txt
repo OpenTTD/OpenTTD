@@ -1028,13 +1028,13 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Quan đ
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Không Có
-STR_FUNDING_ONLY                                                :Chỉ cấp vốn
-STR_MINIMAL                                                     :Tối thiểu
-STR_NUM_VERY_LOW                                                :Ít nhất
+STR_FUNDING_ONLY                                                :Chỉ Cấp Vốn
+STR_MINIMAL                                                     :Tối Thiểu
+STR_NUM_VERY_LOW                                                :Ít Nhất
 STR_NUM_LOW                                                     :Ít
-STR_NUM_NORMAL                                                  :Trung bình
+STR_NUM_NORMAL                                                  :Trung Bình
 STR_NUM_HIGH                                                    :Nhiều
-STR_NUM_CUSTOM                                                  :Tuỳ chọn
+STR_NUM_CUSTOM                                                  :Tùy Chọn
 STR_NUM_CUSTOM_NUMBER                                           :Tùy chỉnh ({NUM})
 
 STR_VARIETY_NONE                                                :Không
@@ -1158,21 +1158,21 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Sân ba
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Cảnh báo nếu phương tiện bị thất lạc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kiểm soát lộ trình của các phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :không
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các ph.tiện đang dừng
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả ph.tiện
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của ph.tiện bị âm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các phương tiện đang dừng
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phương tiện
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của phương tiện bị âm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Phương tiện không bao giờ thành đồ cổ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Tự thay mới phương tiện nếu nó hết tuổi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Tự thay mới phương tiện vào {ORANGE}{STRING}{LTBLUE} tháng trước/sau khi quá tuổi
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự thay mới ph.tiện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự thay mới phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Khoảng thời gian hiện báo lỗi: {ORANGE}{STRING} giây
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Thông báo các sự kiện hiện ra: {ORANGE}{STRING} giây
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}THông báo các sự kiện hiện ra: {ORANGE}Click phải
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Hiện dân số đô thị trong nhãn tên của đô thị: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tạo nền đất: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên bản
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :Đất liền
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Khoảng cách tối đa từ mép bản đồ tới Nhà máy lọc dầu {ORANGE}{STRING} ô
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Độ cao tuyết phủ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Độ gồ ghề của địa chất (cho TerraGenesis) : {ORANGE}{STRING}
@@ -1206,7 +1206,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Hiện 
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Không
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Công ty đang giữ
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Tất cả công ty
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Bắt đầu chát nội nhóm với phím <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Bắt đầu tán gẫu nội nhóm với phím <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Chức năng nút cuộn trên chuột: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Phóng to bản đồ
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Cuộn bản đồ
@@ -1287,7 +1287,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Khi ké
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Xây cờ hiệu thay vì đèn trước năm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bật GUI đèn tín hiệu : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Kiểu đèn tín hiệu đc xây mặc định: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn dừng
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn hiệu khóa
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Đèn dẫn đường
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Đèn dẫn đường 1-chiều
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Đổi tuần hoàn các kiểu đèn báo: {ORANGE}{STRING}
@@ -1755,7 +1755,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Nhóm] tới {
 STR_NETWORK_CHAT_CLIENT                                         :[Riêng] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Riêng] Tới {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Chung] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Nhập thông điệp chat
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Nhập thông điệp tán gẫu
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Không có thiết bị mạng hoặc không thiết lập ENABLE_NETWORK
@@ -1882,7 +1882,7 @@ STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Không t
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Tải bất thành...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... kết nối bị đứt
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... không ghi được file
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Không thể giải nétn file đã tải
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Không thể giải nén file đã tải
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Tuỳ Hiệu Ứng Trong Suốt
@@ -1929,6 +1929,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Xây c�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Xây hầm tàu hoả. Shift để xem chi phí dự tính
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm mốc và nhà ga. Giữ Ctrl để phá bỏ đường ray tính từ điểm mốc hay nhà ga
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Chuyển đổi loại đường ray. Shift để xem chi phí dự tính
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Hướng Của Xưởng Tàu Hỏa
@@ -2323,7 +2324,7 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuy�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Số ngẫu nhiên:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Chọn để nhập con số ngẫu nhiên khi tạo bản đồ
-STR_MAPGEN_RANDOM                                               :{BLACK}Sinh ngẫu nhiên
+STR_MAPGEN_RANDOM                                               :{BLACK}Sinh Ngẫu Nhiên
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Thay đổi con số ngẫu nhiên để khởi tạo địa hình ngẫu nhiên
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
@@ -2331,7 +2332,7 @@ STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu n
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực nước biển:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
 STR_MAPGEN_VARIETY                                              :{BLACK}Phân bổ sự đa dạng:
-STR_MAPGEN_GENERATE                                             :{WHITE}Khởi tạo
+STR_MAPGEN_GENERATE                                             :{WHITE}Khởi Tạo
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Rìa bản đồ:
@@ -2339,11 +2340,11 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Tây B�
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Đông Bắc
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Đông Nam
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Tây Nam
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng tự do
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng Tự Do
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Nước
-STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu nhiên
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu nhiên
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng tay
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu Nhiên
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu Nhiên
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng Tay
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay bản đồ địa hình:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên bản đồ địa hình:
@@ -2425,7 +2426,6 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Không c
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp lệ không có
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Không tương thích với phiên bản OpenTTD này.
-
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
 
 # NewGRF parameters window
@@ -2436,6 +2436,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt t
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Số các thông số: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}
@@ -3274,6 +3276,8 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Không dỡ v�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Không dỡ và chờ lấy đủ hàng bất kỳ)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Không bốc hàng và không dỡ hàng)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[đỗ ở đầu gần]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[đỗ ở giữa]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[đỗ ở đầu xa]
@@ -3367,10 +3371,10 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có mộ
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI chỉ có trên server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Cấu Hình AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Thiết Lập AI
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Tất cả AI sẽ nạp tại ván chơi kế tiếp
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
-STR_AI_CONFIG_RANDOM_AI                                         :AI Ngẫu Nhiên
+STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiên
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Di Chuyển Lên Trên
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuyển AI lên trên danh sách
@@ -3379,7 +3383,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Di chuy�
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Chọn AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Nạp một AI khác
-STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Cấu Hình
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
 
 # Available AIs window
@@ -3398,7 +3402,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không �
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tham Số AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
-STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết lập lại
+STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
@@ -3442,7 +3446,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... khô
 STR_ERROR_PNGMAP                                                :{WHITE}Không thể nạp nền từ file PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... không tìm thấy file.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... không thể chuyển kiểu ảnh. Phải là ảnh PNG 8 hoặc 24-bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... có lỗi gì đó, rất tiếc. (có thể là hỏng file)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... có lỗi gì đó, rất tiếc (có thể là hỏng file)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Không thể nạp nền từ file BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... không thể chuyển đổi kiểu ảnh.
@@ -3735,9 +3739,9 @@ STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Không t
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Không thể gửi máy bay về xưởng...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Không thể mua tàu hỏa này...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Không thể mua xe này...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Không thể mua tàu này...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Không thể mua phi cơ này...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Không thể mua ôtô này...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Không thể mua tàu thủy này...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Không thể mua máy bay này...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Không thể đổi tên kiểu tàu hoả...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Không thể đổi tên kiểu ôtô...
@@ -3834,7 +3838,7 @@ STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Trung tâm mua 
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Túp lều
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Lều vải
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Nhà ấm trà
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Nhà con heo đất
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Nhà băng heo đất
 
 ##id 0x4800
 # industry names
@@ -3864,13 +3868,13 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Tháp nước
 STR_INDUSTRY_NAME_FACTORY_2                                     :Nhà máy thực phẩm
 STR_INDUSTRY_NAME_FARM_2                                        :Nông trại
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Nhà máy chế biến gỗ
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Nhà máy chế biến kẹo bông
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Rừng kẹo bông
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Nhà máy sản xuất kẹo
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Nhà máy sản xuất pin
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Nhà máy đồ uống cola
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Nông trại pin
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Giếng cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Cửa hàng đồ chơi
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Nhà máy sản xuất đồ chơi
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Nhà máy chất dẻo
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Suối chất dẻo
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Nhà máy đồ uống có ga
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Nhà máy tạo bong bóng
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Mỏ kẹo bơ cứng
@@ -3896,7 +3900,7 @@ STR_SV_STNAME_TRANSFER                                          :Trung chuyển 
 STR_SV_STNAME_HALT                                              :{STRING} phụ
 STR_SV_STNAME_VALLEY                                            :Thung lũng {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Cao nguyên {STRING}
-STR_SV_STNAME_WOODS                                             :Hàng hoá {STRING}
+STR_SV_STNAME_WOODS                                             :Rừng {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Bờ hồ {STRING}
 STR_SV_STNAME_EXCHANGE                                          :Trung chuyển {STRING}
 STR_SV_STNAME_AIRPORT                                           :Sân bay {STRING}
@@ -3910,7 +3914,7 @@ STR_SV_STNAME_ANNEXE                                            :{STRING} phụ
 STR_SV_STNAME_SIDINGS                                           :{STRING} kế
 STR_SV_STNAME_BRANCH                                            :Nhánh {STRING}
 STR_SV_STNAME_UPPER                                             :{STRING} thượng
-STR_SV_STNAME_LOWER                                             :{STRING} Hạ
+STR_SV_STNAME_LOWER                                             :{STRING} hạ
 STR_SV_STNAME_HELIPORT                                          :Sân bay trực thăng {STRING}
 STR_SV_STNAME_FOREST                                            :Rừng {STRING}
 STR_SV_STNAME_FALLBACK                                          :Bến {STRING} số #{NUM}
@@ -3955,7 +3959,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Toa ngũ cốc
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Toa chở gỗ
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Toa chở quặng sắt
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Toa chở thép
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Toa két an toàn
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Toa thiết giáp
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Toa chở thực phẩm
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Toa chở giấy
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Toa chở quặng đồng
@@ -3985,7 +3989,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Toa ngũ cốc
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Toa chở gỗ
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Toa chở quặng sắt
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Toa chở thép
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Toa két an toàn
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Toa thiết giáp
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Toa thực phẩm
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Toa chở giấy
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Toa chở quặng đồng
@@ -4017,7 +4021,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Toa chở ngũ 
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Toa chở gỗ
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Toa chở quặng sắt
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Toa chở thép
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Toa két an toàn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Toa thiết giáp
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Toa thực phẩm
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Toa chở giấy
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Toa chở quặng đồng
@@ -4071,9 +4075,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Xe quặng sắ
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Xe tải thép Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Xe tải thép Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Xe tải thép Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Xe két an toàn Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Xe két an toàn Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Xe két an toàn Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Xe thiết giáp Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Xe thiết giáp Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Xe thiết giáp Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Xe thực phẩm Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Xe thực phẩm Perry
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Xe thực phẩm Chippy
@@ -4151,13 +4155,13 @@ STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
 STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Taxi hàng không A21
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Taxi hàng không A31
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Taxi hàng không A32
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Taxi hàng không A33
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
 STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Taxi hàng không A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
 STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
@@ -4198,7 +4202,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :Xưởng Tàu {
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Xưởng Tàu {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Xưởng {STATION}
 
-STR_UNKNOWN_STATION                                             :Ga,bến không biết
+STR_UNKNOWN_STATION                                             :trạm chưa biết
 STR_DEFAULT_SIGN_NAME                                           :Biển hiệu
 STR_COMPANY_SOMEONE                                             :ai đó
 

@@ -2125,6 +2125,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradnj
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Izgradnja/Uklanjanje železničkih pruga, signalizacije, putnih tačaka i stanica (kad je uključeno). Držanjem Ctrl takođe se uklanja pruga sa putnih tačaka i stanica
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Promena/Nadogradnja vrste pruge. Shift prebacuje između promene/nadogradnje i prikaza procene troškova
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orijentacija železničkog depoa
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izbor orijentacije železničkog depoa
@@ -2599,7 +2600,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomera o
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naniže
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomera označenu NewGRF datoteku niže na spisku
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Spisak instaliranih NewGRF datoteka. Kliknite na datoteku kako bi promenili njena svojstva
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Promeni paletu
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Menja paletu označenog NewGRF-a.{}Promenite paletu ako grafici iz NewGRF-a su ružičasti tokom igre
@@ -2631,6 +2631,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Postavlj
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Broj parametara: {ORANGE}{NUM}
+
+# NewGRF readme window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Provera - {STRING}
@@ -3484,6 +3486,8 @@ STR_ORDER_NO_UNLOAD                                             :(Bez istovara i
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez istovara i pun utovar)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Bez istovara i pun utovar bilo kog)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Bez istovara i bez utovara)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[pri početku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[na sredini]

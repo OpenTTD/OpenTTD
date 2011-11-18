@@ -1930,6 +1930,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl+Click înlătură şinele din punctele de tranzit şi din staţii
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteşte tipul de cale ferată. Shift comută între convertire/afişare cost estimat
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientarea depoului feroviar
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Alege orientarea depoului
@@ -3273,6 +3274,8 @@ STR_ORDER_NO_UNLOAD                                             :(Nu descărca �
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nu descărca şi aşteaptă încărcare maximă)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nu descărca şi aşteaptă orice încărcătură)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Fără încărcare sau descărcare)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capătul apropiat]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[la mijloc]
