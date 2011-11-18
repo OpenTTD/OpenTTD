@@ -1545,6 +1545,9 @@ public:
 		this->resize_y = this->avs->resize_y;
 		if (this->acs->resize_y > 0 && (this->resize_y == 0 || this->resize_y > this->acs->resize_y)) this->resize_y = this->acs->resize_y;
 		this->resize_y = LeastCommonMultiple(this->resize_y, this->inf->resize_y);
+
+		/* Make sure the height suits the 3 column (resp. not-editable) format; the 2 column format can easily fill space between the lists */
+		this->smallest_y = ComputeMaxSize(min_acs_height, this->smallest_y + this->resize_y - 1, this->resize_y);
 	}
 
 	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
@@ -1594,8 +1597,9 @@ public:
 			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) -
 					this->acs->padding_left - this->acs->padding_right;
 
-			uint avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->GetVerticalStepSize(sizing));
-			uint acs_height = ComputeMaxSize(this->acs->smallest_y, given_height, this->acs->GetVerticalStepSize(sizing));
+			/* Never use fill_y on these; the minimal size is choosen, so that the 3 column view looks nice */
+			uint avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->resize_y);
+			uint acs_height = ComputeMaxSize(this->acs->smallest_y, given_height, this->acs->resize_y);
 
 			/* Assign size and position to the childs. */
 			if (rtl) {
@@ -1631,9 +1635,10 @@ public:
 			uint min_acs_height = this->acs->smallest_y + this->acs->padding_top + this->acs->padding_bottom;
 			uint extra_height = given_height - min_acs_height - min_avs_height;
 
-			uint avs_height = ComputeMaxSize(this->avs->smallest_y, this->avs->smallest_y + extra_height / 2, this->avs->GetVerticalStepSize(sizing));
+			/* Never use fill_y on these; instead use the INTER_LIST_SPACING as filler */
+			uint avs_height = ComputeMaxSize(this->avs->smallest_y, this->avs->smallest_y + extra_height / 2, this->avs->resize_y);
 			if (this->editable) extra_height -= avs_height - this->avs->smallest_y;
-			uint acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->GetVerticalStepSize(sizing));
+			uint acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->resize_y);
 
 			/* Assign size and position to the childs. */
 			if (rtl) {
@@ -1641,20 +1646,16 @@ public:
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
 				x += inf_width + this->inf->padding_right + INTER_COLUMN_SPACING;
 
-				uint ypos = y + this->acs->padding_top;
-				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, ypos, acs_width, acs_height, rtl);
+				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, y + this->acs->padding_top, acs_width, acs_height, rtl);
 				if (this->editable) {
-					ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
-					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
+					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, y + given_height - avs_height - this->avs->padding_bottom, avs_width, avs_height, rtl);
 				} else {
 					this->avs->AssignSizePosition(sizing, 0, 0, this->avs->smallest_x, this->avs->smallest_y, rtl);
 				}
 			} else {
-				uint ypos = y + this->acs->padding_top;
-				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, ypos, acs_width, acs_height, rtl);
+				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, y + this->acs->padding_top, acs_width, acs_height, rtl);
 				if (this->editable) {
-					ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
-					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
+					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, y + given_height - avs_height - this->avs->padding_bottom, avs_width, avs_height, rtl);
 				} else {
 					this->avs->AssignSizePosition(sizing, 0, 0, this->avs->smallest_x, this->avs->smallest_y, rtl);
 				}
