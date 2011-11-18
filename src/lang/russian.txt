@@ -2047,6 +2047,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... со
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... невозможно записать файл
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не удалось распаковать скачанный файл
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Отсутствует набор графики
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Для запуска OpenTTD требуется набор графики. Скачать и установить его?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Да, скачать
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Нет, выйти
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки прозрачности
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Переключение прозрачности значков станций. Ctrl+щелчок - заблокировать.
@@ -2587,6 +2592,8 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Пере
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Вниз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Переместить выбранный файл NewGRF ниже
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список установленных файлов NewGRF
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Посмотреть инструкцию
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
@@ -2619,7 +2626,7 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Парамет�
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Количество параметров: {ORANGE}{NUM}
 
-# NewGRF readme window
+# NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}Инструкция к NewGRF {STRING}
 
 # NewGRF inspect window

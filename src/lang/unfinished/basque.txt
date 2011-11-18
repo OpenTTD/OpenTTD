@@ -33,7 +33,7 @@ STR_CARGO_PLURAL_MAIL                                           :Posta
 STR_CARGO_PLURAL_OIL                                            :Petroleoa
 STR_CARGO_PLURAL_LIVESTOCK                                      :Behi buruak
 STR_CARGO_PLURAL_GOODS                                          :Merkantzia kaxak
-STR_CARGO_PLURAL_GRAIN                                          :Garaua
+STR_CARGO_PLURAL_GRAIN                                          :Aleak
 STR_CARGO_PLURAL_WOOD                                           :Egurra
 STR_CARGO_PLURAL_IRON_ORE                                       :Burdin Mea
 STR_CARGO_PLURAL_STEEL                                          :Altzairua
@@ -1245,6 +1245,8 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Gehien erabilia
 
 
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Kolorezko albisteak {ORANGE}{STRING}. urtean agertzen dira
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Hasierako urtea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Seinaleak blokeatu
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Bide-seinaleak
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Joaneko bide-seinaleak
@@ -1420,6 +1422,10 @@ STR_CONTENT_TYPE_BASE_MUSIC                                     :Base musika
 
 # Content downloading error messages
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Grafikoak faltatzen dira
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Bai, grafikoak jaitsi
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ez, OpenTTD itxi
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -1429,6 +1435,11 @@ STR_CONTENT_TYPE_BASE_MUSIC                                     :Base musika
 
 # Rail construction toolbar
 
+
+STR_RAIL_NAME_RAILROAD                                          :Trenbidea
+STR_RAIL_NAME_ELRAIL                                            :Trenbide elektrikoa
+STR_RAIL_NAME_MONORAIL                                          :Monoraila
+STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
 
@@ -1578,13 +1589,17 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Aukeratu
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Artxiboak berriro eskaneatu
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}NewGRF artxiboen lista eguneratu
 
+# Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Ikusi "irakur nazazu"
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Aldaketak
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lizentzia
+
 
 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Bertsioa: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Gutxienezko bertsio bateragarria: {SILVER}{NUM}
 
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD-ren bertsio honekin bateraezina
-
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametroak aldatu
@@ -1594,6 +1609,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Parametr
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :{NUM} Parametroa
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametro kopurua: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Ikertu - {STRING}
@@ -1868,6 +1885,8 @@ STR_ORDER_IMPLICIT                                              :(Implizitua)
 
 
 
+
+
 # Time table window
 
 
@@ -2106,14 +2125,14 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Bubble
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Oil Tanker
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Oil Tanker
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Passenger Ferry
-STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Passenger Ferry
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Biadaiari Ferry-a
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Passenger Ferry
-STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passenger Ferry
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Cargo ship
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Cargo ship
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Cargo ship
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Cargo ship
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Biadiari Ferry-a
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Bidaiari Ferry-a
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Ondasun ontzia
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Ondasun ontzia
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Ondasun ontzia
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Ondasun ontzia
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
