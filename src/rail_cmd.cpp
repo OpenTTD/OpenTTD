@@ -2457,7 +2457,7 @@ static void TileLoop_Track(TileIndex tile)
 					TileIndex n = tile + TileDiffXY(0, -1);
 					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
-					if (!IsTileType(n, MP_RAILWAY) ||
+					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
 							!IsTileOwner(n, owner) ||
 							nrail == TRACK_BIT_UPPER ||
 							nrail == TRACK_BIT_LEFT) {
@@ -2472,7 +2472,7 @@ static void TileLoop_Track(TileIndex tile)
 					TileIndex n = tile + TileDiffXY(0, 1);
 					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
-					if (!IsTileType(n, MP_RAILWAY) ||
+					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
 							!IsTileOwner(n, owner) ||
 							nrail == TRACK_BIT_LOWER ||
 							nrail == TRACK_BIT_RIGHT) {
@@ -2488,7 +2488,7 @@ static void TileLoop_Track(TileIndex tile)
 					TileIndex n = tile + TileDiffXY(-1, 0);
 					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
-					if (!IsTileType(n, MP_RAILWAY) ||
+					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
 							!IsTileOwner(n, owner) ||
 							nrail == TRACK_BIT_UPPER ||
 							nrail == TRACK_BIT_RIGHT) {
@@ -2503,7 +2503,7 @@ static void TileLoop_Track(TileIndex tile)
 					TileIndex n = tile + TileDiffXY(1, 0);
 					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
 
-					if (!IsTileType(n, MP_RAILWAY) ||
+					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
 							!IsTileOwner(n, owner) ||
 							nrail == TRACK_BIT_LOWER ||
 							nrail == TRACK_BIT_LEFT) {
