@@ -56,6 +56,12 @@ enum WidgetDrawDistances {
 	WD_SCROLLBAR_TOP    = 2,    ///< Top offset of scrollbar.
 	WD_SCROLLBAR_BOTTOM = 2,    ///< Bottom offset of scrollbar.
 
+	/* Size of the pure frame bevel without any padding. */
+	WD_BEVEL_LEFT       = 1,    ///< Width of left bevel border.
+	WD_BEVEL_RIGHT      = 1,    ///< Width of right bevel border.
+	WD_BEVEL_TOP        = 1,    ///< Height of top bevel border.
+	WD_BEVEL_BOTTOM     = 1,    ///< Height of bottom bevel border.
+
 	/* FrameRect widgets, all text buttons, panel, editbox */
 	WD_FRAMERECT_LEFT   = 2,    ///< Offset at left to draw the frame rectangular area
 	WD_FRAMERECT_RIGHT  = 2,    ///< Offset at right to draw the frame rectangular area

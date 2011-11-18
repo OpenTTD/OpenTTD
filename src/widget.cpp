@@ -184,20 +184,20 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 		uint interior;
 
 		if (flags & FR_LOWERED) {
-			GfxFillRect(left,     top,     left,  bottom,     dark);
-			GfxFillRect(left + 1, top,     right, top,        dark);
-			GfxFillRect(right,    top + 1, right, bottom - 1, light);
-			GfxFillRect(left + 1, bottom,  right, bottom,     light);
+			GfxFillRect(left,                 top,                left,                   bottom,                   dark);
+			GfxFillRect(left + WD_BEVEL_LEFT, top,                right,                  top,                      dark);
+			GfxFillRect(right,                top + WD_BEVEL_TOP, right,                  bottom - WD_BEVEL_BOTTOM, light);
+			GfxFillRect(left + WD_BEVEL_LEFT, bottom,             right,                  bottom,                   light);
 			interior = (flags & FR_DARKENED ? medium_dark : medium_light);
 		} else {
-			GfxFillRect(left,     top,    left,      bottom - 1, light);
-			GfxFillRect(left + 1, top,    right - 1, top,        light);
-			GfxFillRect(right,    top,    right,     bottom - 1, dark);
-			GfxFillRect(left,     bottom, right,     bottom,     dark);
+			GfxFillRect(left,                 top,                left,                   bottom - WD_BEVEL_BOTTOM, light);
+			GfxFillRect(left + WD_BEVEL_LEFT, top,                right - WD_BEVEL_RIGHT, top,                      light);
+			GfxFillRect(right,                top,                right,                  bottom - WD_BEVEL_BOTTOM, dark);
+			GfxFillRect(left,                 bottom,             right,                  bottom,                   dark);
 			interior = medium_dark;
 		}
 		if (!(flags & FR_BORDERONLY)) {
-			GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, interior);
+			GfxFillRect(left + WD_BEVEL_LEFT, top + WD_BEVEL_TOP, right - WD_BEVEL_RIGHT, bottom - WD_BEVEL_BOTTOM, interior);
 		}
 	}
 }
