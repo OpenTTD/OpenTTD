@@ -481,15 +481,19 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 	/* Make sure we are always in the root-table */
 	if (in_root) sq_pushroottable(vm);
 
+	SQInteger ops_left = vm->_ops_till_suspend;
 	/* Load and run the script */
 	if (SQ_SUCCEEDED(LoadFile(vm, script, SQTrue))) {
 		sq_push(vm, -2);
 		if (SQ_SUCCEEDED(sq_call(vm, 1, SQFalse, SQTrue, 100000))) {
 			sq_pop(vm, 1);
+			/* After compiling the file we want to reset the amount of opcodes. */
+			vm->_ops_till_suspend = ops_left;
 			return true;
 		}
 	}
 
+	vm->_ops_till_suspend = ops_left;
 	DEBUG(misc, 0, "[squirrel] Failed to compile '%s'", script);
 	return false;
 }
