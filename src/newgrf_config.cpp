@@ -833,25 +833,27 @@ bool GRFConfig::IsOpenTTDBaseGRF() const
 }
 
 /**
- * Search the readme.txt file next to this NewGRF.
- * @return The filename for the readme, \c NULL otherwise.
+ * Search a textfile file next to this NewGRF.
+ * @return The filename for the textfile, \c NULL otherwise.
  */
-const char *GRFConfig::GetReadme() const
+const char *GRFConfig::GetTextfile() const
 {
+	static const char prefix[] = "readme";
+
 	if (this->filename == NULL) return NULL;
 
-	static char readme_path[MAX_PATH];
-	strecpy(readme_path, this->filename, lastof(readme_path));
+	static char file_path[MAX_PATH];
+	strecpy(file_path, this->filename, lastof(file_path));
 
-	char *slash = strrchr(readme_path, PATHSEPCHAR);
+	char *slash = strrchr(file_path, PATHSEPCHAR);
 	if (slash == NULL) return NULL;
 
-	seprintf(slash + 1, lastof(readme_path), "readme_%s.txt", GetCurrentLanguageIsoCode());
-	if (FioCheckFileExists(readme_path, NEWGRF_DIR)) return readme_path;
+	seprintf(slash + 1, lastof(file_path), "%s_%s.txt", prefix, GetCurrentLanguageIsoCode());
+	if (FioCheckFileExists(file_path, NEWGRF_DIR)) return file_path;
 
-	seprintf(slash + 1, lastof(readme_path), "readme_%.2s.txt", GetCurrentLanguageIsoCode());
-	if (FioCheckFileExists(readme_path, NEWGRF_DIR)) return readme_path;
+	seprintf(slash + 1, lastof(file_path), "%s_%.2s.txt", prefix, GetCurrentLanguageIsoCode());
+	if (FioCheckFileExists(file_path, NEWGRF_DIR)) return file_path;
 
-	strecpy(slash + 1, "readme.txt", lastof(readme_path));
-	return FioCheckFileExists(readme_path, NEWGRF_DIR) ? readme_path : NULL;
+	seprintf(slash + 1, lastof(file_path), "%s.txt", prefix);
+	return FioCheckFileExists(file_path, NEWGRF_DIR) ? file_path : NULL;
 }
