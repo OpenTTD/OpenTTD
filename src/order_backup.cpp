@@ -16,6 +16,7 @@
 #include "network/network_func.h"
 #include "order_backup.h"
 #include "vehicle_base.h"
+#include "window_func.h"
 
 OrderBackupPool _order_backup_pool("BackupOrder");
 INSTANTIATE_POOL_METHODS(OrderBackup)
@@ -84,6 +85,8 @@ void OrderBackup::DoRestore(Vehicle *v)
 	} else if (this->orders != NULL && OrderList::CanAllocateItem()) {
 		v->orders.list = new OrderList(this->orders, v);
 		this->orders = NULL;
+		/* Make sure buoys/oil rigs are updated in the station list. */
+		InvalidateWindowClassesData(WC_STATION_LIST, 0);
 	}
 
 	uint num_orders = v->GetNumOrders();

@@ -278,7 +278,7 @@ public:
 	 */
 	Money GetRunningCost();
 
-#ifdef DOXYGEN_SKIP
+#ifdef DOXYGEN_AI_DOCS
 	/**
 	 * Get the type of the offered engine.
 	 * @return The type the engine has.

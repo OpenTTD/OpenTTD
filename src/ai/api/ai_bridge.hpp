@@ -109,7 +109,7 @@ public:
 	 */
 	static int32 GetMinLength(BridgeID bridge_id);
 
-#ifndef DOXYGEN_SKIP
+#ifndef DOXYGEN_AI_DOCS
 	/**
 	 * Internal function to help BuildBridge in case of road.
 	 */

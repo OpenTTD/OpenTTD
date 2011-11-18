@@ -90,7 +90,12 @@ Station::~Station()
 		}
 	}
 
-	InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
+	if (this->owner == OWNER_NONE) {
+		/* Invalidate all in case of oil rigs. */
+		InvalidateWindowClassesData(WC_STATION_LIST, 0);
+	} else {
+		InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
+	}
 
 	DeleteWindowById(WC_STATION_VIEW, index);
 
