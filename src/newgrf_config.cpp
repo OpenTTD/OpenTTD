@@ -834,11 +834,19 @@ bool GRFConfig::IsOpenTTDBaseGRF() const
 
 /**
  * Search a textfile file next to this NewGRF.
+ * @param type The type of the textfile to search for.
  * @return The filename for the textfile, \c NULL otherwise.
  */
-const char *GRFConfig::GetTextfile() const
+const char *GRFConfig::GetTextfile(TextfileType type) const
 {
-	static const char prefix[] = "readme";
+	static const char * const prefixes[] = {
+		"readme",
+		"changelog",
+		"license",
+	};
+	assert_compile(lengthof(prefixes) == TFT_END);
+
+	const char *prefix = prefixes[type];
 
 	if (this->filename == NULL) return NULL;
 

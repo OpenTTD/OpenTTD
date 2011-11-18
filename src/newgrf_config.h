@@ -146,6 +146,18 @@ struct GRFTextWrapper : public SimpleCountedObject {
 	~GRFTextWrapper();
 };
 
+/** Additional text files accompanying NewGRFs */
+enum TextfileType {
+	TFT_BEGIN,
+
+	TFT_README = TFT_BEGIN,  ///< NewGRF readme
+	TFT_CHANGELOG,           ///< NewGRF changelog
+	TFT_LICENSE,             ///< NewGRF license
+
+	TFT_END
+};
+DECLARE_POSTFIX_INCREMENT(TextfileType)
+
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : ZeroedMemoryAllocator {
 	GRFConfig(const char *filename = NULL);
@@ -175,7 +187,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 
 	bool IsOpenTTDBaseGRF() const;
 
-	const char *GetTextfile() const;
+	const char *GetTextfile(TextfileType type) const;
 	const char *GetName() const;
 	const char *GetDescription() const;
 

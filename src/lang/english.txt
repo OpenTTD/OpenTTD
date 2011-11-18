@@ -2408,7 +2408,11 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move the
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Move Down
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move the selected NewGRF file down the list
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A list of the NewGRF files that are installed.
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}View readme
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Changelog
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}License
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toggle palette
@@ -2442,6 +2446,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Number 
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF readme of {RAW_STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF changelog of {RAW_STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF license of {RAW_STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspect - {STRING5}

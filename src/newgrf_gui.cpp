@@ -475,6 +475,7 @@ enum ShowNewGRFTextfileWidgets {
 /** Window for displaying the textfile of a NewGRF. */
 struct NewGRFTextfileWindow : public Window {
 	const GRFConfig *grf_config;         ///< View the textfile of this GRFConfig.
+	TextfileType file_type;              ///< Type of textfile to view.
 	int line_height;                     ///< Height of a line in the display widget.
 	Scrollbar *vscroll;                  ///< Vertical scrollbar.
 	Scrollbar *hscroll;                  ///< Horizontal scrollbar.
@@ -485,9 +486,10 @@ struct NewGRFTextfileWindow : public Window {
 	static const int TOP_SPACING    = WD_FRAMETEXT_TOP;    ///< Additional spacing at the top of the #GTW_WIDGET_BACKGROUND widget.
 	static const int BOTTOM_SPACING = WD_FRAMETEXT_BOTTOM; ///< Additional spacing at the bottom of the #GTW_WIDGET_BACKGROUND widget.
 
-	NewGRFTextfileWindow(const WindowDesc *desc, const GRFConfig *c) : Window(), grf_config(c)
+	NewGRFTextfileWindow(const WindowDesc *desc, const GRFConfig *c, TextfileType file_type) : Window(), grf_config(c), file_type(file_type)
 	{
 		this->CreateNestedTree(desc);
+		this->GetWidget<NWidgetCore>(GTW_WIDGET_CAPTION)->SetDataTip(STR_NEWGRF_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 		this->vscroll = this->GetScrollbar(GTW_WIDGET_VSCROLLBAR);
 		this->hscroll = this->GetScrollbar(GTW_WIDGET_HSCROLLBAR);
 		this->FinishInitNested(desc);
@@ -554,7 +556,7 @@ private:
 		this->lines.Clear();
 
 		/* Does GRF have a file of the demanded type? */
-		const char *textfile = this->grf_config->GetTextfile();
+		const char *textfile = this->grf_config->GetTextfile(file_type);
 		if (textfile == NULL) return;
 
 		/* Get text from file */
@@ -605,7 +607,7 @@ private:
 static const NWidgetPart _nested_newgrf_textfile_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, GTW_WIDGET_CAPTION), SetDataTip(STR_NEWGRF_README_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, GTW_WIDGET_CAPTION), SetDataTip(STR_NULL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_MAUVE, GTW_WIDGET_BACKGROUND), SetMinimalSize(200, 125), SetResize(1, 12), SetScrollbar(GTW_WIDGET_VSCROLLBAR),
@@ -628,10 +630,10 @@ static const WindowDesc _newgrf_textfile_desc(
 	_nested_newgrf_textfile_widgets, lengthof(_nested_newgrf_textfile_widgets)
 );
 
-void ShowNewGRFTextfileWindow(const GRFConfig *c)
+void ShowNewGRFTextfileWindow(const GRFConfig *c, TextfileType file_type)
 {
 	DeleteWindowByClass(WC_NEWGRF_TEXTFILE);
-	new NewGRFTextfileWindow(&_newgrf_textfile_desc, c);
+	new NewGRFTextfileWindow(&_newgrf_textfile_desc, c, file_type);
 }
 
 static GRFPresetList _grf_preset_list;
@@ -671,8 +673,8 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_SCROLL2BAR,
 	SNGRFS_NEWGRF_INFO_TITLE,
 	SNGRFS_NEWGRF_INFO,
-	SNGRFS_NEWGRF_README,
-	SNGRFS_SET_PARAMETERS,
+	SNGRFS_NEWGRF_TEXTFILE,
+	SNGRFS_SET_PARAMETERS = SNGRFS_NEWGRF_TEXTFILE + TFT_END,
 	SNGRFS_TOGGLE_PALETTE,
 	SNGRFS_APPLY_CHANGES,
 	SNGRFS_RESCAN_FILES,
@@ -953,6 +955,13 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
+		if (widget >= SNGRFS_NEWGRF_TEXTFILE && widget < SNGRFS_NEWGRF_TEXTFILE + TFT_END) {
+			if (this->active_sel == NULL && this->avail_sel == NULL) return;
+
+			ShowNewGRFTextfileWindow(this->active_sel != NULL ? this->active_sel : this->avail_sel, (TextfileType)(widget - SNGRFS_NEWGRF_TEXTFILE));
+			return;
+		}
+
 		switch (widget) {
 			case SNGRFS_PRESET_LIST: {
 				DropDownList *list = new DropDownList();
@@ -1124,12 +1133,6 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 
-			case SNGRFS_NEWGRF_README: // View GRF readme
-				if (this->active_sel == NULL && this->avail_sel == NULL) break;
-
-				ShowNewGRFTextfileWindow(this->active_sel != NULL ? this->active_sel : this->avail_sel);
-				break;
-
 			case SNGRFS_SET_PARAMETERS: { // Edit parameters
 				if (this->active_sel == NULL || !this->editable || !this->show_params || this->active_sel->num_valid_params == 0) break;
 
@@ -1290,7 +1293,9 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		);
 
 		const GRFConfig *c = (this->avail_sel == NULL) ? this->active_sel : this->avail_sel;
-		this->SetWidgetDisabledState(SNGRFS_NEWGRF_README, c == NULL || c->GetTextfile() == NULL);
+		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
+			this->SetWidgetDisabledState(SNGRFS_NEWGRF_TEXTFILE + tft, c == NULL || c->GetTextfile(tft) == NULL);
+		}
 
 		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(SNGRFS_TOGGLE_PALETTE, disable_all);
@@ -1773,11 +1778,19 @@ static const NWidgetPart _nested_newgrf_availables_widgets[] = {
 
 static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 	/* Right side, info panel. */
-	NWidget(WWT_PANEL, COLOUR_MAUVE), SetPadding(0, 0, 2, 0),
-		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
-		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_NEWGRF_README), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_NEWGRF_SETTINGS_VIEW_README, STR_NULL), SetPadding(2, 2, 2, 2),
+	NWidget(NWID_VERTICAL), SetPadding(0, 0, 2, 0),
+		NWidget(WWT_PANEL, COLOUR_MAUVE), SetPadding(0, 0, 2, 0),
+			NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
+		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_NEWGRF_SETTINGS_VIEW_README, STR_NULL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_NEWGRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_VIEW_CHANGELOG, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_NEWGRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_VIEW_LICENSE, STR_NULL),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, SNGRFS_SHOW_APPLY),
 		/* Right side, buttons. */
