@@ -524,14 +524,22 @@ struct NewGRFTextfileWindow : public Window {
 	{
 		if (widget != GTW_WIDGET_BACKGROUND) return;
 
-		DrawPixelInfo new_dpi;
-		if (!FillDrawPixelInfo(&new_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) return;
+		int width = r.right - r.left + 1 - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
+		int height = r.bottom - r.top + 1 - WD_BEVEL_LEFT - WD_BEVEL_RIGHT;
 
+		DrawPixelInfo new_dpi;
+		if (!FillDrawPixelInfo(&new_dpi, r.left + WD_BEVEL_LEFT, r.top, width, height)) return;
 		DrawPixelInfo *old_dpi = _cur_dpi;
 		_cur_dpi = &new_dpi;
 
-		int left = WD_FRAMETEXT_LEFT - this->hscroll->GetPosition();
-		int right = r.right - r.left - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT;
+		int left, right;
+		if (_current_text_dir == TD_RTL) {
+			left = width + WD_BEVEL_RIGHT - WD_FRAMETEXT_RIGHT - this->hscroll->GetCount();
+			right = width + WD_BEVEL_RIGHT - WD_FRAMETEXT_RIGHT - 1 + this->hscroll->GetPosition();
+		} else {
+			left = WD_FRAMETEXT_LEFT - WD_BEVEL_LEFT - this->hscroll->GetPosition();
+			right = WD_FRAMETEXT_LEFT - WD_BEVEL_LEFT + this->hscroll->GetCount() - 1;
+		}
 		int top = TOP_SPACING;
 		for (uint i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->lines.Length(); i++) {
 			DrawString(left, right, top + i * this->line_height, this->lines[i + this->vscroll->GetPosition()], TC_WHITE);
@@ -542,7 +550,7 @@ struct NewGRFTextfileWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll->SetCapacityFromWidget(this, GTW_WIDGET_BACKGROUND, this->line_height);
+		this->vscroll->SetCapacityFromWidget(this, GTW_WIDGET_BACKGROUND, TOP_SPACING + BOTTOM_SPACING);
 		this->hscroll->SetCapacityFromWidget(this, GTW_WIDGET_BACKGROUND);
 	}
 
