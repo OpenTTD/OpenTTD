@@ -954,10 +954,10 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato screenshot
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selezionare il formato da usare per gli screenshot
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Stile grafico di base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleziona lo stile grafico di base da utilizzare
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Pacchetto grafico di base
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleziona il pacchetto grafico di base da utilizzare
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} file mancant{P e i}/corrott{P o i}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informazioni aggiuntive sullo stile grafico di base
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informazioni aggiuntive sul pacchetto grafico di base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Pacchetto sonoro di base
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Seleziona il pacchetto sonoro di base da utilizzare
@@ -1899,6 +1899,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conn
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... impossibile scrivere il file
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossibile decomprimere il file scaricato
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Pacchetto grafico mancante
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD richiede un pacchetto grafico per funzionare, ma non è stato possibile trovarne alcuno. Consentire a OpenTTD di scaricare e installare un pacchetto grafico?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sì, scarica il pacchetto
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, esci da OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opzioni trasparenza
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Attiva/disattiva la trasparenza dei nomi delle stazioni. CTRL+clic per bloccare
@@ -2431,7 +2436,11 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Sposta i
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Sposta giù
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Sposta il file NewGRF selezionato più in basso nell'elenco
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Elenco dei file NewGRF installati.
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Visualizza file leggimi
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Changelog
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenza
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Imposta parametri
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alterna tavolozze
@@ -2463,8 +2472,10 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Numero di parametri: {ORANGE}{NUM}
 
-# NewGRF readme window
+# NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}File leggimi NewGRF di {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Changelog NewGRF di {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licenza NewGRF di {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Ispeziona - {STRING}
@@ -2515,7 +2526,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di ut
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene degli sprite corrotti. Tutti gli sprite corrotti saranno mostrati come punti interrogativi (?) rossi
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene occorrenze multiple dell'azione 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lettura oltre la fine dello pseudo-sprite
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nello stile grafico di base attualmente in uso mancano alcuni sprite.{}È consigliabile aggiornare lo stile grafico di base
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nel pacchetto grafico di base attualmente in uso mancano alcuni sprite.{}È consigliabile aggiornare il pacchetto grafico di base
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Risorsa GRF richiesta non disponibile
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} è stato disabilitato da {4:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato di layout dello sprite non valido o sconosciuto

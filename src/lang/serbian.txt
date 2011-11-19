@@ -2070,6 +2070,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... prek
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteka se nije mogla zapisati
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Preuzeta datoteka se ne može otpakovati
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Nedostajuće grafike
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD zahteva grafike kako bi radio ali nijedne nisu nađene. Da li dozvoljavate da OpenTTD preuzme i instalira te neophodne grafike?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Da, preuzmi grafike
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, napusti OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Podešavanja Prozirnosti
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Promena prozirnosti naziva stanica. Sa Ctrl+Klik se zaključava
@@ -2598,7 +2603,11 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomera o
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naniže
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomera označenu NewGRF datoteku niže na spisku
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Spisak instaliranih NewGRF datoteka.
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Prikaži uputstvo
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Izmene
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenca
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Promeni paletu
@@ -2630,8 +2639,10 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Broj parametara: {ORANGE}{NUM}
 
-# NewGRF readme window
+# NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF uputstvo za {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF izmene od {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licenca od {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Provera - {STRING}

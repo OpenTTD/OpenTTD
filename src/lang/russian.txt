@@ -2588,13 +2588,15 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Обно
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Удалить
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Удалить выбранный файл NewGRF из списка
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Вверх
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Переместить выбранный файл NewGRF выше
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Переместить выбранный файл NewGRF выше по списку
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Вниз
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Переместить выбранный файл NewGRF ниже
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Переместить выбранный файл NewGRF ниже по списку
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список установленных файлов NewGRF
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Посмотреть инструкцию
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Список изменений
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Лицензия
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключить палитру
@@ -2628,6 +2630,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Кол�
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}Инструкция к NewGRF {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Список изменений к NewGRF {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Лицензия к NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Просмотр - {STRING}

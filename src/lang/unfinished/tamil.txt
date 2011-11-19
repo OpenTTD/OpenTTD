@@ -1094,6 +1094,7 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}பத�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}பதிவிறக்கம் ரத்தானது...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... தொடர்பு துண்டிக்கப்பட்டது
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -1221,12 +1222,15 @@ STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ஆற�
 
 # NewGRF settings
 
+# Additional textfiles accompanying NewGRFs
 
 
 
 
 
 # NewGRF parameters window
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 
@@ -1675,13 +1679,15 @@ STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :ஸம்ப்
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :கொல்மன் கவுன்ட்
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP டார்ட்
 STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :ஈஏட் ஹவ்கன்
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :பேக்வெல் லுக்கேட் LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :பேக்வெல் லுக்கேட் LB-11
 STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :ஈஏட் ஏரொஸ்பேஸ் YAC 1-11
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :டர்வின் 100
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :டர்வின் 200
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :டர்வின் 300
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :டர்வின் 400
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :டர்வின் 500
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :டர்வின் 600
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :டார்வின் 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :டார்வின் 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :டார்வின் 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :டார்வின் 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :டார்வின் 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :டார்வின் 600
 STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :குரு கலக்சி
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :அர் டாக்சி அ21
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :அர் டாக்சி அ31
@@ -1694,9 +1700,15 @@ STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :ஈஏட் Z-
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :கெல்லிங்க் கெ1
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :கெல்லிங்க் கெ6
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :கெல்லிங்க் கெ7
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :டர்வின் 700
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :டார்வின் 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP ஹைபர்டிராபட் 2
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :டிங்௧ர் 200
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :டிங்௧ர் 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :பிலோடிபுட் 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :பிலோடிபுட் 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :பிலாஷ்பேங் X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :சக்கர்விமானம் M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :பிலாஷ்பேங் விஸ்ஸர்
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :டீரைக்காரிஒ ஹெலிகாப்டர்
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :குரு X2 ஹெலிகாப்டர்
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :பவர்னாட் ஹெலிகாப்டர்

@@ -2208,6 +2208,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... зл
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... немагчыма запісаць файл
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не ўдалося распакаваць запампованы файл
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Адсутная графiка
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD патрабуе графiкi для функцыянаваньня, але ня можа знайсьцi нiякай. Вы дазваляеце OpenTTD спампаваць ды ўсталяваць гэтую графiку?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Так, спампаваць графiку
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Не, выйсьцi з OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Наладкі празрыстасьці
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Пераключыць празрыстасьць для назваў станцыяў. Ctrl+клік - заблякаваць.
@@ -2740,7 +2745,11 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Пера
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Унiз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перамясьціць выбраны файл NewGRF ніжэй
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Сьпіс устаноўленых файлаў NewGRF. Выберыце файл для зьмяненьня парамэтраў
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Прагледзець iнструкцыю
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Журнал зьменаў
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Лiцэнзiя
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Усталяваць парамэтры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Пераключыць палітру
@@ -2772,8 +2781,10 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Парамэт�
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Колькасьць парамэтраў: {ORANGE}{NUM}
 
-# NewGRF readme window
+# NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}Iнструкцыя (readme) аб новай графiцы{STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Журнал зьменаў NewGRF{STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Лiцэнзiя NewGRF{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Прагляд - {STRING}

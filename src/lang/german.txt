@@ -2412,6 +2412,8 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eine Lis
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Readme anzeigen
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Änderungen
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lizenz
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parameter setzen
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Farbpalette ändern
@@ -2445,6 +2447,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Anzahl 
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF - Readme von {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF Änderungen von {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF Lizenz von {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiziere - {STRING}

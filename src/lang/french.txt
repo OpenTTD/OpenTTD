@@ -447,7 +447,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Débogage d'IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Copie d'écran zoomée
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie d'écran de la carte entière
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À Propos de 'OpenTTD'
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À propos de OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afficher/cacher les boites de dimensions maximum
 ############ range ends here
@@ -1397,7 +1397,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Configur
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus à télécharger nouveaux et mis à jour
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afficher la configuration des IA
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Il manque {NUM} chaine{P "" s} dans cette traduction. Merci d'aider à rendre OpenTTD meilleur en vous inscrivant comme traducteur. Voir readme.txt pour les details.
 
@@ -1876,6 +1876,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conn
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichier non enregistrable
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossible de décompresser le fichier téléchargé
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Graphiques manquants
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD requiert des graphiques pour fonctionner mais aucun n'a pu être trouvé. Autorisez-vous OpenTTD à télécharger et installer ces graphiques{NBSP}?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Oui, télécharger les graphiques
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, quitter OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Options de transparence
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station. Ctrl-clic pour vérrouiller
@@ -2280,7 +2285,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Siège de la co
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terrain appartenant à une compagnie
 
 # About OpenTTD window
-STR_ABOUT_OPENTTD                                               :{WHITE}A propos de OpenTTD
+STR_ABOUT_OPENTTD                                               :{WHITE}À propos de OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tous droits réservés
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2011 L'équipe OpenTTD
@@ -2404,7 +2409,11 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter l
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le fichier NewGRF sélectionné dans la liste
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des fichiers NewGRF installés. Cliquer sur un fichier pour modifier ses paramètres
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Voir le Lisez Moi
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Liste des changements
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licence
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Basculer palette
@@ -2436,8 +2445,10 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramètre {NUM
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}{NBSP}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombre de paramètres{NBSP}: {ORANGE}{NUM}
 
-# NewGRF readme window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF Lisez-moi pour {STRING}
+# NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}Lisez-moi du NewGRF {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Liste des changements du NewGRF {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licence du NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspection - {STRING}

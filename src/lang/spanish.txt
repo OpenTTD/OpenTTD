@@ -2412,6 +2412,8 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una list
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Ver leeme
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Registro de cambios
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licencia
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establecer parámetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Seleccionar paleta
@@ -2445,6 +2447,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}Leeme del NewGRF {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Registro de cambios del NewGRF {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licencia del NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
