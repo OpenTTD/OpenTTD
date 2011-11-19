@@ -13,6 +13,7 @@
 #include "fontcache.h"
 #include "blitter/factory.hpp"
 #include "core/math_func.hpp"
+#include "strings_func.h"
 
 #include "table/sprites.h"
 #include "table/control_codes.h"
@@ -289,7 +290,7 @@ err1:
 struct EFCParam {
 	FreeTypeSettings *settings;
 	LOCALESIGNATURE  locale;
-	SetFallbackFontCallback *callback;
+	MissingGlyphSearcher *callback;
 };
 
 static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXTMETRICEX *metric, DWORD type, LPARAM lParam)
@@ -349,12 +350,12 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
 	strecpy(info->settings->medium_font, font_name, lastof(info->settings->medium_font));
 	strecpy(info->settings->large_font,  font_name, lastof(info->settings->large_font));
-	if (info->callback(NULL)) return 1;
+	if (info->callback->FindMissingGlyphs(NULL)) return 1;
 	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 	return 0; // stop enumerating
 }
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback)
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	DEBUG(freetype, 1, "Trying fallback fonts");
 	EFCParam langInfo;
@@ -428,12 +429,12 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback)
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	const char *str;
 	bool result = false;
 
-	callback(&str);
+	callback->FindMissingGlyphs(&str);
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 	if (MacOSVersionIsAtLeast(10, 5, 0)) {
@@ -609,7 +610,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		}
 	 }
 
-	callback(NULL);
+	callback->FindMissingGlyphs(NULL);
 	return result;
 }
 
@@ -683,7 +684,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback)
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
 	if (!FcInit()) return false;
 
@@ -722,7 +723,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			strecpy(settings->medium_font, (const char*)file, lastof(settings->medium_font));
 			strecpy(settings->large_font,  (const char*)file, lastof(settings->large_font));
 
-			bool missing = callback(NULL);
+			bool missing = callback->FindMissingGlyphs(NULL);
 			DEBUG(freetype, 1, "Font \"%s\" misses%s glyphs", file, missing ? "" : " no");
 
 			if (!missing) {
@@ -741,7 +742,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 #else /* without WITH_FONTCONFIG */
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) {return FT_Err_Cannot_Open_Resource;}
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback) { return false; }
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
 #endif /* WITH_FONTCONFIG */
 
 static void SetFontGeometry(FT_Face face, FontSize size, int pixels)

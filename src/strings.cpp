@@ -1750,45 +1750,74 @@ const char *GetCurrentLanguageIsoCode()
  * @return If glyphs are missing, return \c true, else return \false.
  * @post If \c true is returned and str is not NULL, *str points to a string that is found to contain at least one missing glyph.
  */
-static bool FindMissingGlyphs(const char **str)
+bool MissingGlyphSearcher::FindMissingGlyphs(const char **str)
 {
 #ifdef WITH_FREETYPE
 	UninitFreeType();
 	InitFreeType();
 #endif
 	const Sprite *question_mark[FS_END];
-	FontSize size;
 
-	for (size = FS_BEGIN; size < FS_END; size++) {
+	for (FontSize size = FS_BEGIN; size < FS_END; size++) {
 		question_mark[size] = GetGlyph(size, '?');
 	}
 
-	for (uint i = 0; i != 32; i++) {
-		for (uint j = 0; j < _langtab_num[i]; j++) {
-			size = FS_NORMAL;
-			const char *text = _langpack_offs[_langtab_start[i] + j];
-			if (str != NULL) *str = text;
-			for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
-				if (c == SCC_SETX) {
-					/* SetX is, together with SetXY as special character that
-					 * uses the next (two) characters as data points. We have
-					 * to skip those, otherwise the UTF8 reading will go haywire. */
-					text++;
-				} else if (c == SCC_SETXY) {
-					text += 2;
-				} else if (c == SCC_TINYFONT) {
-					size = FS_SMALL;
-				} else if (c == SCC_BIGFONT) {
-					size = FS_LARGE;
-				} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
-					/* The character is printable, but not in the normal font. This is the case we were testing for. */
-					return true;
-				}
+	this->Reset();
+	for (const char *text = this->NextString(); text != NULL; text = this->NextString()) {
+		FontSize size = this->DefaultSize();
+		if (str != NULL) *str = text;
+		for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
+			if (c == SCC_SETX) {
+				/* SetX is, together with SetXY as special character that
+					* uses the next (two) characters as data points. We have
+					* to skip those, otherwise the UTF8 reading will go haywire. */
+				text++;
+			} else if (c == SCC_SETXY) {
+				text += 2;
+			} else if (c == SCC_TINYFONT) {
+				size = FS_SMALL;
+			} else if (c == SCC_BIGFONT) {
+				size = FS_LARGE;
+			} else if (!IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END) && IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
+				/* The character is printable, but not in the normal font. This is the case we were testing for. */
+				return true;
 			}
 		}
 	}
 	return false;
 }
+
+/** Helper for searching through the language pack. */
+class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
+	uint i; ///< Iterator for the primary language tables.
+	uint j; ///< Iterator for the secondary language tables.
+
+	/* virtual */ void Reset()
+	{
+		this->i = 0;
+		this->j = 0;
+	}
+
+	FontSize DefaultSize()
+	{
+		return FS_NORMAL;
+	}
+
+	const char *NextString()
+	{
+		if (this->i >= 32) return NULL;
+
+		const char *ret = _langpack_offs[_langtab_start[i] + j];
+
+		this->j++;
+		while (this->j >= _langtab_num[this->i] && this->i < 32) {
+			i++;
+			j = 0;
+		}
+
+		return ret;
+	}
+};
 
 /**
  * Check whether the currently loaded language pack
@@ -1803,7 +1832,8 @@ static bool FindMissingGlyphs(const char **str)
  */
 void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font)
 {
-	bool bad_font = !base_font || FindMissingGlyphs(NULL);
+	LanguagePackGlyphSearcher searcher;
+	bool bad_font = !base_font || searcher.FindMissingGlyphs(NULL);
 #ifdef WITH_FREETYPE
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
@@ -1811,7 +1841,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font)
 		FreeTypeSettings backup;
 		memcpy(&backup, &_freetype, sizeof(backup));
 
-		bad_font = !SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, &FindMissingGlyphs);
+		bad_font = !SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, &searcher);
 
 		memcpy(&_freetype, &backup, sizeof(backup));
 

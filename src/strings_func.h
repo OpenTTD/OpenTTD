@@ -14,6 +14,7 @@
 
 #include "strings_type.h"
 #include "string_type.h"
+#include "gfx_type.h"
 
 class StringParameters {
 	StringParameters *parent; ///< If not NULL, this instance references data from this parent instance.
@@ -195,6 +196,34 @@ void InitializeLanguagePacks();
 const char *GetCurrentLanguageIsoCode();
 
 int CDECL StringIDSorter(const StringID *a, const StringID *b);
+
+/**
+ * A searcher for missing glyphs.
+ */
+class MissingGlyphSearcher {
+public:
+	/** Make sure everything gets destructed right. */
+	virtual ~MissingGlyphSearcher() {}
+
+	/**
+	 * Get the next string to search through.
+	 * @return The next string or NULL if there is none.
+	 */
+	virtual const char *NextString() = 0;
+
+	/**
+	 * Get the default (font) size of the string.
+	 * @return The font size.
+	 */
+	virtual FontSize DefaultSize() = 0;
+
+	/**
+	 * Reset the search, i.e. begin from the beginning again.
+	 */
+	virtual void Reset() = 0;
+
+	bool FindMissingGlyphs(const char **str);
+};
 
 void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font = true);
 

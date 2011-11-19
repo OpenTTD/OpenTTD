@@ -47,7 +47,6 @@ const Sprite *GetGlyph(FontSize size, uint32 key);
 uint GetGlyphWidth(FontSize size, uint32 key);
 bool GetDrawGlyphShadow();
 
-typedef bool (SetFallbackFontCallback)(const char **);
 /**
  * We would like to have a fallback font as the current one
  * doesn't contain all characters we need.
@@ -58,7 +57,7 @@ typedef bool (SetFallbackFontCallback)(const char **);
  * @param callback The function to call to check for missing glyphs.
  * @return true if a font has been set, false otherwise.
  */
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback);
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, class MissingGlyphSearcher *callback);
 
 #else
 
