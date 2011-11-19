@@ -245,7 +245,7 @@ public:
 	void ResetCrashed();
 
 	/**
-	 * Set the AI status to crashed.
+	 * Set the script status to crashed.
 	 */
 	void CrashOccurred();
 
