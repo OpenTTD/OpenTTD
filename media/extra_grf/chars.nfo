@@ -7,15 +7,19 @@
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
    -1 * 0	 0C "Characters, graphics by Bilbo and Jasper Vries"
+
+#define ALL_FONTS(amount, id)   -1 * 0 12 03 00 amount id 01 amount id 02 amount id
+#define LARGE_FONT(amount, id)   -1 * 0 12 01 02 amount id
+
 //U+20AC Euro-sign
-   -1 * 0 12 03 00 01 AC 20 01 01 AC 20 02 01 AC 20
+ALL_FONTS(01, AC 20)
    -1 sprites/chars.png 30 10 01 13 8 0 -2
    -1 sprites/chars.png 30 30 01 6 5 0 0
    -1 sprites/chars.png 30 40 01 21 15 0 -2
 
 //U+0152 Latin Capital Ligature OE
 //U+0153 Latin Small Ligature OE
-   -1 * 0 12 03 00 02 52 01 01 02 52 01 02 02 52 01
+ALL_FONTS(02, 52 01)
    -1 sprites/chars.png 50 10 01 13 12 0 -2
    -1 sprites/chars.png 300 10 01 13 9 0 -2
    -1 sprites/chars.png 50 30 01 5 5 0 1
@@ -25,7 +29,7 @@
 
 //U+0160 Latin Capital Letter S with caron
 //U+0161 Latin Small Letter S with caron
-   -1 * 0 12 03 00 02 60 01 01 02 60 01 02 02 60 01
+ALL_FONTS(02, 60 01)
    -1 sprites/chars.png 90 10 01 13 8 0 -2
    -1 sprites/chars.png 110 10 01 13 6 0 -2
    -1 sprites/chars.png 90 30 01 6 3 0 0
@@ -35,7 +39,7 @@
 
 //U+017D Latin Capital Letter Z with caron
 //U+017E Latin Small Letter Z with caron
-   -1 * 0 12 03 00 02 7D 01 01 02 7D 01 02 02 7D 01
+ALL_FONTS(02, 7D 01)
    -1 sprites/chars.png 120 10 01 13 8 0 -2
    -1 sprites/chars.png 140 10 01 13 7 0 -2
    -1 sprites/chars.png 120 30 01 6 3 0 0
@@ -44,7 +48,7 @@
    -1 sprites/chars.png 140 40 01 21 7 0 -2
 
 //U+00B0 Degree symbol
-   -1 * 0 12 03 00 01 B0 00 01 01 B0 00 02 01 B0 00
+ALL_FONTS(01, B0 00)
    -1 sprites/chars.png 150 10 01 13 6 0 -2
    -1 sprites/chars.png 150 30 01 6 3 0 0
    -1 sprites/chars.png 150 40 01 21 7 0 -2
@@ -53,7 +57,7 @@
 //U+007C Vertical bar
 //U+007C Right Curly Bracket
 //U+007D Tilde
-   -1 * 0 12 03 00 04 7B 00 01 04 7B 00 02 04 7B 00
+ALL_FONTS(04, 7B 00)
    -1 sprites/chars.png 160 10 01 13 5 0 -2
    -1 sprites/chars.png 170 10 01 13 3 0 -2
    -1 sprites/chars.png 180 10 01 13 5 0 -2
@@ -68,14 +72,14 @@
    -1 sprites/chars.png 190 40 01 21 12 0 -2
 
 //U+00B7 Middle dot
-   -1 * 0 12 03 00 01 B7 00 01 01 B7 00 02 01 B7 00
+ALL_FONTS(01, B7 00)
    -1 sprites/chars.png 210 10 01 13 3 0 -2
    -1 sprites/chars.png 210 30 01 5 1 0 1
    -1 sprites/chars.png 210 40 01 21 2 0 -2
 
 //U+0150 Latin Capital Letter O with double acute
 //U+0151 Latin Small Letter O with double acute
-   -1 * 0 12 03 00 02 50 01 01 02 50 01 02 02 50 01
+ALL_FONTS(02, 50 01)
    -1 sprites/chars.png 230 10 01 13 9 0 -2
    -1 sprites/chars.png 320 10 01 13 6 0 -2
    -1 sprites/chars.png 230 30 01 6 4 0 0
@@ -85,7 +89,7 @@
 
 //U+0170 Latin Capital Letter U with double acute
 //U+0171 Latin Small Letter U with double acute
-   -1 * 0 12 03 00 02 70 01 01 02 70 01 02 02 70 01
+ALL_FONTS(02, 70 01)
    -1 sprites/chars.png 260 10 01 13 8 0 -2
    -1 sprites/chars.png 250 10 01 13 7 0 -2
    -1 sprites/chars.png 260 30 01 6 4 0 0
@@ -95,7 +99,7 @@
 
 //U+010C Latin Capital Letter C with caron
 //U+010D Latin Small Letter C with caron
-   -1 * 0 12 03 00 02 0C 01 01 02 0C 01 02 02 0C 01
+ALL_FONTS(02, 0C 01)
    -1 sprites/chars.png 30 70 01 13 9 0 -2
    -1 sprites/chars.png 50 70 01 13 6 0 -2
    -1 sprites/chars.png 30 90 01 6 3 0 0
@@ -105,7 +109,7 @@
 
 //U+010E Latin Capital Letter D with caron
 //U+010F Latin Small Letter D with caron
-   -1 * 0 12 03 00 02 0E 01 01 02 0E 01 02 02 0E 01
+ALL_FONTS(02, 0E 01)
    -1 sprites/chars.png 70 70 01 13 8 0 -2
    -1 sprites/chars.png 90 70 01 13 9 0 -2
    -1 sprites/chars.png 70 90 01 6 3 0 0
@@ -115,7 +119,7 @@
 
 //U+011A Latin Capital Letter E with caron
 //U+011B Latin Small Letter E with caron
-   -1 * 0 12 03 00 02 1A 01 01 02 1A 01 02 02 1A 01
+ALL_FONTS(02, 1A 01)
    -1 sprites/chars.png 110 70 01 13 8 0 -2
    -1 sprites/chars.png 130 70 01 13 6 0 -2
    -1 sprites/chars.png 110 90 01 6 3 0 0
@@ -125,7 +129,7 @@
 
 //U+0147 Latin Capital Letter N with caron
 //U+0148 Latin Small Letter N with caron
-   -1 * 0 12 03 00 02 47 01 01 02 47 01 02 02 47 01
+ALL_FONTS(02, 47 01)
    -1 sprites/chars.png 150 70 01 13 8 0 -2
    -1 sprites/chars.png 170 70 01 13 6 0 -2
    -1 sprites/chars.png 150 90 01 6 4 0 0
@@ -135,7 +139,7 @@
 
 //U+0158 Latin Capital Letter R with caron
 //U+0159 Latin Small Letter R with caron
-   -1 * 0 12 03 00 02 58 01 01 02 58 01 02 02 58 01
+ALL_FONTS(02, 58 01)
    -1 sprites/chars.png 190 70 01 13 8 0 -2
    -1 sprites/chars.png 210 70 01 13 5 0 -2
    -1 sprites/chars.png 190 90 01 6 3 0 0
@@ -145,7 +149,7 @@
 
 //U+0164 Latin Capital Letter T with caron
 //U+0165 Latin Small Letter T with caron
-   -1 * 0 12 03 00 02 64 01 01 02 64 01 02 02 64 01
+ALL_FONTS(02, 64 01)
    -1 sprites/chars.png 230 70 01 13 9 0 -2
    -1 sprites/chars.png 250 70 01 13 8 0 -2
    -1 sprites/chars.png 230 90 01 6 3 0 0
@@ -155,7 +159,7 @@
 
 //U+016E Latin Capital Letter U with ring above
 //U+016F Latin Small Letter U with ring above
-   -1 * 0 12 03 00 02 6E 01 01 02 6E 01 02 02 6E 01
+ALL_FONTS(02, 6E 01)
    -1 sprites/chars.png 270 70 01 13 8 0 -2
    -1 sprites/chars.png 290 70 01 13 6 0 -2
    -1 sprites/chars.png 270 90 01 6 3 0 0
@@ -165,7 +169,7 @@
 
 //U+0106 Latin Capital Letter C with acute
 //U+0107 Latin Small Letter C with acute
-   -1 * 0 12 03 00 02 06 01 01 02 06 01 02 02 06 01
+ALL_FONTS(02, 06 01)
    -1 sprites/chars.png 310 70 01 13 9 0 -2
    -1 sprites/chars.png 330 70 01 13 6 0 -2
    -1 sprites/chars.png 310 90 01 6 3 0 0
@@ -175,7 +179,7 @@
 
 //U+0110 Latin Capital Letter D with stroke
 //U+0111 Latin Small Letter D with stroke
-   -1 * 0 12 03 00 02 10 01 01 02 10 01 02 02 10 01
+ALL_FONTS(02, 10 01)
    -1 sprites/chars.png 350 70 01 13 9 0 -2
    -1 sprites/chars.png 370 70 01 13 7 0 -2
    -1 sprites/chars.png 350 90 01 5 4 0 1
@@ -185,7 +189,7 @@
 
 //U+013D Latin Capital Letter L with caron
 //U+013E Latin Small Letter L with caron
-   -1 * 0 12 03 00 02 3D 01 01 02 3D 01 02 02 3D 01
+ALL_FONTS(02, 3D 01)
    -1 sprites/chars.png 390 70 01 13 7 0 -2
    -1 sprites/chars.png 410 70 01 13 6 0 -2
    -1 sprites/chars.png 390 90 01 5 5 0 1
@@ -194,62 +198,62 @@
    -1 sprites/chars.png 410 100 01 21 7 0 -2
 
 //U+00B4 Acute accent
-   -1 * 0 12 03 00 01 B4 00 01 01 B4 00 02 01 B4 00
+ALL_FONTS(01, B4 00)
    -1 sprites/chars.png 30 130 01 13 4 0 -2
    -1 sprites/chars.png 30 150 01 5 1 0 1
    -1 sprites/chars.png 30 160 01 21 3 0 -2
 
 //U+00BD Vulgar fraction one half
-   -1 * 0 12 03 00 01 BD 00 01 01 BD 00 02 01 BD 00
+ALL_FONTS(01, BD 00)
    -1 sprites/chars.png 40 130 01 13 11 0 -2
    -1 sprites/chars.png 40 150 01 5 9 0 1
    -1 sprites/chars.png 40 160 01 21 11 0 -2
 
 //U+00B5 Micro sign
-   -1 * 0 12 03 00 01 B5 00 01 01 B5 00 02 01 B5 00
+ALL_FONTS(01, B5 00)
    -1 sprites/chars.png 60 130 01 13 6 0 -2
    -1 sprites/chars.png 60 150 01 5 3 0 1
    -1 sprites/chars.png 60 160 01 21 10 0 -2
 
 //U+00AA Feminine Ordinal Indicator
-   -1 * 0 12 03 00 01 AA 00 01 01 AA 00 02 01 AA 00
+ALL_FONTS(01, AA 00)
    -1 sprites/chars.png 80 130 01 13 5 0 -2
    -1 sprites/chars.png 80 150 01 5 1 0 1
    -1 sprites/chars.png 80 160 01 21 6 0 -2
 
 //U+2019 RIGHT SINGLE QUOTATION MARK
-   -1 * 0 12 03 00 01 19 20 01 01 19 20 02 01 19 20
+ALL_FONTS(01, 19 20)
    -1 sprites/chars.png 90 130 01 13 3 0 -2
    -1 sprites/chars.png 90 150 01 5 1 0 1
    -1 sprites/chars.png 90 160 01 21 4 0 -2
 
 //U+201E DOUBLE LOW-9 QUOTATION MARK
-   -1 * 0 12 03 00 01 1E 20 01 01 1E 20 02 01 1E 20
+ALL_FONTS(01, 1E 20)
    -1 sprites/chars.png 100 130 01 13 5 0 -2
    -1 sprites/chars.png 100 150 01 5 3 0 1
    -1 sprites/chars.png 100 160 01 21 8 0 -2
 
 //U+201C LEFT DOUBLE QUOTATION MARK
-   -1 * 0 12 03 00 01 1C 20 01 01 1C 20 02 01 1C 20
+ALL_FONTS(01, 1C 20)
    -1 sprites/chars.png 110 130 01 13 5 0 -2
    -1 sprites/chars.png 110 150 01 5 3 0 1
    -1 sprites/chars.png 110 160 01 21 8 0 -2
 
 //U+203A SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
-   -1 * 0 12 03 00 01 3A 20 01 01 3A 20 02 01 3A 20
+ALL_FONTS(01, 3A 20)
    -1 sprites/chars.png 760 130 01 13 5 0 -2
    -1 sprites/chars.png 760 150 01 5 2 0 1
    -1 sprites/chars.png 760 160 01 21 4 0 -2
 
 //U+2013 EN DASH
-   -1 * 0 12 03 00 01 13 20 01 01 13 20 02 01 13 20
+ALL_FONTS(01, 13 20)
    -1 sprites/chars.png 120 130 01 13 7 0 -2
    -1 sprites/chars.png 120 150 01 5 4 0 1
    -1 sprites/chars.png 120 160 01 21 9 0 -2
 
 //U+0174 Latin Capital Letter W with circumflex
 //U+0175 Latin Small Letter W with circumflex
-   -1 * 0 12 03 00 02 74 01 01 02 74 01 02 02 74 01
+ALL_FONTS(02, 74 01)
    -1 sprites/chars.png 420 70 01 13 12 0 -2
    -1 sprites/chars.png 440 70 01 13 10 0 -2
    -1 sprites/chars.png 420 90 01 6 5 0 0
@@ -259,7 +263,7 @@
 
 //U+0176 Latin Capital Letter Y with circumflex
 //U+0177 Latin Small Letter Y with circumflex
-   -1 * 0 12 03 00 02 76 01 01 02 76 01 02 02 76 01
+ALL_FONTS(02, 76 01)
    -1 sprites/chars.png 460 70 01 13 9 0 -2
    -1 sprites/chars.png 480 70 01 13 7 0 -2
    -1 sprites/chars.png 460 90 01 6 3 0 0
@@ -269,7 +273,7 @@
 
 //U+0108 Latin Capital Letter C with circumflex
 //U+0109 Latin Small Letter C with circumflex
-   -1 * 0 12 03 00 02 08 01 01 02 08 01 02 02 08 01
+ALL_FONTS(02, 08 01)
    -1 sprites/chars.png 500 70 01 13 9 0 -2
    -1 sprites/chars.png 520 70 01 13 6 0 -2
    -1 sprites/chars.png 500 90 01 6 3 0 0
@@ -279,7 +283,7 @@
 
 //U+011C Latin Capital Letter G with circumflex
 //U+011D Latin Small Letter G with circumflex
-   -1 * 0 12 03 00 02 1C 01 01 02 1C 01 02 02 1C 01
+ALL_FONTS(02, 1C 01)
    -1 sprites/chars.png 540 70 01 13 9 0 -2
    -1 sprites/chars.png 560 70 01 13 6 0 -2
    -1 sprites/chars.png 540 90 01 6 3 0 0
@@ -289,7 +293,7 @@
 
 //U+0124 Latin Capital Letter H with circumflex
 //U+0125 Latin Small Letter H with circumflex
-   -1 * 0 12 03 00 02 24 01 01 02 24 01 02 02 24 01
+ALL_FONTS(02, 24 01)
    -1 sprites/chars.png 580 70 01 13 8 0 -2
    -1 sprites/chars.png 600 70 01 13 8 0 -2
    -1 sprites/chars.png 580 90 01 6 3 0 0
@@ -299,7 +303,7 @@
 
 //U+0134 Latin Capital Letter J with circumflex
 //U+0135 Latin Small Letter J with circumflex
-   -1 * 0 12 03 00 02 34 01 01 02 34 01 02 02 34 01
+ALL_FONTS(02, 34 01)
    -1 sprites/chars.png 620 70 01 13 7 0 -2
    -1 sprites/chars.png 640 70 01 13 6 0 -2
    -1 sprites/chars.png 620 90 01 6 3 0 0
@@ -309,7 +313,7 @@
 
 //U+016C Latin Capital Letter U with breve
 //U+016D Latin Small Letter U with breve
-   -1 * 0 12 03 00 02 6C 01 01 02 6C 01 02 02 6C 01
+ALL_FONTS(02, 6C 01)
    -1 sprites/chars.png 650 70 01 13 8 0 -2
    -1 sprites/chars.png 670 70 01 13 6 0 -2
    -1 sprites/chars.png 650 90 01 6 3 0 0
@@ -319,7 +323,7 @@
 
 //U+0102 Latin Capital Letter A with breve
 //U+0103 Latin Small Letter A with breve
-   -1 * 0 12 03 00 02 02 01 01 02 02 01 02 02 02 01
+ALL_FONTS(02, 02 01)
    -1 sprites/chars.png 690 70 01 13 9 0 -2
    -1 sprites/chars.png 710 70 01 13 7 0 -2
    -1 sprites/chars.png 690 90 01 6 3 0 0
@@ -329,7 +333,7 @@
 
 //U+015E Latin Capital Letter S with cedilla
 //U+015F Latin Small Letter S with cedilla
-   -1 * 0 12 03 00 02 5E 01 01 02 5E 01 02 02 5E 01
+ALL_FONTS(02, 5E 01)
    -1 sprites/chars.png 730 70 01 13 8 0 -2
    -1 sprites/chars.png 740 70 01 13 6 0 -2
    -1 sprites/chars.png 730 90 01 6 3 0 1
@@ -339,7 +343,7 @@
 
 //U+0162 Latin Capital Letter T with cedilla
 //U+0163 Latin Small Letter T with cedilla
-   -1 * 0 12 03 00 02 62 01 01 02 62 01 02 02 62 01
+ALL_FONTS(02, 62 01)
    -1 sprites/chars.png 750 70 01 13 9 0 -2
    -1 sprites/chars.png 770 70 01 13 6 0 -2
    -1 sprites/chars.png 750 90 01 6 3 0 1
@@ -349,7 +353,7 @@
 
 //U+011E Latin Capital Letter G with breve
 //U+011F Latin Small Letter G with breve
-   -1 * 0 12 03 00 02 1E 01 01 02 1E 01 02 02 1E 01
+ALL_FONTS(02, 1E 01)
    -1 sprites/chars.png 140 130 01 13 9 0 -2
    -1 sprites/chars.png 160 130 01 13 6 0 -2
    -1 sprites/chars.png 140 150 01 6 3 0 0
@@ -359,7 +363,7 @@
 
 //U+0130 Latin Capital Letter I with dot above
 //U+0131 Latin Small Letter dotless I
-   -1 * 0 12 03 00 02 30 01 01 02 30 01 02 02 30 01
+ALL_FONTS(02, 30 01)
    -1 sprites/chars.png 180 130 01 13 3 0 -2
    -1 sprites/chars.png 190 130 01 13 3 0 -2
    -1 sprites/chars.png 180 150 01 6 1 0 0
@@ -369,7 +373,7 @@
 
 //U+0122 Latin Capital Letter G with cedilla
 //U+0123 Latin Small Letter G with cedilla
-   -1 * 0 12 03 00 02 22 01 01 02 22 01 02 02 22 01
+ALL_FONTS(02, 22 01)
    -1 sprites/chars.png 200 130 01 13 9 0 -2
    -1 sprites/chars.png 220 130 01 13 6 0 -2
    -1 sprites/chars.png 200 150 01 6 3 0 0
@@ -379,7 +383,7 @@
 
 //U+0136 Latin Capital Letter K with cedilla
 //U+0137 Latin Small Letter K with cedilla
-   -1 * 0 12 03 00 02 36 01 01 02 36 01 02 02 36 01
+ALL_FONTS(02, 36 01)
    -1 sprites/chars.png 240 130 01 13 8 0 -2
    -1 sprites/chars.png 260 130 01 13 7 0 -2
    -1 sprites/chars.png 240 150 01 6 3 0 1
@@ -389,7 +393,7 @@
 
 //U+013B Latin Capital Letter L with cedilla
 //U+013C Latin Small Letter L with cedilla
-   -1 * 0 12 03 00 02 3B 01 01 02 3B 01 02 02 3B 01
+ALL_FONTS(02, 3B 01)
    -1 sprites/chars.png 280 130 01 13 7 0 -2
    -1 sprites/chars.png 300 130 01 13 4 0 -2
    -1 sprites/chars.png 280 150 01 6 3 0 1
@@ -399,7 +403,7 @@
 
 //U+0145 Latin Capital Letter N with cedilla
 //U+0146 Latin Small Letter N with cedilla
-   -1 * 0 12 03 00 02 45 01 01 02 45 01 02 02 45 01
+ALL_FONTS(02, 45 01)
    -1 sprites/chars.png 310 130 01 13 8 0 -2
    -1 sprites/chars.png 330 130 01 13 6 0 -2
    -1 sprites/chars.png 310 150 01 6 4 0 1
@@ -409,7 +413,7 @@
 
 //U+0100 Latin Capital Letter A with macron
 //U+0101 Latin Small Letter A with macron
-   -1 * 0 12 03 00 02 00 01 01 02 00 01 02 02 00 01
+ALL_FONTS(02, 00 01)
    -1 sprites/chars.png 350 130 01 13 9 0 -2
    -1 sprites/chars.png 370 130 01 13 7 0 -2
    -1 sprites/chars.png 350 150 01 6 3 0 0
@@ -419,7 +423,7 @@
 
 //U+0112 Latin Capital Letter E with macron
 //U+0113 Latin Small Letter E with macron
-   -1 * 0 12 03 00 02 12 01 01 02 12 01 02 02 12 01
+ALL_FONTS(02, 12 01)
    -1 sprites/chars.png 380 130 01 13 8 0 -2
    -1 sprites/chars.png 400 130 01 13 6 0 -2
    -1 sprites/chars.png 380 150 01 6 3 0 0
@@ -429,7 +433,7 @@
 
 //U+012A Latin Capital Letter I with macron
 //U+012B Latin Small Letter I with macron
-   -1 * 0 12 03 00 02 2A 01 01 02 2A 01 02 02 2A 01
+ALL_FONTS(02, 2A 01)
    -1 sprites/chars.png 410 130 01 13 5 0 -2
    -1 sprites/chars.png 420 130 01 13 5 0 -2
    -1 sprites/chars.png 410 150 01 6 3 0 0
@@ -439,7 +443,7 @@
 
 //U+016A Latin Capital Letter U with macron
 //U+016B Latin Small Letter U with macron
-   -1 * 0 12 03 00 02 6A 01 01 02 6A 01 02 02 6A 01
+ALL_FONTS(02, 6A 01)
    -1 sprites/chars.png 430 130 01 13 8 0 -2
    -1 sprites/chars.png 450 130 01 13 6 0 -2
    -1 sprites/chars.png 430 150 01 6 3 0 0
@@ -449,7 +453,7 @@
 
 //U+0143 Latin Capital Letter N with acute
 //U+0144 Latin Small Letter N with acute
-   -1 * 0 12 03 00 02 43 01 01 02 43 01 02 02 43 01
+ALL_FONTS(02, 43 01)
    -1 sprites/chars.png 470 130 01 13 8 0 -2
    -1 sprites/chars.png 490 130 01 13 6 0 -2
    -1 sprites/chars.png 470 150 01 6 4 0 0
@@ -459,7 +463,7 @@
 
 //U+015A Latin Capital Letter S with acute
 //U+015B Latin Small Letter S with acute
-   -1 * 0 12 03 00 02 5A 01 01 02 5A 01 02 02 5A 01
+ALL_FONTS(02, 5A 01)
    -1 sprites/chars.png 510 130 01 13 8 0 -2
    -1 sprites/chars.png 520 130 01 13 6 0 -2
    -1 sprites/chars.png 510 150 01 6 3 0 0
@@ -469,7 +473,7 @@
 
 //U+017B Latin Capital Letter Z with dot above
 //U+017C Latin Small Letter Z with dot above
-   -1 * 0 12 03 00 02 7B 01 01 02 7B 01 02 02 7B 01
+ALL_FONTS(02, 7B 01)
    -1 sprites/chars.png 530 130 01 13 8 0 -2
    -1 sprites/chars.png 550 130 01 13 7 0 -2
    -1 sprites/chars.png 530 150 01 6 3 0 0
@@ -479,7 +483,7 @@
 
 //U+0179 Latin Capital Letter Z with acute
 //U+017A Latin Small Letter Z with acute
-   -1 * 0 12 03 00 02 79 01 01 02 79 01 02 02 79 01
+ALL_FONTS(02, 79 01)
    -1 sprites/chars.png 770 130 01 13 8 0 -2
    -1 sprites/chars.png 790 130 01 13 7 0 -2
    -1 sprites/chars.png 770 150 01 6 3 0 0
@@ -489,7 +493,7 @@
 
 //U+0139 Latin Capital Letter L with acute
 //U+013A Latin Small Letter L with acute
-   -1 * 0 12 03 00 02 39 01 01 02 39 01 02 02 39 01
+ALL_FONTS(02, 39 01)
    -1 sprites/chars.png 30 190 01 13 7 0 -2
    -1 sprites/chars.png 50 190 01 13 4 0 -2
    -1 sprites/chars.png 30 210 01 6 3 0 0
@@ -499,7 +503,7 @@
 
 //U+0141 Latin Capital Letter L with stroke
 //U+0142 Latin Small Letter L with stroke
-   -1 * 0 12 03 00 02 41 01 01 02 41 01 02 02 41 01
+ALL_FONTS(02, 41 01)
    -1 sprites/chars.png 560 130 01 13 8 0 -2
    -1 sprites/chars.png 580 130 01 13 5 0 -2
    -1 sprites/chars.png 560 150 01 5 4 0 1
@@ -509,7 +513,7 @@
 
 //U+0104 Latin Capital Letter A with ogonek
 //U+0105 Latin Small Letter A with ogonek
-   -1 * 0 12 03 00 02 04 01 01 02 04 01 02 02 04 01
+ALL_FONTS(02, 04 01)
    -1 sprites/chars.png 590 130 01 13 9 0 -2
    -1 sprites/chars.png 610 130 01 13 7 0 -2
    -1 sprites/chars.png 590 150 01 6 3 0 1
@@ -519,7 +523,7 @@
 
 //U+0118 Latin Capital Letter E with ogonek
 //U+0119 Latin Small Letter E with ogonek
-   -1 * 0 12 03 00 02 18 01 01 02 18 01 02 02 18 01
+ALL_FONTS(02, 18 01)
    -1 sprites/chars.png 620 130 01 13 8 0 -2
    -1 sprites/chars.png 640 130 01 13 6 0 -2
    -1 sprites/chars.png 620 150 01 6 3 0 1
@@ -529,7 +533,7 @@
 
 //U+012E Latin Capital Letter I with ogonek
 //U+012F Latin Small Letter I with ogonek
-   -1 * 0 12 03 00 02 2E 01 01 02 2E 01 02 02 2E 01
+ALL_FONTS(02, 2E 01)
    -1 sprites/chars.png 650 130 01 13 4 0 -2
    -1 sprites/chars.png 660 130 01 13 4 0 -2
    -1 sprites/chars.png 650 150 01 6 2 0 1
@@ -539,7 +543,7 @@
 
 //U+0172 Latin Capital Letter U with ogonek
 //U+0173 Latin Small Letter U with ogonek
-   -1 * 0 12 03 00 02 72 01 01 02 72 01 02 02 72 01
+ALL_FONTS(02, 72 01)
    -1 sprites/chars.png 670 130 01 13 8 0 -2
    -1 sprites/chars.png 690 130 01 13 7 0 -2
    -1 sprites/chars.png 670 150 01 6 3 0 1
@@ -549,7 +553,7 @@
 
 //U+0116 Latin Capital Letter E with dot above
 //U+0117 Latin Small Letter E with dot above
-   -1 * 0 12 03 00 02 16 01 01 02 16 01 02 02 16 01
+ALL_FONTS(02, 16 01)
    -1 sprites/chars.png 710 130 01 13 8 0 -2
    -1 sprites/chars.png 730 130 01 13 6 0 -2
    -1 sprites/chars.png 710 150 01 6 3 0 0
@@ -559,7 +563,7 @@
 
 //U+015C Latin Capital Letter S with circumflex
 //U+015D Latin Small Letter S with circumflex
-   -1 * 0 12 03 00 02 5C 01 01 02 5C 01 02 02 5C 01
+ALL_FONTS(02, 5C 01)
    -1 sprites/chars.png 740 130 01 13 8 0 -2
    -1 sprites/chars.png 750 130 01 13 6 0 -2
    -1 sprites/chars.png 740 150 01 6 3 0 0
@@ -570,61 +574,61 @@
 
 // Large font only
 //U+00C6 Latin Capital letter AE
-   -1 * 0 12 01 02 01 C6 00
+LARGE_FONT(01, C6 00)
    -1 sprites/chars.png 300 40 01 21 19 0 -2
 
 //U+00E6 Latin Small Letter AE
-   -1 * 0 12 01 02 01 E6 00
+LARGE_FONT(01, E6 00)
    -1 sprites/chars.png 280 40 01 21 13 0 -2
 
 //U+00D8 Latin Capital letter O with stroke
-   -1 * 0 12 01 02 01 D8 00
+LARGE_FONT(01, D8 00)
    -1 sprites/chars.png 330 40 01 21 13 0 -2
 
 //U+00F8 Latin Small Letter O with stroke
-   -1 * 0 12 01 02 01 F8 00
+LARGE_FONT(01, F8 00)
    -1 sprites/chars.png 320 40 01 21 9 0 -2
 
 //U+00D0 Latin Capital letter Eth
-   -1 * 0 12 01 02 01 D0 00
+LARGE_FONT(01, D0 00)
    -1 sprites/chars.png 350 40 01 21 14 0 -2
 
 //U+00F0 Latin Small Letter Eth
-   -1 * 0 12 01 02 01 F0 00
+LARGE_FONT(01, F0 00)
    -1 sprites/chars.png 370 40 01 21 9 0 -2
 
 //U+00DE Latin Capital Letter Thorn
-   -1 * 0 12 01 02 01 DE 00
+LARGE_FONT(01, DE 00)
    -1 sprites/chars.png 380 40 01 21 14 0 -2
 
 //U+00FE Latin Small Letter Thorn
-   -1 * 0 12 01 02 01 FE 00
+LARGE_FONT(01, FE 00)
    -1 sprites/chars.png 400 40 01 21 14 0 -2
 
 //U+00A7 Section sign
-   -1 * 0 12 01 02 01 A7 00
+LARGE_FONT(01, A7 00)
    -1 sprites/chars.png 420 40 01 21 9 0 -2
 
 //U+00A9 Copyright sign
-   -1 * 0 12 01 02 01 A9 00
+LARGE_FONT(01, A9 00)
    -1 sprites/chars.png 430 40 01 21 16 0 -2
 
 //U+00AE Registered sign
-   -1 * 0 12 01 02 01 AE 00
+LARGE_FONT(01, AE 00)
    -1 sprites/chars.png 150 40 01 21 7 0 -2
 
 //U+00B1 Plus-minus sign
 //U+00B2 Superscript two
 //U+00B3 Superscript three
-   -1 * 0 12 01 02 03 B1 00
+LARGE_FONT(03, B1 00)
    -1 sprites/chars.png 480 40 01 21 9 0 -2
    -1 sprites/chars.png 490 40 01 21 6 0 -2
    -1 sprites/chars.png 500 40 01 21 5 0 -2
 
 //U+00D7 Multiplication sign
-   -1 * 0 12 01 02 01 D7 00
+LARGE_FONT(01, D7 00)
    -1 sprites/chars.png 510 40 01 21 8 0 -2
 
 //U+00F7 Division sign
-   -1 * 0 12 01 02 01 F7 00
+LARGE_FONT(01, F7 00)
    -1 sprites/chars.png 520 40 01 21 9 0 -2
