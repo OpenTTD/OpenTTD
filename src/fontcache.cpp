@@ -347,9 +347,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 
 	if (!found) return 1;
 
-	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
-	strecpy(info->settings->medium_font, font_name, lastof(info->settings->medium_font));
-	strecpy(info->settings->large_font,  font_name, lastof(info->settings->large_font));
+	callback->SetFontNames(info->settings, font_name);
 	if (info->callback->FindMissingGlyphs(NULL)) return 1;
 	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 	return 0; // stop enumerating
@@ -487,9 +485,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 								strncmp(name, "GB18030 Bitmap", 14) == 0) continue;
 
 						/* Save result. */
-						strecpy(settings->small_font,  name, lastof(settings->small_font));
-						strecpy(settings->medium_font, name, lastof(settings->medium_font));
-						strecpy(settings->large_font,  name, lastof(settings->large_font));
+						callback->SetFontNames(settings, name);
 						DEBUG(freetype, 2, "CT-Font for %s: %s", language_isocode, name);
 						result = true;
 						break;
@@ -574,9 +570,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			name[act_len > 127 ? 127 : act_len] = '\0';
 
 			/* Save Result. */
-			strecpy(settings->small_font,  name, lastof(settings->small_font));
-			strecpy(settings->medium_font, name, lastof(settings->medium_font));
-			strecpy(settings->large_font,  name, lastof(settings->large_font));
+			callback->SetFontNames(settings, name);
 			DEBUG(freetype, 2, "ATSUI-Font for %s: %s", language_isocode, name);
 			result = true;
 		}
@@ -598,9 +592,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		/* Init FreeType if needed. */
 		if ((ft_init || FT_Init_FreeType(&_library) == FT_Err_Ok) && GetFontByFaceName("Arial Unicode MS", &face) == FT_Err_Ok) {
 			FT_Done_Face(face);
-			strecpy(settings->small_font,  "Arial Unicode MS", lastof(settings->small_font));
-			strecpy(settings->medium_font, "Arial Unicode MS", lastof(settings->medium_font));
-			strecpy(settings->large_font,  "Arial Unicode MS", lastof(settings->large_font));
+			callback->SetFontNames(settings, "Arial Unicode MS");
 			DEBUG(freetype, 1, "Replacing font 'Geeza Pro' with 'Arial Unicode MS'");
 		}
 		if (!ft_init) {
@@ -719,9 +711,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 				continue;
 			}
 
-			strecpy(settings->small_font,  (const char*)file, lastof(settings->small_font));
-			strecpy(settings->medium_font, (const char*)file, lastof(settings->medium_font));
-			strecpy(settings->large_font,  (const char*)file, lastof(settings->large_font));
+			callback->SetFontNames(settings, (const char*)file);
 
 			bool missing = callback->FindMissingGlyphs(NULL);
 			DEBUG(freetype, 1, "Font \"%s\" misses%s glyphs", file, missing ? "" : " no");

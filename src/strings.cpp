@@ -1798,12 +1798,12 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		this->j = 0;
 	}
 
-	FontSize DefaultSize()
+	/* virtual */ FontSize DefaultSize()
 	{
 		return FS_NORMAL;
 	}
 
-	const char *NextString()
+	/* virtual */ const char *NextString()
 	{
 		if (this->i >= 32) return NULL;
 
@@ -1816,6 +1816,13 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		}
 
 		return ret;
+	}
+
+	/* virtual */ void SetFontNames(FreeTypeSettings *settings, const char *font_name)
+	{
+		strecpy(settings->small_font,  font_name, lastof(settings->small_font));
+		strecpy(settings->medium_font, font_name, lastof(settings->medium_font));
+		strecpy(settings->large_font,  font_name, lastof(settings->large_font));
 	}
 };
 
