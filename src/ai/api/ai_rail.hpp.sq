@@ -13,23 +13,23 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> AIRail::ErrorMessages GetParam(ForceType<AIRail::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::ErrorMessages)tmp; }
-	template <> int Return<AIRail::ErrorMessages>(HSQUIRRELVM vm, AIRail::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIRail::RailType GetParam(ForceType<AIRail::RailType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::RailType)tmp; }
-	template <> int Return<AIRail::RailType>(HSQUIRRELVM vm, AIRail::RailType res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIRail::RailTrack GetParam(ForceType<AIRail::RailTrack>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::RailTrack)tmp; }
-	template <> int Return<AIRail::RailTrack>(HSQUIRRELVM vm, AIRail::RailTrack res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIRail::SignalType GetParam(ForceType<AIRail::SignalType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::SignalType)tmp; }
-	template <> int Return<AIRail::SignalType>(HSQUIRRELVM vm, AIRail::SignalType res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIRail::BuildType GetParam(ForceType<AIRail::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::BuildType)tmp; }
-	template <> int Return<AIRail::BuildType>(HSQUIRRELVM vm, AIRail::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRail::ErrorMessages GetParam(ForceType<AIRail::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::ErrorMessages)tmp; }
+	template <> inline int Return<AIRail::ErrorMessages>(HSQUIRRELVM vm, AIRail::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRail::RailType GetParam(ForceType<AIRail::RailType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::RailType)tmp; }
+	template <> inline int Return<AIRail::RailType>(HSQUIRRELVM vm, AIRail::RailType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRail::RailTrack GetParam(ForceType<AIRail::RailTrack>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::RailTrack)tmp; }
+	template <> inline int Return<AIRail::RailTrack>(HSQUIRRELVM vm, AIRail::RailTrack res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRail::SignalType GetParam(ForceType<AIRail::SignalType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::SignalType)tmp; }
+	template <> inline int Return<AIRail::SignalType>(HSQUIRRELVM vm, AIRail::SignalType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRail::BuildType GetParam(ForceType<AIRail::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::BuildType)tmp; }
+	template <> inline int Return<AIRail::BuildType>(HSQUIRRELVM vm, AIRail::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIRail to be used as Squirrel parameter */
-	template <> AIRail *GetParam(ForceType<AIRail *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRail *)instance; }
-	template <> AIRail &GetParam(ForceType<AIRail &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRail *)instance; }
-	template <> const AIRail *GetParam(ForceType<const AIRail *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRail *)instance; }
-	template <> const AIRail &GetParam(ForceType<const AIRail &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRail *)instance; }
-	template <> int Return<AIRail *>(HSQUIRRELVM vm, AIRail *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRail", res, NULL, DefSQDestructorCallback<AIRail>); return 1; }
+	template <> inline AIRail *GetParam(ForceType<AIRail *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRail *)instance; }
+	template <> inline AIRail &GetParam(ForceType<AIRail &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRail *)instance; }
+	template <> inline const AIRail *GetParam(ForceType<const AIRail *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRail *)instance; }
+	template <> inline const AIRail &GetParam(ForceType<const AIRail &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRail *)instance; }
+	template <> inline int Return<AIRail *>(HSQUIRRELVM vm, AIRail *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRail", res, NULL, DefSQDestructorCallback<AIRail>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIRail>() { return "AIRail"; }

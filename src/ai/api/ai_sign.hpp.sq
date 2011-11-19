@@ -13,15 +13,15 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> AISign::ErrorMessages GetParam(ForceType<AISign::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AISign::ErrorMessages)tmp; }
-	template <> int Return<AISign::ErrorMessages>(HSQUIRRELVM vm, AISign::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AISign::ErrorMessages GetParam(ForceType<AISign::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AISign::ErrorMessages)tmp; }
+	template <> inline int Return<AISign::ErrorMessages>(HSQUIRRELVM vm, AISign::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AISign to be used as Squirrel parameter */
-	template <> AISign *GetParam(ForceType<AISign *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISign *)instance; }
-	template <> AISign &GetParam(ForceType<AISign &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISign *)instance; }
-	template <> const AISign *GetParam(ForceType<const AISign *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISign *)instance; }
-	template <> const AISign &GetParam(ForceType<const AISign &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISign *)instance; }
-	template <> int Return<AISign *>(HSQUIRRELVM vm, AISign *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AISign", res, NULL, DefSQDestructorCallback<AISign>); return 1; }
+	template <> inline AISign *GetParam(ForceType<AISign *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISign *)instance; }
+	template <> inline AISign &GetParam(ForceType<AISign &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISign *)instance; }
+	template <> inline const AISign *GetParam(ForceType<const AISign *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISign *)instance; }
+	template <> inline const AISign &GetParam(ForceType<const AISign &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISign *)instance; }
+	template <> inline int Return<AISign *>(HSQUIRRELVM vm, AISign *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AISign", res, NULL, DefSQDestructorCallback<AISign>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AISign>() { return "AISign"; }

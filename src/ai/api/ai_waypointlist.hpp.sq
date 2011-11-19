@@ -13,11 +13,11 @@
 
 namespace SQConvert {
 	/* Allow AIWaypointList to be used as Squirrel parameter */
-	template <> AIWaypointList *GetParam(ForceType<AIWaypointList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList *)instance; }
-	template <> AIWaypointList &GetParam(ForceType<AIWaypointList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList *)instance; }
-	template <> const AIWaypointList *GetParam(ForceType<const AIWaypointList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList *)instance; }
-	template <> const AIWaypointList &GetParam(ForceType<const AIWaypointList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList *)instance; }
-	template <> int Return<AIWaypointList *>(HSQUIRRELVM vm, AIWaypointList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypointList", res, NULL, DefSQDestructorCallback<AIWaypointList>); return 1; }
+	template <> inline AIWaypointList *GetParam(ForceType<AIWaypointList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList *)instance; }
+	template <> inline AIWaypointList &GetParam(ForceType<AIWaypointList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList *)instance; }
+	template <> inline const AIWaypointList *GetParam(ForceType<const AIWaypointList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList *)instance; }
+	template <> inline const AIWaypointList &GetParam(ForceType<const AIWaypointList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList *)instance; }
+	template <> inline int Return<AIWaypointList *>(HSQUIRRELVM vm, AIWaypointList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypointList", res, NULL, DefSQDestructorCallback<AIWaypointList>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIWaypointList>() { return "AIWaypointList"; }
@@ -33,11 +33,11 @@ void SQAIWaypointList_Register(Squirrel *engine)
 
 namespace SQConvert {
 	/* Allow AIWaypointList_Vehicle to be used as Squirrel parameter */
-	template <> AIWaypointList_Vehicle *GetParam(ForceType<AIWaypointList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList_Vehicle *)instance; }
-	template <> AIWaypointList_Vehicle &GetParam(ForceType<AIWaypointList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList_Vehicle *)instance; }
-	template <> const AIWaypointList_Vehicle *GetParam(ForceType<const AIWaypointList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList_Vehicle *)instance; }
-	template <> const AIWaypointList_Vehicle &GetParam(ForceType<const AIWaypointList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList_Vehicle *)instance; }
-	template <> int Return<AIWaypointList_Vehicle *>(HSQUIRRELVM vm, AIWaypointList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypointList_Vehicle", res, NULL, DefSQDestructorCallback<AIWaypointList_Vehicle>); return 1; }
+	template <> inline AIWaypointList_Vehicle *GetParam(ForceType<AIWaypointList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList_Vehicle *)instance; }
+	template <> inline AIWaypointList_Vehicle &GetParam(ForceType<AIWaypointList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList_Vehicle *)instance; }
+	template <> inline const AIWaypointList_Vehicle *GetParam(ForceType<const AIWaypointList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypointList_Vehicle *)instance; }
+	template <> inline const AIWaypointList_Vehicle &GetParam(ForceType<const AIWaypointList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypointList_Vehicle *)instance; }
+	template <> inline int Return<AIWaypointList_Vehicle *>(HSQUIRRELVM vm, AIWaypointList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypointList_Vehicle", res, NULL, DefSQDestructorCallback<AIWaypointList_Vehicle>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIWaypointList_Vehicle>() { return "AIWaypointList_Vehicle"; }

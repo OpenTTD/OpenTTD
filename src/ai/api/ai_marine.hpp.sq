@@ -13,17 +13,17 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> AIMarine::ErrorMessages GetParam(ForceType<AIMarine::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIMarine::ErrorMessages)tmp; }
-	template <> int Return<AIMarine::ErrorMessages>(HSQUIRRELVM vm, AIMarine::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIMarine::BuildType GetParam(ForceType<AIMarine::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIMarine::BuildType)tmp; }
-	template <> int Return<AIMarine::BuildType>(HSQUIRRELVM vm, AIMarine::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIMarine::ErrorMessages GetParam(ForceType<AIMarine::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIMarine::ErrorMessages)tmp; }
+	template <> inline int Return<AIMarine::ErrorMessages>(HSQUIRRELVM vm, AIMarine::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIMarine::BuildType GetParam(ForceType<AIMarine::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIMarine::BuildType)tmp; }
+	template <> inline int Return<AIMarine::BuildType>(HSQUIRRELVM vm, AIMarine::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIMarine to be used as Squirrel parameter */
-	template <> AIMarine *GetParam(ForceType<AIMarine *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMarine *)instance; }
-	template <> AIMarine &GetParam(ForceType<AIMarine &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIMarine *)instance; }
-	template <> const AIMarine *GetParam(ForceType<const AIMarine *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMarine *)instance; }
-	template <> const AIMarine &GetParam(ForceType<const AIMarine &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIMarine *)instance; }
-	template <> int Return<AIMarine *>(HSQUIRRELVM vm, AIMarine *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIMarine", res, NULL, DefSQDestructorCallback<AIMarine>); return 1; }
+	template <> inline AIMarine *GetParam(ForceType<AIMarine *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMarine *)instance; }
+	template <> inline AIMarine &GetParam(ForceType<AIMarine &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIMarine *)instance; }
+	template <> inline const AIMarine *GetParam(ForceType<const AIMarine *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMarine *)instance; }
+	template <> inline const AIMarine &GetParam(ForceType<const AIMarine &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIMarine *)instance; }
+	template <> inline int Return<AIMarine *>(HSQUIRRELVM vm, AIMarine *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIMarine", res, NULL, DefSQDestructorCallback<AIMarine>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIMarine>() { return "AIMarine"; }

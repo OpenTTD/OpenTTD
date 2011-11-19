@@ -13,11 +13,11 @@
 
 namespace SQConvert {
 	/* Allow AIGroupList to be used as Squirrel parameter */
-	template <> AIGroupList *GetParam(ForceType<AIGroupList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroupList *)instance; }
-	template <> AIGroupList &GetParam(ForceType<AIGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroupList *)instance; }
-	template <> const AIGroupList *GetParam(ForceType<const AIGroupList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroupList *)instance; }
-	template <> const AIGroupList &GetParam(ForceType<const AIGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroupList *)instance; }
-	template <> int Return<AIGroupList *>(HSQUIRRELVM vm, AIGroupList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGroupList", res, NULL, DefSQDestructorCallback<AIGroupList>); return 1; }
+	template <> inline AIGroupList *GetParam(ForceType<AIGroupList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroupList *)instance; }
+	template <> inline AIGroupList &GetParam(ForceType<AIGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroupList *)instance; }
+	template <> inline const AIGroupList *GetParam(ForceType<const AIGroupList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroupList *)instance; }
+	template <> inline const AIGroupList &GetParam(ForceType<const AIGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroupList *)instance; }
+	template <> inline int Return<AIGroupList *>(HSQUIRRELVM vm, AIGroupList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGroupList", res, NULL, DefSQDestructorCallback<AIGroupList>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIGroupList>() { return "AIGroupList"; }

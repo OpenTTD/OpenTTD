@@ -13,21 +13,21 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> AIRoad::ErrorMessages GetParam(ForceType<AIRoad::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::ErrorMessages)tmp; }
-	template <> int Return<AIRoad::ErrorMessages>(HSQUIRRELVM vm, AIRoad::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIRoad::RoadType GetParam(ForceType<AIRoad::RoadType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::RoadType)tmp; }
-	template <> int Return<AIRoad::RoadType>(HSQUIRRELVM vm, AIRoad::RoadType res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIRoad::RoadVehicleType GetParam(ForceType<AIRoad::RoadVehicleType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::RoadVehicleType)tmp; }
-	template <> int Return<AIRoad::RoadVehicleType>(HSQUIRRELVM vm, AIRoad::RoadVehicleType res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> AIRoad::BuildType GetParam(ForceType<AIRoad::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::BuildType)tmp; }
-	template <> int Return<AIRoad::BuildType>(HSQUIRRELVM vm, AIRoad::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRoad::ErrorMessages GetParam(ForceType<AIRoad::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::ErrorMessages)tmp; }
+	template <> inline int Return<AIRoad::ErrorMessages>(HSQUIRRELVM vm, AIRoad::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRoad::RoadType GetParam(ForceType<AIRoad::RoadType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::RoadType)tmp; }
+	template <> inline int Return<AIRoad::RoadType>(HSQUIRRELVM vm, AIRoad::RoadType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRoad::RoadVehicleType GetParam(ForceType<AIRoad::RoadVehicleType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::RoadVehicleType)tmp; }
+	template <> inline int Return<AIRoad::RoadVehicleType>(HSQUIRRELVM vm, AIRoad::RoadVehicleType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline AIRoad::BuildType GetParam(ForceType<AIRoad::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::BuildType)tmp; }
+	template <> inline int Return<AIRoad::BuildType>(HSQUIRRELVM vm, AIRoad::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIRoad to be used as Squirrel parameter */
-	template <> AIRoad *GetParam(ForceType<AIRoad *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRoad *)instance; }
-	template <> AIRoad &GetParam(ForceType<AIRoad &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRoad *)instance; }
-	template <> const AIRoad *GetParam(ForceType<const AIRoad *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRoad *)instance; }
-	template <> const AIRoad &GetParam(ForceType<const AIRoad &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRoad *)instance; }
-	template <> int Return<AIRoad *>(HSQUIRRELVM vm, AIRoad *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRoad", res, NULL, DefSQDestructorCallback<AIRoad>); return 1; }
+	template <> inline AIRoad *GetParam(ForceType<AIRoad *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRoad *)instance; }
+	template <> inline AIRoad &GetParam(ForceType<AIRoad &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRoad *)instance; }
+	template <> inline const AIRoad *GetParam(ForceType<const AIRoad *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRoad *)instance; }
+	template <> inline const AIRoad &GetParam(ForceType<const AIRoad &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRoad *)instance; }
+	template <> inline int Return<AIRoad *>(HSQUIRRELVM vm, AIRoad *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRoad", res, NULL, DefSQDestructorCallback<AIRoad>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIRoad>() { return "AIRoad"; }

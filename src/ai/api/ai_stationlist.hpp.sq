@@ -13,11 +13,11 @@
 
 namespace SQConvert {
 	/* Allow AIStationList to be used as Squirrel parameter */
-	template <> AIStationList *GetParam(ForceType<AIStationList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList *)instance; }
-	template <> AIStationList &GetParam(ForceType<AIStationList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList *)instance; }
-	template <> const AIStationList *GetParam(ForceType<const AIStationList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList *)instance; }
-	template <> const AIStationList &GetParam(ForceType<const AIStationList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList *)instance; }
-	template <> int Return<AIStationList *>(HSQUIRRELVM vm, AIStationList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList", res, NULL, DefSQDestructorCallback<AIStationList>); return 1; }
+	template <> inline AIStationList *GetParam(ForceType<AIStationList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList *)instance; }
+	template <> inline AIStationList &GetParam(ForceType<AIStationList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList *)instance; }
+	template <> inline const AIStationList *GetParam(ForceType<const AIStationList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList *)instance; }
+	template <> inline const AIStationList &GetParam(ForceType<const AIStationList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList *)instance; }
+	template <> inline int Return<AIStationList *>(HSQUIRRELVM vm, AIStationList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList", res, NULL, DefSQDestructorCallback<AIStationList>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIStationList>() { return "AIStationList"; }
@@ -33,11 +33,11 @@ void SQAIStationList_Register(Squirrel *engine)
 
 namespace SQConvert {
 	/* Allow AIStationList_Vehicle to be used as Squirrel parameter */
-	template <> AIStationList_Vehicle *GetParam(ForceType<AIStationList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList_Vehicle *)instance; }
-	template <> AIStationList_Vehicle &GetParam(ForceType<AIStationList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList_Vehicle *)instance; }
-	template <> const AIStationList_Vehicle *GetParam(ForceType<const AIStationList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList_Vehicle *)instance; }
-	template <> const AIStationList_Vehicle &GetParam(ForceType<const AIStationList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList_Vehicle *)instance; }
-	template <> int Return<AIStationList_Vehicle *>(HSQUIRRELVM vm, AIStationList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList_Vehicle", res, NULL, DefSQDestructorCallback<AIStationList_Vehicle>); return 1; }
+	template <> inline AIStationList_Vehicle *GetParam(ForceType<AIStationList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList_Vehicle *)instance; }
+	template <> inline AIStationList_Vehicle &GetParam(ForceType<AIStationList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList_Vehicle *)instance; }
+	template <> inline const AIStationList_Vehicle *GetParam(ForceType<const AIStationList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList_Vehicle *)instance; }
+	template <> inline const AIStationList_Vehicle &GetParam(ForceType<const AIStationList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList_Vehicle *)instance; }
+	template <> inline int Return<AIStationList_Vehicle *>(HSQUIRRELVM vm, AIStationList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList_Vehicle", res, NULL, DefSQDestructorCallback<AIStationList_Vehicle>); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIStationList_Vehicle>() { return "AIStationList_Vehicle"; }
