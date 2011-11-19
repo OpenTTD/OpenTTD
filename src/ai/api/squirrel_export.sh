@@ -73,7 +73,7 @@ echo "
 /SQAIController_Register/ { print \$0; next }
 /SQAI.*_Register/ { next }
 
-/Note: this line a marker in squirrel_export.sh. Do not change!/ {
+/Note: this line is a marker in squirrel_export.sh. Do not change!/ {
 	print \$0
 	gsub(\"^.*/\", \"\")
 	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
