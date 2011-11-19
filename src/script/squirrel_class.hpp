@@ -16,8 +16,7 @@
 
 /**
  * The template to define classes in Squirrel. It takes care of the creation
- *  and calling of such classes, to make the AI Layer cleaner while having a
- *  powerful script as possible AI language.
+ *  and calling of such classes, to minimize the API layer.
  */
 template <class CL>
 class DefSQClass {

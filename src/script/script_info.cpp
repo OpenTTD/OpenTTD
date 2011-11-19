@@ -18,7 +18,7 @@
 
 /** Number of operations to get the author and similar information. */
 static const int MAX_GET_OPS            =   1000;
-/** Number of operations to create an instance of an AI. */
+/** Number of operations to create an instance of a script. */
 static const int MAX_CREATEINSTANCE_OPS = 100000;
 
 ScriptFileInfo::~ScriptFileInfo()
