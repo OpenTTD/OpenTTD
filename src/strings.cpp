@@ -1818,9 +1818,11 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 
 	/* virtual */ void SetFontNames(FreeTypeSettings *settings, const char *font_name)
 	{
+#ifdef WITH_FREETYPE
 		strecpy(settings->small_font,  font_name, lastof(settings->small_font));
 		strecpy(settings->medium_font, font_name, lastof(settings->medium_font));
 		strecpy(settings->large_font,  font_name, lastof(settings->large_font));
+#endif /* WITH_FREETYPE */
 	}
 };
 
