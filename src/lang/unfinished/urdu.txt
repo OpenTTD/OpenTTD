@@ -96,44 +96,44 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشر
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{P 0 مسافر مسافرﻴﻦ}{COMMA}
-STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} کویلہ
 STR_QUANTITY_MAIL                                               :{COMMA} ڈاک ک{P ا ے} تھیل{P ا ے}
-STR_QUANTITY_OIL                                                :{VOLUME} تیل
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} تیل
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} عدد مویشی
 STR_QUANTITY_GOODS                                              :سامان ک{P 0 ا ے} {COMMA} کریٹ
-STR_QUANTITY_GRAIN                                              :{WEIGHT} انآج
-STR_QUANTITY_WOOD                                               :{WEIGHT} لکڑی
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} خام لوہا
-STR_QUANTITY_STEEL                                              :{WEIGHT} سٹیل
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} انآج
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} لکڑی
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} خام لوہا
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} سٹیل
 STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
-STR_QUANTITY_COPPER_ORE                                         :خام دھات تانبے کا {WEIGHT} وزن
-STR_QUANTITY_MAIZE                                              :مکئی کا {WEIGHT} وزن
-STR_QUANTITY_FRUIT                                              :پھل کا {WEIGHT} وزن
+STR_QUANTITY_COPPER_ORE                                         :خام دھات تانبے کا {WEIGHT_LONG} وزن
+STR_QUANTITY_MAIZE                                              :مکئی کا {WEIGHT_LONG} وزن
+STR_QUANTITY_FRUIT                                              :پھل کا {WEIGHT_LONG} وزن
 STR_QUANTITY_DIAMONDS                                           :ھیرے کے {COMMA} تھیل{P ا ے}
-STR_QUANTITY_FOOD                                               :خوراک کا {WEIGHT} وزن
-STR_QUANTITY_PAPER                                              :کاغز کا {WEIGHT} وزن
+STR_QUANTITY_FOOD                                               :خوراک کا {WEIGHT_LONG} وزن
+STR_QUANTITY_PAPER                                              :کاغز کا {WEIGHT_LONG} وزن
 STR_QUANTITY_GOLD                                               :سونے ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
-STR_QUANTITY_WATER                                              :{VOLUME} پانی
-STR_QUANTITY_WHEAT                                              :گندم کا {WEIGHT} وزن
-STR_QUANTITY_RUBBER                                             :{VOLUME} ربڑ
-STR_QUANTITY_SUGAR                                              :چینی کا {WEIGHT} وزن
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} پانی
+STR_QUANTITY_WHEAT                                              :گندم کا {WEIGHT_LONG} وزن
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} ربڑ
+STR_QUANTITY_SUGAR                                              :چینی کا {WEIGHT_LONG} وزن
 STR_QUANTITY_TOYS                                               :{COMMA} کھلون{P ا ے}
 STR_QUANTITY_SWEETS                                             :مٹھائی ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
-STR_QUANTITY_COLA                                               :{VOLUME} کولا
-STR_QUANTITY_CANDYFLOSS                                         :گڑیا کے بالوں کا {WEIGHT} وزن
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} کولا
+STR_QUANTITY_CANDYFLOSS                                         :گڑیا کے بالوں کا {WEIGHT_LONG} وزن
 STR_QUANTITY_BUBBLES                                            :{COMMA} ببل
-STR_QUANTITY_TOFFEE                                             :ٹافی کا {WEIGHT} وزن
+STR_QUANTITY_TOFFEE                                             :ٹافی کا {WEIGHT_LONG} وزن
 STR_QUANTITY_BATTERIES                                          :{COMMA} بیٹر{P ی یاں}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} پلاسٹک
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} پلاسٹک
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} کولڈ ڈرنک
 STR_QUANTITY_N_A                                                :-
 
 # Two letter abbreviation of cargo name
-STR_ABBREV_COAL                                                 :{TINYFONT} کل
-STR_ABBREV_MAIL                                                 :{TINYFONT} ڈاک
-STR_ABBREV_OIL                                                  :{TINYFONT} تیل
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT} م ش
-STR_ABBREV_GOODS                                                :{TINYFONT} س م
+STR_ABBREV_COAL                                                 :{TINY_FONT} کل
+STR_ABBREV_MAIL                                                 :{TINY_FONT} ڈاک
+STR_ABBREV_OIL                                                  :{TINY_FONT} تیل
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT} م ش
+STR_ABBREV_GOODS                                                :{TINY_FONT} س م
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} مسافرین
@@ -473,10 +473,10 @@ STR_MONTH_DEC                                                   :دسمبر
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK} کلید
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE} عملی منافع مخطط
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE} آمدنی مخطط
@@ -484,14 +484,14 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE} شما�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE} کمپنی کی کارکردگی کی درج بندی (حدِ درجھ = 1000)
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE} سامان کی ادایگی کا تناسب
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK} حرکت میں ایام
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK} سامان کی دس اکائیات (یآ 10،000 لیٹر)، 20 چکور تک لے جانے کی ادائیگی
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT} {BLACK} سب کو قابل کیجیئے
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT} {BLACK} سب کو نا کارہ کیجیئے
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK} حرکت میں ایام
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK} سامان کی دس اکائیات (یآ 10،000 لیٹر)، 20 چکور تک لے جانے کی ادائیگی
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT} {BLACK} سب کو قابل کیجیئے
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT} {BLACK} سب کو نا کارہ کیجیئے
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK} سامان کی ادائیگی کے مخطط پر تمام سامان دیکھئہے
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK} سامان کی ادائیگی کے مخطط پر کوئ بھی سامان نا دیکھئہے
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK} ظرزِ سامان مخطط تدویم کیجئیے
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK} کارکردگی کی تفصیلی درجہ بندی دکھائیے
 
@@ -499,7 +499,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK} کار�
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK} مخطط پر کمپنی کی تفصیلات کو تدویم کیجئیے
 
 # Company league window
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مہندس
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :ٹریفک ناظم
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :مواصلاتی رابط
@@ -512,7 +512,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :صدر
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE} تفصیلی عملی درجہ بندی
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK} تفصیل
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
@@ -545,16 +545,16 @@ STR_SMALLMAP_TYPE_ROUTES                                        :راستے
 STR_SMALLMAP_TYPE_VEGETATION                                    :سبزہ
 STR_SMALLMAP_TYPE_OWNERS                                        :مالکین
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}سڑکیں
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}اڈے/ہوایی اڈے/بندرگاہیں
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}عمارتیں/صنعتیں
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}سواریاں
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}ریل گاڑیاں
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}سڑک کی گاڑیاں
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}کشتیاں
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}ہوایی جہاز
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}مواصلاتی راستے
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}جنگل
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}سڑکیں
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}اڈے/ہوایی اڈے/بندرگاہیں
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}عمارتیں/صنعتیں
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}سواریاں
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}ریل گاڑیاں
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}سڑک کی گاڑیاں
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}کشتیاں
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}ہوایی جہاز
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}مواصلاتی راستے
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}جنگل
 
 
 # Status bar messages
@@ -971,8 +971,8 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی �
 
 # Station view window
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}منتظر: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} سے براستہ ہے {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} سے براستہ ہے {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}{STRING}
 
@@ -1086,9 +1086,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} روا
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE} {DEPOT} پر خدمات، {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED} روک دیا گیا
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED} روک دیا گیا
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED} روک دیا گیا
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN} شروع کر دیا گیا
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN} شروع کر دیا گیا
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شروع کر دیا گیا
 
 # Vehicle details
@@ -1199,7 +1199,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقف�
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}نقشے کے کنارے سے باہر
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}نقشے کے کنارے سے زیادہ قریب
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}ناکافی پیسہ - {CURRENCY_LONG} مزید چاہیے
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}ہموار زمین چاہیے
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ نہیں کر سکتا۔۔۔
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE} عمارت کو پھلے گرانا ھو گا
@@ -1485,37 +1485,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :تماشائی,
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1527,31 +1527,31 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}۱
 STR_BLACK_2                                                     :{BLACK}۲

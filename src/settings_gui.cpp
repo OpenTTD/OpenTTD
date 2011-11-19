@@ -1255,7 +1255,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 			SetDParam(0, STR_CONFIG_SETTING_DISABLED);
 		} else {
 			if (sdb->flags & SGF_CURRENCY) {
-				SetDParam(0, STR_JUST_CURRENCY);
+				SetDParam(0, STR_JUST_CURRENCY_LONG);
 			} else if (sdb->flags & SGF_MULTISTRING) {
 				SetDParam(0, sdb->val_str - sdb->min + value);
 			} else {

@@ -221,73 +221,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.z                                :газован�
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пасажир{P "" и iв}
-STR_QUANTITY_COAL                                               :{WEIGHT} вугілля
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} вугілля
 STR_QUANTITY_MAIL                                               :{COMMA} сум{P ка ки ок} пошти
-STR_QUANTITY_OIL                                                :{VOLUME} нафти
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} нафти
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} кор{P ова ови ів}
 STR_QUANTITY_GOODS                                              :{COMMA} ящи{P к ки ків} товарів
-STR_QUANTITY_GRAIN                                              :{WEIGHT} зерна
-STR_QUANTITY_WOOD                                               :{WEIGHT} деревини
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} залізної руди
-STR_QUANTITY_STEEL                                              :{WEIGHT} сталі
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} зерна
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} деревини
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} залізної руди
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} сталі
 STR_QUANTITY_VALUABLES                                          :{COMMA} сум{P ка ки ок} коштовностей
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} мідної руди
-STR_QUANTITY_MAIZE                                              :{WEIGHT} кукурудзи
-STR_QUANTITY_FRUIT                                              :{WEIGHT} фруктів
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} мідної руди
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} кукурудзи
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} фруктів
 STR_QUANTITY_DIAMONDS                                           :{COMMA} сум{P ка ки ок} діамантів
-STR_QUANTITY_FOOD                                               :{WEIGHT} продуктів
-STR_QUANTITY_PAPER                                              :{WEIGHT} паперу
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} продуктів
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} паперу
 STR_QUANTITY_GOLD                                               :{COMMA} міш{P ок ки ків} золота
-STR_QUANTITY_WATER                                              :{VOLUME} води
-STR_QUANTITY_WHEAT                                              :{WEIGHT} пшениці
-STR_QUANTITY_RUBBER                                             :{VOLUME} каучуку
-STR_QUANTITY_SUGAR                                              :{WEIGHT} цукру
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} води
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} пшениці
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} каучуку
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} цукру
 STR_QUANTITY_TOYS                                               :{COMMA} іграш{P ка ки ок}
 STR_QUANTITY_SWEETS                                             :{COMMA} пакун{P ок ки ків} цукерок
-STR_QUANTITY_COLA                                               :{VOLUME} Коли
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} солодкої вати
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} Коли
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} солодкої вати
 STR_QUANTITY_BUBBLES                                            :{COMMA} бульбаш{P ка ки ок}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} ірисок
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} ірисок
 STR_QUANTITY_BATTERIES                                          :{COMMA} батарей{P ка ки ок}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} пластику
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} пластику
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} пляш{P ка ки ок} газованої води
 STR_QUANTITY_N_A                                                :немає
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПС
-STR_ABBREV_COAL                                                 :{TINYFONT}ВГ
-STR_ABBREV_MAIL                                                 :{TINYFONT}ПО
-STR_ABBREV_OIL                                                  :{TINYFONT}НФ
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ТВ
-STR_ABBREV_GOODS                                                :{TINYFONT}ТО
-STR_ABBREV_GRAIN                                                :{TINYFONT}ЗЕ
-STR_ABBREV_WOOD                                                 :{TINYFONT}ДР
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}ЗЛ
-STR_ABBREV_STEEL                                                :{TINYFONT}СТ
-STR_ABBREV_VALUABLES                                            :{TINYFONT}КШ
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}МД
-STR_ABBREV_MAIZE                                                :{TINYFONT}КУ
-STR_ABBREV_FRUIT                                                :{TINYFONT}ФР
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}ДІ
-STR_ABBREV_FOOD                                                 :{TINYFONT}ПР
-STR_ABBREV_PAPER                                                :{TINYFONT}ПА
-STR_ABBREV_GOLD                                                 :{TINYFONT}ЗО
-STR_ABBREV_WATER                                                :{TINYFONT}ВО
-STR_ABBREV_WHEAT                                                :{TINYFONT}ПШ
-STR_ABBREV_RUBBER                                               :{TINYFONT}КА
-STR_ABBREV_SUGAR                                                :{TINYFONT}ЦК
-STR_ABBREV_TOYS                                                 :{TINYFONT}ІГ
-STR_ABBREV_SWEETS                                               :{TINYFONT}СЛ
-STR_ABBREV_COLA                                                 :{TINYFONT}КО
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ВА
-STR_ABBREV_BUBBLES                                              :{TINYFONT}БУ
-STR_ABBREV_TOFFEE                                               :{TINYFONT}ІР
-STR_ABBREV_BATTERIES                                            :{TINYFONT}БТ
-STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
-STR_ABBREV_NONE                                                 :{TINYFONT}Ні
-STR_ABBREV_ALL                                                  :{TINYFONT}Все
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}ПС
+STR_ABBREV_COAL                                                 :{TINY_FONT}ВГ
+STR_ABBREV_MAIL                                                 :{TINY_FONT}ПО
+STR_ABBREV_OIL                                                  :{TINY_FONT}НФ
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ТВ
+STR_ABBREV_GOODS                                                :{TINY_FONT}ТО
+STR_ABBREV_GRAIN                                                :{TINY_FONT}ЗЕ
+STR_ABBREV_WOOD                                                 :{TINY_FONT}ДР
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}ЗЛ
+STR_ABBREV_STEEL                                                :{TINY_FONT}СТ
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}КШ
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}МД
+STR_ABBREV_MAIZE                                                :{TINY_FONT}КУ
+STR_ABBREV_FRUIT                                                :{TINY_FONT}ФР
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}ДІ
+STR_ABBREV_FOOD                                                 :{TINY_FONT}ПР
+STR_ABBREV_PAPER                                                :{TINY_FONT}ПА
+STR_ABBREV_GOLD                                                 :{TINY_FONT}ЗО
+STR_ABBREV_WATER                                                :{TINY_FONT}ВО
+STR_ABBREV_WHEAT                                                :{TINY_FONT}ПШ
+STR_ABBREV_RUBBER                                               :{TINY_FONT}КА
+STR_ABBREV_SUGAR                                                :{TINY_FONT}ЦК
+STR_ABBREV_TOYS                                                 :{TINY_FONT}ІГ
+STR_ABBREV_SWEETS                                               :{TINY_FONT}СЛ
+STR_ABBREV_COLA                                                 :{TINY_FONT}КО
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}ВА
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}БУ
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}ІР
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}БТ
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}ПЛ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}ГЗ
+STR_ABBREV_NONE                                                 :{TINY_FONT}Ні
+STR_ABBREV_ALL                                                  :{TINY_FONT}Все
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} пасажир{P "" и ів}
@@ -640,10 +640,10 @@ STR_MONTH_DEC                                                   :Грудень
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Ключ
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Показ ключа до графіків
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Графік операційного прибутку
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Графік доходів
@@ -652,14 +652,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейт
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Вартість компанії
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарифи на доставку вантажів
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Днів у дорозі
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Включити всі
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Відключити усі
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Днів у дорозі
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Включити всі
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Відключити усі
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показувати всі види вантажів на графіку
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не показувати всі види вантажів на графіку
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вкл/відкл графік типів вантажу
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показати детальні оцінки ефективності
 
@@ -669,7 +669,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Нати
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Таблиця компаній
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Інженер
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Регулювальник
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Диспетчер
@@ -683,7 +683,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Магнат
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Детальна характеристика продуктивності
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Детально
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Проглянути детальну інформацію про цю компанію
@@ -712,25 +712,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Зага
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Музичний програвач
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Всі
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Старі теми
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Нові теми
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Дорожні теми
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Набір 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Набір 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Гучність музики
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Гучність ефектів
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}Мін.
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}Макс.
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Доріжка
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Заголовок
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Випадково
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Програма
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Всі
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Старі теми
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Нові теми
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Дорожні теми
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Набір 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Набір 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Гучність музики
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Гучність ефектів
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}Мін.
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}Макс.
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Доріжка
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Заголовок
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Випадково
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Програма
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Попередня
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Наступна
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Зупинити
@@ -749,18 +749,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Був �
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Вибір музичної програми
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Назва доріжки
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Програма - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Очистити
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Назва доріжки
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Програма - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Очистити
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистити програму (тільки для Набору 1 або Набору 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Виберіть доріжку, щоб додати до програми (тільки для Набору 1 або Набору 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніть на мелодії для її видалення зі списку (лише Набір1 та Набір2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Кращі компанії, які досягли {NUM}{}({STRING} рівень)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Таблиця компаній з {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Кращі компанії, які досягли {NUM}{}({STRING} рівень)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Таблиця компаній з {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бізнесмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Підприємець
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Промисловець
@@ -768,10 +768,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Капітал�
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Магнат
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Магнат року
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Магнат сторіччя
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} досягла статусу '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}Гравець {PRESIDENTNAME} з {COMPANY} досяг статусу '{STRING}'
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} досягла статусу '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}Гравець {PRESIDENT_NAME} з {COMPANY} досяг статусу '{STRING}'
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
@@ -791,40 +791,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Пока
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Оберіть певний вид промисловості клацнувши мишкою. Ctrl + клік мишкою вмикає/вимикає відображення всіх видів компаній, окрім обраного.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Натисніть на компанію аби відобразити її власність. Ctrl + клік мишкою вмикає/вимикає відображення власності всіх компаній, окрім обраної.
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Дороги
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Залізниці
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Станції/Аеропорти/Порти
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Будівлі/Виробництво
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Транспорт
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Поїзди
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Авто
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Кораблі
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Літаки
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Маршрути
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Ліс
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Залізничний вокзал
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Вантажна станція
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Автовокзал
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Аеропорт
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Порт
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Нерівна земля
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Трава
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Пустир
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Поля
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Дерева
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Каміння
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Вода
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Нема власника
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Міста
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Виробництво
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Пустеля
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Сніг
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Дороги
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Залізниці
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Станції/Аеропорти/Порти
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Будівлі/Виробництво
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Транспорт
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Поїзди
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Авто
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Кораблі
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Літаки
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Маршрути
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Ліс
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Залізничний вокзал
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Вантажна станція
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Автовокзал
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Аеропорт
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Порт
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Нерівна земля
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Трава
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Пустир
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Поля
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Дерева
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Каміння
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Вода
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Нема власника
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Міста
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Виробництво
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Пустеля
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Сніг
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Показати назви міст на карті
 STR_SMALLMAP_CENTER                                             :{BLACK}Центрувати мінікарту на цій позиції
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Вимкнути всі
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Показувати всі
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Показати висоту
@@ -872,60 +872,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Змі�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидії
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Загальна інформація
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Жителі святкують . . .{}Перший автобус з'явився на {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Жителі святкують . . .{}Перша вантажівка з'явилася на {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Жителі святкують . . .{}Перший пасажирський трамвай прибув на {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Жителі святкують . . .{}Перший вантажний трамвай прибув на {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Жителі святкують . . .{}Перший корабель з'явився на {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Жителі святкують . . .{}Перший літак з'явився на {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший автобус з'явився на {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перша вантажівка з'явилася на {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший пасажирський трамвай прибув на {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший вантажний трамвай прибув на {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший корабель з'явився на {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший літак з'явився на {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Аварія!{}Поїзди зіткнулися.{}{COMMA} загинуло.
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Аварія!{}Водій загинув при зіткненні авто з поїздом
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}{}{COMMA} загиблих в авіакатастрофі! Літак розбився біля {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Авіакатастрофа!{}В літака закінчилось пальне, {COMMA} людей загинуло!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Аварія!{}Поїзди зіткнулися.{}{COMMA} загинуло.
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Аварія!{}Водій загинув при зіткненні авто з поїздом
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}{}{COMMA} загиблих в авіакатастрофі! Літак розбився біля {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Авіакатастрофа!{}В літака закінчилось пальне, {COMMA} людей загинуло!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Дирижабль впав на {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Автомобіль знищений внаслідок зіткнення з НЛО!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Вибухнув нафтопереробний завод біля міста {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}За невідомих обставин зруйновано фабрику біля міста {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}НЛО приземлилось біля міста {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Зсув ґрунту внаслідок обвалу на вугільній шахті біля міста {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Повінь!{}Щонайменше {COMMA} зникло безвісти та загинуло!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Дирижабль впав на {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Автомобіль знищений внаслідок зіткнення з НЛО!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Вибухнув нафтопереробний завод біля міста {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}За невідомих обставин зруйновано фабрику біля міста {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}НЛО приземлилось біля міста {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Зсув ґрунту внаслідок обвалу на вугільній шахті біля міста {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Повінь!{}Щонайменше {COMMA} зникло безвісти та загинуло!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Компанія у скруті!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} буде продано або оголошено банкрутом, якщо найближчим часом не зросте продуктивність!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Компанії об'єдналися!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} була викуплена {STRING} за {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}БАНКРУТ!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} була закрита кредиторами і все майно продане!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Засновано нову компанію!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} починає будівництво біля {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} викуплено {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Керівник)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Компанія у скруті!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} буде продано або оголошено банкрутом, якщо найближчим часом не зросте продуктивність!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Компанії об'єдналися!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} була викуплена {STRING} за {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}БАНКРУТ!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} була закрита кредиторами і все майно продане!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Засновано нову компанію!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} починає будівництво біля {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} викуплено {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Керівник)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} субсидував спорудження нового міста {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} субсидував спорудження нового міста {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Будується {STRING} біля {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Насаджено {STRING} біля {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Будується {STRING} біля {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Насаджено {STRING} біля {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} невдовзі закриється!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING}: проблеми з поставками незабаром призведуть до закриття!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Відсутність дерев поруч незабаром призведе {STRING} до закриття!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} невдовзі закриється!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING}: проблеми з поставками незабаром призведуть до закриття!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Відсутність дерев поруч незабаром призведе {STRING} до закриття!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Світова економічна криза!{}{}Фінансисти очікують спад виробництва та попиту!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Криза минула!{}{}Збільшення виробництва внаслідок стабілізації економіки надає впевненості підприємствам!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Світова економічна криза!{}{}Фінансисти очікують спад виробництва та попиту!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Криза минула!{}{}Збільшення виробництва внаслідок стабілізації економіки надає впевненості підприємствам!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} збільшує виробництво!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Знайдені нові поклади вугілля на {INDUSTRY}!{}Очікується збільшення виробництва вдвічі!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Знайдені нові нафтові запаси на {INDUSTRY}!{}Очікується збільшення виробництва вдвічі!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Удосконалені сільськогосподарські методи на {INDUSTRY} збільшили виробництво вдвічі!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}: Виробництво {0:STRING.r} зросло на {2:COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} виробництво впало на 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Нашестя саранчі призвело до спустошення на {INDUSTRY}!{}Виробництво впало на 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}: Виробництво {0:STRING.r} впало на {2:COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} збільшує виробництво!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Знайдені нові поклади вугілля на {INDUSTRY}!{}Очікується збільшення виробництва вдвічі!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Знайдені нові нафтові запаси на {INDUSTRY}!{}Очікується збільшення виробництва вдвічі!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Удосконалені сільськогосподарські методи на {INDUSTRY} збільшили виробництво вдвічі!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}: Виробництво {0:STRING.r} зросло на {2:COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} виробництво впало на 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Нашестя саранчі призвело до спустошення на {INDUSTRY}!{}Виробництво впало на 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}: Виробництво {0:STRING.r} впало на {2:COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чекає в депо
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чекає в депо
@@ -945,13 +945,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} зістарився і негайно потребує заміни
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може знайти шлях
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} загубився
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}: торішній прибуток склав {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}: торішній прибуток склав {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} зупинився внаслідок збою запланованого переобладнання
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Помилка оновлення {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Став доступним новий {STRING}!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Став доступним новий {STRING}!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Став доступним новий {STRING}!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} більше не приймає {STRING}
@@ -959,15 +959,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} тепер приймає {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} тепер приймає {STRING} і {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Субсидія більше не пропонується:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Субсидію скасовано:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Пропонується річна субсидія {}{}компанії, яка першою привезе {STRING.z} з {STRING} до {STRING}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе додатково 50% протягом наступного року!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вдвічі більше прибутків наступного року!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе втричі більше прибутків наступного року!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вчетверо більше прибутків наступного року!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Субсидія більше не пропонується:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Субсидію скасовано:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Пропонується річна субсидія {}{}компанії, яка першою привезе {STRING.z} з {STRING} до {STRING}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе додатково 50% протягом наступного року!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вдвічі більше прибутків наступного року!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе втричі більше прибутків наступного року!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вчетверо більше прибутків наступного року!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Транспортний безлад у місті {TOWN}!{}{}Реконструкція доріг, фінансована компанією {STRING} принесе транспорту незручності протягом 6 місяців!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Транспортний безлад у місті {TOWN}!{}{}Реконструкція доріг, фінансована компанією {STRING} принесе транспорту незручності протягом 6 місяців!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
@@ -1095,7 +1095,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Повн
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY_LONG} = Ј {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Зменшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Збільшити кількість своєї валюти за 1 фунт (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Встановити обмінний курс своєї валюти до 1 фунта (£)
@@ -1114,7 +1114,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Визн
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перейти на Євро раніше
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перейти на Євро пізніше
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 фунтів (£) у вашій валюті
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Налаштування іншої грошової одиниці
 
@@ -1135,7 +1135,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Збер
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Кількість конкурентів: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Кількість міст: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Кількість підприємств: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Початкова позика: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Початкова позика: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Відсоткова ставка: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Транспортні витрати: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Швидкість будівництва конкурентів: {ORANGE}{STRING}
@@ -1544,7 +1544,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ви д
 STR_CHEATS                                                      :{WHITE}Гратиму нечесно
 STR_CHEATS_TOOLTIP                                              :{BLACK}Галка показує, що Ви стали грати нечесно
 STR_CHEATS_WARNING                                              :{BLACK}Попередження! Ви збираєтесь обманути своїх конкурентів. Пам'ятайте, що подібне безчестя буде запам'ятовано назавжди
-STR_CHEAT_MONEY                                                 :{LTBLUE}Збільшити кошти на {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Збільшити кошти на {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Грає як компанія: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Супербульдозер (руйнує все): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунелі перетинаються: {ORANGE}{STRING}
@@ -1780,9 +1780,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Спис
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}Інформація про компанію
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Назва компанії: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Засновано: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Вартість компанії: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Поточний баланс: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Прибуток торік: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Вартість компанії: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Поточний баланс: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Прибуток торік: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Продуктивність: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Транспорт: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1927,8 +1927,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} с
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} заснував нову компанію (№{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} покинув гру ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} змінив(-ла) своє ім'я на {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} дав Вашій компанії {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ви дали {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} дав Вашій компанії {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ви дали {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрив сеанс
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Перезавантаження сервера...{}Зачекайте...
 
@@ -2086,7 +2086,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Збіл
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Виберіть міст
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Виберіть дорожній міст
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Вибір мосту - натисніть на міст, який бажаєте збудувати
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Підвісний сталевий
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Балочний сталевий
@@ -2257,7 +2257,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Нова
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Виберіть необхідне виробництво
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Багато різної промисловості
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Випадково розташувати промисловість по карті
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Вартість: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Вартість: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Огляд
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Будувати
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Фінансувати
@@ -2278,8 +2278,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Ви т�
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інформація про ділянку
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Вартість очистки: {LTBLUE}неможливо
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Вартість очистки: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Дохід при очистці: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Вартість очистки: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Дохід при очистці: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :немає
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Власник: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Власник дороги: {LTBLUE}{STRING}
@@ -2640,7 +2640,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Пошт
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Вантаж, потрібний для зростання міста:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} потрібно
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} потрібно взимку
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} перевезено за останній місяць
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} перевезено за останній місяць
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Ліміт шуму в місті: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати місто у центрі екрану. Утримання Ctrl відкриє нове вікно з видом на місто
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Місцева влада
@@ -2657,7 +2657,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Перейме�
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} - місцева влада
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейтинги компаній:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Доступні дії:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Що можна зробити в цьому місті - виберіть пункт для детальної інформації
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Виконати
@@ -2672,14 +2672,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Фінансу�
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Купити єдине транспортне право
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Підкупити місцеву владу
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Провести малу локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Провести середню локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Провести велику локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Фінансувати реконструкцію міських доріг. Призведе до значного погіршення руху на 6 місяців.{}Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Збудувати монумент на честь вашої компанії.{}Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Фінансувати будівництво нових офісів у місті.{}Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Купити ексклюзивне транспортне право у місті на 1 рік. Міська влада дозволить використовувати лише станції вашої компанії.{}Вартість: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Підкупити місцеву владу для збільшення вашого рейтингу, при викритті загрожує суворим покаранням.{}Вартість: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Провести малу локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Провести середню локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Провести велику локальну рекламну кампанію, щоб залучити більше пасажирів і вантажу до послуг вашої компанії.{}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Фінансувати реконструкцію міських доріг. Призведе до значного погіршення руху на 6 місяців.{}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Збудувати монумент на честь вашої компанії.{}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Фінансувати будівництво нових офісів у місті.{}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Купити ексклюзивне транспортне право у місті на 1 рік. Міська влада дозволить використовувати лише станції вашої компанії.{}Вартість: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Підкупити місцеву владу для збільшення вашого рейтингу, при викритті загрожує суворим покаранням.{}Вартість: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії
@@ -2694,7 +2694,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Нати
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Назви станцій - натисніть на назву, щоб показати станцію в центрі екрану. Утримання Ctrl відкриває нове вікно з видом на станцію
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Утримуйте Ctrl для вибору декількох пунктів
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- немає -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Вибрати весь транспорт
@@ -2702,10 +2702,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Вибр
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Звідси поки що нічого перевозити
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Чекає: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} з {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} з {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Приймає
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показати список приймання вантажів
@@ -2747,7 +2747,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Пере
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} - фінанси {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} - фінанси {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Витрати/доходи
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Будівництво
@@ -2763,21 +2763,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Дохі�
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Дохід, кораблі
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Відсотки за позикою
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Інше
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Підсумок:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Рахунок
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Позика
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. позика: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Позичити {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. позика: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Позичити {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Збільшити розмір позики. Ctrl+клік позичає якнайбільше
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Повернути {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Повернути {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Повернути частину позики. Ctrl+клік повертає якнайбільше
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Керівник)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Керівник)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Засновано у: {WHITE}{NUM} році
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Схема кольорів:
@@ -2787,7 +2787,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} літак{P "" и ів}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P ель лі ів}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Немає
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Вартість компанії: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Вартість компанії: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% у власності {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Будувати Офіс
@@ -2814,20 +2814,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Прод
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Назва компанії
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ім'я керівника
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Чи бажаєте Ви купити {COMPANY} за {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Чи бажаєте Ви купити {COMPANY} за {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Промисловість
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- немає -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% перевезено)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Назви підприємств - клікніть на назву, щоб показати підприємство у центрі екрану. Утримання Ctrl відкриває нове вікно з видом на підприємство
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Вироблено за місяць:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% перевезено)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% перевезено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показати підприємство у центрі екрану. Утримання Ctrl відкриє нове вікно з видом на підприємство
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Обсяг виробництва: {YELLOW}{COMMA}%
 
@@ -2839,7 +2839,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Потр
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Вантаж чекає на обробку:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Продукція: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Продукція: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2858,7 +2858,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Авто
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораблі - натисніть для інформації
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літаки - натисніть на літак для інформації
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Прибуток цього року: {CURRENCY} (торік: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибуток цього року: {CURRENCY_LONG} (торік: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступні поїзди
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Доступні автомобілі
@@ -2914,19 +2914,19 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нове авт
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нові кораблі
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нові літаки
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK} Вага: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} Вага: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Транспортні витрати: {GOLD}{CURRENCY}/рік
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Транспортні витрати: {GOLD}{CURRENCY_LONG}/рік
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(змінюється)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK} Вік: {GOLD}{COMMA} р{P ік оки оків}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Надійність: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK} Швидкість: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} Швидкість: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {GOLD}
@@ -2971,7 +2971,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Перейме�
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} транспорт{P "" и ів}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поїзди - перетягніть транспорт (вагон) лівою кнопкою миші, щоб додати/вилучити з поїзда. Натисніть праву кнопку миші для інформації. Утримуйте Ctrl для застосування обох функцій до всього ланцюга
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Авто - натисніть на авто для інформації
@@ -3047,10 +3047,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :корабел�
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовий поїзд
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :поїзд на магнітній подушці
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Вартість: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}  Потужність: {POWER}  Макс. тяга: {6:FORCE}{}Вартість експлуатації: {4:CURRENCY}/рік{}Місткість: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Вартість: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}, {CARGO}{}Вартість експлуатації: {CURRENCY}/рік
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Вартість: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}{}Вартість експлуатації: {CURRENCY}/рік
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ціна: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY_LONG}/рік{}Місткість: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Вартість: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Швидкість: {VELOCITY}  Потужність: {POWER}  Макс. тяга: {6:FORCE}{}Вартість експлуатації: {4:CURRENCY_LONG}/рік{}Місткість: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO_LONG}, {CARGO_LONG}{}Вартість експлуатації: {CURRENCY_LONG}/рік
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO_LONG}{}Вартість експлуатації: {CURRENCY_LONG}/рік
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING}
@@ -3144,9 +3144,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Пря�
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Техогляд у {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Зупинено
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Зупинено
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Зупинено
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Розпочато
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Розпочато
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Розпочато
 
 # Vehicle details
@@ -3158,25 +3158,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Назв
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Назвати корабель
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Назвати літак
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY}/рік
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY_LONG}/рік
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} р{P ік оки оків} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} р{P ік оки оків} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_S} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_S} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY} (торік: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY_LONG} (торік: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Аварії після останнього техогляду: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Місткість: {LTBLUE}нема
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Місткість: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Місткість: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Місткість: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Місткість: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Місткість: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Місткість: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA} днів{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
@@ -3189,16 +3189,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Назв
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Назвати літак
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Ціна: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Ціна: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Повна місткість цього поїзду:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}порожній
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} з {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} з {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} з {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} з {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Вантаж
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Показати інформацію про вантаж
@@ -3214,8 +3214,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Міст
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Переобладнання)
 STR_REFIT_TITLE                                                 :{GOLD}Виберіть вид вантажу для перевезення:-
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нова місткість: {GOLD}{CARGO}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова місткість: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Вибрати транспорт для переобладнання. Перетягування мишкою дозволяє виділити декілька одиниць транспорту. Клік на порожньому місці виділить усю одиницю транспорту. Ctrl+клік мишкою виділить транспорт та ланцюжок перевезень за ним
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Виберіть вид вантажу для перевезення
@@ -3482,22 +3482,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Скид
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Витрачено: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Витрачено: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Прибуток: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Прибуток: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Пересадка: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Пересадка: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Приблизні витрати: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приблизний прибуток: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Витрачено: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Витрачено: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Прибуток: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Прибуток: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Пересадка: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Пересадка: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Приблизні витрати: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приблизний прибуток: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Збереження...{}зачекайте, доки завершиться!
@@ -3544,7 +3544,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Пов�
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}За межами карти
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Надто близько до краю карти
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Недостатньо коштів - потрібно {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Недостатньо коштів - потрібно {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Потрібна рівна ділянка
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Схил не в тому напрямку
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Неможливо зробити це...
@@ -3578,10 +3578,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... вж
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Неможливо змінити назву компанії...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Неможливо змінити ім'я керівника...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... найбільший дозволений розмір позики {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... найбільший дозволений розмір позики {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Неможливо взяти ще позику...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... позика вже повернута
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... потрібно {CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... потрібно {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Неможливо повернути позику...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Неможливо передати гроші, позичені у банку...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Неможливо купити компанію...
@@ -4325,37 +4325,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Спостер�
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4367,32 +4367,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

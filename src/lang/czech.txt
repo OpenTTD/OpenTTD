@@ -166,73 +166,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :limonád
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} cestující{P "" "" ch}
-STR_QUANTITY_COAL                                               :{WEIGHT} uhlí
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} uhlí
 STR_QUANTITY_MAIL                                               :{COMMA} balík{P "" y ů} pošty
-STR_QUANTITY_OIL                                                :{VOLUME} ropy
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} ropy
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} kus{P "" y ů} dobytka
 STR_QUANTITY_GOODS                                              :{COMMA} krabic{P e e ""} zboží
-STR_QUANTITY_GRAIN                                              :{WEIGHT} zrní
-STR_QUANTITY_WOOD                                               :{WEIGHT} dřeva
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} železné rudy
-STR_QUANTITY_STEEL                                              :{WEIGHT} oceli
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} zrní
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} dřeva
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} železné rudy
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} oceli
 STR_QUANTITY_VALUABLES                                          :{COMMA} balík{P "" y ů} cenin
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} měděné rudy
-STR_QUANTITY_MAIZE                                              :{WEIGHT} kukuřice
-STR_QUANTITY_FRUIT                                              :{WEIGHT} ovoce
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} měděné rudy
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} kukuřice
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} ovoce
 STR_QUANTITY_DIAMONDS                                           :{COMMA} pyt{P el le lů} diamantů
-STR_QUANTITY_FOOD                                               :{WEIGHT} jídla
-STR_QUANTITY_PAPER                                              :{WEIGHT} papíru
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} jídla
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papíru
 STR_QUANTITY_GOLD                                               :{COMMA} balík{P "" y ů} zlata
-STR_QUANTITY_WATER                                              :{VOLUME} vody
-STR_QUANTITY_WHEAT                                              :{WEIGHT} pšenice
-STR_QUANTITY_RUBBER                                             :{VOLUME} kaučuku
-STR_QUANTITY_SUGAR                                              :{WEIGHT} cukru
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} vody
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} pšenice
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kaučuku
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} cukru
 STR_QUANTITY_TOYS                                               :{COMMA} hrač{P ka ky ek}
 STR_QUANTITY_SWEETS                                             :{COMMA} pyt{P el le lů} bonbonů
-STR_QUANTITY_COLA                                               :{VOLUME} koly
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukrové vaty
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} koly
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} cukrové vaty
 STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P a y ""}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamelu
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} karamelu
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P e e í}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} plastu
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastu
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} limonád{P a y ""}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}CE
-STR_ABBREV_COAL                                                 :{TINYFONT}UH
-STR_ABBREV_MAIL                                                 :{TINYFONT}PO
-STR_ABBREV_OIL                                                  :{TINYFONT}RO
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}DO
-STR_ABBREV_GOODS                                                :{TINYFONT}ZB
-STR_ABBREV_GRAIN                                                :{TINYFONT}ZR
-STR_ABBREV_WOOD                                                 :{TINYFONT}DŘ
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}ŽR
-STR_ABBREV_STEEL                                                :{TINYFONT}OC
-STR_ABBREV_VALUABLES                                            :{TINYFONT}CE
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MR
-STR_ABBREV_MAIZE                                                :{TINYFONT}KU
-STR_ABBREV_FRUIT                                                :{TINYFONT}OV
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DI
-STR_ABBREV_FOOD                                                 :{TINYFONT}JÍ
-STR_ABBREV_PAPER                                                :{TINYFONT}PA
-STR_ABBREV_GOLD                                                 :{TINYFONT}ZL
-STR_ABBREV_WATER                                                :{TINYFONT}VO
-STR_ABBREV_WHEAT                                                :{TINYFONT}PŠ
-STR_ABBREV_RUBBER                                               :{TINYFONT}KA
-STR_ABBREV_SUGAR                                                :{TINYFONT}CU
-STR_ABBREV_TOYS                                                 :{TINYFONT}HR
-STR_ABBREV_SWEETS                                               :{TINYFONT}BO
-STR_ABBREV_COLA                                                 :{TINYFONT}KO
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CV
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}KA
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LI
-STR_ABBREV_NONE                                                 :{TINYFONT}NIC
-STR_ABBREV_ALL                                                  :{TINYFONT}VŠE
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}CE
+STR_ABBREV_COAL                                                 :{TINY_FONT}UH
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PO
+STR_ABBREV_OIL                                                  :{TINY_FONT}RO
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}DO
+STR_ABBREV_GOODS                                                :{TINY_FONT}ZB
+STR_ABBREV_GRAIN                                                :{TINY_FONT}ZR
+STR_ABBREV_WOOD                                                 :{TINY_FONT}DŘ
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}ŽR
+STR_ABBREV_STEEL                                                :{TINY_FONT}OC
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}CE
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}MR
+STR_ABBREV_MAIZE                                                :{TINY_FONT}KU
+STR_ABBREV_FRUIT                                                :{TINY_FONT}OV
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DI
+STR_ABBREV_FOOD                                                 :{TINY_FONT}JÍ
+STR_ABBREV_PAPER                                                :{TINY_FONT}PA
+STR_ABBREV_GOLD                                                 :{TINY_FONT}ZL
+STR_ABBREV_WATER                                                :{TINY_FONT}VO
+STR_ABBREV_WHEAT                                                :{TINY_FONT}PŠ
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KA
+STR_ABBREV_SUGAR                                                :{TINY_FONT}CU
+STR_ABBREV_TOYS                                                 :{TINY_FONT}HR
+STR_ABBREV_SWEETS                                               :{TINY_FONT}BO
+STR_ABBREV_COLA                                                 :{TINY_FONT}KO
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CV
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}KA
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}LI
+STR_ABBREV_NONE                                                 :{TINY_FONT}NIC
+STR_ABBREV_ALL                                                  :{TINY_FONT}VŠE
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} cestující{P "" "" ch}
@@ -598,10 +598,10 @@ STR_MONTH_DEC.gen                                               :prosince
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legenda
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Zobrazit legendu ke grafům
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf provozního zisku
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf příjmu
@@ -610,14 +610,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Hodnocen
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Hodnota společností
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ceny za přepravu nákladu
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Doba přepravy ve dnech
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Platba za doručeni 10 jednotek (nebo 10 000 litru) nákladu do vzdálenosti 20 čtverecků
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Zobraz vše
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Vypni vše
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Doba přepravy ve dnech
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Platba za doručeni 10 jednotek (nebo 10 000 litru) nákladu do vzdálenosti 20 čtverecků
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Zobraz vše
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Vypni vše
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraz všechny položky na grafu přepravních sazeb
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skryje všechny položky na grafu přepravních sazeb
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Zobrazit nebo skrýt graf pro určitý druh nákladu
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Zobrazit podrobné hodnocení výkonu
 
@@ -627,7 +627,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klepni z
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabulka pořadí společností
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Strojvůdce
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Manažer dopravy
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordinátor dopravy
@@ -641,7 +641,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnát
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Podrobné hodnocení výkonu
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobně
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Zobraz detaily o této společnosti
@@ -670,25 +670,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Celkový
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Vše
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Staré
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Nové
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Volba 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Volba 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Hlasitost hudby
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Hlasitost efektů
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Skladba
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Název
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Náhodně
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Vše
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Staré
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Nové
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Volba 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Volba 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Hlasitost hudby
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Hlasitost efektů
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Skladba
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Název
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Náhodně
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Skočit na předchozí skladbu ve výběru
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Skočit na další skladbu ve výběru
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Zastavit přehrávání hudby
@@ -707,18 +707,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Byl vybr
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Volba programu hudby
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Index skladeb
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Vymazat
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Index skladeb
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Vymazat
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Vyprázdnit současný program (jen u Voleb 1 a 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Skladba se přidá do zvoleného programu (Volba 1 nebo 2) klepnutím na její název
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Hudební stopu odstraníš ze současného programu (pouze u vlastního) kliknutím na ni
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Nejlepší společnosti, které dosáhly {NUM}{}({STRING} úroveň)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabulka společností v roce {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Nejlepší společnosti, které dosáhly {NUM}{}({STRING} úroveň)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabulka společností v roce {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Obchodník
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Manažer
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Továrník
@@ -726,10 +726,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalista
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnát
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Velemagnát
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnát století
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} získal titul '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} z {COMPANY} získal titul '{STRING}'!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} získal titul '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} z {COMPANY} získal titul '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
@@ -749,40 +749,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Zobrazit
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Kliknutím na typ průmyslu přepnete jeho zobrazení. Ctrl+Klik vypne všechny typy kromě toho vybraného. Ctrl+Klik znovu pro zapnutí všech druhů průmyslu.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Kliknutím na společnost přepnete zobrazení jejího majetku. Ctrl+Klik vypne všechny společnosti kromě té vybrané. Ctrl+Klik znovu zobrazí opět všechny společnosti.
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Silnice
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Železnice
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stanice/Letiště/Přístavy
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Budovy/Průmysl
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vozidla
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Vlaky
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Silniční vozidla
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Lodě
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Letadla
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Dopravní cesty
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Les
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Nádraží
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Nakládací rampa
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Autobusová zastávka
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Letiště/Heliport
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Přístavy
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Hrbolatá zem
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Travnatá zem
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Holá zem
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Pole
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Stromy
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Kameny
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Voda
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Žádný vlastník
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Města
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Továrny
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Poušť
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sníh
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Silnice
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Železnice
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stanice/Letiště/Přístavy
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Budovy/Průmysl
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Vozidla
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Vlaky
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Silniční vozidla
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Lodě
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Letadla
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Dopravní cesty
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Les
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Nádraží
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Nakládací rampa
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobusová zastávka
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Letiště/Heliport
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Přístavy
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Hrbolatá zem
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Travnatá zem
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Holá zem
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Pole
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Stromy
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Kameny
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Voda
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Žádný vlastník
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Města
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Továrny
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Poušť
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sníh
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Zobrazovat na mapě jména měst
 STR_SMALLMAP_CENTER                                             :{BLACK}Vystředit malou mapu na tomto místě
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Vypnout všechny
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Zapnout všechny
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Zobrazit výšku
@@ -830,60 +830,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Změny 
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Dotace
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Obecné informace
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Obyvatelé oslavují...{}První autobus přijel do {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Obyvatelé oslavují...{}První nákladní vozidlo přijelo do {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Obyvatelé oslavují...{}První tramvaj pro cestující přijela do {STATION}
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Obyvatelé oslavují...{}První nákladní tramvaj přijíždí do {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Obyvatelé oslavují...{}První loď přistála v {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Obyvatelé oslavují...{}První letadlo přistálo v {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První autobus přijel do {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První nákladní vozidlo přijelo do {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První tramvaj pro cestující přijela do {STATION}
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První nákladní tramvaj přijíždí do {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První loď přistála v {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První letadlo přistálo v {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Železniční neštěstí!{}Při srážce {COMMA} {P člověk lidé lidí} přiš{P el li lo} o život v plamenech
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Dopravní nehoda!{}Řidič zahynul v plamenech při srážce s vlakem
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Dopravní nehoda!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech při srážce s vlakem
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Pád letadla!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech v {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Letecká havárie!{}Kvůli vyčerpání paliva {COMMA} {P člověk lidé lidí} zemřel{P "" i o} v ohnivém pekle!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Železniční neštěstí!{}Při srážce {COMMA} {P člověk lidé lidí} přiš{P el li lo} o život v plamenech
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Dopravní nehoda!{}Řidič zahynul v plamenech při srážce s vlakem
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Dopravní nehoda!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech při srážce s vlakem
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Pád letadla!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech v {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Letecká havárie!{}Kvůli vyčerpání paliva {COMMA} {P člověk lidé lidí} zemřel{P "" i o} v ohnivém pekle!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelin se zřítil do {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Silniční vozidlo bylo zničeno při srážce s UFO!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Výbuch ropné rafinerie u {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Za podezřelých okolností byla zničena továrna u {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}UFO přistálo poblíž {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Pokles terénu u uhelného dolu {TOWN} způsobil velké škody!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Záplavy!{}Po strašlivých záplavách je odhadem {COMMA} {P člověk lidé lidí} pohřešov{P án áni aných} nebo mrt{P ev ví vých}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin se zřítil do {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Silniční vozidlo bylo zničeno při srážce s UFO!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Výbuch ropné rafinerie u {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Za podezřelých okolností byla zničena továrna u {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO přistálo poblíž {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Pokles terénu u uhelného dolu {TOWN} způsobil velké škody!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Záplavy!{}Po strašlivých záplavách je odhadem {COMMA} {P člověk lidé lidí} pohřešov{P án áni aných} nebo mrt{P ev ví vých}!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Dopravní společnost má problémy!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} bude prodána nebo vyhlásí bankrot, pokud se brzy nezvýší výkonnost!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Sloučení dopravních společností!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} byla prodána {STRING} za {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrot!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} byla zavřena veřiteli a podíly byly prodány!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nová společnost založena!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} začíná stavět poblíž {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} byla převzata {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Prezident)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Dopravní společnost má problémy!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} bude prodána nebo vyhlásí bankrot, pokud se brzy nezvýší výkonnost!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Sloučení dopravních společností!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} byla prodána {STRING} za {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankrot!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} byla zavřena veřiteli a podíly byly prodány!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nová společnost založena!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} začíná stavět poblíž {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} byla převzata {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Prezident)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}Společnost {STRING} zaplatila výstavbu nového města {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Společnost {STRING} zaplatila výstavbu nového města {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se staví poblíž města {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se vysazuj{G 0 e e e í í í í} poblíž města {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se staví poblíž města {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se vysazuj{G 0 e e e í í í í} poblíž města {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} ohlašuj{G 0 e e e í í í í} okamžité uzavření!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Zásobovací problémy způsobily uzavření {STRING.gen}!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Nedostatek stromů způsobil uzavření {STRING.gen}!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} ohlašuj{G 0 e e e í í í í} okamžité uzavření!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Zásobovací problémy způsobily uzavření {STRING.gen}!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Nedostatek stromů způsobil uzavření {STRING.gen}!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Evropská měnová unie{}{}Euro se v této zemi stalo jedinou měnou pro každodenní obchodní transakce!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Celosvětový hospodářský úpadek!{}{}Finanční experti se kvůli prudkému poklesu ekonomiky obávají nejhoršího!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Konec hospodářského úpadku!{}{}Posílení trhu zvýšilo u průmyslu důvěru!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Evropská měnová unie{}{}Euro se v této zemi stalo jedinou měnou pro každodenní obchodní transakce!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Celosvětový hospodářský úpadek!{}{}Finanční experti se kvůli prudkému poklesu ekonomiky obávají nejhoršího!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Konec hospodářského úpadku!{}{}Posílení trhu zvýšilo u průmyslu důvěru!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} zvyšuj{G 0 e e e í í í í} produkci!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nové ložisko uhlí nalezeno {INDUSTRY.loc}!{}Zdvojnásobí se produkce!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nové zásoby ropy nalezeny {INDUSTRY.loc}!{}Zdvojnásobí se produkce!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Lepší metody pěstování {INDUSTRY.loc} zdvojnásobí produkci!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} zvyšuj{G 1 e e e í í í í} produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Produkce {INDUSTRY.gen} poklesla o 50{NBSP}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} j{G 0 e e e sou sou sou sou} zamořen{G 0 "" a o i y y a} škůdci!{}Produkce poklesla o 50{NBSP}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} snižuj{G 1 e e e í í í í} produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} zvyšuj{G 0 e e e í í í í} produkci!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nové ložisko uhlí nalezeno {INDUSTRY.loc}!{}Zdvojnásobí se produkce!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nové zásoby ropy nalezeny {INDUSTRY.loc}!{}Zdvojnásobí se produkce!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Lepší metody pěstování {INDUSTRY.loc} zdvojnásobí produkci!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY} zvyšuj{G 1 e e e í í í í} produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Produkce {INDUSTRY.gen} poklesla o 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} j{G 0 e e e sou sou sou sou} zamořen{G 0 "" a o i y y a} škůdci!{}Produkce poklesla o 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY} snižuj{G 1 e e e í í í í} produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čeká v depu
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čeká v depu
@@ -903,13 +903,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} silně zastarává a nutně potřebuje nahradit
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nemůže najít cestu
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se ztratil{G 0 "" a o i y y a}
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} - loňský zisk {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} - loňský zisk {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stojí kvůli selhání příkazu na změnu nákladu
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Obnovení selhalo pro {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nov{G ý á é í é é á} {STRING} k dispozici!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G ý á é í é é á} {STRING} k dispozici!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G ý á é í é é á} {STRING} k dispozici!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} už dále nepřijímá {STRING.acc}
@@ -917,15 +917,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nyní přijímá {STRING.acc}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} nyní přijímá {STRING.acc} a {STRING.acc}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} nebude dále nabízena
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STRING.gen} do {STRING.gen} již nebude dále poskytována
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Nabídka dotace:{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude jeden rok dotována místní správou!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet 150{NBSP}% normální ceny
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet dvojnásobek normální ceny!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet trojnásobek normální ceny!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet čtyřnásobek normální ceny!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} nebude dále nabízena
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STRING.gen} do {STRING.gen} již nebude dále poskytována
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nabídka dotace:{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude jeden rok dotována místní správou!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet 150{NBSP}% normální ceny
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet dvojnásobek normální ceny!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet trojnásobek normální ceny!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet čtyřnásobek normální ceny!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN} zažívá dopravní chaos!{}{}Program přestavby ulic sponzorovaný {STRING} přináší motoristům 6 měsíců utrpení!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} zažívá dopravní chaos!{}{}Program přestavby ulic sponzorovaný {STRING} přináší motoristům 6 měsíců utrpení!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA}
@@ -1053,7 +1053,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Selhalo 
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Snížit hodnotu vlastní měny oproti libře (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zvýšit hodnotu vlastní měny oproti libře (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Určit směnný kurz vlastní měny oproti libře (£)
@@ -1072,7 +1072,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Určit r
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Přejít na euro dříve
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Přejít na euro později
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Náhled: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 liber (£) ve vlastní měně
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Změnit parametry vlastní měny
 
@@ -1093,7 +1093,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Uložit
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximální počet protivníků: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Množství měst: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Množství průmyslu: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximální počáteční dluh: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximální počáteční dluh: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Počáteční úroková sazba: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Náklady na provoz vozidel: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Rychlost výstavby protivníků: {ORANGE}{STRING}
@@ -1509,7 +1509,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Určite
 STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávací políčka ukazují, jestli jsi tento cheat už použil
 STR_CHEATS_WARNING                                              :{BLACK}Varování! Chystáš se podvést ostatní hráče. Pamatuj si, že tento podlý čin nebude nikdy zapomenut!
-STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrát jako společnost: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozer (odstraní průmysl a další objekty): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely se mohou křížit: {ORANGE}{STRING}
@@ -1745,9 +1745,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Současn
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO O SPOLEČNOSTI
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Jméno společnosti: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Založeno: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Hodnota společnosti: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Stav na účtu: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Loňský hrubý zisk: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Hodnota společnosti: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Stav na účtu: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Loňský hrubý zisk: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Výkon: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Vozidla: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1892,8 +1892,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} zakládá novou společnost (č. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opouští hru ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} si mění jméno na {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} poslal(a) tvé společnosti {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dal(a) jsi {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} poslal(a) tvé společnosti {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dal(a) jsi {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil relaci
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se restartuje...{}Počkejte prosím...
 
@@ -2051,7 +2051,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Zvolit železniční most
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Zvolit silniční most
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Výběr mostů - staví se kliknutím na obrázek mostu
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Zavěšený, ocelový
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Trámový, ocelový
@@ -2222,7 +2222,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Investov
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Vyber si vhodnou továrnu ze seznamu
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Hodně náhodného průmyslu
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pokryje krajinu náhodným průmyslem
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cena: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cena: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Hledat
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Postavit
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financovat
@@ -2249,8 +2249,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vyber zo
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informace o uzemí
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cena za vyčištění: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cena za vyčištění: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Příjem za odklizení: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cena za vyčištění: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Příjem za odklizení: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Vlastník: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Majitel silnice: {LTBLUE}{STRING}
@@ -2619,7 +2619,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pošta z
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Množství doručeného nákladu potřebného pro rozvoj města:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{BLACK}Je potřeba {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vyžadováno v zimě
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} dovezeno minulý měsíc
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} dovezeno minulý měsíc
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Hlukový limit ve městě: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vystředit pohled na město. Ctrl+Klik otevře nový pohled
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Místní správa
@@ -2636,7 +2636,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Přejmenovat m�
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Místní správa města {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Hodnocení společností:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Možné činnosti:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Seznam všech věcí, které lze dělat v tomto městě - označ činnost pro více detailů:
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Provést
@@ -2651,14 +2651,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Dotovat nové b
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Koupit výhradní právo k přepravě
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatit místní správu
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Zahájit malou reklamní kampaň, která přiláká více cestujících a nákladu.{}Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Zahájit středně velkou reklamní kampaň, která přiláká více cestujících a nákladu.{}Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Zahájit velkou reklamní kampaň, která přiláká více cestujících a nákladu.{}Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Dotovat rekonstrukci místní silniční sítě. Způsobí problémy v dopravě po dobu 6 měsíců.{}Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Postavit sochu vlastníka jako poctu tvé společnosti.{}Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Dotovat stavbu nových obchodních budov ve městě.{}Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Koupit roční výhradní práva k přepravě zboží z tohoto města po dobu jednoho roku. Místní správa dovolí cestujícím a nákladu používat pouze stanice tvé společnosti.{}Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatit místní správu pro zvýšení hodnocení společnosti. Riziko trestu v případě přistižení.{}Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Zahájit malou reklamní kampaň, která přiláká více cestujících a nákladu.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Zahájit středně velkou reklamní kampaň, která přiláká více cestujících a nákladu.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Zahájit velkou reklamní kampaň, která přiláká více cestujících a nákladu.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Dotovat rekonstrukci místní silniční sítě. Způsobí problémy v dopravě po dobu 6 měsíců.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Postavit sochu vlastníka jako poctu tvé společnosti.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Dotovat stavbu nových obchodních budov ve městě.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Koupit roční výhradní práva k přepravě zboží z tohoto města po dobu jednoho roku. Místní správa dovolí cestujícím a nákladu používat pouze stanice tvé společnosti.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatit místní správu pro zvýšení hodnocení společnosti. Riziko trestu v případě přistižení.{}Cena: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotace
@@ -2673,7 +2673,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknut�
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jména stanic - pohled na stanici zaměříš kliknutím na její jméno. Při stisknutém Ctrl otevřeš nový pohled
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}S přidrženým Ctrl můžeš označit více položek
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nic -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Označit všechny druhy stanic
@@ -2681,10 +2681,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Označit
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nečeká žádná komodita jakéhokoli druhu
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čeká tu: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} na cestě z{NBSP}{STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na cestě z{NBSP}{STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijímá
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Ukázat seznam přijímaného nákladu
@@ -2726,7 +2726,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Přejmen
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat směrování
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}Finance - {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Finance - {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Příjmy a výdaje
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Výstavba
@@ -2742,21 +2742,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Příjmy 
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Příjmy lodí
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Úroky z půjček
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Další
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Celkem:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Stav na účtu
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Půjčka
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Max. půjčka: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Půjčit {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Max. půjčka: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Půjčit {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Půjčit si více
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vrátit {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vrátit {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Splatit část dluhu
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Prezident)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Prezident)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Založeno: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Barevné schéma:
@@ -2766,7 +2766,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} letad{P lo la el}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} lo{P ď dě dí}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nic
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Hodnota společnosti: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Hodnota společnosti: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% vlastněno {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Ředitelství
@@ -2793,20 +2793,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodat 2
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Jméno společnosti
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Jméno prezidenta
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Hledáme společnost, která převezme naši společnost.{}{}Chcete zakoupit {COMPANY} za {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Hledáme společnost, která převezme naši společnost.{}{}Chcete zakoupit {COMPANY} za {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Průmysl
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nic -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% přepraveno)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% přepraveno)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% přepraveno)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% přepraveno)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Název průmyslu - pohled na něj zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkce minulý měsíc:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% přepraveno)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% přepraveno)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vystředit pohled na průmysl. Ctrl+Klik otevře nový pohled
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkce: {YELLOW}{COMMA}%
 
@@ -2818,7 +2818,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Vyžaduj
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Náklad čekající na zpracování:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2837,7 +2837,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Silničn
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Lodě - informace získáš klepnutím na jméno lodi
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letadlo - klepni na letadlo pro informace
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (minulý rok: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Zisk tento rok: {CURRENCY_LONG} (minulý rok: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupné vlaky
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupná vozidla
@@ -2893,21 +2893,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nová silničn�
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nové lodě
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nové letadlo
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Hmotnost: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rychlost na moři: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rychlost v průplavech a řekách: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Provozní cena: {GOLD}{CURRENCY} ročně
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Provozní cena: {GOLD}{CURRENCY_LONG} ročně
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(lze přestavět)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyvinuto: {GOLD}{NUM}{BLACK} Životnost: {GOLD}{COMMA} {P rok roky let}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolehlivost: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Poháněné vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Poháněné vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitovatelné na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všechny druhy nákladu
 STR_PURCHASE_INFO_ALL_BUT                                       :Všechny kromě {GOLD}
@@ -2952,7 +2952,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Přejmenovat de
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo la el}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - přetáhni vozidlo levým tlačítkem pro přidání, či odstranění z vlaku, pravým pro zobrazení info. Stiskni Ctrl a pravé pro info o kapacitě vlaku
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidla - klepni pravým na vozidlo pro informace
@@ -3034,10 +3034,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotiva
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.dat                        :
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :{G=f}lokomotivu Maglev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Váha: {WEIGHT_S}{}Rychlost: {VELOCITY}  Síla: {POWER}  Maximální tažná síla: {6:FORCE}{}Provozní náklady: {4:CURRENCY}/rok{}Kapacita: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}, {CARGO}{}Cena provozu: {CURRENCY} ročně
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}{}Cena provozu: {CURRENCY} ročně
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnost: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY_LONG} ročně{}Kapacita: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Váha: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Síla: {POWER}  Maximální tažná síla: {6:FORCE}{}Provozní náklady: {4:CURRENCY_LONG}/rok{}Kapacita: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO_LONG}, {CARGO_LONG}{}Cena provozu: {CURRENCY_LONG} ročně
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO_LONG}{}Cena provozu: {CURRENCY_LONG} ročně
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vyměňování {STRING}
@@ -3131,9 +3131,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Míří
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Údržba v {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zastaveno
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Zastaveno
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Zastaveno
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Puštěno
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Puštěno
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Puštěno
 
 # Vehicle details
@@ -3145,25 +3145,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pojmenov
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pojmenovat loď
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pojmenovat letadlo
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY_LONG} ročně
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok roky let} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok roky let} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Max. tažná síla: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_SHORT} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_SHORT} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Max. tažná síla: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošní zisk: {LTBLUE}{CURRENCY} (vloni: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošní zisk: {LTBLUE}{CURRENCY_LONG} (vloni: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacita: {LTBLUE}nic
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Podíl za převoz: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Podíl za převoz: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval servisů: {LTBLUE}{COMMA} d{P en ny ní}{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval servisů: {LTBLUE}{COMMA}%{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
@@ -3176,16 +3176,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Přejemn
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Přejmenovat letadlo
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Celková kapacita tohoto vlaku:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prázdný
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} z {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} z {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} z {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} z {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Náklad
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Ukázat detaily přepravovaného zboží
@@ -3201,8 +3201,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Přestavět)
 STR_REFIT_TITLE                                                 :{GOLD}Zvolit druh nákladu:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO}{}{BLACK}Cena přestavby: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cena za předělání: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Cena přestavby: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena za předělání: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vybere vozidla k obnově. Tažení myší vybere více vozidel. Kliknutí na prázdné místo vybere celé vozidlo. Ctrl+Click vybere vozidlo a následující řetěz
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zvolit typ nákladu, na který vlak přestavět
@@ -3472,22 +3472,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit 
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Cena: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Cena: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Příjem: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Příjem: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Překládka: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Překládka: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Odhadovaná cena: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Odhadovaný příjem: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cena: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Cena: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Příjem: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Příjem: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Překládka: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Překládka: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Odhadovaná cena: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Odhadovaný příjem: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ukládání ještě běží,{}počkej prosím, než doběhne!
@@ -3536,7 +3536,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Zpráva
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Mimo okraj mapy
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Moc blízko k okraji mapy
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nedostatek peněz - je potřeba {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nedostatek peněz - je potřeba {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Je potřeba plochá země
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Země skloněna nesprávným směrem
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tohle nelze provést...
@@ -3570,10 +3570,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... už 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nelze přejmenovat společnost...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nelze přejmenovat prezidenta...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nelze půjčit více peněz...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... žádný dluh ke splacení
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... je potřeba {CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... je potřeba {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nelze splatit dluh...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nelze darovat peníze půjčené z banky...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nelze koupit společnost...
@@ -4402,39 +4402,39 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Pozorovatel, {1
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_INDUSTRY_NAME.gen                                           :{INDUSTRY.gen}
 STR_INDUSTRY_NAME.loc                                           :{INDUSTRY.loc}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4446,32 +4446,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

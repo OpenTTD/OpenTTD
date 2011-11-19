@@ -1012,7 +1012,7 @@ static void PutCommandString(const char *str)
 		if (cs == NULL) break;
 
 		if (casei != -1) {
-			PutUtf8(SCC_SETCASE); // {SETCASE}
+			PutUtf8(SCC_SET_CASE); // {SET_CASE}
 			PutByte(casei);
 		}
 

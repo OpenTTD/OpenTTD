@@ -97,73 +97,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음�
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :승객 {COMMA}명
-STR_QUANTITY_COAL                                               :석탄 {WEIGHT}
+STR_QUANTITY_COAL                                               :석탄 {WEIGHT_LONG}
 STR_QUANTITY_MAIL                                               :우편 {COMMA}자루
-STR_QUANTITY_OIL                                                :석유 {VOLUME}
+STR_QUANTITY_OIL                                                :석유 {VOLUME_LONG}
 STR_QUANTITY_LIVESTOCK                                          :가축 {COMMA}마리
 STR_QUANTITY_GOODS                                              :상품 {COMMA}상자
-STR_QUANTITY_GRAIN                                              :곡물 {WEIGHT}
-STR_QUANTITY_WOOD                                               :목재 {WEIGHT}
-STR_QUANTITY_IRON_ORE                                           :철광석 {WEIGHT}
-STR_QUANTITY_STEEL                                              :철 {WEIGHT}
+STR_QUANTITY_GRAIN                                              :곡물 {WEIGHT_LONG}
+STR_QUANTITY_WOOD                                               :목재 {WEIGHT_LONG}
+STR_QUANTITY_IRON_ORE                                           :철광석 {WEIGHT_LONG}
+STR_QUANTITY_STEEL                                              :철 {WEIGHT_LONG}
 STR_QUANTITY_VALUABLES                                          :귀금속 {COMMA}자루
-STR_QUANTITY_COPPER_ORE                                         :구리 광석 {WEIGHT}
-STR_QUANTITY_MAIZE                                              :옥수수 {WEIGHT}
-STR_QUANTITY_FRUIT                                              :과일 {WEIGHT}
+STR_QUANTITY_COPPER_ORE                                         :구리 광석 {WEIGHT_LONG}
+STR_QUANTITY_MAIZE                                              :옥수수 {WEIGHT_LONG}
+STR_QUANTITY_FRUIT                                              :과일 {WEIGHT_LONG}
 STR_QUANTITY_DIAMONDS                                           :다이아몬드 {COMMA}자루
-STR_QUANTITY_FOOD                                               :식품 {WEIGHT}
-STR_QUANTITY_PAPER                                              :종이 {WEIGHT}
+STR_QUANTITY_FOOD                                               :식품 {WEIGHT_LONG}
+STR_QUANTITY_PAPER                                              :종이 {WEIGHT_LONG}
 STR_QUANTITY_GOLD                                               :금 {COMMA}자루
-STR_QUANTITY_WATER                                              :물 {VOLUME}
-STR_QUANTITY_WHEAT                                              :밀 {WEIGHT}
-STR_QUANTITY_RUBBER                                             :고무 {VOLUME}
-STR_QUANTITY_SUGAR                                              :설탕 {WEIGHT}
+STR_QUANTITY_WATER                                              :물 {VOLUME_LONG}
+STR_QUANTITY_WHEAT                                              :밀 {WEIGHT_LONG}
+STR_QUANTITY_RUBBER                                             :고무 {VOLUME_LONG}
+STR_QUANTITY_SUGAR                                              :설탕 {WEIGHT_LONG}
 STR_QUANTITY_TOYS                                               :장난감 {COMMA}상자
 STR_QUANTITY_SWEETS                                             :사탕 {COMMA}자루
-STR_QUANTITY_COLA                                               :콜라 {VOLUME}
-STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT}
+STR_QUANTITY_COLA                                               :콜라 {VOLUME_LONG}
+STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
-STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT}
+STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :배터리 {COMMA}개
-STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME}
+STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME_LONG}
 STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA}개
 STR_QUANTITY_N_A                                                :없음
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}CL
-STR_ABBREV_MAIL                                                 :{TINYFONT}ML
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
-STR_ABBREV_GOODS                                                :{TINYFONT}GD
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
-STR_ABBREV_WOOD                                                 :{TINYFONT}WD
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
-STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}FD
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}GD
-STR_ABBREV_WATER                                                :{TINYFONT}WR
-STR_ABBREV_WHEAT                                                :{TINYFONT}WH
-STR_ABBREV_RUBBER                                               :{TINYFONT}RB
-STR_ABBREV_SUGAR                                                :{TINYFONT}SG
-STR_ABBREV_TOYS                                                 :{TINYFONT}TY
-STR_ABBREV_SWEETS                                               :{TINYFONT}SW
-STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
-STR_ABBREV_NONE                                                 :{TINYFONT}NO
-STR_ABBREV_ALL                                                  :{TINYFONT}ALL
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}CL
+STR_ABBREV_MAIL                                                 :{TINY_FONT}ML
+STR_ABBREV_OIL                                                  :{TINY_FONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LV
+STR_ABBREV_GOODS                                                :{TINY_FONT}GD
+STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
+STR_ABBREV_WOOD                                                 :{TINY_FONT}WD
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
+STR_ABBREV_STEEL                                                :{TINY_FONT}ST
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
+STR_ABBREV_WATER                                                :{TINY_FONT}WR
+STR_ABBREV_WHEAT                                                :{TINY_FONT}WH
+STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
+STR_ABBREV_SUGAR                                                :{TINY_FONT}SG
+STR_ABBREV_TOYS                                                 :{TINY_FONT}TY
+STR_ABBREV_SWEETS                                               :{TINY_FONT}SW
+STR_ABBREV_COLA                                                 :{TINY_FONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}FZ
+STR_ABBREV_NONE                                                 :{TINY_FONT}NO
+STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{G=m}{COMMA} 승객
@@ -517,10 +517,10 @@ STR_MONTH_DEC                                                   :{G=m}12월
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}키
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}그래프의 키를 보여줍니다.
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}경영 수익 그래프
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}수익 그래프
@@ -529,14 +529,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}회사 �
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사 가치
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}통과시간
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}모두 사용
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}모두 사용 안함
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}통과시간
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}모두 사용
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}모두 사용 안함
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시안함
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물에 대한 그래프 켜기/끄기
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다
 
@@ -546,7 +546,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}특정 �
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}회사 성취도 순위
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :{G=f}엔지니어
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :{G=f}교통망 관리자
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :{G=f}수송 조정자
@@ -560,7 +560,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :{G=m}타이쿤!
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}상세 성취도
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}자세히
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}이 회사의 상세정보 보기
@@ -589,25 +589,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}산출 �
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}재즈 쥬크박스
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}모두
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}고전 스타일
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}뉴 스타일
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}사용자 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}사용자 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}음량
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}효과 음량
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}최소
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}최대
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}트랙
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}제목
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}무작위
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}프로그램
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}모두
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}고전 스타일
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}뉴 스타일
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}사용자 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}사용자 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}음량
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}효과 음량
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}최소
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}최대
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}트랙
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}제목
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}무작위
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}프로그램
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}이전 트랙으로 건너뛰기
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}다음 트랙으로 건너뛰기
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}음악 중지
@@ -626,18 +626,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}음악 �
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}음악 프로그램 선택
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}트랙 인덱스
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}프로그램 - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}초기화
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}트랙 인덱스
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}프로그램 - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}초기화
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}현재 음악 프로그램을 초기화합니다 (사용자1, 사용자2에서만 선택 가능합니다)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}음악 목록에 트랙을 추가하려면 클릭하세요 (사용자1, 사용자2만 사용 가능합니다)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}음악 목록에서 트랙을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM}의 회사 성취도 목록
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}{NUM}의 회사 성취도 목록
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=f}초보자
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=f}사업주
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :{G=f}공업가
@@ -645,10 +645,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :{G=f}자본가
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :{G=f}권력자
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :{G=m}거물
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :{G=m}금세기의 타이쿤!
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY}가 '{STRING}'{G 0 "을" "를"} 달성했습니다!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME}의 {COMPANY}이(가) 드디어 {STRING}을(를) 달성했습니다!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY}가 '{STRING}'{G 0 "을" "를"} 달성했습니다!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME}의 {COMPANY}이(가) 드디어 {STRING}을(를) 달성했습니다!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}지도 - {STRING}
@@ -668,40 +668,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}맵에 �
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}산업 시설 타입 표시를 전환하려면 클릭하십시오. CTRL+클릭하면 선택한 산업시설을 제외한 모든 종류를 비활성화합니다. 다시 CTRL+클릭하면 모든 산업시설이 활성화됩니다.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}회사 속성의 표시를 전환하려면 회사를 클릭하십시오. CTRL+클릭으로 선택한 회사를 제외한 모든 회사를 비활성화하십시오. 다시 CTRL+클릭하면 다시 모든 회사가 활성화됩니다.
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}도로
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}철로
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}역/공항/항구
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}건물/산업시설
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}차량
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}열차
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}자동차
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}선박
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}항공기
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}운송 경로
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}숲
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}철도역
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}트럭 적하장
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}버스 정류장
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}공항/헬리포트
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}항만
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}거친 땅
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}잔디 땅
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}맨 땅
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}들판
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}나무
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}바위
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}물
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}소유주 없음
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}도시
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}산업 시설
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}사막
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}눈
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}도로
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}철로
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}역/공항/항구
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}건물/산업시설
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}차량
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}열차
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}자동차
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}선박
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}항공기
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}운송 경로
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}숲
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}철도역
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}트럭 적하장
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}버스 정류장
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}공항/헬리포트
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}항만
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}거친 땅
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}잔디 땅
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}맨 땅
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}들판
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}나무
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}바위
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}물
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}소유주 없음
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}도시
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}산업 시설
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}사막
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}눈
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름 표시/숨기기
 STR_SMALLMAP_CENTER                                             :{BLACK}소형맵을 현재 위치로 이동시킵니다.
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}고도 보여주기
@@ -749,60 +749,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}역에�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}보조금
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}일반 정보
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}사람들이 환호합니다!{}{STATION}에 처음으로 열차가 도착했습니다!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}첫 항공기가 {STATION}공항에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}사람들이 환호합니다!{}{STATION}에 처음으로 열차가 도착했습니다!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}첫 항공기가 {STATION}공항에 도착했습니다!{}시민들이 환호하고 있습니다!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}{STATION}에서 체펠린 재앙이 발생했습니다!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}UFO의 폭격으로 자동차가 파괴되었습니다!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}{TOWN} 근처의 석유 정제소가 폭발하였습니다!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}{TOWN} 근처의 공장이 의심스러운 상황으로 인해 파괴되었습니다!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}UFO가 {TOWN} 근처에 착륙했습니다!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}{TOWN} 근처의 석탄 광산이 함몰되어 그 파괴의 흔적을 남겼습니다!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}홍수 발생!{}최소 {COMMA}명의 실종자가 발생하였으며, 범람 후에 사상자도 발생할 것입니다!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}{STATION}에서 체펠린 재앙이 발생했습니다!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}UFO의 폭격으로 자동차가 파괴되었습니다!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} 근처의 석유 정제소가 폭발하였습니다!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}{TOWN} 근처의 공장이 의심스러운 상황으로 인해 파괴되었습니다!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO가 {TOWN} 근처에 착륙했습니다!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}{TOWN} 근처의 석탄 광산이 함몰되어 그 파괴의 흔적을 남겼습니다!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}홍수 발생!{}최소 {COMMA}명의 실종자가 발생하였으며, 범람 후에 사상자도 발생할 것입니다!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}운송회사에 문제가 생김!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}성취도를 바로 올리지 못하면 {STRING}{G 0 "은" "는"} 팔리거나 파산할 것입니다!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}운송 회사 합병!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}{G 0 "이" "가"} {STRING}에게 {CURRENCY}의 가격으로 인수합병되었습니다!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}파산!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}새 운송회사 등장!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(매니저)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}운송회사에 문제가 생김!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}성취도를 바로 올리지 못하면 {STRING}{G 0 "은" "는"} 팔리거나 파산할 것입니다!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}운송 회사 합병!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} {STRING}에게 {CURRENCY_LONG}의 가격으로 인수합병되었습니다!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}파산!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}새 운송회사 등장!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(매니저)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING}은(는) 새로운 도시 {TOWN}을(를) 건설했습니다!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING}은(는) 새로운 도시 {TOWN}을(를) 건설했습니다!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에 지어지고 있습니다!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에 지어지고 있습니다!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING}의 긴급폐쇄를 알립니다!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING}의 긴급폐쇄를 알립니다!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 생산량을 늘렸습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY}에서 새 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}에서 향상된 농업 기술을 발견해 생산량이 2배가 되었습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 증가하였습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}의 생산량이 50%로 떨어졌습니다.
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 생산량을 늘렸습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY}에서 새 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}에서 향상된 농업 기술을 발견해 생산량이 2배가 되었습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 증가하였습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}의 생산량이 50%로 떨어졌습니다.
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}{P "가" "이"} 차량기지 안에서 대기 중입니다
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{P "가" "이"} 차고에서 대기 중입니다
@@ -822,13 +822,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}{P "가" "이"} 길을 잃었습니다.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}신형 {STRING} 이(가) 출시되었습니다!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}신형 {STRING} 이(가) 출시되었습니다!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
@@ -836,15 +836,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}에서 이제 {STRING}{G 1 "을" "를"} 받을 수 있습니다.
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}에서 이제 {STRING}/{STRING}{G 2 "을" "를"} 받을 수 있습니다.
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}보조금 제공 철회:{}{}지역 당국은 {1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지 {0:STRING}{G 0 "을" "를"} 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}보조금 제공 철회:{}{}지역 당국은 {1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지 {0:STRING}{G 0 "을" "를"} 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
@@ -972,7 +972,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스�
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}사용자 화폐 단위
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{CURRENCY} = {COMMA}파운드
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{CURRENCY_LONG} = {COMMA}파운드
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파운드(£)에 대한) 사용자 화폐 단위양을 감소시킵니다.
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}(1 파운드(£)에 대한) 사용자 화폐 단위양을 증가시킵니다.
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}1 파운드(£)에 해당하는 사용자 화폐 단위의 환율을 설정하십시오.
@@ -991,7 +991,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}유로�
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}유로화(€) 전환 연도를 앞으로 당깁니다.
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}유로화(€) 전환 연도를 늦춥니다.
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리보기: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리보기: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 파운드(£)에 해당하는 사용자 화폐 단위입니다.
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}사용자 화폐 변수 변경
 
@@ -1012,7 +1012,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}저장
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}최대 경쟁자수: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}도시 수: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}산업시설 수: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}초기 최고 대출액: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}초기 최고 대출액: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}초기 이자율: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}차량 운행비용: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}경쟁자의 건설 속도: {ORANGE}{STRING}
@@ -1428,7 +1428,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}정말 
 STR_CHEATS                                                      :{WHITE}치트
 STR_CHEATS_TOOLTIP                                              :{BLACK}체크박스는 이전에 사용한 치트를 나타냅니다.
 STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트 기록은 절대로 지워지지 않음을 명심하십시오.
-STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY} 만큼 증가
+STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY_LONG} 만큼 증가
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이중: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
@@ -1664,9 +1664,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}이 게�
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}회사 정보
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}회사 이름: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}설립: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}회사가치: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}재정 수익: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}작년 수익: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}회사가치: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}재정 수익: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}작년 수익: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}퍼포먼스: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}차량: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1811,8 +1811,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING}님
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING}님이 새 회사 #{2:NUM}을 창업하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING}님이 게임에서 나갔습니다 ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 가 이름을 {STRING}으로 바꿨습니다
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 가 당신의 회사에게 {2:CURRENCY}를 송금하였습니다
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 당신은 {1:STRING} 에게 {2:CURRENCY}를 송금하였습니다
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 가 당신의 회사에게 {2:CURRENCY_LONG}를 송금하였습니다
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 당신은 {1:STRING} 에게 {2:CURRENCY_LONG}를 송금하였습니다
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 세션을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버 재가동중...{}기다려주세요...
 
@@ -1970,7 +1970,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}드래�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}철교 선택
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}다리 종류를 선택하십시오
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :강철 현수교
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :강철 거더교
@@ -2141,7 +2141,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}새 산�
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}목록에서 적당한 산업시설을 선택하십시오
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :무작위 산업시설 건설
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}무작위로 산업시설을 건설합니다.
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}가격: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}가격: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}답사
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}건설
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}투자
@@ -2162,8 +2162,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}산업�
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}초기화 가격: {LTBLUE}없음
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}초기화 가격: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}제거시 들어오는 환불금: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}초기화 가격: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}제거시 들어오는 환불금: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :없음
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}소유주: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}도로 소유주: {LTBLUE}{STRING}
@@ -2532,7 +2532,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요함
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :냉대 기후에서 {ORANGE}{STRING}{BLACK}가 필요합니다.
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK}{G 0 "이" "가"} 지난달에 수송됨
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK}{G 0 "이" "가"} 지난달에 수송됨
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 도시 위치의 새로운 뷰포트를 엽니다.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}지역 당국
@@ -2549,7 +2549,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :도시 이름 �
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 지역당국
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}회사 운송 성취도:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}가능한 행동:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}이 도시에 할 수 있는 일 목록 - 상세 정보를 보시려면 클릭하세요
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}실행
@@ -2564,14 +2564,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :새 건물에 �
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :수송 권한 독점권 구입
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국에 뇌물 먹이기
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} 당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} 당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}가격: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금
@@ -2586,7 +2586,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업�
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}역 이름 - 이 역의 위치로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 역 위치의 새로운 뷰포트를 엽니다.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}1개 이상의 아이템을 선택하려면 CTRL키를 누르세요
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}개 역사
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설 선택
@@ -2594,10 +2594,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}모든 �
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}대기 중인 화물이 없습니다.
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}대기: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STATION}에서 온 {0:SHORTCARGO})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STATION}에서 온 {0:CARGO_SHORT})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}받음
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}받는 화물의 목록 표시
@@ -2639,7 +2639,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}부이 �
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}웨이포인트 이름 설정
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}의 재정 {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}의 재정 {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}지출/수입
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}건설
@@ -2655,21 +2655,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}항공기
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}선박 수익
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}이자
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}기타
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}총계:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}소유금
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}대출
-STR_FINANCES_MAX_LOAN                                           :{WHITE}최대 대출: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY} 빌리기
+STR_FINANCES_MAX_LOAN                                           :{WHITE}최대 대출: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} 빌리기
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}돈을 빌립니다. Ctrl+클릭하면 빌릴 수 있는만큼 빌립니다
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY} 갚기
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY_LONG} 갚기
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}돈을 갚습니다. Ctrl+클릭하시면 갚을 수 있는 만큼 갚습니다
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(매니저)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(매니저)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}설립: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
@@ -2679,7 +2679,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}자동�
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}항공기 {COMMA}대
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}선박 {COMMA}대
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}회사가치: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}회사가치: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY}의 소유)
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
@@ -2706,20 +2706,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회�
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :회사 이름
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :매니저 이름
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY}의 가격으로 인수합병하시겠습니까?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}산업시설
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}(없음)
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 운반됨)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% 운반됨)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}산업시설 이름 - 산업시설로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 산업시설 위치의 새로운 뷰포트를 엽니다.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}지난달 생산량:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 수송됨)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 수송됨)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산업시설로 시점을 변경합니다. Ctrl+Click하면 이 산업시설로 새로운 뷰포트를 엽니다.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}생산 수준: {YELLOW}{COMMA}%
 
@@ -2731,7 +2731,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}필요�
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}처리될 화물 대기:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}생산: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}생산: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2750,7 +2750,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}자동�
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}올해 수입: {CURRENCY} (작년: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}올해 수입: {CURRENCY_LONG} (작년: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :사용 가능 열차
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :사용 가능 자동차
@@ -2806,21 +2806,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :새 자동차
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :새 선박
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 중량: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} 중량: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서의 속도: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서의 속도: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}운행비용: {GOLD}{CURRENCY}/년
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}운행비용: {GOLD}{CURRENCY_LONG}/년
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(개조 가능)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}개발: {GOLD}{NUM}{BLACK} 수명: {GOLD}{COMMA}년
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}최고 신뢰도: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}가격: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}중량: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 속력: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용량: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}가격: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}중량: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} 속력: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용량: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
 STR_PURCHASE_INFO_ALL_BUT                                       :모든 화물 / 제외: {GOLD}
@@ -2865,7 +2865,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :차량기지 �
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차 정보를 보려면 클릭, 차량을 드래그해서 추가하거나 삭제하세요
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량 정보를 보려면 클릭
@@ -2941,10 +2941,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :선박
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :모노레일 기관차
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :자기부상열차
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}비용: {CURRENCY} 무게: {WEIGHT_S}{}속력: {VELOCITY}  힘: {POWER}  최대 T.E.: {6:FORCE}{}유지비: {4:CURRENCY}/년{}용량: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: {CARGO}, {CARGO}{}운행비용: {CURRENCY}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}가격: {CURRENCY} 최고속력: {VELOCITY}{}수송량: {CARGO}{}운행비용: {CURRENCY}/년
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}비용: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 T.E.: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}용량: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}, {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체
@@ -3038,9 +3038,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중, ({VELOCITY})
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}정지
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}정지
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}정지
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}출발
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}출발
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}출발
 
 # Vehicle details
@@ -3052,25 +3052,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/yr
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY_LONG}/yr
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}최고 속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY} {BLACK}최고 T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_SHORT} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY} {BLACK}최고 T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 수익: {LTBLUE}{CURRENCY} (작년: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}올해 수익: {LTBLUE}{CURRENCY_LONG} (작년: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}수송량: {LTBLUE}없음
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}수송량: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}수송량: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송량: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}수송량: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}수송량: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송량: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 단위: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 단위: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일마다{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 간격: {LTBLUE}{COMMA}%{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
@@ -3083,16 +3083,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}선박 �
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공기 이름 지정
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}이 열차의 총 수용량:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}비어있음
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} (출발지: {STATION})
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} (출발지: {STATION})
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} (출발지: {STATION}) (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}화물
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}현재 싣고있는 화물 정보를 보여줌
@@ -3108,8 +3108,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}수송�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (개조)
 STR_REFIT_TITLE                                                 :{GOLD}수송할 화물 선택:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO}{}{BLACK}개조 가격: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}새 화물: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}개조 비용: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조 가격: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}새 화물: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하십시오. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하시면 전체 차량을 선택 가능합니다.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요
@@ -3379,22 +3379,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}초기�
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}가격: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}가격: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}수익: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}수익: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}환승: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}환승: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}예상 가격: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}예상 수익: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}가격: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}가격: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}수익: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}수익: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}환승: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}예상 가격: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}예상 수익: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}저장중입니다,{}끝날때까지 기다려주세요
@@ -3443,7 +3443,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}맵 가장자리에서 너무 멉니다!
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}맵 가장자리와 너무 가깝습니다!
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}재정이 부족합니다 - {CURRENCY} 이(가) 필요합니다
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}재정이 부족합니다 - {CURRENCY_LONG} 이(가) 필요합니다
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}평지가 필요합니다!
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}잘못된 방향으로 땅이 기울어졌습니다
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}그렇게 할 수 없습니다...
@@ -3477,10 +3477,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 이�
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}회사 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}매니저 이름을 바꿀 수 없습니다...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 허용된 최대 대출금은 {CURRENCY} 입니다.
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 허용된 최대 대출금은 {CURRENCY_LONG} 입니다.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}더이상 돈을 빌릴 수 없습니다...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 값아야할 대출금이 없습니다.
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} 필요합니다.
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} 필요합니다.
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}대출금을 갚을 수 없습니다...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}은행에서 빌린 돈은 송금할 수 없습니다...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}회사를 인수할 수 없습니다...
@@ -4187,37 +4187,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :관전자, {1:S
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4229,32 +4229,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

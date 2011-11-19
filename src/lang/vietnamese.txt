@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Đồ uống c�
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} hành khách
-STR_QUANTITY_COAL                                               :{WEIGHT} than
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} than
 STR_QUANTITY_MAIL                                               :{COMMA} túi bưu kiện
-STR_QUANTITY_OIL                                                :{VOLUME} dầu
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} dầu
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} đầu gia súc
 STR_QUANTITY_GOODS                                              :{COMMA} thùng hàng tiêu dùng
-STR_QUANTITY_GRAIN                                              :{WEIGHT} ngũ cốc
-STR_QUANTITY_WOOD                                               :{WEIGHT} gỗ
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} quặng sắt
-STR_QUANTITY_STEEL                                              :{WEIGHT} thép
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} ngũ cốc
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} gỗ
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} quặng sắt
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} thép
 STR_QUANTITY_VALUABLES                                          :{COMMA} túi đồ quý giá
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} quặng đồng
-STR_QUANTITY_MAIZE                                              :{WEIGHT} ngô
-STR_QUANTITY_FRUIT                                              :{WEIGHT} hoa quả
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} quặng đồng
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} ngô
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} hoa quả
 STR_QUANTITY_DIAMONDS                                           :{COMMA} túi kim cương
-STR_QUANTITY_FOOD                                               :{WEIGHT} thực phẩm
-STR_QUANTITY_PAPER                                              :{WEIGHT} giấy
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} thực phẩm
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} giấy
 STR_QUANTITY_GOLD                                               :{COMMA} túi vàng
-STR_QUANTITY_WATER                                              :{VOLUME} nước
-STR_QUANTITY_WHEAT                                              :{WEIGHT} bột mì
-STR_QUANTITY_RUBBER                                             :{VOLUME} cao su
-STR_QUANTITY_SUGAR                                              :{WEIGHT} đường
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} nước
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} bột mì
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} cao su
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} đường
 STR_QUANTITY_TOYS                                               :{COMMA} đồ chơi
 STR_QUANTITY_SWEETS                                             :{COMMA} túi kẹo
-STR_QUANTITY_COLA                                               :{VOLUME} nước cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} kẹo bông
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} nước cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} kẹo bông
 STR_QUANTITY_BUBBLES                                            :{COMMA} bong bóng
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} kẹo bơ cứng
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} kẹo bơ cứng
 STR_QUANTITY_BATTERIES                                          :{COMMA} cái pin
-STR_QUANTITY_PLASTIC                                            :{VOLUME} chất dẻo
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} chất dẻo
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} chai đồ uống có ga
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}HK
-STR_ABBREV_COAL                                                 :{TINYFONT}Th
-STR_ABBREV_MAIL                                                 :{TINYFONT}BK
-STR_ABBREV_OIL                                                  :{TINYFONT}Dau
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}GS
-STR_ABBREV_GOODS                                                :{TINYFONT}Hh
-STR_ABBREV_GRAIN                                                :{TINYFONT}NgC
-STR_ABBREV_WOOD                                                 :{TINYFONT}Go
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}Qs
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}DQG
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}Qd
-STR_ABBREV_MAIZE                                                :{TINYFONT}Ngo
-STR_ABBREV_FRUIT                                                :{TINYFONT}HQ
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}Kc
-STR_ABBREV_FOOD                                                 :{TINYFONT}Tp
-STR_ABBREV_PAPER                                                :{TINYFONT}Gi
-STR_ABBREV_GOLD                                                 :{TINYFONT}Vg
-STR_ABBREV_WATER                                                :{TINYFONT}Nc
-STR_ABBREV_WHEAT                                                :{TINYFONT}Bm
-STR_ABBREV_RUBBER                                               :{TINYFONT}Cs
-STR_ABBREV_SUGAR                                                :{TINYFONT}Dg
-STR_ABBREV_TOYS                                                 :{TINYFONT}Đc
-STR_ABBREV_SWEETS                                               :{TINYFONT}Bk
-STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}Kb
-STR_ABBREV_BATTERIES                                            :{TINYFONT}Pi
-STR_ABBREV_PLASTIC                                              :{TINYFONT}Cd
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}Ug
-STR_ABBREV_NONE                                                 :{TINYFONT}K0
-STR_ABBREV_ALL                                                  :{TINYFONT}Tất
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}HK
+STR_ABBREV_COAL                                                 :{TINY_FONT}Th
+STR_ABBREV_MAIL                                                 :{TINY_FONT}BK
+STR_ABBREV_OIL                                                  :{TINY_FONT}Dau
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}GS
+STR_ABBREV_GOODS                                                :{TINY_FONT}Hh
+STR_ABBREV_GRAIN                                                :{TINY_FONT}NgC
+STR_ABBREV_WOOD                                                 :{TINY_FONT}Go
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}Qs
+STR_ABBREV_STEEL                                                :{TINY_FONT}ST
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}DQG
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}Qd
+STR_ABBREV_MAIZE                                                :{TINY_FONT}Ngo
+STR_ABBREV_FRUIT                                                :{TINY_FONT}HQ
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}Kc
+STR_ABBREV_FOOD                                                 :{TINY_FONT}Tp
+STR_ABBREV_PAPER                                                :{TINY_FONT}Gi
+STR_ABBREV_GOLD                                                 :{TINY_FONT}Vg
+STR_ABBREV_WATER                                                :{TINY_FONT}Nc
+STR_ABBREV_WHEAT                                                :{TINY_FONT}Bm
+STR_ABBREV_RUBBER                                               :{TINY_FONT}Cs
+STR_ABBREV_SUGAR                                                :{TINY_FONT}Dg
+STR_ABBREV_TOYS                                                 :{TINY_FONT}Đc
+STR_ABBREV_SWEETS                                               :{TINY_FONT}Bk
+STR_ABBREV_COLA                                                 :{TINY_FONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}Kb
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}Pi
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}Cd
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}Ug
+STR_ABBREV_NONE                                                 :{TINY_FONT}K0
+STR_ABBREV_ALL                                                  :{TINY_FONT}Tất
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} hành khách
@@ -516,10 +516,10 @@ STR_MONTH_DEC                                                   :Tháng Mười 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nút
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Hiện khóa trên biểu đồ
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Biểu Đồ Lợi Nhuận Hoạt Động
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Biểu Đồ Thu Nhập
@@ -528,14 +528,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh g
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá trị công ty
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng Giá Cước Vận Chuyển Hàng Hóa
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Số ngày vận chuyển
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Cho phép toàn bộ
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Bỏ toàn bộ
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Số ngày vận chuyển
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Cho phép toàn bộ
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Bỏ toàn bộ
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ toa xe trên đồ thị tỉ lệ trả tiền của toa xe
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các toa xe trên đồ thị tỉ lệ trả tiền của toa xe
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
@@ -545,7 +545,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click v�
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng Tầm Cỡ Công Ty
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Kỹ sư vận tải
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Tổ trưởng vận tải
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Trưởng phòng vận tải
@@ -559,7 +559,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Ông Trùm
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Chi tiết chỉ số năng suất
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Chi tiết
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Hiển thị thông tin chi tiết của công ty này
@@ -588,25 +588,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Tổng �
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Máy Nhạc Jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Tất cả
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Kiểu Cũ
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Kiểu Mới
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Đường Phố
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Tự Chọn 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Tự Chọn 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Âm Lượng
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Hiệu Ứng Tiếng
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}Nhỏ
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}Lớn
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Bài Nhạc
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Tên
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Ngẫu Nhiên
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Chương trình
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Tất cả
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Kiểu Cũ
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Kiểu Mới
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Đường Phố
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Tự Chọn 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Tự Chọn 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Âm Lượng
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Hiệu Ứng Tiếng
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}Nhỏ
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}Lớn
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Bài Nhạc
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tên
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Ngẫu Nhiên
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Chương trình
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Đến bài trước đó trong danh sách chọn
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Đến bài tiếp theo trong danh sách chọn
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Dừng chơi nhạc
@@ -625,18 +625,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Đã ch�
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Chọn Kiểu Chơi Nhạc
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Bảng Bài Nhạc
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Chương Trình - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Xóa
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Bảng Bài Nhạc
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Chương Trình - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Xóa
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Xóa chương trình đang chọn ("Tự chọn 1" và "Tự chọn 2")
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click vào bài nhạc để thêm vào chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click vào bài nhạc để xóa khỏi chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Những công ty đứng đầu đã đạt được {NUM}{}({STRING} Level)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bảng tầm cỡ công ty trong {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Những công ty đứng đầu đã đạt được {NUM}{}({STRING} Level)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Bảng tầm cỡ công ty trong {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Doanh Nhân
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Nhà Thầu
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Nhà tư bản công nghiệp
@@ -644,10 +644,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Nhà Tư Bản
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Kiệt Xuất
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Thế Lực
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Ông Trùm của Thế Kỷ
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} đã nhận được giải '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} từ {COMPANY} đã nhận được giải '{STRING}'!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} đã nhận được giải '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} từ {COMPANY} đã nhận được giải '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Bản Đồ - {STRING}
@@ -667,40 +667,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Hiện c
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click lên nhà máy để tắt/bật hiển thị loại nhà máy đó. Ctrl+Click tắt hết các loại nhà máy trừ cái đang chọn. Ctrl+Click lần nữa để hiển thị cho tất cả các nhà máy
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click lên công ty để tắt/bật hiển thị tài sản công ty đó. Ctrl+Click tắt hết các công ty trừ cái đang chọn. Ctrl+Click lần nữa để hiển thị cho tất cả các công ty
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Đường bộ
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Đường ray
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Ga tàu/Sân bay/Bến cảng
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Tòa nhà/Ngành nghề
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Phương tiện
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Tàu hỏa
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Xe cộ
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Tàu thủy
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Máy bay
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Tuyến vận tải
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Rừng
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Ga tàu hỏa
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Truck Loading Bay
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Bến xe buýt
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Sân bay/Bãi đỗ trực thăng
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Cảng biển
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Đất gồ ghề
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Đất cỏ
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Đất trơ trụi
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Cánh đồng
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Cây cối
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Đá
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Nước
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Không có chủ sở hữu
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Đô thị
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Nhà máy
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Hoang mạc
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Tuyết
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Đường bộ
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Đường ray
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Ga tàu/Sân bay/Bến cảng
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Tòa nhà/Ngành nghề
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Phương tiện
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Tàu hỏa
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Xe cộ
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Tàu thủy
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Máy bay
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Tuyến vận tải
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Rừng
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Ga tàu hỏa
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Truck Loading Bay
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bến xe buýt
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Sân bay/Bãi đỗ trực thăng
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Cảng biển
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Đất gồ ghề
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Đất cỏ
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Đất trơ trụi
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Cánh đồng
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Cây cối
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Đá
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Nước
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Không có chủ sở hữu
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Đô thị
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Nhà máy
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Hoang mạc
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Tuyết
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Bật/tắt tên thị trấn trên bản đồ
 STR_SMALLMAP_CENTER                                             :{BLACK}Xem bản đồ nhỏ này ở cửa sổ lớn
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Tắt tất cả
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bật tất cả
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Hiển thị độ cao
@@ -748,60 +748,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Thay đ
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tiền trợ cấp
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Thông tin chung
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe bus đầu tiên đến {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải đầu tiên đến {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe điện chở khách đầu tiên đến {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải điện đầu tiên đến {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu thủy đầu tiên đến {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Người dân chào đón . . .{}Máy bay đầu tiên đến {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe bus đầu tiên đến {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe tải đầu tiên đến {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe điện chở khách đầu tiên đến {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe tải điện đầu tiên đến {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Tàu thủy đầu tiên đến {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Máy bay đầu tiên đến {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Tàu hoả bị đụng nhau!{}{COMMA} người chết sau tai nạn đáng tiếc này
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Ôtô bị tàu hoả đụng!{}Người lái xe đã tử nạn sau tai nạn này.
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Ôtô bị tàu hoả đụng!{}{COMMA} người đã tử nạn sau tai nạn đáng tiếc này
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Tai Nạn Máy Bay!{}{COMMA} người chết tại {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Tai Nạn Máy Bay!{}Do hết nhiên liệu, {COMMA} người tử nạn
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tàu hoả bị đụng nhau!{}{COMMA} người chết sau tai nạn đáng tiếc này
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Ôtô bị tàu hoả đụng!{}Người lái xe đã tử nạn sau tai nạn này.
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Ôtô bị tàu hoả đụng!{}{COMMA} người đã tử nạn sau tai nạn đáng tiếc này
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Tai Nạn Máy Bay!{}{COMMA} người chết tại {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Tai Nạn Máy Bay!{}Do hết nhiên liệu, {COMMA} người tử nạn
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Tai nạn khí cầu Zeppelin tại {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Xe ôtô đã bị phá hủy vì gặp phải 'UFO'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Nhà máy lọc dầu bị nổ gần thị trấn {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Nhà máy bị phá hủy có dấu hiệu khả nghi gần thị trấn {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' hạ cánh gần thị trấn {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Đất lún đã để lại vệt hủy diệt tại mỏ than gần thị trấn {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Lụt!{}Ít nhất {COMMA} người mất tích, hoặc đã chết chìm sau trận lụt!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Tai nạn khí cầu Zeppelin tại {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Xe ôtô đã bị phá hủy vì gặp phải 'UFO'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Nhà máy lọc dầu bị nổ gần thị trấn {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Nhà máy bị phá hủy có dấu hiệu khả nghi gần thị trấn {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' hạ cánh gần thị trấn {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Đất lún đã để lại vệt hủy diệt tại mỏ than gần thị trấn {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Lụt!{}Ít nhất {COMMA} người mất tích, hoặc đã chết chìm sau trận lụt!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Công ty vận tải đang gặp khó khăn!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} sẽ bị chuyển nhượng hoặc phá sản trừ khi năng suất làm việc tăng lên!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Sáp nhập công ty vận tải!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} đã được bán cho {STRING} với giá {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Phá sản!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} đã bị đóng cửa bởi chủ nợ và tất cả tài sản đã bị bán đi!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Công ty vận tải mới thành lập!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} đang được xây dựng gần thị trấn {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} đã bị kiểm soát bởi {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Giám Đốc)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Công ty vận tải đang gặp khó khăn!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} sẽ bị chuyển nhượng hoặc phá sản trừ khi năng suất làm việc tăng lên!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Sáp nhập công ty vận tải!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} đã được bán cho {STRING} với giá {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Phá sản!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} đã bị đóng cửa bởi chủ nợ và tất cả tài sản đã bị bán đi!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Công ty vận tải mới thành lập!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} đang được xây dựng gần thị trấn {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} đã bị kiểm soát bởi {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Giám Đốc)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} Tài trợ xây dựng Thị Xã mới {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} Tài trợ xây dựng Thị Xã mới {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} mới đang được xây dựng gần {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} được lên kế hoạch xây gần {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}{STRING} mới đang được xây dựng gần {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{STRING} được lên kế hoạch xây gần {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} thông báo sắp đóng cửa!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Vì thiếu hụt nguồn nguyên liệu nên {STRING} thông báo sắp đóng cửa!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Thiếu nguồn gỗ do {STRING} thông báo sắp đóng cửa!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} thông báo sắp đóng cửa!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Vì thiếu hụt nguồn nguyên liệu nên {STRING} thông báo sắp đóng cửa!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Thiếu nguồn gỗ do {STRING} thông báo sắp đóng cửa!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Đồng Euro!{}{}Được giới thiệu là đồng tiền duy nhất cho việc giao dịch hằng ngày trong đất nước bạn!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Suy Thoái Kinh Tế!{}{}Các chuyên gia tài chính quan ngại về sự trì trệ của nền kinh tế!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Suy Thoái Kết Thúc!{}{}Sự tiến triển trong giao dịch mang niềm tin đến cho các doanh nghiệp làm thúc đẩy nền kinh tế!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Đồng Euro!{}{}Được giới thiệu là đồng tiền duy nhất cho việc giao dịch hằng ngày trong đất nước bạn!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Suy Thoái Kinh Tế!{}{}Các chuyên gia tài chính quan ngại về sự trì trệ của nền kinh tế!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Suy Thoái Kết Thúc!{}{}Sự tiến triển trong giao dịch mang niềm tin đến cho các doanh nghiệp làm thúc đẩy nền kinh tế!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} tăng sản lượng!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Phát hiện vỉa than mới ở mỏ {INDUSTRY}!{}Năng suất tăng gấp đôi!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Phát hiện mỏ dầu mới ở {INDUSTRY}!{}Năng suất tăng gấp đôi!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Cải tiến phương pháp canh tác tại {INDUSTRY} năng suất sẽ gấp đôi !
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Sản lượng/số lượng {STRING} tại {INDUSTRY} tăng lên {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sản lượng giảm 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Bị sâu bọ tàn phá tại {INDUSTRY}!{}Năng suất giảm 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Năng suất {STRING} tại {INDUSTRY} giảm {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} tăng sản lượng!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Phát hiện vỉa than mới ở mỏ {INDUSTRY}!{}Năng suất tăng gấp đôi!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Phát hiện mỏ dầu mới ở {INDUSTRY}!{}Năng suất tăng gấp đôi!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Cải tiến phương pháp canh tác tại {INDUSTRY} năng suất sẽ gấp đôi !
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Sản lượng/số lượng {STRING} tại {INDUSTRY} tăng lên {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} sản lượng giảm 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Bị sâu bọ tàn phá tại {INDUSTRY}!{}Năng suất giảm 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Năng suất {STRING} tại {INDUSTRY} giảm {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} đang chờ tại xưởng
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} đang chờ tại xưởng
@@ -821,13 +821,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} không thể tìm đường đi tiếp.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} bị mất phương hướng.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Lợi nhuận của {VEHICLE} năm trước là {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Lợi nhuận của {VEHICLE} năm trước là {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} đã dừng lại do yêu cầu cải biến thất bại
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Thất bại trong tự thay mới {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} mới đã ra lò!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} mới đã ra lò!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} mới đã ra lò! -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ga, bến, cảng {STATION} không chấp nhận {STRING} nữa.
@@ -835,15 +835,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ga, bế
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} đã chấp nhận {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} đã chấp nhận {STRING} và {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Trợ cấp đã hết:{}{}Dịch vụ vận chuyển {STRING} từ {STRING} đến {STRING} sẽ không được trợ cấp nữa.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Đề nghị trợ cấp:{}{}Dịch vụ vận tải {STRING} đầu tiên từ {STRING} đến {STRING} sẽ nhận được tiền trợ cấp trong một năm của chính quyền địa phương!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% đến năm sau!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi đến năm sau!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba đến năm sau!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp tư đến năm sau!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Trợ cấp đã hết:{}{}Dịch vụ vận chuyển {STRING} từ {STRING} đến {STRING} sẽ không được trợ cấp nữa.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Đề nghị trợ cấp:{}{}Dịch vụ vận tải {STRING} đầu tiên từ {STRING} đến {STRING} sẽ nhận được tiền trợ cấp trong một năm của chính quyền địa phương!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% đến năm sau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi đến năm sau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba đến năm sau!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp tư đến năm sau!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Giao thông hỗn loạn tại {TOWN}!{}{}Chương trình sửa đường đầu tư bởi {STRING} mang 6 tháng khốn đốn cho người chạy mô tô!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Giao thông hỗn loạn tại {TOWN}!{}{}Chương trình sửa đường đầu tư bởi {STRING} mang 6 tháng khốn đốn cho người chạy mô tô!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Cửa sổ {COMMA}
@@ -971,7 +971,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất b
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Tự chỉnh tiền tệ
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tỉ giá hối đoái: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tỉ giá hối đoái: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Giảm tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tăng tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Điều chỉnh tỉ giá tiền của bạn đối với 1 Pound (£)
@@ -990,7 +990,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Chọn n
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Chuyển về đồng Euro sớm hơn
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Chuyển về đồng Euro sau
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem trước: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem trước: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) tính bằng tiền của bạn
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa tham số của tiền tự chỉnh
 
@@ -1011,7 +1011,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Lưu
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Số thị trấn: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Số nhà máy: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Tiền vay tối đa ban đầu : {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Tiền vay tối đa ban đầu : {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Độ nổi tiếng ban đầu: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Giá vận hành phương tiện: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Tốc độ xây dựng của đối thủ: {ORANGE}{STRING}
@@ -1427,7 +1427,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn c
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Ô đánh dấu cho biết nếu bạn đã từng dùng mã ăn gian đó
 STR_CHEATS_WARNING                                              :{BLACK}Cảnh báo! Bạn muốn lừa dối những đối thủ thành thực của bạn ư? Những hành động đó của bạn sẽ là vết nhơ suốt đời!
-STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xúc văng nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Đường ngầm có thể vượt lẫn nhau : {ORANGE}{STRING}
@@ -1663,9 +1663,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Danh sá
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}THÔNG TIN CÔNG TY
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Tên công ty: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Khánh thành: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Giá trị Công ty: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Số dư hiện thời: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Thu nhập năm ngoái: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Giá trị Công ty: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Số dư hiện thời: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Thu nhập năm ngoái: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Năng suất: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Phương tiện giao thông: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1810,8 +1810,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} v�
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} khai trương công ty mới (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} rời bỏ ván chơi ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} đổi tên thành {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tặng công ty bạn {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Bạn cho {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tặng công ty bạn {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Bạn cho {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server kết thúc phiên
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server khởi động lại...{}Xin chờ...
 
@@ -1979,7 +1979,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tăng m�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Chọn Loại Cầu Tàu Hỏa
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Chọn Loại Cầu Đường Bộ
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Chọn cầu - chọn loại cầu bạn muốn xây dựng
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Cầu treo thép
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Cầu dầm thép
@@ -2150,7 +2150,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Góp v�
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Chọn loại nhà máy thích hợp trong danh sách
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Nhiều nhà máy ngẫu nhiên
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Phủ bản đồ bằng cách xây nhà máy ngẫu nhiên
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Chi phí: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Chi phí: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Viễn cảnh
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Xây
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Góp vốn
@@ -2171,8 +2171,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Chọn c
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông Tin Địa Lý
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Chi phí giải toả: {LTBLUE}không
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Chi phí giải toả: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Doanh thu khi giải toả: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Chi phí giải toả: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Doanh thu khi giải toả: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Không
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Chủ đất: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Chủ đường bộ: {LTBLUE}{STRING}
@@ -2575,7 +2575,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Bưu ki�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Hàng hoá cần để đô thị tăng trưởng:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} được yêu cầu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} Yêu cầu trong mùa đông
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} đã cung cấp tháng trước
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} đã cung cấp tháng trước
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Độ ồn giới hạn trong đô thị: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Chính quyền địa phương
@@ -2592,7 +2592,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Đổi tên đ�
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Chính quyền địa phương {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Uy tín công ty vận tải:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Các thao tác:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Các thao tác với đô thị, nhấn vào mục để xem chi tiết
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Thực hiện
@@ -2607,14 +2607,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Tài trợ xây
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Mua độc quyền kinh doanh vận tải
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Hối lộ quan chức địa phương
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Chi phí: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Thực hiện chiến dịch quảng cáo trung bình để thu hút khách và hàng hoá vận chuyển.{}Chi phí: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Thực hiện chiến dịch quảng cáo lớn để thu hút khách và hàng hoá vận chuyển.{}Chi phí: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Tài trợ xây dựng lại đường xá của đô thị. Sẽ gây ách tắc giao thông đường bộ trong 6 tháng.{}Chi phí: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Dựng tượng đài tôn vinh ông chủ công ty để quảng bá hình ảnh công ty.{}Chi phí: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Tài trợ xây dựng các toà nhà thương mại để thúc đẩy phát triển đô thị.{}Chi phí: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Mua độc quyền kinh doanh vận tải của đô thị. Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty.{}Chi phí: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}Chi phí: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Thực hiện chiến dịch quảng cáo nhỏ để thu hút khách và hàng hoá vận chuyển.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Thực hiện chiến dịch quảng cáo trung bình để thu hút khách và hàng hoá vận chuyển.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Thực hiện chiến dịch quảng cáo lớn để thu hút khách và hàng hoá vận chuyển.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Tài trợ xây dựng lại đường xá của đô thị. Sẽ gây ách tắc giao thông đường bộ trong 6 tháng.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Dựng tượng đài tôn vinh ông chủ công ty để quảng bá hình ảnh công ty.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Tài trợ xây dựng các toà nhà thương mại để thúc đẩy phát triển đô thị.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Mua độc quyền kinh doanh vận tải của đô thị. Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty.{}Chi phí: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}Chi phí: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ Cấp
@@ -2629,7 +2629,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy v�
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Các nhà ga, bến, cảng - nháy vào tên để xem vị trí nhà ga,bến, cảng. Ctrl+Click mở cửa sổ mới để xem
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Giữ nút Ctrl để chọn nhiều mục
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Ga, bến, cảng
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Không -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Chọn tất cả phương tiện
@@ -2637,10 +2637,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Chọn t
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Không có bất kỳ loại toa xe nào đang chờ
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Đang chờ: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} trung chuyển từ {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} trung chuyển từ {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Chấp nhận
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Liệt kê hàng hoá được chấp nhận
@@ -2682,7 +2682,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Đổi t
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa tên điểm mốc
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}Tài Chính Công Ty {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Tài Chính Công Ty {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Thu nhập/Chi phí
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Xây dựng
@@ -2698,21 +2698,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Thu từ 
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Thu từ tàu thuỷ
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lãi vay vốn
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Khác
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Tổng:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Số dư hiện có
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Đi vay
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Hạn mức vay: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Vay {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Hạn mức vay: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Vay {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vay thêm tiền. Ctrl+Click vay hết hạn mức ngay
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Trả nợ {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Trả nợ {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Trả nợ một phần. Ctrl+Click trả nợ tất cả khả năng hoặc đáo nợ
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Giám đốc)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Giám đốc)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Thành lập: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Phối màu:
@@ -2722,7 +2722,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} máy bay
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} tàu thuỷ
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Không
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Giá trị công ty: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Giá trị công ty: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% cổ phần sở hữu bởi {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Xây trụ sở
@@ -2749,20 +2749,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Bán 25%
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Tên Công Ty
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Tên Giám Đốc
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Chúng tôi tìm một công ty để chuyển nhượng công việc kinh doanh và tài sản công ty chúng tôi.{}{}Bạn có muốn mua công ty {COMPANY} của chúng tôi với giá {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Chúng tôi tìm một công ty để chuyển nhượng công việc kinh doanh và tài sản công ty chúng tôi.{}{}Bạn có muốn mua công ty {COMPANY} của chúng tôi với giá {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Nhà máy
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Không Có -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% đã vận chuyển)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% đã vận chuyển)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% đã vận chuyển)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% đã vận chuyển)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Tên các nhà máy - nháy vào tên để xem vị trí nhà máy. Ctrl+Click mở cửa sổ mới để xem
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Sản lượng tháng trước:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% đã vận chuyển)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% đã vận chuyển)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Xem vị trí trung tâm của nhà máy. Ctrl+Click mở cửa sổ mới để xem
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Mức sản lượng: {YELLOW}{COMMA}%
 
@@ -2774,7 +2774,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Yêu c�
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Toa xe đợi để xử lý:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Sản xuất: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Sản xuất: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2793,7 +2793,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Xe ôtô
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Tàu thuỷ - nháy vào tàu thuỷ để xem chi tiết
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Máy bay - nháy vào máy bay để xem chi tiết
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Lợi nhuận năm nay: {CURRENCY} (năm ngoái: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Lợi nhuận năm nay: {CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tàu sẵn có
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Xe sẵn có
@@ -2849,21 +2849,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Xe Cộ Mới
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Tàu Mới
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Máy Bay Mới
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Chi phí: {GOLD}{CURRENCY}{BLACK} Tải trọng: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Chi phí: {GOLD}{CURRENCY_LONG}{BLACK} Tải trọng: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tốc độ: {GOLD}{VELOCITY}{BLACK} Công suất: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Tốc độ: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Tốc độ trên biển: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Tốc độ trên kênh/sông: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Chi phí hoạt động: {GOLD}{CURRENCY}/yr
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Sức chứa: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Chi phí hoạt động: {GOLD}{CURRENCY_LONG}/yr
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Sức chứa: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(cải biến được)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Thiết kế: {GOLD}{NUM}{BLACK} Niên hạn: {GOLD}{COMMA} năm
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Độ tin cậy tối đa: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Giá thành: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Tải trọng: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Giá thành: {GOLD}{CURRENCY}{BLACK} Tốc độ: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Sức chứa: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Công suất toa xe: {GOLD}+{POWER}{BLACK} Tải trọng: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Giá thành: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Tải trọng: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Giá thành: {GOLD}{CURRENCY_LONG}{BLACK} Tốc độ: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Sức chứa: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Công suất toa xe: {GOLD}+{POWER}{BLACK} Tải trọng: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Cải biến thành: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tất cả kiểu hàng hoá
 STR_PURCHASE_INFO_ALL_BUT                                       :Tất cả trừ {GOLD}
@@ -2908,7 +2908,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Đổi tên xư
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} phương tiện{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tàu hoả - kéo thả để thêm/bớt toa tàu, nháy chuột phải để xem chi tiết.Giữ Ctrl để thực hiện cả chuỗi hành động nêu trên
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ôtô - nháy chuột phải vào ôtô để xem chi tiết
@@ -2984,10 +2984,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :đầu máy ray đơn
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :đầu máy đệm từ
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Giá thành: {CURRENCY} Tải trọng: {WEIGHT_S}{}Tốc độ: {VELOCITY}  Công suất: {POWER}{}Chi phí hoạt động: {CURRENCY}/năm{}Sức chứa: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {CURRENCY} Nặng: {WEIGHT_S}{}Tốc độ: {VELOCITY}  Công suất: {POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY}/yr{}Năng suất: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Giá thành: {CURRENCY} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO}, {CARGO}{}Running Cost: {CURRENCY}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Giá thành: {CURRENCY} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO}{}Chi phí hoạt động: {CURRENCY}/năm
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Giá thành: {CURRENCY_LONG} Tải trọng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}{}Chi phí hoạt động: {CURRENCY_LONG}/năm{}Sức chứa: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {CURRENCY_LONG} Nặng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY_LONG}/yr{}Năng suất: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Giá thành: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Giá thành: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING}
@@ -3081,9 +3081,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Nhắm 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Phục vụ tại {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Đã dừng
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Đã dừng
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Đã dừng
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Đã chạy
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Đã chạy
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Đã chạy
 
 # Vehicle details
@@ -3095,25 +3095,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Đổi t
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Đổi tên tàu thuỷ
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Đổi tên máy bay
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Tuổi: {LTBLUE}{STRING}{BLACK} Chi phí hoạt động: {LTBLUE}{CURRENCY}/năm
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Tuổi: {LTBLUE}{STRING}{BLACK} Chi phí hoạt động: {LTBLUE}{CURRENCY_LONG}/năm
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} năm ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tốc độ tối đa: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_S} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_S} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_SHORT} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_SHORT} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lợi nhuận năm nay: {LTBLUE}{CURRENCY} (năm ngoái: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lợi nhuận năm nay: {LTBLUE}{CURRENCY_LONG} (năm ngoái: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Độ tin cậy: {LTBLUE}{COMMA}%  {BLACK}Hỏng hóc kể từ lần bảo trì cuối: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Sức chứa: {LTBLUE}Không
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Sức chứa: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Sức chứa: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Sức chứa: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Sức chứa: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Sức chứa: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Sức chứa: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Cước trung chuyển: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Cước trung chuyển: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Tần suất bảo trì: {LTBLUE}{COMMA}ngày{BLACK}   Lần bảo trì cuối: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tần suất bảo trì: {LTBLUE}{COMMA}%{BLACK}   Lần bảo trì cuối: {LTBLUE}{DATE_LONG}
@@ -3126,16 +3126,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Đổi t
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Đổi tên máy bay
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Giá trị: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Giá trị: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tổng sức chứa hàng của đoàn tàu:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Trống rỗng
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} từ {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} từ {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} từ {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} từ {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Hàng hoá
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Hiện chi tiết hàng hoá đang chở
@@ -3151,8 +3151,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Sức ch
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Cải biến)
 STR_REFIT_TITLE                                                 :{GOLD}Chọn loại hàng hoá để chở:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO}{}{BLACK}Chi phí cải biến: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Sức chứa mới: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Giá thành: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}{}{BLACK}Chi phí cải biến: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Giá thành: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Chọn các phương tiện để cải biến. Kéo chuột để chọn nhiều phương tiện. Click vào khoảng trống để chọn tất cả. Ctrl+Click sẽ chọn một phương tiện và các thứ nó kéo theo
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Chọn loại hàng mà tàu sẽ vận chuyển
@@ -3441,22 +3441,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết 
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Chi phí: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Chi phí: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Thu nhập: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Thu nhập: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Vận chuyển: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Vận chuyển: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Chi phí ước tính: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Thu nhập ước tính: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Chi phí: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Chi phí: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Thu nhập: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Thu nhập: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Vận chuyển: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Vận chuyển: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Chi phí ước tính: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Thu nhập ước tính: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Đang lưu vào đĩa,{}hãy chờ cho đến khi hoàn thành!
@@ -3505,7 +3505,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Tin nh�
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Vượt qua giới hạn bản đồ
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Quá gần mép bản đồ
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Không đủ tiền - cần {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Không đủ tiền - cần {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Yêu cầu nền đất phẳng
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tạo dốc bị sai hướng
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Không làm thế này được...
@@ -3540,10 +3540,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... đã
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Không thể đổi tên công ty...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Không thể đổi tên giám đốc...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... hạn mức vay tối đa là {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... hạn mức vay tối đa là {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Không thể vay thêm được tiền...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... không vay đâu cần trả
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... cần {CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... cần {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Không thể trả nợ...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Không thể đem cho tiền mà bạn vay từ ngân hàng...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Không mua được công ty...
@@ -4250,37 +4250,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Spectator, {1:S
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4292,32 +4292,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

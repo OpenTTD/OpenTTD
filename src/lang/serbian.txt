@@ -284,73 +284,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.aku                              :gazirano piće
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" a a}
-STR_QUANTITY_COAL                                               :{WEIGHT} uglja
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} uglja
 STR_QUANTITY_MAIL                                               :{COMMA} džak{P "" a ova} pošte
-STR_QUANTITY_OIL                                                :{VOLUME} nafte
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} nafte
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o a a} stoke
 STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" a a} robe
-STR_QUANTITY_GRAIN                                              :{WEIGHT} žitarica
-STR_QUANTITY_WOOD                                               :{WEIGHT} drva
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rude gvožđa
-STR_QUANTITY_STEEL                                              :{WEIGHT} čelika
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} žitarica
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} drva
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} rude gvožđa
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} čelika
 STR_QUANTITY_VALUABLES                                          :{COMMA} džak{P "" a ova} dragocenosti
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} rude bakra
-STR_QUANTITY_MAIZE                                              :{WEIGHT} kukuruza
-STR_QUANTITY_FRUIT                                              :{WEIGHT} voća
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} rude bakra
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} kukuruza
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} voća
 STR_QUANTITY_DIAMONDS                                           :{COMMA} džak{P "" a ova} dijamanata
-STR_QUANTITY_FOOD                                               :{WEIGHT} hrane
-STR_QUANTITY_PAPER                                              :{WEIGHT} papira
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} hrane
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papira
 STR_QUANTITY_GOLD                                               :{COMMA} džak{P "" a ova} zlata
-STR_QUANTITY_WATER                                              :{VOLUME} vode
-STR_QUANTITY_WHEAT                                              :{WEIGHT} pšenice
-STR_QUANTITY_RUBBER                                             :{VOLUME} kaučuka
-STR_QUANTITY_SUGAR                                              :{WEIGHT} šećera
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} vode
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} pšenice
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kaučuka
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} šećera
 STR_QUANTITY_TOYS                                               :{COMMA} igrač{P ka ke aka}
 STR_QUANTITY_SWEETS                                             :{COMMA} džak{P "" a ova} slatkiša
-STR_QUANTITY_COLA                                               :{VOLUME} kole
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} šećerne vune
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} kole
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} šećerne vune
 STR_QUANTITY_BUBBLES                                            :{COMMA} balon{P "" a a}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamele
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} karamele
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a e a}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} plastike
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastike
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaziran{P o a a} pić{P 0 e a a}
 STR_QUANTITY_N_A                                                :Nepoznato
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PT
-STR_ABBREV_COAL                                                 :{TINYFONT}UG
-STR_ABBREV_MAIL                                                 :{TINYFONT}PO
-STR_ABBREV_OIL                                                  :{TINYFONT}NF
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ST
-STR_ABBREV_GOODS                                                :{TINYFONT}RB
-STR_ABBREV_GRAIN                                                :{TINYFONT}ŽT
-STR_ABBREV_WOOD                                                 :{TINYFONT}DR
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}RG
-STR_ABBREV_STEEL                                                :{TINYFONT}ČE
-STR_ABBREV_VALUABLES                                            :{TINYFONT}DG
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}BR
-STR_ABBREV_MAIZE                                                :{TINYFONT}KZ
-STR_ABBREV_FRUIT                                                :{TINYFONT}VĆ
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DT
-STR_ABBREV_FOOD                                                 :{TINYFONT}HR
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}ZL
-STR_ABBREV_WATER                                                :{TINYFONT}VD
-STR_ABBREV_WHEAT                                                :{TINYFONT}PŠ
-STR_ABBREV_RUBBER                                               :{TINYFONT}KČ
-STR_ABBREV_SUGAR                                                :{TINYFONT}ŠĆ
-STR_ABBREV_TOYS                                                 :{TINYFONT}IG
-STR_ABBREV_SWEETS                                               :{TINYFONT}SL
-STR_ABBREV_COLA                                                 :{TINYFONT}KL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ŠV
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BA
-STR_ABBREV_TOFFEE                                               :{TINYFONT}KA
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BT
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GP
-STR_ABBREV_NONE                                                 :{TINYFONT}NŠT
-STR_ABBREV_ALL                                                  :{TINYFONT}SVE
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PT
+STR_ABBREV_COAL                                                 :{TINY_FONT}UG
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PO
+STR_ABBREV_OIL                                                  :{TINY_FONT}NF
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ST
+STR_ABBREV_GOODS                                                :{TINY_FONT}RB
+STR_ABBREV_GRAIN                                                :{TINY_FONT}ŽT
+STR_ABBREV_WOOD                                                 :{TINY_FONT}DR
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}RG
+STR_ABBREV_STEEL                                                :{TINY_FONT}ČE
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}DG
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}BR
+STR_ABBREV_MAIZE                                                :{TINY_FONT}KZ
+STR_ABBREV_FRUIT                                                :{TINY_FONT}VĆ
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DT
+STR_ABBREV_FOOD                                                 :{TINY_FONT}HR
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}ZL
+STR_ABBREV_WATER                                                :{TINY_FONT}VD
+STR_ABBREV_WHEAT                                                :{TINY_FONT}PŠ
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KČ
+STR_ABBREV_SUGAR                                                :{TINY_FONT}ŠĆ
+STR_ABBREV_TOYS                                                 :{TINY_FONT}IG
+STR_ABBREV_SWEETS                                               :{TINY_FONT}SL
+STR_ABBREV_COLA                                                 :{TINY_FONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}ŠV
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BA
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}KA
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BT
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}GP
+STR_ABBREV_NONE                                                 :{TINY_FONT}NŠT
+STR_ABBREV_ALL                                                  :{TINY_FONT}SVE
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} putnik{P "" a a}
@@ -704,10 +704,10 @@ STR_MONTH_DEC                                                   :Decembar
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legenda
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Prikaži legendu
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafikon operativnog profita
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafikon prihoda
@@ -716,14 +716,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Rejting 
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vrednosti preduzeća
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stope prihoda od tovara
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dana u tranzitu
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Isplata za dostavu 10 jedinica (ili 10 hiljada litara) tovara na razdaljinu od 20 kvadrata
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Prikaži sve
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Sakri sve
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dana u tranzitu
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Isplata za dostavu 10 jedinica (ili 10 hiljada litara) tovara na razdaljinu od 20 kvadrata
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Prikaži sve
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Sakri sve
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Prikazuje sve vrste tovara na grafikonu prihoda
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sakriva sve vrste tovara na grafikonu prihoda
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Uključi/Isključi grafikone po vrsti tovara
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Prikaži detaljne ocene učinka
 
@@ -733,7 +733,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Kliknite
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabela lige preduzeća
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inženjer
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Šef saobraćaja
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordinator prevoza
@@ -747,7 +747,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tajkun
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljan pergled poslovanja
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalji
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Prikazuje detalje o ovom preduzeću
@@ -776,25 +776,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Ukupno b
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Džez džuboks
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Sve
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Stari zvuk
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Novi zvuk
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Lagane stvari
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Lični raspored 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Lični raspored 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Jačina muzike
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Jačina ambijenta
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}Tiho
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}Glasno
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Numera
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Naziv
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Puštaj nasumično
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Sve
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Stari zvuk
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Novi zvuk
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Lagane stvari
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Lični raspored 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Lični raspored 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Jačina muzike
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Jačina ambijenta
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}Tiho
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}Glasno
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Numera
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Naziv
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Puštaj nasumično
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Skoči na prethodnu numeru u izboru
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Skoči na sledeću numeru u izboru
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Prekini muziku
@@ -813,18 +813,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Izabran 
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Izbor muzičkog programa
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Indeks numera
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Obriši
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Indeks numera
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Obriši
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Obriši tekući program (samo korisnički-definisani programi)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na numeru je dodaje u tekući program (samo za korisnički-definisane programe)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pritisnite na muzičku numeru kako biste je uklonili sa trenutnog rasporeda (samo za Custom1 ili Custom2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najbolja preduzeća koja su dostigla {NUM}{}({STRING} nivo)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM} u Tabeli Lige Preduzeća
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najbolja preduzeća koja su dostigla {NUM}{}({STRING} nivo)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}{NUM} u Tabeli Lige Preduzeća
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Biznismen
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN.gen                 :biznismena
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Privrednik
@@ -839,10 +839,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL.gen                       :mogula
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tajkun veka
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY.gen       :tajkuna veka
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} dostiže status '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME}, vlasnik preduzeća {COMPANY} je dostigao status '{STRING}'!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} dostiže status '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME}, vlasnik preduzeća {COMPANY} je dostigao status '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Karta - {STRING}
@@ -862,40 +862,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Prikazuj
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikom na industriju se prikazuju/ne prikazuju njene fabrike. Ctrl+Klik prikazuje fabrike samo odabrane. Sa ponovnim Ctrl+Klik prikazuju se fabrike svih industrija
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikom na preduzeće se prikazuje/ne prikazuje njeno vlasništvo. Ctrl+Klik prikazuje vlasništvo samo odabranog. Sa ponovnim Ctrl+Klik prikazuju se vlasništva svih preduzeća
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Putevi
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Pruge
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stanice/Aerodromi/Pristaništa
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Građevine/Industrije
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vozila
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Vozovi
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Drumska vozila
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Brodovi
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Letelice
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Rute Prevoza
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Šuma
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Železnička stanica
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Utovar kamiona
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Autobuska stanica
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aerodrom/Heliodrom
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Pristanište
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Grubo tlo
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Travnato tlo
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Ogoljeno tlo
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Polja
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Drveće
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Stene
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Voda
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Nema vlasnika
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Naselja
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrije
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Pustinja
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sneg
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Putevi
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Pruge
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stanice/Aerodromi/Pristaništa
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Građevine/Industrije
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Vozila
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Vozovi
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Drumska vozila
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Brodovi
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Letelice
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rute Prevoza
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Šuma
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Železnička stanica
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Utovar kamiona
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobuska stanica
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aerodrom/Heliodrom
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Pristanište
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Grubo tlo
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Travnato tlo
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Ogoljeno tlo
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Polja
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Drveće
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Stene
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Voda
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Nema vlasnika
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Naselja
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industrije
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Pustinja
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sneg
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Prikazuje imena naselja na karti
 STR_SMALLMAP_CENTER                                             :{BLACK}Pozicionira kartu na trenutnu poziciju
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Sva sakrivena
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sva prikazana
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Prikaži visine
@@ -943,60 +943,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Promene
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencije
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Opšta obaveštenja
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog voza na stanicu {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog autobusa na stanicu {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog kamiona na stanicu {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog tramvaja na stanicu {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog teretnog tamvaja na stanicu {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog broda na pristanište {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prve letilice na aerodrom {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog voza na stanicu {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog autobusa na stanicu {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog kamiona na stanicu {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog tramvaja na stanicu {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog teretnog tamvaja na stanicu {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog broda na pristanište {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prve letilice na aerodrom {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Sudar vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Avionska nesraća!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji kod {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Avionska nesreća!{}Letilici je nestalo goriva, {COMMA} {P "" su je} poginu{P o la lo} u padu!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Sudar vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Avionska nesraća!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji kod {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Avionska nesreća!{}Letilici je nestalo goriva, {COMMA} {P "" su je} poginu{P o la lo} u padu!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Cepelin se srušio kod {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Drumskom vozilo uništeno pri sudaru sa 'NLO'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Eksplozija naftnte rafinerije blizu naselja {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrika uništena pri nepoznatim okolnostima blizu naselja {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'NLO' sleteo blizu naselja {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Urušavanje rudnika uglja uništilo je svoju okolinu blizu naselja {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Poplave!{}{COMMA} je barem nesta{P o lo lo}, pretpostavlja se da {P je su su} poginu{P o li li} zbog velike nepogode!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Cepelin se srušio kod {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Drumskom vozilo uništeno pri sudaru sa 'NLO'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplozija naftnte rafinerije blizu naselja {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabrika uništena pri nepoznatim okolnostima blizu naselja {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'NLO' sleteo blizu naselja {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Urušavanje rudnika uglja uništilo je svoju okolinu blizu naselja {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Poplave!{}{COMMA} je barem nesta{P o lo lo}, pretpostavlja se da {P je su su} poginu{P o li li} zbog velike nepogode!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Preduzeće za prevoz u nevolji!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}Preduzeće {STRING} će biti prodato ili zatvoreno zbog bankrota ukoliko se poslovanje ne popravi!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Spajanje preduzeća za prevoz!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} je prodato preduzeću {STRING} za {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrot!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}Preduzeće {STRING} je zatvoreno od strane njenih kreditera, a vlasništvo je rasprodato!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Otvoreno novo preduzeće za prevoz!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} počinje sa gradnjom blizu naselja {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} je preuzeto od strane preduzeća {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(vlasnik)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Preduzeće za prevoz u nevolji!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}Preduzeće {STRING} će biti prodato ili zatvoreno zbog bankrota ukoliko se poslovanje ne popravi!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Spajanje preduzeća za prevoz!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} je prodato preduzeću {STRING} za {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankrot!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}Preduzeće {STRING} je zatvoreno od strane njenih kreditera, a vlasništvo je rasprodato!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Otvoreno novo preduzeće za prevoz!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} počinje sa gradnjom blizu naselja {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} je preuzeto od strane preduzeća {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(vlasnik)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} je sponzorisao izgradnju novog naselja {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} je sponzorisao izgradnju novog naselja {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G i a o} {STRING} je u izgradnji kod naselja {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G i a o} {STRING} je posađen{G 0 "" a o} kod naselja {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nov{G i a o} {STRING} je u izgradnji kod naselja {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nov{G i a o} {STRING} je posađen{G 0 "" a o} kod naselja {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} objavljuje prestanak sa daljim radom!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problem sa zalihama je prouzrokovao da {STRING} objavi prestanak sa daljim radom!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Nedostatak obližnjeg drveća je prouzrokovao da {STRING} objavi prestanak sa daljim radom!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} objavljuje prestanak sa daljim radom!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Problem sa zalihama je prouzrokovao da {STRING} objavi prestanak sa daljim radom!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Nedostatak obližnjeg drveća je prouzrokovao da {STRING} objavi prestanak sa daljim radom!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Evropska Monetarna Unija!{}{}Euro je uveden kao jedina valuta za uobičajne transakcije u vašoj zemlji!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Svetska recesija!{}{}Finansijski eksperti se plaše najgoreg dok ekonomija slabi sve više!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesija završena!{}{}Preokret u trgovini pruža podršku industrijama dok ekonomija jača!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Evropska Monetarna Unija!{}{}Euro je uveden kao jedina valuta za uobičajne transakcije u vašoj zemlji!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Svetska recesija!{}{}Finansijski eksperti se plaše najgoreg dok ekonomija slabi sve više!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Recesija završena!{}{}Preokret u trgovini pruža podršku industrijama dok ekonomija jača!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} povećava proizvodnju!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Pronađena nova ležišta uglja u {INDUSTRY}!{}Očekuje se duplo veća proizvodnja!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nove rezerve nafte otkrivene u {INDUSTRY}!{}Očekuje se duplo veća proizvodnja!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Od unapređenih poljoprivrednih metoda u {INDUSTRY} očekuje se dupliranje prinosa!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} povećava proizvodnju {0:STRING.gen} za {2:COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} proizvodnja je opala za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Najezda insekata u {INDUSTRY}!{}Proizvodnja opala za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} smanjuje proizvodnju {0:STRING.gen} za {2:COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} povećava proizvodnju!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Pronađena nova ležišta uglja u {INDUSTRY}!{}Očekuje se duplo veća proizvodnja!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nove rezerve nafte otkrivene u {INDUSTRY}!{}Očekuje se duplo veća proizvodnja!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Od unapređenih poljoprivrednih metoda u {INDUSTRY} očekuje se dupliranje prinosa!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY} povećava proizvodnju {0:STRING.gen} za {2:COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} proizvodnja je opala za 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Najezda insekata u {INDUSTRY}!{}Proizvodnja opala za 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY} smanjuje proizvodnju {0:STRING.gen} za {2:COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čeka u depou
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čeka u depou
@@ -1016,13 +1016,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} previše zastareva i hitno bi ga/je trebalo zameniti
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne može za dalje da pronađe put
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se izgubio
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} je prošle godine imao dobit od {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} je prošle godine imao dobit od {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Neuspešna primena naredbe preuređivanja {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatska obnova nije uspela za {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nov{G "" a o} {STRING} od sada u prodaji!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nov{G "" a o} {STRING} od sada u prodaji!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G "" a o} {STRING} od sada u prodaji!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} više ne prihvata {STRING}
@@ -1030,15 +1030,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} od sada prihvata {STRING.aku}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} od sada prihvata {STRING.aku} i {STRING.aku}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ponuda subvencije istekla:{}{}Prevoz {STRING.gen} iz {STRING} u {STRING} se više neće stimulisati
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvencija povučena:{}{}Usluga prevoza {STRING.gen} između stanica {STRING} i {STRING} više nije u opticaju
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Ponuda subvencije:{}{}Preduzimač koji prvi preveze {STRING.aku} od {STRING} do {STRING} stiče pravo na dodatnu zaradu tokom sledeća 24 meseca!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti 50% više u narednih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti duplo više u narednih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti trostruko više u narednih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti četvorostruko više u narednih godinu dana!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponuda subvencije istekla:{}{}Prevoz {STRING.gen} iz {STRING} u {STRING} se više neće stimulisati
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija povučena:{}{}Usluga prevoza {STRING.gen} između stanica {STRING} i {STRING} više nije u opticaju
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Ponuda subvencije:{}{}Preduzimač koji prvi preveze {STRING.aku} od {STRING} do {STRING} stiče pravo na dodatnu zaradu tokom sledeća 24 meseca!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti 50% više u narednih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti duplo više u narednih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti trostruko više u narednih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti četvorostruko više u narednih godinu dana!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN} - haos na ulicama!{}{}Program rekonstrukcije puteva sponzorisan od strane preduzeća {STRING} donosi vozačima 6 meseci agonije!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} - haos na ulicama!{}{}Program rekonstrukcije puteva sponzorisan od strane preduzeća {STRING} donosi vozačima 6 meseci agonije!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled{COMMA}
@@ -1166,7 +1166,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Neuspeš
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sopstvena moneta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni kurs: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni kurs: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Smanjite vrednost vaše monete u odnosu na jednu funtu (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Povećajte vrednost vaše monete u odnosu na jednu funtu (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Postavite vrednost vaše monete u odnosu na jednu funtu (£)
@@ -1185,7 +1185,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Odredite
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Raniji prelazak na euro
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Kasniji prelazak na euro
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 funti (£) u vašoj moneti
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promena parametara sopstvene monete
 
@@ -1206,7 +1206,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sačuvaj
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Najveći broj suparnika: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Broj naselja: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Broj fabrika: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Najveća početna pozajmica: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Najveća početna pozajmica: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Početna interesna kamata: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Troškovi održavanja vozila: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Brzina gradnje suparnika: {ORANGE}{STRING}
@@ -1622,7 +1622,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Da li s
 STR_CHEATS                                                      :{WHITE}Varanja
 STR_CHEATS_TOOLTIP                                              :{BLACK}Štiklirano polje označava da ste i ranije koristili ovu opciju
 STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo ćete prevariti vaše saradnike. Imajte na umu da će takav loš postupak biti trajno upamćen
-STR_CHEAT_MONEY                                                 :{LTBLUE}Dodati još {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Dodati još {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Upravljanje preduzećem: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklanja fabrike, nepokretnosti): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli mogu da se ukrštaju: {ORANGE}{STRING}
@@ -1858,9 +1858,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Spisak s
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}PODACI O PREDUZEĆU
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Naziv preduzeća: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguracija: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Vrednost preduzeća: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Trenutni odnos: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Prošlogodišnji prihod: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Vrednost preduzeća: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Trenutni odnos: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Prošlogodišnji prihod: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Uspešnost: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Vozila: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -2005,8 +2005,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} je osnovao novo preduzeće (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} je napustio partiju ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je promenio/la ime u {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je dao vašem preduzeću {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dali ste {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je dao vašem preduzeću {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dali ste {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server je zatvorio sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se ponovo pokreće...{}Molimo sačekajte...
 
@@ -2174,7 +2174,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povećav
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Izbor železničkog mosta
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Izbor drumskog mosta
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Izbor mosta - gradnja se potvrđuje klikom na željeni most
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Viseći, čelični
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Gredni, čelični
@@ -2345,7 +2345,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansir
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Izaberite odgovarajuću fabriku sa spiska
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Mnogo nasumičnih fabrika
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Popunjava teren sa nasumično rasporđenim fabrikama
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Trošak: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Trošak: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Istraži
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Izgradi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansiraj
@@ -2366,8 +2366,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Obeleža
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Prikaži podatke o zemljištu
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cena čišćenja: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cena čišćenja: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Dobit po uklanjanju: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cena čišćenja: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Dobit po uklanjanju: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Vlasnik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Vlasnik kolovoza: {LTBLUE}{STRING}
@@ -2770,7 +2770,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Količin
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Tovar potreban za razvoj naselja:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} potrebno zimi
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} dostavljeno prošlog meseca
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} dostavljeno prošlog meseca
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivo buke u naselju: {ORANGE}{COMMA}{BLACK}  najviše: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pozicionira glavni pogled na lokaciju naselja. Ctrl+Klik otvara novi pogled na lokaciju naselja
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalna vlast
@@ -2787,7 +2787,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Preimenuj nasel
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Lokalna vlast naselja {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Kotiranje preduzeća:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Raspoložive akcije:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Spisak akcija na raspolaganju u ovom naselju - klik na akciju pruža uvid u više detalja
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Uradi
@@ -2802,14 +2802,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansiranje no
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupovina ekskluzivnih prava prevoza
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmićivanje lokalne vlasti
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Ulaganje u malu reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Ulaganje u reklamnu kampanju srednje veličine će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Ulaganje u veliku reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansiranje rekonstrukcije lokalne mreže puteva. Može prouzrokovati kolaps u drumskom saobraćaju u trajanju do 6 meseci.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Otkrivanje spomenika preduzeća.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finansiranje izgradnje novih komercijalnih objekata u naselju.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupovina ekskluzivnih prava prevoza od lokalne vlasti na godinu dana, osigurava da će lokalni korisnici prevoza koristiti isključivo usluge vašeg preduzeća.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Davanje mita lokalnoj vlasti kako bi porastao rejting vašeg preduzeća, uz rizik velike štete ukoliko se otkrije.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Ulaganje u malu reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Ulaganje u reklamnu kampanju srednje veličine će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Ulaganje u veliku reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansiranje rekonstrukcije lokalne mreže puteva. Može prouzrokovati kolaps u drumskom saobraćaju u trajanju do 6 meseci.{} Trošak: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Otkrivanje spomenika preduzeća.{} Trošak: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finansiranje izgradnje novih komercijalnih objekata u naselju.{} Trošak: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupovina ekskluzivnih prava prevoza od lokalne vlasti na godinu dana, osigurava da će lokalni korisnici prevoza koristiti isključivo usluge vašeg preduzeća.{} Trošak: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Davanje mita lokalnoj vlasti kako bi porastao rejting vašeg preduzeća, uz rizik velike štete ukoliko se otkrije.{} Cena: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
@@ -2824,7 +2824,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom n
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena stanica - klikom na ime se centrira glavni pogled na stanicu. Ctrl+Klik otvara novi pogled na lokaciju stanice
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Držanjem Ctrl moguće je označiti više od jedne stavke
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stanic{P a e a}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Prazno -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Odaberi sve objekte
@@ -2832,10 +2832,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Odaberi 
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ni jedna vrsta tovara nije na čekanju
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čeka: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} na putu iz {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na putu iz {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koje stanica prihvata
@@ -2877,7 +2877,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Promeni 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena naziva putanje
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finansije {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finansije {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Rashodi/Prihodi
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Izgradnja
@@ -2893,21 +2893,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Letelice 
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Brodovi - Prihod
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Kamata na zajam
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Ostalo
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Ukupno:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Stanje na računu
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Zajam
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Najviša Pozajmica: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pozajmi {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Najviša Pozajmica: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pozajmi {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Uvećanje količine zajma. Sa Ctrl+Klik se pozajmljuje najviši mogući iznos
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vrati {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vrati {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Otplati deo duga. Sa Ctrl+Klik se otplaćuje največi mogući iznos duga
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(vlasnik)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(vlasnik)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Osnovano: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Šema boja:
@@ -2917,7 +2917,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} letilic{P a e a}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} brod{P "" a ova}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nema
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrednost preduzeća: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrednost preduzeća: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% u vlasništvu preduzeća {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Izgradnja upravne zgrade
@@ -2944,20 +2944,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaja 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime Preduzeća
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ime vlasnika
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}U potrazi smo za preduzećem koje bi preuzelo naše.{}{}Da li biste kupili {COMPANY} za {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}U potrazi smo za preduzećem koje bi preuzelo naše.{}{}Da li biste kupili {COMPANY} za {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Fabrike
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nema -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prevezeno)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% prevezeno)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Imena fabrika - klikom na ime premešta se glavni pogled na fabriku. Ctrl+Klik otvara novi pogled na lokaciju fabrike
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Prošlomesečna proizvodnja:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% prevezeno)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% prevezeno)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Prebacuje glavni pogled na lokaciju fabrike. Ctrl+Klik otvara novi pogled na lokaciju fabrike
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivo proizvodnje: {YELLOW}{COMMA}%
 
@@ -2969,7 +2969,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Potražu
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Tovar koji čeka na obradu:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2988,7 +2988,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Drumska 
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Brodovi - kliknite na brod za podatke
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letilice - kliknite na letilicu za podatke
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Ovogodišnja zarada: {CURRENCY} (prošle godine: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Ovogodišnja zarada: {CURRENCY_LONG} (prošle godine: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupni Vozovi
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupna Drumska Vozila
@@ -3044,21 +3044,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova Drumska Vo
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novi Brodovi
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Letilice
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Težina: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Težina: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Brzina na moru: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Brzina na kanalu/reci: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena održavanja: {GOLD}{CURRENCY}/yr
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena održavanja: {GOLD}{CURRENCY_LONG}/yr
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(prepravljiv)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektovan: {GOLD}{NUM}{BLACK} Životni vek: {GOLD}{COMMA} godin{P a e a}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Najviša pouzdanost: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Brzina: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Nosivost: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorni vagoni: {GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Brzina: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Nosivost: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorni vagoni: {GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prepravljivo za: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tovara
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve sem {GOLD}
@@ -3103,7 +3103,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Preimenuj depo
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - prevlačenjem se vozila dodaju/uklanjaju iz kompozicije, desni klik na voz za podatke o njemu, CTRL i desni klik za podatke o kompoziciji
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - desni klik na vozilo za podatke o njemu
@@ -3185,10 +3185,10 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.aku                      :jednopružnog �
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=srednji}megnetno žel. vučno vozilo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.aku                        :magnetnog žel. vučnog vozila
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY}/god.{}Nosivost: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY}/god{}Nosivost: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO}, {CARGO}{}Cena Održavanja: {CURRENCY}/god.
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO}{}Cena Održavanja: {CURRENCY}/god.
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY_LONG}/god.{}Nosivost: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY_LONG}/god{}Nosivost: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}, {CARGO_LONG}{}Cena Održavanja: {CURRENCY_LONG}/god.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}{}Cena Održavanja: {CURRENCY_LONG}/god.
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zameni {STRING}
@@ -3292,9 +3292,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ide ka 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servisiranje u {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zaustavljeno
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Zaustavljeno
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Zaustavljeno
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Pokrenuto
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Pokrenuto
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pokrenuto
 
 # Vehicle details
@@ -3306,25 +3306,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Naziv dr
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Naziv broda
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Naziv letilice
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena Održavanja: {LTBLUE}{CURRENCY}/god.
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena Održavanja: {LTBLUE}{CURRENCY_LONG}/god.
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} godin{P a e a} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} godin{P a e a} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Najveća brzina: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_S} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_S} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Najveća vučna snaga: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Najveća vučna snaga: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ovogodišnja zarada: {LTBLUE}{CURRENCY} (prošlogodišnja: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ovogodišnja zarada: {LTBLUE}{CURRENCY_LONG} (prošlogodišnja: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarova od poslednjeg servisa: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Nosivost: {LTBLUE}Nula
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Nosivost: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Nosivost: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Nosivost: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Nosivost: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Nosivost: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Nosivost: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Zarada od transfera: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Zarada od transfera: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Period servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period servisiranja: {LTBLUE}{COMMA}%{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
@@ -3337,16 +3337,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Naziv br
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Naziv letilice
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Ukupana nosivost ovog voza:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prazno
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} sa {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} sa {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} sa {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} sa {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Tovar
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Prikazuje podatke o tovaru koji se prevozi
@@ -3362,8 +3362,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prepravljanje)
 STR_REFIT_TITLE                                                 :{GOLD}Izaberite vrstu tereta za prevoz:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova nosivost: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Obeležavanje vozila za prepravku. Povlačenjem miša moguće je obležiti više vozila. Klikom na prazan prostor obležava celo vozilo. Sa Ctrl+Klik će se obeležiti vozilo i prateći lanac
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza
@@ -3652,22 +3652,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Trošak: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Trošak: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Prihod: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Prihod: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Procena troška: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Procena zarade: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Trošak: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Trošak: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Prihod: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Prihod: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Procena troška: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Procena zarade: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Čuvanje je još u toku,{}molim sačekajte dok se ne završi!
@@ -3716,7 +3716,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Izvan terena
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Previše je blizu ivici terena
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nema dovoljno novca - potrebno je {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nema dovoljno novca - potrebno je {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Neophodno je ravno tlo
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Teren je nagnut na lošu stranu
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Neizvodljivo...
@@ -3751,10 +3751,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... već
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Preduzeće se ne može preimenovati...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Vlasnik se ne može preimenovati...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maskimalan dozvoljen zajam iznosi: {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maskimalan dozvoljen zajam iznosi: {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nije moguće pozajmiti još novca...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nema duga
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... potrebno {CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... potrebno {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nije moguće vratiti deo zajma...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nemoguće je dati novac koji je pozajmljen od banke...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nije moguće kupiti preduzeće...
@@ -4461,37 +4461,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Posmatrač, {1:
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4503,32 +4503,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

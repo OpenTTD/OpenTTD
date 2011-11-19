@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :跳跳水
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} 位旅客
-STR_QUANTITY_COAL                                               :{WEIGHT} 煤炭
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} 煤炭
 STR_QUANTITY_MAIL                                               :{COMMA} 包邮件
-STR_QUANTITY_OIL                                                :{VOLUME} 原油
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} 原油
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} 头牲畜
 STR_QUANTITY_GOODS                                              :{COMMA} 件货物
-STR_QUANTITY_GRAIN                                              :{WEIGHT} 谷物
-STR_QUANTITY_WOOD                                               :{WEIGHT} 木材
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} 铁矿石
-STR_QUANTITY_STEEL                                              :{WEIGHT} 钢材
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} 谷物
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} 木材
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} 铁矿石
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} 钢材
 STR_QUANTITY_VALUABLES                                          :{COMMA} 包贵重品
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} 铜矿石
-STR_QUANTITY_MAIZE                                              :{WEIGHT} 玉米
-STR_QUANTITY_FRUIT                                              :{WEIGHT} 水果
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} 铜矿石
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} 玉米
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} 水果
 STR_QUANTITY_DIAMONDS                                           :{COMMA} 包钻石
-STR_QUANTITY_FOOD                                               :{WEIGHT} 食品
-STR_QUANTITY_PAPER                                              :{WEIGHT} 纸张
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} 食品
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} 纸张
 STR_QUANTITY_GOLD                                               :{COMMA} 包黄金
-STR_QUANTITY_WATER                                              :{VOLUME} 饮用水
-STR_QUANTITY_WHEAT                                              :{WEIGHT} 小麦
-STR_QUANTITY_RUBBER                                             :{VOLUME} 橡胶
-STR_QUANTITY_SUGAR                                              :{WEIGHT} 蔗糖
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} 饮用水
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} 小麦
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} 橡胶
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} 蔗糖
 STR_QUANTITY_TOYS                                               :{COMMA} 件玩具
 STR_QUANTITY_SWEETS                                             :{COMMA} 包糖果
-STR_QUANTITY_COLA                                               :{VOLUME} 可乐
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} 棉花糖
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} 可乐
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} 棉花糖
 STR_QUANTITY_BUBBLES                                            :{COMMA} 个泡泡
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} 太妃糖
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} 太妃糖
 STR_QUANTITY_BATTERIES                                          :{COMMA} 箱电池
-STR_QUANTITY_PLASTIC                                            :{VOLUME} 塑料
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} 塑料
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 瓶跳跳水
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}客
-STR_ABBREV_COAL                                                 :{TINYFONT}煤
-STR_ABBREV_MAIL                                                 :{TINYFONT}邮
-STR_ABBREV_OIL                                                  :{TINYFONT}油
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}畜
-STR_ABBREV_GOODS                                                :{TINYFONT}货
-STR_ABBREV_GRAIN                                                :{TINYFONT}谷
-STR_ABBREV_WOOD                                                 :{TINYFONT}木
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}铁
-STR_ABBREV_STEEL                                                :{TINYFONT}钢
-STR_ABBREV_VALUABLES                                            :{TINYFONT}贵
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}铜
-STR_ABBREV_MAIZE                                                :{TINYFONT}黍
-STR_ABBREV_FRUIT                                                :{TINYFONT}果
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}钻
-STR_ABBREV_FOOD                                                 :{TINYFONT}食
-STR_ABBREV_PAPER                                                :{TINYFONT}纸
-STR_ABBREV_GOLD                                                 :{TINYFONT}金
-STR_ABBREV_WATER                                                :{TINYFONT}水
-STR_ABBREV_WHEAT                                                :{TINYFONT}麦
-STR_ABBREV_RUBBER                                               :{TINYFONT}胶
-STR_ABBREV_SUGAR                                                :{TINYFONT}蔗
-STR_ABBREV_TOYS                                                 :{TINYFONT}玩
-STR_ABBREV_SWEETS                                               :{TINYFONT}糖
-STR_ABBREV_COLA                                                 :{TINYFONT}可
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}棉
-STR_ABBREV_BUBBLES                                              :{TINYFONT}泡
-STR_ABBREV_TOFFEE                                               :{TINYFONT}太
-STR_ABBREV_BATTERIES                                            :{TINYFONT}电
-STR_ABBREV_PLASTIC                                              :{TINYFONT}塑
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}跳
-STR_ABBREV_NONE                                                 :{TINYFONT}无
-STR_ABBREV_ALL                                                  :{TINYFONT}全
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}客
+STR_ABBREV_COAL                                                 :{TINY_FONT}煤
+STR_ABBREV_MAIL                                                 :{TINY_FONT}邮
+STR_ABBREV_OIL                                                  :{TINY_FONT}油
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}畜
+STR_ABBREV_GOODS                                                :{TINY_FONT}货
+STR_ABBREV_GRAIN                                                :{TINY_FONT}谷
+STR_ABBREV_WOOD                                                 :{TINY_FONT}木
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}铁
+STR_ABBREV_STEEL                                                :{TINY_FONT}钢
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}贵
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}铜
+STR_ABBREV_MAIZE                                                :{TINY_FONT}黍
+STR_ABBREV_FRUIT                                                :{TINY_FONT}果
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}钻
+STR_ABBREV_FOOD                                                 :{TINY_FONT}食
+STR_ABBREV_PAPER                                                :{TINY_FONT}纸
+STR_ABBREV_GOLD                                                 :{TINY_FONT}金
+STR_ABBREV_WATER                                                :{TINY_FONT}水
+STR_ABBREV_WHEAT                                                :{TINY_FONT}麦
+STR_ABBREV_RUBBER                                               :{TINY_FONT}胶
+STR_ABBREV_SUGAR                                                :{TINY_FONT}蔗
+STR_ABBREV_TOYS                                                 :{TINY_FONT}玩
+STR_ABBREV_SWEETS                                               :{TINY_FONT}糖
+STR_ABBREV_COLA                                                 :{TINY_FONT}可
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}棉
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}泡
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}太
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}电
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}塑
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}跳
+STR_ABBREV_NONE                                                 :{TINY_FONT}无
+STR_ABBREV_ALL                                                  :{TINY_FONT}全
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} 旅客
@@ -516,10 +516,10 @@ STR_MONTH_DEC                                                   :12月
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}索引
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}显示图表的公司索引
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}利润图表
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}收入图表
@@ -528,14 +528,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司�
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司市值
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运输价格
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}运输时间（天）
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}将 10 单位 (或 10,000 升) 货物运输 20 个方格
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}全部启用
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}全部禁用
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}运输时间（天）
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}将 10 单位 (或 10,000 升) 货物运输 20 个方格
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}全部启用
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}全部禁用
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}在货物费用表中显示所有货物
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}在货物运费表中隐藏所有货物
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换是否显示某种货物
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}查看详细数据
 
@@ -545,7 +545,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}点击�
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}公司评价排名
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :车库主管
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :线路经理
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :运输代理
@@ -559,7 +559,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :运输大亨
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}公司评价明细
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}详情
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}查看该公司详情
@@ -588,25 +588,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}总的�
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}音乐点唱机
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}全部
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}旧风格
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}新风格
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy街头
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}自定义1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}自定义2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}音乐音量
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}音效音量
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}音轨
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}乐曲主题
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}随机播放
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}列表播放
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}全部
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}旧风格
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}新风格
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy街头
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}自定义1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}自定义2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}音乐音量
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}音效音量
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}音轨
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}乐曲主题
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}随机播放
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}列表播放
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}跳到上一首
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}跳到下一首
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}停止播放音乐
@@ -625,18 +625,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}选择�
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}音乐选单
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}全部音轨列表
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}当前选用'{STRING}'列表
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}清除
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}全部音轨列表
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}当前选用'{STRING}'列表
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}清除
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}清除当前列表中曲目{}（仅限自定义1或自定义2）
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}点击音乐曲目以加入当前播放列表{}(仅限自定义1或自定义2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}达到 {NUM} 的顶级公司！{}({STRING} 级别)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}在{NUM}年，公司表现值排名
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}达到 {NUM} 的顶级公司！{}({STRING} 级别)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}在{NUM}年，公司表现值排名
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :运输个体户
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :运输代理商
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :运输企业主
@@ -644,10 +644,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :运输资本家
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :运输行业巨子
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :运输行业领袖
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :世纪大亨
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} 达到 '{STRING}' 的状态！
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} 在 {COMPANY} 达到 '{STRING}' 状态！
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} 达到 '{STRING}' 的状态！
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} 在 {COMPANY} 达到 '{STRING}' 状态！
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}地图 - {STRING}
@@ -667,40 +667,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}在地�
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}点击一种工业类型以显示. Ctrl+左击 只显示该工业类型. 再度 Ctrl+左击 显示所有工业类型
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}点击一个公司以显示. Ctrl+左击只显示该公司. 再次Ctrl+左击显示所有公司.
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}公路
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}铁路
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}车站/机场/码头
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}建筑物/工业
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}车辆
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}火车
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}汽车
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}船只
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}飞机
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}运输路线
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}森林
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}火车站
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}汽车货场
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}公共汽车站
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}机场/直升机平台
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}码头
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}荒地
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}草地
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}土地
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}田地
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}树木
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}岩石
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}水面
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}无主地块
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}城镇
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}工业
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}沙漠
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}雪地
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}公路
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}铁路
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}车站/机场/码头
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}建筑物/工业
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}车辆
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}火车
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}汽车
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}船只
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}飞机
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}运输路线
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}森林
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}火车站
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}汽车货场
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}公共汽车站
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}机场/直升机平台
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}码头
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}荒地
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}草地
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}土地
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}田地
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}树木
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}岩石
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}水面
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}无主地块
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}城镇
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}工业
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}沙漠
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}雪地
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}切换是否显示城镇名称
 STR_SMALLMAP_CENTER                                             :{BLACK}在地图中心点显示当前位置
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部禁用
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部启用
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}显示高度
@@ -748,60 +748,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}货物�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}财政补贴
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}综合信息
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一艘船抵达 {STATION}！
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一架飞机到达 {STATION} ！
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一艘船抵达 {STATION}！
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一架飞机到达 {STATION} ！
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}列车相撞!{}{COMMA} 人在爆炸中丧生
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}飞机坠毁！{}{COMMA} 人在 {STATION} 的事故中罹难！
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}飞机坠毁！{}燃油不足，{COMMA} 人在事故中罹难！
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}列车相撞!{}{COMMA} 人在爆炸中丧生
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}飞机坠毁！{}{COMMA} 人在 {STATION} 的事故中罹难！
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}飞机坠毁！{}燃油不足，{COMMA} 人在事故中罹难！
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}齐柏林飞艇在 {STATION} 失事！
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}汽车被 'UFO' 炸毁！
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}在 {TOWN} 附近的炼油厂泄漏！
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}在 {TOWN} 附近的工厂神秘被毁！
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' 在 {TOWN} 附近降落！
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}在 {TOWN} 附近的煤矿发生塌方！
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}洪水！{}至少 {COMMA} 人失踪，据推测凶多吉少！
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}齐柏林飞艇在 {STATION} 失事！
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}汽车被 'UFO' 炸毁！
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}在 {TOWN} 附近的炼油厂泄漏！
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}在 {TOWN} 附近的工厂神秘被毁！
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' 在 {TOWN} 附近降落！
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}在 {TOWN} 附近的煤矿发生塌方！
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}洪水！{}至少 {COMMA} 人失踪，据推测凶多吉少！
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}运输公司陷入困境！
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} 如果不能在短期摆脱困境，{}则将被收购或破产！
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}运输公司合并！
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} 被 {STRING} 以 {CURRENCY} 收购！
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}破产！
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} 已经宣布破产，所有资产均已抵债！
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}新的运输公司开业大吉！
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} 在 {TOWN} 附近开工建设！
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} 被 {STRING} 收购！
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(总裁)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}运输公司陷入困境！
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} 如果不能在短期摆脱困境，{}则将被收购或破产！
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}运输公司合并！
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} 被 {STRING} 以 {CURRENCY_LONG} 收购！
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}破产！
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} 已经宣布破产，所有资产均已抵债！
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}新的运输公司开业大吉！
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} 在 {TOWN} 附近开工建设！
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} 被 {STRING} 收购！
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(总裁)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} 赞助了城镇 {TOWN} 的建设！
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} 赞助了城镇 {TOWN} 的建设！
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新 {STRING} 正在 {TOWN} 加紧建设！
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新 {STRING} 即将落户 {TOWN}！
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}新 {STRING} 正在 {TOWN} 加紧建设！
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}新 {STRING} 即将落户 {TOWN}！
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} 即将倒闭！
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} 没有原料供应，即将倒闭！
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} 周围没有可用的木材，即将倒闭！
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} 即将倒闭！
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} 没有原料供应，即将倒闭！
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}{STRING} 周围没有可用的木材，即将倒闭！
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}大萧条！{}{}金融专家预测世界经济将全面倒退！
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}大萧条结束！{}{}贸易复苏带动经济全面启动！
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}大萧条！{}{}金融专家预测世界经济将全面倒退！
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}大萧条结束！{}{}贸易复苏带动经济全面启动！
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} 产量增加！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} 发现新的煤炭！{}产量即将翻番！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY} 发现新的石油！{}产量即将翻番！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} 耕种方法改良！{}产量即将翻番！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}的{0:STRING}产量上升了{2:COMMA}%！
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} 产量降低 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} 虫害肆虐！{}产量降低 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}的{0:STRING}产量下降了{2:COMMA}%！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} 产量增加！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY} 发现新的煤炭！{}产量即将翻番！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY} 发现新的石油！{}产量即将翻番！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} 耕种方法改良！{}产量即将翻番！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}的{0:STRING}产量上升了{2:COMMA}%！
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} 产量降低 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} 虫害肆虐！{}产量降低 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}的{0:STRING}产量下降了{2:COMMA}%！
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} 正在车库待命
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在车库待命
@@ -821,13 +821,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 已经达到报废年限，必须马上更新！
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 无法找到路线.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}适配调度计划失败，已终止 {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}无法自动更新 {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}新 {STRING} 上市了！
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}新 {STRING} 上市了！
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}新 {STRING} 上市了！  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} 将不再接受 {STRING}
@@ -835,15 +835,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} 开始接受 {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} 开始接受 {STRING} 和 {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}财政补贴项目到期：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不再获得财政补贴。
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}财政补贴项目流标：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不是财政补贴项目。
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}财政补贴项目招标：{}{}第一个将 {STRING} 从 {STRING} 运送到 {STRING} 的公司将获得地方政府为期一年的财政补贴！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得 50% 的额外报酬！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得双倍的报酬！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得三倍的报酬！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得四倍的报酬！
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}财政补贴项目到期：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不再获得财政补贴。
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}财政补贴项目流标：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不是财政补贴项目。
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}财政补贴项目招标：{}{}第一个将 {STRING} 从 {STRING} 运送到 {STRING} 的公司将获得地方政府为期一年的财政补贴！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得 50% 的额外报酬！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得双倍的报酬！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得三倍的报酬！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得四倍的报酬！
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {STRING} 资助的市政道路重建导致市内交通瘫痪 6 个月！
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {STRING} 资助的市政道路重建导致市内交通瘫痪 6 个月！
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}视点 {COMMA}
@@ -971,7 +971,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法�
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自定义货币
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{CURRENCY} = {COMMA} 英镑(£)
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{CURRENCY_LONG} = {COMMA} 英镑(£)
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}减少英磅(£)兑换自定义货币的数量
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}增加英磅(£)兑换自定义货币的数量
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}设置自定义货币与英磅(£)的兑换比率
@@ -990,7 +990,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}设置�
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}提早转换为欧元货币的起始年份
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}延后转换为欧元货币的起始年份
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览：{ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览：{ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 英磅(£) 兑换自定义货币的数量
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变当前的货币参数
 
@@ -1011,7 +1011,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}保存
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}最大竞争对手个数：{ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}城镇数量：{ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}工业数量：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}初始贷款额度：{ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}初始贷款额度：{ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}初始贷款利率：{ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}车辆运行费用：{ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}竞争对手建设速度：{ORANGE}{STRING}
@@ -1426,7 +1426,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你确�
 STR_CHEATS                                                      :{WHITE}作弊
 STR_CHEATS_TOOLTIP                                              :{BLACK}标志您是否用过此作弊选项的单选框
 STR_CHEATS_WARNING                                              :{BLACK}注意！作弊是不光彩的！所有作弊都将被记录下来！
-STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY} 现金
+STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY_LONG} 现金
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}{COMMA}进行游戏
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施和其他不可移除物)： {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}隧道可以相交：{ORANGE}{STRING}
@@ -1662,9 +1662,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}当前�
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}公司信息
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}公司信息: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}开业时间: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}公司市值: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}流动资金: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}去年收入: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}公司市值: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}流动资金: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}去年收入: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}表现评价: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}车辆船只: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1809,8 +1809,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 成立了新公司 (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 已离开游戏 ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已更改姓名为 {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 送给您的公司 {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 您送了 {2:CURRENCY} 给 {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 送给您的公司 {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 您送了 {2:CURRENCY_LONG} 给 {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器关闭了进程
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动。{}请等待……
 
@@ -1968,7 +1968,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加�
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}选择铁路桥
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}选择公路桥梁
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}选择桥梁 - 点击选择喜欢的桥梁进行建设
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :钢制悬索
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :钢制桁桥
@@ -2137,7 +2137,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}建设�
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}请选择工业设施
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :大量随机工业
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}在地图上创建大量随机的工业设施
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}费用：{YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}费用：{YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}勘探
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}建设
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}建设
@@ -2158,8 +2158,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}将该�
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}清除费用：{LTBLUE}N/A 不能清除
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}清除费用：{RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}清除收入： {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}清除费用：{RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}清除收入： {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :无
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}产权所属：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}道路所属：{LTBLUE}{STRING}
@@ -2528,7 +2528,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}城镇发展所必需的货物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{BLACK} 需要： {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 冬季的需求
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{BLACK} 上个月已运到： {ORANGE}{CARGO}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{BLACK} 上个月已运到： {ORANGE}{CARGO_LONG}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
@@ -2545,7 +2545,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :重命名城镇
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 地方政府
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}对运输公司评价：
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}可执行的操作：
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}在本市可以执行的操作{}点击查看详细信息
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}执行
@@ -2560,14 +2560,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :资助新房屋
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :购买运输专营权
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :贿赂地方政府
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}进行小型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}进行中型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}进行大型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}资助市政道路进行重建，将造成市内交通阻断 6 个月。{}费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}以公司的名义设立一尊塑像。{}费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}资助市内建设新的商业设施。{}费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}购买该市一年的运输专营权, 其间该市的乘客及货物只允许选用贵公司的运输服务。{}费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}贿赂地方政府以提高评价，但有被发现后严厉惩罚的风险。{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}进行小型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}进行中型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}进行大型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}资助市政道路进行重建，将造成市内交通阻断 6 个月。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}以公司的名义设立一尊塑像。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}资助市内建设新的商业设施。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}购买该市一年的运输专营权, 其间该市的乘客及货物只允许选用贵公司的运输服务。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}贿赂地方政府以提高评价，但有被发现后严厉惩罚的风险。{}费用：{CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}财政补贴项目
@@ -2582,7 +2582,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}点击�
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称{}点击可将屏幕中心移动到车站所在位置. 单击的同时按住Ctrl会在新视点中显示车站位置
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 CTRL 可以同时选择多项
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} 车站
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 没有 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}选择全部运输工具种类
@@ -2590,10 +2590,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}选择�
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}选择无等待货物车站
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}等待：{WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} 转运自 {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} 转运自 {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}显示接受的货物列表
@@ -2635,7 +2635,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}修改�
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑路点名称
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 财务报表 {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}收入/支出
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建设费用
@@ -2651,21 +2651,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}航空运
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}水上运输收入
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}贷款利息
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}其他费用
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}总计：
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}流动资金
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}已贷款额
-STR_FINANCES_MAX_LOAN                                           :{WHITE}最大贷款额度：{BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}贷款 {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}最大贷款额度：{BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}贷款 {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}贷款{}Ctrl+点击 可贷款最大额度
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}还款 {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}还款 {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}偿还贷款{}Ctrl+点击 可最大额度偿还贷款
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(总裁)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(总裁)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}开业时间：{WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}色彩方案：
@@ -2675,7 +2675,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 架飞机
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 艘轮船
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}无
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}公司市值：{WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}公司市值：{WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% 由 {COMPANY} 所有)
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}设立总部
@@ -2702,20 +2702,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}出售�
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :公司名称
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :总裁姓名
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY}) 吗？
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY_LONG}) 吗？
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业设施
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 没有 -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 已运输)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% 已运输)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% 已运输)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% 已运输)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工业设施{}点击可以将屏幕中心移动到其所在位置. 单击的同时按住Ctrl会在新视点中显示工业位置
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月产量：
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 已运输)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 已运输)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置. 单击的同时按住Ctrl会在新视点中显示工厂位置
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产程度: {YELLOW}{COMMA}%
 
@@ -2727,7 +2727,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}需要�
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}等待的货物:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}产出: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}产出: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2746,7 +2746,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}汽车 -
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船只列表 - 点击可以查看详细信息
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飞机 - 点击可以查看详细信息
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}今年利润：{CURRENCY} (去年利润：{CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年利润：{CURRENCY_LONG} (去年利润：{CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用的列车
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :可用的汽车
@@ -2802,21 +2802,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :购买汽车
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :购买船只
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :购买飞机
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK} 重量：{GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK} 重量：{GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}在海洋上的速度： {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}在河流上的速度： {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}运行费用：{GOLD}{CURRENCY}/年
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}运载能力：{GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}运行费用：{GOLD}{CURRENCY_LONG}/年
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}运载能力：{GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(可改装)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}设计日期：{GOLD}{NUM}{BLACK} 寿命：{GOLD}{COMMA} 年
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大可靠性：{GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}售价：{GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY}{BLACK} 速度：{GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}运载能力：{GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK} 重量：{GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}售价：{GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY_LONG}{BLACK} 速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}运载能力：{GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK} 重量：{GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改装为：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有类型
 STR_PURCHASE_INFO_ALL_BUT                                       :除了 {GOLD}
@@ -2861,7 +2861,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :重命名车库
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 车辆{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 左键拖动可调整车厢，右击可查看详情。按Ctrl执行上述操作可同时操作之后车厢。
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 右击可查看详细信息
@@ -2937,10 +2937,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :船只
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}售价：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY}/年{}运载能力： {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}售价：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}  最大牵引力：{6:FORCE}{}运行费用{4:CURRENCY}/年{}运载能力：{5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}售价：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{CARGO}, {CARGO}{}运行成本：{CURRENCY} /年
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}售价：{CURRENCY} 最大速度：{VELOCITY}{}运载能力：{CARGO}{}运行成本：{CURRENCY} /年
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY_LONG}/年{}运载能力： {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}  最大牵引力：{6:FORCE}{}运行费用{4:CURRENCY_LONG}/年{}运载能力：{5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}售价：{CURRENCY_LONG} 最大速度：{VELOCITY}{}运载能力：{CARGO_LONG}, {CARGO_LONG}{}运行成本：{CURRENCY_LONG} /年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}售价：{CURRENCY_LONG} 最大速度：{VELOCITY}{}运载能力：{CARGO_LONG}{}运行成本：{CURRENCY_LONG} /年
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}更新 {STRING}
@@ -3034,9 +3034,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正前�
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在服务于 {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}已停止
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}已停止
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}已停止
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}已开始
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}已开始
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已开始
 
 # Vehicle details
@@ -3048,25 +3048,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船只
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飞机
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY} /年
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年龄：{LTBLUE}{STRING}{BLACK}   运行成本：{LTBLUE}{CURRENCY_LONG} /年
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最大速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_S} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_S} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年利润：{LTBLUE}{CURRENCY} (去年利润：{CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年利润：{LTBLUE}{CURRENCY_LONG} (去年利润：{CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠性：{LTBLUE}{COMMA}%  {BLACK}上次保养后抛锚的次数：{LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}运载能力： {LTBLUE}无
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}运载能力：{LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}运载能力：{LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}运载能力：{LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}运载能力：{LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}运载能力：{LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}运载能力：{LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运成本： {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运成本： {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
@@ -3079,16 +3079,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名�
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名飞机
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   价值：{LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   价值：{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}全车的装载能力为：
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} (来自 {STATION})
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} (来自 {STATION} (x{NUM}))
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} (来自 {STATION})
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} (来自 {STATION} (x{NUM}))
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}货物
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}显示运载货物的详情
@@ -3104,8 +3104,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}运力�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO}{}{BLACK}改装费用：{GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}改装所需： {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO_LONG}{}{BLACK}改装费用：{GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装所需： {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}请选择要改装的车辆. 拖动鼠标可多选.点击空白区域选择整辆列车. Ctrl+左键 选定该车厢及其之后车厢。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
@@ -3374,22 +3374,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}支出：{CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}支出：{CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}收入：{CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}收入：{CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}中转：{CURRENCY}
-STR_FEEDER                                                      :{YELLOW}中转：{CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}预计费用：{CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}预计收入：{CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}支出：{CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}支出：{CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}收入：{CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}收入：{CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}中转：{CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}中转：{CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}预计费用：{CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}预计收入：{CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}保存仍在继续{}请耐心等待……
@@ -3438,7 +3438,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}来自 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}超过地图边界
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}距离地图边界过近
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}资金不足 - 需要 {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}资金不足 - 需要 {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}需要平坦的地面
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地倾斜的方向不对
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能这样做……
@@ -3471,10 +3471,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已�
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}不能为公司更名……
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}不能更改总裁的名字……
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}……最大贷款额度是{CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}……最大贷款额度是{CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}不能再贷款了……
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}没有要偿还的贷款了
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}需要{CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}需要{CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}不能偿还贷款……
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能将银行的贷款送给别人……
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}不能收购公司……
@@ -4181,37 +4181,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :观众, {1:STRI
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4223,32 +4223,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

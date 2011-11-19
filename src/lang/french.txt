@@ -97,73 +97,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Boisson Gazeuse
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passager{P "" s}
-STR_QUANTITY_COAL                                               :{WEIGHT} de charbon
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de charbon
 STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" s} posta{P l ux}
-STR_QUANTITY_OIL                                                :{VOLUME} de pétrole
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} de pétrole
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} tête{P "" s} de bétail
 STR_QUANTITY_GOODS                                              :{COMMA} caisse{P "" s} de biens
-STR_QUANTITY_GRAIN                                              :{WEIGHT} de céréales
-STR_QUANTITY_WOOD                                               :{WEIGHT} de bois
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de fer
-STR_QUANTITY_STEEL                                              :{WEIGHT} d'acier
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de céréales
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de bois
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de fer
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d'acier
 STR_QUANTITY_VALUABLES                                          :{COMMA} sac{P "" s} d'objets de valeur
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de cuivre
-STR_QUANTITY_MAIZE                                              :{WEIGHT} de maïs
-STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruits
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de cuivre
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de maïs
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruits
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sac{P "" s} de diamants
-STR_QUANTITY_FOOD                                               :{WEIGHT} de nourriture
-STR_QUANTITY_PAPER                                              :{WEIGHT} de papier
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de nourriture
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papier
 STR_QUANTITY_GOLD                                               :{COMMA} sac{P "" s} d'or
-STR_QUANTITY_WATER                                              :{VOLUME} d'eau
-STR_QUANTITY_WHEAT                                              :{WEIGHT} de blé
-STR_QUANTITY_RUBBER                                             :{VOLUME} de caoutchouc
-STR_QUANTITY_SUGAR                                              :{WEIGHT} de sucre
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} d'eau
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de blé
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de caoutchouc
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de sucre
 STR_QUANTITY_TOYS                                               :{COMMA} jouet{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" s} de bonbons
-STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de barbe à papa
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de barbe à papa
 STR_QUANTITY_BUBBLES                                            :{COMMA} bulle{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramel
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterie{P "" s}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} de plastique
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastique
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} boisson{P "" s} gazeuse{P "" s}
 STR_QUANTITY_N_A                                                :N/D
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}CH
-STR_ABBREV_MAIL                                                 :{TINYFONT}CO
-STR_ABBREV_OIL                                                  :{TINYFONT}PT
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BT
-STR_ABBREV_GOODS                                                :{TINYFONT}BN
-STR_ABBREV_GRAIN                                                :{TINYFONT}CR
-STR_ABBREV_WOOD                                                 :{TINYFONT}BO
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}FE
-STR_ABBREV_STEEL                                                :{TINYFONT}AC
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CV
-STR_ABBREV_MAIZE                                                :{TINYFONT}MS
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}NR
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}OR
-STR_ABBREV_WATER                                                :{TINYFONT}EA
-STR_ABBREV_WHEAT                                                :{TINYFONT}BL
-STR_ABBREV_RUBBER                                               :{TINYFONT}CA
-STR_ABBREV_SUGAR                                                :{TINYFONT}SU
-STR_ABBREV_TOYS                                                 :{TINYFONT}JT
-STR_ABBREV_SWEETS                                               :{TINYFONT}BB
-STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}BP
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}CM
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GZ
-STR_ABBREV_NONE                                                 :{TINYFONT}NO
-STR_ABBREV_ALL                                                  :{TINYFONT}ALL
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}CH
+STR_ABBREV_MAIL                                                 :{TINY_FONT}CO
+STR_ABBREV_OIL                                                  :{TINY_FONT}PT
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}BT
+STR_ABBREV_GOODS                                                :{TINY_FONT}BN
+STR_ABBREV_GRAIN                                                :{TINY_FONT}CR
+STR_ABBREV_WOOD                                                 :{TINY_FONT}BO
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}FE
+STR_ABBREV_STEEL                                                :{TINY_FONT}AC
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CV
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MS
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}NR
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}OR
+STR_ABBREV_WATER                                                :{TINY_FONT}EA
+STR_ABBREV_WHEAT                                                :{TINY_FONT}BL
+STR_ABBREV_RUBBER                                               :{TINY_FONT}CA
+STR_ABBREV_SUGAR                                                :{TINY_FONT}SU
+STR_ABBREV_TOYS                                                 :{TINY_FONT}JT
+STR_ABBREV_SWEETS                                               :{TINY_FONT}BB
+STR_ABBREV_COLA                                                 :{TINY_FONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}BP
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}CM
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}GZ
+STR_ABBREV_NONE                                                 :{TINY_FONT}NO
+STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passager{P "" s}
@@ -517,10 +517,10 @@ STR_MONTH_DEC                                                   :Décembre
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Légende
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Affiche la légende
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graphique du profit d'opération
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graphique du Revenu
@@ -529,14 +529,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Historiq
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valeur de la compagnie
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Jours de transit
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Prix payé pour livrer 10 unités (ou 10.000 litres) à 20 carrés de distance
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Activer tout
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Désactiver tout
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Jours de transit
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Prix payé pour livrer 10 unités (ou 10.000 litres) à 20 carrés de distance
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activer tout
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Désactiver tout
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afficher toutes les marchandises sur le graphique
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}N'afficher aucune marchandise sur le graphique
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Afficher/cacher le type de marchandise
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Afficher le détail de l'évaluation de la performance
 
@@ -546,7 +546,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Cliquer 
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Classement des compagnies
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingénieur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestionnaire de trafic
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinateur de trafic
@@ -560,7 +560,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Détail de l'évaluation de la performance
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Détail
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Afficher les détails sur cette compagnie
@@ -589,25 +589,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox Jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Tout
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Ancien Style
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Nouveau Style
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Personnalisé 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personnalisé 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume Musique
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume Effets Sonores
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Piste
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titre
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Aléatoire
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programme
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Tout
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Ancien Style
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Nouveau Style
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Personnalisé 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Personnalisé 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Volume Musique
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Volume Effets Sonores
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Piste
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titre
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Aléatoire
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programme
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sauter à la piste précédente dans la sélection
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sauter à la piste suivante dans la sélection
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Arrêter la musique
@@ -626,18 +626,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Un ensem
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Sélection du Programme Musical
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Index de Piste
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programme - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Balayer
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Index de Piste
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programme - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Balayer
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Balayer le programme actuel (Personnalisé 1 ou Personnalisé 2 seulement)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliquer sur une piste pour l'ajouter au programme courant (Personnalisé 1 ou Personnalisé 2 seulement)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliquer sur une piste pour la retirer du programme courant (Personnalisé 1 ou Personnalisé 2 seulement)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Meilleures compagnies, qui ont atteint {NUM}{}(Niveau {STRING})
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tableau du Championnat des compagnies en {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Meilleures compagnies, qui ont atteint {NUM}{}(Niveau {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tableau du Championnat des compagnies en {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Homme d'affaires
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriel
@@ -645,10 +645,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitaliste
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grand ponte
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon du Siècle
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} atteint le niveau de '{STRING}'{NBSP}!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} de {COMPANY} atteint le niveau de '{STRING}'{NBSP}!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} atteint le niveau de '{STRING}'{NBSP}!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} atteint le niveau de '{STRING}'{NBSP}!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Carte - {STRING}
@@ -668,40 +668,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Afficher
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Cliquer sur un type d'industrie pour basculer son affichage. Ctrl-clic pour désactiver tous les types excepté celui sélectionné. Ctrl-clic à nouveau pour activer tous les types d'industrie
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Cliquer sur une compagnie pour basculer l'affichage de ses propriétés. Ctr-clic pour désactiver toutes les compagnies excepté celle sélectionnée. Ctrl-clic à nouveau pour activer toutes les compagnies
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Routes
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Voies ferrées
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Gares/Aéroports/Ports maritimes
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bâtiments/Industries
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Véhicules
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trains
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Véhicules routiers
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Navires
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aéronefs
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Routes de Transport
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Forêt
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Gare ferroviaire
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Aire de chargement
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Arrêt d'autobus
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aéroport/Héliport
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Port maritime
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Terre en friche
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Herbe
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Terre nue
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Champs
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Arbres
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Rochers
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Eau
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Sans Propriétaire
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Villes
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industries
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Désert
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Neige
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Routes
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Voies ferrées
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Gares/Aéroports/Ports maritimes
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Bâtiments/Industries
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Véhicules
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trains
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Véhicules routiers
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Navires
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aéronefs
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Routes de Transport
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Forêt
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gare ferroviaire
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Aire de chargement
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Arrêt d'autobus
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aéroport/Héliport
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Port maritime
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terre en friche
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Herbe
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terre nue
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Champs
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Arbres
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rochers
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Eau
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Sans Propriétaire
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Villes
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industries
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Désert
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neige
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Afficher le nom des villes sur la carte
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer la carte sur la position actuelle
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Désactiver tout
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activer tout
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Relief
@@ -749,60 +749,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Changem
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventions
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Information générale
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Les habitants célèbrent{}l'arrivée du premier train à {STATION}{NBSP}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}{NBSP}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Les habitants célèbrent . . .{}Le premier camion arrive à {STATION}{NBSP}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}{NBSP}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}{NBSP}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Les habitants célèbrent {}l'arrivée du premier navire à {STATION}{NBSP}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Les habitants célèbrent{}l'arrivée du premier aéronef à {STATION}{NBSP}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Les habitants célèbrent{}l'arrivée du premier train à {STATION}{NBSP}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}{NBSP}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier camion arrive à {STATION}{NBSP}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}{NBSP}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}{NBSP}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Les habitants célèbrent {}l'arrivée du premier navire à {STATION}{NBSP}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Les habitants célèbrent{}l'arrivée du premier aéronef à {STATION}{NBSP}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Accident ferroviaire{NBSP}!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} dans la collision
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Accident routier{NBSP}!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Accident routier{NBSP}!{}{COMMA} mort{P "" s} lors d'une collision avec un train
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Accident d'avion{NBSP}!{}{COMMA} mort{P "" s} dans un crash à {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Accident d'avion{NBSP}!{}L'aéronef n'avait plus de carburant, {COMMA} passager{P "" s} meurent dans le crash{NBSP}!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Accident ferroviaire{NBSP}!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} dans la collision
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Accident routier{NBSP}!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Accident routier{NBSP}!{}{COMMA} mort{P "" s} lors d'une collision avec un train
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Accident d'avion{NBSP}!{}{COMMA} mort{P "" s} dans un crash à {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accident d'avion{NBSP}!{}L'aéronef n'avait plus de carburant, {COMMA} passager{P "" s} meurent dans le crash{NBSP}!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Désastre impliquant un Zeppelin à {STATION}{NBSP}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Un véhicule routier est détruit dans une collision avec un 'OVNI'{NBSP}!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explosion d'une raffinerie pétrolière près de {TOWN}{NBSP}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Usine détruite dans des circonstances suspectes près de {TOWN}{NBSP}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}Un 'OVNI' a été découvert près de {TOWN}{NBSP}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}L'affaissement d'une veine de charbon entraîne la destruction de la mine de {TOWN}{NBSP}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inondations{NBSP}!{}Au moins {COMMA} présumé{P "" s} manquant{P "" s} ou mort{P "" s} après des inondations meurtrières{NBSP}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Désastre impliquant un Zeppelin à {STATION}{NBSP}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Un véhicule routier est détruit dans une collision avec un 'OVNI'{NBSP}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Explosion d'une raffinerie pétrolière près de {TOWN}{NBSP}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Usine détruite dans des circonstances suspectes près de {TOWN}{NBSP}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}Un 'OVNI' a été découvert près de {TOWN}{NBSP}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}L'affaissement d'une veine de charbon entraîne la destruction de la mine de {TOWN}{NBSP}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inondations{NBSP}!{}Au moins {COMMA} présumé{P "" s} manquant{P "" s} ou mort{P "" s} après des inondations meurtrières{NBSP}!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}La compagnie de transport à des ennuis{NBSP}!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} va être en banqueroute si ses performances ne s'améliorent pas{NBSP}!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Fusion de compagnies de transport{NBSP}!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} à été vendue à {STRING} pour {CURRENCY}{NBSP}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Banqueroute{NBSP}!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} a été dissolue par ses créanciers et tous ses actifs vendus{NBSP}!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nouvelle compagnie de transport{NBSP}!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} commence à construire près de {TOWN}{NBSP}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} a été rachetée par {STRING}{NBSP}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Président)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}La compagnie de transport à des ennuis{NBSP}!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} va être en banqueroute si ses performances ne s'améliorent pas{NBSP}!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Fusion de compagnies de transport{NBSP}!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} à été vendue à {STRING} pour {CURRENCY_LONG}{NBSP}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Banqueroute{NBSP}!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} a été dissolue par ses créanciers et tous ses actifs vendus{NBSP}!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nouvelle compagnie de transport{NBSP}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} commence à construire près de {TOWN}{NBSP}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} a été rachetée par {STRING}{NBSP}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Président)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} a sponsorisé la construction de la nouvelle ville {TOWN}{NBSP}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} a sponsorisé la construction de la nouvelle ville {TOWN}{NBSP}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} en construction près de {TOWN}{NBSP}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} s'implante près de {TOWN}{NBSP}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} en construction près de {TOWN}{NBSP}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Un{G "" "" e} nouv{G eau el elle} {STRING} s'implante près de {TOWN}{NBSP}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} annonce une fermeture imminente{NBSP}!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Des problèmes d'approvisionnement obligent {STRING} à fermer bientôt{NBSP}!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Le manque d'arbres proches oblige {STRING} à fermer bientôt{NBSP}!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} annonce une fermeture imminente{NBSP}!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Des problèmes d'approvisionnement obligent {STRING} à fermer bientôt{NBSP}!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Le manque d'arbres proches oblige {STRING} à fermer bientôt{NBSP}!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Union Monétaire Européenne{NBSP}!{}{}L'Euro est introduit en tant que monnaie unique pour les transactions dans votre pays{NBSP}!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Récession mondiale{NBSP}!{}{}Les experts financiers craignent le pire{NBSP}!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Fin de la récession{NBSP}!{}{}La reprise redonne confiance aux industries{NBSP}!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Union Monétaire Européenne{NBSP}!{}{}L'Euro est introduit en tant que monnaie unique pour les transactions dans votre pays{NBSP}!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Récession mondiale{NBSP}!{}{}Les experts financiers craignent le pire{NBSP}!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Fin de la récession{NBSP}!{}{}La reprise redonne confiance aux industries{NBSP}!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} augmente la production{NBSP}!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nouveau filon de charbon trouvé à {INDUSTRY}{NBSP}!{}La production devrait doubler{NBSP}!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nouveaux gisements pétrolifères découverts à {INDUSTRY}{NBSP}!{}La production devrait doubler{NBSP}!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}De nouvelles méthodes d'élevage à {INDUSTRY} permettent de doubler la production{NBSP}!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}La production de {STRING} à {INDUSTRY} augmente de {COMMA}%{NBSP}!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}{NBSP}: production en baisse de 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Invasion d'insectes à {INDUSTRY}{NBSP}!{}Production en baisse de 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}La production de {STRING} à {INDUSTRY} diminue de {COMMA}%{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} augmente la production{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nouveau filon de charbon trouvé à {INDUSTRY}{NBSP}!{}La production devrait doubler{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nouveaux gisements pétrolifères découverts à {INDUSTRY}{NBSP}!{}La production devrait doubler{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}De nouvelles méthodes d'élevage à {INDUSTRY} permettent de doubler la production{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} augmente de {COMMA}%{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}{NBSP}: production en baisse de 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Invasion d'insectes à {INDUSTRY}{NBSP}!{}Production en baisse de 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} diminue de {COMMA}%{NBSP}!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} est en attente au dépôt
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} est en attente au dépôt
@@ -822,13 +822,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} devient très vieux et doit être remplacé d'urgence
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne trouve pas de chemin pour continuer
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} est perdu
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Le profit de {VEHICLE} l'an dernier était de {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Le profit de {VEHICLE} l'an dernier était de {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}L'échec du réaménagement a stoppé {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Le renouvellement automatique de {VEHICLE} a échoué {}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nouv{G eau el elle} {STRING} disponible{NBSP}!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nouv{G eau el elle} {STRING} disponible{NBSP}!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nouv{G eau el elle} {STRING} disponible{NBSP}!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} n'accepte plus {STRING}
@@ -836,15 +836,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} accepte désormais {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} accepte désormais {STRING} et {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Offre de subvention expirée{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Abandon de la subvention{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est plus subventionné
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant un an{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50% de plus l'année prochaine{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double l'année prochaine{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple l'année prochaine{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple l'année prochaine{NBSP}!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offre de subvention expirée{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Abandon de la subvention{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est plus subventionné
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant un an{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50% de plus l'année prochaine{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double l'année prochaine{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple l'année prochaine{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple l'année prochaine{NBSP}!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Problèmes de trafic à {TOWN}{NBSP}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes{NBSP}!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Problèmes de trafic à {TOWN}{NBSP}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes{NBSP}!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
@@ -972,7 +972,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Échec d
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change{NBSP}: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change{NBSP}: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Réduire le montant de votre monnaie pour une Livre (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenter le montant de votre monnaie pour une Livre (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Définir le taux de change de votre monnaie pour une Livre (£)
@@ -991,7 +991,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Définir
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer à l'Euro plus tôt
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer à l'Euro plus tard
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation{NBSP}: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation{NBSP}: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 Livres (£) dans votre monnaie
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de devises personnalisées
 
@@ -1012,7 +1012,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sauver
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Nombre maximal de concurrents{NBSP}: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Nombre de villes{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Nombre d'industries{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Emprunt initial maximum{NBSP}: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Emprunt initial maximum{NBSP}: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Taux d'intérêt initial{NBSP}: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Coûts d'entretien{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Vitesse de développement des concurrents{NBSP}: {ORANGE}{STRING}
@@ -1428,7 +1428,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Voulez-
 STR_CHEATS                                                      :{WHITE}Triches
 STR_CHEATS_TOOLTIP                                              :{BLACK}Les cases à cocher indiquent que vous avez déjà utilisé cette triche auparavant
 STR_CHEATS_WARNING                                              :{BLACK}Attention{NBSP}! Vous êtes sur le point de trahir vos adversaires. Gardez en tête qu'une telle honte sera gardée en mémoire pour l'éternité
-STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer en tant que compagnie{NBSP}: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement industries et objets fixes){NBSP}: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Les tunnels peuvent se croiser{NBSP}: {ORANGE}{STRING}
@@ -1664,9 +1664,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liste de
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFOS SUR LA COMPAGNIE
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nom de la compagnie{NBSP}: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguration{NBSP}: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Valeur de la compagnie{NBSP}: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Argent courant{NBSP}: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Revenus de l'année dernière{NBSP}: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Valeur de la compagnie{NBSP}: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Argent courant{NBSP}: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Revenus de l'année dernière{NBSP}: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Performance{NBSP}: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Véhicules{NBSP}: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1811,8 +1811,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a 
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a lancé une nouvelle compagnie (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a quitté la partie ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} a changé son nom en {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a donné {2:CURRENCY} à votre compagnie
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vous avez donné {2:CURRENCY} à {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a donné {2:CURRENCY_LONG} à votre compagnie
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vous avez donné {2:CURRENCY_LONG} à {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Le serveur a fermé la session
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serveur redémarre...{}Veuillez patienter...
 
@@ -1980,7 +1980,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmente
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir Pont Ferroviaire
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir Pont Routier
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - cliquer sur le type de pont désiré pour le construire
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspendu en acier
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en Acier
@@ -2151,7 +2151,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financer
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choisissez l'industrie appropriée dans cette liste
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Beaucoup d'industries au hasard
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Couvrir la carte avec des industries placées au hasard
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Prix{NBSP}: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Prix{NBSP}: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospecter
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construire
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonder
@@ -2172,8 +2172,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Afficher
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Information sur le Terrain
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Coût si démolition{NBSP}: {LTBLUE}N/D
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Coût si démolition{NBSP}: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Gain si démolition{NBSP}: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Coût si démolition{NBSP}: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Gain si démolition{NBSP}: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/D
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Propriétaire{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propriétaire de la route{NBSP}: {LTBLUE}{STRING}
@@ -2576,7 +2576,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Courrier
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargaison nécessaire à la croissance de la ville{NBSP}:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} requis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requis en hiver
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} livré le mois dernier
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} livré le mois dernier
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de nuisance pour la ville{NBSP}: {ORANGE}{COMMA}{BLACK}  max{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Municipalité
@@ -2593,7 +2593,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renommer la vil
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Municipalité de {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Qualité de service des compagnies{NBSP}:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}{NBSP}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}{NBSP}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Actions disponibles{NBSP}:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Liste des actions à entreprendre dans cette ville - Cliquer sur une action pour obtenir des détails
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Lancer cette action
@@ -2608,14 +2608,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financer de nou
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Acheter les droits de transports exclusifs
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompre la municipalité
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Lancer une petite campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Lancer une campagne de publicité moyenne, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lancer une grande campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financer la reconstruction du réseau routier local. Provoque de nombreux problèmes de trafic routier pendant 6 mois.{}Coût{NBSP}: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Coût{NBSP}: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Coût{NBSP}: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Acheter les droits de transports exclusifs dans cette ville pour 1 an. Seules vos lignes seront autorisées dans la ville.{}Coût{NBSP}: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}Coût{NBSP}: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Lancer une petite campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Lancer une campagne de publicité moyenne, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lancer une grande campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financer la reconstruction du réseau routier local. Provoque de nombreux problèmes de trafic routier pendant 6 mois.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Acheter les droits de transports exclusifs dans cette ville pour 1 an. Seules vos lignes seront autorisées dans la ville.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}Coût{NBSP}: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventions
@@ -2630,7 +2630,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer 
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nom des stations - cliquer sur un nom pour centrer la vue principale sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Maintenir Ctrl pour sélectionner plus d'un élément
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P 1 "" s}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Aucun -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Tous les types de station
@@ -2638,10 +2638,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tous les
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Pas de marchandises en attente
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}En attente{NBSP}: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} venant de {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} venant de {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepte
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afficher les marchandises acceptées
@@ -2683,7 +2683,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Renommer
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier le nom du point de contrôle
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Finances de {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Dépenses/Revenus
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construction
@@ -2699,21 +2699,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Revenu a�
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Revenu naval
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Intérêts du prêt
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Autres
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total{NBSP}:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Équilibre bancaire
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Emprunt
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Emprunt maximum{NBSP}: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Emprunter {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Emprunt maximum{NBSP}: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Emprunter {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenter le prêt. Ctrl-clic pour emprunter autant que possible
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Rembourser {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Rembourser {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Rembourser une partie du prêt. Ctrl-clic pour rembourser autant que possible
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Président)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Président)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inauguré en{NBSP}: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Couleur{NBSP}:
@@ -2723,7 +2723,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aéronef{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} navire{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Aucun
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valeur de la compagnie{NBSP}: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valeur de la compagnie{NBSP}: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% détenus par {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Const. siège
@@ -2750,20 +2750,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendre 2
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom de la société
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom du P.D.G.
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Nous sommes à la recherche d'un acheteur pour notre compagnie{}{}Voulez vous acheter {COMPANY} pour {CURRENCY}{NBSP}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Nous sommes à la recherche d'un acheteur pour notre compagnie{}{}Voulez vous acheter {COMPANY} pour {CURRENCY_LONG}{NBSP}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Aucune -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transporté)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporté)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transporté)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporté)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Noms des industries - cliquer sur un nom pour centrer la vue principale sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Production le mois dernier{NBSP}:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transporté)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transporté)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}%
 
@@ -2775,7 +2775,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Nécessi
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Marchandise en attente d'être utilisée{NBSP}:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produit{NBSP}: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produit{NBSP}: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2794,7 +2794,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Véhicul
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navires - cliquer sur un navire pour informations
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - cliquer sur l'aéronef pour informations
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profit cette année{NBSP}: {CURRENCY} (année précédente{NBSP}: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit cette année{NBSP}: {CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trains disponibles
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Véhicules disponibles
@@ -2850,21 +2850,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nouveaux véhic
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nouveaux navires
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nouvel Aéronef
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY}{BLACK} Poids{NBSP}: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}{BLACK} Puissance{NBSP}: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Vitesse sur l'océan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Vitesse sur canal/fleuve: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY}/an
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY_LONG}/an
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK}Durée de vie{NBSP}: {GOLD}{COMMA} an{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.{NBSP}: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids{NBSP}: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY}{BLACK} Vitesse{NBSP}: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacité{NBSP}: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons motorisés{NBSP}: {GOLD}+{POWER}{BLACK} Poids{NBSP}: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids{NBSP}: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} Vitesse{NBSP}: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons motorisés{NBSP}: {GOLD}+{POWER}{BLACK} Poids{NBSP}: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réaménageable pour{NBSP}: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
 STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD}
@@ -2909,7 +2909,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Renommer le dé
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} véhicule{P "" s}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - glisser un élément pour l'ajouter/le supprimer du train, cliquer droit pour obtenir des information sur l'élément. Maintenir Ctrl pour que les deux fonctions s'appliquent à la chaine qui suit
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Véhicules - cliquer droit sur un véhicule pour obtenir des informations
@@ -2985,10 +2985,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navire
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotive monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotive magnétique
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY} Poids{NBSP}: {WEIGHT_S}{}Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}{}Coût d'entretien{NBSP}: {CURRENCY}/an{}Capacité{NBSP}: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY} Poids{NBSP}: {WEIGHT_S}{}Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}  E.T. max.{NBSP}: {6:FORCE}{}Coût d'entretien{NBSP}: {4:CURRENCY}/an{}Capacité{NBSP}: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Prix{NBSP}: {CURRENCY} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO}, {CARGO}{}Coût d'entretien{NBSP}: {CURRENCY}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Prix{NBSP}: {CURRENCY} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO}{}Coût d'entretien{NBSP}: {CURRENCY}/an
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}  E.T. max.{NBSP}: {6:FORCE}{}Coût d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
@@ -3082,9 +3082,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}En rout
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Entretien au {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Arrêté
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Arrêté
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Arrêté
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Démarré
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Démarré
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Démarré
 
 # Vehicle details
@@ -3096,25 +3096,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renommer
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Rebaptiser le navire
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renommer l'aéronef
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK}   Coût d'entretien{NBSP}: {LTBLUE}{CURRENCY}/an
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK}   Coût d'entretien{NBSP}: {LTBLUE}{CURRENCY_LONG}/an
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P "" nées} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" nées} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_S} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_S} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY} {BLACK}E.T. max.{NBSP}: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY} {BLACK}E.T. max.{NBSP}: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY} (année précédente{NBSP}: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}%  {BLACK}Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK}Construit{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK}Construit{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacité{NBSP}: {LTBLUE}Aucune
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}jours{BLACK}   Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}%{BLACK}   Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
@@ -3127,16 +3127,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Rebaptis
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renommer l'aéronef
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valeur{NBSP}: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacité totale de ce train{NBSP}:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vide
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} de {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} de {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} de {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} de {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Cargaison
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Afficher des informations sur les marchandises transportées
@@ -3152,8 +3152,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacit�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Réaménager)
 STR_REFIT_TITLE                                                 :{GOLD}Choisir le type de cargaison à transporter{NBSP}:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Sélectionner les véhicules à réaménager. Glisser avec la souris pour sélectionner plusieurs véhicules. Cliquer sur un espace vide pour sélectionner l'ensemble complet. Ctrl-clic pour sélectionner un véhicule et la chaine qui suit
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Choisir le type de cargaison à transporter
@@ -3442,22 +3442,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Réiniti
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Coût{NBSP}: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Coût{NBSP}: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Revenu{NBSP}: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Revenu{NBSP}: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfert{NBSP}: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Transfert{NBSP}: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coût estimé{NBSP}: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu estimé{NBSP}: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Coût{NBSP}: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Coût{NBSP}: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Revenu{NBSP}: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Revenu{NBSP}: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coût estimé{NBSP}: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu estimé{NBSP}: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sauvegarde en cours...{}Veuillez attendre la fin du processus{NBSP}!
@@ -3506,7 +3506,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Message
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Hors limites
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Trop près des bords de la carte
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Fonds insuffisants{}Somme de {CURRENCY} requise
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Fonds insuffisants{}Somme de {CURRENCY_LONG} requise
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Terrain plat requis
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terrain en pente dans la mauvaise direction
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossible d'exécuter...
@@ -3541,10 +3541,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... déj
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Impossible de changer le nom de compagnie...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Impossible de changer le nom du P.D.G. ...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... le prêt maximum est de {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... le prêt maximum est de {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Impossible d'emprunter plus...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... emprunt déjà remboursé
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} nécessaires
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} nécessaires
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossible de rembourser...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}On ne peut pas distribuer de l'argent qui est emprunté à la banque...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossible d'acheter la compagnie...
@@ -4251,37 +4251,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Spectateur, {1:
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4293,32 +4293,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

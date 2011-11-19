@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman berdesi
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang
-STR_QUANTITY_COAL                                               :{WEIGHT} batubara
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} batubara
 STR_QUANTITY_MAIL                                               :{COMMA} kantong dokumen
-STR_QUANTITY_OIL                                                :{VOLUME} minyak
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} minyak
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} ekor ternak
 STR_QUANTITY_GOODS                                              :{COMMA} peti barang jadi
-STR_QUANTITY_GRAIN                                              :{WEIGHT} gandum
-STR_QUANTITY_WOOD                                               :{WEIGHT} kayu
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} bijih besi
-STR_QUANTITY_STEEL                                              :{WEIGHT} baja
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} gandum
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} kayu
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} bijih besi
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} baja
 STR_QUANTITY_VALUABLES                                          :{COMMA} kantong barang berharga
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bijih tembaga
-STR_QUANTITY_MAIZE                                              :{WEIGHT} tepung jagung
-STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} bijih tembaga
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} tepung jagung
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} buah-buahan
 STR_QUANTITY_DIAMONDS                                           :{COMMA} kantong intan
-STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
-STR_QUANTITY_PAPER                                              :{WEIGHT} kertas
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} makanan
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} kertas
 STR_QUANTITY_GOLD                                               :{COMMA} kantong emas
-STR_QUANTITY_WATER                                              :{VOLUME} air
-STR_QUANTITY_WHEAT                                              :{WEIGHT} gandum
-STR_QUANTITY_RUBBER                                             :{VOLUME} karet
-STR_QUANTITY_SUGAR                                              :{WEIGHT} gula
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} air
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} gandum
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} karet
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} gula
 STR_QUANTITY_TOYS                                               :{COMMA} mainan
 STR_QUANTITY_SWEETS                                             :{COMMA} kantong manisan
-STR_QUANTITY_COLA                                               :{VOLUME} cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Harum manis
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} Harum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} kopi toffee
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} kopi toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
-STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman berdesis
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PN
-STR_ABBREV_COAL                                                 :{TINYFONT}BB
-STR_ABBREV_MAIL                                                 :{TINYFONT}SR
-STR_ABBREV_OIL                                                  :{TINYFONT}MY
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}TR
-STR_ABBREV_GOODS                                                :{TINYFONT}BR
-STR_ABBREV_GRAIN                                                :{TINYFONT}GD
-STR_ABBREV_WOOD                                                 :{TINYFONT}KY
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}BS
-STR_ABBREV_STEEL                                                :{TINYFONT}BJ
-STR_ABBREV_VALUABLES                                            :{TINYFONT}BB
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}TB
-STR_ABBREV_MAIZE                                                :{TINYFONT}JG
-STR_ABBREV_FRUIT                                                :{TINYFONT}BH
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}IN
-STR_ABBREV_FOOD                                                 :{TINYFONT}MK
-STR_ABBREV_PAPER                                                :{TINYFONT}KR
-STR_ABBREV_GOLD                                                 :{TINYFONT}EM
-STR_ABBREV_WATER                                                :{TINYFONT}AR
-STR_ABBREV_WHEAT                                                :{TINYFONT}TG
-STR_ABBREV_RUBBER                                               :{TINYFONT}KR
-STR_ABBREV_SUGAR                                                :{TINYFONT}GL
-STR_ABBREV_TOYS                                                 :{TINYFONT}MA
-STR_ABBREV_SWEETS                                               :{TINYFONT}MN
-STR_ABBREV_COLA                                                 :{TINYFONT}KL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}HM
-STR_ABBREV_BUBBLES                                              :{TINYFONT}GL
-STR_ABBREV_TOFFEE                                               :{TINYFONT}KT
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MB
-STR_ABBREV_NONE                                                 :{TINYFONT}TANPA
-STR_ABBREV_ALL                                                  :{TINYFONT}SMA
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PN
+STR_ABBREV_COAL                                                 :{TINY_FONT}BB
+STR_ABBREV_MAIL                                                 :{TINY_FONT}SR
+STR_ABBREV_OIL                                                  :{TINY_FONT}MY
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}TR
+STR_ABBREV_GOODS                                                :{TINY_FONT}BR
+STR_ABBREV_GRAIN                                                :{TINY_FONT}GD
+STR_ABBREV_WOOD                                                 :{TINY_FONT}KY
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}BS
+STR_ABBREV_STEEL                                                :{TINY_FONT}BJ
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}BB
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}TB
+STR_ABBREV_MAIZE                                                :{TINY_FONT}JG
+STR_ABBREV_FRUIT                                                :{TINY_FONT}BH
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}IN
+STR_ABBREV_FOOD                                                 :{TINY_FONT}MK
+STR_ABBREV_PAPER                                                :{TINY_FONT}KR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}EM
+STR_ABBREV_WATER                                                :{TINY_FONT}AR
+STR_ABBREV_WHEAT                                                :{TINY_FONT}TG
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KR
+STR_ABBREV_SUGAR                                                :{TINY_FONT}GL
+STR_ABBREV_TOYS                                                 :{TINY_FONT}MA
+STR_ABBREV_SWEETS                                               :{TINY_FONT}MN
+STR_ABBREV_COLA                                                 :{TINY_FONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}HM
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}GL
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}KT
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}MB
+STR_ABBREV_NONE                                                 :{TINY_FONT}TANPA
+STR_ABBREV_ALL                                                  :{TINY_FONT}SMA
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} penumpang
@@ -513,10 +513,10 @@ STR_MONTH_DEC                                                   :Desember
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Item
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Tampilkan grafik item
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik keuntungan operasional
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik Pendapatan
@@ -525,14 +525,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Peringka
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Nilai Perusahaan
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Daftar tarif kargo
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Hari transit
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pembayaran untuk mengirimkan 10 unit ( atau 10,000 liter ) untuk jarak 20 kotak
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Aktifkan semua
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Non-aktifkan semua
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Hari transit
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pembayaran untuk mengirimkan 10 unit ( atau 10,000 liter ) untuk jarak 20 kotak
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Aktifkan semua
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Non-aktifkan semua
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Tampilkan semua kargo pada grafik tarif pembayaran kargo
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}menampilkan tidak ada kargo pada grafik tingkat pembayaran kargo
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Pilih jenis kargo yang akan ditampilkan
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Perlihatkan detil rating kekuatan
 
@@ -542,7 +542,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik dis
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabel Liga Perusahaan
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Insinyur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Manajer Lalu lintas
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Koordinator trasportasi
@@ -556,7 +556,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Rating kemampuan secara rinci
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Lihat penuh informasi perusahaan ini
@@ -585,25 +585,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total Ni
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Kotak musik Jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Semua
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Model lama
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Model Baru
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Jalan Ezy
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Bebas 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Bebas 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume Musik
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume Efek
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Track
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titel
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Acak
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Semua
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Model lama
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Model Baru
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Jalan Ezy
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Bebas 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Bebas 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Volume Musik
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Volume Efek
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Track
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titel
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Acak
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Kembali ke musik sebelumnya
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Lewati ke musik berikutnya
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Hentikan musik
@@ -622,18 +622,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Set Musi
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Pilihan program Musik
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Daftar Track
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Kosong
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Daftar Track
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Kosong
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Hapus program saat ini (hanya Bebas 1 atau Bebas 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pada musik track untuk menambah pada program sekarang (hanya Bebas 1 atau Bebas 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada track musik untuk menghapusnya dari program saat ini. (Bebas 1 atau Bebas 2 saja)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Perusahaan tertinggi yang mencapai tahun {NUM}{}(Level {STRING})
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabel Liga Perusahaan {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Perusahaan tertinggi yang mencapai tahun {NUM}{}(Level {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabel Liga Perusahaan {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Pengusaha
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Pengusaha
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Ahli Industri
@@ -641,10 +641,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalis
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Tokoh terkemuka
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Jutawan
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon abad ini
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} mencapai status '{STRING}' !
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} dari {COMPANY} mencapai status '{STRING}' !
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} mencapai status '{STRING}' !
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} dari {COMPANY} mencapai status '{STRING}' !
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Peta - {STRING}
@@ -664,40 +664,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Tampilka
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik di tipe industri untuk menampilkannya. Ctrl+klik untuk mematikan semuanya, kecuali yang terpilih. Ctrl+klik lagi untuk menyalakannya kembali.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klik pada nama perusajaan untuk menampilkan propertinya, Ctrl+klik untuk mematikan semuanya, kecuali yang terpilih. Ctrl+klik lagi untuk menyalakannya kembali
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Jalan raya
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Rel kereta
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasiun/Bandara/Pelabuhan
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bangunan/Industri
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Kendaraan
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Kereta
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Kendaraan Jalan Raya
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Kapal
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Pesawat
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Jalur Transportasi
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Hutan
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Station Kereta
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Terminal bongkar muat
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Terminal Bus
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Bandara/Heliport
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Pelabuhan
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Daratan terjal
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Daratan berumput
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Lahan kritis
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Ladang
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Pepohonan
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Bebatuan
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Perairan
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Tanpa Pemilik
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Perkotaan
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Perindustrian
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Gurun Pasir
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Salju
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Jalan raya
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Rel kereta
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stasiun/Bandara/Pelabuhan
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Bangunan/Industri
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Kendaraan
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Kereta
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Kendaraan Jalan Raya
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Kapal
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Pesawat
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Jalur Transportasi
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Hutan
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Station Kereta
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Terminal bongkar muat
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Terminal Bus
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Bandara/Heliport
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Pelabuhan
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Daratan terjal
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Daratan berumput
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Lahan kritis
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Ladang
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Pepohonan
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Bebatuan
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Perairan
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Tanpa Pemilik
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Perkotaan
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Perindustrian
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Gurun Pasir
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Salju
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Hidup/matikan tampilan nama kota di peta
 STR_SMALLMAP_CENTER                                             :{BLACK}Tengahkan peta kecil pada posisi ini
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Matikan semua
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktifkan semua
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Tampilkan tinggi
@@ -745,60 +745,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Perubah
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidi
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informasi umum
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Masyarakat bergembira . . .{}Kereta pertama tiba di {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Masyarakat bergembira . . .{}Pesawat pertama tiba di {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Kereta pertama tiba di {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Pesawat pertama tiba di {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Kecelakaan Kereta!{}{COMMA} mati dalam ledakan setelah kecelakaan
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Terjadi Tabrakan Kendaraan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Terjadi Tabrakan Kendaraan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Kecelakaan Pesawat!{}{COMMA} orang mati dalam kebakaran di {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Kecelakaan Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Kecelakaan Kereta!{}{COMMA} mati dalam ledakan setelah kecelakaan
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}{COMMA} orang mati dalam kebakaran di {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Bencana Zeppelin di {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Kendaraan hancur pada kecelakaan 'UFO'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Kilang minyak meledak didekat {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Pabrik hancur akibat hubungan pendek arus listik di dekat {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' mendarat di dekat {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Tambang batubara mengalami kerusakan di dekat {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Banjir!{}Sedikitnya {COMMA} hilang, diduga meninggal akibat banjir!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Bencana Zeppelin di {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Kendaraan hancur pada kecelakaan 'UFO'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Kilang minyak meledak didekat {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Pabrik hancur akibat hubungan pendek arus listik di dekat {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' mendarat di dekat {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Tambang batubara mengalami kerusakan di dekat {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Banjir!{}Sedikitnya {COMMA} hilang, diduga meninggal akibat banjir!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Perusahaan transportasi bermasalah!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} akan dijual atau dinyatakan bangkrut kecuali jika dapat meningkatkan nilainya segera!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK} Perusahaan transportasi bergabung!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} telah dijual kepada {STRING} senilai {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bangkrut!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} telah ditutup oleh pemilik modal dan segala asetnya dijual!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Perusahaan baru telah didirikan!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} memulai pembangunan di dekat {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} telah diambil alih oleh {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Pimpinan)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Perusahaan transportasi bermasalah!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} akan dijual atau dinyatakan bangkrut kecuali jika dapat meningkatkan nilainya segera!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK} Perusahaan transportasi bergabung!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} telah dijual kepada {STRING} senilai {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bangkrut!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} telah ditutup oleh pemilik modal dan segala asetnya dijual!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Perusahaan baru telah didirikan!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} memulai pembangunan di dekat {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} telah diambil alih oleh {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Pimpinan)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} menjadi sponsor pembangunan kota baru {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} menjadi sponsor pembangunan kota baru {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ada pembangunan {STRING} baru di dekat {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} baru sedang ditanam di dekat {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ada pembangunan {STRING} baru di dekat {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{STRING} baru sedang ditanam di dekat {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} akan segera ditutup!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} akan segera ditutup karena kekurangan suplai!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Ketiadaan pepohonan didekatnya menyebabkan {STRING} akan segera ditutup!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} akan segera ditutup!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} akan segera ditutup karena kekurangan suplai!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Ketiadaan pepohonan didekatnya menyebabkan {STRING} akan segera ditutup!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Moneter Eropa Bersatu!{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Resesi Global!{}{}Ahli Finansial takut ekonomi jatuh pada posisi terburuk!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Resesi Berakhir!{}{}Perbaikan di sektor dagang memberikan kepercayaan diri sektor industri untuk memperkuat pertumbuhan ekonomi!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Moneter Eropa Bersatu!{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Resesi Global!{}{}Ahli Finansial takut ekonomi jatuh pada posisi terburuk!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Resesi Berakhir!{}{}Perbaikan di sektor dagang memberikan kepercayaan diri sektor industri untuk memperkuat pertumbuhan ekonomi!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Produksi {INDUSTRY} meningkat!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Lapisan baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Cadangan baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Peningkatan metode pertanian pada {INDUSTRY} diperkirakan produksi akan meningkat dua kali lipat!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksi {STRING} di {INDUSTRY} meningkat hingga {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Produksi {INDUSTRY} menurun hingga 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksi {STRING} di {INDUSTRY} turun hingga {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}Produksi {INDUSTRY} meningkat!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Lapisan baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Cadangan baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Peningkatan metode pertanian pada {INDUSTRY} diperkirakan produksi akan meningkat dua kali lipat!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produksi {STRING} di {INDUSTRY} meningkat hingga {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Produksi {INDUSTRY} menurun hingga 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produksi {STRING} di {INDUSTRY} turun hingga {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di depo
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di bengkel
@@ -818,13 +818,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} sudah sangat tua dan perlu segera diganti
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak menemukan arah selanjutnya
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} kehilangan arah
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} berhenti karena proses ubah kargonya gagal
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Peremajaan {VEHICLE} gagal{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} jenis baru telah diluncurkan!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} jenis baru telah diluncurkan!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} jenis baru telah diluncurkan!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tidak lagi menerima {STRING}
@@ -832,15 +832,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} Sekarang menerima {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} Sekarang menerima {STRING} dan {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Penawaran subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} mulai sekarang tidak lagi mendapat subsidi
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} tidak lagi mendapat subsidi
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Penawaran subsidi:{}{}Jasa transportasi {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun dari pemkot setempat!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar 50% lebih banyak hingga tahun depan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar dua kali lipat hingga tahun depan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar tiga kali lipat hingga tahun depan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar empat kali lipat hingga tahun depan!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Penawaran subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} mulai sekarang tidak lagi mendapat subsidi
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} tidak lagi mendapat subsidi
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Penawaran subsidi:{}{}Jasa transportasi {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun dari pemkot setempat!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar 50% lebih banyak hingga tahun depan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar dua kali lipat hingga tahun depan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar tiga kali lipat hingga tahun depan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar empat kali lipat hingga tahun depan!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Kekacauan lalu lintas di {TOWN}!{}{}Program perbaikan jalan yang dibiayai oleh {STRING} mengakibat kesengsaraan bagi pengendara selama 6 bulan!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Kekacauan lalu lintas di {TOWN}!{}{}Program perbaikan jalan yang dibiayai oleh {STRING} mengakibat kesengsaraan bagi pengendara selama 6 bulan!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
@@ -968,7 +968,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus la
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Atur Mata Uang
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Nilai tukar: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Nilai tukar: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Menurunkan nilai mata uang satu Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Meningkatkan nilai mata uang satu Pound (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Atur penukaran nilai mata uang per satu Pound (£)
@@ -987,7 +987,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Masukkan
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Berpindah ke Euro lebih awal
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Berpindah ke Eurolebih akhir
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) pada mata uang Anda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ubah sendiri parameter mata uang
 
@@ -1008,7 +1008,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Simpan
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Jumlah pesaing maksimal: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Jumlah kota: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Jumlah industri: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Jumlah pinjaman maksimal: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Jumlah pinjaman maksimal: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Tingkat suku bunga awal: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Biaya operasional kendaraan: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Kecepatan para pesaing membangun: {ORANGE}{STRING}
@@ -1413,7 +1413,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apa and
 STR_CHEATS                                                      :{WHITE}Kode Curang
 STR_CHEATS_TOOLTIP                                              :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
 STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainnya. Kecurangan ini akan tetap tercatat selama game berjalan
-STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
@@ -1649,9 +1649,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Daftar p
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO PERUSAHAAN
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nama Perusahaan: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Dilantik: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Nilai perusahaan: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Neraca saat ini: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Pendapatan tahun terakhir: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Nilai perusahaan: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Neraca saat ini: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Pendapatan tahun terakhir: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Performa: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Kendaraan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1796,8 +1796,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} be
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} mulai mendirikan perusahaan (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} meninggalkan permainan ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah mengganti namanya menjadi {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} telah memberi perusahaanmu {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Anda telah memberi {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} telah memberi perusahaanmu {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Anda telah memberi {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server menutup sesi
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server memulai ulang...{}Tunggulah...
 
@@ -1955,7 +1955,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tambah k
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Pilih Jembatan Rel
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Pilih Jembatan
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pilihan jembatan - Klik pada jembatan yang ingin anda bangun
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensi, Baja
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balok, Baja
@@ -2126,7 +2126,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Danai in
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Pilih jenis industri yang di inginkan dari daftar
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Bangun industri secara acak
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Dukung Peta dengan penempatan industri secara otomatis
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Biaya: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Biaya: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospek
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bangun
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Danai
@@ -2147,8 +2147,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pilih ag
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasi area daratan
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Biaya penghancuran: {LTBLUE}tidak ada
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Biaya penghancuran: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Nilai jual kembali: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Biaya penghancuran: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Nilai jual kembali: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :-kosong-
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Pemilik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Pemilik Jalan: {LTBLUE}{STRING}
@@ -2505,7 +2505,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Dokumen 
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo untuk pertumbuhan kota:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{BLACK} Butuh {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} dibutuhkan saat musim dingin
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{BLACK} Bulan lalu terima {ORANGE}{CARGO}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{BLACK} Bulan lalu terima {ORANGE}{CARGO_LONG}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan utama pada lokasi kota. Ctrl+Click akan membuka viewport baru pada lokasi kota
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Pemkot
@@ -2522,7 +2522,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Ubah nama Kota
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Pemerintah Kota {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Peringkat Perusahaan Transportasi:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Tindakan yang tersedia:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Daftar tindakan yang bisa dilakukan di kota ini - klik pada item untuk menampilkan penjelasan detail
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Lakukan
@@ -2537,14 +2537,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Danai pembangun
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak transportasi eksklusif
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suap pemkot setempat
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan kecil, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Danai perbaikan jalan. Akan menyebabkan kemacetan arus lalu lintas hingga 6 bulan.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Biayai pembangunan gedung komersil di kota.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun. Penumpang dan kargo di kota ini hanya akan menggunakan stasiun milik perusahaan anda.{} Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Kolusi dengan pemkot agar naik peringkat, beresiko terkena hukuman jika tertangkap.{}Biaya: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan kecil, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Danai perbaikan jalan. Akan menyebabkan kemacetan arus lalu lintas hingga 6 bulan.{}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Biayai pembangunan gedung komersil di kota.{}Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun. Penumpang dan kargo di kota ini hanya akan menggunakan stasiun milik perusahaan anda.{} Biaya: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Kolusi dengan pemkot agar naik peringkat, beresiko terkena hukuman jika tertangkap.{}Biaya: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
@@ -2559,7 +2559,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik pad
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama-nama stasiun - klik pada nama untuk mengarahkan pandangan utama pada stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tekan CTRL untuk memilih lebih dari satu item
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasiun
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Tidak ada -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Pilih semua fasilitas
@@ -2567,10 +2567,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Pilih se
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Tidak ada barang yang sedang menunggu
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Menunggu: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} dialihkan dari {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} dialihkan dari {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Menerima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tampilkan daftar kargo yang bisa diterima
@@ -2612,7 +2612,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ubah nam
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ubah nama waypoint
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}Keuangan {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Keuangan {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Belanja / Pendapatan
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksi
@@ -2628,21 +2628,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Pendapata
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Pendapatan Kapal
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Bunga Pinjaman
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Lainnya
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo Bank
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman Maks: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pinjam {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Pinjaman Maks: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pinjam {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Tambah jumlah pinjaman. Tekan Ctrl+Click untuk meminjam sebanyak mungkin.
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Bayar {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Bayar {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bayar cicilan pinjaman. Tekan Ctrl+Click untuk membayar cicilan sebanyak mungkin.
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Pimpinan)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Pimpinan)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dilantik : {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Warna tema:
@@ -2652,7 +2652,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} pesawat
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} kapal
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Tidak punya
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Nilai Perusahaan: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Nilai Perusahaan: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% saham dimiliki oleh {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Kantor Pusat
@@ -2679,20 +2679,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25%
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tidak Ada -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% terkirim)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% terkirim)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% terkirim)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% terkirim)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama-nama industri - klik di nama untuk mengarahkan pandangan utama pada industri. Ctrl+Click akan membuka viewport baru pada lokasi industri
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksi bulan kemarin
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% terkirim)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% terkirim)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Arahkan pandangan utama pada lokasi industri. Ctrl+Click akan membuka viewport baru pada lokasi industri
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tingkat produksi: {YELLOW}{COMMA}%
 
@@ -2704,7 +2704,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Membutuh
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Kargo yang sedang menunggu di proses:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2723,7 +2723,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Kendaraa
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Pesawat - klik pada pesawat untuk informasi
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Laba tahun ini: {CURRENCY} (tahun lalu: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Laba tahun ini: {CURRENCY_LONG} (tahun lalu: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Kereta tersedia
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kendaraan tersedia
@@ -2779,19 +2779,19 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Kendaraan Baru
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Kapal Baru
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Buat Pesawat
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Berat: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Biaya: {GOLD}{CURRENCY_LONG}{BLACK} Berat: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kecepatan: {GOLD}{VELOCITY}{BLACK} Daya: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Kecepatan: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Biaya Operasional: {GOLD}{CURRENCY}/thn
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitas: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Biaya Operasional: {GOLD}{CURRENCY_LONG}/thn
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitas: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(kargo dapat diubah)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desain: {GOLD}{NUM}{BLACK} Usia: {GOLD}{COMMA} tahun
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Kehandalan Maks.: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Biaya: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Kecepatan: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Daya Muat: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Gerbong: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Biaya: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Biaya: {GOLD}{CURRENCY_LONG}{BLACK} Kecepatan: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Daya Muat: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Gerbong: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kargo dapat di ganti untuk: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo
 STR_PURCHASE_INFO_ALL_BUT                                       :Semua tapi tidak untuk {GOLD}
@@ -2836,7 +2836,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Ubah nama
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kendaraan{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kereta - tahan klik kiri untuk menambah/mengurangi dari kereta, klik kanan untuk informasi. Tahan Ctrl untuk membuat kedua fungsi berlaku pada rangkaian berikut
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kendaraan - klik kanan pada kendaraan untuk informasi
@@ -2912,10 +2912,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :kapal
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :lokomotif monorel
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :lokomotif maglev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY}/thn{}Kapasitas: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Biaya Operasional: {4:CURRENCY}/yr{}Kapasitas: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}, {CARGO}{}Bea Berjalan: {CURRENCY}/thn
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Biaya: {CURRENCY} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO}{}Bea Berjalan: {CURRENCY}/thn
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY_LONG}/thn{}Kapasitas: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Biaya Operasional: {4:CURRENCY_LONG}/yr{}Kapasitas: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO_LONG}, {CARGO_LONG}{}Bea Berjalan: {CURRENCY_LONG}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO_LONG}{}Bea Berjalan: {CURRENCY_LONG}/thn
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ganti {STRING}
@@ -3009,9 +3009,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Menuju 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Perbaikan pada {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Berhenti
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Berhenti
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Berhenti
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Mulai
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Mulai
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Mulai
 
 # Vehicle details
@@ -3023,25 +3023,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama ken
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nama kapal
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nama pesawat
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Umur: {LTBLUE}{STRING}{BLACK}   Biaya operasional: {LTBLUE}{CURRENCY}/thn
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Umur: {LTBLUE}{STRING}{BLACK}   Biaya operasional: {LTBLUE}{CURRENCY_LONG}/thn
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kec. Max: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan thn ini: {LTBLUE}{CURRENCY} (thn lalu: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntungan thn ini: {LTBLUE}{CURRENCY_LONG} (thn lalu: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Mogok sejak perbaikan terakhir : {LTBLUE}{COMMA} kali
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitas: {LTBLUE}Tidak ada
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Muat: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} hari{BLACK}   Perbaikan terakhir: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA} %{BLACK}   Perbaikan terakhir: {LTBLUE}{DATE_LONG}
@@ -3054,16 +3054,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nama kap
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nama pesawat
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Buatan: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Nilai: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Buatan: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Total kapasitas kargo untuk kereta:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Kosong
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} dari {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} dari {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} dari {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} dari {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Muatan
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Tampilkan detail kargo terangkut
@@ -3079,8 +3079,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Renovasi)
 STR_REFIT_TITLE                                                 :{GOLD}Pilih jenis kargo yang akan dibawa:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Kapasitas baru: {GOLD}{CARGO}{}{BLACK}Biaya ubah kargo: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasitas baru: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Biaya modifikasi: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}{}{BLACK}Biaya ubah kargo: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Biaya modifikasi: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pilih kendaraan yg akan dimodifikasi. Drag untuk memilih sekaligus beberapa kendaraan. Klik pada ruang kosong untuk memilih semua kendaraan. Ctrl+Klik untuk memilih kendaraan berikut rangkaiannya
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo yang akan dibawa kereta
@@ -3347,22 +3347,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Biaya: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Biaya: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Pemasukan: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Pemasukan: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Perkiraan Biaya: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Perkiraan Pemasukan: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Biaya: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Biaya: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Pemasukan: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Pemasukan: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Perkiraan Biaya: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Perkiraan Pemasukan: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Penyimpanan sedang berlangsung,{}mohon tunggu hingga selesai
@@ -3409,7 +3409,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Pesan d
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Batas tepi peta
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Terlalu dekat dengan tepi peta
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dana tidak cukup - dibutuhkan {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dana tidak cukup - dibutuhkan {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Daratan harus datar
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Kemiringan daratan tidak sesuai
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tidak bisa
@@ -3443,10 +3443,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... suda
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Tidak dapat mengubah nama perusahaan
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Tidak dapat mengubah nama pimpinan...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... besar pinjaman maksimal yang diizinkan adalah {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... besar pinjaman maksimal yang diizinkan adalah {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Tidak dapat meminjam uang lagi...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... tidak ada hutang yang harus dibayar
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak dapat membayar hutang...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak dapat memberikan uang yang berasal dari pinjaman bank...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Tidak dapat membeli perusahaan...
@@ -4147,37 +4147,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Penonton, {1:ST
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4189,31 +4189,31 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

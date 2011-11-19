@@ -623,7 +623,7 @@ public:
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -673,7 +673,7 @@ void ShowOperatingProfitGraph()
 
 struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -834,7 +834,7 @@ void ShowPerformanceHistoryGraph()
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -895,7 +895,7 @@ enum CargoPaymentRatesWidgets {
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	bool first_init; ///< This value is true until the first initialization of the window has finished.
 	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(CPW_GRAPH, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(CPW_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->first_init = true;
 		this->num_on_x_axis = 20;

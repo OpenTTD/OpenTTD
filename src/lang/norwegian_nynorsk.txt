@@ -98,73 +98,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Brus
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passasjer{P "" ar}
-STR_QUANTITY_COAL                                               :{WEIGHT} kol
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} kol
 STR_QUANTITY_MAIL                                               :{COMMA} postsekk{P "" er}
-STR_QUANTITY_OIL                                                :{VOLUME} olje
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} olje
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} eining{P "" ar} buskap
 STR_QUANTITY_GOODS                                              :{COMMA} kasse{P "" r} gods
-STR_QUANTITY_GRAIN                                              :{WEIGHT} korn
-STR_QUANTITY_WOOD                                               :{WEIGHT} tømmer
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} jernmalm
-STR_QUANTITY_STEEL                                              :{WEIGHT} stål
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} korn
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} tømmer
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} jernmalm
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} stål
 STR_QUANTITY_VALUABLES                                          :{COMMA} sekk{P "" er} med verdisaker
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} koparmalm
-STR_QUANTITY_MAIZE                                              :{WEIGHT} mais
-STR_QUANTITY_FRUIT                                              :{WEIGHT} frukt
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} koparmalm
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mais
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} frukt
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sekk{P "" er} med diamantar
-STR_QUANTITY_FOOD                                               :{WEIGHT} mat
-STR_QUANTITY_PAPER                                              :{WEIGHT} papir
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} mat
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} papir
 STR_QUANTITY_GOLD                                               :{COMMA} sekk{P "" er} med gull
-STR_QUANTITY_WATER                                              :{VOLUME} vatn
-STR_QUANTITY_WHEAT                                              :{WEIGHT} kveite
-STR_QUANTITY_RUBBER                                             :{VOLUME} gummi
-STR_QUANTITY_SUGAR                                              :{WEIGHT} sukker
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} vatn
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} kveite
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gummi
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} sukker
 STR_QUANTITY_TOYS                                               :{COMMA} leike{P "" r}
 STR_QUANTITY_SWEETS                                             :{COMMA} sekk{P "" er} med godteri
-STR_QUANTITY_COLA                                               :{VOLUME} cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} sukkerspinn
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} sukkerspinn
 STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P "" r}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamell
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} karamell
 STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P "" er}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} plast
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plast
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} brus
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}KL
-STR_ABBREV_MAIL                                                 :{TINYFONT}PT
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BS
-STR_ABBREV_GOODS                                                :{TINYFONT}GD
-STR_ABBREV_GRAIN                                                :{TINYFONT}KN
-STR_ABBREV_WOOD                                                 :{TINYFONT}TR
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}JM
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VS
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KM
-STR_ABBREV_MAIZE                                                :{TINYFONT}MS
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}MT
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}GL
-STR_ABBREV_WATER                                                :{TINYFONT}VN
-STR_ABBREV_WHEAT                                                :{TINYFONT}KV
-STR_ABBREV_RUBBER                                               :{TINYFONT}GM
-STR_ABBREV_SUGAR                                                :{TINYFONT}SK
-STR_ABBREV_TOYS                                                 :{TINYFONT}LT
-STR_ABBREV_SWEETS                                               :{TINYFONT}GT
-STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}SP
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BO
-STR_ABBREV_TOFFEE                                               :{TINYFONT}KM
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MV
-STR_ABBREV_NONE                                                 :{TINYFONT}IN
-STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}KL
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PT
+STR_ABBREV_OIL                                                  :{TINY_FONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}BS
+STR_ABBREV_GOODS                                                :{TINY_FONT}GD
+STR_ABBREV_GRAIN                                                :{TINY_FONT}KN
+STR_ABBREV_WOOD                                                 :{TINY_FONT}TR
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}JM
+STR_ABBREV_STEEL                                                :{TINY_FONT}ST
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}VS
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KM
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MS
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}MT
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}GL
+STR_ABBREV_WATER                                                :{TINY_FONT}VN
+STR_ABBREV_WHEAT                                                :{TINY_FONT}KV
+STR_ABBREV_RUBBER                                               :{TINY_FONT}GM
+STR_ABBREV_SUGAR                                                :{TINY_FONT}SK
+STR_ABBREV_TOYS                                                 :{TINY_FONT}LT
+STR_ABBREV_SWEETS                                               :{TINY_FONT}GT
+STR_ABBREV_COLA                                                 :{TINY_FONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}SP
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BO
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}KM
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}MV
+STR_ABBREV_NONE                                                 :{TINY_FONT}IN
+STR_ABBREV_ALL                                                  :{TINY_FONT}ALLE
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passasjer{P "" s}
@@ -516,10 +516,10 @@ STR_MONTH_DEC                                                   :desember
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nøkkel
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Syne nøkkel til grafer
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf over overskot
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf over inntekter
@@ -528,14 +528,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasj
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaverdi
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti einingar (eller 10 000 liter) over ein distanse på 20 ruter
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Syn alle
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Gøym alle
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dager i transport
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaling for levering av ti einingar (eller 10 000 liter) over ein distanse på 20 ruter
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Syn alle
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Gøym alle
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Syn alle varer på varetakstgrafen
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Gøym alle varer på varetakstgrafen
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Syne/gøym graf for ein bestemd varetype
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Syne detaljerte ytelsesrangeringar
 
@@ -545,7 +545,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikk he
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Firmarangering
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniør
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafikkleiar
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportkoordinator
@@ -559,7 +559,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Finansfyrste
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljert prestasjonsrating
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljar om dette firmaet
@@ -588,25 +588,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total po
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz-jukeboks
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Alle
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Gamle slagarar
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Nye godbetar
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Eigendefinert 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Eigendefinert 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musikkvolum
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Lydeffektvolum
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS.
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Spor
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Tittel
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Tilfeldig
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Alle
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Gamle slagarar
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Nye godbetar
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Eigendefinert 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Eigendefinert 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musikkvolum
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lydeffektvolum
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAKS.
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Spor
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tittel
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Tilfeldig
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Program
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Spel førre spor
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Spel neste spor
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stopp musikken
@@ -625,18 +625,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Eit musi
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikkprogram
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Sporregister
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Tøm
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Sporregister
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Tøm
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Slett gjeldande program (gjeld berre Eigendefinert 1 og 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikk på musikkspor for å leggje til gjeldande program (gjeld berre Eigendefinert 1 og 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikk på eit musikkspor for å fjerne det frå gjeldande program (Gjeld berre eigendefinert 1 og 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste firma som nådde {NUM}{}({STRING} Nivå)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmarangering i {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste firma som nådde {NUM}{}({STRING} Nivå)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmarangering i {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
@@ -644,10 +644,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalist
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Hundreårets finansfyrste
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} oppnår status som '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} frå {COMPANY} oppnår status som '{STRING}'!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} oppnår status som '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} frå {COMPANY} oppnår status som '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kart - {STRING}
@@ -666,40 +666,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Syne veg
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Syne landeigarar på kartet
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikk på eit firma for å syne/ikkje syne dets eigedom. Ctrl+Klikk syner kun det valte firma. Ctrl+Klikk igjen for å syne alle firma
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Vegar
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Jarnbaner
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasjonar/Flyplassar/Hamner
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bygningar/Industriar
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Køyretøy
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Tog
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Køyretøy
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Skip
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Luftfartøy
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportruter
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Skog
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Jernbanestasjon
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Lasteterminal
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Busstasjon
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Flyplass/Helikopterplass
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Kai
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Utmark
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Gras
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Bart land
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Jorde
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Tre
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Steinar
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Vatn
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Ingen eigar
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Byar
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industriar
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Ørken
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Snø
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Vegar
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Jarnbaner
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stasjonar/Flyplassar/Hamner
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Bygningar/Industriar
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Køyretøy
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Tog
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Køyretøy
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Skip
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Luftfartøy
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transportruter
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Skog
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Jernbanestasjon
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Lasteterminal
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Busstasjon
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Flyplass/Helikopterplass
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Kai
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Utmark
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Gras
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Bart land
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Jorde
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Tre
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Steinar
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Vatn
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Ingen eigar
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Byar
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industriar
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Ørken
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snø
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Skru av/på bynamn på kartet
 STR_SMALLMAP_CENTER                                             :{BLACK}Midtstill oversiktskartet på den gjeldande posisjonen
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Deaktiver alle
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktiver alle
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Syne høgd
@@ -747,60 +747,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Endring
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidiar
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Generell informasjon
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første tog kjem til {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første buss kjem til {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første lastebil kjem til {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Innbygjarane feirer . . .{}Første passasjertrikk kjem til{STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Innbygjarane feirer . . .{}Første varektetrikk kjem til {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første skip kjem til {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første luftfartøy kjem til {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Innbyggjarane jublar . . .{}Første tog kjem til {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Innbyggjarane jublar . . .{}Første buss kjem til {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Innbyggjarane jublar . . .{}Første lastebil kjem til {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Innbygjarane feirer . . .{}Første passasjertrikk kjem til{STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Innbygjarane feirer . . .{}Første varektetrikk kjem til {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Innbyggjarane jublar . . .{}Første skip kjem til {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Innbyggjarane jublar . . .{}Første luftfartøy kjem til {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Togkrasj!{}{COMMA} døyr i flammehav etter kollisjon
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Køyretøykollisjon!{}Sjåfør døyr i flammehav etter kollisjon med tog
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Køyretøykollisjon!{}{COMMA} døyr i flammehav etter kollisjon med tog
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Flykrasj!{}{COMMA} døyr i flammehav ved {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Flystyrt!{}Fly gjekk tom for drivstoff, {COMMA} døydde i flammehav
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Togkrasj!{}{COMMA} døyr i flammehav etter kollisjon
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Køyretøykollisjon!{}Sjåfør døyr i flammehav etter kollisjon med tog
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Køyretøykollisjon!{}{COMMA} døyr i flammehav etter kollisjon med tog
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Flykrasj!{}{COMMA} døyr i flammehav ved {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Flystyrt!{}Fly gjekk tom for drivstoff, {COMMA} døydde i flammehav
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelinerulukke på {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Køyretøy øydelagd i kollisjon med UFO!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Eksplosjon på oljeraffineri i nærleiken av {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrikk øydelagd på mistenkeleg vis i nærleiken av {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}UFO landar i nærleiken av {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kollaps i ein gruvegoag gjer store øydeleggingar i nærleiken av {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Flaum!{}Minst {COMMA} sakna eller antatt daud{P "" e} etter valdsam oversymjing!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinerulukke på {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Køyretøy øydelagd i kollisjon med UFO!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplosjon på oljeraffineri i nærleiken av {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabrikk øydelagd på mistenkeleg vis i nærleiken av {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO landar i nærleiken av {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Kollaps i ein gruvegoag gjer store øydeleggingar i nærleiken av {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Flaum!{}Minst {COMMA} sakna eller antatt daud{P "" e} etter valdsam oversymjing!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportfirma har problem!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} vil verte seld eller nedlagt, dersom ikkje økonomien til firmaet tek seg opp!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Transportfirma fusjonerer!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} har blitt selt til {STRING} for {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Konkurs!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} har vorte stengd av kreditorer og alt av verdi har blitt seld!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nytt transportfirma skipa!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} startar bygging i nærleiken av {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} har vorte kjøpt opp av {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Sjef)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Transportfirma har problem!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} vil verte seld eller nedlagt, dersom ikkje økonomien til firmaet tek seg opp!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Transportfirma fusjonerer!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} har blitt selt til {STRING} for {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Konkurs!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} har vorte stengd av kreditorer og alt av verdi har blitt seld!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nytt transportfirma skipa!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} startar bygging i nærleiken av {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} har vorte kjøpt opp av {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Sjef)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponsa konstruksjon av ny by {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponsa konstruksjon av ny by {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ny {STRING} byggjast i nærleiken av {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Ny {STRING} plantast i nærleiken av {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny {STRING} byggjast i nærleiken av {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Ny {STRING} plantast i nærleiken av {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} legg ned verksemda straks!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Leveringsproblem gjer at {STRING} legg ned verksemda straks!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Mangel på tre i nærleiken gjer at {STRING} legg ned verksemda straks!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} legg ned verksemda straks!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Leveringsproblem gjer at {STRING} legg ned verksemda straks!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Mangel på tre i nærleiken gjer at {STRING} legg ned verksemda straks!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europeisk valutaunion!{}{} Euro er introdusert som den einaste gjeldande valuta for kvadagslege forretningar i landet ditt.
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Verdskrise!{}{}Økonomar fryktar det verste. Nedgangstider i kjømda.
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europeisk valutaunion!{}{} Euro er introdusert som den einaste gjeldande valuta for kvadagslege forretningar i landet ditt.
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Verdskrise!{}{}Økonomar fryktar det verste. Nedgangstider i kjømda.
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} aukar produksjonen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Ny kolåre funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nye oljereservar funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Forbetra landbruksmetodar på {INDUSTRY} er venta å doble produksjonen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} aukar med {COMMA}{NBSP}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sin produksjon har sokke med 50{NBSP}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektinvasjon på {INDUSTRY}!{}Produksjonen søkk med 50{NBSP}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} søkk med {COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} aukar produksjonen!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Ny kolåre funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nye oljereservar funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Forbetra landbruksmetodar på {INDUSTRY} er venta å doble produksjonen!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} aukar med {COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} sin produksjon har sokke med 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insektinvasjon på {INDUSTRY}!{}Produksjonen søkk med 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} søkk med {COMMA}{NBSP}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} ventar i togstallen
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ventar i garasjen
@@ -820,13 +820,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er veldig gammal, og må bytast ut snarast
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikkje finna spor vidare
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} har køyrt seg vill
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s forteneste i fjor var {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s forteneste i fjor var {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppa pga. ombygningsordre feila
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisk fornying feila på {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ny {STRING}type er tilgjengeleg!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Ny {STRING}type er tilgjengeleg!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRING}type er tilgjengeleg!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} godtek ikkje lenger {STRING}
@@ -834,15 +834,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} godtek no {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} godtek no {STRING} og {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} får ikkje lenger subsidiar
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie trekt attende:{}{}{STRING} teneste frå {STRING} til {STRING} får ikkje lenger subsidiar
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsidie-tilbod:{}{}Første transport av {STRING} frå {STRING} til {STRING} vil vere subsidiert i eit år av bystyret!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje 50{NBSP}% ekstra forteneste det neste året!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje dobbel inntekt i eit år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje trippel inntekt i eit år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje firedobbel inntekt i eit år!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} får ikkje lenger subsidiar
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie trekt attende:{}{}{STRING} teneste frå {STRING} til {STRING} får ikkje lenger subsidiar
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidie-tilbod:{}{}Første transport av {STRING} frå {STRING} til {STRING} vil vere subsidiert i eit år av bystyret!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje 50{NBSP}% ekstra forteneste det neste året!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje dobbel inntekt i eit år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje trippel inntekt i eit år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje firedobbel inntekt i eit år!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Ombyggjing av vegen, finansiert av {STRING}, medførar 6 månaders irritasjon for bilistane!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafikkaos i {TOWN}!{}{}Ombyggjing av vegen, finansiert av {STRING}, medførar 6 månaders irritasjon for bilistane!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindauge {COMMA}
@@ -970,7 +970,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskje
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigendefinert valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reduser verdien av din valuta sett opp mot eitt pund (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Auk verdien av din valuta sett opp mot eitt pund (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sett valutakursen for eitt pund (£)
@@ -989,7 +989,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Vel års
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt til Euro tidlegare
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt til Euro senere
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Byt eigendefinert valutaparameter
 
@@ -1010,7 +1010,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Lagre
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maks. antal konkurrentar: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Antal byar: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Antal industriar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maks. startlån: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maks. startlån: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Startrente: {ORANGE}{COMMA}{NBSP}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Driftskostnader for køyretøy: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konstruksjonshastigheit hos konkurrentar: {ORANGE}{STRING}
@@ -1418,7 +1418,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysningsbokser fortel at du har nytta denne juksekoden tidlegare
 STR_CHEATS_WARNING                                              :{BLACK}Åtvaring! Du er i ferd med å forråda motspelarane. Vær klar over at denne skammelige handlinga vil bli huska i all evighet.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Auk pengebehaldninga med {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Auk pengebehaldninga med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speler som firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industriar, uflyttbare ting): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelar kan krysse kvarandre: {ORANGE}{STRING}
@@ -1654,9 +1654,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Ei liste
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}FIRMAOVERSIKT
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Firmanamn: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Skipa: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Firmaverdi: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Noverande saldo: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Inntekt i fjor: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Firmaverdi: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Noverande saldo: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Inntekt i fjor: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Nettverksyting: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Køyretøy: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1801,8 +1801,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har starta eit nytt firma (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forlatt spelet ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endra namnet sitt til {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav firmaet ditt {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du gav {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav firmaet ditt {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du gav {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tenaren avslutta spelet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tenaren startar om att...{}Vær venleg og vent...
 
@@ -1960,7 +1960,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auk tett
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Vel jernbanebrutype
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vel type bru
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Bruval - klikk på brua du vil ha for å byggje ho
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hengjebru, stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Bjelkar, stål
@@ -2130,7 +2130,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansie
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Vel den rette industritypen frå lista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Mange tilfeldige industriar
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Dekk kartet med tilfeldig plasserte industriar
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kostnad: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kostnad: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospekt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansier
@@ -2149,8 +2149,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Kople ti
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om landområde
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Pris for å fjerne: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Pris for å fjerne: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Salsinntekt når den er nullstilt: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Pris for å fjerne: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Salsinntekt når den er nullstilt: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Veg eigar: {LTBLUE}{STRING}
@@ -2510,7 +2510,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post fø
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Varer naudsynt for folketalsauke:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} naudsynt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} naudsynt om vinteren
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} levert forrige månad
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} levert forrige månad
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Byens støygrense: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på byen. CTRL+klikk syner byen i eit nytt tilleggsvindauge
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Bystyre
@@ -2527,7 +2527,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Byt namn
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Bystyret i {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Vurdering av transportfirma:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Tilgjengelege handlingar :
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Liste over ting som kan gjerast for/i byen - Klikk på val for meir informasjon
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Gjer det
@@ -2542,14 +2542,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansier nye b
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kjøp eksklusive transportrettar
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestikk bystyret
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansier ombyggjing av det lokale vegnettet. Vil gje vegproblem dei neste 6 månadene.{}Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg ein statue for å heidre grunnleggjaren av firmaet.{}Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansier bygging av nye forretningsbygg i byen.{}Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp ekslusive transportrettar for eit år i byen. Bystyret tillet då berre bruk av tenestene dine.{}Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestikk bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{} Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansier ombyggjing av det lokale vegnettet. Vil gje vegproblem dei neste 6 månadene.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg ein statue for å heidre grunnleggjaren av firmaet.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansier bygging av nye forretningsbygg i byen.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp ekslusive transportrettar for eit år i byen. Bystyret tillet då berre bruk av tenestene dine.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestikk bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{}Kostnad: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidiar
@@ -2564,7 +2564,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk p�
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnamn - Klikk på namnet for å syne stasjonen i hovedvisninga. CTRL+klikk syner stasjonen i eit tilleggsvindauge
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hald inne CTRL for å velje fleire
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasjon{P "" ar}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ingen -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Vel alle anlegga
@@ -2572,10 +2572,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Vel alle
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Inga varer av noko slag ventar
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Ventar: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} på veg frå {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} på veg frå {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aksepterer
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Syne liste over godtekne varer
@@ -2617,7 +2617,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Byt namn
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre namn på kontrollpunkt
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}Rekneskapen til {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Rekneskapen til {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Utgifter/inntekter
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksjon
@@ -2633,21 +2633,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Inntekter
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Inntekter frå skip
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Renter
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Anna
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totalt:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks. lån: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lån meir ({CURRENCY})
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks. lån: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Lån meir ({CURRENCY_LONG})
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auk storleiken på lånet. CTRL+klikk tek opp maks. lån.
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betal attende ({CURRENCY})
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betal attende ({CURRENCY_LONG})
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betal attende delar av lånet. CTRL+Klikk betal attende så mykje som mogleg
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Sjef)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Sjef)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Grunnlagt: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Firmafarge:
@@ -2657,7 +2657,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} luftfartøy
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} skip
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverdi: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverdi: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% eigast av {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg hovudkontor
@@ -2684,20 +2684,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25{N
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmanamn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namnet til sjefen
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Me ser etter eit firma som er villig til å overta firmaet vårt.{}{}Vil du kjøpe {COMPANY} for {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Me ser etter eit firma som er villig til å overta firmaet vårt.{}{}Vil du kjøpe {COMPANY} for {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriar
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}% transportert)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}% transportert)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på namnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit tilleggsvindauge
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksjon førre månad:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}{NBSP}% transportert)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Midtstill hovedvisninga på industrien. CTRL+klikk syner industrien i eit nytt tilleggsvindauge
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksjonsnivå: {YELLOW}{COMMA}%
 
@@ -2709,7 +2709,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Treng: {
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Varer som ventar på å bli behandla:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Lagar: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Lagar: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2728,7 +2728,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Køyret�
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - klikk på skip for meir informasjon
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfartøy - klikk på luftfartøy for meir informasjon
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Forteneste i år: {CURRENCY} (førre år: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Forteneste i år: {CURRENCY_LONG} (førre år: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgjengelege tog
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tilgjengelege køyretøy
@@ -2784,19 +2784,19 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nye køyretøy
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nye skip
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nytt luftfartøy
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY_LONG}{BLACK} Vekt: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastigheit: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastigheit: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftskostnad: {GOLD}{CURRENCY}/år
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitet: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftskostnad: {GOLD}{CURRENCY_LONG}/år
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitet: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ombyggbart)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designa: {GOLD}{NUM}{BLACK} Levetid: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. pålitelegheit: {GOLD}{COMMA}{NBSP}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastigheit: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY_LONG}{BLACK} Hastigheit: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ombyggbart til: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetypar
 STR_PURCHASE_INFO_ALL_BUT                                       :Alt utanom {GOLD}
@@ -2841,7 +2841,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Byt namn på ga
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køyretøy{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra vogn/tog med venstreklikk for å leggje til/fjerne frå tog, høgreklikk for meir informasjon. Held inne CTRL for å gjere begge funksjonane gjeldande for heile togkjeda
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Køyretøy - høgreklikk på køyretøy for meir informasjon
@@ -2917,10 +2917,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :skip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Hastigheit: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pris: {CURRENCY} Vekt: {WEIGHT_S}{}Hastigheit: {VELOCITY}  Kraft: {POWER}  Maks. trekkraft: {6:FORCE}{}Driftskostnad: {4:CURRENCY}/yr{}Kapasitet: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Pris: {CURRENCY} Maks. hastigheit: {VELOCITY}{}Kapasitet: {CARGO}, {CARGO}{}Driftskostnad: {CURRENCY}/år
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Pris: {CURRENCY} Maks. hastigheit: {VELOCITY}{}Kapasitet: {CARGO}{}Driftskostnad: {CURRENCY}/år
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Hastigheit: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY_LONG}/år{}Kapasitet: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Pris: {CURRENCY_LONG} Vekt: {WEIGHT_SHORT}{}Hastigheit: {VELOCITY}  Kraft: {POWER}  Maks. trekkraft: {6:FORCE}{}Driftskostnad: {4:CURRENCY_LONG}/yr{}Kapasitet: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Pris: {CURRENCY_LONG} Maks. hastigheit: {VELOCITY}{}Kapasitet: {CARGO_LONG}, {CARGO_LONG}{}Driftskostnad: {CURRENCY_LONG}/år
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Pris: {CURRENCY_LONG} Maks. hastigheit: {VELOCITY}{}Kapasitet: {CARGO_LONG}{}Driftskostnad: {CURRENCY_LONG}/år
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatt {STRING}
@@ -3014,9 +3014,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}På veg
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Vedlikehald ved {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoppet
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Stoppet
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stoppet
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Startet
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Startet
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startet
 
 # Vehicle details
@@ -3028,25 +3028,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namngje 
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Namngje skip
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Namngje luftfartøy
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnadar: {LTBLUE}{CURRENCY}/år
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnadar: {LTBLUE}{CURRENCY_LONG}/år
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. hastigheit: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastigheit: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastigheit: {LTBLUE}{VELOCITY} {BLACK}Maks. trekkraft: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastigheit: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastigheit: {LTBLUE}{VELOCITY} {BLACK}Maks. trekkraft: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskudd i år: {LTBLUE}{CURRENCY} (forrige år: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskudd i år: {LTBLUE}{CURRENCY_LONG} (forrige år: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelegheit: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havari sidan sist vedlikehald: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitet: {LTBLUE}Ingen
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasitet: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasitet: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasitet:{LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasitet: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasitet: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasitet:{LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Vedlikehaldsintervall: {LTBLUE}{COMMA}dagar{BLACK}   Førre vedlikehald: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Vedlikehaldsintervall: {LTBLUE}{COMMA}{NBSP}%{BLACK}   Førre vedlikehald: {LTBLUE}{DATE_LONG}
@@ -3059,16 +3059,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Namngje 
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Namngje luftfartøy
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Verdi: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Verdi: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Total varekapasitet for dette toget:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tom
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} frå {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} frå {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} frå {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} frå {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Varer
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Syne detaljar om vogninnhald
@@ -3084,8 +3084,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (bygg om)
 STR_REFIT_TITLE                                                 :{GOLD}Vel varetype:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO}{}{BLACK}Ombyggjingskostnader: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}{}{BLACK}Ombyggjingskostnader: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY_LONG}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer toget skal frakte
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vel kva type varer køyretøyet skal frakte
@@ -3354,22 +3354,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakes
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}{NBSP}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}{NBSP}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}{NBSP}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}{NBSP}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}{NBSP}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Kostnad: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Kostnad: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Inntekt: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inntekt: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Overføring: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Overføring: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Berekna kostnad: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Berekna inntekt: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostnad: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Kostnad: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Inntekt: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inntekt: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Overføring: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Berekna kostnad: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Berekna inntekt: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Lagring foregår framleis,{}ver venleg å vente til det er ferdig!
@@ -3417,7 +3417,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Melding
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Utanfor kartet
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}For nære kanten av kartet
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Du har ikkje nok pengar - du treng {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Du har ikkje nok pengar - du treng {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Flatt land er naudsynt
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landet hallar feil veg
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan ikkje gjere dette...
@@ -3450,10 +3450,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... alle
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikkje byta firmanamn...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan ikkje byte namn på sjefen...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maks. lån er {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maks. lån er {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan ikkje låne meir pengar...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... lånet er allereie betalt attende
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... du treng {CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... du treng {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikkje betale lånet attende...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan ikkje gje vekk pengar som er lånt frå banken...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikkje kjøpe firma...
@@ -4155,37 +4155,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Tilskuar, {1:ST
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4197,32 +4197,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

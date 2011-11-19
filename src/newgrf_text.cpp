@@ -527,7 +527,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 						int index = *str++;
 						int mapped = lm != NULL ? lm->GetMapping(index, code == 0x0E) : -1;
 						if (mapped >= 0) {
-							d += Utf8Encode(d, code == 0x0E ? SCC_GENDER_INDEX : SCC_SETCASE);
+							d += Utf8Encode(d, code == 0x0E ? SCC_GENDER_INDEX : SCC_SET_CASE);
 							d += Utf8Encode(d, code == 0x0E ? mapped : mapped + 1);
 						}
 						break;
@@ -593,21 +593,21 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 				break;
 			}
 
-			case 0x9E: d += Utf8Encode(d, 0x20AC);             break; // Euro
-			case 0x9F: d += Utf8Encode(d, 0x0178);             break; // Y with diaeresis
-			case 0xA0: d += Utf8Encode(d, SCC_UPARROW);        break;
-			case 0xAA: d += Utf8Encode(d, SCC_DOWNARROW);      break;
-			case 0xAC: d += Utf8Encode(d, SCC_CHECKMARK);      break;
-			case 0xAD: d += Utf8Encode(d, SCC_CROSS);          break;
-			case 0xAF: d += Utf8Encode(d, SCC_RIGHTARROW);     break;
-			case 0xB4: d += Utf8Encode(d, SCC_TRAIN);          break;
-			case 0xB5: d += Utf8Encode(d, SCC_LORRY);          break;
-			case 0xB6: d += Utf8Encode(d, SCC_BUS);            break;
-			case 0xB7: d += Utf8Encode(d, SCC_PLANE);          break;
-			case 0xB8: d += Utf8Encode(d, SCC_SHIP);           break;
-			case 0xB9: d += Utf8Encode(d, SCC_SUPERSCRIPT_M1); break;
-			case 0xBC: d += Utf8Encode(d, SCC_SMALLUPARROW);   break;
-			case 0xBD: d += Utf8Encode(d, SCC_SMALLDOWNARROW); break;
+			case 0x9E: d += Utf8Encode(d, 0x20AC);               break; // Euro
+			case 0x9F: d += Utf8Encode(d, 0x0178);               break; // Y with diaeresis
+			case 0xA0: d += Utf8Encode(d, SCC_UP_ARROW);         break;
+			case 0xAA: d += Utf8Encode(d, SCC_DOWN_ARROW);       break;
+			case 0xAC: d += Utf8Encode(d, SCC_CHECKMARK);        break;
+			case 0xAD: d += Utf8Encode(d, SCC_CROSS);            break;
+			case 0xAF: d += Utf8Encode(d, SCC_RIGHT_ARROW);      break;
+			case 0xB4: d += Utf8Encode(d, SCC_TRAIN);            break;
+			case 0xB5: d += Utf8Encode(d, SCC_LORRY);            break;
+			case 0xB6: d += Utf8Encode(d, SCC_BUS);              break;
+			case 0xB7: d += Utf8Encode(d, SCC_PLANE);            break;
+			case 0xB8: d += Utf8Encode(d, SCC_SHIP);             break;
+			case 0xB9: d += Utf8Encode(d, SCC_SUPERSCRIPT_M1);   break;
+			case 0xBC: d += Utf8Encode(d, SCC_SMALL_UP_ARROW);   break;
+			case 0xBD: d += Utf8Encode(d, SCC_SMALL_DOWN_ARROW); break;
 			default:
 				/* Validate any unhandled character */
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
@@ -1086,7 +1086,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
 		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
-			return SCC_CURRENCY;
+			return SCC_CURRENCY_LONG;
 
 		case SCC_NEWGRF_PRINT_WORD_STRING_ID:
 			return SCC_NEWGRF_PRINT_WORD_STRING_ID;
@@ -1103,13 +1103,13 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			return SCC_VELOCITY;
 
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_LONG:
-			return SCC_VOLUME;
+			return SCC_VOLUME_LONG;
 
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT:
 			return SCC_VOLUME_SHORT;
 
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
-			return SCC_WEIGHT;
+			return SCC_WEIGHT_LONG;
 
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 			return SCC_WEIGHT_SHORT;

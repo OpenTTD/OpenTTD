@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Spruddel-Gedré
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} Passagéier
-STR_QUANTITY_COAL                                               :{WEIGHT} Kuel
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} Kuel
 STR_QUANTITY_MAIL                                               :{COMMA} Posts{P aak äck}
-STR_QUANTITY_OIL                                                :{VOLUME} Ueleg
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} Ueleg
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} Liewensmëttelkëscht{P "" en}
 STR_QUANTITY_GOODS                                              :{COMMA} Wuerenkëscht{P "" en}
-STR_QUANTITY_GRAIN                                              :{WEIGHT} Kaar
-STR_QUANTITY_WOOD                                               :{WEIGHT} Holz
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} Eisenerz
-STR_QUANTITY_STEEL                                              :{WEIGHT} Stol
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} Kaar
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} Holz
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} Eisenerz
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} Stol
 STR_QUANTITY_VALUABLES                                          :{COMMA} S{P aak äck} mat Wertsaachen
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} Koffererz
-STR_QUANTITY_MAIZE                                              :{WEIGHT} Mais
-STR_QUANTITY_FRUIT                                              :{WEIGHT} Friichten
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} Koffererz
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} Mais
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} Friichten
 STR_QUANTITY_DIAMONDS                                           :{COMMA} S{P aak äck} mat Diamanten
-STR_QUANTITY_FOOD                                               :{WEIGHT} Iessen
-STR_QUANTITY_PAPER                                              :{WEIGHT} Pabeier
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} Iessen
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} Pabeier
 STR_QUANTITY_GOLD                                               :{COMMA} S{P aak äck} mat Gold
-STR_QUANTITY_WATER                                              :{VOLUME} Waasser
-STR_QUANTITY_WHEAT                                              :{WEIGHT} Weess
-STR_QUANTITY_RUBBER                                             :{VOLUME} Kautschuck
-STR_QUANTITY_SUGAR                                              :{WEIGHT} Zocker
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} Waasser
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} Weess
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} Kautschuck
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} Zocker
 STR_QUANTITY_TOYS                                               :{COMMA} Spillsaach{P "" en}
 STR_QUANTITY_SWEETS                                             :{COMMA} S{P aak äck} mat Séissegkeeten
-STR_QUANTITY_COLA                                               :{VOLUME} Cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Zockerwatt
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} Cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} Zockerwatt
 STR_QUANTITY_BUBBLES                                            :{COMMA} Blos{P "" en}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} Karmel
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} Karmel
 STR_QUANTITY_BATTERIES                                          :{COMMA} Batterie{P "" n}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} Plastik
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} Plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} Spruddelgedrénks
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}KU
-STR_ABBREV_MAIL                                                 :{TINYFONT}PO
-STR_ABBREV_OIL                                                  :{TINYFONT}UL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LI
-STR_ABBREV_GOODS                                                :{TINYFONT}WU
-STR_ABBREV_GRAIN                                                :{TINYFONT}KA
-STR_ABBREV_WOOD                                                 :{TINYFONT}HO
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}EE
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}WS
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KE
-STR_ABBREV_MAIZE                                                :{TINYFONT}MA
-STR_ABBREV_FRUIT                                                :{TINYFONT}FR
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}IE
-STR_ABBREV_PAPER                                                :{TINYFONT}PB
-STR_ABBREV_GOLD                                                 :{TINYFONT}GD
-STR_ABBREV_WATER                                                :{TINYFONT}WA
-STR_ABBREV_WHEAT                                                :{TINYFONT}WE
-STR_ABBREV_RUBBER                                               :{TINYFONT}KT
-STR_ABBREV_SUGAR                                                :{TINYFONT}ZO
-STR_ABBREV_TOYS                                                 :{TINYFONT}SP
-STR_ABBREV_SWEETS                                               :{TINYFONT}SÉ
-STR_ABBREV_COLA                                                 :{TINYFONT}CO
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ZW
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
-STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}KG
-STR_ABBREV_NONE                                                 :{TINYFONT}NO
-STR_ABBREV_ALL                                                  :{TINYFONT}ALL
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}KU
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PO
+STR_ABBREV_OIL                                                  :{TINY_FONT}UL
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LI
+STR_ABBREV_GOODS                                                :{TINY_FONT}WU
+STR_ABBREV_GRAIN                                                :{TINY_FONT}KA
+STR_ABBREV_WOOD                                                 :{TINY_FONT}HO
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}EE
+STR_ABBREV_STEEL                                                :{TINY_FONT}ST
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}WS
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KE
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MA
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FR
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}IE
+STR_ABBREV_PAPER                                                :{TINY_FONT}PB
+STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
+STR_ABBREV_WATER                                                :{TINY_FONT}WA
+STR_ABBREV_WHEAT                                                :{TINY_FONT}WE
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KT
+STR_ABBREV_SUGAR                                                :{TINY_FONT}ZO
+STR_ABBREV_TOYS                                                 :{TINY_FONT}SP
+STR_ABBREV_SWEETS                                               :{TINY_FONT}SÉ
+STR_ABBREV_COLA                                                 :{TINY_FONT}CO
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}ZW
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BL
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}KR
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}KG
+STR_ABBREV_NONE                                                 :{TINY_FONT}NO
+STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} Passagéier
@@ -516,10 +516,10 @@ STR_MONTH_DEC                                                   :Dezember
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legend
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Weist Legend vun der Grafik
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik: Betriibsgewënn
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik: Akommes
@@ -528,14 +528,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Firmen P
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwert
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Deeg am ëmmlaaf
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Bezuelung fir Liwwerung vun 10 Unitéiten (oder 10.000 liter) Luedungen op Distanz vun 20 Quadrater
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}All wielen
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}All ofwielen
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Deeg am ëmmlaaf
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Bezuelung fir Liwwerung vun 10 Unitéiten (oder 10.000 liter) Luedungen op Distanz vun 20 Quadrater
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}All wielen
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}All ofwielen
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}All Wueren op der Wuerenwertgrafik weisen
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Keng Wuer op der Wuerenwertgrafik weisen
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Wieselt den Grafik fir den Luedungstyp un/aus
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Weis detailléiert performance Astellungen
 
@@ -545,7 +545,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klickt h
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Firmenliga Tabell
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Techniker
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Verkéiersmanager
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportkoordinator
@@ -559,7 +559,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailéiert Leeschtungsbewertung
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Detailler fir des Firma uweisen
@@ -588,25 +588,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total Pu
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}All
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Aalen Style
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Neien Style
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Benotzerdéf. 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Benotzerdéf. 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musék Lautstärkt
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Lautstärkt vun den Effekter
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Nummer
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titel
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Shuffle
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programm
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}All
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Aalen Style
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Neien Style
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Benotzerdéf. 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Benotzerdéf. 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musék Lautstärkt
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lautstärkt vun den Effekter
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Nummer
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titel
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Shuffle
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programm
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sprang op d'Stéck firdrun vun der Selektioun
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sprang op dat nächst Stéck vun der Selektioun
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stop d'Musék
@@ -625,18 +625,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}E Music 
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musékprogramm Selectioun
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Lidder Index
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programm - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Leschen
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lidder Index
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Leschen
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Den gewielten Program reseten (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klick op d'Lidd fir et zum aktuellen Program dobäi zesetzen (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klickt op d'Lidd fir et vum aktuellen Programm ze läschen (Benotzerdefinéiert 1 an 2 nëmmen)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top Firmen dei {NUM}{}({STRING} Level) erreescht hunn
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmenligatabell an {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top Firmen dei {NUM}{}({STRING} Level) erreescht hunn
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmenligatabell an {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kafmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriellen
@@ -644,10 +644,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalist
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon vum Jorhonnert
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} ereescht den Status '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} vun {COMPANY} ereescht den Status '{STRING}'!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} ereescht den Status '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} vun {COMPANY} ereescht den Status '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kaart - {STRING}
@@ -667,40 +667,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Weis d'L
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klick op en Industrietyp fir en unzeweisen. Ctrl+Klick weist just déi ugewielten Wuer. Ctrl+Klick nach emol fir all Wueren unzeweisen
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klick op eng Forma fir den Besëtz unzeweisen. Ctrl+Klick weist just déi ugewielten aus. Ctrl+Klick nach emol fir all Firmen ze weisen
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Stroossen
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Schinnen
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Statiounen/Fluchhafen/Hafen
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Gebaier/Industrien
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Gefierter
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Zich
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Stroosengefierer
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Schëffer
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Fligeren
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transport Routen
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Bësch
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Gare
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Camionsluedeplaz
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Busgare
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Fluchhafen/Helicopterlandeplaz
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Hafen
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Knubbelegt Land
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Grasland
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Onerschlossend Land
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Felder
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Beem
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Fielsen
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Waasser
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Keen Besëtzer
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Stied
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrien
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Wüst
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Schnéi
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Stroossen
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Schinnen
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Statiounen/Fluchhafen/Hafen
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Gebaier/Industrien
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Gefierter
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Zich
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Stroosengefierer
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Schëffer
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Fligeren
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transport Routen
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Bësch
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gare
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Camionsluedeplaz
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Busgare
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Fluchhafen/Helicopterlandeplaz
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Hafen
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Knubbelegt Land
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Grasland
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Onerschlossend Land
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Felder
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Beem
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Fielsen
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Waasser
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Keen Besëtzer
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Stied
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industrien
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Wüst
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Schnéi
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Schalt d'Stiednimm op der Kaart un/aus
 STR_SMALLMAP_CENTER                                             :{BLACK}Zentréiert d'kleng Kaart op déi aktuell Positioun
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}All ausschalten
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}All unschalten
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}D'Héicht uweisen
@@ -748,60 +748,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Änneru
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventiounen
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Generel Informatiounen
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Bierger feieren . . .{}Éischten Zuch kënnt bei {STATION} un!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Bierger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Bierger feieren . . .{}Eischten Camion kënnt bei {STATION} un!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Bierger feieren . . .{}Eischten Tram kënnt bei {STATION} un!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Bierger feieren . . .{}Eischten Wueren-Tram kënnt bei {STATION} un!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Bierger feieren . . .{}Éischt Schëff kënnt bei {STATION} un!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Bierger feieren . . .{}Éischten Fliger kënnt bei {STATION} un!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischten Zuch kënnt bei {STATION} un!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Bierger feieren . . .{}Eischten Camion kënnt bei {STATION} un!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Bierger feieren . . .{}Eischten Tram kënnt bei {STATION} un!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Bierger feieren . . .{}Eischten Wueren-Tram kënnt bei {STATION} un!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischt Schëff kënnt bei {STATION} un!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischten Fliger kënnt bei {STATION} un!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Zuch Accident!{}{COMMA} stiewen an der Explosioun nom Accident
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Fligeraccident!{}{COMMA} stiewen an der Explosioun bei {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Fligeraccident!{}Fliger hat keen Bensin méi, {COMMA} stiewen an Explosioun!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Zuch Accident!{}{COMMA} stiewen an der Explosioun nom Accident
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Fligeraccident!{}{COMMA} stiewen an der Explosioun bei {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Fligeraccident!{}Fliger hat keen Bensin méi, {COMMA} stiewen an Explosioun!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelinkatastroph bei {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Stroossengefiehr bei 'UFO'-Zesummenstouss zerstéiert ginn!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Uelegraffinerie bei {TOWN} explodéiert!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrik ass zu {TOWN} ënner verdächtegen Ëmmstänn zerstéiert ginn!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' bei {TOWN} geland!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kuelenstollenzesummenbroch hannerléisst eng Spuer vun Verwüstung bei {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Flut!{}Opmanst {COMMA} vermësst, wahrscheinlech doud noo grousser Flut!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinkatastroph bei {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Stroossengefiehr bei 'UFO'-Zesummenstouss zerstéiert ginn!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Uelegraffinerie bei {TOWN} explodéiert!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabrik ass zu {TOWN} ënner verdächtegen Ëmmstänn zerstéiert ginn!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' bei {TOWN} geland!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Kuelenstollenzesummenbroch hannerléisst eng Spuer vun Verwüstung bei {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Flut!{}Opmanst {COMMA} vermësst, wahrscheinlech doud noo grousser Flut!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportfirma huet Probleemer!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} gëtt verkaf oder Bankrott erklärt, wann sëch d'Performance net verbessert!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Transportfirmen Fusioun!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} ass un {STRING} fir {CURRENCY} verkaf ginn!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrott!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} ass zougemaach ginn, an all Reschtposten sinn verkaaf!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nei Transportfirma gegrënnt!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} baut bei {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} ass vun {STRING} iwerholl ginn!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manager)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Transportfirma huet Probleemer!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} gëtt verkaf oder Bankrott erklärt, wann sëch d'Performance net verbessert!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Transportfirmen Fusioun!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} ass un {STRING} fir {CURRENCY_LONG} verkaf ginn!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankrott!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} ass zougemaach ginn, an all Reschtposten sinn verkaaf!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nei Transportfirma gegrënnt!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} baut bei {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} ass vun {STRING} iwerholl ginn!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Manager)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} huet Contructioun vun der Stad {TOWN} gesponsort!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} huet Contructioun vun der Stad {TOWN} gesponsort!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nei {STRING} gëtt bei {TOWN} gebaut!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nei {STRING} gëtt bei {TOWN} geplantzt!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nei {STRING} gëtt bei {TOWN} gebaut!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nei {STRING} gëtt bei {TOWN} geplantzt!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} gëtt glaich zougemaach!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Liwwerungsproblemer féieren dozou dass {STRING} gläich zougemach gëtt!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Mangel un Beem féiert dozou dass {STRING} gläich zougemaach gëtt!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} gëtt glaich zougemaach!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Liwwerungsproblemer féieren dozou dass {STRING} gläich zougemach gëtt!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Mangel un Beem féiert dozou dass {STRING} gläich zougemaach gëtt!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europäesch Währungsunioun!{}{}Den Euro ass als nei Währung am Land angefouert ginn!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Wirtschaftsréckgang!{}{}Finanzexperten rechnen mat schlëmmsten Abrëch!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Wirtschaftsflaut eriwwer!{}{}Verbesserung am Handel bréngt Hoffnung fir Industrien an d'Economie gëtt gestärkt!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europäesch Währungsunioun!{}{}Den Euro ass als nei Währung am Land angefouert ginn!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Wirtschaftsréckgang!{}{}Finanzexperten rechnen mat schlëmmsten Abrëch!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Wirtschaftsflaut eriwwer!{}{}Verbesserung am Handel bréngt Hoffnung fir Industrien an d'Economie gëtt gestärkt!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} erhéicht d'Produktioun!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nei Kuelenflöz bei {INDUSTRY} font!{}Verdueblung vun der Produktioun erwart!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nei Uelegreserven bei {INDUSTRY} font!{}Verdueblung vun der Produktioun erwart!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Verbessert Ofbaumethoden bei {INDUSTRY} erfont!{}Verdueblung vun der Produktioun erwart!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} Produktioun vun {INDUSTRY} geet ëm {COMMA}% erop!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} Produktioun geet ëm 50% erof
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektenbefall bei {INDUSTRY}!{}Produktioun geet ëm 50% erof
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} Produktioun vun {INDUSTRY} geet ëm {COMMA}% erof!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} erhéicht d'Produktioun!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nei Kuelenflöz bei {INDUSTRY} font!{}Verdueblung vun der Produktioun erwart!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nei Uelegreserven bei {INDUSTRY} font!{}Verdueblung vun der Produktioun erwart!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Verbessert Ofbaumethoden bei {INDUSTRY} erfont!{}Verdueblung vun der Produktioun erwart!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} Produktioun vun {INDUSTRY} geet ëm {COMMA}% erop!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} Produktioun geet ëm 50% erof
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insektenbefall bei {INDUSTRY}!{}Produktioun geet ëm 50% erof
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} Produktioun vun {INDUSTRY} geet ëm {COMMA}% erof!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} waart am Depot
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waart am Depot
@@ -821,13 +821,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} ass ganz aal, an sollt schnellstens ersaat ginn
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kann den Wee fir weider ze fueren net fannen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ass verluer
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dëm {VEHICLE} säin Profit vum leschten Joer war {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dëm {VEHICLE} säin Profit vum leschten Joer war {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} huet gestoppt well eng Optragennerung net geklappt huet
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Fehler beim Autoerneieren vun {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nei {STRING} verfügbar!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nei {STRING} verfügbar!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nei {STRING} verfügbar!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} acceptéiert {STRING} net méi
@@ -835,15 +835,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} acceptéiert elo {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} acceptéiert elo {STRING} an {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subventioun ofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gëtt net méi subventionéiert
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subventioun entzunn:{}{}{STRING} Service vun {STRING} op {STRING} gëtt net méi subventionéiert
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subventioun offréiert:{}{}Eischten {STRING} Service vun {STRING} op {STRING} gëtt mat énger Subventioun vun 1 Joer belount.!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer mat 50% bezuelt!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer duebel bezuelt!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer draifach bezuelt!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer mat 400% bezuelt!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subventioun ofgelaaf:{}{}{STRING} vun {STRING} op {STRING} gëtt net méi subventionéiert
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subventioun entzunn:{}{}{STRING} Service vun {STRING} op {STRING} gëtt net méi subventionéiert
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subventioun offréiert:{}{}Eischten {STRING} Service vun {STRING} op {STRING} gëtt mat énger Subventioun vun 1 Joer belount.!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer mat 50% bezuelt!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer duebel bezuelt!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer draifach bezuelt!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer mat 400% bezuelt!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Trafficchaos an {TOWN}!{}{}Stroosenneibau deen vun {STRING} finanzéiert ginn ass bréngt 6 Méint Misère fir d'Autosfuerer!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafficchaos an {TOWN}!{}{}Stroosenneibau deen vun {STRING} finanzéiert ginn ass bréngt 6 Méint Misère fir d'Autosfuerer!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Unsicht {COMMA}
@@ -971,7 +971,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fehler b
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen Währung
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wiesselkuer: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wiesselkuer: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz den Betrag Suen den fir 1 Pond (£) gebraucht gëtt erof
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz den Betrag Suen den fir 1 Pond (£) gebraucht gëtt erop
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Setzt den Wiesselcours fir äer Währung fir 1 Pond (£)
@@ -990,7 +990,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Wielt d'
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Wiessel éischter op den Euro
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Wiessel méi spéit op den Euro
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prouf: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prouf: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pond (£) an äerer Währung
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Änner Währungsparameter
 
@@ -1011,7 +1011,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Späiche
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximal Unzuel vun Géigner: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Unzuel vun Stied: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Unzuel vun Industrien: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximalen Ufankskredit: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximalen Ufankskredit: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Ufanks Zënssaz: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Ënnerhaalskäschten fir Gefierer: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Baugeschwindegkeet vun den Géigner: {ORANGE}{STRING}
@@ -1427,7 +1427,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sëcher
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkboxen weisen un dass dir den Cheat schon eng Kéier benotzt hutt
 STR_CHEATS_WARNING                                              :{BLACK}Warnung! Dir sidd um Wee är Géigner ze verroden. Sou eng Ongnod gëtt bis an all Éiwegkeet behalen
-STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëm {CURRENCY} erhéijen
+STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëm {CURRENCY_LONG} erhéijen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Firma spillen: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien ofrappen, onzerstéierbar Objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnellen kënnen sech kräizen: {ORANGE}{STRING}
@@ -1663,9 +1663,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Eng Lës
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}FIRMENINFO
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Firmennumm: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Grënnung: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Firmenwert: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Kontostand: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Akommes vum leschten Joer: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Firmenwert: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Kontostand: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Akommes vum leschten Joer: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Performance: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Gefierer: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1810,8 +1810,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} as
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} huet eng nei Firma gegrënnt (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} huet d'Spill verloos ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} huet säin Numm op {STRING} gewiesselt
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} huet ärer Firma {2:CURRENCY} ginn
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dir hudd dem {1:STRING} {2:CURRENCY} ginn
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} huet ärer Firma {2:CURRENCY_LONG} ginn
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dir hudd dem {1:STRING} {2:CURRENCY_LONG} ginn
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Den Server huet d'Sessioun zougemaach
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Den Server gëtt nei gestart...{}Weg. waarden...
 
@@ -1969,7 +1969,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Setzt Si
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Wiel d'Schinnenbréck
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Wielt d'Stroossenbréck
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Bréckenauswiel - Wielt äer Bréck aus
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stolen Hängebréck
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Stoldréier Bréck
@@ -2140,7 +2140,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Nei Indu
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Wielt déi gewënschten Industrie op der Lëscht aus
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Vill zoufälleg Industrien
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}D'Kaart mat villen zoufällegen Industrien fëllen
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Käschten: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Käschten: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Biergbau
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bauen
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grënnen
@@ -2161,8 +2161,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selekté
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Informatiounen
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Käschten fir ze raumen: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Käschten fir ze raumen: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Akommes wann ofgerappt: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Käschten fir ze raumen: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Akommes wann ofgerappt: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Besëtzer: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Stroossenbesëtzer: {LTBLUE}{STRING}
@@ -2531,7 +2531,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post les
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Luedungen gebraucht fir Stadwuestum:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} gebraucht
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} gebraucht am Wanter
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} leschten Mount geliwwert
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} leschten Mount geliwwert
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Kaméidislimit an der Stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Stad. Ctrl+Klick erstellt eng nei Usiicht op d'Stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeng
@@ -2548,7 +2548,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Stad ëmbenenne
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} Gemeng
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportfirmen Bewertung:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Verfügbar Optiounen:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lëscht vun Saachen déi an der Stad gemaach kënnen ginn - klickt op eng Optioun fir méi Informatiounen
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Maach ët
@@ -2563,14 +2563,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Nei Gebaier fin
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exklusiv Transportrechter kafen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :D'Gemeng bestiechen
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Eng kleng Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Eng mëttel Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Eng grouss Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Stroossenneibau an der Stad finanzéieren. Stéiert den Traffic op den Stroossen fir dei nächst 6 Méint.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eng Statu zur Éier vun der Firma bauen.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Den Bau vun neien Kommerzgebaier finanzéieren.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaft fir 1 Joer exklusiv Transportrechter an dëser Stad. D'Gemeng erlabt den Transport vun Passagéier an Wueren nëmmen ärer Firma.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewertung ze erhéigen, mam Risque fir eng grouss Bestrofung, falls der erwëscht gidd.{} Käschten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Eng kleng Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Eng mëttel Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Eng grouss Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Stroossenneibau an der Stad finanzéieren. Stéiert den Traffic op den Stroossen fir dei nächst 6 Méint.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eng Statu zur Éier vun der Firma bauen.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Den Bau vun neien Kommerzgebaier finanzéieren.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaft fir 1 Joer exklusiv Transportrechter an dëser Stad. D'Gemeng erlabt den Transport vun Passagéier an Wueren nëmmen ärer Firma.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewertung ze erhéigen, mam Risque fir eng grouss Bestrofung, falls der erwëscht gidd.{} Käschten: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventiounen
@@ -2585,7 +2585,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haalt Ctrl un fir méi wéi 1 Objekt auszewielen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Statioun{P "" en}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Näischt -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Selectéier all d'Fabriken
@@ -2593,10 +2593,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Wielt al
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Kéng Luedung
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Um waarden: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} ënnerwee vun {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ënnerwee vun {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptéiert
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Weis d'Lëscht vun den acceptéierten Wueren
@@ -2638,7 +2638,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Boje ëm
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunktnumm
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Ausgaben/Akommes
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruktioun
@@ -2654,21 +2654,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Fliger Ak
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Schëff Akommes
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Zënssaz
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Aaner
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Kontostand
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredit
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Max Kredit: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Léinen {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Max Kredit: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Léinen {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Erhéicht den Kredit. Ctrl+Klick léint den Maximum
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zeréckbezuelen {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zeréckbezuelen {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bezuelt en Deel vum Kredit zeréck. Ctrl+Klick bezillt sou vill wéi méglech zréck
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Manager)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Agefouert: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Faarw Schema:
@@ -2678,7 +2678,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} Fliger
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} Schëff{P "" er}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Keng
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmenwert: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmenwert: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% am Besëtz vun {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Haaptgebai bauen
@@ -2705,20 +2705,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkaaft
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmennumm
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Numm vum Manager
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mir sichen eng Transportfirma déi eis Firma iwerhuelen wëll.{}{}Wëllt dir {COMPANY} fir {CURRENCY} kafen?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mir sichen eng Transportfirma déi eis Firma iwerhuelen wëll.{}{}Wëllt dir {COMPANY} fir {CURRENCY_LONG} kafen?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrien
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Keng -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportéiert)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportéiert)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transportéiert)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportéiert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Fabrikennimm - klickt op en Numm fir d'Usiicht do drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktioun läschten Mount:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportéiert)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportéiert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 
@@ -2730,7 +2730,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Brauch: 
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Luedungen dei nach verschafft mussen gin:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2749,7 +2749,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stroosse
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schëffer - Klickt op d'Schëff fir Informatiounen
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profit dëst Joer: {CURRENCY} (lescht Joer: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit dëst Joer: {CURRENCY_LONG} (lescht Joer: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Verfügbar Zich
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Verfügbar Gefierer
@@ -2805,21 +2805,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nei Stroossenge
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nei Schëffer
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Neien Fliger
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Käschten: {GOLD}{CURRENCY}{BLACK} Gewiicht: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} Gewiicht: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Kraaft: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindegkeet um Ozean: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Geschwindegkeet um Kanal/Floss: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriibskäschtent: {GOLD}{CURRENCY}/Jr
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazitéit: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriibskäschtent: {GOLD}{CURRENCY_LONG}/Jr
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazitéit: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ëmbaubar)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designt: {GOLD}{NUM}{BLACK} Liewenszäit: {GOLD}{COMMA} Joer
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zouverläss.: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Käschten: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewiicht: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Käschten: {GOLD}{CURRENCY}{BLACK} Geschw.: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazitéit: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ugedriwwen Wagonen: {GOLD}+{POWER}{BLACK} Gewiicht: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewiicht: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Käschten: {GOLD}{CURRENCY_LONG}{BLACK} Geschw.: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazitéit: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ugedriwwen Wagonen: {GOLD}+{POWER}{BLACK} Gewiicht: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Embaubaur zu: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All Typ Wueren
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles ausser {GOLD}
@@ -2864,7 +2864,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Depot ëmbenenn
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Gefier{P t er}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - zidd d'Gefiert fir en unzehänken/wechzehuelen, Rietsklick fir Informatiounen. Ctrl unhalen dass béid Fonktiounen fir déi nächst Ketten gëllen
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - Rietsklick op en Gefier fir Informatiounen
@@ -2940,10 +2940,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :Schëff
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Magnéitbunnlokomotiv
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY} Gewiicht: {WEIGHT_S}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betriibskäschten {CURRENCY}/joër{}Kapazitéit: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY} Gewicht: {WEIGHT_S}{}Geschw.: {VELOCITY}  Kraft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY}/Jr{}Kapazitéit: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO}, {CARGO}{}Betriibskäschten {CURRENCY}/Joer
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO}{}Betriibskäschten: {CURRENCY}/Joer
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betriibskäschten {CURRENCY_LONG}/joër{}Kapazitéit: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betriibskäschten {CURRENCY_LONG}/Joer
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betriibskäschten: {CURRENCY_LONG}/Joer
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacéier{STRING}
@@ -3037,9 +3037,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Um Wee 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisioun am {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Gestoppt
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Gestoppt
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Gestoppt
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Gestart
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Gestart
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Gestart
 
 # Vehicle details
@@ -3051,25 +3051,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroosse
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Schëff benennen
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Fliger benennen
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriibskäschten: {LTBLUE}{CURRENCY}/Joer
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriibskäschten: {LTBLUE}{CURRENCY_LONG}/Joer
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} Joer ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Joer ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_S} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_S} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit dëst Joer: {LTBLUE}{CURRENCY} (lescht Joer: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit dëst Joer: {LTBLUE}{CURRENCY_LONG} (lescht Joer: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zouverlässegkeet: {LTBLUE}{COMMA}%  {BLACK}Pannen säit leschter Revisioun: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapazitéit: {LTBLUE}Keng
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapazitéit: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazitéit: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapazitéit: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapazitéit: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazitéit: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer Suen: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer Suen: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}Deeg{BLACK}   Lescht Revisioun: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}%{BLACK}  Lescht Revisioun: {LTBLUE}{DATE_LONG}
@@ -3082,16 +3082,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Schëff 
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Fliger benennen
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Total Luedplaz fir dësen Zuch:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Eidel
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} vun {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} vun {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} vun {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} vun {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Luedung
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Weist d'Detailer vun der Luedung
@@ -3107,8 +3107,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapazit�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Refit)
 STR_REFIT_TITLE                                                 :{GOLD}Wielt den Luedungstyp:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nei Kapazitéit: {GOLD}{CARGO}{}{BLACK}Käschten fir ëmzebauen: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nei Kapazitéit: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Käschten fir den Embau: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir ëmzebauen: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir den Embau: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wiel d'Gefierer fir den Embau. Mat der Maus zéien erlabt den Embau vun méi Gefierer. Op eng eidel Plaz klicken wielt d'ganzt Gefiert. Ctrl+Klick wielt e Gefiert an de Rescht vun der Ketten
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selectéiert d'Luedung déi transportéiert soll ginn
@@ -3378,22 +3378,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Käschten: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Käschten: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Akommes: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Akommes: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Geschätzten Käschten: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Geschätzten Akommen: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Käschten: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Käschten: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Akommes: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Akommes: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Geschätzten Käschten: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Geschätzten Akommen: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Nach umgaangen ze späicheren. {} Weg. waarden bis daat faerdeg ass!
@@ -3442,7 +3442,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Matdeel
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Ausserhalb vun der Kaart
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Ze noo um Bord vun der Kaart
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Net genuch Geld - dës Aktioun kascht {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Net genuch Geld - dës Aktioun kascht {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}D'Land muss flaach sinn
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land ass an dei falsch Richtung geneigt
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kann dat net maachen...
@@ -3476,10 +3476,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... scho
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kann den Firmennumm net änneren...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kann den Numm vum Manager net änneren...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... Maximalen Kredit ass {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... Maximalen Kredit ass {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kann net méi Geld léinen...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... keen Kredit zeréckzebezuelen
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... et ginn {CURRENCY} gebraucht
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... et ginn {CURRENCY_LONG} gebraucht
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann den Kredit net zeréckbezuelen...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann keng Suen ginn déi vun der Bank geléint sinn...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kann d'Firma net kafen...
@@ -4186,37 +4186,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Zuschauer, {1:S
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4228,32 +4228,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

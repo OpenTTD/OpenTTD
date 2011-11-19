@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :फसफसण
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} प्रवासी
-STR_QUANTITY_COAL                                               :{WEIGHT} कोळसा
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} कोळसा
 STR_QUANTITY_MAIL                                               :{COMMA} पिश{P वी व्या} टपाल
-STR_QUANTITY_OIL                                                :{VOLUME} तेल
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} तेल
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} पशुधन
 STR_QUANTITY_GOODS                                              :{COMMA} खो{P कं की} वस्तू
-STR_QUANTITY_GRAIN                                              :{WEIGHT} धान्य
-STR_QUANTITY_WOOD                                               :{WEIGHT} लाकूड
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} लोहखनिज
-STR_QUANTITY_STEEL                                              :{WEIGHT} पोलाद
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} धान्य
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} लाकूड
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} लोहखनिज
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} पोलाद
 STR_QUANTITY_VALUABLES                                          :{COMMA} पिश{P वी व्या} किंमती ऐवज
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} अशद्ध तांबे
-STR_QUANTITY_MAIZE                                              :{WEIGHT} मका
-STR_QUANTITY_FRUIT                                              :{WEIGHT} फळं
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} अशद्ध तांबे
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} मका
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} फळं
 STR_QUANTITY_DIAMONDS                                           :{COMMA} पिश{P वी व्या} हिरे
-STR_QUANTITY_FOOD                                               :{WEIGHT} अन्न
-STR_QUANTITY_PAPER                                              :{WEIGHT} कागद
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} अन्न
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} कागद
 STR_QUANTITY_GOLD                                               :{COMMA} पिश{P वी व्या} सोनं
-STR_QUANTITY_WATER                                              :{VOLUME} पाणी
-STR_QUANTITY_WHEAT                                              :{WEIGHT} गहू
-STR_QUANTITY_RUBBER                                             :{VOLUME} रबर
-STR_QUANTITY_SUGAR                                              :{WEIGHT} साखर
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} पाणी
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} गहू
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} रबर
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} साखर
 STR_QUANTITY_TOYS                                               :{COMMA} खेळ{P णं णी}
 STR_QUANTITY_SWEETS                                             :{COMMA} गोड पदार्थांच्या पिशव्या
-STR_QUANTITY_COLA                                               :{VOLUME} कोला
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} म्हातारीचा कापूस
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} कोला
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} म्हातारीचा कापूस
 STR_QUANTITY_BUBBLES                                            :{COMMA} बुडबु {P डा डे}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} टॉफी
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} टॉफी
 STR_QUANTITY_BATTERIES                                          :{COMMA} बॅट{P री ऱ्या}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} प्लॅस्टिक
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} प्लॅस्टिक
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} फसफसणारी पे{P य ये}
 STR_QUANTITY_N_A                                                :उपलब्ध नाही
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}प्र
-STR_ABBREV_COAL                                                 :{TINYFONT}को
-STR_ABBREV_MAIL                                                 :{TINYFONT}टपाल
-STR_ABBREV_OIL                                                  :{TINYFONT}तेल
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}पशु
-STR_ABBREV_GOODS                                                :{TINYFONT}वस्तू
-STR_ABBREV_GRAIN                                                :{TINYFONT}धान्य
-STR_ABBREV_WOOD                                                 :{TINYFONT}ला
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}लोह
-STR_ABBREV_STEEL                                                :{TINYFONT}पो
-STR_ABBREV_VALUABLES                                            :{TINYFONT}मौल्य
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}तांबे
-STR_ABBREV_MAIZE                                                :{TINYFONT}मका
-STR_ABBREV_FRUIT                                                :{TINYFONT}फळ
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}हिरे
-STR_ABBREV_FOOD                                                 :{TINYFONT}अन्न
-STR_ABBREV_PAPER                                                :{TINYFONT}का
-STR_ABBREV_GOLD                                                 :{TINYFONT}सोनं
-STR_ABBREV_WATER                                                :{TINYFONT}पाणी
-STR_ABBREV_WHEAT                                                :{TINYFONT}गहू
-STR_ABBREV_RUBBER                                               :{TINYFONT}रबर
-STR_ABBREV_SUGAR                                                :{TINYFONT}सा
-STR_ABBREV_TOYS                                                 :{TINYFONT}खे
-STR_ABBREV_SWEETS                                               :{TINYFONT}गोड
-STR_ABBREV_COLA                                                 :{TINYFONT}कोला
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}म्हाता
-STR_ABBREV_BUBBLES                                              :{TINYFONT}बु
-STR_ABBREV_TOFFEE                                               :{TINYFONT}टॉ
-STR_ABBREV_BATTERIES                                            :{TINYFONT}बॅ
-STR_ABBREV_PLASTIC                                              :{TINYFONT}प्लॅ
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}फस
-STR_ABBREV_NONE                                                 :{TINYFONT}NO
-STR_ABBREV_ALL                                                  :{TINYFONT}सर्व
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}प्र
+STR_ABBREV_COAL                                                 :{TINY_FONT}को
+STR_ABBREV_MAIL                                                 :{TINY_FONT}टपाल
+STR_ABBREV_OIL                                                  :{TINY_FONT}तेल
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}पशु
+STR_ABBREV_GOODS                                                :{TINY_FONT}वस्तू
+STR_ABBREV_GRAIN                                                :{TINY_FONT}धान्य
+STR_ABBREV_WOOD                                                 :{TINY_FONT}ला
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}लोह
+STR_ABBREV_STEEL                                                :{TINY_FONT}पो
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}मौल्य
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}तांबे
+STR_ABBREV_MAIZE                                                :{TINY_FONT}मका
+STR_ABBREV_FRUIT                                                :{TINY_FONT}फळ
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}हिरे
+STR_ABBREV_FOOD                                                 :{TINY_FONT}अन्न
+STR_ABBREV_PAPER                                                :{TINY_FONT}का
+STR_ABBREV_GOLD                                                 :{TINY_FONT}सोनं
+STR_ABBREV_WATER                                                :{TINY_FONT}पाणी
+STR_ABBREV_WHEAT                                                :{TINY_FONT}गहू
+STR_ABBREV_RUBBER                                               :{TINY_FONT}रबर
+STR_ABBREV_SUGAR                                                :{TINY_FONT}सा
+STR_ABBREV_TOYS                                                 :{TINY_FONT}खे
+STR_ABBREV_SWEETS                                               :{TINY_FONT}गोड
+STR_ABBREV_COLA                                                 :{TINY_FONT}कोला
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}म्हाता
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}बु
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}टॉ
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}बॅ
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}प्लॅ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}फस
+STR_ABBREV_NONE                                                 :{TINY_FONT}NO
+STR_ABBREV_ALL                                                  :{TINY_FONT}सर्व
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} प्रवासी
@@ -391,59 +391,59 @@ STR_MONTH_DEC                                                   :डिसें
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
 # Graph key window
 
 # Company league window
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
 # Music window
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 
 
 # Playlist window
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 
 # Highscore window
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}नक्षा - {STRING}
 
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}रस्ते
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}विमान
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}वन
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}बस स्थानक
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}झाड
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}पाणी
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}वाळवंट
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}बर्फ
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}रस्ते
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}विमान
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}वन
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}बस स्थानक
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}झाड
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}पाणी
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}वाळवंट
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}बर्फ
 
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 
 # Status bar messages
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
@@ -457,7 +457,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 
 
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(व्यवस्थापक)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(व्यवस्थापक)
 
 
 
@@ -474,7 +474,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} हरवली आहे
 
 
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 
 
 
@@ -729,7 +729,7 @@ STR_NETWORK_LANG_GREEK                                          :ग्रीक
 # Network game lobby
 
 
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}गेल्या वर्ष्याची कमाई: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}गेल्या वर्ष्याची कमाई: {WHITE}{CURRENCY_LONG}
 
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}स्थानक: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
 
@@ -798,7 +798,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} गे�
 # Signal window
 
 # Bridge selection window
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_WOODEN                                          :लाकडी
 
@@ -847,7 +847,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}मो�
 
 
 # Fund new industry window
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}खर्च: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}खर्च: {YELLOW}{CURRENCY_LONG}
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}घरे
@@ -956,19 +956,19 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING
 
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
 # Subsidies window
 
 # Station list window
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
@@ -997,15 +997,15 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}विमान चालवण्याचा खर्च
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}विमानाची कमाई
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}अन्य
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}संपूर्ण:
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}कर्ज
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(व्यवस्थापक)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(व्यवस्थापक)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}समारंभ दिवस: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}वाहने:
@@ -1034,7 +1034,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}ला�
 ############ range for requires ends
 
 ############ range for produces starts
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}बनव्त: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}बनव्त: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -1069,12 +1069,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :नवीन �
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :नवीन जहाज
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :नवीन विमान
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}किंमत: {GOLD}{CURRENCY}{BLACK} वजन: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}{BLACK} वजन: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}गती: {GOLD}{VELOCITY}{BLACK} शक्ती: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}गती: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_COST                                          :{BLACK}किंमत: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}वजन: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}किंमत: {GOLD}{CURRENCY}{BLACK} गती: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST                                          :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}वजन: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}किंमत: {GOLD}{CURRENCY_LONG}{BLACK} गती: {GOLD}{VELOCITY}
 
 
 
@@ -1216,20 +1216,20 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}वे�
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}किंमत: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}किंमत: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}कमाई: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}कमाई: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}अंदाजी किंमत: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}अंदाजी कमाई: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}किंमत: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}किंमत: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}कमाई: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}कमाई: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}अंदाजी किंमत: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}अंदाजी कमाई: {CURRENCY_LONG}
 
 # Saveload messages
 
@@ -1486,37 +1486,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :प्रेक
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1528,31 +1528,31 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

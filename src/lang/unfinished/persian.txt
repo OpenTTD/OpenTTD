@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :نوشابه گ
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" ان}
-STR_QUANTITY_COAL                                               :{WEIGHT} از زغال سنگ
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} از زغال سنگ
 STR_QUANTITY_MAIL                                               :{COMMA}بسته نامه
-STR_QUANTITY_OIL                                                :{VOLUME} نفت
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} نفت
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} فقره از جارپایان
 STR_QUANTITY_GOODS                                              :{COMMA} جعبه{P ی های} محموله تجاری
-STR_QUANTITY_GRAIN                                              :{WEIGHT}حبوبات
-STR_QUANTITY_WOOD                                               :{WEIGHT} چوب
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} سنگ آهن
-STR_QUANTITY_STEEL                                              :{WEIGHT} فولاد
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG}حبوبات
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} چوب
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} سنگ آهن
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} فولاد
 STR_QUANTITY_VALUABLES                                          :{COMMA} بسته{P "" های} اشیای قیمتی
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} سنگ مس
-STR_QUANTITY_MAIZE                                              :{WEIGHT} ذرت
-STR_QUANTITY_FRUIT                                              :{WEIGHT} میوه
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} سنگ مس
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} ذرت
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} میوه
 STR_QUANTITY_DIAMONDS                                           :{COMMA} بسته{P "" های} الماس
-STR_QUANTITY_FOOD                                               :{WEIGHT} غذا
-STR_QUANTITY_PAPER                                              :{WEIGHT}از کاغذ
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} غذا
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG}از کاغذ
 STR_QUANTITY_GOLD                                               :{COMMA} بسته‌ی طلا
-STR_QUANTITY_WATER                                              :{VOLUME} آب
-STR_QUANTITY_WHEAT                                              :{WEIGHT} گندم
-STR_QUANTITY_RUBBER                                             :{VOLUME} کائوچو
-STR_QUANTITY_SUGAR                                              :{WEIGHT} شکر
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} آب
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} گندم
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} کائوچو
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} شکر
 STR_QUANTITY_TOYS                                               :{COMMA} اسباب بازی
 STR_QUANTITY_SWEETS                                             :{COMMA} بسته شیرینی
-STR_QUANTITY_COLA                                               :{VOLUME} نوشابه
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} پشمک
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} نوشابه
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} پشمک
 STR_QUANTITY_BUBBLES                                            :{COMMA} حباب
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} آب نبات
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} آب نبات
 STR_QUANTITY_BATTERIES                                          :{COMMA}باطری
-STR_QUANTITY_PLASTIC                                            :{VOLUME}پلاستیک
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG}پلاستیک
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} نوشیدنی گاز دار
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}زس
-STR_ABBREV_MAIL                                                 :{TINYFONT}ML
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
-STR_ABBREV_GOODS                                                :{TINYFONT}GD
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
-STR_ABBREV_WOOD                                                 :{TINYFONT}چوب
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}قیمتی ها
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
-STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}FD
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}GD
-STR_ABBREV_WATER                                                :{TINYFONT}آب
-STR_ABBREV_WHEAT                                                :{TINYFONT}گندم
-STR_ABBREV_RUBBER                                               :{TINYFONT}RB
-STR_ABBREV_SUGAR                                                :{TINYFONT}شکر
-STR_ABBREV_TOYS                                                 :{TINYFONT}اسباب بازی
-STR_ABBREV_SWEETS                                               :{TINYFONT}شیرینی
-STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}آبنبات
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
-STR_ABBREV_NONE                                                 :{TINYFONT}NO
-STR_ABBREV_ALL                                                  :{TINYFONT}همه
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}زس
+STR_ABBREV_MAIL                                                 :{TINY_FONT}ML
+STR_ABBREV_OIL                                                  :{TINY_FONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LV
+STR_ABBREV_GOODS                                                :{TINY_FONT}GD
+STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
+STR_ABBREV_WOOD                                                 :{TINY_FONT}چوب
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
+STR_ABBREV_STEEL                                                :{TINY_FONT}ST
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}قیمتی ها
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
+STR_ABBREV_WATER                                                :{TINY_FONT}آب
+STR_ABBREV_WHEAT                                                :{TINY_FONT}گندم
+STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
+STR_ABBREV_SUGAR                                                :{TINY_FONT}شکر
+STR_ABBREV_TOYS                                                 :{TINY_FONT}اسباب بازی
+STR_ABBREV_SWEETS                                               :{TINY_FONT}شیرینی
+STR_ABBREV_COLA                                                 :{TINY_FONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}آبنبات
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}FZ
+STR_ABBREV_NONE                                                 :{TINY_FONT}NO
+STR_ABBREV_ALL                                                  :{TINY_FONT}همه
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} مسافر
@@ -516,10 +516,10 @@ STR_MONTH_DEC                                                   :دسامبر
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}کلید
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}نمایش کلید نمودار
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}نمودار سود کارکرد
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}نمودار دریافتی
@@ -528,14 +528,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}رتبه
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}ارزش نقدی شرکت
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}مبلغ پرداختی محموله ها
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}روز های گذشته در حمل
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}فعال سازی همه
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}غیر فعال سازی همه
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}روز های گذشته در حمل
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}فعال سازی همه
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}غیر فعال سازی همه
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}نمایش تمام محموله در نمودار نرخ نرخ پرداخت محموله ها
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}نمایش ندادن محموله ها در نمودار نرخ پرداخت محموله ها
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}نمایش جزئیات رتبه بندی راندمان
 
@@ -545,7 +545,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}برای
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}جدول اتحادیه شرکت ها
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مهندس
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :مدیر ترافیکی
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :رئیس حمل و نقل
@@ -559,7 +559,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :ترک اصیل
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}رتبه راندمان تفصیلی
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}جزییات
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}مشاهده جزییات درباره این شرکت
@@ -588,25 +588,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}تعدا
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}پخش جاز
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}همه:
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}مدل قدیمی
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}مدل جدید
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}خیابان داریوش کبیر
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}انتخابی 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}انتخابی 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}شدت صدای موسیقی
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}شدت صدای محیط
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}کمینه
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}بیشینه
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}آهنگ
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}عنوان
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}پخش تصادفی
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}برنامه
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}همه:
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}مدل قدیمی
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}مدل جدید
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}خیابان داریوش کبیر
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}انتخابی 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}انتخابی 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}شدت صدای موسیقی
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}شدت صدای محیط
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}کمینه
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}بیشینه
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}آهنگ
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}عنوان
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}پخش تصادفی
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}برنامه
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}بازگشت به آهنگ قبلی در لیست انتخاب شده ها
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}آهنگ بعدی در لیست انتخاب شده ها
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}توقف موسیقی
@@ -625,18 +625,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}در م�
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}انتخاب برنامه پخش موسیقی
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}شماره ی آهنگ
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}برنامه - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}پاک کن
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}شماره ی آهنگ
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}برنامه - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}پاک کن
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}پاک کردن برنامه فعلی (برنامه های سفارشی شده 1 و سفارشی شده 2 فقط پاک می شوند)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}روی آهنگ کلیک کنید تا به برنامه فعلی اضافه شوند (فقط لیست سفارشی 1 و سفارشی 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}روی آهنگ کلیک کنید تا از برنامه فعلی پاک شوند (فقط لیست سفارشی 1 و سفارشی 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}بالانرین شرکت هایی که به مرحله {NUM}{}({STRING} رسیدند)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}جدول اتحادیه شرکت ها در {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}بالانرین شرکت هایی که به مرحله {NUM}{}({STRING} رسیدند)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}جدول اتحادیه شرکت ها در {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :موسس شرکت
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :کارخانه دار
@@ -644,10 +644,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :سرمایه د
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :نجیب زاده
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :بزرگ و با نفوذ
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :سرمایه دار مهم قرن
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} به وضعیت'{STRING}' دست یافت!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} از {COMPANY} به وضعیت '{STRING}' دست یافت!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} به وضعیت'{STRING}' دست یافت!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} از {COMPANY} به وضعیت '{STRING}' دست یافت!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}نقشه - {STRING}
@@ -667,40 +667,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}صاحب
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}روی یکی از صنایع کلیک کنید تا نمایش داده شود.Ctrl+Click همه صنایع را پنهان می کند به غیر از کارخانه انتخاب شده. برای فعال کردن بقیه دوباره .Ctrl+Click کنید
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click برای مشاهده ویژگی های یک شرکت روی آن کلیک کنید.Ctrl+Click همه شرکت ها را مخفی می کند به جر شرکت انتخاب شد.با Ctrl+Click.دوباره همه شرکت ها فعال می شوند
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}جاده ها
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}راه آهن
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}ایستگاه/فرودگاه/بندر
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}ساختمانها/کارخانجات
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}ماشینها
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}قطارها
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}ماشین ها
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}کشتی ها
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}هواپیما
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}مسیر حمل و نقل
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}جنگل
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}ایستگاه قطار
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}ایستگاه بارگیری/تخلیه بار کامیون
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}ایستگاه اتوبوس
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}هواپیما/بالگرد
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}اسکله
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}زمین سنگی
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}زمین علفی
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}زمین بایر
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}محوطه ها
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}درختان
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}سخره ها
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}آب
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}بدون مالک
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}شهر
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}کارخانه
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}صحرا
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}برف
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}جاده ها
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}راه آهن
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}ایستگاه/فرودگاه/بندر
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}ساختمانها/کارخانجات
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}ماشینها
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}قطارها
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}ماشین ها
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}کشتی ها
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}هواپیما
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}مسیر حمل و نقل
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}جنگل
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}ایستگاه قطار
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}ایستگاه بارگیری/تخلیه بار کامیون
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}ایستگاه اتوبوس
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}هواپیما/بالگرد
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}اسکله
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}زمین سنگی
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}زمین علفی
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}زمین بایر
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}محوطه ها
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}درختان
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}سخره ها
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}آب
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}بدون مالک
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}شهر
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}کارخانه
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}صحرا
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}برف
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}نشان دادن یا ندادن اسم شهر ها در نقشه
 STR_SMALLMAP_CENTER                                             :{BLACK}موقعیت فعلی را به عنوان مرکز نقشه کوچک قرار بده
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}غیر فعال سازی همه
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}فعال سازی همه
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}نمایش ارتفاع
@@ -748,60 +748,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغی�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}کمک هزینه
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توضیهات کلی
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}شهروندان شهر . . .{}ورود اولين مسافر به {STATION}را جشن مي گيرند!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}شهروندان شهر . . .{}ورود اولين بارکش به {STATION}را جشن مي گيرند!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}شهروندان شهر . . .{}ورود اولين مسافر به {STATION}را جشن مي گيرند!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}شهروندان شهر . . .{}ورود اولين بارکش به {STATION}را جشن مي گيرند!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}تصادف هواپیما!{}{COMMA} مرگ در انفجار در {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}سانحه هواپیما!{}سوخت هواپیما تمام شده, {COMMA} نفر در این سانحه مردند
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}تصادف هواپیما!{}{COMMA} مرگ در انفجار در {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}سانحه هواپیما!{}سوخت هواپیما تمام شده, {COMMA} نفر در این سانحه مردند
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}فاجعه کشتی هوایی در {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}خودرو بر اثر برخورد با «بشقاب پرنده» نابود شد!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}انفجار پالایشگاه نفت در نزدیکی {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}کارخانه {TOWN}در شرایط مشکوکی تخریب گردید!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}«بشقاب پرنده در نزدبکی {TOWN}به زمین نشست!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}یارانه تخریب معدن زغال سنگ در نزدیکی {TOWN}هدفمند شد(یارانه حذف شد)!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}سیل!{}دست کم {COMMA} نفر گمشده اند, و به نظر میرسد عده ی قابل توجهی نیز در سیل کشته شوند!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}فاجعه کشتی هوایی در {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}خودرو بر اثر برخورد با «بشقاب پرنده» نابود شد!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}انفجار پالایشگاه نفت در نزدیکی {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}کارخانه {TOWN}در شرایط مشکوکی تخریب گردید!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}«بشقاب پرنده در نزدبکی {TOWN}به زمین نشست!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}یارانه تخریب معدن زغال سنگ در نزدیکی {TOWN}هدفمند شد(یارانه حذف شد)!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}سیل!{}دست کم {COMMA} نفر گمشده اند, و به نظر میرسد عده ی قابل توجهی نیز در سیل کشته شوند!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}شرکت حمل و نقل دچار مشکل!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} به فروش می رسد یا اعلام ورشکستگی می شود،مگر اینکه درآمدتان را سریع افزایش دهید!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}ادغام کننده شرکت ترابری!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} به {STRING} فروخته شد به قیمت {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}ورشکست!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} بسته شد و همه دارایی های شرکت فروخته شد!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}شرکت ترابری جدید آغاز به کار کرد!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} آغاز به ساخت و ساز در نزدیکی {TOWN} کرد!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} توسط {STRING} خریداری شد!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(مدیر)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}شرکت حمل و نقل دچار مشکل!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} به فروش می رسد یا اعلام ورشکستگی می شود،مگر اینکه درآمدتان را سریع افزایش دهید!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}ادغام کننده شرکت ترابری!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} به {STRING} فروخته شد به قیمت {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}ورشکست!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} بسته شد و همه دارایی های شرکت فروخته شد!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}شرکت ترابری جدید آغاز به کار کرد!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} آغاز به ساخت و ساز در نزدیکی {TOWN} کرد!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} توسط {STRING} خریداری شد!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(مدیر)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} حامی ساخت و ساز در شهر جدید {TOWN} شده است!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} حامی ساخت و ساز در شهر جدید {TOWN} شده است!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} تعطیلی فوری خود را اعلام کرد!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} تعطیلی فوری خود را اعلام کرد!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT} {BLACK} اتحادیه پولی اروپا!{}{} یورو به عنوان تنها ارز برای معاملات روزمره در کشور معرفی گردید!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}رکود جهانی!{}{}کارشناسان اقتصادی از رکود اقتصادی فراگیر اظهار نگرانی می کنند!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}رکود برطرف شد!{}{}برطرف شدن رکود باعث گرمی بازار خرید و فروش گردید و شرکت ها تقویت می گردند!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT} {BLACK} اتحادیه پولی اروپا!{}{} یورو به عنوان تنها ارز برای معاملات روزمره در کشور معرفی گردید!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}رکود جهانی!{}{}کارشناسان اقتصادی از رکود اقتصادی فراگیر اظهار نگرانی می کنند!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}رکود برطرف شد!{}{}برطرف شدن رکود باعث گرمی بازار خرید و فروش گردید و شرکت ها تقویت می گردند!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} افزایش تولید داشت!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} تولید در {INDUSTRY} به مقدار {COMMA}% افزایش یافت!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}تولید {INDUSTRY} 50% کاهش یافت
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}هجوم حشرات باعث تخریب {INDUSTRY}گردید!{}تولید به مقدار ۵۰% کاهش یافت!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} تولید در {INDUSTRY} ب مقدار {COMMA}۵۰% افزایش یافت!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} افزایش تولید داشت!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} تولید در {INDUSTRY} به مقدار {COMMA}% افزایش یافت!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}تولید {INDUSTRY} 50% کاهش یافت
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}هجوم حشرات باعث تخریب {INDUSTRY}گردید!{}تولید به مقدار ۵۰% کاهش یافت!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} تولید در {INDUSTRY} ب مقدار {COMMA}۵۰% افزایش یافت!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} در گاراژ منتظر است
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} در گاراژ منتظر است
@@ -821,13 +821,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} نمی تواند مسیری برای ادامه دادن پیدا کند
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} گمشده
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :سود سال گذشته {WHITE}{VEHICLE}به مقدار {CURRENCY} بوده است
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :سود سال گذشته {WHITE}{VEHICLE}به مقدار {CURRENCY_LONG} بوده است
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} متوقف گردید چون تغییر کاربرد با شکست مواجه شد
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}نوسازی خودکار {VEHICLE}{}{STRING} با شکست مواجه شده است
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK} {STRING} جدید هم اکنون قابل دسترسی است!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK} {STRING} جدید هم اکنون قابل دسترسی است!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK} {STRING} جدید هم اکنون قابل دسترسی است!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
@@ -835,15 +835,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} {STRING} و {STRING} را از این به بعد قبول می کند
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}پیشنهاد یارانه باطل شد:{}{}{STRING} از {STRING} به {STRING} دیگر یارانه ای به همراه نخواهد داشت
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}یارانه بازپس گرفته شد:{}{}{STRING} خدمات از {STRING} به {STRING} دیگر شامل یارانه نمی باشند
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}پیشنهاد پرداخت یارانه:{}{}نخستین {STRING} خدمات از {STRING} به {STRING} توسط فرماندار محلی به مدت یک سال شامل یارانه می گردد!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال شامل ۵۰ درصد اضافه می گردد!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال دوبرابر پرداخت میشود!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK} {STRING}برنده یارانه خدمات گردید!{}{}{STRING} دستمزد خدمات از {STRING} به {STRING} به مدت یک سال سه برابر پرداخت می شود!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}یارانه خدمات به {STRING}هدیه داده شد!{}{}{STRING} خدمات ترابری از {STRING} به {STRING} تا یک سال آینده چهار برابر پرداخت خواهد شد!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}پیشنهاد یارانه باطل شد:{}{}{STRING} از {STRING} به {STRING} دیگر یارانه ای به همراه نخواهد داشت
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}یارانه بازپس گرفته شد:{}{}{STRING} خدمات از {STRING} به {STRING} دیگر شامل یارانه نمی باشند
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}پیشنهاد پرداخت یارانه:{}{}نخستین {STRING} خدمات از {STRING} به {STRING} توسط فرماندار محلی به مدت یک سال شامل یارانه می گردد!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال شامل ۵۰ درصد اضافه می گردد!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} برنده یارانه خدمات گردید!{}{}{STRING} خدمات از {STRING} به {STRING} به مدت یک سال دوبرابر پرداخت میشود!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK} {STRING}برنده یارانه خدمات گردید!{}{}{STRING} دستمزد خدمات از {STRING} به {STRING} به مدت یک سال سه برابر پرداخت می شود!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}یارانه خدمات به {STRING}هدیه داده شد!{}{}{STRING} خدمات ترابری از {STRING} به {STRING} تا یک سال آینده چهار برابر پرداخت خواهد شد!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}ترافیک شدید در {TOWN}!{}{}هزینه روکش کردن آسفالت توسط {STRING} پرداخت گردیده و باعث 6 ماه بدبختی و دردسر برای رانندگان شده است!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}ترافیک شدید در {TOWN}!{}{}هزینه روکش کردن آسفالت توسط {STRING} پرداخت گردیده و باعث 6 ماه بدبختی و دردسر برای رانندگان شده است!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}نمای اضافه {COMMA}
@@ -971,7 +971,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}حالت
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}واحد پول دلخواه
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}نرخ ارز: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}نرخ ارز: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}کم کردن ارزش واحد پول در ازای یک پوند (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}زیاد کردن ارزش واحد پول در ازای یک پوند (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}نرخ ارز واحد پول را در ازای یک پوند تنظیم کنید (£)
@@ -990,7 +990,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}سال �
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}زودتر به یورو تبدیل شود
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}دیرتر به یورو تبدیل شود
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}پیشنما: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}پیشنما: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}۱۰۰۰۰ پوند (£) به واحد پول شما می شود
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}تغییر دلخواه پارامترهای واحد پول
 
@@ -1011,7 +1011,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}ذخیر
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}تعداد شهر ها: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}تعداد کارخانه ها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}میزان سود نخست: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}هزینه نگهداری خودروها: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}سرعت ساخت رقیبان: {ORANGE}{STRING}
@@ -1427,7 +1427,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}آیا 
 STR_CHEATS                                                      :{WHITE}تقلبها
 STR_CHEATS_TOOLTIP                                              :{BLACK}جعبه انتخاب ها نشان می دهند که قبلا از چه تقلبی استفاده کردید
 STR_CHEATS_WARNING                                              :{BLACK}هشدار!شما می خواهید که به رقبای همکارتان خیانت کنید. بدانید که چنین رسوایی تا ابد به یاد خواهد ماند
-STR_CHEAT_MONEY                                                 :{LTBLUE}اضافه کردن پول به مقدار {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}اضافه کردن پول به مقدار {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}بازی به عنوان شرکت: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}بولدوزر جادویی(ازبین بردن صنایع و اشیاء غیرقابل حرکت): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}قابلیت رد شدن تونل های متقاطع از یکدیکر: {ORANGE}{STRING}
@@ -1663,9 +1663,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}لیست
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}مشخصات شرکت
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}نام شرکت: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}گشایش: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}ارزش شرکت: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}موجودی فعلی: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}درآمد سال گذشته: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}ارزش شرکت: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}موجودی فعلی: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}درآمد سال گذشته: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}کارایی: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}وسایل نقلیه: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1810,8 +1810,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ب
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} یک شرکت جدید آغاز کرد (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} از بازی بیرون رفت ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نامش را به {STRING} تغییر داد
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} به شرکت شما {2:CURRENCY} پول داد
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** شما {1:STRING}به شرکت {2:CURRENCY} دادید
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} به شرکت شما {2:CURRENCY_LONG} پول داد
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** شما {1:STRING}به شرکت {2:CURRENCY_LONG} دادید
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرویس دهنده جلسه را تعطیل کرد
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}راه اندازی مجدد سرویس دهنده...{}لطفا صبر کنید...
 
@@ -1974,7 +1974,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}زیاد
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}انتخب پل راه آهن
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}ساخت پل ماشین رو
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :معلق، فولادی
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :پیوسته، فولادی
@@ -2145,7 +2145,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ساخت
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}صنعت مورد نظر خود را از این لیست انتخاب کنید
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :ساخت صنایع بسیار به طور تصادفی
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}پر کردن نقشه با صنایع با محل تصادفی
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}دورنما
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}ساخت
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}سرمایه گذاری
@@ -2166,8 +2166,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}انتخ
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}هزینه پاک کردن: {LTBLUE}0
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}درآمد زمان پاکسازی: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزینه پاک کردن: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}درآمد زمان پاکسازی: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :0
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}مالک: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}مالک جاده: {LTBLUE}{STRING}
@@ -2563,7 +2563,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}نامه
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}نوع بار برای رشد شهر:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} ضروری
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} در زمستان ضروری است
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} ماه پیش تحویل داده شد
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} ماه پیش تحویل داده شد
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}حد سروصدا در شهر: {ORANGE}{COMMA}{BLACK}  بیشینه: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}نمایش شهر در وسط صفحه نمایش. کنترل+کلیک یک نمای اضافه از شهر باز می کند
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}مقامات محلی
@@ -2580,7 +2580,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :تغییر اس
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} مقامات محلی
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK} امتیازات شرکت
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}کارهای ممکن :
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}لیست کارهایی که می شود در این شهر انجام داد- برای اطلاعات بیشتر کلیک کنید
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}انجام بده
@@ -2595,14 +2595,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ساخت اخت
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :خرید انحصاری کلیه حقوق حمل و نقل
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :رشوه به مقامات محلی
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}اجرای یک برنامه آگهی متوسط برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی بزرگ برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}پرداخت هزینه بازسازی روکش آسفالت شهری. سبب ترافیک قابل ملاحظه ای تا شش ماه می شود{}قیمت: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}ساخت مجسمه برای بزرگداشت شرکت شما{}قیمت: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}پرداخت هزینه ساخت ساختمان های تجاری.{}قیمت: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}خرید انحصاری حقوق حمل و نقل به مدت یک سال. مقامات شهر به مسافران و بارها اجازه استفاده از شرکت حمل و نقل دیگری را نمی دهند{}Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشوه به فرماندار محلی برای افزایش رده، با احتمال جریمه زیاد در صورت گیر افتادن.{}قیمت: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}اجرای یک برنامه آگهی متوسط برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}اجرای یک برنامه آگهی بزرگ برای جذب بیشتر مسافر و بار به شرکت حمل و نقل شما.{}قیمت: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}پرداخت هزینه بازسازی روکش آسفالت شهری. سبب ترافیک قابل ملاحظه ای تا شش ماه می شود{}قیمت: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}ساخت مجسمه برای بزرگداشت شرکت شما{}قیمت: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}پرداخت هزینه ساخت ساختمان های تجاری.{}قیمت: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}خرید انحصاری حقوق حمل و نقل به مدت یک سال. مقامات شهر به مسافران و بارها اجازه استفاده از شرکت حمل و نقل دیگری را نمی دهند{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشوه به فرماندار محلی برای افزایش رده، با احتمال جریمه زیاد در صورت گیر افتادن.{}قیمت: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}یارانه ها
@@ -2617,7 +2617,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}روی �
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}برای انتخاب بیش از یک آیتم، کنترل را بگیرید
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} ایستگاه{P "" ها}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- هیچکدام -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}انتخاب تمامی تسهیلات
@@ -2625,10 +2625,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}انتخ
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}هیچ نوع محموله در انتظار نیست
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}در انتظار: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} منشعب شده از {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} منشعب شده از {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول می کند
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
@@ -2669,7 +2669,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 # Company view
 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} هواپیما
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}ارزش شرکت: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}ارزش شرکت: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% توسط {COMPANY} خریداری شده)
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}ساخت ساختمان مرکزی
@@ -2688,7 +2688,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% سه
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}تولید در ماه گذشته:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% منتقل شد)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% منتقل شد)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}مرکز تصویر را روی کارخانه قرار بده
 
 ############ range for requires starts
@@ -2712,7 +2712,7 @@ STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}قطار
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}کشتی ها - برای اطلاعات بیشتر روی کشتی کلیک کنید
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}سود امسال : {CURRENCY} (سود پارسال: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}سود امسال : {CURRENCY_LONG} (سود پارسال: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :قطارهای موجود
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :خودروهای موجود
@@ -2899,15 +2899,15 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}نام �
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}نامگذاری هواپیما
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   مدل: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}  قیمت: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   مدل: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}  قیمت: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}مجموع ظرفیت بار این قطار:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}خالی
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} از {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} از {STATION}
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}محموله
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}نمایش مشخصات محموله در حال حمل
@@ -2921,7 +2921,7 @@ STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}مجمو
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تعمیر مجدد)
 STR_REFIT_TITLE                                                 :{GOLD}انتخاب محموله قابل حمل:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO}{}{BLACK} بهای تعمیر مجدد: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO_LONG}{}{BLACK} بهای تعمیر مجدد: {GOLD}{CURRENCY_LONG}
 
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}انتخاب نوع محموله ای که این کشتی باید حمل کند
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}انتخاب نوع جدید محموله برای حمل با هواپیما
@@ -3036,12 +3036,12 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}بازن
 # Vehicle loading indicators
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}مخارج: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}مخارج: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}درآمد : {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}درآمد: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}مخارج تقریبی: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}در آمد تقریبی: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}مخارج: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}مخارج: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}درآمد : {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}درآمد: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}مخارج تقریبی: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}در آمد تقریبی: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}درایو خوانده می شود
@@ -3069,7 +3069,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}پیا�
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}خارج از نقشه
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}بسیار نزدیک به حاشیه ی نقشه
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}پول به اندازه ی کافی موجود نیست- به {CURRENCY} نیاز است
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}پول به اندازه ی کافی موجود نیست- به {CURRENCY_LONG} نیاز است
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}زمین باید مسطح باشد
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}نمی‌توانم انجام دهم
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}اول باید ساختمان تخریب شود
@@ -3680,37 +3680,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :تماشاگر,
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3722,32 +3722,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

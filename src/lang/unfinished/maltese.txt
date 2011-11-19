@@ -95,24 +95,24 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Luminata
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_COAL                                               :{WEIGHT} ta' faħam
-STR_QUANTITY_OIL                                                :{VOLUME} ta' żejt
-STR_QUANTITY_GRAIN                                              :{WEIGHT} ta' qamħ
-STR_QUANTITY_WOOD                                               :{WEIGHT} ta' injam
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ta' sorsi tal-ħadid
-STR_QUANTITY_STEEL                                              :{WEIGHT} ta' azzar
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} ta' sorsi tar-ram
-STR_QUANTITY_MAIZE                                              :{WEIGHT} ta' qamħirrun
-STR_QUANTITY_FRUIT                                              :{WEIGHT} ta' frott
-STR_QUANTITY_FOOD                                               :{WEIGHT} ta' ikel
-STR_QUANTITY_PAPER                                              :{WEIGHT} ta' karti
-STR_QUANTITY_WATER                                              :{VOLUME} ta' ilma
-STR_QUANTITY_WHEAT                                              :{WEIGHT} ta' qamħ
-STR_QUANTITY_RUBBER                                             :{VOLUME} ta' lastku
-STR_QUANTITY_SUGAR                                              :{WEIGHT} ta' zokkor
-STR_QUANTITY_COLA                                               :{VOLUME} ta' koka
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} ta' kandiflos
-STR_QUANTITY_PLASTIC                                            :{VOLUME} ta' plastik
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} ta' faħam
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} ta' żejt
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} ta' qamħ
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} ta' injam
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} ta' sorsi tal-ħadid
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} ta' azzar
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} ta' sorsi tar-ram
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} ta' qamħirrun
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} ta' frott
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} ta' ikel
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} ta' karti
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} ta' ilma
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} ta' qamħ
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} ta' lastku
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} ta' zokkor
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} ta' koka
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} ta' kandiflos
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} ta' plastik
 
 # Two letter abbreviation of cargo name
 
@@ -324,7 +324,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 
 
 
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Turix industriji fuq il-mappa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Uri l-industriji kollha fuq il-mappa
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Turix il-propjeta tal-kumpanija fuq il-mappa
@@ -1205,37 +1205,37 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1247,31 +1247,31 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

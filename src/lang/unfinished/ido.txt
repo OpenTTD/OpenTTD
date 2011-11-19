@@ -95,73 +95,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gasoza Drinkajo
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasajer{P o i}
-STR_QUANTITY_COAL                                               :{WEIGHT} de karbono
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de karbono
 STR_QUANTITY_MAIL                                               :{COMMA} sak{P o i} de posto
-STR_QUANTITY_OIL                                                :{VOLUME} de oleo
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} de oleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} artikl{P o i} de brutari
 STR_QUANTITY_GOODS                                              :{COMMA} kest{P o i} de vari
-STR_QUANTITY_GRAIN                                              :{WEIGHT} de grano
-STR_QUANTITY_WOOD                                               :{WEIGHT} de ligno
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de fer-erco
-STR_QUANTITY_STEEL                                              :{WEIGHT} de stalo
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de grano
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de ligno
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de fer-erco
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de stalo
 STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P o i} de valoraji
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de kupr-erco
-STR_QUANTITY_MAIZE                                              :{WEIGHT} de maizo
-STR_QUANTITY_FRUIT                                              :{WEIGHT} de frukto
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de kupr-erco
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de maizo
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de frukto
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sak{P o i} de diamanti
-STR_QUANTITY_FOOD                                               :{WEIGHT} de manjajo
-STR_QUANTITY_PAPER                                              :{WEIGHT} de papero
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de manjajo
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papero
 STR_QUANTITY_GOLD                                               :{COMMA} sak{P o i} de oro
-STR_QUANTITY_WATER                                              :{VOLUME} de aquo
-STR_QUANTITY_WHEAT                                              :{WEIGHT} de frumento
-STR_QUANTITY_RUBBER                                             :{VOLUME} de kauchuko
-STR_QUANTITY_SUGAR                                              :{WEIGHT} de sukro
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} de aquo
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de frumento
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de kauchuko
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de sukro
 STR_QUANTITY_TOYS                                               :{COMMA} ludil{P o i}
 STR_QUANTITY_SWEETS                                             :{COMMA} sak{P o i} de dolcaji
-STR_QUANTITY_COLA                                               :{VOLUME} de kolao
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de kandi-lanugo
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} de kolao
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de kandi-lanugo
 STR_QUANTITY_BUBBLES                                            :{COMMA} bul{P o i}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} de karamelo
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de karamelo
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P o i}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} de plastiko
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastiko
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gasoza drinkaj{P o i}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}KB
-STR_ABBREV_MAIL                                                 :{TINYFONT}PT
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BT
-STR_ABBREV_GOODS                                                :{TINYFONT}VR
-STR_ABBREV_GRAIN                                                :{TINYFONT}GN
-STR_ABBREV_WOOD                                                 :{TINYFONT}LG
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}EC
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KP
-STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}MJ
-STR_ABBREV_PAPER                                                :{TINYFONT}PP
-STR_ABBREV_GOLD                                                 :{TINYFONT}OR
-STR_ABBREV_WATER                                                :{TINYFONT}AQ
-STR_ABBREV_WHEAT                                                :{TINYFONT}FM
-STR_ABBREV_RUBBER                                               :{TINYFONT}KK
-STR_ABBREV_SUGAR                                                :{TINYFONT}SK
-STR_ABBREV_TOYS                                                 :{TINYFONT}LD
-STR_ABBREV_SWEETS                                               :{TINYFONT}DC
-STR_ABBREV_COLA                                                 :{TINYFONT}KL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}KD
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
-STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BT
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GD
-STR_ABBREV_NONE                                                 :{TINYFONT}NL
-STR_ABBREV_ALL                                                  :{TINYFONT}OMNA
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}KB
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PT
+STR_ABBREV_OIL                                                  :{TINY_FONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}BT
+STR_ABBREV_GOODS                                                :{TINY_FONT}VR
+STR_ABBREV_GRAIN                                                :{TINY_FONT}GN
+STR_ABBREV_WOOD                                                 :{TINY_FONT}LG
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}EC
+STR_ABBREV_STEEL                                                :{TINY_FONT}ST
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KP
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}MJ
+STR_ABBREV_PAPER                                                :{TINY_FONT}PP
+STR_ABBREV_GOLD                                                 :{TINY_FONT}OR
+STR_ABBREV_WATER                                                :{TINY_FONT}AQ
+STR_ABBREV_WHEAT                                                :{TINY_FONT}FM
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KK
+STR_ABBREV_SUGAR                                                :{TINY_FONT}SK
+STR_ABBREV_TOYS                                                 :{TINY_FONT}LD
+STR_ABBREV_SWEETS                                               :{TINY_FONT}DC
+STR_ABBREV_COLA                                                 :{TINY_FONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}KD
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BL
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}KR
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BT
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}GD
+STR_ABBREV_NONE                                                 :{TINY_FONT}NL
+STR_ABBREV_ALL                                                  :{TINY_FONT}OMNA
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} pasajeri
@@ -375,34 +375,34 @@ STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montras 
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montrar vejetado ad la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montrar proprietanti ad la mapo
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Voyi
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Fervoyo
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacioni/Aeroportui/Doki
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Konstrukturi/Industrii
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vehili
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treni
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Voy-Vehili
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Navi
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aeroplani
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transport-voyi
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Foresto
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Fervoyala Staciono
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Kamiono-Kayo
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Autobuso Staciono
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aeroportuo/Heliportuo
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Portuo
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Ruda Tereno
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Herbo
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Nudiga Tereno
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Agri
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Arbori
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Roki
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Aquo
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Ne proprietanto
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Urbi
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrii
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Dezerto
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Nivo
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Voyi
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Fervoyo
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stacioni/Aeroportui/Doki
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Konstrukturi/Industrii
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Vehili
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Treni
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Voy-Vehili
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Navi
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aeroplani
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transport-voyi
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Foresto
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Fervoyala Staciono
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kamiono-Kayo
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobuso Staciono
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeroportuo/Heliportuo
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Portuo
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Ruda Tereno
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Herbo
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Nudiga Tereno
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Agri
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Arbori
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Roki
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Aquo
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Ne proprietanto
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Urbi
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industrii
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Dezerto
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nivo
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Baskulas urbo-nomi sur/for la mapo
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Montras alteso
@@ -821,7 +821,7 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # Station view window
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Vartabas: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceptas: {WHITE}{STRING}
 
@@ -869,7 +869,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Voy-vehi
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navi - klikigas sur navo por informeso
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronavi - klikigas sur aeronavo por informeso
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profito to yaro: {CURRENCY} (lasta yaro: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profito to yaro: {CURRENCY_LONG} (lasta yaro: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Disponebla Treni
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Disponebla Vehili
@@ -959,9 +959,9 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronavo
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servado ad {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Haltinta
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Haltinta
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Haltinta
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Komencinta
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Komencinta
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komencinta
 
 # Vehicle details
@@ -1072,7 +1072,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Sendajo
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Exter la bordo del mapo
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proxim la bordo del mapo
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sat pekunio - requizitas {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sat pekunio - requizitas {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Plata tereno requizitita
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas facar ico...
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas netigar ca areo...
@@ -1198,37 +1198,37 @@ STR_COMPANY_SOMEONE                                             :ulu
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1239,26 +1239,26 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

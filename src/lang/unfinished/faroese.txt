@@ -97,72 +97,72 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sodavatn
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} ferðafólk
-STR_QUANTITY_COAL                                               :{WEIGHT} av kol
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} av kol
 STR_QUANTITY_MAIL                                               :{COMMA} sekk{P "" ir} av posti
-STR_QUANTITY_OIL                                                :{VOLUME} av olju
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} av olju
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} lutur{P "" s} av fenaði
 STR_QUANTITY_GOODS                                              :{COMMA} kassa{P "" r} av góðsi
-STR_QUANTITY_GRAIN                                              :{WEIGHT} av korni
-STR_QUANTITY_WOOD                                               :{WEIGHT} av viði
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} av jarn málmi
-STR_QUANTITY_STEEL                                              :{WEIGHT} av stáli
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} av korni
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} av viði
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} av jarn málmi
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} av stáli
 STR_QUANTITY_VALUABLES                                          :{COMMA} sekk{P "" ir} av virðislutum
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} av kopar málmi
-STR_QUANTITY_MAIZE                                              :{WEIGHT} av meis
-STR_QUANTITY_FRUIT                                              :{WEIGHT} av frukt
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} av kopar málmi
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} av meis
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} av frukt
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sekk{P "" ir} av diamantum
-STR_QUANTITY_FOOD                                               :{WEIGHT} av mati
-STR_QUANTITY_PAPER                                              :{WEIGHT} av pappíri
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} av mati
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} av pappíri
 STR_QUANTITY_GOLD                                               :{COMMA} sekk{P "" ir} av gull
-STR_QUANTITY_WATER                                              :{VOLUME} av vatni
-STR_QUANTITY_WHEAT                                              :{WEIGHT} av hveiti
-STR_QUANTITY_RUBBER                                             :{VOLUME} av gummi
-STR_QUANTITY_SUGAR                                              :{WEIGHT} av sukri
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} av vatni
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} av hveiti
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} av gummi
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} av sukri
 STR_QUANTITY_TOYS                                               :{COMMA} leik{P a ur}
 STR_QUANTITY_SWEETS                                             :{COMMA} sekk{P "" ir} av góðgæti
-STR_QUANTITY_COLA                                               :{VOLUME} av kola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} av kandifloss
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} av kola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} av kandifloss
 STR_QUANTITY_BUBBLES                                            :{COMMA} sápiblør{P a ir}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} av róma
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} av róma
 STR_QUANTITY_BATTERIES                                          :{COMMA} battarí{P y ies}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} av plastikk
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} av plastikk
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sodavatn
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}FF
-STR_ABBREV_COAL                                                 :{TINYFONT}KL
-STR_ABBREV_MAIL                                                 :{TINYFONT}PS
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}KÚ
-STR_ABBREV_GOODS                                                :{TINYFONT}GS
-STR_ABBREV_GRAIN                                                :{TINYFONT}KN
-STR_ABBREV_WOOD                                                 :{TINYFONT}VI
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}ML
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KM
-STR_ABBREV_MAIZE                                                :{TINYFONT}MS
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}MT
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}GL
-STR_ABBREV_WATER                                                :{TINYFONT}VN
-STR_ABBREV_WHEAT                                                :{TINYFONT}HV
-STR_ABBREV_RUBBER                                               :{TINYFONT}GM
-STR_ABBREV_SUGAR                                                :{TINYFONT}SK
-STR_ABBREV_TOYS                                                 :{TINYFONT}LK
-STR_ABBREV_SWEETS                                               :{TINYFONT}SL
-STR_ABBREV_COLA                                                 :{TINYFONT}KL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}KF
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SV
-STR_ABBREV_NONE                                                 :{TINYFONT}EI
-STR_ABBREV_ALL                                                  :{TINYFONT}ALT
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}FF
+STR_ABBREV_COAL                                                 :{TINY_FONT}KL
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PS
+STR_ABBREV_OIL                                                  :{TINY_FONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}KÚ
+STR_ABBREV_GOODS                                                :{TINY_FONT}GS
+STR_ABBREV_GRAIN                                                :{TINY_FONT}KN
+STR_ABBREV_WOOD                                                 :{TINY_FONT}VI
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}ML
+STR_ABBREV_STEEL                                                :{TINY_FONT}ST
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KM
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MS
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}MT
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}GL
+STR_ABBREV_WATER                                                :{TINY_FONT}VN
+STR_ABBREV_WHEAT                                                :{TINY_FONT}HV
+STR_ABBREV_RUBBER                                               :{TINY_FONT}GM
+STR_ABBREV_SUGAR                                                :{TINY_FONT}SK
+STR_ABBREV_TOYS                                                 :{TINY_FONT}LK
+STR_ABBREV_SWEETS                                               :{TINY_FONT}SL
+STR_ABBREV_COLA                                                 :{TINY_FONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}KF
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BL
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}SV
+STR_ABBREV_NONE                                                 :{TINY_FONT}EI
+STR_ABBREV_ALL                                                  :{TINY_FONT}ALT
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} ferðafólk
@@ -497,22 +497,22 @@ STR_MONTH_DEC                                                   :Desembur
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Knøttur
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vís knøttar til graf
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Rakstrar avkast grafur
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Inntøku grafur
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Virkis virði
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Farma gjald takstur
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dagar á ferð
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Gilda alt
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Ógilda alt
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dagar á ferð
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Gilda alt
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ógilda alt
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vís allan farm á farmagjalds takst grafi
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vís ongan farm á farmagjalds takst grafi
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 
 # Graph key window
@@ -531,7 +531,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljur
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
@@ -548,27 +548,27 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 
 # Music window
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}:
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}:
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 
 
 # Playlist window
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 
 # Highscore window
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 
 # Smallmap window
 
 
 
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 
 # Status bar messages
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
@@ -595,7 +595,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 
 
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 
 
 
@@ -857,7 +857,7 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {W
 # Signal window
 
 # Bridge selection window
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 
 
 # Road construction toolbar
@@ -983,19 +983,19 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
 # Subsidies window
 
 # Station list window
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
@@ -1012,12 +1012,12 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
 
 
 
@@ -1035,7 +1035,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 ############ range for requires ends
 
 ############ range for produces starts
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 ############ range for produces ends
 
 
@@ -1070,7 +1070,7 @@ STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -1126,7 +1126,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 # Extra buttons for train details windows
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -1202,12 +1202,12 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
 
@@ -1331,37 +1331,37 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1373,30 +1373,30 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

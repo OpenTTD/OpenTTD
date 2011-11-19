@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Diod Perfiol
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} teithiwr
-STR_QUANTITY_COAL                                               :{WEIGHT} o lo
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} o lo
 STR_QUANTITY_MAIL                                               :{COMMA} bag o bost
-STR_QUANTITY_OIL                                                :{VOLUME} o olew
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} o olew
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} eitem o dda byw
 STR_QUANTITY_GOODS                                              :{COMMA} crât o nwyddau
-STR_QUANTITY_GRAIN                                              :{WEIGHT} o rawn
-STR_QUANTITY_WOOD                                               :{WEIGHT} o goed
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} o fwyn haearn
-STR_QUANTITY_STEEL                                              :{WEIGHT} o ddur
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} o rawn
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} o goed
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} o fwyn haearn
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} o ddur
 STR_QUANTITY_VALUABLES                                          :{COMMA} bag o drysorau
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} o fwyn copr
-STR_QUANTITY_MAIZE                                              :{WEIGHT} o india corn
-STR_QUANTITY_FRUIT                                              :{WEIGHT} o ffrwyth
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} o fwyn copr
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} o india corn
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} o ffrwyth
 STR_QUANTITY_DIAMONDS                                           :{COMMA} bag o ddiemwntau
-STR_QUANTITY_FOOD                                               :{WEIGHT} o fwyd
-STR_QUANTITY_PAPER                                              :{WEIGHT} o bapur
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} o fwyd
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} o bapur
 STR_QUANTITY_GOLD                                               :{COMMA} bag o aur
-STR_QUANTITY_WATER                                              :{VOLUME} o ddŵr
-STR_QUANTITY_WHEAT                                              :{WEIGHT} o wenith
-STR_QUANTITY_RUBBER                                             :{VOLUME} o rwber
-STR_QUANTITY_SUGAR                                              :{WEIGHT} o siwgr
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} o ddŵr
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} o wenith
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} o rwber
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} o siwgr
 STR_QUANTITY_TOYS                                               :{COMMA} tegan
 STR_QUANTITY_SWEETS                                             :{COMMA} bag o felysion
-STR_QUANTITY_COLA                                               :{VOLUME} o gola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} o gandifflos
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} o gola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} o gandifflos
 STR_QUANTITY_BUBBLES                                            :{COMMA} swigen
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} o doffi
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} o doffi
 STR_QUANTITY_BATTERIES                                          :{COMMA} batri
-STR_QUANTITY_PLASTIC                                            :{VOLUME} o blastig
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} o blastig
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} diod pefriog
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}TEI
-STR_ABBREV_COAL                                                 :{TINYFONT}GLO
-STR_ABBREV_MAIL                                                 :{TINYFONT}PST
-STR_ABBREV_OIL                                                  :{TINYFONT}OLW
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}DBW
-STR_ABBREV_GOODS                                                :{TINYFONT}NWY
-STR_ABBREV_GRAIN                                                :{TINYFONT}GRW
-STR_ABBREV_WOOD                                                 :{TINYFONT}COE
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}HAE
-STR_ABBREV_STEEL                                                :{TINYFONT}DUR
-STR_ABBREV_VALUABLES                                            :{TINYFONT}TRY
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CPR
-STR_ABBREV_MAIZE                                                :{TINYFONT}CRN
-STR_ABBREV_FRUIT                                                :{TINYFONT}FFR
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DMN
-STR_ABBREV_FOOD                                                 :{TINYFONT}BWD
-STR_ABBREV_PAPER                                                :{TINYFONT}PAP
-STR_ABBREV_GOLD                                                 :{TINYFONT}AUR
-STR_ABBREV_WATER                                                :{TINYFONT}DWR
-STR_ABBREV_WHEAT                                                :{TINYFONT}GTH
-STR_ABBREV_RUBBER                                               :{TINYFONT}RWB
-STR_ABBREV_SUGAR                                                :{TINYFONT}SIW
-STR_ABBREV_TOYS                                                 :{TINYFONT}TEG
-STR_ABBREV_SWEETS                                               :{TINYFONT}MEL
-STR_ABBREV_COLA                                                 :{TINYFONT}COL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CFF
-STR_ABBREV_BUBBLES                                              :{TINYFONT}SWI
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TFI
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BAT
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PLS
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}DIO
-STR_ABBREV_NONE                                                 :{TINYFONT}DIM
-STR_ABBREV_ALL                                                  :{TINYFONT}OLL
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}TEI
+STR_ABBREV_COAL                                                 :{TINY_FONT}GLO
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PST
+STR_ABBREV_OIL                                                  :{TINY_FONT}OLW
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}DBW
+STR_ABBREV_GOODS                                                :{TINY_FONT}NWY
+STR_ABBREV_GRAIN                                                :{TINY_FONT}GRW
+STR_ABBREV_WOOD                                                 :{TINY_FONT}COE
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}HAE
+STR_ABBREV_STEEL                                                :{TINY_FONT}DUR
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}TRY
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CPR
+STR_ABBREV_MAIZE                                                :{TINY_FONT}CRN
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FFR
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DMN
+STR_ABBREV_FOOD                                                 :{TINY_FONT}BWD
+STR_ABBREV_PAPER                                                :{TINY_FONT}PAP
+STR_ABBREV_GOLD                                                 :{TINY_FONT}AUR
+STR_ABBREV_WATER                                                :{TINY_FONT}DWR
+STR_ABBREV_WHEAT                                                :{TINY_FONT}GTH
+STR_ABBREV_RUBBER                                               :{TINY_FONT}RWB
+STR_ABBREV_SUGAR                                                :{TINY_FONT}SIW
+STR_ABBREV_TOYS                                                 :{TINY_FONT}TEG
+STR_ABBREV_SWEETS                                               :{TINY_FONT}MEL
+STR_ABBREV_COLA                                                 :{TINY_FONT}COL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CFF
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}SWI
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}TFI
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BAT
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PLS
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}DIO
+STR_ABBREV_NONE                                                 :{TINY_FONT}DIM
+STR_ABBREV_ALL                                                  :{TINY_FONT}OLL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} teithiwr
@@ -516,10 +516,10 @@ STR_MONTH_DEC                                                   :Rhagfyr
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Allwedd
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Dangos allwedd i'r graffiau
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graff Elw Gweithredol
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graff Incwm
@@ -528,14 +528,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Graddfey
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Gwerth Cwmnïau
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Graddfeydd Tâl Llwythi
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Diwrnodau ar daith
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Tâl am gludo llwyth o 10 uned (neu 10,000 litr) pellter o 20 sgwâr
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Galluogi popeth
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Analluogi popeth
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Diwrnodau ar daith
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tâl am gludo llwyth o 10 uned (neu 10,000 litr) pellter o 20 sgwâr
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Galluogi popeth
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Analluogi popeth
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Dangos pob cargo ar y graff cyfraddau taliadau cargo
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Cuddio pob gargo ar y graff cyfraddau talaidau cargo
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Toglu'r graff ar gyfer math llwyth ymlaen neu i ffwrdd
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Dangos manwl amcangyfrif perfformiad
 
@@ -545,7 +545,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Cliciwch
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tablau Cynghrair Cwmnïau
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Peiriannydd
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Rheolwr Traffig
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Cydlynydd Trafnidiaeth
@@ -559,7 +559,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Teicŵn
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Graddio perfformiad manwl
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Allwedd
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Gweld manylion y cwmni hwn
@@ -588,25 +588,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Cyfanswm
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox Jazz
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Pob Arddull
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Arddull Newydd
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Hen Arddull
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Scoedent
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Cyfaddas 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Cyfaddas 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Lefel Sain Cerddoriaeth
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Lefel Sain Effeithiau
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}ISAF
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}UCHAF
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Teitl
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Trac
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Cymysgu Trefn
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Rhaglen
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Pob Arddull
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Arddull Newydd
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Hen Arddull
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Scoedent
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Cyfaddas 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Cyfaddas 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Lefel Sain Cerddoriaeth
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lefel Sain Effeithiau
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}ISAF
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}UCHAF
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Teitl
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Trac
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Cymysgu Trefn
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Rhaglen
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Neidio i'r gân ddiwethaf yn y rhestr
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Neidio i'r gân nesaf yn y rhestr
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Peidio chwarae cerddoriaeth
@@ -625,18 +625,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Dewiswyd
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Dewisiadau Rhaglen Gerddoriaeth
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Indecs Traciau
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Rhaglen - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Clirio
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Indecs Traciau
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Rhaglen - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Clirio
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clirio'r rhaglen gyfredol (Cyfaddas 1 neu Cyfaddas 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliciwch i ychwanegu trac cerddoriaeth i'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliciwch i dynnu trac cerddoriaeth o'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Y Cwmnïau Brig a gyrhaeddodd Lefel {NUM}{}({STRING})
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Y Tabl Cynghrair Cwmnïau yn {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Y Cwmnïau Brig a gyrhaeddodd Lefel {NUM}{}({STRING})
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Y Tabl Cynghrair Cwmnïau yn {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Dyn Busnes
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Diwydiannydd
@@ -644,10 +644,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Cyfalafwr
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnad
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogwl
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Teicŵn
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}Mae {COMPANY} wedi cyrraedd statws '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}Mae {PRESIDENTNAME} o gwmni {COMPANY} wedi cyrraedd statws '{STRING}'!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}Mae {COMPANY} wedi cyrraedd statws '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}Mae {PRESIDENT_NAME} o gwmni {COMPANY} wedi cyrraedd statws '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Map - {STRING}
@@ -667,40 +667,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Dangos p
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Cliciwch ar ddiwydiant i doglo ei arddangos. Mae Ctrl+Clicio'n cuddio pob math ond yr un a ddewiswyd. Ctrl+Cliciwch arno eto i ddangos pob diwydiant
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Cliciwch ar gwmni i doglo arddangos ei eiddo. Mae Ctrl+Clicio'n cuddio pob cwmni ond yr un a ddewiswyd. Ctrl+Cliciwch arno eto i ddangos pob cwmni
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Ffyrdd
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Rheilffyrdd
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Gorsafoedd/Meysydd Awyr/Dociau
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Adeiladau/Diwydiannau
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Cerbydau
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trenau
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Cerbydau Ffordd
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Llongau
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Awyrennau
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Llwybrau Cludiant
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Coedwig
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Gorsaf Reilffordd
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Man Llwytho Lorïau
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Gorsaf Fysiau
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Maes Awyr/Glanfa Hofrenyddion
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Doc
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Tir Garw
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Glaswelltir
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Tir Moel
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Caeau
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Coed
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Creigiau
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Dŵr
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Dim Perchennog
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Trefi
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Diwydiannau
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Anialwch
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Eira
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Ffyrdd
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Rheilffyrdd
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Gorsafoedd/Meysydd Awyr/Dociau
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Adeiladau/Diwydiannau
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Cerbydau
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trenau
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Cerbydau Ffordd
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Llongau
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Awyrennau
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Llwybrau Cludiant
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Coedwig
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gorsaf Reilffordd
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Man Llwytho Lorïau
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Gorsaf Fysiau
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Maes Awyr/Glanfa Hofrenyddion
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Doc
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Tir Garw
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Glaswelltir
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Tir Moel
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Caeau
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Coed
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Creigiau
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Dŵr
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Dim Perchennog
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Trefi
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Diwydiannau
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Anialwch
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Eira
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toglu dangos enwau trefi ar y map ymlaen neu i ffwrdd
 STR_SMALLMAP_CENTER                                             :{BLACK}Canoli'r map bach ar y lleoliad presennol
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Analluogi popeth
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Galluogi popeth
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Dangos uchder
@@ -748,60 +748,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Newidia
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Cymorthdaliadau
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Gwybodaeth Gyffredinol
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r trên cyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r bws cyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r lori gyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Mae'r trigolion yn dathlu . . .{} Mae'r tram teithwyr cyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Mae'r trigolion yn dathlu . . .{} Mae'r tram nwyddau cyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r llong gyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r awyren gyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r trên cyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r bws cyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r lori gyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{} Mae'r tram teithwyr cyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{} Mae'r tram nwyddau cyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r llong gyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r awyren gyntaf wedi cyrraedd {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Trên wedi crashio!{}Bu {COMMA} farw yn y ddamwain
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Damwain Awyren!{}Bu farw {COMMA} mewn tanchwa yn {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Damwain Awyren!{}Dim digon o danwydd yn yr awyren, {COMMA} yn marw mewn coelcerth
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Trên wedi crashio!{}Bu {COMMA} farw yn y ddamwain
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Damwain Awyren!{}Bu farw {COMMA} mewn tanchwa yn {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Damwain Awyren!{}Dim digon o danwydd yn yr awyren, {COMMA} yn marw mewn coelcerth
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Trychineb Zeppelin yn {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Cerbyd ffordd wedi'i ddinistrio ar ôl taro 'UFO'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Ffrwydrad purfa olew ger {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Dinistriwyd ffatri mewn modd amheus ger {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}Glaniodd 'UFO' ger {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Ymsuddiant glofa ger {TOWN} yn creu llanast!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Llifogydd!{}O leiaf {COMMA} ar goll, wedi'i tybio'n farw wedi glaw mawr!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Trychineb Zeppelin yn {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Cerbyd ffordd wedi'i ddinistrio ar ôl taro 'UFO'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Ffrwydrad purfa olew ger {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Dinistriwyd ffatri mewn modd amheus ger {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}Glaniodd 'UFO' ger {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Ymsuddiant glofa ger {TOWN} yn creu llanast!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Llifogydd!{}O leiaf {COMMA} ar goll, wedi'i tybio'n farw wedi glaw mawr!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Cwmni Trafnidiaeth mewn Trafferth!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}Bydd {STRING} yn cael ei werthu neu ei ddatgan yn fethdalwr oni bai fod ei berfformiad yn gwella'n fuan!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Uno cwmnïau trafnidiaeth!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}Mae {STRING} wedi cael ei werthu i {STRING} am {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Methdalwyr!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}Mae {STRING} wedi cael ei gau gan ei gredydwyr a''u hasedau wedi'u gwerthu!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Cwmni trafnidiaeth newydd wedi'i lansio!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}Mae {STRING} wedi cychwyn adeiladu ger {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}Mae {STRING} wedi cael ei brynu gan {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manager)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Cwmni Trafnidiaeth mewn Trafferth!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}Bydd {STRING} yn cael ei werthu neu ei ddatgan yn fethdalwr oni bai fod ei berfformiad yn gwella'n fuan!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Uno cwmnïau trafnidiaeth!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}Mae {STRING} wedi cael ei werthu i {STRING} am {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Methdalwyr!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}Mae {STRING} wedi cael ei gau gan ei gredydwyr a''u hasedau wedi'u gwerthu!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Cwmni trafnidiaeth newydd wedi'i lansio!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Mae {STRING} wedi cychwyn adeiladu ger {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}Mae {STRING} wedi cael ei brynu gan {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Manager)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}Mae {STRING} wedi noddi sefydlu tref newydd {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Mae {STRING} wedi noddi sefydlu tref newydd {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} newydd wrthi'n cael ei adeiladu wrth {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} newydd wrthi'n cael ei phlannu wrth {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}{STRING} newydd wrthi'n cael ei adeiladu wrth {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{STRING} newydd wrthi'n cael ei phlannu wrth {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Mae {STRING} yn datgan eu bod ar fin cau!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Mae problemau cyflenwi wedi gorfodi i {STRING} ddatgan ei fod ar fin cau!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Mae diffyg unrhyw goed gerllaw wedi gorfodi i {STRING} ddatgan ei fod ar fin cau!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}Mae {STRING} yn datgan eu bod ar fin cau!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Mae problemau cyflenwi wedi gorfodi i {STRING} ddatgan ei fod ar fin cau!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Mae diffyg unrhyw goed gerllaw wedi gorfodi i {STRING} ddatgan ei fod ar fin cau!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Arian Sengl Ewropeaidd!{}{}Cafodd yr Ewro ei gyflwyno fel unig arian cyfred eich gwlad!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Dirwasgiad Byd-eang!{}{}Arbenigwyr ariannol yn ofni'r gwaethaf wrth i'r economi gwympo!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Dirwasgiad ar Ben!{}{}Cynnydd masnach yn rhoi hyder i ddiwydiant wrth i'r economi gryfhau!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Arian Sengl Ewropeaidd!{}{}Cafodd yr Ewro ei gyflwyno fel unig arian cyfred eich gwlad!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Dirwasgiad Byd-eang!{}{}Arbenigwyr ariannol yn ofni'r gwaethaf wrth i'r economi gwympo!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Dirwasgiad ar Ben!{}{}Cynnydd masnach yn rhoi hyder i ddiwydiant wrth i'r economi gryfhau!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Mae {INDUSTRY} yn cynyddu ei gynnyrch!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Darganfuwyd gwythïen newydd o lo yn {INDUSTRY}!{}Disgwylir y bydd y cynnyrch yn dyblu!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Darganfuwyd ffynhonnell newydd o olew yn {INDUSTRY}!{}Disgwylir y bydd y cynnyrch yn dyblu!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Mae disgwyl i well ddulliau ffermio yn {INDUSTRY} ddyblu'r cynnyrch!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Mae cynnyrch {STRING} {INDUSTRY} yn cynyddu {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Cynnyrch yn {INDUSTRY} i lawr 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Pla o locustiaid yn peri dinistr yn {INDUSTRY}!{}Cynnyrch 50% yn is
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Mae cynnyrch {STRING} {INDUSTRY} yn gostwng {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}Mae {INDUSTRY} yn cynyddu ei gynnyrch!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Darganfuwyd gwythïen newydd o lo yn {INDUSTRY}!{}Disgwylir y bydd y cynnyrch yn dyblu!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Darganfuwyd ffynhonnell newydd o olew yn {INDUSTRY}!{}Disgwylir y bydd y cynnyrch yn dyblu!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Mae disgwyl i well ddulliau ffermio yn {INDUSTRY} ddyblu'r cynnyrch!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Mae cynnyrch {STRING} {INDUSTRY} yn cynyddu {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Cynnyrch yn {INDUSTRY} i lawr 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Pla o locustiaid yn peri dinistr yn {INDUSTRY}!{}Cynnyrch 50% yn is
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Mae cynnyrch {STRING} {INDUSTRY} yn gostwng {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}Mae {VEHICLE} yn aros yn y depo
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Mae {VEHICLE} yn aros yn y depo
@@ -821,13 +821,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Mae {VEH
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Mae {VEHICLE} yn methu dod o hyd i lwybr i barhau
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Mae {VEHICLE} ar goll
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd achos methiant hefo trefnu ailffitio {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Methwyd ag adnewyddu {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} newydd yn awr ar gael!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} newydd yn awr ar gael!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} ar gael yn awr!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Nid yw {STATION} bellach yn derbyn {STRING}
@@ -835,15 +835,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Nid yw {
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Mae {STATION} nawr yn derbyn {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Mae {STATION} nawr yn derbyn {STRING} a {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Cynnig cymhorthdal ar ben:{}{}Ni fydd cludo {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Cymhorthdal wedi'i dynnu'n ôl: {}{}Ni fydd gwasanaeth {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Cynnig cymhorthdal:{}{}Bydd y gwasanaeth {STRING} cyntaf o {STRING} i {STRING} yn derbyn blwyddyn o gymhorthdal gan yr awdurdod lleol!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu 50% yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu dwywaith yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu teirgwaith yn fwy am y flwyddyn nesaf!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu pedair gwaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Cynnig cymhorthdal ar ben:{}{}Ni fydd cludo {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Cymhorthdal wedi'i dynnu'n ôl: {}{}Ni fydd gwasanaeth {STRING} o {STRING} i {STRING} yn derbyn cymhorthdal bellach
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Cynnig cymhorthdal:{}{}Bydd y gwasanaeth {STRING} cyntaf o {STRING} i {STRING} yn derbyn blwyddyn o gymhorthdal gan yr awdurdod lleol!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu 50% yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu dwywaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu teirgwaith yn fwy am y flwyddyn nesaf!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Cymhorthdal wedi ei ddyfarnu i {STRING}!{}{}Bydd y gwasanaeth {STRING} o {STRING} i {STRING} yn talu pedair gwaith yn fwy am y flwyddyn nesaf!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Anrhefn traffig yn {TOWN}!{}{}Daw gwaith ffordd a ariannwyd gan {STRING} â 6 mis o boen i deithwyr ffordd y dref!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Anrhefn traffig yn {TOWN}!{}{}Daw gwaith ffordd a ariannwyd gan {STRING} â 6 mis o boen i deithwyr ffordd y dref!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ffenestr Olygfa{COMMA}
@@ -971,7 +971,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd 
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Arian cyfaddas
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cyfradd gyfnewid: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cyfradd gyfnewid: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Llehad yr swm o eich arian cyfred am un Punt (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}amlhau yr swm o eich arian cyfred am un Punt (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}newid y raddfa gyfnewid o eich arian cyfred i un Punt (£)
@@ -990,7 +990,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Gosod y 
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Newid i'r Ewro yn gynnar.
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Newid i'r Ewro yn hwyrach
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolwg: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolwg: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Punt (£) yn eich arian cyfaddas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Newid paramedrau arian cyfaddas
 
@@ -1011,7 +1011,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Cadw
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Uchafswm nifer y cystadleuwyr: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Nifer trefi: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Nifer diwydiannau: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Uchafswm y benthyciad cychwynnol: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Uchafswm y benthyciad cychwynnol: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Graddfa log gychwynnol: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Côst rhedeg cerbydau: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Cyflymder adeiladu y cystadleuwyr: {ORANGE}{STRING}
@@ -1427,7 +1427,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ydych c
 STR_CHEATS                                                      :{WHITE}Twyllo
 STR_CHEATS_TOOLTIP                                              :{BLACK}Mae'r blychau marcio'n dangos os ydych chi wedi twyllo neu beidio, gan nodi sut
 STR_CHEATS_WARNING                                              :{BLACK}Rhybudd! Rydych ar fin bradychu eich cydgystadleuwyr. Cofiwch y bydd y fath gywilydd yn cael ei gofio o'r awr hon hyd byth
-STR_CHEAT_MONEY                                                 :{LTBLUE}Cynyddu arian {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Cynyddu arian {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Chwarae fel cwmni: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tarw Dur Hud (chwalu diwydiannau, gwrthrychau nad oes modd eu chwalu): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Caiff twneli groesi eu gilydd: {ORANGE}{STRING}
@@ -1663,9 +1663,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Rhestr o
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}GWYBODAETH CWMNI
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Enw cwmni: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Sefydlwyd: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Gwerth cwmni: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Balans presennol: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Incwm y llynedd: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Gwerth cwmni: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Balans presennol: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Incwm y llynedd: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Perfformiad: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Cerbydau: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1810,8 +1810,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Mae {STRING
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Mae {STRING} wedi dechrau cwmni newydd (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING} wedi gadael y gêm ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid ei (h)enw i {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {STRING} {2:CURRENCY} i'ch cwmni
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Fe roddoch chi {2:CURRENCY} {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {STRING} {2:CURRENCY_LONG} i'ch cwmni
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Fe roddoch chi {2:CURRENCY_LONG} {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Fe gaewyd y sesiwn gan y gweinydd
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
 
@@ -1979,7 +1979,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Cynyddu 
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Dewiswch Bont Rheilffordd
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Dewiswch Bont Ffordd
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Dewis pont - cliciwch ar y eich dewis i'w hadeiladu
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Crog, Dur
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Hytrawst, Dur
@@ -2150,7 +2150,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Ariannu 
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Dewiswch ddiwydiant o'r rhestr
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Llawer o ddiwydiannau ar hap
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Gorchuddio'r map gyda diwydiannau wedi'i lleoli ar hap
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Côst: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Côst: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Mwynchwilio
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Adeiladu
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ariannu
@@ -2171,8 +2171,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Dewis y 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gwybodath Ardal Tir
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost i'w glirio: {LTBLUE}Amherthnasol
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost i'w glirio: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Elw o'i glirio: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost i'w glirio: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Elw o'i glirio: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Perchennog: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Perchennog ffordd: {LTBLUE}{STRING}
@@ -2571,7 +2571,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post mis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargo angenrheidiol ar gyfer tyfiant y dref:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} angen
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ei angen yn y gaeaf
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} dosbarthu mis diwethaf
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} dosbarthu mis diwethaf
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Uchafswm swn mewn trefi: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Canoli'r prif olygfa ar y dref. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y dref
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Awdurdod lleol
@@ -2588,7 +2588,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Ailenwi Tref
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Awdurdod lleol {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Graddfeydd cwmnïau lleol:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY}{COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Gweithredoedd posib:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Rhestr o weithredoedd mae modd eu gwneud yn y dref hon - cliciwch ar eitem am fwy o fanylion
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Gwneud hynny
@@ -2603,14 +2603,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Ariannu adeilad
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Prynu'r hawl unigryw i wasanaethu anghenion cludiant y dref
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Llwgrwobrwyo awdurdod lleol
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Dechrau ymgyrch hysbyseb bach yn yr ardal, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd.{} Côst: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Dechrau ymgyrch hysbyseb gymhedrol yn yr ardal, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd.{} Côst: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Dechrau ymgyrch hysbyseb fawr yn yr adral, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd .{} Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Ariannu gwaith ffordd ar y rhwydwaith ffyrdd trefol. Bydd yn amharu'n fawr ar drafnidiaeth y dref am hyd at 6 mis .{} Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Adeiladu a statue in honour o your company.{} Côst: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Ariannu adeiladu adeiladau masnachol newydd yn y dref.{} Côst: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Prynu'r hawl i fod yr unig gyflenwr trafnidiaeth yn y dref am flwyddyn. Dim ond eich gorsafoedd chi fydd yr awdurdod lleol yn caniatáu i deithwyr a llwythi eu defnyddio.{} Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Dechrau ymgyrch hysbyseb bach yn yr ardal, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd.{} Côst: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Dechrau ymgyrch hysbyseb gymhedrol yn yr ardal, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd.{} Côst: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Dechrau ymgyrch hysbyseb fawr yn yr adral, er mwyn denu mwy o deithwyr a llwythi i'ch gorsafoedd .{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Ariannu gwaith ffordd ar y rhwydwaith ffyrdd trefol. Bydd yn amharu'n fawr ar drafnidiaeth y dref am hyd at 6 mis .{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Adeiladu a statue in honour o your company.{} Côst: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Ariannu adeiladu adeiladau masnachol newydd yn y dref.{} Côst: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Prynu'r hawl i fod yr unig gyflenwr trafnidiaeth yn y dref am flwyddyn. Dim ond eich gorsafoedd chi fydd yr awdurdod lleol yn caniatáu i deithwyr a llwythi eu defnyddio.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Cymorthdaliadau
@@ -2625,7 +2625,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliciwch
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Enwau gorsafoedd - cliciwch ar enw i ganoli'r brif olygfa ar yr orsaf. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad yr orsaf
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Daliwch CTRL i ddewis mwy nag un eitem
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Gorsaf
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Dim -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Dewis pob cyfleuster
@@ -2633,10 +2633,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Dewis po
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nid oes llwyth o unrhyw fath yn disgwyl
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Disgwyl: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} ar ei ffordd o {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ar ei ffordd o {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Derbyn
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Dangos rhestr o'r llwythi sy'n cael eu derbyn
@@ -2678,7 +2678,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Newid en
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Golygu enw pwynt llwybro
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Cyllid {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Cyllid {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Gwariant/Incwm
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Adeiladu
@@ -2694,21 +2694,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Incwm Awy
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Incwm Llongau
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Llog y Benthyciad
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Arall
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Cyfanswm:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balans Banc
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Benthyciad
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Uchafswm Benthyciad: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Benthyg {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Uchafswm Benthyciad: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Benthyg {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Cynyddu maint y benthyciad. Mae Ctrl+Clic yn benthyca gymait ag y sydd bosib
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ad-dalu {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ad-dalu {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Ad-dalu rhan o'r benthyciad. Mae Ctrl+Clic yn ad-dalu gymaint ag y sydd bosib
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Rheolwr)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Rheolwr)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Sefydlwyd: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Cynllun Lliw:
@@ -2718,7 +2718,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} awyren
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} llong
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Dim
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Gwerth cwmni: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Gwerth cwmni: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% yn eiddo {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Adeiladu Pencadlys
@@ -2745,20 +2745,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Gwerthu 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Enw Cwmni
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Enw Rheolwr
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Rydyn ni'n chwilio am rywun i gymryd ein cwmni ni drosodd.{}{}Hoffech chi brynu {COMPANY} am {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Rydyn ni'n chwilio am rywun i gymryd ein cwmni ni drosodd.{}{}Hoffech chi brynu {COMPANY} am {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Diwydiannau
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Dim -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% wedi'i gludo)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% wedi'i gludo)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% wedi'i gludo)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% wedi'i gludo)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Enwau diwydiannau - cliciwch ar enw i ganoli'r sgrin ar ddiwydiant. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Cynnyrch mis diwethaf:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% wedi'i gludo)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% wedi'i gludo)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Canoli'r brif olygfa ar y diwydiant. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Lefel cynhyrchu: {YELLOW}{COMMA}%
 
@@ -2770,7 +2770,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Angen: {
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Cargo yn aros i gael ei brosesu:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Cynhyrchu: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Cynhyrchu: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2789,7 +2789,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cerbydau
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Llongau - cliciwch ar long am wybodaeth
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Elw eleni: {CURRENCY} (llynedd: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Elw eleni: {CURRENCY_LONG} (llynedd: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenau sydd ar gael
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Cerbydau sydd ar gael
@@ -2845,21 +2845,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Cerbydau Ffordd
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Llongau Newydd
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Awyrennau Newydd
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Pwysau: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Pwysau: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Cyflymder: {GOLD}{VELOCITY}{BLACK} Pŵer: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Cyflymder: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Cyflymder ar y môr: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Cyflymder ar gamlas/afon: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost Rhedeg: {GOLD}{CURRENCY}/bl
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Gallu cludo: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost Rhedeg: {GOLD}{CURRENCY_LONG}/bl
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Gallu cludo: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(gallu ailffitio)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Cynlluniwyd: {GOLD}{NUM}{BLACK} Bywyd: {GOLD}{COMMA} mlynedd
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Dibynadwyedd Uchaf: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pwysau: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Cyflymder: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Gallu cludo: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wageni Pŵer: {GOLD}+{POWER}{BLACK} Pwysau: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pwysau: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Cyflymder: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Gallu cludo: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wageni Pŵer: {GOLD}+{POWER}{BLACK} Pwysau: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modd ei ailffitio i: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Pob math o lwyth
 STR_PURCHASE_INFO_ALL_BUT                                       :Popeth ond{GOLD}
@@ -2904,7 +2904,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Ailenwi depo
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} cerbyd{P "" au}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên. Daliwch Ctrl i symyd pob cerbyd y tu ôl hefyd
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Cerbydau - cliciwch ar gerbyd am wybodaeth
@@ -2980,10 +2980,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :llong
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :trên monoreilffordd
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :trên maglef
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Côst: {CURRENCY} Pwysau: {WEIGHT_S}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY}/bl{}Gallu cludo: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY} Pwysau: {WEIGHT_S}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}  Grym Uchaf: {6:FORCE}{}Cost Rhedeg: {4:CURRENCY}/bl{}Cynhwysedd: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cost: {CURRENCY} Cyflym. Uchaf: {VELOCITY}{}Cynhwysedd: {CARGO}, {CARGO}{}Côst Rhedeg: {CURRENCY}/bl
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cost: {CURRENCY} Cyflym. Uchaf: {VELOCITY}{}Cynhwysedd: {CARGO}{}Cost Rhedeg: {CURRENCY}/bl
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Côst: {CURRENCY_LONG} Pwysau: {WEIGHT_SHORT}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY_LONG}/bl{}Gallu cludo: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Pwysau: {WEIGHT_SHORT}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}  Grym Uchaf: {6:FORCE}{}Cost Rhedeg: {4:CURRENCY_LONG}/bl{}Cynhwysedd: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cost: {CURRENCY_LONG} Cyflym. Uchaf: {VELOCITY}{}Cynhwysedd: {CARGO_LONG}, {CARGO_LONG}{}Côst Rhedeg: {CURRENCY_LONG}/bl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Cyflym. Uchaf: {VELOCITY}{}Cynhwysedd: {CARGO_LONG}{}Cost Rhedeg: {CURRENCY_LONG}/bl
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Disodli {STRING}
@@ -3077,9 +3077,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Mynd tu
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Mynd am wasanaeth yn {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Wedi aros
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Wedi aros
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Wedi aros
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Wedi dechrau
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Wedi dechrau
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Wedi dechrau
 
 # Vehicle details
@@ -3091,25 +3091,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Enwi cer
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Enwi llong
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Enwi awyren
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Cost Rhedeg: {LTBLUE}{CURRENCY}/bl
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Cost Rhedeg: {LTBLUE}{CURRENCY_LONG}/bl
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} blwyddyn ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} blwyddyn ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwys: {LTBLUE}{WEIGHT_S} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_S} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY} (last year: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Toriadau ers gwasanaeth olaf: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Codi: {LTBLUE}{NUM}{BLACK} Pris: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Codi: {LTBLUE}{NUM}{BLACK} Pris: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Cynhwysedd: {LTBLUE}Dim
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Cynhwysedd: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Cynhwysedd: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwysedd: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosi: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Credydau Trosi: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}days{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rhwng gwasanaethu: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
@@ -3122,16 +3122,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Enwi llo
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Enwi awyren
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Gwerth: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Gwerth: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Cyfanswm cynhwysedd cargo y trên hwn:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Gwag
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} o {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} o {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} o {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} o {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Llwyth
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Dangos manylion y llwyth sy'n cael ei gludo
@@ -3147,8 +3147,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Cynhwyse
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ailffitio)
 STR_REFIT_TITLE                                                 :{GOLD}Dewiswch y math o lwyth i'w gario:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}bellach yn gallu cario: {GOLD}{CARGO}{}{BLACK}Côst o ailffitio: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cost ailffitio: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}bellach yn gallu cario: {GOLD}{CARGO_LONG}{}{BLACK}Côst o ailffitio: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost ailffitio: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Dewisiwch y cerbydau i ailffitio. Mae llusgo'r llygoden yn galluogi dewis sawl cerbyd. Mae clicio ar wagle'n dewis y cerbydres gyfan. Mae Ctrl+Clic yn dewis cerbyd a phob un ar ei hôl
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Dewiswch fath o lwyth i'r trên ei gario
@@ -3437,22 +3437,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Ailosod
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Cost: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Cost: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Incwm: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Incwm: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Trosglwyddo: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Trosglwyddo: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Amcangyfrif Côst: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Amcangyfrif Incwm: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cost: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Cost: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Incwm: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Incwm: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Trosglwyddo: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Trosglwyddo: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Amcangyfrif Côst: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Amcangyfrif Incwm: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Mae'r gêm wrthi'n cael ei chadw,{}Arhoswch nes y bydd y broses wedi'i chwblhau!
@@ -3501,7 +3501,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Neges g
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Oddi ar ymyl y map
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Rhy agos i ymyl y map
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dim digon o arian - angen {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dim digon o arian - angen {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Rhaid i'r tir fod yn wastad
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Mae'r tir yn goleddu i'r cyfeiriad anghywir
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Does dim modd gwneud hynny...
@@ -3536,10 +3536,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... mae 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Does dim modd newid enw'r cwmni...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Does dim modd newid enw'r rheolwr...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... mae'r uchafswm benthyciad posib yn {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... mae'r uchafswm benthyciad posib yn {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Does dim modd i chi fenthyg rhagor o arian...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nid oes benthyciad i'w ad-dalu
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... angen {CURRENCY}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... angen {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Does dim modd ad-dalu benthyciad...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Does dim modd rhoi arian sydd wedi ei fenthyg gan y banc i ffwrdd...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Methu prynu cwmni...
@@ -4246,37 +4246,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Gwyliwr, {1:STR
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY}{COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY}{COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4288,32 +4288,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

@@ -97,73 +97,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Amuza Trinkaĵo
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasaĝero{P "" j}
-STR_QUANTITY_COAL                                               :{WEIGHT} da karbo
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} da karbo
 STR_QUANTITY_MAIL                                               :{COMMA} sako{P "" j} da poŝto
-STR_QUANTITY_OIL                                                :{VOLUME} da oleo
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} da oleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} bruto{P "" j}
 STR_QUANTITY_GOODS                                              :{COMMA} kesto{P "" j} da varoj
-STR_QUANTITY_GRAIN                                              :{WEIGHT} da greno
-STR_QUANTITY_WOOD                                               :{WEIGHT} da ligno
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} da fera erco
-STR_QUANTITY_STEEL                                              :{WEIGHT} da ŝtalo
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} da greno
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} da ligno
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} da fera erco
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} da ŝtalo
 STR_QUANTITY_VALUABLES                                          :{COMMA} sako{P "" j} da valoraĵoj
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} da kupra erco
-STR_QUANTITY_MAIZE                                              :{WEIGHT} da maizo
-STR_QUANTITY_FRUIT                                              :{WEIGHT} da fruktoj
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} da kupra erco
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} da maizo
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} da fruktoj
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sako{P "" j} da diamantoj
-STR_QUANTITY_FOOD                                               :{WEIGHT} da manĝaĵoj
-STR_QUANTITY_PAPER                                              :{WEIGHT} da papero
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} da manĝaĵoj
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} da papero
 STR_QUANTITY_GOLD                                               :{COMMA} sako{P "" j} da oro
-STR_QUANTITY_WATER                                              :{VOLUME} da akvo
-STR_QUANTITY_WHEAT                                              :{WEIGHT} da tritiko
-STR_QUANTITY_RUBBER                                             :{VOLUME} da kaŭĉuko
-STR_QUANTITY_SUGAR                                              :{WEIGHT} da sukero
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} da akvo
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} da tritiko
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} da kaŭĉuko
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} da sukero
 STR_QUANTITY_TOYS                                               :{COMMA} ludilo{P "" j}
 STR_QUANTITY_SWEETS                                             :{COMMA} sako{P "" j} da dolĉaĵoj
-STR_QUANTITY_COLA                                               :{VOLUME} da kolao
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} da sukerŝpinaĵo
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} da kolao
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} da sukerŝpinaĵo
 STR_QUANTITY_BUBBLES                                            :{COMMA} veziko{P "" j}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} da tofeo
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} da tofeo
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterio{P "" j}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} da plastiko
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} da plastiko
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} amuza{P "" j} trinkaĵo{P "" j}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
-STR_ABBREV_COAL                                                 :{TINYFONT}KB
-STR_ABBREV_MAIL                                                 :{TINYFONT}PT
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BR
-STR_ABBREV_GOODS                                                :{TINYFONT}VR
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
-STR_ABBREV_WOOD                                                 :{TINYFONT}LG
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}FE
-STR_ABBREV_STEEL                                                :{TINYFONT}ŜT
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KE
-STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}MN
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}OR
-STR_ABBREV_WATER                                                :{TINYFONT}AK
-STR_ABBREV_WHEAT                                                :{TINYFONT}TT
-STR_ABBREV_RUBBER                                               :{TINYFONT}KA
-STR_ABBREV_SUGAR                                                :{TINYFONT}SK
-STR_ABBREV_TOYS                                                 :{TINYFONT}LD
-STR_ABBREV_SWEETS                                               :{TINYFONT}DL
-STR_ABBREV_COLA                                                 :{TINYFONT}KL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}SS
-STR_ABBREV_BUBBLES                                              :{TINYFONT}VZ
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}AT
-STR_ABBREV_NONE                                                 :{TINYFONT}NENIU
-STR_ABBREV_ALL                                                  :{TINYFONT}ĈIU
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
+STR_ABBREV_COAL                                                 :{TINY_FONT}KB
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PT
+STR_ABBREV_OIL                                                  :{TINY_FONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}BR
+STR_ABBREV_GOODS                                                :{TINY_FONT}VR
+STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
+STR_ABBREV_WOOD                                                 :{TINY_FONT}LG
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}FE
+STR_ABBREV_STEEL                                                :{TINY_FONT}ŜT
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KE
+STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}MN
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}OR
+STR_ABBREV_WATER                                                :{TINY_FONT}AK
+STR_ABBREV_WHEAT                                                :{TINY_FONT}TT
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KA
+STR_ABBREV_SUGAR                                                :{TINY_FONT}SK
+STR_ABBREV_TOYS                                                 :{TINY_FONT}LD
+STR_ABBREV_SWEETS                                               :{TINY_FONT}DL
+STR_ABBREV_COLA                                                 :{TINY_FONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}SS
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}VZ
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}AT
+STR_ABBREV_NONE                                                 :{TINY_FONT}NENIU
+STR_ABBREV_ALL                                                  :{TINY_FONT}ĈIU
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} pasaĝero{P "" j}
@@ -515,10 +515,10 @@ STR_MONTH_DEC                                                   :Decembro
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Ŝlosilo
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Montru ŝlosilon al grafikoj
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gajna Grafiko
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Enspeza Grafiko
@@ -527,14 +527,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Kompania
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Kompaniaj valoroj
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ŝarĝpagaj Tarifoj
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Tagoj en transporto
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pago por liveri 10 unuojn (aŭ 10,000 litrojn) da ŝarĝo trans 20 kvadratoj
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Aktivu ĉiujn
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Malaktivu ĉiujn
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Tagoj en transporto
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por liveri 10 unuojn (aŭ 10,000 litrojn) da ŝarĝo trans 20 kvadratoj
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Aktivu ĉiujn
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Malaktivu ĉiujn
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Montru ĉiuj ŝarĝojn en la ŝarĝaj pagaj procentoj grafiko
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne montru ŝarĝojn en la ŝarĝaj pagaj procentoj grafiko
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}(Mal)ŝaltu grafikon por ŝarĝo
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Montri detalaj rendimentpritaksoj
 
@@ -544,7 +544,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klaku ĉ
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Kompaniara tabelo
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inĝeniero
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafikkontrolisto
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportmanaĝanto
@@ -558,7 +558,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Plejpotenculo
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detala rendimento
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaloj
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vidu detaloj pri ĉi tio kompanio
@@ -587,25 +587,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Entuta p
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Ĵaza Diskogurdo
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Ĉiu
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Malnovstile
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Novstile
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Facila strato
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Propra 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Propra 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muzika Volumeno
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efekta Volumeno
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Numero
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titolo
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Miksu
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programo
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Ĉiu
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Malnovstile
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Novstile
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Facila strato
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Propra 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Propra 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Muzika Volumeno
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Efekta Volumeno
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Numero
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titolo
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Miksu
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programo
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Saltu al antaŭa numero
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Saltu al posta numero
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Finu muzikludadon
@@ -624,18 +624,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Senkanta
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Elekto de Muzikprogramo
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Numera Indekso
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programo - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Viŝu
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Numera Indekso
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programo - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Viŝu
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Viŝu nunan programon (nur propran)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Alklaku muzikeron por aldoni al la nuna programo (nur propra)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Alklaku muzikeron por viŝi el la nuna programo (nur propra)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Superkompanioj kiuj atingis {NUM}{}(Nivelo {STRING})
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Kompania tabelo en {NUM}
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Superkompanioj kiuj atingis {NUM}{}(Nivelo {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Kompania tabelo en {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kompaniisto
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenisto
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriisto
@@ -643,10 +643,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalisto
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Manaĝisto
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Potenculo
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Plej potenca de la Jarcento
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} atingis staton de '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} de {COMPANY} atingis staton de '{STRING}'!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} atingis staton de '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} atingis staton de '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapo - {STRING}
@@ -665,40 +665,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montru v
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montru landposedantojn sur la mapo
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klaku sur kompanion ŝalti montranta ĝia posedaĵoj. Stir+Klaku malaktivas ĉiujn kompaniojn escepte la elekta. Stir+Klaku sur ĝi aktivi ĉiujn la kompaniojn
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Stratoj
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Fervojoj
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacidomoj/Flughavenoj/Havenoj
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Konstruaĵoj/Industrioj
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Veturiloj
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trajnoj
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Stratveturiloj
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Ŝipoj
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aviadiloj
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportstratoj
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Arbaro
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Fervoja Stacidomo
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Ŝarĝaŭta Ŝarĝejo
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Busstacio
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Flughaveno/Helikopterejo
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Haveno
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Hazardlando
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Herba Lando
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Senuza lando
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Kampoj
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Arboj
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Rokoj
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Akvo
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Sen posedanto
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Urboj
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrioj
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Dezerto
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Neĝo
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Stratoj
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Fervojoj
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stacidomoj/Flughavenoj/Havenoj
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Konstruaĵoj/Industrioj
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Veturiloj
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trajnoj
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Stratveturiloj
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Ŝipoj
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aviadiloj
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transportstratoj
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Arbaro
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Fervoja Stacidomo
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Ŝarĝaŭta Ŝarĝejo
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Busstacio
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Flughaveno/Helikopterejo
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Haveno
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Hazardlando
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Herba Lando
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Senuza lando
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Kampoj
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Arboj
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rokoj
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Akvo
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Sen posedanto
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Urboj
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industrioj
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Dezerto
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neĝo
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vidu aŭ ne vidu urbonomojn sur la mapo
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrigi la mapeton al la nuna loko
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Malaktivigu ĉiujn
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktivigu ĉiujn
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Montru altecon
@@ -746,60 +746,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ŝarĝa
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencioj
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Ĝeneralaj informoj
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝarĝaŭto alvenas en {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua tramo alvenas al {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua vartramo alvenas al {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝipo alvenas en {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Enloĝantoj festas . . .{}Unua aviadilo alvenas en {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝarĝaŭto alvenas en {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua tramo alvenas al {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua vartramo alvenas al {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua ŝipo alvenas en {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua aviadilo alvenas en {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Trajna Kraŝo!{}{COMMA} mortis pro fajro post kolizio
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Stratveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun trajno
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Stratveturila kraŝo!{}{COMMA} mortas pro fajro post kolizio kun trajno
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Aviadilo Kraŝas!{}{COMMA} mortas pro fajro en {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Aviadila Kraŝo!{}Aviadilo ne havis sufiĉan brulaĵon, {COMMA} mortis pro fajro!
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Trajna Kraŝo!{}{COMMA} mortis pro fajro post kolizio
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Stratveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun trajno
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Stratveturila kraŝo!{}{COMMA} mortas pro fajro post kolizio kun trajno
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aviadilo Kraŝas!{}{COMMA} mortas pro fajro en {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Aviadila Kraŝo!{}Aviadilo ne havis sufiĉan brulaĵon, {COMMA} mortis pro fajro!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zepelina katastrofo en {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Stratveturilo detruiĝis dum 'UFO'-kolizio!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Oleprodukteja eksplodo ĉe {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Farejo detruita en suspektataj cirkonstancooj ĉe {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' landiĝas ĉe {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Karbmineja terŝoviĝo lasas trakon da detruado ĉe {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Fluegoj!{}Almenaŭ {COMMA} mankas kaj verŝajne mortis pro signifoplena fluego!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zepelina katastrofo en {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Stratveturilo detruiĝis dum 'UFO'-kolizio!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Oleprodukteja eksplodo ĉe {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Farejo detruita en suspektataj cirkonstancooj ĉe {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' landiĝas ĉe {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Karbmineja terŝoviĝo lasas trakon da detruado ĉe {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Fluegoj!{}Almenaŭ {COMMA} mankas kaj verŝajne mortis pro signifoplena fluego!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportkompanio en problemoj!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} forvendiĝos aŭ bankrotiĝos krom se ĝi pli bone faros!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Transportkompania kuniĝo!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} vendiĝis al {STRING} por {CURRENCY}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrote!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} estas fermita de kreditantoj kaj ĉiuj partoj vendiĝis!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nova transportkompanio lanĉiĝis!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} ekkonstruas ĉe {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} estas transprenita de {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manaĝanto)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Transportkompanio en problemoj!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} forvendiĝos aŭ bankrotiĝos krom se ĝi pli bone faros!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Transportkompania kuniĝo!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} vendiĝis al {STRING} por {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankrote!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} estas fermita de kreditantoj kaj ĉiuj partoj vendiĝis!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nova transportkompanio lanĉiĝis!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} ekkonstruas ĉe {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} estas transprenita de {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Manaĝanto)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} financis konstruon de nova urbo {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} financis konstruon de nova urbo {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nova {STRING} konstruiĝas ĉe {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nova {STRING} plantiĝas ĉe {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nova {STRING} konstruiĝas ĉe {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nova {STRING} plantiĝas ĉe {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} anoncas tre baldaŭan fermiĝon!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Liverproblemoj devigas al {STRING} anonci tre baldaŭan fermiĝon!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Pro manko da proksimaj arboj {STRING} devas anonci tre baldaŭan fermiĝon!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} anoncas tre baldaŭan fermiĝon!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Liverproblemoj devigas al {STRING} anonci tre baldaŭan fermiĝon!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Pro manko da proksimaj arboj {STRING} devas anonci tre baldaŭan fermiĝon!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Eŭropa Mona Unio!{}{}De nun uziĝos la Eŭro kiel monunuo por ĉiutagaj montransskriboj en via lando!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Eŭropa Mona Unio!{}{}De nun uziĝos la Eŭro kiel monunuo por ĉiutagaj montransskriboj en via lando!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} pliigas produktadon!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova karbo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nova oleo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Pro pli bona agroteĥniko {INDUSTRY} verŝajne duobligos produktadon!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produktado de {STRING} ĉe {INDUSTRY} pliiĝas per {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}La produktado de {INDUSTRY} duoniĝas
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektoj kaŭzas plagon ĉe {INDUSTRY}!{}Produktado duoniĝas
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produktado de {STRING} ĉe {INDUSTRY} malpliiĝas per {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} pliigas produktadon!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nova karbo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nova oleo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Pro pli bona agroteĥniko {INDUSTRY} verŝajne duobligos produktadon!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produktado de {STRING} ĉe {INDUSTRY} pliiĝas per {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}La produktado de {INDUSTRY} duoniĝas
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insektoj kaŭzas plagon ĉe {INDUSTRY}!{}Produktado duoniĝas
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produktado de {STRING} ĉe {INDUSTRY} malpliiĝas per {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} atendas en depoto
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} atendas en depoto
@@ -819,13 +819,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} tro malnoviĝis kaj postulas anstataŭiĝon
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne povas trovi padon por daŭrigi.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} estas perdita.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} haltis ĉar komanda transformo fiaskis
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Aŭtorenovigo fiaskis ĉe {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nova {STRING} nun haveblas!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nova {STRING} nun haveblas!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {STRING} nun haveblas!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ne plu akceptas {STRING.n}
@@ -833,15 +833,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nun akceptas {STRING.n}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} nun akceptas {STRING.n} kaj {STRING.n}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subvencia oferto ne plu validas:{}{}{STRING} de {STRING} al {STRING} ne estos subvenciata.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvencio retiriĝis:{}{}Servo de {STRING} de {STRING} al {STRING} ne plu estas subvenciata.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subvencia oferto:{}{}Unua servo de {STRING} de {STRING} al {STRING} ricevos subvencion de jaro de la lokaj estroj!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis pliaĵon de 50% por la sekva jaro!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis duoblajn pagojn por la sekva jaro!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis trioblajn pagojn por la sekva jaro!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis kvaroblajn pagojn por la sekva jaro!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subvencia oferto ne plu validas:{}{}{STRING} de {STRING} al {STRING} ne estos subvenciata.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencio retiriĝis:{}{}Servo de {STRING} de {STRING} al {STRING} ne plu estas subvenciata.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subvencia oferto:{}{}Unua servo de {STRING} de {STRING} al {STRING} ricevos subvencion de jaro de la lokaj estroj!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis pliaĵon de 50% por la sekva jaro!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis duoblajn pagojn por la sekva jaro!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis trioblajn pagojn por la sekva jaro!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis kvaroblajn pagojn por la sekva jaro!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Trafika ĥaoso en {TOWN}!{}{}Vojrekonstruada programo komencita de {STRING} alportas 6-monatan mizeron al vojuzantoj!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafika ĥaoso en {TOWN}!{}{}Vojrekonstruada programo komencita de {STRING} alportas 6-monatan mizeron al vojuzantoj!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vidujo {COMMA}
@@ -969,7 +969,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Plenekra
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Dividilo: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Difini apartigilon por via valuto
@@ -985,7 +985,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Difini l
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Ŝanĝi al Eŭro pli frue
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Ŝanĝi al Eŭro pli malfrue
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭvido: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭvido: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pundo (£) en via valuto
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝi parametron por alia monunuo
 
@@ -1006,7 +1006,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Konservu
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimumo da konkurantoj: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Kiom da urboj: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Kiom da industrioj: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimuma komenca prunto: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimuma komenca prunto: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Komenca rentumo: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Veturilaj irkostoj: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konkuranta konstrurapido: {ORANGE}{STRING}
@@ -1420,7 +1420,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ĉu vi 
 STR_CHEATS                                                      :{WHITE}Filudaĵoj
 STR_CHEATS_TOOLTIP                                              :{BLACK}La kvadratetoj indikas ĉu vi jam uzis la filudaĵon antaŭe.
 STR_CHEATS_WARNING                                              :{BLACK}Atentu! Vi perfidos viajn kunulajn konkurantojn. Memoru ke io tia rememoriĝos eterne.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Altigu monkvanton per {CURRENCY}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Altigu monkvanton per {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludanta kiel kompanio: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia forigilo (forviŝu industriojn, nemovebla objektoj): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneloj rajtas kruciĝi unu kun la alia: {ORANGE}{STRING}
@@ -1656,9 +1656,9 @@ STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Listo da
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}KOMPANIAJ INFORMOJ
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Kompaninomo: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inaŭguro: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Kompanivaloro: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Nuna monstato: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Lastjara enspezo: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Kompanivaloro: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Nuna monstato: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Lastjara enspezo: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Rendimento: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Veturiloj: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -1801,8 +1801,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} i�
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ekis novan kompanion (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ĉesis la ludon ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} donis al via kompanio {2:CURRENCY}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vi donis {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} donis al via kompanio {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vi donis {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
 
@@ -1951,7 +1951,7 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto d
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elektu Relan Ponton
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elektu Vojan Ponton
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pontelekto - klaku vian preferatan ponton por konstrui ĝin
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ŝtala pendanta
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ŝtala ebena
@@ -2118,7 +2118,7 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fondu no
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Elektu la taŭgan industrion de ĉi tiu listo
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Multaj hazardaj industrioj
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Kovru la mapon per hazarde metitajn industriojn
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kosto: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kosto: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospektori
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Konstruu
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fondi
@@ -2139,8 +2139,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Ankaŭ e
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landregionaj informoj
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Forviŝkosto: {LTBLUE}ne eblas
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Forviŝkosto: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Enspezo kaze de forigo: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Forviŝkosto: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Enspezo kaze de forigo: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Posedanto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Stratposedanto: {LTBLUE}{STRING}
@@ -2502,7 +2502,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Poŝto l
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo bezonata por kreskigi urbon:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} bezonatas
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} bezonatas en vintro
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} liveriĝis lastan monaton
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} liveriĝis lastan monaton
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Urba brulimo: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la urbo. Stir+Klak por malfermi novan vidujon ĉe la urba loko.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokaj estroj
@@ -2519,7 +2519,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Alinomi urbon
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Lokaj estroj de {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Takso de transportkompanioj:
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Haveblaj agoj:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Fareblaĵoj en ĉi tiu urbo - alklaku por pliaj detaloj
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Faru
@@ -2534,14 +2534,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fondu novajn ko
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉetu ekskluzivan transportrajton
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉetu la lokajn estrojn
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Komencu malgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Komencu mezgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Komencu grandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{} Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagu rekonstruadon de la urba stratreto. Kaŭzos konsiderindan ĝenon al la trafiko por ĝis 6 monatoj.{} Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Konstruu statuon honore al via kompanio.{}Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagu la konstruadon de novaj komercaj konstruaĵoj en la urbo.{} Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Aĉetu ekskluzivajn transportrajtojn en la urbo por 1 jaro. La urbo nur permesos pasaĝerojn kaj kargojn uzi la staciojn de via entrepreno.{}Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subaĉetu la lokajn estrojn por pliigi vian rendimenton, riskante grandan punon je kaptiĝo.{}Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Komencu malgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Komencu mezgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Komencu grandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{} Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagu rekonstruadon de la urba stratreto. Kaŭzos konsiderindan ĝenon al la trafiko por ĝis 6 monatoj.{} Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Konstruu statuon honore al via kompanio.{}Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagu la konstruadon de novaj komercaj konstruaĵoj en la urbo.{} Kosto: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Aĉetu ekskluzivajn transportrajtojn en la urbo por 1 jaro. La urbo nur permesos pasaĝerojn kaj kargojn uzi la staciojn de via entrepreno.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subaĉetu la lokajn estrojn por pliigi vian rendimenton, riskante grandan punon je kaptiĝo.{}Kosto: {CURRENCY_LONG}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencioj
@@ -2556,7 +2556,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klaku se
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stacionomoj - klaku nomon por centri vidon ĉe la stacio. Stir+Klak por malfermi novan vidujon ĉe la stacioloko.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenu la CTRL-klavon por elekti plurajn erojn
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stacio{P "" j}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Neniu -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Elektu ĉiujn konstruaĵojn
@@ -2564,10 +2564,10 @@ STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Elektu �
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nenia ŝarĝo atendas
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Atendas: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} survoje de {STATION})
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} survoje de {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montri liston de akceptataj ŝarĝoj.
@@ -2609,7 +2609,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ŝanĝi 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu vojpunktonomon
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}Financoj de {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Financoj de {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Elspezo/Enspezo
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruado
@@ -2625,21 +2625,21 @@ STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Aviadila 
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ŝipa Enspezo
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Rento pri Prunto
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Alia
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Entute:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banka Balanco
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prunto
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimuma prunto: {BLACK}{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pruntu {CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maksimuma prunto: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pruntu {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Grandigu prunton
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repagu {CURRENCY}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repagu {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repagu pruntparton
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manaĝanto)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Manaĝanto)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaŭgurita: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Kolorskemo:
@@ -2649,7 +2649,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aviadiloj
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} ŝipo{P "" j}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Neniu
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Kompania valoro: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Kompania valoro: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posedataj de {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Faru HQ
@@ -2676,20 +2676,20 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendu 25
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompania Nomo
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nomo de la Manaĝanto
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ni serĉas transportkompanion por transpreni nian kompanion.{}{}Ĉu vi volas aĉeti {COMPANY} por {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ni serĉas transportkompanion por transpreni nian kompanion.{}{}Ĉu vi volas aĉeti {COMPANY} por {CURRENCY_LONG}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrioj
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Neniu -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportite)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportite)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transportite)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportite)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrionomoj - klaku nomon por centri vidon ĉe la industrio. Stir+Klak por malfermi novan vidujon ĉe la loko.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Lastmonata produktado:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportiĝis)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportiĝis)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centri ĉefvidon ĉe la industrio. Stir+Klak por malfermi novan vidujon ĉe la industrioloko.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkta nivelo: {YELLOW}{COMMA}%
 
@@ -2701,7 +2701,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Bezonas:
 
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Kargo atendanta procedon:
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produktas: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produktas: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2720,7 +2720,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stratvet
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ŝipoj - alklaku ŝipon por informoj
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aviadiloj - alklaku aviadilon por informoj
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Gajno ĉi-jare: {CURRENCY} (pasintjare: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Gajno ĉi-jare: {CURRENCY_LONG} (pasintjare: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Haveblaj Trajnoj
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Haveblaj Veturiloj
@@ -2775,21 +2775,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novaj stratvetu
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novaj Ŝipoj
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novaj Aviadiloj
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosto: {GOLD}{CURRENCY}{BLACK} Pezo: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}{BLACK} Pezo: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rapido: {GOLD}{VELOCITY}{BLACK} Forto: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rapido: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rapido sur oceano: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rapido sur kanalo/rivero: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Irkosto: {GOLD}po {CURRENCY} jare
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapablo: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Irkosto: {GOLD}po {CURRENCY_LONG} jare
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapablo: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(transformebla)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Pripensite: {GOLD}{NUM}{BLACK} Vivlongo: {GOLD}{COMMA} jaro{P "" j}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Pleja Fidebleco: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Kosto: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pezo: {GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosto: {GOLD}{CURRENCY}{BLACK} Rapido: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Enhaveco: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagonfortoj: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pezo: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}{BLACK} Rapido: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Enhaveco: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagonfortoj: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Transformebla al: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Ĉiaj ŝarĝoj
 STR_PURCHASE_INFO_ALL_BUT                                       :Ĉio krom {GOLD}
@@ -2834,7 +2834,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Alinomi tenejon
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veturilo{P "" j}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trajnoj - klaku trajnon por scii pli, tiru veturilon por aldoni aŭ forigi de trajno
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veturiloj - dekstra-alklaku veturilojn por informoj
@@ -2910,10 +2910,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :ŝipo
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :unurellokomotivo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotivo
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapido: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapido: {VELOCITY}  Povo: {POWER}  Maks. T.E.: {6:FORCE}{}Irkosto: {4:CURRENCY}/jaro{}Kapacito: {5:CARGO}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosto: {CURRENCY} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO}, {CARGO}{}Irkosto: {CURRENCY}/jaro
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosto: {CURRENCY} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO}{}Irkosto: {CURRENCY}/jaro
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosto: {CURRENCY_LONG} Pezo: {WEIGHT_SHORT}{}Rapido: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY_LONG} jare{}Kapablo: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosto: {CURRENCY_LONG} Pezo: {WEIGHT_SHORT}{}Rapido: {VELOCITY}  Povo: {POWER}  Maks. T.E.: {6:FORCE}{}Irkosto: {4:CURRENCY_LONG}/jaro{}Kapacito: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosto: {CURRENCY_LONG} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO_LONG}, {CARGO_LONG}{}Irkosto: {CURRENCY_LONG}/jaro
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosto: {CURRENCY_LONG} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO_LONG}{}Irkosto: {CURRENCY_LONG}/jaro
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Anstataŭu {STRING.n}
@@ -3007,9 +3007,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Irante 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Prizorgo en {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Halta
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Halta
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Halta
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Komenca
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Komenca
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komenca
 
 # Vehicle details
@@ -3021,25 +3021,25 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi str
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomu ŝipon
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomu aviadilon
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}{CURRENCY}/jaro
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}{CURRENCY_LONG}/jaro
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} jaro{P "" j} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} jaro{P "" j} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. rapido: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_S} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_S} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_SHORT} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_SHORT} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profito ĉijare: {LTBLUE}{CURRENCY} (lastjare: {CURRENCY})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profito ĉijare: {LTBLUE}{CURRENCY_LONG} (lastjare: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fidindo: {LTBLUE}{COMMA}%  {BLACK}Paneoj ekde lasta servo: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Konstruita: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Konstruita: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Enhaveco: {LTBLUE}Nenion
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Enhaveco: {LTBLUE}{CARGO}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Enhaveco: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Enhaveco: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Enhaveco: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}tagoj{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}%{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
@@ -3052,16 +3052,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nomu ŝi
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nomu aviadilon
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valoro: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valoro: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tuta ŝarĝkapablo de ĉi tiu trajno:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Malplena
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} de {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} de {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} de {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} de {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Ŝarĝo
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Montru detalojn de portata ŝarĝo
@@ -3077,8 +3077,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacito
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Transformu)
 STR_REFIT_TITLE                                                 :{GOLD}Elektu ŝarĝotipon por porti:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova kapablo: {GOLD}{CARGO}{}{BLACK}Transformkosto: {GOLD}{CURRENCY}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova enhavebelco: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kosto de transformo: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova kapablo: {GOLD}{CARGO_LONG}{}{BLACK}Transformkosto: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova enhavebelco: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kosto de transformo: {GOLD}{CURRENCY_LONG}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elektu ŝarĝospecon portotan de la trajno
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elektu portotan ŝarĝon de la stratveturilo
@@ -3353,22 +3353,22 @@ STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Kosto: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}Kosto: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Enspezo: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Enspezo: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transigo: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Transigo: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Atendata Kosto: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Atendata enspezo: {CURRENCY}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kosto: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Kosto: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Enspezo: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Enspezo: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transigo: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Transigo: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Atendata Kosto: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Atendata enspezo: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ankoraŭ konservas,{}bv atendi ĝis finiĝo!
@@ -3417,7 +3417,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mesaĝo
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}For de la mapo
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proksime al la mapa rando
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sufiĉe da mono - vi bezonas {CURRENCY}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sufiĉe da mono - vi bezonas {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Necesas ebena lando
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Lando ne ĝuste kliniĝas
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas fari...
@@ -3451,10 +3451,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... jam 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ne povas ŝanĝi kompaninomon...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ne povas ŝanĝi manaĝantnomon...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimuma permesata prunto estas {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimuma permesata prunto estas {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ne povas prunti pli da mono...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ne estas repagebla prunto
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} necesas
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} necesas
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ne povas repagi prunton...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ne povas donaci monon pruntitan de la banko...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ne povas aĉeti kompanion...
@@ -4161,37 +4161,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Spektanto, {1:S
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4203,32 +4203,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2

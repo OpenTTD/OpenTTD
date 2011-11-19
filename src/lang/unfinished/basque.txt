@@ -96,73 +96,73 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Edari Burbuilat
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} bidaiari{P "" ak}
-STR_QUANTITY_COAL                                               :{WEIGHT} ikatzarena
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG} ikatzarena
 STR_QUANTITY_MAIL                                               :{COMMA} poltsa{P "" s} postarena
-STR_QUANTITY_OIL                                                :{VOLUME} olioarena
+STR_QUANTITY_OIL                                                :{VOLUME_LONG} olioarena
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}elementua{P "" s} Behi buruena
 STR_QUANTITY_GOODS                                              :{COMMA}kaxa{P "" s}merkantziena
-STR_QUANTITY_GRAIN                                              :{WEIGHT} garauarena
-STR_QUANTITY_WOOD                                               :{WEIGHT} egurrarena
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} burdin mearena
-STR_QUANTITY_STEEL                                              :{WEIGHT} altzairuena
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} garauarena
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} egurrarena
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} burdin mearena
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} altzairuena
 STR_QUANTITY_VALUABLES                                          :{COMMA}zaku{P "" s}baliozko objektuena
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kobre mearena
-STR_QUANTITY_MAIZE                                              :{WEIGHT} artoarena
-STR_QUANTITY_FRUIT                                              :{WEIGHT} frutarena
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kobre mearena
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} artoarena
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} frutarena
 STR_QUANTITY_DIAMONDS                                           :{COMMA} zaku{P "" s} diamanteena
-STR_QUANTITY_FOOD                                               :{WEIGHT} janariarena
-STR_QUANTITY_PAPER                                              :{WEIGHT} paperarena
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} janariarena
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} paperarena
 STR_QUANTITY_GOLD                                               :{COMMA} zaku{P "" s} urrearena
-STR_QUANTITY_WATER                                              :{VOLUME} urarena
-STR_QUANTITY_WHEAT                                              :{WEIGHT} gariarena
-STR_QUANTITY_RUBBER                                             :{VOLUME} gomarena
-STR_QUANTITY_SUGAR                                              :{WEIGHT} azukrearena
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} urarena
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} gariarena
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gomarena
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} azukrearena
 STR_QUANTITY_TOYS                                               :{COMMA} jostailuena{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} zaku{P "" s} gozokiena
-STR_QUANTITY_COLA                                               :{VOLUME} kolarena
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} piruletena
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} kolarena
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} piruletena
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuilena{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} toffeearena
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} toffeearena
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P y k}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} plastikoarena
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastikoarena
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} edari burbuilatsua {P "" k}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}BD
-STR_ABBREV_COAL                                                 :{TINYFONT}ITZ
-STR_ABBREV_MAIL                                                 :{TINYFONT}PT
-STR_ABBREV_OIL                                                  :{TINYFONT}PR
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BB
-STR_ABBREV_GOODS                                                :{TINYFONT}MT
-STR_ABBREV_GRAIN                                                :{TINYFONT}GA
-STR_ABBREV_WOOD                                                 :{TINYFONT}EG
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}MA
-STR_ABBREV_STEEL                                                :{TINYFONT}AT
-STR_ABBREV_VALUABLES                                            :{TINYFONT}BO
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KM
-STR_ABBREV_MAIZE                                                :{TINYFONT}AR
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}JN
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}UE
-STR_ABBREV_WATER                                                :{TINYFONT}UR
-STR_ABBREV_WHEAT                                                :{TINYFONT}GI
-STR_ABBREV_RUBBER                                               :{TINYFONT}GM
-STR_ABBREV_SUGAR                                                :{TINYFONT}AZ
-STR_ABBREV_TOYS                                                 :{TINYFONT}JS
-STR_ABBREV_SWEETS                                               :{TINYFONT}GZ
-STR_ABBREV_COLA                                                 :{TINYFONT}KL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}PL
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BR
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
-STR_ABBREV_BATTERIES                                            :{TINYFONT}PI
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}EB
-STR_ABBREV_NONE                                                 :{TINYFONT}EZ
-STR_ABBREV_ALL                                                  :{TINYFONT}DEN
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}BD
+STR_ABBREV_COAL                                                 :{TINY_FONT}ITZ
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PT
+STR_ABBREV_OIL                                                  :{TINY_FONT}PR
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}BB
+STR_ABBREV_GOODS                                                :{TINY_FONT}MT
+STR_ABBREV_GRAIN                                                :{TINY_FONT}GA
+STR_ABBREV_WOOD                                                 :{TINY_FONT}EG
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}MA
+STR_ABBREV_STEEL                                                :{TINY_FONT}AT
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}BO
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KM
+STR_ABBREV_MAIZE                                                :{TINY_FONT}AR
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
+STR_ABBREV_FOOD                                                 :{TINY_FONT}JN
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
+STR_ABBREV_GOLD                                                 :{TINY_FONT}UE
+STR_ABBREV_WATER                                                :{TINY_FONT}UR
+STR_ABBREV_WHEAT                                                :{TINY_FONT}GI
+STR_ABBREV_RUBBER                                               :{TINY_FONT}GM
+STR_ABBREV_SUGAR                                                :{TINY_FONT}AZ
+STR_ABBREV_TOYS                                                 :{TINY_FONT}JS
+STR_ABBREV_SWEETS                                               :{TINY_FONT}GZ
+STR_ABBREV_COLA                                                 :{TINY_FONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}PL
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BR
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}PI
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}EB
+STR_ABBREV_NONE                                                 :{TINY_FONT}EZ
+STR_ABBREV_ALL                                                  :{TINY_FONT}DEN
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} bidaiaria{P "" k}
@@ -516,10 +516,10 @@ STR_MONTH_DEC                                                   :Abendua
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Giltza
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Erakutsi giltza grafikoetan
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operazio Onuren Grafikoa
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Irabazi Grafikoa
@@ -528,14 +528,14 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Konpania
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Konpania balioak
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Karga Ordainketaren Tasa
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Iraganbide egunak
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Ordainketa 10 unitate entregatzeagatik (edo 10,000 litro) 20 karratuko distatziako karga bategatik
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Dena gaitu
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Dena desgaitu
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Iraganbide egunak
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Ordainketa 10 unitate entregatzeagatik (edo 10,000 litro) 20 karratuko distatziako karga bategatik
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Dena gaitu
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dena desgaitu
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Karga guztiak ikusi, karga salneurriaren grafikoan
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ez ikusi kargarik karga salneurriaren grafikoan
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Aukeratu zama mota on/off grafikoan
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Erakutsi performantzia balorazioak xehetasunekin
 
@@ -545,7 +545,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Hemen kl
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Konpania ezberdinen taula
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingienaria
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafiko Zuzendaria
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Garraio Koordinatzailea
@@ -559,7 +559,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Performantzia balorazio xehetua
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Xehetasuna
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Kompainia honen xehetasunak ikusi
@@ -588,25 +588,25 @@ STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punto ge
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
-STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Dena
-STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Estilo Zaharra
-STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Estilo Berria
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Pertsonalizatua 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Pertsonalizatua 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musikaren Bolumena
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efektuen Bolumena
-STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Pista
-STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titulua
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Nahasi
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programatu
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Dena
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Estilo Zaharra
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Estilo Berria
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Pertsonalizatua 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Pertsonalizatua 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musikaren Bolumena
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Efektuen Bolumena
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Pista
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titulua
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Nahasi
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programatu
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Selekzioko aurreko kantara joan
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Selekzioko hurrengo kantara joan
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Musika jotzen gelditu
@@ -625,18 +625,18 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Kantarik
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
-STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Pistaren Indizea
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programatu - '{STRING}'
-STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Garbitu
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Pistaren Indizea
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programatu - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Garbitu
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Uneko programa ezabatu (Perstonala1 edo Pertsonala2 bakarrik)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Musika kantan click egin uneko programari gehitzeko (Perstonala1 edo Perstonala2 bakarrik)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Musika kantan clik egin uneko programatik ezabatzeko (Perstonala1 edo Pertsonala2 bakarrik)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top companiak {NUM}{}({STRING} Nibela lortu dutenak)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Konpainien Ligaren Tabla {NUM}-tan
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top companiak {NUM}{}({STRING} Nibela lortu dutenak)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Konpainien Ligaren Tabla {NUM}-tan
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negozio gizona
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresarioa
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialista
@@ -644,10 +644,10 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalista
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnatea
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Handikia
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Mendeko Tycoona
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} lorpenak '{STRING}' estatusa!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} {COMPANY} lorpenak '{STRING}' estatusa!
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} lorpenak '{STRING}' estatusa!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} {COMPANY} lorpenak '{STRING}' estatusa!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
@@ -667,40 +667,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Erakutsi
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click egin industria mota batetan hau erakusteko/ ez erakusteko. Ctrl+Click hautatutakoa izan ezik guztiak desaktibatzeko . Berriro Ctrl+Click hautatutakoan industria mota guztiak aktibatzeko
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click egin kompainia batetan haren ondasunak ikusteko/ ez ikusteko. Ctrl+Click egitean hautatutakoa izan ezik baino beste kompainia guztiak desaktibatzeko. Berriro Ctrl+Click egin hautatutakoankompania guztiak aktibatzeko
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Errepideak
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Trenbideak
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Geltokiak/Aireportuak/Portuak
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Eraikinak/Industriak
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Garraioak
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trenak
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Errepideko Garraioak
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Itsasontziak
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Hegazkinak
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Garraio-Ibilbideak
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Basoa
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Trenbide Geltokiak
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Kamioi karga badia
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Bus Geltokia
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aireportua/Heliportua
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Kaia
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Lur Latza
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Belar Lurra
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Lur Irekia
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Eremuak
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Zuhaitzak
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Haitzak
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Ura
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Jabe Gabekoa
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Hiriak
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industriak
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Basamortua
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Elurra
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Errepideak
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Trenbideak
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Geltokiak/Aireportuak/Portuak
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Eraikinak/Industriak
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Garraioak
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trenak
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Errepideko Garraioak
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Itsasontziak
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Hegazkinak
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Garraio-Ibilbideak
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Basoa
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Trenbide Geltokiak
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kamioi karga badia
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bus Geltokia
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aireportua/Heliportua
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Kaia
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Lur Latza
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Belar Lurra
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Lur Irekia
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Eremuak
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Zuhaitzak
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Haitzak
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Ura
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Jabe Gabekoa
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Hiriak
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Industriak
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Basamortua
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Elurra
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Aukeratu hirien izenak on/off mapan
 STR_SMALLMAP_CENTER                                             :{BLACK}Mapa txikia horain zauden posizioan zentratu
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dena desgaitu
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Dena gaitu
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Altuera erakutsi
@@ -748,60 +748,60 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Aldaket
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidioak
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informazio generala
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Hiritarrak ospatzen dute . . .{} {STATION}era heltzen den lehenengo trena!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen del lehenengo autobusa!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo kamioia!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenego tranvia!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heldu den lehen tranvia!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{}{STATION}era heltzen den lehenengo itsasontzia!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo hegazkina!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Hiritarrak ospatzen dute . . .{} {STATION}era heltzen den lehenengo trena!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen del lehenengo autobusa!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo kamioia!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenego tranvia!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heldu den lehen tranvia!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{}{STATION}era heltzen den lehenengo itsasontzia!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo hegazkina!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Tren Txokea!{}{COMMA} kolisioaren su bolan hil ziren
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Errepideko Garraio baten eztanda!{}Gidaria tren batekin kolisionatu eta gero hiltzen da
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Errepideko Garraio Baten Eztanda!{}{COMMA} hiltzen dira trenarekin kolisionatu eta gero
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Hegazkin Istripua!{}{COMMA} hiltzen dira {STATION}ean
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Hegazkin Akzidentea!!{}Hegazkina erregai gabe geratu zen, {COMMA} hil dira eztandan
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tren Txokea!{}{COMMA} kolisioaren su bolan hil ziren
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Errepideko Garraio baten eztanda!{}Gidaria tren batekin kolisionatu eta gero hiltzen da
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Errepideko Garraio Baten Eztanda!{}{COMMA} hiltzen dira trenarekin kolisionatu eta gero
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Hegazkin Istripua!{}{COMMA} hiltzen dira {STATION}ean
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Hegazkin Akzidentea!!{}Hegazkina erregai gabe geratu zen, {COMMA} hil dira eztandan
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelin akzidentea {STATION}-en!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}¡OVNI batekin talka eginda ibilgailua birrindurik dago !
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Petrolio findegi eztanda {TOWN}-(e)tik hurbil!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}¡Fabrika brirrindu da zirkustantzi arraroetan {TOWN} alboan!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'OHE' bat lurreratu da {TOWN}-(e)tik hurbil!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Ikatz meatzaren hondoraketak arazoak sortzen ditu {TOWN}tik hurbil!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Urak gainezka egin!{}Gutxienez {COMMA} desagertuta, hilda uste da hain ekaitz indartsu baten ostean!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin akzidentea {STATION}-en!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}¡OVNI batekin talka eginda ibilgailua birrindurik dago !
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Petrolio findegi eztanda {TOWN}-(e)tik hurbil!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}¡Fabrika brirrindu da zirkustantzi arraroetan {TOWN} alboan!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'OHE' bat lurreratu da {TOWN}-(e)tik hurbil!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Ikatz meatzaren hondoraketak arazoak sortzen ditu {TOWN}tik hurbil!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Urak gainezka egin!{}Gutxienez {COMMA} desagertuta, hilda uste da hain ekaitz indartsu baten ostean!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Garraio konpania arazoetan!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING}saldu egingo da edo porrot egingo du salmentak laster gora egiten ez badute!
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Garraio konpania fusionatua!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} saldua izan da {STRING}-(e)ri {CURRENCY}-(r)engatik!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Kiebra!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}¡{STRING} itxi egin da zorrengatik eta aktibo guztia saldu da!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Garraio konpania berri bat agertua!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} eraiketa hasten du {TOWN}-(e)tik hurbil!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}¡{STRING} ,{STRING}-ek erosia izan da!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Managerra)
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Garraio konpania arazoetan!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING}saldu egingo da edo porrot egingo du salmentak laster gora egiten ez badute!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Garraio konpania fusionatua!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} saldua izan da {STRING}-(e)ri {CURRENCY_LONG}-(r)engatik!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Kiebra!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}¡{STRING} itxi egin da zorrengatik eta aktibo guztia saldu da!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Garraio konpania berri bat agertua!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} eraiketa hasten du {TOWN}-(e)tik hurbil!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}¡{STRING} ,{STRING}-ek erosia izan da!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Managerra)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}¡{STRING}-ek hiri berri baten eraikuntza babestu du {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}¡{STRING}-ek hiri berri baten eraikuntza babestu du {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} berri bat eraikitzen {TOWN}-(e)tik hurbil!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} berria landatzen {TOWN}-(e)tik hurbil!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK} {STRING} berri bat eraikitzen {TOWN}-(e)tik hurbil!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}{STRING} berria landatzen {TOWN}-(e)tik hurbil!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} itxialdi inminenetea jakinarazten du!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Hornigai arazoak direla eta {STRING}-ak lasterreko itxiera iragarri du!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK} Zuhaitzak hurbil ez baitituelako itxi egingo du {STRING}k oso laster!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} itxialdi inminenetea jakinarazten du!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Hornigai arazoak direla eta {STRING}-ak lasterreko itxiera iragarri du!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK} Zuhaitzak hurbil ez baitituelako itxi egingo du {STRING}k oso laster!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europar batasun ekonomikoa!!{}{} Euroa ezarri da eguneroko salerosketerako dibisa bakarra bezala zure herrialdean!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Munduko ekonomiaren atzeraldia!{}{}Finantza adituak beldurrez, ekonomiaren erortzearekin!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}¡Ekonomia atzeraldia bukatu da!{}{}¡Komertzio igoerak konfiantza eman die industriei!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europar batasun ekonomikoa!!{}{} Euroa ezarri da eguneroko salerosketerako dibisa bakarra bezala zure herrialdean!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Munduko ekonomiaren atzeraldia!{}{}Finantza adituak beldurrez, ekonomiaren erortzearekin!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}¡Ekonomia atzeraldia bukatu da!{}{}¡Komertzio igoerak konfiantza eman die industriei!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkzioa igo du!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}¡Ikatz-zain berri bat aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}¡Petrolio hornidura berri bar aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago !
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}¡Lantze metodo berriek {INDUSTRY}-an produkzioa bikoizteko itxaropena dakarte!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} produkzioa {INDUSTRY}-an %{COMMA} igo da!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkzioak behera egin du %50 bat
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}¡Intsektuek eragindako hondamena {INDUSTRY}-an!{}Produkzioa %50 jaitsi da
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING}¡ {INDUSTRY}-an %{COMMA} jaitsi da produkzioa!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} produkzioa igo du!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}¡Ikatz-zain berri bat aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}¡Petrolio hornidura berri bar aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago !
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}¡Lantze metodo berriek {INDUSTRY}-an produkzioa bikoizteko itxaropena dakarte!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} produkzioa {INDUSTRY}-an %{COMMA} igo da!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} produkzioak behera egin du %50 bat
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}¡Intsektuek eragindako hondamena {INDUSTRY}-an!{}Produkzioa %50 jaitsi da
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}¡ {INDUSTRY}-an %{COMMA} jaitsi da produkzioa!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} deposituan itxaroten dago
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} deposituan itxaroten dago
@@ -821,13 +821,13 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da eta premiaz ordeztu behar da
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ezin du biderik aurkitu jarraitzeko
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} galduta dago
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}-ren irabazia aurreko urtean {CURRENCY} izan da
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}-ren irabazia aurreko urtean {CURRENCY_LONG} izan da
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} gelditua izan da agindutako eraldaketa tronpatu eta gero
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoberriketak huts egin du {VEHICLE}an{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} berri bat orain erabilgarri!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} berri bat orain erabilgarri!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} berri bat orain erabilgarri!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ez du gehiago onartzen {STRING}
@@ -835,15 +835,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} orain {STRING} onartzen du
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}{STRING} eta {STRING} orain onartzen ditu
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsidio eskaintza agortu egin da:{}{}{STRING} {STRING}tik {STRING}ra doanarentzat ez dago subsidiorik orain.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidioa kenduta:{}{}{STRING} Ez dago subsidiorik {STRING}(e)tik {STRING}(e)ra garraiatzeagatik.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Diru-laguntza eskaintza:{}{} {STRING} {STRING}tik {STRING}ra doan lehenengoari bertako udalak diru-laguntza emango dio urte batetan zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Diru-laguntza{STRING}entzako!{}{}{STRING} {STRING}tik {STRING}ra egindako serbitzuak %50-a gehiago irabaziko dute hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra egiten duen serbitzuak bikoitza irabaziko du hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan serbitzuak hirukoitza irabaziko du hurrengo urtean zehar!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan zerbitzuak laukoitza irabaziko du hurrengo urtean zehar!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidio eskaintza agortu egin da:{}{}{STRING} {STRING}tik {STRING}ra doanarentzat ez dago subsidiorik orain.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidioa kenduta:{}{}{STRING} Ez dago subsidiorik {STRING}(e)tik {STRING}(e)ra garraiatzeagatik.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Diru-laguntza eskaintza:{}{} {STRING} {STRING}tik {STRING}ra doan lehenengoari bertako udalak diru-laguntza emango dio urte batetan zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Diru-laguntza{STRING}entzako!{}{}{STRING} {STRING}tik {STRING}ra egindako serbitzuak %50-a gehiago irabaziko dute hurrengo urtean zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra egiten duen serbitzuak bikoitza irabaziko du hurrengo urtean zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan serbitzuak hirukoitza irabaziko du hurrengo urtean zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan zerbitzuak laukoitza irabaziko du hurrengo urtean zehar!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK} Trafiko nahaste-borrastea {TOWN}en!{}{} {STRING}k ordaindutako errepideen konponketa plana sei hilabeterako arazoak esanguratzen die gidariei!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK} Trafiko nahaste-borrastea {TOWN}en!{}{} {STRING}k ordaindutako errepideen konponketa plana sei hilabeterako arazoak esanguratzen die gidariei!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Leihoa {COMMA}
@@ -971,7 +971,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Pantaila
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Diru mota kustomizatua
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Trukearen zenbatekoa : {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Trukearen zenbatekoa : {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zure dibisaren balioa libra (£) bat jaitsi
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zure dibisaren balioa libra (£) bat igo
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Zure dibisaren balioa trukatzerakoan libra (£) batetan jarri
@@ -990,7 +990,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Euroetar
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euroetara lehenago aldatu
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euroetara beranduago aldatu
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Aurreikuspena: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Aurreikuspena: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libra (£) zure dibisan
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa pertsonalaren ezaugarriak aldatu
 
@@ -1011,7 +1011,7 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Gorde
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Konpetitzaile kopuru maximoa: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Hiri kopurua: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Industri kopurua: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Hasteko mailegu maximoa: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Hasteko mailegu maximoa: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Hasteko interes kopurua: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Ibilgailuen mantenimendu kostua: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Lehiakideen eraikuntza abiadura: {ORANGE}{STRING}
@@ -1682,19 +1682,19 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
 # Subsidies window
 
 # Station list window
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 
 # Station view window
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
@@ -1710,13 +1710,13 @@ STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}
 
 # Finances window
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
-STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 
 # Company view
-STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(President)
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(President)
 
 
 
@@ -1735,7 +1735,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkzi
 ############ range for requires ends
 
 ############ range for produces starts
-STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Produkzio portzentaia aldatu (portzentaia, %800 arte)
@@ -1818,9 +1818,9 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} {DEPOT
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Berrikuspena {DEPOT}-an, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Geldituta
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Geldituta
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Geldituta
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Hasita
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Hasita
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Hasita
 
 # Vehicle details
@@ -1836,8 +1836,8 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Hasita
 
 # Extra buttons for train details windows
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 
 
@@ -1930,12 +1930,12 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Behera M
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
 
@@ -2206,37 +2206,37 @@ STR_SAVEGAME_NAME_SPECTATOR                                     :Ikuslea, {1:STR
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
-STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
-STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}
 
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINY_FONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINY_FONT}{WHITE}{SIGN}
 
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINY_FONT}{STATION}
 
 STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
-STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINY_FONT}{WAYPOINT}
 
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
-STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
-STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
-STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
+STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -2248,32 +2248,32 @@ STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
-STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINYFONT}{BLACK}{DECIMAL}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
+STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
 STR_BLACK_2                                                     :{BLACK}2
