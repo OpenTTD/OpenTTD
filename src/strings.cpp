@@ -1833,11 +1833,14 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
  * font, which is the whole reason this check has
  * been added.
  * @param base_font Whether to look at the base font as well.
+ * @param searcher  The methods to use to search for strings to check.
+ *                  If NULL the loaded language pack searcher is used.
  */
-void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font)
+void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 {
-	LanguagePackGlyphSearcher searcher;
-	bool bad_font = !base_font || searcher.FindMissingGlyphs(NULL);
+	static LanguagePackGlyphSearcher pack_searcher;
+	if (searcher == NULL) searcher = &pack_searcher;
+	bool bad_font = !base_font || searcher->FindMissingGlyphs(NULL);
 #ifdef WITH_FREETYPE
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
@@ -1845,7 +1848,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font)
 		FreeTypeSettings backup;
 		memcpy(&backup, &_freetype, sizeof(backup));
 
-		bad_font = !SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, &searcher);
+		bad_font = !SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, searcher);
 
 		memcpy(&_freetype, &backup, sizeof(backup));
 

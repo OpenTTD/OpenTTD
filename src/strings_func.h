@@ -232,6 +232,6 @@ public:
 	bool FindMissingGlyphs(const char **str);
 };
 
-void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font = true);
+void CheckForMissingGlyphs(bool base_font = true, MissingGlyphSearcher *search = NULL);
 
 #endif /* STRINGS_FUNC_H */

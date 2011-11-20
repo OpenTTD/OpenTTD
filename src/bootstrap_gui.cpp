@@ -234,7 +234,7 @@ bool HandleBootstrap()
 	/* Initialise the freetype font code. */
 	InitializeUnicodeGlyphMap();
 	/* Next "force" finding a suitable freetype font as the local font is missing. */
-	CheckForMissingGlyphsInLoadedLanguagePack(false);
+	CheckForMissingGlyphs(false);
 
 	/* Initialise the palette. The biggest step is 'faking' some recolour sprites.
 	 * This way the mauve and gray colours work and we can show the user interface. */
