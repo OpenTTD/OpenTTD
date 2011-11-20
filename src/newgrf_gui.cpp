@@ -25,6 +25,7 @@
 #include "core/geometry_func.hpp"
 #include "newgrf_text.h"
 #include "fileio_func.h"
+#include "fontcache.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -473,7 +474,7 @@ enum ShowNewGRFTextfileWidgets {
 };
 
 /** Window for displaying the textfile of a NewGRF. */
-struct NewGRFTextfileWindow : public Window {
+struct NewGRFTextfileWindow : public Window, MissingGlyphSearcher {
 	const GRFConfig *grf_config;         ///< View the textfile of this GRFConfig.
 	TextfileType file_type;              ///< Type of textfile to view.
 	int line_height;                     ///< Height of a line in the display widget.
@@ -506,7 +507,7 @@ struct NewGRFTextfileWindow : public Window {
 	{
 		switch (widget) {
 			case GTW_WIDGET_BACKGROUND:
-				this->line_height = FONT_HEIGHT_NORMAL + 2;
+				this->line_height = FONT_HEIGHT_MONO + 2;
 				resize->height = this->line_height;
 
 				size->height = 4 * resize->height + TOP_SPACING + BOTTOM_SPACING; // At least 4 lines are visible.
@@ -542,7 +543,7 @@ struct NewGRFTextfileWindow : public Window {
 		}
 		int top = TOP_SPACING;
 		for (uint i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->lines.Length(); i++) {
-			DrawString(left, right, top + i * this->line_height, this->lines[i + this->vscroll->GetPosition()], TC_WHITE);
+			DrawString(left, right, top + i * this->line_height, this->lines[i + this->vscroll->GetPosition()], TC_WHITE, SA_LEFT, false, FS_MONO);
 		}
 
 		_cur_dpi = old_dpi;
@@ -555,6 +556,36 @@ struct NewGRFTextfileWindow : public Window {
 	}
 
 private:
+	uint search_iterator; ///< Iterator for the font check search.
+
+	/* virtual */ void Reset()
+	{
+		this->search_iterator = 0;
+	}
+
+	FontSize DefaultSize()
+	{
+		return FS_MONO;
+	}
+
+	const char *NextString()
+	{
+		if (this->search_iterator >= this->lines.Length()) return NULL;
+
+		return this->lines[this->search_iterator++];
+	}
+
+	/* virtual */ bool Monospace()
+	{
+		return true;
+	}
+
+	/* virtual */ void SetFontNames(FreeTypeSettings *settings, const char *font_name)
+	{
+#ifdef WITH_FREETYPE
+		strecpy(settings->mono_font, font_name, lastof(settings->mono_font));
+#endif /* WITH_FREETYPE */
+	}
 
 	/**
 	 * Load the NewGRF's textfile text from file, and setup #lines, #max_length, and both scrollbars.
@@ -600,12 +631,14 @@ private:
 			}
 		}
 
+		CheckForMissingGlyphs(true, this);
+
 		/* Initialize scrollbars */
 		this->vscroll->SetCount(this->lines.Length());
 
 		this->max_length = 0;
 		for (uint i = 0; i < this->lines.Length(); i++) {
-			this->max_length = max(this->max_length, GetStringBoundingBox(this->lines[i]).width);
+			this->max_length = max(this->max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
 		}
 		this->hscroll->SetCount(this->max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 		this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
