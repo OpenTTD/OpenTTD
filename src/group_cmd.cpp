@@ -486,7 +486,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
  * @param flags type of operation
  * @param p1   index of group array
  * - p1 bit 0-15 : GroupID
- * @param p2   type of vehicles
+ * @param p2   unused
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -494,16 +494,15 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 {
 	GroupID old_g = p1;
 	Group *g = Group::GetIfValid(old_g);
-	VehicleType type = Extract<VehicleType, 0, 3>(p2);
 
-	if (g == NULL || g->owner != _current_company || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
+	if (g == NULL || g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Vehicle *v;
 
 		/* Find each Vehicle that belongs to the group old_g and add it to the default group */
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == type && v->IsPrimaryVehicle()) {
+			if (v->IsPrimaryVehicle()) {
 				if (v->group_id != old_g) continue;
 
 				/* Add The Vehicle to the default group */
@@ -511,7 +510,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 			}
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(type), VehicleListIdentifier(VL_GROUP_LIST, type, _current_company).Pack());
+		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 	}
 
 	return CommandCost();

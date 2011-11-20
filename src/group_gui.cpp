@@ -711,7 +711,7 @@ public:
 					case ADI_REMOVE_ALL: // Remove all Vehicles from the selected group
 						assert(Group::IsValidID(this->vli.index));
 
-						DoCommandP(0, this->vli.index, this->vli.vtype, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
+						DoCommandP(0, this->vli.index, 0, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
 						break;
 					default: NOT_REACHED();
 				}
