@@ -709,7 +709,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	/* First create a pattern to match the wanted language. */
 	FcPattern *pat = FcNameParse((FcChar8*)lang);
 	/* We only want to know the filename. */
-	FcObjectSet *os = FcObjectSetBuild(FC_FILE, NULL);
+	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, NULL);
 	/* Get the list of filenames matching the wanted language. */
 	FcFontSet *fs = FcFontList(NULL, pat, os);
 
@@ -726,6 +726,10 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			if (res != FcResultMatch || file == NULL) {
 				continue;
 			}
+
+			int value = 0;
+			FcPatternGetInteger(font, FC_SPACING, 0, &value);
+			if (callback->Monospace() != (value == FC_MONO) && value != FC_DUAL) continue;
 
 			callback->SetFontNames(settings, (const char*)file);
 
