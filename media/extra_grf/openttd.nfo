@@ -103,6 +103,7 @@
 #include "openttdgui.nfo"
 #include "airport_preview.nfo"
 #include "chars.nfo"
+#include "mono.nfo"
 #include "fix_graphics.nfo"
 #include "rivers/rapids.nfo"
 #include "rivers/temperate.nfo"
