@@ -205,12 +205,17 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
+	int delta = TileOffsByDiagDir(dir);
+	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile + delta);
+	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile - delta);
+	if (ret.Failed()) return ret;
+
 	/* middle tile */
-	CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret);
 
-	int delta = TileOffsByDiagDir(dir);
 	/* lower tile */
 	WaterClass wc_lower = IsWaterTile(tile - delta) ? GetWaterClass(tile - delta) : WATER_CLASS_CANAL;
 
