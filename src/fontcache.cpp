@@ -709,7 +709,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	/* First create a pattern to match the wanted language. */
 	FcPattern *pat = FcNameParse((FcChar8*)lang);
 	/* We only want to know the filename. */
-	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, NULL);
+	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, FC_SLANT, FC_WEIGHT, NULL);
 	/* Get the list of filenames matching the wanted language. */
 	FcFontSet *fs = FcFontList(NULL, pat, os);
 
@@ -718,6 +718,9 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	FcPatternDestroy(pat);
 
 	if (fs != NULL) {
+		int best_weight = -1;
+		const char *best_font = NULL;
+
 		for (int i = 0; i < fs->nfont; i++) {
 			FcPattern *font = fs->fonts[i];
 
@@ -727,9 +730,18 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 				continue;
 			}
 
+			/* Get a font with the right spacing .*/
 			int value = 0;
 			FcPatternGetInteger(font, FC_SPACING, 0, &value);
 			if (callback->Monospace() != (value == FC_MONO) && value != FC_DUAL) continue;
+
+			/* Do not use those that explicitly say they're slanted. */
+			FcPatternGetInteger(font, FC_SLANT, 0, &value);
+			if (value != 0) continue;
+
+			/* We want the fatter font as they look better at small sizes. */
+			FcPatternGetInteger(font, FC_WEIGHT, 0, &value);
+			if (value <= best_weight) continue;
 
 			callback->SetFontNames(settings, (const char*)file);
 
@@ -737,9 +749,15 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			DEBUG(freetype, 1, "Font \"%s\" misses%s glyphs", file, missing ? "" : " no");
 
 			if (!missing) {
-				ret = true;
-				break;
+				best_weight = value;
+				best_font   = (const char *)file;
 			}
+		}
+
+		if (best_font != NULL) {
+			ret = true;
+			callback->SetFontNames(settings, best_font);
+			InitFreeType(callback->Monospace());
 		}
 
 		/* Clean up the list of filenames. */
