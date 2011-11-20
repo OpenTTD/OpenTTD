@@ -6886,7 +6886,7 @@ static void LoadFontGlyph(ByteReader *buf)
 	/* <12> <num_def> <font_size> <num_char> <base_char>
 	 *
 	 * B num_def      Number of definitions
-	 * B font_size    Size of font (0 = normal, 1 = small, 2 = large)
+	 * B font_size    Size of font (0 = normal, 1 = small, 2 = large, 3 = mono)
 	 * B num_char     Number of consecutive glyphs
 	 * W base_char    First character index */
 
@@ -6897,10 +6897,14 @@ static void LoadFontGlyph(ByteReader *buf)
 		uint8  num_char  = buf->ReadByte();
 		uint16 base_char = buf->ReadWord();
 
+		if (size >= FS_END) {
+			grfmsg(1, "LoadFontGlyph: Size %u is not supported, ignoring", size);
+		}
+
 		grfmsg(7, "LoadFontGlyph: Loading %u glyph(s) at 0x%04X for size %u", num_char, base_char, size);
 
 		for (uint c = 0; c < num_char; c++) {
-			SetUnicodeGlyph(size, base_char + c, _cur.spriteid);
+			if (size < FS_END) SetUnicodeGlyph(size, base_char + c, _cur.spriteid);
 			_cur.nfo_line++;
 			LoadNextSprite(_cur.spriteid++, _cur.file_index, _cur.nfo_line);
 		}
