@@ -65,7 +65,7 @@ struct DrawStringParams {
 	FontSize fontsize;
 	TextColour cur_colour, prev_colour;
 
-	DrawStringParams(TextColour colour) : fontsize(FS_NORMAL), cur_colour(colour), prev_colour(colour) {}
+	DrawStringParams(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour), prev_colour(colour) {}
 
 	/**
 	 * Switch to new colour \a c.
@@ -624,12 +624,13 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
+ * @param fontsize The size of the initial characters.
  */
-int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline)
+int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	strecpy(buffer, str, lastof(buffer));
-	DrawStringParams params(colour);
+	DrawStringParams params(colour, fontsize);
 	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
 }
 
@@ -645,12 +646,13 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
+ * @param fontsize The size of the initial characters.
  */
-int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align, bool underline)
+int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
-	DrawStringParams params(colour);
+	DrawStringParams params(colour, fontsize);
 	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
 }
 
@@ -834,10 +836,11 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-static int DrawStringMultiLine(int left, int right, int top, int bottom, char *str, const char *last, TextColour colour, StringAlignment align, bool underline)
+static int DrawStringMultiLine(int left, int right, int top, int bottom, char *str, const char *last, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	int maxw = right - left + 1;
 	int maxh = bottom - top + 1;
@@ -883,7 +886,7 @@ static int DrawStringMultiLine(int left, int right, int top, int bottom, char *s
 	}
 
 	const char *src = str;
-	DrawStringParams params(colour);
+	DrawStringParams params(colour, fontsize);
 	int written_top = bottom; // Uppermost position of rendering a line of text
 	for (;;) {
 		if (skip_lines == 0) {
@@ -933,14 +936,15 @@ static int DrawStringMultiLine(int left, int right, int top, int bottom, char *s
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour, StringAlignment align, bool underline)
+int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	strecpy(buffer, str, lastof(buffer));
-	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline);
+	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline, fontsize);
 }
 
 /**
@@ -954,14 +958,15 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline)
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
-	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline);
+	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline, fontsize);
 }
 
 /**
