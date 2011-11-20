@@ -697,8 +697,8 @@ int ttd_main(int argc, char *argv[])
 	/* enumerate language files */
 	InitializeLanguagePacks();
 
-	/* Initialize FreeType */
-	InitFreeType();
+	/* Initialize the regular font for FreeType */
+	InitFreeType(false);
 
 	/* This must be done early, since functions use the SetWindowDirty* calls */
 	InitWindowSystem();

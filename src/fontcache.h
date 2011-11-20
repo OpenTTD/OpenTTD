@@ -42,7 +42,7 @@ struct FreeTypeSettings {
 
 extern FreeTypeSettings _freetype;
 
-void InitFreeType();
+void InitFreeType(bool monospace);
 void UninitFreeType();
 const Sprite *GetGlyph(FontSize size, uint32 key);
 uint GetGlyphWidth(FontSize size, uint32 key);
@@ -63,7 +63,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 #else
 
 /* Stub for initializiation */
-static inline void InitFreeType() { extern void ResetFontSizes(); ResetFontSizes(); }
+static inline void InitFreeType(bool monospace) { extern void ResetFontSizes(bool monospace); ResetFontSizes(monospace); }
 static inline void UninitFreeType() {}
 
 /** Get the Sprite for a glyph */

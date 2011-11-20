@@ -25,13 +25,17 @@ int _font_height[FS_END];
 
 /**
  * Reset the font sizes to the defaults of the sprite based fonts.
+ * @param monospace Whether to reset the monospace or regular fonts.
  */
-void ResetFontSizes()
+void ResetFontSizes(bool monospace)
 {
-	_font_height[FS_MONO]   = 10;
-	_font_height[FS_SMALL]  =  6;
-	_font_height[FS_NORMAL] = 10;
-	_font_height[FS_LARGE]  = 18;
+	if (monospace) {
+		_font_height[FS_MONO]   = 10;
+	} else {
+		_font_height[FS_SMALL]  =  6;
+		_font_height[FS_NORMAL] = 10;
+		_font_height[FS_LARGE]  = 18;
+	}
 }
 
 #ifdef WITH_FREETYPE
@@ -821,7 +825,7 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 }
 
 
-static void ResetGlyphCache();
+static void ResetGlyphCache(bool monospace);
 
 /**
  * Unload a face and set it to NULL.
@@ -837,16 +841,20 @@ static void UnloadFace(FT_Face *face)
 
 /**
  * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
+ * @param monospace Whether to initialise the monospace or regular fonts.
  */
-void InitFreeType()
+void InitFreeType(bool monospace)
 {
-	ResetFontSizes();
-	ResetGlyphCache();
+	ResetFontSizes(monospace);
+	ResetGlyphCache(monospace);
 
-	UnloadFace(&_face_mono);
-	UnloadFace(&_face_small);
-	UnloadFace(&_face_medium);
-	UnloadFace(&_face_large);
+	if (monospace) {
+		UnloadFace(&_face_mono);
+	} else {
+		UnloadFace(&_face_small);
+		UnloadFace(&_face_medium);
+		UnloadFace(&_face_large);
+	}
 
 	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font) && StrEmpty(_freetype.mono_font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
@@ -863,23 +871,27 @@ void InitFreeType()
 	}
 
 	/* Load each font */
-	LoadFreeTypeFont(_freetype.mono_font ,  &_face_mono,   "mono");
-	LoadFreeTypeFont(_freetype.small_font,  &_face_small,  "small");
-	LoadFreeTypeFont(_freetype.medium_font, &_face_medium, "medium");
-	LoadFreeTypeFont(_freetype.large_font,  &_face_large,  "large");
+	if (monospace) {
+		LoadFreeTypeFont(_freetype.mono_font ,  &_face_mono,   "mono");
 
-	/* Set each font size */
-	if (_face_mono != NULL) {
-		SetFontGeometry(_face_mono, FS_MONO, _freetype.mono_size);
-	}
-	if (_face_small != NULL) {
-		SetFontGeometry(_face_small, FS_SMALL, _freetype.small_size);
-	}
-	if (_face_medium != NULL) {
-		SetFontGeometry(_face_medium, FS_NORMAL, _freetype.medium_size);
-	}
-	if (_face_large != NULL) {
-		SetFontGeometry(_face_large, FS_LARGE, _freetype.large_size);
+		if (_face_mono != NULL) {
+			SetFontGeometry(_face_mono, FS_MONO, _freetype.mono_size);
+		}
+	} else {
+		LoadFreeTypeFont(_freetype.small_font,  &_face_small,  "small");
+		LoadFreeTypeFont(_freetype.medium_font, &_face_medium, "medium");
+		LoadFreeTypeFont(_freetype.large_font,  &_face_large,  "large");
+
+		/* Set each font size */
+		if (_face_small != NULL) {
+			SetFontGeometry(_face_small, FS_SMALL, _freetype.small_size);
+		}
+		if (_face_medium != NULL) {
+			SetFontGeometry(_face_medium, FS_NORMAL, _freetype.medium_size);
+		}
+		if (_face_large != NULL) {
+			SetFontGeometry(_face_large, FS_LARGE, _freetype.large_size);
+		}
 	}
 }
 
@@ -888,7 +900,8 @@ void InitFreeType()
  */
 void UninitFreeType()
 {
-	ResetGlyphCache();
+	ResetGlyphCache(true);
+	ResetGlyphCache(false);
 
 	UnloadFace(&_face_small);
 	UnloadFace(&_face_medium);
@@ -933,10 +946,14 @@ struct GlyphEntry {
  */
 static GlyphEntry **_glyph_ptr[FS_END];
 
-/** Clear the complete cache */
-static void ResetGlyphCache()
+/**
+ * Clear the complete cache
+ * @param monospace Whether to reset the monospace or regular font.
+ */
+static void ResetGlyphCache(bool monospace)
 {
 	for (FontSize i = FS_BEGIN; i < FS_END; i++) {
+		if (monospace != (i == FS_MONO)) continue;
 		if (_glyph_ptr[i] == NULL) continue;
 
 		for (int j = 0; j < 256; j++) {
