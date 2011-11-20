@@ -205,8 +205,7 @@ public:
 	virtual void OnDownloadProgress(const ContentInfo *ci, int bytes)
 	{
 		BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(ci, bytes);
-
-		if (ci->id != this->cur_id) this->receivedTypes.Include(ci->type);
+		this->receivedTypes.Include(ci->type);
 
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {
