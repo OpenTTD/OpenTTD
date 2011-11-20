@@ -165,6 +165,7 @@ enum FontSize {
 	FS_NORMAL, ///< Index of the normal font in the font tables.
 	FS_SMALL,  ///< Index of the small font in the font tables.
 	FS_LARGE,  ///< Index of the large font in the font tables.
+	FS_MONO,   ///< Index of the monospaced font in the font tables.
 	FS_END,
 
 	FS_BEGIN = FS_NORMAL, ///< First font.

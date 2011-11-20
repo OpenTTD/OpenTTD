@@ -23,9 +23,12 @@ static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 /** Semi-constant for the height of the different sizes of fonts. */
 int _font_height[FS_END];
 
-/** Reset the font sizes to the defaults of the sprite based fonts. */
+/**
+ * Reset the font sizes to the defaults of the sprite based fonts.
+ */
 void ResetFontSizes()
 {
+	_font_height[FS_MONO]   = 10;
 	_font_height[FS_SMALL]  =  6;
 	_font_height[FS_NORMAL] = 10;
 	_font_height[FS_LARGE]  = 18;
@@ -44,6 +47,7 @@ static FT_Library _library = NULL;
 static FT_Face _face_small = NULL;
 static FT_Face _face_medium = NULL;
 static FT_Face _face_large = NULL;
+static FT_Face _face_mono = NULL;
 static int _ascender[FS_END];
 
 FreeTypeSettings _freetype;
@@ -839,11 +843,12 @@ void InitFreeType()
 	ResetFontSizes();
 	ResetGlyphCache();
 
+	UnloadFace(&_face_mono);
 	UnloadFace(&_face_small);
 	UnloadFace(&_face_medium);
 	UnloadFace(&_face_large);
 
-	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font)) {
+	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font) && StrEmpty(_freetype.mono_font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
 		return;
 	}
@@ -858,11 +863,15 @@ void InitFreeType()
 	}
 
 	/* Load each font */
+	LoadFreeTypeFont(_freetype.mono_font ,  &_face_mono,   "mono");
 	LoadFreeTypeFont(_freetype.small_font,  &_face_small,  "small");
 	LoadFreeTypeFont(_freetype.medium_font, &_face_medium, "medium");
 	LoadFreeTypeFont(_freetype.large_font,  &_face_large,  "large");
 
 	/* Set each font size */
+	if (_face_mono != NULL) {
+		SetFontGeometry(_face_mono, FS_MONO, _freetype.mono_size);
+	}
 	if (_face_small != NULL) {
 		SetFontGeometry(_face_small, FS_SMALL, _freetype.small_size);
 	}
@@ -884,6 +893,7 @@ void UninitFreeType()
 	UnloadFace(&_face_small);
 	UnloadFace(&_face_medium);
 	UnloadFace(&_face_large);
+	UnloadFace(&_face_mono);
 
 	FT_Done_FreeType(_library);
 	_library = NULL;
@@ -897,6 +907,7 @@ static FT_Face GetFontFace(FontSize size)
 		case FS_NORMAL: return _face_medium;
 		case FS_SMALL:  return _face_small;
 		case FS_LARGE:  return _face_large;
+		case FS_MONO:   return _face_mono;
 	}
 }
 
@@ -987,6 +998,7 @@ static bool GetFontAAState(FontSize size)
 		case FS_NORMAL: return _freetype.medium_aa;
 		case FS_SMALL:  return _freetype.small_aa;
 		case FS_LARGE:  return _freetype.large_aa;
+		case FS_MONO:   return _freetype.mono_aa;
 	}
 }
 
@@ -1111,7 +1123,7 @@ uint GetGlyphWidth(FontSize size, WChar key)
 	if (face == NULL || (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END)) {
 		SpriteID sprite = GetUnicodeGlyph(size, key);
 		if (sprite == 0) sprite = GetUnicodeGlyph(size, '?');
-		return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + (size != FS_NORMAL) : 0;
+		return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + (size != FS_NORMAL && size != FS_MONO) : 0;
 	}
 
 	glyph = GetGlyphPtr(size, key);
@@ -1141,6 +1153,7 @@ static SpriteID GetFontBase(FontSize size)
 		case FS_NORMAL: return SPR_ASCII_SPACE;
 		case FS_SMALL:  return SPR_ASCII_SPACE_SMALL;
 		case FS_LARGE:  return SPR_ASCII_SPACE_BIG;
+		case FS_MONO:   return SPR_ASCII_SPACE;
 	}
 }
 

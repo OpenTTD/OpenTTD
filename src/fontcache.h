@@ -29,12 +29,15 @@ struct FreeTypeSettings {
 	char small_font[MAX_PATH];
 	char medium_font[MAX_PATH];
 	char large_font[MAX_PATH];
+	char mono_font[MAX_PATH];
 	uint small_size;
 	uint medium_size;
 	uint large_size;
+	uint mono_size;
 	bool small_aa;
 	bool medium_aa;
 	bool large_aa;
+	bool mono_aa;
 };
 
 extern FreeTypeSettings _freetype;
