@@ -223,6 +223,12 @@ public:
 	virtual void Reset() = 0;
 
 	/**
+	 * Whether to search for a monospace font or not.
+	 * @return True if searching for monospace.
+	 */
+	virtual bool Monospace() = 0;
+
+	/**
 	 * Set the right font names.
 	 * @param settings  The settings to modify.
 	 * @param font_name The new font name.
