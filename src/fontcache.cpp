@@ -23,6 +23,14 @@ static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 /** Semi-constant for the height of the different sizes of fonts. */
 int _font_height[FS_END];
 
+/** Reset the font sizes to the defaults of the sprite based fonts. */
+void ResetFontSizes()
+{
+	_font_height[FS_SMALL]  =  6;
+	_font_height[FS_NORMAL] = 10;
+	_font_height[FS_LARGE]  = 18;
+}
+
 #ifdef WITH_FREETYPE
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -809,21 +817,45 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 }
 
 
+static void ResetGlyphCache();
+
+/**
+ * Unload a face and set it to NULL.
+ * @param face the face to unload
+ */
+static void UnloadFace(FT_Face *face)
+{
+	if (*face == NULL) return;
+
+	FT_Done_Face(*face);
+	*face = NULL;
+}
+
+/**
+ * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
+ */
 void InitFreeType()
 {
 	ResetFontSizes();
+	ResetGlyphCache();
+
+	UnloadFace(&_face_small);
+	UnloadFace(&_face_medium);
+	UnloadFace(&_face_large);
 
 	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
 		return;
 	}
 
-	if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
-		ShowInfoF("Unable to initialize FreeType, using sprite fonts instead");
-		return;
-	}
+	if (_library == NULL) {
+		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
+			ShowInfoF("Unable to initialize FreeType, using sprite fonts instead");
+			return;
+		}
 
-	DEBUG(freetype, 2, "Initialized");
+		DEBUG(freetype, 2, "Initialized");
+	}
 
 	/* Load each font */
 	LoadFreeTypeFont(_freetype.small_font,  &_face_small,  "small");
@@ -842,26 +874,11 @@ void InitFreeType()
 	}
 }
 
-static void ResetGlyphCache();
-
-/**
- * Unload a face and set it to NULL.
- * @param face the face to unload
- */
-static void UnloadFace(FT_Face *face)
-{
-	if (*face == NULL) return;
-
-	FT_Done_Face(*face);
-	*face = NULL;
-}
-
 /**
  * Free everything allocated w.r.t. fonts.
  */
 void UninitFreeType()
 {
-	ResetFontSizes();
 	ResetGlyphCache();
 
 	UnloadFace(&_face_small);
@@ -1108,14 +1125,6 @@ uint GetGlyphWidth(FontSize size, WChar key)
 
 
 #endif /* WITH_FREETYPE */
-
-/** Reset the font sizes to the defaults of the sprite based fonts. */
-void ResetFontSizes()
-{
-	_font_height[FS_SMALL]  =  6;
-	_font_height[FS_NORMAL] = 10;
-	_font_height[FS_LARGE]  = 18;
-}
 
 /* Sprite based glyph mapping */
 

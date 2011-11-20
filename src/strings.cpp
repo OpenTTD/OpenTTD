@@ -1750,10 +1750,7 @@ const char *GetCurrentLanguageIsoCode()
  */
 bool MissingGlyphSearcher::FindMissingGlyphs(const char **str)
 {
-#ifdef WITH_FREETYPE
-	UninitFreeType();
 	InitFreeType();
-#endif
 	const Sprite *question_mark[FS_END];
 
 	for (FontSize size = FS_BEGIN; size < FS_END; size++) {
@@ -1856,7 +1853,6 @@ void CheckForMissingGlyphsInLoadedLanguagePack(bool base_font)
 			/* Our fallback font does miss characters too, so keep the
 			 * user chosen font as that is more likely to be any good than
 			 * the wild guess we made */
-			UninitFreeType();
 			InitFreeType();
 		}
 	}
