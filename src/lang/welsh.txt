@@ -2411,6 +2411,8 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Gweld dogfenyddiaeth
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Log Newidiadau
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Trwydded
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Gosod paramedrau
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toglu palet
@@ -2444,6 +2446,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nifer y
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}Dogfenyddiaeth NewGRF {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Log newidiadau NewGRF {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Trwydded NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Arolygu - {STRING}
