@@ -148,6 +148,18 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 		return v;
 	}
 
+	/**
+	 * Calculate the offset from this vehicle's center to the following center taking the vehicle lengths into account.
+	 * @return Offset from center to center.
+	 */
+	int CalcNextVehicleOffset() const
+	{
+		/* For vehicles with odd lengths the part before the center will be one unit
+		 * longer than the part after the center. This means we have to round up the
+		 * length of the next vehicle but may not round the length of the current
+		 * vehicle. */
+		return this->gcache.cached_veh_length / 2 + (this->Next() != NULL ? this->Next()->gcache.cached_veh_length + 1 : 0) / 2;
+	}
 
 protected: // These functions should not be called outside acceleration code.
 

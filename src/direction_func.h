@@ -239,4 +239,15 @@ static inline bool IsValidAxis(Axis d)
 	return d < AXIS_END;
 }
 
+/**
+ * Checks if a given Direction is diagonal.
+ *
+ * @param dir The given direction.
+ * @return True if the direction is diagonal.
+ */
+static inline bool IsDiagonalDirection(Direction dir)
+{
+	return (dir & 1) != 0;
+}
+
 #endif /* DIRECTION_FUNC_H */

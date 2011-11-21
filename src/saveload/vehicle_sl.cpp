@@ -249,8 +249,6 @@ void AfterLoadVehicles(bool part_of_load)
 		if (v->Next() != NULL) v->Next()->previous = v;
 		if (v->NextShared() != NULL) v->NextShared()->previous_shared = v;
 
-		v->UpdateDeltaXY(v->direction);
-
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
 		if (v->IsGroundVehicle()) v->GetGroundVehicleCache()->first_engine = INVALID_ENGINE;
@@ -442,8 +440,96 @@ void AfterLoadVehicles(bool part_of_load)
 			default: break;
 		}
 
+		v->UpdateDeltaXY(v->direction);
 		v->coord.left = INVALID_COORD;
 		VehicleMove(v, false);
+	}
+}
+
+bool TrainController(Train *v, Vehicle *nomove, bool reverse = true); // From train_cmd.cpp
+void ReverseTrainDirection(Train *v);
+void ReverseTrainSwapVeh(Train *v, int l, int r);
+
+/** Fixup old train spacing. */
+void FixupTrainLengths()
+{
+	/* Vehicle center was moved from 4 units behind the front to half the length
+	 * behind the front. Move vehicles so they end up on the same spot. */
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_TRAIN && v->IsPrimaryVehicle()) {
+			/* The vehicle center is now more to the front depending on vehicle length,
+			 * so we need to move all vehicles forward to cover the difference to the
+			 * old center, otherwise wagon spacing in trains would be broken upon load. */
+			for (Train *u = Train::From(v); u != NULL; u = u->Next()) {
+				if (u->track == TRACK_BIT_DEPOT || (u->vehstatus & VS_CRASHED)) continue;
+
+				Train *next = u->Next();
+
+				/* Try to pull the vehicle half its length forward. */
+				int diff = (VEHICLE_LENGTH - u->gcache.cached_veh_length) / 2;
+				int done;
+				for (done = 0; done < diff; done++) {
+					if (!TrainController(u, next, false)) break;
+				}
+
+				if (next != NULL && done < diff && u->IsFrontEngine()) {
+					/* Pulling the front vehicle forwards failed, we either encountered a dead-end
+					 * or a red signal. To fix this, we try to move the whole train the required
+					 * space backwards and re-do the fix up of the front vehicle. */
+
+					/* Ignore any signals when backtracking. */
+					TrainForceProceeding old_tfp = u->force_proceed;
+					u->force_proceed = TFP_SIGNAL;
+
+					/* Swap start<>end, start+1<>end-1, ... */
+					int r = CountVehiclesInChain(u) - 1; // number of vehicles - 1
+					int l = 0;
+					do ReverseTrainSwapVeh(u, l++, r--); while (l <= r);
+
+					/* We moved the first vehicle which is now the last. Move it back to the
+					 * original position as we will fix up the last vehicle later in the loop. */
+					for (int i = 0; i < done; i++) TrainController(u->Last(), NULL);
+
+					/* Move the train backwards to get space for the first vehicle. As the stopping
+					 * distance from a line end is rounded up, move the train one unit more to cater
+					 * for front vehicles with odd lengths. */
+					int moved;
+					for (moved = 0; moved < diff + 1; moved++) {
+						if (!TrainController(u, NULL, false)) break;
+					}
+
+					/* Swap start<>end, start+1<>end-1, ... again. */
+					r = CountVehiclesInChain(u) - 1; // number of vehicles - 1
+					l = 0;
+					do ReverseTrainSwapVeh(u, l++, r--); while (l <= r);
+
+					u->force_proceed = old_tfp;
+
+					/* Tracks are too short to fix the train length. The player has to fix the
+					 * train in a depot. Bail out so we don't damage the vehicle chain any more. */
+					if (moved < diff + 1) break;
+
+					/* Re-do the correction for the first vehicle. */
+					for (done = 0; done < diff; done++) TrainController(u, next, false);
+
+					/* We moved one unit more backwards than needed for even-length front vehicles,
+					 * try to move that unit forward again. We don't care if this step fails. */
+					TrainController(u, NULL, false);
+				}
+
+				/* If the next wagon is still in a depot, check if it shouldn't be outside already. */
+				if (next != NULL && next->track == TRACK_BIT_DEPOT) {
+					int d = TicksToLeaveDepot(u);
+					if (d <= 0) {
+						/* Next vehicle should have left the depot already, show it and pull forward. */
+						next->vehstatus &= ~VS_HIDDEN;
+						next->track = TrackToTrackBits(GetRailDepotTrack(next->tile));
+						for (int i = 0; i >= d; i--) TrainController(next, NULL);
+					}
+				}
+			}
+		}
 	}
 }
 

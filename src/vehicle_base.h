@@ -194,6 +194,8 @@ public:
 	byte x_extent;                      ///< x-extent of vehicle bounding box
 	byte y_extent;                      ///< y-extent of vehicle bounding box
 	byte z_extent;                      ///< z-extent of vehicle bounding box
+	int8 x_bb_offs;                     ///< x offset of vehicle bounding box
+	int8 y_bb_offs;                     ///< y offset of vehicle bounding box
 	int8 x_offs;                        ///< x offset for vehicle sprite
 	int8 y_offs;                        ///< y offset for vehicle sprite
 	EngineID engine_type;               ///< The type of engine used for this vehicle.

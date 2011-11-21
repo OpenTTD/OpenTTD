@@ -962,7 +962,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	}
 
 	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
-		v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed);
+		v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed, v->x_bb_offs, v->y_bb_offs);
 }
 
 /**
@@ -2212,6 +2212,11 @@ void Vehicle::ShowVisualEffect() const
 				!HasPowerOnRail(Train::From(v)->railtype, GetTileRailType(v->tile)))) {
 			continue;
 		}
+
+		/* The effect offset is relative to a point 4 units behind the vehicle's
+		 * front (which is the center of an 8/8 vehicle). Shorter vehicles need a
+		 * correction factor. */
+		if (v->type == VEH_TRAIN) effect_offset += (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
 
 		int x = _vehicle_smoke_pos[v->direction] * effect_offset;
 		int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
