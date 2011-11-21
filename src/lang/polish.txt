@@ -2255,6 +2255,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... utra
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... plik tylko do odczytu
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nie udało się dekompresować pobranego pliku
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Brak grafiki
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD potrzebuje grafiki do poprawnego działania, ale żadne nie zostały znalezione. Czy zgadzasz się, żeby OpenTTD pobrał i zainstalował grafikę?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Tak, pobierz grafikę
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nie, opuść OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcje przeźroczystości
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Przełącz przeźroczystość dla nazw stacji. Ctrl+klik, aby zablokować
@@ -2300,6 +2305,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zbuduj m
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zbuduj tunel kolejowy. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów kolejowych, sygnałów, pkt. orientacyjnych i stacji. Przetrzymanie Ctrl usuwa także tory kolejowe z pkt. orientacyjnych i stacji
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Zamiana typu torów. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+
+STR_RAIL_NAME_RAILROAD                                          :Kolej
+STR_RAIL_NAME_ELRAIL                                            :Kolej elektryczna
+STR_RAIL_NAME_MONORAIL                                          :Kolej jednoszynowa
+STR_RAIL_NAME_MAGLEV                                            :Kolej magnetyczna (MagLev)
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ukierunkowanie zajezdni
@@ -2571,6 +2581,10 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pola
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zaśnieżony teren
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustynia
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{G=m}{STRING} odcinek
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} tor z semaforem wyjściowym
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{G=f}{STRING} zajezdnia
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Droga
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Droga z oświetleniem ulicznym
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Droga z drzewami
@@ -2753,7 +2767,12 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Do góry
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Przesuń zaznaczony plik NewGRF w górę listy
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Na dół
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Przesuń zaznaczony plik NewGRF na dół listy
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista zainstalowanych plików NewGRF. Kliknij na pliku aby zmienić jego parametry
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista zainstalowanych plików NewGRF.
+
+# Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Odczytaj plik readme
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Lista zmian
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licencja
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ustaw parametry
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Zmień paletę
@@ -2776,7 +2795,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nie znalez
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Niedostępny
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Niekompatybilne z tą wersją OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmień parametry NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zamknij
@@ -2785,6 +2803,11 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Przywró
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Liczba parametrów: {ORANGE}{NUM}
+
+# NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}'CzytajTo' dla {STRING} NewGRF
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Zmiany w NewGRF dla {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licencja dla {STRING} NewGRF
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zbadaj - {STRING}
@@ -3867,6 +3890,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na to
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na budowę kolejnego lotniska w tym mieście
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokalne władzę odmawiają zgody na lotnisko ze względu na poziom hałasu
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba przekupstwa została wykryta przez okolicznych śledczych
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nie można tutaj podnieść lądu...
