@@ -298,6 +298,8 @@ struct GRFTempEngineData {
 	bool refitmask_valid;    ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
+	uint32 ctt_include_mask; ///< Cargo types always included in the refit mask.
+	uint32 ctt_exclude_mask; ///< Cargo types always excluded from the refit mask.
 };
 
 static GRFTempEngineData *_gted;  ///< Temporary engine data used during NewGRF loading
@@ -1160,6 +1162,18 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				ei->cargo_age_period = buf->ReadWord();
 				break;
 
+			case 0x2C:   // CTT refit include list
+			case 0x2D: { // CTT refit exclude list
+				uint8 count = buf->ReadByte();
+				while (count--) {
+					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					if (ctype == CT_INVALID) continue;
+					SetBit(prop == 0x2C ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+				}
+				_gted[e->index].refitmask_valid = true;
+				break;
+			}
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1323,6 +1337,18 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->shorten_factor = buf->ReadByte();
 				break;
 
+			case 0x24:   // CTT refit include list
+			case 0x25: { // CTT refit exclude list
+				uint8 count = buf->ReadByte();
+				while (count--) {
+					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					if (ctype == CT_INVALID) continue;
+					SetBit(prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+				}
+				_gted[e->index].refitmask_valid = true;
+				break;
+			}
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1470,6 +1496,18 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				ei->cargo_age_period = buf->ReadWord();
 				break;
 
+			case 0x1E:   // CTT refit include list
+			case 0x1F: { // CTT refit exclude list
+				uint8 count = buf->ReadByte();
+				while (count--) {
+					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					if (ctype == CT_INVALID) continue;
+					SetBit(prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+				}
+				_gted[e->index].refitmask_valid = true;
+				break;
+			}
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1595,6 +1633,18 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			case PROP_AIRCRAFT_CARGO_AGE_PERIOD: // 0x1C Cargo aging period
 				ei->cargo_age_period = buf->ReadWord();
 				break;
+
+			case 0x1D:   // CTT refit include list
+			case 0x1E: { // CTT refit exclude list
+				uint8 count = buf->ReadByte();
+				while (count--) {
+					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
+					if (ctype == CT_INVALID) continue;
+					SetBit(prop == 0x1D ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+				}
+				_gted[e->index].refitmask_valid = true;
+				break;
+			}
 
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
@@ -8013,7 +8063,7 @@ static void CalculateRefitMasks()
 
 			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
-			only_defaultcargo = (ei->refit_mask == 0 && _gted[engine].cargo_allowed == 0);
+			only_defaultcargo = (ei->refit_mask == 0 && _gted[engine].cargo_allowed == 0 && _gted[engine].ctt_include_mask == 0);
 
 			const GRFFile *file = _gted[engine].refitmask_grf;
 			if (file == NULL) file = e->GetGRF();
@@ -8052,6 +8102,10 @@ static void CalculateRefitMasks()
 			}
 
 			ei->refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
+
+			/* Apply explicit refit includes/excludes. */
+			ei->refit_mask |= _gted[engine].ctt_include_mask;
+			ei->refit_mask &= ~_gted[engine].ctt_exclude_mask;
 		} else {
 			uint32 xor_mask = 0;
 
