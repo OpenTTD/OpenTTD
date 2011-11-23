@@ -425,7 +425,7 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 	return ret;
 }
 
-/* static */ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror)
+SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror)
 {
 	size_t size;
 	FILE *file = FioFOpenFile(filename, "rb", AI_DIR, &size);
@@ -477,7 +477,7 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 	return sq_throwerror(vm, _SC("cannot open the file"));
 }
 
-/* static */ bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)
+bool Squirrel::LoadScript(HSQUIRRELVM vm, const char *script, bool in_root)
 {
 	/* Make sure we are always in the root-table */
 	if (in_root) sq_pushroottable(vm);

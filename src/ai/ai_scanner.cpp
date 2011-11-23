@@ -134,7 +134,7 @@ bool AIScanner::ImportLibrary(const char *library, const char *class_name, int v
 		sq_pushstring(vm, OTTD2SQ(fake_class), -1);
 		sq_newclass(vm, SQFalse);
 		/* Load the library */
-		if (!Squirrel::LoadScript(vm, (*iter).second->GetMainScript(), false)) {
+		if (!this->engine->LoadScript(vm, (*iter).second->GetMainScript(), false)) {
 			char error[1024];
 			snprintf(error, sizeof(error), "there was a compile error when importing '%s' version %d", library, version);
 			sq_throwerror(vm, OTTD2SQ(error));
