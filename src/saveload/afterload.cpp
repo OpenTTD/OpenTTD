@@ -2670,6 +2670,24 @@ bool AfterLoadGame()
 	/* The center of train vehicles was changed, fix up spacing. */
 	if (IsSavegameVersionBefore(164)) FixupTrainLengths();
 
+	if (IsSavegameVersionBefore(165)) {
+		Town *t;
+
+		FOR_ALL_TOWNS(t) {
+			/* Set the default cargo requirement for town growth */
+			switch (_settings_game.game_creation.landscape) {
+				case LT_ARCTIC:
+					if (FindFirstCargoWithTownEffect(TE_FOOD) != NULL) t->goal[TE_FOOD] = TOWN_GROWTH_WINTER;
+					break;
+
+				case LT_TROPIC:
+					if (FindFirstCargoWithTownEffect(TE_FOOD) != NULL) t->goal[TE_FOOD] = TOWN_GROWTH_DESERT;
+					if (FindFirstCargoWithTownEffect(TE_WATER) != NULL) t->goal[TE_WATER] = TOWN_GROWTH_DESERT;
+					break;
+			}
+		}
+	}
+
 	/* When any NewGRF has been changed the availability of some vehicles might
 	 * have been changed too. e->company_avail must be set to 0 in that case
 	 * which is done by StartupEngines(). */
