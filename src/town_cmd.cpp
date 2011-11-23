@@ -2578,6 +2578,9 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 
 static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 {
+	/* Check if it's allowed to buy the rights */
+	if (!_settings_game.economy.fund_buildings) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		/* Build next tick */
 		t->grow_counter = 1;
@@ -2679,6 +2682,9 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 
 			/* Is the company not able to buy exclusive rights ? */
 			if (cur == TACT_BUY_RIGHTS && !_settings_game.economy.exclusive_rights) continue;
+
+			/* Is the company not able to fund buildings ? */
+			if (cur == TACT_FUND_BUILDINGS && !_settings_game.economy.fund_buildings) continue;
 
 			/* Is the company not able to fund local road reconstruction? */
 			if (cur == TACT_ROAD_REBUILD && !_settings_game.economy.fund_roads) continue;

@@ -395,6 +395,7 @@ struct EconomySettings {
 	uint8  feeder_payment_share;             ///< percentage of leg payment to virtually pay in feeder systems
 	byte   dist_local_authority;             ///< distance for town local authority, default 20
 	bool   exclusive_rights;                 ///< allow buying exclusive rights
+	bool   fund_buildings;                   ///< allow funding new buildings
 	bool   fund_roads;                       ///< allow funding local road reconstruction
 	bool   give_money;                       ///< allow giving other companies money
 	bool   mod_road_rebuild;                 ///< roadworks remove unneccesary RoadBits
