@@ -322,9 +322,9 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	return AI::ai_scanner->FindInfo(name, version, force_exact_match);
 }
 
-/* static */ bool AI::ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm)
+/* static */ AILibrary *AI::FindLibrary(const char *library, int version)
 {
-	return AI::ai_scanner->ImportLibrary(library, class_name, version, vm, AIObject::GetActiveInstance()->GetController());
+	return AI::ai_scanner->FindLibrary(library, version);
 }
 
 /* static */ void AI::Rescan()

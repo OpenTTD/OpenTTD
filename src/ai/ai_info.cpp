@@ -372,14 +372,3 @@ int AIInfo::GetSettingDefaultValue(const char *name) const
 
 	return 0;
 }
-
-/* static */ SQInteger AILibrary::Import(HSQUIRRELVM vm)
-{
-	SQConvert::SQAutoFreePointers ptr;
-	const char *library = GetParam(SQConvert::ForceType<const char *>(), vm, 2, &ptr);
-	const char *class_name = GetParam(SQConvert::ForceType<const char *>(), vm, 3, &ptr);
-	int version = GetParam(SQConvert::ForceType<int>(), vm, 4, &ptr);
-
-	if (!AI::ImportLibrary(library, class_name, version, vm)) return -1;
-	return 1;
-}

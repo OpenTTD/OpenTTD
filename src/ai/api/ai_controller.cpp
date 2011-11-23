@@ -13,11 +13,13 @@
 #include "../../string_func.h"
 #include "../../company_base.h"
 #include "../../company_func.h"
+#include "../../script/squirrel.hpp"
 #include "../../rev.h"
 
 #include "ai_controller.hpp"
 #include "../ai_instance.hpp"
 #include "../ai_config.hpp"
+#include "../ai.hpp"
 #include "ai_log.hpp"
 
 /* static */ void AIController::SetCommandDelay(int ticks)
@@ -81,19 +83,81 @@ AIController::~AIController()
 	return _openttd_newgrf_version;
 }
 
-bool AIController::LoadedLibrary(const char *library_name, int *next_number, char *fake_class_name, int fake_class_name_len)
+/* static */ HSQOBJECT AIController::Import(const char *library, const char *class_name, int version)
 {
-	LoadedLibraryList::iterator iter = this->loaded_library.find(library_name);
-	if (iter == this->loaded_library.end()) {
-		*next_number = ++this->loaded_library_count;
-		return false;
+	AIController *controller = AIObject::GetActiveInstance()->GetController();
+	Squirrel *engine = AIObject::GetActiveInstance()->engine;
+	HSQUIRRELVM vm = engine->GetVM();
+
+	/* Internally we store libraries as 'library.version' */
+	char library_name[1024];
+	snprintf(library_name, sizeof(library_name), "%s.%d", library, version);
+	strtolower(library_name);
+
+	AILibrary *lib = AI::FindLibrary(library, version);
+	if (lib == NULL) {
+		char error[1024];
+		snprintf(error, sizeof(error), "couldn't find library '%s' with version %d", library, version);
+		throw sq_throwerror(vm, OTTD2SQ(error));
 	}
 
-	ttd_strlcpy(fake_class_name, (*iter).second, fake_class_name_len);
-	return true;
-}
+	/* Get the current table/class we belong to */
+	HSQOBJECT parent;
+	sq_getstackobj(vm, 1, &parent);
 
-void AIController::AddLoadedLibrary(const char *library_name, const char *fake_class_name)
-{
-	this->loaded_library[strdup(library_name)] = strdup(fake_class_name);
+	char fake_class[1024];
+
+	LoadedLibraryList::iterator iter = controller->loaded_library.find(library_name);
+	if (iter != controller->loaded_library.end()) {
+		ttd_strlcpy(fake_class, (*iter).second, sizeof(fake_class));
+	} else {
+		int next_number = ++controller->loaded_library_count;
+
+		/* Create a new fake internal name */
+		snprintf(fake_class, sizeof(fake_class), "_internalNA%d", next_number);
+
+		/* Load the library in a 'fake' namespace, so we can link it to the name the user requested */
+		sq_pushroottable(vm);
+		sq_pushstring(vm, OTTD2SQ(fake_class), -1);
+		sq_newclass(vm, SQFalse);
+		/* Load the library */
+		if (!engine->LoadScript(vm, lib->GetMainScript(), false)) {
+			char error[1024];
+			snprintf(error, sizeof(error), "there was a compile error when importing '%s' version %d", library, version);
+			throw sq_throwerror(vm, OTTD2SQ(error));
+		}
+		/* Create the fake class */
+		sq_newslot(vm, -3, SQFalse);
+		sq_pop(vm, 1);
+
+		controller->loaded_library[strdup(library_name)] = strdup(fake_class);
+	}
+
+	/* Find the real class inside the fake class (like 'sets.Vector') */
+	sq_pushroottable(vm);
+	sq_pushstring(vm, OTTD2SQ(fake_class), -1);
+	if (SQ_FAILED(sq_get(vm, -2))) {
+		throw sq_throwerror(vm, _SC("internal error assigning library class"));
+	}
+	sq_pushstring(vm, OTTD2SQ(lib->GetInstanceName()), -1);
+	if (SQ_FAILED(sq_get(vm, -2))) {
+		char error[1024];
+		snprintf(error, sizeof(error), "unable to find class '%s' in the library '%s' version %d", lib->GetInstanceName(), library, version);
+		throw sq_throwerror(vm, OTTD2SQ(error));
+	}
+	HSQOBJECT obj;
+	sq_getstackobj(vm, -1, &obj);
+	sq_pop(vm, 3);
+
+	if (StrEmpty(class_name)) return obj;
+
+	/* Now link the name the user wanted to our 'fake' class */
+	sq_pushobject(vm, parent);
+	sq_pushstring(vm, OTTD2SQ(class_name), -1);
+	sq_pushobject(vm, obj);
+	sq_newclass(vm, SQTrue);
+	sq_newslot(vm, -3, SQFalse);
+	sq_pop(vm, 1);
+
+	return obj;
 }

@@ -109,6 +109,16 @@ public:
 	 */
 	static void Print(bool error_msg, const char *message);
 
+	/**
+	 * Import a library.
+	 * @param library The name of the library to import.
+	 * @param class_name Under which name you want it to be available (or "" if you just want the returning object).
+	 * @param version Which version you want specificly.
+	 * @return The loaded library object. If class_name is set, it is also available (under the scope of the import) under that name.
+	 * @note This command can be called from the global space, and does not need an instance.
+	 */
+	static HSQOBJECT Import(const char *library, const char *class_name, int version);
+
 private:
 	typedef std::map<const char *, const char *, StringCompare> LoadedLibraryList; ///< The type for loaded libraries.
 
@@ -120,23 +130,6 @@ private:
 	 * Register all classes that are known inside the NoAI API.
 	 */
 	void RegisterClasses();
-
-	/**
-	 * Check if a library is already loaded. If found, fake_class_name is filled
-	 *  with the fake class name as given via AddLoadedLibrary. If not found,
-	 *  next_number is set to the next number available for the fake namespace.
-	 * @param library_name The library to check if already loaded.
-	 * @param next_number The next available number for a library if not already loaded.
-	 * @param fake_class_name The name the library has if already loaded.
-	 * @param fake_class_name_len The maximum length of fake_class_name.
-	 * @return True if the library is already loaded.
-	 */
-	bool LoadedLibrary(const char *library_name, int *next_number, char *fake_class_name, int fake_class_name_len);
-
-	/**
-	 * Add a library as loaded.
-	 */
-	void AddLoadedLibrary(const char *library_name, const char *fake_class_name);
 };
 
 #endif /* AI_CONTROLLER_HPP */

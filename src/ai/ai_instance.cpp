@@ -122,10 +122,7 @@ void AIInstance::Initialize(AIInfo *info)
 
 	this->controller = new AIController();
 
-	/* The import method is available at a very early stage */
-	this->engine->AddMethod("import", &AILibrary::Import, 4, ".ssi");
-
-	/* Register the AIController */
+	/* Register the AIController (including the "import" command) */
 	SQAIController_Register(this->engine);
 
 	/* Register the API functions and classes */

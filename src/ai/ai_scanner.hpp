@@ -24,9 +24,12 @@ public:
 	~AIScanner();
 
 	/**
-	 * Import a library inside the Squirrel VM.
+	 * Find a library by name + version.
+	 * @param library The name of the library to find.
+	 * @param version The prefered version of the library.
+	 * @return The library if found, NULL otherwise.
 	 */
-	bool ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm, class AIController *controller);
+	AILibrary *FindLibrary(const char *library, int version);
 
 	/**
 	 * Register a library to be put in the available list.

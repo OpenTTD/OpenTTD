@@ -147,13 +147,6 @@ public:
 	static SQInteger Constructor(HSQUIRRELVM vm);
 
 	/**
-	 * Import a library in the current AI. This function can be used by AIs
-	 * by calling import.
-	 * @param vm The squirrel vm of the calling AI.
-	 */
-	static SQInteger Import(HSQUIRRELVM vm);
-
-	/**
 	 * Get the category this library is in.
 	 */
 	const char *GetCategory() const { return this->category; }

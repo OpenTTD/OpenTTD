@@ -134,8 +134,8 @@ public:
 	static const AIInfoList *GetUniqueInfoList();
 	/** Wrapper function for AIScanner::FindInfo */
 	static AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
-	/** Wrapper function for AIScanner::ImportLibrary */
-	static bool ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm);
+	/** Wrapper function for AIScanner::FindLibrary */
+	static class AILibrary *FindLibrary(const char *library, int version);
 
 	/**
 	 * Rescans all searchpaths for available AIs. If a used AI is no longer

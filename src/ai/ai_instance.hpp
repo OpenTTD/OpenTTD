@@ -78,6 +78,7 @@ private:
 class AIInstance {
 public:
 	friend class AIObject;
+	friend class AIController;
 
 	/**
 	 * Create a new AI.

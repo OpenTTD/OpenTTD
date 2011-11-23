@@ -92,6 +92,7 @@ namespace SQConvert {
 	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, OTTD2SQ(res), -1); free(res); } return 1; }
 	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == NULL) sq_pushnull(vm); else { sq_pushstring(vm, OTTD2SQ(res), -1); } return 1; }
 	template <> inline int Return<void *>      (HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; }
+	template <> inline int Return<HSQOBJECT>   (HSQUIRRELVM vm, HSQOBJECT res)   { sq_pushobject(vm, res); return 1; }
 
 	/**
 	 * To get a param from squirrel, we call this function. It converts to the right format.

@@ -95,7 +95,7 @@ AIScanner::~AIScanner()
 	delete this->info_dummy;
 }
 
-bool AIScanner::ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm, AIController *controller)
+AILibrary *AIScanner::FindLibrary(const char *library, int version)
 {
 	/* Internally we store libraries as 'library.version' */
 	char library_name[1024];
@@ -104,82 +104,9 @@ bool AIScanner::ImportLibrary(const char *library, const char *class_name, int v
 
 	/* Check if the library + version exists */
 	AILibraryList::iterator iter = this->library_list.find(library_name);
-	if (iter == this->library_list.end()) {
-		char error[1024];
+	if (iter == this->library_list.end()) return NULL;
 
-		/* Now see if the version doesn't exist, or the library */
-		iter = this->library_list.find(library);
-		if (iter == this->library_list.end()) {
-			snprintf(error, sizeof(error), "couldn't find library '%s'", library);
-		} else {
-			snprintf(error, sizeof(error), "couldn't find library '%s' version %d. The latest version available is %d", library, version, (*iter).second->GetVersion());
-		}
-		sq_throwerror(vm, OTTD2SQ(error));
-		return false;
-	}
-
-	/* Get the current table/class we belong to */
-	HSQOBJECT parent;
-	sq_getstackobj(vm, 1, &parent);
-
-	char fake_class[1024];
-	int next_number;
-
-	if (!controller->LoadedLibrary(library_name, &next_number, &fake_class[0], sizeof(fake_class))) {
-		/* Create a new fake internal name */
-		snprintf(fake_class, sizeof(fake_class), "_internalNA%d", next_number);
-
-		/* Load the library in a 'fake' namespace, so we can link it to the name the user requested */
-		sq_pushroottable(vm);
-		sq_pushstring(vm, OTTD2SQ(fake_class), -1);
-		sq_newclass(vm, SQFalse);
-		/* Load the library */
-		if (!this->engine->LoadScript(vm, (*iter).second->GetMainScript(), false)) {
-			char error[1024];
-			snprintf(error, sizeof(error), "there was a compile error when importing '%s' version %d", library, version);
-			sq_throwerror(vm, OTTD2SQ(error));
-			return false;
-		}
-		/* Create the fake class */
-		sq_newslot(vm, -3, SQFalse);
-		sq_pop(vm, 1);
-
-		controller->AddLoadedLibrary(library_name, fake_class);
-	}
-
-	/* Find the real class inside the fake class (like 'sets.Vector') */
-	sq_pushroottable(vm);
-	sq_pushstring(vm, OTTD2SQ(fake_class), -1);
-	if (SQ_FAILED(sq_get(vm, -2))) {
-		sq_throwerror(vm, _SC("internal error assigning library class"));
-		return false;
-	}
-	sq_pushstring(vm, OTTD2SQ((*iter).second->GetInstanceName()), -1);
-	if (SQ_FAILED(sq_get(vm, -2))) {
-		char error[1024];
-		snprintf(error, sizeof(error), "unable to find class '%s' in the library '%s' version %d", (*iter).second->GetInstanceName(), library, version);
-		sq_throwerror(vm, OTTD2SQ(error));
-		return false;
-	}
-	HSQOBJECT obj;
-	sq_getstackobj(vm, -1, &obj);
-	sq_pop(vm, 3);
-
-	if (StrEmpty(class_name)) {
-		sq_pushobject(vm, obj);
-		return true;
-	}
-
-	/* Now link the name the user wanted to our 'fake' class */
-	sq_pushobject(vm, parent);
-	sq_pushstring(vm, OTTD2SQ(class_name), -1);
-	sq_pushobject(vm, obj);
-	sq_newclass(vm, SQTrue);
-	sq_newslot(vm, -3, SQFalse);
-	sq_pop(vm, 1);
-
-	sq_pushobject(vm, obj);
-	return true;
+	return (*iter).second;
 }
 
 void AIScanner::RegisterLibrary(AILibrary *library)
