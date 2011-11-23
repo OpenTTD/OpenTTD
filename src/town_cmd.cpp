@@ -485,36 +485,24 @@ static void TileLoop_Town(TileIndex tile)
 			uint moved = MoveGoodsToStation(cargo, amt, ST_TOWN, t->index, stations.GetStations());
 
 			const CargoSpec *cs = CargoSpec::Get(cargo);
-			switch (cs->town_effect) {
-				case TE_PASSENGERS:
-					t->pass.new_max += amt;
-					t->pass.new_act += moved;
-					break;
-
-				case TE_MAIL:
-					t->mail.new_max += amt;
-					t->mail.new_act += moved;
-					break;
-
-				default:
-					break;
-			}
+			t->supplied[cs->Index()].new_max += amt;
+			t->supplied[cs->Index()].new_act += moved;
 		}
 	} else {
 		if (GB(r, 0, 8) < hs->population) {
 			uint amt = GB(r, 0, 8) / 8 + 1;
 
 			if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-			t->pass.new_max += amt;
-			t->pass.new_act += MoveGoodsToStation(CT_PASSENGERS, amt, ST_TOWN, t->index, stations.GetStations());
+			t->supplied[CT_PASSENGERS].new_max += amt;
+			t->supplied[CT_PASSENGERS].new_act += MoveGoodsToStation(CT_PASSENGERS, amt, ST_TOWN, t->index, stations.GetStations());
 		}
 
 		if (GB(r, 8, 8) < hs->mail_generation) {
 			uint amt = GB(r, 8, 8) / 8 + 1;
 
 			if (EconomyIsInRecession()) amt = (amt + 1) >> 1;
-			t->mail.new_max += amt;
-			t->mail.new_act += MoveGoodsToStation(CT_MAIL, amt, ST_TOWN, t->index, stations.GetStations());
+			t->supplied[CT_MAIL].new_max += amt;
+			t->supplied[CT_MAIL].new_act += MoveGoodsToStation(CT_MAIL, amt, ST_TOWN, t->index, stations.GetStations());
 		}
 	}
 
@@ -1401,8 +1389,8 @@ void UpdateTownRadius(Town *t)
 
 void UpdateTownMaxPass(Town *t)
 {
-	t->pass.old_max = t->population >> 3;
-	t->mail.old_max = t->population >> 4;
+	t->supplied[CT_PASSENGERS].old_max = t->population >> 3;
+	t->supplied[CT_MAIL].old_max = t->population >> 4;
 }
 
 /**
@@ -2771,10 +2759,10 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (TileHeight(t->xy) >= GetSnowLine() && t->food.old_act == 0 && t->population > 90) return;
+		if (TileHeight(t->xy) >= GetSnowLine() && t->received[TE_FOOD].old_act == 0 && t->population > 90) return;
 
 	} else if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->food.old_act == 0 || t->water.old_act == 0) && t->population > 60) return;
+		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->received[TE_FOOD].old_act == 0 || t->received[TE_WATER].old_act == 0) && t->population > 60) return;
 	}
 
 	/* Use the normal growth rate values if new buildings have been funded in
@@ -2794,10 +2782,8 @@ static void UpdateTownGrowRate(Town *t)
 
 static void UpdateTownAmounts(Town *t)
 {
-	t->pass.NewMonth();
-	t->mail.NewMonth();
-	t->food.NewMonth();
-	t->water.NewMonth();
+	for (CargoID i = 0; i < NUM_CARGO; i++) t->supplied[i].NewMonth();
+	for (int i = TE_BEGIN; i < TE_END; i++) t->received[i].NewMonth();
 
 	SetWindowDirty(WC_TOWN_VIEW, t->index);
 }

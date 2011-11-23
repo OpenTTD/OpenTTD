@@ -23,6 +23,7 @@
  *
  * \li AICargo::CT_AUTO_REFIT
  * \li AICargo::CT_NO_REFIT
+ * \li AICargo::IsValidTownEffect
  * \li AICargoList_StationAccepting
  * \li AICompany::GetQuarterlyIncome
  * \li AICompany::GetQuarterlyExpenses
@@ -34,11 +35,24 @@
  * \li AIOrder::GetOrderRefit
  * \li AIOrder::IsRefitOrder
  * \li AIOrder::SetOrderRefit
+ * \li AITown::GetLastMonthReceived
  * \li AITown::GetTownAuthority
  * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached
  *
+ * API renames:
+ * \li AITown::GetLastMonthTransported to AITown::GetLastMonthSupplied to better
+ *     reflect what it does
+ *
  * API removals:
  * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.
+ *
+ * Other changes:
+ * \li AITown::GetLastMonthProduction no longer has prerequisites based on town
+ *     effects.
+ * \li AITown::GetLastMonthTransported no longer has prerequisites based on
+ *     town effects.
+ * \li AITown::GetLastMonthTransportedPercentage no longer has prerequisites
+ *     based on town effects.
  *
  * \b 1.1.2
  *

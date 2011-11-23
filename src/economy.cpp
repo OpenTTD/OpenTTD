@@ -988,10 +988,9 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 	company->cur_economy.delivered_cargo += accepted;
 	if (accepted > 0) SetBit(company->cargo_types, cargo_type);
 
-	/* Increase town's counter for some special goods types */
+	/* Increase town's counter for town effects */
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);
-	if (cs->town_effect == TE_FOOD) st->town->food.new_act += accepted;
-	if (cs->town_effect == TE_WATER) st->town->water.new_act += accepted;
+	st->town->received[cs->town_effect].new_act += accepted;
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);

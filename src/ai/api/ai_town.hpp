@@ -12,6 +12,7 @@
 #ifndef AI_TOWN_HPP
 #define AI_TOWN_HPP
 
+#include "ai_cargo.hpp"
 #include "ai_company.hpp"
 
 /**
@@ -154,23 +155,21 @@ public:
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
 	 * @pre AICargo::IsValidCargo(cargo_id).
-	 * @pre AICargo::GetTownEffect(cargo_id) == TE_PASSENGERS || AICargo::GetTownEffect(cargo_id) == TE_MAIL.
 	 * @return The last month's production of the given cargo for this town.
 	 * @post Return value is always non-negative.
 	 */
 	static int32 GetLastMonthProduction(TownID town_id, CargoID cargo_id);
 
 	/**
-	 * Get the total amount of cargo transported from a town last month.
-	 * @param town_id The index of the industry.
+	 * Get the total amount of cargo supplied from a town last month.
+	 * @param town_id The index of the town.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
 	 * @pre AICargo::IsValidCargo(cargo_id).
-	 * @pre AICargo::GetTownEffect(cargo_id) == TE_PASSENGERS || AICargo::GetTownEffect(cargo_id) == TE_MAIL.
-	 * @return The amount of given cargo transported from this town last month.
+	 * @return The amount of cargo supplied for transport from this town last month.
 	 * @post Return value is always non-negative.
 	 */
-	static int32 GetLastMonthTransported(TownID town_id, CargoID cargo_id);
+	static int32 GetLastMonthSupplied(TownID town_id, CargoID cargo_id);
 
 	/**
 	 * Get the percentage of transported production of the given cargo at a town.
@@ -178,11 +177,21 @@ public:
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
 	 * @pre AICargo::IsValidCargo(cargo_id).
-	 * @pre AICargo::GetTownEffect(cargo_id) == TE_PASSENGERS || AICargo::GetTownEffect(cargo_id) == TE_MAIL.
 	 * @return The percentage of given cargo transported from this town last month.
 	 * @post Return value is always non-negative.
 	 */
 	static int32 GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id);
+
+	/**
+	 * Get the total amount of cargo effects received by a town last month.
+	 * @param town_id The index of the town.
+	 * @param towneffect_id The index of the cargo.
+	 * @pre IsValidTown(town_id).
+	 * @pre AICargo::IsValidTownEffect(cargo_id).
+	 * @return The amount of cargo received by this town last month for this cargo effect.
+	 * @post Return value is always non-negative.
+	 */
+	static int32 GetLastMonthReceived(TownID town_id, AICargo::TownEffect towneffect_id);
 
 	/**
 	 * Get the manhattan distance from the tile to the AITown::GetLocation()

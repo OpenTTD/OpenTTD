@@ -23,12 +23,15 @@ typedef uint32 CargoLabel;
 
 /** Town growth effect when delivering cargo. */
 enum TownEffect {
-	TE_NONE,       ///< Cargo has no effect.
-	TE_PASSENGERS, ///< Cargo behaves passenger-like.
-	TE_MAIL,       ///< Cargo behaves mail-like.
-	TE_GOODS,      ///< Cargo behaves goods/candy-like.
-	TE_WATER,      ///< Cargo behaves water-like.
-	TE_FOOD,       ///< Cargo behaves food/fizzy-drinks-like.
+	TE_BEGIN = 0,
+	TE_NONE = TE_BEGIN, ///< Cargo has no effect.
+	TE_PASSENGERS,      ///< Cargo behaves passenger-like.
+	TE_MAIL,            ///< Cargo behaves mail-like.
+	TE_GOODS,           ///< Cargo behaves goods/candy-like.
+	TE_WATER,           ///< Cargo behaves water-like.
+	TE_FOOD,            ///< Cargo behaves food/fizzy-drinks-like.
+	TE_END,             ///< End of town effects.
+	NUM_TE = TE_END,    ///< Amount of town effects.
 };
 
 /** Cargo classes. */

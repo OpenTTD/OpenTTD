@@ -20,6 +20,11 @@
 	return (cargo_type < NUM_CARGO && ::CargoSpec::Get(cargo_type)->IsValid());
 }
 
+/* static */ bool AICargo::IsValidTownEffect(TownEffect towneffect_type)
+{
+	return (towneffect_type >= TE_BEGIN && towneffect_type < TE_END);
+}
+
 /* static */ char *AICargo::GetCargoLabel(CargoID cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return NULL;

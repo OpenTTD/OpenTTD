@@ -63,6 +63,13 @@ public:
 	static bool IsValidCargo(CargoID cargo_type);
 
 	/**
+	 * Checks whether the given town effect type is valid.
+	 * @param towneffect_type The town effect to check.
+	 * @return True if and only if the town effect type is valid.
+	 */
+	static bool IsValidTownEffect(TownEffect towneffect_type);
+
+	/**
 	 * Gets the string representation of the cargo label.
 	 * @param cargo_type The cargo to get the string representation of.
 	 * @pre AICargo::IsValidCargo(cargo_type).

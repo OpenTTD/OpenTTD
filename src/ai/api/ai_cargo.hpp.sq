@@ -55,12 +55,13 @@ void SQAICargo_Register(Squirrel *engine)
 	SQAICargo.DefSQConst(engine, AICargo::CT_AUTO_REFIT,   "CT_AUTO_REFIT");
 	SQAICargo.DefSQConst(engine, AICargo::CT_NO_REFIT,     "CT_NO_REFIT");
 
-	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsValidCargo,   "IsValidCargo",   2, ".i");
-	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetCargoLabel,  "GetCargoLabel",  2, ".i");
-	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsFreight,      "IsFreight",      2, ".i");
-	SQAICargo.DefSQStaticMethod(engine, &AICargo::HasCargoClass,  "HasCargoClass",  3, ".ii");
-	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetTownEffect,  "GetTownEffect",  2, ".i");
-	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetCargoIncome, "GetCargoIncome", 4, ".iii");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsValidCargo,      "IsValidCargo",      2, ".i");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsValidTownEffect, "IsValidTownEffect", 2, ".i");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetCargoLabel,     "GetCargoLabel",     2, ".i");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsFreight,         "IsFreight",         2, ".i");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::HasCargoClass,     "HasCargoClass",     3, ".ii");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetTownEffect,     "GetTownEffect",     2, ".i");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetCargoIncome,    "GetCargoIncome",    4, ".iii");
 
 	SQAICargo.PostRegister(engine);
 }

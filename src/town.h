@@ -18,6 +18,7 @@
 #include "town_map.h"
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
+#include "cargotype.h"
 #include <list>
 
 template <typename T>
@@ -66,16 +67,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint8 exclusive_counter;       ///< months till the exclusivity expires
 	int16 ratings[MAX_COMPANIES];  ///< ratings of each company for this town
 
-	TransportedCargoStat<uint32> pass;  ///< Passenger cargo statistics.
-	TransportedCargoStat<uint32> mail;  ///< Mail cargo statistics.
-	TransportedCargoStat<uint16> food;  ///< Food cargo statistics.
-	TransportedCargoStat<uint16> water; ///< Water cargo statistics.
+	TransportedCargoStat<uint32> supplied[NUM_CARGO]; ///< Cargo statistics about supplied cargo.
+	TransportedCargoStat<uint16> received[NUM_TE];    ///< Cargo statistics about received cargotypes.
 
-	/** Percentage of passengers transported last month (0xFF=100%) */
-	inline byte GetPercentPassTransported() const { return this->pass.old_act * 256 / (this->pass.old_max + 1); }
-
-	/** Percentage of mail transported last month (0xFF=100%) */
-	inline byte GetPercentMailTransported() const { return this->mail.old_act * 256 / (this->mail.old_max + 1); }
+	inline byte GetPercentTransported(CargoID cid) const { return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1); }
 
 	uint16 time_until_rebuild;     ///< time until we rebuild a house
 
