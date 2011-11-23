@@ -3027,8 +3027,8 @@ void TriggerWatchedCargoCallbacks(Station *st)
  */
 static bool StationHandleBigTick(BaseStation *st)
 {
-	if (!st->IsInUse() && ++st->delete_ctr >= 8) {
-		delete st;
+	if (!st->IsInUse()) {
+		if (++st->delete_ctr >= 8) delete st;
 		return false;
 	}
 
