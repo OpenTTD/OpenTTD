@@ -365,7 +365,8 @@ public:
 		bool first = true;
 		for (int i = TE_BEGIN; i < TE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
-			if (this->town->goal[i] == TOWN_GROWTH_WINTER && TileHeight(this->town->xy) < LowestSnowLine()) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->population <= 90)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->population <= 60)) continue;
 
 			if (first) {
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
@@ -481,6 +482,9 @@ public:
 		bool first = true;
 		for (int i = TE_BEGIN; i < TE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->population <= 90)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->population <= 60)) continue;
+
 			if (first) {
 				aimed_height += FONT_HEIGHT_NORMAL;
 				first = false;
