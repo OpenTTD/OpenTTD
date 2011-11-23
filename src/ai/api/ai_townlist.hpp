@@ -23,4 +23,13 @@ public:
 	AITownList();
 };
 
+/**
+ * Creates a list of all TownEffects known in the game.
+ * @ingroup AIList
+ */
+class AITownEffectList : public AIList {
+public:
+	AITownEffectList();
+};
+
 #endif /* AI_TOWNLIST_HPP */

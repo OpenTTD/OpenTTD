@@ -20,3 +20,10 @@ AITownList::AITownList()
 		this->AddItem(t->index);
 	}
 }
+
+AITownEffectList::AITownEffectList()
+{
+	for (int i = TE_BEGIN; i < TE_END; i++) {
+		this->AddItem(i);
+	}
+}

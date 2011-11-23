@@ -35,6 +35,8 @@
  * \li AIOrder::GetOrderRefit
  * \li AIOrder::IsRefitOrder
  * \li AIOrder::SetOrderRefit
+ * \li AITown::GetCargoGoal
+ * \li AITown::GetGrowthRate
  * \li AITown::GetLastMonthReceived
  * \li AITown::GetTownAuthority
  * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached

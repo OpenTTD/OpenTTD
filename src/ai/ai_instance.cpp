@@ -249,6 +249,7 @@ void AIInstance::RegisterAPI()
 	SQAITileList_IndustryProducing_Register(this->engine);
 	SQAITileList_StationType_Register(this->engine);
 	SQAITown_Register(this->engine);
+	SQAITownEffectList_Register(this->engine);
 	SQAITownList_Register(this->engine);
 	SQAITunnel_Register(this->engine);
 	SQAIVehicle_Register(this->engine);

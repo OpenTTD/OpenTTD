@@ -187,6 +187,28 @@ public:
 	static int32 GetLastMonthReceived(TownID town_id, AICargo::TownEffect towneffect_id);
 
 	/**
+	 * Get the amount of cargo that needs to be delivered (per TownEffect) for a
+	 *  town to grow. All goals need to be reached before a town will grow.
+	 * @param town_id The index of the town.
+	 * @param towneffect_id The index of the towneffect.
+	 * @pre IsValidTown(town_id).
+	 * @pre AICargo::IsValidTownEffect(cargo_id).
+	 * @return The goal of the cargo.
+	 * @note Goals can change over time. For example with a changing snowline, or
+	 *  with a growing town.
+	 */
+	static uint32 GetCargoGoal(TownID town_id, AICargo::TownEffect towneffect_id);
+
+	/**
+	 * Get the amount of days between town growth.
+	 * @param town_id The index of the town.
+	 * @pre IsValidTown(town_id).
+	 * @return True if the action succeeded.
+	 * @note This function does not indicate when it will grow next. It only tells you the time between growths.
+	 */
+	static int32 GetGrowthRate(TownID town_id);
+
+	/**
 	 * Get the manhattan distance from the tile to the AITown::GetLocation()
 	 *  of the town.
 	 * @param town_id The town to get the distance to.
