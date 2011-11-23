@@ -2910,9 +2910,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Насе
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пасажыраў за мінулы месяц: {ORANGE}{COMMA}{BLACK} Макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Пошты за мінулы месяц: {ORANGE}{COMMA}{BLACK}  Макс.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, неабходны для росту горада:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} патрабу{G 0 е e e ю}цца
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} патрабу{G 0 е e e ю}цца
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} патрабу{G 0 е e e ю}цца ўзімку
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} дастаўлена ў мінулым месяцы
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Узровень шуму ў горадзе: {ORANGE}{COMMA}{BLACK}  Макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць горад у асноўным вакне. Ctrl+клік - паказаць у дадатковым вакне.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Мясцовыя ўлады

@@ -2573,9 +2573,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Poblogae
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Teithwyr mis diwethaf: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post mis diwethaf: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargo angenrheidiol ar gyfer tyfiant y dref:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} angen
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} angen
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ei angen yn y gaeaf
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} dosbarthu mis diwethaf
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Uchafswm swn mewn trefi: {ORANGE}{COMMA}{BLACK}  uchafswm: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Canoli'r prif olygfa ar y dref. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y dref
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Awdurdod lleol

@@ -2475,9 +2475,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Jumlah p
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Penumpang bulan lalu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Beg surat bulan lepas: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargi yang diperlukan untuk pembesaran bandar:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} diperlukan
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} diperlukan
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} diperlukan sewaktu musim sejuk
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} dihantar bulan lepas
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Had kebisingan dalam bandar: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pusatkan pemandangan utama ke lokasi bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Majlis tempatan

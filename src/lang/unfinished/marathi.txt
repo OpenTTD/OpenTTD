@@ -951,7 +951,7 @@ STR_TOWN_POPULATION                                             :{BLACK}वै�
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}लोकसंख्या: {ORANGE}{COMMA}{BLACK}  घर: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} आवश्यक
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} आवश्यक
 
 
 

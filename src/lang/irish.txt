@@ -2500,9 +2500,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Daonra: 
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Paisinéirí an mhí seo caite: {ORANGE}{COMMA}{BLACK}  Uasmhéid: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post an mhí seo caite: {ORANGE}{COMMA}{BLACK}  uasmhéid: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Lastas atá ag teastáil le go bhfásfaidh an baile:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} ag teastáil
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} ag teastáil
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ag teastáil sa Gheimhreadh
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} seachadta an mhí seo caite
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Teorainn torainn sa bhaile: {ORANGE}{COMMA}{BLACK}  uasmhéid: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Cuir suíomh an bhaile i lár an phríomh-amhairc. Osclaítar amharc nua ar shuíomh an bhaile le Ctrl+Cliceáil
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Údarás áitiúil

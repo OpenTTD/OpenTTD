@@ -2439,9 +2439,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{ORANGE}{1:COMM
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{ORANGE}{1:COMMA}{BLACK} :מספר מירבי {ORANGE}{0:COMMA}{BLACK} :נוסעים בחודש שעבר
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{ORANGE}{1:COMMA}{BLACK} :מספר מירבי {ORANGE}{0:COMMA}{BLACK} :שקי דואר בחודש שעבר
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}המטען שצריך בשביל גידול עיר
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} דרוש
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} דרוש
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} דרוש בחורף
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO_LONG}{BLACK} נמסרו בחודש שעבר
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{ORANGE}{1:COMMA}{BLACK} :מירבית {ORANGE}{0:COMMA}{BLACK} :רמת הרעש המותרת בעיר זו
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}מקד את התצוגה על מיקום העיר. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום העיר
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}רשות מקומית

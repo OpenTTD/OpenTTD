@@ -2527,9 +2527,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口�
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}先月の旅客：{ORANGE}{COMMA}人{BLACK}　最大：{ORANGE}{COMMA}人
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}先月の郵便袋：{ORANGE}{COMMA}袋{BLACK}　最大：{ORANGE}{COMMA}袋
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}町の成長に必要な貨物：
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} required
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} required
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} が冬に必要です
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :先月 {ORANGE}{CARGO_LONG}{BLACK} が配送された
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}市内の雑音制限：{ORANGE}{COMMA}{BLACK} 最大：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}画面を町の場所に移動します
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}町議会
