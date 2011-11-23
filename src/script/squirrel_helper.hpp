@@ -220,7 +220,6 @@ namespace SQConvert {
 			Tretval ret = (*func)(
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
 			);
-			sq_pop(vm, 1);
 			return Return(vm, ret);
 		}
 	};
@@ -236,7 +235,6 @@ namespace SQConvert {
 			(*func)(
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
 			);
-			sq_pop(vm, 1);
 			return 0;
 		}
 	};
@@ -252,7 +250,6 @@ namespace SQConvert {
 			Tretval ret = (instance->*func)(
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
 			);
-			sq_pop(vm, 1);
 			return Return(vm, ret);
 		}
 	};
@@ -268,7 +265,6 @@ namespace SQConvert {
 			(instance->*func)(
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr)
 			);
-			sq_pop(vm, 1);
 			return 0;
 		}
 
@@ -295,7 +291,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
 			);
-			sq_pop(vm, 2);
 			return Return(vm, ret);
 		}
 	};
@@ -312,7 +307,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
 			);
-			sq_pop(vm, 2);
 			return 0;
 		}
 	};
@@ -329,7 +323,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
 			);
-			sq_pop(vm, 2);
 			return Return(vm, ret);
 		}
 	};
@@ -346,7 +339,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ1>(), vm, 2, &ptr),
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr)
 			);
-			sq_pop(vm, 2);
 			return 0;
 		}
 
@@ -375,7 +367,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
 			);
-			sq_pop(vm, 3);
 			return Return(vm, ret);
 		}
 	};
@@ -393,7 +384,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
 			);
-			sq_pop(vm, 3);
 			return 0;
 		}
 	};
@@ -411,7 +401,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
 			);
-			sq_pop(vm, 3);
 			return Return(vm, ret);
 		}
 	};
@@ -429,7 +418,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ2>(), vm, 3, &ptr),
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr)
 			);
-			sq_pop(vm, 3);
 			return 0;
 		}
 
@@ -460,7 +448,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
 			);
-			sq_pop(vm, 4);
 			return Return(vm, ret);
 		}
 	};
@@ -479,7 +466,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
 			);
-			sq_pop(vm, 4);
 			return 0;
 		}
 	};
@@ -498,7 +484,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
 			);
-			sq_pop(vm, 4);
 			return Return(vm, ret);
 		}
 	};
@@ -517,7 +502,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ3>(), vm, 4, &ptr),
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr)
 			);
-			sq_pop(vm, 4);
 			return 0;
 		}
 
@@ -550,7 +534,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
 				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
 			);
-			sq_pop(vm, 5);
 			return Return(vm, ret);
 		}
 	};
@@ -570,7 +553,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
 				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
 			);
-			sq_pop(vm, 5);
 			return 0;
 		}
 	};
@@ -590,7 +572,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
 				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
 			);
-			sq_pop(vm, 5);
 			return Return(vm, ret);
 		}
 	};
@@ -610,7 +591,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ4>(), vm, 5, &ptr),
 				GetParam(ForceType<Targ5>(), vm, 6, &ptr)
 			);
-			sq_pop(vm, 5);
 			return 0;
 		}
 
@@ -649,7 +629,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
 				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
 			);
-			sq_pop(vm, 10);
 			return Return(vm, ret);
 		}
 	};
@@ -674,7 +653,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
 				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
 			);
-			sq_pop(vm, 10);
 			return 0;
 		}
 	};
@@ -699,7 +677,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
 				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
 			);
-			sq_pop(vm, 10);
 			return Return(vm, ret);
 		}
 	};
@@ -724,7 +701,6 @@ namespace SQConvert {
 				GetParam(ForceType<Targ9>(), vm, 10, &ptr),
 				GetParam(ForceType<Targ10>(), vm, 11, &ptr)
 			);
-			sq_pop(vm, 10);
 			return 0;
 		}
 
@@ -787,7 +763,6 @@ namespace SQConvert {
 			/* Delegate it to a template that can handle this specific function */
 			return HelperT<Tmethod>::SQCall((Tcls *)real_instance, *(Tmethod *)ptr, vm);
 		} catch (SQInteger e) {
-			sq_pop(vm, nparam);
 			return e;
 		}
 	}
@@ -849,7 +824,6 @@ namespace SQConvert {
 			/* Delegate it to a template that can handle this specific function */
 			return HelperT<Tmethod>::SQCall((Tcls *)NULL, *(Tmethod *)ptr, vm);
 		} catch (SQInteger e) {
-			sq_pop(vm, nparam);
 			return e;
 		}
 	}
@@ -874,9 +848,6 @@ namespace SQConvert {
 	template <typename Tcls, typename Tmethod, int Tnparam>
 	inline SQInteger DefSQConstructorCallback(HSQUIRRELVM vm)
 	{
-		/* Find the amount of params we got */
-		int nparam = sq_gettop(vm);
-
 		try {
 			/* Create the real instance */
 			Tcls *instance = HelperT<Tmethod>::SQConstruct((Tcls *)NULL, (Tmethod)NULL, vm);
@@ -885,7 +856,6 @@ namespace SQConvert {
 			instance->AddRef();
 			return 0;
 		} catch (SQInteger e) {
-			sq_pop(vm, nparam);
 			return e;
 		}
 	}
