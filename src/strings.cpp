@@ -912,6 +912,31 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				buff = FormatBytes(buff, args->GetInt64(), last);
 				break;
 
+			case SCC_CARGO_TINY: { // {CARGO_TINY}
+				/* Tiny description of cargotypes. Layout:
+				 * param 1: cargo type
+				 * param 2: cargo count */
+				StringID cargo_str = CargoSpec::Get(args->GetInt32(SCC_CARGO_SHORT))->units_volume;
+				int64 amount = 0;
+				switch (cargo_str) {
+					case STR_TONS:
+						amount = _units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64());
+						break;
+
+					case STR_LITERS:
+						amount = _units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64());
+						break;
+
+					default: {
+						amount = args->GetInt64();
+						break;
+					}
+				}
+
+				buff = FormatCommaNumber(buff, amount, last);
+				break;
+			}
+
 			case SCC_CARGO_SHORT: { // {CARGO_SHORT}
 				/* Short description of cargotypes. Layout:
 				 * param 1: cargo type

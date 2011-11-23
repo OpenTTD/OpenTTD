@@ -69,6 +69,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"INDUSTRY",          EmitSingleChar, SCC_INDUSTRY_NAME,      1, C_CASE | C_GENDER}, // industry, takes an industry #, can have cases
 	{"CARGO_LONG",        EmitSingleChar, SCC_CARGO_LONG,         2, C_NONE | C_GENDER},
 	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2, C_NONE}, // short cargo description, only ### tons, or ### litres
+	{"CARGO_TINY",        EmitSingleChar, SCC_CARGO_TINY,         2, C_NONE}, // tiny cargo description with only the amount, not a specifier for the amount or the actual cargo name
 	{"POWER",             EmitSingleChar, SCC_POWER,              1, C_NONE},
 	{"VOLUME_LONG",       EmitSingleChar, SCC_VOLUME_LONG,        1, C_NONE},
 	{"VOLUME_SHORT",      EmitSingleChar, SCC_VOLUME_SHORT,       1, C_NONE},
