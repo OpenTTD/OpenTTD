@@ -3188,14 +3188,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\blitter\8bpp_debug.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\blitter\8bpp_debug.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\blitter\8bpp_optimized.cpp"
 				>
 			</File>

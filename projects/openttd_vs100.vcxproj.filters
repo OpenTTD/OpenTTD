@@ -2115,12 +2115,6 @@
     <ClInclude Include="..\src\blitter\8bpp_base.hpp">
       <Filter>Blitters</Filter>
     </ClInclude>
-    <ClCompile Include="..\src\blitter\8bpp_debug.cpp">
-      <Filter>Blitters</Filter>
-    </ClCompile>
-    <ClInclude Include="..\src\blitter\8bpp_debug.hpp">
-      <Filter>Blitters</Filter>
-    </ClInclude>
     <ClCompile Include="..\src\blitter\8bpp_optimized.cpp">
       <Filter>Blitters</Filter>
     </ClCompile>

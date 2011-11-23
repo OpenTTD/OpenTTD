@@ -965,8 +965,6 @@
     <ClInclude Include="..\src\blitter\32bpp_simple.hpp" />
     <ClCompile Include="..\src\blitter\8bpp_base.cpp" />
     <ClInclude Include="..\src\blitter\8bpp_base.hpp" />
-    <ClCompile Include="..\src\blitter\8bpp_debug.cpp" />
-    <ClInclude Include="..\src\blitter\8bpp_debug.hpp" />
     <ClCompile Include="..\src\blitter\8bpp_optimized.cpp" />
     <ClInclude Include="..\src\blitter\8bpp_optimized.hpp" />
     <ClCompile Include="..\src\blitter\8bpp_simple.cpp" />
