@@ -194,14 +194,14 @@ enum TownActions {
 	TACT_ADVERTISE_LARGE  = 0x04, ///< Large advertising campaign.
 	TACT_ROAD_REBUILD     = 0x08, ///< Rebuild the roads.
 	TACT_BUILD_STATUE     = 0x10, ///< Build a statue.
-	TACT_FOUND_BUILDINGS  = 0x20, ///< Found new buildings.
+	TACT_FUND_BUILDINGS   = 0x20, ///< Fund new buildings.
 	TACT_BUY_RIGHTS       = 0x40, ///< Buy exclusive transport rights.
 	TACT_BRIBE            = 0x80, ///< Try to bribe the counsil.
 
 	TACT_COUNT            = 8,    ///< Number of available town actions.
 
 	TACT_ADVERTISE        = TACT_ADVERTISE_SMALL | TACT_ADVERTISE_MEDIUM | TACT_ADVERTISE_LARGE, ///< All possible advertising actions.
-	TACT_CONSTRUCTION     = TACT_ROAD_REBUILD | TACT_BUILD_STATUE | TACT_FOUND_BUILDINGS,        ///< All possible construction actions.
+	TACT_CONSTRUCTION     = TACT_ROAD_REBUILD | TACT_BUILD_STATUE | TACT_FUND_BUILDINGS,         ///< All possible construction actions.
 	TACT_FUNDS            = TACT_BUY_RIGHTS | TACT_BRIBE,                                        ///< All possible funding actions.
 	TACT_ALL              = TACT_ADVERTISE | TACT_CONSTRUCTION | TACT_FUNDS,                     ///< All possible actions.
 };
