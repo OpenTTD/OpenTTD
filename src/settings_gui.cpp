@@ -1457,6 +1457,7 @@ static SettingEntry _settings_economy_towns[] = {
 	SettingEntry("economy.bribe"),
 	SettingEntry("economy.exclusive_rights"),
 	SettingEntry("economy.fund_roads"),
+	SettingEntry("economy.fund_buildings"),
 	SettingEntry("economy.town_layout"),
 	SettingEntry("economy.allow_town_roads"),
 	SettingEntry("economy.allow_town_level_crossings"),
