@@ -22,7 +22,7 @@
 
 /* static */ bool AICargo::IsValidTownEffect(TownEffect towneffect_type)
 {
-	return (towneffect_type >= (TownEffect)TE_BEGIN && towneffect_type < (TownEffect)TE_END);
+	return (towneffect_type >= (::TownEffect)TE_BEGIN && towneffect_type < (::TownEffect)TE_END);
 }
 
 /* static */ char *AICargo::GetCargoLabel(CargoID cargo_type)

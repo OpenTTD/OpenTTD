@@ -39,6 +39,7 @@
  * \li AITown::GetGrowthRate
  * \li AITown::GetLastMonthReceived
  * \li AITown::GetTownAuthority
+ * \li AITownEffectList (to walk over all available town effects)
  * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached
  *
  * API renames:
