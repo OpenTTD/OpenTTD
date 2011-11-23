@@ -761,10 +761,10 @@ STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLAC
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Incidente ferroviario!{}In {COMMA} muoiono nell'incendio seguito alla collisione
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Incidente stradale!{}Il conducente muore nell'incendio seguito alla collisione con un treno
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Incidente stradale!{}In {COMMA} muoiono nell'incendio seguito alla collisione con un treno
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aeroplano precipitato!{}In {COMMA} muoiono nel fuoco a {STATION}
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aeroplano precipitato!{}In {COMMA} muoiono nell'incendio a {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Incidente aereo!{}L'aeromobile resta senza carburante: in {COMMA} muoiono fra le fiamme!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Disastro Zeppelin a {STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Dirigibile distrutto in un incidente a {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Automezzo distrutto in una collisione con un 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Esplosione in una raffineria vicino a {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabbrica distrutta in circostanze sospette vicino a {TOWN}!
@@ -773,11 +773,11 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Alluvione!{}Almeno {COMMA} dispersi, presunti morti, in una imponente alluvione!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Compagnia di trasporti in difficoltà!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}La {STRING} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non migliorino presto!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}La {STRING} verrà venduta o dichiarerà bancarotta se non otterrà presto risultati migliori!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Fusione tra compagnie di trasporti!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}La {STRING} è stata venduta alla {STRING} per {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bancarotta!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}La {STRING} è stata chiusa dai creditori e tutti i suoi beni sono stati venduti!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}La {STRING} è stata liquidata dai creditori e tutti i suoi beni sono stati venduti!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nuova compagnia di trasporti!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}La {STRING} inizia a costruire vicino a {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}La {STRING} è stata rilevata dalla {STRING}!
@@ -2473,7 +2473,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Numero di parametri: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}File leggimi NewGRF di {STRING}
+STR_NEWGRF_README_CAPTION                                       :{WHITE}File leggimi del NewGRF {STRING}
 STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Changelog NewGRF di {STRING}
 STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licenza NewGRF di {STRING}
 
@@ -2551,7 +2551,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}File manca
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Il comportamento del NewGRF '{0:STRING}' può causare errori di sincronizzazione e/o crash
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha modificato lo stato di vagone alimentato di '{1:ENGINE}' al di fuori del deposito
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha modificato lo stato di vagone motorizzato di '{1:ENGINE}' al di fuori del deposito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha modificato la lunghezza vericolo di '{1:ENGINE}' al di fuori del deposito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash
 
@@ -2890,7 +2890,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Costo: {
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacità: {GOLD}{CARGO_LONG}, {CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni alimentati: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni motorizzati: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {GOLD}
@@ -3220,7 +3220,7 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambia l
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi carico
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carica se possibile
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Attendi pieno carico
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Attendi carico
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Attendi qualsiasi pieno carico
 STR_ORDER_DROP_NO_LOADING                                       :Non caricare
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Cambia la modalità di caricamento alla stazione indicata nell'ordine selezionato
 
@@ -3310,33 +3310,33 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_IMPLICIT                                              :(Implicito)
 
 STR_ORDER_FULL_LOAD                                             :(Attendi pieno carico)
-STR_ORDER_FULL_LOAD_ANY                                         :(Attendi carico)
+STR_ORDER_FULL_LOAD_ANY                                         :(Attendi qualsiasi pieno carico)
 STR_ORDER_NO_LOAD                                               :(Non caricare)
 STR_ORDER_UNLOAD                                                :(Scarica e carica)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Scarica e attendi pieno carico)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Scarica e attendi carico)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Scarica e attendi qualsiasi pieno carico)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Scarica e parti vuoto)
 STR_ORDER_TRANSFER                                              :(Trasferisci e carica)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Trasferisci e attendi pieno carico)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Trasferisci e attendi carico)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Trasferisci e attendi qualsiasi pieno carico)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Trasferisci e parti vuoto)
 STR_ORDER_NO_UNLOAD                                             :(Non scaricare e carica)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non scaricare e attendi pieno carico)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non scaricare e attendi carico)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non scaricare e attendi qualsiasi pieno carico)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Non scaricare e non caricare)
 
 STR_ORDER_AUTO_REFIT                                            :(Auto-riadatta per {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Attendi carico, auto-riadatta per {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Attendi qualsiasi pieno carico, auto-riadatta per {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Scarica e carica, auto-riadatta per {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Scarica e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Scarica e attendi carico, auto-riadatta per {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Scarica e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Trasferisci e carica, auto-riadatta per {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Trasferisci e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trasferisci e attendi carico, auto-riadatta per {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Trasferisci e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Non scaricare e carica, auto-riadatta per {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Non scaricare e attendi pieno carico, auto-riadatta per {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non scaricare e attendi carico, auto-riadatta per {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Non scaricare e attendi qualsiasi pieno carico, auto-riadatta per {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :il carico in attesa
 

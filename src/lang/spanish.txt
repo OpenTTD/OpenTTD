@@ -1143,6 +1143,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cola de
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Desplazar ventana mediante el cursor en los bordes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir sobornos a la autoridad local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar derechos de transporte exclusivos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Permitir la construcción de nuevos edificios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permitir pagar la reconstrucción de las carreteras locales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinero a otras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
@@ -2576,6 +2577,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Correo �
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento del pueblo:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregado
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (todavía requerido)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregado)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}El pueblo crece cada {ORANGE}{COMMA}{BLACK} día{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}El pueblo crece cada {ORANGE}{COMMA}{BLACK} días{P "" s} (edificios fundados)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}El pueblo {RED}no{BLACK} está creciendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivel de ruido en pueblo: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el pueblo. Ctrl+Click abre un punto de vista en dicha posición
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridad local

@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Vägfor
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Scrolla vyn när musen är vid kanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillåt köp av exklusiva transporträttigheter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Tillåt att byggnader bekostas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Tillåt finansiering av lokal vägrekonstruktion: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillåt skicka pengar till andra företag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
@@ -2575,6 +2576,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post fö
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Fraktgods behövs för ortens tillväxt:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nödvändlig
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} krävs under vintern
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levererat
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (krävs fortfarande)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levererat)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK} dag
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK} dag (bekostad tillväxt)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Orten växer {RED}inte{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Bullernivågräns i stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på staden. Ctrl+klick öppnar en ny vy över stadens läge
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokala myndigheter

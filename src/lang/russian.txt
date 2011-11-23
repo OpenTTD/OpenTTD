@@ -1298,6 +1298,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Авт�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Разрешить подкупать местные власти: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Разрешить покупать эксклюзивные трансп. права: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Разрешить финансирование строительства зданий: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Разрешить финансирование реконструкции дорог: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Разрешить передачу денег другим компаниям: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
@@ -2759,6 +2760,10 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Почт
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, необходимый для роста города:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} требу{G 0 е е е ю}тся
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} требу{G 0 е е е ю}тся зимой
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставлено
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Город растёт раз в {ORANGE}{COMMA}{BLACK} д{P ень ня ней}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Город растёт раз в {ORANGE}{COMMA}{BLACK} д{P ень ня ней} (профинансировано)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Город {RED}не{BLACK} развивается
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать город в основном окне. Ctrl+клик - показать в дополнительном окне.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Местные власти

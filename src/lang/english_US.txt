@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Road ve
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Allow buying exclusive transport rights: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Allow funding buildings: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Allow funding local road reconstruction: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow sending money to other companies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
@@ -2407,7 +2408,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Move Up
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move the selected NewGRF file up the list
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Move Down
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move the selected NewGRF file down the list
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A list of the NewGRF files that are installed. Click a file to change its parameters
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A list of the NewGRF files that are installed
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}View readme
@@ -2575,6 +2576,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Mail las
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargo needed for town growth:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} required
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} required in winter
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} delivered
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (still required)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (delivered)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK} day{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Town grows every {ORANGE}{COMMA}{BLACK} day{P "" s} (funded)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Town is {RED}not{BLACK} growing
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center the main view on town location. Ctrl+Click opens a new viewport on town location
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Local authority
