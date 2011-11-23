@@ -32,6 +32,9 @@ static const uint CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum numbe
 
 static const uint INVALID_TOWN = 0xFFFF;
 
+static const uint TOWN_GROWTH_WINTER = 0xFFFFFFFE; ///< The town only needs this cargo in the winter (any amount)
+static const uint TOWN_GROWTH_DESERT = 0xFFFFFFFF; ///< The town needs the cargo for growth when on desert (any amount)
+
 typedef Pool<Town, TownID, 64, 64000> TownPool;
 extern TownPool _town_pool;
 
@@ -69,13 +72,14 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	TransportedCargoStat<uint32> supplied[NUM_CARGO]; ///< Cargo statistics about supplied cargo.
 	TransportedCargoStat<uint16> received[NUM_TE];    ///< Cargo statistics about received cargotypes.
+	uint32 goal[NUM_TE];                              ///< Amount of cargo required for the town to grow.
 
 	inline byte GetPercentTransported(CargoID cid) const { return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1); }
 
 	uint16 time_until_rebuild;     ///< time until we rebuild a house
 
 	uint16 grow_counter;           ///< counter to count when to grow
-	int16 growth_rate;             ///< town growth rate
+	uint16 growth_rate;            ///< town growth rate
 
 	byte fund_buildings_months;    ///< fund buildings program in action?
 	byte road_build_months;        ///< fund road reconstruction in action?
@@ -178,6 +182,7 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
 bool GenerateTowns(TownLayout layout);
+const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect);
 
 
 /** Town actions of a company. */

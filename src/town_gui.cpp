@@ -344,20 +344,6 @@ public:
 		if (widget == TVW_CAPTION) SetDParam(0, this->town->index);
 	}
 
-	/**
-	 * Determines the first cargo with a certain town effect
-	 * @param effect Town effect of interest
-	 * @return first active cargo slot with that effect
-	 */
-	const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect) const
-	{
-		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
-			if (cs->town_effect == effect) return cs;
-		}
-		return NULL;
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != TVW_INFOPANEL) return;
@@ -376,55 +362,56 @@ public:
 		SetDParam(1, this->town->supplied[CT_MAIL].old_max);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX);
 
-		StringID required_text = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED;
-		uint cargo_needed_for_growth = 0;
-		switch (_settings_game.game_creation.landscape) {
-			case LT_ARCTIC:
-				if (TileHeight(this->town->xy) >= LowestSnowLine()) cargo_needed_for_growth = 1;
-				if (TileHeight(this->town->xy) < GetSnowLine()) required_text = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER;
-				break;
+		bool first = true;
+		for (int i = TE_BEGIN; i < TE_END; i++) {
+			if (this->town->goal[i] == 0) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_WINTER && TileHeight(this->town->xy) < LowestSnowLine()) continue;
 
-			case LT_TROPIC:
-				if (GetTropicZone(this->town->xy) == TROPICZONE_DESERT) cargo_needed_for_growth = 2;
-				break;
-
-			default: break;
-		}
-
-		if (cargo_needed_for_growth > 0) {
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
+			if (first) {
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
+				first = false;
+			}
 
 			bool rtl = _current_text_dir == TD_RTL;
 			uint cargo_text_left = r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : 20);
 			uint cargo_text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? 20 : 0);
 
-			const CargoSpec *food = FindFirstCargoWithTownEffect(TE_FOOD);
-			CargoID first_food_cargo = (food != NULL) ? food->Index() : (CargoID)CT_INVALID;
-			StringID food_name       = (food != NULL) ? food->name    : STR_CARGO_PLURAL_FOOD;
+			const CargoSpec *cargo = FindFirstCargoWithTownEffect((TownEffect)i);
+			assert(cargo != NULL);
 
-			const CargoSpec *water = FindFirstCargoWithTownEffect(TE_WATER);
-			CargoID first_water_cargo = (water != NULL) ? water->Index() : (CargoID)CT_INVALID;
-			StringID water_name       = (water != NULL) ? water->name    : STR_CARGO_PLURAL_WATER;
+			StringID string;
 
-			if (first_food_cargo != CT_INVALID && this->town->received[TE_FOOD].old_act > 0) {
-				SetDParam(0, first_food_cargo);
-				SetDParam(1, this->town->received[TE_FOOD].old_act);
-				DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
-			} else {
-				SetDParam(0, food_name);
-				DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, required_text);
-			}
+			if (this->town->goal[i] == TOWN_GROWTH_DESERT || this->town->goal[i] == TOWN_GROWTH_WINTER) {
+				/* For 'original' gameplay, don't show the amount required (you need 1 or more ..) */
+				string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL;
+				if (this->town->received[i].old_act < this->town->goal[i]) {
+					string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL;
 
-			if (cargo_needed_for_growth > 1) {
-				if (first_water_cargo != CT_INVALID && this->town->received[TE_WATER].old_act > 0) {
-					SetDParam(0, first_water_cargo);
-					SetDParam(1, this->town->received[TE_WATER].old_act);
-					DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
-				} else {
-					SetDParam(0, water_name);
-					DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, required_text);
+					if (this->town->goal[i] == TOWN_GROWTH_WINTER && TileHeight(this->town->xy) < GetSnowLine()) {
+						string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER;
+					}
 				}
+
+				SetDParam(0, cargo->name);
+			} else {
+				string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED;
+				if (this->town->received[i].old_act < this->town->goal[i]) {
+					string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED;
+				}
+
+				SetDParam(0, cargo->Index());
+				SetDParam(1, this->town->received[i].old_act);
+				SetDParam(2, cargo->Index());
+				SetDParam(3, this->town->goal[i]);
 			}
+			DrawString(cargo_text_left, cargo_text_right, y += FONT_HEIGHT_NORMAL, string);
+		}
+
+		if (HasBit(this->town->flags, TOWN_IS_FUNDED)) {
+			SetDParam(0, (this->town->growth_rate * TOWN_GROWTH_TICKS + DAY_TICKS) / DAY_TICKS);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED);
+		} else {
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_TOWN_GROW_STOPPED);
 		}
 
 		/* only show the town noise, if the noise option is activated. */
@@ -491,17 +478,16 @@ public:
 	{
 		uint aimed_height = 3 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
-		switch (_settings_game.game_creation.landscape) {
-			case LT_ARCTIC:
-				if (TileHeight(this->town->xy) >= LowestSnowLine()) aimed_height += 2 * FONT_HEIGHT_NORMAL;
-				break;
-
-			case LT_TROPIC:
-				if (GetTropicZone(this->town->xy) == TROPICZONE_DESERT) aimed_height += 3 * FONT_HEIGHT_NORMAL;
-				break;
-
-			default: break;
+		bool first = true;
+		for (int i = TE_BEGIN; i < TE_END; i++) {
+			if (this->town->goal[i] == 0) continue;
+			if (first) {
+				aimed_height += FONT_HEIGHT_NORMAL;
+				first = false;
+			}
+			aimed_height += FONT_HEIGHT_NORMAL;
 		}
+		aimed_height += FONT_HEIGHT_NORMAL;
 
 		if (_settings_game.economy.station_noise_level) aimed_height += FONT_HEIGHT_NORMAL;
 

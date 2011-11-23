@@ -566,7 +566,7 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Town, statues ),
 	OCL_NULL( 2 ),         ///< num_houses,        no longer in use
 	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, time_until_rebuild ),
-	OCL_SVAR(  OC_FILE_U8 | OC_VAR_I16, Town, growth_rate ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, growth_rate ),
 
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_PASSENGERS].new_max ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, supplied[CT_MAIL].new_max ),

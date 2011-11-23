@@ -1415,6 +1415,18 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->grow_counter = 0;
 	t->growth_rate = 250;
 
+	/* Set the default cargo requirement for town growth */
+	switch (_settings_game.game_creation.landscape) {
+		case LT_ARCTIC:
+			if (FindFirstCargoWithTownEffect(TE_FOOD) != NULL) t->goal[TE_FOOD] = TOWN_GROWTH_WINTER;
+			break;
+
+		case LT_TROPIC:
+			if (FindFirstCargoWithTownEffect(TE_FOOD) != NULL) t->goal[TE_FOOD] = TOWN_GROWTH_DESERT;
+			if (FindFirstCargoWithTownEffect(TE_WATER) != NULL) t->goal[TE_WATER] = TOWN_GROWTH_DESERT;
+			break;
+	}
+
 	t->fund_buildings_months = 0;
 
 	for (uint i = 0; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
@@ -2325,6 +2337,20 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 }
 
 /**
+ * Determines the first cargo with a certain town effect
+ * @param effect Town effect of interest
+ * @return first active cargo slot with that effect
+ */
+const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
+{
+	const CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		if (cs->town_effect == effect) return cs;
+	}
+	return NULL;
+}
+
+/**
  * Expand a town (scenario editor only).
  * @param tile Unused.
  * @param flags Type of operation.
@@ -2559,6 +2585,8 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 		SetBit(t->flags, TOWN_IS_FUNDED);
 		/* And grow for 3 months */
 		t->fund_buildings_months = 3;
+
+		SetWindowDirty(WC_TOWN_VIEW, t->index);
 	}
 	return CommandCost();
 }
@@ -2699,7 +2727,7 @@ CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	return cost;
 }
 
-static void UpdateTownGrowRate(Town *t)
+static void UpdateTownRating(Town *t)
 {
 	/* Increase company ratings if they're low */
 	const Company *c;
@@ -2709,13 +2737,10 @@ static void UpdateTownGrowRate(Town *t)
 		}
 	}
 
-	int n = 0;
-
 	const Station *st;
 	FOR_ALL_STATIONS(st) {
 		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
-				n++;
 				if (Company::IsValidID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
 					t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
@@ -2735,9 +2760,21 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+}
 
+static void UpdateTownGrowRate(Town *t)
+{
 	ClrBit(t->flags, TOWN_IS_FUNDED);
+	SetWindowDirty(WC_TOWN_VIEW, t->index);
+
 	if (_settings_game.economy.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
+
+	/* Check if all goals are reached for this town to grow */
+	for (int i = TE_BEGIN; i < TE_END; i++) {
+		if (t->goal[i] == TOWN_GROWTH_WINTER && TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->population > 90) return;
+		if (t->goal[i] == TOWN_GROWTH_DESERT && GetTropicZone(t->xy) == TROPICZONE_DESERT && t->received[i].old_act == 0 && t->population > 60) return;
+		if (t->goal[i] > t->received[i].old_act) return;
+	}
 
 	/**
 	 * Towns are processed every TOWN_GROWTH_TICKS ticks, and this is the
@@ -2748,6 +2785,17 @@ static void UpdateTownGrowRate(Town *t)
 		{ 320, 420, 300, 220, 160, 100 }  // Normal values
 	};
 
+	int n = 0;
+
+	const Station *st;
+	FOR_ALL_STATIONS(st) {
+		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
+			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
+				n++;
+			}
+		}
+	}
+
 	uint16 m;
 
 	if (t->fund_buildings_months != 0) {
@@ -2756,13 +2804,6 @@ static void UpdateTownGrowRate(Town *t)
 	} else {
 		m = _grow_count_values[1][min(n, 5)];
 		if (n == 0 && !Chance16(1, 12)) return;
-	}
-
-	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (TileHeight(t->xy) >= GetSnowLine() && t->received[TE_FOOD].old_act == 0 && t->population > 90) return;
-
-	} else if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->received[TE_FOOD].old_act == 0 || t->received[TE_WATER].old_act == 0) && t->population > 60) return;
 	}
 
 	/* Use the normal growth rate values if new buildings have been funded in
@@ -2778,6 +2819,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	SetBit(t->flags, TOWN_IS_FUNDED);
+	SetWindowDirty(WC_TOWN_VIEW, t->index);
 }
 
 static void UpdateTownAmounts(Town *t)
@@ -3006,8 +3048,9 @@ void TownsMonthlyLoop()
 			if (--t->exclusive_counter == 0) t->exclusivity = INVALID_COMPANY;
 		}
 
-		UpdateTownGrowRate(t);
 		UpdateTownAmounts(t);
+		UpdateTownRating(t);
+		UpdateTownGrowRate(t);
 		UpdateTownUnwanted(t);
 	}
 }
