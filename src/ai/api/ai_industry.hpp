@@ -29,7 +29,6 @@ public:
 	/**
 	 * Gets the number of industries.
 	 * @return The number of industries.
-	 * @post Return value is always non-negative.
 	 * @note The maximum valid IndustryID can be higher than the value returned.
 	 */
 	static int32 GetIndustryCount();

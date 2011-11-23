@@ -131,7 +131,6 @@ public:
 	/**
 	 * Gets the amount your company have loaned.
 	 * @return The amount loaned money.
-	 * @post The return value is always non-negative.
 	 * @post GetLoanInterval() is always a multiplier of the return value.
 	 */
 	static Money GetLoanAmount();
@@ -139,7 +138,6 @@ public:
 	/**
 	 * Gets the maximum amount your company can loan.
 	 * @return The maximum amount your company can loan.
-	 * @post The return value is always non-negative.
 	 * @post GetLoanInterval() is always a multiplier of the return value.
 	 */
 	static Money GetMaxLoanAmount();
