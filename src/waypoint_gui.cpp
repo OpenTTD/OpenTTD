@@ -76,7 +76,7 @@ public:
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
-		nvp->InitializeViewport(this, this->GetCenterTile(), ZOOM_LVL_MIN);
+		nvp->InitializeViewport(this, this->GetCenterTile(), ZOOM_LVL_VIEWPORT);
 
 		this->OnInvalidateData(0);
 	}

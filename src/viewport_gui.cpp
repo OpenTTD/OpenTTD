@@ -64,8 +64,8 @@ public:
 		this->InitNested(desc, window_number);
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(EVW_VIEWPORT);
-		nvp->InitializeViewport(this, 0, ZOOM_LVL_NORMAL);
-		this->DisableWidget(EVW_ZOOMIN);
+		nvp->InitializeViewport(this, 0, ZOOM_LVL_VIEWPORT);
+		if (_settings_client.gui.zoom_min == ZOOM_LVL_VIEWPORT) this->DisableWidget(EVW_ZOOMIN);
 
 		Point pt;
 		if (tile == INVALID_TILE) {
