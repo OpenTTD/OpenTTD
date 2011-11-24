@@ -187,7 +187,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->width = width;
 	vp->height = height;
 
-	vp->zoom = zoom;
+	vp->zoom = static_cast<ZoomLevel>(Clamp(zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
 
 	vp->virtual_width = ScaleByZoom(width, zoom);
 	vp->virtual_height = ScaleByZoom(height, zoom);
@@ -459,10 +459,10 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
  */
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
 {
-	w->SetWidgetDisabledState(widget_zoom_in, vp->zoom == ZOOM_LVL_MIN);
+	w->SetWidgetDisabledState(widget_zoom_in, vp->zoom <= _settings_client.gui.zoom_min);
 	w->SetWidgetDirty(widget_zoom_in);
 
-	w->SetWidgetDisabledState(widget_zoom_out, vp->zoom == ZOOM_LVL_MAX);
+	w->SetWidgetDisabledState(widget_zoom_out, vp->zoom >= _settings_client.gui.zoom_max);
 	w->SetWidgetDirty(widget_zoom_out);
 }
 
@@ -1641,6 +1641,20 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 		if (vp != NULL) {
 			assert(vp->width != 0);
 			MarkViewportDirty(vp, left, top, right, bottom);
+		}
+	}
+}
+
+void ConstrainAllViewportsZoom()
+{
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_FRONT(w) {
+		if (w->viewport == NULL) continue;
+
+		ZoomLevel zoom = static_cast<ZoomLevel>(Clamp(w->viewport->zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+		if (zoom != w->viewport->zoom) {
+			while (w->viewport->zoom < zoom) DoZoomInOutWindow(ZOOM_OUT, w);
+			while (w->viewport->zoom > zoom) DoZoomInOutWindow(ZOOM_IN, w);
 		}
 	}
 }

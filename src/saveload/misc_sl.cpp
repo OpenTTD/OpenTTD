@@ -56,6 +56,10 @@ void ResetViewportAfterLoadGame()
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
 
+	/* Ensure zoom level is allowed */
+	while (vp->zoom < _settings_client.gui.zoom_min) DoZoomInOutWindow(ZOOM_OUT, w);
+	while (vp->zoom > _settings_client.gui.zoom_max) DoZoomInOutWindow(ZOOM_IN, w);
+
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
 }

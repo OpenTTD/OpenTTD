@@ -17,6 +17,7 @@
 #include "transport_type.h"
 #include "network/core/config.h"
 #include "company_type.h"
+#include "zoom_type.h"
 #include "openttd.h"
 
 /** Available industry map generation densities. */
@@ -79,6 +80,8 @@ struct GUISettings {
 	uint8  statusbar_pos;                    ///< position of statusbar, 0=left, 1=center, 2=right
 	uint8  window_snap_radius;               ///< windows snap at each other if closer than this
 	uint8  window_soft_limit;                ///< soft limit of maximum number of non-stickied non-vital windows (0 = no limit)
+	ZoomLevelByte zoom_min;                  ///< minimum zoom out level
+	ZoomLevelByte zoom_max;                  ///< maximum zoom out level
 	bool   disable_unsuitable_building;      ///< disable infrastructure building when no suitable vehicles are available
 	byte   autosave;                         ///< how often should we do autosaves?
 	bool   threaded_saves;                   ///< should we do threaded saves?
