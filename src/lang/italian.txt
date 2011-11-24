@@ -756,7 +756,7 @@ STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram passeggeri arriva a {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram merci arriva a {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}La prima nave attracca a {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo aeromobile atterra a {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo aeromobile atterra {G "a " all' "alla "}{STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Incidente ferroviario!{}In {COMMA} muoiono nell'incendio seguito alla collisione
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Incidente stradale!{}Il conducente muore nell'incendio seguito alla collisione con un treno
@@ -764,7 +764,7 @@ STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLAC
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aeroplano precipitato!{}In {COMMA} muoiono nell'incendio a {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Incidente aereo!{}L'aeromobile resta senza carburante: in {COMMA} muoiono fra le fiamme!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Dirigibile distrutto in un incidente a {STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin distrutto! Disastro a {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Automezzo distrutto in una collisione con un 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Esplosione in una raffineria vicino a {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabbrica distrutta in circostanze sospette vicino a {TOWN}!
@@ -1166,6 +1166,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Accodam
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Scorri la visuale quando il mouse è su un bordo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Consenti la corruzione dell'autorità locale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Consenti l'acquisto dell'esclusiva sui trasporti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Consenti finanziamento di nuove costruzioni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Consenti finanziamento della riscostruzione delle strade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Consenti l'invio di denaro ad altre compagnie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Moltiplicatore di peso per simulare treni merci pesanti: {ORANGE}{STRING}
@@ -2474,8 +2475,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Numero 
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}File leggimi del NewGRF {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Changelog NewGRF di {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licenza NewGRF di {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Changelog del NewGRF {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licenza del NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Ispeziona - {STRING}
@@ -2601,8 +2602,14 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Popolazi
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passeggeri il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posta il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carichi richiesti per la crescita della città:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} richiesto
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} richiesto in inverno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} richiest{G 0 o o a}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} richiest{G 0 o o a} in inverno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} consegnato
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ancora richiest{G 1 o o a})
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (consegnat{G 1 o o a})
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La città cresce ogni {ORANGE}{COMMA}{BLACK} giorn{P o i}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La città cresce ogni {ORANGE}{COMMA}{BLACK} giorn{P o i} (finanziata)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La città {RED}non{BLACK} sta crescendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della città. CTRL+clic la mostra in una mini visuale.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autorità locale
@@ -3217,7 +3224,7 @@ STR_ORDER_GO_VIA                                                :Passa per
 STR_ORDER_GO_NON_STOP_VIA                                       :Passa no-stop per
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambia la modalità di fermata alle stazioni intermedie relativa all'ordine selezionato
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi carico
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi qualsiasi pieno carico
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carica se possibile
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Attendi pieno carico
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Attendi qualsiasi pieno carico
@@ -3282,7 +3289,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Deposito più v
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar più vicino
 STR_ORDER_CONDITIONAL                                           :Salto condizionale
 STR_ORDER_SHARE                                                 :Condividi ordini
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista. Facendo clic con CTRL gli ordini verso le stazioni diventano 'attendi carico', quelli verso waypoint 'no-stop' e quelli verso depositi 'manutenzione'. L'opzione 'Condividi ordini' o il tasto CTRL consentono a questo veicolo di condividere gli ordini con un veicolo selezionato. Cliccando su un veicolo gli ordini vengono invece copiati dallo stesso
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista. Facendo clic con CTRL gli ordini verso le stazioni diventano 'attendi qualsiasi pieno carico', quelli verso waypoint 'no-stop' e quelli verso depositi 'manutenzione'. L'opzione 'Condividi ordini' o il tasto CTRL consentono a questo veicolo di condividere gli ordini con un veicolo selezionato. Cliccando su un veicolo gli ordini vengono invece copiati dallo stesso
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tutti i veicoli che condividono questa lista ordini
 
@@ -3968,10 +3975,10 @@ STR_SV_STNAME_HEIGHTS                                           :Alture di {STRI
 STR_SV_STNAME_WOODS                                             :{STRING} Bosco
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Lago
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Scambio
-STR_SV_STNAME_AIRPORT                                           :Aeroporto di {STRING}
-STR_SV_STNAME_OILFIELD                                          :Campo petrolifero di {STRING}
+STR_SV_STNAME_AIRPORT                                           :{G=ma}Aeroporto di {STRING}
+STR_SV_STNAME_OILFIELD                                          :{G=m}Campo petrolifero di {STRING}
 STR_SV_STNAME_MINES                                             :{STRING} Miniere
-STR_SV_STNAME_DOCKS                                             :Porto di {STRING}
+STR_SV_STNAME_DOCKS                                             :{G=m}Porto di {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
@@ -3980,7 +3987,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} Raccor
 STR_SV_STNAME_BRANCH                                            :{STRING} Ramificata
 STR_SV_STNAME_UPPER                                             :Alta {STRING}
 STR_SV_STNAME_LOWER                                             :Bassa {STRING}
-STR_SV_STNAME_HELIPORT                                          :Eliporto di {STRING}
+STR_SV_STNAME_HELIPORT                                          :{G=ma}Eliporto di {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} Foresta
 STR_SV_STNAME_FALLBACK                                          :{STRING}, Stazione #{NUM}
 ############ end of savegame specific region!
