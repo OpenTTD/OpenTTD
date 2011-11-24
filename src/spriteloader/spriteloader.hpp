@@ -38,6 +38,7 @@ public:
 		uint16 width;                    ///< Width of the sprite
 		int16 x_offs;                    ///< The x-offset of where the sprite will be drawn
 		int16 y_offs;                    ///< The y-offset of where the sprite will be drawn
+		SpriteType type;                 ///< The sprite type
 		SpriteLoader::CommonPixel *data; ///< The sprite itself
 
 		/**

@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../zoom_func.h"
+#include "../settings_type.h"
 #include "../core/math_func.hpp"
 #include "32bpp_optimized.hpp"
 
@@ -274,7 +275,19 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 	/* lengths of streams */
 	uint32 lengths[ZOOM_LVL_COUNT][2];
 
-	for (ZoomLevel z = ZOOM_LVL_BEGIN; z < ZOOM_LVL_END; z++) {
+	ZoomLevel zoom_min;
+	ZoomLevel zoom_max;
+
+	if (sprite->type == ST_FONT) {
+		zoom_min = ZOOM_LVL_NORMAL;
+		zoom_max = ZOOM_LVL_NORMAL;
+	} else {
+		zoom_min = _settings_client.gui.zoom_min;
+		zoom_max = _settings_client.gui.zoom_max;
+		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;
+	}
+
+	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		const SpriteLoader::Sprite *src_orig = ResizeSprite(sprite, z);
 
 		uint size = src_orig->height * src_orig->width;
@@ -358,7 +371,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 	}
 
 	uint len = 0; // total length of data
-	for (ZoomLevel z = ZOOM_LVL_BEGIN; z < ZOOM_LVL_END; z++) {
+	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		len += lengths[z][0] + lengths[z][1];
 	}
 
@@ -371,8 +384,8 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 
 	SpriteData *dst = (SpriteData *)dest_sprite->data;
 
-	for (ZoomLevel z = ZOOM_LVL_BEGIN; z < ZOOM_LVL_END; z++) {
-		dst->offset[z][0] = z == ZOOM_LVL_BEGIN ? 0 : lengths[z - 1][1] + dst->offset[z - 1][1];
+	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
+		dst->offset[z][0] = z == zoom_min ? 0 : lengths[z - 1][1] + dst->offset[z - 1][1];
 		dst->offset[z][1] = lengths[z][0] + dst->offset[z][0];
 
 		memcpy(dst->data + dst->offset[z][0], dst_px_orig[z], lengths[z][0]);

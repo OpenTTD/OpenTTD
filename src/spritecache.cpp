@@ -199,6 +199,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		/* Try loading 32bpp graphics in case we are 32bpp output */
 		SpriteLoaderPNG sprite_loader;
 		SpriteLoader::Sprite sprite;
+		sprite.type = sprite_type;
 
 		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id, sprite_type)) {
 			return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, allocator);
@@ -290,6 +291,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
+	sprite.type = sprite_type;
 
 	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos, sprite_type)) {
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
@@ -608,7 +610,7 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator)
 }
 
 
-void GfxInitSpriteMem()
+static void GfxInitSpriteCache()
 {
 	/* initialize sprite cache heap */
 	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)MallocT<byte>(_sprite_cache_size * 1024 * 1024);
@@ -617,6 +619,11 @@ void GfxInitSpriteMem()
 	_spritecache_ptr->size = ((_sprite_cache_size * 1024 * 1024) - sizeof(MemBlock)) | S_FREE_MASK;
 	/* Sentinel block (identified by size == 0) */
 	NextBlock(_spritecache_ptr)->size = 0;
+}
+
+void GfxInitSpriteMem()
+{
+	GfxInitSpriteCache();
 
 	/* Reset the spritecache 'pool' */
 	free(_spritecache);
@@ -624,6 +631,21 @@ void GfxInitSpriteMem()
 	_spritecache = NULL;
 
 	_compact_cache_counter = 0;
+}
+
+/**
+ * Remove all encoded sprites from the sprite cache without
+ * discarding sprite location information.
+ */
+void GfxClearSpriteCache()
+{
+	/* Clear sprite ptr for all cached items */
+	for (uint i = 0; i != _spritecache_items; i++) {
+		SpriteCache *sc = GetSpriteCache(i);
+		sc->ptr = NULL;
+	}
+
+	GfxInitSpriteCache();
 }
 
 /* static */ ReusableBuffer<SpriteLoader::CommonPixel> SpriteLoader::Sprite::buffer;

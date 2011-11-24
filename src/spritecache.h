@@ -48,6 +48,7 @@ static inline const byte *GetNonSprite(SpriteID sprite, SpriteType type)
 }
 
 void GfxInitSpriteMem();
+void GfxClearSpriteCache();
 void IncreaseSpriteLRU();
 
 bool LoadNextSprite(int load_index, byte file_index, uint file_sprite_id);

@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../zoom_func.h"
+#include "../settings_type.h"
 #include "../core/math_func.hpp"
 #include "8bpp_optimized.hpp"
 
@@ -116,7 +117,19 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPro
 	/* Make memory for all zoom-levels */
 	uint memory = sizeof(SpriteData);
 
-	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
+	ZoomLevel zoom_min;
+	ZoomLevel zoom_max;
+
+	if (sprite->type == ST_FONT) {
+		zoom_min = ZOOM_LVL_NORMAL;
+		zoom_max = ZOOM_LVL_NORMAL;
+	} else {
+		zoom_min = _settings_client.gui.zoom_min;
+		zoom_max = _settings_client.gui.zoom_max;
+		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;
+	}
+
+	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
 		memory += UnScaleByZoom(sprite->height, i) * UnScaleByZoom(sprite->width, i);
 	}
 
@@ -131,7 +144,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPro
 	byte *dst = temp_dst->data;
 
 	/* Make the sprites per zoom-level */
-	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
+	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
 		/* Store the index table */
 		uint offset = dst - temp_dst->data;
 		temp_dst->offset[i] = offset;

@@ -898,6 +898,7 @@ static bool ZoomMinMaxChanged(int32 p1)
 {
 	extern void ConstrainAllViewportsZoom();
 	ConstrainAllViewportsZoom();
+	GfxClearSpriteCache();
 	return true;
 }
 
