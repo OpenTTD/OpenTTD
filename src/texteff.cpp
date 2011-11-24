@@ -89,7 +89,7 @@ void MoveAllTextEffects()
 		}
 
 		te->MarkDirty();
-		te->top--;
+		te->top -= ZOOM_LVL_BASE;
 		te->MarkDirty();
 	}
 }
