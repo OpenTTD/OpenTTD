@@ -102,13 +102,13 @@ void InitTextEffects()
 void DrawTextEffects(DrawPixelInfo *dpi)
 {
 	/* Don't draw the text effects when zoomed out a lot */
-	if (dpi->zoom > ZOOM_LVL_OUT_2X) return;
+	if (dpi->zoom > ZOOM_LVL_OUT_8X) return;
 
 	const TextEffect *end = _text_effects.End();
 	for (TextEffect *te = _text_effects.Begin(); te != end; te++) {
 		if (te->string_id == INVALID_STRING_ID) continue;
 		if (te->mode == TE_RISING || (_settings_client.gui.loading_indicators && !IsTransparencySet(TO_LOADING))) {
-			ViewportAddString(dpi, ZOOM_LVL_OUT_2X, te, te->string_id, te->string_id - 1, 0, te->params_1);
+			ViewportAddString(dpi, ZOOM_LVL_OUT_8X, te, te->string_id, te->string_id - 1, 0, te->params_1);
 		}
 	}
 }

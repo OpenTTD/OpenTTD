@@ -736,7 +736,7 @@ static bool MakeZoomedInScreenshot()
 	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 	ViewPort vp;
 
-	vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
+	vp.zoom = ZOOM_LVL_NORMAL;
 	vp.left = w->viewport->left;
 	vp.top = w->viewport->top;
 	vp.virtual_left = w->viewport->virtual_left;

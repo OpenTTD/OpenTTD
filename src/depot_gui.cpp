@@ -28,6 +28,7 @@
 #include "window_gui.h"
 #include "vehiclelist.h"
 #include "order_backup.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
@@ -297,7 +298,7 @@ struct DepotWindow : Window {
 			case VEH_AIRCRAFT: {
 				const Sprite *spr = GetSprite(v->GetImage(DIR_W, EIT_IN_DEPOT), ST_NORMAL);
 				DrawAircraftImage(v, image_left, image_right,
-									y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
+									y + max(UnScaleByZoom(spr->height, ZOOM_LVL_GUI) + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI) - 14, 0), // tall sprites needs an y offset
 									this->sel, EIT_IN_DEPOT);
 				break;
 			}
@@ -608,14 +609,14 @@ struct DepotWindow : Window {
 
 				Dimension unumber = { GetDigitWidth() * 4, FONT_HEIGHT_NORMAL };
 				const Sprite *spr = GetSprite(SPR_FLAG_VEH_STOPPED, ST_NORMAL);
-				this->flag_width  = spr->width + WD_FRAMERECT_RIGHT;
-				this->flag_height = spr->height;
+				this->flag_width  = UnScaleByZoom(spr->width, ZOOM_LVL_GUI) + WD_FRAMERECT_RIGHT;
+				this->flag_height = UnScaleByZoom(spr->height, ZOOM_LVL_GUI);
 
 				if (this->type == VEH_TRAIN || this->type == VEH_ROAD) {
-					min_height = max<uint>(unumber.height + WD_MATRIX_TOP, spr->height);
+					min_height = max<uint>(unumber.height + WD_MATRIX_TOP, UnScaleByZoom(spr->height, ZOOM_LVL_GUI));
 					this->header_width = unumber.width + this->flag_width + WD_FRAMERECT_LEFT;
 				} else {
-					min_height = unumber.height + spr->height + WD_MATRIX_TOP + WD_PAR_VSEP_NORMAL + WD_MATRIX_BOTTOM;
+					min_height = unumber.height + UnScaleByZoom(spr->height, ZOOM_LVL_GUI) + WD_MATRIX_TOP + WD_PAR_VSEP_NORMAL + WD_MATRIX_BOTTOM;
 					this->header_width = max<uint>(unumber.width, this->flag_width) + WD_FRAMERECT_RIGHT;
 				}
 				int base_width = this->count_width + this->header_width;

@@ -618,6 +618,14 @@ class SmallMapWindow : public Window {
 	static const uint8 FORCE_REFRESH_PERIOD = 0x1F; ///< map is redrawn after that many ticks
 	uint8 refresh; ///< refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks
 
+	FORCEINLINE Point SmallmapRemapCoords(int x, int y) const
+	{
+		Point pt;
+		pt.x = (y - x) * 2;
+		pt.y = y + x;
+		return pt;
+	}
+
 	/**
 	 * Remap tile to location on this smallmap.
 	 * @param tile_x X coordinate of the tile.
@@ -629,13 +637,13 @@ class SmallMapWindow : public Window {
 		int x_offset = tile_x - this->scroll_x / (int)TILE_SIZE;
 		int y_offset = tile_y - this->scroll_y / (int)TILE_SIZE;
 
-		if (this->zoom == 1) return RemapCoords(x_offset, y_offset, 0);
+		if (this->zoom == 1) return SmallmapRemapCoords(x_offset, y_offset);
 
 		/* For negative offsets, round towards -inf. */
 		if (x_offset < 0) x_offset -= this->zoom - 1;
 		if (y_offset < 0) y_offset -= this->zoom - 1;
 
-		return RemapCoords(x_offset / this->zoom, y_offset / this->zoom, 0);
+		return SmallmapRemapCoords(x_offset / this->zoom, y_offset / this->zoom);
 	}
 
 	/**
@@ -1505,7 +1513,7 @@ public:
 	void SetNewScroll(int sx, int sy, int sub)
 	{
 		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
-		Point hv = InverseRemapCoords(wi->current_x * TILE_SIZE / 2, wi->current_y * TILE_SIZE / 2);
+		Point hv = InverseRemapCoords(wi->current_x * ZOOM_LVL_BASE * TILE_SIZE / 2, wi->current_y * ZOOM_LVL_BASE * TILE_SIZE / 2);
 		hv.x *= this->zoom;
 		hv.y *= this->zoom;
 

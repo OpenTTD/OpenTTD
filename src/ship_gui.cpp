@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "spritecache.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
@@ -35,14 +36,16 @@ void DrawShipImage(const Vehicle *v, int left, int right, int y, VehicleID selec
 	SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
 
-	int x = rtl ? right - real_sprite->width - real_sprite->x_offs : left - real_sprite->x_offs;
+	int width = UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI);
+	int x_offs = UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI);
+	int x = rtl ? right - width - x_offs : left - x_offs;
 
 	DrawSprite(sprite, GetVehiclePalette(v), x, y + 10);
 
 	if (v->index == selection) {
-		x += real_sprite->x_offs;
-		y += real_sprite->y_offs + 10;
-		DrawFrameRect(x - 1, y - 1, x + real_sprite->width + 1, y + real_sprite->height + 1, COLOUR_WHITE, FR_BORDERONLY);
+		x += x_offs;
+		y += UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI) + 10;
+		DrawFrameRect(x - 1, y - 1, x + width + 1, y + UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI) + 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

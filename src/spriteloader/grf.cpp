@@ -95,7 +95,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 	if (num != 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 
-	sprite->AllocateData(sprite->width * sprite->height);
+	sprite->AllocateData(sprite->width * sprite->height * ZOOM_LVL_BASE * ZOOM_LVL_BASE);
 
 	/* When there are transparency pixels, this format has another trick.. decode it */
 	if (type & 0x08) {
@@ -161,6 +161,22 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 				default:        sprite->data[i].m = dest[i]; break;
 			}
 		}
+	}
+
+	if (ZOOM_LVL_BASE != 1 && sprite_type == ST_NORMAL) {
+		/* Simple scaling, back-to-front so that no intermediate buffers are needed. */
+		int width  = sprite->width  * ZOOM_LVL_BASE;
+		int height = sprite->height * ZOOM_LVL_BASE;
+		for (int y = height - 1; y >= 0; y--) {
+			for (int x = width - 1; x >= 0; x--) {
+				sprite->data[y * width + x] = sprite->data[y / ZOOM_LVL_BASE * sprite->width + x / ZOOM_LVL_BASE];
+			}
+		}
+
+		sprite->width  *= ZOOM_LVL_BASE;
+		sprite->height *= ZOOM_LVL_BASE;
+		sprite->x_offs *= ZOOM_LVL_BASE;
+		sprite->y_offs *= ZOOM_LVL_BASE;
 	}
 
 	/* Make sure to mark all transparent pixels transparent on the alpha channel too */

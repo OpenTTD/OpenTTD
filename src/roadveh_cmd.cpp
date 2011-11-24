@@ -35,6 +35,7 @@
 #include "company_base.h"
 #include "core/backup_type.hpp"
 #include "newgrf.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
@@ -151,7 +152,7 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
 {
 	SpriteID sprite = GetRoadVehIcon(engine, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
-	preferred_x = Clamp(preferred_x, left - real_sprite->x_offs, right - real_sprite->width - real_sprite->x_offs);
+	preferred_x = Clamp(preferred_x, left - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI), right - UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI) - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI));
 	DrawSprite(sprite, pal, preferred_x, y);
 }
 

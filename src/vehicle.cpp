@@ -980,8 +980,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	/* The hash area to scan */
 	int xl, xu, yl, yu;
 
-	if (dpi->width + 70 < (1 << (7 + 6))) {
-		xl = GB(l - 70, 7, 6);
+	if (dpi->width + (70 * ZOOM_LVL_BASE) < (1 << (7 + 6))) {
+		xl = GB(l - (70 * ZOOM_LVL_BASE), 7, 6);
 		xu = GB(r,      7, 6);
 	} else {
 		/* scan whole hash row */
@@ -989,8 +989,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 		xu = 0x3F;
 	}
 
-	if (dpi->height + 70 < (1 << (6 + 6))) {
-		yl = GB(t - 70, 6, 6) << 6;
+	if (dpi->height + (70 * ZOOM_LVL_BASE) < (1 << (6 + 6))) {
+		yl = GB(t - (70 * ZOOM_LVL_BASE), 6, 6) << 6;
 		yu = GB(b,      6, 6) << 6;
 	} else {
 		/* scan whole column */
@@ -1407,15 +1407,15 @@ void VehicleMove(Vehicle *v, bool update_viewport)
 	Rect old_coord = v->coord;
 	v->coord.left   = pt.x;
 	v->coord.top    = pt.y;
-	v->coord.right  = pt.x + spr->width + 2;
-	v->coord.bottom = pt.y + spr->height + 2;
+	v->coord.right  = pt.x + spr->width + 2 * ZOOM_LVL_BASE;
+	v->coord.bottom = pt.y + spr->height + 2 * ZOOM_LVL_BASE;
 
 	if (update_viewport) {
 		MarkAllViewportsDirty(
 			min(old_coord.left,   v->coord.left),
 			min(old_coord.top,    v->coord.top),
-			max(old_coord.right,  v->coord.right) + 1,
-			max(old_coord.bottom, v->coord.bottom) + 1
+			max(old_coord.right,  v->coord.right) + 1 * ZOOM_LVL_BASE,
+			max(old_coord.bottom, v->coord.bottom) + 1 * ZOOM_LVL_BASE
 		);
 	}
 }
@@ -1430,7 +1430,7 @@ void VehicleMove(Vehicle *v, bool update_viewport)
  */
 void MarkSingleVehicleDirty(const Vehicle *v)
 {
-	MarkAllViewportsDirty(v->coord.left, v->coord.top, v->coord.right + 1, v->coord.bottom + 1);
+	MarkAllViewportsDirty(v->coord.left, v->coord.top, v->coord.right + 1 * ZOOM_LVL_BASE, v->coord.bottom + 1 * ZOOM_LVL_BASE);
 }
 
 /**

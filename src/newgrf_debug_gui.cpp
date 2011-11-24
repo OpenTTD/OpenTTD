@@ -725,7 +725,7 @@ struct SpriteAlignerWindow : Window {
 					spr->y_offs + (spr->height + height) / 2 - 1,
 				};
 
-				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr);
+				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr, ZOOM_LVL_NORMAL);
 				break;
 			}
 

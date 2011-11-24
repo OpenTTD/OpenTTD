@@ -33,6 +33,7 @@
 #include "engine_base.h"
 #include "company_base.h"
 #include "tunnelbridge_map.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
@@ -81,7 +82,7 @@ void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine
 {
 	SpriteID sprite = GetShipIcon(engine, image_type);
 	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
-	preferred_x = Clamp(preferred_x, left - real_sprite->x_offs, right - real_sprite->width - real_sprite->x_offs);
+	preferred_x = Clamp(preferred_x, left - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI), right - UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI) - UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI));
 	DrawSprite(sprite, pal, preferred_x, y);
 }
 
@@ -95,8 +96,8 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height, EngineImageTy
 {
 	const Sprite *spr = GetSprite(GetShipIcon(engine, image_type), ST_NORMAL);
 
-	width  = spr->width;
-	height = spr->height;
+	width  = UnScaleByZoom(spr->width, ZOOM_LVL_GUI);
+	height = UnScaleByZoom(spr->height, ZOOM_LVL_GUI);
 }
 
 SpriteID Ship::GetImage(Direction direction, EngineImageType image_type) const

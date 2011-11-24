@@ -14,6 +14,7 @@
 
 #include "core/geometry_type.hpp"
 #include "tile_cmd.h"
+#include "zoom_type.h"
 
 static const uint SNOW_LINE_MONTHS = 12; ///< Number of months in the snow line table.
 static const uint SNOW_LINE_DAYS   = 32; ///< Number of days in each month in the snow line table.
@@ -83,8 +84,8 @@ static inline Slope GetFoundationPixelSlope(TileIndex tile, int *z)
 static inline Point RemapCoords(int x, int y, int z)
 {
 	Point pt;
-	pt.x = (y - x) * 2;
-	pt.y = y + x - z;
+	pt.x = (y - x) * 2 * ZOOM_LVL_BASE;
+	pt.y = (y + x - z) * ZOOM_LVL_BASE;
 	return pt;
 }
 
@@ -111,7 +112,7 @@ static inline Point RemapCoords2(int x, int y)
  */
 static inline Point InverseRemapCoords(int x, int y)
 {
-	Point pt = {(y * 2 - x) >> 2, (y * 2 + x) >> 2};
+	Point pt = {(y * 2 - x) >> (2 + ZOOM_LVL_SHIFT), (y * 2 + x) >> (2 + ZOOM_LVL_SHIFT)};
 	return pt;
 }
 

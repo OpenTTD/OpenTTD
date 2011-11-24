@@ -16,6 +16,7 @@
 #include "spritecache.h"
 #include "core/alloc_func.hpp"
 #include "core/mem_func.hpp"
+#include "zoom_func.h"
 
 
 /**
@@ -118,11 +119,11 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 
 		if (dtss->IsParentSprite()) {
 			Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-			DrawSprite(image, pal, x + pt.x, y + pt.y);
+			DrawSprite(image, pal, x + UnScaleByZoom(pt.x, ZOOM_LVL_GUI), y + UnScaleByZoom(pt.y, ZOOM_LVL_GUI));
 
 			const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
-			child_offset.x = pt.x + spr->x_offs;
-			child_offset.y = pt.y + spr->y_offs;
+			child_offset.x = UnScaleByZoom(pt.x + spr->x_offs, ZOOM_LVL_GUI);
+			child_offset.y = UnScaleByZoom(pt.y + spr->y_offs, ZOOM_LVL_GUI);
 		} else {
 			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
 			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
