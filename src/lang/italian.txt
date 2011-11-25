@@ -1345,6 +1345,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raggio 
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raggio di aggancio delle finestre: {ORANGE}Disabilitato
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Numero massimo di finestre non persistenti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Numero massimo di finestre non persistenti: {ORANGE}Disabilitato
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Massimo livello di zoom avanti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Massimo livello di zoom indietro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normale
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocità di crescita delle città: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nessuna
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta

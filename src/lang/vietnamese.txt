@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Xe ôt�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Cuộn cửa sổ chính khi con trỏ gần mép: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Cho phép hối lộ chính quyền địa phương: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Cho phép mua quyền vận tải độc quyền: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Cho phép góp vốn cho các công trình: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Cho phép đầu tư hạ tầng giao thông địa phương : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Cho phép chuyển tiền cho các công ty khác: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Hệ số cân nặng để mô phỏng của tàu hỏa chở nặng: {ORANGE}{STRING}
@@ -1320,6 +1321,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Phạm 
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}tắt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Giới hạn số lượng cửa sổ (không-neo): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Giới hạn số lượng cửa sổ (không-neo): {ORANGE}tắt
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Độ phóng to tối đa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Độ thu nhỏ tối đa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Bình thường
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Tốc độ phát triển của đô thị: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Không
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Chậm
@@ -2575,6 +2584,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Bưu ki�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Hàng hoá cần để đô thị tăng trưởng:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} được yêu cầu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} Yêu cầu trong mùa đông
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{GREEN}Đã chuyển được {ORANGE}{STRING}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (vẫn còn yêu cầu)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (đã được vận chuyển)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Thị trấn phát triển mỗi {ORANGE}{COMMA}{BLACK} ngày
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Thị trấn phát triển mỗi {ORANGE}{COMMA}{BLACK} ngày (đã được góp vốn)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Thị trấn {RED}không còn{BLACK} phát triển
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Độ ồn giới hạn trong đô thị: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Chính quyền địa phương

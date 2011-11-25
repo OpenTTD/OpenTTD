@@ -1143,6 +1143,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}(획기
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면 움직이기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 운송권 구입 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}도시의 건물에 투자하는 기능: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}지역 도로 재공사 투자 행위를 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
@@ -1321,6 +1322,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}윈도�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 맞춤 거리 : {ORANGE}사용 안함
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}자동 결합하지 않는 창의 최대 갯수: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}자동 결합하지 않는 창의 최대 갯수: {ORANGE}사용 안함
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}최대 줌 인 배율: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}최대 줌 아웃 배율: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :기본값
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}도시 성장 속도: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :없음
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :느림
@@ -1876,6 +1885,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기 실패
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드한 파일의 압축을 풀 수 없습니다
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}투명 옵션
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}역명판 투명 전환. 고정하려면 CTRL+클릭하세요.
@@ -1921,6 +1931,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널을 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}철로, 신호기, 웨이포인트와 역의 건설/제거툴 켜기/끄기. Ctrl을 누르면 웨이포인트와 역에서 레일을 제거합니다.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}철도의 타입을 변경/업그레이드 합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량 기지 방향
@@ -2192,6 +2203,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :들판
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :눈덮인 땅
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :사막
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :도로
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :가로등이 있는 도로
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :가로수가 있는 도로
@@ -2376,6 +2388,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}아래�
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}선택한 NewGRF 파일을 아래로 내림
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}설치된 NewGRF의 목록입니다. 파라미터를 변경하려면 클릭하세요.
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}파라미터 설정
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}팔레트 바꾸기
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}NewGRF의 팔레트를 바꿉니다.{}게임에서 그래픽이 분홍색으로 보일때 이 기능을 사용하십시오.
@@ -2397,7 +2411,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}일치하�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용안함
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTTD 버전과 맞지 않습니다...
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 바꾸기
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
@@ -2406,6 +2419,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 �
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :파라미터 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}파라미터 번호: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}
@@ -3250,6 +3265,8 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(내리지 않고 아무 화물이나 가득 찰 때까지 기다림)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(적재와 하차 없음)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[가까운쪽]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[중간]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[먼쪽]
@@ -3462,6 +3479,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}일시�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}에 대한 낮은 성취도로 인해 지역당국이 이 행위를 거절했습니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 지역당국은 이 도시에 다른 공항이 들어서는 것을 거부합니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 지역 당국이 소음 문제로 인해 공항 건설을 거부하였습니다
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}당신의 뇌물 수수 행위가 지역 당국에 의해 발각되었습니다!
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}이곳의 땅을 올릴 수 없습니다...

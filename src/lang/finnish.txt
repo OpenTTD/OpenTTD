@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ajoneuv
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Salli kuljetusyksinoikeuksien ostaminen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Salli rakennusten rahoittaminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Salli paikallisen tieverkon uudelleenrakentamisen rahoitus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Salli rahan lähettäminen muille yhtiöille: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Rahdin painokerroin raskaiden junien simulointia varten: {ORANGE}{STRING}
@@ -1320,6 +1321,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunoi
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Suurin sallittu ei-kiinnitettyjen ikkunoiden lukumäärä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Suurin sallittu ei-kiinnitettyjen ikkunoiden lukumäärä: {ORANGE}pois käytöstä
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Suurin sallittu suurennustaso: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Suurin sallittu pienennystaso: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Tavallinen
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Kaupunkien kasvunopeus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ei kasvua
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Hidas
@@ -2575,6 +2584,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Postia v
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kaupungin kasvuun tarvittava rahti:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vaadittu
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vaaditaan talvella
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} kuljetettu
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (tarvitaan lisää)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (kuljetettu)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK} päivän{P "" ""} välein
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kaupunki kasvaa {ORANGE}{COMMA}{BLACK} päivän{P "" ""} välein (rahoitettu)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kaupunki {RED}ei{BLACK} kasva
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Meluraja kaupungissa: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä näkymä kaupungin sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Viranomaiset

@@ -1322,6 +1322,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fenster
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}ausgeschaltet
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximale Fensteranzahl (nicht angepinnte): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximale Fensteranzahl (nicht angepinnte): {ORANGE}deaktiviert
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maximaler Level für Reinzoomen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maximaler Level für Rauszoomen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Wachstumsgeschwindigkeit von Städten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keine
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langsam
