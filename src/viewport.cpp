@@ -513,7 +513,7 @@ static void AddChildSpriteToFoundation(SpriteID image, PaletteID pal, const SubS
 	int *old_child = _vd.last_child;
 	_vd.last_child = _vd.last_foundation_child[foundation_part];
 
-	AddChildSpriteScreen(image, pal, offs.x + extra_offs_x, offs.y + extra_offs_y, false, sub);
+	AddChildSpriteScreen(image, pal, offs.x + extra_offs_x, offs.y + extra_offs_y, false, sub, false);
 
 	/* Switch back to last ChildSprite list */
 	_vd.last_child = old_child;
@@ -611,7 +611,7 @@ static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, int z
 		return;
 
 	const ParentSpriteToDraw *pstd = _vd.parent_sprites_to_draw.End() - 1;
-	AddChildSpriteScreen(image, pal, pt.x - pstd->left, pt.y - pstd->top, false, sub);
+	AddChildSpriteScreen(image, pal, pt.x - pstd->left, pt.y - pstd->top, false, sub, false);
 }
 
 /**
@@ -794,7 +794,7 @@ bool IsInsideRotatedRectangle(int x, int y)
  * @param transparent if true, switch the palette between the provided palette and the transparent palette,
  * @param sub Only draw a part of the sprite.
  */
-void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool transparent, const SubSprite *sub)
+void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool transparent, const SubSprite *sub, bool scale)
 {
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
@@ -813,8 +813,8 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	cs->image = image;
 	cs->pal = pal;
 	cs->sub = sub;
-	cs->x = x;
-	cs->y = y;
+	cs->x = scale ? x * ZOOM_LVL_BASE : x;
+	cs->y = scale ? y * ZOOM_LVL_BASE : y;
 	cs->next = -1;
 
 	/* Append the sprite to the active ChildSprite list.
