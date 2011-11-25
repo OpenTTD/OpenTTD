@@ -109,7 +109,6 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 			do {
 				if (dest + 2 > dest_orig + dest_size) {
-					free(sprite->data);
 					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				}
 
@@ -125,7 +124,6 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 				data = &sprite->data[y * sprite->width + skip];
 
 				if (skip + length > sprite->width || dest + length > dest_orig + dest_size) {
-					free(sprite->data);
 					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				}
 
@@ -142,7 +140,6 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 		}
 	} else {
 		if (dest_size < sprite->width * sprite->height) {
-			free(sprite->data);
 			return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 		}
 
