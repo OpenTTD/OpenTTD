@@ -765,8 +765,8 @@ static bool MakeWorldScreenshot()
 	vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 	vp.left = 0;
 	vp.top = 0;
-	vp.virtual_left = -(int)MapMaxX() * TILE_PIXELS;
-	vp.virtual_top = -extra_height_top;
+	vp.virtual_left = -(int)MapMaxX() * TILE_PIXELS * ZOOM_LVL_BASE;
+	vp.virtual_top = -extra_height_top * ZOOM_LVL_BASE;
 	vp.virtual_width = (MapMaxX() + MapMaxY()) * TILE_PIXELS;
 	vp.width = vp.virtual_width;
 	vp.virtual_height = ((MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1) + extra_height_top - reclaim_height_bottom;
