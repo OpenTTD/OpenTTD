@@ -56,7 +56,7 @@
 
 #include "table/strings.h"
 
-#define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
+#define GEN_HASH(x, y) ((GB((y), 6 + ZOOM_LVL_SHIFT, 6) << 6) + GB((x), 7 + ZOOM_LVL_SHIFT, 6))
 
 VehicleID _new_vehicle_id;
 uint16 _returned_refit_capacity;      ///< Stores the capacity after a refit operation.
@@ -980,18 +980,18 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	/* The hash area to scan */
 	int xl, xu, yl, yu;
 
-	if (dpi->width + (70 * ZOOM_LVL_BASE) < (1 << (7 + 6))) {
-		xl = GB(l - (70 * ZOOM_LVL_BASE), 7, 6);
-		xu = GB(r,      7, 6);
+	if (dpi->width + (70 * ZOOM_LVL_BASE) < (1 << (7 + 6 + ZOOM_LVL_SHIFT))) {
+		xl = GB(l - (70 * ZOOM_LVL_BASE), 7 + ZOOM_LVL_SHIFT, 6);
+		xu = GB(r,                        7 + ZOOM_LVL_SHIFT, 6);
 	} else {
 		/* scan whole hash row */
 		xl = 0;
 		xu = 0x3F;
 	}
 
-	if (dpi->height + (70 * ZOOM_LVL_BASE) < (1 << (6 + 6))) {
-		yl = GB(t - (70 * ZOOM_LVL_BASE), 6, 6) << 6;
-		yu = GB(b,      6, 6) << 6;
+	if (dpi->height + (70 * ZOOM_LVL_BASE) < (1 << (6 + 6 + ZOOM_LVL_SHIFT))) {
+		yl = GB(t - (70 * ZOOM_LVL_BASE), 6 + ZOOM_LVL_SHIFT, 6) << 6;
+		yu = GB(b,                        6 + ZOOM_LVL_SHIFT, 6) << 6;
 	} else {
 		/* scan whole column */
 		yl = 0;
