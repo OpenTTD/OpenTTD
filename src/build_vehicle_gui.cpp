@@ -629,7 +629,7 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 		/* Road vehicle weight - (including cargo) */
 		int16 weight = e->GetDisplayWeight();
 		SetDParam(0, weight);
-		uint cargo_weight = CargoSpec::Get(e->GetDefaultCargoType())->weight * GetTotalCapacityOfArticulatedParts(engine_number) / 16;
+		uint cargo_weight = (e->CanCarryCargo() ? CargoSpec::Get(e->GetDefaultCargoType())->weight * GetTotalCapacityOfArticulatedParts(engine_number) / 16 : 0);
 		SetDParam(1, cargo_weight + weight);
 		DrawString(left, right, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT);
 		y += FONT_HEIGHT_NORMAL;
