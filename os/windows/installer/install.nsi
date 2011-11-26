@@ -86,7 +86,7 @@ Page custom SelectCDEnter SelectCDExit ": TTD folder"
 !define MUI_FINISHPAGE_TITLE_3LINES
 !define MUI_FINISHPAGE_RUN_TEXT "Run ${APPNAMEANDVERSION} now!"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\openttd.exe"
-!define MUI_FINISHPAGE_LINK "Visit the OpenTTD site for the latest news, FAQs and downloads"
+!define MUI_FINISHPAGE_LINK "Visit the OpenTTD site for more information"
 !define MUI_FINISHPAGE_LINK_LOCATION "${APPURLLINK}"
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\readme.txt"
