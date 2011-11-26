@@ -702,6 +702,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
  */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data)
 {
+	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_OKAY;
+
 	Packet *p = new Packet(PACKET_SERVER_CHAT);
 
 	p->Send_uint8 (action);
