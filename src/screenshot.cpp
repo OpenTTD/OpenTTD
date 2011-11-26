@@ -736,15 +736,15 @@ static bool MakeZoomedInScreenshot()
 	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 	ViewPort vp;
 
-	vp.zoom = ZOOM_LVL_NORMAL;
+	vp.zoom = _settings_client.gui.zoom_min;
 	vp.left = w->viewport->left;
 	vp.top = w->viewport->top;
 	vp.virtual_left = w->viewport->virtual_left;
 	vp.virtual_top = w->viewport->virtual_top;
 	vp.virtual_width = w->viewport->virtual_width;
-	vp.width = vp.virtual_width;
+	vp.width = UnScaleByZoom(vp.virtual_width, vp.zoom);
 	vp.virtual_height = w->viewport->virtual_height;
-	vp.height = vp.virtual_height;
+	vp.height = UnScaleByZoom(vp.virtual_height, vp.zoom);
 
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), LargeWorldCallback, &vp, vp.width, vp.height,
