@@ -182,7 +182,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPro
 						count_dst = NULL;
 					}
 					/* As long as we find transparency bytes, keep counting */
-					if (colour == 0) {
+					if (colour == 0 && trans != 255) {
 						last_colour = 0;
 						trans++;
 						continue;
