@@ -32,6 +32,7 @@
 #include "hotkeys.h"
 #include "engine_base.h"
 #include "vehicle_func.h"
+#include "zoom_func.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -1539,8 +1540,8 @@ private:
 		 * for sprite drawing and add half of the sprite's width. For the y offset
 		 * we want the sprite to be aligned on the bottom, so again we undo the
 		 * offset for sprite drawing and assume it is the bottom of the sprite. */
-		int sprite_center_x_offset = sprite->x_offs + sprite->width / 2;
-		int sprite_bottom_y_offset = sprite->height + sprite->y_offs;
+		int sprite_center_x_offset = UnScaleByZoom(sprite->x_offs + sprite->width / 2, ZOOM_LVL_GUI);
+		int sprite_bottom_y_offset = UnScaleByZoom(sprite->height + sprite->y_offs, ZOOM_LVL_GUI);
 
 		/* Next we want to know where on the window to draw. Calculate the center
 		 * and the bottom of the area to draw. */
