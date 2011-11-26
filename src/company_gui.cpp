@@ -2001,6 +2001,11 @@ struct CompanyWindow : Window
 
 			case CW_WIDGET_BUILD_HQ:
 				if ((byte)this->window_number != _local_company) return;
+				if (this->IsWidgetLowered(CW_WIDGET_BUILD_HQ)) {
+					ResetObjectToPlace();
+					this->RaiseButtons();
+					break;
+				}
 				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 				SetTileSelectSize(2, 2);
 				this->LowerWidget(CW_WIDGET_BUILD_HQ);
@@ -2008,6 +2013,11 @@ struct CompanyWindow : Window
 				break;
 
 			case CW_WIDGET_RELOCATE_HQ:
+				if (this->IsWidgetLowered(CW_WIDGET_RELOCATE_HQ)) {
+					ResetObjectToPlace();
+					this->RaiseButtons();
+					break;
+				}
 				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 				SetTileSelectSize(2, 2);
 				this->LowerWidget(CW_WIDGET_RELOCATE_HQ);
