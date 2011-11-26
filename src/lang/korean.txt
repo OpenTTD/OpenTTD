@@ -1885,6 +1885,10 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기 실패
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드한 파일의 압축을 풀 수 없습니다
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}그래픽 없음
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD가 작동되기 위한 그래픽이 필요합니다. 그러나 당신의 컴퓨터에서 어떤 그래픽도 찾을수 없습니다. OpenTTD의 구동을 위한 그래픽을 다운로드 받아서 설치합니까?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}예, 그래픽을 다운로드 받습니다.
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}아니오, OpenTTD를 종료합니다.
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}투명 옵션
@@ -1932,6 +1936,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널�
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}철로, 신호기, 웨이포인트와 역의 건설/제거툴 켜기/끄기. Ctrl을 누르면 웨이포인트와 역에서 레일을 제거합니다.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}철도의 타입을 변경/업그레이드 합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 
+STR_RAIL_NAME_RAILROAD                                          :철도
+STR_RAIL_NAME_ELRAIL                                            :전기철도
+STR_RAIL_NAME_MONORAIL                                          :모노레일
+STR_RAIL_NAME_MAGLEV                                            :자기부상열차
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량 기지 방향
@@ -2203,6 +2211,14 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :들판
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :눈덮인 땅
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :사막
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} 선로(폐색 신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} 선로(입구-신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 선로(출구-신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} 선로(콤보-신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} 선로(경로 신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 선로(일방통행 경로 신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 차량기지
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :도로
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :가로등이 있는 도로
@@ -2389,6 +2405,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}선택�
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}설치된 NewGRF의 목록입니다. 파라미터를 변경하려면 클릭하세요.
 
 # Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Readme 보기
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}변경기록
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}저작권
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}파라미터 설정
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}팔레트 바꾸기
@@ -2421,6 +2440,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}파라미터 번호: {ORANGE}{NUM}
 
 # NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF {STRING}의 Readme
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF {STRING}의 변경기록
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF {STRING}의 저작권
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}
@@ -2547,6 +2569,9 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED}{G 0 "이" "가"} 필요함
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :냉대 기후에서 {ORANGE}{STRING}{BLACK}가 필요합니다.
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.(도시에 투자중)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 도시 위치의 새로운 뷰포트를 엽니다.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}지역 당국

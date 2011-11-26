@@ -750,21 +750,21 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Cambiam
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Sussidi
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informazioni generali
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo treno arriva a {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo autobus arriva a {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo camion arriva a {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram passeggeri arriva a {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram merci arriva a {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}La prima nave attracca a {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo treno arriva {G "a " all' "alla "}{STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo autobus arriva {G "a " all' "alla "}{STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo camion arriva {G "a " all' "alla "}{STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram passeggeri arriva {G "a " all' "alla "}{STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram merci arriva {G "a " all' "alla "}{STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}La prima nave attracca {G "a " all' "alla "}{STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}I cittadini festeggiano . . .{}Il primo aeromobile atterra {G "a " all' "alla "}{STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Incidente ferroviario!{}In {COMMA} muoiono nell'incendio seguito alla collisione
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Incidente stradale!{}Il conducente muore nell'incendio seguito alla collisione con un treno
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Incidente stradale!{}In {COMMA} muoiono nell'incendio seguito alla collisione con un treno
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aeroplano precipitato!{}In {COMMA} muoiono nell'incendio a {STATION}
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aeroplano precipitato!{}In {COMMA} muoiono nell'incendio {G "a " all' "alla "}{STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Incidente aereo!{}L'aeromobile resta senza carburante: in {COMMA} muoiono fra le fiamme!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin distrutto! Disastro a {STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin distrutto! Disastro {G "a " all' "alla "}{STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Automezzo distrutto in una collisione con un 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Esplosione in una raffineria vicino a {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabbrica distrutta in circostanze sospette vicino a {TOWN}!
@@ -2682,7 +2682,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non c'è
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}In attesa: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} in viaggio da {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} in viaggio {G "da " dall' "dalla "}{STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accetta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la lista delle merci accettate
@@ -3116,7 +3116,7 @@ STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}In frenata
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Alimentazione mancante
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}In attesa di un percorso libero
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Diretto a {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Diretto {G "a " all' "alla "}{STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nessun ordine, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Diretto a {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Diretto {G "al " all' "alla "}{DEPOT}, {VELOCITY}
@@ -3176,8 +3176,8 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARG
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vuoto
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} da {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} da {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} {G "da " dall' "dalla "}{STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} {G "da " dall' "dalla "}{STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Carico
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Mostra i dettagli sul carico trasportato
@@ -4280,7 +4280,7 @@ STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=m}Deposito a
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=m}Deposito automezzi #{1:COMMA} di {0:TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=m}Deposito navale di {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=m}Deposito navale #{1:COMMA} di {0:TOWN}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=ma}Hangar di {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=ma}Hangar {G "di " dell' "della "}{STATION}
 
 STR_UNKNOWN_STATION                                             :stazione sconosciuta
 STR_DEFAULT_SIGN_NAME                                           :Cartello

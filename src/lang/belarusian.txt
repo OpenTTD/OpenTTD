@@ -1638,8 +1638,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Рад�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}адключана
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}не абмежавана
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Максімальны ўзровень набліжэньня: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максімальны ўзровень падаленьня: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Максымальны ўзровень набліжэньня: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максымальны ўзровень падаленьня: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Нармальны
@@ -2215,7 +2215,7 @@ STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не ў�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Памылка запампоўваньня...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... злучэньне страчана
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... немагчыма запісаць файл
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не ўдалося распакаваць запампованы файл
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не ўдалося распакаваць запампаваны файл
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Адсутная графiка
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD патрабуе графiкi для функцыянаваньня, але ня можа знайсьцi нiякай. Вы дазваляеце OpenTTD спампаваць ды ўсталяваць гэтую графiку?
@@ -2926,7 +2926,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (дастаткова)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Горад расце раз у {ORANGE}{COMMA}{BLACK} д{P зень нi зён}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Горад расце раз у {ORANGE}{COMMA}{BLACK} д{P зень нi зён} (прафінансавана)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Горад {RED}не{BLACK} развіваецца
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Горад {RED}не{BLACK} разьвіваецца
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Узровень шуму ў горадзе: {ORANGE}{COMMA}{BLACK}  Макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць горад у асноўным вакне. Ctrl+клік - паказаць у дадатковым вакне.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Мясцовыя ўлады

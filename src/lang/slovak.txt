@@ -1210,6 +1210,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cestné
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posúvať pohľad, keď je kurzor myši na okraji okna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Umožniť podplácanie miestnej správy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Povoliť zakúpenie exkluzívnych dopravných práv: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Povoliť financovanie stavieb: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Povoliť financovanie rekonštrukcie miestných ciest: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožniť posielanie peňazí ostatným spoločnostiam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
@@ -1388,6 +1389,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vzdiale
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenosť pre prichytenie okna: {ORANGE}vypnuté
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximálný počet nepriľnavých okien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximálný počet nepriľnavých okien: {ORANGE}vypnutý
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maximálna úroveň priblíženia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maximálna úroveň oddialenia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4krát
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :Dvojnásobný
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normálny
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :Dvojnásobný
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4krát
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8krát
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Rozvoj miest: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :žiadny
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :pomalý
@@ -1943,6 +1952,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... spoj
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... do súboru sa nedá zapisovať
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nemôžem rozbaliť stiahnutý súbor
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Chýbajúca grafika
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD potrebuje grafické súbory ale žiadne nenašiel. Povolíte aby OpenTTD stiahol a nainštaloval tieto súbory?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Áno, stiahnite si grafiku
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nie, ukončiť OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavenie priehľadnosti
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Prepnúť priehľadnosť názvov staníc. CTRL+klik uzamkne nastavenie
@@ -1988,6 +2002,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Postavi�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Postaviť železničný tunel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Prepnúť stavbu/odstránenie železničných koľají, návestidiel, smerových bodov a staníc. Podržte Ctrl a budú odstránené viaceré objekty v rade za sebou
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertovať/vylepšiť typ železnice
+
+STR_RAIL_NAME_RAILROAD                                          :Železnica
+STR_RAIL_NAME_ELRAIL                                            :Elektrifikovaná železnica
+STR_RAIL_NAME_MONORAIL                                          :Jednokoľajka
+STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientácia depa
@@ -2259,6 +2278,22 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polia
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežený terén
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Púšť
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} trať
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} trať so signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} trať s pre-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} trať s exit-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} trať s combo-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} trať s path signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} trať s jednosmernými signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} trať s block a pre-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} trať s block a exit-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} trať s block a combo-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} trať s BLOCK a PATH signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} trať s block a jednosmernými signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} trať s pre- and exit-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} trať s pre- a combo-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} trať s pre- a path signálmi
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta s lampami
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Cesta v aleji
@@ -2441,7 +2476,9 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Vyššie
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Posunút vybraný NewGRF súbor v zozname vyššie
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Nižšie
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunút vybraný NewGRF súbor v zozname nižšie
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Zoznam inštalovaných NewGRF súborov. Kliknite na súbor pre zmenu jeho parametrov.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Zoznam inštalovaných NewGRF súborov.
+
+# Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Prepnúť paletu
@@ -2464,7 +2501,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Príslušn
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Nedostupný
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nekompatibilné s touto verziou OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmeniť NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvoriť
@@ -2473,6 +2509,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastavi�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Počet parametrov: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Kontrola - {STRING}
@@ -3316,6 +3354,8 @@ STR_ORDER_NO_UNLOAD                                             :(Nevykladaj a n
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nevykladaj a čakaj na plné naloženie)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a čakaj na plné naloženie akéhokoľvek nákladu)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Žiadné vykládanie a nakládanie)
+
+
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[blízky koniec]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[stred]
