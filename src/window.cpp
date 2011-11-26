@@ -837,7 +837,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 static void BringWindowToFront(Window *w);
 
 /**
- * Find a window and make it the top-window on the screen.
+ * Find a window and make it the relative top-window on the screen.
  * The window gets unshaded if it was shaded, and a white border is drawn at its edges for a brief period of time to visualize its "activation".
  * @param cls WindowClass of the window to activate
  * @param number WindowNumber of the window to activate
@@ -873,42 +873,142 @@ static inline bool IsVitalWindow(const Window *w)
 }
 
 /**
- * On clicking on a window, make it the frontmost window of all. However
- * there are certain windows that always need to be on-top; these include
- * - Toolbar, Statusbar (always on)
- * - New window, Chatbar (only if open)
- * The window is marked dirty for a repaint if the window is actually moved
- * @param w window that is put into the foreground
- * @return pointer to the window, the same as the input pointer
+ * Get the z-priority for a given window. This is used in comparison with other z-priority values;
+ * a window with a given z-priority will appear above other windows with a lower value, and below
+ * those with a higher one (the ordering within z-priorities is arbitrary).
+ * @param w The window to get the z-priority for
+ * @pre w->window_class != WC_INVALID
+ * @return The window's z-priority
  */
-static void BringWindowToFront(Window *w)
+static uint GetWindowZPriority(const Window *w)
 {
-	Window *v = _z_front_window;
+	assert(w->window_class != WC_INVALID);
 
-	/* Bring the window just below the vital windows */
-	for (; v != NULL && v != w && IsVitalWindow(v); v = v->z_back) { }
+	uint z_priority = 0;
 
-	if (v == NULL || w == v) return; // window is already in the right position
+	switch (w->window_class) {
+		case WC_ENDSCREEN:
+			++z_priority;
 
-	/* w cannot be at the top already! */
-	assert(w != _z_front_window);
+		case WC_HIGHSCORE:
+			++z_priority;
+
+		case WC_TOOLTIPS:
+			++z_priority;
+
+		case WC_DROPDOWN_MENU:
+			++z_priority;
+
+		case WC_MAIN_TOOLBAR:
+		case WC_STATUS_BAR:
+			++z_priority;
+
+		case WC_ERRMSG:
+		case WC_CONFIRM_POPUP_QUERY:
+			++z_priority;
+
+		case WC_SAVELOAD:
+			++z_priority;
+
+		case WC_MODAL_PROGRESS:
+			++z_priority;
+
+		case WC_CONSOLE:
+			++z_priority;
+
+		case WC_SEND_NETWORK_MSG:
+		case WC_NEWS_WINDOW:
+			++z_priority;
+
+		default:
+			++z_priority;
+
+		case WC_MAIN_WINDOW:
+			return z_priority;
+	}
+}
+
+/**
+ * Adds a window to the z-ordering, according to its z-priority.
+ * @param w Window to add
+ */
+static void AddWindowToZOrdering(Window *w)
+{
+	assert(w->z_front == NULL && w->z_back == NULL);
+
+	if (_z_front_window == NULL) {
+		/* It's the only window. */
+		_z_front_window = _z_back_window = w;
+		w->z_front = w->z_back = NULL;
+	} else {
+		/* Search down the z-ordering for its location. */
+		Window *v = _z_front_window;
+		uint last_z_priority = UINT_MAX;
+		while (v != NULL && (v->window_class == WC_INVALID || GetWindowZPriority(v) > GetWindowZPriority(w))) {
+			if (v->window_class != WC_INVALID) {
+				/* Sanity check z-ordering, while we're at it. */
+				assert(last_z_priority >= GetWindowZPriority(v));
+				last_z_priority = GetWindowZPriority(v);
+			}
+
+			v = v->z_back;
+		}
+
+		if (v == NULL) {
+			/* It's the new back window. */
+			w->z_front = _z_back_window;
+			w->z_back = NULL;
+			_z_back_window->z_back = w;
+			_z_back_window = w;
+		} else if (v == _z_front_window) {
+			/* It's the new front window. */
+			w->z_front = NULL;
+			w->z_back = _z_front_window;
+			_z_front_window->z_front = w;
+			_z_front_window = w;
+		} else {
+			/* It's somewhere else in the z-ordering. */
+			w->z_front = v->z_front;
+			w->z_back = v;
+			v->z_front->z_back = w;
+			v->z_front = w;
+		}
+	}
+}
+
+
+/**
+ * Removes a window from the z-ordering.
+ * @param w Window to remove
+ */
+static void RemoveWindowFromZOrdering(Window *w)
+{
+	if (w->z_front == NULL) {
+		assert(_z_front_window == w);
+		_z_front_window = w->z_back;
+	} else {
+		w->z_front->z_back = w->z_back;
+	}
 
 	if (w->z_back == NULL) {
+		assert(_z_back_window == w);
 		_z_back_window = w->z_front;
 	} else {
 		w->z_back->z_front = w->z_front;
 	}
-	w->z_front->z_back = w->z_back;
 
-	w->z_front = v->z_front;
-	w->z_back = v;
+	w->z_front = w->z_back = NULL;
+}
 
-	if (v->z_front == NULL) {
-		_z_front_window = w;
-	} else {
-		v->z_front->z_back = w;
-	}
-	v->z_front = w;
+/**
+ * On clicking on a window, make it the frontmost window of all windows with an equal
+ * or lower z-priority. The window is marked dirty for a repaint
+ * @param w window that is put into the relative foreground
+ */
+static void BringWindowToFront(Window *w)
+{
+	RemoveWindowFromZOrdering(w);
+	AddWindowToZOrdering(w);
 
 	w->SetDirty();
 }
@@ -953,45 +1053,8 @@ void Window::InitializeData(const WindowDesc *desc, WindowNumber window_number)
 	 * window has a text box, then take focus anyway. */
 	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != NULL)) SetFocusedWindow(this);
 
-	/* Hacky way of specifying always-on-top windows. These windows are
-	 * always above other windows because they are moved below them.
-	 * status-bar is above news-window because it has been created earlier.
-	 * Also, as the chat-window is excluded from this, it will always be
-	 * the last window, thus always on top.
-	 * XXX - Yes, ugly, probably needs something like w->always_on_top flag
-	 * to implement correctly, but even then you need some kind of distinction
-	 * between on-top of chat/news and status windows, because these conflict */
-	Window *w = _z_front_window;
-	if (w != NULL && this->window_class != WC_SEND_NETWORK_MSG && this->window_class != WC_HIGHSCORE && this->window_class != WC_ENDSCREEN) {
-		if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) w = w->z_back;
-		if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) w = w->z_back;
-		if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) w = w->z_back;
-		if (FindWindowByClass(WC_SEND_NETWORK_MSG) != NULL) w = w->z_back;
-
-		if (w == NULL) {
-			_z_back_window->z_front = this;
-			this->z_back = _z_back_window;
-			_z_back_window = this;
-		} else {
-			if (w->z_front == NULL) {
-				_z_front_window = this;
-			} else {
-				this->z_front = w->z_front;
-				w->z_front->z_back = this;
-			}
-
-			this->z_back = w;
-			w->z_front = this;
-		}
-	} else {
-		this->z_back = _z_front_window;
-		if (_z_front_window != NULL) {
-			_z_front_window->z_front = this;
-		} else {
-			_z_back_window = this;
-		}
-		_z_front_window = this;
-	}
+	/* Insert the window into the correct location in the z-ordering. */
+	AddWindowToZOrdering(this);
 }
 
 /**
@@ -1955,13 +2018,13 @@ static EventState HandleViewportScroll()
 }
 
 /**
- * Check if a window can be made top-most window, and if so do
+ * Check if a window can be made relative top-most window, and if so do
  * it. If a window does not obscure any other windows, it will not
  * be brought to the foreground. Also if the only obscuring windows
  * are so-called system-windows, the window will not be moved.
  * The function will return false when a child window of this window is a
  * modal-popup; function returns a false and child window gets a white border
- * @param w Window to bring on-top
+ * @param w Window to bring relatively on-top
  * @return false if the window has an active modal child, true otherwise
  */
 static bool MaybeBringWindowToFront(Window *w)
@@ -2392,20 +2455,7 @@ void InputLoop()
 
 		if (w->window_class != WC_INVALID) continue;
 
-		/* Find the window in the z-array, and effectively remove it
-		 * by moving all windows after it one to the left. This must be
-		 * done before removing the child so we cannot cause recursion
-		 * between the deletion of the parent and the child. */
-		if (w->z_front == NULL) {
-			_z_front_window = w->z_back;
-		} else {
-			w->z_front->z_back = w->z_back;
-		}
-		if (w->z_back == NULL) {
-			_z_back_window  = w->z_front;
-		} else {
-			w->z_back->z_front = w->z_front;
-		}
+		RemoveWindowFromZOrdering(w);
 		free(w);
 	}
 
