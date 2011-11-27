@@ -2778,9 +2778,17 @@ static void UpdateTownGrowRate(Town *t)
 	if (t->fund_buildings_months == 0) {
 		/* Check if all goals are reached for this town to grow (given we are not funding it) */
 		for (int i = TE_BEGIN; i < TE_END; i++) {
-			if (t->goal[i] == TOWN_GROWTH_WINTER && TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->population > 90) return;
-			if (t->goal[i] == TOWN_GROWTH_DESERT && GetTropicZone(t->xy) == TROPICZONE_DESERT && t->received[i].old_act == 0 && t->population > 60) return;
-			if (t->goal[i] > t->received[i].old_act) return;
+			switch (t->goal[i]) {
+				case TOWN_GROWTH_WINTER:
+					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->population > 90) return;
+					break;
+				case TOWN_GROWTH_DESERT:
+					if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->received[i].old_act == 0 && t->population > 60) return;
+					break;
+				default:
+					if (t->goal[i] > t->received[i].old_act) return;
+					break;
+			}
 		}
 	}
 
