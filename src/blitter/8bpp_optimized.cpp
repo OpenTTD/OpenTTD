@@ -196,9 +196,13 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPro
 					dst++;
 				}
 				last_colour = colour;
-				pixels++;
-				*dst = colour;
-				dst++;
+				if (colour == 0) {
+					trans++;
+				} else {
+					pixels++;
+					*dst = colour;
+					dst++;
+				}
 			}
 
 			if (count_dst != NULL) *count_dst = pixels;
