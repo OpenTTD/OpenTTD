@@ -1522,6 +1522,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ustawia
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Przesuń okno, kiedy kursor jest przy krawędzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Pozwól dawać łapówki lokalnym władzom: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Pozwól na kupno wyłączności transportowej: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Pozwól na fundowywanie budynków: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Pozwalaj na sponsorowanie odbudowy lokalnych dróg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pozwól na wysyłanie pieniędzy do innych firm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
@@ -1700,6 +1701,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Strefa 
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciągania okien: {ORANGE}niedostępne
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksymalna liczba nie przyszpilonych okien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksymalna liczba nie przyszpilonych okien: {ORANGE} wyłączone
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksymalne przybliżenie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksymalne oddalenie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaln {G y a e}
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Szybkość rozwoju miast: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :brak
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :mała
@@ -2582,7 +2591,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zaśnieżony te
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustynia
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{G=m}{STRING} odcinek
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} tor z semaforam blokowymi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} tor z semaforami wejściowymi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} tor z semaforem wyjściowym
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} tor z semaforami złożonymi (combo)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} tor z semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} tor z jednokierunkowymi semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} tor z semaforami blokowymi i semaforami wejścia
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} tor z semaforami blokowymi i semaforami wyjścia
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} tor z semaforami blokowymi i semaforami złożonymi (combo)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} tor z semaforami blokowymi i semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} tor z semaforami blokowymi i jednokierunkowymi semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} tor z semaforami wejścia i wyjścia
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} tor z semaforami wejścia i semaforami złożonymi (combo)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} tor z semaforami wejścia i semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} tor z semaforami wejścia i jednokierunkowymi semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} tor z semaforami wyjścia i semaforami złożonymi (combo)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} tor z semaforami wyjścia i semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} tor z semaforami wyjścia i jednokierunkowymi semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} tor z semaforami złożonymi (combo) i semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} tor z semaforami złożonymi (combo) i jednokierunkowymi semaforami trasy
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} tor z semaforami trasy i jednokierunkowymi semaforami trasy
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{G=f}{STRING} zajezdnia
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Droga
@@ -2890,6 +2919,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' dostarcza niepoprawnych danych
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla '{1:ENGINE}' różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Wywołanie 0x{HEX} zwróciło nieznany/błędny wynik 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
@@ -2934,6 +2964,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Poczta w
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Towar potrzebny do rozwoju miasta:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Wymaganych {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} wymagane zimą
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{G=m}{ORANGE}{STRING}{GREEN} dostarczony
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (wciąż wymagany)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{G=m}{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostarczony)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK} {P dzień dni dni}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miasto rośnie co {ORANGE}{COMMA}{BLACK} {P dzień dni dni} (ufundowane)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miasto {RED}nie{BLACK} rośnie
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na mieście. Ctrl+klik otwiera nowy podgląd na lokację miasta
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalne władze

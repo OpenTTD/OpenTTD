@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Autoveh
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Mută imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permite mituirea autorităţilor locale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permite cumpărarea de drepturi exclusive de transport: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Permite fondarea a noi clădiri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permite finanțarea reconstrucției străzilor locale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permite transfer de bani către alte companii: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
@@ -1320,6 +1321,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Distan�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}dezactivată
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Numărul maxim de ferestre nefixate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Numărul maxim de ferestre nefixate: {ORANGE}dezactivat
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Nivelul maxim de apropiere imagine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Nivelul maxim de îndepărtare imagine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :x4
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :x2
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :x2
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :x4
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :x8
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Viteza de dezvoltare a oraşului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Deloc
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lentă
@@ -1875,6 +1884,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... cone
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fişierul nu poate fi scris
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Fişierul descărcat nu a putut fi decompresat
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Elemente grafice lipsă
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesită elemente grafice pentru a funcționa, dar nici un pachet grafic nu a fost găsit. Permiți ca OpenTTD sa descarce și să instaleze pachetele grafice necesare?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Da, descarcă pachetele grafice
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nu, ieși din OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Optiuni transparenţă
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comută transparenţa pentru semnele de staţii. Ctrl+Click pentru blocare
@@ -2196,6 +2210,17 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Teren agricol
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Teren înzăpezit
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deşert
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} cale ferată
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} cale ferată cu semafoare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} cale ferată cu presemafoare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} cale ferată cu semafoare de ieșire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} cale ferată cu semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} cale ferată cu semafoare de direcționare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} cale ferată cu semafoare de direcționare unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} cale ferată cu semafoare și presemafoare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} cale ferată cu semafoare și semafoare de ieșire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} cale ferată cu semafoare și semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} cale ferată cu semafoare și semafoare de direcționare
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depou trenuri
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Şosea
@@ -2380,7 +2405,9 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mută î
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mută fişierul NewGRF ales mai sus în listă
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mută în jos
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fişierul NewGRF ales mai jos în listă
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate. Click pe un fişier pt a-i modifica parameterii
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate.
+
+# Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comută paleta
@@ -2403,7 +2430,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Niciun fis
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dezactivat
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatibil cu această versiune de OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Schimbă parametrii NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Închide
@@ -2412,6 +2438,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setează
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Număr de parametrii: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}

@@ -274,7 +274,7 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidade máx
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Comprimento
-STR_SORT_BY_LIFE_TIME                                           :Tempo de vida restante
+STR_SORT_BY_LIFE_TIME                                           :Tempo de uso restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso de horário
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
@@ -859,26 +859,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Seleção de unidades monetárias
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólares ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras Britânicas (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólares Norte Americanos (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Iene Japonês (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Xelim Austríaco (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco Belga (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco Suíço (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Coroa Checa (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco Alemão (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Coroa Dinamarquesa (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peso (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Espanhola (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marco Finlandês (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco Francês (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma Grego (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Húngaro (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Coroa Islandesa (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiana (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilda Holandesa (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Coroa Norueguesa (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Polonês (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty Polonês (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Lei Romeno (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo Russo (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Eslovênio (SIT)
@@ -1116,8 +1116,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Comprim
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumaça/fagulhas das locomotivas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Sistema de aceleração de trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de aceleração para automóveis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinação do terreno para trens{ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Declividade para automóveis {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinação do terreno para trens: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Declividade para automóveis: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90° graus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitie unir estações não adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
@@ -1143,6 +1143,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fila de
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o cursor está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permtir compra de direitos exclusivos de transporte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Permitir o patrocínio de edifícios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permitir financiamento de reconstrução de estrada local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir o envio de dinheiro a outras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
@@ -1321,6 +1322,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raio de
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atração de janelas: {ORANGE}desativado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limite de janelas não presas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limite de janelas não presas: {ORANGE}desativado
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Nível máximo de zoom adentro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Nível máximo de zoom afora: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocidade de crescimento de cidade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Devagar
@@ -1876,6 +1885,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... cone
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... falha no salvamento
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Falha na descompactação do arquivo
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráficos faltantes
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD requer gráficos para funcionar, mas nenhum foi encontrado. Deseja que OpenTTD conecte-se à internet e baixe esses arquivos?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sim, baixar os gráficos
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Não, sair do OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opções de Transparência
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Alternar transparência para sinais de estação. Ctrl+Clique para travar
@@ -1921,6 +1935,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift altera construção/estimação de custo
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar construir/remover ferrovias, sinais, pontos de controle e estações. Segure ctrl para remover os trilhos de estações e pontos de controle.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de linha. Shift altera construção/estimação de custo
+
+STR_RAIL_NAME_RAILROAD                                          :Ferrovia
+STR_RAIL_NAME_ELRAIL                                            :Ferrovia eletrificada
+STR_RAIL_NAME_MONORAIL                                          :Monotrilho
+STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do Depósito
@@ -2192,6 +2211,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Neve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Trilho de {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Trilho de {STRING} com sinais normais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Trilho de {STRING} com pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Trilho de {STRING} com sinais de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Trilho de {STRING} com sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Trilho de {STRING} com sinais avançados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Trilhos de {STRING} com sinais avançados de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Trilho de {STRING} com sinais normais e pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Trilho de {STRING} com sinais normais e pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Trilho de {STRING} com sinais normais e sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Trilho de {STRING} com sinais normais e avançados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Trilho de {STRING} com sinais normais e avançados de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Trilho de {STRING} com pré-sinais e de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Trilho de {STRING} com pré-sinais e sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Trilho de {STRING} com pré-sinais e sinais avançados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Trilho de {STRING} com pré-sinais e avançados de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Trilho de {STRING} com sinais de saída e sinais-combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Trilho de {STRING} com sinais de saída e avançados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Trilho de {STRING} com sinais de saída e avançados de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Trilho de {STRING} com sinais-combo e avançados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Trilho de {STRING} com sinais-combo e avançados de mão única
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Trilho de {STRING} com sinais avançados e avançados de mão única
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito de {STRING}
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Rodovia
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Rodovia iluminada
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Rodovia arborizada
@@ -2374,7 +2417,12 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mover ci
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move o NewGRF selecionado para cima
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mover baixo
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o NewGRF selecionado para baixo
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos NewGRF instalados. Clique em um deles para mudar seus parâmetros
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos NewGRF instalados.
+
+# Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Ler o Leiame
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Log de mudanças
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licença
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alterna paleta
@@ -2397,7 +2445,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Arquivo co
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desativado
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatível com esta versão de OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
@@ -2406,6 +2453,11 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Redefini
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parãmetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número de parâmetros: {ORANGE}{NUM}
+
+# NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF Leiame de {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF log de mudanças de {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licença de {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecionar - {STRING}
@@ -2488,6 +2540,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga/readaptação para '{1:ENGINE}' difere da lista de aquisição após a construção. Isso pode causar a autorenovação/-substituição à falhar a readaptação corretamente.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback da produção
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Retorno 0x{HEX} retornou um resultado desconhecido/inválido 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<carga inválida>
@@ -2532,6 +2585,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Cartas n
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necessária para prover o crescimento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necessário(a)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necessário no inverno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregue{P "" s}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ainda necessário)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue{P "" s})
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Cidade cresce a cada {ORANGE}{COMMA}{BLACK} dia{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Cidade cresce a cada {ORANGE}{COMMA}{BLACK} dia{P "" s} (patrocinado)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A cidade {RED}não{BLACK} está crescendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visão no local da cidade. Ctrl+Clique abre uma nova janela no local da cidade
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade local
@@ -3162,6 +3221,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Altera a
 
 STR_ORDER_REFIT                                                 :{BLACK}Adaptar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecionar a adaptação na ordem atual. CTRL + Clique para remover a instrução
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-reforma
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selecione o tipo de carga para o qual auto-reformar nessa ordem. Ctrl+clique para remover a ordem de reforma. Auto-reformar apenas será feito se o veículo permitir
+STR_ORDER_DROP_REFIT_AUTO                                       :Carga fixa
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargas disponíveis
 
 STR_ORDER_SERVICE                                               :{BLACK}Manutenção
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
@@ -3249,6 +3312,21 @@ STR_ORDER_NO_UNLOAD                                             :(Não descarreg
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e esperar carregamento completo)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e esperar por qualquer carregamento completo)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Não descarregar e não carregar)
+
+STR_ORDER_AUTO_REFIT                                            :(Auto-reformar para {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Carga completa com auto-reforma para {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Qualquer carga completa com auto-reforma para {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Descarregar e carregar com auto-reforma para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descarregar e aguardar carga completa com auto-reforma para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarregar e aguardar qualquer carga completa com auto-reforma para {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transferir e carregar com auto-reforma para {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir e aguardar carga completa com auto-reforma para {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir e aguardar por qualquer carga completa com auto-reforma para {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Não descarregar e carregar com auto-reforma para {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Não descarregar e aguardar carga completa com auto-reforma para {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Não carregar e aguardar por qualquer carga completa com auto-reforma para {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :cargas disponíveis
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[quase no fim]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[meio]
@@ -3423,6 +3501,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algu
 STR_ERROR_BMPMAP                                                :{WHITE}Impossível carregar terreno a partir de BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... imagem é muito grande
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de Escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?
@@ -3461,6 +3540,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não per
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} não autoriza
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}a autoridade local de {TOWN} não permite que outro aeroporto seja construído nesta cidade
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}A prefeitura de {TOWN} reclama do barulho que será gerado pelo aeroporto
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sua tentativa de suborno foi descoberta pela polícia regional
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossível elevar terreno aqui...
