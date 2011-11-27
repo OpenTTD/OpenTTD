@@ -1588,6 +1588,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 	}
 
+	delete iter;
 	return (cost.GetCost() == 0) ? error : cost;
 }
 
