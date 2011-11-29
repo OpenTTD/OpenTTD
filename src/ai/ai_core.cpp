@@ -21,10 +21,12 @@
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"
+#include "ai.hpp"
 #include "../script/api/script_error.hpp"
 
 /* static */ uint AI::frame_counter = 0;
-/* static */ AIScanner *AI::ai_scanner = NULL;
+/* static */ AIScannerInfo *AI::scanner_info = NULL;
+/* static */ AIScannerLibrary *AI::scanner_library = NULL;
 
 /* static */ bool AI::CanStartNew()
 {
@@ -42,7 +44,7 @@
 	AIConfig *config = AIConfig::GetConfig(company);
 	AIInfo *info = config->GetInfo();
 	if (info == NULL || (rerandomise_ai && config->IsRandomAI())) {
-		info = AI::ai_scanner->SelectRandomAI();
+		info = AI::scanner_info->SelectRandomAI();
 		assert(info != NULL);
 		/* Load default data and store the name in the settings */
 		config->ChangeAI(info->GetName(), -1, false, true);
@@ -134,12 +136,15 @@
 
 /* static */ void AI::Initialize()
 {
-	if (AI::ai_scanner != NULL) AI::Uninitialize(true);
+	if (AI::scanner_info != NULL) AI::Uninitialize(true);
 
 	AI::frame_counter = 0;
-	if (AI::ai_scanner == NULL) {
+	if (AI::scanner_info == NULL) {
 		TarScanner::DoScan(TarScanner::AI);
-		AI::ai_scanner = new AIScanner();
+		AI::scanner_info = new AIScannerInfo();
+		AI::scanner_info->Initialize("AIScanner");
+		AI::scanner_library = new AIScannerLibrary();
+		AI::scanner_library->Initialize("AISCanner");
 	}
 }
 
@@ -152,8 +157,10 @@
 		 *  still load all the AIS, while keeping the configs in place */
 		Rescan();
 	} else {
-		delete AI::ai_scanner;
-		AI::ai_scanner = NULL;
+		delete AI::scanner_info;
+		delete AI::scanner_library;
+		AI::scanner_info = NULL;
+		AI::scanner_library = NULL;
 
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 			if (_settings_game.ai_config[c] != NULL) {
@@ -286,42 +293,59 @@
 
 /* static */ char *AI::GetConsoleList(char *p, const char *last, bool newest_only)
 {
-	return AI::ai_scanner->GetAIConsoleList(p, last, newest_only);
+	return AI::scanner_info->GetConsoleList(p, last, newest_only);
 }
 
 /* static */ char *AI::GetConsoleLibraryList(char *p, const char *last)
 {
-	 return AI::ai_scanner->GetAIConsoleLibraryList(p, last);
+	 return AI::scanner_library->GetConsoleList(p, last, true);
 }
 
-/* static */ const AIInfoList *AI::GetInfoList()
+/* static */ const ScriptInfoList *AI::GetInfoList()
 {
-	return AI::ai_scanner->GetAIInfoList();
+	return AI::scanner_info->GetInfoList();
 }
 
-/* static */ const AIInfoList *AI::GetUniqueInfoList()
+/* static */ const ScriptInfoList *AI::GetUniqueInfoList()
 {
-	return AI::ai_scanner->GetUniqueAIInfoList();
+	return AI::scanner_info->GetUniqueInfoList();
 }
 
 /* static */ AIInfo *AI::FindInfo(const char *name, int version, bool force_exact_match)
 {
-	return AI::ai_scanner->FindInfo(name, version, force_exact_match);
+	return AI::scanner_info->FindInfo(name, version, force_exact_match);
 }
 
 /* static */ AILibrary *AI::FindLibrary(const char *library, int version)
 {
-	return AI::ai_scanner->FindLibrary(library, version);
+	return AI::scanner_library->FindLibrary(library, version);
 }
 
 /* static */ void AI::Rescan()
 {
 	TarScanner::DoScan(TarScanner::AI);
 
-	AI::ai_scanner->RescanAIDir();
+	AI::scanner_info->RescanDir();
+	AI::scanner_library->RescanDir();
 	ResetConfig();
 
 	InvalidateWindowData(WC_AI_LIST, 0, 1);
 	SetWindowClassesDirty(WC_AI_DEBUG);
 	SetWindowDirty(WC_AI_SETTINGS, 0);
+}
+
+/**
+ * Check whether we have an AI (library) with the exact characteristics as ci.
+ * @param ci the characteristics to search on (shortname and md5sum)
+ * @param md5sum whether to check the MD5 checksum
+ * @return true iff we have an AI (library) matching.
+ */
+/* static */ bool AI::HasAI(const ContentInfo *ci, bool md5sum)
+{
+	return AI::scanner_info->HasScript(ci, md5sum);
+}
+
+/* static */ bool AI::HasAILibrary(const ContentInfo *ci, bool md5sum)
+{
+	return AI::scanner_library->HasScript(ci, md5sum);
 }

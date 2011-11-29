@@ -13,95 +13,61 @@
 #define AI_SCANNER_HPP
 
 #include "../script/script_scanner.hpp"
-#include "ai.hpp"
 
-/**
- * Class that scans for available AIs.
- */
-class AIScanner : public ScriptScanner {
+class AIScannerInfo : public ScriptScanner {
 public:
-	AIScanner();
-	~AIScanner();
+	AIScannerInfo();
+	~AIScannerInfo();
+
+	/* virtual */ void Initialize(const char *name);
 
 	/**
-	 * Find a library by name + version.
-	 * @param library The name of the library to find.
-	 * @param version The prefered version of the library.
-	 * @return The library if found, NULL otherwise.
-	 */
-	AILibrary *FindLibrary(const char *library, int version);
-
-	/**
-	 * Register a library to be put in the available list.
-	 */
-	void RegisterLibrary(class AILibrary *library);
-
-	/**
-	 * Register an AI to be put in the available list.
-	 */
-	void RegisterAI(class AIInfo *info);
-
-	/**
-	 * Register the dummy AI.
-	 * @param info The dummy AI that.
-	 */
-	void SetDummyAI(class AIInfo *info) { this->info_dummy = info; }
-
-	/**
-	 * Select a Random AI.
+	 * Select a random AI.
+	 * @return A random AI from the pool.
 	 */
 	class AIInfo *SelectRandomAI() const;
 
 	/**
-	 * Find an AI by name.
+	 * Check if we have an AI by name and version available in our list.
+	 * @param nameParam The name of the AI.
+	 * @param versionParam The versionof the AI, or -1 if you want the latest.
+	 * @param force_exact_match Only match name+version, never latest.
+	 * @return NULL if no match found, otherwise the AI that matched.
 	 */
-	class AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	class AIInfo *FindInfo(const char *nameParam, int versionParam, bool force_exact_match);
 
 	/**
-	 * Get the list of available AIs for the console.
+	 * Set the Dummy AI.
 	 */
-	char *GetAIConsoleList(char *p, const char *last, bool newest_only) const;
+	void SetDummyAI(class AIInfo *info);
 
-	/**
-	 * Get the list of available AI Libraries for the console.
-	 */
-	char *GetAIConsoleLibraryList(char *p, const char *last) const;
+protected:
+	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, int len);
+	/* virtual */ const char *GetFileName() const { return PATHSEP "info.nut"; }
+	/* virtual */ Subdirectory GetDirectory() const { return AI_DIR; }
+	/* virtual */ const char *GetScannerName() const { return "AIs"; }
+	/* virtual */ void RegisterAPI(class Squirrel *engine);
 
-	/**
-	 * Get the list of all registered AIs.
-	 */
-	const AIInfoList *GetAIInfoList() { return &this->info_list; }
-
-	/**
-	 * Get the list of the newest version of all registered AIs.
-	 */
-	const AIInfoList *GetUniqueAIInfoList() { return &this->info_single_list; }
-
-	/**
-	 * Rescan the AI dir for scripts.
-	 */
-	void RescanAIDir();
-
-#if defined(ENABLE_NETWORK)
-	bool HasAI(const struct ContentInfo *ci, bool md5sum);
-#endif
 private:
-	typedef std::map<const char *, class AILibrary *, StringCompare> AILibraryList; ///< Type for the list of libraries.
+	AIInfo *info_dummy; ///< The dummy AI.
+};
 
+class AIScannerLibrary : public ScriptScanner {
+public:
 	/**
-	 * Scan the AI dir for scripts.
+	 * Find a library in the pool.
+	 * @param library The library name to find.
+	 * @param version The version the library should have.
+	 * @return The library if found, NULL otherwise.
 	 */
-	void ScanAIDir();
+	class AILibrary *FindLibrary(const char *library, int version);
 
-	/**
-	 * Reset all allocated lists.
-	 */
-	void Reset();
-
-	AIInfo *info_dummy;          ///< The dummy AI.
-	AIInfoList info_list;        ///< The list of all AIs.
-	AIInfoList info_single_list; ///< The list of all unique AIs, based on shortname. The best AI (highest version) is shown.
-	AILibraryList library_list;  ///< The list of libraries.
+protected:
+	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, int len);
+	/* virtual */ const char *GetFileName() const { return PATHSEP "library.nut"; }
+	/* virtual */ Subdirectory GetDirectory() const { return AI_LIBRARY_DIR; }
+	/* virtual */ const char *GetScannerName() const { return "AI Libraries"; }
+	/* virtual */ void RegisterAPI(class Squirrel *engine);
 };
 
 #endif /* AI_SCANNER_HPP */

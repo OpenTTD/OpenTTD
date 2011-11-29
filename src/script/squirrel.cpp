@@ -440,12 +440,18 @@ static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger 
 SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printerror)
 {
 	size_t size;
-	FILE *file = FioFOpenFile(filename, "rb", AI_DIR, &size);
-	if (file == NULL) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
+	FILE *file;
 	SQInteger ret;
 	unsigned short us;
 	unsigned char uc;
 	SQLEXREADFUNC func;
+
+	if (strncmp(this->GetAPIName(), "AI", 2) == 0) {
+		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
+		if (file == NULL) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
+	} else {
+		NOT_REACHED();
+	}
 
 	if (file != NULL) {
 		SQFile f(file, size);

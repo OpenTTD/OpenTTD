@@ -47,11 +47,11 @@ enum AIListWindowWidgets {
  * Window that let you choose an available AI.
  */
 struct AIListWindow : public Window {
-	const AIInfoList *ai_info_list; ///< The list of AIs.
-	int selected;                   ///< The currently selected AI.
-	CompanyID slot;                 ///< The company we're selecting a new AI for.
-	int line_height;                ///< Height of a row in the matrix widget.
-	Scrollbar *vscroll;             ///< Cache of the vertical scrollbar.
+	const ScriptInfoList *ai_info_list; ///< The list of AIs.
+	int selected;                       ///< The currently selected AI.
+	CompanyID slot;                     ///< The company we're selecting a new AI for.
+	int line_height;                    ///< Height of a row in the matrix widget.
+	Scrollbar *vscroll;                 ///< Cache of the vertical scrollbar.
 
 	/**
 	 * Constructor for the window.
@@ -74,7 +74,7 @@ struct AIListWindow : public Window {
 		if (AIConfig::GetConfig(slot)->HasAI()) {
 			AIInfo *info = AIConfig::GetConfig(slot)->GetInfo();
 			int i = 0;
-			for (AIInfoList::const_iterator it = this->ai_info_list->begin(); it != this->ai_info_list->end(); it++, i++) {
+			for (ScriptInfoList::const_iterator it = this->ai_info_list->begin(); it != this->ai_info_list->end(); it++, i++) {
 				if ((*it).second == info) {
 					this->selected = i;
 					break;
@@ -105,7 +105,7 @@ struct AIListWindow : public Window {
 					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_BLACK);
 					y += this->line_height;
 				}
-				AIInfoList::const_iterator it = this->ai_info_list->begin();
+				ScriptInfoList::const_iterator it = this->ai_info_list->begin();
 				for (int i = 1; it != this->ai_info_list->end(); i++, it++) {
 					if (this->vscroll->IsVisible(i)) {
 						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, (*it).second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_BLACK);
@@ -116,9 +116,9 @@ struct AIListWindow : public Window {
 			}
 			case AIL_WIDGET_INFO_BG: {
 				AIInfo *selected_info = NULL;
-				AIInfoList::const_iterator it = this->ai_info_list->begin();
+				ScriptInfoList::const_iterator it = this->ai_info_list->begin();
 				for (int i = 1; selected_info == NULL && it != this->ai_info_list->end(); i++, it++) {
-					if (this->selected == i - 1) selected_info = (*it).second;
+					if (this->selected == i - 1) selected_info = static_cast<AIInfo *>((*it).second);
 				}
 				/* Some info about the currently selected AI. */
 				if (selected_info != NULL) {
@@ -150,7 +150,7 @@ struct AIListWindow : public Window {
 		if (this->selected == -1) {
 			AIConfig::GetConfig(slot)->ChangeAI(NULL);
 		} else {
-			AIInfoList::const_iterator it = this->ai_info_list->begin();
+			ScriptInfoList::const_iterator it = this->ai_info_list->begin();
 			for (int i = 0; i < this->selected; i++) it++;
 			AIConfig::GetConfig(slot)->ChangeAI((*it).second->GetName(), (*it).second->GetVersion());
 		}

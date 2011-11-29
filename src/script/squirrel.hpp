@@ -67,7 +67,7 @@ protected:
 	static void ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...);
 
 public:
-	friend class AIScanner;
+	friend class AIScannerInfo;
 	friend class ScriptInstance;
 	friend class ScriptController;
 	friend void squirrel_register_std(Squirrel *engine);

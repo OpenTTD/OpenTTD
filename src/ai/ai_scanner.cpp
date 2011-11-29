@@ -20,177 +20,50 @@
 #include "ai_scanner.hpp"
 #include "../script/api/script_controller.hpp"
 
-void AIScanner::RescanAIDir()
-{
-	/* Get rid of information of old AIs. */
-	this->Reset();
-	this->Scan(PATHSEP "info.nut", AI_DIR);
-	this->Scan(PATHSEP "library.nut", AI_LIBRARY_DIR);
-}
 
-template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
-
-AIScanner::AIScanner() :
+AIScannerInfo::AIScannerInfo() :
 	ScriptScanner(),
 	info_dummy(NULL)
 {
-	/* Create the AIInfo class, and add the RegisterAI function */
-	DefSQClass<AIInfo, ST_AI> SQAIInfo("AIInfo");
-	SQAIInfo.PreRegister(engine);
-	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
-	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddSetting, "AddSetting");
-	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddLabels, "AddLabels");
-	SQAIInfo.DefSQConst(engine, AICONFIG_NONE, "AICONFIG_NONE");
-	SQAIInfo.DefSQConst(engine, AICONFIG_RANDOM, "AICONFIG_RANDOM");
-	SQAIInfo.DefSQConst(engine, AICONFIG_BOOLEAN, "AICONFIG_BOOLEAN");
-	SQAIInfo.DefSQConst(engine, AICONFIG_INGAME, "AICONFIG_INGAME");
-	SQAIInfo.DefSQConst(engine, AICONFIG_AI_DEVELOPER, "AICONFIG_AI_DEVELOPER");
-	SQAIInfo.PostRegister(engine);
-	this->engine->AddMethod("RegisterAI", &AIInfo::Constructor, 2, "tx");
-	this->engine->AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, 2, "tx");
+}
 
-	/* Create the AILibrary class, and add the RegisterLibrary function */
-	this->engine->AddClassBegin("AILibrary");
-	this->engine->AddClassEnd();
-	this->engine->AddMethod("RegisterLibrary", &AILibrary::Constructor, 2, "tx");
-
-	/* Scan the AI dir for scripts */
-	this->RescanAIDir();
+void AIScannerInfo::Initialize(const char *name)
+{
+	ScriptScanner::Initialize(name);
 
 	/* Create the dummy AI */
-	this->engine->ResetCrashed();
-
 	free(this->main_script);
 	this->main_script = strdup("%_dummy");
 	extern void AI_CreateAIInfoDummy(HSQUIRRELVM vm);
 	AI_CreateAIInfoDummy(this->engine->GetVM());
 }
 
-void AIScanner::Reset()
+void AIScannerInfo::SetDummyAI(class AIInfo *info)
 {
-	AIInfoList::iterator it = this->info_list.begin();
-	for (; it != this->info_list.end(); it++) {
-		free((*it).first);
-		delete (*it).second;
-	}
-	it = this->info_single_list.begin();
-	for (; it != this->info_single_list.end(); it++) {
-		free((*it).first);
-	}
-	AILibraryList::iterator lit = this->library_list.begin();
-	for (; lit != this->library_list.end(); lit++) {
-		free((*lit).first);
-		delete (*lit).second;
-	}
-
-	this->info_list.clear();
-	this->info_single_list.clear();
-	this->library_list.clear();
+	this->info_dummy = info;
 }
 
-AIScanner::~AIScanner()
+AIScannerInfo::~AIScannerInfo()
 {
-	this->Reset();
-
 	delete this->info_dummy;
 }
 
-AILibrary *AIScanner::FindLibrary(const char *library, int version)
+void AIScannerInfo::GetScriptName(ScriptInfo *info, char *name, int len)
 {
-	/* Internally we store libraries as 'library.version' */
-	char library_name[1024];
-	snprintf(library_name, sizeof(library_name), "%s.%d", library, version);
-	strtolower(library_name);
-
-	/* Check if the library + version exists */
-	AILibraryList::iterator iter = this->library_list.find(library_name);
-	if (iter == this->library_list.end()) return NULL;
-
-	return (*iter).second;
+	snprintf(name, len, "%s", info->GetName());
 }
 
-void AIScanner::RegisterLibrary(AILibrary *library)
+void AIScannerInfo::RegisterAPI(class Squirrel *engine)
 {
-	char library_name[1024];
-	snprintf(library_name, sizeof(library_name), "%s.%s.%d", library->GetCategory(), library->GetInstanceName(), library->GetVersion());
-	strtolower(library_name);
-
-	if (this->library_list.find(library_name) != this->library_list.end()) {
-		/* This AI was already registered */
-#ifdef WIN32
-		/* Windows doesn't care about the case */
-		if (strcasecmp(this->library_list[library_name]->GetMainScript(), library->GetMainScript()) == 0) {
-#else
-		if (strcmp(this->library_list[library_name]->GetMainScript(), library->GetMainScript()) == 0) {
-#endif
-			delete library;
-			return;
-		}
-
-		DEBUG(ai, 1, "Registering two libraries with the same name and version");
-		DEBUG(ai, 1, "  1: %s", this->library_list[library_name]->GetMainScript());
-		DEBUG(ai, 1, "  2: %s", library->GetMainScript());
-		DEBUG(ai, 1, "The first is taking precedence.");
-
-		delete library;
-		return;
-	}
-
-	this->library_list[strdup(library_name)] = library;
+	AIInfo::RegisterAPI(engine);
 }
 
-void AIScanner::RegisterAI(AIInfo *info)
-{
-	char ai_name[1024];
-	snprintf(ai_name, sizeof(ai_name), "%s.%d", info->GetName(), info->GetVersion());
-	strtolower(ai_name);
-
-	/* Check if GetShortName follows the rules */
-	if (strlen(info->GetShortName()) != 4) {
-		DEBUG(ai, 0, "The AI '%s' returned a string from GetShortName() which is not four characaters. Unable to load the AI.", info->GetName());
-		delete info;
-		return;
-	}
-
-	if (this->info_list.find(ai_name) != this->info_list.end()) {
-		/* This AI was already registered */
-#ifdef WIN32
-		/* Windows doesn't care about the case */
-		if (strcasecmp(this->info_list[ai_name]->GetMainScript(), info->GetMainScript()) == 0) {
-#else
-		if (strcmp(this->info_list[ai_name]->GetMainScript(), info->GetMainScript()) == 0) {
-#endif
-			delete info;
-			return;
-		}
-
-		DEBUG(ai, 1, "Registering two AIs with the same name and version");
-		DEBUG(ai, 1, "  1: %s", this->info_list[ai_name]->GetMainScript());
-		DEBUG(ai, 1, "  2: %s", info->GetMainScript());
-		DEBUG(ai, 1, "The first is taking precedence.");
-
-		delete info;
-		return;
-	}
-
-	this->info_list[strdup(ai_name)] = info;
-
-	/* Add the AI to the 'unique' AI list, where only the highest version of the
-	 *  AI is registered. */
-	snprintf(ai_name, sizeof(ai_name), "%s", info->GetName());
-	strtolower(ai_name);
-	if (this->info_single_list.find(ai_name) == this->info_single_list.end()) {
-		this->info_single_list[strdup(ai_name)] = info;
-	} else if (this->info_single_list[ai_name]->GetVersion() < info->GetVersion()) {
-		this->info_single_list[ai_name] = info;
-	}
-}
-
-AIInfo *AIScanner::SelectRandomAI() const
+AIInfo *AIScannerInfo::SelectRandomAI() const
 {
 	uint num_random_ais = 0;
-	for (AIInfoList::const_iterator it = this->info_single_list.begin(); it != this->info_single_list.end(); it++) {
-		if (it->second->UseAsRandomAI()) num_random_ais++;
+	for (ScriptInfoList::const_iterator it = this->info_single_list.begin(); it != this->info_single_list.end(); it++) {
+		AIInfo *i = static_cast<AIInfo *>((*it).second);
+		if (i->UseAsRandomAI()) num_random_ais++;
 	}
 
 	if (num_random_ais == 0) {
@@ -207,16 +80,17 @@ AIInfo *AIScanner::SelectRandomAI() const
 	}
 
 	/* Find the Nth item from the array */
-	AIInfoList::const_iterator it = this->info_single_list.begin();
-	while (!it->second->UseAsRandomAI()) it++;
+	ScriptInfoList::const_iterator it = this->info_single_list.begin();
+	AIInfo *i = static_cast<AIInfo *>((*it).second);
+	while (!i->UseAsRandomAI()) it++;
 	for (; pos > 0; pos--) {
 		it++;
-		while (!it->second->UseAsRandomAI()) it++;
+		while (!i->UseAsRandomAI()) it++;
 	}
-	return (*it).second;
+	return i;
 }
 
-AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam, bool force_exact_match)
+AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool force_exact_match)
 {
 	if (this->info_list.size() == 0) return NULL;
 	if (nameParam == NULL) return NULL;
@@ -230,7 +104,7 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam, bool force_
 
 	if (versionParam == -1) {
 		/* We want to load the latest version of this AI; so find it */
-		if (this->info_single_list.find(ai_name) != this->info_single_list.end()) return this->info_single_list[ai_name];
+		if (this->info_single_list.find(ai_name) != this->info_single_list.end()) return static_cast<AIInfo *>(this->info_single_list[ai_name]);
 
 		/* If we didn't find a match AI, maybe the user included a version */
 		char *e = strrchr(ai_name, '.');
@@ -246,177 +120,45 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam, bool force_
 		char ai_name_tmp[1024];
 		snprintf(ai_name_tmp, sizeof(ai_name_tmp), "%s.%d", ai_name, versionParam);
 		strtolower(ai_name_tmp);
-		if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return this->info_list[ai_name_tmp];
+		if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return static_cast<AIInfo *>(this->info_list[ai_name_tmp]);
 	}
 
 	/* See if there is a compatible AI which goes by that name, with the highest
 	 *  version which allows loading the requested version */
-	AIInfoList::iterator it = this->info_list.begin();
+	ScriptInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
-		if (strcasecmp(ai_name, (*it).second->GetName()) == 0 && (*it).second->CanLoadFromVersion(versionParam) && (version == -1 || (*it).second->GetVersion() > version)) {
+		AIInfo *i = static_cast<AIInfo *>((*it).second);
+		if (strcasecmp(ai_name, i->GetName()) == 0 && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
 			version = (*it).second->GetVersion();
-			info = (*it).second;
+			info = i;
 		}
 	}
 
 	return info;
 }
 
-char *AIScanner::GetAIConsoleList(char *p, const char *last, bool newest_only) const
-{
-	p += seprintf(p, last, "List of AIs:\n");
-	const AIInfoList &list = newest_only ? this->info_single_list : this->info_list;
-	AIInfoList::const_iterator it = list.begin();
-	for (; it != list.end(); it++) {
-		AIInfo *i = (*it).second;
-		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetName(), i->GetVersion(), i->GetDescription());
-	}
-	p += seprintf(p, last, "\n");
 
-	return p;
+void AIScannerLibrary::GetScriptName(ScriptInfo *info, char *name, int len)
+{
+	AILibrary *library = static_cast<AILibrary *>(info);
+	snprintf(name, len, "%s.%s", library->GetCategory(), library->GetInstanceName());
 }
 
-char *AIScanner::GetAIConsoleLibraryList(char *p, const char *last) const
+void AIScannerLibrary::RegisterAPI(class Squirrel *engine)
 {
-	p += seprintf(p, last, "List of AI Libraries:\n");
-	AILibraryList::const_iterator it = this->library_list.begin();
-	for (; it != this->library_list.end(); it++) {
-		AILibrary *i = (*it).second;
-		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetName(), i->GetVersion(), i->GetDescription());
-	}
-	p += seprintf(p, last, "\n");
-
-	return p;
+	AILibrary::RegisterAPI(engine);
 }
 
-#if defined(ENABLE_NETWORK)
-#include "../network/network_content.h"
-#include "../3rdparty/md5/md5.h"
-#include "../tar_type.h"
-
-/** Helper for creating a MD5sum of all files within of an AI. */
-struct AIFileChecksumCreator : FileScanner {
-	byte md5sum[16]; ///< The final md5sum
-
-	/**
-	 * Initialise the md5sum to be all zeroes,
-	 * so we can easily xor the data.
-	 */
-	AIFileChecksumCreator()
-	{
-		memset(this->md5sum, 0, sizeof(this->md5sum));
-	}
-
-	/* Add the file and calculate the md5 sum. */
-	virtual bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
-	{
-		Md5 checksum;
-		uint8 buffer[1024];
-		size_t len, size;
-		byte tmp_md5sum[16];
-
-		/* Open the file ... */
-		FILE *f = FioFOpenFile(filename, "rb", AI_DIR, &size);
-		if (f == NULL) return false;
-
-		/* ... calculate md5sum... */
-		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
-			size -= len;
-			checksum.Append(buffer, len);
-		}
-		checksum.Finish(tmp_md5sum);
-
-		FioFCloseFile(f);
-
-		/* ... and xor it to the overall md5sum. */
-		for (uint i = 0; i < sizeof(md5sum); i++) this->md5sum[i] ^= tmp_md5sum[i];
-
-		return true;
-	}
-};
-
-/**
- * Check whether the AI given in info is the same as in ci based
- * on the shortname and md5 sum.
- * @param ci   the information to compare to
- * @param md5sum whether to check the MD5 checksum
- * @param info the AI to get the shortname and md5 sum from
- * @return true iff they're the same
- */
-static bool IsSameAI(const ContentInfo *ci, bool md5sum, AIFileInfo *info)
+AILibrary *AIScannerLibrary::FindLibrary(const char *library, int version)
 {
-	uint32 id = 0;
-	const char *str = info->GetShortName();
-	for (int j = 0; j < 4 && *str != '\0'; j++, str++) id |= *str << (8 * j);
+	/* Internally we store libraries as 'library.version' */
+	char library_name[1024];
+	snprintf(library_name, sizeof(library_name), "%s.%d", library, version);
+	strtolower(library_name);
 
-	if (id != ci->unique_id) return false;
-	if (!md5sum) return true;
+	/* Check if the library + version exists */
+	ScriptInfoList::iterator iter = this->info_list.find(library_name);
+	if (iter == this->info_list.end()) return NULL;
 
-	AIFileChecksumCreator checksum;
-	const char *tar_filename = info->GetTarFile();
-	TarList::iterator iter;
-	if (tar_filename != NULL && (iter = _tar_list[AI_DIR].find(tar_filename)) != _tar_list[AI_DIR].end()) {
-		/* The main script is in a tar file, so find all files that
-		 * are in the same tar and add them to the MD5 checksumming. */
-		TarFileList::iterator tar;
-		FOR_ALL_TARS(tar, AI_DIR) {
-			/* Not in the same tar. */
-			if (tar->second.tar_filename != iter->first) continue;
-
-			/* Check the extension. */
-			const char *ext = strrchr(tar->first.c_str(), '.');
-			if (ext == NULL || strcasecmp(ext, ".nut") != 0) continue;
-
-			checksum.AddFile(tar->first.c_str(), 0, tar_filename);
-		}
-	} else {
-		char path[MAX_PATH];
-		strecpy(path, info->GetMainScript(), lastof(path));
-		/* There'll always be at least 1 path separator character in an AI's
-		 * main script name as the search algorithm requires the main script to
-		 * be in a subdirectory of the AI directory; so ai/<path>/main.nut. */
-		*strrchr(path, PATHSEPCHAR) = '\0';
-		checksum.Scan(".nut", path);
-	}
-
-	return memcmp(ci->md5sum, checksum.md5sum, sizeof(ci->md5sum)) == 0;
+	return static_cast<AILibrary *>((*iter).second);
 }
-
-/**
- * Check whether we have an AI (library) with the exact characteristics as ci.
- * @param ci the characteristics to search on (shortname and md5sum)
- * @param md5sum whether to check the MD5 checksum
- * @return true iff we have an AI (library) matching.
- */
-bool AIScanner::HasAI(const ContentInfo *ci, bool md5sum)
-{
-	switch (ci->type) {
-		case CONTENT_TYPE_AI:
-			for (AIInfoList::iterator it = this->info_list.begin(); it != this->info_list.end(); it++) {
-				if (IsSameAI(ci, md5sum, (*it).second)) return true;
-			}
-			return false;
-
-		case CONTENT_TYPE_AI_LIBRARY:
-			for (AILibraryList::iterator it = this->library_list.begin(); it != this->library_list.end(); it++) {
-				if (IsSameAI(ci, md5sum, (*it).second)) return true;
-			}
-			return false;
-
-		default:
-			NOT_REACHED();
-	}
-}
-
-/**
- * Check whether we have an AI (library) with the exact characteristics as ci.
- * @param ci the characteristics to search on (shortname and md5sum)
- * @param md5sum whether to check the MD5 checksum
- * @return true iff we have an AI (library) matching.
- */
-/* static */ bool AI::HasAI(const ContentInfo *ci, bool md5sum)
-{
-	return AI::ai_scanner->HasAI(ci, md5sum);
-}
-
-#endif /* ENABLE_NETWORK */

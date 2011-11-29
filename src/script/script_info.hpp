@@ -15,9 +15,9 @@
 #include <squirrel.h>
 #include "../misc/countedptr.hpp"
 
-class ScriptFileInfo : public SimpleCountedObject {
+class ScriptInfo : public SimpleCountedObject {
 public:
-	ScriptFileInfo() :
+	ScriptInfo() :
 		SQ_instance(NULL),
 		main_script(NULL),
 		tar_file(NULL),
@@ -28,9 +28,10 @@ public:
 		date(NULL),
 		instance_name(NULL),
 		version(0),
-		url(NULL)
+		url(NULL),
+		scanner(NULL)
 	{}
-	~ScriptFileInfo();
+	~ScriptInfo();
 
 	/**
 	 * Get the Author of the script.
@@ -90,22 +91,30 @@ public:
 	/**
 	 * Process the creation of a FileInfo object.
 	 */
-	static SQInteger Constructor(HSQUIRRELVM vm, ScriptFileInfo *info);
+	static SQInteger Constructor(HSQUIRRELVM vm, ScriptInfo *info);
+
+	/**
+	 * Get the scanner which has found this ScriptInfo.
+	 */
+	virtual class ScriptScanner *GetScanner() { return this->scanner; }
 
 protected:
-	class Squirrel *engine;
-	HSQOBJECT *SQ_instance;
+	class Squirrel *engine;       ///< Engine used to register for Squirrel.
+	HSQOBJECT *SQ_instance;       ///< The Squirrel instance created for this info.
+
 private:
-	char *main_script;
-	char *tar_file;
-	const char *author;
-	const char *name;
-	const char *short_name;
-	const char *description;
-	const char *date;
-	const char *instance_name;
-	int version;
-	const char *url;
+	char *main_script;            ///< Name of the main script.
+	char *tar_file;               ///< If, which tar file the script was in.
+	const char *author;           ///< Author of the script.
+	const char *name;             ///< Full name of the script.
+	const char *short_name;       ///< Short name (4 chars) which uniquely identifies the script.
+	const char *description;      ///< Small description of the script.
+	const char *date;             ///< The date the script was written at.
+	const char *instance_name;    ///< Which instance name the script has.
+	int version;                  ///< Version of the script.
+	const char *url;              ///< URL of the script.
+
+	class ScriptScanner *scanner; ///< ScriptScanner object that was used to scan this script info.
 };
 
 #endif /* SCRIPT_INFO_HPP */

@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_info.cpp Implementation of ScriptFileInfo. */
+/** @file script_info.cpp Implementation of ScriptInfo. */
 
 #include "../stdafx.h"
 
@@ -21,7 +21,7 @@ static const int MAX_GET_OPS            =   1000;
 /** Number of operations to create an instance of a script. */
 static const int MAX_CREATEINSTANCE_OPS = 100000;
 
-ScriptFileInfo::~ScriptFileInfo()
+ScriptInfo::~ScriptInfo()
 {
 	free(this->author);
 	free(this->name);
@@ -35,7 +35,7 @@ ScriptFileInfo::~ScriptFileInfo()
 	free(this->SQ_instance);
 }
 
-bool ScriptFileInfo::CheckMethod(const char *name) const
+bool ScriptInfo::CheckMethod(const char *name) const
 {
 	if (!this->engine->MethodExists(*this->SQ_instance, name)) {
 		char error[1024];
@@ -46,16 +46,18 @@ bool ScriptFileInfo::CheckMethod(const char *name) const
 	return true;
 }
 
-/* static */ SQInteger ScriptFileInfo::Constructor(HSQUIRRELVM vm, ScriptFileInfo *info)
+/* static */ SQInteger ScriptInfo::Constructor(HSQUIRRELVM vm, ScriptInfo *info)
 {
 	/* Set some basic info from the parent */
 	info->SQ_instance = MallocT<SQObject>(1);
 	Squirrel::GetInstance(vm, info->SQ_instance, 2);
 	/* Make sure the instance stays alive over time */
 	sq_addref(vm, info->SQ_instance);
-	ScriptScanner *scanner = (ScriptScanner *)Squirrel::GetGlobalPointer(vm);
-	info->engine = scanner->GetEngine();
 
+	info->scanner = (ScriptScanner *)Squirrel::GetGlobalPointer(vm);
+	info->engine = info->scanner->GetEngine();
+
+	/* Ensure the mandatory functions exist */
 	static const char * const required_functions[] = {
 		"GetAuthor",
 		"GetName",
@@ -69,8 +71,9 @@ bool ScriptFileInfo::CheckMethod(const char *name) const
 		if (!info->CheckMethod(required_functions[i])) return SQ_ERROR;
 	}
 
-	info->main_script = strdup(scanner->GetMainScript());
-	const char *tar_name = scanner->GetTarFile();
+	/* Get location information of the scanner */
+	info->main_script = strdup(info->scanner->GetMainScript());
+	const char *tar_name = info->scanner->GetTarFile();
 	if (tar_name != NULL) info->tar_file = strdup(tar_name);
 
 	/* Cache the data the info file gives us. */

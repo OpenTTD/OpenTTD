@@ -49,23 +49,16 @@ extern AIConfigItem _start_date_config;
 
 typedef std::list<AIConfigItem> AIConfigItemList; ///< List of AIConfig items.
 
-/** Base class that holds some basic information about AIs and AI libraries. */
-class AIFileInfo : public ScriptFileInfo {
-public:
-	/**
-	 * Process the creation of a FileInfo object.
-	 */
-	static SQInteger Constructor(HSQUIRRELVM vm, AIFileInfo *info);
-
-protected:
-	class AIScanner *base; ///< AIScanner object that was used to scan this AI (library) info.
-};
-
 /** All static information from an AI like name, version, etc. */
-class AIInfo : public AIFileInfo {
+class AIInfo : public ScriptInfo {
 public:
 	AIInfo();
 	~AIInfo();
+
+	/**
+	 * Register the functions of this class.
+	 */
+	static void RegisterAPI(Squirrel *engine);
 
 	/**
 	 * Create an AI, using this AIInfo as start-template.
@@ -130,10 +123,15 @@ private:
 };
 
 /** All static information from an AI library like name, version, etc. */
-class AILibrary : public AIFileInfo {
+class AILibrary : public ScriptInfo {
 public:
-	AILibrary() : AIFileInfo(), category(NULL) {};
+	AILibrary() : ScriptInfo(), category(NULL) {};
 	~AILibrary();
+
+	/**
+	 * Register the functions of this class.
+	 */
+	static void RegisterAPI(Squirrel *engine);
 
 	/**
 	 * Create an AI, using this AIInfo as start-template.

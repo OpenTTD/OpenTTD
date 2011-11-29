@@ -97,8 +97,11 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 			break;
 
 		case CONTENT_TYPE_AI:
-		case CONTENT_TYPE_AI_LIBRARY:
 			proc = AI::HasAI; break;
+			break;
+
+		case CONTENT_TYPE_AI_LIBRARY:
+			proc = AI::HasAILibrary; break;
 			break;
 
 		case CONTENT_TYPE_SCENARIO:

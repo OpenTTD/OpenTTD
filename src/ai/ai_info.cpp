@@ -7,16 +7,18 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_info.cpp Implementation of AIFileInfo */
+/** @file ai_info.cpp Implementation of AIInfo and AILibrary */
 
 #include "../stdafx.h"
 
 #include "../script/squirrel_helper.hpp"
+#include "../script/squirrel_class.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 #include "../settings_type.h"
 #include "../debug.h"
 #include "../rev.h"
+#include "ai.hpp"
 
 /** Maximum number of operations allowed for getting a particular setting. */
 static const int MAX_GET_SETTING_OPS = 100000;
@@ -37,20 +39,6 @@ AIConfigItem _start_date_config = {
 	NULL
 };
 
-AILibrary::~AILibrary()
-{
-	free(this->category);
-}
-
-/* static */ SQInteger AIFileInfo::Constructor(HSQUIRRELVM vm, AIFileInfo *info)
-{
-	SQInteger res = ScriptFileInfo::Constructor(vm, info);
-	if (res != 0) return res;
-	info->base = ((AIScanner *)Squirrel::GetGlobalPointer(vm));
-
-	return 0;
-}
-
 /**
  * Check if the API version provided by the AI is supported.
  * @param api_version The API version as provided by the AI.
@@ -60,6 +48,29 @@ static bool CheckAPIVersion(const char *api_version)
 	return strcmp(api_version, "0.7") == 0 || strcmp(api_version, "1.0") == 0 || strcmp(api_version, "1.1") == 0 || strcmp(api_version, "1.2") == 0;
 }
 
+#if defined(WIN32)
+#undef GetClassName
+#endif /* WIN32 */
+template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
+
+/* static */ void AIInfo::RegisterAPI(Squirrel *engine)
+{
+	/* Create the AIInfo class, and add the RegisterAI function */
+	DefSQClass<AIInfo, ST_AI> SQAIInfo("AIInfo");
+	SQAIInfo.PreRegister(engine);
+	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
+	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddSetting, "AddSetting");
+	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddLabels, "AddLabels");
+	SQAIInfo.DefSQConst(engine, AICONFIG_NONE, "AICONFIG_NONE");
+	SQAIInfo.DefSQConst(engine, AICONFIG_RANDOM, "AICONFIG_RANDOM");
+	SQAIInfo.DefSQConst(engine, AICONFIG_BOOLEAN, "AICONFIG_BOOLEAN");
+	SQAIInfo.DefSQConst(engine, AICONFIG_INGAME, "AICONFIG_INGAME");
+	SQAIInfo.DefSQConst(engine, AICONFIG_AI_DEVELOPER, "AICONFIG_AI_DEVELOPER");
+	SQAIInfo.PostRegister(engine);
+	engine->AddMethod("RegisterAI", &AIInfo::Constructor, 2, "tx");
+	engine->AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, 2, "tx");
+}
+
 /* static */ SQInteger AIInfo::Constructor(HSQUIRRELVM vm)
 {
 	/* Get the AIInfo */
@@ -67,7 +78,7 @@ static bool CheckAPIVersion(const char *api_version)
 	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == NULL) return sq_throwerror(vm, _SC("Pass an instance of a child class of AIInfo to RegisterAI"));
 	AIInfo *info = (AIInfo *)instance;
 
-	SQInteger res = AIFileInfo::Constructor(vm, info);
+	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;
 
 	AIConfigItem config = _start_date_config;
@@ -104,7 +115,7 @@ static bool CheckAPIVersion(const char *api_version)
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, NULL);
 	/* Register the AI to the base system */
-	info->base->RegisterAI(info);
+	info->GetScanner()->RegisterScript(info);
 	return 0;
 }
 
@@ -116,7 +127,7 @@ static bool CheckAPIVersion(const char *api_version)
 	AIInfo *info = (AIInfo *)instance;
 	info->api_version = NULL;
 
-	SQInteger res = AIFileInfo::Constructor(vm, info);
+	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;
 
 	char buf[8];
@@ -126,7 +137,7 @@ static bool CheckAPIVersion(const char *api_version)
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
 	sq_setinstanceup(vm, 2, NULL);
 	/* Register the AI to the base system */
-	info->base->SetDummyAI(info);
+	static_cast<AIScannerInfo *>(info->GetScanner())->SetDummyAI(info);
 	return 0;
 }
 
@@ -350,12 +361,26 @@ int AIInfo::GetSettingDefaultValue(const char *name) const
 	return -1;
 }
 
+
+AILibrary::~AILibrary()
+{
+	free(this->category);
+}
+
+/* static */ void AILibrary::RegisterAPI(Squirrel *engine)
+{
+	/* Create the AILibrary class, and add the RegisterLibrary function */
+	engine->AddClassBegin("AILibrary");
+	engine->AddClassEnd();
+	engine->AddMethod("RegisterLibrary", &AILibrary::Constructor, 2, "tx");
+}
+
 /* static */ SQInteger AILibrary::Constructor(HSQUIRRELVM vm)
 {
-	/* Create a new AIFileInfo */
+	/* Create a new library */
 	AILibrary *library = new AILibrary();
 
-	SQInteger res = AIFileInfo::Constructor(vm, library);
+	SQInteger res = ScriptInfo::Constructor(vm, library);
 	if (res != 0) {
 		delete library;
 		return res;
@@ -368,7 +393,7 @@ int AIInfo::GetSettingDefaultValue(const char *name) const
 	}
 
 	/* Register the Library to the base system */
-	library->base->RegisterLibrary(library);
+	library->GetScanner()->RegisterScript(library);
 
 	return 0;
 }

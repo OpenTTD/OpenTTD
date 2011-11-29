@@ -19,7 +19,7 @@
 #include <map>
 
 /** A list that maps AI names to their AIInfo object. */
-typedef std::map<const char *, class AIInfo *, StringCompare> AIInfoList;
+typedef std::map<const char *, class ScriptInfo *, StringCompare> ScriptInfoList;
 
 /**
  * Main AI class. Contains all functions needed to start, stop, save and load AIs.
@@ -129,11 +129,11 @@ public:
 	/** Wrapper function for AIScanner::GetAIConsoleLibraryList */
 	static char *GetConsoleLibraryList(char *p, const char *last);
 	/** Wrapper function for AIScanner::GetAIInfoList */
-	static const AIInfoList *GetInfoList();
+	static const ScriptInfoList *GetInfoList();
 	/** Wrapper function for AIScanner::GetUniqueAIInfoList */
-	static const AIInfoList *GetUniqueInfoList();
+	static const ScriptInfoList *GetUniqueInfoList();
 	/** Wrapper function for AIScanner::FindInfo */
-	static AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	static class AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
 	/** Wrapper function for AIScanner::FindLibrary */
 	static class AILibrary *FindLibrary(const char *library, int version);
 
@@ -145,10 +145,12 @@ public:
 #if defined(ENABLE_NETWORK)
 	/** Wrapper function for AIScanner::HasAI */
 	static bool HasAI(const struct ContentInfo *ci, bool md5sum);
+	static bool HasAILibrary(const ContentInfo *ci, bool md5sum);
 #endif
 private:
-	static uint frame_counter;          ///< Tick counter for the AI code
-	static class AIScanner *ai_scanner; ///< AIScanner instance that is used to find AIs
+	static uint frame_counter;                      ///< Tick counter for the AI code
+	static class AIScannerInfo *scanner_info;       ///< ScriptScanner instance that is used to find AIs
+	static class AIScannerLibrary *scanner_library; ///< ScriptScanner instance that is used to find AI Libraries
 };
 
 #else /* ENABLE_AI */
@@ -167,6 +169,7 @@ public:
 	static void KillAll() {}
 	static void GameLoop() {}
 	static bool HasAI(const struct ContentInfo *ci, bool md5sum) { return false; }
+	static bool HasAILibrary(const struct ContentInfo *ci, bool md5sum) { return false; }
 	static void Rescan() {}
 	static char *GetConsoleList(char *p, const char *last, bool newest_only = false) { return p; }
 	static void nop() { }
