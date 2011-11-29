@@ -227,3 +227,21 @@ void AIInstance::Died()
 		}
 	}
 }
+
+/**
+ * DoCommand callback function for all commands executed by AIs.
+ * @param result The result of the command.
+ * @param tile The tile on which the command was executed.
+ * @param p1 p1 as given to DoCommandPInternal.
+ * @param p2 p2 as given to DoCommandPInternal.
+ */
+void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+{
+	Company::Get(_current_company)->ai_instance->DoCommandCallback(result, tile, p1, p2);
+	Company::Get(_current_company)->ai_instance->Continue();
+}
+
+CommandCallback *AIInstance::GetDoCommandCallback()
+{
+	return &CcAI;
+}

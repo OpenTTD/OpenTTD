@@ -31,6 +31,7 @@ private:
 
 	/* virtual */ void RegisterAPI();
 	/* virtual */ void Died();
+	/* virtual */ CommandCallback *GetDoCommandCallback();
 
 	/**
 	 * Load squirrel scripts to emulate an older API.

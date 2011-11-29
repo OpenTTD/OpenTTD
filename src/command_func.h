@@ -70,7 +70,7 @@ static inline DoCommandFlag CommandFlagsToDCFlags(CommandFlags cmd_flags)
 
 /*** All command callbacks that exist ***/
 
-/* ai/ai_core.cpp */
+/* ai/ai_instance.cpp */
 CommandCallback CcAI;
 
 /* airport_gui.cpp */

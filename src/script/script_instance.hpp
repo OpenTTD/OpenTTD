@@ -15,6 +15,8 @@
 #include <squirrel.h>
 #include "script_suspend.hpp"
 
+#include "../command_type.h"
+
 /** Runtime information about a script like a pointer to the squirrel vm and the current state. */
 class ScriptInstance {
 public:
@@ -154,6 +156,11 @@ protected:
 	 * Tell the script it died.
 	 */
 	virtual void Died();
+
+	/**
+	 * Get the callback handling DoCommands in case of networking.
+	 */
+	virtual CommandCallback *GetDoCommandCallback() = 0;
 
 private:
 	class ScriptController *controller;   ///< The script main class.
