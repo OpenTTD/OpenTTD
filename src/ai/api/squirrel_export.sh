@@ -20,7 +20,9 @@ if [ "$?" != "0" ]; then
 	exit 1
 fi
 
-# This must be called from within the src/ai/api directory.
+# This must be called from within a src/???/api directory.
+apilc=`pwd | sed "s@/api@@;s@.*/@@"`
+apiuc=`echo ${apilc} | tr [a-z] [A-Z]`
 
 if [ -z "$1" ]; then
 	for f in `ls *.hpp`; do
@@ -28,7 +30,7 @@ if [ -z "$1" ]; then
 			# these files should not be changed by this script
 			"ai_controller.hpp" | "ai_object.hpp" | "ai_types.hpp" | "ai_changelog.hpp" | "ai_info_docs.hpp" ) continue;
 		esac
-		${AWK} -f squirrel_export.awk ${f} > ${f}.tmp
+		${AWK} -v api=${apiuc} -f squirrel_export.awk ${f} > ${f}.tmp
 		if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' ${f}.tmp ${f}.sq 2> /dev/null || echo boo`" ]; then
 			mv ${f}.tmp ${f}.sq
 			echo "Updated: ${f}.sq"
@@ -40,7 +42,7 @@ if [ -z "$1" ]; then
 		fi
 	done
 else
-	${AWK} -f squirrel_export.awk $1 > $1.tmp
+	${AWK} -v api=${apiuc} -f squirrel_export.awk $1 > $1.tmp
 	if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' $1.sq $1.tmp 2> /dev/null || echo boo`" ]; then
 		mv $1.tmp $1.sq
 		echo "Updated: $1.sq"
@@ -61,8 +63,8 @@ for f in `ls *.hpp.sq`; do
 	fi
 done
 
-# Add stuff to ai_instance.cpp
-f='../ai_instance.cpp'
+# Add stuff to ${apilc}_instance.cpp
+f="../${apilc}_instance.cpp"
 
 functions=``
 
@@ -70,13 +72,13 @@ echo "
 { }
 /.hpp.sq/ { next }
 /squirrel_register_std/ { next }
-/SQAIController_Register/ { print \$0; next }
-/SQAI.*_Register/ { next }
+/SQ${apiuc}Controller_Register/ { print \$0; next }
+/SQ${apiuc}.*_Register/ { next }
 
 /Note: this line is a marker in squirrel_export.sh. Do not change!/ {
 	print \$0
 	gsub(\"^.*/\", \"\")
-	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
+	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
 
 	for (i = 1; files[i] != \"\"; i++) {
 		print \"#include \\\"api/\" files[i] \"\\\"\" \$0
@@ -89,12 +91,12 @@ echo "
 	print \$0
 	gsub(\"^.*/\", \"\")
 	print \"	squirrel_register_std(this->engine);\" \$0
-	# AIList needs to be registered with squirrel before all AIList subclasses.
-	print \"	SQAIList_Register(this->engine);\" \$0
-	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine)$' *.hpp.sq | grep -v 'SQAIList_Register' | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
+	# List needs to be registered with squirrel before all List subclasses.
+	print \"	SQ${apiuc}List_Register(this->engine);\" \$0
+	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine)$' *.hpp.sq | grep -v 'SQ'${apiuc}'List_Register' | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
 
 	for (i = 1; regs[i] != \"\"; i++) {
-		if (regs[i] == \"SQAIController_Register(this->engine);\") continue
+		if (regs[i] == \"SQ${apiuc}Controller_Register(this->engine);\") continue
 		print \"	\" regs[i] \$0
 	}
 

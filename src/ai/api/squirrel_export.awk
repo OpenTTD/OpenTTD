@@ -7,7 +7,7 @@
 
 #
 # Awk script to automatically generate the code needed
-# to export the AI API to Squirrel.
+# to export the script APIs to Squirrel.
 #
 # Note that arrays are 1 based...
 #
@@ -168,6 +168,11 @@ BEGIN {
 	public = "false"
 	namespace_opened = "false"
 
+	api_cls = cls
+	gsub("^Script", api, api_cls)
+	api_super_cls = super_cls
+	gsub("^Script", api, api_super_cls)
+
 	print ""
 
 	# First check whether we have enums to print
@@ -209,20 +214,20 @@ BEGIN {
 	print "} // namespace SQConvert"
 
 	print "";
-	print "template <> const char *GetClassName<" cls ", ST_AI>() { return \"" cls "\"; }"
+	print "template <> const char *GetClassName<" cls ", ST_" toupper(api) ">() { return \"" api_cls "\"; }"
 	print "";
 
 	# Then do the registration functions of the class. */
-	print "void SQ" cls "_Register(Squirrel *engine)"
+	print "void SQ" api_cls "_Register(Squirrel *engine)"
 	print "{"
-	print "	DefSQClass<" cls ", ST_AI> SQ" cls "(\"" cls "\");"
+	print "	DefSQClass<" cls ", ST_" toupper(api) "> SQ" api_cls "(\"" api_cls "\");"
 	if (super_cls == "AIObject" || super_cls == "AIAbstractList::Valuator") {
-		print "	SQ" cls ".PreRegister(engine);"
+		print "	SQ" api_cls ".PreRegister(engine);"
 	} else {
-		print "	SQ" cls ".PreRegister(engine, \"" super_cls "\");"
+		print "	SQ" api_cls ".PreRegister(engine, \"" api_super_cls "\");"
 	}
 	if (virtual_class == "false" && super_cls != "AIEvent") {
-		print "	SQ" cls ".AddConstructor<void (" cls "::*)(" cls_param[0] "), " cls_param[1]">(engine, \"" cls_param[2] "\");"
+		print "	SQ" api_cls ".AddConstructor<void (" cls "::*)(" cls_param[0] "), " cls_param[1]">(engine, \"" cls_param[2] "\");"
 	}
 	print ""
 
@@ -232,7 +237,7 @@ BEGIN {
 		if (mlen <= length(enum_value[i])) mlen = length(enum_value[i])
 	}
 	for (i = 1; i <= enum_value_size; i++) {
-		print "	SQ" cls ".DefSQConst(engine, " cls "::" enum_value[i] ", " substr(spaces, 1, mlen - length(enum_value[i])) "\""  enum_value[i] "\");"
+		print "	SQ" api_cls ".DefSQConst(engine, " cls "::" enum_value[i] ", " substr(spaces, 1, mlen - length(enum_value[i])) "\""  enum_value[i] "\");"
 		delete enum_value[i]
 	}
 	if (enum_value_size != 0) print ""
@@ -243,7 +248,7 @@ BEGIN {
 		if (mlen <= length(const_value[i])) mlen = length(const_value[i])
 	}
 	for (i = 1; i <= const_size; i++) {
-		print "	SQ" cls ".DefSQConst(engine, " cls "::" const_value[i] ", " substr(spaces, 1, mlen - length(const_value[i])) "\""  const_value[i] "\");"
+		print "	SQ" api_cls ".DefSQConst(engine, " cls "::" const_value[i] ", " substr(spaces, 1, mlen - length(const_value[i])) "\""  const_value[i] "\");"
 		delete const_value[i]
 	}
 	if (const_size != 0) print ""
@@ -277,7 +282,7 @@ BEGIN {
 		if (mlen <= length(static_methods[i, 0])) mlen = length(static_methods[i, 0])
 	}
 	for (i = 1; i <= static_method_size; i++) {
-		print "	SQ" cls ".DefSQStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "\""  static_methods[i, 0] "\", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "" static_methods[i, 1] ", \"" static_methods[i, 2] "\");"
+		print "	SQ" api_cls ".DefSQStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "\""  static_methods[i, 0] "\", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "" static_methods[i, 1] ", \"" static_methods[i, 2] "\");"
 		delete static_methods[i]
 	}
 	if (static_method_size != 0) print ""
@@ -290,15 +295,15 @@ BEGIN {
 		}
 		for (i = 1; i <= method_size; i++) {
 			if (methods[i, 2] == "v") {
-				print "	SQ" cls ".DefSQAdvancedMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0]) - 8) "\""  methods[i, 0] "\");"
+				print "	SQ" api_cls ".DefSQAdvancedMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0]) - 8) "\""  methods[i, 0] "\");"
 			} else {
-				print "	SQ" cls ".DefSQMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0])) "\""  methods[i, 0] "\", " substr(spaces, 1, mlen - length(methods[i, 0])) "" methods[i, 1] ", \"" methods[i, 2] "\");"
+				print "	SQ" api_cls ".DefSQMethod(engine, &" cls "::" methods[i, 0] ", " substr(spaces, 1, mlen - length(methods[i, 0])) "\""  methods[i, 0] "\", " substr(spaces, 1, mlen - length(methods[i, 0])) "" methods[i, 1] ", \"" methods[i, 2] "\");"
 			}
 			delete methods[i]
 		}
 		if (method_size != 0) print ""
 	}
-	print "	SQ" cls ".PostRegister(engine);"
+	print "	SQ" api_cls ".PostRegister(engine);"
 	print "}"
 
 	enum_size = 0
