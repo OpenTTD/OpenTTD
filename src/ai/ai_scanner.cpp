@@ -18,7 +18,7 @@
 #include "../script/squirrel_class.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
-#include "api/ai_controller.hpp"
+#include "../script/api/script_controller.hpp"
 
 void AIScanner::RescanAIDir()
 {

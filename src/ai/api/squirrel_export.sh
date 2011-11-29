@@ -25,20 +25,21 @@ apilc=`pwd | sed "s@/api@@;s@.*/@@"`
 apiuc=`echo ${apilc} | tr [a-z] [A-Z]`
 
 if [ -z "$1" ]; then
-	for f in `ls *.hpp`; do
-		case "${f}" in
+	for f in `ls ../../script/api/*.hpp`; do
+		bf=`basename $f | sed s/script/${apilc}/`
+		case "${bf}" in
 			# these files should not be changed by this script
 			"ai_controller.hpp" | "ai_object.hpp" | "ai_types.hpp" | "ai_changelog.hpp" | "ai_info_docs.hpp" ) continue;
 		esac
-		${AWK} -v api=${apiuc} -f squirrel_export.awk ${f} > ${f}.tmp
-		if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' ${f}.tmp ${f}.sq 2> /dev/null || echo boo`" ]; then
-			mv ${f}.tmp ${f}.sq
-			echo "Updated: ${f}.sq"
-			svn add ${f}.sq > /dev/null 2>&1
-			svn propset svn:eol-style native ${f}.sq > /dev/null 2>&1
-			svn propset svn:keywords Id ${f}.sq > /dev/null 2>&1
+		${AWK} -v api=${apiuc} -f squirrel_export.awk ${f} > ${bf}.tmp
+		if ! [ -f "${bf}.sq" ] || [ -n "`diff -I '$Id' ${bf}.tmp ${bf}.sq 2> /dev/null || echo boo`" ]; then
+			mv ${bf}.tmp ${bf}.sq
+			echo "Updated: ${bf}.sq"
+			svn add ${bf}.sq > /dev/null 2>&1
+			svn propset svn:eol-style native ${bf}.sq > /dev/null 2>&1
+			svn propset svn:keywords Id ${bf}.sq > /dev/null 2>&1
 		else
-			rm -f ${f}.tmp
+			rm -f ${bf}.tmp
 		fi
 	done
 else
@@ -56,8 +57,8 @@ fi
 
 # Remove .hpp.sq if .hpp doesn't exist anymore
 for f in `ls *.hpp.sq`; do
-	f=`echo ${f} | sed "s/.hpp.sq$/.hpp/"`
-	if [ ! -f ${f} ];then
+	f=`echo ${f} | sed "s/.hpp.sq$/.hpp/;s/${apilc}/script/"`
+	if [ ! -f ../../script/api/${f} ];then
 		echo "Deleted: ${f}.sq"
 		svn del --force ${f}.sq > /dev/null 2>&1
 	fi

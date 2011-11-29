@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_event.hpp"
+#include "../../script/api/script_event.hpp"
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */

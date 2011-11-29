@@ -2728,107 +2728,7 @@
 			Name="AI API"
 			>
 			<File
-				RelativePath=".\..\src\ai\api\ai_accounting.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_airport.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_base.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_basestation.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_bridge.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_bridgelist.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_cargo.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_cargolist.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\ai\api\ai_changelog.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_company.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_controller.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_date.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_depotlist.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_engine.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_enginelist.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_error.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_event.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_event_types.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_execmode.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_gamesettings.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_group.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_grouplist.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_industry.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_industrylist.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_industrytype.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_industrytypelist.hpp"
 				>
 			</File>
 			<File
@@ -2836,107 +2736,207 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_list.hpp"
+				RelativePath=".\..\src\script\api\script_accounting.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_log.hpp"
+				RelativePath=".\..\src\script\api\script_airport.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_map.hpp"
+				RelativePath=".\..\src\script\api\script_base.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_marine.hpp"
+				RelativePath=".\..\src\script\api\script_basestation.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_object.hpp"
+				RelativePath=".\..\src\script\api\script_bridge.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_order.hpp"
+				RelativePath=".\..\src\script\api\script_bridgelist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_rail.hpp"
+				RelativePath=".\..\src\script\api\script_cargo.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_railtypelist.hpp"
+				RelativePath=".\..\src\script\api\script_cargolist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_road.hpp"
+				RelativePath=".\..\src\script\api\script_company.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_sign.hpp"
+				RelativePath=".\..\src\script\api\script_controller.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_signlist.hpp"
+				RelativePath=".\..\src\script\api\script_date.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_station.hpp"
+				RelativePath=".\..\src\script\api\script_depotlist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_stationlist.hpp"
+				RelativePath=".\..\src\script\api\script_engine.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_subsidy.hpp"
+				RelativePath=".\..\src\script\api\script_enginelist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_subsidylist.hpp"
+				RelativePath=".\..\src\script\api\script_error.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_testmode.hpp"
+				RelativePath=".\..\src\script\api\script_event.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_tile.hpp"
+				RelativePath=".\..\src\script\api\script_event_types.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_tilelist.hpp"
+				RelativePath=".\..\src\script\api\script_execmode.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_town.hpp"
+				RelativePath=".\..\src\script\api\script_gamesettings.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_townlist.hpp"
+				RelativePath=".\..\src\script\api\script_group.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_tunnel.hpp"
+				RelativePath=".\..\src\script\api\script_grouplist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_types.hpp"
+				RelativePath=".\..\src\script\api\script_industry.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_vehicle.hpp"
+				RelativePath=".\..\src\script\api\script_industrylist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_vehiclelist.hpp"
+				RelativePath=".\..\src\script\api\script_industrytype.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_waypoint.hpp"
+				RelativePath=".\..\src\script\api\script_industrytypelist.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_waypointlist.hpp"
+				RelativePath=".\..\src\script\api\script_list.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_log.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_map.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_marine.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_object.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_order.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_rail.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_railtypelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_road.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_sign.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_signlist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_station.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_stationlist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_subsidy.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_subsidylist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_testmode.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_tile.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_tilelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_town.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_townlist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_tunnel.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_types.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_vehicle.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_vehiclelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_waypoint.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_waypointlist.hpp"
 				>
 			</File>
 		</Filter>
@@ -2944,203 +2944,203 @@
 			Name="AI API Implementation"
 			>
 			<File
-				RelativePath=".\..\src\ai\api\ai_accounting.cpp"
+				RelativePath=".\..\src\script\api\script_accounting.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_airport.cpp"
+				RelativePath=".\..\src\script\api\script_airport.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_base.cpp"
+				RelativePath=".\..\src\script\api\script_base.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_basestation.cpp"
+				RelativePath=".\..\src\script\api\script_basestation.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_bridge.cpp"
+				RelativePath=".\..\src\script\api\script_bridge.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_bridgelist.cpp"
+				RelativePath=".\..\src\script\api\script_bridgelist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_cargo.cpp"
+				RelativePath=".\..\src\script\api\script_cargo.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_cargolist.cpp"
+				RelativePath=".\..\src\script\api\script_cargolist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_company.cpp"
+				RelativePath=".\..\src\script\api\script_company.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_controller.cpp"
+				RelativePath=".\..\src\script\api\script_controller.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_date.cpp"
+				RelativePath=".\..\src\script\api\script_date.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_depotlist.cpp"
+				RelativePath=".\..\src\script\api\script_depotlist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_engine.cpp"
+				RelativePath=".\..\src\script\api\script_engine.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_enginelist.cpp"
+				RelativePath=".\..\src\script\api\script_enginelist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_error.cpp"
+				RelativePath=".\..\src\script\api\script_error.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_event.cpp"
+				RelativePath=".\..\src\script\api\script_event.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_event_types.cpp"
+				RelativePath=".\..\src\script\api\script_event_types.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_execmode.cpp"
+				RelativePath=".\..\src\script\api\script_execmode.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_gamesettings.cpp"
+				RelativePath=".\..\src\script\api\script_gamesettings.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_group.cpp"
+				RelativePath=".\..\src\script\api\script_group.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_grouplist.cpp"
+				RelativePath=".\..\src\script\api\script_grouplist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_industry.cpp"
+				RelativePath=".\..\src\script\api\script_industry.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_industrylist.cpp"
+				RelativePath=".\..\src\script\api\script_industrylist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_industrytype.cpp"
+				RelativePath=".\..\src\script\api\script_industrytype.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_industrytypelist.cpp"
+				RelativePath=".\..\src\script\api\script_industrytypelist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_list.cpp"
+				RelativePath=".\..\src\script\api\script_list.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_log.cpp"
+				RelativePath=".\..\src\script\api\script_log.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_map.cpp"
+				RelativePath=".\..\src\script\api\script_map.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_marine.cpp"
+				RelativePath=".\..\src\script\api\script_marine.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_object.cpp"
+				RelativePath=".\..\src\script\api\script_object.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_order.cpp"
+				RelativePath=".\..\src\script\api\script_order.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_rail.cpp"
+				RelativePath=".\..\src\script\api\script_rail.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_railtypelist.cpp"
+				RelativePath=".\..\src\script\api\script_railtypelist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_road.cpp"
+				RelativePath=".\..\src\script\api\script_road.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_sign.cpp"
+				RelativePath=".\..\src\script\api\script_sign.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_signlist.cpp"
+				RelativePath=".\..\src\script\api\script_signlist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_station.cpp"
+				RelativePath=".\..\src\script\api\script_station.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_stationlist.cpp"
+				RelativePath=".\..\src\script\api\script_stationlist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_subsidy.cpp"
+				RelativePath=".\..\src\script\api\script_subsidy.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_subsidylist.cpp"
+				RelativePath=".\..\src\script\api\script_subsidylist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_testmode.cpp"
+				RelativePath=".\..\src\script\api\script_testmode.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_tile.cpp"
+				RelativePath=".\..\src\script\api\script_tile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_tilelist.cpp"
+				RelativePath=".\..\src\script\api\script_tilelist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_town.cpp"
+				RelativePath=".\..\src\script\api\script_town.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_townlist.cpp"
+				RelativePath=".\..\src\script\api\script_townlist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_tunnel.cpp"
+				RelativePath=".\..\src\script\api\script_tunnel.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_vehicle.cpp"
+				RelativePath=".\..\src\script\api\script_vehicle.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_vehiclelist.cpp"
+				RelativePath=".\..\src\script\api\script_vehiclelist.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_waypoint.cpp"
+				RelativePath=".\..\src\script\api\script_waypoint.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_waypointlist.cpp"
+				RelativePath=".\..\src\script\api\script_waypointlist.cpp"
 				>
 			</File>
 		</Filter>

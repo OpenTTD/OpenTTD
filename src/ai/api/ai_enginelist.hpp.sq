@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_enginelist.hpp"
+#include "../../script/api/script_enginelist.hpp"
 
 namespace SQConvert {
 	/* Allow AIEngineList to be used as Squirrel parameter */

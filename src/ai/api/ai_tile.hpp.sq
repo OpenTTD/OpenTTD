@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_tile.hpp"
+#include "../../script/api/script_tile.hpp"
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */

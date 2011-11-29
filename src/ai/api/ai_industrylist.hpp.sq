@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_industrylist.hpp"
+#include "../../script/api/script_industrylist.hpp"
 
 namespace SQConvert {
 	/* Allow AIIndustryList to be used as Squirrel parameter */

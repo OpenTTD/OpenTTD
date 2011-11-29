@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_waypointlist.hpp"
+#include "../../script/api/script_waypointlist.hpp"
 
 namespace SQConvert {
 	/* Allow AIWaypointList to be used as Squirrel parameter */

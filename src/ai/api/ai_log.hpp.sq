@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_log.hpp"
+#include "../../script/api/script_log.hpp"
 
 namespace SQConvert {
 	/* Allow AILog to be used as Squirrel parameter */

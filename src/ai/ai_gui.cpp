@@ -26,7 +26,7 @@
 #include "../core/backup_type.hpp"
 
 #include "ai.hpp"
-#include "api/ai_log.hpp"
+#include "../script/api/script_log.hpp"
 #include "ai_config.hpp"
 #include "ai_instance.hpp"
 

@@ -70,7 +70,8 @@ BEGIN {
 	print ""
 	print "/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */"
 	print ""
-	print "#include \"" $3 "\""
+	gsub("^" tolower(api) "_", "script_", $3)
+	print "#include \"../../script/api/" $3 "\""
 }
 
 # Remove the old squirrel stuff

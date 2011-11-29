@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_vehiclelist.hpp"
+#include "../../script/api/script_vehiclelist.hpp"
 
 namespace SQConvert {
 	/* Allow AIVehicleList to be used as Squirrel parameter */

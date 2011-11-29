@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_testmode.hpp"
+#include "../../script/api/script_testmode.hpp"
 
 namespace SQConvert {
 	/* Allow AITestMode to be used as Squirrel parameter */

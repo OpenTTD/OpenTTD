@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_stationlist.hpp"
+#include "../../script/api/script_stationlist.hpp"
 
 namespace SQConvert {
 	/* Allow AIStationList to be used as Squirrel parameter */

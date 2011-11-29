@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_tilelist.hpp"
+#include "../../script/api/script_tilelist.hpp"
 
 namespace SQConvert {
 	/* Allow AITileList to be used as Squirrel parameter */

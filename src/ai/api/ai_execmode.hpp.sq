@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_execmode.hpp"
+#include "../../script/api/script_execmode.hpp"
 
 namespace SQConvert {
 	/* Allow AIExecMode to be used as Squirrel parameter */

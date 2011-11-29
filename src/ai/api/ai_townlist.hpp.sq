@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_townlist.hpp"
+#include "../../script/api/script_townlist.hpp"
 
 namespace SQConvert {
 	/* Allow AITownList to be used as Squirrel parameter */

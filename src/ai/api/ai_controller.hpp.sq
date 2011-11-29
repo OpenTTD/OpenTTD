@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ai_controller.hpp"
+#include "../../script/api/script_controller.hpp"
 
 template <> const char *GetClassName<AIController, ST_AI>() { return "AIController"; }
 

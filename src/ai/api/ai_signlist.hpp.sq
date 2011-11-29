@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_signlist.hpp"
+#include "../../script/api/script_signlist.hpp"
 
 namespace SQConvert {
 	/* Allow AISignList to be used as Squirrel parameter */

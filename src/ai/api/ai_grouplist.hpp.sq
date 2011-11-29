@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_grouplist.hpp"
+#include "../../script/api/script_grouplist.hpp"
 
 namespace SQConvert {
 	/* Allow AIGroupList to be used as Squirrel parameter */

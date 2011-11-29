@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_bridgelist.hpp"
+#include "../../script/api/script_bridgelist.hpp"
 
 namespace SQConvert {
 	/* Allow AIBridgeList to be used as Squirrel parameter */

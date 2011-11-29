@@ -13,7 +13,7 @@
 #define AI_HPP
 
 #ifdef ENABLE_AI
-#include "api/ai_event_types.hpp"
+#include "../script/api/script_event_types.hpp"
 #include "../date_type.h"
 #include "../core/string_compare_type.hpp"
 #include <map>

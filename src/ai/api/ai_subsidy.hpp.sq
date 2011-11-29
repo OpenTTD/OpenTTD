@@ -9,7 +9,7 @@
 
 /* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "ai_subsidy.hpp"
+#include "../../script/api/script_subsidy.hpp"
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
