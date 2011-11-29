@@ -18,6 +18,7 @@
 
 #include "ai_config.hpp"
 #include "ai_gui.hpp"
+#include "ai.hpp"
 
 #include "../script/script_fatalerror.hpp"
 #include "../script/script_suspend.hpp"
@@ -238,6 +239,11 @@ void AIInstance::LoadDummyScript()
 int AIInstance::GetSetting(const char *name)
 {
 	return AIConfig::GetConfig(_current_company)->GetSetting(name);
+}
+
+ScriptInfo *AIInstance::FindLibrary(const char *library, int version)
+{
+	return (ScriptInfo *)AI::FindLibrary(library, version);
 }
 
 /**

@@ -44,6 +44,14 @@ public:
 	virtual int GetSetting(const char *name) = 0;
 
 	/**
+	 * Find a library.
+	 * @param library The library name to find.
+	 * @param version The version the library should have.
+	 * @return The library if found, NULL otherwise.
+	 */
+	virtual class ScriptInfo *FindLibrary(const char *library, int version) = 0;
+
+	/**
 	 * A script in multiplayer waits for the server to handle his DoCommand.
 	 *  It keeps waiting for this until this function is called.
 	 */

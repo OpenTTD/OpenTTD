@@ -16,7 +16,6 @@
 
 #include "script_controller.hpp"
 #include "../../ai/ai_instance.hpp"
-#include "../../ai/ai.hpp"
 #include "../script_fatalerror.hpp"
 #include "../script_info.hpp"
 #include "../script_suspend.hpp"
@@ -94,7 +93,7 @@ ScriptController::~ScriptController()
 	snprintf(library_name, sizeof(library_name), "%s.%d", library, version);
 	strtolower(library_name);
 
-	ScriptInfo *lib = (ScriptInfo *)AI::FindLibrary(library, version);
+	ScriptInfo *lib = ScriptObject::GetActiveInstance()->FindLibrary(library, version);
 	if (lib == NULL) {
 		char error[1024];
 		snprintf(error, sizeof(error), "couldn't find library '%s' with version %d", library, version);
