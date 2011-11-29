@@ -21,6 +21,7 @@ if [ "$?" != "0" ]; then
 fi
 
 # This must be called from within a src/???/api directory.
+scriptdir=`dirname $0`
 apilc=`pwd | sed "s@/api@@;s@.*/@@"`
 apiuc=`echo ${apilc} | tr [a-z] [A-Z]`
 
@@ -31,7 +32,7 @@ if [ -z "$1" ]; then
 		# ScriptController has custom code, and should not be generated
 		if [ "`basename ${f}`" = "script_controller.hpp" ]; then continue; fi
 
-		${AWK} -v api=${apiuc} -f squirrel_export.awk ${f} > ${bf}.tmp
+		${AWK} -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk ${f} > ${bf}.tmp
 
 		if [ "`wc -l ${bf}.tmp | cut -d\  -f1`" = "0" ]; then
 			if [ -f "${bf}.sq" ]; then
@@ -50,7 +51,7 @@ if [ -z "$1" ]; then
 		fi
 	done
 else
-	${AWK} -v api=${apiuc} -f squirrel_export.awk $1 > $1.tmp
+	${AWK} -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk $1 > $1.tmp
 	if [ `wc -l $1.tmp | cut -d\  -f1` -eq "0" ]; then
 		if [ -f "$1.sq" ]; then
 			echo "Deleted: $1.sq"
