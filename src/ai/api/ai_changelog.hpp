@@ -31,7 +31,7 @@
  * \li AICompany::GetQuarterlyPerformanceRating
  * \li AICompany::GetQuarterlyCompanyValue
  * \li AIController::GetOpsTillSuspend
- * \li AIInfo::AICONFIG_AI_DEVELOPER
+ * \li AIInfo::CONFIG_DEVELOPER
  * \li AIOrder::GetOrderRefit
  * \li AIOrder::IsRefitOrder
  * \li AIOrder::SetOrderRefit
@@ -44,7 +44,9 @@
  *
  * API renames:
  * \li AITown::GetLastMonthTransported to AITown::GetLastMonthSupplied to better
- *     reflect what it does
+ *     reflect what it does.
+ * \li AIInfo has all its configure settings renamed from AICONFIG to just CONFIG
+ *     like CONFIG_RANDOM.
  *
  * API removals:
  * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.

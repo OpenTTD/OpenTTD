@@ -1320,7 +1320,7 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 
 	/* Clean any configured AI */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		AIConfig::GetConfig(c, AIConfig::AISS_FORCE_NEWGAME)->ChangeAI(NULL);
+		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME)->Change(NULL);
 	}
 
 	/* If no group exists, return */
@@ -1328,10 +1328,10 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 
 	CompanyID c = COMPANY_FIRST;
 	for (item = group->item; c < MAX_COMPANIES && item != NULL; c++, item = item->next) {
-		AIConfig *config = AIConfig::GetConfig(c, AIConfig::AISS_FORCE_NEWGAME);
+		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
-		config->ChangeAI(item->name);
-		if (!config->HasAI()) {
+		config->Change(item->name);
+		if (!config->HasScript()) {
 			if (strcmp(item->name, "none") != 0) {
 				DEBUG(ai, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name);
 				continue;
@@ -1443,12 +1443,12 @@ static void AISaveConfig(IniFile *ini, const char *grpname)
 	group->Clear();
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		AIConfig *config = AIConfig::GetConfig(c, AIConfig::AISS_FORCE_NEWGAME);
+		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 		const char *name;
 		char value[1024];
 		config->SettingsToString(value, lengthof(value));
 
-		if (config->HasAI()) {
+		if (config->HasScript()) {
 			name = config->GetName();
 		} else {
 			name = "none";

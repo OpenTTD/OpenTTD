@@ -1587,6 +1587,12 @@
     <ClInclude Include="..\src\3rdparty\md5\md5.h">
       <Filter>MD5</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\script\script_config.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\script\script_config.hpp">
+      <Filter>Script</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\script\script_fatalerror.hpp">
       <Filter>Script</Filter>
     </ClInclude>

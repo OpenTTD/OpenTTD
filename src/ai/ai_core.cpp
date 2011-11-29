@@ -21,6 +21,7 @@
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"
+#include "ai_info.hpp"
 #include "ai.hpp"
 #include "../script/api/script_error.hpp"
 
@@ -43,11 +44,11 @@
 
 	AIConfig *config = AIConfig::GetConfig(company);
 	AIInfo *info = config->GetInfo();
-	if (info == NULL || (rerandomise_ai && config->IsRandomAI())) {
+	if (info == NULL || (rerandomise_ai && config->IsRandom())) {
 		info = AI::scanner_info->SelectRandomAI();
 		assert(info != NULL);
 		/* Load default data and store the name in the settings */
-		config->ChangeAI(info->GetName(), -1, false, true);
+		config->Change(info->GetName(), -1, false, true);
 	}
 
 	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
@@ -181,10 +182,10 @@
 	 *  the AIConfig. If not, remove the AI from the list (which will assign
 	 *  a random new AI on reload). */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (_settings_game.ai_config[c] != NULL && _settings_game.ai_config[c]->HasAI()) {
+		if (_settings_game.ai_config[c] != NULL && _settings_game.ai_config[c]->HasScript()) {
 			if (!_settings_game.ai_config[c]->ResetInfo(true)) {
 				DEBUG(ai, 0, "After a reload, the AI by the name '%s' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
-				_settings_game.ai_config[c]->ChangeAI(NULL);
+				_settings_game.ai_config[c]->Change(NULL);
 				if (Company::IsValidAiID(c)) {
 					/* The code belonging to an already running AI was deleted. We can only do
 					 * one thing here to keep everything sane and that is kill the AI. After
@@ -198,10 +199,10 @@
 				Company::Get(c)->ai_info = _settings_game.ai_config[c]->GetInfo();
 			}
 		}
-		if (_settings_newgame.ai_config[c] != NULL && _settings_newgame.ai_config[c]->HasAI()) {
+		if (_settings_newgame.ai_config[c] != NULL && _settings_newgame.ai_config[c]->HasScript()) {
 			if (!_settings_newgame.ai_config[c]->ResetInfo(false)) {
 				DEBUG(ai, 0, "After a reload, the AI by the name '%s' was no longer found, and removed from the list.", _settings_newgame.ai_config[c]->GetName());
-				_settings_newgame.ai_config[c]->ChangeAI(NULL);
+				_settings_newgame.ai_config[c]->Change(NULL);
 			}
 		}
 	}

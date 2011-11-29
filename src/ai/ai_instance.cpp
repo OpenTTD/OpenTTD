@@ -22,6 +22,7 @@
 #include "../script/script_fatalerror.hpp"
 #include "../script/script_suspend.hpp"
 #include "../script/script_storage.hpp"
+#include "ai_info.hpp"
 #include "ai_instance.hpp"
 
 /* Convert all AI related classes to Squirrel data.

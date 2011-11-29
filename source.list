@@ -553,6 +553,8 @@ table/water_land.h
 
 #if AI
 # Script
+script/script_config.cpp
+script/script_config.hpp
 script/script_fatalerror.hpp
 script/script_info.cpp
 script/script_info.hpp

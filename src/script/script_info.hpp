@@ -15,6 +15,8 @@
 #include <squirrel.h>
 #include "../misc/countedptr.hpp"
 
+#include "script_config.hpp"
+
 class ScriptInfo : public SimpleCountedObject {
 public:
 	ScriptInfo() :
@@ -98,9 +100,41 @@ public:
 	 */
 	virtual class ScriptScanner *GetScanner() { return this->scanner; }
 
+	/**
+	 * Get the settings of the Script.
+	 */
+	bool GetSettings();
+
+	/**
+	 * Get the config list for this Script.
+	 */
+	const ScriptConfigItemList *GetConfigList() const;
+
+	/**
+	 * Get the description of a certain Script config option.
+	 */
+	const ScriptConfigItem *GetConfigItem(const char *name) const;
+
+	/**
+	 * Set a setting.
+	 */
+	SQInteger AddSetting(HSQUIRRELVM vm);
+
+	/**
+	 * Add labels for a setting.
+	 */
+	SQInteger AddLabels(HSQUIRRELVM vm);
+
+	/**
+	 * Get the default value for a setting.
+	 */
+	int GetSettingDefaultValue(const char *name) const;
+
+
 protected:
-	class Squirrel *engine;       ///< Engine used to register for Squirrel.
-	HSQOBJECT *SQ_instance;       ///< The Squirrel instance created for this info.
+	class Squirrel *engine;           ///< Engine used to register for Squirrel.
+	HSQOBJECT *SQ_instance;           ///< The Squirrel instance created for this info.
+	ScriptConfigItemList config_list; ///< List of settings from this Script.
 
 private:
 	char *main_script;            ///< The full path of the script.
