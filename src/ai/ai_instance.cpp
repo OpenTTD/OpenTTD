@@ -112,7 +112,7 @@ AIInstance::AIInstance() :
 	callback(NULL)
 {
 	this->storage = new AIStorage();
-	this->engine  = new Squirrel();
+	this->engine  = new Squirrel("AI");
 	this->engine->SetPrintFunction(&PrintFunc);
 }
 

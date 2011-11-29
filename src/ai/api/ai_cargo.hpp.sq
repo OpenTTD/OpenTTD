@@ -25,7 +25,7 @@ namespace SQConvert {
 	template <> inline AICargo &GetParam(ForceType<AICargo &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargo *)instance; }
 	template <> inline const AICargo *GetParam(ForceType<const AICargo *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargo *)instance; }
 	template <> inline const AICargo &GetParam(ForceType<const AICargo &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargo *)instance; }
-	template <> inline int Return<AICargo *>(HSQUIRRELVM vm, AICargo *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargo", res, NULL, DefSQDestructorCallback<AICargo>); return 1; }
+	template <> inline int Return<AICargo *>(HSQUIRRELVM vm, AICargo *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Cargo", res, NULL, DefSQDestructorCallback<AICargo>, true); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AICargo, ST_AI>() { return "AICargo"; }

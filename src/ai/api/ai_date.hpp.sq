@@ -17,7 +17,7 @@ namespace SQConvert {
 	template <> inline AIDate &GetParam(ForceType<AIDate &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIDate *)instance; }
 	template <> inline const AIDate *GetParam(ForceType<const AIDate *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIDate *)instance; }
 	template <> inline const AIDate &GetParam(ForceType<const AIDate &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIDate *)instance; }
-	template <> inline int Return<AIDate *>(HSQUIRRELVM vm, AIDate *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIDate", res, NULL, DefSQDestructorCallback<AIDate>); return 1; }
+	template <> inline int Return<AIDate *>(HSQUIRRELVM vm, AIDate *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Date", res, NULL, DefSQDestructorCallback<AIDate>, true); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AIDate, ST_AI>() { return "AIDate"; }

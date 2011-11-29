@@ -21,7 +21,7 @@ namespace SQConvert {
 	template <> inline AISign &GetParam(ForceType<AISign &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISign *)instance; }
 	template <> inline const AISign *GetParam(ForceType<const AISign *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISign *)instance; }
 	template <> inline const AISign &GetParam(ForceType<const AISign &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISign *)instance; }
-	template <> inline int Return<AISign *>(HSQUIRRELVM vm, AISign *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AISign", res, NULL, DefSQDestructorCallback<AISign>); return 1; }
+	template <> inline int Return<AISign *>(HSQUIRRELVM vm, AISign *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Sign", res, NULL, DefSQDestructorCallback<AISign>, true); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AISign, ST_AI>() { return "AISign"; }

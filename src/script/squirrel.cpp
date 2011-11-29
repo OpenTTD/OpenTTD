@@ -273,22 +273,33 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	return true;
 }
 
-/* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook)
+/* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const char *class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name)
 {
+	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
+
 	int oldtop = sq_gettop(vm);
 
 	/* First, find the class */
 	sq_pushroottable(vm);
-	sq_pushstring(vm, OTTD2SQ(class_name), -1);
+
+	if (prepend_API_name) {
+		char *class_name2 = (char *)alloca(strlen(class_name) + strlen(engine->GetAPIName()) + 1);
+		sprintf(class_name2, "%s%s", engine->GetAPIName(), class_name);
+
+		sq_pushstring(vm, OTTD2SQ(class_name2), -1);
+	} else {
+		sq_pushstring(vm, OTTD2SQ(class_name), -1);
+	}
+
 	if (SQ_FAILED(sq_get(vm, -2))) {
-		DEBUG(misc, 0, "[squirrel] Failed to find class by the name '%s'", class_name);
+		DEBUG(misc, 0, "[squirrel] Failed to find class by the name '%s%s'", prepend_API_name ? engine->GetAPIName() : "", class_name);
 		sq_settop(vm, oldtop);
 		return false;
 	}
 
 	/* Create the instance */
 	if (SQ_FAILED(sq_createinstance(vm, -1))) {
-		DEBUG(misc, 0, "[squirrel] Failed to create instance for class '%s'", class_name);
+		DEBUG(misc, 0, "[squirrel] Failed to create instance for class '%s%s'", prepend_API_name ? engine->GetAPIName() : "", class_name);
 		sq_settop(vm, oldtop);
 		return false;
 	}
@@ -316,13 +327,14 @@ bool Squirrel::CreateClassInstance(const char *class_name, void *real_instance, 
 	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, NULL);
 }
 
-Squirrel::Squirrel()
+Squirrel::Squirrel(const char *APIName) :
+	global_pointer(NULL),
+	print_func(NULL),
+	crashed(false),
+	overdrawn_ops(0),
+	APIName(APIName)
 {
 	this->vm = sq_open(1024);
-	this->print_func = NULL;
-	this->global_pointer = NULL;
-	this->crashed = false;
-	this->overdrawn_ops = 0;
 
 	/* Handle compile-errors ourself, so we can display it nicely */
 	sq_setcompilererrorhandler(this->vm, &Squirrel::CompileError);

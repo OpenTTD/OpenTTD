@@ -21,7 +21,7 @@ namespace SQConvert {
 	template <> inline AITunnel &GetParam(ForceType<AITunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITunnel *)instance; }
 	template <> inline const AITunnel *GetParam(ForceType<const AITunnel *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITunnel *)instance; }
 	template <> inline const AITunnel &GetParam(ForceType<const AITunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITunnel *)instance; }
-	template <> inline int Return<AITunnel *>(HSQUIRRELVM vm, AITunnel *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITunnel", res, NULL, DefSQDestructorCallback<AITunnel>); return 1; }
+	template <> inline int Return<AITunnel *>(HSQUIRRELVM vm, AITunnel *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Tunnel", res, NULL, DefSQDestructorCallback<AITunnel>, true); return 1; }
 } // namespace SQConvert
 
 template <> const char *GetClassName<AITunnel, ST_AI>() { return "AITunnel"; }

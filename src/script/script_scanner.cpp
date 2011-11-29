@@ -52,7 +52,7 @@ bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const 
 
 ScriptScanner::ScriptScanner()
 {
-	this->engine = new Squirrel();
+	this->engine = new Squirrel("Scanner");
 
 	/* Mark this class as global pointer */
 	this->engine->SetGlobalPointer(this);
