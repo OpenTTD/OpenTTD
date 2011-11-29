@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_info_dummy.cpp Implementation of a dummy AI. */
+/** @file script_info_dummy.cpp Implementation of a dummy Script. */
 
 #include <squirrel.h>
 #include "../stdafx.h"
@@ -16,37 +16,36 @@
 #include "../strings_func.h"
 #include "table/strings.h"
 
-/* The reason this exists in C++, is that a user can trash his ai/ dir,
- *  leaving no AIs available. The complexity to solve this is insane, and
- *  therefor the alternative is used, and make sure there is always an AI
+/* The reason this exists in C++, is that a user can trash his ai/ or game/ dir,
+ *  leaving no Scripts available. The complexity to solve this is insane, and
+ *  therefor the alternative is used, and make sure there is always a Script
  *  available, no matter what the situation is. By defining it in C++, there
- *  is simply now way a user can delete it, and therefor safe to use. It has
- *  to be noted that this AI is complete invisible for the user, and impossible
- *  to select manual. It is a fail-over in case no AIs are available.
+ *  is simply no way a user can delete it, and therefor safe to use. It has
+ *  to be noted that this Script is complete invisible for the user, and impossible
+ *  to select manual. It is a fail-over in case no Scripts are available.
  */
 
-/** info.nut for the dummy AI. */
-const SQChar _dummy_script_info[] = _SC("                                                       \n\
-class DummyAI extends AIInfo {                                                                  \n\
-  function GetAuthor()      { return \"OpenTTD NoAI Developers Team\"; }                        \n\
-  function GetName()        { return \"DummyAI\"; }                                             \n\
-  function GetShortName()   { return \"DUMM\"; }                                                \n\
-  function GetDescription() { return \"A Dummy AI that is loaded when your ai/ dir is empty\"; }\n\
-  function GetVersion()     { return 1; }                                                       \n\
-  function GetDate()        { return \"2008-07-26\"; }                                          \n\
-  function CreateInstance() { return \"DummyAI\"; }                                             \n\
-}                                                                                               \n\
-                                                                                                \n\
-RegisterDummyAI(DummyAI());                                                                     \n\
-");
-
 /** Run the dummy info.nut. */
-void AI_CreateAIInfoDummy(HSQUIRRELVM vm)
+void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir)
 {
+	char dummy_script[4096];
+	char *dp = dummy_script;
+	dp += seprintf(dp, lastof(dummy_script), "class Dummy%s extends %sInfo {\n", type, type);
+	dp += seprintf(dp, lastof(dummy_script), "function GetAuthor()      { return \"OpenTTD Developers Team\"; }\n");
+	dp += seprintf(dp, lastof(dummy_script), "function GetName()        { return \"Dummy%s\"; }\n", type);
+	dp += seprintf(dp, lastof(dummy_script), "function GetShortName()   { return \"DUMM\"; }\n");
+	dp += seprintf(dp, lastof(dummy_script), "function GetDescription() { return \"A Dummy %s that is loaded when your %s/ dir is empty\"; }\n", type, dir);
+	dp += seprintf(dp, lastof(dummy_script), "function GetVersion()     { return 1; }\n");
+	dp += seprintf(dp, lastof(dummy_script), "function GetDate()        { return \"2008-07-26\"; }\n");
+	dp += seprintf(dp, lastof(dummy_script), "function CreateInstance() { return \"Dummy%s\"; }\n", type);
+	dp += seprintf(dp, lastof(dummy_script), "} RegisterDummy%s(Dummy%s());\n", type, type);
+
+	const SQChar *sq_dummy_script = OTTD2SQ(dummy_script);
+
 	sq_pushroottable(vm);
 
 	/* Load and run the script */
-	if (SQ_SUCCEEDED(sq_compilebuffer(vm, _dummy_script_info, scstrlen(_dummy_script_info), _SC("dummy"), SQTrue))) {
+	if (SQ_SUCCEEDED(sq_compilebuffer(vm, sq_dummy_script, scstrlen(sq_dummy_script), _SC("dummy"), SQTrue))) {
 		sq_push(vm, -2);
 		if (SQ_SUCCEEDED(sq_call(vm, 1, SQFalse, SQTrue))) {
 			sq_pop(vm, 1);
@@ -57,14 +56,14 @@ void AI_CreateAIInfoDummy(HSQUIRRELVM vm)
 }
 
 /** Run the dummy AI and let it generate an error message. */
-void AI_CreateAIDummy(HSQUIRRELVM vm)
+void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type)
 {
 	/* We want to translate the error message.
 	 * We do this in three steps:
 	 * 1) We get the error message
 	 */
 	char error_message[1024];
-	GetString(error_message, STR_ERROR_AI_NO_AI_FOUND, lastof(error_message));
+	GetString(error_message, string, lastof(error_message));
 
 	/* Make escapes for all quotes and slashes. */
 	char safe_error_message[1024];
@@ -78,7 +77,7 @@ void AI_CreateAIDummy(HSQUIRRELVM vm)
 	/* 2) We construct the AI's code. This is done by merging a header, body and footer */
 	char dummy_script[4096];
 	char *dp = dummy_script;
-	dp = strecpy(dp, "class DummyAI extends AIController {\n  function Start()\n  {\n", lastof(dummy_script));
+	dp += seprintf(dp, lastof(dummy_script), "class Dummy%s extends %sController {\n  function Start()\n  {\n", type, type);
 
 	/* As special trick we need to split the error message on newlines and
 	 * emit each newline as a separate error printing string. */
@@ -88,7 +87,7 @@ void AI_CreateAIDummy(HSQUIRRELVM vm)
 		newline = strchr(p, '\n');
 		if (newline != NULL) *newline = '\0';
 
-		dp += seprintf(dp, lastof(dummy_script), "    AILog.Error(\"%s\");\n", p);
+		dp += seprintf(dp, lastof(dummy_script), "    %sLog.Error(\"%s\");\n", type, p);
 		p = newline + 1;
 	} while (newline != NULL);
 

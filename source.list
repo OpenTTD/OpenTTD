@@ -558,6 +558,7 @@ script/script_config.hpp
 script/script_fatalerror.hpp
 script/script_info.cpp
 script/script_info.hpp
+script/script_info_dummy.cpp
 script/script_instance.cpp
 script/script_instance.hpp
 script/script_scanner.cpp
@@ -624,7 +625,6 @@ ai/ai_gui.cpp
 ai/ai_gui.hpp
 ai/ai_info.cpp
 ai/ai_info.hpp
-ai/ai_info_dummy.cpp
 ai/ai_instance.cpp
 ai/ai_instance.hpp
 ai/ai_scanner.cpp

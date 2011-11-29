@@ -162,6 +162,11 @@ protected:
 	 */
 	virtual CommandCallback *GetDoCommandCallback() = 0;
 
+	/**
+	 * Load the dummy script.
+	 */
+	virtual void LoadDummyScript() = 0;
+
 private:
 	class ScriptController *controller;   ///< The script main class.
 	class ScriptStorage *storage;         ///< Some global information for each running script.

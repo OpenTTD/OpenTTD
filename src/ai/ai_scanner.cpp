@@ -34,8 +34,8 @@ void AIScannerInfo::Initialize(const char *name)
 	/* Create the dummy AI */
 	free(this->main_script);
 	this->main_script = strdup("%_dummy");
-	extern void AI_CreateAIInfoDummy(HSQUIRRELVM vm);
-	AI_CreateAIInfoDummy(this->engine->GetVM());
+	extern void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir);
+	Script_CreateDummyInfo(this->engine->GetVM(), "AI", "ai");
 }
 
 void AIScannerInfo::SetDummyAI(class AIInfo *info)

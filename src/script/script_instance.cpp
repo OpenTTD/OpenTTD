@@ -78,8 +78,7 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 		ScriptObject::SetAllowDoCommand(false);
 		/* Load and execute the script for this script */
 		if (strcmp(main_script, "%_dummy") == 0) {
-			extern void AI_CreateAIDummy(HSQUIRRELVM vm);
-			AI_CreateAIDummy(this->engine->GetVM());
+			this->LoadDummyScript();
 		} else if (!this->engine->LoadScript(main_script) || this->engine->IsSuspended()) {
 			if (this->engine->IsSuspended()) ScriptLog::Error("This script took too long to load script. AI is not started.");
 			this->Died();
@@ -103,6 +102,7 @@ void ScriptInstance::Initialize(const char *main_script, const char *instance_na
 
 void ScriptInstance::RegisterAPI()
 {
+	extern void squirrel_register_std(Squirrel *engine);
 	squirrel_register_std(this->engine);
 }
 

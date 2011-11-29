@@ -793,6 +793,7 @@
     <ClInclude Include="..\src\script\script_fatalerror.hpp" />
     <ClCompile Include="..\src\script\script_info.cpp" />
     <ClInclude Include="..\src\script\script_info.hpp" />
+    <ClCompile Include="..\src\script\script_info_dummy.cpp" />
     <ClCompile Include="..\src\script\script_instance.cpp" />
     <ClInclude Include="..\src\script\script_instance.hpp" />
     <ClCompile Include="..\src\script\script_scanner.cpp" />
@@ -853,7 +854,6 @@
     <ClInclude Include="..\src\ai\ai_gui.hpp" />
     <ClCompile Include="..\src\ai\ai_info.cpp" />
     <ClInclude Include="..\src\ai\ai_info.hpp" />
-    <ClCompile Include="..\src\ai\ai_info_dummy.cpp" />
     <ClCompile Include="..\src\ai\ai_instance.cpp" />
     <ClInclude Include="..\src\ai\ai_instance.hpp" />
     <ClCompile Include="..\src\ai\ai_scanner.cpp" />

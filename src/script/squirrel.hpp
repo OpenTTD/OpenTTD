@@ -36,11 +36,6 @@ private:
 	static SQInteger _RunError(HSQUIRRELVM vm);
 
 	/**
-	 * Get the squirrel VM. Try to avoid using this.
-	 */
-	HSQUIRRELVM GetVM() { return this->vm; }
-
-	/**
 	 * Get the API name.
 	 */
 	const char *GetAPIName() { return this->APIName; }
@@ -67,13 +62,13 @@ protected:
 	static void ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...);
 
 public:
-	friend class AIScannerInfo;
-	friend class ScriptInstance;
-	friend class ScriptController;
-	friend void squirrel_register_std(Squirrel *engine);
-
 	Squirrel(const char *APIName);
 	~Squirrel();
+
+	/**
+	 * Get the squirrel VM. Try to avoid using this.
+	 */
+	HSQUIRRELVM GetVM() { return this->vm; }
 
 	/**
 	 * Load a script.
