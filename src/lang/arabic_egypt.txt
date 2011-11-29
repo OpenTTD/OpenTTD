@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}تسل�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}حرك الشاشة عندما تكون المؤشر على الحافة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}السماح برشوة السلطات االمحليه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}السماح بشراء حقوق النقل الحصري: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}السماح بتمويل المباني: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}السماح بتمويل تعمير الطرق المحلية: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}السماح بتحويل المال للشركات الأخرى: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}مضاعفة وزن الشحنة لمحاكاة القطارات الثقيلة: {ORANGE}{STRING}
@@ -1320,6 +1321,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}قطر 
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}قطر اللقطة للاطار: {ORANGE}غير مفعل
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - :{ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - : {ORANGE} غير مفعل
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}اقصى حدود التقريب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}اقصى حدود التقريب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :X4
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :X2
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :طبيعي
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :X2
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :X4
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :X8
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}سرعة نمو المدينه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :بدون
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :بطيء
@@ -1732,7 +1741,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}استخ
 STR_COMPANY_VIEW_JOIN                                           :{BLACK} انضم
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK} انضم و العب بهذه الشركة
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}كلمة المرور
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}احم شركتك بكلمة مرور خاصة لمنع الوصول الغير مسموح من اللاعبين الآخرين.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}احمي شركتك بكلمة مرور خاصة لمنع الوصول الغير مسموح من اللاعبين الآخرين.
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ادخل كلمة المرور
 
 # Network chat
@@ -1875,6 +1884,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... فق
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... لا يمكن الكتابة على الملف
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}لم يتمكن من فك ضغط الملف المحمل
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}رسومات مفقودة
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}تحتاج اللعبة الى رسومات و لم يتم التعرف على اي منها. هل قمت يتحميل الرسومات و تنصيبها؟
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}نعم, حمل الرسومات
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}لا, اغلق اللعبة
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}خيارات الشفافية
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}بدل شفافية اسماء المحطات. مفتاح كنترول للاغلاق.
@@ -1920,6 +1934,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}بناء
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}بناء نفق قطار
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}تناوب بناء/ازالة سكك واشارات القطارات
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}حول / طور سكة القطار
+
+STR_RAIL_NAME_RAILROAD                                          :سكة حديد
+STR_RAIL_NAME_ELRAIL                                            :سكة حديد كهربائية
+STR_RAIL_NAME_MONORAIL                                          :سكة حديد احادية
+STR_RAIL_NAME_MAGLEV                                            :سكة حديد ممغنطة
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}اتجاة ورشة الصيانة
@@ -2191,6 +2210,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :حقول
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :ارض ثلجية
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :صحراء
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} مسار
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} مسار مع اشارة اغلاق
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} مسار مع اشارة مبتدئة
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} سكة حديد مع اشارة خروج
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} سكة حديد مع اشارة مزدوجة
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} سكة حديد مع اشارة طريق
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} سكة حديد مع اشارة اتجاة واحد
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} سكة حديد مع اشارة توقف و اشارة مبتدئة
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} سكة حديد مع اشارة توقف و خروج
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} سكة حديد مع اشارة توقف و مزدوجة
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} سكة حديد مع اشارة اغلاق و طريق
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} سكة حديد مع اشارة اغلاق و طريق باتجاة واحد
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} سكة حديد مع اشارة مبدئية و اشارة خروج
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} سكة حديد مع اشارة مبدئية و اشارة مزدوجة
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} سكة حديد مع اشارة مبدئية و طريق
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} سكة حديد مع اشارة مبدئية و اتجاة و احد
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} سكة حديد مع اشارة خروج و مزدوجة
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} سكة حديد مع اشارة خروج و طريق
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} سكة حديد مع اشارة خروج و اتجاة واحد
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} سكة حديد مع اشارة مزدوجة و طريق
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} سكة حديد مع اشارة مزدوجة و طريق باتجاه واحد
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} سكة حديد مع اشارة طريق و اتجاة و احد
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} مستودع صيانة قطارات
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :طريق
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :طريق مضاء
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :طريق مرصوف بالشجر
@@ -2375,6 +2418,11 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}تحري
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}حرك الملف المختار الى الاسفل في القائمة
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}قائمة ملفات NewGRF المركبة. اضغط على الملف لتغييرة.
 
+# Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}اعرض ملف التعليمات ريدمي
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}اعرض سجل التغييرات
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}الرخصة
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}اضبط الاعدادات
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}فتح/اغلاق اللوحة
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}فتح / اغلاق لوحة NewGRF المختارة.{} افعل هذا عندما تكون الرسومات الجديدة وردية اللون.
@@ -2396,7 +2444,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}لم يت�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}معطل
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}متعارض مع هذا اللإصدار من Openttd
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}غير خصائص الاضافات الجديدة
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}اغلق
@@ -2405,6 +2452,11 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}استر
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :نمط {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}عدد الانماط: {ORANGE}{NUM}
+
+# NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}اعرض ملف القرائة للمحتوى الجديد {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}اعرض ملف التغييرات للمحتوى الجديد {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}رخصة المحتوى الجديد {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}نظرة فاحصة - {STRING}
@@ -2487,6 +2539,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}قطار
 STR_NEWGRF_BUGGY                                                :{WHITE}الرسوميات الجديدة '{0:STRING}' تعطي معلومات غير صحيحة.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}التكلفة \ السعة ل '{1:ENGINE}' تختلف ما بين قائمة الشراء و مابعد البناء. قد يتسبب هذا في فشل التبديل الذاتي.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' تسبب بدورة غير منتهية في نداء الانتاج
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}استدعاء 0x{HEX} اعاد قيمة غير معروفة 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<حمولة غير صالحة>
@@ -2531,6 +2584,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}طرود
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK} نمو المدينة يتطلب بضائع
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} مطلوب
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK}مطلوب في الشتاء
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} تم توصيلة
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (مازال مطلوب)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (تم توصيلة)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}المدينة تنمو كل {ORANGE}{COMMA}{BLACK} يوم
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}المدينة تنمو كل {ORANGE}{COMMA}{BLACK} يوم{} (مول)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}المدينة {RED}لا{BLACK} تنمو
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}حدود الضوضاء داخل المدن: {ORANGE}{COMMA}{BLACK} القصوى: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}وسط الشاشة الاساسية على موقع المدينة
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}بلدية المدينة
@@ -3161,6 +3220,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}غير �
 
 STR_ORDER_REFIT                                                 :{BLACK}اعادة تهيئة
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}اختر نوع البضائع المنقولة لتهيئة العربات في هذا الامر. اضغط كنترول لازالة تعليمات التهيئة.
+STR_ORDER_REFIT_AUTO                                            :{BLACK}ملائمة ذاتية
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}اختر اي نوع من الحملة تريد ملائمتها ذاتيا.
+STR_ORDER_DROP_REFIT_AUTO                                       :شحنة ثابتة
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :البضائع المتاحة
 
 STR_ORDER_SERVICE                                               :{BLACK} صيانة
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :الذهاب دائما
@@ -3248,6 +3311,21 @@ STR_ORDER_NO_UNLOAD                                             :-عدم انز�
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(عدم انزال الشحنة و الانتظار للحمولة القصوى)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :-عدم انزال الشحنة و الانتظار للحمولة القصوى لاي شحنة-
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(لا تفريغ و لا تحميل)
+
+STR_ORDER_AUTO_REFIT                                            :(ملائمة ذاتية ل {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(تحميل كلي مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(تحميل كلي لاي بضاعة مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(تفريغ الحمولة و شحن البضائع مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(تفرغ الحمولة و الانتظار للتحميل الكلي مع الملائمة لـ {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(التفريغ و الانتظار للتحميل الكلي لاي بضاعة مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(تحويل البضاعة و اخذ البضاعة مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(تحويل البضاعة و الانتظار للحمولة القصوى مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(تحويل البضاعة و الانتظار لاي حمولة كاملة مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(عدم التفريغ و تحميل البضائع مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(عدم التفريغ مع الانتظار للحمولة القصوى مع الملائمة الذاتية لـ {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(عدم التفريغ و الانتظار للحمولة القصوى لاي نوع مع الملائمة الذاتية لـ {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :البضائع المتاحة
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[قرب النهاية]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[وسط]
@@ -3461,6 +3539,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}غير �
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}بلدية المدينة ترفض السماح بهذا
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}البلدية ترفض بناء مطار آخر في هذه المدينة
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}بلدية {TOWN}{} ترفض السماح بمطار هنا بسبب تتعلق بالضوضاء العالية منه .
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}محاولتك لرشوة السلطات اكتشفت بواسطة مراقب محلي
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}لا يمكن رفع الأرض هنا

@@ -2221,6 +2221,17 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} cale f
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} cale ferată cu semafoare și semafoare de ieșire
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} cale ferată cu semafoare și semafoare combo
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} cale ferată cu semafoare și semafoare de direcționare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} cale ferată cu semafoare și semafoare de direcționare unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} cale ferată cu presemafoare și semafoare de ieșire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} cale ferată cu presemafoare și semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} cale ferată cu presemafoare și semafoare de direcționare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} cale ferată cu presemafoare și semafoare de direcționare unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} cale ferată cu semafoare de ieșire și semafoare combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} cale ferată cu semafoare de ieșire și semafoare direcționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} cale ferată cu semafoare de ieșire și semafoare direcționale unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} cale ferată cu semafoare combo și semafoare direcționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} cale ferată cu semafoare combo și semafoare direcționale unidirecționale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} cale ferată cu semafoare direcționale si semafoare directionale unidirecționale ;-)
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depou trenuri
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Şosea
@@ -2408,6 +2419,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fi
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate.
 
 # Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vezi fișierul readme
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Listă modificări
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licențe
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comută paleta
@@ -2440,6 +2454,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Număr de parametrii: {ORANGE}{NUM}
 
 # NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}Fișier readme al NewGRF {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Listă modificări a NewGRF {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licența fișierului NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}
@@ -2522,6 +2539,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a cauzat o buclă infinită în funcţia de producţie
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Execuția 0x{HEX} a returnat răspunsul invalid/necunoscut 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<cargo invalid>
@@ -2566,6 +2584,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Colete p
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Transporturi necesare dezvoltării oraşului:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necesare
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necesare iarna
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} livrate
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (mai sunt necesare)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (livrate)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK} zi{P "" le}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK} zi{P "" le} (cu fonduri)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Orașul {RED}nu{BLACK} crește
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează imaginea pe locaţia oraşului. Ctrl+Click deshide o fereastra cu locaţia oraşului
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autorit. locală
@@ -3196,6 +3220,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Schimbă
 
 STR_ORDER_REFIT                                                 :{BLACK}Rearanjeaza
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Alege tipul de marfă pentru rearanjarea în comandă. Ctrl+clic pentru a anula rearanjarea
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-modificare
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selectează tipul de marfă pentru modificare cu acest ordin. Ctrl+click pentru a elimina o instrucțiune de modificare îmcărcătură. Modificarea automată va fi efectuată doar dacă vehiculul permite asta.
+STR_ORDER_DROP_REFIT_AUTO                                       :Tip incărcătură nemodificabil
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Incărcătură disponibilă
 
 STR_ORDER_SERVICE                                               :{BLACK}Service
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Merge mereu
@@ -3284,6 +3312,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nu descărca �
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nu descărca şi aşteaptă orice încărcătură)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Fără încărcare sau descărcare)
 
+STR_ORDER_AUTO_REFIT                                            :(Înlocuire automată cu {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Încărcare completă cu auto-modificare pentru {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Încarcă complet orice tip de marfă cu auto-înlocuire la {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Descarcă și preia marfă cu auto-înlocuire pentru {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descarcă și așteaptă incărcare completă cu auto-înlocuire pentru {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarcă și așteaptă incărcare completă orice tip cu auto-înlocuire pentru {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transferă și ia marfă cu auto-înlocuire la {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferă și așteaptă încărcare completă cu auto-înlocuire la {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferă și așteaptă încărcare completă orice tip cu auto-înlocuire la {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Incărcare marfă fără descărcare cu auto-înlocuire la {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Incărcare marfă completă fără descărcare cu auto-înlocuire la {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Incărcare marfă completă orice tip fără descărcare cu auto-înlocuire la {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :incărcătura disponibilă
 
@@ -3499,6 +3539,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nepermis
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Autorităţile locale din {TOWN} refuză să permită această acţiune
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Autoritatea locală din {TOWN} refuză să permită construirea unui nou aeroport în acest oraş
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Autoritatea locală din {TOWN} nu permite construirea unui nou aeroport datorită poluării fonice
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tentativa de mituire a fost descoperită de un investigator regional
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nu se poate înălţa terenul...
