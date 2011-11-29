@@ -17,14 +17,6 @@
 #include "script_info.hpp"
 #include "script_scanner.hpp"
 
-/** Number of operations to get the author and similar information. */
-static const int MAX_GET_OPS            =   1000;
-/** Number of operations to create an instance of a script. */
-static const int MAX_CREATEINSTANCE_OPS = 100000;
-/** Maximum number of operations allowed for getting a particular setting. */
-static const int MAX_GET_SETTING_OPS    = 100000;
-
-
 ScriptInfo::~ScriptInfo()
 {
 	/* Free all allocated strings */

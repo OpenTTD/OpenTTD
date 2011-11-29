@@ -20,9 +20,6 @@
 #include "../rev.h"
 #include "ai.hpp"
 
-/** Maximum number of operations allowed for getting a particular setting. */
-static const int MAX_GET_SETTING_OPS = 100000;
-
 /**
  * Check if the API version provided by the AI is supported.
  * @param api_version The API version as provided by the AI.
@@ -78,19 +75,19 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 	info->config_list.push_front(config);
 
 	if (info->engine->MethodExists(*info->SQ_instance, "MinVersionToLoad")) {
-		if (!info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version, MAX_GET_SETTING_OPS)) return SQ_ERROR;
+		if (!info->engine->CallIntegerMethod(*info->SQ_instance, "MinVersionToLoad", &info->min_loadable_version, MAX_GET_OPS)) return SQ_ERROR;
 	} else {
 		info->min_loadable_version = info->GetVersion();
 	}
 	/* When there is an UseAsRandomAI function, call it. */
 	if (info->engine->MethodExists(*info->SQ_instance, "UseAsRandomAI")) {
-		if (!info->engine->CallBoolMethod(*info->SQ_instance, "UseAsRandomAI", &info->use_as_random, MAX_GET_SETTING_OPS)) return SQ_ERROR;
+		if (!info->engine->CallBoolMethod(*info->SQ_instance, "UseAsRandomAI", &info->use_as_random, MAX_GET_OPS)) return SQ_ERROR;
 	} else {
 		info->use_as_random = true;
 	}
 	/* Try to get the API version the AI is written for. */
 	if (info->engine->MethodExists(*info->SQ_instance, "GetAPIVersion")) {
-		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_SETTING_OPS)) return SQ_ERROR;
+		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 		if (!CheckAPIVersion(info->api_version)) {
 			DEBUG(ai, 1, "Loading info.nut from (%s.%d): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
 			return SQ_ERROR;
@@ -172,7 +169,7 @@ AILibrary::~AILibrary()
 	}
 
 	/* Cache the category */
-	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_SETTING_OPS)) {
+	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
 		delete library;
 		return SQ_ERROR;
 	}

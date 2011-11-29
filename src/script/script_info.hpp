@@ -17,6 +17,18 @@
 
 #include "script_config.hpp"
 
+/** The maximum number of operations for saving or loading the data of a script. */
+static const int MAX_SL_OPS             = 100000;
+/** The maximum number of operations for initial start of a script. */
+static const int MAX_CONSTRUCTOR_OPS    = 100000;
+/** Number of operations to create an instance of a script. */
+static const int MAX_CREATEINSTANCE_OPS = 100000;
+/** Number of operations to get the author and similar information. */
+static const int MAX_GET_OPS            =   1000;
+/** Maximum number of operations allowed for getting a particular setting. */
+static const int MAX_GET_SETTING_OPS    = 100000;
+
+/** All static information from an Script like name, version, etc. */
 class ScriptInfo : public SimpleCountedObject {
 public:
 	ScriptInfo() :

@@ -18,6 +18,7 @@
 
 #include "script_fatalerror.hpp"
 #include "script_storage.hpp"
+#include "script_info.hpp"
 #include "script_instance.hpp"
 
 #include "api/script_controller.hpp"
@@ -28,11 +29,6 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../fileio_func.h"
-
-/** The maximum number of operations for saving or loading the data of a script. */
-static const int MAX_SL_OPS          = 100000;
-/** The maximum number of operations for initial start of a script. */
-static const int MAX_CONSTRUCTOR_OPS = 100000;
 
 ScriptStorage::~ScriptStorage()
 {
