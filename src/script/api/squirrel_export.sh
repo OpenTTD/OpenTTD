@@ -23,14 +23,32 @@ fi
 # This must be called from within a src/???/api directory.
 scriptdir=`dirname $0`
 apilc=`pwd | sed "s@/api@@;s@.*/@@"`
-apiuc=`echo ${apilc} | tr [a-z] [A-Z]`
+
+# Check if we are in the root directory of the API, as then we generate all APIs
+if [ "$apilc" = "script" ]; then
+	for api in `find -type d | cut -b3-`; do
+		if [ -z "$api" ]; then continue; fi
+		echo "Generating for API '$api' ..."
+		cd $api
+		sh $scriptdir/../`basename $0`
+		cd ..
+	done
+	exit 0
+fi
+
+case $apilc in
+	template) apiuc="Template" ;;
+	ai) apiuc="AI" ;;
+	*) echo "Unknown API type."; exit 1 ;;
+esac
 
 if [ -z "$1" ]; then
-	for f in `ls ../../script/api/*.hpp`; do
-		bf=`basename ${f} | sed s/script/${apilc}/`
+	for f in `ls ../*.hpp`; do
+		bf=`basename ${f} | sed s@script_@${apilc}_@`
 
 		# ScriptController has custom code, and should not be generated
 		if [ "`basename ${f}`" = "script_controller.hpp" ]; then continue; fi
+		if [ "`basename ${f}`" = "script_object.hpp" ]; then continue; fi
 
 		${AWK} -v api=${apiuc} -f ${scriptdir}/squirrel_export.awk ${f} > ${bf}.tmp
 
@@ -71,22 +89,23 @@ fi
 
 # Remove .hpp.sq if .hpp doesn't exist anymore
 for f in `ls *.hpp.sq`; do
-	f=`echo ${f} | sed "s/.hpp.sq$/.hpp/;s/${apilc}/script/"`
-	if [ ! -f ../../script/api/${f} ];then
+	f=`echo ${f} | sed "s/.hpp.sq$/.hpp/;s@${apilc}_@script_@"`
+	if [ ! -f ../${f} ];then
 		echo "Deleted: ${f}.sq"
 		svn del --force ${f}.sq > /dev/null 2>&1
 	fi
 done
 
+if [ "$apilc" = "template" ]; then exit 0; fi
+
 # Add stuff to ${apilc}_instance.cpp
-f="../${apilc}_instance.cpp"
+f="../../../${apilc}/${apilc}_instance.cpp"
 
 functions=``
 
 echo "
 { }
 /.hpp.sq/ { next }
-/squirrel_register_std/ { next }
 /SQ${apiuc}Controller_Register/ { print \$0; next }
 /SQ${apiuc}.*_Register/ { next }
 
@@ -96,7 +115,7 @@ echo "
 	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/:.*$//' | sort | uniq | tr -d '\r' | tr '\n' ' '`\", files, \" \")
 
 	for (i = 1; files[i] != \"\"; i++) {
-		print \"#include \\\"api/\" files[i] \"\\\"\" \$0
+		print \"#include \\\"../script/api/${apilc}/\" files[i] \"\\\"\" \$0
 	}
 
 	next;

@@ -54,7 +54,11 @@ function dump_fileheader()
 	print ""
 	print "/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */"
 	print ""
-	print "#include \"../../script/api/" filename "\""
+	print "#include \"../" filename "\""
+	if (api != "Template") {
+		gsub("script_", "template_", filename)
+		print "#include \"../template/" filename ".sq\""
+	}
 }
 
 function reset_reader()
@@ -99,6 +103,11 @@ BEGIN {
 }
 
 /^([	 ]*)\* @api/ {
+	if (api == "Template") {
+		api_selected = "true"
+		next
+	}
+
 	# By default, classes are not selected
 	if (cls_level == 0) api_selected = "false"
 
@@ -114,6 +123,8 @@ BEGIN {
 	} else if (match($0, tolower(api))) {
 		api_selected = "true"
 	}
+
+	next
 }
 
 # Remove the old squirrel stuff
@@ -259,43 +270,48 @@ BEGIN {
 
 	print ""
 
-	# First check whether we have enums to print
-	if (enum_size != 0) {
+	if (api == "Template") {
+		# First check whether we have enums to print
+		if (enum_size != 0) {
+			if (namespace_opened == "false") {
+				print "namespace SQConvert {"
+				namespace_opened = "true"
+			}
+			print "	/* Allow enums to be used as Squirrel parameters */"
+			for (i = 1; i <= enum_size; i++) {
+				print "	template <> inline " enums[i] " GetParam(ForceType<" enums[i] ">, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (" enums[i] ")tmp; }"
+				print "	template <> inline int Return<" enums[i] ">(HSQUIRRELVM vm, " enums[i] " res) { sq_pushinteger(vm, (int32)res); return 1; }"
+				delete enums[i]
+			}
+		}
+
+		# Then check whether we have structs/classes to print
+		if (struct_size != 0) {
+			if (namespace_opened == "false") {
+				print "namespace SQConvert {"
+				namespace_opened = "true"
+			}
+			print "	/* Allow inner classes/structs to be used as Squirrel parameters */"
+			for (i = 1; i <= struct_size; i++) {
+				dump_class_templates(structs[i])
+				delete structs[i]
+			}
+		}
+
 		if (namespace_opened == "false") {
 			print "namespace SQConvert {"
 			namespace_opened = "true"
+		} else {
+			print ""
 		}
-		print "	/* Allow enums to be used as Squirrel parameters */"
-		for (i = 1; i <= enum_size; i++) {
-			print "	template <> inline " enums[i] " GetParam(ForceType<" enums[i] ">, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (" enums[i] ")tmp; }"
-			print "	template <> inline int Return<" enums[i] ">(HSQUIRRELVM vm, " enums[i] " res) { sq_pushinteger(vm, (int32)res); return 1; }"
-			delete enums[i]
-		}
-	}
+		print "	/* Allow " cls " to be used as Squirrel parameter */"
+		dump_class_templates(cls)
 
-	# Then check whether we have structs/classes to print
-	if (struct_size != 0) {
-		if (namespace_opened == "false") {
-			print "namespace SQConvert {"
-			namespace_opened = "true"
-		}
-		print "	/* Allow inner classes/structs to be used as Squirrel parameters */"
-		for (i = 1; i <= struct_size; i++) {
-			dump_class_templates(structs[i])
-			delete structs[i]
-		}
-	}
+		print "} // namespace SQConvert"
 
-	if (namespace_opened == "false") {
-		print "namespace SQConvert {"
-		namespace_opened = "true"
-	} else {
-		print ""
+		reset_reader()
+		next
 	}
-	print "	/* Allow " cls " to be used as Squirrel parameter */"
-	dump_class_templates(cls)
-
-	print "} // namespace SQConvert"
 
 	print "";
 	print "template <> const char *GetClassName<" cls ", ST_" toupper(api) ">() { return \"" api_cls "\"; }"
