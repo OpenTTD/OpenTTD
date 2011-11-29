@@ -42,12 +42,14 @@
 #define Rect        OTTDRect
 #define Point       OTTDPoint
 #define WindowClass OTTDWindowClass
+#define ScriptOrder	OTTDScriptOrder
 
 #include <CoreServices/CoreServices.h>
 
 #undef Rect
 #undef Point
 #undef WindowClass
+#undef ScriptOrder
 
 /* remove the variables that CoreServices defines, but we define ourselves too */
 #undef bool
