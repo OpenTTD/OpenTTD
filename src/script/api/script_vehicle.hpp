@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all vehicle related functions.
+ * @api ai
  */
 class ScriptVehicle : public ScriptObject {
 public:

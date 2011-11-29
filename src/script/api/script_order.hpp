@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all order related functions.
+ * @api ai
  */
 class ScriptOrder : public ScriptObject {
 public:

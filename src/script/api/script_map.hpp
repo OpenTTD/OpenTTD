@@ -17,6 +17,7 @@
 
 /**
  * Class that handles all map related functions.
+ * @api ai
  */
 class ScriptMap : public ScriptObject {
 public:

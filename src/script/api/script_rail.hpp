@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all rail related functions.
+ * @api ai
  */
 class ScriptRail : public ScriptObject {
 public:

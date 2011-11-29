@@ -16,6 +16,7 @@
 
 /**
  * Creates a list of all available railtypes.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptRailTypeList : public ScriptList {

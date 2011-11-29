@@ -17,6 +17,7 @@
 
 /**
  * Class that handles all town related functions.
+ * @api ai
  */
 class ScriptTown : public ScriptObject {
 public:

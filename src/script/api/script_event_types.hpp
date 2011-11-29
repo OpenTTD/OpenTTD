@@ -18,6 +18,7 @@
 /**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
  *  It contains the crash site, the crashed vehicle and the reason for the crash.
+ * @api ai
  */
 class ScriptEventVehicleCrashed : public ScriptEvent {
 public:
@@ -78,6 +79,7 @@ private:
 
 /**
  * Event Subsidy Offered, indicating someone offered a subsidy.
+ * @api ai
  */
 class ScriptEventSubsidyOffer : public ScriptEvent {
 public:
@@ -108,6 +110,7 @@ private:
 
 /**
  * Event Subsidy Offer Expired, indicating a subsidy will no longer be awarded.
+ * @api ai
  */
 class ScriptEventSubsidyOfferExpired : public ScriptEvent {
 public:
@@ -138,6 +141,7 @@ private:
 
 /**
  * Event Subidy Awarded, indicating a subsidy is awarded to some company.
+ * @api ai
  */
 class ScriptEventSubsidyAwarded : public ScriptEvent {
 public:
@@ -168,6 +172,7 @@ private:
 
 /**
  * Event Subsidy Expired, indicating a route that was once subsidized no longer is.
+ * @api ai
  */
 class ScriptEventSubsidyExpired : public ScriptEvent {
 public:
@@ -200,6 +205,7 @@ private:
  * Event Engine Preview, indicating a manufacturer offer you to test a new engine.
  *  You can get the same information about the offered engine as a real user
  *  would see in the offer window. And you can also accept the offer.
+ * @api ai
  */
 class ScriptEventEnginePreview : public ScriptEvent {
 public:
@@ -288,6 +294,7 @@ private:
 
 /**
  * Event Company New, indicating a new company has been created.
+ * @api ai
  */
 class ScriptEventCompanyNew : public ScriptEvent {
 public:
@@ -319,6 +326,7 @@ private:
 /**
  * Event Company In Trouble, indicating a company is in trouble and might go
  *  bankrupt soon.
+ * @api ai
  */
 class ScriptEventCompanyInTrouble : public ScriptEvent {
 public:
@@ -349,6 +357,7 @@ private:
 
 /**
  * Event Company Ask Merger, indicating a company can be bought (cheaply) by you.
+ * @api ai
  */
 class ScriptEventCompanyAskMerger : public ScriptEvent {
 public:
@@ -396,6 +405,7 @@ private:
 /**
  * Event Company Merger, indicating a company has been bought by another
  *  company.
+ * @api ai
  */
 class ScriptEventCompanyMerger : public ScriptEvent {
 public:
@@ -438,6 +448,7 @@ private:
 
 /**
  * Event Company Bankrupt, indicating a company has gone bankrupt.
+ * @api ai
  */
 class ScriptEventCompanyBankrupt : public ScriptEvent {
 public:
@@ -468,6 +479,7 @@ private:
 
 /**
  * Event Vehicle Lost, indicating a vehicle can't find its way to its destination.
+ * @api ai
  */
 class ScriptEventVehicleLost : public ScriptEvent {
 public:
@@ -498,6 +510,7 @@ private:
 
 /**
  * Event VehicleWaitingInDepot, indicating a vehicle has arrived a depot and is now waiting there.
+ * @api ai
  */
 class ScriptEventVehicleWaitingInDepot : public ScriptEvent {
 public:
@@ -528,6 +541,7 @@ private:
 
 /**
  * Event Vehicle Unprofitable, indicating a vehicle lost money last year.
+ * @api ai
  */
 class ScriptEventVehicleUnprofitable : public ScriptEvent {
 public:
@@ -558,6 +572,7 @@ private:
 
 /**
  * Event Industry Open, indicating a new industry has been created.
+ * @api ai
  */
 class ScriptEventIndustryOpen : public ScriptEvent {
 public:
@@ -588,6 +603,7 @@ private:
 
 /**
  * Event Industry Close, indicating an industry is going to be closed.
+ * @api ai
  */
 class ScriptEventIndustryClose : public ScriptEvent {
 public:
@@ -618,6 +634,7 @@ private:
 
 /**
  * Event Engine Available, indicating a new engine is available.
+ * @api ai
  */
 class ScriptEventEngineAvailable : public ScriptEvent {
 public:
@@ -648,6 +665,7 @@ private:
 
 /**
  * Event Station First Vehicle, indicating a station has been visited by a vehicle for the first time.
+ * @api ai
  */
 class ScriptEventStationFirstVehicle : public ScriptEvent {
 public:
@@ -687,6 +705,7 @@ private:
 
 /**
  * Event Disaster Zeppeliner Crashed, indicating a zeppeliner has crashed on an airport and is blocking the runway.
+ * @api ai
  */
 class ScriptEventDisasterZeppelinerCrashed : public ScriptEvent {
 public:
@@ -717,6 +736,7 @@ private:
 
 /**
  * Event Disaster Zeppeliner Cleared, indicating a previously crashed zeppeliner has been removed, and the airport is operating again.
+ * @api ai
  */
 class ScriptEventDisasterZeppelinerCleared : public ScriptEvent {
 public:
@@ -747,6 +767,7 @@ private:
 
 /**
  * Event Town Founded, indicating a new town has been created.
+ * @api ai
  */
 class ScriptEventTownFounded : public ScriptEvent {
 public:

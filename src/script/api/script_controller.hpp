@@ -19,6 +19,7 @@
  * The Controller, the class each Script should extend. It creates the Script,
  *  makes sure the logic kicks in correctly, and that GetTick() has a valid
  *  value.
+ * @api ai
  */
 class ScriptController {
 	friend class AIScanner;

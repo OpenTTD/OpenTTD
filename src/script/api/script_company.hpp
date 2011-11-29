@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all company related functions.
+ * @api ai
  */
 class ScriptCompany : public ScriptObject {
 public:

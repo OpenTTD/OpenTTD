@@ -16,6 +16,7 @@
 
 /**
  * Class that handles some basic functions.
+ * @api ai
  *
  * @note The random functions are not called Random and RandomRange, because
  *        RANDOM_DEBUG does some tricky stuff, which messes with those names.

@@ -17,6 +17,7 @@
 
 /**
  * Creates a list of the locations of the depots (and hangars) of which you are the owner.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptDepotList : public ScriptList {

@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all bridge related functions.
+ * @api ai
  */
 class ScriptBridge : public ScriptObject {
 public:

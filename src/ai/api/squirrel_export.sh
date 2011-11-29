@@ -26,13 +26,20 @@ apiuc=`echo ${apilc} | tr [a-z] [A-Z]`
 
 if [ -z "$1" ]; then
 	for f in `ls ../../script/api/*.hpp`; do
-		bf=`basename $f | sed s/script/${apilc}/`
-		case "${bf}" in
-			# these files should not be changed by this script
-			"ai_controller.hpp" | "ai_object.hpp" | "ai_types.hpp" | "ai_changelog.hpp" | "ai_info_docs.hpp" ) continue;
-		esac
+		bf=`basename ${f} | sed s/script/${apilc}/`
+
+		# ScriptController has custom code, and should not be generated
+		if [ "`basename ${f}`" = "script_controller.hpp" ]; then continue; fi
+
 		${AWK} -v api=${apiuc} -f squirrel_export.awk ${f} > ${bf}.tmp
-		if ! [ -f "${bf}.sq" ] || [ -n "`diff -I '$Id' ${bf}.tmp ${bf}.sq 2> /dev/null || echo boo`" ]; then
+
+		if [ "`wc -l ${bf}.tmp | cut -d\  -f1`" = "0" ]; then
+			if [ -f "${bf}.sq" ]; then
+				echo "Deleted: ${bf}.sq"
+				svn del --force ${bf}.sq > /dev/null 2>&1
+			fi
+			rm -f ${bf}.tmp
+		elif ! [ -f "${bf}.sq" ] || [ -n "`diff -I '$Id' ${bf}.tmp ${bf}.sq 2> /dev/null || echo boo`" ]; then
 			mv ${bf}.tmp ${bf}.sq
 			echo "Updated: ${bf}.sq"
 			svn add ${bf}.sq > /dev/null 2>&1
@@ -44,7 +51,13 @@ if [ -z "$1" ]; then
 	done
 else
 	${AWK} -v api=${apiuc} -f squirrel_export.awk $1 > $1.tmp
-	if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' $1.sq $1.tmp 2> /dev/null || echo boo`" ]; then
+	if [ `wc -l $1.tmp | cut -d\  -f1` -eq "0" ]; then
+		if [ -f "$1.sq" ]; then
+			echo "Deleted: $1.sq"
+			svn del --force $1.sq > /dev/null 2>&1
+		fi
+		rm -f $1.tmp
+	elif ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' $1.sq $1.tmp 2> /dev/null || echo boo`" ]; then
 		mv $1.tmp $1.sq
 		echo "Updated: $1.sq"
 		svn add $1.sq > /dev/null 2>&1

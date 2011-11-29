@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all group related functions.
+ * @api ai
  */
 class ScriptGroup : public ScriptObject {
 public:

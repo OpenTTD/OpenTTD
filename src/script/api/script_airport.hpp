@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all airport related functions.
+ * @api ai
  */
 class ScriptAirport : public ScriptObject {
 public:

@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all road related functions.
+ * @api ai
  */
 class ScriptRoad : public ScriptObject {
 public:

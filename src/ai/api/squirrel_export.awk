@@ -40,6 +40,39 @@ function dump_class_templates(name)
 	}
 }
 
+function dump_fileheader()
+{
+	# Break the Id tag, so SVN doesn't replace it
+	print "/* $I" "d$ */"
+	print ""
+	print "/*"
+	print " * This file is part of OpenTTD."
+	print " * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2."
+	print " * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+	print " * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>."
+	print " */"
+	print ""
+	print "/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */"
+	print ""
+	print "#include \"../../script/api/" filename "\""
+}
+
+function reset_reader()
+{
+	enum_size = 0
+	enum_value_size = 0
+	enum_string_to_error_size = 0
+	enum_error_to_string_size = 0
+	struct_size = 0
+	method_size = 0
+	static_method_size = 0
+	virtual_class = "false"
+	cls = ""
+	start_squirrel_define_on_next_line = "false"
+	cls_level = 0
+	cls_in_api = ""
+}
+
 BEGIN {
 	enum_size = 0
 	enum_value_size = 0
@@ -52,26 +85,35 @@ BEGIN {
 	virtual_class = "false"
 	super_cls = ""
 	cls = ""
+	api_selected = ""
+	cls_in_api = ""
 	start_squirrel_define_on_next_line = "false"
+	has_fileheader = "false"
 	cls_level = 0
 	RS = "\r|\n"
 }
 
 /@file/ {
-	# Break it, so SVN doesn't replace it
-	print "/* $I" "d$ */"
-	print ""
-	print "/*"
-	print " * This file is part of OpenTTD."
-	print " * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2."
-	print " * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-	print " * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>."
-	print " */"
-	print ""
-	print "/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */"
-	print ""
-	gsub("^" tolower(api) "_", "script_", $3)
-	print "#include \"../../script/api/" $3 "\""
+	filename = $3
+	gsub("^" tolower(api) "_", "script_", filename)
+}
+
+/^([	 ]*)\* @api/ {
+	# By default, classes are not selected
+	if (cls_level == 0) api_selected = "false"
+
+	gsub("^([	 ]*)", "", $0)
+	gsub("* @api ", "", $0)
+
+	if ($0 == "none") {
+		api_selected = "false"
+	} else if ($0 == "-all") {
+		api_selected = "false"
+	} else if (match($0, "-" tolower(api))) {
+		api_selected = "false"
+	} else if (match($0, tolower(api))) {
+		api_selected = "true"
+	}
 }
 
 # Remove the old squirrel stuff
@@ -84,10 +126,16 @@ BEGIN {
 # We only want to have public functions exported for now
 /^(	*)class/     {
 	if (cls_level == 0) {
+		if (api_selected == "") {
+			print "Class '"$2"' has no @api. It won't be published to any API." > "/dev/stderr"
+			api_selected = "false"
+		}
 		public = "false"
 		cls_param[0] = ""
 		cls_param[1] = 1
 		cls_param[2] = "x"
+		cls_in_api = api_selected
+		api_selected = ""
 		cls = $2
 		if (match($4, "public") || match($4, "protected") || match($4, "private")) {
 			super_cls = $5
@@ -95,8 +143,13 @@ BEGIN {
 			super_cls = $4
 		}
 	} else if (cls_level == 1) {
-		struct_size++
-		structs[struct_size] = cls "::" $2
+		if (api_selected == "") api_selected = cls_in_api
+
+		if (api_selected == "true") {
+			struct_size++
+			structs[struct_size] = cls "::" $2
+		}
+		api_selected = ""
 	}
 	cls_level++
 	next
@@ -119,11 +172,6 @@ BEGIN {
 }
 { if (doxygen_skip == "true") next }
 
-# Ignore functions that shouldn't be exported to squirrel
-/^#ifndef EXPORT_SKIP/          { export_skip = "true"; next; }
-/^#endif \/\* EXPORT_SKIP \*\// { export_skip = "false"; next; }
-{ if (export_skip == "true") next }
-
 # Ignore the comments
 /^#/             { next; }
 /\/\*.*\*\//     { comment = "false"; next; }
@@ -134,20 +182,42 @@ BEGIN {
 # We need to make specialized conversions for structs
 /^(	*)struct/ {
 	cls_level++
+
+	# Check if we want to publish this struct
+	if (api_selected == "") api_selected = cls_in_api
+	if (api_selected == "false") {
+		api_selected = ""
+		next
+	}
+	api_selected = ""
+
 	if (public == "false") next
 	if (cls_level != 1) next
+
 	struct_size++
 	structs[struct_size] = cls "::" $2
+
 	next
 }
 
 # We need to make specialized conversions for enums
 /^(	*)enum/ {
 	cls_level++
-	if (public == "false") next;
+
+	# Check if we want to publish this enum
+	if (api_selected == "") api_selected = cls_in_api
+	if (api_selected == "false") {
+		api_selected = ""
+		next
+	}
+	api_selected = ""
+
+	if (public == "false") next
+
 	in_enum = "true"
 	enum_size++
 	enums[enum_size] = cls "::" $2
+
 	next
 }
 
@@ -168,6 +238,16 @@ BEGIN {
 # Empty/white lines. When we may do the Squirrel export, do that export.
 /^([ 	]*)$/ {
 	if (start_squirrel_define_on_next_line == "false") next
+
+	if (cls_in_api != "true") {
+		reset_reader()
+		next
+	}
+	if (has_fileheader == "false") {
+		dump_fileheader()
+		has_fileheader = "true"
+	}
+
 	spaces = "                                                               ";
 	public = "false"
 	namespace_opened = "false"
@@ -310,17 +390,9 @@ BEGIN {
 	print "	SQ" api_cls ".PostRegister(engine);"
 	print "}"
 
-	enum_size = 0
-	enum_value_size = 0
-	enum_string_to_error_size = 0
-	enum_error_to_string_size = 0
-	struct_size = 0
-	method_size = 0
-	static_method_size = 0
-	virtual_class = "false"
-	cls = ""
-	start_squirrel_define_on_next_line = "false"
-	cls_level = 0
+	reset_reader()
+
+	next
 }
 
 # Skip non-public functions
@@ -370,7 +442,13 @@ BEGIN {
 # Add a method to the list
 /^.*\(.*\).*$/ {
 	if (cls_level != 1) next
-	if (match($0, "~")) next
+	if (match($0, "~")) {
+		if (api_selected != "") {
+			print "Destructor for '"cls"' has @api. Tag ignored." > "/dev/stderr"
+			api_selected = ""
+		}
+		next
+	}
 
 	is_static = match($0, "static")
 	if (match($0, "virtual")) {
@@ -389,6 +467,10 @@ BEGIN {
 
 	funcname = $2
 	if ($1 == cls && funcname == "") {
+		if (api_selected != "") {
+			print "Constructor for '"cls"' has @api. Tag ignored." > "/dev/stderr"
+			api_selected = ""
+		}
 		cls_param[0] = param_s
 		if (param_s == "") next
 	} else if (funcname == "") next
@@ -421,6 +503,14 @@ BEGIN {
 			types = types "i"
 		}
 	}
+
+	# Check if we want to publish this function
+	if (api_selected == "") api_selected = cls_in_api
+	if (api_selected == "false") {
+		api_selected = ""
+		next
+	}
+	api_selected = ""
 
 	if ($1 == cls && funcname == "") {
 		cls_param[1] = len;

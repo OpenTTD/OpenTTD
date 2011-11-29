@@ -17,6 +17,7 @@
 
 /**
  * Creates a list of vehicles of which you are the owner.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptVehicleList : public ScriptList {
@@ -26,6 +27,7 @@ public:
 
 /**
  * Creates a list of vehicles that have orders to a given station.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptVehicleList_Station : public ScriptList {
@@ -43,6 +45,7 @@ public:
  * aircraft having a depot order on a hangar of that airport will be
  * returned. For all other vehicle types the tile has to be a depot or
  * an empty list will be returned.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptVehicleList_Depot : public ScriptList {
@@ -55,6 +58,7 @@ public:
 
 /**
  * Creates a list of vehicles that share orders.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptVehicleList_SharedOrders : public ScriptList {
@@ -67,6 +71,7 @@ public:
 
 /**
  * Creates a list of vehicles that are in a group.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptVehicleList_Group : public ScriptList {
@@ -79,6 +84,7 @@ public:
 
 /**
  * Creates a list of vehicles that are in the default group.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptVehicleList_DefaultGroup : public ScriptList {

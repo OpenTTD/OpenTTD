@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all subsidy related functions.
+ * @api ai
  */
 class ScriptSubsidy : public ScriptObject {
 public:

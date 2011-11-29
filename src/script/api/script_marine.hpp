@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all marine related functions.
+ * @api ai
  */
 class ScriptMarine : public ScriptObject {
 public:

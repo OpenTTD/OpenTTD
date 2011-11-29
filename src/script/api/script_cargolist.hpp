@@ -16,6 +16,7 @@
 
 /**
  * Creates a list of cargos that can be produced in the current game.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptCargoList : public ScriptList {
@@ -27,6 +28,7 @@ public:
  * Creates a list of cargos that the given industry accepts.
  * @note This list also includes cargos that are temporarily not accepted
  *   by this industry, @see ScriptIndustry::IsCargoAccepted.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptCargoList_IndustryAccepting : public ScriptList {
@@ -39,6 +41,7 @@ public:
 
 /**
  * Creates a list of cargos that the given industry can produce.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptCargoList_IndustryProducing : public ScriptList {
@@ -51,6 +54,7 @@ public:
 
 /**
  * Creates a list of cargos that the given station accepts.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptCargoList_StationAccepting : public ScriptList {

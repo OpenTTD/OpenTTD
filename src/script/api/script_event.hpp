@@ -18,6 +18,7 @@
  * Class that handles all event related functions.
  * You can lookup the type, and than convert it to the real event-class.
  * That way you can request more detailed information about the event.
+ * @api ai
  */
 class ScriptEvent : public ScriptObject {
 public:
@@ -72,6 +73,7 @@ protected:
 
 /**
  * Class that handles all event related functions.
+ * @api ai
  * @note it is not needed to create an instance of ScriptEvent to access it, as
  *  all members are static, and all data is stored AI-wide.
  */
@@ -89,20 +91,18 @@ public:
 	 */
 	static ScriptEvent *GetNextEvent();
 
-#ifndef EXPORT_SKIP
 	/**
 	 * Insert an event to the queue for the company.
 	 * @param event The event to insert.
-	 * @note DO NOT CALL YOURSELF; leave it to the internal AI programming.
+	 * @api -all
 	 */
 	static void InsertEvent(ScriptEvent *event);
 
 	/**
 	 * Free the event pointer.
-	 * @note DO NOT CALL YOURSELF; leave it to the internal AI programming.
+	 * @api -all
 	 */
 	static void FreeEventPointer();
-#endif /* EXPORT_SKIP */
 
 private:
 	/**

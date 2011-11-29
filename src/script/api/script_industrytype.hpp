@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all industry-type related functions.
+ * @api ai
  */
 class ScriptIndustryType : public ScriptObject {
 public:

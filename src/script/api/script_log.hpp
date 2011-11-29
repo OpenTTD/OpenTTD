@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all log related functions.
+ * @api ai
  */
 class ScriptLog : public ScriptObject {
 	/* ScriptController needs access to Enum and Log, in order to keep the flow from
@@ -23,10 +24,10 @@ class ScriptLog : public ScriptObject {
 	friend class ScriptController;
 
 public:
-#ifndef EXPORT_SKIP
 	/**
 	 * Log levels; The value is also feed to DEBUG() lvl.
 	 *  This has no use for you, as AI writer.
+	 * @api -all
 	 */
 	enum ScriptLogType {
 		LOG_SQ_ERROR = 0, ///< Squirrel printed an error.
@@ -39,6 +40,7 @@ public:
 	/**
 	 * Internal representation of the log-data inside the AI.
 	 *  This has no use for you, as AI writer.
+	 * @api -all
 	 */
 	struct LogData {
 		char **lines;           ///< The log-lines.
@@ -47,7 +49,6 @@ public:
 		int pos;                ///< Current position in lines.
 		int used;               ///< Total amount of used log-lines.
 	};
-#endif /* EXPORT_SKIP */
 
 	/**
 	 * Print an Info message to the logs.
@@ -67,13 +68,11 @@ public:
 	 */
 	static void Error(const char *message);
 
-#ifndef EXPORT_SKIP
 	/**
 	 * Free the log pointer.
-	 * @note DO NOT CALL YOURSELF; leave it to the internal AI programming.
+	 * @api -all
 	 */
 	static void FreeLogPointer();
-#endif /* EXPORT_SKIP */
 
 private:
 	/**

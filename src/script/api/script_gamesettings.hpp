@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all game settings related functions.
+ * @api ai
  *
  * @note ScriptGameSettings::IsValid and ScriptGameSettings::GetValue are functions
  *       that rely on the settings as OpenTTD stores them in savegame and

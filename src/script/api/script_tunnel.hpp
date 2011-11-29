@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all tunnel related functions.
+ * @api ai
  */
 class ScriptTunnel : public ScriptObject {
 public:

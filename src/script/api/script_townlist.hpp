@@ -16,6 +16,7 @@
 
 /**
  * Creates a list of towns that are currently on the map.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptTownList : public ScriptList {
@@ -25,6 +26,7 @@ public:
 
 /**
  * Creates a list of all TownEffects known in the game.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptTownEffectList : public ScriptList {

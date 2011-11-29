@@ -17,6 +17,7 @@
 
 /**
  * Creates a list of stations of which you are the owner.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptStationList : public ScriptList {
@@ -29,6 +30,7 @@ public:
 
 /**
  * Creates a list of stations which the vehicle has in its orders.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptStationList_Vehicle : public ScriptList {

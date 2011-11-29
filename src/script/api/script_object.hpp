@@ -29,10 +29,10 @@ typedef bool (ScriptModeProc)();
  *   your script, as it doesn't publish any public functions. It is used
  *   internally to have a common place to handle general things, like internal
  *   command processing, and command-validation checks.
+ * @api none
  */
 class ScriptObject : public SimpleCountedObject {
 friend class ScriptInstance;
-#ifndef DOXYGEN_AI_DOCS
 protected:
 	/**
 	 * A class that handles the current active instance. By instantiating it at
@@ -239,7 +239,6 @@ private:
 	 * @param group_id The new GroupID.
 	 */
 	static void SetNewGroupID(GroupID group_id);
-#endif /* DOXYGEN_AI_DOCS */
 };
 
 #endif /* SCRIPT_OBJECT_HPP */

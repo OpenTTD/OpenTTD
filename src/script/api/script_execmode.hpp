@@ -20,6 +20,7 @@
  *   Execute. The original mode is stored and recovered from when ever the
  *   instance is destroyed.
  * In Execute mode all commands you do are executed for real.
+ * @api ai
  */
 class ScriptExecMode : public ScriptObject {
 private:

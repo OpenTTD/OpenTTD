@@ -16,6 +16,7 @@
 
 /**
  * Create a list of signs your company has created.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptSignList : public ScriptList {

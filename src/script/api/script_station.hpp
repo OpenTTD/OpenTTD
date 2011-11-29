@@ -17,6 +17,7 @@
 
 /**
  * Class that handles all station related functions.
+ * @api ai
  */
 class ScriptStation : public ScriptBaseStation {
 public:

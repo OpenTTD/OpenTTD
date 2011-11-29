@@ -17,6 +17,7 @@
 
 /**
  * Create a list of engines based on a vehicle type.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptEngineList : public ScriptList {

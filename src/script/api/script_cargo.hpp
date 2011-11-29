@@ -16,6 +16,7 @@
 
 /**
  * Class that handles all cargo related functions.
+ * @api ai
  */
 class ScriptCargo : public ScriptObject {
 public:

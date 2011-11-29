@@ -17,6 +17,7 @@
 
 /**
  * Class that handles all tile related functions.
+ * @api ai
  */
 class ScriptTile : public ScriptObject {
 public:

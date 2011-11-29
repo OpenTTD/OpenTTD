@@ -16,6 +16,7 @@
 
 /**
  * Base class for stations and waypoints.
+ * @api ai
  */
 class ScriptBaseStation : public ScriptObject {
 public:

@@ -17,6 +17,7 @@
 
 /**
  * Creates a list of waypoints of which you are the owner.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptWaypointList : public ScriptList {
@@ -29,6 +30,7 @@ public:
 
 /**
  * Creates a list of waypoints which the vehicle has in its orders.
+ * @api ai
  * @ingroup ScriptList
  */
 class ScriptWaypointList_Vehicle : public ScriptList {
