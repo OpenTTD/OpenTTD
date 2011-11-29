@@ -11,7 +11,7 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = "OpenTTD NoAI API "
+PROJECT_NAME           = "OpenTTD NoAI API"
 PROJECT_NUMBER         =
 OUTPUT_DIRECTORY       = ../../../docs/aidocs/
 CREATE_SUBDIRS         = NO
@@ -95,8 +95,8 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 INPUT                  = .
 INPUT_ENCODING         = UTF-8
-FILE_PATTERNS          = *.h \
-                         *.hpp
+FILE_PATTERNS          = script_*.hpp \
+                         ai_*.hpp
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
@@ -106,7 +106,7 @@ EXAMPLE_PATH           =
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             =
-INPUT_FILTER           =
+INPUT_FILTER           = "./doxygen_filter.sh AI"
 FILTER_PATTERNS        =
 FILTER_SOURCE_FILES    = NO
 #---------------------------------------------------------------------------
@@ -213,7 +213,7 @@ SKIP_FUNCTION_MACROS   = YES
 # Configuration::additions related to external references
 #---------------------------------------------------------------------------
 TAGFILES               =
-GENERATE_TAGFILE       = openttd.tag
+GENERATE_TAGFILE       = openttd_noai.tag
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
 PERL_PATH              = /usr/bin/perl

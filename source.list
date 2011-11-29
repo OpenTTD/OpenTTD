@@ -631,8 +631,7 @@ ai/ai_scanner.cpp
 ai/ai_scanner.hpp
 
 # AI API
-ai/api/ai_changelog.hpp
-ai/api/ai_info_docs.hpp
+script/api/ai_changelog.hpp
 
 # Script API
 script/api/script_accounting.hpp
@@ -660,6 +659,7 @@ script/api/script_industry.hpp
 script/api/script_industrylist.hpp
 script/api/script_industrytype.hpp
 script/api/script_industrytypelist.hpp
+script/api/script_info_docs.hpp
 script/api/script_list.hpp
 script/api/script_log.hpp
 script/api/script_map.hpp

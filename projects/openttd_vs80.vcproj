@@ -2755,11 +2755,7 @@
 			Name="AI API"
 			>
 			<File
-				RelativePath=".\..\src\ai\api\ai_changelog.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_info_docs.hpp"
+				RelativePath=".\..\src\script\api\ai_changelog.hpp"
 				>
 			</File>
 		</Filter>
@@ -2864,6 +2860,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_industrytypelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_info_docs.hpp"
 				>
 			</File>
 			<File

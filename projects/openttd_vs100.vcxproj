@@ -858,8 +858,7 @@
     <ClInclude Include="..\src\ai\ai_instance.hpp" />
     <ClCompile Include="..\src\ai\ai_scanner.cpp" />
     <ClInclude Include="..\src\ai\ai_scanner.hpp" />
-    <ClInclude Include="..\src\ai\api\ai_changelog.hpp" />
-    <ClInclude Include="..\src\ai\api\ai_info_docs.hpp" />
+    <ClInclude Include="..\src\script\api\ai_changelog.hpp" />
     <ClInclude Include="..\src\script\api\script_accounting.hpp" />
     <ClInclude Include="..\src\script\api\script_airport.hpp" />
     <ClInclude Include="..\src\script\api\script_base.hpp" />
@@ -885,6 +884,7 @@
     <ClInclude Include="..\src\script\api\script_industrylist.hpp" />
     <ClInclude Include="..\src\script\api\script_industrytype.hpp" />
     <ClInclude Include="..\src\script\api\script_industrytypelist.hpp" />
+    <ClInclude Include="..\src\script\api\script_info_docs.hpp" />
     <ClInclude Include="..\src\script\api\script_list.hpp" />
     <ClInclude Include="..\src\script\api\script_log.hpp" />
     <ClInclude Include="..\src\script\api\script_map.hpp" />
