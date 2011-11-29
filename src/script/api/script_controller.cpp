@@ -11,14 +11,11 @@
 
 #include "../../stdafx.h"
 #include "../../string_func.h"
-#include "../../company_base.h"
-#include "../../company_func.h"
 #include "../../script/squirrel.hpp"
 #include "../../rev.h"
 
 #include "script_controller.hpp"
 #include "../../ai/ai_instance.hpp"
-#include "../../ai/ai_config.hpp"
 #include "../../ai/ai.hpp"
 #include "../script_fatalerror.hpp"
 #include "../script_info.hpp"
@@ -78,7 +75,7 @@ ScriptController::~ScriptController()
 
 /* static */ int ScriptController::GetSetting(const char *name)
 {
-	return AIConfig::GetConfig(_current_company)->GetSetting(name);
+	return ScriptObject::GetActiveInstance()->GetSetting(name);
 }
 
 /* static */ uint ScriptController::GetVersion()

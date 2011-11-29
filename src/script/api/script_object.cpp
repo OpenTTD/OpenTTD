@@ -12,10 +12,12 @@
 #include "../../stdafx.h"
 #include "../../script/squirrel.hpp"
 #include "../../command_func.h"
+#include "../../company_func.h"
 #include "../../network/network.h"
 #include "../../tunnelbridge.h"
 
 #include "../script_storage.hpp"
+#include "../../ai/ai_config.hpp"
 #include "../../ai/ai_instance.hpp"
 #include "../script_fatalerror.hpp"
 #include "../script_suspend.hpp"

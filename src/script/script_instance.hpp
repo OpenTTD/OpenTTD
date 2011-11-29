@@ -37,6 +37,13 @@ public:
 	void Initialize(const char *main_script, const char *instance_name);
 
 	/**
+	 * Get the value of a setting of the current instance.
+	 * @param name The name of the setting.
+	 * @return the value for the setting, or -1 if the setting is not known.
+	 */
+	virtual int GetSetting(const char *name) = 0;
+
+	/**
 	 * A script in multiplayer waits for the server to handle his DoCommand.
 	 *  It keeps waiting for this until this function is called.
 	 */

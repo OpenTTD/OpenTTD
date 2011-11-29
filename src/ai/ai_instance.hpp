@@ -26,6 +26,8 @@ public:
 	 */
 	void Initialize(class AIInfo *info);
 
+	/* virtual */ int GetSetting(const char *name);
+
 private:
 	const char *versionAPI; ///< Current API used by this script.
 

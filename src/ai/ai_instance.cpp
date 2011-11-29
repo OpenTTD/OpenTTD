@@ -235,6 +235,11 @@ void AIInstance::LoadDummyScript()
 	Script_CreateDummy(this->engine->GetVM(), STR_ERROR_AI_NO_AI_FOUND, "AI");
 }
 
+int AIInstance::GetSetting(const char *name)
+{
+	return AIConfig::GetConfig(_current_company)->GetSetting(name);
+}
+
 /**
  * DoCommand callback function for all commands executed by AIs.
  * @param result The result of the command.
