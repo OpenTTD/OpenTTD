@@ -791,6 +791,8 @@
     <ClInclude Include="..\src\script\script_fatalerror.hpp" />
     <ClCompile Include="..\src\script\script_info.cpp" />
     <ClInclude Include="..\src\script\script_info.hpp" />
+    <ClCompile Include="..\src\script\script_instance.cpp" />
+    <ClInclude Include="..\src\script\script_instance.hpp" />
     <ClCompile Include="..\src\script\script_scanner.cpp" />
     <ClInclude Include="..\src\script\script_scanner.hpp" />
     <ClInclude Include="..\src\script\script_storage.hpp" />

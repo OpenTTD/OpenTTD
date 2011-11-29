@@ -22,7 +22,7 @@
 #include "script_error.hpp"
 
 /**
- * Get the storage associated with the current AIInstance.
+ * Get the storage associated with the current ScriptInstance.
  * @return The storage.
  */
 static ScriptStorage *GetStorage()
@@ -31,9 +31,9 @@ static ScriptStorage *GetStorage()
 }
 
 
-/* static */ AIInstance *ScriptObject::ActiveInstance::active = NULL;
+/* static */ ScriptInstance *ScriptObject::ActiveInstance::active = NULL;
 
-ScriptObject::ActiveInstance::ActiveInstance(AIInstance *instance)
+ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance *instance)
 {
 	this->last_active = ScriptObject::ActiveInstance::active;
 	ScriptObject::ActiveInstance::active = instance;
@@ -44,7 +44,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	ScriptObject::ActiveInstance::active = this->last_active;
 }
 
-/* static */ AIInstance *ScriptObject::GetActiveInstance()
+/* static */ ScriptInstance *ScriptObject::GetActiveInstance()
 {
 	assert(ScriptObject::ActiveInstance::active != NULL);
 	return ScriptObject::ActiveInstance::active;
@@ -225,14 +225,14 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->callback_value[index];
 }
 
-/* static */ bool ScriptObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, AISuspendCallbackProc *callback)
+/* static */ bool ScriptObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, Script_SuspendCallbackProc *callback)
 {
 	if (!ScriptObject::CanSuspend()) {
 		throw Script_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
 	}
 
 	/* Set the default callback to return a true/false result of the DoCommand */
-	if (callback == NULL) callback = &AIInstance::DoCommandReturn;
+	if (callback == NULL) callback = &ScriptInstance::DoCommandReturn;
 
 	/* Are we only interested in the estimate costs? */
 	bool estimate_only = GetDoCommandMode() != NULL && !GetDoCommandMode()();

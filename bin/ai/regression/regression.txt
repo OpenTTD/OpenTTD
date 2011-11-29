@@ -8852,4 +8852,4 @@ ERROR: IsEnd() is invalid as Begin() is never called
   -1          >  2147483647:   false
   -2147483648 >  2147483647:   false
    13725      > -2147483648:   true
-ERROR: The AI died unexpectedly.
+ERROR: The script died unexpectedly.

@@ -22,7 +22,7 @@
  */
 class ScriptController {
 	friend class AIScanner;
-	friend class AIInstance;
+	friend class ScriptInstance;
 
 public:
 	/**

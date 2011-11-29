@@ -2471,6 +2471,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\script_instance.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\script_instance.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\script_scanner.cpp"
 				>
 			</File>

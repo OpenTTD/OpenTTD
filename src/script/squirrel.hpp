@@ -68,7 +68,7 @@ protected:
 
 public:
 	friend class AIScanner;
-	friend class AIInstance;
+	friend class ScriptInstance;
 	friend class ScriptController;
 	friend void squirrel_register_std(Squirrel *engine);
 

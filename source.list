@@ -556,6 +556,8 @@ table/water_land.h
 script/script_fatalerror.hpp
 script/script_info.cpp
 script/script_info.hpp
+script/script_instance.cpp
+script/script_instance.hpp
 script/script_scanner.cpp
 script/script_scanner.hpp
 script/script_storage.hpp

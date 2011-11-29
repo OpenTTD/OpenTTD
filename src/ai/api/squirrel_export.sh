@@ -91,7 +91,6 @@ echo "
 /\/\* Register all classes \*\// {
 	print \$0
 	gsub(\"^.*/\", \"\")
-	print \"	squirrel_register_std(this->engine);\" \$0
 	# List needs to be registered with squirrel before all List subclasses.
 	print \"	SQ${apiuc}List_Register(this->engine);\" \$0
 	split(\"`grep '^void SQ'${apiuc}'.*_Register(Squirrel \*engine)$' *.hpp.sq | grep -v 'SQ'${apiuc}'List_Register' | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")

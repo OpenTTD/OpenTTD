@@ -15,7 +15,7 @@
 /**
  * The callback function when a script suspends.
  */
-typedef void (Script_SuspendCallbackProc)(class AIInstance *instance);
+typedef void (Script_SuspendCallbackProc)(class ScriptInstance *instance);
 
 /**
  * A throw-class that is given when the script wants to suspend.

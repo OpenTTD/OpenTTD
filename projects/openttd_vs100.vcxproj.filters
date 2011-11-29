@@ -1596,6 +1596,12 @@
     <ClInclude Include="..\src\script\script_info.hpp">
       <Filter>Script</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\script\script_instance.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\script\script_instance.hpp">
+      <Filter>Script</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\script\script_scanner.cpp">
       <Filter>Script</Filter>
     </ClCompile>

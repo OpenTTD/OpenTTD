@@ -546,10 +546,10 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
  * between the wanted and the current order.
  * @param instance The AI we are doing the callback for.
  */
-static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
+static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 {
 	ScriptObject::SetLastCommandRes(ScriptOrder::_SetOrderFlags());
-	AIInstance::DoCommandReturn(instance);
+	ScriptInstance::DoCommandReturn(instance);
 }
 
 /* static */ bool ScriptOrder::_SetOrderFlags()

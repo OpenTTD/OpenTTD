@@ -17,11 +17,7 @@
 #include "../../rail_type.h"
 
 #include "script_types.hpp"
-
-/**
- * The callback function when an AI suspends.
- */
-typedef void (AISuspendCallbackProc)(class AIInstance *instance);
+#include "../script_suspend.hpp"
 
 /**
  * The callback function for Mode-classes.
@@ -30,12 +26,12 @@ typedef bool (ScriptModeProc)();
 
 /**
  * Uper-parent object of all API classes. You should never use this class in
- *   your AI, as it doesn't publish any public functions. It is used
+ *   your script, as it doesn't publish any public functions. It is used
  *   internally to have a common place to handle general things, like internal
  *   command processing, and command-validation checks.
  */
 class ScriptObject : public SimpleCountedObject {
-friend class AIInstance;
+friend class ScriptInstance;
 #ifndef DOXYGEN_AI_DOCS
 protected:
 	/**
@@ -47,12 +43,12 @@ protected:
 	class ActiveInstance {
 	friend class ScriptObject;
 	public:
-		ActiveInstance(AIInstance *instance);
+		ActiveInstance(ScriptInstance *instance);
 		~ActiveInstance();
 	private:
-		AIInstance *last_active;    ///< The active instance before we go instantiated.
+		ScriptInstance *last_active;    ///< The active instance before we go instantiated.
 
-		static AIInstance *active;  ///< The global current active instance.
+		static ScriptInstance *active;  ///< The global current active instance.
 	};
 
 public:
@@ -66,13 +62,13 @@ public:
 	 * Get the currently active instance.
 	 * @return The instance.
 	 */
-	static class AIInstance *GetActiveInstance();
+	static class ScriptInstance *GetActiveInstance();
 
 protected:
 	/**
 	 * Executes a raw DoCommand for the AI.
 	 */
-	static bool DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text = NULL, AISuspendCallbackProc *callback = NULL);
+	static bool DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text = NULL, Script_SuspendCallbackProc *callback = NULL);
 
 	/**
 	 * Sets the DoCommand costs counter to a value.

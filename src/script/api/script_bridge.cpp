@@ -39,10 +39,10 @@
  * Helper function to connect a just built bridge to nearby roads.
  * @param instance The AI we have to built the road for.
  */
-static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
+static void _DoCommandReturnBuildBridge2(class ScriptInstance *instance)
 {
 	if (!ScriptBridge::_BuildBridgeRoad2()) {
-		AIInstance::DoCommandReturn(instance);
+		ScriptInstance::DoCommandReturn(instance);
 		return;
 	}
 
@@ -55,10 +55,10 @@ static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
  * Helper function to connect a just built bridge to nearby roads.
  * @param instance The AI we have to built the road for.
  */
-static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
+static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 {
 	if (!ScriptBridge::_BuildBridgeRoad1()) {
-		AIInstance::DoCommandReturn(instance);
+		ScriptInstance::DoCommandReturn(instance);
 		return;
 	}
 
