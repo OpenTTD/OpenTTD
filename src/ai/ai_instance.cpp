@@ -18,6 +18,7 @@
 
 #include "ai_config.hpp"
 #include "ai_gui.hpp"
+#include "../script/script_fatalerror.hpp"
 
 #include "../script/script_storage.hpp"
 #include "ai_instance.hpp"
@@ -154,7 +155,7 @@ void AIInstance::Initialize(AIInfo *info)
 			return;
 		}
 		ScriptObject::SetAllowDoCommand(true);
-	} catch (AI_FatalError e) {
+	} catch (Script_FatalError e) {
 		this->is_dead = true;
 		this->engine->ThrowError(e.GetErrorMessage());
 		this->engine->ResumeError();
@@ -375,7 +376,7 @@ void AIInstance::GameLoop()
 		} catch (AI_VMSuspend e) {
 			this->suspend  = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
-		} catch (AI_FatalError e) {
+		} catch (Script_FatalError e) {
 			this->is_dead = true;
 			this->engine->ThrowError(e.GetErrorMessage());
 			this->engine->ResumeError();
@@ -396,7 +397,7 @@ void AIInstance::GameLoop()
 	} catch (AI_VMSuspend e) {
 		this->suspend  = e.GetSuspendTime();
 		this->callback = e.GetSuspendCallback();
-	} catch (AI_FatalError e) {
+	} catch (Script_FatalError e) {
 		this->is_dead = true;
 		this->engine->ThrowError(e.GetErrorMessage());
 		this->engine->ResumeError();
@@ -640,9 +641,9 @@ void AIInstance::Save()
 				this->engine->CrashOccurred();
 				return;
 			}
-		} catch (AI_FatalError e) {
+		} catch (Script_FatalError e) {
 			/* If we don't mark the AI as dead here cleaning up the squirrel
-			 * stack could throw AI_FatalError again. */
+			 * stack could throw Script_FatalError again. */
 			this->is_dead = true;
 			this->engine->ThrowError(e.GetErrorMessage());
 			this->engine->ResumeError();

@@ -17,6 +17,7 @@
 
 #include "../script_storage.hpp"
 #include "../../ai/ai_instance.hpp"
+#include "../script_fatalerror.hpp"
 #include "script_error.hpp"
 
 /**
@@ -226,7 +227,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ bool ScriptObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, AISuspendCallbackProc *callback)
 {
 	if (!ScriptObject::CanSuspend()) {
-		throw AI_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
+		throw Script_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
 	}
 
 	/* Set the default callback to return a true/false result of the DoCommand */

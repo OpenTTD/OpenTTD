@@ -51,29 +51,6 @@ private:
 	AISuspendCallbackProc *callback; ///< Callback function to call when the AI can run again.
 };
 
-/**
- * A throw-class that is given when the AI made a fatal error.
- */
-class AI_FatalError {
-public:
-	/**
-	 * Creates a "fatal error" exception.
-	 * @param msg The message describing the cause of the fatal error.
-	 */
-	AI_FatalError(const char *msg) :
-		msg(msg)
-	{}
-
-	/**
-	 * The error message associated with the fatal error.
-	 * @return The error message.
-	 */
-	const char *GetErrorMessage() { return msg; }
-
-private:
-	const char *msg; ///< The error message.
-};
-
 /** Runtime information about an AI like a pointer to the squirrel vm and the current state. */
 class AIInstance {
 public:

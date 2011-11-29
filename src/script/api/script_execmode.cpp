@@ -14,6 +14,7 @@
 #include "../../company_base.h"
 #include "../../company_func.h"
 #include "../../ai/ai_instance.hpp"
+#include "../script_fatalerror.hpp"
 
 bool ScriptExecMode::ModeProc()
 {
@@ -34,7 +35,7 @@ ScriptExecMode::~ScriptExecMode()
 	if (this->GetDoCommandModeInstance() != this) {
 		/* Ignore this error if the AI already died. */
 		if (!ScriptObject::GetActiveInstance()->IsDead()) {
-			throw AI_FatalError("ScriptExecMode object was removed while it was not the latest AI*Mode object created.");
+			throw Script_FatalError("ScriptExecMode object was removed while it was not the latest AI*Mode object created.");
 		}
 	}
 	this->SetDoCommandMode(this->last_mode, this->last_instance);

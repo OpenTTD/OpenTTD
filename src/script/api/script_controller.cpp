@@ -20,6 +20,7 @@
 #include "../../ai/ai_instance.hpp"
 #include "../../ai/ai_config.hpp"
 #include "../../ai/ai.hpp"
+#include "../script_fatalerror.hpp"
 #include "script_log.hpp"
 
 /* static */ void ScriptController::SetCommandDelay(int ticks)
@@ -31,7 +32,7 @@
 /* static */ void ScriptController::Sleep(int ticks)
 {
 	if (!ScriptObject::CanSuspend()) {
-		throw AI_FatalError("You are not allowed to call Sleep in your constructor, Save(), Load(), and any valuator.");
+		throw Script_FatalError("You are not allowed to call Sleep in your constructor, Save(), Load(), and any valuator.");
 	}
 
 	if (ticks <= 0) {
