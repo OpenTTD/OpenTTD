@@ -28,14 +28,14 @@ void AIScanner::RescanAIDir()
 	this->Scan(PATHSEP "library.nut", AI_LIBRARY_DIR);
 }
 
-template <> const char *GetClassName<AIInfo>() { return "AIInfo"; }
+template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 
 AIScanner::AIScanner() :
 	ScriptScanner(),
 	info_dummy(NULL)
 {
 	/* Create the AIInfo class, and add the RegisterAI function */
-	DefSQClass <AIInfo> SQAIInfo("AIInfo");
+	DefSQClass<AIInfo, ST_AI> SQAIInfo("AIInfo");
 	SQAIInfo.PreRegister(engine);
 	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
 	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddSetting, "AddSetting");

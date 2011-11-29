@@ -20,11 +20,11 @@ namespace SQConvert {
 	template <> inline int Return<AICargoList *>(HSQUIRRELVM vm, AICargoList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList", res, NULL, DefSQDestructorCallback<AICargoList>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AICargoList>() { return "AICargoList"; }
+template <> const char *GetClassName<AICargoList, ST_AI>() { return "AICargoList"; }
 
 void SQAICargoList_Register(Squirrel *engine)
 {
-	DefSQClass <AICargoList> SQAICargoList("AICargoList");
+	DefSQClass<AICargoList, ST_AI> SQAICargoList("AICargoList");
 	SQAICargoList.PreRegister(engine, "AIList");
 	SQAICargoList.AddConstructor<void (AICargoList::*)(), 1>(engine, "x");
 
@@ -40,11 +40,11 @@ namespace SQConvert {
 	template <> inline int Return<AICargoList_IndustryAccepting *>(HSQUIRRELVM vm, AICargoList_IndustryAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList_IndustryAccepting", res, NULL, DefSQDestructorCallback<AICargoList_IndustryAccepting>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AICargoList_IndustryAccepting>() { return "AICargoList_IndustryAccepting"; }
+template <> const char *GetClassName<AICargoList_IndustryAccepting, ST_AI>() { return "AICargoList_IndustryAccepting"; }
 
 void SQAICargoList_IndustryAccepting_Register(Squirrel *engine)
 {
-	DefSQClass <AICargoList_IndustryAccepting> SQAICargoList_IndustryAccepting("AICargoList_IndustryAccepting");
+	DefSQClass<AICargoList_IndustryAccepting, ST_AI> SQAICargoList_IndustryAccepting("AICargoList_IndustryAccepting");
 	SQAICargoList_IndustryAccepting.PreRegister(engine, "AIList");
 	SQAICargoList_IndustryAccepting.AddConstructor<void (AICargoList_IndustryAccepting::*)(IndustryID industry_id), 2>(engine, "xi");
 
@@ -60,11 +60,11 @@ namespace SQConvert {
 	template <> inline int Return<AICargoList_IndustryProducing *>(HSQUIRRELVM vm, AICargoList_IndustryProducing *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList_IndustryProducing", res, NULL, DefSQDestructorCallback<AICargoList_IndustryProducing>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AICargoList_IndustryProducing>() { return "AICargoList_IndustryProducing"; }
+template <> const char *GetClassName<AICargoList_IndustryProducing, ST_AI>() { return "AICargoList_IndustryProducing"; }
 
 void SQAICargoList_IndustryProducing_Register(Squirrel *engine)
 {
-	DefSQClass <AICargoList_IndustryProducing> SQAICargoList_IndustryProducing("AICargoList_IndustryProducing");
+	DefSQClass<AICargoList_IndustryProducing, ST_AI> SQAICargoList_IndustryProducing("AICargoList_IndustryProducing");
 	SQAICargoList_IndustryProducing.PreRegister(engine, "AIList");
 	SQAICargoList_IndustryProducing.AddConstructor<void (AICargoList_IndustryProducing::*)(IndustryID industry_id), 2>(engine, "xi");
 
@@ -80,11 +80,11 @@ namespace SQConvert {
 	template <> inline int Return<AICargoList_StationAccepting *>(HSQUIRRELVM vm, AICargoList_StationAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList_StationAccepting", res, NULL, DefSQDestructorCallback<AICargoList_StationAccepting>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AICargoList_StationAccepting>() { return "AICargoList_StationAccepting"; }
+template <> const char *GetClassName<AICargoList_StationAccepting, ST_AI>() { return "AICargoList_StationAccepting"; }
 
 void SQAICargoList_StationAccepting_Register(Squirrel *engine)
 {
-	DefSQClass <AICargoList_StationAccepting> SQAICargoList_StationAccepting("AICargoList_StationAccepting");
+	DefSQClass<AICargoList_StationAccepting, ST_AI> SQAICargoList_StationAccepting("AICargoList_StationAccepting");
 	SQAICargoList_StationAccepting.PreRegister(engine, "AIList");
 	SQAICargoList_StationAccepting.AddConstructor<void (AICargoList_StationAccepting::*)(StationID station_id), 2>(engine, "xi");
 

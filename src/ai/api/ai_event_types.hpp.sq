@@ -24,11 +24,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventVehicleCrashed *>(HSQUIRRELVM vm, AIEventVehicleCrashed *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventVehicleCrashed", res, NULL, DefSQDestructorCallback<AIEventVehicleCrashed>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventVehicleCrashed>() { return "AIEventVehicleCrashed"; }
+template <> const char *GetClassName<AIEventVehicleCrashed, ST_AI>() { return "AIEventVehicleCrashed"; }
 
 void SQAIEventVehicleCrashed_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventVehicleCrashed> SQAIEventVehicleCrashed("AIEventVehicleCrashed");
+	DefSQClass<AIEventVehicleCrashed, ST_AI> SQAIEventVehicleCrashed("AIEventVehicleCrashed");
 	SQAIEventVehicleCrashed.PreRegister(engine, "AIEvent");
 
 	SQAIEventVehicleCrashed.DefSQConst(engine, AIEventVehicleCrashed::CRASH_TRAIN,               "CRASH_TRAIN");
@@ -56,11 +56,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventSubsidyOffer *>(HSQUIRRELVM vm, AIEventSubsidyOffer *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventSubsidyOffer", res, NULL, DefSQDestructorCallback<AIEventSubsidyOffer>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventSubsidyOffer>() { return "AIEventSubsidyOffer"; }
+template <> const char *GetClassName<AIEventSubsidyOffer, ST_AI>() { return "AIEventSubsidyOffer"; }
 
 void SQAIEventSubsidyOffer_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventSubsidyOffer> SQAIEventSubsidyOffer("AIEventSubsidyOffer");
+	DefSQClass<AIEventSubsidyOffer, ST_AI> SQAIEventSubsidyOffer("AIEventSubsidyOffer");
 	SQAIEventSubsidyOffer.PreRegister(engine, "AIEvent");
 
 	SQAIEventSubsidyOffer.DefSQStaticMethod(engine, &AIEventSubsidyOffer::Convert, "Convert", 2, ".x");
@@ -79,11 +79,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventSubsidyOfferExpired *>(HSQUIRRELVM vm, AIEventSubsidyOfferExpired *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventSubsidyOfferExpired", res, NULL, DefSQDestructorCallback<AIEventSubsidyOfferExpired>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventSubsidyOfferExpired>() { return "AIEventSubsidyOfferExpired"; }
+template <> const char *GetClassName<AIEventSubsidyOfferExpired, ST_AI>() { return "AIEventSubsidyOfferExpired"; }
 
 void SQAIEventSubsidyOfferExpired_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventSubsidyOfferExpired> SQAIEventSubsidyOfferExpired("AIEventSubsidyOfferExpired");
+	DefSQClass<AIEventSubsidyOfferExpired, ST_AI> SQAIEventSubsidyOfferExpired("AIEventSubsidyOfferExpired");
 	SQAIEventSubsidyOfferExpired.PreRegister(engine, "AIEvent");
 
 	SQAIEventSubsidyOfferExpired.DefSQStaticMethod(engine, &AIEventSubsidyOfferExpired::Convert, "Convert", 2, ".x");
@@ -102,11 +102,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventSubsidyAwarded *>(HSQUIRRELVM vm, AIEventSubsidyAwarded *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventSubsidyAwarded", res, NULL, DefSQDestructorCallback<AIEventSubsidyAwarded>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventSubsidyAwarded>() { return "AIEventSubsidyAwarded"; }
+template <> const char *GetClassName<AIEventSubsidyAwarded, ST_AI>() { return "AIEventSubsidyAwarded"; }
 
 void SQAIEventSubsidyAwarded_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventSubsidyAwarded> SQAIEventSubsidyAwarded("AIEventSubsidyAwarded");
+	DefSQClass<AIEventSubsidyAwarded, ST_AI> SQAIEventSubsidyAwarded("AIEventSubsidyAwarded");
 	SQAIEventSubsidyAwarded.PreRegister(engine, "AIEvent");
 
 	SQAIEventSubsidyAwarded.DefSQStaticMethod(engine, &AIEventSubsidyAwarded::Convert, "Convert", 2, ".x");
@@ -125,11 +125,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventSubsidyExpired *>(HSQUIRRELVM vm, AIEventSubsidyExpired *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventSubsidyExpired", res, NULL, DefSQDestructorCallback<AIEventSubsidyExpired>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventSubsidyExpired>() { return "AIEventSubsidyExpired"; }
+template <> const char *GetClassName<AIEventSubsidyExpired, ST_AI>() { return "AIEventSubsidyExpired"; }
 
 void SQAIEventSubsidyExpired_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventSubsidyExpired> SQAIEventSubsidyExpired("AIEventSubsidyExpired");
+	DefSQClass<AIEventSubsidyExpired, ST_AI> SQAIEventSubsidyExpired("AIEventSubsidyExpired");
 	SQAIEventSubsidyExpired.PreRegister(engine, "AIEvent");
 
 	SQAIEventSubsidyExpired.DefSQStaticMethod(engine, &AIEventSubsidyExpired::Convert, "Convert", 2, ".x");
@@ -148,11 +148,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventEnginePreview *>(HSQUIRRELVM vm, AIEventEnginePreview *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventEnginePreview", res, NULL, DefSQDestructorCallback<AIEventEnginePreview>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventEnginePreview>() { return "AIEventEnginePreview"; }
+template <> const char *GetClassName<AIEventEnginePreview, ST_AI>() { return "AIEventEnginePreview"; }
 
 void SQAIEventEnginePreview_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventEnginePreview> SQAIEventEnginePreview("AIEventEnginePreview");
+	DefSQClass<AIEventEnginePreview, ST_AI> SQAIEventEnginePreview("AIEventEnginePreview");
 	SQAIEventEnginePreview.PreRegister(engine, "AIEvent");
 
 	SQAIEventEnginePreview.DefSQStaticMethod(engine, &AIEventEnginePreview::Convert, "Convert", 2, ".x");
@@ -178,11 +178,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventCompanyNew *>(HSQUIRRELVM vm, AIEventCompanyNew *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventCompanyNew", res, NULL, DefSQDestructorCallback<AIEventCompanyNew>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventCompanyNew>() { return "AIEventCompanyNew"; }
+template <> const char *GetClassName<AIEventCompanyNew, ST_AI>() { return "AIEventCompanyNew"; }
 
 void SQAIEventCompanyNew_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventCompanyNew> SQAIEventCompanyNew("AIEventCompanyNew");
+	DefSQClass<AIEventCompanyNew, ST_AI> SQAIEventCompanyNew("AIEventCompanyNew");
 	SQAIEventCompanyNew.PreRegister(engine, "AIEvent");
 
 	SQAIEventCompanyNew.DefSQStaticMethod(engine, &AIEventCompanyNew::Convert, "Convert", 2, ".x");
@@ -201,11 +201,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventCompanyInTrouble *>(HSQUIRRELVM vm, AIEventCompanyInTrouble *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventCompanyInTrouble", res, NULL, DefSQDestructorCallback<AIEventCompanyInTrouble>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventCompanyInTrouble>() { return "AIEventCompanyInTrouble"; }
+template <> const char *GetClassName<AIEventCompanyInTrouble, ST_AI>() { return "AIEventCompanyInTrouble"; }
 
 void SQAIEventCompanyInTrouble_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventCompanyInTrouble> SQAIEventCompanyInTrouble("AIEventCompanyInTrouble");
+	DefSQClass<AIEventCompanyInTrouble, ST_AI> SQAIEventCompanyInTrouble("AIEventCompanyInTrouble");
 	SQAIEventCompanyInTrouble.PreRegister(engine, "AIEvent");
 
 	SQAIEventCompanyInTrouble.DefSQStaticMethod(engine, &AIEventCompanyInTrouble::Convert, "Convert", 2, ".x");
@@ -224,11 +224,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventCompanyAskMerger *>(HSQUIRRELVM vm, AIEventCompanyAskMerger *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventCompanyAskMerger", res, NULL, DefSQDestructorCallback<AIEventCompanyAskMerger>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventCompanyAskMerger>() { return "AIEventCompanyAskMerger"; }
+template <> const char *GetClassName<AIEventCompanyAskMerger, ST_AI>() { return "AIEventCompanyAskMerger"; }
 
 void SQAIEventCompanyAskMerger_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventCompanyAskMerger> SQAIEventCompanyAskMerger("AIEventCompanyAskMerger");
+	DefSQClass<AIEventCompanyAskMerger, ST_AI> SQAIEventCompanyAskMerger("AIEventCompanyAskMerger");
 	SQAIEventCompanyAskMerger.PreRegister(engine, "AIEvent");
 
 	SQAIEventCompanyAskMerger.DefSQStaticMethod(engine, &AIEventCompanyAskMerger::Convert, "Convert", 2, ".x");
@@ -249,11 +249,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventCompanyMerger *>(HSQUIRRELVM vm, AIEventCompanyMerger *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventCompanyMerger", res, NULL, DefSQDestructorCallback<AIEventCompanyMerger>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventCompanyMerger>() { return "AIEventCompanyMerger"; }
+template <> const char *GetClassName<AIEventCompanyMerger, ST_AI>() { return "AIEventCompanyMerger"; }
 
 void SQAIEventCompanyMerger_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventCompanyMerger> SQAIEventCompanyMerger("AIEventCompanyMerger");
+	DefSQClass<AIEventCompanyMerger, ST_AI> SQAIEventCompanyMerger("AIEventCompanyMerger");
 	SQAIEventCompanyMerger.PreRegister(engine, "AIEvent");
 
 	SQAIEventCompanyMerger.DefSQStaticMethod(engine, &AIEventCompanyMerger::Convert, "Convert", 2, ".x");
@@ -273,11 +273,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventCompanyBankrupt *>(HSQUIRRELVM vm, AIEventCompanyBankrupt *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventCompanyBankrupt", res, NULL, DefSQDestructorCallback<AIEventCompanyBankrupt>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventCompanyBankrupt>() { return "AIEventCompanyBankrupt"; }
+template <> const char *GetClassName<AIEventCompanyBankrupt, ST_AI>() { return "AIEventCompanyBankrupt"; }
 
 void SQAIEventCompanyBankrupt_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventCompanyBankrupt> SQAIEventCompanyBankrupt("AIEventCompanyBankrupt");
+	DefSQClass<AIEventCompanyBankrupt, ST_AI> SQAIEventCompanyBankrupt("AIEventCompanyBankrupt");
 	SQAIEventCompanyBankrupt.PreRegister(engine, "AIEvent");
 
 	SQAIEventCompanyBankrupt.DefSQStaticMethod(engine, &AIEventCompanyBankrupt::Convert, "Convert", 2, ".x");
@@ -296,11 +296,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventVehicleLost *>(HSQUIRRELVM vm, AIEventVehicleLost *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventVehicleLost", res, NULL, DefSQDestructorCallback<AIEventVehicleLost>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventVehicleLost>() { return "AIEventVehicleLost"; }
+template <> const char *GetClassName<AIEventVehicleLost, ST_AI>() { return "AIEventVehicleLost"; }
 
 void SQAIEventVehicleLost_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventVehicleLost> SQAIEventVehicleLost("AIEventVehicleLost");
+	DefSQClass<AIEventVehicleLost, ST_AI> SQAIEventVehicleLost("AIEventVehicleLost");
 	SQAIEventVehicleLost.PreRegister(engine, "AIEvent");
 
 	SQAIEventVehicleLost.DefSQStaticMethod(engine, &AIEventVehicleLost::Convert, "Convert", 2, ".x");
@@ -319,11 +319,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventVehicleWaitingInDepot *>(HSQUIRRELVM vm, AIEventVehicleWaitingInDepot *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventVehicleWaitingInDepot", res, NULL, DefSQDestructorCallback<AIEventVehicleWaitingInDepot>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventVehicleWaitingInDepot>() { return "AIEventVehicleWaitingInDepot"; }
+template <> const char *GetClassName<AIEventVehicleWaitingInDepot, ST_AI>() { return "AIEventVehicleWaitingInDepot"; }
 
 void SQAIEventVehicleWaitingInDepot_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventVehicleWaitingInDepot> SQAIEventVehicleWaitingInDepot("AIEventVehicleWaitingInDepot");
+	DefSQClass<AIEventVehicleWaitingInDepot, ST_AI> SQAIEventVehicleWaitingInDepot("AIEventVehicleWaitingInDepot");
 	SQAIEventVehicleWaitingInDepot.PreRegister(engine, "AIEvent");
 
 	SQAIEventVehicleWaitingInDepot.DefSQStaticMethod(engine, &AIEventVehicleWaitingInDepot::Convert, "Convert", 2, ".x");
@@ -342,11 +342,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventVehicleUnprofitable *>(HSQUIRRELVM vm, AIEventVehicleUnprofitable *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventVehicleUnprofitable", res, NULL, DefSQDestructorCallback<AIEventVehicleUnprofitable>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventVehicleUnprofitable>() { return "AIEventVehicleUnprofitable"; }
+template <> const char *GetClassName<AIEventVehicleUnprofitable, ST_AI>() { return "AIEventVehicleUnprofitable"; }
 
 void SQAIEventVehicleUnprofitable_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventVehicleUnprofitable> SQAIEventVehicleUnprofitable("AIEventVehicleUnprofitable");
+	DefSQClass<AIEventVehicleUnprofitable, ST_AI> SQAIEventVehicleUnprofitable("AIEventVehicleUnprofitable");
 	SQAIEventVehicleUnprofitable.PreRegister(engine, "AIEvent");
 
 	SQAIEventVehicleUnprofitable.DefSQStaticMethod(engine, &AIEventVehicleUnprofitable::Convert, "Convert", 2, ".x");
@@ -365,11 +365,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventIndustryOpen *>(HSQUIRRELVM vm, AIEventIndustryOpen *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventIndustryOpen", res, NULL, DefSQDestructorCallback<AIEventIndustryOpen>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventIndustryOpen>() { return "AIEventIndustryOpen"; }
+template <> const char *GetClassName<AIEventIndustryOpen, ST_AI>() { return "AIEventIndustryOpen"; }
 
 void SQAIEventIndustryOpen_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventIndustryOpen> SQAIEventIndustryOpen("AIEventIndustryOpen");
+	DefSQClass<AIEventIndustryOpen, ST_AI> SQAIEventIndustryOpen("AIEventIndustryOpen");
 	SQAIEventIndustryOpen.PreRegister(engine, "AIEvent");
 
 	SQAIEventIndustryOpen.DefSQStaticMethod(engine, &AIEventIndustryOpen::Convert, "Convert", 2, ".x");
@@ -388,11 +388,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventIndustryClose *>(HSQUIRRELVM vm, AIEventIndustryClose *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventIndustryClose", res, NULL, DefSQDestructorCallback<AIEventIndustryClose>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventIndustryClose>() { return "AIEventIndustryClose"; }
+template <> const char *GetClassName<AIEventIndustryClose, ST_AI>() { return "AIEventIndustryClose"; }
 
 void SQAIEventIndustryClose_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventIndustryClose> SQAIEventIndustryClose("AIEventIndustryClose");
+	DefSQClass<AIEventIndustryClose, ST_AI> SQAIEventIndustryClose("AIEventIndustryClose");
 	SQAIEventIndustryClose.PreRegister(engine, "AIEvent");
 
 	SQAIEventIndustryClose.DefSQStaticMethod(engine, &AIEventIndustryClose::Convert, "Convert", 2, ".x");
@@ -411,11 +411,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventEngineAvailable *>(HSQUIRRELVM vm, AIEventEngineAvailable *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventEngineAvailable", res, NULL, DefSQDestructorCallback<AIEventEngineAvailable>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventEngineAvailable>() { return "AIEventEngineAvailable"; }
+template <> const char *GetClassName<AIEventEngineAvailable, ST_AI>() { return "AIEventEngineAvailable"; }
 
 void SQAIEventEngineAvailable_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventEngineAvailable> SQAIEventEngineAvailable("AIEventEngineAvailable");
+	DefSQClass<AIEventEngineAvailable, ST_AI> SQAIEventEngineAvailable("AIEventEngineAvailable");
 	SQAIEventEngineAvailable.PreRegister(engine, "AIEvent");
 
 	SQAIEventEngineAvailable.DefSQStaticMethod(engine, &AIEventEngineAvailable::Convert, "Convert", 2, ".x");
@@ -434,11 +434,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventStationFirstVehicle *>(HSQUIRRELVM vm, AIEventStationFirstVehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventStationFirstVehicle", res, NULL, DefSQDestructorCallback<AIEventStationFirstVehicle>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventStationFirstVehicle>() { return "AIEventStationFirstVehicle"; }
+template <> const char *GetClassName<AIEventStationFirstVehicle, ST_AI>() { return "AIEventStationFirstVehicle"; }
 
 void SQAIEventStationFirstVehicle_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventStationFirstVehicle> SQAIEventStationFirstVehicle("AIEventStationFirstVehicle");
+	DefSQClass<AIEventStationFirstVehicle, ST_AI> SQAIEventStationFirstVehicle("AIEventStationFirstVehicle");
 	SQAIEventStationFirstVehicle.PreRegister(engine, "AIEvent");
 
 	SQAIEventStationFirstVehicle.DefSQStaticMethod(engine, &AIEventStationFirstVehicle::Convert, "Convert", 2, ".x");
@@ -458,11 +458,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventDisasterZeppelinerCrashed *>(HSQUIRRELVM vm, AIEventDisasterZeppelinerCrashed *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventDisasterZeppelinerCrashed", res, NULL, DefSQDestructorCallback<AIEventDisasterZeppelinerCrashed>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventDisasterZeppelinerCrashed>() { return "AIEventDisasterZeppelinerCrashed"; }
+template <> const char *GetClassName<AIEventDisasterZeppelinerCrashed, ST_AI>() { return "AIEventDisasterZeppelinerCrashed"; }
 
 void SQAIEventDisasterZeppelinerCrashed_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventDisasterZeppelinerCrashed> SQAIEventDisasterZeppelinerCrashed("AIEventDisasterZeppelinerCrashed");
+	DefSQClass<AIEventDisasterZeppelinerCrashed, ST_AI> SQAIEventDisasterZeppelinerCrashed("AIEventDisasterZeppelinerCrashed");
 	SQAIEventDisasterZeppelinerCrashed.PreRegister(engine, "AIEvent");
 
 	SQAIEventDisasterZeppelinerCrashed.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCrashed::Convert, "Convert", 2, ".x");
@@ -481,11 +481,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventDisasterZeppelinerCleared *>(HSQUIRRELVM vm, AIEventDisasterZeppelinerCleared *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventDisasterZeppelinerCleared", res, NULL, DefSQDestructorCallback<AIEventDisasterZeppelinerCleared>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventDisasterZeppelinerCleared>() { return "AIEventDisasterZeppelinerCleared"; }
+template <> const char *GetClassName<AIEventDisasterZeppelinerCleared, ST_AI>() { return "AIEventDisasterZeppelinerCleared"; }
 
 void SQAIEventDisasterZeppelinerCleared_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventDisasterZeppelinerCleared> SQAIEventDisasterZeppelinerCleared("AIEventDisasterZeppelinerCleared");
+	DefSQClass<AIEventDisasterZeppelinerCleared, ST_AI> SQAIEventDisasterZeppelinerCleared("AIEventDisasterZeppelinerCleared");
 	SQAIEventDisasterZeppelinerCleared.PreRegister(engine, "AIEvent");
 
 	SQAIEventDisasterZeppelinerCleared.DefSQStaticMethod(engine, &AIEventDisasterZeppelinerCleared::Convert, "Convert", 2, ".x");
@@ -504,11 +504,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEventTownFounded *>(HSQUIRRELVM vm, AIEventTownFounded *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventTownFounded", res, NULL, DefSQDestructorCallback<AIEventTownFounded>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEventTownFounded>() { return "AIEventTownFounded"; }
+template <> const char *GetClassName<AIEventTownFounded, ST_AI>() { return "AIEventTownFounded"; }
 
 void SQAIEventTownFounded_Register(Squirrel *engine)
 {
-	DefSQClass <AIEventTownFounded> SQAIEventTownFounded("AIEventTownFounded");
+	DefSQClass<AIEventTownFounded, ST_AI> SQAIEventTownFounded("AIEventTownFounded");
 	SQAIEventTownFounded.PreRegister(engine, "AIEvent");
 
 	SQAIEventTownFounded.DefSQStaticMethod(engine, &AIEventTownFounded::Convert, "Convert", 2, ".x");

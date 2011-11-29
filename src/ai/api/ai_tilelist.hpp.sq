@@ -20,11 +20,11 @@ namespace SQConvert {
 	template <> inline int Return<AITileList *>(HSQUIRRELVM vm, AITileList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList", res, NULL, DefSQDestructorCallback<AITileList>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITileList>() { return "AITileList"; }
+template <> const char *GetClassName<AITileList, ST_AI>() { return "AITileList"; }
 
 void SQAITileList_Register(Squirrel *engine)
 {
-	DefSQClass <AITileList> SQAITileList("AITileList");
+	DefSQClass<AITileList, ST_AI> SQAITileList("AITileList");
 	SQAITileList.PreRegister(engine, "AIList");
 	SQAITileList.AddConstructor<void (AITileList::*)(), 1>(engine, "x");
 
@@ -45,11 +45,11 @@ namespace SQConvert {
 	template <> inline int Return<AITileList_IndustryAccepting *>(HSQUIRRELVM vm, AITileList_IndustryAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList_IndustryAccepting", res, NULL, DefSQDestructorCallback<AITileList_IndustryAccepting>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITileList_IndustryAccepting>() { return "AITileList_IndustryAccepting"; }
+template <> const char *GetClassName<AITileList_IndustryAccepting, ST_AI>() { return "AITileList_IndustryAccepting"; }
 
 void SQAITileList_IndustryAccepting_Register(Squirrel *engine)
 {
-	DefSQClass <AITileList_IndustryAccepting> SQAITileList_IndustryAccepting("AITileList_IndustryAccepting");
+	DefSQClass<AITileList_IndustryAccepting, ST_AI> SQAITileList_IndustryAccepting("AITileList_IndustryAccepting");
 	SQAITileList_IndustryAccepting.PreRegister(engine, "AITileList");
 	SQAITileList_IndustryAccepting.AddConstructor<void (AITileList_IndustryAccepting::*)(IndustryID industry_id, int radius), 3>(engine, "xii");
 
@@ -65,11 +65,11 @@ namespace SQConvert {
 	template <> inline int Return<AITileList_IndustryProducing *>(HSQUIRRELVM vm, AITileList_IndustryProducing *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList_IndustryProducing", res, NULL, DefSQDestructorCallback<AITileList_IndustryProducing>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITileList_IndustryProducing>() { return "AITileList_IndustryProducing"; }
+template <> const char *GetClassName<AITileList_IndustryProducing, ST_AI>() { return "AITileList_IndustryProducing"; }
 
 void SQAITileList_IndustryProducing_Register(Squirrel *engine)
 {
-	DefSQClass <AITileList_IndustryProducing> SQAITileList_IndustryProducing("AITileList_IndustryProducing");
+	DefSQClass<AITileList_IndustryProducing, ST_AI> SQAITileList_IndustryProducing("AITileList_IndustryProducing");
 	SQAITileList_IndustryProducing.PreRegister(engine, "AITileList");
 	SQAITileList_IndustryProducing.AddConstructor<void (AITileList_IndustryProducing::*)(IndustryID industry_id, int radius), 3>(engine, "xii");
 
@@ -85,11 +85,11 @@ namespace SQConvert {
 	template <> inline int Return<AITileList_StationType *>(HSQUIRRELVM vm, AITileList_StationType *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList_StationType", res, NULL, DefSQDestructorCallback<AITileList_StationType>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITileList_StationType>() { return "AITileList_StationType"; }
+template <> const char *GetClassName<AITileList_StationType, ST_AI>() { return "AITileList_StationType"; }
 
 void SQAITileList_StationType_Register(Squirrel *engine)
 {
-	DefSQClass <AITileList_StationType> SQAITileList_StationType("AITileList_StationType");
+	DefSQClass<AITileList_StationType, ST_AI> SQAITileList_StationType("AITileList_StationType");
 	SQAITileList_StationType.PreRegister(engine, "AITileList");
 	SQAITileList_StationType.AddConstructor<void (AITileList_StationType::*)(StationID station_id, AIStation::StationType station_type), 3>(engine, "xii");
 

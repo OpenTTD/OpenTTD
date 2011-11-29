@@ -209,13 +209,13 @@ BEGIN {
 	print "} // namespace SQConvert"
 
 	print "";
-	print "template <> const char *GetClassName<" cls ">() { return \"" cls "\"; }"
+	print "template <> const char *GetClassName<" cls ", ST_AI>() { return \"" cls "\"; }"
 	print "";
 
 	# Then do the registration functions of the class. */
 	print "void SQ" cls "_Register(Squirrel *engine)"
 	print "{"
-	print "	DefSQClass <" cls "> SQ" cls "(\"" cls "\");"
+	print "	DefSQClass<" cls ", ST_AI> SQ" cls "(\"" cls "\");"
 	if (super_cls == "AIObject" || super_cls == "AIAbstractList::Valuator") {
 		print "	SQ" cls ".PreRegister(engine);"
 	} else {

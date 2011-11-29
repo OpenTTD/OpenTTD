@@ -14,6 +14,11 @@
 
 #include <squirrel.h>
 
+/** The type of script we're working with, i.e. for who is it? */
+enum ScriptType {
+	ST_AI, ///< The script is for the AI.
+};
+
 class Squirrel {
 private:
 	typedef void (SQPrintFunc)(bool error_msg, const SQChar *message);

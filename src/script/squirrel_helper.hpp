@@ -19,7 +19,7 @@
 #include "../string_func.h"
 #include "squirrel_helper_type.hpp"
 
-template <class CL> const char *GetClassName();
+template <class CL, ScriptType ST> const char *GetClassName();
 
 /**
  * The Squirrel convert routines
@@ -731,7 +731,7 @@ namespace SQConvert {
 	 *  In here the function_proc is recovered, and the SQCall is called that
 	 *  can handle this exact amount of params.
 	 */
-	template <typename Tcls, typename Tmethod>
+	template <typename Tcls, typename Tmethod, ScriptType Ttype>
 	inline SQInteger DefSQNonStaticCallback(HSQUIRRELVM vm)
 	{
 		/* Find the amount of params we got */
@@ -745,7 +745,7 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		const char *className = GetClassName<Tcls>();
+		const char *className = GetClassName<Tcls, Ttype>();
 		sq_pushstring(vm, OTTD2SQ(className), -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
@@ -773,7 +773,7 @@ namespace SQConvert {
 	 *  In here the function_proc is recovered, and the SQCall is called that
 	 *  can handle this exact amount of params.
 	 */
-	template <typename Tcls, typename Tmethod>
+	template <typename Tcls, typename Tmethod, ScriptType Ttype>
 	inline SQInteger DefSQAdvancedNonStaticCallback(HSQUIRRELVM vm)
 	{
 		/* Find the amount of params we got */
@@ -787,7 +787,7 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		const char *className = GetClassName<Tcls>();
+		const char *className = GetClassName<Tcls, Ttype>();
 		sq_pushstring(vm, OTTD2SQ(className), -1);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);

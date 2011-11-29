@@ -20,11 +20,11 @@ namespace SQConvert {
 	template <> inline int Return<AIEngineList *>(HSQUIRRELVM vm, AIEngineList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEngineList", res, NULL, DefSQDestructorCallback<AIEngineList>); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEngineList>() { return "AIEngineList"; }
+template <> const char *GetClassName<AIEngineList, ST_AI>() { return "AIEngineList"; }
 
 void SQAIEngineList_Register(Squirrel *engine)
 {
-	DefSQClass <AIEngineList> SQAIEngineList("AIEngineList");
+	DefSQClass<AIEngineList, ST_AI> SQAIEngineList("AIEngineList");
 	SQAIEngineList.PreRegister(engine, "AIList");
 	SQAIEngineList.AddConstructor<void (AIEngineList::*)(AIVehicle::VehicleType vehicle_type), 2>(engine, "xi");
 
