@@ -557,6 +557,7 @@ script/script_info.cpp
 script/script_info.hpp
 script/script_scanner.cpp
 script/script_scanner.hpp
+script/script_storage.hpp
 script/squirrel.cpp
 script/squirrel.hpp
 script/squirrel_class.hpp
@@ -622,7 +623,6 @@ ai/ai_instance.cpp
 ai/ai_instance.hpp
 ai/ai_scanner.cpp
 ai/ai_scanner.hpp
-ai/ai_storage.hpp
 
 # AI API
 ai/api/ai_changelog.hpp

@@ -2475,6 +2475,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\script_storage.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\squirrel.cpp"
 				>
 			</File>
@@ -2720,10 +2724,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\ai\ai_scanner.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\ai_storage.hpp"
 				>
 			</File>
 		</Filter>

@@ -26,7 +26,7 @@ typedef void (AISuspendCallbackProc)(class AIInstance *instance);
 /**
  * The callback function for Mode-classes.
  */
-typedef bool (AIModeProc)();
+typedef bool (ScriptModeProc)();
 
 /**
  * Uper-parent object of all API classes. You should never use this class in
@@ -122,12 +122,12 @@ protected:
 	/**
 	 * Set the current mode of your AI to this proc.
 	 */
-	static void SetDoCommandMode(AIModeProc *proc, ScriptObject *instance);
+	static void SetDoCommandMode(ScriptModeProc *proc, ScriptObject *instance);
 
 	/**
 	 * Get the current mode your AI is currently under.
 	 */
-	static AIModeProc *GetDoCommandMode();
+	static ScriptModeProc *GetDoCommandMode();
 
 	/**
 	 * Get the instance of the current mode your AI is currently under.

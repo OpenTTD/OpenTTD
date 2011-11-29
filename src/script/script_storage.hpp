@@ -7,10 +7,10 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_storage.hpp Defines AIStorage and includes all files required for it. */
+/** @file script_storage.hpp Defines ScriptStorage and includes all files required for it. */
 
-#ifndef AI_STORAGE_HPP
-#define AI_STORAGE_HPP
+#ifndef SCRIPT_STORAGE_HPP
+#define SCRIPT_STORAGE_HPP
 
 #include "../signs_func.h"
 #include "../vehicle_func.h"
@@ -23,21 +23,21 @@
 /**
  * The callback function for Mode-classes.
  */
-typedef bool (AIModeProc)();
+typedef bool (ScriptModeProc)();
 
 /**
- * The storage for each AI. It keeps track of important information.
+ * The storage for each script. It keeps track of important information.
  */
-class AIStorage {
+class ScriptStorage {
 friend class ScriptObject;
 private:
-	AIModeProc *mode;                ///< The current build mode we are int.
+	ScriptModeProc *mode;             ///< The current build mode we are int.
 	class ScriptObject *mode_instance; ///< The instance belonging to the current build mode.
 
 	uint delay;                      ///< The ticks of delay each DoCommand has.
 	bool allow_do_command;           ///< Is the usage of DoCommands restricted?
 
-	CommandCost costs;               ///< The costs the AI is tracking.
+	CommandCost costs;               ///< The costs the script is tracking.
 	Money last_cost;                 ///< The last cost of the command.
 	uint last_error;                 ///< The last error of the command.
 	bool last_command_res;           ///< The last result of the command.
@@ -56,7 +56,7 @@ private:
 	void *log_data;                  ///< Pointer to the log data storage.
 
 public:
-	AIStorage() :
+	ScriptStorage() :
 		mode              (NULL),
 		mode_instance     (NULL),
 		delay             (1),
@@ -76,7 +76,7 @@ public:
 		log_data          (NULL)
 	{ }
 
-	~AIStorage();
+	~ScriptStorage();
 };
 
-#endif /* AI_STORAGE_HPP */
+#endif /* SCRIPT_STORAGE_HPP */

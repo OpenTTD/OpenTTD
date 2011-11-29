@@ -17,9 +17,10 @@
 #include "../script/squirrel_class.hpp"
 
 #include "ai_config.hpp"
-#include "ai_storage.hpp"
-#include "ai_instance.hpp"
 #include "ai_gui.hpp"
+
+#include "../script/script_storage.hpp"
+#include "ai_instance.hpp"
 
 /* Convert all AI related classes to Squirrel data.
  * Note: this line is a marker in squirrel_export.sh. Do not change! */
@@ -82,7 +83,7 @@ static const int MAX_SL_OPS          = 100000;
 /** The maximum number of operations for initial start of an AI. */
 static const int MAX_CONSTRUCTOR_OPS = 100000;
 
-AIStorage::~AIStorage()
+ScriptStorage::~ScriptStorage()
 {
 	/* Free our pointers */
 	if (event_data != NULL) ScriptEventController::FreeEventPointer();
@@ -111,7 +112,7 @@ AIInstance::AIInstance() :
 	suspend(0),
 	callback(NULL)
 {
-	this->storage = new AIStorage();
+	this->storage = new ScriptStorage();
 	this->engine  = new Squirrel("AI");
 	this->engine->SetPrintFunction(&PrintFunc);
 }
@@ -428,7 +429,7 @@ void AIInstance::CollectGarbage() const
 	instance->engine->InsertResult(ScriptObject::GetNewGroupID());
 }
 
-AIStorage *AIInstance::GetStorage()
+ScriptStorage *AIInstance::GetStorage()
 {
 	return this->storage;
 }

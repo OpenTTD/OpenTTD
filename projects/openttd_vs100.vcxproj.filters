@@ -1599,6 +1599,9 @@
     <ClInclude Include="..\src\script\script_scanner.hpp">
       <Filter>Script</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script\script_storage.hpp">
+      <Filter>Script</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\script\squirrel.cpp">
       <Filter>Script</Filter>
     </ClCompile>
@@ -1774,9 +1777,6 @@
       <Filter>AI Core</Filter>
     </ClCompile>
     <ClInclude Include="..\src\ai\ai_scanner.hpp">
-      <Filter>AI Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ai\ai_storage.hpp">
       <Filter>AI Core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ai\api\ai_changelog.hpp">

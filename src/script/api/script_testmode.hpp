@@ -25,7 +25,7 @@
  */
 class ScriptTestMode : public ScriptObject {
 private:
-	AIModeProc *last_mode;   ///< The previous mode we were in.
+	ScriptModeProc *last_mode;   ///< The previous mode we were in.
 	ScriptObject *last_instance; ///< The previous instace of the mode.
 
 protected:

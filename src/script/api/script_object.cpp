@@ -15,7 +15,7 @@
 #include "../../network/network.h"
 #include "../../tunnelbridge.h"
 
-#include "../../ai/ai_storage.hpp"
+#include "../script_storage.hpp"
 #include "../../ai/ai_instance.hpp"
 #include "script_error.hpp"
 
@@ -23,7 +23,7 @@
  * Get the storage associated with the current AIInstance.
  * @return The storage.
  */
-static AIStorage *GetStorage()
+static ScriptStorage *GetStorage()
 {
 	return ScriptObject::GetActiveInstance()->GetStorage();
 }
@@ -60,13 +60,13 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->delay;
 }
 
-/* static */ void ScriptObject::SetDoCommandMode(AIModeProc *proc, ScriptObject *instance)
+/* static */ void ScriptObject::SetDoCommandMode(ScriptModeProc *proc, ScriptObject *instance)
 {
 	GetStorage()->mode = proc;
 	GetStorage()->mode_instance = instance;
 }
 
-/* static */ AIModeProc *ScriptObject::GetDoCommandMode()
+/* static */ ScriptModeProc *ScriptObject::GetDoCommandMode()
 {
 	return GetStorage()->mode;
 }

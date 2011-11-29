@@ -792,6 +792,7 @@
     <ClInclude Include="..\src\script\script_info.hpp" />
     <ClCompile Include="..\src\script\script_scanner.cpp" />
     <ClInclude Include="..\src\script\script_scanner.hpp" />
+    <ClInclude Include="..\src\script\script_storage.hpp" />
     <ClCompile Include="..\src\script\squirrel.cpp" />
     <ClInclude Include="..\src\script\squirrel.hpp" />
     <ClInclude Include="..\src\script\squirrel_class.hpp" />
@@ -851,7 +852,6 @@
     <ClInclude Include="..\src\ai\ai_instance.hpp" />
     <ClCompile Include="..\src\ai\ai_scanner.cpp" />
     <ClInclude Include="..\src\ai\ai_scanner.hpp" />
-    <ClInclude Include="..\src\ai\ai_storage.hpp" />
     <ClInclude Include="..\src\ai\api\ai_changelog.hpp" />
     <ClInclude Include="..\src\ai\api\ai_info_docs.hpp" />
     <ClInclude Include="..\src\script\api\script_accounting.hpp" />
