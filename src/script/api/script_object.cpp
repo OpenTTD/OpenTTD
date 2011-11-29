@@ -17,8 +17,7 @@
 #include "../../tunnelbridge.h"
 
 #include "../script_storage.hpp"
-#include "../../ai/ai_config.hpp"
-#include "../../ai/ai_instance.hpp"
+#include "../script_instance.hpp"
 #include "../script_fatalerror.hpp"
 #include "../script_suspend.hpp"
 #include "script_error.hpp"

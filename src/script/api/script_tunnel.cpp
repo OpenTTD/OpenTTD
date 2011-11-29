@@ -12,7 +12,7 @@
 #include "../../stdafx.h"
 #include "script_tunnel.hpp"
 #include "script_rail.hpp"
-#include "../../ai/ai_instance.hpp"
+#include "../script_instance.hpp"
 #include "../../tunnel_map.h"
 #include "../../command_func.h"
 

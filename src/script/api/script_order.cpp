@@ -13,7 +13,7 @@
 #include "script_order.hpp"
 #include "script_vehicle.hpp"
 #include "script_cargo.hpp"
-#include "../../ai/ai_instance.hpp"
+#include "../script_instance.hpp"
 #include "../../debug.h"
 #include "../../vehicle_base.h"
 #include "../../roadstop_base.h"

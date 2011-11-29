@@ -12,7 +12,7 @@
 #include "../../stdafx.h"
 #include "script_sign.hpp"
 #include "table/strings.h"
-#include "../../ai/ai_instance.hpp"
+#include "../script_instance.hpp"
 #include "../../command_func.h"
 #include "../../core/alloc_func.hpp"
 #include "../../signs_base.h"

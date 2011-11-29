@@ -12,7 +12,7 @@
 #include "../../stdafx.h"
 #include "script_bridge.hpp"
 #include "script_rail.hpp"
-#include "../../ai/ai_instance.hpp"
+#include "../script_instance.hpp"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
 #include "../../economy_func.h"

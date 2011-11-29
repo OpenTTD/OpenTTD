@@ -13,7 +13,7 @@
 #include "script_testmode.hpp"
 #include "../../company_base.h"
 #include "../../company_func.h"
-#include "../../ai/ai_instance.hpp"
+#include "../script_instance.hpp"
 #include "../script_fatalerror.hpp"
 
 bool ScriptTestMode::ModeProc()

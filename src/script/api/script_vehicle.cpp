@@ -14,7 +14,7 @@
 #include "script_cargo.hpp"
 #include "script_gamesettings.hpp"
 #include "script_group.hpp"
-#include "../../ai/ai_instance.hpp"
+#include "../script_instance.hpp"
 #include "../../company_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
