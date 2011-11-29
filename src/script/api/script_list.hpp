@@ -237,7 +237,7 @@ public:
 	 */
 	void KeepList(ScriptList *list);
 
-#ifndef DOXYGEN_AI_DOCS
+#ifndef DOXYGEN_API
 	/**
 	 * Used for 'foreach()' and [] get from Squirrel.
 	 */
@@ -278,7 +278,7 @@ public:
 	 *  list.Valuate(MyVal, 12);
 	 */
 	void Valuate(void *valuator_function, int params, ...);
-#endif /* DOXYGEN_AI_DOCS */
+#endif /* DOXYGEN_API */
 };
 
 #endif /* SCRIPT_LIST_HPP */

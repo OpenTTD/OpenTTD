@@ -63,17 +63,17 @@ public:
 	 */
 	static TileIndex GetOtherTunnelEnd(TileIndex tile);
 
-#ifndef DOXYGEN_AI_DOCS
 	/**
 	 * Internal function to help BuildTunnel in case of road.
+	 * @api -all
 	 */
 	static bool _BuildTunnelRoad1();
 
 	/**
 	 * Internal function to help BuildTunnel in case of road.
+	 * @api -all
 	 */
 	static bool _BuildTunnelRoad2();
-#endif /* DOXYGEN_AI_DOCS */
 
 	/**
 	 * Builds a tunnel starting at start. The direction of the tunnel depends

@@ -159,9 +159,9 @@ BEGIN {
 /^(	*)private/   { if (cls_level == 1) public = "false"; next; }
 
 # Ignore special doxygen blocks
-/^#ifndef DOXYGEN_AI_DOCS/          { doxygen_skip = "next"; next; }
-/^#ifdef DOXYGEN_AI_DOCS/           { doxygen_skip = "true"; next; }
-/^#endif \/\* DOXYGEN_AI_DOCS \*\// { doxygen_skip = "false"; next; }
+/^#ifndef DOXYGEN_API/          { doxygen_skip = "next"; next; }
+/^#ifdef DOXYGEN_API/           { doxygen_skip = "true"; next; }
+/^#endif \/\* DOXYGEN_API \*\// { doxygen_skip = "false"; next; }
 /^#else/                         {
 	if (doxygen_skip == "next") {
 		doxygen_skip = "true";

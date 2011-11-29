@@ -206,7 +206,7 @@ EXPAND_ONLY_PREDEF     = YES
 SEARCH_INCLUDES        = YES
 INCLUDE_PATH           =
 INCLUDE_FILE_PATTERNS  =
-PREDEFINED             = DOXYGEN_AI_DOCS
+PREDEFINED             = DOXYGEN_API
 EXPAND_AS_DEFINED      = DEF_COMMAND
 SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------

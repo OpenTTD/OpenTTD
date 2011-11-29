@@ -107,17 +107,17 @@ public:
 	 */
 	static int32 GetMinLength(BridgeID bridge_id);
 
-#ifndef DOXYGEN_AI_DOCS
 	/**
 	 * Internal function to help BuildBridge in case of road.
+	 * @api -all
 	 */
 	static bool _BuildBridgeRoad1();
 
 	/**
 	 * Internal function to help BuildBridge in case of road.
+	 * @api -all
 	 */
 	static bool _BuildBridgeRoad2();
-#endif
 
 	/**
 	 * Build a bridge from one tile to the other.

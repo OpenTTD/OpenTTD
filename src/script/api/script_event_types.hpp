@@ -270,11 +270,11 @@ public:
 	 * Get the type of the offered engine.
 	 * @return The type the engine has.
 	 */
-#ifdef DOXYGEN_AI_DOCS
+#ifdef DOXYGEN_API
 	ScriptVehicle::VehicleType GetVehicleType();
 #else
 	int32 GetVehicleType();
-#endif
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Accept the engine preview.
