@@ -64,12 +64,6 @@ protected:
 /** All static information from an AI like name, version, etc. */
 class AIInfo : public AIFileInfo {
 public:
-	/**
-	 * Get the class name, so the script code can create the right code.
-	 * @return The class name.
-	 */
-	static const char *GetClassName() { return "AIInfo"; }
-
 	AIInfo();
 	~AIInfo();
 
