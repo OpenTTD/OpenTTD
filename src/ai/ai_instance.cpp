@@ -18,8 +18,9 @@
 
 #include "ai_config.hpp"
 #include "ai_gui.hpp"
-#include "../script/script_fatalerror.hpp"
 
+#include "../script/script_fatalerror.hpp"
+#include "../script/script_suspend.hpp"
 #include "../script/script_storage.hpp"
 #include "ai_instance.hpp"
 
@@ -343,7 +344,7 @@ void AIInstance::GameLoop()
 		}
 		try {
 			this->callback(this);
-		} catch (AI_VMSuspend e) {
+		} catch (Script_Suspend e) {
 			this->suspend  = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
 
@@ -373,7 +374,7 @@ void AIInstance::GameLoop()
 			ScriptObject::SetAllowDoCommand(true);
 			/* Start the AI by calling Start() */
 			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
-		} catch (AI_VMSuspend e) {
+		} catch (Script_Suspend e) {
 			this->suspend  = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
 		} catch (Script_FatalError e) {
@@ -394,7 +395,7 @@ void AIInstance::GameLoop()
 	/* Continue the VM */
 	try {
 		if (!this->engine->Resume(_settings_game.ai.ai_max_opcode_till_suspend)) this->Died();
-	} catch (AI_VMSuspend e) {
+	} catch (Script_Suspend e) {
 		this->suspend  = e.GetSuspendTime();
 		this->callback = e.GetSuspendCallback();
 	} catch (Script_FatalError e) {

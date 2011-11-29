@@ -794,6 +794,7 @@
     <ClCompile Include="..\src\script\script_scanner.cpp" />
     <ClInclude Include="..\src\script\script_scanner.hpp" />
     <ClInclude Include="..\src\script\script_storage.hpp" />
+    <ClInclude Include="..\src\script\script_suspend.hpp" />
     <ClCompile Include="..\src\script\squirrel.cpp" />
     <ClInclude Include="..\src\script\squirrel.hpp" />
     <ClInclude Include="..\src\script\squirrel_class.hpp" />

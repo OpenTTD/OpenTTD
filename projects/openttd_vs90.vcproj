@@ -2480,6 +2480,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\script_suspend.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\squirrel.cpp"
 				>
 			</File>

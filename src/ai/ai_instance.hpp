@@ -13,43 +13,7 @@
 #define AI_INSTANCE_HPP
 
 #include <squirrel.h>
-
-/**
- * The callback function when an AI suspends.
- */
-typedef void (AISuspendCallbackProc)(class AIInstance *instance);
-
-/**
- * A throw-class that is given when the VM wants to suspend.
- */
-class AI_VMSuspend {
-public:
-	/**
-	 * Create the suspend exception.
-	 * @param time The amount of ticks to suspend.
-	 * @param callback The callback to call when the AI may resume again.
-	 */
-	AI_VMSuspend(int time, AISuspendCallbackProc *callback) :
-		time(time),
-		callback(callback)
-	{}
-
-	/**
-	 * Get the amount of ticks the AI should be suspended.
-	 * @return The amount of AI ticks to suspend the AI.
-	 */
-	int GetSuspendTime() { return time; }
-
-	/**
-	 * Get the callback to call when the AI can run again.
-	 * @return The callback function to run.
-	 */
-	AISuspendCallbackProc *GetSuspendCallback() { return callback; }
-
-private:
-	int time;                        ///< Amount of ticks to suspend the AI.
-	AISuspendCallbackProc *callback; ///< Callback function to call when the AI can run again.
-};
+#include "../script/script_suspend.hpp"
 
 /** Runtime information about an AI like a pointer to the squirrel vm and the current state. */
 class AIInstance {
@@ -178,16 +142,16 @@ public:
 	void InsertEvent(class ScriptEvent *event);
 
 private:
-	class ScriptController *controller; ///< The AI main class.
-	class ScriptStorage *storage;       ///< Some global information for each running AI.
-	class Squirrel *engine;             ///< A wrapper around the squirrel vm.
-	SQObject *instance;                 ///< Squirrel-pointer to the AI main class.
+	class ScriptController *controller;   ///< The AI main class.
+	class ScriptStorage *storage;         ///< Some global information for each running AI.
+	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
+	SQObject *instance;                   ///< Squirrel-pointer to the AI main class.
 
-	bool is_started;                    ///< Is the AIs constructor executed?
-	bool is_dead;                       ///< True if the AI has been stopped.
-	bool is_save_data_on_stack;         ///< Is the save data still on the squirrel stack?
-	int suspend;                        ///< The amount of ticks to suspend this AI before it's allowed to continue.
-	AISuspendCallbackProc *callback;    ///< Callback that should be called in the next tick the AI runs.
+	bool is_started;                      ///< Is the AIs constructor executed?
+	bool is_dead;                         ///< True if the AI has been stopped.
+	bool is_save_data_on_stack;           ///< Is the save data still on the squirrel stack?
+	int suspend;                          ///< The amount of ticks to suspend this AI before it's allowed to continue.
+	Script_SuspendCallbackProc *callback; ///< Callback that should be called in the next tick the AI runs.
 
 	/**
 	 * Register all API functions to the VM.

@@ -18,6 +18,7 @@
 #include "../script_storage.hpp"
 #include "../../ai/ai_instance.hpp"
 #include "../script_fatalerror.hpp"
+#include "../script_suspend.hpp"
 #include "script_error.hpp"
 
 /**
@@ -265,7 +266,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 	if (_networking) {
 		/* Suspend the AI till the command is really executed. */
-		throw AI_VMSuspend(-(int)GetDoCommandDelay(), callback);
+		throw Script_Suspend(-(int)GetDoCommandDelay(), callback);
 	} else {
 		IncreaseDoCommandCosts(res.GetCost());
 
@@ -273,7 +274,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 		 *  both avoids confusion when a developer launched his AI in a
 		 *  multiplayer game, but also gives time for the GUI and human player
 		 *  to interact with the game. */
-		throw AI_VMSuspend(GetDoCommandDelay(), callback);
+		throw Script_Suspend(GetDoCommandDelay(), callback);
 	}
 
 	NOT_REACHED();

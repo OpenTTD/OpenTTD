@@ -21,6 +21,7 @@
 #include "../../ai/ai_config.hpp"
 #include "../../ai/ai.hpp"
 #include "../script_fatalerror.hpp"
+#include "../script_suspend.hpp"
 #include "script_log.hpp"
 
 /* static */ void ScriptController::SetCommandDelay(int ticks)
@@ -40,7 +41,7 @@
 		ticks = 1;
 	}
 
-	throw AI_VMSuspend(ticks, NULL);
+	throw Script_Suspend(ticks, NULL);
 }
 
 /* static */ void ScriptController::Print(bool error_msg, const char *message)
