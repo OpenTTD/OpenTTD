@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_town.cpp Implementation of AITown. */
+/** @file script_town.cpp Implementation of ScriptTown. */
 
 #include "../../stdafx.h"
 #include "script_town.hpp"
@@ -21,17 +21,17 @@
 #include "../../landscape.h"
 #include "table/strings.h"
 
-/* static */ int32 AITown::GetTownCount()
+/* static */ int32 ScriptTown::GetTownCount()
 {
 	return (int32)::Town::GetNumItems();
 }
 
-/* static */ bool AITown::IsValidTown(TownID town_id)
+/* static */ bool ScriptTown::IsValidTown(TownID town_id)
 {
 	return ::Town::IsValidID(town_id);
 }
 
-/* static */ char *AITown::GetName(TownID town_id)
+/* static */ char *ScriptTown::GetName(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return NULL;
 	static const int len = 64;
@@ -43,70 +43,70 @@
 	return town_name;
 }
 
-/* static */ int32 AITown::GetPopulation(TownID town_id)
+/* static */ int32 ScriptTown::GetPopulation(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	const Town *t = ::Town::Get(town_id);
 	return t->population;
 }
 
-/* static */ int32 AITown::GetHouseCount(TownID town_id)
+/* static */ int32 ScriptTown::GetHouseCount(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	const Town *t = ::Town::Get(town_id);
 	return t->num_houses;
 }
 
-/* static */ TileIndex AITown::GetLocation(TownID town_id)
+/* static */ TileIndex ScriptTown::GetLocation(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return INVALID_TILE;
 	const Town *t = ::Town::Get(town_id);
 	return t->xy;
 }
 
-/* static */ int32 AITown::GetLastMonthProduction(TownID town_id, CargoID cargo_id)
+/* static */ int32 ScriptTown::GetLastMonthProduction(TownID town_id, CargoID cargo_id)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
 	return t->supplied[cargo_id].old_max;
 }
 
-/* static */ int32 AITown::GetLastMonthSupplied(TownID town_id, CargoID cargo_id)
+/* static */ int32 ScriptTown::GetLastMonthSupplied(TownID town_id, CargoID cargo_id)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
 	return t->supplied[cargo_id].old_act;
 }
 
-/* static */ int32 AITown::GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id)
+/* static */ int32 ScriptTown::GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 	return ::ToPercent8(t->GetPercentTransported(cargo_id));
 }
 
-/* static */ int32 AITown::GetLastMonthReceived(TownID town_id, AICargo::TownEffect towneffect_id)
+/* static */ int32 ScriptTown::GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!AICargo::IsValidTownEffect(towneffect_id)) return -1;
+	if (!ScriptCargo::IsValidTownEffect(towneffect_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
 	return t->received[towneffect_id].old_act;
 }
 
-/* static */ uint32 AITown::GetCargoGoal(TownID town_id, AICargo::TownEffect towneffect_id)
+/* static */ uint32 ScriptTown::GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id)
 {
 	if (!IsValidTown(town_id)) return -1;
-	if (!AICargo::IsValidTownEffect(towneffect_id)) return -1;
+	if (!ScriptCargo::IsValidTownEffect(towneffect_id)) return -1;
 
 	const Town *t = ::Town::Get(town_id);
 
@@ -123,7 +123,7 @@
 	}
 }
 
-/* static */ int32 AITown::GetGrowthRate(TownID town_id)
+/* static */ int32 ScriptTown::GetGrowthRate(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return false;
 
@@ -132,17 +132,17 @@
 	return (t->growth_rate * TOWN_GROWTH_TICKS + DAY_TICKS) / DAY_TICKS;
 }
 
-/* static */ int32 AITown::GetDistanceManhattanToTile(TownID town_id, TileIndex tile)
+/* static */ int32 ScriptTown::GetDistanceManhattanToTile(TownID town_id, TileIndex tile)
 {
-	return AIMap::DistanceManhattan(tile, GetLocation(town_id));
+	return ScriptMap::DistanceManhattan(tile, GetLocation(town_id));
 }
 
-/* static */ int32 AITown::GetDistanceSquareToTile(TownID town_id, TileIndex tile)
+/* static */ int32 ScriptTown::GetDistanceSquareToTile(TownID town_id, TileIndex tile)
 {
-	return AIMap::DistanceSquare(tile, GetLocation(town_id));
+	return ScriptMap::DistanceSquare(tile, GetLocation(town_id));
 }
 
-/* static */ bool AITown::IsWithinTownInfluence(TownID town_id, TileIndex tile)
+/* static */ bool ScriptTown::IsWithinTownInfluence(TownID town_id, TileIndex tile)
 {
 	if (!IsValidTown(town_id)) return false;
 
@@ -150,61 +150,61 @@
 	return ((uint32)GetDistanceSquareToTile(town_id, tile) <= t->squared_town_zone_radius[0]);
 }
 
-/* static */ bool AITown::HasStatue(TownID town_id)
+/* static */ bool ScriptTown::HasStatue(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return false;
 
 	return ::HasBit(::Town::Get(town_id)->statues, _current_company);
 }
 
-/* static */ bool AITown::IsCity(TownID town_id)
+/* static */ bool ScriptTown::IsCity(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return false;
 
 	return ::Town::Get(town_id)->larger_town;
 }
 
-/* static */ int AITown::GetRoadReworkDuration(TownID town_id)
+/* static */ int ScriptTown::GetRoadReworkDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
 	return ::Town::Get(town_id)->road_build_months;
 }
 
-/* static */ AICompany::CompanyID AITown::GetExclusiveRightsCompany(TownID town_id)
+/* static */ ScriptCompany::CompanyID ScriptTown::GetExclusiveRightsCompany(TownID town_id)
 {
-	if (!IsValidTown(town_id)) return AICompany::COMPANY_INVALID;
+	if (!IsValidTown(town_id)) return ScriptCompany::COMPANY_INVALID;
 
-	return (AICompany::CompanyID)(int8)::Town::Get(town_id)->exclusivity;
+	return (ScriptCompany::CompanyID)(int8)::Town::Get(town_id)->exclusivity;
 }
 
-/* static */ int32 AITown::GetExclusiveRightsDuration(TownID town_id)
+/* static */ int32 ScriptTown::GetExclusiveRightsDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
 	return ::Town::Get(town_id)->exclusive_counter;
 }
 
-/* static */ bool AITown::IsActionAvailable(TownID town_id, TownAction town_action)
+/* static */ bool ScriptTown::IsActionAvailable(TownID town_id, TownAction town_action)
 {
 	if (!IsValidTown(town_id)) return false;
 
 	return HasBit(::GetMaskOfTownActions(NULL, _current_company, ::Town::Get(town_id)), town_action);
 }
 
-/* static */ bool AITown::PerformTownAction(TownID town_id, TownAction town_action)
+/* static */ bool ScriptTown::PerformTownAction(TownID town_id, TownAction town_action)
 {
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, IsActionAvailable(town_id, town_action));
 
-	return AIObject::DoCommand(::Town::Get(town_id)->xy, town_id, town_action, CMD_DO_TOWN_ACTION);
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, town_action, CMD_DO_TOWN_ACTION);
 }
 
-/* static */ AITown::TownRating AITown::GetRating(TownID town_id, AICompany::CompanyID company_id)
+/* static */ ScriptTown::TownRating ScriptTown::GetRating(TownID town_id, ScriptCompany::CompanyID company_id)
 {
 	if (!IsValidTown(town_id)) return TOWN_RATING_INVALID;
-	AICompany::CompanyID company = AICompany::ResolveCompanyID(company_id);
-	if (company == AICompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
+	ScriptCompany::CompanyID company = ScriptCompany::ResolveCompanyID(company_id);
+	if (company == ScriptCompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
 
 	const Town *t = ::Town::Get(town_id);
 	if (!HasBit(t->have_ratings, company)) {
@@ -228,7 +228,7 @@
 	}
 }
 
-/* static */ int AITown::GetAllowedNoise(TownID town_id)
+/* static */ int ScriptTown::GetAllowedNoise(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 
@@ -245,9 +245,9 @@
 	return max(0, 2 - num);
 }
 
-/* static */ AITown::RoadLayout AITown::GetRoadLayout(TownID town_id)
+/* static */ ScriptTown::RoadLayout ScriptTown::GetRoadLayout(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return ROAD_LAYOUT_INVALID;
 
-	return (AITown::RoadLayout)((TownLayout)::Town::Get(town_id)->layout);
+	return (ScriptTown::RoadLayout)((TownLayout)::Town::Get(town_id)->layout);
 }

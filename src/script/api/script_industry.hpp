@@ -17,7 +17,7 @@
 /**
  * Class that handles all industry related functions.
  */
-class AIIndustry : public AIObject {
+class ScriptIndustry : public ScriptObject {
 public:
 	/** Ways for an industry to accept a cargo. */
 	enum CargoAcceptState {
@@ -63,7 +63,7 @@ public:
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return Whether the industry accepts, temporarily refuses or never accepts this cargo.
 	 */
 	static CargoAcceptState IsCargoAccepted(IndustryID industry_id, CargoID cargo_id);
@@ -73,7 +73,7 @@ public:
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The amount of cargo that is waiting for processing.
 	 */
 	static int32 GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id);
@@ -83,7 +83,7 @@ public:
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The last month's production of the given cargo for this industry.
 	 */
 	static int32 GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id);
@@ -93,7 +93,7 @@ public:
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The amount of given cargo transported from this industry last month.
 	 */
 	static int32 GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id);
@@ -103,7 +103,7 @@ public:
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The percentage of given cargo transported from this industry last month.
 	 */
 	static int32 GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id);
@@ -127,23 +127,23 @@ public:
 	static int32 GetAmountOfStationsAround(IndustryID industry_id);
 
 	/**
-	 * Get the manhattan distance from the tile to the AIIndustry::GetLocation()
+	 * Get the manhattan distance from the tile to the ScriptIndustry::GetLocation()
 	 *  of the industry.
 	 * @param industry_id The industry to get the distance to.
 	 * @param tile The tile to get the distance to.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return The distance between industry and tile.
 	 */
 	static int32 GetDistanceManhattanToTile(IndustryID industry_id, TileIndex tile);
 
 	/**
-	 * Get the square distance from the tile to the AIIndustry::GetLocation()
+	 * Get the square distance from the tile to the ScriptIndustry::GetLocation()
 	 *  of the industry.
 	 * @param industry_id The industry to get the distance to.
 	 * @param tile The tile to get the distance to.
 	 * @pre IsValidIndustry(industry_id).
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return The distance between industry and tile.
 	 */
 	static int32 GetDistanceSquareToTile(IndustryID industry_id, TileIndex tile);

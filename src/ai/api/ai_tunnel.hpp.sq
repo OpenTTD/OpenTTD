@@ -13,45 +13,45 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AITunnel::ErrorMessages GetParam(ForceType<AITunnel::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITunnel::ErrorMessages)tmp; }
-	template <> inline int Return<AITunnel::ErrorMessages>(HSQUIRRELVM vm, AITunnel::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTunnel::ErrorMessages GetParam(ForceType<ScriptTunnel::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTunnel::ErrorMessages)tmp; }
+	template <> inline int Return<ScriptTunnel::ErrorMessages>(HSQUIRRELVM vm, ScriptTunnel::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AITunnel to be used as Squirrel parameter */
-	template <> inline AITunnel *GetParam(ForceType<AITunnel *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITunnel *)instance; }
-	template <> inline AITunnel &GetParam(ForceType<AITunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITunnel *)instance; }
-	template <> inline const AITunnel *GetParam(ForceType<const AITunnel *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITunnel *)instance; }
-	template <> inline const AITunnel &GetParam(ForceType<const AITunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITunnel *)instance; }
-	template <> inline int Return<AITunnel *>(HSQUIRRELVM vm, AITunnel *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Tunnel", res, NULL, DefSQDestructorCallback<AITunnel>, true); return 1; }
+	/* Allow ScriptTunnel to be used as Squirrel parameter */
+	template <> inline ScriptTunnel *GetParam(ForceType<ScriptTunnel *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTunnel *)instance; }
+	template <> inline ScriptTunnel &GetParam(ForceType<ScriptTunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTunnel *)instance; }
+	template <> inline const ScriptTunnel *GetParam(ForceType<const ScriptTunnel *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTunnel *)instance; }
+	template <> inline const ScriptTunnel &GetParam(ForceType<const ScriptTunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTunnel *)instance; }
+	template <> inline int Return<ScriptTunnel *>(HSQUIRRELVM vm, ScriptTunnel *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Tunnel", res, NULL, DefSQDestructorCallback<ScriptTunnel>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITunnel, ST_AI>() { return "AITunnel"; }
+template <> const char *GetClassName<ScriptTunnel, ST_AI>() { return "AITunnel"; }
 
 void SQAITunnel_Register(Squirrel *engine)
 {
-	DefSQClass<AITunnel, ST_AI> SQAITunnel("AITunnel");
+	DefSQClass<ScriptTunnel, ST_AI> SQAITunnel("AITunnel");
 	SQAITunnel.PreRegister(engine);
-	SQAITunnel.AddConstructor<void (AITunnel::*)(), 1>(engine, "x");
+	SQAITunnel.AddConstructor<void (ScriptTunnel::*)(), 1>(engine, "x");
 
-	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_BASE,                      "ERR_TUNNEL_BASE");
-	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
-	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
-	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
-	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_BASE,                      "ERR_TUNNEL_BASE");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
 
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_ON_WATER,       AITunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER);
-	AIError::RegisterErrorMap(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL, AITunnel::ERR_TUNNEL_START_SITE_UNSUITABLE);
-	AIError::RegisterErrorMap(STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY,  AITunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY);
-	AIError::RegisterErrorMap(STR_ERROR_UNABLE_TO_EXCAVATE_LAND,    AITunnel::ERR_TUNNEL_END_SITE_UNSUITABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_ON_WATER,       ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER);
+	ScriptError::RegisterErrorMap(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL, ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY,  ScriptTunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY);
+	ScriptError::RegisterErrorMap(STR_ERROR_UNABLE_TO_EXCAVATE_LAND,    ScriptTunnel::ERR_TUNNEL_END_SITE_UNSUITABLE);
 
-	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
-	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
-	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
-	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
 
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::IsTunnelTile,      "IsTunnelTile",      2, ".i");
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::GetOtherTunnelEnd, "GetOtherTunnelEnd", 2, ".i");
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::BuildTunnel,       "BuildTunnel",       3, ".ii");
-	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::RemoveTunnel,      "RemoveTunnel",      2, ".i");
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::IsTunnelTile,      "IsTunnelTile",      2, ".i");
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::GetOtherTunnelEnd, "GetOtherTunnelEnd", 2, ".i");
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::BuildTunnel,       "BuildTunnel",       3, ".ii");
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::RemoveTunnel,      "RemoveTunnel",      2, ".i");
 
 	SQAITunnel.PostRegister(engine);
 }

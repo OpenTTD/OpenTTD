@@ -19,12 +19,12 @@
  * You can lookup the type, and than convert it to the real event-class.
  * That way you can request more detailed information about the event.
  */
-class AIEvent : public AIObject {
+class ScriptEvent : public ScriptObject {
 public:
 	/**
 	 * The type of event. Needed to lookup the detailed class.
 	 */
-	enum AIEventType {
+	enum ScriptEventType {
 		AI_ET_INVALID = 0,
 		AI_ET_TEST,
 		AI_ET_SUBSIDY_OFFER,
@@ -51,31 +51,31 @@ public:
 	};
 
 	/**
-	 * Constructor of AIEvent, to get the type of event.
+	 * Constructor of ScriptEvent, to get the type of event.
 	 */
-	AIEvent(AIEvent::AIEventType type) :
+	ScriptEvent(ScriptEvent::ScriptEventType type) :
 		type(type)
 	{}
 
 	/**
 	 * Get the event-type.
-	 * @return The @c AIEventType.
+	 * @return The @c ScriptEventType.
 	 */
-	AIEventType GetEventType() { return this->type; }
+	ScriptEventType GetEventType() { return this->type; }
 
 protected:
 	/**
 	 * The type of this event.
 	 */
-	AIEventType type;
+	ScriptEventType type;
 };
 
 /**
  * Class that handles all event related functions.
- * @note it is not needed to create an instance of AIEvent to access it, as
+ * @note it is not needed to create an instance of ScriptEvent to access it, as
  *  all members are static, and all data is stored AI-wide.
  */
-class AIEventController : public AIObject {
+class ScriptEventController : public ScriptObject {
 public:
 	/**
 	 * Check if there is an event waiting.
@@ -87,7 +87,7 @@ public:
 	 * Get the next event.
 	 * @return a class of the event-child issues.
 	 */
-	static AIEvent *GetNextEvent();
+	static ScriptEvent *GetNextEvent();
 
 #ifndef EXPORT_SKIP
 	/**
@@ -95,7 +95,7 @@ public:
 	 * @param event The event to insert.
 	 * @note DO NOT CALL YOURSELF; leave it to the internal AI programming.
 	 */
-	static void InsertEvent(AIEvent *event);
+	static void InsertEvent(ScriptEvent *event);
 
 	/**
 	 * Free the event pointer.

@@ -17,14 +17,14 @@
 
 /**
  * Creates a list of the locations of the depots (and hangars) of which you are the owner.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIDepotList : public AIList {
+class ScriptDepotList : public ScriptList {
 public:
 	/**
 	 * @param transport_type The type of transport to make a list of depots for.
 	 */
-	AIDepotList(AITile::TransportType transport_type);
+	ScriptDepotList(ScriptTile::TransportType transport_type);
 };
 
 #endif /* SCRIPT_DEPOTLIST_HPP */

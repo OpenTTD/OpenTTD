@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_list.cpp Implementation of AIList. */
+/** @file script_list.cpp Implementation of ScriptList. */
 
 #include "../../stdafx.h"
 #include "script_list.hpp"
@@ -15,11 +15,11 @@
 #include "../../script/squirrel.hpp"
 
 /**
- * Base class for any AIList sorter.
+ * Base class for any ScriptList sorter.
  */
-class AIListSorter {
+class ScriptListSorter {
 protected:
-	AIList *list;           ///< The list that's being sorted.
+	ScriptList *list;           ///< The list that's being sorted.
 	bool has_no_more_items; ///< Whether we have more items to iterate over.
 	int32 item_next;        ///< The next item we will show.
 
@@ -27,7 +27,7 @@ public:
 	/**
 	 * Virtual dtor, needed to mute warnings.
 	 */
-	virtual ~AIListSorter() { }
+	virtual ~ScriptListSorter() { }
 
 	/**
 	 * Get the first item of the sorter.
@@ -61,18 +61,18 @@ public:
 /**
  * Sort by value, ascending.
  */
-class AIListSorterValueAscending : public AIListSorter {
+class ScriptListSorterValueAscending : public ScriptListSorter {
 private:
-	AIList::AIListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
-	AIList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
-	AIList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
+	ScriptList::ScriptListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
+	ScriptList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	ScriptList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	AIListSorterValueAscending(AIList *list)
+	ScriptListSorterValueAscending(ScriptList *list)
 	{
 		this->list = list;
 		this->End();
@@ -147,18 +147,18 @@ public:
 /**
  * Sort by value, descending.
  */
-class AIListSorterValueDescending : public AIListSorter {
+class ScriptListSorterValueDescending : public ScriptListSorter {
 private:
-	AIList::AIListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
-	AIList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
-	AIList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
+	ScriptList::ScriptListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
+	ScriptList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	ScriptList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	AIListSorterValueDescending(AIList *list)
+	ScriptListSorterValueDescending(ScriptList *list)
 	{
 		this->list = list;
 		this->End();
@@ -241,16 +241,16 @@ public:
 /**
  * Sort by item, ascending.
  */
-class AIListSorterItemAscending : public AIListSorter {
+class ScriptListSorterItemAscending : public ScriptListSorter {
 private:
-	AIList::AIListMap::iterator item_iter; ///< The iterator over the items in the map.
+	ScriptList::ScriptListMap::iterator item_iter; ///< The iterator over the items in the map.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	AIListSorterItemAscending(AIList *list)
+	ScriptListSorterItemAscending(ScriptList *list)
 	{
 		this->list = list;
 		this->End();
@@ -311,16 +311,16 @@ public:
 /**
  * Sort by item, descending.
  */
-class AIListSorterItemDescending : public AIListSorter {
+class ScriptListSorterItemDescending : public ScriptListSorter {
 private:
-	AIList::AIListMap::iterator item_iter; ///< The iterator over the items in the map.
+	ScriptList::ScriptListMap::iterator item_iter; ///< The iterator over the items in the map.
 
 public:
 	/**
 	 * Create a new sorter.
 	 * @param list The list to sort.
 	 */
-	AIListSorterItemDescending(AIList *list)
+	ScriptListSorterItemDescending(ScriptList *list)
 	{
 		this->list = list;
 		this->End();
@@ -381,27 +381,27 @@ public:
 
 
 
-AIList::AIList()
+ScriptList::ScriptList()
 {
 	/* Default sorter */
-	this->sorter         = new AIListSorterValueDescending(this);
+	this->sorter         = new ScriptListSorterValueDescending(this);
 	this->sorter_type    = SORT_BY_VALUE;
 	this->sort_ascending = false;
 	this->initialized    = false;
 	this->modifications  = 0;
 }
 
-AIList::~AIList()
+ScriptList::~ScriptList()
 {
 	delete this->sorter;
 }
 
-bool AIList::HasItem(int32 item)
+bool ScriptList::HasItem(int32 item)
 {
 	return this->items.count(item) == 1;
 }
 
-void AIList::Clear()
+void ScriptList::Clear()
 {
 	this->modifications++;
 
@@ -410,7 +410,7 @@ void AIList::Clear()
 	this->sorter->End();
 }
 
-void AIList::AddItem(int32 item, int32 value)
+void ScriptList::AddItem(int32 item, int32 value)
 {
 	this->modifications++;
 
@@ -422,7 +422,7 @@ void AIList::AddItem(int32 item, int32 value)
 	this->SetValue(item, value);
 }
 
-void AIList::RemoveItem(int32 item)
+void ScriptList::RemoveItem(int32 item)
 {
 	this->modifications++;
 
@@ -436,13 +436,13 @@ void AIList::RemoveItem(int32 item)
 	this->items.erase(item);
 }
 
-int32 AIList::Begin()
+int32 ScriptList::Begin()
 {
 	this->initialized = true;
 	return this->sorter->Begin();
 }
 
-int32 AIList::Next()
+int32 ScriptList::Next()
 {
 	if (this->initialized == false) {
 		DEBUG(ai, 0, "Next() is invalid as Begin() is never called");
@@ -451,12 +451,12 @@ int32 AIList::Next()
 	return this->sorter->Next();
 }
 
-bool AIList::IsEmpty()
+bool ScriptList::IsEmpty()
 {
 	return this->items.empty();
 }
 
-bool AIList::IsEnd()
+bool ScriptList::IsEnd()
 {
 	if (this->initialized == false) {
 		DEBUG(ai, 0, "IsEnd() is invalid as Begin() is never called");
@@ -465,19 +465,19 @@ bool AIList::IsEnd()
 	return this->sorter->IsEnd();
 }
 
-int32 AIList::Count()
+int32 ScriptList::Count()
 {
 	return (int32)this->items.size();
 }
 
-int32 AIList::GetValue(int32 item)
+int32 ScriptList::GetValue(int32 item)
 {
 	if (!this->HasItem(item)) return 0;
 
 	return this->items[item];
 }
 
-bool AIList::SetValue(int32 item, int32 value)
+bool ScriptList::SetValue(int32 item, int32 value)
 {
 	this->modifications++;
 
@@ -495,7 +495,7 @@ bool AIList::SetValue(int32 item, int32 value)
 	return true;
 }
 
-void AIList::Sort(SorterType sorter, bool ascending)
+void ScriptList::Sort(SorterType sorter, bool ascending)
 {
 	this->modifications++;
 
@@ -506,17 +506,17 @@ void AIList::Sort(SorterType sorter, bool ascending)
 	switch (sorter) {
 		case SORT_BY_ITEM:
 			if (ascending) {
-				this->sorter = new AIListSorterItemAscending(this);
+				this->sorter = new ScriptListSorterItemAscending(this);
 			} else {
-				this->sorter = new AIListSorterItemDescending(this);
+				this->sorter = new ScriptListSorterItemDescending(this);
 			}
 			break;
 
 		case SORT_BY_VALUE:
 			if (ascending) {
-				this->sorter = new AIListSorterValueAscending(this);
+				this->sorter = new ScriptListSorterValueAscending(this);
 			} else {
-				this->sorter = new AIListSorterValueDescending(this);
+				this->sorter = new ScriptListSorterValueDescending(this);
 			}
 			break;
 
@@ -529,56 +529,56 @@ void AIList::Sort(SorterType sorter, bool ascending)
 	this->initialized    = false;
 }
 
-void AIList::AddList(AIList *list)
+void ScriptList::AddList(ScriptList *list)
 {
-	AIListMap *list_items = &list->items;
-	for (AIListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
+	ScriptListMap *list_items = &list->items;
+	for (ScriptListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
 		this->AddItem((*iter).first);
 		this->SetValue((*iter).first, (*iter).second);
 	}
 }
 
-void AIList::RemoveAboveValue(int32 value)
+void ScriptList::RemoveAboveValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second > value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::RemoveBelowValue(int32 value)
+void ScriptList::RemoveBelowValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second < value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::RemoveBetweenValue(int32 start, int32 end)
+void ScriptList::RemoveBetweenValue(int32 start, int32 end)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second > start && (*iter).second < end) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::RemoveValue(int32 value)
+void ScriptList::RemoveValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second == value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::RemoveTop(int32 count)
+void ScriptList::RemoveTop(int32 count)
 {
 	this->modifications++;
 
@@ -592,7 +592,7 @@ void AIList::RemoveTop(int32 count)
 	switch (this->sorter_type) {
 		default: NOT_REACHED();
 		case SORT_BY_VALUE:
-			for (AIListBucket::iterator iter = this->buckets.begin(); iter != this->buckets.end(); iter = this->buckets.begin()) {
+			for (ScriptListBucket::iterator iter = this->buckets.begin(); iter != this->buckets.end(); iter = this->buckets.begin()) {
 				AIItemList *items = &(*iter).second;
 				size_t size = items->size();
 				for (AIItemList::iterator iter = items->begin(); iter != items->end(); iter = items->begin()) {
@@ -607,7 +607,7 @@ void AIList::RemoveTop(int32 count)
 			break;
 
 		case SORT_BY_ITEM:
-			for (AIListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter = this->items.begin()) {
+			for (ScriptListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter = this->items.begin()) {
 				if (--count < 0) return;
 				this->RemoveItem((*iter).first);
 			}
@@ -615,7 +615,7 @@ void AIList::RemoveTop(int32 count)
 	}
 }
 
-void AIList::RemoveBottom(int32 count)
+void ScriptList::RemoveBottom(int32 count)
 {
 	this->modifications++;
 
@@ -629,7 +629,7 @@ void AIList::RemoveBottom(int32 count)
 	switch (this->sorter_type) {
 		default: NOT_REACHED();
 		case SORT_BY_VALUE:
-			for (AIListBucket::reverse_iterator iter = this->buckets.rbegin(); iter != this->buckets.rend(); iter = this->buckets.rbegin()) {
+			for (ScriptListBucket::reverse_iterator iter = this->buckets.rbegin(); iter != this->buckets.rend(); iter = this->buckets.rbegin()) {
 				AIItemList *items = &(*iter).second;
 				size_t size = items->size();
 				for (AIItemList::reverse_iterator iter = items->rbegin(); iter != items->rend(); iter = items->rbegin()) {
@@ -643,7 +643,7 @@ void AIList::RemoveBottom(int32 count)
 			}
 
 		case SORT_BY_ITEM:
-			for (AIListMap::reverse_iterator iter = this->items.rbegin(); iter != this->items.rend(); iter = this->items.rbegin()) {
+			for (ScriptListMap::reverse_iterator iter = this->items.rbegin(); iter != this->items.rend(); iter = this->items.rbegin()) {
 				if (--count < 0) return;
 				this->RemoveItem((*iter).first);
 			}
@@ -651,76 +651,76 @@ void AIList::RemoveBottom(int32 count)
 	}
 }
 
-void AIList::RemoveList(AIList *list)
+void ScriptList::RemoveList(ScriptList *list)
 {
 	this->modifications++;
 
-	AIListMap *list_items = &list->items;
-	for (AIListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
+	ScriptListMap *list_items = &list->items;
+	for (ScriptListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
 		this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::KeepAboveValue(int32 value)
+void ScriptList::KeepAboveValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second <= value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::KeepBelowValue(int32 value)
+void ScriptList::KeepBelowValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second >= value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::KeepBetweenValue(int32 start, int32 end)
+void ScriptList::KeepBetweenValue(int32 start, int32 end)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second <= start || (*iter).second >= end) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::KeepValue(int32 value)
+void ScriptList::KeepValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second != value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIList::KeepTop(int32 count)
+void ScriptList::KeepTop(int32 count)
 {
 	this->modifications++;
 
 	this->RemoveBottom(this->Count() - count);
 }
 
-void AIList::KeepBottom(int32 count)
+void ScriptList::KeepBottom(int32 count)
 {
 	this->modifications++;
 
 	this->RemoveTop(this->Count() - count);
 }
 
-void AIList::KeepList(AIList *list)
+void ScriptList::KeepList(ScriptList *list)
 {
 	this->modifications++;
 
-	AIList tmp;
-	for (AIListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
+	ScriptList tmp;
+	for (ScriptListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
 		tmp.AddItem((*iter).first);
 		tmp.SetValue((*iter).first, (*iter).second);
 	}
@@ -729,7 +729,7 @@ void AIList::KeepList(AIList *list)
 	this->RemoveList(&tmp);
 }
 
-SQInteger AIList::_get(HSQUIRRELVM vm)
+SQInteger ScriptList::_get(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 
@@ -742,7 +742,7 @@ SQInteger AIList::_get(HSQUIRRELVM vm)
 	return 1;
 }
 
-SQInteger AIList::_set(HSQUIRRELVM vm)
+SQInteger ScriptList::_set(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 	if (sq_gettype(vm, 3) != OT_INTEGER || sq_gettype(vm, 3) == OT_NULL) {
@@ -766,7 +766,7 @@ SQInteger AIList::_set(HSQUIRRELVM vm)
 	return 0;
 }
 
-SQInteger AIList::_nexti(HSQUIRRELVM vm)
+SQInteger ScriptList::_nexti(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) == OT_NULL) {
 		if (this->IsEmpty()) {
@@ -790,15 +790,15 @@ SQInteger AIList::_nexti(HSQUIRRELVM vm)
 	return 1;
 }
 
-SQInteger AIList::Valuate(HSQUIRRELVM vm)
+SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 {
 	this->modifications++;
 
-	/* The first parameter is the instance of AIList. */
+	/* The first parameter is the instance of ScriptList. */
 	int nparam = sq_gettop(vm) - 1;
 
 	if (nparam < 1) {
-		return sq_throwerror(vm, _SC("You need to give a least a Valuator as parameter to AIList::Valuate"));
+		return sq_throwerror(vm, _SC("You need to give a least a Valuator as parameter to ScriptList::Valuate"));
 	}
 
 	/* Make sure the valuator function is really a function, and not any
@@ -811,13 +811,13 @@ SQInteger AIList::Valuate(HSQUIRRELVM vm)
 
 	/* Don't allow docommand from a Valuator, as we can't resume in
 	 * mid C++-code. */
-	bool backup_allow = AIObject::GetAllowDoCommand();
-	AIObject::SetAllowDoCommand(false);
+	bool backup_allow = ScriptObject::GetAllowDoCommand();
+	ScriptObject::SetAllowDoCommand(false);
 
 	/* Push the function to call */
 	sq_push(vm, 2);
 
-	for (AIListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
+	for (ScriptListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
 		/* Check for changing of items. */
 		int previous_modification_count = this->modifications;
 
@@ -831,7 +831,7 @@ SQInteger AIList::Valuate(HSQUIRRELVM vm)
 
 		/* Call the function. Squirrel pops all parameters and pushes the return value. */
 		if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
-			AIObject::SetAllowDoCommand(backup_allow);
+			ScriptObject::SetAllowDoCommand(backup_allow);
 			return SQ_ERROR;
 		}
 
@@ -854,7 +854,7 @@ SQInteger AIList::Valuate(HSQUIRRELVM vm)
 				/* See below for explanation. The extra pop is the return value. */
 				sq_pop(vm, nparam + 4);
 
-				AIObject::SetAllowDoCommand(backup_allow);
+				ScriptObject::SetAllowDoCommand(backup_allow);
 				return sq_throwerror(vm, _SC("return value of valuator is not valid (not integer/bool)"));
 			}
 		}
@@ -864,7 +864,7 @@ SQInteger AIList::Valuate(HSQUIRRELVM vm)
 			/* See below for explanation. The extra pop is the return value. */
 			sq_pop(vm, nparam + 4);
 
-			AIObject::SetAllowDoCommand(backup_allow);
+			ScriptObject::SetAllowDoCommand(backup_allow);
 			return sq_throwerror(vm, _SC("modifying valuated list outside of valuator function"));
 		}
 
@@ -879,9 +879,9 @@ SQInteger AIList::Valuate(HSQUIRRELVM vm)
 	 * 1. The root stable (as instance object).
 	 * 2. The valuator function.
 	 * 3. The parameters given to this function.
-	 * 4. The AIList instance object. */
+	 * 4. The ScriptList instance object. */
 	sq_pop(vm, nparam + 3);
 
-	AIObject::SetAllowDoCommand(backup_allow);
+	ScriptObject::SetAllowDoCommand(backup_allow);
 	return 0;
 }

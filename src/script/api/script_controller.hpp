@@ -16,23 +16,24 @@
 #include <map>
 
 /**
- * The Controller, the class each AI should extend. It creates the AI, makes
- *  sure the logic kicks in correctly, and that GetTick() has a valid value.
+ * The Controller, the class each Script should extend. It creates the Script,
+ *  makes sure the logic kicks in correctly, and that GetTick() has a valid
+ *  value.
  */
-class AIController {
+class ScriptController {
 	friend class AIScanner;
 	friend class AIInstance;
 
 public:
 	/**
-	 * Initializer of the AIController.
+	 * Initializer of the ScriptController.
 	 */
-	AIController();
+	ScriptController();
 
 	/**
-	 * Destructor of the AIController.
+	 * Destructor of the ScriptController.
 	 */
-	~AIController();
+	~ScriptController();
 
 	/**
 	 * This function is called to start your AI. Your AI starts here. If you
@@ -105,7 +106,7 @@ public:
 	 *  Squirrel calls this when 'print' is used, or when the script made an error.
 	 * @param error_msg If true, it is a Squirrel error message.
 	 * @param message The message Squirrel logged.
-	 * @note Use AILog.Info/Warning/Error instead of 'print'.
+	 * @note Use ScriptLog.Info/Warning/Error instead of 'print'.
 	 */
 	static void Print(bool error_msg, const char *message);
 

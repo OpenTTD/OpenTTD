@@ -7,15 +7,15 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_industrytypelist.cpp Implementation of AIIndustryTypeList. */
+/** @file script_industrytypelist.cpp Implementation of ScriptIndustryTypeList. */
 
 #include "../../stdafx.h"
 #include "script_industrytypelist.hpp"
 #include "../../industry.h"
 
-AIIndustryTypeList::AIIndustryTypeList()
+ScriptIndustryTypeList::ScriptIndustryTypeList()
 {
 	for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
-		if (AIIndustryType::IsValidIndustryType(i)) this->AddItem(i);
+		if (ScriptIndustryType::IsValidIndustryType(i)) this->AddItem(i);
 	}
 }

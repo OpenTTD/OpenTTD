@@ -703,7 +703,7 @@ void Vehicle::HandlePathfindingResult(bool path_found)
 	/* It is first time the problem occurred, set the "lost" flag. */
 	SetBit(this->vehicle_flags, VF_PATHFINDER_LOST);
 	/* Notify user about the event. */
-	AI::NewEvent(this->owner, new AIEventVehicleLost(this->index));
+	AI::NewEvent(this->owner, new ScriptEventVehicleLost(this->index));
 	if (_settings_client.gui.lost_vehicle_warn && this->owner == _local_company) {
 		SetDParam(0, this->index);
 		AddVehicleNewsItem(STR_NEWS_VEHICLE_IS_LOST, NS_ADVICE, this->index);
@@ -1380,7 +1380,7 @@ void VehicleEnterDepot(Vehicle *v)
 				SetDParam(0, v->index);
 				AddVehicleNewsItem(STR_NEWS_TRAIN_IS_WAITING + v->type, NS_ADVICE, v->index);
 			}
-			AI::NewEvent(v->owner, new AIEventVehicleWaitingInDepot(v->index));
+			AI::NewEvent(v->owner, new ScriptEventVehicleWaitingInDepot(v->index));
 		}
 	}
 }
@@ -2389,7 +2389,7 @@ void VehiclesYearlyLoop()
 						v->index
 					);
 				}
-				AI::NewEvent(v->owner, new AIEventVehicleUnprofitable(v->index));
+				AI::NewEvent(v->owner, new ScriptEventVehicleUnprofitable(v->index));
 			}
 
 			v->profit_last_year = v->profit_this_year;

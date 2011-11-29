@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_cargo.cpp Implementation of AICargo. */
+/** @file script_cargo.cpp Implementation of ScriptCargo. */
 
 #include "../../stdafx.h"
 #include "script_cargo.hpp"
@@ -15,17 +15,17 @@
 #include "../../economy_func.h"
 #include "../../core/bitmath_func.hpp"
 
-/* static */ bool AICargo::IsValidCargo(CargoID cargo_type)
+/* static */ bool ScriptCargo::IsValidCargo(CargoID cargo_type)
 {
 	return (cargo_type < NUM_CARGO && ::CargoSpec::Get(cargo_type)->IsValid());
 }
 
-/* static */ bool AICargo::IsValidTownEffect(TownEffect towneffect_type)
+/* static */ bool ScriptCargo::IsValidTownEffect(TownEffect towneffect_type)
 {
 	return (towneffect_type >= (TownEffect)TE_BEGIN && towneffect_type < (TownEffect)TE_END);
 }
 
-/* static */ char *AICargo::GetCargoLabel(CargoID cargo_type)
+/* static */ char *ScriptCargo::GetCargoLabel(CargoID cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return NULL;
 	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
@@ -40,27 +40,27 @@
 	return cargo_label;
 }
 
-/* static */ bool AICargo::IsFreight(CargoID cargo_type)
+/* static */ bool ScriptCargo::IsFreight(CargoID cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return false;
 	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
 	return cargo->is_freight;
 }
 
-/* static */ bool AICargo::HasCargoClass(CargoID cargo_type, CargoClass cargo_class)
+/* static */ bool ScriptCargo::HasCargoClass(CargoID cargo_type, CargoClass cargo_class)
 {
 	if (!IsValidCargo(cargo_type)) return false;
 	return ::IsCargoInClass(cargo_type, (::CargoClass)cargo_class);
 }
 
-/* static */ AICargo::TownEffect AICargo::GetTownEffect(CargoID cargo_type)
+/* static */ ScriptCargo::TownEffect ScriptCargo::GetTownEffect(CargoID cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return TE_NONE;
 
-	return (AICargo::TownEffect)::CargoSpec::Get(cargo_type)->town_effect;
+	return (ScriptCargo::TownEffect)::CargoSpec::Get(cargo_type)->town_effect;
 }
 
-/* static */ Money AICargo::GetCargoIncome(CargoID cargo_type, uint32 distance, uint32 days_in_transit)
+/* static */ Money ScriptCargo::GetCargoIncome(CargoID cargo_type, uint32 distance, uint32 days_in_transit)
 {
 	if (!IsValidCargo(cargo_type)) return -1;
 	return ::GetTransportedGoodsIncome(1, distance, Clamp(days_in_transit * 2 / 5, 0, 255), cargo_type);

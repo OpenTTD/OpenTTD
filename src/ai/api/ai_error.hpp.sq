@@ -13,116 +13,116 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AIError::ErrorCategories GetParam(ForceType<AIError::ErrorCategories>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIError::ErrorCategories)tmp; }
-	template <> inline int Return<AIError::ErrorCategories>(HSQUIRRELVM vm, AIError::ErrorCategories res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AIError::ErrorMessages GetParam(ForceType<AIError::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIError::ErrorMessages)tmp; }
-	template <> inline int Return<AIError::ErrorMessages>(HSQUIRRELVM vm, AIError::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptError::ErrorCategories GetParam(ForceType<ScriptError::ErrorCategories>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptError::ErrorCategories)tmp; }
+	template <> inline int Return<ScriptError::ErrorCategories>(HSQUIRRELVM vm, ScriptError::ErrorCategories res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptError::ErrorMessages GetParam(ForceType<ScriptError::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptError::ErrorMessages)tmp; }
+	template <> inline int Return<ScriptError::ErrorMessages>(HSQUIRRELVM vm, ScriptError::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AIError to be used as Squirrel parameter */
-	template <> inline AIError *GetParam(ForceType<AIError *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIError *)instance; }
-	template <> inline AIError &GetParam(ForceType<AIError &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIError *)instance; }
-	template <> inline const AIError *GetParam(ForceType<const AIError *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIError *)instance; }
-	template <> inline const AIError &GetParam(ForceType<const AIError &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIError *)instance; }
-	template <> inline int Return<AIError *>(HSQUIRRELVM vm, AIError *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Error", res, NULL, DefSQDestructorCallback<AIError>, true); return 1; }
+	/* Allow ScriptError to be used as Squirrel parameter */
+	template <> inline ScriptError *GetParam(ForceType<ScriptError *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptError *)instance; }
+	template <> inline ScriptError &GetParam(ForceType<ScriptError &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptError *)instance; }
+	template <> inline const ScriptError *GetParam(ForceType<const ScriptError *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptError *)instance; }
+	template <> inline const ScriptError &GetParam(ForceType<const ScriptError &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptError *)instance; }
+	template <> inline int Return<ScriptError *>(HSQUIRRELVM vm, ScriptError *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Error", res, NULL, DefSQDestructorCallback<ScriptError>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIError, ST_AI>() { return "AIError"; }
+template <> const char *GetClassName<ScriptError, ST_AI>() { return "AIError"; }
 
 void SQAIError_Register(Squirrel *engine)
 {
-	DefSQClass<AIError, ST_AI> SQAIError("AIError");
+	DefSQClass<ScriptError, ST_AI> SQAIError("AIError");
 	SQAIError.PreRegister(engine);
-	SQAIError.AddConstructor<void (AIError::*)(), 1>(engine, "x");
+	SQAIError.AddConstructor<void (ScriptError::*)(), 1>(engine, "x");
 
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_NONE,                     "ERR_CAT_NONE");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_GENERAL,                  "ERR_CAT_GENERAL");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_VEHICLE,                  "ERR_CAT_VEHICLE");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_STATION,                  "ERR_CAT_STATION");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_BRIDGE,                   "ERR_CAT_BRIDGE");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_TUNNEL,                   "ERR_CAT_TUNNEL");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_TILE,                     "ERR_CAT_TILE");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_SIGN,                     "ERR_CAT_SIGN");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_RAIL,                     "ERR_CAT_RAIL");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_ROAD,                     "ERR_CAT_ROAD");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_ORDER,                    "ERR_CAT_ORDER");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_MARINE,                   "ERR_CAT_MARINE");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_WAYPOINT,                 "ERR_CAT_WAYPOINT");
-	SQAIError.DefSQConst(engine, AIError::ERR_CAT_BIT_SIZE,                 "ERR_CAT_BIT_SIZE");
-	SQAIError.DefSQConst(engine, AIError::ERR_NONE,                         "ERR_NONE");
-	SQAIError.DefSQConst(engine, AIError::ERR_UNKNOWN,                      "ERR_UNKNOWN");
-	SQAIError.DefSQConst(engine, AIError::ERR_PRECONDITION_FAILED,          "ERR_PRECONDITION_FAILED");
-	SQAIError.DefSQConst(engine, AIError::ERR_PRECONDITION_STRING_TOO_LONG, "ERR_PRECONDITION_STRING_TOO_LONG");
-	SQAIError.DefSQConst(engine, AIError::ERR_NEWGRF_SUPPLIED_ERROR,        "ERR_NEWGRF_SUPPLIED_ERROR");
-	SQAIError.DefSQConst(engine, AIError::ERR_GENERAL_BASE,                 "ERR_GENERAL_BASE");
-	SQAIError.DefSQConst(engine, AIError::ERR_NOT_ENOUGH_CASH,              "ERR_NOT_ENOUGH_CASH");
-	SQAIError.DefSQConst(engine, AIError::ERR_LOCAL_AUTHORITY_REFUSES,      "ERR_LOCAL_AUTHORITY_REFUSES");
-	SQAIError.DefSQConst(engine, AIError::ERR_ALREADY_BUILT,                "ERR_ALREADY_BUILT");
-	SQAIError.DefSQConst(engine, AIError::ERR_AREA_NOT_CLEAR,               "ERR_AREA_NOT_CLEAR");
-	SQAIError.DefSQConst(engine, AIError::ERR_OWNED_BY_ANOTHER_COMPANY,     "ERR_OWNED_BY_ANOTHER_COMPANY");
-	SQAIError.DefSQConst(engine, AIError::ERR_NAME_IS_NOT_UNIQUE,           "ERR_NAME_IS_NOT_UNIQUE");
-	SQAIError.DefSQConst(engine, AIError::ERR_FLAT_LAND_REQUIRED,           "ERR_FLAT_LAND_REQUIRED");
-	SQAIError.DefSQConst(engine, AIError::ERR_LAND_SLOPED_WRONG,            "ERR_LAND_SLOPED_WRONG");
-	SQAIError.DefSQConst(engine, AIError::ERR_VEHICLE_IN_THE_WAY,           "ERR_VEHICLE_IN_THE_WAY");
-	SQAIError.DefSQConst(engine, AIError::ERR_SITE_UNSUITABLE,              "ERR_SITE_UNSUITABLE");
-	SQAIError.DefSQConst(engine, AIError::ERR_TOO_CLOSE_TO_EDGE,            "ERR_TOO_CLOSE_TO_EDGE");
-	SQAIError.DefSQConst(engine, AIError::ERR_STATION_TOO_SPREAD_OUT,       "ERR_STATION_TOO_SPREAD_OUT");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_NONE,                     "ERR_CAT_NONE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_GENERAL,                  "ERR_CAT_GENERAL");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_VEHICLE,                  "ERR_CAT_VEHICLE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_STATION,                  "ERR_CAT_STATION");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_BRIDGE,                   "ERR_CAT_BRIDGE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_TUNNEL,                   "ERR_CAT_TUNNEL");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_TILE,                     "ERR_CAT_TILE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_SIGN,                     "ERR_CAT_SIGN");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_RAIL,                     "ERR_CAT_RAIL");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_ROAD,                     "ERR_CAT_ROAD");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_ORDER,                    "ERR_CAT_ORDER");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_MARINE,                   "ERR_CAT_MARINE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_WAYPOINT,                 "ERR_CAT_WAYPOINT");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_CAT_BIT_SIZE,                 "ERR_CAT_BIT_SIZE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_NONE,                         "ERR_NONE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_UNKNOWN,                      "ERR_UNKNOWN");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_PRECONDITION_FAILED,          "ERR_PRECONDITION_FAILED");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, "ERR_PRECONDITION_STRING_TOO_LONG");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_NEWGRF_SUPPLIED_ERROR,        "ERR_NEWGRF_SUPPLIED_ERROR");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_GENERAL_BASE,                 "ERR_GENERAL_BASE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_NOT_ENOUGH_CASH,              "ERR_NOT_ENOUGH_CASH");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_LOCAL_AUTHORITY_REFUSES,      "ERR_LOCAL_AUTHORITY_REFUSES");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_ALREADY_BUILT,                "ERR_ALREADY_BUILT");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_AREA_NOT_CLEAR,               "ERR_AREA_NOT_CLEAR");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY,     "ERR_OWNED_BY_ANOTHER_COMPANY");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_NAME_IS_NOT_UNIQUE,           "ERR_NAME_IS_NOT_UNIQUE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_FLAT_LAND_REQUIRED,           "ERR_FLAT_LAND_REQUIRED");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_LAND_SLOPED_WRONG,            "ERR_LAND_SLOPED_WRONG");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_VEHICLE_IN_THE_WAY,           "ERR_VEHICLE_IN_THE_WAY");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_SITE_UNSUITABLE,              "ERR_SITE_UNSUITABLE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_TOO_CLOSE_TO_EDGE,            "ERR_TOO_CLOSE_TO_EDGE");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_STATION_TOO_SPREAD_OUT,       "ERR_STATION_TOO_SPREAD_OUT");
 
-	AIError::RegisterErrorMap(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY,          AIError::ERR_NOT_ENOUGH_CASH);
-	AIError::RegisterErrorMap(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS,      AIError::ERR_LOCAL_AUTHORITY_REFUSES);
-	AIError::RegisterErrorMap(STR_ERROR_ALREADY_BUILT,                              AIError::ERR_ALREADY_BUILT);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 AIError::ERR_ALREADY_BUILT);
-	AIError::RegisterErrorMap(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED,                AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_RAILROAD,                     AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST,                AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST,     AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST,          AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST, AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST,            AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_BUOY_IN_THE_WAY,                            AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST,                   AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY,                  AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_COMPANY_HEADQUARTERS_IN,                    AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_OBJECT_IN_THE_WAY,                          AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_REMOVE_ROAD_FIRST,                     AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK,                 AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST,                 AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE,                    AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER,                   AIError::ERR_OWNED_BY_ANOTHER_COMPANY);
-	AIError::RegisterErrorMap(STR_ERROR_OWNED_BY,                                   AIError::ERR_OWNED_BY_ANOTHER_COMPANY);
-	AIError::RegisterErrorMap(STR_ERROR_NAME_MUST_BE_UNIQUE,                        AIError::ERR_NAME_IS_NOT_UNIQUE);
-	AIError::RegisterErrorMap(STR_ERROR_FLAT_LAND_REQUIRED,                         AIError::ERR_FLAT_LAND_REQUIRED);
-	AIError::RegisterErrorMap(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION,             AIError::ERR_LAND_SLOPED_WRONG);
-	AIError::RegisterErrorMap(STR_ERROR_TRAIN_IN_THE_WAY,                           AIError::ERR_VEHICLE_IN_THE_WAY);
-	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_IN_THE_WAY,                    AIError::ERR_VEHICLE_IN_THE_WAY);
-	AIError::RegisterErrorMap(STR_ERROR_SHIP_IN_THE_WAY,                            AIError::ERR_VEHICLE_IN_THE_WAY);
-	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IN_THE_WAY,                        AIError::ERR_VEHICLE_IN_THE_WAY);
-	AIError::RegisterErrorMap(STR_ERROR_SITE_UNSUITABLE,                            AIError::ERR_SITE_UNSUITABLE);
-	AIError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP,                   AIError::ERR_TOO_CLOSE_TO_EDGE);
-	AIError::RegisterErrorMap(STR_ERROR_STATION_TOO_SPREAD_OUT,                     AIError::ERR_STATION_TOO_SPREAD_OUT);
+	ScriptError::RegisterErrorMap(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY,          ScriptError::ERR_NOT_ENOUGH_CASH);
+	ScriptError::RegisterErrorMap(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS,      ScriptError::ERR_LOCAL_AUTHORITY_REFUSES);
+	ScriptError::RegisterErrorMap(STR_ERROR_ALREADY_BUILT,                              ScriptError::ERR_ALREADY_BUILT);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 ScriptError::ERR_ALREADY_BUILT);
+	ScriptError::RegisterErrorMap(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED,                ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_RAILROAD,                     ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST,                ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST,     ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST,          ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST, ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST,            ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_BUOY_IN_THE_WAY,                            ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST,                   ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY,                  ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_COMPANY_HEADQUARTERS_IN,                    ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_OBJECT_IN_THE_WAY,                          ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_REMOVE_ROAD_FIRST,                     ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_REMOVE_RAILROAD_TRACK,                 ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST,                 ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST,                 ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE,                    ScriptError::ERR_AREA_NOT_CLEAR);
+	ScriptError::RegisterErrorMap(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER,                   ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY);
+	ScriptError::RegisterErrorMap(STR_ERROR_OWNED_BY,                                   ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY);
+	ScriptError::RegisterErrorMap(STR_ERROR_NAME_MUST_BE_UNIQUE,                        ScriptError::ERR_NAME_IS_NOT_UNIQUE);
+	ScriptError::RegisterErrorMap(STR_ERROR_FLAT_LAND_REQUIRED,                         ScriptError::ERR_FLAT_LAND_REQUIRED);
+	ScriptError::RegisterErrorMap(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION,             ScriptError::ERR_LAND_SLOPED_WRONG);
+	ScriptError::RegisterErrorMap(STR_ERROR_TRAIN_IN_THE_WAY,                           ScriptError::ERR_VEHICLE_IN_THE_WAY);
+	ScriptError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_IN_THE_WAY,                    ScriptError::ERR_VEHICLE_IN_THE_WAY);
+	ScriptError::RegisterErrorMap(STR_ERROR_SHIP_IN_THE_WAY,                            ScriptError::ERR_VEHICLE_IN_THE_WAY);
+	ScriptError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IN_THE_WAY,                        ScriptError::ERR_VEHICLE_IN_THE_WAY);
+	ScriptError::RegisterErrorMap(STR_ERROR_SITE_UNSUITABLE,                            ScriptError::ERR_SITE_UNSUITABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP,                   ScriptError::ERR_TOO_CLOSE_TO_EDGE);
+	ScriptError::RegisterErrorMap(STR_ERROR_STATION_TOO_SPREAD_OUT,                     ScriptError::ERR_STATION_TOO_SPREAD_OUT);
 
-	AIError::RegisterErrorMapString(AIError::ERR_NONE,                         "ERR_NONE");
-	AIError::RegisterErrorMapString(AIError::ERR_UNKNOWN,                      "ERR_UNKNOWN");
-	AIError::RegisterErrorMapString(AIError::ERR_PRECONDITION_FAILED,          "ERR_PRECONDITION_FAILED");
-	AIError::RegisterErrorMapString(AIError::ERR_PRECONDITION_STRING_TOO_LONG, "ERR_PRECONDITION_STRING_TOO_LONG");
-	AIError::RegisterErrorMapString(AIError::ERR_NEWGRF_SUPPLIED_ERROR,        "ERR_NEWGRF_SUPPLIED_ERROR");
-	AIError::RegisterErrorMapString(AIError::ERR_NOT_ENOUGH_CASH,              "ERR_NOT_ENOUGH_CASH");
-	AIError::RegisterErrorMapString(AIError::ERR_LOCAL_AUTHORITY_REFUSES,      "ERR_LOCAL_AUTHORITY_REFUSES");
-	AIError::RegisterErrorMapString(AIError::ERR_ALREADY_BUILT,                "ERR_ALREADY_BUILT");
-	AIError::RegisterErrorMapString(AIError::ERR_AREA_NOT_CLEAR,               "ERR_AREA_NOT_CLEAR");
-	AIError::RegisterErrorMapString(AIError::ERR_OWNED_BY_ANOTHER_COMPANY,     "ERR_OWNED_BY_ANOTHER_COMPANY");
-	AIError::RegisterErrorMapString(AIError::ERR_NAME_IS_NOT_UNIQUE,           "ERR_NAME_IS_NOT_UNIQUE");
-	AIError::RegisterErrorMapString(AIError::ERR_FLAT_LAND_REQUIRED,           "ERR_FLAT_LAND_REQUIRED");
-	AIError::RegisterErrorMapString(AIError::ERR_LAND_SLOPED_WRONG,            "ERR_LAND_SLOPED_WRONG");
-	AIError::RegisterErrorMapString(AIError::ERR_VEHICLE_IN_THE_WAY,           "ERR_VEHICLE_IN_THE_WAY");
-	AIError::RegisterErrorMapString(AIError::ERR_SITE_UNSUITABLE,              "ERR_SITE_UNSUITABLE");
-	AIError::RegisterErrorMapString(AIError::ERR_TOO_CLOSE_TO_EDGE,            "ERR_TOO_CLOSE_TO_EDGE");
-	AIError::RegisterErrorMapString(AIError::ERR_STATION_TOO_SPREAD_OUT,       "ERR_STATION_TOO_SPREAD_OUT");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_NONE,                         "ERR_NONE");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_UNKNOWN,                      "ERR_UNKNOWN");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_PRECONDITION_FAILED,          "ERR_PRECONDITION_FAILED");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, "ERR_PRECONDITION_STRING_TOO_LONG");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_NEWGRF_SUPPLIED_ERROR,        "ERR_NEWGRF_SUPPLIED_ERROR");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_NOT_ENOUGH_CASH,              "ERR_NOT_ENOUGH_CASH");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_LOCAL_AUTHORITY_REFUSES,      "ERR_LOCAL_AUTHORITY_REFUSES");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_ALREADY_BUILT,                "ERR_ALREADY_BUILT");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_AREA_NOT_CLEAR,               "ERR_AREA_NOT_CLEAR");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY,     "ERR_OWNED_BY_ANOTHER_COMPANY");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_NAME_IS_NOT_UNIQUE,           "ERR_NAME_IS_NOT_UNIQUE");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_FLAT_LAND_REQUIRED,           "ERR_FLAT_LAND_REQUIRED");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_LAND_SLOPED_WRONG,            "ERR_LAND_SLOPED_WRONG");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_VEHICLE_IN_THE_WAY,           "ERR_VEHICLE_IN_THE_WAY");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_SITE_UNSUITABLE,              "ERR_SITE_UNSUITABLE");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_TOO_CLOSE_TO_EDGE,            "ERR_TOO_CLOSE_TO_EDGE");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_STATION_TOO_SPREAD_OUT,       "ERR_STATION_TOO_SPREAD_OUT");
 
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetErrorCategory,   "GetErrorCategory",   1, ".");
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastError,       "GetLastError",       1, ".");
-	SQAIError.DefSQStaticMethod(engine, &AIError::GetLastErrorString, "GetLastErrorString", 1, ".");
+	SQAIError.DefSQStaticMethod(engine, &ScriptError::GetErrorCategory,   "GetErrorCategory",   1, ".");
+	SQAIError.DefSQStaticMethod(engine, &ScriptError::GetLastError,       "GetLastError",       1, ".");
+	SQAIError.DefSQStaticMethod(engine, &ScriptError::GetLastErrorString, "GetLastErrorString", 1, ".");
 
 	SQAIError.PostRegister(engine);
 }

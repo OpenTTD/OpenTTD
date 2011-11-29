@@ -17,7 +17,7 @@
 /**
  * Class that handles all sign related functions.
  */
-class AISign : public AIObject {
+class ScriptSign : public ScriptObject {
 public:
 	/**
 	 * All sign related error messages.
@@ -25,7 +25,7 @@ public:
 	enum ErrorMessages {
 
 		/** Base for sign building related errors */
-		ERR_SIGN_BASE = AIError::ERR_CAT_SIGN << AIError::ERR_CAT_BIT_SIZE,
+		ERR_SIGN_BASE = ScriptError::ERR_CAT_SIGN << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Too many signs have been placed */
 		ERR_SIGN_TOO_MANY_SIGNS,             // [STR_ERROR_TOO_MANY_SIGNS]
@@ -45,7 +45,7 @@ public:
 	 * @pre IsValidSign(sign_id).
 	 * @pre 'name' must have at least one character.
 	 * @pre 'name' must have at most 30 characters.
-	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
 	static bool SetName(SignID sign_id, const char *name);
@@ -70,10 +70,10 @@ public:
 	 * Builds a sign on the map.
 	 * @param location The place to build the sign.
 	 * @param text The text to place on the sign.
-	 * @pre AIMap::IsValidTile(location).
+	 * @pre ScriptMap::IsValidTile(location).
 	 * @pre 'text' must have at least one character.
 	 * @pre 'text' must have at most 30 characters.
-	 * @exception AISign::ERR_SIGN_TOO_MANY_SIGNS
+	 * @exception ScriptSign::ERR_SIGN_TOO_MANY_SIGNS
 	 * @return The SignID of the build sign (use IsValidSign() to check for validity).
 	 *   In test-mode it returns 0 if successful, or any other value to indicate
 	 *   failure.

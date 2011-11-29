@@ -29,10 +29,10 @@ typedef bool (AIModeProc)();
  * The storage for each AI. It keeps track of important information.
  */
 class AIStorage {
-friend class AIObject;
+friend class ScriptObject;
 private:
 	AIModeProc *mode;                ///< The current build mode we are int.
-	class AIObject *mode_instance;   ///< The instance belonging to the current build mode.
+	class ScriptObject *mode_instance; ///< The instance belonging to the current build mode.
 
 	uint delay;                      ///< The ticks of delay each DoCommand has.
 	bool allow_do_command;           ///< Is the usage of DoCommands restricted?

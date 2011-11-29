@@ -16,49 +16,49 @@
 
 /**
  * Creates a list of cargos that can be produced in the current game.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AICargoList : public AIList {
+class ScriptCargoList : public ScriptList {
 public:
-	AICargoList();
+	ScriptCargoList();
 };
 
 /**
  * Creates a list of cargos that the given industry accepts.
  * @note This list also includes cargos that are temporarily not accepted
- *   by this industry, @see AIIndustry::IsCargoAccepted.
- * @ingroup AIList
+ *   by this industry, @see ScriptIndustry::IsCargoAccepted.
+ * @ingroup ScriptList
  */
-class AICargoList_IndustryAccepting : public AIList {
+class ScriptCargoList_IndustryAccepting : public ScriptList {
 public:
 	/**
 	 * @param industry_id The industry to get the list of cargos it accepts from.
 	 */
-	AICargoList_IndustryAccepting(IndustryID industry_id);
+	ScriptCargoList_IndustryAccepting(IndustryID industry_id);
 };
 
 /**
  * Creates a list of cargos that the given industry can produce.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AICargoList_IndustryProducing : public AIList {
+class ScriptCargoList_IndustryProducing : public ScriptList {
 public:
 	/**
 	 * @param industry_id The industry to get the list of cargos it produces from.
 	 */
-	AICargoList_IndustryProducing(IndustryID industry_id);
+	ScriptCargoList_IndustryProducing(IndustryID industry_id);
 };
 
 /**
  * Creates a list of cargos that the given station accepts.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AICargoList_StationAccepting : public AIList {
+class ScriptCargoList_StationAccepting : public ScriptList {
 public:
 	/**
 	 * @param station_id The station to get the list of cargos it accepts from.
 	 */
-	AICargoList_StationAccepting(StationID station_id);
+	ScriptCargoList_StationAccepting(StationID station_id);
 };
 
 #endif /* SCRIPT_CARGOLIST_HPP */

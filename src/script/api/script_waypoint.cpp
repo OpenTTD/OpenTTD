@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_waypoint.cpp Implementation of AIWaypoint. */
+/** @file script_waypoint.cpp Implementation of ScriptWaypoint. */
 
 #include "../../stdafx.h"
 #include "script_waypoint.hpp"
@@ -16,20 +16,20 @@
 #include "../../company_func.h"
 #include "../../waypoint_base.h"
 
-/* static */ bool AIWaypoint::IsValidWaypoint(StationID waypoint_id)
+/* static */ bool ScriptWaypoint::IsValidWaypoint(StationID waypoint_id)
 {
 	const Waypoint *wp = ::Waypoint::GetIfValid(waypoint_id);
 	return wp != NULL && (wp->owner == _current_company || wp->owner == OWNER_NONE);
 }
 
-/* static */ StationID AIWaypoint::GetWaypointID(TileIndex tile)
+/* static */ StationID ScriptWaypoint::GetWaypointID(TileIndex tile)
 {
-	if (!AIRail::IsRailWaypointTile(tile) && !AIMarine::IsBuoyTile(tile)) return STATION_INVALID;
+	if (!ScriptRail::IsRailWaypointTile(tile) && !ScriptMarine::IsBuoyTile(tile)) return STATION_INVALID;
 
 	return ::GetStationIndex(tile);
 }
 
-/* static */ bool AIWaypoint::HasWaypointType(StationID waypoint_id, WaypointType waypoint_type)
+/* static */ bool ScriptWaypoint::HasWaypointType(StationID waypoint_id, WaypointType waypoint_type)
 {
 	if (!IsValidWaypoint(waypoint_id)) return false;
 	if (!HasExactlyOneBit(waypoint_type)) return false;

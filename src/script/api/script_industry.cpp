@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_industry.cpp Implementation of AIIndustry. */
+/** @file script_industry.cpp Implementation of ScriptIndustry. */
 
 #include "../../stdafx.h"
 #include "script_industry.hpp"
@@ -19,23 +19,23 @@
 #include "../../newgrf_industries.h"
 #include "table/strings.h"
 
-/* static */ int32 AIIndustry::GetIndustryCount()
+/* static */ int32 ScriptIndustry::GetIndustryCount()
 {
 	return (int32)::Industry::GetNumItems();
 }
 
-/* static */ bool AIIndustry::IsValidIndustry(IndustryID industry_id)
+/* static */ bool ScriptIndustry::IsValidIndustry(IndustryID industry_id)
 {
 	return ::Industry::IsValidID(industry_id);
 }
 
-/* static */ IndustryID AIIndustry::GetIndustryID(TileIndex tile)
+/* static */ IndustryID ScriptIndustry::GetIndustryID(TileIndex tile)
 {
 	if (!::IsValidTile(tile) || !::IsTileType(tile, MP_INDUSTRY)) return INVALID_INDUSTRY;
 	return ::GetIndustryIndex(tile);
 }
 
-/* static */ char *AIIndustry::GetName(IndustryID industry_id)
+/* static */ char *ScriptIndustry::GetName(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return NULL;
 	static const int len = 64;
@@ -47,10 +47,10 @@
 	return industry_name;
 }
 
-/* static */ AIIndustry::CargoAcceptState AIIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)
+/* static */ ScriptIndustry::CargoAcceptState ScriptIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)
 {
 	if (!IsValidIndustry(industry_id)) return CAS_NOT_ACCEPTED;
-	if (!AICargo::IsValidCargo(cargo_id)) return CAS_NOT_ACCEPTED;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return CAS_NOT_ACCEPTED;
 
 	Industry *i = ::Industry::Get(industry_id);
 
@@ -64,10 +64,10 @@
 	return CAS_NOT_ACCEPTED;
 }
 
-/* static */ int32 AIIndustry::GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id)
+/* static */ int32 ScriptIndustry::GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
@@ -80,10 +80,10 @@
 	return -1;
 }
 
-/* static */ int32 AIIndustry::GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id)
+/* static */ int32 ScriptIndustry::GetLastMonthProduction(IndustryID industry_id, CargoID cargo_id)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	const Industry *i = ::Industry::Get(industry_id);
 
@@ -94,10 +94,10 @@
 	return -1;
 }
 
-/* static */ int32 AIIndustry::GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id)
+/* static */ int32 ScriptIndustry::GetLastMonthTransported(IndustryID industry_id, CargoID cargo_id)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	const Industry *i = ::Industry::Get(industry_id);
 
@@ -108,10 +108,10 @@
 	return -1;
 }
 
-/* static */ int32 AIIndustry::GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id)
+/* static */ int32 ScriptIndustry::GetLastMonthTransportedPercentage(IndustryID industry_id, CargoID cargo_id)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	const Industry *i = ::Industry::Get(industry_id);
 
@@ -122,14 +122,14 @@
 	return -1;
 }
 
-/* static */ TileIndex AIIndustry::GetLocation(IndustryID industry_id)
+/* static */ TileIndex ScriptIndustry::GetLocation(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 
 	return ::Industry::Get(industry_id)->location.tile;
 }
 
-/* static */ int32 AIIndustry::GetAmountOfStationsAround(IndustryID industry_id)
+/* static */ int32 ScriptIndustry::GetAmountOfStationsAround(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
 
@@ -139,35 +139,35 @@
 	return (int32)stations.Length();
 }
 
-/* static */ int32 AIIndustry::GetDistanceManhattanToTile(IndustryID industry_id, TileIndex tile)
+/* static */ int32 ScriptIndustry::GetDistanceManhattanToTile(IndustryID industry_id, TileIndex tile)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
 
-	return AIMap::DistanceManhattan(tile, GetLocation(industry_id));
+	return ScriptMap::DistanceManhattan(tile, GetLocation(industry_id));
 }
 
-/* static */ int32 AIIndustry::GetDistanceSquareToTile(IndustryID industry_id, TileIndex tile)
+/* static */ int32 ScriptIndustry::GetDistanceSquareToTile(IndustryID industry_id, TileIndex tile)
 {
 	if (!IsValidIndustry(industry_id)) return -1;
 
-	return AIMap::DistanceSquare(tile, GetLocation(industry_id));
+	return ScriptMap::DistanceSquare(tile, GetLocation(industry_id));
 }
 
-/* static */ bool AIIndustry::IsBuiltOnWater(IndustryID industry_id)
+/* static */ bool ScriptIndustry::IsBuiltOnWater(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
 	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
 }
 
-/* static */ bool AIIndustry::HasHeliport(IndustryID industry_id)
+/* static */ bool ScriptIndustry::HasHeliport(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
 	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
 }
 
-/* static */ TileIndex AIIndustry::GetHeliportLocation(IndustryID industry_id)
+/* static */ TileIndex ScriptIndustry::GetHeliportLocation(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 	if (!HasHeliport(industry_id)) return INVALID_TILE;
@@ -182,14 +182,14 @@
 	return INVALID_TILE;
 }
 
-/* static */ bool AIIndustry::HasDock(IndustryID industry_id)
+/* static */ bool ScriptIndustry::HasDock(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return false;
 
 	return (::GetIndustrySpec(::Industry::Get(industry_id)->type)->behaviour & INDUSTRYBEH_AI_AIRSHIP_ROUTES) != 0;
 }
 
-/* static */ TileIndex AIIndustry::GetDockLocation(IndustryID industry_id)
+/* static */ TileIndex ScriptIndustry::GetDockLocation(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 	if (!HasDock(industry_id)) return INVALID_TILE;
@@ -204,7 +204,7 @@
 	return INVALID_TILE;
 }
 
-/* static */ IndustryType AIIndustry::GetIndustryType(IndustryID industry_id)
+/* static */ IndustryType ScriptIndustry::GetIndustryType(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return INVALID_INDUSTRYTYPE;
 

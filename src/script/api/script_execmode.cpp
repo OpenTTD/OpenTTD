@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_execmode.cpp Implementation of AIExecMode. */
+/** @file script_execmode.cpp Implementation of ScriptExecMode. */
 
 #include "../../stdafx.h"
 #include "script_execmode.hpp"
@@ -15,26 +15,26 @@
 #include "../../company_func.h"
 #include "../../ai/ai_instance.hpp"
 
-bool AIExecMode::ModeProc()
+bool ScriptExecMode::ModeProc()
 {
 	/* In execution mode we only return 'true', telling the DoCommand it
 	 *  should continue with the real execution of the command. */
 	return true;
 }
 
-AIExecMode::AIExecMode()
+ScriptExecMode::ScriptExecMode()
 {
 	this->last_mode     = this->GetDoCommandMode();
 	this->last_instance = this->GetDoCommandModeInstance();
-	this->SetDoCommandMode(&AIExecMode::ModeProc, this);
+	this->SetDoCommandMode(&ScriptExecMode::ModeProc, this);
 }
 
-AIExecMode::~AIExecMode()
+ScriptExecMode::~ScriptExecMode()
 {
 	if (this->GetDoCommandModeInstance() != this) {
 		/* Ignore this error if the AI already died. */
-		if (!AIObject::GetActiveInstance()->IsDead()) {
-			throw AI_FatalError("AIExecMode object was removed while it was not the latest AI*Mode object created.");
+		if (!ScriptObject::GetActiveInstance()->IsDead()) {
+			throw AI_FatalError("ScriptExecMode object was removed while it was not the latest AI*Mode object created.");
 		}
 	}
 	this->SetDoCommandMode(this->last_mode, this->last_instance);

@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_stationlist.cpp Implementation of AIStationList and friends. */
+/** @file script_stationlist.cpp Implementation of ScriptStationList and friends. */
 
 #include "../../stdafx.h"
 #include "script_stationlist.hpp"
@@ -16,7 +16,7 @@
 #include "../../station_base.h"
 #include "../../vehicle_base.h"
 
-AIStationList::AIStationList(AIStation::StationType station_type)
+ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
 	Station *st;
 	FOR_ALL_STATIONS(st) {
@@ -24,9 +24,9 @@ AIStationList::AIStationList(AIStation::StationType station_type)
 	}
 }
 
-AIStationList_Vehicle::AIStationList_Vehicle(VehicleID vehicle_id)
+ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
 {
-	if (!AIVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
 
 	Vehicle *v = ::Vehicle::Get(vehicle_id);
 

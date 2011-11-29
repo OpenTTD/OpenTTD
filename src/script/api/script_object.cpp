@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_object.cpp Implementation of AIObject. */
+/** @file script_object.cpp Implementation of ScriptObject. */
 
 #include "../../stdafx.h"
 #include "../../script/squirrel.hpp"
@@ -25,113 +25,113 @@
  */
 static AIStorage *GetStorage()
 {
-	return AIObject::GetActiveInstance()->GetStorage();
+	return ScriptObject::GetActiveInstance()->GetStorage();
 }
 
 
-/* static */ AIInstance *AIObject::ActiveInstance::active = NULL;
+/* static */ AIInstance *ScriptObject::ActiveInstance::active = NULL;
 
-AIObject::ActiveInstance::ActiveInstance(AIInstance *instance)
+ScriptObject::ActiveInstance::ActiveInstance(AIInstance *instance)
 {
-	this->last_active = AIObject::ActiveInstance::active;
-	AIObject::ActiveInstance::active = instance;
+	this->last_active = ScriptObject::ActiveInstance::active;
+	ScriptObject::ActiveInstance::active = instance;
 }
 
-AIObject::ActiveInstance::~ActiveInstance()
+ScriptObject::ActiveInstance::~ActiveInstance()
 {
-	AIObject::ActiveInstance::active = this->last_active;
+	ScriptObject::ActiveInstance::active = this->last_active;
 }
 
-/* static */ AIInstance *AIObject::GetActiveInstance()
+/* static */ AIInstance *ScriptObject::GetActiveInstance()
 {
-	assert(AIObject::ActiveInstance::active != NULL);
-	return AIObject::ActiveInstance::active;
+	assert(ScriptObject::ActiveInstance::active != NULL);
+	return ScriptObject::ActiveInstance::active;
 }
 
 
-/* static */ void AIObject::SetDoCommandDelay(uint ticks)
+/* static */ void ScriptObject::SetDoCommandDelay(uint ticks)
 {
 	assert(ticks > 0);
 	GetStorage()->delay = ticks;
 }
 
-/* static */ uint AIObject::GetDoCommandDelay()
+/* static */ uint ScriptObject::GetDoCommandDelay()
 {
 	return GetStorage()->delay;
 }
 
-/* static */ void AIObject::SetDoCommandMode(AIModeProc *proc, AIObject *instance)
+/* static */ void ScriptObject::SetDoCommandMode(AIModeProc *proc, ScriptObject *instance)
 {
 	GetStorage()->mode = proc;
 	GetStorage()->mode_instance = instance;
 }
 
-/* static */ AIModeProc *AIObject::GetDoCommandMode()
+/* static */ AIModeProc *ScriptObject::GetDoCommandMode()
 {
 	return GetStorage()->mode;
 }
 
-/* static */ AIObject *AIObject::GetDoCommandModeInstance()
+/* static */ ScriptObject *ScriptObject::GetDoCommandModeInstance()
 {
 	return GetStorage()->mode_instance;
 }
 
-/* static */ void AIObject::SetDoCommandCosts(Money value)
+/* static */ void ScriptObject::SetDoCommandCosts(Money value)
 {
 	GetStorage()->costs = CommandCost(value);
 }
 
-/* static */ void AIObject::IncreaseDoCommandCosts(Money value)
+/* static */ void ScriptObject::IncreaseDoCommandCosts(Money value)
 {
 	GetStorage()->costs.AddCost(value);
 }
 
-/* static */ Money AIObject::GetDoCommandCosts()
+/* static */ Money ScriptObject::GetDoCommandCosts()
 {
 	return GetStorage()->costs.GetCost();
 }
 
-/* static */ void AIObject::SetLastError(AIErrorType last_error)
+/* static */ void ScriptObject::SetLastError(ScriptErrorType last_error)
 {
 	GetStorage()->last_error = last_error;
 }
 
-/* static */ AIErrorType AIObject::GetLastError()
+/* static */ ScriptErrorType ScriptObject::GetLastError()
 {
 	return GetStorage()->last_error;
 }
 
-/* static */ void AIObject::SetLastCost(Money last_cost)
+/* static */ void ScriptObject::SetLastCost(Money last_cost)
 {
 	GetStorage()->last_cost = last_cost;
 }
 
-/* static */ Money AIObject::GetLastCost()
+/* static */ Money ScriptObject::GetLastCost()
 {
 	return GetStorage()->last_cost;
 }
 
-/* static */ void AIObject::SetRoadType(RoadType road_type)
+/* static */ void ScriptObject::SetRoadType(RoadType road_type)
 {
 	GetStorage()->road_type = road_type;
 }
 
-/* static */ RoadType AIObject::GetRoadType()
+/* static */ RoadType ScriptObject::GetRoadType()
 {
 	return GetStorage()->road_type;
 }
 
-/* static */ void AIObject::SetRailType(RailType rail_type)
+/* static */ void ScriptObject::SetRailType(RailType rail_type)
 {
 	GetStorage()->rail_type = rail_type;
 }
 
-/* static */ RailType AIObject::GetRailType()
+/* static */ RailType ScriptObject::GetRailType()
 {
 	return GetStorage()->rail_type;
 }
 
-/* static */ void AIObject::SetLastCommandRes(bool res)
+/* static */ void ScriptObject::SetLastCommandRes(bool res)
 {
 	GetStorage()->last_command_res = res;
 	/* Also store the results of various global variables */
@@ -141,91 +141,91 @@ AIObject::ActiveInstance::~ActiveInstance()
 	SetNewGroupID(_new_group_id);
 }
 
-/* static */ bool AIObject::GetLastCommandRes()
+/* static */ bool ScriptObject::GetLastCommandRes()
 {
 	return GetStorage()->last_command_res;
 }
 
-/* static */ void AIObject::SetNewVehicleID(VehicleID vehicle_id)
+/* static */ void ScriptObject::SetNewVehicleID(VehicleID vehicle_id)
 {
 	GetStorage()->new_vehicle_id = vehicle_id;
 }
 
-/* static */ VehicleID AIObject::GetNewVehicleID()
+/* static */ VehicleID ScriptObject::GetNewVehicleID()
 {
 	return GetStorage()->new_vehicle_id;
 }
 
-/* static */ void AIObject::SetNewSignID(SignID sign_id)
+/* static */ void ScriptObject::SetNewSignID(SignID sign_id)
 {
 	GetStorage()->new_sign_id = sign_id;
 }
 
-/* static */ SignID AIObject::GetNewSignID()
+/* static */ SignID ScriptObject::GetNewSignID()
 {
 	return GetStorage()->new_sign_id;
 }
 
-/* static */ void AIObject::SetNewTunnelEndtile(TileIndex tile)
+/* static */ void ScriptObject::SetNewTunnelEndtile(TileIndex tile)
 {
 	GetStorage()->new_tunnel_endtile = tile;
 }
 
-/* static */ TileIndex AIObject::GetNewTunnelEndtile()
+/* static */ TileIndex ScriptObject::GetNewTunnelEndtile()
 {
 	return GetStorage()->new_tunnel_endtile;
 }
 
-/* static */ void AIObject::SetNewGroupID(GroupID group_id)
+/* static */ void ScriptObject::SetNewGroupID(GroupID group_id)
 {
 	GetStorage()->new_group_id = group_id;
 }
 
-/* static */ GroupID AIObject::GetNewGroupID()
+/* static */ GroupID ScriptObject::GetNewGroupID()
 {
 	return GetStorage()->new_group_id;
 }
 
-/* static */ void AIObject::SetAllowDoCommand(bool allow)
+/* static */ void ScriptObject::SetAllowDoCommand(bool allow)
 {
 	GetStorage()->allow_do_command = allow;
 }
 
-/* static */ bool AIObject::GetAllowDoCommand()
+/* static */ bool ScriptObject::GetAllowDoCommand()
 {
 	return GetStorage()->allow_do_command;
 }
 
-/* static */ bool AIObject::CanSuspend()
+/* static */ bool ScriptObject::CanSuspend()
 {
-	Squirrel *squirrel = AIObject::GetActiveInstance()->engine;
+	Squirrel *squirrel = ScriptObject::GetActiveInstance()->engine;
 	return GetStorage()->allow_do_command && squirrel->CanSuspend();
 }
 
-/* static */ void *&AIObject::GetEventPointer()
+/* static */ void *&ScriptObject::GetEventPointer()
 {
 	return GetStorage()->event_data;
 }
 
-/* static */ void *&AIObject::GetLogPointer()
+/* static */ void *&ScriptObject::GetLogPointer()
 {
 	return GetStorage()->log_data;
 }
 
-/* static */ void AIObject::SetCallbackVariable(int index, int value)
+/* static */ void ScriptObject::SetCallbackVariable(int index, int value)
 {
 	if ((size_t)index >= GetStorage()->callback_value.size()) GetStorage()->callback_value.resize(index + 1);
 	GetStorage()->callback_value[index] = value;
 }
 
-/* static */ int AIObject::GetCallbackVariable(int index)
+/* static */ int ScriptObject::GetCallbackVariable(int index)
 {
 	return GetStorage()->callback_value[index];
 }
 
-/* static */ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, AISuspendCallbackProc *callback)
+/* static */ bool ScriptObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text, AISuspendCallbackProc *callback)
 {
-	if (!AIObject::CanSuspend()) {
+	if (!ScriptObject::CanSuspend()) {
 		throw AI_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
 	}
 
@@ -245,12 +245,12 @@ AIObject::ActiveInstance::~ActiveInstance()
 
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {
-		SetLastError(AIError::StringToError(res.GetErrorMessage()));
+		SetLastError(ScriptError::StringToError(res.GetErrorMessage()));
 		return false;
 	}
 
 	/* No error, then clear it. */
-	SetLastError(AIError::ERR_NONE);
+	SetLastError(ScriptError::ERR_NONE);
 
 	/* Estimates, update the cost for the estimate and be done */
 	if (estimate_only) {

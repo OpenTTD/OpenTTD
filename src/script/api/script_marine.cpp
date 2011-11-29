@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_marine.cpp Implementation of AIMarine. */
+/** @file script_marine.cpp Implementation of ScriptMarine. */
 
 #include "../../stdafx.h"
 #include "script_marine.hpp"
@@ -16,42 +16,42 @@
 #include "../../tile_cmd.h"
 
 
-/* static */ bool AIMarine::IsWaterDepotTile(TileIndex tile)
+/* static */ bool ScriptMarine::IsWaterDepotTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
 	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WATER_TILE_DEPOT;
 }
 
-/* static */ bool AIMarine::IsDockTile(TileIndex tile)
+/* static */ bool ScriptMarine::IsDockTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
 	return ::IsTileType(tile, MP_STATION) && ::IsDock(tile);
 }
 
-/* static */ bool AIMarine::IsBuoyTile(TileIndex tile)
+/* static */ bool ScriptMarine::IsBuoyTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
 	return ::IsTileType(tile, MP_STATION) && ::IsBuoy(tile);
 }
 
-/* static */ bool AIMarine::IsLockTile(TileIndex tile)
+/* static */ bool ScriptMarine::IsLockTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
 	return ::IsTileType(tile, MP_WATER) && ::GetWaterTileType(tile) == WATER_TILE_LOCK;
 }
 
-/* static */ bool AIMarine::IsCanalTile(TileIndex tile)
+/* static */ bool ScriptMarine::IsCanalTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
 	return ::IsTileType(tile, MP_WATER) && ::IsCanal(tile);
 }
 
-/* static */ bool AIMarine::AreWaterTilesConnected(TileIndex t1, TileIndex t2)
+/* static */ bool ScriptMarine::AreWaterTilesConnected(TileIndex t1, TileIndex t2)
 {
 	if (!::IsValidTile(t1)) return false;
 	if (!::IsValidTile(t2)) return false;
@@ -71,87 +71,87 @@
 	return gtts2 != TRACK_BIT_NONE;
 }
 
-/* static */ bool AIMarine::BuildWaterDepot(TileIndex tile, TileIndex front)
+/* static */ bool ScriptMarine::BuildWaterDepot(TileIndex tile, TileIndex front)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(front));
 	EnforcePrecondition(false, (::TileX(front) == ::TileX(tile)) != (::TileY(front) == ::TileY(tile)));
 
-	return AIObject::DoCommand(tile, ::TileX(front) == ::TileX(tile), 0, CMD_BUILD_SHIP_DEPOT);
+	return ScriptObject::DoCommand(tile, ::TileX(front) == ::TileX(tile), 0, CMD_BUILD_SHIP_DEPOT);
 }
 
-/* static */ bool AIMarine::BuildDock(TileIndex tile, StationID station_id)
+/* static */ bool ScriptMarine::BuildDock(TileIndex tile, StationID station_id)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id));
+	EnforcePrecondition(false, station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id));
 
-	uint p1 = station_id == AIStation::STATION_JOIN_ADJACENT ? 0 : 1;
-	uint p2 = (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
-	return AIObject::DoCommand(tile, p1, p2, CMD_BUILD_DOCK);
+	uint p1 = station_id == ScriptStation::STATION_JOIN_ADJACENT ? 0 : 1;
+	uint p2 = (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
+	return ScriptObject::DoCommand(tile, p1, p2, CMD_BUILD_DOCK);
 }
 
-/* static */ bool AIMarine::BuildBuoy(TileIndex tile)
-{
-	EnforcePrecondition(false, ::IsValidTile(tile));
-
-	return AIObject::DoCommand(tile, 0, 0, CMD_BUILD_BUOY);
-}
-
-/* static */ bool AIMarine::BuildLock(TileIndex tile)
+/* static */ bool ScriptMarine::BuildBuoy(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_BUILD_LOCK);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_BUILD_BUOY);
 }
 
-/* static */ bool AIMarine::BuildCanal(TileIndex tile)
+/* static */ bool ScriptMarine::BuildLock(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return AIObject::DoCommand(tile, tile, WATER_CLASS_CANAL, CMD_BUILD_CANAL);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_BUILD_LOCK);
 }
 
-/* static */ bool AIMarine::RemoveWaterDepot(TileIndex tile)
+/* static */ bool ScriptMarine::BuildCanal(TileIndex tile)
+{
+	EnforcePrecondition(false, ::IsValidTile(tile));
+
+	return ScriptObject::DoCommand(tile, tile, WATER_CLASS_CANAL, CMD_BUILD_CANAL);
+}
+
+/* static */ bool ScriptMarine::RemoveWaterDepot(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsWaterDepotTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }
 
-/* static */ bool AIMarine::RemoveDock(TileIndex tile)
+/* static */ bool ScriptMarine::RemoveDock(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsDockTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }
 
-/* static */ bool AIMarine::RemoveBuoy(TileIndex tile)
+/* static */ bool ScriptMarine::RemoveBuoy(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsBuoyTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }
 
-/* static */ bool AIMarine::RemoveLock(TileIndex tile)
+/* static */ bool ScriptMarine::RemoveLock(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsLockTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }
 
-/* static */ bool AIMarine::RemoveCanal(TileIndex tile)
+/* static */ bool ScriptMarine::RemoveCanal(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsCanalTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }
 
-/* static */ Money AIMarine::GetBuildCost(BuildType build_type)
+/* static */ Money ScriptMarine::GetBuildCost(BuildType build_type)
 {
 	switch (build_type) {
 		case BT_DOCK:  return ::GetPrice(PR_BUILD_STATION_DOCK, 1, NULL);

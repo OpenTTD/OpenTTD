@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_company.cpp Implementation of AICompany. */
+/** @file script_company.cpp Implementation of ScriptCompany. */
 
 #include "../../stdafx.h"
 #include "script_company.hpp"
@@ -24,27 +24,27 @@
 #include "../../settings_func.h"
 #include "table/strings.h"
 
-/* static */ AICompany::CompanyID AICompany::ResolveCompanyID(AICompany::CompanyID company)
+/* static */ ScriptCompany::CompanyID ScriptCompany::ResolveCompanyID(ScriptCompany::CompanyID company)
 {
 	if (company == COMPANY_SELF) return (CompanyID)((byte)_current_company);
 
 	return ::Company::IsValidID((::CompanyID)company) ? company : COMPANY_INVALID;
 }
 
-/* static */ bool AICompany::IsMine(AICompany::CompanyID company)
+/* static */ bool ScriptCompany::IsMine(ScriptCompany::CompanyID company)
 {
 	return ResolveCompanyID(company) == ResolveCompanyID(COMPANY_SELF);
 }
 
-/* static */ bool AICompany::SetName(const char *name)
+/* static */ bool ScriptCompany::SetName(const char *name)
 {
 	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_COMPANY_NAME_CHARS, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return AIObject::DoCommand(0, 0, 0, CMD_RENAME_COMPANY, name);
+	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_COMPANY, name);
 }
 
-/* static */ char *AICompany::GetName(AICompany::CompanyID company)
+/* static */ char *ScriptCompany::GetName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return NULL;
@@ -57,14 +57,14 @@
 	return company_name;
 }
 
-/* static */ bool AICompany::SetPresidentName(const char *name)
+/* static */ bool ScriptCompany::SetPresidentName(const char *name)
 {
 	EnforcePrecondition(false, !::StrEmpty(name));
 
-	return AIObject::DoCommand(0, 0, 0, CMD_RENAME_PRESIDENT, name);
+	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_PRESIDENT, name);
 }
 
-/* static */ char *AICompany::GetPresidentName(AICompany::CompanyID company)
+/* static */ char *ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
 
@@ -80,19 +80,19 @@
 	return president_name;
 }
 
-/* static */ bool AICompany::SetPresidentGender(Gender gender)
+/* static */ bool ScriptCompany::SetPresidentGender(Gender gender)
 {
 	EnforcePrecondition(false, gender == GENDER_MALE || gender == GENDER_FEMALE);
-	EnforcePrecondition(false, GetPresidentGender(AICompany::COMPANY_SELF) != gender);
+	EnforcePrecondition(false, GetPresidentGender(ScriptCompany::COMPANY_SELF) != gender);
 
 	CompanyManagerFace cmf;
 	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (::InteractiveRandom() & (1 << ETHNICITY_BLACK)));
 	RandomCompanyManagerFaceBits(cmf, ge, false);
 
-	return AIObject::DoCommand(0, 0, cmf, CMD_SET_COMPANY_MANAGER_FACE);
+	return ScriptObject::DoCommand(0, 0, cmf, CMD_SET_COMPANY_MANAGER_FACE);
 }
 
-/* static */ AICompany::Gender AICompany::GetPresidentGender(CompanyID company)
+/* static */ ScriptCompany::Gender ScriptCompany::GetPresidentGender(CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return GENDER_INVALID;
@@ -101,7 +101,7 @@
 	return HasBit(ge, ::GENDER_FEMALE) ? GENDER_FEMALE : GENDER_MALE;
 }
 
-/* static */ Money AICompany::GetQuarterlyIncome(AICompany::CompanyID company, uint32 quarter)
+/* static */ Money ScriptCompany::GetQuarterlyIncome(ScriptCompany::CompanyID company, uint32 quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
@@ -113,7 +113,7 @@
 	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].income;
 }
 
-/* static */ Money AICompany::GetQuarterlyExpenses(AICompany::CompanyID company, uint32 quarter)
+/* static */ Money ScriptCompany::GetQuarterlyExpenses(ScriptCompany::CompanyID company, uint32 quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
@@ -125,7 +125,7 @@
 	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].expenses;
 }
 
-/* static */ int32 AICompany::GetQuarterlyCargoDelivered(AICompany::CompanyID company, uint32 quarter)
+/* static */ int32 ScriptCompany::GetQuarterlyCargoDelivered(ScriptCompany::CompanyID company, uint32 quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
@@ -137,7 +137,7 @@
 	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].delivered_cargo;
 }
 
-/* static */ int32 AICompany::GetQuarterlyPerformanceRating(AICompany::CompanyID company, uint32 quarter)
+/* static */ int32 ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, uint32 quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
@@ -147,7 +147,7 @@
 	return ::Company::Get((::CompanyID)company)->old_economy[quarter - 1].performance_history;
 }
 
-/* static */ Money AICompany::GetQuarterlyCompanyValue(AICompany::CompanyID company, uint32 quarter)
+/* static */ Money ScriptCompany::GetQuarterlyCompanyValue(ScriptCompany::CompanyID company, uint32 quarter)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
@@ -160,7 +160,7 @@
 }
 
 
-/* static */ Money AICompany::GetBankBalance(AICompany::CompanyID company)
+/* static */ Money ScriptCompany::GetBankBalance(ScriptCompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return -1;
@@ -168,22 +168,22 @@
 	return ::Company::Get((CompanyID)company)->money;
 }
 
-/* static */ Money AICompany::GetLoanAmount()
+/* static */ Money ScriptCompany::GetLoanAmount()
 {
 	return ::Company::Get(_current_company)->current_loan;
 }
 
-/* static */ Money AICompany::GetMaxLoanAmount()
+/* static */ Money ScriptCompany::GetMaxLoanAmount()
 {
 	return _economy.max_loan;
 }
 
-/* static */ Money AICompany::GetLoanInterval()
+/* static */ Money ScriptCompany::GetLoanInterval()
 {
 	return LOAN_INTERVAL;
 }
 
-/* static */ bool AICompany::SetLoanAmount(int32 loan)
+/* static */ bool ScriptCompany::SetLoanAmount(int32 loan)
 {
 	EnforcePrecondition(false, loan >= 0);
 	EnforcePrecondition(false, (loan % GetLoanInterval()) == 0);
@@ -192,12 +192,12 @@
 
 	if (loan == GetLoanAmount()) return true;
 
-	return AIObject::DoCommand(0,
+	return ScriptObject::DoCommand(0,
 			abs(loan - GetLoanAmount()), 2,
 			(loan > GetLoanAmount()) ? CMD_INCREASE_LOAN : CMD_DECREASE_LOAN);
 }
 
-/* static */ bool AICompany::SetMinimumLoanAmount(int32 loan)
+/* static */ bool ScriptCompany::SetMinimumLoanAmount(int32 loan)
 {
 	EnforcePrecondition(false, loan >= 0);
 
@@ -211,14 +211,14 @@
 	return GetLoanAmount() == loan;
 }
 
-/* static */ bool AICompany::BuildCompanyHQ(TileIndex tile)
+/* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return AIObject::DoCommand(tile, OBJECT_HQ, 0, CMD_BUILD_OBJECT);
+	return ScriptObject::DoCommand(tile, OBJECT_HQ, 0, CMD_BUILD_OBJECT);
 }
 
-/* static */ TileIndex AICompany::GetCompanyHQ(CompanyID company)
+/* static */ TileIndex ScriptCompany::GetCompanyHQ(CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return INVALID_TILE;
@@ -227,12 +227,12 @@
 	return (loc == 0) ? INVALID_TILE : loc;
 }
 
-/* static */ bool AICompany::SetAutoRenewStatus(bool autorenew)
+/* static */ bool ScriptCompany::SetAutoRenewStatus(bool autorenew)
 {
-	return AIObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew"), autorenew ? 1 : 0, CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew"), autorenew ? 1 : 0, CMD_CHANGE_COMPANY_SETTING);
 }
 
-/* static */ bool AICompany::GetAutoRenewStatus(CompanyID company)
+/* static */ bool ScriptCompany::GetAutoRenewStatus(CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return false;
@@ -240,12 +240,12 @@
 	return ::Company::Get((CompanyID)company)->settings.engine_renew;
 }
 
-/* static */ bool AICompany::SetAutoRenewMonths(int16 months)
+/* static */ bool ScriptCompany::SetAutoRenewMonths(int16 months)
 {
-	return AIObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_months"), months, CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_months"), months, CMD_CHANGE_COMPANY_SETTING);
 }
 
-/* static */ int16 AICompany::GetAutoRenewMonths(CompanyID company)
+/* static */ int16 ScriptCompany::GetAutoRenewMonths(CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return 0;
@@ -253,12 +253,12 @@
 	return ::Company::Get((CompanyID)company)->settings.engine_renew_months;
 }
 
-/* static */ bool AICompany::SetAutoRenewMoney(uint32 money)
+/* static */ bool ScriptCompany::SetAutoRenewMoney(uint32 money)
 {
-	return AIObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_money"), money, CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_money"), money, CMD_CHANGE_COMPANY_SETTING);
 }
 
-/* static */ uint32 AICompany::GetAutoRenewMoney(CompanyID company)
+/* static */ uint32 ScriptCompany::GetAutoRenewMoney(CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return 0;

@@ -13,34 +13,34 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AIBaseStation::SpecialStationIDs GetParam(ForceType<AIBaseStation::SpecialStationIDs>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIBaseStation::SpecialStationIDs)tmp; }
-	template <> inline int Return<AIBaseStation::SpecialStationIDs>(HSQUIRRELVM vm, AIBaseStation::SpecialStationIDs res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptBaseStation::SpecialStationIDs GetParam(ForceType<ScriptBaseStation::SpecialStationIDs>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptBaseStation::SpecialStationIDs)tmp; }
+	template <> inline int Return<ScriptBaseStation::SpecialStationIDs>(HSQUIRRELVM vm, ScriptBaseStation::SpecialStationIDs res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AIBaseStation to be used as Squirrel parameter */
-	template <> inline AIBaseStation *GetParam(ForceType<AIBaseStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBaseStation *)instance; }
-	template <> inline AIBaseStation &GetParam(ForceType<AIBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBaseStation *)instance; }
-	template <> inline const AIBaseStation *GetParam(ForceType<const AIBaseStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBaseStation *)instance; }
-	template <> inline const AIBaseStation &GetParam(ForceType<const AIBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBaseStation *)instance; }
-	template <> inline int Return<AIBaseStation *>(HSQUIRRELVM vm, AIBaseStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BaseStation", res, NULL, DefSQDestructorCallback<AIBaseStation>, true); return 1; }
+	/* Allow ScriptBaseStation to be used as Squirrel parameter */
+	template <> inline ScriptBaseStation *GetParam(ForceType<ScriptBaseStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptBaseStation *)instance; }
+	template <> inline ScriptBaseStation &GetParam(ForceType<ScriptBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBaseStation *)instance; }
+	template <> inline const ScriptBaseStation *GetParam(ForceType<const ScriptBaseStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptBaseStation *)instance; }
+	template <> inline const ScriptBaseStation &GetParam(ForceType<const ScriptBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptBaseStation *)instance; }
+	template <> inline int Return<ScriptBaseStation *>(HSQUIRRELVM vm, ScriptBaseStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BaseStation", res, NULL, DefSQDestructorCallback<ScriptBaseStation>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIBaseStation, ST_AI>() { return "AIBaseStation"; }
+template <> const char *GetClassName<ScriptBaseStation, ST_AI>() { return "AIBaseStation"; }
 
 void SQAIBaseStation_Register(Squirrel *engine)
 {
-	DefSQClass<AIBaseStation, ST_AI> SQAIBaseStation("AIBaseStation");
+	DefSQClass<ScriptBaseStation, ST_AI> SQAIBaseStation("AIBaseStation");
 	SQAIBaseStation.PreRegister(engine);
-	SQAIBaseStation.AddConstructor<void (AIBaseStation::*)(), 1>(engine, "x");
+	SQAIBaseStation.AddConstructor<void (ScriptBaseStation::*)(), 1>(engine, "x");
 
-	SQAIBaseStation.DefSQConst(engine, AIBaseStation::STATION_NEW,           "STATION_NEW");
-	SQAIBaseStation.DefSQConst(engine, AIBaseStation::STATION_JOIN_ADJACENT, "STATION_JOIN_ADJACENT");
-	SQAIBaseStation.DefSQConst(engine, AIBaseStation::STATION_INVALID,       "STATION_INVALID");
+	SQAIBaseStation.DefSQConst(engine, ScriptBaseStation::STATION_NEW,           "STATION_NEW");
+	SQAIBaseStation.DefSQConst(engine, ScriptBaseStation::STATION_JOIN_ADJACENT, "STATION_JOIN_ADJACENT");
+	SQAIBaseStation.DefSQConst(engine, ScriptBaseStation::STATION_INVALID,       "STATION_INVALID");
 
-	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::IsValidBaseStation,  "IsValidBaseStation",  2, ".i");
-	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetName,             "GetName",             2, ".i");
-	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::SetName,             "SetName",             3, ".i.");
-	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetLocation,         "GetLocation",         2, ".i");
-	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetConstructionDate, "GetConstructionDate", 2, ".i");
+	SQAIBaseStation.DefSQStaticMethod(engine, &ScriptBaseStation::IsValidBaseStation,  "IsValidBaseStation",  2, ".i");
+	SQAIBaseStation.DefSQStaticMethod(engine, &ScriptBaseStation::GetName,             "GetName",             2, ".i");
+	SQAIBaseStation.DefSQStaticMethod(engine, &ScriptBaseStation::SetName,             "SetName",             3, ".i.");
+	SQAIBaseStation.DefSQStaticMethod(engine, &ScriptBaseStation::GetLocation,         "GetLocation",         2, ".i");
+	SQAIBaseStation.DefSQStaticMethod(engine, &ScriptBaseStation::GetConstructionDate, "GetConstructionDate", 2, ".i");
 
 	SQAIBaseStation.PostRegister(engine);
 }

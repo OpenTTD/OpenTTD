@@ -16,12 +16,12 @@
 
 /**
  * Creates a list of groups of which you are the owner.
- * @note Neither AIGroup::GROUP_ALL nor AIGroup::GROUP_DEFAULT is in this list.
- * @ingroup AIList
+ * @note Neither ScriptGroup::GROUP_ALL nor ScriptGroup::GROUP_DEFAULT is in this list.
+ * @ingroup ScriptList
  */
-class AIGroupList : public AIList {
+class ScriptGroupList : public ScriptList {
 public:
-	AIGroupList();
+	ScriptGroupList();
 };
 
 #endif /* SCRIPT_GROUPLIST_HPP */

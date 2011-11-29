@@ -17,7 +17,7 @@
 /**
  * Class that handles all waypoint related functions.
  */
-class AIWaypoint : public AIBaseStation {
+class ScriptWaypoint : public ScriptBaseStation {
 public:
 	/**
 	 * Type of waypoints known in the game.
@@ -34,7 +34,7 @@ public:
 	 */
 	enum ErrorMessages {
 		/** Base for waypoint related errors */
-		ERR_WAYPOINT_BASE = AIError::ERR_CAT_WAYPOINT << AIError::ERR_CAT_BIT_SIZE,
+		ERR_WAYPOINT_BASE = ScriptError::ERR_CAT_WAYPOINT << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** The waypoint is build too close to another waypoint */
 		ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT, // [STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT]
@@ -53,7 +53,7 @@ public:
 	/**
 	 * Get the StationID of a tile.
 	 * @param tile The tile to find the StationID of.
-	 * @pre AIRail::IsRailWaypointTile(tile).
+	 * @pre ScriptRail::IsRailWaypointTile(tile).
 	 * @return StationID of the waypoint.
 	 */
 	static StationID GetWaypointID(TileIndex tile);
@@ -67,6 +67,6 @@ public:
 	static bool HasWaypointType(StationID waypoint_id, WaypointType waypoint_type);
 };
 
-DECLARE_ENUM_AS_BIT_SET(AIWaypoint::WaypointType)
+DECLARE_ENUM_AS_BIT_SET(ScriptWaypoint::WaypointType)
 
 #endif /* SCRIPT_WAYPOINT_HPP */

@@ -24,7 +24,7 @@
  *       two different moments in time because they count the number
  *       of days since the year 0.
  */
-class AIDate : public AIObject {
+class ScriptDate : public ScriptObject {
 public:
 	/**
 	 * Get the current date.

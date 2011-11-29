@@ -23,10 +23,10 @@
  *   system only checks if it would be able to execute your requests, and what
  *   the cost would be.
  */
-class AITestMode : public AIObject {
+class ScriptTestMode : public ScriptObject {
 private:
 	AIModeProc *last_mode;   ///< The previous mode we were in.
-	AIObject *last_instance; ///< The previous instace of the mode.
+	ScriptObject *last_instance; ///< The previous instace of the mode.
 
 protected:
 	/**
@@ -40,13 +40,13 @@ public:
 	 * @note When the instance is destroyed, he restores the mode that was
 	 *   current when the instance was created!
 	 */
-	AITestMode();
+	ScriptTestMode();
 
 	/**
 	 * Destroying this instance reset the building mode to the mode it was
 	 *   in when the instance was created.
 	 */
-	~AITestMode();
+	~ScriptTestMode();
 };
 
 #endif /* SCRIPT_TESTMODE_HPP */

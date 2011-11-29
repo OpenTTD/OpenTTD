@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_basestation.cpp Implementation of AIBaseStation. */
+/** @file script_basestation.cpp Implementation of ScriptBaseStation. */
 
 #include "../../stdafx.h"
 #include "script_basestation.hpp"
@@ -17,13 +17,13 @@
 #include "../../company_func.h"
 #include "table/strings.h"
 
-/* static */ bool AIBaseStation::IsValidBaseStation(StationID station_id)
+/* static */ bool ScriptBaseStation::IsValidBaseStation(StationID station_id)
 {
 	const BaseStation *st = ::BaseStation::GetIfValid(station_id);
 	return st != NULL && (st->owner == _current_company || st->owner == OWNER_NONE);
 }
 
-/* static */ char *AIBaseStation::GetName(StationID station_id)
+/* static */ char *ScriptBaseStation::GetName(StationID station_id)
 {
 	if (!IsValidBaseStation(station_id)) return NULL;
 
@@ -35,23 +35,23 @@
 	return name;
 }
 
-/* static */ bool AIBaseStation::SetName(StationID station_id, const char *name)
+/* static */ bool ScriptBaseStation::SetName(StationID station_id, const char *name)
 {
 	EnforcePrecondition(false, IsValidBaseStation(station_id));
 	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_STATION_NAME_CHARS, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return AIObject::DoCommand(0, station_id, 0, ::Station::IsValidID(station_id) ? CMD_RENAME_STATION : CMD_RENAME_WAYPOINT, name);
+	return ScriptObject::DoCommand(0, station_id, 0, ::Station::IsValidID(station_id) ? CMD_RENAME_STATION : CMD_RENAME_WAYPOINT, name);
 }
 
-/* static */ TileIndex AIBaseStation::GetLocation(StationID station_id)
+/* static */ TileIndex ScriptBaseStation::GetLocation(StationID station_id)
 {
 	if (!IsValidBaseStation(station_id)) return INVALID_TILE;
 
 	return ::BaseStation::Get(station_id)->xy;
 }
 
-/* static */ int32 AIBaseStation::GetConstructionDate(StationID station_id)
+/* static */ int32 ScriptBaseStation::GetConstructionDate(StationID station_id)
 {
 	if (!IsValidBaseStation(station_id)) return -1;
 

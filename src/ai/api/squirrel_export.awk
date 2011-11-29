@@ -27,13 +27,13 @@ function array_sort(ARRAY, ELEMENTS, temp, i, j)
 function dump_class_templates(name)
 {
 	realname = name
-	gsub("^AI", "", realname)
+	gsub("^Script", "", realname)
 
 	print "	template <> inline "       name " *GetParam(ForceType<"       name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }"
 	print "	template <> inline "       name " &GetParam(ForceType<"       name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }"
 	print "	template <> inline const " name " *GetParam(ForceType<const " name " *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (" name " *)instance; }"
 	print "	template <> inline const " name " &GetParam(ForceType<const " name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }"
-	if (name == "AIEvent") {
+	if (name == "ScriptEvent") {
 		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }"
 	} else {
 		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }"
@@ -225,12 +225,12 @@ BEGIN {
 	print "void SQ" api_cls "_Register(Squirrel *engine)"
 	print "{"
 	print "	DefSQClass<" cls ", ST_" toupper(api) "> SQ" api_cls "(\"" api_cls "\");"
-	if (super_cls == "AIObject" || super_cls == "AIAbstractList::Valuator") {
+	if (super_cls == "ScriptObject" || super_cls == "AIAbstractList::Valuator") {
 		print "	SQ" api_cls ".PreRegister(engine);"
 	} else {
 		print "	SQ" api_cls ".PreRegister(engine, \"" api_super_cls "\");"
 	}
-	if (virtual_class == "false" && super_cls != "AIEvent") {
+	if (virtual_class == "false" && super_cls != "ScriptEvent") {
 		print "	SQ" api_cls ".AddConstructor<void (" cls "::*)(" cls_param[0] "), " cls_param[1]">(engine, \"" cls_param[2] "\");"
 	}
 	print ""
@@ -263,7 +263,7 @@ BEGIN {
 		if (mlen <= length(enum_string_to_error_mapping_string[i])) mlen = length(enum_string_to_error_mapping_string[i])
 	}
 	for (i = 1; i <= enum_string_to_error_size; i++) {
-		print "	AIError::RegisterErrorMap(" enum_string_to_error_mapping_string[i] ", " substr(spaces, 1, mlen - length(enum_string_to_error_mapping_string[i]))  cls "::" enum_string_to_error_mapping_error[i] ");"
+		print "	ScriptError::RegisterErrorMap(" enum_string_to_error_mapping_string[i] ", " substr(spaces, 1, mlen - length(enum_string_to_error_mapping_string[i]))  cls "::" enum_string_to_error_mapping_error[i] ");"
 
 		delete enum_string_to_error_mapping_string[i]
 	}
@@ -275,7 +275,7 @@ BEGIN {
 		if (mlen <= length(enum_error_to_string_mapping[i])) mlen = length(enum_error_to_string_mapping[i])
 	}
 	for (i = 1; i <= enum_error_to_string_size; i++) {
-		print "	AIError::RegisterErrorMapString(" cls "::" enum_error_to_string_mapping[i] ", " substr(spaces, 1, mlen - length(enum_error_to_string_mapping[i])) "\"" enum_error_to_string_mapping[i] "\");"
+		print "	ScriptError::RegisterErrorMapString(" cls "::" enum_error_to_string_mapping[i] ", " substr(spaces, 1, mlen - length(enum_error_to_string_mapping[i])) "\"" enum_error_to_string_mapping[i] "\");"
 		delete enum_error_to_string_mapping[i]
 	}
 	if (enum_error_to_string_size != 0) print ""

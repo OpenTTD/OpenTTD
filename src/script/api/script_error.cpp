@@ -7,26 +7,26 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_error.cpp Implementation of AIError. */
+/** @file script_error.cpp Implementation of ScriptError. */
 
 #include "../../stdafx.h"
 #include "script_error.hpp"
 #include "../../core/bitmath_func.hpp"
 
-AIError::AIErrorMap AIError::error_map = AIError::AIErrorMap();
-AIError::AIErrorMapString AIError::error_map_string = AIError::AIErrorMapString();
+ScriptError::ScriptErrorMap ScriptError::error_map = ScriptError::ScriptErrorMap();
+ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::ScriptErrorMapString();
 
-/* static */ AIErrorType AIError::GetLastError()
+/* static */ ScriptErrorType ScriptError::GetLastError()
 {
-	return AIObject::GetLastError();
+	return ScriptObject::GetLastError();
 }
 
-/* static */ char *AIError::GetLastErrorString()
+/* static */ char *ScriptError::GetLastErrorString()
 {
-	return strdup((*error_map_string.find(AIError::GetLastError())).second);
+	return strdup((*error_map_string.find(ScriptError::GetLastError())).second);
 }
 
-/* static */ AIErrorType AIError::StringToError(StringID internal_string_id)
+/* static */ ScriptErrorType ScriptError::StringToError(StringID internal_string_id)
 {
 	uint index = GB(internal_string_id, 11, 5);
 	switch (GB(internal_string_id, 11, 5)) {
@@ -47,22 +47,22 @@ AIError::AIErrorMapString AIError::error_map_string = AIError::AIErrorMapString(
 			break;
 	}
 
-	AIErrorMap::iterator it = error_map.find(internal_string_id);
+	ScriptErrorMap::iterator it = error_map.find(internal_string_id);
 	if (it == error_map.end()) return ERR_UNKNOWN;
 	return (*it).second;
 }
 
-/* static */ void AIError::RegisterErrorMap(StringID internal_string_id, AIErrorType ai_error_msg)
+/* static */ void ScriptError::RegisterErrorMap(StringID internal_string_id, ScriptErrorType ai_error_msg)
 {
 	error_map[internal_string_id] = ai_error_msg;
 }
 
-/* static */ void AIError::RegisterErrorMapString(AIErrorType ai_error_msg, const char *message)
+/* static */ void ScriptError::RegisterErrorMapString(ScriptErrorType ai_error_msg, const char *message)
 {
 	error_map_string[ai_error_msg] = message;
 }
 
-/* static */ AIError::ErrorCategories AIError::GetErrorCategory()
+/* static */ ScriptError::ErrorCategories ScriptError::GetErrorCategory()
 {
-	return (AIError::ErrorCategories)(GetLastError() >> (uint)ERR_CAT_BIT_SIZE);
+	return (ScriptError::ErrorCategories)(GetLastError() >> (uint)ERR_CAT_BIT_SIZE);
 }

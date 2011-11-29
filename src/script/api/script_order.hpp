@@ -17,14 +17,14 @@
 /**
  * Class that handles all order related functions.
  */
-class AIOrder : public AIObject {
+class ScriptOrder : public ScriptObject {
 public:
 	/**
 	 * All order related error messages.
 	 */
 	enum ErrorMessages {
 		/** Base for all order related errors */
-		ERR_ORDER_BASE = AIError::ERR_CAT_ORDER << AIError::ERR_CAT_BIT_SIZE,
+		ERR_ORDER_BASE = ScriptError::ERR_CAT_ORDER << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** No more space for orders */
 		ERR_ORDER_TOO_MANY,                                  // [STR_ERROR_NO_MORE_SPACE_FOR_ORDERS]
@@ -36,7 +36,7 @@ public:
 	/**
 	 * Flags that can be used to modify the behaviour of orders.
 	 */
-	enum AIOrderFlags {
+	enum ScriptOrderFlags {
 		/** Just go to the station/depot, stop unload if possible and load if needed. */
 		AIOF_NONE              = 0,
 
@@ -86,7 +86,7 @@ public:
 		/* Order _is_ important, as it's based on OrderConditionVariable in order_type.h. */
 		OC_LOAD_PERCENTAGE,    ///< Skip based on the amount of load, value is in tons.
 		OC_RELIABILITY,        ///< Skip based on the reliability, value is percent (0..100).
-		OC_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see AIEngine::GetMaxSpeed.
+		OC_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
 		OC_AGE,                ///< Skip based on the age, value is in years.
 		OC_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service, no value.
 		OC_UNCONDITIONALLY,    ///< Always skip, no compare function, no value.
@@ -134,7 +134,7 @@ public:
 	 * Checks whether the given order id is valid for the given vehicle.
 	 * @param vehicle_id The vehicle to check the order index for.
 	 * @param order_position The order index to check.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return True if and only if the order_position is valid for the given vehicle.
 	 */
 	static bool IsValidVehicleOrder(VehicleID vehicle_id, OrderPosition order_position);
@@ -199,7 +199,7 @@ public:
 	/**
 	 * Checks whether the current order is part of the orderlist.
 	 * @param vehicle_id The vehicle to check.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return True if and only if the current order is part of the order list.
 	 * @note If the order is a non-'non-stop' order, and the vehicle is currently
 	 * (un)loading at a station that is not the final destination, this function
@@ -214,7 +214,7 @@ public:
 	 *  given index does not exist it will return ORDER_INVALID.
 	 * @param vehicle_id The vehicle to check the order index for.
 	 * @param order_position The order index to resolve.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return The resolved order index.
 	 */
 	static OrderPosition ResolveOrderPosition(VehicleID vehicle_id, OrderPosition order_position);
@@ -225,7 +225,7 @@ public:
 	 * @param order_flags The flags given to the order.
 	 * @return True if and only if the order_flags are valid for the given location.
 	 */
-	static bool AreOrderFlagsValid(TileIndex destination, AIOrderFlags order_flags);
+	static bool AreOrderFlagsValid(TileIndex destination, ScriptOrderFlags order_flags);
 
 	/**
 	 * Checks whether the given combination of condition and compare function is valid.
@@ -238,7 +238,7 @@ public:
 	/**
 	 * Returns the number of orders for the given vehicle.
 	 * @param vehicle_id The vehicle to get the order count of.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return The number of orders for the given vehicle or a negative
 	 *   value when the vehicle does not exist.
 	 */
@@ -260,7 +260,7 @@ public:
 	static TileIndex GetOrderDestination(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
-	 * Gets the AIOrderFlags of the given order for the given vehicle.
+	 * Gets the ScriptOrderFlags of the given order for the given vehicle.
 	 * @param vehicle_id The vehicle to get the destination for.
 	 * @param order_position The order to get the destination for.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
@@ -270,9 +270,9 @@ public:
 	 *  current order as given by ResolveOrderPosition (the current index in the
 	 *  order list) as manual or autoservicing depot orders do not show up
 	 *  in the orderlist, but they can be the current order of a vehicle.
-	 * @return The AIOrderFlags of the order.
+	 * @return The ScriptOrderFlags of the order.
 	 */
-	static AIOrderFlags GetOrderFlags(VehicleID vehicle_id, OrderPosition order_position);
+	static ScriptOrderFlags GetOrderFlags(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
 	 * Gets the OrderPosition to jump to if the check succeeds of the given order for the given vehicle.
@@ -319,7 +319,7 @@ public:
 	 * @param vehicle_id The vehicle to get the value for.
 	 * @param order_position The order to get the value for.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
-	 * @pre AIVehicle::GetVehicleType(vehicle_id) == AIVehicle::VT_RAIL.
+	 * @pre ScriptVehicle::GetVehicleType(vehicle_id) == ScriptVehicle::VT_RAIL.
 	 * @pre IsGotoStationOrder(vehicle_id, order_position).
 	 * @return The relative position where the train will stop inside a station.
 	 */
@@ -394,7 +394,7 @@ public:
 	 * @param order_position The order to get the value for.
 	 * @param stop_location The relative position where a train will stop inside a station.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
-	 * @pre AIVehicle::GetVehicleType(vehicle_id) == AIVehicle::VT_RAIL.
+	 * @pre ScriptVehicle::GetVehicleType(vehicle_id) == ScriptVehicle::VT_RAIL.
 	 * @pre IsGotoStationOrder(vehicle_id, order_position).
 	 * @pre stop_location >= STOPLOCATION_NEAR && stop_location <= STOPLOCATION_FAR
 	 * @return Whether the order has been/can be changed.
@@ -408,7 +408,7 @@ public:
 	 * @param refit_cargo The cargo to refit to. The refit can be cleared by passing CT_NO_REFIT.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre IsGotoStationOrder(vehicle_id, order_position) || (IsGotoDepotOrder(vehicle_id, order_position) && refit_cargo != CT_AUTO_REFIT).
-	 * @pre AICargo::IsValidCargo(refit_cargo) || refit_cargo == CT_AUTO_REFIT || refit_cargo == CT_NO_REFIT
+	 * @pre ScriptCargo::IsValidCargo(refit_cargo) || refit_cargo == CT_AUTO_REFIT || refit_cargo == CT_NO_REFIT
 	 * @return Whether the order has been/can be changed.
 	 */
 	static bool SetOrderRefit(VehicleID vehicle_id, OrderPosition order_position, CargoID refit_cargo);
@@ -418,23 +418,23 @@ public:
 	 * @param vehicle_id The vehicle to append the order to.
 	 * @param destination The destination of the order.
 	 * @param order_flags The flags given to the order.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @pre AreOrderFlagsValid(destination, order_flags).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_TOO_MANY
-	 * @exception AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
+	 * @exception ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
 	 * @return True if and only if the order was appended.
 	 */
-	static bool AppendOrder(VehicleID vehicle_id, TileIndex destination, AIOrderFlags order_flags);
+	static bool AppendOrder(VehicleID vehicle_id, TileIndex destination, ScriptOrderFlags order_flags);
 
 	/**
 	 * Appends a conditional order to the end of the vehicle's order list.
 	 * @param vehicle_id The vehicle to append the order to.
 	 * @param jump_to The OrderPosition to jump to if the condition is true.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_TOO_MANY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the order was appended.
 	 */
 	static bool AppendConditionalOrder(VehicleID vehicle_id, OrderPosition jump_to);
@@ -447,12 +447,12 @@ public:
 	 * @param order_flags The flags given to the order.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre AreOrderFlagsValid(destination, order_flags).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_TOO_MANY
-	 * @exception AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
+	 * @exception ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
 	 * @return True if and only if the order was inserted.
 	 */
-	static bool InsertOrder(VehicleID vehicle_id, OrderPosition order_position, TileIndex destination, AIOrderFlags order_flags);
+	static bool InsertOrder(VehicleID vehicle_id, OrderPosition order_position, TileIndex destination, ScriptOrderFlags order_flags);
 
 	/**
 	 * Appends a conditional order before the given order_position into the vehicle's order list.
@@ -461,8 +461,8 @@ public:
 	 * @param jump_to The OrderPosition to jump to if the condition is true.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_TOO_MANY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the order was inserted.
 	 */
 	static bool InsertConditionalOrder(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to);
@@ -472,7 +472,7 @@ public:
 	 * @param vehicle_id The vehicle to remove the order from.
 	 * @param order_position The order to remove from the order list.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was removed.
 	 */
 	static bool RemoveOrder(VehicleID vehicle_id, OrderPosition order_position);
@@ -492,10 +492,10 @@ public:
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags).
 	 * @pre (order_flags & AIOF_GOTO_NEAREST_DEPOT) == (GetOrderFlags(vehicle_id, order_position) & AIOF_GOTO_NEAREST_DEPOT).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was changed.
 	 */
-	static bool SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, AIOrderFlags order_flags);
+	static bool SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, ScriptOrderFlags order_flags);
 
 	/**
 	 * Move an order inside the orderlist
@@ -504,7 +504,7 @@ public:
 	 * @param order_position_target The target order
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position_move).
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position_target).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was moved.
 	 * @note If the order is moved to a lower place (e.g. from 7 to 2)
 	 *  the target order is moved upwards (e.g. 3). If the order is moved
@@ -518,7 +518,7 @@ public:
 	 * @param vehicle_id The vehicle that should skip some orders.
 	 * @param next_order The order the vehicle should skip to.
 	 * @pre IsValidVehicleOrder(vehicle_id, next_order).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only the current order was changed.
 	 */
 	static bool SkipToOrder(VehicleID vehicle_id, OrderPosition next_order);
@@ -528,10 +528,10 @@ public:
 	 *  are going to be the orders of the changed vehicle.
 	 * @param vehicle_id The vehicle to copy the orders to.
 	 * @param main_vehicle_id The vehicle to copy the orders from.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
-	 * @pre AIVehicle::IsValidVehicle(main_vehicle_id).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_TOO_MANY
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(main_vehicle_id).
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the copying succeeded.
 	 */
 	static bool CopyOrders(VehicleID vehicle_id, VehicleID main_vehicle_id);
@@ -541,9 +541,9 @@ public:
 	 * vehicle are going to be the orders of the changed vehicle.
 	 * @param vehicle_id The vehicle to add to the shared order list.
 	 * @param main_vehicle_id The vehicle to share the orders with.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
-	 * @pre AIVehicle::IsValidVehicle(main_vehicle_id).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(main_vehicle_id).
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the sharing succeeded.
 	 */
 	static bool ShareOrders(VehicleID vehicle_id, VehicleID main_vehicle_id);
@@ -551,11 +551,11 @@ public:
 	/**
 	 * Removes the given vehicle from a shared orders list.
 	 * @param vehicle_id The vehicle to remove from the shared order list.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return True if and only if the unsharing succeeded.
 	 */
 	static bool UnshareOrders(VehicleID vehicle_id);
 };
-DECLARE_ENUM_AS_BIT_SET(AIOrder::AIOrderFlags)
+DECLARE_ENUM_AS_BIT_SET(ScriptOrder::ScriptOrderFlags)
 
 #endif /* SCRIPT_ORDER_HPP */

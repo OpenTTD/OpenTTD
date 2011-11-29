@@ -7,13 +7,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_townlist.cpp Implementation of AITownList and friends. */
+/** @file script_townlist.cpp Implementation of ScriptTownList and friends. */
 
 #include "../../stdafx.h"
 #include "script_townlist.hpp"
 #include "../../town.h"
 
-AITownList::AITownList()
+ScriptTownList::ScriptTownList()
 {
 	Town *t;
 	FOR_ALL_TOWNS(t) {
@@ -21,7 +21,7 @@ AITownList::AITownList()
 	}
 }
 
-AITownEffectList::AITownEffectList()
+ScriptTownEffectList::ScriptTownEffectList()
 {
 	for (int i = TE_BEGIN; i < TE_END; i++) {
 		this->AddItem(i);

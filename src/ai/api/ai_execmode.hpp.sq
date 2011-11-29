@@ -12,21 +12,21 @@
 #include "../../script/api/script_execmode.hpp"
 
 namespace SQConvert {
-	/* Allow AIExecMode to be used as Squirrel parameter */
-	template <> inline AIExecMode *GetParam(ForceType<AIExecMode *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIExecMode *)instance; }
-	template <> inline AIExecMode &GetParam(ForceType<AIExecMode &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIExecMode *)instance; }
-	template <> inline const AIExecMode *GetParam(ForceType<const AIExecMode *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIExecMode *)instance; }
-	template <> inline const AIExecMode &GetParam(ForceType<const AIExecMode &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIExecMode *)instance; }
-	template <> inline int Return<AIExecMode *>(HSQUIRRELVM vm, AIExecMode *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "ExecMode", res, NULL, DefSQDestructorCallback<AIExecMode>, true); return 1; }
+	/* Allow ScriptExecMode to be used as Squirrel parameter */
+	template <> inline ScriptExecMode *GetParam(ForceType<ScriptExecMode *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptExecMode *)instance; }
+	template <> inline ScriptExecMode &GetParam(ForceType<ScriptExecMode &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptExecMode *)instance; }
+	template <> inline const ScriptExecMode *GetParam(ForceType<const ScriptExecMode *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptExecMode *)instance; }
+	template <> inline const ScriptExecMode &GetParam(ForceType<const ScriptExecMode &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptExecMode *)instance; }
+	template <> inline int Return<ScriptExecMode *>(HSQUIRRELVM vm, ScriptExecMode *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "ExecMode", res, NULL, DefSQDestructorCallback<ScriptExecMode>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIExecMode, ST_AI>() { return "AIExecMode"; }
+template <> const char *GetClassName<ScriptExecMode, ST_AI>() { return "AIExecMode"; }
 
 void SQAIExecMode_Register(Squirrel *engine)
 {
-	DefSQClass<AIExecMode, ST_AI> SQAIExecMode("AIExecMode");
+	DefSQClass<ScriptExecMode, ST_AI> SQAIExecMode("AIExecMode");
 	SQAIExecMode.PreRegister(engine);
-	SQAIExecMode.AddConstructor<void (AIExecMode::*)(), 1>(engine, "x");
+	SQAIExecMode.AddConstructor<void (ScriptExecMode::*)(), 1>(engine, "x");
 
 	SQAIExecMode.PostRegister(engine);
 }

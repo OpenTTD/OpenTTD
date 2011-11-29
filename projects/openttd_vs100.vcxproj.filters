@@ -43,53 +43,56 @@
     <Filter Include="AI API">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000013}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI API Implementation">
+    <Filter Include="Script API">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000014}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blitters">
+    <Filter Include="Script API Implementation">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000015}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Drivers">
+    <Filter Include="Blitters">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000016}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sprite loaders">
+    <Filter Include="Drivers">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000017}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewGRF">
+    <Filter Include="Sprite loaders">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000018}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map Accessors">
+    <Filter Include="NewGRF">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000019}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Misc">
+    <Filter Include="Map Accessors">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000020}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Network Core">
+    <Filter Include="Misc">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000021}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Pathfinder">
+    <Filter Include="Network Core">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000022}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NPF">
+    <Filter Include="Pathfinder">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000023}</UniqueIdentifier>
     </Filter>
-    <Filter Include="YAPF">
+    <Filter Include="NPF">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000024}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Video">
+    <Filter Include="YAPF">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000025}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Music">
+    <Filter Include="Video">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000026}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sound">
+    <Filter Include="Music">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000027}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows files">
+    <Filter Include="Sound">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000028}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Threading">
+    <Filter Include="Windows files">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
+      <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000030}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1783,307 +1786,307 @@
       <Filter>AI API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_accounting.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_airport.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_base.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_basestation.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_bridge.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_bridgelist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_cargo.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_cargolist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_company.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_controller.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_date.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_depotlist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_engine.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_enginelist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_error.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_event.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_event_types.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_execmode.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_gamesettings.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_group.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_grouplist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_industry.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_industrylist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_industrytype.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_industrytypelist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_list.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_log.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_map.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_marine.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_object.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_order.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_rail.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_railtypelist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_road.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_sign.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_signlist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_station.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_stationlist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_subsidy.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_subsidylist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_testmode.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_tile.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_tilelist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_town.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_townlist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_tunnel.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_types.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_vehicle.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_vehiclelist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_waypoint.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_waypointlist.hpp">
-      <Filter>AI API</Filter>
+      <Filter>Script API</Filter>
     </ClInclude>
     <ClCompile Include="..\src\script\api\script_accounting.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_airport.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_base.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_basestation.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_bridge.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_bridgelist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_cargo.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_cargolist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_company.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_controller.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_date.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_depotlist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_engine.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_enginelist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_error.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_event.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_event_types.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_execmode.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_gamesettings.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_group.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_grouplist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_industry.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_industrylist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_industrytype.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_industrytypelist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_list.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_log.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_map.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_marine.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_object.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_order.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_rail.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_railtypelist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_road.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_sign.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_signlist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_station.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_stationlist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_subsidy.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_subsidylist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_testmode.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_tile.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_tilelist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_town.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_townlist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_tunnel.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_vehicle.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_vehiclelist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_waypoint.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_waypointlist.cpp">
-      <Filter>AI API Implementation</Filter>
+      <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\blitter\32bpp_anim.cpp">
       <Filter>Blitters</Filter>

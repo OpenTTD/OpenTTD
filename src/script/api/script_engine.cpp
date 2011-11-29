@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_engine.cpp Implementation of AIEngine. */
+/** @file script_engine.cpp Implementation of ScriptEngine. */
 
 #include "../../stdafx.h"
 #include "script_engine.hpp"
@@ -21,19 +21,19 @@
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
-/* static */ bool AIEngine::IsValidEngine(EngineID engine_id)
+/* static */ bool ScriptEngine::IsValidEngine(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
 	return e != NULL && (::IsEngineBuildable(engine_id, e->type, _current_company) || ::Company::Get(_current_company)->group_all[e->type].num_engines[engine_id] > 0);
 }
 
-/* static */ bool AIEngine::IsBuildable(EngineID engine_id)
+/* static */ bool ScriptEngine::IsBuildable(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
 	return e != NULL && ::IsEngineBuildable(engine_id, e->type, _current_company);
 }
 
-/* static */ char *AIEngine::GetName(EngineID engine_id)
+/* static */ char *ScriptEngine::GetName(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return NULL;
 
@@ -45,7 +45,7 @@
 	return engine_name;
 }
 
-/* static */ CargoID AIEngine::GetCargoType(EngineID engine_id)
+/* static */ CargoID ScriptEngine::GetCargoType(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return CT_INVALID;
 
@@ -63,25 +63,25 @@
 	return most_cargo;
 }
 
-/* static */ bool AIEngine::CanRefitCargo(EngineID engine_id, CargoID cargo_id)
+/* static */ bool ScriptEngine::CanRefitCargo(EngineID engine_id, CargoID cargo_id)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (!AICargo::IsValidCargo(cargo_id)) return false;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return false;
 
 	return HasBit(::GetUnionOfArticulatedRefitMasks(engine_id, true), cargo_id);
 }
 
-/* static */ bool AIEngine::CanPullCargo(EngineID engine_id, CargoID cargo_id)
+/* static */ bool ScriptEngine::CanPullCargo(EngineID engine_id, CargoID cargo_id)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
-	if (!AICargo::IsValidCargo(cargo_id)) return false;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return false;
 
-	return (::RailVehInfo(engine_id)->ai_passenger_only != 1) || AICargo::HasCargoClass(cargo_id, AICargo::CC_PASSENGERS);
+	return (::RailVehInfo(engine_id)->ai_passenger_only != 1) || ScriptCargo::HasCargoClass(cargo_id, ScriptCargo::CC_PASSENGERS);
 }
 
 
-/* static */ int32 AIEngine::GetCapacity(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetCapacity(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
@@ -105,15 +105,15 @@
 	}
 }
 
-/* static */ int32 AIEngine::GetReliability(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetReliability(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
+	if (GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
 	return ::ToPercent16(::Engine::Get(engine_id)->reliability);
 }
 
-/* static */ int32 AIEngine::GetMaxSpeed(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetMaxSpeed(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
@@ -123,128 +123,128 @@
 	return max_speed;
 }
 
-/* static */ Money AIEngine::GetPrice(EngineID engine_id)
+/* static */ Money ScriptEngine::GetPrice(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->GetCost();
 }
 
-/* static */ int32 AIEngine::GetMaxAge(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetMaxAge(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
+	if (GetVehicleType(engine_id) == ScriptVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->GetLifeLengthInDays();
 }
 
-/* static */ Money AIEngine::GetRunningCost(EngineID engine_id)
+/* static */ Money ScriptEngine::GetRunningCost(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->GetRunningCost();
 }
 
-/* static */ int32 AIEngine::GetPower(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetPower(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL && GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return -1;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL && GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return -1;
 	if (IsWagon(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->GetPower();
 }
 
-/* static */ int32 AIEngine::GetWeight(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetWeight(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL && GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return -1;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL && GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return -1;
 
 	return ::Engine::Get(engine_id)->GetDisplayWeight();
 }
 
-/* static */ int32 AIEngine::GetMaxTractiveEffort(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetMaxTractiveEffort(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL && GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return -1;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL && GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return -1;
 	if (IsWagon(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort();
 }
 
-/* static */ int32 AIEngine::GetDesignDate(EngineID engine_id)
+/* static */ int32 ScriptEngine::GetDesignDate(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->intro_date;
 }
 
-/* static */ AIVehicle::VehicleType AIEngine::GetVehicleType(EngineID engine_id)
+/* static */ ScriptVehicle::VehicleType ScriptEngine::GetVehicleType(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return AIVehicle::VT_INVALID;
+	if (!IsValidEngine(engine_id)) return ScriptVehicle::VT_INVALID;
 
 	switch (::Engine::Get(engine_id)->type) {
-		case VEH_ROAD:     return AIVehicle::VT_ROAD;
-		case VEH_TRAIN:    return AIVehicle::VT_RAIL;
-		case VEH_SHIP:     return AIVehicle::VT_WATER;
-		case VEH_AIRCRAFT: return AIVehicle::VT_AIR;
+		case VEH_ROAD:     return ScriptVehicle::VT_ROAD;
+		case VEH_TRAIN:    return ScriptVehicle::VT_RAIL;
+		case VEH_SHIP:     return ScriptVehicle::VT_WATER;
+		case VEH_AIRCRAFT: return ScriptVehicle::VT_AIR;
 		default: NOT_REACHED();
 	}
 }
 
-/* static */ bool AIEngine::IsWagon(EngineID engine_id)
+/* static */ bool ScriptEngine::IsWagon(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
 
 	return ::RailVehInfo(engine_id)->power == 0;
 }
 
-/* static */ bool AIEngine::CanRunOnRail(EngineID engine_id, AIRail::RailType track_rail_type)
+/* static */ bool ScriptEngine::CanRunOnRail(EngineID engine_id, ScriptRail::RailType track_rail_type)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
-	if (!AIRail::IsRailTypeAvailable(track_rail_type)) return false;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
+	if (!ScriptRail::IsRailTypeAvailable(track_rail_type)) return false;
 
 	return ::IsCompatibleRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
 }
 
-/* static */ bool AIEngine::HasPowerOnRail(EngineID engine_id, AIRail::RailType track_rail_type)
+/* static */ bool ScriptEngine::HasPowerOnRail(EngineID engine_id, ScriptRail::RailType track_rail_type)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
-	if (!AIRail::IsRailTypeAvailable(track_rail_type)) return false;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
+	if (!ScriptRail::IsRailTypeAvailable(track_rail_type)) return false;
 
 	return ::HasPowerOnRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
 }
 
-/* static */ AIRoad::RoadType AIEngine::GetRoadType(EngineID engine_id)
+/* static */ ScriptRoad::RoadType ScriptEngine::GetRoadType(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return AIRoad::ROADTYPE_INVALID;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return AIRoad::ROADTYPE_INVALID;
+	if (!IsValidEngine(engine_id)) return ScriptRoad::ROADTYPE_INVALID;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return ScriptRoad::ROADTYPE_INVALID;
 
-	return HasBit(::EngInfo(engine_id)->misc_flags, EF_ROAD_TRAM) ? AIRoad::ROADTYPE_TRAM : AIRoad::ROADTYPE_ROAD;
+	return HasBit(::EngInfo(engine_id)->misc_flags, EF_ROAD_TRAM) ? ScriptRoad::ROADTYPE_TRAM : ScriptRoad::ROADTYPE_ROAD;
 }
 
-/* static */ AIRail::RailType AIEngine::GetRailType(EngineID engine_id)
+/* static */ ScriptRail::RailType ScriptEngine::GetRailType(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return AIRail::RAILTYPE_INVALID;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return AIRail::RAILTYPE_INVALID;
+	if (!IsValidEngine(engine_id)) return ScriptRail::RAILTYPE_INVALID;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return ScriptRail::RAILTYPE_INVALID;
 
-	return (AIRail::RailType)(uint)::RailVehInfo(engine_id)->railtype;
+	return (ScriptRail::RailType)(uint)::RailVehInfo(engine_id)->railtype;
 }
 
-/* static */ bool AIEngine::IsArticulated(EngineID engine_id)
+/* static */ bool ScriptEngine::IsArticulated(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_ROAD && GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD && GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
 
 	return CountArticulatedParts(engine_id, true) != 0;
 }
 
-/* static */ AIAirport::PlaneType AIEngine::GetPlaneType(EngineID engine_id)
+/* static */ ScriptAirport::PlaneType ScriptEngine::GetPlaneType(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return AIAirport::PT_INVALID;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_AIR) return AIAirport::PT_INVALID;
+	if (!IsValidEngine(engine_id)) return ScriptAirport::PT_INVALID;
+	if (GetVehicleType(engine_id) != ScriptVehicle::VT_AIR) return ScriptAirport::PT_INVALID;
 
-	return (AIAirport::PlaneType)::AircraftVehInfo(engine_id)->subtype;
+	return (ScriptAirport::PlaneType)::AircraftVehInfo(engine_id)->subtype;
 }

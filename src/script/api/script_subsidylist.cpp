@@ -7,13 +7,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_subsidylist.cpp Implementation of AISubsidyList. */
+/** @file script_subsidylist.cpp Implementation of ScriptSubsidyList. */
 
 #include "../../stdafx.h"
 #include "script_subsidylist.hpp"
 #include "../../subsidy_base.h"
 
-AISubsidyList::AISubsidyList()
+ScriptSubsidyList::ScriptSubsidyList()
 {
 	const Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {

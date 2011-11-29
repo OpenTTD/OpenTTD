@@ -13,57 +13,57 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AIAirport::AirportType GetParam(ForceType<AIAirport::AirportType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIAirport::AirportType)tmp; }
-	template <> inline int Return<AIAirport::AirportType>(HSQUIRRELVM vm, AIAirport::AirportType res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AIAirport::PlaneType GetParam(ForceType<AIAirport::PlaneType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIAirport::PlaneType)tmp; }
-	template <> inline int Return<AIAirport::PlaneType>(HSQUIRRELVM vm, AIAirport::PlaneType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptAirport::AirportType GetParam(ForceType<ScriptAirport::AirportType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptAirport::AirportType)tmp; }
+	template <> inline int Return<ScriptAirport::AirportType>(HSQUIRRELVM vm, ScriptAirport::AirportType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptAirport::PlaneType GetParam(ForceType<ScriptAirport::PlaneType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptAirport::PlaneType)tmp; }
+	template <> inline int Return<ScriptAirport::PlaneType>(HSQUIRRELVM vm, ScriptAirport::PlaneType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AIAirport to be used as Squirrel parameter */
-	template <> inline AIAirport *GetParam(ForceType<AIAirport *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIAirport *)instance; }
-	template <> inline AIAirport &GetParam(ForceType<AIAirport &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIAirport *)instance; }
-	template <> inline const AIAirport *GetParam(ForceType<const AIAirport *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIAirport *)instance; }
-	template <> inline const AIAirport &GetParam(ForceType<const AIAirport &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIAirport *)instance; }
-	template <> inline int Return<AIAirport *>(HSQUIRRELVM vm, AIAirport *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Airport", res, NULL, DefSQDestructorCallback<AIAirport>, true); return 1; }
+	/* Allow ScriptAirport to be used as Squirrel parameter */
+	template <> inline ScriptAirport *GetParam(ForceType<ScriptAirport *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptAirport *)instance; }
+	template <> inline ScriptAirport &GetParam(ForceType<ScriptAirport &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptAirport *)instance; }
+	template <> inline const ScriptAirport *GetParam(ForceType<const ScriptAirport *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptAirport *)instance; }
+	template <> inline const ScriptAirport &GetParam(ForceType<const ScriptAirport &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptAirport *)instance; }
+	template <> inline int Return<ScriptAirport *>(HSQUIRRELVM vm, ScriptAirport *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Airport", res, NULL, DefSQDestructorCallback<ScriptAirport>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIAirport, ST_AI>() { return "AIAirport"; }
+template <> const char *GetClassName<ScriptAirport, ST_AI>() { return "AIAirport"; }
 
 void SQAIAirport_Register(Squirrel *engine)
 {
-	DefSQClass<AIAirport, ST_AI> SQAIAirport("AIAirport");
+	DefSQClass<ScriptAirport, ST_AI> SQAIAirport("AIAirport");
 	SQAIAirport.PreRegister(engine);
-	SQAIAirport.AddConstructor<void (AIAirport::*)(), 1>(engine, "x");
+	SQAIAirport.AddConstructor<void (ScriptAirport::*)(), 1>(engine, "x");
 
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_SMALL,         "AT_SMALL");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_LARGE,         "AT_LARGE");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_METROPOLITAN,  "AT_METROPOLITAN");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_INTERNATIONAL, "AT_INTERNATIONAL");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_COMMUTER,      "AT_COMMUTER");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_INTERCON,      "AT_INTERCON");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_HELIPORT,      "AT_HELIPORT");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_HELISTATION,   "AT_HELISTATION");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_HELIDEPOT,     "AT_HELIDEPOT");
-	SQAIAirport.DefSQConst(engine, AIAirport::AT_INVALID,       "AT_INVALID");
-	SQAIAirport.DefSQConst(engine, AIAirport::PT_HELICOPTER,    "PT_HELICOPTER");
-	SQAIAirport.DefSQConst(engine, AIAirport::PT_SMALL_PLANE,   "PT_SMALL_PLANE");
-	SQAIAirport.DefSQConst(engine, AIAirport::PT_BIG_PLANE,     "PT_BIG_PLANE");
-	SQAIAirport.DefSQConst(engine, AIAirport::PT_INVALID,       "PT_INVALID");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_SMALL,         "AT_SMALL");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_LARGE,         "AT_LARGE");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_METROPOLITAN,  "AT_METROPOLITAN");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_INTERNATIONAL, "AT_INTERNATIONAL");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_COMMUTER,      "AT_COMMUTER");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_INTERCON,      "AT_INTERCON");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_HELIPORT,      "AT_HELIPORT");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_HELISTATION,   "AT_HELISTATION");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_HELIDEPOT,     "AT_HELIDEPOT");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::AT_INVALID,       "AT_INVALID");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::PT_HELICOPTER,    "PT_HELICOPTER");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::PT_SMALL_PLANE,   "PT_SMALL_PLANE");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::PT_BIG_PLANE,     "PT_BIG_PLANE");
+	SQAIAirport.DefSQConst(engine, ScriptAirport::PT_INVALID,       "PT_INVALID");
 
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsValidAirportType,            "IsValidAirportType",            2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsAirportInformationAvailable, "IsAirportInformationAvailable", 2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetPrice,                      "GetPrice",                      2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsHangarTile,                  "IsHangarTile",                  2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::IsAirportTile,                 "IsAirportTile",                 2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportWidth,               "GetAirportWidth",               2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportHeight,              "GetAirportHeight",              2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportCoverageRadius,      "GetAirportCoverageRadius",      2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNumHangars,                 "GetNumHangars",                 2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetHangarOfAirport,            "GetHangarOfAirport",            2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::BuildAirport,                  "BuildAirport",                  4, ".iii");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::RemoveAirport,                 "RemoveAirport",                 2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportType,                "GetAirportType",                2, ".i");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNoiseLevelIncrease,         "GetNoiseLevelIncrease",         3, ".ii");
-	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNearestTown,                "GetNearestTown",                3, ".ii");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::IsValidAirportType,            "IsValidAirportType",            2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::IsAirportInformationAvailable, "IsAirportInformationAvailable", 2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetPrice,                      "GetPrice",                      2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::IsHangarTile,                  "IsHangarTile",                  2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::IsAirportTile,                 "IsAirportTile",                 2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetAirportWidth,               "GetAirportWidth",               2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetAirportHeight,              "GetAirportHeight",              2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetAirportCoverageRadius,      "GetAirportCoverageRadius",      2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetNumHangars,                 "GetNumHangars",                 2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetHangarOfAirport,            "GetHangarOfAirport",            2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::BuildAirport,                  "BuildAirport",                  4, ".iii");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::RemoveAirport,                 "RemoveAirport",                 2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetAirportType,                "GetAirportType",                2, ".i");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetNoiseLevelIncrease,         "GetNoiseLevelIncrease",         3, ".ii");
+	SQAIAirport.DefSQStaticMethod(engine, &ScriptAirport::GetNearestTown,                "GetNearestTown",                3, ".ii");
 
 	SQAIAirport.PostRegister(engine);
 }

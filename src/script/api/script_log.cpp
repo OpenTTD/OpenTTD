@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_log.cpp Implementation of AILog. */
+/** @file script_log.cpp Implementation of ScriptLog. */
 
 #include "../../stdafx.h"
 #include "script_log.hpp"
@@ -16,34 +16,34 @@
 #include "../../debug.h"
 #include "../../window_func.h"
 
-/* static */ void AILog::Info(const char *message)
+/* static */ void ScriptLog::Info(const char *message)
 {
-	AILog::Log(LOG_INFO, message);
+	ScriptLog::Log(LOG_INFO, message);
 }
 
-/* static */ void AILog::Warning(const char *message)
+/* static */ void ScriptLog::Warning(const char *message)
 {
-	AILog::Log(LOG_WARNING, message);
+	ScriptLog::Log(LOG_WARNING, message);
 }
 
-/* static */ void AILog::Error(const char *message)
+/* static */ void ScriptLog::Error(const char *message)
 {
-	AILog::Log(LOG_ERROR, message);
+	ScriptLog::Log(LOG_ERROR, message);
 }
 
-/* static */ void AILog::Log(AILog::AILogType level, const char *message)
+/* static */ void ScriptLog::Log(ScriptLog::ScriptLogType level, const char *message)
 {
-	if (AIObject::GetLogPointer() == NULL) {
-		AIObject::GetLogPointer() = new LogData();
-		LogData *log = (LogData *)AIObject::GetLogPointer();
+	if (ScriptObject::GetLogPointer() == NULL) {
+		ScriptObject::GetLogPointer() = new LogData();
+		LogData *log = (LogData *)ScriptObject::GetLogPointer();
 
 		log->lines = CallocT<char *>(400);
-		log->type = CallocT<AILog::AILogType>(400);
+		log->type = CallocT<ScriptLog::ScriptLogType>(400);
 		log->count = 400;
 		log->pos = log->count - 1;
 		log->used = 0;
 	}
-	LogData *log = (LogData *)AIObject::GetLogPointer();
+	LogData *log = (LogData *)ScriptObject::GetLogPointer();
 
 	/* Go to the next log-line */
 	log->pos = (log->pos + 1) % log->count;
@@ -78,9 +78,9 @@
 	InvalidateWindowData(WC_AI_DEBUG, 0, _current_company);
 }
 
-/* static */ void AILog::FreeLogPointer()
+/* static */ void ScriptLog::FreeLogPointer()
 {
-	LogData *log = (LogData *)AIObject::GetLogPointer();
+	LogData *log = (LogData *)ScriptObject::GetLogPointer();
 
 	for (int i = 0; i < log->count; i++) {
 		free(log->lines[i]);

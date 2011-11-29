@@ -16,36 +16,36 @@
 
 /**
  * Creates a list of industries that are currently on the map.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIIndustryList : public AIList {
+class ScriptIndustryList : public ScriptList {
 public:
-	AIIndustryList();
+	ScriptIndustryList();
 };
 
 /**
  * Creates a list of industries that accepts a given cargo.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIIndustryList_CargoAccepting : public AIList {
+class ScriptIndustryList_CargoAccepting : public ScriptList {
 public:
 	/**
 	 * @param cargo_id The cargo this industry should accept.
 	 */
-	AIIndustryList_CargoAccepting(CargoID cargo_id);
+	ScriptIndustryList_CargoAccepting(CargoID cargo_id);
 };
 
 /**
  * Creates a list of industries that can produce a given cargo.
  * @note It also contains industries that currently produces 0 units of the cargo.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIIndustryList_CargoProducing : public AIList {
+class ScriptIndustryList_CargoProducing : public ScriptList {
 public:
 	/**
 	 * @param cargo_id The cargo this industry should produce.
 	 */
-	AIIndustryList_CargoProducing(CargoID cargo_id);
+	ScriptIndustryList_CargoProducing(CargoID cargo_id);
 };
 
 #endif /* SCRIPT_INDUSTRYLIST_HPP */

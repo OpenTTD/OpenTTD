@@ -18,14 +18,14 @@
 /**
  * Class that handles all station related functions.
  */
-class AIStation : public AIBaseStation {
+class ScriptStation : public ScriptBaseStation {
 public:
 	/**
 	 * All station related error messages.
 	 */
 	enum ErrorMessages {
 		/** Base for station related errors */
-		ERR_STATION_BASE = AIError::ERR_CAT_STATION << AIError::ERR_CAT_BIT_SIZE,
+		ERR_STATION_BASE = ScriptError::ERR_CAT_STATION << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** The station is build too close to another station, airport or dock */
 		ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, // [STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT, STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION, STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK]
@@ -90,10 +90,10 @@ public:
 	 * @param station_type The type of station.
 	 * @return The radius in tiles.
 	 */
-	static int32 GetCoverageRadius(AIStation::StationType station_type);
+	static int32 GetCoverageRadius(ScriptStation::StationType station_type);
 
 	/**
-	 * Get the manhattan distance from the tile to the AIStation::GetLocation()
+	 * Get the manhattan distance from the tile to the ScriptStation::GetLocation()
 	 *  of the station.
 	 * @param station_id The station to get the distance to.
 	 * @param tile The tile to get the distance to.
@@ -103,7 +103,7 @@ public:
 	static int32 GetDistanceManhattanToTile(StationID station_id, TileIndex tile);
 
 	/**
-	 * Get the square distance from the tile to the AIStation::GetLocation()
+	 * Get the square distance from the tile to the ScriptStation::GetLocation()
 	 *  of the station.
 	 * @param station_id The station to get the distance to.
 	 * @param tile The tile to get the distance to.
@@ -138,7 +138,7 @@ public:
 	 * @param road_type The RoadType to look for.
 	 * @return True if the station has a station part of the type RoadType.
 	 */
-	static bool HasRoadType(StationID station_id, AIRoad::RoadType road_type);
+	static bool HasRoadType(StationID station_id, ScriptRoad::RoadType road_type);
 
 	/**
 	 * Get the town that was nearest to the given station when the station was built.
@@ -153,6 +153,6 @@ public:
 	static TownID GetNearestTown(StationID station_id);
 };
 
-DECLARE_ENUM_AS_BIT_SET(AIStation::StationType)
+DECLARE_ENUM_AS_BIT_SET(ScriptStation::StationType)
 
 #endif /* SCRIPT_STATION_HPP */

@@ -85,8 +85,8 @@ static const int MAX_CONSTRUCTOR_OPS = 100000;
 AIStorage::~AIStorage()
 {
 	/* Free our pointers */
-	if (event_data != NULL) AIEventController::FreeEventPointer();
-	if (log_data != NULL) AILog::FreeLogPointer();
+	if (event_data != NULL) ScriptEventController::FreeEventPointer();
+	if (log_data != NULL) ScriptLog::FreeLogPointer();
 }
 
 /**
@@ -97,7 +97,7 @@ AIStorage::~AIStorage()
 static void PrintFunc(bool error_msg, const SQChar *message)
 {
 	/* Convert to OpenTTD internal capable string */
-	AIController::Print(error_msg, SQ2OTTD(message));
+	ScriptController::Print(error_msg, SQ2OTTD(message));
 }
 
 AIInstance::AIInstance() :
@@ -118,9 +118,9 @@ AIInstance::AIInstance() :
 
 void AIInstance::Initialize(AIInfo *info)
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
-	this->controller = new AIController();
+	this->controller = new ScriptController();
 
 	/* Register the AIController (including the "import" command) */
 	SQAIController_Register(this->engine);
@@ -134,14 +134,14 @@ void AIInstance::Initialize(AIInfo *info)
 	}
 
 	try {
-		AIObject::SetAllowDoCommand(false);
+		ScriptObject::SetAllowDoCommand(false);
 		/* Load and execute the script for this AI */
 		const char *main_script = info->GetMainScript();
 		if (strcmp(main_script, "%_dummy") == 0) {
 			extern void AI_CreateAIDummy(HSQUIRRELVM vm);
 			AI_CreateAIDummy(this->engine->GetVM());
 		} else if (!this->engine->LoadScript(main_script) || this->engine->IsSuspended()) {
-			if (this->engine->IsSuspended()) AILog::Error("This AI took too long to load script. AI is not started.");
+			if (this->engine->IsSuspended()) ScriptLog::Error("This AI took too long to load script. AI is not started.");
 			this->Died();
 			return;
 		}
@@ -152,7 +152,7 @@ void AIInstance::Initialize(AIInfo *info)
 			this->Died();
 			return;
 		}
-		AIObject::SetAllowDoCommand(true);
+		ScriptObject::SetAllowDoCommand(true);
 	} catch (AI_FatalError e) {
 		this->is_dead = true;
 		this->engine->ThrowError(e.GetErrorMessage());
@@ -163,7 +163,7 @@ void AIInstance::Initialize(AIInfo *info)
 
 AIInstance::~AIInstance()
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
 	if (instance != NULL) this->engine->ReleaseObject(this->instance);
 	if (engine != NULL) delete this->engine;
@@ -279,12 +279,12 @@ bool AIInstance::LoadCompatibilityScripts(const char *api_version)
 
 		if (this->engine->LoadScript(buf)) return true;
 
-		AILog::Error("Failed to load API compatibility script");
+		ScriptLog::Error("Failed to load API compatibility script");
 		DEBUG(ai, 0, "Error compiling / running API compatibility script: %s", buf);
 		return false;
 	}
 
-	AILog::Warning("API compatibility script not found");
+	ScriptLog::Warning("API compatibility script not found");
 	return true;
 }
 
@@ -311,15 +311,15 @@ void AIInstance::Died()
 		ShowErrorMessage(STR_ERROR_AI_PLEASE_REPORT_CRASH, INVALID_STRING_ID, WL_WARNING);
 
 		if (info->GetURL() != NULL) {
-			AILog::Info("Please report the error to the following URL:");
-			AILog::Info(info->GetURL());
+			ScriptLog::Info("Please report the error to the following URL:");
+			ScriptLog::Info(info->GetURL());
 		}
 	}
 }
 
 void AIInstance::GameLoop()
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
 	if (this->IsDead()) return;
 	if (this->engine->HasScriptCrashed()) {
@@ -354,21 +354,21 @@ void AIInstance::GameLoop()
 
 	if (!this->is_started) {
 		try {
-			AIObject::SetAllowDoCommand(false);
+			ScriptObject::SetAllowDoCommand(false);
 			/* Run the constructor if it exists. Don't allow any DoCommands in it. */
 			if (this->engine->MethodExists(*this->instance, "constructor")) {
 				if (!this->engine->CallMethod(*this->instance, "constructor", MAX_CONSTRUCTOR_OPS) || this->engine->IsSuspended()) {
-					if (this->engine->IsSuspended()) AILog::Error("This AI took too long to initialize. AI is not started.");
+					if (this->engine->IsSuspended()) ScriptLog::Error("This AI took too long to initialize. AI is not started.");
 					this->Died();
 					return;
 				}
 			}
 			if (!this->CallLoad() || this->engine->IsSuspended()) {
-				if (this->engine->IsSuspended()) AILog::Error("This AI took too long in the Load function. AI is not started.");
+				if (this->engine->IsSuspended()) ScriptLog::Error("This AI took too long in the Load function. AI is not started.");
 				this->Died();
 				return;
 			}
-			AIObject::SetAllowDoCommand(true);
+			ScriptObject::SetAllowDoCommand(true);
 			/* Start the AI by calling Start() */
 			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
 		} catch (AI_VMSuspend e) {
@@ -410,22 +410,22 @@ void AIInstance::CollectGarbage() const
 
 /* static */ void AIInstance::DoCommandReturn(AIInstance *instance)
 {
-	instance->engine->InsertResult(AIObject::GetLastCommandRes());
+	instance->engine->InsertResult(ScriptObject::GetLastCommandRes());
 }
 
 /* static */ void AIInstance::DoCommandReturnVehicleID(AIInstance *instance)
 {
-	instance->engine->InsertResult(AIObject::GetNewVehicleID());
+	instance->engine->InsertResult(ScriptObject::GetNewVehicleID());
 }
 
 /* static */ void AIInstance::DoCommandReturnSignID(AIInstance *instance)
 {
-	instance->engine->InsertResult(AIObject::GetNewSignID());
+	instance->engine->InsertResult(ScriptObject::GetNewSignID());
 }
 
 /* static */ void AIInstance::DoCommandReturnGroupID(AIInstance *instance)
 {
-	instance->engine->InsertResult(AIObject::GetNewGroupID());
+	instance->engine->InsertResult(ScriptObject::GetNewGroupID());
 }
 
 AIStorage *AIInstance::GetStorage()
@@ -435,9 +435,9 @@ AIStorage *AIInstance::GetStorage()
 
 void *AIInstance::GetLogPointer()
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
-	return AIObject::GetLogPointer();
+	return ScriptObject::GetLogPointer();
 }
 
 /*
@@ -485,7 +485,7 @@ static const uint AISAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for it
 /* static */ bool AIInstance::SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test)
 {
 	if (max_depth == 0) {
-		AILog::Error("Savedata can only be nested to 25 deep. No data saved.");
+		ScriptLog::Error("Savedata can only be nested to 25 deep. No data saved.");
 		return false;
 	}
 
@@ -516,7 +516,7 @@ static const uint AISAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for it
 			const char *buf = SQ2OTTD(res);
 			size_t len = strlen(buf) + 1;
 			if (len >= 255) {
-				AILog::Error("Maximum string length is 254 chars. No data saved.");
+				ScriptLog::Error("Maximum string length is 254 chars. No data saved.");
 				return false;
 			}
 			if (!test) {
@@ -596,7 +596,7 @@ static const uint AISAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for it
 		}
 
 		default:
-			AILog::Error("You tried to save an unsupported type. No data saved.");
+			ScriptLog::Error("You tried to save an unsupported type. No data saved.");
 			return false;
 	}
 }
@@ -609,7 +609,7 @@ static const uint AISAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for it
 
 void AIInstance::Save()
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
 	/* Don't save data if the AI didn't start yet or if it crashed. */
 	if (this->engine == NULL || this->engine->HasScriptCrashed()) {
@@ -629,8 +629,8 @@ void AIInstance::Save()
 	} else if (this->engine->MethodExists(*this->instance, "Save")) {
 		HSQOBJECT savedata;
 		/* We don't want to be interrupted during the save function. */
-		bool backup_allow = AIObject::GetAllowDoCommand();
-		AIObject::SetAllowDoCommand(false);
+		bool backup_allow = ScriptObject::GetAllowDoCommand();
+		ScriptObject::SetAllowDoCommand(false);
 		try {
 			if (!this->engine->CallMethod(*this->instance, "Save", &savedata, MAX_SL_OPS)) {
 				/* The script crashed in the Save function. We can't kill
@@ -652,10 +652,10 @@ void AIInstance::Save()
 			this->engine->CrashOccurred();
 			return;
 		}
-		AIObject::SetAllowDoCommand(backup_allow);
+		ScriptObject::SetAllowDoCommand(backup_allow);
 
 		if (!sq_istable(savedata)) {
-			AILog::Error(this->engine->IsSuspended() ? "This AI took too long to Save." : "Save function should return a table.");
+			ScriptLog::Error(this->engine->IsSuspended() ? "This AI took too long to Save." : "Save function should return a table.");
 			SaveEmpty();
 			this->engine->CrashOccurred();
 			return;
@@ -671,7 +671,7 @@ void AIInstance::Save()
 			this->engine->CrashOccurred();
 		}
 	} else {
-		AILog::Warning("Save function is not implemented");
+		ScriptLog::Warning("Save function is not implemented");
 		_ai_sl_byte = 0;
 		SlObject(NULL, _ai_byte);
 	}
@@ -751,7 +751,7 @@ void AIInstance::Suspend()
 
 void AIInstance::Load(int version)
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
 	if (this->engine == NULL || version == -1) {
 		LoadEmpty();
@@ -777,7 +777,7 @@ bool AIInstance::CallLoad()
 	this->is_save_data_on_stack = false;
 
 	if (!this->engine->MethodExists(*this->instance, "Load")) {
-		AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
+		ScriptLog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
 
 		/* Pop the savegame data and version. */
 		sq_pop(vm, 2);
@@ -812,21 +812,21 @@ SQInteger AIInstance::GetOpsTillSuspend()
 
 void AIInstance::DoCommandCallback(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
-	AIObject::SetLastCommandRes(result.Succeeded());
+	ScriptObject::SetLastCommandRes(result.Succeeded());
 
 	if (result.Failed()) {
-		AIObject::SetLastError(AIError::StringToError(result.GetErrorMessage()));
+		ScriptObject::SetLastError(ScriptError::StringToError(result.GetErrorMessage()));
 	} else {
-		AIObject::IncreaseDoCommandCosts(result.GetCost());
-		AIObject::SetLastCost(result.GetCost());
+		ScriptObject::IncreaseDoCommandCosts(result.GetCost());
+		ScriptObject::SetLastCost(result.GetCost());
 	}
 }
 
-void AIInstance::InsertEvent(class AIEvent *event)
+void AIInstance::InsertEvent(class ScriptEvent *event)
 {
-	AIObject::ActiveInstance active(this);
+	ScriptObject::ActiveInstance active(this);
 
-	AIEventController::InsertEvent(event);
+	ScriptEventController::InsertEvent(event);
 }

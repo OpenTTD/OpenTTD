@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_waypointlist.cpp Implementation of AIWaypointList and friends. */
+/** @file script_waypointlist.cpp Implementation of ScriptWaypointList and friends. */
 
 #include "../../stdafx.h"
 #include "script_waypointlist.hpp"
@@ -16,7 +16,7 @@
 #include "../../vehicle_base.h"
 #include "../../waypoint_base.h"
 
-AIWaypointList::AIWaypointList(AIWaypoint::WaypointType waypoint_type)
+ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_type)
 {
 	const Waypoint *wp;
 	FOR_ALL_WAYPOINTS(wp) {
@@ -25,9 +25,9 @@ AIWaypointList::AIWaypointList(AIWaypoint::WaypointType waypoint_type)
 	}
 }
 
-AIWaypointList_Vehicle::AIWaypointList_Vehicle(VehicleID vehicle_id)
+ScriptWaypointList_Vehicle::ScriptWaypointList_Vehicle(VehicleID vehicle_id)
 {
-	if (!AIVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 

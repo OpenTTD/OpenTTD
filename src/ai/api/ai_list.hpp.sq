@@ -13,62 +13,62 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AIList::SorterType GetParam(ForceType<AIList::SorterType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIList::SorterType)tmp; }
-	template <> inline int Return<AIList::SorterType>(HSQUIRRELVM vm, AIList::SorterType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptList::SorterType GetParam(ForceType<ScriptList::SorterType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptList::SorterType)tmp; }
+	template <> inline int Return<ScriptList::SorterType>(HSQUIRRELVM vm, ScriptList::SorterType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AIList to be used as Squirrel parameter */
-	template <> inline AIList *GetParam(ForceType<AIList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIList *)instance; }
-	template <> inline AIList &GetParam(ForceType<AIList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIList *)instance; }
-	template <> inline const AIList *GetParam(ForceType<const AIList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIList *)instance; }
-	template <> inline const AIList &GetParam(ForceType<const AIList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIList *)instance; }
-	template <> inline int Return<AIList *>(HSQUIRRELVM vm, AIList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "List", res, NULL, DefSQDestructorCallback<AIList>, true); return 1; }
+	/* Allow ScriptList to be used as Squirrel parameter */
+	template <> inline ScriptList *GetParam(ForceType<ScriptList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptList *)instance; }
+	template <> inline ScriptList &GetParam(ForceType<ScriptList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptList *)instance; }
+	template <> inline const ScriptList *GetParam(ForceType<const ScriptList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptList *)instance; }
+	template <> inline const ScriptList &GetParam(ForceType<const ScriptList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptList *)instance; }
+	template <> inline int Return<ScriptList *>(HSQUIRRELVM vm, ScriptList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "List", res, NULL, DefSQDestructorCallback<ScriptList>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIList, ST_AI>() { return "AIList"; }
+template <> const char *GetClassName<ScriptList, ST_AI>() { return "AIList"; }
 
 void SQAIList_Register(Squirrel *engine)
 {
-	DefSQClass<AIList, ST_AI> SQAIList("AIList");
+	DefSQClass<ScriptList, ST_AI> SQAIList("AIList");
 	SQAIList.PreRegister(engine);
-	SQAIList.AddConstructor<void (AIList::*)(), 1>(engine, "x");
+	SQAIList.AddConstructor<void (ScriptList::*)(), 1>(engine, "x");
 
-	SQAIList.DefSQConst(engine, AIList::SORT_BY_VALUE, "SORT_BY_VALUE");
-	SQAIList.DefSQConst(engine, AIList::SORT_BY_ITEM,  "SORT_BY_ITEM");
+	SQAIList.DefSQConst(engine, ScriptList::SORT_BY_VALUE, "SORT_BY_VALUE");
+	SQAIList.DefSQConst(engine, ScriptList::SORT_BY_ITEM,  "SORT_BY_ITEM");
 
-	SQAIList.DefSQConst(engine, AIList::SORT_ASCENDING,  "SORT_ASCENDING");
-	SQAIList.DefSQConst(engine, AIList::SORT_DESCENDING, "SORT_DESCENDING");
+	SQAIList.DefSQConst(engine, ScriptList::SORT_ASCENDING,  "SORT_ASCENDING");
+	SQAIList.DefSQConst(engine, ScriptList::SORT_DESCENDING, "SORT_DESCENDING");
 
-	SQAIList.DefSQMethod(engine, &AIList::AddItem,            "AddItem",            3, "xii");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveItem,         "RemoveItem",         2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::Clear,              "Clear",              1, "x");
-	SQAIList.DefSQMethod(engine, &AIList::HasItem,            "HasItem",            2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::Begin,              "Begin",              1, "x");
-	SQAIList.DefSQMethod(engine, &AIList::Next,               "Next",               1, "x");
-	SQAIList.DefSQMethod(engine, &AIList::IsEmpty,            "IsEmpty",            1, "x");
-	SQAIList.DefSQMethod(engine, &AIList::IsEnd,              "IsEnd",              1, "x");
-	SQAIList.DefSQMethod(engine, &AIList::Count,              "Count",              1, "x");
-	SQAIList.DefSQMethod(engine, &AIList::GetValue,           "GetValue",           2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::SetValue,           "SetValue",           3, "xii");
-	SQAIList.DefSQMethod(engine, &AIList::Sort,               "Sort",               3, "xib");
-	SQAIList.DefSQMethod(engine, &AIList::AddList,            "AddList",            2, "xx");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveAboveValue,   "RemoveAboveValue",   2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveBelowValue,   "RemoveBelowValue",   2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveBetweenValue, "RemoveBetweenValue", 3, "xii");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveValue,        "RemoveValue",        2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveTop,          "RemoveTop",          2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveBottom,       "RemoveBottom",       2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::RemoveList,         "RemoveList",         2, "xx");
-	SQAIList.DefSQMethod(engine, &AIList::KeepAboveValue,     "KeepAboveValue",     2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::KeepBelowValue,     "KeepBelowValue",     2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::KeepBetweenValue,   "KeepBetweenValue",   3, "xii");
-	SQAIList.DefSQMethod(engine, &AIList::KeepValue,          "KeepValue",          2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::KeepTop,            "KeepTop",            2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::KeepBottom,         "KeepBottom",         2, "xi");
-	SQAIList.DefSQMethod(engine, &AIList::KeepList,           "KeepList",           2, "xx");
-	SQAIList.DefSQAdvancedMethod(engine, &AIList::_get,       "_get");
-	SQAIList.DefSQAdvancedMethod(engine, &AIList::_set,       "_set");
-	SQAIList.DefSQAdvancedMethod(engine, &AIList::_nexti,     "_nexti");
-	SQAIList.DefSQAdvancedMethod(engine, &AIList::Valuate,    "Valuate");
+	SQAIList.DefSQMethod(engine, &ScriptList::AddItem,            "AddItem",            3, "xii");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveItem,         "RemoveItem",         2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::Clear,              "Clear",              1, "x");
+	SQAIList.DefSQMethod(engine, &ScriptList::HasItem,            "HasItem",            2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::Begin,              "Begin",              1, "x");
+	SQAIList.DefSQMethod(engine, &ScriptList::Next,               "Next",               1, "x");
+	SQAIList.DefSQMethod(engine, &ScriptList::IsEmpty,            "IsEmpty",            1, "x");
+	SQAIList.DefSQMethod(engine, &ScriptList::IsEnd,              "IsEnd",              1, "x");
+	SQAIList.DefSQMethod(engine, &ScriptList::Count,              "Count",              1, "x");
+	SQAIList.DefSQMethod(engine, &ScriptList::GetValue,           "GetValue",           2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::SetValue,           "SetValue",           3, "xii");
+	SQAIList.DefSQMethod(engine, &ScriptList::Sort,               "Sort",               3, "xib");
+	SQAIList.DefSQMethod(engine, &ScriptList::AddList,            "AddList",            2, "xx");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveAboveValue,   "RemoveAboveValue",   2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveBelowValue,   "RemoveBelowValue",   2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveBetweenValue, "RemoveBetweenValue", 3, "xii");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveValue,        "RemoveValue",        2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveTop,          "RemoveTop",          2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveBottom,       "RemoveBottom",       2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::RemoveList,         "RemoveList",         2, "xx");
+	SQAIList.DefSQMethod(engine, &ScriptList::KeepAboveValue,     "KeepAboveValue",     2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::KeepBelowValue,     "KeepBelowValue",     2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::KeepBetweenValue,   "KeepBetweenValue",   3, "xii");
+	SQAIList.DefSQMethod(engine, &ScriptList::KeepValue,          "KeepValue",          2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::KeepTop,            "KeepTop",            2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::KeepBottom,         "KeepBottom",         2, "xi");
+	SQAIList.DefSQMethod(engine, &ScriptList::KeepList,           "KeepList",           2, "xx");
+	SQAIList.DefSQAdvancedMethod(engine, &ScriptList::_get,       "_get");
+	SQAIList.DefSQAdvancedMethod(engine, &ScriptList::_set,       "_set");
+	SQAIList.DefSQAdvancedMethod(engine, &ScriptList::_nexti,     "_nexti");
+	SQAIList.DefSQAdvancedMethod(engine, &ScriptList::Valuate,    "Valuate");
 
 	SQAIList.PostRegister(engine);
 }

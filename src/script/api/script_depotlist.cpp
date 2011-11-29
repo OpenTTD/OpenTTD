@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_depotlist.cpp Implementation of AIDepotList and friends. */
+/** @file script_depotlist.cpp Implementation of ScriptDepotList and friends. */
 
 #include "../../stdafx.h"
 #include "script_depotlist.hpp"
@@ -15,17 +15,17 @@
 #include "../../depot_base.h"
 #include "../../station_base.h"
 
-AIDepotList::AIDepotList(AITile::TransportType transport_type)
+ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 {
 	::TileType tile_type;
 	switch (transport_type) {
 		default: return;
 
-		case AITile::TRANSPORT_ROAD:  tile_type = ::MP_ROAD; break;
-		case AITile::TRANSPORT_RAIL:  tile_type = ::MP_RAILWAY; break;
-		case AITile::TRANSPORT_WATER: tile_type = ::MP_WATER; break;
+		case ScriptTile::TRANSPORT_ROAD:  tile_type = ::MP_ROAD; break;
+		case ScriptTile::TRANSPORT_RAIL:  tile_type = ::MP_RAILWAY; break;
+		case ScriptTile::TRANSPORT_WATER: tile_type = ::MP_WATER; break;
 
-		case AITile::TRANSPORT_AIR: {
+		case ScriptTile::TRANSPORT_AIR: {
 			/* Hangars are not seen as real depots by the depot code. */
 			const Station *st;
 			FOR_ALL_STATIONS(st) {

@@ -19,7 +19,7 @@
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
  *  It contains the crash site, the crashed vehicle and the reason for the crash.
  */
-class AIEventVehicleCrashed : public AIEvent {
+class ScriptEventVehicleCrashed : public ScriptEvent {
 public:
 	/**
 	 * The reasons for vehicle crashes
@@ -38,19 +38,19 @@ public:
 	 * @param crash_site Where the vehicle crashed.
 	 * @param crash_reason The reason why the vehicle crashed.
 	 */
-	AIEventVehicleCrashed(VehicleID vehicle, TileIndex crash_site, CrashReason crash_reason) :
-		AIEvent(AI_ET_VEHICLE_CRASHED),
+	ScriptEventVehicleCrashed(VehicleID vehicle, TileIndex crash_site, CrashReason crash_reason) :
+		ScriptEvent(AI_ET_VEHICLE_CRASHED),
 		crash_site(crash_site),
 		vehicle(vehicle),
 		crash_reason(crash_reason)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventVehicleCrashed *Convert(AIEvent *instance) { return (AIEventVehicleCrashed *)instance; }
+	static ScriptEventVehicleCrashed *Convert(ScriptEvent *instance) { return (ScriptEventVehicleCrashed *)instance; }
 
 	/**
 	 * Get the VehicleID of the crashed vehicle.
@@ -79,22 +79,22 @@ private:
 /**
  * Event Subsidy Offered, indicating someone offered a subsidy.
  */
-class AIEventSubsidyOffer : public AIEvent {
+class ScriptEventSubsidyOffer : public ScriptEvent {
 public:
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
-	AIEventSubsidyOffer(SubsidyID subsidy_id) :
-		AIEvent(AI_ET_SUBSIDY_OFFER),
+	ScriptEventSubsidyOffer(SubsidyID subsidy_id) :
+		ScriptEvent(AI_ET_SUBSIDY_OFFER),
 		subsidy_id(subsidy_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventSubsidyOffer *Convert(AIEvent *instance) { return (AIEventSubsidyOffer *)instance; }
+	static ScriptEventSubsidyOffer *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyOffer *)instance; }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -109,22 +109,22 @@ private:
 /**
  * Event Subsidy Offer Expired, indicating a subsidy will no longer be awarded.
  */
-class AIEventSubsidyOfferExpired : public AIEvent {
+class ScriptEventSubsidyOfferExpired : public ScriptEvent {
 public:
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
-	AIEventSubsidyOfferExpired(SubsidyID subsidy_id) :
-		AIEvent(AI_ET_SUBSIDY_OFFER_EXPIRED),
+	ScriptEventSubsidyOfferExpired(SubsidyID subsidy_id) :
+		ScriptEvent(AI_ET_SUBSIDY_OFFER_EXPIRED),
 		subsidy_id(subsidy_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventSubsidyOfferExpired *Convert(AIEvent *instance) { return (AIEventSubsidyOfferExpired *)instance; }
+	static ScriptEventSubsidyOfferExpired *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyOfferExpired *)instance; }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -139,22 +139,22 @@ private:
 /**
  * Event Subidy Awarded, indicating a subsidy is awarded to some company.
  */
-class AIEventSubsidyAwarded : public AIEvent {
+class ScriptEventSubsidyAwarded : public ScriptEvent {
 public:
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
-	AIEventSubsidyAwarded(SubsidyID subsidy_id) :
-		AIEvent(AI_ET_SUBSIDY_AWARDED),
+	ScriptEventSubsidyAwarded(SubsidyID subsidy_id) :
+		ScriptEvent(AI_ET_SUBSIDY_AWARDED),
 		subsidy_id(subsidy_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventSubsidyAwarded *Convert(AIEvent *instance) { return (AIEventSubsidyAwarded *)instance; }
+	static ScriptEventSubsidyAwarded *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyAwarded *)instance; }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -169,22 +169,22 @@ private:
 /**
  * Event Subsidy Expired, indicating a route that was once subsidized no longer is.
  */
-class AIEventSubsidyExpired : public AIEvent {
+class ScriptEventSubsidyExpired : public ScriptEvent {
 public:
 	/**
 	 * @param subsidy_id The index of this subsidy in the _subsidies array.
 	 */
-	AIEventSubsidyExpired(SubsidyID subsidy_id) :
-		AIEvent(AI_ET_SUBSIDY_EXPIRED),
+	ScriptEventSubsidyExpired(SubsidyID subsidy_id) :
+		ScriptEvent(AI_ET_SUBSIDY_EXPIRED),
 		subsidy_id(subsidy_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventSubsidyExpired *Convert(AIEvent *instance) { return (AIEventSubsidyExpired *)instance; }
+	static ScriptEventSubsidyExpired *Convert(ScriptEvent *instance) { return (ScriptEventSubsidyExpired *)instance; }
 
 	/**
 	 * Get the SubsidyID of the subsidy.
@@ -201,22 +201,22 @@ private:
  *  You can get the same information about the offered engine as a real user
  *  would see in the offer window. And you can also accept the offer.
  */
-class AIEventEnginePreview : public AIEvent {
+class ScriptEventEnginePreview : public ScriptEvent {
 public:
 	/**
 	 * @param engine The engine offered to test.
 	 */
-	AIEventEnginePreview(EngineID engine) :
-		AIEvent(AI_ET_ENGINE_PREVIEW),
+	ScriptEventEnginePreview(EngineID engine) :
+		ScriptEvent(AI_ET_ENGINE_PREVIEW),
 		engine(engine)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventEnginePreview *Convert(AIEvent *instance) { return (AIEventEnginePreview *)instance; }
+	static ScriptEventEnginePreview *Convert(ScriptEvent *instance) { return (ScriptEventEnginePreview *)instance; }
 
 	/**
 	 * Get the name of the offered engine.
@@ -265,7 +265,7 @@ public:
 	 * @return The type the engine has.
 	 */
 #ifdef DOXYGEN_AI_DOCS
-	AIVehicle::VehicleType GetVehicleType();
+	ScriptVehicle::VehicleType GetVehicleType();
 #else
 	int32 GetVehicleType();
 #endif
@@ -289,92 +289,92 @@ private:
 /**
  * Event Company New, indicating a new company has been created.
  */
-class AIEventCompanyNew : public AIEvent {
+class ScriptEventCompanyNew : public ScriptEvent {
 public:
 	/**
 	 * @param owner The new company.
 	 */
-	AIEventCompanyNew(Owner owner) :
-		AIEvent(AI_ET_COMPANY_NEW),
-		owner((AICompany::CompanyID)owner)
+	ScriptEventCompanyNew(Owner owner) :
+		ScriptEvent(AI_ET_COMPANY_NEW),
+		owner((ScriptCompany::CompanyID)owner)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventCompanyNew *Convert(AIEvent *instance) { return (AIEventCompanyNew *)instance; }
+	static ScriptEventCompanyNew *Convert(ScriptEvent *instance) { return (ScriptEventCompanyNew *)instance; }
 
 	/**
 	 * Get the CompanyID of the company that has been created.
 	 * @return The CompanyID of the company.
 	 */
-	AICompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
 
 private:
-	AICompany::CompanyID owner; ///< The new company.
+	ScriptCompany::CompanyID owner; ///< The new company.
 };
 
 /**
  * Event Company In Trouble, indicating a company is in trouble and might go
  *  bankrupt soon.
  */
-class AIEventCompanyInTrouble : public AIEvent {
+class ScriptEventCompanyInTrouble : public ScriptEvent {
 public:
 	/**
 	 * @param owner The company that is in trouble.
 	 */
-	AIEventCompanyInTrouble(Owner owner) :
-		AIEvent(AI_ET_COMPANY_IN_TROUBLE),
-		owner((AICompany::CompanyID)owner)
+	ScriptEventCompanyInTrouble(Owner owner) :
+		ScriptEvent(AI_ET_COMPANY_IN_TROUBLE),
+		owner((ScriptCompany::CompanyID)owner)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventCompanyInTrouble *Convert(AIEvent *instance) { return (AIEventCompanyInTrouble *)instance; }
+	static ScriptEventCompanyInTrouble *Convert(ScriptEvent *instance) { return (ScriptEventCompanyInTrouble *)instance; }
 
 	/**
 	 * Get the CompanyID of the company that is in trouble.
 	 * @return The CompanyID of the company in trouble.
 	 */
-	AICompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
 
 private:
-	AICompany::CompanyID owner; ///< The company that is in trouble.
+	ScriptCompany::CompanyID owner; ///< The company that is in trouble.
 };
 
 /**
  * Event Company Ask Merger, indicating a company can be bought (cheaply) by you.
  */
-class AIEventCompanyAskMerger : public AIEvent {
+class ScriptEventCompanyAskMerger : public ScriptEvent {
 public:
 	/**
 	 * @param owner The company that can be bough.
 	 * @param value The value/costs of buying the company.
 	 */
-	AIEventCompanyAskMerger(Owner owner, int32 value) :
-		AIEvent(AI_ET_COMPANY_ASK_MERGER),
-		owner((AICompany::CompanyID)owner),
+	ScriptEventCompanyAskMerger(Owner owner, int32 value) :
+		ScriptEvent(AI_ET_COMPANY_ASK_MERGER),
+		owner((ScriptCompany::CompanyID)owner),
 		value(value)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventCompanyAskMerger *Convert(AIEvent *instance) { return (AIEventCompanyAskMerger *)instance; }
+	static ScriptEventCompanyAskMerger *Convert(ScriptEvent *instance) { return (ScriptEventCompanyAskMerger *)instance; }
 
 	/**
 	 * Get the CompanyID of the company that can be bought.
 	 * @return The CompanyID of the company that can be bought.
 	 * @note If the company is bought this will become invalid.
 	 */
-	AICompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
 
 	/**
 	 * Get the value of the new company.
@@ -389,7 +389,7 @@ public:
 	bool AcceptMerger();
 
 private:
-	AICompany::CompanyID owner; ///< The company that is in trouble.
+	ScriptCompany::CompanyID owner; ///< The company that is in trouble.
 	int32 value;                ///< The value of the company, i.e. the amount you would pay.
 };
 
@@ -397,94 +397,94 @@ private:
  * Event Company Merger, indicating a company has been bought by another
  *  company.
  */
-class AIEventCompanyMerger : public AIEvent {
+class ScriptEventCompanyMerger : public ScriptEvent {
 public:
 	/**
 	 * @param old_owner The company bought off.
 	 * @param new_owner The company that bougth owner.
 	 */
-	AIEventCompanyMerger(Owner old_owner, Owner new_owner) :
-		AIEvent(AI_ET_COMPANY_MERGER),
-		old_owner((AICompany::CompanyID)old_owner),
-		new_owner((AICompany::CompanyID)new_owner)
+	ScriptEventCompanyMerger(Owner old_owner, Owner new_owner) :
+		ScriptEvent(AI_ET_COMPANY_MERGER),
+		old_owner((ScriptCompany::CompanyID)old_owner),
+		new_owner((ScriptCompany::CompanyID)new_owner)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventCompanyMerger *Convert(AIEvent *instance) { return (AIEventCompanyMerger *)instance; }
+	static ScriptEventCompanyMerger *Convert(ScriptEvent *instance) { return (ScriptEventCompanyMerger *)instance; }
 
 	/**
 	 * Get the CompanyID of the company that has been bought.
 	 * @return The CompanyID of the company that has been bought.
 	 * @note: The value below is not valid anymore as CompanyID, and
-	 *  AICompany::ResolveCompanyID will return COMPANY_COMPANY. It's
+	 *  ScriptCompany::ResolveCompanyID will return COMPANY_COMPANY. It's
 	 *  only usefull if you're keeping track of company's yourself.
 	 */
-	AICompany::CompanyID GetOldCompanyID() { return this->old_owner; }
+	ScriptCompany::CompanyID GetOldCompanyID() { return this->old_owner; }
 
 	/**
 	 * Get the CompanyID of the new owner.
 	 * @return The CompanyID of the new owner.
 	 */
-	AICompany::CompanyID GetNewCompanyID() { return this->new_owner; }
+	ScriptCompany::CompanyID GetNewCompanyID() { return this->new_owner; }
 
 private:
-	AICompany::CompanyID old_owner; ///< The company that ended to exist.
-	AICompany::CompanyID new_owner; ///< The company that's the end result of the merger.
+	ScriptCompany::CompanyID old_owner; ///< The company that ended to exist.
+	ScriptCompany::CompanyID new_owner; ///< The company that's the end result of the merger.
 };
 
 /**
  * Event Company Bankrupt, indicating a company has gone bankrupt.
  */
-class AIEventCompanyBankrupt : public AIEvent {
+class ScriptEventCompanyBankrupt : public ScriptEvent {
 public:
 	/**
 	 * @param owner The company that has gone bankrupt.
 	 */
-	AIEventCompanyBankrupt(Owner owner) :
-		AIEvent(AI_ET_COMPANY_BANKRUPT),
-		owner((AICompany::CompanyID)owner)
+	ScriptEventCompanyBankrupt(Owner owner) :
+		ScriptEvent(AI_ET_COMPANY_BANKRUPT),
+		owner((ScriptCompany::CompanyID)owner)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventCompanyBankrupt *Convert(AIEvent *instance) { return (AIEventCompanyBankrupt *)instance; }
+	static ScriptEventCompanyBankrupt *Convert(ScriptEvent *instance) { return (ScriptEventCompanyBankrupt *)instance; }
 
 	/**
 	 * Get the CompanyID of the company that has gone bankrupt.
 	 * @return The CompanyID of the company that has gone bankrupt.
 	 */
-	AICompany::CompanyID GetCompanyID() { return this->owner; }
+	ScriptCompany::CompanyID GetCompanyID() { return this->owner; }
 
 private:
-	AICompany::CompanyID owner; ///< The company that has gone bankrupt.
+	ScriptCompany::CompanyID owner; ///< The company that has gone bankrupt.
 };
 
 /**
  * Event Vehicle Lost, indicating a vehicle can't find its way to its destination.
  */
-class AIEventVehicleLost : public AIEvent {
+class ScriptEventVehicleLost : public ScriptEvent {
 public:
 	/**
 	 * @param vehicle_id The vehicle that is lost.
 	 */
-	AIEventVehicleLost(VehicleID vehicle_id) :
-		AIEvent(AI_ET_VEHICLE_LOST),
+	ScriptEventVehicleLost(VehicleID vehicle_id) :
+		ScriptEvent(AI_ET_VEHICLE_LOST),
 		vehicle_id(vehicle_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventVehicleLost *Convert(AIEvent *instance) { return (AIEventVehicleLost *)instance; }
+	static ScriptEventVehicleLost *Convert(ScriptEvent *instance) { return (ScriptEventVehicleLost *)instance; }
 
 	/**
 	 * Get the VehicleID of the vehicle that is lost.
@@ -499,22 +499,22 @@ private:
 /**
  * Event VehicleWaitingInDepot, indicating a vehicle has arrived a depot and is now waiting there.
  */
-class AIEventVehicleWaitingInDepot : public AIEvent {
+class ScriptEventVehicleWaitingInDepot : public ScriptEvent {
 public:
 	/**
 	 * @param vehicle_id The vehicle that is waiting in a depot.
 	 */
-	AIEventVehicleWaitingInDepot(VehicleID vehicle_id) :
-		AIEvent(AI_ET_VEHICLE_WAITING_IN_DEPOT),
+	ScriptEventVehicleWaitingInDepot(VehicleID vehicle_id) :
+		ScriptEvent(AI_ET_VEHICLE_WAITING_IN_DEPOT),
 		vehicle_id(vehicle_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventVehicleWaitingInDepot *Convert(AIEvent *instance) { return (AIEventVehicleWaitingInDepot *)instance; }
+	static ScriptEventVehicleWaitingInDepot *Convert(ScriptEvent *instance) { return (ScriptEventVehicleWaitingInDepot *)instance; }
 
 	/**
 	 * Get the VehicleID of the vehicle that is waiting in a depot.
@@ -529,22 +529,22 @@ private:
 /**
  * Event Vehicle Unprofitable, indicating a vehicle lost money last year.
  */
-class AIEventVehicleUnprofitable : public AIEvent {
+class ScriptEventVehicleUnprofitable : public ScriptEvent {
 public:
 	/**
 	 * @param vehicle_id The vehicle that was unprofitable.
 	 */
-	AIEventVehicleUnprofitable(VehicleID vehicle_id) :
-		AIEvent(AI_ET_VEHICLE_UNPROFITABLE),
+	ScriptEventVehicleUnprofitable(VehicleID vehicle_id) :
+		ScriptEvent(AI_ET_VEHICLE_UNPROFITABLE),
 		vehicle_id(vehicle_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventVehicleUnprofitable *Convert(AIEvent *instance) { return (AIEventVehicleUnprofitable *)instance; }
+	static ScriptEventVehicleUnprofitable *Convert(ScriptEvent *instance) { return (ScriptEventVehicleUnprofitable *)instance; }
 
 	/**
 	 * Get the VehicleID of the vehicle that lost money.
@@ -559,22 +559,22 @@ private:
 /**
  * Event Industry Open, indicating a new industry has been created.
  */
-class AIEventIndustryOpen : public AIEvent {
+class ScriptEventIndustryOpen : public ScriptEvent {
 public:
 	/**
 	 * @param industry_id The new industry.
 	 */
-	AIEventIndustryOpen(IndustryID industry_id) :
-		AIEvent(AI_ET_INDUSTRY_OPEN),
+	ScriptEventIndustryOpen(IndustryID industry_id) :
+		ScriptEvent(AI_ET_INDUSTRY_OPEN),
 		industry_id(industry_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventIndustryOpen *Convert(AIEvent *instance) { return (AIEventIndustryOpen *)instance; }
+	static ScriptEventIndustryOpen *Convert(ScriptEvent *instance) { return (ScriptEventIndustryOpen *)instance; }
 
 	/**
 	 * Get the IndustryID of the new industry.
@@ -589,22 +589,22 @@ private:
 /**
  * Event Industry Close, indicating an industry is going to be closed.
  */
-class AIEventIndustryClose : public AIEvent {
+class ScriptEventIndustryClose : public ScriptEvent {
 public:
 	/**
 	 * @param industry_id The new industry.
 	 */
-	AIEventIndustryClose(IndustryID industry_id) :
-		AIEvent(AI_ET_INDUSTRY_CLOSE),
+	ScriptEventIndustryClose(IndustryID industry_id) :
+		ScriptEvent(AI_ET_INDUSTRY_CLOSE),
 		industry_id(industry_id)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventIndustryClose *Convert(AIEvent *instance) { return (AIEventIndustryClose *)instance; }
+	static ScriptEventIndustryClose *Convert(ScriptEvent *instance) { return (ScriptEventIndustryClose *)instance; }
 
 	/**
 	 * Get the IndustryID of the closing industry.
@@ -619,22 +619,22 @@ private:
 /**
  * Event Engine Available, indicating a new engine is available.
  */
-class AIEventEngineAvailable : public AIEvent {
+class ScriptEventEngineAvailable : public ScriptEvent {
 public:
 	/**
 	 * @param engine The engine that is available.
 	 */
-	AIEventEngineAvailable(EngineID engine) :
-		AIEvent(AI_ET_ENGINE_AVAILABLE),
+	ScriptEventEngineAvailable(EngineID engine) :
+		ScriptEvent(AI_ET_ENGINE_AVAILABLE),
 		engine(engine)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventEngineAvailable *Convert(AIEvent *instance) { return (AIEventEngineAvailable *)instance; }
+	static ScriptEventEngineAvailable *Convert(ScriptEvent *instance) { return (ScriptEventEngineAvailable *)instance; }
 
 	/**
 	 * Get the EngineID of the new engine.
@@ -649,24 +649,24 @@ private:
 /**
  * Event Station First Vehicle, indicating a station has been visited by a vehicle for the first time.
  */
-class AIEventStationFirstVehicle : public AIEvent {
+class ScriptEventStationFirstVehicle : public ScriptEvent {
 public:
 	/**
 	 * @param station The station visited for the first time.
 	 * @param vehicle The vehicle visiting the station.
 	 */
-	AIEventStationFirstVehicle(StationID station, VehicleID vehicle) :
-		AIEvent(AI_ET_STATION_FIRST_VEHICLE),
+	ScriptEventStationFirstVehicle(StationID station, VehicleID vehicle) :
+		ScriptEvent(AI_ET_STATION_FIRST_VEHICLE),
 		station(station),
 		vehicle(vehicle)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventStationFirstVehicle *Convert(AIEvent *instance) { return (AIEventStationFirstVehicle *)instance; }
+	static ScriptEventStationFirstVehicle *Convert(ScriptEvent *instance) { return (ScriptEventStationFirstVehicle *)instance; }
 
 	/**
 	 * Get the StationID of the visited station.
@@ -688,22 +688,22 @@ private:
 /**
  * Event Disaster Zeppeliner Crashed, indicating a zeppeliner has crashed on an airport and is blocking the runway.
  */
-class AIEventDisasterZeppelinerCrashed : public AIEvent {
+class ScriptEventDisasterZeppelinerCrashed : public ScriptEvent {
 public:
 	/**
 	 * @param station The station containing the affected airport
 	 */
-	AIEventDisasterZeppelinerCrashed(StationID station) :
-		AIEvent(AI_ET_DISASTER_ZEPPELINER_CRASHED),
+	ScriptEventDisasterZeppelinerCrashed(StationID station) :
+		ScriptEvent(AI_ET_DISASTER_ZEPPELINER_CRASHED),
 		station(station)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventDisasterZeppelinerCrashed *Convert(AIEvent *instance) { return (AIEventDisasterZeppelinerCrashed *)instance; }
+	static ScriptEventDisasterZeppelinerCrashed *Convert(ScriptEvent *instance) { return (ScriptEventDisasterZeppelinerCrashed *)instance; }
 
 	/**
 	 * Get the StationID of the station containing the affected airport.
@@ -718,22 +718,22 @@ private:
 /**
  * Event Disaster Zeppeliner Cleared, indicating a previously crashed zeppeliner has been removed, and the airport is operating again.
  */
-class AIEventDisasterZeppelinerCleared : public AIEvent {
+class ScriptEventDisasterZeppelinerCleared : public ScriptEvent {
 public:
 	/**
 	 * @param station The station containing the affected airport
 	 */
-	AIEventDisasterZeppelinerCleared(StationID station) :
-		AIEvent(AI_ET_DISASTER_ZEPPELINER_CLEARED),
+	ScriptEventDisasterZeppelinerCleared(StationID station) :
+		ScriptEvent(AI_ET_DISASTER_ZEPPELINER_CLEARED),
 		station(station)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventDisasterZeppelinerCleared *Convert(AIEvent *instance) { return (AIEventDisasterZeppelinerCleared *)instance; }
+	static ScriptEventDisasterZeppelinerCleared *Convert(ScriptEvent *instance) { return (ScriptEventDisasterZeppelinerCleared *)instance; }
 
 	/**
 	 * Get the StationID of the station containing the affected airport.
@@ -748,22 +748,22 @@ private:
 /**
  * Event Town Founded, indicating a new town has been created.
  */
-class AIEventTownFounded : public AIEvent {
+class ScriptEventTownFounded : public ScriptEvent {
 public:
 	/**
 	 * @param town The town that was created.
 	 */
-	AIEventTownFounded(TownID town) :
-		AIEvent(AI_ET_TOWN_FOUNDED),
+	ScriptEventTownFounded(TownID town) :
+		ScriptEvent(AI_ET_TOWN_FOUNDED),
 		town(town)
 	{}
 
 	/**
-	 * Convert an AIEvent to the real instance.
+	 * Convert an ScriptEvent to the real instance.
 	 * @param instance The instance to convert.
 	 * @return The converted instance.
 	 */
-	static AIEventTownFounded *Convert(AIEvent *instance) { return (AIEventTownFounded *)instance; }
+	static ScriptEventTownFounded *Convert(ScriptEvent *instance) { return (ScriptEventTownFounded *)instance; }
 
 	/**
 	 * Get the TownID of the town.

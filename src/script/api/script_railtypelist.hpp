@@ -16,11 +16,11 @@
 
 /**
  * Creates a list of all available railtypes.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIRailTypeList : public AIList {
+class ScriptRailTypeList : public ScriptList {
 public:
-	AIRailTypeList();
+	ScriptRailTypeList();
 };
 
 #endif /* SCRIPT_RAILTYPELIST_HPP */

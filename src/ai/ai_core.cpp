@@ -200,7 +200,7 @@
 	}
 }
 
-/* static */ void AI::NewEvent(CompanyID company, AIEvent *event)
+/* static */ void AI::NewEvent(CompanyID company, ScriptEvent *event)
 {
 	/* AddRef() and Release() need to be called at least once, so do it here */
 	event->AddRef();
@@ -225,7 +225,7 @@
 	event->Release();
 }
 
-/* static */ void AI::BroadcastNewEvent(AIEvent *event, CompanyID skip_company)
+/* static */ void AI::BroadcastNewEvent(ScriptEvent *event, CompanyID skip_company)
 {
 	/* AddRef() and Release() need to be called at least once, so do it here */
 	event->AddRef();

@@ -7,13 +7,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_industrylist.cpp Implementation of AIIndustryList and friends. */
+/** @file script_industrylist.cpp Implementation of ScriptIndustryList and friends. */
 
 #include "../../stdafx.h"
 #include "script_industrylist.hpp"
 #include "../../industry.h"
 
-AIIndustryList::AIIndustryList()
+ScriptIndustryList::ScriptIndustryList()
 {
 	Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
@@ -21,7 +21,7 @@ AIIndustryList::AIIndustryList()
 	}
 }
 
-AIIndustryList_CargoAccepting::AIIndustryList_CargoAccepting(CargoID cargo_id)
+ScriptIndustryList_CargoAccepting::ScriptIndustryList_CargoAccepting(CargoID cargo_id)
 {
 	const Industry *i;
 
@@ -32,7 +32,7 @@ AIIndustryList_CargoAccepting::AIIndustryList_CargoAccepting(CargoID cargo_id)
 	}
 }
 
-AIIndustryList_CargoProducing::AIIndustryList_CargoProducing(CargoID cargo_id)
+ScriptIndustryList_CargoProducing::ScriptIndustryList_CargoProducing(CargoID cargo_id)
 {
 	const Industry *i;
 

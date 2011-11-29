@@ -7,28 +7,28 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_accounting.cpp Implementation of AIAccounting. */
+/** @file script_accounting.cpp Implementation of ScriptAccounting. */
 
 #include "../../stdafx.h"
 #include "script_accounting.hpp"
 
-Money AIAccounting::GetCosts()
+Money ScriptAccounting::GetCosts()
 {
 	return this->GetDoCommandCosts();
 }
 
-void AIAccounting::ResetCosts()
+void ScriptAccounting::ResetCosts()
 {
 	this->SetDoCommandCosts(0);
 }
 
-AIAccounting::AIAccounting()
+ScriptAccounting::ScriptAccounting()
 {
 	this->last_costs = this->GetDoCommandCosts();
 	this->SetDoCommandCosts(0);
 }
 
-AIAccounting::~AIAccounting()
+ScriptAccounting::~ScriptAccounting()
 {
 	this->SetDoCommandCosts(this->last_costs);
 }

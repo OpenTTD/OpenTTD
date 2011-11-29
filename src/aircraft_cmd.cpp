@@ -1151,7 +1151,7 @@ static void CrashAirplane(Aircraft *v)
 		newsitem = STR_NEWS_AIRCRAFT_CRASH;
 	}
 
-	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, st == NULL ? AIEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : AIEventVehicleCrashed::CRASH_PLANE_LANDING));
+	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, st == NULL ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
 
 	AddVehicleNewsItem(newsitem,
 		NS_ACCIDENT,
@@ -1216,7 +1216,7 @@ static void AircraftEntersTerminal(Aircraft *v)
 			v->index,
 			st->index
 		);
-		AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
+		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
 	}
 
 	v->BeginLoading();

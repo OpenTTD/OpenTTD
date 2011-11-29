@@ -18,7 +18,7 @@
 /**
  * Class that handles all tile related functions.
  */
-class AITile : public AIObject {
+class ScriptTile : public ScriptObject {
 public:
 	/**
 	 * Error messages related to modifying tiles.
@@ -26,7 +26,7 @@ public:
 	enum ErrorMessages {
 
 		/** Base for tile related errors */
-		ERR_TILE_BASE = AIError::ERR_CAT_TILE << AIError::ERR_CAT_BIT_SIZE,
+		ERR_TILE_BASE = ScriptError::ERR_CAT_TILE << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Tile can't be raised any higher */
 		ERR_TILE_TOO_HIGH,                     // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
@@ -118,11 +118,11 @@ public:
 	 * Check if this tile is buildable, i.e. no things on it that needs
 	 *  demolishing.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if it is buildable, false if not.
-	 * @note For trams you also might want to check for AIRoad::IsRoad(),
+	 * @note For trams you also might want to check for ScriptRoad::IsRoad(),
 	 *   as you can build tram-rails on road-tiles.
-	 * @note For rail you also might want to check for AIRoad::IsRoad(),
+	 * @note For rail you also might want to check for ScriptRoad::IsRoad(),
 	 *   as in some cases you can build rails on road-tiles.
 	 */
 	static bool IsBuildable(TileIndex tile);
@@ -133,7 +133,7 @@ public:
 	 * @param tile The tile to check on.
 	 * @param width The width of the rectangle.
 	 * @param height The height of the rectangle.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if it is buildable, false if not.
 	 */
 	static bool IsBuildableRectangle(TileIndex tile, uint width, uint height);
@@ -141,7 +141,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a water tile.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is a water tile.
 	 */
 	static bool IsWaterTile(TileIndex tile);
@@ -149,7 +149,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a coast tile.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is a coast tile.
 	 * @note Building on coast tiles in general is more expensive. This is not
 	 *  true if there are also trees on the tile, see #HasTreeOnTile.
@@ -159,7 +159,7 @@ public:
 	/**
 	 * Checks whether the given tile is a station tile of any station.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is a station tile.
 	 */
 	static bool IsStationTile(TileIndex tile);
@@ -186,7 +186,7 @@ public:
 	/**
 	 * Check if the tile has any tree on it.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if there is a tree on the tile.
 	 */
 	static bool HasTreeOnTile(TileIndex tile);
@@ -194,7 +194,7 @@ public:
 	/**
 	 * Check if the tile is a farmland tile.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is farmland.
 	 */
 	static bool IsFarmTile(TileIndex tile);
@@ -202,7 +202,7 @@ public:
 	/**
 	 * Check if the tile is a rock tile.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is rock tile.
 	 */
 	static bool IsRockTile(TileIndex tile);
@@ -210,7 +210,7 @@ public:
 	/**
 	 * Check if the tile is a rough tile.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is rough tile.
 	 */
 	static bool IsRoughTile(TileIndex tile);
@@ -218,7 +218,7 @@ public:
 	/**
 	 * Check if the tile is a snow tile.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is snow tile.
 	 */
 	static bool IsSnowTile(TileIndex tile);
@@ -226,7 +226,7 @@ public:
 	/**
 	 * Check if the tile is a desert tile.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is desert tile.
 	 */
 	static bool IsDesertTile(TileIndex tile);
@@ -235,7 +235,7 @@ public:
 	 * Get the slope of a tile.
 	 * This is the slope of the bare tile. A possible foundation on the tile does not influence this slope.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return Bit mask encoding the slope. See #Slope for a description of the returned values.
 	 */
 	static Slope GetSlope(TileIndex tile);
@@ -255,7 +255,7 @@ public:
 	 * Get the minimal height on a tile.
 	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return The height of the lowest corner of the tile, ranging from 0 to 15.
 	 */
 	static int32 GetMinHeight(TileIndex tile);
@@ -264,7 +264,7 @@ public:
 	 * Get the maximal height on a tile.
 	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return The height of the highest corner of the tile, ranging from 0 to 15.
 	 */
 	static int32 GetMaxHeight(TileIndex tile);
@@ -274,7 +274,7 @@ public:
 	 * The returned height is the height of the bare tile. A possible foundation on the tile does not influence this height.
 	 * @param tile The tile to check on.
 	 * @param corner The corner to query.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return The height of the lowest corner of the tile, ranging from 0 to 15.
 	 */
 	static int32 GetCornerHeight(TileIndex tile, Corner corner);
@@ -282,24 +282,24 @@ public:
 	/**
 	 * Get the owner of the tile.
 	 * @param tile The tile to get the owner from.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return The CompanyID of the owner of the tile, or COMPANY_INVALID if
 	 *  there is no owner (grass/industry/water tiles, etc.).
 	 */
-	static AICompany::CompanyID GetOwner(TileIndex tile);
+	static ScriptCompany::CompanyID GetOwner(TileIndex tile);
 
 	/**
 	 * Checks whether the given tile contains parts suitable for the given
 	 *  TransportType.
 	 * @param tile The tile to check.
 	 * @param transport_type The TransportType to check against.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre transport_type != TRANSPORT_AIR.
 	 * @note Returns false on tiles with roadworks and on road tiles with only
 	 *       a single piece of road as these tiles cannot be used to transport
 	 *       anything on. It furthermore returns true on some coast tile for
 	 *       TRANSPORT_WATER because ships can navigate over them.
-	 * @note Use AIAirport.IsAirportTile to check for airport tiles. Aircraft
+	 * @note Use ScriptAirport.IsAirportTile to check for airport tiles. Aircraft
 	 *       can fly over every tile on the map so using HasTransportType
 	 *       doesn't make sense for TRANSPORT_AIR.
 	 * @return True if and only if the tile has the given TransportType.
@@ -315,8 +315,8 @@ public:
 	 * @param width The width of the station.
 	 * @param height The height of the station.
 	 * @param radius The radius of the station.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @pre AICargo::IsValidCargo(cargo_type)
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type)
 	 * @pre width > 0.
 	 * @pre height > 0.
 	 * @pre radius >= 0.
@@ -332,8 +332,8 @@ public:
 	 * @param width The width of the station.
 	 * @param height The height of the station.
 	 * @param radius The radius of the station.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @pre AICargo::IsValidCargo(cargo_type)
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type)
 	 * @pre width > 0.
 	 * @pre height > 0.
 	 * @pre radius >= 0.
@@ -365,10 +365,10 @@ public:
 	 *       multiple corners may result in changing some corners by multiple steps.
 	 * @param tile The tile to raise.
 	 * @param slope Corners to raise (SLOPE_xxx).
-	 * @pre tile < AIMap::GetMapSize().
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_TOO_CLOSE_TO_EDGE
-	 * @exception AITile::ERR_TILE_TOO_HIGH
+	 * @pre tile < ScriptMap::GetMapSize().
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
+	 * @exception ScriptTile::ERR_TILE_TOO_HIGH
 	 * @return 0 means failed, 1 means success.
 	 */
 	static bool RaiseTile(TileIndex tile, int32 slope);
@@ -381,10 +381,10 @@ public:
 	 *       multiple corners may result in changing some corners by multiple steps.
 	 * @param tile The tile to lower.
 	 * @param slope Corners to lower (SLOPE_xxx).
-	 * @pre tile < AIMap::GetMapSize().
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_TOO_CLOSE_TO_EDGE
-	 * @exception AITile::ERR_TILE_TOO_LOW
+	 * @pre tile < ScriptMap::GetMapSize().
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
+	 * @exception ScriptTile::ERR_TILE_TOO_LOW
 	 * @return 0 means failed, 1 means success.
 	 */
 	static bool LowerTile(TileIndex tile, int32 slope);
@@ -392,26 +392,26 @@ public:
 	/**
 	 * Level all tiles in the rectangle between start_tile and end_tile so they
 	 *  are at the same height. All tiles will be raised or lowered until
-	 *  they are at height AITile::GetHeight(start_tile).
+	 *  they are at height ScriptTile::GetHeight(start_tile).
 	 * @param start_tile One corner of the rectangle to level.
 	 * @param end_tile The opposite corner of the rectangle.
-	 * @pre start_tile < AIMap::GetMapSize().
-	 * @pre end_tile < AIMap::GetMapSize().
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_TOO_CLOSE_TO_EDGE
+	 * @pre start_tile < ScriptMap::GetMapSize().
+	 * @pre end_tile < ScriptMap::GetMapSize().
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
 	 * @return True if one or more tiles were leveled.
 	 * @note Even if leveling some part fails, some other part may have been
 	 *  successfully leveled already.
-	 * @note This function may return true in AITestMode, although it fails in
-	 *  AIExecMode.
+	 * @note This function may return true in ScriptTestMode, although it fails in
+	 *  ScriptExecMode.
 	 */
 	static bool LevelTiles(TileIndex start_tile, TileIndex end_tile);
 
 	/**
 	 * Destroy everything on the given tile.
 	 * @param tile The tile to demolish.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @return True if and only if the tile was demolished.
 	 */
 	static bool DemolishTile(TileIndex tile);
@@ -419,7 +419,7 @@ public:
 	/**
 	 * Create a random tree on a tile.
 	 * @param tile The tile to build a tree on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if a tree was added on the tile.
 	 */
 	static bool PlantTree(TileIndex tile);
@@ -429,7 +429,7 @@ public:
 	 * @param tile The top left tile of the rectangle.
 	 * @param width The width of the rectangle.
 	 * @param height The height of the rectangle.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre width >= 1 && width <= 20.
 	 * @pre height >= 1 && height <= 20.
 	 * @return True if and only if a tree was added on any of the tiles in the rectangle.

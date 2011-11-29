@@ -19,13 +19,13 @@
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
-bool AIEventEnginePreview::IsEngineValid() const
+bool ScriptEventEnginePreview::IsEngineValid() const
 {
 	const Engine *e = ::Engine::GetIfValid(this->engine);
 	return e != NULL && e->IsEnabled();
 }
 
-char *AIEventEnginePreview::GetName()
+char *ScriptEventEnginePreview::GetName()
 {
 	if (!this->IsEngineValid()) return NULL;
 	static const int len = 64;
@@ -36,7 +36,7 @@ char *AIEventEnginePreview::GetName()
 	return engine_name;
 }
 
-CargoID AIEventEnginePreview::GetCargoType()
+CargoID ScriptEventEnginePreview::GetCargoType()
 {
 	if (!this->IsEngineValid()) return CT_INVALID;
 	CargoArray cap = ::GetCapacityOfArticulatedParts(this->engine);
@@ -53,7 +53,7 @@ CargoID AIEventEnginePreview::GetCargoType()
 	return most_cargo;
 }
 
-int32 AIEventEnginePreview::GetCapacity()
+int32 ScriptEventEnginePreview::GetCapacity()
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
@@ -76,7 +76,7 @@ int32 AIEventEnginePreview::GetCapacity()
 	}
 }
 
-int32 AIEventEnginePreview::GetMaxSpeed()
+int32 ScriptEventEnginePreview::GetMaxSpeed()
 {
 	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
@@ -85,37 +85,37 @@ int32 AIEventEnginePreview::GetMaxSpeed()
 	return max_speed;
 }
 
-Money AIEventEnginePreview::GetPrice()
+Money ScriptEventEnginePreview::GetPrice()
 {
 	if (!this->IsEngineValid()) return -1;
 	return ::Engine::Get(this->engine)->GetCost();
 }
 
-Money AIEventEnginePreview::GetRunningCost()
+Money ScriptEventEnginePreview::GetRunningCost()
 {
 	if (!this->IsEngineValid()) return -1;
 	return ::Engine::Get(this->engine)->GetRunningCost();
 }
 
-int32 AIEventEnginePreview::GetVehicleType()
+int32 ScriptEventEnginePreview::GetVehicleType()
 {
-	if (!this->IsEngineValid()) return AIVehicle::VT_INVALID;
+	if (!this->IsEngineValid()) return ScriptVehicle::VT_INVALID;
 	switch (::Engine::Get(this->engine)->type) {
-		case VEH_ROAD:     return AIVehicle::VT_ROAD;
-		case VEH_TRAIN:    return AIVehicle::VT_RAIL;
-		case VEH_SHIP:     return AIVehicle::VT_WATER;
-		case VEH_AIRCRAFT: return AIVehicle::VT_AIR;
+		case VEH_ROAD:     return ScriptVehicle::VT_ROAD;
+		case VEH_TRAIN:    return ScriptVehicle::VT_RAIL;
+		case VEH_SHIP:     return ScriptVehicle::VT_WATER;
+		case VEH_AIRCRAFT: return ScriptVehicle::VT_AIR;
 		default: NOT_REACHED();
 	}
 }
 
-bool AIEventEnginePreview::AcceptPreview()
+bool ScriptEventEnginePreview::AcceptPreview()
 {
 	if (!this->IsEngineValid()) return false;
-	return AIObject::DoCommand(0, this->engine, 0, CMD_WANT_ENGINE_PREVIEW);
+	return ScriptObject::DoCommand(0, this->engine, 0, CMD_WANT_ENGINE_PREVIEW);
 }
 
-bool AIEventCompanyAskMerger::AcceptMerger()
+bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
-	return AIObject::DoCommand(0, this->owner, 0, CMD_BUY_COMPANY);
+	return ScriptObject::DoCommand(0, this->owner, 0, CMD_BUY_COMPANY);
 }

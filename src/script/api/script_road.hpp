@@ -17,14 +17,14 @@
 /**
  * Class that handles all road related functions.
  */
-class AIRoad : public AIObject {
+class ScriptRoad : public ScriptObject {
 public:
 	/**
 	 * All road related error messages.
 	 */
 	enum ErrorMessages {
 		/** Base for road building / maintaining errors */
-		ERR_ROAD_BASE = AIError::ERR_CAT_ROAD << AIError::ERR_CAT_BIT_SIZE,
+		ERR_ROAD_BASE = ScriptError::ERR_CAT_ROAD << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Road works are in progress */
 		ERR_ROAD_WORKS_IN_PROGRESS,                   // [STR_ERROR_ROAD_WORKS_IN_PROGRESS]
@@ -72,7 +72,7 @@ public:
 	/**
 	 * Determines whether a busstop or a truckstop is needed to transport a certain cargo.
 	 * @param cargo_type The cargo to test.
-	 * @pre AICargo::IsValidCargo(cargo_type).
+	 * @pre ScriptCargo::IsValidCargo(cargo_type).
 	 * @return The road vehicle type needed to transport the cargo.
 	 */
 	static RoadVehicleType GetRoadVehicleTypeForCargo(CargoID cargo_type);
@@ -82,7 +82,7 @@ public:
 	 *  used to traverse a tile. This excludes road depots and 'normal' road
 	 *  stations, but includes drive through stations.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has road.
 	 */
 	static bool IsRoadTile(TileIndex tile);
@@ -90,7 +90,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a tile with a road depot.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has a road depot.
 	 */
 	static bool IsRoadDepotTile(TileIndex tile);
@@ -98,7 +98,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a tile with a road station.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has a road station.
 	 */
 	static bool IsRoadStationTile(TileIndex tile);
@@ -107,7 +107,7 @@ public:
 	 * Checks whether the given tile is actually a tile with a drive through
 	 *  road station.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has a drive through road station.
 	 */
 	static bool IsDriveThroughRoadStationTile(TileIndex tile);
@@ -120,13 +120,13 @@ public:
 	static bool IsRoadTypeAvailable(RoadType road_type);
 
 	/**
-	 * Get the current RoadType set for all AIRoad functions.
+	 * Get the current RoadType set for all ScriptRoad functions.
 	 * @return The RoadType currently set.
 	 */
 	static RoadType GetCurrentRoadType();
 
 	/**
-	 * Set the RoadType for all further AIRoad functions.
+	 * Set the RoadType for all further ScriptRoad functions.
 	 * @param road_type The RoadType to set.
 	 */
 	static void SetCurrentRoadType(RoadType road_type);
@@ -135,7 +135,7 @@ public:
 	 * Check if a given tile has RoadType.
 	 * @param tile The tile to check.
 	 * @param road_type The RoadType to check for.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre IsRoadTypeAvailable(road_type).
 	 * @return True if the tile contains a RoadType object.
 	 */
@@ -148,8 +148,8 @@ public:
 	 * @param tile_from The source tile.
 	 * @param tile_to The destination tile.
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @pre AIMap::IsValidTile(tile_from).
-	 * @pre AIMap::IsValidTile(tile_to).
+	 * @pre ScriptMap::IsValidTile(tile_from).
+	 * @pre ScriptMap::IsValidTile(tile_to).
 	 * @pre 'tile_from' and 'tile_to' are directly neighbouring tiles.
 	 * @return True if and only if a road vehicle can go from tile_from to tile_to.
 	 */
@@ -162,19 +162,19 @@ public:
 	 *  it needs the slope and existing road parts of the tile as information.
 	 * @param slope The slope of the tile to examine.
 	 * @param existing An array with the existing neighbours in the same format
-	 *                 as "start" and "end", e.g. AIMap.GetTileIndex(0, 1).
+	 *                 as "start" and "end", e.g. ScriptMap.GetTileIndex(0, 1).
 	 *                 As a result of this all values of the existing array
 	 *                 must be of type integer.
 	 * @param start The tile from where the 'tile to be considered' will be
 	 *              entered. This is a relative tile, so valid parameters are:
-	 *              AIMap.GetTileIndex(0, 1), AIMap.GetTileIndex(0, -1),
-	 *              AIMap.GetTileIndex(1, 0) and AIMap.GetTileIndex(-1, 0).
+	 *              ScriptMap.GetTileIndex(0, 1), ScriptMap.GetTileIndex(0, -1),
+	 *              ScriptMap.GetTileIndex(1, 0) and ScriptMap.GetTileIndex(-1, 0).
 	 * @param end The tile from where the 'tile to be considered' will be
 	 *            exited. This is a relative tile, sovalid parameters are:
-	 *              AIMap.GetTileIndex(0, 1), AIMap.GetTileIndex(0, -1),
-	 *              AIMap.GetTileIndex(1, 0) and AIMap.GetTileIndex(-1, 0).
+	 *              ScriptMap.GetTileIndex(0, 1), ScriptMap.GetTileIndex(0, -1),
+	 *              ScriptMap.GetTileIndex(1, 0) and ScriptMap.GetTileIndex(-1, 0).
 	 * @pre start != end.
-	 * @pre slope must be a valid slope, i.e. one specified in AITile::Slope.
+	 * @pre slope must be a valid slope, i.e. one specified in ScriptTile::Slope.
 	 * @note Passing data that would be invalid in-game, e.g. existing containing
 	 *       road parts that can not be build on a tile with the given slope,
 	 *       does not necessarily means that -1 is returned, i.e. not all
@@ -184,7 +184,7 @@ public:
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
 	 */
-	static int32 CanBuildConnectedRoadParts(AITile::Slope slope, struct Array *existing, TileIndex start, TileIndex end);
+	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, struct Array *existing, TileIndex start, TileIndex end);
 
 	/**
 	 * Lookup function for building road parts independend on whether the
@@ -196,11 +196,11 @@ public:
 	 * @pre start != end.
 	 * @pre tile != start.
 	 * @pre tile != end.
-	 * @pre AIMap.IsValidTile(tile).
-	 * @pre AIMap.IsValidTile(start).
-	 * @pre AIMap.IsValidTile(end).
-	 * @pre AIMap.GetDistanceManhattanToTile(tile, start) == 1.
-	 * @pre AIMap.GetDistanceManhattanToTile(tile, end) == 1.
+	 * @pre ScriptMap.IsValidTile(tile).
+	 * @pre ScriptMap.IsValidTile(start).
+	 * @pre ScriptMap.IsValidTile(end).
+	 * @pre ScriptMap.GetDistanceManhattanToTile(tile, start) == 1.
+	 * @pre ScriptMap.GetDistanceManhattanToTile(tile, end) == 1.
 	 * @return 0 when the build parts do not connect, 1 when they do connect once
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
@@ -210,7 +210,7 @@ public:
 	/**
 	 * Count how many neighbours are road.
 	 * @param tile The tile to check on.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
 	 * @return 0 means no neighbour road; max value is 4.
 	 */
@@ -247,18 +247,18 @@ public:
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
 	 * @pre 'start' is not equal to 'end'.
-	 * @pre AIMap::IsValidTile(start).
-	 * @pre AIMap::IsValidTile(end).
+	 * @pre ScriptMap::IsValidTile(start).
+	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
-	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
-	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
+	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @exception AIError::ERR_ALREADY_BUILT
-	 * @exception AIError::ERR_LAND_SLOPED_WRONG
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
-	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptError::ERR_ALREADY_BUILT
+	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
+	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
@@ -274,18 +274,18 @@ public:
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
 	 * @pre 'start' is not equal to 'end'.
-	 * @pre AIMap::IsValidTile(start).
-	 * @pre AIMap::IsValidTile(end).
+	 * @pre ScriptMap::IsValidTile(start).
+	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
-	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
-	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
+	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
-	 * @exception AIError::ERR_ALREADY_BUILT
-	 * @exception AIError::ERR_LAND_SLOPED_WRONG
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
-	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptError::ERR_ALREADY_BUILT
+	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
+	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
@@ -297,18 +297,18 @@ public:
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
 	 * @pre 'start' is not equal to 'end'.
-	 * @pre AIMap::IsValidTile(start).
-	 * @pre AIMap::IsValidTile(end).
+	 * @pre ScriptMap::IsValidTile(start).
+	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
-	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
-	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
+	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @exception AIError::ERR_ALREADY_BUILT
-	 * @exception AIError::ERR_LAND_SLOPED_WRONG
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
-	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptError::ERR_ALREADY_BUILT
+	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
+	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
@@ -325,18 +325,18 @@ public:
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
 	 * @pre 'start' is not equal to 'end'.
-	 * @pre AIMap::IsValidTile(start).
-	 * @pre AIMap::IsValidTile(end).
+	 * @pre ScriptMap::IsValidTile(start).
+	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
-	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
-	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
+	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
-	 * @exception AIError::ERR_ALREADY_BUILT
-	 * @exception AIError::ERR_LAND_SLOPED_WRONG
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
-	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptError::ERR_ALREADY_BUILT
+	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
+	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
@@ -346,12 +346,12 @@ public:
 	 * Builds a road depot.
 	 * @param tile Place to build the depot.
 	 * @param front The tile exactly in front of the depot.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @pre AIMap::IsValidTile(front).
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @return Whether the road depot has been/can be build or not.
 	 */
 	static bool BuildRoadDepot(TileIndex tile, TileIndex front);
@@ -361,21 +361,21 @@ public:
 	 * @param tile Place to build the station.
 	 * @param front The tile exactly in front of the station.
 	 * @param road_veh_type Whether to build a truck or bus station.
-	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @pre AIMap::IsValidTile(front).
+	 * @param station_id The station to join, ScriptStation::STATION_NEW or ScriptStation::STATION_JOIN_ADJACENT.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
-	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
+	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
-	 * @exception AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION
-	 * @exception AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
-	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
-	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS
-	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION
+	 * @exception ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
+	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
+	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
 	static bool BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
@@ -385,21 +385,21 @@ public:
 	 * @param tile Place to build the station.
 	 * @param front A tile on the same axis with 'tile' as the station shall be oriented.
 	 * @param road_veh_type Whether to build a truck or bus station.
-	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @pre AIMap::IsValidTile(front).
+	 * @param station_id The station to join, ScriptStation::STATION_NEW or ScriptStation::STATION_JOIN_ADJACENT.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
-	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
+	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
-	 * @exception AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION
-	 * @exception AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
-	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
-	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS
-	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION
+	 * @exception ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
+	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
+	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
 	static bool BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
@@ -408,15 +408,15 @@ public:
 	 * Removes a road from the center of tile start to the center of tile end.
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
-	 * @pre AIMap::IsValidTile(start).
-	 * @pre AIMap::IsValidTile(end).
+	 * @pre ScriptMap::IsValidTile(start).
+	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
-	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
-	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
+	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
-	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @return Whether the road has been/can be removed or not.
 	 */
 	static bool RemoveRoad(TileIndex start, TileIndex end);
@@ -426,15 +426,15 @@ public:
 	 *  included).
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
-	 * @pre AIMap::IsValidTile(start).
-	 * @pre AIMap::IsValidTile(end).
+	 * @pre ScriptMap::IsValidTile(start).
+	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
-	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
-	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
+	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
+	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
-	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @return Whether the road has been/can be removed or not.
 	 */
 	static bool RemoveRoadFull(TileIndex start, TileIndex end);
@@ -442,10 +442,10 @@ public:
 	/**
 	 * Removes a road depot.
 	 * @param tile Place to remove the depot from.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre Tile is a road depot.
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @return Whether the road depot has been/can be removed or not.
 	 */
 	static bool RemoveRoadDepot(TileIndex tile);
@@ -453,10 +453,10 @@ public:
 	/**
 	 * Removes a road bus or truck station.
 	 * @param tile Place to remove the station from.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre Tile is a road station.
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @return Whether the station has been/can be removed or not.
 	 */
 	static bool RemoveRoadStation(TileIndex tile);

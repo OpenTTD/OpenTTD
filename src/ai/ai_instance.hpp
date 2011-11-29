@@ -77,8 +77,8 @@ private:
 /** Runtime information about an AI like a pointer to the squirrel vm and the current state. */
 class AIInstance {
 public:
-	friend class AIObject;
-	friend class AIController;
+	friend class ScriptObject;
+	friend class ScriptController;
 
 	/**
 	 * Create a new AI.
@@ -141,7 +141,7 @@ public:
 	/**
 	 * Get the controller attached to the instance.
 	 */
-	class AIController *GetController() { return controller; }
+	class ScriptController *GetController() { return controller; }
 
 	/**
 	 * Return the "this AI died" value
@@ -198,10 +198,10 @@ public:
 	 * Insert an event for this AI.
 	 * @param event The event to insert.
 	 */
-	void InsertEvent(class AIEvent *event);
+	void InsertEvent(class ScriptEvent *event);
 
 private:
-	class AIController *controller;  ///< The AI main class.
+	class ScriptController *controller; ///< The AI main class.
 	class AIStorage *storage;        ///< Some global information for each running AI.
 	class Squirrel *engine;          ///< A wrapper around the squirrel vm.
 	SQObject *instance;              ///< Squirrel-pointer to the AI main class.

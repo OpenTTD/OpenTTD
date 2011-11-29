@@ -2711,7 +2711,7 @@ static void TrainEnterStation(Train *v, StationID station)
 			v->index,
 			st->index
 		);
-		AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
+		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
 	}
 
 	v->force_proceed = TFP_NONE;
@@ -2837,7 +2837,7 @@ static uint TrainCrashed(Train *v)
 	/* do not crash train twice */
 	if (!(v->vehstatus & VS_CRASHED)) {
 		num = v->Crash();
-		AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_TRAIN));
+		AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_TRAIN));
 	}
 
 	/* Try to re-reserve track under already crashed train too.

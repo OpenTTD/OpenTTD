@@ -17,26 +17,26 @@
 
 /**
  * Creates a list of waypoints of which you are the owner.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIWaypointList : public AIList {
+class ScriptWaypointList : public ScriptList {
 public:
 	/**
 	 * @param waypoint_type The type of waypoint to make a list of waypoints for.
 	 */
-	AIWaypointList(AIWaypoint::WaypointType waypoint_type);
+	ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_type);
 };
 
 /**
  * Creates a list of waypoints which the vehicle has in its orders.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIWaypointList_Vehicle : public AIList {
+class ScriptWaypointList_Vehicle : public ScriptList {
 public:
 	/**
 	 * @param vehicle_id The vehicle to get the list of waypoints he has in its orders from.
 	 */
-	AIWaypointList_Vehicle(VehicleID vehicle_id);
+	ScriptWaypointList_Vehicle(VehicleID vehicle_id);
 };
 
 #endif /* SCRIPT_WAYPOINTLIST_HPP */

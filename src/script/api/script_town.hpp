@@ -18,7 +18,7 @@
 /**
  * Class that handles all town related functions.
  */
-class AITown : public AIObject {
+class ScriptTown : public ScriptObject {
 public:
 	/**
 	 * Actions that one can perform on a town.
@@ -151,7 +151,7 @@ public:
 	 * @param town_id The index of the town.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The last month's production of the given cargo for this town.
 	 */
 	static int32 GetLastMonthProduction(TownID town_id, CargoID cargo_id);
@@ -161,7 +161,7 @@ public:
 	 * @param town_id The index of the town.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The amount of cargo supplied for transport from this town last month.
 	 */
 	static int32 GetLastMonthSupplied(TownID town_id, CargoID cargo_id);
@@ -171,7 +171,7 @@ public:
 	 * @param town_id The index of the town.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre AICargo::IsValidCargo(cargo_id).
+	 * @pre ScriptCargo::IsValidCargo(cargo_id).
 	 * @return The percentage of given cargo transported from this town last month.
 	 */
 	static int32 GetLastMonthTransportedPercentage(TownID town_id, CargoID cargo_id);
@@ -181,10 +181,10 @@ public:
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the cargo.
 	 * @pre IsValidTown(town_id).
-	 * @pre AICargo::IsValidTownEffect(cargo_id).
+	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
 	 * @return The amount of cargo received by this town last month for this cargo effect.
 	 */
-	static int32 GetLastMonthReceived(TownID town_id, AICargo::TownEffect towneffect_id);
+	static int32 GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
 	 * Get the amount of cargo that needs to be delivered (per TownEffect) for a
@@ -192,12 +192,12 @@ public:
 	 * @param town_id The index of the town.
 	 * @param towneffect_id The index of the towneffect.
 	 * @pre IsValidTown(town_id).
-	 * @pre AICargo::IsValidTownEffect(cargo_id).
+	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
 	 * @return The goal of the cargo.
 	 * @note Goals can change over time. For example with a changing snowline, or
 	 *  with a growing town.
 	 */
-	static uint32 GetCargoGoal(TownID town_id, AICargo::TownEffect towneffect_id);
+	static uint32 GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
 	 * Get the amount of days between town growth.
@@ -209,7 +209,7 @@ public:
 	static int32 GetGrowthRate(TownID town_id);
 
 	/**
-	 * Get the manhattan distance from the tile to the AITown::GetLocation()
+	 * Get the manhattan distance from the tile to the ScriptTown::GetLocation()
 	 *  of the town.
 	 * @param town_id The town to get the distance to.
 	 * @param tile The tile to get the distance to.
@@ -219,7 +219,7 @@ public:
 	static int32 GetDistanceManhattanToTile(TownID town_id, TileIndex tile);
 
 	/**
-	 * Get the square distance from the tile to the AITown::GetLocation()
+	 * Get the square distance from the tile to the ScriptTown::GetLocation()
 	 *  of the town.
 	 * @param town_id The town to get the distance to.
 	 * @param tile The tile to get the distance to.
@@ -269,10 +269,10 @@ public:
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
 	 * @return The company that has the exclusive rights. The value
-	 *         AICompany::COMPANY_INVALID means that there are currently no
+	 *         ScriptCompany::COMPANY_INVALID means that there are currently no
 	 *         exclusive rights given out to anyone.
 	 */
-	static AICompany::CompanyID GetExclusiveRightsCompany(TownID town_id);
+	static ScriptCompany::CompanyID GetExclusiveRightsCompany(TownID town_id);
 
 	/**
 	 * Find out how long the town is under influence of the exclusive rights.
@@ -308,10 +308,10 @@ public:
 	 * @param town_id The town to get the rating for.
 	 * @param company_id The company to get the rating for.
 	 * @pre IsValidTown(town_id).
-	 * @pre AICompany.ResolveCompanyID(company) != AICompany::COMPANY_INVALID.
+	 * @pre ScriptCompany.ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID.
 	 * @return The rating as shown to humans.
 	 */
-	static TownRating GetRating(TownID town_id, AICompany::CompanyID company_id);
+	static TownRating GetRating(TownID town_id, ScriptCompany::CompanyID company_id);
 
 	/**
 	 * Get the maximum level of noise that still can be added by airports

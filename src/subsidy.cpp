@@ -57,7 +57,7 @@ void Subsidy::AwardTo(CompanyID company)
 		(NewsReferenceType)reftype.a, this->src, (NewsReferenceType)reftype.b, this->dst,
 		cn
 	);
-	AI::BroadcastNewEvent(new AIEventSubsidyAwarded(this->index));
+	AI::BroadcastNewEvent(new ScriptEventSubsidyAwarded(this->index));
 
 	InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
@@ -274,13 +274,13 @@ void SubsidyMonthlyLoop()
 			if (!s->IsAwarded()) {
 				Pair reftype = SetupSubsidyDecodeParam(s, true);
 				AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
-				AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s->index));
+				AI::BroadcastNewEvent(new ScriptEventSubsidyOfferExpired(s->index));
 			} else {
 				if (s->awarded == _local_company) {
 					Pair reftype = SetupSubsidyDecodeParam(s, true);
 					AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				}
-				AI::BroadcastNewEvent(new AIEventSubsidyExpired(s->index));
+				AI::BroadcastNewEvent(new ScriptEventSubsidyExpired(s->index));
 			}
 			delete s;
 			modified = true;
@@ -302,7 +302,7 @@ void SubsidyMonthlyLoop()
 				AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 				SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
-				AI::BroadcastNewEvent(new AIEventSubsidyOffer(s->index));
+				AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));
 				modified = true;
 				break;
 			}

@@ -534,7 +534,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
 			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_TROUBLE, cni);
-			AI::BroadcastNewEvent(new AIEventCompanyInTrouble(c->index));
+			AI::BroadcastNewEvent(new ScriptEventCompanyInTrouble(c->index));
 			break;
 		}
 
@@ -1599,7 +1599,7 @@ static void DoAcquireCompany(Company *c)
 	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, c->bankrupt_value);
 	AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_MERGER, cni);
-	AI::BroadcastNewEvent(new AIEventCompanyMerger(ci, _current_company));
+	AI::BroadcastNewEvent(new ScriptEventCompanyMerger(ci, _current_company));
 
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 

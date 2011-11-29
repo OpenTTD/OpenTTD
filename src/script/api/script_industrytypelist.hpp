@@ -16,11 +16,11 @@
 
 /**
  * Creates a list of valid industry types.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIIndustryTypeList : public AIList {
+class ScriptIndustryTypeList : public ScriptList {
 public:
-	AIIndustryTypeList();
+	ScriptIndustryTypeList();
 };
 
 

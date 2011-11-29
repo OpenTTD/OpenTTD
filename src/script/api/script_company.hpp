@@ -17,7 +17,7 @@
 /**
  * Class that handles all company related functions.
  */
-class AICompany : public AIObject {
+class ScriptCompany : public ScriptObject {
 public:
 	/** The range of possible quarters to get company information of. */
 	enum Quarter {
@@ -62,7 +62,7 @@ public:
 	 * @param name The new name of the company.
 	 * @pre 'name' must have at least one character.
 	 * @pre 'name' must have at most 30 characters.
-	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
 	 */
 	static bool SetName(const char *name);
@@ -79,7 +79,7 @@ public:
 	 * Set the name of your president.
 	 * @param name The new name of the president.
 	 * @pre 'name' must have at least one character.
-	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
 	 */
 	static bool SetPresidentName(const char *name);
@@ -95,7 +95,7 @@ public:
 	/**
 	 * Set the gender of the president of your company.
 	 * @param gender The new gender for your president.
-	 * @pre GetPresidentGender(AICompany.COMPANY_SELF) != gender.
+	 * @pre GetPresidentGender(ScriptCompany.COMPANY_SELF) != gender.
 	 * @return True if the gender was changed.
 	 * @note When successful a random face will be created.
 	 */
@@ -212,9 +212,9 @@ public:
 	/**
 	 * Build your company's HQ on the given tile.
 	 * @param tile The tile to build your HQ on, this tile is the most nothern tile of your HQ.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @return True if the HQ could be build.
 	 * @note An HQ can not be removed, only by water or rebuilding; If an HQ is
 	 *  build again, the old one is removed.
@@ -226,7 +226,7 @@ public:
 	 * @param company The company the get the HQ of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The tile of the company's HQ, this tile is the most nothern tile
-	 *  of that HQ, or AIMap::TILE_INVALID if there is no HQ yet.
+	 *  of that HQ, or ScriptMap::TILE_INVALID if there is no HQ yet.
 	 */
 	static TileIndex GetCompanyHQ(CompanyID company);
 
@@ -276,6 +276,6 @@ public:
 	static uint32 GetAutoRenewMoney(CompanyID company);
 };
 
-DECLARE_POSTFIX_INCREMENT(AICompany::CompanyID)
+DECLARE_POSTFIX_INCREMENT(ScriptCompany::CompanyID)
 
 #endif /* SCRIPT_COMPANY_HPP */

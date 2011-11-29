@@ -20,40 +20,40 @@
  * Example:
  * <pre>
  *   {
- *     local costs = AIAccounting();
+ *     local costs = ScriptAccounting();
  *     BuildRoad(from_here, to_here);
  *     BuildRoad(from_there, to_there);
  *     print("Costs for route is: " + costs.GetCosts());
  *   }
  * </pre>
  */
-class AIAccounting : public AIObject {
+class ScriptAccounting : public ScriptObject {
 public:
 	/**
 	 * Creating instance of this class starts counting the costs of commands
 	 *   from zero. Saves the current value of GetCosts so we can return to
 	 *   the old value when the instance gets deleted.
 	 */
-	AIAccounting();
+	ScriptAccounting();
 
 	/**
-	 * Restore the AIAccounting that was on top when we created this instance.
+	 * Restore the ScriptAccounting that was on top when we created this instance.
 	 *   So basically restore the value of GetCosts to what it was before we
 	 *   created this instance.
 	 */
-	~AIAccounting();
+	~ScriptAccounting();
 
 	/**
 	 * Get the current value of the costs.
 	 * @return The current costs.
-	 * @note when nesting AIAccounting instances all instances' GetCosts
+	 * @note when nesting ScriptAccounting instances all instances' GetCosts
 	 *   will always return the value of the 'top' instance.
 	 */
 	Money GetCosts();
 
 	/**
 	 * Reset the costs to zero.
-	 * @note when nesting AIAccounting instances all instances' ResetCosts
+	 * @note when nesting ScriptAccounting instances all instances' ResetCosts
 	 *   will always effect on the 'top' instance.
 	 */
 	void ResetCosts();

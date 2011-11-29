@@ -8,7 +8,7 @@
  */
 
 /** @file script_list.hpp A list which can keep item/value pairs, which you can walk. */
-/** @defgroup AIList Classes that create a list of items. */
+/** @defgroup ScriptList Classes that create a list of items. */
 
 #ifndef SCRIPT_LIST_HPP
 #define SCRIPT_LIST_HPP
@@ -17,12 +17,12 @@
 #include <map>
 #include <set>
 
-class AIListSorter;
+class ScriptListSorter;
 
 /**
  * Class that creates a list which can keep item/value pairs, which you can walk.
  */
-class AIList : public AIObject {
+class ScriptList : public ScriptObject {
 public:
 	/** Type of sorter */
 	enum SorterType {
@@ -36,7 +36,7 @@ public:
 	static const bool SORT_DESCENDING = false;
 
 private:
-	AIListSorter *sorter;         ///< Sorting algorithm
+	ScriptListSorter *sorter;         ///< Sorting algorithm
 	SorterType sorter_type;       ///< Sorting type
 	bool sort_ascending;          ///< Whether to sort ascending or descending
 	bool initialized;             ///< Whether an iteration has been started
@@ -44,14 +44,14 @@ private:
 
 public:
 	typedef std::set<int32> AIItemList;               ///< The list of items inside the bucket
-	typedef std::map<int32, AIItemList> AIListBucket; ///< The bucket list per value
-	typedef std::map<int32, int32> AIListMap;         ///< List per item
+	typedef std::map<int32, AIItemList> ScriptListBucket; ///< The bucket list per value
+	typedef std::map<int32, int32> ScriptListMap;         ///< List per item
 
-	AIListMap items;           ///< The items in the list
-	AIListBucket buckets;      ///< The items in the list, sorted by value
+	ScriptListMap items;           ///< The items in the list
+	ScriptListBucket buckets;      ///< The items in the list, sorted by value
 
-	AIList();
-	~AIList();
+	ScriptList();
+	~ScriptList();
 
 	/**
 	 * Add a single item to the list.
@@ -146,7 +146,7 @@ public:
 	 * @note If the item already exists inside the caller, the value of the
 	 *  list that is added is set on the item.
 	 */
-	void AddList(AIList *list);
+	void AddList(ScriptList *list);
 
 	/**
 	 * Removes all items with a higher value than 'value'.
@@ -190,7 +190,7 @@ public:
 	 * @param list the list of items to remove.
 	 * @pre list != NULL
 	 */
-	void RemoveList(AIList *list);
+	void RemoveList(ScriptList *list);
 
 	/**
 	 * Keep all items with a higher value than 'value'.
@@ -234,7 +234,7 @@ public:
 	 * @param list the list of items to keep.
 	 * @pre list != NULL
 	 */
-	void KeepList(AIList *list);
+	void KeepList(ScriptList *list);
 
 #ifndef DOXYGEN_AI_DOCS
 	/**
@@ -268,8 +268,8 @@ public:
 	 *  the first parameter should be the index-value, and it should return
 	 *  an integer.
 	 * @note Example:
-	 *  list.Valuate(AIBridge.GetPrice, 5);
-	 *  list.Valuate(AIBridge.GetMaxLength);
+	 *  list.Valuate(ScriptBridge.GetPrice, 5);
+	 *  list.Valuate(ScriptBridge.GetMaxLength);
 	 *  function MyVal(bridge_id, myparam)
 	 *  {
 	 *    return myparam * bridge_id; // This is silly

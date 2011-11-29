@@ -7,14 +7,14 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_grouplist.cpp Implementation of AIGroupList and friends. */
+/** @file script_grouplist.cpp Implementation of ScriptGroupList and friends. */
 
 #include "../../stdafx.h"
 #include "script_grouplist.hpp"
 #include "../../company_func.h"
 #include "../../group.h"
 
-AIGroupList::AIGroupList()
+ScriptGroupList::ScriptGroupList()
 {
 	Group *g;
 	FOR_ALL_GROUPS(g) {

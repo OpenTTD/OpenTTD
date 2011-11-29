@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_cargolist.cpp Implementation of AICargoList and friends. */
+/** @file script_cargolist.cpp Implementation of ScriptCargoList and friends. */
 
 #include "../../stdafx.h"
 #include "script_cargolist.hpp"
@@ -17,7 +17,7 @@
 #include "../../industry.h"
 #include "../../station_base.h"
 
-AICargoList::AICargoList()
+ScriptCargoList::ScriptCargoList()
 {
 	const CargoSpec *cs;
 	FOR_ALL_CARGOSPECS(cs) {
@@ -25,9 +25,9 @@ AICargoList::AICargoList()
 	}
 }
 
-AICargoList_IndustryAccepting::AICargoList_IndustryAccepting(IndustryID industry_id)
+ScriptCargoList_IndustryAccepting::ScriptCargoList_IndustryAccepting(IndustryID industry_id)
 {
-	if (!AIIndustry::IsValidIndustry(industry_id)) return;
+	if (!ScriptIndustry::IsValidIndustry(industry_id)) return;
 
 	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->accepts_cargo); i++) {
@@ -38,9 +38,9 @@ AICargoList_IndustryAccepting::AICargoList_IndustryAccepting(IndustryID industry
 	}
 }
 
-AICargoList_IndustryProducing::AICargoList_IndustryProducing(IndustryID industry_id)
+ScriptCargoList_IndustryProducing::ScriptCargoList_IndustryProducing(IndustryID industry_id)
 {
-	if (!AIIndustry::IsValidIndustry(industry_id)) return;
+	if (!ScriptIndustry::IsValidIndustry(industry_id)) return;
 
 	Industry *ind = ::Industry::Get(industry_id);
 	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
@@ -51,9 +51,9 @@ AICargoList_IndustryProducing::AICargoList_IndustryProducing(IndustryID industry
 	}
 }
 
-AICargoList_StationAccepting::AICargoList_StationAccepting(StationID station_id)
+ScriptCargoList_StationAccepting::ScriptCargoList_StationAccepting(StationID station_id)
 {
-	if (!AIStation::IsValidStation(station_id)) return;
+	if (!ScriptStation::IsValidStation(station_id)) return;
 
 	Station *st = ::Station::Get(station_id);
 	for (CargoID i = 0; i < NUM_CARGO; i++) {

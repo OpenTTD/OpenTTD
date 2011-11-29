@@ -797,7 +797,7 @@ enum AIDebugWindowWidgets {
 };
 
 /**
- * Window with everything an AI prints via AILog.
+ * Window with everything an AI prints via ScriptLog.
  */
 struct AIDebugWindow : public QueryStringBaseWindow {
 	static const int top_offset;    ///< Offset of the text at the top of the AID_WIDGET_LOG_PANEL.
@@ -931,7 +931,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		/* If there are no active companies, don't display anything else. */
 		if (ai_debug_company == INVALID_COMPANY) return;
 
-		AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
+		ScriptLog::LogData *log = (ScriptLog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 
 		int scroll_count = (log == NULL) ? 0 : log->used;
 		if (this->vscroll->GetCount() != scroll_count) {
@@ -984,7 +984,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		switch (widget) {
 			case AID_WIDGET_LOG_PANEL: {
-				AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
+				ScriptLog::LogData *log = (ScriptLog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 				if (log == NULL) return;
 
 				int y = this->top_offset;
@@ -994,11 +994,11 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 					TextColour colour;
 					switch (log->type[pos]) {
-						case AILog::LOG_SQ_INFO:  colour = TC_BLACK;  break;
-						case AILog::LOG_SQ_ERROR: colour = TC_RED;    break;
-						case AILog::LOG_INFO:     colour = TC_BLACK;  break;
-						case AILog::LOG_WARNING:  colour = TC_YELLOW; break;
-						case AILog::LOG_ERROR:    colour = TC_RED;    break;
+						case ScriptLog::LOG_SQ_INFO:  colour = TC_BLACK;  break;
+						case ScriptLog::LOG_SQ_ERROR: colour = TC_RED;    break;
+						case ScriptLog::LOG_INFO:     colour = TC_BLACK;  break;
+						case ScriptLog::LOG_WARNING:  colour = TC_YELLOW; break;
+						case ScriptLog::LOG_ERROR:    colour = TC_RED;    break;
 						default:                  colour = TC_BLACK;  break;
 					}
 
@@ -1025,7 +1025,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		ai_debug_company = show_ai;
 
-		AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
+		ScriptLog::LogData *log = (ScriptLog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 		this->vscroll->SetCount((log == NULL) ? 0 : log->used);
 
 		this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
@@ -1124,7 +1124,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
 		if (!gui_scope && data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
 			/* Get the log instance of the active company */
-			AILog::LogData *log = (AILog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
+			ScriptLog::LogData *log = (ScriptLog::LogData *)Company::Get(ai_debug_company)->ai_instance->GetLogPointer();
 
 			if (log != NULL && case_sensitive_break_check?
 					strstr(log->lines[log->pos], this->edit_str_buf) != 0 :

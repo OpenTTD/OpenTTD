@@ -17,26 +17,26 @@
 
 /**
  * Creates a list of stations of which you are the owner.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIStationList : public AIList {
+class ScriptStationList : public ScriptList {
 public:
 	/**
 	 * @param station_type The type of station to make a list of stations for.
 	 */
-	AIStationList(AIStation::StationType station_type);
+	ScriptStationList(ScriptStation::StationType station_type);
 };
 
 /**
  * Creates a list of stations which the vehicle has in its orders.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIStationList_Vehicle : public AIList {
+class ScriptStationList_Vehicle : public ScriptList {
 public:
 	/**
 	 * @param vehicle_id The vehicle to get the list of stations he has in its orders from.
 	 */
-	AIStationList_Vehicle(VehicleID vehicle_id);
+	ScriptStationList_Vehicle(VehicleID vehicle_id);
 };
 
 #endif /* SCRIPT_STATIONLIST_HPP */

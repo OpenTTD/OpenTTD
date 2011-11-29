@@ -7,25 +7,25 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_bridgelist.cpp Implementation of AIBridgeList and friends. */
+/** @file script_bridgelist.cpp Implementation of ScriptBridgeList and friends. */
 
 #include "../../stdafx.h"
 #include "script_bridgelist.hpp"
 #include "script_bridge.hpp"
 #include "../../bridge.h"
 
-AIBridgeList::AIBridgeList()
+ScriptBridgeList::ScriptBridgeList()
 {
 	for (byte j = 0; j < MAX_BRIDGES; j++) {
-		if (AIBridge::IsValidBridge(j)) this->AddItem(j);
+		if (ScriptBridge::IsValidBridge(j)) this->AddItem(j);
 	}
 }
 
-AIBridgeList_Length::AIBridgeList_Length(uint length)
+ScriptBridgeList_Length::ScriptBridgeList_Length(uint length)
 {
 	for (byte j = 0; j < MAX_BRIDGES; j++) {
-		if (AIBridge::IsValidBridge(j)) {
-			if (length >= (uint)AIBridge::GetMinLength(j) && length <= (uint)AIBridge::GetMaxLength(j)) this->AddItem(j);
+		if (ScriptBridge::IsValidBridge(j)) {
+			if (length >= (uint)ScriptBridge::GetMinLength(j) && length <= (uint)ScriptBridge::GetMaxLength(j)) this->AddItem(j);
 		}
 	}
 }

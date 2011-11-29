@@ -16,11 +16,11 @@
 
 /**
  * Creates a list of all current subsidies.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AISubsidyList : public AIList {
+class ScriptSubsidyList : public ScriptList {
 public:
-	AISubsidyList();
+	ScriptSubsidyList();
 };
 
 #endif /* SCRIPT_SUBSIDYLIST_HPP */

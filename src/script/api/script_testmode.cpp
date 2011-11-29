@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_testmode.cpp Implementation of AITestMode. */
+/** @file script_testmode.cpp Implementation of ScriptTestMode. */
 
 #include "../../stdafx.h"
 #include "script_testmode.hpp"
@@ -15,25 +15,25 @@
 #include "../../company_func.h"
 #include "../../ai/ai_instance.hpp"
 
-bool AITestMode::ModeProc()
+bool ScriptTestMode::ModeProc()
 {
 	/* In test mode we only return 'false', telling the DoCommand it
 	 *  should stop after testing the command and return with that result. */
 	return false;
 }
 
-AITestMode::AITestMode()
+ScriptTestMode::ScriptTestMode()
 {
 	this->last_mode     = this->GetDoCommandMode();
 	this->last_instance = this->GetDoCommandModeInstance();
-	this->SetDoCommandMode(&AITestMode::ModeProc, this);
+	this->SetDoCommandMode(&ScriptTestMode::ModeProc, this);
 }
 
-AITestMode::~AITestMode()
+ScriptTestMode::~ScriptTestMode()
 {
 	if (this->GetDoCommandModeInstance() != this) {
 		/* Ignore this error if the AI already died. */
-		if (!AIObject::GetActiveInstance()->IsDead()) {
+		if (!ScriptObject::GetActiveInstance()->IsDead()) {
 			throw AI_FatalError("AITestmode object was removed while it was not the latest AI*Mode object created.");
 		}
 	}

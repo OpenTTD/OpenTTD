@@ -17,7 +17,7 @@
 /**
  * Class that handles all group related functions.
  */
-class AIGroup : public AIObject {
+class ScriptGroup : public ScriptObject {
 public:
 	/**
 	 * The group IDs of some special groups.
@@ -44,7 +44,7 @@ public:
 	 *  it failed. Check the return value using IsValidGroup(). In test-mode
 	 *  0 is returned if it was successful; any other value indicates failure.
 	 */
-	static GroupID CreateGroup(AIVehicle::VehicleType vehicle_type);
+	static GroupID CreateGroup(ScriptVehicle::VehicleType vehicle_type);
 
 	/**
 	 * Delete the given group. When the deletion succeeds all vehicles in the
@@ -61,7 +61,7 @@ public:
 	 * @pre IsValidGroup(group_id).
 	 * @return The vehicletype of the given group.
 	 */
-	static AIVehicle::VehicleType GetVehicleType(GroupID group_id);
+	static ScriptVehicle::VehicleType GetVehicleType(GroupID group_id);
 
 	/**
 	 * Set the name of a group.
@@ -70,7 +70,7 @@ public:
 	 * @pre IsValidGroup(group_id).
 	 * @pre 'name' must have at least one character.
 	 * @pre 'name' must have at most 30 characters.
-	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
 	static bool SetName(GroupID group_id, const char *name);
@@ -115,7 +115,7 @@ public:
 	 * @param group_id The group to move the vehicel to.
 	 * @param vehicle_id The vehicle to move to the group.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT.
-	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
+	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @return True if and only if the vehicle was successfully moved to the group.
 	 * @note A vehicle can be in only one group at the same time. To remove it from
 	 *  a group, move it to another or to GROUP_DEFAULT. Moving the vehicle to the
@@ -146,7 +146,7 @@ public:
 	 * @param engine_id_old The engine id to start replacing.
 	 * @param engine_id_new The engine id to replace with.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT || group_id == GROUP_ALL.
-	 * @pre AIEngine.IsBuildable(engine_id_new).
+	 * @pre ScriptEngine.IsBuildable(engine_id_new).
 	 * @return True if and if the replacing was successfully started.
 	 * @note To stop autoreplacing engine_id_old, call StopAutoReplace(group_id, engine_id_old).
 	 */

@@ -17,14 +17,14 @@
 
 /**
  * Create a list of engines based on a vehicle type.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIEngineList : public AIList {
+class ScriptEngineList : public ScriptList {
 public:
 	/**
 	 * @param vehicle_type The type of vehicle to make a list of engines for.
 	 */
-	AIEngineList(AIVehicle::VehicleType vehicle_type);
+	ScriptEngineList(ScriptVehicle::VehicleType vehicle_type);
 };
 
 #endif /* SCRIPT_ENGINELIST_HPP */

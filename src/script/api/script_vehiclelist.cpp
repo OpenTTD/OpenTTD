@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_vehiclelist.cpp Implementation of AIVehicleList and friends. */
+/** @file script_vehiclelist.cpp Implementation of ScriptVehicleList and friends. */
 
 #include "../../stdafx.h"
 #include "script_vehiclelist.hpp"
@@ -18,7 +18,7 @@
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
 
-AIVehicleList::AIVehicleList()
+ScriptVehicleList::ScriptVehicleList()
 {
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -26,9 +26,9 @@ AIVehicleList::AIVehicleList()
 	}
 }
 
-AIVehicleList_Station::AIVehicleList_Station(StationID station_id)
+ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 {
-	if (!AIBaseStation::IsValidBaseStation(station_id)) return;
+	if (!ScriptBaseStation::IsValidBaseStation(station_id)) return;
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -45,9 +45,9 @@ AIVehicleList_Station::AIVehicleList_Station(StationID station_id)
 	}
 }
 
-AIVehicleList_Depot::AIVehicleList_Depot(TileIndex tile)
+ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 {
-	if (!AIMap::IsValidTile(tile)) return;
+	if (!ScriptMap::IsValidTile(tile)) return;
 
 	DestinationID dest;
 	VehicleType type;
@@ -96,18 +96,18 @@ AIVehicleList_Depot::AIVehicleList_Depot(TileIndex tile)
 	}
 }
 
-AIVehicleList_SharedOrders::AIVehicleList_SharedOrders(VehicleID vehicle_id)
+ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle_id)
 {
-	if (!AIVehicle::IsValidVehicle(vehicle_id)) return;
+	if (!ScriptVehicle::IsValidVehicle(vehicle_id)) return;
 
 	for (const Vehicle *v = Vehicle::Get(vehicle_id)->FirstShared(); v != NULL; v = v->NextShared()) {
 		this->AddItem(v->index);
 	}
 }
 
-AIVehicleList_Group::AIVehicleList_Group(GroupID group_id)
+ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 {
-	if (!AIGroup::IsValidGroup((AIGroup::GroupID)group_id)) return;
+	if (!ScriptGroup::IsValidGroup((ScriptGroup::GroupID)group_id)) return;
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -117,14 +117,14 @@ AIVehicleList_Group::AIVehicleList_Group(GroupID group_id)
 	}
 }
 
-AIVehicleList_DefaultGroup::AIVehicleList_DefaultGroup(AIVehicle::VehicleType vehicle_type)
+ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type)
 {
-	if (vehicle_type < AIVehicle::VT_RAIL || vehicle_type > AIVehicle::VT_AIR) return;
+	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == _current_company && v->IsPrimaryVehicle()) {
-			if (v->type == vehicle_type && v->group_id == AIGroup::GROUP_DEFAULT) this->AddItem(v->index);
+			if (v->type == vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT) this->AddItem(v->index);
 		}
 	}
 }

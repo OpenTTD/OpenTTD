@@ -12,25 +12,25 @@
 #include "../../script/api/script_log.hpp"
 
 namespace SQConvert {
-	/* Allow AILog to be used as Squirrel parameter */
-	template <> inline AILog *GetParam(ForceType<AILog *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AILog *)instance; }
-	template <> inline AILog &GetParam(ForceType<AILog &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AILog *)instance; }
-	template <> inline const AILog *GetParam(ForceType<const AILog *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AILog *)instance; }
-	template <> inline const AILog &GetParam(ForceType<const AILog &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AILog *)instance; }
-	template <> inline int Return<AILog *>(HSQUIRRELVM vm, AILog *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Log", res, NULL, DefSQDestructorCallback<AILog>, true); return 1; }
+	/* Allow ScriptLog to be used as Squirrel parameter */
+	template <> inline ScriptLog *GetParam(ForceType<ScriptLog *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptLog *)instance; }
+	template <> inline ScriptLog &GetParam(ForceType<ScriptLog &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptLog *)instance; }
+	template <> inline const ScriptLog *GetParam(ForceType<const ScriptLog *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptLog *)instance; }
+	template <> inline const ScriptLog &GetParam(ForceType<const ScriptLog &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptLog *)instance; }
+	template <> inline int Return<ScriptLog *>(HSQUIRRELVM vm, ScriptLog *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Log", res, NULL, DefSQDestructorCallback<ScriptLog>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AILog, ST_AI>() { return "AILog"; }
+template <> const char *GetClassName<ScriptLog, ST_AI>() { return "AILog"; }
 
 void SQAILog_Register(Squirrel *engine)
 {
-	DefSQClass<AILog, ST_AI> SQAILog("AILog");
+	DefSQClass<ScriptLog, ST_AI> SQAILog("AILog");
 	SQAILog.PreRegister(engine);
-	SQAILog.AddConstructor<void (AILog::*)(), 1>(engine, "x");
+	SQAILog.AddConstructor<void (ScriptLog::*)(), 1>(engine, "x");
 
-	SQAILog.DefSQStaticMethod(engine, &AILog::Info,    "Info",    2, "..");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Warning, "Warning", 2, "..");
-	SQAILog.DefSQStaticMethod(engine, &AILog::Error,   "Error",   2, "..");
+	SQAILog.DefSQStaticMethod(engine, &ScriptLog::Info,    "Info",    2, "..");
+	SQAILog.DefSQStaticMethod(engine, &ScriptLog::Warning, "Warning", 2, "..");
+	SQAILog.DefSQStaticMethod(engine, &ScriptLog::Error,   "Error",   2, "..");
 
 	SQAILog.PostRegister(engine);
 }

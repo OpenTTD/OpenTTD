@@ -627,6 +627,8 @@ ai/ai_storage.hpp
 # AI API
 ai/api/ai_changelog.hpp
 ai/api/ai_info_docs.hpp
+
+# Script API
 script/api/script_accounting.hpp
 script/api/script_airport.hpp
 script/api/script_base.hpp
@@ -679,7 +681,7 @@ script/api/script_vehiclelist.hpp
 script/api/script_waypoint.hpp
 script/api/script_waypointlist.hpp
 
-# AI API Implementation
+# Script API Implementation
 script/api/script_accounting.cpp
 script/api/script_airport.cpp
 script/api/script_base.cpp

@@ -7,17 +7,17 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_signlist.cpp Implementation of AISignList and friends. */
+/** @file script_signlist.cpp Implementation of ScriptSignList and friends. */
 
 #include "../../stdafx.h"
 #include "script_signlist.hpp"
 #include "script_sign.hpp"
 #include "../../signs_base.h"
 
-AISignList::AISignList()
+ScriptSignList::ScriptSignList()
 {
 	Sign *s;
 	FOR_ALL_SIGNS(s) {
-		if (AISign::IsValidSign(s->index)) this->AddItem(s->index);
+		if (ScriptSign::IsValidSign(s->index)) this->AddItem(s->index);
 	}
 }

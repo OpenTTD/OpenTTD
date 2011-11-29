@@ -22,7 +22,7 @@
  */
 #define EnforcePrecondition(returnval, condition)               \
 	if (!(condition)) {                                           \
-		AIObject::SetLastError(AIError::ERR_PRECONDITION_FAILED);   \
+		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED);   \
 		return returnval;                                           \
 	}
 
@@ -30,18 +30,18 @@
  * Helper to write precondition enforcers for the AI API in an abbreviated manner.
  * @param returnval The value to return on failure.
  * @param condition The condition that must be obeyed.
- * @param error_code The error code passed to AIObject::SetLastError.
+ * @param error_code The error code passed to ScriptObject::SetLastError.
  */
 #define EnforcePreconditionCustomError(returnval, condition, error_code)   \
 	if (!(condition)) {                                                      \
-		AIObject::SetLastError(error_code);                                    \
+		ScriptObject::SetLastError(error_code);                                    \
 		return returnval;                                                      \
 	}
 
 /**
  * Class that handles all error related functions.
  */
-class AIError : public AIObject {
+class ScriptError : public ScriptObject {
 public:
 	/**
 	 * All categories errors can be divided in.
@@ -134,7 +134,7 @@ public:
 	 * Get the last error.
 	 * @return An ErrorMessages enum value.
 	 */
-	static AIErrorType GetLastError();
+	static ScriptErrorType GetLastError();
 
 	/**
 	 * Get the last error in string format (for human readability).
@@ -149,7 +149,7 @@ public:
 	 * @param internal_string_id The string to convert.
 	 * @return The NoAI equivalent error message.
 	 */
-	static AIErrorType StringToError(StringID internal_string_id);
+	static ScriptErrorType StringToError(StringID internal_string_id);
 
 	/**
 	 * Map an internal OpenTTD error message to its NoAI equivalent.
@@ -157,7 +157,7 @@ public:
 	 * @param internal_string_id The OpenTTD StringID used for an error.
 	 * @param ai_error_msg The NoAI equivalent error message.
 	 */
-	static void RegisterErrorMap(StringID internal_string_id, AIErrorType ai_error_msg);
+	static void RegisterErrorMap(StringID internal_string_id, ScriptErrorType ai_error_msg);
 
 	/**
 	 * Map an internal OpenTTD error message to its NoAI equivalent.
@@ -165,15 +165,15 @@ public:
 	 * @param ai_error_msg The NoAI error message representation.
 	 * @param message The string representation of this error message, used for debug purposes.
 	 */
-	static void RegisterErrorMapString(AIErrorType ai_error_msg, const char *message);
+	static void RegisterErrorMapString(ScriptErrorType ai_error_msg, const char *message);
 #endif /* EXPORT_SKIP */
 
 private:
-	typedef std::map<StringID, AIErrorType> AIErrorMap;           ///< The type for mapping between error (internal OpenTTD) StringID to the AI error type.
-	typedef std::map<AIErrorType, const char *> AIErrorMapString; ///< The type for mapping between error type and textual representation.
+	typedef std::map<StringID, ScriptErrorType> ScriptErrorMap;           ///< The type for mapping between error (internal OpenTTD) StringID to the AI error type.
+	typedef std::map<ScriptErrorType, const char *> ScriptErrorMapString; ///< The type for mapping between error type and textual representation.
 
-	static AIErrorMap error_map;              ///< The mapping between error (internal OpenTTD) StringID to the AI error type.
-	static AIErrorMapString error_map_string; ///< The mapping between error type and textual representation.
+	static ScriptErrorMap error_map;              ///< The mapping between error (internal OpenTTD) StringID to the AI error type.
+	static ScriptErrorMapString error_map_string; ///< The mapping between error type and textual representation.
 };
 
 #endif /* SCRIPT_ERROR_HPP */

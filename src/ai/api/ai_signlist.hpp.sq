@@ -12,21 +12,21 @@
 #include "../../script/api/script_signlist.hpp"
 
 namespace SQConvert {
-	/* Allow AISignList to be used as Squirrel parameter */
-	template <> inline AISignList *GetParam(ForceType<AISignList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISignList *)instance; }
-	template <> inline AISignList &GetParam(ForceType<AISignList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISignList *)instance; }
-	template <> inline const AISignList *GetParam(ForceType<const AISignList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISignList *)instance; }
-	template <> inline const AISignList &GetParam(ForceType<const AISignList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISignList *)instance; }
-	template <> inline int Return<AISignList *>(HSQUIRRELVM vm, AISignList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "SignList", res, NULL, DefSQDestructorCallback<AISignList>, true); return 1; }
+	/* Allow ScriptSignList to be used as Squirrel parameter */
+	template <> inline ScriptSignList *GetParam(ForceType<ScriptSignList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptSignList *)instance; }
+	template <> inline ScriptSignList &GetParam(ForceType<ScriptSignList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptSignList *)instance; }
+	template <> inline const ScriptSignList *GetParam(ForceType<const ScriptSignList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptSignList *)instance; }
+	template <> inline const ScriptSignList &GetParam(ForceType<const ScriptSignList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptSignList *)instance; }
+	template <> inline int Return<ScriptSignList *>(HSQUIRRELVM vm, ScriptSignList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "SignList", res, NULL, DefSQDestructorCallback<ScriptSignList>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AISignList, ST_AI>() { return "AISignList"; }
+template <> const char *GetClassName<ScriptSignList, ST_AI>() { return "AISignList"; }
 
 void SQAISignList_Register(Squirrel *engine)
 {
-	DefSQClass<AISignList, ST_AI> SQAISignList("AISignList");
+	DefSQClass<ScriptSignList, ST_AI> SQAISignList("AISignList");
 	SQAISignList.PreRegister(engine, "AIList");
-	SQAISignList.AddConstructor<void (AISignList::*)(), 1>(engine, "x");
+	SQAISignList.AddConstructor<void (ScriptSignList::*)(), 1>(engine, "x");
 
 	SQAISignList.PostRegister(engine);
 }

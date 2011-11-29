@@ -375,7 +375,7 @@ set_name:;
 			SetDParam(3, t->index);
 			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_NEW, NR_TILE, c->last_build_coordinate, NR_NONE, UINT32_MAX, cni);
 		}
-		AI::BroadcastNewEvent(new AIEventCompanyNew(c->index), c->index);
+		AI::BroadcastNewEvent(new ScriptEventCompanyNew(c->index), c->index);
 		return;
 	}
 bad_town_name:;
@@ -676,7 +676,7 @@ static void HandleBankruptcyTakeover(Company *c)
 
 	c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
 	if (best->is_ai) {
-		AI::NewEvent(best->index, new AIEventCompanyAskMerger(c->index, ClampToI32(c->bankrupt_value)));
+		AI::NewEvent(best->index, new ScriptEventCompanyAskMerger(c->index, ClampToI32(c->bankrupt_value)));
 	} else if (IsInteractiveCompany(best->index)) {
 		ShowBuyCompanyDialog(c->index);
 	}
@@ -907,7 +907,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			CompanyID c_index = c->index;
 			delete c;
-			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
+			AI::BroadcastNewEvent(new ScriptEventCompanyBankrupt(c_index));
 			CompanyAdminRemove(c_index, (CompanyRemoveReason)reason);
 			break;
 		}

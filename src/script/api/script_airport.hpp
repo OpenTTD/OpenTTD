@@ -17,7 +17,7 @@
 /**
  * Class that handles all airport related functions.
  */
-class AIAirport : public AIObject {
+class ScriptAirport : public ScriptObject {
 public:
 	/**
 	 * The types of airports available in the game.
@@ -80,7 +80,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a tile with a hangar.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has a hangar.
 	 */
 	static bool IsHangarTile(TileIndex tile);
@@ -88,7 +88,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a tile with an airport.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has an airport.
 	 */
 	static bool IsAirportTile(TileIndex tile);
@@ -120,7 +120,7 @@ public:
 	/**
 	 * Get the number of hangars of the airport.
 	 * @param tile Any tile of the airport.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return The number of hangars of the airport.
 	 */
 	static int32 GetNumHangars(TileIndex tile);
@@ -128,7 +128,7 @@ public:
 	/**
 	 * Get the first hanger tile of the airport.
 	 * @param tile Any tile of the airport.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre GetNumHangars(tile) > 0.
 	 * @return The first hanger tile of the airport.
 	 * @note Possible there are more hangars, but you won't be able to find them
@@ -141,15 +141,15 @@ public:
 	 * Builds a airport with tile at the topleft corner.
 	 * @param tile The topleft corner of the airport.
 	 * @param type The type of airport to build.
-	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @param station_id The station to join, ScriptStation::STATION_NEW or ScriptStation::STATION_JOIN_ADJACENT.
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre AirportAvailable(type).
-	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
-	 * @exception AIError::ERR_LOCAL_AUTHORITY_REFUSES
-	 * @exception AIStation::ERR_STATION_TOO_LARGE
-	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
+	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptError::ERR_LOCAL_AUTHORITY_REFUSES
+	 * @exception ScriptStation::ERR_STATION_TOO_LARGE
+	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @return Whether the airport has been/can be build or not.
 	 */
 	static bool BuildAirport(TileIndex tile, AirportType type, StationID station_id);
@@ -157,8 +157,8 @@ public:
 	/**
 	 * Removes an airport.
 	 * @param tile Any tile of the airport.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the airport has been/can be removed or not.
 	 */
 	static bool RemoveAirport(TileIndex tile);
@@ -166,8 +166,8 @@ public:
 	/**
 	 * Get the AirportType of an existing airport.
 	 * @param tile Any tile of the airport.
-	 * @pre AITile::IsStationTile(tile).
-	 * @pre AIStation::HasStationType(AIStation.GetStationID(tile), AIStation::STATION_AIRPORT).
+	 * @pre ScriptTile::IsStationTile(tile).
+	 * @pre ScriptStation::HasStationType(ScriptStation.GetStationID(tile), ScriptStation::STATION_AIRPORT).
 	 * @return The AirportType of the airport.
 	 */
 	static AirportType GetAirportType(TileIndex tile);

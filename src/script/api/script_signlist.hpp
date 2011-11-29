@@ -16,11 +16,11 @@
 
 /**
  * Create a list of signs your company has created.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AISignList : public AIList {
+class ScriptSignList : public ScriptList {
 public:
-	AISignList();
+	ScriptSignList();
 };
 
 #endif /* SCRIPT_SIGNLIST_HPP */

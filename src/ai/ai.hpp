@@ -102,12 +102,12 @@ public:
 	/**
 	 * Queue a new event for an AI.
 	 */
-	static void NewEvent(CompanyID company, AIEvent *event);
+	static void NewEvent(CompanyID company, ScriptEvent *event);
 
 	/**
 	 * Broadcast a new event to all active AIs.
 	 */
-	static void BroadcastNewEvent(AIEvent *event, CompanyID skip_company = MAX_COMPANIES);
+	static void BroadcastNewEvent(ScriptEvent *event, CompanyID skip_company = MAX_COMPANIES);
 
 	/**
 	 * Save data from an AI to a savegame.

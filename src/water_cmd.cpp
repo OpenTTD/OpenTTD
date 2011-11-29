@@ -844,7 +844,7 @@ static void FloodVehicle(Vehicle *v)
 {
 	uint pass = v->Crash(true);
 
-	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
+	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_FLOODED));
 	SetDParam(0, pass);
 	AddVehicleNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE, NS_ACCIDENT, v->index);
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);

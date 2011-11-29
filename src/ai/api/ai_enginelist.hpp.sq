@@ -12,21 +12,21 @@
 #include "../../script/api/script_enginelist.hpp"
 
 namespace SQConvert {
-	/* Allow AIEngineList to be used as Squirrel parameter */
-	template <> inline AIEngineList *GetParam(ForceType<AIEngineList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEngineList *)instance; }
-	template <> inline AIEngineList &GetParam(ForceType<AIEngineList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEngineList *)instance; }
-	template <> inline const AIEngineList *GetParam(ForceType<const AIEngineList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEngineList *)instance; }
-	template <> inline const AIEngineList &GetParam(ForceType<const AIEngineList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEngineList *)instance; }
-	template <> inline int Return<AIEngineList *>(HSQUIRRELVM vm, AIEngineList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EngineList", res, NULL, DefSQDestructorCallback<AIEngineList>, true); return 1; }
+	/* Allow ScriptEngineList to be used as Squirrel parameter */
+	template <> inline ScriptEngineList *GetParam(ForceType<ScriptEngineList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEngineList *)instance; }
+	template <> inline ScriptEngineList &GetParam(ForceType<ScriptEngineList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEngineList *)instance; }
+	template <> inline const ScriptEngineList *GetParam(ForceType<const ScriptEngineList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEngineList *)instance; }
+	template <> inline const ScriptEngineList &GetParam(ForceType<const ScriptEngineList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEngineList *)instance; }
+	template <> inline int Return<ScriptEngineList *>(HSQUIRRELVM vm, ScriptEngineList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EngineList", res, NULL, DefSQDestructorCallback<ScriptEngineList>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIEngineList, ST_AI>() { return "AIEngineList"; }
+template <> const char *GetClassName<ScriptEngineList, ST_AI>() { return "AIEngineList"; }
 
 void SQAIEngineList_Register(Squirrel *engine)
 {
-	DefSQClass<AIEngineList, ST_AI> SQAIEngineList("AIEngineList");
+	DefSQClass<ScriptEngineList, ST_AI> SQAIEngineList("AIEngineList");
 	SQAIEngineList.PreRegister(engine, "AIList");
-	SQAIEngineList.AddConstructor<void (AIEngineList::*)(AIVehicle::VehicleType vehicle_type), 2>(engine, "xi");
+	SQAIEngineList.AddConstructor<void (ScriptEngineList::*)(ScriptVehicle::VehicleType vehicle_type), 2>(engine, "xi");
 
 	SQAIEngineList.PostRegister(engine);
 }

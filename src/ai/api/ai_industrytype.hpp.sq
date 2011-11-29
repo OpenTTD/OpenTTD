@@ -13,42 +13,42 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AIIndustryType::SpecialIndustryType GetParam(ForceType<AIIndustryType::SpecialIndustryType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIIndustryType::SpecialIndustryType)tmp; }
-	template <> inline int Return<AIIndustryType::SpecialIndustryType>(HSQUIRRELVM vm, AIIndustryType::SpecialIndustryType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptIndustryType::SpecialIndustryType GetParam(ForceType<ScriptIndustryType::SpecialIndustryType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptIndustryType::SpecialIndustryType)tmp; }
+	template <> inline int Return<ScriptIndustryType::SpecialIndustryType>(HSQUIRRELVM vm, ScriptIndustryType::SpecialIndustryType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AIIndustryType to be used as Squirrel parameter */
-	template <> inline AIIndustryType *GetParam(ForceType<AIIndustryType *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIIndustryType *)instance; }
-	template <> inline AIIndustryType &GetParam(ForceType<AIIndustryType &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustryType *)instance; }
-	template <> inline const AIIndustryType *GetParam(ForceType<const AIIndustryType *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIIndustryType *)instance; }
-	template <> inline const AIIndustryType &GetParam(ForceType<const AIIndustryType &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustryType *)instance; }
-	template <> inline int Return<AIIndustryType *>(HSQUIRRELVM vm, AIIndustryType *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryType", res, NULL, DefSQDestructorCallback<AIIndustryType>, true); return 1; }
+	/* Allow ScriptIndustryType to be used as Squirrel parameter */
+	template <> inline ScriptIndustryType *GetParam(ForceType<ScriptIndustryType *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptIndustryType *)instance; }
+	template <> inline ScriptIndustryType &GetParam(ForceType<ScriptIndustryType &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryType *)instance; }
+	template <> inline const ScriptIndustryType *GetParam(ForceType<const ScriptIndustryType *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptIndustryType *)instance; }
+	template <> inline const ScriptIndustryType &GetParam(ForceType<const ScriptIndustryType &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptIndustryType *)instance; }
+	template <> inline int Return<ScriptIndustryType *>(HSQUIRRELVM vm, ScriptIndustryType *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "IndustryType", res, NULL, DefSQDestructorCallback<ScriptIndustryType>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIIndustryType, ST_AI>() { return "AIIndustryType"; }
+template <> const char *GetClassName<ScriptIndustryType, ST_AI>() { return "AIIndustryType"; }
 
 void SQAIIndustryType_Register(Squirrel *engine)
 {
-	DefSQClass<AIIndustryType, ST_AI> SQAIIndustryType("AIIndustryType");
+	DefSQClass<ScriptIndustryType, ST_AI> SQAIIndustryType("AIIndustryType");
 	SQAIIndustryType.PreRegister(engine);
-	SQAIIndustryType.AddConstructor<void (AIIndustryType::*)(), 1>(engine, "x");
+	SQAIIndustryType.AddConstructor<void (ScriptIndustryType::*)(), 1>(engine, "x");
 
-	SQAIIndustryType.DefSQConst(engine, AIIndustryType::INDUSTRYTYPE_UNKNOWN, "INDUSTRYTYPE_UNKNOWN");
-	SQAIIndustryType.DefSQConst(engine, AIIndustryType::INDUSTRYTYPE_TOWN,    "INDUSTRYTYPE_TOWN");
+	SQAIIndustryType.DefSQConst(engine, ScriptIndustryType::INDUSTRYTYPE_UNKNOWN, "INDUSTRYTYPE_UNKNOWN");
+	SQAIIndustryType.DefSQConst(engine, ScriptIndustryType::INDUSTRYTYPE_TOWN,    "INDUSTRYTYPE_TOWN");
 
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsValidIndustryType,   "IsValidIndustryType",   2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetName,               "GetName",               2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetProducedCargo,      "GetProducedCargo",      2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetAcceptedCargo,      "GetAcceptedCargo",      2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsRawIndustry,         "IsRawIndustry",         2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::ProductionCanIncrease, "ProductionCanIncrease", 2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetConstructionCost,   "GetConstructionCost",   2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::CanBuildIndustry,      "CanBuildIndustry",      2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::CanProspectIndustry,   "CanProspectIndustry",   2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::BuildIndustry,         "BuildIndustry",         3, ".ii");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::ProspectIndustry,      "ProspectIndustry",      2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsBuiltOnWater,        "IsBuiltOnWater",        2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::HasHeliport,           "HasHeliport",           2, ".i");
-	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::HasDock,               "HasDock",               2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::IsValidIndustryType,   "IsValidIndustryType",   2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::GetName,               "GetName",               2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::GetProducedCargo,      "GetProducedCargo",      2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::GetAcceptedCargo,      "GetAcceptedCargo",      2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::IsRawIndustry,         "IsRawIndustry",         2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::ProductionCanIncrease, "ProductionCanIncrease", 2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::GetConstructionCost,   "GetConstructionCost",   2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::CanBuildIndustry,      "CanBuildIndustry",      2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::CanProspectIndustry,   "CanProspectIndustry",   2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::BuildIndustry,         "BuildIndustry",         3, ".ii");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::ProspectIndustry,      "ProspectIndustry",      2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::IsBuiltOnWater,        "IsBuiltOnWater",        2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::HasHeliport,           "HasHeliport",           2, ".i");
+	SQAIIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::HasDock,               "HasDock",               2, ".i");
 
 	SQAIIndustryType.PostRegister(engine);
 }

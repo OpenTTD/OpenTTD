@@ -12,35 +12,35 @@
 #include "../../script/api/script_map.hpp"
 
 namespace SQConvert {
-	/* Allow AIMap to be used as Squirrel parameter */
-	template <> inline AIMap *GetParam(ForceType<AIMap *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMap *)instance; }
-	template <> inline AIMap &GetParam(ForceType<AIMap &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIMap *)instance; }
-	template <> inline const AIMap *GetParam(ForceType<const AIMap *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMap *)instance; }
-	template <> inline const AIMap &GetParam(ForceType<const AIMap &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIMap *)instance; }
-	template <> inline int Return<AIMap *>(HSQUIRRELVM vm, AIMap *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Map", res, NULL, DefSQDestructorCallback<AIMap>, true); return 1; }
+	/* Allow ScriptMap to be used as Squirrel parameter */
+	template <> inline ScriptMap *GetParam(ForceType<ScriptMap *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptMap *)instance; }
+	template <> inline ScriptMap &GetParam(ForceType<ScriptMap &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptMap *)instance; }
+	template <> inline const ScriptMap *GetParam(ForceType<const ScriptMap *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptMap *)instance; }
+	template <> inline const ScriptMap &GetParam(ForceType<const ScriptMap &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptMap *)instance; }
+	template <> inline int Return<ScriptMap *>(HSQUIRRELVM vm, ScriptMap *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Map", res, NULL, DefSQDestructorCallback<ScriptMap>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIMap, ST_AI>() { return "AIMap"; }
+template <> const char *GetClassName<ScriptMap, ST_AI>() { return "AIMap"; }
 
 void SQAIMap_Register(Squirrel *engine)
 {
-	DefSQClass<AIMap, ST_AI> SQAIMap("AIMap");
+	DefSQClass<ScriptMap, ST_AI> SQAIMap("AIMap");
 	SQAIMap.PreRegister(engine);
-	SQAIMap.AddConstructor<void (AIMap::*)(), 1>(engine, "x");
+	SQAIMap.AddConstructor<void (ScriptMap::*)(), 1>(engine, "x");
 
-	SQAIMap.DefSQConst(engine, AIMap::TILE_INVALID, "TILE_INVALID");
+	SQAIMap.DefSQConst(engine, ScriptMap::TILE_INVALID, "TILE_INVALID");
 
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::IsValidTile,       "IsValidTile",       2, ".i");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSize,        "GetMapSize",        1, ".");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSizeX,       "GetMapSizeX",       1, ".");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetMapSizeY,       "GetMapSizeY",       1, ".");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileX,          "GetTileX",          2, ".i");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileY,          "GetTileY",          2, ".i");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetTileIndex,      "GetTileIndex",      3, ".ii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceManhattan, "DistanceManhattan", 3, ".ii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceMax,       "DistanceMax",       3, ".ii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceSquare,    "DistanceSquare",    3, ".ii");
-	SQAIMap.DefSQStaticMethod(engine, &AIMap::DistanceFromEdge,  "DistanceFromEdge",  2, ".i");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::IsValidTile,       "IsValidTile",       2, ".i");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::GetMapSize,        "GetMapSize",        1, ".");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::GetMapSizeX,       "GetMapSizeX",       1, ".");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::GetMapSizeY,       "GetMapSizeY",       1, ".");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::GetTileX,          "GetTileX",          2, ".i");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::GetTileY,          "GetTileY",          2, ".i");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::GetTileIndex,      "GetTileIndex",      3, ".ii");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::DistanceManhattan, "DistanceManhattan", 3, ".ii");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::DistanceMax,       "DistanceMax",       3, ".ii");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::DistanceSquare,    "DistanceSquare",    3, ".ii");
+	SQAIMap.DefSQStaticMethod(engine, &ScriptMap::DistanceFromEdge,  "DistanceFromEdge",  2, ".i");
 
 	SQAIMap.PostRegister(engine);
 }

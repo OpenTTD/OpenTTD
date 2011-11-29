@@ -16,20 +16,20 @@
 
 /**
  * Creates a list of towns that are currently on the map.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AITownList : public AIList {
+class ScriptTownList : public ScriptList {
 public:
-	AITownList();
+	ScriptTownList();
 };
 
 /**
  * Creates a list of all TownEffects known in the game.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AITownEffectList : public AIList {
+class ScriptTownEffectList : public ScriptList {
 public:
-	AITownEffectList();
+	ScriptTownEffectList();
 };
 
 #endif /* SCRIPT_TOWNLIST_HPP */

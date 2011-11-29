@@ -2738,6 +2738,10 @@
 				RelativePath=".\..\src\ai\api\ai_info_docs.hpp"
 				>
 			</File>
+		</Filter>
+		<Filter
+			Name="Script API"
+			>
 			<File
 				RelativePath=".\..\src\script\api\script_accounting.hpp"
 				>
@@ -2944,7 +2948,7 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="AI API Implementation"
+			Name="Script API Implementation"
 			>
 			<File
 				RelativePath=".\..\src\script\api\script_accounting.cpp"

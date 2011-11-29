@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_tunnel.cpp Implementation of AITunnel. */
+/** @file script_tunnel.cpp Implementation of ScriptTunnel. */
 
 #include "../../stdafx.h"
 #include "script_tunnel.hpp"
@@ -16,13 +16,13 @@
 #include "../../tunnel_map.h"
 #include "../../command_func.h"
 
-/* static */ bool AITunnel::IsTunnelTile(TileIndex tile)
+/* static */ bool ScriptTunnel::IsTunnelTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 	return ::IsTunnelTile(tile);
 }
 
-/* static */ TileIndex AITunnel::GetOtherTunnelEnd(TileIndex tile)
+/* static */ TileIndex ScriptTunnel::GetOtherTunnelEnd(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return INVALID_TILE;
 
@@ -52,7 +52,7 @@
  */
 static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
 {
-	if (!AITunnel::_BuildTunnelRoad2()) {
+	if (!ScriptTunnel::_BuildTunnelRoad2()) {
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -68,7 +68,7 @@ static void _DoCommandReturnBuildTunnel2(class AIInstance *instance)
  */
 static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 {
-	if (!AITunnel::_BuildTunnelRoad1()) {
+	if (!ScriptTunnel::_BuildTunnelRoad1()) {
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -78,57 +78,57 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	NOT_REACHED();
 }
 
-/* static */ bool AITunnel::BuildTunnel(AIVehicle::VehicleType vehicle_type, TileIndex start)
+/* static */ bool ScriptTunnel::BuildTunnel(ScriptVehicle::VehicleType vehicle_type, TileIndex start)
 {
 	EnforcePrecondition(false, ::IsValidTile(start));
-	EnforcePrecondition(false, vehicle_type == AIVehicle::VT_RAIL || vehicle_type == AIVehicle::VT_ROAD);
-	EnforcePrecondition(false, vehicle_type != AIVehicle::VT_RAIL || AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType()));
+	EnforcePrecondition(false, vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_ROAD);
+	EnforcePrecondition(false, vehicle_type != ScriptVehicle::VT_RAIL || ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType()));
 
 	uint type = 0;
-	if (vehicle_type == AIVehicle::VT_ROAD) {
+	if (vehicle_type == ScriptVehicle::VT_ROAD) {
 		type |= (TRANSPORT_ROAD << 8);
-		type |= ::RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType());
+		type |= ::RoadTypeToRoadTypes((::RoadType)ScriptObject::GetRoadType());
 	} else {
 		type |= (TRANSPORT_RAIL << 8);
-		type |= AIRail::GetCurrentRailType();
+		type |= ScriptRail::GetCurrentRailType();
 	}
 
 	/* For rail we do nothing special */
-	if (vehicle_type == AIVehicle::VT_RAIL) {
-		return AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL);
+	if (vehicle_type == ScriptVehicle::VT_RAIL) {
+		return ScriptObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL);
 	}
 
-	AIObject::SetCallbackVariable(0, start);
-	return AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &::_DoCommandReturnBuildTunnel1);
+	ScriptObject::SetCallbackVariable(0, start);
+	return ScriptObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL, NULL, &::_DoCommandReturnBuildTunnel1);
 }
 
-/* static */ bool AITunnel::_BuildTunnelRoad1()
+/* static */ bool ScriptTunnel::_BuildTunnelRoad1()
 {
 	/* Build the piece of road on the 'start' side of the tunnel */
-	TileIndex end = AIObject::GetCallbackVariable(0);
-	TileIndex start = AITunnel::GetOtherTunnelEnd(end);
+	TileIndex end = ScriptObject::GetCallbackVariable(0);
+	TileIndex start = ScriptTunnel::GetOtherTunnelEnd(end);
 
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &::_DoCommandReturnBuildTunnel2);
+	return ScriptObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (ScriptObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &::_DoCommandReturnBuildTunnel2);
 }
 
-/* static */ bool AITunnel::_BuildTunnelRoad2()
+/* static */ bool ScriptTunnel::_BuildTunnelRoad2()
 {
 	/* Build the piece of road on the 'end' side of the tunnel */
-	TileIndex end = AIObject::GetCallbackVariable(0);
-	TileIndex start = AITunnel::GetOtherTunnelEnd(end);
+	TileIndex end = ScriptObject::GetCallbackVariable(0);
+	TileIndex start = ScriptTunnel::GetOtherTunnelEnd(end);
 
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return AIObject::DoCommand(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD);
+	return ScriptObject::DoCommand(end + ::TileOffsByDiagDir(dir_2), ::DiagDirToRoadBits(dir_1) | (ScriptObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD);
 }
 
-/* static */ bool AITunnel::RemoveTunnel(TileIndex tile)
+/* static */ bool ScriptTunnel::RemoveTunnel(TileIndex tile)
 {
 	EnforcePrecondition(false, IsTunnelTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }

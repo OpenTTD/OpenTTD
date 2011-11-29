@@ -17,14 +17,14 @@
 /**
  * Class that handles all bridge related functions.
  */
-class AIBridge : public AIObject {
+class ScriptBridge : public ScriptObject {
 public:
 	/**
 	 * All bridge related error messages.
 	 */
 	enum ErrorMessages {
 		/** Base for bridge related errors */
-		ERR_BRIDGE_BASE = AIError::ERR_CAT_BRIDGE << AIError::ERR_CAT_BIT_SIZE,
+		ERR_BRIDGE_BASE = ScriptError::ERR_CAT_BRIDGE << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/**
 		 * The bridge you want to build is not available yet,
@@ -49,7 +49,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a bridge start or end tile.
 	 * @param tile The tile to check.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is the beginning or end of a bridge.
 	 */
 	static bool IsBridgeTile(TileIndex tile);
@@ -127,31 +127,31 @@ public:
 	 * @param bridge_id The bridge-type to build.
 	 * @param start Where to start the bridge.
 	 * @param end Where to end the bridge.
-	 * @pre AIMap::IsValidTile(start).
-	 * @pre AIMap::IsValidTile(end).
+	 * @pre ScriptMap::IsValidTile(start).
+	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
-	 *  AIMap::GetTileX(start) == AIMap::GetTileX(end) or
-	 *  AIMap::GetTileY(start) == AIMap::GetTileY(end).
-	 * @pre vehicle_type == AIVehicle::VT_ROAD || vehicle_type == AIVehicle::VT_WATER ||
-	 *   (vehicle_type == AIVehicle::VT_RAIL && AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType())).
-	 * @exception AIError::ERR_ALREADY_BUILT
-	 * @exception AIError::ERR_AREA_NOT_CLEAR
-	 * @exception AIError::ERR_LAND_SLOPED_WRONG
-	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
-	 * @exception AIBridge::ERR_BRIDGE_TYPE_UNAVAILABLE
-	 * @exception AIBridge::ERR_BRIDGE_CANNOT_END_IN_WATER
-	 * @exception AIBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT
+	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
+	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
+	 * @pre vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_WATER ||
+	 *   (vehicle_type == ScriptVehicle::VT_RAIL && ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType())).
+	 * @exception ScriptError::ERR_ALREADY_BUILT
+	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
+	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @exception ScriptBridge::ERR_BRIDGE_TYPE_UNAVAILABLE
+	 * @exception ScriptBridge::ERR_BRIDGE_CANNOT_END_IN_WATER
+	 * @exception ScriptBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT
 	 * @return Whether the bridge has been/can be build or not.
 	 * @note No matter if the road pieces were build or not, if building the
 	 *  bridge succeeded, this function returns true.
 	 */
-	static bool BuildBridge(AIVehicle::VehicleType vehicle_type, BridgeID bridge_id, TileIndex start, TileIndex end);
+	static bool BuildBridge(ScriptVehicle::VehicleType vehicle_type, BridgeID bridge_id, TileIndex start, TileIndex end);
 
 	/**
 	 * Removes a bridge, by executing it on either the start or end tile.
 	 * @param tile An end or start tile of the bridge.
-	 * @pre AIMap::IsValidTile(tile).
-	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the bridge has been/can be removed or not.
 	 */
 	static bool RemoveBridge(TileIndex tile);
@@ -159,7 +159,7 @@ public:
 	/**
 	 * Get the tile that is on the other end of a bridge starting at tile.
 	 * @param tile The tile that is an end of a bridge.
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre IsBridgeTile(tile).
 	 * @return The TileIndex that is the other end of the bridge.
 	 */

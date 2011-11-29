@@ -23,7 +23,7 @@
  *        ran on the server only, not on all clients). This means that
  *        we use InteractiveRandom in MP. Rand() takes care of this for you.
  */
-class AIBase : public AIObject {
+class ScriptBase : public ScriptObject {
 public:
 	/**
 	 * Get a random value.

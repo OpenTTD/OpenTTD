@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_station.cpp Implementation of AIStation. */
+/** @file script_station.cpp Implementation of ScriptStation. */
 
 #include "../../stdafx.h"
 #include "script_station.hpp"
@@ -20,38 +20,38 @@
 #include "../../company_func.h"
 #include "../../town.h"
 
-/* static */ bool AIStation::IsValidStation(StationID station_id)
+/* static */ bool ScriptStation::IsValidStation(StationID station_id)
 {
 	const Station *st = ::Station::GetIfValid(station_id);
 	return st != NULL && (st->owner == _current_company || st->owner == OWNER_NONE);
 }
 
-/* static */ StationID AIStation::GetStationID(TileIndex tile)
+/* static */ StationID ScriptStation::GetStationID(TileIndex tile)
 {
 	if (!::IsValidTile(tile) || !::IsTileType(tile, MP_STATION)) return INVALID_STATION;
 	return ::GetStationIndex(tile);
 }
 
-/* static */ int32 AIStation::GetCargoWaiting(StationID station_id, CargoID cargo_id)
+/* static */ int32 ScriptStation::GetCargoWaiting(StationID station_id, CargoID cargo_id)
 {
 	if (!IsValidStation(station_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	return ::Station::Get(station_id)->goods[cargo_id].cargo.Count();
 }
 
-/* static */ int32 AIStation::GetCargoRating(StationID station_id, CargoID cargo_id)
+/* static */ int32 ScriptStation::GetCargoRating(StationID station_id, CargoID cargo_id)
 {
 	if (!IsValidStation(station_id)) return -1;
-	if (!AICargo::IsValidCargo(cargo_id)) return -1;
+	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
 	return ::ToPercent8(::Station::Get(station_id)->goods[cargo_id].rating);
 }
 
-/* static */ int32 AIStation::GetCoverageRadius(AIStation::StationType station_type)
+/* static */ int32 ScriptStation::GetCoverageRadius(ScriptStation::StationType station_type)
 {
 	if (station_type == STATION_AIRPORT) {
-		DEBUG(ai, 0, "GetCoverageRadius(): coverage radius of airports needs to be requested via AIAirport::GetAirportCoverageRadius(), as it requires AirportType");
+		DEBUG(ai, 0, "GetCoverageRadius(): coverage radius of airports needs to be requested via ScriptAirport::GetAirportCoverageRadius(), as it requires AirportType");
 		return -1;
 	}
 	if (!HasExactlyOneBit(station_type)) return -1;
@@ -66,28 +66,28 @@
 	}
 }
 
-/* static */ int32 AIStation::GetDistanceManhattanToTile(StationID station_id, TileIndex tile)
+/* static */ int32 ScriptStation::GetDistanceManhattanToTile(StationID station_id, TileIndex tile)
 {
 	if (!IsValidStation(station_id)) return -1;
 
-	return AIMap::DistanceManhattan(tile, GetLocation(station_id));
+	return ScriptMap::DistanceManhattan(tile, GetLocation(station_id));
 }
 
-/* static */ int32 AIStation::GetDistanceSquareToTile(StationID station_id, TileIndex tile)
+/* static */ int32 ScriptStation::GetDistanceSquareToTile(StationID station_id, TileIndex tile)
 {
 	if (!IsValidStation(station_id)) return -1;
 
-	return AIMap::DistanceSquare(tile, GetLocation(station_id));
+	return ScriptMap::DistanceSquare(tile, GetLocation(station_id));
 }
 
-/* static */ bool AIStation::IsWithinTownInfluence(StationID station_id, TownID town_id)
+/* static */ bool ScriptStation::IsWithinTownInfluence(StationID station_id, TownID town_id)
 {
 	if (!IsValidStation(station_id)) return false;
 
-	return AITown::IsWithinTownInfluence(town_id, GetLocation(station_id));
+	return ScriptTown::IsWithinTownInfluence(town_id, GetLocation(station_id));
 }
 
-/* static */ bool AIStation::HasStationType(StationID station_id, StationType station_type)
+/* static */ bool ScriptStation::HasStationType(StationID station_id, StationType station_type)
 {
 	if (!IsValidStation(station_id)) return false;
 	if (!HasExactlyOneBit(station_type)) return false;
@@ -95,10 +95,10 @@
 	return (::Station::Get(station_id)->facilities & station_type) != 0;
 }
 
-/* static */ bool AIStation::HasRoadType(StationID station_id, AIRoad::RoadType road_type)
+/* static */ bool ScriptStation::HasRoadType(StationID station_id, ScriptRoad::RoadType road_type)
 {
 	if (!IsValidStation(station_id)) return false;
-	if (!AIRoad::IsRoadTypeAvailable(road_type)) return false;
+	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return false;
 
 	::RoadTypes r = RoadTypeToRoadTypes((::RoadType)road_type);
 
@@ -112,7 +112,7 @@
 	return false;
 }
 
-/* static */ TownID AIStation::GetNearestTown(StationID station_id)
+/* static */ TownID ScriptStation::GetNearestTown(StationID station_id)
 {
 	if (!IsValidStation(station_id)) return INVALID_TOWN;
 

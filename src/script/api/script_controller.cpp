@@ -22,38 +22,38 @@
 #include "../../ai/ai.hpp"
 #include "script_log.hpp"
 
-/* static */ void AIController::SetCommandDelay(int ticks)
+/* static */ void ScriptController::SetCommandDelay(int ticks)
 {
 	if (ticks <= 0) return;
-	AIObject::SetDoCommandDelay(ticks);
+	ScriptObject::SetDoCommandDelay(ticks);
 }
 
-/* static */ void AIController::Sleep(int ticks)
+/* static */ void ScriptController::Sleep(int ticks)
 {
-	if (!AIObject::CanSuspend()) {
+	if (!ScriptObject::CanSuspend()) {
 		throw AI_FatalError("You are not allowed to call Sleep in your constructor, Save(), Load(), and any valuator.");
 	}
 
 	if (ticks <= 0) {
-		AILog::Warning("Sleep() value should be > 0. Assuming value 1.");
+		ScriptLog::Warning("Sleep() value should be > 0. Assuming value 1.");
 		ticks = 1;
 	}
 
 	throw AI_VMSuspend(ticks, NULL);
 }
 
-/* static */ void AIController::Print(bool error_msg, const char *message)
+/* static */ void ScriptController::Print(bool error_msg, const char *message)
 {
-	AILog::Log(error_msg ? AILog::LOG_SQ_ERROR : AILog::LOG_SQ_INFO, message);
+	ScriptLog::Log(error_msg ? ScriptLog::LOG_SQ_ERROR : ScriptLog::LOG_SQ_INFO, message);
 }
 
-AIController::AIController() :
+ScriptController::ScriptController() :
 	ticks(0),
 	loaded_library_count(0)
 {
 }
 
-AIController::~AIController()
+ScriptController::~ScriptController()
 {
 	for (LoadedLibraryList::iterator iter = this->loaded_library.begin(); iter != this->loaded_library.end(); iter++) {
 		free((*iter).second);
@@ -63,30 +63,30 @@ AIController::~AIController()
 	this->loaded_library.clear();
 }
 
-/* static */ uint AIController::GetTick()
+/* static */ uint ScriptController::GetTick()
 {
-	return AIObject::GetActiveInstance()->GetController()->ticks;
+	return ScriptObject::GetActiveInstance()->GetController()->ticks;
 }
 
-/* static */ int AIController::GetOpsTillSuspend()
+/* static */ int ScriptController::GetOpsTillSuspend()
 {
-	return AIObject::GetActiveInstance()->GetOpsTillSuspend();
+	return ScriptObject::GetActiveInstance()->GetOpsTillSuspend();
 }
 
-/* static */ int AIController::GetSetting(const char *name)
+/* static */ int ScriptController::GetSetting(const char *name)
 {
 	return AIConfig::GetConfig(_current_company)->GetSetting(name);
 }
 
-/* static */ uint AIController::GetVersion()
+/* static */ uint ScriptController::GetVersion()
 {
 	return _openttd_newgrf_version;
 }
 
-/* static */ HSQOBJECT AIController::Import(const char *library, const char *class_name, int version)
+/* static */ HSQOBJECT ScriptController::Import(const char *library, const char *class_name, int version)
 {
-	AIController *controller = AIObject::GetActiveInstance()->GetController();
-	Squirrel *engine = AIObject::GetActiveInstance()->engine;
+	ScriptController *controller = ScriptObject::GetActiveInstance()->GetController();
+	Squirrel *engine = ScriptObject::GetActiveInstance()->engine;
 	HSQUIRRELVM vm = engine->GetVM();
 
 	/* Internally we store libraries as 'library.version' */

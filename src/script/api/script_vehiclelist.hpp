@@ -17,24 +17,24 @@
 
 /**
  * Creates a list of vehicles of which you are the owner.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIVehicleList : public AIList {
+class ScriptVehicleList : public ScriptList {
 public:
-	AIVehicleList();
+	ScriptVehicleList();
 };
 
 /**
  * Creates a list of vehicles that have orders to a given station.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIVehicleList_Station : public AIList {
+class ScriptVehicleList_Station : public ScriptList {
 public:
 	/**
 	 * @param station_id The station to get the list of vehicles from, which have orders to it.
-	 * @pre AIBaseStation::IsValidBaseStation(station_id)
+	 * @pre ScriptBaseStation::IsValidBaseStation(station_id)
 	 */
-	AIVehicleList_Station(StationID station_id);
+	ScriptVehicleList_Station(StationID station_id);
 };
 
 /**
@@ -43,50 +43,50 @@ public:
  * aircraft having a depot order on a hangar of that airport will be
  * returned. For all other vehicle types the tile has to be a depot or
  * an empty list will be returned.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIVehicleList_Depot : public AIList {
+class ScriptVehicleList_Depot : public ScriptList {
 public:
 	/**
 	 * @param tile The tile of the depot to get the list of vehicles from, which have orders to it.
 	 */
-	AIVehicleList_Depot(TileIndex tile);
+	ScriptVehicleList_Depot(TileIndex tile);
 };
 
 /**
  * Creates a list of vehicles that share orders.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIVehicleList_SharedOrders : public AIList {
+class ScriptVehicleList_SharedOrders : public ScriptList {
 public:
 	/**
 	 * @param vehicle_id The vehicle that the rest shared orders with.
 	 */
-	AIVehicleList_SharedOrders(VehicleID vehicle_id);
+	ScriptVehicleList_SharedOrders(VehicleID vehicle_id);
 };
 
 /**
  * Creates a list of vehicles that are in a group.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIVehicleList_Group : public AIList {
+class ScriptVehicleList_Group : public ScriptList {
 public:
 	/**
 	 * @param group_id The ID of the group the vehicles are in.
 	 */
-	AIVehicleList_Group(GroupID group_id);
+	ScriptVehicleList_Group(GroupID group_id);
 };
 
 /**
  * Creates a list of vehicles that are in the default group.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIVehicleList_DefaultGroup : public AIList {
+class ScriptVehicleList_DefaultGroup : public ScriptList {
 public:
 	/**
 	 * @param vehicle_type The VehicleType to get the list of vehicles for.
 	 */
-	AIVehicleList_DefaultGroup(AIVehicle::VehicleType vehicle_type);
+	ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type);
 };
 
 #endif /* SCRIPT_VEHICLELIST_HPP */

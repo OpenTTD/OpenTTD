@@ -481,7 +481,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		AI::BroadcastNewEvent(new AIEventIndustryClose(i->index));
+		AI::BroadcastNewEvent(new ScriptEventIndustryClose(i->index));
 		delete i;
 	}
 	return CommandCost(EXPENSES_CONSTRUCTION, indspec->GetRemovalCost());
@@ -1871,7 +1871,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			SetDParam(1, ind->town->index);
 		}
 		AddIndustryNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
-		AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
+		AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
@@ -1984,7 +1984,7 @@ static void AdvertiseIndustryOpening(const Industry *ind)
 		SetDParam(1, ind->town->index);
 	}
 	AddIndustryNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
-	AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
+	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
 }
 
 /**
@@ -2592,7 +2592,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		/* Compute news category */
 		if (closeit) {
 			ns = NS_INDUSTRY_CLOSE;
-			AI::BroadcastNewEvent(new AIEventIndustryClose(i->index));
+			AI::BroadcastNewEvent(new ScriptEventIndustryClose(i->index));
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
 				case 0: ns = NS_INDUSTRY_NOBODY;  break;

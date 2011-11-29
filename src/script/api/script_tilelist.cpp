@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_tilelist.cpp Implementation of AITileList and friends. */
+/** @file script_tilelist.cpp Implementation of ScriptTileList and friends. */
 
 #include "../../stdafx.h"
 #include "script_tilelist.hpp"
@@ -15,7 +15,7 @@
 #include "../../industry.h"
 #include "../../station_base.h"
 
-void AITileList::AddRectangle(TileIndex t1, TileIndex t2)
+void ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
 {
 	if (!::IsValidTile(t1)) return;
 	if (!::IsValidTile(t2)) return;
@@ -24,14 +24,14 @@ void AITileList::AddRectangle(TileIndex t1, TileIndex t2)
 	TILE_AREA_LOOP(t, ta) this->AddItem(t);
 }
 
-void AITileList::AddTile(TileIndex tile)
+void ScriptTileList::AddTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return;
 
 	this->AddItem(tile);
 }
 
-void AITileList::RemoveRectangle(TileIndex t1, TileIndex t2)
+void ScriptTileList::RemoveRectangle(TileIndex t1, TileIndex t2)
 {
 	if (!::IsValidTile(t1)) return;
 	if (!::IsValidTile(t2)) return;
@@ -40,16 +40,16 @@ void AITileList::RemoveRectangle(TileIndex t1, TileIndex t2)
 	TILE_AREA_LOOP(t, ta) this->RemoveItem(t);
 }
 
-void AITileList::RemoveTile(TileIndex tile)
+void ScriptTileList::RemoveTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return;
 
 	this->RemoveItem(tile);
 }
 
-AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_id, int radius)
+ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID industry_id, int radius)
 {
-	if (!AIIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
+	if (!ScriptIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
 
 	const Industry *i = ::Industry::Get(industry_id);
 
@@ -85,9 +85,9 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 	}
 }
 
-AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_id, int radius)
+ScriptTileList_IndustryProducing::ScriptTileList_IndustryProducing(IndustryID industry_id, int radius)
 {
-	if (!AIIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
+	if (!ScriptIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
 
 	const Industry *i = ::Industry::Get(industry_id);
 
@@ -110,20 +110,20 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 	}
 }
 
-AITileList_StationType::AITileList_StationType(StationID station_id, AIStation::StationType station_type)
+ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, ScriptStation::StationType station_type)
 {
-	if (!AIStation::IsValidStation(station_id)) return;
+	if (!ScriptStation::IsValidStation(station_id)) return;
 
 	const StationRect *rect = &::Station::Get(station_id)->rect;
 
 	uint station_type_value = 0;
-	/* Convert AIStation::StationType to ::StationType, but do it in a
+	/* Convert ScriptStation::StationType to ::StationType, but do it in a
 	 *  bitmask, so we can scan for multiple entries at the same time. */
-	if ((station_type & AIStation::STATION_TRAIN) != 0)      station_type_value |= (1 << ::STATION_RAIL);
-	if ((station_type & AIStation::STATION_TRUCK_STOP) != 0) station_type_value |= (1 << ::STATION_TRUCK);
-	if ((station_type & AIStation::STATION_BUS_STOP) != 0)   station_type_value |= (1 << ::STATION_BUS);
-	if ((station_type & AIStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << ::STATION_AIRPORT) | (1 << ::STATION_OILRIG);
-	if ((station_type & AIStation::STATION_DOCK) != 0)       station_type_value |= (1 << ::STATION_DOCK)    | (1 << ::STATION_OILRIG);
+	if ((station_type & ScriptStation::STATION_TRAIN) != 0)      station_type_value |= (1 << ::STATION_RAIL);
+	if ((station_type & ScriptStation::STATION_TRUCK_STOP) != 0) station_type_value |= (1 << ::STATION_TRUCK);
+	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0)   station_type_value |= (1 << ::STATION_BUS);
+	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << ::STATION_AIRPORT) | (1 << ::STATION_OILRIG);
+	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_type_value |= (1 << ::STATION_DOCK)    | (1 << ::STATION_OILRIG);
 
 	TileArea ta(::TileXY(rect->left, rect->top), rect->right - rect->left + 1, rect->bottom - rect->top + 1);
 	TILE_AREA_LOOP(cur_tile, ta) {

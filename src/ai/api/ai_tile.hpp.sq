@@ -13,123 +13,123 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AITile::ErrorMessages GetParam(ForceType<AITile::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::ErrorMessages)tmp; }
-	template <> inline int Return<AITile::ErrorMessages>(HSQUIRRELVM vm, AITile::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AITile::Corner GetParam(ForceType<AITile::Corner>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::Corner)tmp; }
-	template <> inline int Return<AITile::Corner>(HSQUIRRELVM vm, AITile::Corner res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AITile::Slope GetParam(ForceType<AITile::Slope>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::Slope)tmp; }
-	template <> inline int Return<AITile::Slope>(HSQUIRRELVM vm, AITile::Slope res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AITile::TransportType GetParam(ForceType<AITile::TransportType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::TransportType)tmp; }
-	template <> inline int Return<AITile::TransportType>(HSQUIRRELVM vm, AITile::TransportType res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AITile::BuildType GetParam(ForceType<AITile::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::BuildType)tmp; }
-	template <> inline int Return<AITile::BuildType>(HSQUIRRELVM vm, AITile::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTile::ErrorMessages GetParam(ForceType<ScriptTile::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTile::ErrorMessages)tmp; }
+	template <> inline int Return<ScriptTile::ErrorMessages>(HSQUIRRELVM vm, ScriptTile::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTile::Corner GetParam(ForceType<ScriptTile::Corner>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTile::Corner)tmp; }
+	template <> inline int Return<ScriptTile::Corner>(HSQUIRRELVM vm, ScriptTile::Corner res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTile::Slope GetParam(ForceType<ScriptTile::Slope>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTile::Slope)tmp; }
+	template <> inline int Return<ScriptTile::Slope>(HSQUIRRELVM vm, ScriptTile::Slope res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTile::TransportType GetParam(ForceType<ScriptTile::TransportType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTile::TransportType)tmp; }
+	template <> inline int Return<ScriptTile::TransportType>(HSQUIRRELVM vm, ScriptTile::TransportType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTile::BuildType GetParam(ForceType<ScriptTile::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTile::BuildType)tmp; }
+	template <> inline int Return<ScriptTile::BuildType>(HSQUIRRELVM vm, ScriptTile::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AITile to be used as Squirrel parameter */
-	template <> inline AITile *GetParam(ForceType<AITile *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITile *)instance; }
-	template <> inline AITile &GetParam(ForceType<AITile &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITile *)instance; }
-	template <> inline const AITile *GetParam(ForceType<const AITile *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITile *)instance; }
-	template <> inline const AITile &GetParam(ForceType<const AITile &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITile *)instance; }
-	template <> inline int Return<AITile *>(HSQUIRRELVM vm, AITile *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Tile", res, NULL, DefSQDestructorCallback<AITile>, true); return 1; }
+	/* Allow ScriptTile to be used as Squirrel parameter */
+	template <> inline ScriptTile *GetParam(ForceType<ScriptTile *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTile *)instance; }
+	template <> inline ScriptTile &GetParam(ForceType<ScriptTile &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTile *)instance; }
+	template <> inline const ScriptTile *GetParam(ForceType<const ScriptTile *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTile *)instance; }
+	template <> inline const ScriptTile &GetParam(ForceType<const ScriptTile &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTile *)instance; }
+	template <> inline int Return<ScriptTile *>(HSQUIRRELVM vm, ScriptTile *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Tile", res, NULL, DefSQDestructorCallback<ScriptTile>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITile, ST_AI>() { return "AITile"; }
+template <> const char *GetClassName<ScriptTile, ST_AI>() { return "AITile"; }
 
 void SQAITile_Register(Squirrel *engine)
 {
-	DefSQClass<AITile, ST_AI> SQAITile("AITile");
+	DefSQClass<ScriptTile, ST_AI> SQAITile("AITile");
 	SQAITile.PreRegister(engine);
-	SQAITile.AddConstructor<void (AITile::*)(), 1>(engine, "x");
+	SQAITile.AddConstructor<void (ScriptTile::*)(), 1>(engine, "x");
 
-	SQAITile.DefSQConst(engine, AITile::ERR_TILE_BASE,               "ERR_TILE_BASE");
-	SQAITile.DefSQConst(engine, AITile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");
-	SQAITile.DefSQConst(engine, AITile::ERR_TILE_TOO_LOW,            "ERR_TILE_TOO_LOW");
-	SQAITile.DefSQConst(engine, AITile::ERR_AREA_ALREADY_FLAT,       "ERR_AREA_ALREADY_FLAT");
-	SQAITile.DefSQConst(engine, AITile::ERR_EXCAVATION_WOULD_DAMAGE, "ERR_EXCAVATION_WOULD_DAMAGE");
-	SQAITile.DefSQConst(engine, AITile::CORNER_W,                    "CORNER_W");
-	SQAITile.DefSQConst(engine, AITile::CORNER_S,                    "CORNER_S");
-	SQAITile.DefSQConst(engine, AITile::CORNER_E,                    "CORNER_E");
-	SQAITile.DefSQConst(engine, AITile::CORNER_N,                    "CORNER_N");
-	SQAITile.DefSQConst(engine, AITile::CORNER_INVALID,              "CORNER_INVALID");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_FLAT,                  "SLOPE_FLAT");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_W,                     "SLOPE_W");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_S,                     "SLOPE_S");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_E,                     "SLOPE_E");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_N,                     "SLOPE_N");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_STEEP,                 "SLOPE_STEEP");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_NW,                    "SLOPE_NW");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_SW,                    "SLOPE_SW");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_SE,                    "SLOPE_SE");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_NE,                    "SLOPE_NE");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_EW,                    "SLOPE_EW");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_NS,                    "SLOPE_NS");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_ELEVATED,              "SLOPE_ELEVATED");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_NWS,                   "SLOPE_NWS");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_WSE,                   "SLOPE_WSE");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_SEN,                   "SLOPE_SEN");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_ENW,                   "SLOPE_ENW");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_STEEP_W,               "SLOPE_STEEP_W");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_STEEP_S,               "SLOPE_STEEP_S");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_STEEP_E,               "SLOPE_STEEP_E");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_STEEP_N,               "SLOPE_STEEP_N");
-	SQAITile.DefSQConst(engine, AITile::SLOPE_INVALID,               "SLOPE_INVALID");
-	SQAITile.DefSQConst(engine, AITile::TRANSPORT_RAIL,              "TRANSPORT_RAIL");
-	SQAITile.DefSQConst(engine, AITile::TRANSPORT_ROAD,              "TRANSPORT_ROAD");
-	SQAITile.DefSQConst(engine, AITile::TRANSPORT_WATER,             "TRANSPORT_WATER");
-	SQAITile.DefSQConst(engine, AITile::TRANSPORT_AIR,               "TRANSPORT_AIR");
-	SQAITile.DefSQConst(engine, AITile::TRANSPORT_INVALID,           "TRANSPORT_INVALID");
-	SQAITile.DefSQConst(engine, AITile::BT_FOUNDATION,               "BT_FOUNDATION");
-	SQAITile.DefSQConst(engine, AITile::BT_TERRAFORM,                "BT_TERRAFORM");
-	SQAITile.DefSQConst(engine, AITile::BT_BUILD_TREES,              "BT_BUILD_TREES");
-	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_GRASS,              "BT_CLEAR_GRASS");
-	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_ROUGH,              "BT_CLEAR_ROUGH");
-	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_ROCKY,              "BT_CLEAR_ROCKY");
-	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_FIELDS,             "BT_CLEAR_FIELDS");
-	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_HOUSE,              "BT_CLEAR_HOUSE");
+	SQAITile.DefSQConst(engine, ScriptTile::ERR_TILE_BASE,               "ERR_TILE_BASE");
+	SQAITile.DefSQConst(engine, ScriptTile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");
+	SQAITile.DefSQConst(engine, ScriptTile::ERR_TILE_TOO_LOW,            "ERR_TILE_TOO_LOW");
+	SQAITile.DefSQConst(engine, ScriptTile::ERR_AREA_ALREADY_FLAT,       "ERR_AREA_ALREADY_FLAT");
+	SQAITile.DefSQConst(engine, ScriptTile::ERR_EXCAVATION_WOULD_DAMAGE, "ERR_EXCAVATION_WOULD_DAMAGE");
+	SQAITile.DefSQConst(engine, ScriptTile::CORNER_W,                    "CORNER_W");
+	SQAITile.DefSQConst(engine, ScriptTile::CORNER_S,                    "CORNER_S");
+	SQAITile.DefSQConst(engine, ScriptTile::CORNER_E,                    "CORNER_E");
+	SQAITile.DefSQConst(engine, ScriptTile::CORNER_N,                    "CORNER_N");
+	SQAITile.DefSQConst(engine, ScriptTile::CORNER_INVALID,              "CORNER_INVALID");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_FLAT,                  "SLOPE_FLAT");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_W,                     "SLOPE_W");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_S,                     "SLOPE_S");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_E,                     "SLOPE_E");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_N,                     "SLOPE_N");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_STEEP,                 "SLOPE_STEEP");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_NW,                    "SLOPE_NW");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_SW,                    "SLOPE_SW");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_SE,                    "SLOPE_SE");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_NE,                    "SLOPE_NE");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_EW,                    "SLOPE_EW");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_NS,                    "SLOPE_NS");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_ELEVATED,              "SLOPE_ELEVATED");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_NWS,                   "SLOPE_NWS");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_WSE,                   "SLOPE_WSE");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_SEN,                   "SLOPE_SEN");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_ENW,                   "SLOPE_ENW");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_STEEP_W,               "SLOPE_STEEP_W");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_STEEP_S,               "SLOPE_STEEP_S");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_STEEP_E,               "SLOPE_STEEP_E");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_STEEP_N,               "SLOPE_STEEP_N");
+	SQAITile.DefSQConst(engine, ScriptTile::SLOPE_INVALID,               "SLOPE_INVALID");
+	SQAITile.DefSQConst(engine, ScriptTile::TRANSPORT_RAIL,              "TRANSPORT_RAIL");
+	SQAITile.DefSQConst(engine, ScriptTile::TRANSPORT_ROAD,              "TRANSPORT_ROAD");
+	SQAITile.DefSQConst(engine, ScriptTile::TRANSPORT_WATER,             "TRANSPORT_WATER");
+	SQAITile.DefSQConst(engine, ScriptTile::TRANSPORT_AIR,               "TRANSPORT_AIR");
+	SQAITile.DefSQConst(engine, ScriptTile::TRANSPORT_INVALID,           "TRANSPORT_INVALID");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_FOUNDATION,               "BT_FOUNDATION");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_TERRAFORM,                "BT_TERRAFORM");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_BUILD_TREES,              "BT_BUILD_TREES");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_CLEAR_GRASS,              "BT_CLEAR_GRASS");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_CLEAR_ROUGH,              "BT_CLEAR_ROUGH");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_CLEAR_ROCKY,              "BT_CLEAR_ROCKY");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_CLEAR_FIELDS,             "BT_CLEAR_FIELDS");
+	SQAITile.DefSQConst(engine, ScriptTile::BT_CLEAR_HOUSE,              "BT_CLEAR_HOUSE");
 
-	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_HIGH);
-	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_LOW);
-	AIError::RegisterErrorMap(STR_ERROR_ALREADY_LEVELLED,        AITile::ERR_AREA_ALREADY_FLAT);
-	AIError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE, AITile::ERR_EXCAVATION_WOULD_DAMAGE);
+	ScriptError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    ScriptTile::ERR_TILE_TOO_HIGH);
+	ScriptError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    ScriptTile::ERR_TILE_TOO_LOW);
+	ScriptError::RegisterErrorMap(STR_ERROR_ALREADY_LEVELLED,        ScriptTile::ERR_AREA_ALREADY_FLAT);
+	ScriptError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE, ScriptTile::ERR_EXCAVATION_WOULD_DAMAGE);
 
-	AIError::RegisterErrorMapString(AITile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");
-	AIError::RegisterErrorMapString(AITile::ERR_TILE_TOO_LOW,            "ERR_TILE_TOO_LOW");
-	AIError::RegisterErrorMapString(AITile::ERR_AREA_ALREADY_FLAT,       "ERR_AREA_ALREADY_FLAT");
-	AIError::RegisterErrorMapString(AITile::ERR_EXCAVATION_WOULD_DAMAGE, "ERR_EXCAVATION_WOULD_DAMAGE");
+	ScriptError::RegisterErrorMapString(ScriptTile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");
+	ScriptError::RegisterErrorMapString(ScriptTile::ERR_TILE_TOO_LOW,            "ERR_TILE_TOO_LOW");
+	ScriptError::RegisterErrorMapString(ScriptTile::ERR_AREA_ALREADY_FLAT,       "ERR_AREA_ALREADY_FLAT");
+	ScriptError::RegisterErrorMapString(ScriptTile::ERR_EXCAVATION_WOULD_DAMAGE, "ERR_EXCAVATION_WOULD_DAMAGE");
 
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsBuildable,                "IsBuildable",                2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsBuildableRectangle,       "IsBuildableRectangle",       4, ".iii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsWaterTile,                "IsWaterTile",                2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsCoastTile,                "IsCoastTile",                2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsStationTile,              "IsStationTile",              2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsSteepSlope,               "IsSteepSlope",               2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsHalftileSlope,            "IsHalftileSlope",            2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::HasTreeOnTile,              "HasTreeOnTile",              2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsFarmTile,                 "IsFarmTile",                 2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsRockTile,                 "IsRockTile",                 2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsRoughTile,                "IsRoughTile",                2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsSnowTile,                 "IsSnowTile",                 2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsDesertTile,               "IsDesertTile",               2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetSlope,                   "GetSlope",                   2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetComplementSlope,         "GetComplementSlope",         2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetMinHeight,               "GetMinHeight",               2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetMaxHeight,               "GetMaxHeight",               2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetCornerHeight,            "GetCornerHeight",            3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetOwner,                   "GetOwner",                   2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::HasTransportType,           "HasTransportType",           3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetCargoAcceptance,         "GetCargoAcceptance",         6, ".iiiii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetCargoProduction,         "GetCargoProduction",         6, ".iiiii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::RaiseTile,                  "RaiseTile",                  3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::LowerTile,                  "LowerTile",                  3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::LevelTiles,                 "LevelTiles",                 3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::DemolishTile,               "DemolishTile",               2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::PlantTree,                  "PlantTree",                  2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::PlantTreeRectangle,         "PlantTreeRectangle",         4, ".iii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetTownAuthority,           "GetTownAuthority",           2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetClosestTown,             "GetClosestTown",             2, ".i");
-	SQAITile.DefSQStaticMethod(engine, &AITile::GetBuildCost,               "GetBuildCost",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsBuildable,                "IsBuildable",                2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsBuildableRectangle,       "IsBuildableRectangle",       4, ".iii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsWaterTile,                "IsWaterTile",                2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsCoastTile,                "IsCoastTile",                2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsStationTile,              "IsStationTile",              2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsSteepSlope,               "IsSteepSlope",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsHalftileSlope,            "IsHalftileSlope",            2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::HasTreeOnTile,              "HasTreeOnTile",              2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsFarmTile,                 "IsFarmTile",                 2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsRockTile,                 "IsRockTile",                 2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsRoughTile,                "IsRoughTile",                2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsSnowTile,                 "IsSnowTile",                 2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsDesertTile,               "IsDesertTile",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetSlope,                   "GetSlope",                   2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetComplementSlope,         "GetComplementSlope",         2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetMinHeight,               "GetMinHeight",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetMaxHeight,               "GetMaxHeight",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetCornerHeight,            "GetCornerHeight",            3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetOwner,                   "GetOwner",                   2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::HasTransportType,           "HasTransportType",           3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetCargoAcceptance,         "GetCargoAcceptance",         6, ".iiiii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetCargoProduction,         "GetCargoProduction",         6, ".iiiii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::RaiseTile,                  "RaiseTile",                  3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::LowerTile,                  "LowerTile",                  3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::LevelTiles,                 "LevelTiles",                 3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::DemolishTile,               "DemolishTile",               2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::PlantTree,                  "PlantTree",                  2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::PlantTreeRectangle,         "PlantTreeRectangle",         4, ".iii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetTownAuthority,           "GetTownAuthority",           2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetClosestTown,             "GetClosestTown",             2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &ScriptTile::GetBuildCost,               "GetBuildCost",               2, ".i");
 
 	SQAITile.PostRegister(engine);
 }

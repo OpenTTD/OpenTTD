@@ -21,10 +21,10 @@
  *   instance is destroyed.
  * In Execute mode all commands you do are executed for real.
  */
-class AIExecMode : public AIObject {
+class ScriptExecMode : public ScriptObject {
 private:
 	AIModeProc *last_mode;   ///< The previous mode we were in.
-	AIObject *last_instance; ///< The previous instace of the mode.
+	ScriptObject *last_instance; ///< The previous instace of the mode.
 
 protected:
 	/**
@@ -38,13 +38,13 @@ public:
 	 * @note When the instance is destroyed, he restores the mode that was
 	 *   current when the instance was created!
 	 */
-	AIExecMode();
+	ScriptExecMode();
 
 	/**
 	 * Destroying this instance reset the building mode to the mode it was
 	 *   in when the instance was created.
 	 */
-	~AIExecMode();
+	~ScriptExecMode();
 };
 
 #endif /* SCRIPT_EXECMODE_HPP */

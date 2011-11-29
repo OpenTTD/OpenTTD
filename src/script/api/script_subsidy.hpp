@@ -17,7 +17,7 @@
 /**
  * Class that handles all subsidy related functions.
  */
-class AISubsidy : public AIObject {
+class ScriptSubsidy : public ScriptObject {
 public:
 	/**
 	 * Enumeration for source and destination of a subsidy.
@@ -50,7 +50,7 @@ public:
 	 * @pre IsAwarded(subsidy_id).
 	 * @return The companyindex of the company this subsidy is awarded to.
 	 */
-	static AICompany::CompanyID GetAwardedTo(SubsidyID subsidy_id);
+	static ScriptCompany::CompanyID GetAwardedTo(SubsidyID subsidy_id);
 
 	/**
 	 * Get the date this subsidy expires. In case the subsidy is already

@@ -13,149 +13,149 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AIVehicle::ErrorMessages GetParam(ForceType<AIVehicle::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIVehicle::ErrorMessages)tmp; }
-	template <> inline int Return<AIVehicle::ErrorMessages>(HSQUIRRELVM vm, AIVehicle::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AIVehicle::VehicleType GetParam(ForceType<AIVehicle::VehicleType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIVehicle::VehicleType)tmp; }
-	template <> inline int Return<AIVehicle::VehicleType>(HSQUIRRELVM vm, AIVehicle::VehicleType res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AIVehicle::VehicleState GetParam(ForceType<AIVehicle::VehicleState>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIVehicle::VehicleState)tmp; }
-	template <> inline int Return<AIVehicle::VehicleState>(HSQUIRRELVM vm, AIVehicle::VehicleState res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptVehicle::ErrorMessages GetParam(ForceType<ScriptVehicle::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptVehicle::ErrorMessages)tmp; }
+	template <> inline int Return<ScriptVehicle::ErrorMessages>(HSQUIRRELVM vm, ScriptVehicle::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptVehicle::VehicleType GetParam(ForceType<ScriptVehicle::VehicleType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptVehicle::VehicleType)tmp; }
+	template <> inline int Return<ScriptVehicle::VehicleType>(HSQUIRRELVM vm, ScriptVehicle::VehicleType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptVehicle::VehicleState GetParam(ForceType<ScriptVehicle::VehicleState>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptVehicle::VehicleState)tmp; }
+	template <> inline int Return<ScriptVehicle::VehicleState>(HSQUIRRELVM vm, ScriptVehicle::VehicleState res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AIVehicle to be used as Squirrel parameter */
-	template <> inline AIVehicle *GetParam(ForceType<AIVehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicle *)instance; }
-	template <> inline AIVehicle &GetParam(ForceType<AIVehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicle *)instance; }
-	template <> inline const AIVehicle *GetParam(ForceType<const AIVehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicle *)instance; }
-	template <> inline const AIVehicle &GetParam(ForceType<const AIVehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicle *)instance; }
-	template <> inline int Return<AIVehicle *>(HSQUIRRELVM vm, AIVehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Vehicle", res, NULL, DefSQDestructorCallback<AIVehicle>, true); return 1; }
+	/* Allow ScriptVehicle to be used as Squirrel parameter */
+	template <> inline ScriptVehicle *GetParam(ForceType<ScriptVehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptVehicle *)instance; }
+	template <> inline ScriptVehicle &GetParam(ForceType<ScriptVehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptVehicle *)instance; }
+	template <> inline const ScriptVehicle *GetParam(ForceType<const ScriptVehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptVehicle *)instance; }
+	template <> inline const ScriptVehicle &GetParam(ForceType<const ScriptVehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptVehicle *)instance; }
+	template <> inline int Return<ScriptVehicle *>(HSQUIRRELVM vm, ScriptVehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Vehicle", res, NULL, DefSQDestructorCallback<ScriptVehicle>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIVehicle, ST_AI>() { return "AIVehicle"; }
+template <> const char *GetClassName<ScriptVehicle, ST_AI>() { return "AIVehicle"; }
 
 void SQAIVehicle_Register(Squirrel *engine)
 {
-	DefSQClass<AIVehicle, ST_AI> SQAIVehicle("AIVehicle");
+	DefSQClass<ScriptVehicle, ST_AI> SQAIVehicle("AIVehicle");
 	SQAIVehicle.PreRegister(engine);
-	SQAIVehicle.AddConstructor<void (AIVehicle::*)(), 1>(engine, "x");
+	SQAIVehicle.AddConstructor<void (ScriptVehicle::*)(), 1>(engine, "x");
 
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_BASE,                 "ERR_VEHICLE_BASE");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_TOO_MANY,             "ERR_VEHICLE_TOO_MANY");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_NOT_AVAILABLE,        "ERR_VEHICLE_NOT_AVAILABLE");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_BUILD_DISABLED,       "ERR_VEHICLE_BUILD_DISABLED");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_WRONG_DEPOT,          "ERR_VEHICLE_WRONG_DEPOT");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT, "ERR_VEHICLE_CANNOT_SEND_TO_DEPOT");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_CANNOT_START_STOP,    "ERR_VEHICLE_CANNOT_START_STOP");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_CANNOT_TURN,          "ERR_VEHICLE_CANNOT_TURN");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_CANNOT_REFIT,         "ERR_VEHICLE_CANNOT_REFIT");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_IS_DESTROYED,         "ERR_VEHICLE_IS_DESTROYED");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT,         "ERR_VEHICLE_NOT_IN_DEPOT");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_IN_FLIGHT,            "ERR_VEHICLE_IN_FLIGHT");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_NO_POWER,             "ERR_VEHICLE_NO_POWER");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_TOO_LONG,             "ERR_VEHICLE_TOO_LONG");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_RAIL,                          "VT_RAIL");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_ROAD,                          "VT_ROAD");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_WATER,                         "VT_WATER");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_AIR,                           "VT_AIR");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_INVALID,                       "VT_INVALID");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_RUNNING,                       "VS_RUNNING");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_STOPPED,                       "VS_STOPPED");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_IN_DEPOT,                      "VS_IN_DEPOT");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_AT_STATION,                    "VS_AT_STATION");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_BROKEN,                        "VS_BROKEN");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_CRASHED,                       "VS_CRASHED");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_INVALID,                       "VS_INVALID");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_BASE,                 "ERR_VEHICLE_BASE");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_TOO_MANY,             "ERR_VEHICLE_TOO_MANY");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_NOT_AVAILABLE,        "ERR_VEHICLE_NOT_AVAILABLE");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED,       "ERR_VEHICLE_BUILD_DISABLED");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT,          "ERR_VEHICLE_WRONG_DEPOT");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT, "ERR_VEHICLE_CANNOT_SEND_TO_DEPOT");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP,    "ERR_VEHICLE_CANNOT_START_STOP");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_CANNOT_TURN,          "ERR_VEHICLE_CANNOT_TURN");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT,         "ERR_VEHICLE_CANNOT_REFIT");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_IS_DESTROYED,         "ERR_VEHICLE_IS_DESTROYED");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT,         "ERR_VEHICLE_NOT_IN_DEPOT");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_IN_FLIGHT,            "ERR_VEHICLE_IN_FLIGHT");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_NO_POWER,             "ERR_VEHICLE_NO_POWER");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::ERR_VEHICLE_TOO_LONG,             "ERR_VEHICLE_TOO_LONG");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VT_RAIL,                          "VT_RAIL");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VT_ROAD,                          "VT_ROAD");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VT_WATER,                         "VT_WATER");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VT_AIR,                           "VT_AIR");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VT_INVALID,                       "VT_INVALID");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VS_RUNNING,                       "VS_RUNNING");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VS_STOPPED,                       "VS_STOPPED");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VS_IN_DEPOT,                      "VS_IN_DEPOT");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VS_AT_STATION,                    "VS_AT_STATION");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VS_BROKEN,                        "VS_BROKEN");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VS_CRASHED,                       "VS_CRASHED");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VS_INVALID,                       "VS_INVALID");
 
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_INVALID, "VEHICLE_INVALID");
+	SQAIVehicle.DefSQConst(engine, ScriptVehicle::VEHICLE_INVALID, "VEHICLE_INVALID");
 
-	AIError::RegisterErrorMap(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME,                           AIVehicle::ERR_VEHICLE_TOO_MANY);
-	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_NOT_AVAILABLE,                              AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE,                          AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_SHIP_NOT_AVAILABLE,                                  AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE,                          AIVehicle::ERR_VEHICLE_NOT_AVAILABLE);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_TRAIN,                                     AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_ROAD_VEHICLE,                              AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_SHIP,                                      AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_AIRCRAFT,                                  AIVehicle::ERR_VEHICLE_BUILD_DISABLED);
-	AIError::RegisterErrorMap(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE,                              AIVehicle::ERR_VEHICLE_WRONG_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT,                           AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT,                    AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT,                            AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR,                       AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_TRAIN,                              AIVehicle::ERR_VEHICLE_CANNOT_START_STOP);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE,                       AIVehicle::ERR_VEHICLE_CANNOT_START_STOP);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_SHIP,                               AIVehicle::ERR_VEHICLE_CANNOT_START_STOP);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_AIRCRAFT,                           AIVehicle::ERR_VEHICLE_CANNOT_START_STOP);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN,                        AIVehicle::ERR_VEHICLE_CANNOT_TURN);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN,                       AIVehicle::ERR_VEHICLE_CANNOT_TURN);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE,                AIVehicle::ERR_VEHICLE_CANNOT_TURN);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS, AIVehicle::ERR_VEHICLE_CANNOT_TURN);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_TRAIN,                                   AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE,                            AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_SHIP,                                    AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
-	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_AIRCRAFT,                                AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
-	AIError::RegisterErrorMap(STR_ERROR_VEHICLE_IS_DESTROYED,                                AIVehicle::ERR_VEHICLE_IS_DESTROYED);
-	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR,              AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT,           AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT,                  AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT,                   AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT,                               AIVehicle::ERR_VEHICLE_IN_FLIGHT);
-	AIError::RegisterErrorMap(STR_ERROR_TRAIN_START_NO_POWER,                                AIVehicle::ERR_VEHICLE_NO_POWER);
-	AIError::RegisterErrorMap(STR_ERROR_TRAIN_TOO_LONG,                                      AIVehicle::ERR_VEHICLE_TOO_LONG);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME,                           ScriptVehicle::ERR_VEHICLE_TOO_MANY);
+	ScriptError::RegisterErrorMap(STR_ERROR_AIRCRAFT_NOT_AVAILABLE,                              ScriptVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE,                          ScriptVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_SHIP_NOT_AVAILABLE,                                  ScriptVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE,                          ScriptVehicle::ERR_VEHICLE_NOT_AVAILABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_TRAIN,                                     ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_ROAD_VEHICLE,                              ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_SHIP,                                      ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_BUY_AIRCRAFT,                                  ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED);
+	ScriptError::RegisterErrorMap(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE,                              ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT,                           ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT,                    ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT,                            ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR,                       ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_TRAIN,                              ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE,                       ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_SHIP,                               ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_STOP_START_AIRCRAFT,                           ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN,                        ScriptVehicle::ERR_VEHICLE_CANNOT_TURN);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN,                       ScriptVehicle::ERR_VEHICLE_CANNOT_TURN);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE,                ScriptVehicle::ERR_VEHICLE_CANNOT_TURN);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS, ScriptVehicle::ERR_VEHICLE_CANNOT_TURN);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_TRAIN,                                   ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE,                            ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_SHIP,                                    ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT);
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_AIRCRAFT,                                ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT);
+	ScriptError::RegisterErrorMap(STR_ERROR_VEHICLE_IS_DESTROYED,                                ScriptVehicle::ERR_VEHICLE_IS_DESTROYED);
+	ScriptError::RegisterErrorMap(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR,              ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT,           ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT,                  ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT,                   ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	ScriptError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT,                               ScriptVehicle::ERR_VEHICLE_IN_FLIGHT);
+	ScriptError::RegisterErrorMap(STR_ERROR_TRAIN_START_NO_POWER,                                ScriptVehicle::ERR_VEHICLE_NO_POWER);
+	ScriptError::RegisterErrorMap(STR_ERROR_TRAIN_TOO_LONG,                                      ScriptVehicle::ERR_VEHICLE_TOO_LONG);
 
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_TOO_MANY,             "ERR_VEHICLE_TOO_MANY");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_NOT_AVAILABLE,        "ERR_VEHICLE_NOT_AVAILABLE");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_BUILD_DISABLED,       "ERR_VEHICLE_BUILD_DISABLED");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_WRONG_DEPOT,          "ERR_VEHICLE_WRONG_DEPOT");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT, "ERR_VEHICLE_CANNOT_SEND_TO_DEPOT");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_CANNOT_START_STOP,    "ERR_VEHICLE_CANNOT_START_STOP");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_CANNOT_TURN,          "ERR_VEHICLE_CANNOT_TURN");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_CANNOT_REFIT,         "ERR_VEHICLE_CANNOT_REFIT");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_IS_DESTROYED,         "ERR_VEHICLE_IS_DESTROYED");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT,         "ERR_VEHICLE_NOT_IN_DEPOT");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_IN_FLIGHT,            "ERR_VEHICLE_IN_FLIGHT");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_NO_POWER,             "ERR_VEHICLE_NO_POWER");
-	AIError::RegisterErrorMapString(AIVehicle::ERR_VEHICLE_TOO_LONG,             "ERR_VEHICLE_TOO_LONG");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_TOO_MANY,             "ERR_VEHICLE_TOO_MANY");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_NOT_AVAILABLE,        "ERR_VEHICLE_NOT_AVAILABLE");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED,       "ERR_VEHICLE_BUILD_DISABLED");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT,          "ERR_VEHICLE_WRONG_DEPOT");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT, "ERR_VEHICLE_CANNOT_SEND_TO_DEPOT");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP,    "ERR_VEHICLE_CANNOT_START_STOP");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_CANNOT_TURN,          "ERR_VEHICLE_CANNOT_TURN");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT,         "ERR_VEHICLE_CANNOT_REFIT");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_IS_DESTROYED,         "ERR_VEHICLE_IS_DESTROYED");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT,         "ERR_VEHICLE_NOT_IN_DEPOT");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_IN_FLIGHT,            "ERR_VEHICLE_IN_FLIGHT");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_NO_POWER,             "ERR_VEHICLE_NO_POWER");
+	ScriptError::RegisterErrorMapString(ScriptVehicle::ERR_VEHICLE_TOO_LONG,             "ERR_VEHICLE_TOO_LONG");
 
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::IsValidVehicle,                 "IsValidVehicle",                 2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetNumWagons,                   "GetNumWagons",                   2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SetName,                        "SetName",                        3, ".i.");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetName,                        "GetName",                        2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetLocation,                    "GetLocation",                    2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetEngineType,                  "GetEngineType",                  2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetWagonEngineType,             "GetWagonEngineType",             3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetUnitNumber,                  "GetUnitNumber",                  2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetAge,                         "GetAge",                         2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetWagonAge,                    "GetWagonAge",                    3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetMaxAge,                      "GetMaxAge",                      2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetAgeLeft,                     "GetAgeLeft",                     2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetCurrentSpeed,                "GetCurrentSpeed",                2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetState,                       "GetState",                       2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetRunningCost,                 "GetRunningCost",                 2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetProfitThisYear,              "GetProfitThisYear",              2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetProfitLastYear,              "GetProfitLastYear",              2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetCurrentValue,                "GetCurrentValue",                2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetVehicleType,                 "GetVehicleType",                 2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetRoadType,                    "GetRoadType",                    2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::IsInDepot,                      "IsInDepot",                      2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::IsStoppedInDepot,               "IsStoppedInDepot",               2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::BuildVehicle,                   "BuildVehicle",                   3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::CloneVehicle,                   "CloneVehicle",                   4, ".iib");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::MoveWagon,                      "MoveWagon",                      5, ".iiii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::MoveWagonChain,                 "MoveWagonChain",                 5, ".iiii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetRefitCapacity,               "GetRefitCapacity",               3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::RefitVehicle,                   "RefitVehicle",                   3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SellVehicle,                    "SellVehicle",                    2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SellWagon,                      "SellWagon",                      3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SellWagonChain,                 "SellWagonChain",                 3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SendVehicleToDepot,             "SendVehicleToDepot",             2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::SendVehicleToDepotForServicing, "SendVehicleToDepotForServicing", 2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::StartStopVehicle,               "StartStopVehicle",               2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::ReverseVehicle,                 "ReverseVehicle",                 2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetCapacity,                    "GetCapacity",                    3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetLength,                      "GetLength",                      2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetCargoLoad,                   "GetCargoLoad",                   3, ".ii");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetGroupID,                     "GetGroupID",                     2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::IsArticulated,                  "IsArticulated",                  2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::HasSharedOrders,                "HasSharedOrders",                2, ".i");
-	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetReliability,                 "GetReliability",                 2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsValidVehicle,                 "IsValidVehicle",                 2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetNumWagons,                   "GetNumWagons",                   2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::SetName,                        "SetName",                        3, ".i.");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetName,                        "GetName",                        2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetLocation,                    "GetLocation",                    2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetEngineType,                  "GetEngineType",                  2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetWagonEngineType,             "GetWagonEngineType",             3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetUnitNumber,                  "GetUnitNumber",                  2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetAge,                         "GetAge",                         2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetWagonAge,                    "GetWagonAge",                    3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetMaxAge,                      "GetMaxAge",                      2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetAgeLeft,                     "GetAgeLeft",                     2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetCurrentSpeed,                "GetCurrentSpeed",                2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetState,                       "GetState",                       2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetRunningCost,                 "GetRunningCost",                 2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetProfitThisYear,              "GetProfitThisYear",              2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetProfitLastYear,              "GetProfitLastYear",              2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetCurrentValue,                "GetCurrentValue",                2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetVehicleType,                 "GetVehicleType",                 2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetRoadType,                    "GetRoadType",                    2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsInDepot,                      "IsInDepot",                      2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsStoppedInDepot,               "IsStoppedInDepot",               2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::BuildVehicle,                   "BuildVehicle",                   3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::CloneVehicle,                   "CloneVehicle",                   4, ".iib");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::MoveWagon,                      "MoveWagon",                      5, ".iiii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::MoveWagonChain,                 "MoveWagonChain",                 5, ".iiii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetRefitCapacity,               "GetRefitCapacity",               3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::RefitVehicle,                   "RefitVehicle",                   3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::SellVehicle,                    "SellVehicle",                    2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::SellWagon,                      "SellWagon",                      3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::SellWagonChain,                 "SellWagonChain",                 3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::SendVehicleToDepot,             "SendVehicleToDepot",             2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::SendVehicleToDepotForServicing, "SendVehicleToDepotForServicing", 2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::StartStopVehicle,               "StartStopVehicle",               2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::ReverseVehicle,                 "ReverseVehicle",                 2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetCapacity,                    "GetCapacity",                    3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetLength,                      "GetLength",                      2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetCargoLoad,                   "GetCargoLoad",                   3, ".ii");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetGroupID,                     "GetGroupID",                     2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsArticulated,                  "IsArticulated",                  2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::HasSharedOrders,                "HasSharedOrders",                2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetReliability,                 "GetReliability",                 2, ".i");
 
 	SQAIVehicle.PostRegister(engine);
 }

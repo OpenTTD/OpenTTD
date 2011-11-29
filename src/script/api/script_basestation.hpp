@@ -17,7 +17,7 @@
 /**
  * Base class for stations and waypoints.
  */
-class AIBaseStation : public AIObject {
+class ScriptBaseStation : public ScriptObject {
 public:
 	/**
 	 * Special station IDs for building adjacent/new stations when
@@ -52,7 +52,7 @@ public:
 	 * @pre IsValidBaseStation(station_id).
 	 * @pre 'name' must have at least one character.
 	 * @pre 'name' must have at most 30 characters.
-	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
 	 */
 	static bool SetName(StationID station_id, const char *name);
@@ -63,7 +63,7 @@ public:
 	 * @pre IsValidBaseStation(station_id).
 	 * @return The tile the basestation sign above it.
 	 * @note The tile is not necessarily a station tile (and if it is, it could also belong to another station).
-	 * @see AITileList_StationType.
+	 * @see ScriptTileList_StationType.
 	 */
 	static TileIndex GetLocation(StationID station_id);
 

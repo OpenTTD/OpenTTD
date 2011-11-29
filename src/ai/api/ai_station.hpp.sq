@@ -13,61 +13,61 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline AIStation::ErrorMessages GetParam(ForceType<AIStation::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIStation::ErrorMessages)tmp; }
-	template <> inline int Return<AIStation::ErrorMessages>(HSQUIRRELVM vm, AIStation::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline AIStation::StationType GetParam(ForceType<AIStation::StationType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIStation::StationType)tmp; }
-	template <> inline int Return<AIStation::StationType>(HSQUIRRELVM vm, AIStation::StationType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptStation::ErrorMessages GetParam(ForceType<ScriptStation::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptStation::ErrorMessages)tmp; }
+	template <> inline int Return<ScriptStation::ErrorMessages>(HSQUIRRELVM vm, ScriptStation::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptStation::StationType GetParam(ForceType<ScriptStation::StationType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptStation::StationType)tmp; }
+	template <> inline int Return<ScriptStation::StationType>(HSQUIRRELVM vm, ScriptStation::StationType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
-	/* Allow AIStation to be used as Squirrel parameter */
-	template <> inline AIStation *GetParam(ForceType<AIStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStation *)instance; }
-	template <> inline AIStation &GetParam(ForceType<AIStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStation *)instance; }
-	template <> inline const AIStation *GetParam(ForceType<const AIStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStation *)instance; }
-	template <> inline const AIStation &GetParam(ForceType<const AIStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStation *)instance; }
-	template <> inline int Return<AIStation *>(HSQUIRRELVM vm, AIStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Station", res, NULL, DefSQDestructorCallback<AIStation>, true); return 1; }
+	/* Allow ScriptStation to be used as Squirrel parameter */
+	template <> inline ScriptStation *GetParam(ForceType<ScriptStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptStation *)instance; }
+	template <> inline ScriptStation &GetParam(ForceType<ScriptStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptStation *)instance; }
+	template <> inline const ScriptStation *GetParam(ForceType<const ScriptStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptStation *)instance; }
+	template <> inline const ScriptStation &GetParam(ForceType<const ScriptStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptStation *)instance; }
+	template <> inline int Return<ScriptStation *>(HSQUIRRELVM vm, ScriptStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "Station", res, NULL, DefSQDestructorCallback<ScriptStation>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AIStation, ST_AI>() { return "AIStation"; }
+template <> const char *GetClassName<ScriptStation, ST_AI>() { return "AIStation"; }
 
 void SQAIStation_Register(Squirrel *engine)
 {
-	DefSQClass<AIStation, ST_AI> SQAIStation("AIStation");
+	DefSQClass<ScriptStation, ST_AI> SQAIStation("AIStation");
 	SQAIStation.PreRegister(engine, "AIBaseStation");
-	SQAIStation.AddConstructor<void (AIStation::*)(), 1>(engine, "x");
+	SQAIStation.AddConstructor<void (ScriptStation::*)(), 1>(engine, "x");
 
-	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_BASE,                         "ERR_STATION_BASE");
-	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, "ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION");
-	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_TOO_MANY_STATIONS,            "ERR_STATION_TOO_MANY_STATIONS");
-	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
-	SQAIStation.DefSQConst(engine, AIStation::STATION_TRAIN,                            "STATION_TRAIN");
-	SQAIStation.DefSQConst(engine, AIStation::STATION_TRUCK_STOP,                       "STATION_TRUCK_STOP");
-	SQAIStation.DefSQConst(engine, AIStation::STATION_BUS_STOP,                         "STATION_BUS_STOP");
-	SQAIStation.DefSQConst(engine, AIStation::STATION_AIRPORT,                          "STATION_AIRPORT");
-	SQAIStation.DefSQConst(engine, AIStation::STATION_DOCK,                             "STATION_DOCK");
-	SQAIStation.DefSQConst(engine, AIStation::STATION_ANY,                              "STATION_ANY");
+	SQAIStation.DefSQConst(engine, ScriptStation::ERR_STATION_BASE,                         "ERR_STATION_BASE");
+	SQAIStation.DefSQConst(engine, ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, "ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION");
+	SQAIStation.DefSQConst(engine, ScriptStation::ERR_STATION_TOO_MANY_STATIONS,            "ERR_STATION_TOO_MANY_STATIONS");
+	SQAIStation.DefSQConst(engine, ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
+	SQAIStation.DefSQConst(engine, ScriptStation::STATION_TRAIN,                            "STATION_TRAIN");
+	SQAIStation.DefSQConst(engine, ScriptStation::STATION_TRUCK_STOP,                       "STATION_TRUCK_STOP");
+	SQAIStation.DefSQConst(engine, ScriptStation::STATION_BUS_STOP,                         "STATION_BUS_STOP");
+	SQAIStation.DefSQConst(engine, ScriptStation::STATION_AIRPORT,                          "STATION_AIRPORT");
+	SQAIStation.DefSQConst(engine, ScriptStation::STATION_DOCK,                             "STATION_DOCK");
+	SQAIStation.DefSQConst(engine, ScriptStation::STATION_ANY,                              "STATION_ANY");
 
-	AIError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT,    AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
-	AIError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION,    AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
-	AIError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK,       AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
-	AIError::RegisterErrorMap(STR_ERROR_TOO_MANY_STATIONS_LOADING,       AIStation::ERR_STATION_TOO_MANY_STATIONS);
-	AIError::RegisterErrorMap(STR_ERROR_TOO_MANY_TRUCK_STOPS,            AIStation::ERR_STATION_TOO_MANY_STATIONS);
-	AIError::RegisterErrorMap(STR_ERROR_TOO_MANY_BUS_STOPS,              AIStation::ERR_STATION_TOO_MANY_STATIONS);
-	AIError::RegisterErrorMap(STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT, AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT,    ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION,    ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK,       ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_MANY_STATIONS_LOADING,       ScriptStation::ERR_STATION_TOO_MANY_STATIONS);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_MANY_TRUCK_STOPS,            ScriptStation::ERR_STATION_TOO_MANY_STATIONS);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_MANY_BUS_STOPS,              ScriptStation::ERR_STATION_TOO_MANY_STATIONS);
+	ScriptError::RegisterErrorMap(STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT, ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN);
 
-	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, "ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION");
-	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_MANY_STATIONS,            "ERR_STATION_TOO_MANY_STATIONS");
-	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
+	ScriptError::RegisterErrorMapString(ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, "ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION");
+	ScriptError::RegisterErrorMapString(ScriptStation::ERR_STATION_TOO_MANY_STATIONS,            "ERR_STATION_TOO_MANY_STATIONS");
+	ScriptError::RegisterErrorMapString(ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
 
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsValidStation,             "IsValidStation",             2, ".i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetStationID,               "GetStationID",               2, ".i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoWaiting,            "GetCargoWaiting",            3, ".ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoRating,             "GetCargoRating",             3, ".ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCoverageRadius,          "GetCoverageRadius",          2, ".i");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasStationType,             "HasStationType",             3, ".ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasRoadType,                "HasRoadType",                3, ".ii");
-	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetNearestTown,             "GetNearestTown",             2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::IsValidStation,             "IsValidStation",             2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::GetStationID,               "GetStationID",               2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoWaiting,            "GetCargoWaiting",            3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoRating,             "GetCargoRating",             3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::GetCoverageRadius,          "GetCoverageRadius",          2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::HasStationType,             "HasStationType",             3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::HasRoadType,                "HasRoadType",                3, ".ii");
+	SQAIStation.DefSQStaticMethod(engine, &ScriptStation::GetNearestTown,             "GetNearestTown",             2, ".i");
 
 	SQAIStation.PostRegister(engine);
 }

@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_enginelist.cpp Implementation of AIEngineList and friends. */
+/** @file script_enginelist.cpp Implementation of ScriptEngineList and friends. */
 
 #include "../../stdafx.h"
 #include "script_enginelist.hpp"
@@ -15,7 +15,7 @@
 #include "../../engine_base.h"
 #include "../../core/bitmath_func.hpp"
 
-AIEngineList::AIEngineList(AIVehicle::VehicleType vehicle_type)
+ScriptEngineList::ScriptEngineList(ScriptVehicle::VehicleType vehicle_type)
 {
 	Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, (::VehicleType)vehicle_type) {

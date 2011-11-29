@@ -17,14 +17,14 @@
 /**
  * Class that handles all vehicle related functions.
  */
-class AIVehicle : public AIObject {
+class ScriptVehicle : public ScriptObject {
 public:
 	/**
 	 * All vehicle related error messages.
 	 */
 	enum ErrorMessages {
 		/** Base for vehicle related errors */
-		ERR_VEHICLE_BASE = AIError::ERR_CAT_VEHICLE << AIError::ERR_CAT_BIT_SIZE,
+		ERR_VEHICLE_BASE = ScriptError::ERR_CAT_VEHICLE << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Too many vehicles in the game, can't build any more. */
 		ERR_VEHICLE_TOO_MANY,                   // [STR_ERROR_TOO_MANY_VEHICLES_IN_GAME]
@@ -117,7 +117,7 @@ public:
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @pre 'name' must have at least one character.
 	 * @pre 'name' must have at most 30 characters.
-	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
 	static bool SetName(VehicleID vehicle_id, const char *name);
@@ -227,7 +227,7 @@ public:
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The running cost of the vehicle per year.
 	 * @note Cost is per year; divide by 365 to get per day.
-	 * @note This is not equal to AIEngine::GetRunningCost for Trains, because
+	 * @note This is not equal to ScriptEngine::GetRunningCost for Trains, because
 	 *   wagons and second engines can add up in the calculation too.
 	 */
 	static Money GetRunningCost(VehicleID vehicle_id);
@@ -264,7 +264,7 @@ public:
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The vehicle type.
 	 */
-	static AIVehicle::VehicleType GetVehicleType(VehicleID vehicle_id);
+	static ScriptVehicle::VehicleType GetVehicleType(VehicleID vehicle_id);
 
 	/**
 	 * Get the RoadType of the vehicle.
@@ -273,7 +273,7 @@ public:
 	 * @pre GetVehicleType(vehicle_id) == VT_ROAD.
 	 * @return The RoadType the vehicle has.
 	 */
-	static AIRoad::RoadType GetRoadType(VehicleID vehicle_id);
+	static ScriptRoad::RoadType GetRoadType(VehicleID vehicle_id);
 
 	/**
 	 * Check if a vehicle is in a depot.
@@ -297,10 +297,10 @@ public:
 	 * @param engine_id The engine to use for this vehicle.
 	 * @pre The tile at depot has a depot that can build the engine and
 	 *   is owned by you.
-	 * @pre AIEngine::IsBuildable(engine_id).
-	 * @exception AIVehicle::ERR_VEHICLE_TOO_MANY
-	 * @exception AIVehicle::ERR_VEHICLE_BUILD_DISABLED
-	 * @exception AIVehicle::ERR_VEHICLE_WRONG_DEPOT
+	 * @pre ScriptEngine::IsBuildable(engine_id).
+	 * @exception ScriptVehicle::ERR_VEHICLE_TOO_MANY
+	 * @exception ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED
+	 * @exception ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT
 	 * @return The VehicleID of the new vehicle, or an invalid VehicleID when
 	 *   it failed. Check the return value using IsValidVehicle. In test-mode
 	 *   0 is returned if it was successful; any other value indicates failure.
@@ -317,9 +317,9 @@ public:
 	 * @param share_orders Should the orders be copied or shared?
 	 * @pre The tile 'depot' has a depot on it, allowing 'vehicle_id'-type vehicles.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @exception AIVehicle::ERR_VEHICLE_TOO_MANY
-	 * @exception AIVehicle::ERR_VEHICLE_BUILD_DISABLED
-	 * @exception AIVehicle::ERR_VEHICLE_WRONG_DEPOT
+	 * @exception ScriptVehicle::ERR_VEHICLE_TOO_MANY
+	 * @exception ScriptVehicle::ERR_VEHICLE_BUILD_DISABLED
+	 * @exception ScriptVehicle::ERR_VEHICLE_WRONG_DEPOT
 	 * @return The VehicleID of the new vehicle, or an invalid VehicleID when
 	 *   it failed. Check the return value using IsValidVehicle. In test-mode
 	 *   0 is returned if it was successful; any other value indicates failure.
@@ -361,7 +361,7 @@ public:
 	 * @param vehicle_id The vehicle to refit.
 	 * @param cargo The cargo to refit to.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre AICargo::IsValidCargo(cargo).
+	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
 	 * @return The capacity the vehicle will have when refited.
@@ -373,12 +373,12 @@ public:
 	 * @param vehicle_id The vehicle to refit.
 	 * @param cargo The cargo to refit to.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre AICargo::IsValidCargo(cargo).
+	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_REFIT
-	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
-	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_REFIT
+	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the refit succeeded.
 	 */
 	static bool RefitVehicle(VehicleID vehicle_id, CargoID cargo);
@@ -389,8 +389,8 @@ public:
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
-	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the vehicle has been sold.
 	 */
 	static bool SellVehicle(VehicleID vehicle_id);
@@ -403,8 +403,8 @@ public:
 	 * @pre wagon < GetNumWagons(vehicle_id).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
-	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the wagon has been sold.
 	 */
 	static bool SellWagon(VehicleID vehicle_id, int wagon);
@@ -417,8 +417,8 @@ public:
 	 * @pre wagon < GetNumWagons(vehicle_id).
 	 * @pre You must own the vehicle.
 	 * @pre The vehicle must be stopped in the depot.
-	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
-	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @exception ScriptVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception ScriptVehicle::ERR_VEHICLE_NOT_IN_DEPOT
 	 * @return True if and only if the wagons have been sold.
 	 */
 	static bool SellWagonChain(VehicleID vehicle_id, int wagon);
@@ -428,7 +428,7 @@ public:
 	 * sent to a depot it continues with its normal orders instead.
 	 * @param vehicle_id The vehicle to send to a depot.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
+	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
 	 * @return True if the current order was changed.
 	 */
 	static bool SendVehicleToDepot(VehicleID vehicle_id);
@@ -438,7 +438,7 @@ public:
 	 * already been sent to a depot it continues with its normal orders instead.
 	 * @param vehicle_id The vehicle to send to a depot for servicing.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
+	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
 	 * @return True if the current order was changed.
 	 */
 	static bool SendVehicleToDepotForServicing(VehicleID vehicle_id);
@@ -447,9 +447,9 @@ public:
 	 * Starts or stops the given vehicle depending on the current state.
 	 * @param vehicle_id The vehicle to start/stop.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_START_STOP
-	 * @exception (For aircraft only): AIVehicle::ERR_VEHICLE_IN_FLIGHT
-	 * @exception (For trains only): AIVehicle::ERR_VEHICLE_NO_POWER
+	 * @exception ScriptVehicle::ERR_VEHICLE_CANNOT_START_STOP
+	 * @exception (For aircraft only): ScriptVehicle::ERR_VEHICLE_IN_FLIGHT
+	 * @exception (For trains only): ScriptVehicle::ERR_VEHICLE_NO_POWER
 	 * @return True if and only if the vehicle has been started or stopped.
 	 */
 	static bool StartStopVehicle(VehicleID vehicle_id);
@@ -470,7 +470,7 @@ public:
 	 * @param vehicle_id The vehicle to get the capacity of.
 	 * @param cargo The cargo to get the capacity for.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre AICargo::IsValidCargo(cargo).
+	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The maximum amount of the given cargo the vehicle can transport.
 	 */
 	static int32 GetCapacity(VehicleID vehicle_id, CargoID cargo);
@@ -489,7 +489,7 @@ public:
 	 * @param vehicle_id The vehicle to get the load amount of.
 	 * @param cargo The cargo to get the load amount for.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @pre AICargo::IsValidCargo(cargo).
+	 * @pre ScriptCargo::IsValidCargo(cargo).
 	 * @return The amount of the given cargo the vehicle currently transports.
 	 */
 	static int32 GetCargoLoad(VehicleID vehicle_id, CargoID cargo);

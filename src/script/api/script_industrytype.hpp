@@ -17,14 +17,14 @@
 /**
  * Class that handles all industry-type related functions.
  */
-class AIIndustryType : public AIObject {
+class ScriptIndustryType : public ScriptObject {
 public:
 	/**
 	 * Special IndustryTypes.
 	 */
 	enum SpecialIndustryType {
-		INDUSTRYTYPE_UNKNOWN = 0xFE, ///< Unknown/unspecific industrytype. (Usable for AIRail::BuildNewGRFRailStation())
-		INDUSTRYTYPE_TOWN    = 0xFF, ///< No industry, but town. (Usable for AIRail::BuildNewGRFRailStation())
+		INDUSTRYTYPE_UNKNOWN = 0xFE, ///< Unknown/unspecific industrytype. (Usable for ScriptRail::BuildNewGRFRailStation())
+		INDUSTRYTYPE_TOWN    = 0xFF, ///< No industry, but town. (Usable for ScriptRail::BuildNewGRFRailStation())
 	};
 
 	/**
@@ -50,7 +50,7 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The CargoIDs of all cargotypes this industry could produce.
 	 */
-	static AIList *GetProducedCargo(IndustryType industry_type);
+	static ScriptList *GetProducedCargo(IndustryType industry_type);
 
 	/**
 	 * Get a list of CargoID accepted by this industry-type.
@@ -60,7 +60,7 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The CargoIDs of all cargotypes this industry accepts.
 	 */
-	static AIList *GetAcceptedCargo(IndustryType industry_type);
+	static ScriptList *GetAcceptedCargo(IndustryType industry_type);
 
 	/**
 	 * Is this industry type a raw industry?

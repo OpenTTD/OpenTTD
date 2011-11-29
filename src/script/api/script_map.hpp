@@ -18,7 +18,7 @@
 /**
  * Class that handles all map related functions.
  */
-class AIMap : public AIObject {
+class ScriptMap : public ScriptObject {
 public:
 	static const int TILE_INVALID = (int)INVALID_TILE; ///< Invalid TileIndex.
 

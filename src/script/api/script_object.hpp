@@ -34,7 +34,7 @@ typedef bool (AIModeProc)();
  *   internally to have a common place to handle general things, like internal
  *   command processing, and command-validation checks.
  */
-class AIObject : public SimpleCountedObject {
+class ScriptObject : public SimpleCountedObject {
 friend class AIInstance;
 #ifndef DOXYGEN_AI_DOCS
 protected:
@@ -45,7 +45,7 @@ protected:
 	 *  reverts to the active instance it was before instantiating.
 	 */
 	class ActiveInstance {
-	friend class AIObject;
+	friend class ScriptObject;
 	public:
 		ActiveInstance(AIInstance *instance);
 		~ActiveInstance();
@@ -92,12 +92,12 @@ protected:
 	/**
 	 * Set the DoCommand last error.
 	 */
-	static void SetLastError(AIErrorType last_error);
+	static void SetLastError(ScriptErrorType last_error);
 
 	/**
 	 * Get the DoCommand last error.
 	 */
-	static AIErrorType GetLastError();
+	static ScriptErrorType GetLastError();
 
 	/**
 	 * Set the road type.
@@ -122,7 +122,7 @@ protected:
 	/**
 	 * Set the current mode of your AI to this proc.
 	 */
-	static void SetDoCommandMode(AIModeProc *proc, AIObject *instance);
+	static void SetDoCommandMode(AIModeProc *proc, ScriptObject *instance);
 
 	/**
 	 * Get the current mode your AI is currently under.
@@ -132,7 +132,7 @@ protected:
 	/**
 	 * Get the instance of the current mode your AI is currently under.
 	 */
-	static AIObject *GetDoCommandModeInstance();
+	static ScriptObject *GetDoCommandModeInstance();
 
 	/**
 	 * Set the delay of the DoCommand.

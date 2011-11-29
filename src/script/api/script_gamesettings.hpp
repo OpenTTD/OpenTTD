@@ -17,24 +17,24 @@
 /**
  * Class that handles all game settings related functions.
  *
- * @note AIGameSettings::IsValid and AIGameSettings::GetValue are functions
+ * @note ScriptGameSettings::IsValid and ScriptGameSettings::GetValue are functions
  *       that rely on the settings as OpenTTD stores them in savegame and
  *       openttd.cfg. No guarantees can be given on the long term validity,
  *       consistency and stability of the names, values and value ranges.
  *       Using these settings can be dangerous and could cause issues in
  *       future versions. To make sure that a setting still exists in the
- *       current version you have to run AIGameSettings::IsValid before
+ *       current version you have to run ScriptGameSettings::IsValid before
  *       accessing it.
  *
- * @note The names of the setting for AIGameSettings::IsValid and
- *       AIGameSettings::GetValue are the same ones as those that are shown by
+ * @note The names of the setting for ScriptGameSettings::IsValid and
+ *       ScriptGameSettings::GetValue are the same ones as those that are shown by
  *       the list_settings command in the in-game console. Settings that are
  *       string based are NOT supported and AIGAmeSettings::IsValid will return
  *       false for them. These settings will not be supported either because
  *       they have no relevance for the AI (default client names, server IPs,
  *       etc.).
  */
-class AIGameSettings : public AIObject {
+class ScriptGameSettings : public ScriptObject {
 public:
 	/**
 	 * Is the given game setting a valid setting for this instance of OpenTTD?
@@ -65,7 +65,7 @@ public:
 	 * @param vehicle_type The vehicle-type to check.
 	 * @return True if the vehicle-type is disabled.
 	 */
-	static bool IsDisabledVehicleType(AIVehicle::VehicleType vehicle_type);
+	static bool IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type);
 };
 
 #endif /* SCRIPT_GAMESETTINGS_HPP */

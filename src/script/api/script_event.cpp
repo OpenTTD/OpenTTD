@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_event.cpp Implementation of AIEvent. */
+/** @file script_event.cpp Implementation of ScriptEvent. */
 
 #include "../../stdafx.h"
 #include "script_event_types.hpp"
@@ -15,24 +15,24 @@
 #include <queue>
 
 /** The queue of events for an AI. */
-struct AIEventData {
-	std::queue<AIEvent *> stack; ///< The actual queue.
+struct ScriptEventData {
+	std::queue<ScriptEvent *> stack; ///< The actual queue.
 };
 
-/* static */ void AIEventController::CreateEventPointer()
+/* static */ void ScriptEventController::CreateEventPointer()
 {
-	assert(AIObject::GetEventPointer() == NULL);
+	assert(ScriptObject::GetEventPointer() == NULL);
 
-	AIObject::GetEventPointer() = new AIEventData();
+	ScriptObject::GetEventPointer() = new ScriptEventData();
 }
 
-/* static */ void AIEventController::FreeEventPointer()
+/* static */ void ScriptEventController::FreeEventPointer()
 {
-	AIEventData *data = (AIEventData *)AIObject::GetEventPointer();
+	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
 
 	/* Free all waiting events (if any) */
 	while (!data->stack.empty()) {
-		AIEvent *e = data->stack.front();
+		ScriptEvent *e = data->stack.front();
 		data->stack.pop();
 		e->Release();
 	}
@@ -41,30 +41,30 @@ struct AIEventData {
 	delete data;
 }
 
-/* static */ bool AIEventController::IsEventWaiting()
+/* static */ bool ScriptEventController::IsEventWaiting()
 {
-	if (AIObject::GetEventPointer() == NULL) AIEventController::CreateEventPointer();
-	AIEventData *data = (AIEventData *)AIObject::GetEventPointer();
+	if (ScriptObject::GetEventPointer() == NULL) ScriptEventController::CreateEventPointer();
+	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
 
 	return !data->stack.empty();
 }
 
-/* static */ AIEvent *AIEventController::GetNextEvent()
+/* static */ ScriptEvent *ScriptEventController::GetNextEvent()
 {
-	if (AIObject::GetEventPointer() == NULL) AIEventController::CreateEventPointer();
-	AIEventData *data = (AIEventData *)AIObject::GetEventPointer();
+	if (ScriptObject::GetEventPointer() == NULL) ScriptEventController::CreateEventPointer();
+	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
 
 	if (data->stack.empty()) return NULL;
 
-	AIEvent *e = data->stack.front();
+	ScriptEvent *e = data->stack.front();
 	data->stack.pop();
 	return e;
 }
 
-/* static */ void AIEventController::InsertEvent(AIEvent *event)
+/* static */ void ScriptEventController::InsertEvent(ScriptEvent *event)
 {
-	if (AIObject::GetEventPointer() == NULL) AIEventController::CreateEventPointer();
-	AIEventData *data = (AIEventData *)AIObject::GetEventPointer();
+	if (ScriptObject::GetEventPointer() == NULL) ScriptEventController::CreateEventPointer();
+	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
 
 	event->AddRef();
 	data->stack.push(event);

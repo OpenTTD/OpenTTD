@@ -16,23 +16,23 @@
 
 /**
  * Create a list of bridges.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIBridgeList : public AIList {
+class ScriptBridgeList : public ScriptList {
 public:
-	AIBridgeList();
+	ScriptBridgeList();
 };
 
 /**
  * Create a list of bridges that can be built on a specific length.
- * @ingroup AIList
+ * @ingroup ScriptList
  */
-class AIBridgeList_Length : public AIList {
+class ScriptBridgeList_Length : public ScriptList {
 public:
 	/**
 	 * @param length The length of the bridge you want to build.
 	 */
-	AIBridgeList_Length(uint length);
+	ScriptBridgeList_Length(uint length);
 };
 
 #endif /* SCRIPT_BRIDGELIST_HPP */

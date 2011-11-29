@@ -12,41 +12,41 @@
 #include "../../script/api/script_townlist.hpp"
 
 namespace SQConvert {
-	/* Allow AITownList to be used as Squirrel parameter */
-	template <> inline AITownList *GetParam(ForceType<AITownList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITownList *)instance; }
-	template <> inline AITownList &GetParam(ForceType<AITownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITownList *)instance; }
-	template <> inline const AITownList *GetParam(ForceType<const AITownList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITownList *)instance; }
-	template <> inline const AITownList &GetParam(ForceType<const AITownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITownList *)instance; }
-	template <> inline int Return<AITownList *>(HSQUIRRELVM vm, AITownList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownList", res, NULL, DefSQDestructorCallback<AITownList>, true); return 1; }
+	/* Allow ScriptTownList to be used as Squirrel parameter */
+	template <> inline ScriptTownList *GetParam(ForceType<ScriptTownList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTownList *)instance; }
+	template <> inline ScriptTownList &GetParam(ForceType<ScriptTownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownList *)instance; }
+	template <> inline const ScriptTownList *GetParam(ForceType<const ScriptTownList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTownList *)instance; }
+	template <> inline const ScriptTownList &GetParam(ForceType<const ScriptTownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownList *)instance; }
+	template <> inline int Return<ScriptTownList *>(HSQUIRRELVM vm, ScriptTownList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownList", res, NULL, DefSQDestructorCallback<ScriptTownList>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITownList, ST_AI>() { return "AITownList"; }
+template <> const char *GetClassName<ScriptTownList, ST_AI>() { return "AITownList"; }
 
 void SQAITownList_Register(Squirrel *engine)
 {
-	DefSQClass<AITownList, ST_AI> SQAITownList("AITownList");
+	DefSQClass<ScriptTownList, ST_AI> SQAITownList("AITownList");
 	SQAITownList.PreRegister(engine, "AIList");
-	SQAITownList.AddConstructor<void (AITownList::*)(), 1>(engine, "x");
+	SQAITownList.AddConstructor<void (ScriptTownList::*)(), 1>(engine, "x");
 
 	SQAITownList.PostRegister(engine);
 }
 
 namespace SQConvert {
-	/* Allow AITownEffectList to be used as Squirrel parameter */
-	template <> inline AITownEffectList *GetParam(ForceType<AITownEffectList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITownEffectList *)instance; }
-	template <> inline AITownEffectList &GetParam(ForceType<AITownEffectList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITownEffectList *)instance; }
-	template <> inline const AITownEffectList *GetParam(ForceType<const AITownEffectList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITownEffectList *)instance; }
-	template <> inline const AITownEffectList &GetParam(ForceType<const AITownEffectList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITownEffectList *)instance; }
-	template <> inline int Return<AITownEffectList *>(HSQUIRRELVM vm, AITownEffectList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownEffectList", res, NULL, DefSQDestructorCallback<AITownEffectList>, true); return 1; }
+	/* Allow ScriptTownEffectList to be used as Squirrel parameter */
+	template <> inline ScriptTownEffectList *GetParam(ForceType<ScriptTownEffectList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTownEffectList *)instance; }
+	template <> inline ScriptTownEffectList &GetParam(ForceType<ScriptTownEffectList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownEffectList *)instance; }
+	template <> inline const ScriptTownEffectList *GetParam(ForceType<const ScriptTownEffectList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTownEffectList *)instance; }
+	template <> inline const ScriptTownEffectList &GetParam(ForceType<const ScriptTownEffectList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptTownEffectList *)instance; }
+	template <> inline int Return<ScriptTownEffectList *>(HSQUIRRELVM vm, ScriptTownEffectList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "TownEffectList", res, NULL, DefSQDestructorCallback<ScriptTownEffectList>, true); return 1; }
 } // namespace SQConvert
 
-template <> const char *GetClassName<AITownEffectList, ST_AI>() { return "AITownEffectList"; }
+template <> const char *GetClassName<ScriptTownEffectList, ST_AI>() { return "AITownEffectList"; }
 
 void SQAITownEffectList_Register(Squirrel *engine)
 {
-	DefSQClass<AITownEffectList, ST_AI> SQAITownEffectList("AITownEffectList");
+	DefSQClass<ScriptTownEffectList, ST_AI> SQAITownEffectList("AITownEffectList");
 	SQAITownEffectList.PreRegister(engine, "AIList");
-	SQAITownEffectList.AddConstructor<void (AITownEffectList::*)(), 1>(engine, "x");
+	SQAITownEffectList.AddConstructor<void (ScriptTownEffectList::*)(), 1>(engine, "x");
 
 	SQAITownEffectList.PostRegister(engine);
 }
