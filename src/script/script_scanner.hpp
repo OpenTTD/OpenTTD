@@ -82,8 +82,8 @@ public:
 
 protected:
 	class Squirrel *engine; ///< The engine we're scanning with.
-	char *main_script;      ///< The name of the current main script.
-	char *tar_file;         ///< The filename of the tar for the main script.
+	char *main_script;      ///< The full path of the script.
+	char *tar_file;         ///< If, which tar file the script was in.
 
 	ScriptInfoList info_list;        ///< The list of all script.
 	ScriptInfoList info_single_list; ///< The list of all unique script. The best script (highest version) is shown.

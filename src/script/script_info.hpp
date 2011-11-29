@@ -103,14 +103,14 @@ protected:
 	HSQOBJECT *SQ_instance;       ///< The Squirrel instance created for this info.
 
 private:
-	char *main_script;            ///< Name of the main script.
+	char *main_script;            ///< The full path of the script.
 	char *tar_file;               ///< If, which tar file the script was in.
 	const char *author;           ///< Author of the script.
 	const char *name;             ///< Full name of the script.
 	const char *short_name;       ///< Short name (4 chars) which uniquely identifies the script.
 	const char *description;      ///< Small description of the script.
 	const char *date;             ///< The date the script was written at.
-	const char *instance_name;    ///< Which instance name the script has.
+	const char *instance_name;    ///< Name of the main class in the script.
 	int version;                  ///< Version of the script.
 	const char *url;              ///< URL of the script.
 

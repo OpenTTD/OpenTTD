@@ -31,7 +31,7 @@ public:
 
 	/**
 	 * Initialize the script and prepare it for its first run.
-	 * @param main_script The name of the script to load.
+	 * @param main_script The full path of the script to load.
 	 * @param instance_name The name of the instance out of the script to load.
 	 */
 	void Initialize(const char *main_script, const char *instance_name);
