@@ -304,20 +304,60 @@ err1:
 	return ret_font_name == NULL ? WIDE_TO_MB((const TCHAR*)logfont->elfFullName) : ret_font_name;
 }
 
+class FontList {
+protected:
+	TCHAR **fonts;
+	uint items;
+	uint capacity;
+
+public:
+	FontList() : fonts(NULL), items(0), capacity(0) { };
+
+	~FontList() {
+		if (this->fonts == NULL) return;
+
+		for (uint i = 0; i < this->items; i++) {
+			free(this->fonts[i]);
+		}
+
+		free(this->fonts);
+	}
+
+	bool Add(const TCHAR *font) {
+		for (uint i = 0; i < this->items; i++) {
+			if (_tcscmp(this->fonts[i], font) == 0) return false;
+		}
+
+		if (this->items == this->capacity) {
+			this->capacity += 10;
+			this->fonts = ReallocT(this->fonts, this->capacity);
+		}
+
+		this->fonts[this->items++] = _tcsdup(font);
+
+		return true;
+	}
+};
+
 struct EFCParam {
 	FreeTypeSettings *settings;
 	LOCALESIGNATURE  locale;
 	MissingGlyphSearcher *callback;
+	FontList fonts;
 };
 
 static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXTMETRICEX *metric, DWORD type, LPARAM lParam)
 {
 	EFCParam *info = (EFCParam *)lParam;
 
+	/* Skip duplicates */
+	if (!info->fonts.Add(logfont->elfFullName)) return 1;
 	/* Only use TrueType fonts */
 	if (!(type & TRUETYPE_FONTTYPE)) return 1;
 	/* Don't use SYMBOL fonts */
 	if (logfont->elfLogFont.lfCharSet == SYMBOL_CHARSET) return 1;
+	/* Use monospaced fonts when asked for it. */
+	if (info->callback->Monospace() && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
 	/* The font has to have at least one of the supported locales to be usable. */
 	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) {
