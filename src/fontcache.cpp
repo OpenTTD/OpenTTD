@@ -351,7 +351,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	EFCParam *info = (EFCParam *)lParam;
 
 	/* Skip duplicates */
-	if (!info->fonts.Add(logfont->elfFullName)) return 1;
+	if (!info->fonts.Add((const TCHAR*)logfont->elfFullName)) return 1;
 	/* Only use TrueType fonts */
 	if (!(type & TRUETYPE_FONTTYPE)) return 1;
 	/* Don't use SYMBOL fonts */
