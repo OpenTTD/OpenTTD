@@ -2535,8 +2535,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 			_sl_version = TO_BE32(hdr[1]) >> 16;
 			/* Minor is not used anymore from version 18.0, but it is still needed
 			 * in versions before that (4 cases) which can't be removed easy.
-			 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
-			 * So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
+			 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario). */
 			_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
 
 			DEBUG(sl, 1, "Loading savegame version %d", _sl_version);

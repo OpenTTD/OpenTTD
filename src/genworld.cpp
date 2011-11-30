@@ -50,7 +50,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
  * Please only use this variable in genworld.h and genworld.cpp and
  *  nowhere else. For speed improvements we need it to be global, but
  *  in no way the meaning of it is to use it anywhere else besides
- *  in the genworld.h and genworld.cpp! -- TrueLight
+ *  in the genworld.h and genworld.cpp!
  */
 GenWorldInfo _gw;
 

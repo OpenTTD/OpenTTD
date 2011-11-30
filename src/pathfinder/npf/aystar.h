@@ -70,7 +70,7 @@ struct AyStar;
  * The good part about #OpenListNode is, and how AIs use it, that you can
  * access the parent of the current node, and so check if you, for example
  * don't try to enter the file tile with a 90-degree curve. So please, leave
- * this an #OpenListNode, it works just fine -- TrueLight
+ * this an #OpenListNode, it works just fine.
  * @return Status of the node:
  *  - #AYSTAR_FOUND_END_NODE : indicates this is the end tile
  *  - #AYSTAR_DONE : indicates this is not the end tile (or direction was wrong)

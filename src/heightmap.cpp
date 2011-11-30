@@ -24,8 +24,7 @@
 
 /**
  * Convert RGB colours to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue
- *  (average luminosity formula) -- Dalestan
- * This in fact is the NTSC Colour Space -- TrueLight
+ *  (average luminosity formula, NTSC Colour Space)
  */
 static inline byte RGBToGrayscale(byte red, byte green, byte blue)
 {
