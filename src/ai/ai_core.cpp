@@ -335,6 +335,8 @@
 	SetWindowDirty(WC_AI_SETTINGS, 0);
 }
 
+#if defined(ENABLE_NETWORK)
+
 /**
  * Check whether we have an AI (library) with the exact characteristics as ci.
  * @param ci the characteristics to search on (shortname and md5sum)
@@ -350,3 +352,5 @@
 {
 	return AI::scanner_library->HasScript(ci, md5sum);
 }
+
+#endif /* defined(ENABLE_NETWORK) */
