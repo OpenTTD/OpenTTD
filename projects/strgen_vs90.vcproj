@@ -151,7 +151,7 @@
 			>
 		</File>
 		<File
-			RelativePath="..\src\string.h"
+			RelativePath="..\src\string_func.h"
 			>
 		</File>
 		<File

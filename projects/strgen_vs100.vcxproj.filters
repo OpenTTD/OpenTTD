@@ -26,7 +26,7 @@
     <ClInclude Include="..\src\debug.h" />
     <ClInclude Include="..\src\core\endian_func.hpp" />
     <ClInclude Include="..\src\stdafx.h" />
-    <ClInclude Include="..\src\string.h" />
+    <ClInclude Include="..\src\string_func.h" />
     <ClInclude Include="..\src\misc\getoptdata.h" />
   </ItemGroup>
 </Project>
