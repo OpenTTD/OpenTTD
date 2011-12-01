@@ -342,27 +342,23 @@ static void LoadIntroGame(bool load_newgrfs = true)
 
 void MakeNewgameSettingsLive()
 {
-#ifdef ENABLE_AI
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (_settings_game.ai_config[c] != NULL) {
 			delete _settings_game.ai_config[c];
 		}
 	}
-#endif /* ENABLE_AI */
 
 	/* Copy newgame settings to active settings.
 	 * Also initialise old settings needed for savegame conversion. */
 	_settings_game = _settings_newgame;
 	_old_vds = _settings_client.company.vehicle;
 
-#ifdef ENABLE_AI
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		_settings_game.ai_config[c] = NULL;
 		if (_settings_newgame.ai_config[c] != NULL) {
 			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
 		}
 	}
-#endif /* ENABLE_AI */
 }
 
 /** Callback structure of statements to be executed after the NewGRF scan. */

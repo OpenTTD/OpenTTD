@@ -15,6 +15,11 @@
 #include "saveload.h"
 #include "../string_func.h"
 
+#include "../ai/ai.hpp"
+#include "../ai/ai_config.hpp"
+#include "../network/network.h"
+#include "../ai/ai_instance.hpp"
+
 static char _ai_saveload_name[64];
 static int  _ai_saveload_version;
 static char _ai_saveload_settings[1024];
@@ -27,12 +32,6 @@ static const SaveLoad _ai_company[] = {
 	SLEG_CONDVAR(_ai_saveload_is_random,   SLE_BOOL, 136, SL_MAX_VERSION),
 	     SLE_END()
 };
-
-#ifdef ENABLE_AI
-#include "../ai/ai.hpp"
-#include "../ai/ai_config.hpp"
-#include "../network/network.h"
-#include "../ai/ai_instance.hpp"
 
 static void SaveReal_AIPL(int *index_ptr)
 {
@@ -125,80 +124,3 @@ static void Save_AIPL()
 extern const ChunkHandler _ai_chunk_handlers[] = {
 	{ 'AIPL', Save_AIPL, Load_AIPL, NULL, NULL, CH_ARRAY | CH_LAST},
 };
-#else
-
-/** The type of the data that follows in the savegame. */
-enum SQSaveLoadType {
-	SQSL_INT             = 0x00, ///< The following data is an integer.
-	SQSL_STRING          = 0x01, ///< The following data is an string.
-	SQSL_ARRAY           = 0x02, ///< The following data is an array.
-	SQSL_TABLE           = 0x03, ///< The following data is an table.
-	SQSL_BOOL            = 0x04, ///< The following data is a boolean.
-	SQSL_NULL            = 0x05, ///< A null variable.
-	SQSL_ARRAY_TABLE_END = 0xFF, ///< Marks the end of an array or table, no data follows.
-};
-
-static byte _ai_sl_byte;
-
-static const SaveLoad _ai_byte[] = {
-	SLEG_VAR(_ai_sl_byte, SLE_UINT8),
-	SLE_END()
-};
-
-static bool LoadObjects()
-{
-	SlObject(NULL, _ai_byte);
-	switch (_ai_sl_byte) {
-		case SQSL_INT: {
-			int value;
-			SlArray(&value, 1, SLE_INT32);
-			return true;
-		}
-
-		case SQSL_STRING: {
-			SlObject(NULL, _ai_byte);
-			static char buf[256];
-			SlArray(buf, _ai_sl_byte, SLE_CHAR);
-			return true;
-		}
-
-		case SQSL_ARRAY:
-			while (LoadObjects()) { }
-			return true;
-
-		case SQSL_TABLE:
-			while (LoadObjects()) { LoadObjects(); }
-			return true;
-
-		case SQSL_BOOL:
-			SlObject(NULL, _ai_byte);
-			return true;
-
-		case SQSL_NULL:
-			return true;
-
-		case SQSL_ARRAY_TABLE_END:
-			return false;
-
-		default: SlErrorCorrupt("Invalid AI data type");
-	}
-}
-
-static void Load_AIPL()
-{
-	CompanyID index;
-	while ((index = (CompanyID)SlIterateArray()) != (CompanyID)-1) {
-		SlObject(NULL, _ai_company);
-
-		if (!Company::IsValidAiID(index)) continue;
-		SlObject(NULL, _ai_byte);
-		/* Check if there was anything saved at all. */
-		if (_ai_sl_byte == 0) continue;
-		LoadObjects();
-	}
-}
-
-extern const ChunkHandler _ai_chunk_handlers[] = {
-	{ 'AIPL', NULL, Load_AIPL, NULL, NULL, CH_ARRAY | CH_LAST},
-};
-#endif /* ENABLE_AI */

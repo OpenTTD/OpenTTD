@@ -54,7 +54,6 @@ set_default() {
 	enable_lto="0"
 	enable_dedicated="0"
 	enable_network="1"
-	enable_ai="1"
 	enable_static="1"
 	enable_translator="0"
 	enable_unicode="1"
@@ -128,7 +127,6 @@ set_default() {
 		enable_lto
 		enable_dedicated
 		enable_network
-		enable_ai
 		enable_static
 		enable_translator
 		enable_unicode
@@ -286,9 +284,6 @@ detect_params() {
 			--enable-network)             enable_network="2";;
 			--enable-network=*)           enable_network="$optarg";;
 			--disable-network)            enable_network="0";;
-			--enable-ai)                  enable_ai="2";;
-			--enable-ai=*)                enable_ai="$optarg";;
-			--disable-ai)                 enable_ai="0";;
 			--disable-static)             enable_static="0";;
 			--enable-static)              enable_static="2";;
 			--enable-static=*)            enable_static="$optarg";;
@@ -743,13 +738,8 @@ check_params() {
 		log 1 "checking network... disabled"
 	fi
 
-	if [ "$enable_ai" != "0" ]; then
-		log 1 "checking ai... found"
-		SCRIPT_SRC_DIR="$ROOT_DIR/src/3rdparty/squirrel/include"
-	else
-		log 1 "checking ai... disabled"
-		SCRIPT_SRC_DIR=""
-	fi
+	log 1 "checking squirrel... found"
+	SCRIPT_SRC_DIR="$ROOT_DIR/src/3rdparty/squirrel/include"
 
 	if [ "$enable_translator" != "0" ]; then
 		log 1 "checking translator... debug"
@@ -1586,9 +1576,7 @@ make_cflags_and_ldflags() {
 	if [ "$cpu_type" = "64" ] && [ "$enable_universal" = "0" ]; then
 		CFLAGS="$CFLAGS -D_SQ64"
 	fi
-	if [ "$enable_ai" != "0" ]; then
-		CFLAGS="$CFLAGS -I$SCRIPT_SRC_DIR -DENABLE_AI"
-	fi
+	CFLAGS="$CFLAGS -I$SCRIPT_SRC_DIR"
 
 	if [ -n "$png_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_PNG"

@@ -327,9 +327,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 		if (c->ai_info == NULL) {
 			p += seprintf(p, lastof(buf), "%2i: Human\n", (int)c->index);
 		} else {
-#ifdef ENABLE_AI
 			p += seprintf(p, lastof(buf), "%2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
-#endif /* ENABLE_AI */
 		}
 	}
 	text[1].key = const_cast<char *>("Description");

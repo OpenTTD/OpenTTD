@@ -12,8 +12,6 @@
 #ifndef AI_INFO_HPP
 #define AI_INFO_HPP
 
-#ifdef ENABLE_AI
-
 #include "../script/script_info.hpp"
 #include "../script/script_config.hpp"
 
@@ -84,5 +82,4 @@ private:
 	const char *category; ///< The category this library is in.
 };
 
-#endif /* ENABLE_AI */
 #endif /* AI_INFO_HPP */

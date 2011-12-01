@@ -12,7 +12,6 @@
 #ifndef AI_HPP
 #define AI_HPP
 
-#ifdef ENABLE_AI
 #include "../script/api/script_event_types.hpp"
 #include "../date_type.h"
 #include "../core/string_compare_type.hpp"
@@ -153,27 +152,4 @@ private:
 	static class AIScannerLibrary *scanner_library; ///< ScriptScanner instance that is used to find AI Libraries
 };
 
-#else /* ENABLE_AI */
-
-#include "../company_type.h"
-
-#define NewEvent(cid, event) nop()
-#define BroadcastNewEvent(...) nop()
-
-class AI {
-public:
-	static void StartNew(CompanyID company, bool rerandomise_ai = true) {}
-	static void Stop(CompanyID company) {}
-	static void Initialize() {}
-	static void Uninitialize(bool keepConfig) {}
-	static void KillAll() {}
-	static void GameLoop() {}
-	static bool HasAI(const struct ContentInfo *ci, bool md5sum) { return false; }
-	static bool HasAILibrary(const struct ContentInfo *ci, bool md5sum) { return false; }
-	static void Rescan() {}
-	static char *GetConsoleList(char *p, const char *last, bool newest_only = false) { return p; }
-	static void nop() { }
-};
-
-#endif /* ENABLE_AI */
 #endif /* AI_HPP */

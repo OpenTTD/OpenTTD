@@ -39,11 +39,7 @@ static CommandCallback * const _callback_table[] = {
 	/* 0x0F */ CcPlaySound1E,
 	/* 0x10 */ CcStation,
 	/* 0x11 */ CcTerraform,
-#ifdef ENABLE_AI
 	/* 0x12 */ CcAI,
-#else
-	/* 0x12 */ NULL,
-#endif /* ENABLE_AI */
 	/* 0x13 */ CcCloneVehicle,
 	/* 0x14 */ CcGiveMoney,
 	/* 0x15 */ CcCreateGroup,

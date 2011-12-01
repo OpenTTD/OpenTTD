@@ -738,9 +738,7 @@ public:
 			this->InvalidateData();
 
 			if (widget / 3 == 0 &&
-#ifdef ENABLE_AI
 					AI::GetInfoList()->size() == 0 &&
-#endif /* ENABLE_AI */
 					this->opt_mod_temp.difficulty.max_no_competitors != 0) {
 				ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
 			}
