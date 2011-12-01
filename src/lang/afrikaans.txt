@@ -3216,8 +3216,6 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai 
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Gaan voort
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gebou sonder KI ondersteuning...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen KI's is beskikbaar!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geskikte KI gevind om te laai.{}Die KI is 'n dom KI en doen niks.{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Daar was n fout met een van die AIs. Rapporteer assblief aan die skrywer met n skermkiekie van die AI Ontfout Venster.

@@ -3310,8 +3310,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Hald fra
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Slå av pause og hald fram AIen
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vis feilsøkingsresultatar frå denne AIen
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygd utan støtte for AI...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AI tilgjengeleg!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI kunne lastast inn.{}Denne AI er ein dummy-AI og kjem ikkje til å gjera noko.{}Du kan lasta ned fleire AI'ar frå nettet med spelets nedlastingssystem.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein AI har krasja. Venleg rapporter dette til forfattaren av AIen med eit skjermbilete av AI-feilsøkingsvindauget.

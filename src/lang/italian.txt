@@ -3440,8 +3440,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Esce dalla pausa e continua l'esecuzione della IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visualizza l'output di debug di questa IA
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD è stato compilato senza supporto IA...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... nessuna IA disponibile!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Impossibile trovare una IA adatta da caricare.{}La IA caricata è solo un abbozzo e resterà semplicemente passiva.{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una delle IA in funzione è andata in crash. Si prega di inviare una segnalazione all'autore della IA con uno screenshot della finestra Debug IA

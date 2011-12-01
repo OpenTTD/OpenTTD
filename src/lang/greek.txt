@@ -3427,8 +3427,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέ
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας του AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης για αυτό το AI
 
-STR_ERROR_NO_AI                                                 :{WHITE}Στο OpenTTD δεν ενσωματώθηκε υποστήριξη ΤΝ...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... καμία ΤΝ δεν είναι διαθέσιμη!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI

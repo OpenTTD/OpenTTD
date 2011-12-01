@@ -2411,8 +2411,6 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI ynste
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Trjochgean
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lit debug output fan dizze AI sjen
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is bout sûnder AI ûndersteuning...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... gjin AIs beskikber!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte compjûterspiler fûn.{}Disse compjûterspiler is in dummy en docht neat.{}Jo kinne compjûterspilers delhelje fan 'Online Inhâld' ôf.
 

@@ -2598,8 +2598,6 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}เป�
 STR_AI_DEBUG_RELOAD                                             :{BLACK}โหลด AI อีกครั้งหนึ่ง
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}ดูการผลลัพธ์การดีบักของ AI นี้
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD สร้างขึ้นโดยไม่มี AI สนับสนุน...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... ไม่มี AI ปรากฎ!
 
 
 # AI configuration window

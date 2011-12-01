@@ -3330,8 +3330,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}继续
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暂停AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此AI的调试输出
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD在编译的时候没有加入AI支持……
-STR_ERROR_NO_AI_SUB                                             :{WHITE}…… 目前没有可用AI！
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到可使用的AI。{}这个AI只是一个演示而不会有任何动作，{}您可以通过“在线查找扩展包”功能下载AI程序。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}一个运行中的 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者。

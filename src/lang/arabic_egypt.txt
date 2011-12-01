@@ -3412,8 +3412,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}استم
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}عدم توقيف ومواصلة الذكاء الصناعي
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض صائد الاخطاء لهذه الاضافة
 
-STR_ERROR_NO_AI                                                 :{WHITE}تم بناء اللعبة بدون دعم للذكاء الاصطناعي
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... لا يوجد ذكاء اصطناعي متاح!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :لا يوجد اضافات مناسبة للتحميل {} هذه اضافة غبية ولن تفعل شيئا لك {} تستطيع تحميل اضافات من الشبكة عن طريق نظام التحميل
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.

@@ -3487,8 +3487,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nadaljuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nadaljuj izvajanje UI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Oglej si razhroščevalni izpis UI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je zgrajen brez podpore za UI...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... ni nobene UI na voljo!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za razhroščevanje UI

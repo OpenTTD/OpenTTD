@@ -3412,8 +3412,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Doorgaan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Het spel vervolgen en de AI voortzetten
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Toon debug gegevens van deze AI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gecompileerd zonder AI ondersteuning...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AI's beschikbaar!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve AI's is vastgelopen. Meld dit a.u.b. bij de auteur van deze AI met een schermprint van het AI Debugscherm

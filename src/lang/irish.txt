@@ -3300,8 +3300,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lean ar 
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cuir deireadh leis an sos agus lean leis an AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Amharc ar aschur dífhabhtaithe an AI seo
 
-STR_ERROR_NO_AI                                                 :{WHITE}Tá OpenTTD gan tacaíocht do AIanna...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... níl aon AI ar fáil!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Níor aimsíodh AI feiliúnach le lódáil.{}Is AI caoch é an AI seo agus ní dhéanfaidh sé aon rud.{}Is féidir leat roinnt AI a íoslódáil leis an gcóras 'Inneachar Ar Líne'..
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuairteáil ceann de na AIanna atá ar rith. Déan é seo a thuairisciú d'údar an AI le do thoil, le seat scáileáin den Fhuinneog Dífhabhtaithe AI ag gabháil leis.

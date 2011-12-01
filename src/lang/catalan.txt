@@ -3398,8 +3398,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausa i continua la IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Veure la sortida de depuració per aquesta IA
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD està compilat sense suport IA...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... no hi ha IAs disponibles!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IAs via el sistema de "Contingut en línia"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA

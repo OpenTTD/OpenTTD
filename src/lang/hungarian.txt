@@ -3453,8 +3453,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytat�
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Játék folytatása és MI visszakapcsolása
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}A MI kimeneti nyomonkövetésének megtekintése
 
-STR_ERROR_NO_AI                                                 :{WHITE}Az OpenTTD MI támogatás nélül lett fordítva...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... nincs elérhető MI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI csak dísz és nem fog semmit csinálni.{}MI-k letöltéséhez használd a tartalomletöltő rendszert
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képernyőmentéssel

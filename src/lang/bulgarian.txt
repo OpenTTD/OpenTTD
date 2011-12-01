@@ -3288,8 +3288,6 @@ STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Спри
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Когато съобщението от AI съвпадне с този ред, играта се спира.
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Покажи прозорец за debug на AI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD е сглобен без AI поддръжка...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... няма налични AI!
 
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един от работещите AI се е счупил . Моля съобщете това на автора на AI със скрииншот на AI Debug Прозореца.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Debug прозореца е на разположение само на сървъра

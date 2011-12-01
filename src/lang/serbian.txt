@@ -3608,8 +3608,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nastavlja partiju i VI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Prikazuje podatke radi korekcije ove VI
 
-STR_ERROR_NO_AI                                                 :{WHITE}Ova OpenTTD verzija nema podršku za VI...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... nijedna VI nije dostupna!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije

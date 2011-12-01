@@ -3413,8 +3413,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprendre la partie et continuer l'IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans le support des IAs...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... aucune IA disponible{NBSP}!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'une des IA a rencontré un problème. Merci de rapporter ceci à l'auteur de l'IA avec une capture d'écran de la fenêtre de débogage d'IA

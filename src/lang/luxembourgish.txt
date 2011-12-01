@@ -3334,8 +3334,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Weider
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Entpaus an fuer weider mat der KI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-output fir dës KI uweisen
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD ass ouni KI support kompiléiert ginn...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... keng KI verfügbar!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keng passend KI fonnt fir ze lueden.{}Dës KI ass en Dummy an wäert näischt maachen.{}KI'en kënnen iwwert den 'Online Content' System downgeload gin.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eng KI ass ofgestierzt. W.e.g mellt des dem KI Autor mat engem Screenshot vun der KI Debugfënster

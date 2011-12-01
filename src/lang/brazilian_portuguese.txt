@@ -3413,8 +3413,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar e continuar o AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver a depuração produzida desta IA
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é feito sem suporte para IA...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... nenhuma IAs está disponível!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA adequada encontrada para carregar. {} Esta IA é falsa e não irá fazer nada. {} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uma das em execução IA's travou. Favor relatar isto ao autor da IA com uma captura de tela da Janela de Depuração da IA

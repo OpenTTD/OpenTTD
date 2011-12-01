@@ -3351,8 +3351,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Turpinā
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Atsākt un turpināt šo MI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Attēlot šī MI atkļūdošanas izvadu
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD ir radīts bez MI atbalsta...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... nav peejams neviens MI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nav atrasts piemērots MI.{}Šis ir MI makets un spēlē tas neko nedarīs.{}Jūs varat lejupielādēt vairākus MI no globālās atbalsta sistēmas.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Viens no mākslīgā intelekta spēlētājiem nobruka. Lūdzu paziņojiet par šo gadījumu mākslīgā intelekta autoram, pievienojot ekrānšāviņu ar mākslīgā intelekta atkļūdošanas logu.

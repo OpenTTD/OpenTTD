@@ -3140,7 +3140,6 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata-la IA, recargar o script, e reinicia-la IA
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... non hai IA dispoñibles!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Non se atopou ningunha AI adecuada para cargar.{} Esta AI é un bot e non vai facer nada.{}Podes descargar varias AIs no sistema de contido online.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Fallou unha das IA en execución. Por favor, informa ó autor desta IA cunha captura da Fiestra de Depuración de IA.

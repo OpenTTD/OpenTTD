@@ -3312,8 +3312,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Daŭrigu
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Malpaŭzu kaj daŭrigi la AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu forigeraran eligon de ĉiu tio AI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD estas kreita sen AI-supteno...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... neniu AI estas disponebla!
 
 
 # AI configuration window

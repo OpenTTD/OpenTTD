@@ -3428,8 +3428,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračo
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzujte a pokračujte v běhu AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Zobraz debugovací výstup této AI
 
-STR_ERROR_NO_AI                                                 :{WHITE}Hra byla zkompilována bez podpory AI...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... AI není dostupné!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nebyla nalezena žádná AI.{}Tato AI je výchozí a nedělá vůbec nic.{}Spoustu AI ale můžeš stáhnout v "Stahování součástí"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI

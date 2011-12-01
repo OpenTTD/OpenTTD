@@ -3054,7 +3054,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Togol pe
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Sambung
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Keluar jeda dan menyambung AI
 
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... AIs tidak sedia ada!
 
 
 # AI configuration window

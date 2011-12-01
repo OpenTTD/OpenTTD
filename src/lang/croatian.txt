@@ -3508,8 +3508,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Prekini pauzu i nastavi UI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pogledaj izvještaj otklanjanja neispravnosti za ovu UI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je izrađen bez podrške za UI-u...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... nema dostupnih UI-a!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nema prikladne UI za učitavanje.{}Ova UI je samo model i neće ništa učiniti.{}Možete preuzeti nekoliko umjetnih inteligencija pomoću sustava 'Online sadržaji'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedan od UI igrača se srušio. Molimo vas da prijavite ovo autoru UI sa kopijom slike prozora za debugiranje UI.

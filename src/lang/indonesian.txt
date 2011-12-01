@@ -3303,8 +3303,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD tidak menyertakan AI ...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... tidak ditemukan AI !
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda bisa mengunduh AI melalui sistem 'Konten Online'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah satu AI gagal. Laporkan ini kepada pembuat AI dengan potongan layar dari Jendela Debug AI

@@ -3438,8 +3438,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Прод
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Зняти з паузи і продовжити AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Відобразити результати дебагу цього АІ
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD скомпонований без підтримки AI...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... немає доступних AI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI

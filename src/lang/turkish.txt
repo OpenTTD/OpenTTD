@@ -3335,8 +3335,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Devam et
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}YZ'yi devam ettir
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Bu YZ için hata ayıklama çıktısı göster
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD YZ desteği olmadan derlenmiş...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... hiç YZ yok!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin

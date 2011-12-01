@@ -1913,8 +1913,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jarraitu
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Berriz ere jokatu eta IA-rekin jarraitu
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}IA honen depurazio emaitza ikusi
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD IA euskarririk gabe instalatu da...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}¡... ez dago IA-rik aukeratzeko!
 
 
 # AI configuration window

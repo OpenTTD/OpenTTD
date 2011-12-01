@@ -3415,8 +3415,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tęsti
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pratęsti žaidimą ir tęsti simuliatorių
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Rodyti DI derinimo režimo išeigą
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD yra paruoštas be DI palaikymo...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... nerasta jokių prieinamų DI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nerasta jokio tinkamo DI.{}Šis DI yra netikras ir nieko nedarys.{}Galite parsisiųsti keletą DI per 'Turinio internete' sistemą.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Vienas iš paleistų DI išsijungė. Praneškite apie tai šio DI autoriui su DI Debug lango vaizdu.

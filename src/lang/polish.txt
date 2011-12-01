@@ -3798,8 +3798,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Kontynuu
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzowanie i kontynuuowanie SI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż okno debugowania tej SI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD został zbudowany bez wsparcia dla SI...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... żadna SI nie jest dostępna!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz ściągnąć SI z 'Dodatki Online' w głównym menu gry
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna z działających SI przestała działać. Prosimy o zgłoszenie tego autorowi SI dołączając zrzut ekranu okna odpluskwiania SI
