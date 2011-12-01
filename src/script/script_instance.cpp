@@ -187,7 +187,7 @@ void ScriptInstance::GameLoop()
 			}
 			ScriptObject::SetAllowDoCommand(true);
 			/* Start the script by calling Start() */
-			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
+			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.script.script_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
 		} catch (Script_Suspend e) {
 			this->suspend  = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
@@ -208,7 +208,7 @@ void ScriptInstance::GameLoop()
 
 	/* Continue the VM */
 	try {
-		if (!this->engine->Resume(_settings_game.ai.ai_max_opcode_till_suspend)) this->Died();
+		if (!this->engine->Resume(_settings_game.script.script_max_opcode_till_suspend)) this->Died();
 	} catch (Script_Suspend e) {
 		this->suspend  = e.GetSuspendTime();
 		this->callback = e.GetSuspendCallback();
@@ -497,7 +497,7 @@ void ScriptInstance::Save()
 void ScriptInstance::Suspend()
 {
 	HSQUIRRELVM vm = this->engine->GetVM();
-	Squirrel::DecreaseOps(vm, _settings_game.ai.ai_max_opcode_till_suspend);
+	Squirrel::DecreaseOps(vm, _settings_game.script.script_max_opcode_till_suspend);
 }
 
 /* static */ bool ScriptInstance::LoadObjects(HSQUIRRELVM vm)
