@@ -7016,6 +7016,12 @@ static void TranslateGRFStrings(ByteReader *buf)
 		return;
 	}
 
+	/* Since no language id is supplied for with version 7 and lower NewGRFs, this string has
+	 * to be added as a generic string, thus the language id of 0x7F. For this to work
+	 * new_scheme has to be true as well, which will also be implicitly the case for version 8
+	 * and higher. A language id of 0x7F will be overridden by a non-generic id, so this will
+	 * not change anything if a string has been provided specifically for this language. */
+	byte language = _cur.grffile->grf_version >= 8 ? buf->ReadByte() : 0x7F;
 	byte num_strings = buf->ReadByte();
 	uint16 first_id  = buf->ReadWord();
 
@@ -7032,12 +7038,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 			continue;
 		}
 
-		/* Since no language id is supplied this string has to be added as a
-		 * generic string, thus the language id of 0x7F. For this to work
-		 * new_scheme has to be true as well. A language id of 0x7F will be
-		 * overridden by a non-generic id, so this will not change anything if
-		 * a string has been provided specifically for this language. */
-		AddGRFString(grfid, first_id + i, 0x7F, true, true, string, STR_UNDEFINED);
+		AddGRFString(grfid, first_id + i, language, true, true, string, STR_UNDEFINED);
 	}
 }
 
