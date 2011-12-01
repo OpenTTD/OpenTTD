@@ -1249,7 +1249,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Díchum
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Díchumasaigh longa don ríomhare: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Ceadaigh AIanna i gcluiche ilimreora: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes sula gcuirtear AI ar fionraí: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Eatraimh seirbhísithe i gcéatadán: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do thraenacha: {ORANGE}{STRING} lá/%

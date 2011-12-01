@@ -1238,7 +1238,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{ORANGE}{STRING
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{ORANGE}{STRING}{LTBLUE} :מנע הפעלת כלי שייט ע”י שחקני המחשב
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{ORANGE}{STRING}{LTBLUE} :אפשר שחקני מחשב במשחק רשת
-STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{ORANGE}{STRING}{LTBLUE} :הצג מרווחי טיפול באחוזים
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{ORANGE}%/ימים {STRING}{LTBLUE} :מרווח בין טיפולים עבור רכבות

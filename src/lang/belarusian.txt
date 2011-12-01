@@ -1581,7 +1581,6 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заб�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Забараніць пабудову караблёў кампутарам: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Дазволіць штучны інтэлект (ШІ/AI) у сеткавай гульні: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Колькасьць тактаў перад спыненьнем ШІ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Інтэрвал абслугоўваньня ў адсотках (%): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтэрвал абслугоўваньня цягнікоў: {ORANGE}{STRING} д{P 0:1 зень нi зён}/%
