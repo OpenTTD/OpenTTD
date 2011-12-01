@@ -1581,6 +1581,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заб�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Забараніць пабудову караблёў кампутарам: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Дазволіць штучны інтэлект (ШІ/AI) у сеткавай гульні: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes пакуль сцэнары прыпыненыя: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Інтэрвал абслугоўваньня ў адсотках (%): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтэрвал абслугоўваньня цягнікоў: {ORANGE}{STRING} д{P 0:1 зень нi зён}/%
@@ -1673,6 +1674,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Мар�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Цягнікі
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Населеныя пункты
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Прамысловасьць
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Сцэнары
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :арыгінальны
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -3767,7 +3769,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Пера
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Працягнуць
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Працягнуць гульню
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Прагляд зьвестак адладкі модуля ШI
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ня знойдзена прыдатных модуляў ШI,{}таму канкурэнты нічога рабіць не будуць.{}Модулі ШI можна спампаваць праз сістэму анлайн-кантэнту.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзін з запушчаных ШI выканаў недапушчальную аперацыю і быў закрыты. Калі ласка, паведаміце аб гэтым аўтару ШI, прыклаўшы здымак вакна адладкі.

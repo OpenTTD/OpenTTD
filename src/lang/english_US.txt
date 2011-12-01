@@ -1264,6 +1264,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes before scripts are suspended: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Maintenance intervals are in percents: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Default maintenance interval for trains: {ORANGE}{STRING} day{P 0:1 "" s}/%
@@ -1356,6 +1357,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routing
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trains
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Towns
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripts
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -3410,7 +3412,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle m
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Unpause and continue the AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}View debug output of this AI
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No suitable AI found to load.{}This AI is a dummy AI and won't do anything.{}You can download several AIs via the 'Online Content' system
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window
