@@ -905,12 +905,13 @@ static uint GetWindowZPriority(const Window *w)
 
 		case WC_ERRMSG:
 		case WC_CONFIRM_POPUP_QUERY:
+		case WC_MODAL_PROGRESS:
+		case WC_NETWORK_STATUS_WINDOW:
 			++z_priority;
 
 		case WC_SAVELOAD:
-			++z_priority;
-
-		case WC_MODAL_PROGRESS:
+		case WC_GAME_OPTIONS:
+		case WC_NETWORK_WINDOW:
 			++z_priority;
 
 		case WC_CONSOLE:
