@@ -1,3 +1,15 @@
+***version 2.2.5 stable***
+-sq_getsize() now returns userdatasize for classes and instances
+-added parameter 'isstatic' to _newmember metamethod(thx G.Meyer)
+-now array.sort() is implemented with heapsort
+-added SQUIRREL_VERSION_NUMBER preprocessor definition
+-now floats in scientific notation also accept numbers with no '.' (eg. 1e+6 or 1e6)
+-fixed some compiler warning
+-fixed a minor compiler bug
+-fixed some bugs when SQUSEDOUBLE is used in 32bits systems
+-fixed bug in GC
+
+***2009-11-15          ***
 ***version 2.2.4 stable***
 -fixed bug in functions with default parameters
 

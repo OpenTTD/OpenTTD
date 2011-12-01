@@ -180,7 +180,7 @@ bool SQVM::NEG_OP(SQObjectPtr &trg,const SQObjectPtr &o)
 bool SQVM::ObjCmp(const SQObjectPtr &o1,const SQObjectPtr &o2,SQInteger &result)
 {
 	if(type(o1)==type(o2)){
-		if(_userpointer(o1)==_userpointer(o2))_RET_SUCCEED(0);
+		if(_rawval(o1)==_rawval(o2))_RET_SUCCEED(0);
 		SQObjectPtr res;
 		switch(type(o1)){
 		case OT_STRING:
@@ -638,7 +638,7 @@ bool SQVM::CLASS_OP(SQObjectPtr &target,SQInteger baseclass,SQInteger attributes
 bool SQVM::IsEqual(SQObjectPtr &o1,SQObjectPtr &o2,bool &res)
 {
 	if(type(o1) == type(o2)) {
-		res = ((_userpointer(o1) == _userpointer(o2)?true:false));
+		res = ((_rawval(o1) == _rawval(o2)?true:false));
 	}
 	else {
 		if(sq_isnumeric(o1) && sq_isnumeric(o2)) {
@@ -1017,7 +1017,8 @@ common_call:
 					if(type(_class(STK(arg1))->_metamethods[MT_NEWMEMBER]) != OT_NULL ) {
 						Push(STK(arg1)); Push(STK(arg2)); Push(STK(arg3));
 						Push((arg0&NEW_SLOT_ATTRIBUTES_FLAG) ? STK(arg2-1) : _null_);
-						int nparams = 4;
+						Push(bstatic);
+						int nparams = 5;
 						if(Call(_class(STK(arg1))->_metamethods[MT_NEWMEMBER], nparams, _top - nparams, temp_reg,SQFalse,SQFalse)) {
 							Pop(nparams);
 							continue;

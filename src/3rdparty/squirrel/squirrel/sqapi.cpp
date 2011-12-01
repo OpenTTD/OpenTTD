@@ -583,6 +583,8 @@ SQInteger sq_getsize(HSQUIRRELVM v, SQInteger idx)
 	case OT_TABLE:		return _table(o)->CountUsed();
 	case OT_ARRAY:		return _array(o)->Size();
 	case OT_USERDATA:	return _userdata(o)->_size;
+	case OT_INSTANCE:	return _instance(o)->_class->_udsize;
+	case OT_CLASS:		return _class(o)->_udsize;
 	default:
 		return sq_aux_invalidtype(v, type);
 	}

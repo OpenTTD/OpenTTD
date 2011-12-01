@@ -486,8 +486,7 @@ static SQInteger array_resize(HSQUIRRELVM v)
 }
 
 
-//QSORT ala Sedgewick
-bool _qsort_compare(HSQUIRRELVM v,SQObjectPtr &arr,const SQObjectPtr &a,const SQObjectPtr &b,SQInteger func,SQInteger &ret)
+bool _sort_compare(HSQUIRRELVM v,SQObjectPtr &a,SQObjectPtr &b,SQInteger func,SQInteger &ret)
 {
 	if(func < 0) {
 		if(!v->ObjCmp(a,b,ret)) return false;
@@ -503,32 +502,66 @@ bool _qsort_compare(HSQUIRRELVM v,SQObjectPtr &arr,const SQObjectPtr &a,const SQ
 				v->Raise_Error(_SC("compare func failed"));
 			return false;
 		}
-		sq_getinteger(v, -1, &ret);
+		if(SQ_FAILED(sq_getinteger(v, -1, &ret))) {
+			v->Raise_Error(_SC("numeric value expected as return value of the compare function"));
+			return false;
+		}
 		sq_settop(v, top);
 		return true;
 	}
 	return true;
 }
-struct qsort_cmp
-{
-	HSQUIRRELVM v;
-	SQInteger func;
-	bool operator() (const SQObjectPtr &a, const SQObjectPtr &b) const
-	{
-		SQInteger res;
-		SQObjectPtr dummy;
-		if (!_qsort_compare(v, dummy, a, b, func, res)) return false;
-		return res < 0;
-	}
-};
 
-bool _qsort(HSQUIRRELVM v,SQObjectPtr &arr, SQInteger func)
+bool _hsort_sift_down(HSQUIRRELVM v,SQArray *arr, SQInteger root, SQInteger bottom, SQInteger func)
 {
-	SQArray *a=_array(arr);
-	qsort_cmp cur_cmp;
-	cur_cmp.v = v;
-	cur_cmp.func = func;
-	std::sort(a->_values._vals, a->_values._vals + a->Size(), cur_cmp);
+	SQInteger maxChild;
+	SQInteger done = 0;
+	SQInteger ret;
+	SQInteger root2;
+	while (((root2 = root * 2) <= bottom) && (!done))
+	{
+		if (root2 == bottom) {
+			maxChild = root2;
+		}
+		else {
+			if(!_sort_compare(v,arr->_values[root2],arr->_values[root2 + 1],func,ret))
+				return false;
+			if (ret > 0) {
+				maxChild = root2;
+			}
+			else {
+				maxChild = root2 + 1;
+			}
+
+		}
+
+		if(!_sort_compare(v,arr->_values[root],arr->_values[maxChild],func,ret))
+			return false;
+		if (ret < 0) {
+			_Swap(arr->_values[root],arr->_values[maxChild]);
+			root = maxChild;
+		}
+		else {
+			done = 1;
+		}
+	}
+	return true;
+}
+
+bool _hsort(HSQUIRRELVM v,SQObjectPtr &arr, SQInteger l, SQInteger r,SQInteger func)
+{
+	SQArray *a = _array(arr);
+	SQInteger i;
+	SQInteger array_size = a->Size();
+	for (i = (array_size / 2); i >= 0; i--) {
+		if(!_hsort_sift_down(v,a, i, array_size - 1,func)) return false;
+	}
+
+	for (i = array_size-1; i >= 1; i--)
+	{
+		_Swap(a->_values[0],a->_values[i]);
+		if(!_hsort_sift_down(v,a, 0, i-1,func)) return false;
+	}
 	return true;
 }
 
@@ -536,15 +569,15 @@ static SQInteger array_sort(HSQUIRRELVM v)
 {
 	SQInteger func = -1;
 	SQObjectPtr &o = stack_get(v,1);
-	SQObject &funcobj = stack_get(v,2);
 	if(_array(o)->Size() > 1) {
-		if(type(funcobj) == OT_CLOSURE || type(funcobj) == OT_NATIVECLOSURE) func = 2;
-		if(!_qsort(v, o, func))
+		if(sq_gettop(v) == 2) func = 2;
+		if(!_hsort(v, o, 0, _array(o)->Size()-1, func))
 			return SQ_ERROR;
 
 	}
 	return 0;
 }
+
 static SQInteger array_slice(HSQUIRRELVM v)
 {
 	SQInteger sidx,eidx;

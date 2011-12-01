@@ -528,6 +528,7 @@ public:
 	void PrefixedExpr()
 	{
 		SQInteger pos = Factor();
+
 		for(;;) {
 			switch(_token) {
 			case _SC('.'): {
