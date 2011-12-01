@@ -51,7 +51,7 @@
 /* static */ int32 ScriptStation::GetCoverageRadius(ScriptStation::StationType station_type)
 {
 	if (station_type == STATION_AIRPORT) {
-		DEBUG(ai, 0, "GetCoverageRadius(): coverage radius of airports needs to be requested via ScriptAirport::GetAirportCoverageRadius(), as it requires AirportType");
+		DEBUG(script, 0, "GetCoverageRadius(): coverage radius of airports needs to be requested via ScriptAirport::GetAirportCoverageRadius(), as it requires AirportType");
 		return -1;
 	}
 	if (!HasExactlyOneBit(station_type)) return -1;

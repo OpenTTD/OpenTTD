@@ -116,7 +116,7 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 
 	/* Check if GetShortName follows the rules */
 	if (strlen(info->GetShortName()) != 4) {
-		DEBUG(ai, 0, "The script '%s' returned a string from GetShortName() which is not four characaters. Unable to load the script.", info->GetName());
+		DEBUG(script, 0, "The script '%s' returned a string from GetShortName() which is not four characaters. Unable to load the script.", info->GetName());
 		delete info;
 		return;
 	}
@@ -133,10 +133,10 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 			return;
 		}
 
-		DEBUG(ai, 1, "Registering two scripts with the same name and version");
-		DEBUG(ai, 1, "  1: %s", this->info_list[script_name]->GetMainScript());
-		DEBUG(ai, 1, "  2: %s", info->GetMainScript());
-		DEBUG(ai, 1, "The first is taking precedence.");
+		DEBUG(script, 1, "Registering two scripts with the same name and version");
+		DEBUG(script, 1, "  1: %s", this->info_list[script_name]->GetMainScript());
+		DEBUG(script, 1, "  2: %s", info->GetMainScript());
+		DEBUG(script, 1, "The first is taking precedence.");
 
 		delete info;
 		return;

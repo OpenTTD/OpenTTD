@@ -1330,7 +1330,7 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 		config->Change(item->name);
 		if (!config->HasScript()) {
 			if (strcmp(item->name, "none") != 0) {
-				DEBUG(ai, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name);
+				DEBUG(script, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name);
 				continue;
 			}
 		}

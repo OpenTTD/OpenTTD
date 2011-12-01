@@ -125,7 +125,7 @@ void ScriptInstance::Continue()
 
 void ScriptInstance::Died()
 {
-	DEBUG(ai, 0, "The script died unexpectedly.");
+	DEBUG(script, 0, "The script died unexpectedly.");
 	this->is_dead = true;
 
 	if (this->instance != NULL) this->engine->ReleaseObject(this->instance);

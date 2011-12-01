@@ -87,15 +87,15 @@ static void Load_AIPL()
 				config->Change(_ai_saveload_name, -1, false, _ai_saveload_is_random);
 				if (!config->HasScript()) {
 					if (strcmp(_ai_saveload_name, "%_dummy") != 0) {
-						DEBUG(ai, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-						DEBUG(ai, 0, "A random other AI will be loaded in its place.");
+						DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+						DEBUG(script, 0, "A random other AI will be loaded in its place.");
 					} else {
-						DEBUG(ai, 0, "The savegame had no AIs available at the time of saving.");
-						DEBUG(ai, 0, "A random available AI will be loaded now.");
+						DEBUG(script, 0, "The savegame had no AIs available at the time of saving.");
+						DEBUG(script, 0, "A random available AI will be loaded now.");
 					}
 				} else {
-					DEBUG(ai, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-					DEBUG(ai, 0, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
+					DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+					DEBUG(script, 0, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 				}
 				/* Make sure the AI doesn't get the saveload data, as he was not the
 				 *  writer of the saveload data in the first place */

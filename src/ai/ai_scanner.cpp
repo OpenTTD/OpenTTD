@@ -67,7 +67,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 	}
 
 	if (num_random_ais == 0) {
-		DEBUG(ai, 0, "No suitable AI found, loading 'dummy' AI.");
+		DEBUG(script, 0, "No suitable AI found, loading 'dummy' AI.");
 		return this->info_dummy;
 	}
 

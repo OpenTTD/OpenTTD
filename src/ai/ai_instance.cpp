@@ -205,7 +205,7 @@ bool AIInstance::LoadCompatibilityScripts(const char *api_version)
 		if (this->engine->LoadScript(buf)) return true;
 
 		ScriptLog::Error("Failed to load API compatibility script");
-		DEBUG(ai, 0, "Error compiling / running API compatibility script: %s", buf);
+		DEBUG(script, 0, "Error compiling / running API compatibility script: %s", buf);
 		return false;
 	}
 

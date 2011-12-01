@@ -24,7 +24,6 @@
 SOCKET _debug_socket = INVALID_SOCKET;
 #endif /* ENABLE_NETWORK */
 
-int _debug_ai_level;
 int _debug_driver_level;
 int _debug_grf_level;
 int _debug_map_level;
@@ -35,6 +34,7 @@ int _debug_oldloader_level;
 int _debug_npf_level;
 int _debug_yapf_level;
 int _debug_freetype_level;
+int _debug_script_level;
 int _debug_sl_level;
 int _debug_gamelog_level;
 int _debug_desync_level;
@@ -49,7 +49,6 @@ struct DebugLevel {
 
 #define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
 	static const DebugLevel debug_level[] = {
-	DEBUG_LEVEL(ai),
 	DEBUG_LEVEL(driver),
 	DEBUG_LEVEL(grf),
 	DEBUG_LEVEL(map),
@@ -60,6 +59,7 @@ struct DebugLevel {
 	DEBUG_LEVEL(npf),
 	DEBUG_LEVEL(yapf),
 	DEBUG_LEVEL(freetype),
+	DEBUG_LEVEL(script),
 	DEBUG_LEVEL(sl),
 	DEBUG_LEVEL(gamelog),
 	DEBUG_LEVEL(desync),

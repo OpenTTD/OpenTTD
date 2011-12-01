@@ -557,7 +557,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 	/* Make sure we don't go into an infinite loop */
 	int retry = ScriptObject::GetCallbackVariable(3) - 1;
 	if (retry < 0) {
-		DEBUG(ai, 0, "Possible infinite loop in SetOrderFlags() detected");
+		DEBUG(script, 0, "Possible infinite loop in SetOrderFlags() detected");
 		return false;
 	}
 	ScriptObject::SetCallbackVariable(3, retry);
