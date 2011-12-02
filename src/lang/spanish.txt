@@ -1265,6 +1265,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desacti
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desactivar barcos para el ordenador: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA en multijugador (experimental): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes antes de que los scripts sean suspendidos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalo de mantenimiento en porcentajes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de mantenimiento por defecto para trenes: {ORANGE}{STRING} dia{P 0:1 "" s}/%
@@ -1357,6 +1358,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutas
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenes
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pueblos
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripts
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -3411,7 +3413,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activa/d
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Quitar pausa y hacer que la IA continúe
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Esta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IAs mediante el sistema de 'Contenido Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de las IA ejecutadas ha fallado. Por favor, reporte el fallo al autor de la misma desde la ventana Depuración de IA

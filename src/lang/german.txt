@@ -1265,6 +1265,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Flugzeu
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Schiffe für den Computer abschalten: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}KI im Mehrspielermodus erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#OpCodes bevor das Skript angehalten wird: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Wartungsintervalle in Prozent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}{STRING} Tag{P 0:1 "" e}/%
@@ -1357,6 +1358,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wegsuch
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Züge
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Städte
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrien
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripts
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -3411,7 +3413,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Für den
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pause aufheben und die KI weiter ausführen
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Ausgaben dieser KI anschauen
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD und AI-Versionsnummer zu melden

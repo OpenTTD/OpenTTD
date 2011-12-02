@@ -1420,6 +1420,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Не д
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Не допускать постройки кораблей компьютером: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить ИИ в сетевой игре: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Количество операций перед остановкой скрипта: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал обслуживания в процентах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал обслуживания поездов: {ORANGE}{STRING} д{P 0:1 ень ня ней}/%
@@ -1512,6 +1513,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Мар�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Поезда
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Города
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Предприятия
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Скрипты
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :оригинальный
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -3604,7 +3606,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Пере
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продолжить
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Продолжить игру
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Просмотр отладочной информации модуля ИИ
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не найдено подходящих модулей ИИ, поэтому конкуренты ничего делать не будут.{}Вы можете скачать модули ИИ через систему онлайн-контента.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста, сообщите об этом автору ИИ, приложив скриншот окна отладки.
