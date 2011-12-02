@@ -102,6 +102,20 @@ BEGIN {
 	gsub("^" tolower(api) "_", "script_", filename)
 }
 
+# Ignore special doxygen blocks
+/^#ifndef DOXYGEN_API/          { doxygen_skip = "next"; next; }
+/^#ifdef DOXYGEN_API/           { doxygen_skip = "true"; next; }
+/^#endif \/\* DOXYGEN_API \*\// { doxygen_skip = "false"; next; }
+/^#else/                         {
+	if (doxygen_skip == "next") {
+		doxygen_skip = "true";
+	} else {
+		doxygen_skip = "false";
+	}
+	next;
+}
+{ if (doxygen_skip == "true") next }
+
 /^([	 ]*)\* @api/ {
 	if (api == "Template") {
 		api_selected = "true"
@@ -168,20 +182,6 @@ BEGIN {
 /^(	*)public/    { if (cls_level == 1) public = "true";  next; }
 /^(	*)protected/ { if (cls_level == 1) public = "false"; next; }
 /^(	*)private/   { if (cls_level == 1) public = "false"; next; }
-
-# Ignore special doxygen blocks
-/^#ifndef DOXYGEN_API/          { doxygen_skip = "next"; next; }
-/^#ifdef DOXYGEN_API/           { doxygen_skip = "true"; next; }
-/^#endif \/\* DOXYGEN_API \*\// { doxygen_skip = "false"; next; }
-/^#else/                         {
-	if (doxygen_skip == "next") {
-		doxygen_skip = "true";
-	} else {
-		doxygen_skip = "false";
-	}
-	next;
-}
-{ if (doxygen_skip == "true") next }
 
 # Ignore the comments
 /^#/             { next; }
