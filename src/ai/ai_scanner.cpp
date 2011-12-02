@@ -81,13 +81,15 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 
 	/* Find the Nth item from the array */
 	ScriptInfoList::const_iterator it = this->info_single_list.begin();
-	AIInfo *i = static_cast<AIInfo *>((*it).second);
-	while (!i->UseAsRandomAI()) it++;
+
+#define GetAIInfo(it) static_cast<AIInfo *>((*it).second)
+	while (!GetAIInfo(it)->UseAsRandomAI()) it++;
 	for (; pos > 0; pos--) {
 		it++;
-		while (!i->UseAsRandomAI()) it++;
+		while (!GetAIInfo(it)->UseAsRandomAI()) it++;
 	}
-	return i;
+	return GetAIInfo(it);
+#undef GetAIInfo
 }
 
 AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool force_exact_match)
