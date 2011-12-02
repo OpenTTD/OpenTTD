@@ -47,6 +47,8 @@
  *     reflect what it does.
  * \li AIInfo has all its configure settings renamed from AICONFIG to just CONFIG
  *     like CONFIG_RANDOM.
+ * \li AIEvent has all its types renamed from AI_ET_ prefix to just ET_ prefix,
+ *     like ET_SUBSIDY_OFFER.
  *
  * API removals:
  * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.

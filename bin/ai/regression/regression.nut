@@ -1859,13 +1859,13 @@ function Regression::Start()
 		print("  GetNextEvent:          " + (e == null ? "null" : "instance"));
 		print("    GetEventType:        " + e.GetEventType());
 		switch (e.GetEventType()) {
-			case AIEvent.AI_ET_SUBSIDY_OFFER: {
+			case AIEvent.ET_SUBSIDY_OFFER: {
 				local c = AIEventSubsidyOffer.Convert(e);
 				print("      EventName:         SubsidyOffer");
 				PrintSubsidy(c.GetSubsidyID());
 			} break;
 
-			case AIEvent.AI_ET_VEHICLE_WAITING_IN_DEPOT: {
+			case AIEvent.ET_VEHICLE_WAITING_IN_DEPOT: {
 				local c = AIEventVehicleWaitingInDepot.Convert(e);
 				print("      EventName:         VehicleWaitingInDepot");
 				print("      VehicleID:         " + c.GetVehicleID());
