@@ -375,7 +375,6 @@ set_name:;
 			SetDParam(3, t->index);
 			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_NEW, NR_TILE, c->last_build_coordinate, NR_NONE, UINT32_MAX, cni);
 		}
-		AI::BroadcastNewEvent(new ScriptEventCompanyNew(c->index), c->index);
 		return;
 	}
 bad_town_name:;
@@ -562,6 +561,8 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	InvalidateWindowData(WC_SMALLMAP, 0, 1);
 
 	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
+
+	AI::BroadcastNewEvent(new ScriptEventCompanyNew(c->index), c->index);
 
 	return c;
 }
