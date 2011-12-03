@@ -1791,9 +1791,23 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 			RoadStopType rs_type = type ? ROADSTOP_TRUCK : ROADSTOP_BUS;
 			if (is_drive_through) {
+				/* Update company infrastructure counts. If the current tile is a normal
+				 * road tile, count only the new road bits needed to get a full diagonal road. */
+				RoadType rt;
+				FOR_EACH_SET_ROADTYPE(rt, cur_rts | rts) {
+					Company *c = Company::GetIfValid(IsNormalRoadTile(cur_tile) && HasBit(cur_rts, rt) ? GetRoadOwner(cur_tile, rt) : _current_company);
+					if (c != NULL) {
+						c->infrastructure.road[rt] += 2 - (IsNormalRoadTile(cur_tile) ? CountBits(GetRoadBits(cur_tile, rt)) : 0);
+						DirtyCompanyInfrastructureWindows(c->index);
+					}
+				}
+
 				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, rs_type, rts | cur_rts, DiagDirToAxis(ddir));
 				road_stop->MakeDriveThrough();
 			} else {
+				/* Non-drive-through stop never overbuild and always count as two road bits. */
+				Company::Get(st->owner)->infrastructure.road[FIND_FIRST_BIT(rts)] += 2;
+				DirtyCompanyInfrastructureWindows(st->owner);
 				MakeRoadStop(cur_tile, st->owner, st->index, rs_type, rts, ddir);
 			}
 
@@ -1883,6 +1897,16 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 			pred->next = cur_stop->next;
 		}
 
+		/* Update company infrastructure counts. */
+		RoadType rt;
+		FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+			Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
+			if (c != NULL) {
+				c->infrastructure.road[rt] -= 2;
+				DirtyCompanyInfrastructureWindows(c->index);
+			}
+		}
+
 		if (IsDriveThroughStopTile(tile)) {
 			/* Clears the tile for us */
 			cur_stop->ClearDriveThrough();
@@ -1967,6 +1991,16 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		if ((flags & DC_EXEC) && is_drive_through) {
 			MakeRoadNormal(cur_tile, road_bits, rts, ClosestTownFromTile(cur_tile, UINT_MAX)->index,
 					road_owner, tram_owner);
+
+			/* Update company infrastructure counts. */
+			RoadType rt;
+			FOR_EACH_SET_ROADTYPE(rt, rts) {
+				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
+				if (c != NULL) {
+					c->infrastructure.road[rt] += CountBits(road_bits);
+					DirtyCompanyInfrastructureWindows(c->index);
+				}
+			}
 		}
 	}
 
@@ -3504,6 +3538,11 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 		for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 			/* Update all roadtypes, no matter if they are present */
 			if (GetRoadOwner(tile, rt) == old_owner) {
+				if (HasTileRoadType(tile, rt)) {
+					/* A drive-through road-stop has always two road bits. No need to dirty windows here, we'll redraw the whole screen anyway. */
+					Company::Get(old_owner)->infrastructure.road[rt] -= 2;
+					if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += 2;
+				}
 				SetRoadOwner(tile, rt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
 			}
 		}
@@ -3522,6 +3561,13 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 		if ((IsRailWaypoint(tile) || IsRailStation(tile)) && !IsStationTileBlocked(tile)) {
 			old_company->infrastructure.rail[GetRailType(tile)]--;
 			new_company->infrastructure.rail[GetRailType(tile)]++;
+		}
+		if (IsRoadStop(tile) && !IsDriveThroughStopTile(tile)) {
+			RoadType rt;
+			FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+				old_company->infrastructure.road[rt] -= 2;
+				new_company->infrastructure.road[rt] += 2;
+			}
 		}
 
 		/* for buoys, owner of tile is owner of water, st->owner == OWNER_NONE */

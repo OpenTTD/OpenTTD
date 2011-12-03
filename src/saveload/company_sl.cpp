@@ -115,12 +115,21 @@ void AfterLoadCompanyStats()
 				}
 				break;
 
-			case MP_ROAD:
+			case MP_ROAD: {
 				if (IsLevelCrossing(tile)) {
 					c = Company::GetIfValid(GetTileOwner(tile));
 					if (c != NULL) c->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR;
 				}
+
+				/* Iterate all present road types as each can have a different owner. */
+				RoadType rt;
+				FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rt));
+					/* A level crossings and depots have two road bits. */
+					if (c != NULL) c->infrastructure.road[rt] += IsNormalRoad(tile) ? CountBits(GetRoadBits(tile, rt)) : 2;
+				}
 				break;
+			}
 
 			case MP_STATION:
 				c = Company::GetIfValid(GetTileOwner(tile));
@@ -130,6 +139,17 @@ void AfterLoadCompanyStats()
 					case STATION_WAYPOINT:
 						if (c != NULL && !IsStationTileBlocked(tile)) c->infrastructure.rail[GetRailType(tile)]++;
 						break;
+
+					case STATION_BUS:
+					case STATION_TRUCK: {
+						/* Iterate all present road types as each can have a different owner. */
+						RoadType rt;
+						FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+							c = Company::GetIfValid(GetRoadOwner(tile, rt));
+							if (c != NULL) c->infrastructure.road[rt] += 2; // A road stop has two road bits.
+						}
+						break;
+					}
 
 					default:
 						break;
@@ -149,6 +169,16 @@ void AfterLoadCompanyStats()
 							c = Company::GetIfValid(GetTileOwner(tile));
 							if (c != NULL) c->infrastructure.rail[GetRailType(tile)] += len;
 							break;
+
+						case TRANSPORT_ROAD: {
+							/* Iterate all present road types as each can have a different owner. */
+							RoadType rt;
+							FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+								c = Company::GetIfValid(GetRoadOwner(tile, rt));
+								if (c != NULL) c->infrastructure.road[rt] += len * 2; // A full diagonal road has two road bits.
+							}
+							break;
+						}
 
 						default:
 							break;

@@ -454,7 +454,15 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					default: break;
 					case ROADTYPES_TRAM:
 						/* Tram crossings must always have road. */
-						if (flags & DC_EXEC) SetRoadOwner(tile, ROADTYPE_ROAD, _current_company);
+						if (flags & DC_EXEC) {
+							SetRoadOwner(tile, ROADTYPE_ROAD, _current_company);
+							Company *c = Company::GetIfValid(_current_company);
+							if (c != NULL) {
+								/* A full diagonal tile has two road bits. */
+								c->infrastructure.road[ROADTYPE_ROAD] += 2;
+								DirtyCompanyInfrastructureWindows(c->index);
+							}
+						}
 						roadtypes |= ROADTYPES_ROAD;
 						break;
 

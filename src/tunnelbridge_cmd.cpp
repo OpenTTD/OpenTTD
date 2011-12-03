@@ -443,6 +443,14 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				break;
 
 			case TRANSPORT_ROAD:
+				if (c != NULL) {
+					/* Add all new road types to the company infrastructure counter. */
+					RoadType new_rt;
+					FOR_EACH_SET_ROADTYPE(new_rt, roadtypes ^ (IsBridgeTile(tile_start) ? GetRoadTypes(tile_start) : ROADTYPES_NONE)) {
+						/* A full diagonal road tile has two road bits. */
+						Company::Get(owner)->infrastructure.road[new_rt] += (bridge_len + 2) * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					}
+				}
 				MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir,                 roadtypes);
 				MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
 				break;
@@ -640,6 +648,12 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
+			if (c != NULL) {
+				RoadType rt;
+				FOR_EACH_SET_ROADTYPE(rt, rts ^ (IsTunnelTile(start_tile) ? GetRoadTypes(start_tile) : ROADTYPES_NONE)) {
+					c->infrastructure.road[rt] += num_pieces * 2; // A full diagonal road has two road bits.
+				}
+			}
 			MakeRoadTunnel(start_tile, _current_company, direction,                 rts);
 			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), rts);
 		}
@@ -761,6 +775,16 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 
 			if (v != NULL) TryPathReserve(v);
 		} else {
+			RoadType rt;
+			FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+				/* A full diagonal road tile has two road bits. */
+				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
+				if (c != NULL) {
+					c->infrastructure.road[rt] -= len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					DirtyCompanyInfrastructureWindows(c->index);
+				}
+			}
+
 			DoClearSquare(tile);
 			DoClearSquare(endtile);
 		}
@@ -822,6 +846,16 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		/* Update company infrastructure counts. */
 		if (rail) {
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
+		} else if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
+			RoadType rt;
+			FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
+				if (c != NULL) {
+					/* A full diagonal road tile has two road bits. */
+					c->infrastructure.road[rt] -= len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					DirtyCompanyInfrastructureWindows(c->index);
+				}
+			}
 		}
 		DirtyCompanyInfrastructureWindows(owner);
 
@@ -1520,6 +1554,13 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 		/* Update all roadtypes, no matter if they are present */
 		if (GetRoadOwner(tile, rt) == old_owner) {
+			if (HasBit(GetRoadTypes(tile), rt)) {
+				/* Update company infrastructure counts. A full diagonal road tile has two road bits.
+				 * No need to dirty windows here, we'll redraw the whole screen anyway. */
+				Company::Get(old_owner)->infrastructure.road[rt] -= num_pieces * 2;
+				if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += num_pieces * 2;
+			}
+
 			SetRoadOwner(tile, rt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
 		}
 	}
