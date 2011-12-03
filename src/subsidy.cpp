@@ -164,104 +164,204 @@ static bool CheckSubsidyDuplicate(CargoID cargo, SourceType src_type, SourceID s
 	return false;
 }
 
-static Subsidy *FindSubsidyPassengerRoute()
+/** Checks if the source and destination of a subsidy are inside the distance limit.
+ * @param src_type Type of #src.
+ * @param src      Index of source.
+ * @param dst_type Type of #dst.
+ * @param dst      Index of destination.
+ * @return True if they are inside the distance limit.
+ */
+static bool CheckSubsidyDistance(SourceType src_type, SourceID src, SourceType dst_type, SourceID dst)
 {
-	assert(Subsidy::CanAllocateItem());
+	TileIndex tile_src = (src_type == ST_TOWN) ? Town::Get(src)->xy : Industry::Get(src)->location.tile;
+	TileIndex tile_dst = (dst_type == ST_TOWN) ? Town::Get(dst)->xy : Industry::Get(dst)->location.tile;
+
+	return (DistanceManhattan(tile_src, tile_dst) <= SUBSIDY_MAX_DISTANCE);
+}
+
+/** Creates a subsidy with the given parameters.
+ * @param cid      Subsidised cargo.
+ * @param src_type Type of #src.
+ * @param src      Index of source.
+ * @param dst_type Type of #dst.
+ * @param dst      Index of destination.
+ */
+void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst)
+{
+	Subsidy *s = new Subsidy();
+	s->cargo_type = cid;
+	s->src_type = src_type;
+	s->src = src;
+	s->dst_type = dst_type;
+	s->dst = dst;
+	s->remaining = SUBSIDY_OFFER_MONTHS;
+	s->awarded = INVALID_COMPANY;
+
+	Pair reftype = SetupSubsidyDecodeParam(s, false);
+	AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
+	SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
+	SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
+	AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));
+}
+
+
+/** Tries to create a passenger subsidy between two towns.
+ * @return True iff the subsidy was created.
+ */
+bool FindSubsidyPassengerRoute()
+{
+	if (!Subsidy::CanAllocateItem()) return false;
 
 	const Town *src = Town::GetRandom();
 	if (src->population < SUBSIDY_PAX_MIN_POPULATION ||
 			src->GetPercentTransported(CT_PASSENGERS) > SUBSIDY_MAX_PCT_TRANSPORTED) {
-		return NULL;
+		return false;
 	}
 
 	const Town *dst = Town::GetRandom();
 	if (dst->population < SUBSIDY_PAX_MIN_POPULATION || src == dst) {
-		return NULL;
+		return false;
 	}
 
-	if (DistanceManhattan(src->xy, dst->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
-	if (CheckSubsidyDuplicate(CT_PASSENGERS, ST_TOWN, src->index, ST_TOWN, dst->index)) return NULL;
+	if (DistanceManhattan(src->xy, dst->xy) > SUBSIDY_MAX_DISTANCE) return false;
+	if (CheckSubsidyDuplicate(CT_PASSENGERS, ST_TOWN, src->index, ST_TOWN, dst->index)) return false;
 
-	Subsidy *s = new Subsidy();
-	s->cargo_type = CT_PASSENGERS;
-	s->src_type = s->dst_type = ST_TOWN;
-	s->src = src->index;
-	s->dst = dst->index;
+	CreateSubsidy(CT_PASSENGERS, ST_TOWN, src->index, ST_TOWN, dst->index);
 
-	return s;
+	return true;
 }
 
-static Subsidy *FindSubsidyCargoRoute()
+bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src);
+
+
+/** Tries to create a cargo subsidy with a town as source.
+ * @return True iff the subsidy was created.
+ */
+bool FindSubsidyTownCargoRoute()
 {
-	assert(Subsidy::CanAllocateItem());
+	if (!Subsidy::CanAllocateItem()) return false;
 
-	const Industry *i = Industry::GetRandom();
-	if (i == NULL) return NULL;
+	SourceType src_type = ST_TOWN;
 
-	CargoID cargo;
+	/* Select a random town. */
+	const Town *src_town = Town::GetRandom();
+
+	uint32 town_cargo_produced = src_town->cargo_produced;
+
+	/* Passenger subsidies are not handled here. */
+	ClrBit(town_cargo_produced, CT_PASSENGERS);
+
+	/* Choose a random cargo that is produced in the town. */
+	uint8 cargo_number = RandomRange(CountBits(town_cargo_produced));
+	CargoID cid;
+	FOR_EACH_SET_CARGO_ID(cid, town_cargo_produced) {
+		if (cargo_number == 0) break;
+		cargo_number--;
+	}
+
+	/* Avoid using invalid NewGRF cargos. */
+	if (!CargoSpec::Get(cid)->IsValid()) return false;
+
+	/* Quit if the percentage transported is large enough. */
+	if (src_town->GetPercentTransported(cid) > SUBSIDY_MAX_PCT_TRANSPORTED) return false;
+
+	SourceID src = src_town->index;
+
+	return FindSubsidyCargoDestination(cid, src_type, src);
+}
+
+/** Tries to create a cargo subsidy with an industry as source.
+ * @return True iff the subsidy was created.
+ */
+bool FindSubsidyIndustryCargoRoute()
+{
+	if (!Subsidy::CanAllocateItem()) return false;
+
+	SourceType src_type = ST_INDUSTRY;
+
+	/* Select a random industry. */
+	const Industry *src_ind = Industry::GetRandom();
+	if (src_ind == NULL) return false;
+
 	uint trans, total;
 
+	CargoID cid;
+
 	/* Randomize cargo type */
-	if (i->produced_cargo[1] != CT_INVALID && HasBit(Random(), 0)) {
-		cargo = i->produced_cargo[1];
-		trans = i->last_month_pct_transported[1];
-		total = i->last_month_production[1];
+	if (src_ind->produced_cargo[1] != CT_INVALID && HasBit(Random(), 0)) {
+		cid = src_ind->produced_cargo[1];
+		trans = src_ind->last_month_pct_transported[1];
+		total = src_ind->last_month_production[1];
 	} else {
-		cargo = i->produced_cargo[0];
-		trans = i->last_month_pct_transported[0];
-		total = i->last_month_production[0];
+		cid = src_ind->produced_cargo[0];
+		trans = src_ind->last_month_pct_transported[0];
+		total = src_ind->last_month_production[0];
 	}
 
 	/* Quit if no production in this industry
 	 * or if the pct transported is already large enough */
-	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED || cargo == CT_INVALID) return NULL;
+	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED || cid == CT_INVALID) return false;
 
-	/* Don't allow passengers subsidies from industry */
-	const CargoSpec *cs = CargoSpec::Get(cargo);
-	if (cs->town_effect == TE_PASSENGERS) return NULL;
+	SourceID src = src_ind->index;
 
-	SourceType dst_type;
+	return FindSubsidyCargoDestination(cid, src_type, src);
+}
+
+/** Tries to find a suitable destination for the given source and cargo.
+ * @param cid      Subsidized cargo.
+ * @param src_type Type of #src.
+ * @param src      Index of source.
+ * @return True iff the subsidy was created.
+ */
+bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
+{
+	/* Choose a random destination. Only consider towns if they can accept the cargo. */
+	SourceType dst_type = (HasBit(_town_cargos_accepted, cid) && Chance16(1, 2)) ? ST_TOWN : ST_INDUSTRY;
+
 	SourceID dst;
+	switch (dst_type) {
+		case ST_TOWN: {
+			/* Select a random town. */
+			const Town *dst_town = Town::GetRandom();
 
-	if (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) {
-		/*  The destination is a town */
-		dst_type = ST_TOWN;
-		const Town *t = Town::GetRandom();
+			/* Check if the town can accept this cargo. */
+			if (!HasBit(dst_town->cargo_accepted_total, cid)) return false;
 
-		/* Only want big towns */
-		if (t->population < SUBSIDY_CARGO_MIN_POPULATION) return NULL;
-
-		if (DistanceManhattan(i->location.tile, t->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
-
-		dst = t->index;
-	} else {
-		/* The destination is an industry */
-		dst_type = ST_INDUSTRY;
-		const Industry *i2 = Industry::GetRandom();
-
-		/* The industry must accept the cargo */
-		if (i2 == NULL || i == i2 ||
-				(cargo != i2->accepts_cargo[0] &&
-				 cargo != i2->accepts_cargo[1] &&
-				 cargo != i2->accepts_cargo[2])) {
-			return NULL;
+			dst = dst_town->index;
+			break;
 		}
 
-		if (DistanceManhattan(i->location.tile, i2->location.tile) > SUBSIDY_MAX_DISTANCE) return NULL;
+		case ST_INDUSTRY: {
+			/* Select a random industry. */
+			const Industry *dst_ind = Industry::GetRandom();
 
-		dst = i2->index;
+			/* The industry must accept the cargo */
+			if (dst_ind == NULL ||
+					(cid != dst_ind->accepts_cargo[0] &&
+					 cid != dst_ind->accepts_cargo[1] &&
+					 cid != dst_ind->accepts_cargo[2])) {
+				return false;
+			}
+
+			dst = dst_ind->index;
+			break;
+		}
+
+		default: NOT_REACHED();
 	}
 
-	if (CheckSubsidyDuplicate(cargo, ST_INDUSTRY, i->index, dst_type, dst)) return NULL;
+	/* Check that the source and the destination are not the same. */
+	if (src_type == dst_type && src == dst) return false;
 
-	Subsidy *s = new Subsidy();
-	s->cargo_type = cargo;
-	s->src_type = ST_INDUSTRY;
-	s->src = i->index;
-	s->dst_type = dst_type;
-	s->dst = dst;
+	/* Check distance between source and destination. */
+	if (!CheckSubsidyDistance(src_type, src, dst_type, dst)) return false;
 
-	return s;
+	/* Avoid duplicate subsidies. */
+	if (CheckSubsidyDuplicate(cid, src_type, src, dst_type, dst)) return false;
+
+	CreateSubsidy(cid, src_type, src, dst_type, dst);
+
+	return true;
 }
 
 void SubsidyMonthlyLoop()
@@ -289,25 +389,36 @@ void SubsidyMonthlyLoop()
 
 	if (modified) RebuildSubsidisedSourceAndDestinationCache();
 
-	/* 25% chance to go on */
-	if (Subsidy::CanAllocateItem() && Chance16(1, 4)) {
-		uint n = 1000;
+	bool passenger_subsidy = false;
+	bool town_subsidy = false;
+	bool industry_subsidy = false;
+
+	int random_chance = RandomRange(16);
+
+	if (random_chance < 2) {
+		/* There is a 1/8 chance each month of generating a passenger subsidy. */
+		int n = 1000;
+
 		do {
-			Subsidy *s = FindSubsidyPassengerRoute();
-			if (s == NULL) s = FindSubsidyCargoRoute();
-			if (s != NULL) {
-				s->remaining = SUBSIDY_OFFER_MONTHS;
-				s->awarded = INVALID_COMPANY;
-				Pair reftype = SetupSubsidyDecodeParam(s, false);
-				AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
-				SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
-				SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
-				AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));
-				modified = true;
-				break;
-			}
-		} while (n--);
+			passenger_subsidy = FindSubsidyPassengerRoute();
+		} while (!passenger_subsidy && n--);
+	} else if (random_chance == 2) {
+		/* Cargo subsidies with a town as a source have a 1/16 chance. */
+		int n = 1000;
+
+		do {
+			town_subsidy = FindSubsidyTownCargoRoute();
+		} while (!town_subsidy && n--);
+	} else if (random_chance == 3) {
+		/* Cargo subsidies with an industry as a source have a 1/16 chance. */
+		int n = 1000;
+
+		do {
+			industry_subsidy = FindSubsidyTownCargoRoute();
+		} while (!industry_subsidy && n--);
 	}
+
+	modified |= passenger_subsidy || town_subsidy || industry_subsidy;
 
 	if (modified) InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
