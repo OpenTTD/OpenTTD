@@ -6405,10 +6405,14 @@ static void LoadFontGlyph(ByteReader *buf)
 		uint8  num_char  = buf->ReadByte();
 		uint16 base_char = buf->ReadWord();
 
+		if (size >= FS_END) {
+			grfmsg(1, "LoadFontGlyph: Size %u is not supported, ignoring", size);
+		}
+
 		grfmsg(7, "LoadFontGlyph: Loading %u glyph(s) at 0x%04X for size %u", num_char, base_char, size);
 
 		for (uint c = 0; c < num_char; c++) {
-			SetUnicodeGlyph(size, base_char + c, _cur_spriteid);
+			if (size < FS_END) SetUnicodeGlyph(size, base_char + c, _cur_spriteid);
 			_nfo_line++;
 			LoadNextSprite(_cur_spriteid++, _file_index, _nfo_line);
 		}
