@@ -40,6 +40,7 @@
 #include "newgrf_railtype.h"
 #include "object_base.h"
 #include "water.h"
+#include "company_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -430,8 +431,11 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	if (flags & DC_EXEC) {
 		DiagDirection dir = AxisToDiagDir(direction);
 
+		Company *c = Company::GetIfValid(owner);
 		switch (transport_type) {
 			case TRANSPORT_RAIL:
+				/* Add to company infrastructure count if building a new bridge. */
+				if (!IsBridgeTile(tile_start) && c != NULL) c->infrastructure.rail[railtype] += (bridge_len + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
 				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir,                 railtype);
 				MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
 				SetTunnelBridgeReservation(tile_start, pbs_reservation);
@@ -457,6 +461,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		for (TileIndex tile = tile_start; tile <= tile_end; tile += delta) {
 			MarkTileDirtyByTile(tile);
 		}
+		DirtyCompanyInfrastructureWindows(owner);
 	}
 
 	if ((flags & DC_EXEC) && transport_type == TRANSPORT_RAIL) {
@@ -626,7 +631,10 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	}
 
 	if (flags & DC_EXEC) {
+		Company *c = Company::GetIfValid(_current_company);
+		uint num_pieces = (tiles + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
 		if (transport_type == TRANSPORT_RAIL) {
+			if (!IsTunnelTile(start_tile) && c != NULL) c->infrastructure.rail[railtype] += num_pieces;
 			MakeRailTunnel(start_tile, _current_company, direction,                 railtype);
 			MakeRailTunnel(end_tile,   _current_company, ReverseDiagDir(direction), railtype);
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_company);
@@ -635,6 +643,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 			MakeRoadTunnel(start_tile, _current_company, direction,                 rts);
 			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), rts);
 		}
+		DirtyCompanyInfrastructureWindows(_current_company);
 	}
 
 	return cost;
@@ -720,6 +729,8 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
+	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
+
 	if (flags & DC_EXEC) {
 		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 			/* We first need to request values before calling DoClearSquare */
@@ -731,6 +742,11 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 			if (HasTunnelBridgeReservation(tile)) {
 				v = GetTrainForReservation(tile, track);
 				if (v != NULL) FreeTrainTrackReservation(v);
+			}
+
+			if (Company::IsValidID(owner)) {
+				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
+				DirtyCompanyInfrastructureWindows(owner);
 			}
 
 			DoClearSquare(tile);
@@ -749,7 +765,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 			DoClearSquare(endtile);
 		}
 	}
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_TUNNEL] * (GetTunnelBridgeLength(tile, endtile) + 2));
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_TUNNEL] * len);
 }
 
 
@@ -789,6 +805,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 	}
 
 	Money base_cost = (GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) ? _price[PR_CLEAR_BRIDGE] : _price[PR_CLEAR_AQUEDUCT];
+	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags & DC_EXEC) {
 		/* read this value before actual removal of bridge */
@@ -801,6 +818,12 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 			v = GetTrainForReservation(tile, DiagDirToDiagTrack(direction));
 			if (v != NULL) FreeTrainTrackReservation(v);
 		}
+
+		/* Update company infrastructure counts. */
+		if (rail) {
+			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
+		}
+		DirtyCompanyInfrastructureWindows(owner);
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
@@ -827,7 +850,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * base_cost);
+	return CommandCost(EXPENSES_CONSTRUCTION, len * base_cost);
 }
 
 /**
@@ -1489,6 +1512,11 @@ static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType
 
 static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner new_owner)
 {
+	TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
+	/* Set number of pieces to zero if it's the southern tile as we
+	 * don't want to update the infrastructure counts twice. */
+	uint num_pieces = tile < other_end ? (GetTunnelBridgeLength(tile, other_end) + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR : 0;
+
 	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 		/* Update all roadtypes, no matter if they are present */
 		if (GetRoadOwner(tile, rt) == old_owner) {
@@ -1498,10 +1526,19 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 
 	if (!IsTileOwner(tile, old_owner)) return;
 
+	/* Update company infrastructure counts for rail and water as well.
+	 * No need to dirty windows here, we'll redraw the whole screen anyway. */
+	TransportType tt = GetTunnelBridgeTransportType(tile);
+	Company *old = Company::Get(old_owner);
+	if (tt == TRANSPORT_RAIL) {
+		old->infrastructure.rail[GetRailType(tile)] -= num_pieces;
+		if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.rail[GetRailType(tile)] += num_pieces;
+	}
+
 	if (new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
 	} else {
-		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+		if (tt == TRANSPORT_RAIL) {
 			/* Since all of our vehicles have been removed, it is safe to remove the rail
 			 * bridge / tunnel. */
 			CommandCost ret = DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);

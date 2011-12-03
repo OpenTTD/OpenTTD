@@ -32,6 +32,7 @@
 #include "core/backup_type.hpp"
 #include "date_func.h"
 #include "strings_func.h"
+#include "company_gui.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"
@@ -417,7 +418,17 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 			if (flags & DC_EXEC) {
 				SetRailGroundType(tile, RAIL_GROUND_BARREN);
-				SetTrackBits(tile, GetTrackBits(tile) | trackbit);
+				TrackBits bits = GetTrackBits(tile);
+				SetTrackBits(tile, bits | trackbit);
+				/* Subtract old infrastructure count. */
+				uint pieces = CountBits(bits);
+				if (TracksOverlap(bits)) pieces *= pieces;
+				Company::Get(GetTileOwner(tile))->infrastructure.rail[GetRailType(tile)] -= pieces;
+				/* Add new infrastructure count. */
+				pieces = CountBits(bits | trackbit);
+				if (TracksOverlap(bits | trackbit)) pieces *= pieces;
+				Company::Get(GetTileOwner(tile))->infrastructure.rail[GetRailType(tile)] += pieces;
+				DirtyCompanyInfrastructureWindows(GetTileOwner(tile));
 			}
 			break;
 		}
@@ -459,6 +470,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					if (flags & DC_EXEC) {
 						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
+						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
+						DirtyCompanyInfrastructureWindows(_current_company);
 					}
 					break;
 				}
@@ -490,6 +503,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (flags & DC_EXEC) {
 				MakeRailNormal(tile, _current_company, trackbit, railtype);
 				if (water_ground) SetRailGroundType(tile, RAIL_GROUND_WATER);
+				Company::Get(_current_company)->infrastructure.rail[railtype]++;
+				DirtyCompanyInfrastructureWindows(_current_company);
 			}
 			break;
 		}
@@ -553,6 +568,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 					if (v != NULL) FreeTrainTrackReservation(v);
 				}
 				owner = GetTileOwner(tile);
+				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
+				DirtyCompanyInfrastructureWindows(owner);
 				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM));
 				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile);
 			}
@@ -588,8 +605,20 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 					v = GetTrainForReservation(tile, track);
 					if (v != NULL) FreeTrainTrackReservation(v);
 				}
+
 				owner = GetTileOwner(tile);
+
+				/* Subtract old infrastructure count. */
+				uint pieces = CountBits(present);
+				if (TracksOverlap(present)) pieces *= pieces;
+				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= pieces;
+				/* Add new infrastructure count. */
 				present ^= trackbit;
+				pieces = CountBits(present);
+				if (TracksOverlap(present)) pieces *= pieces;
+				Company::Get(owner)->infrastructure.rail[GetRailType(tile)] += pieces;
+				DirtyCompanyInfrastructureWindows(owner);
+
 				if (present == 0) {
 					Slope tileh = GetTileSlope(tile);
 					/* If there is flat water on the lower halftile, convert the tile to shore so the water remains */
@@ -895,6 +924,9 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		MarkTileDirtyByTile(tile);
 		MakeDefaultName(d);
 
+		Company::Get(_current_company)->infrastructure.rail[railtype]++;
+		DirtyCompanyInfrastructureWindows(_current_company);
+
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
@@ -1013,6 +1045,9 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			SetSignalVariant(tile, track, sigvar);
 		}
 
+		/* Subtract old signal infrastructure count. */
+		Company::Get(GetTileOwner(tile))->infrastructure.signal -= CountBits(GetPresentSignals(tile));
+
 		if (p2 == 0) {
 			if (!HasSignalOnTrack(tile, track)) {
 				/* build new signals */
@@ -1061,6 +1096,10 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			SetSignalVariant(tile, track, sigvar);
 			SetSignalType(tile, track, sigtype);
 		}
+
+		/* Add new signal infrastructure count. */
+		Company::Get(GetTileOwner(tile))->infrastructure.signal += CountBits(GetPresentSignals(tile));
+		DirtyCompanyInfrastructureWindows(GetTileOwner(tile));
 
 		if (IsPbsSignal(sigtype)) {
 			/* PBS signals should show red unless they are on a reservation. */
@@ -1343,7 +1382,10 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 				}
 			}
 		}
+		Company::Get(GetTileOwner(tile))->infrastructure.signal -= CountBits(GetPresentSignals(tile));
 		SetPresentSignals(tile, GetPresentSignals(tile) & ~SignalOnTrack(track));
+		Company::Get(GetTileOwner(tile))->infrastructure.signal += CountBits(GetPresentSignals(tile));
+		DirtyCompanyInfrastructureWindows(GetTileOwner(tile));
 
 		/* removed last signal from tile? */
 		if (GetPresentSignals(tile) == 0) {
@@ -1481,6 +1523,20 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					}
 				}
 
+				/* Update the company infrastructure counters. */
+				if (IsRailStationTile(tile) && !IsStationTileBlocked(tile)) {
+					Company *c = Company::Get(GetTileOwner(tile));
+					uint num_pieces = IsLevelCrossingTile(tile) ? LEVELCROSSING_TRACKBIT_FACTOR : 1;
+					if (IsPlainRailTile(tile)) {
+						TrackBits bits = GetTrackBits(tile);
+						num_pieces = CountBits(bits);
+						if (TracksOverlap(bits)) num_pieces *= num_pieces;
+					}
+					c->infrastructure.rail[type] -= num_pieces;
+					c->infrastructure.rail[totype] += num_pieces;
+					DirtyCompanyInfrastructureWindows(c->index);
+				}
+
 				SetRailType(tile, totype);
 				MarkTileDirtyByTile(tile);
 				/* update power of train on this tile */
@@ -1543,6 +1599,14 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 							*vehicles_affected.Append() = v;
 						}
 					}
+
+					/* Update the company infrastructure counters. */
+					uint num_pieces = (GetTunnelBridgeLength(tile, endtile) + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					Company *c = Company::Get(GetTileOwner(tile));
+					c->infrastructure.rail[GetRailType(tile)] -= num_pieces;
+					c->infrastructure.rail[totype] += num_pieces;
+					DirtyCompanyInfrastructureWindows(c->index);
+
 					SetRailType(tile, totype);
 					SetRailType(endtile, totype);
 
@@ -1612,6 +1676,9 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 			v = GetTrainForReservation(tile, DiagDirToDiagTrack(dir));
 			if (v != NULL) FreeTrainTrackReservation(v);
 		}
+
+		Company::Get(owner)->infrastructure.rail[GetRailType(tile)]--;
+		DirtyCompanyInfrastructureWindows(owner);
 
 		delete Depot::GetByTile(tile);
 		DoClearSquare(tile);
@@ -2692,6 +2759,23 @@ static void ChangeTileOwner_Track(TileIndex tile, Owner old_owner, Owner new_own
 	if (!IsTileOwner(tile, old_owner)) return;
 
 	if (new_owner != INVALID_OWNER) {
+		/* Update company infrastructure counts. No need to dirty windows here, we'll redraw the whole screen anyway. */
+		uint num_pieces = 1;
+		if (IsPlainRail(tile)) {
+			TrackBits bits = GetTrackBits(tile);
+			num_pieces = CountBits(bits);
+			if (TracksOverlap(bits)) num_pieces *= num_pieces;
+		}
+		RailType rt = GetRailType(tile);
+		Company::Get(old_owner)->infrastructure.rail[rt] -= num_pieces;
+		Company::Get(new_owner)->infrastructure.rail[rt] += num_pieces;
+
+		if (HasSignals(tile)) {
+			uint num_sigs = CountBits(GetPresentSignals(tile));
+			Company::Get(old_owner)->infrastructure.signal -= num_sigs;
+			Company::Get(new_owner)->infrastructure.signal += num_sigs;
+		}
+
 		SetTileOwner(tile, new_owner);
 	} else {
 		DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);

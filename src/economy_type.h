@@ -201,6 +201,11 @@ static const int MIN_PRICE_MODIFIER = -8;
 static const int MAX_PRICE_MODIFIER = 16;
 static const int INVALID_PRICE_MODIFIER = MIN_PRICE_MODIFIER - 1;
 
+/** Multiplier for how many regular track bits a tunnel/bridge counts. */
+static const uint TUNNELBRIDGE_TRACKBIT_FACTOR = 4;
+/** Multiplier for how many regular track bits a level crossing counts. */
+static const uint LEVELCROSSING_TRACKBIT_FACTOR = 2;
+
 struct CargoPayment;
 typedef uint32 CargoPaymentID;
 

@@ -2716,6 +2716,7 @@ bool AfterLoadGame()
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
+	AfterLoadCompanyStats();
 
 	GamelogPrintDebug(1);
 
@@ -2746,6 +2747,8 @@ void ReloadNewGRFData()
 	GroupStatistics::UpdateAfterLoad();
 	/* update station graphics */
 	AfterLoadStations();
+	/* Update company statistics. */
+	AfterLoadCompanyStats();
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 	/* Delete news referring to no longer existing entities */

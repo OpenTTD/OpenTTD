@@ -13,6 +13,11 @@
 #include "../company_func.h"
 #include "../company_manager_face.h"
 #include "../fios.h"
+#include "../rail_map.h"
+#include "../road_map.h"
+#include "../station_map.h"
+#include "../tunnelbridge_map.h"
+#include "../tunnelbridge.h"
 
 #include "saveload.h"
 
@@ -84,6 +89,78 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face)
 	}
 
 	return cmf;
+}
+
+/** Rebuilding of company statistics after loading a savegame. */
+void AfterLoadCompanyStats()
+{
+	/* Reset infrastructure statistics to zero. */
+	Company *c;
+	FOR_ALL_COMPANIES(c) MemSetT(&c->infrastructure, 0);
+
+	for (TileIndex tile = 0; tile < MapSize(); tile++) {
+		switch (GetTileType(tile)) {
+			case MP_RAILWAY:
+				c = Company::GetIfValid(GetTileOwner(tile));
+				if (c != NULL) {
+					uint pieces = 1;
+					if (IsPlainRail(tile)) {
+						TrackBits bits = GetTrackBits(tile);
+						pieces = CountBits(bits);
+						if (TracksOverlap(bits)) pieces *= pieces;
+					}
+					c->infrastructure.rail[GetRailType(tile)] += pieces;
+
+					if (HasSignals(tile)) c->infrastructure.signal += CountBits(GetPresentSignals(tile));
+				}
+				break;
+
+			case MP_ROAD:
+				if (IsLevelCrossing(tile)) {
+					c = Company::GetIfValid(GetTileOwner(tile));
+					if (c != NULL) c->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR;
+				}
+				break;
+
+			case MP_STATION:
+				c = Company::GetIfValid(GetTileOwner(tile));
+
+				switch (GetStationType(tile)) {
+					case STATION_RAIL:
+					case STATION_WAYPOINT:
+						if (c != NULL && !IsStationTileBlocked(tile)) c->infrastructure.rail[GetRailType(tile)]++;
+						break;
+
+					default:
+						break;
+				}
+				break;
+
+			case MP_TUNNELBRIDGE: {
+				/* Only count the tunnel/bridge if we're on the northern end tile. */
+				TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
+				if (tile < other_end) {
+					/* Count each tunnel/bridge TUNNELBRIDGE_TRACKBIT_FACTOR times to simulate
+					 * the higher structural maintenance needs, and don't forget the end tiles. */
+					uint len = (GetTunnelBridgeLength(tile, other_end) + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
+
+					switch (GetTunnelBridgeTransportType(tile)) {
+						case TRANSPORT_RAIL:
+							c = Company::GetIfValid(GetTileOwner(tile));
+							if (c != NULL) c->infrastructure.rail[GetRailType(tile)] += len;
+							break;
+
+						default:
+							break;
+					}
+				}
+				break;
+			}
+
+			default:
+				break;
+		}
+	}
 }
 
 

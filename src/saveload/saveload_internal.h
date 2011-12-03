@@ -31,6 +31,7 @@ void FixupTrainLengths();
 void AfterLoadStations();
 void AfterLoadRoadStops();
 void AfterLoadLabelMaps();
+void AfterLoadCompanyStats();
 void UpdateHousesAndTowns();
 
 void UpdateOldAircraft();

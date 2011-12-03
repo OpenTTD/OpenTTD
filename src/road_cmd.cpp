@@ -1671,6 +1671,10 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 			if (new_owner == INVALID_OWNER) {
 				DoCommand(tile, 0, GetCrossingRailTrack(tile), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
 			} else {
+				/* Update infrastructure counts. No need to dirty windows here, we'll redraw the whole screen anyway. */
+				Company::Get(old_owner)->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR;
+				Company::Get(new_owner)->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR;
+
 				SetTileOwner(tile, new_owner);
 			}
 		}
