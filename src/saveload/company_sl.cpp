@@ -18,6 +18,7 @@
 #include "../station_map.h"
 #include "../tunnelbridge_map.h"
 #include "../tunnelbridge.h"
+#include "../station_base.h"
 
 #include "saveload.h"
 
@@ -98,6 +99,14 @@ void AfterLoadCompanyStats()
 	Company *c;
 	FOR_ALL_COMPANIES(c) MemSetT(&c->infrastructure, 0);
 
+	/* Collect airport count. */
+	Station *st;
+	FOR_ALL_STATIONS(st) {
+		if ((st->facilities & FACIL_AIRPORT) && Company::IsValidID(st->owner)) {
+			Company::Get(st->owner)->infrastructure.airport++;
+		}
+	}
+
 	for (TileIndex tile = 0; tile < MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_RAILWAY:
@@ -133,6 +142,7 @@ void AfterLoadCompanyStats()
 
 			case MP_STATION:
 				c = Company::GetIfValid(GetTileOwner(tile));
+				if (c != NULL && GetStationType(tile) != STATION_AIRPORT) c->infrastructure.station++;
 
 				switch (GetStationType(tile)) {
 					case STATION_RAIL:

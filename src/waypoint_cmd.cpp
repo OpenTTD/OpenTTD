@@ -28,6 +28,7 @@
 #include "newgrf_station.h"
 #include "company_base.h"
 #include "water.h"
+#include "company_gui.h"
 
 #include "table/strings.h"
 
@@ -252,9 +253,11 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 		}
 		byte map_spec_index = AllocateSpecToStation(spec, wp, true);
 
+		Company *c = Company::Get(wp->owner);
 		for (int i = 0; i < count; i++) {
 			TileIndex tile = start_tile + i * offset;
 			byte old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
+			if (!HasStationTileRail(tile)) c->infrastructure.station++;
 			bool reserved = IsTileType(tile, MP_RAILWAY) ?
 					HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) :
 					HasStationReservation(tile);
@@ -266,6 +269,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 			DeallocateSpecFromStation(wp, old_specindex);
 			YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 		}
+		DirtyCompanyInfrastructureWindows(wp->owner);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, count * _price[PR_BUILD_WAYPOINT_RAIL]);

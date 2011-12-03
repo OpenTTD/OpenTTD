@@ -1238,7 +1238,10 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 				}
 
 				/* Railtype can change when overbuilding. */
-				if (IsRailStationTile(tile) && !IsStationTileBlocked(tile)) c->infrastructure.rail[GetRailType(tile)]--;
+				if (IsRailStationTile(tile)) {
+					if (!IsStationTileBlocked(tile)) c->infrastructure.rail[GetRailType(tile)]--;
+					c->infrastructure.station--;
+				}
 
 				/* Remove animation if overbuilding */
 				DeleteAnimatedTile(tile);
@@ -1252,6 +1255,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 				SetAnimationFrame(tile, 0);
 
 				if (!IsStationTileBlocked(tile)) c->infrastructure.rail[rt]++;
+				c->infrastructure.station++;
 
 				if (statspec != NULL) {
 					/* Use a fixed axis for GetPlatformInfo as our platforms / numtracks are always the right way around */
@@ -1422,6 +1426,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 			DoClearSquare(tile);
 			DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
 			if (build_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
+			Company::Get(owner)->infrastructure.station--;
 			DirtyCompanyInfrastructureWindows(owner);
 
 			st->rect.AfterRemoveTile(st, tile);
@@ -1565,6 +1570,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 				if (v != NULL) FreeTrainTrackReservation(v);
 			}
 			if (!IsStationTileBlocked(tile)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)]--;
+			Company::Get(owner)->infrastructure.station--;
 			DoClearSquare(tile);
 			DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
 			AddTrackToSignalBuffer(tile, track, owner);
@@ -1807,9 +1813,10 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			} else {
 				/* Non-drive-through stop never overbuild and always count as two road bits. */
 				Company::Get(st->owner)->infrastructure.road[FIND_FIRST_BIT(rts)] += 2;
-				DirtyCompanyInfrastructureWindows(st->owner);
 				MakeRoadStop(cur_tile, st->owner, st->index, rs_type, rts, ddir);
 			}
+			Company::Get(st->owner)->infrastructure.station++;
+			DirtyCompanyInfrastructureWindows(st->owner);
 
 			MarkTileDirtyByTile(cur_tile);
 		}
@@ -1906,6 +1913,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 				DirtyCompanyInfrastructureWindows(c->index);
 			}
 		}
+		Company::Get(st->owner)->infrastructure.station--;
 
 		if (IsDriveThroughStopTile(tile)) {
 			/* Clears the tile for us */
@@ -2258,6 +2266,9 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		UpdateAirplanesOnNewStation(st);
 
+		Company::Get(st->owner)->infrastructure.airport++;
+		DirtyCompanyInfrastructureWindows(st->owner);
+
 		st->UpdateVirtCoord();
 		UpdateStationAcceptance(st, false);
 		st->RecomputeIndustriesNear();
@@ -2341,6 +2352,9 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		if (_settings_game.economy.station_noise_level) {
 			SetWindowDirty(WC_TOWN_VIEW, st->town->index);
 		}
+
+		Company::Get(st->owner)->infrastructure.airport--;
+		DirtyCompanyInfrastructureWindows(st->owner);
 
 		st->UpdateVirtCoord();
 		st->RecomputeIndustriesNear();
@@ -2486,8 +2500,9 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		 * This is needed as we've unconditionally cleared that tile before. */
 		if (wc == WATER_CLASS_CANAL) {
 			Company::Get(st->owner)->infrastructure.water++;
-			DirtyCompanyInfrastructureWindows(st->owner);
 		}
+		Company::Get(st->owner)->infrastructure.station += 2;
+		DirtyCompanyInfrastructureWindows(st->owner);
 
 		MakeDock(tile, st->owner, st->index, direction, wc);
 
@@ -2531,6 +2546,9 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 
 		st->dock_tile = INVALID_TILE;
 		st->facilities &= ~FACIL_DOCK;
+
+		Company::Get(st->owner)->infrastructure.station -= 2;
+		DirtyCompanyInfrastructureWindows(st->owner);
 
 		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_SHIPS);
 		st->UpdateVirtCoord();
