@@ -232,42 +232,47 @@ Function load_main_data(filename, ByRef vcxproj, ByRef filters, ByRef files)
 	load_main_data = res
 End Function
 
-Function load_lang_data(dir, ByRef vcxproj)
+Function load_lang_data(dir, ByRef vcxproj, ByRef files)
 	Dim res, folder, file, first_time
 	res = ""
 	Set folder = FSO.GetFolder(dir)
 	For Each file In folder.Files
 		file = FSO.GetFileName(file)
-		If FSO.GetExtensionName(file) = "txt" Then
+		If file <> "english.txt" And FSO.GetExtensionName(file) = "txt" Then
 			file = Left(file, Len(file) - 4)
-			if first_time <> 0 Then
+			If first_time <> 0 Then
 				res = res & vbCrLf
 				vcxproj = vcxproj & vbCrLf
+				files = files & vbCrLf
 			Else
 				first_time = 1
 			End If
 			res = res & _
-			"		<File" & vbCrLf & _
-			"			RelativePath=" & Chr(34) & "..\src\lang\" & file & ".txt" & Chr(34) & vbCrLf & _
-			"			>" & vbCrLf & _
-			"			<FileConfiguration" & vbCrLf & _
-			"				Name=" & Chr(34) & "Debug|Win32" & Chr(34) & vbCrLf & _
+			"			<File" & vbCrLf & _
+			"				RelativePath=" & Chr(34) & "..\src\lang\" & file & ".txt" & Chr(34) & vbCrLf & _
 			"				>" & vbCrLf & _
-			"				<Tool" & vbCrLf & _
-			"					Name=" & Chr(34) & "VCCustomBuildTool" & Chr(34) & vbCrLf & _
-			"					Description=" & Chr(34) & "Generating " & file & " language file" & Chr(34) & vbCrLf & _
-			"					CommandLine=" & Chr(34) & "..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;" & Chr(34) & vbCrLf & _
-			"					AdditionalDependencies=" & Chr(34) & "..\src\lang\english.txt;..\objs\strgen\strgen.exe" & Chr(34) & vbCrLf & _
-			"					Outputs=" & Chr(34) & "..\bin\lang\" & file & ".lng" & Chr(34) & vbCrLf & _
-			"				/>" & vbCrLf & _
-			"			</FileConfiguration>" & vbCrLf & _
-			"		</File>"
+			"				<FileConfiguration" & vbCrLf & _
+			"					Name=" & Chr(34) & "Debug|Win32" & Chr(34) & vbCrLf & _
+			"					>" & vbCrLf & _
+			"					<Tool" & vbCrLf & _
+			"						Name=" & Chr(34) & "VCCustomBuildTool" & Chr(34) & vbCrLf & _
+			"						Description=" & Chr(34) & "Generating " & file & " language file" & Chr(34) & vbCrLf & _
+			"						CommandLine=" & Chr(34) & "..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;" & Chr(34) & vbCrLf & _
+			"						AdditionalDependencies=" & Chr(34) & "..\src\lang\english.txt;..\objs\strgen\strgen.exe" & Chr(34) & vbCrLf & _
+			"						Outputs=" & Chr(34) & "..\bin\lang\" & file & ".lng" & Chr(34) & vbCrLf & _
+			"					/>" & vbCrLf & _
+			"				</FileConfiguration>" & vbCrLf & _
+			"			</File>"
 			vcxproj = vcxproj & _
 			"    <CustomBuild Include=" & Chr(34) & "..\src\lang\" & file & ".txt" & Chr(34) & ">" & vbCrLf & _
 			"      <Message Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">Generating " & file & " language file</Message>" & vbCrLf & _
 			"      <Command Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang " & Chr(34) & "%(FullPath)" & Chr(34) & "</Command>" & vbCrLf & _
 			"      <AdditionalInputs Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>" & vbCrLf & _
 			"      <Outputs Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">..\bin\lang\" & file & ".lng;%(Outputs)</Outputs>" & vbCrLf & _
+			"    </CustomBuild>"
+			files = files & _
+			"    <CustomBuild Include=" & Chr(34) & "..\src\lang\" & file & ".txt" & Chr(34) & ">" & vbCrLf & _
+			"      <Filter>Translations</Filter>" & vbCrLf & _
 			"    </CustomBuild>"
 		End If
 	Next
@@ -364,11 +369,12 @@ generate openttd, ROOT_DIR & "/projects/openttd_vs90.vcproj", Null
 generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs100.vcxproj", Null
 generate openttdfiles, ROOT_DIR & "/projects/openttd_vs100.vcxproj.filters", openttdfilters
 
-Dim lang, langvcxproj
-lang = load_lang_data(ROOT_DIR & "/src/lang", langvcxproj)
+Dim lang, langvcxproj, langfiles
+lang = load_lang_data(ROOT_DIR & "/src/lang", langvcxproj, langfiles)
 generate lang, ROOT_DIR & "/projects/langs_vs80.vcproj", Null
 generate lang, ROOT_DIR & "/projects/langs_vs90.vcproj", Null
 generate langvcxproj, ROOT_DIR & "/projects/langs_vs100.vcxproj", Null
+generate langfiles, ROOT_DIR & "/projects/langs_vs100.vcxproj.filters", Null
 
 Dim settings, settingsvcxproj, settingscommand, settingsfiles
 settings = load_settings_data(ROOT_DIR & "/src/table", settingsvcxproj, settingscommand, settingsfiles)

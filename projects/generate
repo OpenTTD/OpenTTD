@@ -177,28 +177,35 @@ load_lang_data() {
 	for i in `ls $1`
 	do
 		i=`basename $i | sed s~.txt$~~g`
+		if [ "$i" == "english" ]
+		then
+			continue
+		fi
 		RES="$RES
-#1		<File
-#1			RelativePath=\"..\\src\\lang\\"$i".txt\"
-#1			>
-#1			<FileConfiguration
-#1				Name=\"Debug|Win32\"
+#1			<File
+#1				RelativePath=\"..\\src\\lang\\"$i".txt\"
 #1				>
-#1				<Tool
-#1					Name=\"VCCustomBuildTool\"
-#1					Description=\"Generating "$i" language file\"
-#1					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;\"
-#1					AdditionalDependencies=\"..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe\"
-#1					Outputs=\"..\\bin\\lang\\"$i".lng\"
-#1				/>
-#1			</FileConfiguration>
-#1		</File>
+#1				<FileConfiguration
+#1					Name=\"Debug|Win32\"
+#1					>
+#1					<Tool
+#1						Name=\"VCCustomBuildTool\"
+#1						Description=\"Generating "$i" language file\"
+#1						CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;\"
+#1						AdditionalDependencies=\"..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe\"
+#1						Outputs=\"..\\bin\\lang\\"$i".lng\"
+#1					/>
+#1				</FileConfiguration>
+#1			</File>
 #2    <CustomBuild Include=\"..\\src\\lang\\"$i".txt\">
 #2      <Message Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">Generating "$i" language file</Message>
 #2      <Command Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang \"%(FullPath)\"</Command>
 #2      <AdditionalInputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
 #2      <Outputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\bin\\lang\\"$i".lng;%(Outputs)</Outputs>
-#2    </CustomBuild>"
+#2    </CustomBuild>
+#3    <CustomBuild Include=\"..\\src\\lang\\"$i".txt\">
+#3      <Filter>Translations</Filter>
+#3    </CustomBuild>"
 	done
 
 	eval "$2=\"\$RES\""
@@ -285,6 +292,7 @@ openttdvcxproj=`echo "$openttd" | grep "^#2" | sed "s~#2~~g"`
 openttd=`echo "$openttd" | grep "^#1" | sed "s~#1~~g"`
 
 load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
+langfiles=`echo "$lang" | grep "^#3" | sed "s~#3~~g"`
 langvcxproj=`echo "$lang" | grep "^#2" | sed "s~#2~~g"`
 lang=`echo "$lang" | grep "^#1" | sed "s~#1~~g"`
 
@@ -301,6 +309,7 @@ generate "$openttdfiles" "openttd_vs100.vcxproj.filters" "$openttdfilters"
 generate "$lang" "langs_vs80.vcproj"
 generate "$lang" "langs_vs90.vcproj"
 generate "$langvcxproj" "langs_vs100.vcxproj"
+generate "$langfiles" "langs_vs100.vcxproj.filters"
 generate "$settings" "settings_vs80.vcproj" "$settingscommand"
 generate "$settings" "settings_vs90.vcproj" "$settingscommand"
 generate "$settingsvcxproj" "settings_vs100.vcxproj" "$settingscommand"
