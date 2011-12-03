@@ -31,6 +31,9 @@
 #include "core/geometry_func.hpp"
 #include "economy_func.h"
 #include "object_type.h"
+#include "rail.h"
+#include "engine_base.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -39,6 +42,7 @@ static const uint EXP_LINESPACE  = 2;      ///< Amount of vertical space for a h
 static const uint EXP_BLOCKSPACE = 10;     ///< Amount of vertical space between two blocks of numbers.
 
 static void DoSelectCompanyManagerFace(Window *parent);
+static void ShowCompanyInfrastructure(CompanyID company);
 
 /** Standard unsorted list of expenses. */
 static ExpensesType _expenses_list_1[] = {
@@ -138,6 +142,7 @@ enum CompanyFinancesWindowWidgets {
 	CFW_SEL_BUTTONS,   ///< Selection of buttons
 	CFW_INCREASE_LOAN, ///< Increase loan
 	CFW_REPAY_LOAN,    ///< Decrease loan
+	CFW_INFRASTRUCTURE,///< View company infrastructure
 };
 
 /**
@@ -276,6 +281,7 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INCREASE_LOAN), SetFill(1, 0), SetDataTip(STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_REPAY_LOAN), SetFill(1, 0), SetDataTip(STR_FINANCES_REPAY_BUTTON, STR_FINANCES_REPAY_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INFRASTRUCTURE), SetFill(1, 0), SetDataTip(STR_FINANCES_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
@@ -456,6 +462,10 @@ struct CompanyFinancesWindow : Window {
 
 			case CFW_REPAY_LOAN: // repay loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_DECREASE_LOAN | CMD_MSG(STR_ERROR_CAN_T_REPAY_LOAN));
+				break;
+
+			case CFW_INFRASTRUCTURE: // show infrastructure details
+				ShowCompanyInfrastructure((CompanyID)this->window_number);
 				break;
 		}
 	}
@@ -1603,6 +1613,286 @@ static void DoSelectCompanyManagerFace(Window *parent)
 }
 
 
+/** Names of the widgets of the #CompanyInfrastructureWindow. */
+enum CompanyInfrastructureWindowWidgets {
+	CIW_WIDGET_CAPTION,
+	CIW_WIDGET_RAIL_DESC,
+	CIW_WIDGET_RAIL_COUNT,
+	CIW_WIDGET_ROAD_DESC,
+	CIW_WIDGET_ROAD_COUNT,
+	CIW_WIDGET_WATER_DESC,
+	CIW_WIDGET_WATER_COUNT,
+	CIW_WIDGET_STATION_DESC,
+	CIW_WIDGET_STATION_COUNT,
+};
+
+static const NWidgetPart _nested_company_infrastructure_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CIW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_GREY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPIP(WD_FRAMERECT_TOP, 4, WD_FRAMETEXT_BOTTOM),
+			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_RAIL_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_RAIL_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_ROAD_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_ROAD_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_WATER_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_WATER_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_STATION_DESC), SetMinimalTextLines(3, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_STATION_COUNT), SetMinimalTextLines(3, 0), SetFill(0, 1),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+/**
+ * Window with detailed information about the company's infrastructure.
+ */
+struct CompanyInfrastructureWindow : Window
+{
+	RailTypes railtypes; ///< Valid railtypes.
+	RoadTypes roadtypes; ///< Valid roadtypes.
+
+	CompanyInfrastructureWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	{
+		this->UpdateRailRoadTypes();
+
+		this->InitNested(desc, window_number);
+		this->owner = (Owner)this->window_number;
+	}
+
+	void UpdateRailRoadTypes()
+	{
+		this->railtypes = RAILTYPES_NONE;
+		this->roadtypes = ROADTYPES_ROAD; // Road is always available.
+
+		/* Find the used railtypes. */
+		Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+			if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+
+			this->railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
+		}
+
+		/* Get the date introduced railtypes as well. */
+		this->railtypes = AddDateIntroducedRailTypes(this->railtypes, MAX_DAY);
+
+		/* Tram is only visible when there will be a tram. */
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+			if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
+			if (!HasBit(e->info.misc_flags, EF_ROAD_TRAM)) continue;
+
+			this->roadtypes |= ROADTYPES_TRAM;
+			break;
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case CIW_WIDGET_CAPTION:
+				SetDParam(0, (CompanyID)this->window_number);
+				break;
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		const Company *c = Company::Get((CompanyID)this->window_number);
+
+		switch (widget) {
+			case CIW_WIDGET_RAIL_DESC: {
+				uint lines = 1;
+
+				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+					if (HasBit(this->railtypes, rt)) {
+						lines++;
+						SetDParam(0, GetRailTypeInfo(rt)->strings.name);
+						size->width = max(size->width, GetStringBoundingBox(STR_WHITE_STRING).width + WD_FRAMERECT_LEFT);
+					}
+				}
+				if (this->railtypes != RAILTYPES_NONE) {
+					lines++;
+					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + WD_FRAMERECT_LEFT);
+				}
+
+				size->height = max(size->height, lines * FONT_HEIGHT_NORMAL);
+				break;
+			}
+
+			case CIW_WIDGET_ROAD_DESC: {
+				uint lines = 1;
+
+				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
+					lines++;
+					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD).width + WD_FRAMERECT_LEFT);
+				}
+				if (HasBit(this->roadtypes, ROADTYPE_TRAM)) {
+					lines++;
+					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY).width + WD_FRAMERECT_LEFT);
+				}
+
+				size->height = max(size->height, lines * FONT_HEIGHT_NORMAL);
+				break;
+			}
+
+			case CIW_WIDGET_RAIL_COUNT:
+			case CIW_WIDGET_ROAD_COUNT:
+			case CIW_WIDGET_WATER_COUNT:
+			case CIW_WIDGET_STATION_COUNT: {
+				/* Find the maximum count that is displayed. */
+				uint32 max_val = 100000; // Some random number to reserve enough space.
+				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+					max_val = max(max_val, c->infrastructure.rail[rt]);
+				}
+				max_val = max(max_val, c->infrastructure.signal);
+				for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
+					max_val = max(max_val, c->infrastructure.road[rt]);
+				}
+				max_val = max(max_val, c->infrastructure.water);
+				max_val = max(max_val, c->infrastructure.station);
+				max_val = max(max_val, c->infrastructure.airport);
+
+				SetDParam(0, max_val);
+				size->width = max(size->width, GetStringBoundingBox(STR_WHITE_COMMA).width + 15); // Reserve some wiggle room.
+				break;
+			}
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		const Company *c = Company::Get((CompanyID)this->window_number);
+		int y = r.top;
+
+		int offs_left = _current_text_dir == TD_LTR ? WD_FRAMERECT_LEFT : 0;
+		int offs_right = _current_text_dir == TD_LTR ? 0 : WD_FRAMERECT_LEFT;
+
+		switch (widget) {
+			case CIW_WIDGET_RAIL_DESC:
+				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
+
+				if (this->railtypes != RAILTYPES_NONE) {
+					/* Draw name of each valid railtype. */
+					for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+						if (HasBit(this->railtypes, rt)) {
+							SetDParam(0, GetRailTypeInfo(rt)->strings.name);
+							DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
+						}
+					}
+					DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS);
+				} else {
+					/* No valid railtype. */
+					DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
+				}
+
+				break;
+
+			case CIW_WIDGET_RAIL_COUNT:
+				/* Draw infrastructure count for each valid railtype. */
+				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+					if (HasBit(this->railtypes, rt)) {
+						SetDParam(0, c->infrastructure.rail[rt]);
+						DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+					}
+				}
+				if (this->railtypes != RAILTYPES_NONE) {
+					SetDParam(0, c->infrastructure.signal);
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				}
+				break;
+
+			case CIW_WIDGET_ROAD_DESC:
+				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT);
+
+				if (this->roadtypes != ROADTYPES_NONE) {
+					if (HasBit(this->roadtypes, ROADTYPE_ROAD)) DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD);
+					if (HasBit(this->roadtypes, ROADTYPE_TRAM)) DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY);
+				} else {
+					/* No valid roadtypes. */
+					DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
+				}
+
+				break;
+
+			case CIW_WIDGET_ROAD_COUNT:
+				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
+					SetDParam(0, c->infrastructure.road[ROADTYPE_ROAD]);
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				}
+				if (HasBit(this->roadtypes, ROADTYPE_TRAM)) {
+					SetDParam(0, c->infrastructure.road[ROADTYPE_TRAM]);
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				}
+				break;
+
+			case CIW_WIDGET_WATER_DESC:
+				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
+				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS);
+				break;
+
+			case CIW_WIDGET_WATER_COUNT:
+				SetDParam(0, c->infrastructure.water);
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				break;
+
+			case CIW_WIDGET_STATION_DESC:
+				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
+				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS);
+				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS);
+				break;
+
+			case CIW_WIDGET_STATION_COUNT:
+				SetDParam(0, c->infrastructure.station);
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				SetDParam(0, c->infrastructure.airport);
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				break;
+		}
+	}
+
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	{
+		if (!gui_scope) return;
+
+		this->UpdateRailRoadTypes();
+		this->ReInit();
+	}
+};
+
+static const WindowDesc _company_infrastructure_desc(
+	WDP_AUTO, 0, 0,
+	WC_COMPANY_INFRASTRUCTURE, WC_NONE,
+	WDF_UNCLICK_BUTTONS,
+	_nested_company_infrastructure_widgets, lengthof(_nested_company_infrastructure_widgets)
+);
+
+/**
+ * Open the infrastructure window of a company.
+ * @param company Company to show infrastructure of.
+ */
+static void ShowCompanyInfrastructure(CompanyID company)
+{
+	if (!Company::IsValidID(company)) return;
+	AllocateWindowDescFront<CompanyInfrastructureWindow>(&_company_infrastructure_desc, company);
+}
+
+
 /** Names of the widgets of the #CompanyWindow. Keep them in the same order as in the widget array */
 enum CompanyWindowWidgets {
 	CW_WIDGET_CAPTION,
@@ -1616,6 +1906,8 @@ enum CompanyWindowWidgets {
 	CW_WIDGET_DESC_VEHICLE,
 	CW_WIDGET_DESC_VEHICLE_COUNTS,
 	CW_WIDGET_DESC_COMPANY_VALUE,
+	CW_WIDGET_DESC_INFRASTRUCTURE,
+	CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS,
 	CW_WIDGET_DESC_OWNERS,
 
 	CW_WIDGET_SELECT_BUTTONS,     ///< Selection widget for the button bar.
@@ -1632,6 +1924,8 @@ enum CompanyWindowWidgets {
 
 	CW_WIDGET_SELECT_RELOCATE,    ///< View/hide the 'Relocate HQ' button.
 	CW_WIDGET_RELOCATE_HQ,
+
+	CW_WIDGET_VIEW_INFRASTRUCTURE,
 
 	CW_WIDGET_HAS_PASSWORD,       ///< Draw a lock when the company has a password
 	CW_WIDGET_SELECT_MULTIPLAYER, ///< Multiplayer selection panel.
@@ -1683,6 +1977,19 @@ static const NWidgetPart _nested_company_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 				NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_COMPANY_VALUE), SetDataTip(STR_COMPANY_VIEW_COMPANY_VALUE, STR_NULL), SetFill(1, 0),
+					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
+						NWidget(NWID_HORIZONTAL), SetPIP(0, 4, 0),
+							NWidget(NWID_VERTICAL),
+								NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_INFRASTRUCTURE), SetDataTip(STR_COMPANY_VIEW_INFRASTRUCTURE, STR_NULL),
+								NWidget(NWID_SPACER), SetFill(0, 1),
+							EndContainer(),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS), SetMinimalTextLines(5, 0), SetFill(1, 0),
+							NWidget(NWID_VERTICAL),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_VIEW_INFRASTRUCTURE), SetDataTip(STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
+								NWidget(NWID_SPACER), SetFill(0, 1), SetMinimalSize(90, 0),
+							EndContainer(),
+						EndContainer(),
+					EndContainer(),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_VERTICAL), SetPIP(5, 5, 4),
 						NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_OWNERS), SetMinimalTextLines(3, 0),
@@ -1857,6 +2164,16 @@ struct CompanyWindow : Window
 				}
 				break;
 
+			case CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS:
+				SetDParam(0, UINT_MAX);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_WATER).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_STATION).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_NONE).width);
+				break;
+
 			case CW_WIDGET_DESC_OWNERS: {
 				const Company *c2;
 
@@ -1919,6 +2236,47 @@ struct CompanyWindow : Window
 						}
 					}
 				}
+				break;
+			}
+
+			case CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS: {
+				uint y = r.top;
+
+				/* Collect rail and road counts. */
+				uint rail_pices = c->infrastructure.signal;
+				uint road_pieces = 0;
+				for (uint i = 0; i < lengthof(c->infrastructure.rail); i++) rail_pices += c->infrastructure.rail[i];
+				for (uint i = 0; i < lengthof(c->infrastructure.road); i++) road_pieces += c->infrastructure.road[i];
+
+				if (rail_pices == 0 && road_pieces == 0 && c->infrastructure.water == 0 && c->infrastructure.station == 0 && c->infrastructure.airport == 0) {
+					DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
+				} else {
+					if (rail_pices != 0) {
+						SetDParam(0, rail_pices);
+						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL);
+						y += FONT_HEIGHT_NORMAL;
+					}
+					if (road_pieces != 0) {
+						SetDParam(0, road_pieces);
+						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD);
+						y += FONT_HEIGHT_NORMAL;
+					}
+					if (c->infrastructure.water != 0) {
+						SetDParam(0, c->infrastructure.water);
+						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_WATER);
+						y += FONT_HEIGHT_NORMAL;
+					}
+					if (c->infrastructure.station != 0) {
+						SetDParam(0, c->infrastructure.station);
+						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_STATION);
+						y += FONT_HEIGHT_NORMAL;
+					}
+					if (c->infrastructure.airport != 0) {
+						SetDParam(0, c->infrastructure.airport);
+						DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT);
+					}
+				}
+
 				break;
 			}
 
@@ -2024,6 +2382,10 @@ struct CompanyWindow : Window
 				this->SetWidgetDirty(CW_WIDGET_RELOCATE_HQ);
 				break;
 
+			case CW_WIDGET_VIEW_INFRASTRUCTURE:
+				ShowCompanyInfrastructure((CompanyID)this->window_number);
+				break;
+
 			case CW_WIDGET_BUY_SHARE:
 				DoCommandP(0, this->window_number, 0, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS));
 				break;
@@ -2116,6 +2478,17 @@ void ShowCompany(CompanyID company)
 
 	AllocateWindowDescFront<CompanyWindow>(&_company_desc, company);
 }
+
+/**
+ * Redraw all windows with company infrastructure counts.
+ * @param company The company to redraw the windows of.
+ */
+void DirtyCompanyInfrastructureWindows(CompanyID company)
+{
+	SetWindowDirty(WC_COMPANY, company);
+	SetWindowDirty(WC_COMPANY_INFRASTRUCTURE, company);
+}
+
 
 /** widget numbers of the #BuyCompanyWindow. */
 enum BuyCompanyWidgets {

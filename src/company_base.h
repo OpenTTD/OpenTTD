@@ -30,6 +30,15 @@ struct CompanyEconomyEntry {
 	Money company_value;
 };
 
+struct CompanyInfrastructure {
+	uint32 road[ROADTYPE_END]; ///< Count of company owned track bits for each road type.
+	uint32 signal;             ///< Count of company owned signals.
+	uint32 rail[RAILTYPE_END]; ///< Count of company owned track bits for each rail type.
+	uint32 water;              ///< Count of company owned track bits for canals.
+	uint32 station;            ///< Count of company owned station tiles.
+	uint32 airport;            ///< Count of company owned airports.
+};
+
 typedef Pool<Company, CompanyByte, 1, MAX_COMPANIES> CompanyPool;
 extern CompanyPool _company_pool;
 
@@ -107,6 +116,8 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	CompanySettings settings;          ///< settings specific for each company
 	GroupStatistics group_all[VEH_COMPANY_END];      ///< NOSAVE: Statistics for the ALL_GROUP group.
 	GroupStatistics group_default[VEH_COMPANY_END];  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
+
+	CompanyInfrastructure infrastructure; ///< NOSAVE: Counts of company owned infrastructure.
 
 	/**
 	 * Is this company a valid company, controlled by the computer (a NoAI program)?

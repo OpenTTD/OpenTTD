@@ -825,6 +825,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 			case WC_AIRCRAFT_LIST:
 			case WC_BUY_COMPANY:
 			case WC_COMPANY:
+			case WC_COMPANY_INFRASTRUCTURE:
 				continue;
 
 			default:

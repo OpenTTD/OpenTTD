@@ -2752,6 +2752,8 @@ void ReloadNewGRFData()
 	DeleteInvalidEngineNews();
 	/* Update livery selection windows */
 	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) InvalidateWindowData(WC_COMPANY_COLOUR, i);
+	/* Update company infrastructure counts. */
+	InvalidateWindowClassesData(WC_COMPANY_INFRASTRUCTURE);
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 	CheckTrainsLengths();
