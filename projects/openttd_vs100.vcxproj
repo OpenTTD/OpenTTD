@@ -886,6 +886,7 @@
     <ClInclude Include="..\src\script\api\script_industrytype.hpp" />
     <ClInclude Include="..\src\script\api\script_industrytypelist.hpp" />
     <ClInclude Include="..\src\script\api\script_info_docs.hpp" />
+    <ClInclude Include="..\src\script\api\script_infrastructure.hpp" />
     <ClInclude Include="..\src\script\api\script_list.hpp" />
     <ClInclude Include="..\src\script\api\script_log.hpp" />
     <ClInclude Include="..\src\script\api\script_map.hpp" />
@@ -937,6 +938,7 @@
     <ClCompile Include="..\src\script\api\script_industrylist.cpp" />
     <ClCompile Include="..\src\script\api\script_industrytype.cpp" />
     <ClCompile Include="..\src\script\api\script_industrytypelist.cpp" />
+    <ClCompile Include="..\src\script\api\script_infrastructure.cpp" />
     <ClCompile Include="..\src\script\api\script_list.cpp" />
     <ClCompile Include="..\src\script\api\script_log.cpp" />
     <ClCompile Include="..\src\script\api\script_map.cpp" />

@@ -1,0 +1,132 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/** @file script_infrastructure.cpp Implementation of ScriptInfrastructure. */
+
+#include "../../stdafx.h"
+#include "script_infrastructure.hpp"
+#include "../../settings_func.h"
+#include "../../company_base.h"
+#include "../../rail.h"
+#include "../../road_func.h"
+#include "../../water.h"
+#include "../../station_func.h"
+
+
+/* static */ uint32 ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END) return 0;
+
+	return ::Company::Get((::CompanyID)company)->infrastructure.rail[railtype];
+}
+
+/* static */ uint32 ScriptInfrastructure::GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END) return 0;
+
+	return ::Company::Get((::CompanyID)company)->infrastructure.road[roadtype];
+}
+
+/* static */ uint32 ScriptInfrastructure::GetInfrastructurePieceCount(ScriptCompany::CompanyID company, Infrastructure infra_type)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+	if (company == ScriptCompany::COMPANY_INVALID) return 0;
+
+	::Company *c = ::Company::Get((::CompanyID)company);
+	switch (infra_type) {
+		case INFRASTRUCTURE_RAIL: {
+			uint32 count = 0;
+			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
+				count += c->infrastructure.rail[rt];
+			}
+			return count;
+		}
+
+		case INFRASTRUCTURE_SIGNALS:
+			return c->infrastructure.signal;
+
+		case INFRASTRUCTURE_ROAD: {
+			uint32 count = 0;
+			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
+				count += c->infrastructure.road[rt];
+			}
+			return count;
+		}
+
+		case INFRASTRUCTURE_CANAL:
+			return c->infrastructure.water;
+
+		case INFRASTRUCTURE_STATION:
+			return c->infrastructure.station;
+
+		case INFRASTRUCTURE_AIRPORT:
+			return c->infrastructure.airport;
+
+		default:
+			return 0;
+	}
+}
+
+/* static */ Money ScriptInfrastructure::GetMonthlyRailCosts(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
+
+	return ::RailMaintenanceCost((::RailType)railtype, ::Company::Get((::CompanyID)company)->infrastructure.rail[railtype]);
+}
+
+/* static */ Money ScriptInfrastructure::GetMonthlyRoadCosts(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
+
+	return ::RoadMaintenanceCost((::RoadType)roadtype, ::Company::Get((::CompanyID)company)->infrastructure.road[roadtype]);
+}
+
+/* static */ Money ScriptInfrastructure::GetMonthlyInfrastructureCosts(ScriptCompany::CompanyID company, Infrastructure infra_type)
+{
+	company = ScriptCompany::ResolveCompanyID(company);
+	if (company == ScriptCompany::COMPANY_INVALID || !_settings_game.economy.infrastructure_maintenance) return 0;
+
+	::Company *c = ::Company::Get((::CompanyID)company);
+	switch (infra_type) {
+		case INFRASTRUCTURE_RAIL: {
+			Money cost;
+			for (::RailType rt = ::RAILTYPE_BEGIN; rt != ::RAILTYPE_END; rt++) {
+				cost += RailMaintenanceCost(rt, c->infrastructure.rail[rt]);
+			}
+			return cost;
+		}
+
+		case INFRASTRUCTURE_SIGNALS:
+			return SignalMaintenanceCost(c->infrastructure.signal);
+
+		case INFRASTRUCTURE_ROAD: {
+			Money cost;
+			for (::RoadType rt = ::ROADTYPE_BEGIN; rt != ::ROADTYPE_END; rt++) {
+				cost += RoadMaintenanceCost(rt, c->infrastructure.road[rt]);
+			}
+			return cost;
+		}
+
+		case INFRASTRUCTURE_CANAL:
+			return CanalMaintenanceCost(c->infrastructure.water);
+
+		case INFRASTRUCTURE_STATION:
+			return StationMaintenanceCost(c->infrastructure.station);
+
+		case INFRASTRUCTURE_AIRPORT:
+			return AirportMaintenanceCost(c->index);
+
+		default:
+			return 0;
+	}
+}

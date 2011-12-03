@@ -471,6 +471,14 @@ public:
 	 */
 	static Money GetBuildCost(RoadType roadtype, BuildType build_type);
 
+	/**
+	 * Get the maintenance cost factor of a roadtype.
+	 * @param railtype The roadtype to get the maintenance factor of.
+	 * @pre IsRoadTypeAvailable(roadtype)
+	 * @return Maintenance cost factor of the roadtype.
+	 */
+	static uint16 GetMaintenanceCostFactor(RoadType roadtype);
+
 private:
 
 	/**

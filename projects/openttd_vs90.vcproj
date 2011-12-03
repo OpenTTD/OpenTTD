@@ -2868,6 +2868,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_infrastructure.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_list.hpp"
 				>
 			</File>
@@ -3073,6 +3077,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_industrytypelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_infrastructure.cpp"
 				>
 			</File>
 			<File

@@ -21,6 +21,7 @@
  *
  * API additions:
  *
+ * \li AIAirport::GetMaintenanceCostFactor
  * \li AICargo::CT_AUTO_REFIT
  * \li AICargo::CT_NO_REFIT
  * \li AICargo::IsValidTownEffect
@@ -32,9 +33,12 @@
  * \li AICompany::GetQuarterlyCompanyValue
  * \li AIController::GetOpsTillSuspend
  * \li AIInfo::CONFIG_DEVELOPER
+ * \li AIInfrastructure
  * \li AIOrder::GetOrderRefit
  * \li AIOrder::IsRefitOrder
  * \li AIOrder::SetOrderRefit
+ * \li AIRail::GetMaintenanceCostFactor
+ * \li AIRoad::GetMaintenanceCostFactor
  * \li AITown::GetCargoGoal
  * \li AITown::GetGrowthRate
  * \li AITown::GetLastMonthReceived

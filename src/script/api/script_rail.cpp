@@ -492,3 +492,10 @@ static bool IsValidSignalType(int signal_type)
 
 	return ::GetRailTypeInfo((::RailType)railtype)->max_speed;
 }
+
+/* static */ uint16 ScriptRail::GetMaintenanceCostFactor(RailType railtype)
+{
+	if (!ScriptRail::IsRailTypeAvailable(railtype)) return 0;
+
+	return ::GetRailTypeInfo((::RailType)railtype)->maintenance_multiplier;
+}

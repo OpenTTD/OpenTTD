@@ -151,3 +151,10 @@
 
 	return AirportGetNearestTown(AirportSpec::Get(type), tile)->index;
 }
+
+/* static */ uint16 ScriptAirport::GetMaintenanceCostFactor(AirportType type)
+{
+	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
+
+	return AirportSpec::Get(type)->maintenance_cost;
+}

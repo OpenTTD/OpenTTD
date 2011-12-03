@@ -660,6 +660,7 @@ script/api/script_industrylist.hpp
 script/api/script_industrytype.hpp
 script/api/script_industrytypelist.hpp
 script/api/script_info_docs.hpp
+script/api/script_infrastructure.hpp
 script/api/script_list.hpp
 script/api/script_log.hpp
 script/api/script_map.hpp
@@ -713,6 +714,7 @@ script/api/script_industry.cpp
 script/api/script_industrylist.cpp
 script/api/script_industrytype.cpp
 script/api/script_industrytypelist.cpp
+script/api/script_infrastructure.cpp
 script/api/script_list.cpp
 script/api/script_log.cpp
 script/api/script_map.cpp

@@ -581,3 +581,10 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 		default: return -1;
 	}
 }
+
+/* static */ uint16 ScriptRoad::GetMaintenanceCostFactor(RoadType roadtype)
+{
+	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return 0;
+
+	return roadtype == ROADTYPE_TRAM ? 3 : 2;
+}

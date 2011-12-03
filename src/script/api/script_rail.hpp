@@ -464,6 +464,14 @@ public:
 	 *       To get km/h multiply this number by 1.00584.
 	 */
 	static int32 GetMaxSpeed(RailType railtype);
+
+	/**
+	 * Get the maintenance cost factor of a railtype.
+	 * @param railtype The railtype to get the maintenance factor of.
+	 * @pre IsRailTypeAvailable(railtype)
+	 * @return Maintenance cost factor of the railtype.
+	 */
+	static uint16 GetMaintenanceCostFactor(RailType railtype);
 };
 
 #endif /* SCRIPT_RAIL_HPP */

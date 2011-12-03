@@ -53,6 +53,7 @@
 #include "../script/api/ai/ai_industrylist.hpp.sq"
 #include "../script/api/ai/ai_industrytype.hpp.sq"
 #include "../script/api/ai/ai_industrytypelist.hpp.sq"
+#include "../script/api/ai/ai_infrastructure.hpp.sq"
 #include "../script/api/ai/ai_list.hpp.sq"
 #include "../script/api/ai/ai_log.hpp.sq"
 #include "../script/api/ai/ai_map.hpp.sq"
@@ -153,6 +154,7 @@ void AIInstance::RegisterAPI()
 	SQAIIndustryList_CargoProducing_Register(this->engine);
 	SQAIIndustryType_Register(this->engine);
 	SQAIIndustryTypeList_Register(this->engine);
+	SQAIInfrastructure_Register(this->engine);
 	SQAILog_Register(this->engine);
 	SQAIMap_Register(this->engine);
 	SQAIMarine_Register(this->engine);
