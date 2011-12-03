@@ -20,6 +20,7 @@
 #include "slope_type.h"
 #include "strings_type.h"
 #include "date_type.h"
+#include "core/math_func.hpp"
 
 /** Railtype flags. */
 enum RailTypeFlags {
@@ -187,6 +188,11 @@ struct RailtypeInfo {
 	 * Cost multiplier for building this rail type
 	 */
 	uint16 cost_multiplier;
+
+	/**
+	 * Cost multiplier for maintenance of this rail type
+	 */
+	uint16 maintenance_multiplier;
 
 	/**
 	 * Acceleration type of this rail type
@@ -361,6 +367,28 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	/* make the price the same as remove + build new type for rail types
 	 * which are not compatible in any way */
 	return rebuildcost;
+}
+
+/**
+ * Calculates the maintenance cost of a number of track bits.
+ * @param railtype The railtype to get the cost of.
+ * @param num Number of track bits.
+ * @return Total cost.
+ */
+static inline Money RailMaintenanceCost(RailType railtype, uint32 num)
+{
+	assert(railtype < RAILTYPE_END);
+	return (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
+}
+
+/**
+ * Calculates the maintenance cost of a number of signals.
+ * @param num Number of signals.
+ * @return Total cost.
+ */
+static inline Money SignalMaintenanceCost(uint32 num)
+{
+	return (_price[PR_INFRASTRUCTURE_RAIL] * 15 * num * (1 + IntSqrt(num))) >> 8; // 1 bit fraction for the multiplier and 7 bits scaling.
 }
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);

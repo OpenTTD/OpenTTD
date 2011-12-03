@@ -81,6 +81,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* cost multiplier */
 		8,
 
+		/* maintenance cost multiplier */
+		8,
+
 		/* acceleration type */
 		0,
 
@@ -175,6 +178,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* cost multiplier */
 		12,
 
+		/* maintenance cost multiplier */
+		12,
+
 		/* acceleration type */
 		0,
 
@@ -265,6 +271,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* cost multiplier */
 		16,
 
+		/* maintenance cost multiplier */
+		16,
+
 		/* acceleration type */
 		1,
 
@@ -353,6 +362,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		RTFB_NONE,
 
 		/* cost multiplier */
+		24,
+
+		/* maintenance cost multiplier */
 		24,
 
 		/* acceleration type */

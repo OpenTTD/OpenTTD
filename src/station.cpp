@@ -523,3 +523,22 @@ StationRect& StationRect::operator = (const Rect &src)
 	this->bottom = src.bottom;
 	return *this;
 }
+
+/**
+ * Calculates the maintenance cost of all airports of a company.
+ * @param owner Company.
+ * @return Total cost.
+ */
+Money AirportMaintenanceCost(Owner owner)
+{
+	Money total_cost = 0;
+
+	const Station *st;
+	FOR_ALL_STATIONS(st) {
+		if (st->owner == owner && (st->facilities & FACIL_AIRPORT)) {
+			total_cost += _price[PR_INFRASTRUCTURE_AIRPORT] * st->airport.GetSpec()->maintenance_cost;
+		}
+	}
+	/* 3 bits fraction for the maintenance cost factor. */
+	return total_cost >> 3;
+}

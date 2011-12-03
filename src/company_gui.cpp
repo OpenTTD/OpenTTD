@@ -34,6 +34,9 @@
 #include "rail.h"
 #include "engine_base.h"
 #include "window_func.h"
+#include "road_func.h"
+#include "water.h"
+#include "station_func.h"
 
 #include "table/strings.h"
 
@@ -1624,6 +1627,8 @@ enum CompanyInfrastructureWindowWidgets {
 	CIW_WIDGET_WATER_COUNT,
 	CIW_WIDGET_STATION_DESC,
 	CIW_WIDGET_STATION_COUNT,
+	CIW_WIDGET_TOTAL_DESC,
+	CIW_WIDGET_TOTAL,
 };
 
 static const NWidgetPart _nested_company_infrastructure_widgets[] = {
@@ -1651,6 +1656,10 @@ static const NWidgetPart _nested_company_infrastructure_widgets[] = {
 				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_STATION_DESC), SetMinimalTextLines(3, 0), SetFill(1, 0),
 				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_STATION_COUNT), SetMinimalTextLines(3, 0), SetFill(0, 1),
 			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_TOTAL_DESC), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_TOTAL), SetFill(0, 1),
+			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1662,6 +1671,8 @@ struct CompanyInfrastructureWindow : Window
 {
 	RailTypes railtypes; ///< Valid railtypes.
 	RoadTypes roadtypes; ///< Valid roadtypes.
+
+	uint total_width; ///< String width of the total cost line.
 
 	CompanyInfrastructureWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
@@ -1695,6 +1706,27 @@ struct CompanyInfrastructureWindow : Window
 			this->roadtypes |= ROADTYPES_TRAM;
 			break;
 		}
+	}
+
+	/** Get total infrastructure maintenance cost. */
+	Money GetTotalMaintenanceCost() const
+	{
+		const Company *c = Company::Get((CompanyID)this->window_number);
+		Money total;
+
+		for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+			if (HasBit(this->railtypes, rt)) total += RailMaintenanceCost(rt, c->infrastructure.rail[rt]);
+		}
+		total += SignalMaintenanceCost(c->infrastructure.signal);
+
+		if (HasBit(this->roadtypes, ROADTYPE_ROAD)) total += RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]);
+		if (HasBit(this->roadtypes, ROADTYPE_TRAM)) total += RoadMaintenanceCost(ROADTYPE_TRAM, c->infrastructure.road[ROADTYPE_TRAM]);
+
+		total += CanalMaintenanceCost(c->infrastructure.water);
+		total += StationMaintenanceCost(c->infrastructure.station);
+		total += AirportMaintenanceCost(c->index);
+
+		return total;
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -1749,22 +1781,42 @@ struct CompanyInfrastructureWindow : Window
 			case CIW_WIDGET_RAIL_COUNT:
 			case CIW_WIDGET_ROAD_COUNT:
 			case CIW_WIDGET_WATER_COUNT:
-			case CIW_WIDGET_STATION_COUNT: {
+			case CIW_WIDGET_STATION_COUNT:
+			case CIW_WIDGET_TOTAL: {
 				/* Find the maximum count that is displayed. */
 				uint32 max_val = 100000; // Some random number to reserve enough space.
+				Money max_cost = 100000; // Some random number to reserve enough space.
 				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
 					max_val = max(max_val, c->infrastructure.rail[rt]);
+					max_cost = max(max_cost, RailMaintenanceCost(rt, c->infrastructure.rail[rt]));
 				}
 				max_val = max(max_val, c->infrastructure.signal);
+				max_cost = max(max_cost, SignalMaintenanceCost(c->infrastructure.signal));
 				for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
 					max_val = max(max_val, c->infrastructure.road[rt]);
+					max_cost = max(max_cost, RoadMaintenanceCost(rt, c->infrastructure.road[rt]));
 				}
 				max_val = max(max_val, c->infrastructure.water);
+				max_cost = max(max_cost, CanalMaintenanceCost(c->infrastructure.water));
 				max_val = max(max_val, c->infrastructure.station);
+				max_cost = max(max_cost, StationMaintenanceCost(c->infrastructure.station));
 				max_val = max(max_val, c->infrastructure.airport);
+				max_cost = max(max_cost, AirportMaintenanceCost(c->index));
 
 				SetDParam(0, max_val);
-				size->width = max(size->width, GetStringBoundingBox(STR_WHITE_COMMA).width + 15); // Reserve some wiggle room.
+				SetDParam(1, max_cost * 12); // Convert to per year
+				size->width = max(size->width, GetStringBoundingBox(_settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA).width + 20); // Reserve some wiggle room.
+
+				if (_settings_game.economy.infrastructure_maintenance) {
+					SetDParam(0, this->GetTotalMaintenanceCost());
+					this->total_width = GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width + 20;
+					size->width = max(size->width, this->total_width);
+				}
+
+				/* Set height of the total line. */
+				if (widget == CIW_WIDGET_TOTAL) {
+					size->height = _settings_game.economy.infrastructure_maintenance ? max(size->height, EXP_LINESPACE + FONT_HEIGHT_NORMAL) : 0;
+				}
 				break;
 			}
 		}
@@ -1803,12 +1855,14 @@ struct CompanyInfrastructureWindow : Window
 				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 					if (HasBit(this->railtypes, rt)) {
 						SetDParam(0, c->infrastructure.rail[rt]);
-						DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+						SetDParam(1, RailMaintenanceCost(rt, c->infrastructure.rail[rt]) * 12); // Convert to per year
+						DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 					}
 				}
 				if (this->railtypes != RAILTYPES_NONE) {
 					SetDParam(0, c->infrastructure.signal);
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+					SetDParam(1, SignalMaintenanceCost(c->infrastructure.signal) * 12); // Convert to per year
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 				}
 				break;
 
@@ -1828,11 +1882,13 @@ struct CompanyInfrastructureWindow : Window
 			case CIW_WIDGET_ROAD_COUNT:
 				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
 					SetDParam(0, c->infrastructure.road[ROADTYPE_ROAD]);
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+					SetDParam(1, RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]) * 12); // Convert to per year
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 				}
 				if (HasBit(this->roadtypes, ROADTYPE_TRAM)) {
 					SetDParam(0, c->infrastructure.road[ROADTYPE_TRAM]);
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+					SetDParam(1, RoadMaintenanceCost(ROADTYPE_TRAM, c->infrastructure.road[ROADTYPE_TRAM]) * 12); // Convert to per year
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 				}
 				break;
 
@@ -1843,7 +1899,17 @@ struct CompanyInfrastructureWindow : Window
 
 			case CIW_WIDGET_WATER_COUNT:
 				SetDParam(0, c->infrastructure.water);
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				SetDParam(1, CanalMaintenanceCost(c->infrastructure.water) * 12); // Convert to per year
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+				break;
+
+			case CIW_WIDGET_TOTAL:
+				if (_settings_game.economy.infrastructure_maintenance) {
+					GfxFillRect(r.left, y, r.left + this->total_width, y, PC_WHITE);
+					y += EXP_LINESPACE;
+					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
+					DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL);
+				}
 				break;
 
 			case CIW_WIDGET_STATION_DESC:
@@ -1854,9 +1920,11 @@ struct CompanyInfrastructureWindow : Window
 
 			case CIW_WIDGET_STATION_COUNT:
 				SetDParam(0, c->infrastructure.station);
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				SetDParam(1, StationMaintenanceCost(c->infrastructure.station) * 12); // Convert to per year
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 				SetDParam(0, c->infrastructure.airport);
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA);
+				SetDParam(1, AirportMaintenanceCost(c->index) * 12); // Convert to per year
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 				break;
 		}
 	}

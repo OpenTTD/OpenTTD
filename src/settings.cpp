@@ -946,6 +946,17 @@ static bool RedrawTownAuthority(int32 p1)
 	return true;
 }
 
+/**
+ * Invalidate the company infrastructure details window after a infrastructure maintenance setting change.
+ * @param p1 Unused.
+ * @return Always true.
+ */
+static bool InvalidateCompanyInfrastructureWindow(int32 p1)
+{
+	InvalidateWindowClassesData(WC_COMPANY_INFRASTRUCTURE);
+	return true;
+}
+
 /*
  * A: competitors
  * B: competitor start time. Deprecated since savegame version 110.

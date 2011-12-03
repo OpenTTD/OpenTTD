@@ -76,6 +76,7 @@ struct AirportSpec {
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID cls_id;                 ///< the class to which this airport type belongs
 	SpriteID preview_sprite;               ///< preview sprite for this airport
+	uint16 maintenance_cost;               ///< maintenance cost mulltiplier
 	/* Newgrf data */
 	bool enabled;                          ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;          ///< properties related the the grf file

@@ -76,5 +76,10 @@ extern const PriceBaseSpec _price_base_specs[] = {
 	{   2000, PCAT_CONSTRUCTION, GSF_END,          PR_CLEAR_BRIDGE       }, ///< PR_CLEAR_AQUEDUCT
 	{   7500, PCAT_CONSTRUCTION, GSF_END,          PR_CLEAR_WATER        }, ///< PR_BUILD_LOCK
 	{   2000, PCAT_CONSTRUCTION, GSF_END,          PR_CLEAR_WATER        }, ///< PR_CLEAR_LOCK
+	{     12, PCAT_RUNNING,      GSF_END,          PR_BUILD_RAIL         }, ///< PR_INFRASTRUCTURE_RAIL
+	{     10, PCAT_RUNNING,      GSF_END,          PR_BUILD_ROAD         }, ///< PR_INFRASTRUCTURE_ROAD
+	{      8, PCAT_RUNNING,      GSF_END,          PR_BUILD_CANAL        }, ///< PR_INFRASTRUCTURE_WATER
+	{    100, PCAT_RUNNING,      GSF_END,          PR_STATION_VALUE      }, ///< PR_INFRASTRUCTURE_STATION
+	{   5000, PCAT_RUNNING,      GSF_END,          PR_BUILD_STATION_AIRPORT}, ///< PR_INFRASTRUCTURE_AIRPORT
 };
 assert_compile(lengthof(_price_base_specs) == PR_END);

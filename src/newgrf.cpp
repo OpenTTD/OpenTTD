@@ -3635,6 +3635,10 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 				_string_to_grf_mapping[&as->name] = _cur.grffile->grfid;
 				break;
 
+			case 0x11: // Maintenance cost factor
+				as->maintenance_cost = buf->ReadWord();
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -3941,6 +3945,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				_string_to_grf_mapping[&rti->strings.name] = _cur.grffile->grfid;
 				break;
 
+			case 0x1C: // Maintenance cost factor
+				rti->maintenance_multiplier = buf->ReadWord();
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -3984,6 +3992,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 			case 0x13: // Construction cost
 			case 0x14: // Speed limit
 			case 0x1B: // Name of railtype
+			case 0x1C: // Maintenance cost factor
 				buf->ReadWord();
 				break;
 

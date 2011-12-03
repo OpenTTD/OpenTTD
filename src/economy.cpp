@@ -46,6 +46,7 @@
 #include "core/pool_func.hpp"
 #include "newgrf.h"
 #include "core/backup_type.hpp"
+#include "water.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -584,17 +585,39 @@ static void CompaniesGenStatistics()
 	Station *st;
 
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
-	FOR_ALL_STATIONS(st) {
-		cur_company.Change(st->owner);
-		CommandCost cost(EXPENSES_PROPERTY, _price[PR_STATION_VALUE] >> 1);
-		SubtractMoneyFromCompany(cost);
+	Company *c;
+
+	if (!_settings_game.economy.infrastructure_maintenance) {
+		FOR_ALL_STATIONS(st) {
+			cur_company.Change(st->owner);
+			CommandCost cost(EXPENSES_PROPERTY, _price[PR_STATION_VALUE] >> 1);
+			SubtractMoneyFromCompany(cost);
+		}
+	} else {
+		/* Improved monthly infrastructure costs. */
+		FOR_ALL_COMPANIES(c) {
+			cur_company.Change(c->index);
+
+			CommandCost cost(EXPENSES_PROPERTY);
+			for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
+				if (c->infrastructure.rail[rt] != 0) cost.AddCost(RailMaintenanceCost(rt, c->infrastructure.rail[rt]));
+			}
+			cost.AddCost(SignalMaintenanceCost(c->infrastructure.signal));
+			for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
+				if (c->infrastructure.road[rt] != 0) cost.AddCost(RoadMaintenanceCost(rt, c->infrastructure.road[rt]));
+			}
+			cost.AddCost(CanalMaintenanceCost(c->infrastructure.water));
+			cost.AddCost(StationMaintenanceCost(c->infrastructure.station));
+			cost.AddCost(AirportMaintenanceCost(c->index));
+
+			SubtractMoneyFromCompany(cost);
+		}
 	}
 	cur_company.Restore();
 
 	/* Only run the economic statics and update company stats every 3rd month (1st of quarter). */
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
 
-	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		memmove(&c->old_economy[1], &c->old_economy[0], sizeof(c->old_economy) - sizeof(c->old_economy[0]));
 		c->old_economy[0] = c->cur_economy;
@@ -713,6 +736,7 @@ void RecomputePrices()
 	SetWindowClassesDirty(WC_BUILD_VEHICLE);
 	SetWindowClassesDirty(WC_REPLACE_VEHICLE);
 	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
+	SetWindowClassesDirty(WC_COMPANY_INFRASTRUCTURE);
 	InvalidateWindowData(WC_PAYMENT_RATES, 0);
 }
 

@@ -346,4 +346,6 @@ static FORCEINLINE int RoundDivSU(int a, uint b)
 	}
 }
 
+uint32 IntSqrt(uint32 num);
+
 #endif /* MATH_FUNC_HPP */

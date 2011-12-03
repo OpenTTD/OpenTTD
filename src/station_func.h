@@ -18,6 +18,7 @@
 #include "road_type.h"
 #include "cargo_type.h"
 #include "company_type.h"
+#include "economy_func.h"
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 
@@ -45,5 +46,17 @@ bool IsStationTileBlocked(TileIndex tile);
 bool IsStationTileElectrifiable(TileIndex tile);
 
 void UpdateAirportsNoise();
+
+/**
+ * Calculates the maintenance cost of a number of station tiles.
+ * @param num Number of station tiles.
+ * @return Total cost.
+ */
+static inline Money StationMaintenanceCost(uint32 num)
+{
+	return (_price[PR_INFRASTRUCTURE_STATION] * num * (1 + IntSqrt(num))) >> 7; // 7 bits scaling.
+}
+
+Money AirportMaintenanceCost(Owner owner);
 
 #endif /* STATION_FUNC_H */

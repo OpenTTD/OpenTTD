@@ -230,8 +230,9 @@
  *  163   22767
  *  164   23290
  *  165   23304
+ *  166   23415
  */
-extern const uint16 SAVEGAME_VERSION = 165; ///< Current savegame version of OpenTTD.
+extern const uint16 SAVEGAME_VERSION = 166; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
