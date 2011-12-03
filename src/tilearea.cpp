@@ -94,6 +94,25 @@ bool TileArea::Intersects(const TileArea &ta) const
 }
 
 /**
+ * Does this tile area contain a tile?
+ * @param tile Tile to test for.
+ * @return True if the tile is inside the area.
+ */
+bool TileArea::Contains(TileIndex tile) const
+{
+	if (this->w == 0) return false;
+
+	assert(this->w != 0 && this->h != 0);
+
+	uint left   = TileX(this->tile);
+	uint top    = TileY(this->tile);
+	uint tile_x = TileX(tile);
+	uint tile_y = TileY(tile);
+
+	return IsInsideBS(tile_x, left, this->w) && IsInsideBS(tile_y, top, this->h);
+}
+
+/**
  * Clamp the tile area to map borders.
  */
 void TileArea::ClampToMap()

@@ -48,6 +48,8 @@ struct TileArea {
 
 	bool Intersects(const TileArea &ta) const;
 
+	bool Contains(TileIndex tile) const;
+
 	void ClampToMap();
 
 	/**
