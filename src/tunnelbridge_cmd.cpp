@@ -456,6 +456,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				break;
 
 			case TRANSPORT_WATER:
+				if (!IsBridgeTile(tile_start) && c != NULL) c->infrastructure.water += (bridge_len + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
 				MakeAqueductBridgeRamp(tile_start, owner, dir);
 				MakeAqueductBridgeRamp(tile_end,   owner, ReverseDiagDir(dir));
 				break;
@@ -856,6 +857,8 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 					DirtyCompanyInfrastructureWindows(c->index);
 				}
 			}
+		} else { // Aqueduct
+			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.water -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
 		}
 		DirtyCompanyInfrastructureWindows(owner);
 
@@ -1574,6 +1577,9 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	if (tt == TRANSPORT_RAIL) {
 		old->infrastructure.rail[GetRailType(tile)] -= num_pieces;
 		if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.rail[GetRailType(tile)] += num_pieces;
+	} else if (tt == TRANSPORT_WATER) {
+		old->infrastructure.water -= num_pieces;
+		if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.water += num_pieces;
 	}
 
 	if (new_owner != INVALID_OWNER) {

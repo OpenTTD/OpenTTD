@@ -35,6 +35,8 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "date_func.h"
+#include "company_base.h"
+#include "company_gui.h"
 
 #include "table/strings.h"
 
@@ -134,6 +136,13 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		Depot *depot = new Depot(tile);
 		depot->build_date = _date;
 
+		if (wc1 == WATER_CLASS_CANAL || wc2 == WATER_CLASS_CANAL) {
+			/* Update infrastructure counts after the unconditional clear earlier. */
+			Company::Get(_current_company)->infrastructure.water += wc1 == WATER_CLASS_CANAL && wc2 == WATER_CLASS_CANAL ? 2 : 1;
+		}
+		Company::Get(_current_company)->infrastructure.water += 2 * LOCK_DEPOT_TILE_FACTOR;
+		DirtyCompanyInfrastructureWindows(_current_company);
+
 		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_PART_NORTH, axis, wc1);
 		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_PART_SOUTH, axis, wc2);
 		MarkTileDirtyByTile(tile);
@@ -150,9 +159,28 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 
 	/* Autoslope might turn an originally canal or river tile into land */
 	int z;
-	if (GetTileSlope(tile, &z) != SLOPE_FLAT) wc = WATER_CLASS_INVALID;
+	if (GetTileSlope(tile, &z) != SLOPE_FLAT) {
+		if (wc == WATER_CLASS_CANAL) {
+			/* If we clear the canal, we have to remove it from the infrastructure count as well. */
+			Company *c = Company::GetIfValid(o);
+			if (c != NULL) {
+				c->infrastructure.water--;
+				DirtyCompanyInfrastructureWindows(c->index);
+			}
+		}
+		wc = WATER_CLASS_INVALID;
+	}
 
-	if (wc == WATER_CLASS_SEA && z > 0) wc = WATER_CLASS_CANAL;
+	if (wc == WATER_CLASS_SEA && z > 0) {
+		/* Update company infrastructure count. */
+		Company *c = Company::GetIfValid(o);
+		if (c != NULL) {
+			c->infrastructure.water++;
+			DirtyCompanyInfrastructureWindows(c->index);
+		}
+
+		wc = WATER_CLASS_CANAL;
+	}
 
 	/* Zero map array and terminate animation */
 	DoClearSquare(tile);
@@ -186,6 +214,12 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		delete Depot::GetByTile(tile);
+
+		Company *c = Company::GetIfValid(GetTileOwner(tile));
+		if (c != NULL) {
+			c->infrastructure.water -= 2 * LOCK_DEPOT_TILE_FACTOR;
+			DirtyCompanyInfrastructureWindows(c->index);
+		}
 
 		MakeWaterKeepingClass(tile,  GetTileOwner(tile));
 		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));
@@ -249,6 +283,16 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	}
 
 	if (flags & DC_EXEC) {
+		/* Update company infrastructure counts. */
+		Company *c = Company::Get(_current_company);
+		/* Counts for the water. */
+		c->infrastructure.water++;
+		if (!IsWaterTile(tile - delta)) c->infrastructure.water++;
+		if (!IsWaterTile(tile + delta)) c->infrastructure.water++;
+		/* Count for the lock itself. */
+		c->infrastructure.water += 3 * LOCK_DEPOT_TILE_FACTOR; // Lock is three tiles.
+		DirtyCompanyInfrastructureWindows(_current_company);
+
 		MakeLock(tile, _current_company, dir, wc_lower, wc_upper);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile - delta);
@@ -283,6 +327,13 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
+		/* Remove middle part from company infrastructure count. */
+		Company *c = Company::GetIfValid(GetTileOwner(tile));
+		if (c != NULL) {
+			c->infrastructure.water -= 1 + 3 * LOCK_DEPOT_TILE_FACTOR; // Middle tile + three parts of the lock.
+			DirtyCompanyInfrastructureWindows(c->index);
+		}
+
 		DoClearSquare(tile);
 		MakeWaterKeepingClass(tile + delta, GetTileOwner(tile + delta));
 		MakeWaterKeepingClass(tile - delta, GetTileOwner(tile - delta));
@@ -377,6 +428,10 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 				default:
 					MakeCanal(tile, _current_company, Random());
+					if (Company::IsValidID(_current_company)) {
+						Company::Get(_current_company)->infrastructure.water++;
+						DirtyCompanyInfrastructureWindows(_current_company);
+					}
 					break;
 			}
 			MarkTileDirtyByTile(tile);
@@ -410,12 +465,17 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
 
-			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE) {
+			Owner owner = GetTileOwner(tile);
+			if (owner != OWNER_WATER && owner != OWNER_NONE) {
 				CommandCost ret = CheckTileOwnership(tile);
 				if (ret.Failed()) return ret;
 			}
 
 			if (flags & DC_EXEC) {
+				if (IsCanal(tile) && Company::IsValidID(owner)) {
+					Company::Get(owner)->infrastructure.water--;
+					DirtyCompanyInfrastructureWindows(owner);
+				}
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
 			}
@@ -1191,7 +1251,10 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 {
 	if (!IsTileOwner(tile, old_owner)) return;
 
+	/* No need to dirty company windows here, we'll redraw the whole screen anyway. */
+	if (IsCanal(tile)) Company::Get(old_owner)->infrastructure.water--;
 	if (new_owner != INVALID_OWNER) {
+		if (IsCanal(tile)) Company::Get(new_owner)->infrastructure.water++;
 		SetTileOwner(tile, new_owner);
 		return;
 	}
@@ -1201,7 +1264,10 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 
 	/* Set owner of canals and locks ... and also canal under dock there was before.
 	 * Check if the new owner after removing depot isn't OWNER_WATER. */
-	if (IsTileOwner(tile, old_owner)) SetTileOwner(tile, OWNER_NONE);
+	if (IsTileOwner(tile, old_owner)) {
+		if (IsCanal(tile)) Company::Get(old_owner)->infrastructure.water--;
+		SetTileOwner(tile, OWNER_NONE);
+	}
 }
 
 static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)

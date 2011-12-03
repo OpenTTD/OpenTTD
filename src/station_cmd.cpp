@@ -2482,6 +2482,13 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TRY);
 
+		/* If the water part of the dock is on a canal, update infrastructure counts.
+		 * This is needed as we've unconditionally cleared that tile before. */
+		if (wc == WATER_CLASS_CANAL) {
+			Company::Get(st->owner)->infrastructure.water++;
+			DirtyCompanyInfrastructureWindows(st->owner);
+		}
+
 		MakeDock(tile, st->owner, st->index, direction, wc);
 
 		st->UpdateVirtCoord();

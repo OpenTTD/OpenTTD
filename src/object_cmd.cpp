@@ -103,6 +103,11 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 
 	TILE_AREA_LOOP(t, ta) {
 		WaterClass wc = (IsWaterTile(t) ? GetWaterClass(t) : WATER_CLASS_INVALID);
+		/* Update company infrastructure counts for objects build on canals owned by nobody. */
+		if (wc == WATER_CLASS_CANAL && owner != OWNER_NONE && (IsTileOwner(tile, OWNER_NONE) || IsTileOwner(tile, OWNER_WATER))) {
+			Company::Get(owner)->infrastructure.water++;
+			DirtyCompanyInfrastructureWindows(owner);
+		}
 		MakeObject(t, type, owner, o->index, wc, Random());
 		MarkTileDirtyByTile(t);
 	}

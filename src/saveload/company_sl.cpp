@@ -151,8 +151,29 @@ void AfterLoadCompanyStats()
 						break;
 					}
 
+					case STATION_DOCK:
+					case STATION_BUOY:
+						if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+							if (c != NULL) c->infrastructure.water++;
+						}
+						break;
+
 					default:
 						break;
+				}
+				break;
+
+			case MP_WATER:
+				if (IsShipDepot(tile) || IsLock(tile)) {
+					c = Company::GetIfValid(GetTileOwner(tile));
+					if (c != NULL) c->infrastructure.water += LOCK_DEPOT_TILE_FACTOR;
+				}
+				/* FALL THROUGH */
+
+			case MP_OBJECT:
+				if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+					c = Company::GetIfValid(GetTileOwner(tile));
+					if (c != NULL) c->infrastructure.water++;
 				}
 				break;
 
@@ -179,6 +200,11 @@ void AfterLoadCompanyStats()
 							}
 							break;
 						}
+
+						case TRANSPORT_WATER:
+							c = Company::GetIfValid(GetTileOwner(tile));
+							if (c != NULL) c->infrastructure.water += len;
+							break;
 
 						default:
 							break;

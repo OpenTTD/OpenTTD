@@ -205,6 +205,8 @@ static const int INVALID_PRICE_MODIFIER = MIN_PRICE_MODIFIER - 1;
 static const uint TUNNELBRIDGE_TRACKBIT_FACTOR = 4;
 /** Multiplier for how many regular track bits a level crossing counts. */
 static const uint LEVELCROSSING_TRACKBIT_FACTOR = 2;
+/** Multiplier for how many regular tiles a lock counts. */
+static const uint LOCK_DEPOT_TILE_FACTOR = 2;
 
 struct CargoPayment;
 typedef uint32 CargoPaymentID;
