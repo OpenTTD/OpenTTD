@@ -1357,6 +1357,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}스크립트
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :오리지널
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -3391,7 +3392,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI 로�
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AI 재개 및 계속됨
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 AI의 디버그된 출력물을 봅니다.
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :불러올 인공지능이 없습니다.{}이 인공지능은 불용품이며 아무 기능도 하지 않을 것입니다.{}'온라인 컨텐츠 체크' 기능으로 다른 인공지능을 다운받으세요.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스크린샷을 찍어 인공지능 제작자에게 보고하십시오.

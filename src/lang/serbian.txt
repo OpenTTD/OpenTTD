@@ -1337,6 +1337,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Vozila 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pomeranje prozora kada miš priđe ivicama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dozvoljeno podmićivanje lokalnih vlasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dozvoljena kupovina ekskluzivnih prava prevoza: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Dozvoljeno finansiranje zgrada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Dozvoljeno finansiranje rekonstrukcije lokalnih puteva: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dozvoljeno slanje novca drugim preduzećima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Množilac težine tovara za simulaciju opterećenja vozova: {ORANGE}{STRING}
@@ -1458,6 +1459,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Računa
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Računar ne može da koristi vodni prevoz: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dozvoljena VI u mrežnoj partiji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Suspendovanje #opkodova pre skripti: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervali servisiranja u procentima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}{STRING} dan{P 0:1 "" a a}/%
@@ -1514,6 +1516,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus prijanjanja prozora: {ORANGE}isključen
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najviše nepridenutih prozora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Najviše nepridenutih prozora: {ORANGE}isključeno
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Najbliži nivo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Najudaljeniji nivo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Uobičajan
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Brzina razvoja naselja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nimalo
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sporo
@@ -1542,6 +1552,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiran
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vozovi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Naselja
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripte
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originalno
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -2769,6 +2780,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Količin
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Tovar potreban za razvoj naselja:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} potrebno zimi
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} dostavljeno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (potrebno)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostavljeno)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Naselje se razvija u periodu od {ORANGE}{COMMA}{BLACK} dan{P a a a}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Naselje se razvija u periodu od {ORANGE}{COMMA}{BLACK} dan{P a a a} (sponzorisano)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Naselje se {RED}ne{BLACK} razvija
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivo buke u naselju: {ORANGE}{COMMA}{BLACK}  najviše: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pozicionira glavni pogled na lokaciju naselja. Ctrl+Klik otvara novi pogled na lokaciju naselja
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokalna vlast
@@ -3606,7 +3623,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Uključu
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nastavlja partiju i VI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Prikazuje podatke radi korekcije ove VI
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije
