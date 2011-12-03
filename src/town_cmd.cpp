@@ -52,6 +52,7 @@
 #include "table/town_land.h"
 
 TownID _new_town_id;
+uint32 _town_cargos_accepted; ///< Bitmap of all cargos accepted by houses.
 
 /* Initialize the town-pool */
 TownPool _town_pool("Town");
@@ -740,6 +741,17 @@ void UpdateTownCargos(Town *t)
 
 	/* Update the total acceptance. */
 	UpdateTownCargoTotal(t);
+}
+
+/** Updates the bitmap of all cargos accepted by houses. */
+void UpdateTownCargoBitmap()
+{
+	Town *town;
+	_town_cargos_accepted = 0;
+
+	FOR_ALL_TOWNS(town) {
+		_town_cargos_accepted |= town->cargo_accepted_total;
+	}
 }
 
 static bool GrowTown(Town *t);
@@ -3143,6 +3155,8 @@ void TownsMonthlyLoop()
 		UpdateTownUnwanted(t);
 		UpdateTownCargos(t);
 	}
+
+	UpdateTownCargoBitmap();
 }
 
 void TownsYearlyLoop()

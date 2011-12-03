@@ -99,6 +99,7 @@ void UpdateHousesAndTowns()
 		UpdateTownRadius(town);
 		UpdateTownCargos(town);
 	}
+	UpdateTownCargoBitmap();
 }
 
 /** Save and load of towns. */

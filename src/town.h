@@ -185,6 +185,7 @@ void UpdateTownMaxPass(Town *t);
 void UpdateTownRadius(Town *t);
 void UpdateTownCargos(Town *t);
 void UpdateTownCargoTotal(Town *t);
+void UpdateTownCargoBitmap();
 CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags);
@@ -283,5 +284,7 @@ void MakeDefaultName(T *obj)
 
 	obj->town_cn = (uint16)next; // set index...
 }
+
+extern uint32 _town_cargos_accepted;
 
 #endif /* TOWN_H */
