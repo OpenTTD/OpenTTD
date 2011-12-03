@@ -306,6 +306,7 @@ tile_type.h
 tilearea_type.h
 tilehighlight_func.h
 tilehighlight_type.h
+tilematrix_type.hpp
 timetable.h
 toolbar_gui.h
 town.h

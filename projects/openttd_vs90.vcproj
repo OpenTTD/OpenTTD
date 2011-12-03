@@ -1564,6 +1564,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tilematrix_type.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\timetable.h"
 				>
 			</File>

@@ -942,6 +942,9 @@
     <ClInclude Include="..\src\tilehighlight_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\tilematrix_type.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\timetable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
