@@ -914,12 +914,7 @@ static uint GetWindowZPriority(const Window *w)
 			++z_priority;
 
 		case WC_SAVELOAD:
-		case WC_GAME_OPTIONS:
 		case WC_NETWORK_WINDOW:
-		case WC_GRF_PARAMETERS:
-		case WC_NEWGRF_TEXTFILE:
-		case WC_AI_LIST:
-		case WC_AI_SETTINGS:
 			++z_priority;
 
 		case WC_CONSOLE:
