@@ -1502,24 +1502,26 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 }
 
 /* Common handler for saving/loading variables to the configuration file */
-static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list, bool minimal = false)
+static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list, bool basic_settings = true, bool other_settings = true)
 {
-	proc(ini, (const SettingDesc*)_misc_settings,    "misc",  NULL);
+	if (basic_settings) {
+		proc(ini, (const SettingDesc*)_misc_settings,    "misc",  NULL);
 #if defined(WIN32) && !defined(DEDICATED)
-	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
+		proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
+	}
 
-	if (minimal) return;
-
-	proc(ini, _settings,         "patches",  &_settings_newgame);
-	proc(ini, _currency_settings,"currency", &_custom_currency);
-	proc(ini, _company_settings, "company",  &_settings_client.company);
+	if (other_settings) {
+		proc(ini, _settings,         "patches",  &_settings_newgame);
+		proc(ini, _currency_settings,"currency", &_custom_currency);
+		proc(ini, _company_settings, "company",  &_settings_client.company);
 
 #ifdef ENABLE_NETWORK
-	proc_list(ini, "server_bind_addresses", &_network_bind_list);
-	proc_list(ini, "servers", &_network_host_list);
-	proc_list(ini, "bans",    &_network_ban_list);
+		proc_list(ini, "server_bind_addresses", &_network_bind_list);
+		proc_list(ini, "servers", &_network_host_list);
+		proc_list(ini, "bans",    &_network_ban_list);
 #endif /* ENABLE_NETWORK */
+	}
 }
 
 static IniFile *IniLoadConfig()
@@ -1538,7 +1540,8 @@ void LoadFromConfig(bool minimal)
 	IniFile *ini = IniLoadConfig();
 	if (!minimal) ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
 
-	HandleSettingDescs(ini, IniLoadSettings, IniLoadSettingList, minimal);
+	/* Load basic settings only during bootstrap, load other settings not during bootstrap */
+	HandleSettingDescs(ini, IniLoadSettings, IniLoadSettingList, minimal, !minimal);
 
 	if (!minimal) {
 		_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
