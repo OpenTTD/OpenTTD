@@ -292,6 +292,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :சரக்க
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}விருப்பத் தேர்வு
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}விளையாட்டை சேமி,கைவிடு, வெளியேறு
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}வரைபடத்தை காட்டு
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}நகர புத்தகம் காண்பி
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}உதவித் தொகை காண்பி
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}நிறுவனத்தின் நிலையங்களின் பட்டியலை காண்பி
@@ -299,6 +300,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}நி�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}நிறுவனத்தின் விவரங்களை காட்டு
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}வரைபடம் காண்பி
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}நிறுவங்களின் பட்டியலை காட்டு
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ஓர் தொழிற்சாலையை கட்டு அல்லது தொழிற்சாலைகளின் பட்டியலை காட்டு
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}உரு அளவு பெரிதாக்கு
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}உரு அளவு சிறிதாக்கு
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}இரயில்பாதை கட்டு
@@ -670,9 +672,33 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}பு�
 # Game options window
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :பிரித்தானிய பவுண்டு (GBP)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :அமெரிக்கன் டாலர் (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :யுரோ (EUR)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :ஜப்பானிய என் (JPY)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :ஆஸ்திரிய சில்லிங் (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :பெல்கிய ப்ரேங்க் (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :சுவிஸ் ப்ரேங்க் (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :செக் கொருணா (CZK)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :டேனிஷ் க்ரோன் (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :ஸ்பானிஷ் பெசெடா (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :பின்னிஷ் மார்க்கா (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :பிரெஞ்ச் ப்ரேங்க் (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :கிரேக்க ட்ரச்மா (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :ஹங்கேரிய போரின்ட் (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :ஐஸ்லாந்திய க்ரோனா (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :இத்தாலிய லிரா (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :டச்சு கில்டர் (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :நோர்வேஜிய க்ரோன் (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :போலிஷ் சிலாட்டி Złoty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :ரோமானிய லூ (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :ரஷ்ய ரூபில்ஸ் (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :ஸ்லோவேனிய டொலர் (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :ஸ்வீடிஷ் க்ரோனா (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :துருக்கிய லிரா (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :சுலோவக் கொருணா (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :பிரேசிலிய ரியால் (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :எஸ்டோனிய க்ரூனி (EEK)
 ############ end of currency region
 
 
@@ -694,13 +720,17 @@ STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :ஆங்கி
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :டச்சு
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :பின்னிஷ்
 STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :போலிஷ்
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :சுலோவக்
 STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :நார்வேஜியன்
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ஹங்கேரியன்
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ஆஸ்திரியன்
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :ரோமேனியன்
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :செக்
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :சுவிஸ்
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :டேனிஷ்
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :துர்கிஷ்
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :இத்தாலியன்
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :கடலன்
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி
@@ -735,6 +765,7 @@ STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}எள�
 STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}நடுத்தரம்
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}சேமி
 
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}கட்டுமானத்திற்கான செலவு: {ORANGE}{STRING}
@@ -745,7 +776,9 @@ STR_FUNDING_ONLY                                                :நிதிய
 STR_MINIMAL                                                     :குறைந்தபட்சம்
 STR_NUM_VERY_LOW                                                :மிகவும் குறைவு
 STR_NUM_LOW                                                     :குறைவு
+STR_NUM_NORMAL                                                  :இயல்பான
 STR_NUM_HIGH                                                    :அதிகம்
+STR_NUM_CUSTOM                                                  :மாற்றியமைத்த
 
 STR_VARIETY_NONE                                                :ஒன்றுமில்லை
 STR_VARIETY_VERY_LOW                                            :மிகவும் குறைவு
@@ -767,7 +800,13 @@ STR_RIVERS_MODERATE                                             :நடுத்
 STR_RIVERS_LOT                                                  :பல
 
 STR_DISASTER_NONE                                               :ஒன்றுமில்லை
+STR_DISASTER_REDUCED                                            :குறைக்கப்பட்ட
+STR_DISASTER_NORMAL                                             :இயல்பான
 
+STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X2                                                  :x2
+STR_SUBSIDY_X3                                                  :x3
+STR_SUBSIDY_X4                                                  :x4
 
 
 
@@ -801,6 +840,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}உள�
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ஒன்றுமில்லை
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :குறைந்தபட்சம்
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :இயல்பான
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}கட்டட பராமரிப்பு: {ORANGE}{STRING}
 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {ORANGE}{STRING}
@@ -830,6 +870,12 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தக�
 
 
 
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :இயல்பான
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :மெதுவாக
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :சாதாரணமாக
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :வேகமாக
@@ -1299,6 +1345,7 @@ STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURREN
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_MAX_LOAN                                           :{WHITE}அதி. கடன்: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}கட்டுமானங்கள்
 
 # Company view
 
@@ -1306,11 +1353,35 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}வாக
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} இரயில்{P "" கள்}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} சாலை வாகனம்{P "" கள்}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} கப்பல்{P "" கள்}
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}கட்டுமானம்:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} இரயில் பாகங்கள்
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} சாலை பாகங்கள்
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} தண்ணீர் வட்டங்கள்
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} நிலைய வட்டங்கள்
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} விமான நிலையங்கள்
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}ஒன்றுமில்லை
+
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}விவரங்கள்
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}விவரமான கட்டட எண்ணிக்கைகளை காட்டு
 
 
 
 
 
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} இன் கட்டுமானங்கள்
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}இரயில் பாகங்கள்:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}சிக்னல்கள்
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}சாலை பாகங்கள்:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}சாலை
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ட்ராம்வே
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}தண்ணீர் வட்டங்கள்:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}கால்வாய்கள்
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}நிலையங்கள்:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}நிலைய வட்டங்கள்
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}விமான நிலையங்கள்
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/வருடத்திற்கு ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/வருடத்திற்கு
 
 # Industry directory
 
@@ -1481,7 +1552,6 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம்
 # AI debug window
 
 
-
 # AI configuration window
 
 
@@ -1620,6 +1690,11 @@ STR_SV_STNAME_FALLBACK                                          :{STRING} நி
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :பயணிகள் பெட்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :சரக்கு வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :உணவு வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :தண்ணீர் லாரி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :இனிப்பு வாகனம்
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS ரீகல் பேருந்து
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :ஹியர்போர்ட் லியோபார்ட் பேருந்து
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :ப்பாஸ்டர் பேருந்து
@@ -1627,8 +1702,18 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :பாஸ்ட
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :பாலாக்ஃ எஃகு லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl எஃகு லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :கெல்லிங் எஃகு பாரஊர்தி
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :பாஸ்டர் உணவு வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :பெர்ரி உணவு வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :சிப்பி உணவு வாகனம்
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl பேபர் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :பாலொகஃ காகித ட்ரக்
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS பேபர் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS செம்பு ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl செம்பு ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :கொஸ் செம்பு ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl தண்ணீர் லாரி
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :பாலொகஃ தண்ணீர் லாரி
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS தண்ணீர் லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :பாலொகஃ பழ ட்ரக்
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl பழ ட்ரக்
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :கேஈல்லிங் பழ ட்ரக்
@@ -1669,6 +1754,7 @@ STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS எண்�
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. எண்ணெய்க்கப்பல்
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS பயணப்படகு
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP பயணப்படகு
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :பேக்வெல் 300 ஹோவர்கிராப்ட்
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :சுக்கெர்-சுக் பயணப்படகு
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :ஸெவர்ஸெஅக் பயணப்படகு
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :ஈஏட் சரக்குக் கப்பல்
@@ -1679,6 +1765,10 @@ STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :ஸம்ப்
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :கொல்மன் கவுன்ட்
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP டார்ட்
 STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :ஈஏட் ஹவ்கன்
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :பேக்வெல் கோட்ஸ்வால்டு LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :பேக்வெல் லுக்கேட் LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :பேக்வெல் லுக்கேட் LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :பேக்வெல் லுக்கேட் LB80
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :பேக்வெல் லுக்கேட் LB-10
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :பேக்வெல் லுக்கேட் LB-11
 STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :ஈஏட் ஏரொஸ்பேஸ் YAC 1-11
@@ -1792,6 +1882,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
