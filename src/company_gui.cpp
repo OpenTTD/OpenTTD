@@ -2272,7 +2272,7 @@ struct CompanyWindow : Window
 
 			case CW_WIDGET_FACE_TITLE:
 				SetDParam(0, c->index);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
 			case CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE: {
