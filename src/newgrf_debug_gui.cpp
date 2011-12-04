@@ -685,8 +685,8 @@ struct SpriteAlignerWindow : Window {
 
 			case SAW_OFFSETS: {
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
-				SetDParam(0, spr->x_offs);
-				SetDParam(1, spr->y_offs);
+				SetDParam(0, spr->x_offs / ZOOM_LVL_BASE);
+				SetDParam(1, spr->y_offs / ZOOM_LVL_BASE);
 				break;
 			}
 
@@ -714,18 +714,18 @@ struct SpriteAlignerWindow : Window {
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
 				int width  = r.right  - r.left + 1;
 				int height = r.bottom - r.top  + 1;
-				int x = r.left - spr->x_offs + (width  - spr->width) / 2;
-				int y = r.top  - spr->y_offs + (height - spr->height) / 2;
+				int x = r.left - spr->x_offs / ZOOM_LVL_BASE + (width  - spr->width / ZOOM_LVL_BASE) / 2;
+				int y = r.top  - spr->y_offs / ZOOM_LVL_BASE + (height - spr->height / ZOOM_LVL_BASE) / 2;
 
 				/* And draw only the part within the sprite area */
 				SubSprite subspr = {
-					spr->x_offs + (spr->width  - width)  / 2 + 1,
-					spr->y_offs + (spr->height - height) / 2 + 1,
-					spr->x_offs + (spr->width  + width)  / 2 - 1,
-					spr->y_offs + (spr->height + height) / 2 - 1,
+					spr->x_offs + (spr->width  - width  * ZOOM_LVL_BASE) / 2 + 1,
+					spr->y_offs + (spr->height - height * ZOOM_LVL_BASE) / 2 + 1,
+					spr->x_offs + (spr->width  + width  * ZOOM_LVL_BASE) / 2 - 1,
+					spr->y_offs + (spr->height + height * ZOOM_LVL_BASE) / 2 - 1,
 				};
 
-				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr, ZOOM_LVL_NORMAL);
+				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr, ZOOM_LVL_GUI);
 				break;
 			}
 
@@ -806,10 +806,10 @@ struct SpriteAlignerWindow : Window {
 				 */
 				Sprite *spr = const_cast<Sprite *>(GetSprite(this->current_sprite, ST_NORMAL));
 				switch (widget) {
-					case SAW_UP:    spr->y_offs--; break;
-					case SAW_DOWN:  spr->y_offs++; break;
-					case SAW_LEFT:  spr->x_offs--; break;
-					case SAW_RIGHT: spr->x_offs++; break;
+					case SAW_UP:    spr->y_offs -= ZOOM_LVL_BASE; break;
+					case SAW_DOWN:  spr->y_offs += ZOOM_LVL_BASE; break;
+					case SAW_LEFT:  spr->x_offs -= ZOOM_LVL_BASE; break;
+					case SAW_RIGHT: spr->x_offs += ZOOM_LVL_BASE; break;
 				}
 				/* Ofcourse, we need to redraw the sprite, but where is it used?
 				 * Everywhere is a safe bet. */
