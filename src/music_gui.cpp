@@ -178,8 +178,9 @@ static void MusicVolumeChanged(byte new_vol)
 static void DoPlaySong()
 {
 	char filename[MAX_PATH];
-	FioFindFullPath(filename, lengthof(filename), BASESET_DIR,
-			BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename);
+	if (FioFindFullPath(filename, lengthof(filename), BASESET_DIR, BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename) == NULL) {
+		FioFindFullPath(filename, lengthof(filename), OLD_GM_DIR, BaseMusic::GetUsedSet()->files[_music_wnd_cursong - 1].filename);
+	}
 	_music_driver->PlaySong(filename);
 	SetWindowDirty(WC_MUSIC_WINDOW, 0);
 }
