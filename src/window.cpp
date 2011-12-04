@@ -1671,6 +1671,13 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
 void ResizeWindow(Window *w, int delta_x, int delta_y)
 {
 	if (delta_x != 0 || delta_y != 0) {
+		/* Determine the new right/bottom position. If that is outside of the bounds of
+		 * the resolution clamp it in such a manner that it stays within the bounts. */
+		int new_right  = w->left + w->width  + delta_x;
+		int new_bottom = w->top  + w->height + delta_y;
+		if (new_right  >= (int)_cur_resolution.width)  delta_x -= new_right  - _cur_resolution.width;
+		if (new_bottom >= (int)_cur_resolution.height) delta_y -= new_bottom - _cur_resolution.height;
+
 		w->SetDirty();
 
 		uint new_xinc = max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
