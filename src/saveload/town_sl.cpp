@@ -205,7 +205,7 @@ static void Load_TOWN()
 		Town *t = new (index) Town();
 		SlObject(t, _town_desc);
 
-		if (t->townnamegrfid == 0 && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST)) {
+		if (t->townnamegrfid == 0 && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 			SlErrorCorrupt("Invalid town name generator");
 		}
 	}

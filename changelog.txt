@@ -1,3 +1,12 @@
+1.1.4 (2011-12-05)
+------------------------------------------------------------------------
+- Fix: Savegames made with the Catalan town name generator would trigger a 'savegame corrupt' exception [FS#4866] (r23418)
+- Fix: [Network] Do not send chat messages to clients that have not joined yet [FS#4826] (r23337)
+- Fix: Assertion could be triggered in case a station was removed just after a vehicle delivered cargo to it [FS#4849] (r23312)
+- Fix: Pathfinders go haywire when you build a lock over a ship going perpendicular to the axis of the new lock [FS#4845] (r23284)
+- Fix: [NewGRF] Prevent against writing data for unknown fonts (r23283)
+
+
 1.1.4-RC1 (2011-11-20)
 ------------------------------------------------------------------------
 - Fix: 3-column view of NewGRF GUI had too much space for certain font sizes (r23251)
