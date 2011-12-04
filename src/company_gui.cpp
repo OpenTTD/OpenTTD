@@ -1746,6 +1746,8 @@ struct CompanyInfrastructureWindow : Window
 			case CIW_WIDGET_RAIL_DESC: {
 				uint lines = 1;
 
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width);
+
 				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
 					if (HasBit(this->railtypes, rt)) {
 						lines++;
@@ -1765,6 +1767,8 @@ struct CompanyInfrastructureWindow : Window
 			case CIW_WIDGET_ROAD_DESC: {
 				uint lines = 1;
 
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT).width);
+
 				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
 					lines++;
 					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD).width + WD_FRAMERECT_LEFT);
@@ -1778,14 +1782,25 @@ struct CompanyInfrastructureWindow : Window
 				break;
 			}
 
+			case CIW_WIDGET_WATER_DESC:
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + WD_FRAMERECT_LEFT);
+				break;
+
+			case CIW_WIDGET_STATION_DESC:
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + WD_FRAMERECT_LEFT);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + WD_FRAMERECT_LEFT);
+				break;
+
 			case CIW_WIDGET_RAIL_COUNT:
 			case CIW_WIDGET_ROAD_COUNT:
 			case CIW_WIDGET_WATER_COUNT:
 			case CIW_WIDGET_STATION_COUNT:
 			case CIW_WIDGET_TOTAL: {
 				/* Find the maximum count that is displayed. */
-				uint32 max_val = 100000; // Some random number to reserve enough space.
-				Money max_cost = 100000; // Some random number to reserve enough space.
+				uint32 max_val = 1000;  // Some random number to reserve enough space.
+				Money max_cost = 10000; // Some random number to reserve enough space.
 				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
 					max_val = max(max_val, c->infrastructure.rail[rt]);
 					max_cost = max(max_cost, RailMaintenanceCost(rt, c->infrastructure.rail[rt]));
@@ -1808,7 +1823,7 @@ struct CompanyInfrastructureWindow : Window
 				size->width = max(size->width, GetStringBoundingBox(_settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA).width + 20); // Reserve some wiggle room.
 
 				if (_settings_game.economy.infrastructure_maintenance) {
-					SetDParam(0, this->GetTotalMaintenanceCost());
+					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
 					this->total_width = GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width + 20;
 					size->width = max(size->width, this->total_width);
 				}
