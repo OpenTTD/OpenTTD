@@ -473,7 +473,7 @@ public:
 
 	/**
 	 * Get the maintenance cost factor of a roadtype.
-	 * @param railtype The roadtype to get the maintenance factor of.
+	 * @param roadtype The roadtype to get the maintenance factor of.
 	 * @pre IsRoadTypeAvailable(roadtype)
 	 * @return Maintenance cost factor of the roadtype.
 	 */
