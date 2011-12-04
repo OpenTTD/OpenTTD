@@ -1976,6 +1976,8 @@ enum CompanyWindowWidgets {
 	CW_WIDGET_DESC_COMPANY_VALUE,
 	CW_WIDGET_DESC_INFRASTRUCTURE,
 	CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS,
+
+	CW_WIDGET_SELECT_DESC_OWNERS,
 	CW_WIDGET_DESC_OWNERS,
 
 	CW_WIDGET_SELECT_BUTTONS,     ///< Selection widget for the button bar.
@@ -2059,9 +2061,11 @@ static const NWidgetPart _nested_company_widgets[] = {
 						EndContainer(),
 					EndContainer(),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(NWID_VERTICAL), SetPIP(5, 5, 4),
-						NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_OWNERS), SetMinimalTextLines(3, 0),
-						NWidget(NWID_SPACER), SetFill(0, 1),
+					NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_DESC_OWNERS),
+						NWidget(NWID_VERTICAL), SetPIP(5, 5, 4),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_OWNERS), SetMinimalTextLines(3, 0),
+							NWidget(NWID_SPACER), SetFill(0, 1),
+						EndContainer(),
 					EndContainer(),
 					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
 						NWidget(NWID_SPACER), SetMinimalSize(90, 0), SetFill(0, 1),
@@ -2069,7 +2073,6 @@ static const NWidgetPart _nested_company_widgets[] = {
 						NWidget(NWID_HORIZONTAL),
 							NWidget(WWT_EMPTY, COLOUR_GREY, CW_WIDGET_HAS_PASSWORD),
 							NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_MULTIPLAYER),
-								NWidget(NWID_SPACER), SetFill(1, 0),
 								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
 								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_JOIN), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
 							EndContainer(),
@@ -2117,8 +2120,7 @@ struct CompanyWindow : Window
 	/** Display planes in the company window. */
 	enum CompanyWindowPlanes {
 		/* Display planes of the #CW_WIDGET_SELECT_MULTIPLAYER selection widget. */
-		CWP_MP_EMPTY = 0, ///< Do not display any multiplayer button.
-		CWP_MP_C_PWD,     ///< Display the company password button.
+		CWP_MP_C_PWD = 0, ///< Display the company password button.
 		CWP_MP_C_JOIN,    ///< Display the join company button.
 
 		/* Display planes of the #CW_WIDGET_SELECT_VIEW_BUILD_HQ selection widget. */
@@ -2146,6 +2148,8 @@ struct CompanyWindow : Window
 		bool local = this->window_number == _local_company;
 
 		if (!this->IsShaded()) {
+			bool reinit = false;
+
 			/* Button bar selection. */
 			int plane = local ? CWP_BUTTONS_LOCAL : CWP_BUTTONS_OTHER;
 			NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
@@ -2175,15 +2179,33 @@ struct CompanyWindow : Window
 				return;
 			}
 
+			/* Owners of company */
+			plane = SZSP_HORIZONTAL;
+			for (uint i = 0; i < lengthof(c->share_owners); i++) {
+				if (c->share_owners[i] != INVALID_COMPANY) {
+					plane = 0;
+					break;
+				}
+			}
+			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_DESC_OWNERS);
+			if (plane != wi->shown_plane) {
+				wi->SetDisplayedPlane(plane);
+				reinit = true;
+			}
+
 			/* Multiplayer buttons. */
-			plane = ((!_networking) ? CWP_MP_EMPTY : (local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
+			plane = ((!_networking) ? (int)SZSP_NONE : (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
 			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_MULTIPLAYER);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
-				this->SetDirty();
-				return;
+				reinit = true;
 			}
 			this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   c->is_ai);
+
+			if (reinit) {
+				this->ReInit();
+				return;
+			}
 		}
 
 		if (!local) {
