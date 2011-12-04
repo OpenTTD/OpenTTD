@@ -338,3 +338,23 @@ Train does not crash with itself [FS#4635]:
 	it does not add anything to gameplay.
 	Nevertheless trains shall not crash in normal operation, so making
 	a train not crash with itself is the best solution for everyone.
+
+Vehicles not keeping their "maximum" speed [FS#4815]:
+	Vehicles that have not enough power to reach and maintain their
+	advertised maximum speed might be constantly jumping between two
+	speeds. This is due to the fact that speed and its calculations
+	are done with integral numbers instead of floating point numbers.
+	As a result of this a vehicle will never reach its equilibrium
+	between the drag/friction and propulsion. So in effect it will be
+	in a vicious circle of speeding up and slowing down due to being
+	just at the other side of the equilibrium.
+
+	Not speeding up when near the equilibrium will cause the vehicle
+	to never come in the neighbourhood of the equilibrium and not
+	slowing down when near the equilibrium will cause the vehicle
+	to never slow down towards the equilibrium once it has come down
+	a hill.
+
+	It is possible to calculate whether the equilibrium will be
+	passed, but then all acceleration calculations need to be done
+	twice.
