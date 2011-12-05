@@ -1121,25 +1121,40 @@ STR_CONTENT_NAME_CAPTION                                        :{BLACK}பெ�
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}அனைத்தையும் தேர்ந்தெடு
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}பதிவிறக்கு
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}தேர்ந்தெடுக்கப்பட்டனவை பதிவிறக்க ஆரம்பி
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}நீங்கள் இதை பதிவிறக்கம் செய்ய தேர்ந்தெடுக்கவில்லை
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}நீங்கள் இதை பதிவிறக்கம் செய்ய தேர்ந்தேடுத்துள்ளீர்கள்
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}இது ஏற்கனவே உங்களிடம் உள்ளது
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}பெயர்: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}பதிப்பு: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}விவரம்: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}வகை: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}பதிவிறக்க கோப்பின் அளவு: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}தேர்ந்தெடுக்கப்பட்டது இதனால்: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}சார்ந்தவை: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}சுட்டிகள்: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... கோப்புகளை பதிவிறக்கம் செய்ய முடியாது!
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :அடிப்படை அசையூட்டம்
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :அடிப்படை ஒலிகள்
+STR_CONTENT_TYPE_BASE_MUSIC                                     :அடிப்படை இசை
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}பதிவிறக்கமாகிறது...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}கோப்புகள் கேட்கப்படுகின்றன...
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}பதிவிறக்கம் முடிந்தது
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}பதிவிறக்கம் ரத்தானது...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... தொடர்பு துண்டிக்கப்பட்டது
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... கோப்பில் எழுத முடியாது
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}பதிவிறக்கம் செய்யப்பட்ட கோப்பினை விரிவாக்க முடியவில்லை
 
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ஆம், அசையூட்டங்களை பதிவிறக்கம் செய்
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல்லை, OpenTTD-ஐ விட்டு வெளியேறு
 
 # Transparency settings window
 
@@ -1614,21 +1629,35 @@ STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...த�
 
 
 
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}iஇரயில் மிக நீளமாக உள்ளது
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}வாகனத்தின் திசையை மாற்ற முடியாது...
 
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}வாகனத்தை நகர்த்த முடியாது...
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}பணிமனைக்கு செல்ல வழி இல்லை
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}பணிமனையை கண்டுபிடிக்க முடியவில்லை
 
 
 # Autoreplace related errors
 
 # Rail construction errors
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}முதலில் சிக்னல்களை எடுக்க வேண்டும்
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}முதலில் இரயில்வே தடத்தினை எடுக்க வேண்டும்
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}இங்கே சிக்னல்களை நிறுவ இயலாது...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}இங்கே இரயில்வே தடங்களை பதிய முடியாது...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}இங்கிருந்து இரயில்வே தடங்களை அகற்ற முடியாது...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}இங்கிருக்கும் சிக்னல்களை அகற்ற முடியாது...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}இங்கே சிக்னல்களை மாற்ற முடியாது...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...தண்டவாளம் இல்லை
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...சிக்னல்கள் இல்லை
 
 
 # Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}முதலில் சாலையை அகற்ற வேண்டும்
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...சாலை இல்லை
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...ட்ராம் வழி இல்லை
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... தண்ணீரில் கட்ட முடியாது
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... கடலில் கட்ட முடியாது
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... கால்வாயின் மேல் கட்ட முடியாது
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ஆற்றின் மேல் கட்ட முடியாது.

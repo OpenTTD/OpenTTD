@@ -1180,6 +1180,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Consent
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Consenti la costruzione di stazioni adiacenti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Abilita pacchetti di locomotive NewGRF multipli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è possibile modificare questa impostazione quando esistono veicoli
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Manutenzione infrastrutture: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Non rendere mai obsoleti i tipi di aeroporto: {ORANGE}{STRING}
 
@@ -2752,6 +2753,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Chiedi i
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumenta l'ammontare del prestito, CTRL+clic chiede in prestito il più possibile
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ripaga {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Ripaga parte del prestito. CTRL+clic ne ripaga il più possibile
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastrutture
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2767,6 +2769,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nessuno
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valore compagnia: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posseduto dalla {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastrutture:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} segment{P o i} ferroviari{P o ""}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} segment{P o i} stradal{P e i}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} riquadr{P o i} d'acqua
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} riquadr{P o i} stazione
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroport{P o i}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nessuna
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Costr. sede
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Costruisce la sede della compagnia
@@ -2774,6 +2783,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vedi sed
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Visualizza la sede della compagnia
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sposta sede
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ricostruisce la sede della compagnia in un altro luogo pagando l'1% del valore della compagnia. MAIUSC+clic mostra il costo stimato senza ricostruire la sede
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Dettagli
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Visualizza i conteggi dettagliati delle infrastrutture
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nuova faccia
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleziona una nuova faccia per il presidente
@@ -2793,6 +2804,21 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome della comp
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome del presidente
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Stiamo cercando una compagnia di trasporti disposta a rilevare la nostra società.{}{} Vorrebbe acquistare la {COMPANY} per {CURRENCY_LONG}?
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastrutture della {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Segmenti ferroviari:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Segnali
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Segmenti stradali:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Strada
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tranvia
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Riquadri d'acqua:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canali
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stazioni:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Riquadri stazione
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroporti
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/anno ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/anno
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrie
@@ -4336,6 +4362,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}

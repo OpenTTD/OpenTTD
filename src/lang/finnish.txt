@@ -1506,7 +1506,7 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Yksinker
 STR_FACE_LOAD                                                   :{BLACK}Lataa
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Lataa suosikkikasvot
 STR_FACE_LOAD_DONE                                              :{WHITE}Suosikkikasvosi on ladattu OpenTTD:n kokoonpanotiedostosta.
-STR_FACE_FACECODE                                               :{BLACK}Pelaajan kasvot no.
+STR_FACE_FACECODE                                               :{BLACK}Pelaajan kasvojen nro
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tarkastele ja/tai aseta johtajan kasvojen numero
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tarkastele ja/tai aseta johtajan kasvojen numero
 STR_FACE_FACECODE_SET                                           :{WHITE}Uusi kasvojen numerokoodi on asetettu

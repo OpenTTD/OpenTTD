@@ -441,7 +441,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Настройка звука и музыки
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки сообщений
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о земле, консоль, отладка ИИ, снимки экрана, об игре
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о территории, консоль, отладка ИИ, снимки экрана, об игре
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключить панели инструментов
 
 # Extra tooltips for the scenario editor toolbar
@@ -1312,6 +1312,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Раз�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Разрешить строительство смежных станций: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Включить поддержку нескольких наборов NewGRF с транспортом: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изменение этого параметра невозможно, если в игре есть транспортные средства.
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Обслуживание инфраструктуры: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Аэропорты не устаревают: {ORANGE}{STRING}
 
@@ -2363,7 +2364,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Пока
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Показать на карте выбранные предприятия
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация об участке земли
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация о территории
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Стоимость очистки: {LTBLUE}(недоступна)
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Стоимость очистки: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Выручка от продажи: {LTBLUE}{CURRENCY_LONG}
@@ -2908,6 +2909,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Заня
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги в кредит. Ctrl+щелчок - увеличить кредит до максимума.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Отдать {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть ссуды. Ctrl+щелчок - вернуть всё, по возможности.
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Инфраструктура
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2918,11 +2920,18 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цвет:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Транспорт:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} поезд{P "" а ов}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} автомобил{P ь я ей}
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} возд. суд{P но на ов}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} воздушн{P ое ых ых} суд{P но на ов}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} корабл{P ь я ей}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}нет
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стоимость компании: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% владеет {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Инфраструктура:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ж/д участ{P ок ка ков}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} дорожны{P й х х} участ{P ок ка ков}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} водны{P й х х} участ{P ок ка ов}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} участ{P ок ка ов} занято станциями
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аэропорт{P "" а ов}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нет
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Построить штаб
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Построить штаб-квартиру компании
@@ -2930,6 +2939,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Осмо
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Осмотреть штаб-квартиру компании
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Переместить
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Переместить штаб-квартиру компании в другое место за 1% оценочной стоимости капитала компании. Shift+щелчок - оценка стоимости переноса.
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Подробности
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Посмотреть подробный состав инфраструктуры
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Внешность
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Изменить внешность директора
@@ -2949,6 +2960,21 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Компани�
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Имя директора
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Мы ищем транспортную компанию для присоединения к ней.{}{}Вы хотите купить {COMPANY} за {CURRENCY_LONG}?
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфраструктура «{COMPANY}»
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Ж/д участки:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сигналы
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дорожные участки:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Автодороги
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Трамвайные пути
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водные участки:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Каналы
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станции:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Площадь станций
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Аэропорты
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/год ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/год
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Предприятия
@@ -4539,6 +4565,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
