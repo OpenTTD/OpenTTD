@@ -90,6 +90,8 @@ set_default() {
 	with_threads="1"
 	with_distcc="1"
 	with_ccache="1"
+	with_nforenum="1"
+	with_grfcodec="1"
 
 	save_params_array="
 		build
@@ -162,6 +164,8 @@ set_default() {
 		with_threads
 		with_distcc
 		with_ccache
+		with_grfcodec
+		with_nforenum
 	CC CXX CFLAGS CXXFLAGS LDFLAGS"
 }
 
@@ -416,6 +420,14 @@ detect_params() {
 			--without-ccache)             with_ccache="0";;
 			--with-ccache)                with_ccache="2";;
 			--with-ccache=*)              with_ccache="$optarg";;
+
+			--without-nforenum)           with_nforenum="0";;
+			--with-nforenum)              with_nforenum="2";;
+			--with-nforenum=*)            with_nforenum="$optarg";;
+
+			--without-grfcodec)           with_grfcodec="0";;
+			--with-grfcodec)              with_grfcodec="2";;
+			--with-grfcodec=*)            with_grfcodec="$optarg";;
 
 			--without-osx-sysroot)        with_osx_sysroot="0";;
 			--with-osx-sysroot)           with_osx_sysroot="2";;
@@ -924,6 +936,21 @@ check_params() {
 		fi
 
 		log 1 "checking ccache... $ccache"
+	fi
+
+	detect_grfcodec
+	detect_nforenum
+
+	if [ -z "$grfcodec" ] && [ -n "$nforenum" ]; then
+		log 1 "checking nforenum/grfcodec... nforenum needs grfcodec enabled, disabling nforenum"
+		nforenum=""
+		return 0
+	fi
+
+	if [ -z "$nforenum" ] && [ -n "$grfcodec" ]; then
+		log 1 "checking nforenum/grfcodec... grfcodec needs nforenum enabled, disabling grfcodec"
+		grfcodec=""
+		return 0
 	fi
 
 	if [ "$os" = "DOS" ]; then
@@ -3042,6 +3069,90 @@ detect_sort() {
 	fi
 }
 
+detect_grfcodec() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_grfcodec" = "0" ]; then
+		log 1 "checking grfcodec... disabled"
+
+		grfcodec=""
+		return 0
+	fi
+
+	if [ "$with_grfcodec" = "1" ] || [ "$with_grfcodec" = "" ] || [ "$with_grfcodec" = "2" ]; then
+		grfcodec="grfcodec"
+	else
+		grfcodec="$with_grfcodec"
+	fi
+
+	version=`$grfcodec -v | $awk '{print $3}' | sed 's/[rM]//g;s/-/0/' 2>/dev/null`
+	ret=$?
+	log 2 "executing grfcodec -v"
+	log 2 "  returned $version"
+	log 2 "  exit code $ret"
+
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "846" ]; then
+		if [ -n "$version" ] && [ "$version" -lt "846" ]; then
+			log 1 "checking grfcodec... needs at least version 5.1.3 (r846), disabled"
+		else
+			log 1 "checking grfcodec... not found"
+		fi
+
+		# It was forced, so it should be found.
+		if [ "$with_grfcodec" != "1" ]; then
+			log 1 "configure: error: grfcodec couldn't be found"
+			log 1 "configure: error: you supplied '$with_grfcodec', but it seems invalid"
+			exit 1
+		fi
+
+		grfcodec=""
+		return 0
+	fi
+
+	log 1 "checking grfcodec... found"
+}
+
+detect_nforenum() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_nforenum" = "0" ]; then
+		log 1 "checking nforenum... disabled"
+
+		nforenum=""
+		return 0
+	fi
+
+	if [ "$with_nforenum" = "1" ] || [ "$with_nforenum" = "" ] || [ "$with_nforenum" = "2" ]; then
+		nforenum="nforenum"
+	else
+		nforenum="$with_nforenum"
+	fi
+
+	version=`$nforenum -v | $awk '{print $3}' | sed 's/[rM]//g;s/-/0/' 2>/dev/null`
+	ret=$?
+	log 2 "executing nforenum -v"
+	log 2 "  returned $version"
+	log 2 "  exit code $ret"
+
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "846" ]; then
+		if [ -n "$version" ] && [ "$version" -lt "846" ]; then
+			log 1 "checking nforenum... needs at least version 5.1.3 (r846), disabled"
+		else
+			log 1 "checking nforenum... not found"
+		fi
+
+		# It was forced, so it should be found.
+		if [ "$with_nforenum" != "1" ]; then
+			log 1 "configure: error: nforenum couldn't be found"
+			log 1 "configure: error: you supplied '$with_nforenum', but it seems invalid"
+			exit 1
+		fi
+
+		nforenum=""
+		return 0
+	fi
+
+	log 1 "checking nforenum... found"
+}
+
 detect_cputype() {
 	if [ -n "$cpu_type" ] && [ "$cpu_type" != "DETECT" ]; then
 		log 1 "forcing cpu-type... $cpu_type bits"
@@ -3139,6 +3250,8 @@ make_sed() {
 		s@!!REVISION!!@$revision@g;
 		s@!!AWK!!@$awk@g;
 		s@!!DISTCC!!@$distcc@g;
+		s@!!NFORENUM!!@$nforenum@g;
+		s@!!GRFCODEC!!@$grfcodec@g;
 	"
 
 	if [ "$icon_theme_dir" != "" ]; then
