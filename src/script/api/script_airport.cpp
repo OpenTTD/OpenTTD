@@ -127,16 +127,16 @@
 
 /* static */ int ScriptAirport::GetNoiseLevelIncrease(TileIndex tile, AirportType type)
 {
-	extern Town *AirportGetNearestTown(const AirportSpec *as, TileIndex airport_tile);
-	extern uint8 GetAirportNoiseLevelForTown(const AirportSpec *as, TileIndex town_tile, TileIndex tile);
+	extern Town *AirportGetNearestTown(const AirportSpec *as, byte layout, TileIndex airport_tile);
+	extern uint8 GetAirportNoiseLevelForTown(const AirportSpec *as, byte layout, TileIndex town_tile, TileIndex tile);
 
 	if (!::IsValidTile(tile)) return -1;
 	if (!IsAirportInformationAvailable(type)) return -1;
 
 	if (_settings_game.economy.station_noise_level) {
 		const AirportSpec *as = ::AirportSpec::Get(type);
-		const Town *t = AirportGetNearestTown(as, tile);
-		return GetAirportNoiseLevelForTown(as, t->xy, tile);
+		const Town *t = AirportGetNearestTown(as, 0, tile);
+		return GetAirportNoiseLevelForTown(as, 0, t->xy, tile);
 	}
 
 	return 1;
@@ -144,12 +144,12 @@
 
 /* static */ TownID ScriptAirport::GetNearestTown(TileIndex tile, AirportType type)
 {
-	extern Town *AirportGetNearestTown(const AirportSpec *as, TileIndex airport_tile);
+	extern Town *AirportGetNearestTown(const AirportSpec *as, byte layout, TileIndex airport_tile);
 
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
 	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
 
-	return AirportGetNearestTown(AirportSpec::Get(type), tile)->index;
+	return AirportGetNearestTown(AirportSpec::Get(type), 0, tile)->index;
 }
 
 /* static */ uint16 ScriptAirport::GetMaintenanceCostFactor(AirportType type)
