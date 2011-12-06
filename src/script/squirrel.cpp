@@ -33,7 +33,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
 	if (func == NULL) {
-		scfprintf(stderr, _SC("%s"), buf);
+		DEBUG(misc, 0, "[Squirrel] Compile error: %s", SQ2OTTD(buf));
 	} else {
 		(*func)(true, buf);
 	}
