@@ -632,8 +632,11 @@ STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}செ�
 STR_NEWS_MESSAGES_FULL                                          :முழு
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}செய்தி வகைகள்:
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}விபத்துகள் / பேரழிவுகள்
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}நிறுவனத்தின் விவரம்
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}பருலாதார மாற்றங்கள்
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}புதிய வாகனங்கள்
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}உதவித் தொகைகள்
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}பொதுவான விவரம்
 
 
@@ -1252,7 +1255,15 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 # Houses come directly from their building names
 
 
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :விமான நிலையம்
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :பேருந்து நிலையம்
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :பாதைப்புள்ளி
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :தண்ணீர்
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :கால்வாய்
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :ஆறு
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :கடற்கரை அல்லது ஆற்றுப்படுகை
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :கப்பல் பணிமனை
 
 # Industries come directly from their industry names
 
@@ -1263,25 +1274,51 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :எஃகு �
 
 
 # About OpenTTD window
+STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD-ஐ பற்றி
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD பதிப்பு {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2011 OpenTTD குழுமம்
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}ஆட்டத்தை பதிவு செய்
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}பதிவு செய்த ஆட்டத்தை தொடரு
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}வரைபடத்தினை சேமி
+STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}அழி
 
 
 # World generation
+STR_MAPGEN_MAPSIZE                                              :{BLACK}வரைபடத்தின் அளவு:
+STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}நகரங்களின் எண்ணிக்கை:
+STR_MAPGEN_DATE                                                 :{BLACK}தேதி:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}தொழிற்சாலைகளின் எண்ணிக்கை:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}பனிக் கோடின் உயரம்:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}கடல் மட்டம்:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}ஆறுகள்:
+STR_MAPGEN_GENERATE                                             :{WHITE}உருவாக்கு
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}வரைபடத்தின் முனைகள்:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}வடமேற்கு
+STR_MAPGEN_NORTHEAST                                            :{BLACK}வடகிழக்கு
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}தென்கிழக்கு
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}தென்மேற்கு
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}தண்ணீர்
 
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}அளவு:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 
 # SE Map generation
 
 
 # Map generation progress
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% முடிந்துள்ளது
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ஆறு உருவாக்குதல்
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}சேர்
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}கோப்புகளை மறுபடியும் ஆராய்
 
 # Additional textfiles accompanying NewGRFs
 

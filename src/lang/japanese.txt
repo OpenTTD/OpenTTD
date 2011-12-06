@@ -1154,6 +1154,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}他社�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}隣接した駅の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}複数の NewGRF エンジンセットを有効にする: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}この設定の変更は乗り物が存在する時には不可能です
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}インフラ補修: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}空港の購入可能期限がない： {ORANGE}{STRING}
 
@@ -1873,6 +1874,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 接�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... ファイルに書くアクセス権がありません
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ダウンロードしたファイルを開展することができませんでした
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}半透明設定
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK} 駅名標識を半透明にする(トグル) Ctrl+クリックでロックします。
@@ -1918,6 +1920,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}鉄道�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}鉄道のトンネルを建設します
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路と信号の建設／破壊を切り替えます。{}(駅及び通過点の破壊時はCtrlで駅/通過点を線路ごと破壊します)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}線路種類を交換／更新
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}鉄道車庫の配置
@@ -2189,6 +2192,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田畑
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :積雪地域
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :砂漠
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :道路
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :街路照明のある道路
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :並木道
@@ -2373,6 +2377,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下へ
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}選択したNewGRFファイルを下へ移動します
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}インストールしたNewGRFファイルのリストです。設定を変更するにはファイルをクリックします。
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}パラメータの設定
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}パレットを切り替える
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}選択したパレットを切り替えます。{}（この NewGRF のスプライトがピンクになってしまうとき、この操作を試します。）
@@ -2394,7 +2400,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致し�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}このバージョンのOpenTTDと適合しません。
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}閉じる
@@ -2403,6 +2408,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}すべ�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :パラメーター{NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}パラメータの数: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}検査する - {STRING}
@@ -2702,6 +2709,11 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :会社名
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :社長の名前
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}経済の現状によって当社を他の交通会社へご売却いたします。{}{}{COMPANY}を{CURRENCY_LONG}で買収しますか？
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/年 ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/年
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}産業
@@ -3246,6 +3258,8 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろさずにいずれかを満載するまで待つ）
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(降ろさず積載しない)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[手前に止まる]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間に止まる]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[奥に止まる]
@@ -3330,7 +3344,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AIのロ
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}続ける
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AIの一時中断を解く
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}AIのコンソールを見る
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :読み込む適切なAIが見つかりません。{}このAIはダミーAIで何も行いません。{}幾つかのAIを'オンラインコンテンツ'システム経由でダウンロード可能です。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中の AI の一つが予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。

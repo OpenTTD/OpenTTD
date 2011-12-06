@@ -622,7 +622,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vaata lisainfot selle ettevõtte kohta
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Sõidukeid:
-STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Jaamu:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Jaamad:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähim kasum:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähim tulu:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Suurim tulu:
@@ -1212,6 +1212,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Läbis�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Jaamade kõrvutiehitamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Mitme NewGRF sõidukikomplekti lubamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Infrastruktuuri korrashoid: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aegumatud lennuväljad: {ORANGE}{STRING}
 
@@ -1376,6 +1377,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Akna ha
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Akna haaramisraadius: {ORANGE}välja lülitatud
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimaalne kinnistamata akende arv: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksimaalne kinnistamata akende arv: {ORANGE}väljas
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksimaalne suurenduse tase: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksimaalne väljasuurenduse tase: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Tavaline
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Linna kasvutempo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Pole
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Aeglane
@@ -1931,6 +1940,10 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ühe
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail pole kirjutatav
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Alla laaditud faili ei saa lahti pakkida
 
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD vajab lisagraafikat, et töötada, kuid neid pole leitud. Kas sa lubad OpenTTD´l see lisagraafika alla laadida ja installida??
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jah, lae see graafika alla
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, lahku OpenTTD´st
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läbipaistvusvalikud
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Vaheta jaamamärkide läbipaistvust. Ctrl+klõps lukustab
@@ -2252,6 +2265,8 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Põllud
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumine maa
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Kõrb
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} rööbas
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} Rongidepoo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Sõidutee
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Valgustatud sõidutee
@@ -2436,7 +2451,10 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF-f
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Liiguta alla
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF-faili liigutamine loendis alla
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}NewGRF failidest nimekiri installeerimata. Parameetrite muutmiseks klõpsa failil.
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vaata abi
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Muudatuste logi
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Vali parameetrid
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vaheta paletti
@@ -2468,7 +2486,7 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameeter {NUM
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parameetrite arv: {ORANGE}{NUM}
 
-# NewGRF readme window
+# NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}{STRING} NewGRF abi.
 
 # NewGRF inspect window
@@ -2597,6 +2615,9 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posti ee
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Veoseid linna kasvamiseks:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vajalik
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} on talvel vajalik
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ikka veel vaja)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (kohale toimetatud)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Linn {RED}ei{BLACK} kasva
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Mürapiirang linnas: {ORANGE}{COMMA}{BLACK}  suurim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vaate viimine linnale
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Omavalitsus
@@ -2730,6 +2751,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Laena {C
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Laena raha
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Tagasta {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Maksa laen osaliselt tagasi
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktuur
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY}{BLACK}{COMPANY_NUM}
@@ -2745,6 +2767,10 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Mitte ühtegi
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaväärtus: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktuur:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} rööpad
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lennuväljad
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Puudub
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Ehita peakorter
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Ehita ettevõtte peakorter
@@ -2752,6 +2778,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vaata pe
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ettevõtte peakorteri vaatamine
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Liiguta peakorterit
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ehita ettevõtte peakorter mujale 1% firmaväärtuse tasu eest. Shift+klõps näitab toimingu eeldatavat maksumust
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Täpsustused
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vaata infrastruktuuri kogust detailselt
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Uus nägu
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vali presidendile uus nägu
@@ -2771,6 +2799,15 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ettevõtte nimi
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Presidendi nimi
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Otsime ettevõtet, kes võtaks meie firma üle.{}{}Kas soovite osta ettevõtte {COMPANY} {CURRENCY_LONG} eest?
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE} {COMPANY} Infrastruktuur
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signaalid
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Tee
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Trammitee
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalid
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Jaamad:
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lennuväljad
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Tööstused
@@ -3227,6 +3264,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Valitud 
 
 STR_ORDER_REFIT                                                 :{BLACK}Taasseadista
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vali, millist laadungit ümber seadistada selles järjestuses. Ümberseadistuse käsu eemaldamiseks hoia klõpsamise ajal all Control nuppu
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Saadavuses olev kaup
 
 STR_ORDER_SERVICE                                               :{BLACK}Hooldus
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alati mine
@@ -3402,7 +3440,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jätka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jätka tee ja tee edasi AI-d
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vaata selle AI silumisinfo väljundit
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat tehismõistust ei leitud.{}See on asendustehismõistus, ning ei tee midagi.{}Tehismõistuseid saab laadida kasutades 'Internetisisu' süsteemi.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos ekraanitõmmisega tehismõistuse tõrkeotsingu aknast.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tehismõistuse debugi akent saab vaadata ainult server
@@ -3527,6 +3564,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Pole lub
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} kohalik omavalitsus keeldub seda lubamast
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Linna {TOWN} kohalik omavalitsus keeldub uut lennujaama lubamast
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} kohalik omavalitsus keeldub ehitusluba lennujaamale väljastamast kuna on mures müra pärast
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Teie altkäemaksu andmise katse on avastatud kohaliku uurija poolt
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Siin ei saa maad kõrgendada...

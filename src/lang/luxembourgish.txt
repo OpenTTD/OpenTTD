@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Strooss
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}D'Fënster schwenken wann d'Maus um Rand ass: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Erlaabt Bestiechung vun den Gemengen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaabt exklusiv Transportrechter ze kafen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Gebaier finanzéiren erlaben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Erlab Stroossenrenovatiounen ze finanzéiren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaabt d'Schécken vun Suen un aner Firmen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewiichtsmultiplizéirer fir Luedungen fir schwéier Zich: {ORANGE}{STRING}
@@ -1155,6 +1156,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Erlaabt
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Erlaabt ugrenzent Statiounen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}E puer NewGRF-Päk aktivéiren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Astellung kann net geännert ginn wann et Gefierer gëtt
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Infrastrukturënnerhalt {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Fluchhäfen lafen nie of: {ORANGE}{STRING}
 
@@ -1263,6 +1265,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Fligere
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Schëffer fir den Computer ausschalten: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaabt KI am Multiplayer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes befier den Script suspendéiert gëtt: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Revisiounsintervalen an Prozenter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard Revisiounsinterval fir Zich: {ORANGE}{STRING} Deeg/%
@@ -1319,6 +1322,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fënste
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fënsteren rasten bei: {ORANGE}ausgeschalt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximal Unzuel vun non-sticky Fënster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximal Unzuel vun non-sticky Fënster: {ORANGE}aus
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maximalen Ranzoom Level: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maximalen Rauszoom Level: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Stad-Wuestum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lues
@@ -1347,6 +1358,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routenp
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Zich
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Stied
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrien
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripter
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1874,6 +1886,11 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Konn
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datei net schreiwbar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Konnt den downgeload net dekompriméiren
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Fehlend Grafiken
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTDbrauch Grafiken fir ze funktionéiren, mee et konnten keng fond ginn. Wëllsde OpenTTD se downloaden an installéiren loossen ?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jo, download d'Grafiken
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, verlooss OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzoptiounen
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Wiesselt d'Transparenz fir d'Statiounsschëlder. Ctrl+Klick fir festzesetzen
@@ -1919,6 +1936,11 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zuchbré
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zuchtunnel bauen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Wiesselt tëscht bauen/ofrappen vun Schinnen, Signaler an Statiounen. Ctrl unhalen rappt och Schinnen vun Weepunkter an Statiounen of
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertéiert den Typ vun Schinnen. Shift wiesselt tëscht bauen/ongeféier Käschten uweisen
+
+STR_RAIL_NAME_RAILROAD                                          :Schinnen
+STR_RAIL_NAME_ELRAIL                                            :Elektrësch Schinnen
+STR_RAIL_NAME_MONORAIL                                          :Monorail
+STR_RAIL_NAME_MAGLEV                                            :Magnéitbunn
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Zuchdepot Richtung
@@ -2190,6 +2212,30 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Felder
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Schnéibedeckt Land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüst
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} Schinn
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} Schinn mat Blocksignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} Schinn mat Presignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} Schinn mat End-Signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} Schinn mat Kombo-Signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} Schinn mat Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} Schinn mat Einbahnsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} Schinn mat Block- an Presignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} Schinn mat Block- an Endsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} Schinn mat Block- an Kombosignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} Schinn mat Block- an Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} Schinn mat Block- an Einbahnsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} Schinn mat Pre- an Endsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} Schinn mat Pre- an Kombosignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} Schinn mat Pre- an Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} Schinn mat Pre- an Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} Schinn mat End- an Kombosignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} Schinn mat End- an Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} Schinn mat End an Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} Schinn mat Kombo- an Weesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} Schinn mat Kombo- an Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} Schinn mat Wee- and Einbahnweesignaler
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} Zuchdepot
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strooss
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strooss mat Luuchten
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Strooss mat Beem
@@ -2372,7 +2418,12 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Rop
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Setzt d'NewGRF an der Lëscht erop
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Rof
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Setzt d'NewGRF an der Lëscht erof
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eng Lëscht vun NewGRF Dateien déi installéiert sin. Klick eng Datei fir seng Parameter ze änneren.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eng Lëscht vun NewGRF Dateien déi installéiert sinn.
+
+# Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Readme liesen
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Changelog
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lizenz
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palette wiesselen
@@ -2395,7 +2446,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Datei net 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ausgeschalt
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Onkompatibel mat dëser Versioun vun OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter änneren
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zouman
@@ -2404,6 +2454,11 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setzt al
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Unzuel Parameter: {ORANGE}{NUM}
+
+# NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF readme vun {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF Changelog vun {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF Lizenz vun {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspzéier - {STRING}
@@ -2486,6 +2541,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zuch'{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' huet Fehlinformatiounen
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit Informatioun fir '{1:ENGINE}' ass anescht wéi an der Kaflëscht no der Constructioun. Dëst kann en Autoerneirung/-ersetzen Fehler oprufen
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' huet eng Endlosschläif am Production callback verursaacht
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback 0x{HEX} returned unknown/invalid result 0x{HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid Wuer>
@@ -2530,6 +2586,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post les
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Luedungen gebraucht fir Stadwuestum:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} gebraucht
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} gebraucht am Wanter
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} geliwwert
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (nach gebraucht)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (geliwwert)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stat wiisst all {ORANGE}{COMMA}{BLACK} D{P aag eeg}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stat wiisst all {ORANGE}{COMMA}{BLACK} D{P aag eeg} (finanzéiert)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Staat wiisst{RED}nët{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Kaméidislimit an der Stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Stad. Ctrl+Klick erstellt eng nei Usiicht op d'Stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeng
@@ -2663,6 +2725,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Léinen 
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Erhéicht den Kredit. Ctrl+Klick léint den Maximum
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zeréckbezuelen {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bezuelt en Deel vum Kredit zeréck. Ctrl+Klick bezillt sou vill wéi méglech zréck
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktur
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2678,6 +2741,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Keng
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmenwert: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% am Besëtz vun {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} Schinnendeeler
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} Stroossendeeler
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} Waasserdeeler
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} Statiounendeeler
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} Fluchhäfen
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Keng
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Haaptgebai bauen
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Haaptgebai bauen
@@ -2685,6 +2755,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Weist Ha
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Haaptgebai weisen
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Firmenhaaptgebai réckelen
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Bau d'Firmenhaaptgebai op eng aaner Plaz.Käschten: 1% vun dem Firmenwert. Shift+Klick weist ongeféier Käschten ouni ze réckelen
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detailer
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detailléiert Infrastrukturen uweisen
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Neit Gesiicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wielt en neit Gesiicht fir den Manager
@@ -2704,6 +2776,21 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmennumm
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Numm vum Manager
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mir sichen eng Transportfirma déi eis Firma iwerhuelen wëll.{}{}Wëllt dir {COMPANY} fir {CURRENCY_LONG} kafen?
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur vun {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Schinnenstécker:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signaler
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Stroossenstécker:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Strooss
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tram
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Waasserfelder:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanäl
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Statiounen:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Statiounsfelder
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Fluchhäfen
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/Jr ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/Jr
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrien
@@ -3160,6 +3247,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Wiesselt
 
 STR_ORDER_REFIT                                                 :{BLACK}Ëmbauen
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wielt wéi een Luedungstyp der wëllt. CTRL+Click fir den Ëmbau ze leschen
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-Erneiern
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wiel wellëch Wuerentypen sollen auto-ersat ginn an dësem Ueder. Ctrl+Klick fir all Auto-Erneierungen wechzehuelen. Auto-Erneiern geht just wann d'Gefiert ët erlabt.
+STR_ORDER_DROP_REFIT_AUTO                                       :Festgelueten Wuer
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Verfügbar Wueren
 
 STR_ORDER_SERVICE                                               :{BLACK}Revisioun
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Géi ëmmer
@@ -3248,6 +3339,21 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Net entlueden 
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Net entlueden an op all voll Beluedung warden)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Keen Ent- an Belueden)
 
+STR_ORDER_AUTO_REFIT                                            :(Auto-Embauen zu {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Vollueden mat Auto-Embauen zu {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Vollueden mat all Wueren mat Auto-Embauen zu {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Entlueden an Wueren lueden mat Auto-Embauen zu {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Entlueden an op voll Luedung warden mat Auto-Embauen zu {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Entlueden an warden op iergendeng Volluedung mat Auto-Embauen zu {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transfer an lued Wueren mat Auto-Embauen zu {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfer an ward op Vollueden mat Auto-Embauen zu {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfer an ward op iergendeng Volluedung mat Auto-Embauen zu {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Keen Entlueden an huel Wueren mat Auto-Embauen zu {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Keen Entlueden an ward op Vollueden mat Auto-Embauen zu {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Keen Entlueden an ward op iergendend Volluedung mat Auto-Embauen zu {STRING})
+
+STR_ORDER_AUTO_REFIT_ANY                                        :verfügbar Wueren
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[noot Enn]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[Mëtt]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[wäit Enn]
@@ -3332,7 +3438,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Wiessel 
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Weider
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Entpaus an fuer weider mat der KI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-output fir dës KI uweisen
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keng passend KI fonnt fir ze lueden.{}Dës KI ass en Dummy an wäert näischt maachen.{}KI'en kënnen iwwert den 'Online Content' System downgeload gin.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eng KI ass ofgestierzt. W.e.g mellt des dem KI Autor mat engem Screenshot vun der KI Debugfënster
@@ -3458,6 +3563,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net erla
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} d'Gemeng wëll dat net erlaaben
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} d'Gemeng erlabt keen weideren Fluchhafen an der Stad
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}er Gemeng refüséiert den Bau fir den Flughafen wéinst Kaméidi
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}D'Bestiechung as enger regionaler Ennersichung opgefall
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kann d'Land hei net unhiewen...
@@ -4228,6 +4334,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}

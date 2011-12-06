@@ -1266,6 +1266,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티플레이에서 AI를 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}스크립트가 일시 중지되기 전의 #opcodes: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
@@ -2586,6 +2587,9 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED}{G 0 "이" "가"} 필요함
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :냉대 기후에서 {ORANGE}{STRING}{BLACK}가 필요합니다.
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 배달됨
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (화물이 더 필요함)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (배달됨)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.(도시에 투자중)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
@@ -3244,6 +3248,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택�
 
 STR_ORDER_REFIT                                                 :{BLACK}개조
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}이 경로에서 어떤 화물을 받을 것인지 선택하십시오. CTRL+클릭은 제거입니다.
+STR_ORDER_REFIT_AUTO                                            :{G=f}{BLACK}자동 개조
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 명령으로 자동 개조할 화물 종류를 선택하세요. Ctrl+Click은 제거입니다. 자동 개조 기능은 이 기능을 지원하는 차량에서만 사용가능합니다.
+STR_ORDER_DROP_REFIT_AUTO                                       :화물 종류 고정
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :이용가능한 화물
 
 STR_ORDER_SERVICE                                               :{BLACK}점검
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :항상 감
@@ -3332,7 +3340,20 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(내리지 않고 아무 화물이나 가득 찰 때까지 기다림)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(적재와 하차 없음)
 
+STR_ORDER_AUTO_REFIT                                            :({STRING}{G 0 "으" ""}로 자동 개조)
+STR_ORDER_FULL_LOAD_REFIT                                       :({STRING}{G 0 "으" ""}로 자동 개조하면서 모든 화물을 가득 싣기)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :({STRING}{G 0 "으" ""}로 자동 개조하면서 아무 화물이나 가득 싣기)
+STR_ORDER_UNLOAD_REFIT                                          :({STRING}{G 0 "으" ""}로 자동 개조하면서 화물 하차 후 적재)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :({STRING}{G 0 "으" ""}로 자동 개조하면서 화물 하차 후 모든 화물을 싣고 출발)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :({STRING}{G 0 "으" ""}로 자동 개조하면서 화물 하차 후 아무 화물이나 가득 싣기)
+STR_ORDER_TRANSFER_REFIT                                        :({STRING}{G 0 "으" ""}로 자동 개조하면서 환승 후 화물 받음)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :({STRING}{G 0 "으" ""}로 자동 개조하면서 환승 후 모든 화물 적재)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :({STRING}{G 0 "으" ""}로 자동 개조하면서 환승 후 아무 화물이나 가득 싣기)
+STR_ORDER_NO_UNLOAD_REFIT                                       :({STRING}{G 0 "으" ""}로 자동 개조하면서 내리지 않고 화물을 받음)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :({STRING}{G 0 "으" ""}로 자동 개조하면서 내리지 않고 가득 찰 때까지 기다림)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :({STRING}{G 0 "으" ""}로 자동 개조하면서 내리지 않고 아무 화물이나 가득 찰 때까지 기다림)
 
+STR_ORDER_AUTO_REFIT_ANY                                        :{G=m}이용가능한 화물
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[가까운쪽]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[중간]

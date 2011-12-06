@@ -770,6 +770,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا 
 
 # Content downloading error messages
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -892,13 +893,15 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK} منت�
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK} فائلوں کو دوبارھ اسکین کیجئے
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK} نئی دستیاب NewGRF فائلوں کی فھرست حاصل کیجئے
 
+# Additional textfiles accompanying NewGRFs
+
 
 
 
 
 # NewGRF parameters window
 
-# NewGRF readme window
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE} معایِئنھ کیجیئے - {STRING}
@@ -995,6 +998,12 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظو
 
 
 
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ٹرام وے
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}نہریں
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD} اسٹیشن:
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}ہوائی اڈے
 
 # Industry directory
 
@@ -1165,7 +1174,6 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 # AI debug window
 STR_AI_DEBUG_CONTINUE                                           :{BLACK} جاری کیجیئے
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقفھ منقطع اور AI کو جاری کیجیئے
-
 
 
 # AI configuration window

@@ -1893,8 +1893,8 @@ STR_CONTENT_TYPE_AI                                             :{G=f}IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Libreria IA
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Heightmap
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Suoni base
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Musica base
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Suoni base
+STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=f}Musica base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Download dei contenuti...
