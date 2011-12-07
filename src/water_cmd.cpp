@@ -284,14 +284,16 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 
 	if (flags & DC_EXEC) {
 		/* Update company infrastructure counts. */
-		Company *c = Company::Get(_current_company);
-		/* Counts for the water. */
-		c->infrastructure.water++;
-		if (!IsWaterTile(tile - delta)) c->infrastructure.water++;
-		if (!IsWaterTile(tile + delta)) c->infrastructure.water++;
-		/* Count for the lock itself. */
-		c->infrastructure.water += 3 * LOCK_DEPOT_TILE_FACTOR; // Lock is three tiles.
-		DirtyCompanyInfrastructureWindows(_current_company);
+		Company *c = Company::GetIfValid(_current_company);
+		if (c != NULL) {
+			/* Counts for the water. */
+			c->infrastructure.water++;
+			if (!IsWaterTile(tile - delta)) c->infrastructure.water++;
+			if (!IsWaterTile(tile + delta)) c->infrastructure.water++;
+			/* Count for the lock itself. */
+			c->infrastructure.water += 3 * LOCK_DEPOT_TILE_FACTOR; // Lock is three tiles.
+			DirtyCompanyInfrastructureWindows(_current_company);
+		}
 
 		MakeLock(tile, _current_company, dir, wc_lower, wc_upper);
 		MarkTileDirtyByTile(tile);
