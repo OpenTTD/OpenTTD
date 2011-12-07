@@ -352,6 +352,15 @@ Train does not crash with itself [FS#4635]:
 	Nevertheless trains shall not crash in normal operation, so making
 	a train not crash with itself is the best solution for everyone.
 
+Aircraft coming through wall in rotated airports [FS#4705]:
+	With rotated airports, specifically hangars, you will see that the
+	aircraft will show a part through the back wall of the hangar.
+	This can be solved by only drawing a part of the plane when being
+	at the back of the hangar, however then with transparency turned on
+	the aircraft would be shown partially which would be even weirder.
+	As such the current behaviour is deemed the least bad.
+	The same applies to overly long ships and their depots.
+
 Vehicles not keeping their "maximum" speed [FS#4815]:
 	Vehicles that have not enough power to reach and maintain their
 	advertised maximum speed might be constantly jumping between two
