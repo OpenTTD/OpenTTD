@@ -22,6 +22,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(undefined string)
 STR_JUST_NOTHING                                                :کچھ نہیں
 
 # Cargo related strings
@@ -129,11 +130,37 @@ STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} کول�
 STR_QUANTITY_N_A                                                :-
 
 # Two letter abbreviation of cargo name
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}مسافر
 STR_ABBREV_COAL                                                 :{TINY_FONT} کل
 STR_ABBREV_MAIL                                                 :{TINY_FONT} ڈاک
 STR_ABBREV_OIL                                                  :{TINY_FONT} تیل
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT} م ش
 STR_ABBREV_GOODS                                                :{TINY_FONT} س م
+STR_ABBREV_GRAIN                                                :{TINY_FONT}اناج
+STR_ABBREV_WOOD                                                 :{TINY_FONT}لکڑی
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}خام لوہا
+STR_ABBREV_STEEL                                                :{TINY_FONT}اسٹیل
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}قیمتی اشیاء
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}خام تانبا
+STR_ABBREV_MAIZE                                                :{TINY_FONT}مکئی
+STR_ABBREV_FRUIT                                                :{TINY_FONT}پھل
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}ہیرے
+STR_ABBREV_FOOD                                                 :{TINY_FONT}خوراک
+STR_ABBREV_PAPER                                                :{TINY_FONT}کاغذ
+STR_ABBREV_GOLD                                                 :{TINY_FONT}سونا
+STR_ABBREV_WATER                                                :{TINY_FONT}پانی
+STR_ABBREV_WHEAT                                                :{TINY_FONT}گندم
+STR_ABBREV_RUBBER                                               :{TINY_FONT}ربڑ
+STR_ABBREV_SUGAR                                                :{TINY_FONT}چینی
+STR_ABBREV_TOYS                                                 :{TINY_FONT}کھلونے
+STR_ABBREV_SWEETS                                               :{TINY_FONT}مٹھائی
+STR_ABBREV_COLA                                                 :{TINY_FONT}کولا
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}بُلبُلے
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}ٹافی
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}پلاسٹِک
+STR_ABBREV_NONE                                                 :{TINY_FONT}نہیں
+STR_ABBREV_ALL                                                  :{TINY_FONT}تمام
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} مسافرین
@@ -209,6 +236,7 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھر�
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گرائیں. Ctrl ترچھے انداز میں علاقے کا انتخاب کرتا ہے. عمارتیں یا انکی لاگت تخمینہ دیکھنے کے لئے Shift کا استعمال کیجیے.
 
 # Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}طے شدہ
 STR_BUTTON_CANCEL                                               :{BLACK} ترک کیجیئے
 STR_BUTTON_OK                                                   :{BLACK} او کے
 
@@ -303,6 +331,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK} اشا�
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :منظر بچایئے
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :منظر کھولیئے
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :اونچائی کا نقشہ بچایئے
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :اونچائی کا نقشہ دکھائو
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :مدیر بند کیجیئے
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -356,6 +385,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :تفصیلی عملی درجہ بندی
 ############ range ends here
 
 ############ range for industry menu starts
@@ -401,9 +431,11 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخِ پ
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :زمینی رقبہ کی معلومات
+STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :حائطھ تدویم
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :اسکرین کی تصویر
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :قریب سے اسکرین کی تصویر
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :پورے نقشے کی اسکرین کی تصویر
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Open TTD کے بارے میں
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :sprite صف بندھ
@@ -482,6 +514,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE} عمل�
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE} آمدنی مخطط
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE} شمار سامان پھنچایا گیا
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE} کمپنی کی کارکردگی کی درج بندی (حدِ درجھ = 1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}کمپنی کی مالیت
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE} سامان کی ادایگی کا تناسب
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK} حرکت میں ایام
@@ -515,6 +548,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK} تفص�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}کمپنی کے بارے مایں تفصیلات دیکھے
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK} ناوقلات:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK} اسٹیشن:
@@ -529,9 +563,43 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK} مکم�
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK} پچھلے سال نفعدار ناقل کی تعداد؛ جس میں گاڑیاں، قطار، بحری جہاز، ہوائی جہاز وغعرہ شامل ہیں
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} تعداد برائے حالیہ مرمت شدہ مستقر حصے۔ مستقر کا ہر حصہ گنا جاتا ہے۔ مثلا پٹری مستقر، بس اسٹاپ، ہوائی اڈہ وغیرہ، خواہ وہ ایک ساتھ جڑے بھی ہوں۔
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}پچھلے ربع میں پہنچاے گے تمام قسم کے سامان کی تعداد
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}کمپنی کے بینک میں پڑے ہوے پیسے
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}کمپنی کی جانب سے لیا گیا ادھار
 
 # Music window
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}تمام
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}پرانا سٹائل
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}نیا سٹائل
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}اپنی مرضی کے مطابق 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}اپنی مرضی کے مطابق 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}موسیقی کی آواز
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}اثرات کی آواز
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}کم
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}زیادہ
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}گانا
+STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}نام
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}ہلائیں
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}پروگرام
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}واپس پچھلے گانے پر
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}اگلے گانے پر
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}موسیقی چلانا بند کریں
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}موسیقی چلانا شروع کریں
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}موسیقی اور صوتی اثرات کی آواز منتخب کرنے کےلئے نشان کو کھینچھیں
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}تمام گانوں والا پروگرام منتخب کریں
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}پرانی طرز کی موسیقی والا پروگرام منتخب کریں
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}نۓ طرز کی موسیقی والا پروگرام منتخب کریں
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'اپنی مرضی کے مطابق '1 والا پروگرام منتخب کریں
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'اپنی مرضی کے مطابق '2 والا پروگرام منتخب کریں
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}پروگرام ہلانے کی تدویم کیجئیے
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}گانا چننے کا اختیار دینے والی ونڈو دکھائیں
 
+STR_ERROR_NO_SONGS                                              :{WHITE}کوئی گانا دستیاب نہیں ہے
 
 # Playlist window
 
@@ -673,6 +741,14 @@ STR_SUBSIDY_X4                                                  :x4
 
 
 
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE} قریب سے دیکھنے کی حد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE} دور سے دیکھنے کی حد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :عمومی
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 
 
@@ -993,17 +1069,32 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظو
 
 # Company view
 
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ریل کے ٹکڑے
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} سڑک کے ٹکڑے
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} پانی کی ٹائلیں
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} اسٹیشن کی ٹائلیں
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{COMMA}{WHITE} ہوائی اڈے
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}کوئی نہیں
 
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}تفصیلات
 
 
 
 
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}ریل کے ٹکڑے
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}اشارے
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}سڑک کے ٹکرے
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}سڑک
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}ٹرام وے
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}پانی کی ٹائل
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}نہریں
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD} اسٹیشن:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}اسٹیشن کی ٹائل
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}ہوائی اڈے
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}سالانہ ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}سالانہ
 
 # Industry directory
 
@@ -1539,6 +1630,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
