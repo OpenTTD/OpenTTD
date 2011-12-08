@@ -64,6 +64,13 @@
 	}
 }
 
+/* static */ int32 ScriptStation::GetStationCoverageRadius(StationID station_id)
+{
+	if (!IsValidStation(station_id)) return -1;
+
+	return Station::Get(station_id)->GetCatchmentRadius();
+}
+
 /* static */ int32 ScriptStation::GetDistanceManhattanToTile(StationID station_id, TileIndex tile)
 {
 	if (!IsValidStation(station_id)) return -1;
