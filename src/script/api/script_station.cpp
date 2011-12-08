@@ -50,11 +50,9 @@
 
 /* static */ int32 ScriptStation::GetCoverageRadius(ScriptStation::StationType station_type)
 {
-	if (station_type == STATION_AIRPORT) {
-		DEBUG(script, 0, "GetCoverageRadius(): coverage radius of airports needs to be requested via ScriptAirport::GetAirportCoverageRadius(), as it requires AirportType");
-		return -1;
-	}
+	if (station_type == STATION_AIRPORT) return -1;
 	if (!HasExactlyOneBit(station_type)) return -1;
+
 	if (!_settings_game.station.modified_catchment) return CA_UNMODIFIED;
 
 	switch (station_type) {
