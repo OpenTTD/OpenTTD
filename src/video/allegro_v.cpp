@@ -100,7 +100,7 @@ static void CheckPaletteAnim()
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_cur_palette.first_dirty, _cur_palette.count_dirty);
+				blitter->PaletteAnimate(_cur_palette);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_NONE:
@@ -487,7 +487,8 @@ void VideoDriver_Allegro::MainLoop()
 	uint32 cur_ticks = GetTime();
 	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-	uint32 pal_tick = 0;
+
+	CheckPaletteAnim();
 
 	for (;;) {
 		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
@@ -532,10 +533,7 @@ void VideoDriver_Allegro::MainLoop()
 			GameLoop();
 
 			UpdateWindows();
-			if (++pal_tick > 4) {
-				CheckPaletteAnim();
-				pal_tick = 1;
-			}
+			CheckPaletteAnim();
 			DrawSurfaceToScreen();
 		} else {
 			CSleep(1);

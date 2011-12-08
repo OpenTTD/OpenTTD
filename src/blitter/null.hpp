@@ -30,7 +30,7 @@ public:
 	/* virtual */ void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) {};
 	/* virtual */ void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y) {};
 	/* virtual */ int BufferSize(int width, int height) { return 0; };
-	/* virtual */ void PaletteAnimate(uint start, uint count) { };
+	/* virtual */ void PaletteAnimate(const Palette &palette) { };
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation() { return Blitter::PALETTE_ANIMATION_NONE; };
 
 	/* virtual */ const char *GetName() { return "null"; }

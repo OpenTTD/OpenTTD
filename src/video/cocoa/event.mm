@@ -99,7 +99,7 @@ static void QZ_CheckPaletteAnim()
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_cur_palette.first_dirty, _cur_palette.count_dirty);
+				blitter->PaletteAnimate(_cur_palette);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_NONE:
@@ -555,7 +555,6 @@ void QZ_GameLoop()
 	uint32 cur_ticks = GetTick();
 	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-	uint32 pal_tick = 0;
 
 #ifdef _DEBUG
 	uint32 et0 = GetTick();
@@ -615,10 +614,7 @@ void QZ_GameLoop()
 			GameLoop();
 
 			UpdateWindows();
-			if (++pal_tick > 4) {
-				QZ_CheckPaletteAnim();
-				pal_tick = 1;
-			}
+			QZ_CheckPaletteAnim();
 			_cocoa_subdriver->Draw();
 		} else {
 #ifdef _DEBUG

@@ -359,7 +359,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 						break;
 
 					case Blitter::PALETTE_ANIMATION_BLITTER:
-						blitter->PaletteAnimate(_cur_palette.first_dirty, _cur_palette.count_dirty);
+						blitter->PaletteAnimate(_cur_palette);
 						break;
 
 					case Blitter::PALETTE_ANIMATION_NONE:
@@ -853,6 +853,7 @@ void VideoDriver_Win32::MainLoop()
 
 	_wnd.running = true;
 
+	CheckPaletteAnim();
 	for (;;) {
 		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 

@@ -410,14 +410,15 @@ int Blitter_32bppAnim::BufferSize(int width, int height)
 	return width * height * (sizeof(uint32) + sizeof(uint8));
 }
 
-void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
+void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
 {
 	assert(!_screen_disable_anim);
 
+	this->palette = palette;
 	/* Never repaint the transparency pixel */
-	if (start == 0) {
-		start++;
-		count--;
+	if (this->palette.first_dirty == 0) {
+		this->palette.first_dirty++;
+		this->palette.count_dirty--;
 	}
 
 	const uint8 *anim = this->anim_buf;
@@ -427,7 +428,7 @@ void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 	for (int y = this->anim_buf_height; y != 0 ; y--) {
 		for (int x = this->anim_buf_width; x != 0 ; x--) {
 			uint colour = *anim;
-			if (IsInsideBS(colour, start, count)) {
+			if (IsInsideBS(colour, this->palette.first_dirty, this->palette.count_dirty)) {
 				/* Update this pixel */
 				*dst = LookupColourInPalette(colour);
 			}

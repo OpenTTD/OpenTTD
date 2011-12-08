@@ -85,7 +85,7 @@ static void CheckPaletteAnim()
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_cur_palette.first_dirty, _cur_palette.count_dirty);
+				blitter->PaletteAnimate(_cur_palette);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_NONE:
@@ -503,10 +503,11 @@ void VideoDriver_SDL::MainLoop()
 	uint32 cur_ticks = SDL_CALL SDL_GetTicks();
 	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-	uint32 pal_tick = 0;
 	uint32 mod;
 	int numkeys;
 	Uint8 *keys;
+
+	CheckPaletteAnim();
 
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
@@ -584,10 +585,7 @@ void VideoDriver_SDL::MainLoop()
 			if (_draw_threaded) _draw_mutex->BeginCritical();
 
 			UpdateWindows();
-			if (++pal_tick > 4) {
-				CheckPaletteAnim();
-				pal_tick = 1;
-			}
+			CheckPaletteAnim();
 		} else {
 			/* Release the thread while sleeping */
 			if (_draw_threaded) _draw_mutex->EndCritical();
