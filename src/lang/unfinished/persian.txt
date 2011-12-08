@@ -2518,7 +2518,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}قطار
 STR_NEWGRF_BUGGY                                                :{WHITE}فایل NewGRF '{0:STRING}' اطلاعات اشتباه داده است
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}تغییر کاربری بار '{1:ENGINE}' متفاوت از آنچه که در لیست قروش ارائه کرده بود. این خطا ممکن است در نوسازی خودکار و با در هنگام تغییر کاربری مشکل ساز گردد
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' در روند طراحی سبب حلقه بی پایان گردیده
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}بازگشت تابع 0x{HEX} نتیجه ناشناخته/نامعتبر بازگردانده است 0x{HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}بازگشت تابع {1:HEX} نتیجه ناشناخته/نامعتبر بازگردانده است {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :«بار نامعتبر»
