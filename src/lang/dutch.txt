@@ -107,7 +107,7 @@ STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} i
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} staal
 STR_QUANTITY_VALUABLES                                          :{COMMA} zak{P "" ken} kostbaarheden
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kopererts
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} maïs
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA} zak{P "" ken} diamanten
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} voedsel

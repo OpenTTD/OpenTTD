@@ -156,9 +156,12 @@ STR_ABBREV_SUGAR                                                :{TINY_FONT}چی
 STR_ABBREV_TOYS                                                 :{TINY_FONT}کھلونے
 STR_ABBREV_SWEETS                                               :{TINY_FONT}مٹھائی
 STR_ABBREV_COLA                                                 :{TINY_FONT}کولا
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}میٹھی گولیاں
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}بُلبُلے
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}ٹافی
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}سیل
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}پلاسٹِک
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}سوڈا واٹر
 STR_ABBREV_NONE                                                 :{TINY_FONT}نہیں
 STR_ABBREV_ALL                                                  :{TINY_FONT}تمام
 
@@ -242,6 +245,7 @@ STR_BUTTON_OK                                                   :{BLACK} او ک
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :ً1234567890-=\ق و ع ر ت ے ء ی ہ پ ] [ ا س د ف گ ح ج ک ل ؛ ' ز ش چ ط ب ن م ، ۔ /
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK} لمبائی: {NUM}
@@ -325,8 +329,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK} منظ�
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK} قصبھ تخلیق
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK} صنعت تخلیق
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK} سڑک کی تعمیر
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK} درخت لگایئے
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK} درخت لگایئے۔ Shift تعپیر/اندازاً خرچے میں تدویم کرتا ھے
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK} اشارھ لگایئے
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK} چیز لگایئے۔ Shift تعپیر/اندازاً خرچے میں تدویم کرتا ھے
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :منظر بچایئے
@@ -342,12 +347,14 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکل
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :مشکلات چنئے
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعلی اختیارات
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI اختیارات
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :آبادیوں کے نام دکھائے جائیں
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :اڈوں کے نام دکھائے جائیں
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :راھ شناس نقتوں کے نام دکھائے جایئں
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :اشارے دکھائے جائیں
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :مقابلے بازوں کے نشان اور نام دکھا ئیے
 STR_SETTINGS_MENU_FULL_ANIMATION                                :مکمل animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :مکمل تفصیل
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :شفاف عمارات
@@ -385,6 +392,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :کمپنیوں کے گروپ کی فہرست
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :تفصیلی عملی درجہ بندی
 ############ range ends here
 
@@ -439,6 +447,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :قریب سے �
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :پورے نقشے کی اسکرین کی تصویر
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Open TTD کے بارے میں
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :sprite صف بندھ
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :احاطہ کرنے والے ڈبوں کی تدویم کیجئیے
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -505,6 +514,7 @@ STR_MONTH_DEC                                                   :دسمبر
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK} کلید
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}مخطط کی کلیدیں دکھائیں
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -529,9 +539,11 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK} کارکردگی کی تفصیلی درجہ بندی دکھائیے
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}کمپنی کے مخطط کی کلید
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK} مخطط پر کمپنی کی تفصیلات کو تدویم کیجئیے
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}کمپنیوں کے گروپ کی فہرست
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مہندس
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :ٹریفک ناظم
@@ -541,6 +553,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :ناظم
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :صدر انتظامی
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :صدر
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :صدر
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :ٹئایکون
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE} تفصیلی عملی درجہ بندی
@@ -563,14 +576,19 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK} مکم�
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK} پچھلے سال نفعدار ناقل کی تعداد؛ جس میں گاڑیاں، قطار، بحری جہاز، ہوائی جہاز وغعرہ شامل ہیں
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} تعداد برائے حالیہ مرمت شدہ مستقر حصے۔ مستقر کا ہر حصہ گنا جاتا ہے۔ مثلا پٹری مستقر، بس اسٹاپ، ہوائی اڈہ وغیرہ، خواہ وہ ایک ساتھ جڑے بھی ہوں۔
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}سب سے کم آمدنی والی گاڑی کا نفع (صرف دو سال سے پرانی گاڑیاں مدنظر رکھی جائیں گی)
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}پچھلے چار ربعات میں پہنچاے گے سامان کی تعداد
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}پچھلے ربع میں پہنچاے گے تمام قسم کے سامان کی تعداد
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}کمپنی کے بینک میں پڑے ہوے پیسے
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}کمپنی کی جانب سے لیا گیا ادھار
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}کُل نمبروں میں سے حاصل کردہ نمبر
 
 # Music window
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}جاز جیوک باکس
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}تمام
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}پرانا سٹائل
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}نیا سٹائل
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}ایزی اسٹریٹ
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}اپنی مرضی کے مطابق 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}اپنی مرضی کے مطابق 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}موسیقی کی آواز
@@ -594,6 +612,7 @@ STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}موسی
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}تمام گانوں والا پروگرام منتخب کریں
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}پرانی طرز کی موسیقی والا پروگرام منتخب کریں
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}نۓ طرز کی موسیقی والا پروگرام منتخب کریں
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}ایزی اسٹریٹ طرز کی موسیقی والا پروگرام منتخب کریں
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'اپنی مرضی کے مطابق '1 والا پروگرام منتخب کریں
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'اپنی مرضی کے مطابق '2 والا پروگرام منتخب کریں
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}پروگرام ہلانے کی تدویم کیجئیے
@@ -602,18 +621,47 @@ STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}گانا
 STR_ERROR_NO_SONGS                                              :{WHITE}کوئی گانا دستیاب نہیں ہے
 
 # Playlist window
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}موسیقی کے پروگرام کا انتخاب کریں
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}گانوں کی فہرست
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}پروگرام - '{STRING}'
+STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}صاف
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}موجودہ پروگرام صاف کریں (صرف اپنی مرضی کے مطابق 1 یا 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}موجودہ پروگرام میں شامل کرنے کے لئے گانے پر کلک کریں (صرف اپنی مرضی کے مطابق 1 یا 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}موجودہ پروگرام میں سے نکالنے کے لئے گانے پر کلک کریں (صرف اپنی مرضی کے مطابق 1 یا 2)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}سر فہرست کمپنیاں جو {NUM}{}({STRING} کے مقام پر پہنچیں)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}کمپنیوں کی فہرست میں {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :کاروباری
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :صنعتکار
+STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :سرمایہ دار
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :مُغل
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :صدی کا ٹائیکون
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} '{STRING}' کا درجہ حاصل کرتا ہے
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} جو {COMPANY} سے تعلق رکھتا ہے۔ '{STRING}' کا درجہ حاصل کرتا ہے
 
 # Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}نقشہ - {STRING}
 
+STR_SMALLMAP_TYPE_CONTOURS                                      :شکل
 STR_SMALLMAP_TYPE_VEHICLES                                      :سواریاں
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :صنعتیں
 STR_SMALLMAP_TYPE_ROUTES                                        :راستے
 STR_SMALLMAP_TYPE_VEGETATION                                    :سبزہ
 STR_SMALLMAP_TYPE_OWNERS                                        :مالکین
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}نقشے پر زمین کی شکل دکھائیں
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}گاڑیاں نقشے پر دکھاو
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}صنعتیں نقشے پر دکھاو
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK} مواصلاتی راستے نقشے پر دکھاو
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}پودے نقشے پر دکھاو
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}زمین کے مالکان نقشے پر دکھاو
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}سڑکیں
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}ریل کے راستے
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}اڈے/ہوایی اڈے/بندرگاہیں
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}عمارتیں/صنعتیں
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}سواریاں
@@ -623,29 +671,129 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}ہوایی جہاز
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}مواصلاتی راستے
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}جنگل
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}ریلوے اسٹیشن
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}لاری بھرنے کی جگہ
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}لاری اڈہ
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}ہوائی اڈہ/ہیلی اڈہ
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}بندر گاہ
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}پتھریلی زمین
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}سبزے والی زمین
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}بنجر زمین
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}کھیت
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}درخت
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}پتھر
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}پانی
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}کوئی مالک نہیں
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}شہر
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}صنعتیں
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}صحرا
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}برف
 
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}نقشے پر شہروں کے ناموں کی تدویم کیجئیے
+STR_SMALLMAP_CENTER                                             :{BLACK}موجودہ جگہ پر چھوٹا نقشہ درمیان سے دیکھیں
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}سب کچھ غیر فعال کریں
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}سب کچھ فعال کریں
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}بلندی دکھائیں
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}نقشے پر کوئی صنعت نہ دکھائیں
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}نقشے پر ساری صنعتیں دکھائیں
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}بلند نقشے کو دکھانے کی تدویم کیجئیے
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}نقشے پر کسی کمپنی کی کوئی جائیداد نہ دکھائیں
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}نقشے پر ہر کمپنی کی جائیداد دکھائیں
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}آخری پیغام یا خبر دکھائو
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}٭ ٭ توقف ٭ ٭
+STR_STATUSBAR_AUTOSAVE                                          :{RED}خود مختار بچاو
+STR_STATUSBAR_SAVING_GAME                                       :{RED}٭ ٭ کھیل کو بچائیں ٭ ٭
 
 # News message history
+STR_MESSAGE_HISTORY                                             :{WHITE}پرانے پیغام
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}حالیہ پیغاموں کی فہرست
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}پیغاموں کے اختیارات
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}تمام قسم کے پیغاموں کو بند/خلاصہ/مکمل کریں
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}خبروں کے خلاصے کے لے آواز چلائیں
 STR_NEWS_MESSAGES_OFF                                           :بند
 STR_NEWS_MESSAGES_SUMMARY                                       :خلاصہ
 STR_NEWS_MESSAGES_FULL                                          :مکمل
 
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}پیغاموں کی اقسام:
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}مقابل کے اسٹیشن پر پہلی گاڑی کی آمد
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}حادثے / تباہیاں
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}کمپنی کی معلومات
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}صنعتوں کا افتتاح
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}صنعتوں کی بندش
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}معیشت بدل گئی
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}کمپنی کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}مُقابل کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}دوسری صنعت کی پیداوار میں تبدیلی
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}کمپنی کی گاڑیوں کے بارے پیں نصیحت / معلومات
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}نئی گاڑیاں
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}کارگو کی منظوری میں تبدیلی
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}امداد
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}عمومی معلومات
 
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی ریل گاڑی {STATION} پر پہنچی
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی لاری {STATION} پر پہنچی
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلا ٹرک {STATION} پر پہنچا
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی مسافر ریل گاڑی {STATION} پر پہنچی
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی مال گاڑی {STATION} پر پہنچی
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی کشتی {STATION} پر پہنچی
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلا ہوائی جہاز {STATION} پر پہنچا
 
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}ریل گاڑی تباہ! !{}{COMMA} حادثے کی وجہ سے جل کر ہلاک
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}گاڑی تباہ! !{}ریل گاڑی کی ٹکر کی وجہ سےڈرائیور جل کر ہلاک
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}گاڑی تباہ! !{}{COMMA} ریل گاڑی کی ٹکر کی وجہ سے جل کر ہلاک
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}ہوائی جہاز تباہ! !{}{COMMA} جل کر ہلاک۔ حادثہ {STATION} پر پیش آیا
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}ہوائی جہاز تباہ! !{}{COMMA} جل کر ہلاک۔ حادثے کی وجہ ایندھن ختم ھونا بتائی جاتی ہے
 
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}ہوائی غبارہ تباہ!{}حادثہ {STATION} کے مقام پر پیش آیا
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}آُڑن طشتری سے ٹکرا کر گاڑی تباہ!!!!!!!!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}تیل صاف کرنے کے کارخانے میں دھماکہ! {}کارخانہ {TOWN} کے قریب واقع تھا
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}پراسرار حملے میں کارخانہ تباہ۔ لوگ پریشان{}کارخانہ {TOWN} کے قریب واقع تھا
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}اُڑن طشتری {TOWN} کے قریب اُتر گئی
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}کوئلے کی کان زمین میں دھنس گئی{}{TOWN} کے قریب تباہی کے نشان۔
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}تباہ کُن و خوفناک سیلاب!{}کم اَز کم {COMMA} لاپتہ۔ ہلاکت کا خدشہ
 
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}ٹرانسپورٹ کمپنی خطرے میں!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING}کو بیچ دیا جائے گا یا دیوالیہ قرار داے دیا جائے گا تاوقتیہ کہ کارکردگی بہتر ھو
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}ٹرانسپورٹ کمپنی کا الحاق!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} کو {STRING} نے {CURRENCY_LONG} میں خرید لیا!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}دیوالیہ!!!!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} بند۔ تمام اثاثے فروخت۔ کارکردگی بہتر نہ ہو سکی تھی
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}نئی ٹرانسپورٹ کمپنی کا آغاز!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} نے {TOWN} کے نزدیک تعمیر شروع کر دی!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} کا کنٹرول {STRING} نے سنبھال لیا!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(مینیجر)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} نے نئے شہر {TOWN} کی تعمیر کے لئے امداد کی
 
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK} نئی {STRING} {TOWN} کے نزدیک زیر تعمیر!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}نیا {STRING} {TOWN} کے قریب لگا دیا گیا۔
 
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} کا فوری بندش کا اعلان!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK} فراہمی میں مسائل کی وجہ سے {STRING} کا فوری بندش کا اعلان!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}{STRING} کے قُرب و جوار میں درختوں کی کمی کی وجہ سے فوری بندش کا اعلان!
 
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}یورپی مالیاتی یونین!{}{}نئی کرنسی کے طور پر آپ کے ملک میں 'یورو' متعارف
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}عالمی کساد بازاری!{}{}اقتصادی ماہرین میں شدید خوف و حراس!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK} کساد بازاری کا خاتمہ!{}{}تجارت میں تیزی کی وجہ سے صنعتوں کو معاشی مظبوطی کی اُمید!
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} کی پیداوار میں اضافہ!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY} میں کوئلے کے نئے ذخائر دریافت!{}پیداوار دُگنی ہونے کی اُمید!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY} میں تیل کے نئے ذخائر دریافت!{}پیداوار دُگنی ہونے کی اُمید!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} میں موئشی پالنے کے نئے طریقے!{}پیداوار دُگنی ہونے کی اُمید!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} پیداوار میں {INDUSTRY} {COMMA}% کا اضافہ!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} پیداوار میں 50٪ کی کمی!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} کیروں کے حملے کی وجہ سے تباہی! پیداوار میں 50٪ کمی
 
 
 # Start of order review system
@@ -1385,7 +1533,7 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}سڑک �
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}کشتی راستے مین ہے
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}ہوایی جہاز راستے مین ہے
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}مال گاڑی نہیں تبدیل کر سکتے
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}ریل گاڑی نہیں تبدیل کر سکتے
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}ٹرک نہیں تبدیل کر سکتے
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}کشتی نہیں تبدیل کر سکتے
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}ہوایی نہیں تبدیل کر سکتے
