@@ -2456,7 +2456,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Mankaj dos
 # NewGRF 'it's broken' warnings
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon.
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Revoko' 0x{HEX} revenis nekonatan/malvalidan rezulton 0x{HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Revoko' {1:HEX} revenis nekonatan/malvalidan rezulton {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<malvalida ŝarĝo>

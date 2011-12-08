@@ -2878,7 +2878,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Цягн
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» падае няправільную інфармацыю.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфармацыя аб умяшчальнасьці/пераабсталяваньнi для лякаматыва «{1:ENGINE}» пасьля пабудовы адрозніваецца ад зьвестак у сьпісе пакупкі, што можа перашкодзіць функцыі аўтаабнаўленьня/аўтазамены карэктна зрабіць пераабсталяваньне.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» выклікаў бясконцы цыкл.
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Функцыя зваротнага выклiку 0x{HEX} вярнула невядомы/беспадстаўны вынiк 0x{HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Функцыя зваротнага выклiку {1:HEX} вярнула невядомы/беспадстаўны вынiк {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<невядомы груз>
