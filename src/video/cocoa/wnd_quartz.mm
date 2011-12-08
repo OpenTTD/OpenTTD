@@ -468,9 +468,9 @@ void WindowQuartzSubdriver::UpdatePalette(uint first_color, uint num_colors)
 
 	for (uint i = first_color; i < first_color + num_colors; i++) {
 		uint32 clr = 0xff000000;
-		clr |= (uint32)_cur_palette[i].r << 16;
-		clr |= (uint32)_cur_palette[i].g << 8;
-		clr |= (uint32)_cur_palette[i].b;
+		clr |= (uint32)_cur_palette.palette[i].r << 16;
+		clr |= (uint32)_cur_palette.palette[i].g << 8;
+		clr |= (uint32)_cur_palette.palette[i].b;
 		this->palette[i] = clr;
 	}
 

@@ -12,8 +12,6 @@
 #ifndef VIDEO_COCOA_H
 #define VIDEO_COCOA_H
 
-#include <AvailabilityMacros.h>
-
 #include "../video_driver.hpp"
 
 class VideoDriver_Cocoa: public VideoDriver {

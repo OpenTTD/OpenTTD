@@ -266,4 +266,11 @@ enum SpriteType {
 /** The number of milliseconds per game tick. */
 static const uint MILLISECONDS_PER_TICK = 30;
 
+/** Information about the currently used palette. */
+struct Palette {
+	Colour palette[256]; ///< Current palette. Entry 0 has to be always fully transparent!
+	int first_dirty;     ///< The first dirty element.
+	int count_dirty;     ///< The number of dirty elements.
+};
+
 #endif /* GFX_TYPE_H */

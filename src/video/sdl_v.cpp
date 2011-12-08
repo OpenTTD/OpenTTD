@@ -60,9 +60,9 @@ static void UpdatePalette(uint start, uint count)
 	SDL_Color pal[256];
 
 	for (uint i = 0; i != count; i++) {
-		pal[i].r = _cur_palette[start + i].r;
-		pal[i].g = _cur_palette[start + i].g;
-		pal[i].b = _cur_palette[start + i].b;
+		pal[i].r = _cur_palette.palette[start + i].r;
+		pal[i].g = _cur_palette.palette[start + i].g;
+		pal[i].b = _cur_palette.palette[start + i].b;
 		pal[i].unused = 0;
 	}
 
@@ -76,16 +76,16 @@ static void InitPalette()
 
 static void CheckPaletteAnim()
 {
-	if (_pal_count_dirty != 0) {
+	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				UpdatePalette(_pal_first_dirty, _pal_count_dirty);
+				UpdatePalette(_cur_palette.first_dirty, _cur_palette.count_dirty);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_pal_first_dirty, _pal_count_dirty);
+				blitter->PaletteAnimate(_cur_palette.first_dirty, _cur_palette.count_dirty);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_NONE:
@@ -94,7 +94,7 @@ static void CheckPaletteAnim()
 			default:
 				NOT_REACHED();
 		}
-		_pal_count_dirty = 0;
+		_cur_palette.count_dirty = 0;
 	}
 }
 

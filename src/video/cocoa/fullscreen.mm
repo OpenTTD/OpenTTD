@@ -494,9 +494,9 @@ public:
 		for (uint32_t index = first_color; index < first_color + num_colors; index++) {
 			/* Clamp colors between 0.0 and 1.0 */
 			CGDeviceColor color;
-			color.red   = _cur_palette[index].r / 255.0;
-			color.blue  = _cur_palette[index].b / 255.0;
-			color.green = _cur_palette[index].g / 255.0;
+			color.red   = _cur_palette.palette[index].r / 255.0;
+			color.blue  = _cur_palette.palette[index].b / 255.0;
+			color.green = _cur_palette.palette[index].g / 255.0;
 
 			CGPaletteSetColorAtIndex(this->palette, color, index);
 		}

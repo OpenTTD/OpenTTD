@@ -440,7 +440,6 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
  * ======================================================================================== */
 
 #include "os/macosx/macos.h"
-#include <ApplicationServices/ApplicationServices.h>
 
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {

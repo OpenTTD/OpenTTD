@@ -416,18 +416,18 @@ void WindowQuickdrawSubdriver::UpdatePalette(uint first_color, uint num_colors)
 		case 32:
 			for (uint i = first_color; i < first_color + num_colors; i++) {
 				uint32 clr32 = 0xff000000;
-				clr32 |= (uint32)_cur_palette[i].r << 16;
-				clr32 |= (uint32)_cur_palette[i].g << 8;
-				clr32 |= (uint32)_cur_palette[i].b;
+				clr32 |= (uint32)_cur_palette.palette[i].r << 16;
+				clr32 |= (uint32)_cur_palette.palette[i].g << 8;
+				clr32 |= (uint32)_cur_palette.palette[i].b;
 				this->palette[i] = clr32;
 			}
 			break;
 		case 16:
 			for (uint i = first_color; i < first_color + num_colors; i++) {
 				uint16 clr16 = 0x0000;
-				clr16 |= (uint16)((_cur_palette[i].r >> 3) & 0x1f) << 10;
-				clr16 |= (uint16)((_cur_palette[i].g >> 3) & 0x1f) << 5;
-				clr16 |= (uint16)((_cur_palette[i].b >> 3) & 0x1f);
+				clr16 |= (uint16)((_cur_palette.palette[i].r >> 3) & 0x1f) << 10;
+				clr16 |= (uint16)((_cur_palette.palette[i].g >> 3) & 0x1f) << 5;
+				clr16 |= (uint16)((_cur_palette.palette[i].b >> 3) & 0x1f);
 				this->palette[i] = clr16;
 			}
 			break;

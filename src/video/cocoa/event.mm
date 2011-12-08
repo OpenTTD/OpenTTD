@@ -90,16 +90,16 @@ static void QZ_WarpCursor(int x, int y)
 
 static void QZ_CheckPaletteAnim()
 {
-	if (_pal_count_dirty != 0) {
+	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				_cocoa_subdriver->UpdatePalette(_pal_first_dirty, _pal_count_dirty);
+				_cocoa_subdriver->UpdatePalette(_cur_palette.first_dirty, _cur_palette.count_dirty);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_pal_first_dirty, _pal_count_dirty);
+				blitter->PaletteAnimate(_cur_palette.first_dirty, _cur_palette.count_dirty);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_NONE:
@@ -108,7 +108,7 @@ static void QZ_CheckPaletteAnim()
 			default:
 				NOT_REACHED();
 		}
-		_pal_count_dirty = 0;
+		_cur_palette.count_dirty = 0;
 	}
 }
 

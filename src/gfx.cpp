@@ -44,10 +44,7 @@ bool _exit_game;
 GameMode _game_mode;
 SwitchMode _switch_mode;  ///< The next mainloop command.
 PauseModeByte _pause_mode;
-int _pal_first_dirty;
-int _pal_count_dirty;
-
-Colour _cur_palette[256];
+Palette _cur_palette;
 
 static int _max_char_height; ///< Cache of the height of the largest font
 static int _max_char_width;  ///< Cache of the width of the largest font
@@ -1401,11 +1398,8 @@ void DoPaletteAnimations();
 
 void GfxInitPalettes()
 {
-	memcpy(_cur_palette, _palette, sizeof(_cur_palette));
-
+	memcpy(&_cur_palette, &_palette, sizeof(_cur_palette));
 	DoPaletteAnimations();
-	_pal_first_dirty = 0;
-	_pal_count_dirty = 256;
 }
 
 #define EXTR(p, q) (((uint16)(palette_animation_counter * (p)) * (q)) >> 16)
@@ -1429,7 +1423,7 @@ void DoPaletteAnimations()
 		palette_animation_counter = 0;
 	}
 
-	Colour *palette_pos = &_cur_palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
+	Colour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
 	/* Makes a copy of the current anmation palette in old_val,
 	 * so the work on the current palette could be compared, see if there has been any changes */
 	memcpy(old_val, palette_pos, sizeof(old_val));
@@ -1513,10 +1507,10 @@ void DoPaletteAnimations()
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		palette_animation_counter = old_tc;
 	} else {
-		if (memcmp(old_val, &_cur_palette[PALETTE_ANIM_START], sizeof(old_val)) != 0) {
+		if (memcmp(old_val, &_cur_palette.palette[PALETTE_ANIM_START], sizeof(old_val)) != 0 && _cur_palette.count_dirty == 0) {
 			/* Did we changed anything on the palette? Seems so.  Mark it as dirty */
-			_pal_first_dirty = PALETTE_ANIM_START;
-			_pal_count_dirty = PALETTE_ANIM_SIZE;
+			_cur_palette.first_dirty = PALETTE_ANIM_START;
+			_cur_palette.count_dirty = PALETTE_ANIM_SIZE;
 		}
 	}
 }

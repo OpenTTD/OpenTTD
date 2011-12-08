@@ -14,7 +14,8 @@
 #define M(r, g, b) { 0xFF000000U | (r) << 16 | (g) << 8 | (b) }
 
 /** Colour palette (DOS) */
-static const Colour _palette[256] = {
+static const Palette _palette = {
+	{
 		/* transparent */
 		{             0},
 		/* grey scale */
@@ -89,6 +90,9 @@ static const Colour _palette[256] = {
 		M(  0,   0,   0), M(  0,   0,   0), M(  0,   0,   0),
 		/* pure white */
 		                                                      M(252, 252, 252)
+	},
+	0,  // First dirty
+	256 // Dirty count
 };
 
 /** Description of the length of the palette cycle animations */
