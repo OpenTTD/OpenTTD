@@ -17,6 +17,7 @@
 #include "order_backup.h"
 #include "vehicle_base.h"
 #include "window_func.h"
+#include "station_map.h"
 
 OrderBackupPool _order_backup_pool("BackupOrder");
 INSTANTIATE_POOL_METHODS(OrderBackup)
@@ -254,6 +255,28 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			ob->clone = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
 			/* But if that isn't there, remove it. */
 			if (ob->clone == NULL) delete ob;
+		}
+	}
+}
+
+/**
+ * Removes an order from all vehicles. Triggers when, say, a station is removed.
+ * @param type The type of the order (OT_GOTO_[STATION|DEPOT|WAYPOINT]).
+ * @param destination The destination. Can be a StationID, DepotID or WaypointID.
+ */
+/* static */ void OrderBackup::RemoveOrder(OrderType type, DestinationID destination)
+{
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		for (Order *order = ob->orders; order != NULL; order = order->next) {
+			OrderType ot = order->GetType();
+			if (ot == OT_GOTO_DEPOT && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
+			if (ot == OT_IMPLICIT || (IsHangarTile(ob->tile) && ot == OT_GOTO_DEPOT)) ot = OT_GOTO_STATION;
+			if (ot == type && order->GetDestination() == destination) {
+				/* Remove the order backup! If a station/depot gets removed, we can't/shouldn't restore those broken orders. */
+				delete ob;
+				break;
+			}
 		}
 	}
 }
