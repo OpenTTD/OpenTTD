@@ -1076,10 +1076,14 @@ static bool SearchLumberMillTrees(TileIndex tile, void *user_data)
  */
 static void ChopLumberMillTrees(Industry *i)
 {
+	/* We only want to cut trees if all tiles are completed. */
+	TILE_AREA_LOOP(tile_cur, i->location) {
+		if (i->TileBelongsToIndustry(tile_cur)) {
+			if (!IsIndustryCompleted(tile_cur)) return;
+		}
+	}
+
 	TileIndex tile = i->location.tile;
-
-	if (!IsIndustryCompleted(tile)) return;  // Can't proceed if not completed.
-
 	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, NULL)) { // 40x40 tiles  to search.
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + 45); // Found a tree, add according value to waiting cargo.
 	}
