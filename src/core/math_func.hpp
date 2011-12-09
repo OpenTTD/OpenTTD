@@ -330,6 +330,17 @@ static FORCEINLINE uint CeilDiv(uint a, uint b)
 }
 
 /**
+ * Computes ceil(a / b) * b for non-negative a and b.
+ * @param a Numerator
+ * @param b Denominator
+ * @return a rounded up to the nearest multiple of b.
+ */
+static FORCEINLINE uint Ceil(uint a, uint b)
+{
+	return CeilDiv(a, b) * b;
+}
+
+/**
  * Computes round(a / b) for signed a and unsigned b.
  * @param a Numerator
  * @param b Denominator

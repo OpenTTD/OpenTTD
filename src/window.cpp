@@ -1675,8 +1675,8 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 		 * the resolution clamp it in such a manner that it stays within the bounts. */
 		int new_right  = w->left + w->width  + delta_x;
 		int new_bottom = w->top  + w->height + delta_y;
-		if (new_right  >= (int)_cur_resolution.width)  delta_x -= new_right  - _cur_resolution.width;
-		if (new_bottom >= (int)_cur_resolution.height) delta_y -= new_bottom - _cur_resolution.height;
+		if (new_right  >= (int)_cur_resolution.width)  delta_x -= Ceil(new_right  - _cur_resolution.width,  max(1U, w->nested_root->resize_x));
+		if (new_bottom >= (int)_cur_resolution.height) delta_y -= Ceil(new_bottom - _cur_resolution.height, max(1U, w->nested_root->resize_y));
 
 		w->SetDirty();
 
