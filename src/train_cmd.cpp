@@ -1254,6 +1254,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			DeleteWindowById(WC_VEHICLE_REFIT, src->index);
 			DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
 			DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
+			SetWindowDirty(WC_COMPANY, _current_company);
 
 			/* Delete orders, group stuff and the unit number as we're not the
 			 * front of any vehicle anymore. */
@@ -1266,6 +1267,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		 * we should be put in the default group. */
 		if (original_src_head != src && dst_head == src) {
 			SetTrainGroupID(src, DEFAULT_GROUP);
+			SetWindowDirty(WC_COMPANY, _current_company);
 		}
 
 		/* Add new heads to statistics */
