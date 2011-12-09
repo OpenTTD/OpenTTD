@@ -2111,7 +2111,7 @@ void UpdateAirportsNoise()
 	FOR_ALL_TOWNS(t) t->noise_reached = 0;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->airport.tile != INVALID_TILE) {
+		if (st->airport.tile != INVALID_TILE && st->airport.type != AT_OILRIG) {
 			const AirportSpec *as = st->airport.GetSpec();
 			Town *nearest = AirportGetNearestTown(as, st->airport.layout, st->airport.tile);
 			nearest->noise_reached += GetAirportNoiseLevelForTown(as, st->airport.layout, nearest->xy, st->airport.tile);
