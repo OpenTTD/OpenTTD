@@ -3084,7 +3084,7 @@ detect_grfcodec() {
 		grfcodec="$with_grfcodec"
 	fi
 
-	version=`$grfcodec -v | $awk '{print $3}' | sed 's/[rM]//g;s/-/0/' 2>/dev/null`
+	version=`$grfcodec -v 2>/dev/null | $awk '{print $3}' | sed 's/[rM]//g;s/-/0/'`
 	ret=$?
 	log 2 "executing grfcodec -v"
 	log 2 "  returned $version"
@@ -3126,7 +3126,7 @@ detect_nforenum() {
 		nforenum="$with_nforenum"
 	fi
 
-	version=`$nforenum -v | $awk '{print $3}' | sed 's/[rM]//g;s/-/0/' 2>/dev/null`
+	version=`$nforenum -v 2>/dev/null | $awk '{print $3}' | sed 's/[rM]//g;s/-/0/'`
 	ret=$?
 	log 2 "executing nforenum -v"
 	log 2 "  returned $version"
