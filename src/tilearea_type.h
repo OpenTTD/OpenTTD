@@ -94,6 +94,11 @@ public:
 	 * Move ourselves to the next tile in the rectange on the map.
 	 */
 	virtual TileIterator& operator ++() = 0;
+
+	/**
+	 * Allocate a new iterator that is a copy of this one.
+	 */
+	virtual TileIterator *Clone() const = 0;
 };
 
 /** Iterator to iterate over a tile area (rectangle) of the map. */
@@ -129,6 +134,11 @@ public:
 		}
 		return *this;
 	}
+
+	virtual TileIterator *Clone() const
+	{
+		return new OrthogonalTileIterator(*this);
+	}
 };
 
 /** Iterator to iterate over a diagonal area of the map. */
@@ -145,6 +155,11 @@ public:
 	DiagonalTileIterator(TileIndex begin, TileIndex end);
 
 	TileIterator& operator ++();
+
+	virtual TileIterator *Clone() const
+	{
+		return new DiagonalTileIterator(*this);
+	}
 };
 
 /**

@@ -18,6 +18,7 @@
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "gfx_type.h"
+#include "tilearea_type.h"
 
 /** Copy from station_map.h */
 typedef byte StationGfx;
@@ -26,6 +27,39 @@ typedef byte StationGfx;
 struct AirportTileTable {
 	TileIndexDiffC ti; ///< Tile offset from  the top-most airport tile.
 	StationGfx gfx;    ///< AirportTile to use for this tile.
+};
+
+/** Iterator to iterate over all tiles belonging to an airport spec. */
+class AirportTileTableIterator : public TileIterator {
+private:
+	const AirportTileTable *att; ///< The offsets.
+	TileIndex base_tile;         ///< The tile we base the offsets off.
+
+public:
+	/**
+	 * Construct the iterator.
+	 * @param att The TileTable we want to iterate over.
+	 * @param base_tile The basetile for all offsets.
+	 */
+	AirportTileTableIterator(const AirportTileTable *att, TileIndex base_tile) : TileIterator(base_tile + ToTileIndexDiff(att->ti)), att(att), base_tile(base_tile)
+	{
+	}
+
+	FORCEINLINE TileIterator& operator ++()
+	{
+		this->att++;
+		if (this->att->ti.x == -0x80) {
+			this->tile = INVALID_TILE;
+		} else {
+			this->tile = base_tile + ToTileIndexDiff(att->ti);
+		}
+		return *this;
+	}
+
+	virtual AirportTileTableIterator *Clone() const
+	{
+		return new AirportTileTableIterator(*this);
+	}
 };
 
 /** List of default airport classes. */
