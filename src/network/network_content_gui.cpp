@@ -197,8 +197,14 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget == NCDSWW_CANCELOK) {
-			if (this->downloaded_bytes != this->total_bytes) _network_content_client.Close();
-			delete this;
+			if (this->downloaded_bytes != this->total_bytes) {
+				_network_content_client.Close();
+				delete this;
+			} else {
+				/* If downloading succeeded, close the online content window. This will close
+				 * the current window as well. */
+				DeleteWindowById(WC_NETWORK_WINDOW, 1);
+			}
 		}
 	}
 
