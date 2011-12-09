@@ -56,6 +56,12 @@ public:
 		return *this;
 	}
 
+	/** Get the StationGfx for the current tile. */
+	StationGfx GetStationGfx() const
+	{
+		return this->att->gfx;
+	}
+
 	virtual AirportTileTableIterator *Clone() const
 	{
 		return new AirportTileTableIterator(*this);

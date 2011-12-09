@@ -2224,10 +2224,9 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 	}
 
-	const AirportTileTable *it = as->table[layout];
-	do {
+	for (AirportTileTableIterator iter(as->table[layout], tile); iter != INVALID_TILE; ++iter) {
 		cost.AddCost(_price[PR_BUILD_STATION_AIRPORT]);
-	} while ((++it)->ti.x != -0x80);
+	}
 
 	if (flags & DC_EXEC) {
 		/* Always add the noise, so there will be no need to recalculate when option toggles */
@@ -2241,22 +2240,18 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
-		it = as->table[layout];
-		do {
-			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
-			MakeAirport(cur_tile, st->owner, st->index, it->gfx, WATER_CLASS_INVALID);
-			SetStationTileRandomBits(cur_tile, GB(Random(), 0, 4));
-			st->airport.Add(cur_tile);
+		for (AirportTileTableIterator iter(as->table[layout], tile); iter != INVALID_TILE; ++iter) {
+			MakeAirport(iter, st->owner, st->index, iter.GetStationGfx(), WATER_CLASS_INVALID);
+			SetStationTileRandomBits(iter, GB(Random(), 0, 4));
+			st->airport.Add(iter);
 
-			if (AirportTileSpec::Get(GetTranslatedAirportTileID(it->gfx))->animation.status != ANIM_STATUS_NO_ANIMATION) AddAnimatedTile(cur_tile);
-		} while ((++it)->ti.x != -0x80);
+			if (AirportTileSpec::Get(GetTranslatedAirportTileID(iter.GetStationGfx()))->animation.status != ANIM_STATUS_NO_ANIMATION) AddAnimatedTile(iter);
+		}
 
 		/* Only call the animation trigger after all tiles have been built */
-		it = as->table[layout];
-		do {
-			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
-			AirportTileAnimationTrigger(st, cur_tile, AAT_BUILT);
-		} while ((++it)->ti.x != -0x80);
+		for (AirportTileTableIterator iter(as->table[layout], tile); iter != INVALID_TILE; ++iter) {
+			AirportTileAnimationTrigger(st, iter, AAT_BUILT);
+		}
 
 		UpdateAirplanesOnNewStation(st);
 
