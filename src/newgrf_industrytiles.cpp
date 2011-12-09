@@ -345,7 +345,7 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 	bool ret = true;
 	uint32 random = Random();
 	TILE_AREA_LOOP(tile, ind->location) {
-		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
+		if (ind->TileBelongsToIndustry(tile)) {
 			if (StartStopIndustryTileAnimation(tile, iat, random)) {
 				SB(random, 0, 16, Random());
 			} else {
@@ -429,7 +429,7 @@ void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
 {
 	uint32 reseed_industry = 0;
 	TILE_AREA_LOOP(tile, ind->location) {
-		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
+		if (ind->TileBelongsToIndustry(tile)) {
 			DoTriggerIndustryTile(tile, trigger, ind, reseed_industry);
 		}
 	}

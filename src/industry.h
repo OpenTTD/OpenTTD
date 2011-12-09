@@ -78,6 +78,16 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	void RecomputeProductionMultipliers();
 
 	/**
+	 * Check if a given tile belongs to this industry.
+	 * @param tile The tile to check.
+	 * @return True if the tils is part of this industry.
+	 */
+	inline bool TileBelongsToIndustry(TileIndex tile) const
+	{
+		return IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->index;
+	}
+
+	/**
 	 * Get the industry of the given tile
 	 * @param tile the tile to get the industry from
 	 * @pre IsTileType(t, MP_INDUSTRY)
