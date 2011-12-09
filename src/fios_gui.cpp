@@ -82,6 +82,7 @@ enum SaveLoadWindowWidgets {
 	SLWW_DETAILS,              ///< Panel with game details
 	SLWW_NEWGRF_INFO,          ///< Button to open NewGgrf configuration
 	SLWW_LOAD_BUTTON,          ///< Button to load game/scenario
+	SLWW_MISSING_NEWGRFS,      ///< Button to find missing NewGRFs online
 };
 
 /** Load game/scenario with optional content download */
@@ -114,6 +115,7 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, SLWW_DETAILS), SetResize(1, 1), SetFill(1, 1),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_MISSING_NEWGRFS), SetDataTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_NEWGRF_INFO), SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_NULL), SetFill(1, 0), SetResize(1, 0),
@@ -554,6 +556,16 @@ public:
 				}
 				break;
 
+			case SLWW_MISSING_NEWGRFS:
+				if (!_network_available) {
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
+				} else {
+#if defined(ENABLE_NETWORK)
+					ShowMissingContentWindow(_load_check_data.grfconfig);
+#endif
+				}
+				break;
+
 			case SLWW_DRIVES_DIRECTORIES_LIST: { // Click the listbox
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, SLWW_DRIVES_DIRECTORIES_LIST, WD_FRAMERECT_TOP);
 				if (y == INT_MAX) return;
@@ -699,6 +711,8 @@ public:
 							this->selected == NULL || _load_check_data.HasErrors() || !(_load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()));
 					this->SetWidgetDisabledState(SLWW_NEWGRF_INFO,
 							!_load_check_data.HasNewGrfs());
+					this->SetWidgetDisabledState(SLWW_MISSING_NEWGRFS,
+							!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility == GLC_ALL_GOOD);
 				}
 				break;
 			case 2:

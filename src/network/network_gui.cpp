@@ -19,6 +19,7 @@
 #include "network_gamelist.h"
 #include "network.h"
 #include "network_base.h"
+#include "network_content.h"
 #include "../gui.h"
 #include "network_udp.h"
 #include "../window_func.h"
@@ -105,6 +106,8 @@ enum NetworkGameWindowWidgets {
 	NGWW_REFRESH,       ///< 'Refresh server' button
 	NGWW_NEWGRF,        ///< 'NewGRF Settings' button
 	NGWW_NEWGRF_SEL,    ///< Selection 'widget' to hide the NewGRF settings
+	NGWW_NEWGRF_MISSING,     ///< 'Find missing NewGRF online' button
+	NGWW_NEWGRF_MISSING_SEL, ///< Selection widget for the above button
 
 	NGWW_FIND,          ///< 'Find server' button
 	NGWW_ADD,           ///< 'Add server' button
@@ -603,6 +606,7 @@ public:
 
 		/* 'NewGRF Settings' button invisible if no NewGRF is used */
 		this->GetWidget<NWidgetStacked>(NGWW_NEWGRF_SEL)->SetDisplayedPlane(sel == NULL || !sel->online || sel->info.grfconfig == NULL);
+		this->GetWidget<NWidgetStacked>(NGWW_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == NULL || !sel->online || sel->info.grfconfig == NULL || !sel->info.version_compatible || sel->info.compatible);
 
 		this->DrawWidgets();
 		/* Edit box to set client name */
@@ -775,6 +779,10 @@ public:
 
 			case NGWW_NEWGRF: // NewGRF Settings
 				if (this->server != NULL) ShowNewGRFSettings(false, false, false, &this->server->info.grfconfig);
+				break;
+
+			case NGWW_NEWGRF_MISSING: // Find missing content online
+				if (this->server != NULL) ShowMissingContentWindow(this->server->info.grfconfig);
 				break;
 		}
 	}
@@ -960,6 +968,12 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_DETAILS),
 					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
 						NWidget(WWT_EMPTY, INVALID_COLOUR, NGWW_DETAILS_SPACER), SetMinimalSize(140, 155), SetResize(0, 1), SetFill(1, 1), // Make sure it's at least this wide
+						NWidget(NWID_HORIZONTAL, NC_NONE), SetPIP(5, 5, 5),
+							NWidget(NWID_SELECTION, INVALID_COLOUR, NGWW_NEWGRF_MISSING_SEL),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NEWGRF_MISSING), SetFill(1, 0), SetDataTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP),
+								NWidget(NWID_SPACER), SetFill(1, 0),
+							EndContainer(),
+						EndContainer(),
 						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
 							NWidget(NWID_SPACER), SetFill(1, 0),
 							NWidget(NWID_SELECTION, INVALID_COLOUR, NGWW_NEWGRF_SEL),

@@ -151,6 +151,8 @@ extern ClientNetworkContentSocketHandler _network_content_client;
 
 void ShowNetworkContentListWindow(ContentVector *cv = NULL, ContentType type = CONTENT_TYPE_END);
 
+void ShowMissingContentWindow(const struct GRFConfig *list);
+
 #else
 static inline void ShowNetworkContentListWindow() {}
 #endif /* ENABLE_NETWORK */

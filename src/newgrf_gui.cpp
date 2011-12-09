@@ -1196,20 +1196,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 #if defined(ENABLE_NETWORK)
 					this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 
-					/* Only show the things in the current list, or everything when nothing's selected */
-					ContentVector cv;
-					for (const GRFConfig *c = this->actives; c != NULL; c = c->next) {
-						if (c->status != GCS_NOT_FOUND && !HasBit(c->flags, GCF_COMPATIBLE)) continue;
-
-						ContentInfo *ci = new ContentInfo();
-						ci->type = CONTENT_TYPE_NEWGRF;
-						ci->state = ContentInfo::DOES_NOT_EXIST;
-						ttd_strlcpy(ci->name, c->GetName(), lengthof(ci->name));
-						ci->unique_id = BSWAP32(c->ident.grfid);
-						memcpy(ci->md5sum, HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum, sizeof(ci->md5sum));
-						*cv.Append() = ci;
-					}
-					ShowNetworkContentListWindow(cv.Length() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);
+					ShowMissingContentWindow(this->actives);
 #endif
 				}
 				break;
@@ -1505,6 +1492,30 @@ private:
 		this->vscroll2->SetCount(this->avails.Length()); // Update the scrollbar
 	}
 };
+
+#if defined(ENABLE_NETWORK)
+/**
+ * Show the content list window with all missing grfs from the given list.
+ * @param list The list of grfs to check for missings / not exactly matching ones.
+ */
+void ShowMissingContentWindow(const GRFConfig *list)
+{
+	/* Only show the things in the current list, or everything when nothing's selected */
+	ContentVector cv;
+	for (const GRFConfig *c = list; c != NULL; c = c->next) {
+		if (c->status != GCS_NOT_FOUND && !HasBit(c->flags, GCF_COMPATIBLE)) continue;
+
+		ContentInfo *ci = new ContentInfo();
+		ci->type = CONTENT_TYPE_NEWGRF;
+		ci->state = ContentInfo::DOES_NOT_EXIST;
+		ttd_strlcpy(ci->name, c->GetName(), lengthof(ci->name));
+		ci->unique_id = BSWAP32(c->ident.grfid);
+		memcpy(ci->md5sum, HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum, sizeof(ci->md5sum));
+		*cv.Append() = ci;
+	}
+	ShowNetworkContentListWindow(cv.Length() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);
+}
+#endif
 
 Listing NewGRFWindow::last_sorting     = {false, 0};
 Filtering NewGRFWindow::last_filtering = {false, 0};
