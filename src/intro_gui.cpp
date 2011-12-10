@@ -333,7 +333,10 @@ void AskExitGame()
 
 static void AskExitToGameMenuCallback(Window *w, bool confirmed)
 {
-	if (confirmed) _switch_mode = SM_MENU;
+	if (confirmed) {
+		_switch_mode = SM_MENU;
+		ClearErrorMessages();
+	}
 }
 
 void AskExitToGameMenu()

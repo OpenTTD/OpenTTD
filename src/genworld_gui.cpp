@@ -29,6 +29,7 @@
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
 #include "progress.h"
+#include "error.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -305,6 +306,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 static void StartGeneratingLandscape(GenenerateLandscapeWindowMode mode)
 {
 	DeleteAllNonVitalWindows();
+	ClearErrorMessages();
 
 	/* Copy all XXX_newgame to XXX when coming from outside the editor */
 	MakeNewgameSettingsLive();

@@ -546,7 +546,7 @@ public:
 
 					strecpy(_file_to_saveload.name, name, lastof(_file_to_saveload.name));
 					strecpy(_file_to_saveload.title, this->selected->title, lastof(_file_to_saveload.title));
-
+					ClearErrorMessages();
 					delete this;
 				}
 				break;

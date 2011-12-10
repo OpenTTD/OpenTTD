@@ -23,5 +23,6 @@ enum WarningLevel {
 };
 
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, uint textref_stack_size = 0, const uint32 *textref_stack = NULL);
+void ClearErrorMessages();
 
 #endif /* ERROR_H */

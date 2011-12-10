@@ -25,6 +25,7 @@
 #include "window_gui.h"
 
 #include "table/strings.h"
+#include <list>
 
 /** Widgets of the error message windows */
 enum ErrorMessageWidgets {
@@ -82,6 +83,7 @@ protected:
 	Point position;                 ///< Position of the error message window.
 	CompanyID face;                 ///< Company belonging to the face being shown. #INVALID_COMPANY if no face present.
 
+public:
 	/**
 	 * Copy the given data into our instace.
 	 * @param data The data to copy.
@@ -91,7 +93,6 @@ protected:
 		*this = data;
 	}
 
-public:
 	/**
 	 * Display an error message in a window.
 	 * @param summary_msg  General error message showed in first line. Must be valid.
@@ -121,6 +122,11 @@ public:
 		assert(summary_msg != INVALID_STRING_ID);
 	}
 };
+
+/** Define a queue with errors. */
+typedef std::list<ErrorMessageData> ErrorList;
+/** The actual queue with errors. */
+ErrorList _errors;
 
 /** Window class for displaying an error message window. */
 struct ErrmsgWindow : public Window, ErrorMessageData {
@@ -255,6 +261,11 @@ public:
 	~ErrmsgWindow()
 	{
 		SetRedErrorSquare(INVALID_TILE);
+
+		if (!_errors.empty()) {
+			new ErrmsgWindow(_errors.front());
+			_errors.pop_front();
+		}
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -263,7 +274,24 @@ public:
 		delete this;
 		return ES_HANDLED;
 	}
+
+	/**
+	 * Check whether the currently shown error message was critical or not.
+	 * @return True iff the message was critical.
+	 */
+	bool IsCritical()
+	{
+		return this->duration == 0;
+	}
 };
+
+/**
+ * Clear all errors from the queue.
+ */
+void ClearErrorMessages()
+{
+	_errors.clear();
+}
 
 /**
  * Display an error message in a window.
@@ -304,7 +332,19 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
-	DeleteWindowById(WC_ERRMSG, 0);
-	ErrorMessageData data(summary_msg, detailed_msg, no_timeout ? _settings_client.gui.errmsg_duration : 0, x, y, textref_stack_size, textref_stack);
-	new ErrmsgWindow(data);
+	ErrorMessageData data(summary_msg, detailed_msg, no_timeout ? 0 : _settings_client.gui.errmsg_duration, x, y, textref_stack_size, textref_stack);
+
+	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	if (w != NULL && w->IsCritical()) {
+		/* A critical error is currently shown. */
+		if (wl == WL_CRITICAL) {
+			/* Push another critical error in the queue of errors,
+			 * but do not put other errors in the queue. */
+			_errors.push_back(data);
+		}
+	} else {
+		/* Nothing or a non-critical error was shown. */
+		delete w;
+		new ErrmsgWindow(data);
+	}
 }
