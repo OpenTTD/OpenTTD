@@ -1778,7 +1778,7 @@ bool MissingGlyphSearcher::FindMissingGlyphs(const char **str)
 	InitFreeType(this->Monospace());
 	const Sprite *question_mark[FS_END];
 
-	for (FontSize size = FS_BEGIN; size < FS_END; size++) {
+	for (FontSize size = this->Monospace() ? FS_MONO : FS_BEGIN; size < (this->Monospace() ? FS_END : FS_MONO); size++) {
 		question_mark[size] = GetGlyph(size, '?');
 	}
 
@@ -1903,12 +1903,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
 
 		/* Reset the font width */
-		LoadStringWidthTable();
+		LoadStringWidthTable(searcher->Monospace());
 		return;
 	}
 
 	/* Update the font with cache */
-	LoadStringWidthTable();
+	LoadStringWidthTable(searcher->Monospace());
 
 #if !defined(WITH_ICU)
 	/*

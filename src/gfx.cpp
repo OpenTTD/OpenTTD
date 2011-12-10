@@ -1516,13 +1516,16 @@ void DoPaletteAnimations()
 }
 
 
-/** Initialize _stringwidth_table cache */
-void LoadStringWidthTable()
+/**
+ * Initialize _stringwidth_table cache
+ * @param monospace Whether to load the monospace cache or the normal fonts.
+ */
+void LoadStringWidthTable(bool monospace)
 {
 	_max_char_height = 0;
 	_max_char_width  = 0;
 
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+	for (FontSize fs = monospace ? FS_MONO : FS_BEGIN; fs < (monospace ? FS_END : FS_MONO); fs++) {
 		_max_char_height = max<int>(_max_char_height, GetCharacterHeight(fs));
 		for (uint i = 0; i != 224; i++) {
 			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);

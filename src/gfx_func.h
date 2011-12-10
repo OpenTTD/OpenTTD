@@ -125,7 +125,7 @@ Dimension GetStringBoundingBox(StringID strid);
 uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize start_fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
-void LoadStringWidthTable();
+void LoadStringWidthTable(bool monospace = false);
 
 void DrawDirtyBlocks();
 void SetDirtyBlocks(int left, int top, int right, int bottom);
