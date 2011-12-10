@@ -1391,8 +1391,16 @@ function Regression::TileList()
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
+
+	list.AddRectangle(31895 - 256 * 5, 256 * 5 + 31895 + 8);
+
 	list.Valuate(AITile.GetOwner);
 	print("  GetOwner() ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	list.Valuate(AITile.GetTownAuthority);
+	print("  GetTownAuthority() ListDump:");
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}

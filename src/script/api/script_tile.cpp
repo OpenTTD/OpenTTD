@@ -270,16 +270,22 @@
 
 /* static */ TownID ScriptTile::GetTownAuthority(TileIndex tile)
 {
-	if (!::IsValidTile(tile)) return false;
+	if (!::IsValidTile(tile)) return INVALID_TOWN;
 
-	return ::ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority)->index;
+	Town *town = ::ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
+	if (town == NULL) return INVALID_TOWN;
+
+	return town->index;
 }
 
 /* static */ TownID ScriptTile::GetClosestTown(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
 
-	return ::ClosestTownFromTile(tile, UINT_MAX)->index;
+	Town *town = ::ClosestTownFromTile(tile, UINT_MAX);
+	if (town == NULL) return INVALID_TOWN;
+
+	return town->index;
 }
 
 /* static */ Money ScriptTile::GetBuildCost(BuildType build_type)
