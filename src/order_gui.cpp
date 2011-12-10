@@ -1466,7 +1466,7 @@ public:
 		}
 	}
 
-	virtual void OnVehicleSelect(const Vehicle *v)
+	virtual bool OnVehicleSelect(const Vehicle *v)
 	{
 		/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet.
 		 * We disallow copying orders of other vehicles if we already have at least one order entry
@@ -1474,13 +1474,14 @@ public:
 		 * Obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
 		 * TODO: give a warning message */
 		bool share_order = _ctrl_pressed || this->goto_type == OPOS_SHARE;
-		if (this->vehicle->GetNumOrders() != 0 && !share_order) return;
+		if (this->vehicle->GetNumOrders() != 0 && !share_order) return false;
 
 		if (DoCommandP(this->vehicle->tile, this->vehicle->index | (share_order ? CO_SHARE : CO_COPY) << 30, v->index,
 				share_order ? CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_COPY_ORDER_LIST))) {
 			this->selected_order = -1;
 			ResetObjectToPlace();
 		}
+		return true;
 	}
 
 	virtual void OnPlaceObjectAbort()

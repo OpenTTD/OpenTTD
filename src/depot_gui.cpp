@@ -838,12 +838,14 @@ struct DepotWindow : Window {
 	/**
 	 * Clones a vehicle
 	 * @param v the original vehicle to clone
+	 * @return Always true.
 	 */
-	virtual void OnVehicleSelect(const Vehicle *v)
+	virtual bool OnVehicleSelect(const Vehicle *v)
 	{
 		if (DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), CcCloneVehicle)) {
 			ResetObjectToPlace();
 		}
+		return true;
 	}
 
 	virtual void OnPlaceObjectAbort()

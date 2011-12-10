@@ -2671,8 +2671,7 @@ bool VehicleClicked(const Vehicle *v)
 	v = v->First();
 	if (!v->IsPrimaryVehicle()) return false;
 
-	_thd.GetCallbackWnd()->OnVehicleSelect(v);
-	return true;
+	return _thd.GetCallbackWnd()->OnVehicleSelect(v);
 }
 
 void StopGlobalFollowVehicle(const Vehicle *v)
