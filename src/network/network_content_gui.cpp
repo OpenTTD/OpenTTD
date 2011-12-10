@@ -258,6 +258,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	static GUIContentList::SortFunction * const sorter_funcs[];   ///< Sorter functions
 	static GUIContentList::FilterFunction * const filter_funcs[]; ///< Filter functions.
 	GUIContentList content;      ///< List with content
+	bool auto_select;            ///< Automatically select all content when the meta-data becomes available
 
 	const ContentInfo *selected; ///< The selected content info
 	int list_pos;                ///< Our position in the list
@@ -374,7 +375,8 @@ public:
 	NetworkContentListWindow(const WindowDesc *desc, bool select_all) :
 			QueryStringBaseWindow(EDITBOX_MAX_SIZE),
 			selected(NULL),
-			list_pos(0)
+			list_pos(0),
+			auto_select(select_all)
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(NCLWW_SCROLLBAR);
@@ -760,6 +762,7 @@ public:
 
 	virtual void OnReceiveContentInfo(const ContentInfo *rci)
 	{
+		if (this->auto_select && !rci->IsSelected()) _network_content_client.ToggleSelectedState(rci);
 		this->content.ForceRebuild();
 		this->InvalidateData();
 	}
