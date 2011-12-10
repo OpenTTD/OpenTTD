@@ -32,6 +32,7 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "progress.h"
+#include "error.h"
 
 #include "table/sprites.h"
 
@@ -83,6 +84,7 @@ static void CleanupGeneration()
 	_gw.threaded = false;
 
 	DeleteWindowById(WC_MODAL_PROGRESS, 0);
+	ShowFirstError();
 	MarkWholeScreenDirty();
 }
 
@@ -317,6 +319,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 		return;
 	}
 
+	UnshowCriticalError();
 	/* Remove any open window */
 	DeleteAllNonVitalWindows();
 	/* Hide vital windows, because we don't allow to use them */

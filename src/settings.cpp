@@ -61,6 +61,7 @@
 #include "smallmap_gui.h"
 #include "roadveh.h"
 #include "fios.h"
+#include "strings_func.h"
 
 #include "void_map.h"
 #include "station_base.h"
@@ -340,7 +341,10 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 	case SDT_NUMX: {
 		char *end;
 		size_t val = strtoul(str, &end, 0);
-		if (*end != '\0') ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
+		if (*end != '\0') {
+			SetDParamStr(0, desc->name);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS, WL_CRITICAL);
+		}
 		return (void*)val;
 	}
 	case SDT_ONEOFMANY: {
@@ -349,19 +353,27 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 		 * look if we have defined a converter from old value to new value. */
 		if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
 		if (r != (size_t)-1) return (void*)r; // and here goes converted value
-		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name); // sorry, we failed
+
+		SetDParamStr(0, str);
+		SetDParamStr(1, desc->name);
+		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
 		size_t r = LookupManyOfMany(desc->many, str);
 		if (r != (size_t)-1) return (void*)r;
-		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
+		SetDParamStr(0, str);
+		SetDParamStr(1, desc->name);
+		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
 		return NULL;
 	}
 	case SDT_BOOLX:
 		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
 		if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
-		ShowInfoF("ini: invalid setting value '%s' for '%s'", str, desc->name);
+
+		SetDParamStr(0, str);
+		SetDParamStr(1, desc->name);
+		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
 		break;
 
 	case SDT_STRING: return orig_str;
@@ -500,7 +512,8 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 
 		case SDT_INTLIST: {
 			if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
-				ShowInfoF("ini: error in array '%s'", sdb->name);
+				SetDParamStr(0, sdb->name);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
 			} else if (sd->desc.proc_cnvt != NULL) {
 				sd->desc.proc_cnvt((const char*)p);
 			}
@@ -1371,28 +1384,28 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 		if (!StrEmpty(item->value)) {
 			c->num_params = ParseIntList(item->value, (int*)c->param, lengthof(c->param));
 			if (c->num_params == (byte)-1) {
-				ShowInfoF("ini: error in array '%s'", item->name);
+				SetDParamStr(0, item->name);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
 				c->num_params = 0;
 			}
 		}
 
 		/* Check if item is valid */
 		if (!FillGRFDetails(c, is_static) || HasBit(c->flags, GCF_INVALID)) {
-			const char *msg;
-
 			if (c->status == GCS_NOT_FOUND) {
-				msg = "not found";
+				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND);
 			} else if (HasBit(c->flags, GCF_UNSAFE)) {
-				msg = "unsafe for static use";
+				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNSAFE);
 			} else if (HasBit(c->flags, GCF_SYSTEM)) {
-				msg = "system NewGRF";
+				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_SYSTEM);
 			} else if (HasBit(c->flags, GCF_INVALID)) {
-				msg = "incompatible to this version of OpenTTD";
+				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE);
 			} else {
-				msg = "unknown";
+				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN);
 			}
 
-			ShowInfoF("ini: ignoring invalid NewGRF '%s': %s", item->name, msg);
+			SetDParamStr(0, item->name);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, WL_CRITICAL);
 			delete c;
 			continue;
 		}
@@ -1401,7 +1414,9 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 		bool duplicate = false;
 		for (const GRFConfig *gc = first; gc != NULL; gc = gc->next) {
 			if (gc->ident.grfid == c->ident.grfid) {
-				ShowInfoF("ini: ignoring  NewGRF '%s': duplicate GRF ID with '%s'", item->name, gc->filename);
+				SetDParamStr(0, item->name);
+				SetDParamStr(1, gc->filename);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_DUPLICATE_GRFID, WL_CRITICAL);
 				duplicate = true;
 				break;
 			}
