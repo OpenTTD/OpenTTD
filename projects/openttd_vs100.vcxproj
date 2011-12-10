@@ -646,6 +646,7 @@
     <ClCompile Include="..\src\depot_gui.cpp" />
     <ClCompile Include="..\src\dock_gui.cpp" />
     <ClCompile Include="..\src\engine_gui.cpp" />
+    <ClCompile Include="..\src\error_gui.cpp" />
     <ClCompile Include="..\src\fios_gui.cpp" />
     <ClCompile Include="..\src\genworld_gui.cpp" />
     <ClCompile Include="..\src\graph_gui.cpp" />

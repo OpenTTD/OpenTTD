@@ -1161,6 +1161,9 @@
     <ClCompile Include="..\src\engine_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\error_gui.cpp">
+      <Filter>GUI Source Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\fios_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>

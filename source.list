@@ -398,6 +398,7 @@ date_gui.cpp
 depot_gui.cpp
 dock_gui.cpp
 engine_gui.cpp
+error_gui.cpp
 fios_gui.cpp
 genworld_gui.cpp
 graph_gui.cpp
