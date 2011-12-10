@@ -374,9 +374,9 @@ public:
 	 */
 	NetworkContentListWindow(const WindowDesc *desc, bool select_all) :
 			QueryStringBaseWindow(EDITBOX_MAX_SIZE),
+			auto_select(select_all),
 			selected(NULL),
-			list_pos(0),
-			auto_select(select_all)
+			list_pos(0)
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(NCLWW_SCROLLBAR);
