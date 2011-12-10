@@ -127,6 +127,8 @@ public:
 typedef std::list<ErrorMessageData> ErrorList;
 /** The actual queue with errors. */
 ErrorList _errors;
+/** Whether the window system is initialized or not. */
+bool _window_system_initialized = false;
 
 /** Window class for displaying an error message window. */
 struct ErrmsgWindow : public Window, ErrorMessageData {
@@ -261,11 +263,7 @@ public:
 	~ErrmsgWindow()
 	{
 		SetRedErrorSquare(INVALID_TILE);
-
-		if (!_errors.empty()) {
-			new ErrmsgWindow(_errors.front());
-			_errors.pop_front();
-		}
+		if (_window_system_initialized) ShowFirstError();
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -291,6 +289,30 @@ public:
 void ClearErrorMessages()
 {
 	_errors.clear();
+}
+
+/** Show the first error of the queue. */
+void ShowFirstError()
+{
+	_window_system_initialized = true;
+	if (!_errors.empty()) {
+		new ErrmsgWindow(_errors.front());
+		_errors.pop_front();
+	}
+}
+
+/**
+ * Unshow the critical error. This has to happen when a critical
+ * error is shown and we uninitialise the window system, i.e.
+ * remove all the windows.
+ */
+void UnshowCriticalError()
+{
+	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	if (w != NULL) {
+		if (w->IsCritical()) _errors.push_front(*w);
+		_window_system_initialized = false;
+	}
 }
 
 /**

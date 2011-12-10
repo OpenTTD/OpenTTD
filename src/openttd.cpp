@@ -71,9 +71,6 @@
 
 #include "table/strings.h"
 
-/** Error message to show when switching modes. */
-StringID _switch_mode_errorstr;
-
 void CallLandscapeTick();
 void IncreaseDate();
 void DoPaletteAnimations();
@@ -524,7 +521,6 @@ int ttd_main(int argc, char *argv[])
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
-	_switch_mode_errorstr = INVALID_STRING_ID;
 	_config_file = NULL;
 
 	GetOptData mgo(argc - 1, argv + 1, _options);
@@ -1102,11 +1098,6 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		default: NOT_REACHED();
-	}
-
-	if (_switch_mode_errorstr != INVALID_STRING_ID) {
-		ShowErrorMessage(_switch_mode_errorstr, INVALID_STRING_ID, WL_CRITICAL);
-		_switch_mode_errorstr = INVALID_STRING_ID;
 	}
 }
 

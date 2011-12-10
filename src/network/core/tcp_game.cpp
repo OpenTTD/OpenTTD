@@ -18,6 +18,7 @@
 #include "../network.h"
 #include "../network_internal.h"
 #include "../../debug.h"
+#include "../../error.h"
 
 #include "table/strings.h"
 
@@ -46,8 +47,7 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 	if (!_network_server && _networking) {
 		_switch_mode = SM_MENU;
 		_networking = false;
-		extern StringID _switch_mode_errorstr;
-		_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
+		ShowErrorMessage(STR_NETWORK_ERROR_LOSTCONNECTION, INVALID_STRING_ID, WL_CRITICAL);
 
 		return NETWORK_RECV_STATUS_CONN_LOST;
 	}

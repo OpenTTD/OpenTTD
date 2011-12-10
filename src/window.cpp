@@ -32,6 +32,7 @@
 #include "hotkeys.h"
 #include "toolbar_gui.h"
 #include "statusbar_gui.h"
+#include "error.h"
 
 
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
@@ -1448,6 +1449,8 @@ void InitWindowSystem()
 
 	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
 	NWidgetScrollbar::InvalidateDimensionCache();
+
+	ShowFirstError();
 }
 
 /**
@@ -1455,6 +1458,8 @@ void InitWindowSystem()
  */
 void UnInitWindowSystem()
 {
+	UnshowCriticalError();
+
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) delete w;
 

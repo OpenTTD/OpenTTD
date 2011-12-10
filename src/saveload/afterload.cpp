@@ -53,6 +53,7 @@
 #include "../smallmap_gui.h"
 #include "../news_func.h"
 #include "../group.h"
+#include "../error.h"
 
 #include "table/strings.h"
 
@@ -60,7 +61,6 @@
 
 #include <signal.h>
 
-extern StringID _switch_mode_errorstr;
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 
 /**
@@ -622,8 +622,8 @@ bool AfterLoadGame()
 	}
 
 	switch (gcf_res) {
-		case GLC_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
-		case GLC_NOT_FOUND:  _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; _pause_mode = PM_PAUSED_ERROR; break;
+		case GLC_COMPATIBLE: ShowErrorMessage(STR_NEWGRF_COMPATIBLE_LOAD_WARNING, INVALID_STRING_ID, WL_CRITICAL); break;
+		case GLC_NOT_FOUND:  ShowErrorMessage(STR_NEWGRF_DISABLED_WARNING, INVALID_STRING_ID, WL_CRITICAL); _pause_mode = PM_PAUSED_ERROR; break;
 		default: break;
 	}
 
@@ -1756,9 +1756,7 @@ bool AfterLoadGame()
 		RoadVehicle *v;
 		FOR_ALL_ROADVEHICLES(v) {
 			if (v->First() == v && HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM)) {
-				if (_switch_mode_errorstr == INVALID_STRING_ID || _switch_mode_errorstr == STR_NEWGRF_COMPATIBLE_LOAD_WARNING) {
-					_switch_mode_errorstr = STR_WARNING_LOADGAME_REMOVED_TRAMS;
-				}
+				ShowErrorMessage(STR_WARNING_LOADGAME_REMOVED_TRAMS, INVALID_STRING_ID, WL_CRITICAL);
 				delete v;
 			}
 		}

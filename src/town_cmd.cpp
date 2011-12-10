@@ -1896,8 +1896,7 @@ bool GenerateTowns(TownLayout layout)
 
 	/* If there are no towns at all and we are generating new game, bail out */
 	if (Town::GetNumItems() == 0 && _game_mode != GM_EDITOR) {
-		extern StringID _switch_mode_errorstr;
-		_switch_mode_errorstr = STR_ERROR_COULD_NOT_CREATE_TOWN;
+		ShowErrorMessage(STR_ERROR_COULD_NOT_CREATE_TOWN, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
 	return false;  // we are still without a town? we failed, simply

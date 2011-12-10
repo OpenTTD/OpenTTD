@@ -526,12 +526,11 @@ bool ClientNetworkGameSocketHandler::IsConnected()
  ************/
 
 extern bool SafeLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL);
-extern StringID _switch_mode_errorstr;
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
 {
 	/* We try to join a server which is full */
-	_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_FULL;
+	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_FULL, INVALID_STRING_ID, WL_CRITICAL);
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_SERVER_FULL;
@@ -540,7 +539,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p)
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p)
 {
 	/* We try to join a server where we are banned */
-	_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_BANNED;
+	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_BANNED, INVALID_STRING_ID, WL_CRITICAL);
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_SERVER_BANNED;
@@ -652,28 +651,28 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 		case NETWORK_ERROR_NOT_AUTHORIZED:
 		case NETWORK_ERROR_NOT_EXPECTED:
 		case NETWORK_ERROR_COMPANY_MISMATCH:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_ERROR;
+			ShowErrorMessage(STR_NETWORK_ERROR_SERVER_ERROR, INVALID_STRING_ID, WL_CRITICAL);
 			break;
 		case NETWORK_ERROR_FULL:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_FULL;
+			ShowErrorMessage(STR_NETWORK_ERROR_SERVER_FULL, INVALID_STRING_ID, WL_CRITICAL);
 			break;
 		case NETWORK_ERROR_WRONG_REVISION:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_WRONG_REVISION;
+			ShowErrorMessage(STR_NETWORK_ERROR_WRONG_REVISION, INVALID_STRING_ID, WL_CRITICAL);
 			break;
 		case NETWORK_ERROR_WRONG_PASSWORD:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_WRONG_PASSWORD;
+			ShowErrorMessage(STR_NETWORK_ERROR_WRONG_PASSWORD, INVALID_STRING_ID, WL_CRITICAL);
 			break;
 		case NETWORK_ERROR_KICKED:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_KICKED;
+			ShowErrorMessage(STR_NETWORK_ERROR_KICKED, INVALID_STRING_ID, WL_CRITICAL);
 			break;
 		case NETWORK_ERROR_CHEATER:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_CHEATER;
+			ShowErrorMessage(STR_NETWORK_ERROR_CHEATER, INVALID_STRING_ID, WL_CRITICAL);
 			break;
 		case NETWORK_ERROR_TOO_MANY_COMMANDS:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_TOO_MANY_COMMANDS;
+			ShowErrorMessage(STR_NETWORK_ERROR_TOO_MANY_COMMANDS, INVALID_STRING_ID, WL_CRITICAL);
 			break;
 		default:
-			_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
+			ShowErrorMessage(STR_NETWORK_ERROR_LOSTCONNECTION, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
@@ -710,7 +709,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	}
 
 	/* NewGRF mismatch, bail out */
-	_switch_mode_errorstr = STR_NETWORK_ERROR_NEWGRF_MISMATCH;
+	ShowErrorMessage(STR_NETWORK_ERROR_NEWGRF_MISMATCH, INVALID_STRING_ID, WL_CRITICAL);
 	return ret;
 }
 
@@ -849,7 +848,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 
 	if (!load_success) {
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
+		ShowErrorMessage(STR_NETWORK_ERROR_SAVEGAMEERROR, INVALID_STRING_ID, WL_CRITICAL);
 		return NETWORK_RECV_STATUS_SAVEGAME;
 	}
 	/* If the savegame has successfully loaded, ALL windows have been removed,
@@ -1053,7 +1052,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
 	if (this->status >= STATUS_JOIN) {
-		_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_SHUTDOWN;
+		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_SHUTDOWN, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
@@ -1068,7 +1067,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet 
 		 * Client ID modulo 16. This way reconnects should be spread
 		 * out a bit. */
 		_network_reconnect = _network_own_client_id % 16;
-		_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_REBOOT;
+		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_REBOOT, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
@@ -1157,7 +1156,7 @@ void ClientNetworkGameSocketHandler::CheckConnection()
 	 * the server will forcefully disconnect you. */
 	if (lag > 20) {
 		this->NetworkGameSocketHandler::CloseConnection();
-		_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
+		ShowErrorMessage(STR_NETWORK_ERROR_LOSTCONNECTION, INVALID_STRING_ID, WL_CRITICAL);
 		return;
 	}
 

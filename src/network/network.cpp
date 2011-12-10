@@ -36,6 +36,7 @@
 #include "../rev.h"
 #include "../core/pool_func.hpp"
 #include "../gfx_func.h"
+#include "../error.h"
 #include "table/strings.h"
 
 #ifdef DEBUG_DUMP_COMMANDS
@@ -287,8 +288,7 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
 void NetworkError(StringID error_string)
 {
 	_switch_mode = SM_MENU;
-	extern StringID _switch_mode_errorstr;
-	_switch_mode_errorstr = error_string;
+	ShowErrorMessage(error_string, INVALID_STRING_ID, WL_CRITICAL);
 }
 
 /**
