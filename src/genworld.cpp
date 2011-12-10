@@ -262,7 +262,6 @@ void HandleGeneratingWorldAbortion()
 
 	if (_gw.thread != NULL) _gw.thread->Exit();
 
-	extern void SwitchToMode(SwitchMode new_mode);
 	SwitchToMode(_switch_mode);
 }
 

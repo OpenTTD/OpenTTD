@@ -77,4 +77,6 @@ void AskExitToGameMenu();
 int ttd_main(int argc, char *argv[]);
 void HandleExitGameRequest();
 
+void SwitchToMode(SwitchMode new_mode);
+
 #endif /* OPENTTD_H */

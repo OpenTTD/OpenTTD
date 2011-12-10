@@ -138,7 +138,6 @@ static void *_dedicated_video_mem;
 bool _dedicated_forks;
 
 extern bool SafeLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL);
-extern void SwitchToMode(SwitchMode new_mode);
 
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 

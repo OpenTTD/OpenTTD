@@ -38,7 +38,6 @@
 
 static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
-extern void SwitchToMode(SwitchMode new_mode);
 
 static const StringID _connection_types_dropdown[] = {
 	STR_NETWORK_START_SERVER_LAN_INTERNET,

@@ -42,7 +42,6 @@ enum GenenerateLandscapeWindowMode {
 	GLWM_SCENARIO,  ///< Generate flat land
 };
 
-extern void SwitchToMode(SwitchMode new_mode);
 extern void MakeNewgameSettingsLive();
 
 /**

@@ -1049,8 +1049,6 @@ DEF_CONSOLE_CMD(ConNewGame)
 	return true;
 }
 
-extern void SwitchToMode(SwitchMode new_mode);
-
 DEF_CONSOLE_CMD(ConRestart)
 {
 	if (argc == 0) {
