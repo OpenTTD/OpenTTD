@@ -12,7 +12,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../saveload/saveload.h"
-#include "../gui.h"
+#include "../error.h"
 
 #include "../script/squirrel_class.hpp"
 

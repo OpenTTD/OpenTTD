@@ -10,6 +10,7 @@
 /** @file newgrf_gui.cpp GUI to change NewGRF settings. */
 
 #include "stdafx.h"
+#include "error.h"
 #include "gui.h"
 #include "newgrf.h"
 #include "strings_func.h"

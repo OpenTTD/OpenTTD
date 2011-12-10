@@ -29,7 +29,7 @@
 #include "newgrf_text.h"
 #include "livery.h"
 #include "company_base.h"
-#include "gui.h"
+#include "error.h"
 #include "strings_func.h"
 
 #include "table/strings.h"

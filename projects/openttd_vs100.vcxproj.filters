@@ -507,6 +507,9 @@
     <ClInclude Include="..\src\engine_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\fileio_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>

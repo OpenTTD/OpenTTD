@@ -10,7 +10,7 @@
 /** @file bridge_gui.cpp Graphical user interface for bridge construction */
 
 #include "stdafx.h"
-#include "gui.h"
+#include "error.h"
 #include "command_func.h"
 #include "rail.h"
 #include "strings_func.h"

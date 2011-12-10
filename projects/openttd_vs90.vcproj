@@ -984,6 +984,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\error.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\fileio_func.h"
 				>
 			</File>

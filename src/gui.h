@@ -55,16 +55,6 @@ void ShowSubsidiesList();
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 
-/** Message severity/type */
-enum WarningLevel {
-	WL_INFO,     ///< Used for DoCommand-like (and some nonfatal AI GUI) errors/information
-	WL_WARNING,  ///< Other information
-	WL_ERROR,    ///< Errors (eg. saving/loading failed)
-	WL_CRITICAL, ///< Critical errors, the MessageBox is shown in all cases
-};
-
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, uint textref_stack_size = 0, const uint32 *textref_stack = NULL);
-
 void ShowExtraViewPortWindow(TileIndex tile = INVALID_TILE);
 void ShowExtraViewPortWindowForTileUnderCursor();
 

@@ -13,7 +13,7 @@
 #include "heightmap.h"
 #include "clear_map.h"
 #include "void_map.h"
-#include "gui.h"
+#include "error.h"
 #include "saveload/saveload.h"
 #include "bmp.h"
 #include "gfx_func.h"

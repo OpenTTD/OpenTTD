@@ -23,7 +23,7 @@
 #include "signs_base.h"
 #include "cargotype.h"
 #include "fontcache.h"
-#include "gui.h"
+#include "error.h"
 #include "strings_func.h"
 #include "rev.h"
 #include "core/alloc_type.hpp"

@@ -19,7 +19,7 @@
 #include "sound_func.h"
 #include "gfx_func.h"
 #include "core/random_func.hpp"
-#include "gui.h"
+#include "error.h"
 #include "core/geometry_func.hpp"
 #include "string_func.h"
 #include "settings_type.h"

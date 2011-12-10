@@ -41,7 +41,7 @@
 #include "../string_func.h"
 #include "../engine_base.h"
 #include "../fios.h"
-#include "../gui.h"
+#include "../error.h"
 
 #include "table/strings.h"
 

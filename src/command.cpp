@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "landscape.h"
+#include "error.h"
 #include "gui.h"
 #include "command_func.h"
 #include "network/network_type.h"

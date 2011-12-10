@@ -20,7 +20,7 @@
 #include "saveload/saveload.h"
 #include "company_func.h"
 #include "strings_func.h"
-#include "gui.h"
+#include "error.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "tile_map.h"

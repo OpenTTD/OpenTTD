@@ -26,7 +26,7 @@
 #include "../core/random_func.hpp"
 #include "../date_func.h"
 #include "../gfx_func.h"
-#include "../gui.h"
+#include "../error.h"
 #include "../rev.h"
 #include "network.h"
 #include "network_base.h"

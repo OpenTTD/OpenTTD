@@ -17,6 +17,7 @@
 #include "video/video_driver.hpp"
 
 #include "fontcache.h"
+#include "error.h"
 #include "gui.h"
 #include "sound_func.h"
 #include "window_func.h"

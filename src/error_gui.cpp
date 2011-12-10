@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "landscape.h"
 #include "newgrf_text.h"
-#include "gui.h"
+#include "error.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "string_func.h"

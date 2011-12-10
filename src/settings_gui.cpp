@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "currency.h"
+#include "error.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"

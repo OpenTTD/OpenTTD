@@ -10,7 +10,7 @@
 /** @file vehicle.cpp Base implementations of all vehicles. */
 
 #include "stdafx.h"
-#include "gui.h"
+#include "error.h"
 #include "roadveh.h"
 #include "ship.h"
 #include "spritecache.h"

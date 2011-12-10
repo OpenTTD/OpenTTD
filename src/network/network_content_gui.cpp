@@ -14,7 +14,7 @@
 #include "../strings_func.h"
 #include "../gfx_func.h"
 #include "../window_func.h"
-#include "../gui.h"
+#include "../error.h"
 #include "../ai/ai.hpp"
 #include "../base_media_base.h"
 #include "../sortlist_type.h"

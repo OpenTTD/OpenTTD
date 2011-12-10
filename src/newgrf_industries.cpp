@@ -21,7 +21,7 @@
 #include "town.h"
 #include "company_base.h"
 #include "command_func.h"
-#include "gui.h"
+#include "error.h"
 #include "strings_func.h"
 #include "core/random_func.hpp"
 

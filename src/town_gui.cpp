@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "town.h"
 #include "viewport_func.h"
+#include "error.h"
 #include "gui.h"
 #include "command_func.h"
 #include "company_func.h"

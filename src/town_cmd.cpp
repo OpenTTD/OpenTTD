@@ -20,7 +20,7 @@
 #include "station_base.h"
 #include "company_base.h"
 #include "news_func.h"
-#include "gui.h"
+#include "error.h"
 #include "object.h"
 #include "genworld.h"
 #include "newgrf_debug.h"

@@ -15,7 +15,7 @@
 #include "../debug.h"
 #include "../strings_func.h"
 #include "table/strings.h"
-#include "../gui.h"
+#include "../error.h"
 #include "../core/math_func.hpp"
 #include "grf.hpp"
 

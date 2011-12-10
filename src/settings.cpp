@@ -45,7 +45,7 @@
 #include "textbuf_gui.h"
 #include "rail_gui.h"
 #include "elrail_func.h"
-#include "gui.h"
+#include "error.h"
 #include "town.h"
 #include "video/video_driver.hpp"
 #include "sound/sound_driver.hpp"

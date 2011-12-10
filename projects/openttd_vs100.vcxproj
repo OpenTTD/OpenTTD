@@ -428,6 +428,7 @@
     <ClInclude Include="..\src\engine_func.h" />
     <ClInclude Include="..\src\engine_gui.h" />
     <ClInclude Include="..\src\engine_type.h" />
+    <ClInclude Include="..\src\error.h" />
     <ClInclude Include="..\src\fileio_func.h" />
     <ClInclude Include="..\src\fileio_type.h" />
     <ClInclude Include="..\src\fios.h" />

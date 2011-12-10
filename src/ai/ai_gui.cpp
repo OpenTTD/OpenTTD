@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../table/sprites.h"
+#include "../error.h"
 #include "../gui.h"
 #include "../querystring_gui.h"
 #include "../company_func.h"

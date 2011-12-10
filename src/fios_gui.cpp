@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "saveload/saveload.h"
+#include "error.h"
 #include "gui.h"
 #include "gfx_func.h"
 #include "command_func.h"
