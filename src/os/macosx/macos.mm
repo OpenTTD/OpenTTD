@@ -172,3 +172,20 @@ bool GetClipboardContents(char *buffer, size_t buff_len)
 	return true;
 }
 #endif
+
+uint GetCPUCoreCount()
+{
+	uint count = 1;
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+	if (MacOSVersionIsAtLeast(10, 5, 0)) {
+		count = [ [ NSProcessInfo processInfo ] activeProcessorCount ];
+	} else
+#endif
+	{
+#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5)
+		count = MPProcessorsScheduled();
+#endif
+	}
+
+	return count;
+}

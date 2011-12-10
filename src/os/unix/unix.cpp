@@ -28,8 +28,16 @@
 	#define HAS_STATVFS
 #endif
 
+#if defined(OPENBSD) || defined(__NetBSD__) || defined(__FreeBSD__)
+	#define HAS_SYSCTL
+#endif
+
 #ifdef HAS_STATVFS
 #include <sys/statvfs.h>
+#endif
+
+#ifdef HAS_SYSCTL
+#include <sys/sysctl.h>
 #endif
 
 
@@ -318,3 +326,26 @@ void CSleep(int milliseconds)
 		usleep(milliseconds * 1000);
 	#endif
 }
+
+
+#ifndef __APPLE__
+uint GetCPUCoreCount()
+{
+	uint count = 1;
+#ifdef HAS_SYSCTL
+	int ncpu = 0;
+	size_t len = sizeof(ncpu);
+
+	if (sysctlbyname("hw.availcpu", &ncpu, &len, NULL, 0) < 0) {
+		sysctlbyname("hw.ncpu", &ncpu, &len, NULL, 0);
+	}
+
+	if (ncpu > 0) count = ncpu;
+#elif defined(_SC_NPROCESSORS_ONLN)
+	long res = sysconf(_SC_NPROCESSORS_ONLN);
+	if (res > 0) count = res;
+#endif
+
+	return count;
+}
+#endif

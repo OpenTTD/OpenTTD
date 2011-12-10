@@ -753,3 +753,11 @@ const char *GetCurrentLocale(const char *)
 	static char retbuf[6] = {lang[0], lang[1], '_', country[0], country[1], 0};
 	return retbuf;
 }
+
+uint GetCPUCoreCount()
+{
+	SYSTEM_INFO info;
+
+	GetSystemInfo(&info);
+	return info.dwNumberOfProcessors;
+}

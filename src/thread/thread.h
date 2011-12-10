@@ -88,4 +88,10 @@ public:
 	virtual void SendSignal() = 0;
 };
 
+/**
+ * Get number of processor cores in the system, including HyperThreading or similar.
+ * @return Total number of processor cores.
+ */
+uint GetCPUCoreCount();
+
 #endif /* THREAD_H */

@@ -210,3 +210,8 @@ void CSleep(int milliseconds)
 
 const char *FS2OTTD(const char *name) {return name;}
 const char *OTTD2FS(const char *name) {return name;}
+
+uint GetCPUCoreCount()
+{
+	return 1;
+}
