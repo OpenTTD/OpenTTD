@@ -76,6 +76,7 @@ class ErrorMessageData {
 protected:
 	uint duration;                  ///< Length of display of the message. 0 means forever,
 	uint64 decode_params[20];       ///< Parameters of the message strings.
+	const char *strings[20];        ///< Copies of raw strings that were used.
 	uint textref_stack_size;        ///< Number of uint32 values to put on the #TextRefStack for the error message.
 	uint32 textref_stack[16];       ///< Values to put on the #TextRefStack for the error message.
 	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
@@ -91,6 +92,18 @@ public:
 	ErrorMessageData(const ErrorMessageData &data)
 	{
 		*this = data;
+		for (size_t i = 0; i < lengthof(this->strings); i++) {
+			if (this->strings[i] != NULL) {
+				this->strings[i] = strdup(this->strings[i]);
+				this->decode_params[i] = (size_t)this->strings[i];
+			}
+		}
+	}
+
+	/** Free all the strings. */
+	~ErrorMessageData()
+	{
+		for (size_t i = 0; i < lengthof(this->strings); i++) free(this->strings[i]);
 	}
 
 	/**
@@ -111,7 +124,7 @@ public:
 	{
 		this->position.x = x;
 		this->position.y = y;
-		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
+		CopyOutDParam(this->decode_params, this->strings, detailed_msg == INVALID_STRING_ID ? summary_msg : detailed_msg, lengthof(this->decode_params));
 		if (textref_stack_size > 0) {
 			MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
 		}
@@ -312,6 +325,7 @@ void UnshowCriticalError()
 	if (w != NULL) {
 		if (w->IsCritical()) _errors.push_front(*w);
 		_window_system_initialized = false;
+		delete w;
 	}
 }
 
