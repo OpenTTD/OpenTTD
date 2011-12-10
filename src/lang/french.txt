@@ -1372,6 +1372,21 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Demi-to
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Changer valeur du paramètre
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Erreur dans le fichier de configuration...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... erreur dans le tableau '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valeur '{STRING}' invalide pour '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caractères superflus à la fin du paramètre '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' ignoré{NBSP}: GRF ID en doublon avec '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... NewGRF '{STRING}' invalide ignoré{NBSP}: {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :non trouvé
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :dangereux pour un usage statique
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF système
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible avec cette version d'OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :inconnu
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... le niveau de compression '{STRING}' n'est pas valide
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... le format de sauvegarde '{STRING}' n'est pas disponible. Retour à '{STRING}'
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 

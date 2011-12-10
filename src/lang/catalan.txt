@@ -1372,6 +1372,21 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Canvi d
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Error en l'arxiu de configuració...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... error en la sèrie '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valor invàlid '{STRING}' per '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caràcters de fi al final de la configuració '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorant NewGRF '{STRING}': GRF ID duplicada amb '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorant NewGRF invàlid '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :no trobat
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :insegur per a us estàtic
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible amb aquesta versió d'OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconegut
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... el nivell de compressió '{STRING}' no és vàlid
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... el format de joc desat '{STRING}' no està disponible. Tornant a '{STRING}'
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -3507,7 +3522,7 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Càrrega
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error Intern: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :El joc desat està trencat - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :El joc desat està fet amb una versió més moderna
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :L'arxiu no es pot llegir l'arxiu
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No es pot llegir l'arxiu
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No es pot escriure a l'arxiu
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :El test d'integritat de dades ha fallat
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>

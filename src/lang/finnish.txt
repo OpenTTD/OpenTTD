@@ -1371,6 +1371,21 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automaa
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuta asetusarvo
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Virhe asetustiedostossa...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... virhe taulukossa '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... epäkelpo arvo '{STRING}' asetuksella '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... merkkejä asetuksen '{STRING}' perässä
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... jätetään huomiotta NewGRF '{STRING}': sama GRF ID kuin '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... jätetään huomiotta epäkelpo NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei löydetty
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ei turvallinen staattiseen käyttöön
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :järjestelmä-NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :epäyhteensopiva tämän OpenTTD-version kanssa
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tuntematon
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkaustaso '{STRING}' on kelvoton
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... pelitallennemuoto '{STRING}' ei ole saatavilla. Palataan muotoon '{STRING}'
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 

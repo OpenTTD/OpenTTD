@@ -1371,6 +1371,21 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automat
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Change setting value
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Error with the configuration file...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... error in array '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... invalid value '{STRING}' for '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... trailing characters at end of setting '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoring NewGRF '{STRING}': duplicate GRF ID with '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoring invalid NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :not found
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :unsafe for static use
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :system NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible to this version of OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :unknown
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... compression level '{STRING}' is not valid
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame format '{STRING}' is not available. Reverting to '{STRING}'
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 

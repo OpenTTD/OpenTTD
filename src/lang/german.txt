@@ -1372,6 +1372,21 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automat
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Wert der Einstellung ändern
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Fehler in der Konfigurations-Datei...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... Fehler im Array '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ungültiger Wert '{STRING}' für '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... angehängte Zeichen an der Einstellung '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoriere NewGRF '{STRING}': identische GRF ID wie '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoriere ungültiges NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nicht gefunden
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ungeignet für statischen Gebrauch
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :System - NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel zu dieser OpenTTD - Version
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :unbekannt
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressionsgrad '{STRING}' ist ungültig
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... '{STRING}' nicht als Format für Spielstände verfügbar. Nutze stattdessen '{STRING}'
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
