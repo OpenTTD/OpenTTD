@@ -70,40 +70,68 @@ static const WindowDesc _errmsg_face_desc(
 	_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
 );
 
-/** Window class for displaying an error message window. */
-struct ErrmsgWindow : public Window {
-private:
+/** The data of the error message. */
+class ErrorMessageData {
+protected:
 	uint duration;                  ///< Length of display of the message. 0 means forever,
 	uint64 decode_params[20];       ///< Parameters of the message strings.
 	uint textref_stack_size;        ///< Number of uint32 values to put on the #TextRefStack for the error message.
 	uint32 textref_stack[16];       ///< Values to put on the #TextRefStack for the error message.
 	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
 	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
-	uint height_summary;            ///< Height of the #summary_msg string in pixels in the #EMW_MESSAGE widget.
-	uint height_detailed;           ///< Height of the #detailed_msg string in pixels in the #EMW_MESSAGE widget.
 	Point position;                 ///< Position of the error message window.
 	CompanyID face;                 ///< Company belonging to the face being shown. #INVALID_COMPANY if no face present.
 
-public:
-	ErrmsgWindow(Point pt, StringID summary_msg, StringID detailed_msg, bool no_timeout, uint textref_stack_size, const uint32 *textref_stack) : Window()
+	/**
+	 * Copy the given data into our instace.
+	 * @param data The data to copy.
+	 */
+	ErrorMessageData(const ErrorMessageData &data)
 	{
-		this->position = pt;
-		this->duration = no_timeout ? 0 : _settings_client.gui.errmsg_duration;
+		*this = data;
+	}
+
+public:
+	/**
+	 * Display an error message in a window.
+	 * @param summary_msg  General error message showed in first line. Must be valid.
+	 * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
+	 * @param duration     The amount of time to show this error message.
+	 * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+	 * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+	 * @param textref_stack_size Number of uint32 values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
+	 * @param textref_stack Values to put on the #TextRefStack.
+	 */
+	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration, int x, int y, uint textref_stack_size, const uint32 *textref_stack) :
+		duration(duration),
+		textref_stack_size(textref_stack_size),
+		summary_msg(summary_msg),
+		detailed_msg(detailed_msg)
+	{
+		this->position.x = x;
+		this->position.y = y;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
-		this->summary_msg  = summary_msg;
-		this->detailed_msg = detailed_msg;
-		this->textref_stack_size = textref_stack_size;
 		if (textref_stack_size > 0) {
 			MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
 		}
 
 		CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
 		this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company < MAX_COMPANIES) ? company : INVALID_COMPANY;
-		const WindowDesc *desc = (face == INVALID_COMPANY) ? &_errmsg_desc : &_errmsg_face_desc;
 
 		assert(summary_msg != INVALID_STRING_ID);
+	}
+};
 
-		this->InitNested(desc);
+/** Window class for displaying an error message window. */
+struct ErrmsgWindow : public Window, ErrorMessageData {
+private:
+	uint height_summary;            ///< Height of the #summary_msg string in pixels in the #EMW_MESSAGE widget.
+	uint height_detailed;           ///< Height of the #detailed_msg string in pixels in the #EMW_MESSAGE widget.
+
+public:
+	ErrmsgWindow(const ErrorMessageData &data) : Window(), ErrorMessageData(data)
+	{
+		this->InitNested((this->face == INVALID_COMPANY) ? &_errmsg_desc : &_errmsg_face_desc);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -277,7 +305,6 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
 	DeleteWindowById(WC_ERRMSG, 0);
-
-	Point pt = {x, y};
-	new ErrmsgWindow(pt, summary_msg, detailed_msg, no_timeout, textref_stack_size, textref_stack);
+	ErrorMessageData data(summary_msg, detailed_msg, no_timeout ? _settings_client.gui.errmsg_duration : 0, x, y, textref_stack_size, textref_stack);
+	new ErrmsgWindow(data);
 }
