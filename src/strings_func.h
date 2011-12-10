@@ -168,6 +168,7 @@ void SetDParamStr(uint n, const char *str);
 
 void CopyInDParam(int offs, const uint64 *src, int num);
 void CopyOutDParam(uint64 *dst, int offs, int num);
+void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num);
 
 /**
  * Get the current string parameter at index \a n from parameter array \a s.

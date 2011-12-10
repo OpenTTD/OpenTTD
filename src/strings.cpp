@@ -96,6 +96,30 @@ void CopyOutDParam(uint64 *dst, int offs, int num)
 	MemCpyT(dst, _global_string_params.GetPointerToOffset(offs), num);
 }
 
+/**
+ * Copy \a num string parameters from the global string parameter array to the \a dst array.
+ * Furthermore clone raw string parameters into \a strings and amend the data in \a dst.
+ * @param dst     Destination array of string parameters.
+ * @param strings Destination array for clone of the raw strings. Must be of same length as dst. Deallocation left to the caller.
+ * @param string  The string used to determine where raw strings are and where there are no raw strings.
+ * @param num     Number of string parameters to copy.
+ */
+void CopyOutDParam(uint64 *dst, const char **strings, StringID string, int num)
+{
+	char buf[DRAW_STRING_BUFFER];
+	GetString(buf, string, lastof(buf));
+
+	MemCpyT(dst, _global_string_params.GetPointerToOffset(0), num);
+	for (int i = 0; i < num; i++) {
+		if (_global_string_params.HasTypeInformation() && _global_string_params.GetTypeAtOffset(i) == SCC_RAW_STRING_POINTER) {
+			strings[i] = strdup((const char *)(size_t)_global_string_params.GetParam(i));
+			dst[i] = (size_t)strings[i];
+		} else {
+			strings[i] = NULL;
+		}
+	}
+}
+
 static char *StationGetSpecialString(char *buff, int x, const char *last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
 static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, const char *last);
@@ -822,7 +846,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-				const char *str = (const char *)(size_t)args->GetInt64();
+				const char *str = (const char *)(size_t)args->GetInt64(SCC_RAW_STRING_POINTER);
 				buff = FormatString(buff, str, args, last);
 				break;
 			}
