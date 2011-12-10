@@ -182,15 +182,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 		for (v = v->First(); v != NULL; v = v->Next()) {
 			if (v->cargo_cap == 0) continue;
 			/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
-			if (HasBit(available_cargo_types, v->cargo_type)) {
-				/* Do we have to refit the vehicle, or is it already carrying the right cargo? */
-				CargoArray default_capacity = GetCapacityOfArticulatedParts(engine_type);
-				for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-					if (cid != v->cargo_type && default_capacity[cid] > 0) return v->cargo_type;
-				}
-
-				return CT_NO_REFIT;
-			}
+			if (HasBit(available_cargo_types, v->cargo_type)) return v->cargo_type;
 		}
 
 		return CT_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
@@ -199,13 +191,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 
 		if (part_of_chain && !VerifyAutoreplaceRefitForOrders(v, engine_type)) return CT_INVALID; // Some refit orders lose their effect
 
-		/* Do we have to refit the vehicle, or is it already carrying the right cargo? */
-		CargoArray default_capacity = GetCapacityOfArticulatedParts(engine_type);
-		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-			if (cid != cargo_type && default_capacity[cid] > 0) return cargo_type;
-		}
-
-		return CT_NO_REFIT;
+		return cargo_type;
 	}
 }
 
@@ -275,12 +261,9 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	*new_vehicle = new_veh;
 
 	/* Refit the vehicle if needed */
-	byte subtype = GetBestFittingSubType(old_veh, new_veh);
-	/* If the subtype isn't zero and the refit cargo is not set,
-	 * we're better off setting the refit cargo too. */
-	if (subtype != 0 && refit_cargo == CT_NO_REFIT) refit_cargo = old_veh->cargo_type;
-
 	if (refit_cargo != CT_NO_REFIT) {
+		byte subtype = GetBestFittingSubType(old_veh, new_veh, refit_cargo);
+
 		cost.AddCost(DoCommand(0, new_veh->index, refit_cargo | (subtype << 8), DC_EXEC, GetCmdRefitVeh(new_veh)));
 		assert(cost.Succeeded()); // This should be ensured by GetNewCargoTypeForReplace()
 	}

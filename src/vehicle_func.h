@@ -47,7 +47,7 @@ byte VehicleRandomBits();
 void ResetVehiclePosHash();
 void ResetVehicleColourMap();
 
-byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type = INVALID_CARGO);
+byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
