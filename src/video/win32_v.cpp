@@ -19,6 +19,8 @@
 #include "../core/math_func.hpp"
 #include "../core/random_func.hpp"
 #include "../texteff.hpp"
+#include "../thread/thread.h"
+#include "../progress.h"
 #include "win32_v.h"
 #include <windows.h>
 
@@ -27,6 +29,7 @@ static struct {
 	HBITMAP dib_sect;
 	void *buffer_bits;
 	HPALETTE gdi_palette;
+	RECT update_rect;
 	int width;
 	int height;
 	int width_org;
@@ -45,17 +48,25 @@ static Dimension _bck_resolution;
 uint _codepage;
 #endif
 
+/** Whether the drawing is/may be done in a separate thread. */
+static bool _draw_threaded;
+/** Thread used to 'draw' to the screen, i.e. push data to the screen. */
+static ThreadObject *_draw_thread = NULL;
+/** Mutex to keep the access to the shared memory controlled. */
+static ThreadMutex *_draw_mutex = NULL;
+/** Should we keep continue drawing? */
+static volatile bool _draw_continue;
+/** Local copy of the palette for use in the drawing thread. */
+static Palette _local_palette;
+
 static void MakePalette()
 {
-	LOGPALETTE *pal;
-	uint i;
-
-	pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY));
+	LOGPALETTE *pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY));
 
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
 
-	for (i = 0; i != 256; i++) {
+	for (uint i = 0; i != 256; i++) {
 		pal->palPalEntry[i].peRed   = _cur_palette.palette[i].r;
 		pal->palPalEntry[i].peGreen = _cur_palette.palette[i].g;
 		pal->palPalEntry[i].peBlue  = _cur_palette.palette[i].b;
@@ -64,6 +75,10 @@ static void MakePalette()
 	}
 	_wnd.gdi_palette = CreatePalette(pal);
 	if (_wnd.gdi_palette == NULL) usererror("CreatePalette failed!\n");
+
+	_cur_palette.first_dirty = 0;
+	_cur_palette.count_dirty = 256;
+	_local_palette = _cur_palette;
 }
 
 static void UpdatePalette(HDC dc, uint start, uint count)
@@ -72,9 +87,9 @@ static void UpdatePalette(HDC dc, uint start, uint count)
 	uint i;
 
 	for (i = 0; i != count; i++) {
-		rgb[i].rgbRed   = _cur_palette.palette[start + i].r;
-		rgb[i].rgbGreen = _cur_palette.palette[start + i].g;
-		rgb[i].rgbBlue  = _cur_palette.palette[start + i].b;
+		rgb[i].rgbRed   = _local_palette.palette[start + i].r;
+		rgb[i].rgbGreen = _local_palette.palette[start + i].g;
+		rgb[i].rgbBlue  = _local_palette.palette[start + i].b;
 		rgb[i].rgbReserved = 0;
 	}
 
@@ -164,6 +179,7 @@ static void ClientSizeChanged(int w, int h)
 		/* mark all palette colors dirty */
 		_cur_palette.first_dirty = 0;
 		_cur_palette.count_dirty = 256;
+		_local_palette = _cur_palette;
 
 		BlitterFactoryBase::GetCurrentBlitter()->PostResize();
 
@@ -328,56 +344,113 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 	return true; // the request succedded
 }
 
+/** Do palette animation and blit to the window. */
+static void PaintWindow(HDC dc)
+{
+	HDC dc2 = CreateCompatibleDC(dc);
+	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
+	HPALETTE old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
+
+	if (_cur_palette.count_dirty != 0) {
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+
+		switch (blitter->UsePaletteAnimation()) {
+			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+				UpdatePalette(dc2, _local_palette.first_dirty, _local_palette.count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_BLITTER:
+				blitter->PaletteAnimate(_local_palette);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_NONE:
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+		_cur_palette.count_dirty = 0;
+	}
+
+	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	SelectPalette(dc, old_palette, TRUE);
+	SelectObject(dc2, old_bmp);
+	DeleteDC(dc2);
+}
+
+static void PaintWindowThread(void *)
+{
+	/* First tell the main thread we're started */
+	_draw_mutex->BeginCritical();
+	_draw_mutex->SendSignal();
+
+	/* Now wait for the first thing to draw! */
+	_draw_mutex->WaitForSignal();
+
+	while (_draw_continue) {
+		/* Convert update region from logical to device coordinates. */
+		POINT pt = {0, 0};
+		ClientToScreen(_wnd.main_wnd, &pt);
+		OffsetRect(&_wnd.update_rect, pt.x, pt.y);
+
+		/* Create a device context that is clipped to the region we need to draw.
+		 * GetDCEx 'consumes' the update region, so we may not destroy it ourself. */
+		HRGN rgn = CreateRectRgnIndirect(&_wnd.update_rect);
+		HDC dc = GetDCEx(_wnd.main_wnd, rgn, DCX_CLIPSIBLINGS | DCX_CLIPCHILDREN | DCX_INTERSECTRGN);
+
+		PaintWindow(dc);
+
+		/* Clear update rect. */
+		SetRectEmpty(&_wnd.update_rect);
+		ReleaseDC(_wnd.main_wnd, dc);
+
+		/* Flush GDI buffer to ensure drawing here doesn't conflict with any GDI usage in the main WndProc. */
+		GdiFlush();
+
+		_draw_mutex->WaitForSignal();
+	}
+
+	_draw_mutex->EndCritical();
+	_draw_thread->Exit();
+}
+
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	static uint32 keycode = 0;
 	static bool console = false;
+	static bool in_sizemove = false;
 
 	switch (msg) {
 		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
 			break;
 
-		case WM_PAINT: {
-			PAINTSTRUCT ps;
-			HDC dc, dc2;
-			HBITMAP old_bmp;
-			HPALETTE old_palette;
+		case WM_ENTERSIZEMOVE:
+			in_sizemove = true;
+			break;
 
-			BeginPaint(hwnd, &ps);
-			dc = ps.hdc;
-			dc2 = CreateCompatibleDC(dc);
-			old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
-			old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
+		case WM_EXITSIZEMOVE:
+			in_sizemove = false;
+			break;
 
-			if (_cur_palette.count_dirty != 0) {
-				Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+		case WM_PAINT:
+			if (!in_sizemove && _draw_mutex != NULL && !HasModalProgress()) {
+				/* Get the union of the old update rect and the new update rect. */
+				RECT r;
+				GetUpdateRect(hwnd, &r, FALSE);
+				UnionRect(&_wnd.update_rect, &_wnd.update_rect, &r);
 
-				switch (blitter->UsePaletteAnimation()) {
-					case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-						UpdatePalette(dc2, _cur_palette.first_dirty, _cur_palette.count_dirty);
-						break;
+				/* Mark the window as updated, otherwise Windows would send more WM_PAINT messages. */
+				ValidateRect(hwnd, NULL);
+				_draw_mutex->SendSignal();
+			} else {
+				PAINTSTRUCT ps;
 
-					case Blitter::PALETTE_ANIMATION_BLITTER:
-						blitter->PaletteAnimate(_cur_palette);
-						break;
-
-					case Blitter::PALETTE_ANIMATION_NONE:
-						break;
-
-					default:
-						NOT_REACHED();
-				}
-				_cur_palette.count_dirty = 0;
+				BeginPaint(hwnd, &ps);
+				PaintWindow(ps.hdc);
+				EndPaint(hwnd, &ps);
 			}
-
-			BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
-			SelectPalette(dc, old_palette, TRUE);
-			SelectObject(dc2, old_bmp);
-			DeleteDC(dc2);
-			EndPaint(hwnd, &ps);
 			return 0;
-		}
 
 		case WM_PALETTECHANGED:
 			if ((HWND)wParam == hwnd) return 0;
@@ -679,7 +752,7 @@ static void RegisterWndClass()
 	if (!registered) {
 		HINSTANCE hinst = GetModuleHandle(NULL);
 		WNDCLASS wnd = {
-			0,
+			CS_OWNDC,
 			WndProcGdi,
 			0,
 			0,
@@ -815,6 +888,8 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 
 	MarkWholeScreenDirty();
 
+	_draw_threaded = GetDriverParam(parm, "no_threads") == NULL && GetDriverParam(parm, "no_thread") == NULL && GetCPUCoreCount() > 1;
+
 	return NULL;
 }
 
@@ -841,6 +916,7 @@ static void CheckPaletteAnim()
 {
 	if (_cur_palette.count_dirty == 0) return;
 
+	_local_palette = _cur_palette;
 	InvalidateRect(_wnd.main_wnd, NULL, FALSE);
 }
 
@@ -850,6 +926,32 @@ void VideoDriver_Win32::MainLoop()
 	uint32 cur_ticks = GetTickCount();
 	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+
+	if (_draw_threaded) {
+		/* Initialise the mutex first, because that's the thing we *need*
+		 * directly in the newly created thread. */
+		_draw_mutex = ThreadMutex::New();
+		if (_draw_mutex == NULL) {
+			_draw_threaded = false;
+		} else {
+			_draw_mutex->BeginCritical();
+			_draw_continue = true;
+
+			_draw_threaded = ThreadObject::New(&PaintWindowThread, NULL, &_draw_thread);
+
+			/* Free the mutex if we won't be able to use it. */
+			if (!_draw_threaded) {
+				_draw_mutex->EndCritical();
+				delete _draw_mutex;
+				_draw_mutex = NULL;
+			} else {
+				DEBUG(driver, 1, "Threaded drawing enabled");
+
+				/* Wait till the draw mutex has started itself. */
+				_draw_mutex->WaitForSignal();
+			}
+		}
+	}
 
 	_wnd.running = true;
 
@@ -900,25 +1002,49 @@ void VideoDriver_Win32::MainLoop()
 
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
+#if !defined(WINCE)
+			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
+			GdiFlush();
+#endif
+
+			/* The game loop is the part that can run asynchronously.
+			 * The rest except sleeping can't. */
+			if (_draw_threaded) _draw_mutex->EndCritical();
 			GameLoop();
+			if (_draw_threaded) _draw_mutex->BeginCritical();
 
 			if (_force_full_redraw) MarkWholeScreenDirty();
 
-#if !defined(WINCE)
-			GdiFlush();
-#endif
 			_screen.dst_ptr = _wnd.buffer_bits;
 			UpdateWindows();
 			CheckPaletteAnim();
 		} else {
-			Sleep(1);
 #if !defined(WINCE)
+			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 			GdiFlush();
 #endif
+
+			/* Release the thread while sleeping */
+			if (_draw_threaded) _draw_mutex->EndCritical();
+			Sleep(1);
+			if (_draw_threaded) _draw_mutex->BeginCritical();
+
 			_screen.dst_ptr = _wnd.buffer_bits;
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}
+	}
+
+	if (_draw_threaded) {
+		_draw_continue = false;
+		/* Sending signal if there is no thread blocked
+		 * is very valid and results in noop */
+		_draw_mutex->SendSignal();
+		_draw_mutex->EndCritical();
+		_draw_thread->Join();
+
+		delete _draw_mutex;
+		delete _draw_thread;
 	}
 }
 
