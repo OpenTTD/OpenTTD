@@ -1172,6 +1172,22 @@ void PrepareUnload(Vehicle *front_v)
 }
 
 /**
+ * Checks whether an articulated vehicle is empty.
+ * @param v Vehicle
+ * @return true if all parts are empty.
+ */
+static bool IsArticulatedVehicleEmpty(Vehicle *v)
+{
+	v = v->GetFirstEnginePart();
+
+	for (; v != NULL; v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL) {
+		if (v->cargo.Count() != 0) return false;
+	}
+
+	return true;
+}
+
+/**
  * Loads/unload the vehicle if possible.
  * @param front the vehicle to be (un)loaded
  * @param cargo_left the amount of each cargo type that is
@@ -1221,8 +1237,11 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 
 	CargoPayment *payment = front->cargo_payment;
 
+	uint artic_part = 0; // Articulated part we are currently trying to load. (not counting parts without capacity)
 	for (Vehicle *v = front; v != NULL; v = v->Next()) {
+		if (v == front || !v->Previous()->HasArticulatedPart()) artic_part = 0;
 		if (v->cargo_cap == 0) continue;
+		artic_part++;
 
 		const Engine *e = v->GetEngine();
 		byte load_amount = e->info.load_amount;
@@ -1312,9 +1331,10 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 		/* Do not pick up goods when we have no-load set or loading is stopped. */
 		if (front->current_order.GetLoadType() & OLFB_NO_LOAD || HasBit(front->vehicle_flags, VF_STOP_LOADING)) continue;
 
-		/* This order has a refit, the vehicle is a normal vehicle and completely empty, do it now. */
-		if (front->current_order.IsRefit() && !v->IsArticulatedPart() && v->cargo.Count() == 0 &&
+		/* This order has a refit, if this is the first vehicle part carrying cargo and the whole vehicle is empty, try refitting. */
+		if (front->current_order.IsRefit() && artic_part == 1 && IsArticulatedVehicleEmpty(v) &&
 				(v->type != VEH_AIRCRAFT || (Aircraft::From(v)->IsNormalAircraft() && v->Next()->cargo.Count() == 0))) {
+			Vehicle *v_start = v->GetFirstEnginePart();
 			CargoID new_cid = front->current_order.GetRefitCargo();
 			byte new_subtype = front->current_order.GetRefitSubtype();
 
@@ -1322,7 +1342,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 
 			/* Check if all articulated parts are empty and collect refit mask. */
 			uint32 refit_mask = e->info.refit_mask;
-			Vehicle *w = v;
+			Vehicle *w = v_start;
 			while (w->HasArticulatedPart()) {
 				w = w->GetNextArticulatedPart();
 				if (w->cargo.Count() > 0) new_cid = CT_NO_REFIT;
@@ -1338,7 +1358,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 						/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 						 * the returned refit capacity will be greater than zero. */
 						new_subtype = GetBestFittingSubType(v, v, cid);
-						DoCommand(v->tile, v->index, cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v)); // Auto-refit and only this vehicle including artic parts.
+						DoCommand(v_start->tile, v_start->index, cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 						if (_returned_refit_capacity > 0) {
 							amount = cargo_left[cid];
 							new_cid = cid;
@@ -1349,7 +1369,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 
 			/* Refit if given a valid cargo. */
 			if (new_cid < NUM_CARGO) {
-				CommandCost cost = DoCommand(v->tile, v->index, new_cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v)); // Auto-refit and only this vehicle including artic parts.
+				CommandCost cost = DoCommand(v_start->tile, v_start->index, new_cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 				if (cost.Succeeded()) front->profit_this_year -= cost.GetCost() << 8;
 				ge = &st->goods[v->cargo_type];
 			}
