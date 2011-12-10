@@ -386,7 +386,7 @@ public:
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT || this->town->goal[i] == TOWN_GROWTH_WINTER) {
 				/* For 'original' gameplay, don't show the amount required (you need 1 or more ..) */
 				string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL;
-				if (this->town->received[i].old_act < this->town->goal[i]) {
+				if (this->town->received[i].old_act == 0) {
 					string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL;
 
 					if (this->town->goal[i] == TOWN_GROWTH_WINTER && TileHeight(this->town->xy) < GetSnowLine()) {
