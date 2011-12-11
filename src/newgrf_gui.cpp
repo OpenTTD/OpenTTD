@@ -715,6 +715,7 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_SCROLL2BAR,
 	SNGRFS_NEWGRF_INFO_TITLE,
 	SNGRFS_NEWGRF_INFO,
+	SNGRFS_OPEN_URL,
 	SNGRFS_NEWGRF_TEXTFILE,
 	SNGRFS_SET_PARAMETERS = SNGRFS_NEWGRF_TEXTFILE + TFT_END,
 	SNGRFS_TOGGLE_PALETTE,
@@ -1022,6 +1023,14 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 				break;
 			}
 
+			case SNGRFS_OPEN_URL: {
+				const GRFConfig *c = (this->avail_sel == NULL) ? this->active_sel : this->avail_sel;
+
+				extern void OpenBrowser(const char *url);
+				OpenBrowser(c->GetURL());
+				break;
+			}
+
 			case SNGRFS_PRESET_SAVE:
 				ShowQueryString(STR_EMPTY, STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY, 32, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
@@ -1325,6 +1334,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
 			this->SetWidgetDisabledState(SNGRFS_NEWGRF_TEXTFILE + tft, c == NULL || c->GetTextfile(tft) == NULL);
 		}
+		this->SetWidgetDisabledState(SNGRFS_OPEN_URL, c == NULL || StrEmpty(c->GetURL()));
 
 		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(SNGRFS_TOGGLE_PALETTE, disable_all);
@@ -1837,6 +1847,8 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 			NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
 			NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
 		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_OPEN_URL), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
 				SetDataTip(STR_NEWGRF_SETTINGS_VIEW_README, STR_NULL),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
