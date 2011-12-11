@@ -7065,6 +7065,13 @@ static bool ChangeGRFDescription(byte langid, const char *str)
 	return true;
 }
 
+/** Callback function for 'INFO'->'URL_' to set the newgrf url. */
+static bool ChangeGRFURL(byte langid, const char *str)
+{
+	AddGRFTextToList(&_cur.grfconfig->url->text, langid, _cur.grfconfig->ident.grfid, false, str);
+	return true;
+}
+
 /** Callback function for 'INFO'->'NPAR' to set the number of valid parameters. */
 static bool ChangeGRFNumUsedParams(size_t len, ByteReader *buf)
 {
@@ -7412,6 +7419,7 @@ static bool HandleParameterInfo(ByteReader *buf)
 AllowedSubtags _tags_info[] = {
 	AllowedSubtags('NAME', ChangeGRFName),
 	AllowedSubtags('DESC', ChangeGRFDescription),
+	AllowedSubtags('URL_', ChangeGRFURL),
 	AllowedSubtags('NPAR', ChangeGRFNumUsedParams),
 	AllowedSubtags('PALS', ChangeGRFPalette),
 	AllowedSubtags('BLTR', ChangeGRFBlitter),

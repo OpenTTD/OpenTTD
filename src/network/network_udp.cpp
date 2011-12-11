@@ -421,6 +421,9 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 		config->info->Release();
 		config->info = f->info;
 		config->info->AddRef();
+		config->url->Release();
+		config->url = f->url;
+		config->url->AddRef();
 	}
 	SetBit(config->flags, GCF_COPY);
 }

@@ -169,6 +169,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	char *filename;                                ///< Filename - either with or without full path
 	GRFTextWrapper *name;                          ///< NOSAVE: GRF name (Action 0x08)
 	GRFTextWrapper *info;                          ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
+	GRFTextWrapper *url;                           ///< NOSAVE: URL belonging to this GRF.
 	GRFError *error;                               ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
 	uint32 version;                                ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
@@ -190,6 +191,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	const char *GetTextfile(TextfileType type) const;
 	const char *GetName() const;
 	const char *GetDescription() const;
+	const char *GetURL() const;
 
 	void SetParameterDefaults();
 	void SetSuitablePalette();

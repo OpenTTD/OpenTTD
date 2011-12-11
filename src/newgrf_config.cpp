@@ -44,11 +44,13 @@ GRFTextWrapper::~GRFTextWrapper()
 GRFConfig::GRFConfig(const char *filename) :
 	name(new GRFTextWrapper()),
 	info(new GRFTextWrapper()),
+	url(new GRFTextWrapper()),
 	num_valid_params(lengthof(param))
 {
 	if (filename != NULL) this->filename = strdup(filename);
 	this->name->AddRef();
 	this->info->AddRef();
+	this->url->AddRef();
 }
 
 /**
@@ -60,6 +62,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	ident(config.ident),
 	name(config.name),
 	info(config.info),
+	url(config.url),
 	version(config.version),
 	min_loadable_version(config.min_loadable_version),
 	flags(config.flags & ~(1 << GCF_COPY)),
@@ -75,6 +78,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	if (config.filename != NULL) this->filename = strdup(config.filename);
 	this->name->AddRef();
 	this->info->AddRef();
+	this->url->AddRef();
 	if (config.error    != NULL) this->error    = new GRFError(*config.error);
 	for (uint i = 0; i < config.param_info.Length(); i++) {
 		if (config.param_info[i] == NULL) {
@@ -95,6 +99,7 @@ GRFConfig::~GRFConfig()
 	}
 	this->name->Release();
 	this->info->Release();
+	this->url->Release();
 
 	for (uint i = 0; i < this->param_info.Length(); i++) delete this->param_info[i];
 }
@@ -117,6 +122,15 @@ const char *GRFConfig::GetName() const
 const char *GRFConfig::GetDescription() const
 {
 	return GetGRFStringFromGRFText(this->info->text);
+}
+
+/**
+ * Get the grf url.
+ * @return A string with an url of this grf.
+ */
+const char *GRFConfig::GetURL() const
+{
+	return GetGRFStringFromGRFText(this->url->text);
 }
 
 /** Set the default value for all parameters as specified by action14. */
