@@ -380,3 +380,30 @@ Vehicles not keeping their "maximum" speed [FS#4815]:
 	It is possible to calculate whether the equilibrium will be
 	passed, but then all acceleration calculations need to be done
 	twice.
+
+Settings not saved when OpenTTD crashes [FS#4846]:
+	The settings are not saved when OpenTTD crashes for several reasons.
+	The most important is that the game state is broken and as such the
+	settings might contain invalid values, or the settings have not even
+	been loaded yet. This would cause invalid or totally wrong settings
+	to be written to the configuration file.
+
+	A solution to that would be saving the settings whenever one changes,
+	however due to the way the configuration file is saved this requires
+	a flush of the file to the disk and OpenTTD needs to wait till that
+	is finished. On some file system implementations this causes the
+	flush of all 'write-dirty' caches, which can be a significant amount
+	of data to be written. This can further be aggravated by spinning
+	down disks to conserve power, in which case this disk needs to be
+	spun up first. This means that many seconds may pass before the
+	configuration file is actually written, and all that time OpenTTD
+	will not be able to show any progress. Changing the way the
+	configuration file is saved is not an option as that leaves us more
+	vulnerable to corrupt configuration files.
+
+	Finally, crashes should not be happening. If they happen they should
+	be reported and fixed, so essentially fixing this is fixing the
+	wrong thing. If you really need the configuration changes to be
+	saved, and you need to run a version that crashes regularly, then
+	you can use the 'saveconfig' command in the console to save the
+	settings.
