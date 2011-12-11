@@ -1371,6 +1371,21 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Backa a
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Problem med konfigurationsfilen...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fel i listan '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ogiltigt värde '{STRING}' för '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... extra tecken vid slutet av inställning '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerar NewGRF '{STRING}': GRF ID-dublett med '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorerar ogiltig NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :hittades ej
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :osäker för statisk användning
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :system-NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel med denna version av OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :okänd
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressionsnivån '{STRING}' är inte giltig
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... filformatet '{STRING}' är inte tillgängligt. Återgår till '{STRING}'
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1840,6 +1855,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markera 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Avmarkera allt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markera att inte ladda hem någonting
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter för Tagg/namn:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Besök hemsida
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besök hemsidan för det här innehållet
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Ladda ned
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Börja ladda hem valt innehåll
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total storlek på nedladdning: {WHITE}{BYTES}

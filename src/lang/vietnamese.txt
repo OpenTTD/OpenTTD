@@ -1369,6 +1369,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Tự đ
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đổi giá trị
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1838,6 +1840,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Đánh d
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Bỏ chọn tất cả
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Chọn tất cả các nội dung không tải về
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Lọc theo tên:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Đến trang web
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Đến trang web của nội dung này
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Tải về
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Tải các nội dung đã chọn về
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tổng dung lượng tải: {WHITE}{BYTES}

@@ -1174,6 +1174,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Virheil
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Näytä vihjeet: {ORANGE}Pidä hiirtä päällä {STRING} sekunti{P 0:1 "" a}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Näytä vihjeet: {ORANGE}Hiiren oikea näppäin
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Näytä kaupungin asukasluku kaupungin nimessä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Viivojen paksuus kuvaajissa: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Maastogeneraattori: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
@@ -1855,6 +1856,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Valitse 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merkitse kaikki sisältö ei-ladattavaksi
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Avainsana/nimi suodatus:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Vieraile verkkosivulla
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vieraile sisällön verkkosivulla
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aloita valitun sisällön lataaminen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Latausten koko: {WHITE}{BYTES}

@@ -1527,6 +1527,21 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Авт�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Изменить значение
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Ошибка в файле конфигурации...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... ошибка в массиве «{STRING}»
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... неверное значение «{STRING}» параметра «{STRING}»
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... лишние символы после «{STRING}»
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... игнорируется NewGRF «{STRING}»: у него такой же идентификатор GRF, как и у «{STRING}»
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... игнорируется неверный NewGRF «{STRING}»: {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :не найден
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :использование в качестве статического небезопасно
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :системный NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несовместим с данной версией OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :неизвестный
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... уровень сжатия «{STRING}» неверный
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... алгоритм сохранения «{STRING}» недоступен. Будет использоваться «{STRING}»
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 

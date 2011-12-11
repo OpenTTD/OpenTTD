@@ -1856,6 +1856,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Alle Erw
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Keine Erweiterung zum Herunterladen auswählen
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter für Stichworte oder Namen:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Webseite anzeigen
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Webseite für diesen Eintrag anzeigen
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Beginne die ausgewählten Erweiterung(en) herunterzuladen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße der ausgewählten Erweiterungen: {WHITE}{BYTES}
