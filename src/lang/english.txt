@@ -1174,6 +1174,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duratio
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Show tooltips: {ORANGE}Hover for {STRING1} second{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Show tooltips: {ORANGE}Right click
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Thickness of lines in graphs: {ORANGE}{STRING1}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
