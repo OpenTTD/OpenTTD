@@ -301,6 +301,7 @@ public:
  */
 void ClearErrorMessages()
 {
+	UnshowCriticalError();
 	_errors.clear();
 }
 
@@ -322,7 +323,7 @@ void ShowFirstError()
 void UnshowCriticalError()
 {
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
-	if (w != NULL) {
+	if (_window_system_initialized && w != NULL) {
 		if (w->IsCritical()) _errors.push_front(*w);
 		_window_system_initialized = false;
 		delete w;
