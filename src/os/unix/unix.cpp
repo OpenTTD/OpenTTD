@@ -14,6 +14,7 @@
 #include "../../openttd.h"
 #include "../../crashlog.h"
 #include "../../core/random_func.hpp"
+#include "../../debug.h"
 
 
 #include <dirent.h>
@@ -347,5 +348,19 @@ uint GetCPUCoreCount()
 #endif
 
 	return count;
+}
+
+void OSOpenBrowser(const char *url)
+{
+	pid_t child_pid = fork();
+	if (child_pid != 0) return;
+
+	const char *args[3];
+	args[0] = "/usr/bin/xdg-open";
+	args[1] = url;
+	args[2] = NULL;
+	execv(args[0], const_cast<char * const *>(args));
+	DEBUG(misc, 0, "Failed to open url: %s", url);
+	exit(0);
 }
 #endif

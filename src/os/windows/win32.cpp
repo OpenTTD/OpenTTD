@@ -18,6 +18,7 @@
 #include <windows.h>
 #include <fcntl.h>
 #include <shlobj.h> /* SHGetFolderPath */
+#include <Shellapi.h>
 #include "win32.h"
 #include "../../core/alloc_func.hpp"
 #include "../../openttd.h"
@@ -77,6 +78,11 @@ void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), MB_TO_WIDE(buf), _T("Error!"), MB_ICONSTOP);
+}
+
+void OSOpenBrowser(const char *url)
+{
+	ShellExecute(GetActiveWindow(), _T("open"), MB_TO_WIDE(url), NULL, NULL, SW_SHOWNORMAL);
 }
 
 /* Code below for windows version of opendir/readdir/closedir copied and
