@@ -237,7 +237,7 @@ static bool CreateMainSurface(uint w, uint h)
 bool VideoDriver_Allegro::ClaimMousePointer()
 {
 	select_mouse_cursor(MOUSE_CURSOR_NONE);
-	show_mouse(_allegro_screen);
+	show_mouse(NULL);
 	disable_hardware_cursor();
 	return true;
 }
