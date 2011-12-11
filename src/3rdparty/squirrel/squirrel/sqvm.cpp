@@ -195,14 +195,19 @@ bool SQVM::ObjCmp(const SQObjectPtr &o1,const SQObjectPtr &o2,SQInteger &result)
 		case OT_INSTANCE:
 			if(_delegable(o1)->_delegate) {
 				Push(o1);Push(o2);
-				if(CallMetaMethod(_delegable(o1),MT_CMP,2,res)) break;
+				if(CallMetaMethod(_delegable(o1),MT_CMP,2,res)) {
+					if(type(res) != OT_INTEGER) {
+						Raise_Error(_SC("_cmp must return an integer"));
+						return false;
+					}
+					_RET_SUCCEED(_integer(res))
+				}
 			}
 			//continues through (no break needed)
 		default:
 			_RET_SUCCEED( _userpointer(o1) < _userpointer(o2)?-1:1 );
 		}
-		if(type(res)!=OT_INTEGER) { Raise_CompareError(o1,o2); return false; }
-			_RET_SUCCEED(_integer(res));
+		assert(0);
 
 	}
 	else{
