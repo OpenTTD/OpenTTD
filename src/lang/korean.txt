@@ -1175,6 +1175,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}오류 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}오른쪽 클릭으로 바로
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}그래프 선의 두께: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}지형 만들기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
@@ -1371,6 +1372,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}선박�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}신호기 앞에서 자동 회차: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정값 변경
+
+# Config errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1841,6 +1844,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}업데�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}모두 선택해제
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}모든 콘텐츠의 선택을 해제합니다.
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}태그/이름 검색:
+STR_CONTENT_OPEN_URL                                            :{BLACK}웹사이트 방문
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}이 컨텐츠의 웹사이트를 방문합니다.
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다.
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}총 파일 크기: {WHITE}{BYTES}

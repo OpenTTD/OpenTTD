@@ -1256,6 +1256,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Doba zo
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zobrazení kontextové nápovědy: {ORANGE}Podržet nad {STRING} sekund{P 0:1 u y ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zobrazení nápovědy: {ORANGE}Pravé tlačítko myši
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazovat populaci města v jeho popisku: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Tloušťky čar v grafech: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tvůrce krajiny: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :původní
@@ -1347,6 +1348,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakáza
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Zakázat počítači lodě: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v síťové hře: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes před skripty než budou pozastaveny: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaly servisů v procentech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} d{P 0:1 en ny ní}
@@ -1453,6 +1455,19 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automat
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Změnit hodnotu nastavení
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Chyba v konfiguračním souboru...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... chyba v poli '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... neplatná hodnota '{STRING}' pro '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... koncové znaky na konci nastavení '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorována grafika '{STRING}': duplicitní GRF ID s '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorovány neplatné grafiky '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nenalezeno
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nebezpečné pro statické použití
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :systém grafik
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilní s touto verzí OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznámé
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... úroveň komprese '{STRING}' není platná
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formát uložené hry '{STRING}' není dostupný. Návrat na '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1923,6 +1938,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označit
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačit vše
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Nestahovat nic
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr na značku/jméno:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Navštívit stránky
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK} Zobrazit internetové stránky pro tuto položku
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Stáhnout
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Začít stahovat vybraný obsah
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Celková velikost dat: {WHITE}{BYTES}
@@ -1970,6 +1987,9 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... do s
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nešlo rozbalit stažený soubor
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Chybějící grafika
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD vyžaduje grafiky, které nebyly nalezeny. Povolíte OpenTTD stáhnout a nainstalovat tyto grafiky?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ano, stáhnout grafiky
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, ukončit OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavení průhlednosti
@@ -2298,6 +2318,28 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pole
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasněžená země
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Poušť
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} trať
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} trať s obyčejným návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} trať s vjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} trať s výjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} trať s kombinovaným návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} trať s dokonalejším (PBS) návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} trať s dokonalejším (PBS) jednosměrným návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} trať s obyčejným a vjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} trať s obyčejným a odjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} trať s obyčejným a kombinovaným návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} trať s obyčejným a cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} trať s obyčejným a jednosměrným cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} trať s vjezdovým a odjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} trať s vjezdovým a kombinovaným návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} trať s vjezdovým a cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} trať s vjezdovým a jednosměrným cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} trať s výjezdovým a kombinovaným návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} trať s výjezdovým a cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} trať s výjezdovým a jednosměrným cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} trať s kombinovaným a cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} trať s kombinovaným a jednosměrným cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} trať s cestovým a jednosměrným cestovým návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} železniční depo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Silnice
@@ -2605,6 +2647,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Grafika '{1:STRING}' způsobila nekonečnou smyčku v callbacku produkce průmyslu
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Funkce {1:HEX} vrátila neznámý / neplatný výsledek {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
@@ -2649,6 +2692,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pošta z
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Množství doručeného nákladu potřebného pro rozvoj města:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Je potřeba {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vyžadováno v zimě
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} doručeno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ještě požadováno)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (doručeno)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Město se rozrůstá každých {ORANGE}{COMMA}{BLACK} dní
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Město se rozrůstá každý {ORANGE}{COMMA}{BLACK} den (financováno)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Město se {RED}nerozrůstá{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Hlukový limit ve městě: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vystředit pohled na město. Ctrl+Klik otevře nový pohled
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Místní správa
@@ -3310,6 +3359,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ovlivnit
 
 STR_ORDER_REFIT                                                 :{BLACK}Přestavět
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyber, na který druh nákladu přestavět. Ctrl+klik odstraní přestavbu z příkazu
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaticky přestavět
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Zvolit druh nákladu pro automatické přestavění pro tento příkaz. Ctrl+Click odebere z příkazu automatické přestavění. Automatické přestavění bude fungovat pouze pokud vozidlo lze přestavět.
+STR_ORDER_DROP_REFIT_AUTO                                       :Neměnný náklad
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupný náklad
 
 STR_ORDER_SERVICE                                               :{BLACK}Údržba
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Jeď vždy
@@ -3398,6 +3451,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(nevykládat a 
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(nevykládat a plně naložit čímkoli)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(nevykládat ani nenakládat)
 
+STR_ORDER_AUTO_REFIT                                            :(Automatické přestavění na {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Plně naložit vše s automatickým přestavěním na {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Plně naložit cokoliv a automaticky přestavět na {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Vyložit a naložit s automatickým přestavěním na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Vyložit a počkat na plné naložení s automatickým přestavěním na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Vyložit a počkat na naložení čehokoliv s automatickým přestavěním na {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Přeložit a naložit s automatickým přestavěním na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Přeložit a počkat na plné naložení s automatickým přestavěním na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Přeložit a počkat na naložení čehokoliv s automatickým přestavěním na {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nevykládat a naložit s automatickým přestavěním na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nevykládat a počkat na plné naložení s automatickým přestavěním na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nevykládat a počkat na plné naložení čehokoliv s automatickým přestavěním na {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :dostupný náklad
 

@@ -1425,6 +1425,13 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automaa
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuda seadete väärtusi
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Eksitus konfiguratsiooni failiga...
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... tundmatu väärtus '{STRING}' '{STRING}' jaoks
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei leitud
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Mitteühilduv selle OpenTTD versiooniga
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tundmatu
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1894,6 +1901,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Tähista
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Eemalda märgistus kõigilt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Eemaldatakse allalaadimise märgistus
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Sildi- ja nimefilter:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Külasta lehekülge
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Külasta lehekülge selle sisu jaoks.
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lae alla
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Alusta valitud sisu allalaadimist
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Allalaadimiste kogusuurus: {WHITE}{BYTES}
@@ -1940,6 +1949,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ühe
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail pole kirjutatav
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Alla laaditud faili ei saa lahti pakkida
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Puuduolevad graafikad
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD vajab lisagraafikat, et töötada, kuid neid pole leitud. Kas sa lubad OpenTTD´l see lisagraafika alla laadida ja installida??
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jah, lae see graafika alla
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, lahku OpenTTD´st
@@ -2455,6 +2465,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}NewGRF f
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vaata abi
 STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Muudatuste logi
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Litsents
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Vali parameetrid
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vaheta paletti
@@ -2615,8 +2626,10 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posti ee
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Veoseid linna kasvamiseks:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vajalik
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} on talvel vajalik
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} kohale toimetatud
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ikka veel vaja)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (kohale toimetatud)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Linn kasvab iga {ORANGE}{COMMA}{BLACK} päev{P "" s}
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Linn {RED}ei{BLACK} kasva
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Mürapiirang linnas: {ORANGE}{COMMA}{BLACK}  suurim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vaate viimine linnale
@@ -2769,6 +2782,7 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmavä�
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktuur:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} rööpad
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} sõidutee tükid
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lennuväljad
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Puudub
 
@@ -2802,7 +2816,9 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Otsime e
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE} {COMPANY} Infrastruktuur
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Raudtee tükid:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signaalid
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Tee tükid:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Tee
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Trammitee
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanalid
@@ -3354,6 +3370,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Maha ei laadit
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Maha ei laadita ja peale ei laadita)
 
 
+STR_ORDER_AUTO_REFIT_ANY                                        :saadavuses olev kaup
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[lõpu lähedal]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskel]
@@ -4335,6 +4352,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}

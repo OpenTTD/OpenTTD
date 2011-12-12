@@ -1175,6 +1175,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duraci�
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostrar mensajes de ayuda: {ORANGE}Mantener ratón durante {STRING} segundo{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostrar mensajes de ayuda: {ORANGE}Click derecho
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de un pueblo en su etiqueta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Grosor de las líneas en los gráficos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generador terreno: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1371,6 +1372,21 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Encamin
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Cambio de sentido automático en señales: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambiar valor de la opción
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Error en el fichero de configuración...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... error en vector '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valor inválido '{STRING}' para '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caracteres en blanco al final de la opción '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorando NewGRF '{STRING}': GRF ID duplicado con '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorando NewGRF inválido '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :no encontrado
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :inseguro para uso estático
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF de sistema
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible con esta versión de OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconocido
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... el nivel de compresión '{STRING}' no es válido
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... el formato de guardado '{STRING}' no está disponible. Revertiendo a '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1841,6 +1857,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marca pa
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar todas
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marca todo el contenido para no ser descargado
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiqueta/nombre del filtro
+STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar web
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar la página web de este contenido
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descargar
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Comenzar a descargar el contenido seleccionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamaño total de la descarga: {WHITE}{BYTES}

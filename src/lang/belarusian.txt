@@ -1491,6 +1491,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Мак�
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Паказваць падказкі: {ORANGE}Навядзеньнем і затрымкай на {STRING} секунд{P 0:1 у ы ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Паказваць падказкі: {ORANGE}Правай пстрычкай
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Паказваць колькасьць жыхароў горада ў назьве: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Таўшчыня лiнiяў у графiках: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генэратар зямлі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :арыгінальны
@@ -1687,6 +1688,21 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Аль�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Аўтаматычны разварот перад сыгналамi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Зьмяніць значэньне
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Памылка ў файле канфiгурацыi...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... памылка ў масыве '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... несапраўднае значэньне '{STRING}' для '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... блукаючыя сымбалi напрыканцы наладкi '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... iгнараваньне NewGRF '{STRING}': дублююцца GRF ID з '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... iгнараваньне несапраўднага NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ня знойдзена
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :небясьпечна для статычнага ўжываньня
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :сыстэма NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несумяшчальна з гэтай вэрсiяй OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :невядомы
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... узровень сьцiсканьня (кампрэсii) '{STRING}' няправiльны
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фармат захаванай гульнi '{STRING}' недаступны. Зварот да '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2157,6 +2173,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Адзн
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Нічога не адзначаць
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Адзначыць увесь кантэнт нявыбраным, нічога не запампоўваць
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фільтар па бірках/назвах:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Наведаць вэб-старонку
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Наведаць вэб-старонку для гэтага кантэнту
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Запампаваць
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Запусьціць запампоўку выбранага кантэнту
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Агульны памер запампоўкі: {WHITE}{BYTES}
@@ -2793,9 +2811,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Колькасьць парамэтраў: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}Iнструкцыя (readme) аб новай графiцы{STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Журнал зьменаў NewGRF{STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Лiцэнзiя NewGRF{STRING}
+STR_NEWGRF_README_CAPTION                                       :{WHITE}Iнструкцыя набора графiкi {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Журнал зьменаў {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Лiцэнзiя {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Прагляд - {STRING}
@@ -3079,11 +3097,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}няма
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Кошт кампаніі: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% валодае {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Iнфраструктура:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} чыгуначныя элемэнты
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} дарожныя элемэнты
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} водныя клеткi
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} станцыйныя клеткi
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аэрапорты
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} чыгуначн{P ы ыя ых} элемэнт{P "" ы аў}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} дарожн{P ы ыя ых} элемэнт{P "" ы аў}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} водн{P ая ыя ых} клетк{P а i ак}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} станцыйн{P ая ыя ых} клетк{P а i ак}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аэрапорт{P "" ы аў}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нiчога
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Пабудаваць штаб

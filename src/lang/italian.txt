@@ -1198,6 +1198,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostra suggerimenti: {ORANGE}Al passaggio del mouse dopo {STRING} second{P 0:1 o i}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostra suggerimenti: {ORANGE}Al clic col pulsante destro
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di una città nell'etichetta del nome: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Spessore delle linee nei grafici: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generatore terreno: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originale
@@ -1879,6 +1880,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Include 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deseleziona tutti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Esclude dal download tutti gli elementi
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtra per nome/tag:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Visita sito web
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita il sito web di questo contenuto
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Scarica
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Avvia il download dei contenuti selezionati
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Dimensione totale download: {WHITE}{BYTES}

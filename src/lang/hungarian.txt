@@ -1238,6 +1238,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hibaüz
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Eszközinformációk megjelenítése: {ORANGE}Késleltetés {STRING} másodperccel
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Eszközinformációk megjelenítése: {ORANGE}Jobb egérgombbal
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a település lakosságát a feliratban: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}A vonalak vastagsága a grafikonokon: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Terep generálás: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
@@ -1421,7 +1422,7 @@ STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Szerví
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vonatok
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Települések
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gazdaság
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gazdasági épületek
 STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Szkriptek
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Eredeti
@@ -1436,6 +1437,19 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automat
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Válassz beállítási értéket
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Hiba a konfigurációs fájlban...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... hiba a(z) '{STRING}' tömbben
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... a(z) '{1:STRING}' beállítás értéke érvénytelen: '{0:STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... felesleges karakterek a(z) '{STRING}' beállítás végén
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... érvénytelen NewGRF nem került betöltésre - '{STRING}': ütköző GRF ID egy másik NewGRF-fel: '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... érvénytelen NewGRF nem került betöltésre - '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nem található
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nem biztonságos statikus használatra
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :rendszer NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nem kompatibilis az OpenTTD ezen verziójával
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ismeretlen
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... a(z) '{STRING}' tömörítési szint érvénytelen
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... a(z) '{STRING}' játékmentési formátum nem elérhető. Mentés '{STRING}' formátumban.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1906,6 +1920,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Már meg
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nincs kijelölés
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Megszünteti az összes kijelölést
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Címke/név szűrő:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Webhely
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}A tartalom webhelyének meglátogatása
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Letöltés
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}A kijelölt tartalmak letöltésének megkezdése
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}A letöltés teljes mérete: {WHITE}{BYTES}
@@ -2488,6 +2504,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A feltel
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Readme megtekintése
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Változások listája
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenc
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Paraméterek beállítása
@@ -2522,6 +2539,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Paramé
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}{STRING} NewGRF readme-je
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}A(z) {STRING} NewGRF változásainak listája
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}A(z) {STRING} NewGRF licence
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Megtekintés - {STRING}
@@ -2621,9 +2640,9 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Archív fájlok
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Egyezés
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Kis- és nagybetűk{}megkülönböztetése
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Szűrő törlése
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Egyezés ki/bekapcsolása a feliratok szövegei és a szűrő kulcsszó összehasonlítása közben
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kis- és nagybetűk megkülönböztetése a feliratok szövegei és a szűrő kulcsszó összehasonlítása közben
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Szűrő kulcsszó törlése
 
 # Sign window
@@ -2649,6 +2668,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Levélcs
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}A város növekedéséhez szükséges rakomány:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} szükséges
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} szükséges télen
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} szállítva
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (több szükséges)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (szállítva)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}A település {ORANGE}{COMMA}{BLACK} naponta növekszik
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}A település {ORANGE}{COMMA}{BLACK} naponta növekszik (támogatást kapott)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A település {RED}nem{BLACK} növekszik
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Zajszint a városban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a városra állítja. Ctrl+kattintás esetén új nézetet nyit a város pozíciójára
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Önkormányzat
@@ -3490,8 +3515,8 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Megáll�
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Megállítás:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Megállítás
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ha egy MI naplóbejegyzés megegyezik ezzel a sorral, a játék szünet módba kapcsol
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Egyezés
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI naplóbejegyzések a megállítási sorral való összehasonlításnál szóegyezés be/ki
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Kis- és nagybetűk{}megkülönböztetése
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kis- és nagybetűk megkülönböztetése az MI naplóbejegyzéseknek a megállítási sorral való összehasonlításánál
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytatás
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Játék folytatása és MI visszakapcsolása
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}A MI kimeneti nyomonkövetésének megtekintése

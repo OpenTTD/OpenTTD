@@ -1175,6 +1175,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Temps d
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Affichage des infobulles{NBSP}: {ORANGE}survoler pendant {STRING} seconde{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Affichage des infobulles{NBSP}: {ORANGE}clic droit
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afficher la population d'une ville dans son label{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Épaisseur des lignes dans les graphiques{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Générateur de terrain{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1856,6 +1857,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les contenus pour ne pas être téléchargés
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur tag/nom{NBSP}:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Visiter le site web
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visiter le site web pour ce contenu
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Démarrer le téléchargement du contenu choisi
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Taille de téléchargement total{NBSP}: {WHITE}{BYTES}

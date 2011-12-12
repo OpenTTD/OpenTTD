@@ -300,7 +300,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Liste der firmeneigenen Bahnhöfe anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Firmenfinanzen anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Allgemeine Firmeninformationen anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Statistiken anzeigen
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Diagramme anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Firmentabelle oder Punktestand anzeigen
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Liste aller Industrien oder Errichtung und Finanzierung einer neuen Industrie
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
@@ -516,7 +516,7 @@ STR_MONTH_DEC                                                   :Dezember
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legende
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Legende des Diagramms
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Legende des Diagramms anzeigen
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -1175,6 +1175,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer d
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Anzeige von Hilfstexten: {ORANGE}Mit der Maus {STRING} Sekunde{P 0:1 "" n} verweilen
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Anzeige von Hilfstexten: {ORANGE}Per Rechtsklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zeige die Einwohnerzahl von Städten neben ihrem Namen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Linienstärke in Diagrammen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Algorithmus zur Landschaftserzeugung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1243,7 +1244,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alle Tätigkeit
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle Tätigkeiten
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Erweiterte Fahrzeugliste benutzen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Ladestandanzeiger verwenden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zeitpläne in Ticks anstatt in Tagen anzeigen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Fahrpläne in Ticks anstatt in Tagen anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zeige Ankunft und Abfahrt im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnelle Erzeugung von Aufträgen für Fahrzeuge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Gleistyp bei Spielbeginn/geladenem Spiel: {ORANGE}{STRING}
@@ -3110,8 +3111,8 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Das Fahr
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Aufträge des Zuges anzeigen. Strg+Klick zeigt den Fahrplan
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aufträge des Fahrzeugs anzeigen. Strg+Klick zeigt den Fahrplan
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Aufträge des Schiffes anzeigen. Strg+Klick zeigt den Fahrplan
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Aufträge des Flugzeugs anzeigen. Strg+Klick zeigt den Fahrplan
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Aufträge des Schiffes anzeigen. Strg+Klick öffnet den Fahrplan
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Aufträge des Flugzeugs anzeigen. Strg+Klick öffnet den Fahrplan
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Zeige Einzelheiten des Zuges
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Einzelheiten des Fahrzeuges anzeigen

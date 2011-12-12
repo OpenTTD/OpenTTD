@@ -1330,6 +1330,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Мак�
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Показывать подсказки: {ORANGE}наведением и задержкой на {STRING} секунд{P 0:1 у ы ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Показывать подсказки: {ORANGE}щелчком правой кнопкой мыши
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города в названии: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Толщина линий графиков: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
@@ -2011,6 +2012,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Отме
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Ничего не загружать
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фильтр:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Посетить сайт
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетить веб-сайт с информацией об этом модуле
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скачать
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Начать загрузку выбранного контента
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Всего для загруки: {WHITE}{BYTES}
@@ -2943,8 +2946,8 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Инфраструктура:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ж/д участ{P ок ка ков}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} дорожны{P й х х} участ{P ок ка ков}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} водны{P й х х} участ{P ок ка ов}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} участ{P ок ка ов} занято станциями
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} водны{P й х х} участ{P ок ка ков}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} участ{P ок ка ков} занято станциями
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аэропорт{P "" а ов}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нет
 
