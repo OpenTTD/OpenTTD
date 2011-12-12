@@ -60,7 +60,7 @@ struct NewGRFCache {
 	/* Values calculated when they are requested for the first time after invalidating the NewGRF cache. */
 	uint32 position_consist_length;   ///< Cache for NewGRF var 40.
 	uint32 position_same_id_length;   ///< Cache for NewGRF var 41.
-	uint32 consist_cargo_information; ///< Cache for NewGRF var 42.
+	uint32 consist_cargo_information; ///< Cache for NewGRF var 42. (Note: The cargotype is untranslated in the cache because the accessing GRF is yet unknown.)
 	uint32 company_information;       ///< Cache for NewGRF var 43.
 	uint8  cache_valid;               ///< Bitset that indicates which cache values are valid.
 };
