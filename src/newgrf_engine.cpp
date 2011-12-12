@@ -540,10 +540,12 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			/* The cargo translation is specific to the accessing GRF, and thus cannot be cached. */
 			CargoID common_cargo_type = (v->grf_cache.consist_cargo_information >> 8) & 0xFF;
 
-			/* Unlike everywhere else the cargo translation table is only used since grf version 8, not 7. */
+			/* Unlike everywhere else the cargo translation table is only used since grf version 8, not 7.
+			 * Note: The grffile == NULL case only happens if this function is called for default vehicles.
+			 *       And this is only done by CheckCaches(). */
 			const GRFFile *grffile = object->grffile;
 			uint8 common_bitnum = (common_cargo_type == CT_INVALID) ? 0xFF :
-				(grffile->grf_version < 8) ? CargoSpec::Get(common_cargo_type)->bitnum : grffile->cargo_map[common_cargo_type];
+				(grffile == NULL || grffile->grf_version < 8) ? CargoSpec::Get(common_cargo_type)->bitnum : grffile->cargo_map[common_cargo_type];
 
 			return (v->grf_cache.consist_cargo_information & 0xFFFF00FF) | common_bitnum << 8;
 		}
