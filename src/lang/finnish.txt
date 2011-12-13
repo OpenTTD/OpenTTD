@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Julkaisupäivä
 STR_SORT_BY_RUNNING_COST                                        :Käyttökustannukset
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Teho-hyötysuhde
 STR_SORT_BY_CARGO_CAPACITY                                      :Rahtikapasiteetti
+STR_SORT_BY_RANGE                                               :Toimintasäde
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tauko
@@ -822,6 +823,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ei löydä reittiä päämäärään
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} on eksynyt
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Kulkuneuvon {VEHICLE} tulos viime vuonna oli {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ei pääse seuraavaan määränpäähän koska se on toimintasäteen ulkopuolella
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Korvauksen epäonnistuminen pysäytti ajoneuvon {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automaattinen korvaus epäonnistui ajoneuvolle {VEHICLE}{}{STRING}
@@ -2908,7 +2910,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uusia ajoneuvoj
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uusia laivoja
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uusi lentokone
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kulu: {GOLD}{CURRENCY_LONG}{BLACK} Paino: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}{BLACK} Paino: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK} Teho: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Nopeus merellä: {GOLD}{VELOCITY}
@@ -2918,15 +2920,16 @@ STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite
 STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettava)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuo{P si tta}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäisluotettavuus: {GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}Kulu: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kustannus: {GOLD}{CURRENCY_LONG}{BLACK} Nopeus: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}{BLACK} Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vääntömomentti: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Yksikön valintalista - napsauta kohteita saadaksesi tietoja.
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Ajoneuvon valintalista - napsauta ajoneuvoa saadaksesi tietoja.
@@ -3043,10 +3046,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :laivan
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen veturin
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-veturin
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kulu: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi{}Kapasiteetti: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi{}Kapasiteetti: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. Vetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY_LONG}/v{}Kapasiteetti: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Hinta: {CURRENCY_LONG} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Hinta: {CURRENCY_LONG} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kustannus: {CURRENCY_LONG} Suurin nopeus: {VELOCITY} Toimintasäde: {7:COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Hinta: {CURRENCY_LONG} Suurin nopeus: {VELOCITY} Toimintasäde: {7:COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING}
@@ -3132,6 +3137,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Pysäytett
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Pysäytetään, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ei virtaa
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Odottaa vapaata reittiä
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Seuraava määränpää liian kaukana
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Suuntana {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Ei pysähdyksiä, {VELOCITY}
@@ -3160,6 +3166,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P s
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. nopeus: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Suurin nopeus: {LTBLUE}{VELOCITY} {BLACK}Toimintasäde: {LTBLUE}{COMMA} ruutua
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
@@ -3375,6 +3382,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :saatavilla olev
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[alkupäähän]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[loppupäähän]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Seuraava määränpää on toimintasäteen ulkopuolella)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Hyppää käskyyn {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Hyppää käskyyn {COMMA}, kun {STRING} {STRING} {COMMA}
@@ -3883,6 +3892,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Käskyj�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Käskyjen jakamista ei voida lopettaa...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Käskyjä ei voida kopioida...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liian kaukana edellisestä määränpäästä
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... lentokoneen toimintasäde ei ole tarpeeksi suuri
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ei voi asettaa aikataulua.

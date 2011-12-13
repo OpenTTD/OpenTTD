@@ -1751,6 +1751,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automat
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmiana wartości
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -3500,6 +3502,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zatrzymany
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Hamowanie, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Brak zasilania
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Czeka na wolną drogę
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Zbyt daleko do następnego celu
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Zmierza do {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Bez poleceń, {VELOCITY}
@@ -3743,6 +3746,7 @@ STR_ORDER_AUTO_REFIT_ANY                                        :dostępny ładu
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[bliższy koniec]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[środek]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[dalszy koniec]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skocz do rozkazu {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}

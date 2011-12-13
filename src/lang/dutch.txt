@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Introductiedatu
 STR_SORT_BY_RUNNING_COST                                        :Bedrijfskosten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Bedrijfskosten
 STR_SORT_BY_CARGO_CAPACITY                                      :Vrachtcapaciteit
+STR_SORT_BY_RANGE                                               :Bereik
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzeer spel
@@ -822,6 +823,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is verdwaald
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} Kan niet naar de volgende bestemming omdat deze buiten bereik ligt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} is gestopt omdat een ombouworder is mislukt
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisch vernieuwen mislukt bij {VEHICLE}{}{STRING}
@@ -1174,6 +1176,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur va
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Toon tooltips: {ORANGE}Muis-over voor {STRING} seconde{P 0:1 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Toon tooltips: {ORANGE}Rechts klikken
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Geef het inwoneraantal bij een stad weer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Dikte van de lijnen in grafieken: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
@@ -1370,6 +1373,21 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Routezo
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatisch omdraaien bij seinen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander waarde
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Fout in het configuratiebestand...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fout in array '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ongeldige waarde '{STRING}' voor '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... karakters gevonden aan het einde van instellingen '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... negeer NewGRF '{STRING}': dubbel GRF ID met '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... negeer ongeldig NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :niet gevonden
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :onveilig voor statisch gebruik
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :systeem NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :niet compatibel met deze versie van OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekend
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... compressie niveau '{STRING}' is niet geldig
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame formaat '{STRING}' is niet beschikbaar. Valt terug naar '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1840,6 +1858,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markeer 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markeer alle content om niet te downloaden
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/naamfilter:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Bezoek website
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Bezoek de website voor deze inhoud
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start downloaden van geselecteerde content
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totale downloadgrootte: {WHITE}{BYTES}
@@ -2909,6 +2929,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Om te bo
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrachttypen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. trekkracht: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Bereik: {GOLD}{COMMA} tegels
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Railvoertuigkeuzelijst - klik op een railvoertuig voor informatie
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Wegvoertuigkeuzelijst - klik op een wegvoertuig voor informatie
@@ -3029,6 +3050,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prijs: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prijs: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Snelheid: {VELOCITY}  Kracht: {POWER}  Max. T.E.: {6:FORCE}{}Bedrijfskosten: {4:CURRENCY_LONG}/yr{}Capaciteit: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO_LONG}, {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY}{}Capaciteit: {CARGO_LONG}{}Gebruikskosten: {CURRENCY_LONG}/jaar
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY} Bereik: {7:COMMA} tegels{}Capaciteit: {CARGO_LONG}, {CARGO_LONG}{}Bedrijfskosten: {CURRENCY_LONG}/jr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kosten: {CURRENCY_LONG} Max. Snelheid: {VELOCITY} Bereik: {7:COMMA} tegels{}Capaciteit: {CARGO_LONG}{}Bedrijfskosten: {CURRENCY_LONG}/jr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
@@ -3114,6 +3137,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestopt
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Aan het stoppen, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Geen stroom
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Wacht op vrije route
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Te ver voor volgende bestemming
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Op weg naar {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Geen orders, {VELOCITY}
@@ -3142,6 +3166,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar ren} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY} {BLACK}Bereik: {LTBLUE}{COMMA} tegels
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY} {BLACK}Max. T.K.: {LTBLUE}{FORCE}
 
@@ -3357,6 +3382,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :beschikbare vra
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[begin]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[einde]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (De volgende bestemming is buiten bereik)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Spring naar order {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Spring naar order {COMMA} als {STRING} {STRING} {COMMA}
@@ -3865,6 +3892,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan orde
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan niet stoppen met delen van orderlijst...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan orderlijst niet kopiëren...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te ver van vorige bestemming
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... vliegtuig heeft niet genoeg bereik
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan geen dienstregeling opzetten voor dit voertuig...

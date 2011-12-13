@@ -350,6 +350,7 @@ STR_SORT_BY_INTRO_DATE                                          :Bevezetési dá
 STR_SORT_BY_RUNNING_COST                                        :Üzemeltetési ktsg.
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Telj./Üzemeltetési ktsg.
 STR_SORT_BY_CARGO_CAPACITY                                      :Szállítási kapacitás
+STR_SORT_BY_RANGE                                               :Hatótávolság
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék szüneteltetése
@@ -886,6 +887,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nem talál utat a célpontjához
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} eltévedt
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} elmúlt évi profitja {CURRENCY_LONG} volt
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nem tud elmenni a következő repülőtérig, mert az túl messze van
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Hibás átalakítási utasítás miatt {VEHICLE} megállt
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Az automatikus járműfelújítás sikertelen volt {VEHICLE}{}{STRING}
@@ -2640,7 +2642,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Archív fájlok
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Kis- és nagybetűk{}megkülönböztetése
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Kis- és nagybetűk megkülönböztetése
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Szűrő törlése
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kis- és nagybetűk megkülönböztetése a feliratok szövegei és a szűrő kulcsszó összehasonlítása közben
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Szűrő kulcsszó törlése
@@ -2991,6 +2993,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalak�
 STR_PURCHASE_INFO_ALL_TYPES                                     :Minden rakomány típusra
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Hatótávolság: {GOLD}{COMMA} mező
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Vasúti jármű kiválasztása - kattints egy járműre az adataihoz
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
@@ -3107,10 +3110,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :hajó
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :egysínű mozdony
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :MagLev mozdony
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER}{}Működtetési költség: {CURRENCY_LONG}/év{}Kapacitás: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Teljesítmény: {POWER}{}Üzemeltetés: {CURRENCY_LONG}/év{}Kapacitás: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Ár: {CURRENCY_LONG} Súly: {WEIGHT_SHORT}{}Sebesség: {VELOCITY} Erő: {POWER} Maximális Vonóerő: {6:FORCE}{}Üzemeltetési költségeit: {4:CURRENCY_LONG}/év{}Capacity: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY}{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {7:COMMA} mező{}Kapacitás: {CARGO_LONG}, {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {7:COMMA} mező{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
@@ -3196,6 +3201,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Áll
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Lassít, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nincs áram
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Szabad útra vár
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}A következő repülőtér túl messze van
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION} állomás felé, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nincs menetrend, {VELOCITY}
@@ -3224,6 +3230,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} év ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} év ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Hatótávolság: {LTBLUE}{COMMA} mező
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK} Végsebesség: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
 
@@ -3440,6 +3447,8 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[közeli vég]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[közép]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[távoli vég]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (A következő állomás túl messze van)
+
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Ugorj a(z) {COMMA}. utasításra
 STR_ORDER_CONDITIONAL_NUM                                       :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Ugorj a(z) {COMMA}. utasításra, ha a '{STRING}' feltétel {STRING}
@@ -3515,7 +3524,7 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Megáll�
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Megállítás:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Megállítás
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ha egy MI naplóbejegyzés megegyezik ezzel a sorral, a játék szünet módba kapcsol
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Kis- és nagybetűk{}megkülönböztetése
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Kis- és nagybetűk megkülönböztetése
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kis- és nagybetűk megkülönböztetése az MI naplóbejegyzéseknek a megállítási sorral való összehasonlításánál
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytatás
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Játék folytatása és MI visszakapcsolása
@@ -3947,6 +3956,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nem lehe
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nem lehet befejezni a menetrend megosztását...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nem lehet másolni a menetrendet...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... túl távol van az előző céltól
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... a repülőgépnek kicsi a hatótávolsága
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}A jármű nem időzíthető

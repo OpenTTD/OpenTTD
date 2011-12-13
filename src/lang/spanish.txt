@@ -288,6 +288,7 @@ STR_SORT_BY_INTRO_DATE                                          :Fecha Introducc
 STR_SORT_BY_RUNNING_COST                                        :Coste Operación
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia/Coste Operación
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidad de carga
+STR_SORT_BY_RANGE                                               :Alcance
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar juego
@@ -823,6 +824,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no puede encontrar una ruta para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} está perdido
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Los beneficios del año pasado del {VEHICLE} fueron {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} no puede llegar al próximo destino por que está fuera de alcance
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} se detuvo debido a un fallo en una orden de reforma
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática fallida para {VEHICLE}{}{STRING}
@@ -2928,6 +2930,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformab
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T máxima: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} casillas
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículos de raíl - Click en vehículo para información
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera - Click en vehículo para información
@@ -3048,6 +3051,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Coste: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Coste: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidad: {VELOCITY}  Potencia: {POWER}  F.T. Máxima: {6:FORCE}{}Coste de operación: {4:CURRENCY_LONG}/año{}Capacidad: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Coste: {CURRENCY_LONG} Velocidad Max.: {VELOCITY}{}Capacidad: {CARGO_LONG}, {CARGO_LONG}{}Coste Mantenimiento: {CURRENCY_LONG}/año
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Coste: {CURRENCY_LONG} Velocidad Max.: {VELOCITY}{}Capacidad: {CARGO_LONG}{}Coste Mantenimiento: {CURRENCY_LONG}/año
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coste: {CURRENCY_LONG} Velocidad Max.: {VELOCITY} Alcance: {7:COMMA} casillas{}Capacidad: {CARGO_LONG}, {CARGO_LONG}{}Coste de Operación: {CURRENCY_LONG}/año
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Coste: {CURRENCY_LONG} Velocidad Max.: {VELOCITY} Alcance: {7:COMMA} casillas{}Capacidad: {CARGO_LONG}{}Coste de Operación: {CURRENCY_LONG}/año
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
@@ -3133,6 +3138,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Deteniéndose, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sin potencia
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando ruta libre
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Demasiado lejos del próximo destino
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Hacia {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sin órdenes, {VELOCITY}
@@ -3161,6 +3167,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} año{P 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} año{P "" s} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Velocidad Max.: {LTBLUE}{VELOCITY} {BLACK}Alcance: {LTBLUE}{COMMA} casillas
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad Max.: {LTBLUE}{VELOCITY} {BLACK}F.T. Max.: {LTBLUE}{FORCE}
 
@@ -3376,6 +3383,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :carga disponibl
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[cerca del fin]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[medio]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[lejos del fin]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (El próximo destino está fuera de alcance)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar a orden {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar a orden {COMMA} cuando {STRING} {STRING} {COMMA}
@@ -3884,6 +3893,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}No se pu
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}No se puede parar de compartir lista de órdenes...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}No se puede copiar lista de órdenes...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... demasiado lejos del destino anterior
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... la aeronave no tiene suficiente alcance
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se pueden asignar horarios al vehículo...

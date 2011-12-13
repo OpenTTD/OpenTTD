@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Introduction Da
 STR_SORT_BY_RUNNING_COST                                        :Running Cost
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost
 STR_SORT_BY_CARGO_CAPACITY                                      :Cargo Capacity
+STR_SORT_BY_RANGE                                               :Range
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game
@@ -822,6 +823,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} can't find a path to continue
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is lost
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s profit last year was {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} can't get to the next destination because it is out of range
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stopped because an ordered refit failed
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorenew failed on {VEHICLE}{}{STRING}
@@ -2927,6 +2929,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittab
 STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Train vehicle selection list - click on vehicle for information
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Road vehicle selection list - click on vehicle for information
@@ -3047,6 +3050,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {C
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Weight: {WEIGHT_SHORT}{}Speed: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/yr{}Capacity: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY}{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY} Range: {7:COMMA} tiles{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Max. Speed: {VELOCITY} Range: {7:COMMA} tiles{}Capacity: {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
@@ -3132,6 +3137,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stopped
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stopping, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}No power
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Waiting for free path
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Too far to next destination
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Heading for {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}No orders, {VELOCITY}
@@ -3160,6 +3166,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} year{P 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} year{P "" s} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. speed: {LTBLUE}{VELOCITY} {BLACK}Range: {LTBLUE}{COMMA} tiles
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -3375,6 +3382,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :available cargo
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[far end]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Next destination is out of range)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Jump to order {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Jump to order {COMMA} when {STRING} {STRING} {COMMA}
@@ -3883,6 +3892,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Can't sh
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Can't stop sharing order list...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Can't copy order list...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... too far from previous destination
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... aircraft has not enough range
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Can't timetable vehicle...

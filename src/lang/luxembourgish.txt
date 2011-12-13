@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Aféirungsdatum
 STR_SORT_BY_RUNNING_COST                                        :Betriebskäschten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraaft/Betriebskäschten
 STR_SORT_BY_CARGO_CAPACITY                                      :Luedungskapazitéit
+STR_SORT_BY_RANGE                                               :Längt
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spill pausen
@@ -680,7 +681,7 @@ STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Bësch
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gare
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Camionsluedeplaz
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Busgare
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Busarrêt
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Fluchhafen/Helicopterlandeplaz
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Hafen
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Knubbelegt Land
@@ -822,6 +823,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kann den Wee fir weider ze fueren net fannen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ass verluer
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dëm {VEHICLE} säin Profit vum leschten Joer war {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann nët op d'nächst Destinatioun kommen, se ass ze wäit ewech
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} huet gestoppt well eng Optragennerung net geklappt huet
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Fehler beim Autoerneieren vun {VEHICLE}{}{STRING}
@@ -1163,7 +1165,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Fluchh�
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Warnen wann en Gefier verluer ass: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Opträg vun den Gefierer nopréifen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jo, mee nët dei gestoppten Gefierer
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jo, mee net déi gestoppten Gefierer
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vun allen Gefierer
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Warnen wann en Gefiert en negativen Akommes huet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Gefierer lafen nie of: {ORANGE}{STRING}
@@ -1174,6 +1176,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer v
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Weis Tooltips no {ORANGE}{STRING} Sekonn{P 0:1 "" en}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Tooltips weisen: {ORANGE}Rietsklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Weist Bewunnerzuel am Numm vun der Stadt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Déckt vunn de Linnen vun den Graphen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1370,6 +1373,21 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pfadfin
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatëscht Emdréinen bei Signaler: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Astellung änneren
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Fehler mat der Konfiguratiounsdatei...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... Fehler am Array '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... falschen Wert '{STRING}' fir '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... Trailing-characters um Enn vun der Astellung '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoréiren NewGRF '{STRING}': Duplikat-GRF ID wéi '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoréiren ongültëgen NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :net fonnt
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :onsëcher fir statëschen Gebrauch
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :System NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :net mat dëser Versioun vun OpenTTD kompatibel
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekannt
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressiounslevel '{STRING}' ass net gültëg.
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Savegameformat '{STRING}' gëtt et net. Revertéiren zu '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1840,6 +1858,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markéie
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles ofwielen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Alles markéiren fir net downzeloaden
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/Nummfilter:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Websäit besichen
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besicht d'Websäit vun dësem Inhalt
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start den Download vum ausgewielten Inhalt
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total Downloadgréisst: {WHITE}{BYTES}
@@ -1849,7 +1869,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dir hud
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dës Ofhängegkeet gouf ausgewielt fir den download
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dir hudd dëst schon
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Dësen Inhalt ass net bekannt an kann net an OpenTTD downgeload gin
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dëst ass en Austausch fir eng existent {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dëst ass en Austausch fir existent {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Numm: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versioun: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beschreiwung: {WHITE}{STRING}
@@ -2030,8 +2050,8 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramdepo
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tramdepot Richtung wielen
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Busgare Richtung
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Wielt Busgare Richtung
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Busarrêt Richtung
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Wielt Busarrêtsrichtung
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Camionsgare Richtung
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Wielt Camionsgare Richtung
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passagéier-Tramstatioun Richtung
@@ -2254,7 +2274,7 @@ STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Gare
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Fligerhangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Fluchhafen
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Camionsgare
-STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Busgare
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Busarrêt
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Schëffshafen
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boje
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Weepunkt
@@ -2591,7 +2611,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (geliwwert)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stat wiisst all {ORANGE}{COMMA}{BLACK} D{P aag eeg}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stat wiisst all {ORANGE}{COMMA}{BLACK} D{P aag eeg} (finanzéiert)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Staat wiisst{RED}nët{BLACK}
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stat wiisst{RED} net{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Kaméidislimit an der Stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Stad. Ctrl+Klick erstellt eng nei Usiicht op d'Stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeng
@@ -2909,6 +2929,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Embaubau
 STR_PURCHASE_INFO_ALL_TYPES                                     :All Typ Wueren
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles ausser {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zéikraaft: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Distanz: {GOLD}{COMMA} Felder
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Zuchlëscht - klickt op en Zuch fir Informatiounen
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
@@ -3029,6 +3050,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschte
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betriibskäschten {CURRENCY_LONG}/Joer
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betriibskäschten: {CURRENCY_LONG}/Joer
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {7:COMMA} Felder{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {7:COMMA} Felder{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacéier{STRING}
@@ -3114,6 +3137,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestoppt
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stopt, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Keng Energie
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ward op en fraien Wee
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Ze wäit op nächst Destinatioun
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Um Wee op {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keng Opträg, {VELOCITY}
@@ -3142,6 +3166,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} Joer ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Joer ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Distanz: {LTBLUE}{COMMA} Felder
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewiicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Kraaft: {LTBLUE}{POWER}{BLACK} Max. Geschwindegkeet: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -3358,6 +3383,8 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[noot Enn]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[Mëtt]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[wäit Enn]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nächst Destinatioun ass ze wäit fort)
+
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Sprang op Optrag {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Sprang op Optrag {COMMA} wann {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Sprang op Optrag {COMMA} wann {STRING} {STRING}
@@ -3517,7 +3544,7 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartene
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... et ass keen Duerf an dësem Szenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kann d'Landschaft net vum PNG lueden...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Datei net font
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Datei net fonnt
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... konnt den Bildtyp net konvertéieren. 8 oder 24-bit PNG Bild benéidegt.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eppes ass schief gaangen (warscheinlech eng korrupt Datei)
 
@@ -3624,7 +3651,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kann d'Gare hei net bauen...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kann d'Busgare hei net bauen...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kann de Busarrêt hei net bauen...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kann d'Camionsgare net bauen...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kann d'Passagéier-Tramstatioun net bauen...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kann d'Wueren-Tramstatioun net bauen...
@@ -3635,7 +3662,7 @@ STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt u
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Statioun ze ausgebreed
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill Garen
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Ze vill Garesdeeler
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busgaren
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busarrêten
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Ze vill Camionsgaren
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Ze noo un enger aanerer Gare
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Ze noo bei engem aanerem Hafen
@@ -3649,7 +3676,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... Duer
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kann den Deel vun der Gare net ofrappen...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Musst d'Gare fir d'éischt ofrappen
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kann d'Busgare net ofrappen...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kann de Busarrêt net ofrappen...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kann d'Camionsgare net ofrappen...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kann d'Tramstatioun net ofrappen...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kann d'Wueren-Tramstatioun net ofrappen...
@@ -3657,7 +3684,7 @@ STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Stroosse
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... et ass keng Statioun do
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Musst d'Gare fir d'éischt ofrappen
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Busgare muss fir d'éischt ofgerapt ginn
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Busarrêt muss fir d'éischt ofgerapt ginn
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Muss d'Camionsgare fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Muss d'Tramstatioun fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Muss d'Tramstatioun fir d'éischt ofrappen
@@ -3865,6 +3892,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kann d'O
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kann d'Deelen vun der Optragslëscht net stoppen...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kann d'Optragslëscht net kopéieren...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... ze wäit vun leschter Destinatioun
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Fliger huet net genuch Distanz
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kann dem Gefiert keen Zäitplang gin.

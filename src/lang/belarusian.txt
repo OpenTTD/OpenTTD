@@ -600,6 +600,7 @@ STR_SORT_BY_INTRO_DATE                                          :Пачатак 
 STR_SORT_BY_RUNNING_COST                                        :Кошт абслугоўваньня
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Магутнасьць/кошт абслуг.
 STR_SORT_BY_CARGO_CAPACITY                                      :Ёмiстасьць
+STR_SORT_BY_RANGE                                               :Далёкасьць
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Паўза
@@ -1135,6 +1136,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ня можа знайсьці шлях для працягу руху
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} заблудзіўся.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}: леташні прыбытак склаў {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ня можа дасягнусь наступнага пункту: не хапае далёкасьцi
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спынены, паколькі пераабсталяваньне не ўдалося
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Памылка аўтаабнаўленьня для {VEHICLE}{}{STRING}
@@ -3264,6 +3266,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Пера
 STR_PURCHASE_INFO_ALL_TYPES                                     :Усе тыпы грузаў
 STR_PURCHASE_INFO_ALL_BUT                                       :Усё, акрамя {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. цягавае намаганьне: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Далёкасьць: {GOLD}{COMMA} клет{P ка кi ак}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Выбар вагонаў - клікніце для даведкі
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Сьпiс аўтатранспарту - націсьніце для атрыманьня даведкі
@@ -3396,6 +3399,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Кошт
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Кошт: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Хуткасьць: {VELOCITY}  Магутнасьць: {POWER}  Макс. ЦН: {6:FORCE}{}Кошт абслуг.: {4:CURRENCY_LONG}/год{}Ёмістасьць: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY}{}Ёмістасьць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY}{}Ёмістасьць: {CARGO_LONG}{}Кошт абслуг.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY} Далёкасьць: {7:COMMA} клетк{P а i ак}{}Умяшчальнасьць: {CARGO_LONG}, {CARGO_LONG}{}Кошт абслугоўваньня: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY} Далёкасьць: {7:COMMA} клет{P ка кi ак}{}Умяшчальнасьць: {CARGO_LONG}{}Кошт абслугоўваньня: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
@@ -3489,6 +3494,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Спыне
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Спыняецца; {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Няма току
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Чакае вольнай каляіны
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадта далёка да наступнага месца прызначэньня
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Iдзе да {STATION}; {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Няма заданьняў; {VELOCITY}
@@ -3517,6 +3523,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} г{P о
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} г{P од ады адоў} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. хуткасьць: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. хуткасьць: {LTBLUE}{VELOCITY} {BLACK}Далёкасьць: {LTBLUE}{COMMA} клетк{P а i ак}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_SHORT} {BLACK}Магутнасьць: {LTBLUE}{POWER}{BLACK} Макс. хуткасьць: {LTBLUE}{VELOCITY} {BLACK}Макс. ЦН: {LTBLUE}{FORCE}
 
@@ -3732,6 +3739,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :даступн�
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[пачатак станцыi]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[сярэдзiна станцыi]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[канец станцыі]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Адлегласьць да наступнага пункта прызначэньня перавышае далёкасьць паветранага судна)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Перайсьці да заданьня {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Перайсьці да заданьня {COMMA}, калi {STRING} {STRING} {COMMA}
@@ -4240,6 +4249,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Нема
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Немагчыма стварыць індывідуальны сьпіс заданьняў...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Немагчыма скапіяаваць сьпіс заданьняў
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... занадта далёка ад папярэдняй кропкі
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Паветранаму судну не хапае далёкасьцi
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не атрымалася скласьці расклад руху...

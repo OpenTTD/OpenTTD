@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Ngày giới th
 STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Chi phí Năng lượng/Chạy
 STR_SORT_BY_CARGO_CAPACITY                                      :Khả năng chở hàng
+STR_SORT_BY_RANGE                                               :Tầm xa
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
@@ -822,6 +823,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} không thể tìm đường đi tiếp.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} bị mất phương hướng.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Lợi nhuận của {VEHICLE} năm trước là {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} không thể tới điểm đến kế tiếp vì nó vượt tầm
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} đã dừng lại do yêu cầu cải biến thất bại
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Thất bại trong tự thay mới {VEHICLE}{}{STRING}
@@ -1174,6 +1176,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Khoản
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Thông báo các sự kiện hiện ra: {ORANGE}{STRING} giây
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}THông báo các sự kiện hiện ra: {ORANGE}Click phải
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Hiện dân số đô thị trong nhãn tên của đô thị: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Độ đậm của đường kẻ trong đồ thị: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tạo nền đất: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
@@ -1265,6 +1268,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Nhân v
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Nhân vật máy không được mua tàu thủy: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Cho phép AI ở chế độ nhiều người chơi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#mã lệnh trước kịch bản tạm ngưng: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Tần suất bảo trì theo đơn vị phần trăm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Thời gian bảo trì mặc định cho tàu hoả: {ORANGE}{STRING} ngày/%
@@ -1357,6 +1361,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Tìm đ
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tàu hoả
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Đô thị
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Nhà máy
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Kịch bản
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Nguyên bản
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1370,6 +1375,19 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Tự đ
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đổi giá trị
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}lỗi trong file cấu hình...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... lỗi trong mảng '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... giá trị không hợp lệ của '{STRING}' đối với '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... thừa ký tự ở cuối tùy chọn '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... bỏ qua NewGRF '{STRING}': trùng lặp GRF ID với '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... bỏ qua NewGRF '{STRING}' không hợp lệ: {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :không tìm thấy
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :không an toàn để dùng tĩnh
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF hệ thống
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :không tương thích phiên bản với OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :không rõ
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... mức độ nén '{STRING}' không hợp lệ
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... không thể lưu game dạng '{STRING}'. Lưu dạng '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2727,6 +2745,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Vay {CUR
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vay thêm tiền. Ctrl+Click vay hết hạn mức ngay
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Trả nợ {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Trả nợ một phần. Ctrl+Click trả nợ tất cả khả năng hoặc đáo nợ
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Hạ tầng
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2742,6 +2761,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Không
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Giá trị công ty: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% cổ phần sở hữu bởi {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Hạ tầng:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ô đường ray
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} ô đường bộ
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} ô nước
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} ô ga, bến
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} sân bay
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Không
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Xây trụ sở
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Xây dựng trụ sở của công ty
@@ -2749,6 +2775,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Xem tr�
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Xem khung cảnh trụ sở công ty
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Chuyển trụ sở
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Chuyển trụ sở công ty đi nơi khác sẽ cần chi phí là 1% giá trị công ty. . Shift+Click để xem chi phí dự tính
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Chi tiết
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Xem chi tiết thống kê hạ tầng
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Vẻ mặt mới
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Chọn vẻ mặt của giám đốc
@@ -2770,6 +2798,16 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Tên Giám Đ�
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Chúng tôi tìm một công ty để chuyển nhượng công việc kinh doanh và tài sản công ty chúng tôi.{}{}Bạn có muốn mua công ty {COMPANY} của chúng tôi với giá {CURRENCY_LONG}?
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Hạ tầng của công ty {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Ô đường ray:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Tín hiệu
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Ô đường bộ:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Đường bộ
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Xe điện
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Ô là nước:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kênh đào
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Ga, bến:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Các ô ga, bến
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Sân bay
 STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/năm ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/năm
@@ -2891,6 +2929,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Cải bi
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tất cả kiểu hàng hoá
 STR_PURCHASE_INFO_ALL_BUT                                       :Tất cả trừ {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Lực kéo tối đa: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Tầm xa: {GOLD}{COMMA} ô
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Danh sách tàu hỏa - click vào tàu hỏa để xem thông tin
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Danh sách xe - click vào xe để xem thông tin
@@ -3011,6 +3050,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Giá th�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Giá: {CURRENCY_LONG} Nặng: {WEIGHT_SHORT}{}Tốc độ: {VELOCITY}  Công suất: {POWER}  Max. T.E.: {6:FORCE}{}Giá vận hành: {4:CURRENCY_LONG}/yr{}Năng suất: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Giá thành: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO_LONG}, {CARGO_LONG}{}Running Cost: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Giá thành: {CURRENCY_LONG} Tốc độ tối đa: {VELOCITY}{}Sức chứa: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Gía: {CURRENCY_LONG} Tốc độ max: {VELOCITY} Tầm xa: {7:COMMA} ô{}Trọng tải: {CARGO_LONG}, {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Giá: {CURRENCY_LONG} Tốc độ max: {VELOCITY} Tầm xa: {7:COMMA} ô{}Trọng tải: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING}
@@ -3096,6 +3137,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Dừng
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Đang dừng, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Không có năng lượng
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Chờ đường thông
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Quá xa để tới điểm kế tiếp
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Nhắm tới {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Không lộ trình, {VELOCITY}
@@ -3124,6 +3166,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} năm ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tốc độ tối đa: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Tốc độ max: {LTBLUE}{VELOCITY} {BLACK} Tầm xa: {LTBLUE}{COMMA} ô
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_SHORT} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_SHORT} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -3339,6 +3382,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :hàng hóa sẵ
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[đỗ ở đầu gần]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[đỗ ở giữa]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[đỗ ở đầu xa]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Điểm đến kế tiếp ngoài tầm xa)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Đi ngay tới điểm lộ trình {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Đi ngay tới điểm lộ trình {COMMA} khi {STRING} {STRING} {COMMA}
@@ -3847,6 +3892,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Không t
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Không thể dừng chia sẻ danh sách lịch trình...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Không thể copy lộ trình...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... quá xa điểm lộ trình kế trước
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... máy bay không đủ tầm xa
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Không thể lập lịch trình cho phương tiện...

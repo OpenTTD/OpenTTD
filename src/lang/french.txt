@@ -288,6 +288,7 @@ STR_SORT_BY_INTRO_DATE                                          :Date d'introduc
 STR_SORT_BY_RUNNING_COST                                        :Coût d'entretien
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Puissance/Coût d'entretien
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacité
+STR_SORT_BY_RANGE                                               :Rayon d'action
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mettre le jeu en pause
@@ -3133,6 +3134,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppé
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Ralentit, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Pas de puissance
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}En attente d'un chemin libre
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Trop éloigné de la prochaine destination
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}En route pour {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Aucun ordre, {VELOCITY}
@@ -3161,6 +3163,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P ""
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" nées} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY} {BLACK}Rayon d'action{NBSP}: {LTBLUE}{COMMA} cases
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY} {BLACK}E.T. max.{NBSP}: {LTBLUE}{FORCE}
 
@@ -3376,6 +3379,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :cargaison dispo
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[queue]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[milieu]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[tête]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (La prochaine destination est hors de portée)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Sauter à l'ordre {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Sauter à l'ordre {COMMA} quand {STRING} {STRING} {COMMA}
@@ -3884,6 +3889,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Impossib
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Impossible d'arrêter le partage des ordres...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Impossible de copier les ordres...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... trop loin de la destination précédente
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'aéronef n'a pas un rayon d'action suffisant
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible d'affecter un horaire au véhicule...

@@ -288,6 +288,7 @@ STR_SORT_BY_INTRO_DATE                                          :Einführungsdat
 STR_SORT_BY_RUNNING_COST                                        :Betriebskosten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Leistung/Betriebskosten
 STR_SORT_BY_CARGO_CAPACITY                                      :Frachtkapazität
+STR_SORT_BY_RANGE                                               :Reichweite
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spiel anhalten
@@ -823,6 +824,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} findet keinen Weg zum Vorankommen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} hat sich verirrt
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Der Ertrag von {VEHICLE} lag im letzten Jahr bei {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann sein Ziel nicht erreichen, da es außer Reichweite liegt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Umrüstungsauftag fehlgeschlagen bei {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisches Ersetzen für {VEHICLE} fehlgeschlagen{}{STRING}
@@ -2928,6 +2930,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstb
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle Frachtarten
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles außer {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zugkraft: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Reichweite: {GOLD}{COMMA} Felder
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
@@ -3048,6 +3051,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Preis: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Max. Geschwindigkeit: {VELOCITY}  Leistung: {POWER}  Max. Zugkraft: {6:FORCE}{}Betriebskosten: {4:CURRENCY_LONG}/yr{}Kapazität: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Preis: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Kapazität: {CARGO_LONG}, {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Preis: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/Jahr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kosten: {CURRENCY_LONG} Max. Geschwindigkeit: {VELOCITY} Reichweite: {7:COMMA} Felder{}Kapazität: {CARGO_LONG}, {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/a
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kosten: {CURRENCY_LONG} Max. Geschwindigkeit: {VELOCITY} Reichweite: {7:COMMA} Felder{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/a
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen
@@ -3133,6 +3138,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Angehalten
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Halte an, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Keine Energie
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Warte auf freie Wege
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Zu weit zum nächsten Ziel
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Unterwegs nach {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keine Aufträge, {VELOCITY}
@@ -3161,6 +3167,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} Jahr{P 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. Geschw.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. Geschwindigkeit: {LTBLUE}{VELOCITY} {BLACK}Reichweite: {LTBLUE}{COMMA} Felder
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
 
@@ -3376,6 +3383,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :verfügbare Fra
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[am Anfang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[in der Mitte]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[am Ende]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nächster Auftrag ist außer Reichweite)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Springe zu Auftrag {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING} {COMMA} ist
@@ -3884,6 +3893,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Fehler b
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Gemeinsame Aufträge können nicht aufgehoben werden...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Fahrplan kann nicht kopiert werden...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zu weit vom vorherigen Bestimmungsort entfernt
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Luftfahrzeug hat zu geringe Reichweite
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kein Fahrplan für das Fahrzeug...

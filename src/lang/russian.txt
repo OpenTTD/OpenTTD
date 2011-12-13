@@ -413,6 +413,7 @@ STR_SORT_BY_INTRO_DATE                                          :Время на
 STR_SORT_BY_RUNNING_COST                                        :Стоимость обслуживания
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощность/стоимость обслуж.
 STR_SORT_BY_CARGO_CAPACITY                                      :Вместимость
+STR_SORT_BY_RANGE                                               :Дальность полёта
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -967,6 +968,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Тран
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не может найти путь для продолжения движения
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Транспортное средство «{VEHICLE}» заблудилось.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Доход ТС «{VEHICLE}» в прошлом году составил {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} не может долететь до пункта назначения: слишком далеко
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Не удалось переоборудовать {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Ошибка автообновления для {VEHICLE}{}{STRING}
@@ -3111,6 +3113,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Може
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
 STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Выбор вагонов - кликните для справки
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автотранспорта - кликните для получения информации
@@ -3237,6 +3240,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY_LONG}/год{}Ёмкость: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY} Дальность: {7:COMMA} клет{P 7 ка ки ок}{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY} Дальность: {7:COMMA} клет{P 7 ка ки ок}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
@@ -3326,6 +3331,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Остан
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Останавливается; {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Нет тяги
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ожидает свободного пути
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Следующий пункт назначения слишком далеко
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Идёт к {STATION}; {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Нет заданий; {VELOCITY}
@@ -3354,6 +3360,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P го
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P год года лет} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Дальность: {LTBLUE}{COMMA} клет{P ка ки ок}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 
@@ -3569,6 +3576,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :доступн�
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[начало станции]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[середина станции]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[конец станции]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Расстояние до след. станции слишком велико)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Перейти к заданию {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Перейти к заданию {COMMA}, если {STRING} {STRING} {COMMA}
@@ -4077,6 +4086,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Нево
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Невозможно создать индивидуальный список заданий...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Невозможно скопировать список заданий
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... слишком далеко от предыдущей точки
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... дальность полёта воздушного судна недостаточна
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не удалось составить расписание для этого транспорта...

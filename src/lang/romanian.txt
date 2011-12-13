@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Data lansării
 STR_SORT_BY_RUNNING_COST                                        :Cost exploatare
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cost exploatare/putere
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacitate încărcătură
+STR_SORT_BY_RANGE                                               :Raza de acțiune
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauză joc
@@ -822,6 +823,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nu găseşte calea către destinaţie
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} s-a rătăcit
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Profitul {VEHICLE} pe anul precedent a fost de {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nu poate ajunge la următoarea destinație deoarece se află în afara razei de acțiune
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} s-a oprit deoarece recondiţionarea programată a eşuat
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoreînnoire eşuată pentru {VEHICLE}{}{STRING}
@@ -1174,6 +1176,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Arată textele informative: {ORANGE}Ţine cursorul pe element pentru {STRING} secund{P 0:1 ă e}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Arată textele informative: {ORANGE}Click dreapta
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afişează populaţia unui oras lângă nume: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Grosimea liniilor din grafice: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator teren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1370,6 +1373,21 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algorit
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Întoarcere automată la semafoare: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Eroare cu fișierul de configurație...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... eroare în array-ul '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valoare incorectă '{STRING}' pentru '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caractere rămase la sfărșitul setării '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignor NewGRF-ul '{STRING}': GRF ID duplicat cu '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignor NewGRF-ul invalid '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :negăsit
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nesigur pentru utilizare statică
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistem NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatibil cu această versiune de OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :necunoscut
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivelul de compresie '{STRING}' nu este valid
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formatul salvarilor '{STRING}' nu este disponibil. Revenire la '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1840,6 +1858,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcheaz
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselectează tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Deselectează toate resursele selectate
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtru nume/etichetă:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Viziteaza site-ul web
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Viziteaza site-ul web al acestei resurse
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarcă
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Porneşte descărcarea resurselor selectate
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total de descărcat: {WHITE}{BYTES}
@@ -2909,6 +2929,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modifica
 STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de mărfuri
 STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu excepţia {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tractor max.: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rază acțiune: {GOLD}{COMMA} pătrățele
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selectie a componentelor trenului - clic pe vehicule pt. informatii
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Listă selecţie vehicule rutiere - apasă pe vehicul pentru informaţii
@@ -3029,6 +3050,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {C
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Preţ: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}  Ef. T. Max.: {6:FORCE}{}Cost rulaj: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanţă: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}{}Mentenanţă: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cost: {CURRENCY_LONG} Viteză maximă: {VELOCITY} Rază de acțiune: {7:COMMA} tiles{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Cost rulare: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Viteză maximă: {VELOCITY} Rază de acțiune: {7:COMMA} pătrățele{}Capacitate: {CARGO_LONG}{}Cost de rulare: {CURRENCY_LONG}/yr
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieşte {STRING}
@@ -3114,6 +3137,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Oprit
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Oprire, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Fara curent
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Astept cale libera
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Prea departe pentru următoarea destinație
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Spre {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Fără comenzi, {VELOCITY}
@@ -3142,6 +3166,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P ""
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" i} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Viteză maximă: {LTBLUE}{VELOCITY} {BLACK}Rază de acțiune: {LTBLUE}{COMMA} pătrățele
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Efort tractiv: {LTBLUE}{FORCE}
 
@@ -3357,6 +3382,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :incărcătura d
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capătul apropiat]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[la mijloc]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[la capătul îndepărtat]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Următoarea destinație nu se află în raza de acțiune)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Salt la comanda {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Salt la comanda {COMMA} cand {STRING} {STRING} {COMMA}
@@ -3865,6 +3892,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nu se po
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nu pot opri sincronizarea listei de ordine...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nu pot copia lista de comenzi...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prea departe de destinaţia precedentă
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... avionul nu are o rază de acțiune suficientă
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nu pot programa vehiculul...
