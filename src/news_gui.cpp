@@ -103,7 +103,7 @@ static const NWidgetPart _nested_normal_news_widgets[] = {
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(428, 154), SetPadding(0, 1, 1, 1),
+		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(428, 154), SetPadding(0, 5, 1, 5),
 	EndContainer(),
 };
 
@@ -183,7 +183,7 @@ static const NWidgetPart _nested_thin_news_widgets[] = {
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(428, 48), SetFill(1, 0), SetPadding(0, 1, 0, 1),
+		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(428, 48), SetFill(1, 0), SetPadding(0, 5, 0, 5),
 		NWidget(NWID_VIEWPORT, INVALID_COLOUR, NTW_VIEWPORT), SetMinimalSize(426, 70), SetPadding(1, 2, 2, 2),
 	EndContainer(),
 };
@@ -208,7 +208,7 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 		NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NTW_INSET), SetPadding(2, 2, 2, 2),
 			NWidget(NWID_VIEWPORT, INVALID_COLOUR, NTW_VIEWPORT), SetPadding(1, 1, 1, 1), SetMinimalSize(274, 47), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(275, 20), SetFill(1, 0),
+		NWidget(WWT_EMPTY, COLOUR_WHITE, NTW_MESSAGE), SetMinimalSize(275, 20), SetFill(1, 0), SetPadding(0, 5, 0, 5),
 	EndContainer(),
 };
 
@@ -405,7 +405,7 @@ struct NewsWindow : Window {
 
 			case NTW_MESSAGE:
 				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
-				DrawStringMultiLine(r.left + 2, r.right - 2, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
 				break;
 
 			case NTW_MGR_FACE: {
