@@ -80,6 +80,15 @@ public:
 	void MakeImplicit(StationID destination);
 
 	/**
+	 * Is this a 'goto' order with a real destination?
+	 * @return True if the type sis either #OT_GOTO_WAYPOINT, #OT_GOTO_DEPOT or #OT_GOTO_STATION.
+	 */
+	inline bool IsGotoOrder() const
+	{
+		return IsType(OT_GOTO_WAYPOINT) || IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION);
+	}
+
+	/**
 	 * Gets the destination of this order.
 	 * @pre IsType(OT_GOTO_WAYPOINT) || IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION).
 	 * @return the destination of the order.

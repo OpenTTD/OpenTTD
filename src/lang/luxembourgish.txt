@@ -3218,7 +3218,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Wiesselt
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Optragslëscht - Klickt op en Optrag fir en ze selectéieren. Ctrl+Klick scrollt op d'Optragdestinatioun
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Enn vun den Opträg - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Enn vun der Optragslëscht - -

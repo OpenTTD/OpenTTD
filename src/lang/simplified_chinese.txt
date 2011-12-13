@@ -3128,7 +3128,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表{}单击一个调度指令可以使之高亮化{}CTRL + 单击{}可以将视点移动到相应的车站
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :-- 调度计划结束 --
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享调度计划结束 - -

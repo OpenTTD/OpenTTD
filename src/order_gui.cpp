@@ -29,6 +29,7 @@
 #include "waypoint_base.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
+#include "aircraft.h"
 
 #include "table/strings.h"
 
@@ -260,6 +261,13 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, STR_ORDER_INDEX, colour, SA_RIGHT | SA_FORCE);
 
 	SetDParam(5, STR_EMPTY);
+	SetDParam(8, STR_EMPTY);
+
+	/* Check range for aircraft. */
+	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->GetRange() > 0 && order->IsGotoOrder()) {
+		const Order *next = order->next != NULL ? order->next : v->GetFirstOrder();
+		if (GetOrderDistance(order, next, v) > Aircraft::From(v)->acache.cached_max_range_sqr) SetDParam(8, STR_ORDER_OUT_OF_RANGE);
+	}
 
 	switch (order->GetType()) {
 		case OT_DUMMY:

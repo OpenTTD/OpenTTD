@@ -3109,7 +3109,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切換�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令清單 - 點選可選擇該指令，按住 CTRL 點選可跳到車站位置
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 指令結束 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享指令結束 - -

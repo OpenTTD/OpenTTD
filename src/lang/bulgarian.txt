@@ -3095,7 +3095,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Виж �
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Пътен лист - натиснете върху назначение за маркиране. CTRL + натискане - центрира върху дестинацията
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Край на Заповедите - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Край на Споделения пътен лист - -

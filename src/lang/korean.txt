@@ -3224,7 +3224,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}시간�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 경로의 끝 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 경로의 끝 - -

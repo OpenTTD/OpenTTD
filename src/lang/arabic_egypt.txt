@@ -3190,7 +3190,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}غير �
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}قائمة الاوامر - اضغط على الامر لختيارة. مفتاح التحكم (كنترول) + الضغط لتوجة للمحطة
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - نهاية الاوامر - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - نهاية الأوامر المشتركة - -

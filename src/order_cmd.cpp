@@ -580,7 +580,16 @@ TileIndex Order::GetLocation(const Vehicle *v, bool airport) const
 	}
 }
 
-static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int conditional_depth = 0)
+/**
+ * Get the distance between two orders of a vehicle. Conditional orders are resolved
+ * and the bigger distance of the two order branches is returned.
+ * @param prev Origin order.
+ * @param cur Destination order.
+ * @param v The vehicle to get the distance for.
+ * @param conditional_depth Internal param for resolving conditional orders.
+ * @return Maximum distance between the two orders.
+ */
+uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int conditional_depth)
 {
 	if (cur->IsType(OT_CONDITIONAL)) {
 		if (conditional_depth > v->GetNumOrders()) return 0;

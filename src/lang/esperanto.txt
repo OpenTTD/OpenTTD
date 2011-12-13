@@ -3100,7 +3100,7 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Montri h
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordonlisto - klaku ordonon por elekti. Stir+Klak rulumas al la stacio.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fino de Ordonoj - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fino de Kunhavitaj Ordonoj - -
