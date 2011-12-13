@@ -203,3 +203,12 @@ namespace SQConvert {
 	template <> inline const ScriptEventTownFounded &GetParam(ForceType<const ScriptEventTownFounded &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventTownFounded *)instance; }
 	template <> inline int Return<ScriptEventTownFounded *>(HSQUIRRELVM vm, ScriptEventTownFounded *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventTownFounded", res, NULL, DefSQDestructorCallback<ScriptEventTownFounded>, true); return 1; }
 } // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptEventAircraftDestTooFar to be used as Squirrel parameter */
+	template <> inline ScriptEventAircraftDestTooFar *GetParam(ForceType<ScriptEventAircraftDestTooFar *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventAircraftDestTooFar *)instance; }
+	template <> inline ScriptEventAircraftDestTooFar &GetParam(ForceType<ScriptEventAircraftDestTooFar &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventAircraftDestTooFar *)instance; }
+	template <> inline const ScriptEventAircraftDestTooFar *GetParam(ForceType<const ScriptEventAircraftDestTooFar *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventAircraftDestTooFar *)instance; }
+	template <> inline const ScriptEventAircraftDestTooFar &GetParam(ForceType<const ScriptEventAircraftDestTooFar &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventAircraftDestTooFar *)instance; }
+	template <> inline int Return<ScriptEventAircraftDestTooFar *>(HSQUIRRELVM vm, ScriptEventAircraftDestTooFar *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventAircraftDestTooFar", res, NULL, DefSQDestructorCallback<ScriptEventAircraftDestTooFar>, true); return 1; }
+} // namespace SQConvert

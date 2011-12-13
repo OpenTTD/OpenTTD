@@ -13,6 +13,7 @@
 #include "script_order.hpp"
 #include "script_vehicle.hpp"
 #include "script_cargo.hpp"
+#include "script_map.hpp"
 #include "../script_instance.hpp"
 #include "../../debug.h"
 #include "../../vehicle_base.h"
@@ -654,4 +655,16 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 	EnforcePrecondition(false, ScriptVehicle::IsValidVehicle(vehicle_id));
 
 	return ScriptObject::DoCommand(0, vehicle_id | CO_UNSHARE << 30, 0, CMD_CLONE_ORDER);
+}
+
+/* static */ uint ScriptOrder::GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile)
+{
+	if (vehicle_type == ScriptVehicle::VT_AIR) {
+		if (ScriptTile::IsStationTile(origin_tile) && ::Station::Get(origin_tile)->airport.tile != INVALID_TILE) origin_tile = ::Station::Get(origin_tile)->airport.tile;
+		if (ScriptTile::IsStationTile(dest_tile) && ::Station::Get(dest_tile)->airport.tile != INVALID_TILE) dest_tile = ::Station::Get(dest_tile)->airport.tile;
+
+		return ScriptMap::DistanceSquare(origin_tile, dest_tile);
+	} else {
+		return ScriptMap::DistanceManhattan(origin_tile, dest_tile);
+	}
 }

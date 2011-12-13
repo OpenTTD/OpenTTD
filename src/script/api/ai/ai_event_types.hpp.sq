@@ -346,3 +346,18 @@ void SQAIEventTownFounded_Register(Squirrel *engine)
 
 	SQAIEventTownFounded.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventAircraftDestTooFar, ST_AI>() { return "AIEventAircraftDestTooFar"; }
+
+void SQAIEventAircraftDestTooFar_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventAircraftDestTooFar, ST_AI> SQAIEventAircraftDestTooFar("AIEventAircraftDestTooFar");
+	SQAIEventAircraftDestTooFar.PreRegister(engine, "AIEvent");
+
+	SQAIEventAircraftDestTooFar.DefSQStaticMethod(engine, &ScriptEventAircraftDestTooFar::Convert, "Convert", 2, ".x");
+
+	SQAIEventAircraftDestTooFar.DefSQMethod(engine, &ScriptEventAircraftDestTooFar::GetVehicleID, "GetVehicleID", 1, "x");
+
+	SQAIEventAircraftDestTooFar.PostRegister(engine);
+}

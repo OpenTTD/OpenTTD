@@ -796,4 +796,37 @@ private:
 	TownID town; ///< The town that got founded.
 };
 
+/**
+ * Event AircraftDestTooFar, indicating the next destination of an aircraft is too far away.
+ * This event can be trigger when the current oder of an aircraft changes, usually either when
+ * loading is done or when switch manually.
+ * @api ai
+ */
+class ScriptEventAircraftDestTooFar : public ScriptEvent {
+public:
+	/**
+	 * @param vehicle_id The aircraft whose destination is too far away.
+	 */
+	ScriptEventAircraftDestTooFar(VehicleID vehicle_id) :
+		ScriptEvent(ET_AIRCRAFT_DEST_TOO_FAR),
+		vehicle_id(vehicle_id)
+	{}
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventAircraftDestTooFar *Convert(ScriptEvent *instance) { return (ScriptEventAircraftDestTooFar *)instance; }
+
+	/**
+	 * Get the VehicleID of the aircraft whose destination is too far away.
+	 * @return The VehicleID of the aircraft whose destination is too far away.
+	 */
+	VehicleID GetVehicleID() { return this->vehicle_id; }
+
+private:
+	VehicleID vehicle_id; ///< The vehicle aircraft whose destination is too far away.
+};
+
 #endif /* SCRIPT_EVENT_TYPES_HPP */

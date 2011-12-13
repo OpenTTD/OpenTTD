@@ -22,6 +22,7 @@
 #include "../../roadveh.h"
 #include "../../train.h"
 #include "../../vehicle_func.h"
+#include "../../aircraft.h"
 #include "table/strings.h"
 
 /* static */ bool ScriptVehicle::IsValidVehicle(VehicleID vehicle_id)
@@ -420,4 +421,21 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	return ::ToPercent16(v->reliability);
+}
+
+/* static */ uint ScriptVehicle::GetMaximumOrderDistance(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return 0;
+
+	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
+	switch (v->type) {
+		case VEH_SHIP:
+			return _settings_game.pf.pathfinder_for_ships != VPF_NPF ? 129 : 0;
+
+		case VEH_AIRCRAFT:
+			return ::Aircraft::From(v)->acache.cached_max_range_sqr;
+
+		default:
+			return 0;
+	}
 }

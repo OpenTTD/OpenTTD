@@ -122,6 +122,7 @@ void AIInstance::RegisterAPI()
 	SQAIEngineList_Register(this->engine);
 	SQAIError_Register(this->engine);
 	SQAIEvent_Register(this->engine);
+	SQAIEventAircraftDestTooFar_Register(this->engine);
 	SQAIEventCompanyAskMerger_Register(this->engine);
 	SQAIEventCompanyBankrupt_Register(this->engine);
 	SQAIEventCompanyInTrouble_Register(this->engine);

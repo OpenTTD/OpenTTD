@@ -141,6 +141,7 @@ void SQAIVehicle_Register(Squirrel *engine)
 	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsArticulated,                  "IsArticulated",                  2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::HasSharedOrders,                "HasSharedOrders",                2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetReliability,                 "GetReliability",                 2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetMaximumOrderDistance,        "GetMaximumOrderDistance",        2, ".i");
 
 	SQAIVehicle.PostRegister(engine);
 }

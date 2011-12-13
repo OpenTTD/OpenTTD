@@ -24,6 +24,7 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_BASE,                                   "ERR_ORDER_BASE");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,              "ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::AIOF_NONE,                                        "AIOF_NONE");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::AIOF_NON_STOP_INTERMEDIATE,                       "AIOF_NON_STOP_INTERMEDIATE");
 	SQAIOrder.DefSQConst(engine, ScriptOrder::AIOF_NON_STOP_DESTINATION,                        "AIOF_NON_STOP_DESTINATION");
@@ -67,9 +68,11 @@ void SQAIOrder_Register(Squirrel *engine)
 
 	ScriptError::RegisterErrorMap(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS,          ScriptOrder::ERR_ORDER_TOO_MANY);
 	ScriptError::RegisterErrorMap(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION, ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION);
+	ScriptError::RegisterErrorMap(STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE,         ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE);
 
 	ScriptError::RegisterErrorMapString(ScriptOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
 	ScriptError::RegisterErrorMapString(ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");
+	ScriptError::RegisterErrorMapString(ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,              "ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE");
 
 	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsValidVehicleOrder,           "IsValidVehicleOrder",           3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsGotoStationOrder,            "IsGotoStationOrder",            3, ".ii");
@@ -108,6 +111,7 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::CopyOrders,                    "CopyOrders",                    3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::ShareOrders,                   "ShareOrders",                   3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::UnshareOrders,                 "UnshareOrders",                 2, ".i");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderDistance,              "GetOrderDistance",              4, ".iii");
 
 	SQAIOrder.PostRegister(engine);
 }

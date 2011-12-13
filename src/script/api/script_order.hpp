@@ -13,6 +13,7 @@
 #define SCRIPT_ORDER_HPP
 
 #include "script_error.hpp"
+#include "script_vehicle.hpp"
 
 /**
  * Class that handles all order related functions.
@@ -32,6 +33,9 @@ public:
 
 		/** Destination of new order is to far away from the previous order */
 		ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION,    // [STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION]
+
+		/* Aircraft has not enough range to copy/share orders. */
+		ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,                 // [STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE]
 	};
 
 	/**
@@ -532,6 +536,7 @@ public:
 	 * @pre ScriptVehicle::IsValidVehicle(main_vehicle_id).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptOrder::ERR_ORDER_TOO_MANY
+	 * @exception ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE
 	 * @return True if and only if the copying succeeded.
 	 */
 	static bool CopyOrders(VehicleID vehicle_id, VehicleID main_vehicle_id);
@@ -544,6 +549,7 @@ public:
 	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
 	 * @pre ScriptVehicle::IsValidVehicle(main_vehicle_id).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE
 	 * @return True if and only if the sharing succeeded.
 	 */
 	static bool ShareOrders(VehicleID vehicle_id, VehicleID main_vehicle_id);
@@ -555,6 +561,16 @@ public:
 	 * @return True if and only if the unsharing succeeded.
 	 */
 	static bool UnshareOrders(VehicleID vehicle_id);
+
+	/**
+	 * Get the distance between two points for a vehicle type.
+	 * @param vehicle_type The vehicle type to get the distance for.
+	 * @param origin_tile Origin, can be any tile or a tile of a specific station.
+	 * @param dest_tile Destination, ca be any tile or a tile of a specific station.
+	 * @return The distance between the origin and the destination for a vehicle of the given vehicle type.
+	 * @see ScriptEngine::GetMaximumOrderDistance and ScriptVehicle::GetMaximumOrderDistance
+	 */
+	static uint GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile);
 };
 DECLARE_ENUM_AS_BIT_SET(ScriptOrder::ScriptOrderFlags)
 

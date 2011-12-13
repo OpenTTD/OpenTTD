@@ -32,8 +32,12 @@
  * \li AICompany::GetQuarterlyPerformanceRating
  * \li AICompany::GetQuarterlyCompanyValue
  * \li AIController::GetOpsTillSuspend
+ * \li AIEngine::GetMaximumOrderDistance
+ * \li AIEventAircraftDestTooFar
  * \li AIInfo::CONFIG_DEVELOPER
  * \li AIInfrastructure
+ * \li AIOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE
+ * \li AIOrder::GetOrderDistance
  * \li AIOrder::GetOrderRefit
  * \li AIOrder::IsRefitOrder
  * \li AIOrder::SetOrderRefit
@@ -45,6 +49,7 @@
  * \li AITown::GetTownAuthority
  * \li AITownEffectList (to walk over all available town effects)
  * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached
+ * \li AIVehicle::GetMaximumOrderDistance
  *
  * API renames:
  * \li AITown::GetLastMonthTransported to AITown::GetLastMonthSupplied to better

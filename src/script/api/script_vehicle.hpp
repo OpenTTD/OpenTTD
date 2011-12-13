@@ -527,6 +527,16 @@ public:
 	 */
 	static int GetReliability(VehicleID vehicle_id);
 
+	/**
+	 * Get the maximum allowed distance between two orders for a vehicle.
+	 * @param vehicle_id The vehicle to get the distance for.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The maximum distance between two orders for this vehicle
+	 *  or 0 if the distance is unlimited.
+	 * @see ScriptOrder::GetOrderDistance
+	 */
+	static uint GetMaximumOrderDistance(VehicleID vehicle_id);
+
 private:
 	/**
 	 * Internal function used by SellWagon(Chain).

@@ -1855,6 +1855,7 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 		if (!HasBit(v->flags, VAF_DEST_TOO_FAR)) {
 			SetBit(v->flags, VAF_DEST_TOO_FAR);
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			AI::NewEvent(v->owner, new ScriptEventAircraftDestTooFar(v->index));
 			if (v->owner == _local_company) {
 				/* Post a news message. */
 				SetDParam(0, v->index);
