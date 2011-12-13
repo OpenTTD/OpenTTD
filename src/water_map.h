@@ -466,14 +466,15 @@ static inline void MakeLockTile(TileIndex t, Owner o, LockPart part, DiagDirecti
  * @param d Direction of the water lock.
  * @param wc_lower Original water class of the lower part.
  * @param wc_upper Original water class of the upper part.
+ * @param wc_middle Original water class of the middle part.
  */
-static inline void MakeLock(TileIndex t, Owner o, DiagDirection d, WaterClass wc_lower, WaterClass wc_upper)
+static inline void MakeLock(TileIndex t, Owner o, DiagDirection d, WaterClass wc_lower, WaterClass wc_upper, WaterClass wc_middle)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(d);
 
-	MakeLockTile(t, o, LOCK_PART_MIDDLE, d, WATER_CLASS_CANAL);
-	/* Keep the current owner for the upper and lower part if it is a
-	 * water tile so we can restore the owner after deleting the lock. */
+	/* Keep the current waterclass and owner for the tiles.
+	 * It allows to restore them after the lock is deleted */
+	MakeLockTile(t, o, LOCK_PART_MIDDLE, d, wc_middle);
 	MakeLockTile(t - delta, IsWaterTile(t - delta) ? GetTileOwner(t - delta) : o, LOCK_PART_LOWER, d, wc_lower);
 	MakeLockTile(t + delta, IsWaterTile(t + delta) ? GetTileOwner(t + delta) : o, LOCK_PART_UPPER, d, wc_upper);
 }

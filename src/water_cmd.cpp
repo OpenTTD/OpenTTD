@@ -246,6 +246,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	if (ret.Failed()) return ret;
 
 	/* middle tile */
+	WaterClass wc_middle = IsWaterTile(tile) ? GetWaterClass(tile) : WATER_CLASS_CANAL;
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret);
@@ -295,7 +296,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 			DirtyCompanyInfrastructureWindows(_current_company);
 		}
 
-		MakeLock(tile, _current_company, dir, wc_lower, wc_upper);
+		MakeLock(tile, _current_company, dir, wc_lower, wc_upper, wc_middle);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile - delta);
 		MarkTileDirtyByTile(tile + delta);
@@ -336,9 +337,14 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
 
-		DoClearSquare(tile);
+		if (GetWaterClass(tile) == WATER_CLASS_RIVER) {
+			MakeRiver(tile, Random());
+		} else {
+			DoClearSquare(tile);
+		}
 		MakeWaterKeepingClass(tile + delta, GetTileOwner(tile + delta));
 		MakeWaterKeepingClass(tile - delta, GetTileOwner(tile - delta));
+		MarkCanalsAndRiversAroundDirty(tile);
 		MarkCanalsAndRiversAroundDirty(tile - delta);
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
@@ -359,9 +365,6 @@ CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-	/* Disallow building of locks on river rapids */
-	if (IsWaterTile(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	return DoBuildLock(tile, dir, flags);
 }
