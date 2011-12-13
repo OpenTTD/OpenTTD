@@ -403,6 +403,24 @@ static int CDECL AircraftEngineCargoSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of aircraft by range.
+ * @param *a first engine to compare.
+ * @param *b second engine to compare.
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal.
+ */
+static int CDECL AircraftRangeSorter(const EngineID *a, const EngineID *b)
+{
+	uint16 r_a = Engine::Get(*a)->GetRange();
+	uint16 r_b = Engine::Get(*b)->GetRange();
+
+	int r = r_a - r_b;
+
+	/* Use EngineID to sort instead since we want consistent sorting */
+	if (r == 0) return EngineNumberSorter(a, b);
+	return _internal_sort_order ? -r : r;
+}
+
 static EngList_SortTypeFunction * const _sorter[][11] = {{
 	/* Trains */
 	&EngineNumberSorter,
@@ -449,6 +467,7 @@ static EngList_SortTypeFunction * const _sorter[][11] = {{
 	&EngineRunningCostSorter,
 	&EngineReliabilitySorter,
 	&AircraftEngineCargoSorter,
+	&AircraftRangeSorter,
 }};
 
 static const StringID _sort_listing[][12] = {{
@@ -500,6 +519,7 @@ static const StringID _sort_listing[][12] = {{
 	STR_SORT_BY_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
+	STR_SORT_BY_RANGE,
 	INVALID_STRING_ID
 }};
 

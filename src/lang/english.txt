@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Introduction Da
 STR_SORT_BY_RUNNING_COST                                        :Running Cost
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost
 STR_SORT_BY_CARGO_CAPACITY                                      :Cargo Capacity
+STR_SORT_BY_RANGE                                               :Range
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game
