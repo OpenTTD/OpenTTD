@@ -1401,7 +1401,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  */
 bool CheckAircraftOrderDistance(const Aircraft *v, const Order *first)
 {
-	if (first == NULL) return true;
+	if (first == NULL || v->acache.cached_max_range == 0) return true;
 
 	/* Iterate over all orders to check the distance between all
 	 * 'goto' orders and their respective next order (of any type). */
