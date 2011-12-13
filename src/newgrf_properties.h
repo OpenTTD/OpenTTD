@@ -53,6 +53,7 @@ enum PropertyID {
 	PROP_AIRCRAFT_PASSENGER_CAPACITY            = 0x0F, ///< Passenger Capacity
 	PROP_AIRCRAFT_MAIL_CAPACITY                 = 0x11, ///< Mail Capacity
 	PROP_AIRCRAFT_CARGO_AGE_PERIOD              = 0x1C, ///< Number of ticks before carried cargo is aged
+	PROP_AIRCRAFT_RANGE                         = 0x1F, ///< Aircraft range
 };
 
 #endif /* NEWGRF_PROPERTIES_H */

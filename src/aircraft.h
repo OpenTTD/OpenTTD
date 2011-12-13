@@ -25,16 +25,27 @@ enum AircraftSubType {
 	AIR_ROTOR      = 6  ///< rotor of an helicopter
 };
 
+/** Aircraft flags. */
+enum VehicleAirFlags {
+	VAF_DEST_TOO_FAR = 0, ///< Next destination is too far away.
+};
+
 
 void HandleAircraftEnterHangar(Aircraft *v);
 void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, EngineImageType image_type);
 void UpdateAirplanesOnNewStation(const Station *st);
-void UpdateAircraftCache(Aircraft *v);
+void UpdateAircraftCache(Aircraft *v, bool update_range = false);
 
 void AircraftLeaveHangar(Aircraft *v, Direction exit_dir);
 void AircraftNextAirportPos_and_Order(Aircraft *v);
 void SetAircraftPosition(Aircraft *v, int x, int y, int z);
 int GetAircraftFlyingAltitude(const Aircraft *v);
+
+/** Variables that are cached to improve performance and such. */
+struct AircraftCache {
+	uint32 cached_max_range_sqr;   ///< Cached squared maximum range.
+	uint16 cached_max_range;       ///< Cached maximum range.
+};
 
 /**
  * Aircraft, helicopters, rotors and their shadows belong to this class.
@@ -48,6 +59,9 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	DirectionByte last_direction;
 	byte number_consecutive_turns; ///< Protection to prevent the aircraft of making a lot of turns in order to reach a specific point.
 	byte turn_counter;             ///< Ticks between each turn to prevent > 45 degree turns.
+	byte flags;                    ///< Aircraft flags. @see VehicleAirFlags
+
+	AircraftCache acache;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Aircraft() : SpecializedVehicleBase() {}
@@ -82,6 +96,15 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 		 * but since value can only be 0 or 2, it is sufficient to only check <= 2
 		 * return (this->subtype == AIR_HELICOPTER) || (this->subtype == AIR_AIRCRAFT); */
 		return this->subtype <= AIR_AIRCRAFT;
+	}
+
+	/**
+	 * Get the range of this aircraft.
+	 * @return Range in tiles or 0 if unlimited range.
+	 */
+	uint16 GetRange() const
+	{
+		return this->acache.cached_max_range;
 	}
 };
 

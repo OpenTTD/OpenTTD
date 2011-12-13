@@ -166,7 +166,7 @@ public:
 	inline void SetConditionValue(uint16 value) { SB(this->dest, 0, 11, value); }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
-	TileIndex GetLocation(const Vehicle *v) const;
+	TileIndex GetLocation(const Vehicle *v, bool airport = false) const;
 
 	/** Checks if this order has travel_time and if needed wait_time set. */
 	inline bool IsCompletelyTimetabled() const

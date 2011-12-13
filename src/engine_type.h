@@ -105,6 +105,7 @@ struct AircraftVehicleInfo {
 	uint16 max_speed;           ///< Maximum speed (1 unit = 8 mph = 12.8 km-ish/h)
 	byte mail_capacity;         ///< Mail capacity (bags).
 	uint16 passenger_capacity;  ///< Passenger capacity (persons).
+	uint16 max_range;           ///< Maximum range of this aircraft.
 };
 
 /** Information about a road vehicle. */

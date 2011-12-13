@@ -434,7 +434,7 @@ void AfterLoadVehicles(bool part_of_load)
 						rotor->cur_image = GetRotorImage(Aircraft::From(v), EIT_ON_MAP);
 					}
 
-					UpdateAircraftCache(Aircraft::From(v));
+					UpdateAircraftCache(Aircraft::From(v), true);
 				}
 				break;
 			default: break;
@@ -745,6 +745,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Aircraft, number_consecutive_turns, SLE_UINT8,                 2, SL_MAX_VERSION),
 
 		 SLE_CONDVAR(Aircraft, turn_counter,          SLE_UINT8,                  136, SL_MAX_VERSION),
+		 SLE_CONDVAR(Aircraft, flags,                 SLE_UINT8,                  167, SL_MAX_VERSION),
 
 		SLE_CONDNULL(13,                                                           2, 143), // old reserved space
 

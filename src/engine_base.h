@@ -110,6 +110,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint GetDisplayWeight() const;
 	uint GetDisplayMaxTractiveEffort() const;
 	Date GetLifeLengthInDays() const;
+	uint16 GetRange() const;
 
 	/**
 	 * Check if the engine is a ground vehicle.

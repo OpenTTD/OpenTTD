@@ -449,6 +449,20 @@ Date Engine::GetLifeLengthInDays() const
 }
 
 /**
+ * Get the range of an aircraft type.
+ * @return Range of the aircraft type in tiles or 0 if unlimited range.
+ */
+uint16 Engine::GetRange() const
+{
+	switch (this->type) {
+		case VEH_AIRCRAFT:
+			return GetEngineProperty(this->index, PROP_AIRCRAFT_RANGE, this->u.air.max_range);
+
+		default: NOT_REACHED();
+	}
+}
+
+/**
  * Initializes the EngineOverrideManager with the default engines.
  */
 void EngineOverrideManager::ResetToDefaultMapping()

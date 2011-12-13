@@ -739,6 +739,13 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	DrawString(left, right, y, STR_PURCHASE_INFO_RUNNINGCOST);
 	y += FONT_HEIGHT_NORMAL;
 
+	uint16 range = e->GetRange();
+	if (range != 0) {
+		SetDParam(0, range);
+		DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_RANGE);
+		y += FONT_HEIGHT_NORMAL;
+	}
+
 	return y;
 }
 

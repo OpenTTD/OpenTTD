@@ -311,7 +311,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 
 		v->InvalidateNewGRFCacheOfChain();
 
-		UpdateAircraftCache(v);
+		UpdateAircraftCache(v, true);
 
 		VehicleMove(v, false);
 		VehicleMove(u, false);
@@ -537,8 +537,9 @@ static void PlayAircraftSound(const Vehicle *v)
  * Update cached values of an aircraft.
  * Currently caches callback 36 max speed.
  * @param v Vehicle
+ * @param update_range Update the aircraft range.
  */
-void UpdateAircraftCache(Aircraft *v)
+void UpdateAircraftCache(Aircraft *v, bool update_range)
 {
 	uint max_speed = GetVehicleProperty(v, PROP_AIRCRAFT_SPEED, 0);
 	if (max_speed != 0) {
@@ -555,6 +556,13 @@ void UpdateAircraftCache(Aircraft *v)
 	v->vcache.cached_cargo_age_period = GetVehicleProperty(v, PROP_AIRCRAFT_CARGO_AGE_PERIOD, EngInfo(v->engine_type)->cargo_age_period);
 	Aircraft *u = v->Next(); // Shadow for mail
 	u->vcache.cached_cargo_age_period = GetVehicleProperty(u, PROP_AIRCRAFT_CARGO_AGE_PERIOD, EngInfo(u->engine_type)->cargo_age_period);
+
+	/* Update aircraft range. */
+	if (update_range) {
+		v->acache.cached_max_range = GetVehicleProperty(v, PROP_AIRCRAFT_RANGE, AircraftVehInfo(v->engine_type)->max_range);
+		/* Squared it now so we don't have to do it later all the time. */
+		v->acache.cached_max_range_sqr = v->acache.cached_max_range * v->acache.cached_max_range;
+	}
 }
 
 
@@ -1836,6 +1844,34 @@ static bool AirportFindFreeHelipad(Aircraft *v, const AirportFTAClass *apc)
 	return FreeTerminal(v, MAX_TERMINALS, apc->num_helipads + MAX_TERMINALS);
 }
 
+/**
+ * Handle the 'dest too far' flag and the corresponding news message for aircraft.
+ * @param v The aircraft.
+ * @param too_far True if the current destination is too far away.
+ */
+static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
+{
+	if (too_far) {
+		if (!HasBit(v->flags, VAF_DEST_TOO_FAR)) {
+			SetBit(v->flags, VAF_DEST_TOO_FAR);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			if (v->owner == _local_company) {
+				/* Post a news message. */
+				SetDParam(0, v->index);
+				AddVehicleNewsItem(STR_NEWS_AIRCRAFT_DEST_TOO_FAR, NS_ADVICE, v->index);
+			}
+		}
+		return;
+	}
+
+	if (HasBit(v->flags, VAF_DEST_TOO_FAR)) {
+		/* Not too far anymore, clear flag and message. */
+		ClrBit(v->flags, VAF_DEST_TOO_FAR);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		DeleteVehicleNews(v->index, STR_NEWS_AIRCRAFT_DEST_TOO_FAR);
+	}
+}
+
 static bool AircraftEventHandler(Aircraft *v, int loop)
 {
 	v->tick_counter++;
@@ -1854,7 +1890,22 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 
 	if (v->current_order.IsType(OT_LOADING) || v->current_order.IsType(OT_LEAVESTATION)) return true;
 
-	AirportGoToNextPosition(v);
+	if (v->state == FLYING) {
+		/* If we are flying, unconditionally clear the 'dest too far' state. */
+		AircraftHandleDestTooFar(v, false);
+	} else if (v->acache.cached_max_range_sqr != 0) {
+		/* Check the distance to the next destination. This code works because the target
+		 * airport is only updated after take off and not on the ground. */
+		Station *cur_st = Station::GetIfValid(v->targetairport);
+		Station *next_st = v->current_order.IsType(OT_GOTO_STATION) || v->current_order.IsType(OT_GOTO_DEPOT) ? Station::GetIfValid(v->current_order.GetDestination()) : NULL;
+
+		if (cur_st != NULL && cur_st->airport.tile != INVALID_TILE && next_st != NULL && next_st->airport.tile != INVALID_TILE) {
+			uint dist = DistanceSquare(cur_st->airport.tile, next_st->airport.tile);
+			AircraftHandleDestTooFar(v, dist > v->acache.cached_max_range_sqr);
+		}
+	}
+
+	if (!HasBit(v->flags, VAF_DEST_TOO_FAR)) AirportGoToNextPosition(v);
 
 	return true;
 }

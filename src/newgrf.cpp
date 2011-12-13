@@ -1646,6 +1646,10 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				break;
 			}
 
+			case PROP_AIRCRAFT_RANGE: // 0x1F Max aircraft range
+				avi->max_range = buf->ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;

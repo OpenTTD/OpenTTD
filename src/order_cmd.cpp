@@ -559,14 +559,16 @@ static void DeleteOrderWarnings(const Vehicle *v)
 /**
  * Returns a tile somewhat representing the order destination (not suitable for pathfinding).
  * @param v The vehicle to get the location for.
+ * @param airport Get the airport tile and not the station location for aircraft.
  * @return destination of order, or INVALID_TILE if none.
  */
-TileIndex Order::GetLocation(const Vehicle *v) const
+TileIndex Order::GetLocation(const Vehicle *v, bool airport) const
 {
 	switch (this->GetType()) {
 		case OT_GOTO_WAYPOINT:
 		case OT_GOTO_STATION:
 		case OT_IMPLICIT:
+			if (airport && v->type == VEH_AIRCRAFT) return Station::Get(this->GetDestination())->airport.tile;
 			return BaseStation::Get(this->GetDestination())->xy;
 
 		case OT_GOTO_DEPOT:
@@ -580,8 +582,6 @@ TileIndex Order::GetLocation(const Vehicle *v) const
 
 static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int conditional_depth = 0)
 {
-	assert(v->type == VEH_SHIP);
-
 	if (cur->IsType(OT_CONDITIONAL)) {
 		if (conditional_depth > v->GetNumOrders()) return 0;
 
@@ -592,10 +592,10 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
 		return max(dist1, dist2);
 	}
 
-	TileIndex prev_tile = prev->GetLocation(v);
-	TileIndex cur_tile = cur->GetLocation(v);
+	TileIndex prev_tile = prev->GetLocation(v, true);
+	TileIndex cur_tile = cur->GetLocation(v, true);
 	if (prev_tile == INVALID_TILE || cur_tile == INVALID_TILE) return 0;
-	return DistanceManhattan(prev_tile, cur_tile);
+	return v->type == VEH_AIRCRAFT ? DistanceSquare(prev_tile, cur_tile) : DistanceManhattan(prev_tile, cur_tile);
 }
 
 /**
@@ -1385,6 +1385,34 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 }
 
 /**
+ * Check if an aircraft has enough range for an order list.
+ * @param v Aircraft to check.
+ * @param first First order in the source order list.
+ * @return True if the aircraft has enough range for the orders, false otherwise.
+ */
+bool CheckAircraftOrderDistance(const Aircraft *v, const Order *first)
+{
+	if (first == NULL) return true;
+
+	/* Iterate over all orders to check the distance between all
+	 * 'goto' orders and their respective next order (of any type). */
+	for (const Order *o = first; o != NULL; o = o->next) {
+		switch (o->GetType()) {
+			case OT_GOTO_STATION:
+			case OT_GOTO_DEPOT:
+			case OT_GOTO_WAYPOINT:
+				/* If we don't have a next order, we've reached the end and must check the first order instead. */
+				if (GetOrderDistance(o, o->next != NULL ? o->next : first, v) > v->acache.cached_max_range_sqr) return false;
+				break;
+
+			default: break;
+		}
+	}
+
+	return true;
+}
+
+/**
  * Clone/share/copy an order-list of another vehicle.
  * @param tile unused
  * @param flags operation to perform
@@ -1433,6 +1461,11 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				}
 			}
 
+			/* Check for aircraft range limits. */
+			if (dst->type == VEH_AIRCRAFT && !CheckAircraftOrderDistance(Aircraft::From(dst), src->GetFirstOrder())) {
+				return_cmd_error(STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE);
+			}
+
 			if (src->orders.list == NULL && !OrderList::CanAllocateItem()) {
 				return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 			}
@@ -1473,6 +1506,11 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 						!CanVehicleUseStation(dst, Station::Get(order->GetDestination()))) {
 					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
 				}
+			}
+
+			/* Check for aircraft range limits. */
+			if (dst->type == VEH_AIRCRAFT && !CheckAircraftOrderDistance(Aircraft::From(dst), src->GetFirstOrder())) {
+				return_cmd_error(STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE);
 			}
 
 			/* make sure there are orders available */

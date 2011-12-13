@@ -1996,7 +1996,12 @@ struct VehicleDetailsWindow : Window {
 					}
 				} else {
 					SetDParam(0, v->GetDisplayMaxSpeed());
-					string = STR_VEHICLE_INFO_MAX_SPEED;
+					if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->GetRange() > 0) {
+						SetDParam(1, Aircraft::From(v)->GetRange());
+						string = STR_VEHICLE_INFO_MAX_SPEED_RANGE;
+					} else {
+						string = STR_VEHICLE_INFO_MAX_SPEED;
+					}
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, string);
 				y += FONT_HEIGHT_NORMAL;
@@ -2477,6 +2482,8 @@ public:
 			}
 		} else if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_TRAIN_STUCK) && !v->current_order.IsType(OT_LOADING)) {
 			str = STR_VEHICLE_STATUS_TRAIN_STUCK;
+		} else if (v->type == VEH_AIRCRAFT && HasBit(Aircraft::From(v)->flags, VAF_DEST_TOO_FAR) && !v->current_order.IsType(OT_LOADING)) {
+			str = STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR;
 		} else { // vehicle is in a "normal" state, show current order
 			switch (v->current_order.GetType()) {
 				case OT_GOTO_STATION: {
