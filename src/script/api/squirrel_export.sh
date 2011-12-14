@@ -26,7 +26,7 @@ apilc=`pwd | sed "s@/api@@;s@.*/@@"`
 
 # Check if we are in the root directory of the API, as then we generate all APIs
 if [ "$apilc" = "script" ]; then
-	for api in `find -type d | cut -b3-`; do
+	for api in `find -type d | cut -b3- | grep -v '\.svn\|/'`; do
 		if [ -z "$api" ]; then continue; fi
 		echo "Generating for API '$api' ..."
 		cd $api
