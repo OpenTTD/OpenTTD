@@ -228,7 +228,7 @@ static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID ne
 	}
 
 	*auto_refit_allowed = e->info.refit_cost == 0;
-	return e->info.refit_cost;
+	return (v->cargo_type != new_cid) ? e->info.refit_cost : 0;
 }
 
 /**
@@ -335,17 +335,15 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		v->cargo_type = temp_cid;
 		v->cargo_subtype = temp_subtype;
 
-		if (new_cid != v->cargo_type) {
-			bool auto_refit_allowed;
-			CommandCost refit_cost = GetRefitCost(v, v->engine_type, new_cid, new_subtype, &auto_refit_allowed);
-			if (auto_refit && !auto_refit_allowed) {
-				/* Sorry, auto-refitting not allowed, subtract the cargo amount again from the total. */
-				total_capacity -= amount;
-				total_mail_capacity -= mail_capacity;
-				continue;
-			}
-			cost.AddCost(refit_cost);
+		bool auto_refit_allowed;
+		CommandCost refit_cost = GetRefitCost(v, v->engine_type, new_cid, new_subtype, &auto_refit_allowed);
+		if (auto_refit && !auto_refit_allowed) {
+			/* Sorry, auto-refitting not allowed, subtract the cargo amount again from the total. */
+			total_capacity -= amount;
+			total_mail_capacity -= mail_capacity;
+			continue;
 		}
+		cost.AddCost(refit_cost);
 
 		if (flags & DC_EXEC) {
 			v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
