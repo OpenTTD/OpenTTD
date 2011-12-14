@@ -2422,7 +2422,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} пут
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} путь с выходными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} путь с комбинированными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} путь с маршрутными сигналами
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} путь с односторонним маршрутным сигналом
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} путь с односторонними маршрутными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} путь с обычными и входными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} путь с обычными и выходными сигналами
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} путь с обычными и комбиниров. сигналами

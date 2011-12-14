@@ -383,6 +383,7 @@ STR_SORT_BY_INTRO_DATE                                          :Datum početka
 STR_SORT_BY_RUNNING_COST                                        :Trošak uporabe
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snaga/trošak uporabe
 STR_SORT_BY_CARGO_CAPACITY                                      :Nosivost tereta
+STR_SORT_BY_RANGE                                               :Domet
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Zaustavi igru
@@ -918,6 +919,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne može naći put za nastavak.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} je izgubljeno.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} je prošle godine zaradio {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne može doći do sljedećeg odredišta jer je izvan dometa
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} je zaustavljen zbog neuspjele naredbe za prenamjenu
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Neuspješno automatsko obnavljanje za {VEHICLE}{}{STRING}
@@ -1270,6 +1272,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanj
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Prikaz savjeta za alate: {ORANGE}Prikaži na {STRING} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Prikaži savjete za alate: {ORANGE}Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaži broj stanovnika u oznaci imena grada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Debljina linija u grafikonima: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator zemlje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Izvorni
@@ -1466,6 +1469,21 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pronala
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatsko okretanje na signalima: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promijeni vrijednost postavke
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Greška u konfiguraciji datoteke...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... greška u nizu '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... pogrešna vrijednost '{STRING}' za '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... prateći znakovi na kraju postavki '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoriram NewGRF '{STRING}': duplikat od GRF ID sa '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoriram pogrešni NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nije pronađeno
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nesigurno za statičku uporabu
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistemski NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilno sa ovom verzijom OpenTTD-a
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nepoznat
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivo sažimanja '{STRING}' nije važeći
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format snimljene igre '{STRING}' nije dostupan. Vraćam u '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1936,6 +1954,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označi 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi sav sadržaj koji se ne preuzima
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ime/Tag filter:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Posjetite web-stranicu
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Posjetite web-stranicu za ovaj sadržaj
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Počni preuzimanje označenog sadržaja
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Ukupna veličina preuzimanja: {WHITE}{BYTES}
@@ -3005,6 +3025,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prenamje
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tereta
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve osim {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK} Maks. vučni napor: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} pločica
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Popis izabranih vlakova - klikni na vlak za informacije
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Popis izabranih cestovnih vozila - klikni na vozilo za informacije
@@ -3125,6 +3146,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cijena: 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Trošak: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}  Maks. T.E.: {6:FORCE}{}Trošak uporabe: {4:CURRENCY_LONG}/god{}Nosivost: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Trošak: {CURRENCY_LONG} Maks. brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}, {CARGO_LONG}{}Trošak uporabe: {CURRENCY_LONG}/god
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Trošak: {CURRENCY_LONG} Maks. brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}{}Trošak uporabe: {CURRENCY_LONG}/god
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cijena: {CURRENCY_LONG} Maks. brzina: {VELOCITY} Domet: {7:COMMA} tiles{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Trošak vožnje: {CURRENCY_LONG}/god
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cijena: {CURRENCY_LONG} Maks. Brzina: {VELOCITY} Domet: {7:COMMA} tiles{}Kapacitet: {CARGO_LONG}{}Trošak vožnje: {CURRENCY_LONG}/god
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamijeni {STRING}
@@ -3210,6 +3233,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zaustavlje
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zaustavljam, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nema struje
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čekanje slobodne putanje
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Predaleko do sljedećeg odredišta
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Kreće se prema {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nema naredbi, {VELOCITY}
@@ -3238,6 +3262,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} godin{P
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} godin{P a e a} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. brzina: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maks. brzina: {LTBLUE}{VELOCITY} {BLACK}Domet: {LTBLUE}{COMMA} pločica
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Maks. brzina: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Maks. brzina: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
@@ -3453,6 +3478,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :dostupan teret
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[početak]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[kraj]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Sljedeća destinacija je izvan dometa)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skočin na naredbu {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skoči na naredbu {COMMA} kada {STRING} {STRING} {COMMA}
@@ -3961,6 +3988,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nije mog
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nemoguće prekinuti dijeljenje liste naredbi...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nije moguće kopirati popis naredbi...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... predaleko od prethodnog odredišta
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... avion nema dovoljni domet
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nije moguće zadati vozni red za vozilo...

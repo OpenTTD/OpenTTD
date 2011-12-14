@@ -288,6 +288,7 @@ STR_SORT_BY_INTRO_DATE                                          :도입 날짜
 STR_SORT_BY_RUNNING_COST                                        :운행비용
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :힘/운행비용
 STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송량
+STR_SORT_BY_RANGE                                               :항속거리
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임 일시정지
@@ -3120,6 +3121,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY}의 속도로 정지중
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}기관차 없음
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}빈 경로 탐색중
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}다음 목적지가 너무 멀리 있습니다.
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 없음 ({VELOCITY})
@@ -3363,6 +3365,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :{G=m}이용가�
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[가까운쪽]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[중간]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[먼쪽]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (다음 목적지가 항속거리제한을 벗어납니다.)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :{COMMA}(으)로 건너뛰기
 STR_ORDER_CONDITIONAL_NUM                                       :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
@@ -3871,6 +3875,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}경로�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}경로 공유를 중단할 수 없습니다...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}경로를 복사할 수 없습니다...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 이전의 목적지로부터 너무 멉니다
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 항공기의 항속거리가 충분하지 않습니다.
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}차량의 시간표를 정할 수 없습니다...

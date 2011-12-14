@@ -289,6 +289,7 @@ STR_SORT_BY_INTRO_DATE                                          :Data introduzio
 STR_SORT_BY_RUNNING_COST                                        :Costo d'esercizio
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza / Costo d'esercizio
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacità di carico
+STR_SORT_BY_RANGE                                               :{G=f}Autonomia
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa
@@ -824,6 +825,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} non trova un percorso per proseguire
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} si è perso
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profitto di {VEHICLE} per l'anno scorso è stato {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} non può raggiungere la destinazione successiva perché è fuori portata
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato perché un ordine di riadattamento non è riuscito
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} non riuscito
@@ -2955,6 +2957,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadatta
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomia: {GOLD}{COMMA} riquadr{P o i}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Elenco di selezione dei veicoli ferroviari - fare clic su un veicolo per informazioni
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Elenco selezione automezzi - fare clic su un veicolo per informazioni
@@ -3075,6 +3078,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Costo: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocità: {VELOCITY}  Potenza: {POWER}{}  S.T. max.: {6:FORCE}{}Costo d'esercizio: {4:CURRENCY_LONG}/anno{}Capacità: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY} Autonomia: {7:COMMA} riquadr{P o i}{}Capacità: {CARGO_LONG}, {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Costo: {CURRENCY_LONG} Velocità max.: {VELOCITY} Autonomia: {7:COMMA} {P o i}{}Capacità: {CARGO_LONG}{}Costo d'esercizio: {CURRENCY_LONG}/anno
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
@@ -3160,6 +3165,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Fermo
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}In frenata, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Alimentazione mancante
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}In attesa di un percorso libero
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Destinazione successiva troppo lontana
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Diretto {G "a " all' "alla "}{STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nessun ordine, {VELOCITY}
@@ -3188,6 +3194,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ann{P o
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ann{P o i} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocità max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Velocità max.: {LTBLUE}{VELOCITY} {BLACK}Autonomia: {LTBLUE}{COMMA} riquadr{P o i}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY} {BLACK}S.T. max.: {LTBLUE}{FORCE}
 
@@ -3403,6 +3410,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :il carico in at
 STR_ORDER_STOP_LOCATION_NEAR_END                                :(inizio)
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :(centro)
 STR_ORDER_STOP_LOCATION_FAR_END                                 :(fine)
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Destinazione successiva fuori portata)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Salta all'ordine {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Salta all'ordine {COMMA} se {STRING} {STRING} {COMMA}
@@ -3911,6 +3920,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Impossib
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Impossibile terminare la condivisione degli ordini...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Impossibile copiare la lista degli ordini...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... troppo lontano dalla destinazione precedente
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... l'aeromobile non ha sufficiente autonomia
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossibile dare un orario al veicolo...

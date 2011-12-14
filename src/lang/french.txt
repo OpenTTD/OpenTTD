@@ -824,6 +824,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne trouve pas de chemin pour continuer
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} est perdu
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Le profit de {VEHICLE} l'an dernier était de {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne peut rejoindre la prochaine destination parce qu'elle est hors de portée
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}L'échec du réaménagement a stoppé {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Le renouvellement automatique de {VEHICLE} a échoué {}{STRING}
@@ -2929,6 +2930,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réamén
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
 STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.{NBSP}: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'action{NBSP}: {GOLD}{COMMA} cases
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Sélection du véhicule - Cliquer pour obtenir des informations
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule - cliquer sur un véhicule pour obtenir des informations
@@ -3049,6 +3051,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBS
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}  E.T. max.{NBSP}: {6:FORCE}{}Coût d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coût{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY} Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Coût{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY} Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
