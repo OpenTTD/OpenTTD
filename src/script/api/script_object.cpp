@@ -140,7 +140,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	/* Also store the results of various global variables */
 	SetNewVehicleID(_new_vehicle_id);
 	SetNewSignID(_new_sign_id);
-	SetNewTunnelEndtile(_build_tunnel_endtile);
 	SetNewGroupID(_new_group_id);
 }
 
@@ -167,16 +166,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ SignID ScriptObject::GetNewSignID()
 {
 	return GetStorage()->new_sign_id;
-}
-
-/* static */ void ScriptObject::SetNewTunnelEndtile(TileIndex tile)
-{
-	GetStorage()->new_tunnel_endtile = tile;
-}
-
-/* static */ TileIndex ScriptObject::GetNewTunnelEndtile()
-{
-	return GetStorage()->new_tunnel_endtile;
 }
 
 /* static */ void ScriptObject::SetNewGroupID(GroupID group_id)

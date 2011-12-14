@@ -156,11 +156,6 @@ protected:
 	static SignID GetNewSignID();
 
 	/**
-	 * Get the latest stored new_tunnel_endtile.
-	 */
-	static TileIndex GetNewTunnelEndtile();
-
-	/**
 	 * Get the latest stored new_group_id.
 	 */
 	static GroupID GetNewGroupID();
@@ -227,12 +222,6 @@ private:
 	 * @param sign_id The new SignID.
 	 */
 	static void SetNewSignID(SignID sign_id);
-
-	/**
-	 * Store a new_tunnel_endtile per company.
-	 * @param tile The new TileIndex.
-	 */
-	static void SetNewTunnelEndtile(TileIndex tile);
 
 	/**
 	 * Store a new_group_id per company.

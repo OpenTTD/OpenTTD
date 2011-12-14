@@ -44,7 +44,6 @@ private:
 
 	VehicleID new_vehicle_id;        ///< The ID of the new Vehicle.
 	SignID new_sign_id;              ///< The ID of the new Sign.
-	TileIndex new_tunnel_endtile;    ///< The TileIndex of the new Tunnel.
 	GroupID new_group_id;            ///< The ID of the new Group.
 
 	std::vector<int> callback_value; ///< The values which need to survive a callback.
@@ -67,7 +66,6 @@ public:
 		last_command_res  (true),
 		new_vehicle_id    (0),
 		new_sign_id       (0),
-		new_tunnel_endtile(INVALID_TILE),
 		new_group_id      (0),
 		/* calback_value (can't be set) */
 		road_type         (INVALID_ROADTYPE),
