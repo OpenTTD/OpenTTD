@@ -914,6 +914,7 @@ static uint GetWindowZPriority(const Window *w)
 		case WC_NETWORK_STATUS_WINDOW:
 			++z_priority;
 
+		case WC_GENERATE_LANDSCAPE:
 		case WC_SAVELOAD:
 		case WC_GAME_OPTIONS:
 		case WC_CUSTOM_CURRENCY:
