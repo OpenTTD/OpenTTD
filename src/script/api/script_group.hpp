@@ -13,6 +13,7 @@
 #define SCRIPT_GROUP_HPP
 
 #include "script_vehicle.hpp"
+#include "../../group_type.h"
 
 /**
  * Class that handles all group related functions.
@@ -24,10 +25,10 @@ public:
 	 * The group IDs of some special groups.
 	 */
 	enum GroupID {
-		/* Values are important, as they represent the internal state of the game (see group_type.h). */
-		GROUP_ALL = 0xFFFD,     ///< All vehicles are in this group.
-		GROUP_DEFAULT = 0xFFFE, ///< Vehicles not put in any other group are in this one.
-		GROUP_INVALID = 0xFFFF, ///< An invalid group id.
+		/* Note: these values represent part of the in-game static values */
+		GROUP_ALL     = ::ALL_GROUP,     ///< All vehicles are in this group.
+		GROUP_DEFAULT = ::DEFAULT_GROUP, ///< Vehicles not put in any other group are in this one.
+		GROUP_INVALID = ::INVALID_GROUP, ///< An invalid group id.
 	};
 
 	/**

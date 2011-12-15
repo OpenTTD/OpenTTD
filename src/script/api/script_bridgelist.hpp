@@ -15,7 +15,7 @@
 #include "script_list.hpp"
 
 /**
- * Create a list of bridges.
+ * Create a list of bridges types.
  * @api ai
  * @ingroup ScriptList
  */
@@ -25,7 +25,7 @@ public:
 };
 
 /**
- * Create a list of bridges that can be built on a specific length.
+ * Create a list of bridges types that can be built on a specific length.
  * @api ai
  * @ingroup ScriptList
  */

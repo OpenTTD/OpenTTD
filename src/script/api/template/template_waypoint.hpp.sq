@@ -13,10 +13,10 @@
 
 namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
-	template <> inline ScriptWaypoint::WaypointType GetParam(ForceType<ScriptWaypoint::WaypointType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWaypoint::WaypointType)tmp; }
-	template <> inline int Return<ScriptWaypoint::WaypointType>(HSQUIRRELVM vm, ScriptWaypoint::WaypointType res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWaypoint::ErrorMessages GetParam(ForceType<ScriptWaypoint::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWaypoint::ErrorMessages)tmp; }
 	template <> inline int Return<ScriptWaypoint::ErrorMessages>(HSQUIRRELVM vm, ScriptWaypoint::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWaypoint::WaypointType GetParam(ForceType<ScriptWaypoint::WaypointType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWaypoint::WaypointType)tmp; }
+	template <> inline int Return<ScriptWaypoint::WaypointType>(HSQUIRRELVM vm, ScriptWaypoint::WaypointType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow ScriptWaypoint to be used as Squirrel parameter */
 	template <> inline ScriptWaypoint *GetParam(ForceType<ScriptWaypoint *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptWaypoint *)instance; }

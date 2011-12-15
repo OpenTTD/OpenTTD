@@ -14,6 +14,8 @@
 
 #include "script_error.hpp"
 #include "script_company.hpp"
+#include "../../slope_type.h"
+#include "../../transport_type.h"
 
 /**
  * Class that handles all tile related functions.
@@ -46,12 +48,13 @@ public:
 	 * Enumeration for corners of tiles.
 	 */
 	enum Corner {
-		CORNER_W       = 0,      ///< West corner
-		CORNER_S       = 1,      ///< South corner
-		CORNER_E       = 2,      ///< East corner
-		CORNER_N       = 3,      ///< North corner
+		/* Note: these values represent part of the in-game Corner enum */
+		CORNER_W       = ::CORNER_W,       ///< West corner
+		CORNER_S       = ::CORNER_S,       ///< South corner
+		CORNER_E       = ::CORNER_E,       ///< East corner
+		CORNER_N       = ::CORNER_N,       ///< North corner
 
-		CORNER_INVALID = 0xFF,
+		CORNER_INVALID = ::CORNER_INVALID, ///< An invalid corner
 	};
 
 	/**
@@ -62,42 +65,44 @@ public:
 	 *  is the north-part of the tile.
 	 */
 	enum Slope {
-		/* Values are important, as they represent the internal state of the game. */
-		SLOPE_FLAT     = 0x00,                                  ///< A flat tile
-		SLOPE_W        = 1 << CORNER_W,                         ///< The west corner of the tile is raised
-		SLOPE_S        = 1 << CORNER_S,                         ///< The south corner of the tile is raised
-		SLOPE_E        = 1 << CORNER_E,                         ///< The east corner of the tile is raised
-		SLOPE_N        = 1 << CORNER_N,                         ///< The north corner of the tile is raised
-		SLOPE_STEEP    = 0x10,                                  ///< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
-		SLOPE_NW       = SLOPE_N | SLOPE_W,                     ///< North and west corner are raised
-		SLOPE_SW       = SLOPE_S | SLOPE_W,                     ///< South and west corner are raised
-		SLOPE_SE       = SLOPE_S | SLOPE_E,                     ///< South and east corner are raised
-		SLOPE_NE       = SLOPE_N | SLOPE_E,                     ///< North and east corner are raised
-		SLOPE_EW       = SLOPE_E | SLOPE_W,                     ///< East and west corner are raised
-		SLOPE_NS       = SLOPE_N | SLOPE_S,                     ///< North and south corner are raised
-		SLOPE_ELEVATED = SLOPE_N | SLOPE_E | SLOPE_S | SLOPE_W, ///< Bit mask containing all 'simple' slopes. Does not appear as a slope.
-		SLOPE_NWS      = SLOPE_N | SLOPE_W | SLOPE_S,           ///< North, west and south corner are raised
-		SLOPE_WSE      = SLOPE_W | SLOPE_S | SLOPE_E,           ///< West, south and east corner are raised
-		SLOPE_SEN      = SLOPE_S | SLOPE_E | SLOPE_N,           ///< South, east and north corner are raised
-		SLOPE_ENW      = SLOPE_E | SLOPE_N | SLOPE_W,           ///< East, north and west corner are raised
-		SLOPE_STEEP_W  = SLOPE_STEEP | SLOPE_NWS,               ///< A steep slope falling to east (from west)
-		SLOPE_STEEP_S  = SLOPE_STEEP | SLOPE_WSE,               ///< A steep slope falling to north (from south)
-		SLOPE_STEEP_E  = SLOPE_STEEP | SLOPE_SEN,               ///< A steep slope falling to west (from east)
-		SLOPE_STEEP_N  = SLOPE_STEEP | SLOPE_ENW,               ///< A steep slope falling to south (from north)
+		/* Note: these values represent part of the in-game Slope enum */
+		SLOPE_FLAT     = ::SLOPE_FLAT,     ///< A flat tile
+		SLOPE_W        = ::SLOPE_W,        ///< The west corner of the tile is raised
+		SLOPE_S        = ::SLOPE_S,        ///< The south corner of the tile is raised
+		SLOPE_E        = ::SLOPE_E,        ///< The east corner of the tile is raised
+		SLOPE_N        = ::SLOPE_N,        ///< The north corner of the tile is raised
+		SLOPE_STEEP    = ::SLOPE_STEEP,    ///< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
+		SLOPE_NW       = ::SLOPE_NW,       ///< North and west corner are raised
+		SLOPE_SW       = ::SLOPE_SW,       ///< South and west corner are raised
+		SLOPE_SE       = ::SLOPE_SE,       ///< South and east corner are raised
+		SLOPE_NE       = ::SLOPE_NE,       ///< North and east corner are raised
+		SLOPE_EW       = ::SLOPE_EW,       ///< East and west corner are raised
+		SLOPE_NS       = ::SLOPE_NS,       ///< North and south corner are raised
+		SLOPE_ELEVATED = ::SLOPE_ELEVATED, ///< Bit mask containing all 'simple' slopes. Does not appear as a slope.
+		SLOPE_NWS      = ::SLOPE_NWS,      ///< North, west and south corner are raised
+		SLOPE_WSE      = ::SLOPE_WSE,      ///< West, south and east corner are raised
+		SLOPE_SEN      = ::SLOPE_SEN,      ///< South, east and north corner are raised
+		SLOPE_ENW      = ::SLOPE_ENW,      ///< East, north and west corner are raised
+		SLOPE_STEEP_W  = ::SLOPE_STEEP_W,  ///< A steep slope falling to east (from west)
+		SLOPE_STEEP_S  = ::SLOPE_STEEP_S,  ///< A steep slope falling to north (from south)
+		SLOPE_STEEP_E  = ::SLOPE_STEEP_E,  ///< A steep slope falling to west (from east)
+		SLOPE_STEEP_N  = ::SLOPE_STEEP_N,  ///< A steep slope falling to south (from north)
 
-		SLOPE_INVALID  = 0xFFFF,                                ///< An invalid slope
+		/* Custom added value, only valid for this API */
+		SLOPE_INVALID  = 0xFFFF,           ///< An invalid slope
 	};
 
 	/**
 	 * The different transport types a tile can have.
 	 */
 	enum TransportType {
-		/* Values are important, as they represent the internal state of the game. */
-		TRANSPORT_RAIL    =  0, ///< Tile with rail.
-		TRANSPORT_ROAD    =  1, ///< Tile with road.
-		TRANSPORT_WATER   =  2, ///< Tile with navigable waterways.
-		TRANSPORT_AIR     =  3, ///< Tile with airport.
+		/* Note: these values represent part of the in-game TransportType enum */
+		TRANSPORT_RAIL    =  ::TRANSPORT_RAIL,  ///< Tile with rail.
+		TRANSPORT_ROAD    =  ::TRANSPORT_ROAD,  ///< Tile with road.
+		TRANSPORT_WATER   =  ::TRANSPORT_WATER, ///< Tile with navigable waterways.
+		TRANSPORT_AIR     =  ::TRANSPORT_AIR,   ///< Tile with airport.
 
+		/* Custom added value, only valid for this API */
 		TRANSPORT_INVALID = -1, ///< Tile without any transport type.
 	};
 

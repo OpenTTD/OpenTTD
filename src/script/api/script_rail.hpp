@@ -13,6 +13,8 @@
 #define SCRIPT_RAIL_HPP
 
 #include "script_tile.hpp"
+#include "../../signal_type.h"
+#include "../../track_type.h"
 
 /**
  * Class that handles all rail related functions.
@@ -41,40 +43,42 @@ public:
 	 * Types of rail known to the game.
 	 */
 	enum RailType {
-		/* Note: the values _are_ important as they represent an in-game value */
-		RAILTYPE_INVALID  = 0xFF, ///< Invalid RailType.
+		/* Note: these values represent part of the in-game static values */
+		RAILTYPE_INVALID  = ::INVALID_RAILTYPE, ///< Invalid RailType.
 	};
 
 	/**
 	 * A bitmap with all possible rail tracks on a tile.
 	 */
 	enum RailTrack {
-		/* Note: the values _are_ important as they represent an in-game value */
-		RAILTRACK_NE_SW   = 1 << 0, ///< Track along the x-axis (north-east to south-west).
-		RAILTRACK_NW_SE   = 1 << 1, ///< Track along the y-axis (north-west to south-east).
-		RAILTRACK_NW_NE   = 1 << 2, ///< Track in the upper corner of the tile (north).
-		RAILTRACK_SW_SE   = 1 << 3, ///< Track in the lower corner of the tile (south).
-		RAILTRACK_NW_SW   = 1 << 4, ///< Track in the left corner of the tile (west).
-		RAILTRACK_NE_SE   = 1 << 5, ///< Track in the right corner of the tile (east).
-		RAILTRACK_INVALID = 0xFF,   ///< Flag for an invalid track.
+		/* Note: these values represent part of the in-game TrackBits enum */
+		RAILTRACK_NE_SW   = ::TRACK_BIT_X,       ///< Track along the x-axis (north-east to south-west).
+		RAILTRACK_NW_SE   = ::TRACK_BIT_Y,       ///< Track along the y-axis (north-west to south-east).
+		RAILTRACK_NW_NE   = ::TRACK_BIT_UPPER,   ///< Track in the upper corner of the tile (north).
+		RAILTRACK_SW_SE   = ::TRACK_BIT_LOWER,   ///< Track in the lower corner of the tile (south).
+		RAILTRACK_NW_SW   = ::TRACK_BIT_LEFT,    ///< Track in the left corner of the tile (west).
+		RAILTRACK_NE_SE   = ::TRACK_BIT_RIGHT,   ///< Track in the right corner of the tile (east).
+		RAILTRACK_INVALID = ::INVALID_TRACK_BIT, ///< Flag for an invalid track.
 	};
 
 	/**
 	 * Types of signal known to the game.
 	 */
 	enum SignalType {
-		/* Note: the values _are_ important as they represent an in-game value */
-		SIGNALTYPE_NORMAL        = 0, ///< Normal signal.
-		SIGNALTYPE_ENTRY         = 1, ///< Entry presignal.
-		SIGNALTYPE_EXIT          = 2, ///< Exit signal.
-		SIGNALTYPE_COMBO         = 3, ///< Combo signal.
-		SIGNALTYPE_PBS           = 4, ///< Normal PBS signal.
-		SIGNALTYPE_PBS_ONEWAY    = 5, ///< No-entry PBS signal.
+		/* Note: these values represent part of the in-game SignalType enum */
+		SIGNALTYPE_NORMAL        = ::SIGTYPE_NORMAL,     ///< Normal signal.
+		SIGNALTYPE_ENTRY         = ::SIGTYPE_ENTRY,      ///< Entry presignal.
+		SIGNALTYPE_EXIT          = ::SIGTYPE_EXIT,       ///< Exit signal.
+		SIGNALTYPE_COMBO         = ::SIGTYPE_COMBO,      ///< Combo signal.
+		SIGNALTYPE_PBS           = ::SIGTYPE_PBS,        ///< Normal PBS signal.
+		SIGNALTYPE_PBS_ONEWAY    = ::SIGTYPE_PBS_ONEWAY, ///< No-entry PBS signal.
+
 		SIGNALTYPE_TWOWAY        = 8, ///< Bit mask for twoway signal.
 		SIGNALTYPE_NORMAL_TWOWAY = SIGNALTYPE_NORMAL | SIGNALTYPE_TWOWAY, ///< Normal twoway signal.
-		SIGNALTYPE_ENTRY_TWOWAY  = SIGNALTYPE_ENTRY | SIGNALTYPE_TWOWAY,  ///< Entry twoway signal.
-		SIGNALTYPE_EXIT_TWOWAY   = SIGNALTYPE_EXIT | SIGNALTYPE_TWOWAY,   ///< Exit twoway signal.
-		SIGNALTYPE_COMBO_TWOWAY  = SIGNALTYPE_COMBO | SIGNALTYPE_TWOWAY,  ///< Combo twoway signal.
+		SIGNALTYPE_ENTRY_TWOWAY  = SIGNALTYPE_ENTRY  | SIGNALTYPE_TWOWAY, ///< Entry twoway signal.
+		SIGNALTYPE_EXIT_TWOWAY   = SIGNALTYPE_EXIT   | SIGNALTYPE_TWOWAY, ///< Exit twoway signal.
+		SIGNALTYPE_COMBO_TWOWAY  = SIGNALTYPE_COMBO  | SIGNALTYPE_TWOWAY, ///< Combo twoway signal.
+
 		SIGNALTYPE_NONE          = 0xFF, ///< No signal.
 	};
 

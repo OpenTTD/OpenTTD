@@ -13,6 +13,7 @@
 #define SCRIPT_AIRPORT_HPP
 
 #include "script_object.hpp"
+#include "../../airport.h"
 
 /**
  * Class that handles all airport related functions.
@@ -24,27 +25,24 @@ public:
 	 * The types of airports available in the game.
 	 */
 	enum AirportType {
-		/* Note: the values _are_ important as they represent an in-game value */
-		AT_SMALL         =   0, ///< The small airport.
-		AT_LARGE         =   1, ///< The large airport.
-		AT_METROPOLITAN  =   3, ///< The metropolitan airport.
-		AT_INTERNATIONAL =   4, ///< The international airport.
-		AT_COMMUTER      =   5, ///< The commuter airport.
-		AT_INTERCON      =   7, ///< The intercontinental airport.
-
-		/* Next are the airports which only have helicopter platforms */
-		AT_HELIPORT      =   2, ///< The heliport.
-		AT_HELISTATION   =   8, ///< The helistation.
-		AT_HELIDEPOT     =   6, ///< The helidepot.
-
-		AT_INVALID       = 255, ///< Invalid airport.
+		/* Note: these values represent part of the in-game AirportTypes enum */
+		AT_SMALL         = ::AT_SMALL,         ///< The small airport.
+		AT_LARGE         = ::AT_LARGE,         ///< The large airport.
+		AT_METROPOLITAN  = ::AT_METROPOLITAN,  ///< The metropolitan airport.
+		AT_INTERNATIONAL = ::AT_INTERNATIONAL, ///< The international airport.
+		AT_COMMUTER      = ::AT_COMMUTER,      ///< The commuter airport.
+		AT_INTERCON      = ::AT_INTERCON,      ///< The intercontinental airport.
+		AT_HELIPORT      = ::AT_HELIPORT,      ///< The heliport.
+		AT_HELISTATION   = ::AT_HELISTATION,   ///< The helistation.
+		AT_HELIDEPOT     = ::AT_HELIDEPOT,     ///< The helidepot.
+		AT_INVALID       = ::AT_INVALID,       ///< Invalid airport.
 	};
 
 	/**
 	 * All plane types available.
 	 */
 	enum PlaneType {
-		/* Note: the values _are_ important as they represent an in-game value */
+		/* Note: these values represent part of the in-game values, which are not defined in an enum */
 		PT_HELICOPTER    =   0, ///< A helicopter.
 		PT_SMALL_PLANE   =   1, ///< A small plane.
 		PT_BIG_PLANE     =   3, ///< A big plane.

@@ -14,6 +14,7 @@
 
 #include "script_cargo.hpp"
 #include "script_company.hpp"
+#include "../../town_type.h"
 
 /**
  * Class that handles all town related functions.
@@ -25,7 +26,7 @@ public:
 	 * Actions that one can perform on a town.
 	 */
 	enum TownAction {
-		/* Values are important, as they represent the internal state of the game. */
+		/* Note: these values represent part of the in-game order of the _town_action_proc array */
 
 		/**
 		 * The cargo ratings temporary gains 25% of rating (in
@@ -94,12 +95,14 @@ public:
 	 * Possible layouts for the roads in a town.
 	 */
 	enum RoadLayout {
-		/* Order IS important, as it matches an in-game value */
-		ROAD_LAYOUT_ORIGINAL,     ///< Original algorithm (min. 1 distance between roads).
-		ROAD_LAYOUT_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
-		ROAD_LAYOUT_2x2,          ///< Geometric 2x2 grid algorithm
-		ROAD_LAYOUT_3x3,          ///< Geometric 3x3 grid algorithm
-		ROAD_LAYOUT_INVALID = -1, ///< The layout for invalid towns.
+		/* Note: these values represent part of the in-game TownLayout enum */
+		ROAD_LAYOUT_ORIGINAL      = ::TL_ORIGINAL,     ///< Original algorithm (min. 1 distance between roads).
+		ROAD_LAYOUT_BETTER_ROADS  = ::TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
+		ROAD_LAYOUT_2x2           = ::TL_2X2_GRID,     ///< Geometric 2x2 grid algorithm
+		ROAD_LAYOUT_3x3           = ::TL_3X3_GRID,     ///< Geometric 3x3 grid algorithm
+
+		/* Custom added value, only valid for this API */
+		ROAD_LAYOUT_INVALID       = -1,                ///< The layout for invalid towns.
 	};
 
 	/**

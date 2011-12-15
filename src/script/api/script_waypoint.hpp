@@ -13,6 +13,7 @@
 #define SCRIPT_WAYPOINT_HPP
 
 #include "script_basestation.hpp"
+#include "../../station_type.h"
 
 /**
  * Class that handles all waypoint related functions.
@@ -20,16 +21,6 @@
  */
 class ScriptWaypoint : public ScriptBaseStation {
 public:
-	/**
-	 * Type of waypoints known in the game.
-	 */
-	enum WaypointType {
-		/* Values are important, as they represent the internal state of the game. */
-		WAYPOINT_RAIL      = 0x01, ///< Rail waypoint
-		WAYPOINT_BUOY      = 0x10, ///< Buoy
-		WAYPOINT_ANY       = 0x11, ///< All waypoint types
-	};
-
 	/**
 	 * All waypoint related error messages.
 	 */
@@ -42,6 +33,16 @@ public:
 
 		/** The waypoint would join more than one existing waypoint together. */
 		ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS,    // [STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING]
+	};
+
+	/**
+	 * Type of waypoints known in the game.
+	 */
+	enum WaypointType {
+		/* Note: these values represent part of the in-game StationFacility enum */
+		WAYPOINT_RAIL      = ::FACIL_TRAIN, ///< Rail waypoint
+		WAYPOINT_BUOY      = ::FACIL_DOCK,  ///< Buoy
+		WAYPOINT_ANY       = WAYPOINT_RAIL | WAYPOINT_BUOY, ///< All waypoint types
 	};
 
 	/**

@@ -45,11 +45,12 @@ public:
 	 * Types of road known to the game.
 	 */
 	enum RoadType {
-		/* Values are important, as they represent the internal state of the game. */
-		ROADTYPE_ROAD = 0, ///< Build road objects.
-		ROADTYPE_TRAM = 1, ///< Build tram objects.
+		/* Note: these values represent part of the in-game RoadType enum */
+		ROADTYPE_ROAD    = ::ROADTYPE_ROAD,    ///< Build road objects.
+		ROADTYPE_TRAM    = ::ROADTYPE_TRAM,    ///< Build tram objects.
 
-		ROADTYPE_INVALID = -1, ///< Invalid RoadType.
+		/* Custom added value, only valid for this API */
+		ROADTYPE_INVALID = -1,                 ///< Invalid RoadType.
 	};
 
 	/**

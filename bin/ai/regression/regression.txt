@@ -791,7 +791,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsHangarTile():       false
   IsAirportTile():      false
   GetHangarOfAirport(): -1
-  GetAirportType():     255
+  GetAirportType():     254
   IsAirportInformationAvailable(-1): false
   IsValidAirportType(-1):            false
   GetAirportWidth(-1):               -1

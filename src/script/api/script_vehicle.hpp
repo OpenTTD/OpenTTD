@@ -72,7 +72,6 @@ public:
 	 *  road vehicles, as maglev is a rail vehicle.
 	 */
 	enum VehicleType {
-		/* Order IS important, as it now matches the internal state of the game for vehicle type */
 		VT_RAIL,           ///< Rail type vehicle.
 		VT_ROAD,           ///< Road type vehicle (bus / truck).
 		VT_WATER,          ///< Water type vehicle.

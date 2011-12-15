@@ -14,6 +14,7 @@
 
 #include "script_error.hpp"
 #include "script_vehicle.hpp"
+#include "../../order_type.h"
 
 /**
  * Class that handles all order related functions.
@@ -88,31 +89,35 @@ public:
 	 * All conditions a conditional order can depend on.
 	 */
 	enum OrderCondition {
-		/* Order _is_ important, as it's based on OrderConditionVariable in order_type.h. */
-		OC_LOAD_PERCENTAGE,    ///< Skip based on the amount of load, value is in tons.
-		OC_RELIABILITY,        ///< Skip based on the reliability, value is percent (0..100).
-		OC_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
-		OC_AGE,                ///< Skip based on the age, value is in years.
-		OC_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service, no value.
-		OC_UNCONDITIONALLY,    ///< Always skip, no compare function, no value.
-		OC_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime
-		OC_INVALID = -1,       ///< An invalid condition, do not use.
+		/* Note: these values represent part of the in-game OrderConditionVariable enum */
+		OC_LOAD_PERCENTAGE     = ::OCV_LOAD_PERCENTAGE,    ///< Skip based on the amount of load, value is in tons.
+		OC_RELIABILITY         = ::OCV_RELIABILITY,        ///< Skip based on the reliability, value is percent (0..100).
+		OC_MAX_SPEED           = ::OCV_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
+		OC_AGE                 = ::OCV_AGE,                ///< Skip based on the age, value is in years.
+		OC_REQUIRES_SERVICE    = ::OCV_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service, no value.
+		OC_UNCONDITIONALLY     = ::OCV_UNCONDITIONALLY,    ///< Always skip, no compare function, no value.
+		OC_REMAINING_LIFETIME  = ::OCV_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime
+
+		/* Custom added value, only valid for this API */
+		OC_INVALID             = -1,                       ///< An invalid condition, do not use.
 	};
 
 	/**
 	 * Comparators for conditional orders.
 	 */
 	enum CompareFunction {
-		/* Order _is_ important, as it's based on OrderConditionComparator in order_type.h. */
-		CF_EQUALS,       ///< Skip if both values are equal
-		CF_NOT_EQUALS,   ///< Skip if both values are not equal
-		CF_LESS_THAN,    ///< Skip if the value is less than the limit
-		CF_LESS_EQUALS,  ///< Skip if the value is less or equal to the limit
-		CF_MORE_THAN,    ///< Skip if the value is more than the limit
-		CF_MORE_EQUALS,  ///< Skip if the value is more or equal to the limit
-		CF_IS_TRUE,      ///< Skip if the variable is true
-		CF_IS_FALSE,     ///< Skip if the variable is false
-		CF_INVALID = -1, ///< Invalid compare function, do not use.
+		/* Note: these values represent part of the in-game OrderConditionComparator enum */
+		CF_EQUALS        = ::OCC_EQUALS,       ///< Skip if both values are equal
+		CF_NOT_EQUALS    = ::OCC_NOT_EQUALS,   ///< Skip if both values are not equal
+		CF_LESS_THAN     = ::OCC_LESS_THAN,    ///< Skip if the value is less than the limit
+		CF_LESS_EQUALS   = ::OCC_LESS_EQUALS,  ///< Skip if the value is less or equal to the limit
+		CF_MORE_THAN     = ::OCC_MORE_THAN,    ///< Skip if the value is more than the limit
+		CF_MORE_EQUALS   = ::OCC_MORE_EQUALS,  ///< Skip if the value is more or equal to the limit
+		CF_IS_TRUE       = ::OCC_IS_TRUE,      ///< Skip if the variable is true
+		CF_IS_FALSE      = ::OCC_IS_FALSE,     ///< Skip if the variable is false
+
+		/* Custom added value, only valid for this API */
+		CF_INVALID       = -1,                 ///< Invalid compare function, do not use.
 	};
 
 	/**

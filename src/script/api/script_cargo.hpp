@@ -13,6 +13,8 @@
 #define SCRIPT_CARGO_HPP
 
 #include "script_object.hpp"
+#include "../../cargotype.h"
+#include "../../cargo_type.h"
 
 /**
  * Class that handles all cargo related functions.
@@ -21,39 +23,42 @@
 class ScriptCargo : public ScriptObject {
 public:
 	/**
-	 * The classes of cargo (from newgrf_cargo.h).
+	 * The classes of cargo.
 	 */
 	enum CargoClass {
-		CC_PASSENGERS   = 1 <<  0, ///< Passengers. Cargos of this class appear at bus stops. Cargos not of this class appear at truck stops.
-		CC_MAIL         = 1 <<  1, ///< Mail
-		CC_EXPRESS      = 1 <<  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
-		CC_ARMOURED     = 1 <<  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
-		CC_BULK         = 1 <<  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
-		CC_PIECE_GOODS  = 1 <<  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
-		CC_LIQUID       = 1 <<  6, ///< Liquids (Oil, Water, Rubber)
-		CC_REFRIGERATED = 1 <<  7, ///< Refrigerated cargo (Food, Fruit)
-		CC_HAZARDOUS    = 1 <<  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
-		CC_COVERED      = 1 <<  9, ///< Covered/Sheltered Freight (Transporation in Box Vans, Silo Wagons, etc.)
+		/* Note: these values represent part of the in-game CargoClass enum */
+		CC_PASSENGERS   = ::CC_PASSENGERS,   ///< Passengers. Cargos of this class appear at bus stops. Cargos not of this class appear at truck stops.
+		CC_MAIL         = ::CC_MAIL,         ///< Mail
+		CC_EXPRESS      = ::CC_EXPRESS,      ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
+		CC_ARMOURED     = ::CC_ARMOURED,     ///< Armoured cargo (Valuables, Gold, Diamonds)
+		CC_BULK         = ::CC_BULK,         ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
+		CC_PIECE_GOODS  = ::CC_PIECE_GOODS,  ///< Piece goods (Livestock, Wood, Steel, Paper)
+		CC_LIQUID       = ::CC_LIQUID,       ///< Liquids (Oil, Water, Rubber)
+		CC_REFRIGERATED = ::CC_REFRIGERATED, ///< Refrigerated cargo (Food, Fruit)
+		CC_HAZARDOUS    = ::CC_HAZARDOUS,    ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
+		CC_COVERED      = ::CC_COVERED,      ///< Covered/Sheltered Freight (Transporation in Box Vans, Silo Wagons, etc.)
 	};
 
 	/**
 	 * The effects a cargo can have on a town.
 	 */
 	enum TownEffect {
-		TE_NONE       = 0, ///< This cargo has no effect on a town
-		TE_PASSENGERS = 1, ///< This cargo supplies passengers to a town
-		TE_MAIL       = 2, ///< This cargo supplies mail to a town
-		TE_GOODS      = 3, ///< This cargo supplies goods to a town
-		TE_WATER      = 4, ///< This cargo supplies water to a town
-		TE_FOOD       = 5, ///< This cargo supplies food to a town
+		/* Note: these values represent part of the in-game TownEffect enum */
+		TE_NONE       = ::TE_NONE,       ///< This cargo has no effect on a town
+		TE_PASSENGERS = ::TE_PASSENGERS, ///< This cargo supplies passengers to a town
+		TE_MAIL       = ::TE_MAIL,       ///< This cargo supplies mail to a town
+		TE_GOODS      = ::TE_GOODS,      ///< This cargo supplies goods to a town
+		TE_WATER      = ::TE_WATER,      ///< This cargo supplies water to a town
+		TE_FOOD       = ::TE_FOOD,       ///< This cargo supplies food to a town
 	};
 
 	/**
 	 * Special cargo types.
 	 */
 	enum SpecialCargoID {
-		CT_AUTO_REFIT = 0xFD, ///< Automatically choose cargo type when doing auto-refitting.
-		CT_NO_REFIT   = 0xFE, ///< Do not refit cargo of a vehicle.
+		/* Note: these values represent part of the in-game CargoTypes enum */
+		CT_AUTO_REFIT = ::CT_AUTO_REFIT, ///< Automatically choose cargo type when doing auto-refitting.
+		CT_NO_REFIT   = ::CT_NO_REFIT,   ///< Do not refit cargo of a vehicle.
 	};
 
 	/**

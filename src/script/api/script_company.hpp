@@ -22,16 +22,19 @@ class ScriptCompany : public ScriptObject {
 public:
 	/** The range of possible quarters to get company information of. */
 	enum Quarter {
-		CURRENT_QUARTER = 0,                     ///< The current quarter.
-		EARLIEST_QUARTER = MAX_HISTORY_QUARTERS, ///< The earliest quarter company information is available for.
+		CURRENT_QUARTER  = 0,                      ///< The current quarter.
+		EARLIEST_QUARTER = ::MAX_HISTORY_QUARTERS, ///< The earliest quarter company information is available for.
 	};
 
 	/** Different constants related to CompanyID. */
 	enum CompanyID {
-		COMPANY_FIRST   = 0,               ///< The first available company.
-		COMPANY_LAST    = ::MAX_COMPANIES, ///< The last available company.
-		COMPANY_SELF    = 254,             ///< Constant that gets resolved to the correct company index for your company.
-		COMPANY_INVALID = -1,              ///< An invalid company.
+		/* Note: these values represent part of the in-game Owner enum */
+		COMPANY_FIRST   = ::COMPANY_FIRST,   ///< The first available company.
+		COMPANY_LAST    = ::MAX_COMPANIES,   ///< The last available company.
+
+		/* Custom added value, only valid for this API */
+		COMPANY_INVALID = -1,                ///< An invalid company.
+		COMPANY_SELF    = 254,               ///< Constant that gets resolved to the correct company index for your company.
 	};
 
 	/** Possible genders for company presidents. */
