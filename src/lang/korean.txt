@@ -1378,9 +1378,9 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정�
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}설정 파일에서 오류 발생
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 배열 '{STRING}'에서 오류 발생
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}'{G "은" "는"} '{0:STRING}'에 사용할 수 없습니다
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}'{G 0 "은" "는"} '{0:STRING}'에 사용할 수 없습니다
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 설정 '{STRING}' 끝에 후행문자(??)
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' 무시중: '{STRING}'{G "과" "와"} GRF ID가 겹침
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' 무시중: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 NewGRF '{STRING}' 무시중: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :찾을 수 없음
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :사용하기에 불안정적
