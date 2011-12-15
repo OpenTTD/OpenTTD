@@ -25,6 +25,8 @@
 #include "tunnelbridge_map.h"
 #include "road_gui.h"
 
+#include "widgets/bridge_widget.h"
+
 #include "table/strings.h"
 
 /** The type of the last built rail bridge */
@@ -69,15 +71,6 @@ void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uin
 		ConnectRoadToStructure(p1, start_direction);
 	}
 }
-
-/** Names of the widgets of the build-bridge selection window. */
-enum BuildBridgeSelectionWidgets {
-	BBSW_CAPTION,
-	BBSW_DROPDOWN_ORDER,
-	BBSW_DROPDOWN_CRITERIA,
-	BBSW_BRIDGE_LIST,
-	BBSW_SCROLLBAR,
-};
 
 /** Window class for handling the bridge-build GUI. */
 class BuildBridgeWindow : public Window {

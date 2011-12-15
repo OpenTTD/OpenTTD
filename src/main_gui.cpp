@@ -34,6 +34,8 @@
 
 #include "saveload/saveload.h"
 
+#include "widgets/main_widget.h"
+
 #include "network/network.h"
 #include "network/network_func.h"
 #include "network/network_gui.h"
@@ -198,11 +200,6 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 		}
 	}
 }
-
-/** Widgets of the main window. */
-enum MainWindowWidgets {
-	MW_VIEWPORT, ///< Main window viewport.
-};
 
 static const struct NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, MW_VIEWPORT), SetResize(1, 1),

@@ -1,0 +1,22 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/** @file bootstrap_widget.h Types related to the bootstrap widgets. */
+
+#ifndef WIDGETS_BOOTSTRAP_WIDGET_H
+#define WIDGETS_BOOTSTRAP_WIDGET_H
+
+/** Widgets of the WC_CONFIRM_POPUP_QUERY (WC_CONFIRM_POPUP_QUERY is also used in QueryWidgets). */
+enum BootstrapAskForDownloadWidgets {
+	BAFDW_QUESTION, ///< The question whether to download.
+	BAFDW_YES,      ///< An affirmative answer to the question.
+	BAFDW_NO,       ///< An negative answer to the question.
+};
+
+#endif /* WIDGETS_BOOTSTRAP_WIDGET_H */

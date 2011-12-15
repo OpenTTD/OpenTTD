@@ -22,6 +22,8 @@
 #include "rail.h"
 #include "settings_type.h"
 
+#include "widgets/engine_widget.h"
+
 #include "table/strings.h"
 
 /**
@@ -41,13 +43,6 @@ StringID GetEngineCategoryName(EngineID engine)
 			return GetRailTypeInfo(e->u.rail.railtype)->strings.new_loco;
 	}
 }
-
-/** Widgets used for the engine preview window */
-enum EnginePreviewWidgets {
-	EPW_QUESTION,   ///< The container for the question
-	EPW_NO,         ///< No button
-	EPW_YES,        ///< Yes button
-};
 
 static const NWidgetPart _nested_engine_preview_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

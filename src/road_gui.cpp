@@ -29,6 +29,8 @@
 #include "hotkeys.h"
 #include "road_gui.h"
 
+#include "widgets/road_widget.h"
+
 #include "table/strings.h"
 
 static void ShowRVStationPicker(Window *parent, RoadStopType rs);
@@ -268,23 +270,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 	}
 }
 
-/** Enum referring to the widgets of the build road toolbar */
-enum RoadToolbarWidgets {
-	RTW_ROAD_X,
-	RTW_ROAD_Y,
-	RTW_AUTOROAD,
-	RTW_DEMOLISH,
-	RTW_DEPOT,
-	RTW_BUS_STATION,
-	RTW_TRUCK_STATION,
-	RTW_ONE_WAY,
-	RTW_BUILD_BRIDGE,
-	RTW_BUILD_TUNNEL,
-	RTW_REMOVE,
-};
-
 typedef void OnButtonClick(Window *w);
-
 
 /**
  * Toogles state of the Remove button of Build road toolbar
@@ -852,15 +838,6 @@ EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
 	return w->OnKeyPress(key, keycode);
 }
 
-/** Enum referring to the widgets of the build road depot window */
-enum BuildRoadDepotWidgets {
-	BRDW_CAPTION,
-	BRDW_DEPOT_NE,
-	BRDW_DEPOT_SE,
-	BRDW_DEPOT_SW,
-	BRDW_DEPOT_NW,
-};
-
 struct BuildRoadDepotWindow : public PickerWindowBase {
 	BuildRoadDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
@@ -943,21 +920,6 @@ static void ShowRoadDepotPicker(Window *parent)
 {
 	new BuildRoadDepotWindow(&_build_road_depot_desc, parent);
 }
-
-/** Enum referring to the widgets of the build road station window */
-enum BuildRoadStationWidgets {
-	BRSW_CAPTION,
-	BRSW_BACKGROUND,
-	BRSW_STATION_NE,
-	BRSW_STATION_SE,
-	BRSW_STATION_SW,
-	BRSW_STATION_NW,
-	BRSW_STATION_X,
-	BRSW_STATION_Y,
-	BRSW_LT_OFF,
-	BRSW_LT_ON,
-	BRSW_INFO,
-};
 
 struct BuildRoadStationWindow : public PickerWindowBase {
 	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(parent)

@@ -22,13 +22,9 @@
 #include "subsidy_base.h"
 #include "core/geometry_func.hpp"
 
-#include "table/strings.h"
+#include "widgets/subsidy_widget.h"
 
-/** Widget numbers for the subsidy list window. */
-enum SubsidyListWidgets {
-	SLW_PANEL,
-	SLW_SCROLLBAR,
-};
+#include "table/strings.h"
 
 struct SubsidyListWindow : Window {
 	Scrollbar *vscroll;

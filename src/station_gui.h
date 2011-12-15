@@ -16,22 +16,7 @@
 #include "tilearea_type.h"
 #include "window_type.h"
 
-/** Enum for StationView, referring to _station_view_widgets and _station_view_expanded_widgets */
-enum StationViewWidgets {
-	SVW_CAPTION    =  0, ///< Caption of the window
-	SVW_WAITING    =  1, ///< List of waiting cargo
-	SVW_SCROLLBAR  =  2, ///< Scrollbar
-	SVW_ACCEPTLIST =  3, ///< List of accepted cargoes
-	SVW_RATINGLIST =  3, ///< Ratings of cargoes
-	SVW_LOCATION   =  4, ///< 'Location' button
-	SVW_RATINGS    =  5, ///< 'Ratings' button
-	SVW_ACCEPTS    =  5, ///< 'Accepts' button
-	SVW_RENAME     =  6, ///< 'Rename' button
-	SVW_TRAINS     =  7, ///< List of scheduled trains button
-	SVW_ROADVEHS,        ///< List of scheduled road vehs button
-	SVW_SHIPS,           ///< List of scheduled ships button
-	SVW_PLANES,          ///< List of scheduled planes button
-};
+#include "widgets/station_widget.h"
 
 /** Types of cargo to display for station coverage. */
 enum StationCoverageType {

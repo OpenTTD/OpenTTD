@@ -28,6 +28,8 @@
 #include "network_client.h"
 #include "network_base.h"
 
+#include "../widgets/network_chat_widget.h"
+
 #include "table/strings.h"
 
 /** The draw buffer must be able to contain the chat message, client name and the "[All]" message,
@@ -282,15 +284,6 @@ static void SendChat(const char *buf, DestType type, int dest)
 		NetworkServerSendChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, CLIENT_ID_SERVER);
 	}
 }
-
-/** Widget numbers of the chat window. */
-enum NetWorkChatWidgets {
-	NWCW_CLOSE,
-	NWCW_BACKGROUND,
-	NWCW_DESTINATION,
-	NWCW_TEXTBOX,
-	NWCW_SENDBUTTON,
-};
 
 /** Window to enter the chat message in. */
 struct NetworkChatWindow : public QueryStringBaseWindow {

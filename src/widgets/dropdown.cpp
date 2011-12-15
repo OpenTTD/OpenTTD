@@ -16,6 +16,8 @@
 #include "../window_func.h"
 #include "dropdown_type.h"
 
+#include "dropdown_widget.h"
+
 
 void DropDownListItem::Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 {
@@ -78,13 +80,6 @@ static void DeleteDropDownList(DropDownList *list)
 	}
 	delete list;
 }
-
-/** Widget numbers of the dropdown menu. */
-enum DropdownMenuWidgets {
-	DDM_ITEMS,        ///< Panel showing the dropdown items.
-	DDM_SHOW_SCROLL,  ///< Hide scrollbar if too few items.
-	DDM_SCROLL,       ///< Scrollbar.
-};
 
 static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

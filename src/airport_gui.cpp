@@ -29,6 +29,8 @@
 #include "vehicle_func.h"
 #include "sprite.h"
 
+#include "widgets/airport_widget.h"
+
 #include "table/strings.h"
 
 static AirportClassID _selected_airport_class; ///< the currently visible airport class
@@ -62,13 +64,6 @@ static void PlaceAirport(TileIndex tile)
 	CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_AIRPORT | CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRPORT_HERE), CcBuildAirport, "" };
 	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE));
 }
-
-/** Widget number of the airport build window. */
-enum AirportToolbarWidgets {
-	ATW_AIRPORT,
-	ATW_DEMOLISH,
-};
-
 
 /** Airport build toolbar window handler. */
 struct BuildAirToolbarWindow : Window {
@@ -203,22 +198,6 @@ EventState AirportToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 	if (w == NULL) return ES_NOT_HANDLED;
 	return w->OnKeyPress(key, keycode);
 }
-
-/** Airport widgets in the airport picker window. */
-enum AirportPickerWidgets {
-	BAIRW_CLASS_DROPDOWN,
-	BAIRW_AIRPORT_LIST,
-	BAIRW_SCROLLBAR,
-	BAIRW_LAYOUT_NUM,
-	BAIRW_LAYOUT_DECREASE,
-	BAIRW_LAYOUT_INCREASE,
-	BAIRW_AIRPORT_SPRITE,
-	BAIRW_EXTRA_TEXT,
-	BAIRW_BOTTOMPANEL,
-	BAIRW_COVERAGE_LABEL,
-	BAIRW_BTN_DONTHILIGHT,
-	BAIRW_BTN_DOHILIGHT,
-};
 
 class BuildAirportWindow : public PickerWindowBase {
 	SpriteID preview_sprite; ///< Cached airport preview sprite.

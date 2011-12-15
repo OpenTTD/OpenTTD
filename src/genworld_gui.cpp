@@ -31,17 +31,10 @@
 #include "progress.h"
 #include "error.h"
 
+#include "widgets/genworld_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
-
-/**
- * In what 'mode' the GenerateLandscapeWindowProc is.
- */
-enum GenenerateLandscapeWindowMode {
-	GLWM_GENERATE,  ///< Generate new game
-	GLWM_HEIGHTMAP, ///< Load from heightmap
-	GLWM_SCENARIO,  ///< Generate flat land
-};
 
 extern void MakeNewgameSettingsLive();
 
@@ -55,52 +48,6 @@ void SetNewLandscapeType(byte landscape)
 	InvalidateWindowClassesData(WC_SELECT_GAME);
 	InvalidateWindowClassesData(WC_GENERATE_LANDSCAPE);
 }
-
-/** Widgets of GenerateLandscapeWindow */
-enum GenerateLandscapeWindowWidgets {
-	GLAND_TEMPERATE,          ///< Button with icon "Temperate"
-	GLAND_ARCTIC,             ///< Button with icon "Arctic"
-	GLAND_TROPICAL,           ///< Button with icon "Tropical"
-	GLAND_TOYLAND,            ///< Button with icon "Toyland"
-
-	GLAND_MAPSIZE_X_PULLDOWN, ///< Dropdown 'map X size'
-	GLAND_MAPSIZE_Y_PULLDOWN, ///< Dropdown 'map Y size'
-
-	GLAND_TOWN_PULLDOWN,      ///< Dropdown 'No. of towns'
-	GLAND_INDUSTRY_PULLDOWN,  ///< Dropdown 'No. of industries'
-
-	GLAND_RANDOM_EDITBOX,     ///< 'Random seed' editbox
-	GLAND_RANDOM_BUTTON,      ///< 'Randomise' button
-
-	GLAND_GENERATE_BUTTON,    ///< 'Generate' button
-
-	GLAND_START_DATE_DOWN,    ///< Decrease start year
-	GLAND_START_DATE_TEXT,    ///< Start year
-	GLAND_START_DATE_UP,      ///< Increase start year
-
-	GLAND_SNOW_LEVEL_DOWN,    ///< Decrease snow level
-	GLAND_SNOW_LEVEL_TEXT,    ///< Snow level
-	GLAND_SNOW_LEVEL_UP,      ///< Increase snow level
-
-	GLAND_TREE_PULLDOWN,      ///< Dropdown 'Tree algorithm'
-	GLAND_LANDSCAPE_PULLDOWN, ///< Dropdown 'Land generator'
-
-	GLAND_HEIGHTMAP_NAME_TEXT,         ///< Heightmap name
-	GLAND_HEIGHTMAP_SIZE_TEXT,         ///< Size of heightmap
-	GLAND_HEIGHTMAP_ROTATION_PULLDOWN, ///< Dropdown 'Heightmap rotation'
-
-	GLAND_TERRAIN_PULLDOWN,    ///< Dropdown 'Terrain type'
-	GLAND_WATER_PULLDOWN,      ///< Dropdown 'Sea level'
-	GLAND_RIVER_PULLDOWN,      ///< Dropdown 'Rivers'
-	GLAND_SMOOTHNESS_PULLDOWN, ///< Dropdown 'Smoothness'
-	GLAND_VARIETY_PULLDOWN,    ///< Dropdown 'Variety distribution'
-
-	GLAND_BORDERS_RANDOM,      ///< 'Random'/'Manual' borders
-	GLAND_WATER_NW,            ///< NW 'Water'/'Freeform'
-	GLAND_WATER_NE,            ///< NE 'Water'/'Freeform'
-	GLAND_WATER_SE,            ///< SE 'Water'/'Freeform'
-	GLAND_WATER_SW,            ///< SW 'Water'/'Freeform'
-};
 
 /** Widgets of GenerateLandscapeWindow when generating world */
 static const NWidgetPart _nested_generate_landscape_widgets[] = {
@@ -928,25 +875,6 @@ void StartNewGameWithoutGUI(uint seed)
 	StartGeneratingLandscape(GLWM_GENERATE);
 }
 
-/** Widget numbers of the create scenario window. */
-enum CreateScenarioWindowWidgets {
-	CSCEN_TEMPERATE,              ///< Select temperate landscape style.
-	CSCEN_ARCTIC,                 ///< Select arctic landscape style.
-	CSCEN_TROPICAL,               ///< Select tropical landscape style.
-	CSCEN_TOYLAND,                ///< Select toy-land landscape style.
-	CSCEN_EMPTY_WORLD,            ///< Generate an empty flat world.
-	CSCEN_RANDOM_WORLD,           ///< Generate random land button
-	CSCEN_MAPSIZE_X_PULLDOWN,     ///< Pull-down arrow for x map size.
-	CSCEN_MAPSIZE_Y_PULLDOWN,     ///< Pull-down arrow for y map size.
-	CSCEN_START_DATE_DOWN,        ///< Decrease start year (start earlier).
-	CSCEN_START_DATE_TEXT,        ///< Clickable start date value.
-	CSCEN_START_DATE_UP,          ///< Increase start year (start later).
-	CSCEN_FLAT_LAND_HEIGHT_DOWN,  ///< Decrease flat land height.
-	CSCEN_FLAT_LAND_HEIGHT_TEXT,  ///< Clickable flat land height value.
-	CSCEN_FLAT_LAND_HEIGHT_UP     ///< Increase flat land height.
-};
-
-
 struct CreateScenarioWindow : public Window
 {
 	uint widget_id;
@@ -1191,12 +1119,6 @@ void ShowCreateScenario()
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
 	new CreateScenarioWindow(&_create_scenario_desc, GLWM_SCENARIO);
 }
-
-enum GenerationProgressWindowWidgets {
-	GPWW_PROGRESS_BAR,
-	GPWW_PROGRESS_TEXT,
-	GPWW_ABORT,
-};
 
 static const NWidgetPart _nested_generate_progress_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GENERATION_WORLD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),

@@ -27,31 +27,12 @@
 #include "core/geometry_func.hpp"
 #include "company_base.h"
 
+#include "widgets/group_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
 typedef GUIList<const Group*> GUIGroupList;
-
-enum GroupListWidgets {
-	GRP_WIDGET_CAPTION,
-	GRP_WIDGET_SORT_BY_ORDER,
-	GRP_WIDGET_SORT_BY_DROPDOWN,
-	GRP_WIDGET_LIST_VEHICLE,
-	GRP_WIDGET_LIST_VEHICLE_SCROLLBAR,
-	GRP_WIDGET_AVAILABLE_VEHICLES,
-	GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
-	GRP_WIDGET_STOP_ALL,
-	GRP_WIDGET_START_ALL,
-
-	GRP_WIDGET_ALL_VEHICLES,
-	GRP_WIDGET_DEFAULT_VEHICLES,
-	GRP_WIDGET_LIST_GROUP,
-	GRP_WIDGET_LIST_GROUP_SCROLLBAR,
-	GRP_WIDGET_CREATE_GROUP,
-	GRP_WIDGET_DELETE_GROUP,
-	GRP_WIDGET_RENAME_GROUP,
-	GRP_WIDGET_REPLACE_PROTECTION,
-};
 
 static const NWidgetPart _nested_group_widgets[] = {
 	NWidget(NWID_HORIZONTAL), // Window header

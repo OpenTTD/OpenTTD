@@ -356,19 +356,6 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 	}
 }
 
-/** Widget numbers of the vehicle refit window. */
-enum VehicleRefitWidgets {
-	VRW_CAPTION,
-	VRW_VEHICLE_PANEL_DISPLAY,
-	VRW_SHOW_HSCROLLBAR,
-	VRW_HSCROLLBAR,
-	VRW_SELECTHEADER,
-	VRW_MATRIX,
-	VRW_SCROLLBAR,
-	VRW_INFOPANEL,
-	VRW_REFITBUTTON,
-};
-
 /** Refit cargo window. */
 struct RefitWindow : public Window {
 	int sel;                     ///< Index in refit options, \c -1 if nothing is selected.
@@ -1173,19 +1160,6 @@ void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 	ChangeVehicleWindow(WC_VEHICLE_TIMETABLE, from_index, to_index);
 }
 
-enum VehicleListWindowWidgets {
-	VLW_WIDGET_CAPTION,
-	VLW_WIDGET_SORT_ORDER,
-	VLW_WIDGET_SORT_BY_PULLDOWN,
-	VLW_WIDGET_LIST,
-	VLW_WIDGET_SCROLLBAR,
-	VLW_WIDGET_HIDE_BUTTONS,
-	VLW_WIDGET_AVAILABLE_VEHICLES,
-	VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
-	VLW_WIDGET_STOP_ALL,
-	VLW_WIDGET_START_ALL,
-};
-
 static const NWidgetPart _nested_vehicle_list[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1714,23 +1688,6 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
 
 
 /* Unified vehicle GUI - Vehicle Details Window */
-
-/** Constants of vehicle details widget indices */
-enum VehicleDetailsWindowWidgets {
-	VLD_WIDGET_CAPTION,
-	VLD_WIDGET_RENAME_VEHICLE,
-	VLD_WIDGET_TOP_DETAILS,
-	VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
-	VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
-	VLD_WIDGET_SERVICING_INTERVAL,
-	VLD_WIDGET_MIDDLE_DETAILS,
-	VLD_WIDGET_MATRIX,
-	VLD_WIDGET_SCROLLBAR,
-	VLD_WIDGET_DETAILS_CARGO_CARRIED,
-	VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
-	VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
-	VLD_WIDGET_DETAILS_TOTAL_CARGO,
-};
 
 assert_compile(VLD_WIDGET_DETAILS_CARGO_CARRIED    == VLD_WIDGET_DETAILS_CARGO_CARRIED + TDW_TAB_CARGO   );
 assert_compile(VLD_WIDGET_DETAILS_TRAIN_VEHICLES   == VLD_WIDGET_DETAILS_CARGO_CARRIED + TDW_TAB_INFO    );

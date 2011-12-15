@@ -24,6 +24,8 @@
 #include "string_func.h"
 #include "settings_type.h"
 
+#include "widgets/music_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -287,19 +289,6 @@ static void SelectPlaylist(byte list)
 	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
 }
 
-enum MusicTrackSelectionWidgets {
-	MTSW_LIST_LEFT,
-	MTSW_PLAYLIST,
-	MTSW_LIST_RIGHT,
-	MTSW_ALL,
-	MTSW_OLD,
-	MTSW_NEW,
-	MTSW_EZY,
-	MTSW_CUSTOM1,
-	MTSW_CUSTOM2,
-	MTSW_CLEAR,
-};
-
 struct MusicTrackSelectionWindow : public Window {
 	MusicTrackSelectionWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
@@ -517,29 +506,6 @@ static void ShowMusicTrackSelection()
 {
 	AllocateWindowDescFront<MusicTrackSelectionWindow>(&_music_track_selection_desc, 0);
 }
-
-enum MusicWidgets {
-	MW_PREV,
-	MW_NEXT,
-	MW_STOP,
-	MW_PLAY,
-	MW_SLIDERS,
-	MW_MUSIC_VOL,
-	MW_EFFECT_VOL,
-	MW_BACKGROUND,
-	MW_TRACK,
-	MW_TRACK_NR,
-	MW_TRACK_TITLE,
-	MW_TRACK_NAME,
-	MW_SHUFFLE,
-	MW_PROGRAMME,
-	MW_ALL,
-	MW_OLD,
-	MW_NEW,
-	MW_EZY,
-	MW_CUSTOM1,
-	MW_CUSTOM2,
-};
 
 struct MusicWindow : public Window {
 	static const int slider_width = 3;

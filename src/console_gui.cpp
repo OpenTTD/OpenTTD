@@ -22,6 +22,8 @@
 #include "console_func.h"
 #include "rev.h"
 
+#include "widgets/console_widget.h"
+
 #include "table/strings.h"
 
 static const uint ICON_HISTORY_SIZE       = 20;
@@ -151,11 +153,6 @@ static inline void IConsoleResetHistoryPos()
 
 static const char *IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
-
-/** Widgets of the console window. */
-enum ConsoleWidgets {
-	CW_BACKGROUND, ///< Background of the console
-};
 
 static const struct NWidgetPart _nested_console_window_widgets[] = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, CW_BACKGROUND), SetResize(1, 1),

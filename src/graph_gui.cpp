@@ -25,6 +25,8 @@
 #include "math.h"
 #include "currency.h"
 
+#include "widgets/graph_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -39,14 +41,6 @@ static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the
 /****************/
 /* GRAPH LEGEND */
 /****************/
-
-/** Widget numbers of the graph legend window. */
-enum GraphLegendWidgetNumbers {
-	GLW_BACKGROUND,
-
-	GLW_FIRST_COMPANY,
-	GLW_LAST_COMPANY = GLW_FIRST_COMPANY + MAX_COMPANIES - 1,
-};
 
 struct GraphLegendWindow : Window {
 	GraphLegendWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
@@ -167,14 +161,6 @@ struct ValuesInterval {
 /******************/
 /* BASE OF GRAPHS */
 /*****************/
-
-/** Widget numbers of a base graph window. */
-enum CompanyValueWidgets {
-	BGW_KEY_BUTTON,
-	BGW_BACKGROUND,
-	BGW_GRAPH,
-	BGW_RESIZE,
-};
 
 struct BaseGraphWindow : Window {
 protected:
@@ -706,7 +692,6 @@ static const NWidgetPart _nested_income_graph_widgets[] = {
 	EndContainer(),
 };
 
-
 static const WindowDesc _income_graph_desc(
 	WDP_AUTO, 0, 0,
 	WC_INCOME_GRAPH, WC_NONE,
@@ -770,15 +755,6 @@ void ShowDeliveredCargoGraph()
 /***********************/
 /* PERFORMANCE HISTORY */
 /***********************/
-
-/** Widget numbers of the performance history window. */
-enum PerformanceHistoryGraphWidgets {
-	PHW_KEY,
-	PHW_DETAILED_PERFORMANCE,
-	PHW_BACKGROUND,
-	PHW_GRAPH,
-	PHW_RESIZE,
-};
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
@@ -882,18 +858,6 @@ void ShowCompanyValueGraph()
 /*****************/
 /* PAYMENT RATES */
 /*****************/
-
-/** Widget numbers of the cargo payment rates. */
-enum CargoPaymentRatesWidgets {
-	CPW_BACKGROUND,
-	CPW_HEADER,
-	CPW_GRAPH,
-	CPW_RESIZE,
-	CPW_FOOTER,
-	CPW_ENABLE_CARGOES,
-	CPW_DISABLE_CARGOES,
-	CPW_CARGO_FIRST,
-};
 
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	bool first_init; ///< This value is true until the first initialization of the window has finished.
@@ -1126,11 +1090,6 @@ void ShowCargoPaymentRates()
 /* COMPANY LEAGUE TABLE */
 /************************/
 
-/** Widget numbers for the company league window. */
-enum CompanyLeagueWidgets {
-	CLW_BACKGROUND,
-};
-
 static const StringID _performance_titles[] = {
 	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER,
 	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER,
@@ -1318,15 +1277,6 @@ void ShowCompanyLeagueTable()
 /*****************************/
 /* PERFORMANCE RATING DETAIL */
 /*****************************/
-
-/** Widget numbers of the performance rating details window. */
-enum PerformanceRatingDetailsWidgets {
-	PRW_SCORE_FIRST,
-	PRW_SCORE_LAST = PRW_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1,
-
-	PRW_COMPANY_FIRST,
-	PRW_COMPANY_LAST  = PRW_COMPANY_FIRST + MAX_COMPANIES - 1,
-};
 
 struct PerformanceRatingDetailWindow : Window {
 	static CompanyID company;

@@ -28,6 +28,8 @@
 #include "date_func.h"
 #include "core/geometry_func.hpp"
 
+#include "widgets/fios_widget.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -64,27 +66,6 @@ void LoadCheckData::Clear()
 
 	ClearGRFConfigList(&this->grfconfig);
 }
-
-
-enum SaveLoadWindowWidgets {
-	SLWW_WINDOWTITLE,
-	SLWW_SORT_BYNAME,
-	SLWW_SORT_BYDATE,
-	SLWW_BACKGROUND,
-	SLWW_FILE_BACKGROUND,
-	SLWW_HOME_BUTTON,
-	SLWW_DRIVES_DIRECTORIES_LIST,
-	SLWW_SCROLLBAR,
-	SLWW_CONTENT_DOWNLOAD,     ///< only available for play scenario/heightmap (content download)
-	SLWW_SAVE_OSK_TITLE,       ///< only available for save operations
-	SLWW_DELETE_SELECTION,     ///< same in here
-	SLWW_SAVE_GAME,            ///< not to mention in here too
-	SLWW_CONTENT_DOWNLOAD_SEL, ///< Selection 'stack' to 'hide' the content download
-	SLWW_DETAILS,              ///< Panel with game details
-	SLWW_NEWGRF_INFO,          ///< Button to open NewGgrf configuration
-	SLWW_LOAD_BUTTON,          ///< Button to load game/scenario
-	SLWW_MISSING_NEWGRFS,      ///< Button to find missing NewGRFs online
-};
 
 /** Load game/scenario with optional content download */
 static const NWidgetPart _nested_load_dialog_widgets[] = {

@@ -32,18 +32,11 @@
 #include "ai_info.hpp"
 #include "ai_instance.hpp"
 
+#include "../widgets/ai_widget.h"
+
 #include "table/strings.h"
 
 #include <vector>
-
-/** Enum referring to the widgets of the AI list window */
-enum AIListWindowWidgets {
-	AIL_WIDGET_LIST,             ///< The matrix with all available AIs
-	AIL_WIDGET_SCROLLBAR,        ///< Scrollbar next to the AI list
-	AIL_WIDGET_INFO_BG,          ///< Panel to draw some AI information on
-	AIL_WIDGET_ACCEPT,           ///< Accept button
-	AIL_WIDGET_CANCEL,           ///< Cancel button
-};
 
 /**
  * Window that let you choose an available AI.
@@ -253,14 +246,6 @@ static void ShowAIListWindow(CompanyID slot)
 	DeleteWindowByClass(WC_AI_LIST);
 	new AIListWindow(&_ai_list_desc, slot);
 }
-
-/** Enum referring to the widgets of the AI settings window */
-enum AISettingsWindowWidgets {
-	AIS_WIDGET_BACKGROUND,   ///< Panel to draw the settings on
-	AIS_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through all settings
-	AIS_WIDGET_ACCEPT,       ///< Accept button
-	AIS_WIDGET_RESET,        ///< Reset button
-};
 
 /**
  * Window for settings the parameters of an AI.
@@ -541,22 +526,6 @@ static void ShowAISettingsWindow(CompanyID slot)
 	new AISettingsWindow(&_ai_settings_desc, slot);
 }
 
-/** Enum referring to the widgets of the AI config window */
-enum AIConfigWindowWidgets {
-	AIC_WIDGET_BACKGROUND,   ///< Window background
-	AIC_WIDGET_DECREASE,     ///< Decrease the number of AIs
-	AIC_WIDGET_INCREASE,     ///< Increase the number of AIs
-	AIC_WIDGET_NUMBER,       ///< Number of AIs
-	AIC_WIDGET_LIST,         ///< List with currently selected AIs
-	AIC_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through the selected AIs
-	AIC_WIDGET_MOVE_UP,      ///< Move up button
-	AIC_WIDGET_MOVE_DOWN,    ///< Move down button
-	AIC_WIDGET_CHANGE,       ///< Select another AI button
-	AIC_WIDGET_CONFIGURE,    ///< Change AI settings button
-	AIC_WIDGET_CLOSE,        ///< Close window button
-	AIC_WIDGET_CONTENT_DOWNLOAD, ///< Download content button
-};
-
 /** Widgets for the configure AI window. */
 static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -780,23 +749,6 @@ void ShowAIConfigWindow()
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	new AIConfigWindow();
 }
-
-/** Enum referring to the widgets of the AI debug window */
-enum AIDebugWindowWidgets {
-	AID_WIDGET_VIEW,
-	AID_WIDGET_NAME_TEXT,
-	AID_WIDGET_SETTINGS,
-	AID_WIDGET_RELOAD_TOGGLE,
-	AID_WIDGET_LOG_PANEL,
-	AID_WIDGET_SCROLLBAR,
-	AID_WIDGET_COMPANY_BUTTON_START,
-	AID_WIDGET_COMPANY_BUTTON_END = AID_WIDGET_COMPANY_BUTTON_START + MAX_COMPANIES - 1,
-	AID_BREAK_STRING_WIDGETS,
-	AID_WIDGET_BREAK_STR_ON_OFF_BTN,
-	AID_WIDGET_BREAK_STR_EDIT_BOX,
-	AID_WIDGET_MATCH_CASE_BTN,
-	AID_WIDGET_CONTINUE_BTN,
-};
 
 /**
  * Window with everything an AI prints via ScriptLog.

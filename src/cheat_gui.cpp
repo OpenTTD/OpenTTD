@@ -27,6 +27,8 @@
 #include "company_gui.h"
 #include "gamelog.h"
 
+#include "widgets/cheat_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -176,11 +178,6 @@ static const CheatEntry _cheats_ui[] = {
 };
 
 assert_compile(CHT_NUM_CHEATS == lengthof(_cheats_ui));
-
-/** Names of the cheat window widgets. */
-enum CheatWidgets {
-	CW_PANEL,
-};
 
 /** Widget definitions of the cheat GUI. */
 static const NWidgetPart _nested_cheat_widgets[] = {

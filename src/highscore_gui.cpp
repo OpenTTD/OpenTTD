@@ -23,9 +23,7 @@
 #include "strings_func.h"
 #include "hotkeys.h"
 
-enum HighscoreWidgets {
-	HSW_BACKGROUND,
-};
+#include "widgets/highscore_widget.h"
 
 struct EndGameHighScoreBaseWindow : Window {
 	uint32 background_img;

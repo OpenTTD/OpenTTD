@@ -44,6 +44,8 @@
 #include "engine_base.h"
 #include "settings_type.h"
 
+#include "widgets/toolbar_widget.h"
+
 #include "network/network.h"
 #include "network/network_gui.h"
 #include "network/network_func.h"
@@ -66,63 +68,6 @@ enum CallBackFunction {
 	CBF_NONE,
 	CBF_PLACE_SIGN,
 	CBF_PLACE_LANDINFO,
-};
-
-/** Toolbar widgets in the normal game mode */
-enum ToolbarNormalWidgets {
-	TBN_PAUSE         = 0,
-	TBN_FASTFORWARD,
-	TBN_SETTINGS,
-	TBN_SAVEGAME,
-	TBN_SMALLMAP,
-	TBN_TOWNDIRECTORY,
-	TBN_SUBSIDIES,
-	TBN_STATIONS,
-	TBN_FINANCES,
-	TBN_COMPANIES,
-	TBN_GRAPHICS,
-	TBN_LEAGUE,
-	TBN_INDUSTRIES,
-	TBN_VEHICLESTART,      ///< trains, actually.  So following are trucks, boats and planes
-	TBN_TRAINS        = TBN_VEHICLESTART,
-	TBN_ROADVEHS,
-	TBN_SHIPS,
-	TBN_AIRCRAFTS,
-	TBN_ZOOMIN,
-	TBN_ZOOMOUT,
-	TBN_RAILS,
-	TBN_ROADS,
-	TBN_WATER,
-	TBN_AIR,
-	TBN_LANDSCAPE,
-	TBN_MUSICSOUND,
-	TBN_NEWSREPORT,
-	TBN_HELP,
-	TBN_SWITCHBAR,         ///< only available when toolbar has been split
-	TBN_END                ///< The end marker
-};
-
-/** Toolbar widgets in the scenario editor */
-enum ToolbarScenEditorWidgets {
-	TBSE_PAUSE        = 0,
-	TBSE_FASTFORWARD,
-	TBSE_SETTINGS,
-	TBSE_SAVESCENARIO,
-	TBSE_SPACERPANEL,
-	TBSE_DATEPANEL,
-	TBSE_DATEBACKWARD,
-	TBSE_DATEFORWARD,
-	TBSE_SMALLMAP,
-	TBSE_ZOOMIN,
-	TBSE_ZOOMOUT,
-	TBSE_LANDGENERATE,
-	TBSE_TOWNGENERATE,
-	TBSE_INDUSTRYGENERATE,
-	TBSE_BUILDROAD,
-	TBSE_BUILDDOCKS,
-	TBSE_PLANTTREES,
-	TBSE_PLACESIGNS,
-	TBSE_DATEPANEL_CONTAINER,
 };
 
 /**

@@ -28,6 +28,8 @@
 #include "hotkeys.h"
 #include "transparency.h"
 
+#include "widgets/sign_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -138,16 +140,6 @@ struct SignList {
 
 const Sign *SignList::last_sign = NULL;
 bool SignList::match_case = false;
-
-/** Enum referring to the widgets in the sign list window */
-enum SignListWidgets {
-	SLW_CAPTION,
-	SLW_LIST,
-	SLW_SCROLLBAR,
-	SLW_FILTER_TEXT,           ///< Text box for typing a filter string
-	SLW_FILTER_MATCH_CASE_BTN, ///< Button to toggle if case sensitive filtering should be used
-	SLW_FILTER_CLEAR_BTN,      ///< Button to clear the filter
-};
 
 /** Enum referring to the Hotkeys in the sign list window */
 enum SignListHotkeys {
@@ -478,17 +470,6 @@ static bool RenameSign(SignID index, const char *text)
 	DoCommandP(0, index, 0, CMD_RENAME_SIGN | (StrEmpty(text) ? CMD_MSG(STR_ERROR_CAN_T_DELETE_SIGN) : CMD_MSG(STR_ERROR_CAN_T_CHANGE_SIGN_NAME)), NULL, text);
 	return remove;
 }
-
-/** Widget numbers of the query sign edit window. */
-enum QueryEditSignWidgets {
-	QUERY_EDIT_SIGN_WIDGET_CAPTION,
-	QUERY_EDIT_SIGN_WIDGET_TEXT,
-	QUERY_EDIT_SIGN_WIDGET_OK,
-	QUERY_EDIT_SIGN_WIDGET_CANCEL,
-	QUERY_EDIT_SIGN_WIDGET_DELETE,
-	QUERY_EDIT_SIGN_WIDGET_PREVIOUS,
-	QUERY_EDIT_SIGN_WIDGET_NEXT,
-};
 
 struct SignWindow : QueryStringBaseWindow, SignList {
 	SignID cur_sign;

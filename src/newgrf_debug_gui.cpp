@@ -33,6 +33,8 @@
 #include "newgrf_station.h"
 #include "newgrf_town.h"
 
+#include "widgets/newgrf_debug_widget.h"
+
 #include "table/strings.h"
 
 /** The sprite picker. */
@@ -273,15 +275,6 @@ static inline const NIHelper *GetFeatureHelper(uint window_number)
 {
 	return GetFeature(window_number)->helper;
 }
-
-
-/** Widget numbers of settings window */
-enum NewGRFInspectWidgets {
-	NIW_CAPTION,   ///< The caption bar ofcourse
-	NIW_PARENT,    ///< Inspect the parent
-	NIW_MAINPANEL, ///< Panel widget containing the actual data
-	NIW_SCROLLBAR, ///< Scrollbar
-};
 
 /** Window used for inspecting NewGRFs. */
 struct NewGRFInspectWindow : Window {
@@ -642,23 +635,6 @@ GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 
 
 /**** Sprite Aligner ****/
-
-/** Widgets we want (some) influence over. */
-enum SpriteAlignerWidgets {
-	SAW_CAPTION,  ///< Caption of the window
-	SAW_PREVIOUS, ///< Skip to the previous sprite
-	SAW_GOTO,     ///< Go to a given sprite
-	SAW_NEXT,     ///< Skip to the next sprite
-	SAW_UP,       ///< Move the sprite up
-	SAW_LEFT,     ///< Move the sprite to the left
-	SAW_RIGHT,    ///< Move the sprite to the right
-	SAW_DOWN,     ///< Move the sprite down
-	SAW_SPRITE,   ///< The actual sprite
-	SAW_OFFSETS,  ///< The sprite offsets
-	SAW_PICKER,   ///< Sprite picker
-	SAW_LIST,     ///< Queried sprite list
-	SAW_SCROLLBAR,///< Scrollbar for sprite list
-};
 
 /** Window used for aligning sprites. */
 struct SpriteAlignerWindow : Window {

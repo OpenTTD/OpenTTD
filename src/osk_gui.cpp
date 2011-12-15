@@ -17,36 +17,10 @@
 #include "gfx_func.h"
 #include "querystring_gui.h"
 
+#include "widgets/osk_widget.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
-
-/** Widget numbers of the on-screen keyboard (OSK) window. */
-enum OskWidgets {
-	OSK_WIDGET_CAPTION,         ///< Title bar.
-	OSK_WIDGET_TEXT,            ///< Edit box.
-	OSK_WIDGET_CANCEL,          ///< Cancel key.
-	OSK_WIDGET_OK,              ///< Ok key.
-	OSK_WIDGET_BACKSPACE,       ///< Backspace key.
-	OSK_WIDGET_SPECIAL,         ///< Special key (at keyborads often used for tab key).
-	OSK_WIDGET_CAPS,            ///< Capslock key.
-	OSK_WIDGET_SHIFT,           ///< Shift(lock) key.
-	OSK_WIDGET_SPACE,           ///< Space bar.
-	OSK_WIDGET_LEFT,            ///< Cursor left key.
-	OSK_WIDGET_RIGHT,           ///< Cursor right key.
-	OSK_WIDGET_LETTERS,         ///< First widget of the 'normal' keys.
-
-	OSK_WIDGET_NUMBERS_FIRST = OSK_WIDGET_LETTERS,           ///< First widget of the numbers row.
-	OSK_WIDGET_NUMBERS_LAST = OSK_WIDGET_NUMBERS_FIRST + 13, ///< Last widget of the numbers row.
-
-	OSK_WIDGET_QWERTY_FIRST,                                 ///< First widget of the qwerty row.
-	OSK_WIDGET_QWERTY_LAST = OSK_WIDGET_QWERTY_FIRST + 11,   ///< Last widget of the qwerty row.
-
-	OSK_WIDGET_ASDFG_FIRST,                                  ///< First widget of the asdfg row.
-	OSK_WIDGET_ASDFG_LAST = OSK_WIDGET_ASDFG_FIRST + 11,     ///< Last widget of the asdfg row.
-
-	OSK_WIDGET_ZXCVB_FIRST,                                  ///< First widget of the zxcvb row.
-	OSK_WIDGET_ZXCVB_LAST = OSK_WIDGET_ZXCVB_FIRST + 11,     ///< Last widget of the zxcvb row.
-};
 
 char _keyboard_opt[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
 static WChar _keyboard[2][OSK_KEYBOARD_ENTRIES];

@@ -36,19 +36,11 @@
 #include "genworld.h"
 #include "sprite.h"
 
+#include "widgets/town_widget.h"
+
 #include "table/strings.h"
 
 typedef GUIList<const Town*> GUITownList;
-
-/** Widget numbers of the town authority window. */
-enum TownAuthorityWidgets {
-	TWA_CAPTION,
-	TWA_RATING_INFO,  ///< Overview with ratings for each company.
-	TWA_COMMAND_LIST, ///< List of commands for the player.
-	TWA_SCROLLBAR,
-	TWA_ACTION_INFO,  ///< Additional information about the action.
-	TWA_EXECUTE,      ///< Do-it button.
-};
 
 static const NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -303,17 +295,6 @@ static void ShowTownAuthorityWindow(uint town)
 	AllocateWindowDescFront<TownAuthorityWindow>(&_town_authority_desc, town);
 }
 
-/** Widget numbers of the town view window. */
-enum TownViewWidgets {
-	TVW_CAPTION,
-	TVW_VIEWPORT,
-	TVW_INFOPANEL,
-	TVW_CENTERVIEW,
-	TVW_SHOWAUTHORITY,
-	TVW_CHANGENAME,
-	TVW_EXPAND,
-	TVW_DELETE,
-};
 
 /* Town view window. */
 struct TownViewWindow : Window {
@@ -608,16 +589,6 @@ void ShowTownViewWindow(TownID town)
 		AllocateWindowDescFront<TownViewWindow>(&_town_game_view_desc, town);
 	}
 }
-
-/** Widget numbers of town directory window. */
-enum TownDirectoryWidgets {
-	TDW_SORTNAME,
-	TDW_SORTPOPULATION,
-	TDW_CENTERTOWN,
-	TDW_SCROLLBAR,
-	TDW_BOTTOM_PANEL,
-	TDW_BOTTOM_TEXT,
-};
 
 static const NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -914,29 +885,6 @@ void CcFoundRandomTown(const CommandCost &result, TileIndex tile, uint32 p1, uin
 {
 	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(_new_town_id)->xy);
 }
-
-/** Widget numbers of town scenario editor window. */
-enum TownScenarioEditorWidgets {
-	TSEW_BACKGROUND,
-	TSEW_NEWTOWN,
-	TSEW_RANDOMTOWN,
-	TSEW_MANYRANDOMTOWNS,
-	TSEW_TOWNNAME_TEXT,
-	TSEW_TOWNNAME_EDITBOX,
-	TSEW_TOWNNAME_RANDOM,
-	TSEW_TOWNSIZE,
-	TSEW_SIZE_SMALL,
-	TSEW_SIZE_MEDIUM,
-	TSEW_SIZE_LARGE,
-	TSEW_SIZE_RANDOM,
-	TSEW_CITY,
-	TSEW_TOWNLAYOUT,
-	TSEW_LAYOUT_ORIGINAL,
-	TSEW_LAYOUT_BETTER,
-	TSEW_LAYOUT_GRID2,
-	TSEW_LAYOUT_GRID3,
-	TSEW_LAYOUT_RANDOM,
-};
 
 static const NWidgetPart _nested_found_town_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

@@ -23,16 +23,9 @@
 #include "window_func.h"
 #include "waypoint_base.h"
 
-#include "table/strings.h"
+#include "widgets/waypoint_widget.h"
 
-/** Widget definitions for the waypoint window. */
-enum WaypointWindowWidgets {
-	WAYPVW_CAPTION,
-	WAYPVW_VIEWPORT,
-	WAYPVW_CENTERVIEW,
-	WAYPVW_RENAME,
-	WAYPVW_SHOW_VEHICLES,
-};
+#include "table/strings.h"
 
 /** GUI for accessing waypoints and buoys. */
 struct WaypointWindow : Window {

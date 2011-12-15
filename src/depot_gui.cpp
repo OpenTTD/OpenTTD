@@ -30,6 +30,8 @@
 #include "order_backup.h"
 #include "zoom_func.h"
 
+#include "widgets/depot_widget.h"
+
 #include "table/strings.h"
 
 /*
@@ -37,28 +39,6 @@
  * It's done with the following arrays of widget indexes. Each of them tells if a widget side should be moved and in what direction.
  * How long they should be moved and for what window types are controlled in ShowDepotWindow()
  */
-
-/* Names of the widgets. Keep them in the same order as in the widget array */
-enum DepotWindowWidgets {
-	DEPOT_WIDGET_CAPTION,
-	DEPOT_WIDGET_SELL,
-	DEPOT_WIDGET_SHOW_SELL_CHAIN,
-	DEPOT_WIDGET_SELL_CHAIN,
-	DEPOT_WIDGET_SELL_ALL,
-	DEPOT_WIDGET_AUTOREPLACE,
-	DEPOT_WIDGET_MATRIX,
-	DEPOT_WIDGET_V_SCROLL, ///< Vertical scrollbar
-	DEPOT_WIDGET_SHOW_H_SCROLL,
-	DEPOT_WIDGET_H_SCROLL, ///< Horizontal scrollbar
-	DEPOT_WIDGET_BUILD,
-	DEPOT_WIDGET_CLONE,
-	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_SHOW_RENAME,
-	DEPOT_WIDGET_RENAME,
-	DEPOT_WIDGET_VEHICLE_LIST,
-	DEPOT_WIDGET_STOP_ALL,
-	DEPOT_WIDGET_START_ALL,
-};
 
 /** Nested widget definition for train depots. */
 static const NWidgetPart _nested_train_depot_widgets[] = {

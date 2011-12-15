@@ -27,29 +27,9 @@
 #include "window_func.h"
 #include "company_base.h"
 
-#include "table/strings.h"
+#include "widgets/smallmap_widget.h"
 
-/** Widget numbers of the small map window. */
-enum SmallMapWindowWidgets {
-	SM_WIDGET_CAPTION,           ///< Caption widget.
-	SM_WIDGET_MAP_BORDER,        ///< Border around the smallmap.
-	SM_WIDGET_MAP,               ///< Panel containing the smallmap.
-	SM_WIDGET_LEGEND,            ///< Bottom panel to display smallmap legends.
-	SM_WIDGET_ZOOM_IN,           ///< Button to zoom in one step.
-	SM_WIDGET_ZOOM_OUT,          ///< Button to zoom out one step.
-	SM_WIDGET_CONTOUR,           ///< Button to select the contour view (height map).
-	SM_WIDGET_VEHICLES,          ///< Button to select the vehicles view.
-	SM_WIDGET_INDUSTRIES,        ///< Button to select the industries view.
-	SM_WIDGET_ROUTES,            ///< Button to select the routes view.
-	SM_WIDGET_VEGETATION,        ///< Button to select the vegetation view.
-	SM_WIDGET_OWNERS,            ///< Button to select the owners view.
-	SM_WIDGET_CENTERMAP,         ///< Button to move smallmap center to main window center.
-	SM_WIDGET_TOGGLETOWNNAME,    ///< Toggle button to display town names.
-	SM_WIDGET_SELECT_BUTTONS,    ///< Selection widget for the buttons present in some smallmap modes.
-	SM_WIDGET_ENABLE_ALL,        ///< Button to enable display of all legend entries.
-	SM_WIDGET_DISABLE_ALL,       ///< Button to disable display of all legend entries.
-	SM_WIDGET_SHOW_HEIGHT,       ///< Show heightmap toggle button.
-};
+#include "table/strings.h"
 
 static int _smallmap_industry_count; ///< Number of used industries
 static int _smallmap_company_count;  ///< Number of entries in the owner legend.

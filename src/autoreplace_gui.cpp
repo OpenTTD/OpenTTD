@@ -26,35 +26,12 @@
 #include "core/geometry_func.hpp"
 #include "rail_gui.h"
 
+#include "widgets/autoreplace_widget.h"
+
 #include "table/strings.h"
 
 uint GetEngineListHeight(VehicleType type);
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
-
-/** Widget numbers of the autoreplace GUI. */
-enum ReplaceVehicleWindowWidgets {
-	RVW_WIDGET_CAPTION,
-
-	/* Left and right matrix + details. */
-	RVW_WIDGET_LEFT_MATRIX,
-	RVW_WIDGET_LEFT_SCROLLBAR,
-	RVW_WIDGET_RIGHT_MATRIX,
-	RVW_WIDGET_RIGHT_SCROLLBAR,
-	RVW_WIDGET_LEFT_DETAILS,
-	RVW_WIDGET_RIGHT_DETAILS,
-
-	/* Button row. */
-	RVW_WIDGET_START_REPLACE,
-	RVW_WIDGET_INFO_TAB,
-	RVW_WIDGET_STOP_REPLACE,
-
-	/* Train only widgets. */
-	RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE,
-	RVW_WIDGET_TRAIN_FLUFF_LEFT,
-	RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN,
-	RVW_WIDGET_TRAIN_FLUFF_RIGHT,
-	RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE,
-};
 
 static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {

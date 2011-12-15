@@ -24,15 +24,10 @@
 #include "console_func.h"
 #include "window_gui.h"
 
+#include "widgets/error_widget.h"
+
 #include "table/strings.h"
 #include <list>
-
-/** Widgets of the error message windows */
-enum ErrorMessageWidgets {
-	EMW_CAPTION,
-	EMW_FACE,
-	EMW_MESSAGE,
-};
 
 static const NWidgetPart _nested_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

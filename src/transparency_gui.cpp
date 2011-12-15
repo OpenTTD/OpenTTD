@@ -14,6 +14,8 @@
 #include "transparency.h"
 #include "sound_func.h"
 
+#include "widgets/transparency_widget.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -21,25 +23,6 @@ TransparencyOptionBits _transparency_opt;  ///< The bits that should be transpar
 TransparencyOptionBits _transparency_lock; ///< Prevent these bits from flipping with X.
 TransparencyOptionBits _invisibility_opt;  ///< The bits that should be invisible.
 byte _display_opt; ///< What do we want to draw/do?
-
-/** Widget numbers of the transparency window. */
-enum TransparencyToolbarWidgets {
-	/* Button row. */
-	TTW_WIDGET_BEGIN,                    ///< First toggle button.
-	TTW_WIDGET_SIGNS = TTW_WIDGET_BEGIN, ///< Signs background transparency toggle button.
-	TTW_WIDGET_TREES,                    ///< Trees transparency toggle button.
-	TTW_WIDGET_HOUSES,                   ///< Houses transparency toggle button.
-	TTW_WIDGET_INDUSTRIES,               ///< industries transparency toggle button.
-	TTW_WIDGET_BUILDINGS,                ///< Company buildings and structures transparency toggle button.
-	TTW_WIDGET_BRIDGES,                  ///< Bridges transparency toggle button.
-	TTW_WIDGET_STRUCTURES,               ///< Object structure transparency toggle button.
-	TTW_WIDGET_CATENARY,                 ///< Catenary transparency toggle button.
-	TTW_WIDGET_LOADING,                  ///< Loading indicators transparency toggle button.
-	TTW_WIDGET_END,                      ///< End of toggle buttons.
-
-	/* Panel with buttons for invisibility */
-	TTW_WIDGET_BUTTONS,                  ///< Panel with 'invisibility' buttons.
-};
 
 class TransparenciesWindow : public Window
 {

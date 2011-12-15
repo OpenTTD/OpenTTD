@@ -27,6 +27,8 @@
 #include "window_func.h"
 #include "window_gui.h"
 
+#include "widgets/bootstrap_widget.h"
+
 #include "table/strings.h"
 
 /** Widgets for the background window to prevent smearing. */
@@ -98,13 +100,6 @@ public:
 		_exit_game = true;
 		delete this;
 	}
-};
-
-/** Widgets in the query window. */
-enum BootstrapAskForDownloadWidgets {
-	BAFDW_QUESTION, ///< The question whether to download.
-	BAFDW_YES,      ///< An affirmative answer to the question.
-	BAFDW_NO,       ///< An negative answer to the question.
 };
 
 /** The widgets for the query. It has no close box as that sprite does not exist yet. */

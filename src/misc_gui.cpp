@@ -28,6 +28,8 @@
 #include "core/geometry_func.hpp"
 #include "newgrf_debug.h"
 
+#include "widgets/misc_widget.h"
+
 #include "table/strings.h"
 
 /**
@@ -39,12 +41,6 @@
 bool GetClipboardContents(char *buffer, size_t buff_len);
 
 int _caret_timer;
-
-
-/** Widgets for the land info window. */
-enum LandInfoWidgets {
-	LIW_BACKGROUND, ///< Background to draw on
-};
 
 static const NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -356,12 +352,6 @@ void ShowLandInfo(TileIndex tile)
 	new LandInfoWindow(tile);
 }
 
-/** Widgets for the land info window. */
-enum AboutWidgets {
-	AW_SCROLLING_TEXT,       ///< The actually scrolling text
-	AW_WEBSITE,              ///< URL of OpenTTD website
-};
-
 static const NWidgetPart _nested_about_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -613,7 +603,7 @@ void HideFillingPercent(TextEffectID *te_id)
 }
 
 static const NWidgetPart _nested_tooltips_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_GREY, 0), SetMinimalSize(200, 32), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, TTW_BACKGROUND), SetMinimalSize(200, 32), EndContainer(),
 };
 
 static const WindowDesc _tool_tips_desc(
@@ -1100,15 +1090,6 @@ void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
 	ShowOnScreenKeyboard(this, wid, 0, 0);
 }
 
-/** Widget of the string query window. */
-enum QueryStringWidgets {
-	QUERY_STR_WIDGET_CAPTION,
-	QUERY_STR_WIDGET_TEXT,
-	QUERY_STR_WIDGET_DEFAULT,
-	QUERY_STR_WIDGET_CANCEL,
-	QUERY_STR_WIDGET_OK
-};
-
 /** Class for the string query window. */
 struct QueryStringWindow : public QueryStringBaseWindow
 {
@@ -1267,14 +1248,6 @@ void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *paren
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, &_query_string_desc, parent, afilter, flags);
 }
-
-
-enum QueryWidgets {
-	QUERY_WIDGET_CAPTION,
-	QUERY_WIDGET_TEXT,
-	QUERY_WIDGET_NO,
-	QUERY_WIDGET_YES
-};
 
 /**
  * Window used for asking the user a YES/NO question.

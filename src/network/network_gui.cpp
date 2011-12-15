@@ -32,6 +32,8 @@
 #include "../newgrf_text.h"
 #include "../genworld.h"
 
+#include "../widgets/network_widget.h"
+
 #include "table/strings.h"
 #include "../table/sprites.h"
 
@@ -74,45 +76,6 @@ void UpdateNetworkGameWindow(bool unselect)
 {
 	InvalidateWindowData(WC_NETWORK_WINDOW, 0, unselect ? 1 : 0);
 }
-
-/** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
-enum NetworkGameWindowWidgets {
-	NGWW_MAIN,          ///< Main panel
-
-	NGWW_CONNECTION,    ///< Label in front of connection droplist
-	NGWW_CONN_BTN,      ///< 'Connection' droplist button
-	NGWW_CLIENT_LABEL,  ///< Label in front of client name edit box
-	NGWW_CLIENT,        ///< Panel with editbox to set client name
-
-	NGWW_HEADER,        ///< Header container of the matrix
-	NGWW_NAME,          ///< 'Name' button
-	NGWW_CLIENTS,       ///< 'Clients' button
-	NGWW_MAPSIZE,       ///< 'Map size' button
-	NGWW_DATE,          ///< 'Date' button
-	NGWW_YEARS,         ///< 'Years' button
-	NGWW_INFO,          ///< Third button in the game list panel
-
-	NGWW_MATRIX,        ///< Panel with list of games
-	NGWW_SCROLLBAR,     ///< Scrollbar of matrix
-
-	NGWW_LASTJOINED_LABEL, ///< Label "Last joined server:"
-	NGWW_LASTJOINED,    ///< Info about the last joined server
-	NGWW_LASTJOINED_SPACER, ///< Spacer after last joined server panel
-
-	NGWW_DETAILS,       ///< Panel with game details
-	NGWW_DETAILS_SPACER, ///< Spacer for game actual details
-	NGWW_JOIN,          ///< 'Join game' button
-	NGWW_REFRESH,       ///< 'Refresh server' button
-	NGWW_NEWGRF,        ///< 'NewGRF Settings' button
-	NGWW_NEWGRF_SEL,    ///< Selection 'widget' to hide the NewGRF settings
-	NGWW_NEWGRF_MISSING,     ///< 'Find missing NewGRF online' button
-	NGWW_NEWGRF_MISSING_SEL, ///< Selection widget for the above button
-
-	NGWW_FIND,          ///< 'Find server' button
-	NGWW_ADD,           ///< 'Add server' button
-	NGWW_START,         ///< 'Start server' button
-	NGWW_CANCEL,        ///< 'Cancel' button
-};
 
 typedef GUIList<NetworkGameList*> GUIGameServerList;
 typedef uint16 ServerListPosition;
@@ -1031,38 +994,6 @@ void ShowNetworkGameWindow()
 	new NetworkGameWindow(&_network_game_window_desc);
 }
 
-/** Enum for NetworkStartServerWindow, referring to _network_start_server_window_widgets */
-enum NetworkStartServerWidgets {
-	NSSW_BACKGROUND,
-	NSSW_GAMENAME_LABEL,
-	NSSW_GAMENAME,          ///< Background for editbox to set game name
-	NSSW_SETPWD,            ///< 'Set password' button
-	NSSW_CONNTYPE_LABEL,
-	NSSW_CONNTYPE_BTN,      ///< 'Connection type' droplist button
-	NSSW_CLIENTS_LABEL,
-	NSSW_CLIENTS_BTND,      ///< 'Max clients' downarrow
-	NSSW_CLIENTS_TXT,       ///< 'Max clients' text
-	NSSW_CLIENTS_BTNU,      ///< 'Max clients' uparrow
-	NSSW_COMPANIES_LABEL,
-	NSSW_COMPANIES_BTND,    ///< 'Max companies' downarrow
-	NSSW_COMPANIES_TXT,     ///< 'Max companies' text
-	NSSW_COMPANIES_BTNU,    ///< 'Max companies' uparrow
-	NSSW_SPECTATORS_LABEL,
-	NSSW_SPECTATORS_BTND,   ///< 'Max spectators' downarrow
-	NSSW_SPECTATORS_TXT,    ///< 'Max spectators' text
-	NSSW_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow
-
-	NSSW_LANGUAGE_LABEL,
-	NSSW_LANGUAGE_BTN,      ///< 'Language spoken' droplist button
-
-	NSSW_GENERATE_GAME,     ///< New game button
-	NSSW_LOAD_GAME,         ///< Load game button
-	NSSW_PLAY_SCENARIO,     ///< Play scenario button
-	NSSW_PLAY_HEIGHTMAP,    ///< Play heightmap button
-
-	NSSW_CANCEL,            ///< 'Cancel' button
-};
-
 struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	byte field;                  ///< Selected text-field
 	byte widget_id;              ///< The widget that has the pop-up input menu
@@ -1390,21 +1321,6 @@ static void ShowNetworkStartServerWindow()
 	new NetworkStartServerWindow(&_network_start_server_window_desc);
 }
 
-/** Enum for NetworkLobbyWindow, referring to _network_lobby_window_widgets */
-enum NetworkLobbyWindowWidgets {
-	NLWW_BACKGROUND, ///< Background panel
-	NLWW_TEXT,       ///< Heading text
-	NLWW_HEADER,     ///< Header above list of companies
-	NLWW_MATRIX,     ///< List of companies
-	NLWW_SCROLLBAR,  ///< Scroll bar
-	NLWW_DETAILS,    ///< Company details
-	NLWW_JOIN,       ///< 'Join company' button
-	NLWW_NEW,        ///< 'New company' button
-	NLWW_SPECTATE,   ///< 'Spectate game' button
-	NLWW_REFRESH,    ///< 'Refresh server' button
-	NLWW_CANCEL,     ///< 'Cancel' button
-};
-
 struct NetworkLobbyWindow : public Window {
 	CompanyID company;       ///< Select company
 	NetworkGameList *server; ///< Selected server
@@ -1724,7 +1640,7 @@ extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 typedef void ClientList_Action_Proc(const NetworkClientInfo *ci);
 
 static const NWidgetPart _nested_client_list_popup_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_GREY, 0), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, CLPW_PANEL), EndContainer(),
 };
 
 static const WindowDesc _client_list_popup_desc(
@@ -1893,12 +1809,6 @@ static void PopupClientList(ClientID client_id, int x, int y)
 
 	new NetworkClientListPopupWindow(&_client_list_popup_desc, x, y, client_id);
 }
-
-
-/** Widget numbers of the client list window. */
-enum ClientListWidgets {
-	CLW_PANEL,
-};
 
 static const NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -2075,12 +1985,6 @@ uint8 _network_join_waiting;            ///< The number of clients waiting in fr
 uint32 _network_join_bytes;             ///< The number of bytes we already downloaded.
 uint32 _network_join_bytes_total;       ///< The total number of bytes to download.
 
-/** Widgets used for the join status window. */
-enum NetworkJoinStatusWidgets {
-	NJSW_BACKGROUND, ///< Background
-	NJSW_CANCELOK,   ///< Cancel/OK button
-};
-
 struct NetworkJoinStatusWindow : Window {
 	NetworkPasswordType password_type;
 
@@ -2214,17 +2118,6 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 	}
 	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_NONE);
 }
-
-
-/** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
-enum NetworkCompanyPasswordWindowWidgets {
-	NCPWW_BACKGROUND,               ///< The background of the interface
-	NCPWW_LABEL,                    ///< Label in front of the password field
-	NCPWW_PASSWORD,                 ///< Input field for the password
-	NCPWW_SAVE_AS_DEFAULT_PASSWORD, ///< Toggle 'button' for saving the current password as default password
-	NCPWW_CANCEL,                   ///< Close the window without changing anything
-	NCPWW_OK,                       ///< Safe the password etc.
-};
 
 struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(lengthof(_settings_client.network.default_company_pass))

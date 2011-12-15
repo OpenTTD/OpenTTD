@@ -31,6 +31,8 @@
 #include "cargotype.h"
 #include "core/geometry_func.hpp"
 
+#include "widgets/build_vehicle_widget.h"
+
 #include "table/strings.h"
 
 /**
@@ -42,20 +44,6 @@ uint GetEngineListHeight(VehicleType type)
 {
 	return max<uint>(FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM, GetVehicleHeight(type));
 }
-
-enum BuildVehicleWidgets {
-	BUILD_VEHICLE_WIDGET_CAPTION,
-	BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING,
-	BUILD_VEHICLE_WIDGET_SORT_DROPDOWN,
-	BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN,
-	BUILD_VEHICLE_WIDGET_LIST,
-	BUILD_VEHICLE_WIDGET_SCROLLBAR,
-	BUILD_VEHICLE_WIDGET_PANEL,
-	BUILD_VEHICLE_WIDGET_BUILD,
-	BUILD_VEHICLE_WIDGET_BUILD_SEL,
-	BUILD_VEHICLE_WIDGET_RENAME,
-	BUILD_VEHICLE_WIDGET_END
-};
 
 static const NWidgetPart _nested_build_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

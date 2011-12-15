@@ -34,6 +34,8 @@
 #include "ai/ai.hpp"
 #include "language.h"
 
+#include "widgets/settings_widget.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
 #include <map>
@@ -102,28 +104,6 @@ static int GetCurRes()
 	}
 	return i;
 }
-
-/** Widgets of the game options menu */
-enum GameOptionsWidgets {
-	GOW_BACKGROUND,             ///< Background of the window
-	GOW_CURRENCY_DROPDOWN,      ///< Currency dropdown
-	GOW_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown
-	GOW_ROADSIDE_DROPDOWN,      ///< Dropdown to select the road side (to set the right side ;))
-	GOW_TOWNNAME_DROPDOWN,      ///< Town name dropdown
-	GOW_AUTOSAVE_DROPDOWN,      ///< Dropdown to say how often to autosave
-	GOW_LANG_DROPDOWN,          ///< Language dropdown
-	GOW_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution
-	GOW_FULLSCREEN_BUTTON,      ///< Toggle fullscreen
-	GOW_SCREENSHOT_DROPDOWN,    ///< Select the screenshot type... please use PNG!
-	GOW_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF
-	GOW_BASE_GRF_STATUS,        ///< Info about missing files etc.
-	GOW_BASE_GRF_DESCRIPTION,   ///< Description of selected base GRF
-	GOW_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX
-	GOW_BASE_SFX_DESCRIPTION,   ///< Description of selected base SFX
-	GOW_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set
-	GOW_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
-	GOW_BASE_MUSIC_DESCRIPTION, ///< Description of selected base music set
-};
 
 static void ShowCustCurrency();
 
@@ -628,20 +608,6 @@ void ShowGameOptions()
 }
 
 extern void StartupEconomy();
-
-
-/* Names of the game difficulty settings window */
-enum GameDifficultyWidgets {
-	GDW_LVL_EASY,
-	GDW_LVL_MEDIUM,
-	GDW_LVL_HARD,
-	GDW_LVL_CUSTOM,
-	GDW_HIGHSCORE,
-	GDW_ACCEPT,
-	GDW_CANCEL,
-
-	GDW_OPTIONS_START,
-};
 
 void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 
@@ -1596,12 +1562,6 @@ static SettingEntry _settings_main[] = {
 /** Main page, holding all advanced settings */
 static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_main)};
 
-/** Widget numbers of settings window */
-enum GameSettingsWidgets {
-	SETTINGSEL_OPTIONSPANEL, ///< Panel widget containing the option lists
-	SETTINGSEL_SCROLLBAR,    ///< Scrollbar
-};
-
 struct GameSettingsWindow : Window {
 	static const int SETTINGTREE_LEFT_OFFSET   = 5; ///< Position of left edge of setting values
 	static const int SETTINGTREE_RIGHT_OFFSET  = 5; ///< Position of right edge of setting values
@@ -1865,23 +1825,6 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, colour, FILLRECT_CHECKER);
 	}
 }
-
-/** Widget numbers of the custom currency window. */
-enum CustomCurrencyWidgets {
-	CUSTCURR_RATE_DOWN,
-	CUSTCURR_RATE_UP,
-	CUSTCURR_RATE,
-	CUSTCURR_SEPARATOR_EDIT,
-	CUSTCURR_SEPARATOR,
-	CUSTCURR_PREFIX_EDIT,
-	CUSTCURR_PREFIX,
-	CUSTCURR_SUFFIX_EDIT,
-	CUSTCURR_SUFFIX,
-	CUSTCURR_YEAR_DOWN,
-	CUSTCURR_YEAR_UP,
-	CUSTCURR_YEAR,
-	CUSTCURR_PREVIEW,
-};
 
 struct CustomCurrencyWindow : Window {
 	int query_widget;

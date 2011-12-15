@@ -19,29 +19,13 @@
 #include "sound_func.h"
 #include "tree_map.h"
 
+#include "widgets/tree_widget.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "table/tree_land.h"
 
 void PlaceTreesRandomly();
-
-/** Widget definitions for the build trees window. */
-enum BuildTreesWidgets {
-	BTW_TYPE_11,
-	BTW_TYPE_12,
-	BTW_TYPE_13,
-	BTW_TYPE_14,
-	BTW_TYPE_21,
-	BTW_TYPE_22,
-	BTW_TYPE_23,
-	BTW_TYPE_24,
-	BTW_TYPE_31,
-	BTW_TYPE_32,
-	BTW_TYPE_33,
-	BTW_TYPE_34,
-	BTW_TYPE_RANDOM,
-	BTW_MANY_RANDOM,
-};
 
 /** Tree Sprites with their palettes */
 const PalSpriteID tree_sprites[] = {

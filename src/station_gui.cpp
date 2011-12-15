@@ -30,6 +30,8 @@
 #include "core/geometry_func.hpp"
 #include "vehiclelist.h"
 
+#include "widgets/station_widget.h"
+
 #include "table/strings.h"
 
 /**
@@ -172,29 +174,6 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 }
 
 typedef GUIList<const Station*> GUIStationList;
-
-/** Enum for CompanyStations, referring to _company_stations_widgets */
-enum StationListWidgets {
-	SLW_CAPTION,        ///< Window caption
-	SLW_LIST,           ///< The main panel, list of stations
-	SLW_SCROLLBAR,      ///< Scrollbar next to the main panel
-
-	/* Vehicletypes need to be in order of StationFacility due to bit magic */
-	SLW_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station
-	SLW_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop
-	SLW_BUS,            ///< 'BUS' button - list only facilities where is a bus stop
-	SLW_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport
-	SLW_SHIP,           ///< 'SHIP' button - list only facilities where is a dock
-	SLW_FACILALL,       ///< 'ALL' button - list all facilities
-
-	SLW_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting
-	SLW_CARGOALL,       ///< 'ALL' button - list all stations
-
-	SLW_SORTBY,         ///< 'Sort by' button - reverse sort direction
-	SLW_SORTDROPBTN,    ///< Dropdown button
-
-	SLW_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets)
-};
 
 /**
  * The list of stations per company.
@@ -1334,12 +1313,6 @@ static const T *FindStationsNearby(TileArea ta, bool distant_join)
 
 	return NULL;
 }
-
-enum JoinStationWidgets {
-	JSW_WIDGET_CAPTION,
-	JSW_PANEL,
-	JSW_SCROLLBAR,
-};
 
 static const NWidgetPart _nested_select_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),

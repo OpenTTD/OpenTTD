@@ -28,6 +28,8 @@
 #include "fileio_func.h"
 #include "fontcache.h"
 
+#include "widgets/newgrf_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -136,22 +138,6 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
 }
-
-
-/** Enum referring to the widgets of the NewGRF parameters window */
-enum ShowNewGRFParametersWidgets {
-	GRFPAR_WIDGET_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #GRFPAR_WIDGET_NUMPAR
-	GRFPAR_WIDGET_NUMPAR_DEC,       ///< Button to decrease number of parameters
-	GRFPAR_WIDGET_NUMPAR_INC,       ///< Button to increase number of parameters
-	GRFPAR_WIDGET_NUMPAR,           ///< Optional number of parameters
-	GRFPAR_WIDGET_NUMPAR_TEXT,      ///< Text description
-	GRFPAR_WIDGET_BACKGROUND,       ///< Panel to draw the settings on
-	GRFPAR_WIDGET_SCROLLBAR,        ///< Scrollbar to scroll through all settings
-	GRFPAR_WIDGET_ACCEPT,           ///< Accept button
-	GRFPAR_WIDGET_RESET,            ///< Reset button
-	GRFPAR_WIDGET_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions
-	GRFPAR_WIDGET_DESCRIPTION,      ///< Multi-line description of a parameter
-};
 
 /**
  * Window for setting the parameters of a NewGRF.
@@ -466,14 +452,6 @@ void OpenGRFParameterWindow(GRFConfig *c)
 	new NewGRFParametersWindow(&_newgrf_parameters_desc, c);
 }
 
-/** Widgets of the #NewGRFTextfileWindow. */
-enum ShowNewGRFTextfileWidgets {
-	GTW_WIDGET_CAPTION,    ///< The caption of the window.
-	GTW_WIDGET_BACKGROUND, ///< Panel to draw the textfile on.
-	GTW_WIDGET_VSCROLLBAR, ///< Vertical scrollbar to scroll through the textfile up-and-down.
-	GTW_WIDGET_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
-};
-
 /** Window for displaying the textfile of a NewGRF. */
 struct NewGRFTextfileWindow : public Window, MissingGlyphSearcher {
 	const GRFConfig *grf_config;         ///< View the textfile of this GRFConfig.
@@ -698,35 +676,6 @@ public:
 };
 
 static void NewGRFConfirmationCallback(Window *w, bool confirmed);
-
-/** Names of the manage newgrfs window widgets. */
-enum ShowNewGRFStateWidgets {
-	SNGRFS_PRESET_LIST,
-	SNGRFS_PRESET_SAVE,
-	SNGRFS_PRESET_DELETE,
-	SNGRFS_ADD,
-	SNGRFS_REMOVE,
-	SNGRFS_MOVE_UP,
-	SNGRFS_MOVE_DOWN,
-	SNGRFS_FILTER,
-	SNGRFS_FILE_LIST,
-	SNGRFS_SCROLLBAR,
-	SNGRFS_AVAIL_LIST,
-	SNGRFS_SCROLL2BAR,
-	SNGRFS_NEWGRF_INFO_TITLE,
-	SNGRFS_NEWGRF_INFO,
-	SNGRFS_OPEN_URL,
-	SNGRFS_NEWGRF_TEXTFILE,
-	SNGRFS_SET_PARAMETERS = SNGRFS_NEWGRF_TEXTFILE + TFT_END,
-	SNGRFS_TOGGLE_PALETTE,
-	SNGRFS_APPLY_CHANGES,
-	SNGRFS_RESCAN_FILES,
-	SNGRFS_RESCAN_FILES2,
-	SNGRFS_CONTENT_DOWNLOAD,
-	SNGRFS_CONTENT_DOWNLOAD2,
-	SNGRFS_SHOW_REMOVE, ///< Select active list buttons (0 = normal, 1 = simple layout).
-	SNGRFS_SHOW_APPLY,  ///< Select display of the buttons below the 'details'.
-};
 
 /**
  * Window for showing NewGRF files
@@ -1960,12 +1909,6 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 	DeleteWindowByClass(WC_GAME_OPTIONS);
 	new NewGRFWindow(&_newgrf_desc, editable, show_params, exec_changes, config);
 }
-
-/** The widgets for the scan progress. */
-enum ScanProgressWindowWidgets {
-	SPWW_PROGRESS_BAR,  ///< Simple progress bar.
-	GPWW_PROGRESS_TEXT, ///< Text explaining what is happening.
-};
 
 /** Widgets for the progress window. */
 static const NWidgetPart _nested_scan_progress_widgets[] = {

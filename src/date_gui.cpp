@@ -18,16 +18,9 @@
 #include "core/geometry_func.hpp"
 
 #include "widgets/dropdown_type.h"
+#include "widgets/date_widget.h"
 
 #include "table/strings.h"
-
-/** Widgets used by the date window */
-enum SetDateWidgets {
-	SDW_DAY,      ///< Dropdown for the day
-	SDW_MONTH,    ///< Dropdown for the month
-	SDW_YEAR,     ///< Dropdown for the year
-	SDW_SET_DATE, ///< Actually set the date
-};
 
 /** Window to select a date graphically by using dropdowns */
 struct SetDateWindow : Window {

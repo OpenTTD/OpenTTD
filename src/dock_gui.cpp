@@ -29,6 +29,8 @@
 #include "hotkeys.h"
 #include "bridge.h"
 
+#include "widgets/dock_widget.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -87,20 +89,6 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = N
 
 	return endtile;
 }
-
-/** Enum referring to the widgets of the build dock toolbar */
-enum DockToolbarWidgets {
-	DTW_BUTTONS_BEGIN,             ///< Begin of clickable buttons (except seperating panel)
-	DTW_CANAL = DTW_BUTTONS_BEGIN, ///< Build canal button
-	DTW_LOCK,                      ///< Build lock button
-	DTW_DEMOLISH,                  ///< Demolish aka dynamite button
-	DTW_DEPOT,                     ///< Build depot button
-	DTW_STATION,                   ///< Build station button
-	DTW_BUOY,                      ///< Build buoy button
-	DTW_RIVER,                     ///< Build river button (in scenario editor)
-	DTW_BUILD_AQUEDUCT,            ///< Build aqueduct button
-	DTW_END,                       ///< End of toolbar widgets
-};
 
 /** Toolbar window for constructing water infra structure. */
 struct BuildDocksToolbarWindow : Window {

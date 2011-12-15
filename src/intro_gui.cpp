@@ -27,30 +27,10 @@
 #include "language.h"
 #include "rev.h"
 
+#include "widgets/intro_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
-
-enum SelectGameIntroWidgets {
-	SGI_GENERATE_GAME,
-	SGI_LOAD_GAME,
-	SGI_PLAY_SCENARIO,
-	SGI_PLAY_HEIGHTMAP,
-	SGI_EDIT_SCENARIO,
-	SGI_PLAY_NETWORK,
-	SGI_TEMPERATE_LANDSCAPE,
-	SGI_ARCTIC_LANDSCAPE,
-	SGI_TROPIC_LANDSCAPE,
-	SGI_TOYLAND_LANDSCAPE,
-	SGI_TRANSLATION_SELECTION,
-	SGI_TRANSLATION,
-	SGI_OPTIONS,
-	SGI_DIFFICULTIES,
-	SGI_SETTINGS_OPTIONS,
-	SGI_GRF_SETTINGS,
-	SGI_CONTENT_DOWNLOAD,
-	SGI_AI_SETTINGS,
-	SGI_EXIT,
-};
 
 struct SelectGameWindow : public Window {
 

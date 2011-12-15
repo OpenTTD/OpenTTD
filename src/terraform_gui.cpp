@@ -32,6 +32,8 @@
 #include "hotkeys.h"
 #include "engine_base.h"
 
+#include "widgets/terraform_widget.h"
+
 #include "table/strings.h"
 
 void CcTerraform(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
@@ -140,20 +142,6 @@ void PlaceProc_DemolishArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
 }
-
-/** Enum referring to the widgets of the terraform toolbar */
-enum TerraformToolbarWidgets {
-	TTW_SHOW_PLACE_OBJECT,                ///< Should the place object button be shown?
-	TTW_BUTTONS_START,                    ///< Start of pushable buttons
-	TTW_LOWER_LAND = TTW_BUTTONS_START,   ///< Lower land button
-	TTW_RAISE_LAND,                       ///< Raise land button
-	TTW_LEVEL_LAND,                       ///< Level land button
-	TTW_DEMOLISH,                         ///< Demolish aka dynamite button
-	TTW_BUY_LAND,                         ///< Buy land button
-	TTW_PLANT_TREES,                      ///< Plant trees button (note: opens seperate window, no place-push-button)
-	TTW_PLACE_SIGN,                       ///< Place sign button
-	TTW_PLACE_OBJECT,                     ///< Place object button
-};
 
 /** Terra form toolbar managing class. */
 struct TerraformToolbarWindow : Window {
@@ -465,26 +453,6 @@ static const int8 _multi_terraform_coords[][2] = {
 	{-20,  0}, {-16, -2}, {-12, -4}, { -8, -6}, { -4, -8}, {  0,-10}, {  4, -8}, {  8, -6}, { 12, -4}, { 16, -2}, { 20,  0},
 	{-24,  2}, {-20,  4}, {-16,  6}, {-12,  8}, { -8, 10}, { -4, 12}, {  0, 14}, {  4, 12}, {  8, 10}, { 12,  8}, { 16,  6}, { 20,  4}, { 24,  2},
 	{-28,  0}, {-24, -2}, {-20, -4}, {-16, -6}, {-12, -8}, { -8,-10}, { -4,-12}, {  0,-14}, {  4,-12}, {  8,-10}, { 12, -8}, { 16, -6}, { 20, -4}, { 24, -2}, { 28,  0},
-};
-
-/** Enum referring to the widgets of the editor terraform toolbar */
-enum EditorTerraformToolbarWidgets {
-	ETTW_SHOW_PLACE_DESERT,                ///< Should the place desert button be shown?
-	ETTW_START,                            ///< Used for iterations
-	ETTW_DOTS = ETTW_START,                ///< Invisible widget for rendering the terraform size on.
-	ETTW_BUTTONS_START,                    ///< Start of pushable buttons
-	ETTW_DEMOLISH = ETTW_BUTTONS_START,    ///< Demolish aka dynamite button
-	ETTW_LOWER_LAND,                       ///< Lower land button
-	ETTW_RAISE_LAND,                       ///< Raise land button
-	ETTW_LEVEL_LAND,                       ///< Level land button
-	ETTW_PLACE_ROCKS,                      ///< Place rocks button
-	ETTW_PLACE_DESERT,                     ///< Place desert button (in tropical climate)
-	ETTW_PLACE_OBJECT,                     ///< Place transmitter button
-	ETTW_BUTTONS_END,                      ///< End of pushable buttons
-	ETTW_INCREASE_SIZE = ETTW_BUTTONS_END, ///< Upwards arrow button to increase terraforming size
-	ETTW_DECREASE_SIZE,                    ///< Downwards arrow button to decrease terraforming size
-	ETTW_NEW_SCENARIO,                     ///< Button for generating a new scenario
-	ETTW_RESET_LANDSCAPE,                  ///< Button for removing all company-owned property
 };
 
 static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {

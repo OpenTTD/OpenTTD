@@ -22,6 +22,8 @@
 #include "../core/geometry_func.hpp"
 #include "network_content_gui.h"
 
+#include "../widgets/network_content_widget.h"
+
 #include "table/strings.h"
 #include "../table/sprites.h"
 
@@ -218,32 +220,6 @@ public:
 			this->GetWidget<NWidgetCore>(NCDSWW_CANCELOK)->widget_data = STR_BUTTON_OK;
 		}
 	}
-};
-
-/** Widgets of the content list window. */
-enum NetworkContentListWindowWidgets {
-	NCLWW_BACKGROUND,    ///< Resize button
-
-	NCLWW_FILTER_CAPT,   ///< Caption for the filter editbox
-	NCLWW_FILTER,        ///< Filter editbox
-
-	NCLWW_CHECKBOX,      ///< Button above checkboxes
-	NCLWW_TYPE,          ///< 'Type' button
-	NCLWW_NAME,          ///< 'Name' button
-
-	NCLWW_MATRIX,        ///< Panel with list of content
-	NCLWW_SCROLLBAR,     ///< Scrollbar of matrix
-
-	NCLWW_DETAILS,       ///< Panel with content details
-
-	NCLWW_SELECT_ALL,    ///< 'Select all' button
-	NCLWW_SELECT_UPDATE, ///< 'Select updates' button
-	NCLWW_UNSELECT,      ///< 'Unselect all' button
-	NCLWW_OPEN_URL,      ///< 'Open url' button
-	NCLWW_CANCEL,        ///< 'Cancel' button
-	NCLWW_DOWNLOAD,      ///< 'Download' button
-
-	NCLWW_SEL_ALL_UPDATE, ///< #NWID_SELECTION widget for select all/update buttons.
 };
 
 /** Window that lists the content that's at the content server */

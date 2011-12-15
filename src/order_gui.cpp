@@ -31,36 +31,9 @@
 #include "hotkeys.h"
 #include "aircraft.h"
 
-#include "table/strings.h"
+#include "widgets/order_widget.h"
 
-/** Widget numbers of the order window. */
-enum OrderWindowWidgets {
-	ORDER_WIDGET_CAPTION,
-	ORDER_WIDGET_TIMETABLE_VIEW,
-	ORDER_WIDGET_ORDER_LIST,
-	ORDER_WIDGET_SCROLLBAR,
-	ORDER_WIDGET_SKIP,
-	ORDER_WIDGET_DELETE,
-	ORDER_WIDGET_STOP_SHARING,
-	ORDER_WIDGET_NON_STOP,
-	ORDER_WIDGET_GOTO,
-	ORDER_WIDGET_FULL_LOAD,
-	ORDER_WIDGET_UNLOAD,
-	ORDER_WIDGET_REFIT,
-	ORDER_WIDGET_SERVICE,
-	ORDER_WIDGET_EMPTY,
-	ORDER_WIDGET_REFIT_DROPDOWN,
-	ORDER_WIDGET_COND_VARIABLE,
-	ORDER_WIDGET_COND_COMPARATOR,
-	ORDER_WIDGET_COND_VALUE,
-	ORDER_WIDGET_SEL_TOP_LEFT,              ///< #NWID_SELECTION widget for left part of the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_MIDDLE,            ///< #NWID_SELECTION widget for middle part of the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_RIGHT,             ///< #NWID_SELECTION widget for right part of the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_ROW_GROUNDVEHICLE, ///< #NWID_SELECTION widget for the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_ROW,               ///< #NWID_SELECTION widget for the top row of the 'your non-trains' order window.
-	ORDER_WIDGET_SEL_BOTTOM_MIDDLE,         ///< #NWID_SELECTION widget for the middle part of the bottom row of the 'your train' order window.
-	ORDER_WIDGET_SHARED_ORDER_LIST,
-};
+#include "table/strings.h"
 
 /** Order load types that could be given to station orders. */
 static const StringID _station_load_types[][5][5] = {

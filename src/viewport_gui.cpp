@@ -17,18 +17,10 @@
 #include "zoom_func.h"
 #include "window_func.h"
 
+#include "widgets/viewport_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
-
-/** Widget numbers of the extra viewport window. */
-enum ExtraViewportWindowWidgets {
-	EVW_CAPTION,
-	EVW_VIEWPORT,
-	EVW_ZOOMIN,
-	EVW_ZOOMOUT,
-	EVW_MAIN_TO_VIEW,
-	EVW_VIEW_TO_MAIN,
-};
 
 /* Extra ViewPort Window Stuff */
 static const NWidgetPart _nested_extra_view_port_widgets[] = {

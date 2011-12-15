@@ -26,6 +26,8 @@
 #include "statusbar_gui.h"
 #include "core/geometry_func.hpp"
 
+#include "widgets/statusbar_widget.h"
+
 #include "table/strings.h"
 #include "table/sprites.h"
 
@@ -70,12 +72,6 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 
 	return (_current_text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
 }
-
-enum StatusbarWidget {
-	SBW_LEFT,   ///< left part of the statusbar; date is shown there
-	SBW_MIDDLE, ///< middle part; current news or company name or *** SAVING *** or *** PAUSED ***
-	SBW_RIGHT,  ///< right part; bank balance
-};
 
 struct StatusBarWindow : Window {
 	bool saving;

@@ -25,26 +25,10 @@
 #include "vehicle_gui.h"
 #include "settings_type.h"
 
+#include "widgets/timetable_widget.h"
+
 #include "table/sprites.h"
 #include "table/strings.h"
-
-enum TimetableViewWindowWidgets {
-	TTV_CAPTION,
-	TTV_ORDER_VIEW,
-	TTV_TIMETABLE_PANEL,
-	TTV_ARRIVAL_DEPARTURE_PANEL,      ///< Panel with the expected/scheduled arrivals
-	TTV_SCROLLBAR,
-	TTV_SUMMARY_PANEL,
-	TTV_START_DATE,
-	TTV_CHANGE_TIME,
-	TTV_CLEAR_TIME,
-	TTV_RESET_LATENESS,
-	TTV_AUTOFILL,
-	TTV_EXPECTED,                    ///< Toggle between expected and scheduled arrivals
-	TTV_SHARED_ORDER_LIST,           ///< Show the shared order list
-	TTV_ARRIVAL_DEPARTURE_SELECTION, ///< Disable/hide the arrival departure panel
-	TTV_EXPECTED_SELECTION,          ///< Disable/hide the expected selection button
-};
 
 /** Container for the arrival/departure dates of a vehicle */
 struct TimetableArrivalDeparture {
