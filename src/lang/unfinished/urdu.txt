@@ -184,6 +184,7 @@ STR_COLOUR_GREEN                                                :سبز
 STR_COLOUR_DARK_GREEN                                           :گہرا سبز
 STR_COLOUR_BLUE                                                 :نیلا
 STR_COLOUR_CREAM                                                :بالائی
+STR_COLOUR_MAUVE                                                :بنفشی
 STR_COLOUR_PURPLE                                               :جامنی
 STR_COLOUR_ORANGE                                               :نارنجی
 STR_COLOUR_BROWN                                                :بھورا
@@ -1056,6 +1057,8 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 
 
+# Config errors
+
 # Intro window
 
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
@@ -1535,6 +1538,7 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 
 
 # String parts to build the order string
+
 
 
 
