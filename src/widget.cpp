@@ -567,7 +567,7 @@ void Window::DrawWidgets() const
 {
 	this->nested_root->Draw(this);
 
-	if (this->flags4 & WF_WHITE_BORDER_MASK) {
+	if (this->flags & WF_WHITE_BORDER) {
 		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
@@ -2341,12 +2341,12 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_STICKYBOX:
 			assert(this->widget_data == 0);
-			DrawStickyBox(r, this->colour, !!(w->flags4 & WF_STICKY));
+			DrawStickyBox(r, this->colour, !!(w->flags & WF_STICKY));
 			break;
 
 		case WWT_RESIZEBOX:
 			assert(this->widget_data == 0);
-			DrawResizeBox(r, this->colour, this->pos_x < (uint)(w->width / 2), !!(w->flags4 & WF_SIZING));
+			DrawResizeBox(r, this->colour, this->pos_x < (uint)(w->width / 2), !!(w->flags & WF_SIZING));
 			break;
 
 		case WWT_CLOSEBOX:

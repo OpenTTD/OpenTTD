@@ -264,7 +264,7 @@ void Window::SetWidgetDirty(byte widget_index) const
 void Window::HandleButtonClick(byte widget)
 {
 	this->LowerWidget(widget);
-	this->flags4 |= WF_TIMEOUT_BEGIN;
+	this->SetTimeout();
 	this->SetWidgetDirty(widget);
 }
 
@@ -373,7 +373,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			return;
 
 		case WWT_STICKYBOX:
-			w->flags4 ^= WF_STICKY;
+			w->flags ^= WF_STICKY;
 			nw->SetDirty(w);
 			return;
 
@@ -753,7 +753,7 @@ void DeleteWindowById(WindowClass cls, WindowNumber number, bool force)
 {
 	Window *w = FindWindowById(cls, number);
 	if (force || w == NULL ||
-			(w->flags4 & WF_STICKY) == 0) {
+			(w->flags & WF_STICKY) == 0) {
 		delete w;
 	}
 }
@@ -852,7 +852,7 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 	if (w != NULL) {
 		if (w->IsShaded()) w->SetShaded(false); // Restore original window size if it was shaded.
 
-		w->flags4 |= WF_WHITE_BORDER_MASK;
+		w->SetWhiteBorder();
 		BringWindowToFront(w);
 		w->SetDirty();
 	}
@@ -1037,8 +1037,8 @@ void Window::InitializeData(const WindowDesc *desc, WindowNumber window_number)
 {
 	/* Set up window properties; some of them are needed to set up smallest size below */
 	this->window_class = desc->cls;
-	this->flags4 |= WF_WHITE_BORDER_MASK; // just opened windows have a white border
-	if (desc->default_pos == WDP_CENTER) this->flags4 |= WF_CENTERED;
+	this->SetWhiteBorder();
+	if (desc->default_pos == WDP_CENTER) this->flags |= WF_CENTERED;
 	this->owner = INVALID_OWNER;
 	this->nested_focus = NULL;
 	this->window_number = window_number;
@@ -1506,7 +1506,9 @@ static void DecreaseWindowCounters()
 	}
 
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		if ((w->flags4 & WF_TIMEOUT_MASK) && !(--w->flags4 & WF_TIMEOUT_MASK)) {
+		if ((w->flags & WF_TIMEOUT) && --w->timeout_timer == 0) {
+			CLRBITS(w->flags, WF_TIMEOUT);
+
 			w->OnTimeout();
 			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons(true);
 		}
@@ -1742,10 +1744,10 @@ static EventState HandleWindowDragging()
 	/* Otherwise find the window... */
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->flags4 & WF_DRAGGING) {
+		if (w->flags & WF_DRAGGING) {
 			/* Stop the dragging if the left mouse button was released */
 			if (!_left_button_down) {
-				w->flags4 &= ~WF_DRAGGING;
+				w->flags &= ~WF_DRAGGING;
 				break;
 			}
 
@@ -1836,10 +1838,10 @@ static EventState HandleWindowDragging()
 
 			w->SetDirty();
 			return ES_HANDLED;
-		} else if (w->flags4 & WF_SIZING) {
+		} else if (w->flags & WF_SIZING) {
 			/* Stop the sizing if the left mouse button was released */
 			if (!_left_button_down) {
-				w->flags4 &= ~WF_SIZING;
+				w->flags &= ~WF_SIZING;
 				w->SetDirty();
 				break;
 			}
@@ -1848,7 +1850,7 @@ static EventState HandleWindowDragging()
 			 * If resizing the left edge of the window, moving to the left makes the window bigger not smaller.
 			 */
 			int x, y = _cursor.pos.y - _drag_delta.y;
-			if (w->flags4 & WF_SIZING_LEFT) {
+			if (w->flags & WF_SIZING_LEFT) {
 				x = _drag_delta.x - _cursor.pos.x;
 			} else {
 				x = _cursor.pos.x - _drag_delta.x;
@@ -1882,7 +1884,7 @@ static EventState HandleWindowDragging()
 
 			/* Now find the new cursor pos.. this is NOT _cursor, because we move in steps. */
 			_drag_delta.y += y;
-			if ((w->flags4 & WF_SIZING_LEFT) && x != 0) {
+			if ((w->flags & WF_SIZING_LEFT) && x != 0) {
 				_drag_delta.x -= x; // x > 0 -> window gets longer -> left-edge moves to left -> subtract x to get new position.
 				w->SetDirty();
 				w->left -= x;  // If dragging left edge, move left window edge in opposite direction by the same amount.
@@ -1907,8 +1909,8 @@ static EventState HandleWindowDragging()
  */
 static void StartWindowDrag(Window *w)
 {
-	w->flags4 |= WF_DRAGGING;
-	w->flags4 &= ~WF_CENTERED;
+	w->flags |= WF_DRAGGING;
+	w->flags &= ~WF_CENTERED;
 	_dragging_window = true;
 
 	_drag_delta.x = w->left - _cursor.pos.x;
@@ -1925,8 +1927,8 @@ static void StartWindowDrag(Window *w)
  */
 static void StartWindowSizing(Window *w, bool to_left)
 {
-	w->flags4 |= to_left ? WF_SIZING_LEFT : WF_SIZING_RIGHT;
-	w->flags4 &= ~WF_CENTERED;
+	w->flags |= to_left ? WF_SIZING_LEFT : WF_SIZING_RIGHT;
+	w->flags &= ~WF_CENTERED;
 	_dragging_window = true;
 
 	_drag_delta.x = _cursor.pos.x;
@@ -2073,7 +2075,7 @@ static bool MaybeBringWindowToFront(Window *w)
 	FOR_ALL_WINDOWS_FROM_BACK_FROM(u, w->z_front) {
 		/* A modal child will prevent the activation of the parent window */
 		if (u->parent == w && (u->desc_flags & WDF_MODAL)) {
-			u->flags4 |= WF_WHITE_BORDER_MASK;
+			u->SetWhiteBorder();
 			u->SetDirty();
 			return false;
 		}
@@ -2178,7 +2180,7 @@ static void HandleAutoscroll()
 		int x = _cursor.pos.x;
 		int y = _cursor.pos.y;
 		Window *w = FindWindowFromPt(x, y);
-		if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL) return;
+		if (w == NULL || w->flags & WF_DISABLE_VP_SCROLL) return;
 		ViewPort *vp = IsPtInWindowViewport(w, x, y);
 		if (vp != NULL) {
 			x -= vp->left;
@@ -2311,7 +2313,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_LEFT:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
 				if (!HandleViewportClicked(vp, x, y) &&
-						!(w->flags4 & WF_DISABLE_VP_SCROLL) &&
+						!(w->flags & WF_DISABLE_VP_SCROLL) &&
 						_settings_client.gui.left_mouse_btn_scrolling) {
 					_scrolling_viewport = true;
 					_cursor.fix_at = false;
@@ -2319,7 +2321,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				break;
 
 			case MC_RIGHT:
-				if (!(w->flags4 & WF_DISABLE_VP_SCROLL)) {
+				if (!(w->flags & WF_DISABLE_VP_SCROLL)) {
 					_scrolling_viewport = true;
 					_cursor.fix_at = true;
 
@@ -2445,7 +2447,7 @@ static void CheckSoftLimit()
 		uint deletable_count = 0;
 		Window *w, *last_deletable = NULL;
 		FOR_ALL_WINDOWS_FROM_FRONT(w) {
-			if (w->window_class == WC_MAIN_WINDOW || IsVitalWindow(w) || (w->flags4 & WF_STICKY)) continue;
+			if (w->window_class == WC_MAIN_WINDOW || IsVitalWindow(w) || (w->flags & WF_STICKY)) continue;
 
 			last_deletable = w;
 			deletable_count++;
@@ -2520,10 +2522,9 @@ void UpdateWindows()
 	we4_timer = t;
 
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		if (w->flags4 & WF_WHITE_BORDER_MASK) {
-			w->flags4 -= WF_WHITE_BORDER_ONE;
-
-			if (!(w->flags4 & WF_WHITE_BORDER_MASK)) w->SetDirty();
+		if ((w->flags & WF_WHITE_BORDER) && --w->white_border_timer == 0) {
+			CLRBITS(w->flags, WF_WHITE_BORDER);
+			w->SetDirty();
 		}
 	}
 
@@ -2577,6 +2578,32 @@ void SetWindowClassesDirty(WindowClass cls)
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		if (w->window_class == cls) w->SetDirty();
 	}
+}
+
+/**
+ * Mark this window's data as invalid (in need of re-computing)
+ * @param data The data to invalidate with
+ * @param gui_scope Whether the funtion is called from GUI scope.
+ */
+void Window::InvalidateData(int data, bool gui_scope)
+{
+	this->SetDirty();
+	if (!gui_scope) {
+		/* Schedule GUI-scope invalidation for next redraw. */
+		*this->scheduled_invalidation_data.Append() = data;
+	}
+	this->OnInvalidateData(data, gui_scope);
+}
+
+/**
+ * Process all scheduled invalidations.
+ */
+void Window::ProcessScheduledInvalidations()
+{
+	for (int *data = this->scheduled_invalidation_data.Begin(); this->window_class != WC_INVALID && data != this->scheduled_invalidation_data.End(); data++) {
+		this->OnInvalidateData(*data, true);
+	}
+	this->scheduled_invalidation_data.Clear();
 }
 
 /**
@@ -2665,7 +2692,7 @@ restart_search:
 				w->window_class != WC_MAIN_TOOLBAR &&
 				w->window_class != WC_STATUS_BAR &&
 				w->window_class != WC_TOOLTIPS &&
-				(w->flags4 & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
+				(w->flags & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
 
 			delete w;
 			goto restart_search;
@@ -2692,7 +2719,7 @@ restart_search:
 	 * as deleting this window could cascade in deleting (many) others
 	 * anywhere in the z-array */
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->flags4 & WF_STICKY) {
+		if (w->flags & WF_STICKY) {
 			delete w;
 			goto restart_search;
 		}
@@ -2893,7 +2920,7 @@ void RelocateAllWindows(int neww, int newh)
 				continue;
 
 			default: {
-				if (w->flags4 & WF_CENTERED) {
+				if (w->flags & WF_CENTERED) {
 					top = (newh - w->height) >> 1;
 					left = (neww - w->width) >> 1;
 					break;

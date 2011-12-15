@@ -50,7 +50,7 @@ public:
 	BootstrapBackground() : Window()
 	{
 		this->InitNested(&_background_desc, 0);
-		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
+		CLRBITS(this->flags, WF_WHITE_BORDER);
 		ResizeWindow(this, _screen.width, _screen.height);
 	}
 

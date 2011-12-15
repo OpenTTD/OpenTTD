@@ -1156,7 +1156,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_COMPANIES_BTND:  case NSSW_COMPANIES_BTNU:  // Click on up/down button for number of companies
 			case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU: // Click on up/down button for number of spectators
 				/* Don't allow too fast scrolling */
-				if ((this->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
+				if ((this->flags & WF_TIMEOUT) && this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 					switch (widget) {
@@ -1822,7 +1822,7 @@ struct NetworkClientListPopupWindow : Window {
 		}
 
 		this->InitNested(desc, client_id);
-		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
+		CLRBITS(this->flags, WF_WHITE_BORDER);
 	}
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)

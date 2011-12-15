@@ -206,6 +206,27 @@ enum SortButtonState {
 };
 
 /**
+ * Window flags.
+ */
+enum WindowFlags {
+	WF_TIMEOUT           = 1 <<  0, ///< Window timeout counter.
+
+	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged.
+	WF_SIZING_RIGHT      = 1 <<  4, ///< Window is being resized towards the right.
+	WF_SIZING_LEFT       = 1 <<  5, ///< Window is being resized towards the left.
+	WF_SIZING            = WF_SIZING_RIGHT | WF_SIZING_LEFT, ///< Window is being resized.
+	WF_STICKY            = 1 <<  6, ///< Window is made sticky by user
+	WF_DISABLE_VP_SCROLL = 1 <<  7, ///< Window does not do autoscroll, @see HandleAutoscroll().
+	WF_WHITE_BORDER      = 1 <<  8, ///< Window white border counter bit mask.
+
+	WF_CENTERED          = 1 << 10, ///< Window is centered and shall stay centered after ReInit.
+};
+DECLARE_ENUM_AS_BIT_SET(WindowFlags)
+
+static const int TIMEOUT_DURATION = 7; ///< The initial timeout value for WF_TIMEOUT.
+static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for WF_WHITE_BORDER.
+
+/**
  * Data structure for a window viewport.
  * A viewport is either following a vehicle (its id in then in #follow_vehicle), or it aims to display a specific
  * location #dest_scrollpos_x, #dest_scrollpos_y (#follow_vehicle is then #INVALID_VEHICLE).
@@ -256,9 +277,12 @@ public:
 	{
 	}
 
-	uint16 flags4;              ///< Window flags, @see WindowFlags
+	WindowFlags flags;          ///< Window flags
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class
+
+	uint8 timeout_timer;      ///< Timer value of the WF_TIMEOUT for flags.
+	uint8 white_border_timer; ///< Timervalue of the WF_WHITE_BORDER for flags.
 
 	int left;   ///< x position of left edge of the window
 	int top;    ///< y position of top edge of the window
@@ -278,7 +302,7 @@ public:
 	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c NULL, window cannot shade.
 	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
 
-	int scrolling_scrollbar;         ///< Widgetindex of just being dragged scrollbar. -1 of none is active.
+	int scrolling_scrollbar;         ///< Widgetindex of just being dragged scrollbar. -1 if none is active.
 
 	Window *parent;                  ///< Parent window.
 	Window *z_front;                 ///< The window in front of us in z-order.
@@ -295,6 +319,24 @@ public:
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
 	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);
 	void FinishInitNested(const WindowDesc *desc, WindowNumber window_number = 0);
+
+	/**
+	 * Set the timeout flag of the window and initiate the timer.
+	 */
+	inline void SetTimeout()
+	{
+		this->flags |= WF_TIMEOUT;
+		this->timeout_timer = TIMEOUT_DURATION;
+	}
+
+	/**
+	 * Set the timeout flag of the window and initiate the timer.
+	 */
+	inline void SetWhiteBorder()
+	{
+		this->flags |= WF_WHITE_BORDER;
+		this->white_border_timer = WHITE_BORDER_DURATION;
+	}
 
 	/**
 	 * Sets the enabled/disabled status of a widget.
@@ -438,31 +480,8 @@ public:
 
 	void SetShaded(bool make_shaded);
 
-	/**
-	 * Mark this window's data as invalid (in need of re-computing)
-	 * @param data The data to invalidate with
-	 * @param gui_scope Whether the funtion is called from GUI scope.
-	 */
-	void InvalidateData(int data = 0, bool gui_scope = true)
-	{
-		this->SetDirty();
-		if (!gui_scope) {
-			/* Schedule GUI-scope invalidation for next redraw. */
-			*this->scheduled_invalidation_data.Append() = data;
-		}
-		this->OnInvalidateData(data, gui_scope);
-	}
-
-	/**
-	 * Process all scheduled invalidations.
-	 */
-	void ProcessScheduledInvalidations()
-	{
-		for (int *data = this->scheduled_invalidation_data.Begin(); this->window_class != WC_INVALID && data != this->scheduled_invalidation_data.End(); data++) {
-			this->OnInvalidateData(*data, true);
-		}
-		this->scheduled_invalidation_data.Clear();
-	}
+	void InvalidateData(int data = 0, bool gui_scope = true);
+	void ProcessScheduledInvalidations();
 
 	/*** Event handling ***/
 
@@ -771,27 +790,6 @@ public:
 	}
 
 	virtual ~PickerWindowBase();
-};
-
-/**
- * Window flags
- */
-enum WindowFlags {
-	WF_TIMEOUT_TRIGGER   = 1,       ///< When the timeout should start triggering
-	WF_TIMEOUT_BEGIN     = 7,       ///< The initial value for the timeout
-	WF_TIMEOUT_MASK      = 7,       ///< Window timeout counter bit mask (3 bits)
-	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged
-	WF_SIZING_RIGHT      = 1 <<  4, ///< Window is being resized towards the right.
-	WF_SIZING_LEFT       = 1 <<  5, ///< Window is being resized towards the left.
-	WF_SIZING            = WF_SIZING_RIGHT | WF_SIZING_LEFT, ///< Window is being resized.
-	WF_STICKY            = 1 <<  6, ///< Window is made sticky by user
-
-	WF_DISABLE_VP_SCROLL = 1 <<  7, ///< Window does not do autoscroll, @see HandleAutoscroll()
-
-	WF_WHITE_BORDER_ONE  = 1 <<  8,
-	WF_WHITE_BORDER_MASK = 1 <<  9 | WF_WHITE_BORDER_ONE,
-
-	WF_CENTERED          = 1 << 10, ///< Window is centered and shall stay centered after ReInit
 };
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);

@@ -673,7 +673,7 @@ class IndustryViewWindow : public Window
 public:
 	IndustryViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->flags4 |= WF_DISABLE_VP_SCROLL;
+		this->flags |= WF_DISABLE_VP_SCROLL;
 		this->editbox_line = IL_NONE;
 		this->clicked_line = IL_NONE;
 		this->clicked_button = 0;
@@ -886,7 +886,7 @@ public:
 
 					UpdateIndustryProduction(i);
 					this->SetDirty();
-					this->flags4 |= WF_TIMEOUT_BEGIN;
+					this->SetTimeout();
 					this->clicked_line = line;
 					this->clicked_button = button;
 				} else if (IsInsideMM(pt.x, left + 30, right)) {

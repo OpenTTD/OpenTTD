@@ -244,7 +244,7 @@ struct MainWindow : Window
 	MainWindow() : Window()
 	{
 		this->InitNested(&_main_window_desc, 0);
-		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
+		CLRBITS(this->flags, WF_WHITE_BORDER);
 		ResizeWindow(this, _screen.width, _screen.height);
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(MW_VIEWPORT);

@@ -596,7 +596,7 @@ public:
 
 			case SLW_SORTBY: // flip sorting method asc/desc
 				this->stations.ToggleSortOrder();
-				this->flags4 |= WF_TIMEOUT_BEGIN;
+				this->SetTimeout();
 				this->LowerWidget(SLW_SORTBY);
 				this->SetDirty();
 				break;

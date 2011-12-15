@@ -93,7 +93,7 @@ struct StatusBarWindow : Window {
 		this->reminder_timeout = REMINDER_STOP;
 
 		this->InitNested(desc);
-		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
+		CLRBITS(this->flags, WF_WHITE_BORDER);
 		PositionStatusbar(this);
 	}
 

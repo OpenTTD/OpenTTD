@@ -73,7 +73,7 @@ public:
 		this->FinishInitNested(desc, window_number);
 
 		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
-		this->flags4 |= WF_DISABLE_VP_SCROLL;
+		this->flags |= WF_DISABLE_VP_SCROLL;
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
 		nvp->InitializeViewport(this, this->GetCenterTile(), ZOOM_LVL_VIEWPORT);

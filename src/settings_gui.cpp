@@ -1708,7 +1708,7 @@ struct GameSettingsWindow : Window {
 					if (step == 0) step = 1;
 
 					/* don't allow too fast scrolling */
-					if ((this->flags4 & WF_TIMEOUT_MASK) > WF_TIMEOUT_TRIGGER) {
+					if ((this->flags & WF_TIMEOUT) && this->timeout_timer > 1) {
 						_left_button_clicked = false;
 						return;
 					}
@@ -1735,7 +1735,7 @@ struct GameSettingsWindow : Window {
 						}
 						this->clicked_entry = pe;
 						this->clicked_entry->SetButtons((x >= 10) != (_current_text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
-						this->flags4 |= WF_TIMEOUT_BEGIN;
+						this->SetTimeout();
 						_left_button_clicked = false;
 					}
 					break;
@@ -2016,7 +2016,7 @@ struct CustomCurrencyWindow : Window {
 			ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, this, afilter, QSF_NONE);
 		}
 
-		this->flags4 |= WF_TIMEOUT_BEGIN;
+		this->SetTimeout();
 		this->SetDirty();
 	}
 

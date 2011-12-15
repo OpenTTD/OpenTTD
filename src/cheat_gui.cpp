@@ -360,7 +360,7 @@ struct CheatWindow : Window {
 
 		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
 
-		this->flags4 |= WF_TIMEOUT_BEGIN;
+		this->SetTimeout();
 
 		this->SetDirty();
 	}

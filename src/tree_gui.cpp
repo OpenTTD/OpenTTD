@@ -151,7 +151,7 @@ public:
 
 			case BTW_MANY_RANDOM: // place trees randomly over the landscape
 				this->LowerWidget(BTW_MANY_RANDOM);
-				this->flags4 |= WF_TIMEOUT_BEGIN;
+				this->SetTimeout();
 				SndPlayFx(SND_15_BEEP);
 				PlaceTreesRandomly();
 				MarkWholeScreenDirty();
