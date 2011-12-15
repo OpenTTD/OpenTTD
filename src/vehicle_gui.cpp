@@ -375,7 +375,7 @@ struct RefitWindow : public Window {
 	RefitOption *cargo;          ///< Refit option selected by \v sel.
 	SubtypeList list[NUM_CARGO]; ///< List of refit subtypes available for each sorted cargo.
 	VehicleOrderID order;        ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
-	uint information_width;      ///< Width required for correctly displaying all cargos in the information panel.
+	uint information_width;      ///< Width required for correctly displaying all cargoes in the information panel.
 	Scrollbar *vscroll;          ///< The main scrollbar.
 	Scrollbar *hscroll;          ///< Only used for long vehicles.
 	int vehicle_width;           ///< Width of the vehicle being drawn.
@@ -410,7 +410,7 @@ struct RefitWindow : public Window {
 			/* Skip this engine if we build the list for auto-refitting and engine doesn't allow it. */
 			if (this->auto_refit && !HasBit(e->info.misc_flags, EF_AUTO_REFIT)) continue;
 
-			/* Loop through all cargos in the refit mask */
+			/* Loop through all cargoes in the refit mask */
 			int current_index = 0;
 			const CargoSpec *cs;
 			FOR_ALL_SORTED_CARGOSPECS(cs) {

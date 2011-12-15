@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_cargo.hpp Everything to query cargos. */
+/** @file script_cargo.hpp Everything to query cargoes. */
 
 #ifndef SCRIPT_CARGO_HPP
 #define SCRIPT_CARGO_HPP
@@ -27,7 +27,7 @@ public:
 	 */
 	enum CargoClass {
 		/* Note: these values represent part of the in-game CargoClass enum */
-		CC_PASSENGERS   = ::CC_PASSENGERS,   ///< Passengers. Cargos of this class appear at bus stops. Cargos not of this class appear at truck stops.
+		CC_PASSENGERS   = ::CC_PASSENGERS,   ///< Passengers. Cargoes of this class appear at bus stops. Cargoes not of this class appear at truck stops.
 		CC_MAIL         = ::CC_MAIL,         ///< Mail
 		CC_EXPRESS      = ::CC_EXPRESS,      ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
 		CC_ARMOURED     = ::CC_ARMOURED,     ///< Armoured cargo (Valuables, Gold, Diamonds)

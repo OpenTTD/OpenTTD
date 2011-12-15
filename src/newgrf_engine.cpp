@@ -37,7 +37,7 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	Engine *e = Engine::Get(engine);
 	WagonOverride *wo;
 
-	assert(cargo < NUM_CARGO + 2); // Include CT_DEFAULT and CT_PURCHASE pseudo cargos.
+	assert(cargo < NUM_CARGO + 2); // Include CT_DEFAULT and CT_PURCHASE pseudo cargoes.
 
 	e->overrides_count++;
 	e->overrides = ReallocT(e->overrides, e->overrides_count);
@@ -485,14 +485,14 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			if (!HasBit(v->grf_cache.cache_valid, NCVV_CONSIST_CARGO_INFORMATION)) {
 				const Vehicle *u;
 				byte cargo_classes = 0;
-				uint8 common_cargos[NUM_CARGO];
+				uint8 common_cargoes[NUM_CARGO];
 				uint8 common_subtypes[256];
 				byte user_def_data = 0;
 				CargoID common_cargo_type = CT_INVALID;
 				uint8 common_subtype = 0xFF; // Return 0xFF if nothing is carried
 
 				/* Reset our arrays */
-				memset(common_cargos, 0, sizeof(common_cargos));
+				memset(common_cargoes, 0, sizeof(common_cargoes));
 				memset(common_subtypes, 0, sizeof(common_subtypes));
 
 				for (u = v; u != NULL; u = u->Next()) {
@@ -502,14 +502,14 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 					if (u->cargo_cap == 0) continue;
 
 					cargo_classes |= CargoSpec::Get(u->cargo_type)->classes;
-					common_cargos[u->cargo_type]++;
+					common_cargoes[u->cargo_type]++;
 				}
 
 				/* Pick the most common cargo type */
 				uint common_cargo_best_amount = 0;
 				for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
-					if (common_cargos[cargo] > common_cargo_best_amount) {
-						common_cargo_best_amount = common_cargos[cargo];
+					if (common_cargoes[cargo] > common_cargo_best_amount) {
+						common_cargo_best_amount = common_cargoes[cargo];
 						common_cargo_type = cargo;
 					}
 				}

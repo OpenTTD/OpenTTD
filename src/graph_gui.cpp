@@ -890,8 +890,8 @@ enum CargoPaymentRatesWidgets {
 	CPW_GRAPH,
 	CPW_RESIZE,
 	CPW_FOOTER,
-	CPW_ENABLE_CARGOS,
-	CPW_DISABLE_CARGOS,
+	CPW_ENABLE_CARGOES,
+	CPW_DISABLE_CARGOES,
 	CPW_CARGO_FIRST,
 };
 
@@ -991,16 +991,16 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case CPW_ENABLE_CARGOS:
-				/* Remove all cargos from the excluded lists. */
+			case CPW_ENABLE_CARGOES:
+				/* Remove all cargoes from the excluded lists. */
 				_legend_excluded_cargo = 0;
 				this->excluded_data = 0;
 				this->UpdateLoweredWidgets();
 				this->SetDirty();
 				break;
 
-			case CPW_DISABLE_CARGOS: {
-				/* Add all cargos to the excluded lists. */
+			case CPW_DISABLE_CARGOES: {
+				/* Add all cargoes to the excluded lists. */
 				int i = 0;
 				const CargoSpec *cs;
 				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
@@ -1092,8 +1092,8 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 			NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0), SetResize(0, 1),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 				NWidgetFunction(MakeCargoButtons),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1), SetResize(0, 1),

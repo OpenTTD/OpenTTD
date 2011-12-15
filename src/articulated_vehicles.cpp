@@ -103,23 +103,23 @@ static inline uint16 GetVehicleDefaultCapacity(EngineID engine, CargoID *cargo_t
 }
 
 /**
- * Returns all cargos a vehicle can carry.
+ * Returns all cargoes a vehicle can carry.
  * @param engine the EngineID of iterest
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
  * @return bit set of CargoIDs
  */
 static inline uint32 GetAvailableVehicleCargoTypes(EngineID engine, bool include_initial_cargo_type)
 {
-	uint32 cargos = 0;
+	uint32 cargoes = 0;
 	CargoID initial_cargo_type;
 
 	if (GetVehicleDefaultCapacity(engine, &initial_cargo_type) > 0) {
 		const EngineInfo *ei = EngInfo(engine);
-		cargos = ei->refit_mask;
-		if (include_initial_cargo_type && initial_cargo_type < NUM_CARGO) SetBit(cargos, initial_cargo_type);
+		cargoes = ei->refit_mask;
+		if (include_initial_cargo_type && initial_cargo_type < NUM_CARGO) SetBit(cargoes, initial_cargo_type);
 	}
 
-	return cargos;
+	return cargoes;
 }
 
 /**
@@ -185,9 +185,9 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, uint32 *union_mask, uint32 *intersection_mask)
 {
 	const Engine *e = Engine::Get(engine);
-	uint32 veh_cargos = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
-	*union_mask = veh_cargos;
-	*intersection_mask = (veh_cargos != 0) ? veh_cargos : UINT32_MAX;
+	uint32 veh_cargoes = GetAvailableVehicleCargoTypes(engine, include_initial_cargo_type);
+	*union_mask = veh_cargoes;
+	*intersection_mask = (veh_cargoes != 0) ? veh_cargoes : UINT32_MAX;
 
 	if (!e->IsGroundVehicle()) return;
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
@@ -196,9 +196,9 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
 		EngineID artic_engine = GetNextArticulatedPart(i, engine);
 		if (artic_engine == INVALID_ENGINE) break;
 
-		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
-		*union_mask |= veh_cargos;
-		if (veh_cargos != 0) *intersection_mask &= veh_cargos;
+		veh_cargoes = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
+		*union_mask |= veh_cargoes;
+		if (veh_cargoes != 0) *intersection_mask &= veh_cargoes;
 	}
 }
 
@@ -234,9 +234,9 @@ uint32 GetIntersectionOfArticulatedRefitMasks(EngineID engine, bool include_init
  * Note: Vehicles not carrying anything are ignored
  * @param v the first vehicle in the chain
  * @param cargo_type returns the common CargoID if needed. (CT_INVALID if no part is carrying something or they are carrying different things)
- * @return true if some parts are carrying different cargos, false if all parts are carrying the same (nothing is also the same)
+ * @return true if some parts are carrying different cargoes, false if all parts are carrying the same (nothing is also the same)
  */
-bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *cargo_type)
+bool IsArticulatedVehicleCarryingDifferentCargoes(const Vehicle *v, CargoID *cargo_type)
 {
 	CargoID first_cargo = CT_INVALID;
 
@@ -287,7 +287,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 		v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL;
 	} while (v != NULL);
 
-	/* Check whether the vehicle carries more cargos than expected */
+	/* Check whether the vehicle carries more cargoes than expected */
 	bool carries_more = false;
 	for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 		if (real_default_capacity[cid] != 0 && purchase_default_capacity[cid] == 0) {

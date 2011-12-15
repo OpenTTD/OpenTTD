@@ -144,7 +144,7 @@ bool Vehicle::NeedsServicing() const
 		if (union_mask != 0) {
 			CargoID cargo_type;
 			/* We cannot refit to mixed cargoes in an automated way */
-			if (IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type)) continue;
+			if (IsArticulatedVehicleCarryingDifferentCargoes(v, &cargo_type)) continue;
 
 			/* Did the old vehicle carry anything? */
 			if (cargo_type != CT_INVALID) {

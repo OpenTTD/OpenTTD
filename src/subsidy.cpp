@@ -259,7 +259,7 @@ bool FindSubsidyTownCargoRoute()
 		cargo_number--;
 	}
 
-	/* Avoid using invalid NewGRF cargos. */
+	/* Avoid using invalid NewGRF cargoes. */
 	if (!CargoSpec::Get(cid)->IsValid()) return false;
 
 	/* Quit if the percentage transported is large enough. */
@@ -316,7 +316,7 @@ bool FindSubsidyIndustryCargoRoute()
 bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 {
 	/* Choose a random destination. Only consider towns if they can accept the cargo. */
-	SourceType dst_type = (HasBit(_town_cargos_accepted, cid) && Chance16(1, 2)) ? ST_TOWN : ST_INDUSTRY;
+	SourceType dst_type = (HasBit(_town_cargoes_accepted, cid) && Chance16(1, 2)) ? ST_TOWN : ST_INDUSTRY;
 
 	SourceID dst;
 	switch (dst_type) {

@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file cargotype.cpp Implementation of cargos. */
+/** @file cargotype.cpp Implementation of cargoes. */
 
 #include "stdafx.h"
 #include "cargotype.h"
@@ -122,7 +122,7 @@ SpriteID CargoSpec::GetCargoIcon() const
 }
 
 const CargoSpec *_sorted_cargo_specs[NUM_CARGO]; ///< Cargo specifications sorted alphabetically by name.
-uint8 _sorted_cargo_specs_size;                  ///< Number of cargo specifications stored at the _sorted_cargo_specs array (including special cargos).
+uint8 _sorted_cargo_specs_size;                  ///< Number of cargo specifications stored at the _sorted_cargo_specs array (including special cargoes).
 uint8 _sorted_standard_cargo_specs_size;         ///< Number of standard cargo specifications stored at the _sorted_cargo_specs array.
 
 

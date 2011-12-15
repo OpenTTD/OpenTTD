@@ -86,21 +86,21 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 }
 
 /**
- * Gets all strings to display after the cargos of industries (using callback 37)
- * @param cb_offset The offset for the cargo used in cb37, 0 for accepted cargos, 3 for produced cargos
+ * Gets all strings to display after the cargoes of industries (using callback 37)
+ * @param cb_offset The offset for the cargo used in cb37, 0 for accepted cargoes, 3 for produced cargoes
  * @param cst the cargo suffix type (for which window is it requested). @see CargoSuffixType
  * @param ind the industry (NULL if in fund window)
  * @param ind_type the industry type
  * @param indspec the industry spec
- * @param cargos array with cargotypes. for CT_INVALID no suffix will be determined
+ * @param cargoes array with cargotypes. for CT_INVALID no suffix will be determined
  * @param suffixes is filled with the suffixes
  */
 template <typename TC, typename TS>
-static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargos, TS &suffixes)
+static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargoes, TS &suffixes)
 {
-	assert_compile(lengthof(cargos) <= lengthof(suffixes));
-	for (uint j = 0; j < lengthof(cargos); j++) {
-		if (cargos[j] != CT_INVALID) {
+	assert_compile(lengthof(cargoes) <= lengthof(suffixes));
+	for (uint j = 0; j < lengthof(cargoes); j++) {
+		if (cargoes[j] != CT_INVALID) {
 			GetCargoSuffix(cb_offset + j, cst, ind, ind_type, indspec, suffixes[j], lastof(suffixes[j]));
 		} else {
 			suffixes[j][0] = '\0';

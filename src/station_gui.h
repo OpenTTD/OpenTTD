@@ -21,8 +21,8 @@ enum StationViewWidgets {
 	SVW_CAPTION    =  0, ///< Caption of the window
 	SVW_WAITING    =  1, ///< List of waiting cargo
 	SVW_SCROLLBAR  =  2, ///< Scrollbar
-	SVW_ACCEPTLIST =  3, ///< List of accepted cargos
-	SVW_RATINGLIST =  3, ///< Ratings of cargos
+	SVW_ACCEPTLIST =  3, ///< List of accepted cargoes
+	SVW_RATINGLIST =  3, ///< Ratings of cargoes
 	SVW_LOCATION   =  4, ///< 'Location' button
 	SVW_RATINGS    =  5, ///< 'Ratings' button
 	SVW_ACCEPTS    =  5, ///< 'Accepts' button
@@ -35,9 +35,9 @@ enum StationViewWidgets {
 
 /** Types of cargo to display for station coverage. */
 enum StationCoverageType {
-	SCT_PASSENGERS_ONLY,     ///< Draw only passenger class cargos.
-	SCT_NON_PASSENGERS_ONLY, ///< Draw all non-passenger class cargos.
-	SCT_ALL,                 ///< Draw all cargos.
+	SCT_PASSENGERS_ONLY,     ///< Draw only passenger class cargoes.
+	SCT_NON_PASSENGERS_ONLY, ///< Draw all non-passenger class cargoes.
+	SCT_ALL,                 ///< Draw all cargoes.
 };
 
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies);

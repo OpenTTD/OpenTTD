@@ -46,7 +46,7 @@ public:
 	static char *GetName(EngineID engine_id);
 
 	/**
-	 * Get the cargo-type of an engine. In case it can transport multiple cargos, it
+	 * Get the cargo-type of an engine. In case it can transport multiple cargoes, it
 	 *  returns the first/main.
 	 * @param engine_id The engine to get the cargo-type of.
 	 * @pre IsValidEngine(engine_id).
@@ -82,7 +82,7 @@ public:
 	static bool CanPullCargo(EngineID engine_id, CargoID cargo_id);
 
 	/**
-	 * Get the capacity of an engine. In case it can transport multiple cargos, it
+	 * Get the capacity of an engine. In case it can transport multiple cargoes, it
 	 *  returns the first/main.
 	 * @param engine_id The engine to get the capacity of.
 	 * @pre IsValidEngine(engine_id).

@@ -526,7 +526,7 @@ public:
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		/* Called when setting station noise or required cargos have changed, in order to resize the window */
+		/* Called when setting station noise or required cargoes have changed, in order to resize the window */
 		this->SetDirty(); // refresh display for current size. This will allow to avoid glitches when downgrading
 		this->ResizeWindowAsNeeded();
 	}

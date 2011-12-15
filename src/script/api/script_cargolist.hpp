@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_cargolist.hpp List all the cargos. */
+/** @file script_cargolist.hpp List all the cargoes. */
 
 #ifndef SCRIPT_CARGOLIST_HPP
 #define SCRIPT_CARGOLIST_HPP
@@ -15,7 +15,7 @@
 #include "script_list.hpp"
 
 /**
- * Creates a list of cargos that can be produced in the current game.
+ * Creates a list of cargoes that can be produced in the current game.
  * @api ai
  * @ingroup ScriptList
  */
@@ -25,8 +25,8 @@ public:
 };
 
 /**
- * Creates a list of cargos that the given industry accepts.
- * @note This list also includes cargos that are temporarily not accepted
+ * Creates a list of cargoes that the given industry accepts.
+ * @note This list also includes cargoes that are temporarily not accepted
  *   by this industry, @see ScriptIndustry::IsCargoAccepted.
  * @api ai
  * @ingroup ScriptList
@@ -34,33 +34,33 @@ public:
 class ScriptCargoList_IndustryAccepting : public ScriptList {
 public:
 	/**
-	 * @param industry_id The industry to get the list of cargos it accepts from.
+	 * @param industry_id The industry to get the list of cargoes it accepts from.
 	 */
 	ScriptCargoList_IndustryAccepting(IndustryID industry_id);
 };
 
 /**
- * Creates a list of cargos that the given industry can produce.
+ * Creates a list of cargoes that the given industry can produce.
  * @api ai
  * @ingroup ScriptList
  */
 class ScriptCargoList_IndustryProducing : public ScriptList {
 public:
 	/**
-	 * @param industry_id The industry to get the list of cargos it produces from.
+	 * @param industry_id The industry to get the list of cargoes it produces from.
 	 */
 	ScriptCargoList_IndustryProducing(IndustryID industry_id);
 };
 
 /**
- * Creates a list of cargos that the given station accepts.
+ * Creates a list of cargoes that the given station accepts.
  * @api ai
  * @ingroup ScriptList
  */
 class ScriptCargoList_StationAccepting : public ScriptList {
 public:
 	/**
-	 * @param station_id The station to get the list of cargos it accepts from.
+	 * @param station_id The station to get the list of cargoes it accepts from.
 	 */
 	ScriptCargoList_StationAccepting(StationID station_id);
 };

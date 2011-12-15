@@ -479,7 +479,7 @@ static const NIFeature * const _nifeatures[] = {
 	NULL,               // GSF_GLOBALVAR (has no "physical" objects)
 	&_nif_industrytile, // GSF_INDUSTRYTILES
 	&_nif_industry,     // GSF_INDUSTRIES
-	NULL,               // GSF_CARGOS (has no "physical" objects)
+	NULL,               // GSF_CARGOES (has no "physical" objects)
 	NULL,               // GSF_SOUNDFX (has no "physical" objects)
 	NULL,               // GSF_AIRPORTS (feature not implemented)
 	NULL,               // GSF_SIGNALS (feature not implemented)

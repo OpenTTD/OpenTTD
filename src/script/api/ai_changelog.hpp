@@ -214,7 +214,7 @@
  *     including houses instead the number of producing tiles. This means that
  *     also industries that do not have a tile within the radius, but where
  *     the search bounding box and the industry's bounding box intersect, are
- *     counted. Previously these industries (and their cargos), although they
+ *     counted. Previously these industries (and their cargoes), although they
  *     produced cargo for a station at the given location, were not returned.
  * \li AIRail::BuildRail will now fail completely if there is an obstacle
  *     between the begin and end, instead of building up to the obstacle and

@@ -1020,7 +1020,7 @@ struct BuildVehicleWindow : Window {
 		/* Terminate the filter list. */
 		this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
 
-		/* If not found, the cargo criteria will be set to all cargos. */
+		/* If not found, the cargo criteria will be set to all cargoes. */
 		this->cargo_filter_criteria = 0;
 
 		/* Find the last cargo filter criteria. */

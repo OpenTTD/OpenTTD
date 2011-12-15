@@ -2707,7 +2707,7 @@ bool AfterLoadGame()
 
 		Town *town;
 		FOR_ALL_TOWNS(town) {
-			UpdateTownCargos(town);
+			UpdateTownCargoes(town);
 		}
 	}
 

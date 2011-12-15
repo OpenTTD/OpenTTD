@@ -797,7 +797,7 @@ struct DepotWindow : Window {
 		/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
 		bool whole_chain = (this->type == VEH_TRAIN && _ctrl_pressed);
 
-		/* loop through vehicle chain and collect cargos */
+		/* loop through vehicle chain and collect cargoes */
 		uint num = 0;
 		for (const Vehicle *w = v; w != NULL; w = w->Next()) {
 			if (w->cargo_cap > 0 && w->cargo_type < NUM_CARGO) {

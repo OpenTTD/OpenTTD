@@ -498,7 +498,7 @@ CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 }
 
 /**
- * Get the acceptance of cargos around the tile in 1/8.
+ * Get the acceptance of cargoes around the tile in 1/8.
  * @param tile Center of the search area
  * @param w X extent of area
  * @param h Y extent of area

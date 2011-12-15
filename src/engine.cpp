@@ -168,7 +168,7 @@ uint32 Engine::GetGRFID() const
 
 /**
  * Determines whether an engine can carry something.
- * A vehicle cannot carry anything if its capacity is zero, or none of the possible cargos is available in the climate.
+ * A vehicle cannot carry anything if its capacity is zero, or none of the possible cargoes is available in the climate.
  * @return true if the vehicle can carry something.
  */
 bool Engine::CanCarryCargo() const

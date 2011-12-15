@@ -36,9 +36,9 @@ extern void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
  */
 static bool EnginesHaveCargoInCommon(EngineID engine_a, EngineID engine_b)
 {
-	uint32 available_cargos_a = GetUnionOfArticulatedRefitMasks(engine_a, true);
-	uint32 available_cargos_b = GetUnionOfArticulatedRefitMasks(engine_b, true);
-	return (available_cargos_a == 0 || available_cargos_b == 0 || (available_cargos_a & available_cargos_b) != 0);
+	uint32 available_cargoes_a = GetUnionOfArticulatedRefitMasks(engine_a, true);
+	uint32 available_cargoes_b = GetUnionOfArticulatedRefitMasks(engine_b, true);
+	return (available_cargoes_a == 0 || available_cargoes_b == 0 || (available_cargoes_a & available_cargoes_b) != 0);
 }
 
 /**
@@ -169,7 +169,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 	if (union_mask == 0) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
 	CargoID cargo_type;
-	if (IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type)) return CT_INVALID; // We cannot refit to mixed cargos in an automated way
+	if (IsArticulatedVehicleCarryingDifferentCargoes(v, &cargo_type)) return CT_INVALID; // We cannot refit to mixed cargoes in an automated way
 
 	if (cargo_type == CT_INVALID) {
 		if (v->type != VEH_TRAIN) return CT_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.
@@ -251,7 +251,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 
 	/* Does it need to be refitted */
 	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e, part_of_chain);
-	if (refit_cargo == CT_INVALID) return CommandCost(); // incompatible cargos
+	if (refit_cargo == CT_INVALID) return CommandCost(); // incompatible cargoes
 
 	/* Build the new vehicle */
 	cost = DoCommand(old_veh->tile, e, 0, DC_EXEC | DC_AUTOREPLACE, GetCmdBuildVeh(old_veh));

@@ -330,7 +330,7 @@ enum CanalCallbackMask {
 };
 
 /**
- * Callback masks for cargos.
+ * Callback masks for cargoes.
  */
 enum CargoCallbackMask {
 	CBM_CARGO_PROFIT_CALC         = 0, ///< custom profit calculation
@@ -353,8 +353,8 @@ enum IndustryCallbackMask {
 	CBM_IND_SPECIAL_EFFECT            =  9, ///< control special effects
 	CBM_IND_REFUSE_CARGO              = 10, ///< option out of accepting cargo
 	CBM_IND_DECIDE_COLOUR             = 11, ///< give a custom colour to newly build industries
-	CBM_IND_INPUT_CARGO_TYPES         = 12, ///< customize the cargos the industry requires
-	CBM_IND_OUTPUT_CARGO_TYPES        = 13, ///< customize the cargos the industry produces
+	CBM_IND_INPUT_CARGO_TYPES         = 12, ///< customize the cargoes the industry requires
+	CBM_IND_OUTPUT_CARGO_TYPES        = 13, ///< customize the cargoes the industry produces
 };
 
 /**

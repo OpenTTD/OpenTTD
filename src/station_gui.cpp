@@ -33,11 +33,11 @@
 #include "table/strings.h"
 
 /**
- * Draw a (multi)line of cargos seperated by commas, and prefixed with a string.
- * @param cargo_mask Mask of cargos to include in the list.
- * @param r          Rectangle to draw the cargos in.
- * @param prefix     String to use as prefix for the list of cargos.
- * @return Bottom position of the last line used for drawing the cargos.
+ * Draw a (multi)line of cargoes seperated by commas, and prefixed with a string.
+ * @param cargo_mask Mask of cargoes to include in the list.
+ * @param r          Rectangle to draw the cargoes in.
+ * @param prefix     String to use as prefix for the list of cargoes.
+ * @return Bottom position of the last line used for drawing the cargoes.
  */
 static int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 {
@@ -78,7 +78,7 @@ static int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
  * @param top y position where the string is to be drawn
  * @param sct which type of cargo is to be displayed (passengers/non-passengers)
  * @param rad radius around selected tile(s) to be searched
- * @param supplies if supplied cargos should be drawn, else accepted cargos
+ * @param supplies if supplied cargoes should be drawn, else accepted cargoes
  * @return Returns the y value below the string that was drawn
  */
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies)
@@ -86,11 +86,11 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	uint32 cargo_mask = 0;
 	if (_thd.drawstyle == HT_RECT && tile < MapSize()) {
-		CargoArray cargos;
+		CargoArray cargoes;
 		if (supplies) {
-			cargos = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
+			cargoes = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		} else {
-			cargos = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
+			cargoes = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		}
 
 		/* Convert cargo counts to a set of cargo bits, and draw the result. */
@@ -101,7 +101,7 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 				case SCT_ALL: break;
 				default: NOT_REACHED();
 			}
-			if (cargos[i] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, i);
+			if (cargoes[i] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, i);
 		}
 	}
 	Rect r = {left, top, right, INT32_MAX};
@@ -1000,7 +1000,7 @@ struct StationViewWindow : public Window {
 		StationID station_id = this->window_number;
 		const Station *st = Station::Get(station_id);
 
-		/* count types of cargos waiting in station */
+		/* count types of cargoes waiting in station */
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (st->goods[i].cargo.Empty()) {
 				this->cargo_rows[i] = 0;

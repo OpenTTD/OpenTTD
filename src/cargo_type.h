@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file cargo_type.h Types related to cargos... */
+/** @file cargo_type.h Types related to cargoes... */
 
 #ifndef CARGO_TYPE_H
 #define CARGO_TYPE_H

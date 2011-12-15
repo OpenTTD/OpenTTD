@@ -311,7 +311,7 @@ static GRFTempEngineData *_gted;  ///< Temporary engine data used during NewGRF 
 static uint32 _grm_engines[256];
 
 /** Contains the GRF ID of the owner of a cargo if it has been reserved */
-static uint32 _grm_cargos[NUM_CARGO * 2];
+static uint32 _grm_cargoes[NUM_CARGO * 2];
 
 struct GRFLocation {
 	uint32 grfid;
@@ -1270,7 +1270,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].rv_max_speed = buf->ReadByte();
 				break;
 
-			case 0x16: // Cargos available for refitting
+			case 0x16: // Cargoes available for refitting
 				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
 				_gted[e->index].refitmask_grf = _cur.grffile;
@@ -1433,7 +1433,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				svi->sfx = buf->ReadByte();
 				break;
 
-			case 0x11: // Cargos available for refitting
+			case 0x11: // Cargoes available for refitting
 				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
 				_gted[e->index].refitmask_grf = _cur.grffile;
@@ -1589,7 +1589,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				avi->sfx = buf->ReadByte();
 				break;
 
-			case 0x13: // Cargos available for refitting
+			case 0x13: // Cargoes available for refitting
 				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
 				_gted[e->index].refitmask_grf = _cur.grffile;
@@ -2666,7 +2666,7 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 
 
 /**
- * Define properties for cargos
+ * Define properties for cargoes
  * @param cid Local ID of the cargo.
  * @param numinfo Number of subsequent IDs to change the property for.
  * @param prop The property to change.
@@ -4172,7 +4172,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_GLOBALVAR */     GlobalVarChangeInfo,
 		/* GSF_INDUSTRYTILES */ IndustrytilesChangeInfo,
 		/* GSF_INDUSTRIES */    IndustriesChangeInfo,
-		/* GSF_CARGOS */        NULL, // Cargo is handled during reservation
+		/* GSF_CARGOES */       NULL, // Cargo is handled during reservation
 		/* GSF_SOUNDFX */       SoundEffectChangeInfo,
 		/* GSF_AIRPORTS */      AirportChangeInfo,
 		/* GSF_SIGNALS */       NULL,
@@ -4190,7 +4190,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 	               feature, numprops, engine, numinfo);
 
 	if (feature >= lengthof(handler) || handler[feature] == NULL) {
-		if (feature != GSF_CARGOS) grfmsg(1, "FeatureChangeInfo: Unsupported feature %d, skipping", feature);
+		if (feature != GSF_CARGOES) grfmsg(1, "FeatureChangeInfo: Unsupported feature %d, skipping", feature);
 		return;
 	}
 
@@ -4247,7 +4247,7 @@ static void ReserveChangeInfo(ByteReader *buf)
 {
 	uint8 feature  = buf->ReadByte();
 
-	if (feature != GSF_CARGOS && feature != GSF_GLOBALVAR && feature != GSF_RAILTYPES) return;
+	if (feature != GSF_CARGOES && feature != GSF_GLOBALVAR && feature != GSF_RAILTYPES) return;
 
 	uint8 numprops = buf->ReadByte();
 	uint8 numinfo  = buf->ReadByte();
@@ -4259,7 +4259,7 @@ static void ReserveChangeInfo(ByteReader *buf)
 
 		switch (feature) {
 			default: NOT_REACHED();
-			case GSF_CARGOS:
+			case GSF_CARGOES:
 				cir = CargoChangeInfo(index, numinfo, prop, buf);
 				break;
 
@@ -4511,7 +4511,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_AIRCRAFT:
 				case GSF_STATIONS:
 				case GSF_CANALS:
-				case GSF_CARGOS:
+				case GSF_CARGOES:
 				case GSF_AIRPORTS:
 				case GSF_RAILTYPES:
 				{
@@ -4929,9 +4929,9 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	CargoID *cargos = AllocaM(CargoID, idcount);
+	CargoID *cargoes = AllocaM(CargoID, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		cargos[i] = buf->ReadByte();
+		cargoes[i] = buf->ReadByte();
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -4942,7 +4942,7 @@ static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	if (!IsValidGroupID(groupid, "CargoMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
-		CargoID cid = cargos[i];
+		CargoID cid = cargoes[i];
 
 		if (cid >= NUM_CARGO) {
 			grfmsg(1, "CargoMapSpriteGroup: Cargo ID %d out of range, skipping", cid);
@@ -5169,7 +5169,7 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 			IndustrytileMapSpriteGroup(buf, idcount);
 			return;
 
-		case GSF_CARGOS:
+		case GSF_CARGOES:
 			CargoMapSpriteGroup(buf, idcount);
 			return;
 
@@ -6448,7 +6448,7 @@ static void ParamSet(ByteReader *buf)
 
 						case 0x0B: // Cargo
 							/* There are two ranges: one for cargo IDs and one for cargo bitmasks */
-							src1 = PerformGRM(_grm_cargos, NUM_CARGO * 2, count, op, target, "cargos");
+							src1 = PerformGRM(_grm_cargoes, NUM_CARGO * 2, count, op, target, "cargoes");
 							if (_cur.skip_sprites == -1) return;
 							break;
 
@@ -7875,7 +7875,7 @@ void ResetNewGRFData()
 
 	/* Reset GRM reservations */
 	memset(&_grm_engines, 0, sizeof(_grm_engines));
-	memset(&_grm_cargos, 0, sizeof(_grm_cargos));
+	memset(&_grm_cargoes, 0, sizeof(_grm_cargoes));
 
 	/* Reset generic feature callback lists */
 	ResetGenericCallbacks();
@@ -8150,7 +8150,7 @@ static void CalculateRefitMasks()
 			only_defaultcargo = (ei->refit_mask == 0);
 		}
 
-		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargos.
+		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargoes.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
 		if (!only_defaultcargo && (e->type != VEH_SHIP || e->u.ship.old_refittable) && ei->cargo_type != CT_INVALID && !HasBit(ei->refit_mask, ei->cargo_type)) {
 			ei->cargo_type = CT_INVALID;
@@ -8244,7 +8244,7 @@ static void FinaliseEngineArray()
 	}
 }
 
-/** Check for invalid cargos */
+/** Check for invalid cargoes */
 static void FinaliseCargoArray()
 {
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
@@ -8880,7 +8880,7 @@ static void AfterLoadGRFs()
 	}
 	_grf_line_to_action6_sprite_override.clear();
 
-	/* Polish cargos */
+	/* Polish cargoes */
 	FinaliseCargoArray();
 
 	/* Pre-calculate all refit masks after loading GRF files. */

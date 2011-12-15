@@ -289,7 +289,7 @@ static void Load_STNS()
 					StationID source = (IsSavegameVersionBefore(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
 
 					/* Make sure we can allocate the CargoPacket. This is safe
-					 * as there can only be ~64k stations and 32 cargos in these
+					 * as there can only be ~64k stations and 32 cargoes in these
 					 * savegame versions. As the CargoPacketPool has more than
 					 * 16 million entries; it fits by an order of magnitude. */
 					assert(CargoPacket::CanAllocateItem());

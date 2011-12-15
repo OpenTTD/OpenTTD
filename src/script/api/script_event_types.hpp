@@ -231,14 +231,14 @@ public:
 	char *GetName();
 
 	/**
-	 * Get the cargo-type of the offered engine. In case it can transport multiple cargos, it
+	 * Get the cargo-type of the offered engine. In case it can transport multiple cargoes, it
 	 *  returns the first/main.
 	 * @return The cargo-type of the engine.
 	 */
 	CargoID GetCargoType();
 
 	/**
-	 * Get the capacity of the offered engine. In case it can transport multiple cargos, it
+	 * Get the capacity of the offered engine. In case it can transport multiple cargoes, it
 	 *  returns the first/main.
 	 * @return The capacity of the engine.
 	 */
