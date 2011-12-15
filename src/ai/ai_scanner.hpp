@@ -19,7 +19,7 @@ public:
 	AIScannerInfo();
 	~AIScannerInfo();
 
-	/* virtual */ void Initialize(const char *name);
+	/* virtual */ void Initialize();
 
 	/**
 	 * Select a random AI.
@@ -54,6 +54,8 @@ private:
 
 class AIScannerLibrary : public ScriptScanner {
 public:
+	/* virtual */ void Initialize();
+
 	/**
 	 * Find a library in the pool.
 	 * @param library The library name to find.

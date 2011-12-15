@@ -143,9 +143,9 @@
 	if (AI::scanner_info == NULL) {
 		TarScanner::DoScan(TarScanner::AI);
 		AI::scanner_info = new AIScannerInfo();
-		AI::scanner_info->Initialize("AIScanner");
+		AI::scanner_info->Initialize();
 		AI::scanner_library = new AIScannerLibrary();
-		AI::scanner_library->Initialize("AISCanner");
+		AI::scanner_library->Initialize();
 	}
 }
 

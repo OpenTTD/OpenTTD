@@ -27,9 +27,9 @@ AIScannerInfo::AIScannerInfo() :
 {
 }
 
-void AIScannerInfo::Initialize(const char *name)
+void AIScannerInfo::Initialize()
 {
-	ScriptScanner::Initialize(name);
+	ScriptScanner::Initialize("AIScanner");
 
 	/* Create the dummy AI */
 	free(this->main_script);
@@ -139,6 +139,11 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 	return info;
 }
 
+
+void AIScannerLibrary::Initialize()
+{
+	ScriptScanner::Initialize("AIScanner");
+}
 
 void AIScannerLibrary::GetScriptName(ScriptInfo *info, char *name, int len)
 {
