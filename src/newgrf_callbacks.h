@@ -311,7 +311,7 @@ enum HouseCallbackMask {
 	CBM_HOUSE_ANIMATION_NEXT_FRAME      =  1, ///< decides next animation frame
 	CBM_HOUSE_ANIMATION_START_STOP      =  2, ///< periodically start/stop the animation
 	CBM_HOUSE_CONSTRUCTION_STATE_CHANGE =  3, ///< change animation when construction state changes
-	CBM_HOUSE_COLOUR                    =  4, ///< decide the color of the building
+	CBM_HOUSE_COLOUR                    =  4, ///< decide the colour of the building
 	CBM_HOUSE_CARGO_ACCEPTANCE          =  5, ///< decides amount of cargo acceptance
 	CBM_HOUSE_ANIMATION_SPEED           =  6, ///< decides animation speed
 	CBM_HOUSE_DESTRUCTION               =  7, ///< trigger destruction of building
@@ -377,7 +377,7 @@ enum ObjectCallbackMask {
 	CBM_OBJ_SLOPE_CHECK               =  0, ///< decides slope suitability
 	CBM_OBJ_ANIMATION_NEXT_FRAME      =  1, ///< decides next animation frame
 	CBM_OBJ_ANIMATION_SPEED           =  2, ///< decides animation speed
-	CBM_OBJ_COLOUR                    =  3, ///< decide the color of the building
+	CBM_OBJ_COLOUR                    =  3, ///< decide the colour of the building
 	CBM_OBJ_FUND_MORE_TEXT            =  4, ///< additional text in fund window
 	CBM_OBJ_AUTOSLOPE                 =  5, ///< decides allowance of autosloping
 };

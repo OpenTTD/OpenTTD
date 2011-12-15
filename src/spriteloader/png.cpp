@@ -191,8 +191,8 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 					dst[x].b = 0;
 					/* Alpha channel is used from the original image (to allow transparency in remap colours) */
 					extern const byte _palmap_w2d[];
-					byte color = row_pointer[x * sizeof(uint8)];
-					dst[x].m = win_palette ? _palmap_w2d[color] : color;
+					byte colour = row_pointer[x * sizeof(uint8)];
+					dst[x].m = win_palette ? _palmap_w2d[colour] : colour;
 				}
 			} else {
 				dst[x].r = row_pointer[x * sizeof(uint32) + 0];

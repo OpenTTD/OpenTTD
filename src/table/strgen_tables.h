@@ -38,7 +38,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"TINY_FONT",         EmitSingleChar, SCC_TINYFONT,           0, C_NONE},
 	{"BIG_FONT",          EmitSingleChar, SCC_BIGFONT,            0, C_NONE},
 
-	/* Colors */
+	/* Colours */
 	{"BLUE",              EmitSingleChar, SCC_BLUE,               0, C_NONE},
 	{"SILVER",            EmitSingleChar, SCC_SILVER,             0, C_NONE},
 	{"GOLD",              EmitSingleChar, SCC_GOLD,               0, C_NONE},

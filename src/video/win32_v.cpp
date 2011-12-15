@@ -176,7 +176,7 @@ static void ClientSizeChanged(int w, int h)
 {
 	/* allocate new dib section of the new size */
 	if (AllocateDibSection(w, h)) {
-		/* mark all palette colors dirty */
+		/* mark all palette colours dirty */
 		_cur_palette.first_dirty = 0;
 		_cur_palette.count_dirty = 256;
 		_local_palette = _cur_palette;
