@@ -253,7 +253,7 @@ public:
 
 	/**
 	 * Get the maximum allowed distance between two orders for an engine.
-	 * @param vehicle_id The engine to get the max distance for.
+	 * @param engine_id The engine to get the max distance for.
 	 * @pre IsValidEngine(engine_id).
 	 * @return The maximum distance between two orders for the engine
 	 *  or 0 if the distance is unlimited.
