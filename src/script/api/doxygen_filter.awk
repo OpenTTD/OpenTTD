@@ -224,6 +224,7 @@ BEGIN {
 	if (in_enum == "true") {
 		print comment_buffer
 		comment_buffer = ""
+		gsub("=([^/]*),", ",", $0)
 		print $0
 
 		# Check if this a special error enum
