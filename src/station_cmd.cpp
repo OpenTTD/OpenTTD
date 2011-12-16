@@ -615,7 +615,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	/* redraw the station view since acceptance changed */
-	SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_ACCEPTLIST);
+	SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_ACCEPT_RATING_LIST);
 }
 
 static void UpdateStationSignCoord(BaseStation *st)
@@ -1297,7 +1297,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		st->RecomputeIndustriesNear();
 		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_TRAINS);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 		DirtyCompanyInfrastructureWindows(st->owner);
 	}
 
@@ -1461,7 +1461,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		/* if we deleted the whole station, delete the train facility. */
 		if (st->train_station.tile == INVALID_TILE) {
 			st->facilities &= ~FACIL_TRAIN;
-			SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_TRAINS);
+			SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 			st->UpdateVirtCoord();
 			DeleteStationIfEmpty(st);
 		}
@@ -1497,7 +1497,7 @@ CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint3
 	for (Station **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
 		Station *st = *stp;
 
-		if (st->train_station.tile == INVALID_TILE) SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_TRAINS);
+		if (st->train_station.tile == INVALID_TILE) SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 		st->MarkTilesDirty(false);
 		st->RecomputeIndustriesNear();
 	}
@@ -1592,7 +1592,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 		st->cached_anim_triggers = 0;
 
 		DirtyCompanyInfrastructureWindows(st->owner);
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_TRAINS);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_TRAINS);
 		st->UpdateVirtCoord();
 		DeleteStationIfEmpty(st);
 	}
@@ -1828,7 +1828,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		st->RecomputeIndustriesNear();
 		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_ROADVEHS);
 	}
 	return cost;
 }
@@ -1922,7 +1922,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 			DoClearSquare(tile);
 		}
 
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_ROADVEHS);
 		delete cur_stop;
 
 		/* Make sure no vehicle is going to the old roadstop */
@@ -2263,7 +2263,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		st->RecomputeIndustriesNear();
 		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_PLANES);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_PLANES);
 
 		if (_settings_game.economy.station_noise_level) {
 			SetWindowDirty(WC_TOWN_VIEW, st->town->index);
@@ -2339,7 +2339,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		st->airport.Clear();
 		st->facilities &= ~FACIL_AIRPORT;
 
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_PLANES);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_PLANES);
 
 		if (_settings_game.economy.station_noise_level) {
 			SetWindowDirty(WC_TOWN_VIEW, st->town->index);
@@ -2503,7 +2503,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		st->RecomputeIndustriesNear();
 		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_SHIPS);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_SHIPS);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
@@ -2542,7 +2542,7 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 		Company::Get(st->owner)->infrastructure.station -= 2;
 		DirtyCompanyInfrastructureWindows(st->owner);
 
-		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, SVW_SHIPS);
+		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_SHIPS);
 		st->UpdateVirtCoord();
 		st->RecomputeIndustriesNear();
 		DeleteStationIfEmpty(st);
@@ -3239,7 +3239,7 @@ static void UpdateStationRating(Station *st)
 	if (waiting_changed) {
 		SetWindowDirty(WC_STATION_VIEW, index); // update whole window
 	} else {
-		SetWindowWidgetDirty(WC_STATION_VIEW, index, SVW_RATINGLIST); // update only ratings list
+		SetWindowWidgetDirty(WC_STATION_VIEW, index, WID_SV_ACCEPT_RATING_LIST); // update only ratings list
 	}
 }
 

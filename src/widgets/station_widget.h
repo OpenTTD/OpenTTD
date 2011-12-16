@@ -14,49 +14,47 @@
 
 /** Widgets of the WC_STATION_VIEW. */
 enum StationViewWidgets {
-	SVW_CAPTION    =  0, ///< Caption of the window
-	SVW_WAITING    =  1, ///< List of waiting cargo
-	SVW_SCROLLBAR  =  2, ///< Scrollbar
-	SVW_ACCEPTLIST =  3, ///< List of accepted cargoes
-	SVW_RATINGLIST =  3, ///< Ratings of cargoes
-	SVW_LOCATION   =  4, ///< 'Location' button
-	SVW_RATINGS    =  5, ///< 'Ratings' button
-	SVW_ACCEPTS    =  5, ///< 'Accepts' button
-	SVW_RENAME     =  6, ///< 'Rename' button
-	SVW_TRAINS     =  7, ///< List of scheduled trains button
-	SVW_ROADVEHS,        ///< List of scheduled road vehs button
-	SVW_SHIPS,           ///< List of scheduled ships button
-	SVW_PLANES,          ///< List of scheduled planes button
+	WID_SV_CAPTION,            ///< Caption of the window.
+	WID_SV_WAITING,            ///< List of waiting cargo.
+	WID_SV_SCROLLBAR,          ///< Scrollbar.
+	WID_SV_ACCEPT_RATING_LIST, ///< List of accepted cargoes / rating of cargoes.
+	WID_SV_LOCATION,           ///< 'Location' button.
+	WID_SV_ACCEPTS_RATINGS,    ///< 'Accepts' / 'Ratings' button.
+	WID_SV_RENAME,             ///< 'Rename' button.
+	WID_SV_TRAINS,             ///< List of scheduled trains button.
+	WID_SV_ROADVEHS,           ///< List of scheduled road vehs button.
+	WID_SV_SHIPS,              ///< List of scheduled ships button.
+	WID_SV_PLANES,             ///< List of scheduled planes button.
 };
 
 /** Widgets of the WC_STATION_LIST. */
 enum StationListWidgets {
-	SLW_CAPTION,        ///< Window caption
-	SLW_LIST,           ///< The main panel, list of stations
-	SLW_SCROLLBAR,      ///< Scrollbar next to the main panel
+	WID_SL_CAPTION,        ///< Caption of the window.
+	WID_SL_LIST,           ///< The main panel, list of stations.
+	WID_SL_SCROLLBAR,      ///< Scrollbar next to the main panel.
 
 	/* Vehicletypes need to be in order of StationFacility due to bit magic */
-	SLW_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station
-	SLW_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop
-	SLW_BUS,            ///< 'BUS' button - list only facilities where is a bus stop
-	SLW_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport
-	SLW_SHIP,           ///< 'SHIP' button - list only facilities where is a dock
-	SLW_FACILALL,       ///< 'ALL' button - list all facilities
+	WID_SL_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station.
+	WID_SL_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop.
+	WID_SL_BUS,            ///< 'BUS' button - list only facilities where is a bus stop.
+	WID_SL_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport.
+	WID_SL_SHIP,           ///< 'SHIP' button - list only facilities where is a dock.
+	WID_SL_FACILALL,       ///< 'ALL' button - list all facilities.
 
-	SLW_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting
-	SLW_CARGOALL,       ///< 'ALL' button - list all stations
+	WID_SL_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting.
+	WID_SL_CARGOALL,       ///< 'ALL' button - list all stations.
 
-	SLW_SORTBY,         ///< 'Sort by' button - reverse sort direction
-	SLW_SORTDROPBTN,    ///< Dropdown button
+	WID_SL_SORTBY,         ///< 'Sort by' button - reverse sort direction.
+	WID_SL_SORTDROPBTN,    ///< Dropdown button.
 
-	SLW_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets)
+	WID_SL_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets).
 };
 
 /** Widgets of the WC_SELECT_STATION. */
 enum JoinStationWidgets {
-	JSW_WIDGET_CAPTION,
-	JSW_PANEL,
-	JSW_SCROLLBAR,
+	WID_JS_CAPTION,   // Caption of the window.
+	WID_JS_PANEL,     // Main panel.
+	WID_JS_SCROLLBAR, // Scrollbar of the panel.
 };
 
 #endif /* WIDGETS_STATION_WIDGET_H */

@@ -565,7 +565,7 @@ static const byte _vehicle_type_colours[6] = {
 
 /** Class managing the smallmap window. */
 class SmallMapWindow : public Window {
-	/** Types of legends in the #SM_WIDGET_LEGEND widget. */
+	/** Types of legends in the #WID_SM_LEGEND widget. */
 	enum SmallMapType {
 		SMT_CONTOUR,
 		SMT_VEHICLES,
@@ -585,10 +585,10 @@ class SmallMapWindow : public Window {
 	static SmallMapType map_type; ///< Currently displayed legends.
 	static bool show_towns;       ///< Display town names in the smallmap.
 
-	static const uint LEGEND_BLOB_WIDTH = 8;              ///< Width of the coloured blob in front of a line text in the #SM_WIDGET_LEGEND widget.
-	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #SM_WIDGET_LEGEND widget for the #SMT_INDUSTRY legend.
+	static const uint LEGEND_BLOB_WIDTH = 8;              ///< Width of the coloured blob in front of a line text in the #WID_SM_LEGEND widget.
+	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #WID_SM_LEGEND widget for the #SMT_INDUSTRY legend.
 	uint min_number_of_fixed_rows; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
-	uint column_width;             ///< Width of a column in the #SM_WIDGET_LEGEND widget.
+	uint column_width;             ///< Width of a column in the #WID_SM_LEGEND widget.
 
 	int32 scroll_x;  ///< Horizontal world coordinate of the base tile left of the top-left corner of the smallmap display.
 	int32 scroll_y;  ///< Vertical world coordinate of the base tile left of the top-left corner of the smallmap display.
@@ -731,8 +731,8 @@ class SmallMapWindow : public Window {
 				this->SetNewScroll(this->scroll_x + (tile.x - new_tile.x) * TILE_SIZE,
 						this->scroll_y + (tile.y - new_tile.y) * TILE_SIZE, sub);
 			}
-			this->SetWidgetDisabledState(SM_WIDGET_ZOOM_IN,  this->zoom == zoomlevels[MIN_ZOOM_INDEX]);
-			this->SetWidgetDisabledState(SM_WIDGET_ZOOM_OUT, this->zoom == zoomlevels[MAX_ZOOM_INDEX]);
+			this->SetWidgetDisabledState(WID_SM_ZOOM_IN,  this->zoom == zoomlevels[MIN_ZOOM_INDEX]);
+			this->SetWidgetDisabledState(WID_SM_ZOOM_OUT, this->zoom == zoomlevels[MAX_ZOOM_INDEX]);
 			this->SetDirty();
 		}
 	}
@@ -1042,10 +1042,10 @@ class SmallMapWindow : public Window {
 				break;
 		}
 
-		this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND)->SetDataTip(STR_NULL, legend_tooltip);
-		this->GetWidget<NWidgetCore>(SM_WIDGET_ENABLE_ALL)->SetDataTip(STR_SMALLMAP_ENABLE_ALL, enable_all_tooltip);
-		this->GetWidget<NWidgetCore>(SM_WIDGET_DISABLE_ALL)->SetDataTip(STR_SMALLMAP_DISABLE_ALL, disable_all_tooltip);
-		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECT_BUTTONS)->SetDisplayedPlane(plane);
+		this->GetWidget<NWidgetCore>(WID_SM_LEGEND)->SetDataTip(STR_NULL, legend_tooltip);
+		this->GetWidget<NWidgetCore>(WID_SM_ENABLE_ALL)->SetDataTip(STR_SMALLMAP_ENABLE_ALL, enable_all_tooltip);
+		this->GetWidget<NWidgetCore>(WID_SM_DISABLE_ALL)->SetDataTip(STR_SMALLMAP_DISABLE_ALL, disable_all_tooltip);
+		this->GetWidget<NWidgetStacked>(WID_SM_SELECT_BUTTONS)->SetDisplayedPlane(plane);
 	}
 
 public:
@@ -1054,12 +1054,12 @@ public:
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(), refresh(FORCE_REFRESH_PERIOD)
 	{
 		this->InitNested(desc, window_number);
-		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
+		this->LowerWidget(this->map_type + WID_SM_CONTOUR);
 
 		BuildLandLegend();
-		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_show_heightmap);
+		this->SetWidgetLoweredState(WID_SM_SHOW_HEIGHT, _smallmap_show_heightmap);
 
-		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
+		this->SetWidgetLoweredState(WID_SM_TOGGLETOWNNAME, this->show_towns);
 
 		this->SetupWidgetData();
 
@@ -1099,7 +1099,7 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case SM_WIDGET_CAPTION:
+			case WID_SM_CAPTION:
 				SetDParam(0, STR_SMALLMAP_TYPE_CONTOURS + this->map_type);
 				break;
 		}
@@ -1171,14 +1171,14 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case SM_WIDGET_MAP: {
+			case WID_SM_MAP: {
 				DrawPixelInfo new_dpi;
 				if (!FillDrawPixelInfo(&new_dpi, r.left + 1, r.top + 1, r.right - r.left - 1, r.bottom - r.top - 1)) return;
 				this->DrawSmallMap(&new_dpi);
 				break;
 			}
 
-			case SM_WIDGET_LEGEND: {
+			case WID_SM_LEGEND: {
 				uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
 				uint number_of_rows = max((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) ? CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns) : 0, this->min_number_of_fixed_rows);
 				bool rtl = _current_text_dir == TD_RTL;
@@ -1246,9 +1246,9 @@ public:
 	 */
 	void SwitchMapType(SmallMapType map_type)
 	{
-		this->RaiseWidget(this->map_type + SM_WIDGET_CONTOUR);
+		this->RaiseWidget(this->map_type + WID_SM_CONTOUR);
 		this->map_type = map_type;
-		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
+		this->LowerWidget(this->map_type + WID_SM_CONTOUR);
 
 		this->SetupWidgetData();
 
@@ -1261,7 +1261,7 @@ public:
 		InvalidateWindowClassesData(WC_INDUSTRY_CARGOES, NUM_INDUSTRYTYPES);
 
 		switch (widget) {
-			case SM_WIDGET_MAP: { // Map window
+			case WID_SM_MAP: { // Map window
 				/*
 				 * XXX: scrolling with the left mouse button is done by subsequently
 				 * clicking with the left mouse button; clicking once centers the
@@ -1272,7 +1272,7 @@ public:
 				 */
 				_left_button_clicked = false;
 
-				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 				Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 				int sub;
 				pt = this->PixelToTile(pt.x - wid->pos_x, pt.y - wid->pos_y, &sub);
@@ -1287,42 +1287,42 @@ public:
 				break;
 			}
 
-			case SM_WIDGET_ZOOM_IN:
-			case SM_WIDGET_ZOOM_OUT: {
-				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+			case WID_SM_ZOOM_IN:
+			case WID_SM_ZOOM_OUT: {
+				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 				Point pt = {wid->current_x / 2, wid->current_y / 2};
-				this->SetZoomLevel((widget == SM_WIDGET_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
+				this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
 				SndPlayFx(SND_15_BEEP);
 				break;
 			}
 
-			case SM_WIDGET_CONTOUR:    // Show land contours
-			case SM_WIDGET_VEHICLES:   // Show vehicles
-			case SM_WIDGET_INDUSTRIES: // Show industries
-			case SM_WIDGET_ROUTES:     // Show transport routes
-			case SM_WIDGET_VEGETATION: // Show vegetation
-			case SM_WIDGET_OWNERS:     // Show land owners
-				this->SwitchMapType((SmallMapType)(widget - SM_WIDGET_CONTOUR));
+			case WID_SM_CONTOUR:    // Show land contours
+			case WID_SM_VEHICLES:   // Show vehicles
+			case WID_SM_INDUSTRIES: // Show industries
+			case WID_SM_ROUTES:     // Show transport routes
+			case WID_SM_VEGETATION: // Show vegetation
+			case WID_SM_OWNERS:     // Show land owners
+				this->SwitchMapType((SmallMapType)(widget - WID_SM_CONTOUR));
 				SndPlayFx(SND_15_BEEP);
 				break;
 
-			case SM_WIDGET_CENTERMAP: // Center the smallmap again
+			case WID_SM_CENTERMAP: // Center the smallmap again
 				this->SmallMapCenterOnCurrentPos();
-				this->HandleButtonClick(SM_WIDGET_CENTERMAP);
+				this->HandleButtonClick(WID_SM_CENTERMAP);
 				SndPlayFx(SND_15_BEEP);
 				break;
 
-			case SM_WIDGET_TOGGLETOWNNAME: // Toggle town names
+			case WID_SM_TOGGLETOWNNAME: // Toggle town names
 				this->show_towns = !this->show_towns;
-				this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
+				this->SetWidgetLoweredState(WID_SM_TOGGLETOWNNAME, this->show_towns);
 
 				this->SetDirty();
 				SndPlayFx(SND_15_BEEP);
 				break;
 
-			case SM_WIDGET_LEGEND: // Legend
+			case WID_SM_LEGEND: // Legend
 				if (this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) {
-					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND); // Label panel
+					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND); // Label panel
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
 					uint columns = this->GetNumberColumnsLegend(wi->current_x);
 					uint number_of_rows = max(CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns), this->min_number_of_fixed_rows);
@@ -1388,7 +1388,7 @@ public:
 				}
 				break;
 
-			case SM_WIDGET_ENABLE_ALL:
+			case WID_SM_ENABLE_ALL:
 				if (this->map_type == SMT_INDUSTRY) {
 					for (int i = 0; i != _smallmap_industry_count; i++) {
 						_legend_from_industries[i].show_on_map = true;
@@ -1401,7 +1401,7 @@ public:
 				this->SetDirty();
 				break;
 
-			case SM_WIDGET_DISABLE_ALL:
+			case WID_SM_DISABLE_ALL:
 				if (this->map_type == SMT_INDUSTRY) {
 					for (int i = 0; i != _smallmap_industry_count; i++) {
 						_legend_from_industries[i].show_on_map = false;
@@ -1414,9 +1414,9 @@ public:
 				this->SetDirty();
 				break;
 
-			case SM_WIDGET_SHOW_HEIGHT: // Enable/disable showing of heightmap.
+			case WID_SM_SHOW_HEIGHT: // Enable/disable showing of heightmap.
 				_smallmap_show_heightmap = !_smallmap_show_heightmap;
-				this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_show_heightmap);
+				this->SetWidgetLoweredState(WID_SM_SHOW_HEIGHT, _smallmap_show_heightmap);
 				this->SetDirty();
 				break;
 		}
@@ -1455,7 +1455,7 @@ public:
 
 	virtual bool OnRightClick(Point pt, int widget)
 	{
-		if (widget != SM_WIDGET_MAP || _scrolling_viewport) return false;
+		if (widget != WID_SM_MAP || _scrolling_viewport) return false;
 
 		_scrolling_viewport = true;
 		return true;
@@ -1464,7 +1464,7 @@ public:
 	virtual void OnMouseWheel(int wheel)
 	{
 		if (_settings_client.gui.scrollwheel_scrolling == 0) {
-			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 			int cursor_x = _cursor.pos.x - this->left - wid->pos_x;
 			int cursor_y = _cursor.pos.y - this->top  - wid->pos_y;
 			if (IsInsideMM(cursor_x, 0, wid->current_x) && IsInsideMM(cursor_y, 0, wid->current_y)) {
@@ -1492,7 +1492,7 @@ public:
 	 */
 	void SetNewScroll(int sx, int sy, int sub)
 	{
-		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 		Point hv = InverseRemapCoords(wi->current_x * ZOOM_LVL_BASE * TILE_SIZE / 2, wi->current_y * ZOOM_LVL_BASE * TILE_SIZE / 2);
 		hv.x *= this->zoom;
 		hv.y *= this->zoom;
@@ -1537,7 +1537,7 @@ public:
 		Point pt = InverseRemapCoords(vp->virtual_left + vp->virtual_width  / 2, vp->virtual_top  + vp->virtual_height / 2);
 
 		int sub;
-		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 		Point sxy = this->ComputeScroll(pt.x / TILE_SIZE, pt.y / TILE_SIZE, max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
 		this->SetNewScroll(sxy.x, sxy.y, sub);
 		this->SetDirty();
@@ -1622,8 +1622,8 @@ public:
 
 /** Widget parts of the smallmap display. */
 static const NWidgetPart _nested_smallmap_display[] = {
-	NWidget(WWT_PANEL, COLOUR_BROWN, SM_WIDGET_MAP_BORDER),
-		NWidget(WWT_INSET, COLOUR_BROWN, SM_WIDGET_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SM_MAP_BORDER),
+		NWidget(WWT_INSET, COLOUR_BROWN, WID_SM_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
 	EndContainer(),
 };
 
@@ -1631,32 +1631,32 @@ static const NWidgetPart _nested_smallmap_display[] = {
 static const NWidgetPart _nested_smallmap_bar[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, SM_WIDGET_LEGEND), SetResize(1, 1),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SM_LEGEND), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				/* Top button row. */
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_ZOOM_IN),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_ZOOM_IN),
 							SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN), SetFill(1, 1),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_CENTERMAP),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_CENTERMAP),
 							SetDataTip(SPR_IMG_SMALLMAP, STR_SMALLMAP_CENTER), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_CONTOUR),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_CONTOUR),
 							SetDataTip(SPR_IMG_SHOW_COUNTOURS, STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEHICLES),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_VEHICLES),
 							SetDataTip(SPR_IMG_SHOW_VEHICLES, STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_INDUSTRIES),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_INDUSTRIES),
 							SetDataTip(SPR_IMG_INDUSTRY, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP), SetFill(1, 1),
 				EndContainer(),
 				/* Bottom button row. */
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_ZOOM_OUT),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_SM_ZOOM_OUT),
 							SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_TOGGLETOWNNAME),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_TOGGLETOWNNAME),
 							SetDataTip(SPR_IMG_TOWN, STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_ROUTES),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_ROUTES),
 							SetDataTip(SPR_IMG_SHOW_ROUTES, STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEGETATION),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_VEGETATION),
 							SetDataTip(SPR_IMG_PLANTTREES, STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_OWNERS),
+					NWidget(WWT_IMGBTN, COLOUR_BROWN, WID_SM_OWNERS),
 							SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP), SetFill(1, 1),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetResize(0, 1),
@@ -1678,7 +1678,7 @@ static NWidgetBase *SmallMapDisplay(int *biggest_index)
 static const NWidgetPart _nested_smallmap_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, SM_WIDGET_CAPTION), SetDataTip(STR_SMALLMAP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SM_CAPTION), SetDataTip(STR_SMALLMAP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
@@ -1687,11 +1687,11 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_BROWN),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECT_BUTTONS),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SM_SELECT_BUTTONS),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLE_ALL), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_NULL),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLE_ALL), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_NULL),
-						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_SHOW_HEIGHT), SetDataTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_SM_ENABLE_ALL), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_NULL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_SM_DISABLE_ALL), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_NULL),
+						NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_SM_SHOW_HEIGHT), SetDataTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetFill(1, 1),
 				EndContainer(),
