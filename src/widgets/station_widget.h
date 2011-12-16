@@ -29,25 +29,25 @@ enum StationViewWidgets {
 
 /** Widgets of the WC_STATION_LIST. */
 enum StationListWidgets {
-	WID_SL_CAPTION,        ///< Caption of the window.
-	WID_SL_LIST,           ///< The main panel, list of stations.
-	WID_SL_SCROLLBAR,      ///< Scrollbar next to the main panel.
+	WID_STL_CAPTION,        ///< Caption of the window.
+	WID_STL_LIST,           ///< The main panel, list of stations.
+	WID_STL_SCROLLBAR,      ///< Scrollbar next to the main panel.
 
 	/* Vehicletypes need to be in order of StationFacility due to bit magic */
-	WID_SL_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station.
-	WID_SL_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop.
-	WID_SL_BUS,            ///< 'BUS' button - list only facilities where is a bus stop.
-	WID_SL_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport.
-	WID_SL_SHIP,           ///< 'SHIP' button - list only facilities where is a dock.
-	WID_SL_FACILALL,       ///< 'ALL' button - list all facilities.
+	WID_STL_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station.
+	WID_STL_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop.
+	WID_STL_BUS,            ///< 'BUS' button - list only facilities where is a bus stop.
+	WID_STL_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport.
+	WID_STL_SHIP,           ///< 'SHIP' button - list only facilities where is a dock.
+	WID_STL_FACILALL,       ///< 'ALL' button - list all facilities.
 
-	WID_SL_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting.
-	WID_SL_CARGOALL,       ///< 'ALL' button - list all stations.
+	WID_STL_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting.
+	WID_STL_CARGOALL,       ///< 'ALL' button - list all stations.
 
-	WID_SL_SORTBY,         ///< 'Sort by' button - reverse sort direction.
-	WID_SL_SORTDROPBTN,    ///< Dropdown button.
+	WID_STL_SORTBY,         ///< 'Sort by' button - reverse sort direction.
+	WID_STL_SORTDROPBTN,    ///< Dropdown button.
 
-	WID_SL_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets).
+	WID_STL_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets).
 };
 
 /** Widgets of the WC_SELECT_STATION. */

@@ -13,22 +13,22 @@
 #define WIDGETS_TIMETABLE_WIDGET_H
 
 /** Widgets of the WC_VEHICLE_TIMETABLE. */
-enum TimetableViewWidgets {
-	WID_TV_CAPTION,                     ///< Caption of the window.
-	WID_TV_ORDER_VIEW,                  ///< Order view.
-	WID_TV_TIMETABLE_PANEL,             ///< Timetable panel.
-	WID_TV_ARRIVAL_DEPARTURE_PANEL,     ///< Panel with the expected/scheduled arrivals.
-	WID_TV_SCROLLBAR,                   ///< Scrollbar for the panel.
-	WID_TV_SUMMARY_PANEL,               ///< Summary panel.
-	WID_TV_START_DATE,                  ///< Start date button.
-	WID_TV_CHANGE_TIME,                 ///< Change time button.
-	WID_TV_CLEAR_TIME,                  ///< Clear time button.
-	WID_TV_RESET_LATENESS,              ///< Reset lateness button.
-	WID_TV_AUTOFILL,                    ///< Autofill button.
-	WID_TV_EXPECTED,                    ///< Toggle between expected and scheduled arrivals.
-	WID_TV_SHARED_ORDER_LIST,           ///< Show the shared order list.
-	WID_TV_ARRIVAL_DEPARTURE_SELECTION, ///< Disable/hide the arrival departure panel.
-	WID_TV_EXPECTED_SELECTION,          ///< Disable/hide the expected selection button.
+enum VehicleTimetableWidgets {
+	WID_VT_CAPTION,                     ///< Caption of the window.
+	WID_VT_ORDER_VIEW,                  ///< Order view.
+	WID_VT_TIMETABLE_PANEL,             ///< Timetable panel.
+	WID_VT_ARRIVAL_DEPARTURE_PANEL,     ///< Panel with the expected/scheduled arrivals.
+	WID_VT_SCROLLBAR,                   ///< Scrollbar for the panel.
+	WID_VT_SUMMARY_PANEL,               ///< Summary panel.
+	WID_VT_START_DATE,                  ///< Start date button.
+	WID_VT_CHANGE_TIME,                 ///< Change time button.
+	WID_VT_CLEAR_TIME,                  ///< Clear time button.
+	WID_VT_RESET_LATENESS,              ///< Reset lateness button.
+	WID_VT_AUTOFILL,                    ///< Autofill button.
+	WID_VT_EXPECTED,                    ///< Toggle between expected and scheduled arrivals.
+	WID_VT_SHARED_ORDER_LIST,           ///< Show the shared order list.
+	WID_VT_ARRIVAL_DEPARTURE_SELECTION, ///< Disable/hide the arrival departure panel.
+	WID_VT_EXPECTED_SELECTION,          ///< Disable/hide the expected selection button.
 };
 
 #endif /* WIDGETS_TIMETABLE_WIDGET_H */
