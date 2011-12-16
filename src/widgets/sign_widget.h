@@ -15,23 +15,23 @@
 /** Widgets of the WC_SIGN_LIST. */
 enum SignListWidgets {
 	/* Name starts with SI instead of S, because of collision with StationListWidgets */
-	SILW_CAPTION,
-	SILW_LIST,
-	SILW_SCROLLBAR,
-	SILW_FILTER_TEXT,           ///< Text box for typing a filter string
-	SILW_FILTER_MATCH_CASE_BTN, ///< Button to toggle if case sensitive filtering should be used
-	SILW_FILTER_CLEAR_BTN,      ///< Button to clear the filter
+	WID_SIL_CAPTION,               ///< Caption of the window.
+	WID_SIL_LIST,                  ///< List of signs.
+	WID_SIL_SCROLLBAR,             ///< Scrollbar of list.
+	WID_SIL_FILTER_TEXT,           ///< Text box for typing a filter string.
+	WID_SIL_FILTER_MATCH_CASE_BTN, ///< Button to toggle if case sensitive filtering should be used.
+	WID_SIL_FILTER_CLEAR_BTN,      ///< Button to clear the filter.
 };
 
 /** Widgets of the WC_QUERY_STRING (WC_QUERY_STRING is also used in QueryStringWidgets). */
 enum QueryEditSignWidgets {
-	QUERY_EDIT_SIGN_WIDGET_CAPTION,
-	QUERY_EDIT_SIGN_WIDGET_TEXT,
-	QUERY_EDIT_SIGN_WIDGET_OK,
-	QUERY_EDIT_SIGN_WIDGET_CANCEL,
-	QUERY_EDIT_SIGN_WIDGET_DELETE,
-	QUERY_EDIT_SIGN_WIDGET_PREVIOUS,
-	QUERY_EDIT_SIGN_WIDGET_NEXT,
+	WID_QES_CAPTION,  ///< Caption of the window.
+	WID_QES_TEXT,     ///< Text of the query.
+	WID_QES_OK,       ///< OK button.
+	WID_QES_CANCEL,   ///< Cancel button.
+	WID_QES_DELETE,   ///< Delete button.
+	WID_QES_PREVIOUS, ///< Previous button.
+	WID_QES_NEXT,     ///< Next button.
 };
 
 #endif /* */

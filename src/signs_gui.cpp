@@ -147,15 +147,15 @@ enum SignListHotkeys {
 };
 
 struct SignListWindow : QueryStringBaseWindow, SignList {
-	int text_offset; ///< Offset of the sign text relative to the left edge of the SILW_LIST widget.
+	int text_offset; ///< Offset of the sign text relative to the left edge of the WID_SIL_LIST widget.
 	Scrollbar *vscroll;
 
 	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
 		this->CreateNestedTree(desc);
-		this->vscroll = this->GetScrollbar(SILW_SCROLLBAR);
+		this->vscroll = this->GetScrollbar(WID_SIL_SCROLLBAR);
 		this->FinishInitNested(desc, window_number);
-		this->SetWidgetLoweredState(SILW_FILTER_MATCH_CASE_BTN, SignList::match_case);
+		this->SetWidgetLoweredState(WID_SIL_FILTER_MATCH_CASE_BTN, SignList::match_case);
 
 		/* Initialize the text edit widget */
 		this->afilter = CS_ALPHANUMERAL;
@@ -180,7 +180,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		this->edit_str_buf[0] = '\0';
 		UpdateTextBufferSize(&this->text);
 
-		this->SetWidgetDirty(SILW_FILTER_TEXT);
+		this->SetWidgetDirty(WID_SIL_FILTER_TEXT);
 	}
 
 	/**
@@ -198,17 +198,17 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 			this->signs.SetFilterState(true);
 
-			this->EnableWidget(SILW_FILTER_CLEAR_BTN);
+			this->EnableWidget(WID_SIL_FILTER_CLEAR_BTN);
 		} else {
 			/* There is no new string -> clear this->filter_string */
 			this->filter_string[0] = '\0';
 
 			this->signs.SetFilterState(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS)); // keep sign list filtering active if competitor signs should be hidden
-			this->DisableWidget(SILW_FILTER_CLEAR_BTN);
+			this->DisableWidget(WID_SIL_FILTER_CLEAR_BTN);
 		}
 
 		/* Repaint the clear button since its disabled state may have changed */
-		this->SetWidgetDirty(SILW_FILTER_CLEAR_BTN);
+		this->SetWidgetDirty(WID_SIL_FILTER_CLEAR_BTN);
 
 		/* Rebuild the list of signs */
 		this->InvalidateData();
@@ -218,13 +218,13 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	{
 		if (this->signs.NeedRebuild()) this->BuildSortSignList();
 		this->DrawWidgets();
-		if (!this->IsShaded()) this->DrawEditBox(SILW_FILTER_TEXT);
+		if (!this->IsShaded()) this->DrawEditBox(WID_SIL_FILTER_TEXT);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case SILW_LIST: {
+			case WID_SIL_LIST: {
 				uint y = r.top + WD_FRAMERECT_TOP; // Offset from top of widget.
 				/* No signs? */
 				if (this->vscroll->GetCount() == 0) {
@@ -255,28 +255,28 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == SILW_CAPTION) SetDParam(0, this->vscroll->GetCount());
+		if (widget == WID_SIL_CAPTION) SetDParam(0, this->vscroll->GetCount());
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case SILW_LIST: {
-				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, SILW_LIST, WD_FRAMERECT_TOP);
+			case WID_SIL_LIST: {
+				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SIL_LIST, WD_FRAMERECT_TOP);
 				if (id_v == INT_MAX) return;
 
 				const Sign *si = this->signs[id_v];
 				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				break;
 			}
-			case SILW_FILTER_CLEAR_BTN:
+			case WID_SIL_FILTER_CLEAR_BTN:
 				this->ClearFilterTextWidget(); // Empty the text in the EditBox widget
 				this->SetFilterString("");     // Use empty text as filter text (= view all signs)
 				break;
 
-			case SILW_FILTER_MATCH_CASE_BTN:
+			case WID_SIL_FILTER_MATCH_CASE_BTN:
 				SignList::match_case = !SignList::match_case; // Toggle match case
-				this->SetWidgetLoweredState(SILW_FILTER_MATCH_CASE_BTN, SignList::match_case); // Toggle button pushed state
+				this->SetWidgetLoweredState(WID_SIL_FILTER_MATCH_CASE_BTN, SignList::match_case); // Toggle button pushed state
 				this->InvalidateData(); // Rebuild the list of signs
 				break;
 		}
@@ -284,13 +284,13 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 	virtual void OnResize()
 	{
-		this->vscroll->SetCapacityFromWidget(this, SILW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, WID_SIL_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case SILW_LIST: {
+			case WID_SIL_LIST: {
 				Dimension spr_dim = GetSpriteSize(SPR_COMPANY_ICON);
 				this->text_offset = WD_FRAMETEXT_LEFT + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
 				resize->height = max<uint>(FONT_HEIGHT_NORMAL, spr_dim.height);
@@ -299,7 +299,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 				break;
 			}
 
-			case SILW_CAPTION:
+			case WID_SIL_CAPTION:
 				SetDParam(0, max<size_t>(1000, Sign::GetPoolSize()));
 				*size = GetStringBoundingBox(STR_SIGN_LIST_CAPTION);
 				size->height += padding.height;
@@ -311,7 +311,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(SILW_FILTER_TEXT, key, keycode, state)) {
+		switch (this->HandleEditBoxKey(WID_SIL_FILTER_TEXT, key, keycode, state)) {
 			case HEBR_EDITING:
 				this->SetFilterString(this->text.buf);
 				break;
@@ -324,13 +324,13 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 				return state;
 
 			case HEBR_CANCEL: // ESC pressed, clear filter.
-				this->OnClick(Point(), SILW_FILTER_CLEAR_BTN, 1); // Simulate click on clear button.
+				this->OnClick(Point(), WID_SIL_FILTER_CLEAR_BTN, 1); // Simulate click on clear button.
 				this->UnfocusFocusedWidget();                    // Unfocus the text box.
 				return state;
 
 			case HEBR_NOT_FOCUSED: // The filter text box is not globaly focused.
 				if (CheckHotkeyMatch(signlist_hotkeys, keycode, this) == SLHK_FOCUS_FILTER_BOX) {
-					this->SetFocusedWidget(SILW_FILTER_TEXT);
+					this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
 					SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
 					state = ES_HANDLED;
 				}
@@ -340,19 +340,19 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 				NOT_REACHED();
 		}
 
-		if (state == ES_HANDLED) OnOSKInput(SILW_FILTER_TEXT);
+		if (state == ES_HANDLED) OnOSKInput(WID_SIL_FILTER_TEXT);
 
 		return state;
 	}
 
 	virtual void OnOSKInput(int widget)
 	{
-		if (widget == SILW_FILTER_TEXT) this->SetFilterString(this->text.buf);
+		if (widget == WID_SIL_FILTER_TEXT) this->SetFilterString(this->text.buf);
 	}
 
 	virtual void OnMouseLoop()
 	{
-		this->HandleEditBox(SILW_FILTER_TEXT);
+		this->HandleEditBox(WID_SIL_FILTER_TEXT);
 	}
 
 	void BuildSortSignList()
@@ -360,7 +360,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		if (this->signs.NeedRebuild()) {
 			this->BuildSignsList();
 			this->vscroll->SetCount(this->signs.Length());
-			this->SetWidgetDirty(SILW_CAPTION);
+			this->SetWidgetDirty(WID_SIL_CAPTION);
 		}
 		this->SortSignsList();
 	}
@@ -406,26 +406,26 @@ Hotkey<SignListWindow> *_signlist_hotkeys = SignListWindow::signlist_hotkeys;
 static const NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, SILW_CAPTION), SetDataTip(STR_SIGN_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SIL_CAPTION), SetDataTip(STR_SIGN_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PANEL, COLOUR_GREY, SILW_LIST), SetMinimalSize(WD_FRAMETEXT_LEFT + 16 + 255 + WD_FRAMETEXT_RIGHT, 50),
-								SetResize(1, 10), SetFill(1, 0), SetScrollbar(SILW_SCROLLBAR), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY, WID_SIL_LIST), SetMinimalSize(WD_FRAMETEXT_LEFT + 16 + 255 + WD_FRAMETEXT_RIGHT, 50),
+								SetResize(1, 10), SetFill(1, 0), SetScrollbar(WID_SIL_SCROLLBAR), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1),
-					NWidget(WWT_EDITBOX, COLOUR_GREY, SILW_FILTER_TEXT), SetMinimalSize(80, 12), SetResize(1, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
+					NWidget(WWT_EDITBOX, COLOUR_GREY, WID_SIL_FILTER_TEXT), SetMinimalSize(80, 12), SetResize(1, 0), SetFill(1, 0), SetPadding(2, 2, 2, 2),
 							SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 				EndContainer(),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, SILW_FILTER_MATCH_CASE_BTN), SetDataTip(STR_SIGN_LIST_MATCH_CASE, STR_SIGN_LIST_MATCH_CASE_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SILW_FILTER_CLEAR_BTN), SetDataTip(STR_SIGN_LIST_CLEAR, STR_SIGN_LIST_CLEAR_TOOLTIP),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SIL_FILTER_MATCH_CASE_BTN), SetDataTip(STR_SIGN_LIST_MATCH_CASE, STR_SIGN_LIST_MATCH_CASE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SIL_FILTER_CLEAR_BTN), SetDataTip(STR_SIGN_LIST_CLEAR, STR_SIGN_LIST_CLEAR_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VERTICAL), SetFill(0, 1),
-				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, SILW_SCROLLBAR),
+				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SIL_SCROLLBAR),
 			EndContainer(),
 			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
@@ -481,9 +481,9 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 		this->InitNested(desc);
 
-		this->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
+		this->LowerWidget(WID_QES_TEXT);
 		UpdateSignEditWindow(si);
-		this->SetFocusedWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
+		this->SetFocusedWidget(WID_QES_TEXT);
 	}
 
 	void UpdateSignEditWindow(const Sign *si)
@@ -502,8 +502,8 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		this->cur_sign = si->index;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars);
 
-		this->SetWidgetDirty(QUERY_EDIT_SIGN_WIDGET_TEXT);
-		this->SetFocusedWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
+		this->SetWidgetDirty(WID_QES_TEXT);
+		this->SetFocusedWidget(WID_QES_TEXT);
 	}
 
 	/**
@@ -536,7 +536,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case QUERY_EDIT_SIGN_WIDGET_CAPTION:
+			case WID_QES_CAPTION:
 				SetDParam(0, this->caption);
 				break;
 		}
@@ -545,15 +545,15 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		if (!this->IsShaded()) this->DrawEditBox(QUERY_EDIT_SIGN_WIDGET_TEXT);
+		if (!this->IsShaded()) this->DrawEditBox(WID_QES_TEXT);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case QUERY_EDIT_SIGN_WIDGET_PREVIOUS:
-			case QUERY_EDIT_SIGN_WIDGET_NEXT: {
-				const Sign *si = this->PrevNextSign(widget == QUERY_EDIT_SIGN_WIDGET_NEXT);
+			case WID_QES_PREVIOUS:
+			case WID_QES_NEXT: {
+				const Sign *si = this->PrevNextSign(widget == WID_QES_NEXT);
 
 				/* Rebuild the sign list */
 				this->signs.ForceRebuild();
@@ -567,17 +567,17 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				break;
 			}
 
-			case QUERY_EDIT_SIGN_WIDGET_DELETE:
+			case WID_QES_DELETE:
 				/* Only need to set the buffer to null, the rest is handled as the OK button */
 				RenameSign(this->cur_sign, "");
 				/* don't delete this, we are deleted in Sign::~Sign() -> DeleteRenameSignWindow() */
 				break;
 
-			case QUERY_EDIT_SIGN_WIDGET_OK:
+			case WID_QES_OK:
 				if (RenameSign(this->cur_sign, this->text.buf)) break;
 				/* FALL THROUGH */
 
-			case QUERY_EDIT_SIGN_WIDGET_CANCEL:
+			case WID_QES_CANCEL:
 				delete this;
 				break;
 		}
@@ -586,7 +586,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(QUERY_EDIT_SIGN_WIDGET_TEXT, key, keycode, state)) {
+		switch (this->HandleEditBoxKey(WID_QES_TEXT, key, keycode, state)) {
 			default: break;
 
 			case HEBR_CONFIRM:
@@ -602,30 +602,30 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 	virtual void OnMouseLoop()
 	{
-		this->HandleEditBox(QUERY_EDIT_SIGN_WIDGET_TEXT);
+		this->HandleEditBox(WID_QES_TEXT);
 	}
 
 	virtual void OnOpenOSKWindow(int wid)
 	{
-		ShowOnScreenKeyboard(this, wid, QUERY_EDIT_SIGN_WIDGET_CANCEL, QUERY_EDIT_SIGN_WIDGET_OK);
+		ShowOnScreenKeyboard(this, wid, WID_QES_CANCEL, WID_QES_OK);
 	}
 };
 
 static const NWidgetPart _nested_query_sign_edit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QES_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_TEXT), SetMinimalSize(256, 12), SetDataTip(STR_EDIT_SIGN_SIGN_OSKTITLE, STR_NULL), SetPadding(2, 2, 2, 2),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QES_TEXT), SetMinimalSize(256, 12), SetDataTip(STR_EDIT_SIGN_SIGN_OSKTITLE, STR_NULL), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_OK), SetMinimalSize(61, 12), SetDataTip(STR_BUTTON_OK, STR_NULL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_CANCEL), SetMinimalSize(60, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_DELETE), SetMinimalSize(60, 12), SetDataTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_OK), SetMinimalSize(61, 12), SetDataTip(STR_BUTTON_OK, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_CANCEL), SetMinimalSize(60, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_QES_DELETE), SetMinimalSize(60, 12), SetDataTip(STR_TOWN_VIEW_DELETE_BUTTON, STR_NULL),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetFill(1, 1), EndContainer(),
-		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_PREVIOUS), SetMinimalSize(11, 12), SetDataTip(AWV_DECREASE, STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP),
-		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, QUERY_EDIT_SIGN_WIDGET_NEXT), SetMinimalSize(11, 12), SetDataTip(AWV_INCREASE, STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP),
+		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_PREVIOUS), SetMinimalSize(11, 12), SetDataTip(AWV_DECREASE, STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP),
+		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_NEXT), SetMinimalSize(11, 12), SetDataTip(AWV_INCREASE, STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP),
 	EndContainer(),
 };
 

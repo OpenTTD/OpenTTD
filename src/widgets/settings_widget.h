@@ -14,60 +14,60 @@
 
 /** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
 enum GameOptionsWidgets {
-	GOW_BACKGROUND,             ///< Background of the window
-	GOW_CURRENCY_DROPDOWN,      ///< Currency dropdown
-	GOW_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown
-	GOW_ROADSIDE_DROPDOWN,      ///< Dropdown to select the road side (to set the right side ;))
-	GOW_TOWNNAME_DROPDOWN,      ///< Town name dropdown
-	GOW_AUTOSAVE_DROPDOWN,      ///< Dropdown to say how often to autosave
-	GOW_LANG_DROPDOWN,          ///< Language dropdown
-	GOW_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution
-	GOW_FULLSCREEN_BUTTON,      ///< Toggle fullscreen
-	GOW_SCREENSHOT_DROPDOWN,    ///< Select the screenshot type... please use PNG!
-	GOW_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF
-	GOW_BASE_GRF_STATUS,        ///< Info about missing files etc.
-	GOW_BASE_GRF_DESCRIPTION,   ///< Description of selected base GRF
-	GOW_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX
-	GOW_BASE_SFX_DESCRIPTION,   ///< Description of selected base SFX
-	GOW_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set
-	GOW_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
-	GOW_BASE_MUSIC_DESCRIPTION, ///< Description of selected base music set
+	WID_GO_BACKGROUND,             ///< Background of the window.
+	WID_GO_CURRENCY_DROPDOWN,      ///< Currency dropdown.
+	WID_GO_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown.
+	WID_GO_ROADSIDE_DROPDOWN,      ///< Dropdown to select the road side (to set the right side ;)).
+	WID_GO_TOWNNAME_DROPDOWN,      ///< Town name dropdown.
+	WID_GO_AUTOSAVE_DROPDOWN,      ///< Dropdown to say how often to autosave.
+	WID_GO_LANG_DROPDOWN,          ///< Language dropdown.
+	WID_GO_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution.
+	WID_GO_FULLSCREEN_BUTTON,      ///< Toggle fullscreen.
+	WID_GO_SCREENSHOT_DROPDOWN,    ///< Select the screenshot type... please use PNG!.
+	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
+	WID_GO_BASE_GRF_STATUS,        ///< Info about missing files etc.
+	WID_GO_BASE_GRF_DESCRIPTION,   ///< Description of selected base GRF.
+	WID_GO_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX.
+	WID_GO_BASE_SFX_DESCRIPTION,   ///< Description of selected base SFX.
+	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
+	WID_GO_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
+	WID_GO_BASE_MUSIC_DESCRIPTION, ///< Description of selected base music set.
 };
 
 /** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
 enum GameDifficultyWidgets {
-	GDW_LVL_EASY,
-	GDW_LVL_MEDIUM,
-	GDW_LVL_HARD,
-	GDW_LVL_CUSTOM,
-	GDW_HIGHSCORE,
-	GDW_ACCEPT,
-	GDW_CANCEL,
+	WID_GD_LVL_EASY,      ///< Easy level button.
+	WID_GD_LVL_MEDIUM,    ///< Medium level button.
+	WID_GD_LVL_HARD,      ///< Hard level button.
+	WID_GD_LVL_CUSTOM,    ///< Custom level button.
+	WID_GD_HIGHSCORE,     ///< Highscore button.
+	WID_GD_ACCEPT,        ///< Accept button.
+	WID_GD_CANCEL,        ///< Cancel button.
 
-	GDW_OPTIONS_START,
+	WID_GD_OPTIONS_START, ///< Start of the options.
 };
 
 /** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
 enum GameSettingsWidgets {
-	SETTINGSEL_OPTIONSPANEL, ///< Panel widget containing the option lists
-	SETTINGSEL_SCROLLBAR,    ///< Scrollbar
+	WID_GS_OPTIONSPANEL, ///< Panel widget containing the option lists.
+	WID_GS_SCROLLBAR,    ///< Scrollbar.
 };
 
 /** Widgets of the WC_CUSTOM_CURRENCY. */
 enum CustomCurrencyWidgets {
-	CUSTCURR_RATE_DOWN,
-	CUSTCURR_RATE_UP,
-	CUSTCURR_RATE,
-	CUSTCURR_SEPARATOR_EDIT,
-	CUSTCURR_SEPARATOR,
-	CUSTCURR_PREFIX_EDIT,
-	CUSTCURR_PREFIX,
-	CUSTCURR_SUFFIX_EDIT,
-	CUSTCURR_SUFFIX,
-	CUSTCURR_YEAR_DOWN,
-	CUSTCURR_YEAR_UP,
-	CUSTCURR_YEAR,
-	CUSTCURR_PREVIEW,
+	WID_CC_RATE_DOWN,      ///< Down button.
+	WID_CC_RATE_UP,        ///< Up button.
+	WID_CC_RATE,           ///< Rate of currency.
+	WID_CC_SEPARATOR_EDIT, ///< Seperator edit button.
+	WID_CC_SEPARATOR,      ///< Current seperator.
+	WID_CC_PREFIX_EDIT,    ///< Prefix edit button.
+	WID_CC_PREFIX,         ///< Current prefix.
+	WID_CC_SUFFIX_EDIT,    ///< Suffix edit button.
+	WID_CC_SUFFIX,         ///< Current suffix.
+	WID_CC_YEAR_DOWN,      ///< Down button.
+	WID_CC_YEAR_UP,        ///< Up button.
+	WID_CC_YEAR,           ///< Year of introduction.
+	WID_CC_PREVIEW,        ///< Preview.
 };
 
 #endif /* WIDGETS_SETTINGS_WIDGET_H */
