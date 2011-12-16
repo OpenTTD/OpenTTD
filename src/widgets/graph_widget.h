@@ -12,6 +12,8 @@
 #ifndef WIDGETS_GRAPH_WIDGET_H
 #define WIDGETS_GRAPH_WIDGET_H
 
+#include "../economy_type.h"
+
 /** Widgets of the WC_GRAPH_LEGEND. */
 enum GraphLegendWidgetNumbers {
 	GLW_BACKGROUND,

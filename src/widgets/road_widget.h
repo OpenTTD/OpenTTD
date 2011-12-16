@@ -14,26 +14,28 @@
 
 /** Widgets of the WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR (WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR is also used in others). */
 enum RoadToolbarWidgets {
-	RTW_ROAD_X,
-	RTW_ROAD_Y,
-	RTW_AUTOROAD,
-	RTW_DEMOLISH,
-	RTW_DEPOT,
-	RTW_BUS_STATION,
-	RTW_TRUCK_STATION,
-	RTW_ONE_WAY,
-	RTW_BUILD_BRIDGE,
-	RTW_BUILD_TUNNEL,
-	RTW_REMOVE,
+	/* Name starts with RO instead of R, becuase of collision with RailToolbarWidgets */
+	ROTW_ROAD_X,
+	ROTW_ROAD_Y,
+	ROTW_AUTOROAD,
+	ROTW_DEMOLISH,
+	ROTW_DEPOT,
+	ROTW_BUS_STATION,
+	ROTW_TRUCK_STATION,
+	ROTW_ONE_WAY,
+	ROTW_BUILD_BRIDGE,
+	ROTW_BUILD_TUNNEL,
+	ROTW_REMOVE,
 };
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
 enum BuildRoadDepotWidgets {
-	BRDW_CAPTION,
-	BRDW_DEPOT_NE,
-	BRDW_DEPOT_SE,
-	BRDW_DEPOT_SW,
-	BRDW_DEPOT_NW,
+	/* Name starts with BRO instead of BR, becuase of collision with BuildRailDepotWidgets */
+	BRODW_CAPTION,
+	BRODW_DEPOT_NE,
+	BRODW_DEPOT_SE,
+	BRODW_DEPOT_SW,
+	BRODW_DEPOT_NW,
 };
 
 /** Widgets of the WC_BUS_STATION / WC_TRUCK_STATION. */

@@ -1918,7 +1918,7 @@ static const NWidgetPart _nested_scan_progress_widgets[] = {
 			NWidget(NWID_VERTICAL), SetPIP(11, 8, 11),
 				NWidget(WWT_LABEL, INVALID_COLOUR), SetDataTip(STR_NEWGRF_SCAN_MESSAGE, STR_NULL), SetFill(1, 0),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, SPWW_PROGRESS_BAR), SetFill(1, 0),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, GPWW_PROGRESS_TEXT), SetFill(1, 0),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, SPWW_PROGRESS_TEXT), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -1961,7 +1961,7 @@ struct ScanProgressWindow : public Window {
 				break;
 			}
 
-			case GPWW_PROGRESS_TEXT:
+			case SPWW_PROGRESS_TEXT:
 				SetDParam(0, 9999);
 				SetDParam(1, 9999);
 				/* We really don't know the width. We could determine it by scanning the NewGRFs,
@@ -1985,7 +1985,7 @@ struct ScanProgressWindow : public Window {
 				break;
 			}
 
-			case GPWW_PROGRESS_TEXT:
+			case SPWW_PROGRESS_TEXT:
 				SetDParam(0, this->scanned);
 				SetDParam(1, _settings_client.gui.last_newgrf_count);
 				DrawString(r.left, r.right, r.top, STR_NEWGRF_SCAN_STATUS, TC_FROMSTRING, SA_HOR_CENTER);

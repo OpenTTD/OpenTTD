@@ -12,6 +12,8 @@
 #ifndef WIDGETS_NEWGRF_WIDGET_H
 #define WIDGETS_NEWGRF_WIDGET_H
 
+#include "../newgrf_config.h"
+
 /** Widgets of the WC_GRF_PARAMETERS. */
 enum ShowNewGRFParametersWidgets {
 	GRFPAR_WIDGET_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #GRFPAR_WIDGET_NUMPAR
@@ -67,7 +69,7 @@ enum ShowNewGRFStateWidgets {
 /** Widgets of the WC_MODAL_PROGRESS (WC_MODAL_PROGRESS is also used in GenerationProgressWindowWidgets). */
 enum ScanProgressWindowWidgets {
 	SPWW_PROGRESS_BAR,  ///< Simple progress bar.
-	GPWW_PROGRESS_TEXT, ///< Text explaining what is happening.
+	SPWW_PROGRESS_TEXT, ///< Text explaining what is happening.
 };
 
 #endif /* WIDGETS_NEWGRF_WIDGET_H */

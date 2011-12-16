@@ -14,21 +14,22 @@
 
 /** Widgets of the WC_BUILD_TOOLBAR (WC_BUILD_TOOLBAR is also used in others). */
 enum RailToolbarWidgets {
-	RTW_CAPTION,
-	RTW_BUILD_NS,
-	RTW_BUILD_X,
-	RTW_BUILD_EW,
-	RTW_BUILD_Y,
-	RTW_AUTORAIL,
-	RTW_DEMOLISH,
-	RTW_BUILD_DEPOT,
-	RTW_BUILD_WAYPOINT,
-	RTW_BUILD_STATION,
-	RTW_BUILD_SIGNALS,
-	RTW_BUILD_BRIDGE,
-	RTW_BUILD_TUNNEL,
-	RTW_REMOVE,
-	RTW_CONVERT_RAIL,
+	/* Name starts with RA instead of R, becuase of collision with RoadToolbarWidgets */
+	RATW_CAPTION,
+	RATW_BUILD_NS,
+	RATW_BUILD_X,
+	RATW_BUILD_EW,
+	RATW_BUILD_Y,
+	RATW_AUTORAIL,
+	RATW_DEMOLISH,
+	RATW_BUILD_DEPOT,
+	RATW_BUILD_WAYPOINT,
+	RATW_BUILD_STATION,
+	RATW_BUILD_SIGNALS,
+	RATW_BUILD_BRIDGE,
+	RATW_BUILD_TUNNEL,
+	RATW_REMOVE,
+	RATW_CONVERT_RAIL,
 };
 
 /** Widgets of the WC_BUILD_STATION (WC_BUILD_STATION is also used in others). */
@@ -96,10 +97,11 @@ enum BuildSignalWidgets {
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
 enum BuildRailDepotWidgets {
-	BRDW_DEPOT_NE,
-	BRDW_DEPOT_SE,
-	BRDW_DEPOT_SW,
-	BRDW_DEPOT_NW,
+	/* Name starts with BRA instead of BR, becuase of collision with BuildRoadDepotWidgets */
+	BRADW_DEPOT_NE,
+	BRADW_DEPOT_SE,
+	BRADW_DEPOT_SW,
+	BRADW_DEPOT_NW,
 };
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */

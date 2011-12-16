@@ -286,9 +286,9 @@ void CcBuildRailTunnel(const CommandCost &result, TileIndex tile, uint32 p1, uin
 static void ToggleRailButton_Remove(Window *w)
 {
 	DeleteWindowById(WC_SELECT_STATION, 0);
-	w->ToggleWidgetLoweredState(RTW_REMOVE);
-	w->SetWidgetDirty(RTW_REMOVE);
-	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
+	w->ToggleWidgetLoweredState(RATW_REMOVE);
+	w->SetWidgetDirty(RATW_REMOVE);
+	_remove_button_clicked = w->IsWidgetLowered(RATW_REMOVE);
 	SetSelectionRed(_remove_button_clicked);
 }
 
@@ -299,11 +299,11 @@ static void ToggleRailButton_Remove(Window *w)
  */
 static bool RailToolbar_CtrlChanged(Window *w)
 {
-	if (w->IsWidgetDisabled(RTW_REMOVE)) return false;
+	if (w->IsWidgetDisabled(RATW_REMOVE)) return false;
 
 	/* allow ctrl to switch remove mode only for these widgets */
-	for (uint i = RTW_BUILD_NS; i <= RTW_BUILD_STATION; i++) {
-		if ((i <= RTW_AUTORAIL || i >= RTW_BUILD_WAYPOINT) && w->IsWidgetLowered(i)) {
+	for (uint i = RATW_BUILD_NS; i <= RATW_BUILD_STATION; i++) {
+		if ((i <= RATW_AUTORAIL || i >= RATW_BUILD_WAYPOINT) && w->IsWidgetLowered(i)) {
 			ToggleRailButton_Remove(w);
 			return true;
 		}
@@ -320,12 +320,12 @@ static bool RailToolbar_CtrlChanged(Window *w)
  */
 static void BuildRailClick_Remove(Window *w)
 {
-	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
+	if (w->IsWidgetDisabled(RATW_REMOVE)) return;
 	ToggleRailButton_Remove(w);
 	SndPlayFx(SND_15_BEEP);
 
 	/* handle station builder */
-	if (w->IsWidgetLowered(RTW_BUILD_STATION)) {
+	if (w->IsWidgetLowered(RATW_BUILD_STATION)) {
 		if (_remove_button_clicked) {
 			/* starting drag & drop remove */
 			if (!_settings_client.gui.station_dragdrop) {
@@ -418,7 +418,7 @@ struct BuildRailToolbarWindow : Window {
 	{
 		this->InitNested(desc);
 		this->SetupRailToolbar(railtype);
-		this->DisableWidget(RTW_REMOVE);
+		this->DisableWidget(RATW_REMOVE);
 		this->last_user_action = WIDGET_LIST_END;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
@@ -439,14 +439,14 @@ struct BuildRailToolbarWindow : Window {
 		const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
 		assert(railtype < RAILTYPE_END);
-		this->GetWidget<NWidgetCore>(RTW_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
-		this->GetWidget<NWidgetCore>(RTW_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
-		this->GetWidget<NWidgetCore>(RTW_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
-		this->GetWidget<NWidgetCore>(RTW_BUILD_Y)->widget_data      = rti->gui_sprites.build_y_rail;
-		this->GetWidget<NWidgetCore>(RTW_AUTORAIL)->widget_data     = rti->gui_sprites.auto_rail;
-		this->GetWidget<NWidgetCore>(RTW_BUILD_DEPOT)->widget_data  = rti->gui_sprites.build_depot;
-		this->GetWidget<NWidgetCore>(RTW_CONVERT_RAIL)->widget_data = rti->gui_sprites.convert_rail;
-		this->GetWidget<NWidgetCore>(RTW_BUILD_TUNNEL)->widget_data = rti->gui_sprites.build_tunnel;
+		this->GetWidget<NWidgetCore>(RATW_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
+		this->GetWidget<NWidgetCore>(RATW_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
+		this->GetWidget<NWidgetCore>(RATW_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
+		this->GetWidget<NWidgetCore>(RATW_BUILD_Y)->widget_data      = rti->gui_sprites.build_y_rail;
+		this->GetWidget<NWidgetCore>(RATW_AUTORAIL)->widget_data     = rti->gui_sprites.auto_rail;
+		this->GetWidget<NWidgetCore>(RATW_BUILD_DEPOT)->widget_data  = rti->gui_sprites.build_depot;
+		this->GetWidget<NWidgetCore>(RATW_CONVERT_RAIL)->widget_data = rti->gui_sprites.convert_rail;
+		this->GetWidget<NWidgetCore>(RATW_BUILD_TUNNEL)->widget_data = rti->gui_sprites.build_tunnel;
 	}
 
 	/**
@@ -462,36 +462,36 @@ struct BuildRailToolbarWindow : Window {
 	void UpdateRemoveWidgetStatus(int clicked_widget)
 	{
 		switch (clicked_widget) {
-			case RTW_REMOVE:
+			case RATW_REMOVE:
 				/* If it is the removal button that has been clicked, do nothing,
 				 * as it is up to the other buttons to drive removal status */
 				return;
 
-			case RTW_BUILD_NS:
-			case RTW_BUILD_X:
-			case RTW_BUILD_EW:
-			case RTW_BUILD_Y:
-			case RTW_AUTORAIL:
-			case RTW_BUILD_WAYPOINT:
-			case RTW_BUILD_STATION:
-			case RTW_BUILD_SIGNALS:
+			case RATW_BUILD_NS:
+			case RATW_BUILD_X:
+			case RATW_BUILD_EW:
+			case RATW_BUILD_Y:
+			case RATW_AUTORAIL:
+			case RATW_BUILD_WAYPOINT:
+			case RATW_BUILD_STATION:
+			case RATW_BUILD_SIGNALS:
 				/* Removal button is enabled only if the rail/signal/waypoint/station
 				 * button is still lowered.  Once raised, it has to be disabled */
-				this->SetWidgetDisabledState(RTW_REMOVE, !this->IsWidgetLowered(clicked_widget));
+				this->SetWidgetDisabledState(RATW_REMOVE, !this->IsWidgetLowered(clicked_widget));
 				break;
 
 			default:
 				/* When any other buttons than rail/signal/waypoint/station, raise and
 				 * disable the removal button */
-				this->DisableWidget(RTW_REMOVE);
-				this->RaiseWidget(RTW_REMOVE);
+				this->DisableWidget(RATW_REMOVE);
+				this->RaiseWidget(RATW_REMOVE);
 				break;
 		}
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == RTW_CAPTION) {
+		if (widget == RATW_CAPTION) {
 			const RailtypeInfo *rti = GetRailTypeInfo(this->railtype);
 			if (rti->max_speed > 0) {
 				SetDParam(0, STR_TOOLBAR_RAILTYPE_VELOCITY);
@@ -505,87 +505,87 @@ struct BuildRailToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget < RTW_BUILD_NS) return;
+		if (widget < RATW_BUILD_NS) return;
 
 		_remove_button_clicked = false;
 		switch (widget) {
-			case RTW_BUILD_NS:
-				HandlePlacePushButton(this, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL);
+			case RATW_BUILD_NS:
+				HandlePlacePushButton(this, RATW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_BUILD_X:
-				HandlePlacePushButton(this, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X);
+			case RATW_BUILD_X:
+				HandlePlacePushButton(this, RATW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_BUILD_EW:
-				HandlePlacePushButton(this, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL);
+			case RATW_BUILD_EW:
+				HandlePlacePushButton(this, RATW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_BUILD_Y:
-				HandlePlacePushButton(this, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y);
+			case RATW_BUILD_Y:
+				HandlePlacePushButton(this, RATW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_AUTORAIL:
-				HandlePlacePushButton(this, RTW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL);
+			case RATW_AUTORAIL:
+				HandlePlacePushButton(this, RATW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_DEMOLISH:
-				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
+			case RATW_DEMOLISH:
+				HandlePlacePushButton(this, RATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_BUILD_DEPOT:
-				if (HandlePlacePushButton(this, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT)) {
+			case RATW_BUILD_DEPOT:
+				if (HandlePlacePushButton(this, RATW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT)) {
 					ShowBuildTrainDepotPicker(this);
 					this->last_user_action = widget;
 				}
 				break;
 
-			case RTW_BUILD_WAYPOINT:
+			case RATW_BUILD_WAYPOINT:
 				this->last_user_action = widget;
 				_waypoint_count = StationClass::GetCount(STAT_CLASS_WAYP);
-				if (HandlePlacePushButton(this, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT) && _waypoint_count > 1) {
+				if (HandlePlacePushButton(this, RATW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT) && _waypoint_count > 1) {
 					ShowBuildWaypointPicker(this);
 				}
 				break;
 
-			case RTW_BUILD_STATION:
-				if (HandlePlacePushButton(this, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, HT_RECT)) {
+			case RATW_BUILD_STATION:
+				if (HandlePlacePushButton(this, RATW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, HT_RECT)) {
 					ShowStationBuilder(this);
 					this->last_user_action = widget;
 				}
 				break;
 
-			case RTW_BUILD_SIGNALS: {
+			case RATW_BUILD_SIGNALS: {
 				this->last_user_action = widget;
-				bool started = HandlePlacePushButton(this, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT);
+				bool started = HandlePlacePushButton(this, RATW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT);
 				if (started && _settings_client.gui.enable_signal_gui != _ctrl_pressed) {
 					ShowSignalBuilder(this);
 				}
 				break;
 			}
 
-			case RTW_BUILD_BRIDGE:
-				HandlePlacePushButton(this, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT);
+			case RATW_BUILD_BRIDGE:
+				HandlePlacePushButton(this, RATW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_BUILD_TUNNEL:
-				HandlePlacePushButton(this, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, HT_SPECIAL);
+			case RATW_BUILD_TUNNEL:
+				HandlePlacePushButton(this, RATW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, HT_SPECIAL);
 				this->last_user_action = widget;
 				break;
 
-			case RTW_REMOVE:
+			case RATW_REMOVE:
 				BuildRailClick_Remove(this);
 				break;
 
-			case RTW_CONVERT_RAIL:
-				HandlePlacePushButton(this, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, HT_RECT | HT_DIAGONAL);
+			case RATW_CONVERT_RAIL:
+				HandlePlacePushButton(this, RATW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, HT_RECT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
@@ -607,57 +607,57 @@ struct BuildRailToolbarWindow : Window {
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		switch (this->last_user_action) {
-			case RTW_BUILD_NS:
+			case RATW_BUILD_NS:
 				VpStartPlaceSizing(tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
-			case RTW_BUILD_X:
+			case RATW_BUILD_X:
 				VpStartPlaceSizing(tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
-			case RTW_BUILD_EW:
+			case RATW_BUILD_EW:
 				VpStartPlaceSizing(tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
-			case RTW_BUILD_Y:
+			case RATW_BUILD_Y:
 				VpStartPlaceSizing(tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
-			case RTW_AUTORAIL:
+			case RATW_AUTORAIL:
 				VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
-			case RTW_DEMOLISH:
+			case RATW_DEMOLISH:
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			case RTW_BUILD_DEPOT:
+			case RATW_BUILD_DEPOT:
 				DoCommandP(tile, _cur_railtype, _build_depot_direction,
 						CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT),
 						CcRailDepot);
 				break;
 
-			case RTW_BUILD_WAYPOINT:
+			case RATW_BUILD_WAYPOINT:
 				PlaceRail_Waypoint(tile);
 				break;
 
-			case RTW_BUILD_STATION:
+			case RATW_BUILD_STATION:
 				PlaceRail_Station(tile);
 				break;
 
-			case RTW_BUILD_SIGNALS:
+			case RATW_BUILD_SIGNALS:
 				VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
 				break;
 
-			case RTW_BUILD_BRIDGE:
+			case RATW_BUILD_BRIDGE:
 				PlaceRail_Bridge(tile, this);
 				break;
 
-			case RTW_BUILD_TUNNEL:
+			case RATW_BUILD_TUNNEL:
 				DoCommandP(tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0, CMD_BUILD_TUNNEL | CMD_MSG(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE), CcBuildRailTunnel);
 				break;
 
-			case RTW_CONVERT_RAIL:
+			case RATW_CONVERT_RAIL:
 				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
 				break;
 
@@ -668,7 +668,7 @@ struct BuildRailToolbarWindow : Window {
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
 	{
 		/* no dragging if you have pressed the convert button */
-		if (FindWindowById(WC_BUILD_SIGNAL, 0) != NULL && _convert_signal_button && this->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
+		if (FindWindowById(WC_BUILD_SIGNAL, 0) != NULL && _convert_signal_button && this->IsWidgetLowered(RATW_BUILD_SIGNALS)) return;
 
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
@@ -701,7 +701,7 @@ struct BuildRailToolbarWindow : Window {
 
 				case DDSP_REMOVE_STATION:
 				case DDSP_BUILD_STATION:
-					if (this->IsWidgetLowered(RTW_BUILD_STATION)) {
+					if (this->IsWidgetLowered(RATW_BUILD_STATION)) {
 						/* Station */
 						if (_remove_button_clicked) {
 							DoCommandP(end_tile, start_tile, _ctrl_pressed ? 0 : 1, CMD_REMOVE_FROM_RAIL_STATION | CMD_MSG(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION), CcPlaySound1E);
@@ -729,8 +729,8 @@ struct BuildRailToolbarWindow : Window {
 	virtual void OnPlaceObjectAbort()
 	{
 		this->RaiseButtons();
-		this->DisableWidget(RTW_REMOVE);
-		this->SetWidgetDirty(RTW_REMOVE);
+		this->DisableWidget(RATW_REMOVE);
+		this->SetWidgetDirty(RATW_REMOVE);
 
 		DeleteWindowById(WC_BUILD_SIGNAL, TRANSPORT_RAIL);
 		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_RAIL);
@@ -748,7 +748,7 @@ struct BuildRailToolbarWindow : Window {
 	virtual EventState OnCTRLStateChange()
 	{
 		/* do not toggle Remove button by Ctrl when placing station */
-		if (!this->IsWidgetLowered(RTW_BUILD_STATION) && !this->IsWidgetLowered(RTW_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
+		if (!this->IsWidgetLowered(RATW_BUILD_STATION) && !this->IsWidgetLowered(RATW_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
 
@@ -758,20 +758,20 @@ struct BuildRailToolbarWindow : Window {
 const uint16 _railtoolbar_autorail_keys[] = {'5', 'A' | WKC_GLOBAL_HOTKEY, 0};
 
 Hotkey<BuildRailToolbarWindow> BuildRailToolbarWindow::railtoolbar_hotkeys[] = {
-	Hotkey<BuildRailToolbarWindow>('1', "build_ns", RTW_BUILD_NS),
-	Hotkey<BuildRailToolbarWindow>('2', "build_x", RTW_BUILD_X),
-	Hotkey<BuildRailToolbarWindow>('3', "build_ew", RTW_BUILD_EW),
-	Hotkey<BuildRailToolbarWindow>('4', "build_y", RTW_BUILD_Y),
-	Hotkey<BuildRailToolbarWindow>(_railtoolbar_autorail_keys, "autorail", RTW_AUTORAIL),
-	Hotkey<BuildRailToolbarWindow>('6', "demolish", RTW_DEMOLISH),
-	Hotkey<BuildRailToolbarWindow>('7', "depot", RTW_BUILD_DEPOT),
-	Hotkey<BuildRailToolbarWindow>('8', "waypoint", RTW_BUILD_WAYPOINT),
-	Hotkey<BuildRailToolbarWindow>('9', "station", RTW_BUILD_STATION),
-	Hotkey<BuildRailToolbarWindow>('S', "signal", RTW_BUILD_SIGNALS),
-	Hotkey<BuildRailToolbarWindow>('B', "bridge", RTW_BUILD_BRIDGE),
-	Hotkey<BuildRailToolbarWindow>('T', "tunnel", RTW_BUILD_TUNNEL),
-	Hotkey<BuildRailToolbarWindow>('R', "remove", RTW_REMOVE),
-	Hotkey<BuildRailToolbarWindow>('C', "convert", RTW_CONVERT_RAIL),
+	Hotkey<BuildRailToolbarWindow>('1', "build_ns", RATW_BUILD_NS),
+	Hotkey<BuildRailToolbarWindow>('2', "build_x", RATW_BUILD_X),
+	Hotkey<BuildRailToolbarWindow>('3', "build_ew", RATW_BUILD_EW),
+	Hotkey<BuildRailToolbarWindow>('4', "build_y", RATW_BUILD_Y),
+	Hotkey<BuildRailToolbarWindow>(_railtoolbar_autorail_keys, "autorail", RATW_AUTORAIL),
+	Hotkey<BuildRailToolbarWindow>('6', "demolish", RATW_DEMOLISH),
+	Hotkey<BuildRailToolbarWindow>('7', "depot", RATW_BUILD_DEPOT),
+	Hotkey<BuildRailToolbarWindow>('8', "waypoint", RATW_BUILD_WAYPOINT),
+	Hotkey<BuildRailToolbarWindow>('9', "station", RATW_BUILD_STATION),
+	Hotkey<BuildRailToolbarWindow>('S', "signal", RATW_BUILD_SIGNALS),
+	Hotkey<BuildRailToolbarWindow>('B', "bridge", RATW_BUILD_BRIDGE),
+	Hotkey<BuildRailToolbarWindow>('T', "tunnel", RATW_BUILD_TUNNEL),
+	Hotkey<BuildRailToolbarWindow>('R', "remove", RATW_REMOVE),
+	Hotkey<BuildRailToolbarWindow>('C', "convert", RATW_CONVERT_RAIL),
 	HOTKEY_LIST_END(BuildRailToolbarWindow)
 };
 Hotkey<BuildRailToolbarWindow> *_railtoolbar_hotkeys = BuildRailToolbarWindow::railtoolbar_hotkeys;
@@ -779,40 +779,40 @@ Hotkey<BuildRailToolbarWindow> *_railtoolbar_hotkeys = BuildRailToolbarWindow::r
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RTW_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RATW_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_NS),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_NS),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_RAIL_NS, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_X),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_X),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_RAIL_NE, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_EW),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_EW),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_RAIL_EW, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_Y),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_Y),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_RAIL_NW, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_AUTORAIL),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_AUTORAIL),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_AUTORAIL, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL),
 
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), SetDataTip(0x0, STR_NULL), EndContainer(),
 
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_DEMOLISH),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_DEMOLISH),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_DEPOT),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_DEPOT),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DEPOT_RAIL, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_WAYPOINT),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_WAYPOINT),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_WAYPOINT, STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_STATION),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_STATION),
 						SetFill(0, 1), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_RAIL_STATION, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_SIGNALS),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_SIGNALS),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_RAIL_SIGNALS, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_BRIDGE),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_BRIDGE),
 						SetFill(0, 1), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_BRIDGE, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_BUILD_TUNNEL),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_BUILD_TUNNEL),
 						SetFill(0, 1), SetMinimalSize(20, 22), SetDataTip(SPR_IMG_TUNNEL_RAIL, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_REMOVE),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_REMOVE),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_REMOVE, STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RTW_CONVERT_RAIL),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, RATW_CONVERT_RAIL),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_CONVERT_RAIL, STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL),
 	EndContainer(),
 };
@@ -1624,26 +1624,26 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 	BuildRailDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
 		this->InitNested(desc, TRANSPORT_RAIL);
-		this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
+		this->LowerWidget(_build_depot_direction + BRADW_DEPOT_NE);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (!IsInsideMM(widget, BRDW_DEPOT_NE, BRDW_DEPOT_NW + 1)) return;
+		if (!IsInsideMM(widget, BRADW_DEPOT_NE, BRADW_DEPOT_NW + 1)) return;
 
-		DrawTrainDepotSprite(r.left - 1, r.top, widget - BRDW_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
+		DrawTrainDepotSprite(r.left - 1, r.top, widget - BRADW_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case BRDW_DEPOT_NE:
-			case BRDW_DEPOT_SE:
-			case BRDW_DEPOT_SW:
-			case BRDW_DEPOT_NW:
-				this->RaiseWidget(_build_depot_direction + BRDW_DEPOT_NE);
-				_build_depot_direction = (DiagDirection)(widget - BRDW_DEPOT_NE);
-				this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
+			case BRADW_DEPOT_NE:
+			case BRADW_DEPOT_SE:
+			case BRADW_DEPOT_SW:
+			case BRADW_DEPOT_NW:
+				this->RaiseWidget(_build_depot_direction + BRADW_DEPOT_NE);
+				_build_depot_direction = (DiagDirection)(widget - BRADW_DEPOT_NE);
+				this->LowerWidget(_build_depot_direction + BRADW_DEPOT_NE);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
@@ -1662,18 +1662,18 @@ static const NWidgetPart _nested_build_depot_widgets[] = {
 		NWidget(NWID_HORIZONTAL_LTR),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRADW_DEPOT_NW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRADW_DEPOT_SW), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_NE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRADW_DEPOT_NE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-				NWidget(WWT_PANEL, COLOUR_GREY, BRDW_DEPOT_SE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
+				NWidget(WWT_PANEL, COLOUR_GREY, BRADW_DEPOT_SE), SetMinimalSize(66, 50), SetDataTip(0x0, STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),

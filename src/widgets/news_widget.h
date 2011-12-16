@@ -12,6 +12,8 @@
 #ifndef WIDGETS_NEWS_WIDGET_H
 #define WIDGETS_NEWS_WIDGET_H
 
+#include "../news_type.h"
+
 /** Constants in the message options window. */
 enum MessageOptionsSpace {
 	MOS_WIDG_PER_SETTING      = 4,  ///< Number of widgets needed for each news category, starting at widget #WIDGET_NEWSOPT_START_OPTION.

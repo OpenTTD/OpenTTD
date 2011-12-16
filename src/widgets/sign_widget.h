@@ -14,12 +14,13 @@
 
 /** Widgets of the WC_SIGN_LIST. */
 enum SignListWidgets {
-	SLW_CAPTION,
-	SLW_LIST,
-	SLW_SCROLLBAR,
-	SLW_FILTER_TEXT,           ///< Text box for typing a filter string
-	SLW_FILTER_MATCH_CASE_BTN, ///< Button to toggle if case sensitive filtering should be used
-	SLW_FILTER_CLEAR_BTN,      ///< Button to clear the filter
+	/* Name starts with SI instead of S, becuase of collision with StationListWidgets */
+	SILW_CAPTION,
+	SILW_LIST,
+	SILW_SCROLLBAR,
+	SILW_FILTER_TEXT,           ///< Text box for typing a filter string
+	SILW_FILTER_MATCH_CASE_BTN, ///< Button to toggle if case sensitive filtering should be used
+	SILW_FILTER_CLEAR_BTN,      ///< Button to clear the filter
 };
 
 /** Widgets of the WC_QUERY_STRING (WC_QUERY_STRING is also used in QueryStringWidgets). */
