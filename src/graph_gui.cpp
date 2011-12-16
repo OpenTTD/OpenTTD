@@ -48,7 +48,7 @@ struct GraphLegendWindow : Window {
 		this->InitNested(desc, window_number);
 
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-			if (!HasBit(_legend_excluded_companies, c)) this->LowerWidget(c + GLW_FIRST_COMPANY);
+			if (!HasBit(_legend_excluded_companies, c)) this->LowerWidget(c + WID_GL_FIRST_COMPANY);
 
 			this->OnInvalidateData(c);
 		}
@@ -56,9 +56,9 @@ struct GraphLegendWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (!IsInsideMM(widget, GLW_FIRST_COMPANY, MAX_COMPANIES + GLW_FIRST_COMPANY)) return;
+		if (!IsInsideMM(widget, WID_GL_FIRST_COMPANY, MAX_COMPANIES + WID_GL_FIRST_COMPANY)) return;
 
-		CompanyID cid = (CompanyID)(widget - GLW_FIRST_COMPANY);
+		CompanyID cid = (CompanyID)(widget - WID_GL_FIRST_COMPANY);
 
 		if (!Company::IsValidID(cid)) return;
 
@@ -74,9 +74,9 @@ struct GraphLegendWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (!IsInsideMM(widget, GLW_FIRST_COMPANY, MAX_COMPANIES + GLW_FIRST_COMPANY)) return;
+		if (!IsInsideMM(widget, WID_GL_FIRST_COMPANY, MAX_COMPANIES + WID_GL_FIRST_COMPANY)) return;
 
-		ToggleBit(_legend_excluded_companies, widget - GLW_FIRST_COMPANY);
+		ToggleBit(_legend_excluded_companies, widget - WID_GL_FIRST_COMPANY);
 		this->ToggleWidgetLoweredState(widget);
 		this->SetDirty();
 		InvalidateWindowData(WC_INCOME_GRAPH, 0);
@@ -97,7 +97,7 @@ struct GraphLegendWindow : Window {
 		if (Company::IsValidID(data)) return;
 
 		SetBit(_legend_excluded_companies, data);
-		this->RaiseWidget(data + GLW_FIRST_COMPANY);
+		this->RaiseWidget(data + WID_GL_FIRST_COMPANY);
 	}
 };
 
@@ -112,14 +112,14 @@ static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 	NWidgetVertical *vert = new NWidgetVertical();
 	uint line_height = max<uint>(GetSpriteSize(SPR_COMPANY_ICON).height, FONT_HEIGHT_NORMAL) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
-	for (int widnum = GLW_FIRST_COMPANY; widnum <= GLW_LAST_COMPANY; widnum++) {
+	for (int widnum = WID_GL_FIRST_COMPANY; widnum <= WID_GL_LAST_COMPANY; widnum++) {
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetMinimalSize(246, line_height);
 		panel->SetFill(1, 0);
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		vert->Add(panel);
 	}
-	*biggest_index = GLW_LAST_COMPANY;
+	*biggest_index = WID_GL_LAST_COMPANY;
 	return vert;
 }
 
@@ -130,7 +130,7 @@ static const NWidgetPart _nested_graph_legend_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, GLW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_GL_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
@@ -532,7 +532,7 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		/* Clicked on legend? */
-		if (widget == BGW_KEY_BUTTON) ShowGraphLegend();
+		if (widget == WID_CV_KEY_BUTTON) ShowGraphLegend();
 	}
 
 	virtual void OnTick()
@@ -612,7 +612,7 @@ public:
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRENCY_SHORT)
+			BaseGraphWindow(WID_CV_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -627,16 +627,16 @@ static const NWidgetPart _nested_operating_profit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GRAPH_OPERATING_PROFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CV_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_CV_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 160), SetFill(1, 1), SetResize(1, 1),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_CV_GRAPH), SetMinimalSize(576, 160), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -662,7 +662,7 @@ void ShowOperatingProfitGraph()
 
 struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRENCY_SHORT)
+			BaseGraphWindow(WID_CV_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -677,16 +677,16 @@ static const NWidgetPart _nested_income_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GRAPH_INCOME_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CV_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_CV_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_CV_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -710,7 +710,7 @@ void ShowIncomeGraph()
 
 struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	DeliveredCargoGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_GRAPH, STR_JUST_COMMA)
+			BaseGraphWindow(WID_CV_GRAPH, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -725,16 +725,16 @@ static const NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GRAPH_CARGO_DELIVERED_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CV_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_CV_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_CV_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -758,7 +758,7 @@ void ShowDeliveredCargoGraph()
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(PHW_GRAPH, STR_JUST_COMMA)
+			BaseGraphWindow(WID_PHG_GRAPH, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -770,7 +770,7 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget == PHW_DETAILED_PERFORMANCE) ShowPerformanceRatingDetail();
+		if (widget == WID_PHG_DETAILED_PERFORMANCE) ShowPerformanceRatingDetail();
 		this->BaseGraphWindow::OnClick(pt, widget, click_count);
 	}
 };
@@ -779,17 +779,17 @@ static const NWidgetPart _nested_performance_history_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, PHW_DETAILED_PERFORMANCE), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_PERFORMANCE_DETAIL_KEY, STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, PHW_KEY), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_PHG_DETAILED_PERFORMANCE), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_PERFORMANCE_DETAIL_KEY, STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_PHG_KEY), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, PHW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_PHG_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, COLOUR_GREY, PHW_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_PHG_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, PHW_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, WID_PHG_RESIZE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -813,7 +813,7 @@ void ShowPerformanceHistoryGraph()
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRENCY_SHORT)
+			BaseGraphWindow(WID_CV_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -828,16 +828,16 @@ static const NWidgetPart _nested_company_value_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_GRAPH_COMPANY_VALUES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BGW_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CV_KEY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_CV_BACKGROUND),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_CV_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, WID_CV_RESIZE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -862,7 +862,7 @@ void ShowCompanyValueGraph()
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	bool first_init; ///< This value is true until the first initialization of the window has finished.
 	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(CPW_GRAPH, STR_JUST_CURRENCY_SHORT)
+			BaseGraphWindow(WID_CPR_GRAPH, STR_JUST_CURRENCY_SHORT)
 	{
 		this->first_init = true;
 		this->num_on_x_axis = 20;
@@ -906,18 +906,18 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	void UpdateLoweredWidgets()
 	{
 		for (int i = 0; i < _sorted_standard_cargo_specs_size; i++) {
-			this->SetWidgetLoweredState(CPW_CARGO_FIRST + i, !HasBit(this->excluded_data, i));
+			this->SetWidgetLoweredState(WID_CPR_CARGO_FIRST + i, !HasBit(this->excluded_data, i));
 		}
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget < CPW_CARGO_FIRST) {
+		if (widget < WID_CPR_CARGO_FIRST) {
 			BaseGraphWindow::UpdateWidgetSize(widget, size, padding, fill, resize);
 			return;
 		}
 
-		const CargoSpec *cs = _sorted_cargo_specs[widget - CPW_CARGO_FIRST];
+		const CargoSpec *cs = _sorted_cargo_specs[widget - WID_CPR_CARGO_FIRST];
 		SetDParam(0, cs->name);
 		Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
 		d.width += 14; // colour field
@@ -928,12 +928,12 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget < CPW_CARGO_FIRST) {
+		if (widget < WID_CPR_CARGO_FIRST) {
 			BaseGraphWindow::DrawWidget(r, widget);
 			return;
 		}
 
-		const CargoSpec *cs = _sorted_cargo_specs[widget - CPW_CARGO_FIRST];
+		const CargoSpec *cs = _sorted_cargo_specs[widget - WID_CPR_CARGO_FIRST];
 		bool rtl = _current_text_dir == TD_RTL;
 
 		/* Since the buttons have no text, no images,
@@ -955,7 +955,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case CPW_ENABLE_CARGOES:
+			case WID_CPR_ENABLE_CARGOES:
 				/* Remove all cargoes from the excluded lists. */
 				_legend_excluded_cargo = 0;
 				this->excluded_data = 0;
@@ -963,7 +963,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				this->SetDirty();
 				break;
 
-			case CPW_DISABLE_CARGOES: {
+			case WID_CPR_DISABLE_CARGOES: {
 				/* Add all cargoes to the excluded lists. */
 				int i = 0;
 				const CargoSpec *cs;
@@ -978,8 +978,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			}
 
 			default:
-				if (widget >= CPW_CARGO_FIRST) {
-					int i = widget - CPW_CARGO_FIRST;
+				if (widget >= WID_CPR_CARGO_FIRST) {
+					int i = widget - WID_CPR_CARGO_FIRST;
 					ToggleBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index());
 					this->ToggleWidgetLoweredState(widget);
 					this->UpdateExcludedData();
@@ -1028,13 +1028,13 @@ static NWidgetBase *MakeCargoButtons(int *biggest_index)
 	NWidgetVertical *ver = new NWidgetVertical;
 
 	for (int i = 0; i < _sorted_standard_cargo_specs_size; i++) {
-		NWidgetBackground *leaf = new NWidgetBackground(WWT_PANEL, COLOUR_ORANGE, CPW_CARGO_FIRST + i, NULL);
+		NWidgetBackground *leaf = new NWidgetBackground(WWT_PANEL, COLOUR_ORANGE, WID_CPR_CARGO_FIRST + i, NULL);
 		leaf->tool_tip = STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO;
 		leaf->SetFill(1, 0);
 		leaf->SetLowered(true);
 		ver->Add(leaf);
 	}
-	*biggest_index = CPW_CARGO_FIRST + _sorted_standard_cargo_specs_size - 1;
+	*biggest_index = WID_CPR_CARGO_FIRST + _sorted_standard_cargo_specs_size - 1;
 	return ver;
 }
 
@@ -1046,18 +1046,18 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CPW_BACKGROUND), SetMinimalSize(568, 128),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_CPR_BACKGROUND), SetMinimalSize(568, 128),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_TEXT, COLOUR_GREY, CPW_HEADER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, STR_NULL),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_CPR_HEADER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, STR_NULL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_CPR_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0), SetResize(0, 1),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CPR_ENABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_CPR_DISABLE_CARGOES), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 				NWidgetFunction(MakeCargoButtons),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1), SetResize(0, 1),
@@ -1066,9 +1066,9 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(WD_RESIZEBOX_WIDTH, 0), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_TEXT, COLOUR_GREY, CPW_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, STR_NULL),
+			NWidget(WWT_TEXT, COLOUR_GREY, WID_CPR_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, STR_NULL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY, CPW_RESIZE),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY, WID_CPR_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1164,7 +1164,7 @@ public:
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != CLW_BACKGROUND) return;
+		if (widget != WID_CL_BACKGROUND) return;
 
 		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - this->line_height) / 2;
 		uint y = r.top + WD_FRAMERECT_TOP - icon_y_offset;
@@ -1192,7 +1192,7 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != CLW_BACKGROUND) return;
+		if (widget != WID_CL_BACKGROUND) return;
 
 		this->ordinal_width = 0;
 		for (uint i = 0; i < MAX_COMPANIES; i++) {
@@ -1259,7 +1259,7 @@ static const NWidgetPart _nested_company_league_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CLW_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_CL_BACKGROUND), SetMinimalSize(400, 0), SetMinimalTextLines(15, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM),
 };
 
 static const WindowDesc _company_league_desc(
@@ -1314,7 +1314,7 @@ struct PerformanceRatingDetailWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case PRW_SCORE_FIRST:
+			case WID_PRD_SCORE_FIRST:
 				this->bar_height = FONT_HEIGHT_NORMAL + 4;
 				size->height = this->bar_height + 2 * WD_MATRIX_TOP;
 
@@ -1374,18 +1374,18 @@ struct PerformanceRatingDetailWindow : Window {
 		/* No need to draw when there's nothing to draw */
 		if (this->company == INVALID_COMPANY) return;
 
-		if (IsInsideMM(widget, PRW_COMPANY_FIRST, PRW_COMPANY_LAST + 1)) {
+		if (IsInsideMM(widget, WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST + 1)) {
 			if (this->IsWidgetDisabled(widget)) return;
-			CompanyID cid = (CompanyID)(widget - PRW_COMPANY_FIRST);
+			CompanyID cid = (CompanyID)(widget - WID_PRD_COMPANY_FIRST);
 			int offset = (cid == this->company) ? 1 : 0;
 			Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
 			DrawCompanyIcon(cid, (r.left + r.right - sprite_size.width) / 2 + offset, (r.top + r.bottom - sprite_size.height) / 2 + offset);
 			return;
 		}
 
-		if (!IsInsideMM(widget, PRW_SCORE_FIRST, PRW_SCORE_LAST + 1)) return;
+		if (!IsInsideMM(widget, WID_PRD_SCORE_FIRST, WID_PRD_SCORE_LAST + 1)) return;
 
-		ScoreID score_type = (ScoreID)(widget - PRW_SCORE_FIRST);
+		ScoreID score_type = (ScoreID)(widget - WID_PRD_SCORE_FIRST);
 
 		/* The colours used to show how the progress is going */
 		int colour_done = _colour_gradient[COLOUR_GREEN][4];
@@ -1451,12 +1451,12 @@ struct PerformanceRatingDetailWindow : Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		/* Check which button is clicked */
-		if (IsInsideMM(widget, PRW_COMPANY_FIRST, PRW_COMPANY_LAST + 1)) {
+		if (IsInsideMM(widget, WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST + 1)) {
 			/* Is it no on disable? */
 			if (!this->IsWidgetDisabled(widget)) {
-				this->RaiseWidget(this->company + PRW_COMPANY_FIRST);
-				this->company = (CompanyID)(widget - PRW_COMPANY_FIRST);
-				this->LowerWidget(this->company + PRW_COMPANY_FIRST);
+				this->RaiseWidget(this->company + WID_PRD_COMPANY_FIRST);
+				this->company = (CompanyID)(widget - WID_PRD_COMPANY_FIRST);
+				this->LowerWidget(this->company + WID_PRD_COMPANY_FIRST);
 				this->SetDirty();
 			}
 		}
@@ -1483,13 +1483,13 @@ struct PerformanceRatingDetailWindow : Window {
 		if (!gui_scope) return;
 		/* Disable the companies who are not active */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !Company::IsValidID(i));
+			this->SetWidgetDisabledState(i + WID_PRD_COMPANY_FIRST, !Company::IsValidID(i));
 		}
 
 		/* Check if the currently selected company is still active. */
 		if (this->company != INVALID_COMPANY && !Company::IsValidID(this->company)) {
 			/* Raise the widget for the previous selection. */
-			this->RaiseWidget(this->company + PRW_COMPANY_FIRST);
+			this->RaiseWidget(this->company + WID_PRD_COMPANY_FIRST);
 			this->company = INVALID_COMPANY;
 		}
 
@@ -1502,7 +1502,7 @@ struct PerformanceRatingDetailWindow : Window {
 		}
 
 		/* Make sure the widget is lowered */
-		this->LowerWidget(this->company + PRW_COMPANY_FIRST);
+		this->LowerWidget(this->company + WID_PRD_COMPANY_FIRST);
 	}
 };
 
@@ -1532,20 +1532,20 @@ static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 	assert_compile(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
 
 	NWidgetVertical *vert = new NWidgetVertical(NC_EQUALSIZE);
-	for (int widnum = PRW_SCORE_FIRST; widnum <= PRW_SCORE_LAST; widnum++) {
+	for (int widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetFill(1, 1);
-		panel->SetDataTip(0x0, performance_tips[widnum - PRW_SCORE_FIRST]);
+		panel->SetDataTip(0x0, performance_tips[widnum - WID_PRD_SCORE_FIRST]);
 		vert->Add(panel);
 	}
-	*biggest_index = PRW_SCORE_LAST;
+	*biggest_index = WID_PRD_SCORE_LAST;
 	return vert;
 }
 
 /** Make a number of rows with buttons for each company for the performance rating detail window. */
 NWidgetBase *MakeCompanyButtonRowsGraphGUI(int *biggest_index)
 {
-	return MakeCompanyButtonRows(biggest_index, PRW_COMPANY_FIRST, PRW_COMPANY_LAST, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
+	return MakeCompanyButtonRows(biggest_index, WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
 }
 
 static const NWidgetPart _nested_performance_rating_detail_widgets[] = {

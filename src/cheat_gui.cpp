@@ -187,7 +187,7 @@ static const NWidgetPart _nested_cheat_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CW_PANEL), SetDataTip(0x0, STR_CHEATS_TOOLTIP), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_C_PANEL), SetDataTip(0x0, STR_CHEATS_TOOLTIP), EndContainer(),
 };
 
 /** GUI for the cheats. */
@@ -202,7 +202,7 @@ struct CheatWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != CW_PANEL) return;
+		if (widget != WID_C_PANEL) return;
 
 		int y = r.top + WD_FRAMERECT_TOP + this->header_height;
 		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, y, STR_CHEATS_WARNING, TC_FROMSTRING, SA_CENTER);
@@ -265,7 +265,7 @@ struct CheatWindow : Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != CW_PANEL) return;
+		if (widget != WID_C_PANEL) return;
 
 		uint width = 0;
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
@@ -316,7 +316,7 @@ struct CheatWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(CW_PANEL);
+		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_C_PANEL);
 		uint btn = (pt.y - wid->pos_y - WD_FRAMERECT_TOP - this->header_height) / (FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL);
 		uint x = pt.x - wid->pos_x;
 		bool rtl = _current_text_dir == TD_RTL;

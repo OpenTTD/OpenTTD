@@ -13,25 +13,25 @@
 #define WIDGETS_DEPOT_WIDGET_H
 
 /** Widgets of the WC_VEHICLE_DEPOT. */
-enum DepotWindowWidgets {
-	DEPOT_WIDGET_CAPTION,
-	DEPOT_WIDGET_SELL,
-	DEPOT_WIDGET_SHOW_SELL_CHAIN,
-	DEPOT_WIDGET_SELL_CHAIN,
-	DEPOT_WIDGET_SELL_ALL,
-	DEPOT_WIDGET_AUTOREPLACE,
-	DEPOT_WIDGET_MATRIX,
-	DEPOT_WIDGET_V_SCROLL, ///< Vertical scrollbar
-	DEPOT_WIDGET_SHOW_H_SCROLL,
-	DEPOT_WIDGET_H_SCROLL, ///< Horizontal scrollbar
-	DEPOT_WIDGET_BUILD,
-	DEPOT_WIDGET_CLONE,
-	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_SHOW_RENAME,
-	DEPOT_WIDGET_RENAME,
-	DEPOT_WIDGET_VEHICLE_LIST,
-	DEPOT_WIDGET_STOP_ALL,
-	DEPOT_WIDGET_START_ALL,
+enum VehicleDepotWidgets {
+	WID_VD_CAPTION,         ///< Caption of window.
+	WID_VD_SELL,            ///< Sell button.
+	WID_VD_SHOW_SELL_CHAIN, ///< Show sell chain panel.
+	WID_VD_SELL_CHAIN,      ///< Sell chain button.
+	WID_VD_SELL_ALL,        ///< Sell all button.
+	WID_VD_AUTOREPLACE,     ///< Autoreplace button.
+	WID_VD_MATRIX,          ///< Matrix of vehicles.
+	WID_VD_V_SCROLL,        ///< Vertical scrollbar.
+	WID_VD_SHOW_H_SCROLL,   ///< Show horizontal scrollbar panel.
+	WID_VD_H_SCROLL,        ///< Horizontal scrollbar.
+	WID_VD_BUILD,           ///< Build button.
+	WID_VD_CLONE,           ///< Clone button.
+	WID_VD_LOCATION,        ///< Location button.
+	WID_VD_SHOW_RENAME,     ///< Show rename panel.
+	WID_VD_RENAME,          ///< Rename button.
+	WID_VD_VEHICLE_LIST,    ///< List of vehicles.
+	WID_VD_STOP_ALL,        ///< Stop all button.
+	WID_VD_START_ALL,       ///< Start all button.
 };
 
 #endif /* WIDGETS_DEPOT_WIDGET_H */

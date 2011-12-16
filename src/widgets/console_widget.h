@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_CONSOLE. */
 enum ConsoleWidgets {
-	CW_BACKGROUND, ///< Background of the console
+	WID_C_BACKGROUND, ///< Background of the console.
 };
 
 #endif /* WIDGETS_CONSOLE_WIDGET_H */

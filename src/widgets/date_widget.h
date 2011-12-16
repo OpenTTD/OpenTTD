@@ -14,10 +14,10 @@
 
 /** Widgets of the WC_SET_DATE. */
 enum SetDateWidgets {
-	SDW_DAY,      ///< Dropdown for the day
-	SDW_MONTH,    ///< Dropdown for the month
-	SDW_YEAR,     ///< Dropdown for the year
-	SDW_SET_DATE, ///< Actually set the date
+	WID_SD_DAY,      ///< Dropdown for the day.
+	WID_SD_MONTH,    ///< Dropdown for the month.
+	WID_SD_YEAR,     ///< Dropdown for the year.
+	WID_SD_SET_DATE, ///< Actually set the date.
 };
 
 #endif /* WIDGETS_DATE_WIDGET_H */

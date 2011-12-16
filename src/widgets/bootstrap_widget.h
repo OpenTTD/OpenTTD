@@ -14,9 +14,9 @@
 
 /** Widgets of the WC_CONFIRM_POPUP_QUERY (WC_CONFIRM_POPUP_QUERY is also used in QueryWidgets). */
 enum BootstrapAskForDownloadWidgets {
-	BAFDW_QUESTION, ///< The question whether to download.
-	BAFDW_YES,      ///< An affirmative answer to the question.
-	BAFDW_NO,       ///< An negative answer to the question.
+	WID_BAFD_QUESTION, ///< The question whether to download.
+	WID_BAFD_YES,      ///< An affirmative answer to the question.
+	WID_BAFD_NO,       ///< An negative answer to the question.
 };
 
 #endif /* WIDGETS_BOOTSTRAP_WIDGET_H */

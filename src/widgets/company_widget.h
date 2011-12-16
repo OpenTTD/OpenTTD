@@ -13,179 +13,179 @@
 #define WIDGETS_COMPANY_WIDGET_H
 
 /** Widgets of the WC_COMPANY. */
-enum CompanyWindowWidgets {
-	CW_WIDGET_CAPTION,
+enum CompanyWidgets {
+	WID_C_CAPTION,                    ///< Caption of the window.
 
-	CW_WIDGET_FACE,
-	CW_WIDGET_FACE_TITLE,
+	WID_C_FACE,                       ///< View of the face.
+	WID_C_FACE_TITLE,                 ///< Title for the face.
 
-	CW_WIDGET_DESC_INAUGURATION,
-	CW_WIDGET_DESC_COLOUR_SCHEME,
-	CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE,
-	CW_WIDGET_DESC_VEHICLE,
-	CW_WIDGET_DESC_VEHICLE_COUNTS,
-	CW_WIDGET_DESC_COMPANY_VALUE,
-	CW_WIDGET_DESC_INFRASTRUCTURE,
-	CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS,
+	WID_C_DESC_INAUGURATION,          ///< Inauguration.
+	WID_C_DESC_COLOUR_SCHEME,         ///< Colour scheme.
+	WID_C_DESC_COLOUR_SCHEME_EXAMPLE, ///< Colour scheme example.
+	WID_C_DESC_VEHICLE,               ///< Vehicles.
+	WID_C_DESC_VEHICLE_COUNTS,        ///< Vehicle count.
+	WID_C_DESC_COMPANY_VALUE,         ///< Company value.
+	WID_C_DESC_INFRASTRUCTURE,        ///< Infrastructure.
+	WID_C_DESC_INFRASTRUCTURE_COUNTS, ///< Infrastructure count.
 
-	CW_WIDGET_SELECT_DESC_OWNERS,
-	CW_WIDGET_DESC_OWNERS,
+	WID_C_SELECT_DESC_OWNERS,         ///< Owners.
+	WID_C_DESC_OWNERS,                ///< Owner in Owners.
 
-	CW_WIDGET_SELECT_BUTTONS,     ///< Selection widget for the button bar.
-	CW_WIDGET_NEW_FACE,
-	CW_WIDGET_COLOUR_SCHEME,
-	CW_WIDGET_PRESIDENT_NAME,
-	CW_WIDGET_COMPANY_NAME,
-	CW_WIDGET_BUY_SHARE,
-	CW_WIDGET_SELL_SHARE,
+	WID_C_SELECT_BUTTONS,             ///< Selection widget for the button bar.
+	WID_C_NEW_FACE,                   ///< Button to make new face.
+	WID_C_COLOUR_SCHEME,              ///< Button to change colour scheme.
+	WID_C_PRESIDENT_NAME,             ///< Button to change president name.
+	WID_C_COMPANY_NAME,               ///< Button to change company name.
+	WID_C_BUY_SHARE,                  ///< Button to buy a share.
+	WID_C_SELL_SHARE,                 ///< Button to sell a share.
 
-	CW_WIDGET_SELECT_VIEW_BUILD_HQ,
-	CW_WIDGET_VIEW_HQ,
-	CW_WIDGET_BUILD_HQ,
+	WID_C_SELECT_VIEW_BUILD_HQ,       ///< Panel about HQ.
+	WID_C_VIEW_HQ,                    ///< Button to view the HQ.
+	WID_C_BUILD_HQ,                   ///< Button to build the HQ.
 
-	CW_WIDGET_SELECT_RELOCATE,    ///< View/hide the 'Relocate HQ' button.
-	CW_WIDGET_RELOCATE_HQ,
+	WID_C_SELECT_RELOCATE,            ///< Panel about 'Relocate HQ'.
+	WID_C_RELOCATE_HQ,                ///< Button to relocate the HQ.
 
-	CW_WIDGET_VIEW_INFRASTRUCTURE,
+	WID_C_VIEW_INFRASTRUCTURE,        ///< Panel about infrastructure.
 
-	CW_WIDGET_HAS_PASSWORD,       ///< Draw a lock when the company has a password
-	CW_WIDGET_SELECT_MULTIPLAYER, ///< Multiplayer selection panel.
-	CW_WIDGET_COMPANY_PASSWORD,
-	CW_WIDGET_COMPANY_JOIN,
+	WID_C_HAS_PASSWORD,               ///< Has company password lock.
+	WID_C_SELECT_MULTIPLAYER,         ///< Multiplayer selection panel.
+	WID_C_COMPANY_PASSWORD,           ///< Button to set company password.
+	WID_C_COMPANY_JOIN,               ///< Button to join company.
 };
 
 /** Widgets of the WC_FINANCES. */
-enum CompanyFinancesWindowWidgets {
-	CFW_CAPTION,       ///< Caption of the window
-	CFW_TOGGLE_SIZE,   ///< Toggle windows size
-	CFW_SEL_PANEL,     ///< Select panel or nothing
-	CFW_EXPS_CATEGORY, ///< Column for expenses category strings
-	CFW_EXPS_PRICE1,   ///< Column for year Y-2 expenses
-	CFW_EXPS_PRICE2,   ///< Column for year Y-1 expenses
-	CFW_EXPS_PRICE3,   ///< Column for year Y expenses
-	CFW_TOTAL_PANEL,   ///< Panel for totals
-	CFW_SEL_MAXLOAN,   ///< Selection of maxloan column
-	CFW_BALANCE_VALUE, ///< Bank balance value
-	CFW_LOAN_VALUE,    ///< Loan
-	CFW_LOAN_LINE,     ///< Line for summing bank balance and loan
-	CFW_TOTAL_VALUE,   ///< Total
-	CFW_MAXLOAN_GAP,   ///< Gap above max loan widget
-	CFW_MAXLOAN_VALUE, ///< Max loan widget
-	CFW_SEL_BUTTONS,   ///< Selection of buttons
-	CFW_INCREASE_LOAN, ///< Increase loan
-	CFW_REPAY_LOAN,    ///< Decrease loan
-	CFW_INFRASTRUCTURE,///< View company infrastructure
+enum CompanyFinancesWidgets {
+	WID_CF_CAPTION,       ///< Caption of the window.
+	WID_CF_TOGGLE_SIZE,   ///< Toggle windows size.
+	WID_CF_SEL_PANEL,     ///< Select panel or nothing.
+	WID_CF_EXPS_CATEGORY, ///< Column for expenses category strings.
+	WID_CF_EXPS_PRICE1,   ///< Column for year Y-2 expenses.
+	WID_CF_EXPS_PRICE2,   ///< Column for year Y-1 expenses.
+	WID_CF_EXPS_PRICE3,   ///< Column for year Y expenses.
+	WID_CF_TOTAL_PANEL,   ///< Panel for totals.
+	WID_CF_SEL_MAXLOAN,   ///< Selection of maxloan column.
+	WID_CF_BALANCE_VALUE, ///< Bank balance value.
+	WID_CF_LOAN_VALUE,    ///< Loan.
+	WID_CF_LOAN_LINE,     ///< Line for summing bank balance and loan.
+	WID_CF_TOTAL_VALUE,   ///< Total.
+	WID_CF_MAXLOAN_GAP,   ///< Gap above max loan widget.
+	WID_CF_MAXLOAN_VALUE, ///< Max loan widget.
+	WID_CF_SEL_BUTTONS,   ///< Selection of buttons.
+	WID_CF_INCREASE_LOAN, ///< Increase loan.
+	WID_CF_REPAY_LOAN,    ///< Decrease loan..
+	WID_CF_INFRASTRUCTURE,///< View company infrastructure.
 };
 
 
 /** Widgets of the WC_COMPANY_COLOUR. */
-enum SelectCompanyLiveryWindowWidgets {
-	SCLW_WIDGET_CAPTION,
-	SCLW_WIDGET_CLASS_GENERAL,
-	SCLW_WIDGET_CLASS_RAIL,
-	SCLW_WIDGET_CLASS_ROAD,
-	SCLW_WIDGET_CLASS_SHIP,
-	SCLW_WIDGET_CLASS_AIRCRAFT,
-	SCLW_WIDGET_SPACER_DROPDOWN,
-	SCLW_WIDGET_PRI_COL_DROPDOWN,
-	SCLW_WIDGET_SEC_COL_DROPDOWN,
-	SCLW_WIDGET_MATRIX,
+enum SelectCompanyLiveryWidgets {
+	WID_SCL_CAPTION,          ///< Caption of window.
+	WID_SCL_CLASS_GENERAL,    ///< Class general.
+	WID_SCL_CLASS_RAIL,       ///< Class rail.
+	WID_SCL_CLASS_ROAD,       ///< Class road.
+	WID_SCL_CLASS_SHIP,       ///< Class ship.
+	WID_SCL_CLASS_AIRCRAFT,   ///< Class aircraft.
+	WID_SCL_SPACER_DROPDOWN,  ///< Spacer for dropdown.
+	WID_SCL_PRI_COL_DROPDOWN, ///< Dropdown for primary colour.
+	WID_SCL_SEC_COL_DROPDOWN, ///< Dropdown for secondary colour.
+	WID_SCL_MATRIX,           ///< Matrix.
 };
 
 
 /** Widgets of the WC_COMPANY_MANAGER_FACE.
- * Do not change the order of the widgets from SCMFW_WIDGET_HAS_MOUSTACHE_EARRING to SCMFW_WIDGET_GLASSES_R,
+ * Do not change the order of the widgets from WID_SCMF_HAS_MOUSTACHE_EARRING to WID_SCMF_GLASSES_R,
  * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
  */
 enum SelectCompanyManagerFaceWidgets {
-	SCMFW_WIDGET_CAPTION,
-	SCMFW_WIDGET_TOGGLE_LARGE_SMALL,
-	SCMFW_WIDGET_SELECT_FACE,
-	SCMFW_WIDGET_CANCEL,
-	SCMFW_WIDGET_ACCEPT,
-	SCMFW_WIDGET_MALE,           ///< Male button in the simple view.
-	SCMFW_WIDGET_FEMALE,         ///< Female button in the simple view.
-	SCMFW_WIDGET_MALE2,          ///< Male button in the advanced view.
-	SCMFW_WIDGET_FEMALE2,        ///< Female button in the advanced view.
-	SCMFW_WIDGET_SEL_LOADSAVE,   ///< Selection to display the load/save/number buttons in the advanced view.
-	SCMFW_WIDGET_SEL_MALEFEMALE, ///< Selection to display the male/female buttons in the simple view.
-	SCMFW_WIDGET_SEL_PARTS,      ///< Selection to display the buttons for setting each part of the face in the advanced view.
-	SCMFW_WIDGET_RANDOM_NEW_FACE,
-	SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
-	SCMFM_WIDGET_FACE,
-	SCMFW_WIDGET_LOAD,
-	SCMFW_WIDGET_FACECODE,
-	SCMFW_WIDGET_SAVE,
-	SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT,
-	SCMFW_WIDGET_TIE_EARRING_TEXT,
-	SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT,
-	SCMFW_WIDGET_HAS_GLASSES_TEXT,
-	SCMFW_WIDGET_HAIR_TEXT,
-	SCMFW_WIDGET_EYEBROWS_TEXT,
-	SCMFW_WIDGET_EYECOLOUR_TEXT,
-	SCMFW_WIDGET_GLASSES_TEXT,
-	SCMFW_WIDGET_NOSE_TEXT,
-	SCMFW_WIDGET_CHIN_TEXT,
-	SCMFW_WIDGET_JACKET_TEXT,
-	SCMFW_WIDGET_COLLAR_TEXT,
-	SCMFW_WIDGET_ETHNICITY_EUR,
-	SCMFW_WIDGET_ETHNICITY_AFR,
-	SCMFW_WIDGET_HAS_MOUSTACHE_EARRING,
-	SCMFW_WIDGET_HAS_GLASSES,
-	SCMFW_WIDGET_EYECOLOUR_L,
-	SCMFW_WIDGET_EYECOLOUR,
-	SCMFW_WIDGET_EYECOLOUR_R,
-	SCMFW_WIDGET_CHIN_L,
-	SCMFW_WIDGET_CHIN,
-	SCMFW_WIDGET_CHIN_R,
-	SCMFW_WIDGET_EYEBROWS_L,
-	SCMFW_WIDGET_EYEBROWS,
-	SCMFW_WIDGET_EYEBROWS_R,
-	SCMFW_WIDGET_LIPS_MOUSTACHE_L,
-	SCMFW_WIDGET_LIPS_MOUSTACHE,
-	SCMFW_WIDGET_LIPS_MOUSTACHE_R,
-	SCMFW_WIDGET_NOSE_L,
-	SCMFW_WIDGET_NOSE,
-	SCMFW_WIDGET_NOSE_R,
-	SCMFW_WIDGET_HAIR_L,
-	SCMFW_WIDGET_HAIR,
-	SCMFW_WIDGET_HAIR_R,
-	SCMFW_WIDGET_JACKET_L,
-	SCMFW_WIDGET_JACKET,
-	SCMFW_WIDGET_JACKET_R,
-	SCMFW_WIDGET_COLLAR_L,
-	SCMFW_WIDGET_COLLAR,
-	SCMFW_WIDGET_COLLAR_R,
-	SCMFW_WIDGET_TIE_EARRING_L,
-	SCMFW_WIDGET_TIE_EARRING,
-	SCMFW_WIDGET_TIE_EARRING_R,
-	SCMFW_WIDGET_GLASSES_L,
-	SCMFW_WIDGET_GLASSES,
-	SCMFW_WIDGET_GLASSES_R,
+	WID_SCMF_CAPTION,                    ///< Caption of window.
+	WID_SCMF_TOGGLE_LARGE_SMALL,         ///< Toggle for large or small.
+	WID_SCMF_SELECT_FACE,                ///< Select face.
+	WID_SCMF_CANCEL,                     ///< Cancel.
+	WID_SCMF_ACCEPT,                     ///< Accept.
+	WID_SCMF_MALE,                       ///< Male button in the simple view.
+	WID_SCMF_FEMALE,                     ///< Female button in the simple view.
+	WID_SCMF_MALE2,                      ///< Male button in the advanced view.
+	WID_SCMF_FEMALE2,                    ///< Female button in the advanced view.
+	WID_SCMF_SEL_LOADSAVE,               ///< Selection to display the load/save/number buttons in the advanced view.
+	WID_SCMF_SEL_MALEFEMALE,             ///< Selection to display the male/female buttons in the simple view.
+	WID_SCMF_SEL_PARTS,                  ///< Selection to display the buttons for setting each part of the face in the advanced view.
+	WID_SCMF_RANDOM_NEW_FACE,            ///< Create random new face.
+	WID_SCMF_TOGGLE_LARGE_SMALL_BUTTON,  ///< Toggle for large or small.
+	WID_SCMF_FACE,                       ///< Current face.
+	WID_SCMF_LOAD,                       ///< Load face.
+	WID_SCMF_FACECODE,                   ///< Get the face code.
+	WID_SCMF_SAVE,                       ///< Save face.
+	WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT, ///< Text about moustache and earring.
+	WID_SCMF_TIE_EARRING_TEXT,           ///< Text about tie and earring.
+	WID_SCMF_LIPS_MOUSTACHE_TEXT,        ///< Text about lips and moustache.
+	WID_SCMF_HAS_GLASSES_TEXT,           ///< Text about glasses.
+	WID_SCMF_HAIR_TEXT,                  ///< Text about hair.
+	WID_SCMF_EYEBROWS_TEXT,              ///< Text about eyebrows.
+	WID_SCMF_EYECOLOUR_TEXT,             ///< Text about eyecolour.
+	WID_SCMF_GLASSES_TEXT,               ///< Text about glasses.
+	WID_SCMF_NOSE_TEXT,                  ///< Text about nose.
+	WID_SCMF_CHIN_TEXT,                  ///< Text about chin.
+	WID_SCMF_JACKET_TEXT,                ///< Text about jacket.
+	WID_SCMF_COLLAR_TEXT,                ///< Text about collar.
+	WID_SCMF_ETHNICITY_EUR,              ///< Text about ethnicity european.
+	WID_SCMF_ETHNICITY_AFR,              ///< Text about ethnicity african.
+	WID_SCMF_HAS_MOUSTACHE_EARRING,      ///< Has moustache or earring.
+	WID_SCMF_HAS_GLASSES,                ///< Has glasses.
+	WID_SCMF_EYECOLOUR_L,                ///< Eyecolour left.
+	WID_SCMF_EYECOLOUR,                  ///< Eyecolour.
+	WID_SCMF_EYECOLOUR_R,                ///< Eyecolour right.
+	WID_SCMF_CHIN_L,                     ///< Chin left.
+	WID_SCMF_CHIN,                       ///< Chin.
+	WID_SCMF_CHIN_R,                     ///< Chin right.
+	WID_SCMF_EYEBROWS_L,                 ///< Eyebrows left.
+	WID_SCMF_EYEBROWS,                   ///< Eyebrows.
+	WID_SCMF_EYEBROWS_R,                 ///< Eyebrows right.
+	WID_SCMF_LIPS_MOUSTACHE_L,           ///< Lips / Moustache left.
+	WID_SCMF_LIPS_MOUSTACHE,             ///< Lips / Moustache.
+	WID_SCMF_LIPS_MOUSTACHE_R,           ///< Lips / Moustache right.
+	WID_SCMF_NOSE_L,                     ///< Nose left.
+	WID_SCMF_NOSE,                       ///< Nose.
+	WID_SCMF_NOSE_R,                     ///< Nose right.
+	WID_SCMF_HAIR_L,                     ///< Hair left.
+	WID_SCMF_HAIR,                       ///< Hair.
+	WID_SCMF_HAIR_R,                     ///< Hair right.
+	WID_SCMF_JACKET_L,                   ///< Jacket left.
+	WID_SCMF_JACKET,                     ///< Jacket.
+	WID_SCMF_JACKET_R,                   ///< Jacket right.
+	WID_SCMF_COLLAR_L,                   ///< Collar left.
+	WID_SCMF_COLLAR,                     ///< Collar.
+	WID_SCMF_COLLAR_R,                   ///< Collar right.
+	WID_SCMF_TIE_EARRING_L,              ///< Tie / Earring left.
+	WID_SCMF_TIE_EARRING,                ///< Tie / Earring.
+	WID_SCMF_TIE_EARRING_R,              ///< Tie / Earring right.
+	WID_SCMF_GLASSES_L,                  ///< Glasses left.
+	WID_SCMF_GLASSES,                    ///< Glasses.
+	WID_SCMF_GLASSES_R,                  ///< Glasses right.
 };
 
 /** Widgets of the WC_COMPANY_INFRASTRUCTURE. */
-enum CompanyInfrastructureWindowWidgets {
-	CIW_WIDGET_CAPTION,
-	CIW_WIDGET_RAIL_DESC,
-	CIW_WIDGET_RAIL_COUNT,
-	CIW_WIDGET_ROAD_DESC,
-	CIW_WIDGET_ROAD_COUNT,
-	CIW_WIDGET_WATER_DESC,
-	CIW_WIDGET_WATER_COUNT,
-	CIW_WIDGET_STATION_DESC,
-	CIW_WIDGET_STATION_COUNT,
-	CIW_WIDGET_TOTAL_DESC,
-	CIW_WIDGET_TOTAL,
+enum CompanyInfrastructureWidgets {
+	WID_CI_CAPTION,       ///< Caption of window.
+	WID_CI_RAIL_DESC,     ///< Description of rail.
+	WID_CI_RAIL_COUNT,    ///< Count of rail.
+	WID_CI_ROAD_DESC,     ///< Description of road.
+	WID_CI_ROAD_COUNT,    ///< Count of road.
+	WID_CI_WATER_DESC,    ///< Description of water.
+	WID_CI_WATER_COUNT,   ///< Count of water.
+	WID_CI_STATION_DESC,  ///< Description of station.
+	WID_CI_STATION_COUNT, ///< Count of station.
+	WID_CI_TOTAL_DESC,    ///< Description of total.
+	WID_CI_TOTAL,         ///< Count of total.
 };
 
 /** Widgets of the WC_BUY_COMPANY. */
 enum BuyCompanyWidgets {
-	BCW_CAPTION,
-	BCW_FACE,
-	BCW_QUESTION,
-	BCW_NO,
-	BCW_YES,
+	WID_BC_CAPTION,  ///< Caption of window.
+	WID_BC_FACE,     ///< Face button.
+	WID_BC_QUESTION, ///< Question text.
+	WID_BC_NO,       ///< No button.
+	WID_BC_YES,      ///< Yes button.
 };
 
 #endif /* WIDGETS_COMPANY_WIDGET_H */

@@ -88,7 +88,7 @@ private:
 	TileIndex end_tile;
 	uint32 type;
 	GUIBridgeList *bridges;
-	int bridgetext_offset; ///< Horizontal offset of the text describing the bridge properties in #BBSW_BRIDGE_LIST relative to the left edge.
+	int bridgetext_offset; ///< Horizontal offset of the text describing the bridge properties in #WID_BBS_BRIDGE_LIST relative to the left edge.
 	Scrollbar *vscroll;
 
 	/** Sort the bridges by their index */
@@ -126,11 +126,11 @@ private:
 		this->bridges->Sort();
 
 		/* Display the current sort variant */
-		this->GetWidget<NWidgetCore>(BBSW_DROPDOWN_CRITERIA)->widget_data = this->sorter_names[this->bridges->SortType()];
+		this->GetWidget<NWidgetCore>(WID_BBS_DROPDOWN_CRITERIA)->widget_data = this->sorter_names[this->bridges->SortType()];
 
 		/* Set the modified widgets dirty */
-		this->SetWidgetDirty(BBSW_DROPDOWN_CRITERIA);
-		this->SetWidgetDirty(BBSW_BRIDGE_LIST);
+		this->SetWidgetDirty(WID_BBS_DROPDOWN_CRITERIA);
+		this->SetWidgetDirty(WID_BBS_BRIDGE_LIST);
 	}
 
 public:
@@ -141,9 +141,9 @@ public:
 		bridges(bl)
 	{
 		this->CreateNestedTree(desc);
-		this->vscroll = this->GetScrollbar(BBSW_SCROLLBAR);
+		this->vscroll = this->GetScrollbar(WID_BBS_SCROLLBAR);
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly. */
-		this->GetWidget<NWidgetCore>(BBSW_CAPTION)->widget_data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
+		this->GetWidget<NWidgetCore>(WID_BBS_CAPTION)->widget_data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
 		this->FinishInitNested(desc, GB(br_type, 15, 2)); // Initializes 'this->bridgetext_offset'.
 
 		this->parent = FindWindowById(WC_BUILD_TOOLBAR, GB(this->type, 15, 2));
@@ -159,7 +159,7 @@ public:
 		if (this->last_size > this->vscroll->GetCapacity()) {
 			ResizeWindow(this, 0, (this->last_size - this->vscroll->GetCapacity()) * this->resize.step_height);
 		}
-		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(WID_BBS_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	~BuildBridgeWindow()
@@ -172,14 +172,14 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case BBSW_DROPDOWN_ORDER: {
+			case WID_BBS_DROPDOWN_ORDER: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
 				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;
 			}
-			case BBSW_DROPDOWN_CRITERIA: {
+			case WID_BBS_DROPDOWN_CRITERIA: {
 				Dimension d = {0, 0};
 				for (const StringID *str = this->sorter_names; *str != INVALID_STRING_ID; str++) {
 					d = maxdim(d, GetStringBoundingBox(*str));
@@ -189,7 +189,7 @@ public:
 				*size = maxdim(*size, d);
 				break;
 			}
-			case BBSW_BRIDGE_LIST: {
+			case WID_BBS_BRIDGE_LIST: {
 				Dimension sprite_dim = {0, 0}; // Biggest bridge sprite dimension
 				Dimension text_dim   = {0, 0}; // Biggest text dimension
 				for (int i = 0; i < (int)this->bridges->Length(); i++) {
@@ -216,7 +216,7 @@ public:
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
 		/* Position the window so hopefully the first bridge from the list is under the mouse pointer. */
-		NWidgetBase *list = this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST);
+		NWidgetBase *list = this->GetWidget<NWidgetBase>(WID_BBS_BRIDGE_LIST);
 		Point corner; // point of the top left corner of the window.
 		corner.y = Clamp(_cursor.pos.y - list->pos_y - 5, GetMainViewTop(), GetMainViewBottom() - sm_height);
 		corner.x = Clamp(_cursor.pos.x - list->pos_x - 5, 0, _screen.width - sm_width);
@@ -226,11 +226,11 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case BBSW_DROPDOWN_ORDER:
+			case WID_BBS_DROPDOWN_ORDER:
 				this->DrawSortButtonState(widget, this->bridges->IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 				break;
 
-			case BBSW_BRIDGE_LIST: {
+			case WID_BBS_BRIDGE_LIST: {
 				uint y = r.top;
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges->Length(); i++) {
 					const BridgeSpec *b = this->bridges->Get(i)->spec;
@@ -265,8 +265,8 @@ public:
 	{
 		switch (widget) {
 			default: break;
-			case BBSW_BRIDGE_LIST: {
-				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, BBSW_BRIDGE_LIST);
+			case WID_BBS_BRIDGE_LIST: {
+				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BBS_BRIDGE_LIST);
 				if (i < this->bridges->Length()) {
 					this->BuildBridge(i);
 					delete this;
@@ -274,20 +274,20 @@ public:
 				break;
 			}
 
-			case BBSW_DROPDOWN_ORDER:
+			case WID_BBS_DROPDOWN_ORDER:
 				this->bridges->ToggleSortOrder();
 				this->SetDirty();
 				break;
 
-			case BBSW_DROPDOWN_CRITERIA:
-				ShowDropDownMenu(this, this->sorter_names, this->bridges->SortType(), BBSW_DROPDOWN_CRITERIA, 0, 0);
+			case WID_BBS_DROPDOWN_CRITERIA:
+				ShowDropDownMenu(this, this->sorter_names, this->bridges->SortType(), WID_BBS_DROPDOWN_CRITERIA, 0, 0);
 				break;
 		}
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		if (widget == BBSW_DROPDOWN_CRITERIA && this->bridges->SortType() != index) {
+		if (widget == WID_BBS_DROPDOWN_CRITERIA && this->bridges->SortType() != index) {
 			this->bridges->SetSortType(index);
 
 			this->SortBridgeList();
@@ -296,8 +296,8 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll->SetCapacityFromWidget(this, BBSW_BRIDGE_LIST);
-		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, WID_BBS_BRIDGE_LIST);
+		this->GetWidget<NWidgetCore>(WID_BBS_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		this->last_size = max(this->vscroll->GetCapacity(), this->last_size);
 	}
@@ -328,23 +328,23 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 	/* Header */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BBSW_CAPTION), SetDataTip(STR_SELECT_RAIL_BRIDGE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_BBS_CAPTION), SetDataTip(STR_SELECT_RAIL_BRIDGE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 			/* Sort order + criteria buttons */
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_ORDER), SetFill(1, 0), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIA),
+				NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_BBS_DROPDOWN_ORDER), SetFill(1, 0), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, WID_BBS_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			/* Matrix. */
-			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetDataTip(0x401, STR_SELECT_BRIDGE_SELECTION_TOOLTIP), SetScrollbar(BBSW_SCROLLBAR),
+			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, WID_BBS_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetDataTip(0x401, STR_SELECT_BRIDGE_SELECTION_TOOLTIP), SetScrollbar(WID_BBS_SCROLLBAR),
 		EndContainer(),
 
 		/* scrollbar + resize button */
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, BBSW_SCROLLBAR),
+			NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_BBS_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 		EndContainer(),
 	EndContainer(),

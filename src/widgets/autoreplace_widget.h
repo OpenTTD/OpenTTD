@@ -13,28 +13,28 @@
 #define WIDGETS_AUTOREPLACE_WIDGET_H
 
 /** Widgets of the WC_REPLACE_VEHICLE. */
-enum ReplaceVehicleWindowWidgets {
-	RVW_WIDGET_CAPTION,
+enum ReplaceVehicleWidgets {
+	WID_RV_CAPTION,                  ///< Caption of the window.
 
 	/* Left and right matrix + details. */
-	RVW_WIDGET_LEFT_MATRIX,
-	RVW_WIDGET_LEFT_SCROLLBAR,
-	RVW_WIDGET_RIGHT_MATRIX,
-	RVW_WIDGET_RIGHT_SCROLLBAR,
-	RVW_WIDGET_LEFT_DETAILS,
-	RVW_WIDGET_RIGHT_DETAILS,
+	WID_RV_LEFT_MATRIX,              ///< The matrix on the left.
+	WID_RV_LEFT_SCROLLBAR,           ///< The scrollbar for the matrix on the left.
+	WID_RV_RIGHT_MATRIX,             ///< The matrix on the right.
+	WID_RV_RIGHT_SCROLLBAR,          ///< The scrollbar for the matrxi on the right.
+	WID_RV_LEFT_DETAILS,             ///< Details of the entry on the left.
+	WID_RV_RIGHT_DETAILS,            ///< Details of the entry on the right.
 
 	/* Button row. */
-	RVW_WIDGET_START_REPLACE,
-	RVW_WIDGET_INFO_TAB,
-	RVW_WIDGET_STOP_REPLACE,
+	WID_RV_START_REPLACE,            ///< Start Replacing button.
+	WID_RV_INFO_TAB,                 ///< Info tab.
+	WID_RV_STOP_REPLACE,             ///< Stop Replacing button.
 
 	/* Train only widgets. */
-	RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE,
-	RVW_WIDGET_TRAIN_FLUFF_LEFT,
-	RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN,
-	RVW_WIDGET_TRAIN_FLUFF_RIGHT,
-	RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE,
+	WID_RV_TRAIN_ENGINEWAGON_TOGGLE, ///< Button to toggle engines and/or wagons.
+	WID_RV_TRAIN_FLUFF_LEFT,         ///< The fluff on the left.
+	WID_RV_TRAIN_RAILTYPE_DROPDOWN,  ///< Dropdown menu about the railtype.
+	WID_RV_TRAIN_FLUFF_RIGHT,        ///< The fluff on the right.
+	WID_RV_TRAIN_WAGONREMOVE_TOGGLE, ///< Button to toggle removing wagons.
 };
 
 #endif /* WIDGETS_AUTOREPLACE_WIDGET_H */

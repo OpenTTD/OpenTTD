@@ -84,15 +84,15 @@ struct BuildAirToolbarWindow : Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case ATW_AIRPORT:
-				if (HandlePlacePushButton(this, ATW_AIRPORT, SPR_CURSOR_AIRPORT, HT_RECT)) {
+			case WID_AT_AIRPORT:
+				if (HandlePlacePushButton(this, WID_AT_AIRPORT, SPR_CURSOR_AIRPORT, HT_RECT)) {
 					ShowBuildAirportPicker(this);
 					this->last_user_action = widget;
 				}
 				break;
 
-			case ATW_DEMOLISH:
-				HandlePlacePushButton(this, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
+			case WID_AT_DEMOLISH:
+				HandlePlacePushButton(this, WID_AT_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
@@ -112,11 +112,11 @@ struct BuildAirToolbarWindow : Window {
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		switch (this->last_user_action) {
-			case ATW_AIRPORT:
+			case WID_AT_AIRPORT:
 				PlaceAirport(tile);
 				break;
 
-			case ATW_DEMOLISH:
+			case WID_AT_DEMOLISH:
 				PlaceProc_DemolishArea(tile);
 				break;
 
@@ -148,8 +148,8 @@ struct BuildAirToolbarWindow : Window {
 };
 
 Hotkey<BuildAirToolbarWindow> BuildAirToolbarWindow::airtoolbar_hotkeys[] = {
-	Hotkey<BuildAirToolbarWindow>('1', "airport", ATW_AIRPORT),
-	Hotkey<BuildAirToolbarWindow>('2', "demolish", ATW_DEMOLISH),
+	Hotkey<BuildAirToolbarWindow>('1', "airport", WID_AT_AIRPORT),
+	Hotkey<BuildAirToolbarWindow>('2', "demolish", WID_AT_DEMOLISH),
 	HOTKEY_LIST_END(BuildAirToolbarWindow)
 };
 Hotkey<BuildAirToolbarWindow> *_airtoolbar_hotkeys = BuildAirToolbarWindow::airtoolbar_hotkeys;
@@ -161,9 +161,9 @@ static const NWidgetPart _nested_air_toolbar_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_AIRPORT), SetFill(0, 1), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_AIRPORT, STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_AT_AIRPORT), SetFill(0, 1), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_AIRPORT, STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), SetFill(1, 1), EndContainer(),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_DEMOLISH), SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_AT_DEMOLISH), SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 	EndContainer(),
 };
 
@@ -221,14 +221,14 @@ public:
 	{
 		this->CreateNestedTree(desc);
 
-		this->vscroll = this->GetScrollbar(BAIRW_SCROLLBAR);
+		this->vscroll = this->GetScrollbar(WID_AP_SCROLLBAR);
 		this->vscroll->SetCapacity(5);
 		this->vscroll->SetPosition(0);
 
 		this->FinishInitNested(desc, TRANSPORT_AIR);
 
-		this->SetWidgetLoweredState(BAIRW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
-		this->SetWidgetLoweredState(BAIRW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
+		this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
+		this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->OnInvalidateData();
 
 		this->vscroll->SetCount(AirportClass::GetCount(_selected_airport_class));
@@ -243,11 +243,11 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case BAIRW_CLASS_DROPDOWN:
+			case WID_AP_CLASS_DROPDOWN:
 				SetDParam(0, AirportClass::GetName(_selected_airport_class));
 				break;
 
-			case BAIRW_LAYOUT_NUM:
+			case WID_AP_LAYOUT_NUM:
 				SetDParam(0, STR_EMPTY);
 				if (_selected_airport_index != -1) {
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
@@ -268,7 +268,7 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case BAIRW_CLASS_DROPDOWN: {
+			case WID_AP_CLASS_DROPDOWN: {
 				Dimension d = {0, 0};
 				for (uint i = 0; i < AirportClass::GetCount(); i++) {
 					SetDParam(0, AirportClass::GetName((AirportClassID)i));
@@ -280,7 +280,7 @@ public:
 				break;
 			}
 
-			case BAIRW_AIRPORT_LIST: {
+			case WID_AP_AIRPORT_LIST: {
 				for (int i = 0; i < NUM_AIRPORTS; i++) {
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
@@ -293,7 +293,7 @@ public:
 				break;
 			}
 
-			case BAIRW_AIRPORT_SPRITE:
+			case WID_AP_AIRPORT_SPRITE:
 				for (int i = 0; i < NUM_AIRPORTS; i++) {
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
@@ -309,7 +309,7 @@ public:
 				}
 				break;
 
-			case BAIRW_EXTRA_TEXT:
+			case WID_AP_EXTRA_TEXT:
 				for (int i = NEW_AIRPORT_OFFSET; i < NUM_AIRPORTS; i++) {
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
@@ -332,7 +332,7 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case BAIRW_AIRPORT_LIST: {
+			case WID_AP_AIRPORT_LIST: {
 				int y = r.top;
 				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < AirportClass::GetCount(_selected_airport_class); i++) {
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class, i);
@@ -345,14 +345,14 @@ public:
 				break;
 			}
 
-			case BAIRW_AIRPORT_SPRITE:
+			case WID_AP_AIRPORT_SPRITE:
 				if (this->preview_sprite != 0) {
 					Dimension d = GetSpriteSize(this->preview_sprite);
 					DrawSprite(this->preview_sprite, COMPANY_SPRITE_COLOUR(_local_company), (r.left + r.right - d.width) / 2, (r.top + r.bottom - d.height) / 2);
 				}
 				break;
 
-			case BAIRW_EXTRA_TEXT:
+			case WID_AP_EXTRA_TEXT:
 				if (_selected_airport_index != -1) {
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_ADDITIONAL_TEXT);
@@ -369,8 +369,8 @@ public:
 	{
 		this->DrawWidgets();
 
-		uint16 top = this->GetWidget<NWidgetBase>(BAIRW_BTN_DOHILIGHT)->pos_y + this->GetWidget<NWidgetBase>(BAIRW_BTN_DOHILIGHT)->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetBase *panel_nwi = this->GetWidget<NWidgetBase>(BAIRW_BOTTOMPANEL);
+		uint16 top = this->GetWidget<NWidgetBase>(WID_AP_BTN_DOHILIGHT)->pos_y + this->GetWidget<NWidgetBase>(WID_AP_BTN_DOHILIGHT)->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetBase *panel_nwi = this->GetWidget<NWidgetBase>(WID_AP_BOTTOMPANEL);
 
 		int right = panel_nwi->pos_x +  panel_nwi->current_x;
 		int bottom = panel_nwi->pos_y +  panel_nwi->current_y;
@@ -411,8 +411,8 @@ public:
 	{
 		if (_selected_airport_index == -1) {
 			SetTileSelectSize(1, 1);
-			this->DisableWidget(BAIRW_LAYOUT_DECREASE);
-			this->DisableWidget(BAIRW_LAYOUT_INCREASE);
+			this->DisableWidget(WID_AP_LAYOUT_DECREASE);
+			this->DisableWidget(WID_AP_LAYOUT_INCREASE);
 		} else {
 			const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
 			int w = as->size_x;
@@ -423,8 +423,8 @@ public:
 
 			this->preview_sprite = GetCustomAirportSprite(as, _selected_airport_layout);
 
-			this->SetWidgetDisabledState(BAIRW_LAYOUT_DECREASE, _selected_airport_layout == 0);
-			this->SetWidgetDisabledState(BAIRW_LAYOUT_INCREASE, _selected_airport_layout + 1 >= as->num_table);
+			this->SetWidgetDisabledState(WID_AP_LAYOUT_DECREASE, _selected_airport_layout == 0);
+			this->SetWidgetDisabledState(WID_AP_LAYOUT_INCREASE, _selected_airport_layout + 1 >= as->num_table);
 
 			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
 			if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
@@ -434,11 +434,11 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case BAIRW_CLASS_DROPDOWN:
-				ShowDropDownList(this, BuildAirportClassDropDown(), _selected_airport_class, BAIRW_CLASS_DROPDOWN);
+			case WID_AP_CLASS_DROPDOWN:
+				ShowDropDownList(this, BuildAirportClassDropDown(), _selected_airport_class, WID_AP_CLASS_DROPDOWN);
 				break;
 
-			case BAIRW_AIRPORT_LIST: {
+			case WID_AP_AIRPORT_LIST: {
 				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
 				if (num_clicked >= this->vscroll->GetCount()) break;
 				const AirportSpec *as = AirportClass::Get(_selected_airport_class, num_clicked);
@@ -446,22 +446,22 @@ public:
 				break;
 			}
 
-			case BAIRW_BTN_DONTHILIGHT: case BAIRW_BTN_DOHILIGHT:
-				_settings_client.gui.station_show_coverage = (widget != BAIRW_BTN_DONTHILIGHT);
-				this->SetWidgetLoweredState(BAIRW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
-				this->SetWidgetLoweredState(BAIRW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
+			case WID_AP_BTN_DONTHILIGHT: case WID_AP_BTN_DOHILIGHT:
+				_settings_client.gui.station_show_coverage = (widget != WID_AP_BTN_DONTHILIGHT);
+				this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
+				this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 				this->SetDirty();
 				SndPlayFx(SND_15_BEEP);
 				this->UpdateSelectSize();
 				break;
 
-			case BAIRW_LAYOUT_DECREASE:
+			case WID_AP_LAYOUT_DECREASE:
 				_selected_airport_layout--;
 				this->UpdateSelectSize();
 				this->SetDirty();
 				break;
 
-			case BAIRW_LAYOUT_INCREASE:
+			case WID_AP_LAYOUT_INCREASE:
 				_selected_airport_layout++;
 				this->UpdateSelectSize();
 				this->SetDirty();
@@ -504,7 +504,7 @@ public:
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		assert(widget == BAIRW_CLASS_DROPDOWN);
+		assert(widget == WID_AP_CLASS_DROPDOWN);
 		_selected_airport_class = (AirportClassID)index;
 		this->vscroll->SetCount(AirportClass::GetCount(_selected_airport_class));
 		this->SelectFirstAvailableAirport(false);
@@ -523,28 +523,28 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(1, 0), SetPIP(2, 0, 2),
 		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_AIRPORT_CLASS_LABEL, STR_NULL), SetFill(1, 0),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, BAIRW_CLASS_DROPDOWN), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_STATION_BUILD_AIRPORT_TOOLTIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_AP_CLASS_DROPDOWN), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_STATION_BUILD_AIRPORT_TOOLTIP),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_MATRIX, COLOUR_GREY, BAIRW_AIRPORT_LIST), SetFill(1, 0), SetDataTip(0x501, STR_STATION_BUILD_AIRPORT_TOOLTIP), SetScrollbar(BAIRW_SCROLLBAR),
-			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BAIRW_SCROLLBAR),
+			NWidget(WWT_MATRIX, COLOUR_GREY, WID_AP_AIRPORT_LIST), SetFill(1, 0), SetDataTip(0x501, STR_STATION_BUILD_AIRPORT_TOOLTIP), SetScrollbar(WID_AP_SCROLLBAR),
+			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_AP_SCROLLBAR),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, BAIRW_LAYOUT_DECREASE), SetMinimalSize(12, 0), SetDataTip(AWV_DECREASE, STR_NULL),
-			NWidget(WWT_LABEL, COLOUR_GREY, BAIRW_LAYOUT_NUM), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_NULL),
-			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, BAIRW_LAYOUT_INCREASE), SetMinimalSize(12, 0), SetDataTip(AWV_INCREASE, STR_NULL),
+			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_AP_LAYOUT_DECREASE), SetMinimalSize(12, 0), SetDataTip(AWV_DECREASE, STR_NULL),
+			NWidget(WWT_LABEL, COLOUR_GREY, WID_AP_LAYOUT_NUM), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_NULL),
+			NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_AP_LAYOUT_INCREASE), SetMinimalSize(12, 0), SetDataTip(AWV_INCREASE, STR_NULL),
 		EndContainer(),
-		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BAIRW_AIRPORT_SPRITE), SetFill(1, 0),
-		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BAIRW_EXTRA_TEXT), SetFill(1, 0), SetMinimalSize(150, 0),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_AP_AIRPORT_SPRITE), SetFill(1, 0),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_AP_EXTRA_TEXT), SetFill(1, 0), SetMinimalSize(150, 0),
 	EndContainer(),
 	/* Bottom panel. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAIRW_BOTTOMPANEL), SetPIP(2, 2, 2),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_AP_BOTTOMPANEL), SetPIP(2, 2, 2),
 		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetFill(1, 0),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(14, 0), SetFill(1, 0),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAIRW_BTN_DONTHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AP_BTN_DONTHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
 											SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAIRW_BTN_DOHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AP_BTN_DOHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
 											SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(14, 0), SetFill(1, 0),

@@ -14,17 +14,16 @@
 
 /** Widgets of the WC_BUILD_VEHICLE. */
 enum BuildVehicleWidgets {
-	BUILD_VEHICLE_WIDGET_CAPTION,
-	BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING,
-	BUILD_VEHICLE_WIDGET_SORT_DROPDOWN,
-	BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN,
-	BUILD_VEHICLE_WIDGET_LIST,
-	BUILD_VEHICLE_WIDGET_SCROLLBAR,
-	BUILD_VEHICLE_WIDGET_PANEL,
-	BUILD_VEHICLE_WIDGET_BUILD,
-	BUILD_VEHICLE_WIDGET_BUILD_SEL,
-	BUILD_VEHICLE_WIDGET_RENAME,
-	BUILD_VEHICLE_WIDGET_END
+	WID_BV_CAPTION,                   ///< Caption of window.
+	WID_BV_SORT_ASSENDING_DESCENDING, ///< Sort direction.
+	WID_BV_SORT_DROPDOWN,             ///< Criteria of sorting dropdown.
+	WID_BV_CARGO_FILTER_DROPDOWN,     ///< Cargo filter dropdown.
+	WID_BV_LIST,                      ///< List of vehicles.
+	WID_BV_SCROLLBAR,                 ///< Scrollbar of list.
+	WID_BV_PANEL,                     ///< Button panel.
+	WID_BV_BUILD,                     ///< Build panel.
+	WID_BV_BUILD_SEL,                 ///< Build button.
+	WID_BV_RENAME,                    ///< Rename button.
 };
 
 #endif /* WIDGETS_BUILD_VEHICLE_WIDGET_H */

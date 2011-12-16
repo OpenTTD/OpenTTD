@@ -218,18 +218,18 @@ static void DrawYearColumn(const Rect &r, int year, const Money (*tbl)[EXPENSES_
 static const NWidgetPart _nested_company_finances_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CFW_CAPTION), SetDataTip(STR_FINANCES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, CFW_TOGGLE_SIZE), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_CF_CAPTION), SetDataTip(STR_FINANCES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_CF_TOGGLE_SIZE), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_PANEL),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_CF_SEL_PANEL),
 		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(NWID_HORIZONTAL), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT), SetPIP(0, 9, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_CATEGORY), SetMinimalSize(120, 0), SetFill(0, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE1), SetMinimalSize(86, 0), SetFill(0, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE2), SetMinimalSize(86, 0), SetFill(0, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_EXPS_PRICE3), SetMinimalSize(86, 0), SetFill(0, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_EXPS_CATEGORY), SetMinimalSize(120, 0), SetFill(0, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_EXPS_PRICE1), SetMinimalSize(86, 0), SetFill(0, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_EXPS_PRICE2), SetMinimalSize(86, 0), SetFill(0, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_EXPS_PRICE3), SetMinimalSize(86, 0), SetFill(0, 0),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -242,17 +242,17 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 			EndContainer(),
 			NWidget(NWID_SPACER), SetFill(0, 0), SetMinimalSize(30, 0),
 			NWidget(NWID_VERTICAL), // Vertical column with bank balance amount, loan amount, and total.
-				NWidget(WWT_TEXT, COLOUR_GREY, CFW_BALANCE_VALUE), SetDataTip(STR_NULL, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_GREY, CFW_LOAN_VALUE), SetDataTip(STR_NULL, STR_NULL),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CFW_LOAN_LINE), SetMinimalSize(0, 2), SetFill(1, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, CFW_TOTAL_VALUE), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_BALANCE_VALUE), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_LOAN_VALUE), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_LOAN_LINE), SetMinimalSize(0, 2), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_TOTAL_VALUE), SetDataTip(STR_NULL, STR_NULL),
 			EndContainer(),
-			NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_MAXLOAN),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_CF_SEL_MAXLOAN),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetFill(0, 1), SetMinimalSize(25, 0),
 					NWidget(NWID_VERTICAL), // Max loan information
-						NWidget(WWT_EMPTY, COLOUR_GREY, CFW_MAXLOAN_GAP), SetFill(0, 0),
-						NWidget(WWT_TEXT, COLOUR_GREY, CFW_MAXLOAN_VALUE), SetDataTip(STR_FINANCES_MAX_LOAN, STR_NULL),
+						NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_MAXLOAN_GAP), SetFill(0, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_MAXLOAN_VALUE), SetDataTip(STR_FINANCES_MAX_LOAN, STR_NULL),
 						NWidget(NWID_SPACER), SetFill(0, 1),
 					EndContainer(),
 				EndContainer(),
@@ -260,11 +260,11 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 			NWidget(NWID_SPACER), SetFill(1, 1),
 		EndContainer(),
 	EndContainer(),
-	NWidget(NWID_SELECTION, INVALID_COLOUR, CFW_SEL_BUTTONS),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_CF_SEL_BUTTONS),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INCREASE_LOAN), SetFill(1, 0), SetDataTip(STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_REPAY_LOAN), SetFill(1, 0), SetDataTip(STR_FINANCES_REPAY_BUTTON, STR_FINANCES_REPAY_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CFW_INFRASTRUCTURE), SetFill(1, 0), SetDataTip(STR_FINANCES_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INCREASE_LOAN), SetFill(1, 0), SetDataTip(STR_FINANCES_BORROW_BUTTON, STR_FINANCES_BORROW_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_REPAY_LOAN), SetFill(1, 0), SetDataTip(STR_FINANCES_REPAY_BUTTON, STR_FINANCES_REPAY_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CF_INFRASTRUCTURE), SetFill(1, 0), SetDataTip(STR_FINANCES_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
@@ -290,17 +290,17 @@ struct CompanyFinancesWindow : Window {
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case CFW_CAPTION:
+			case WID_CF_CAPTION:
 				SetDParam(0, (CompanyID)this->window_number);
 				SetDParam(1, (CompanyID)this->window_number);
 				break;
 
-			case CFW_MAXLOAN_VALUE:
+			case WID_CF_MAXLOAN_VALUE:
 				SetDParam(0, _economy.max_loan);
 				break;
 
-			case CFW_INCREASE_LOAN:
-			case CFW_REPAY_LOAN:
+			case WID_CF_INCREASE_LOAN:
+			case WID_CF_REPAY_LOAN:
 				SetDParam(0, LOAN_INTERVAL);
 				break;
 		}
@@ -310,24 +310,24 @@ struct CompanyFinancesWindow : Window {
 	{
 		int type = _settings_client.gui.expenses_layout;
 		switch (widget) {
-			case CFW_EXPS_CATEGORY:
+			case WID_CF_EXPS_CATEGORY:
 				size->width  = _expenses_list_types[type].GetCategoriesWidth();
 				size->height = _expenses_list_types[type].GetHeight();
 				break;
 
-			case CFW_EXPS_PRICE1:
-			case CFW_EXPS_PRICE2:
-			case CFW_EXPS_PRICE3:
+			case WID_CF_EXPS_PRICE1:
+			case WID_CF_EXPS_PRICE2:
+			case WID_CF_EXPS_PRICE3:
 				size->height = _expenses_list_types[type].GetHeight();
 				/* FALL THROUGH */
-			case CFW_BALANCE_VALUE:
-			case CFW_LOAN_VALUE:
-			case CFW_TOTAL_VALUE:
+			case WID_CF_BALANCE_VALUE:
+			case WID_CF_LOAN_VALUE:
+			case WID_CF_TOTAL_VALUE:
 				SetDParam(0, CompanyFinancesWindow::max_money);
 				size->width = max(GetStringBoundingBox(STR_FINANCES_NEGATIVE_INCOME).width, GetStringBoundingBox(STR_FINANCES_POSITIVE_INCOME).width) + padding.width;
 				break;
 
-			case CFW_MAXLOAN_GAP:
+			case WID_CF_MAXLOAN_GAP:
 				size->height = FONT_HEIGHT_NORMAL;
 				break;
 		}
@@ -336,44 +336,44 @@ struct CompanyFinancesWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case CFW_EXPS_CATEGORY:
+			case WID_CF_EXPS_CATEGORY:
 				DrawCategories(r);
 				break;
 
-			case CFW_EXPS_PRICE1:
-			case CFW_EXPS_PRICE2:
-			case CFW_EXPS_PRICE3: {
+			case WID_CF_EXPS_PRICE1:
+			case WID_CF_EXPS_PRICE2:
+			case WID_CF_EXPS_PRICE3: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				int age = min(_cur_year - c->inaugurated_year, 2);
-				int wid_offset = widget - CFW_EXPS_PRICE1;
+				int wid_offset = widget - WID_CF_EXPS_PRICE1;
 				if (wid_offset <= age) {
 					DrawYearColumn(r, _cur_year - (age - wid_offset), c->yearly_expenses + (age - wid_offset));
 				}
 				break;
 			}
 
-			case CFW_BALANCE_VALUE: {
+			case WID_CF_BALANCE_VALUE: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->money);
 				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
 				break;
 			}
 
-			case CFW_LOAN_VALUE: {
+			case WID_CF_LOAN_VALUE: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->current_loan);
 				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
 				break;
 			}
 
-			case CFW_TOTAL_VALUE: {
+			case WID_CF_TOTAL_VALUE: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->money - c->current_loan);
 				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
 				break;
 			}
 
-			case CFW_LOAN_LINE:
+			case WID_CF_LOAN_LINE:
 				GfxFillRect(r.left, r.top, r.right, r.top, PC_BLACK);
 				break;
 		}
@@ -386,12 +386,12 @@ struct CompanyFinancesWindow : Window {
 	void SetupWidgets()
 	{
 		int plane = this->small ? SZSP_NONE : 0;
-		this->GetWidget<NWidgetStacked>(CFW_SEL_PANEL)->SetDisplayedPlane(plane);
-		this->GetWidget<NWidgetStacked>(CFW_SEL_MAXLOAN)->SetDisplayedPlane(plane);
+		this->GetWidget<NWidgetStacked>(WID_CF_SEL_PANEL)->SetDisplayedPlane(plane);
+		this->GetWidget<NWidgetStacked>(WID_CF_SEL_MAXLOAN)->SetDisplayedPlane(plane);
 
 		CompanyID company = (CompanyID)this->window_number;
 		plane = (company != _local_company) ? SZSP_NONE : 0;
-		this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->SetDisplayedPlane(plane);
+		this->GetWidget<NWidgetStacked>(WID_CF_SEL_BUTTONS)->SetDisplayedPlane(plane);
 	}
 
 	virtual void OnPaint()
@@ -400,7 +400,7 @@ struct CompanyFinancesWindow : Window {
 			if (!this->small) {
 				/* Check that the expenses panel height matches the height needed for the layout. */
 				int type = _settings_client.gui.expenses_layout;
-				if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetBase>(CFW_EXPS_CATEGORY)->current_y) {
+				if (_expenses_list_types[type].GetHeight() != this->GetWidget<NWidgetBase>(WID_CF_EXPS_CATEGORY)->current_y) {
 					this->SetupWidgets();
 					this->ReInit();
 					return;
@@ -410,15 +410,15 @@ struct CompanyFinancesWindow : Window {
 			/* Check that the loan buttons are shown only when the user owns the company. */
 			CompanyID company = (CompanyID)this->window_number;
 			int req_plane = (company != _local_company) ? SZSP_NONE : 0;
-			if (req_plane != this->GetWidget<NWidgetStacked>(CFW_SEL_BUTTONS)->shown_plane) {
+			if (req_plane != this->GetWidget<NWidgetStacked>(WID_CF_SEL_BUTTONS)->shown_plane) {
 				this->SetupWidgets();
 				this->ReInit();
 				return;
 			}
 
 			const Company *c = Company::Get(company);
-			this->SetWidgetDisabledState(CFW_INCREASE_LOAN, c->current_loan == _economy.max_loan); // Borrow button only shows when there is any more money to loan.
-			this->SetWidgetDisabledState(CFW_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
+			this->SetWidgetDisabledState(WID_CF_INCREASE_LOAN, c->current_loan == _economy.max_loan); // Borrow button only shows when there is any more money to loan.
+			this->SetWidgetDisabledState(WID_CF_REPAY_LOAN, company != _local_company || c->current_loan == 0); // Repay button only shows when there is any more money to repay.
 		}
 
 		this->DrawWidgets();
@@ -427,7 +427,7 @@ struct CompanyFinancesWindow : Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case CFW_TOGGLE_SIZE: // toggle size
+			case WID_CF_TOGGLE_SIZE: // toggle size
 				this->small = !this->small;
 				this->SetupWidgets();
 				if (this->IsShaded()) {
@@ -439,15 +439,15 @@ struct CompanyFinancesWindow : Window {
 				}
 				break;
 
-			case CFW_INCREASE_LOAN: // increase loan
+			case WID_CF_INCREASE_LOAN: // increase loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_INCREASE_LOAN | CMD_MSG(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY));
 				break;
 
-			case CFW_REPAY_LOAN: // repay loan
+			case WID_CF_REPAY_LOAN: // repay loan
 				DoCommandP(0, 0, _ctrl_pressed, CMD_DECREASE_LOAN | CMD_MSG(STR_ERROR_CAN_T_REPAY_LOAN));
 				break;
 
-			case CFW_INFRASTRUCTURE: // show infrastructure details
+			case WID_CF_INFRASTRUCTURE: // show infrastructure details
 				ShowCompanyInfrastructure((CompanyID)this->window_number);
 				break;
 		}
@@ -562,7 +562,7 @@ private:
 		LiveryScheme scheme;
 
 		/* Disallow other company colours for the primary colour */
-		if (HasBit(this->sel, LS_DEFAULT) && widget == SCLW_WIDGET_PRI_COL_DROPDOWN) {
+		if (HasBit(this->sel, LS_DEFAULT) && widget == WID_SCL_PRI_COL_DROPDOWN) {
 			const Company *c;
 			FOR_ALL_COMPANIES(c) {
 				if (c->index != _local_company) SetBit(used_colours, c->colour);
@@ -581,7 +581,7 @@ private:
 			list->push_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
 		}
 
-		ShowDropDownList(this, list, widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
+		ShowDropDownList(this, list, widget == WID_SCL_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
 	}
 
 public:
@@ -596,14 +596,14 @@ public:
 
 		this->InitNested(desc, company);
 		this->owner = company;
-		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
+		this->LowerWidget(WID_SCL_CLASS_GENERAL);
 		this->InvalidateData(1);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case SCLW_WIDGET_SPACER_DROPDOWN: {
+			case WID_SCL_SPACER_DROPDOWN: {
 				/* The matrix widget below needs enough room to print all the schemes. */
 				Dimension d = {0, 0};
 				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
@@ -613,7 +613,7 @@ public:
 				break;
 			}
 
-			case SCLW_WIDGET_MATRIX: {
+			case WID_SCL_MATRIX: {
 				uint livery_height = 0;
 				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 					if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
@@ -621,17 +621,17 @@ public:
 					}
 				}
 				size->height = livery_height * this->line_height;
-				this->GetWidget<NWidgetCore>(SCLW_WIDGET_MATRIX)->widget_data = (livery_height << MAT_ROW_START) | (1 << MAT_COL_START);
+				this->GetWidget<NWidgetCore>(WID_SCL_MATRIX)->widget_data = (livery_height << MAT_ROW_START) | (1 << MAT_COL_START);
 				break;
 			}
 
-			case SCLW_WIDGET_SEC_COL_DROPDOWN:
+			case WID_SCL_SEC_COL_DROPDOWN:
 				if (!_loaded_newgrf_features.has_2CC) {
 					size->width = 0;
 					break;
 				}
 				/* FALL THROUGH */
-			case SCLW_WIDGET_PRI_COL_DROPDOWN: {
+			case WID_SCL_PRI_COL_DROPDOWN: {
 				int padding = this->square.width + NWidgetScrollbar::GetVerticalDimension().width + 10;
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
 					size->width = max(size->width, GetStringBoundingBox(*id).width + padding);
@@ -644,8 +644,8 @@ public:
 	virtual void OnPaint()
 	{
 		/* Disable dropdown controls if no scheme is selected */
-		this->SetWidgetDisabledState(SCLW_WIDGET_PRI_COL_DROPDOWN, this->sel == 0);
-		this->SetWidgetDisabledState(SCLW_WIDGET_SEC_COL_DROPDOWN, this->sel == 0);
+		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, this->sel == 0);
+		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, this->sel == 0);
 
 		this->DrawWidgets();
 	}
@@ -653,8 +653,8 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case SCLW_WIDGET_PRI_COL_DROPDOWN:
-			case SCLW_WIDGET_SEC_COL_DROPDOWN: {
+			case WID_SCL_PRI_COL_DROPDOWN:
+			case WID_SCL_SEC_COL_DROPDOWN: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				LiveryScheme scheme = LS_DEFAULT;
 
@@ -664,7 +664,7 @@ public:
 					}
 					if (scheme == LS_END) scheme = LS_DEFAULT;
 				}
-				SetDParam(0, STR_COLOUR_DARK_BLUE + ((widget == SCLW_WIDGET_PRI_COL_DROPDOWN) ? c->livery[scheme].colour1 : c->livery[scheme].colour2));
+				SetDParam(0, STR_COLOUR_DARK_BLUE + ((widget == WID_SCL_PRI_COL_DROPDOWN) ? c->livery[scheme].colour1 : c->livery[scheme].colour2));
 				break;
 			}
 		}
@@ -672,20 +672,20 @@ public:
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != SCLW_WIDGET_MATRIX) return;
+		if (widget != WID_SCL_MATRIX) return;
 
 		bool rtl = _current_text_dir == TD_RTL;
 
 		/* Horizontal coordinates of scheme name column. */
-		const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(SCLW_WIDGET_SPACER_DROPDOWN);
+		const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_SCL_SPACER_DROPDOWN);
 		int sch_left = nwi->pos_x;
 		int sch_right = sch_left + nwi->current_x - 1;
 		/* Horizontal coordinates of first dropdown. */
-		nwi = this->GetWidget<NWidgetBase>(SCLW_WIDGET_PRI_COL_DROPDOWN);
+		nwi = this->GetWidget<NWidgetBase>(WID_SCL_PRI_COL_DROPDOWN);
 		int pri_left = nwi->pos_x;
 		int pri_right = pri_left + nwi->current_x - 1;
 		/* Horizontal coordinates of second dropdown. */
-		nwi = this->GetWidget<NWidgetBase>(SCLW_WIDGET_SEC_COL_DROPDOWN);
+		nwi = this->GetWidget<NWidgetBase>(WID_SCL_SEC_COL_DROPDOWN);
 		int sec_left = nwi->pos_x;
 		int sec_right = sec_left + nwi->current_x - 1;
 
@@ -727,14 +727,14 @@ public:
 	{
 		switch (widget) {
 			/* Livery Class buttons */
-			case SCLW_WIDGET_CLASS_GENERAL:
-			case SCLW_WIDGET_CLASS_RAIL:
-			case SCLW_WIDGET_CLASS_ROAD:
-			case SCLW_WIDGET_CLASS_SHIP:
-			case SCLW_WIDGET_CLASS_AIRCRAFT:
-				this->RaiseWidget(this->livery_class + SCLW_WIDGET_CLASS_GENERAL);
-				this->livery_class = (LiveryClass)(widget - SCLW_WIDGET_CLASS_GENERAL);
-				this->LowerWidget(this->livery_class + SCLW_WIDGET_CLASS_GENERAL);
+			case WID_SCL_CLASS_GENERAL:
+			case WID_SCL_CLASS_RAIL:
+			case WID_SCL_CLASS_ROAD:
+			case WID_SCL_CLASS_SHIP:
+			case WID_SCL_CLASS_AIRCRAFT:
+				this->RaiseWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
+				this->livery_class = (LiveryClass)(widget - WID_SCL_CLASS_GENERAL);
+				this->LowerWidget(this->livery_class + WID_SCL_CLASS_GENERAL);
 
 				/* Select the first item in the list */
 				this->sel = 0;
@@ -748,16 +748,16 @@ public:
 				this->ReInit();
 				break;
 
-			case SCLW_WIDGET_PRI_COL_DROPDOWN: // First colour dropdown
-				ShowColourDropDownMenu(SCLW_WIDGET_PRI_COL_DROPDOWN);
+			case WID_SCL_PRI_COL_DROPDOWN: // First colour dropdown
+				ShowColourDropDownMenu(WID_SCL_PRI_COL_DROPDOWN);
 				break;
 
-			case SCLW_WIDGET_SEC_COL_DROPDOWN: // Second colour dropdown
-				ShowColourDropDownMenu(SCLW_WIDGET_SEC_COL_DROPDOWN);
+			case WID_SCL_SEC_COL_DROPDOWN: // Second colour dropdown
+				ShowColourDropDownMenu(WID_SCL_SEC_COL_DROPDOWN);
 				break;
 
-			case SCLW_WIDGET_MATRIX: {
-				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SCLW_WIDGET_MATRIX);
+			case WID_SCL_MATRIX: {
+				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SCL_MATRIX);
 				LiveryScheme j = (LiveryScheme)((pt.y - wid->pos_y) / this->line_height);
 
 				for (LiveryScheme scheme = LS_BEGIN; scheme <= j; scheme++) {
@@ -786,7 +786,7 @@ public:
 	{
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			if (HasBit(this->sel, scheme)) {
-				DoCommandP(0, scheme | (widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, CMD_SET_COMPANY_COLOUR);
+				DoCommandP(0, scheme | (widget == WID_SCL_PRI_COL_DROPDOWN ? 0 : 256), index, CMD_SET_COMPANY_COLOUR);
 			}
 		}
 	}
@@ -799,14 +799,14 @@ public:
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		this->SetWidgetsDisabledState(true, SCLW_WIDGET_CLASS_RAIL, SCLW_WIDGET_CLASS_ROAD, SCLW_WIDGET_CLASS_SHIP, SCLW_WIDGET_CLASS_AIRCRAFT, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(true, WID_SCL_CLASS_RAIL, WID_SCL_CLASS_ROAD, WID_SCL_CLASS_SHIP, WID_SCL_CLASS_AIRCRAFT, WIDGET_LIST_END);
 
 		bool current_class_valid = this->livery_class == LC_OTHER;
 		if (_settings_client.gui.liveries == LIT_ALL || (_settings_client.gui.liveries == LIT_COMPANY && this->window_number == _local_company)) {
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
 					if (_livery_class[scheme] == this->livery_class) current_class_valid = true;
-					this->EnableWidget(SCLW_WIDGET_CLASS_GENERAL + _livery_class[scheme]);
+					this->EnableWidget(WID_SCL_CLASS_GENERAL + _livery_class[scheme]);
 				} else {
 					ClrBit(this->sel, scheme);
 				}
@@ -815,7 +815,7 @@ public:
 
 		if (!current_class_valid) {
 			Point pt = {0, 0};
-			this->OnClick(pt, SCLW_WIDGET_CLASS_GENERAL, 1);
+			this->OnClick(pt, WID_SCL_CLASS_GENERAL, 1);
 		} else if (data == 0) {
 			this->ReInit();
 		}
@@ -825,23 +825,23 @@ public:
 static const NWidgetPart _nested_select_company_livery_widgets [] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, SCLW_WIDGET_CAPTION), SetDataTip(STR_LIVERY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCL_CAPTION), SetDataTip(STR_LIVERY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_GENERAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_LIVERY_GENERAL_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_RAIL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRAINLIST, STR_LIVERY_TRAIN_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_ROAD), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRUCKLIST, STR_LIVERY_ROAD_VEHICLE_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_SHIP), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIPLIST, STR_LIVERY_SHIP_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCLW_WIDGET_CLASS_AIRCRAFT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AIRPLANESLIST, STR_LIVERY_AIRCRAFT_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_SCL_CLASS_GENERAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_COMPANY_GENERAL, STR_LIVERY_GENERAL_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_SCL_CLASS_RAIL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRAINLIST, STR_LIVERY_TRAIN_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_SCL_CLASS_ROAD), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRUCKLIST, STR_LIVERY_ROAD_VEHICLE_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_SCL_CLASS_SHIP), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIPLIST, STR_LIVERY_SHIP_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_SCL_CLASS_AIRCRAFT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AIRPLANESLIST, STR_LIVERY_AIRCRAFT_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(90, 22), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, SCLW_WIDGET_SPACER_DROPDOWN), SetMinimalSize(150, 12), SetFill(1, 1), EndContainer(),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1), SetDataTip(STR_BLACK_STRING, STR_LIVERY_PRIMARY_TOOLTIP),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_SCL_SPACER_DROPDOWN), SetMinimalSize(150, 12), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1), SetDataTip(STR_BLACK_STRING, STR_LIVERY_PRIMARY_TOOLTIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1),
 				SetDataTip(STR_BLACK_STRING, STR_LIVERY_SECONDARY_TOOLTIP),
 	EndContainer(),
-	NWidget(WWT_MATRIX, COLOUR_GREY, SCLW_WIDGET_MATRIX), SetMinimalSize(275, 15), SetFill(1, 0), SetDataTip((1 << MAT_ROW_START) | (1 << MAT_COL_START), STR_LIVERY_PANEL_TOOLTIP),
+	NWidget(WWT_MATRIX, COLOUR_GREY, WID_SCL_MATRIX), SetMinimalSize(275, 15), SetFill(1, 0), SetDataTip((1 << MAT_ROW_START) | (1 << MAT_COL_START), STR_LIVERY_PANEL_TOOLTIP),
 };
 
 static const WindowDesc _select_company_livery_desc(
@@ -899,122 +899,122 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, int colour, int x, int y)
 static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, SCMFW_WIDGET_CAPTION), SetDataTip(STR_FACE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_IMGBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_FACE_ADVANCED_TOOLTIP),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SCMF_CAPTION), SetDataTip(STR_FACE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_IMGBTN, COLOUR_GREY, WID_SCMF_TOGGLE_LARGE_SMALL), SetDataTip(SPR_LARGE_SMALL_WINDOW, STR_FACE_ADVANCED_TOOLTIP),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, SCMFW_WIDGET_SELECT_FACE),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_SCMF_SELECT_FACE),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 2, 2),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetFill(1, 0),
-					NWidget(WWT_EMPTY, COLOUR_GREY, SCMFM_WIDGET_FACE), SetMinimalSize(92, 119),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_SCMF_FACE), SetMinimalSize(92, 119),
 					NWidget(NWID_SPACER), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_RANDOM_NEW_FACE), SetFill(1, 0), SetDataTip(STR_FACE_NEW_FACE_BUTTON, STR_FACE_NEW_FACE_TOOLTIP),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, SCMFW_WIDGET_SEL_LOADSAVE), // Load/number/save buttons under the portrait in the advanced view.
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_RANDOM_NEW_FACE), SetFill(1, 0), SetDataTip(STR_FACE_NEW_FACE_BUTTON, STR_FACE_NEW_FACE_TOOLTIP),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SCMF_SEL_LOADSAVE), // Load/number/save buttons under the portrait in the advanced view.
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 5), SetFill(0, 1),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_LOAD), SetFill(1, 0), SetDataTip(STR_FACE_LOAD, STR_FACE_LOAD_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_FACECODE), SetFill(1, 0), SetDataTip(STR_FACE_FACECODE, STR_FACE_FACECODE_TOOLTIP),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_SAVE), SetFill(1, 0), SetDataTip(STR_FACE_SAVE, STR_FACE_SAVE_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_LOAD), SetFill(1, 0), SetDataTip(STR_FACE_LOAD, STR_FACE_LOAD_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_FACECODE), SetFill(1, 0), SetDataTip(STR_FACE_FACECODE, STR_FACE_FACECODE_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_SAVE), SetFill(1, 0), SetDataTip(STR_FACE_SAVE, STR_FACE_SAVE_TOOLTIP),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 5), SetFill(0, 1),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON), SetFill(1, 0), SetDataTip(STR_FACE_ADVANCED, STR_FACE_ADVANCED_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_TOGGLE_LARGE_SMALL_BUTTON), SetFill(1, 0), SetDataTip(STR_FACE_ADVANCED, STR_FACE_ADVANCED_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, SCMFW_WIDGET_SEL_MALEFEMALE), // Simple male/female face setting.
+				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SCMF_SEL_MALEFEMALE), // Simple male/female face setting.
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_SPACER), SetFill(0, 1),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_MALE), SetFill(1, 0), SetDataTip(STR_FACE_MALE_BUTTON, STR_FACE_MALE_TOOLTIP),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_FEMALE), SetFill(1, 0), SetDataTip(STR_FACE_FEMALE_BUTTON, STR_FACE_FEMALE_TOOLTIP),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_MALE), SetFill(1, 0), SetDataTip(STR_FACE_MALE_BUTTON, STR_FACE_MALE_TOOLTIP),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_FEMALE), SetFill(1, 0), SetDataTip(STR_FACE_FEMALE_BUTTON, STR_FACE_FEMALE_TOOLTIP),
 						NWidget(NWID_SPACER), SetFill(0, 1),
 					EndContainer(),
 				EndContainer(),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, SCMFW_WIDGET_SEL_PARTS), // Advanced face parts setting.
+				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SCMF_SEL_PARTS), // Advanced face parts setting.
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_MALE2), SetFill(1, 0), SetDataTip(STR_FACE_MALE_BUTTON, STR_FACE_MALE_TOOLTIP),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_FEMALE2), SetFill(1, 0), SetDataTip(STR_FACE_FEMALE_BUTTON, STR_FACE_FEMALE_TOOLTIP),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_MALE2), SetFill(1, 0), SetDataTip(STR_FACE_MALE_BUTTON, STR_FACE_MALE_TOOLTIP),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_FEMALE2), SetFill(1, 0), SetDataTip(STR_FACE_FEMALE_BUTTON, STR_FACE_FEMALE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_ETHNICITY_EUR), SetFill(1, 0), SetDataTip(STR_FACE_EUROPEAN, STR_FACE_SELECT_EUROPEAN),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, SCMFW_WIDGET_ETHNICITY_AFR), SetFill(1, 0), SetDataTip(STR_FACE_AFRICAN, STR_FACE_SELECT_AFRICAN),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_ETHNICITY_EUR), SetFill(1, 0), SetDataTip(STR_FACE_EUROPEAN, STR_FACE_SELECT_EUROPEAN),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_ETHNICITY_AFR), SetFill(1, 0), SetDataTip(STR_FACE_AFRICAN, STR_FACE_SELECT_AFRICAN),
 						EndContainer(),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_MOUSTACHE_EARRING), SetDataTip(STR_EMPTY, STR_FACE_MOUSTACHE_EARRING_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAS_MOUSTACHE_EARRING), SetDataTip(STR_EMPTY, STR_FACE_MOUSTACHE_EARRING_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_HAS_GLASSES_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAS_GLASSES), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_HAS_GLASSES_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAS_GLASSES), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetFill(1, 0),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_HAIR_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_HAIR_L), SetDataTip(AWV_DECREASE, STR_FACE_HAIR_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_HAIR), SetDataTip(STR_EMPTY, STR_FACE_HAIR_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_HAIR_R), SetDataTip(AWV_INCREASE, STR_FACE_HAIR_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_HAIR_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_HAIR_L), SetDataTip(AWV_DECREASE, STR_FACE_HAIR_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAIR), SetDataTip(STR_EMPTY, STR_FACE_HAIR_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_HAIR_R), SetDataTip(AWV_INCREASE, STR_FACE_HAIR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_EYEBROWS_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS_L), SetDataTip(AWV_DECREASE, STR_FACE_EYEBROWS_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS), SetDataTip(STR_EMPTY, STR_FACE_EYEBROWS_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_EYEBROWS_R), SetDataTip(AWV_INCREASE, STR_FACE_EYEBROWS_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_EYEBROWS_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYEBROWS_L), SetDataTip(AWV_DECREASE, STR_FACE_EYEBROWS_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_EYEBROWS), SetDataTip(STR_EMPTY, STR_FACE_EYEBROWS_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYEBROWS_R), SetDataTip(AWV_INCREASE, STR_FACE_EYEBROWS_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_EYECOLOUR_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR_L), SetDataTip(AWV_DECREASE, STR_FACE_EYECOLOUR_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR), SetDataTip(STR_EMPTY, STR_FACE_EYECOLOUR_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_EYECOLOUR_R), SetDataTip(AWV_INCREASE, STR_FACE_EYECOLOUR_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_EYECOLOUR_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR_L), SetDataTip(AWV_DECREASE, STR_FACE_EYECOLOUR_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR), SetDataTip(STR_EMPTY, STR_FACE_EYECOLOUR_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR_R), SetDataTip(AWV_INCREASE, STR_FACE_EYECOLOUR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_GLASSES_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_GLASSES_L), SetDataTip(AWV_DECREASE, STR_FACE_GLASSES_TOOLTIP_2),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_GLASSES), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP_2),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_GLASSES_R), SetDataTip(AWV_INCREASE, STR_FACE_GLASSES_TOOLTIP_2),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_GLASSES_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_GLASSES_L), SetDataTip(AWV_DECREASE, STR_FACE_GLASSES_TOOLTIP_2),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_GLASSES), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP_2),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_GLASSES_R), SetDataTip(AWV_INCREASE, STR_FACE_GLASSES_TOOLTIP_2),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_NOSE_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_NOSE_L), SetDataTip(AWV_DECREASE, STR_FACE_NOSE_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_NOSE), SetDataTip(STR_EMPTY, STR_FACE_NOSE_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_NOSE_R), SetDataTip(AWV_INCREASE, STR_FACE_NOSE_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_NOSE_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_NOSE_L), SetDataTip(AWV_DECREASE, STR_FACE_NOSE_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_NOSE), SetDataTip(STR_EMPTY, STR_FACE_NOSE_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_NOSE_R), SetDataTip(AWV_INCREASE, STR_FACE_NOSE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE_L), SetDataTip(AWV_DECREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE), SetDataTip(STR_EMPTY, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_LIPS_MOUSTACHE_R), SetDataTip(AWV_INCREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_LIPS_MOUSTACHE_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE_L), SetDataTip(AWV_DECREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE), SetDataTip(STR_EMPTY, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE_R), SetDataTip(AWV_INCREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_CHIN_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_CHIN_L), SetDataTip(AWV_DECREASE, STR_FACE_CHIN_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_CHIN), SetDataTip(STR_EMPTY, STR_FACE_CHIN_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_CHIN_R), SetDataTip(AWV_INCREASE, STR_FACE_CHIN_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_CHIN_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_CHIN_L), SetDataTip(AWV_DECREASE, STR_FACE_CHIN_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_CHIN), SetDataTip(STR_EMPTY, STR_FACE_CHIN_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_CHIN_R), SetDataTip(AWV_INCREASE, STR_FACE_CHIN_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_JACKET_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_JACKET_L), SetDataTip(AWV_DECREASE, STR_FACE_JACKET_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_JACKET), SetDataTip(STR_EMPTY, STR_FACE_JACKET_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_JACKET_R), SetDataTip(AWV_INCREASE, STR_FACE_JACKET_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_JACKET_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_JACKET_L), SetDataTip(AWV_DECREASE, STR_FACE_JACKET_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_JACKET), SetDataTip(STR_EMPTY, STR_FACE_JACKET_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_JACKET_R), SetDataTip(AWV_INCREASE, STR_FACE_JACKET_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_COLLAR_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_COLLAR_L), SetDataTip(AWV_DECREASE, STR_FACE_COLLAR_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_COLLAR), SetDataTip(STR_EMPTY, STR_FACE_COLLAR_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_COLLAR_R), SetDataTip(AWV_INCREASE, STR_FACE_COLLAR_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_COLLAR_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_COLLAR_L), SetDataTip(AWV_DECREASE, STR_FACE_COLLAR_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_COLLAR), SetDataTip(STR_EMPTY, STR_FACE_COLLAR_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_COLLAR_R), SetDataTip(AWV_INCREASE, STR_FACE_COLLAR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, SCMFW_WIDGET_TIE_EARRING_TEXT), SetFill(1, 0),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING_L), SetDataTip(AWV_DECREASE, STR_FACE_TIE_EARRING_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING), SetDataTip(STR_EMPTY, STR_FACE_TIE_EARRING_TOOLTIP),
-							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, SCMFW_WIDGET_TIE_EARRING_R), SetDataTip(AWV_INCREASE, STR_FACE_TIE_EARRING_TOOLTIP),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_TIE_EARRING_TEXT), SetFill(1, 0),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING_L), SetDataTip(AWV_DECREASE, STR_FACE_TIE_EARRING_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING), SetDataTip(STR_EMPTY, STR_FACE_TIE_EARRING_TOOLTIP),
+							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING_R), SetDataTip(AWV_INCREASE, STR_FACE_TIE_EARRING_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_SPACER), SetFill(0, 1),
 					EndContainer(),
@@ -1024,8 +1024,8 @@ static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_FACE_CANCEL_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SCMFW_WIDGET_ACCEPT), SetFill(1, 0), SetDataTip(STR_BUTTON_OK, STR_FACE_OK_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_CANCEL), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_FACE_CANCEL_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_ACCEPT), SetFill(1, 0), SetDataTip(STR_BUTTON_OK, STR_FACE_OK_TOOLTIP),
 	EndContainer(),
 };
 
@@ -1094,17 +1094,17 @@ public:
 	}
 
 	/**
-	 * Select planes to display to the user with the #NWID_SELECTION widgets #SCMFW_WIDGET_SEL_LOADSAVE, #SCMFW_WIDGET_SEL_MALEFEMALE, and #SCMFW_WIDGET_SEL_PARTS.
+	 * Select planes to display to the user with the #NWID_SELECTION widgets #WID_SCMF_SEL_LOADSAVE, #WID_SCMF_SEL_MALEFEMALE, and #WID_SCMF_SEL_PARTS.
 	 * @param advanced Display advanced face management window.
 	 */
 	void SelectDisplayPlanes(bool advanced)
 	{
-		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_LOADSAVE)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
-		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_PARTS)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
-		this->GetWidget<NWidgetStacked>(SCMFW_WIDGET_SEL_MALEFEMALE)->SetDisplayedPlane(advanced ? SZSP_NONE : 0);
-		this->GetWidget<NWidgetCore>(SCMFW_WIDGET_RANDOM_NEW_FACE)->widget_data = advanced ? STR_MAPGEN_RANDOM : STR_FACE_NEW_FACE_BUTTON;
+		this->GetWidget<NWidgetStacked>(WID_SCMF_SEL_LOADSAVE)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_SCMF_SEL_PARTS)->SetDisplayedPlane(advanced ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_SCMF_SEL_MALEFEMALE)->SetDisplayedPlane(advanced ? SZSP_NONE : 0);
+		this->GetWidget<NWidgetCore>(WID_SCMF_RANDOM_NEW_FACE)->widget_data = advanced ? STR_MAPGEN_RANDOM : STR_FACE_NEW_FACE_BUTTON;
 
-		NWidgetCore *wi = this->GetWidget<NWidgetCore>(SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON);
+		NWidgetCore *wi = this->GetWidget<NWidgetCore>(WID_SCMF_TOGGLE_LARGE_SMALL_BUTTON);
 		if (advanced) {
 			wi->SetDataTip(STR_FACE_SIMPLE, STR_FACE_SIMPLE_TOOLTIP);
 		} else {
@@ -1138,50 +1138,50 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT:
-			case SCMFW_WIDGET_TIE_EARRING_TEXT: {
-				int offset = (widget - SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT) * 2;
+			case WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT:
+			case WID_SCMF_TIE_EARRING_TEXT: {
+				int offset = (widget - WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT) * 2;
 				*size = maxdim(GetStringBoundingBox(PART_TEXTS_IS_FEMALE[offset]), GetStringBoundingBox(PART_TEXTS_IS_FEMALE[offset + 1]));
 				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
 			}
 
-			case SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT:
+			case WID_SCMF_LIPS_MOUSTACHE_TEXT:
 				*size = maxdim(GetStringBoundingBox(STR_FACE_LIPS), GetStringBoundingBox(STR_FACE_MOUSTACHE));
 				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
 
-			case SCMFW_WIDGET_HAS_GLASSES_TEXT:
-			case SCMFW_WIDGET_HAIR_TEXT:
-			case SCMFW_WIDGET_EYEBROWS_TEXT:
-			case SCMFW_WIDGET_EYECOLOUR_TEXT:
-			case SCMFW_WIDGET_GLASSES_TEXT:
-			case SCMFW_WIDGET_NOSE_TEXT:
-			case SCMFW_WIDGET_CHIN_TEXT:
-			case SCMFW_WIDGET_JACKET_TEXT:
-			case SCMFW_WIDGET_COLLAR_TEXT:
-				*size = GetStringBoundingBox(PART_TEXTS[widget - SCMFW_WIDGET_HAS_GLASSES_TEXT]);
+			case WID_SCMF_HAS_GLASSES_TEXT:
+			case WID_SCMF_HAIR_TEXT:
+			case WID_SCMF_EYEBROWS_TEXT:
+			case WID_SCMF_EYECOLOUR_TEXT:
+			case WID_SCMF_GLASSES_TEXT:
+			case WID_SCMF_NOSE_TEXT:
+			case WID_SCMF_CHIN_TEXT:
+			case WID_SCMF_JACKET_TEXT:
+			case WID_SCMF_COLLAR_TEXT:
+				*size = GetStringBoundingBox(PART_TEXTS[widget - WID_SCMF_HAS_GLASSES_TEXT]);
 				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
 
-			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING:
-			case SCMFW_WIDGET_HAS_GLASSES:
+			case WID_SCMF_HAS_MOUSTACHE_EARRING:
+			case WID_SCMF_HAS_GLASSES:
 				*size = this->yesno_dim;
 				break;
 
-			case SCMFW_WIDGET_EYECOLOUR:
-			case SCMFW_WIDGET_CHIN:
-			case SCMFW_WIDGET_EYEBROWS:
-			case SCMFW_WIDGET_LIPS_MOUSTACHE:
-			case SCMFW_WIDGET_NOSE:
-			case SCMFW_WIDGET_HAIR:
-			case SCMFW_WIDGET_JACKET:
-			case SCMFW_WIDGET_COLLAR:
-			case SCMFW_WIDGET_TIE_EARRING:
-			case SCMFW_WIDGET_GLASSES:
+			case WID_SCMF_EYECOLOUR:
+			case WID_SCMF_CHIN:
+			case WID_SCMF_EYEBROWS:
+			case WID_SCMF_LIPS_MOUSTACHE:
+			case WID_SCMF_NOSE:
+			case WID_SCMF_HAIR:
+			case WID_SCMF_JACKET:
+			case WID_SCMF_COLLAR:
+			case WID_SCMF_TIE_EARRING:
+			case WID_SCMF_GLASSES:
 				*size = this->number_dim;
 				break;
 		}
@@ -1190,14 +1190,14 @@ public:
 	virtual void OnPaint()
 	{
 		/* lower the non-selected gender button */
-		this->SetWidgetsLoweredState(!this->is_female, SCMFW_WIDGET_MALE, SCMFW_WIDGET_MALE2, WIDGET_LIST_END);
-		this->SetWidgetsLoweredState( this->is_female, SCMFW_WIDGET_FEMALE, SCMFW_WIDGET_FEMALE2, WIDGET_LIST_END);
+		this->SetWidgetsLoweredState(!this->is_female, WID_SCMF_MALE, WID_SCMF_MALE2, WIDGET_LIST_END);
+		this->SetWidgetsLoweredState( this->is_female, WID_SCMF_FEMALE, WID_SCMF_FEMALE2, WIDGET_LIST_END);
 
 		/* advanced company manager face selection window */
 
 		/* lower the non-selected ethnicity button */
-		this->SetWidgetLoweredState(SCMFW_WIDGET_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
-		this->SetWidgetLoweredState(SCMFW_WIDGET_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
+		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
+		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
 
 
 		/* Disable dynamically the widgets which CompanyManagerFaceVariable has less than 2 options
@@ -1206,44 +1206,44 @@ public:
 
 		/* Eye colour buttons */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_EYE_COLOUR].valid_values[this->ge] < 2,
-				SCMFW_WIDGET_EYECOLOUR, SCMFW_WIDGET_EYECOLOUR_L, SCMFW_WIDGET_EYECOLOUR_R, WIDGET_LIST_END);
+				WID_SCMF_EYECOLOUR, WID_SCMF_EYECOLOUR_L, WID_SCMF_EYECOLOUR_R, WIDGET_LIST_END);
 
 		/* Chin buttons */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_CHIN].valid_values[this->ge] < 2,
-				SCMFW_WIDGET_CHIN, SCMFW_WIDGET_CHIN_L, SCMFW_WIDGET_CHIN_R, WIDGET_LIST_END);
+				WID_SCMF_CHIN, WID_SCMF_CHIN_L, WID_SCMF_CHIN_R, WIDGET_LIST_END);
 
 		/* Eyebrows buttons */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_EYEBROWS].valid_values[this->ge] < 2,
-				SCMFW_WIDGET_EYEBROWS, SCMFW_WIDGET_EYEBROWS_L, SCMFW_WIDGET_EYEBROWS_R, WIDGET_LIST_END);
+				WID_SCMF_EYEBROWS, WID_SCMF_EYEBROWS_L, WID_SCMF_EYEBROWS_R, WIDGET_LIST_END);
 
 		/* Lips or (if it a male face with a moustache) moustache buttons */
 		this->SetWidgetsDisabledState(_cmf_info[this->is_moust_male ? CMFV_MOUSTACHE : CMFV_LIPS].valid_values[this->ge] < 2,
-				SCMFW_WIDGET_LIPS_MOUSTACHE, SCMFW_WIDGET_LIPS_MOUSTACHE_L, SCMFW_WIDGET_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
+				WID_SCMF_LIPS_MOUSTACHE, WID_SCMF_LIPS_MOUSTACHE_L, WID_SCMF_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
 
 		/* Nose buttons | male faces with moustache haven't any nose options */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_NOSE].valid_values[this->ge] < 2 || this->is_moust_male,
-				SCMFW_WIDGET_NOSE, SCMFW_WIDGET_NOSE_L, SCMFW_WIDGET_NOSE_R, WIDGET_LIST_END);
+				WID_SCMF_NOSE, WID_SCMF_NOSE_L, WID_SCMF_NOSE_R, WIDGET_LIST_END);
 
 		/* Hair buttons */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_HAIR].valid_values[this->ge] < 2,
-				SCMFW_WIDGET_HAIR, SCMFW_WIDGET_HAIR_L, SCMFW_WIDGET_HAIR_R, WIDGET_LIST_END);
+				WID_SCMF_HAIR, WID_SCMF_HAIR_L, WID_SCMF_HAIR_R, WIDGET_LIST_END);
 
 		/* Jacket buttons */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_JACKET].valid_values[this->ge] < 2,
-				SCMFW_WIDGET_JACKET, SCMFW_WIDGET_JACKET_L, SCMFW_WIDGET_JACKET_R, WIDGET_LIST_END);
+				WID_SCMF_JACKET, WID_SCMF_JACKET_L, WID_SCMF_JACKET_R, WIDGET_LIST_END);
 
 		/* Collar buttons */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_COLLAR].valid_values[this->ge] < 2,
-				SCMFW_WIDGET_COLLAR, SCMFW_WIDGET_COLLAR_L, SCMFW_WIDGET_COLLAR_R, WIDGET_LIST_END);
+				WID_SCMF_COLLAR, WID_SCMF_COLLAR_L, WID_SCMF_COLLAR_R, WIDGET_LIST_END);
 
 		/* Tie/earring buttons | female faces without earring haven't any earring options */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_TIE_EARRING].valid_values[this->ge] < 2 ||
 					(this->is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge) == 0),
-				SCMFW_WIDGET_TIE_EARRING, SCMFW_WIDGET_TIE_EARRING_L, SCMFW_WIDGET_TIE_EARRING_R, WIDGET_LIST_END);
+				WID_SCMF_TIE_EARRING, WID_SCMF_TIE_EARRING_L, WID_SCMF_TIE_EARRING_R, WIDGET_LIST_END);
 
 		/* Glasses buttons | faces without glasses haven't any glasses options */
 		this->SetWidgetsDisabledState(_cmf_info[CMFV_GLASSES].valid_values[this->ge] < 2 || GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge) == 0,
-				SCMFW_WIDGET_GLASSES, SCMFW_WIDGET_GLASSES_L, SCMFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
+				WID_SCMF_GLASSES, WID_SCMF_GLASSES_L, WID_SCMF_GLASSES_R, WIDGET_LIST_END);
 
 		this->DrawWidgets();
 	}
@@ -1251,91 +1251,91 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT:
-			case SCMFW_WIDGET_TIE_EARRING_TEXT: {
-				StringID str = PART_TEXTS_IS_FEMALE[(widget - SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT) * 2 + this->is_female];
+			case WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT:
+			case WID_SCMF_TIE_EARRING_TEXT: {
+				StringID str = PART_TEXTS_IS_FEMALE[(widget - WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT) * 2 + this->is_female];
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_GOLD, SA_RIGHT);
 				break;
 			}
 
-			case SCMFW_WIDGET_LIPS_MOUSTACHE_TEXT:
+			case WID_SCMF_LIPS_MOUSTACHE_TEXT:
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, (this->is_moust_male) ? STR_FACE_MOUSTACHE : STR_FACE_LIPS, TC_GOLD, SA_RIGHT);
 				break;
 
-			case SCMFW_WIDGET_HAS_GLASSES_TEXT:
-			case SCMFW_WIDGET_HAIR_TEXT:
-			case SCMFW_WIDGET_EYEBROWS_TEXT:
-			case SCMFW_WIDGET_EYECOLOUR_TEXT:
-			case SCMFW_WIDGET_GLASSES_TEXT:
-			case SCMFW_WIDGET_NOSE_TEXT:
-			case SCMFW_WIDGET_CHIN_TEXT:
-			case SCMFW_WIDGET_JACKET_TEXT:
-			case SCMFW_WIDGET_COLLAR_TEXT:
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, PART_TEXTS[widget - SCMFW_WIDGET_HAS_GLASSES_TEXT], TC_GOLD, SA_RIGHT);
+			case WID_SCMF_HAS_GLASSES_TEXT:
+			case WID_SCMF_HAIR_TEXT:
+			case WID_SCMF_EYEBROWS_TEXT:
+			case WID_SCMF_EYECOLOUR_TEXT:
+			case WID_SCMF_GLASSES_TEXT:
+			case WID_SCMF_NOSE_TEXT:
+			case WID_SCMF_CHIN_TEXT:
+			case WID_SCMF_JACKET_TEXT:
+			case WID_SCMF_COLLAR_TEXT:
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, PART_TEXTS[widget - WID_SCMF_HAS_GLASSES_TEXT], TC_GOLD, SA_RIGHT);
 				break;
 
 
-			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING:
+			case WID_SCMF_HAS_MOUSTACHE_EARRING:
 				if (this->is_female) { // Only for female faces
-					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true);
+					this->DrawFaceStringLabel(WID_SCMF_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true);
 				} else { // Only for male faces
-					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE,   this->ge), true);
+					this->DrawFaceStringLabel(WID_SCMF_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE,   this->ge), true);
 				}
 				break;
 
-			case SCMFW_WIDGET_TIE_EARRING:
+			case WID_SCMF_TIE_EARRING:
 				if (this->is_female) { // Only for female faces
-					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
+					this->DrawFaceStringLabel(WID_SCMF_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
 				} else { // Only for male faces
-					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
+					this->DrawFaceStringLabel(WID_SCMF_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
 				}
 				break;
 
-			case SCMFW_WIDGET_LIPS_MOUSTACHE:
+			case WID_SCMF_LIPS_MOUSTACHE:
 				if (this->is_moust_male) { // Only for male faces with moustache
-					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_MOUSTACHE, this->ge), false);
+					this->DrawFaceStringLabel(WID_SCMF_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_MOUSTACHE, this->ge), false);
 				} else { // Only for female faces or male faces without moustache
-					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_LIPS,      this->ge), false);
+					this->DrawFaceStringLabel(WID_SCMF_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_LIPS,      this->ge), false);
 				}
 				break;
 
-			case SCMFW_WIDGET_HAS_GLASSES:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_GLASSES, GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true );
+			case WID_SCMF_HAS_GLASSES:
+				this->DrawFaceStringLabel(WID_SCMF_HAS_GLASSES, GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true );
 				break;
 
-			case SCMFW_WIDGET_HAIR:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_HAIR,        GetCompanyManagerFaceBits(this->face, CMFV_HAIR,        this->ge), false);
+			case WID_SCMF_HAIR:
+				this->DrawFaceStringLabel(WID_SCMF_HAIR,        GetCompanyManagerFaceBits(this->face, CMFV_HAIR,        this->ge), false);
 				break;
 
-			case SCMFW_WIDGET_EYEBROWS:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_EYEBROWS,    GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS,    this->ge), false);
+			case WID_SCMF_EYEBROWS:
+				this->DrawFaceStringLabel(WID_SCMF_EYEBROWS,    GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS,    this->ge), false);
 				break;
 
-			case SCMFW_WIDGET_EYECOLOUR:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_EYECOLOUR,   GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR,  this->ge), false);
+			case WID_SCMF_EYECOLOUR:
+				this->DrawFaceStringLabel(WID_SCMF_EYECOLOUR,   GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR,  this->ge), false);
 				break;
 
-			case SCMFW_WIDGET_GLASSES:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_GLASSES,     GetCompanyManagerFaceBits(this->face, CMFV_GLASSES,     this->ge), false);
+			case WID_SCMF_GLASSES:
+				this->DrawFaceStringLabel(WID_SCMF_GLASSES,     GetCompanyManagerFaceBits(this->face, CMFV_GLASSES,     this->ge), false);
 				break;
 
-			case SCMFW_WIDGET_NOSE:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_NOSE,        GetCompanyManagerFaceBits(this->face, CMFV_NOSE,        this->ge), false);
+			case WID_SCMF_NOSE:
+				this->DrawFaceStringLabel(WID_SCMF_NOSE,        GetCompanyManagerFaceBits(this->face, CMFV_NOSE,        this->ge), false);
 				break;
 
-			case SCMFW_WIDGET_CHIN:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_CHIN,        GetCompanyManagerFaceBits(this->face, CMFV_CHIN,        this->ge), false);
+			case WID_SCMF_CHIN:
+				this->DrawFaceStringLabel(WID_SCMF_CHIN,        GetCompanyManagerFaceBits(this->face, CMFV_CHIN,        this->ge), false);
 				break;
 
-			case SCMFW_WIDGET_JACKET:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_JACKET,      GetCompanyManagerFaceBits(this->face, CMFV_JACKET,      this->ge), false);
+			case WID_SCMF_JACKET:
+				this->DrawFaceStringLabel(WID_SCMF_JACKET,      GetCompanyManagerFaceBits(this->face, CMFV_JACKET,      this->ge), false);
 				break;
 
-			case SCMFW_WIDGET_COLLAR:
-				this->DrawFaceStringLabel(SCMFW_WIDGET_COLLAR,      GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,      this->ge), false);
+			case WID_SCMF_COLLAR:
+				this->DrawFaceStringLabel(WID_SCMF_COLLAR,      GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,      this->ge), false);
 				break;
 
-			case SCMFM_WIDGET_FACE:
+			case WID_SCMF_FACE:
 				DrawCompanyManagerFace(this->face, Company::Get((CompanyID)this->window_number)->colour, r.left, r.top);
 				break;
 		}
@@ -1345,25 +1345,25 @@ public:
 	{
 		switch (widget) {
 			/* Toggle size, advanced/simple face selection */
-			case SCMFW_WIDGET_TOGGLE_LARGE_SMALL:
-			case SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON:
+			case WID_SCMF_TOGGLE_LARGE_SMALL:
+			case WID_SCMF_TOGGLE_LARGE_SMALL_BUTTON:
 				this->advanced = !this->advanced;
 				this->SelectDisplayPlanes(this->advanced);
 				this->ReInit();
 				break;
 
 			/* OK button */
-			case SCMFW_WIDGET_ACCEPT:
+			case WID_SCMF_ACCEPT:
 				DoCommandP(0, 0, this->face, CMD_SET_COMPANY_MANAGER_FACE);
 				/* FALL THROUGH */
 
 			/* Cancel button */
-			case SCMFW_WIDGET_CANCEL:
+			case WID_SCMF_CANCEL:
 				delete this;
 				break;
 
 			/* Load button */
-			case SCMFW_WIDGET_LOAD:
+			case WID_SCMF_LOAD:
 				this->face = _company_manager_face;
 				ScaleAllCompanyManagerFaceBits(this->face);
 				ShowErrorMessage(STR_FACE_LOAD_DONE, INVALID_STRING_ID, WL_INFO);
@@ -1372,54 +1372,54 @@ public:
 				break;
 
 			/* 'Company manager face number' button, view and/or set company manager face number */
-			case SCMFW_WIDGET_FACECODE:
+			case WID_SCMF_FACECODE:
 				SetDParam(0, this->face);
 				ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			/* Save button */
-			case SCMFW_WIDGET_SAVE:
+			case WID_SCMF_SAVE:
 				_company_manager_face = this->face;
 				ShowErrorMessage(STR_FACE_SAVE_DONE, INVALID_STRING_ID, WL_INFO);
 				break;
 
 			/* Toggle gender (male/female) button */
-			case SCMFW_WIDGET_MALE:
-			case SCMFW_WIDGET_FEMALE:
-			case SCMFW_WIDGET_MALE2:
-			case SCMFW_WIDGET_FEMALE2:
-				SetCompanyManagerFaceBits(this->face, CMFV_GENDER, this->ge, (widget == SCMFW_WIDGET_FEMALE || widget == SCMFW_WIDGET_FEMALE2));
+			case WID_SCMF_MALE:
+			case WID_SCMF_FEMALE:
+			case WID_SCMF_MALE2:
+			case WID_SCMF_FEMALE2:
+				SetCompanyManagerFaceBits(this->face, CMFV_GENDER, this->ge, (widget == WID_SCMF_FEMALE || widget == WID_SCMF_FEMALE2));
 				ScaleAllCompanyManagerFaceBits(this->face);
 				this->UpdateData();
 				this->SetDirty();
 				break;
 
 			/* Randomize face button */
-			case SCMFW_WIDGET_RANDOM_NEW_FACE:
+			case WID_SCMF_RANDOM_NEW_FACE:
 				RandomCompanyManagerFaceBits(this->face, this->ge, this->advanced);
 				this->UpdateData();
 				this->SetDirty();
 				break;
 
 			/* Toggle ethnicity (european/african) button */
-			case SCMFW_WIDGET_ETHNICITY_EUR:
-			case SCMFW_WIDGET_ETHNICITY_AFR:
-				SetCompanyManagerFaceBits(this->face, CMFV_ETHNICITY, this->ge, widget - SCMFW_WIDGET_ETHNICITY_EUR);
+			case WID_SCMF_ETHNICITY_EUR:
+			case WID_SCMF_ETHNICITY_AFR:
+				SetCompanyManagerFaceBits(this->face, CMFV_ETHNICITY, this->ge, widget - WID_SCMF_ETHNICITY_EUR);
 				ScaleAllCompanyManagerFaceBits(this->face);
 				this->UpdateData();
 				this->SetDirty();
 				break;
 
 			default:
-				/* Here all buttons from SCMFW_WIDGET_HAS_MOUSTACHE_EARRING to SCMFW_WIDGET_GLASSES_R are handled.
+				/* Here all buttons from WID_SCMF_HAS_MOUSTACHE_EARRING to WID_SCMF_GLASSES_R are handled.
 				 * First it checks which CompanyManagerFaceVariable is being changed, and then either
 				 * a: invert the value for boolean variables, or
 				 * b: it checks inside of IncreaseCompanyManagerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
-				if (widget >= SCMFW_WIDGET_HAS_MOUSTACHE_EARRING && widget <= SCMFW_WIDGET_GLASSES_R) {
+				if (widget >= WID_SCMF_HAS_MOUSTACHE_EARRING && widget <= WID_SCMF_GLASSES_R) {
 					CompanyManagerFaceVariable cmfv; // which CompanyManagerFaceVariable shall be edited
 
-					if (widget < SCMFW_WIDGET_EYECOLOUR_L) { // Bool buttons
-						switch (widget - SCMFW_WIDGET_HAS_MOUSTACHE_EARRING) {
+					if (widget < WID_SCMF_EYECOLOUR_L) { // Bool buttons
+						switch (widget - WID_SCMF_HAS_MOUSTACHE_EARRING) {
 							default: NOT_REACHED();
 							case 0: cmfv = this->is_female ? CMFV_HAS_TIE_EARRING : CMFV_HAS_MOUSTACHE; break; // Has earring/moustache button
 							case 1: cmfv = CMFV_HAS_GLASSES; break; // Has glasses button
@@ -1427,7 +1427,7 @@ public:
 						SetCompanyManagerFaceBits(this->face, cmfv, this->ge, !GetCompanyManagerFaceBits(this->face, cmfv, this->ge));
 						ScaleAllCompanyManagerFaceBits(this->face);
 					} else { // Value buttons
-						switch ((widget - SCMFW_WIDGET_EYECOLOUR_L) / 3) {
+						switch ((widget - WID_SCMF_EYECOLOUR_L) / 3) {
 							default: NOT_REACHED();
 							case 0: cmfv = CMFV_EYE_COLOUR; break;  // Eye colour buttons
 							case 1: cmfv = CMFV_CHIN; break;        // Chin buttons
@@ -1441,7 +1441,7 @@ public:
 							case 9: cmfv = CMFV_GLASSES; break;     // Glasses buttons
 						}
 						/* 0 == left (_L), 1 == middle or 2 == right (_R) - button click */
-						IncreaseCompanyManagerFaceBits(this->face, cmfv, this->ge, (((widget - SCMFW_WIDGET_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
+						IncreaseCompanyManagerFaceBits(this->face, cmfv, this->ge, (((widget - WID_SCMF_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
 					}
 					this->UpdateData();
 					this->SetDirty();
@@ -1468,21 +1468,21 @@ public:
 
 /** Both text values of parts of the face that depend on the #is_female boolean value. */
 const StringID SelectCompanyManagerFaceWindow::PART_TEXTS_IS_FEMALE[] = {
-	STR_FACE_MOUSTACHE, STR_FACE_EARRING, // SCMFW_WIDGET_HAS_MOUSTACHE_EARRING_TEXT
-	STR_FACE_TIE,       STR_FACE_EARRING, // SCMFW_WIDGET_TIE_EARRING_TEXT
+	STR_FACE_MOUSTACHE, STR_FACE_EARRING, // WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT
+	STR_FACE_TIE,       STR_FACE_EARRING, // WID_SCMF_TIE_EARRING_TEXT
 };
 
 /** Textual names for parts of the face. */
 const StringID SelectCompanyManagerFaceWindow::PART_TEXTS[] = {
-	STR_FACE_GLASSES,   // SCMFW_WIDGET_HAS_GLASSES_TEXT
-	STR_FACE_HAIR,      // SCMFW_WIDGET_HAIR_TEXT
-	STR_FACE_EYEBROWS,  // SCMFW_WIDGET_EYEBROWS_TEXT
-	STR_FACE_EYECOLOUR, // SCMFW_WIDGET_EYECOLOUR_TEXT
-	STR_FACE_GLASSES,   // SCMFW_WIDGET_GLASSES_TEXT
-	STR_FACE_NOSE,      // SCMFW_WIDGET_NOSE_TEXT
-	STR_FACE_CHIN,      // SCMFW_WIDGET_CHIN_TEXT
-	STR_FACE_JACKET,    // SCMFW_WIDGET_JACKET_TEXT
-	STR_FACE_COLLAR,    // SCMFW_WIDGET_COLLAR_TEXT
+	STR_FACE_GLASSES,   // WID_SCMF_HAS_GLASSES_TEXT
+	STR_FACE_HAIR,      // WID_SCMF_HAIR_TEXT
+	STR_FACE_EYEBROWS,  // WID_SCMF_EYEBROWS_TEXT
+	STR_FACE_EYECOLOUR, // WID_SCMF_EYECOLOUR_TEXT
+	STR_FACE_GLASSES,   // WID_SCMF_GLASSES_TEXT
+	STR_FACE_NOSE,      // WID_SCMF_NOSE_TEXT
+	STR_FACE_CHIN,      // WID_SCMF_CHIN_TEXT
+	STR_FACE_JACKET,    // WID_SCMF_JACKET_TEXT
+	STR_FACE_COLLAR,    // WID_SCMF_COLLAR_TEXT
 };
 
 /** Company manager face selection window description */
@@ -1512,31 +1512,31 @@ static void DoSelectCompanyManagerFace(Window *parent)
 static const NWidgetPart _nested_company_infrastructure_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CIW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_CI_CAPTION), SetDataTip(STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_VERTICAL), SetPIP(WD_FRAMERECT_TOP, 4, WD_FRAMETEXT_BOTTOM),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_RAIL_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_RAIL_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_RAIL_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_ROAD_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_ROAD_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_ROAD_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_WATER_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_WATER_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_DESC), SetMinimalTextLines(2, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_WATER_COUNT), SetMinimalTextLines(2, 0), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_STATION_DESC), SetMinimalTextLines(3, 0), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_STATION_COUNT), SetMinimalTextLines(3, 0), SetFill(0, 1),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_DESC), SetMinimalTextLines(3, 0), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_STATION_COUNT), SetMinimalTextLines(3, 0), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_TOTAL_DESC), SetFill(1, 0),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CIW_WIDGET_TOTAL), SetFill(0, 1),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL_DESC), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CI_TOTAL), SetFill(0, 1),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -1610,7 +1610,7 @@ struct CompanyInfrastructureWindow : Window
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case CIW_WIDGET_CAPTION:
+			case WID_CI_CAPTION:
 				SetDParam(0, (CompanyID)this->window_number);
 				break;
 		}
@@ -1621,7 +1621,7 @@ struct CompanyInfrastructureWindow : Window
 		const Company *c = Company::Get((CompanyID)this->window_number);
 
 		switch (widget) {
-			case CIW_WIDGET_RAIL_DESC: {
+			case WID_CI_RAIL_DESC: {
 				uint lines = 1;
 
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width);
@@ -1642,7 +1642,7 @@ struct CompanyInfrastructureWindow : Window
 				break;
 			}
 
-			case CIW_WIDGET_ROAD_DESC: {
+			case WID_CI_ROAD_DESC: {
 				uint lines = 1;
 
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT).width);
@@ -1660,22 +1660,22 @@ struct CompanyInfrastructureWindow : Window
 				break;
 			}
 
-			case CIW_WIDGET_WATER_DESC:
+			case WID_CI_WATER_DESC:
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS).width + WD_FRAMERECT_LEFT);
 				break;
 
-			case CIW_WIDGET_STATION_DESC:
+			case WID_CI_STATION_DESC:
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS).width + WD_FRAMERECT_LEFT);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS).width + WD_FRAMERECT_LEFT);
 				break;
 
-			case CIW_WIDGET_RAIL_COUNT:
-			case CIW_WIDGET_ROAD_COUNT:
-			case CIW_WIDGET_WATER_COUNT:
-			case CIW_WIDGET_STATION_COUNT:
-			case CIW_WIDGET_TOTAL: {
+			case WID_CI_RAIL_COUNT:
+			case WID_CI_ROAD_COUNT:
+			case WID_CI_WATER_COUNT:
+			case WID_CI_STATION_COUNT:
+			case WID_CI_TOTAL: {
 				/* Find the maximum count that is displayed. */
 				uint32 max_val = 1000;  // Some random number to reserve enough space.
 				Money max_cost = 10000; // Some random number to reserve enough space.
@@ -1707,7 +1707,7 @@ struct CompanyInfrastructureWindow : Window
 				}
 
 				/* Set height of the total line. */
-				if (widget == CIW_WIDGET_TOTAL) {
+				if (widget == WID_CI_TOTAL) {
 					size->height = _settings_game.economy.infrastructure_maintenance ? max(size->height, EXP_LINESPACE + FONT_HEIGHT_NORMAL) : 0;
 				}
 				break;
@@ -1724,7 +1724,7 @@ struct CompanyInfrastructureWindow : Window
 		int offs_right = _current_text_dir == TD_LTR ? 0 : WD_FRAMERECT_LEFT;
 
 		switch (widget) {
-			case CIW_WIDGET_RAIL_DESC:
+			case WID_CI_RAIL_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
 
 				if (this->railtypes != RAILTYPES_NONE) {
@@ -1743,7 +1743,7 @@ struct CompanyInfrastructureWindow : Window
 
 				break;
 
-			case CIW_WIDGET_RAIL_COUNT:
+			case WID_CI_RAIL_COUNT:
 				/* Draw infrastructure count for each valid railtype. */
 				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 					if (HasBit(this->railtypes, rt)) {
@@ -1759,7 +1759,7 @@ struct CompanyInfrastructureWindow : Window
 				}
 				break;
 
-			case CIW_WIDGET_ROAD_DESC:
+			case WID_CI_ROAD_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT);
 
 				if (this->roadtypes != ROADTYPES_NONE) {
@@ -1772,7 +1772,7 @@ struct CompanyInfrastructureWindow : Window
 
 				break;
 
-			case CIW_WIDGET_ROAD_COUNT:
+			case WID_CI_ROAD_COUNT:
 				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
 					SetDParam(0, c->infrastructure.road[ROADTYPE_ROAD]);
 					SetDParam(1, RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]) * 12); // Convert to per year
@@ -1785,18 +1785,18 @@ struct CompanyInfrastructureWindow : Window
 				}
 				break;
 
-			case CIW_WIDGET_WATER_DESC:
+			case WID_CI_WATER_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT);
 				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS);
 				break;
 
-			case CIW_WIDGET_WATER_COUNT:
+			case WID_CI_WATER_COUNT:
 				SetDParam(0, c->infrastructure.water);
 				SetDParam(1, CanalMaintenanceCost(c->infrastructure.water) * 12); // Convert to per year
 				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 				break;
 
-			case CIW_WIDGET_TOTAL:
+			case WID_CI_TOTAL:
 				if (_settings_game.economy.infrastructure_maintenance) {
 					GfxFillRect(r.left, y, r.left + this->total_width, y, PC_WHITE);
 					y += EXP_LINESPACE;
@@ -1805,13 +1805,13 @@ struct CompanyInfrastructureWindow : Window
 				}
 				break;
 
-			case CIW_WIDGET_STATION_DESC:
+			case WID_CI_STATION_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT);
 				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS);
 				DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS);
 				break;
 
-			case CIW_WIDGET_STATION_COUNT:
+			case WID_CI_STATION_COUNT:
 				SetDParam(0, c->infrastructure.station);
 				SetDParam(1, StationMaintenanceCost(c->infrastructure.station) * 12); // Convert to per year
 				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
@@ -1856,64 +1856,64 @@ static void ShowCompanyInfrastructure(CompanyID company)
 static const NWidgetPart _nested_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CW_WIDGET_CAPTION), SetDataTip(STR_COMPANY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_C_CAPTION), SetDataTip(STR_COMPANY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(NWID_HORIZONTAL), SetPIP(4, 6, 4),
 			NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE), SetMinimalSize(92, 119), SetFill(1, 0),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_FACE_TITLE), SetFill(1, 1), SetMinimalTextLines(2, 0),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_FACE), SetMinimalSize(92, 119), SetFill(1, 0),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_FACE_TITLE), SetFill(1, 1), SetMinimalTextLines(2, 0),
 			EndContainer(),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_VERTICAL), SetPIP(4, 5, 5),
-						NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_INAUGURATION), SetDataTip(STR_COMPANY_VIEW_INAUGURATED_TITLE, STR_NULL), SetFill(1, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, WID_C_DESC_INAUGURATION), SetDataTip(STR_COMPANY_VIEW_INAUGURATED_TITLE, STR_NULL), SetFill(1, 0),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, 5, 0),
-							NWidget(WWT_LABEL, COLOUR_GREY, CW_WIDGET_DESC_COLOUR_SCHEME), SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE, STR_NULL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE), SetMinimalSize(30, 0), SetFill(0, 1),
+							NWidget(WWT_LABEL, COLOUR_GREY, WID_C_DESC_COLOUR_SCHEME), SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE, STR_NULL),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_DESC_COLOUR_SCHEME_EXAMPLE), SetMinimalSize(30, 0), SetFill(0, 1),
 							NWidget(NWID_SPACER), SetFill(1, 0),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, 4, 0),
 							NWidget(NWID_VERTICAL),
-								NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_VEHICLE), SetDataTip(STR_COMPANY_VIEW_VEHICLES_TITLE, STR_NULL),
+								NWidget(WWT_TEXT, COLOUR_GREY, WID_C_DESC_VEHICLE), SetDataTip(STR_COMPANY_VIEW_VEHICLES_TITLE, STR_NULL),
 								NWidget(NWID_SPACER), SetFill(0, 1),
 							EndContainer(),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_VEHICLE_COUNTS), SetMinimalTextLines(4, 0),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_DESC_VEHICLE_COUNTS), SetMinimalTextLines(4, 0),
 							NWidget(NWID_SPACER), SetFill(1, 0),
 						EndContainer(),
 					EndContainer(),
 					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
-						NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_VIEW_BUILD_HQ),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_VIEW_HQ), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_VIEW_HQ_BUTTON, STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_BUILD_HQ), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_BUILD_HQ_BUTTON, STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP),
+						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_VIEW_BUILD_HQ),
+							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_VIEW_HQ), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_VIEW_HQ_BUTTON, STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_C_BUILD_HQ), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_BUILD_HQ_BUTTON, STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP),
 						EndContainer(),
-						NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_RELOCATE),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, CW_WIDGET_RELOCATE_HQ), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_RELOCATE_HQ, STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS),
+						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_RELOCATE),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_C_RELOCATE_HQ), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_RELOCATE_HQ, STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS),
 							NWidget(NWID_SPACER), SetMinimalSize(90, 0),
 						EndContainer(),
 						NWidget(NWID_SPACER), SetFill(0, 1),
 					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_COMPANY_VALUE), SetDataTip(STR_COMPANY_VIEW_COMPANY_VALUE, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_C_DESC_COMPANY_VALUE), SetDataTip(STR_COMPANY_VIEW_COMPANY_VALUE, STR_NULL), SetFill(1, 0),
 					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, 4, 0),
 							NWidget(NWID_VERTICAL),
-								NWidget(WWT_TEXT, COLOUR_GREY, CW_WIDGET_DESC_INFRASTRUCTURE), SetDataTip(STR_COMPANY_VIEW_INFRASTRUCTURE, STR_NULL),
+								NWidget(WWT_TEXT, COLOUR_GREY, WID_C_DESC_INFRASTRUCTURE), SetDataTip(STR_COMPANY_VIEW_INFRASTRUCTURE, STR_NULL),
 								NWidget(NWID_SPACER), SetFill(0, 1),
 							EndContainer(),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS), SetMinimalTextLines(5, 0), SetFill(1, 0),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_DESC_INFRASTRUCTURE_COUNTS), SetMinimalTextLines(5, 0), SetFill(1, 0),
 							NWidget(NWID_VERTICAL),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_VIEW_INFRASTRUCTURE), SetDataTip(STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_VIEW_INFRASTRUCTURE), SetDataTip(STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON, STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP),
 								NWidget(NWID_SPACER), SetFill(0, 1), SetMinimalSize(90, 0),
 							EndContainer(),
 						EndContainer(),
 					EndContainer(),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_DESC_OWNERS),
+					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_DESC_OWNERS),
 						NWidget(NWID_VERTICAL), SetPIP(5, 5, 4),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, CW_WIDGET_DESC_OWNERS), SetMinimalTextLines(3, 0),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_DESC_OWNERS), SetMinimalTextLines(3, 0),
 							NWidget(NWID_SPACER), SetFill(0, 1),
 						EndContainer(),
 					EndContainer(),
@@ -1921,10 +1921,10 @@ static const NWidgetPart _nested_company_widgets[] = {
 						NWidget(NWID_SPACER), SetMinimalSize(90, 0), SetFill(0, 1),
 						/* Multi player buttons. */
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, COLOUR_GREY, CW_WIDGET_HAS_PASSWORD),
-							NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_MULTIPLAYER),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_PASSWORD), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_JOIN), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
+							NWidget(WWT_EMPTY, COLOUR_GREY, WID_C_HAS_PASSWORD),
+							NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_MULTIPLAYER),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_PASSWORD), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_JOIN), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_JOIN, STR_COMPANY_VIEW_JOIN_TOOLTIP),
 							EndContainer(),
 						EndContainer(),
 					EndContainer(),
@@ -1933,16 +1933,16 @@ static const NWidgetPart _nested_company_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	/* Button bars at the bottom. */
-	NWidget(NWID_SELECTION, INVALID_COLOUR, CW_WIDGET_SELECT_BUTTONS),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_BUTTONS),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_NEW_FACE), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_NEW_FACE_BUTTON, STR_COMPANY_VIEW_NEW_FACE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COLOUR_SCHEME), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON, STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_PRESIDENT_NAME), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON, STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_COMPANY_NAME), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_COMPANY_NAME_BUTTON, STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_NEW_FACE), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_NEW_FACE_BUTTON, STR_COMPANY_VIEW_NEW_FACE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COLOUR_SCHEME), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON, STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_PRESIDENT_NAME), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON, STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_NAME), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_COMPANY_NAME_BUTTON, STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_BUY_SHARE), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_BUY_SHARE_BUTTON, STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, CW_WIDGET_SELL_SHARE), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_SELL_SHARE_BUTTON, STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_BUY_SHARE), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_BUY_SHARE_BUTTON, STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_SELL_SHARE), SetFill(1, 0), SetDataTip(STR_COMPANY_VIEW_SELL_SHARE_BUTTON, STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
@@ -1965,23 +1965,23 @@ static const StringID _company_view_vehicle_count_strings[] = {
  */
 struct CompanyWindow : Window
 {
-	CompanyWindowWidgets query_widget;
+	CompanyWidgets query_widget;
 
 	/** Display planes in the company window. */
 	enum CompanyWindowPlanes {
-		/* Display planes of the #CW_WIDGET_SELECT_MULTIPLAYER selection widget. */
+		/* Display planes of the #WID_C_SELECT_MULTIPLAYER selection widget. */
 		CWP_MP_C_PWD = 0, ///< Display the company password button.
 		CWP_MP_C_JOIN,    ///< Display the join company button.
 
-		/* Display planes of the #CW_WIDGET_SELECT_VIEW_BUILD_HQ selection widget. */
+		/* Display planes of the #WID_C_SELECT_VIEW_BUILD_HQ selection widget. */
 		CWP_VB_VIEW = 0,  ///< Display the view button
 		CWP_VB_BUILD,     ///< Display the build button
 
-		/* Display planes of the #CW_WIDGET_SELECT_RELOCATE selection widget. */
+		/* Display planes of the #WID_C_SELECT_RELOCATE selection widget. */
 		CWP_RELOCATE_SHOW = 0, ///< Show the relocate HQ button.
 		CWP_RELOCATE_HIDE,     ///< Hide the relocate HQ button.
 
-		/* Display planes of the #CW_WIDGET_SELECT_BUTTONS selection widget. */
+		/* Display planes of the #WID_C_SELECT_BUTTONS selection widget. */
 		CWP_BUTTONS_LOCAL = 0, ///< Buttons of the local company.
 		CWP_BUTTONS_OTHER,     ///< Buttons of the other companies.
 	};
@@ -2002,7 +2002,7 @@ struct CompanyWindow : Window
 
 			/* Button bar selection. */
 			int plane = local ? CWP_BUTTONS_LOCAL : CWP_BUTTONS_OTHER;
-			NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_BUTTONS);
+			NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_BUTTONS);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
 				this->SetDirty();
@@ -2011,18 +2011,18 @@ struct CompanyWindow : Window
 
 			/* Build HQ button handling. */
 			plane = (local && c->location_of_HQ == INVALID_TILE) ? CWP_VB_BUILD : CWP_VB_VIEW;
-			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_VIEW_BUILD_HQ);
+			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_VIEW_BUILD_HQ);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
 				this->SetDirty();
 				return;
 			}
 
-			this->SetWidgetDisabledState(CW_WIDGET_VIEW_HQ, c->location_of_HQ == INVALID_TILE);
+			this->SetWidgetDisabledState(WID_C_VIEW_HQ, c->location_of_HQ == INVALID_TILE);
 
 			/* Enable/disable 'Relocate HQ' button. */
 			plane = (!local || c->location_of_HQ == INVALID_TILE) ? CWP_RELOCATE_HIDE : CWP_RELOCATE_SHOW;
-			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_RELOCATE);
+			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_RELOCATE);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
 				this->SetDirty();
@@ -2037,7 +2037,7 @@ struct CompanyWindow : Window
 					break;
 				}
 			}
-			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_DESC_OWNERS);
+			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_DESC_OWNERS);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
 				reinit = true;
@@ -2045,12 +2045,12 @@ struct CompanyWindow : Window
 
 			/* Multiplayer buttons. */
 			plane = ((!_networking) ? (int)SZSP_NONE : (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
-			wi = this->GetWidget<NWidgetStacked>(CW_WIDGET_SELECT_MULTIPLAYER);
+			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
 				reinit = true;
 			}
-			this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   c->is_ai);
+			this->SetWidgetDisabledState(WID_C_COMPANY_JOIN,   c->is_ai);
 
 			if (reinit) {
 				this->ReInit();
@@ -2061,19 +2061,19 @@ struct CompanyWindow : Window
 		if (!local) {
 			if (_settings_game.economy.allow_shares) { // Shares are allowed
 				/* If all shares are owned by someone (none by nobody), disable buy button */
-				this->SetWidgetDisabledState(CW_WIDGET_BUY_SHARE, GetAmountOwnedBy(c, INVALID_OWNER) == 0 ||
+				this->SetWidgetDisabledState(WID_C_BUY_SHARE, GetAmountOwnedBy(c, INVALID_OWNER) == 0 ||
 						/* Only 25% left to buy. If the company is human, disable buying it up.. TODO issues! */
 						(GetAmountOwnedBy(c, INVALID_OWNER) == 1 && !c->is_ai) ||
 						/* Spectators cannot do anything of course */
 						_local_company == COMPANY_SPECTATOR);
 
 				/* If the company doesn't own any shares, disable sell button */
-				this->SetWidgetDisabledState(CW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(c, _local_company) == 0) ||
+				this->SetWidgetDisabledState(WID_C_SELL_SHARE, (GetAmountOwnedBy(c, _local_company) == 0) ||
 						/* Spectators cannot do anything of course */
 						_local_company == COMPANY_SPECTATOR);
 			} else { // Shares are not allowed, disable buy/sell buttons
-				this->DisableWidget(CW_WIDGET_BUY_SHARE);
-				this->DisableWidget(CW_WIDGET_SELL_SHARE);
+				this->DisableWidget(WID_C_BUY_SHARE);
+				this->DisableWidget(WID_C_SELL_SHARE);
 			}
 		}
 
@@ -2083,7 +2083,7 @@ struct CompanyWindow : Window
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE: {
+			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
 				Point offset;
 				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
 				d.width -= offset.x;
@@ -2092,19 +2092,19 @@ struct CompanyWindow : Window
 				break;
 			}
 
-			case CW_WIDGET_DESC_COMPANY_VALUE:
+			case WID_C_DESC_COMPANY_VALUE:
 				SetDParam(0, INT64_MAX); // Arguably the maximum company value
 				size->width = GetStringBoundingBox(STR_COMPANY_VIEW_COMPANY_VALUE).width;
 				break;
 
-			case CW_WIDGET_DESC_VEHICLE_COUNTS:
+			case WID_C_DESC_VEHICLE_COUNTS:
 				SetDParam(0, 5000); // Maximum number of vehicles
 				for (uint i = 0; i < lengthof(_company_view_vehicle_count_strings); i++) {
 					size->width = max(size->width, GetStringBoundingBox(_company_view_vehicle_count_strings[i]).width);
 				}
 				break;
 
-			case CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS:
+			case WID_C_DESC_INFRASTRUCTURE_COUNTS:
 				SetDParam(0, UINT_MAX);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD).width);
@@ -2114,7 +2114,7 @@ struct CompanyWindow : Window
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_NONE).width);
 				break;
 
-			case CW_WIDGET_DESC_OWNERS: {
+			case WID_C_DESC_OWNERS: {
 				const Company *c2;
 
 				FOR_ALL_COMPANIES(c2) {
@@ -2127,7 +2127,7 @@ struct CompanyWindow : Window
 			}
 
 #ifdef ENABLE_NETWORK
-			case CW_WIDGET_HAS_PASSWORD:
+			case WID_C_HAS_PASSWORD:
 				*size = maxdim(*size, GetSpriteSize(SPR_LOCK));
 				break;
 #endif /* ENABLE_NETWORK */
@@ -2138,16 +2138,16 @@ struct CompanyWindow : Window
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		switch (widget) {
-			case CW_WIDGET_FACE:
+			case WID_C_FACE:
 				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
 				break;
 
-			case CW_WIDGET_FACE_TITLE:
+			case WID_C_FACE_TITLE:
 				SetDParam(0, c->index);
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
-			case CW_WIDGET_DESC_COLOUR_SCHEME_EXAMPLE: {
+			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
 				Point offset;
 				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
 				d.height -= offset.y;
@@ -2155,7 +2155,7 @@ struct CompanyWindow : Window
 				break;
 			}
 
-			case CW_WIDGET_DESC_VEHICLE_COUNTS: {
+			case WID_C_DESC_VEHICLE_COUNTS: {
 				uint amounts[4];
 				amounts[0] = c->group_all[VEH_TRAIN].num_vehicle;
 				amounts[1] = c->group_all[VEH_ROAD].num_vehicle;
@@ -2179,7 +2179,7 @@ struct CompanyWindow : Window
 				break;
 			}
 
-			case CW_WIDGET_DESC_INFRASTRUCTURE_COUNTS: {
+			case WID_C_DESC_INFRASTRUCTURE_COUNTS: {
 				uint y = r.top;
 
 				/* Collect rail and road counts. */
@@ -2220,7 +2220,7 @@ struct CompanyWindow : Window
 				break;
 			}
 
-			case CW_WIDGET_DESC_OWNERS: {
+			case WID_C_DESC_OWNERS: {
 				const Company *c2;
 				uint y = r.top;
 
@@ -2238,7 +2238,7 @@ struct CompanyWindow : Window
 			}
 
 #ifdef ENABLE_NETWORK
-			case CW_WIDGET_HAS_PASSWORD:
+			case WID_C_HAS_PASSWORD:
 				if (_networking && NetworkCompanyIsPassworded(c->index)) {
 					DrawSprite(SPR_LOCK, PAL_NONE, r.left, r.top);
 				}
@@ -2250,16 +2250,16 @@ struct CompanyWindow : Window
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case CW_WIDGET_CAPTION:
+			case WID_C_CAPTION:
 				SetDParam(0, (CompanyID)this->window_number);
 				SetDParam(1, (CompanyID)this->window_number);
 				break;
 
-			case CW_WIDGET_DESC_INAUGURATION:
+			case WID_C_DESC_INAUGURATION:
 				SetDParam(0, Company::Get((CompanyID)this->window_number)->inaugurated_year);
 				break;
 
-			case CW_WIDGET_DESC_COMPANY_VALUE:
+			case WID_C_DESC_COMPANY_VALUE:
 				SetDParam(0, CalculateCompanyValue(Company::Get((CompanyID)this->window_number)));
 				break;
 		}
@@ -2268,26 +2268,26 @@ struct CompanyWindow : Window
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case CW_WIDGET_NEW_FACE: DoSelectCompanyManagerFace(this); break;
+			case WID_C_NEW_FACE: DoSelectCompanyManagerFace(this); break;
 
-			case CW_WIDGET_COLOUR_SCHEME:
+			case WID_C_COLOUR_SCHEME:
 				if (BringWindowToFrontById(WC_COMPANY_COLOUR, this->window_number)) break;
 				new SelectCompanyLiveryWindow(&_select_company_livery_desc, (CompanyID)this->window_number);
 				break;
 
-			case CW_WIDGET_PRESIDENT_NAME:
-				this->query_widget = CW_WIDGET_PRESIDENT_NAME;
+			case WID_C_PRESIDENT_NAME:
+				this->query_widget = WID_C_PRESIDENT_NAME;
 				SetDParam(0, this->window_number);
 				ShowQueryString(STR_PRESIDENT_NAME, STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION, MAX_LENGTH_PRESIDENT_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
-			case CW_WIDGET_COMPANY_NAME:
-				this->query_widget = CW_WIDGET_COMPANY_NAME;
+			case WID_C_COMPANY_NAME:
+				this->query_widget = WID_C_COMPANY_NAME;
 				SetDParam(0, this->window_number);
 				ShowQueryString(STR_COMPANY_NAME, STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
-			case CW_WIDGET_VIEW_HQ: {
+			case WID_C_VIEW_HQ: {
 				TileIndex tile = Company::Get((CompanyID)this->window_number)->location_of_HQ;
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(tile);
@@ -2297,50 +2297,50 @@ struct CompanyWindow : Window
 				break;
 			}
 
-			case CW_WIDGET_BUILD_HQ:
+			case WID_C_BUILD_HQ:
 				if ((byte)this->window_number != _local_company) return;
-				if (this->IsWidgetLowered(CW_WIDGET_BUILD_HQ)) {
+				if (this->IsWidgetLowered(WID_C_BUILD_HQ)) {
 					ResetObjectToPlace();
 					this->RaiseButtons();
 					break;
 				}
 				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 				SetTileSelectSize(2, 2);
-				this->LowerWidget(CW_WIDGET_BUILD_HQ);
-				this->SetWidgetDirty(CW_WIDGET_BUILD_HQ);
+				this->LowerWidget(WID_C_BUILD_HQ);
+				this->SetWidgetDirty(WID_C_BUILD_HQ);
 				break;
 
-			case CW_WIDGET_RELOCATE_HQ:
-				if (this->IsWidgetLowered(CW_WIDGET_RELOCATE_HQ)) {
+			case WID_C_RELOCATE_HQ:
+				if (this->IsWidgetLowered(WID_C_RELOCATE_HQ)) {
 					ResetObjectToPlace();
 					this->RaiseButtons();
 					break;
 				}
 				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, HT_RECT, this);
 				SetTileSelectSize(2, 2);
-				this->LowerWidget(CW_WIDGET_RELOCATE_HQ);
-				this->SetWidgetDirty(CW_WIDGET_RELOCATE_HQ);
+				this->LowerWidget(WID_C_RELOCATE_HQ);
+				this->SetWidgetDirty(WID_C_RELOCATE_HQ);
 				break;
 
-			case CW_WIDGET_VIEW_INFRASTRUCTURE:
+			case WID_C_VIEW_INFRASTRUCTURE:
 				ShowCompanyInfrastructure((CompanyID)this->window_number);
 				break;
 
-			case CW_WIDGET_BUY_SHARE:
+			case WID_C_BUY_SHARE:
 				DoCommandP(0, this->window_number, 0, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS));
 				break;
 
-			case CW_WIDGET_SELL_SHARE:
+			case WID_C_SELL_SHARE:
 				DoCommandP(0, this->window_number, 0, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_SELL_25_SHARE_IN));
 				break;
 
 #ifdef ENABLE_NETWORK
-			case CW_WIDGET_COMPANY_PASSWORD:
+			case WID_C_COMPANY_PASSWORD:
 				if (this->window_number == _local_company) ShowNetworkCompanyPasswordWindow(this);
 				break;
 
-			case CW_WIDGET_COMPANY_JOIN: {
-				this->query_widget = CW_WIDGET_COMPANY_JOIN;
+			case WID_C_COMPANY_JOIN: {
+				this->query_widget = WID_C_COMPANY_JOIN;
 				CompanyID company = (CompanyID)this->window_number;
 				if (_network_server) {
 					NetworkServerDoMove(CLIENT_ID_SERVER, company);
@@ -2384,16 +2384,16 @@ struct CompanyWindow : Window
 		switch (this->query_widget) {
 			default: NOT_REACHED();
 
-			case CW_WIDGET_PRESIDENT_NAME:
+			case WID_C_PRESIDENT_NAME:
 				DoCommandP(0, 0, 0, CMD_RENAME_PRESIDENT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_PRESIDENT), NULL, str);
 				break;
 
-			case CW_WIDGET_COMPANY_NAME:
+			case WID_C_COMPANY_NAME:
 				DoCommandP(0, 0, 0, CMD_RENAME_COMPANY | CMD_MSG(STR_ERROR_CAN_T_CHANGE_COMPANY_NAME), NULL, str);
 				break;
 
 #ifdef ENABLE_NETWORK
-			case CW_WIDGET_COMPANY_JOIN:
+			case WID_C_COMPANY_JOIN:
 				NetworkClientRequestMove((CompanyID)this->window_number, str);
 				break;
 #endif /* ENABLE_NETWORK */
@@ -2438,11 +2438,11 @@ struct BuyCompanyWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case BCW_FACE:
+			case WID_BC_FACE:
 				*size = GetSpriteSize(SPR_GRADIENT);
 				break;
 
-			case BCW_QUESTION:
+			case WID_BC_QUESTION:
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->index);
 				SetDParam(1, c->bankrupt_value);
@@ -2454,7 +2454,7 @@ struct BuyCompanyWindow : Window {
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case BCW_CAPTION:
+			case WID_BC_CAPTION:
 				SetDParam(0, STR_COMPANY_NAME);
 				SetDParam(1, Company::Get((CompanyID)this->window_number)->index);
 				break;
@@ -2464,13 +2464,13 @@ struct BuyCompanyWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case BCW_FACE: {
+			case WID_BC_FACE: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
 				break;
 			}
 
-			case BCW_QUESTION: {
+			case WID_BC_QUESTION: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->index);
 				SetDParam(1, c->bankrupt_value);
@@ -2483,11 +2483,11 @@ struct BuyCompanyWindow : Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case BCW_NO:
+			case WID_BC_NO:
 				delete this;
 				break;
 
-			case BCW_YES:
+			case WID_BC_YES:
 				DoCommandP(0, this->window_number, 0, CMD_BUY_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_COMPANY));
 				break;
 		}
@@ -2497,17 +2497,17 @@ struct BuyCompanyWindow : Window {
 static const NWidgetPart _nested_buy_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, BCW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_BC_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
 		NWidget(NWID_VERTICAL), SetPIP(8, 8, 8),
 			NWidget(NWID_HORIZONTAL), SetPIP(8, 10, 8),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, BCW_FACE), SetFill(0, 1),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, BCW_QUESTION), SetMinimalSize(240, 0), SetFill(1, 1),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BC_FACE), SetFill(0, 1),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BC_QUESTION), SetMinimalSize(240, 0), SetFill(1, 1),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(100, 10, 100),
-				NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_NO), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_NO, STR_NULL), SetFill(1, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, BCW_YES), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_YES, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_BC_NO), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_NO, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_BC_YES), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_YES, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),

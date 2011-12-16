@@ -155,7 +155,7 @@ static const char *IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
 static const struct NWidgetPart _nested_console_window_widgets[] = {
-	NWidget(WWT_EMPTY, INVALID_COLOUR, CW_BACKGROUND), SetResize(1, 1),
+	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
 };
 
 static const WindowDesc _console_window_desc(

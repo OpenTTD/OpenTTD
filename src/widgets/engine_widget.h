@@ -14,9 +14,9 @@
 
 /** Widgets of the WC_ENGINE_PREVIEW. */
 enum EnginePreviewWidgets {
-	EPW_QUESTION,   ///< The container for the question
-	EPW_NO,         ///< No button
-	EPW_YES,        ///< Yes button
+	WID_EP_QUESTION, ///< The container for the question.
+	WID_EP_NO,       ///< No button.
+	WID_EP_YES,      ///< Yes button.
 };
 
 #endif /* WIDGETS_ENGINE_WIDGET_H */

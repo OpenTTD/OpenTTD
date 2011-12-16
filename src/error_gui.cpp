@@ -32,10 +32,10 @@
 static const NWidgetPart _nested_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
-		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED),
-		NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetPadding(0, 2, 0, 2), SetMinimalSize(236, 32),
+		NWidget(WWT_EMPTY, COLOUR_RED, WID_EM_MESSAGE), SetPadding(0, 2, 0, 2), SetMinimalSize(236, 32),
 	EndContainer(),
 };
 
@@ -49,12 +49,12 @@ static const WindowDesc _errmsg_desc(
 static const NWidgetPart _nested_errmsg_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
-		NWidget(WWT_CAPTION, COLOUR_RED, EMW_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION), SetDataTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 1, 2),
-			NWidget(WWT_EMPTY, COLOUR_RED, EMW_FACE), SetMinimalSize(92, 119), SetFill(0, 1), SetPadding(2, 0, 1, 0),
-			NWidget(WWT_EMPTY, COLOUR_RED, EMW_MESSAGE), SetFill(0, 1), SetMinimalSize(238, 123),
+			NWidget(WWT_EMPTY, COLOUR_RED, WID_EM_FACE), SetMinimalSize(92, 119), SetFill(0, 1), SetPadding(2, 0, 1, 0),
+			NWidget(WWT_EMPTY, COLOUR_RED, WID_EM_MESSAGE), SetFill(0, 1), SetMinimalSize(238, 123),
 		EndContainer(),
 	EndContainer(),
 };
@@ -141,8 +141,8 @@ bool _window_system_initialized = false;
 /** Window class for displaying an error message window. */
 struct ErrmsgWindow : public Window, ErrorMessageData {
 private:
-	uint height_summary;            ///< Height of the #summary_msg string in pixels in the #EMW_MESSAGE widget.
-	uint height_detailed;           ///< Height of the #detailed_msg string in pixels in the #EMW_MESSAGE widget.
+	uint height_summary;            ///< Height of the #summary_msg string in pixels in the #WID_EM_MESSAGE widget.
+	uint height_detailed;           ///< Height of the #detailed_msg string in pixels in the #WID_EM_MESSAGE widget.
 
 public:
 	ErrmsgWindow(const ErrorMessageData &data) : Window(), ErrorMessageData(data)
@@ -152,7 +152,7 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != EMW_MESSAGE) return;
+		if (widget != WID_EM_MESSAGE) return;
 
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 		if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
@@ -213,19 +213,19 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == EMW_CAPTION) CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+		if (widget == WID_EM_CAPTION) CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case EMW_FACE: {
+			case WID_EM_FACE: {
 				const Company *c = Company::Get(this->face);
 				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
 				break;
 			}
 
-			case EMW_MESSAGE:
+			case WID_EM_MESSAGE:
 				CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
 

@@ -96,7 +96,7 @@ struct BuildDocksToolbarWindow : Window {
 
 	BuildDocksToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->last_clicked_widget = DTW_END;
+		this->last_clicked_widget = WID_DT_INVALID;
 		this->InitNested(desc, window_number);
 		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
@@ -116,49 +116,49 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP),
-			DTW_DEPOT,
-			DTW_STATION,
-			DTW_BUOY,
+			WID_DT_DEPOT,
+			WID_DT_STATION,
+			WID_DT_BUOY,
 			WIDGET_LIST_END);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case DTW_CANAL: // Build canal button
-				HandlePlacePushButton(this, DTW_CANAL, SPR_CURSOR_CANAL, HT_RECT);
+			case WID_DT_CANAL: // Build canal button
+				HandlePlacePushButton(this, WID_DT_CANAL, SPR_CURSOR_CANAL, HT_RECT);
 				break;
 
-			case DTW_LOCK: // Build lock button
-				HandlePlacePushButton(this, DTW_LOCK, SPR_CURSOR_LOCK, HT_SPECIAL);
+			case WID_DT_LOCK: // Build lock button
+				HandlePlacePushButton(this, WID_DT_LOCK, SPR_CURSOR_LOCK, HT_SPECIAL);
 				break;
 
-			case DTW_DEMOLISH: // Demolish aka dynamite button
-				HandlePlacePushButton(this, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
+			case WID_DT_DEMOLISH: // Demolish aka dynamite button
+				HandlePlacePushButton(this, WID_DT_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
 				break;
 
-			case DTW_DEPOT: // Build depot button
+			case WID_DT_DEPOT: // Build depot button
 				if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-				if (HandlePlacePushButton(this, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, HT_RECT)) ShowBuildDocksDepotPicker(this);
+				if (HandlePlacePushButton(this, WID_DT_DEPOT, SPR_CURSOR_SHIP_DEPOT, HT_RECT)) ShowBuildDocksDepotPicker(this);
 				break;
 
-			case DTW_STATION: // Build station button
+			case WID_DT_STATION: // Build station button
 				if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-				if (HandlePlacePushButton(this, DTW_STATION, SPR_CURSOR_DOCK, HT_SPECIAL)) ShowBuildDockStationPicker(this);
+				if (HandlePlacePushButton(this, WID_DT_STATION, SPR_CURSOR_DOCK, HT_SPECIAL)) ShowBuildDockStationPicker(this);
 				break;
 
-			case DTW_BUOY: // Build buoy button
+			case WID_DT_BUOY: // Build buoy button
 				if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-				HandlePlacePushButton(this, DTW_BUOY, SPR_CURSOR_BUOY, HT_RECT);
+				HandlePlacePushButton(this, WID_DT_BUOY, SPR_CURSOR_BUOY, HT_RECT);
 				break;
 
-			case DTW_RIVER: // Build river button (in scenario editor)
+			case WID_DT_RIVER: // Build river button (in scenario editor)
 				if (_game_mode != GM_EDITOR) return;
-				HandlePlacePushButton(this, DTW_RIVER, SPR_CURSOR_RIVER, HT_RECT);
+				HandlePlacePushButton(this, WID_DT_RIVER, SPR_CURSOR_RIVER, HT_RECT);
 				break;
 
-			case DTW_BUILD_AQUEDUCT: // Build aqueduct button
-				HandlePlacePushButton(this, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_SPECIAL);
+			case WID_DT_BUILD_AQUEDUCT: // Build aqueduct button
+				HandlePlacePushButton(this, WID_DT_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_SPECIAL);
 				break;
 
 			default: return;
@@ -177,23 +177,23 @@ struct BuildDocksToolbarWindow : Window {
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		switch (this->last_clicked_widget) {
-			case DTW_CANAL: // Build canal button
+			case WID_DT_CANAL: // Build canal button
 				VpStartPlaceSizing(tile, (_game_mode == GM_EDITOR) ? VPM_X_AND_Y : VPM_X_OR_Y, DDSP_CREATE_WATER);
 				break;
 
-			case DTW_LOCK: // Build lock button
+			case WID_DT_LOCK: // Build lock button
 				DoCommandP(tile, 0, 0, CMD_BUILD_LOCK | CMD_MSG(STR_ERROR_CAN_T_BUILD_LOCKS), CcBuildDocks);
 				break;
 
-			case DTW_DEMOLISH: // Demolish aka dynamite button
+			case WID_DT_DEMOLISH: // Demolish aka dynamite button
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			case DTW_DEPOT: // Build depot button
+			case WID_DT_DEPOT: // Build depot button
 				DoCommandP(tile, _ship_depot_direction, 0, CMD_BUILD_SHIP_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_SHIP_DEPOT), CcBuildDocks);
 				break;
 
-			case DTW_STATION: { // Build station button
+			case WID_DT_STATION: { // Build station button
 				uint32 p2 = (uint32)INVALID_STATION << 16; // no station to join
 
 				/* tile is always the land tile, so need to evaluate _thd.pos */
@@ -207,15 +207,15 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 			}
 
-			case DTW_BUOY: // Build buoy button
+			case WID_DT_BUOY: // Build buoy button
 				DoCommandP(tile, 0, 0, CMD_BUILD_BUOY | CMD_MSG(STR_ERROR_CAN_T_POSITION_BUOY_HERE), CcBuildDocks);
 				break;
 
-			case DTW_RIVER: // Build river button (in scenario editor)
+			case WID_DT_RIVER: // Build river button (in scenario editor)
 				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_RIVER);
 				break;
 
-			case DTW_BUILD_AQUEDUCT: // Build aqueduct button
+			case WID_DT_BUILD_AQUEDUCT: // Build aqueduct button
 				DoCommandP(tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER << 15, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE), CcBuildBridge);
 				break;
 
@@ -261,7 +261,7 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		TileIndex tile_to = tile_from;
 
-		if (this->last_clicked_widget == DTW_BUILD_AQUEDUCT) {
+		if (this->last_clicked_widget == WID_DT_BUILD_AQUEDUCT) {
 			GetOtherAqueductEnd(tile_from, &tile_to);
 		} else {
 			DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from));
@@ -269,7 +269,7 @@ struct BuildDocksToolbarWindow : Window {
 				/* Locks and docks always select the tile "down" the slope. */
 				tile_to = TileAddByDiagDir(tile_from, ReverseDiagDir(dir));
 				/* Locks also select the tile "up" the slope. */
-				if (this->last_clicked_widget == DTW_LOCK) tile_from = TileAddByDiagDir(tile_from, dir);
+				if (this->last_clicked_widget == WID_DT_LOCK) tile_from = TileAddByDiagDir(tile_from, dir);
 			}
 		}
 
@@ -282,21 +282,21 @@ struct BuildDocksToolbarWindow : Window {
 const uint16 _dockstoolbar_aqueduct_keys[] = {'B', '8', 0};
 
 Hotkey<BuildDocksToolbarWindow> BuildDocksToolbarWindow::dockstoolbar_hotkeys[] = {
-	Hotkey<BuildDocksToolbarWindow>('1', "canal", DTW_CANAL),
-	Hotkey<BuildDocksToolbarWindow>('2', "lock", DTW_LOCK),
-	Hotkey<BuildDocksToolbarWindow>('3', "demolish", DTW_DEMOLISH),
-	Hotkey<BuildDocksToolbarWindow>('4', "depot", DTW_DEPOT),
-	Hotkey<BuildDocksToolbarWindow>('5', "dock", DTW_STATION),
-	Hotkey<BuildDocksToolbarWindow>('6', "buoy", DTW_BUOY),
-	Hotkey<BuildDocksToolbarWindow>('7', "river", DTW_RIVER),
-	Hotkey<BuildDocksToolbarWindow>(_dockstoolbar_aqueduct_keys, "aqueduct", DTW_BUILD_AQUEDUCT),
+	Hotkey<BuildDocksToolbarWindow>('1', "canal", WID_DT_CANAL),
+	Hotkey<BuildDocksToolbarWindow>('2', "lock", WID_DT_LOCK),
+	Hotkey<BuildDocksToolbarWindow>('3', "demolish", WID_DT_DEMOLISH),
+	Hotkey<BuildDocksToolbarWindow>('4', "depot", WID_DT_DEPOT),
+	Hotkey<BuildDocksToolbarWindow>('5', "dock", WID_DT_STATION),
+	Hotkey<BuildDocksToolbarWindow>('6', "buoy", WID_DT_BUOY),
+	Hotkey<BuildDocksToolbarWindow>('7', "river", WID_DT_RIVER),
+	Hotkey<BuildDocksToolbarWindow>(_dockstoolbar_aqueduct_keys, "aqueduct", WID_DT_BUILD_AQUEDUCT),
 	HOTKEY_LIST_END(BuildDocksToolbarWindow)
 };
 Hotkey<BuildDocksToolbarWindow> *_dockstoolbar_hotkeys = BuildDocksToolbarWindow::dockstoolbar_hotkeys;
 
 /**
  * Nested widget parts of docks toolbar, game version.
- * Position of #DTW_RIVER widget has changed.
+ * Position of #WID_DT_RIVER widget has changed.
  */
 static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -305,14 +305,14 @@ static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL_LTR),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_LOCK), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_LOCK, STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_LOCK), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_LOCK, STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(5, 22), SetFill(1, 1), EndContainer(),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEPOT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DEPOT, STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_STATION), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DOCK, STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_BUOY), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUOY, STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_BUILD_AQUEDUCT), SetMinimalSize(23, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_DEMOLISH), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_DEPOT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DEPOT, STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_STATION), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SHIP_DOCK, STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_BUOY), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUOY, STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_BUILD_AQUEDUCT), SetMinimalSize(23, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),
 	EndContainer(),
 };
 
@@ -349,7 +349,7 @@ EventState DockToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 
 /**
  * Nested widget parts of docks toolbar, scenario editor version.
- * Positions of #DTW_DEPOT, #DTW_STATION, and #DTW_BUOY widgets have changed.
+ * Positions of #WID_DT_DEPOT, #WID_DT_STATION, and #WID_DT_BUOY widgets have changed.
  */
 static const NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -358,12 +358,12 @@ static const NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_LOCK), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_LOCK, STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_CANAL), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_CANAL, STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_LOCK), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_LOCK, STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(5, 22), SetFill(1, 1), EndContainer(),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_DEMOLISH), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_RIVER), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_RIVER, STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, DTW_BUILD_AQUEDUCT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_DEMOLISH), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_RIVER), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BUILD_RIVER, STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_BUILD_AQUEDUCT), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),
 	EndContainer(),
 };
 

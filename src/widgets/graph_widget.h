@@ -15,54 +15,54 @@
 #include "../economy_type.h"
 
 /** Widgets of the WC_GRAPH_LEGEND. */
-enum GraphLegendWidgetNumbers {
-	GLW_BACKGROUND,
+enum GraphLegendWidgets {
+	WID_GL_BACKGROUND,
 
-	GLW_FIRST_COMPANY,
-	GLW_LAST_COMPANY = GLW_FIRST_COMPANY + MAX_COMPANIES - 1,
+	WID_GL_FIRST_COMPANY,
+	WID_GL_LAST_COMPANY = WID_GL_FIRST_COMPANY + MAX_COMPANIES - 1,
 };
 
 /** Widgets of the WC_OPERATING_PROFIT / WC_DELIVERED_CARGO / WC_COMPANY_VALUE / WC_INCOME_GRAPH. */
 enum CompanyValueWidgets {
-	BGW_KEY_BUTTON,
-	BGW_BACKGROUND,
-	BGW_GRAPH,
-	BGW_RESIZE,
+	WID_CV_KEY_BUTTON, ///< Key button.
+	WID_CV_BACKGROUND, ///< Background of the window.
+	WID_CV_GRAPH,      ///< Graph itself.
+	WID_CV_RESIZE,     ///< Resize button.
 };
 
 /** Widget of the WC_PERFORMANCE_HISTORY. */
 enum PerformanceHistoryGraphWidgets {
-	PHW_KEY,
-	PHW_DETAILED_PERFORMANCE,
-	PHW_BACKGROUND,
-	PHW_GRAPH,
-	PHW_RESIZE,
+	WID_PHG_KEY,                  ///< Key button.
+	WID_PHG_DETAILED_PERFORMANCE, ///< Detailed performance.
+	WID_PHG_BACKGROUND,           ///< Background of the window.
+	WID_PHG_GRAPH,                ///< Graph itself.
+	WID_PHG_RESIZE,               ///< Resize button.
 };
 
 /** Widget of the WC_PAYMENT_RATES. */
 enum CargoPaymentRatesWidgets {
-	CPW_BACKGROUND,
-	CPW_HEADER,
-	CPW_GRAPH,
-	CPW_RESIZE,
-	CPW_FOOTER,
-	CPW_ENABLE_CARGOES,
-	CPW_DISABLE_CARGOES,
-	CPW_CARGO_FIRST,
+	WID_CPR_BACKGROUND,      ///< Background of the window.
+	WID_CPR_HEADER,          ///< Header.
+	WID_CPR_GRAPH,           ///< Graph itself.
+	WID_CPR_RESIZE,          ///< Resize button.
+	WID_CPR_FOOTER,          ///< Footer.
+	WID_CPR_ENABLE_CARGOES,  ///< Enable cargoes button.
+	WID_CPR_DISABLE_CARGOES, ///< Disable cargoes button.
+	WID_CPR_CARGO_FIRST,     ///< First cargo in the list.
 };
 
 /** Widget of the WC_COMPANY_LEAGUE. */
 enum CompanyLeagueWidgets {
-	CLW_BACKGROUND,
+	WID_CL_BACKGROUND, ///< Background of the window.
 };
 
 /** Widget of the WC_PERFORMANCE_DETAIL. */
 enum PerformanceRatingDetailsWidgets {
-	PRW_SCORE_FIRST,
-	PRW_SCORE_LAST = PRW_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1,
+	WID_PRD_SCORE_FIRST, ///< First entry in the score list.
+	WID_PRD_SCORE_LAST = WID_PRD_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1, ///< Last entry in the score list.
 
-	PRW_COMPANY_FIRST,
-	PRW_COMPANY_LAST  = PRW_COMPANY_FIRST + MAX_COMPANIES - 1,
+	WID_PRD_COMPANY_FIRST, ///< First company.
+	WID_PRD_COMPANY_LAST  = WID_PRD_COMPANY_FIRST + MAX_COMPANIES - 1, ///< Last company.
 };
 
 #endif /* WIDGETS_GRAPH_WIDGET_H */

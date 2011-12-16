@@ -14,24 +14,24 @@
 
 /** Widgets of the WC_BUILD_TOOLBAR (WC_BUILD_TOOLBAR is also used in others). */
 enum AirportToolbarWidgets {
-	ATW_AIRPORT,
-	ATW_DEMOLISH,
+	WID_AT_AIRPORT,  ///< Build airport button.
+	WID_AT_DEMOLISH, ///< Demolish button.
 };
 
 /** Widgets of the WC_BUILD_STATION (WC_BUILD_STATION is also used in others). */
 enum AirportPickerWidgets {
-	BAIRW_CLASS_DROPDOWN,
-	BAIRW_AIRPORT_LIST,
-	BAIRW_SCROLLBAR,
-	BAIRW_LAYOUT_NUM,
-	BAIRW_LAYOUT_DECREASE,
-	BAIRW_LAYOUT_INCREASE,
-	BAIRW_AIRPORT_SPRITE,
-	BAIRW_EXTRA_TEXT,
-	BAIRW_BOTTOMPANEL,
-	BAIRW_COVERAGE_LABEL,
-	BAIRW_BTN_DONTHILIGHT,
-	BAIRW_BTN_DOHILIGHT,
+	WID_AP_CLASS_DROPDOWN,  ///< Dropdown of airport classes.
+	WID_AP_AIRPORT_LIST,    ///< List of airports.
+	WID_AP_SCROLLBAR,       ///< Scrollbar of the list.
+	WID_AP_LAYOUT_NUM,      ///< Current number of the layout.
+	WID_AP_LAYOUT_DECREASE, ///< Decrease the layout number.
+	WID_AP_LAYOUT_INCREASE, ///< Increase the layout number.
+	WID_AP_AIRPORT_SPRITE,  ///< A visual display of the airport currently selected.
+	WID_AP_EXTRA_TEXT,      ///< Additional text about the airport.
+	WID_AP_BOTTOMPANEL,     ///< Panel at the bottom.
+	WID_AP_COVERAGE_LABEL,  ///< Label if you want to see the coverage.
+	WID_AP_BTN_DONTHILIGHT, ///< Don't show the coverage button.
+	WID_AP_BTN_DOHILIGHT,   ///< Show the coverage button.
 };
 
 #endif /* WIDGETS_AIRPORT_WIDGET_H */

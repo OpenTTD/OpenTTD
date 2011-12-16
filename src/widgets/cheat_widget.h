@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_CHEATS. */
 enum CheatWidgets {
-	CW_PANEL,
+	WID_C_PANEL, ///< Panel where all cheats are shown in.
 };
 
 #endif /* WIDGETS_CHEAT_WIDGET_H */

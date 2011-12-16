@@ -72,21 +72,21 @@ struct SetDateWindow : Window {
 		switch (widget) {
 			default: NOT_REACHED();
 
-			case SDW_DAY:
+			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
 					list->push_back(new DropDownListStringItem(STR_ORDINAL_NUMBER_1ST + i, i + 1, false));
 				}
 				selected = this->date.day;
 				break;
 
-			case SDW_MONTH:
+			case WID_SD_MONTH:
 				for (uint i = 0; i < 12; i++) {
 					list->push_back(new DropDownListStringItem(STR_MONTH_JAN + i, i, false));
 				}
 				selected = this->date.month;
 				break;
 
-			case SDW_YEAR:
+			case WID_SD_YEAR:
 				for (Year i = this->min_year; i <= this->max_year; i++) {
 					DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
 					item->SetParam(0, i);
@@ -105,19 +105,19 @@ struct SetDateWindow : Window {
 		switch (widget) {
 			default: return;
 
-			case SDW_DAY:
+			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
 					d = maxdim(d, GetStringBoundingBox(STR_ORDINAL_NUMBER_1ST + i));
 				}
 				break;
 
-			case SDW_MONTH:
+			case WID_SD_MONTH:
 				for (uint i = 0; i < 12; i++) {
 					d = maxdim(d, GetStringBoundingBox(STR_MONTH_JAN + i));
 				}
 				break;
 
-			case SDW_YEAR:
+			case WID_SD_YEAR:
 				for (Year i = this->min_year; i <= this->max_year; i++) {
 					SetDParam(0, i);
 					d = maxdim(d, GetStringBoundingBox(STR_JUST_INT));
@@ -133,22 +133,22 @@ struct SetDateWindow : Window {
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case SDW_DAY:   SetDParam(0, this->date.day - 1 + STR_ORDINAL_NUMBER_1ST); break;
-			case SDW_MONTH: SetDParam(0, this->date.month + STR_MONTH_JAN); break;
-			case SDW_YEAR:  SetDParam(0, this->date.year); break;
+			case WID_SD_DAY:   SetDParam(0, this->date.day - 1 + STR_ORDINAL_NUMBER_1ST); break;
+			case WID_SD_MONTH: SetDParam(0, this->date.month + STR_MONTH_JAN); break;
+			case WID_SD_YEAR:  SetDParam(0, this->date.year); break;
 		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case SDW_DAY:
-			case SDW_MONTH:
-			case SDW_YEAR:
+			case WID_SD_DAY:
+			case WID_SD_MONTH:
+			case WID_SD_YEAR:
 				ShowDateDropDown(widget);
 				break;
 
-			case SDW_SET_DATE:
+			case WID_SD_SET_DATE:
 				if (this->callback != NULL) this->callback(this->parent, ConvertYMDToDate(this->date.year, this->date.month, this->date.day));
 				delete this;
 				break;
@@ -158,15 +158,15 @@ struct SetDateWindow : Window {
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
-			case SDW_DAY:
+			case WID_SD_DAY:
 				this->date.day = index;
 				break;
 
-			case SDW_MONTH:
+			case WID_SD_MONTH:
 				this->date.month = index;
 				break;
 
-			case SDW_YEAR:
+			case WID_SD_YEAR:
 				this->date.year = index;
 				break;
 		}
@@ -183,13 +183,13 @@ static const NWidgetPart _nested_set_date_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(6, 6, 6),
-				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, SDW_DAY), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_DATE_DAY_TOOLTIP),
-				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, SDW_MONTH), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_DATE_MONTH_TOOLTIP),
-				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, SDW_YEAR), SetFill(1, 0), SetDataTip(STR_JUST_INT, STR_DATE_YEAR_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_DAY), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_DATE_DAY_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_MONTH), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_DATE_MONTH_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_YEAR), SetFill(1, 0), SetDataTip(STR_JUST_INT, STR_DATE_YEAR_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SPACER), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SDW_SET_DATE), SetMinimalSize(100, 12), SetDataTip(STR_DATE_SET_DATE, STR_DATE_SET_DATE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_SD_SET_DATE), SetMinimalSize(100, 12), SetDataTip(STR_DATE_SET_DATE, STR_DATE_SET_DATE_TOOLTIP),
 				NWidget(NWID_SPACER), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),

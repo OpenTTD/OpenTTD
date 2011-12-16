@@ -14,9 +14,9 @@
 
 /** Widgets of the WC_ERRMSG. */
 enum ErrorMessageWidgets {
-	EMW_CAPTION,
-	EMW_FACE,
-	EMW_MESSAGE,
+	WID_EM_CAPTION, ///< Caption of the window.
+	WID_EM_FACE,    ///< Error title.
+	WID_EM_MESSAGE, ///< Error message.
 };
 
 #endif /* WIDGETS_ERROR_WIDGET_H */

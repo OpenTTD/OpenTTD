@@ -12,82 +12,75 @@
 #ifndef WIDGETS_GENWORLD_WIDGET_H
 #define WIDGETS_GENWORLD_WIDGET_H
 
-/** Widgets of the WC_GENERATE_LANDSCAPE (WC_GENERATE_LANDSCAPE is also used in GenerateLandscapeWindowWidgets and CreateScenarioWindowWidgets). */
-enum GenenerateLandscapeWindowMode {
-	GLWM_GENERATE,  ///< Generate new game
-	GLWM_HEIGHTMAP, ///< Load from heightmap
-	GLWM_SCENARIO,  ///< Generate flat land
+/** Widgets of the WC_GENERATE_LANDSCAPE (WC_GENERATE_LANDSCAPE is also used in CreateScenarioWidgets). */
+enum GenerateLandscapeWidgets {
+	WID_GL_TEMPERATE,                   ///< Button with icon "Temperate".
+	WID_GL_ARCTIC,                      ///< Button with icon "Arctic".
+	WID_GL_TROPICAL,                    ///< Button with icon "Tropical".
+	WID_GL_TOYLAND,                     ///< Button with icon "Toyland".
+
+	WID_GL_MAPSIZE_X_PULLDOWN,          ///< Dropdown 'map X size'.
+	WID_GL_MAPSIZE_Y_PULLDOWN,          ///< Dropdown 'map Y size'.
+
+	WID_GL_TOWN_PULLDOWN,               ///< Dropdown 'No. of towns'.
+	WID_GL_INDUSTRY_PULLDOWN,           ///< Dropdown 'No. of industries'.
+
+	WID_GL_RANDOM_EDITBOX,              ///< 'Random seed' editbox.
+	WID_GL_RANDOM_BUTTON,               ///< 'Randomise' button.
+
+	WID_GL_GENERATE_BUTTON,             ///< 'Generate' button.
+
+	WID_GL_START_DATE_DOWN,             ///< Decrease start year.
+	WID_GL_START_DATE_TEXT,             ///< Start year.
+	WID_GL_START_DATE_UP,               ///< Increase start year.
+
+	WID_GL_SNOW_LEVEL_DOWN,             ///< Decrease snow level.
+	WID_GL_SNOW_LEVEL_TEXT,             ///< Snow level.
+	WID_GL_SNOW_LEVEL_UP,               ///< Increase snow level.
+
+	WID_GL_TREE_PULLDOWN,               ///< Dropdown 'Tree algorithm'.
+	WID_GL_LANDSCAPE_PULLDOWN,          ///< Dropdown 'Land generator'.
+
+	WID_GL_HEIGHTMAP_NAME_TEXT,         ///< Heightmap name.
+	WID_GL_HEIGHTMAP_SIZE_TEXT,         ///< Size of heightmap.
+	WID_GL_HEIGHTMAP_ROTATION_PULLDOWN, ///< Dropdown 'Heightmap rotation'.
+
+	WID_GL_TERRAIN_PULLDOWN,            ///< Dropdown 'Terrain type'.
+	WID_GL_WATER_PULLDOWN,              ///< Dropdown 'Sea level'.
+	WID_GL_RIVER_PULLDOWN,              ///< Dropdown 'Rivers'.
+	WID_GL_SMOOTHNESS_PULLDOWN,         ///< Dropdown 'Smoothness'.
+	WID_GL_VARIETY_PULLDOWN,            ///< Dropdown 'Variety distribution'.
+
+	WID_GL_BORDERS_RANDOM,              ///< 'Random'/'Manual' borders.
+	WID_GL_WATER_NW,                    ///< NW 'Water'/'Freeform'.
+	WID_GL_WATER_NE,                    ///< NE 'Water'/'Freeform'.
+	WID_GL_WATER_SE,                    ///< SE 'Water'/'Freeform'.
+	WID_GL_WATER_SW,                    ///< SW 'Water'/'Freeform'.
 };
 
-/** Widgets of the WC_GENERATE_LANDSCAPE (WC_GENERATE_LANDSCAPE is also used in GenenerateLandscapeWindowMode and CreateScenarioWindowWidgets). */
-enum GenerateLandscapeWindowWidgets {
-	GLAND_TEMPERATE,          ///< Button with icon "Temperate"
-	GLAND_ARCTIC,             ///< Button with icon "Arctic"
-	GLAND_TROPICAL,           ///< Button with icon "Tropical"
-	GLAND_TOYLAND,            ///< Button with icon "Toyland"
-
-	GLAND_MAPSIZE_X_PULLDOWN, ///< Dropdown 'map X size'
-	GLAND_MAPSIZE_Y_PULLDOWN, ///< Dropdown 'map Y size'
-
-	GLAND_TOWN_PULLDOWN,      ///< Dropdown 'No. of towns'
-	GLAND_INDUSTRY_PULLDOWN,  ///< Dropdown 'No. of industries'
-
-	GLAND_RANDOM_EDITBOX,     ///< 'Random seed' editbox
-	GLAND_RANDOM_BUTTON,      ///< 'Randomise' button
-
-	GLAND_GENERATE_BUTTON,    ///< 'Generate' button
-
-	GLAND_START_DATE_DOWN,    ///< Decrease start year
-	GLAND_START_DATE_TEXT,    ///< Start year
-	GLAND_START_DATE_UP,      ///< Increase start year
-
-	GLAND_SNOW_LEVEL_DOWN,    ///< Decrease snow level
-	GLAND_SNOW_LEVEL_TEXT,    ///< Snow level
-	GLAND_SNOW_LEVEL_UP,      ///< Increase snow level
-
-	GLAND_TREE_PULLDOWN,      ///< Dropdown 'Tree algorithm'
-	GLAND_LANDSCAPE_PULLDOWN, ///< Dropdown 'Land generator'
-
-	GLAND_HEIGHTMAP_NAME_TEXT,         ///< Heightmap name
-	GLAND_HEIGHTMAP_SIZE_TEXT,         ///< Size of heightmap
-	GLAND_HEIGHTMAP_ROTATION_PULLDOWN, ///< Dropdown 'Heightmap rotation'
-
-	GLAND_TERRAIN_PULLDOWN,    ///< Dropdown 'Terrain type'
-	GLAND_WATER_PULLDOWN,      ///< Dropdown 'Sea level'
-	GLAND_RIVER_PULLDOWN,      ///< Dropdown 'Rivers'
-	GLAND_SMOOTHNESS_PULLDOWN, ///< Dropdown 'Smoothness'
-	GLAND_VARIETY_PULLDOWN,    ///< Dropdown 'Variety distribution'
-
-	GLAND_BORDERS_RANDOM,      ///< 'Random'/'Manual' borders
-	GLAND_WATER_NW,            ///< NW 'Water'/'Freeform'
-	GLAND_WATER_NE,            ///< NE 'Water'/'Freeform'
-	GLAND_WATER_SE,            ///< SE 'Water'/'Freeform'
-	GLAND_WATER_SW,            ///< SW 'Water'/'Freeform'
+/** Widgets of the WC_GENERATE_LANDSCAPE (WC_GENERATE_LANDSCAPE is also used in GenerateLandscapeWidgets). */
+enum CreateScenarioWidgets {
+	WID_CS_TEMPERATE,              ///< Select temperate landscape style.
+	WID_CS_ARCTIC,                 ///< Select arctic landscape style.
+	WID_CS_TROPICAL,               ///< Select tropical landscape style.
+	WID_CS_TOYLAND,                ///< Select toy-land landscape style.
+	WID_CS_EMPTY_WORLD,            ///< Generate an empty flat world.
+	WID_CS_RANDOM_WORLD,           ///< Generate random land button
+	WID_CS_MAPSIZE_X_PULLDOWN,     ///< Pull-down arrow for x map size.
+	WID_CS_MAPSIZE_Y_PULLDOWN,     ///< Pull-down arrow for y map size.
+	WID_CS_START_DATE_DOWN,        ///< Decrease start year (start earlier).
+	WID_CS_START_DATE_TEXT,        ///< Clickable start date value.
+	WID_CS_START_DATE_UP,          ///< Increase start year (start later).
+	WID_CS_FLAT_LAND_HEIGHT_DOWN,  ///< Decrease flat land height.
+	WID_CS_FLAT_LAND_HEIGHT_TEXT,  ///< Clickable flat land height value.
+	WID_CS_FLAT_LAND_HEIGHT_UP     ///< Increase flat land height.
 };
 
-/** Widgets of the WC_GENERATE_LANDSCAPE (WC_GENERATE_LANDSCAPE is also used in GenerateLandscapeWindowWidgets and GenenerateLandscapeWindowMode). */
-enum CreateScenarioWindowWidgets {
-	CSCEN_TEMPERATE,              ///< Select temperate landscape style.
-	CSCEN_ARCTIC,                 ///< Select arctic landscape style.
-	CSCEN_TROPICAL,               ///< Select tropical landscape style.
-	CSCEN_TOYLAND,                ///< Select toy-land landscape style.
-	CSCEN_EMPTY_WORLD,            ///< Generate an empty flat world.
-	CSCEN_RANDOM_WORLD,           ///< Generate random land button
-	CSCEN_MAPSIZE_X_PULLDOWN,     ///< Pull-down arrow for x map size.
-	CSCEN_MAPSIZE_Y_PULLDOWN,     ///< Pull-down arrow for y map size.
-	CSCEN_START_DATE_DOWN,        ///< Decrease start year (start earlier).
-	CSCEN_START_DATE_TEXT,        ///< Clickable start date value.
-	CSCEN_START_DATE_UP,          ///< Increase start year (start later).
-	CSCEN_FLAT_LAND_HEIGHT_DOWN,  ///< Decrease flat land height.
-	CSCEN_FLAT_LAND_HEIGHT_TEXT,  ///< Clickable flat land height value.
-	CSCEN_FLAT_LAND_HEIGHT_UP     ///< Increase flat land height.
-};
-
-/** Widgets of the WC_MODAL_PROGRESS (WC_MODAL_PROGRESS is also used in ScanProgressWindowWidgets). */
-enum GenerationProgressWindowWidgets {
-	GPWW_PROGRESS_BAR,
-	GPWW_PROGRESS_TEXT,
-	GPWW_ABORT,
+/** Widgets of the WC_MODAL_PROGRESS (WC_MODAL_PROGRESS is also used in ScanProgressWidgets). */
+enum GenerationProgressWidgets {
+	WID_GP_PROGRESS_BAR,  ///< Progress bar.
+	WID_GP_PROGRESS_TEXT, ///< Text with the progress bar.
+	WID_GP_ABORT,         ///< Abort button.
 };
 
 #endif /* WIDGETS_GENWORLD_WIDGET_H */

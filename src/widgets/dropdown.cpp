@@ -83,9 +83,9 @@ static void DeleteDropDownList(DropDownList *list)
 
 static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_END, DDM_ITEMS), SetMinimalSize(1, 1), SetScrollbar(DDM_SCROLL), EndContainer(),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, DDM_SHOW_SCROLL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_END, DDM_SCROLL),
+		NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetMinimalSize(1, 1), SetScrollbar(WID_DM_SCROLL), EndContainer(),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_DM_SHOW_SCROLL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_END, WID_DM_SCROLL),
 		EndContainer(),
 	EndContainer(),
 };
@@ -130,17 +130,17 @@ struct DropdownWindow : Window {
 
 		this->CreateNestedTree(&_dropdown_desc);
 
-		this->vscroll = this->GetScrollbar(DDM_SCROLL);
+		this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
 
 		uint items_width = size.width - (scroll ? NWidgetScrollbar::GetVerticalDimension().width : 0);
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(DDM_ITEMS);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_DM_ITEMS);
 		nwi->SetMinimalSize(items_width, size.height + 4);
 		nwi->colour = wi_colour;
 
-		nwi = this->GetWidget<NWidgetCore>(DDM_SCROLL);
+		nwi = this->GetWidget<NWidgetCore>(WID_DM_SCROLL);
 		nwi->colour = wi_colour;
 
-		this->GetWidget<NWidgetStacked>(DDM_SHOW_SCROLL)->SetDisplayedPlane(scroll ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(scroll ? 0 : SZSP_NONE);
 
 		this->FinishInitNested(&_dropdown_desc, 0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -200,7 +200,7 @@ struct DropdownWindow : Window {
 	{
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
-		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(DDM_ITEMS);
+		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_DM_ITEMS);
 		int y     = _cursor.pos.y - this->top - nwi->pos_y - 2;
 		int width = nwi->current_x - 4;
 		int pos   = this->vscroll->GetPosition();
@@ -228,7 +228,7 @@ struct DropdownWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != DDM_ITEMS) return;
+		if (widget != WID_DM_ITEMS) return;
 
 		TextColour colour = (TextColour)this->GetWidget<NWidgetCore>(widget)->colour;
 
@@ -257,7 +257,7 @@ struct DropdownWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget != DDM_ITEMS) return;
+		if (widget != WID_DM_ITEMS) return;
 		int item;
 		if (this->GetDropDownItem(item)) {
 			this->click_delay = 4;
