@@ -13,32 +13,32 @@
 #define WIDGETS_ORDER_WIDGET_H
 
 /** Widgets of the WC_VEHICLE_ORDERS. */
-enum OrderWindowWidgets {
-	ORDER_WIDGET_CAPTION,
-	ORDER_WIDGET_TIMETABLE_VIEW,
-	ORDER_WIDGET_ORDER_LIST,
-	ORDER_WIDGET_SCROLLBAR,
-	ORDER_WIDGET_SKIP,
-	ORDER_WIDGET_DELETE,
-	ORDER_WIDGET_STOP_SHARING,
-	ORDER_WIDGET_NON_STOP,
-	ORDER_WIDGET_GOTO,
-	ORDER_WIDGET_FULL_LOAD,
-	ORDER_WIDGET_UNLOAD,
-	ORDER_WIDGET_REFIT,
-	ORDER_WIDGET_SERVICE,
-	ORDER_WIDGET_EMPTY,
-	ORDER_WIDGET_REFIT_DROPDOWN,
-	ORDER_WIDGET_COND_VARIABLE,
-	ORDER_WIDGET_COND_COMPARATOR,
-	ORDER_WIDGET_COND_VALUE,
-	ORDER_WIDGET_SEL_TOP_LEFT,              ///< #NWID_SELECTION widget for left part of the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_MIDDLE,            ///< #NWID_SELECTION widget for middle part of the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_RIGHT,             ///< #NWID_SELECTION widget for right part of the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_ROW_GROUNDVEHICLE, ///< #NWID_SELECTION widget for the top row of the 'your train' order window.
-	ORDER_WIDGET_SEL_TOP_ROW,               ///< #NWID_SELECTION widget for the top row of the 'your non-trains' order window.
-	ORDER_WIDGET_SEL_BOTTOM_MIDDLE,         ///< #NWID_SELECTION widget for the middle part of the bottom row of the 'your train' order window.
-	ORDER_WIDGET_SHARED_ORDER_LIST,
+enum OrderWidgets {
+	WID_O_CAPTION,                   ///< Window caption.
+	WID_O_TIMETABLE_VIEW,            ///< Toggle timetable view.
+	WID_O_ORDER_LIST,                ///< Order list panel.
+	WID_O_SCROLLBAR,                 ///< Order list scrollbar.
+	WID_O_SKIP,                      ///< Skip current order.
+	WID_O_DELETE,                    ///< Delete selected order.
+	WID_O_STOP_SHARING,              ///< Stop sharing orders.
+	WID_O_NON_STOP,                  ///< Goto non-stop to destination.
+	WID_O_GOTO,                      ///< Goto destination.
+	WID_O_FULL_LOAD,                 ///< Select full load.
+	WID_O_UNLOAD,                    ///< Select unload.
+	WID_O_REFIT,                     ///< Select refit.
+	WID_O_SERVICE,                   ///< Select service (at depot).
+	WID_O_EMPTY,                     ///< Placeholder for refit dropdown when not owner.
+	WID_O_REFIT_DROPDOWN,            ///< Open refit options.
+	WID_O_COND_VARIABLE,             ///< Choose condition variable.
+	WID_O_COND_COMPARATOR,           ///< Choose condition type.
+	WID_O_COND_VALUE,                ///< Choose condition value.
+	WID_O_SEL_TOP_LEFT,              ///< #NWID_SELECTION widget for left part of the top row of the 'your train' order window.
+	WID_O_SEL_TOP_MIDDLE,            ///< #NWID_SELECTION widget for middle part of the top row of the 'your train' order window.
+	WID_O_SEL_TOP_RIGHT,             ///< #NWID_SELECTION widget for right part of the top row of the 'your train' order window.
+	WID_O_SEL_TOP_ROW_GROUNDVEHICLE, ///< #NWID_SELECTION widget for the top row of the 'your train' order window.
+	WID_O_SEL_TOP_ROW,               ///< #NWID_SELECTION widget for the top row of the 'your non-trains' order window.
+	WID_O_SEL_BOTTOM_MIDDLE,         ///< #NWID_SELECTION widget for the middle part of the bottom row of the 'your train' order window.
+	WID_O_SHARED_ORDER_LIST,         ///< Open list of shared vehicles.
 };
 
 #endif /* WIDGETS_ORDER_WIDGET_H */
