@@ -14,37 +14,36 @@
 
 /** Widgets of the WC_BUILD_INDUSTRY. */
 enum DynamicPlaceIndustriesWidgets {
-	DPIW_MATRIX_WIDGET,
-	DPIW_SCROLLBAR,
-	DPIW_INFOPANEL,
-	DPIW_DISPLAY_WIDGET,
-	DPIW_FUND_WIDGET,
+	WID_DPI_MATRIX_WIDGET,  ///< Matrix of the industries.
+	WID_DPI_SCROLLBAR,      ///< Scrollbar of the matrix.
+	WID_DPI_INFOPANEL,      ///< Info panel about the industry.
+	WID_DPI_DISPLAY_WIDGET, ///< Display chain button.
+	WID_DPI_FUND_WIDGET,    ///< Fund button.
 };
 
 /** Widgets of the WC_INDUSTRY_VIEW. */
 enum IndustryViewWidgets {
-	IVW_CAPTION,
-	IVW_VIEWPORT,
-	IVW_INFO,
-	IVW_GOTO,
-	IVW_DISPLAY,
+	WID_IV_CAPTION,  ///< Caption of the window.
+	WID_IV_VIEWPORT, ///< Viewport of the industry.
+	WID_IV_INFO,     ///< Info of the industry.
+	WID_IV_GOTO,     ///< Goto button.
+	WID_IV_DISPLAY,  ///< Display chain button.
 };
 
 /** Widgets of the WC_INDUSTRY_DIRECTORY. */
 enum IndustryDirectoryWidgets {
-	IDW_DROPDOWN_ORDER,
-	IDW_DROPDOWN_CRITERIA,
-	IDW_INDUSTRY_LIST,
-	IDW_SCROLLBAR,
+	WID_ID_DROPDOWN_ORDER,    ///< Dropdown for the order of the sort.
+	WID_ID_DROPDOWN_CRITERIA, ///< Dropdown for the criteria of the sort.
+	WID_ID_INDUSTRY_LIST,     ///< Industry list.
+	WID_ID_SCROLLBAR,         ///< Scrollbar of the list.
 };
 
 /** Widgets of the WC_INDUSTRY_CARGOES */
 enum IndustryCargoesWidgets {
-	ICW_CAPTION,
-	ICW_NOTIFY,
-	ICW_PANEL,
-	ICW_SCROLLBAR,
+	WID_IC_CAPTION,   ///< Caption of the window.
+	WID_IC_NOTIFY,    ///< Row of buttons at the bottom.
+	WID_IC_PANEL,     ///< Panel that shows the chain.
+	WID_IC_SCROLLBAR, ///< Scrollbar of the panel.
 };
-
 
 #endif /* WIDGETS_INDUSTRY_WIDGET_H */

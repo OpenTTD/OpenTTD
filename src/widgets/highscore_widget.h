@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_HIGHSCORE / WC_ENDSCREEN. */
 enum HighscoreWidgets {
-	HSW_BACKGROUND,
+	WID_H_BACKGROUND, ///< Background of the window.
 };
 
 #endif /* WIDGETS_HIGHSCORE_WIDGET_H */
