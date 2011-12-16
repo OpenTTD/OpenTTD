@@ -14,24 +14,24 @@
 
 /** Widgets of the WC_TRAINS_LIST / WC_ROADVEH_LIST / WC_SHIPS_LIST / WC_AIRCRAFT_LIST. */
 enum GroupListWidgets {
-	GRP_WIDGET_CAPTION,
-	GRP_WIDGET_SORT_BY_ORDER,
-	GRP_WIDGET_SORT_BY_DROPDOWN,
-	GRP_WIDGET_LIST_VEHICLE,
-	GRP_WIDGET_LIST_VEHICLE_SCROLLBAR,
-	GRP_WIDGET_AVAILABLE_VEHICLES,
-	GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
-	GRP_WIDGET_STOP_ALL,
-	GRP_WIDGET_START_ALL,
+	WID_GL_CAPTION,                  ///< Caption of the window.
+	WID_GL_SORT_BY_ORDER,            ///< Sort order.
+	WID_GL_SORT_BY_DROPDOWN,         ///< Sort by dropdown list.
+	WID_GL_LIST_VEHICLE,             ///< List of the vehicles.
+	WID_GL_LIST_VEHICLE_SCROLLBAR,   ///< Scrollbar for the list.
+	WID_GL_AVAILABLE_VEHICLES,       ///< Available vehicles.
+	WID_GL_MANAGE_VEHICLES_DROPDOWN, ///< Manage vehicles dropdown list.
+	WID_GL_STOP_ALL,                 ///< Stop all button.
+	WID_GL_START_ALL,                ///< Start all button.
 
-	GRP_WIDGET_ALL_VEHICLES,
-	GRP_WIDGET_DEFAULT_VEHICLES,
-	GRP_WIDGET_LIST_GROUP,
-	GRP_WIDGET_LIST_GROUP_SCROLLBAR,
-	GRP_WIDGET_CREATE_GROUP,
-	GRP_WIDGET_DELETE_GROUP,
-	GRP_WIDGET_RENAME_GROUP,
-	GRP_WIDGET_REPLACE_PROTECTION,
+	WID_GL_ALL_VEHICLES,             ///< All vehicles entry.
+	WID_GL_DEFAULT_VEHICLES,         ///< Default vehicles entry.
+	WID_GL_LIST_GROUP,               ///< List of the groups.
+	WID_GL_LIST_GROUP_SCROLLBAR,     ///< Scrollbar for the list.
+	WID_GL_CREATE_GROUP,             ///< Create group button.
+	WID_GL_DELETE_GROUP,             ///< Delete group button.
+	WID_GL_RENAME_GROUP,             ///< Rename group button.
+	WID_GL_REPLACE_PROTECTION,       ///< Replace protection button.
 };
 
 #endif /* WIDGETS_GROUP_WIDGET_H */
