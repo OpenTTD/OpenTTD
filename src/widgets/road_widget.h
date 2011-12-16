@@ -15,42 +15,42 @@
 /** Widgets of the WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR (WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR is also used in others). */
 enum RoadToolbarWidgets {
 	/* Name starts with RO instead of R, because of collision with RailToolbarWidgets */
-	ROTW_ROAD_X,
-	ROTW_ROAD_Y,
-	ROTW_AUTOROAD,
-	ROTW_DEMOLISH,
-	ROTW_DEPOT,
-	ROTW_BUS_STATION,
-	ROTW_TRUCK_STATION,
-	ROTW_ONE_WAY,
-	ROTW_BUILD_BRIDGE,
-	ROTW_BUILD_TUNNEL,
-	ROTW_REMOVE,
+	WID_ROT_ROAD_X,         ///< Build road in x-direction.
+	WID_ROT_ROAD_Y,         ///< Build road in y-direction.
+	WID_ROT_AUTOROAD,       ///< Autorail.
+	WID_ROT_DEMOLISH,       ///< Demolish.
+	WID_ROT_DEPOT,          ///< Build depot.
+	WID_ROT_BUS_STATION,    ///< Build bus station.
+	WID_ROT_TRUCK_STATION,  ///< Build truck station.
+	WID_ROT_ONE_WAY,        ///< Build one-way road.
+	WID_ROT_BUILD_BRIDGE,   ///< Build bridge.
+	WID_ROT_BUILD_TUNNEL,   ///< Build tunnel.
+	WID_ROT_REMOVE,         ///< Remove road.
 };
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
 enum BuildRoadDepotWidgets {
 	/* Name starts with BRO instead of BR, because of collision with BuildRailDepotWidgets */
-	BRODW_CAPTION,
-	BRODW_DEPOT_NE,
-	BRODW_DEPOT_SE,
-	BRODW_DEPOT_SW,
-	BRODW_DEPOT_NW,
+	WID_BROD_CAPTION,   ///< Window caption.
+	WID_BROD_DEPOT_NE,  ///< Depot with NE entry.
+	WID_BROD_DEPOT_SE,  ///< Depot with SE entry.
+	WID_BROD_DEPOT_SW,  ///< Depot with SW entry.
+	WID_BROD_DEPOT_NW,  ///< Depot with NW entry.
 };
 
 /** Widgets of the WC_BUS_STATION / WC_TRUCK_STATION. */
 enum BuildRoadStationWidgets {
-	BRSW_CAPTION,
-	BRSW_BACKGROUND,
-	BRSW_STATION_NE,
-	BRSW_STATION_SE,
-	BRSW_STATION_SW,
-	BRSW_STATION_NW,
-	BRSW_STATION_X,
-	BRSW_STATION_Y,
-	BRSW_LT_OFF,
-	BRSW_LT_ON,
-	BRSW_INFO,
+	WID_BROS_CAPTION,       ///< Window caption.
+	WID_BROS_BACKGROUND,    ///< Window background.
+	WID_BROS_STATION_NE,    ///< Terminal station with NE entry.
+	WID_BROS_STATION_SE,    ///< Terminal station with SE entry.
+	WID_BROS_STATION_SW,    ///< Terminal station with SW entry.
+	WID_BROS_STATION_NW,    ///< Terminal station with NW entry.
+	WID_BROS_STATION_X,     ///< Drive-through station in x-direction.
+	WID_BROS_STATION_Y,     ///< Drive-through station in y-direction.
+	WID_BROS_LT_OFF,        ///< Turn off area highlight.
+	WID_BROS_LT_ON,         ///< Turn on area highlight.
+	WID_BROS_INFO,          ///< Station acceptance info.
 };
 
 #endif /* WIDGETS_ROAD_WIDGET_H */
