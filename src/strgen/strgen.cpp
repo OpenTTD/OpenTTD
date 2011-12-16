@@ -45,7 +45,6 @@ struct Case {
 	Case *next;
 };
 
-static bool _masterlang;                     ///< Whether we are loading the master language
 static bool _translated;                     ///< Whether the current language is not the master language
 static bool _translation;                    ///< Is the current file actually a translation or not
 static const char *_file = "(unknown file)"; ///< The filename of the input, so we can refer to it in errors/warnings
@@ -1112,7 +1111,7 @@ static void WriteLangfile(const char *filename)
 				cmdp = ls->english;
 			}
 
-			_translated = _masterlang || (cmdp != ls->english);
+			_translated = cmdp != ls->english;
 
 			if (casep != NULL) {
 				const Case *c;
@@ -1323,7 +1322,6 @@ int CDECL main(int argc, char *argv[])
 		mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
 
 		/* parse master file */
-		_masterlang = true;
 		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
 		if (_errors != 0) return 1;
@@ -1338,7 +1336,6 @@ int CDECL main(int argc, char *argv[])
 		mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
 
 		/* parse master file and check if target file is correct */
-		_masterlang = false;
 		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
 		ParseFile(replace_pathsep(mgo.argv[0]), false); // target file
