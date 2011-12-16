@@ -314,7 +314,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 		this->InitNested(desc, type);
 
-		this->SetFocusedWidget(NWCW_TEXTBOX);
+		this->SetFocusedWidget(WID_NC_TEXTBOX);
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
 		_chat_tab_completion_active = false;
 
@@ -468,7 +468,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		this->DrawEditBox(NWCW_TEXTBOX);
+		this->DrawEditBox(WID_NC_TEXTBOX);
 	}
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
@@ -479,7 +479,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != NWCW_DESTINATION) return;
+		if (widget != WID_NC_DESTINATION) return;
 
 		if (this->dtype == DESTTYPE_CLIENT) {
 			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
@@ -492,7 +492,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != NWCW_DESTINATION) return;
+		if (widget != WID_NC_DESTINATION) return;
 
 		if (this->dtype == DESTTYPE_CLIENT) {
 			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
@@ -504,15 +504,15 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	{
 		switch (widget) {
 			/* Send */
-			case NWCW_SENDBUTTON: SendChat(this->text.buf, this->dtype, this->dest);
+			case WID_NC_SENDBUTTON: SendChat(this->text.buf, this->dtype, this->dest);
 				/* FALL THROUGH */
-			case NWCW_CLOSE: /* Cancel */ delete this; break;
+			case WID_NC_CLOSE: /* Cancel */ delete this; break;
 		}
 	}
 
 	virtual void OnMouseLoop()
 	{
-		this->HandleEditBox(NWCW_TEXTBOX);
+		this->HandleEditBox(WID_NC_TEXTBOX);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -523,7 +523,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			state = ES_HANDLED;
 		} else {
 			_chat_tab_completion_active = false;
-			switch (this->HandleEditBoxKey(NWCW_TEXTBOX, key, keycode, state)) {
+			switch (this->HandleEditBoxKey(WID_NC_TEXTBOX, key, keycode, state)) {
 				default: NOT_REACHED();
 				case HEBR_EDITING: {
 					Window *osk = FindWindowById(WC_OSK, 0);
@@ -542,7 +542,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 	virtual void OnOpenOSKWindow(int wid)
 	{
-		ShowOnScreenKeyboard(this, wid, NWCW_CLOSE, NWCW_SENDBUTTON);
+		ShowOnScreenKeyboard(this, wid, WID_NC_CLOSE, WID_NC_SENDBUTTON);
 	}
 
 	/**
@@ -559,13 +559,13 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 /** The widgets of the chat window. */
 static const NWidgetPart _nested_chat_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY, NWCW_CLOSE),
-		NWidget(WWT_PANEL, COLOUR_GREY, NWCW_BACKGROUND),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WID_NC_CLOSE),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXT, COLOUR_GREY, NWCW_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NULL, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, NWCW_TEXTBOX), SetMinimalSize(100, 12), SetPadding(1, 0, 1, 0), SetResize(1, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NC_TEXTBOX), SetMinimalSize(100, 12), SetPadding(1, 0, 1, 0), SetResize(1, 0),
 																	SetDataTip(STR_NETWORK_CHAT_OSKTITLE, STR_NULL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NWCW_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_CHAT_SEND, STR_NULL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NC_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_CHAT_SEND, STR_NULL),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),

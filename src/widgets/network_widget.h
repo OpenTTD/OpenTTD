@@ -12,117 +12,116 @@
 #ifndef WIDGETS_NETWORK_WIDGET_H
 #define WIDGETS_NETWORK_WIDGET_H
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWindowWidgets, NetworkStartServerWidgets, and NetworkLobbyWindowWidgets). */
-enum NetworkGameWindowWidgets {
-	NGWW_MAIN,          ///< Main panel
+/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWidgets, NetworkStartServerWidgets, and NetworkLobbyWidgets). */
+enum NetworkGameWidgets {
+	WID_NG_MAIN,               ///< Main panel.
 
-	NGWW_CONNECTION,    ///< Label in front of connection droplist
-	NGWW_CONN_BTN,      ///< 'Connection' droplist button
-	NGWW_CLIENT_LABEL,  ///< Label in front of client name edit box
-	NGWW_CLIENT,        ///< Panel with editbox to set client name
+	WID_NG_CONNECTION,         ///< Label in front of connection droplist.
+	WID_NG_CONN_BTN,           ///< 'Connection' droplist button.
+	WID_NG_CLIENT_LABEL,       ///< Label in front of client name edit box.
+	WID_NG_CLIENT,             ///< Panel with editbox to set client name.
 
-	NGWW_HEADER,        ///< Header container of the matrix
-	NGWW_NAME,          ///< 'Name' button
-	NGWW_CLIENTS,       ///< 'Clients' button
-	NGWW_MAPSIZE,       ///< 'Map size' button
-	NGWW_DATE,          ///< 'Date' button
-	NGWW_YEARS,         ///< 'Years' button
-	NGWW_INFO,          ///< Third button in the game list panel
+	WID_NG_HEADER,             ///< Header container of the matrix.
+	WID_NG_NAME,               ///< 'Name' button.
+	WID_NG_CLIENTS,            ///< 'Clients' button.
+	WID_NG_MAPSIZE,            ///< 'Map size' button.
+	WID_NG_DATE,               ///< 'Date' button.
+	WID_NG_YEARS,              ///< 'Years' button.
+	WID_NG_INFO,               ///< Third button in the game list panel.
 
-	NGWW_MATRIX,        ///< Panel with list of games
-	NGWW_SCROLLBAR,     ///< Scrollbar of matrix
+	WID_NG_MATRIX,             ///< Panel with list of games.
+	WID_NG_SCROLLBAR,          ///< Scrollbar of matrix.
 
-	NGWW_LASTJOINED_LABEL, ///< Label "Last joined server:"
-	NGWW_LASTJOINED,    ///< Info about the last joined server
-	NGWW_LASTJOINED_SPACER, ///< Spacer after last joined server panel
+	WID_NG_LASTJOINED_LABEL,   ///< Label "Last joined server:".
+	WID_NG_LASTJOINED,         ///< Info about the last joined server.
+	WID_NG_LASTJOINED_SPACER,  ///< Spacer after last joined server panel.
 
-	NGWW_DETAILS,       ///< Panel with game details
-	NGWW_DETAILS_SPACER, ///< Spacer for game actual details
-	NGWW_JOIN,          ///< 'Join game' button
-	NGWW_REFRESH,       ///< 'Refresh server' button
-	NGWW_NEWGRF,        ///< 'NewGRF Settings' button
-	NGWW_NEWGRF_SEL,    ///< Selection 'widget' to hide the NewGRF settings
-	NGWW_NEWGRF_MISSING,     ///< 'Find missing NewGRF online' button
-	NGWW_NEWGRF_MISSING_SEL, ///< Selection widget for the above button
+	WID_NG_DETAILS,            ///< Panel with game details.
+	WID_NG_DETAILS_SPACER,     ///< Spacer for game actual details.
+	WID_NG_JOIN,               ///< 'Join game' button.
+	WID_NG_REFRESH,            ///< 'Refresh server' button.
+	WID_NG_NEWGRF,             ///< 'NewGRF Settings' button.
+	WID_NG_NEWGRF_SEL,         ///< Selection 'widget' to hide the NewGRF settings.
+	WID_NG_NEWGRF_MISSING,     ///< 'Find missing NewGRF online' button.
+	WID_NG_NEWGRF_MISSING_SEL, ///< Selection widget for the above button.
 
-	NGWW_FIND,          ///< 'Find server' button
-	NGWW_ADD,           ///< 'Add server' button
-	NGWW_START,         ///< 'Start server' button
-	NGWW_CANCEL,        ///< 'Cancel' button
+	WID_NG_FIND,               ///< 'Find server' button.
+	WID_NG_ADD,                ///< 'Add server' button.
+	WID_NG_START,              ///< 'Start server' button.
+	WID_NG_CANCEL,             ///< 'Cancel' button.
 };
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWindowWidgets, NetworkGameWindowWidgets, and NetworkLobbyWindowWidgets). */
+/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWidgets, NetworkGameWidgets, and NetworkLobbyWidgets). */
 enum NetworkStartServerWidgets {
-	NSSW_BACKGROUND,
-	NSSW_GAMENAME_LABEL,
-	NSSW_GAMENAME,          ///< Background for editbox to set game name
-	NSSW_SETPWD,            ///< 'Set password' button
-	NSSW_CONNTYPE_LABEL,
-	NSSW_CONNTYPE_BTN,      ///< 'Connection type' droplist button
-	NSSW_CLIENTS_LABEL,
-	NSSW_CLIENTS_BTND,      ///< 'Max clients' downarrow
-	NSSW_CLIENTS_TXT,       ///< 'Max clients' text
-	NSSW_CLIENTS_BTNU,      ///< 'Max clients' uparrow
-	NSSW_COMPANIES_LABEL,
-	NSSW_COMPANIES_BTND,    ///< 'Max companies' downarrow
-	NSSW_COMPANIES_TXT,     ///< 'Max companies' text
-	NSSW_COMPANIES_BTNU,    ///< 'Max companies' uparrow
-	NSSW_SPECTATORS_LABEL,
-	NSSW_SPECTATORS_BTND,   ///< 'Max spectators' downarrow
-	NSSW_SPECTATORS_TXT,    ///< 'Max spectators' text
-	NSSW_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow
+	WID_NSS_BACKGROUND,        ///< Background of the window.
+	WID_NSS_GAMENAME_LABEL,    ///< Label for the game name.
+	WID_NSS_GAMENAME,          ///< Background for editbox to set game name.
+	WID_NSS_SETPWD,            ///< 'Set password' button.
+	WID_NSS_CONNTYPE_LABEL,    ///< Label for 'connection type'.
+	WID_NSS_CONNTYPE_BTN,      ///< 'Connection type' droplist button.
+	WID_NSS_CLIENTS_LABEL,     ///< Label for 'max clients'.
+	WID_NSS_CLIENTS_BTND,      ///< 'Max clients' downarrow.
+	WID_NSS_CLIENTS_TXT,       ///< 'Max clients' text.
+	WID_NSS_CLIENTS_BTNU,      ///< 'Max clients' uparrow.
+	WID_NSS_COMPANIES_LABEL,   ///< Label for 'max companies'.
+	WID_NSS_COMPANIES_BTND,    ///< 'Max companies' downarrow.
+	WID_NSS_COMPANIES_TXT,     ///< 'Max companies' text.
+	WID_NSS_COMPANIES_BTNU,    ///< 'Max companies' uparrow.
+	WID_NSS_SPECTATORS_LABEL,  ///< Label for 'max spectators'.
+	WID_NSS_SPECTATORS_BTND,   ///< 'Max spectators' downarrow.
+	WID_NSS_SPECTATORS_TXT,    ///< 'Max spectators' text.
+	WID_NSS_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow.
 
-	NSSW_LANGUAGE_LABEL,
-	NSSW_LANGUAGE_BTN,      ///< 'Language spoken' droplist button
+	WID_NSS_LANGUAGE_LABEL,    ///< Label for 'language spoken'.
+	WID_NSS_LANGUAGE_BTN,      ///< 'Language spoken' droplist button.
 
-	NSSW_GENERATE_GAME,     ///< New game button
-	NSSW_LOAD_GAME,         ///< Load game button
-	NSSW_PLAY_SCENARIO,     ///< Play scenario button
-	NSSW_PLAY_HEIGHTMAP,    ///< Play heightmap button
+	WID_NSS_GENERATE_GAME,     ///< New game button.
+	WID_NSS_LOAD_GAME,         ///< Load game button.
+	WID_NSS_PLAY_SCENARIO,     ///< Play scenario button.
+	WID_NSS_PLAY_HEIGHTMAP,    ///< Play heightmap button.
 
-	NSSW_CANCEL,            ///< 'Cancel' button
+	WID_NSS_CANCEL,            ///< 'Cancel' button.
 };
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWindowWidgets, NetworkGameWindowWidgets, and NetworkStartServerWidgets). */
-enum NetworkLobbyWindowWidgets {
-	NLWW_BACKGROUND, ///< Background panel
-	NLWW_TEXT,       ///< Heading text
-	NLWW_HEADER,     ///< Header above list of companies
-	NLWW_MATRIX,     ///< List of companies
-	NLWW_SCROLLBAR,  ///< Scroll bar
-	NLWW_DETAILS,    ///< Company details
-	NLWW_JOIN,       ///< 'Join company' button
-	NLWW_NEW,        ///< 'New company' button
-	NLWW_SPECTATE,   ///< 'Spectate game' button
-	NLWW_REFRESH,    ///< 'Refresh server' button
-	NLWW_CANCEL,     ///< 'Cancel' button
+/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWidgets, NetworkGameWidgets, and NetworkStartServerWidgets). */
+enum NetworkLobbyWidgets {
+	WID_NL_BACKGROUND, ///< Background of the window.
+	WID_NL_TEXT,       ///< Heading text.
+	WID_NL_HEADER,     ///< Header above list of companies.
+	WID_NL_MATRIX,     ///< List of companies.
+	WID_NL_SCROLLBAR,  ///< Scroll bar.
+	WID_NL_DETAILS,    ///< Company details.
+	WID_NL_JOIN,       ///< 'Join company' button.
+	WID_NL_NEW,        ///< 'New company' button.
+	WID_NL_SPECTATE,   ///< 'Spectate game' button.
+	WID_NL_REFRESH,    ///< 'Refresh server' button.
+	WID_NL_CANCEL,     ///< 'Cancel' button.
 };
 
 /** Widgets of the WC_CLIENT_LIST. */
 enum ClientListWidgets {
-	CLW_PANEL,
+	WID_CL_PANEL, ///< Panel of the window.
 };
 
 /** Widgets of the WC_CLIENT_LIST_POPUP. */
 enum ClientListPopupWidgets {
-	CLPW_PANEL,
+	WID_CLP_PANEL, ///< Panel of the window.
 };
 
-/** Widgets of the WC_NETWORK_STATUS_WINDOW (WC_NETWORK_STATUS_WINDOW is also used in NetworkContentDownloadStatusWindowWidgets). */
+/** Widgets of the WC_NETWORK_STATUS_WINDOW (WC_NETWORK_STATUS_WINDOW is also used in NetworkContentDownloadStatusWidgets). */
 enum NetworkJoinStatusWidgets {
-	NJSW_BACKGROUND, ///< Background
-	NJSW_CANCELOK,   ///< Cancel/OK button
+	WID_NJS_BACKGROUND, ///< Background of the window.
+	WID_NJS_CANCELOK,   ///< Cancel / OK button.
 };
 
 /** Widgets of the WC_COMPANY_PASSWORD_WINDOW. */
-enum NetworkCompanyPasswordWindowWidgets {
-	NCPWW_BACKGROUND,               ///< The background of the interface
-	NCPWW_LABEL,                    ///< Label in front of the password field
-	NCPWW_PASSWORD,                 ///< Input field for the password
-	NCPWW_SAVE_AS_DEFAULT_PASSWORD, ///< Toggle 'button' for saving the current password as default password
-	NCPWW_CANCEL,                   ///< Close the window without changing anything
-	NCPWW_OK,                       ///< Safe the password etc.
+enum NetworkCompanyPasswordWidgets {
+	WID_NCP_BACKGROUND,               ///< Background of the window.
+	WID_NCP_LABEL,                    ///< Label in front of the password field.
+	WID_NCP_PASSWORD,                 ///< Input field for the password.
+	WID_NCP_SAVE_AS_DEFAULT_PASSWORD, ///< Toggle 'button' for saving the current password as default password.
+	WID_NCP_CANCEL,                   ///< Close the window without changing anything.
+	WID_NCP_OK,                       ///< Safe the password etc.
 };
-
 
 #endif /* WIDGETS_NETWORK_WIDGET_H */

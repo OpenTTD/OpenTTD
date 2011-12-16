@@ -293,16 +293,16 @@ struct MusicTrackSelectionWindow : public Window {
 	MusicTrackSelectionWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
 		this->InitNested(desc, number);
-		this->LowerWidget(MTSW_LIST_LEFT);
-		this->LowerWidget(MTSW_LIST_RIGHT);
-		this->SetWidgetDisabledState(MTSW_CLEAR, _settings_client.music.playlist <= 3);
-		this->LowerWidget(MTSW_ALL + _settings_client.music.playlist);
+		this->LowerWidget(WID_MTS_LIST_LEFT);
+		this->LowerWidget(WID_MTS_LIST_RIGHT);
+		this->SetWidgetDisabledState(WID_MTS_CLEAR, _settings_client.music.playlist <= 3);
+		this->LowerWidget(WID_MTS_ALL + _settings_client.music.playlist);
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case MTSW_PLAYLIST:
+			case WID_MTS_PLAYLIST:
 				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
 				break;
 		}
@@ -317,16 +317,16 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		if (!gui_scope) return;
 		for (int i = 0; i < 6; i++) {
-			this->SetWidgetLoweredState(MTSW_ALL + i, i == _settings_client.music.playlist);
+			this->SetWidgetLoweredState(WID_MTS_ALL + i, i == _settings_client.music.playlist);
 		}
-		this->SetWidgetDisabledState(MTSW_CLEAR, _settings_client.music.playlist <= 3);
+		this->SetWidgetDisabledState(WID_MTS_CLEAR, _settings_client.music.playlist <= 3);
 		this->SetDirty();
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case MTSW_PLAYLIST: {
+			case WID_MTS_PLAYLIST: {
 				Dimension d = {0, 0};
 
 				for (int i = 0; i < 6; i++) {
@@ -339,7 +339,7 @@ struct MusicTrackSelectionWindow : public Window {
 				break;
 			}
 
-			case MTSW_LIST_LEFT: case MTSW_LIST_RIGHT: {
+			case WID_MTS_LIST_LEFT: case WID_MTS_LIST_RIGHT: {
 				Dimension d = {0, 0};
 
 				for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
@@ -364,7 +364,7 @@ struct MusicTrackSelectionWindow : public Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case MTSW_LIST_LEFT: {
+			case WID_MTS_LIST_LEFT: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				int y = r.top + WD_FRAMERECT_TOP;
@@ -381,7 +381,7 @@ struct MusicTrackSelectionWindow : public Window {
 				break;
 			}
 
-			case MTSW_LIST_RIGHT: {
+			case WID_MTS_LIST_RIGHT: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
 
 				int y = r.top + WD_FRAMERECT_TOP;
@@ -401,7 +401,7 @@ struct MusicTrackSelectionWindow : public Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case MTSW_LIST_LEFT: { // add to playlist
+			case WID_MTS_LIST_LEFT: { // add to playlist
 				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
 
 				if (_settings_client.music.playlist < 4) return;
@@ -426,7 +426,7 @@ struct MusicTrackSelectionWindow : public Window {
 				break;
 			}
 
-			case MTSW_LIST_RIGHT: { // remove from playlist
+			case WID_MTS_LIST_RIGHT: { // remove from playlist
 				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
 
 				if (_settings_client.music.playlist < 4) return;
@@ -442,16 +442,16 @@ struct MusicTrackSelectionWindow : public Window {
 				break;
 			}
 
-			case MTSW_CLEAR: // clear
+			case WID_MTS_CLEAR: // clear
 				for (uint i = 0; _playlists[_settings_client.music.playlist][i] != 0; i++) _playlists[_settings_client.music.playlist][i] = 0;
 				this->SetDirty();
 				StopMusic();
 				SelectSongToPlay();
 				break;
 
-			case MTSW_ALL: case MTSW_OLD: case MTSW_NEW:
-			case MTSW_EZY: case MTSW_CUSTOM1: case MTSW_CUSTOM2: // set playlist
-				SelectPlaylist(widget - MTSW_ALL);
+			case WID_MTS_ALL: case WID_MTS_OLD: case WID_MTS_NEW:
+			case WID_MTS_EZY: case WID_MTS_CUSTOM1: case WID_MTS_CUSTOM2: // set playlist
+				SelectPlaylist(widget - WID_MTS_ALL);
 				StopMusic();
 				SelectSongToPlay();
 				break;
@@ -469,26 +469,26 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 			/* Left panel. */
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_PLAYLIST_TRACK_INDEX, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_LEFT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_LEFT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
 			/* Middle buttons. */
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(60, 30), // Space above the first button from the title bar.
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, MTSW_ALL), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_ALL, STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, MTSW_OLD), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_OLD_STYLE, STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, MTSW_NEW), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_NEW_STYLE, STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, MTSW_EZY), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_EZY_STREET, STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, MTSW_CUSTOM1), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_1, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, MTSW_CUSTOM2), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_2, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_MTS_ALL), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_ALL, STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_MTS_OLD), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_OLD_STYLE, STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_MTS_NEW), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_NEW_STYLE, STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_MTS_EZY), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_EZY_STREET, STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_MTS_CUSTOM1), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_1, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_MTS_CUSTOM2), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_2, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 16), // Space above 'clear' button
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, MTSW_CLEAR), SetFill(1, 0), SetDataTip(STR_PLAYLIST_CLEAR, STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_MTS_CLEAR), SetFill(1, 0), SetDataTip(STR_PLAYLIST_CLEAR, STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1),
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 			/* Right panel. */
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, COLOUR_GREY, MTSW_PLAYLIST), SetDataTip(STR_PLAYLIST_PROGRAM, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_RIGHT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
+				NWidget(WWT_LABEL, COLOUR_GREY, WID_MTS_PLAYLIST), SetDataTip(STR_PLAYLIST_PROGRAM, STR_NULL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_RIGHT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
 		EndContainer(),
@@ -513,17 +513,17 @@ struct MusicWindow : public Window {
 	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
 		this->InitNested(desc, number);
-		this->LowerWidget(_settings_client.music.playlist + MW_ALL);
-		this->SetWidgetLoweredState(MW_SHUFFLE, _settings_client.music.shuffle);
+		this->LowerWidget(_settings_client.music.playlist + WID_M_ALL);
+		this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			/* Make sure that MW_SHUFFLE and MW_PROGRAMME have the same size.
-			 * This can't be done by using NC_EQUALSIZE as the MW_INFO is
+			/* Make sure that WID_M_SHUFFLE and WID_M_PROGRAMME have the same size.
+			 * This can't be done by using NC_EQUALSIZE as the WID_M_INFO is
 			 * between those widgets and of different size. */
-			case MW_SHUFFLE: case MW_PROGRAMME: {
+			case WID_M_SHUFFLE: case WID_M_PROGRAMME: {
 				Dimension d = maxdim(GetStringBoundingBox(STR_MUSIC_PROGRAM), GetStringBoundingBox(STR_MUSIC_SHUFFLE));
 				d.width += padding.width;
 				d.height += padding.height;
@@ -531,7 +531,7 @@ struct MusicWindow : public Window {
 				break;
 			}
 
-			case MW_TRACK_NR: {
+			case WID_M_TRACK_NR: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TRACK_NONE);
 				d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
@@ -539,7 +539,7 @@ struct MusicWindow : public Window {
 				break;
 			}
 
-			case MW_TRACK_NAME: {
+			case WID_M_TRACK_NAME: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TITLE_NONE);
 				for (uint i = 0; i < NUM_SONGS_AVAILABLE; i++) {
 					SetDParamStr(0, GetSongName(i));
@@ -553,16 +553,16 @@ struct MusicWindow : public Window {
 
 			/* Hack-ish: set the proper widget data; only needs to be done once
 			 * per (Re)Init as that's the only time the language changes. */
-			case MW_PREV: this->GetWidget<NWidgetCore>(MW_PREV)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV; break;
-			case MW_NEXT: this->GetWidget<NWidgetCore>(MW_NEXT)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT; break;
-			case MW_PLAY: this->GetWidget<NWidgetCore>(MW_PLAY)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC; break;
+			case WID_M_PREV: this->GetWidget<NWidgetCore>(WID_M_PREV)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV; break;
+			case WID_M_NEXT: this->GetWidget<NWidgetCore>(WID_M_NEXT)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT; break;
+			case WID_M_PLAY: this->GetWidget<NWidgetCore>(WID_M_PLAY)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC; break;
 		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case MW_TRACK_NR: {
+			case WID_M_TRACK_NR: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, PC_BLACK);
 				StringID str = STR_MUSIC_TRACK_NONE;
 				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
@@ -574,7 +574,7 @@ struct MusicWindow : public Window {
 				break;
 			}
 
-			case MW_TRACK_NAME: {
+			case WID_M_TRACK_NAME: {
 				GfxFillRect(r.left, r.top + 1, r.right - 1, r.bottom, PC_BLACK);
 				StringID str = STR_MUSIC_TITLE_NONE;
 				if (_song_is_active != 0 && _music_wnd_cursong != 0) {
@@ -585,9 +585,9 @@ struct MusicWindow : public Window {
 				break;
 			}
 
-			case MW_MUSIC_VOL: case MW_EFFECT_VOL: {
+			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: {
 				DrawFrameRect(r.left, r.top + 2, r.right, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
-				byte volume = (widget == MW_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
+				byte volume = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
 				int x = (volume * (r.right - r.left) / 127);
 				if (_current_text_dir == TD_RTL) {
 					x = r.right - x;
@@ -609,7 +609,7 @@ struct MusicWindow : public Window {
 	{
 		if (!gui_scope) return;
 		for (int i = 0; i < 6; i++) {
-			this->SetWidgetLoweredState(MW_ALL + i, i == _settings_client.music.playlist);
+			this->SetWidgetLoweredState(WID_M_ALL + i, i == _settings_client.music.playlist);
 		}
 		this->SetDirty();
 	}
@@ -617,36 +617,36 @@ struct MusicWindow : public Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case MW_PREV: // skip to prev
+			case WID_M_PREV: // skip to prev
 				if (!_song_is_active) return;
 				SkipToPrevSong();
 				this->SetDirty();
 				break;
 
-			case MW_NEXT: // skip to next
+			case WID_M_NEXT: // skip to next
 				if (!_song_is_active) return;
 				SkipToNextSong();
 				this->SetDirty();
 				break;
 
-			case MW_STOP: // stop playing
+			case WID_M_STOP: // stop playing
 				_settings_client.music.playing = false;
 				break;
 
-			case MW_PLAY: // start playing
+			case WID_M_PLAY: // start playing
 				_settings_client.music.playing = true;
 				break;
 
-			case MW_MUSIC_VOL: case MW_EFFECT_VOL: { // volume sliders
+			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
 				int x = pt.x - this->GetWidget<NWidgetBase>(widget)->pos_x;
 
-				byte *vol = (widget == MW_MUSIC_VOL) ? &_settings_client.music.music_vol : &_settings_client.music.effect_vol;
+				byte *vol = (widget == WID_M_MUSIC_VOL) ? &_settings_client.music.music_vol : &_settings_client.music.effect_vol;
 
 				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
 				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
 				if (new_vol != *vol) {
 					*vol = new_vol;
-					if (widget == MW_MUSIC_VOL) MusicVolumeChanged(new_vol);
+					if (widget == WID_M_MUSIC_VOL) MusicVolumeChanged(new_vol);
 					this->SetDirty();
 				}
 
@@ -654,22 +654,22 @@ struct MusicWindow : public Window {
 				break;
 			}
 
-			case MW_SHUFFLE: // toggle shuffle
+			case WID_M_SHUFFLE: // toggle shuffle
 				_settings_client.music.shuffle ^= 1;
-				this->SetWidgetLoweredState(MW_SHUFFLE, _settings_client.music.shuffle);
-				this->SetWidgetDirty(MW_SHUFFLE);
+				this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
+				this->SetWidgetDirty(WID_M_SHUFFLE);
 				StopMusic();
 				SelectSongToPlay();
 				this->SetDirty();
 				break;
 
-			case MW_PROGRAMME: // show track selection
+			case WID_M_PROGRAMME: // show track selection
 				ShowMusicTrackSelection();
 				break;
 
-			case MW_ALL: case MW_OLD: case MW_NEW:
-			case MW_EZY: case MW_CUSTOM1: case MW_CUSTOM2: // playlist
-				SelectPlaylist(widget - MW_ALL);
+			case WID_M_ALL: case WID_M_OLD: case WID_M_NEW:
+			case WID_M_EZY: case WID_M_CUSTOM1: case WID_M_CUSTOM2: // playlist
+				SelectPlaylist(widget - WID_M_ALL);
 				StopMusic();
 				SelectSongToPlay();
 				this->SetDirty();
@@ -688,18 +688,18 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_PANEL, COLOUR_GREY, -1), SetFill(1, 1), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_PREV), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SKIP_TO_PREV, STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_NEXT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SKIP_TO_NEXT, STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_STOP), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_STOP_MUSIC, STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, MW_PLAY), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_PLAY_MUSIC, STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_PREV), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SKIP_TO_PREV, STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_NEXT), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_SKIP_TO_NEXT, STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_STOP), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_STOP_MUSIC, STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_M_PLAY), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_PLAY_MUSIC, STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, -1), SetFill(1, 1), EndContainer(),
 		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY, MW_SLIDERS),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_M_SLIDERS),
 			NWidget(NWID_HORIZONTAL), SetPIP(20, 20, 20),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, COLOUR_GREY, -1), SetFill(1, 0), SetDataTip(STR_MUSIC_MUSIC_VOLUME, STR_NULL),
-					NWidget(WWT_EMPTY, COLOUR_GREY, MW_MUSIC_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_M_MUSIC_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MIN, STR_NULL),
 						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
@@ -712,7 +712,7 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, COLOUR_GREY, -1), SetFill(1, 0), SetDataTip(STR_MUSIC_EFFECTS_VOLUME, STR_NULL),
-					NWidget(WWT_EMPTY, COLOUR_GREY, MW_EFFECT_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_M_EFFECT_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MIN, STR_NULL),
 						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
@@ -726,35 +726,35 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, MW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_M_BACKGROUND),
 		NWidget(NWID_HORIZONTAL), SetPIP(6, 0, 6),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetFill(0, 1),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, MW_SHUFFLE), SetMinimalSize(50, 8), SetDataTip(STR_MUSIC_SHUFFLE, STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_SHUFFLE), SetMinimalSize(50, 8), SetDataTip(STR_MUSIC_SHUFFLE, STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE),
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPadding(0, 0, 3, 3),
-				NWidget(WWT_LABEL, COLOUR_GREY, MW_TRACK), SetFill(0, 0), SetDataTip(STR_MUSIC_TRACK, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, MW_TRACK_NR), EndContainer(),
+				NWidget(WWT_LABEL, COLOUR_GREY, WID_M_TRACK), SetFill(0, 0), SetDataTip(STR_MUSIC_TRACK, STR_NULL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_M_TRACK_NR), EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPadding(0, 3, 3, 0),
-				NWidget(WWT_LABEL, COLOUR_GREY, MW_TRACK_TITLE), SetFill(1, 0), SetDataTip(STR_MUSIC_XTITLE, STR_NULL),
-				NWidget(WWT_PANEL, COLOUR_GREY, MW_TRACK_NAME), SetFill(1, 0), EndContainer(),
+				NWidget(WWT_LABEL, COLOUR_GREY, WID_M_TRACK_TITLE), SetFill(1, 0), SetDataTip(STR_MUSIC_XTITLE, STR_NULL),
+				NWidget(WWT_PANEL, COLOUR_GREY, WID_M_TRACK_NAME), SetFill(1, 0), EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetFill(0, 1),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, MW_PROGRAMME), SetMinimalSize(50, 8), SetDataTip(STR_MUSIC_PROGRAM, STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_M_PROGRAMME), SetMinimalSize(50, 8), SetDataTip(STR_MUSIC_PROGRAM, STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION),
 				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, MW_ALL), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_ALL, STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, MW_OLD), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_OLD_STYLE, STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, MW_NEW), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_NEW_STYLE, STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, MW_EZY), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_EZY_STREET, STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, MW_CUSTOM1), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_1, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, MW_CUSTOM2), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_2, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_ALL), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_ALL, STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_OLD), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_OLD_STYLE, STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_NEW), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_NEW_STYLE, STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_EZY), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_EZY_STREET, STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_CUSTOM1), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_1, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_CUSTOM2), SetFill(1, 0), SetDataTip(STR_MUSIC_PLAYLIST_CUSTOM_2, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED),
 	EndContainer(),
 };
 

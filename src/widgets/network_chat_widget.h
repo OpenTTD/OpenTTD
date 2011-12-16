@@ -14,11 +14,11 @@
 
 /** Widgets of the WC_SEND_NETWORK_MSG. */
 enum NetWorkChatWidgets {
-	NWCW_CLOSE,
-	NWCW_BACKGROUND,
-	NWCW_DESTINATION,
-	NWCW_TEXTBOX,
-	NWCW_SENDBUTTON,
+	WID_NC_CLOSE,       ///< Close button.
+	WID_NC_BACKGROUND,  ///< Background of the window.
+	WID_NC_DESTINATION, ///< Destination.
+	WID_NC_TEXTBOX,     ///< Textbox.
+	WID_NC_SENDBUTTON,  ///< Send button.
 };
 
 

@@ -14,40 +14,40 @@
 
 /** Widgets of the WC_MUSIC_TRACK_SELECTION. */
 enum MusicTrackSelectionWidgets {
-	MTSW_LIST_LEFT,
-	MTSW_PLAYLIST,
-	MTSW_LIST_RIGHT,
-	MTSW_ALL,
-	MTSW_OLD,
-	MTSW_NEW,
-	MTSW_EZY,
-	MTSW_CUSTOM1,
-	MTSW_CUSTOM2,
-	MTSW_CLEAR,
+	WID_MTS_LIST_LEFT,  ///< Left button.
+	WID_MTS_PLAYLIST,   ///< Playlist.
+	WID_MTS_LIST_RIGHT, ///< Right button.
+	WID_MTS_ALL,        ///< All button.
+	WID_MTS_OLD,        ///< Old button.
+	WID_MTS_NEW,        ///< New button.
+	WID_MTS_EZY,        ///< Ezy button.
+	WID_MTS_CUSTOM1,    ///< Custom1 button.
+	WID_MTS_CUSTOM2,    ///< Custom2 button.
+	WID_MTS_CLEAR,      ///< Clear button.
 };
 
 /** Widgets of the WC_MUSIC_WINDOW. */
 enum MusicWidgets {
-	MW_PREV,
-	MW_NEXT,
-	MW_STOP,
-	MW_PLAY,
-	MW_SLIDERS,
-	MW_MUSIC_VOL,
-	MW_EFFECT_VOL,
-	MW_BACKGROUND,
-	MW_TRACK,
-	MW_TRACK_NR,
-	MW_TRACK_TITLE,
-	MW_TRACK_NAME,
-	MW_SHUFFLE,
-	MW_PROGRAMME,
-	MW_ALL,
-	MW_OLD,
-	MW_NEW,
-	MW_EZY,
-	MW_CUSTOM1,
-	MW_CUSTOM2,
+	WID_M_PREV,        ///< Previous button.
+	WID_M_NEXT,        ///< Next button.
+	WID_M_STOP,        ///< Stop button.
+	WID_M_PLAY,        ///< Play button.
+	WID_M_SLIDERS,     ///< Sliders.
+	WID_M_MUSIC_VOL,   ///< Music volume.
+	WID_M_EFFECT_VOL,  ///< Effect volume.
+	WID_M_BACKGROUND,  ///< Background of the window.
+	WID_M_TRACK,       ///< Track playing.
+	WID_M_TRACK_NR,    ///< Track number.
+	WID_M_TRACK_TITLE, ///< Track title.
+	WID_M_TRACK_NAME,  ///< Track name.
+	WID_M_SHUFFLE,     ///< Shuffle button.
+	WID_M_PROGRAMME,   ///< Program button.
+	WID_M_ALL,         ///< All button.
+	WID_M_OLD,         ///< Old button.
+	WID_M_NEW,         ///< New button.
+	WID_M_EZY,         ///< Ezy button.
+	WID_M_CUSTOM1,     ///< Custom1 button.
+	WID_M_CUSTOM2,     ///< Custom2 button.
 };
 
 #endif /* WIDGETS_MUSIC_WIDGET_H */

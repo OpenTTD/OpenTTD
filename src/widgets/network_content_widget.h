@@ -13,35 +13,35 @@
 #define WIDGETS_NETWORK_CONTENT_WIDGET_H
 
 /** Widgets of the WC_NETWORK_STATUS_WINDOW (WC_NETWORK_STATUS_WINDOW is also used in NetworkJoinStatusWidgets). */
-enum NetworkContentDownloadStatusWindowWidgets {
-	NCDSWW_BACKGROUND, ///< Background
-	NCDSWW_CANCELOK,   ///< (Optional) Cancel/OK button
+enum NetworkContentDownloadStatusWidgets {
+	WID_NCDS_BACKGROUND, ///< Background of the window.
+	WID_NCDS_CANCELOK,   ///< (Optional) Cancel/OK button.
 };
 
 /** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkGameWindowWidgets, NetworkStartServerWidgets, and NetworkLobbyWindowWidgets). */
-enum NetworkContentListWindowWidgets {
-	NCLWW_BACKGROUND,    ///< Resize button
+enum NetworkContentListWidgets {
+	WID_NCL_BACKGROUND,     ///< Resize button.
 
-	NCLWW_FILTER_CAPT,   ///< Caption for the filter editbox
-	NCLWW_FILTER,        ///< Filter editbox
+	WID_NCL_FILTER_CAPT,    ///< Caption for the filter editbox.
+	WID_NCL_FILTER,         ///< Filter editbox.
 
-	NCLWW_CHECKBOX,      ///< Button above checkboxes
-	NCLWW_TYPE,          ///< 'Type' button
-	NCLWW_NAME,          ///< 'Name' button
+	WID_NCL_CHECKBOX,       ///< Button above checkboxes.
+	WID_NCL_TYPE,           ///< 'Type' button.
+	WID_NCL_NAME,           ///< 'Name' button.
 
-	NCLWW_MATRIX,        ///< Panel with list of content
-	NCLWW_SCROLLBAR,     ///< Scrollbar of matrix
+	WID_NCL_MATRIX,         ///< Panel with list of content.
+	WID_NCL_SCROLLBAR,      ///< Scrollbar of matrix.
 
-	NCLWW_DETAILS,       ///< Panel with content details
+	WID_NCL_DETAILS,        ///< Panel with content details.
 
-	NCLWW_SELECT_ALL,    ///< 'Select all' button
-	NCLWW_SELECT_UPDATE, ///< 'Select updates' button
-	NCLWW_UNSELECT,      ///< 'Unselect all' button
-	NCLWW_OPEN_URL,      ///< 'Open url' button
-	NCLWW_CANCEL,        ///< 'Cancel' button
-	NCLWW_DOWNLOAD,      ///< 'Download' button
+	WID_NCL_SELECT_ALL,     ///< 'Select all' button.
+	WID_NCL_SELECT_UPDATE,  ///< 'Select updates' button.
+	WID_NCL_UNSELECT,       ///< 'Unselect all' button.
+	WID_NCL_OPEN_URL,       ///< 'Open url' button.
+	WID_NCL_CANCEL,         ///< 'Cancel' button.
+	WID_NCL_DOWNLOAD,       ///< 'Download' button.
 
-	NCLWW_SEL_ALL_UPDATE, ///< #NWID_SELECTION widget for select all/update buttons.
+	WID_NCL_SEL_ALL_UPDATE, ///< #NWID_SELECTION widget for select all/update buttons..
 };
 
 #endif /* WIDGETS_NETWORK_CONTENT_WIDGET_H */
