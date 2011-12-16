@@ -14,20 +14,20 @@
 
 /** Widgets of the WC_BUILD_TREES. */
 enum BuildTreesWidgets {
-	WID_BT_TYPE_11,
-	WID_BT_TYPE_12,
-	WID_BT_TYPE_13,
-	WID_BT_TYPE_14,
-	WID_BT_TYPE_21,
-	WID_BT_TYPE_22,
-	WID_BT_TYPE_23,
-	WID_BT_TYPE_24,
-	WID_BT_TYPE_31,
-	WID_BT_TYPE_32,
-	WID_BT_TYPE_33,
-	WID_BT_TYPE_34,
-	WID_BT_TYPE_RANDOM,
-	WID_BT_MANY_RANDOM,
+	WID_BT_TYPE_11,         ///< tree 1st column 1st row
+	WID_BT_TYPE_12,         ///< tree 1st column 2nd row
+	WID_BT_TYPE_13,         ///< tree 1st column 3rd row
+	WID_BT_TYPE_14,         ///< tree 1st column 4th row
+	WID_BT_TYPE_21,         ///< tree 1st column 1st row
+	WID_BT_TYPE_22,         ///< tree 1st column 2nd row
+	WID_BT_TYPE_23,         ///< tree 1st column 3rd row
+	WID_BT_TYPE_24,         ///< tree 1st column 4th row
+	WID_BT_TYPE_31,         ///< tree 1st column 1st row
+	WID_BT_TYPE_32,         ///< tree 1st column 2nd row
+	WID_BT_TYPE_33,         ///< tree 1st column 3rd row
+	WID_BT_TYPE_34,         ///< tree 1st column 4th row
+	WID_BT_TYPE_RANDOM,     ///< button to build random type of tree
+	WID_BT_MANY_RANDOM,     ///< button to build many random trees
 };
 
 #endif /* WIDGETS_TREE_WIDGET_H */
