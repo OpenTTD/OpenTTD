@@ -14,16 +14,16 @@
 
 /** Widgets of the WC_BUILD_OBJECT. */
 enum BuildObjectWidgets {
-	BOW_CLASS_LIST,     ///< The list with classes.
-	BOW_SCROLLBAR,      ///< The scrollbar associated with the list.
-	BOW_OBJECT_MATRIX,  ///< The matrix with preview sprites.
-	BOW_OBJECT_SPRITE,  ///< A preview sprite of the object.
-	BOW_OBJECT_SIZE,    ///< The size of an object.
-	BOW_INFO,           ///< Other information about the object (from the NewGRF).
+	WID_BO_CLASS_LIST,     ///< The list with classes.
+	WID_BO_SCROLLBAR,      ///< The scrollbar associated with the list.
+	WID_BO_OBJECT_MATRIX,  ///< The matrix with preview sprites.
+	WID_BO_OBJECT_SPRITE,  ///< A preview sprite of the object.
+	WID_BO_OBJECT_SIZE,    ///< The size of an object.
+	WID_BO_INFO,           ///< Other information about the object (from the NewGRF).
 
-	BOW_SELECT_MATRIX,  ///< Selection preview matrix of objects of a given class.
-	BOW_SELECT_IMAGE,   ///< Preview image in the #BOW_SELECT_MATRIX.
-	BOW_SELECT_SCROLL,  ///< Scrollbar next to the #BOW_SELECT_MATRIX.
+	WID_BO_SELECT_MATRIX,  ///< Selection preview matrix of objects of a given class.
+	WID_BO_SELECT_IMAGE,   ///< Preview image in the #WID_BO_SELECT_MATRIX.
+	WID_BO_SELECT_SCROLL,  ///< Scrollbar next to the #WID_BO_SELECT_MATRIX.
 };
 
 #endif /* WIDGETS_OBJECT_WIDGET_H */

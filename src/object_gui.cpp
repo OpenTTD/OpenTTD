@@ -40,7 +40,7 @@ public:
 	{
 		this->CreateNestedTree(desc);
 
-		this->vscroll = this->GetScrollbar(BOW_SCROLLBAR);
+		this->vscroll = this->GetScrollbar(WID_BO_SCROLLBAR);
 		this->vscroll->SetCapacity(5);
 		this->vscroll->SetPosition(0);
 		this->vscroll->SetCount(ObjectClass::GetCount());
@@ -48,10 +48,10 @@ public:
 		this->FinishInitNested(desc, 0);
 
 		this->SelectFirstAvailableObject(true);
-		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetCount(4);
+		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetCount(4);
 
-		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX);
-		matrix->SetScrollbar(this->GetScrollbar(BOW_SELECT_SCROLL));
+		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
+		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
 		matrix->SetCount(ObjectClass::GetCount(_selected_object_class));
 	}
 
@@ -62,7 +62,7 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case BOW_OBJECT_SIZE: {
+			case WID_BO_OBJECT_SIZE: {
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
 				int size = spec == NULL ? 0 : spec->size;
 				SetDParam(0, GB(size, HasBit(_selected_object_view, 0) ? 4 : 0, 4));
@@ -77,7 +77,7 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case BOW_CLASS_LIST: {
+			case WID_BO_CLASS_LIST: {
 				for (uint i = 0; i < ObjectClass::GetCount(); i++) {
 					size->width = max(size->width, GetStringBoundingBox(ObjectClass::GetName((ObjectClassID)i)).width);
 				}
@@ -88,7 +88,7 @@ public:
 				break;
 			}
 
-			case BOW_OBJECT_MATRIX: {
+			case WID_BO_OBJECT_MATRIX: {
 				/* Get the right amount of buttons based on the current spec. */
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
 				if (spec != NULL) {
@@ -100,7 +100,7 @@ public:
 				break;
 			}
 
-			case BOW_OBJECT_SPRITE: {
+			case WID_BO_OBJECT_SPRITE: {
 				bool two_wide = false;  // Whether there will be two widgets next to eachother in the matrix or not.
 				int height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
 
@@ -138,11 +138,11 @@ public:
 				break;
 			}
 
-			case BOW_INFO:
+			case WID_BO_INFO:
 				size->height = this->info_height;
 				break;
 
-			case BOW_SELECT_MATRIX:
+			case WID_BO_SELECT_MATRIX:
 				fill->height = 1;
 				resize->height = 1;
 				break;
@@ -154,7 +154,7 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (GB(widget, 0, 16)) {
-			case BOW_CLASS_LIST: {
+			case WID_BO_CLASS_LIST: {
 				int y = r.top;
 				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < ObjectClass::GetCount(); i++) {
 					SetDParam(0, ObjectClass::GetName((ObjectClassID)i));
@@ -165,7 +165,7 @@ public:
 				break;
 			}
 
-			case BOW_OBJECT_SPRITE: {
+			case WID_BO_OBJECT_SPRITE: {
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
 				if (spec == NULL) break;
 
@@ -186,7 +186,7 @@ public:
 				break;
 			}
 
-			case BOW_SELECT_IMAGE: {
+			case WID_BO_SELECT_IMAGE: {
 				if (_selected_object_index < 0) break;
 
 				int obj_index = GB(widget, 16, 16);
@@ -214,7 +214,7 @@ public:
 				break;
 			}
 
-			case BOW_INFO: {
+			case WID_BO_INFO: {
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
 				if (spec == NULL) break;
 
@@ -261,8 +261,8 @@ public:
 			_selected_object_view = 0;
 		}
 
-		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetClicked(_selected_object_view);
-		this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetClicked(_selected_object_index);
+		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetClicked(_selected_object_view);
+		this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetClicked(_selected_object_index);
 		this->UpdateSelectSize();
 		this->SetDirty();
 	}
@@ -281,34 +281,34 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll->SetCapacityFromWidget(this, BOW_CLASS_LIST);
-		this->GetWidget<NWidgetCore>(BOW_CLASS_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, WID_BO_CLASS_LIST);
+		this->GetWidget<NWidgetCore>(WID_BO_CLASS_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (GB(widget, 0, 16)) {
-			case BOW_CLASS_LIST: {
+			case WID_BO_CLASS_LIST: {
 				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
 				if (num_clicked >= (int)ObjectClass::GetCount()) break;
 
 				_selected_object_class = (ObjectClassID)num_clicked;
-				this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
+				this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
 				this->SelectFirstAvailableObject(false);
 				break;
 			}
 
-			case BOW_SELECT_IMAGE: {
+			case WID_BO_SELECT_IMAGE: {
 				int num_clicked = GB(widget, 16, 16);
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, num_clicked);
 				if (spec->IsAvailable()) this->SelectOtherObject(num_clicked);
 				break;
 			}
 
-			case BOW_OBJECT_SPRITE:
+			case WID_BO_OBJECT_SPRITE:
 				if (_selected_object_index != -1) {
 					_selected_object_view = GB(widget, 16, 16);
-					this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetClicked(_selected_object_view);
+					this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetClicked(_selected_object_view);
 					this->UpdateSelectSize();
 					this->SetDirty();
 				}
@@ -359,29 +359,29 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 2, 5),
-					NWidget(WWT_MATRIX, COLOUR_GREY, BOW_CLASS_LIST), SetFill(1, 0), SetDataTip(0x501, STR_OBJECT_BUILD_CLASS_TOOLTIP), SetScrollbar(BOW_SCROLLBAR),
-					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BOW_SCROLLBAR),
+					NWidget(WWT_MATRIX, COLOUR_GREY, WID_BO_CLASS_LIST), SetFill(1, 0), SetDataTip(0x501, STR_OBJECT_BUILD_CLASS_TOOLTIP), SetScrollbar(WID_BO_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_BO_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 0, 5),
-					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_OBJECT_MATRIX), SetPIP(0, 2, 0),
-						NWidget(WWT_PANEL, COLOUR_GREY, BOW_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_OBJECT_MATRIX), SetPIP(0, 2, 0),
+						NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, BOW_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetPadding(2, 5, 2, 5),
+				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetPadding(2, 5, 2, 5),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(BOW_SELECT_SCROLL),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_BO_SELECT_SCROLL),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_SELECT_MATRIX), SetFill(0, 1), SetPIP(0, 2, 0),
-						NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BOW_SELECT_IMAGE), SetMinimalSize(66, 60), SetDataTip(0x0, STR_OBJECT_BUILD_TOOLTIP),
-								SetFill(0, 0), SetResize(0, 0), SetScrollbar(BOW_SELECT_SCROLL),
+					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_SELECT_MATRIX), SetFill(0, 1), SetPIP(0, 2, 0),
+						NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BO_SELECT_IMAGE), SetMinimalSize(66, 60), SetDataTip(0x0, STR_OBJECT_BUILD_TOOLTIP),
+								SetFill(0, 0), SetResize(0, 0), SetScrollbar(WID_BO_SELECT_SCROLL),
 						EndContainer(),
 					EndContainer(),
-					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, BOW_SELECT_SCROLL),
+					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_BO_SELECT_SCROLL),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, BOW_INFO), SetPadding(2, 5, 0, 5), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetPadding(2, 5, 0, 5), SetFill(1, 0), SetResize(1, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(0, 1), EndContainer(),
 				NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
