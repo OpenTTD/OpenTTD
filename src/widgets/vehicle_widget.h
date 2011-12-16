@@ -73,5 +73,4 @@ enum VehicleListWidgets {
 	WID_VL_START_ALL,                ///< Start all button.
 };
 
-
 #endif /* WIDGETS_VEHICLE_WIDGET_H */

@@ -21,5 +21,4 @@ enum NetWorkChatWidgets {
 	WID_NC_SENDBUTTON,  ///< Send button.
 };
 
-
 #endif /* WIDGETS_NETWORK_CHAT_WIDGET_H */

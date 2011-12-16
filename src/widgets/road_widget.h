@@ -31,7 +31,7 @@ enum RoadToolbarWidgets {
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
 enum BuildRoadDepotWidgets {
 	/* Name starts with BRO instead of BR, because of collision with BuildRailDepotWidgets */
-	WID_BROD_CAPTION,   ///< Window caption.
+	WID_BROD_CAPTION,   ///< Caption of the window.
 	WID_BROD_DEPOT_NE,  ///< Depot with NE entry.
 	WID_BROD_DEPOT_SE,  ///< Depot with SE entry.
 	WID_BROD_DEPOT_SW,  ///< Depot with SW entry.
@@ -40,8 +40,9 @@ enum BuildRoadDepotWidgets {
 
 /** Widgets of the WC_BUS_STATION / WC_TRUCK_STATION. */
 enum BuildRoadStationWidgets {
-	WID_BROS_CAPTION,       ///< Window caption.
-	WID_BROS_BACKGROUND,    ///< Window background.
+	/* Name starts with BRO instead of BR, because of collision with BuildRailStationWidgets */
+	WID_BROS_CAPTION,       ///< Caption of the window.
+	WID_BROS_BACKGROUND,    ///< Background of the window.
 	WID_BROS_STATION_NE,    ///< Terminal station with NE entry.
 	WID_BROS_STATION_SE,    ///< Terminal station with SE entry.
 	WID_BROS_STATION_SW,    ///< Terminal station with SW entry.

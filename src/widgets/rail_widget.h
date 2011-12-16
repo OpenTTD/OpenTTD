@@ -15,7 +15,7 @@
 /** Widgets of the WC_BUILD_TOOLBAR (WC_BUILD_TOOLBAR is also used in others). */
 enum RailToolbarWidgets {
 	/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
-	WID_RAT_CAPTION,        ///< Caption of this window.
+	WID_RAT_CAPTION,        ///< Caption of the window.
 	WID_RAT_BUILD_NS,       ///< Build rail along the game view Y axis.
 	WID_RAT_BUILD_X,        ///< Build rail along the game grid X axis.
 	WID_RAT_BUILD_EW,       ///< Build rail along the game view X axis.
@@ -34,44 +34,45 @@ enum RailToolbarWidgets {
 
 /** Widgets of the WC_BUILD_STATION (WC_BUILD_STATION is also used in others). */
 enum BuildRailStationWidgets {
-	WID_BRS_PLATFORM_DIR_X,       ///< Button to select '/' view.
-	WID_BRS_PLATFORM_DIR_Y,       ///< Button to select '\' view.
+	/* Name starts with BRA instead of BR, because of collision with BuildRoadStationWidgets */
+	WID_BRAS_PLATFORM_DIR_X,       ///< Button to select '/' view.
+	WID_BRAS_PLATFORM_DIR_Y,       ///< Button to select '\' view.
 
-	WID_BRS_PLATFORM_NUM_1,       ///< Button to select stations with a single platform.
-	WID_BRS_PLATFORM_NUM_2,       ///< Button to select stations with 2 platforms.
-	WID_BRS_PLATFORM_NUM_3,       ///< Button to select stations with 3 platforms.
-	WID_BRS_PLATFORM_NUM_4,       ///< Button to select stations with 4 platforms.
-	WID_BRS_PLATFORM_NUM_5,       ///< Button to select stations with 5 platforms.
-	WID_BRS_PLATFORM_NUM_6,       ///< Button to select stations with 6 platforms.
-	WID_BRS_PLATFORM_NUM_7,       ///< Button to select stations with 7 platforms.
+	WID_BRAS_PLATFORM_NUM_1,       ///< Button to select stations with a single platform.
+	WID_BRAS_PLATFORM_NUM_2,       ///< Button to select stations with 2 platforms.
+	WID_BRAS_PLATFORM_NUM_3,       ///< Button to select stations with 3 platforms.
+	WID_BRAS_PLATFORM_NUM_4,       ///< Button to select stations with 4 platforms.
+	WID_BRAS_PLATFORM_NUM_5,       ///< Button to select stations with 5 platforms.
+	WID_BRAS_PLATFORM_NUM_6,       ///< Button to select stations with 6 platforms.
+	WID_BRAS_PLATFORM_NUM_7,       ///< Button to select stations with 7 platforms.
 
-	WID_BRS_PLATFORM_LEN_1,       ///< Button to select single tile length station platforms.
-	WID_BRS_PLATFORM_LEN_2,       ///< Button to select 2 tiles length station platforms.
-	WID_BRS_PLATFORM_LEN_3,       ///< Button to select 3 tiles length station platforms.
-	WID_BRS_PLATFORM_LEN_4,       ///< Button to select 4 tiles length station platforms.
-	WID_BRS_PLATFORM_LEN_5,       ///< Button to select 5 tiles length station platforms.
-	WID_BRS_PLATFORM_LEN_6,       ///< Button to select 6 tiles length station platforms.
-	WID_BRS_PLATFORM_LEN_7,       ///< Button to select 7 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_1,       ///< Button to select single tile length station platforms.
+	WID_BRAS_PLATFORM_LEN_2,       ///< Button to select 2 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_3,       ///< Button to select 3 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_4,       ///< Button to select 4 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_5,       ///< Button to select 5 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_6,       ///< Button to select 6 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_7,       ///< Button to select 7 tiles length station platforms.
 
-	WID_BRS_PLATFORM_DRAG_N_DROP, ///< Button to enable drag and drop type station placement.
+	WID_BRAS_PLATFORM_DRAG_N_DROP, ///< Button to enable drag and drop type station placement.
 
-	WID_BRS_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
-	WID_BRS_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
-	WID_BRS_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
+	WID_BRAS_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
+	WID_BRAS_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
+	WID_BRAS_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
 
-	WID_BRS_MATRIX,               ///< Matrix widget displaying the available stations.
-	WID_BRS_IMAGE,                ///< Panel used at each cell of the matrix.
-	WID_BRS_MATRIX_SCROLL,        ///< Scrollbar of the matrix widget.
+	WID_BRAS_MATRIX,               ///< Matrix widget displaying the available stations.
+	WID_BRAS_IMAGE,                ///< Panel used at each cell of the matrix.
+	WID_BRAS_MATRIX_SCROLL,        ///< Scrollbar of the matrix widget.
 
-	WID_BRS_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
-	WID_BRS_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
-	WID_BRS_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.
-	WID_BRS_SHOW_NEWST_TYPE,      ///< Display of selected station type.
-	WID_BRS_NEWST_LIST,           ///< List with available newstation classes.
-	WID_BRS_NEWST_SCROLL,         ///< Scrollbar of the #WID_BRS_NEWST_LIST.
+	WID_BRAS_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
+	WID_BRAS_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
+	WID_BRAS_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.
+	WID_BRAS_SHOW_NEWST_TYPE,      ///< Display of selected station type.
+	WID_BRAS_NEWST_LIST,           ///< List with available newstation classes.
+	WID_BRAS_NEWST_SCROLL,         ///< Scrollbar of the #WID_BRAS_NEWST_LIST.
 
-	WID_BRS_PLATFORM_NUM_BEGIN = WID_BRS_PLATFORM_NUM_1 - 1, ///< Helper for determining the chosen platform width.
-	WID_BRS_PLATFORM_LEN_BEGIN = WID_BRS_PLATFORM_LEN_1 - 1, ///< Helper for determining the chosen platform length.
+	WID_BRAS_PLATFORM_NUM_BEGIN = WID_BRAS_PLATFORM_NUM_1 - 1, ///< Helper for determining the chosen platform width.
+	WID_BRAS_PLATFORM_LEN_BEGIN = WID_BRAS_PLATFORM_LEN_1 - 1, ///< Helper for determining the chosen platform length.
 };
 
 /** Widgets of the WC_BUILD_SIGNAL. */
