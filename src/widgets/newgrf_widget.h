@@ -15,61 +15,61 @@
 #include "../newgrf_config.h"
 
 /** Widgets of the WC_GRF_PARAMETERS. */
-enum ShowNewGRFParametersWidgets {
-	GRFPAR_WIDGET_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #GRFPAR_WIDGET_NUMPAR
-	GRFPAR_WIDGET_NUMPAR_DEC,       ///< Button to decrease number of parameters
-	GRFPAR_WIDGET_NUMPAR_INC,       ///< Button to increase number of parameters
-	GRFPAR_WIDGET_NUMPAR,           ///< Optional number of parameters
-	GRFPAR_WIDGET_NUMPAR_TEXT,      ///< Text description
-	GRFPAR_WIDGET_BACKGROUND,       ///< Panel to draw the settings on
-	GRFPAR_WIDGET_SCROLLBAR,        ///< Scrollbar to scroll through all settings
-	GRFPAR_WIDGET_ACCEPT,           ///< Accept button
-	GRFPAR_WIDGET_RESET,            ///< Reset button
-	GRFPAR_WIDGET_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions
-	GRFPAR_WIDGET_DESCRIPTION,      ///< Multi-line description of a parameter
+enum NewGRFParametersWidgets {
+	WID_NP_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #WID_NP_NUMPAR
+	WID_NP_NUMPAR_DEC,       ///< Button to decrease number of parameters
+	WID_NP_NUMPAR_INC,       ///< Button to increase number of parameters
+	WID_NP_NUMPAR,           ///< Optional number of parameters
+	WID_NP_NUMPAR_TEXT,      ///< Text description
+	WID_NP_BACKGROUND,       ///< Panel to draw the settings on
+	WID_NP_SCROLLBAR,        ///< Scrollbar to scroll through all settings
+	WID_NP_ACCEPT,           ///< Accept button
+	WID_NP_RESET,            ///< Reset button
+	WID_NP_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions
+	WID_NP_DESCRIPTION,      ///< Multi-line description of a parameter
 };
 
 /** Widgets of the WC_NEWGRF_TEXTFILE. */
-enum ShowNewGRFTextfileWidgets {
-	GTW_WIDGET_CAPTION,    ///< The caption of the window.
-	GTW_WIDGET_BACKGROUND, ///< Panel to draw the textfile on.
-	GTW_WIDGET_VSCROLLBAR, ///< Vertical scrollbar to scroll through the textfile up-and-down.
-	GTW_WIDGET_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
+enum NewGRFTextfileWidgets {
+	WID_NT_CAPTION,    ///< The caption of the window.
+	WID_NT_BACKGROUND, ///< Panel to draw the textfile on.
+	WID_NT_VSCROLLBAR, ///< Vertical scrollbar to scroll through the textfile up-and-down.
+	WID_NT_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
 };
 
 /** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
-enum ShowNewGRFStateWidgets {
-	SNGRFS_PRESET_LIST,
-	SNGRFS_PRESET_SAVE,
-	SNGRFS_PRESET_DELETE,
-	SNGRFS_ADD,
-	SNGRFS_REMOVE,
-	SNGRFS_MOVE_UP,
-	SNGRFS_MOVE_DOWN,
-	SNGRFS_FILTER,
-	SNGRFS_FILE_LIST,
-	SNGRFS_SCROLLBAR,
-	SNGRFS_AVAIL_LIST,
-	SNGRFS_SCROLL2BAR,
-	SNGRFS_NEWGRF_INFO_TITLE,
-	SNGRFS_NEWGRF_INFO,
-	SNGRFS_OPEN_URL,
-	SNGRFS_NEWGRF_TEXTFILE,
-	SNGRFS_SET_PARAMETERS = SNGRFS_NEWGRF_TEXTFILE + TFT_END,
-	SNGRFS_TOGGLE_PALETTE,
-	SNGRFS_APPLY_CHANGES,
-	SNGRFS_RESCAN_FILES,
-	SNGRFS_RESCAN_FILES2,
-	SNGRFS_CONTENT_DOWNLOAD,
-	SNGRFS_CONTENT_DOWNLOAD2,
-	SNGRFS_SHOW_REMOVE, ///< Select active list buttons (0 = normal, 1 = simple layout).
-	SNGRFS_SHOW_APPLY,  ///< Select display of the buttons below the 'details'.
+enum NewGRFStateWidgets {
+	WID_NS_PRESET_LIST,         ///< Active NewGRF preset.
+	WID_NS_PRESET_SAVE,         ///< Save list of active NewGRFs as presets.
+	WID_NS_PRESET_DELETE,       ///< Delete active preset.
+	WID_NS_ADD,                 ///< Add NewGRF to active list.
+	WID_NS_REMOVE,              ///< Remove NewGRF from active list.
+	WID_NS_MOVE_UP,             ///< Move NewGRF up in active list.
+	WID_NS_MOVE_DOWN,           ///< Move NewGRF down in active list.
+	WID_NS_FILTER,              ///< Filter list of available NewGRFs.
+	WID_NS_FILE_LIST,           ///< List window of active NewGRFs.
+	WID_NS_SCROLLBAR,           ///< Scrollbar for active NewGRF list.
+	WID_NS_AVAIL_LIST,          ///< List window of available NewGRFs.
+	WID_NS_SCROLL2BAR,          ///< Scrollbar for available NewGRF list.
+	WID_NS_NEWGRF_INFO_TITLE,   ///< Title for Info on selected NewGRF.
+	WID_NS_NEWGRF_INFO,         ///< Panel for Info on selected NewGRF.
+	WID_NS_OPEN_URL,            ///< Open URL of NewGRF.
+	WID_NS_NEWGRF_TEXTFILE,     ///< Open NewGRF readme, changelog (+1) or license (+2).
+	WID_NS_SET_PARAMETERS = WID_NS_NEWGRF_TEXTFILE + TFT_END,   ///< Open Parameters Window for selected, active NewGRF.
+	WID_NS_TOGGLE_PALETTE,      ///< Toggle Palette of selected, active NewGRF.
+	WID_NS_APPLY_CHANGES,       ///< Apply changes to NewGRF config.
+	WID_NS_RESCAN_FILES,        ///< Rescan files (available NewGRFs).
+	WID_NS_RESCAN_FILES2,       ///< Rescan files (active NewGRFs).
+	WID_NS_CONTENT_DOWNLOAD,    ///< Open content download (available NewGRFs).
+	WID_NS_CONTENT_DOWNLOAD2,   ///< Open content download (active NewGRFs).
+	WID_NS_SHOW_REMOVE,         ///< Select active list buttons (0 = normal, 1 = simple layout).
+	WID_NS_SHOW_APPLY,          ///< Select display of the buttons below the 'details'.
 };
 
 /** Widgets of the WC_MODAL_PROGRESS (WC_MODAL_PROGRESS is also used in GenerationProgressWindowWidgets). */
-enum ScanProgressWindowWidgets {
-	SPWW_PROGRESS_BAR,  ///< Simple progress bar.
-	SPWW_PROGRESS_TEXT, ///< Text explaining what is happening.
+enum ScanProgressWidgets {
+	WID_SP_PROGRESS_BAR,  ///< Simple progress bar.
+	WID_SP_PROGRESS_TEXT, ///< Text explaining what is happening.
 };
 
 #endif /* WIDGETS_NEWGRF_WIDGET_H */
