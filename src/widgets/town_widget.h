@@ -14,57 +14,52 @@
 
 /** Widgets of the WC_TOWN_DIRECTORY. */
 enum TownDirectoryWidgets {
-	TDW_SORTNAME,
-	TDW_SORTPOPULATION,
-	TDW_CENTERTOWN,
-	TDW_SCROLLBAR,
-	TDW_BOTTOM_PANEL,
-	TDW_BOTTOM_TEXT,
+	WID_TD_SORT_NAME,        ///< Sort by town name.
+	WID_TD_SORT_POPULATION,  ///< Sort by town population.
+	WID_TD_LIST,             ///< List of towns.
+	WID_TD_SCROLLBAR,        ///< Scrollbar for the town list.
+	WID_TD_WORLD_POPULATION, ///< The world's population.
 };
 
 /** Widgets of the WC_TOWN_AUTHORITY. */
 enum TownAuthorityWidgets {
-	TWA_CAPTION,
-	TWA_RATING_INFO,  ///< Overview with ratings for each company.
-	TWA_COMMAND_LIST, ///< List of commands for the player.
-	TWA_SCROLLBAR,
-	TWA_ACTION_INFO,  ///< Additional information about the action.
-	TWA_EXECUTE,      ///< Do-it button.
+	WID_TA_CAPTION,      ///< Caption of window.
+	WID_TA_RATING_INFO,  ///< Overview with ratings for each company.
+	WID_TA_COMMAND_LIST, ///< List of commands for the player.
+	WID_TA_SCROLLBAR,    ///< Scrollbar of the list of commands.
+	WID_TA_ACTION_INFO,  ///< Additional information about the action.
+	WID_TA_EXECUTE,      ///< Do-it button.
 };
 
 /** Widgets of the WC_TOWN_VIEW. */
 enum TownViewWidgets {
-	TVW_CAPTION,
-	TVW_VIEWPORT,
-	TVW_INFOPANEL,
-	TVW_CENTERVIEW,
-	TVW_SHOWAUTHORITY,
-	TVW_CHANGENAME,
-	TVW_EXPAND,
-	TVW_DELETE,
+	WID_TV_CAPTION,        ///< Caption of window.
+	WID_TV_VIEWPORT,       ///< View of the center of the town.
+	WID_TV_INFO,           ///< General information about the town.
+	WID_TV_CENTER_VIEW,    ///< Center the main view on this town.
+	WID_TV_SHOW_AUTHORITY, ///< Show the town authority window.
+	WID_TV_CHANGE_NAME,    ///< Change the name of this town.
+	WID_TV_EXPAND,         ///< Expand this town (scenario editor only).
+	WID_TV_DELETE,         ///< Delete this town (scenario editor only).
 };
 
 /** Widgets of the WC_FOUND_TOWN. */
-enum TownScenarioEditorWidgets {
-	TSEW_BACKGROUND,
-	TSEW_NEWTOWN,
-	TSEW_RANDOMTOWN,
-	TSEW_MANYRANDOMTOWNS,
-	TSEW_TOWNNAME_TEXT,
-	TSEW_TOWNNAME_EDITBOX,
-	TSEW_TOWNNAME_RANDOM,
-	TSEW_TOWNSIZE,
-	TSEW_SIZE_SMALL,
-	TSEW_SIZE_MEDIUM,
-	TSEW_SIZE_LARGE,
-	TSEW_SIZE_RANDOM,
-	TSEW_CITY,
-	TSEW_TOWNLAYOUT,
-	TSEW_LAYOUT_ORIGINAL,
-	TSEW_LAYOUT_BETTER,
-	TSEW_LAYOUT_GRID2,
-	TSEW_LAYOUT_GRID3,
-	TSEW_LAYOUT_RANDOM,
+enum TownFoundingWidgets {
+	WID_TF_NEW_TOWN,          ///< Create a new town.
+	WID_TF_RANDOM_TOWN,       ///< Randomly place a town.
+	WID_TF_MANY_RANDOM_TOWNS, ///< Randomly place many towns.
+	WID_TF_TOWN_NAME_EDITBOX, ///< Editor for the town name.
+	WID_TF_TOWN_NAME_RANDOM,  ///< Generate a random town name.
+	WID_TF_SIZE_SMALL,        ///< Selection for a small town.
+	WID_TF_SIZE_MEDIUM,       ///< Selection for a medium town.
+	WID_TF_SIZE_LARGE,        ///< Selection for a large town.
+	WID_TF_SIZE_RANDOM,       ///< Selection for a randomly sized town.
+	WID_TF_CITY,              ///< Selection for the town's city state.
+	WID_TF_LAYOUT_ORIGINAL,   ///< Selection for the original town layout.
+	WID_TF_LAYOUT_BETTER,     ///< Selection for the better town layout.
+	WID_TF_LAYOUT_GRID2,      ///< Selection for the 2x2 grid town layout.
+	WID_TF_LAYOUT_GRID3,      ///< Selection for the 3x3 grid town layout.
+	WID_TF_LAYOUT_RANDOM,     ///< Selection for a randomly chosen town layout.
 };
 
 #endif /* WIDGETS_TOWN_WIDGET_H */
