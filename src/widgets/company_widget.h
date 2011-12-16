@@ -56,25 +56,25 @@ enum CompanyWidgets {
 
 /** Widgets of the WC_FINANCES. */
 enum CompanyFinancesWidgets {
-	WID_CF_CAPTION,       ///< Caption of the window.
-	WID_CF_TOGGLE_SIZE,   ///< Toggle windows size.
-	WID_CF_SEL_PANEL,     ///< Select panel or nothing.
-	WID_CF_EXPS_CATEGORY, ///< Column for expenses category strings.
-	WID_CF_EXPS_PRICE1,   ///< Column for year Y-2 expenses.
-	WID_CF_EXPS_PRICE2,   ///< Column for year Y-1 expenses.
-	WID_CF_EXPS_PRICE3,   ///< Column for year Y expenses.
-	WID_CF_TOTAL_PANEL,   ///< Panel for totals.
-	WID_CF_SEL_MAXLOAN,   ///< Selection of maxloan column.
-	WID_CF_BALANCE_VALUE, ///< Bank balance value.
-	WID_CF_LOAN_VALUE,    ///< Loan.
-	WID_CF_LOAN_LINE,     ///< Line for summing bank balance and loan.
-	WID_CF_TOTAL_VALUE,   ///< Total.
-	WID_CF_MAXLOAN_GAP,   ///< Gap above max loan widget.
-	WID_CF_MAXLOAN_VALUE, ///< Max loan widget.
-	WID_CF_SEL_BUTTONS,   ///< Selection of buttons.
-	WID_CF_INCREASE_LOAN, ///< Increase loan.
-	WID_CF_REPAY_LOAN,    ///< Decrease loan..
-	WID_CF_INFRASTRUCTURE,///< View company infrastructure.
+	WID_CF_CAPTION,        ///< Caption of the window.
+	WID_CF_TOGGLE_SIZE,    ///< Toggle windows size.
+	WID_CF_SEL_PANEL,      ///< Select panel or nothing.
+	WID_CF_EXPS_CATEGORY,  ///< Column for expenses category strings.
+	WID_CF_EXPS_PRICE1,    ///< Column for year Y-2 expenses.
+	WID_CF_EXPS_PRICE2,    ///< Column for year Y-1 expenses.
+	WID_CF_EXPS_PRICE3,    ///< Column for year Y expenses.
+	WID_CF_TOTAL_PANEL,    ///< Panel for totals.
+	WID_CF_SEL_MAXLOAN,    ///< Selection of maxloan column.
+	WID_CF_BALANCE_VALUE,  ///< Bank balance value.
+	WID_CF_LOAN_VALUE,     ///< Loan.
+	WID_CF_LOAN_LINE,      ///< Line for summing bank balance and loan.
+	WID_CF_TOTAL_VALUE,    ///< Total.
+	WID_CF_MAXLOAN_GAP,    ///< Gap above max loan widget.
+	WID_CF_MAXLOAN_VALUE,  ///< Max loan widget.
+	WID_CF_SEL_BUTTONS,    ///< Selection of buttons.
+	WID_CF_INCREASE_LOAN,  ///< Increase loan.
+	WID_CF_REPAY_LOAN,     ///< Decrease loan..
+	WID_CF_INFRASTRUCTURE, ///< View company infrastructure.
 };
 
 
