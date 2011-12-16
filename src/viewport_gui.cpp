@@ -26,20 +26,20 @@
 static const NWidgetPart _nested_extra_view_port_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, EVW_CAPTION), SetDataTip(STR_EXTRA_VIEW_PORT_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_EV_CAPTION), SetDataTip(STR_EXTRA_VIEW_PORT_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VIEWPORT, INVALID_COLOUR, EVW_VIEWPORT), SetPadding(2, 2, 2, 2), SetResize(1, 1), SetFill(1, 1),
+		NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_EV_VIEWPORT), SetPadding(2, 2, 2, 2), SetResize(1, 1), SetFill(1, 1),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, EVW_ZOOMIN), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, EVW_ZOOMOUT), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_EV_ZOOM_IN), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_EV_ZOOM_OUT), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, EVW_MAIN_TO_VIEW), SetFill(1, 1), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_EV_MAIN_TO_VIEW), SetFill(1, 1), SetResize(1, 0),
 										SetDataTip(STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, EVW_VIEW_TO_MAIN), SetFill(1, 1), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_EV_VIEW_TO_MAIN), SetFill(1, 1), SetResize(1, 0),
 										SetDataTip(STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT),
 		EndContainer(),
 	EndContainer(),
@@ -55,9 +55,9 @@ public:
 	{
 		this->InitNested(desc, window_number);
 
-		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(EVW_VIEWPORT);
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_EV_VIEWPORT);
 		nvp->InitializeViewport(this, 0, ZOOM_LVL_VIEWPORT);
-		if (_settings_client.gui.zoom_min == ZOOM_LVL_VIEWPORT) this->DisableWidget(EVW_ZOOMIN);
+		if (_settings_client.gui.zoom_min == ZOOM_LVL_VIEWPORT) this->DisableWidget(WID_EV_ZOOM_IN);
 
 		Point pt;
 		if (tile == INVALID_TILE) {
@@ -80,7 +80,7 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case EVW_CAPTION:
+			case WID_EV_CAPTION:
 				/* set the number in the title bar */
 				SetDParam(0, this->window_number + 1);
 				break;
@@ -90,10 +90,10 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case EVW_ZOOMIN: DoZoomInOutWindow(ZOOM_IN,  this); break;
-			case EVW_ZOOMOUT: DoZoomInOutWindow(ZOOM_OUT, this); break;
+			case WID_EV_ZOOM_IN: DoZoomInOutWindow(ZOOM_IN,  this); break;
+			case WID_EV_ZOOM_OUT: DoZoomInOutWindow(ZOOM_OUT, this); break;
 
-			case EVW_MAIN_TO_VIEW: { // location button (move main view to same spot as this view) 'Paste Location'
+			case WID_EV_MAIN_TO_VIEW: { // location button (move main view to same spot as this view) 'Paste Location'
 				Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 				int x = this->viewport->scrollpos_x; // Where is the main looking at
 				int y = this->viewport->scrollpos_y;
@@ -105,7 +105,7 @@ public:
 				break;
 			}
 
-			case EVW_VIEW_TO_MAIN: { // inverse location button (move this view to same spot as main view) 'Copy Location'
+			case WID_EV_VIEW_TO_MAIN: { // inverse location button (move this view to same spot as main view) 'Copy Location'
 				const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 				int x = w->viewport->scrollpos_x;
 				int y = w->viewport->scrollpos_y;
@@ -120,7 +120,7 @@ public:
 	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
-			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(EVW_VIEWPORT);
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_EV_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 		}
 	}
@@ -149,7 +149,7 @@ public:
 	{
 		if (!gui_scope) return;
 		/* Only handle zoom message if intended for us (msg ZOOM_IN/ZOOM_OUT) */
-		HandleZoomMessage(this, this->viewport, EVW_ZOOMIN, EVW_ZOOMOUT);
+		HandleZoomMessage(this, this->viewport, WID_EV_ZOOM_IN, WID_EV_ZOOM_OUT);
 	}
 };
 
