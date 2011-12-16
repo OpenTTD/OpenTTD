@@ -84,7 +84,7 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget >= BTW_TYPE_11 && widget <= BTW_TYPE_34) {
+		if (widget >= WID_BT_TYPE_11 && widget <= WID_BT_TYPE_34) {
 			Dimension d = GetMaxTreeSpriteSize();
 			/* Allow some pixels extra width and height */
 			size->width = d.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
@@ -92,7 +92,7 @@ public:
 			return;
 		}
 
-		if (widget != BTW_MANY_RANDOM) return;
+		if (widget != WID_BT_MANY_RANDOM) return;
 
 		if (_game_mode != GM_EDITOR) {
 			size->width = 0;
@@ -107,9 +107,9 @@ public:
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget < BTW_TYPE_11 || widget > BTW_TYPE_34 || widget - BTW_TYPE_11 >= this->count) return;
+		if (widget < WID_BT_TYPE_11 || widget > WID_BT_TYPE_34 || widget - WID_BT_TYPE_11 >= this->count) return;
 
-		int i = this->base + widget - BTW_TYPE_11;
+		int i = this->base + widget - WID_BT_TYPE_11;
 		/* Trees "grow" in the centre on the bottom line of the buttons */
 		DrawSprite(tree_sprites[i].sprite, tree_sprites[i].pal, (r.left + r.right) / 2 + WD_FRAMERECT_LEFT, r.bottom - 7);
 	}
@@ -117,24 +117,24 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case BTW_TYPE_11: case BTW_TYPE_12: case BTW_TYPE_13: case BTW_TYPE_14:
-			case BTW_TYPE_21: case BTW_TYPE_22: case BTW_TYPE_23: case BTW_TYPE_24:
-			case BTW_TYPE_31: case BTW_TYPE_32: case BTW_TYPE_33: case BTW_TYPE_34:
-				if (widget - BTW_TYPE_11 >= this->count) break;
+			case WID_BT_TYPE_11: case WID_BT_TYPE_12: case WID_BT_TYPE_13: case WID_BT_TYPE_14:
+			case WID_BT_TYPE_21: case WID_BT_TYPE_22: case WID_BT_TYPE_23: case WID_BT_TYPE_24:
+			case WID_BT_TYPE_31: case WID_BT_TYPE_32: case WID_BT_TYPE_33: case WID_BT_TYPE_34:
+				if (widget - WID_BT_TYPE_11 >= this->count) break;
 
 				if (HandlePlacePushButton(this, widget, SPR_CURSOR_TREE, HT_RECT)) {
-					this->tree_to_plant = (TreeType)(this->base + widget - BTW_TYPE_11);
+					this->tree_to_plant = (TreeType)(this->base + widget - WID_BT_TYPE_11);
 				}
 				break;
 
-			case BTW_TYPE_RANDOM: // tree of random type.
-				if (HandlePlacePushButton(this, BTW_TYPE_RANDOM, SPR_CURSOR_TREE, HT_RECT)) {
+			case WID_BT_TYPE_RANDOM: // tree of random type.
+				if (HandlePlacePushButton(this, WID_BT_TYPE_RANDOM, SPR_CURSOR_TREE, HT_RECT)) {
 					this->tree_to_plant = TREE_INVALID;
 				}
 				break;
 
-			case BTW_MANY_RANDOM: // place trees randomly over the landscape
-				this->LowerWidget(BTW_MANY_RANDOM);
+			case WID_BT_MANY_RANDOM: // place trees randomly over the landscape
+				this->LowerWidget(WID_BT_MANY_RANDOM);
 				this->SetTimeout();
 				SndPlayFx(SND_15_BEEP);
 				PlaceTreesRandomly();
@@ -173,8 +173,8 @@ public:
 
 	virtual void OnTimeout()
 	{
-		this->RaiseWidget(BTW_MANY_RANDOM);
-		this->SetWidgetDirty(BTW_MANY_RANDOM);
+		this->RaiseWidget(WID_BT_MANY_RANDOM);
+		this->SetWidgetDirty(WID_BT_MANY_RANDOM);
 	}
 
 	virtual void OnPlaceObjectAbort()
@@ -196,50 +196,50 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_11), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_11), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_12), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_12), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_13), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_13), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_14), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_14), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_21), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_21), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_22), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_22), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_23), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_23), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_24), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_24), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_31), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_31), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_32), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_32), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_33), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_33), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(1, 0),
-					NWidget(WWT_PANEL, COLOUR_GREY, BTW_TYPE_34), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY, WID_BT_TYPE_34), SetMinimalSize(34, 46), SetDataTip(0x0, STR_PLANT_TREE_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_TYPE_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_TYPE_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_MANY_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MANY_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
