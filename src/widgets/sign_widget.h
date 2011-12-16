@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_SIGN_LIST. */
 enum SignListWidgets {
-	/* Name starts with SI instead of S, becuase of collision with StationListWidgets */
+	/* Name starts with SI instead of S, because of collision with StationListWidgets */
 	SILW_CAPTION,
 	SILW_LIST,
 	SILW_SCROLLBAR,

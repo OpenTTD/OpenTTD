@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR (WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR is also used in others). */
 enum RoadToolbarWidgets {
-	/* Name starts with RO instead of R, becuase of collision with RailToolbarWidgets */
+	/* Name starts with RO instead of R, because of collision with RailToolbarWidgets */
 	ROTW_ROAD_X,
 	ROTW_ROAD_Y,
 	ROTW_AUTOROAD,
@@ -30,7 +30,7 @@ enum RoadToolbarWidgets {
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
 enum BuildRoadDepotWidgets {
-	/* Name starts with BRO instead of BR, becuase of collision with BuildRailDepotWidgets */
+	/* Name starts with BRO instead of BR, because of collision with BuildRailDepotWidgets */
 	BRODW_CAPTION,
 	BRODW_DEPOT_NE,
 	BRODW_DEPOT_SE,
