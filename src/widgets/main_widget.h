@@ -13,8 +13,8 @@
 #define WIDGETS_MAIN_WIDGET_H
 
 /** Widgets of the WC_MAIN_WINDOW. */
-enum MainWindowWidgets {
-	MW_VIEWPORT, ///< Main window viewport.
+enum MainWidgets {
+	WID_M_VIEWPORT, ///< Main window viewport.
 };
 
 #endif /* WIDGETS_MAIN_WIDGET_H */

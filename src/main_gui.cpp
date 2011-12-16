@@ -202,7 +202,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 }
 
 static const struct NWidgetPart _nested_main_window_widgets[] = {
-	NWidget(NWID_VIEWPORT, INVALID_COLOUR, MW_VIEWPORT), SetResize(1, 1),
+	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
 static const WindowDesc _main_window_desc(
@@ -244,7 +244,7 @@ struct MainWindow : Window
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 		ResizeWindow(this, _screen.width, _screen.height);
 
-		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(MW_VIEWPORT);
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 		nvp->InitializeViewport(this, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 	}
 
@@ -423,7 +423,7 @@ struct MainWindow : Window
 	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
-			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(MW_VIEWPORT);
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 		}
 	}

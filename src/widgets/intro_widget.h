@@ -14,25 +14,25 @@
 
 /** Widgets of the WC_SELECT_GAME. */
 enum SelectGameIntroWidgets {
-	SGI_GENERATE_GAME,
-	SGI_LOAD_GAME,
-	SGI_PLAY_SCENARIO,
-	SGI_PLAY_HEIGHTMAP,
-	SGI_EDIT_SCENARIO,
-	SGI_PLAY_NETWORK,
-	SGI_TEMPERATE_LANDSCAPE,
-	SGI_ARCTIC_LANDSCAPE,
-	SGI_TROPIC_LANDSCAPE,
-	SGI_TOYLAND_LANDSCAPE,
-	SGI_TRANSLATION_SELECTION,
-	SGI_TRANSLATION,
-	SGI_OPTIONS,
-	SGI_DIFFICULTIES,
-	SGI_SETTINGS_OPTIONS,
-	SGI_GRF_SETTINGS,
-	SGI_CONTENT_DOWNLOAD,
-	SGI_AI_SETTINGS,
-	SGI_EXIT,
+	WID_SGI_GENERATE_GAME,         ///< Generate game button.
+	WID_SGI_LOAD_GAME,             ///< Load game button.
+	WID_SGI_PLAY_SCENARIO,         ///< Play scenario button.
+	WID_SGI_PLAY_HEIGHTMAP,        ///< Play heightmap button.
+	WID_SGI_EDIT_SCENARIO,         ///< Edit scenario button.
+	WID_SGI_PLAY_NETWORK,          ///< Play network button.
+	WID_SGI_TEMPERATE_LANDSCAPE,   ///< Select temperate landscape button.
+	WID_SGI_ARCTIC_LANDSCAPE,      ///< Select arctic landscape button.
+	WID_SGI_TROPIC_LANDSCAPE,      ///< Select tropic landscape button.
+	WID_SGI_TOYLAND_LANDSCAPE,     ///< Select toyland landscape button.
+	WID_SGI_TRANSLATION_SELECTION, ///< Translation selection.
+	WID_SGI_TRANSLATION,           ///< Translation.
+	WID_SGI_OPTIONS,               ///< Options button.
+	WID_SGI_DIFFICULTIES,          ///< Difficulties button.
+	WID_SGI_SETTINGS_OPTIONS,      ///< Settings button.
+	WID_SGI_GRF_SETTINGS,          ///< NewGRF button.
+	WID_SGI_CONTENT_DOWNLOAD,      ///< Content Download button.
+	WID_SGI_AI_SETTINGS,           ///< AI button.
+	WID_SGI_EXIT,                  ///< Exit button.
 };
 
 #endif /* WIDGETS_INTRO_WIDGET_H */

@@ -49,27 +49,27 @@ struct SelectGameWindow : public Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		this->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
-		this->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
-		this->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LT_TROPIC);
-		this->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
+		this->SetWidgetLoweredState(WID_SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(WID_SGI_ARCTIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(WID_SGI_TROPIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(WID_SGI_TOYLAND_LANDSCAPE,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == SGI_DIFFICULTIES) SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
+		if (widget == WID_SGI_DIFFICULTIES) SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
 	}
 
 	virtual void OnInit()
 	{
 		bool missing = _current_language->missing >= _settings_client.gui.missing_strings_threshold && !IsReleasedVersion();
-		this->GetWidget<NWidgetStacked>(SGI_TRANSLATION_SELECTION)->SetDisplayedPlane(missing ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_SGI_TRANSLATION_SELECTION)->SetDisplayedPlane(missing ? 0 : SZSP_NONE);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case SGI_TRANSLATION:
+			case WID_SGI_TRANSLATION:
 				SetDParam(0, _current_language->missing);
 				DrawStringMultiLine(r.left, r.right, r.top,  r.bottom, STR_INTRO_TRANSLATION, TC_FROMSTRING, SA_CENTER);
 				break;
@@ -79,7 +79,7 @@ struct SelectGameWindow : public Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case SGI_DIFFICULTIES: {
+			case WID_SGI_DIFFICULTIES: {
 				Dimension textdim = {0, 0};
 				for (uint i = STR_DIFFICULTY_LEVEL_EASY; i <= STR_DIFFICULTY_LEVEL_CUSTOM; i++) {
 					SetDParam(0, i);
@@ -91,7 +91,7 @@ struct SelectGameWindow : public Window {
 				break;
 			}
 
-			case SGI_TRANSLATION: {
+			case WID_SGI_TRANSLATION: {
 				SetDParam(0, _current_language->missing);
 				int height = GetStringHeight(STR_INTRO_TRANSLATION, size->width);
 				if (height > 3 * FONT_HEIGHT_NORMAL) {
@@ -113,11 +113,11 @@ struct SelectGameWindow : public Window {
 #ifdef ENABLE_NETWORK
 		/* Do not create a network server when you (just) have closed one of the game
 		 * creation/load windows for the network server. */
-		if (IsInsideMM(widget, SGI_GENERATE_GAME, SGI_EDIT_SCENARIO + 1)) _is_network_server = false;
+		if (IsInsideMM(widget, WID_SGI_GENERATE_GAME, WID_SGI_EDIT_SCENARIO + 1)) _is_network_server = false;
 #endif /* ENABLE_NETWORK */
 
 		switch (widget) {
-			case SGI_GENERATE_GAME:
+			case WID_SGI_GENERATE_GAME:
 				if (_ctrl_pressed) {
 					StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 				} else {
@@ -125,12 +125,12 @@ struct SelectGameWindow : public Window {
 				}
 				break;
 
-			case SGI_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-			case SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
-			case SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
-			case SGI_EDIT_SCENARIO:  StartScenarioEditor(); break;
+			case WID_SGI_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
+			case WID_SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
+			case WID_SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+			case WID_SGI_EDIT_SCENARIO:  StartScenarioEditor(); break;
 
-			case SGI_PLAY_NETWORK:
+			case WID_SGI_PLAY_NETWORK:
 				if (!_network_available) {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
@@ -138,24 +138,24 @@ struct SelectGameWindow : public Window {
 				}
 				break;
 
-			case SGI_TEMPERATE_LANDSCAPE: case SGI_ARCTIC_LANDSCAPE:
-			case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
-				SetNewLandscapeType(widget - SGI_TEMPERATE_LANDSCAPE);
+			case WID_SGI_TEMPERATE_LANDSCAPE: case WID_SGI_ARCTIC_LANDSCAPE:
+			case WID_SGI_TROPIC_LANDSCAPE: case WID_SGI_TOYLAND_LANDSCAPE:
+				SetNewLandscapeType(widget - WID_SGI_TEMPERATE_LANDSCAPE);
 				break;
 
-			case SGI_OPTIONS:         ShowGameOptions(); break;
-			case SGI_DIFFICULTIES:    ShowGameDifficulty(); break;
-			case SGI_SETTINGS_OPTIONS:ShowGameSettings(); break;
-			case SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
-			case SGI_CONTENT_DOWNLOAD:
+			case WID_SGI_OPTIONS:         ShowGameOptions(); break;
+			case WID_SGI_DIFFICULTIES:    ShowGameDifficulty(); break;
+			case WID_SGI_SETTINGS_OPTIONS:ShowGameSettings(); break;
+			case WID_SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
+			case WID_SGI_CONTENT_DOWNLOAD:
 				if (!_network_available) {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
 					ShowNetworkContentListWindow();
 				}
 				break;
-			case SGI_AI_SETTINGS:     ShowAIConfigWindow(); break;
-			case SGI_EXIT:            HandleExitGameRequest(); break;
+			case WID_SGI_AI_SETTINGS:     ShowAIConfigWindow(); break;
+			case WID_SGI_EXIT:            HandleExitGameRequest(); break;
 		}
 	}
 };
@@ -167,9 +167,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	/* 'generate game' and 'load game' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GENERATE_GAME), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GENERATE_GAME), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_LOAD_GAME), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_LOAD_GAME), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
@@ -177,9 +177,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	/* 'play scenario' and 'play heightmap' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_HEIGHTMAP), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_HEIGHTMAP), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
@@ -187,9 +187,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	/* 'edit scenario' and 'play multiplayer' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_NETWORK), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_NETWORK), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
@@ -198,32 +198,32 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 	/* climate selection buttons */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0),
-		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TEMPERATE_LANDSCAPE), SetMinimalSize(77, 55),
+		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, WID_SGI_TEMPERATE_LANDSCAPE), SetMinimalSize(77, 55),
 							SetDataTip(SPR_SELECT_TEMPERATE, STR_INTRO_TOOLTIP_TEMPERATE),
 		NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
-		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_ARCTIC_LANDSCAPE), SetMinimalSize(77, 55),
+		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, WID_SGI_ARCTIC_LANDSCAPE), SetMinimalSize(77, 55),
 							SetDataTip(SPR_SELECT_SUB_ARCTIC, STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE),
 		NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
-		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TROPIC_LANDSCAPE), SetMinimalSize(77, 55),
+		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, WID_SGI_TROPIC_LANDSCAPE), SetMinimalSize(77, 55),
 							SetDataTip(SPR_SELECT_SUB_TROPICAL, STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE),
 		NWidget(NWID_SPACER), SetMinimalSize(3, 0), SetFill(1, 0),
-		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, SGI_TOYLAND_LANDSCAPE), SetMinimalSize(77, 55),
+		NWidget(WWT_IMGBTN_2, COLOUR_ORANGE, WID_SGI_TOYLAND_LANDSCAPE), SetMinimalSize(77, 55),
 							SetDataTip(SPR_SELECT_TOYLAND, STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE),
 		NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0),
 	EndContainer(),
 
 	NWidget(NWID_SPACER), SetMinimalSize(0, 7),
-	NWidget(NWID_SELECTION, INVALID_COLOUR, SGI_TRANSLATION_SELECTION),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SGI_TRANSLATION_SELECTION),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_EMPTY, COLOUR_ORANGE, SGI_TRANSLATION), SetMinimalSize(316, 12), SetFill(1, 0), SetPadding(0, 10, 7, 10),
+			NWidget(WWT_EMPTY, COLOUR_ORANGE, WID_SGI_TRANSLATION), SetMinimalSize(316, 12), SetFill(1, 0), SetPadding(0, 10, 7, 10),
 		EndContainer(),
 	EndContainer(),
 
 	/* 'game options' and 'difficulty options' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_OPTIONS), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_OPTIONS), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_DIFFICULTIES), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_DIFFICULTIES), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_DIFFICULTY, STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
@@ -231,9 +231,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	/* 'advanced settings' and 'newgrf settings' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_SETTINGS_OPTIONS), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_SETTINGS_OPTIONS), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_ADVANCED_SETTINGS, STR_INTRO_TOOLTIP_ADVANCED_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_INTRO_TOOLTIP_NEWGRF_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
@@ -241,9 +241,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 	/* 'online content' and 'ai settings' buttons */
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetPadding(0, 0, 0, 10), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_AI_SETTINGS), SetMinimalSize(158, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_AI_SETTINGS), SetMinimalSize(158, 12),
 							SetDataTip(STR_INTRO_AI_SETTINGS, STR_INTRO_TOOLTIP_AI_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 	EndContainer(),
 
@@ -252,7 +252,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 	/* 'exit program' button */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_SPACER), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EXIT), SetMinimalSize(128, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_EXIT), SetMinimalSize(128, 12),
 							SetDataTip(STR_INTRO_QUIT, STR_INTRO_TOOLTIP_QUIT),
 		NWidget(NWID_SPACER), SetFill(1, 0),
 	EndContainer(),

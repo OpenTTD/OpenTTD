@@ -14,35 +14,35 @@
 
 /** Widgets of the WC_LAND_INFO. */
 enum LandInfoWidgets {
-	LIW_BACKGROUND, ///< Background to draw on
+	WID_LI_BACKGROUND, ///< Background of the window.
 };
 
 /** Widgets of the WC_TOOLTIPS. */
 enum ToolTipsWidgets {
-	TTW_BACKGROUND, ///< Background to draw on
+	WID_TT_BACKGROUND, ///< Background of the window.
 };
 
 /** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
 enum AboutWidgets {
-	AW_SCROLLING_TEXT,       ///< The actually scrolling text
-	AW_WEBSITE,              ///< URL of OpenTTD website
+	WID_A_SCROLLING_TEXT, ///< The actually scrolling text.
+	WID_A_WEBSITE,        ///< URL of OpenTTD website.
 };
 
 /** Widgets of the WC_QUERY_STRING (WC_QUERY_STRING is also used in QueryEditSignWidgets). */
 enum QueryStringWidgets {
-	QUERY_STR_WIDGET_CAPTION,
-	QUERY_STR_WIDGET_TEXT,
-	QUERY_STR_WIDGET_DEFAULT,
-	QUERY_STR_WIDGET_CANCEL,
-	QUERY_STR_WIDGET_OK
+	WID_QS_CAPTION, ///< Caption of the window.
+	WID_QS_TEXT,    ///< Text of the query.
+	WID_QS_DEFAULT, ///< Default button.
+	WID_QS_CANCEL,  ///< Cancel button.
+	WID_QS_OK       ///< OK button.
 };
 
 /** Widgets of the WC_CONFIRM_POPUP_QUERY (WC_CONFIRM_POPUP_QUERY is also used in BootstrapAskForDownloadWidgets). */
 enum QueryWidgets {
-	QUERY_WIDGET_CAPTION,
-	QUERY_WIDGET_TEXT,
-	QUERY_WIDGET_NO,
-	QUERY_WIDGET_YES
+	WID_Q_CAPTION, ///< Caption of the window.
+	WID_Q_TEXT,    ///< Text of the query.
+	WID_Q_NO,      ///< Yes button.
+	WID_Q_YES      ///< No button.
 };
 
 #endif /* WIDGETS_MISC_WIDGET_H */

@@ -48,7 +48,7 @@ static const NWidgetPart _nested_land_info_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_DEBUGBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, LIW_BACKGROUND), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_LI_BACKGROUND), EndContainer(),
 };
 
 static const WindowDesc _land_info_desc(
@@ -73,7 +73,7 @@ public:
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != LIW_BACKGROUND) return;
+		if (widget != WID_LI_BACKGROUND) return;
 
 		uint y = r.top + WD_TEXTPANEL_TOP;
 		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
@@ -92,7 +92,7 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != LIW_BACKGROUND) return;
+		if (widget != WID_LI_BACKGROUND) return;
 
 		size->height = WD_TEXTPANEL_TOP + WD_TEXTPANEL_BOTTOM;
 		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
@@ -361,9 +361,9 @@ static const NWidgetPart _nested_about_widgets[] = {
 		NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_ABOUT_ORIGINAL_COPYRIGHT, STR_NULL),
 		NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_ABOUT_VERSION, STR_NULL),
 		NWidget(WWT_FRAME, COLOUR_GREY), SetPadding(0, 5, 1, 5),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, AW_SCROLLING_TEXT),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_A_SCROLLING_TEXT),
 		EndContainer(),
-		NWidget(WWT_LABEL, COLOUR_GREY, AW_WEBSITE), SetDataTip(STR_BLACK_RAW_STRING, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_GREY, WID_A_WEBSITE), SetDataTip(STR_BLACK_RAW_STRING, STR_NULL),
 		NWidget(WWT_LABEL, COLOUR_GREY), SetDataTip(STR_ABOUT_COPYRIGHT_OPENTTD, STR_NULL),
 	EndContainer(),
 };
@@ -446,17 +446,17 @@ struct AboutWindow : public Window {
 		this->InitNested(&_about_desc);
 
 		this->counter = 5;
-		this->text_position = this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->current_y;
+		this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == AW_WEBSITE) SetDParamStr(0, "Website: http://www.openttd.org");
+		if (widget == WID_A_WEBSITE) SetDParamStr(0, "Website: http://www.openttd.org");
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != AW_SCROLLING_TEXT) return;
+		if (widget != WID_A_SCROLLING_TEXT) return;
 
 		this->line_height = FONT_HEIGHT_NORMAL;
 
@@ -472,7 +472,7 @@ struct AboutWindow : public Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != AW_SCROLLING_TEXT) return;
+		if (widget != WID_A_SCROLLING_TEXT) return;
 
 		int y = this->text_position;
 
@@ -491,8 +491,8 @@ struct AboutWindow : public Window {
 			this->counter = 5;
 			this->text_position--;
 			/* If the last text has scrolled start a new from the start */
-			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
-				this->text_position = this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(AW_SCROLLING_TEXT)->current_y;
+			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
+				this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 			}
 			this->SetDirty();
 		}
@@ -603,7 +603,7 @@ void HideFillingPercent(TextEffectID *te_id)
 }
 
 static const NWidgetPart _nested_tooltips_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_GREY, TTW_BACKGROUND), SetMinimalSize(200, 32), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_TT_BACKGROUND), SetMinimalSize(200, 32), EndContainer(),
 };
 
 static const WindowDesc _tool_tips_desc(
@@ -1118,13 +1118,13 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 		this->parent = parent;
 
-		this->SetFocusedWidget(QUERY_STR_WIDGET_TEXT);
-		this->LowerWidget(QUERY_STR_WIDGET_TEXT);
+		this->SetFocusedWidget(WID_QS_TEXT);
+		this->LowerWidget(WID_QS_TEXT);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget == QUERY_STR_WIDGET_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
+		if (widget == WID_QS_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
 			/* We don't want this widget to show! */
 			fill->width = 0;
 			resize->width = 0;
@@ -1136,12 +1136,12 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	{
 		this->DrawWidgets();
 
-		this->DrawEditBox(QUERY_STR_WIDGET_TEXT);
+		this->DrawEditBox(WID_QS_TEXT);
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == QUERY_STR_WIDGET_CAPTION) SetDParam(0, this->caption);
+		if (widget == WID_QS_CAPTION) SetDParam(0, this->caption);
 	}
 
 	void OnOk()
@@ -1161,13 +1161,13 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case QUERY_STR_WIDGET_DEFAULT:
+			case WID_QS_DEFAULT:
 				this->text.buf[0] = '\0';
 				/* FALL THROUGH */
-			case QUERY_STR_WIDGET_OK:
+			case WID_QS_OK:
 				this->OnOk();
 				/* FALL THROUGH */
-			case QUERY_STR_WIDGET_CANCEL:
+			case WID_QS_CANCEL:
 				delete this;
 				break;
 		}
@@ -1175,13 +1175,13 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 	virtual void OnMouseLoop()
 	{
-		this->HandleEditBox(QUERY_STR_WIDGET_TEXT);
+		this->HandleEditBox(WID_QS_TEXT);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(QUERY_STR_WIDGET_TEXT, key, keycode, state)) {
+		switch (this->HandleEditBoxKey(WID_QS_TEXT, key, keycode, state)) {
 			default: NOT_REACHED();
 			case HEBR_EDITING: {
 				Window *osk = FindWindowById(WC_OSK, 0);
@@ -1198,7 +1198,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 	virtual void OnOpenOSKWindow(int wid)
 	{
-		ShowOnScreenKeyboard(this, wid, QUERY_STR_WIDGET_CANCEL, QUERY_STR_WIDGET_OK);
+		ShowOnScreenKeyboard(this, wid, WID_QS_CANCEL, WID_QS_OK);
 	}
 
 	~QueryStringWindow()
@@ -1214,15 +1214,15 @@ struct QueryStringWindow : public QueryStringBaseWindow
 static const NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QS_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetFill(1, 1), SetPadding(2, 2, 2, 2),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QS_TEXT), SetMinimalSize(256, 12), SetFill(1, 1), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_OK, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_DEFAULT), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_CANCEL), SetMinimalSize(86, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_OK), SetMinimalSize(87, 12), SetFill(1, 1), SetDataTip(STR_BUTTON_OK, STR_NULL),
 	EndContainer(),
 };
 
@@ -1282,12 +1282,12 @@ struct QueryWindow : public Window {
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case QUERY_WIDGET_CAPTION:
+			case WID_Q_CAPTION:
 				CopyInDParam(1, this->params, lengthof(this->params));
 				SetDParam(0, this->caption);
 				break;
 
-			case QUERY_WIDGET_TEXT:
+			case WID_Q_TEXT:
 				CopyInDParam(0, this->params, lengthof(this->params));
 				break;
 		}
@@ -1295,7 +1295,7 @@ struct QueryWindow : public Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != QUERY_WIDGET_TEXT) return;
+		if (widget != WID_Q_TEXT) return;
 
 		Dimension d = GetStringMultiLineBoundingBox(this->message, *size);
 		d.width += padding.width;
@@ -1305,7 +1305,7 @@ struct QueryWindow : public Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != QUERY_WIDGET_TEXT) return;
+		if (widget != WID_Q_TEXT) return;
 
 		DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->message, TC_FROMSTRING, SA_CENTER);
 	}
@@ -1313,7 +1313,7 @@ struct QueryWindow : public Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case QUERY_WIDGET_YES: {
+			case WID_Q_YES: {
 				/* in the Generate New World window, clicking 'Yes' causes
 				 * DeleteNonVitalWindows() to be called - we shouldn't be in a window then */
 				QueryCallbackProc *proc = this->proc;
@@ -1327,7 +1327,7 @@ struct QueryWindow : public Window {
 				}
 				break;
 			}
-			case QUERY_WIDGET_NO:
+			case WID_Q_NO:
 				delete this;
 				break;
 		}
@@ -1355,13 +1355,13 @@ struct QueryWindow : public Window {
 static const NWidgetPart _nested_query_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
-		NWidget(WWT_CAPTION, COLOUR_RED, QUERY_WIDGET_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_Q_CAPTION), SetDataTip(STR_JUST_STRING, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED), SetPIP(8, 15, 8),
-		NWidget(WWT_TEXT, COLOUR_RED, QUERY_WIDGET_TEXT), SetMinimalSize(200, 12),
+		NWidget(WWT_TEXT, COLOUR_RED, WID_Q_TEXT), SetMinimalSize(200, 12),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(20, 29, 20),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_YES), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_NO), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_Q_YES), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
 		EndContainer(),
 	EndContainer(),
 };
