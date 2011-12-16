@@ -13,12 +13,12 @@
 #define WIDGETS_WAYPOINT_WIDGET_H
 
 /** Widgets of the WC_WAYPOINT_VIEW. */
-enum WaypointWindowWidgets {
-	WAYPVW_CAPTION,
-	WAYPVW_VIEWPORT,
-	WAYPVW_CENTERVIEW,
-	WAYPVW_RENAME,
-	WAYPVW_SHOW_VEHICLES,
+enum WaypointWidgets {
+	WID_W_CAPTION,       ///< Caption of window.
+	WID_W_VIEWPORT,      ///< The viewport on this waypoint.
+	WID_W_CENTER_VIEW,   ///< Center the main view on this waypoint.
+	WID_W_RENAME,        ///< Rename this waypoint.
+	WID_W_SHOW_VEHICLES, ///< Show the vehicles visiting this waypoint.
 };
 
 #endif /* WIDGETS_WAYPOINT_WIDGET_H */

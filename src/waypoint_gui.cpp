@@ -59,16 +59,16 @@ public:
 
 		this->CreateNestedTree(desc);
 		if (this->vt == VEH_TRAIN) {
-			this->GetWidget<NWidgetCore>(WAYPVW_SHOW_VEHICLES)->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
-			this->GetWidget<NWidgetCore>(WAYPVW_CENTERVIEW)->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
-			this->GetWidget<NWidgetCore>(WAYPVW_RENAME)->tool_tip = STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME;
+			this->GetWidget<NWidgetCore>(WID_W_SHOW_VEHICLES)->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
+			this->GetWidget<NWidgetCore>(WID_W_CENTER_VIEW)->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
+			this->GetWidget<NWidgetCore>(WID_W_RENAME)->tool_tip = STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME;
 		}
 		this->FinishInitNested(desc, window_number);
 
 		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 		this->flags |= WF_DISABLE_VP_SCROLL;
 
-		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
+		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_W_VIEWPORT);
 		nvp->InitializeViewport(this, this->GetCenterTile(), ZOOM_LVL_VIEWPORT);
 
 		this->OnInvalidateData(0);
@@ -87,13 +87,13 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == WAYPVW_CAPTION) SetDParam(0, this->wp->index);
+		if (widget == WID_W_CAPTION) SetDParam(0, this->wp->index);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case WAYPVW_CENTERVIEW: // scroll to location
+			case WID_W_CENTER_VIEW: // scroll to location
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(this->GetCenterTile());
 				} else {
@@ -101,12 +101,12 @@ public:
 				}
 				break;
 
-			case WAYPVW_RENAME: // rename
+			case WID_W_RENAME: // rename
 				SetDParam(0, this->wp->index);
 				ShowQueryString(STR_WAYPOINT_NAME, STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
-			case WAYPVW_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
+			case WID_W_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
 				ShowVehicleListWindow(this->owner, this->vt, this->wp->index);
 				break;
 		}
@@ -121,9 +121,9 @@ public:
 	{
 		if (!gui_scope) return;
 		/* You can only change your own waypoints */
-		this->SetWidgetDisabledState(WAYPVW_RENAME, !this->wp->IsInUse() || (this->wp->owner != _local_company && this->wp->owner != OWNER_NONE));
+		this->SetWidgetDisabledState(WID_W_RENAME, !this->wp->IsInUse() || (this->wp->owner != _local_company && this->wp->owner != OWNER_NONE));
 		/* Disable the widget for waypoints with no use */
-		this->SetWidgetDisabledState(WAYPVW_SHOW_VEHICLES, !this->wp->IsInUse());
+		this->SetWidgetDisabledState(WID_W_SHOW_VEHICLES, !this->wp->IsInUse());
 
 		ScrollWindowToTile(this->GetCenterTile(), this, true);
 	}
@@ -131,7 +131,7 @@ public:
 	virtual void OnResize()
 	{
 		if (this->viewport != NULL) {
-			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
+			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_W_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 			this->wp->UpdateVirtCoord();
 
@@ -152,19 +152,19 @@ public:
 static const NWidgetPart _nested_waypoint_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WAYPVW_CAPTION), SetDataTip(STR_WAYPOINT_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_W_CAPTION), SetDataTip(STR_WAYPOINT_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_INSET, COLOUR_GREY), SetPadding(2, 2, 2, 2),
-			NWidget(NWID_VIEWPORT, COLOUR_GREY, WAYPVW_VIEWPORT), SetMinimalSize(256, 88), SetPadding(1, 1, 1, 1), SetResize(1, 1),
+			NWidget(NWID_VIEWPORT, COLOUR_GREY, WID_W_VIEWPORT), SetMinimalSize(256, 88), SetPadding(1, 1, 1, 1), SetResize(1, 1),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_CENTERVIEW), SetMinimalSize(100, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_BUOY_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(100, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUTTON_RENAME, STR_BUOY_VIEW_CHANGE_BUOY_NAME),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_SHOW_VEHICLES), SetMinimalSize(15, 12), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_W_CENTER_VIEW), SetMinimalSize(100, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_BUOY_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_W_RENAME), SetMinimalSize(100, 12), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUTTON_RENAME, STR_BUOY_VIEW_CHANGE_BUOY_NAME),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_W_SHOW_VEHICLES), SetMinimalSize(15, 12), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
