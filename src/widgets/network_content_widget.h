@@ -18,7 +18,7 @@ enum NetworkContentDownloadStatusWidgets {
 	WID_NCDS_CANCELOK,   ///< (Optional) Cancel/OK button.
 };
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkGameWindowWidgets, NetworkStartServerWidgets, and NetworkLobbyWindowWidgets). */
+/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkGameWidgets, NetworkStartServerWidgets, and NetworkLobbyWidgets). */
 enum NetworkContentListWidgets {
 	WID_NCL_BACKGROUND,     ///< Resize button.
 

@@ -14,27 +14,27 @@
 
 /** Widgets of the WC_NEWGRF_INSPECT. */
 enum NewGRFInspectWidgets {
-	WID_NGRFI_CAPTION,   ///< The caption bar of course
-	WID_NGRFI_PARENT,    ///< Inspect the parent
-	WID_NGRFI_MAINPANEL, ///< Panel widget containing the actual data
-	WID_NGRFI_SCROLLBAR, ///< Scrollbar
+	WID_NGRFI_CAPTION,   ///< The caption bar of course.
+	WID_NGRFI_PARENT,    ///< Inspect the parent.
+	WID_NGRFI_MAINPANEL, ///< Panel widget containing the actual data.
+	WID_NGRFI_SCROLLBAR, ///< Scrollbar.
 };
 
 /** Widgets of the WC_SPRITE_ALIGNER. */
 enum SpriteAlignerWidgets {
-	WID_SA_CAPTION,  ///< Caption of the window
-	WID_SA_PREVIOUS, ///< Skip to the previous sprite
-	WID_SA_GOTO,     ///< Go to a given sprite
-	WID_SA_NEXT,     ///< Skip to the next sprite
-	WID_SA_UP,       ///< Move the sprite up
-	WID_SA_LEFT,     ///< Move the sprite to the left
-	WID_SA_RIGHT,    ///< Move the sprite to the right
-	WID_SA_DOWN,     ///< Move the sprite down
-	WID_SA_SPRITE,   ///< The actual sprite
-	WID_SA_OFFSETS,  ///< The sprite offsets
-	WID_SA_PICKER,   ///< Sprite picker
-	WID_SA_LIST,     ///< Queried sprite list
-	WID_SA_SCROLLBAR,///< Scrollbar for sprite list
+	WID_SA_CAPTION,   ///< Caption of the window.
+	WID_SA_PREVIOUS,  ///< Skip to the previous sprite.
+	WID_SA_GOTO,      ///< Go to a given sprite.
+	WID_SA_NEXT,      ///< Skip to the next sprite.
+	WID_SA_UP,        ///< Move the sprite up.
+	WID_SA_LEFT,      ///< Move the sprite to the left.
+	WID_SA_RIGHT,     ///< Move the sprite to the right.
+	WID_SA_DOWN,      ///< Move the sprite down.
+	WID_SA_SPRITE,    ///< The actual sprite.
+	WID_SA_OFFSETS,   ///< The sprite offsets.
+	WID_SA_PICKER,    ///< Sprite picker.
+	WID_SA_LIST,      ///< Queried sprite list.
+	WID_SA_SCROLLBAR, ///< Scrollbar for sprite list.
 };
 
 #endif /* WIDGETS_NEWGRF_DEBUG_WIDGET_H */

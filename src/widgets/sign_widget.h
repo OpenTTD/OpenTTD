@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_SIGN_LIST. */
 enum SignListWidgets {
-	/* Name starts with SI instead of S, because of collision with StationListWidgets */
+	/* Name starts with SI instead of S, because of collision with SaveLoadWidgets */
 	WID_SIL_CAPTION,               ///< Caption of the window.
 	WID_SIL_LIST,                  ///< List of signs.
 	WID_SIL_SCROLLBAR,             ///< Scrollbar of list.
