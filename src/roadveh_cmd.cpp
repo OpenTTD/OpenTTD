@@ -1453,7 +1453,7 @@ again:
 		if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(true);
 
 		StartRoadVehSound(v);
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 	}
 
 	/* Check tile position conditions - i.e. stop position in depot,
@@ -1587,7 +1587,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 			 * suddenly moved farther away, we continue our normal
 			 * schedule? */
 			v->current_order.MakeDummy();
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 		}
 		return;
 	}
@@ -1603,7 +1603,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 	SetBit(v->gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 	v->current_order.MakeGoToDepot(depot, ODTFB_SERVICE);
 	v->dest_tile = rfdd.tile;
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
 void RoadVehicle::OnNewDay()

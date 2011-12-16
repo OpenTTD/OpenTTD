@@ -66,7 +66,7 @@ void GroundVehicle<T, Type>::PowerChanged()
 		this->gcache.cached_power = total_power;
 		this->gcache.cached_max_te = max_te;
 		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 	}
 
 	this->gcache.cached_max_track_speed = max_track_speed;

@@ -13,64 +13,64 @@
 #define WIDGETS_VEHICLE_WIDGET_H
 
 /** Widgets of the WC_VEHICLE_VIEW. */
-enum VehicleViewWindowWidgets {
-	VVW_WIDGET_CAPTION,
-	VVW_WIDGET_VIEWPORT,           ///< Viewport widget.
-	VVW_WIDGET_START_STOP_VEH,
-	VVW_WIDGET_CENTER_MAIN_VIEH,
-	VVW_WIDGET_GOTO_DEPOT,
-	VVW_WIDGET_REFIT_VEH,
-	VVW_WIDGET_SHOW_ORDERS,
-	VVW_WIDGET_SHOW_DETAILS,
-	VVW_WIDGET_CLONE_VEH,
-	VVW_WIDGET_SELECT_DEPOT_CLONE, ///< Selection widget between 'goto depot', and 'clone vehicle' buttons.
-	VVW_WIDGET_SELECT_REFIT_TURN,  ///< Selection widget between 'refit' and 'turn around' buttons.
-	VVW_WIDGET_TURN_AROUND,
-	VVW_WIDGET_FORCE_PROCEED,
+enum VehicleViewWidgets {
+	WID_VV_CAPTION,            ///< Caption of window.
+	WID_VV_VIEWPORT,           ///< Viewport widget.
+	WID_VV_START_STOP,         ///< Start or stop this vehicle, and show information about the current state.
+	WID_VV_CENTER_MAIN_VIEW,   ///< Center the main view on this vehicle.
+	WID_VV_GOTO_DEPOT,         ///< Order this vehicle to go to the depot.
+	WID_VV_REFIT,              ///< Open the refit window.
+	WID_VV_SHOW_ORDERS,        ///< Show the orders of this vehicle.
+	WID_VV_SHOW_DETAILS,       ///< Show details of this vehicle.
+	WID_VV_CLONE,              ///< Clone this vehicle.
+	WID_VV_SELECT_DEPOT_CLONE, ///< Selection widget between 'goto depot', and 'clone vehicle' buttons.
+	WID_VV_SELECT_REFIT_TURN,  ///< Selection widget between 'refit' and 'turn around' buttons.
+	WID_VV_TURN_AROUND,        ///< Turn this vehicle around.
+	WID_VV_FORCE_PROCEED,      ///< Force this vehicle to pass a signal at danger.
 };
 
 /** Widgets of the WC_VEHICLE_REFIT. */
 enum VehicleRefitWidgets {
-	VRW_CAPTION,
-	VRW_VEHICLE_PANEL_DISPLAY,
-	VRW_SHOW_HSCROLLBAR,
-	VRW_HSCROLLBAR,
-	VRW_SELECTHEADER,
-	VRW_MATRIX,
-	VRW_SCROLLBAR,
-	VRW_INFOPANEL,
-	VRW_REFITBUTTON,
+	WID_VR_CAPTION,               ///< Caption of window.
+	WID_VR_VEHICLE_PANEL_DISPLAY, ///< Display with a representation of the vehicle to refit.
+	WID_VR_SHOW_HSCROLLBAR,       ///< Selection widget for the horizontal scrollbar.
+	WID_VR_HSCROLLBAR,            ///< Horizontal scrollbar or the vehicle display.
+	WID_VR_SELECT_HEADER,         ///< Header with question about the cargo to carry.
+	WID_VR_MATRIX,                ///< Options to refit to.
+	WID_VR_SCROLLBAR,             ///< Scrollbar for the refit options.
+	WID_VR_INFO,                  ///< Information about the currently selected refit option.
+	WID_VR_REFIT,                 ///< Perform the refit.
 };
 
 /** Widgets of the WC_VEHICLE_DETAILS. */
-enum VehicleDetailsWindowWidgets {
-	VLD_WIDGET_CAPTION,
-	VLD_WIDGET_RENAME_VEHICLE,
-	VLD_WIDGET_TOP_DETAILS,
-	VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
-	VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
-	VLD_WIDGET_SERVICING_INTERVAL,
-	VLD_WIDGET_MIDDLE_DETAILS,
-	VLD_WIDGET_MATRIX,
-	VLD_WIDGET_SCROLLBAR,
-	VLD_WIDGET_DETAILS_CARGO_CARRIED,
-	VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
-	VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
-	VLD_WIDGET_DETAILS_TOTAL_CARGO,
+enum VehicleDetailsWidgets {
+	WID_VD_CAPTION,                     ///< Caption of window.
+	WID_VD_RENAME_VEHICLE,              ///< Rename this vehicle.
+	WID_VD_TOP_DETAILS,                 ///< Panel with generic details.
+	WID_VD_INCREASE_SERVICING_INTERVAL, ///< Increase the servicing interval.
+	WID_VD_DECREASE_SERVICING_INTERVAL, ///< Decrease the servicing interval.
+	WID_VD_SERVICING_INTERVAL,          ///< Information about the servicing interval.
+	WID_VD_MIDDLE_DETAILS,              ///< Details for non-trains.
+	WID_VD_MATRIX,                      ///< List of details for trains.
+	WID_VD_SCROLLBAR,                   ///< Scrollbar for train details.
+	WID_VD_DETAILS_CARGO_CARRIED,       ///< Show carried cargo per part of the train.
+	WID_VD_DETAILS_TRAIN_VEHICLES,      ///< Show all parts of the train with their description.
+	WID_VD_DETAILS_CAPACITY_OF_EACH,    ///< Show the capacity of all train parts.
+	WID_VD_DETAILS_TOTAL_CARGO,         ///< Show the capacity and carried cargo amounts aggregrated per cargo of the train.
 };
 
-/** Widgets of the vehicle lists (WC_INVALID). */
-enum VehicleListWindowWidgets {
-	VLW_WIDGET_CAPTION,
-	VLW_WIDGET_SORT_ORDER,
-	VLW_WIDGET_SORT_BY_PULLDOWN,
-	VLW_WIDGET_LIST,
-	VLW_WIDGET_SCROLLBAR,
-	VLW_WIDGET_HIDE_BUTTONS,
-	VLW_WIDGET_AVAILABLE_VEHICLES,
-	VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
-	VLW_WIDGET_STOP_ALL,
-	VLW_WIDGET_START_ALL,
+/** Widgets of the vehicle lists (WC_TRAINS_LIST, WC_ROADVEH_LIST, WC_SHIPS_LIST, WC_AIRCRAFT_LIST). */
+enum VehicleListWidgets {
+	WID_VL_CAPTION,                  ///< Caption of window.
+	WID_VL_SORT_ORDER,               ///< Sort order.
+	WID_VL_SORT_BY_PULLDOWN,         ///< Sort by dropdown list.
+	WID_VL_LIST,                     ///< List of the vehicles.
+	WID_VL_SCROLLBAR,                ///< Scrollbar for the list.
+	WID_VL_HIDE_BUTTONS,             ///< Selection to hide the buttons.
+	WID_VL_AVAILABLE_VEHICLES,       ///< Available vehicles.
+	WID_VL_MANAGE_VEHICLES_DROPDOWN, ///< Manage vehicles dropdown list.
+	WID_VL_STOP_ALL,                 ///< Stop all button.
+	WID_VL_START_ALL,                ///< Start all button.
 };
 
 

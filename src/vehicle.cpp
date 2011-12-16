@@ -193,7 +193,7 @@ uint Vehicle::Crash(bool flooded)
 
 	/* Dirty some windows */
 	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 	SetWindowDirty(WC_VEHICLE_DEPOT, this->tile);
 
@@ -1935,7 +1935,7 @@ void Vehicle::BeginLoading()
 	PrepareUnload(this);
 
 	SetWindowDirty(GetWindowClassForVehicleType(this->type), this->owner);
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 	SetWindowDirty(WC_STATION_VIEW, this->last_station_visited);
 
@@ -2031,7 +2031,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			if (flags & DC_EXEC) {
 				this->current_order.SetDepotOrderType(ODTF_MANUAL);
 				this->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
-				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 			}
 			return CommandCost();
 		}
@@ -2048,7 +2048,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 			}
 
 			this->current_order.MakeDummy();
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 		}
 		return CommandCost();
 	}
@@ -2070,7 +2070,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		this->dest_tile = location;
 		this->current_order.MakeGoToDepot(destination, ODTF_MANUAL);
 		if (!(command & DEPOT_SERVICE)) this->current_order.SetDepotActionType(ODATFB_HALT);
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
 		/* If there is no depot in front, reverse automatically (trains only) */
 		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);

@@ -161,14 +161,14 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	if (depot == NULL) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			v->current_order.MakeDummy();
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 		}
 		return;
 	}
 
 	v->current_order.MakeGoToDepot(depot->index, ODTFB_SERVICE);
 	v->dest_tile = depot->xy;
-	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
 /**
@@ -347,7 +347,7 @@ static bool ShipAccelerate(Vehicle *v)
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 	}
 
 	/* Convert direction-indepenent speed into direction-dependent speed. (old movement method) */
@@ -510,7 +510,7 @@ static void ShipController(Ship *v)
 				 * always skip ahead. */
 				if (v->current_order.IsType(OT_LEAVESTATION)) {
 					v->current_order.Free();
-					SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+					SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 				} else if (v->dest_tile != 0) {
 					/* We have a target, let's see if we reached it... */
 					if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
