@@ -32,16 +32,16 @@ struct SubsidyListWindow : Window {
 	SubsidyListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->CreateNestedTree(desc);
-		this->vscroll = this->GetScrollbar(SULW_SCROLLBAR);
+		this->vscroll = this->GetScrollbar(WID_SUL_SCROLLBAR);
 		this->FinishInitNested(desc, window_number);
 		this->OnInvalidateData(0);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget != SULW_PANEL) return;
+		if (widget != WID_SUL_PANEL) return;
 
-		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, SULW_PANEL, WD_FRAMERECT_TOP);
+		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SUL_PANEL, WD_FRAMERECT_TOP);
 		int num = 0;
 		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
@@ -130,7 +130,7 @@ struct SubsidyListWindow : Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != SULW_PANEL) return;
+		if (widget != WID_SUL_PANEL) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_SUBSIDIES_OFFERED_TITLE), GetStringBoundingBox(STR_SUBSIDIES_SUBSIDISED_TITLE));
 
 		resize->height = d.height;
@@ -143,7 +143,7 @@ struct SubsidyListWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != SULW_PANEL) return;
+		if (widget != WID_SUL_PANEL) return;
 
 		YearMonthDay ymd;
 		ConvertDateToYMD(_date, &ymd);
@@ -208,7 +208,7 @@ struct SubsidyListWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll->SetCapacityFromWidget(this, SULW_PANEL);
+		this->vscroll->SetCapacityFromWidget(this, WID_SUL_PANEL);
 	}
 
 	/**
@@ -231,9 +231,9 @@ static const NWidgetPart _nested_subsidies_list_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, SULW_PANEL), SetDataTip(0x0, STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetScrollbar(SULW_SCROLLBAR), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, WID_SUL_PANEL), SetDataTip(0x0, STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetScrollbar(WID_SUL_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, SULW_SCROLLBAR),
+			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_SUL_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 		EndContainer(),
 	EndContainer(),

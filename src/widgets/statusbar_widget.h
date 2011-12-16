@@ -14,9 +14,9 @@
 
 /** Widgets of the WC_STATUS_BAR. */
 enum StatusbarWidget {
-	SBW_LEFT,   ///< left part of the statusbar; date is shown there
-	SBW_MIDDLE, ///< middle part; current news or company name or *** SAVING *** or *** PAUSED ***
-	SBW_RIGHT,  ///< right part; bank balance
+	WID_S_LEFT,   ///< Left part of the statusbar; date is shown there.
+	WID_S_MIDDLE, ///< Middle part; current news or company name or *** SAVING *** or *** PAUSED ***.
+	WID_S_RIGHT,  ///< Right part; bank balance.
 };
 
 #endif /* WIDGETS_STATUSBAR_WIDGET_H */

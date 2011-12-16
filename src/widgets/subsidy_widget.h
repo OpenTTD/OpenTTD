@@ -15,8 +15,8 @@
 /** Widgets of the WC_SUBSIDIES_LIST. */
 enum SubsidyListWidgets {
 	/* Name starts with SU instead of S, because of collision with StationListWidgets */
-	SULW_PANEL,
-	SULW_SCROLLBAR,
+	WID_SUL_PANEL,     ///< Main panel of window.
+	WID_SUL_SCROLLBAR, ///< Scrollbar of panel.
 };
 
 #endif /* WIDGETS_SUBSIDY_WIDGET_H */

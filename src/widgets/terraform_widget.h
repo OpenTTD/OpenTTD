@@ -14,36 +14,36 @@
 
 /** Widgets of the WC_SCEN_LAND_GEN (WC_SCEN_LAND_GEN is also used in EditorTerraformToolbarWidgets). */
 enum TerraformToolbarWidgets {
-	TTW_SHOW_PLACE_OBJECT,                ///< Should the place object button be shown?
-	TTW_BUTTONS_START,                    ///< Start of pushable buttons
-	TTW_LOWER_LAND = TTW_BUTTONS_START,   ///< Lower land button
-	TTW_RAISE_LAND,                       ///< Raise land button
-	TTW_LEVEL_LAND,                       ///< Level land button
-	TTW_DEMOLISH,                         ///< Demolish aka dynamite button
-	TTW_BUY_LAND,                         ///< Buy land button
-	TTW_PLANT_TREES,                      ///< Plant trees button (note: opens seperate window, no place-push-button)
-	TTW_PLACE_SIGN,                       ///< Place sign button
-	TTW_PLACE_OBJECT,                     ///< Place object button
+	WID_TT_SHOW_PLACE_OBJECT,                 ///< Should the place object button be shown?
+	WID_TT_BUTTONS_START,                     ///< Start of pushable buttons.
+	WID_TT_LOWER_LAND = WID_TT_BUTTONS_START, ///< Lower land button.
+	WID_TT_RAISE_LAND,                        ///< Raise land button.
+	WID_TT_LEVEL_LAND,                        ///< Level land button.
+	WID_TT_DEMOLISH,                          ///< Demolish aka dynamite button.
+	WID_TT_BUY_LAND,                          ///< Buy land button.
+	WID_TT_PLANT_TREES,                       ///< Plant trees button (note: opens seperate window, no place-push-button).
+	WID_TT_PLACE_SIGN,                        ///< Place sign button.
+	WID_TT_PLACE_OBJECT,                      ///< Place object button.
 };
 
 /** Widgets of the WC_SCEN_LAND_GEN (WC_SCEN_LAND_GEN is also used in TerraformToolbarWidgets). */
 enum EditorTerraformToolbarWidgets {
-	ETTW_SHOW_PLACE_DESERT,                ///< Should the place desert button be shown?
-	ETTW_START,                            ///< Used for iterations
-	ETTW_DOTS = ETTW_START,                ///< Invisible widget for rendering the terraform size on.
-	ETTW_BUTTONS_START,                    ///< Start of pushable buttons
-	ETTW_DEMOLISH = ETTW_BUTTONS_START,    ///< Demolish aka dynamite button
-	ETTW_LOWER_LAND,                       ///< Lower land button
-	ETTW_RAISE_LAND,                       ///< Raise land button
-	ETTW_LEVEL_LAND,                       ///< Level land button
-	ETTW_PLACE_ROCKS,                      ///< Place rocks button
-	ETTW_PLACE_DESERT,                     ///< Place desert button (in tropical climate)
-	ETTW_PLACE_OBJECT,                     ///< Place transmitter button
-	ETTW_BUTTONS_END,                      ///< End of pushable buttons
-	ETTW_INCREASE_SIZE = ETTW_BUTTONS_END, ///< Upwards arrow button to increase terraforming size
-	ETTW_DECREASE_SIZE,                    ///< Downwards arrow button to decrease terraforming size
-	ETTW_NEW_SCENARIO,                     ///< Button for generating a new scenario
-	ETTW_RESET_LANDSCAPE,                  ///< Button for removing all company-owned property
+	WID_ETT_SHOW_PLACE_DESERT,                   ///< Should the place desert button be shown?
+	WID_ETT_START,                               ///< Used for iterations.
+	WID_ETT_DOTS = WID_ETT_START,                ///< Invisible widget for rendering the terraform size on.
+	WID_ETT_BUTTONS_START,                       ///< Start of pushable buttons.
+	WID_ETT_DEMOLISH = WID_ETT_BUTTONS_START,    ///< Demolish aka dynamite button.
+	WID_ETT_LOWER_LAND,                          ///< Lower land button.
+	WID_ETT_RAISE_LAND,                          ///< Raise land button.
+	WID_ETT_LEVEL_LAND,                          ///< Level land button.
+	WID_ETT_PLACE_ROCKS,                         ///< Place rocks button.
+	WID_ETT_PLACE_DESERT,                        ///< Place desert button (in tropical climate).
+	WID_ETT_PLACE_OBJECT,                        ///< Place transmitter button.
+	WID_ETT_BUTTONS_END,                         ///< End of pushable buttons.
+	WID_ETT_INCREASE_SIZE = WID_ETT_BUTTONS_END, ///< Upwards arrow button to increase terraforming size.
+	WID_ETT_DECREASE_SIZE,                       ///< Downwards arrow button to decrease terraforming size.
+	WID_ETT_NEW_SCENARIO,                        ///< Button for generating a new scenario.
+	WID_ETT_RESET_LANDSCAPE,                     ///< Button for removing all company-owned property.
 };
 
 #endif /* WIDGETS_TERRAFORM_WIDGET_H */
