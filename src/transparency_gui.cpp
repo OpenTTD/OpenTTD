@@ -41,26 +41,26 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case TTW_WIDGET_SIGNS:
-			case TTW_WIDGET_TREES:
-			case TTW_WIDGET_HOUSES:
-			case TTW_WIDGET_INDUSTRIES:
-			case TTW_WIDGET_BUILDINGS:
-			case TTW_WIDGET_BRIDGES:
-			case TTW_WIDGET_STRUCTURES:
-			case TTW_WIDGET_CATENARY:
-			case TTW_WIDGET_LOADING: {
-				uint i = widget - TTW_WIDGET_BEGIN;
+			case WID_TT_SIGNS:
+			case WID_TT_TREES:
+			case WID_TT_HOUSES:
+			case WID_TT_INDUSTRIES:
+			case WID_TT_BUILDINGS:
+			case WID_TT_BRIDGES:
+			case WID_TT_STRUCTURES:
+			case WID_TT_CATENARY:
+			case WID_TT_LOADING: {
+				uint i = widget - WID_TT_BEGIN;
 				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, r.left + 1, r.top + 1);
 				break;
 			}
-			case TTW_WIDGET_BUTTONS:
-				for (uint i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
-					if (i == TTW_WIDGET_LOADING) continue; // Do not draw button for invisible loading indicators.
+			case WID_TT_BUTTONS:
+				for (uint i = WID_TT_BEGIN; i < WID_TT_END; i++) {
+					if (i == WID_TT_LOADING) continue; // Do not draw button for invisible loading indicators.
 
 					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(i);
 					DrawFrameRect(wi->pos_x + 1, r.top + 2, wi->pos_x + wi->current_x - 2, r.bottom - 2, COLOUR_PALE_GREEN,
-							HasBit(_invisibility_opt, i - TTW_WIDGET_BEGIN) ? FR_LOWERED : FR_NONE);
+							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FR_LOWERED : FR_NONE);
 				}
 				break;
 		}
@@ -68,35 +68,35 @@ public:
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget >= TTW_WIDGET_BEGIN && widget < TTW_WIDGET_END) {
+		if (widget >= WID_TT_BEGIN && widget < WID_TT_END) {
 			if (_ctrl_pressed) {
 				/* toggle the bit of the transparencies lock variable */
-				ToggleTransparencyLock((TransparencyOption)(widget - TTW_WIDGET_BEGIN));
+				ToggleTransparencyLock((TransparencyOption)(widget - WID_TT_BEGIN));
 				this->SetDirty();
 			} else {
 				/* toggle the bit of the transparencies variable and play a sound */
-				ToggleTransparency((TransparencyOption)(widget - TTW_WIDGET_BEGIN));
+				ToggleTransparency((TransparencyOption)(widget - WID_TT_BEGIN));
 				SndPlayFx(SND_15_BEEP);
 				MarkWholeScreenDirty();
 			}
-		} else if (widget == TTW_WIDGET_BUTTONS) {
+		} else if (widget == WID_TT_BUTTONS) {
 			uint i;
-			for (i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
+			for (i = WID_TT_BEGIN; i < WID_TT_END; i++) {
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
 				if (IsInsideBS(pt.x, nwid->pos_x, nwid->current_x)) {
 					break;
 				}
 			}
-			if (i == TTW_WIDGET_LOADING || i == TTW_WIDGET_END) return;
+			if (i == WID_TT_LOADING || i == WID_TT_END) return;
 
-			ToggleInvisibility((TransparencyOption)(i - TTW_WIDGET_BEGIN));
+			ToggleInvisibility((TransparencyOption)(i - WID_TT_BEGIN));
 			SndPlayFx(SND_15_BEEP);
 
 			/* Redraw whole screen only if transparency is set */
-			if (IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_BEGIN))) {
+			if (IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN))) {
 				MarkWholeScreenDirty();
 			} else {
-				this->SetWidgetDirty(TTW_WIDGET_BUTTONS);
+				this->SetWidgetDirty(WID_TT_BUTTONS);
 			}
 		}
 	}
@@ -104,7 +104,7 @@ public:
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
-		pt.y += 2 * (sm_height - this->GetWidget<NWidgetBase>(TTW_WIDGET_BUTTONS)->current_y);
+		pt.y += 2 * (sm_height - this->GetWidget<NWidgetBase>(WID_TT_BUTTONS)->current_y);
 		return pt;
 	}
 
@@ -116,8 +116,8 @@ public:
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		for (uint i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
-			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_BEGIN)));
+		for (uint i = WID_TT_BEGIN; i < WID_TT_END; i++) {
+			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN)));
 		}
 	}
 };
@@ -129,19 +129,19 @@ static const NWidgetPart _nested_transparency_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_SIGNS), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SIGN, STR_TRANSPARENT_SIGNS_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_TREES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_PLANTTREES, STR_TRANSPARENT_TREES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_HOUSES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TOWN, STR_TRANSPARENT_HOUSES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_INDUSTRIES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_INDUSTRY, STR_TRANSPARENT_INDUSTRIES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_BUILDINGS), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_COMPANY_LIST, STR_TRANSPARENT_BUILDINGS_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_BRIDGES), SetMinimalSize(43, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BRIDGE, STR_TRANSPARENT_BRIDGES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_STRUCTURES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_TRANSPARENT_STRUCTURES_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_CATENARY), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_BUILD_X_ELRAIL, STR_TRANSPARENT_CATENARY_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_WIDGET_LOADING), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRAINLIST, STR_TRANSPARENT_LOADING_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_SIGNS), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_SIGN, STR_TRANSPARENT_SIGNS_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_TREES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_PLANTTREES, STR_TRANSPARENT_TREES_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_HOUSES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TOWN, STR_TRANSPARENT_HOUSES_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_INDUSTRIES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_INDUSTRY, STR_TRANSPARENT_INDUSTRIES_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_BUILDINGS), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_COMPANY_LIST, STR_TRANSPARENT_BUILDINGS_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_BRIDGES), SetMinimalSize(43, 22), SetFill(0, 1), SetDataTip(SPR_IMG_BRIDGE, STR_TRANSPARENT_BRIDGES_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_STRUCTURES), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_TRANSPARENT_STRUCTURES_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_CATENARY), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_BUILD_X_ELRAIL, STR_TRANSPARENT_CATENARY_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_LOADING), SetMinimalSize(22, 22), SetFill(0, 1), SetDataTip(SPR_IMG_TRAINLIST, STR_TRANSPARENT_LOADING_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	/* Panel with 'inivisibility' buttons. */
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TTW_WIDGET_BUTTONS), SetMinimalSize(219, 13), SetDataTip(0x0, STR_TRANSPARENT_INVISIBLE_TOOLTIP),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_TT_BUTTONS), SetMinimalSize(219, 13), SetDataTip(0x0, STR_TRANSPARENT_INVISIBLE_TOOLTIP),
 	EndContainer(),
 };
 

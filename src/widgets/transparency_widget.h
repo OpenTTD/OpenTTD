@@ -15,20 +15,20 @@
 /** Widgets of the WC_TRANSPARENCY_TOOLBAR. */
 enum TransparencyToolbarWidgets {
 	/* Button row. */
-	TTW_WIDGET_BEGIN,                    ///< First toggle button.
-	TTW_WIDGET_SIGNS = TTW_WIDGET_BEGIN, ///< Signs background transparency toggle button.
-	TTW_WIDGET_TREES,                    ///< Trees transparency toggle button.
-	TTW_WIDGET_HOUSES,                   ///< Houses transparency toggle button.
-	TTW_WIDGET_INDUSTRIES,               ///< industries transparency toggle button.
-	TTW_WIDGET_BUILDINGS,                ///< Company buildings and structures transparency toggle button.
-	TTW_WIDGET_BRIDGES,                  ///< Bridges transparency toggle button.
-	TTW_WIDGET_STRUCTURES,               ///< Object structure transparency toggle button.
-	TTW_WIDGET_CATENARY,                 ///< Catenary transparency toggle button.
-	TTW_WIDGET_LOADING,                  ///< Loading indicators transparency toggle button.
-	TTW_WIDGET_END,                      ///< End of toggle buttons.
+	WID_TT_BEGIN,                    ///< First toggle button.
+	WID_TT_SIGNS = WID_TT_BEGIN,     ///< Signs background transparency toggle button.
+	WID_TT_TREES,                    ///< Trees transparency toggle button.
+	WID_TT_HOUSES,                   ///< Houses transparency toggle button.
+	WID_TT_INDUSTRIES,               ///< industries transparency toggle button.
+	WID_TT_BUILDINGS,                ///< Company buildings and structures transparency toggle button.
+	WID_TT_BRIDGES,                  ///< Bridges transparency toggle button.
+	WID_TT_STRUCTURES,               ///< Object structure transparency toggle button.
+	WID_TT_CATENARY,                 ///< Catenary transparency toggle button.
+	WID_TT_LOADING,                  ///< Loading indicators transparency toggle button.
+	WID_TT_END,                      ///< End of toggle buttons.
 
 	/* Panel with buttons for invisibility */
-	TTW_WIDGET_BUTTONS,                  ///< Panel with 'invisibility' buttons.
+	WID_TT_BUTTONS,                  ///< Panel with 'invisibility' buttons.
 };
 
 #endif /* WIDGETS_TRANSPARENCY_WIDGET_H */
