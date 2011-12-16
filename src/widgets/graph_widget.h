@@ -16,10 +16,10 @@
 
 /** Widgets of the WC_GRAPH_LEGEND. */
 enum GraphLegendWidgets {
-	WID_GL_BACKGROUND,
+	WID_GL_BACKGROUND,    ///< Background of the window.
 
-	WID_GL_FIRST_COMPANY,
-	WID_GL_LAST_COMPANY = WID_GL_FIRST_COMPANY + MAX_COMPANIES - 1,
+	WID_GL_FIRST_COMPANY, ///< First company in the legend.
+	WID_GL_LAST_COMPANY = WID_GL_FIRST_COMPANY + MAX_COMPANIES - 1, ///< Last company in the legend.
 };
 
 /** Widgets of the WC_OPERATING_PROFIT / WC_DELIVERED_CARGO / WC_COMPANY_VALUE / WC_INCOME_GRAPH. */
