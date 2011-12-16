@@ -57,7 +57,7 @@ enum MessageHistoryWidgets {
 
 /** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
 enum MessageOptionWidgets {
-	WID_MO_BACKGROUND,        ///< Background of the widget.
+	WID_MO_BACKGROUND,        ///< Background of the window.
 	WID_MO_LABEL,             ///< Top label.
 	WID_MO_DROP_SUMMARY,      ///< Dropdown that adjusts at once the level for all settings.
 	WID_MO_LABEL_SUMMARY,     ///< Label of the summary drop down.

@@ -14,18 +14,18 @@
 
 /** Widgets of the WC_OSK. */
 enum OnScreenKeyboardWidgets {
-	WID_OSK_CAPTION,         ///< Caption of window.
-	WID_OSK_TEXT,            ///< Edit box.
-	WID_OSK_CANCEL,          ///< Cancel key.
-	WID_OSK_OK,              ///< Ok key.
-	WID_OSK_BACKSPACE,       ///< Backspace key.
-	WID_OSK_SPECIAL,         ///< Special key (at keyborads often used for tab key).
-	WID_OSK_CAPS,            ///< Capslock key.
-	WID_OSK_SHIFT,           ///< Shift(lock) key.
-	WID_OSK_SPACE,           ///< Space bar.
-	WID_OSK_LEFT,            ///< Cursor left key.
-	WID_OSK_RIGHT,           ///< Cursor right key.
-	WID_OSK_LETTERS,         ///< First widget of the 'normal' keys.
+	WID_OSK_CAPTION,   ///< Caption of window.
+	WID_OSK_TEXT,      ///< Edit box.
+	WID_OSK_CANCEL,    ///< Cancel key.
+	WID_OSK_OK,        ///< Ok key.
+	WID_OSK_BACKSPACE, ///< Backspace key.
+	WID_OSK_SPECIAL,   ///< Special key (at keyborads often used for tab key).
+	WID_OSK_CAPS,      ///< Capslock key.
+	WID_OSK_SHIFT,     ///< Shift(lock) key.
+	WID_OSK_SPACE,     ///< Space bar.
+	WID_OSK_LEFT,      ///< Cursor left key.
+	WID_OSK_RIGHT,     ///< Cursor right key.
+	WID_OSK_LETTERS,   ///< First widget of the 'normal' keys.
 
 	WID_OSK_NUMBERS_FIRST = WID_OSK_LETTERS,            ///< First widget of the numbers row.
 	WID_OSK_NUMBERS_LAST  = WID_OSK_NUMBERS_FIRST + 13, ///< Last widget of the numbers row.

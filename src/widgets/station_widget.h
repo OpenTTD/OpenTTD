@@ -29,6 +29,7 @@ enum StationViewWidgets {
 
 /** Widgets of the WC_STATION_LIST. */
 enum StationListWidgets {
+	/* Name starts with ST instead of S, because of collision with SaveLoadWidgets */
 	WID_STL_CAPTION,        ///< Caption of the window.
 	WID_STL_LIST,           ///< The main panel, list of stations.
 	WID_STL_SCROLLBAR,      ///< Scrollbar next to the main panel.

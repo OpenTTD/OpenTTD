@@ -14,7 +14,7 @@
 
 /** Widgets of the WC_VEHICLE_ORDERS. */
 enum OrderWidgets {
-	WID_O_CAPTION,                   ///< Window caption.
+	WID_O_CAPTION,                   ///< Caption of the window.
 	WID_O_TIMETABLE_VIEW,            ///< Toggle timetable view.
 	WID_O_ORDER_LIST,                ///< Order list panel.
 	WID_O_SCROLLBAR,                 ///< Order list scrollbar.
