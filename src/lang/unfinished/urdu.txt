@@ -283,10 +283,12 @@ STR_SORT_BY_RATING_MIN                                          :سامانی پ
 STR_SORT_BY_ENGINE_ID                                           :انجن کی شناخت (کلاسیکی چھانٹ)
 STR_SORT_BY_COST                                                :قیمت
 STR_SORT_BY_POWER                                               :طاقت
+STR_SORT_BY_TRACTIVE_EFFORT                                     :کھینچنے کی کوشِش
 STR_SORT_BY_INTRO_DATE                                          :تاریخِ تعارف
 STR_SORT_BY_RUNNING_COST                                        :قیمتِ رواں
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :قیمتِ رواں/ طاقت
 STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
+STR_SORT_BY_RANGE                                               :پہنچ
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} کھیل میں وقفھ لیجیئے
@@ -636,8 +638,10 @@ STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLAC
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}کمپنیوں کی فہرست میں {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :کاروباری
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :سرمایہ دار
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :صنعتکار
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :سرمایہ دار
+STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :امیر و اثر پزیر
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :مُغل
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :صدی کا ٹائیکون
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
@@ -816,6 +820,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} کو آگے بڑھنے کے لئے راستہ نہیں مل رہا
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} گم گی ہے
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} نے پچھلے سال میں {CURRENCY_LONG} نفع حاصل کیا
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} اگلی منزل پر پہنچ سے باہر ہونے کی وجہ سے نہیں جا سکتا
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} رُک گیا ہے کیونکے اُسے دیا گیا تزین و آرائش کا حکم پورا نہں ہو سکا
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} کی خودکار تبدیلی ناکام ہو کئی {}{STRING}
@@ -889,6 +894,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}پیما
 ############ start of measuring units region
 STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :اِمپیریل
 STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :میٹرک
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :اکائیوں کا بین الاقوامی نظام
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}گاڑیاں
@@ -942,6 +948,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}اسکر
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اسکرین کی resolution اختیار کریں
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}اسکرین کی تصویر کا فارمیٹ
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}اسکرین کی تصویر کے استعال کے لئے فارمیٹ اختیار کریں
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}بُنیادی گرافک سیٹ
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}بُنیادی گرافک سیٹ اختیار کریں
@@ -962,6 +970,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}مُکم
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}اپنی مرضی کی کرنسی
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}زر مبادلہ کی شرح: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}ایک پاونڈ (£) کے لئے اپنی کرنسی کی تعداد کم کریں
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}ایک پاونڈ (£) کے لئے اپنی کرنسی کی تعداد میں اضافہ کریں
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}ایک پاونڈ (£) کے لئے اپنی کرنسی کا exchange rate اختیار کریں
@@ -982,6 +991,7 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}یورو
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}جائزہ: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}اپنی کرنسی میں 10000 پاونڈ (£)
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}اپنی مرضی کے کرنسی پیرامیٹر کو تبدیل کریں
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}مشکلات کا درجہ
@@ -1002,33 +1012,161 @@ STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}شہر�
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}صنعتوں کی تعداد: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}زیادہ سے زیادہ شروعاتی قرصہ: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}ابتدائی شرحِ سود: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}گاڑی چلانے کا خرچہ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}مد مقابلوں کی تعمیر کی رفتار: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}گاڑی خراب ہوگئی: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}امداد کا ضارِب: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}تعمیر کا خرچہ: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}خطے کی قسم: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}سُمندر/جھیلوں کی تعداد: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}معیشت: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}ریل گاڑی اُلٹی چلنا: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}تباہیاں: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}سٹی کونسل کا علاقے میں تعمیرات (تبدیلیوں) کے بارے میں رویہ: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :کوئی نہیں
+STR_FUNDING_ONLY                                                :صرف فنڈنگ
 STR_MINIMAL                                                     :کم از کم
+STR_NUM_VERY_LOW                                                :بہت نیچا
+STR_NUM_LOW                                                     :نیچا
+STR_NUM_NORMAL                                                  :نارمل
+STR_NUM_HIGH                                                    :اونچا
+STR_NUM_CUSTOM                                                  :اپنی مرضی کا
+STR_NUM_CUSTOM_NUMBER                                           :اپنی مرضی کا ({NUM})
 
+STR_VARIETY_NONE                                                :کوئی نہیں
+STR_VARIETY_VERY_LOW                                            :بہت نیچا
+STR_VARIETY_LOW                                                 :نیچا
+STR_VARIETY_MEDIUM                                              :درمیانہ
+STR_VARIETY_HIGH                                                :اونچا
+STR_VARIETY_VERY_HIGH                                           :بہت اونچا
 
+STR_AI_SPEED_VERY_SLOW                                          :بہت آہستہ
+STR_AI_SPEED_SLOW                                               :آہستہ
+STR_AI_SPEED_MEDIUM                                             :درمیانہ
+STR_AI_SPEED_FAST                                               :تیز
+STR_AI_SPEED_VERY_FAST                                          :بہت تیز
 
+STR_SEA_LEVEL_VERY_LOW                                          :بہت نیچا
+STR_SEA_LEVEL_LOW                                               :نیچا
+STR_SEA_LEVEL_MEDIUM                                            :درمیانہ
+STR_SEA_LEVEL_HIGH                                              :اونچا
+STR_SEA_LEVEL_CUSTOM                                            :اپنی مرضی کا
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :اپنی مرضی کا ({NUM}%)
 
+STR_RIVERS_NONE                                                 :کوئی نہیں
+STR_RIVERS_FEW                                                  :چند ایک
+STR_RIVERS_MODERATE                                             :درمیانے
+STR_RIVERS_LOT                                                  :بہت سے
 
+STR_DISASTER_NONE                                               :کوئی نہیں
+STR_DISASTER_REDUCED                                            :کم
+STR_DISASTER_NORMAL                                             :نارمل
 
 STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :بہت سیدھا
+STR_TERRAIN_TYPE_FLAT                                           :سیدھا
+STR_TERRAIN_TYPE_HILLY                                          :ٹیلوں والا
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :پہاڑی
 
+STR_ECONOMY_STEADY                                              :مستحکم
+STR_ECONOMY_FLUCTUATING                                         :غیر مستحکم
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :پٹڑی کے آخر پر اور اسٹیشن پر
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :صرف پٹڑی کے آخر پر
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دینے والا
+STR_CITY_APPROVAL_TOLERANT                                      :برداشت کرنے والا
+STR_CITY_APPROVAL_HOSTILE                                       :مخالفانہ
 
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}اس عمل نے مشکل کی سطح کو اپنی مرضی کا کر دیا ہے
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ایڈوانسڈ سیٹنگ
 
+STR_CONFIG_SETTING_OFF                                          :بند
+STR_CONFIG_SETTING_ON                                           :آن
+STR_CONFIG_SETTING_DISABLED                                     :غیر فعال
 
+STR_CONFIG_SETTING_COMPANIES_OFF                                :آف
+STR_CONFIG_SETTING_COMPANIES_OWN                                :اپنی کمپنی
+STR_CONFIG_SETTING_COMPANIES_ALL                                :تمام کمپنیاں
 
+STR_CONFIG_SETTING_NONE                                         :کوئی نہیں
+STR_CONFIG_SETTING_ORIGINAL                                     :اصلی
+STR_CONFIG_SETTING_REALISTIC                                    :حقیقت پسندانہ
 
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :بائیں
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :درمیان
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}ڈھلان اور ساحل پر تعمیر کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}تعمیرات کے نیچے منظر کشی کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}کوریج کے علاقے کے حقیقت پسندانہ سائز کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}شہروں کی ملکیت زیادہ سڑکوں، پلوں اور سرنگوں کو توڑنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ریل گاڑی کی زیادہ سے زیادہ لمبائی: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}گاڑی کے دھوئیں/سپارک کی تعداد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ریل گاڑی کو تیز کرنے والا ماڈل: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}گاڑی کو تیز کرنے کا ماڈل: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}ڈھلان پر ریل گاڑی کی تیزی: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}ڈھلان پر گاڑیوں کی تیزی: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}ریل گاڑیوں اور بحری جہازوں کو 90° مڑنے سے روکیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}اسٹیشنوں کو جوڑنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}سامان لوڈ کرنے کا بہتر طریقہ استعمال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}گاڑیوں کو آہستہ آہستہ بھریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}افراط زر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}سامان صرف اُسی صورت میں کسی اسٹیشن تک پہنچایا جب وہ اُسے قبول کرتا ہو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}پُل کی زیادہ سے زیادہ لمبائی: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}سرنگ کی زیادہ سے زیادہ لمبائی: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}خود بنیادی صنعت تعمیر کرنے کا طریقہ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :کوئی نہیں
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :دوسری صنعتوں کی طرح
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :توقعات
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}صنعتوں کے گرد سیدھی جگہ: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}ایک شہر میں ایک جیسی ایک سے زیادہ صنعتیں لگانے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}اشعارے گاڑی چلنے والی طرف دکھاو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}ہر سال کے آخر پر کھاتے والی ونڈو دکھاو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}نئے احکامات شروع سے 'نان اسٹاپ' ہوں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}نئے احکامات شروع سے {ORANGE}{STRING}{LTBLUE} کے پلیٹ فارم پر اسٹاپ ہوں
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :شروع میں
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :درمیان میں
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :آخر میں
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}گاڑیوں کی قطار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}ونڈو کو پین کرو جب ماؤس کنارے پر ہو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}مقامی اتھارٹی کی رشوت کی اجازت دیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}فنڈنگ ​​عمارتوں کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}مقامی سڑکوں کی تعمیر نو فنڈنگ ​​کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}دوسری کمپنیوں کو پیسے بھیجنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}مال گاڑیوں کو وزنی دکھانے کے لئے وزن کا ضارب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}ہوائی جہاز کی رفتار کا عنصر: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}ہوائی جہازوں کے حادثوں کی تعداد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :کوئی نہیں
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کم
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :نارمل
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}شہر کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}مد مقابلوں کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}اسٹیشن کے ساتھ اسٹیشں بنانے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}ایک سے زیادہ NewGRF انجن سیٹوں کو فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}جب گاڑیاں موجود ہوں تو یہ سیٹنگ بدلنا ممکن نہیں
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}انفراسٹرکچر کی بحالی: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}ہوائی اڈوں کی معیاد کبھی ختم نہ ہو: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}اگر گاڑی کھو جاے تو انتباہ کیجئیے: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}گاڑیوں کے احکامات کا جائزہ لیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :نہیں
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ہاں، لیکن رُکی ہوئی گاڑیاں نہیں
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :تمام گاڑیوں کے
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}گاڑیوں کی معیاد کبھی ختم نہ ہو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}مخطط میں لائینوں کی موٹائی: {ORANGE}{STRING}
 
 
 
@@ -1058,6 +1196,19 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}کنفیگریشن فائل میں خرابی ہے ۔ ۔ ۔
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE} ۔ ۔ ۔ array '{STRING}' میں غلطی ہے
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE} ۔ ۔ ۔ غیر معیاری (غلط) '{STRING}' قیمت '{STRING}' کے لئے
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE} ۔ ۔ ۔ '{STRING}' سیٹنگ کے آخر میں کُچھ حروف ہیں
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE} ۔ ۔ ۔ NewGRF '{STRING}' کو نظر انداز کر رہے ہیں: اس GRF ID '{STRING}' سے پہلے ہی ایک ہے
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE} ۔ ۔ ۔ غیر معیاری (غلط) NewGRF '{STRING}' کو نظر انداز کر رہے ہیں: {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :نہیں مِلا
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :جامد استعمال کے لئے غیر محفوظ
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF نظام
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :OpenTTD کے اِس ورژن سے مطابقت نہیں رکھتا
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :نا معلوم
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}- - - کمپریشن کی سطح '{STRING}' درست نہیں ہے
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE} ۔ ۔ ۔ کھیل بچانے کا یہ فارمیٹ '{STRING}' دستیاب نہیں ہے۔ واپس '{STRING}' پر جا رہے ہیں
 
 # Intro window
 
@@ -1144,6 +1295,8 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا 
 ############ End of leave-in-this-order
 
 # Content downloading window
+STR_CONTENT_OPEN_URL                                            :{BLACK}ویب سائٹ دیکھیں
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}یہ مواد دیکھنے کے لئے ویب سائٹ دیکھیں
 
 # Order of these is important!
 
@@ -1436,6 +1589,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 # Build vehicle window
 
 
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}پہنچ: {GOLD}{COMMA} ٹائلیں
 
 
 
@@ -1466,6 +1620,8 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :ڈیپو کا �
 
 # Engine preview window
 
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}قیمت: {CURRENCY_LONG} حد رفتار: {VELOCITY} پہنچ: {7:COMMA} ٹائلیں{} گنجائش: {CARGO_LONG}, {CARGO_LONG}{}چلانے کا خرچہ: {CURRENCY_LONG} سالانہ
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}قیمت: {CURRENCY_LONG} حد رفتار: {VELOCITY} پہنچ: {7:COMMA} ٹائلیں{} گنجائش: {CARGO_LONG}{}چلانے کا خرچہ: {CURRENCY_LONG} سالانہ
 
 # Autoreplace window
 
@@ -1486,6 +1642,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :ڈیپو کا �
 
 
 # Messages in the start stop button in the vehicle view
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}اگلی منزل بہت دور ہے
 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} روانگی {DEPOT} کی طرف، {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE} {DEPOT} پر خدمات، {VELOCITY}
@@ -1501,6 +1658,7 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 
 # The next two need to stay in this order
 
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}حد رفتار: {LTBLUE}{VELOCITY} {BLACK} پہنچ: {LTBLUE}{COMMA} ٹائلیں
 
 
 
@@ -1548,6 +1706,7 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 
 
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (اگلا پڑاو پہنچ سے باہر ہے)
 
 
 
@@ -1733,6 +1892,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت
 
 # Order related errors
 
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE} ۔ ۔ ۔ ہوائی جہاز کی اتنی پہنچ نہیں ہے
 
 # Timetable related errors
 
