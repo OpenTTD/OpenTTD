@@ -33,7 +33,7 @@ enum RailToolbarWidgets {
 };
 
 /** Widgets of the WC_BUILD_STATION (WC_BUILD_STATION is also used in others). */
-enum RailStationWidgets {
+enum BuildRailStationWidgets {
 	WID_BRS_PLATFORM_DIR_X,       ///< Button to select '/' view.
 	WID_BRS_PLATFORM_DIR_Y,       ///< Button to select '\' view.
 
@@ -75,7 +75,7 @@ enum RailStationWidgets {
 };
 
 /** Widgets of the WC_BUILD_SIGNAL. */
-enum SignalWidgets {
+enum BuildSignalWidgets {
 	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal
 	WID_BS_SEMAPHORE_ENTRY,    ///< Build a semaphore entry block signal
 	WID_BS_SEMAPHORE_EXIT,     ///< Build a semaphore exit block signal
@@ -95,7 +95,7 @@ enum SignalWidgets {
 };
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
-enum RailDepotWidgets {
+enum BuildRailDepotWidgets {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadDepotWidgets */
 	WID_BRAD_DEPOT_NE, ///< Build a depot with the entrace in the north east.
 	WID_BRAD_DEPOT_SE, ///< Build a depot with the entrace in the south east.
@@ -104,7 +104,7 @@ enum RailDepotWidgets {
 };
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
-enum RailWaypointWidgets {
+enum BuildRailWaypointWidgets {
 	WID_BRW_WAYPOINT_MATRIX, ///< Matrix with waypoints.
 	WID_BRW_WAYPOINT,        ///< A single waypoint.
 	WID_BRW_SCROLL,          ///< Scrollbar for the matrix.
