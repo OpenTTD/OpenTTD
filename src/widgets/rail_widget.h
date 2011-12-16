@@ -15,100 +15,99 @@
 /** Widgets of the WC_BUILD_TOOLBAR (WC_BUILD_TOOLBAR is also used in others). */
 enum RailToolbarWidgets {
 	/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
-	RATW_CAPTION,
-	RATW_BUILD_NS,
-	RATW_BUILD_X,
-	RATW_BUILD_EW,
-	RATW_BUILD_Y,
-	RATW_AUTORAIL,
-	RATW_DEMOLISH,
-	RATW_BUILD_DEPOT,
-	RATW_BUILD_WAYPOINT,
-	RATW_BUILD_STATION,
-	RATW_BUILD_SIGNALS,
-	RATW_BUILD_BRIDGE,
-	RATW_BUILD_TUNNEL,
-	RATW_REMOVE,
-	RATW_CONVERT_RAIL,
+	WID_RAT_CAPTION,        ///< Caption of this window.
+	WID_RAT_BUILD_NS,       ///< Build rail along the game view Y axis.
+	WID_RAT_BUILD_X,        ///< Build rail along the game grid X axis.
+	WID_RAT_BUILD_EW,       ///< Build rail along the game view X axis.
+	WID_RAT_BUILD_Y,        ///< Build rail along the game grid Y axis.
+	WID_RAT_AUTORAIL,       ///< Autorail tool.
+	WID_RAT_DEMOLISH,       ///< Destroy something with dynamite!
+	WID_RAT_BUILD_DEPOT,    ///< Build a depot.
+	WID_RAT_BUILD_WAYPOINT, ///< Build a waypoint.
+	WID_RAT_BUILD_STATION,  ///< Build a station.
+	WID_RAT_BUILD_SIGNALS,  ///< Build signals.
+	WID_RAT_BUILD_BRIDGE,   ///< Build a bridge.
+	WID_RAT_BUILD_TUNNEL,   ///< Build a tunnel.
+	WID_RAT_REMOVE,         ///< Bulldozer to remove rail.
+	WID_RAT_CONVERT_RAIL,   ///< Convert other rail to this type.
 };
 
 /** Widgets of the WC_BUILD_STATION (WC_BUILD_STATION is also used in others). */
-enum BuildRailStationWidgets {
-	BRSW_PLATFORM_DIR_X,       ///< Button to select '/' view.
-	BRSW_PLATFORM_DIR_Y,       ///< Button to select '\' view.
+enum RailStationWidgets {
+	WID_BRS_PLATFORM_DIR_X,       ///< Button to select '/' view.
+	WID_BRS_PLATFORM_DIR_Y,       ///< Button to select '\' view.
 
-	BRSW_PLATFORM_NUM_1,       ///< Button to select stations with a single platform.
-	BRSW_PLATFORM_NUM_2,       ///< Button to select stations with 2 platforms.
-	BRSW_PLATFORM_NUM_3,       ///< Button to select stations with 3 platforms.
-	BRSW_PLATFORM_NUM_4,       ///< Button to select stations with 4 platforms.
-	BRSW_PLATFORM_NUM_5,       ///< Button to select stations with 5 platforms.
-	BRSW_PLATFORM_NUM_6,       ///< Button to select stations with 6 platforms.
-	BRSW_PLATFORM_NUM_7,       ///< Button to select stations with 7 platforms.
+	WID_BRS_PLATFORM_NUM_1,       ///< Button to select stations with a single platform.
+	WID_BRS_PLATFORM_NUM_2,       ///< Button to select stations with 2 platforms.
+	WID_BRS_PLATFORM_NUM_3,       ///< Button to select stations with 3 platforms.
+	WID_BRS_PLATFORM_NUM_4,       ///< Button to select stations with 4 platforms.
+	WID_BRS_PLATFORM_NUM_5,       ///< Button to select stations with 5 platforms.
+	WID_BRS_PLATFORM_NUM_6,       ///< Button to select stations with 6 platforms.
+	WID_BRS_PLATFORM_NUM_7,       ///< Button to select stations with 7 platforms.
 
-	BRSW_PLATFORM_LEN_1,       ///< Button to select single tile length station platforms.
-	BRSW_PLATFORM_LEN_2,       ///< Button to select 2 tiles length station platforms.
-	BRSW_PLATFORM_LEN_3,       ///< Button to select 3 tiles length station platforms.
-	BRSW_PLATFORM_LEN_4,       ///< Button to select 4 tiles length station platforms.
-	BRSW_PLATFORM_LEN_5,       ///< Button to select 5 tiles length station platforms.
-	BRSW_PLATFORM_LEN_6,       ///< Button to select 6 tiles length station platforms.
-	BRSW_PLATFORM_LEN_7,       ///< Button to select 7 tiles length station platforms.
+	WID_BRS_PLATFORM_LEN_1,       ///< Button to select single tile length station platforms.
+	WID_BRS_PLATFORM_LEN_2,       ///< Button to select 2 tiles length station platforms.
+	WID_BRS_PLATFORM_LEN_3,       ///< Button to select 3 tiles length station platforms.
+	WID_BRS_PLATFORM_LEN_4,       ///< Button to select 4 tiles length station platforms.
+	WID_BRS_PLATFORM_LEN_5,       ///< Button to select 5 tiles length station platforms.
+	WID_BRS_PLATFORM_LEN_6,       ///< Button to select 6 tiles length station platforms.
+	WID_BRS_PLATFORM_LEN_7,       ///< Button to select 7 tiles length station platforms.
 
-	BRSW_PLATFORM_DRAG_N_DROP, ///< Button to enable drag and drop type station placement.
+	WID_BRS_PLATFORM_DRAG_N_DROP, ///< Button to enable drag and drop type station placement.
 
-	BRSW_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
-	BRSW_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
-	BRSW_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
+	WID_BRS_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
+	WID_BRS_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
+	WID_BRS_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
 
-	BRSW_MATRIX,               ///< Matrix widget displaying the available stations.
-	BRSW_IMAGE,                ///< Panel used at each cell of the matrix.
-	BRSW_MATRIX_SCROLL,        ///< Scrollbar of the matrix widget.
+	WID_BRS_MATRIX,               ///< Matrix widget displaying the available stations.
+	WID_BRS_IMAGE,                ///< Panel used at each cell of the matrix.
+	WID_BRS_MATRIX_SCROLL,        ///< Scrollbar of the matrix widget.
 
-	BRSW_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
-	BRSW_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
-	BRSW_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.
-	BRSW_SHOW_NEWST_TYPE,      ///< Display of selected station type.
-	BRSW_NEWST_LIST,           ///< List with available newstation classes.
-	BRSW_NEWST_SCROLL,         ///< Scrollbar of the #BRSW_NEWST_LIST.
+	WID_BRS_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
+	WID_BRS_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
+	WID_BRS_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.
+	WID_BRS_SHOW_NEWST_TYPE,      ///< Display of selected station type.
+	WID_BRS_NEWST_LIST,           ///< List with available newstation classes.
+	WID_BRS_NEWST_SCROLL,         ///< Scrollbar of the #WID_BRS_NEWST_LIST.
 
-	BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_NUM_1 - 1,
-	BRSW_PLATFORM_LEN_BEGIN = BRSW_PLATFORM_LEN_1 - 1,
+	WID_BRS_PLATFORM_NUM_BEGIN = WID_BRS_PLATFORM_NUM_1 - 1, ///< Helper for determining the chosen platform width.
+	WID_BRS_PLATFORM_LEN_BEGIN = WID_BRS_PLATFORM_LEN_1 - 1, ///< Helper for determining the chosen platform length.
 };
 
 /** Widgets of the WC_BUILD_SIGNAL. */
-enum BuildSignalWidgets {
-	BSW_SEMAPHORE_NORM,
-	BSW_SEMAPHORE_ENTRY,
-	BSW_SEMAPHORE_EXIT,
-	BSW_SEMAPHORE_COMBO,
-	BSW_SEMAPHORE_PBS,
-	BSW_SEMAPHORE_PBS_OWAY,
-	BSW_ELECTRIC_NORM,
-	BSW_ELECTRIC_ENTRY,
-	BSW_ELECTRIC_EXIT,
-	BSW_ELECTRIC_COMBO,
-	BSW_ELECTRIC_PBS,
-	BSW_ELECTRIC_PBS_OWAY,
-	BSW_CONVERT,
-	BSW_DRAG_SIGNALS_DENSITY,
-	BSW_DRAG_SIGNALS_DENSITY_LABEL,
-	BSW_DRAG_SIGNALS_DENSITY_DECREASE,
-	BSW_DRAG_SIGNALS_DENSITY_INCREASE,
+enum SignalWidgets {
+	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal
+	WID_BS_SEMAPHORE_ENTRY,    ///< Build a semaphore entry block signal
+	WID_BS_SEMAPHORE_EXIT,     ///< Build a semaphore exit block signal
+	WID_BS_SEMAPHORE_COMBO,    ///< Build a semaphore combo block signal
+	WID_BS_SEMAPHORE_PBS,      ///< Build a semaphore path signal.
+	WID_BS_SEMAPHORE_PBS_OWAY, ///< Build a semaphore one way path signal.
+	WID_BS_ELECTRIC_NORM,      ///< Build an electric normal block signal
+	WID_BS_ELECTRIC_ENTRY,     ///< Build an electric entry block signal
+	WID_BS_ELECTRIC_EXIT,      ///< Build an electric exit block signal
+	WID_BS_ELECTRIC_COMBO,     ///< Build an electric combo block signal
+	WID_BS_ELECTRIC_PBS,       ///< Build an electric path signal.
+	WID_BS_ELECTRIC_PBS_OWAY,  ///< Build an electric one way path signal.
+	WID_BS_CONVERT,            ///< Convert the signal.
+	WID_BS_DRAG_SIGNALS_DENSITY_LABEL,    ///< The current signal density.
+	WID_BS_DRAG_SIGNALS_DENSITY_DECREASE, ///< Decrease the signal density.
+	WID_BS_DRAG_SIGNALS_DENSITY_INCREASE, ///< Increase the signal density.
 };
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
-enum BuildRailDepotWidgets {
+enum RailDepotWidgets {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadDepotWidgets */
-	BRADW_DEPOT_NE,
-	BRADW_DEPOT_SE,
-	BRADW_DEPOT_SW,
-	BRADW_DEPOT_NW,
+	WID_BRAD_DEPOT_NE, ///< Build a depot with the entrace in the north east.
+	WID_BRAD_DEPOT_SE, ///< Build a depot with the entrace in the south east.
+	WID_BRAD_DEPOT_SW, ///< Build a depot with the entrace in the south west.
+	WID_BRAD_DEPOT_NW, ///< Build a depot with the entrace in the north west.
 };
 
 /** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
-enum BuildRailWaypointWidgets {
-	BRWW_WAYPOINT_MATRIX,
-	BRWW_WAYPOINT,
-	BRWW_SCROLL,
+enum RailWaypointWidgets {
+	WID_BRW_WAYPOINT_MATRIX, ///< Matrix with waypoints.
+	WID_BRW_WAYPOINT,        ///< A single waypoint.
+	WID_BRW_SCROLL,          ///< Scrollbar for the matrix.
 };
 
 #endif /* WIDGETS_RAIL_WIDGET_H */
