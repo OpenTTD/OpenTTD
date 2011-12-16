@@ -63,7 +63,7 @@ struct OskWindow : public Window {
 		this->InitNested(desc, 0);
 
 		/* Not needed by default. */
-		this->DisableWidget(OSK_WIDGET_SPECIAL);
+		this->DisableWidget(WID_OSK_SPECIAL);
 
 		this->UpdateOskState();
 	}
@@ -83,26 +83,26 @@ struct OskWindow : public Window {
 		this->shift = HasBit(_keystate, KEYS_CAPS) ^ HasBit(_keystate, KEYS_SHIFT);
 
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
-			this->SetWidgetDisabledState(OSK_WIDGET_LETTERS + i,
+			this->SetWidgetDisabledState(WID_OSK_LETTERS + i,
 					!IsValidChar(_keyboard[this->shift][i], this->qs->afilter) || _keyboard[this->shift][i] == ' ');
 		}
-		this->SetWidgetDisabledState(OSK_WIDGET_SPACE, !IsValidChar(' ', this->qs->afilter));
+		this->SetWidgetDisabledState(WID_OSK_SPACE, !IsValidChar(' ', this->qs->afilter));
 
-		this->LowerWidget(OSK_WIDGET_TEXT);
-		this->SetWidgetLoweredState(OSK_WIDGET_SHIFT, HasBit(_keystate, KEYS_SHIFT));
-		this->SetWidgetLoweredState(OSK_WIDGET_CAPS, HasBit(_keystate, KEYS_CAPS));
+		this->LowerWidget(WID_OSK_TEXT);
+		this->SetWidgetLoweredState(WID_OSK_SHIFT, HasBit(_keystate, KEYS_SHIFT));
+		this->SetWidgetLoweredState(WID_OSK_CAPS, HasBit(_keystate, KEYS_CAPS));
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == OSK_WIDGET_CAPTION) SetDParam(0, this->caption);
+		if (widget == WID_OSK_CAPTION) SetDParam(0, this->caption);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget < OSK_WIDGET_LETTERS) return;
+		if (widget < WID_OSK_LETTERS) return;
 
-		widget -= OSK_WIDGET_LETTERS;
+		widget -= WID_OSK_LETTERS;
 		DrawCharCentered(_keyboard[this->shift][widget],
 			r.left + 8,
 			r.top + 3,
@@ -113,14 +113,14 @@ struct OskWindow : public Window {
 	{
 		this->DrawWidgets();
 
-		this->qs->DrawEditBox(this, OSK_WIDGET_TEXT);
+		this->qs->DrawEditBox(this, WID_OSK_TEXT);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		/* clicked a letter */
-		if (widget >= OSK_WIDGET_LETTERS) {
-			WChar c = _keyboard[this->shift][widget - OSK_WIDGET_LETTERS];
+		if (widget >= WID_OSK_LETTERS) {
+			WChar c = _keyboard[this->shift][widget - WID_OSK_LETTERS];
 
 			if (!IsValidChar(c, this->qs->afilter)) return;
 
@@ -128,7 +128,7 @@ struct OskWindow : public Window {
 
 			if (HasBit(_keystate, KEYS_SHIFT)) {
 				ToggleBit(_keystate, KEYS_SHIFT);
-				this->GetWidget<NWidgetCore>(OSK_WIDGET_SHIFT)->colour = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
+				this->GetWidget<NWidgetCore>(WID_OSK_SHIFT)->colour = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
 				this->SetDirty();
 			}
 			/* Return focus to the parent widget and window. */
@@ -138,11 +138,11 @@ struct OskWindow : public Window {
 		}
 
 		switch (widget) {
-			case OSK_WIDGET_BACKSPACE:
+			case WID_OSK_BACKSPACE:
 				if (DeleteTextBufferChar(&this->qs->text, WKC_BACKSPACE)) this->InvalidateParent();
 				break;
 
-			case OSK_WIDGET_SPECIAL:
+			case WID_OSK_SPECIAL:
 				/*
 				 * Anything device specific can go here.
 				 * The button itself is hidden by default, and when you need it you
@@ -150,31 +150,31 @@ struct OskWindow : public Window {
 				 */
 				break;
 
-			case OSK_WIDGET_CAPS:
+			case WID_OSK_CAPS:
 				ToggleBit(_keystate, KEYS_CAPS);
 				this->UpdateOskState();
 				this->SetDirty();
 				break;
 
-			case OSK_WIDGET_SHIFT:
+			case WID_OSK_SHIFT:
 				ToggleBit(_keystate, KEYS_SHIFT);
 				this->UpdateOskState();
 				this->SetDirty();
 				break;
 
-			case OSK_WIDGET_SPACE:
+			case WID_OSK_SPACE:
 				if (InsertTextBufferChar(&this->qs->text, ' ')) this->InvalidateParent();
 				break;
 
-			case OSK_WIDGET_LEFT:
+			case WID_OSK_LEFT:
 				if (MoveTextBufferPos(&this->qs->text, WKC_LEFT)) this->InvalidateParent();
 				break;
 
-			case OSK_WIDGET_RIGHT:
+			case WID_OSK_RIGHT:
 				if (MoveTextBufferPos(&this->qs->text, WKC_RIGHT)) this->InvalidateParent();
 				break;
 
-			case OSK_WIDGET_OK:
+			case WID_OSK_OK:
 				if (this->qs->orig == NULL || strcmp(this->qs->text.buf, this->qs->orig) != 0) {
 					/* pass information by simulating a button press on parent window */
 					if (this->ok_btn != 0) {
@@ -186,7 +186,7 @@ struct OskWindow : public Window {
 				delete this;
 				break;
 
-			case OSK_WIDGET_CANCEL:
+			case WID_OSK_CANCEL:
 				if (this->cancel_btn != 0) { // pass a cancel event to the parent window
 					this->parent->OnClick(pt, this->cancel_btn, 1);
 					/* Window gets deleted when the parent window removes itself. */
@@ -210,13 +210,13 @@ struct OskWindow : public Window {
 		QueryStringBaseWindow *w = dynamic_cast<QueryStringBaseWindow*>(this->parent);
 		if (w != NULL) w->OnOSKInput(this->text_btn);
 
-		this->SetWidgetDirty(OSK_WIDGET_TEXT);
+		this->SetWidgetDirty(WID_OSK_TEXT);
 		if (this->parent != NULL) this->parent->SetWidgetDirty(this->text_btn);
 	}
 
 	virtual void OnMouseLoop()
 	{
-		this->qs->HandleEditBox(this, OSK_WIDGET_TEXT);
+		this->qs->HandleEditBox(this, WID_OSK_TEXT);
 		/* make the caret of the parent window also blink */
 		this->parent->SetWidgetDirty(this->text_btn);
 	}
@@ -229,7 +229,7 @@ struct OskWindow : public Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		this->SetWidgetDirty(OSK_WIDGET_TEXT);
+		this->SetWidgetDirty(WID_OSK_TEXT);
 	}
 };
 
@@ -274,9 +274,9 @@ static NWidgetBase *MakeTopKeys(int *biggest_index)
 	NWidgetHorizontal *hor = new NWidgetHorizontal();
 	int key_height = FONT_HEIGHT_NORMAL + 2;
 
-	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_CANCEL,    STR_BUTTON_CANCEL,  biggest_index);
-	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_OK,        STR_BUTTON_OK,      biggest_index);
-	AddKey(hor, key_height, 2 * 2, WWT_PUSHIMGBTN, OSK_WIDGET_BACKSPACE, SPR_OSK_BACKSPACE, biggest_index);
+	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL,  biggest_index);
+	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK,      biggest_index);
+	AddKey(hor, key_height, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, SPR_OSK_BACKSPACE, biggest_index);
 	return hor;
 }
 
@@ -286,7 +286,7 @@ static NWidgetBase *MakeNumberKeys(int *biggest_index)
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	for (int widnum = OSK_WIDGET_NUMBERS_FIRST; widnum <= OSK_WIDGET_NUMBERS_LAST; widnum++) {
+	for (int widnum = WID_OSK_NUMBERS_FIRST; widnum <= WID_OSK_NUMBERS_LAST; widnum++) {
 		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
 	return hor;
@@ -298,8 +298,8 @@ static NWidgetBase *MakeQwertyKeys(int *biggest_index)
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	AddKey(hor, key_height, 3, WWT_PUSHIMGBTN, OSK_WIDGET_SPECIAL, SPR_OSK_SPECIAL, biggest_index);
-	for (int widnum = OSK_WIDGET_QWERTY_FIRST; widnum <= OSK_WIDGET_QWERTY_LAST; widnum++) {
+	AddKey(hor, key_height, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL, biggest_index);
+	for (int widnum = WID_OSK_QWERTY_FIRST; widnum <= WID_OSK_QWERTY_LAST; widnum++) {
 		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
 	AddKey(hor, key_height, 1, NWID_SPACER, 0, 0, biggest_index);
@@ -312,8 +312,8 @@ static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	AddKey(hor, key_height, 4, WWT_IMGBTN, OSK_WIDGET_CAPS, SPR_OSK_CAPS, biggest_index);
-	for (int widnum = OSK_WIDGET_ASDFG_FIRST; widnum <= OSK_WIDGET_ASDFG_LAST; widnum++) {
+	AddKey(hor, key_height, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS, biggest_index);
+	for (int widnum = WID_OSK_ASDFG_FIRST; widnum <= WID_OSK_ASDFG_LAST; widnum++) {
 		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
 	return hor;
@@ -325,8 +325,8 @@ static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
 	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	AddKey(hor, key_height, 3, WWT_IMGBTN, OSK_WIDGET_SHIFT, SPR_OSK_SHIFT, biggest_index);
-	for (int widnum = OSK_WIDGET_ZXCVB_FIRST; widnum <= OSK_WIDGET_ZXCVB_LAST; widnum++) {
+	AddKey(hor, key_height, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT, biggest_index);
+	for (int widnum = WID_OSK_ZXCVB_FIRST; widnum <= WID_OSK_ZXCVB_LAST; widnum++) {
 		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
 	AddKey(hor, key_height, 1, NWID_SPACER, 0, 0, biggest_index);
@@ -340,18 +340,18 @@ static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 	int key_height = FONT_HEIGHT_NORMAL + 6;
 
 	AddKey(hor, key_height,  8, NWID_SPACER, 0, 0, biggest_index);
-	AddKey(hor, key_height, 13, WWT_PUSHTXTBTN, OSK_WIDGET_SPACE, STR_EMPTY, biggest_index);
+	AddKey(hor, key_height, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY, biggest_index);
 	AddKey(hor, key_height,  3, NWID_SPACER, 0, 0, biggest_index);
-	AddKey(hor, key_height,  2, WWT_PUSHIMGBTN, OSK_WIDGET_LEFT,  SPR_OSK_LEFT, biggest_index);
-	AddKey(hor, key_height,  2, WWT_PUSHIMGBTN, OSK_WIDGET_RIGHT, SPR_OSK_RIGHT, biggest_index);
+	AddKey(hor, key_height,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  SPR_OSK_LEFT, biggest_index);
+	AddKey(hor, key_height,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, SPR_OSK_RIGHT, biggest_index);
 	return hor;
 }
 
 
 static const NWidgetPart _nested_osk_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, OSK_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
+	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetDataTip(STR_WHITE_STRING, STR_NULL),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(WWT_EDITBOX, COLOUR_GREY, OSK_WIDGET_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),
+		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_OSK_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY), SetPIP(5, 2, 3),
 		NWidgetFunction(MakeTopKeys), SetPadding(0, 3, 0, 3),
