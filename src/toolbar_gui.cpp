@@ -184,7 +184,7 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 	DropDownList *list = new DropDownList();
 
 #ifdef ENABLE_NETWORK
-	if (widget == TBN_COMPANIES && _networking) {
+	if (widget == WID_TN_COMPANIES && _networking) {
 		/* Add the client list button for the companies menu */
 		list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, CTMN_CLIENT_LIST, false));
 
@@ -292,7 +292,7 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_SIGNS,       OME_SHOW_STATIONSIGNS, false, IsTransparencySet(TO_SIGNS)));
 
-	ShowDropDownList(w, list, 0, TBN_SETTINGS, 140, true, true);
+	ShowDropDownList(w, list, 0, WID_TN_SETTINGS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -362,7 +362,7 @@ enum SaveLoadNormalMenuEntries {
  */
 static CallBackFunction ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SAVEGAME, STR_FILE_MENU_SAVE_GAME, SLNME_MENUCOUNT);
+	PopupMainToolbMenu(w, WID_TN_SAVE, STR_FILE_MENU_SAVE_GAME, SLNME_MENUCOUNT);
 	return CBF_NONE;
 }
 
@@ -374,7 +374,7 @@ static CallBackFunction ToolbarSaveClick(Window *w)
  */
 static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, SLEME_MENUCOUNT);
+	PopupMainToolbMenu(w, WID_TE_SAVE, STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, SLEME_MENUCOUNT);
 	return CBF_NONE;
 }
 
@@ -419,13 +419,13 @@ enum MapMenuEntries {
 
 static CallBackFunction ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SMALLMAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_NORMAL);
+	PopupMainToolbMenu(w, WID_TN_SMALL_MAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_NORMAL);
 	return CBF_NONE;
 }
 
 static CallBackFunction ToolbarScenMapTownDir(Window *w)
 {
-	PopupMainToolbMenu(w, TBSE_SMALLMAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
+	PopupMainToolbMenu(w, WID_TE_SMALL_MAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
 	return CBF_NONE;
 }
 
@@ -450,7 +450,7 @@ static CallBackFunction MenuClickMap(int index)
 
 static CallBackFunction ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_TOWNDIRECTORY, STR_TOWN_MENU_TOWN_DIRECTORY, (_settings_game.economy.found_town == TF_FORBIDDEN) ? 1 : 2);
+	PopupMainToolbMenu(w, WID_TN_TOWNS, STR_TOWN_MENU_TOWN_DIRECTORY, (_settings_game.economy.found_town == TF_FORBIDDEN) ? 1 : 2);
 	return CBF_NONE;
 }
 
@@ -475,7 +475,7 @@ static CallBackFunction MenuClickTown(int index)
 
 static CallBackFunction ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 1);
+	PopupMainToolbMenu(w, WID_TN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 1);
 	return CBF_NONE;
 }
 
@@ -495,7 +495,7 @@ static CallBackFunction MenuClickSubsidies(int index)
 
 static CallBackFunction ToolbarStationsClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, TBN_STATIONS);
+	PopupMainCompanyToolbMenu(w, WID_TN_STATIONS);
 	return CBF_NONE;
 }
 
@@ -515,7 +515,7 @@ static CallBackFunction MenuClickStations(int index)
 
 static CallBackFunction ToolbarFinancesClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, TBN_FINANCES);
+	PopupMainCompanyToolbMenu(w, WID_TN_FINANCES);
 	return CBF_NONE;
 }
 
@@ -535,7 +535,7 @@ static CallBackFunction MenuClickFinances(int index)
 
 static CallBackFunction ToolbarCompaniesClick(Window *w)
 {
-	PopupMainCompanyToolbMenu(w, TBN_COMPANIES);
+	PopupMainCompanyToolbMenu(w, WID_TN_COMPANIES);
 	return CBF_NONE;
 }
 
@@ -581,7 +581,7 @@ static CallBackFunction MenuClickCompany(int index)
 
 static CallBackFunction ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_GRAPHICS, STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
+	PopupMainToolbMenu(w, WID_TN_GRAPHS, STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
 	return CBF_NONE;
 }
 
@@ -611,7 +611,7 @@ static CallBackFunction MenuClickGraphs(int index)
 
 static CallBackFunction ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, 2);
+	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, 2);
 	return CBF_NONE;
 }
 
@@ -635,7 +635,7 @@ static CallBackFunction MenuClickLeague(int index)
 static CallBackFunction ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 1 : 2);
+	PopupMainToolbMenu(w, WID_TN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 1 : 2);
 	return CBF_NONE;
 }
 
@@ -664,7 +664,7 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == veh && v->IsPrimaryVehicle()) ClrBit(dis, v->owner);
 	}
-	PopupMainCompanyToolbMenu(w, TBN_VEHICLESTART + veh, dis);
+	PopupMainCompanyToolbMenu(w, WID_TN_VEHICLE_START + veh, dis);
 }
 
 
@@ -751,7 +751,7 @@ static CallBackFunction MenuClickShowAir(int index)
 static CallBackFunction ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)TBSE_ZOOMIN : (byte)TBN_ZOOMIN);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)WID_TE_ZOOM_IN : (byte)WID_TN_ZOOM_IN);
 		SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;
@@ -762,7 +762,7 @@ static CallBackFunction ToolbarZoomInClick(Window *w)
 static CallBackFunction ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)TBSE_ZOOMOUT : (byte)TBN_ZOOMOUT);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)WID_TE_ZOOM_OUT : (byte)WID_TN_ZOOM_OUT);
 		SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;
@@ -772,7 +772,7 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, TBN_RAILS, 140, true, true);
+	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, WID_TN_RAILS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -809,7 +809,7 @@ static CallBackFunction ToolbarBuildRoadClick(Window *w)
 		list->push_back(new DropDownListStringItem(STR_ROAD_MENU_TRAM_CONSTRUCTION, ROADTYPE_TRAM, !HasBit(c->avail_roadtypes, ROADTYPE_TRAM)));
 		break;
 	}
-	ShowDropDownList(w, list, _last_built_roadtype, TBN_ROADS, 140, true, true);
+	ShowDropDownList(w, list, _last_built_roadtype, WID_TN_ROADS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -831,7 +831,7 @@ static CallBackFunction MenuClickBuildRoad(int index)
 
 static CallBackFunction ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_WATER, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, WID_TN_WATER, STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION, 1);
 	return CBF_NONE;
 }
 
@@ -851,7 +851,7 @@ static CallBackFunction MenuClickBuildWater(int index)
 
 static CallBackFunction ToolbarBuildAirClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_AIR, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, WID_TN_AIR, STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION, 1);
 	return CBF_NONE;
 }
 
@@ -871,7 +871,7 @@ static CallBackFunction MenuClickBuildAir(int index)
 
 static CallBackFunction ToolbarForestClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_LANDSCAPE, STR_LANDSCAPING_MENU_LANDSCAPING, 3);
+	PopupMainToolbMenu(w, WID_TN_LANDSCAPE, STR_LANDSCAPING_MENU_LANDSCAPING, 3);
 	return CBF_NONE;
 }
 
@@ -895,7 +895,7 @@ static CallBackFunction MenuClickForest(int index)
 
 static CallBackFunction ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_MUSICSOUND, STR_TOOLBAR_SOUND_MUSIC, 1);
+	PopupMainToolbMenu(w, WID_TN_MUSIC_SOUND, STR_TOOLBAR_SOUND_MUSIC, 1);
 	return CBF_NONE;
 }
 
@@ -915,7 +915,7 @@ static CallBackFunction MenuClickMusicWindow(int index)
 
 static CallBackFunction ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_NEWSREPORT, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 3);
+	PopupMainToolbMenu(w, WID_TN_MESSAGES, STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT, 3);
 	return CBF_NONE;
 }
 
@@ -950,7 +950,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 10 : 8);
+	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 10 : 8);
 	return CBF_NONE;
 }
 
@@ -1018,7 +1018,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 	}
 
 	w->ReInit();
-	w->SetWidgetLoweredState(TBN_SWITCHBAR, _toolbar_mode == TB_LOWER);
+	w->SetWidgetLoweredState(WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
 	SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -1040,7 +1040,7 @@ static CallBackFunction ToolbarScenDateBackward(Window *w)
 {
 	/* don't allow too fast scrolling */
 	if ((w->flags & WF_TIMEOUT) && w->timeout_timer <= 1) {
-		w->HandleButtonClick(TBSE_DATEBACKWARD);
+		w->HandleButtonClick(WID_TE_DATE_BACKWARD);
 		w->SetDirty();
 
 		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year - 1, MIN_YEAR, MAX_YEAR);
@@ -1054,7 +1054,7 @@ static CallBackFunction ToolbarScenDateForward(Window *w)
 {
 	/* don't allow too fast scrolling */
 	if ((w->flags & WF_TIMEOUT) && w->timeout_timer <= 1) {
-		w->HandleButtonClick(TBSE_DATEFORWARD);
+		w->HandleButtonClick(WID_TE_DATE_FORWARD);
 		w->SetDirty();
 
 		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year + 1, MIN_YEAR, MAX_YEAR);
@@ -1066,7 +1066,7 @@ static CallBackFunction ToolbarScenDateForward(Window *w)
 
 static CallBackFunction ToolbarScenGenLand(Window *w)
 {
-	w->HandleButtonClick(TBSE_LANDGENERATE);
+	w->HandleButtonClick(WID_TE_LAND_GENERATE);
 	SndPlayFx(SND_15_BEEP);
 
 	ShowEditorTerraformToolbar();
@@ -1076,7 +1076,7 @@ static CallBackFunction ToolbarScenGenLand(Window *w)
 
 static CallBackFunction ToolbarScenGenTown(Window *w)
 {
-	w->HandleButtonClick(TBSE_TOWNGENERATE);
+	w->HandleButtonClick(WID_TE_TOWN_GENERATE);
 	SndPlayFx(SND_15_BEEP);
 	ShowFoundTownWindow();
 	return CBF_NONE;
@@ -1084,7 +1084,7 @@ static CallBackFunction ToolbarScenGenTown(Window *w)
 
 static CallBackFunction ToolbarScenGenIndustry(Window *w)
 {
-	w->HandleButtonClick(TBSE_INDUSTRYGENERATE);
+	w->HandleButtonClick(WID_TE_INDUSTRY);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildIndustryWindow();
 	return CBF_NONE;
@@ -1092,7 +1092,7 @@ static CallBackFunction ToolbarScenGenIndustry(Window *w)
 
 static CallBackFunction ToolbarScenBuildRoad(Window *w)
 {
-	w->HandleButtonClick(TBSE_BUILDROAD);
+	w->HandleButtonClick(WID_TE_ROADS);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildRoadScenToolbar();
 	return CBF_NONE;
@@ -1100,7 +1100,7 @@ static CallBackFunction ToolbarScenBuildRoad(Window *w)
 
 static CallBackFunction ToolbarScenBuildDocks(Window *w)
 {
-	w->HandleButtonClick(TBSE_BUILDDOCKS);
+	w->HandleButtonClick(WID_TE_WATER);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildDocksScenToolbar();
 	return CBF_NONE;
@@ -1108,7 +1108,7 @@ static CallBackFunction ToolbarScenBuildDocks(Window *w)
 
 static CallBackFunction ToolbarScenPlantTrees(Window *w)
 {
-	w->HandleButtonClick(TBSE_PLANTTREES);
+	w->HandleButtonClick(WID_TE_TREES);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildTreesToolbar();
 	return CBF_NONE;
@@ -1116,7 +1116,7 @@ static CallBackFunction ToolbarScenPlantTrees(Window *w)
 
 static CallBackFunction ToolbarScenPlaceSign(Window *w)
 {
-	w->HandleButtonClick(TBSE_PLACESIGNS);
+	w->HandleButtonClick(WID_TE_SIGNS);
 	SndPlayFx(SND_15_BEEP);
 	return SelectSignTool();
 }
@@ -1162,7 +1162,7 @@ int16 *_preferred_toolbar_size = NULL; ///< Pointer to the default size for the 
 
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetToolbarContainer : public NWidgetContainer {
-	bool visible[TBN_END]; ///< The visible headers
+	bool visible[WID_TN_END]; ///< The visible headers
 protected:
 	uint spacers;          ///< Number of spacer widgets in this toolbar
 
@@ -1232,7 +1232,7 @@ public:
 		}
 
 		/* Create us ourselves a quick lookup table */
-		NWidgetBase *widgets[TBN_END];
+		NWidgetBase *widgets[WID_TN_END];
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			if (child_wid->type == NWID_SPACER) continue;
 			widgets[((NWidgetCore*)child_wid)->index] = child_wid;
@@ -1512,8 +1512,8 @@ struct MainToolbarWindow : Window {
 
 		this->last_started_action = CBF_NONE;
 		CLRBITS(this->flags, WF_WHITE_BORDER);
-		this->SetWidgetDisabledState(TBN_PAUSE, _networking && !_network_server); // if not server, disable pause button
-		this->SetWidgetDisabledState(TBN_FASTFORWARD, _networking); // if networking, disable fast-forward button
+		this->SetWidgetDisabledState(WID_TN_PAUSE, _networking && !_network_server); // if not server, disable pause button
+		this->SetWidgetDisabledState(WID_TN_FAST_FORWARD, _networking); // if networking, disable fast-forward button
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
@@ -1523,12 +1523,12 @@ struct MainToolbarWindow : Window {
 		/* If spectator, disable all construction buttons
 		 * ie : Build road, rail, ships, airports and landscaping
 		 * Since enabled state is the default, just disable when needed */
-		this->SetWidgetsDisabledState(_local_company == COMPANY_SPECTATOR, TBN_RAILS, TBN_ROADS, TBN_WATER, TBN_AIR, TBN_LANDSCAPE, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(_local_company == COMPANY_SPECTATOR, WID_TN_RAILS, WID_TN_ROADS, WID_TN_WATER, WID_TN_AIR, WID_TN_LANDSCAPE, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
-		this->SetWidgetsDisabledState(Company::GetNumItems() == 0, TBN_STATIONS, TBN_FINANCES, TBN_TRAINS, TBN_ROADVEHS, TBN_SHIPS, TBN_AIRCRAFTS, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(Company::GetNumItems() == 0, WID_TN_STATIONS, WID_TN_FINANCES, WID_TN_TRAINS, WID_TN_ROADVEHS, WID_TN_SHIPS, WID_TN_AIRCRAFTS, WIDGET_LIST_END);
 
-		this->SetWidgetDisabledState(TBN_RAILS, !CanBuildVehicleInfrastructure(VEH_TRAIN));
-		this->SetWidgetDisabledState(TBN_AIR, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
+		this->SetWidgetDisabledState(WID_TN_RAILS, !CanBuildVehicleInfrastructure(VEH_TRAIN));
+		this->SetWidgetDisabledState(WID_TN_AIR, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
 
 		this->DrawWidgets();
 	}
@@ -1606,14 +1606,14 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnTick()
 	{
-		if (this->IsWidgetLowered(TBN_PAUSE) != !!_pause_mode) {
-			this->ToggleWidgetLoweredState(TBN_PAUSE);
-			this->SetWidgetDirty(TBN_PAUSE);
+		if (this->IsWidgetLowered(WID_TN_PAUSE) != !!_pause_mode) {
+			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
+			this->SetWidgetDirty(WID_TN_PAUSE);
 		}
 
-		if (this->IsWidgetLowered(TBN_FASTFORWARD) != !!_fast_forward) {
-			this->ToggleWidgetLoweredState(TBN_FASTFORWARD);
-			this->SetWidgetDirty(TBN_FASTFORWARD);
+		if (this->IsWidgetLowered(WID_TN_FAST_FORWARD) != !!_fast_forward) {
+			this->ToggleWidgetLoweredState(WID_TN_FAST_FORWARD);
+			this->SetWidgetDirty(WID_TN_FAST_FORWARD);
 		}
 	}
 
@@ -1621,7 +1621,7 @@ struct MainToolbarWindow : Window {
 	{
 		/* We do not want to automatically raise the pause, fast forward and
 		 * switchbar buttons; they have to stay down when pressed etc. */
-		for (uint i = TBN_SETTINGS; i < TBN_SWITCHBAR; i++) {
+		for (uint i = WID_TN_SETTINGS; i < WID_TN_SWITCH_BAR; i++) {
 			if (this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->SetWidgetDirty(i);
@@ -1637,7 +1637,7 @@ struct MainToolbarWindow : Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, TBN_ZOOMIN, TBN_ZOOMOUT);
+		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, WID_TN_ZOOM_IN, WID_TN_ZOOM_OUT);
 	}
 
 	static Hotkey<MainToolbarWindow> maintoolbar_hotkeys[];
@@ -1694,45 +1694,45 @@ static NWidgetBase *MakeMainToolbar(int *biggest_index)
 {
 	/** Sprites to use for the different toolbar buttons */
 	static const SpriteID toolbar_button_sprites[] = {
-		SPR_IMG_PAUSE,           // TBN_PAUSE
-		SPR_IMG_FASTFORWARD,     // TBN_FASTFORWARD
-		SPR_IMG_SETTINGS,        // TBN_SETTINGS
-		SPR_IMG_SAVE,            // TBN_SAVEGAME
-		SPR_IMG_SMALLMAP,        // TBN_SMALLMAP
-		SPR_IMG_TOWN,            // TBN_TOWNDIRECTORY
-		SPR_IMG_SUBSIDIES,       // TBN_SUBSIDIES
-		SPR_IMG_COMPANY_LIST,    // TBN_STATIONS
-		SPR_IMG_COMPANY_FINANCE, // TBN_FINANCES
-		SPR_IMG_COMPANY_GENERAL, // TBN_COMPANIES
-		SPR_IMG_GRAPHS,          // TBN_GRAPHICS
-		SPR_IMG_COMPANY_LEAGUE,  // TBN_LEAGUE
-		SPR_IMG_INDUSTRY,        // TBN_INDUSTRIES
-		SPR_IMG_TRAINLIST,       // TBN_TRAINS
-		SPR_IMG_TRUCKLIST,       // TBN_ROADVEHS
-		SPR_IMG_SHIPLIST,        // TBN_SHIPS
-		SPR_IMG_AIRPLANESLIST,   // TBN_AIRCRAFTS
-		SPR_IMG_ZOOMIN,          // TBN_ZOOMIN
-		SPR_IMG_ZOOMOUT,         // TBN_ZOOMOUT
-		SPR_IMG_BUILDRAIL,       // TBN_RAILS
-		SPR_IMG_BUILDROAD,       // TBN_ROADS
-		SPR_IMG_BUILDWATER,      // TBN_WATER
-		SPR_IMG_BUILDAIR,        // TBN_AIR
-		SPR_IMG_LANDSCAPING,     // TBN_LANDSCAPE
-		SPR_IMG_MUSIC,           // TBN_MUSICSOUND
-		SPR_IMG_MESSAGES,        // TBN_NEWSREPORT
-		SPR_IMG_QUERY,           // TBN_HELP
-		SPR_IMG_SWITCH_TOOLBAR,  // TBN_SWITCHBAR
+		SPR_IMG_PAUSE,           // WID_TN_PAUSE
+		SPR_IMG_FASTFORWARD,     // WID_TN_FAST_FORWARD
+		SPR_IMG_SETTINGS,        // WID_TN_SETTINGS
+		SPR_IMG_SAVE,            // WID_TN_SAVE
+		SPR_IMG_SMALLMAP,        // WID_TN_SMALL_MAP
+		SPR_IMG_TOWN,            // WID_TN_TOWNS
+		SPR_IMG_SUBSIDIES,       // WID_TN_SUBSIDIES
+		SPR_IMG_COMPANY_LIST,    // WID_TN_STATIONS
+		SPR_IMG_COMPANY_FINANCE, // WID_TN_FINANCES
+		SPR_IMG_COMPANY_GENERAL, // WID_TN_COMPANIES
+		SPR_IMG_GRAPHS,          // WID_TN_GRAPHS
+		SPR_IMG_COMPANY_LEAGUE,  // WID_TN_LEAGUE
+		SPR_IMG_INDUSTRY,        // WID_TN_INDUSTRIES
+		SPR_IMG_TRAINLIST,       // WID_TN_TRAINS
+		SPR_IMG_TRUCKLIST,       // WID_TN_ROADVEHS
+		SPR_IMG_SHIPLIST,        // WID_TN_SHIPS
+		SPR_IMG_AIRPLANESLIST,   // WID_TN_AIRCRAFT
+		SPR_IMG_ZOOMIN,          // WID_TN_ZOOMIN
+		SPR_IMG_ZOOMOUT,         // WID_TN_ZOOMOUT
+		SPR_IMG_BUILDRAIL,       // WID_TN_RAILS
+		SPR_IMG_BUILDROAD,       // WID_TN_ROADS
+		SPR_IMG_BUILDWATER,      // WID_TN_WATER
+		SPR_IMG_BUILDAIR,        // WID_TN_AIR
+		SPR_IMG_LANDSCAPING,     // WID_TN_LANDSCAPE
+		SPR_IMG_MUSIC,           // WID_TN_MUSIC_SOUND
+		SPR_IMG_MESSAGES,        // WID_TN_MESSAGES
+		SPR_IMG_QUERY,           // WID_TN_HELP
+		SPR_IMG_SWITCH_TOOLBAR,  // WID_TN_SWITCH_BAR
 	};
 
 	NWidgetMainToolbarContainer *hor = new NWidgetMainToolbarContainer();
-	for (uint i = 0; i < TBN_END; i++) {
+	for (uint i = 0; i < WID_TN_END; i++) {
 		switch (i) {
 			case 4: case 8: case 13: case 17: case 19: case 24: hor->Add(new NWidgetSpacer(0, 0)); break;
 		}
-		hor->Add(new NWidgetLeaf(i == TBN_SAVEGAME ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i));
+		hor->Add(new NWidgetLeaf(i == WID_TN_SAVE ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i));
 	}
 
-	*biggest_index = max<int>(*biggest_index, TBN_SWITCHBAR);
+	*biggest_index = max<int>(*biggest_index, WID_TN_SWITCH_BAR);
 	return hor;
 }
 
@@ -1820,8 +1820,8 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	virtual void OnPaint()
 	{
-		this->SetWidgetDisabledState(TBSE_DATEBACKWARD, _settings_game.game_creation.starting_year <= MIN_YEAR);
-		this->SetWidgetDisabledState(TBSE_DATEFORWARD, _settings_game.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(WID_TE_DATE_BACKWARD, _settings_game.game_creation.starting_year <= MIN_YEAR);
+		this->SetWidgetDisabledState(WID_TE_DATE_FORWARD, _settings_game.game_creation.starting_year >= MAX_YEAR);
 
 		this->DrawWidgets();
 	}
@@ -1829,12 +1829,12 @@ struct ScenarioEditorToolbarWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case TBSE_DATEPANEL:
+			case WID_TE_DATE:
 				SetDParam(0, ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 				DrawString(r.left, r.right, (this->height - FONT_HEIGHT_NORMAL) / 2, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
-			case TBSE_SPACERPANEL: {
+			case WID_TE_SPACER: {
 				int height = r.bottom - r.top;
 				if (height > 2 * FONT_HEIGHT_NORMAL) {
 					DrawString(r.left, r.right, (height + 1) / 2 - FONT_HEIGHT_NORMAL, STR_SCENEDIT_TOOLBAR_OPENTTD, TC_FROMSTRING, SA_HOR_CENTER);
@@ -1850,11 +1850,11 @@ struct ScenarioEditorToolbarWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case TBSE_SPACERPANEL:
+			case WID_TE_SPACER:
 				size->width = max(GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_OPENTTD).width, GetStringBoundingBox(STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR).width) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				break;
 
-			case TBSE_DATEPANEL:
+			case WID_TE_DATE:
 				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
 				*size = GetStringBoundingBox(STR_WHITE_DATE_LONG);
 				size->height = max(size->height, GetSpriteSize(SPR_IMG_SAVE).height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
@@ -1873,7 +1873,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		/* The map button is in a different location on the scenario
 		 * editor toolbar, so we need to adjust for it. */
-		if (widget == TBSE_SMALLMAP) widget = TBN_SMALLMAP;
+		if (widget == WID_TE_SMALL_MAP) widget = WID_TN_SMALL_MAP;
 		CallBackFunction cbf = _menu_clicked_procs[widget](index);
 		if (cbf != CBF_NONE) this->last_started_action = cbf;
 		SndPlayFx(SND_15_BEEP);
@@ -1927,20 +1927,20 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	virtual void OnTimeout()
 	{
-		this->SetWidgetsLoweredState(false, TBSE_DATEBACKWARD, TBSE_DATEFORWARD, WIDGET_LIST_END);
-		this->SetWidgetDirty(TBSE_DATEBACKWARD);
-		this->SetWidgetDirty(TBSE_DATEFORWARD);
+		this->SetWidgetsLoweredState(false, WID_TE_DATE_BACKWARD, WID_TE_DATE_FORWARD, WIDGET_LIST_END);
+		this->SetWidgetDirty(WID_TE_DATE_BACKWARD);
+		this->SetWidgetDirty(WID_TE_DATE_FORWARD);
 	}
 
 	virtual void OnTick()
 	{
-		if (this->IsWidgetLowered(TBSE_PAUSE) != !!_pause_mode) {
-			this->ToggleWidgetLoweredState(TBSE_PAUSE);
+		if (this->IsWidgetLowered(WID_TE_PAUSE) != !!_pause_mode) {
+			this->ToggleWidgetLoweredState(WID_TE_PAUSE);
 			this->SetDirty();
 		}
 
-		if (this->IsWidgetLowered(TBSE_FASTFORWARD) != !!_fast_forward) {
-			this->ToggleWidgetLoweredState(TBSE_FASTFORWARD);
+		if (this->IsWidgetLowered(WID_TE_FAST_FORWARD) != !!_fast_forward) {
+			this->ToggleWidgetLoweredState(WID_TE_FAST_FORWARD);
 			this->SetDirty();
 		}
 	}
@@ -1953,7 +1953,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, TBSE_ZOOMIN, TBSE_ZOOMOUT);
+		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, WID_TE_ZOOM_IN, WID_TE_ZOOM_OUT);
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -2004,37 +2004,37 @@ Hotkey<ScenarioEditorToolbarWindow> ScenarioEditorToolbarWindow::scenedit_mainto
 Hotkey<ScenarioEditorToolbarWindow> *_scenedit_maintoolbar_hotkeys = ScenarioEditorToolbarWindow::scenedit_maintoolbar_hotkeys;
 
 static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
-	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_FASTFORWARD), SetDataTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_SETTINGS), SetDataTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
-	NWidget(WWT_IMGBTN_2, COLOUR_GREY, TBSE_SAVESCENARIO), SetDataTip(SPR_IMG_SAVE, STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_FAST_FORWARD), SetDataTip(SPR_IMG_FASTFORWARD, STR_TOOLBAR_TOOLTIP_FORWARD),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SETTINGS), SetDataTip(SPR_IMG_SETTINGS, STR_TOOLBAR_TOOLTIP_OPTIONS),
+	NWidget(WWT_IMGBTN_2, COLOUR_GREY, WID_TE_SAVE), SetDataTip(SPR_IMG_SAVE, STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PANEL, COLOUR_GREY, TBSE_SPACERPANEL), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_SPACER), EndContainer(),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PANEL, COLOUR_GREY, TBSE_DATEPANEL_CONTAINER),
+	NWidget(WWT_PANEL, COLOUR_GREY, WID_TE_DATE_PANEL),
 		NWidget(NWID_HORIZONTAL), SetPIP(3, 2, 3),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_DATEBACKWARD), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD),
-			NWidget(WWT_EMPTY, COLOUR_GREY, TBSE_DATEPANEL), SetDataTip(STR_NULL, STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_DATEFORWARD), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_BACKWARD), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_TE_DATE), SetDataTip(STR_NULL, STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_DATE_FORWARD), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_SMALLMAP), SetDataTip(SPR_IMG_SMALLMAP, STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SMALL_MAP), SetDataTip(SPR_IMG_SMALLMAP, STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_ZOOMIN), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_ZOOMOUT), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_ZOOM_IN), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_ZOOM_OUT), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_LANDGENERATE), SetDataTip(SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_TOWNGENERATE), SetDataTip(SPR_IMG_TOWN, STR_SCENEDIT_TOOLBAR_TOWN_GENERATION),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_INDUSTRYGENERATE), SetDataTip(SPR_IMG_INDUSTRY, STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_BUILDROAD), SetDataTip(SPR_IMG_BUILDROAD, STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_BUILDDOCKS), SetDataTip(SPR_IMG_BUILDWATER, STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_PLANTTREES), SetDataTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES),
-	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, TBSE_PLACESIGNS), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_LAND_GENERATE), SetDataTip(SPR_IMG_LANDSCAPING, STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_TOWN_GENERATE), SetDataTip(SPR_IMG_TOWN, STR_SCENEDIT_TOOLBAR_TOWN_GENERATION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_INDUSTRY), SetDataTip(SPR_IMG_INDUSTRY, STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_ROADS), SetDataTip(SPR_IMG_BUILDROAD, STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_WATER), SetDataTip(SPR_IMG_BUILDWATER, STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_TREES), SetDataTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES),
+	NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_TE_SIGNS), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
 	NWidget(NWID_SPACER),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, TBN_MUSICSOUND), SetDataTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, TBN_HELP), SetDataTip(SPR_IMG_QUERY, STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION),
-	NWidget(WWT_IMGBTN, COLOUR_GREY, TBN_SWITCHBAR), SetDataTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_MUSIC_SOUND), SetDataTip(SPR_IMG_MUSIC, STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_HELP), SetDataTip(SPR_IMG_QUERY, STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION),
+	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_SWITCH_BAR), SetDataTip(SPR_IMG_SWITCH_TOOLBAR, STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR),
 };
 
 static NWidgetBase *MakeScenarioToolbar(int *biggest_index)
