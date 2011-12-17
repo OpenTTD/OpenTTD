@@ -71,8 +71,9 @@ static LanguagePackHeader _lang; ///< Header information about a language.
 #define HASH_SIZE 32767
 static uint16 _hash_head[HASH_SIZE];
 
-static byte _put_buf[4096];
-static uint _put_pos;
+/** The buffer for writing a single string. */
+typedef SmallVector<byte, 256> Buffer;
+Buffer _put_buf;
 static int _next_string_id;
 
 static uint32 _hash;
@@ -169,8 +170,7 @@ void NORETURN CDECL error(const char *s, ...)
 
 static void PutByte(byte c)
 {
-	if (_put_pos >= lengthof(_put_buf)) error("Put buffer too small");
-	_put_buf[_put_pos++] = c;
+	*_put_buf.Append() = c;
 }
 
 
@@ -1224,27 +1224,26 @@ struct LanguageWriter {
 
 					/* Write each case */
 					for (c = casep; c != NULL; c = c->next) {
-						uint pos;
-
 						PutByte(c->caseidx);
 						/* Make some space for the 16-bit length */
-						pos = _put_pos;
+						size_t pos = _put_buf.Length();
 						PutByte(0);
 						PutByte(0);
 						/* Write string */
 						PutCommandString(c->string);
 						PutByte(0); // terminate with a zero
 						/* Fill in the length */
-						_put_buf[pos + 0] = GB(_put_pos - (pos + 2), 8, 8);
-						_put_buf[pos + 1] = GB(_put_pos - (pos + 2), 0, 8);
+						size_t size = _put_buf.Length() - (pos + 2);
+						_put_buf[pos + 0] = GB(size, 8, 8);
+						_put_buf[pos + 1] = GB(size, 0, 8);
 					}
 				}
 
 				if (cmdp != NULL) PutCommandString(cmdp);
 
-				this->WriteLength(_put_pos);
-				this->Write(_put_buf, _put_pos);
-				_put_pos = 0;
+				this->WriteLength(_put_buf.Length());
+				this->Write(_put_buf.Begin(), _put_buf.Length());
+				_put_buf.Clear();
 			}
 		}
 	}
