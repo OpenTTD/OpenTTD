@@ -207,7 +207,15 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return ret;
 }
 
-/** Helper to run the refit cost callback. */
+/**
+ * Helper to run the refit cost callback.
+ * @param v The vehicle we are refitting, can be NULL.
+ * @param engine_type Which engine to refit
+ * @param new_cid Cargo type we are refitting to.
+ * @param new_subtype New cargo subtype.
+ * @param [out] auto_refit_allowed The refit is allowed as an auto-refit.
+ * @return Price for refitting
+ */
 static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype, bool *auto_refit_allowed)
 {
 	/* Prepare callback param with info about the new cargo type. */
@@ -228,7 +236,7 @@ static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID ne
 	}
 
 	*auto_refit_allowed = e->info.refit_cost == 0;
-	return (v->cargo_type != new_cid) ? e->info.refit_cost : 0;
+	return (v == NULL || v->cargo_type != new_cid) ? e->info.refit_cost : 0;
 }
 
 /**
@@ -237,8 +245,8 @@ static int GetRefitCostFactor(const Vehicle *v, EngineID engine_type, CargoID ne
  * @param engine_type Which engine to refit
  * @param new_cid Cargo type we are refitting to.
  * @param new_subtype New cargo subtype.
+ * @param [out] auto_refit_allowed The refit is allowed as an auto-refit.
  * @return Price for refitting
- * @return[out] auto_refit_allowed The refit is allowed as an auto-refit.
  */
 static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID new_cid, byte new_subtype, bool *auto_refit_allowed)
 {
