@@ -642,11 +642,102 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 	return cmd;
 }
 
+/** Helper for reading strings. */
+struct StringReader {
+	StringData &data; ///< The data to fill during reading.
+	const char *file; ///< The file we are reading.
+	bool master;      ///< Are we reading the master file?
+	bool translation; ///< Are we reading a translation, implies !master. However, the base translation will have this false.
 
-static void HandlePragma(StringData &data, char *str, bool master)
+	/**
+	 * Prepare reading.
+	 * @param data        The data to fill during reading.
+	 * @param file        The file we are reading.
+	 * @param master      Are we reading the master file?
+	 * @param translation Are we reading a translation?
+	 */
+	StringReader(StringData &data, const char *file, bool master, bool translation) :
+			data(data), file(strdup(file)), master(master), translation(translation)
+	{
+	}
+
+	/** Make sure the right reader gets freed. */
+	virtual ~StringReader()
+	{
+		free(file);
+	}
+
+	/**
+	 * Read a single line from the source of strings.
+	 * @param buffer The buffer to read the data in to.
+	 * @param size   The size of the buffer.
+	 * @return The buffer, or NULL if at the end of the file.
+	 */
+	virtual char *ReadLine(char *buffer, size_t size) = 0;
+
+	/**
+	 * Handle the pragma of the file.
+	 * @param str    The pragma string to parse.
+	 */
+	virtual void HandlePragma(char *str) = 0;
+
+	/**
+	 * Handle reading a single string.
+	 * @param str The string to handle.
+	 */
+	void HandleString(char *str);
+
+	/**
+	 * Start parsing the file.
+	 */
+	virtual void ParseFile();
+};
+
+/** A reader that simply reads using fopen. */
+struct FileStringReader : StringReader {
+	FILE *fh; ///< The file we are reading.
+
+	/**
+	 * Create the reader.
+	 * @param data        The data to fill during reading.
+	 * @param file        The file we are reading.
+	 * @param master      Are we reading the master file?
+	 * @param translation Are we reading a translation?
+	 */
+	FileStringReader(StringData &data, const char *file, bool master, bool translation) :
+			StringReader(data, file, master, translation)
+	{
+		this->fh = fopen(file, "rb");
+		if (this->fh == NULL) error("Could not open %s", file);
+	}
+
+	/** Free/close the file. */
+	virtual ~FileStringReader()
+	{
+		fclose(this->fh);
+	}
+
+	/* virtual */ char *ReadLine(char *buffer, size_t size)
+	{
+		return fgets(buffer, size, this->fh);
+	}
+
+	/* virtual */ void HandlePragma(char *str);
+
+	/* virtual */ void ParseFile()
+	{
+		this->StringReader::ParseFile();
+
+		if (StrEmpty(_lang.name) || StrEmpty(_lang.own_name) || StrEmpty(_lang.isocode)) {
+			error("Language must include ##name, ##ownname and ##isocode");
+		}
+	}
+};
+
+void FileStringReader::HandlePragma(char *str)
 {
 	if (!memcmp(str, "id ", 3)) {
-		data.next_string_id = strtoul(str + 3, NULL, 0);
+		this->data.next_string_id = strtoul(str + 3, NULL, 0);
 	} else if (!memcmp(str, "name ", 5)) {
 		strecpy(_lang.name, str + 5, lastof(_lang.name));
 	} else if (!memcmp(str, "ownname ", 8)) {
@@ -690,7 +781,7 @@ static void HandlePragma(StringData &data, char *str, bool master)
 		}
 		_lang.newgrflangid = (uint8)langid;
 	} else if (!memcmp(str, "gender ", 7)) {
-		if (master) error("Genders are not allowed in the base translation.");
+		if (this->master) error("Genders are not allowed in the base translation.");
 		char *buf = str + 7;
 
 		for (;;) {
@@ -702,7 +793,7 @@ static void HandlePragma(StringData &data, char *str, bool master)
 			_lang.num_genders++;
 		}
 	} else if (!memcmp(str, "case ", 5)) {
-		if (master) error("Cases are not allowed in the base translation.");
+		if (this->master) error("Cases are not allowed in the base translation.");
 		char *buf = str + 5;
 
 		for (;;) {
@@ -823,10 +914,10 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 	return result;
 }
 
-static void HandleString(StringData &data, char *str, bool master)
+void StringReader::HandleString(char *str)
 {
 	if (*str == '#') {
-		if (str[1] == '#' && str[2] != '#') HandlePragma(data, str + 2, master);
+		if (str[1] == '#' && str[2] != '#') this->HandlePragma(str + 2);
 		return;
 	}
 
@@ -869,9 +960,9 @@ static void HandleString(StringData &data, char *str, bool master)
 	if (casep != NULL) *casep++ = '\0';
 
 	/* Check if this string already exists.. */
-	LangString *ent = data.Find(str);
+	LangString *ent = this->data.Find(str);
 
-	if (master) {
+	if (this->master) {
 		if (casep != NULL) {
 			strgen_error("Cases in the base translation are not supported.");
 			return;
@@ -882,13 +973,13 @@ static void HandleString(StringData &data, char *str, bool master)
 			return;
 		}
 
-		if (data.strings[data.next_string_id] != NULL) {
-			strgen_error("String ID 0x%X for '%s' already in use by '%s'", data.next_string_id, str, data.strings[data.next_string_id]->name);
+		if (this->data.strings[this->data.next_string_id] != NULL) {
+			strgen_error("String ID 0x%X for '%s' already in use by '%s'", this->data.next_string_id, str, this->data.strings[this->data.next_string_id]->name);
 			return;
 		}
 
 		/* Allocate a new LangString */
-		data.Add(str, new LangString(str, s, data.next_string_id++, _cur_line));
+		this->data.Add(str, new LangString(str, s, this->data.next_string_id++, _cur_line));
 	} else {
 		if (ent == NULL) {
 			strgen_warning("String name '%s' does not exist in master file", str);
@@ -923,36 +1014,24 @@ static void rstrip(char *buf)
 	buf[i] = '\0';
 }
 
-
-static void ParseFile(StringData &data, const char *file, bool english)
+void StringReader::ParseFile()
 {
-	FILE *in;
 	char buf[2048];
 
-	/* Only look at the final filename to determine whether it's the base language or not */
-	const char *cur_file = strrchr(_file, PATHSEPCHAR);
-	const char *next_file = strrchr(file, PATHSEPCHAR);
-	_translation = next_file != NULL && cur_file != NULL && strcmp(cur_file, next_file) != 0;
-	_file = file;
+	_translation = this->master || this->translation;
+	_file = this->file;
 
-	/* For each new file we parse, reset the genders, and language codes */
+	/* For each new file we parse, reset the genders, and language codes. */
 	MemSetT(&_lang, 0);
 	strecpy(_lang.digit_group_separator, ",", lastof(_lang.digit_group_separator));
 	strecpy(_lang.digit_group_separator_currency, ",", lastof(_lang.digit_group_separator_currency));
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
 
-	in = fopen(file, "r");
-	if (in == NULL) error("Cannot open file");
 	_cur_line = 1;
-	while (fgets(buf, sizeof(buf), in) != NULL) {
+	while (this->ReadLine(buf, sizeof(buf)) != NULL) {
 		rstrip(buf);
-		HandleString(data, buf, english);
+		this->HandleString(buf);
 		_cur_line++;
-	}
-	fclose(in);
-
-	if (StrEmpty(_lang.name) || StrEmpty(_lang.own_name) || StrEmpty(_lang.isocode)) {
-		error("Language must include ##name, ##ownname and ##isocode");
 	}
 }
 
@@ -1523,15 +1602,16 @@ int CDECL main(int argc, char *argv[])
 
 	try {
 		/* strgen has two modes of operation. If no (free) arguments are passed
-		* strgen generates strings.h to the destination directory. If it is supplied
-		* with a (free) parameter the program will translate that language to destination
-		* directory. As input english.txt is parsed from the source directory */
+		 * strgen generates strings.h to the destination directory. If it is supplied
+		 * with a (free) parameter the program will translate that language to destination
+		 * directory. As input english.txt is parsed from the source directory */
 		if (mgo.numleft == 0) {
 			mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
 
-			StringData data;
 			/* parse master file */
-			ParseFile(data, pathbuf, true);
+			StringData data;
+			FileStringReader master_reader(data, pathbuf, true, false);
+			master_reader.ParseFile();
 			if (_errors != 0) return 1;
 
 			/* write strings.h */
@@ -1548,8 +1628,13 @@ int CDECL main(int argc, char *argv[])
 
 			StringData data;
 			/* parse master file and check if target file is correct */
-			ParseFile(data, pathbuf, true);
-			ParseFile(data, replace_pathsep(mgo.argv[0]), false); // target file
+			FileStringReader master_reader(data, pathbuf, true, false);
+			master_reader.ParseFile();
+
+			const char *translation = replace_pathsep(mgo.argv[0]);
+			const char *file = strrchr(translation, PATHSEPCHAR);
+			FileStringReader translation_reader(data, translation, false, file == NULL || strcmp(file + 1, "english.txt") != 0);
+			translation_reader.ParseFile(); // target file
 			if (_errors != 0) return 1;
 
 			/* get the targetfile, strip any directories and append to destination path */
