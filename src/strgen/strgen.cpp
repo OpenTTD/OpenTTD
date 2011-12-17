@@ -71,9 +71,6 @@ static LanguagePackHeader _lang; ///< Header information about a language.
 #define HASH_SIZE 32767
 static uint16 _hash_head[HASH_SIZE];
 
-/** The buffer for writing a single string. */
-typedef SmallVector<byte, 256> Buffer;
-Buffer _put_buf;
 static int _next_string_id;
 
 static uint32 _hash;
@@ -168,33 +165,42 @@ void NORETURN CDECL error(const char *s, ...)
 	throw std::exception();
 }
 
-static void PutByte(byte c)
-{
-	*_put_buf.Append() = c;
-}
-
-
-static void PutUtf8(uint32 value)
-{
-	if (value < 0x80) {
-		PutByte(value);
-	} else if (value < 0x800) {
-		PutByte(0xC0 + GB(value,  6, 5));
-		PutByte(0x80 + GB(value,  0, 6));
-	} else if (value < 0x10000) {
-		PutByte(0xE0 + GB(value, 12, 4));
-		PutByte(0x80 + GB(value,  6, 6));
-		PutByte(0x80 + GB(value,  0, 6));
-	} else if (value < 0x110000) {
-		PutByte(0xF0 + GB(value, 18, 3));
-		PutByte(0x80 + GB(value, 12, 6));
-		PutByte(0x80 + GB(value,  6, 6));
-		PutByte(0x80 + GB(value,  0, 6));
-	} else {
-		strgen_warning("Invalid unicode value U+0x%X", value);
+/** The buffer for writing a single string. */
+struct Buffer : SmallVector<byte, 256> {
+	/**
+	 * Conveniance method for adding a byte.
+	 * @param value The value to add.
+	 */
+	void AppendByte(byte value)
+	{
+		*this->Append() = value;
 	}
-}
 
+	/**
+	 * Add an Unicode character encoded in UTF-8 to the buffer.
+	 * @param value The character to add.
+	 */
+	void AppendUtf8(uint32 value)
+	{
+		if (value < 0x80) {
+			*this->Append() = value;
+		} else if (value < 0x800) {
+			*this->Append() = 0xC0 + GB(value,  6, 5);
+			*this->Append() = 0x80 + GB(value,  0, 6);
+		} else if (value < 0x10000) {
+			*this->Append() = 0xE0 + GB(value, 12, 4);
+			*this->Append() = 0x80 + GB(value,  6, 6);
+			*this->Append() = 0x80 + GB(value,  0, 6);
+		} else if (value < 0x110000) {
+			*this->Append() = 0xF0 + GB(value, 18, 3);
+			*this->Append() = 0x80 + GB(value, 12, 6);
+			*this->Append() = 0x80 + GB(value,  6, 6);
+			*this->Append() = 0x80 + GB(value,  0, 6);
+		} else {
+			strgen_warning("Invalid unicode value U+0x%X", value);
+		}
+	}
+};
 
 size_t Utf8Validate(const char *s)
 {
@@ -221,10 +227,10 @@ size_t Utf8Validate(const char *s)
 }
 
 
-static void EmitSingleChar(char *buf, int value)
+static void EmitSingleChar(Buffer *buffer, char *buf, int value)
 {
 	if (*buf != '\0') strgen_warning("Ignoring trailing letters in command");
-	PutUtf8(value);
+	buffer->AppendUtf8(value);
 }
 
 
@@ -300,17 +306,17 @@ char *ParseWord(char **buf)
 /* Forward declaration */
 static int TranslateArgumentIdx(int arg, int offset = 0);
 
-static void EmitWordList(const char * const *words, uint nw)
+static void EmitWordList(Buffer *buffer, const char * const *words, uint nw)
 {
-	PutByte(nw);
-	for (uint i = 0; i < nw; i++) PutByte(strlen(words[i]) + 1);
+	buffer->AppendByte(nw);
+	for (uint i = 0; i < nw; i++) buffer->AppendByte(strlen(words[i]) + 1);
 	for (uint i = 0; i < nw; i++) {
-		for (uint j = 0; words[i][j] != '\0'; j++) PutByte(words[i][j]);
-		PutByte(0);
+		for (uint j = 0; words[i][j] != '\0'; j++) buffer->AppendByte(words[i][j]);
+		buffer->AppendByte(0);
 	}
 }
 
-static void EmitPlural(char *buf, int value)
+static void EmitPlural(Buffer *buffer, char *buf, int value)
 {
 	int argidx = _cur_argidx;
 	int offset = 0;
@@ -346,14 +352,14 @@ static void EmitPlural(char *buf, int value)
 		}
 	}
 
-	PutUtf8(SCC_PLURAL_LIST);
-	PutByte(_lang.plural_form);
-	PutByte(TranslateArgumentIdx(argidx, offset));
-	EmitWordList(words, nw);
+	buffer->AppendUtf8(SCC_PLURAL_LIST);
+	buffer->AppendByte(_lang.plural_form);
+	buffer->AppendByte(TranslateArgumentIdx(argidx, offset));
+	EmitWordList(buffer, words, nw);
 }
 
 
-static void EmitGender(char *buf, int value)
+static void EmitGender(Buffer *buffer, char *buf, int value)
 {
 	int argidx = _cur_argidx;
 	int offset = 0;
@@ -367,8 +373,8 @@ static void EmitGender(char *buf, int value)
 		if (nw >= MAX_NUM_GENDERS) error("G argument '%s' invalid", buf);
 
 		/* now nw contains the gender index */
-		PutUtf8(SCC_GENDER_INDEX);
-		PutByte(nw);
+		buffer->AppendUtf8(SCC_GENDER_INDEX);
+		buffer->AppendByte(nw);
 	} else {
 		const char *words[MAX_NUM_GENDERS];
 
@@ -388,9 +394,9 @@ static void EmitGender(char *buf, int value)
 		if (nw != _lang.num_genders) error("Bad # of arguments for gender command");
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
-		PutUtf8(SCC_GENDER_LIST);
-		PutByte(TranslateArgumentIdx(argidx, offset));
-		EmitWordList(words, nw);
+		buffer->AppendUtf8(SCC_GENDER_LIST);
+		buffer->AppendByte(TranslateArgumentIdx(argidx, offset));
+		EmitWordList(buffer, words, nw);
 	}
 }
 
@@ -1054,21 +1060,21 @@ static int TranslateArgumentIdx(int argidx, int offset)
 	return sum + offset;
 }
 
-static void PutArgidxCommand()
+static void PutArgidxCommand(Buffer *buffer)
 {
-	PutUtf8(SCC_ARG_INDEX);
-	PutByte(TranslateArgumentIdx(_cur_argidx));
+	buffer->AppendUtf8(SCC_ARG_INDEX);
+	buffer->AppendByte(TranslateArgumentIdx(_cur_argidx));
 }
 
 
-static void PutCommandString(const char *str)
+static void PutCommandString(Buffer *buffer, const char *str)
 {
 	_cur_argidx = 0;
 
 	while (*str != '\0') {
 		/* Process characters as they are until we encounter a { */
 		if (*str != '{') {
-			PutByte(*str++);
+			buffer->AppendByte(*str++);
 			continue;
 		}
 
@@ -1079,8 +1085,8 @@ static void PutCommandString(const char *str)
 		if (cs == NULL) break;
 
 		if (casei != -1) {
-			PutUtf8(SCC_SET_CASE); // {SET_CASE}
-			PutByte(casei);
+			buffer->AppendUtf8(SCC_SET_CASE); // {SET_CASE}
+			buffer->AppendByte(casei);
 		}
 
 		/* For params that consume values, we need to handle the argindex properly */
@@ -1088,7 +1094,7 @@ static void PutCommandString(const char *str)
 			/* Check if we need to output a move-param command */
 			if (argno != -1 && argno != _cur_argidx) {
 				_cur_argidx = argno;
-				PutArgidxCommand();
+				PutArgidxCommand(buffer);
 			}
 
 			/* Output the one from the master string... it's always accurate. */
@@ -1098,7 +1104,7 @@ static void PutCommandString(const char *str)
 			}
 		}
 
-		cs->proc(param, cs->value);
+		cs->proc(buffer, param, cs->value);
 	}
 }
 
@@ -1169,6 +1175,7 @@ struct LanguageWriter {
 		_lang.winlangid = TO_LE16(_lang.winlangid);
 
 		this->WriteHeader(&_lang);
+		Buffer buffer;
 
 		for (int i = 0; i != 32; i++) {
 			for (uint j = 0; j != in_use[i]; j++) {
@@ -1192,7 +1199,7 @@ struct LanguageWriter {
 					}
 					if ((_show_todo & 1) != 0) {
 						const char *s = "<TODO> ";
-						while (*s != '\0') PutByte(*s++);
+						while (*s != '\0') buffer.AppendByte(*s++);
 					}
 				}
 
@@ -1217,33 +1224,33 @@ struct LanguageWriter {
 					 * It has this format
 					 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 					 * Each LEN is printed using 2 bytes in big endian order. */
-					PutUtf8(SCC_SWITCH_CASE);
+					buffer.AppendUtf8(SCC_SWITCH_CASE);
 					/* Count the number of cases */
 					for (num = 0, c = casep; c; c = c->next) num++;
-					PutByte(num);
+					buffer.AppendByte(num);
 
 					/* Write each case */
 					for (c = casep; c != NULL; c = c->next) {
-						PutByte(c->caseidx);
+						buffer.AppendByte(c->caseidx);
 						/* Make some space for the 16-bit length */
-						size_t pos = _put_buf.Length();
-						PutByte(0);
-						PutByte(0);
+						size_t pos = buffer.Length();
+						buffer.AppendByte(0);
+						buffer.AppendByte(0);
 						/* Write string */
-						PutCommandString(c->string);
-						PutByte(0); // terminate with a zero
+						PutCommandString(&buffer, c->string);
+						buffer.AppendByte(0); // terminate with a zero
 						/* Fill in the length */
-						size_t size = _put_buf.Length() - (pos + 2);
-						_put_buf[pos + 0] = GB(size, 8, 8);
-						_put_buf[pos + 1] = GB(size, 0, 8);
+						size_t size = buffer.Length() - (pos + 2);
+						buffer[pos + 0] = GB(size, 8, 8);
+						buffer[pos + 1] = GB(size, 0, 8);
 					}
 				}
 
-				if (cmdp != NULL) PutCommandString(cmdp);
+				if (cmdp != NULL) PutCommandString(&buffer, cmdp);
 
-				this->WriteLength(_put_buf.Length());
-				this->Write(_put_buf.Begin(), _put_buf.Length());
-				_put_buf.Clear();
+				this->WriteLength(buffer.Length());
+				this->Write(buffer.Begin(), buffer.Length());
+				buffer.Clear();
 			}
 		}
 	}
