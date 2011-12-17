@@ -105,6 +105,16 @@ struct LangString {
 		free(this->translated);
 		delete this->translated_case;
 	}
+
+	/** Free all data related to the translation. */
+	void FreeTranslation()
+	{
+		free(this->translated);
+		this->translated = NULL;
+
+		delete this->translated_case;
+		this->translated_case = NULL;
+	}
 };
 
 /** Information about the currently known strings. */
@@ -134,6 +144,15 @@ struct StringData {
 		for (size_t i = 0; i < this->max_strings; i++) delete this->strings[i];
 		free(this->strings);
 		free(this->hash_heads);
+	}
+
+	/** Free all data related to the translation. */
+	void FreeTranslation()
+	{
+		for (size_t i = 0; i < this->max_strings; i++) {
+			LangString *ls = this->strings[i];
+			if (ls != NULL) ls->FreeTranslation();
+		}
 	}
 
 	/**
@@ -1017,6 +1036,7 @@ static void rstrip(char *buf)
 void StringReader::ParseFile()
 {
 	char buf[2048];
+	_warnings = _errors = 0;
 
 	_translation = this->master || this->translation;
 	_file = this->file;
@@ -1621,7 +1641,7 @@ int CDECL main(int argc, char *argv[])
 			HeaderFileWriter writer(pathbuf);
 			writer.WriteHeader(data);
 			writer.Finalise(data);
-		} else if (mgo.numleft == 1) {
+		} else if (mgo.numleft >= 1) {
 			char *r;
 
 			mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
@@ -1631,31 +1651,33 @@ int CDECL main(int argc, char *argv[])
 			FileStringReader master_reader(data, pathbuf, true, false);
 			master_reader.ParseFile();
 
-			const char *translation = replace_pathsep(mgo.argv[0]);
-			const char *file = strrchr(translation, PATHSEPCHAR);
-			FileStringReader translation_reader(data, translation, false, file == NULL || strcmp(file + 1, "english.txt") != 0);
-			translation_reader.ParseFile(); // target file
-			if (_errors != 0) return 1;
+			for (int i = 0; i < mgo.numleft; i++) {
+				data.FreeTranslation();
 
-			/* get the targetfile, strip any directories and append to destination path */
-			r = strrchr(mgo.argv[0], PATHSEPCHAR);
-			mkpath(pathbuf, lengthof(pathbuf), dest_dir, (r != NULL) ? &r[1] : mgo.argv[0]);
+				const char *translation = replace_pathsep(mgo.argv[i]);
+				const char *file = strrchr(translation, PATHSEPCHAR);
+				FileStringReader translation_reader(data, translation, false, file == NULL || strcmp(file + 1, "english.txt") != 0);
+				translation_reader.ParseFile(); // target file
+				if (_errors != 0) return 1;
 
-			/* rename the .txt (input-extension) to .lng */
-			r = strrchr(pathbuf, '.');
-			if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
-			ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
+				/* get the targetfile, strip any directories and append to destination path */
+				r = strrchr(mgo.argv[i], PATHSEPCHAR);
+				mkpath(pathbuf, lengthof(pathbuf), dest_dir, (r != NULL) ? &r[1] : mgo.argv[i]);
 
-			LanguageFileWriter writer(pathbuf);
-			writer.WriteLang(data);
-			writer.Finalise();
+				/* rename the .txt (input-extension) to .lng */
+				r = strrchr(pathbuf, '.');
+				if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
+				ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
 
-			/* if showing warnings, print a summary of the language */
-			if ((_show_todo & 2) != 0) {
-				fprintf(stdout, "%d warnings and %d errors for %s\n", _warnings, _errors, pathbuf);
+				LanguageFileWriter writer(pathbuf);
+				writer.WriteLang(data);
+				writer.Finalise();
+
+				/* if showing warnings, print a summary of the language */
+				if ((_show_todo & 2) != 0) {
+					fprintf(stdout, "%d warnings and %d errors for %s\n", _warnings, _errors, pathbuf);
+				}
 			}
-		} else {
-			fprintf(stderr, "Invalid arguments\n");
 		}
 	} catch (...) {
 		return 2;
