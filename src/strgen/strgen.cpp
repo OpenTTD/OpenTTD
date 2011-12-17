@@ -109,8 +109,11 @@ struct LangString {
 
 /** Information about the currently known strings. */
 struct StringData {
+	static const uint STRINGS_IN_TAB = 2048;
+
 	LangString **strings; ///< Array of all known strings.
 	uint16 *hash_heads;   ///< Hash table for the strings.
+	size_t tabs;          ///< The number of 'tabs' of strings.
 	size_t max_strings;   ///< The maxmimum number of strings.
 	int next_string_id;   ///< The next string ID to allocate.
 
@@ -118,7 +121,7 @@ struct StringData {
 	 * Create a new string data container.
 	 * @param max_strings The maximum number of strings.
 	 */
-	StringData(size_t max_strings = 65536) : max_strings(max_strings)
+	StringData(size_t tabs = 32) : tabs(tabs), max_strings(tabs * STRINGS_IN_TAB)
 	{
 		this->strings = CallocT<LangString *>(max_strings);
 		this->hash_heads = CallocT<uint16>(max_strings);
@@ -226,6 +229,17 @@ struct StringData {
 		}
 
 		return hash;
+	}
+
+	/**
+	 * Count the number of tab elements that are in use.
+	 * @param tab The tab to count the elements of.
+	 */
+	uint CountInUse(uint tab) const
+	{
+		int i;
+		for (i = STRINGS_IN_TAB; --i >= 0;) if (this->strings[(tab * STRINGS_IN_TAB) + i] != NULL) break;
+		return i + 1;
 	}
 };
 
@@ -942,16 +956,6 @@ static void ParseFile(StringData &data, const char *file, bool english)
 	}
 }
 
-
-static uint CountInUse(const StringData &data, uint grp)
-{
-	int i;
-
-	for (i = 0x800; --i >= 0;) if (data.strings[(grp << 11) + i] != NULL) break;
-	return i + 1;
-}
-
-
 bool CompareFiles(const char *n1, const char *n2)
 {
 	FILE *f2 = fopen(n2, "rb");
@@ -1233,15 +1237,15 @@ struct LanguageWriter {
 	 */
 	void WriteLang(const StringData &data)
 	{
-		uint in_use[32];
-		for (int i = 0; i != 32; i++) {
-			uint n = CountInUse(data, i);
+		uint in_use[data.tabs];
+		for (size_t tab = 0; tab < data.tabs; tab++) {
+			uint n = data.CountInUse(tab);
 
-			in_use[i] = n;
-			_lang.offsets[i] = TO_LE16(n);
+			in_use[tab] = n;
+			_lang.offsets[tab] = TO_LE16(n);
 
-			for (uint j = 0; j != in_use[i]; j++) {
-				const LangString *ls = data.strings[(i << 11) + j];
+			for (uint j = 0; j != in_use[tab]; j++) {
+				const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
 				if (ls != NULL && ls->translated == NULL) _lang.missing++;
 			}
 		}
@@ -1254,9 +1258,9 @@ struct LanguageWriter {
 		this->WriteHeader(&_lang);
 		Buffer buffer;
 
-		for (int i = 0; i != 32; i++) {
-			for (uint j = 0; j != in_use[i]; j++) {
-				const LangString *ls = data.strings[(i << 11) + j];
+		for (size_t tab = 0; tab < data.tabs; tab++) {
+			for (uint j = 0; j != in_use[tab]; j++) {
+				const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
 				const Case *casep;
 				const char *cmdp;
 
