@@ -1166,22 +1166,133 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :تمام گاڑ
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}گاڑیوں کی معیاد کبھی ختم نہ ہو: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}گاڑی کو اسکی معیاد کے {ORANGE}{STRING}{LTBLUE} مہینے{P 0:1 "" s} پہلے یا بعد خودکار طور پر بدل دیں
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}خودکار تبدیلی کے لئے ضروری کم سے کم رقم کو خودکار طریقے سے بدل دیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}خرابی کے پیغام کی مدت: {ORANGE}{STRING} سیکنڈ {P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}ٹول ٹپ دکھائیں: {ORANGE} {STRING} سیکنڈ کے لئے دکھائیں
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}ٹول ٹپ دکھائیں: {ORANGE}دائیاں بٹن دبائیں
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}شہر کی آبادی شہر کے نام کے ساتھ دکھائیں: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}مخطط میں لائینوں کی موٹائی: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}زمین بنانے والا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}نقشے کے کنارے سے تیل صاف کرنے والے کادخانے کا زیادہ سے زیادہ فاصلہ: {ORANGE}{STRING} ٹائل{P 0:1 "" یں}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}برف کی اونچائی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}علاقے کی کٹائی (صرف TerraGenesis میں) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بہت ہموار
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ہموار
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :رف
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :بہت رف
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}درخت لگانے کا طریقہ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :کوئی نہیں
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :اصلی
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بہتر بنایا ہوا
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}اونچائی والے نقشے کو گھمانا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :الٹی گھڑی وار
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :گھڑی وار
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}ایک سیدھے scenario والا نقشہ کتنا اونچا ہو گا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}نقشے کے کناروں پر منظر کشی فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}جنوبی کنارے پر ایک یا ایک سے زیادہ ٹائلیں خالی نہیں ہیں
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}کسی کنارے پر ایک یا ایک سے زیادہ ٹائلیں پانی کی نہیں ہیں
+
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}ہیلی کاپٹروں کی ہیلی پیڈ پر خودکار مرمت کر دی جائے: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}منظرکشی والی ٹول بار کو ریل گاڑی/سڑک/پانی/ہوائی اڈے والی ٹول بار سے ملا دیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}چھوٹے نقشے میں زمین کا رنگ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :سبز
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :گہرا سبز
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفشی
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}تعمیراتی کام کے دوران پیمائشی ٹول ٹپ دکھائیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}کمپنی کے رنگ دکھائیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :کوئی نہیں
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :اپنی کمپنی
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :تمام کمپنیاں
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}ٹیم سے بات چیت کے لئے <ENTER> دبائیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :نقشے کو قریب سے دیکھیں
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :نقشے کو ہلائیں
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :آف
+
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :آف
 
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
 
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :کوئی فعل نہیں
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :تمام غیر تعمیراتی افعال
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :تمام لیکن منظر کشی بدلنے والے افعال
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :تمام افعال
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}گاڑیوں کی ایڈوانسڈ فہرست دیکھیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}سامان بھرنے کی نشانی دکھائیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}جلدی گاڑیوں کو احکامات دینا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}کھیل شروع کرنے یا لوڈ کرنے کے بعد ریل گاڑی کی شروعاتی قسم: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :پہلی دستیاب
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :آخری دستیاب
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :زیادہ استعمال شدہ
 
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}کمپنی کی زیادہ سے زیادہ ریل گاڑیاں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}کمپنی کی زیادہ سے زیادہ گاڑیاں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}کمپنی کے زیادہ سے زیادہ ہوائی جہاز: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}کمپنی کے زیادہ سے زیادہ بحری جہاز: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}کمپیوٹر کے لئے ریل گاڑیاں غیر فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}کمپیوٹر کے لئے گاڑیاں غیر فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}کمپیوٹر کے لئے ہوائی جہاز غیر فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}کمپیوٹر کے لئے بحری جہاز غیر فعال کریں: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}زیادہ کھلاڑیوں والے کھیل میں AI کی اجازت دیں: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}مرمتی وقفے فیصد میں ہیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}ریل گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}ریل گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}ہوائی جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}ہوائی جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}بحری جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}بحری جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}گاڑیوں کی خرابی غیر فعال ہونے کی صورت میں مرمت بھی غیر فعال کر دیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}مال گاڑی کی حد رفتار فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}الیلٹرک ریل گاڑیاں غیر فعال کریں: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}رنگین خبریں کون سے سال سے شروع ہوں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}شروعاتی سال: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}مستحکم معیشت فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}دوسری کمپنیوں کے حصص خریدنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}اشاروں والی GUI فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}تعمیر کے لئے اشاروں کی شروعاتی قسم: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :راستے کے اشارے
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :یک طرفہ راستے کے اشارے
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :صرف راستے کے اشارے
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :تمام
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}نئے شہروں میں سڑکوں کا پھیلاو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :اصلی
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :اچھی سڑکیں
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 گرڈ
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 گرڈ
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :بے ترتیب
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}شہروں کو سڑکیں تعمیر کرنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}شہروں کو چوک تعمیر کرنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}شہروں کو ہوائی اڈوں کا صوتی شور کنٹرول کرنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}کھیل میں نئے شہر تعمیر کرنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ممنوع
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :اجازت ہے
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :اپنی مرضی کے شہر کے پھیلاو کی اجازت ہے
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}کھیل میں درخت لگانے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :کوئی نہیں {RED}(لکڑ مل ٹوٹ گئی)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :صرف بارش کے جنگلوں میں
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ہر جگہ
 
-
-
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}بنیادی ٹول بار کی جگہ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}اسٹیٹس بار کی جگہ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE} قریب سے دیکھنے کی حد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE} دور سے دیکھنے کی حد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1190,10 +1301,35 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :عمومی
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :کوئی نہیں
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :آہستہ
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :نارمل
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تیز
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بہت تیز
+
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}انٹرفیس
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}تعمیرات
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}گاڑیاں
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE} اسٹیشن
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}معیشت
+STR_CONFIG_SETTING_AI                                           :{ORANGE}مد مقابل
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}اشعارے
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}سامان کو سنبھالنا
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}کمپیوٹر کے کھلاڑی
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}خودکار تبدیلی
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}مرمت
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}روٹنگ
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}ریل گاڑیاں
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}شہر
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}صنعتیں
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}اسکرپٹس
+
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
+STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
+STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 
 
-
-
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}سیٹنگ کی ولیو بدلیں
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}کنفیگریشن فائل میں خرابی ہے ۔ ۔ ۔
@@ -1211,50 +1347,181 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}- - - ک
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE} ۔ ۔ ۔ کھیل بچانے کا یہ فارمیٹ '{STRING}' دستیاب نہیں ہے۔ واپس '{STRING}' پر جا رہے ہیں
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
+STR_INTRO_NEW_GAME                                              :{BLACK}نیا کھیل
+STR_INTRO_LOAD_GAME                                             :{BLACK}کھیل لوڈ کریں
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Scenario کھیلیں
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}منظر نامہ
+STR_INTRO_MULTIPLAYER                                           :{BLACK}زیادہ کھلاڑی
 
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}کھیل کے اختیارات
+STR_INTRO_DIFFICULTY                                            :{BLACK}مشکل ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}ایڈوانسڈ سیٹنگ
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF چنئے
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}آن لائن مواد دیکھیں
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI چنئے
+STR_INTRO_QUIT                                                  :{BLACK}باہر نکلو
 
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}بچایا ہوا کھیل لوڈ کریں
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}زیادہ کھلاڑیوں والا کھیل شروع کریں
 
 
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}مشکلات کے اختیارات دیکھیئے
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}ایڈوانسڈ سیتنگز دیکھیئے
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF سیٹنگز دیکھیئے
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}نئے اور ترمیم شدہ مواد کو ڈاون لوڈ کرنے کے لئے چیک کریں
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI سیٹنگز دیکھیئے
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' سے باہر نکلو
 
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}باہر نکلو
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}کیا آپ واقعی OpenTTD کو چھوڑ کر واپس {STRING} میں جانا چاہتے ہیں؟
 STR_QUIT_YES                                                    :{BLACK}ہاں
 STR_QUIT_NO                                                     :{BLACK}نہیں
 
 # Supported OSes
+STR_OSNAME_WINDOWS                                              :ونڈوز
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :یونیکس
+STR_OSNAME_OSX                                                  :OS{NBSP}X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}کھیل چھوڑ دو
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس کھیل کو چھوڑنا چاہ رہے ہیں؟
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس scenario کو چھوڑنا چاہ رہے ہیں؟
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}دھوکے
+STR_CHEATS_TOOLTIP                                              :{BLACK}چیک باکسز سے ظاہر ہوتا ہے کہ آپ نے یہ دھوکا پہلے بھی کیا یے
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجودہ سال بدلیں
 
 # Livery window
 
 
+STR_LIVERY_STEAM                                                :اسٹیم انجن
+STR_LIVERY_DIESEL                                               :ڈیزل انجن
+STR_LIVERY_ELECTRIC                                             :الیکٹرک انجن
+STR_LIVERY_MONORAIL                                             :مونو ریل انجن
+STR_LIVERY_MAGLEV                                               :میگ لیو انجن
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :مسافر کوچ (اسٹیم)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :مسافر کوچ (ڈیزل)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :مسافر کوچ (الیکٹرک)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :مسافر کوچ (مونو ریل)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :مسافر کوچ (میگ لیو)
+STR_LIVERY_FREIGHT_WAGON                                        :مال ڈبہ
+STR_LIVERY_BUS                                                  :بس
+STR_LIVERY_TRUCK                                                :لاری
+STR_LIVERY_PASSENGER_SHIP                                       :مسافر فیری
+STR_LIVERY_FREIGHT_SHIP                                         :مال بردار بحری جہاز
+STR_LIVERY_HELICOPTER                                           :ہیلی کاپٹر
+STR_LIVERY_SMALL_PLANE                                          :چھرٹا ہوائی جہاز
+STR_LIVERY_LARGE_PLANE                                          :بڑا ہوائی جہاز
+STR_LIVERY_PASSENGER_TRAM                                       :مسافر ٹرام
+STR_LIVERY_FREIGHT_TRAM                                         :مال بردار ٹرام
 
 # Face selection window
+STR_FACE_CAPTION                                                :{WHITE}چہرہ چنئے
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}چہرہ چننا منسوخ کریں
+STR_FACE_OK_TOOLTIP                                             :{BLACK}نیا چہرہ چننا قبول کریں
 
+STR_FACE_MALE_BUTTON                                            :{BLACK}مرد
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}مردانہ چہرے چنئے
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}عورت
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}زنانہ چہرے چنئے
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}نیا چہرہ
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}بے ترتیب نیا چہرہ بنائیں
+STR_FACE_ADVANCED                                               :{BLACK}ایڈوانسڈ
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}ایڈوانسڈ چہرہ چنئے
+STR_FACE_SIMPLE                                                 :{BLACK}سادہ
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}سادہ چہرہ چنئے
+STR_FACE_LOAD                                                   :{BLACK}لوڈ
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}پسندیدہ چہرہ لوڈ کریں
+STR_FACE_FACECODE                                               :{BLACK}کھلاڑی کا چہرہ نمبر
+STR_FACE_SAVE                                                   :{BLACK}بچائیں
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}پسندیدہ چہرہ بچائیں
+STR_FACE_EUROPEAN                                               :{BLACK}یورپئین
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}یورپئین چہرہ چنئے
+STR_FACE_AFRICAN                                                :{BLACK}افریقی
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}افریقی چہرہ چنئے
+STR_FACE_YES                                                    :ہاں
+STR_FACE_NO                                                     :نہیں
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}مونچھیں یا کان کی بالیاں فعال کریں
+STR_FACE_HAIR                                                   :بال:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}بال بدلیں
+STR_FACE_EYEBROWS                                               :بھوئیں:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}بھوئیں بدلیں
+STR_FACE_EYECOLOUR                                              :آنکھوں کا رنگ:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}آنکھوں کا رنگ بدلیں
+STR_FACE_GLASSES                                                :چشمے:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}چشمے فعال کریں
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}چشمے بدلیں
+STR_FACE_NOSE                                                   :ناک:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}ناک بدلیں
+STR_FACE_LIPS                                                   :ہونٹ:
+STR_FACE_MOUSTACHE                                              :مونچھیں:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}ہونٹ یا مونچھیں بدلیں
+STR_FACE_CHIN                                                   :ٹھوڑی:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}ٹھوڑی بدلیں
+STR_FACE_JACKET                                                 :جیکٹ:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}جیکٹ بدلیں
+STR_FACE_COLLAR                                                 :کالر:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}کالر بدلیں
+STR_FACE_TIE                                                    :ٹائی:
+STR_FACE_EARRING                                                :بالیاں:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ٹائی یا بالیاں بدلیں
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}زیادہ کھلاڑی
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}کنکشن:
+STR_NETWORK_SERVER_LIST_LAN                                     :LAN
+STR_NETWORK_SERVER_LIST_INTERNET                                :انٹرنیٹ
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}کھلاڑی کا نام:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}دوسرے کھلاڑی آپ کو اس نام سے جانیں گے
+
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}نام
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}کھیل کا نام
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}نقشے کا حجم
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}تاریخ
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}آج کی تاریخ
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}سال
 
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}کھیل کی معلومات
 
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}کھیل میں شامل ہوں
 
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}سرور ڈھونڈیں
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}سرور شامل کریں
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}سرور شروع کریں
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}اپنا سرور خود شروع کریں
 
-
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}اپنا نام لکھیں
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}نیا زیادہ کھلاڑیوں والا کھیل شروع کریں
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}کھیل کا نام:
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}پاس ورڈ رکھیں
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / انٹرنیٹ
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}زیادہ سے زیادہ کمپنیاں:
 
 
 # Network game languages
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :کوئی بھی
 ############ End of leave-in-this-order
 
 # Network game lobby
@@ -1269,22 +1536,55 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا 
 
 ############ End of leave-in-this-order
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}رابطہ منقطع کریں
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}سرور محفوظ ہے۔ پاس ورڈ بتایہں
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}کمپنی محفوظ ہے۔ پاس ورڈ بتایہں
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}نظارہ کریں
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}نئی کمپنی
 
 # Network client list
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :پیسے دئیں
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :سب سے بات کریں
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :کمپنی سے بات کریں
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پرائیویٹ پیغام
 
+STR_NETWORK_SERVER                                              :سرور
+STR_NETWORK_SPECTATORS                                          :ناظرین
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}بتائیں آپ کتنے پیسے بھیجنا چاہتے ہیں
 
 # Network set password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}بتایا گیا پاس ورڈ محفوظ نہ کریں
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}کمپنی کا نیا پاس ورڈ رکھیں
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}کمپنی کا پاس ورڈ
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}پہلے سے مقرر شدہ کمپنی کا پاس ورڈ
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}کمپنی کے پاس ورڈ کو تمام نئی کمپنیوں کے لئے پہلے سے مقرر شدہ سمجھیں
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}شامل ہوں
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}اس کمپنی کے طور پر کھیل میں شامل ہوں
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}پاس ورڈ
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}کمپنی کا پاس ورڈ رکھیں
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}بھیجیں
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[ٹیم] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[پرائیویٹ] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[تمام] :
 
+STR_NETWORK_CHAT_COMPANY                                        :[ٹیم] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[ٹیم] سے {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[پرائیویٹ] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[پرائیویٹ] سے {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[تمام] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}نیٹ ورک پر بات کرنے کے لئے پیغام لکھیں
 
 # Network messages
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}نیٹ ورک پر کوئی کھیل نہیں ملا
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}سرور نے آپ کی درخواست کا جواب نہیں دیا
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order

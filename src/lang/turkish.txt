@@ -288,6 +288,7 @@ STR_SORT_BY_INTRO_DATE                                          :Piyasaya Giriş
 STR_SORT_BY_RUNNING_COST                                        :Bakım Gideri
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Güç/Bakım Gideri
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
+STR_SORT_BY_RANGE                                               :Menzil
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oyunu durdur
@@ -1360,6 +1361,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}İşare
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ayar değerini değiştir
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1875,6 +1878,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... bağ
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosya yazılabilir değil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}İndirilen sıkıştırılmış dosya açılamadı
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Şeffaflık Seçenekleri
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Durak tabelaları için şeffaflık. Kilitlemek için Ctrl ile tıklayın
@@ -1920,6 +1924,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Demiryol
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Demiryolu tüneli yap. Shift ile tıklama maliyet tahminini gösterir
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Trenyolu, işaret, yerimi ve istasyon yapımında sil/yap arasında geçiş. Yerimi ve istasyon raylarını da silmek için Ctrl'yi basılı tutun
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ray türünü dönüştür/geliştir. Shift ile tıklama maliyet tahminini gösterir
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Tren Garı Yönü
@@ -2191,6 +2196,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Mera
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Karlı arazi
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Çöl
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Yol
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Sokak lambalı yol
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ağaçli yol
@@ -2375,6 +2381,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Aşağı
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Seçili NewGRF dosyasını listenin aşağısına taşı
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Yüklü NewGRF dosyalarının listesidir. Seçeneklerini değiştirmek için bir dosyayı tıklayın
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametreler
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet değiştir
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Seçili NewGRF'nin paletini değiştir.{}Bu işlemi bu NewGRF'nin grafikleri oyun içerisinde pembe görünüyorsa yapın.
@@ -2396,7 +2404,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Eşleşen 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Etkisiz
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD'nin bu sürümüyle uyumlu değil
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametrelerini değiştir
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Kapat
@@ -2405,6 +2412,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tüm par
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametre sayısı: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}İncele - {STRING}
@@ -2705,6 +2714,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Şirketin ismi
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Yöneticinin ismi
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Şirketimizi satın alacak birilerini arıyoruz.{}{} {COMPANY} şirketini şu fiyata almak ister misiniz: {CURRENCY_LONG}?
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Fabrikalar
@@ -3028,6 +3039,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Durdu
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Frenliyor, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Elektrik yok
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Boş yol bekleniyor
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Bir sonraki hedefe çok uzak
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Gidiyor {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Talimat yok, {VELOCITY}
@@ -3056,6 +3068,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} sene ({
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} sene ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Azami Hız: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Azami hız: {LTBLUE}{VELOCITY} {BLACK}Menzil: {LTBLUE}{COMMA} kare
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 
@@ -3249,9 +3262,13 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Boşaltma ve t
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Boşaltma ve herhangi bir tam dolduruşu bekle)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Boşaltma ve yükleme yok)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[yakın uç]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[orta]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[uzak uç]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Bir sonraki hedef menzil dışında)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Emre sıçra {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :{COMMA} no'lu emre {STRING} {STRING} {COMMA} sağlandığında sıçra
@@ -3333,7 +3350,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}YZ log i
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Devam et
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}YZ'yi devam ettir
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Bu YZ için hata ayıklama çıktısı göster
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin
@@ -3760,6 +3776,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Talimat 
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Paylaşılan emir listesini durduramazsınız...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Talimat listesi kopyalanamiyor...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... önceki hedeften çok uzak
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... uçağın menzili yeterli değil
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
