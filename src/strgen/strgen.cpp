@@ -17,6 +17,8 @@
 #include "../misc/getoptdata.h"
 #include "../table/control_codes.h"
 
+#include "strgen.h"
+
 #include <stdarg.h>
 #include <exception>
 
@@ -49,218 +51,189 @@ static int _errors, _warnings, _show_todo;
 static const ptrdiff_t MAX_COMMAND_PARAM_SIZE = 100; ///< Maximum size of every command block, not counting the name of the command itself
 static const CmdStruct *ParseCommandString(const char **str, char *param, int *argno, int *casei);
 
-/** Container for the different cases of a string. */
-struct Case {
-	int caseidx;  ///< The index of the case.
-	char *string; ///< The translation of the case.
-	Case *next;   ///< The next, chained, case.
+/**
+ * Create a new case.
+ * @param caseidx The index of the case.
+ * @param string  The translation of the case.
+ * @param next    The next chained case.
+ */
+Case::Case(int caseidx, const char *string, Case *next) :
+		caseidx(caseidx), string(strdup(string)), next(next)
+{
+}
 
-	/**
-	 * Create a new case.
-	 * @param caseidx The index of the case.
-	 * @param string  The translation of the case.
-	 * @param next    The next chained case.
-	 */
-	Case(int caseidx, const char *string, Case *next) :
-			caseidx(caseidx), string(strdup(string)), next(next)
-	{
+/** Free everything we allocated. */
+Case::~Case()
+{
+	free(this->string);
+	delete this->next;
+}
+
+/**
+ * Create a new string.
+ * @param name    The name of the string.
+ * @param english The english "translation" of the string.
+ * @param index   The index in the string table.
+ * @param line    The line this string was found on.
+ */
+LangString::LangString(const char *name, const char *english, int index, int line) :
+		name(strdup(name)), english(strdup(english)), translated(NULL),
+		hash_next(0), index(index), line(line), translated_case(NULL)
+{
+}
+
+/** Free everything we allocated. */
+LangString::~LangString()
+{
+	free(this->name);
+	free(this->english);
+	free(this->translated);
+	delete this->translated_case;
+}
+
+/** Free all data related to the translation. */
+void LangString::FreeTranslation()
+{
+	free(this->translated);
+	this->translated = NULL;
+
+	delete this->translated_case;
+	this->translated_case = NULL;
+}
+
+/**
+ * Create a new string data container.
+ * @param max_strings The maximum number of strings.
+ */
+StringData::StringData(size_t tabs) : tabs(tabs), max_strings(tabs * STRINGS_IN_TAB)
+{
+	this->strings = CallocT<LangString *>(max_strings);
+	this->hash_heads = CallocT<uint16>(max_strings);
+	this->next_string_id = 0;
+}
+
+/** Free everything we allocated. */
+StringData::~StringData()
+{
+	for (size_t i = 0; i < this->max_strings; i++) delete this->strings[i];
+	free(this->strings);
+	free(this->hash_heads);
+}
+
+/** Free all data related to the translation. */
+void StringData::FreeTranslation()
+{
+	for (size_t i = 0; i < this->max_strings; i++) {
+		LangString *ls = this->strings[i];
+		if (ls != NULL) ls->FreeTranslation();
 	}
+}
 
-	/** Free everything we allocated. */
-	~Case()
-	{
-		free(this->string);
-		delete this->next;
+/**
+ * Create a hash of the string for finding them back quickly.
+ * @param s The string to hash.
+ * @return The hashed string.
+ */
+uint StringData::HashStr(const char *s) const
+{
+	uint hash = 0;
+	for (; *s != '\0'; s++) hash = ROL(hash, 3) ^ *s;
+	return hash % this->max_strings;
+}
+
+/**
+ * Add a newly created LangString.
+ * @param s  The name of the string.
+ * @param ls The string to add.
+ */
+void StringData::Add(const char *s, LangString *ls)
+{
+	uint hash = this->HashStr(s);
+	ls->hash_next = this->hash_heads[hash];
+	/* Off-by-one for hash find. */
+	this->hash_heads[hash] = ls->index + 1;
+	this->strings[ls->index] = ls;
+}
+
+/**
+ * Find a LangString based on the string name.
+ * @param s The string name to search on.
+ * @return The LangString or NULL if it is not known.
+ */
+LangString *StringData::Find(const char *s)
+{
+	int idx = this->hash_heads[this->HashStr(s)];
+
+	while (--idx >= 0) {
+		LangString *ls = this->strings[idx];
+
+		if (strcmp(ls->name, s) == 0) return ls;
+		idx = ls->hash_next;
 	}
-};
+	return NULL;
+}
 
-/** Information about a single string. */
-struct LangString {
-	char *name;            ///< Name of the string.
-	char *english;         ///< English text.
-	char *translated;      ///< Translated text.
-	uint16 hash_next;      ///< Next hash entry.
-	uint16 index;          ///< The index in the language file.
-	int line;              ///< Line of string in source-file.
-	Case *translated_case; ///< Cases of the translation.
-
-	/**
-	 * Create a new string.
-	 * @param name    The name of the string.
-	 * @param english The english "translation" of the string.
-	 * @param index   The index in the string table.
-	 * @param line    The line this string was found on.
-	 */
-	LangString(const char *name, const char *english, int index, int line) :
-			name(strdup(name)), english(strdup(english)), translated(NULL),
-			hash_next(0), index(index), line(line), translated_case(NULL)
-	{
+/**
+ * Create a compound hash.
+ * @param hash The hash to add the string hash to.
+ * @param s    The string hash.
+ * @return The new hash.
+ */
+uint StringData::VersionHashStr(uint hash, const char *s) const
+{
+	for (; *s != '\0'; s++) {
+		hash = ROL(hash, 3) ^ *s;
+		hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
 	}
+	return hash;
+}
 
-	/** Free everything we allocated. */
-	~LangString()
-	{
-		free(this->name);
-		free(this->english);
-		free(this->translated);
-		delete this->translated_case;
-	}
+/**
+ * Make a hash of the file to get a unique "version number"
+ * @return The version number.
+ */
+uint StringData::Version() const
+{
+	uint hash = 0;
 
-	/** Free all data related to the translation. */
-	void FreeTranslation()
-	{
-		free(this->translated);
-		this->translated = NULL;
+	for (size_t i = 0; i < this->max_strings; i++) {
+		const LangString *ls = this->strings[i];
 
-		delete this->translated_case;
-		this->translated_case = NULL;
-	}
-};
+		if (ls != NULL) {
+			const CmdStruct *cs;
+			const char *s;
+			char buf[MAX_COMMAND_PARAM_SIZE];
+			int argno;
+			int casei;
 
-/** Information about the currently known strings. */
-struct StringData {
-	static const uint STRINGS_IN_TAB = 2048;
-
-	LangString **strings; ///< Array of all known strings.
-	uint16 *hash_heads;   ///< Hash table for the strings.
-	size_t tabs;          ///< The number of 'tabs' of strings.
-	size_t max_strings;   ///< The maxmimum number of strings.
-	int next_string_id;   ///< The next string ID to allocate.
-
-	/**
-	 * Create a new string data container.
-	 * @param max_strings The maximum number of strings.
-	 */
-	StringData(size_t tabs = 32) : tabs(tabs), max_strings(tabs * STRINGS_IN_TAB)
-	{
-		this->strings = CallocT<LangString *>(max_strings);
-		this->hash_heads = CallocT<uint16>(max_strings);
-		this->next_string_id = 0;
-	}
-
-	/** Free everything we allocated. */
-	~StringData()
-	{
-		for (size_t i = 0; i < this->max_strings; i++) delete this->strings[i];
-		free(this->strings);
-		free(this->hash_heads);
-	}
-
-	/** Free all data related to the translation. */
-	void FreeTranslation()
-	{
-		for (size_t i = 0; i < this->max_strings; i++) {
-			LangString *ls = this->strings[i];
-			if (ls != NULL) ls->FreeTranslation();
-		}
-	}
-
-	/**
-	 * Create a hash of the string for finding them back quickly.
-	 * @param s The string to hash.
-	 * @return The hashed string.
-	 */
-	uint HashStr(const char *s) const
-	{
-		uint hash = 0;
-		for (; *s != '\0'; s++) hash = ROL(hash, 3) ^ *s;
-		return hash % this->max_strings;
-	}
-
-	/**
-	 * Add a newly created LangString.
-	 * @param s  The name of the string.
-	 * @param ls The string to add.
-	 */
-	void Add(const char *s, LangString *ls)
-	{
-		uint hash = this->HashStr(s);
-		ls->hash_next = this->hash_heads[hash];
-		/* Off-by-one for hash find. */
-		this->hash_heads[hash] = ls->index + 1;
-		this->strings[ls->index] = ls;
-	}
-
-	/**
-	 * Find a LangString based on the string name.
-	 * @param s The string name to search on.
-	 * @return The LangString or NULL if it is not known.
-	 */
-	LangString *Find(const char *s)
-	{
-		int idx = this->hash_heads[this->HashStr(s)];
-
-		while (--idx >= 0) {
-			LangString *ls = this->strings[idx];
-
-			if (strcmp(ls->name, s) == 0) return ls;
-			idx = ls->hash_next;
-		}
-		return NULL;
-	}
-
-	/**
-	 * Create a compound hash.
-	 * @param hash The hash to add the string hash to.
-	 * @param s    The string hash.
-	 * @return The new hash.
-	 */
-	uint VersionHashStr(uint hash, const char *s) const
-	{
-		for (; *s != '\0'; s++) {
-			hash = ROL(hash, 3) ^ *s;
+			s = ls->name;
+			hash ^= i * 0x717239;
 			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
-		}
-		return hash;
-	}
+			hash = this->VersionHashStr(hash, s + 1);
 
-	/**
-	 * Make a hash of the file to get a unique "version number"
-	 * @return The version number.
-	 */
-	uint Version() const
-	{
-		uint hash = 0;
+			s = ls->english;
+			while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != NULL) {
+				if (cs->flags & C_DONTCOUNT) continue;
 
-		for (size_t i = 0; i < this->max_strings; i++) {
-			const LangString *ls = this->strings[i];
-
-			if (ls != NULL) {
-				const CmdStruct *cs;
-				const char *s;
-				char buf[MAX_COMMAND_PARAM_SIZE];
-				int argno;
-				int casei;
-
-				s = ls->name;
-				hash ^= i * 0x717239;
-				hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
-				hash = this->VersionHashStr(hash, s + 1);
-
-				s = ls->english;
-				while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != NULL) {
-					if (cs->flags & C_DONTCOUNT) continue;
-
-					hash ^= (cs - _cmd_structs) * 0x1234567;
-					hash = (hash & 1 ? hash >> 1 ^ 0xF00BAA4 : hash >> 1);
-				}
+				hash ^= (cs - _cmd_structs) * 0x1234567;
+				hash = (hash & 1 ? hash >> 1 ^ 0xF00BAA4 : hash >> 1);
 			}
 		}
-
-		return hash;
 	}
 
-	/**
-	 * Count the number of tab elements that are in use.
-	 * @param tab The tab to count the elements of.
-	 */
-	uint CountInUse(uint tab) const
-	{
-		int i;
-		for (i = STRINGS_IN_TAB; --i >= 0;) if (this->strings[(tab * STRINGS_IN_TAB) + i] != NULL) break;
-		return i + 1;
-	}
-};
+	return hash;
+}
+
+/**
+ * Count the number of tab elements that are in use.
+ * @param tab The tab to count the elements of.
+ */
+uint StringData::CountInUse(uint tab) const
+{
+	int i;
+	for (i = STRINGS_IN_TAB; --i >= 0;) if (this->strings[(tab * STRINGS_IN_TAB) + i] != NULL) break;
+	return i + 1;
+}
 
 static LanguagePackHeader _lang; ///< Header information about a language.
 
@@ -661,56 +634,23 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 	return cmd;
 }
 
-/** Helper for reading strings. */
-struct StringReader {
-	StringData &data; ///< The data to fill during reading.
-	const char *file; ///< The file we are reading.
-	bool master;      ///< Are we reading the master file?
-	bool translation; ///< Are we reading a translation, implies !master. However, the base translation will have this false.
+/**
+ * Prepare reading.
+ * @param data        The data to fill during reading.
+ * @param file        The file we are reading.
+ * @param master      Are we reading the master file?
+ * @param translation Are we reading a translation?
+ */
+StringReader::StringReader(StringData &data, const char *file, bool master, bool translation) :
+		data(data), file(strdup(file)), master(master), translation(translation)
+{
+}
 
-	/**
-	 * Prepare reading.
-	 * @param data        The data to fill during reading.
-	 * @param file        The file we are reading.
-	 * @param master      Are we reading the master file?
-	 * @param translation Are we reading a translation?
-	 */
-	StringReader(StringData &data, const char *file, bool master, bool translation) :
-			data(data), file(strdup(file)), master(master), translation(translation)
-	{
-	}
-
-	/** Make sure the right reader gets freed. */
-	virtual ~StringReader()
-	{
-		free(file);
-	}
-
-	/**
-	 * Read a single line from the source of strings.
-	 * @param buffer The buffer to read the data in to.
-	 * @param size   The size of the buffer.
-	 * @return The buffer, or NULL if at the end of the file.
-	 */
-	virtual char *ReadLine(char *buffer, size_t size) = 0;
-
-	/**
-	 * Handle the pragma of the file.
-	 * @param str    The pragma string to parse.
-	 */
-	virtual void HandlePragma(char *str) = 0;
-
-	/**
-	 * Handle reading a single string.
-	 * @param str The string to handle.
-	 */
-	void HandleString(char *str);
-
-	/**
-	 * Start parsing the file.
-	 */
-	virtual void ParseFile();
-};
+/** Make sure the right reader gets freed. */
+StringReader::~StringReader()
+{
+	free(file);
+}
 
 /** A reader that simply reads using fopen. */
 struct FileStringReader : StringReader {
@@ -1120,41 +1060,22 @@ struct FileWriter {
 	}
 };
 
-/** Base class for writing the header. */
-struct HeaderWriter {
-	/**
-	 * Write the string ID.
-	 * @param name     The name of the string.
-	 * @param stringid The ID of the string.
-	 */
-	virtual void WriteStringID(const char *name, int stringid) = 0;
-
-	/**
-	 * Finalise writing the file.
-	 * @param data The data about the string.
-	 */
-	virtual void Finalise(const StringData &data) = 0;
-
-	/** Especially destroy the subclasses. */
-	virtual ~HeaderWriter() {};
-
-	/**
-	 * Write the header information.
-	 * @param data The data about the string.
-	 */
-	void WriteHeader(const StringData &data)
-	{
-		int last = 0;
-		for (size_t i = 0; i < data.max_strings; i++) {
-			if (data.strings[i] != NULL) {
-				this->WriteStringID(data.strings[i]->name, i);
-				last = i;
-			}
+/**
+ * Write the header information.
+ * @param data The data about the string.
+ */
+void HeaderWriter::WriteHeader(const StringData &data)
+{
+	int last = 0;
+	for (size_t i = 0; i < data.max_strings; i++) {
+		if (data.strings[i] != NULL) {
+			this->WriteStringID(data.strings[i]->name, i);
+			last = i;
 		}
-
-		this->WriteStringID("STR_LAST_STRINGID", last);
 	}
-};
+
+	this->WriteStringID("STR_LAST_STRINGID", last);
+}
 
 struct HeaderFileWriter : HeaderWriter, FileWriter {
 	/** The real file name we eventually want to write to. */
@@ -1287,154 +1208,129 @@ static void PutCommandString(Buffer *buffer, const char *str)
 	}
 }
 
-/** Base class for all language writers. */
-struct LanguageWriter {
-	/**
-	 * Write the header metadata. The multi-byte integers are already converted to
-	 * the little endian format.
-	 * @param header The header to write.
-	 */
-	virtual void WriteHeader(const LanguagePackHeader *header) = 0;
-
-	/**
-	 * Write a number of bytes.
-	 * @param buffer The buffer to write.
-	 * @param length The amount of byte to write.
-	 */
-	virtual void Write(const byte *buffer, size_t length) = 0;
-
-	/**
-	 * Finalise writing the file.
-	 */
-	virtual void Finalise() = 0;
-
-	/** Especially destroy the subclasses. */
-	virtual ~LanguageWriter() {}
-
-	/**
-	 * Write the length as a simple gamma.
-	 * @param length The number to write.
-	 */
-	void WriteLength(uint length)
-	{
-		char buffer[2];
-		int offs = 0;
-		if (length >= 0x4000) {
-			error("string too long");
-		}
-
-		if (length >= 0xC0) {
-			buffer[offs++] = (length >> 8) | 0xC0;
-		}
-		buffer[offs++] = length & 0xFF;
-		this->Write((byte*)buffer, offs);
+/**
+ * Write the length as a simple gamma.
+ * @param length The number to write.
+ */
+void LanguageWriter::WriteLength(uint length)
+{
+	char buffer[2];
+	int offs = 0;
+	if (length >= 0x4000) {
+		error("string too long");
 	}
 
-	/**
-	 * Actually write the language.
-	 * @param data The data about the string.
-	 */
-	void WriteLang(const StringData &data)
-	{
-		uint *in_use = AllocaM(uint, data.tabs);
-		for (size_t tab = 0; tab < data.tabs; tab++) {
-			uint n = data.CountInUse(tab);
+	if (length >= 0xC0) {
+		buffer[offs++] = (length >> 8) | 0xC0;
+	}
+	buffer[offs++] = length & 0xFF;
+	this->Write((byte*)buffer, offs);
+}
 
-			in_use[tab] = n;
-			_lang.offsets[tab] = TO_LE16(n);
+/**
+ * Actually write the language.
+ * @param data The data about the string.
+ */
+void LanguageWriter::WriteLang(const StringData &data)
+{
+	uint *in_use = AllocaM(uint, data.tabs);
+	for (size_t tab = 0; tab < data.tabs; tab++) {
+		uint n = data.CountInUse(tab);
 
-			for (uint j = 0; j != in_use[tab]; j++) {
-				const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
-				if (ls != NULL && ls->translated == NULL) _lang.missing++;
-			}
-		}
+		in_use[tab] = n;
+		_lang.offsets[tab] = TO_LE16(n);
 
-		_lang.ident = TO_LE32(LanguagePackHeader::IDENT);
-		_lang.version = TO_LE32(data.Version());
-		_lang.missing = TO_LE16(_lang.missing);
-		_lang.winlangid = TO_LE16(_lang.winlangid);
-
-		this->WriteHeader(&_lang);
-		Buffer buffer;
-
-		for (size_t tab = 0; tab < data.tabs; tab++) {
-			for (uint j = 0; j != in_use[tab]; j++) {
-				const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
-				const Case *casep;
-				const char *cmdp;
-
-				/* For undefined strings, just set that it's an empty string */
-				if (ls == NULL) {
-					this->WriteLength(0);
-					continue;
-				}
-
-				_cur_ident = ls->name;
-				_cur_line = ls->line;
-
-				/* Produce a message if a string doesn't have a translation. */
-				if (_show_todo > 0 && ls->translated == NULL) {
-					if ((_show_todo & 2) != 0) {
-						strgen_warning("'%s' is untranslated", ls->name);
-					}
-					if ((_show_todo & 1) != 0) {
-						const char *s = "<TODO> ";
-						while (*s != '\0') buffer.AppendByte(*s++);
-					}
-				}
-
-				/* Extract the strings and stuff from the english command string */
-				ExtractCommandString(&_cur_pcs, ls->english, false);
-
-				if (ls->translated_case != NULL || ls->translated != NULL) {
-					casep = ls->translated_case;
-					cmdp = ls->translated;
-				} else {
-					casep = NULL;
-					cmdp = ls->english;
-				}
-
-				_translated = cmdp != ls->english;
-
-				if (casep != NULL) {
-					const Case *c;
-					uint num;
-
-					/* Need to output a case-switch.
-					 * It has this format
-					 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
-					 * Each LEN is printed using 2 bytes in big endian order. */
-					buffer.AppendUtf8(SCC_SWITCH_CASE);
-					/* Count the number of cases */
-					for (num = 0, c = casep; c; c = c->next) num++;
-					buffer.AppendByte(num);
-
-					/* Write each case */
-					for (c = casep; c != NULL; c = c->next) {
-						buffer.AppendByte(c->caseidx);
-						/* Make some space for the 16-bit length */
-						size_t pos = buffer.Length();
-						buffer.AppendByte(0);
-						buffer.AppendByte(0);
-						/* Write string */
-						PutCommandString(&buffer, c->string);
-						buffer.AppendByte(0); // terminate with a zero
-						/* Fill in the length */
-						size_t size = buffer.Length() - (pos + 2);
-						buffer[pos + 0] = GB(size, 8, 8);
-						buffer[pos + 1] = GB(size, 0, 8);
-					}
-				}
-
-				if (cmdp != NULL) PutCommandString(&buffer, cmdp);
-
-				this->WriteLength(buffer.Length());
-				this->Write(buffer.Begin(), buffer.Length());
-				buffer.Clear();
-			}
+		for (uint j = 0; j != in_use[tab]; j++) {
+			const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
+			if (ls != NULL && ls->translated == NULL) _lang.missing++;
 		}
 	}
-};
+
+	_lang.ident = TO_LE32(LanguagePackHeader::IDENT);
+	_lang.version = TO_LE32(data.Version());
+	_lang.missing = TO_LE16(_lang.missing);
+	_lang.winlangid = TO_LE16(_lang.winlangid);
+
+	this->WriteHeader(&_lang);
+	Buffer buffer;
+
+	for (size_t tab = 0; tab < data.tabs; tab++) {
+		for (uint j = 0; j != in_use[tab]; j++) {
+			const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
+			const Case *casep;
+			const char *cmdp;
+
+			/* For undefined strings, just set that it's an empty string */
+			if (ls == NULL) {
+				this->WriteLength(0);
+				continue;
+			}
+
+			_cur_ident = ls->name;
+			_cur_line = ls->line;
+
+			/* Produce a message if a string doesn't have a translation. */
+			if (_show_todo > 0 && ls->translated == NULL) {
+				if ((_show_todo & 2) != 0) {
+					strgen_warning("'%s' is untranslated", ls->name);
+				}
+				if ((_show_todo & 1) != 0) {
+					const char *s = "<TODO> ";
+					while (*s != '\0') buffer.AppendByte(*s++);
+				}
+			}
+
+			/* Extract the strings and stuff from the english command string */
+			ExtractCommandString(&_cur_pcs, ls->english, false);
+
+			if (ls->translated_case != NULL || ls->translated != NULL) {
+				casep = ls->translated_case;
+				cmdp = ls->translated;
+			} else {
+				casep = NULL;
+				cmdp = ls->english;
+			}
+
+			_translated = cmdp != ls->english;
+
+			if (casep != NULL) {
+				const Case *c;
+				uint num;
+
+				/* Need to output a case-switch.
+				 * It has this format
+				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+				 * Each LEN is printed using 2 bytes in big endian order. */
+				buffer.AppendUtf8(SCC_SWITCH_CASE);
+				/* Count the number of cases */
+				for (num = 0, c = casep; c; c = c->next) num++;
+				buffer.AppendByte(num);
+
+				/* Write each case */
+				for (c = casep; c != NULL; c = c->next) {
+					buffer.AppendByte(c->caseidx);
+					/* Make some space for the 16-bit length */
+					size_t pos = buffer.Length();
+					buffer.AppendByte(0);
+					buffer.AppendByte(0);
+					/* Write string */
+					PutCommandString(&buffer, c->string);
+					buffer.AppendByte(0); // terminate with a zero
+					/* Fill in the length */
+					size_t size = buffer.Length() - (pos + 2);
+					buffer[pos + 0] = GB(size, 8, 8);
+					buffer[pos + 1] = GB(size, 0, 8);
+				}
+			}
+
+			if (cmdp != NULL) PutCommandString(&buffer, cmdp);
+
+			this->WriteLength(buffer.Length());
+			this->Write(buffer.Begin(), buffer.Length());
+			buffer.Clear();
+		}
+	}
+}
 
 /** Class for writing a language to disk. */
 struct LanguageFileWriter : LanguageWriter, FileWriter {

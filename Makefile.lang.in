@@ -42,7 +42,7 @@ RES := $(shell mkdir -p $(BIN_DIR)/lang )
 
 all: table/strings.h $(LANGS)
 
-strgen.o: $(SRC_DIR)/strgen/strgen.cpp endian_host.h $(SRC_DIR)/table/control_codes.h $(SRC_DIR)/table/strgen_tables.h
+strgen.o: $(SRC_DIR)/strgen/strgen.cpp $(SRC_DIR)/strgen/strgen.h endian_host.h $(SRC_DIR)/table/control_codes.h $(SRC_DIR)/table/strgen_tables.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
