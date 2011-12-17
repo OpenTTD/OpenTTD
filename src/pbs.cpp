@@ -191,7 +191,21 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
 		TrackdirBits reserved = ft.m_new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(ft.m_new_tile));
 
 		/* No reservation --> path end found */
-		if (reserved == TRACKDIR_BIT_NONE) break;
+		if (reserved == TRACKDIR_BIT_NONE) {
+			if (ft.m_is_station) {
+				/* Check skipped station tiles as well, maybe our reservation ends inside the station. */
+				TileIndexDiff diff = TileOffsByDiagDir(ft.m_exitdir);
+				while (ft.m_tiles_skipped-- > 0) {
+					ft.m_new_tile -= diff;
+					if (HasStationReservation(ft.m_new_tile)) {
+						tile = ft.m_new_tile;
+						trackdir = DiagDirToDiagTrackdir(ft.m_exitdir);
+						break;
+					}
+				}
+			}
+			break;
+		}
 
 		/* Can't have more than one reserved trackdir */
 		Trackdir new_trackdir = FindFirstTrackdir(reserved);

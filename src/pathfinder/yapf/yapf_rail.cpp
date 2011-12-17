@@ -58,6 +58,7 @@ private:
 	Node      *m_res_node;        ///< The reservation target node
 	TileIndex m_res_fail_tile;    ///< The tile where the reservation failed
 	Trackdir  m_res_fail_td;      ///< The trackdir where the reservation failed
+	TileIndex m_origin_tile;      ///< Tile our reservation will originate from
 
 	bool FindSafePositionProc(TileIndex tile, Trackdir td)
 	{
@@ -80,7 +81,7 @@ private:
 			SetRailStationReservation(tile, true);
 			MarkTileDirtyByTile(tile);
 			tile = TILE_ADD(tile, diff);
-		} while (IsCompatibleTrainStationTile(tile, start));
+		} while (IsCompatibleTrainStationTile(tile, start) && tile != m_origin_tile);
 
 		return true;
 	}
@@ -145,9 +146,10 @@ public:
 	}
 
 	/** Try to reserve the path till the reservation target. */
-	bool TryReservePath(PBSTileInfo *target)
+	bool TryReservePath(PBSTileInfo *target, TileIndex origin)
 	{
 		m_res_fail_tile = INVALID_TILE;
+		m_origin_tile = origin;
 
 		if (target != NULL) {
 			target->tile = m_res_dest;
@@ -359,7 +361,7 @@ public:
 			this->FindSafePositionOnNode(pPrev);
 		}
 
-		return dont_reserve || this->TryReservePath(NULL);
+		return dont_reserve || this->TryReservePath(NULL, pNode->GetLastTile());
 	}
 };
 
@@ -452,7 +454,7 @@ public:
 			Node& best_next_node = *pPrev;
 			next_trackdir = best_next_node.GetTrackdir();
 
-			if (reserve_track && path_found) this->TryReservePath(target);
+			if (reserve_track && path_found) this->TryReservePath(target, pNode->GetLastTile());
 		}
 
 		/* Treat the path as found if stopped on the first two way signal(s). */
