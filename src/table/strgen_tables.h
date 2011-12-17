@@ -30,9 +30,9 @@ struct CmdStruct {
 	CmdFlags flags;
 };
 
-static void EmitSingleChar(Buffer *buffer, char *buf, int value);
-static void EmitPlural(Buffer *buffer, char *buf, int value);
-static void EmitGender(Buffer *buffer, char *buf, int value);
+extern void EmitSingleChar(Buffer *buffer, char *buf, int value);
+extern void EmitPlural(Buffer *buffer, char *buf, int value);
+extern void EmitGender(Buffer *buffer, char *buf, int value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */

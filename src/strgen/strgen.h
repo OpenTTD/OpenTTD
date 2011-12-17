@@ -138,4 +138,14 @@ struct LanguageWriter {
 	void WriteLang(const StringData &data);
 };
 
+void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);
+void CDECL strgen_error(const char *s, ...) WARN_FORMAT(1, 2);
+void NORETURN CDECL strgen_fatal(const char *s, ...) WARN_FORMAT(1, 2);
+char *ParseWord(char **buf);
+
+extern const char *_file;
+extern int _cur_line;
+extern int _errors, _warnings, _show_todo;
+extern LanguagePackHeader _lang;
+
 #endif /* STRGEN_H */
