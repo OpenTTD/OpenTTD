@@ -118,6 +118,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\src\strgen\strgen_base.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\src\strgen\strgen.cpp"
 				>
 			</File>

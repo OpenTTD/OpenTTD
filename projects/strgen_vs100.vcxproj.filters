@@ -10,6 +10,9 @@
     <ClCompile Include="..\src\core\alloc_func.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\strgen\strgen_base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\strgen\strgen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

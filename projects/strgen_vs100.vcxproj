@@ -74,6 +74,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\core\alloc_func.cpp" />
+    <ClCompile Include="..\src\strgen\strgen_base.cpp" />
     <ClCompile Include="..\src\strgen\strgen.cpp" />
     <ClCompile Include="..\src\string.cpp" />
     <ClCompile Include="..\src\misc\getoptdata.cpp" />
