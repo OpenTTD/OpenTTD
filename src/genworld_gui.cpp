@@ -593,7 +593,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case WID_GL_START_DATE_DOWN:
 			case WID_GL_START_DATE_UP: // Year buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags & WF_TIMEOUT) && this->timeout_timer <= 1) {
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 
 					_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + widget - WID_GL_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
@@ -611,7 +611,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case WID_GL_SNOW_LEVEL_DOWN:
 			case WID_GL_SNOW_LEVEL_UP: // Snow line buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags & WF_TIMEOUT) && this->timeout_timer <= 1) {
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 
 					_settings_newgame.game_creation.snow_line_height = Clamp(_settings_newgame.game_creation.snow_line_height + widget - WID_GL_SNOW_LEVEL_TEXT, MIN_SNOWLINE_HEIGHT, MAX_SNOWLINE_HEIGHT);
@@ -984,7 +984,7 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_START_DATE_DOWN:
 			case WID_CS_START_DATE_UP: // Year buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags & WF_TIMEOUT) && this->timeout_timer <= 1) {
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 
@@ -1002,7 +1002,7 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_FLAT_LAND_HEIGHT_DOWN:
 			case WID_CS_FLAT_LAND_HEIGHT_UP: // Height level buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags & WF_TIMEOUT) && this->timeout_timer <= 1) {
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 

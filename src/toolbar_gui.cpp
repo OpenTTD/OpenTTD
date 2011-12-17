@@ -1039,7 +1039,7 @@ static CallBackFunction ToolbarScenDatePanel(Window *w)
 static CallBackFunction ToolbarScenDateBackward(Window *w)
 {
 	/* don't allow too fast scrolling */
-	if ((w->flags & WF_TIMEOUT) && w->timeout_timer <= 1) {
+	if (!(w->flags & WF_TIMEOUT) || w->timeout_timer <= 1) {
 		w->HandleButtonClick(WID_TE_DATE_BACKWARD);
 		w->SetDirty();
 
@@ -1053,7 +1053,7 @@ static CallBackFunction ToolbarScenDateBackward(Window *w)
 static CallBackFunction ToolbarScenDateForward(Window *w)
 {
 	/* don't allow too fast scrolling */
-	if ((w->flags & WF_TIMEOUT) && w->timeout_timer <= 1) {
+	if (!(w->flags & WF_TIMEOUT) || w->timeout_timer <= 1) {
 		w->HandleButtonClick(WID_TE_DATE_FORWARD);
 		w->SetDirty();
 
