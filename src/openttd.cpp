@@ -1119,6 +1119,10 @@ void SwitchToMode(SwitchMode new_mode)
  */
 static void CheckCaches()
 {
+	/* Return here so it is easy to add checks that are run
+	 * always to aid testing of caches. */
+	if (_debug_desync_level <= 1) return;
+
 	/* Check company infrastructure cache. */
 	SmallVector<CompanyInfrastructure, 4> old_infrastructure;
 	Company *c;
@@ -1134,10 +1138,6 @@ static void CheckCaches()
 		}
 		i++;
 	}
-
-	/* Return here so it is easy to add checks that are run
-	 * always to aid testing of caches. */
-	if (_debug_desync_level <= 1) return;
 
 	/* Strict checking of the road stop cache entries */
 	const RoadStop *rs;
