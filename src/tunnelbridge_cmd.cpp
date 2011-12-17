@@ -1228,13 +1228,17 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				/* Don't fallback to non-overlay sprite -- the spec states that
 				 * if an overlay is present then the bridge surface must be
 				 * present. */
-			} else if (_game_mode != GM_MENU &&_settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
+			}
+
+			/* PBS debugging, draw reserved tracks darker */
+			if (_game_mode != GM_MENU &&_settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
 				if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
 					AddSortableSpriteToDraw(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + 8);
 				} else {
 					AddSortableSpriteToDraw(rti->base_sprites.single_sloped + tunnelbridge_direction, PALETTE_CRASH, ti->x, ti->y, 16, 16, 8, ti->z);
 				}
 			}
+
 			EndSpriteCombine();
 			if (HasCatenaryDrawn(GetRailType(ti->tile))) {
 				DrawCatenary(ti);
