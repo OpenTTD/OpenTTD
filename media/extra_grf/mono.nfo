@@ -237,4 +237,4 @@
 
 //U+0178 Latin Capital Letter Y With Diaeresis (only needed for mono as it is in the base set, but relocated by some code)
    -1 * 0 12 01 03 01 78 01
-   -1 sprites/mono.png 220 230 01 13 7 0 0
+   -1 sprites/mono.png 370 230 01 13 7 0 0

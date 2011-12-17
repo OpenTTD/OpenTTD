@@ -1276,13 +1276,11 @@ void InitializeUnicodeGlyphMap()
 
 		for (uint i = 0; i < lengthof(_default_unicode_map); i++) {
 			byte key = _default_unicode_map[i].key;
-			if (key == CLRA || key == CLRL) {
+			if (key == CLRA) {
 				/* Clear the glyph. This happens if the glyph at this code point
 				 * is non-standard and should be accessed by an SCC_xxx enum
 				 * entry only. */
-				if (key == CLRA || size == FS_LARGE) {
-					SetUnicodeGlyph(size, _default_unicode_map[i].code, 0);
-				}
+				SetUnicodeGlyph(size, _default_unicode_map[i].code, 0);
 			} else {
 				SpriteID sprite = base + key - ASCII_LETTERSTART;
 				SetUnicodeGlyph(size, _default_unicode_map[i].code, sprite);
