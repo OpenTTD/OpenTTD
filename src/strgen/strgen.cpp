@@ -40,12 +40,6 @@
 
 /* Compiles a list of strings into a compiled string list */
 
-struct Case {
-	int caseidx;
-	char *string;
-	Case *next;
-};
-
 static bool _translated;                     ///< Whether the current language is not the master language
 static bool _translation;                    ///< Is the current file actually a translation or not
 static const char *_file = "(unknown file)"; ///< The filename of the input, so we can refer to it in errors/warnings
@@ -54,25 +48,136 @@ static int _errors, _warnings, _show_todo;
 
 static const ptrdiff_t MAX_COMMAND_PARAM_SIZE = 100; ///< Maximum size of every command block, not counting the name of the command itself
 
-struct LangString {
-	char *name;            // Name of the string
-	char *english;         // English text
-	char *translated;      // Translated text
-	uint16 hash_next;      // next hash entry
-	uint16 index;
-	int line;              // line of string in source-file
-	Case *translated_case; // cases for foreign
+/** Container for the different cases of a string. */
+struct Case {
+	int caseidx;  ///< The index of the case.
+	char *string; ///< The translation of the case.
+	Case *next;   ///< The next, chained, case.
+
+	/**
+	 * Create a new case.
+	 * @param caseidx The index of the case.
+	 * @param string  The translation of the case.
+	 * @param next    The next chained case.
+	 */
+	Case(int caseidx, const char *string, Case *next) :
+			caseidx(caseidx), string(strdup(string)), next(next)
+	{
+	}
+
+	/** Free everything we allocated. */
+	~Case()
+	{
+		free(this->string);
+		delete this->next;
+	}
 };
 
-static LangString *_strings[65536];
+/** Information about a single string. */
+struct LangString {
+	char *name;            ///< Name of the string.
+	char *english;         ///< English text.
+	char *translated;      ///< Translated text.
+	uint16 hash_next;      ///< Next hash entry.
+	uint16 index;          ///< The index in the language file.
+	int line;              ///< Line of string in source-file.
+	Case *translated_case; ///< Cases of the translation.
+
+	/**
+	 * Create a new string.
+	 * @param name    The name of the string.
+	 * @param english The english "translation" of the string.
+	 * @param index   The index in the string table.
+	 * @param line    The line this string was found on.
+	 */
+	LangString(const char *name, const char *english, int index, int line) :
+			name(strdup(name)), english(strdup(english)), translated(NULL),
+			hash_next(0), index(index), line(line), translated_case(NULL)
+	{
+	}
+
+	/** Free everything we allocated. */
+	~LangString()
+	{
+		free(this->name);
+		free(this->english);
+		free(this->translated);
+		delete this->translated_case;
+	}
+};
+
+/** Information about the currently known strings. */
+struct StringData {
+	LangString **strings; ///< Array of all known strings.
+	uint16 *hash_heads;   ///< Hash table for the strings.
+	size_t max_strings;   ///< The maxmimum number of strings.
+	int next_string_id;   ///< The next string ID to allocate.
+
+	/**
+	 * Create a new string data container.
+	 * @param max_strings The maximum number of strings.
+	 */
+	StringData(size_t max_strings = 65536) : max_strings(max_strings)
+	{
+		this->strings = CallocT<LangString *>(max_strings);
+		this->hash_heads = CallocT<uint16>(max_strings);
+		this->next_string_id = 0;
+	}
+
+	/** Free everything we allocated. */
+	~StringData()
+	{
+		for (size_t i = 0; i < this->max_strings; i++) delete this->strings[i];
+		free(this->strings);
+		free(this->hash_heads);
+	}
+
+	/**
+	 * Create a hash of the string for finding them back quickly.
+	 * @param s The string to hash.
+	 * @return The hashed string.
+	 */
+	uint HashStr(const char *s)
+	{
+		uint hash = 0;
+		for (; *s != '\0'; s++) hash = ROL(hash, 3) ^ *s;
+		return hash % this->max_strings;
+	}
+
+	/**
+	 * Add a newly created LangString.
+	 * @param s  The name of the string.
+	 * @param ls The string to add.
+	 */
+	void Add(const char *s, LangString *ls)
+	{
+		uint hash = this->HashStr(s);
+		ls->hash_next = this->hash_heads[hash];
+		/* Off-by-one for hash find. */
+		this->hash_heads[hash] = ls->index + 1;
+		this->strings[ls->index] = ls;
+	}
+
+	/**
+	 * Find a LangString based on the string name.
+	 * @param s The string name to search on.
+	 * @return The LangString or NULL if it is not known.
+	 */
+	LangString *Find(const char *s)
+	{
+		int idx = this->hash_heads[this->HashStr(s)];
+
+		while (--idx >= 0) {
+			LangString *ls = this->strings[idx];
+
+			if (strcmp(ls->name, s) == 0) return ls;
+			idx = ls->hash_next;
+		}
+		return NULL;
+	}
+};
+
 static LanguagePackHeader _lang; ///< Header information about a language.
-
-
-#define HASH_SIZE 32767
-static uint16 _hash_head[HASH_SIZE];
-
-static int _next_string_id;
-
 static uint32 _hash;
 
 static const char *_cur_ident;
@@ -91,33 +196,6 @@ struct ParsedCommandStruct {
 /* Used when generating some advanced commands. */
 static ParsedCommandStruct _cur_pcs;
 static int _cur_argidx;
-
-static uint HashStr(const char *s)
-{
-	uint hash = 0;
-	for (; *s != '\0'; s++) hash = ROL(hash, 3) ^ *s;
-	return hash % HASH_SIZE;
-}
-
-static void HashAdd(const char *s, LangString *ls)
-{
-	uint hash = HashStr(s);
-	ls->hash_next = _hash_head[hash];
-	_hash_head[hash] = ls->index + 1;
-}
-
-static LangString *HashFind(const char *s)
-{
-	int idx = _hash_head[HashStr(s)];
-
-	while (--idx >= 0) {
-		LangString *ls = _strings[idx];
-
-		if (strcmp(ls->name, s) == 0) return ls;
-		idx = ls->hash_next;
-	}
-	return NULL;
-}
 
 #ifdef _MSC_VER
 # define LINE_NUM_FMT(s) "%s (%d): warning: %s (" s ")\n"
@@ -500,10 +578,10 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 }
 
 
-static void HandlePragma(char *str, bool master)
+static void HandlePragma(StringData &data, char *str, bool master)
 {
 	if (!memcmp(str, "id ", 3)) {
-		_next_string_id = strtoul(str + 3, NULL, 0);
+		data.next_string_id = strtoul(str + 3, NULL, 0);
 	} else if (!memcmp(str, "name ", 5)) {
 		strecpy(_lang.name, str + 5, lastof(_lang.name));
 	} else if (!memcmp(str, "ownname ", 8)) {
@@ -680,10 +758,10 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 	return result;
 }
 
-static void HandleString(char *str, bool master)
+static void HandleString(StringData &data, char *str, bool master)
 {
 	if (*str == '#') {
-		if (str[1] == '#' && str[2] != '#') HandlePragma(str + 2, master);
+		if (str[1] == '#' && str[2] != '#') HandlePragma(data, str + 2, master);
 		return;
 	}
 
@@ -726,7 +804,7 @@ static void HandleString(char *str, bool master)
 	if (casep != NULL) *casep++ = '\0';
 
 	/* Check if this string already exists.. */
-	LangString *ent = HashFind(str);
+	LangString *ent = data.Find(str);
 
 	if (master) {
 		if (casep != NULL) {
@@ -739,21 +817,13 @@ static void HandleString(char *str, bool master)
 			return;
 		}
 
-		if (_strings[_next_string_id]) {
-			strgen_error("String ID 0x%X for '%s' already in use by '%s'", _next_string_id, str, _strings[_next_string_id]->name);
+		if (data.strings[data.next_string_id] != NULL) {
+			strgen_error("String ID 0x%X for '%s' already in use by '%s'", data.next_string_id, str, data.strings[data.next_string_id]->name);
 			return;
 		}
 
 		/* Allocate a new LangString */
-		ent = CallocT<LangString>(1);
-		_strings[_next_string_id] = ent;
-		ent->index = _next_string_id++;
-		ent->name = strdup(str);
-		ent->line = _cur_line;
-
-		HashAdd(str, ent);
-
-		ent->english = strdup(s);
+		data.Add(str, new LangString(str, s, data.next_string_id++, _cur_line));
 	} else {
 		if (ent == NULL) {
 			strgen_warning("String name '%s' does not exist in master file", str);
@@ -769,12 +839,7 @@ static void HandleString(char *str, bool master)
 		if (!CheckCommandsMatch(s, ent->english, str)) return;
 
 		if (casep != NULL) {
-			Case *c = MallocT<Case>(1);
-
-			c->caseidx = ResolveCaseName(casep, strlen(casep));
-			c->string = strdup(s);
-			c->next = ent->translated_case;
-			ent->translated_case = c;
+			ent->translated_case = new Case(ResolveCaseName(casep, strlen(casep)), s, ent->translated_case);
 		} else {
 			ent->translated = strdup(s);
 			/* If the string was translated, use the line from the
@@ -794,7 +859,7 @@ static void rstrip(char *buf)
 }
 
 
-static void ParseFile(const char *file, bool english)
+static void ParseFile(StringData &data, const char *file, bool english)
 {
 	FILE *in;
 	char buf[2048];
@@ -816,7 +881,7 @@ static void ParseFile(const char *file, bool english)
 	_cur_line = 1;
 	while (fgets(buf, sizeof(buf), in) != NULL) {
 		rstrip(buf);
-		HandleString(buf, english);
+		HandleString(data, buf, english);
 		_cur_line++;
 	}
 	fclose(in);
@@ -838,13 +903,12 @@ static uint32 MyHashStr(uint32 hash, const char *s)
 
 
 /* make a hash of the file to get a unique "version number" */
-static void MakeHashOfStrings()
+static void MakeHashOfStrings(const StringData &data)
 {
 	uint32 hash = 0;
-	uint i;
 
-	for (i = 0; i != lengthof(_strings); i++) {
-		const LangString *ls = _strings[i];
+	for (size_t i = 0; i < data.max_strings; i++) {
+		const LangString *ls = data.strings[i];
 
 		if (ls != NULL) {
 			const CmdStruct *cs;
@@ -871,11 +935,11 @@ static void MakeHashOfStrings()
 }
 
 
-static uint CountInUse(uint grp)
+static uint CountInUse(const StringData &data, uint grp)
 {
 	int i;
 
-	for (i = 0x800; --i >= 0;) if (_strings[(grp << 11) + i] != NULL) break;
+	for (i = 0x800; --i >= 0;) if (data.strings[(grp << 11) + i] != NULL) break;
 	return i + 1;
 }
 
@@ -963,12 +1027,12 @@ struct HeaderWriter {
 	virtual ~HeaderWriter() {};
 
 	/** Write the header information. */
-	void WriteHeader()
+	void WriteHeader(const StringData &data)
 	{
 		int last = 0;
-		for (int i = 0; i != lengthof(_strings); i++) {
-			if (_strings[i] != NULL) {
-				this->WriteStringID(_strings[i]->name, i);
+		for (size_t i = 0; i < data.max_strings; i++) {
+			if (data.strings[i] != NULL) {
+				this->WriteStringID(data.strings[i]->name, i);
 				last = i;
 			}
 		}
@@ -1154,17 +1218,17 @@ struct LanguageWriter {
 	/**
 	 * Actually write the language.
 	 */
-	void WriteLang()
+	void WriteLang(const StringData &data)
 	{
 		uint in_use[32];
 		for (int i = 0; i != 32; i++) {
-			uint n = CountInUse(i);
+			uint n = CountInUse(data, i);
 
 			in_use[i] = n;
 			_lang.offsets[i] = TO_LE16(n);
 
 			for (uint j = 0; j != in_use[i]; j++) {
-				const LangString *ls = _strings[(i << 11) + j];
+				const LangString *ls = data.strings[(i << 11) + j];
 				if (ls != NULL && ls->translated == NULL) _lang.missing++;
 			}
 		}
@@ -1179,7 +1243,7 @@ struct LanguageWriter {
 
 		for (int i = 0; i != 32; i++) {
 			for (uint j = 0; j != in_use[i]; j++) {
-				const LangString *ls = _strings[(i << 11) + j];
+				const LangString *ls = data.strings[(i << 11) + j];
 				const Case *casep;
 				const char *cmdp;
 
@@ -1448,9 +1512,10 @@ int CDECL main(int argc, char *argv[])
 		if (mgo.numleft == 0) {
 			mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
 
+			StringData data;
 			/* parse master file */
-			ParseFile(pathbuf, true);
-			MakeHashOfStrings();
+			ParseFile(data, pathbuf, true);
+			MakeHashOfStrings(data);
 			if (_errors != 0) return 1;
 
 			/* write strings.h */
@@ -1458,17 +1523,18 @@ int CDECL main(int argc, char *argv[])
 			mkpath(pathbuf, lengthof(pathbuf), dest_dir, "strings.h");
 
 			HeaderFileWriter writer(pathbuf);
-			writer.WriteHeader();
+			writer.WriteHeader(data);
 			writer.Finalise();
 		} else if (mgo.numleft == 1) {
 			char *r;
 
 			mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
 
+			StringData data;
 			/* parse master file and check if target file is correct */
-			ParseFile(pathbuf, true);
-			MakeHashOfStrings();
-			ParseFile(replace_pathsep(mgo.argv[0]), false); // target file
+			ParseFile(data, pathbuf, true);
+			MakeHashOfStrings(data);
+			ParseFile(data, replace_pathsep(mgo.argv[0]), false); // target file
 			if (_errors != 0) return 1;
 
 			/* get the targetfile, strip any directories and append to destination path */
@@ -1481,7 +1547,7 @@ int CDECL main(int argc, char *argv[])
 			ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
 
 			LanguageFileWriter writer(pathbuf);
-			writer.WriteLang();
+			writer.WriteLang(data);
 			writer.Finalise();
 
 			/* if showing warnings, print a summary of the language */
