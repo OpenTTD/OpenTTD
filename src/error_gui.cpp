@@ -134,7 +134,7 @@ public:
 /** Define a queue with errors. */
 typedef std::list<ErrorMessageData> ErrorList;
 /** The actual queue with errors. */
-ErrorList _errors;
+ErrorList _error_list;
 /** Whether the window system is initialized or not. */
 bool _window_system_initialized = false;
 
@@ -297,16 +297,16 @@ public:
 void ClearErrorMessages()
 {
 	UnshowCriticalError();
-	_errors.clear();
+	_error_list.clear();
 }
 
 /** Show the first error of the queue. */
 void ShowFirstError()
 {
 	_window_system_initialized = true;
-	if (!_errors.empty()) {
-		new ErrmsgWindow(_errors.front());
-		_errors.pop_front();
+	if (!_error_list.empty()) {
+		new ErrmsgWindow(_error_list.front());
+		_error_list.pop_front();
 	}
 }
 
@@ -319,7 +319,7 @@ void UnshowCriticalError()
 {
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
 	if (_window_system_initialized && w != NULL) {
-		if (w->IsCritical()) _errors.push_front(*w);
+		if (w->IsCritical()) _error_list.push_front(*w);
 		_window_system_initialized = false;
 		delete w;
 	}
@@ -372,7 +372,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 		if (wl == WL_CRITICAL) {
 			/* Push another critical error in the queue of errors,
 			 * but do not put other errors in the queue. */
-			_errors.push_back(data);
+			_error_list.push_back(data);
 		}
 	} else {
 		/* Nothing or a non-critical error was shown. */
