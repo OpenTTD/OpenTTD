@@ -39,15 +39,13 @@ struct LangString {
 
 /** Information about the currently known strings. */
 struct StringData {
-	static const uint STRINGS_IN_TAB = 2048;
-
 	LangString **strings; ///< Array of all known strings.
 	uint16 *hash_heads;   ///< Hash table for the strings.
 	size_t tabs;          ///< The number of 'tabs' of strings.
 	size_t max_strings;   ///< The maxmimum number of strings.
 	int next_string_id;   ///< The next string ID to allocate.
 
-	StringData(size_t tabs = 32);
+	StringData(size_t tabs);
 	~StringData();
 	void FreeTranslation();
 	uint HashStr(const char *s) const;
@@ -134,8 +132,8 @@ struct LanguageWriter {
 	/** Especially destroy the subclasses. */
 	virtual ~LanguageWriter() {}
 
-	void WriteLength(uint length);
-	void WriteLang(const StringData &data);
+	virtual void WriteLength(uint length);
+	virtual void WriteLang(const StringData &data);
 };
 
 void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);

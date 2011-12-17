@@ -21,6 +21,13 @@ static const uint8 CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gen
 static const uint8 MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
 static const uint8 MAX_NUM_CASES   = 16; ///< Maximum number of supported cases.
 
+static const uint TAB_SIZE_OFFSET  = 0;                   ///< The offset for the tab size.
+static const uint TAB_SIZE_BITS    = 11;                  ///< The number of bits used for the tab size.
+static const uint TAB_SIZE         = 1 << TAB_SIZE_BITS;  ///< The number of values in a tab.
+static const uint TAB_COUNT_OFFSET = TAB_SIZE_BITS;       ///< The offset for the tab count.
+static const uint TAB_COUNT_BITS   = 5;                   ///< The number of bits used for the amount of tabs.
+static const uint TAB_COUNT        = 1 << TAB_COUNT_BITS; ///< The amount of tabs.
+
 /** Header of a language file. */
 struct LanguagePackHeader {
 	static const uint32 IDENT = 0x474E414C; ///< Identifier for OpenTTD language files, big endian for "LANG"
@@ -30,7 +37,7 @@ struct LanguagePackHeader {
 	char name[32];      ///< the international name of this language
 	char own_name[32];  ///< the localized name of this language
 	char isocode[16];   ///< the ISO code for the language (not country code)
-	uint16 offsets[32]; ///< the offsets
+	uint16 offsets[TAB_COUNT]; ///< the offsets
 
 	/** Thousand separator used for anything not currencies */
 	char digit_group_separator[8];

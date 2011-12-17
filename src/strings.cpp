@@ -132,20 +132,20 @@ struct LanguagePack : public LanguagePackHeader {
 
 static char **_langpack_offs;
 static LanguagePack *_langpack;
-static uint _langtab_num[32];   ///< Offset into langpack offs
-static uint _langtab_start[32]; ///< Offset into langpack offs
+static uint _langtab_num[TAB_COUNT];   ///< Offset into langpack offs
+static uint _langtab_start[TAB_COUNT]; ///< Offset into langpack offs
 static bool _keep_gender_data = false;  ///< Should we retain the gender data in the current string?
 
 
 const char *GetStringPtr(StringID string)
 {
-	switch (GB(string, 11, 5)) {
+	switch (GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS)) {
 		/* GetGRFStringPtr doesn't handle 0xD4xx ids, we need to convert those to 0xD0xx. */
-		case 26: return GetStringPtr(GetGRFStringID(0, 0xD000 + GB(string, 0, 10)));
-		case 28: return GetGRFStringPtr(GB(string, 0, 11));
-		case 29: return GetGRFStringPtr(GB(string, 0, 11) + 0x0800);
-		case 30: return GetGRFStringPtr(GB(string, 0, 11) + 0x1000);
-		default: return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
+		case 26: return GetStringPtr(GetGRFStringID(0, 0xD000 + GB(string, TAB_SIZE_OFFSET, 10)));
+		case 28: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS));
+		case 29: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS) + 0x0800);
+		case 30: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS) + 0x1000);
+		default: return _langpack_offs[_langtab_start[GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS)] + GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS)];
 	}
 }
 
@@ -162,8 +162,8 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 {
 	if (string == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
 
-	uint index = GB(string,  0, 11);
-	uint tab   = GB(string, 11,  5);
+	uint index = GB(string, TAB_SIZE_OFFSET,  TAB_SIZE_BITS);
+	uint tab   = GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS);
 
 	switch (tab) {
 		case 4:
@@ -1536,13 +1536,13 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	}
 
 #if TTD_ENDIAN == TTD_BIG_ENDIAN
-	for (uint i = 0; i < 32; i++) {
+	for (uint i = 0; i < TAB_COUNT; i++) {
 		lang_pack->offsets[i] = ReadLE16Aligned(&lang_pack->offsets[i]);
 	}
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
 	uint count = 0;
-	for (uint i = 0; i < 32; i++) {
+	for (uint i = 0; i < TAB_COUNT; i++) {
 		uint num = lang_pack->offsets[i];
 		_langtab_start[i] = count;
 		_langtab_num[i] = num;
@@ -1849,12 +1849,12 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 
 	/* virtual */ const char *NextString()
 	{
-		if (this->i >= 32) return NULL;
+		if (this->i >= TAB_COUNT) return NULL;
 
 		const char *ret = _langpack_offs[_langtab_start[i] + j];
 
 		this->j++;
-		while (this->j >= _langtab_num[this->i] && this->i < 32) {
+		while (this->j >= _langtab_num[this->i] && this->i < TAB_COUNT) {
 			i++;
 			j = 0;
 		}

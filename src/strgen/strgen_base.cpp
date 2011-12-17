@@ -89,7 +89,7 @@ void LangString::FreeTranslation()
  * Create a new string data container.
  * @param max_strings The maximum number of strings.
  */
-StringData::StringData(size_t tabs) : tabs(tabs), max_strings(tabs * STRINGS_IN_TAB)
+StringData::StringData(size_t tabs) : tabs(tabs), max_strings(tabs * TAB_SIZE)
 {
 	this->strings = CallocT<LangString *>(max_strings);
 	this->hash_heads = CallocT<uint16>(max_strings);
@@ -215,7 +215,7 @@ uint StringData::Version() const
 uint StringData::CountInUse(uint tab) const
 {
 	int i;
-	for (i = STRINGS_IN_TAB; --i >= 0;) if (this->strings[(tab * STRINGS_IN_TAB) + i] != NULL) break;
+	for (i = TAB_SIZE; --i >= 0;) if (this->strings[(tab * TAB_SIZE) + i] != NULL) break;
 	return i + 1;
 }
 
@@ -938,7 +938,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 		_lang.offsets[tab] = TO_LE16(n);
 
 		for (uint j = 0; j != in_use[tab]; j++) {
-			const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
+			const LangString *ls = data.strings[(tab * TAB_SIZE) + j];
 			if (ls != NULL && ls->translated == NULL) _lang.missing++;
 		}
 	}
@@ -953,7 +953,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 	for (size_t tab = 0; tab < data.tabs; tab++) {
 		for (uint j = 0; j != in_use[tab]; j++) {
-			const LangString *ls = data.strings[(tab * StringData::STRINGS_IN_TAB) + j];
+			const LangString *ls = data.strings[(tab * TAB_SIZE) + j];
 			const Case *casep;
 			const char *cmdp;
 
