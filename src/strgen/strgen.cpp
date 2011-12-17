@@ -47,6 +47,7 @@ static int _cur_line;                        ///< The current line we're parsing
 static int _errors, _warnings, _show_todo;
 
 static const ptrdiff_t MAX_COMMAND_PARAM_SIZE = 100; ///< Maximum size of every command block, not counting the name of the command itself
+static const CmdStruct *ParseCommandString(const char **str, char *param, int *argno, int *casei);
 
 /** Container for the different cases of a string. */
 struct Case {
@@ -137,7 +138,7 @@ struct StringData {
 	 * @param s The string to hash.
 	 * @return The hashed string.
 	 */
-	uint HashStr(const char *s)
+	uint HashStr(const char *s) const
 	{
 		uint hash = 0;
 		for (; *s != '\0'; s++) hash = ROL(hash, 3) ^ *s;
@@ -175,10 +176,60 @@ struct StringData {
 		}
 		return NULL;
 	}
+
+	/**
+	 * Create a compound hash.
+	 * @param hash The hash to add the string hash to.
+	 * @param s    The string hash.
+	 * @return The new hash.
+	 */
+	uint VersionHashStr(uint hash, const char *s) const
+	{
+		for (; *s != '\0'; s++) {
+			hash = ROL(hash, 3) ^ *s;
+			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
+		}
+		return hash;
+	}
+
+	/**
+	 * Make a hash of the file to get a unique "version number"
+	 * @return The version number.
+	 */
+	uint Version() const
+	{
+		uint hash = 0;
+
+		for (size_t i = 0; i < this->max_strings; i++) {
+			const LangString *ls = this->strings[i];
+
+			if (ls != NULL) {
+				const CmdStruct *cs;
+				const char *s;
+				char buf[MAX_COMMAND_PARAM_SIZE];
+				int argno;
+				int casei;
+
+				s = ls->name;
+				hash ^= i * 0x717239;
+				hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
+				hash = this->VersionHashStr(hash, s + 1);
+
+				s = ls->english;
+				while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != NULL) {
+					if (cs->flags & C_DONTCOUNT) continue;
+
+					hash ^= (cs - _cmd_structs) * 0x1234567;
+					hash = (hash & 1 ? hash >> 1 ^ 0xF00BAA4 : hash >> 1);
+				}
+			}
+		}
+
+		return hash;
+	}
 };
 
 static LanguagePackHeader _lang; ///< Header information about a language.
-static uint32 _hash;
 
 static const char *_cur_ident;
 
@@ -892,49 +943,6 @@ static void ParseFile(StringData &data, const char *file, bool english)
 }
 
 
-static uint32 MyHashStr(uint32 hash, const char *s)
-{
-	for (; *s != '\0'; s++) {
-		hash = ROL(hash, 3) ^ *s;
-		hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
-	}
-	return hash;
-}
-
-
-/* make a hash of the file to get a unique "version number" */
-static void MakeHashOfStrings(const StringData &data)
-{
-	uint32 hash = 0;
-
-	for (size_t i = 0; i < data.max_strings; i++) {
-		const LangString *ls = data.strings[i];
-
-		if (ls != NULL) {
-			const CmdStruct *cs;
-			const char *s;
-			char buf[MAX_COMMAND_PARAM_SIZE];
-			int argno;
-			int casei;
-
-			s = ls->name;
-			hash ^= i * 0x717239;
-			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
-			hash = MyHashStr(hash, s + 1);
-
-			s = ls->english;
-			while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != NULL) {
-				if (cs->flags & C_DONTCOUNT) continue;
-
-				hash ^= (cs - _cmd_structs) * 0x1234567;
-				hash = (hash & 1 ? hash >> 1 ^ 0xF00BAA4 : hash >> 1);
-			}
-		}
-	}
-	_hash = hash;
-}
-
-
 static uint CountInUse(const StringData &data, uint grp)
 {
 	int i;
@@ -1020,13 +1028,17 @@ struct HeaderWriter {
 
 	/**
 	 * Finalise writing the file.
+	 * @param data The data about the string.
 	 */
-	virtual void Finalise() = 0;
+	virtual void Finalise(const StringData &data) = 0;
 
 	/** Especially destroy the subclasses. */
 	virtual ~HeaderWriter() {};
 
-	/** Write the header information. */
+	/**
+	 * Write the header information.
+	 * @param data The data about the string.
+	 */
 	void WriteHeader(const StringData &data)
 	{
 		int last = 0;
@@ -1066,7 +1078,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		prev = stringid;
 	}
 
-	void Finalise()
+	void Finalise(const StringData &data)
 	{
 		/* Find the plural form with the most amount of cases. */
 		int max_plural_forms = 0;
@@ -1079,7 +1091,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 			"static const uint LANGUAGE_PACK_VERSION     = 0x%X;\n"
 			"static const uint LANGUAGE_MAX_PLURAL       = %d;\n"
 			"static const uint LANGUAGE_MAX_PLURAL_FORMS = %d;\n\n",
-			(uint)_hash, (uint)lengthof(_plural_forms), max_plural_forms
+			(uint)data.Version(), (uint)lengthof(_plural_forms), max_plural_forms
 		);
 
 		fprintf(this->fh, "#endif /* TABLE_STRINGS_H */\n");
@@ -1217,6 +1229,7 @@ struct LanguageWriter {
 
 	/**
 	 * Actually write the language.
+	 * @param data The data about the string.
 	 */
 	void WriteLang(const StringData &data)
 	{
@@ -1234,7 +1247,7 @@ struct LanguageWriter {
 		}
 
 		_lang.ident = TO_LE32(LanguagePackHeader::IDENT);
-		_lang.version = TO_LE32(_hash);
+		_lang.version = TO_LE32(data.Version());
 		_lang.missing = TO_LE16(_lang.missing);
 		_lang.winlangid = TO_LE16(_lang.winlangid);
 
@@ -1515,7 +1528,6 @@ int CDECL main(int argc, char *argv[])
 			StringData data;
 			/* parse master file */
 			ParseFile(data, pathbuf, true);
-			MakeHashOfStrings(data);
 			if (_errors != 0) return 1;
 
 			/* write strings.h */
@@ -1524,7 +1536,7 @@ int CDECL main(int argc, char *argv[])
 
 			HeaderFileWriter writer(pathbuf);
 			writer.WriteHeader(data);
-			writer.Finalise();
+			writer.Finalise(data);
 		} else if (mgo.numleft == 1) {
 			char *r;
 
@@ -1533,7 +1545,6 @@ int CDECL main(int argc, char *argv[])
 			StringData data;
 			/* parse master file and check if target file is correct */
 			ParseFile(data, pathbuf, true);
-			MakeHashOfStrings(data);
 			ParseFile(data, replace_pathsep(mgo.argv[0]), false); // target file
 			if (_errors != 0) return 1;
 
