@@ -1316,7 +1316,7 @@ struct LanguageWriter {
 	 */
 	void WriteLang(const StringData &data)
 	{
-		uint in_use[data.tabs];
+		uint *in_use = AllocaM(uint, data.tabs);
 		for (size_t tab = 0; tab < data.tabs; tab++) {
 			uint n = data.CountInUse(tab);
 
