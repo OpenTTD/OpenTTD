@@ -930,7 +930,6 @@ struct FileWriter {
 	/** Make sure the file is closed. */
 	virtual ~FileWriter()
 	{
-		printf("close %s %p\n", this->filename, this->fh);
 		/* If we weren't closed an exception was thrown, so remove the termporary file. */
 		if (fh != NULL) {
 			fclose(this->fh);
@@ -1023,7 +1022,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		} else {
 			/* else rename tmp.xxx into filename */
 	#if defined(WIN32) || defined(WIN64)
-			unlink(filename);
+			unlink(this->real_filename);
 	#endif
 			if (rename(this->filename, this->real_filename) == -1) error("rename() failed");
 		}
