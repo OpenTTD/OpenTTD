@@ -568,7 +568,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		 * mess with the automatic font detection */
 		char buff[256]; // This length is enough to find a suitable replacement font
 		strecpy(buff, str, lastof(buff));
-		str_validate(buff, lastof(buff), true, false);
+		str_validate(buff, lastof(buff), SVS_ALLOW_NEWLINE);
 
 		/* Extract a UniChar represenation of the sample string. */
 		CFStringRef cf_str = CFStringCreateWithCString(kCFAllocatorDefault, buff, kCFStringEncodingUTF8);
