@@ -22,7 +22,7 @@
  *  - bulldozer (road works)
  *  - bubbles (industry)
  */
-struct EffectVehicle : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
+struct EffectVehicle FINAL : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
 	uint16 animation_state;  ///< State primarily used to change the graphics/behaviour.
 	byte animation_substate; ///< Sub state to time the change of the graphics/behaviour.
 

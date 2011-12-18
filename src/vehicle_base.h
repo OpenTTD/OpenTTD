@@ -1009,7 +1009,7 @@ struct SpecializedVehicle : public Vehicle {
 /**
  * Disasters, like submarines, skyrangers and their shadows, belong to this class.
  */
-struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER> {
+struct DisasterVehicle FINAL : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER> {
 	SpriteID image_override;            ///< Override for the default disaster vehicle sprite.
 	VehicleID big_ufo_destroyer_target; ///< The big UFO that this destroyer is supposed to bomb.
 

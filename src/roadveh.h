@@ -84,7 +84,7 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
 /**
  * Buses, trucks and trams belong to this class.
  */
-struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
+struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;
 	uint16 blocked_ctr;

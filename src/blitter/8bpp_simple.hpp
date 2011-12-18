@@ -16,7 +16,7 @@
 #include "factory.hpp"
 
 /** Most trivial 8bpp blitter. */
-class Blitter_8bppSimple : public Blitter_8bppBase {
+class Blitter_8bppSimple FINAL : public Blitter_8bppBase {
 public:
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, AllocatorProc *allocator);

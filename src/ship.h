@@ -21,7 +21,7 @@ WaterClass GetEffectiveWaterClass(TileIndex tile);
 /**
  * All ships have this type.
  */
-struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
+struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	TrackBitsByte state; ///< The "track" the ship is following.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */

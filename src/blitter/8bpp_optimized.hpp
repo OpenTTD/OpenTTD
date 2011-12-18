@@ -16,7 +16,7 @@
 #include "factory.hpp"
 
 /** 8bpp blitter optimised for speed. */
-class Blitter_8bppOptimized : public Blitter_8bppBase {
+class Blitter_8bppOptimized FINAL : public Blitter_8bppBase {
 public:
 	/** Data stored about a (single) sprite. */
 	struct SpriteData {

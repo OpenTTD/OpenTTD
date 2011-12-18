@@ -67,7 +67,7 @@ struct TrainCache {
 /**
  * 'Train' is either a loco or a wagon.
  */
-struct Train : public GroundVehicle<Train, VEH_TRAIN> {
+struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	TrainCache tcache;
 
 	/* Link between the two ends of a multiheaded engine */

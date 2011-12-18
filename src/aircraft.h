@@ -50,7 +50,7 @@ struct AircraftCache {
 /**
  * Aircraft, helicopters, rotors and their shadows belong to this class.
  */
-struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
+struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	uint16 crashed_counter;        ///< Timer for handling crash animations.
 	byte pos;                      ///< Next desired position of the aircraft.
 	byte previous_pos;             ///< Previous desired position of the aircraft.
