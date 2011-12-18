@@ -380,7 +380,7 @@ static int TranslateArgumentIdx(int arg, int offset = 0);
 static void EmitWordList(Buffer *buffer, const char * const *words, uint nw)
 {
 	buffer->AppendByte(nw);
-	for (uint i = 0; i < nw; i++) buffer->AppendByte(strlen(words[i]) + 1);
+	for (uint i = 0; i < nw; i++) buffer->AppendByte((uint)strlen(words[i]) + 1);
 	for (uint i = 0; i < nw; i++) {
 		for (uint j = 0; words[i][j] != '\0'; j++) buffer->AppendByte(words[i][j]);
 		buffer->AppendByte(0);
@@ -479,7 +479,7 @@ static const CmdStruct *FindCmd(const char *s, int len)
 	return NULL;
 }
 
-static uint ResolveCaseName(const char *str, uint len)
+static uint ResolveCaseName(const char *str, size_t len)
 {
 	/* First get a clean copy of only the case name, then resolve it. */
 	char case_str[CASE_GENDER_LEN];
@@ -788,7 +788,7 @@ void StringReader::HandleString(char *str)
 
 static void rstrip(char *buf)
 {
-	int i = strlen(buf);
+	size_t i = strlen(buf);
 	while (i > 0 && (buf[i - 1] == '\r' || buf[i - 1] == '\n' || buf[i - 1] == ' ')) i--;
 	buf[i] = '\0';
 }
@@ -824,8 +824,8 @@ void HeaderWriter::WriteHeader(const StringData &data)
 	int last = 0;
 	for (size_t i = 0; i < data.max_strings; i++) {
 		if (data.strings[i] != NULL) {
-			this->WriteStringID(data.strings[i]->name, i);
-			last = i;
+			this->WriteStringID(data.strings[i]->name, (int)i);
+			last = (int)i;
 		}
 	}
 
@@ -932,7 +932,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 {
 	uint *in_use = AllocaM(uint, data.tabs);
 	for (size_t tab = 0; tab < data.tabs; tab++) {
-		uint n = data.CountInUse(tab);
+		uint n = data.CountInUse((uint)tab);
 
 		in_use[tab] = n;
 		_lang.offsets[tab] = TO_LE16(n);
@@ -1007,14 +1007,14 @@ void LanguageWriter::WriteLang(const StringData &data)
 				for (c = casep; c != NULL; c = c->next) {
 					buffer.AppendByte(c->caseidx);
 					/* Make some space for the 16-bit length */
-					size_t pos = buffer.Length();
+					uint pos = buffer.Length();
 					buffer.AppendByte(0);
 					buffer.AppendByte(0);
 					/* Write string */
 					PutCommandString(&buffer, c->string);
 					buffer.AppendByte(0); // terminate with a zero
 					/* Fill in the length */
-					size_t size = buffer.Length() - (pos + 2);
+					uint size = buffer.Length() - (pos + 2);
 					buffer[pos + 0] = GB(size, 8, 8);
 					buffer[pos + 1] = GB(size, 0, 8);
 				}
