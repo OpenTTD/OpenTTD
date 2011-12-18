@@ -39,7 +39,7 @@ int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FO
 
 char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
 
-void str_validate(char *str, const char *last, bool allow_newlines = false, bool ignore = false);
+void str_validate(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 void str_strip_colours(char *str);
 bool strtolower(char *str);
 

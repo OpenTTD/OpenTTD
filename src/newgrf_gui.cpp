@@ -599,7 +599,7 @@ private:
 		char *p = this->text + (strncmp("\xEF\xBB\xBF", this->text, 3) == 0 ? 3 : 0);
 
 		/* Make sure the string is a valid UTF-8 sequence. */
-		str_validate(p, this->text + filesize, true);
+		str_validate(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 		/* Split the string on newlines. */
 		*this->lines.Append() = p;

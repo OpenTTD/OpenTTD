@@ -56,7 +56,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	p->Recv_string(ci->name, lengthof(ci->name));
 	p->Recv_string(ci->version, lengthof(ci->name));
 	p->Recv_string(ci->url, lengthof(ci->url));
-	p->Recv_string(ci->description, lengthof(ci->description),  true);
+	p->Recv_string(ci->description, lengthof(ci->description), SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	ci->unique_id = p->Recv_uint32();
 	for (uint j = 0; j < sizeof(ci->md5sum); j++) {

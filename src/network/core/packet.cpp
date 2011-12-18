@@ -283,9 +283,9 @@ uint64 Packet::Recv_uint64()
  * Reads a string till it finds a '\0' in the stream.
  * @param buffer The buffer to put the data into.
  * @param size   The size of the buffer.
- * @param allow_newlines Whether the string validation should remove newlines.
+ * @param settings The string validation settings.
  */
-void Packet::Recv_string(char *buffer, size_t size, bool allow_newlines)
+void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings settings)
 {
 	PacketSize pos;
 	char *bufp = buffer;
@@ -306,7 +306,7 @@ void Packet::Recv_string(char *buffer, size_t size, bool allow_newlines)
 	}
 	this->pos = pos;
 
-	str_validate(bufp, last, allow_newlines);
+	str_validate(bufp, last, settings);
 }
 
 #endif /* ENABLE_NETWORK */

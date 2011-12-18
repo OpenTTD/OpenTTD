@@ -1099,7 +1099,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			QueryStringBaseWindow(max_bytes, max_chars)
 	{
 		GetString(this->edit_str_buf, str, &this->edit_str_buf[max_bytes - 1]);
-		str_validate(this->edit_str_buf, &this->edit_str_buf[max_bytes - 1], false, true);
+		str_validate(this->edit_str_buf, &this->edit_str_buf[max_bytes - 1], SVS_NONE);
 
 		/* Make sure the name isn't too long for the text buffer in the number of
 		 * characters (not bytes). max_chars also counts the '\0' characters. */

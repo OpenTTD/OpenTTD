@@ -184,10 +184,9 @@ char *CDECL str_fmt(const char *str, ...)
  * replaces them with a question mark '?' (if not ignored)
  * @param str the string to validate
  * @param last the last valid character of str
- * @param allow_newlines whether newlines should be allowed or ignored
- * @param ignore whether to ignore or replace with a question mark
+ * @param settings the settings for the string validation.
  */
-void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
+void str_validate(char *str, const char *last, StringValidationSettings settings)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
 
@@ -215,16 +214,16 @@ void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
 			do {
 				*dst++ = *str++;
 			} while (--len != 0);
-		} else if (allow_newlines && c == '\n') {
+		} else if ((settings & SVS_ALLOW_NEWLINE) != 0  && c == '\n') {
 			*dst++ = *str++;
 		} else {
-			if (allow_newlines && c == '\r' && str[1] == '\n') {
+			if ((settings & SVS_ALLOW_NEWLINE) != 0 && c == '\r' && str[1] == '\n') {
 				str += len;
 				continue;
 			}
 			/* Replace the undesirable character with a question mark */
 			str += len;
-			if (!ignore) *dst++ = '?';
+			if ((settings & SVS_REPLACE_WITH_QUESTION_MARK) != 0) *dst++ = '?';
 
 			/* In case of these two special cases assume that they really
 			 * mean SETX/SETXY and also "eat" the paramater. If this was

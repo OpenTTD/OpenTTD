@@ -12,6 +12,8 @@
 #ifndef STRING_TYPE_H
 #define STRING_TYPE_H
 
+#include "core/enum_type.hpp"
+
 /** A non-breaking space. */
 #define NBSP "\xC2\xA0"
 
@@ -41,5 +43,13 @@ static const WChar CHAR_TD_RLE = 0x202B; ///< The following text is embedded rig
 static const WChar CHAR_TD_LRO = 0x202D; ///< Force the following characters to be treated as left-to-right characters.
 static const WChar CHAR_TD_RLO = 0x202E; ///< Force the following characters to be treated as right-to-left characters.
 static const WChar CHAR_TD_PDF = 0x202C; ///< Restore the text-direction state to before the last LRE, RLE, LRO or RLO.
+
+/** Settings for the string validation. */
+enum StringValidationSettings {
+	SVS_NONE                       = 0,      ///< Allow nothing and replace nothing.
+	SVS_REPLACE_WITH_QUESTION_MARK = 1 << 0, ///< Replace the unknown/bad bits with question marks.
+	SVS_ALLOW_NEWLINE              = 1 << 1, ///< Allow newlines.
+};
+DECLARE_ENUM_AS_BIT_SET(StringValidationSettings);
 
 #endif /* STRING_TYPE_H */
