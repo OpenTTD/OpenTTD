@@ -3505,6 +3505,7 @@ STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramèt
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Nombre de jours avant de démarrer cette IA après la précédente (approximativement){NBSP}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

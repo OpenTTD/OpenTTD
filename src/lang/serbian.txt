@@ -475,6 +475,7 @@ STR_SORT_BY_INTRO_DATE                                          :Datumu uvođenj
 STR_SORT_BY_RUNNING_COST                                        :Troškovima održavanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snazi/Troškovima održavanja
 STR_SORT_BY_CARGO_CAPACITY                                      :Nosivosti tovara
+STR_SORT_BY_RANGE                                               :Dometu
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauziranje partije
@@ -1017,6 +1018,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne može za dalje da pronađe put
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se izgubio
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} je prošle godine imao dobit od {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne može da stigne do sledeće destinacije, izvan dometa je
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Neuspešna primena naredbe preuređivanja {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatska obnova nije uspela za {VEHICLE}{}{STRING}
@@ -1351,6 +1353,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dozvoljena gradnja stanica jedne pored druge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Dozvoljeno više NewGRF kolekcija mišina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena ovog podešavanja nije moguća dok postoje vozila
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Održavanje infrastrukture: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Nezastarevanje aerodroma: {ORANGE}{STRING}
 
@@ -1368,6 +1371,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanj
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Prikaz opisa alatke: {ORANGE}Zadržavanje pokazivača {STRING} sekund{P u e i}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Prikaz opisa alatke: {ORANGE}Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazivanje broja populacije pored naziva naselja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Debljina linija u grafikonima: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Oblikovanje reljefa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalno
@@ -1564,6 +1568,21 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pretra�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatska promena smera kod signalizacije: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promena vrednosti
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Greška sa konfiguracionom datotekom...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... greška u nizu '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... neispravna vrednost '{STRING}' za '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... prateći karakteri na kraju podešavanja '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorisanje NewGRF-a '{STRING}': identični GRF ID sa '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorisanje neispravnog NewGRF-a '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nije nađen
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nesigurno za stalno korišćenje
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistem NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilno sa ovom OpenTTD verzijom
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nepoznato
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivo kompresije '{STRING}' nije ispravan
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format sačuvane partije '{STRING}' nije dostupan. Vraćanje na '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2034,6 +2053,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Obeleža
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poništi izbor svega
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Otkazuje preuzimanje svih dodataka
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po oznaci/nazivu:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Idi na Web lokaciju
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Ovaj sadržaj nalazi se na Web lokaciji
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Započinje preuzimanje odabranih dodataka
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Ukupna količina za preuzimanje: {WHITE}{BYTES}
@@ -2919,6 +2940,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pozajmi 
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Uvećanje količine zajma. Sa Ctrl+Klik se pozajmljuje najviši mogući iznos
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vrati {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Otplati deo duga. Sa Ctrl+Klik se otplaćuje največi mogući iznos duga
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktura
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2934,6 +2956,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nema
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrednost preduzeća: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% u vlasništvu preduzeća {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktura:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} delova pruge
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} delova druma
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} pločica sa vodom
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} pločica sa stanicom
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aerodroma
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nema
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Izgradnja upravne zgrade
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Izgrađuje upravnu zgradu preduzeća
@@ -2941,6 +2970,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Prikaži
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Prebacuje pogled na upravnu zgradu preduzeća
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli upravnu zgradu
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Premešta sedište preduzeća na drugu lokaciju za cenu od 1% vrednosti preduzeća. Shift+Klik prikazuje procenu troškova bez premeštanja zgrade
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalji
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaljni pregled računa za infrastrukturu
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Novo lice
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izbor novog lica za vlasnika
@@ -2960,6 +2991,21 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime Preduzeća
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ime vlasnika
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}U potrazi smo za preduzećem koje bi preuzelo naše.{}{}Da li biste kupili {COMPANY} za {CURRENCY_LONG}?
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktura preduzeća {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Delova pruge:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signalizacija
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Delova druma:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Drum
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramvajska pruga
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Pločica sa vodom:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanali
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Pločica sa stanicom
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aerodromi
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/god ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/god
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Fabrike
@@ -3064,7 +3110,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Brzina na moru: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Brzina na kanalu/reci: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena održavanja: {GOLD}{CURRENCY_LONG}/yr
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena održavanja: {GOLD}{CURRENCY_LONG}/god
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(prepravljiv)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektovan: {GOLD}{NUM}{BLACK} Životni vek: {GOLD}{COMMA} godin{P a e a}
@@ -3078,6 +3124,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prepravl
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tovara
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve sem {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Najveća vučna snaga: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} pločica
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
@@ -3204,6 +3251,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {C
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Težina: {WEIGHT_SHORT}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY_LONG}/god{}Nosivost: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}, {CARGO_LONG}{}Cena Održavanja: {CURRENCY_LONG}/god.
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Najveća Brzina: {VELOCITY}{}Nosivost: {CARGO_LONG}{}Cena Održavanja: {CURRENCY_LONG}/god.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {CURRENCY_LONG} Najveća Brzina: {VELOCITY} Domet: {7:COMMA} pločica{}Nosivost: {CARGO_LONG}, {CARGO_LONG}{}Cena Održavanja: {CURRENCY_LONG}/god.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Najveća Brzina: {VELOCITY} Domet: {7:COMMA} pločica{}Nosivost: {CARGO_LONG}{}Cena Održavanja: {CURRENCY_LONG}/god.
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zameni {STRING}
@@ -3299,6 +3348,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zaustavlje
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zaustavlja se, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nema struje
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čekanje za slobadan prolaz
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Previše je daleko do sledeće destinacije
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Ide ka {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nema naredbi, {VELOCITY}
@@ -3327,6 +3377,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} godin{P
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} godin{P a e a} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Najveća brzina: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Najveća brzina: {LTBLUE}{VELOCITY} {BLACK}Domet: {LTBLUE}{COMMA} pločica
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_SHORT} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Najveća vučna snaga: {LTBLUE}{FORCE}
 
@@ -3542,6 +3593,8 @@ STR_ORDER_AUTO_REFIT_ANY                                        :dostupni tovar
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[pri početku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[na sredini]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[pri kraju]
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Sledeća destinacija je van dometa)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pređi na naredbu {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Pređi na naredbu {COMMA} kada je {STRING} {STRING} {COMMA}
@@ -4050,6 +4103,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Lista na
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Deljenje naredbi se ne može prekinuti...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Lista naredbi se ne može kopirati...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... previše udaljeno od prethodne destinacije
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... letilica nema dometa
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Raspored se ne može dodeliti vozilu...
@@ -4519,6 +4573,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
