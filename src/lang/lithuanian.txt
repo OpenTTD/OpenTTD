@@ -1434,6 +1434,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Apsisuk
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Keisti reikšmes
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1949,6 +1951,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Prar
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... failas nėra įrašomas
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nepavyko išpakuoti parsiųsta failą
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Permatomumo nustatymai
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Nustatyti stočių ženklų permatomumą. Ctrl+Click to užrakinti.
@@ -1995,6 +1998,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Statyti 
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Keisti tarp bėgių, signalų, kontrolės punktų ir stočių statymo/griovimo.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pakeisti ar pagerinti bėgio tipą. Shift perjungia tarp statymo/kainos parodymo
 
+
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Traukinių depo padėtis
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pasirinkite geležinkelio depo padėtį
@@ -2022,7 +2026,7 @@ STR_STATION_CLASS_WAYP                                          :Keliarodžiai
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalo Pasirinkimas
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokavimo signalas (semaforas){}Papraščiausias signalo tipas, leidžiantis tik vieną traukinį viename bloke.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokavimo signalas (semaforas){}Papraščiausias signalo tipas, leidžiantis tik vieną traukinį viename bloke tuo pačiu laiku.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Įvažiavimo signalas (semaforas){}Žalias tol, kol žaliai šviečia bent vienas išvažiavimo iš sekcijos signalas. Kitu atvėju - raudonas
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Išvažiavimo signalas (semaforas){}Elgiasi taip bat kaip blokavimo signalas, bet yra reikalingas įvažiavimo ir kombinuotam pre signalui.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombo-signalas (semaforas){}Kombo signalas veikia kaip įvažiavimo ir išvažiavimo signalai kartu. Leidžia statyti didelius signalų medžius.
@@ -2265,6 +2269,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Laukai
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Užpustyta žemė
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Dykuma
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Kelias
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Kelias su žibintais
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Trijuostis kelias
@@ -2449,6 +2454,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Žemyn
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Perkelti pažymėtus Papild. grafikos failus sąraše žemyn
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Įdiegtų Papild. grafikos filų sąrašas. Sragtelėjus pavadinimą galima keisti jų nustatymus
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nustatyti parametrus
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Kaitalioti paletę
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Kaitalioja parinkto NewGRF paletę.{}Darykite jei pajungta grafika nuspalvinta rožine spalva
@@ -2470,7 +2477,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Atitinkama
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Išjungta
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nesuderinamas su šia OpenTTD versija
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Pakeisti NewGRF parametrus
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Uždaryti
@@ -2479,6 +2485,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nustayti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametras {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametrų skaičius: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Apžiūrėti - {STRING}
@@ -2779,6 +2787,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompanijos pava
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktoriaus vardas
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mes ieskome, kas galėtų perimti mūsų kompaniją.{}{}Ar jūs norėtumėte pirkti {COMPANY} už {CURRENCY_LONG}?
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Gamyklos
@@ -3333,6 +3343,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[netoli pabaigo
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[viduryje]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[toli nuo pabaigos]
 
+
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pereiti į užsakymą {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Pereiti į užsakymą {COMMA} kai {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pereiti į užsakymą {COMMA} kai {STRING} {STRING}
@@ -3413,7 +3424,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Įjungti
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tęsti
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pratęsti žaidimą ir tęsti simuliatorių
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Rodyti DI derinimo režimo išeigą
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nerasta jokio tinkamo DI.{}Šis DI yra netikras ir nieko nedarys.{}Galite parsisiųsti keletą DI per 'Turinio internete' sistemą.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Vienas iš paleistų DI išsijungė. Praneškite apie tai šio DI autoriui su DI Debug lango vaizdu.
