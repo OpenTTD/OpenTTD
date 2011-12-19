@@ -47,7 +47,9 @@ void SQGSTown_Register(Squirrel *engine)
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetLastMonthSupplied,              "GetLastMonthSupplied",              3, ".ii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetLastMonthTransportedPercentage, "GetLastMonthTransportedPercentage", 3, ".ii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetLastMonthReceived,              "GetLastMonthReceived",              3, ".ii");
+	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::SetCargoGoal,                      "SetCargoGoal",                      4, ".iii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetCargoGoal,                      "GetCargoGoal",                      3, ".ii");
+	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::SetGrowthRate,                     "SetGrowthRate",                     3, ".ii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetGrowthRate,                     "GetGrowthRate",                     2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetDistanceManhattanToTile,        "GetDistanceManhattanToTile",        3, ".ii");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetDistanceSquareToTile,           "GetDistanceSquareToTile",           3, ".ii");

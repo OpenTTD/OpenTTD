@@ -37,6 +37,7 @@ static const uint INVALID_TOWN = 0xFFFF;
 
 static const uint TOWN_GROWTH_WINTER = 0xFFFFFFFE; ///< The town only needs this cargo in the winter (any amount)
 static const uint TOWN_GROWTH_DESERT = 0xFFFFFFFF; ///< The town needs the cargo for growth when on desert (any amount)
+static const uint16 TOWN_GROW_RATE_CUSTOM = 0x8000; ///< If this mask is applied to Town::grow_counter, the grow_counter will not be calculated by the system (but assumed to be set by scripts)
 
 typedef Pool<Town, TownID, 64, 64000> TownPool;
 extern TownPool _town_pool;

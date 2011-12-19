@@ -192,6 +192,18 @@ public:
 	static int32 GetLastMonthReceived(TownID town_id, ScriptCargo::TownEffect towneffect_id);
 
 	/**
+	 * Set the goal of a cargo for this town.
+	 * @param town_id The index of the town.
+	 * @param towneffect_id The index of the cargo.
+	 * @param goal The new goal.
+	 * @pre IsValidTown(town_id).
+	 * @pre ScriptCargo::IsValidTownEffect(cargo_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, uint32 goal);
+
+	/**
 	 * Get the amount of cargo that needs to be delivered (per TownEffect) for a
 	 *  town to grow. All goals need to be reached before a town will grow.
 	 * @param town_id The index of the town.
@@ -203,6 +215,17 @@ public:
 	 *  with a growing town.
 	 */
 	static uint32 GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id);
+
+	/**
+	 * Set the amount of days between town growth.
+	 * @param town_id The index of the town.
+	 * @param days_between_town_growth The amont of days between town growth.
+	 * @pre IsValidTown(town_id).
+	 * @return True if the action succeeded.
+	 * @note If 'Fund Building' and 'economy.town_growth_rate' is active, the game will often set a new GrowthRate.
+	 * @api -ai
+	 */
+	static bool SetGrowthRate(TownID town_id, uint16 days_between_town_growth);
 
 	/**
 	 * Get the amount of days between town growth.

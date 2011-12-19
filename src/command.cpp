@@ -128,6 +128,8 @@ CommandProc CmdBuyCompany;
 CommandProc CmdFoundTown;
 CommandProc CmdRenameTown;
 CommandProc CmdDoTownAction;
+CommandProc CmdTownGrowthRate;
+CommandProc CmdTownCargoGoal;
 CommandProc CmdExpandTown;
 CommandProc CmdDeleteTown;
 
@@ -265,6 +267,8 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdFoundTown,                            CMD_NO_TEST, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_FOUND_TOWN; founding random town can fail only in exec run
 	DEF_CMD(CmdRenameTown,                            CMD_SERVER, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_TOWN
 	DEF_CMD(CmdDoTownAction,                                   0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_DO_TOWN_ACTION
+	DEF_CMD(CmdTownCargoGoal,                          CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_TOWN_CARGO_GOAL
+	DEF_CMD(CmdTownGrowthRate,                         CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_TOWN_GROWTH_RATE
 	DEF_CMD(CmdExpandTown,                             CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_EXPAND_TOWN
 	DEF_CMD(CmdDeleteTown,                           CMD_OFFLINE, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_DELETE_TOWN
 

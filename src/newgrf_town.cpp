@@ -90,7 +90,7 @@ uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t
 		case 0xAE: return t->have_ratings;
 		case 0xB2: return t->statues;
 		case 0xB6: return ClampToU16(t->num_houses);
-		case 0xB9: return t->growth_rate;
+		case 0xB9: return t->growth_rate & (~TOWN_GROW_RATE_CUSTOM);
 		case 0xBA: return ClampToU16(t->supplied[CT_PASSENGERS].new_max);
 		case 0xBB: return GB(ClampToU16(t->supplied[CT_PASSENGERS].new_max), 8, 8);
 		case 0xBC: return ClampToU16(t->supplied[CT_MAIL].new_max);

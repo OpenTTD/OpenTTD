@@ -248,6 +248,8 @@ enum Commands {
 	CMD_FOUND_TOWN,                   ///< found a town
 	CMD_RENAME_TOWN,                  ///< rename a town
 	CMD_DO_TOWN_ACTION,               ///< do a action from the town detail window (like advertises or bribe)
+	CMD_TOWN_CARGO_GOAL,              ///< set the goal of a cargo for a town
+	CMD_TOWN_GROWTH_RATE,             ///< set the town growth rate
 	CMD_EXPAND_TOWN,                  ///< expand a town
 	CMD_DELETE_TOWN,                  ///< delete a town
 

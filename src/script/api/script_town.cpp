@@ -103,6 +103,14 @@
 	return t->received[towneffect_id].old_act;
 }
 
+/* static */ bool ScriptTown::SetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id, uint32 goal)
+{
+	EnforcePrecondition(false, IsValidTown(town_id));
+	EnforcePrecondition(false, ScriptCargo::IsValidTownEffect(towneffect_id));
+
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id | (towneffect_id << 16), goal, CMD_TOWN_CARGO_GOAL);
+}
+
 /* static */ uint32 ScriptTown::GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id)
 {
 	if (!IsValidTown(town_id)) return -1;
@@ -121,6 +129,16 @@
 
 		default: return t->goal[towneffect_id];
 	}
+}
+
+/* static */ bool ScriptTown::SetGrowthRate(TownID town_id, uint16 days_between_town_growth)
+{
+	days_between_town_growth = days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS;
+
+	EnforcePrecondition(false, IsValidTown(town_id));
+	EnforcePrecondition(false, (days_between_town_growth & TOWN_GROW_RATE_CUSTOM) == 0);
+
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, days_between_town_growth, CMD_TOWN_GROWTH_RATE);
 }
 
 /* static */ int32 ScriptTown::GetGrowthRate(TownID town_id)
