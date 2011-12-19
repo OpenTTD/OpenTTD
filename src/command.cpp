@@ -147,6 +147,7 @@ CommandProc CmdMoneyCheat;
 CommandProc CmdBuildCanal;
 CommandProc CmdBuildLock;
 
+CommandProc CmdCreateSubsidy;
 CommandProc CmdCompanyCtrl;
 CommandProc CmdCustomNewsItem;
 
@@ -282,6 +283,7 @@ static const Command _command_proc_table[] = {
 
 	DEF_CMD(CmdMoneyCheat,                           CMD_OFFLINE, CMDT_CHEAT                 ), // CMD_MONEY_CHEAT
 	DEF_CMD(CmdBuildCanal,                              CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_CANAL
+	DEF_CMD(CmdCreateSubsidy,                          CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_CREATE_SUBSIDY
 	DEF_CMD(CmdCompanyCtrl,        CMD_SPECTATOR | CMD_CLIENT_ID, CMDT_SERVER_SETTING        ), // CMD_COMPANY_CTRL
 	DEF_CMD(CmdCustomNewsItem,                         CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_CUSTOM_NEWS_ITEM
 

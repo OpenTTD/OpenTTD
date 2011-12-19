@@ -12,6 +12,9 @@
 #include "../../stdafx.h"
 #include "script_subsidy.hpp"
 #include "script_date.hpp"
+#include "script_industry.hpp"
+#include "script_town.hpp"
+#include "script_error.hpp"
 #include "../../subsidy_base.h"
 #include "../../station_base.h"
 
@@ -25,6 +28,17 @@
 	if (!IsValidSubsidy(subsidy_id)) return false;
 
 	return ::Subsidy::Get(subsidy_id)->IsAwarded();
+}
+
+/* static */ bool ScriptSubsidy::Create(CargoID cargo_type, SubsidyParticipantType from_type, uint16 from_id, SubsidyParticipantType to_type, uint16 to_id)
+{
+	EnforcePrecondition(false, ScriptCargo::IsValidCargo(cargo_type));
+	EnforcePrecondition(false, from_type == SPT_INDUSTRY || from_type == SPT_TOWN);
+	EnforcePrecondition(false, to_type == SPT_INDUSTRY || to_type == SPT_TOWN);
+	EnforcePrecondition(false, (from_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(from_id)) || (from_type == SPT_TOWN && ScriptTown::IsValidTown(from_id)));
+	EnforcePrecondition(false, (to_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(to_id)) || (to_type == SPT_TOWN && ScriptTown::IsValidTown(to_id)));
+
+	return ScriptObject::DoCommand(0, from_type | (from_id << 8) | (cargo_type << 24), to_type | (to_id << 8), CMD_CREATE_SUBSIDY);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptSubsidy::GetAwardedTo(SubsidyID subsidy_id)

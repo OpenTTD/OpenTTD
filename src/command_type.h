@@ -261,6 +261,7 @@ enum Commands {
 	CMD_MONEY_CHEAT,                  ///< do the money cheat
 	CMD_BUILD_CANAL,                  ///< build a canal
 
+	CMD_CREATE_SUBSIDY,               ///< create a new subsidy
 	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
 	CMD_CUSTOM_NEWS_ITEM,             ///< create a custom news message
 	CMD_LEVEL_LAND,                   ///< level land

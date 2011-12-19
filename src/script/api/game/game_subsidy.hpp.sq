@@ -27,6 +27,7 @@ void SQGSSubsidy_Register(Squirrel *engine)
 
 	SQGSSubsidy.DefSQStaticMethod(engine, &ScriptSubsidy::IsValidSubsidy,      "IsValidSubsidy",      2, ".i");
 	SQGSSubsidy.DefSQStaticMethod(engine, &ScriptSubsidy::IsAwarded,           "IsAwarded",           2, ".i");
+	SQGSSubsidy.DefSQStaticMethod(engine, &ScriptSubsidy::Create,              "Create",              6, ".iiiii");
 	SQGSSubsidy.DefSQStaticMethod(engine, &ScriptSubsidy::GetAwardedTo,        "GetAwardedTo",        2, ".i");
 	SQGSSubsidy.DefSQStaticMethod(engine, &ScriptSubsidy::GetExpireDate,       "GetExpireDate",       2, ".i");
 	SQGSSubsidy.DefSQStaticMethod(engine, &ScriptSubsidy::GetCargoType,        "GetCargoType",        2, ".i");

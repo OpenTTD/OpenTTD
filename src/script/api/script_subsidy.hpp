@@ -25,6 +25,9 @@ public:
 	 * @note The list of values may grow in future.
 	 */
 	enum SubsidyParticipantType {
+		/* Values are important, as they represent the internal state of the game.
+		 *  It is orignally named SourceType. ST_HEADQUARTERS is intentionally
+		 *  left out, as it cannot be used for Subsidies. */
 		SPT_INDUSTRY =    0, ///< Subsidy participant is an industry
 		SPT_TOWN     =    1, ///< Subsidy participant is a town
 		SPT_INVALID  = 0xFF, ///< Invalid/unknown participant type
@@ -44,6 +47,23 @@ public:
 	 * @return True if and only if this subsidy is already awarded.
 	 */
 	static bool IsAwarded(SubsidyID subsidy_id);
+
+	/**
+	 * Create a new subsidy.
+	 * @param cargo_type The type of cargo to cary for the subsidy.
+	 * @param from_type The type of the subsidy on the 'from' side.
+	 * @param from_id The ID of the 'from' side.
+	 * @param to_type The type of the subsidy on the 'to' side.
+	 * @param to_id The ID of the 'to' side.
+	 * @return True if the action succeeded.
+	 * @pre ScriptCargo::IsValidCargo(cargo_type)
+	 * @pre from_type == SPT_INDUSTRY || from_type == SPT_TOWN.
+	 * @pre to_type   == SPT_INDUSTRY || to_type   == SPT_TOWN.
+	 * @pre (from_type == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(from_id)) || (from_type == SPT_TOWN && ScriptTown::IsValidTown(from_id))
+	 * @pre (to_type   == SPT_INDUSTRY && ScriptIndustry::IsValidIndustry(to_id))   || (to_type   == SPT_TOWN && ScriptTown::IsValidTown(to_id))
+	 * @api -ai
+	 */
+	static bool Create(CargoID cargo_type, SubsidyParticipantType from_type, uint16 from_id, SubsidyParticipantType to_type, uint16 to_id);
 
 	/**
 	 * Get the company index of the company this subsidy is awarded to.
