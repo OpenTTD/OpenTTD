@@ -978,6 +978,7 @@
     <ClInclude Include="..\src\script\api\script_types.hpp" />
     <ClInclude Include="..\src\script\api\script_vehicle.hpp" />
     <ClInclude Include="..\src\script\api\script_vehiclelist.hpp" />
+    <ClInclude Include="..\src\script\api\script_viewport.hpp" />
     <ClInclude Include="..\src\script\api\script_waypoint.hpp" />
     <ClInclude Include="..\src\script\api\script_waypointlist.hpp" />
     <ClCompile Include="..\src\script\api\script_accounting.cpp" />
@@ -1031,6 +1032,7 @@
     <ClCompile Include="..\src\script\api\script_tunnel.cpp" />
     <ClCompile Include="..\src\script\api\script_vehicle.cpp" />
     <ClCompile Include="..\src\script\api\script_vehiclelist.cpp" />
+    <ClCompile Include="..\src\script\api\script_viewport.cpp" />
     <ClCompile Include="..\src\script\api\script_waypoint.cpp" />
     <ClCompile Include="..\src\script\api\script_waypointlist.cpp" />
     <ClCompile Include="..\src\blitter\32bpp_anim.cpp" />

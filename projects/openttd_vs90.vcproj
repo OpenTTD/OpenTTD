@@ -3244,6 +3244,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_viewport.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_waypoint.hpp"
 				>
 			</File>
@@ -3457,6 +3461,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_vehiclelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_viewport.cpp"
 				>
 			</File>
 			<File

@@ -70,6 +70,7 @@
 #include "../script/api/game/game_tunnel.hpp.sq"
 #include "../script/api/game/game_vehicle.hpp.sq"
 #include "../script/api/game/game_vehiclelist.hpp.sq"
+#include "../script/api/game/game_viewport.hpp.sq"
 #include "../script/api/game/game_waypoint.hpp.sq"
 #include "../script/api/game/game_waypointlist.hpp.sq"
 
@@ -165,6 +166,7 @@ void GameInstance::RegisterAPI()
 	SQGSVehicleList_Depot_Register(this->engine);
 	SQGSVehicleList_SharedOrders_Register(this->engine);
 	SQGSVehicleList_Station_Register(this->engine);
+	SQGSViewport_Register(this->engine);
 	SQGSWaypoint_Register(this->engine);
 	SQGSWaypointList_Register(this->engine);
 	SQGSWaypointList_Vehicle_Register(this->engine);

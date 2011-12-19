@@ -2163,6 +2163,9 @@
     <ClInclude Include="..\src\script\api\script_vehiclelist.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script\api\script_viewport.hpp">
+      <Filter>Script API</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\script\api\script_waypoint.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
@@ -2320,6 +2323,9 @@
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_vehiclelist.cpp">
+      <Filter>Script API Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\api\script_viewport.cpp">
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_waypoint.cpp">
