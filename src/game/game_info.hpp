@@ -41,8 +41,11 @@ public:
 	 */
 	const char *GetAPIVersion() const { return this->api_version; }
 
+	/* virtual */ bool IsDeveloperOnly() const { return this->is_developer_only; }
+
 private:
 	int min_loadable_version; ///< The Game can load savegame data if the version is equal or greater than this.
+	bool is_developer_only;   ///< Is the script selectable by non-developers?
 	const char *api_version;  ///< API version used by this Game.
 };
 

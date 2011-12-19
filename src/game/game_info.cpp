@@ -67,7 +67,12 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 	} else {
 		info->min_loadable_version = info->GetVersion();
 	}
-
+	/* When there is an IsSelectable function, call it. */
+	if (info->engine->MethodExists(*info->SQ_instance, "IsDeveloperOnly")) {
+		if (!info->engine->CallBoolMethod(*info->SQ_instance, "IsDeveloperOnly", &info->is_developer_only, MAX_GET_OPS)) return SQ_ERROR;
+	} else {
+		info->is_developer_only = false;
+	}
 	/* Try to get the API version the AI is written for. */
 	if (!info->CheckMethod("GetAPIVersion")) return SQ_ERROR;
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
@@ -85,6 +90,7 @@ template <> const char *GetClassName<GameInfo, ST_GS>() { return "GSInfo"; }
 
 GameInfo::GameInfo() :
 	min_loadable_version(0),
+	is_developer_only(false),
 	api_version(NULL)
 {
 }

@@ -142,6 +142,10 @@ public:
 	 */
 	int GetSettingDefaultValue(const char *name) const;
 
+	/**
+	 * Can this script be selected by developers only?
+	 */
+	virtual bool IsDeveloperOnly() const { return false; }
 
 protected:
 	class Squirrel *engine;           ///< Engine used to register for Squirrel.

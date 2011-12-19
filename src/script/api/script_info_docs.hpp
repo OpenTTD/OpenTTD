@@ -130,6 +130,19 @@ public:
 	bool UseAsRandomAI();
 
 	/**
+	 * Can a non-developer select Script for a new game.
+	 *
+	 * The idea behind this function is to 'forbid' using your script with a new
+	 *  game if you for example specificly wrote it for a certain scenario.
+	 *
+	 * @return True if the Script can be selected from the GUI as non-developer.
+	 * @note This function is optional. Default is false.
+	 *
+	 * @api -ai
+	 */
+	bool IsDeveloperOnly();
+
+	/**
 	 * Gets the name of main class of the Script so OpenTTD knows
 	 * what class to instantiate.
 	 *

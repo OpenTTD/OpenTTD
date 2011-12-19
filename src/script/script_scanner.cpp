@@ -13,6 +13,7 @@
 #include "../debug.h"
 #include "../string_func.h"
 #include "../fileio_func.h"
+#include "../settings_type.h"
 #include <sys/stat.h>
 
 #include "../script/squirrel.hpp"
@@ -144,12 +145,14 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 
 	this->info_list[strdup(script_name)] = info;
 
-	/* Add the script to the 'unique' script list, where only the highest version
-	 *  of the script is registered. */
-	if (this->info_single_list.find(script_original_name) == this->info_single_list.end()) {
-		this->info_single_list[strdup(script_original_name)] = info;
-	} else if (this->info_single_list[script_original_name]->GetVersion() < info->GetVersion()) {
-		this->info_single_list[script_original_name] = info;
+	if (!info->IsDeveloperOnly() || _settings_client.gui.ai_developer_tools) {
+		/* Add the script to the 'unique' script list, where only the highest version
+		 *  of the script is registered. */
+		if (this->info_single_list.find(script_original_name) == this->info_single_list.end()) {
+			this->info_single_list[strdup(script_original_name)] = info;
+		} else if (this->info_single_list[script_original_name]->GetVersion() < info->GetVersion()) {
+			this->info_single_list[script_original_name] = info;
+		}
 	}
 }
 
