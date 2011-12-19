@@ -12,7 +12,7 @@
 #ifndef WIDGETS_INTRO_WIDGET_H
 #define WIDGETS_INTRO_WIDGET_H
 
-/** Widgets of the WC_SELECT_GAME. */
+/** Widgets of the #SelectGameWindow class. */
 enum SelectGameIntroWidgets {
 	WID_SGI_GENERATE_GAME,         ///< Generate game button.
 	WID_SGI_LOAD_GAME,             ///< Load game button.

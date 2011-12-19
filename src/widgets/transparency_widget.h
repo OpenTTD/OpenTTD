@@ -12,7 +12,7 @@
 #ifndef WIDGETS_TRANSPARENCY_WIDGET_H
 #define WIDGETS_TRANSPARENCY_WIDGET_H
 
-/** Widgets of the WC_TRANSPARENCY_TOOLBAR. */
+/** Widgets of the #TransparenciesWindow class. */
 enum TransparencyToolbarWidgets {
 	/* Button row. */
 	WID_TT_BEGIN,                    ///< First toggle button.

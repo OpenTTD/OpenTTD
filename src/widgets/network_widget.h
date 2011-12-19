@@ -12,7 +12,7 @@
 #ifndef WIDGETS_NETWORK_WIDGET_H
 #define WIDGETS_NETWORK_WIDGET_H
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWidgets, NetworkStartServerWidgets, and NetworkLobbyWidgets). */
+/** Widgets of the #NetworkGameWindow class. */
 enum NetworkGameWidgets {
 	WID_NG_MAIN,               ///< Main panel.
 
@@ -51,7 +51,7 @@ enum NetworkGameWidgets {
 	WID_NG_CANCEL,             ///< 'Cancel' button.
 };
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWidgets, NetworkGameWidgets, and NetworkLobbyWidgets). */
+/** Widgets of the #NetworkStartServerWindow class. */
 enum NetworkStartServerWidgets {
 	WID_NSS_BACKGROUND,        ///< Background of the window.
 	WID_NSS_GAMENAME_LABEL,    ///< Label for the game name.
@@ -83,7 +83,7 @@ enum NetworkStartServerWidgets {
 	WID_NSS_CANCEL,            ///< 'Cancel' button.
 };
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkContentListWidgets, NetworkGameWidgets, and NetworkStartServerWidgets). */
+/** Widgets of the #NetworkLobbyWindow class. */
 enum NetworkLobbyWidgets {
 	WID_NL_BACKGROUND, ///< Background of the window.
 	WID_NL_TEXT,       ///< Heading text.
@@ -98,23 +98,23 @@ enum NetworkLobbyWidgets {
 	WID_NL_CANCEL,     ///< 'Cancel' button.
 };
 
-/** Widgets of the WC_CLIENT_LIST. */
+/** Widgets of the #NetworkClientListWindow class. */
 enum ClientListWidgets {
 	WID_CL_PANEL, ///< Panel of the window.
 };
 
-/** Widgets of the WC_CLIENT_LIST_POPUP. */
+/** Widgets of the #NetworkClientListPopupWindow class. */
 enum ClientListPopupWidgets {
 	WID_CLP_PANEL, ///< Panel of the window.
 };
 
-/** Widgets of the WC_NETWORK_STATUS_WINDOW (WC_NETWORK_STATUS_WINDOW is also used in NetworkContentDownloadStatusWidgets). */
+/** Widgets of the #NetworkJoinStatusWindow class. */
 enum NetworkJoinStatusWidgets {
 	WID_NJS_BACKGROUND, ///< Background of the window.
 	WID_NJS_CANCELOK,   ///< Cancel / OK button.
 };
 
-/** Widgets of the WC_COMPANY_PASSWORD_WINDOW. */
+/** Widgets of the #NetworkCompanyPasswordWindow class. */
 enum NetworkCompanyPasswordWidgets {
 	WID_NCP_BACKGROUND,               ///< Background of the window.
 	WID_NCP_LABEL,                    ///< Label in front of the password field.

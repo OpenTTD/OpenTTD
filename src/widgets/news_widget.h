@@ -14,20 +14,7 @@
 
 #include "../news_type.h"
 
-/** Constants in the message options window. */
-enum MessageOptionsSpace {
-	MOS_WIDG_PER_SETTING      = 4,  ///< Number of widgets needed for each news category, starting at widget #WID_MO_START_OPTION.
-
-	MOS_LEFT_EDGE             = 6,  ///< Number of pixels between left edge of the window and the options buttons column.
-	MOS_COLUMN_SPACING        = 4,  ///< Number of pixels between the buttons and the description columns.
-	MOS_RIGHT_EDGE            = 6,  ///< Number of pixels between right edge of the window and the options descriptions column.
-	MOS_BUTTON_SPACE          = 10, ///< Additional space in the button with the option value (for better looks).
-
-	MOS_ABOVE_GLOBAL_SETTINGS = 6,  ///< Number of vertical pixels between the categories and the global options.
-	MOS_BOTTOM_EDGE           = 6,  ///< Number of pixels between bottom edge of the window and bottom of the global options.
-};
-
-/** Widgets of the WC_NEWS_WINDOW. */
+/** Widgets of the #NewsWindow class. */
 enum NewsWidgets {
 	WID_N_PANEL,       ///< Panel of the window.
 	WID_N_TITLE,       ///< Title of the company news.
@@ -48,14 +35,14 @@ enum NewsWidgets {
 	WID_N_VEH_INFO,    ///< Some technical data of the new vehicle.
 };
 
-/** Widgets of the WC_MESSAGE_HISTORY. */
+/** Widgets of the #MessageHistoryWindow class. */
 enum MessageHistoryWidgets {
 	WID_MH_STICKYBOX,  ///< Stickybox.
 	WID_MH_BACKGROUND, ///< Background of the window.
 	WID_MH_SCROLLBAR,  ///< Scrollbar for the list.
 };
 
-/** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
+/** Widgets of the #MessageOptionsWindow class. */
 enum MessageOptionWidgets {
 	WID_MO_BACKGROUND,        ///< Background of the window.
 	WID_MO_LABEL,             ///< Top label.

@@ -12,7 +12,7 @@
 #ifndef WIDGETS_ORDER_WIDGET_H
 #define WIDGETS_ORDER_WIDGET_H
 
-/** Widgets of the WC_VEHICLE_ORDERS. */
+/** Widgets of the #OrdersWindow class. */
 enum OrderWidgets {
 	WID_O_CAPTION,                   ///< Caption of the window.
 	WID_O_TIMETABLE_VIEW,            ///< Toggle timetable view.

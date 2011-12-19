@@ -12,13 +12,13 @@
 #ifndef WIDGETS_NETWORK_CONTENT_WIDGET_H
 #define WIDGETS_NETWORK_CONTENT_WIDGET_H
 
-/** Widgets of the WC_NETWORK_STATUS_WINDOW (WC_NETWORK_STATUS_WINDOW is also used in NetworkJoinStatusWidgets). */
+/** Widgets of the #NetworkContentDownloadStatusWindow class. */
 enum NetworkContentDownloadStatusWidgets {
 	WID_NCDS_BACKGROUND, ///< Background of the window.
 	WID_NCDS_CANCELOK,   ///< (Optional) Cancel/OK button.
 };
 
-/** Widgets of the WC_NETWORK_WINDOW (WC_NETWORK_WINDOW is also used in NetworkGameWidgets, NetworkStartServerWidgets, and NetworkLobbyWidgets). */
+/** Widgets of the #NetworkContentListWindow class. */
 enum NetworkContentListWidgets {
 	WID_NCL_BACKGROUND,     ///< Resize button.
 

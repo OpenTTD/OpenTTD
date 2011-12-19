@@ -14,7 +14,7 @@
 
 #include "../newgrf_config.h"
 
-/** Widgets of the WC_GRF_PARAMETERS. */
+/** Widgets of the #NewGRFParametersWindow class. */
 enum NewGRFParametersWidgets {
 	WID_NP_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #WID_NP_NUMPAR.
 	WID_NP_NUMPAR_DEC,       ///< Button to decrease number of parameters.
@@ -29,7 +29,7 @@ enum NewGRFParametersWidgets {
 	WID_NP_DESCRIPTION,      ///< Multi-line description of a parameter.
 };
 
-/** Widgets of the WC_NEWGRF_TEXTFILE. */
+/** Widgets of the #NewGRFTextfileWindow class. */
 enum NewGRFTextfileWidgets {
 	WID_NT_CAPTION,    ///< The caption of the window.
 	WID_NT_BACKGROUND, ///< Panel to draw the textfile on.
@@ -37,7 +37,7 @@ enum NewGRFTextfileWidgets {
 	WID_NT_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
 };
 
-/** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
+/** Widgets of the #NewGRFWindow class. */
 enum NewGRFStateWidgets {
 	WID_NS_PRESET_LIST,       ///< Active NewGRF preset.
 	WID_NS_PRESET_SAVE,       ///< Save list of active NewGRFs as presets.
@@ -66,7 +66,7 @@ enum NewGRFStateWidgets {
 	WID_NS_SHOW_APPLY,        ///< Select display of the buttons below the 'details'.
 };
 
-/** Widgets of the WC_MODAL_PROGRESS (WC_MODAL_PROGRESS is also used in GenerationProgressWidgets). */
+/** Widgets of the #ScanProgressWindow class. */
 enum ScanProgressWidgets {
 	WID_SP_PROGRESS_BAR,  ///< Simple progress bar.
 	WID_SP_PROGRESS_TEXT, ///< Text explaining what is happening.

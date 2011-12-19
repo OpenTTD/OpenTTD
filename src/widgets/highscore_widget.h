@@ -12,7 +12,7 @@
 #ifndef WIDGETS_HIGHSCORE_WIDGET_H
 #define WIDGETS_HIGHSCORE_WIDGET_H
 
-/** Widgets of the WC_HIGHSCORE / WC_ENDSCREEN. */
+/** Widgets of the #EndGameHighScoreBaseWindow class and #HighScoreWindow class. */
 enum HighscoreWidgets {
 	WID_H_BACKGROUND, ///< Background of the window.
 };

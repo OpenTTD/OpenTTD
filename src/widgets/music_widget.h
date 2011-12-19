@@ -12,7 +12,7 @@
 #ifndef WIDGETS_MUSIC_WIDGET_H
 #define WIDGETS_MUSIC_WIDGET_H
 
-/** Widgets of the WC_MUSIC_TRACK_SELECTION. */
+/** Widgets of the #MusicTrackSelectionWindow class. */
 enum MusicTrackSelectionWidgets {
 	WID_MTS_LIST_LEFT,  ///< Left button.
 	WID_MTS_PLAYLIST,   ///< Playlist.
@@ -26,7 +26,7 @@ enum MusicTrackSelectionWidgets {
 	WID_MTS_CLEAR,      ///< Clear button.
 };
 
-/** Widgets of the WC_MUSIC_WINDOW. */
+/** Widgets of the #MusicWindow class. */
 enum MusicWidgets {
 	WID_M_PREV,        ///< Previous button.
 	WID_M_NEXT,        ///< Next button.

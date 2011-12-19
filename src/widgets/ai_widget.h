@@ -12,7 +12,7 @@
 #ifndef WIDGETS_AI_WIDGET_H
 #define WIDGETS_AI_WIDGET_H
 
-/** Widgets of the WC_AI_LIST. */
+/** Widgets of the #AIListWindow class. */
 enum AIListWidgets {
 	WID_AIL_LIST,      ///< The matrix with all available AIs.
 	WID_AIL_SCROLLBAR, ///< Scrollbar next to the AI list.
@@ -21,7 +21,7 @@ enum AIListWidgets {
 	WID_AIL_CANCEL,    ///< Cancel button.
 };
 
-/** Widgets of the WC_AI_SETTINGS. */
+/** Widgets of the #AISettingsWindow class. */
 enum AISettingsWidgets {
 	WID_AIS_BACKGROUND, ///< Panel to draw the settings on.
 	WID_AIS_SCROLLBAR,  ///< Scrollbar to scroll through all settings.
@@ -29,7 +29,7 @@ enum AISettingsWidgets {
 	WID_AIS_RESET,      ///< Reset button.
 };
 
-/** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
+/** Widgets of the #AIConfigWindow class. */
 enum AIConfigWidgets {
 	WID_AIC_BACKGROUND,       ///< Window background.
 	WID_AIC_DECREASE,         ///< Decrease the number of AIs.
@@ -45,7 +45,7 @@ enum AIConfigWidgets {
 	WID_AIC_CONTENT_DOWNLOAD, ///< Download content button.
 };
 
-/** Widgets of the WC_AI_DEBUG. */
+/** Widgets of the #AIDebugWindow class. */
 enum AIDebugWidgets {
 	WID_AID_VIEW,                 ///< The row of company buttons.
 	WID_AID_NAME_TEXT,            ///< Name of the current selected.

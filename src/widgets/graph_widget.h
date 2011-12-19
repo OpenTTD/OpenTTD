@@ -14,7 +14,7 @@
 
 #include "../economy_type.h"
 
-/** Widgets of the WC_GRAPH_LEGEND. */
+/** Widgets of the #GraphLegendWindow class. */
 enum GraphLegendWidgets {
 	WID_GL_BACKGROUND,    ///< Background of the window.
 
@@ -22,7 +22,7 @@ enum GraphLegendWidgets {
 	WID_GL_LAST_COMPANY = WID_GL_FIRST_COMPANY + MAX_COMPANIES - 1, ///< Last company in the legend.
 };
 
-/** Widgets of the WC_OPERATING_PROFIT / WC_DELIVERED_CARGO / WC_COMPANY_VALUE / WC_INCOME_GRAPH. */
+/** Widgets of the #OperatingProfitGraphWindow class, #IncomeGraphWindow class, #DeliveredCargoGraphWindow class, and #CompanyValueGraphWindow class. */
 enum CompanyValueWidgets {
 	WID_CV_KEY_BUTTON, ///< Key button.
 	WID_CV_BACKGROUND, ///< Background of the window.
@@ -30,7 +30,7 @@ enum CompanyValueWidgets {
 	WID_CV_RESIZE,     ///< Resize button.
 };
 
-/** Widget of the WC_PERFORMANCE_HISTORY. */
+/** Widget of the #PerformanceHistoryGraphWindow class. */
 enum PerformanceHistoryGraphWidgets {
 	WID_PHG_KEY,                  ///< Key button.
 	WID_PHG_DETAILED_PERFORMANCE, ///< Detailed performance.
@@ -39,7 +39,7 @@ enum PerformanceHistoryGraphWidgets {
 	WID_PHG_RESIZE,               ///< Resize button.
 };
 
-/** Widget of the WC_PAYMENT_RATES. */
+/** Widget of the #PaymentRatesGraphWindow class. */
 enum CargoPaymentRatesWidgets {
 	WID_CPR_BACKGROUND,      ///< Background of the window.
 	WID_CPR_HEADER,          ///< Header.
@@ -51,12 +51,12 @@ enum CargoPaymentRatesWidgets {
 	WID_CPR_CARGO_FIRST,     ///< First cargo in the list.
 };
 
-/** Widget of the WC_COMPANY_LEAGUE. */
+/** Widget of the #CompanyLeagueWindow class. */
 enum CompanyLeagueWidgets {
 	WID_CL_BACKGROUND, ///< Background of the window.
 };
 
-/** Widget of the WC_PERFORMANCE_DETAIL. */
+/** Widget of the #PerformanceRatingDetailWindow class. */
 enum PerformanceRatingDetailsWidgets {
 	WID_PRD_SCORE_FIRST, ///< First entry in the score list.
 	WID_PRD_SCORE_LAST = WID_PRD_SCORE_FIRST + (SCORE_END - SCORE_BEGIN) - 1, ///< Last entry in the score list.

@@ -12,7 +12,7 @@
 #ifndef WIDGETS_BUILD_VEHICLE_WIDGET_H
 #define WIDGETS_BUILD_VEHICLE_WIDGET_H
 
-/** Widgets of the WC_BUILD_VEHICLE. */
+/** Widgets of the #BuildVehicleWindow class. */
 enum BuildVehicleWidgets {
 	WID_BV_CAPTION,                   ///< Caption of window.
 	WID_BV_SORT_ASSENDING_DESCENDING, ///< Sort direction.

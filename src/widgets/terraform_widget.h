@@ -12,7 +12,7 @@
 #ifndef WIDGETS_TERRAFORM_WIDGET_H
 #define WIDGETS_TERRAFORM_WIDGET_H
 
-/** Widgets of the WC_SCEN_LAND_GEN (WC_SCEN_LAND_GEN is also used in EditorTerraformToolbarWidgets). */
+/** Widgets of the #TerraformToolbarWindow class. */
 enum TerraformToolbarWidgets {
 	WID_TT_SHOW_PLACE_OBJECT,                 ///< Should the place object button be shown?
 	WID_TT_BUTTONS_START,                     ///< Start of pushable buttons.
@@ -26,7 +26,7 @@ enum TerraformToolbarWidgets {
 	WID_TT_PLACE_OBJECT,                      ///< Place object button.
 };
 
-/** Widgets of the WC_SCEN_LAND_GEN (WC_SCEN_LAND_GEN is also used in TerraformToolbarWidgets). */
+/** Widgets of the #ScenarioEditorLandscapeGenerationWindow class. */
 enum EditorTerraformToolbarWidgets {
 	WID_ETT_SHOW_PLACE_DESERT,                   ///< Should the place desert button be shown?
 	WID_ETT_START,                               ///< Used for iterations.

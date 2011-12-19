@@ -12,7 +12,7 @@
 #ifndef WIDGETS_CONSOLE_WIDGET_H
 #define WIDGETS_CONSOLE_WIDGET_H
 
-/** Widgets of the WC_CONSOLE. */
+/** Widgets of the #IConsoleWindow class. */
 enum ConsoleWidgets {
 	WID_C_BACKGROUND, ///< Background of the console.
 };

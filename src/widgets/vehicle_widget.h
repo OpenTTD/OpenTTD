@@ -12,7 +12,7 @@
 #ifndef WIDGETS_VEHICLE_WIDGET_H
 #define WIDGETS_VEHICLE_WIDGET_H
 
-/** Widgets of the WC_VEHICLE_VIEW. */
+/** Widgets of the #VehicleViewWindow class. */
 enum VehicleViewWidgets {
 	WID_VV_CAPTION,            ///< Caption of window.
 	WID_VV_VIEWPORT,           ///< Viewport widget.
@@ -29,7 +29,7 @@ enum VehicleViewWidgets {
 	WID_VV_FORCE_PROCEED,      ///< Force this vehicle to pass a signal at danger.
 };
 
-/** Widgets of the WC_VEHICLE_REFIT. */
+/** Widgets of the #RefitWindow class. */
 enum VehicleRefitWidgets {
 	WID_VR_CAPTION,               ///< Caption of window.
 	WID_VR_VEHICLE_PANEL_DISPLAY, ///< Display with a representation of the vehicle to refit.
@@ -42,7 +42,7 @@ enum VehicleRefitWidgets {
 	WID_VR_REFIT,                 ///< Perform the refit.
 };
 
-/** Widgets of the WC_VEHICLE_DETAILS. */
+/** Widgets of the #VehicleDetailsWindow class. */
 enum VehicleDetailsWidgets {
 	WID_VD_CAPTION,                     ///< Caption of window.
 	WID_VD_RENAME_VEHICLE,              ///< Rename this vehicle.
@@ -59,7 +59,7 @@ enum VehicleDetailsWidgets {
 	WID_VD_DETAILS_TOTAL_CARGO,         ///< Show the capacity and carried cargo amounts aggregrated per cargo of the train.
 };
 
-/** Widgets of the vehicle lists (WC_TRAINS_LIST, WC_ROADVEH_LIST, WC_SHIPS_LIST, WC_AIRCRAFT_LIST). */
+/** Widgets of the #VehicleListWindow class. */
 enum VehicleListWidgets {
 	WID_VL_CAPTION,                  ///< Caption of window.
 	WID_VL_SORT_ORDER,               ///< Sort order.

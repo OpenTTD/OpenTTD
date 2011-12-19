@@ -12,7 +12,7 @@
 #ifndef WIDGETS_WAYPOINT_WIDGET_H
 #define WIDGETS_WAYPOINT_WIDGET_H
 
-/** Widgets of the WC_WAYPOINT_VIEW. */
+/** Widgets of the #WaypointWindow class. */
 enum WaypointWidgets {
 	WID_W_CAPTION,       ///< Caption of window.
 	WID_W_VIEWPORT,      ///< The viewport on this waypoint.

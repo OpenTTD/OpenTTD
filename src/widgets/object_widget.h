@@ -12,7 +12,7 @@
 #ifndef WIDGETS_OBJECT_WIDGET_H
 #define WIDGETS_OBJECT_WIDGET_H
 
-/** Widgets of the WC_BUILD_OBJECT. */
+/** Widgets of the #BuildObjectWindow class. */
 enum BuildObjectWidgets {
 	WID_BO_CLASS_LIST,     ///< The list with classes.
 	WID_BO_SCROLLBAR,      ///< The scrollbar associated with the list.

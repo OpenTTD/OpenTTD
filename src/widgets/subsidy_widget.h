@@ -12,7 +12,7 @@
 #ifndef WIDGETS_SUBSIDY_WIDGET_H
 #define WIDGETS_SUBSIDY_WIDGET_H
 
-/** Widgets of the WC_SUBSIDIES_LIST. */
+/** Widgets of the #SubsidyListWindow class. */
 enum SubsidyListWidgets {
 	/* Name starts with SU instead of S, because of collision with SaveLoadWidgets. */
 	WID_SUL_PANEL,     ///< Main panel of window.

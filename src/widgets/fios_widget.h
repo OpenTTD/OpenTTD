@@ -12,7 +12,7 @@
 #ifndef WIDGETS_FIOS_WIDGET_H
 #define WIDGETS_FIOS_WIDGET_H
 
-/** Widgets of the WC_SAVELOAD. */
+/** Widgets of the #SaveLoadWindow class. */
 enum SaveLoadWidgets {
 	WID_SL_CAPTION,                 ///< Caption of the window.
 	WID_SL_SORT_BYNAME,             ///< Sort by name button.

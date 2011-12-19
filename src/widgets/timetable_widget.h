@@ -12,7 +12,7 @@
 #ifndef WIDGETS_TIMETABLE_WIDGET_H
 #define WIDGETS_TIMETABLE_WIDGET_H
 
-/** Widgets of the WC_VEHICLE_TIMETABLE. */
+/** Widgets of the #TimetableWindow class. */
 enum VehicleTimetableWidgets {
 	WID_VT_CAPTION,                     ///< Caption of the window.
 	WID_VT_ORDER_VIEW,                  ///< Order view.

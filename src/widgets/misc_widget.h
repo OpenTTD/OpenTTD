@@ -12,23 +12,23 @@
 #ifndef WIDGETS_MISC_WIDGET_H
 #define WIDGETS_MISC_WIDGET_H
 
-/** Widgets of the WC_LAND_INFO. */
+/** Widgets of the #LandInfoWindow class. */
 enum LandInfoWidgets {
 	WID_LI_BACKGROUND, ///< Background of the window.
 };
 
-/** Widgets of the WC_TOOLTIPS. */
+/** Widgets of the #TooltipsWindow class. */
 enum ToolTipsWidgets {
 	WID_TT_BACKGROUND, ///< Background of the window.
 };
 
-/** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
+/** Widgets of the #AboutWindow class. */
 enum AboutWidgets {
 	WID_A_SCROLLING_TEXT, ///< The actually scrolling text.
 	WID_A_WEBSITE,        ///< URL of OpenTTD website.
 };
 
-/** Widgets of the WC_QUERY_STRING (WC_QUERY_STRING is also used in QueryEditSignWidgets). */
+/** Widgets of the #QueryStringWindow class. */
 enum QueryStringWidgets {
 	WID_QS_CAPTION, ///< Caption of the window.
 	WID_QS_TEXT,    ///< Text of the query.
@@ -37,7 +37,7 @@ enum QueryStringWidgets {
 	WID_QS_OK,      ///< OK button.
 };
 
-/** Widgets of the WC_CONFIRM_POPUP_QUERY (WC_CONFIRM_POPUP_QUERY is also used in BootstrapAskForDownloadWidgets). */
+/** Widgets of the #QueryWindow class. */
 enum QueryWidgets {
 	WID_Q_CAPTION, ///< Caption of the window.
 	WID_Q_TEXT,    ///< Text of the query.

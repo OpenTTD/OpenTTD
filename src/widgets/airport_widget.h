@@ -12,13 +12,13 @@
 #ifndef WIDGETS_AIRPORT_WIDGET_H
 #define WIDGETS_AIRPORT_WIDGET_H
 
-/** Widgets of the WC_BUILD_TOOLBAR (WC_BUILD_TOOLBAR is also used in others). */
+/** Widgets of the #BuildAirToolbarWindow class. */
 enum AirportToolbarWidgets {
 	WID_AT_AIRPORT,  ///< Build airport button.
 	WID_AT_DEMOLISH, ///< Demolish button.
 };
 
-/** Widgets of the WC_BUILD_STATION (WC_BUILD_STATION is also used in others). */
+/** Widgets of the #BuildAirportWindow class. */
 enum AirportPickerWidgets {
 	WID_AP_CLASS_DROPDOWN,  ///< Dropdown of airport classes.
 	WID_AP_AIRPORT_LIST,    ///< List of airports.

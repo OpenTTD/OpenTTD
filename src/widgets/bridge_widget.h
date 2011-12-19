@@ -12,7 +12,7 @@
 #ifndef WIDGETS_BRIDGE_WIDGET_H
 #define WIDGETS_BRIDGE_WIDGET_H
 
-/** Widgets of the WC_BUILD_BRIDGE. */
+/** Widgets of the #BuildBridgeWindow class. */
 enum BuildBridgeSelectionWidgets {
 	WID_BBS_CAPTION,           ///< Caption of the window.
 	WID_BBS_DROPDOWN_ORDER,    ///< Direction of sort dropdown.

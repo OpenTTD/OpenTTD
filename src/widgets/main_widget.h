@@ -12,7 +12,7 @@
 #ifndef WIDGETS_MAIN_WIDGET_H
 #define WIDGETS_MAIN_WIDGET_H
 
-/** Widgets of the WC_MAIN_WINDOW. */
+/** Widgets of the #MainWindow class. */
 enum MainWidgets {
 	WID_M_VIEWPORT, ///< Main window viewport.
 };

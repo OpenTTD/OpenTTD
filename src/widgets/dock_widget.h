@@ -12,7 +12,14 @@
 #ifndef WIDGETS_DOCK_WIDGET_H
 #define WIDGETS_DOCK_WIDGET_H
 
-/** Widgets of the WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR (WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR is also used in others). */
+/** Widgets of the #BuildDocksDepotWindow class. */
+enum BuildDockDepotWidgets {
+	WID_BDD_BACKGROUND, ///< Background of the window.
+	WID_BDD_X,          ///< X-direction button.
+	WID_BDD_Y,          ///< Y-direction button.
+};
+
+/** Widgets of the #BuildDocksToolbarWindow class. */
 enum DockToolbarWidgets {
 	WID_DT_CANAL,          ///< Build canal button.
 	WID_DT_LOCK,           ///< Build lock button.

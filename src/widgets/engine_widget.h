@@ -12,7 +12,7 @@
 #ifndef WIDGETS_ENGINE_WIDGET_H
 #define WIDGETS_ENGINE_WIDGET_H
 
-/** Widgets of the WC_ENGINE_PREVIEW. */
+/** Widgets of the #EnginePreviewWindow class. */
 enum EnginePreviewWidgets {
 	WID_EP_QUESTION, ///< The container for the question.
 	WID_EP_NO,       ///< No button.

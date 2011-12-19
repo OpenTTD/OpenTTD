@@ -12,7 +12,7 @@
 #ifndef WIDGETS_DATE_WIDGET_H
 #define WIDGETS_DATE_WIDGET_H
 
-/** Widgets of the WC_SET_DATE. */
+/** Widgets of the #SetDateWindow class. */
 enum SetDateWidgets {
 	WID_SD_DAY,      ///< Dropdown for the day.
 	WID_SD_MONTH,    ///< Dropdown for the month.

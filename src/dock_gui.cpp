@@ -480,13 +480,6 @@ static void ShowBuildDockStationPicker(Window *parent)
 	new BuildDocksStationWindow(&_build_dock_station_desc, parent);
 }
 
-/** Widgets for the build ship depot window. */
-enum BuildDockDepotWidgets {
-	BDDW_BACKGROUND,
-	BDDW_X,
-	BDDW_Y,
-};
-
 struct BuildDocksDepotWindow : public PickerWindowBase {
 private:
 	static void UpdateDocksDirection()
@@ -502,7 +495,7 @@ public:
 	BuildDocksDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
 		this->InitNested(desc, TRANSPORT_WATER);
-		this->LowerWidget(_ship_depot_direction + BDDW_X);
+		this->LowerWidget(_ship_depot_direction + WID_BDD_X);
 		UpdateDocksDirection();
 	}
 
@@ -510,20 +503,20 @@ public:
 	{
 		this->DrawWidgets();
 
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 18, AXIS_X, DEPOT_PART_NORTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_X)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_X)->pos_y + 34, AXIS_X, DEPOT_PART_SOUTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 32, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 18, AXIS_Y, DEPOT_PART_NORTH);
-		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(BDDW_Y)->pos_x + 64, this->GetWidget<NWidgetBase>(BDDW_Y)->pos_y + 34, AXIS_Y, DEPOT_PART_SOUTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + 64, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + 18, AXIS_X, DEPOT_PART_NORTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_x + 32, this->GetWidget<NWidgetBase>(WID_BDD_X)->pos_y + 34, AXIS_X, DEPOT_PART_SOUTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + 32, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + 18, AXIS_Y, DEPOT_PART_NORTH);
+		DrawShipDepotSprite(this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_x + 64, this->GetWidget<NWidgetBase>(WID_BDD_Y)->pos_y + 34, AXIS_Y, DEPOT_PART_SOUTH);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case BDDW_X:
-			case BDDW_Y:
-				this->RaiseWidget(_ship_depot_direction + BDDW_X);
-				_ship_depot_direction = (widget == BDDW_X ? AXIS_X : AXIS_Y);
-				this->LowerWidget(_ship_depot_direction + BDDW_X);
+			case WID_BDD_X:
+			case WID_BDD_Y:
+				this->RaiseWidget(_ship_depot_direction + WID_BDD_X);
+				_ship_depot_direction = (widget == WID_BDD_X ? AXIS_X : AXIS_Y);
+				this->LowerWidget(_ship_depot_direction + WID_BDD_X);
 				SndPlayFx(SND_15_BEEP);
 				UpdateDocksDirection();
 				this->SetDirty();
@@ -537,14 +530,14 @@ static const NWidgetPart _nested_build_docks_depot_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_DEPOT_BUILD_SHIP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDDW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_BDD_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL_LTR),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_X), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
+			NWidget(WWT_PANEL, COLOUR_GREY, WID_BDD_X), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, BDDW_Y), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
+			NWidget(WWT_PANEL, COLOUR_GREY, WID_BDD_Y), SetMinimalSize(98, 66), SetDataTip(0x0, STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(3, 0),
 		EndContainer(),

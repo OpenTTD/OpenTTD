@@ -12,7 +12,7 @@
 #ifndef WIDGETS_SETTINGS_WIDGET_H
 #define WIDGETS_SETTINGS_WIDGET_H
 
-/** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
+/** Widgets of the #GameOptionsWindow class. */
 enum GameOptionsWidgets {
 	WID_GO_BACKGROUND,             ///< Background of the window.
 	WID_GO_CURRENCY_DROPDOWN,      ///< Currency dropdown.
@@ -34,7 +34,7 @@ enum GameOptionsWidgets {
 	WID_GO_BASE_MUSIC_DESCRIPTION, ///< Description of selected base music set.
 };
 
-/** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
+/** Widgets of the #GameDifficultyWindow class. */
 enum GameDifficultyWidgets {
 	WID_GD_LVL_EASY,      ///< Easy level button.
 	WID_GD_LVL_MEDIUM,    ///< Medium level button.
@@ -47,13 +47,13 @@ enum GameDifficultyWidgets {
 	WID_GD_OPTIONS_START, ///< Start of the options.
 };
 
-/** Widgets of the WC_GAME_OPTIONS (WC_GAME_OPTIONS is also used in others). */
+/** Widgets of the #GameSettingsWindow class. */
 enum GameSettingsWidgets {
 	WID_GS_OPTIONSPANEL, ///< Panel widget containing the option lists.
 	WID_GS_SCROLLBAR,    ///< Scrollbar.
 };
 
-/** Widgets of the WC_CUSTOM_CURRENCY. */
+/** Widgets of the #CustomCurrencyWindow class. */
 enum CustomCurrencyWidgets {
 	WID_CC_RATE_DOWN,      ///< Down button.
 	WID_CC_RATE_UP,        ///< Up button.

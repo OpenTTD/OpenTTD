@@ -12,7 +12,7 @@
 #ifndef WIDGETS_STATUSBAR_WIDGET_H
 #define WIDGETS_STATUSBAR_WIDGET_H
 
-/** Widgets of the WC_STATUS_BAR. */
+/** Widgets of the #StatusBarWindow class. */
 enum StatusbarWidget {
 	WID_S_LEFT,   ///< Left part of the statusbar; date is shown there.
 	WID_S_MIDDLE, ///< Middle part; current news or company name or *** SAVING *** or *** PAUSED ***.

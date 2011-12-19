@@ -12,7 +12,7 @@
 #ifndef WIDGETS_GROUP_WIDGET_H
 #define WIDGETS_GROUP_WIDGET_H
 
-/** Widgets of the WC_TRAINS_LIST / WC_ROADVEH_LIST / WC_SHIPS_LIST / WC_AIRCRAFT_LIST. */
+/** Widgets of the #VehicleGroupWindow class. */
 enum GroupListWidgets {
 	WID_GL_CAPTION,                  ///< Caption of the window.
 	WID_GL_SORT_BY_ORDER,            ///< Sort order.

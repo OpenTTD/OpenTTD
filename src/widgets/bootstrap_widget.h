@@ -12,7 +12,12 @@
 #ifndef WIDGETS_BOOTSTRAP_WIDGET_H
 #define WIDGETS_BOOTSTRAP_WIDGET_H
 
-/** Widgets of the WC_CONFIRM_POPUP_QUERY (WC_CONFIRM_POPUP_QUERY is also used in QueryWidgets). */
+/** Widgets of the #BootstrapBackground class. */
+enum BootstrapBackgroundWidgets {
+	WID_BB_BACKGROUND, ///< Background of the window.
+};
+
+/** Widgets of the #BootstrapContentDownloadStatusWindow class. */
 enum BootstrapAskForDownloadWidgets {
 	WID_BAFD_QUESTION, ///< The question whether to download.
 	WID_BAFD_YES,      ///< An affirmative answer to the question.

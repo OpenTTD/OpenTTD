@@ -12,7 +12,7 @@
 #ifndef WIDGETS_RAIL_WIDGET_H
 #define WIDGETS_RAIL_WIDGET_H
 
-/** Widgets of the WC_BUILD_TOOLBAR (WC_BUILD_TOOLBAR is also used in others). */
+/** Widgets of the #BuildRailToolbarWindow ckass. */
 enum RailToolbarWidgets {
 	/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
 	WID_RAT_CAPTION,        ///< Caption of the window.
@@ -32,7 +32,7 @@ enum RailToolbarWidgets {
 	WID_RAT_CONVERT_RAIL,   ///< Convert other rail to this type.
 };
 
-/** Widgets of the WC_BUILD_STATION (WC_BUILD_STATION is also used in others). */
+/** Widgets of the #BuildRailStationWindow class. */
 enum BuildRailStationWidgets {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadStationWidgets */
 	WID_BRAS_PLATFORM_DIR_X,       ///< Button to select '/' view.
@@ -75,7 +75,7 @@ enum BuildRailStationWidgets {
 	WID_BRAS_PLATFORM_LEN_BEGIN = WID_BRAS_PLATFORM_LEN_1 - 1, ///< Helper for determining the chosen platform length.
 };
 
-/** Widgets of the WC_BUILD_SIGNAL. */
+/** Widgets of the #BuildSignalWindow class. */
 enum BuildSignalWidgets {
 	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal
 	WID_BS_SEMAPHORE_ENTRY,    ///< Build a semaphore entry block signal
@@ -95,7 +95,7 @@ enum BuildSignalWidgets {
 	WID_BS_DRAG_SIGNALS_DENSITY_INCREASE, ///< Increase the signal density.
 };
 
-/** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
+/** Widgets of the #BuildRailDepotWindow class. */
 enum BuildRailDepotWidgets {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadDepotWidgets */
 	WID_BRAD_DEPOT_NE, ///< Build a depot with the entrace in the north east.
@@ -104,7 +104,7 @@ enum BuildRailDepotWidgets {
 	WID_BRAD_DEPOT_NW, ///< Build a depot with the entrace in the north west.
 };
 
-/** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
+/** Widgets of the #BuildRailWaypointWindow class. */
 enum BuildRailWaypointWidgets {
 	WID_BRW_WAYPOINT_MATRIX, ///< Matrix with waypoints.
 	WID_BRW_WAYPOINT,        ///< A single waypoint.

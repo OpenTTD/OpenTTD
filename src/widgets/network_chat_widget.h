@@ -12,7 +12,7 @@
 #ifndef WIDGETS_NETWORK_CHAT_WIDGET_H
 #define WIDGETS_NETWORK_CHAT_WIDGET_H
 
-/** Widgets of the WC_SEND_NETWORK_MSG. */
+/** Widgets of the #NetworkChatWindow class. */
 enum NetWorkChatWidgets {
 	WID_NC_CLOSE,       ///< Close button.
 	WID_NC_BACKGROUND,  ///< Background of the window.

@@ -12,7 +12,7 @@
 #ifndef WIDGETS_SMALLMAP_WIDGET_H
 #define WIDGETS_SMALLMAP_WIDGET_H
 
-/** Widgets of the WC_SMALLMAP. */
+/** Widgets of the #SmallMapWindow class. */
 enum SmallMapWidgets {
 	WID_SM_CAPTION,        ///< Caption of the window.
 	WID_SM_MAP_BORDER,     ///< Border around the smallmap.

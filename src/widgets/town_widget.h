@@ -12,7 +12,7 @@
 #ifndef WIDGETS_TOWN_WIDGET_H
 #define WIDGETS_TOWN_WIDGET_H
 
-/** Widgets of the WC_TOWN_DIRECTORY. */
+/** Widgets of the #TownDirectoryWindow class. */
 enum TownDirectoryWidgets {
 	WID_TD_SORT_NAME,        ///< Sort by town name.
 	WID_TD_SORT_POPULATION,  ///< Sort by town population.
@@ -21,7 +21,7 @@ enum TownDirectoryWidgets {
 	WID_TD_WORLD_POPULATION, ///< The world's population.
 };
 
-/** Widgets of the WC_TOWN_AUTHORITY. */
+/** Widgets of the #TownAuthorityWindow class. */
 enum TownAuthorityWidgets {
 	WID_TA_CAPTION,      ///< Caption of window.
 	WID_TA_RATING_INFO,  ///< Overview with ratings for each company.
@@ -31,7 +31,7 @@ enum TownAuthorityWidgets {
 	WID_TA_EXECUTE,      ///< Do-it button.
 };
 
-/** Widgets of the WC_TOWN_VIEW. */
+/** Widgets of the #TownViewWindow class. */
 enum TownViewWidgets {
 	WID_TV_CAPTION,        ///< Caption of window.
 	WID_TV_VIEWPORT,       ///< View of the center of the town.
@@ -43,7 +43,7 @@ enum TownViewWidgets {
 	WID_TV_DELETE,         ///< Delete this town (scenario editor only).
 };
 
-/** Widgets of the WC_FOUND_TOWN. */
+/** Widgets of the #FoundTownWindow class. */
 enum TownFoundingWidgets {
 	WID_TF_NEW_TOWN,          ///< Create a new town.
 	WID_TF_RANDOM_TOWN,       ///< Randomly place a town.

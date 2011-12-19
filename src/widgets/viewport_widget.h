@@ -12,7 +12,7 @@
 #ifndef WIDGETS_VIEWPORT_WIDGET_H
 #define WIDGETS_VIEWPORT_WIDGET_H
 
-/** Widgets of the WC_EXTRA_VIEW_PORT. */
+/** Widgets of the #ExtraViewportWindow class. */
 enum ExtraViewportWidgets {
 	WID_EV_CAPTION,      ///< Caption of window.
 	WID_EV_VIEWPORT,     ///< The viewport.

@@ -12,7 +12,7 @@
 #ifndef WIDGETS_GENWORLD_WIDGET_H
 #define WIDGETS_GENWORLD_WIDGET_H
 
-/** Widgets of the WC_GENERATE_LANDSCAPE (WC_GENERATE_LANDSCAPE is also used in CreateScenarioWidgets). */
+/** Widgets of the #GenerateLandscapeWindow class. */
 enum GenerateLandscapeWidgets {
 	WID_GL_TEMPERATE,                   ///< Button with icon "Temperate".
 	WID_GL_ARCTIC,                      ///< Button with icon "Arctic".
@@ -58,7 +58,7 @@ enum GenerateLandscapeWidgets {
 	WID_GL_WATER_SW,                    ///< SW 'Water'/'Freeform'.
 };
 
-/** Widgets of the WC_GENERATE_LANDSCAPE (WC_GENERATE_LANDSCAPE is also used in GenerateLandscapeWidgets). */
+/** Widgets of the #CreateScenarioWindow class. */
 enum CreateScenarioWidgets {
 	WID_CS_TEMPERATE,              ///< Select temperate landscape style.
 	WID_CS_ARCTIC,                 ///< Select arctic landscape style.
@@ -76,7 +76,7 @@ enum CreateScenarioWidgets {
 	WID_CS_FLAT_LAND_HEIGHT_UP,    ///< Increase flat land height.
 };
 
-/** Widgets of the WC_MODAL_PROGRESS (WC_MODAL_PROGRESS is also used in ScanProgressWidgets). */
+/** Widgets of the #GenerateProgressWindow class. */
 enum GenerationProgressWidgets {
 	WID_GP_PROGRESS_BAR,  ///< Progress bar.
 	WID_GP_PROGRESS_TEXT, ///< Text with the progress bar.

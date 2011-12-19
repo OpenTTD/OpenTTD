@@ -12,7 +12,7 @@
 #ifndef WIDGETS_COMPANY_WIDGET_H
 #define WIDGETS_COMPANY_WIDGET_H
 
-/** Widgets of the WC_COMPANY. */
+/** Widgets of the #CompanyWindow class. */
 enum CompanyWidgets {
 	WID_C_CAPTION,                    ///< Caption of the window.
 
@@ -54,7 +54,7 @@ enum CompanyWidgets {
 	WID_C_COMPANY_JOIN,               ///< Button to join company.
 };
 
-/** Widgets of the WC_FINANCES. */
+/** Widgets of the #CompanyFinancesWindow class. */
 enum CompanyFinancesWidgets {
 	WID_CF_CAPTION,        ///< Caption of the window.
 	WID_CF_TOGGLE_SIZE,    ///< Toggle windows size.
@@ -78,7 +78,7 @@ enum CompanyFinancesWidgets {
 };
 
 
-/** Widgets of the WC_COMPANY_COLOUR. */
+/** Widgets of the #SelectCompanyLiveryWindow class. */
 enum SelectCompanyLiveryWidgets {
 	WID_SCL_CAPTION,          ///< Caption of window.
 	WID_SCL_CLASS_GENERAL,    ///< Class general.
@@ -93,7 +93,8 @@ enum SelectCompanyLiveryWidgets {
 };
 
 
-/** Widgets of the WC_COMPANY_MANAGER_FACE.
+/**
+ * Widgets of the #SelectCompanyManagerFaceWindow class.
  * Do not change the order of the widgets from WID_SCMF_HAS_MOUSTACHE_EARRING to WID_SCMF_GLASSES_R,
  * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
  */
@@ -164,7 +165,7 @@ enum SelectCompanyManagerFaceWidgets {
 	WID_SCMF_GLASSES_R,                  ///< Glasses right.
 };
 
-/** Widgets of the WC_COMPANY_INFRASTRUCTURE. */
+/** Widgets of the #CompanyInfrastructureWindow class. */
 enum CompanyInfrastructureWidgets {
 	WID_CI_CAPTION,       ///< Caption of window.
 	WID_CI_RAIL_DESC,     ///< Description of rail.
@@ -179,7 +180,7 @@ enum CompanyInfrastructureWidgets {
 	WID_CI_TOTAL,         ///< Count of total.
 };
 
-/** Widgets of the WC_BUY_COMPANY. */
+/** Widgets of the #BuyCompanyWindow class. */
 enum BuyCompanyWidgets {
 	WID_BC_CAPTION,  ///< Caption of window.
 	WID_BC_FACE,     ///< Face button.

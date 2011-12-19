@@ -12,7 +12,7 @@
 #ifndef WIDGETS_SIGN_WIDGET_H
 #define WIDGETS_SIGN_WIDGET_H
 
-/** Widgets of the WC_SIGN_LIST. */
+/** Widgets of the #SignListWindow class. */
 enum SignListWidgets {
 	/* Name starts with SI instead of S, because of collision with SaveLoadWidgets */
 	WID_SIL_CAPTION,               ///< Caption of the window.
@@ -23,7 +23,7 @@ enum SignListWidgets {
 	WID_SIL_FILTER_CLEAR_BTN,      ///< Button to clear the filter.
 };
 
-/** Widgets of the WC_QUERY_STRING (WC_QUERY_STRING is also used in QueryStringWidgets). */
+/** Widgets of the #SignWindow class. */
 enum QueryEditSignWidgets {
 	WID_QES_CAPTION,  ///< Caption of the window.
 	WID_QES_TEXT,     ///< Text of the query.

@@ -12,7 +12,7 @@
 #ifndef WIDGETS_AUTOREPLACE_WIDGET_H
 #define WIDGETS_AUTOREPLACE_WIDGET_H
 
-/** Widgets of the WC_REPLACE_VEHICLE. */
+/** Widgets of the #ReplaceVehicleWindow class. */
 enum ReplaceVehicleWidgets {
 	WID_RV_CAPTION,                  ///< Caption of the window.
 

@@ -12,7 +12,7 @@
 #ifndef WIDGETS_NEWGRF_DEBUG_WIDGET_H
 #define WIDGETS_NEWGRF_DEBUG_WIDGET_H
 
-/** Widgets of the WC_NEWGRF_INSPECT. */
+/** Widgets of the #NewGRFInspectWindow class. */
 enum NewGRFInspectWidgets {
 	WID_NGRFI_CAPTION,   ///< The caption bar of course.
 	WID_NGRFI_PARENT,    ///< Inspect the parent.
@@ -20,7 +20,7 @@ enum NewGRFInspectWidgets {
 	WID_NGRFI_SCROLLBAR, ///< Scrollbar.
 };
 
-/** Widgets of the WC_SPRITE_ALIGNER. */
+/** Widgets of the #SpriteAlignerWindow class. */
 enum SpriteAlignerWidgets {
 	WID_SA_CAPTION,   ///< Caption of the window.
 	WID_SA_PREVIOUS,  ///< Skip to the previous sprite.

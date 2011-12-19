@@ -12,7 +12,7 @@
 #ifndef WIDGETS_DEPOT_WIDGET_H
 #define WIDGETS_DEPOT_WIDGET_H
 
-/** Widgets of the WC_VEHICLE_DEPOT. */
+/** Widgets of the #DepotWindow class. */
 enum DepotWidgets {
 	WID_D_CAPTION,         ///< Caption of window.
 	WID_D_SELL,            ///< Sell button.

@@ -12,7 +12,7 @@
 #ifndef WIDGETS_DROPDOWN_WIDGET_H
 #define WIDGETS_DROPDOWN_WIDGET_H
 
-/** Widgets of the WC_DROPDOWN_MENU. */
+/** Widgets of the #DropdownWindow class. */
 enum DropdownMenuWidgets {
 	WID_DM_ITEMS,        ///< Panel showing the dropdown items.
 	WID_DM_SHOW_SCROLL,  ///< Hide scrollbar if too few items.

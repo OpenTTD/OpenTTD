@@ -12,7 +12,7 @@
 #ifndef WIDGETS_OSK_WIDGET_H
 #define WIDGETS_OSK_WIDGET_H
 
-/** Widgets of the WC_OSK. */
+/** Widgets of the #OskWindow class. */
 enum OnScreenKeyboardWidgets {
 	WID_OSK_CAPTION,   ///< Caption of window.
 	WID_OSK_TEXT,      ///< Edit box.

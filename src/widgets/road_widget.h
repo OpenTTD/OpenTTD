@@ -12,7 +12,7 @@
 #ifndef WIDGETS_ROAD_WIDGET_H
 #define WIDGETS_ROAD_WIDGET_H
 
-/** Widgets of the WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR (WC_SCEN_BUILD_TOOLBAR / WC_BUILD_TOOLBAR is also used in others). */
+/** Widgets of the #BuildRoadToolbarWindow class. */
 enum RoadToolbarWidgets {
 	/* Name starts with RO instead of R, because of collision with RailToolbarWidgets */
 	WID_ROT_ROAD_X,         ///< Build road in x-direction.
@@ -28,7 +28,7 @@ enum RoadToolbarWidgets {
 	WID_ROT_REMOVE,         ///< Remove road.
 };
 
-/** Widgets of the WC_BUILD_DEPOT (WC_BUILD_DEPOT is also used in others). */
+/** Widgets of the #BuildRoadDepotWindow class. */
 enum BuildRoadDepotWidgets {
 	/* Name starts with BRO instead of BR, because of collision with BuildRailDepotWidgets */
 	WID_BROD_CAPTION,   ///< Caption of the window.
@@ -38,7 +38,7 @@ enum BuildRoadDepotWidgets {
 	WID_BROD_DEPOT_NW,  ///< Depot with NW entry.
 };
 
-/** Widgets of the WC_BUS_STATION / WC_TRUCK_STATION. */
+/** Widgets of the #BuildRoadStationWindow class. */
 enum BuildRoadStationWidgets {
 	/* Name starts with BRO instead of BR, because of collision with BuildRailStationWidgets */
 	WID_BROS_CAPTION,       ///< Caption of the window.

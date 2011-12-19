@@ -12,7 +12,7 @@
 #ifndef WIDGETS_INDUSTRY_WIDGET_H
 #define WIDGETS_INDUSTRY_WIDGET_H
 
-/** Widgets of the WC_BUILD_INDUSTRY. */
+/** Widgets of the #BuildIndustryWindow class. */
 enum DynamicPlaceIndustriesWidgets {
 	WID_DPI_MATRIX_WIDGET,  ///< Matrix of the industries.
 	WID_DPI_SCROLLBAR,      ///< Scrollbar of the matrix.
@@ -21,7 +21,7 @@ enum DynamicPlaceIndustriesWidgets {
 	WID_DPI_FUND_WIDGET,    ///< Fund button.
 };
 
-/** Widgets of the WC_INDUSTRY_VIEW. */
+/** Widgets of the #IndustryViewWindow class. */
 enum IndustryViewWidgets {
 	WID_IV_CAPTION,  ///< Caption of the window.
 	WID_IV_VIEWPORT, ///< Viewport of the industry.
@@ -30,7 +30,7 @@ enum IndustryViewWidgets {
 	WID_IV_DISPLAY,  ///< Display chain button.
 };
 
-/** Widgets of the WC_INDUSTRY_DIRECTORY. */
+/** Widgets of the #IndustryDirectoryWindow class. */
 enum IndustryDirectoryWidgets {
 	WID_ID_DROPDOWN_ORDER,    ///< Dropdown for the order of the sort.
 	WID_ID_DROPDOWN_CRITERIA, ///< Dropdown for the criteria of the sort.
@@ -38,7 +38,7 @@ enum IndustryDirectoryWidgets {
 	WID_ID_SCROLLBAR,         ///< Scrollbar of the list.
 };
 
-/** Widgets of the WC_INDUSTRY_CARGOES */
+/** Widgets of the #IndustryCargoesWindow class */
 enum IndustryCargoesWidgets {
 	WID_IC_CAPTION,   ///< Caption of the window.
 	WID_IC_NOTIFY,    ///< Row of buttons at the bottom.
