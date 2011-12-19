@@ -32,6 +32,7 @@
 #include "tunnelbridge_map.h"
 #include "station_base.h"
 #include "ai/ai.hpp"
+#include "game/game.hpp"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "date_func.h"
@@ -910,6 +911,7 @@ static void FloodVehicle(Vehicle *v)
 	uint pass = v->Crash(true);
 
 	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_FLOODED));
+	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_FLOODED));
 	SetDParam(0, pass);
 	AddVehicleNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE, NS_ACCIDENT, v->index);
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);

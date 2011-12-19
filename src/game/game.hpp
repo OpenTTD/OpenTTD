@@ -18,6 +18,8 @@
 /** A list that maps AI names to their AIInfo object. */
 typedef std::map<const char *, class ScriptInfo *, StringCompare> ScriptInfoList;
 
+#include "../script/api/script_event_types.hpp"
+
 /**
  * Main Game class. Contains all functions needed to start, stop, save and load Game Scripts.
  */
@@ -42,6 +44,11 @@ public:
 	 * Uninitialize the Game system.
 	 */
 	static void Uninitialize(bool keepConfig);
+
+	/**
+	 * Queue a new event for a Game Script.
+	 */
+	static void NewEvent(class ScriptEvent *event);
 
 	/**
 	 * Get the current GameScript instance.

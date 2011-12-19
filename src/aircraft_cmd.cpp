@@ -29,6 +29,7 @@
 #include "cheat_type.h"
 #include "company_base.h"
 #include "ai/ai.hpp"
+#include "game/game.hpp"
 #include "company_func.h"
 #include "effectvehicle_func.h"
 #include "station_base.h"
@@ -1160,6 +1161,7 @@ static void CrashAirplane(Aircraft *v)
 	}
 
 	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, st == NULL ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
+	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, st == NULL ? ScriptEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : ScriptEventVehicleCrashed::CRASH_PLANE_LANDING));
 
 	AddVehicleNewsItem(newsitem,
 		NS_ACCIDENT,
@@ -1225,6 +1227,7 @@ static void AircraftEntersTerminal(Aircraft *v)
 			st->index
 		);
 		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
+		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
 	}
 
 	v->BeginLoading();

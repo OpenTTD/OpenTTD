@@ -40,6 +40,7 @@
 #include "effectvehicle_func.h"
 #include "roadveh.h"
 #include "ai/ai.hpp"
+#include "game/game.hpp"
 #include "company_base.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
@@ -358,6 +359,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 					u->index); // delete the news, when the roadvehicle is gone
 
 				AI::NewEvent(u->owner, new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO));
+				Game::NewEvent(new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO));
 			}
 		}
 

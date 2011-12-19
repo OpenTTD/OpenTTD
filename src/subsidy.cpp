@@ -23,6 +23,7 @@
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
 #include "core/random_func.hpp"
+#include "game/game.hpp"
 
 #include "table/strings.h"
 
@@ -58,6 +59,7 @@ void Subsidy::AwardTo(CompanyID company)
 		cn
 	);
 	AI::BroadcastNewEvent(new ScriptEventSubsidyAwarded(this->index));
+	Game::NewEvent(new ScriptEventSubsidyAwarded(this->index));
 
 	InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
@@ -202,6 +204,7 @@ void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType ds
 	SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 	SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
 	AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));
+	Game::NewEvent(new ScriptEventSubsidyOffer(s->index));
 }
 
 
@@ -375,12 +378,14 @@ void SubsidyMonthlyLoop()
 				Pair reftype = SetupSubsidyDecodeParam(s, true);
 				AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				AI::BroadcastNewEvent(new ScriptEventSubsidyOfferExpired(s->index));
+				Game::NewEvent(new ScriptEventSubsidyOfferExpired(s->index));
 			} else {
 				if (s->awarded == _local_company) {
 					Pair reftype = SetupSubsidyDecodeParam(s, true);
 					AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				}
 				AI::BroadcastNewEvent(new ScriptEventSubsidyExpired(s->index));
+				Game::NewEvent(new ScriptEventSubsidyExpired(s->index));
 			}
 			delete s;
 			modified = true;

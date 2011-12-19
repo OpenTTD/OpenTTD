@@ -39,6 +39,7 @@
 #include "../script/api/game/game_enginelist.hpp.sq"
 #include "../script/api/game/game_error.hpp.sq"
 #include "../script/api/game/game_event.hpp.sq"
+#include "../script/api/game/game_event_types.hpp.sq"
 #include "../script/api/game/game_execmode.hpp.sq"
 #include "../script/api/game/game_game.hpp.sq"
 #include "../script/api/game/game_gamesettings.hpp.sq"
@@ -109,7 +110,20 @@ void GameInstance::RegisterAPI()
 	SQGSEngineList_Register(this->engine);
 	SQGSError_Register(this->engine);
 	SQGSEvent_Register(this->engine);
+	SQGSEventCompanyBankrupt_Register(this->engine);
+	SQGSEventCompanyInTrouble_Register(this->engine);
+	SQGSEventCompanyMerger_Register(this->engine);
+	SQGSEventCompanyNew_Register(this->engine);
 	SQGSEventController_Register(this->engine);
+	SQGSEventIndustryClose_Register(this->engine);
+	SQGSEventIndustryOpen_Register(this->engine);
+	SQGSEventStationFirstVehicle_Register(this->engine);
+	SQGSEventSubsidyAwarded_Register(this->engine);
+	SQGSEventSubsidyExpired_Register(this->engine);
+	SQGSEventSubsidyOffer_Register(this->engine);
+	SQGSEventSubsidyOfferExpired_Register(this->engine);
+	SQGSEventTownFounded_Register(this->engine);
+	SQGSEventVehicleCrashed_Register(this->engine);
 	SQGSExecMode_Register(this->engine);
 	SQGSGame_Register(this->engine);
 	SQGSGameSettings_Register(this->engine);

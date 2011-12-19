@@ -47,6 +47,7 @@
 #include "newgrf.h"
 #include "core/backup_type.hpp"
 #include "water.h"
+#include "game/game.hpp"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -536,6 +537,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParamStr(2, cni->company_name);
 			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_TROUBLE, cni);
 			AI::BroadcastNewEvent(new ScriptEventCompanyInTrouble(c->index));
+			Game::NewEvent(new ScriptEventCompanyInTrouble(c->index));
 			break;
 		}
 
@@ -1644,6 +1646,7 @@ static void DoAcquireCompany(Company *c)
 	SetDParam(4, c->bankrupt_value);
 	AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_MERGER, cni);
 	AI::BroadcastNewEvent(new ScriptEventCompanyMerger(ci, _current_company));
+	Game::NewEvent(new ScriptEventCompanyMerger(ci, _current_company));
 
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 

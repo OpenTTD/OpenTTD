@@ -109,6 +109,31 @@
 	}
 }
 
+/* static */ void Game::NewEvent(ScriptEvent *event)
+{
+	/* AddRef() and Release() need to be called at least once, so do it here */
+	event->AddRef();
+
+	/* Clients should ignore events */
+	if (_networking && !_network_server) {
+		event->Release();
+		return;
+	}
+
+	/* Check if Game instance is alive */
+	if (Game::instance == NULL) {
+		event->Release();
+		return;
+	}
+
+	/* Queue the event */
+	Backup<CompanyByte> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+	Game::instance->InsertEvent(event);
+	cur_company.Restore();
+
+	event->Release();
+}
+
 /* static */ void Game::ResetConfig()
 {
 	/* Check for both newgame as current game if we can reload the GameInfo insde

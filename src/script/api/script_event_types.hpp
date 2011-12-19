@@ -18,7 +18,7 @@
 /**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
  *  It contains the crash site, the crashed vehicle and the reason for the crash.
- * @api ai
+ * @api ai game
  */
 class ScriptEventVehicleCrashed : public ScriptEvent {
 public:
@@ -79,7 +79,7 @@ private:
 
 /**
  * Event Subsidy Offered, indicating someone offered a subsidy.
- * @api ai
+ * @api ai game
  */
 class ScriptEventSubsidyOffer : public ScriptEvent {
 public:
@@ -110,7 +110,7 @@ private:
 
 /**
  * Event Subsidy Offer Expired, indicating a subsidy will no longer be awarded.
- * @api ai
+ * @api ai game
  */
 class ScriptEventSubsidyOfferExpired : public ScriptEvent {
 public:
@@ -141,7 +141,7 @@ private:
 
 /**
  * Event Subidy Awarded, indicating a subsidy is awarded to some company.
- * @api ai
+ * @api ai game
  */
 class ScriptEventSubsidyAwarded : public ScriptEvent {
 public:
@@ -172,7 +172,7 @@ private:
 
 /**
  * Event Subsidy Expired, indicating a route that was once subsidized no longer is.
- * @api ai
+ * @api ai game
  */
 class ScriptEventSubsidyExpired : public ScriptEvent {
 public:
@@ -294,7 +294,7 @@ private:
 
 /**
  * Event Company New, indicating a new company has been created.
- * @api ai
+ * @api ai game
  */
 class ScriptEventCompanyNew : public ScriptEvent {
 public:
@@ -326,7 +326,7 @@ private:
 /**
  * Event Company In Trouble, indicating a company is in trouble and might go
  *  bankrupt soon.
- * @api ai
+ * @api ai game
  */
 class ScriptEventCompanyInTrouble : public ScriptEvent {
 public:
@@ -405,7 +405,7 @@ private:
 /**
  * Event Company Merger, indicating a company has been bought by another
  *  company.
- * @api ai
+ * @api ai game
  */
 class ScriptEventCompanyMerger : public ScriptEvent {
 public:
@@ -448,7 +448,7 @@ private:
 
 /**
  * Event Company Bankrupt, indicating a company has gone bankrupt.
- * @api ai
+ * @api ai game
  */
 class ScriptEventCompanyBankrupt : public ScriptEvent {
 public:
@@ -572,7 +572,7 @@ private:
 
 /**
  * Event Industry Open, indicating a new industry has been created.
- * @api ai
+ * @api ai game
  */
 class ScriptEventIndustryOpen : public ScriptEvent {
 public:
@@ -603,7 +603,7 @@ private:
 
 /**
  * Event Industry Close, indicating an industry is going to be closed.
- * @api ai
+ * @api ai game
  */
 class ScriptEventIndustryClose : public ScriptEvent {
 public:
@@ -665,7 +665,7 @@ private:
 
 /**
  * Event Station First Vehicle, indicating a station has been visited by a vehicle for the first time.
- * @api ai
+ * @api ai game
  */
 class ScriptEventStationFirstVehicle : public ScriptEvent {
 public:
@@ -767,7 +767,7 @@ private:
 
 /**
  * Event Town Founded, indicating a new town has been created.
- * @api ai
+ * @api ai game
  */
 class ScriptEventTownFounded : public ScriptEvent {
 public:
