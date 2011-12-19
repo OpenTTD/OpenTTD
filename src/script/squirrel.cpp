@@ -451,6 +451,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 		if (file == NULL) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
 	} else if (strncmp(this->GetAPIName(), "GS", 2) == 0) {
 		file = FioFOpenFile(filename, "rb", GAME_DIR, &size);
+		if (file == NULL) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
 	} else {
 		NOT_REACHED();
 	}

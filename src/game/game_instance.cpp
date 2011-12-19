@@ -68,8 +68,7 @@ int GameInstance::GetSetting(const char *name)
 
 ScriptInfo *GameInstance::FindLibrary(const char *library, int version)
 {
-	/* 'import' is not supported with GameScripts */
-	return NULL;
+	return (ScriptInfo *)Game::FindLibrary(library, version);
 }
 
 /**

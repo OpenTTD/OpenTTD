@@ -25,4 +25,7 @@ void SQGSController_Register(Squirrel *engine)
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::Print,             "Print",             3, ".bs");
 
 	SQGSController.PostRegister(engine);
+
+	/* Register the import statement to the global scope */
+	SQGSController.DefSQStaticMethod(engine, &ScriptController::Import,            "import",            4, ".ssi");
 }

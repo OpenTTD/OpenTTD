@@ -16,8 +16,6 @@
 
 class GameScannerInfo : public ScriptScanner {
 public:
-	GameScannerInfo();
-
 	/* virtual */ void Initialize();
 
 	/**
@@ -34,6 +32,27 @@ protected:
 	/* virtual */ const char *GetFileName() const { return PATHSEP "info.nut"; }
 	/* virtual */ Subdirectory GetDirectory() const { return GAME_DIR; }
 	/* virtual */ const char *GetScannerName() const { return "Game Scripts"; }
+	/* virtual */ void RegisterAPI(class Squirrel *engine);
+};
+
+
+class GameScannerLibrary : public ScriptScanner {
+public:
+	/* virtual */ void Initialize();
+
+	/**
+	 * Find a library in the pool.
+	 * @param library The library name to find.
+	 * @param version The version the library should have.
+	 * @return The library if found, NULL otherwise.
+	 */
+	class GameLibrary *FindLibrary(const char *library, int version);
+
+protected:
+	/* virtual */ void GetScriptName(ScriptInfo *info, char *name, int len);
+	/* virtual */ const char *GetFileName() const { return PATHSEP "library.nut"; }
+	/* virtual */ Subdirectory GetDirectory() const { return GAME_LIBRARY_DIR; }
+	/* virtual */ const char *GetScannerName() const { return "GS Libraries"; }
 	/* virtual */ void RegisterAPI(class Squirrel *engine);
 };
 

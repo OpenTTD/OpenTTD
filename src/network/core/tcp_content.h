@@ -33,6 +33,7 @@ enum ContentType {
 	CONTENT_TYPE_BASE_SOUNDS   = 7, ///< The content consists of base sounds
 	CONTENT_TYPE_BASE_MUSIC    = 8, ///< The content consists of base music
 	CONTENT_TYPE_GAME          = 9, ///< The content consists of a game script
+	CONTENT_TYPE_GAME_LIBRARY  = 10, ///< The content consists of a GS library
 	CONTENT_TYPE_END,               ///< Helper to mark the end of the types
 };
 

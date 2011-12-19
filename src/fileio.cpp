@@ -282,6 +282,7 @@ static const char * const _subdirs[] = {
 	"ai" PATHSEP,
 	"ai" PATHSEP "library" PATHSEP,
 	"game" PATHSEP,
+	"game" PATHSEP "library" PATHSEP,
 };
 assert_compile(lengthof(_subdirs) == NUM_SUBDIRS);
 
@@ -678,6 +679,7 @@ uint TarScanner::DoScan(Subdirectory sd)
 	}
 	if (mode & TarScanner::GAME) {
 		num += fs.DoScan(GAME_DIR);
+		num += fs.DoScan(GAME_LIBRARY_DIR);
 	}
 	if (mode & TarScanner::SCENARIO) {
 		num += fs.DoScan(SCENARIO_DIR);
@@ -1199,7 +1201,7 @@ void DeterminePaths(const char *exe)
 #endif
 
 	static const Subdirectory default_subdirs[] = {
-		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR
+		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR
 	};
 
 	for (uint i = 0; i < lengthof(default_subdirs); i++) {
@@ -1214,7 +1216,7 @@ void DeterminePaths(const char *exe)
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
-	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR };
+	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
 		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], _subdirs[dirs[i]]);
 		FioCreateDirectory(tmp);

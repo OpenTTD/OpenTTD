@@ -31,6 +31,7 @@ enum Subdirectory {
 	AI_DIR,        ///< Subdirectory for all AI files
 	AI_LIBRARY_DIR,///< Subdirectory for all AI libraries
 	GAME_DIR,      ///< Subdirectory for all game scripts
+	GAME_LIBRARY_DIR, ///< Subdirectory for all GS libraries
 	NUM_SUBDIRS,   ///< Number of subdirectories
 	NO_DIRECTORY,  ///< A path without any base directory
 };

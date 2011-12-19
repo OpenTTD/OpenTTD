@@ -21,11 +21,6 @@
 #include "../script/api/script_controller.hpp"
 
 
-GameScannerInfo::GameScannerInfo() :
-	ScriptScanner()
-{
-}
-
 void GameScannerInfo::Initialize()
 {
 	ScriptScanner::Initialize("GSScanner");
@@ -86,4 +81,35 @@ GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, boo
 	}
 
 	return info;
+}
+
+
+void GameScannerLibrary::Initialize()
+{
+	ScriptScanner::Initialize("GSScanner");
+}
+
+void GameScannerLibrary::GetScriptName(ScriptInfo *info, char *name, int len)
+{
+	GameLibrary *library = static_cast<GameLibrary *>(info);
+	snprintf(name, len, "%s.%s", library->GetCategory(), library->GetInstanceName());
+}
+
+void GameScannerLibrary::RegisterAPI(class Squirrel *engine)
+{
+	GameLibrary::RegisterAPI(engine);
+}
+
+GameLibrary *GameScannerLibrary::FindLibrary(const char *library, int version)
+{
+	/* Internally we store libraries as 'library.version' */
+	char library_name[1024];
+	snprintf(library_name, sizeof(library_name), "%s.%d", library, version);
+	strtolower(library_name);
+
+	/* Check if the library + version exists */
+	ScriptInfoList::iterator iter = this->info_list.find(library_name);
+	if (iter == this->info_list.end()) return NULL;
+
+	return static_cast<GameLibrary *>((*iter).second);
 }

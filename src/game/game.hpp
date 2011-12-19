@@ -68,23 +68,34 @@ public:
 
 	/** Wrapper function for GameScanner::GetConsoleList */
 	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);
+	/** Wrapper function for GameScanner::GetConsoleLibraryList */
+	static char *GetConsoleLibraryList(char *p, const char *last);
 	/** Wrapper function for GameScanner::GetInfoList */
 	static const ScriptInfoList *GetInfoList();
 	/** Wrapper function for GameScanner::GetUniqueInfoList */
 	static const ScriptInfoList *GetUniqueInfoList();
 	/** Wrapper function for GameScannerInfo::FindInfo */
 	static class GameInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	/** Wrapper function for GameScanner::FindLibrary */
+	static class GameLibrary *FindLibrary(const char *library, int version);
 
 	/**
 	 * Get the current active instance.
 	 */
 	static class GameInstance *GetInstance() { return Game::instance; }
 
+#if defined(ENABLE_NETWORK)
+	/** Wrapper function for GameScanner::HasGame */
+	static bool HasGame(const struct ContentInfo *ci, bool md5sum);
+	static bool HasGameLibrary(const ContentInfo *ci, bool md5sum);
+#endif
+
 private:
-	static uint frame_counter;             ///< Tick counter for the Game code.
-	static class GameInstance *instance;   ///< Instance to the current active Game.
-	static class GameScannerInfo *scanner; ///< Scanner for Game scripts.
-	static class GameInfo *info;           ///< Current selected GameInfo.
+	static uint frame_counter;                        ///< Tick counter for the Game code.
+	static class GameInstance *instance;              ///< Instance to the current active Game.
+	static class GameScannerInfo *scanner_info;       ///< Scanner for Game scripts.
+	static class GameScannerLibrary *scanner_library; ///< Scanner for GS Libraries.
+	static class GameInfo *info;                      ///< Current selected GameInfo.
 };
 
 #endif /* GAME_HPP */

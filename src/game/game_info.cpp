@@ -99,3 +99,40 @@ bool GameInfo::CanLoadFromVersion(int version) const
 	if (version == -1) return true;
 	return version >= this->min_loadable_version && version <= this->GetVersion();
 }
+
+
+GameLibrary::~GameLibrary()
+{
+	free(this->category);
+}
+
+/* static */ void GameLibrary::RegisterAPI(Squirrel *engine)
+{
+	/* Create the GameLibrary class, and add the RegisterLibrary function */
+	engine->AddClassBegin("GSLibrary");
+	engine->AddClassEnd();
+	engine->AddMethod("RegisterLibrary", &GameLibrary::Constructor, 2, "tx");
+}
+
+/* static */ SQInteger GameLibrary::Constructor(HSQUIRRELVM vm)
+{
+	/* Create a new library */
+	GameLibrary *library = new GameLibrary();
+
+	SQInteger res = ScriptInfo::Constructor(vm, library);
+	if (res != 0) {
+		delete library;
+		return res;
+	}
+
+	/* Cache the category */
+	if (!library->CheckMethod("GetCategory") || !library->engine->CallStringMethodStrdup(*library->SQ_instance, "GetCategory", &library->category, MAX_GET_OPS)) {
+		delete library;
+		return SQ_ERROR;
+	}
+
+	/* Register the Library to the base system */
+	library->GetScanner()->RegisterScript(library);
+
+	return 0;
+}

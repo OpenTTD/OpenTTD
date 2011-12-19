@@ -46,4 +46,29 @@ private:
 	const char *api_version;  ///< API version used by this Game.
 };
 
+/** All static information from an Game library like name, version, etc. */
+class GameLibrary : public ScriptInfo {
+public:
+	GameLibrary() : ScriptInfo(), category(NULL) {};
+	~GameLibrary();
+
+	/**
+	 * Register the functions of this class.
+	 */
+	static void RegisterAPI(Squirrel *engine);
+
+	/**
+	 * Create an GSLibrary, using this GSInfo as start-template.
+	 */
+	static SQInteger Constructor(HSQUIRRELVM vm);
+
+	/**
+	 * Get the category this library is in.
+	 */
+	const char *GetCategory() const { return this->category; }
+
+private:
+	const char *category; ///< The category this library is in.
+};
+
 #endif /* GAME_INFO_HPP */

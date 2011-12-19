@@ -26,7 +26,8 @@
 /* static */ uint Game::frame_counter = 0;
 /* static */ GameInfo *Game::info = NULL;
 /* static */ GameInstance *Game::instance = NULL;
-/* static */ GameScannerInfo *Game::scanner = NULL;
+/* static */ GameScannerInfo *Game::scanner_info = NULL;
+/* static */ GameScannerLibrary *Game::scanner_library = NULL;
 
 /* static */ void Game::GameLoop()
 {
@@ -52,10 +53,12 @@
 
 	Game::frame_counter = 0;
 
-	if (Game::scanner == NULL) {
+	if (Game::scanner_info == NULL) {
 		TarScanner::DoScan(TarScanner::GAME);
-		Game::scanner = new GameScannerInfo();
-		Game::scanner->Initialize();
+		Game::scanner_info = new GameScannerInfo();
+		Game::scanner_info->Initialize();
+		Game::scanner_library = new GameScannerLibrary();
+		Game::scanner_library->Initialize();
 	}
 }
 
@@ -90,8 +93,10 @@
 	if (keepConfig) {
 		Rescan();
 	} else {
-		delete Game::scanner;
-		Game::scanner = NULL;
+		delete Game::scanner_info;
+		delete Game::scanner_library;
+		Game::scanner_info = NULL;
+		Game::scanner_library = NULL;
 
 		if (_settings_game.game_config != NULL) {
 			delete _settings_game.game_config;
@@ -132,7 +137,8 @@
 {
 	TarScanner::DoScan(TarScanner::GAME);
 
-	Game::scanner->RescanDir();
+	Game::scanner_info->RescanDir();
+	Game::scanner_library->RescanDir();
 	ResetConfig();
 
 	InvalidateWindowData(WC_AI_LIST, 0, 1);
@@ -166,20 +172,50 @@
 
 /* static */ char *Game::GetConsoleList(char *p, const char *last, bool newest_only)
 {
-	return Game::scanner->GetConsoleList(p, last, newest_only);
+	return Game::scanner_info->GetConsoleList(p, last, newest_only);
+}
+
+/* static */ char *Game::GetConsoleLibraryList(char *p, const char *last)
+{
+	 return Game::scanner_library->GetConsoleList(p, last, true);
 }
 
 /* static */ const ScriptInfoList *Game::GetInfoList()
 {
-	return Game::scanner->GetInfoList();
+	return Game::scanner_info->GetInfoList();
 }
 
 /* static */ const ScriptInfoList *Game::GetUniqueInfoList()
 {
-	return Game::scanner->GetUniqueInfoList();
+	return Game::scanner_info->GetUniqueInfoList();
 }
 
 /* static */ GameInfo *Game::FindInfo(const char *name, int version, bool force_exact_match)
 {
-	return Game::scanner->FindInfo(name, version, force_exact_match);
+	return Game::scanner_info->FindInfo(name, version, force_exact_match);
 }
+
+/* static */ GameLibrary *Game::FindLibrary(const char *library, int version)
+{
+	return Game::scanner_library->FindLibrary(library, version);
+}
+
+#if defined(ENABLE_NETWORK)
+
+/**
+ * Check whether we have an Game (library) with the exact characteristics as ci.
+ * @param ci the characteristics to search on (shortname and md5sum)
+ * @param md5sum whether to check the MD5 checksum
+ * @return true iff we have an Game (library) matching.
+ */
+/* static */ bool Game::HasGame(const ContentInfo *ci, bool md5sum)
+{
+	return Game::scanner_info->HasScript(ci, md5sum);
+}
+
+/* static */ bool Game::HasGameLibrary(const ContentInfo *ci, bool md5sum)
+{
+	return Game::scanner_library->HasScript(ci, md5sum);
+}
+
+#endif /* defined(ENABLE_NETWORK) */
