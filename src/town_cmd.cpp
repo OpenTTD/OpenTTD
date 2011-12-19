@@ -62,6 +62,7 @@ INSTANTIATE_POOL_METHODS(Town)
 Town::~Town()
 {
 	free(this->name);
+	free(this->text);
 
 	if (CleaningPool()) return;
 
@@ -2468,6 +2469,30 @@ CommandCost CmdTownCargoGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		t->goal[te] = p2;
 		UpdateTownGrowRate(t);
 		InvalidateWindowData(WC_TOWN_VIEW, index);
+	}
+
+	return CommandCost();
+}
+
+/**
+ * Set a custom text in the Town window.
+ * @param tile Unused.
+ * @param flags Type of operation.
+ * @param p1 Town ID to change the text of.
+ * @param p2 Unused.
+ * @param text The new text (empty to remove the text).
+ * @return Empty cost or an error.
+ */
+CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	Town *t = Town::GetIfValid(p1);
+	if (t == NULL) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		free(t->text);
+		t->text = StrEmpty(text) ? NULL : strdup(text);
+		InvalidateWindowData(WC_TOWN_VIEW, p1);
 	}
 
 	return CommandCost();

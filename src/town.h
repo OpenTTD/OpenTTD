@@ -78,6 +78,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	TransportedCargoStat<uint16> received[NUM_TE];    ///< Cargo statistics about received cargotypes.
 	uint32 goal[NUM_TE];                              ///< Amount of cargo required for the town to grow.
 
+	char *text; ///< General text with additional information.
+
 	inline byte GetPercentTransported(CargoID cid) const { return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1); }
 
 	/* Cargo production and acceptance stats. */

@@ -40,6 +40,7 @@ void SQGSTown_Register(Squirrel *engine)
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetTownCount,                      "GetTownCount",                      1, ".");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::IsValidTown,                       "IsValidTown",                       2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetName,                           "GetName",                           2, ".i");
+	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::SetText,                           "SetText",                           3, ".i.");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetPopulation,                     "GetPopulation",                     2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetHouseCount,                     "GetHouseCount",                     2, ".i");
 	SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetLocation,                       "GetLocation",                       2, ".i");

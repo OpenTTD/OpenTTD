@@ -128,6 +128,16 @@ public:
 	static char *GetName(TownID town_id);
 
 	/**
+	 * Set the custom text of a town, shown in the GUI.
+	 * @param town_id The town to set the custom text of.
+	 * @param text The text to set it to.
+	 * @pre IsValidTown(town_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetText(TownID town_id, const char *text);
+
+	/**
 	 * Gets the number of inhabitants in the town.
 	 * @param town_id The town to get the population of.
 	 * @pre IsValidTown(town_id).

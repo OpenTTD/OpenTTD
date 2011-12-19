@@ -403,6 +403,10 @@ public:
 			SetDParam(1, this->town->MaxTownNoise());
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_NOISE_IN_TOWN);
 		}
+
+		if (this->town->text != NULL) {
+			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, UINT16_MAX, this->town->text, TC_BLACK);
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -448,7 +452,7 @@ public:
 	{
 		switch (widget) {
 			case WID_TV_INFO:
-				size->height = GetDesiredInfoHeight();
+				size->height = GetDesiredInfoHeight(size->width);
 				break;
 		}
 	}
@@ -457,7 +461,7 @@ public:
 	 * Gets the desired height for the information panel.
 	 * @return the desired height in pixels.
 	 */
-	uint GetDesiredInfoHeight() const
+	uint GetDesiredInfoHeight(int width) const
 	{
 		uint aimed_height = 3 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
@@ -477,13 +481,18 @@ public:
 
 		if (_settings_game.economy.station_noise_level) aimed_height += FONT_HEIGHT_NORMAL;
 
+		if (this->town->text != NULL) {
+			SetDParamStr(0, this->town->text);
+			aimed_height += GetStringHeight(STR_JUST_RAW_STRING, width);
+		}
+
 		return aimed_height;
 	}
 
 	void ResizeWindowAsNeeded()
 	{
 		const NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(WID_TV_INFO);
-		uint aimed_height = GetDesiredInfoHeight();
+		uint aimed_height = GetDesiredInfoHeight(nwid_info->current_x);
 		if (aimed_height > nwid_info->current_y || (aimed_height < nwid_info->current_y && nwid_info->current_y > nwid_info->smallest_y)) {
 			this->ReInit();
 		}

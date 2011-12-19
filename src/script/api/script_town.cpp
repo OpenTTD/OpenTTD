@@ -43,6 +43,12 @@
 	return town_name;
 }
 
+/* static */ bool ScriptTown::SetText(TownID town_id, const char *text)
+{
+	EnforcePrecondition(false, IsValidTown(town_id));
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, 0, CMD_TOWN_SET_TEXT, text);
+}
+
 /* static */ int32 ScriptTown::GetPopulation(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
