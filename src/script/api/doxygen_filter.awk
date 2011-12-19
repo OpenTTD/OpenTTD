@@ -21,6 +21,8 @@ BEGIN {
 	skip_function_body = "false"
 	skip_function_par = 0
 	RS = "\r|\n"
+	apis = tolower(api)
+	if (apis == "gs") apis = "game"
 }
 
 {
@@ -43,7 +45,7 @@ BEGIN {
 }
 
 /@file/ {
-	gsub(/script/, tolower(api))
+	gsub(/script/, apis)
 }
 
 /^([	 ]*)\* @api/ {
@@ -62,9 +64,9 @@ BEGIN {
 		api_selected = "false"
 	} else if ($0 == "-all") {
 		api_selected = "false"
-	} else if (match($0, "-" tolower(api))) {
+	} else if (match($0, "-" apis)) {
 		api_selected = "false"
-	} else if (match($0, tolower(api))) {
+	} else if (match($0, apis)) {
 		api_selected = "true"
 	}
 

@@ -687,6 +687,9 @@ ai/ai_scanner.hpp
 # AI API
 script/api/ai_changelog.hpp
 
+# Game API
+script/api/game_changelog.hpp
+
 # Game Core
 game/game.hpp
 game/game_config.cpp

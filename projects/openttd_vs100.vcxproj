@@ -914,6 +914,7 @@
     <ClCompile Include="..\src\ai\ai_scanner.cpp" />
     <ClInclude Include="..\src\ai\ai_scanner.hpp" />
     <ClInclude Include="..\src\script\api\ai_changelog.hpp" />
+    <ClInclude Include="..\src\script\api\game_changelog.hpp" />
     <ClInclude Include="..\src\game\game.hpp" />
     <ClCompile Include="..\src\game\game_config.cpp" />
     <ClInclude Include="..\src\game\game_config.hpp" />

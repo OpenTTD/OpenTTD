@@ -2980,6 +2980,14 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="Game API"
+			>
+			<File
+				RelativePath=".\..\src\script\api\game_changelog.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="Game Core"
 			>
 			<File
