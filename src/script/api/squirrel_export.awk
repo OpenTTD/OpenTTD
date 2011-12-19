@@ -117,16 +117,17 @@ BEGIN {
 { if (doxygen_skip == "true") next }
 
 /^([	 ]*)\* @api/ {
-	if (api == "Template") {
-		api_selected = "true"
-		next
-	}
-
 	# By default, classes are not selected
 	if (cls_level == 0) api_selected = "false"
 
 	gsub("^([	 ]*)", "", $0)
 	gsub("* @api ", "", $0)
+
+	if (api == "Template") {
+		api_selected = "true"
+		if ($0 == "none" || $0 == "-all") api_selected = "false"
+		next
+	}
 
 	if ($0 == "none") {
 		api_selected = "false"
@@ -501,6 +502,7 @@ BEGIN {
 		sub("^[ 	]*", "", params[len])
 		if (match(params[len], "\\*") || match(params[len], "&")) {
 			if (match(params[len], "^char")) {
+				# Many types can be converted to string, so use '.', not 's'. (handled by our glue code)
 				types = types "."
 			} else if (match(params[len], "^void")) {
 				types = types "p"

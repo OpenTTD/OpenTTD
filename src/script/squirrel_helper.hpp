@@ -109,7 +109,9 @@ namespace SQConvert {
 	template <> inline void       *GetParam(ForceType<void *>      , HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer tmp; sq_getuserpointer(vm, index, &tmp); return tmp; }
 	template <> inline const char *GetParam(ForceType<const char *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr)
 	{
+		/* Convert what-ever there is as parameter to a string */
 		sq_tostring(vm, index);
+
 		const SQChar *tmp;
 		sq_getstring(vm, -1, &tmp);
 		char *tmp_str = strdup(SQ2OTTD(tmp));

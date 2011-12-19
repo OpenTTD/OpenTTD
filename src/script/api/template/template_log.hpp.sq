@@ -12,10 +12,6 @@
 #include "../script_log.hpp"
 
 namespace SQConvert {
-	/* Allow enums to be used as Squirrel parameters */
-	template <> inline ScriptLog::ScriptLogType GetParam(ForceType<ScriptLog::ScriptLogType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptLog::ScriptLogType)tmp; }
-	template <> inline int Return<ScriptLog::ScriptLogType>(HSQUIRRELVM vm, ScriptLog::ScriptLogType res) { sq_pushinteger(vm, (int32)res); return 1; }
-
 	/* Allow ScriptLog to be used as Squirrel parameter */
 	template <> inline ScriptLog *GetParam(ForceType<ScriptLog *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptLog *)instance; }
 	template <> inline ScriptLog &GetParam(ForceType<ScriptLog &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptLog *)instance; }
