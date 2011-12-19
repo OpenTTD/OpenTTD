@@ -7,17 +7,24 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_enginelist.cpp Implementation of ScriptEngineList and friends. */
+/** @file script_companymode.cpp Implementation of ScriptCompanyMode. */
 
 #include "../../stdafx.h"
-#include "script_enginelist.hpp"
-#include "../../engine_base.h"
-#include "../../core/bitmath_func.hpp"
+#include "script_companymode.hpp"
+#include "../../company_base.h"
+#include "../../company_func.h"
+#include "../script_instance.hpp"
+#include "../script_fatalerror.hpp"
 
-ScriptEngineList::ScriptEngineList(ScriptVehicle::VehicleType vehicle_type)
+ScriptCompanyMode::ScriptCompanyMode(int company)
 {
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, (::VehicleType)vehicle_type) {
-		if (ScriptObject::GetCompany() == OWNER_DEITY || HasBit(e->company_avail, ScriptObject::GetCompany())) this->AddItem(e->index);
-	}
+	if (company < OWNER_BEGIN || company >= MAX_COMPANIES) company = INVALID_COMPANY;
+
+	this->last_company = ScriptObject::GetCompany();
+	ScriptObject::SetCompany((CompanyID)company);
+}
+
+ScriptCompanyMode::~ScriptCompanyMode()
+{
+	ScriptObject::SetCompany(this->last_company);
 }

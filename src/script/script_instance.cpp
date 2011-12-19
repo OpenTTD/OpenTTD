@@ -64,11 +64,11 @@ ScriptInstance::ScriptInstance(const char *APIName) :
 	this->engine->SetPrintFunction(&PrintFunc);
 }
 
-void ScriptInstance::Initialize(const char *main_script, const char *instance_name)
+void ScriptInstance::Initialize(const char *main_script, const char *instance_name, CompanyID company)
 {
 	ScriptObject::ActiveInstance active(this);
 
-	this->controller = new ScriptController();
+	this->controller = new ScriptController(company);
 
 	/* Register the API functions and classes */
 	this->engine->SetGlobalPointer(this->engine);
@@ -149,6 +149,8 @@ void ScriptInstance::GameLoop()
 	if (this->suspend   < -1) this->suspend++; // Multiplayer suspend, increase up to -1.
 	if (this->suspend   < 0)  return;          // Multiplayer suspend, wait for Continue().
 	if (--this->suspend > 0)  return;          // Singleplayer suspend, decrease to 0.
+
+	_current_company = ScriptObject::GetCompany();
 
 	/* If there is a callback to call, call that first */
 	if (this->callback != NULL) {

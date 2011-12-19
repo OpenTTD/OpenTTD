@@ -13,13 +13,12 @@
 #include "script_waypoint.hpp"
 #include "script_rail.hpp"
 #include "script_marine.hpp"
-#include "../../company_func.h"
 #include "../../waypoint_base.h"
 
 /* static */ bool ScriptWaypoint::IsValidWaypoint(StationID waypoint_id)
 {
 	const Waypoint *wp = ::Waypoint::GetIfValid(waypoint_id);
-	return wp != NULL && (wp->owner == _current_company || _current_company == OWNER_DEITY || wp->owner == OWNER_NONE);
+	return wp != NULL && (wp->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || wp->owner == OWNER_NONE);
 }
 
 /* static */ StationID ScriptWaypoint::GetWaypointID(TileIndex tile)

@@ -39,6 +39,7 @@ void SQAIError_Register(Squirrel *engine)
 	SQAIError.DefSQConst(engine, ScriptError::ERR_UNKNOWN,                      "ERR_UNKNOWN");
 	SQAIError.DefSQConst(engine, ScriptError::ERR_PRECONDITION_FAILED,          "ERR_PRECONDITION_FAILED");
 	SQAIError.DefSQConst(engine, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, "ERR_PRECONDITION_STRING_TOO_LONG");
+	SQAIError.DefSQConst(engine, ScriptError::ERR_PRECONDITION_INVALID_COMPANY, "ERR_PRECONDITION_INVALID_COMPANY");
 	SQAIError.DefSQConst(engine, ScriptError::ERR_NEWGRF_SUPPLIED_ERROR,        "ERR_NEWGRF_SUPPLIED_ERROR");
 	SQAIError.DefSQConst(engine, ScriptError::ERR_GENERAL_BASE,                 "ERR_GENERAL_BASE");
 	SQAIError.DefSQConst(engine, ScriptError::ERR_NOT_ENOUGH_CASH,              "ERR_NOT_ENOUGH_CASH");
@@ -93,6 +94,7 @@ void SQAIError_Register(Squirrel *engine)
 	ScriptError::RegisterErrorMapString(ScriptError::ERR_UNKNOWN,                      "ERR_UNKNOWN");
 	ScriptError::RegisterErrorMapString(ScriptError::ERR_PRECONDITION_FAILED,          "ERR_PRECONDITION_FAILED");
 	ScriptError::RegisterErrorMapString(ScriptError::ERR_PRECONDITION_STRING_TOO_LONG, "ERR_PRECONDITION_STRING_TOO_LONG");
+	ScriptError::RegisterErrorMapString(ScriptError::ERR_PRECONDITION_INVALID_COMPANY, "ERR_PRECONDITION_INVALID_COMPANY");
 	ScriptError::RegisterErrorMapString(ScriptError::ERR_NEWGRF_SUPPLIED_ERROR,        "ERR_NEWGRF_SUPPLIED_ERROR");
 	ScriptError::RegisterErrorMapString(ScriptError::ERR_NOT_ENOUGH_CASH,              "ERR_NOT_ENOUGH_CASH");
 	ScriptError::RegisterErrorMapString(ScriptError::ERR_LOCAL_AUTHORITY_REFUSES,      "ERR_LOCAL_AUTHORITY_REFUSES");

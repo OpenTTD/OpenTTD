@@ -23,6 +23,7 @@
 #include "ai_config.hpp"
 #include "ai_info.hpp"
 #include "ai.hpp"
+#include "../script/script_storage.hpp"
 #include "../script/api/script_error.hpp"
 
 /* static */ uint AI::frame_counter = 0;

@@ -24,13 +24,13 @@
 /* static */ bool ScriptEngine::IsValidEngine(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
-	return e != NULL && (::IsEngineBuildable(engine_id, e->type, _current_company) || (_current_company != OWNER_DEITY && ::Company::Get(_current_company)->group_all[e->type].num_engines[engine_id] > 0));
+	return e != NULL && (::IsEngineBuildable(engine_id, e->type, ScriptObject::GetCompany()) || (ScriptObject::GetCompany() != OWNER_DEITY && ::Company::Get(ScriptObject::GetCompany())->group_all[e->type].num_engines[engine_id] > 0));
 }
 
 /* static */ bool ScriptEngine::IsBuildable(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
-	return e != NULL && ::IsEngineBuildable(engine_id, e->type, _current_company);
+	return e != NULL && ::IsEngineBuildable(engine_id, e->type, ScriptObject::GetCompany());
 }
 
 /* static */ char *ScriptEngine::GetName(EngineID engine_id)

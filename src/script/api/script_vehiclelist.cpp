@@ -14,7 +14,6 @@
 #include "script_group.hpp"
 #include "script_map.hpp"
 #include "script_station.hpp"
-#include "../../company_func.h"
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"
 
@@ -22,7 +21,7 @@ ScriptVehicleList::ScriptVehicleList()
 {
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if ((v->owner == _current_company || _current_company == OWNER_DEITY) && v->IsPrimaryVehicle()) this->AddItem(v->index);
+		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle()) this->AddItem(v->index);
 	}
 }
 
@@ -32,7 +31,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if ((v->owner == _current_company || _current_company == OWNER_DEITY) && v->IsPrimaryVehicle()) {
+		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle()) {
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {
@@ -83,7 +82,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if ((v->owner == _current_company || _current_company == OWNER_DEITY) && v->IsPrimaryVehicle() && v->type == type) {
+		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle() && v->type == type) {
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {
@@ -111,7 +110,7 @@ ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == _current_company && v->IsPrimaryVehicle()) {
+		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
 			if (v->group_id == group_id) this->AddItem(v->index);
 		}
 	}
@@ -123,7 +122,7 @@ ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::Ve
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == _current_company && v->IsPrimaryVehicle()) {
+		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
 			if (v->type == vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT) this->AddItem(v->index);
 		}
 	}

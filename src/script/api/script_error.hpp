@@ -81,6 +81,8 @@ public:
 		ERR_PRECONDITION_FAILED,                      // []
 		/** A string supplied was too long */
 		ERR_PRECONDITION_STRING_TOO_LONG,             // []
+		/** The company you use is invalid */
+		ERR_PRECONDITION_INVALID_COMPANY,             // []
 		/** An error returned by a NewGRF. No possibility to get the exact error in an AI readable format */
 		ERR_NEWGRF_SUPPLIED_ERROR,                    // []
 

@@ -15,7 +15,6 @@
 #include "script_gamesettings.hpp"
 #include "script_group.hpp"
 #include "../script_instance.hpp"
-#include "../../company_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../command_func.h"
@@ -28,7 +27,7 @@
 /* static */ bool ScriptVehicle::IsValidVehicle(VehicleID vehicle_id)
 {
 	const Vehicle *v = ::Vehicle::GetIfValid(vehicle_id);
-	return v != NULL && (v->owner == _current_company || _current_company == OWNER_DEITY) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()));
+	return v != NULL && (v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()));
 }
 
 /* static */ ScriptCompany::CompanyID ScriptVehicle::GetOwner(VehicleID vehicle_id)

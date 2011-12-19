@@ -13,6 +13,7 @@
 #include "../../script/squirrel.hpp"
 #include "../../command_func.h"
 #include "../../company_func.h"
+#include "../../company_base.h"
 #include "../../network/network.h"
 #include "../../tunnelbridge.h"
 #include "../../genworld.h"
@@ -201,6 +202,24 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->allow_do_command;
 }
 
+/* static */ void ScriptObject::SetCompany(CompanyID company)
+{
+	if (GetStorage()->root_company == INVALID_OWNER) GetStorage()->root_company = company;
+	GetStorage()->company = company;
+
+	_current_company = company;
+}
+
+/* static */ CompanyID ScriptObject::GetCompany()
+{
+	return GetStorage()->company;
+}
+
+/* static */ CompanyID ScriptObject::GetRootCompany()
+{
+	return GetStorage()->root_company;
+}
+
 /* static */ bool ScriptObject::CanSuspend()
 {
 	Squirrel *squirrel = ScriptObject::GetActiveInstance()->engine;
@@ -232,6 +251,11 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 {
 	if (!ScriptObject::CanSuspend()) {
 		throw Script_FatalError("You are not allowed to execute any DoCommand (even indirect) in your constructor, Save(), Load(), and any valuator.");
+	}
+
+	if (ScriptObject::GetCompany() != OWNER_DEITY && !::Company::IsValidID(ScriptObject::GetCompany())) {
+		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY);
+		return false;
 	}
 
 	/* Set the default callback to return a true/false result of the DoCommand */

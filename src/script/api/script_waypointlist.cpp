@@ -12,7 +12,6 @@
 #include "../../stdafx.h"
 #include "script_waypointlist.hpp"
 #include "script_vehicle.hpp"
-#include "../../company_func.h"
 #include "../../vehicle_base.h"
 #include "../../waypoint_base.h"
 
@@ -21,7 +20,7 @@ ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_typ
 	const Waypoint *wp;
 	FOR_ALL_WAYPOINTS(wp) {
 		if ((wp->facilities & waypoint_type) &&
-				(wp->owner == _current_company || _current_company == OWNER_DEITY || wp->owner == OWNER_NONE)) this->AddItem(wp->index);
+				(wp->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || wp->owner == OWNER_NONE)) this->AddItem(wp->index);
 	}
 }
 

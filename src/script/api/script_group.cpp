@@ -24,7 +24,7 @@
 /* static */ bool ScriptGroup::IsValidGroup(GroupID group_id)
 {
 	const Group *g = ::Group::GetIfValid(group_id);
-	return g != NULL && g->owner == _current_company;
+	return g != NULL && g->owner == ScriptObject::GetCompany();
 }
 
 /* static */ ScriptGroup::GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type)
@@ -88,7 +88,7 @@
 {
 	if (!IsValidGroup(group_id) && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
 
-	return GetGroupNumEngines(_current_company, group_id, engine_id);
+	return GetGroupNumEngines(ScriptObject::GetCompany(), group_id, engine_id);
 }
 
 /* static */ bool ScriptGroup::MoveVehicle(GroupID group_id, VehicleID vehicle_id)
@@ -108,7 +108,7 @@
 
 /* static */ bool ScriptGroup::HasWagonRemoval()
 {
-	return ::Company::Get(_current_company)->settings.renew_keep_length;
+	return ::Company::Get(ScriptObject::GetCompany())->settings.renew_keep_length;
 }
 
 /* static */ bool ScriptGroup::SetAutoReplace(GroupID group_id, EngineID engine_id_old, EngineID engine_id_new)
@@ -123,7 +123,7 @@
 {
 	if (!IsValidGroup(group_id) && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return ::INVALID_ENGINE;
 
-	return ::EngineReplacementForCompany(Company::Get(_current_company), engine_id, group_id);
+	return ::EngineReplacementForCompany(Company::Get(ScriptObject::GetCompany()), engine_id, group_id);
 }
 
 /* static */ bool ScriptGroup::StopAutoReplace(GroupID group_id, EngineID engine_id)

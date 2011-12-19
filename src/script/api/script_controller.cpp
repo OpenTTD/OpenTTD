@@ -46,10 +46,11 @@
 	ScriptLog::Log(error_msg ? ScriptLog::LOG_SQ_ERROR : ScriptLog::LOG_SQ_INFO, message);
 }
 
-ScriptController::ScriptController() :
+ScriptController::ScriptController(CompanyID company) :
 	ticks(0),
 	loaded_library_count(0)
 {
+	ScriptObject::SetCompany(company);
 }
 
 ScriptController::~ScriptController()

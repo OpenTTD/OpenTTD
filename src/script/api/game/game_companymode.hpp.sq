@@ -7,17 +7,19 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_enginelist.cpp Implementation of ScriptEngineList and friends. */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#include "../../stdafx.h"
-#include "script_enginelist.hpp"
-#include "../../engine_base.h"
-#include "../../core/bitmath_func.hpp"
+#include "../script_companymode.hpp"
+#include "../template/template_companymode.hpp.sq"
 
-ScriptEngineList::ScriptEngineList(ScriptVehicle::VehicleType vehicle_type)
+
+template <> const char *GetClassName<ScriptCompanyMode, ST_GS>() { return "GSCompanyMode"; }
+
+void SQGSCompanyMode_Register(Squirrel *engine)
 {
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, (::VehicleType)vehicle_type) {
-		if (ScriptObject::GetCompany() == OWNER_DEITY || HasBit(e->company_avail, ScriptObject::GetCompany())) this->AddItem(e->index);
-	}
+	DefSQClass<ScriptCompanyMode, ST_GS> SQGSCompanyMode("GSCompanyMode");
+	SQGSCompanyMode.PreRegister(engine);
+	SQGSCompanyMode.AddConstructor<void (ScriptCompanyMode::*)(int company), 2>(engine, "xi");
+
+	SQGSCompanyMode.PostRegister(engine);
 }

@@ -19,12 +19,11 @@
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../tile_map.h"
-#include "../../company_func.h"
 
 /* static */ bool ScriptSign::IsValidSign(SignID sign_id)
 {
 	const Sign *si = ::Sign::GetIfValid(sign_id);
-	return si != NULL && (si->owner == _current_company || si->owner == OWNER_DEITY);
+	return si != NULL && (si->owner == ScriptObject::GetCompany() || si->owner == OWNER_DEITY);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptSign::GetOwner(SignID sign_id)

@@ -33,6 +33,7 @@
 #include "../script/api/game/game_cargo.hpp.sq"
 #include "../script/api/game/game_cargolist.hpp.sq"
 #include "../script/api/game/game_company.hpp.sq"
+#include "../script/api/game/game_companymode.hpp.sq"
 #include "../script/api/game/game_controller.hpp.sq"
 #include "../script/api/game/game_date.hpp.sq"
 #include "../script/api/game/game_depotlist.hpp.sq"
@@ -87,7 +88,7 @@ void GameInstance::Initialize(GameInfo *info)
 	/* Register the GameController */
 	SQGSController_Register(this->engine);
 
-	ScriptInstance::Initialize(info->GetMainScript(), info->GetInstanceName());
+	ScriptInstance::Initialize(info->GetMainScript(), info->GetInstanceName(), OWNER_DEITY);
 }
 
 void GameInstance::RegisterAPI()
@@ -110,6 +111,7 @@ void GameInstance::RegisterAPI()
 	SQGSCargoList_IndustryProducing_Register(this->engine);
 	SQGSCargoList_StationAccepting_Register(this->engine);
 	SQGSCompany_Register(this->engine);
+	SQGSCompanyMode_Register(this->engine);
 	SQGSDate_Register(this->engine);
 	SQGSDepotList_Register(this->engine);
 	SQGSEngine_Register(this->engine);

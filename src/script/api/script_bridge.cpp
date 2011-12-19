@@ -17,7 +17,6 @@
 #include "../../strings_func.h"
 #include "../../economy_func.h"
 #include "../../date_func.h"
-#include "../../company_func.h"
 
 /* static */ bool ScriptBridge::IsValidBridge(BridgeID bridge_id)
 {
@@ -75,7 +74,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	EnforcePrecondition(false, TileX(start) == TileX(end) || TileY(start) == TileY(end));
 	EnforcePrecondition(false, vehicle_type == ScriptVehicle::VT_ROAD || vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_WATER);
 	EnforcePrecondition(false, vehicle_type != ScriptVehicle::VT_RAIL || ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType()));
-	EnforcePrecondition(false, _current_company != OWNER_DEITY || vehicle_type == ScriptVehicle::VT_ROAD);
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY || vehicle_type == ScriptVehicle::VT_ROAD);
 
 	uint type = 0;
 	switch (vehicle_type) {

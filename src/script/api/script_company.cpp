@@ -26,7 +26,10 @@
 
 /* static */ ScriptCompany::CompanyID ScriptCompany::ResolveCompanyID(ScriptCompany::CompanyID company)
 {
-	if (company == COMPANY_SELF) return (CompanyID)((byte)_current_company);
+	if (company == COMPANY_SELF) {
+		if (!::Company::IsValidID((::CompanyID)_current_company)) return COMPANY_INVALID;
+		return (CompanyID)((byte)_current_company);
+	}
 
 	return ::Company::IsValidID((::CompanyID)company) ? company : COMPANY_INVALID;
 }
@@ -170,7 +173,10 @@
 
 /* static */ Money ScriptCompany::GetLoanAmount()
 {
-	return ::Company::Get(_current_company)->current_loan;
+	ScriptCompany::CompanyID company = ResolveCompanyID(COMPANY_SELF);
+	if (company == COMPANY_INVALID) return -1;
+
+	return ::Company::Get(company)->current_loan;
 }
 
 /* static */ Money ScriptCompany::GetMaxLoanAmount()

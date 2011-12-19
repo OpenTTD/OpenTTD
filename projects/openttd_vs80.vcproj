@@ -3099,6 +3099,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_companymode.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_controller.hpp"
 				>
 			</File>
@@ -3336,6 +3340,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_company.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_companymode.cpp"
 				>
 			</File>
 			<File

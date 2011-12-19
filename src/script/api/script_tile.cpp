@@ -39,7 +39,7 @@
 			if (::GetRoadTileType(tile) != ROAD_TILE_NORMAL) return false;
 			if (!HasExactlyOneBit(::GetRoadBits(tile, ROADTYPE_ROAD))) return false;
 			if (::IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)) return true;
-			if (::IsRoadOwner(tile, ROADTYPE_ROAD, _current_company)) return true;
+			if (::IsRoadOwner(tile, ROADTYPE_ROAD, ScriptObject::GetCompany())) return true;
 			return false;
 	}
 }

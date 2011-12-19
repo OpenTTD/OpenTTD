@@ -12,11 +12,10 @@
 #include "../../stdafx.h"
 #include "script_railtypelist.hpp"
 #include "../../rail.h"
-#include "../../company_func.h"
 
 ScriptRailTypeList::ScriptRailTypeList()
 {
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		if (_current_company == OWNER_DEITY || ::HasRailtypeAvail(_current_company, rt)) this->AddItem(rt);
+		if (ScriptObject::GetCompany() == OWNER_DEITY || ::HasRailtypeAvail(ScriptObject::GetCompany(), rt)) this->AddItem(rt);
 	}
 }

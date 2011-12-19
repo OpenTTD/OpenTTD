@@ -87,8 +87,12 @@
 
 /* static */ void Game::Uninitialize(bool keepConfig)
 {
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+
 	delete Game::instance;
 	Game::instance = NULL;
+
+	cur_company.Restore();
 
 	if (keepConfig) {
 		Rescan();

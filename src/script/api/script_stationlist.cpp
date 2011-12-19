@@ -12,7 +12,6 @@
 #include "../../stdafx.h"
 #include "script_stationlist.hpp"
 #include "script_vehicle.hpp"
-#include "../../company_func.h"
 #include "../../station_base.h"
 #include "../../vehicle_base.h"
 
@@ -20,7 +19,7 @@ ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
 	Station *st;
 	FOR_ALL_STATIONS(st) {
-		if ((st->owner == _current_company || _current_company == OWNER_DEITY) && (st->facilities & station_type) != 0) this->AddItem(st->index);
+		if ((st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (st->facilities & station_type) != 0) this->AddItem(st->index);
 	}
 }
 

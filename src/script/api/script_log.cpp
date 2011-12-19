@@ -12,7 +12,6 @@
 #include "../../stdafx.h"
 #include "script_log.hpp"
 #include "../../core/alloc_func.hpp"
-#include "../../company_func.h"
 #include "../../debug.h"
 #include "../../window_func.h"
 
@@ -74,8 +73,8 @@
 	}
 
 	/* Also still print to debug window */
-	DEBUG(script, level, "[%d] [%c] %s", (uint)_current_company, logc, log->lines[log->pos]);
-	InvalidateWindowData(WC_AI_DEBUG, 0, _current_company);
+	DEBUG(script, level, "[%d] [%c] %s", (uint)ScriptObject::GetRootCompany(), logc, log->lines[log->pos]);
+	InvalidateWindowData(WC_AI_DEBUG, 0, ScriptObject::GetRootCompany());
 }
 
 /* static */ void ScriptLog::FreeLogPointer()

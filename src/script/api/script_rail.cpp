@@ -17,7 +17,6 @@
 #include "script_cargo.hpp"
 #include "../../debug.h"
 #include "../../station_base.h"
-#include "../../company_func.h"
 #include "../../newgrf.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"
@@ -74,7 +73,7 @@
 {
 	if ((::RailType)rail_type < RAILTYPE_BEGIN || (::RailType)rail_type >= RAILTYPE_END) return false;
 
-	return _current_company == OWNER_DEITY || ::HasRailtypeAvail(_current_company, (::RailType)rail_type);
+	return ScriptObject::GetCompany() == OWNER_DEITY || ::HasRailtypeAvail(ScriptObject::GetCompany(), (::RailType)rail_type);
 }
 
 /* static */ ScriptRail::RailType ScriptRail::GetCurrentRailType()

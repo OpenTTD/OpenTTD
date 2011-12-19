@@ -14,13 +14,12 @@
 #include "../../station_base.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../company_func.h"
 #include "table/strings.h"
 
 /* static */ bool ScriptBaseStation::IsValidBaseStation(StationID station_id)
 {
 	const BaseStation *st = ::BaseStation::GetIfValid(station_id);
-	return st != NULL && (st->owner == _current_company || _current_company == OWNER_DEITY || st->owner == OWNER_NONE);
+	return st != NULL && (st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY || st->owner == OWNER_NONE);
 }
 
 /* static */ char *ScriptBaseStation::GetName(StationID station_id)

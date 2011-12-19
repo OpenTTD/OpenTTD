@@ -84,7 +84,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, vehicle_type == ScriptVehicle::VT_RAIL || vehicle_type == ScriptVehicle::VT_ROAD);
 	EnforcePrecondition(false, vehicle_type != ScriptVehicle::VT_RAIL || ScriptRail::IsRailTypeAvailable(ScriptRail::GetCurrentRailType()));
-	EnforcePrecondition(false, _current_company != OWNER_DEITY || vehicle_type == ScriptVehicle::VT_ROAD);
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY || vehicle_type == ScriptVehicle::VT_ROAD);
 
 	uint type = 0;
 	if (vehicle_type == ScriptVehicle::VT_ROAD) {

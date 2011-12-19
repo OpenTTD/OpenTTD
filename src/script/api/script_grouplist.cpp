@@ -18,6 +18,6 @@ ScriptGroupList::ScriptGroupList()
 {
 	Group *g;
 	FOR_ALL_GROUPS(g) {
-		if (g->owner == _current_company) this->AddItem(g->index);
+		if (g->owner == ScriptObject::GetCompany()) this->AddItem(g->index);
 	}
 }

@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "script_depotlist.hpp"
-#include "../../company_func.h"
 #include "../../depot_base.h"
 #include "../../station_base.h"
 
@@ -29,7 +28,7 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 			/* Hangars are not seen as real depots by the depot code. */
 			const Station *st;
 			FOR_ALL_STATIONS(st) {
-				if (st->owner == ::_current_company || ::_current_company == OWNER_DEITY) {
+				if (st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) {
 					for (uint i = 0; i < st->airport.GetNumHangars(); i++) {
 						this->AddItem(st->airport.GetHangarTile(i));
 					}
@@ -42,6 +41,6 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 	/* Handle 'standard' depots. */
 	const Depot *depot;
 	FOR_ALL_DEPOTS(depot) {
-		if ((::GetTileOwner(depot->xy) == ::_current_company || ::_current_company == OWNER_DEITY) && ::IsTileType(depot->xy, tile_type)) this->AddItem(depot->xy);
+		if ((::GetTileOwner(depot->xy) == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && ::IsTileType(depot->xy, tile_type)) this->AddItem(depot->xy);
 	}
 }

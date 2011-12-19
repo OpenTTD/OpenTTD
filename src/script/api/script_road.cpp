@@ -14,7 +14,6 @@
 #include "script_station.hpp"
 #include "script_cargo.hpp"
 #include "../../station_base.h"
-#include "../../company_func.h"
 #include "../../script/squirrel_helper_type.hpp"
 
 /* static */ ScriptRoad::RoadVehicleType ScriptRoad::GetRoadVehicleTypeForCargo(CargoID cargo_type)
@@ -54,7 +53,7 @@
 
 /* static */ bool ScriptRoad::IsRoadTypeAvailable(RoadType road_type)
 {
-	return ::HasRoadTypesAvail(_current_company, ::RoadTypeToRoadTypes((::RoadType)road_type));
+	return ::HasRoadTypesAvail(ScriptObject::GetCompany(), ::RoadTypeToRoadTypes((::RoadType)road_type));
 }
 
 /* static */ ScriptRoad::RoadType ScriptRoad::GetCurrentRoadType()

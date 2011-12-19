@@ -34,6 +34,8 @@ friend class ScriptObject;
 private:
 	ScriptModeProc *mode;             ///< The current build mode we are int.
 	class ScriptObject *mode_instance; ///< The instance belonging to the current build mode.
+	CompanyID root_company;          ///< The root company, the company that the script really belongs to.
+	CompanyID company;               ///< The current company.
 
 	uint delay;                      ///< The ticks of delay each DoCommand has.
 	bool allow_do_command;           ///< Is the usage of DoCommands restricted?
@@ -60,6 +62,8 @@ public:
 	ScriptStorage() :
 		mode              (NULL),
 		mode_instance     (NULL),
+		root_company      (INVALID_OWNER),
+		company           (INVALID_OWNER),
 		delay             (1),
 		allow_do_command  (true),
 		/* costs (can't be set) */
