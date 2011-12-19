@@ -43,6 +43,11 @@ public:
 	 */
 	static class GameInstance *GetGameInstance() { return Game::instance; }
 
+	/**
+	 * Get the current GameInfo.
+	 */
+	static class GameInfo *GetInfo() { return Game::info; }
+
 	static void Rescan();
 	static void ResetConfig();
 
@@ -54,6 +59,11 @@ public:
 	static const ScriptInfoList *GetUniqueInfoList();
 	/** Wrapper function for GameScannerInfo::FindInfo */
 	static class GameInfo *FindInfo(const char *name, int version, bool force_exact_match);
+
+	/**
+	 * Get the current active instance.
+	 */
+	static class GameInstance *GetInstance() { return Game::instance; }
 
 private:
 	static uint frame_counter;             ///< Tick counter for the Game code.

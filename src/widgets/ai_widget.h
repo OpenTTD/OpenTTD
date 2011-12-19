@@ -14,6 +14,7 @@
 
 /** Widgets of the #AIListWindow class. */
 enum AIListWidgets {
+	WID_AIL_CAPTION,   ///< Caption of the window.
 	WID_AIL_LIST,      ///< The matrix with all available AIs.
 	WID_AIL_SCROLLBAR, ///< Scrollbar next to the AI list.
 	WID_AIL_INFO_BG,   ///< Panel to draw some AI information on.
@@ -23,6 +24,7 @@ enum AIListWidgets {
 
 /** Widgets of the #AISettingsWindow class. */
 enum AISettingsWidgets {
+	WID_AIS_CAPTION,    ///< Caption of the window.
 	WID_AIS_BACKGROUND, ///< Panel to draw the settings on.
 	WID_AIS_SCROLLBAR,  ///< Scrollbar to scroll through all settings.
 	WID_AIS_ACCEPT,     ///< Accept button.
@@ -35,6 +37,7 @@ enum AIConfigWidgets {
 	WID_AIC_DECREASE,         ///< Decrease the number of AIs.
 	WID_AIC_INCREASE,         ///< Increase the number of AIs.
 	WID_AIC_NUMBER,           ///< Number of AIs.
+	WID_AIC_GAMELIST,         ///< List with current selected GameScript.
 	WID_AIC_LIST,             ///< List with currently selected AIs.
 	WID_AIC_SCROLLBAR,        ///< Scrollbar to scroll through the selected AIs.
 	WID_AIC_MOVE_UP,          ///< Move up button.
@@ -50,6 +53,7 @@ enum AIDebugWidgets {
 	WID_AID_VIEW,                 ///< The row of company buttons.
 	WID_AID_NAME_TEXT,            ///< Name of the current selected.
 	WID_AID_SETTINGS,             ///< Settings button.
+	WID_AID_SCRIPT_GAME,          ///< Game Script button.
 	WID_AID_RELOAD_TOGGLE,        ///< Reload button.
 	WID_AID_LOG_PANEL,            ///< Panel where the log is in.
 	WID_AID_SCROLLBAR,            ///< Scrollbar of the log pannel.

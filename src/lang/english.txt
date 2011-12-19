@@ -349,7 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Difficulty settings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Advanced settings
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI settings
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / Game settings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF settings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Town names displayed
@@ -443,7 +443,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message history
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Land area information
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle console
-STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoomed in screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Whole map screenshot
@@ -1404,7 +1404,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Difficul
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Advanced Settings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Settings
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Game Settings
 STR_INTRO_QUIT                                                  :{BLACK}Quit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start a new game. Ctrl+Click skips map configuration
@@ -1424,7 +1424,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Display 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Display advanced settings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Display AI settings
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Display AI and Game settings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quit 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}This translation misses {NUM} string{P "" s}. Please help make OpenTTD better by signing up as translator. See readme.txt for details.
@@ -3449,11 +3449,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Select y
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG                                                    :{WHITE}AI / GameScript Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{RAW_STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name of the AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Settings
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Change the settings of the AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name of the script
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Settings
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Change the settings of the script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Kill the AI, reload the script, and restart the AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Enable/disable breaking when an AI log message matches the break string
@@ -3465,42 +3465,56 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle m
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Unpause and continue the AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}View debug output of this AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check the Game Script log
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No suitable AI found to load.{}This AI is a dummy AI and won't do anything.{}You can download several AIs via the 'Online Content' system
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Debug window is only available for the server
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / GameScript Debug window is only available for the server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Configuration
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}All AIs that will be loaded in the next game
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Game Configuration
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}The GameScript that will be loaded in the next game
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}The AIs that will be loaded in the next game
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
 STR_AI_CONFIG_RANDOM_AI                                         :Random AI
+STR_AI_CONFIG_NONE                                              :(none)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Move Up
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Move selected AI up in the list
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Move Down
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Move selected AI down in the list
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Select AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Load another AI
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_AI                                                :{SILVER}AIs
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Select {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Load another script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configure
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configure the parameters of the AI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configure the parameters of the Script
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Available AIs
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Click to select an AI
+STR_AI_LIST_CAPTION                                             :{WHITE}Available {STRING}
+STR_AI_LIST_CAPTION_AI                                          :AIs
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Click to select a script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Author: {RAW_STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Version: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {RAW_STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accept
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select highlighted AI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select highlighted script
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancel
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Don't change AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Don't change the script
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{RAW_STRING}: {ORANGE}{STRING1}
