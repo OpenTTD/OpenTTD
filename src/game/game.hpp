@@ -12,6 +12,12 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include "../core/string_compare_type.hpp"
+#include <map>
+
+/** A list that maps AI names to their AIInfo object. */
+typedef std::map<const char *, class ScriptInfo *, StringCompare> ScriptInfoList;
+
 /**
  * Main Game class. Contains all functions needed to start, stop, save and load Game Scripts.
  */
@@ -30,16 +36,30 @@ public:
 	/**
 	 * Uninitialize the Game system.
 	 */
-	static void Uninitialize();
+	static void Uninitialize(bool keepConfig);
 
 	/**
 	 * Get the current GameScript instance.
 	 */
 	static class GameInstance *GetGameInstance() { return Game::instance; }
 
+	static void Rescan();
+	static void ResetConfig();
+
+	/** Wrapper function for GameScanner::GetConsoleList */
+	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);
+	/** Wrapper function for GameScanner::GetInfoList */
+	static const ScriptInfoList *GetInfoList();
+	/** Wrapper function for GameScanner::GetUniqueInfoList */
+	static const ScriptInfoList *GetUniqueInfoList();
+	/** Wrapper function for GameScannerInfo::FindInfo */
+	static class GameInfo *FindInfo(const char *name, int version, bool force_exact_match);
+
 private:
-	static uint frame_counter;           ///< Tick counter for the Game code.
-	static class GameInstance *instance; ///< Instance to the current active Game.
+	static uint frame_counter;             ///< Tick counter for the Game code.
+	static class GameInstance *instance;   ///< Instance to the current active Game.
+	static class GameScannerInfo *scanner; ///< Scanner for Game scripts.
+	static class GameInfo *info;           ///< Current selected GameInfo.
 };
 
 #endif /* GAME_HPP */

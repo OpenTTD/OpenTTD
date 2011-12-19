@@ -37,6 +37,7 @@
 #include "newgrf.h"
 #include "console_func.h"
 #include "engine_base.h"
+#include "game/game.hpp"
 
 #ifdef ENABLE_NETWORK
 	#include "table/strings.h"
@@ -1105,6 +1106,16 @@ DEF_CONSOLE_CMD(ConListAI)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConListGame)
+{
+	char buf[4096];
+	Game::GetConsoleList(buf, lastof(buf));
+
+	PrintLineByLine(buf);
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConStartAI)
 {
 	if (argc == 0 || argc > 3) {
@@ -1894,6 +1905,8 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("rescan_ai",    ConRescanAI);
 	IConsoleCmdRegister("start_ai",     ConStartAI);
 	IConsoleCmdRegister("stop_ai",      ConStopAI);
+
+	IConsoleCmdRegister("list_game",    ConListGame);
 
 	/* networking functions */
 #ifdef ENABLE_NETWORK

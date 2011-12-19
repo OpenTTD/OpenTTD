@@ -455,6 +455,7 @@ struct GameSettings {
 	AISettings           ai;                 ///< what may the AI do?
 	ScriptSettings       script;             ///< settings for scripts
 	class AIConfig      *ai_config[MAX_COMPANIES]; ///< settings per company
+	class GameConfig    *game_config;        ///< settings for gamescript
 	PathfinderSettings   pf;                 ///< settings for all pathfinders
 	OrderSettings        order;              ///< settings related to orders
 	VehicleSettings      vehicle;            ///< options for vehicles

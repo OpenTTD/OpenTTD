@@ -1,0 +1,49 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/** @file game_info.hpp GameInfo keeps track of all information of an Game, like Author, Description, ... */
+
+#ifndef GAME_INFO_HPP
+#define GAME_INFO_HPP
+
+#include "../script/script_info.hpp"
+#include "../script/script_config.hpp"
+
+/** All static information from an Game like name, version, etc. */
+class GameInfo : public ScriptInfo {
+public:
+	GameInfo();
+	~GameInfo();
+
+	/**
+	 * Register the functions of this class.
+	 */
+	static void RegisterAPI(Squirrel *engine);
+
+	/**
+	 * Create an Game, using this GameInfo as start-template.
+	 */
+	static SQInteger Constructor(HSQUIRRELVM vm);
+
+	/**
+	 * Check if we can start this Game.
+	 */
+	bool CanLoadFromVersion(int version) const;
+
+	/**
+	 * Get the API version this Game is written for.
+	 */
+	const char *GetAPIVersion() const { return this->api_version; }
+
+private:
+	int min_loadable_version; ///< The Game can load savegame data if the version is equal or greater than this.
+	const char *api_version;  ///< API version used by this Game.
+};
+
+#endif /* GAME_INFO_HPP */

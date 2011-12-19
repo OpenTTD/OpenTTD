@@ -1968,13 +1968,31 @@
     <ClInclude Include="..\src\game\game.hpp">
       <Filter>Game Core</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\game\game_config.cpp">
+      <Filter>Game Core</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\game\game_config.hpp">
+      <Filter>Game Core</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\game\game_core.cpp">
       <Filter>Game Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\game\game_info.cpp">
+      <Filter>Game Core</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\game\game_info.hpp">
+      <Filter>Game Core</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\game\game_instance.cpp">
       <Filter>Game Core</Filter>
     </ClCompile>
     <ClInclude Include="..\src\game\game_instance.hpp">
+      <Filter>Game Core</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\game\game_scanner.cpp">
+      <Filter>Game Core</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\game\game_scanner.hpp">
       <Filter>Game Core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\script\api\script_accounting.hpp">

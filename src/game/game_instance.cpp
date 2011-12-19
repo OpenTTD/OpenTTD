@@ -16,6 +16,8 @@
 #include "../script/squirrel_class.hpp"
 
 #include "../script/script_storage.hpp"
+#include "game_config.hpp"
+#include "game_info.hpp"
 #include "game_instance.hpp"
 #include "game.hpp"
 
@@ -35,12 +37,12 @@ GameInstance::GameInstance() :
 	ScriptInstance("GS")
 {}
 
-void GameInstance::Initialize()
+void GameInstance::Initialize(GameInfo *info)
 {
 	/* Register the GameController */
 	SQGSController_Register(this->engine);
 
-	ScriptInstance::Initialize("test/main.nut", "TestGame");
+	ScriptInstance::Initialize(info->GetMainScript(), info->GetInstanceName());
 }
 
 void GameInstance::RegisterAPI()
@@ -61,7 +63,7 @@ void GameInstance::RegisterAPI()
 
 int GameInstance::GetSetting(const char *name)
 {
-	return NULL;
+	return GameConfig::GetConfig()->GetSetting(name);
 }
 
 ScriptInfo *GameInstance::FindLibrary(const char *library, int version)

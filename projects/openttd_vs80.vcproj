@@ -2983,7 +2983,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\game\game_config.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_config.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\game\game_core.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_info.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_info.hpp"
 				>
 			</File>
 			<File
@@ -2992,6 +3008,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\game\game_instance.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_scanner.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_scanner.hpp"
 				>
 			</File>
 		</Filter>

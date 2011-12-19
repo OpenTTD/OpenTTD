@@ -21,8 +21,9 @@ public:
 
 	/**
 	 * Initialize the script and prepare it for its first run.
+	 * @param info The GameInfo to start.
 	 */
-	void Initialize();
+	void Initialize(class GameInfo *info);
 
 	/* virtual */ int GetSetting(const char *name);
 	/* virtual */ ScriptInfo *FindLibrary(const char *library, int version);
