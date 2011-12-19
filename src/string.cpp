@@ -207,7 +207,7 @@ void str_validate(char *str, const char *last, StringValidationSettings settings
 		 * characters to be skipped */
 		if (c == '\0') break;
 
-		if (IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) {
+		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && IsInsideMM(c, SCC_CONTROL_START, SCC_CONTROL_END))) {
 			/* Copy the character back. Even if dst is current the same as str
 			 * (i.e. no characters have been changed) this is quicker than
 			 * moving the pointers ahead by len */

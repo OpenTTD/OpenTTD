@@ -355,6 +355,7 @@ enum CommandFlags {
 	CMD_NO_WATER  = 0x040, ///< set the DC_NO_WATER flag on this command
 	CMD_CLIENT_ID = 0x080, ///< set p2 with the ClientID of the sending client.
 	CMD_DEITY     = 0x100, ///< the command may be executed by COMPANY_DEITY
+	CMD_STR_CTRL  = 0x200, ///< the command's string may contain control strings
 };
 DECLARE_ENUM_AS_BIT_SET(CommandFlags)
 

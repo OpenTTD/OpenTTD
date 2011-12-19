@@ -1089,7 +1089,14 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			}
 
 			((char *)ptr)[len] = '\0'; // properly terminate the string
-			str_validate((char *)ptr, (char *)ptr + len);
+			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
+			if ((conv & SLF_ALLOW_CONTROL) != 0) {
+				settings = settings | SVS_ALLOW_CONTROL_CODE;
+			}
+			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
+				settings = settings | SVS_ALLOW_NEWLINE;
+			}
+			str_validate((char *)ptr, (char *)ptr + len, settings);
 			break;
 		}
 		case SLA_PTRS: break;
@@ -1442,7 +1449,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 					}
 					break;
 				case SL_ARR: SlArray(ptr, sld->length, conv); break;
-				case SL_STR: SlString(ptr, sld->length, conv); break;
+				case SL_STR: SlString(ptr, sld->length, sld->conv); break;
 				case SL_LST: SlList(ptr, (SLRefType)conv); break;
 				default: NOT_REACHED();
 			}
