@@ -9,6 +9,7 @@
 
 /** @file script_date.cpp Implementation of ScriptDate. */
 
+#include <time.h>
 #include "../../stdafx.h"
 #include "script_date.hpp"
 #include "../../date_func.h"
@@ -52,4 +53,11 @@
 	if (year < 0 || year > MAX_YEAR) return -1;
 
 	return ::ConvertYMDToDate(year, month - 1, day_of_month);
+}
+
+/* static */ int32 ScriptDate::GetSystemTime()
+{
+	time_t t;
+	time(&t);
+	return t;
 }

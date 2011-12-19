@@ -26,6 +26,7 @@ void SQGSDate_Register(Squirrel *engine)
 	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::GetMonth,       "GetMonth",       2, ".i");
 	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::GetDayOfMonth,  "GetDayOfMonth",  2, ".i");
 	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::GetDate,        "GetDate",        4, ".iii");
+	SQGSDate.DefSQStaticMethod(engine, &ScriptDate::GetSystemTime,  "GetSystemTime",  1, ".");
 
 	SQGSDate.PostRegister(engine);
 }

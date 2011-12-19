@@ -65,6 +65,14 @@ public:
 	 * @return The date.
 	 */
 	static int32 GetDate(int32 year, int32 month, int32 day_of_month);
+
+	/**
+	 * Get the time of the host system.
+	 * @return The amount of seconds passed since 1 Jan 1970.
+	 * @api -ai
+	 * @note This uses the clock of the host system, which can skew or be set back. Use with caution.
+	 */
+	static int32 GetSystemTime();
 };
 
 #endif /* SCRIPT_DATE_HPP */
