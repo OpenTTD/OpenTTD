@@ -22,7 +22,7 @@
  * In Test mode all the commands you execute aren't really executed. The
  *   system only checks if it would be able to execute your requests, and what
  *   the cost would be.
- * @api ai
+ * @api ai game
  */
 class ScriptTestMode : public ScriptObject {
 private:

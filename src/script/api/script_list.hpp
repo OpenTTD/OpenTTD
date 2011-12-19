@@ -21,7 +21,7 @@ class ScriptListSorter;
 
 /**
  * Class that creates a list which can keep item/value pairs, which you can walk.
- * @api ai
+ * @api ai game
  */
 class ScriptList : public ScriptObject {
 public:

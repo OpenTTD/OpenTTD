@@ -17,7 +17,7 @@
 /**
  * Class that keeps track of the costs, so you can request how much a block of
  *  commands did cost in total. Works in both Execute as in Test mode.
- * @api ai
+ * @api ai game
  * Example:
  * <pre>
  *   {

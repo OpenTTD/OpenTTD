@@ -2976,6 +2976,26 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="Game Core"
+			>
+			<File
+				RelativePath=".\..\src\game\game.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_core.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_instance.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_instance.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="Script API"
 			>
 			<File

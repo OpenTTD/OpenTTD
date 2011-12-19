@@ -62,6 +62,7 @@
 #include "hotkeys.h"
 #include "newgrf.h"
 #include "misc/getoptdata.h"
+#include "game/game.hpp"
 
 
 #include "town.h"
@@ -284,8 +285,9 @@ static void ShutdownGame()
 
 	UnInitWindowSystem();
 
-	/* stop the AI */
+	/* stop the scripts */
 	AI::Uninitialize(false);
+	Game::Uninitialize();
 
 	/* Uninitialize variables that are allocated dynamically */
 	GamelogReset();
@@ -1253,6 +1255,7 @@ void StateGameLoop()
 	/* dont execute the state loop during pause */
 	if (_pause_mode != PM_UNPAUSED) {
 		UpdateLandscapingLimits();
+		Game::GameLoop();
 		CallWindowTickEvent();
 		return;
 	}
@@ -1291,6 +1294,7 @@ void StateGameLoop()
 		ClearStorageChanges(true);
 
 		AI::GameLoop();
+		Game::GameLoop();
 		UpdateLandscapingLimits();
 
 		CallWindowTickEvent();

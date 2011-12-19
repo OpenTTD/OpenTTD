@@ -18,7 +18,7 @@
  * Class that handles all event related functions.
  * You can lookup the type, and than convert it to the real event-class.
  * That way you can request more detailed information about the event.
- * @api ai
+ * @api ai game
  */
 class ScriptEvent : public ScriptObject {
 public:
@@ -74,7 +74,7 @@ protected:
 
 /**
  * Class that handles all event related functions.
- * @api ai
+ * @api ai game
  * @note it is not needed to create an instance of ScriptEvent to access it, as
  *  all members are static, and all data is stored AI-wide.
  */

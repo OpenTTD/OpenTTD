@@ -95,11 +95,13 @@ BEGIN {
 	has_fileheader = "false"
 	cls_level = 0
 	RS = "\r|\n"
+	apis = tolower(api)
+	if (apis == "gs") apis = "game"
 }
 
 /@file/ {
 	filename = $3
-	gsub("^" tolower(api) "_", "script_", filename)
+	gsub("^" apis "_", "script_", filename)
 }
 
 # Ignore special doxygen blocks
@@ -133,9 +135,9 @@ BEGIN {
 		api_selected = "false"
 	} else if ($0 == "-all") {
 		api_selected = "false"
-	} else if (match($0, "-" tolower(api))) {
+	} else if (match($0, "-" apis)) {
 		api_selected = "false"
-	} else if (match($0, tolower(api))) {
+	} else if (match($0, apis)) {
 		api_selected = "true"
 	}
 

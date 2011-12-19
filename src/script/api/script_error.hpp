@@ -40,7 +40,7 @@
 
 /**
  * Class that handles all error related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptError : public ScriptObject {
 public:

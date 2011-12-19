@@ -22,7 +22,7 @@
  *       the information here can be used for libraries, but the information
  *       will not be shown in the GUI except for error/debug messages.
  *
- * @api ai
+ * @api ai game
  */
 class ScriptInfo {
 public:
@@ -151,13 +151,12 @@ public:
 	 * and not the bugfix number as valid return for this function.
 	 *
 	 * Valid return values are:
-	 * - "0.7"
-	 * - "1.0"
-	 * - "1.1"
-	 * - "1.2"
+	 * - "0.7" (for AI only)
+	 * - "1.0" (for AI only)
+	 * - "1.1" (for AI only)
+	 * - "1.2" (for both AI and GS)
 	 *
 	 * @return The version this Script is compatible with.
-	 * @note This function is optional.
 	 */
 	string GetAPIVersion();
 

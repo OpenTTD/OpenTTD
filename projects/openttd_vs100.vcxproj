@@ -913,6 +913,10 @@
     <ClCompile Include="..\src\ai\ai_scanner.cpp" />
     <ClInclude Include="..\src\ai\ai_scanner.hpp" />
     <ClInclude Include="..\src\script\api\ai_changelog.hpp" />
+    <ClInclude Include="..\src\game\game.hpp" />
+    <ClCompile Include="..\src\game\game_core.cpp" />
+    <ClCompile Include="..\src\game\game_instance.cpp" />
+    <ClInclude Include="..\src\game\game_instance.hpp" />
     <ClInclude Include="..\src\script\api\script_accounting.hpp" />
     <ClInclude Include="..\src\script\api\script_airport.hpp" />
     <ClInclude Include="..\src\script\api\script_base.hpp" />

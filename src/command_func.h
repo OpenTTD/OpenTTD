@@ -86,6 +86,9 @@ CommandCallback CcBuildCanal;
 /* depot_gui.cpp */
 CommandCallback CcCloneVehicle;
 
+/* game/game_instance.cpp */
+CommandCallback CcGame;
+
 /* group_gui.cpp */
 CommandCallback CcCreateGroup;
 

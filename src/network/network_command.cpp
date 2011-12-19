@@ -47,6 +47,7 @@ static CommandCallback * const _callback_table[] = {
 	/* 0x17 */ CcRoadStop,
 	/* 0x18 */ CcBuildIndustry,
 	/* 0x19 */ CcStartStopVehicle,
+	/* 0x1A */ CcGame,
 };
 
 /**

@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all log related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptLog : public ScriptObject {
 	/* ScriptController needs access to Enum and Log, in order to keep the flow from

@@ -39,6 +39,7 @@ fi
 case $apilc in
 	template) apiuc="Template" ;;
 	ai) apiuc="AI" ;;
+	game) apiuc="GS" ;;
 	*) echo "Unknown API type."; exit 1 ;;
 esac
 

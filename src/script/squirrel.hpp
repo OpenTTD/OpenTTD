@@ -16,7 +16,8 @@
 
 /** The type of script we're working with, i.e. for who is it? */
 enum ScriptType {
-	ST_AI, ///< The script is for the AI.
+	ST_AI, ///< The script is for AI scripts.
+	ST_GS, ///< The script is for Game scripts.
 };
 
 class Squirrel {
