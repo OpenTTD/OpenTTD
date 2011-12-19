@@ -34,6 +34,11 @@ public:
 	static void Initialize();
 
 	/**
+	 * Start up a new GameScript.
+	 */
+	static void StartNew();
+
+	/**
 	 * Uninitialize the Game system.
 	 */
 	static void Uninitialize(bool keepConfig);
@@ -50,6 +55,16 @@ public:
 
 	static void Rescan();
 	static void ResetConfig();
+
+	/**
+	 * Save data from a GameScript to a savegame.
+	 */
+	static void Save();
+
+	/**
+	 * Load data for a GameScript from a savegame.
+	 */
+	static void Load(int version);
 
 	/** Wrapper function for GameScanner::GetConsoleList */
 	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);

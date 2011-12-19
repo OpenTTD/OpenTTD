@@ -1563,6 +1563,9 @@
     <ClCompile Include="..\src\saveload\engine_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\saveload\game_sl.cpp">
+      <Filter>Save/Load handlers</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\saveload\gamelog_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>

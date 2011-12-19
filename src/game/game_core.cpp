@@ -57,26 +57,29 @@
 		Game::scanner = new GameScannerInfo();
 		Game::scanner->Initialize();
 	}
+}
 
-	if (Game::instance == NULL) {
-		/* Clients shouldn't start GameScripts */
-		if (_networking && !_network_server) return;
+/* static */ void Game::StartNew()
+{
+	if (Game::instance != NULL) return;
 
-		GameConfig *config = GameConfig::GetConfig();
-		GameInfo *info = config->GetInfo();
-		if (info == NULL) return;
+	/* Clients shouldn't start GameScripts */
+	if (_networking && !_network_server) return;
 
-		Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
-		cur_company.Change(OWNER_DEITY);
+	GameConfig *config = GameConfig::GetConfig();
+	GameInfo *info = config->GetInfo();
+	if (info == NULL) return;
 
-		Game::info = info;
-		Game::instance = new GameInstance();
-		Game::instance->Initialize(info);
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	cur_company.Change(OWNER_DEITY);
 
-		cur_company.Restore();
+	Game::info = info;
+	Game::instance = new GameInstance();
+	Game::instance->Initialize(info);
 
-		InvalidateWindowData(WC_AI_DEBUG, 0, -1);
-	}
+	cur_company.Restore();
+
+	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
 }
 
 /* static */ void Game::Uninitialize(bool keepConfig)
@@ -137,6 +140,29 @@
 	SetWindowDirty(WC_AI_SETTINGS, 0);
 }
 
+
+/* static */ void Game::Save()
+{
+	if (Game::instance != NULL && (!_networking || _network_server)) {
+		Backup<CompanyByte> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+		Game::instance->Save();
+		cur_company.Restore();
+	} else {
+		GameInstance::SaveEmpty();
+	}
+}
+
+/* static */ void Game::Load(int version)
+{
+	if (Game::instance != NULL && (!_networking || _network_server)) {
+		Backup<CompanyByte> cur_company(_current_company, OWNER_DEITY, FILE_LINE);
+		Game::instance->Load(version);
+		cur_company.Restore();
+	} else {
+		/* Read, but ignore, the load data */
+		GameInstance::LoadEmpty();
+	}
+}
 
 /* static */ char *Game::GetConsoleList(char *p, const char *last, bool newest_only)
 {

@@ -779,6 +779,7 @@
     <ClCompile Include="..\src\saveload\depot_sl.cpp" />
     <ClCompile Include="..\src\saveload\economy_sl.cpp" />
     <ClCompile Include="..\src\saveload\engine_sl.cpp" />
+    <ClCompile Include="..\src\saveload\game_sl.cpp" />
     <ClCompile Include="..\src\saveload\gamelog_sl.cpp" />
     <ClCompile Include="..\src\saveload\group_sl.cpp" />
     <ClCompile Include="..\src\saveload\industry_sl.cpp" />

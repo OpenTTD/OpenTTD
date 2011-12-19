@@ -537,6 +537,7 @@ saveload/company_sl.cpp
 saveload/depot_sl.cpp
 saveload/economy_sl.cpp
 saveload/engine_sl.cpp
+saveload/game_sl.cpp
 saveload/gamelog_sl.cpp
 saveload/group_sl.cpp
 saveload/industry_sl.cpp

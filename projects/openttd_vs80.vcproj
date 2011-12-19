@@ -2411,6 +2411,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\saveload\game_sl.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\saveload\gamelog_sl.cpp"
 				>
 			</File>

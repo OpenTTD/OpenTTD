@@ -57,6 +57,8 @@
 #include "ini_type.h"
 #include "ai/ai_config.hpp"
 #include "ai/ai.hpp"
+#include "game/game_config.hpp"
+#include "game/game.hpp"
 #include "ship.h"
 #include "smallmap_gui.h"
 #include "roadveh.h"
@@ -1362,6 +1364,32 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 	}
 }
 
+static void GameLoadConfig(IniFile *ini, const char *grpname)
+{
+	IniGroup *group = ini->GetGroup(grpname);
+	IniItem *item;
+
+	/* Clean any configured GameScript */
+	GameConfig::GetConfig(GameConfig::SSS_FORCE_NEWGAME)->Change(NULL);
+
+	/* If no group exists, return */
+	if (group == NULL) return;
+
+	item = group->item;
+	if (item == NULL) return;
+
+	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
+
+	config->Change(item->name);
+	if (!config->HasScript()) {
+		if (strcmp(item->name, "none") != 0) {
+			DEBUG(script, 0, "The GameScript by the name '%s' was no longer found, and removed from the list.", item->name);
+			return;
+		}
+	}
+	if (item->value != NULL) config->StringToSettings(item->value);
+}
+
 /**
  * Load a GRF configuration
  * @param ini       The configuration to read from.
@@ -1480,6 +1508,28 @@ static void AISaveConfig(IniFile *ini, const char *grpname)
 	}
 }
 
+static void GameSaveConfig(IniFile *ini, const char *grpname)
+{
+	IniGroup *group = ini->GetGroup(grpname);
+
+	if (group == NULL) return;
+	group->Clear();
+
+	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
+	const char *name;
+	char value[1024];
+	config->SettingsToString(value, lengthof(value));
+
+	if (config->HasScript()) {
+		name = config->GetName();
+	} else {
+		name = "none";
+	}
+
+	IniItem *item = new IniItem(group, name, strlen(name));
+	item->SetValue(value);
+}
+
 /**
  * Save the version of OpenTTD to the ini file.
  * @param ini the ini to write to
@@ -1563,6 +1613,7 @@ void LoadFromConfig(bool minimal)
 		_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
 		NewsDisplayLoadConfig(ini, "news_display");
 		AILoadConfig(ini, "ai_players");
+		GameLoadConfig(ini, "game_scripts");
 
 		PrepareOldDiffCustom();
 		IniLoadSettings(ini, _gameopt_settings, "gameopt", &_settings_newgame);
@@ -1589,6 +1640,7 @@ void SaveToConfig()
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
 	NewsDisplaySaveConfig(ini, "news_display");
 	AISaveConfig(ini, "ai_players");
+	GameSaveConfig(ini, "game_scripts");
 	SaveVersionInConfig(ini);
 	ini->SaveToDisk(_config_file);
 	delete ini;
