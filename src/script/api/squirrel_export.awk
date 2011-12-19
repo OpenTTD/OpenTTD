@@ -385,7 +385,11 @@ BEGIN {
 		if (mlen <= length(static_methods[i, 0])) mlen = length(static_methods[i, 0])
 	}
 	for (i = 1; i <= static_method_size; i++) {
-		print "	SQ" api_cls ".DefSQStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "\""  static_methods[i, 0] "\", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "" static_methods[i, 1] ", \"" static_methods[i, 2] "\");"
+		if (static_methods[i, 2] == "v") {
+			print "	SQ" api_cls ".DefSQAdvancedStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0]) - 8) "\""  static_methods[i, 0] "\");"
+		} else {
+			print "	SQ" api_cls ".DefSQStaticMethod(engine, &" cls "::" static_methods[i, 0] ", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "\""  static_methods[i, 0] "\", " substr(spaces, 1, mlen - length(static_methods[i, 0])) "" static_methods[i, 1] ", \"" static_methods[i, 2] "\");"
+		}
 		delete static_methods[i]
 	}
 	if (static_method_size != 0) print ""

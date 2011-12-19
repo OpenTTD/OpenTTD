@@ -297,12 +297,10 @@ static const SaveLoad _script_byte[] = {
 	SLE_END()
 };
 
-static const uint SCRIPTSAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for items stored in the savegame.
-
 /* static */ bool ScriptInstance::SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test)
 {
 	if (max_depth == 0) {
-		ScriptLog::Error("Savedata can only be nested to 25 deep. No data saved.");
+		ScriptLog::Error("Savedata can only be nested to 25 deep. No data saved."); // SQUIRREL_MAX_DEPTH = 25
 		return false;
 	}
 
@@ -439,7 +437,7 @@ void ScriptInstance::Save()
 		_script_sl_byte = 1;
 		SlObject(NULL, _script_byte);
 		/* Save the data that was just loaded. */
-		SaveObject(vm, -1, SCRIPTSAVE_MAX_DEPTH, false);
+		SaveObject(vm, -1, SQUIRREL_MAX_DEPTH, false);
 	} else if (!this->is_started) {
 		SaveEmpty();
 		return;
@@ -478,10 +476,10 @@ void ScriptInstance::Save()
 			return;
 		}
 		sq_pushobject(vm, savedata);
-		if (SaveObject(vm, -1, SCRIPTSAVE_MAX_DEPTH, true)) {
+		if (SaveObject(vm, -1, SQUIRREL_MAX_DEPTH, true)) {
 			_script_sl_byte = 1;
 			SlObject(NULL, _script_byte);
-			SaveObject(vm, -1, SCRIPTSAVE_MAX_DEPTH, false);
+			SaveObject(vm, -1, SQUIRREL_MAX_DEPTH, false);
 			this->is_save_data_on_stack = true;
 		} else {
 			SaveEmpty();

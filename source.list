@@ -704,6 +704,7 @@ game/game_scanner.hpp
 
 # Script API
 script/api/script_accounting.hpp
+script/api/script_admin.hpp
 script/api/script_airport.hpp
 script/api/script_base.hpp
 script/api/script_basestation.hpp
@@ -760,6 +761,7 @@ script/api/script_waypointlist.hpp
 
 # Script API Implementation
 script/api/script_accounting.cpp
+script/api/script_admin.cpp
 script/api/script_airport.cpp
 script/api/script_base.cpp
 script/api/script_basestation.cpp

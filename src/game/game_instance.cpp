@@ -24,6 +24,7 @@
 /* Convert all Game related classes to Squirrel data.
  * Note: this line is a marker in squirrel_export.sh. Do not change! */
 #include "../script/api/game/game_accounting.hpp.sq"
+#include "../script/api/game/game_admin.hpp.sq"
 #include "../script/api/game/game_airport.hpp.sq"
 #include "../script/api/game/game_base.hpp.sq"
 #include "../script/api/game/game_basestation.hpp.sq"
@@ -92,6 +93,7 @@ void GameInstance::RegisterAPI()
 /* Register all classes */
 	SQGSList_Register(this->engine);
 	SQGSAccounting_Register(this->engine);
+	SQGSAdmin_Register(this->engine);
 	SQGSAirport_Register(this->engine);
 	SQGSBase_Register(this->engine);
 	SQGSBaseStation_Register(this->engine);
@@ -110,6 +112,7 @@ void GameInstance::RegisterAPI()
 	SQGSEngineList_Register(this->engine);
 	SQGSError_Register(this->engine);
 	SQGSEvent_Register(this->engine);
+	SQGSEventAdminPort_Register(this->engine);
 	SQGSEventCompanyBankrupt_Register(this->engine);
 	SQGSEventCompanyInTrouble_Register(this->engine);
 	SQGSEventCompanyMerger_Register(this->engine);

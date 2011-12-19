@@ -926,6 +926,7 @@
     <ClCompile Include="..\src\game\game_scanner.cpp" />
     <ClInclude Include="..\src\game\game_scanner.hpp" />
     <ClInclude Include="..\src\script\api\script_accounting.hpp" />
+    <ClInclude Include="..\src\script\api\script_admin.hpp" />
     <ClInclude Include="..\src\script\api\script_airport.hpp" />
     <ClInclude Include="..\src\script\api\script_base.hpp" />
     <ClInclude Include="..\src\script\api\script_basestation.hpp" />
@@ -980,6 +981,7 @@
     <ClInclude Include="..\src\script\api\script_waypoint.hpp" />
     <ClInclude Include="..\src\script\api\script_waypointlist.hpp" />
     <ClCompile Include="..\src\script\api\script_accounting.cpp" />
+    <ClCompile Include="..\src\script\api\script_admin.cpp" />
     <ClCompile Include="..\src\script\api\script_airport.cpp" />
     <ClCompile Include="..\src\script\api\script_base.cpp" />
     <ClCompile Include="..\src\script\api\script_basestation.cpp" />

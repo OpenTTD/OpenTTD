@@ -212,3 +212,12 @@ namespace SQConvert {
 	template <> inline const ScriptEventAircraftDestTooFar &GetParam(ForceType<const ScriptEventAircraftDestTooFar &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventAircraftDestTooFar *)instance; }
 	template <> inline int Return<ScriptEventAircraftDestTooFar *>(HSQUIRRELVM vm, ScriptEventAircraftDestTooFar *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventAircraftDestTooFar", res, NULL, DefSQDestructorCallback<ScriptEventAircraftDestTooFar>, true); return 1; }
 } // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptEventAdminPort to be used as Squirrel parameter */
+	template <> inline ScriptEventAdminPort *GetParam(ForceType<ScriptEventAdminPort *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventAdminPort *)instance; }
+	template <> inline ScriptEventAdminPort &GetParam(ForceType<ScriptEventAdminPort &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventAdminPort *)instance; }
+	template <> inline const ScriptEventAdminPort *GetParam(ForceType<const ScriptEventAdminPort *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventAdminPort *)instance; }
+	template <> inline const ScriptEventAdminPort &GetParam(ForceType<const ScriptEventAdminPort &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventAdminPort *)instance; }
+	template <> inline int Return<ScriptEventAdminPort *>(HSQUIRRELVM vm, ScriptEventAdminPort *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventAdminPort", res, NULL, DefSQDestructorCallback<ScriptEventAdminPort>, true); return 1; }
+} // namespace SQConvert

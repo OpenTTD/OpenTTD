@@ -2007,6 +2007,9 @@
     <ClInclude Include="..\src\script\api\script_accounting.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script\api\script_admin.hpp">
+      <Filter>Script API</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\script\api\script_airport.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
@@ -2167,6 +2170,9 @@
       <Filter>Script API</Filter>
     </ClInclude>
     <ClCompile Include="..\src\script\api\script_accounting.cpp">
+      <Filter>Script API Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\api\script_admin.cpp">
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_airport.cpp">

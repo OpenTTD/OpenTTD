@@ -32,6 +32,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_ADMIN_POLL,             ///< The admin explicitly polls for a piece of information.
 	ADMIN_PACKET_ADMIN_CHAT,             ///< The admin sends a chat message to be distributed.
 	ADMIN_PACKET_ADMIN_RCON,             ///< The admin sends a remote console command.
+	ADMIN_PACKET_ADMIN_GAMESCRIPT,       ///< The admin sends a JSON string for the GameScript.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -58,6 +59,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_CONSOLE,         ///< The server gives the admin the data that got printed to its console.
 	ADMIN_PACKET_SERVER_CMD_NAMES,       ///< The server sends out the names of the DoCommands to the admins.
 	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
+	ADMIN_PACKET_SERVER_GAMESCRIPT,      ///< The server gives the admin information from the GameScript in JSON.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -80,6 +82,7 @@ enum AdminUpdateType {
 	ADMIN_UPDATE_CONSOLE,         ///< The admin would like to have console messages.
 	ADMIN_UPDATE_CMD_NAMES,       ///< The admin would like a list of all DoCommand names.
 	ADMIN_UPDATE_CMD_LOGGING,     ///< The admin would like to have DoCommand information.
+	ADMIN_UPDATE_GAMESCRIPT,      ///< The admin would like to have gamescript messages.
 	ADMIN_UPDATE_END,             ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -168,6 +171,14 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_ADMIN_RCON(Packet *p);
+
+	/**
+	 * Send a JSON string to the current active GameScript.
+	 * json  JSON string for the GameScript.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet *p);
 
 	/**
 	 * The server is full (connection gets closed).

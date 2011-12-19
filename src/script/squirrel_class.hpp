@@ -72,6 +72,16 @@ public:
 	}
 
 	/**
+	 * This defines a static method inside a class for Squirrel, which has access to the 'engine' (experts only!).
+	 */
+	template <typename Func>
+	void DefSQAdvancedStaticMethod(Squirrel *engine, Func function_proc, const char *function_name)
+	{
+		using namespace SQConvert;
+		engine->AddMethod(function_name, DefSQAdvancedStaticCallback<CL, Func>, 0, NULL, &function_proc, sizeof(function_proc));
+	}
+
+	/**
 	 * This defines a static method inside a class for Squirrel with defined params.
 	 * @note If you define nparam, make sure that he first param is always 'x',
 	 *  which is the 'this' inside the function. This is hidden from the rest

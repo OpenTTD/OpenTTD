@@ -217,3 +217,18 @@ void SQGSEventTownFounded_Register(Squirrel *engine)
 
 	SQGSEventTownFounded.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventAdminPort, ST_GS>() { return "GSEventAdminPort"; }
+
+void SQGSEventAdminPort_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventAdminPort, ST_GS> SQGSEventAdminPort("GSEventAdminPort");
+	SQGSEventAdminPort.PreRegister(engine, "GSEvent");
+
+	SQGSEventAdminPort.DefSQStaticMethod(engine, &ScriptEventAdminPort::Convert, "Convert", 2, ".x");
+
+	SQGSEventAdminPort.DefSQAdvancedMethod(engine, &ScriptEventAdminPort::GetObject, "GetObject");
+
+	SQGSEventAdminPort.PostRegister(engine);
+}

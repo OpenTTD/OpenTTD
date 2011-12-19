@@ -829,4 +829,60 @@ private:
 	VehicleID vehicle_id; ///< The vehicle aircraft whose destination is too far away.
 };
 
+/**
+ * Event Admin Port, indicating the admin port is sending you information.
+ * @api game
+ */
+class ScriptEventAdminPort : public ScriptEvent {
+public:
+	/**
+	 * @param json The JSON string which got sent.
+	 */
+	ScriptEventAdminPort(const char *json) :
+		ScriptEvent(ET_ADMIN_PORT),
+		json(strdup(json))
+	{}
+
+	~ScriptEventAdminPort()
+	{
+		free(this->json);
+	}
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventAdminPort *Convert(ScriptEvent *instance) { return (ScriptEventAdminPort *)instance; }
+
+	/**
+	 * Get the information that was sent to you back as Squirrel object.
+	 */
+	SQInteger GetObject(HSQUIRRELVM vm);
+
+private:
+	char *json; ///< The JSON string.
+
+	/**
+	 * Read a table from a JSON string.
+	 * @param vm The VM used.
+	 * @param p The (part of the) JSON string reading.
+	 */
+	char *ReadTable(HSQUIRRELVM vm, char *p);
+
+	/**
+	 * Read a value from a JSON string.
+	 * @param vm The VM used.
+	 * @param p The (part of the) JSON string reading.
+	 */
+	char *ReadValue(HSQUIRRELVM vm, char *p);
+
+	/**
+	 * Read a string from a JSON string.
+	 * @param vm The VM used.
+	 * @param p The (part of the) JSON string reading.
+	 */
+	char *ReadString(HSQUIRRELVM vm, char *p);
+};
+
 #endif /* SCRIPT_EVENT_TYPES_HPP */

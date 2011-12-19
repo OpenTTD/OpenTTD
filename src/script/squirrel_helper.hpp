@@ -831,6 +831,28 @@ namespace SQConvert {
 		}
 	}
 
+
+	/**
+	 * A general template for all static advanced method callbacks from Squirrel.
+	 *  In here the function_proc is recovered, and the SQCall is called that
+	 *  can handle this exact amount of params.
+	 */
+	template <typename Tcls, typename Tmethod>
+	inline SQInteger DefSQAdvancedStaticCallback(HSQUIRRELVM vm)
+	{
+		/* Find the amount of params we got */
+		int nparam = sq_gettop(vm);
+		SQUserPointer ptr = NULL;
+
+		/* Get the real function pointer */
+		sq_getuserdata(vm, nparam, &ptr, 0);
+		/* Remove the userdata from the stack */
+		sq_pop(vm, 1);
+
+		/* Call the function, which its only param is always the VM */
+		return (SQInteger)(*(*(Tmethod *)ptr))(vm);
+	}
+
 	/**
 	 * A general template for the destructor of SQ instances. This is needed
 	 *  here as it has to be in the same scope as DefSQConstructorCallback.

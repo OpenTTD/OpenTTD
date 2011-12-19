@@ -60,6 +60,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 		case ADMIN_PACKET_ADMIN_POLL:             return this->Receive_ADMIN_POLL(p);
 		case ADMIN_PACKET_ADMIN_CHAT:             return this->Receive_ADMIN_CHAT(p);
 		case ADMIN_PACKET_ADMIN_RCON:             return this->Receive_ADMIN_RCON(p);
+		case ADMIN_PACKET_ADMIN_GAMESCRIPT:       return this->Receive_ADMIN_GAMESCRIPT(p);
 
 		case ADMIN_PACKET_SERVER_FULL:            return this->Receive_SERVER_FULL(p);
 		case ADMIN_PACKET_SERVER_BANNED:          return this->Receive_SERVER_BANNED(p);
@@ -134,6 +135,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Pack
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_POLL); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_CHAT); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_RCON); }
+NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_GAMESCRIPT); }
 
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_FULL(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_FULL); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_BANNED(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_BANNED); }

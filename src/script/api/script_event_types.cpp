@@ -12,6 +12,7 @@
 #include "../../stdafx.h"
 #include "script_event_types.hpp"
 #include "script_vehicle.hpp"
+#include "script_log.hpp"
 #include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
@@ -119,3 +120,185 @@ bool ScriptEventCompanyAskMerger::AcceptMerger()
 {
 	return ScriptObject::DoCommand(0, this->owner, 0, CMD_BUY_COMPANY);
 }
+
+#define SKIP_EMPTY(p) while (*(p) == ' ' || *(p) == '\n' || *(p) == '\r') (p)++;
+#define RETURN_ERROR(stack) { ScriptLog::Error("Received invalid JSON data from AdminPort."); if (stack != 0) sq_pop(vm, stack); return NULL; }
+
+SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
+{
+	char *p = this->json;
+
+	if (this->ReadTable(vm, p) == NULL) {
+		sq_pushnull(vm);
+		return 1;
+	}
+
+	return 1;
+}
+
+char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, char *p)
+{
+	char *value = p;
+
+	bool escape = false;
+	for (;;) {
+		if (*p == '\\') {
+			escape = true;
+			p++;
+			continue;
+		}
+		if (*p == '"' && escape) {
+			escape = false;
+			p++;
+			continue;
+		}
+		escape = false;
+
+		if (*p == '"') break;
+		if (*p == '\0') RETURN_ERROR(0);
+
+		p++;
+	}
+
+	*p = '\0';
+	sq_pushstring(vm, OTTD2SQ(value), -1);
+	*p++ = '"';
+
+	return p;
+}
+
+char *ScriptEventAdminPort::ReadTable(HSQUIRRELVM vm, char *p)
+{
+	sq_newtable(vm);
+
+	SKIP_EMPTY(p);
+	if (*p++ != '{') RETURN_ERROR(1);
+
+	for (;;) {
+		SKIP_EMPTY(p);
+		if (*p++ != '"') RETURN_ERROR(1);
+
+		p = ReadString(vm, p);
+		if (p == NULL) {
+			sq_pop(vm, 1);
+			return NULL;
+		}
+
+		SKIP_EMPTY(p);
+		if (*p++ != ':') RETURN_ERROR(2);
+
+		p = this->ReadValue(vm, p);
+		if (p == NULL) {
+			sq_pop(vm, 2);
+			return NULL;
+		}
+
+		sq_rawset(vm, -3);
+		/* The key (-2) and value (-1) are popped from the stack by squirrel. */
+
+		SKIP_EMPTY(p);
+		if (*p == ',') {
+			p++;
+			continue;
+		}
+		break;
+	}
+
+	SKIP_EMPTY(p);
+	if (*p++ != '}') RETURN_ERROR(1);
+
+	return p;
+}
+
+char *ScriptEventAdminPort::ReadValue(HSQUIRRELVM vm, char *p)
+{
+	SKIP_EMPTY(p);
+
+	if (strncmp(p, "false", 5) == 0) {
+		sq_pushinteger(vm, 0);
+		return p + 5;
+	}
+	if (strncmp(p, "true", 4) == 0) {
+		sq_pushinteger(vm, 1);
+		return p + 4;
+	}
+	if (strncmp(p, "null", 4) == 0) {
+		sq_pushnull(vm);
+		return p + 4;
+	}
+
+	switch (*p) {
+		case '"': {
+			/* String */
+			p = ReadString(vm, ++p);
+			if (p == NULL) return NULL;
+
+			break;
+		}
+
+		case '{': {
+			/* Table */
+			p = this->ReadTable(vm, p);
+			if (p == NULL) return NULL;
+
+			break;
+		}
+
+		case '[': {
+			/* Array */
+			sq_newarray(vm, 0);
+
+			while (*p++ != ']') {
+				p = this->ReadValue(vm, p);
+				if (p == NULL) {
+					sq_pop(vm, 1);
+					return NULL;
+				}
+				sq_arrayappend(vm, -2);
+
+				SKIP_EMPTY(p);
+				if (*p == ',') continue;
+				if (*p == ']') break;
+				RETURN_ERROR(1);
+			}
+
+			p++;
+
+			break;
+		}
+
+		case '1': case '2': case '3': case '4': case '5':
+		case '6': case '7': case '8': case '9': case '0':
+		case '-': {
+			/* Integer */
+
+			const char *value = p++;
+			for (;;) {
+				switch (*p++) {
+					case '1': case '2': case '3': case '4': case '5':
+					case '6': case '7': case '8': case '9': case '0':
+						continue;
+
+					default:
+						break;
+				}
+
+				p--;
+				break;
+			}
+
+			int res = atoi(value);
+			sq_pushinteger(vm, (SQInteger)res);
+
+			break;
+		}
+
+		default:
+			RETURN_ERROR(0);
+	}
+
+	return p;
+}
+
+#undef SKIP_EMPTY
+#undef RETURN_ERROR
