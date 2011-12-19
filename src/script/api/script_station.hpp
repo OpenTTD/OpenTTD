@@ -60,6 +60,15 @@ public:
 	static bool IsValidStation(StationID station_id);
 
 	/**
+	 * Get the owner of a station.
+	 * @param station_id The station to get the owner of.
+	 * @pre IsValidStation(station_id).
+	 * @return The owner the station has.
+	 * @api -ai
+	 */
+	static ScriptCompany::CompanyID GetOwner(StationID station_id);
+
+	/**
 	 * Get the StationID of a tile, if there is a station.
 	 * @param tile The tile to find the stationID of
 	 * @return StationID of the station.

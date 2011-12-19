@@ -31,6 +31,13 @@
 	return v != NULL && (v->owner == _current_company || _current_company == OWNER_DEITY) && (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && ::Train::From(v)->IsFreeWagon()));
 }
 
+/* static */ ScriptCompany::CompanyID ScriptVehicle::GetOwner(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return ScriptCompany::COMPANY_INVALID;
+
+	return static_cast<ScriptCompany::CompanyID>((int)::Vehicle::Get(vehicle_id)->owner);
+}
+
 /* static */ int32 ScriptVehicle::GetNumWagons(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;

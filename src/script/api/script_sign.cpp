@@ -27,6 +27,13 @@
 	return si != NULL && (si->owner == _current_company || si->owner == OWNER_DEITY);
 }
 
+/* static */ ScriptCompany::CompanyID ScriptSign::GetOwner(SignID sign_id)
+{
+	if (!IsValidSign(sign_id)) return ScriptCompany::COMPANY_INVALID;
+
+	return static_cast<ScriptCompany::CompanyID>((int)::Sign::Get(sign_id)->owner);
+}
+
 /* static */ bool ScriptSign::SetName(SignID sign_id, const char *name)
 {
 	EnforcePrecondition(false, IsValidSign(sign_id));

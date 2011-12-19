@@ -102,6 +102,7 @@ void SQGSVehicle_Register(Squirrel *engine)
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::IsValidVehicle,          "IsValidVehicle",          2, ".i");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetNumWagons,            "GetNumWagons",            2, ".i");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetName,                 "GetName",                 2, ".i");
+	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetOwner,                "GetOwner",                2, ".i");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetLocation,             "GetLocation",             2, ".i");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetEngineType,           "GetEngineType",           2, ".i");
 	SQGSVehicle.DefSQStaticMethod(engine, &ScriptVehicle::GetWagonEngineType,      "GetWagonEngineType",      3, ".ii");

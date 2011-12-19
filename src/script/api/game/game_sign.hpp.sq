@@ -31,6 +31,7 @@ void SQGSSign_Register(Squirrel *engine)
 	SQGSSign.DefSQStaticMethod(engine, &ScriptSign::IsValidSign, "IsValidSign", 2, ".i");
 	SQGSSign.DefSQStaticMethod(engine, &ScriptSign::SetName,     "SetName",     3, ".i.");
 	SQGSSign.DefSQStaticMethod(engine, &ScriptSign::GetName,     "GetName",     2, ".i");
+	SQGSSign.DefSQStaticMethod(engine, &ScriptSign::GetOwner,    "GetOwner",    2, ".i");
 	SQGSSign.DefSQStaticMethod(engine, &ScriptSign::GetLocation, "GetLocation", 2, ".i");
 	SQGSSign.DefSQStaticMethod(engine, &ScriptSign::BuildSign,   "BuildSign",   3, ".i.");
 	SQGSSign.DefSQStaticMethod(engine, &ScriptSign::RemoveSign,  "RemoveSign",  2, ".i");

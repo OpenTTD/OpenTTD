@@ -132,6 +132,15 @@ public:
 	static char *GetName(VehicleID vehicle_id);
 
 	/**
+	 * Get the owner of a vehicle.
+	 * @param vehicle_id The vehicle to get the owner of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The owner the vehicle has.
+	 * @api -ai
+	 */
+	static ScriptCompany::CompanyID GetOwner(VehicleID vehicle_id);
+
+	/**
 	 * Get the current location of a vehicle.
 	 * @param vehicle_id The vehicle to get the location of.
 	 * @pre IsValidVehicle(vehicle_id).

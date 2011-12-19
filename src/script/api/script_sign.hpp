@@ -12,6 +12,7 @@
 #ifndef SCRIPT_SIGN_HPP
 #define SCRIPT_SIGN_HPP
 
+#include "script_company.hpp"
 #include "script_error.hpp"
 
 /**
@@ -58,6 +59,15 @@ public:
 	 * @return The name of the sign.
 	 */
 	static char *GetName(SignID sign_id);
+
+	/**
+	 * Get the owner of a sign.
+	 * @param sign_id The sign to get the owner of.
+	 * @pre IsValidSign(sign_id).
+	 * @return The owner the sign has.
+	 * @api -ai
+	 */
+	static ScriptCompany::CompanyID GetOwner(SignID sign_id);
 
 	/**
 	 * Gets the location of the sign.

@@ -45,6 +45,7 @@ void SQGSStation_Register(Squirrel *engine)
 	ScriptError::RegisterErrorMapString(ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
 
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::IsValidStation,             "IsValidStation",             2, ".i");
+	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetOwner,                   "GetOwner",                   2, ".i");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetStationID,               "GetStationID",               2, ".i");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoWaiting,            "GetCargoWaiting",            3, ".ii");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetCargoRating,             "GetCargoRating",             3, ".ii");

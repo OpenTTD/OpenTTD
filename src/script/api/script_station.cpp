@@ -26,6 +26,13 @@
 	return st != NULL && (st->owner == _current_company || _current_company == OWNER_DEITY || st->owner == OWNER_NONE);
 }
 
+/* static */ ScriptCompany::CompanyID ScriptStation::GetOwner(StationID station_id)
+{
+	if (!IsValidStation(station_id)) return ScriptCompany::COMPANY_INVALID;
+
+	return static_cast<ScriptCompany::CompanyID>((int)::Station::Get(station_id)->owner);
+}
+
 /* static */ StationID ScriptStation::GetStationID(TileIndex tile)
 {
 	if (!::IsValidTile(tile) || !::IsTileType(tile, MP_STATION)) return INVALID_STATION;
