@@ -749,6 +749,8 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Changes
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidies
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}General information
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{RAW_STRING}
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Citizens celebrate . . .{}First train arrives at {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Citizens celebrate . . .{}First bus arrives at {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Citizens celebrate . . .{}First truck arrives at {STATION}!

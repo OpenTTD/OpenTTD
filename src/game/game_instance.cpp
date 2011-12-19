@@ -53,6 +53,7 @@
 #include "../script/api/game/game_log.hpp.sq"
 #include "../script/api/game/game_map.hpp.sq"
 #include "../script/api/game/game_marine.hpp.sq"
+#include "../script/api/game/game_news.hpp.sq"
 #include "../script/api/game/game_rail.hpp.sq"
 #include "../script/api/game/game_railtypelist.hpp.sq"
 #include "../script/api/game/game_road.hpp.sq"
@@ -141,6 +142,7 @@ void GameInstance::RegisterAPI()
 	SQGSLog_Register(this->engine);
 	SQGSMap_Register(this->engine);
 	SQGSMarine_Register(this->engine);
+	SQGSNews_Register(this->engine);
 	SQGSRail_Register(this->engine);
 	SQGSRailTypeList_Register(this->engine);
 	SQGSRoad_Register(this->engine);

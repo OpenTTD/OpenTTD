@@ -3164,6 +3164,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_news.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_object.hpp"
 				>
 			</File>
@@ -3385,6 +3389,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_marine.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_news.cpp"
 				>
 			</File>
 			<File

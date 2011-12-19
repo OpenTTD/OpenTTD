@@ -262,6 +262,7 @@ enum Commands {
 	CMD_BUILD_CANAL,                  ///< build a canal
 
 	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
+	CMD_CUSTOM_NEWS_ITEM,             ///< create a custom news message
 	CMD_LEVEL_LAND,                   ///< level land
 
 	CMD_BUILD_LOCK,                   ///< build a lock
