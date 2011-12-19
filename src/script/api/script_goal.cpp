@@ -28,16 +28,19 @@
 	return ::Goal::IsValidID(goal_id);
 }
 
-/* static */ ScriptGoal::GoalID ScriptGoal::New(ScriptCompany::CompanyID company, const char *goal, GoalType type, uint32 destination)
+/* static */ ScriptGoal::GoalID ScriptGoal::New(ScriptCompany::CompanyID company, Text *goal, GoalType type, uint32 destination)
 {
-	EnforcePrecondition(GOAL_INVALID, !StrEmpty(goal));
+	CCountedPtr<Text> counter(goal);
+
+	EnforcePrecondition(GOAL_INVALID, goal != NULL);
+	EnforcePrecondition(GOAL_INVALID, !StrEmpty(goal->GetEncodedText()));
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(GOAL_INVALID, (type == GT_NONE && destination == 0) || (type == GT_TILE && ScriptMap::IsValidTile(destination)) || (type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(destination)) || (type == GT_TOWN && ScriptTown::IsValidTown(destination)) || (type == GT_COMPANY && ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)destination) != ScriptCompany::COMPANY_INVALID));
 
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	if (!ScriptObject::DoCommand(0, type | (c << 8), destination, CMD_CREATE_GOAL, goal, &ScriptInstance::DoCommandReturnGoalID)) return GOAL_INVALID;
+	if (!ScriptObject::DoCommand(0, type | (c << 8), destination, CMD_CREATE_GOAL, goal->GetEncodedText(), &ScriptInstance::DoCommandReturnGoalID)) return GOAL_INVALID;
 
 	/* In case of test-mode, we return GoalID 0 */
 	return (ScriptGoal::GoalID)0;

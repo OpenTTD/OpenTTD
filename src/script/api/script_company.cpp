@@ -39,12 +39,16 @@
 	return ResolveCompanyID(company) == ResolveCompanyID(COMPANY_SELF);
 }
 
-/* static */ bool ScriptCompany::SetName(const char *name)
+/* static */ bool ScriptCompany::SetName(Text *name)
 {
-	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	CCountedPtr<Text> counter(name);
 
-	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_COMPANY, name);
+	EnforcePrecondition(false, name != NULL);
+	const char *text = name->GetEncodedText();
+	EnforcePrecondition(false, !::StrEmpty(text));
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+
+	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_COMPANY, text);
 }
 
 /* static */ char *ScriptCompany::GetName(ScriptCompany::CompanyID company)
@@ -60,11 +64,15 @@
 	return company_name;
 }
 
-/* static */ bool ScriptCompany::SetPresidentName(const char *name)
+/* static */ bool ScriptCompany::SetPresidentName(Text *name)
 {
-	EnforcePrecondition(false, !::StrEmpty(name));
+	CCountedPtr<Text> counter(name);
 
-	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_PRESIDENT, name);
+	EnforcePrecondition(false, name != NULL);
+	const char *text = name->GetEncodedText();
+	EnforcePrecondition(false, !::StrEmpty(text));
+
+	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_PRESIDENT, text);
 }
 
 /* static */ char *ScriptCompany::GetPresidentName(ScriptCompany::CompanyID company)

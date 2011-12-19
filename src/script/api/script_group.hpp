@@ -68,14 +68,13 @@ public:
 	/**
 	 * Set the name of a group.
 	 * @param group_id The group to set the name for.
-	 * @param name The name for the group.
+	 * @param name The name for the group (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidGroup(group_id).
-	 * @pre 'name' must have at least one character.
-	 * @pre 'name' must have at most 30 characters.
+	 * @pre name != NULL && len(name) != 0
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
-	static bool SetName(GroupID group_id, const char *name);
+	static bool SetName(GroupID group_id, Text *name);
 
 	/**
 	 * Get the name of a group.

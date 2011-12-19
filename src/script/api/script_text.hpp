@@ -62,7 +62,7 @@ private:
  * local text = ScriptText(ScriptText.STR_NEWS); text.AddParam(1);
  * This will set the {COMPANY} to the name of Company 1.
  *
- * @api game
+ * @api ai game
  */
 class ScriptText : public Text , public ZeroedMemoryAllocator {
 public:

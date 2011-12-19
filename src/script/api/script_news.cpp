@@ -18,14 +18,17 @@
 #include "../../string_func.h"
 #include "table/strings.h"
 
-/* static */ bool ScriptNews::Create(NewsType type, const char *text, ScriptCompany::CompanyID company)
+/* static */ bool ScriptNews::Create(NewsType type, Text *text, ScriptCompany::CompanyID company)
 {
-	EnforcePrecondition(false, !StrEmpty(text));
+	CCountedPtr<Text> counter(text);
+
+	EnforcePrecondition(false, text != NULL);
+	EnforcePrecondition(false, !StrEmpty(text->GetEncodedText()));
 	EnforcePrecondition(false, type >= NT_ARRIVAL_COMPANY && type <= NT_GENERAL);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	return ScriptObject::DoCommand(0, type | (NR_NONE << 8) | (c << 16), 0, CMD_CUSTOM_NEWS_ITEM, text);
+	return ScriptObject::DoCommand(0, type | (NR_NONE << 8) | (c << 16), 0, CMD_CUSTOM_NEWS_ITEM, text->GetEncodedText());
 }

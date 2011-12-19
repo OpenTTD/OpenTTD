@@ -34,14 +34,18 @@
 	return name;
 }
 
-/* static */ bool ScriptBaseStation::SetName(StationID station_id, const char *name)
+/* static */ bool ScriptBaseStation::SetName(StationID station_id, Text *name)
 {
+	CCountedPtr<Text> counter(name);
+
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidBaseStation(station_id));
-	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePrecondition(false, name != NULL);
+	const char *text = name->GetEncodedText();
+	EnforcePrecondition(false, !::StrEmpty(text));
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::DoCommand(0, station_id, 0, ::Station::IsValidID(station_id) ? CMD_RENAME_STATION : CMD_RENAME_WAYPOINT, name);
+	return ScriptObject::DoCommand(0, station_id, 0, ::Station::IsValidID(station_id) ? CMD_RENAME_STATION : CMD_RENAME_WAYPOINT, text);
 }
 
 /* static */ TileIndex ScriptBaseStation::GetLocation(StationID station_id)

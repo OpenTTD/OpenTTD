@@ -32,7 +32,9 @@ void SQGSCompany_Register(Squirrel *engine)
 	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_INVALID,   "GENDER_INVALID");
 
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::ResolveCompanyID,              "ResolveCompanyID",              2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::SetName,                       "SetName",                       2, "..");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetName,                       "GetName",                       2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::SetPresidentName,              "SetPresidentName",              2, "..");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetPresidentName,              "GetPresidentName",              2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetPresidentGender,            "GetPresidentGender",            2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::SetLoanAmount,                 "SetLoanAmount",                 2, ".i");

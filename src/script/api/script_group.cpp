@@ -49,13 +49,17 @@
 	return (ScriptVehicle::VehicleType)((::VehicleType)::Group::Get(group_id)->vehicle_type);
 }
 
-/* static */ bool ScriptGroup::SetName(GroupID group_id, const char *name)
+/* static */ bool ScriptGroup::SetName(GroupID group_id, Text *name)
 {
-	EnforcePrecondition(false, IsValidGroup(group_id));
-	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_GROUP_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	CCountedPtr<Text> counter(name);
 
-	return ScriptObject::DoCommand(0, group_id, 0, CMD_RENAME_GROUP, name);
+	EnforcePrecondition(false, IsValidGroup(group_id));
+	EnforcePrecondition(false, name != NULL);
+	const char *text = name->GetEncodedText();
+	EnforcePrecondition(false, !::StrEmpty(text));
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_GROUP_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+
+	return ScriptObject::DoCommand(0, group_id, 0, CMD_RENAME_GROUP, text);
 }
 
 /* static */ char *ScriptGroup::GetName(GroupID group_id)

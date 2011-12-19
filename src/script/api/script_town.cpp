@@ -43,10 +43,14 @@
 	return town_name;
 }
 
-/* static */ bool ScriptTown::SetText(TownID town_id, const char *text)
+/* static */ bool ScriptTown::SetText(TownID town_id, Text *text)
 {
+	CCountedPtr<Text> counter(text);
+
+	EnforcePrecondition(false, text != NULL);
 	EnforcePrecondition(false, IsValidTown(town_id));
-	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, 0, CMD_TOWN_SET_TEXT, text);
+
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, 0, CMD_TOWN_SET_TEXT, text->GetEncodedText());
 }
 
 /* static */ int32 ScriptTown::GetPopulation(TownID town_id)

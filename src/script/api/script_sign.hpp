@@ -43,14 +43,13 @@ public:
 	/**
 	 * Set the name of a sign.
 	 * @param sign_id The sign to set the name for.
-	 * @param name The name for the sign.
+	 * @param name The name for the sign (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidSign(sign_id).
-	 * @pre 'name' must have at least one character.
-	 * @pre 'name' must have at most 30 characters.
+	 * @pre name != NULL && len(name) != 0.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if and only if the name was changed.
 	 */
-	static bool SetName(SignID sign_id, const char *name);
+	static bool SetName(SignID sign_id, Text *name);
 
 	/**
 	 * Get the name of the sign.
@@ -80,16 +79,15 @@ public:
 	/**
 	 * Builds a sign on the map.
 	 * @param location The place to build the sign.
-	 * @param text The text to place on the sign.
+	 * @param name The text to place on the sign (can be either a raw string, or a ScriptText object).
 	 * @pre ScriptMap::IsValidTile(location).
-	 * @pre 'text' must have at least one character.
-	 * @pre 'text' must have at most 30 characters.
+	 * @pre name != NULL && len(name) != 0.
 	 * @exception ScriptSign::ERR_SIGN_TOO_MANY_SIGNS
 	 * @return The SignID of the build sign (use IsValidSign() to check for validity).
 	 *   In test-mode it returns 0 if successful, or any other value to indicate
 	 *   failure.
 	 */
-	static SignID BuildSign(TileIndex location, const char *text);
+	static SignID BuildSign(TileIndex location, Text *name);
 
 	/**
 	 * Removes a sign from the map.

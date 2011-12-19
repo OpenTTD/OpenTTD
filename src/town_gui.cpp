@@ -405,7 +405,8 @@ public:
 		}
 
 		if (this->town->text != NULL) {
-			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, UINT16_MAX, this->town->text, TC_BLACK);
+			SetDParamStr(0, this->town->text);
+			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 		}
 	}
 

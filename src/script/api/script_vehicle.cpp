@@ -212,14 +212,18 @@
 	}
 }
 
-/* static */ bool ScriptVehicle::SetName(VehicleID vehicle_id, const char *name)
+/* static */ bool ScriptVehicle::SetName(VehicleID vehicle_id, Text *name)
 {
+	CCountedPtr<Text> counter(name);
+
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
-	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_VEHICLE_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePrecondition(false, name != NULL);
+	const char *text = name->GetEncodedText();
+	EnforcePrecondition(false, !::StrEmpty(text));
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_VEHICLE_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	return ScriptObject::DoCommand(0, vehicle_id, 0, CMD_RENAME_VEHICLE, name);
+	return ScriptObject::DoCommand(0, vehicle_id, 0, CMD_RENAME_VEHICLE, text);
 }
 
 /* static */ TileIndex ScriptVehicle::GetLocation(VehicleID vehicle_id)

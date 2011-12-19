@@ -13,6 +13,7 @@
 #define SCRIPT_NEWS_HPP
 
 #include "script_company.hpp"
+#include "script_text.hpp"
 #include "../../news_type.h"
 
 /**
@@ -49,13 +50,13 @@ public:
 	/**
 	 * Create a news messages for a company.
 	 * @param type The type of the news.
-	 * @param text The text message to show.
+	 * @param text The text message to show (can be either a raw string, or a ScriptText object).
 	 * @param company The company, or COMPANY_INVALID for all companies.
 	 * @return True if the action succeeded.
 	 * @pre text != NULL.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 */
-	static bool Create(NewsType type, const char *text, ScriptCompany::CompanyID company);
+	static bool Create(NewsType type, Text *text, ScriptCompany::CompanyID company);
 };
 
 #endif /* SCRIPT_NEWS_HPP */

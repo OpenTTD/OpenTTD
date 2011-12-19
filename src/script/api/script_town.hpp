@@ -14,6 +14,7 @@
 
 #include "script_cargo.hpp"
 #include "script_company.hpp"
+#include "script_text.hpp"
 #include "../../town_type.h"
 
 /**
@@ -129,12 +130,12 @@ public:
 	/**
 	 * Set the custom text of a town, shown in the GUI.
 	 * @param town_id The town to set the custom text of.
-	 * @param text The text to set it to.
+	 * @param text The text to set it to (can be either a raw string, or a ScriptText object).
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
 	 */
-	static bool SetText(TownID town_id, const char *text);
+	static bool SetText(TownID town_id, Text *text);
 
 	/**
 	 * Gets the number of inhabitants in the town.

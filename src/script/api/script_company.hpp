@@ -13,6 +13,7 @@
 #define SCRIPT_COMPANY_HPP
 
 #include "script_object.hpp"
+#include "script_text.hpp"
 
 /**
  * Class that handles all company related functions.
@@ -64,14 +65,12 @@ public:
 
 	/**
 	 * Set the name of your company.
-	 * @param name The new name of the company.
-	 * @pre 'name' must have at least one character.
-	 * @pre 'name' must have at most 30 characters.
+	 * @param name The new name of the company (can be either a raw string, or a ScriptText object).
+	 * @pre name != NULL && len(name) != 0.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
-	 * @api -game
 	 */
-	static bool SetName(const char *name);
+	static bool SetName(Text *name);
 
 	/**
 	 * Get the name of the given company.
@@ -83,13 +82,12 @@ public:
 
 	/**
 	 * Set the name of your president.
-	 * @param name The new name of the president.
-	 * @pre 'name' must have at least one character.
+	 * @param name The new name of the president (can be either a raw string, or a ScriptText object).
+	 * @pre name != NULL && len(name) != 0.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
-	 * @api -game
 	 */
-	static bool SetPresidentName(const char *name);
+	static bool SetPresidentName(Text *name);
 
 	/**
 	 * Get the name of the president of the given company.

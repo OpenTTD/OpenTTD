@@ -1205,7 +1205,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (c == NULL) break;
 
 				if (c->name != NULL) {
-					buff = strecpy(buff, c->name, last);
+					int64 args_array[] = {(uint64)(size_t)c->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					int64 args_array[] = {c->name_2};
 					StringParameters tmp_params(args_array);
@@ -1237,7 +1239,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 				const Depot *d = Depot::Get(args->GetInt32());
 				if (d->name != NULL) {
-					buff = strecpy(buff, d->name, last);
+					int64 args_array[] = {(uint64)(size_t)d->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					int64 args_array[] = {d->town->index, d->town_cn + 1};
 					StringParameters tmp_params(args_array);
@@ -1251,7 +1255,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (e == NULL) break;
 
 				if (e->name != NULL && e->IsEnabled()) {
-					buff = strecpy(buff, e->name, last);
+					int64 args_array[] = {(uint64)(size_t)e->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					StringParameters tmp_params(NULL, 0, NULL);
 					buff = GetStringWithArgs(buff, e->info.string_id, &tmp_params, last);
@@ -1264,7 +1270,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (g == NULL) break;
 
 				if (g->name != NULL) {
-					buff = strecpy(buff, g->name, last);
+					int64 args_array[] = {(uint64)(size_t)g->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					int64 args_array[] = {g->index};
 					StringParameters tmp_params(args_array);
@@ -1292,7 +1300,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (c == NULL) break;
 
 				if (c->president_name != NULL) {
-					buff = strecpy(buff, c->president_name, last);
+					int64 args_array[] = {(uint64)(size_t)c->president_name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					int64 args_array[] = {c->president_name_2};
 					StringParameters tmp_params(args_array);
@@ -1315,7 +1325,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				}
 
 				if (st->name != NULL) {
-					buff = strecpy(buff, st->name, last);
+					int64 args_array[] = {(uint64)(size_t)st->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					StringID str = st->string_id;
 					if (st->indtype != IT_INVALID) {
@@ -1342,7 +1354,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (t == NULL) break;
 
 				if (t->name != NULL) {
-					buff = strecpy(buff, t->name, last);
+					int64 args_array[] = {(uint64)(size_t)t->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					buff = GetTownName(buff, t, last);
 				}
@@ -1354,7 +1368,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (wp == NULL) break;
 
 				if (wp->name != NULL) {
-					buff = strecpy(buff, wp->name, last);
+					int64 args_array[] = {(uint64)(size_t)wp->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					int64 args_array[] = {wp->town->index, wp->town_cn + 1};
 					StringParameters tmp_params(args_array);
@@ -1370,7 +1386,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (v == NULL) break;
 
 				if (v->name != NULL) {
-					buff = strecpy(buff, v->name, last);
+					int64 args_array[] = {(uint64)(size_t)v->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					int64 args_array[] = {v->unitnumber};
 					StringParameters tmp_params(args_array);
@@ -1394,7 +1412,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (si == NULL) break;
 
 				if (si->name != NULL) {
-					buff = strecpy(buff, si->name, last);
+					int64 args_array[] = {(uint64)(size_t)si->name};
+					StringParameters tmp_params(args_array);
+					buff = GetStringWithArgs(buff, STR_JUST_RAW_STRING, &tmp_params, last);
 				} else {
 					StringParameters tmp_params(NULL, 0, NULL);
 					buff = GetStringWithArgs(buff, STR_DEFAULT_SIGN_NAME, &tmp_params, last);

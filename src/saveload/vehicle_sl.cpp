@@ -554,7 +554,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 
 		     SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
 		 SLE_CONDVAR(Vehicle, name,                  SLE_NAME,                     0,  83),
-		 SLE_CONDSTR(Vehicle, name,                  SLE_STR, 0,                  84, SL_MAX_VERSION),
+		 SLE_CONDSTR(Vehicle, name,                  SLE_STR | SLF_ALLOW_CONTROL, 0, 84, SL_MAX_VERSION),
 		 SLE_CONDVAR(Vehicle, unitnumber,            SLE_FILE_U8  | SLE_VAR_U16,   0,   7),
 		 SLE_CONDVAR(Vehicle, unitnumber,            SLE_UINT16,                   8, SL_MAX_VERSION),
 		     SLE_VAR(Vehicle, owner,                 SLE_UINT8),

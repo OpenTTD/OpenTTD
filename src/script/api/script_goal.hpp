@@ -52,14 +52,14 @@ public:
 	/**
 	 * Create a new goal.
 	 * @param company The company to create the goal for, or ScriptCompany::COMPANY_INVALID for all.
-	 * @param goal The goal to add to the GUI.
+	 * @param goal The goal to add to the GUI (can be either a raw string, or a ScriptText object).
 	 * @param type The type of the goal.
 	 * @param destination The destination of the #type type.
 	 * @return The new GoalID, or GOAL_INVALID if it failed.
-	 * @pre goal != NULL.
+	 * @pre goal != NULL && len(goal) != 0.
 	 * @pre company == COMPANY_INVALID || ResolveCompanyID(company) != COMPANY_INVALID.
 	 */
-	static GoalID New(ScriptCompany::CompanyID company, const char *goal, GoalType type, uint32 destination);
+	static GoalID New(ScriptCompany::CompanyID company, Text *goal, GoalType type, uint32 destination);
 
 	/**
 	 * Remove a goal from the list.
